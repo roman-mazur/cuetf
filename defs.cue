@@ -1,7 +1,9 @@
 package cuetf
 
-// Test our defs.
-provider_schemas: "registry.terraform.io/hashicorp/aws": #schema
+main: provider_schemas["registry.terraform.io/hashicorp/aws"]
+
+// Test our defs. This does not complete in 4 minutes.
+//main: #schema
 
 #schema: {
 		provider: #type
