@@ -28,9 +28,25 @@ import "text/template"
 		}
 	}
 	code: template.Execute("""
-#{{.name}}: {
-	// TODO
-}
+	#{{.name}}: {
+		{{range $fn, $ft := .data.primitives}}
+		{{$fn}}{{if $ft.optional}}?{{end}}: {{$ft.type}}
+		{{end}}
+		{{range $fn, $ft := .data.complex}}
+		{{$fn}}{{if $ft.optional}}?{{end}}: #{{$ft.type}}
+		{{end}}
+	}
+	{{range $name, $info := .data.complexDefs}}
+	{{if eq $info.cueType "list"}}#{{$name}}: [...{{$info.element}}]{{end}}
+	{{if eq $info.cueType "map"}}#{{$name}}: [string]: {{$info.element}}{{end}}
+	{{if eq $info.cueType "struct"}}
+	#{{$name}}: {
+		{{range $fn, $ft := $info.fields}}
+		{{$fn}}: {{$ft}}
+		{{end}}
+	}
+	{{end}}
+	{{end}}
 	""", {name: prefix, data: output})
 }
 
@@ -58,7 +74,7 @@ for t, v in #_stdComplex {
 			let n = "\(name)_\(input[0])"
 			"\(name)": {
 				cueType: _cueMap[type]
-				element: n
+				element: "#\(n)"
 			}
 			let i = input
 			(#tComplexDef[input[0]] & {name: n, input: i[1]}).output
@@ -90,7 +106,7 @@ _cueMap: {// From TF type to CUE.
 			}
 			if (ft & #attr.#complexDef) != _|_ {
 				let n = "\(name)_\(fn)"
-				mainFields: "\(fn)": n
+				mainFields: "\(fn)": "#\(n)"
 				extraDefs: (#tComplexDef[ft[0]] & {name: n, input: ft[1]}).output
 			}
 		}
