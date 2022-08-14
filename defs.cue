@@ -6,26 +6,30 @@ main: provider_schemas["registry.terraform.io/hashicorp/aws"]
 //main: #schema
 
 #schema: {
-		provider: #type
-		resource_schemas: [string]: #type
-		data_source_schemas: [string]: #type
+	provider: #type
+	resource_schemas: [string]:    #type
+	data_source_schemas: [string]: #type
 }
 
 #type: {
 	version: uint
-	block: #block
+	block:   #block
 }
 
 documented: {
-		description?: string
-		description_kind: string
+	description?:     string
+	description_kind: string
 }
 
+_recDepth: [0, 1, 2, 3, 4, 5]
+
 #attr: {
-	#primitive: "string" | "number" | "bool"
+	#primitive:   "string" | "number" | "bool"
+	#complexType: "object" | "list" | "map" | "set"
+	#complexDef: [#complexType, _]
 
 	_levels: [ // Implementation of a bounded recursion.
-		for i in [0,1,2,3,4,5] {
+			for i in _recDepth {
 			{
 				if i == 0 {
 					#_prev: #primitive
@@ -42,7 +46,7 @@ documented: {
 
 				#variant: _levels[i].#_prev | #object | #list | #map | #set
 			}
-		}
+		},
 	]
 
 	#type: _levels[len(_levels)-1].#variant
@@ -54,10 +58,10 @@ documented: {
 	attributes: [name=string]: close({
 		documented
 
-		optional: bool | *false
-		required: bool | *false
-		computed: bool | *false
-		sensitive: bool | *false
+		optional:   bool | *false
+		required:   bool | *false
+		computed:   bool | *false
+		sensitive:  bool | *false
 		deprecated: bool | *false
 
 		type: #attr.#type
@@ -65,8 +69,8 @@ documented: {
 
 	block_types: [name=string]: close({
 		nesting_mode: "set" | "list" | "single"
-		block: #block
-		max_items?: uint
-		min_items?: uint
+		block:        #block
+		max_items?:   uint
+		min_items?:   uint
 	})
 }
