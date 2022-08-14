@@ -1,5 +1,7 @@
 package cuetf
 
+import "text/template"
+
 #tBlockAttr: {
 	prefix: string // Prefix for non-primitive definitions.
 	input: [string]: _
@@ -25,6 +27,11 @@ package cuetf
 			}
 		}
 	}
+	code: template.Execute("""
+#{{.name}}: {
+	// TODO
+}
+	""", {name: prefix, data: output})
 }
 
 // #tComplexDef provides transformations for the complex types like list or object.
@@ -58,11 +65,12 @@ for t, v in #_stdComplex {
 		}
 	}
 }
-#_stdComplex: set: _  // TODO: Add more constraint for the sets.
-#_stdComplex: list: _
-#_stdComplex: map: _
 
-_cueMap: { // From TF type to CUE.
+#_stdComplex: set:  _ // TODO: Add more constraint for the sets.
+#_stdComplex: list: _
+#_stdComplex: map:  _
+
+_cueMap: {// From TF type to CUE.
 	list: "list"
 	set:  "list"
 	map:  "map" // Not really a CUE type, but impacts how exactly the output CUE code is produced.
