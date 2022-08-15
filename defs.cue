@@ -49,7 +49,9 @@ _recDepth: [0, 1, 2, 3, 4, 5]
 		},
 	]
 
-	#type: _levels[len(_levels)-1].#variant
+  // XXX: Unifying with the recursive defs takes too long.
+	//#type: _levels[len(_levels)-1].#variant
+	#type: #primitive | #complexDef
 }
 
 #block: documented
