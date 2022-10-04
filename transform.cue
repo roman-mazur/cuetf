@@ -2,7 +2,7 @@ package cuetf
 
 import "text/template"
 
-#tBlockAttr: {
+#_t: {
 	prefix: string // Prefix for non-primitive definitions.
 	input: #block
 
@@ -12,37 +12,62 @@ import "text/template"
 		complex: #fieldsDef
 		complexDefs: [string]: #complexDefSchema
 	})
+}
 
-	output: {
-		for name, def in input.attributes {
-			let typeDef = {
-				type:     string
-				optional: def.optional | !def.required
-			}
-			if (def.type & #attr.#primitive) != _|_ {
-				primitives: "\(name)": typeDef & {type: def.type}
-			}
-			if (def.type & #attr.#complexDef) != _|_ {
-				let n = "\(prefix)_\(name)"
-				complex: "\(name)": typeDef & {type: n}
-				complexDefs: (#tComplexDef[def.type[0]] & {name: n, input: def.type[1]}).output
-			}
-		}
+#tBlockAttr: #_t & {
+	prefix: string // Prefix for non-primitive definitions.
+	input: #block
 
-		for name, def in input.block_types {
-			let n = "\(prefix)_\(name)"
-			complex: "\(name)": {type: n, optional: true}
-			let h = #tBlockAttr & { prefix: n, input: def.block }
-			complexDefs: "\(n)": {
-				cueType: "struct"
-				fields: {
-					h.output.primitives
+	_rec: [...#_t] // Bounded recursion.
+	_rec: [
+		for i in _recDepth {
+			{
+				if i == 0 {
+					#prev: #_t & { output: {primitives: {}, complex: {}, complexDefs: {}} }
 				}
-				//h.output.complex
+				if i > 0 {
+					#prev: _rec[i-1]
+				}
+
+				prefix: string
+				input: #block
+				output: {
+						for name, def in input.attributes {
+							let typeDef = {
+								type:     string
+								optional: def.optional | !def.required
+							}
+							if (def.type & #attr.#primitive) != _|_ {
+								primitives: "\(name)": typeDef & {type: def.type}
+							}
+							if (def.type & #attr.#complexDef) != _|_ {
+								let n = "\(prefix)_\(name)"
+								complex: "\(name)": typeDef & {type: n}
+								complexDefs: (#tComplexDef[def.type[0]] & {name: n, input: def.type[1]}).output
+							}
+						}
+
+						for name, def in input.block_types {
+							let n = "\(prefix)_\(name)"
+							complex: "\(name)": {type: n, optional: true}
+
+							let h = _rec[i].#prev & { prefix: n, input: def.block }
+							complexDefs: "\(n)": {
+								cueType: "struct"
+								fields: {
+									h.output.primitives
+								}
+								//h.output.complex
+							}
+				//			complexDefs: h.output.complexDefs
+						}
+				}
 			}
-//			complexDefs: h.output.complexDefs
 		}
-	}
+	]
+
+	output: _rec[len(_rec)-1]
+
 	code: template.Execute("""
 	#{{.name}}: {
 		{{range $fn, $ft := .data.primitives}}
@@ -69,7 +94,7 @@ import "text/template"
 // #tComplexDef provides transformations for the complex types like list or object.
 #tComplexDef: [#attr.#complexType]: output: [string]: #complexDefSchema
 #fieldsDef: [string]: { type: string, optional: bool | *false }
-#complexDefSchema: {cueType: "list" | "map", element: string} | {cueType: "struct", fields: #fieldsDef}
+#complexDefSchema: _ // {cueType: "list" | "map", element: string} | {cueType: "struct", fields: #fieldsDef}
 
 for t, v in #_stdComplex {
 	#tComplexDef: "\(t)": v

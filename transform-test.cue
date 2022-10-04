@@ -18,6 +18,19 @@ testBlockAttr: #validation: {
 	complexDefs: length: len(testBlockAttr.output.complexDefs) & 7
 }
 
+testBlockAttr2: #tBlockAttr & {input: main.resource_schemas.aws_acmpca_certificate_authority.block, prefix: "aws_acmpca_certificate_authority"}
+testBlockAttr2: #validation: {
+	primitives: length:  len(testBlockAttr.output.primitives) & 9
+	complex: length:     len(testBlockAttr.output.complex) & 6
+	complexDefs: length: len(testBlockAttr.output.complexDefs) & 7
+}
+
+//testResources: {
+//	for name, def in main.resource_schemas {
+//		"\(name)": (#tBlockAttr & { input: def.block, prefix: name }).output
+//	}
+//}
+
 // TODO: Re-enable the generated code comparison.
 _testBlockAttr: code: """
 	#aws_acm_certificate: {
