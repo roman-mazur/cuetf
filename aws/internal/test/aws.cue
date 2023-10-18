@@ -47,34 +47,45 @@ testBlockAttr: {
 	}
 }
 
-// TODO: Re-enable the generated code comparison.
-_testBlockAttr: code: """
-	#acm_certificate: {
-		arn: string
-		certificate_authority_arn: string
-		certificate_body: string
-		certificate_chain: string
-		domain_name: string
-		id: string
-		private_key: string
-		status: string
-		validation_method: string
-		domain_validation_options: #aws_acm_certificate_domain_validation_options
-		subject_alternative_names: #aws_acm_certificate_subject_alternative_names
-		tags: #aws_acm_certificate_tags
-		tags_all: #aws_acm_certificate_tags_all
-		validation_emails: #aws_acm_certificate_validation_emails
-	}
-	
-	#aws_acm_certificate_domain_validation_options: [...#aws_acm_certificate_domain_validation_options_object]
-	#aws_acm_certificate_domain_validation_options_object: {
-		resource_record_name: string
-		domain_name: string
-		resource_record_type: string
-		resource_record_value: string
-	}
-	#aws_acm_certificate_subject_alternative_names: [...string]
-	#aws_acm_certificate_tags: [string]: string
-	#aws_acm_certificate_tags_all: [string]: string
-	#aws_acm_certificate_validation_emails: [...string]
-	"""
+testBlockAttr: sample: code: """
+
+#acm_certificate: {
+	certificate_authority_arn?: string
+	certificate_body?: string
+	certificate_chain?: string
+	domain_name?: string
+	early_renewal_duration?: string
+	id?: string
+	key_algorithm?: string
+	private_key?: string
+	validation_method?: string
+	domain_validation_options: acm_certificate_domain_validation_options
+	options?: acm_certificate_options
+	subject_alternative_names?: #acm_certificate_subject_alternative_names
+	tags?: #acm_certificate_tags
+	tags_all?: #acm_certificate_tags_all
+	validation_option?: acm_certificate_validation_option
+}
+
+#acm_certificate_domain_validation_options: [...#acm_certificate_domain_validation_options_object]
+
+#acm_certificate_domain_validation_options_object: {
+	resource_record_name: string
+}
+
+
+#acm_certificate_options: {
+	certificate_transparency_logging_preference?: string
+}
+
+#acm_certificate_subject_alternative_names: [...string]
+#acm_certificate_tags: [string]: string
+#acm_certificate_tags_all: [string]: string
+
+#acm_certificate_validation_option: {
+	domain_name!: string
+	validation_domain!: string
+}
+
+
+"""
