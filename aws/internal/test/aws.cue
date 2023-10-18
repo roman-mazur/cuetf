@@ -5,15 +5,17 @@ import (
 	"rmazur.io/cuetf/aws/internal/schemaaws"
 )
 
-aws: schemaaws.provider_schemas["registry.terraform.io/hashicorp/aws"]
+_aws: schemaaws.provider_schemas["registry.terraform.io/hashicorp/aws"]
 
 cuetf.#TestSuite
-#providerSchema: aws
+#providerSchema: _aws
+
 #tests: [
 	testAcmCert,
+	testEc2Host,
 ]
 
 #awsResourceSample: {
 	#name: string
-	cuetf.#tBlockAttr & {input: aws.resource_schemas["aws_\(#name)"].block, prefix: #name}
+	cuetf.#tBlockAttr & {input: _aws.resource_schemas["aws_\(#name)"].block, prefix: #name}
 }
