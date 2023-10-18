@@ -1,11 +1,6 @@
 package cuetf
 
-main: provider_schemas["registry.terraform.io/hashicorp/aws"]
-
-// Test our defs. This does not complete in 4 minutes.
-//main: #schema
-
-#schema: {
+#TerraformSchema: {
 	provider: #type
 	resource_schemas: [string]:    #type
 	data_source_schemas: [string]: #type
@@ -18,7 +13,7 @@ main: provider_schemas["registry.terraform.io/hashicorp/aws"]
 
 documented: {
 	description?:     string
-	description_kind: string
+	description_kind: "plain" | "markdown"
 }
 
 _recDepth: [0, 1, 2, 3, 4, 5]
@@ -49,30 +44,30 @@ _recDepth: [0, 1, 2, 3, 4, 5]
 		},
 	]
 
-  // XXX: Unifying with the recursive defs takes too long.
+	// XXX: Unifying with the recursive defs takes too long.
 	//#type: _levels[len(_levels)-1].#variant
 	#type: #primitive | #complexDef
 }
 
-#block: documented
-#block: {
+#block: documented & {
 	deprecated: bool | *false
-	attributes: [name=string]: close({
-		documented
+	attributes: [name=string]:  #attributeDescription
+	block_types: [name=string]: #blockTypeDescription
+}
 
-		optional:   bool | *false
-		required:   bool | *false
-		computed:   bool | *false
-		sensitive:  bool | *false
-		deprecated: bool | *false
+#attributeDescription: documented & {
+	optional:   bool | *false
+	required:   bool | *false
+	computed:   bool | *false
+	sensitive:  bool | *false
+	deprecated: bool | *false
 
-		type: #attr.#type
-	})
+	type: #attr.#type
+}
 
-	block_types: [name=string]: close({
-		nesting_mode: "set" | "list" | "single"
-		block:        #block
-		max_items?:   uint
-		min_items?:   uint
-	})
+#blockTypeDescription: {
+	nesting_mode: "set" | "list" | "single"
+	block:        #block
+	max_items?:   uint
+	min_items?:   uint
 }

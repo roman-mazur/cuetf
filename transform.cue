@@ -4,27 +4,33 @@ import "text/template"
 
 #tBlockAttr: {
 	prefix: string // Prefix for non-primitive definitions.
-	input: #block
+	input:  #block
 
-  #primFields: [string]: { type: #attr.#primitive, optional: bool }
 	output: close({
-		primitives: #fieldsDef & #primFields
+		primitives: #fieldsDef
+		primitives: [string]: type: #attr.#primitive
+
 		complex: #fieldsDef
 		complexDefs: [string]: #complexDefSchema
 	})
 
 	output: {
-		for name, def in input.attributes {
-			let typeDef = {
-				type:     string
-				optional: def.optional | !def.required
-			}
+		for name, def in input.attributes if !def.computed || def.optional || def.required {
 			if (def.type & #attr.#primitive) != _|_ {
-				primitives: "\(name)": typeDef & {type: def.type}
+				primitives: (name): {
+					type:     def.type
+					optional: def.optional
+					required: def.required
+				}
 			}
+
 			if (def.type & #attr.#complexDef) != _|_ {
 				let n = "\(prefix)_\(name)"
-				complex: "\(name)": typeDef & {type: n}
+				complex: (name): {
+					type:     "#\(n)"
+					optional: def.optional
+					required: def.required
+				}
 				complexDefs: (#tComplexDef[def.type[0]] & {name: n, input: def.type[1]}).output
 			}
 		}
@@ -32,7 +38,7 @@ import "text/template"
 		for name, def in input.block_types {
 			let n = "\(prefix)_\(name)"
 			complex: "\(name)": {type: n, optional: true}
-			let h = #tBlockAttr & { prefix: n, input: def.block }
+			let h = #tBlockAttr & {prefix: n, input: def.block}
 			complexDefs: "\(n)": {
 				cueType: "struct"
 				fields: {
@@ -40,36 +46,53 @@ import "text/template"
 				}
 				//h.output.complex
 			}
-//			complexDefs: h.output.complexDefs
+			//			complexDefs: h.output.complexDefs
 		}
 	}
 	code: template.Execute("""
-	#{{.name}}: {
-		{{range $fn, $ft := .data.primitives}}
-		{{$fn}}{{if $ft.optional}}?{{end}}: {{$ft.type}}
+		{{- define "field"}}{{.name}}{{if .optional}}?{{end}}{{if .required}}!{{end}}: {{.type}}{{end}}
+		{{- define "list"}}{{.name}}{{if .optional}}?{{end}}{{if .required}}!{{end}}: [...{{.element}}]{{end}}
+		{{- define "map"}}{{.name}}{{if .optional}}?{{end}}{{if .required}}!{{end}}: [string]: {{.element}}{{end}}
+		{{- define "struct"}}
+		{{.name}}: {
+			{{- range .fields}}
+			{{template "field" .}}
+			{{- end}}
+		}
 		{{end}}
-		{{range $fn, $ft := .data.complex}}
-		{{$fn}}{{if $ft.optional}}?{{end}}: #{{$ft.type}}
+		#{{.name}}: {
+			{{- range .data.primitives}}
+			{{template "field" .}}
+			{{- end}}
+
+			{{- range .data.complex}}
+			{{template "field" .}}
+			{{- end}}
+		}
+
+		{{range .data.complexDefs}}
+		{{- if eq .cueType "list"}}{{template "list" .}}{{end}}
+		{{- if eq .cueType "map"}}{{template "map" .}}{{end}}
+		{{- if eq .cueType "struct"}}{{template "struct" .}}{{end}}
 		{{end}}
-	}
-	{{range $name, $info := .data.complexDefs}}
-	{{if eq $info.cueType "list"}}#{{$name}}: [...{{$info.element}}]{{end}}
-	{{if eq $info.cueType "map"}}#{{$name}}: [string]: {{$info.element}}{{end}}
-	{{if eq $info.cueType "struct"}}
-	#{{$name}}: {
-		{{range $fn, $ft := $info.fields}}
-		{{$fn}}{{if $ft.optional}}?{{end}}: {{$ft.type}}
-		{{end}}
-	}
-	{{end}}
-	{{end}}
-	""", {name: prefix, data: output})
+		""", {name: prefix, data: output})
 }
 
 // #tComplexDef provides transformations for the complex types like list or object.
-#tComplexDef: [#attr.#complexType]: output: [string]: #complexDefSchema
-#fieldsDef: [string]: { type: string, optional: bool | *false }
-#complexDefSchema: {cueType: "list" | "map", element: string} | {cueType: "struct", fields: #fieldsDef}
+#tComplexDef: [#attr.#complexType]: output: [fName=string]: #complexDefSchema & {name: "#\(fName)"}
+
+#complexDefSchema: {name: string} & ({cueType: "list" | "map", element: string} | {cueType: "struct", fields: #fieldsDef})
+
+#fieldsDef: [fName=string]: #fieldInfo & {name: fName}
+
+#fieldInfo: {
+	name:     string
+	type:     string
+	optional: bool | *false
+	required: bool | *false
+
+	contradiction: (optional && required) & false
+}
 
 for t, v in #_stdComplex {
 	#tComplexDef: "\(t)": v
@@ -81,7 +104,7 @@ for t, v in #_stdComplex {
 	input: _
 	output: {
 		if (input & #attr.#primitive) != _|_ {
-			"\(name)": {
+			(name): {
 				cueType: _cueMap[type]
 				element: input
 			}
@@ -89,7 +112,7 @@ for t, v in #_stdComplex {
 
 		if (input & #attr.#complexDef) != _|_ {
 			let n = "\(name)_\(input[0])"
-			"\(name)": {
+			(name): {
 				cueType: _cueMap[type]
 				element: "#\(n)"
 			}
@@ -138,8 +161,8 @@ _cueMap: {// From TF type to CUE.
 	}
 }
 
-_netstingModeMap: {
+_nestingModeMap: {
 	single: "object"
-	list: "list"
-	set: "set"
+	list:   "list"
+	set:    "set"
 }
