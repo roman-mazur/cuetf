@@ -12,8 +12,8 @@ tf.#TestSuite
 
 #tests: [
 	testAcmCert,
-	testEc2Host,
 	testAlbListener,
+	testInstance,
 ]
 
 #awsResourceSample: {

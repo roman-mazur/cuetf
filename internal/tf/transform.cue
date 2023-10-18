@@ -73,6 +73,7 @@ import (
 			}
 		}
 	}
+
 	code: template.Execute("""
 		{{- define "field"}}{{.name}}{{if .optional}}?{{end}}{{if .required}}!{{end}}: {{.type}}{{end}}
 		{{- define "list"}}{{.name}}: [...{{.element}}]{{end}}

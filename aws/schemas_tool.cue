@@ -8,7 +8,7 @@ import (
 
 command: "make-schemas": {
 	for group, data in internal.output {
-		if group != "provider" {
+		if group != "root" {
 			"\(group)-mkdir": file.Mkdir & {
 				path: group
 			}
@@ -16,7 +16,7 @@ command: "make-schemas": {
 
 		for name, code in data {
 			"\(group)-\(name)": file.Create & {
-				if group != "provider" {
+				if group != "root" {
 					filename: "\(group)/\(name).cue"
 					contents: """
 					package \(group)
@@ -24,7 +24,7 @@ command: "make-schemas": {
 					"""
 				}
 
-				if group == "provider" {
+				if group == "root" {
 					filename: "\(name).cue"
 					contents: """
 					package aws
