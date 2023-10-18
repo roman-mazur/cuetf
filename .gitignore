@@ -1,2 +1,5 @@
 .terraform
 .terraform*
+
+# Imported terraform schema.
+*/internal/schema/

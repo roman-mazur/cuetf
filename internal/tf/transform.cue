@@ -1,9 +1,18 @@
-package cuetf
+package tf
 
 import (
 	"strings"
 	"text/template"
 )
+
+#TransformToCue: {
+	input: [string]: #type
+	results: {
+		for name, tt in input {
+			(name): (#tBlockAttr & {input: tt.block, prefix: name}).code
+		}
+	}
+}
 
 #tBlockAttr: {
 	prefix: string // Prefix for non-primitive definitions.

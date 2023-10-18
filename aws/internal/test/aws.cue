@@ -1,21 +1,22 @@
 package test
 
 import (
-	"rmazur.io/cuetf"
-	"rmazur.io/cuetf/aws/internal/schemaaws"
+	"rmazur.io/cuetf/internal/tf"
+	"rmazur.io/cuetf/aws/internal/schema"
 )
 
-_aws: schemaaws.provider_schemas["registry.terraform.io/hashicorp/aws"]
+_aws: schema.provider_schemas["registry.terraform.io/hashicorp/aws"]
 
-cuetf.#TestSuite
+tf.#TestSuite
 #providerSchema: _aws
 
 #tests: [
 	testAcmCert,
 	testEc2Host,
+	testAlbListener,
 ]
 
 #awsResourceSample: {
 	#name: string
-	cuetf.#tBlockAttr & {input: _aws.resource_schemas["aws_\(#name)"].block, prefix: #name}
+	tf.#tBlockAttr & {input: _aws.resource_schemas["aws_\(#name)"].block, prefix: #name}
 }

@@ -1,6 +1,6 @@
-package cuetf
+package tf
 
-#TerraformSchema: {
+#ProviderSchema: {
 	provider: #type
 	resource_schemas: [string]:    #type
 	data_source_schemas: [string]: #type

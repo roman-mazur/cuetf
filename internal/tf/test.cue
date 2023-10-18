@@ -1,4 +1,4 @@
-package cuetf
+package tf
 
 import (
 	"strings"
@@ -27,7 +27,7 @@ import (
 
 // TestSuite defines the structure of a test.cue file.
 #TestSuite: {
-	#provider: #TerraformSchema
+	#provider: #ProviderSchema
 	#tests: [...#Test]
 	output: strings.Join([ for t in #tests {t.code}], "\n")
 

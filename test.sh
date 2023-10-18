@@ -7,4 +7,9 @@ function testProvider() {
     cd "$name/internal/test" && cue export -e output --out=text
 }
 
-testProvider aws
+inputProvider=$1
+if [ -z "$inputProvider" ]; then
+  testProvider aws
+else
+  testProvider "$inputProvider"
+fi
