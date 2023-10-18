@@ -1,6 +1,9 @@
 package cuetf
 
-import "text/template"
+import (
+	"strings"
+	"text/template"
+)
 
 #tBlockAttr: {
 	prefix: string // Prefix for non-primitive definitions.
@@ -36,23 +39,36 @@ import "text/template"
 		}
 
 		for name, def in input.block_types {
-			let n = "\(prefix)_\(name)"
-			complex: "\(name)": {type: n, optional: true}
-			let h = #tBlockAttr & {prefix: n, input: def.block}
-			complexDefs: "\(n)": {
-				cueType: "struct"
-				fields: {
-					h.output.primitives
-				}
-				//h.output.complex
+			let tn = "\(prefix)_\(name)"
+			complex: "\(name)": {type: "#\(tn)", optional: true}
+
+			complexDefs: (tn): {
+				cueType: "variant"
+				variants: [...string] | *["#\(tn)_block"]
 			}
-			//			complexDefs: h.output.complexDefs
+
+			let h = #tBlockAttr & {prefix: tn, input: def.block}
+			complexDefs: "\(tn)_block": {
+				cueType: "struct"
+				fields: h.output.primitives
+				//h.output.complex // TODO
+			}
+			//			complexDefs: h.output.complexDefs // TODO
+
+			if def.nesting_mode != "single" {
+				complexDefs: "\(tn)_\(def.nesting_mode)": {
+					cueType: "list"
+					element: "#\(tn)_block"
+				}
+				complexDefs: (tn): variants: ["#\(tn)_block", "#\(tn)_\(def.nesting_mode)"]
+			}
 		}
 	}
 	code: template.Execute("""
 		{{- define "field"}}{{.name}}{{if .optional}}?{{end}}{{if .required}}!{{end}}: {{.type}}{{end}}
-		{{- define "list"}}{{.name}}{{if .optional}}?{{end}}{{if .required}}!{{end}}: [...{{.element}}]{{end}}
-		{{- define "map"}}{{.name}}{{if .optional}}?{{end}}{{if .required}}!{{end}}: [string]: {{.element}}{{end}}
+		{{- define "list"}}{{.name}}: [...{{.element}}]{{end}}
+		{{- define "map"}}{{.name}}: [string]: {{.element}}{{end}}
+		{{- define "variant"}}{{.name}}: {{.cueSyntax}}{{end}}
 		{{- define "struct"}}
 		{{.name}}: {
 			{{- range .fields}}
@@ -74,6 +90,7 @@ import "text/template"
 		{{- if eq .cueType "list"}}{{template "list" .}}{{end}}
 		{{- if eq .cueType "map"}}{{template "map" .}}{{end}}
 		{{- if eq .cueType "struct"}}{{template "struct" .}}{{end}}
+		{{- if eq .cueType "variant"}}{{template "variant" .}}{{end}}
 		{{end}}
 		""", {name: prefix, data: output})
 }
@@ -81,7 +98,11 @@ import "text/template"
 // #tComplexDef provides transformations for the complex types like list or object.
 #tComplexDef: [#attr.#complexType]: output: [fName=string]: #complexDefSchema & {name: "#\(fName)"}
 
-#complexDefSchema: {name: string} & ({cueType: "list" | "map", element: string} | {cueType: "struct", fields: #fieldsDef})
+#complexDefSchema: {name: string} & (_complexCollection | _complexStruct | _complexVariant)
+
+_complexCollection: {cueType: "list" | "map", element: string}
+_complexStruct: {cueType: "struct", fields: #fieldsDef}
+_complexVariant: {cueType: "variant", variants: [...string], cueSyntax: strings.Join(variants, " | ")}
 
 #fieldsDef: [fName=string]: #fieldInfo & {name: fName}
 
@@ -101,7 +122,7 @@ for t, v in #_stdComplex {
 // #_stdComplex provides a std transformation for lists, sets, and maps, referring to the element type.
 #_stdComplex: [type=#attr.#complexType]: {
 	name:  string
-	input: _
+	input: #attr.#primitive | #attr.#complexDef
 	output: {
 		if (input & #attr.#primitive) != _|_ {
 			(name): {
@@ -159,10 +180,4 @@ _cueMap: {// From TF type to CUE.
 		}
 		_h.extraDefs
 	}
-}
-
-_nestingModeMap: {
-	single: "object"
-	list:   "list"
-	set:    "set"
 }

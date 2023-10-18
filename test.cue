@@ -7,12 +7,15 @@ import (
 
 // Test defines the structure of a provider schema transformation test.
 #Test: {
+	name: string
+
 	_#testSample: {input: _, output: _, code: string}
 	sample: _#testSample
 
 	validation: _
 
 	code: """
+	TEST: \(name)
 	=== INPUT ===
 	\(yaml.Marshal(sample.input))
 	=== CODE ===
