@@ -5,7 +5,8 @@ import (
 	"rmazur.io/cuetf/internal/tf"
 )
 
-#schemaTransform: {
+// #SchemaTransform can be used to tranform the Terraform provider schema document into a an equivalent JSON Schema.
+#SchemaTransform: {
 	#block: tf.#block
 	#name:  string
 
@@ -15,6 +16,7 @@ import (
 	#blockTransform & {#path: []}
 }
 
+// Transform Terraform block representation into an object schema.
 #blockTransform: {
 	#path: [...string]
 	#block: tf.#block
@@ -23,7 +25,7 @@ import (
 
 	#ref: {
 		#name: string
-		"#/\(path.Join([for el in #path + [#name] {"$defs/\(el)"}]))"
+		"#/\(path.Join([ for el in #path + [#name] {"$defs/\(el)"}]))"
 	}
 
 	properties: {
@@ -33,14 +35,27 @@ import (
 
 		for name, info in #block.block_types {
 			(name): {
-					if info.nesting_mode == "single" {
-						"$ref": {#ref, #name: name}
-					}
+				#defRef: "$ref": {#ref, #name: name}
 
-					if info.nesting_mode == "list" || info.nesting_mode == "set" {
-							type: "array"
-							items: "$ref": {#ref, #name: name}
-					}
+				if info.nesting_mode == "single" {
+					#defRef
+				}
+
+				if info.nesting_mode == "list" || info.nesting_mode == "set" {
+					"oneOf": [
+						#defRef,
+						{
+							type:  "array"
+							items: #defRef
+							if info.min_items != _|_ {
+								minItems: info.min_items
+							}
+							if info.max_items != _|_ {
+								maxItems: info.max_items
+							}
+						},
+					]
+				}
 			}
 		}
 	}
@@ -62,6 +77,7 @@ import (
 	additionalProperties: false
 }
 
+// Helper to transform into an object property.
 #fieldTransform: {
 	#name: string
 	#type: tf.#attr.#type
@@ -76,6 +92,7 @@ import (
 	}
 }
 
+// Helper to transform Terraform objects, lists, maps.
 #complexTransform: {
 	#def: tf.#attr.#complexDef
 
@@ -100,6 +117,7 @@ import (
 	}
 }
 
+// Map primitives from Terraform to JSON Schema values.
 _primitivesMap: {
 	number: "number"
 	string: "string"
