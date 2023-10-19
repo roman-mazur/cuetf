@@ -1,0 +1,160 @@
+{
+    "$defs": {
+        "options": {
+            "type": "object",
+            "properties": {
+                "certificate_transparency_logging_preference": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "validation_option": {
+            "type": "object",
+            "properties": {
+                "domain_name": {
+                    "type": "string"
+                },
+                "validation_domain": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "domain_name",
+                "validation_domain"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+        "arn": {
+            "type": "string"
+        },
+        "certificate_authority_arn": {
+            "type": "string"
+        },
+        "certificate_body": {
+            "type": "string"
+        },
+        "certificate_chain": {
+            "type": "string"
+        },
+        "domain_name": {
+            "type": "string"
+        },
+        "domain_validation_options": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "domain_name": {
+                        "type": "string"
+                    },
+                    "resource_record_name": {
+                        "type": "string"
+                    },
+                    "resource_record_type": {
+                        "type": "string"
+                    },
+                    "resource_record_value": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "early_renewal_duration": {
+            "type": "string"
+        },
+        "id": {
+            "type": "string"
+        },
+        "key_algorithm": {
+            "type": "string"
+        },
+        "not_after": {
+            "type": "string"
+        },
+        "not_before": {
+            "type": "string"
+        },
+        "pending_renewal": {
+            "type": "boolean"
+        },
+        "private_key": {
+            "type": "string"
+        },
+        "renewal_eligibility": {
+            "type": "string"
+        },
+        "renewal_summary": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "renewal_status": {
+                        "type": "string"
+                    },
+                    "renewal_status_reason": {
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "status": {
+            "type": "string"
+        },
+        "subject_alternative_names": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "tags": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            }
+        },
+        "tags_all": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            }
+        },
+        "type": {
+            "type": "string"
+        },
+        "validation_emails": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "validation_method": {
+            "type": "string"
+        },
+        "options": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/options"
+            }
+        },
+        "validation_option": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/validation_option"
+            }
+        }
+    },
+    "required": [],
+    "$id": "https://rmazur.io/cuetf/schema/aws_acm_certificate",
+    "additionalProperties": false
+}
