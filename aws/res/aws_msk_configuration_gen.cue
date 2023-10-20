@@ -1,0 +1,13 @@
+package res
+
+#aws_msk_configuration: {
+	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
+	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_msk_configuration")
+	arn?:         string
+	description?: string
+	id?:          string
+	kafka_versions?: [...string]
+	latest_revision?:  number
+	name:              string
+	server_properties: string
+}

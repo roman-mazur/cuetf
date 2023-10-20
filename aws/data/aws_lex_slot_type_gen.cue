@@ -1,0 +1,18 @@
+package data
+
+#aws_lex_slot_type: {
+	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
+	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_lex_slot_type")
+	checksum?:     string
+	created_date?: string
+	description?:  string
+	enumeration_value?: [...{
+		synonyms?: [...string]
+		value?: string
+	}]
+	id?:                       string
+	last_updated_date?:        string
+	name:                      string
+	value_selection_strategy?: string
+	version?:                  string
+}
