@@ -30,7 +30,7 @@ import (
 
 	properties: {
 		for name, info in #block.attributes if !info.deprecated {
-			(#fieldTransform & {#name: name, #type: info.type}).out
+			(name): #fieldTransform & {#type: info.type}
 		}
 
 		for name, info in #block.block_types {
@@ -79,41 +79,41 @@ import (
 
 // Helper to transform into an object property.
 #fieldTransform: {
-	#name: string
-	#type: tf.#attr.#type
-
-	out: (#name): {
-		if (#type & tf.#attr.#primitive) != _|_ {
-			type: _primitivesMap[#type]
-		}
-		if (#type & tf.#attr.#complexDef) != _|_ {
-			#complexTransform & {#def: #type}
-		}
-	}
+	#type: tf.#attr.#primitive
+	type:  _primitivesMap[#type]
+} | {
+	#type: tf.#attr.#complexDef
+	_complexMap[#type[0]] & {#defs: #type[1]}
 }
 
-// Helper to transform Terraform objects, lists, maps.
-#complexTransform: {
-	#def: tf.#attr.#complexDef
-
-	if #def[0] == "object" {
-		type:                 "object"
-		additionalProperties: false
-		properties: {
-			for name, fType in #def[1] {
-				(#fieldTransform & {#name: name, #type: fType}).out
+_complexMap: {
+	object: {
+			#defs: _
+			type:                 "object"
+			additionalProperties: false
+			properties: {
+				for name, fType in #defs {
+					(name): #fieldTransform & {#type: fType}
+				}
 			}
-		}
 	}
 
-	if #def[0] == "list" || #def[0] == "set" {
-		type: "array"
-		(#fieldTransform & {#name: "items", #type: #def[1]}).out
+	map: {
+			#defs: _
+			type:                 "object"
+			additionalProperties: #fieldTransform & {#type: #defs}
 	}
 
-	if #def[0] == "map" {
-		type: "object"
-		(#fieldTransform & {#name: "additionalProperties", #type: #def[1]}).out
+	set: {
+			#defs: _
+			type:  "array"
+			items: #fieldTransform & {#type: #defs}
+	}
+
+	list: {
+			#defs: _
+			type:  "array"
+			items: #fieldTransform & {#type: #defs}
 	}
 }
 

@@ -12,6 +12,7 @@ mkdir -p samples 2>/dev/null
 
 sample aws_instance
 sample aws_acm_certificate
+sample aws_security_group
 
 cue export -e examplesCode --out=text > samples/examples.cue
 (cd samples && cue export)
