@@ -2,6 +2,8 @@
 
 set -e
 
+mkdir -p out 2>/dev/null
+
 function terraUpdate() {
   mkdir -p schema 2>/dev/null
 
@@ -14,11 +16,12 @@ function process() {
   provider=$1
   (cd "$provider/internal" && terraUpdate "$provider")
 
-  go run ./cmd/gen "$provider/internal/schema/schema.json" . 2> "$provider-log.txt" &
+  go run ./cmd/gen "$provider/internal/schema/schema.json" . 2> out/"$provider-log.txt" &
   defs_pid=$!
 
   (cd "$provider" && ([ -f import.sh ] && ./import.sh || exit 0))
   wait $defs_pid
+  echo "DONE: $provider"
 }
 
 input_provider=$1

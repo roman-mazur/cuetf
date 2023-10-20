@@ -5,4 +5,4 @@
 */internal/schema/*.json
 
 # Defs generation logs.
-*-log.txt
+out/
