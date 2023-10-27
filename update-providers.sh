@@ -29,6 +29,7 @@ input_provider=$1
 if [ -z "$input_provider" ]; then
   process aws
   process helm
+  process cloudflare
 else
   process "$input_provider"
 fi
