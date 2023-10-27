@@ -22,5 +22,3 @@ package aws
 
 _res: [#awsTypes]: _
 _ds: [#awsTypes]:  _
-
-_res: aws_instance: _
