@@ -88,32 +88,32 @@ import (
 
 _complexMap: {
 	object: {
-			#defs: _
-			type:                 "object"
-			additionalProperties: false
-			properties: {
-				for name, fType in #defs {
-					(name): #fieldTransform & {#type: fType}
-				}
+		#defs:                _
+		type:                 "object"
+		additionalProperties: false
+		properties: {
+			for name, fType in #defs {
+				(name): #fieldTransform & {#type: fType}
 			}
+		}
 	}
 
 	map: {
-			#defs: _
-			type:                 "object"
-			additionalProperties: #fieldTransform & {#type: #defs}
+		#defs:                _
+		type:                 "object"
+		additionalProperties: #fieldTransform & {#type: #defs}
 	}
 
 	set: {
-			#defs: _
-			type:  "array"
-			items: #fieldTransform & {#type: #defs}
+		#defs: _
+		type:  "array"
+		items: #fieldTransform & {#type: #defs}
 	}
 
 	list: {
-			#defs: _
-			type:  "array"
-			items: #fieldTransform & {#type: #defs}
+		#defs: _
+		type:  "array"
+		items: #fieldTransform & {#type: #defs}
 	}
 }
 
