@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_s3_bucket_object")
 	acl?:                 string
+	arn?:                 string
 	bucket_key_enabled?:  bool
 	cache_control?:       string
 	content?:             string
@@ -28,6 +29,6 @@ package res
 	tags_all?: [string]: string
 	version_id?:       string
 	website_redirect?: string
-	bucket:            _
-	key:               _
+	bucket!:           _
+	key!:              _
 }

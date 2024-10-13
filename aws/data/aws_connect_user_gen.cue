@@ -12,8 +12,8 @@ package data
 		first_name?: string
 		last_name?:  string
 	}]
-	instance_id: string
-	name?:       string
+	instance_id!: string
+	name?:        string
 	phone_config?: [...{
 		after_contact_work_time_limit?: number
 		auto_accept?:                   bool

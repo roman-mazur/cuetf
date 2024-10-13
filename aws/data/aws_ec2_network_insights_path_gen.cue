@@ -18,7 +18,7 @@ package data
 	filter?: #filter | [...#filter]
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 }

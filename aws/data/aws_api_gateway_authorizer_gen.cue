@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_api_gateway_authorizer")
 	arn?:                              string
 	authorizer_credentials?:           string
-	authorizer_id:                     string
+	authorizer_id!:                    string
 	authorizer_result_ttl_in_seconds?: number
 	authorizer_uri?:                   string
 	id?:                               string
@@ -13,6 +13,6 @@ package data
 	identity_validation_expression?:   string
 	name?:                             string
 	provider_arns?: [...string]
-	rest_api_id: string
-	type?:       string
+	rest_api_id!: string
+	type?:        string
 }

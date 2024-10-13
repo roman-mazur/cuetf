@@ -17,10 +17,10 @@ package data
 	security_group_rule_id?:       string
 	tags?: [string]: string
 	to_port?: number
-	filter?:  #filter | [...#filter]
+	filter?: #filter | [...#filter]
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 }

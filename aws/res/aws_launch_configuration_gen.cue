@@ -11,24 +11,24 @@ import "list"
 	enable_monitoring?:           bool
 	iam_instance_profile?:        string
 	id?:                          string
-	image_id:                     string
-	instance_type:                string
+	image_id!:                    string
+	instance_type!:               string
 	key_name?:                    string
 	name?:                        string
 	name_prefix?:                 string
 	placement_tenancy?:           string
 	security_groups?: [...string]
-	spot_price?:             string
-	user_data?:              string
-	user_data_base64?:       string
-	ebs_block_device?:       #ebs_block_device | [...#ebs_block_device]
+	spot_price?:       string
+	user_data?:        string
+	user_data_base64?: string
+	ebs_block_device?: #ebs_block_device | [...#ebs_block_device]
 	ephemeral_block_device?: #ephemeral_block_device | [...#ephemeral_block_device]
-	metadata_options?:       #metadata_options | list.MaxItems(1) & [...#metadata_options]
-	root_block_device?:      #root_block_device | list.MaxItems(1) & [...#root_block_device]
+	metadata_options?: #metadata_options | list.MaxItems(1) & [...#metadata_options]
+	root_block_device?: #root_block_device | list.MaxItems(1) & [...#root_block_device]
 
 	#ebs_block_device: {
 		delete_on_termination?: bool
-		device_name:            string
+		device_name!:           string
 		encrypted?:             bool
 		iops?:                  number
 		no_device?:             bool
@@ -39,7 +39,7 @@ import "list"
 	}
 
 	#ephemeral_block_device: {
-		device_name:   string
+		device_name!:  string
 		no_device?:    bool
 		virtual_name?: string
 	}

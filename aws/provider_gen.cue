@@ -10,8 +10,10 @@ package aws
 	ec2_metadata_service_endpoint_mode?: string
 	forbidden_account_ids?: [...string]
 	http_proxy?:                     string
+	https_proxy?:                    string
 	insecure?:                       bool
 	max_retries?:                    number
+	no_proxy?:                       string
 	profile?:                        string
 	region?:                         string
 	retry_mode?:                     string
@@ -20,19 +22,20 @@ package aws
 	secret_key?:                     string
 	shared_config_files?: [...string]
 	shared_credentials_files?: [...string]
-	skip_credentials_validation?:   bool
-	skip_metadata_api_check?:       string
-	skip_region_validation?:        bool
-	skip_requesting_account_id?:    bool
-	sts_region?:                    string
-	token?:                         string
-	use_dualstack_endpoint?:        bool
-	use_fips_endpoint?:             bool
-	assume_role?:                   #assume_role | [...#assume_role]
+	skip_credentials_validation?:        bool
+	skip_metadata_api_check?:            string
+	skip_region_validation?:             bool
+	skip_requesting_account_id?:         bool
+	sts_region?:                         string
+	token?:                              string
+	token_bucket_rate_limiter_capacity?: number
+	use_dualstack_endpoint?:             bool
+	use_fips_endpoint?:                  bool
+	assume_role?: #assume_role | [...#assume_role]
 	assume_role_with_web_identity?: #assume_role_with_web_identity | [...#assume_role_with_web_identity]
-	default_tags?:                  #default_tags | [...#default_tags]
-	endpoints?:                     #endpoints | [...#endpoints]
-	ignore_tags?:                   #ignore_tags | [...#ignore_tags]
+	default_tags?: #default_tags | [...#default_tags]
+	endpoints?: #endpoints | [...#endpoints]
+	ignore_tags?: #ignore_tags | [...#ignore_tags]
 
 	#assume_role: {
 		duration?:    string
@@ -70,12 +73,15 @@ package aws
 		apigatewayv2?:                         string
 		appautoscaling?:                       string
 		appconfig?:                            string
+		appfabric?:                            string
 		appflow?:                              string
 		appintegrations?:                      string
 		appintegrationsservice?:               string
 		applicationautoscaling?:               string
 		applicationinsights?:                  string
+		applicationsignals?:                   string
 		appmesh?:                              string
+		appregistry?:                          string
 		apprunner?:                            string
 		appstream?:                            string
 		appsync?:                              string
@@ -85,10 +91,13 @@ package aws
 		autoscalingplans?:                     string
 		backup?:                               string
 		batch?:                                string
+		bcmdataexports?:                       string
 		beanstalk?:                            string
 		bedrock?:                              string
+		bedrockagent?:                         string
 		budgets?:                              string
 		ce?:                                   string
+		chatbot?:                              string
 		chime?:                                string
 		chimesdkmediapipelines?:               string
 		chimesdkvoice?:                        string
@@ -98,6 +107,7 @@ package aws
 		cloudcontrolapi?:                      string
 		cloudformation?:                       string
 		cloudfront?:                           string
+		cloudfrontkeyvaluestore?:              string
 		cloudhsm?:                             string
 		cloudhsmv2?:                           string
 		cloudsearch?:                          string
@@ -113,7 +123,9 @@ package aws
 		codebuild?:                            string
 		codecatalyst?:                         string
 		codecommit?:                           string
+		codeconnections?:                      string
 		codedeploy?:                           string
+		codeguruprofiler?:                     string
 		codegurureviewer?:                     string
 		codepipeline?:                         string
 		codestarconnections?:                  string
@@ -126,25 +138,32 @@ package aws
 		config?:                               string
 		configservice?:                        string
 		connect?:                              string
+		connectcases?:                         string
 		controltower?:                         string
 		costandusagereportservice?:            string
 		costexplorer?:                         string
+		costoptimizationhub?:                  string
 		cur?:                                  string
+		customerprofiles?:                     string
 		databasemigration?:                    string
 		databasemigrationservice?:             string
+		databrew?:                             string
 		dataexchange?:                         string
 		datapipeline?:                         string
 		datasync?:                             string
+		datazone?:                             string
 		dax?:                                  string
 		deploy?:                               string
 		detective?:                            string
 		devicefarm?:                           string
+		devopsguru?:                           string
 		directconnect?:                        string
 		directoryservice?:                     string
 		dlm?:                                  string
 		dms?:                                  string
 		docdb?:                                string
 		docdbelastic?:                         string
+		drs?:                                  string
 		ds?:                                   string
 		dynamodb?:                             string
 		ec2?:                                  string
@@ -178,8 +197,10 @@ package aws
 		glacier?:                              string
 		globalaccelerator?:                    string
 		glue?:                                 string
+		gluedatabrew?:                         string
 		grafana?:                              string
 		greengrass?:                           string
+		groundstation?:                        string
 		guardduty?:                            string
 		healthlake?:                           string
 		iam?:                                  string
@@ -205,6 +226,7 @@ package aws
 		kms?:                                  string
 		lakeformation?:                        string
 		lambda?:                               string
+		launchwizard?:                         string
 		lex?:                                  string
 		lexmodelbuilding?:                     string
 		lexmodelbuildingservice?:              string
@@ -216,32 +238,45 @@ package aws
 		location?:                             string
 		locationservice?:                      string
 		logs?:                                 string
+		lookoutmetrics?:                       string
+		m2?:                                   string
 		macie2?:                               string
 		managedgrafana?:                       string
 		mediaconnect?:                         string
 		mediaconvert?:                         string
 		medialive?:                            string
 		mediapackage?:                         string
+		mediapackagev2?:                       string
 		mediastore?:                           string
 		memorydb?:                             string
 		mq?:                                   string
 		msk?:                                  string
 		mwaa?:                                 string
 		neptune?:                              string
+		neptunegraph?:                         string
 		networkfirewall?:                      string
 		networkmanager?:                       string
+		networkmonitor?:                       string
 		oam?:                                  string
 		opensearch?:                           string
+		opensearchingestion?:                  string
 		opensearchserverless?:                 string
 		opensearchservice?:                    string
 		opsworks?:                             string
 		organizations?:                        string
+		osis?:                                 string
 		outposts?:                             string
+		paymentcryptography?:                  string
+		pcaconnectorad?:                       string
+		pcs?:                                  string
 		pinpoint?:                             string
+		pinpointsmsvoicev2?:                   string
 		pipes?:                                string
+		polly?:                                string
 		pricing?:                              string
 		prometheus?:                           string
 		prometheusservice?:                    string
+		qbusiness?:                            string
 		qldb?:                                 string
 		quicksight?:                           string
 		ram?:                                  string
@@ -252,6 +287,8 @@ package aws
 		redshiftdata?:                         string
 		redshiftdataapiservice?:               string
 		redshiftserverless?:                   string
+		rekognition?:                          string
+		resiliencehub?:                        string
 		resourceexplorer2?:                    string
 		resourcegroups?:                       string
 		resourcegroupstagging?:                string
@@ -259,6 +296,7 @@ package aws
 		rolesanywhere?:                        string
 		route53?:                              string
 		route53domains?:                       string
+		route53profiles?:                      string
 		route53recoverycontrolconfig?:         string
 		route53recoveryreadiness?:             string
 		route53resolver?:                      string
@@ -278,6 +316,7 @@ package aws
 		serverlessapprepo?:                    string
 		serverlessrepo?:                       string
 		servicecatalog?:                       string
+		servicecatalogappregistry?:            string
 		servicediscovery?:                     string
 		servicequotas?:                        string
 		ses?:                                  string
@@ -291,12 +330,16 @@ package aws
 		ssm?:                                  string
 		ssmcontacts?:                          string
 		ssmincidents?:                         string
+		ssmquicksetup?:                        string
+		ssmsap?:                               string
+		sso?:                                  string
 		ssoadmin?:                             string
 		stepfunctions?:                        string
 		storagegateway?:                       string
 		sts?:                                  string
 		swf?:                                  string
 		synthetics?:                           string
+		timestreaminfluxdb?:                   string
 		timestreamwrite?:                      string
 		transcribe?:                           string
 		transcribeservice?:                    string
@@ -306,8 +349,10 @@ package aws
 		waf?:                                  string
 		wafregional?:                          string
 		wafv2?:                                string
+		wellarchitected?:                      string
 		worklink?:                             string
 		workspaces?:                           string
+		workspacesweb?:                        string
 		xray?:                                 string
 	}
 

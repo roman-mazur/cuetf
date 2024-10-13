@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dataexchange_revision")
 	arn?:         string
 	comment?:     string
-	data_set_id:  string
+	data_set_id!: string
 	id?:          string
 	revision_id?: string
 	tags?: [string]: string

@@ -5,12 +5,12 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dms_event_subscription")
 	arn?:     string
 	enabled?: bool
-	event_categories: [...string]
-	id?:           string
-	name:          string
-	sns_topic_arn: string
+	event_categories!: [...string]
+	id?:            string
+	name!:          string
+	sns_topic_arn!: string
 	source_ids?: [...string]
-	source_type?: string
+	source_type!: string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	timeouts?: #timeouts

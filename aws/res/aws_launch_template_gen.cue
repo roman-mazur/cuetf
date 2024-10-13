@@ -27,31 +27,31 @@ import "list"
 	update_default_version?: bool
 	user_data?:              string
 	vpc_security_group_ids?: [...string]
-	block_device_mappings?:              #block_device_mappings | [...#block_device_mappings]
+	block_device_mappings?: #block_device_mappings | [...#block_device_mappings]
 	capacity_reservation_specification?: #capacity_reservation_specification | list.MaxItems(1) & [...#capacity_reservation_specification]
-	cpu_options?:                        #cpu_options | list.MaxItems(1) & [...#cpu_options]
-	credit_specification?:               #credit_specification | list.MaxItems(1) & [...#credit_specification]
-	elastic_gpu_specifications?:         #elastic_gpu_specifications | [...#elastic_gpu_specifications]
-	elastic_inference_accelerator?:      #elastic_inference_accelerator | list.MaxItems(1) & [...#elastic_inference_accelerator]
-	enclave_options?:                    #enclave_options | list.MaxItems(1) & [...#enclave_options]
-	hibernation_options?:                #hibernation_options | list.MaxItems(1) & [...#hibernation_options]
-	iam_instance_profile?:               #iam_instance_profile | list.MaxItems(1) & [...#iam_instance_profile]
-	instance_market_options?:            #instance_market_options | list.MaxItems(1) & [...#instance_market_options]
-	instance_requirements?:              #instance_requirements | list.MaxItems(1) & [...#instance_requirements]
-	license_specification?:              #license_specification | [...#license_specification]
-	maintenance_options?:                #maintenance_options | list.MaxItems(1) & [...#maintenance_options]
-	metadata_options?:                   #metadata_options | list.MaxItems(1) & [...#metadata_options]
-	monitoring?:                         #monitoring | list.MaxItems(1) & [...#monitoring]
-	network_interfaces?:                 #network_interfaces | [...#network_interfaces]
-	placement?:                          #placement | list.MaxItems(1) & [...#placement]
-	private_dns_name_options?:           #private_dns_name_options | list.MaxItems(1) & [...#private_dns_name_options]
-	tag_specifications?:                 #tag_specifications | [...#tag_specifications]
+	cpu_options?: #cpu_options | list.MaxItems(1) & [...#cpu_options]
+	credit_specification?: #credit_specification | list.MaxItems(1) & [...#credit_specification]
+	elastic_gpu_specifications?: #elastic_gpu_specifications | [...#elastic_gpu_specifications]
+	elastic_inference_accelerator?: #elastic_inference_accelerator | list.MaxItems(1) & [...#elastic_inference_accelerator]
+	enclave_options?: #enclave_options | list.MaxItems(1) & [...#enclave_options]
+	hibernation_options?: #hibernation_options | list.MaxItems(1) & [...#hibernation_options]
+	iam_instance_profile?: #iam_instance_profile | list.MaxItems(1) & [...#iam_instance_profile]
+	instance_market_options?: #instance_market_options | list.MaxItems(1) & [...#instance_market_options]
+	instance_requirements?: #instance_requirements | list.MaxItems(1) & [...#instance_requirements]
+	license_specification?: #license_specification | [...#license_specification]
+	maintenance_options?: #maintenance_options | list.MaxItems(1) & [...#maintenance_options]
+	metadata_options?: #metadata_options | list.MaxItems(1) & [...#metadata_options]
+	monitoring?: #monitoring | list.MaxItems(1) & [...#monitoring]
+	network_interfaces?: #network_interfaces | [...#network_interfaces]
+	placement?: #placement | list.MaxItems(1) & [...#placement]
+	private_dns_name_options?: #private_dns_name_options | list.MaxItems(1) & [...#private_dns_name_options]
+	tag_specifications?: #tag_specifications | [...#tag_specifications]
 
 	#block_device_mappings: {
 		device_name?:  string
 		no_device?:    string
 		virtual_name?: string
-		ebs?:          #block_device_mappings.#ebs | list.MaxItems(1) & [...#block_device_mappings.#ebs]
+		ebs?: #block_device_mappings.#ebs | list.MaxItems(1) & [...#block_device_mappings.#ebs]
 
 		#ebs: {
 			delete_on_termination?: string
@@ -67,7 +67,7 @@ import "list"
 
 	#capacity_reservation_specification: {
 		capacity_reservation_preference?: string
-		capacity_reservation_target?:     #capacity_reservation_specification.#capacity_reservation_target | list.MaxItems(1) & [...#capacity_reservation_specification.#capacity_reservation_target]
+		capacity_reservation_target?: #capacity_reservation_specification.#capacity_reservation_target | list.MaxItems(1) & [...#capacity_reservation_specification.#capacity_reservation_target]
 
 		#capacity_reservation_target: {
 			capacity_reservation_id?:                 string
@@ -83,13 +83,13 @@ import "list"
 
 	#credit_specification: cpu_credits?: string
 
-	#elastic_gpu_specifications: type: string
+	#elastic_gpu_specifications: type!: string
 
-	#elastic_inference_accelerator: type: string
+	#elastic_inference_accelerator: type!: string
 
 	#enclave_options: enabled?: bool
 
-	#hibernation_options: configured: bool
+	#hibernation_options: configured!: bool
 
 	#iam_instance_profile: {
 		arn?:  string
@@ -97,7 +97,7 @@ import "list"
 	}
 
 	#instance_market_options: {
-		market_type?:  string
+		market_type?: string
 		spot_options?: #instance_market_options.#spot_options | list.MaxItems(1) & [...#instance_market_options.#spot_options]
 
 		#spot_options: {
@@ -121,18 +121,19 @@ import "list"
 		instance_generations?: [...string]
 		local_storage?: string
 		local_storage_types?: [...string]
-		on_demand_max_price_percentage_over_lowest_price?: number
-		require_hibernate_support?:                        bool
-		spot_max_price_percentage_over_lowest_price?:      number
-		accelerator_count?:                                #instance_requirements.#accelerator_count | list.MaxItems(1) & [...#instance_requirements.#accelerator_count]
-		accelerator_total_memory_mib?:                     #instance_requirements.#accelerator_total_memory_mib | list.MaxItems(1) & [...#instance_requirements.#accelerator_total_memory_mib]
-		baseline_ebs_bandwidth_mbps?:                      #instance_requirements.#baseline_ebs_bandwidth_mbps | list.MaxItems(1) & [...#instance_requirements.#baseline_ebs_bandwidth_mbps]
-		memory_gib_per_vcpu?:                              #instance_requirements.#memory_gib_per_vcpu | list.MaxItems(1) & [...#instance_requirements.#memory_gib_per_vcpu]
-		memory_mib?:                                       #instance_requirements.#memory_mib | list.MaxItems(1) & [_, ...] & [...#instance_requirements.#memory_mib]
-		network_bandwidth_gbps?:                           #instance_requirements.#network_bandwidth_gbps | list.MaxItems(1) & [...#instance_requirements.#network_bandwidth_gbps]
-		network_interface_count?:                          #instance_requirements.#network_interface_count | list.MaxItems(1) & [...#instance_requirements.#network_interface_count]
-		total_local_storage_gb?:                           #instance_requirements.#total_local_storage_gb | list.MaxItems(1) & [...#instance_requirements.#total_local_storage_gb]
-		vcpu_count?:                                       #instance_requirements.#vcpu_count | list.MaxItems(1) & [_, ...] & [...#instance_requirements.#vcpu_count]
+		max_spot_price_as_percentage_of_optimal_on_demand_price?: number
+		on_demand_max_price_percentage_over_lowest_price?:        number
+		require_hibernate_support?:                               bool
+		spot_max_price_percentage_over_lowest_price?:             number
+		accelerator_count?: #instance_requirements.#accelerator_count | list.MaxItems(1) & [...#instance_requirements.#accelerator_count]
+		accelerator_total_memory_mib?: #instance_requirements.#accelerator_total_memory_mib | list.MaxItems(1) & [...#instance_requirements.#accelerator_total_memory_mib]
+		baseline_ebs_bandwidth_mbps?: #instance_requirements.#baseline_ebs_bandwidth_mbps | list.MaxItems(1) & [...#instance_requirements.#baseline_ebs_bandwidth_mbps]
+		memory_gib_per_vcpu?: #instance_requirements.#memory_gib_per_vcpu | list.MaxItems(1) & [...#instance_requirements.#memory_gib_per_vcpu]
+		memory_mib?: #instance_requirements.#memory_mib | list.MaxItems(1) & [_, ...] & [...#instance_requirements.#memory_mib]
+		network_bandwidth_gbps?: #instance_requirements.#network_bandwidth_gbps | list.MaxItems(1) & [...#instance_requirements.#network_bandwidth_gbps]
+		network_interface_count?: #instance_requirements.#network_interface_count | list.MaxItems(1) & [...#instance_requirements.#network_interface_count]
+		total_local_storage_gb?: #instance_requirements.#total_local_storage_gb | list.MaxItems(1) & [...#instance_requirements.#total_local_storage_gb]
+		vcpu_count?: #instance_requirements.#vcpu_count | list.MaxItems(1) & [_, ...] & [...#instance_requirements.#vcpu_count]
 
 		#accelerator_count: {
 			max?: number
@@ -156,7 +157,7 @@ import "list"
 
 		#memory_mib: {
 			max?: number
-			min:  number
+			min!: number
 		}
 
 		#network_bandwidth_gbps: {
@@ -176,11 +177,11 @@ import "list"
 
 		#vcpu_count: {
 			max?: number
-			min:  number
+			min!: number
 		}
 	}
 
-	#license_specification: license_configuration_arn: string
+	#license_specification: license_configuration_arn!: string
 
 	#maintenance_options: auto_recovery?: string
 
@@ -211,6 +212,7 @@ import "list"
 		ipv6_prefixes?: [...string]
 		network_card_index?:   number
 		network_interface_id?: string
+		primary_ipv6?:         string
 		private_ip_address?:   string
 		security_groups?: [...string]
 		subnet_id?: string

@@ -7,7 +7,7 @@ package res
 	force_destroy?:   bool
 	id?:              string
 	kms_key_arn?:     string
-	name:             string
+	name!:            string
 	recovery_points?: number
 	tags?: [string]: string
 	tags_all?: [string]: string

@@ -7,12 +7,12 @@ package data
 	local_gateway_id?: string
 	local_gateway_virtual_interface_ids?: [...string]
 	tags?: [string]: string
-	filter?:   #filter | [...#filter]
+	filter?: #filter | [...#filter]
 	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

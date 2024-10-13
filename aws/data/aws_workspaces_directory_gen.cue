@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_workspaces_directory")
 	alias?:              string
 	customer_user_name?: string
-	directory_id:        string
+	directory_id!:       string
 	directory_name?:     string
 	directory_type?:     string
 	dns_ip_addresses?: [...string]

@@ -17,7 +17,7 @@ package data
 	engine_family?:       string
 	id?:                  string
 	idle_client_timeout?: number
-	name:                 string
+	name!:                string
 	require_tls?:         bool
 	role_arn?:            string
 	vpc_id?:              string

@@ -6,6 +6,7 @@ package data
 	arn?:         string
 	description?: string
 	id?:          string
-	name:         string
-	version?:     string
+	name!:        string
+	tags?: [string]: string
+	version?: string
 }

@@ -9,8 +9,8 @@ package res
 	database_installation_files_s3_prefix?:      string
 	db_parameter_group_family?:                  string
 	description?:                                string
-	engine:                                      string
-	engine_version:                              string
+	engine!:                                     string
+	engine_version!:                             string
 	filename?:                                   string
 	id?:                                         string
 	image_id?:                                   string

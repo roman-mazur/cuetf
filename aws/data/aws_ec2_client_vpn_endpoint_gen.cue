@@ -31,20 +31,21 @@ package data
 	dns_servers?: [...string]
 	id?: string
 	security_group_ids?: [...string]
-	self_service_portal?:    string
-	server_certificate_arn?: string
-	session_timeout_hours?:  number
-	split_tunnel?:           bool
+	self_service_portal?:     string
+	self_service_portal_url?: string
+	server_certificate_arn?:  string
+	session_timeout_hours?:   number
+	split_tunnel?:            bool
 	tags?: [string]: string
 	transport_protocol?: string
 	vpc_id?:             string
 	vpn_port?:           number
-	filter?:             #filter | [...#filter]
-	timeouts?:           #timeouts
+	filter?: #filter | [...#filter]
+	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

@@ -8,7 +8,7 @@ import "list"
 	arn?:            string
 	aws_account_id?: string
 	created_time?:   string
-	folder_id:       string
+	folder_id!:      string
 	folder_path?: [...string]
 	folder_type?:       string
 	id?:                string
@@ -18,11 +18,11 @@ import "list"
 	tags?: [string]: string
 	tags_all?: [string]: string
 	permissions?: #permissions | list.MaxItems(64) & [...#permissions]
-	timeouts?:    #timeouts
+	timeouts?: #timeouts
 
 	#permissions: {
-		actions: [...string]
-		principal: string
+		actions!: [...string]
+		principal!: string
 	}
 
 	#timeouts: {

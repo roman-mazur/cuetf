@@ -9,13 +9,13 @@ import "list"
 	availability_zones?: [...string]
 	cluster_address?:                  string
 	cluster_endpoint_encryption_type?: string
-	cluster_name:                      string
+	cluster_name!:                     string
 	configuration_endpoint?:           string
 	description?:                      string
-	iam_role_arn:                      string
+	iam_role_arn!:                     string
 	id?:                               string
 	maintenance_window?:               string
-	node_type:                         string
+	node_type!:                        string
 	nodes?: [...{
 		address?:           string
 		availability_zone?: string
@@ -25,13 +25,13 @@ import "list"
 	notification_topic_arn?: string
 	parameter_group_name?:   string
 	port?:                   number
-	replication_factor:      number
+	replication_factor!:     number
 	security_group_ids?: [...string]
 	subnet_group_name?: string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	server_side_encryption?: #server_side_encryption | list.MaxItems(1) & [...#server_side_encryption]
-	timeouts?:               #timeouts
+	timeouts?: #timeouts
 
 	#server_side_encryption: enabled?: bool
 

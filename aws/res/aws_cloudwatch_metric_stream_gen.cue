@@ -5,39 +5,39 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cloudwatch_metric_stream")
 	arn?:                             string
 	creation_date?:                   string
-	firehose_arn:                     string
+	firehose_arn!:                    string
 	id?:                              string
 	include_linked_accounts_metrics?: bool
 	last_update_date?:                string
 	name?:                            string
 	name_prefix?:                     string
-	output_format:                    string
-	role_arn:                         string
+	output_format!:                   string
+	role_arn!:                        string
 	state?:                           string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	exclude_filter?:           #exclude_filter | [...#exclude_filter]
-	include_filter?:           #include_filter | [...#include_filter]
+	exclude_filter?: #exclude_filter | [...#exclude_filter]
+	include_filter?: #include_filter | [...#include_filter]
 	statistics_configuration?: #statistics_configuration | [...#statistics_configuration]
-	timeouts?:                 #timeouts
+	timeouts?: #timeouts
 
 	#exclude_filter: {
 		metric_names?: [...string]
-		namespace: string
+		namespace!: string
 	}
 
 	#include_filter: {
 		metric_names?: [...string]
-		namespace: string
+		namespace!: string
 	}
 
 	#statistics_configuration: {
-		additional_statistics: [...string]
+		additional_statistics!: [...string]
 		include_metric?: #statistics_configuration.#include_metric | [_, ...] & [...#statistics_configuration.#include_metric]
 
 		#include_metric: {
-			metric_name: string
-			namespace:   string
+			metric_name!: string
+			namespace!:   string
 		}
 	}
 

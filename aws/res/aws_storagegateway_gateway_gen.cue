@@ -14,11 +14,11 @@ import "list"
 	endpoint_type?:                               string
 	gateway_id?:                                  string
 	gateway_ip_address?:                          string
-	gateway_name:                                 string
+	gateway_name!:                                string
 	gateway_network_interface?: [...{
 		ipv4_address?: string
 	}]
-	gateway_timezone:           string
+	gateway_timezone!:          string
 	gateway_type?:              string
 	gateway_vpc_endpoint?:      string
 	host_environment?:          string
@@ -29,26 +29,26 @@ import "list"
 	smb_security_strategy?:     string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	tape_drive_type?:               string
-	maintenance_start_time?:        #maintenance_start_time | list.MaxItems(1) & [...#maintenance_start_time]
+	tape_drive_type?: string
+	maintenance_start_time?: #maintenance_start_time | list.MaxItems(1) & [...#maintenance_start_time]
 	smb_active_directory_settings?: #smb_active_directory_settings | list.MaxItems(1) & [...#smb_active_directory_settings]
-	timeouts?:                      #timeouts
+	timeouts?: #timeouts
 
 	#maintenance_start_time: {
 		day_of_month?:   string
 		day_of_week?:    string
-		hour_of_day:     number
+		hour_of_day!:    number
 		minute_of_hour?: number
 	}
 
 	#smb_active_directory_settings: {
 		active_directory_status?: string
 		domain_controllers?: [...string]
-		domain_name:          string
+		domain_name!:         string
 		organizational_unit?: string
-		password:             string
+		password!:            string
 		timeout_in_seconds?:  number
-		username:             string
+		username!:            string
 	}
 
 	#timeouts: create?: string

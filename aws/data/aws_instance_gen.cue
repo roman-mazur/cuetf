@@ -45,7 +45,8 @@ package data
 	instance_tags?: [string]: string
 	instance_type?: string
 	ipv6_addresses?: [...string]
-	key_name?: string
+	key_name?:    string
+	launch_time?: string
 	maintenance_options?: [...{
 		auto_recovery?: string
 	}]
@@ -92,12 +93,12 @@ package data
 	user_data?:        string
 	user_data_base64?: string
 	vpc_security_group_ids?: [...string]
-	filter?:   #filter | [...#filter]
+	filter?: #filter | [...#filter]
 	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

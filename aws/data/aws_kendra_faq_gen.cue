@@ -7,10 +7,10 @@ package data
 	created_at?:    string
 	description?:   string
 	error_message?: string
-	faq_id:         string
+	faq_id!:        string
 	file_format?:   string
 	id?:            string
-	index_id:       string
+	index_id!:      string
 	language_code?: string
 	name?:          string
 	role_arn?:      string

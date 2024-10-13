@@ -5,6 +5,6 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_lakeformation_lf_tag")
 	catalog_id?: string
 	id?:         string
-	key:         string
-	values: [...string]
+	key!:        string
+	values!: [...string]
 }

@@ -6,7 +6,7 @@ package data
 	arn?:         string
 	description?: string
 	id?:          string
-	name:         string
+	name!:        string
 	subnet_ids?: [...string]
 	tags?: [string]: string
 }

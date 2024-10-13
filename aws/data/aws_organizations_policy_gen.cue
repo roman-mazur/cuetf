@@ -9,6 +9,6 @@ package data
 	description?: string
 	id?:          string
 	name?:        string
-	policy_id:    string
+	policy_id!:   string
 	type?:        string
 }

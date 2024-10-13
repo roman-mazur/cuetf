@@ -12,7 +12,7 @@ package data
 		first_address?:           string
 		last_address?:            string
 	}]
-	pool_id: string
+	pool_id!: string
 	tags?: [string]: string
 	total_address_count?:           number
 	total_available_address_count?: number

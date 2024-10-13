@@ -9,7 +9,7 @@ package data
 	description?:             string
 	id?:                      string
 	last_updated_date?:       string
-	name:                     string
+	name!:                    string
 	parent_intent_signature?: string
 	version?:                 string
 }

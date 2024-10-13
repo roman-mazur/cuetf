@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_api_gateway_vpc_link")
 	description?:    string
 	id?:             string
-	name:            string
+	name!:           string
 	status?:         string
 	status_message?: string
 	tags?: [string]: string

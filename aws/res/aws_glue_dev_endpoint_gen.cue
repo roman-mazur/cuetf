@@ -11,14 +11,14 @@ package res
 	failure_reason?:            string
 	glue_version?:              string
 	id?:                        string
-	name:                       string
+	name!:                      string
 	number_of_nodes?:           number
 	number_of_workers?:         number
 	private_address?:           string
 	public_address?:            string
 	public_key?:                string
 	public_keys?: [...string]
-	role_arn:                string
+	role_arn!:               string
 	security_configuration?: string
 	security_group_ids?: [...string]
 	status?:    string

@@ -11,5 +11,5 @@ package res
 	image_file?:         string
 	image_url?:          string
 	last_modified_date?: string
-	user_pool_id:        string
+	user_pool_id!:       string
 }

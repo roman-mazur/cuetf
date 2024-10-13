@@ -6,7 +6,7 @@ package data
 	config_version?:     string
 	created_date?:       string
 	description?:        string
-	id:                  string
+	id!:                 string
 	last_modified_date?: string
 	type?:               string
 	saml_options?:       #saml_options

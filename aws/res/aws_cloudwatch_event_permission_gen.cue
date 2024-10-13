@@ -8,13 +8,13 @@ import "list"
 	action?:         string
 	event_bus_name?: string
 	id?:             string
-	principal:       string
-	statement_id:    string
-	condition?:      #condition | list.MaxItems(1) & [...#condition]
+	principal!:      string
+	statement_id!:   string
+	condition?: #condition | list.MaxItems(1) & [...#condition]
 
 	#condition: {
-		key:   string
-		type:  string
-		value: string
+		key!:   string
+		type!:  string
+		value!: string
 	}
 }

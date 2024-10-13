@@ -12,7 +12,7 @@ package res
 	instance_count?:      number
 	lease_id?:            string
 	multi_az?:            bool
-	offering_id:          string
+	offering_id!:         string
 	offering_type?:       string
 	product_description?: string
 	recurring_charges?: [...{

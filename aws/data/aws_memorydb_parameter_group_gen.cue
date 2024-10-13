@@ -7,7 +7,7 @@ package data
 	description?: string
 	family?:      string
 	id?:          string
-	name:         string
+	name!:        string
 	parameter?: [...{
 		name?:  string
 		value?: string

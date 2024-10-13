@@ -5,9 +5,9 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_servicecatalog_tag_option")
 	active?:   bool
 	id?:       string
-	key:       string
+	key!:      string
 	owner?:    string
-	value:     string
+	value!:    string
 	timeouts?: #timeouts
 
 	#timeouts: {

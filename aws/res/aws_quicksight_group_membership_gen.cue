@@ -5,8 +5,8 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_quicksight_group_membership")
 	arn?:            string
 	aws_account_id?: string
-	group_name:      string
+	group_name!:     string
 	id?:             string
-	member_name:     string
+	member_name!:    string
 	namespace?:      string
 }

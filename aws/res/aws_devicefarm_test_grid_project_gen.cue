@@ -8,14 +8,14 @@ import "list"
 	arn?:         string
 	description?: string
 	id?:          string
-	name:         string
+	name!:        string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	vpc_config?: #vpc_config | list.MaxItems(1) & [...#vpc_config]
 
 	#vpc_config: {
-		security_group_ids: [...string]
-		subnet_ids: [...string]
-		vpc_id: string
+		security_group_ids!: [...string]
+		subnet_ids!: [...string]
+		vpc_id!: string
 	}
 }

@@ -10,16 +10,16 @@ import "list"
 	deployment_status?: string
 	description?:       string
 	id?:                string
-	name:               string
+	name!:              string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	report_delivery_channel?: #report_delivery_channel | list.MaxItems(1) & [_, ...] & [...#report_delivery_channel]
-	report_setting?:          #report_setting | list.MaxItems(1) & [_, ...] & [...#report_setting]
+	report_setting?: #report_setting | list.MaxItems(1) & [_, ...] & [...#report_setting]
 
 	#report_delivery_channel: {
 		formats?: [...string]
-		s3_bucket_name: string
-		s3_key_prefix?: string
+		s3_bucket_name!: string
+		s3_key_prefix?:  string
 	}
 
 	#report_setting: {
@@ -28,6 +28,6 @@ import "list"
 		number_of_frameworks?: number
 		organization_units?: [...string]
 		regions?: [...string]
-		report_template: string
+		report_template!: string
 	}
 }

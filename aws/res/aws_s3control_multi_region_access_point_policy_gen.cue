@@ -9,12 +9,12 @@ import "list"
 	established?: string
 	id?:          string
 	proposed?:    string
-	details?:     #details | list.MaxItems(1) & [_, ...] & [...#details]
-	timeouts?:    #timeouts
+	details?: #details | list.MaxItems(1) & [_, ...] & [...#details]
+	timeouts?: #timeouts
 
 	#details: {
-		name:   string
-		policy: string
+		name!:   string
+		policy!: string
 	}
 
 	#timeouts: {

@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_route53_resolver_firewall_rule_group")
 	arn?:          string
 	id?:           string
-	name:          string
+	name!:         string
 	owner_id?:     string
 	share_status?: string
 	tags?: [string]: string

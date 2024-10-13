@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_codecatalyst_dev_environment")
 	alias?:      string
 	creator_id?: string
-	env_id:      string
+	env_id!:     string
 	id?:         string
 	ides?: [...{
 		name?:    string
@@ -19,8 +19,8 @@ import "list"
 	persistent_storage?: [...{
 		size?: number
 	}]
-	project_name:   string
-	space_name:     string
+	project_name!:  string
+	space_name!:    string
 	status?:        string
 	status_reason?: string
 	tags?: [string]: string

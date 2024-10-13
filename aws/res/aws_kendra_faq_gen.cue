@@ -12,20 +12,20 @@ import "list"
 	faq_id?:        string
 	file_format?:   string
 	id?:            string
-	index_id:       string
+	index_id!:      string
 	language_code?: string
-	name:           string
-	role_arn:       string
+	name!:          string
+	role_arn!:      string
 	status?:        string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	updated_at?: string
-	s3_path?:    #s3_path | list.MaxItems(1) & [_, ...] & [...#s3_path]
-	timeouts?:   #timeouts
+	s3_path?: #s3_path | list.MaxItems(1) & [_, ...] & [...#s3_path]
+	timeouts?: #timeouts
 
 	#s3_path: {
-		bucket: string
-		key:    string
+		bucket!: string
+		key!:    string
 	}
 
 	#timeouts: {

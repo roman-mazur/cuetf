@@ -21,7 +21,7 @@ import "list"
 	transit_gateway_attachment_id?: string
 	transit_gateway_id?:            string
 	vpc_id?:                        string
-	destination_options?:           #destination_options | list.MaxItems(1) & [...#destination_options]
+	destination_options?: #destination_options | list.MaxItems(1) & [...#destination_options]
 
 	#destination_options: {
 		file_format?:                string

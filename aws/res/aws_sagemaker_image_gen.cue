@@ -7,8 +7,8 @@ package res
 	description?:  string
 	display_name?: string
 	id?:           string
-	image_name:    string
-	role_arn:      string
+	image_name!:   string
+	role_arn!:     string
 	tags?: [string]: string
 	tags_all?: [string]: string
 }

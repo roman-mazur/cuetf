@@ -9,18 +9,18 @@ import "list"
 	attachment_policy_rule_number?: number
 	attachment_type?:               string
 	core_network_arn?:              string
-	core_network_id:                string
+	core_network_id!:               string
 	edge_location?:                 string
 	id?:                            string
 	owner_account_id?:              string
 	resource_arn?:                  string
 	segment_name?:                  string
 	state?:                         string
-	subnet_arns: [...string]
+	subnet_arns!: [...string]
 	tags?: [string]: string
 	tags_all?: [string]: string
-	vpc_arn:   string
-	options?:  #options | list.MaxItems(1) & [...#options]
+	vpc_arn!: string
+	options?: #options | list.MaxItems(1) & [...#options]
 	timeouts?: #timeouts
 
 	#options: {

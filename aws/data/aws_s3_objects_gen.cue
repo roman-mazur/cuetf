@@ -3,7 +3,7 @@ package data
 #aws_s3_objects: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_s3_objects")
-	bucket: string
+	bucket!: string
 	common_prefixes?: [...string]
 	delimiter?:     string
 	encoding_type?: string

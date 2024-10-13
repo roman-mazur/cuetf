@@ -8,7 +8,7 @@ import "list"
 	arn?:         string
 	description?: string
 	id?:          string
-	name:         string
+	name!:        string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	appversion_lifecycle?: #appversion_lifecycle | list.MaxItems(1) & [...#appversion_lifecycle]
@@ -17,6 +17,6 @@ import "list"
 		delete_source_from_s3?: bool
 		max_age_in_days?:       number
 		max_count?:             number
-		service_role:           string
+		service_role!:          string
 	}
 }

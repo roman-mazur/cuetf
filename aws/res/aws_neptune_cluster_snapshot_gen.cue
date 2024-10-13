@@ -5,9 +5,9 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_neptune_cluster_snapshot")
 	allocated_storage?: number
 	availability_zones?: [...string]
-	db_cluster_identifier:           string
+	db_cluster_identifier!:          string
 	db_cluster_snapshot_arn?:        string
-	db_cluster_snapshot_identifier:  string
+	db_cluster_snapshot_identifier!: string
 	engine?:                         string
 	engine_version?:                 string
 	id?:                             string

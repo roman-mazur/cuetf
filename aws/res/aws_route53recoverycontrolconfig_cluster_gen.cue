@@ -9,6 +9,6 @@ package res
 		region?:   string
 	}]
 	id?:     string
-	name:    string
+	name!:   string
 	status?: string
 }

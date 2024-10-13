@@ -9,10 +9,10 @@ package res
 	description?:                  string
 	from_port?:                    number
 	id?:                           string
-	ip_protocol:                   string
+	ip_protocol!:                  string
 	prefix_list_id?:               string
 	referenced_security_group_id?: string
-	security_group_id:             string
+	security_group_id!:            string
 	security_group_rule_id?:       string
 	tags?: [string]: string
 	tags_all?: [string]: string

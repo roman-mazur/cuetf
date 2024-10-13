@@ -7,16 +7,17 @@ import "list"
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_datasync_task")
 	arn?:                      string
 	cloudwatch_log_group_arn?: string
-	destination_location_arn:  string
+	destination_location_arn!: string
 	id?:                       string
 	name?:                     string
-	source_location_arn:       string
+	source_location_arn!:      string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	excludes?: #excludes | list.MaxItems(1) & [...#excludes]
 	includes?: #includes | list.MaxItems(1) & [...#includes]
-	options?:  #options | list.MaxItems(1) & [...#options]
+	options?: #options | list.MaxItems(1) & [...#options]
 	schedule?: #schedule | list.MaxItems(1) & [...#schedule]
+	task_report_config?: #task_report_config | list.MaxItems(1) & [...#task_report_config]
 	timeouts?: #timeouts
 
 	#excludes: {
@@ -47,7 +48,28 @@ import "list"
 		verify_mode?:                    string
 	}
 
-	#schedule: schedule_expression: string
+	#schedule: schedule_expression!: string
+
+	#task_report_config: {
+		output_type?:          string
+		report_level?:         string
+		s3_object_versioning?: string
+		report_overrides?: #task_report_config.#report_overrides | list.MaxItems(1) & [...#task_report_config.#report_overrides]
+		s3_destination?: #task_report_config.#s3_destination | list.MaxItems(1) & [_, ...] & [...#task_report_config.#s3_destination]
+
+		#report_overrides: {
+			deleted_override?:     string
+			skipped_override?:     string
+			transferred_override?: string
+			verified_override?:    string
+		}
+
+		#s3_destination: {
+			bucket_access_role_arn!: string
+			s3_bucket_arn!:          string
+			subdirectory?:           string
+		}
+	}
 
 	#timeouts: create?: string
 }

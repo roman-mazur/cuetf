@@ -5,6 +5,7 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_lambda_function")
 	architectures?: [...string]
 	arn?:                     string
+	code_sha256?:             string
 	code_signing_config_arn?: string
 	dead_letter_config?: [...{
 		target_arn?: string
@@ -20,7 +21,7 @@ package data
 		arn?:              string
 		local_mount_path?: string
 	}]
-	function_name:  string
+	function_name!: string
 	handler?:       string
 	id?:            string
 	image_uri?:     string
@@ -28,6 +29,12 @@ package data
 	kms_key_arn?:   string
 	last_modified?: string
 	layers?: [...string]
+	logging_config?: [...{
+		application_log_level?: string
+		log_format?:            string
+		log_group?:             string
+		system_log_level?:      string
+	}]
 	memory_size?:                    number
 	qualified_arn?:                  string
 	qualified_invoke_arn?:           string
@@ -37,7 +44,6 @@ package data
 	runtime?:                        string
 	signing_job_arn?:                string
 	signing_profile_version_arn?:    string
-	source_code_hash?:               string
 	source_code_size?:               number
 	tags?: [string]: string
 	timeout?: number
@@ -46,6 +52,7 @@ package data
 	}]
 	version?: string
 	vpc_config?: [...{
+		ipv6_allowed_for_dual_stack?: bool
 		security_group_ids?: [...string]
 		subnet_ids?: [...string]
 		vpc_id?: string

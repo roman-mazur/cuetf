@@ -6,9 +6,9 @@ package res
 	arn?:                string
 	aws_region?:         string
 	id?:                 string
-	name:                string
+	name!:               string
 	outbound_host_name?: string
-	require_encryption:  bool
+	require_encryption!: bool
 	tags?: [string]: string
 	tags_all?: [string]: string
 }

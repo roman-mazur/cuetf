@@ -7,10 +7,10 @@ package data
 	creation_date?: string
 	description?:   string
 	id?:            string
-	name:           string
+	name!:          string
 	routing_configuration?: [...{
 		state_machine_version_arn?: string
 		weight?:                    number
 	}]
-	statemachine_arn: string
+	statemachine_arn!: string
 }

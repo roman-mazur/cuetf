@@ -12,5 +12,5 @@ package data
 	id?:                     string
 	minimum_engine_version?: string
 	tags?: [string]: string
-	user_name: string
+	user_name!: string
 }

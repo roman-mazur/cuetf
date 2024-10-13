@@ -3,7 +3,7 @@ package res
 #aws_pinpoint_apns_voip_channel: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_pinpoint_apns_voip_channel")
-	application_id:                 string
+	application_id!:                string
 	bundle_id?:                     string
 	certificate?:                   string
 	default_authentication_method?: string

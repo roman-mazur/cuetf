@@ -10,24 +10,24 @@ import "list"
 	home_directory_type?: string
 	id?:                  string
 	policy?:              string
-	role:                 string
-	server_id:            string
+	role!:                string
+	server_id!:           string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	user_name:                string
+	user_name!: string
 	home_directory_mappings?: #home_directory_mappings | [...#home_directory_mappings]
-	posix_profile?:           #posix_profile | list.MaxItems(1) & [...#posix_profile]
-	timeouts?:                #timeouts
+	posix_profile?: #posix_profile | list.MaxItems(1) & [...#posix_profile]
+	timeouts?: #timeouts
 
 	#home_directory_mappings: {
-		entry:  string
-		target: string
+		entry!:  string
+		target!: string
 	}
 
 	#posix_profile: {
-		gid: number
+		gid!: number
 		secondary_gids?: [...number]
-		uid: number
+		uid!: number
 	}
 
 	#timeouts: delete?: string

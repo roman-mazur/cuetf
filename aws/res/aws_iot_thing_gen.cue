@@ -7,7 +7,7 @@ package res
 	attributes?: [string]: string
 	default_client_id?: string
 	id?:                string
-	name:               string
+	name!:              string
 	thing_type_name?:   string
 	version?:           number
 }

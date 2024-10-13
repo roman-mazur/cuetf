@@ -5,11 +5,11 @@ import "list"
 #aws_api_gateway_method_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_api_gateway_method_settings")
-	id?:         string
-	method_path: string
-	rest_api_id: string
-	stage_name:  string
-	settings?:   #settings | list.MaxItems(1) & [_, ...] & [...#settings]
+	id?:          string
+	method_path!: string
+	rest_api_id!: string
+	stage_name!:  string
+	settings?: #settings | list.MaxItems(1) & [_, ...] & [...#settings]
 
 	#settings: {
 		cache_data_encrypted?:                       bool

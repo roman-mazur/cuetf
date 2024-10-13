@@ -7,7 +7,7 @@ package data
 	arn?:             string
 	created_time?:    string
 	description?:     string
-	id:               string
+	id!:              string
 	name?:            string
 	provider_name?:   string
 	tags?: [string]: string

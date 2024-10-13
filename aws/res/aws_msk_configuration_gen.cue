@@ -7,7 +7,7 @@ package res
 	description?: string
 	id?:          string
 	kafka_versions?: [...string]
-	latest_revision?:  number
-	name:              string
-	server_properties: string
+	latest_revision?:   number
+	name!:              string
+	server_properties!: string
 }

@@ -13,8 +13,8 @@ package data
 		subnet_ids?: [...string]
 		vpc_id?: string
 	}]
-	description?: string
-	directory_id: string
+	description?:  string
+	directory_id!: string
 	dns_ip_addresses?: [...string]
 	edition?:    string
 	enable_sso?: bool

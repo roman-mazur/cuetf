@@ -9,24 +9,24 @@ import "list"
 	date_created?: string
 	description?:  string
 	id?:           string
-	name:          string
+	name!:         string
 	owner?:        string
-	parent_image:  string
+	parent_image!: string
 	platform?:     string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	user_data_base64?:      string
-	version:                string
-	working_directory?:     string
-	block_device_mapping?:  #block_device_mapping | [...#block_device_mapping]
-	component?:             #component | [_, ...] & [...#component]
+	user_data_base64?:  string
+	version!:           string
+	working_directory?: string
+	block_device_mapping?: #block_device_mapping | [...#block_device_mapping]
+	component?: #component | [_, ...] & [...#component]
 	systems_manager_agent?: #systems_manager_agent | list.MaxItems(1) & [...#systems_manager_agent]
 
 	#block_device_mapping: {
 		device_name?:  string
 		no_device?:    bool
 		virtual_name?: string
-		ebs?:          #block_device_mapping.#ebs | list.MaxItems(1) & [...#block_device_mapping.#ebs]
+		ebs?: #block_device_mapping.#ebs | list.MaxItems(1) & [...#block_device_mapping.#ebs]
 
 		#ebs: {
 			delete_on_termination?: string
@@ -41,14 +41,14 @@ import "list"
 	}
 
 	#component: {
-		component_arn: string
-		parameter?:    #component.#parameter | [...#component.#parameter]
+		component_arn!: string
+		parameter?: #component.#parameter | [...#component.#parameter]
 
 		#parameter: {
-			name:  string
-			value: string
+			name!:  string
+			value!: string
 		}
 	}
 
-	#systems_manager_agent: uninstall_after_build: bool
+	#systems_manager_agent: uninstall_after_build!: bool
 }

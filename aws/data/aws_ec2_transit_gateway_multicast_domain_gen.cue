@@ -26,12 +26,12 @@ package data
 	transit_gateway_attachment_id?:       string
 	transit_gateway_id?:                  string
 	transit_gateway_multicast_domain_id?: string
-	filter?:                              #filter | [...#filter]
-	timeouts?:                            #timeouts
+	filter?: #filter | [...#filter]
+	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

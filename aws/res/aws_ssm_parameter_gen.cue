@@ -10,11 +10,11 @@ package res
 	id?:              string
 	insecure_value?:  string
 	key_id?:          string
-	name:             string
+	name!:            string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	tier?:    string
-	type:     string
+	type!:    string
 	value?:   string
 	version?: number
 }

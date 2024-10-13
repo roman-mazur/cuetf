@@ -18,15 +18,15 @@ package res
 	id?:                string
 	id_token_validity?: number
 	logout_urls?: [...string]
-	name:                           string
+	name!:                          string
 	prevent_user_existence_errors?: string
 	read_attributes?: [...string]
 	refresh_token_validity?: number
 	supported_identity_providers?: [...string]
-	user_pool_id: string
+	user_pool_id!: string
 	write_attributes?: [...string]
 	analytics_configuration?: #analytics_configuration | [...#analytics_configuration]
-	token_validity_units?:    #token_validity_units | [...#token_validity_units]
+	token_validity_units?: #token_validity_units | [...#token_validity_units]
 
 	#analytics_configuration: {
 		application_arn?:  string

@@ -3,8 +3,8 @@ package data
 #aws_route53_resolver_firewall_rules: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_route53_resolver_firewall_rules")
-	action?:                string
-	firewall_rule_group_id: string
+	action?:                 string
+	firewall_rule_group_id!: string
 	firewall_rules?: [...{
 		action?:                  string
 		block_override_dns_type?: string

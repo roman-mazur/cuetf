@@ -24,7 +24,7 @@ package res
 	}]
 	tags?: [string]: string
 	tags_all?: [string]: string
-	vpc_id:    string
+	vpc_id!:   string
 	timeouts?: #timeouts
 
 	#timeouts: {

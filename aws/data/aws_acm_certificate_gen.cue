@@ -6,7 +6,7 @@ package data
 	arn?:               string
 	certificate?:       string
 	certificate_chain?: string
-	domain:             string
+	domain?:            string
 	id?:                string
 	key_types?: [...string]
 	most_recent?: bool

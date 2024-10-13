@@ -6,17 +6,17 @@ package res
 	arn?:                 string
 	debug_logging?:       bool
 	endpoint?:            string
-	engine_family:        string
+	engine_family!:       string
 	id?:                  string
 	idle_client_timeout?: number
-	name:                 string
+	name!:                string
 	require_tls?:         bool
-	role_arn:             string
+	role_arn!:            string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	vpc_security_group_ids?: [...string]
-	vpc_subnet_ids: [...string]
-	auth?:     #auth | [_, ...] & [...#auth]
+	vpc_subnet_ids!: [...string]
+	auth?: #auth | [_, ...] & [...#auth]
 	timeouts?: #timeouts
 
 	#auth: {

@@ -3,7 +3,7 @@ package res
 #aws_vpc_ipam_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_vpc_ipam_pool")
-	address_family:                     string
+	address_family!:                    string
 	allocation_default_netmask_length?: number
 	allocation_max_netmask_length?:     number
 	allocation_min_netmask_length?:     number
@@ -11,9 +11,10 @@ package res
 	arn?:                   string
 	auto_import?:           bool
 	aws_service?:           string
+	cascade?:               bool
 	description?:           string
 	id?:                    string
-	ipam_scope_id:          string
+	ipam_scope_id!:         string
 	ipam_scope_type?:       string
 	locale?:                string
 	pool_depth?:            number

@@ -11,35 +11,35 @@ package res
 	description?:               string
 	document_root?:             string
 	domains?: [...string]
-	enable_ssl?:        bool
-	id?:                string
-	name:               string
-	rails_env?:         string
-	short_name?:        string
-	stack_id:           string
-	type:               string
-	app_source?:        #app_source | [...#app_source]
-	environment?:       #environment | [...#environment]
+	enable_ssl?: bool
+	id?:         string
+	name!:       string
+	rails_env?:  string
+	short_name?: string
+	stack_id!:   string
+	type!:       string
+	app_source?: #app_source | [...#app_source]
+	environment?: #environment | [...#environment]
 	ssl_configuration?: #ssl_configuration | [...#ssl_configuration]
 
 	#app_source: {
 		password?: string
 		revision?: string
 		ssh_key?:  string
-		type:      string
+		type!:     string
 		url?:      string
 		username?: string
 	}
 
 	#environment: {
-		key:     string
+		key!:    string
 		secure?: bool
-		value:   string
+		value!:  string
 	}
 
 	#ssl_configuration: {
-		certificate: string
-		chain?:      string
-		private_key: string
+		certificate!: string
+		chain?:       string
+		private_key!: string
 	}
 }

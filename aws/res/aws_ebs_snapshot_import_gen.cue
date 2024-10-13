@@ -22,9 +22,9 @@ import "list"
 	temporary_restore_days?: number
 	volume_id?:              string
 	volume_size?:            number
-	client_data?:            #client_data | list.MaxItems(1) & [...#client_data]
-	disk_container?:         #disk_container | list.MaxItems(1) & [_, ...] & [...#disk_container]
-	timeouts?:               #timeouts
+	client_data?: #client_data | list.MaxItems(1) & [...#client_data]
+	disk_container?: #disk_container | list.MaxItems(1) & [_, ...] & [...#disk_container]
+	timeouts?: #timeouts
 
 	#client_data: {
 		comment?:      string
@@ -35,13 +35,13 @@ import "list"
 
 	#disk_container: {
 		description?: string
-		format:       string
+		format!:      string
 		url?:         string
 		user_bucket?: #disk_container.#user_bucket | list.MaxItems(1) & [...#disk_container.#user_bucket]
 
 		#user_bucket: {
-			s3_bucket: string
-			s3_key:    string
+			s3_bucket!: string
+			s3_key!:    string
 		}
 	}
 

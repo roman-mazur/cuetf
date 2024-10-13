@@ -8,6 +8,6 @@ package data
 	id?:          string
 	kafka_versions?: [...string]
 	latest_revision?:   number
-	name:               string
+	name!:              string
 	server_properties?: string
 }

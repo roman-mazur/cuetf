@@ -11,6 +11,6 @@ package data
 	network_mode?:         string
 	revision?:             number
 	status?:               string
-	task_definition:       string
+	task_definition!:      string
 	task_role_arn?:        string
 }

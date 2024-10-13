@@ -7,6 +7,6 @@ package data
 	available_port_speeds?: [...string]
 	available_providers?: [...string]
 	id?:            string
-	location_code:  string
+	location_code!: string
 	location_name?: string
 }

@@ -5,6 +5,6 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dx_gateway")
 	amazon_side_asn?:  string
 	id?:               string
-	name:              string
+	name!:             string
 	owner_account_id?: string
 }

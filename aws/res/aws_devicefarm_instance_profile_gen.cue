@@ -7,7 +7,7 @@ package res
 	description?: string
 	exclude_app_packages_from_cleanup?: [...string]
 	id?:               string
-	name:              string
+	name!:             string
 	package_cleanup?:  bool
 	reboot_after_use?: bool
 	tags?: [string]: string

@@ -17,17 +17,18 @@ package data
 	restorable_by_user_ids?: [...string]
 	snapshot_id?: string
 	snapshot_ids?: [...string]
+	start_time?:   string
 	state?:        string
 	storage_tier?: string
 	tags?: [string]: string
 	volume_id?:   string
 	volume_size?: number
-	filter?:      #filter | [...#filter]
-	timeouts?:    #timeouts
+	filter?: #filter | [...#filter]
+	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

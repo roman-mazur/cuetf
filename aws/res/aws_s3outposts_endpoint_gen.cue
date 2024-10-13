@@ -12,7 +12,7 @@ package res
 	network_interfaces?: [...{
 		network_interface_id?: string
 	}]
-	outpost_id:        string
-	security_group_id: string
-	subnet_id:         string
+	outpost_id!:        string
+	security_group_id!: string
+	subnet_id!:         string
 }

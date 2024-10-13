@@ -10,6 +10,6 @@ package data
 	}]
 	eventbridge_bus?: string
 	id?:              string
-	name:             string
+	name!:            string
 	tags?: [string]: string
 }

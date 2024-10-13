@@ -8,14 +8,14 @@ package res
 	excluded_accounts?: [...string]
 	id?:                          string
 	input_parameters?:            string
-	lambda_function_arn:          string
+	lambda_function_arn!:         string
 	maximum_execution_frequency?: string
-	name:                         string
+	name!:                        string
 	resource_id_scope?:           string
 	resource_types_scope?: [...string]
 	tag_key_scope?:   string
 	tag_value_scope?: string
-	trigger_types: [...string]
+	trigger_types!: [...string]
 	timeouts?: #timeouts
 
 	#timeouts: {

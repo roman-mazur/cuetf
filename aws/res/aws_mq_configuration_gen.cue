@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_mq_configuration")
 	arn?:                     string
 	authentication_strategy?: string
-	data:                     string
+	data!:                    string
 	description?:             string
-	engine_type:              string
-	engine_version:           string
+	engine_type!:             string
+	engine_version!:          string
 	id?:                      string
 	latest_revision?:         number
-	name:                     string
+	name!:                    string
 	tags?: [string]: string
 	tags_all?: [string]: string
 }

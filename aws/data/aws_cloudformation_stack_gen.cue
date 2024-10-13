@@ -8,7 +8,7 @@ package data
 	disable_rollback?: bool
 	iam_role_arn?:     string
 	id?:               string
-	name:              string
+	name!:             string
 	notification_arns?: [...string]
 	outputs?: [string]: string
 	parameters?: [string]: string

@@ -6,7 +6,7 @@ package res
 	arn?:                  string
 	force_destroy?:        bool
 	id?:                   string
-	name:                  string
+	name!:                 string
 	path?:                 string
 	permissions_boundary?: string
 	tags?: [string]: string

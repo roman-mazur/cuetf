@@ -9,10 +9,10 @@ import "list"
 	id?:                              string
 	original_source_file_system_arn?: string
 	source_file_system_arn?:          string
-	source_file_system_id:            string
+	source_file_system_id!:           string
 	source_file_system_region?:       string
-	destination?:                     #destination | list.MaxItems(1) & [_, ...] & [...#destination]
-	timeouts?:                        #timeouts
+	destination?: #destination | list.MaxItems(1) & [_, ...] & [...#destination]
+	timeouts?: #timeouts
 
 	#destination: {
 		availability_zone_name?: string

@@ -11,14 +11,14 @@ package res
 	encrypted?:          bool
 	id?:                 string
 	kms_key_id?:         string
-	name:                string
+	name!:               string
 	owner?:              string
-	platform:            string
+	platform!:           string
 	skip_destroy?:       bool
 	supported_os_versions?: [...string]
 	tags?: [string]: string
 	tags_all?: [string]: string
-	type?:   string
-	uri?:    string
-	version: string
+	type?:    string
+	uri?:     string
+	version!: string
 }

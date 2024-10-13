@@ -12,18 +12,18 @@ import "list"
 	description?:         string
 	execution_role_name?: string
 	id?:                  string
-	name:                 string
+	name!:                string
 	parameters?: [string]: string
 	permission_model?: string
 	stack_set_id?:     string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	template_body?:         string
-	template_url?:          string
-	auto_deployment?:       #auto_deployment | list.MaxItems(1) & [...#auto_deployment]
-	managed_execution?:     #managed_execution | list.MaxItems(1) & [...#managed_execution]
+	template_body?: string
+	template_url?:  string
+	auto_deployment?: #auto_deployment | list.MaxItems(1) & [...#auto_deployment]
+	managed_execution?: #managed_execution | list.MaxItems(1) & [...#managed_execution]
 	operation_preferences?: #operation_preferences | list.MaxItems(1) & [...#operation_preferences]
-	timeouts?:              #timeouts
+	timeouts?: #timeouts
 
 	#auto_deployment: {
 		enabled?:                          bool

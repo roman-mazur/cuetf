@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_s3_bucket_public_access_block")
 	block_public_acls?:       bool
 	block_public_policy?:     bool
-	bucket:                   string
+	bucket!:                  string
 	id?:                      string
 	ignore_public_acls?:      bool
 	restrict_public_buckets?: bool

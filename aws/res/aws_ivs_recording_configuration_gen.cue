@@ -13,13 +13,13 @@ import "list"
 	tags?: [string]: string
 	tags_all?: [string]: string
 	destination_configuration?: #destination_configuration | list.MaxItems(1) & [_, ...] & [...#destination_configuration]
-	thumbnail_configuration?:   #thumbnail_configuration | list.MaxItems(1) & [...#thumbnail_configuration]
-	timeouts?:                  #timeouts
+	thumbnail_configuration?: #thumbnail_configuration | list.MaxItems(1) & [...#thumbnail_configuration]
+	timeouts?: #timeouts
 
 	#destination_configuration: {
 		s3?: #destination_configuration.#s3 | list.MaxItems(1) & [_, ...] & [...#destination_configuration.#s3]
 
-		#s3: bucket_name: string
+		#s3: bucket_name!: string
 	}
 
 	#thumbnail_configuration: {

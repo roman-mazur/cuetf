@@ -7,7 +7,7 @@ package data
 	default_outbound_queue_id?: string
 	description?:               string
 	id?:                        string
-	instance_id:                string
+	instance_id!:               string
 	media_concurrencies?: [...{
 		channel?:     string
 		concurrency?: number

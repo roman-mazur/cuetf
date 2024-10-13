@@ -10,7 +10,7 @@ package res
 	position_filtering?: string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	tracker_arn?: string
-	tracker_name: string
-	update_time?: string
+	tracker_arn?:  string
+	tracker_name!: string
+	update_time?:  string
 }

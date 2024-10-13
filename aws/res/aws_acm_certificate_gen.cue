@@ -36,13 +36,13 @@ import "list"
 	type?: string
 	validation_emails?: [...string]
 	validation_method?: string
-	options?:           #options | list.MaxItems(1) & [...#options]
+	options?: #options | list.MaxItems(1) & [...#options]
 	validation_option?: #validation_option | [...#validation_option]
 
 	#options: certificate_transparency_logging_preference?: string
 
 	#validation_option: {
-		domain_name:       string
-		validation_domain: string
+		domain_name!:       string
+		validation_domain!: string
 	}
 }

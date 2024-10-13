@@ -5,8 +5,8 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_main_route_table_association")
 	id?:                      string
 	original_route_table_id?: string
-	route_table_id:           string
-	vpc_id:                   string
+	route_table_id!:          string
+	vpc_id!:                  string
 	timeouts?:                #timeouts
 
 	#timeouts: {

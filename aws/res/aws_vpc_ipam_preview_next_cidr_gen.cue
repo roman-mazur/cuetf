@@ -6,6 +6,6 @@ package res
 	cidr?: string
 	disallowed_cidrs?: [...string]
 	id?:             string
-	ipam_pool_id:    string
+	ipam_pool_id!:   string
 	netmask_length?: number
 }

@@ -34,7 +34,7 @@ package data
 		lb_protocol?:        string
 		ssl_certificate_id?: string
 	}]
-	name: string
+	name!: string
 	security_groups?: [...string]
 	source_security_group?:    string
 	source_security_group_id?: string

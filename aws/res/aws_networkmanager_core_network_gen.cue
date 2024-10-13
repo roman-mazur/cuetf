@@ -14,8 +14,8 @@ package res
 		edge_location?: string
 		inside_cidr_blocks?: [...string]
 	}]
-	global_network_id: string
-	id?:               string
+	global_network_id!: string
+	id?:                string
 	segments?: [...{
 		edge_locations?: [...string]
 		name?: string

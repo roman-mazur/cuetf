@@ -15,18 +15,18 @@ import "list"
 	id?:                             string
 	image_arn?:                      string
 	image_name?:                     string
-	instance_type:                   string
-	name:                            string
+	instance_type!:                  string
+	name!:                           string
 	state?:                          string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	access_endpoint?:  #access_endpoint | list.MaxItems(4) & [...#access_endpoint]
+	access_endpoint?: #access_endpoint | list.MaxItems(4) & [...#access_endpoint]
 	domain_join_info?: #domain_join_info | list.MaxItems(1) & [...#domain_join_info]
-	vpc_config?:       #vpc_config | list.MaxItems(1) & [...#vpc_config]
+	vpc_config?: #vpc_config | list.MaxItems(1) & [...#vpc_config]
 
 	#access_endpoint: {
-		endpoint_type: string
-		vpce_id?:      string
+		endpoint_type!: string
+		vpce_id?:       string
 	}
 
 	#domain_join_info: {

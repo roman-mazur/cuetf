@@ -7,7 +7,7 @@ package data
 	customer_id?:       string
 	description?:       string
 	enabled?:           bool
-	id:                 string
+	id!:                string
 	last_updated_date?: string
 	name?:              string
 	tags?: [string]: string

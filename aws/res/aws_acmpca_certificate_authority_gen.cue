@@ -18,16 +18,16 @@ import "list"
 	serial?:                          string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	type?:                                string
-	usage_mode?:                          string
+	type?:       string
+	usage_mode?: string
 	certificate_authority_configuration?: #certificate_authority_configuration | list.MaxItems(1) & [_, ...] & [...#certificate_authority_configuration]
-	revocation_configuration?:            #revocation_configuration | list.MaxItems(1) & [...#revocation_configuration]
-	timeouts?:                            #timeouts
+	revocation_configuration?: #revocation_configuration | list.MaxItems(1) & [...#revocation_configuration]
+	timeouts?: #timeouts
 
 	#certificate_authority_configuration: {
-		key_algorithm:     string
-		signing_algorithm: string
-		subject?:          #certificate_authority_configuration.#subject | list.MaxItems(1) & [_, ...] & [...#certificate_authority_configuration.#subject]
+		key_algorithm!:     string
+		signing_algorithm!: string
+		subject?: #certificate_authority_configuration.#subject | list.MaxItems(1) & [_, ...] & [...#certificate_authority_configuration.#subject]
 
 		#subject: {
 			common_name?:                  string
@@ -47,7 +47,7 @@ import "list"
 	}
 
 	#revocation_configuration: {
-		crl_configuration?:  #revocation_configuration.#crl_configuration | list.MaxItems(1) & [...#revocation_configuration.#crl_configuration]
+		crl_configuration?: #revocation_configuration.#crl_configuration | list.MaxItems(1) & [...#revocation_configuration.#crl_configuration]
 		ocsp_configuration?: #revocation_configuration.#ocsp_configuration | list.MaxItems(1) & [...#revocation_configuration.#ocsp_configuration]
 
 		#crl_configuration: {
@@ -59,7 +59,7 @@ import "list"
 		}
 
 		#ocsp_configuration: {
-			enabled:            bool
+			enabled!:           bool
 			ocsp_custom_cname?: string
 		}
 	}

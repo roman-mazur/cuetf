@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dms_certificate")
 	certificate_arn?:           string
 	certificate_creation_date?: string
-	certificate_id:             string
+	certificate_id!:            string
 	certificate_owner?:         string
 	certificate_pem?:           string
 	certificate_wallet?:        string

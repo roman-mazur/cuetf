@@ -6,6 +6,7 @@ package res
 	arn?:               string
 	id?:                string
 	kms_key_id?:        string
+	log_group_class?:   string
 	name?:              string
 	name_prefix?:       string
 	retention_in_days?: number

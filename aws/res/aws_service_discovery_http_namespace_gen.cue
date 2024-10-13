@@ -7,7 +7,7 @@ package res
 	description?: string
 	http_name?:   string
 	id?:          string
-	name:         string
+	name!:        string
 	tags?: [string]: string
 	tags_all?: [string]: string
 }

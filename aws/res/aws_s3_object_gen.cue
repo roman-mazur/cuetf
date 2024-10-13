@@ -1,10 +1,13 @@
 package res
 
+import "list"
+
 #aws_s3_object: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_s3_object")
 	acl?:                 string
-	bucket:               string
+	arn?:                 string
+	bucket!:              string
 	bucket_key_enabled?:  bool
 	cache_control?:       string
 	checksum_algorithm?:  string
@@ -21,7 +24,7 @@ package res
 	etag?:                string
 	force_destroy?:       bool
 	id?:                  string
-	key:                  string
+	key!:                 string
 	kms_key_id?:          string
 	metadata?: [string]: string
 	object_lock_legal_hold_status?: string
@@ -35,4 +38,11 @@ package res
 	tags_all?: [string]: string
 	version_id?:       string
 	website_redirect?: string
+	override_provider?: #override_provider | list.MaxItems(1) & [...#override_provider]
+
+	#override_provider: {
+		default_tags?: #override_provider.#default_tags | list.MaxItems(1) & [...#override_provider.#default_tags]
+
+		#default_tags: tags?: [string]: string
+	}
 }

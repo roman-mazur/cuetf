@@ -7,6 +7,7 @@ package data
 	description?:     string
 	id?:              string
 	latest_revision?: number
-	name:             string
+	name!:            string
 	state?:           string
+	tags?: [string]: string
 }

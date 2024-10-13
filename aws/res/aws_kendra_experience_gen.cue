@@ -13,16 +13,16 @@ import "list"
 	}]
 	experience_id?: string
 	id?:            string
-	index_id:       string
-	name:           string
-	role_arn:       string
+	index_id!:      string
+	name!:          string
+	role_arn!:      string
 	status?:        string
 	configuration?: #configuration | list.MaxItems(1) & [...#configuration]
-	timeouts?:      #timeouts
+	timeouts?: #timeouts
 
 	#configuration: {
 		content_source_configuration?: #configuration.#content_source_configuration | list.MaxItems(1) & [...#configuration.#content_source_configuration]
-		user_identity_configuration?:  #configuration.#user_identity_configuration | list.MaxItems(1) & [...#configuration.#user_identity_configuration]
+		user_identity_configuration?: #configuration.#user_identity_configuration | list.MaxItems(1) & [...#configuration.#user_identity_configuration]
 
 		#content_source_configuration: {
 			data_source_ids?: [...string]
@@ -30,7 +30,7 @@ import "list"
 			faq_ids?: [...string]
 		}
 
-		#user_identity_configuration: identity_attribute_name: string
+		#user_identity_configuration: identity_attribute_name!: string
 	}
 
 	#timeouts: {

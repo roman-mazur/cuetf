@@ -9,7 +9,7 @@ package data
 	kms_key_id?:         string
 	position_filtering?: string
 	tags?: [string]: string
-	tracker_arn?: string
-	tracker_name: string
-	update_time?: string
+	tracker_arn?:  string
+	tracker_name!: string
+	update_time?:  string
 }

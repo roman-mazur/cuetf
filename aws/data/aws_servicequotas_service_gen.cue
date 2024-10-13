@@ -5,5 +5,5 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_servicequotas_service")
 	id?:           string
 	service_code?: string
-	service_name:  string
+	service_name!: string
 }

@@ -6,8 +6,8 @@ package res
 	arn?:         string
 	description?: string
 	id?:          string
-	name:         string
-	subnet_ids: [...string]
+	name!:        string
+	subnet_ids!: [...string]
 	tags?: [string]: string
 	tags_all?: [string]: string
 }

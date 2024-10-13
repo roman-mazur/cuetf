@@ -7,7 +7,7 @@ package res
 	fingerprint?: string
 	id?:          string
 	name?:        string
-	public_key:   string
+	public_key!:  string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	timeouts?: #timeouts

@@ -10,20 +10,20 @@ import "list"
 	created_at?:          string
 	id?:                  string
 	is_disabled?:         bool
-	name:                 string
-	power:                string
+	name!:                string
+	power!:               string
 	power_id?:            string
 	principal_arn?:       string
 	private_domain_name?: string
 	resource_type?:       string
-	scale:                number
+	scale!:               number
 	state?:               string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	url?:                     string
+	url?: string
 	private_registry_access?: #private_registry_access | list.MaxItems(1) & [...#private_registry_access]
-	public_domain_names?:     #public_domain_names | list.MaxItems(1) & [...#public_domain_names]
-	timeouts?:                #timeouts
+	public_domain_names?: #public_domain_names | list.MaxItems(1) & [...#public_domain_names]
+	timeouts?: #timeouts
 
 	#private_registry_access: {
 		ecr_image_puller_role?: #private_registry_access.#ecr_image_puller_role | list.MaxItems(1) & [...#private_registry_access.#ecr_image_puller_role]
@@ -38,8 +38,8 @@ import "list"
 		certificate?: #public_domain_names.#certificate | [_, ...] & [...#public_domain_names.#certificate]
 
 		#certificate: {
-			certificate_name: string
-			domain_names: [...string]
+			certificate_name!: string
+			domain_names!: [...string]
 		}
 	}
 

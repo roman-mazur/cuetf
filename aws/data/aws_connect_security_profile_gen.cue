@@ -6,7 +6,7 @@ package data
 	arn?:                      string
 	description?:              string
 	id?:                       string
-	instance_id:               string
+	instance_id!:              string
 	name?:                     string
 	organization_resource_id?: string
 	permissions?: [...string]

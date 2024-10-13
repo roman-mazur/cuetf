@@ -8,11 +8,17 @@ package data
 	cidr_block_set?: [...{
 		cidr_block?: string
 	}]
-	id?:              string
+	id?: string
+	ipv6_cidr_block_set?: [...{
+		ipv6_cidr_block?: string
+	}]
 	owner_id?:        string
 	peer_cidr_block?: string
 	peer_cidr_block_set?: [...{
 		cidr_block?: string
+	}]
+	peer_ipv6_cidr_block_set?: [...{
+		ipv6_cidr_block?: string
 	}]
 	peer_owner_id?: string
 	peer_region?:   string
@@ -21,13 +27,13 @@ package data
 	requester?: [string]: bool
 	status?: string
 	tags?: [string]: string
-	vpc_id?:   string
-	filter?:   #filter | [...#filter]
+	vpc_id?: string
+	filter?: #filter | [...#filter]
 	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

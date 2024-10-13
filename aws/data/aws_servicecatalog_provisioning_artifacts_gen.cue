@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_servicecatalog_provisioning_artifacts")
 	accept_language?: string
 	id?:              string
-	product_id:       string
+	product_id!:      string
 	provisioning_artifact_details?: [...{
 		active?:       bool
 		created_time?: string

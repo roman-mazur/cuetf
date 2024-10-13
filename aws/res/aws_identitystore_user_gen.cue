@@ -5,13 +5,13 @@ import "list"
 #aws_identitystore_user: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_identitystore_user")
-	display_name: string
+	display_name!: string
 	external_ids?: [...{
 		id?:     string
 		issuer?: string
 	}]
 	id?:                 string
-	identity_store_id:   string
+	identity_store_id!:  string
 	locale?:             string
 	nickname?:           string
 	preferred_language?: string
@@ -19,12 +19,12 @@ import "list"
 	timezone?:           string
 	title?:              string
 	user_id?:            string
-	user_name:           string
+	user_name!:          string
 	user_type?:          string
-	addresses?:          #addresses | list.MaxItems(1) & [...#addresses]
-	emails?:             #emails | list.MaxItems(1) & [...#emails]
-	name?:               #name | list.MaxItems(1) & [_, ...] & [...#name]
-	phone_numbers?:      #phone_numbers | list.MaxItems(1) & [...#phone_numbers]
+	addresses?: #addresses | list.MaxItems(1) & [...#addresses]
+	emails?: #emails | list.MaxItems(1) & [...#emails]
+	name?: #name | list.MaxItems(1) & [_, ...] & [...#name]
+	phone_numbers?: #phone_numbers | list.MaxItems(1) & [...#phone_numbers]
 
 	#addresses: {
 		country?:        string
@@ -44,9 +44,9 @@ import "list"
 	}
 
 	#name: {
-		family_name:       string
+		family_name!:      string
 		formatted?:        string
-		given_name:        string
+		given_name!:       string
 		honorific_prefix?: string
 		honorific_suffix?: string
 		middle_name?:      string

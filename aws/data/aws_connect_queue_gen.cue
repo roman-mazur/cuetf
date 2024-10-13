@@ -7,7 +7,7 @@ package data
 	description?:           string
 	hours_of_operation_id?: string
 	id?:                    string
-	instance_id:            string
+	instance_id!:           string
 	max_contacts?:          number
 	name?:                  string
 	outbound_caller_config?: [...{

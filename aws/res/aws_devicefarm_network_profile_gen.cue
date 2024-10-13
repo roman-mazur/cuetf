@@ -10,8 +10,8 @@ package res
 	downlink_jitter_ms?:      number
 	downlink_loss_percent?:   number
 	id?:                      string
-	name:                     string
-	project_arn:              string
+	name!:                    string
+	project_arn!:             string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	type?:                  string

@@ -5,5 +5,5 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_xray_encryption_config")
 	id?:     string
 	key_id?: string
-	type:    string
+	type!:   string
 }

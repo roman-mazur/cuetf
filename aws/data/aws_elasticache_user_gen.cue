@@ -8,8 +8,8 @@ package data
 	id?:                   string
 	no_password_required?: bool
 	passwords?: [...string]
-	user_id:              string
-	user_name?:           string
+	user_id!:   string
+	user_name?: string
 	authentication_mode?: #authentication_mode | [...#authentication_mode]
 
 	#authentication_mode: {

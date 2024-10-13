@@ -26,5 +26,5 @@ package res
 	search_string?:       string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	type: string
+	type!: string
 }

@@ -7,11 +7,11 @@ package res
 	description?:     string
 	id?:              string
 	owner?:           string
-	parameters:       string
-	portfolio_id:     string
-	product_id:       string
+	parameters!:      string
+	portfolio_id!:    string
+	product_id!:      string
 	status?:          string
-	type:             string
+	type!:            string
 	timeouts?:        #timeouts
 
 	#timeouts: {

@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_kms_alias")
 	arn?:            string
 	id?:             string
-	name:            string
+	name!:           string
 	target_key_arn?: string
 	target_key_id?:  string
 }

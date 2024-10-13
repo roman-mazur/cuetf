@@ -6,6 +6,6 @@ package data
 	description?: string
 	id?:          string
 	name?:        string
-	pipeline_id:  string
+	pipeline_id!: string
 	tags?: [string]: string
 }

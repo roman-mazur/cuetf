@@ -6,7 +6,7 @@ package res
 	allow_external_principals?: bool
 	arn?:                       string
 	id?:                        string
-	name:                       string
+	name!:                      string
 	permission_arns?: [...string]
 	tags?: [string]: string
 	tags_all?: [string]: string

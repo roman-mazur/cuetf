@@ -9,18 +9,18 @@ import "list"
 	description?:       string
 	enabled?:           bool
 	id?:                string
-	name:               string
+	name!:              string
 	schedule?:          string
 	start_on_creation?: bool
 	state?:             string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	type:                      string
-	workflow_name?:            string
-	actions?:                  #actions | [_, ...] & [...#actions]
+	type!:          string
+	workflow_name?: string
+	actions?: #actions | [_, ...] & [...#actions]
 	event_batching_condition?: #event_batching_condition | [...#event_batching_condition]
-	predicate?:                #predicate | list.MaxItems(1) & [...#predicate]
-	timeouts?:                 #timeouts
+	predicate?: #predicate | list.MaxItems(1) & [...#predicate]
+	timeouts?: #timeouts
 
 	#actions: {
 		arguments?: [string]: string
@@ -28,18 +28,18 @@ import "list"
 		job_name?:               string
 		security_configuration?: string
 		timeout?:                number
-		notification_property?:  #actions.#notification_property | list.MaxItems(1) & [...#actions.#notification_property]
+		notification_property?: #actions.#notification_property | list.MaxItems(1) & [...#actions.#notification_property]
 
 		#notification_property: notify_delay_after?: number
 	}
 
 	#event_batching_condition: {
-		batch_size:    number
+		batch_size!:   number
 		batch_window?: number
 	}
 
 	#predicate: {
-		logical?:    string
+		logical?: string
 		conditions?: #predicate.#conditions | [_, ...] & [...#predicate.#conditions]
 
 		#conditions: {
@@ -54,5 +54,6 @@ import "list"
 	#timeouts: {
 		create?: string
 		delete?: string
+		update?: string
 	}
 }

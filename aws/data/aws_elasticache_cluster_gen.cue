@@ -13,7 +13,7 @@ package data
 		port?:              number
 	}]
 	cluster_address?:        string
-	cluster_id:              string
+	cluster_id!:             string
 	configuration_endpoint?: string
 	engine?:                 string
 	engine_version?:         string

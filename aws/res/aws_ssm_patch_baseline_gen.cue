@@ -11,7 +11,8 @@ import "list"
 	arn?:                                  string
 	description?:                          string
 	id?:                                   string
-	name:                                  string
+	json?:                                 string
+	name!:                                 string
 	operating_system?:                     string
 	rejected_patches?: [...string]
 	rejected_patches_action?: string
@@ -19,29 +20,29 @@ import "list"
 	tags_all?: [string]: string
 	approval_rule?: #approval_rule | [...#approval_rule]
 	global_filter?: #global_filter | list.MaxItems(4) & [...#global_filter]
-	source?:        #source | list.MaxItems(20) & [...#source]
+	source?: #source | list.MaxItems(20) & [...#source]
 
 	#approval_rule: {
 		approve_after_days?:  number
 		approve_until_date?:  string
 		compliance_level?:    string
 		enable_non_security?: bool
-		patch_filter?:        #approval_rule.#patch_filter | list.MaxItems(10) & [_, ...] & [...#approval_rule.#patch_filter]
+		patch_filter?: #approval_rule.#patch_filter | list.MaxItems(10) & [_, ...] & [...#approval_rule.#patch_filter]
 
 		#patch_filter: {
-			key: string
-			values: [...string]
+			key!: string
+			values!: [...string]
 		}
 	}
 
 	#global_filter: {
-		key: string
-		values: [...string]
+		key!: string
+		values!: [...string]
 	}
 
 	#source: {
-		configuration: string
-		name:          string
-		products: [...string]
+		configuration!: string
+		name!:          string
+		products!: [...string]
 	}
 }

@@ -9,7 +9,7 @@ package res
 	github_account_name?: string
 	id?:                  string
 	linked_to_github?:    bool
-	name:                 string
+	name!:                string
 	tags?: [string]: string
 	tags_all?: [string]: string
 }

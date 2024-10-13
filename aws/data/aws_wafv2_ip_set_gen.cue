@@ -8,6 +8,6 @@ package data
 	description?:        string
 	id?:                 string
 	ip_address_version?: string
-	name:                string
-	scope:               string
+	name!:               string
+	scope!:              string
 }

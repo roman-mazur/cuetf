@@ -9,7 +9,7 @@ package data
 	description?:         string
 	distributor?:         string
 	has_default_path?:    bool
-	id:                   string
+	id!:                  string
 	name?:                string
 	owner?:               string
 	status?:              string

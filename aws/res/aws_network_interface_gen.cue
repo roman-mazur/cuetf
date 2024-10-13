@@ -26,14 +26,14 @@ package res
 	private_ips_count?: number
 	security_groups?: [...string]
 	source_dest_check?: bool
-	subnet_id:          string
+	subnet_id!:         string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	attachment?: #attachment | [...#attachment]
 
 	#attachment: {
 		attachment_id?: string
-		device_index:   number
-		instance:       string
+		device_index!:  number
+		instance!:      string
 	}
 }

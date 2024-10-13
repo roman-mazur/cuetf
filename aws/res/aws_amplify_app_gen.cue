@@ -10,6 +10,7 @@ import "list"
 	auto_branch_creation_patterns?: [...string]
 	basic_auth_credentials?:      string
 	build_spec?:                  string
+	custom_headers?:              string
 	default_domain?:              string
 	description?:                 string
 	enable_auto_branch_creation?: bool
@@ -19,7 +20,7 @@ import "list"
 	environment_variables?: [string]: string
 	iam_service_role_arn?: string
 	id?:                   string
-	name:                  string
+	name!:                 string
 	oauth_token?:          string
 	platform?:             string
 	production_branch?: [...{
@@ -32,7 +33,8 @@ import "list"
 	tags?: [string]: string
 	tags_all?: [string]: string
 	auto_branch_creation_config?: #auto_branch_creation_config | list.MaxItems(1) & [...#auto_branch_creation_config]
-	custom_rule?:                 #custom_rule | [...#custom_rule]
+	cache_config?: #cache_config | list.MaxItems(1) & [...#cache_config]
+	custom_rule?: #custom_rule | [...#custom_rule]
 
 	#auto_branch_creation_config: {
 		basic_auth_credentials?:      string
@@ -47,10 +49,12 @@ import "list"
 		stage?:                         string
 	}
 
+	#cache_config: type!: string
+
 	#custom_rule: {
 		condition?: string
-		source:     string
+		source!:    string
 		status?:    string
-		target:     string
+		target!:    string
 	}
 }

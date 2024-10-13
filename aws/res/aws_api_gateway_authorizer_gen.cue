@@ -10,8 +10,8 @@ package res
 	id?:                               string
 	identity_source?:                  string
 	identity_validation_expression?:   string
-	name:                              string
+	name!:                             string
 	provider_arns?: [...string]
-	rest_api_id: string
-	type?:       string
+	rest_api_id!: string
+	type?:        string
 }

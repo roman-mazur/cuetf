@@ -15,7 +15,7 @@ package data
 	idle_session_ttl_in_seconds?:     number
 	last_updated_date?:               string
 	locale?:                          string
-	name:                             string
+	name!:                            string
 	nlu_intent_confidence_threshold?: number
 	status?:                          string
 	version?:                         string

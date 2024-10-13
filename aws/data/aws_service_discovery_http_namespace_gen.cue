@@ -7,6 +7,6 @@ package data
 	description?: string
 	http_name?:   string
 	id?:          string
-	name:         string
+	name!:        string
 	tags?: [string]: string
 }

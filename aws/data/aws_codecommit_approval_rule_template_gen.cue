@@ -10,6 +10,6 @@ package data
 	id?:                        string
 	last_modified_date?:        string
 	last_modified_user?:        string
-	name:                       string
+	name!:                      string
 	rule_content_sha256?:       string
 }

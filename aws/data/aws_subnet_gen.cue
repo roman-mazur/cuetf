@@ -26,13 +26,13 @@ package data
 	private_dns_hostname_type_on_launch?:            string
 	state?:                                          string
 	tags?: [string]: string
-	vpc_id?:   string
-	filter?:   #filter | [...#filter]
+	vpc_id?: string
+	filter?: #filter | [...#filter]
 	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

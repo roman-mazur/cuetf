@@ -8,7 +8,7 @@ package res
 	inputs?: [...string]
 	tags?: [string]: string
 	tags_all?: [string]: string
-	timeouts?:        #timeouts
+	timeouts?: #timeouts
 	whitelist_rules?: #whitelist_rules | [_, ...] & [...#whitelist_rules]
 
 	#timeouts: {
@@ -17,5 +17,5 @@ package res
 		update?: string
 	}
 
-	#whitelist_rules: cidr: string
+	#whitelist_rules: cidr!: string
 }

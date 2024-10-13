@@ -7,12 +7,13 @@ package res
 	description?:         string
 	event_bus_name?:      string
 	event_pattern?:       string
+	force_destroy?:       bool
 	id?:                  string
-	is_enabled?:          bool
 	name?:                string
 	name_prefix?:         string
 	role_arn?:            string
 	schedule_expression?: string
+	state?:               string
 	tags?: [string]: string
 	tags_all?: [string]: string
 }

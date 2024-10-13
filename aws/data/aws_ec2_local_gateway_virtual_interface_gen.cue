@@ -11,13 +11,13 @@ package data
 	peer_address?: string
 	peer_bgp_asn?: number
 	tags?: [string]: string
-	vlan?:     number
-	filter?:   #filter | [...#filter]
+	vlan?: number
+	filter?: #filter | [...#filter]
 	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

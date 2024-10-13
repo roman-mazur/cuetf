@@ -19,12 +19,12 @@ package res
 		topic_arn?:                string
 		vpc_id?:                   string
 	}]
-	cluster_name: string
-	id?:          string
-	kms_key_arn?: string
-	name?:        string
-	name_prefix?: string
-	source?:      string
+	cluster_name!: string
+	id?:           string
+	kms_key_arn?:  string
+	name?:         string
+	name_prefix?:  string
+	source?:       string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	timeouts?: #timeouts

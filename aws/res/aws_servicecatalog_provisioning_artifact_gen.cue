@@ -11,7 +11,7 @@ package res
 	guidance?:                    string
 	id?:                          string
 	name?:                        string
-	product_id:                   string
+	product_id!:                  string
 	provisioning_artifact_id?:    string
 	template_physical_id?:        string
 	template_url?:                string

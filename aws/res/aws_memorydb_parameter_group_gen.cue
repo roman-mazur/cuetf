@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_memorydb_parameter_group")
 	arn?:         string
 	description?: string
-	family:       string
+	family!:      string
 	id?:          string
 	name?:        string
 	name_prefix?: string
@@ -14,7 +14,7 @@ package res
 	parameter?: #parameter | [...#parameter]
 
 	#parameter: {
-		name:  string
-		value: string
+		name!:  string
+		value!: string
 	}
 }

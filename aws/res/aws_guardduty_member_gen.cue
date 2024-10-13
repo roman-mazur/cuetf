@@ -3,10 +3,10 @@ package res
 #aws_guardduty_member: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_guardduty_member")
-	account_id:                  string
-	detector_id:                 string
+	account_id!:                 string
+	detector_id!:                string
 	disable_email_notification?: bool
-	email:                       string
+	email!:                      string
 	id?:                         string
 	invitation_message?:         string
 	invite?:                     bool

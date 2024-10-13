@@ -17,7 +17,7 @@ package res
 	tags?: [string]: string
 	tags_all?: [string]: string
 	temporary_restore_days?: number
-	volume_id:               string
+	volume_id!:              string
 	volume_size?:            number
 	timeouts?:               #timeouts
 

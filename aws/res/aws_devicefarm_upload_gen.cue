@@ -8,8 +8,8 @@ package res
 	content_type?: string
 	id?:           string
 	metadata?:     string
-	name:          string
-	project_arn:   string
-	type:          string
+	name!:         string
+	project_arn!:  string
+	type!:         string
 	url?:          string
 }

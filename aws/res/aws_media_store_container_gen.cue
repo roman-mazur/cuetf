@@ -6,7 +6,7 @@ package res
 	arn?:      string
 	endpoint?: string
 	id?:       string
-	name:      string
+	name!:     string
 	tags?: [string]: string
 	tags_all?: [string]: string
 }

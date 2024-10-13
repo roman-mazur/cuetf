@@ -15,15 +15,16 @@ package data
 	multicast_support?:                  string
 	owner_id?:                           string
 	propagation_default_route_table_id?: string
+	security_group_referencing_support?: string
 	tags?: [string]: string
 	transit_gateway_cidr_blocks?: [...string]
 	vpn_ecmp_support?: string
-	filter?:           #filter | [...#filter]
-	timeouts?:         #timeouts
+	filter?: #filter | [...#filter]
+	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

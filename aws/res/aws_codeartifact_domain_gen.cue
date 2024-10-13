@@ -6,11 +6,12 @@ package res
 	arn?:              string
 	asset_size_bytes?: string
 	created_time?:     string
-	domain:            string
+	domain!:           string
 	encryption_key?:   string
 	id?:               string
 	owner?:            string
 	repository_count?: number
+	s3_bucket_arn?:    string
 	tags?: [string]: string
 	tags_all?: [string]: string
 }

@@ -8,13 +8,13 @@ package res
 	bgp_peer_address?: string
 	bgp_transit_gateway_addresses?: [...string]
 	id?: string
-	inside_cidr_blocks: [...string]
-	peer_address: string
+	inside_cidr_blocks!: [...string]
+	peer_address!: string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	transit_gateway_address?:      string
-	transit_gateway_attachment_id: string
-	timeouts?:                     #timeouts
+	transit_gateway_address?:       string
+	transit_gateway_attachment_id!: string
+	timeouts?:                      #timeouts
 
 	#timeouts: {
 		create?: string

@@ -10,7 +10,7 @@ package data
 		hsm_certificate?:                   string
 		manufacturer_hardware_certificate?: string
 	}]
-	cluster_id:         string
+	cluster_id!:        string
 	cluster_state?:     string
 	id?:                string
 	security_group_id?: string

@@ -9,13 +9,13 @@ import "list"
 	arn?:            string
 	cw_log_enabled?: bool
 	cw_log_group?:   string
-	domain:          string
+	domain!:         string
 	id?:             string
-	name:            string
+	name!:           string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	app_monitor_configuration?: #app_monitor_configuration | list.MaxItems(1) & [...#app_monitor_configuration]
-	custom_events?:             #custom_events | list.MaxItems(1) & [...#custom_events]
+	custom_events?: #custom_events | list.MaxItems(1) & [...#custom_events]
 
 	#app_monitor_configuration: {
 		allow_cookies?: bool

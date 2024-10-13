@@ -7,7 +7,7 @@ package res
 	connection_status?: string
 	host_arn?:          string
 	id?:                string
-	name:               string
+	name!:              string
 	provider_type?:     string
 	tags?: [string]: string
 	tags_all?: [string]: string

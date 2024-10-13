@@ -7,7 +7,7 @@ package res
 	id?:                  string
 	ipv4_ipam_pool_id?:   string
 	ipv4_netmask_length?: number
-	vpc_id:               string
+	vpc_id!:              string
 	timeouts?:            #timeouts
 
 	#timeouts: {

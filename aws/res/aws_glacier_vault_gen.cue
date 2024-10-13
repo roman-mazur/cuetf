@@ -9,13 +9,13 @@ import "list"
 	arn?:           string
 	id?:            string
 	location?:      string
-	name:           string
+	name!:          string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	notification?: #notification | list.MaxItems(1) & [...#notification]
 
 	#notification: {
-		events: [...string]
-		sns_topic: string
+		events!: [...string]
+		sns_topic!: string
 	}
 }

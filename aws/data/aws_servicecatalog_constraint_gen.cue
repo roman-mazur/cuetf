@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_servicecatalog_constraint")
 	accept_language?: string
 	description?:     string
-	id:               string
+	id!:              string
 	owner?:           string
 	parameters?:      string
 	portfolio_id?:    string

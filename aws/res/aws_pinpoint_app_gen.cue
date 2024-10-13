@@ -13,8 +13,8 @@ import "list"
 	tags?: [string]: string
 	tags_all?: [string]: string
 	campaign_hook?: #campaign_hook | list.MaxItems(1) & [...#campaign_hook]
-	limits?:        #limits | list.MaxItems(1) & [...#limits]
-	quiet_time?:    #quiet_time | list.MaxItems(1) & [...#quiet_time]
+	limits?: #limits | list.MaxItems(1) & [...#limits]
+	quiet_time?: #quiet_time | list.MaxItems(1) & [...#quiet_time]
 
 	#campaign_hook: {
 		lambda_function_name?: string

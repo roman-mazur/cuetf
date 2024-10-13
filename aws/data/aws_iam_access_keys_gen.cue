@@ -8,6 +8,6 @@ package data
 		create_date?:   string
 		status?:        string
 	}]
-	id?:  string
-	user: string
+	id?:   string
+	user!: string
 }

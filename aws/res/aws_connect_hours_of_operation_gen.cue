@@ -9,26 +9,26 @@ import "list"
 	description?:           string
 	hours_of_operation_id?: string
 	id?:                    string
-	instance_id:            string
-	name:                   string
+	instance_id!:           string
+	name!:                  string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	time_zone: string
-	config?:   #config | [_, ...] & [...#config]
+	time_zone!: string
+	config?: #config | [_, ...] & [...#config]
 
 	#config: {
-		day:         string
-		end_time?:   #config.#end_time | list.MaxItems(1) & [_, ...] & [...#config.#end_time]
+		day!: string
+		end_time?: #config.#end_time | list.MaxItems(1) & [_, ...] & [...#config.#end_time]
 		start_time?: #config.#start_time | list.MaxItems(1) & [_, ...] & [...#config.#start_time]
 
 		#end_time: {
-			hours:   number
-			minutes: number
+			hours!:   number
+			minutes!: number
 		}
 
 		#start_time: {
-			hours:   number
-			minutes: number
+			hours!:   number
+			minutes!: number
 		}
 	}
 }

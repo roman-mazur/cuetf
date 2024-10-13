@@ -18,14 +18,20 @@ import "list"
 		organizational_unit_id?: string
 		stack_id?:               string
 	}]
-	stack_set_name:         string
-	deployment_targets?:    #deployment_targets | list.MaxItems(1) & [...#deployment_targets]
+	stack_set_name!: string
+	deployment_targets?: #deployment_targets | list.MaxItems(1) & [...#deployment_targets]
 	operation_preferences?: #operation_preferences | list.MaxItems(1) & [...#operation_preferences]
-	timeouts?:              #timeouts
+	timeouts?: #timeouts
 
-	#deployment_targets: organizational_unit_ids?: [...string]
+	#deployment_targets: {
+		account_filter_type?: string
+		accounts?: [...string]
+		accounts_url?: string
+		organizational_unit_ids?: [...string]
+	}
 
 	#operation_preferences: {
+		concurrency_mode?:             string
 		failure_tolerance_count?:      number
 		failure_tolerance_percentage?: number
 		max_concurrent_count?:         number

@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_connect_phone_number")
 	arn?:          string
-	country_code:  string
+	country_code!: string
 	description?:  string
 	id?:           string
 	phone_number?: string
@@ -15,9 +15,9 @@ package res
 	}]
 	tags?: [string]: string
 	tags_all?: [string]: string
-	target_arn: string
-	type:       string
-	timeouts?:  #timeouts
+	target_arn!: string
+	type!:       string
+	timeouts?:   #timeouts
 
 	#timeouts: {
 		create?: string

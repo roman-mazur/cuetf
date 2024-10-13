@@ -13,8 +13,8 @@ package res
 	owner_alias?:            string
 	owner_id?:               string
 	permanent_restore?:      bool
-	source_region:           string
-	source_snapshot_id:      string
+	source_region!:          string
+	source_snapshot_id!:     string
 	storage_tier?:           string
 	tags?: [string]: string
 	tags_all?: [string]: string

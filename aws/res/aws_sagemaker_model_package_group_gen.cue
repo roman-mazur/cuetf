@@ -6,7 +6,7 @@ package res
 	arn?:                             string
 	id?:                              string
 	model_package_group_description?: string
-	model_package_group_name:         string
+	model_package_group_name!:        string
 	tags?: [string]: string
 	tags_all?: [string]: string
 }

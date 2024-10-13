@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_datapipeline_pipeline")
 	description?: string
 	id?:          string
-	name:         string
+	name!:        string
 	tags?: [string]: string
 	tags_all?: [string]: string
 }

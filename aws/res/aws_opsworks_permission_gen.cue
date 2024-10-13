@@ -7,6 +7,6 @@ package res
 	allow_sudo?: bool
 	id?:         string
 	level?:      string
-	stack_id:    string
-	user_arn:    string
+	stack_id!:   string
+	user_arn!:   string
 }

@@ -5,13 +5,13 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ec2_transit_gateway_route_table_associations")
 	id?: string
 	ids?: [...string]
-	transit_gateway_route_table_id: string
-	filter?:                        #filter | [...#filter]
-	timeouts?:                      #timeouts
+	transit_gateway_route_table_id!: string
+	filter?: #filter | [...#filter]
+	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

@@ -6,7 +6,7 @@ echo "Importing AWS data"
 
 function importRegion() {
   region=$1
-  pkgName=$(echo $region | sed -r 's/-//g')
+  pkgName=$(echo "$region" | sed -r 's/-//g')
 
   echo "Region $region"
   mkdir -p regions/$pkgName 2>/dev/null

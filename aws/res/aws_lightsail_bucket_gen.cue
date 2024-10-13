@@ -5,11 +5,11 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_lightsail_bucket")
 	arn?:               string
 	availability_zone?: string
-	bundle_id:          string
+	bundle_id!:         string
 	created_at?:        string
 	force_delete?:      bool
 	id?:                string
-	name:               string
+	name!:              string
 	region?:            string
 	support_code?:      string
 	tags?: [string]: string

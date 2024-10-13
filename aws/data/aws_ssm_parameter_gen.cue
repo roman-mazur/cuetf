@@ -6,7 +6,7 @@ package data
 	arn?:             string
 	id?:              string
 	insecure_value?:  string
-	name:             string
+	name!:            string
 	type?:            string
 	value?:           string
 	version?:         number

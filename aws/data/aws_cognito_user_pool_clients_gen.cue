@@ -5,6 +5,6 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cognito_user_pool_clients")
 	client_ids?: [...string]
 	client_names?: [...string]
-	id?:          string
-	user_pool_id: string
+	id?:           string
+	user_pool_id!: string
 }

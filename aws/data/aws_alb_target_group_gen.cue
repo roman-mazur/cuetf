@@ -6,7 +6,7 @@ package data
 	arn?:                    string
 	arn_suffix?:             string
 	connection_termination?: bool
-	deregistration_delay?:   number
+	deregistration_delay?:   string
 	health_check?: [...{
 		enabled?:             bool
 		healthy_threshold?:   number
@@ -20,15 +20,17 @@ package data
 	}]
 	id?:                                 string
 	lambda_multi_value_headers_enabled?: bool
-	load_balancing_algorithm_type?:      string
-	load_balancing_cross_zone_enabled?:  string
-	name?:                               string
-	port?:                               number
-	preserve_client_ip?:                 string
-	protocol?:                           string
-	protocol_version?:                   string
-	proxy_protocol_v2?:                  bool
-	slow_start?:                         number
+	load_balancer_arns?: [...string]
+	load_balancing_algorithm_type?:     string
+	load_balancing_anomaly_mitigation?: string
+	load_balancing_cross_zone_enabled?: string
+	name?:                              string
+	port?:                              number
+	preserve_client_ip?:                string
+	protocol?:                          string
+	protocol_version?:                  string
+	proxy_protocol_v2?:                 bool
+	slow_start?:                        number
 	stickiness?: [...{
 		cookie_duration?: number
 		cookie_name?:     string

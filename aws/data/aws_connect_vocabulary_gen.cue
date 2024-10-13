@@ -7,7 +7,7 @@ package data
 	content?:            string
 	failure_reason?:     string
 	id?:                 string
-	instance_id:         string
+	instance_id!:        string
 	language_code?:      string
 	last_modified_time?: string
 	name?:               string

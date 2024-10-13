@@ -8,6 +8,6 @@ package data
 	path?:                 string
 	permissions_boundary?: string
 	tags?: [string]: string
-	user_id?:  string
-	user_name: string
+	user_id?:   string
+	user_name!: string
 }

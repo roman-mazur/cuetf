@@ -12,10 +12,10 @@ package data
 		product_id?:    string
 		type?:          string
 	}]
-	id?:          string
-	portfolio_id: string
-	product_id?:  string
-	timeouts?:    #timeouts
+	id?:           string
+	portfolio_id!: string
+	product_id?:   string
+	timeouts?:     #timeouts
 
 	#timeouts: read?: string
 }

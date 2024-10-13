@@ -10,8 +10,8 @@ package res
 	id?:                string
 	last_updated_time?: string
 	launch_count?:      number
-	name:               string
-	pattern:            string
+	name!:              string
+	pattern!:           string
 	tags?: [string]: string
 	tags_all?: [string]: string
 }

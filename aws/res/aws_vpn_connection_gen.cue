@@ -9,7 +9,7 @@ import "list"
 	core_network_arn?:               string
 	core_network_attachment_arn?:    string
 	customer_gateway_configuration?: string
-	customer_gateway_id:             string
+	customer_gateway_id!:            string
 	enable_acceleration?:            bool
 	id?:                             string
 	local_ipv4_network_cidr?:        string
@@ -77,7 +77,7 @@ import "list"
 	tunnel2_startup_action?:            string
 	tunnel2_vgw_inside_address?:        string
 	tunnel_inside_ip_version?:          string
-	type:                               string
+	type!:                              string
 	vgw_telemetry?: [...{
 		accepted_route_count?: number
 		certificate_arn?:      string
@@ -86,7 +86,7 @@ import "list"
 		status?:               string
 		status_message?:       string
 	}]
-	vpn_gateway_id?:      string
+	vpn_gateway_id?: string
 	tunnel1_log_options?: #tunnel1_log_options | list.MaxItems(1) & [...#tunnel1_log_options]
 	tunnel2_log_options?: #tunnel2_log_options | list.MaxItems(1) & [...#tunnel2_log_options]
 

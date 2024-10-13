@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_db_proxy_target")
 	db_cluster_identifier?:  string
 	db_instance_identifier?: string
-	db_proxy_name:           string
+	db_proxy_name!:          string
 	endpoint?:               string
 	id?:                     string
 	port?:                   number
 	rds_resource_id?:        string
 	target_arn?:             string
-	target_group_name:       string
+	target_group_name!:      string
 	tracked_cluster_id?:     string
 	type?:                   string
 }

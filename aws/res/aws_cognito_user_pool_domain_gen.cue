@@ -8,9 +8,9 @@ package res
 	cloudfront_distribution?:         string
 	cloudfront_distribution_arn?:     string
 	cloudfront_distribution_zone_id?: string
-	domain:                           string
+	domain!:                          string
 	id?:                              string
 	s3_bucket?:                       string
-	user_pool_id:                     string
+	user_pool_id!:                    string
 	version?:                         string
 }

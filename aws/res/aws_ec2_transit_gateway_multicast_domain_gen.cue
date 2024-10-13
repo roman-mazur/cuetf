@@ -11,8 +11,8 @@ package res
 	static_sources_support?:          string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	transit_gateway_id: string
-	timeouts?:          #timeouts
+	transit_gateway_id!: string
+	timeouts?:           #timeouts
 
 	#timeouts: {
 		create?: string

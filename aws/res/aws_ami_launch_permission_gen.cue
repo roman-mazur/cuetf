@@ -6,7 +6,7 @@ package res
 	account_id?:              string
 	group?:                   string
 	id?:                      string
-	image_id:                 string
+	image_id!:                string
 	organization_arn?:        string
 	organizational_unit_arn?: string
 }

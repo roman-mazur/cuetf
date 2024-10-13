@@ -10,7 +10,7 @@ package res
 	enabled?:           bool
 	id?:                string
 	last_updated_date?: string
-	name:               string
+	name!:              string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	value?: string

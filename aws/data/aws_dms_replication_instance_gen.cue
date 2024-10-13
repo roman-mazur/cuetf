@@ -15,7 +15,7 @@ package data
 	publicly_accessible?:          bool
 	replication_instance_arn?:     string
 	replication_instance_class?:   string
-	replication_instance_id:       string
+	replication_instance_id!:      string
 	replication_instance_private_ips?: [...string]
 	replication_instance_public_ips?: [...string]
 	replication_subnet_group_id?: string

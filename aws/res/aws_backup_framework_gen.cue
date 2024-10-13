@@ -10,17 +10,17 @@ import "list"
 	deployment_status?: string
 	description?:       string
 	id?:                string
-	name:               string
+	name!:              string
 	status?:            string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	control?:  #control | [_, ...] & [...#control]
+	control?: #control | [_, ...] & [...#control]
 	timeouts?: #timeouts
 
 	#control: {
-		name:             string
+		name!: string
 		input_parameter?: #control.#input_parameter | [...#control.#input_parameter]
-		scope?:           #control.#scope | list.MaxItems(1) & [...#control.#scope]
+		scope?: #control.#scope | list.MaxItems(1) & [...#control.#scope]
 
 		#input_parameter: {
 			name?:  string

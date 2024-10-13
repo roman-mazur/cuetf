@@ -12,11 +12,12 @@ package res
 	}]
 	cluster_id?:               string
 	cluster_state?:            string
-	hsm_type:                  string
+	hsm_type!:                 string
 	id?:                       string
+	mode?:                     string
 	security_group_id?:        string
 	source_backup_identifier?: string
-	subnet_ids: [...string]
+	subnet_ids!: [...string]
 	tags?: [string]: string
 	tags_all?: [string]: string
 	vpc_id?:   string

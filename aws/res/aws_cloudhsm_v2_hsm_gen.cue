@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cloudhsm_v2_hsm")
 	availability_zone?: string
-	cluster_id:         string
+	cluster_id!:        string
 	hsm_eni_id?:        string
 	hsm_id?:            string
 	hsm_state?:         string

@@ -8,12 +8,12 @@ package data
 		download_speed?: number
 		upload_speed?:   number
 	}]
-	description?:      string
-	global_network_id: string
-	id?:               string
-	link_id:           string
-	provider_name?:    string
-	site_id?:          string
+	description?:       string
+	global_network_id!: string
+	id?:                string
+	link_id!:           string
+	provider_name?:     string
+	site_id?:           string
 	tags?: [string]: string
 	type?: string
 }

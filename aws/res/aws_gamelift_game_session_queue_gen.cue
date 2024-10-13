@@ -7,15 +7,15 @@ package res
 	custom_event_data?: string
 	destinations?: [...string]
 	id?:                  string
-	name:                 string
+	name!:                string
 	notification_target?: string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	timeout_in_seconds?:    number
+	timeout_in_seconds?: number
 	player_latency_policy?: #player_latency_policy | [...#player_latency_policy]
 
 	#player_latency_policy: {
-		maximum_individual_player_latency_milliseconds: number
-		policy_duration_seconds?:                       number
+		maximum_individual_player_latency_milliseconds!: number
+		policy_duration_seconds?:                        number
 	}
 }

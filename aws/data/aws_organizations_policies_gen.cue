@@ -3,7 +3,7 @@ package data
 #aws_organizations_policies: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_organizations_policies")
-	filter: string
-	id?:    string
+	filter!: string
+	id?:     string
 	ids?: [...string]
 }

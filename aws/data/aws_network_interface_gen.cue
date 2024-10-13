@@ -34,13 +34,13 @@ package data
 	security_groups?: [...string]
 	subnet_id?: string
 	tags?: [string]: string
-	vpc_id?:   string
-	filter?:   #filter | [...#filter]
+	vpc_id?: string
+	filter?: #filter | [...#filter]
 	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

@@ -13,7 +13,7 @@ package data
 		xslt_template_name?:             string
 		xslt_template_name_for_mac_sec?: string
 	}]
-	router_type_identifier:  string
-	virtual_interface_id:    string
+	router_type_identifier!: string
+	virtual_interface_id!:   string
 	virtual_interface_name?: string
 }

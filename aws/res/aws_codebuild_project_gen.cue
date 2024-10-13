@@ -13,26 +13,26 @@ import "list"
 	description?:            string
 	encryption_key?:         string
 	id?:                     string
-	name:                    string
+	name!:                   string
 	project_visibility?:     string
 	public_project_alias?:   string
 	queued_timeout?:         number
 	resource_access_role?:   string
-	service_role:            string
+	service_role!:           string
 	source_version?:         string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	artifacts?:                #artifacts | list.MaxItems(1) & [_, ...] & [...#artifacts]
-	build_batch_config?:       #build_batch_config | list.MaxItems(1) & [...#build_batch_config]
-	cache?:                    #cache | list.MaxItems(1) & [...#cache]
-	environment?:              #environment | list.MaxItems(1) & [_, ...] & [...#environment]
-	file_system_locations?:    #file_system_locations | [...#file_system_locations]
-	logs_config?:              #logs_config | list.MaxItems(1) & [...#logs_config]
-	secondary_artifacts?:      #secondary_artifacts | list.MaxItems(12) & [...#secondary_artifacts]
+	artifacts?: #artifacts | list.MaxItems(1) & [_, ...] & [...#artifacts]
+	build_batch_config?: #build_batch_config | list.MaxItems(1) & [...#build_batch_config]
+	cache?: #cache | list.MaxItems(1) & [...#cache]
+	environment?: #environment | list.MaxItems(1) & [_, ...] & [...#environment]
+	file_system_locations?: #file_system_locations | [...#file_system_locations]
+	logs_config?: #logs_config | list.MaxItems(1) & [...#logs_config]
+	secondary_artifacts?: #secondary_artifacts | list.MaxItems(12) & [...#secondary_artifacts]
 	secondary_source_version?: #secondary_source_version | list.MaxItems(12) & [...#secondary_source_version]
-	secondary_sources?:        #secondary_sources | list.MaxItems(12) & [...#secondary_sources]
-	source?:                   #source | list.MaxItems(1) & [_, ...] & [...#source]
-	vpc_config?:               #vpc_config | list.MaxItems(1) & [...#vpc_config]
+	secondary_sources?: #secondary_sources | list.MaxItems(12) & [...#secondary_sources]
+	source?: #source | list.MaxItems(1) & [_, ...] & [...#source]
+	vpc_config?: #vpc_config | list.MaxItems(1) & [...#vpc_config]
 
 	#artifacts: {
 		artifact_identifier?:    string
@@ -44,14 +44,14 @@ import "list"
 		override_artifact_name?: bool
 		packaging?:              string
 		path?:                   string
-		type:                    string
+		type!:                   string
 	}
 
 	#build_batch_config: {
 		combine_artifacts?: bool
-		service_role:       string
+		service_role!:      string
 		timeout_in_mins?:   number
-		restrictions?:      #build_batch_config.#restrictions | list.MaxItems(1) & [...#build_batch_config.#restrictions]
+		restrictions?: #build_batch_config.#restrictions | list.MaxItems(1) & [...#build_batch_config.#restrictions]
 
 		#restrictions: {
 			compute_types_allowed?: [...string]
@@ -67,23 +67,26 @@ import "list"
 
 	#environment: {
 		certificate?:                 string
-		compute_type:                 string
-		image:                        string
+		compute_type!:                string
+		image!:                       string
 		image_pull_credentials_type?: string
 		privileged_mode?:             bool
-		type:                         string
-		environment_variable?:        #environment.#environment_variable | [...#environment.#environment_variable]
-		registry_credential?:         #environment.#registry_credential | list.MaxItems(1) & [...#environment.#registry_credential]
+		type!:                        string
+		environment_variable?: #environment.#environment_variable | [...#environment.#environment_variable]
+		fleet?: #environment.#fleet | list.MaxItems(1) & [...#environment.#fleet]
+		registry_credential?: #environment.#registry_credential | list.MaxItems(1) & [...#environment.#registry_credential]
 
 		#environment_variable: {
-			name:  string
-			type?: string
-			value: string
+			name!:  string
+			type?:  string
+			value!: string
 		}
 
+		#fleet: fleet_arn?: string
+
 		#registry_credential: {
-			credential:          string
-			credential_provider: string
+			credential!:          string
+			credential_provider!: string
 		}
 	}
 
@@ -97,7 +100,7 @@ import "list"
 
 	#logs_config: {
 		cloudwatch_logs?: #logs_config.#cloudwatch_logs | list.MaxItems(1) & [...#logs_config.#cloudwatch_logs]
-		s3_logs?:         #logs_config.#s3_logs | list.MaxItems(1) & [...#logs_config.#s3_logs]
+		s3_logs?: #logs_config.#s3_logs | list.MaxItems(1) & [...#logs_config.#s3_logs]
 
 		#cloudwatch_logs: {
 			group_name?:  string
@@ -114,7 +117,7 @@ import "list"
 	}
 
 	#secondary_artifacts: {
-		artifact_identifier:     string
+		artifact_identifier!:    string
 		bucket_owner_access?:    string
 		encryption_disabled?:    bool
 		location?:               string
@@ -123,23 +126,23 @@ import "list"
 		override_artifact_name?: bool
 		packaging?:              string
 		path?:                   string
-		type:                    string
+		type!:                   string
 	}
 
 	#secondary_source_version: {
-		source_identifier: string
-		source_version:    string
+		source_identifier!: string
+		source_version!:    string
 	}
 
 	#secondary_sources: {
-		buildspec?:             string
-		git_clone_depth?:       number
-		insecure_ssl?:          bool
-		location?:              string
-		report_build_status?:   bool
-		source_identifier:      string
-		type:                   string
-		build_status_config?:   #secondary_sources.#build_status_config | list.MaxItems(1) & [...#secondary_sources.#build_status_config]
+		buildspec?:           string
+		git_clone_depth?:     number
+		insecure_ssl?:        bool
+		location?:            string
+		report_build_status?: bool
+		source_identifier!:   string
+		type!:                string
+		build_status_config?: #secondary_sources.#build_status_config | list.MaxItems(1) & [...#secondary_sources.#build_status_config]
 		git_submodules_config?: #secondary_sources.#git_submodules_config | list.MaxItems(1) & [...#secondary_sources.#git_submodules_config]
 
 		#build_status_config: {
@@ -147,17 +150,17 @@ import "list"
 			target_url?: string
 		}
 
-		#git_submodules_config: fetch_submodules: bool
+		#git_submodules_config: fetch_submodules!: bool
 	}
 
 	#source: {
-		buildspec?:             string
-		git_clone_depth?:       number
-		insecure_ssl?:          bool
-		location?:              string
-		report_build_status?:   bool
-		type:                   string
-		build_status_config?:   #source.#build_status_config | list.MaxItems(1) & [...#source.#build_status_config]
+		buildspec?:           string
+		git_clone_depth?:     number
+		insecure_ssl?:        bool
+		location?:            string
+		report_build_status?: bool
+		type!:                string
+		build_status_config?: #source.#build_status_config | list.MaxItems(1) & [...#source.#build_status_config]
 		git_submodules_config?: #source.#git_submodules_config | list.MaxItems(1) & [...#source.#git_submodules_config]
 
 		#build_status_config: {
@@ -165,12 +168,12 @@ import "list"
 			target_url?: string
 		}
 
-		#git_submodules_config: fetch_submodules: bool
+		#git_submodules_config: fetch_submodules!: bool
 	}
 
 	#vpc_config: {
-		security_group_ids: [...string]
-		subnets: [...string]
-		vpc_id: string
+		security_group_ids!: [...string]
+		subnets!: [...string]
+		vpc_id!: string
 	}
 }

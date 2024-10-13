@@ -15,7 +15,7 @@ import "list"
 	last_record_id?:                         string
 	last_successful_provisioning_record_id?: string
 	launch_role_arn?:                        string
-	name:                                    string
+	name!:                                   string
 	notification_arns?: [...string]
 	outputs?: [...{
 		description?: string
@@ -33,13 +33,13 @@ import "list"
 	status_message?:             string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	type?:                               string
-	provisioning_parameters?:            #provisioning_parameters | [...#provisioning_parameters]
+	type?: string
+	provisioning_parameters?: #provisioning_parameters | [...#provisioning_parameters]
 	stack_set_provisioning_preferences?: #stack_set_provisioning_preferences | list.MaxItems(1) & [...#stack_set_provisioning_preferences]
-	timeouts?:                           #timeouts
+	timeouts?: #timeouts
 
 	#provisioning_parameters: {
-		key:                 string
+		key!:                string
 		use_previous_value?: bool
 		value?:              string
 	}

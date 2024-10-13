@@ -15,9 +15,9 @@ package data
 		status?:                        string
 		tokens?: [...string]
 	}]
-	email_identity: string
-	id?:            string
-	identity_type?: string
+	email_identity!: string
+	id?:             string
+	identity_type?:  string
 	tags?: [string]: string
 	verified_for_sending_status?: bool
 }

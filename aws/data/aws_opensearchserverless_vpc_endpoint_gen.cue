@@ -8,6 +8,6 @@ package data
 	name?:         string
 	security_group_ids?: [...string]
 	subnet_ids?: [...string]
-	vpc_endpoint_id: string
-	vpc_id?:         string
+	vpc_endpoint_id!: string
+	vpc_id?:          string
 }

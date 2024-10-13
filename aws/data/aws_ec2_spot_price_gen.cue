@@ -8,12 +8,12 @@ package data
 	instance_type?:        string
 	spot_price?:           string
 	spot_price_timestamp?: string
-	filter?:               #filter | [...#filter]
-	timeouts?:             #timeouts
+	filter?: #filter | [...#filter]
+	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

@@ -8,14 +8,14 @@ package data
 	ids?: [...string]
 	include_deprecated?: bool
 	name_regex?:         string
-	owners: [...string]
+	owners!: [...string]
 	sort_ascending?: bool
-	filter?:         #filter | [...#filter]
-	timeouts?:       #timeouts
+	filter?: #filter | [...#filter]
+	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

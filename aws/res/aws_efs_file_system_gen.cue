@@ -25,11 +25,15 @@ import "list"
 	}]
 	tags?: [string]: string
 	tags_all?: [string]: string
-	throughput_mode?:  string
-	lifecycle_policy?: #lifecycle_policy | list.MaxItems(2) & [...#lifecycle_policy]
+	throughput_mode?: string
+	lifecycle_policy?: #lifecycle_policy | list.MaxItems(3) & [...#lifecycle_policy]
+	protection?: #protection | list.MaxItems(1) & [...#protection]
 
 	#lifecycle_policy: {
+		transition_to_archive?:               string
 		transition_to_ia?:                    string
 		transition_to_primary_storage_class?: string
 	}
+
+	#protection: replication_overwrite?: string
 }

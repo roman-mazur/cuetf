@@ -8,5 +8,5 @@ package data
 	id?:                 string
 	name?:               string
 	status?:             string
-	stream_arn:          string
+	stream_arn!:         string
 }

@@ -23,5 +23,5 @@ package data
 	stack_set_name?:            string
 	status?:                    string
 	tags?: [string]: string
-	workspace_id: string
+	workspace_id!: string
 }

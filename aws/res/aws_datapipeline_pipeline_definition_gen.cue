@@ -3,34 +3,34 @@ package res
 #aws_datapipeline_pipeline_definition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_datapipeline_pipeline_definition")
-	id?:               string
-	pipeline_id:       string
+	id?:          string
+	pipeline_id!: string
 	parameter_object?: #parameter_object | [...#parameter_object]
-	parameter_value?:  #parameter_value | [...#parameter_value]
-	pipeline_object?:  #pipeline_object | [_, ...] & [...#pipeline_object]
+	parameter_value?: #parameter_value | [...#parameter_value]
+	pipeline_object?: #pipeline_object | [_, ...] & [...#pipeline_object]
 
 	#parameter_object: {
-		id:         string
+		id!: string
 		attribute?: #parameter_object.#attribute | [...#parameter_object.#attribute]
 
 		#attribute: {
-			key:          string
-			string_value: string
+			key!:          string
+			string_value!: string
 		}
 	}
 
 	#parameter_value: {
-		id:           string
-		string_value: string
+		id!:           string
+		string_value!: string
 	}
 
 	#pipeline_object: {
-		id:     string
-		name:   string
+		id!:   string
+		name!: string
 		field?: #pipeline_object.#field | [...#pipeline_object.#field]
 
 		#field: {
-			key:           string
+			key!:          string
 			ref_value?:    string
 			string_value?: string
 		}

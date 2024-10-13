@@ -10,12 +10,12 @@ package data
 	ipv6_addresses?: [...string]
 	private_ips?: [...string]
 	public_ips?: [...string]
-	filter?:   #filter | [...#filter]
+	filter?: #filter | [...#filter]
 	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

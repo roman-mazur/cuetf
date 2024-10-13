@@ -18,7 +18,7 @@ package res
 	status?:                string
 	sub?:                   string
 	temporary_password?:    string
-	user_pool_id:           string
-	username:               string
+	user_pool_id!:          string
+	username!:              string
 	validation_data?: [string]: string
 }

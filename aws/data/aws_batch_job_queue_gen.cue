@@ -8,8 +8,14 @@ package data
 		compute_environment?: string
 		order?:               number
 	}]
-	id?:                    string
-	name:                   string
+	id?: string
+	job_state_time_limit_action?: [...{
+		action?:           string
+		max_time_seconds?: number
+		reason?:           string
+		state?:            string
+	}]
+	name!:                  string
 	priority?:              number
 	scheduling_policy_arn?: string
 	state?:                 string

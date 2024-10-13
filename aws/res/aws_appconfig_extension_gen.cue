@@ -6,28 +6,28 @@ package res
 	arn?:         string
 	description?: string
 	id?:          string
-	name:         string
+	name!:        string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	version?:      number
+	version?: number
 	action_point?: #action_point | [_, ...] & [...#action_point]
-	parameter?:    #parameter | [...#parameter]
+	parameter?: #parameter | [...#parameter]
 
 	#action_point: {
-		point:   string
+		point!: string
 		action?: #action_point.#action | [_, ...] & [...#action_point.#action]
 
 		#action: {
 			description?: string
-			name:         string
-			role_arn:     string
-			uri:          string
+			name!:        string
+			role_arn?:    string
+			uri!:         string
 		}
 	}
 
 	#parameter: {
 		description?: string
-		name:         string
+		name!:        string
 		required?:    bool
 	}
 }

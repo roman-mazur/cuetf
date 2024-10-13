@@ -7,8 +7,8 @@ package res
 	description?: string
 	id?:          string
 	max_devices?: number
-	name:         string
-	project_arn:  string
+	name!:        string
+	project_arn!: string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	type?: string

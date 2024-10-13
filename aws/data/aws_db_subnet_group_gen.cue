@@ -6,7 +6,7 @@ package data
 	arn?:         string
 	description?: string
 	id?:          string
-	name:         string
+	name!:        string
 	status?:      string
 	subnet_ids?: [...string]
 	supported_network_types?: [...string]

@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_elastictranscoder_preset")
 	arn?:         string
-	container:    string
+	container!:   string
 	description?: string
 	id?:          string
 	name?:        string
 	type?:        string
 	video_codec_options?: [string]: string
-	audio?:               #audio | list.MaxItems(1) & [...#audio]
+	audio?: #audio | list.MaxItems(1) & [...#audio]
 	audio_codec_options?: #audio_codec_options | list.MaxItems(1) & [...#audio_codec_options]
-	thumbnails?:          #thumbnails | list.MaxItems(1) & [...#thumbnails]
-	video?:               #video | list.MaxItems(1) & [...#video]
-	video_watermarks?:    #video_watermarks | [...#video_watermarks]
+	thumbnails?: #thumbnails | list.MaxItems(1) & [...#thumbnails]
+	video?: #video | list.MaxItems(1) & [...#video]
+	video_watermarks?: #video_watermarks | [...#video_watermarks]
 
 	#audio: {
 		audio_packing_mode?: string

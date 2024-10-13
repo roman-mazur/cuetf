@@ -6,7 +6,7 @@ package res
 	engine_native_audit_fields_included?: bool
 	id?:                                  string
 	kinesis_stream_name?:                 string
-	kms_key_id:                           string
-	mode:                                 string
-	resource_arn:                         string
+	kms_key_id!:                          string
+	mode!:                                string
+	resource_arn!:                        string
 }

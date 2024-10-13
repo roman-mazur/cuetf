@@ -16,7 +16,7 @@ import "list"
 	fail_on_warnings?:             bool
 	id?:                           string
 	minimum_compression_size?:     string
-	name:                          string
+	name!:                         string
 	parameters?: [string]: string
 	policy?:            string
 	put_rest_api_mode?: string
@@ -26,7 +26,7 @@ import "list"
 	endpoint_configuration?: #endpoint_configuration | list.MaxItems(1) & [...#endpoint_configuration]
 
 	#endpoint_configuration: {
-		types: [...string]
+		types!: [...string]
 		vpc_endpoint_ids?: [...string]
 	}
 }

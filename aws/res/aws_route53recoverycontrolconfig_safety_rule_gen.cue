@@ -7,18 +7,18 @@ import "list"
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_route53recoverycontrolconfig_safety_rule")
 	arn?: string
 	asserted_controls?: [...string]
-	control_panel_arn: string
+	control_panel_arn!: string
 	gating_controls?: [...string]
 	id?:     string
-	name:    string
+	name!:   string
 	status?: string
 	target_controls?: [...string]
-	wait_period_ms: number
-	rule_config?:   #rule_config | list.MaxItems(1) & [_, ...] & [...#rule_config]
+	wait_period_ms!: number
+	rule_config?: #rule_config | list.MaxItems(1) & [_, ...] & [...#rule_config]
 
 	#rule_config: {
-		inverted:  bool
-		threshold: number
-		type:      string
+		inverted!:  bool
+		threshold!: number
+		type!:      string
 	}
 }

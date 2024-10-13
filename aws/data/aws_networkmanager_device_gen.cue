@@ -8,10 +8,10 @@ package data
 		subnet_arn?: string
 		zone?:       string
 	}]
-	description?:      string
-	device_id:         string
-	global_network_id: string
-	id?:               string
+	description?:       string
+	device_id!:         string
+	global_network_id!: string
+	id?:                string
 	location?: [...{
 		address?:   string
 		latitude?:  string

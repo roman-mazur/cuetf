@@ -5,6 +5,6 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_secretsmanager_secret_policy")
 	block_public_policy?: bool
 	id?:                  string
-	policy:               string
-	secret_arn:           string
+	policy!:              string
+	secret_arn!:          string
 }

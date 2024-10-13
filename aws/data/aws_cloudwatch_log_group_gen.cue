@@ -7,7 +7,8 @@ package data
 	creation_time?:     number
 	id?:                string
 	kms_key_id?:        string
-	name:               string
+	log_group_class?:   string
+	name!:              string
 	retention_in_days?: number
 	tags?: [string]: string
 }

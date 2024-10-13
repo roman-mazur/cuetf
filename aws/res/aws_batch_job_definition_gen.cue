@@ -8,23 +8,23 @@ import "list"
 	arn?:                  string
 	container_properties?: string
 	id?:                   string
-	name:                  string
+	name!:                 string
 	parameters?: [string]: string
 	platform_capabilities?: [...string]
 	propagate_tags?: bool
 	revision?:       number
 	tags?: [string]: string
 	tags_all?: [string]: string
-	type:            string
+	type!: string
 	retry_strategy?: #retry_strategy | list.MaxItems(1) & [...#retry_strategy]
-	timeout?:        #timeout | list.MaxItems(1) & [...#timeout]
+	timeout?: #timeout | list.MaxItems(1) & [...#timeout]
 
 	#retry_strategy: {
-		attempts?:         number
+		attempts?: number
 		evaluate_on_exit?: #retry_strategy.#evaluate_on_exit | list.MaxItems(5) & [...#retry_strategy.#evaluate_on_exit]
 
 		#evaluate_on_exit: {
-			action:            string
+			action!:           string
 			on_exit_code?:     string
 			on_reason?:        string
 			on_status_reason?: string

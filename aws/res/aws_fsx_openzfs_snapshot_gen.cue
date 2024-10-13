@@ -6,11 +6,11 @@ package res
 	arn?:           string
 	creation_time?: string
 	id?:            string
-	name:           string
+	name!:          string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	volume_id: string
-	timeouts?: #timeouts
+	volume_id!: string
+	timeouts?:  #timeouts
 
 	#timeouts: {
 		create?: string

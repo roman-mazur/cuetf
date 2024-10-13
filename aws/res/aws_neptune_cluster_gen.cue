@@ -38,11 +38,12 @@ import "list"
 	skip_final_snapshot?:                   bool
 	snapshot_identifier?:                   string
 	storage_encrypted?:                     bool
+	storage_type?:                          string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	vpc_security_group_ids?: [...string]
 	serverless_v2_scaling_configuration?: #serverless_v2_scaling_configuration | list.MaxItems(1) & [...#serverless_v2_scaling_configuration]
-	timeouts?:                            #timeouts
+	timeouts?: #timeouts
 
 	#serverless_v2_scaling_configuration: {
 		max_capacity?: number

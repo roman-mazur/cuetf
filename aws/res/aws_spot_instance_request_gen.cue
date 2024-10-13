@@ -56,24 +56,24 @@ import "list"
 	valid_until?:                 string
 	volume_tags?: [string]: string
 	vpc_security_group_ids?: [...string]
-	wait_for_fulfillment?:               bool
+	wait_for_fulfillment?: bool
 	capacity_reservation_specification?: #capacity_reservation_specification | list.MaxItems(1) & [...#capacity_reservation_specification]
-	cpu_options?:                        #cpu_options | list.MaxItems(1) & [...#cpu_options]
-	credit_specification?:               #credit_specification | list.MaxItems(1) & [...#credit_specification]
-	ebs_block_device?:                   #ebs_block_device | [...#ebs_block_device]
-	enclave_options?:                    #enclave_options | list.MaxItems(1) & [...#enclave_options]
-	ephemeral_block_device?:             #ephemeral_block_device | [...#ephemeral_block_device]
-	launch_template?:                    #launch_template | list.MaxItems(1) & [...#launch_template]
-	maintenance_options?:                #maintenance_options | list.MaxItems(1) & [...#maintenance_options]
-	metadata_options?:                   #metadata_options | list.MaxItems(1) & [...#metadata_options]
-	network_interface?:                  #network_interface | [...#network_interface]
-	private_dns_name_options?:           #private_dns_name_options | list.MaxItems(1) & [...#private_dns_name_options]
-	root_block_device?:                  #root_block_device | list.MaxItems(1) & [...#root_block_device]
-	timeouts?:                           #timeouts
+	cpu_options?: #cpu_options | list.MaxItems(1) & [...#cpu_options]
+	credit_specification?: #credit_specification | list.MaxItems(1) & [...#credit_specification]
+	ebs_block_device?: #ebs_block_device | [...#ebs_block_device]
+	enclave_options?: #enclave_options | list.MaxItems(1) & [...#enclave_options]
+	ephemeral_block_device?: #ephemeral_block_device | [...#ephemeral_block_device]
+	launch_template?: #launch_template | list.MaxItems(1) & [...#launch_template]
+	maintenance_options?: #maintenance_options | list.MaxItems(1) & [...#maintenance_options]
+	metadata_options?: #metadata_options | list.MaxItems(1) & [...#metadata_options]
+	network_interface?: #network_interface | [...#network_interface]
+	private_dns_name_options?: #private_dns_name_options | list.MaxItems(1) & [...#private_dns_name_options]
+	root_block_device?: #root_block_device | list.MaxItems(1) & [...#root_block_device]
+	timeouts?: #timeouts
 
 	#capacity_reservation_specification: {
 		capacity_reservation_preference?: string
-		capacity_reservation_target?:     #capacity_reservation_specification.#capacity_reservation_target | list.MaxItems(1) & [...#capacity_reservation_specification.#capacity_reservation_target]
+		capacity_reservation_target?: #capacity_reservation_specification.#capacity_reservation_target | list.MaxItems(1) & [...#capacity_reservation_specification.#capacity_reservation_target]
 
 		#capacity_reservation_target: {
 			capacity_reservation_id?:                 string
@@ -91,12 +91,13 @@ import "list"
 
 	#ebs_block_device: {
 		delete_on_termination?: bool
-		device_name:            string
+		device_name!:           string
 		encrypted?:             bool
 		iops?:                  number
 		kms_key_id?:            string
 		snapshot_id?:           string
 		tags?: [string]: string
+		tags_all?: [string]: string
 		throughput?:  number
 		volume_id?:   string
 		volume_size?: number
@@ -106,7 +107,7 @@ import "list"
 	#enclave_options: enabled?: bool
 
 	#ephemeral_block_device: {
-		device_name:   string
+		device_name!:  string
 		no_device?:    bool
 		virtual_name?: string
 	}
@@ -129,9 +130,9 @@ import "list"
 
 	#network_interface: {
 		delete_on_termination?: bool
-		device_index:           number
+		device_index!:          number
 		network_card_index?:    number
-		network_interface_id:   string
+		network_interface_id!:  string
 	}
 
 	#private_dns_name_options: {
@@ -147,6 +148,7 @@ import "list"
 		iops?:                  number
 		kms_key_id?:            string
 		tags?: [string]: string
+		tags_all?: [string]: string
 		throughput?:  number
 		volume_id?:   string
 		volume_size?: number
@@ -156,5 +158,6 @@ import "list"
 	#timeouts: {
 		create?: string
 		delete?: string
+		read?:   string
 	}
 }

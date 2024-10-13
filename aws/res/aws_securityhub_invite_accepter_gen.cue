@@ -5,5 +5,5 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_securityhub_invite_accepter")
 	id?:            string
 	invitation_id?: string
-	master_id:      string
+	master_id!:     string
 }

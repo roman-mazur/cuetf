@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_lb_cookie_stickiness_policy")
 	cookie_expiration_period?: number
 	id?:                       string
-	lb_port:                   number
-	load_balancer:             string
-	name:                      string
+	lb_port!:                  number
+	load_balancer!:            string
+	name!:                     string
 }

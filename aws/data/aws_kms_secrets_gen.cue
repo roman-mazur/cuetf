@@ -11,8 +11,8 @@ package data
 		context?: [string]: string
 		encryption_algorithm?: string
 		grant_tokens?: [...string]
-		key_id?: string
-		name:    string
-		payload: string
+		key_id?:  string
+		name!:    string
+		payload!: string
 	}
 }

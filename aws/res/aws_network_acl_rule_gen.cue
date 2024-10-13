@@ -10,9 +10,9 @@ package res
 	icmp_type?:       number
 	id?:              string
 	ipv6_cidr_block?: string
-	network_acl_id:   string
-	protocol:         string
-	rule_action:      string
-	rule_number:      number
+	network_acl_id!:  string
+	protocol!:        string
+	rule_action!:     string
+	rule_number!:     number
 	to_port?:         number
 }

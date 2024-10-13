@@ -6,13 +6,13 @@ package res
 	arn?:                        string
 	close_on_deletion?:          bool
 	create_govcloud?:            bool
-	email:                       string
+	email!:                      string
 	govcloud_id?:                string
 	iam_user_access_to_billing?: string
 	id?:                         string
 	joined_method?:              string
 	joined_timestamp?:           string
-	name:                        string
+	name!:                       string
 	parent_id?:                  string
 	role_name?:                  string
 	status?:                     string

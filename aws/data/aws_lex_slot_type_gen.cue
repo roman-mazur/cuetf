@@ -12,7 +12,7 @@ package data
 	}]
 	id?:                       string
 	last_updated_date?:        string
-	name:                      string
+	name!:                     string
 	value_selection_strategy?: string
 	version?:                  string
 }

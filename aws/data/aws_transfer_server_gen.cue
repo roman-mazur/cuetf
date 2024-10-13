@@ -14,7 +14,8 @@ package data
 	logging_role?:           string
 	protocols?: [...string]
 	security_policy_name?: string
-	server_id:             string
+	server_id!:            string
 	structured_log_destinations?: [...string]
+	tags?: [string]: string
 	url?: string
 }

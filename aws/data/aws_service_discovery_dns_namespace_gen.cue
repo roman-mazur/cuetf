@@ -7,7 +7,7 @@ package data
 	description?: string
 	hosted_zone?: string
 	id?:          string
-	name:         string
+	name!:        string
 	tags?: [string]: string
-	type: string
+	type!: string
 }

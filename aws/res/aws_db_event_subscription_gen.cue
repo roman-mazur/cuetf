@@ -10,7 +10,7 @@ package res
 	id?:          string
 	name?:        string
 	name_prefix?: string
-	sns_topic:    string
+	sns_topic!:   string
 	source_ids?: [...string]
 	source_type?: string
 	tags?: [string]: string

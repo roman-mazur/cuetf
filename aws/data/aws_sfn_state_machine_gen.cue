@@ -8,7 +8,7 @@ package data
 	definition?:    string
 	description?:   string
 	id?:            string
-	name:           string
+	name!:          string
 	revision_id?:   string
 	role_arn?:      string
 	status?:        string

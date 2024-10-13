@@ -1,5 +1,7 @@
 package res
 
+import "list"
+
 #aws_docdb_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_docdb_cluster")
@@ -33,10 +35,19 @@ package res
 	skip_final_snapshot?:          bool
 	snapshot_identifier?:          string
 	storage_encrypted?:            bool
+	storage_type?:                 string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	vpc_security_group_ids?: [...string]
+	restore_to_point_in_time?: #restore_to_point_in_time | list.MaxItems(1) & [...#restore_to_point_in_time]
 	timeouts?: #timeouts
+
+	#restore_to_point_in_time: {
+		restore_to_time?:            string
+		restore_type?:               string
+		source_cluster_identifier!:  string
+		use_latest_restorable_time?: bool
+	}
 
 	#timeouts: {
 		create?: string

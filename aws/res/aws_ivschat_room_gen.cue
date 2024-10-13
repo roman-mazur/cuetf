@@ -14,7 +14,7 @@ import "list"
 	tags?: [string]: string
 	tags_all?: [string]: string
 	message_review_handler?: #message_review_handler | list.MaxItems(1) & [...#message_review_handler]
-	timeouts?:               #timeouts
+	timeouts?: #timeouts
 
 	#message_review_handler: {
 		fallback_result?: string

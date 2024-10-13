@@ -13,7 +13,7 @@ package res
 	secondary_allocation_ids?: [...string]
 	secondary_private_ip_address_count?: number
 	secondary_private_ip_addresses?: [...string]
-	subnet_id: string
+	subnet_id!: string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	timeouts?: #timeouts

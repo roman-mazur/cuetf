@@ -7,11 +7,11 @@ import "list"
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ssmcontacts_contact_channel")
 	activation_status?: string
 	arn?:               string
-	contact_id:         string
+	contact_id!:        string
 	id?:                string
-	name:               string
-	type:               string
-	delivery_address?:  #delivery_address | list.MaxItems(1) & [_, ...] & [...#delivery_address]
+	name!:              string
+	type!:              string
+	delivery_address?: #delivery_address | list.MaxItems(1) & [_, ...] & [...#delivery_address]
 
-	#delivery_address: simple_address: string
+	#delivery_address: simple_address!: string
 }

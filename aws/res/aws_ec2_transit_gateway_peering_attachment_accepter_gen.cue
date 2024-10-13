@@ -9,6 +9,6 @@ package res
 	peer_transit_gateway_id?: string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	transit_gateway_attachment_id: string
-	transit_gateway_id?:           string
+	transit_gateway_attachment_id!: string
+	transit_gateway_id?:            string
 }

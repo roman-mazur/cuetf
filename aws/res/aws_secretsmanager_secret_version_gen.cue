@@ -6,7 +6,7 @@ package res
 	arn?:           string
 	id?:            string
 	secret_binary?: string
-	secret_id:      string
+	secret_id!:     string
 	secret_string?: string
 	version_id?:    string
 	version_stages?: [...string]

@@ -8,7 +8,7 @@ package data
 	connection_properties?: [string]: string
 	connection_type?: string
 	description?:     string
-	id:               string
+	id!:              string
 	match_criteria?: [...string]
 	name?: string
 	physical_connection_requirements?: [...{

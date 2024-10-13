@@ -11,12 +11,12 @@ package res
 	status?:             string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	region?:   #region | [_, ...] & [...#region]
+	region?: #region | [_, ...] & [...#region]
 	timeouts?: #timeouts
 
 	#region: {
 		kms_key_arn?:    string
-		name:            string
+		name!:           string
 		status?:         string
 		status_message?: string
 	}

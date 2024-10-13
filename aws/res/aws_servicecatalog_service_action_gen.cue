@@ -8,16 +8,16 @@ import "list"
 	accept_language?: string
 	description?:     string
 	id?:              string
-	name:             string
-	definition?:      #definition | list.MaxItems(1) & [_, ...] & [...#definition]
-	timeouts?:        #timeouts
+	name!:            string
+	definition?: #definition | list.MaxItems(1) & [_, ...] & [...#definition]
+	timeouts?: #timeouts
 
 	#definition: {
 		assume_role?: string
-		name:         string
+		name!:        string
 		parameters?:  string
 		type?:        string
-		version:      string
+		version!:     string
 	}
 
 	#timeouts: {

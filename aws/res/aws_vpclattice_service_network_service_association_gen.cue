@@ -10,10 +10,10 @@ package res
 		domain_name?:    string
 		hosted_zone_id?: string
 	}]
-	id?:                        string
-	service_identifier:         string
-	service_network_identifier: string
-	status?:                    string
+	id?:                         string
+	service_identifier!:         string
+	service_network_identifier!: string
+	status?:                     string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	timeouts?: #timeouts

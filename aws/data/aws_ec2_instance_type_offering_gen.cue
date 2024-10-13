@@ -7,12 +7,12 @@ package data
 	instance_type?: string
 	location_type?: string
 	preferred_instance_types?: [...string]
-	filter?:   #filter | [...#filter]
+	filter?: #filter | [...#filter]
 	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

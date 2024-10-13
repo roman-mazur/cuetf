@@ -8,7 +8,7 @@ package data
 	deployment_status?: string
 	description?:       string
 	id?:                string
-	name:               string
+	name!:              string
 	report_delivery_channel?: [...{
 		formats?: [...string]
 		s3_bucket_name?: string

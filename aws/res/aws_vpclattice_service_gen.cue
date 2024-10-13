@@ -12,7 +12,7 @@ package res
 		hosted_zone_id?: string
 	}]
 	id?:     string
-	name:    string
+	name!:   string
 	status?: string
 	tags?: [string]: string
 	tags_all?: [string]: string

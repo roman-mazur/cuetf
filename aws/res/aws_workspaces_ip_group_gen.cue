@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_workspaces_ip_group")
 	description?: string
 	id?:          string
-	name:         string
+	name!:        string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	rules?: #rules | [...#rules]
 
 	#rules: {
 		description?: string
-		source:       string
+		source!:      string
 	}
 }

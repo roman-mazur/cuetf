@@ -9,12 +9,12 @@ import "list"
 	id?:                string
 	name?:              string
 	owner_information?: string
-	resource_type:      string
-	window_id:          string
-	targets?:           #targets | list.MaxItems(5) & [_, ...] & [...#targets]
+	resource_type!:     string
+	window_id!:         string
+	targets?: #targets | list.MaxItems(5) & [_, ...] & [...#targets]
 
 	#targets: {
-		key: string
-		values: [...string]
+		key!: string
+		values!: [...string]
 	}
 }

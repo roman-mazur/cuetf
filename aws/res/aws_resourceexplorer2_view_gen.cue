@@ -6,13 +6,13 @@ package res
 	arn?:          string
 	default_view?: bool
 	id?:           string
-	name:          string
+	name!:         string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	filters?:           #filters | [...#filters]
+	filters?: #filters | [...#filters]
 	included_property?: #included_property | [...#included_property]
 
-	#filters: filter_string: string
+	#filters: filter_string!: string
 
-	#included_property: name: string
+	#included_property: name!: string
 }

@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ebs_volume")
 	arn?:                  string
-	availability_zone:     string
+	availability_zone!:    string
 	encrypted?:            bool
 	final_snapshot?:       bool
 	id?:                   string

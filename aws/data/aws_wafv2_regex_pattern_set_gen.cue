@@ -6,9 +6,9 @@ package data
 	arn?:         string
 	description?: string
 	id?:          string
-	name:         string
+	name!:        string
 	regular_expression?: [...{
 		regex_string?: string
 	}]
-	scope: string
+	scope!: string
 }

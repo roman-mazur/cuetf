@@ -5,11 +5,11 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_apprunner_vpc_connector")
 	arn?: string
 	id?:  string
-	security_groups: [...string]
+	security_groups!: [...string]
 	status?: string
-	subnets: [...string]
+	subnets!: [...string]
 	tags?: [string]: string
 	tags_all?: [string]: string
-	vpc_connector_name:      string
+	vpc_connector_name!:     string
 	vpc_connector_revision?: number
 }

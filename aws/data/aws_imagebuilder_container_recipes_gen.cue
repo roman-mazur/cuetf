@@ -6,11 +6,11 @@ package data
 	arns?: [...string]
 	id?: string
 	names?: [...string]
-	owner?:  string
+	owner?: string
 	filter?: #filter | [...#filter]
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 }

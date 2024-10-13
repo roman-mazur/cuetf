@@ -19,7 +19,7 @@ package res
 	#replica: {
 		kms_key_id?:         string
 		last_accessed_date?: string
-		region:              string
+		region!:             string
 		status?:             string
 		status_message?:     string
 	}

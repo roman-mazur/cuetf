@@ -14,7 +14,7 @@ package data
 	}]
 	creation_time?:      string
 	function_arn?:       string
-	function_name:       string
+	function_name!:      string
 	function_url?:       string
 	id?:                 string
 	invoke_mode?:        string

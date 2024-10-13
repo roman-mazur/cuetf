@@ -5,8 +5,8 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_route53recoveryreadiness_recovery_group")
 	arn?: string
 	cells?: [...string]
-	id?:                 string
-	recovery_group_name: string
+	id?:                  string
+	recovery_group_name!: string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	timeouts?: #timeouts

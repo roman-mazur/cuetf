@@ -14,7 +14,7 @@ import "list"
 	certificate_upload_date?:                string
 	cloudfront_domain_name?:                 string
 	cloudfront_zone_id?:                     string
-	domain_name:                             string
+	domain_name!:                            string
 	id?:                                     string
 	ownership_verification_certificate_arn?: string
 	regional_certificate_arn?:               string
@@ -24,13 +24,13 @@ import "list"
 	security_policy?:                        string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	endpoint_configuration?:    #endpoint_configuration | list.MaxItems(1) & [...#endpoint_configuration]
+	endpoint_configuration?: #endpoint_configuration | list.MaxItems(1) & [...#endpoint_configuration]
 	mutual_tls_authentication?: #mutual_tls_authentication | list.MaxItems(1) & [...#mutual_tls_authentication]
 
-	#endpoint_configuration: types: [...string]
+	#endpoint_configuration: types!: [...string]
 
 	#mutual_tls_authentication: {
-		truststore_uri:      string
+		truststore_uri!:     string
 		truststore_version?: string
 	}
 }

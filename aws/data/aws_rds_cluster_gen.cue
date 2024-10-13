@@ -7,7 +7,7 @@ package data
 	availability_zones?: [...string]
 	backtrack_window?:        number
 	backup_retention_period?: number
-	cluster_identifier:       string
+	cluster_identifier!:      string
 	cluster_members?: [...string]
 	cluster_resource_id?:             string
 	database_name?:                   string

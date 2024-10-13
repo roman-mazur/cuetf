@@ -18,12 +18,12 @@ package data
 	sockets?:           number
 	tags?: [string]: string
 	total_vcpus?: number
-	filter?:      #filter | [...#filter]
-	timeouts?:    #timeouts
+	filter?: #filter | [...#filter]
+	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

@@ -11,6 +11,6 @@ package data
 	identity_type?:  string
 	namespace?:      string
 	principal_id?:   string
-	user_name:       string
+	user_name!:      string
 	user_role?:      string
 }

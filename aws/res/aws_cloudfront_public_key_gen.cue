@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cloudfront_public_key")
 	caller_reference?: string
 	comment?:          string
-	encoded_key:       string
+	encoded_key!:      string
 	etag?:             string
 	id?:               string
 	name?:             string

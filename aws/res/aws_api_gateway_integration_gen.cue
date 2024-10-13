@@ -11,18 +11,18 @@ import "list"
 	connection_type?:         string
 	content_handling?:        string
 	credentials?:             string
-	http_method:              string
+	http_method!:             string
 	id?:                      string
 	integration_http_method?: string
 	passthrough_behavior?:    string
 	request_parameters?: [string]: string
 	request_templates?: [string]: string
-	resource_id:           string
-	rest_api_id:           string
+	resource_id!:          string
+	rest_api_id!:          string
 	timeout_milliseconds?: number
-	type:                  string
+	type!:                 string
 	uri?:                  string
-	tls_config?:           #tls_config | list.MaxItems(1) & [...#tls_config]
+	tls_config?: #tls_config | list.MaxItems(1) & [...#tls_config]
 
 	#tls_config: insecure_skip_verification?: bool
 }

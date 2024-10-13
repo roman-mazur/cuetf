@@ -7,9 +7,9 @@ package res
 	resource_arn?:          string
 	resource_created_time?: string
 	resource_description?:  string
-	resource_id:            string
+	resource_id!:           string
 	resource_name?:         string
-	tag_option_id:          string
+	tag_option_id!:         string
 	timeouts?:              #timeouts
 
 	#timeouts: {

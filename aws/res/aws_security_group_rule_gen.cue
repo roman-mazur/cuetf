@@ -5,17 +5,17 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_security_group_rule")
 	cidr_blocks?: [...string]
 	description?: string
-	from_port:    number
+	from_port!:   number
 	id?:          string
 	ipv6_cidr_blocks?: [...string]
 	prefix_list_ids?: [...string]
-	protocol:                  string
-	security_group_id:         string
+	protocol!:                 string
+	security_group_id!:        string
 	security_group_rule_id?:   string
 	self?:                     bool
 	source_security_group_id?: string
-	to_port:                   number
-	type:                      string
+	to_port!:                  number
+	type!:                     string
 	timeouts?:                 #timeouts
 
 	#timeouts: create?: string

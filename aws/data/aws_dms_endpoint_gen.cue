@@ -12,7 +12,7 @@ package data
 		service_access_role_arn?:    string
 	}]
 	endpoint_arn?:                string
-	endpoint_id:                  string
+	endpoint_id!:                 string
 	endpoint_type?:               string
 	engine_name?:                 string
 	extra_connection_attributes?: string
@@ -59,6 +59,24 @@ package data
 	}]
 	password?: string
 	port?:     number
+	postgres_settings?: [...{
+		after_connect_script?:         string
+		babelfish_database_name?:      string
+		capture_ddls?:                 bool
+		database_mode?:                string
+		ddl_artifacts_schema?:         string
+		execute_timeout?:              number
+		fail_tasks_on_lob_truncation?: bool
+		heartbeat_enable?:             bool
+		heartbeat_frequency?:          number
+		heartbeat_schema?:             string
+		map_boolean_as_boolean?:       bool
+		map_jsonb_as_clob?:            bool
+		map_long_varchar_as?:          string
+		max_file_size?:                number
+		plugin_name?:                  string
+		slot_name?:                    string
+	}]
 	redis_settings?: [...{
 		auth_password?:          string
 		auth_type?:              string

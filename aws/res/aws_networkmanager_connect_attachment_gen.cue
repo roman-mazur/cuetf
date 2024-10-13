@@ -10,8 +10,8 @@ import "list"
 	attachment_policy_rule_number?: number
 	attachment_type?:               string
 	core_network_arn?:              string
-	core_network_id:                string
-	edge_location:                  string
+	core_network_id!:               string
+	edge_location!:                 string
 	id?:                            string
 	owner_account_id?:              string
 	resource_arn?:                  string
@@ -19,9 +19,9 @@ import "list"
 	state?:                         string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	transport_attachment_id: string
-	options?:                #options | list.MaxItems(1) & [_, ...] & [...#options]
-	timeouts?:               #timeouts
+	transport_attachment_id!: string
+	options?: #options | list.MaxItems(1) & [_, ...] & [...#options]
+	timeouts?: #timeouts
 
 	#options: protocol?: string
 

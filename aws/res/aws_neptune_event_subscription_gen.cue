@@ -7,10 +7,10 @@ package res
 	customer_aws_id?: string
 	enabled?:         bool
 	event_categories?: [...string]
-	id?:           string
-	name?:         string
-	name_prefix?:  string
-	sns_topic_arn: string
+	id?:            string
+	name?:          string
+	name_prefix?:   string
+	sns_topic_arn!: string
 	source_ids?: [...string]
 	source_type?: string
 	tags?: [string]: string

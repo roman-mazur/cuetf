@@ -10,7 +10,7 @@ import "list"
 	name?:                  string
 	name_prefix?:           string
 	platform_display_name?: string
-	platform_id:            string
+	platform_id!:           string
 	revocation_record?: [...{
 		revocation_effective_from?: string
 		revoked_at?:                string
@@ -19,15 +19,15 @@ import "list"
 	status?: string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	version?:                   string
-	version_arn?:               string
+	version?:     string
+	version_arn?: string
 	signature_validity_period?: #signature_validity_period | list.MaxItems(1) & [...#signature_validity_period]
-	signing_material?:          #signing_material | list.MaxItems(1) & [...#signing_material]
+	signing_material?: #signing_material | list.MaxItems(1) & [...#signing_material]
 
 	#signature_validity_period: {
-		type:  string
-		value: number
+		type!:  string
+		value!: number
 	}
 
-	#signing_material: certificate_arn: string
+	#signing_material: certificate_arn!: string
 }

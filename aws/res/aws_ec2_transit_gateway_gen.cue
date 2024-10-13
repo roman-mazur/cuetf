@@ -15,6 +15,7 @@ package res
 	multicast_support?:                  string
 	owner_id?:                           string
 	propagation_default_route_table_id?: string
+	security_group_referencing_support?: string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	transit_gateway_cidr_blocks?: [...string]

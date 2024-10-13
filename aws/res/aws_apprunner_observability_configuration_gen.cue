@@ -8,7 +8,7 @@ import "list"
 	arn?:                                  string
 	id?:                                   string
 	latest?:                               bool
-	observability_configuration_name:      string
+	observability_configuration_name!:     string
 	observability_configuration_revision?: number
 	status?:                               string
 	tags?: [string]: string

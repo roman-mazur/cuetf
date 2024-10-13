@@ -10,7 +10,7 @@ package data
 	description?: string
 	id?:          string
 	map_arn?:     string
-	map_name:     string
+	map_name!:    string
 	tags?: [string]: string
 	update_time?: string
 }

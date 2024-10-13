@@ -9,11 +9,11 @@ package res
 	dnskey_record?:              string
 	ds_record?:                  string
 	flag?:                       number
-	hosted_zone_id:              string
+	hosted_zone_id!:             string
 	id?:                         string
-	key_management_service_arn:  string
+	key_management_service_arn!: string
 	key_tag?:                    number
-	name:                        string
+	name!:                       string
 	public_key?:                 string
 	signing_algorithm_mnemonic?: string
 	signing_algorithm_type?:     number

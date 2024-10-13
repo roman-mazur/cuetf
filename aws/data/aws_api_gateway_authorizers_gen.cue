@@ -5,5 +5,5 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_api_gateway_authorizers")
 	id?: string
 	ids?: [...string]
-	rest_api_id: string
+	rest_api_id!: string
 }

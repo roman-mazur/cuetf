@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_kms_ciphertext")
 	ciphertext_blob?: string
 	context?: [string]: string
-	id?:       string
-	key_id:    string
-	plaintext: string
+	id?:        string
+	key_id!:    string
+	plaintext!: string
 }

@@ -6,5 +6,5 @@ package res
 	id?: string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	vpc_id: string
+	vpc_id!: string
 }

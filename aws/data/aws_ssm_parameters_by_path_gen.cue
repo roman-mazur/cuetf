@@ -6,7 +6,7 @@ package data
 	arns?: [...string]
 	id?: string
 	names?: [...string]
-	path:       string
+	path!:      string
 	recursive?: bool
 	types?: [...string]
 	values?: [...string]

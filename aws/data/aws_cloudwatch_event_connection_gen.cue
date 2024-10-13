@@ -6,6 +6,6 @@ package data
 	arn?:                string
 	authorization_type?: string
 	id?:                 string
-	name:                string
+	name!:               string
 	secret_arn?:         string
 }

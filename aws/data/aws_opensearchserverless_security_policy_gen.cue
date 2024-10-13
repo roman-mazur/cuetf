@@ -7,8 +7,8 @@ package data
 	description?:        string
 	id?:                 string
 	last_modified_date?: string
-	name:                string
+	name!:               string
 	policy?:             string
 	policy_version?:     string
-	type:                string
+	type!:               string
 }

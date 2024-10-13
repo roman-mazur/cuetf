@@ -6,6 +6,7 @@ package data
 	arn?:                            string
 	auth_token_enabled?:             bool
 	automatic_failover_enabled?:     bool
+	cluster_mode?:                   string
 	configuration_endpoint_address?: string
 	description?:                    string
 	id?:                             string
@@ -24,7 +25,7 @@ package data
 	primary_endpoint_address?: string
 	reader_endpoint_address?:  string
 	replicas_per_node_group?:  number
-	replication_group_id:      string
+	replication_group_id!:     string
 	snapshot_retention_limit?: number
 	snapshot_window?:          string
 }

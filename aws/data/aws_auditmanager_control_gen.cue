@@ -8,10 +8,10 @@ package data
 	arn?:                      string
 	description?:              string
 	id?:                       string
-	name:                      string
+	name!:                     string
 	tags?: [string]: string
-	testing_information?:     string
-	type:                     string
+	testing_information?: string
+	type!:                string
 	control_mapping_sources?: #control_mapping_sources | [...#control_mapping_sources]
 
 	#control_mapping_sources: {
@@ -22,7 +22,7 @@ package data
 		source_set_up_option?: string
 		source_type?:          string
 		troubleshooting_text?: string
-		source_keyword?:       #control_mapping_sources.#source_keyword | [...#control_mapping_sources.#source_keyword]
+		source_keyword?: #control_mapping_sources.#source_keyword | [...#control_mapping_sources.#source_keyword]
 
 		#source_keyword: {
 			keyword_input_type?: string

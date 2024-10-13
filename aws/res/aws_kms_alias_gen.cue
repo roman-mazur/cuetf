@@ -8,5 +8,5 @@ package res
 	name?:           string
 	name_prefix?:    string
 	target_key_arn?: string
-	target_key_id:   string
+	target_key_id!:  string
 }

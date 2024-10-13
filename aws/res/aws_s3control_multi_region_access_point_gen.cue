@@ -11,13 +11,13 @@ import "list"
 	domain_name?: string
 	id?:          string
 	status?:      string
-	details?:     #details | list.MaxItems(1) & [_, ...] & [...#details]
-	timeouts?:    #timeouts
+	details?: #details | list.MaxItems(1) & [_, ...] & [...#details]
+	timeouts?: #timeouts
 
 	#details: {
-		name:                 string
+		name!: string
 		public_access_block?: #details.#public_access_block | list.MaxItems(1) & [...#details.#public_access_block]
-		region?:              #details.#region | list.MaxItems(20) & [_, ...] & [...#details.#region]
+		region?: #details.#region | list.MaxItems(20) & [_, ...] & [...#details.#region]
 
 		#public_access_block: {
 			block_public_acls?:       bool
@@ -27,7 +27,7 @@ import "list"
 		}
 
 		#region: {
-			bucket:             string
+			bucket!:            string
 			bucket_account_id?: string
 			region?:            string
 		}

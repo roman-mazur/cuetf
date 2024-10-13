@@ -18,7 +18,7 @@ import "list"
 		port?:              number
 	}]
 	cluster_address?:           string
-	cluster_id:                 string
+	cluster_id!:                string
 	configuration_endpoint?:    string
 	engine?:                    string
 	engine_version?:            string
@@ -49,9 +49,9 @@ import "list"
 	log_delivery_configuration?: #log_delivery_configuration | list.MaxItems(2) & [...#log_delivery_configuration]
 
 	#log_delivery_configuration: {
-		destination:      string
-		destination_type: string
-		log_format:       string
-		log_type:         string
+		destination!:      string
+		destination_type!: string
+		log_format!:       string
+		log_type!:         string
 	}
 }

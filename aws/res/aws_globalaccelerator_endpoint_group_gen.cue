@@ -12,22 +12,23 @@ import "list"
 	health_check_port?:             number
 	health_check_protocol?:         string
 	id?:                            string
-	listener_arn:                   string
+	listener_arn!:                  string
 	threshold_count?:               number
 	traffic_dial_percentage?:       number
-	endpoint_configuration?:        #endpoint_configuration | [...#endpoint_configuration]
-	port_override?:                 #port_override | list.MaxItems(10) & [...#port_override]
-	timeouts?:                      #timeouts
+	endpoint_configuration?: #endpoint_configuration | [...#endpoint_configuration]
+	port_override?: #port_override | list.MaxItems(10) & [...#port_override]
+	timeouts?: #timeouts
 
 	#endpoint_configuration: {
+		attachment_arn?:                 string
 		client_ip_preservation_enabled?: bool
 		endpoint_id?:                    string
 		weight?:                         number
 	}
 
 	#port_override: {
-		endpoint_port: number
-		listener_port: number
+		endpoint_port!: number
+		listener_port!: number
 	}
 
 	#timeouts: {

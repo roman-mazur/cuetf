@@ -6,5 +6,5 @@ package res
 	enable_media_metric_logs?: bool
 	enable_sip_logs?:          bool
 	id?:                       string
-	voice_connector_id:        string
+	voice_connector_id!:       string
 }

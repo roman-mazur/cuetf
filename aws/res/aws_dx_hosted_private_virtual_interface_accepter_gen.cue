@@ -8,9 +8,9 @@ package res
 	id?:            string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	virtual_interface_id: string
-	vpn_gateway_id?:      string
-	timeouts?:            #timeouts
+	virtual_interface_id!: string
+	vpn_gateway_id?:       string
+	timeouts?:             #timeouts
 
 	#timeouts: {
 		create?: string

@@ -14,7 +14,7 @@ package data
 	}]
 	image_tag_mutability?: string
 	most_recent_image_tags?: [...string]
-	name:            string
+	name!:           string
 	registry_id?:    string
 	repository_url?: string
 	tags?: [string]: string

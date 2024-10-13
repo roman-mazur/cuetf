@@ -10,9 +10,9 @@ package res
 		value?:  string
 	}]
 	dns_target?:           string
-	domain_name:           string
+	domain_name!:          string
 	enable_www_subdomain?: bool
 	id?:                   string
-	service_arn:           string
+	service_arn!:          string
 	status?:               string
 }

@@ -5,8 +5,8 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_opensearchserverless_access_policy")
 	description?:    string
 	id?:             string
-	name:            string
+	name!:           string
 	policy?:         string
 	policy_version?: string
-	type:            string
+	type!:           string
 }

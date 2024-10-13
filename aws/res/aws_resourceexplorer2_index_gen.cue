@@ -7,7 +7,7 @@ package res
 	id?:  string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	type:      string
+	type!:     string
 	timeouts?: #timeouts
 
 	#timeouts: {

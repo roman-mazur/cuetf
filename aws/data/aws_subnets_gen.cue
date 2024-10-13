@@ -6,12 +6,12 @@ package data
 	id?: string
 	ids?: [...string]
 	tags?: [string]: string
-	filter?:   #filter | [...#filter]
+	filter?: #filter | [...#filter]
 	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

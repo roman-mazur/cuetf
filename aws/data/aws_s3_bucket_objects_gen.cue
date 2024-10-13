@@ -13,5 +13,5 @@ package data
 	owners?: [...string]
 	prefix?:      string
 	start_after?: string
-	bucket:       _
+	bucket!:      _
 }

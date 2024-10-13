@@ -12,8 +12,8 @@ package res
 		resource_record_type?:  string
 		resource_record_value?: string
 	}]
-	id?:  string
-	name: string
+	id?:   string
+	name!: string
 	subject_alternative_names?: [...string]
 	tags?: [string]: string
 	tags_all?: [string]: string

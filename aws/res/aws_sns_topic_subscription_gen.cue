@@ -7,16 +7,17 @@ package res
 	confirmation_timeout_in_minutes?: number
 	confirmation_was_authenticated?:  bool
 	delivery_policy?:                 string
-	endpoint:                         string
+	endpoint!:                        string
 	endpoint_auto_confirms?:          bool
 	filter_policy?:                   string
 	filter_policy_scope?:             string
 	id?:                              string
 	owner_id?:                        string
 	pending_confirmation?:            bool
-	protocol:                         string
+	protocol!:                        string
 	raw_message_delivery?:            bool
 	redrive_policy?:                  string
+	replay_policy?:                   string
 	subscription_role_arn?:           string
-	topic_arn:                        string
+	topic_arn!:                       string
 }

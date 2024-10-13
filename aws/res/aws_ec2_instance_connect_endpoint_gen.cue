@@ -12,7 +12,7 @@ package res
 	owner_id?:           string
 	preserve_client_ip?: bool
 	security_group_ids?: [...string]
-	subnet_id: string
+	subnet_id!: string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	vpc_id?:   string

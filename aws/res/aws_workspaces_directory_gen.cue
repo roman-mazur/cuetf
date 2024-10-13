@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_workspaces_directory")
 	alias?:              string
 	customer_user_name?: string
-	directory_id:        string
+	directory_id!:       string
 	directory_name?:     string
 	directory_type?:     string
 	dns_ip_addresses?: [...string]
@@ -18,9 +18,9 @@ import "list"
 	subnet_ids?: [...string]
 	tags?: [string]: string
 	tags_all?: [string]: string
-	workspace_security_group_id?:   string
-	self_service_permissions?:      #self_service_permissions | list.MaxItems(1) & [...#self_service_permissions]
-	workspace_access_properties?:   #workspace_access_properties | list.MaxItems(1) & [...#workspace_access_properties]
+	workspace_security_group_id?: string
+	self_service_permissions?: #self_service_permissions | list.MaxItems(1) & [...#self_service_permissions]
+	workspace_access_properties?: #workspace_access_properties | list.MaxItems(1) & [...#workspace_access_properties]
 	workspace_creation_properties?: #workspace_creation_properties | list.MaxItems(1) & [...#workspace_creation_properties]
 
 	#self_service_permissions: {

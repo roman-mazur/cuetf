@@ -12,5 +12,5 @@ package res
 	secret?:                         string
 	ses_smtp_password_v4?:           string
 	status?:                         string
-	user:                            string
+	user!:                           string
 }

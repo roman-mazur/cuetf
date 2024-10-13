@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dx_lag")
 	arn?:                    string
 	connection_id?:          string
-	connections_bandwidth:   string
+	connections_bandwidth!:  string
 	force_destroy?:          bool
 	has_logical_redundancy?: string
 	id?:                     string
 	jumbo_frame_capable?:    bool
-	location:                string
-	name:                    string
+	location!:               string
+	name!:                   string
 	owner_account_id?:       string
 	provider_name?:          string
 	tags?: [string]: string

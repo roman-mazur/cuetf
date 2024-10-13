@@ -8,7 +8,7 @@ package res
 	auto_minor_version_upgrade?:      bool
 	availability_zone?:               string
 	ca_cert_identifier?:              string
-	cluster_identifier:               string
+	cluster_identifier!:              string
 	copy_tags_to_snapshot?:           bool
 	db_subnet_group_name?:            string
 	dbi_resource_id?:                 string
@@ -19,7 +19,7 @@ package res
 	id?:                              string
 	identifier?:                      string
 	identifier_prefix?:               string
-	instance_class:                   string
+	instance_class!:                  string
 	kms_key_id?:                      string
 	performance_insights_kms_key_id?: string
 	port?:                            number

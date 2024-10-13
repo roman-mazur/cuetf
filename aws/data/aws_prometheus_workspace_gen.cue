@@ -7,8 +7,9 @@ package data
 	arn?:                 string
 	created_date?:        string
 	id?:                  string
+	kms_key_arn?:         string
 	prometheus_endpoint?: string
 	status?:              string
 	tags?: [string]: string
-	workspace_id: string
+	workspace_id!: string
 }

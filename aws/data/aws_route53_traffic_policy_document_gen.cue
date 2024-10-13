@@ -11,25 +11,25 @@ import "list"
 	start_endpoint?: string
 	start_rule?:     string
 	version?:        string
-	endpoint?:       #endpoint | [...#endpoint]
-	rule?:           #rule | [...#rule]
+	endpoint?: #endpoint | [...#endpoint]
+	rule?: #rule | [...#rule]
 
 	#endpoint: {
-		id:      string
+		id!:     string
 		region?: string
 		type?:   string
 		value?:  string
 	}
 
 	#rule: {
-		id:                      string
-		type?:                   string
+		id!:   string
+		type?: string
 		geo_proximity_location?: #rule.#geo_proximity_location | [...#rule.#geo_proximity_location]
-		items?:                  #rule.#items | [...#rule.#items]
-		location?:               #rule.#location | [...#rule.#location]
-		primary?:                #rule.#primary | list.MaxItems(1) & [...#rule.#primary]
-		region?:                 #rule.#region | [...#rule.#region]
-		secondary?:              #rule.#secondary | list.MaxItems(1) & [...#rule.#secondary]
+		items?: #rule.#items | [...#rule.#items]
+		location?: #rule.#location | [...#rule.#location]
+		primary?: #rule.#primary | list.MaxItems(1) & [...#rule.#primary]
+		region?: #rule.#region | [...#rule.#region]
+		secondary?: #rule.#secondary | list.MaxItems(1) & [...#rule.#secondary]
 
 		#geo_proximity_location: {
 			bias?:                   string

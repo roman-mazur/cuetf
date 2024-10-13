@@ -6,7 +6,7 @@ package data
 	allowed_publishers?: [...{
 		signing_profile_version_arns?: [...string]
 	}]
-	arn:            string
+	arn!:           string
 	config_id?:     string
 	description?:   string
 	id?:            string

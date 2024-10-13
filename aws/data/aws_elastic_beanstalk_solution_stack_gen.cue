@@ -6,5 +6,5 @@ package data
 	id?:          string
 	most_recent?: bool
 	name?:        string
-	name_regex:   string
+	name_regex!:  string
 }

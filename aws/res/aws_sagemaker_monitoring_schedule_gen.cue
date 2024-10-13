@@ -13,10 +13,10 @@ import "list"
 	monitoring_schedule_config?: #monitoring_schedule_config | list.MaxItems(1) & [_, ...] & [...#monitoring_schedule_config]
 
 	#monitoring_schedule_config: {
-		monitoring_job_definition_name: string
-		monitoring_type:                string
-		schedule_config?:               #monitoring_schedule_config.#schedule_config | list.MaxItems(1) & [...#monitoring_schedule_config.#schedule_config]
+		monitoring_job_definition_name!: string
+		monitoring_type!:                string
+		schedule_config?: #monitoring_schedule_config.#schedule_config | list.MaxItems(1) & [...#monitoring_schedule_config.#schedule_config]
 
-		#schedule_config: schedule_expression: string
+		#schedule_config: schedule_expression!: string
 	}
 }

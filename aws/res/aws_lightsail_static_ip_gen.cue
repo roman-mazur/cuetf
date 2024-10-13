@@ -6,6 +6,6 @@ package res
 	arn?:          string
 	id?:           string
 	ip_address?:   string
-	name:          string
+	name!:         string
 	support_code?: string
 }

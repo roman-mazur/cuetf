@@ -17,7 +17,7 @@ package res
 	imds_support?:         string
 	kernel_id?:            string
 	manage_ebs_snapshots?: bool
-	name:                  string
+	name!:                 string
 	owner_id?:             string
 	platform?:             string
 	platform_details?:     string
@@ -28,16 +28,16 @@ package res
 	sriov_net_support?:    string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	tpm_support?:            string
-	usage_operation?:        string
-	virtualization_type?:    string
-	ebs_block_device?:       #ebs_block_device | [...#ebs_block_device]
+	tpm_support?:         string
+	usage_operation?:     string
+	virtualization_type?: string
+	ebs_block_device?: #ebs_block_device | [...#ebs_block_device]
 	ephemeral_block_device?: #ephemeral_block_device | [...#ephemeral_block_device]
-	timeouts?:               #timeouts
+	timeouts?: #timeouts
 
 	#ebs_block_device: {
 		delete_on_termination?: bool
-		device_name:            string
+		device_name!:           string
 		encrypted?:             bool
 		iops?:                  number
 		outpost_arn?:           string
@@ -48,8 +48,8 @@ package res
 	}
 
 	#ephemeral_block_device: {
-		device_name:  string
-		virtual_name: string
+		device_name!:  string
+		virtual_name!: string
 	}
 
 	#timeouts: {

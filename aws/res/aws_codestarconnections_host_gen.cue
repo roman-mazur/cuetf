@@ -7,9 +7,9 @@ import "list"
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_codestarconnections_host")
 	arn?:               string
 	id?:                string
-	name:               string
-	provider_endpoint:  string
-	provider_type:      string
+	name!:              string
+	provider_endpoint!: string
+	provider_type!:     string
 	status?:            string
 	timeouts?:          #timeouts
 	vpc_configuration?: #vpc_configuration | list.MaxItems(1) & [...#vpc_configuration]
@@ -21,9 +21,9 @@ import "list"
 	}
 
 	#vpc_configuration: {
-		security_group_ids: [...string]
-		subnet_ids: [...string]
+		security_group_ids!: [...string]
+		subnet_ids!: [...string]
 		tls_certificate?: string
-		vpc_id:           string
+		vpc_id!:          string
 	}
 }

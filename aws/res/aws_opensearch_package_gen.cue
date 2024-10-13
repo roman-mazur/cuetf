@@ -9,12 +9,12 @@ import "list"
 	id?:                        string
 	package_description?:       string
 	package_id?:                string
-	package_name:               string
-	package_type:               string
-	package_source?:            #package_source | list.MaxItems(1) & [_, ...] & [...#package_source]
+	package_name!:              string
+	package_type!:              string
+	package_source?: #package_source | list.MaxItems(1) & [_, ...] & [...#package_source]
 
 	#package_source: {
-		s3_bucket_name: string
-		s3_key:         string
+		s3_bucket_name!: string
+		s3_key!:         string
 	}
 }

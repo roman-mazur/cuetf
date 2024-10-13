@@ -10,12 +10,15 @@ import "list"
 	id?:                          string
 	input_parameters?:            string
 	maximum_execution_frequency?: string
-	name:                         string
+	name!:                        string
 	rule_id?:                     string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	scope?:  #scope | list.MaxItems(1) & [...#scope]
+	evaluation_mode?: #evaluation_mode | [...#evaluation_mode]
+	scope?: #scope | list.MaxItems(1) & [...#scope]
 	source?: #source | list.MaxItems(1) & [_, ...] & [...#source]
+
+	#evaluation_mode: mode?: string
 
 	#scope: {
 		compliance_resource_id?: string
@@ -25,15 +28,15 @@ import "list"
 	}
 
 	#source: {
-		owner:                  string
-		source_identifier?:     string
+		owner!:             string
+		source_identifier?: string
 		custom_policy_details?: #source.#custom_policy_details | list.MaxItems(1) & [...#source.#custom_policy_details]
-		source_detail?:         #source.#source_detail | list.MaxItems(25) & [...#source.#source_detail]
+		source_detail?: #source.#source_detail | list.MaxItems(25) & [...#source.#source_detail]
 
 		#custom_policy_details: {
 			enable_debug_log_delivery?: bool
-			policy_runtime:             string
-			policy_text:                string
+			policy_runtime!:            string
+			policy_text!:               string
 		}
 
 		#source_detail: {

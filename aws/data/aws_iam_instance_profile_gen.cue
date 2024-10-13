@@ -6,7 +6,7 @@ package data
 	arn?:         string
 	create_date?: string
 	id?:          string
-	name:         string
+	name!:        string
 	path?:        string
 	role_arn?:    string
 	role_id?:     string

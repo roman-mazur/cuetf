@@ -7,15 +7,15 @@ package res
 	availability_zone_name?: string
 	dns_name?:               string
 	file_system_arn?:        string
-	file_system_id:          string
+	file_system_id!:         string
 	id?:                     string
 	ip_address?:             string
 	mount_target_dns_name?:  string
 	network_interface_id?:   string
 	owner_id?:               string
 	security_groups?: [...string]
-	subnet_id: string
-	timeouts?: #timeouts
+	subnet_id!: string
+	timeouts?:  #timeouts
 
 	#timeouts: {
 		create?: string

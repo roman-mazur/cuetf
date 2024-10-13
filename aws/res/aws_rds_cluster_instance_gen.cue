@@ -8,20 +8,20 @@ package res
 	auto_minor_version_upgrade?:            bool
 	availability_zone?:                     string
 	ca_cert_identifier?:                    string
-	cluster_identifier:                     string
+	cluster_identifier!:                    string
 	copy_tags_to_snapshot?:                 bool
 	custom_iam_instance_profile?:           string
 	db_parameter_group_name?:               string
 	db_subnet_group_name?:                  string
 	dbi_resource_id?:                       string
 	endpoint?:                              string
-	engine:                                 string
+	engine!:                                string
 	engine_version?:                        string
 	engine_version_actual?:                 string
 	id?:                                    string
 	identifier?:                            string
 	identifier_prefix?:                     string
-	instance_class:                         string
+	instance_class!:                        string
 	kms_key_id?:                            string
 	monitoring_interval?:                   number
 	monitoring_role_arn?:                   string

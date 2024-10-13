@@ -6,6 +6,6 @@ package res
 	account_id?:               string
 	has_public_access_policy?: bool
 	id?:                       string
-	name:                      string
-	policy:                    string
+	name!:                     string
+	policy!:                   string
 }

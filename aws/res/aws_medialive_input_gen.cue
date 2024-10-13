@@ -12,28 +12,28 @@ import "list"
 	input_partner_ids?: [...string]
 	input_security_groups?: [...string]
 	input_source_type?: string
-	name:               string
+	name!:              string
 	role_arn?:          string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	type:                 string
-	destinations?:        #destinations | [...#destinations]
-	input_devices?:       #input_devices | [...#input_devices]
+	type!: string
+	destinations?: #destinations | [...#destinations]
+	input_devices?: #input_devices | [...#input_devices]
 	media_connect_flows?: #media_connect_flows | [...#media_connect_flows]
-	sources?:             #sources | [...#sources]
-	timeouts?:            #timeouts
-	vpc?:                 #vpc | list.MaxItems(1) & [...#vpc]
+	sources?: #sources | [...#sources]
+	timeouts?: #timeouts
+	vpc?: #vpc | list.MaxItems(1) & [...#vpc]
 
-	#destinations: stream_name: string
+	#destinations: stream_name!: string
 
-	#input_devices: id: string
+	#input_devices: id!: string
 
-	#media_connect_flows: flow_arn: string
+	#media_connect_flows: flow_arn!: string
 
 	#sources: {
-		password_param: string
-		url:            string
-		username:       string
+		password_param!: string
+		url!:            string
+		username!:       string
 	}
 
 	#timeouts: {
@@ -44,6 +44,6 @@ import "list"
 
 	#vpc: {
 		security_group_ids?: [...string]
-		subnet_ids: [...string]
+		subnet_ids!: [...string]
 	}
 }

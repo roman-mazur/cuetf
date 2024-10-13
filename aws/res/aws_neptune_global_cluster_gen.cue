@@ -3,11 +3,11 @@ package res
 #aws_neptune_global_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_neptune_global_cluster")
-	arn?:                      string
-	deletion_protection?:      bool
-	engine?:                   string
-	engine_version?:           string
-	global_cluster_identifier: string
+	arn?:                       string
+	deletion_protection?:       bool
+	engine?:                    string
+	engine_version?:            string
+	global_cluster_identifier!: string
 	global_cluster_members?: [...{
 		db_cluster_arn?: string
 		is_writer?:      bool

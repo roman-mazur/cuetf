@@ -10,7 +10,7 @@ package data
 	availability_zone?:                    string
 	availability_zone_relocation_enabled?: bool
 	bucket_name?:                          string
-	cluster_identifier:                    string
+	cluster_identifier!:                   string
 	cluster_namespace_arn?:                string
 	cluster_nodes?: [...{
 		node_role?:          string
@@ -38,6 +38,7 @@ package data
 	maintenance_track_name?:           string
 	manual_snapshot_retention_period?: number
 	master_username?:                  string
+	multi_az?:                         bool
 	node_type?:                        string
 	number_of_nodes?:                  number
 	port?:                             number

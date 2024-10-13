@@ -6,6 +6,6 @@ package data
 	arn?:         string
 	description?: string
 	id?:          string
-	name:         string
-	scope:        string
+	name!:        string
+	scope!:       string
 }

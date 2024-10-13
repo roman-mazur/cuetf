@@ -7,7 +7,7 @@ package res
 	attachment_policy_rule_number?: number
 	attachment_type?:               string
 	core_network_arn?:              string
-	core_network_id:                string
+	core_network_id!:               string
 	edge_location?:                 string
 	id?:                            string
 	owner_account_id?:              string
@@ -16,8 +16,8 @@ package res
 	state?:                         string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	vpn_connection_arn: string
-	timeouts?:          #timeouts
+	vpn_connection_arn!: string
+	timeouts?:           #timeouts
 
 	#timeouts: {
 		create?: string

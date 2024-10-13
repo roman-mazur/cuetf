@@ -12,9 +12,9 @@ package res
 	event_endpoint_updated_topic_arn?: string
 	failure_feedback_role_arn?:        string
 	id?:                               string
-	name:                              string
-	platform:                          string
-	platform_credential:               string
+	name!:                             string
+	platform!:                         string
+	platform_credential!:              string
 	platform_principal?:               string
 	success_feedback_role_arn?:        string
 	success_feedback_sample_rate?:     string

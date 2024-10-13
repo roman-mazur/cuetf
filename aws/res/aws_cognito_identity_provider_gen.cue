@@ -6,8 +6,8 @@ package res
 	attribute_mapping?: [string]: string
 	id?: string
 	idp_identifiers?: [...string]
-	provider_details: [string]: string
-	provider_name: string
-	provider_type: string
-	user_pool_id:  string
+	provider_details!: [string]: string
+	provider_name!: string
+	provider_type!: string
+	user_pool_id!:  string
 }

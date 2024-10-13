@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_transfer_certificate")
 	active_date?:       string
 	arn?:               string
-	certificate:        string
+	certificate!:       string
 	certificate_chain?: string
 	certificate_id?:    string
 	description?:       string
@@ -14,5 +14,5 @@ package res
 	private_key?:       string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	usage: string
+	usage!: string
 }

@@ -6,5 +6,5 @@ package data
 	arns?: [...string]
 	id?: string
 	ids?: [...string]
-	name: string
+	name!: string
 }

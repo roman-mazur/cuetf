@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_workspaces_image")
 	description?:           string
 	id?:                    string
-	image_id:               string
+	image_id!:              string
 	name?:                  string
 	operating_system_type?: string
 	required_tenancy?:      string

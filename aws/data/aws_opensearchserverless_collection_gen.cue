@@ -8,10 +8,13 @@ package data
 	created_date?:        string
 	dashboard_endpoint?:  string
 	description?:         string
+	failure_code?:        string
+	failure_message?:     string
 	id?:                  string
 	kms_key_arn?:         string
 	last_modified_date?:  string
 	name?:                string
+	standby_replicas?:    string
 	tags?: [string]: string
 	type?: string
 }

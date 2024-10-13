@@ -17,22 +17,24 @@ import "list"
 	idle_disconnect_timeout_in_seconds?: number
 	image_arn?:                          string
 	image_name?:                         string
-	instance_type:                       string
+	instance_type!:                      string
+	max_sessions_per_instance?:          number
 	max_user_duration_in_seconds?:       number
-	name:                                string
+	name!:                               string
 	state?:                              string
 	stream_view?:                        string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	compute_capacity?: #compute_capacity | list.MaxItems(1) & [_, ...] & [...#compute_capacity]
 	domain_join_info?: #domain_join_info | list.MaxItems(1) & [...#domain_join_info]
-	vpc_config?:       #vpc_config | list.MaxItems(1) & [...#vpc_config]
+	vpc_config?: #vpc_config | list.MaxItems(1) & [...#vpc_config]
 
 	#compute_capacity: {
-		available?:        number
-		desired_instances: number
-		in_use?:           number
-		running?:          number
+		available?:         number
+		desired_instances?: number
+		desired_sessions?:  number
+		in_use?:            number
+		running?:           number
 	}
 
 	#domain_join_info: {

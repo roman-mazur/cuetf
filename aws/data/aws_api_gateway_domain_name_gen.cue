@@ -9,7 +9,7 @@ package data
 	certificate_upload_date?: string
 	cloudfront_domain_name?:  string
 	cloudfront_zone_id?:      string
-	domain_name:              string
+	domain_name!:             string
 	endpoint_configuration?: [...{
 		types?: [...string]
 	}]

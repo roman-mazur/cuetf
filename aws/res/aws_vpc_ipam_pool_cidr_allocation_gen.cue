@@ -8,7 +8,7 @@ package res
 	disallowed_cidrs?: [...string]
 	id?:                      string
 	ipam_pool_allocation_id?: string
-	ipam_pool_id:             string
+	ipam_pool_id!:            string
 	netmask_length?:          number
 	resource_id?:             string
 	resource_owner?:          string

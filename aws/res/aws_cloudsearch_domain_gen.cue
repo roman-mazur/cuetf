@@ -10,12 +10,12 @@ import "list"
 	domain_id?:                 string
 	id?:                        string
 	multi_az?:                  bool
-	name:                       string
+	name!:                      string
 	search_service_endpoint?:   string
-	endpoint_options?:          #endpoint_options | list.MaxItems(1) & [...#endpoint_options]
-	index_field?:               #index_field | [...#index_field]
-	scaling_parameters?:        #scaling_parameters | list.MaxItems(1) & [...#scaling_parameters]
-	timeouts?:                  #timeouts
+	endpoint_options?: #endpoint_options | list.MaxItems(1) & [...#endpoint_options]
+	index_field?: #index_field | [...#index_field]
+	scaling_parameters?: #scaling_parameters | list.MaxItems(1) & [...#scaling_parameters]
+	timeouts?: #timeouts
 
 	#endpoint_options: {
 		enforce_https?:       bool
@@ -27,12 +27,12 @@ import "list"
 		default_value?:   string
 		facet?:           bool
 		highlight?:       bool
-		name:             string
+		name!:            string
 		return?:          bool
 		search?:          bool
 		sort?:            bool
 		source_fields?:   string
-		type:             string
+		type!:            string
 	}
 
 	#scaling_parameters: {

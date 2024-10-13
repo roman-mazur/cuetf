@@ -14,13 +14,13 @@ package data
 	name?:        string
 	owner_id?:    string
 	tags?: [string]: string
-	version?:  number
-	filter?:   #filter | [...#filter]
+	version?: number
+	filter?: #filter | [...#filter]
 	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

@@ -7,12 +7,12 @@ package data
 	id?:             string
 	name?:           string
 	prefix_list_id?: string
-	filter?:         #filter | [...#filter]
-	timeouts?:       #timeouts
+	filter?: #filter | [...#filter]
+	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

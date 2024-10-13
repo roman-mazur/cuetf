@@ -7,7 +7,7 @@ package data
 	deletion_protection?: bool
 	id?:                  string
 	kms_key?:             string
-	name:                 string
+	name!:                string
 	permissions_mode?:    string
 	tags?: [string]: string
 }

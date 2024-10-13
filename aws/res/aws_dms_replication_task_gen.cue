@@ -6,16 +6,17 @@ package res
 	cdc_start_position?:        string
 	cdc_start_time?:            string
 	id?:                        string
-	migration_type:             string
-	replication_instance_arn:   string
+	migration_type!:            string
+	replication_instance_arn!:  string
 	replication_task_arn?:      string
-	replication_task_id:        string
+	replication_task_id!:       string
 	replication_task_settings?: string
-	source_endpoint_arn:        string
+	resource_identifier?:       string
+	source_endpoint_arn!:       string
 	start_replication_task?:    bool
 	status?:                    string
-	table_mappings:             string
+	table_mappings!:            string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	target_endpoint_arn: string
+	target_endpoint_arn!: string
 }

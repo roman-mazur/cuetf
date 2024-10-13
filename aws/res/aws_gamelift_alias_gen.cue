@@ -8,7 +8,7 @@ import "list"
 	arn?:         string
 	description?: string
 	id?:          string
-	name:         string
+	name!:        string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	routing_strategy?: #routing_strategy | list.MaxItems(1) & [_, ...] & [...#routing_strategy]
@@ -16,6 +16,6 @@ import "list"
 	#routing_strategy: {
 		fleet_id?: string
 		message?:  string
-		type:      string
+		type!:     string
 	}
 }

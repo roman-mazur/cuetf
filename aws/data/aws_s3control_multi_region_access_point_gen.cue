@@ -9,7 +9,7 @@ package data
 	created_at?:  string
 	domain_name?: string
 	id?:          string
-	name:         string
+	name!:        string
 	public_access_block?: [...{
 		block_public_acls?:       bool
 		block_public_policy?:     bool

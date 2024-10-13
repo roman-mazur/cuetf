@@ -11,5 +11,5 @@ package data
 		duration?:                 string
 		schedule_expression?:      string
 	}]
-	secret_id: string
+	secret_id!: string
 }

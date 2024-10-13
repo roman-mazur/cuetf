@@ -12,17 +12,17 @@ import "list"
 	distributor?:         string
 	has_default_path?:    bool
 	id?:                  string
-	name:                 string
-	owner:                string
+	name!:                string
+	owner!:               string
 	status?:              string
 	support_description?: string
 	support_email?:       string
 	support_url?:         string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	type:                              string
+	type!: string
 	provisioning_artifact_parameters?: #provisioning_artifact_parameters | list.MaxItems(1) & [_, ...] & [...#provisioning_artifact_parameters]
-	timeouts?:                         #timeouts
+	timeouts?: #timeouts
 
 	#provisioning_artifact_parameters: {
 		description?:                 string

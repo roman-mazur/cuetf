@@ -5,15 +5,15 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_elasticache_parameter_group")
 	arn?:         string
 	description?: string
-	family:       string
+	family!:      string
 	id?:          string
-	name:         string
+	name!:        string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	parameter?: #parameter | [...#parameter]
 
 	#parameter: {
-		name:  string
-		value: string
+		name!:  string
+		value!: string
 	}
 }

@@ -6,10 +6,10 @@ package res
 	arn?:                     string
 	created_timestamp?:       string
 	description?:             string
-	environment_id:           string
+	environment_id!:          string
 	id?:                      string
 	last_modified_timestamp?: string
-	name:                     string
+	name!:                    string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	timeouts?: #timeouts

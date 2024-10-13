@@ -9,16 +9,16 @@ import "list"
 	directory_user_id?:  string
 	hierarchy_group_id?: string
 	id?:                 string
-	instance_id:         string
-	name:                string
+	instance_id!:        string
+	name!:               string
 	password?:           string
-	routing_profile_id:  string
-	security_profile_ids: [...string]
+	routing_profile_id!: string
+	security_profile_ids!: [...string]
 	tags?: [string]: string
 	tags_all?: [string]: string
-	user_id?:       string
+	user_id?: string
 	identity_info?: #identity_info | list.MaxItems(1) & [...#identity_info]
-	phone_config?:  #phone_config | list.MaxItems(1) & [_, ...] & [...#phone_config]
+	phone_config?: #phone_config | list.MaxItems(1) & [_, ...] & [...#phone_config]
 
 	#identity_info: {
 		email?:      string
@@ -30,6 +30,6 @@ import "list"
 		after_contact_work_time_limit?: number
 		auto_accept?:                   bool
 		desk_phone_number?:             string
-		phone_type:                     string
+		phone_type!:                    string
 	}
 }

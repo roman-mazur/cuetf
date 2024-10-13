@@ -20,7 +20,7 @@ package res
 	kernel_id?:               string
 	kms_key_id?:              string
 	manage_ebs_snapshots?:    bool
-	name:                     string
+	name!:                    string
 	owner_id?:                string
 	platform?:                string
 	platform_details?:        string
@@ -28,17 +28,17 @@ package res
 	ramdisk_id?:              string
 	root_device_name?:        string
 	root_snapshot_id?:        string
-	source_ami_id:            string
-	source_ami_region:        string
+	source_ami_id!:           string
+	source_ami_region!:       string
 	sriov_net_support?:       string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	tpm_support?:            string
-	usage_operation?:        string
-	virtualization_type?:    string
-	ebs_block_device?:       #ebs_block_device | [...#ebs_block_device]
+	tpm_support?:         string
+	usage_operation?:     string
+	virtualization_type?: string
+	ebs_block_device?: #ebs_block_device | [...#ebs_block_device]
 	ephemeral_block_device?: #ephemeral_block_device | [...#ephemeral_block_device]
-	timeouts?:               #timeouts
+	timeouts?: #timeouts
 
 	#ebs_block_device: {
 		delete_on_termination?: bool

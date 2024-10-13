@@ -8,7 +8,7 @@ package data
 	encryption_algorithms?: [...string]
 	grant_tokens?: [...string]
 	id?:             string
-	key_id:          string
+	key_id!:         string
 	key_usage?:      string
 	public_key?:     string
 	public_key_pem?: string

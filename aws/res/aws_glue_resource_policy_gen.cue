@@ -5,5 +5,5 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_glue_resource_policy")
 	enable_hybrid?: string
 	id?:            string
-	policy:         string
+	policy!:        string
 }

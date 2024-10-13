@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dynamodb_table_replica")
 	arn?:                    string
-	global_table_arn:        string
+	global_table_arn!:       string
 	id?:                     string
 	kms_key_arn?:            string
 	point_in_time_recovery?: bool

@@ -10,6 +10,6 @@ package data
 		name?:   string
 		status?: string
 	}]
-	id?:       string
-	parent_id: string
+	id?:        string
+	parent_id!: string
 }

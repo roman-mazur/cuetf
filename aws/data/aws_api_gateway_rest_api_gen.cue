@@ -14,7 +14,7 @@ package data
 	execution_arn?:            string
 	id?:                       string
 	minimum_compression_size?: string
-	name:                      string
+	name!:                     string
 	policy?:                   string
 	root_resource_id?:         string
 	tags?: [string]: string

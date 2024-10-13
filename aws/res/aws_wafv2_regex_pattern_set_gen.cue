@@ -9,11 +9,11 @@ import "list"
 	description?: string
 	id?:          string
 	lock_token?:  string
-	name:         string
-	scope:        string
+	name!:        string
+	scope!:       string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	regular_expression?: #regular_expression | list.MaxItems(10) & [...#regular_expression]
 
-	#regular_expression: regex_string: string
+	#regular_expression: regex_string!: string
 }

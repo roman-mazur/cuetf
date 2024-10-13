@@ -10,8 +10,8 @@ package res
 	id?:               string
 	kms_key_id?:       string
 	namespace_arn?:    string
-	namespace_name:    string
+	namespace_name!:   string
 	owner_account?:    string
 	retention_period?: number
-	snapshot_name:     string
+	snapshot_name!:    string
 }

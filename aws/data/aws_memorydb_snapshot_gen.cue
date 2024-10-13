@@ -22,7 +22,7 @@ package data
 	cluster_name?: string
 	id?:           string
 	kms_key_arn?:  string
-	name:          string
+	name!:         string
 	source?:       string
 	tags?: [string]: string
 }

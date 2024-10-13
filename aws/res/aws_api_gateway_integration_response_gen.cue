@@ -4,12 +4,12 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_api_gateway_integration_response")
 	content_handling?: string
-	http_method:       string
+	http_method!:      string
 	id?:               string
-	resource_id:       string
+	resource_id!:      string
 	response_parameters?: [string]: string
 	response_templates?: [string]: string
-	rest_api_id:        string
+	rest_api_id!:       string
 	selection_pattern?: string
-	status_code:        string
+	status_code!:       string
 }

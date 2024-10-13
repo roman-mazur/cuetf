@@ -8,7 +8,7 @@ package res
 	associated_gateway_owner_account_id?: string
 	associated_gateway_type?:             string
 	dx_gateway_association_id?:           string
-	dx_gateway_id:                        string
+	dx_gateway_id!:                       string
 	dx_gateway_owner_account_id?:         string
 	id?:                                  string
 	proposal_id?:                         string

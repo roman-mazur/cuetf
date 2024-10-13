@@ -6,6 +6,14 @@ package res
 	arn?:                string
 	default_version_id?: string
 	id?:                 string
-	name:                string
-	policy:              string
+	name!:               string
+	policy!:             string
+	tags?: [string]: string
+	tags_all?: [string]: string
+	timeouts?: #timeouts
+
+	#timeouts: {
+		delete?: string
+		update?: string
+	}
 }

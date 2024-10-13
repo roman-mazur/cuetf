@@ -10,16 +10,16 @@ import "list"
 	description?:           string
 	id?:                    string
 	last_modified_on?:      string
-	name:                   string
+	name!:                  string
 	recommendation_run_id?: string
-	ruleset:                string
+	ruleset!:               string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	target_table?: #target_table | list.MaxItems(1) & [...#target_table]
 
 	#target_table: {
-		catalog_id?:   string
-		database_name: string
-		table_name:    string
+		catalog_id?:    string
+		database_name!: string
+		table_name!:    string
 	}
 }

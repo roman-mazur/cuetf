@@ -19,6 +19,7 @@ package data
 	license_model?:                 string
 	most_recent?:                   bool
 	option_group_name?:             string
+	original_snapshot_create_time?: string
 	port?:                          number
 	snapshot_create_time?:          string
 	snapshot_type?:                 string

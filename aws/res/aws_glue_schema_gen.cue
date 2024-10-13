@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_glue_schema")
 	arn?:                   string
-	compatibility:          string
-	data_format:            string
+	compatibility!:         string
+	data_format!:           string
 	description?:           string
 	id?:                    string
 	latest_schema_version?: number
@@ -13,8 +13,8 @@ package res
 	registry_arn?:          string
 	registry_name?:         string
 	schema_checkpoint?:     number
-	schema_definition:      string
-	schema_name:            string
+	schema_definition!:     string
+	schema_name!:           string
 	tags?: [string]: string
 	tags_all?: [string]: string
 }

@@ -22,7 +22,7 @@ package res
 	instance_profile_arn?:    string
 	instance_type?:           string
 	last_service_error_id?:   string
-	layer_ids: [...string]
+	layer_ids!: [...string]
 	os?:                     string
 	platform?:               string
 	private_dns?:            string
@@ -40,20 +40,20 @@ package res
 	ssh_host_dsa_key_fingerprint?: string
 	ssh_host_rsa_key_fingerprint?: string
 	ssh_key_name?:                 string
-	stack_id:                      string
+	stack_id!:                     string
 	state?:                        string
 	status?:                       string
 	subnet_id?:                    string
 	tenancy?:                      string
 	virtualization_type?:          string
-	ebs_block_device?:             #ebs_block_device | [...#ebs_block_device]
-	ephemeral_block_device?:       #ephemeral_block_device | [...#ephemeral_block_device]
-	root_block_device?:            #root_block_device | [...#root_block_device]
-	timeouts?:                     #timeouts
+	ebs_block_device?: #ebs_block_device | [...#ebs_block_device]
+	ephemeral_block_device?: #ephemeral_block_device | [...#ephemeral_block_device]
+	root_block_device?: #root_block_device | [...#root_block_device]
+	timeouts?: #timeouts
 
 	#ebs_block_device: {
 		delete_on_termination?: bool
-		device_name:            string
+		device_name!:           string
 		iops?:                  number
 		snapshot_id?:           string
 		volume_size?:           number
@@ -61,8 +61,8 @@ package res
 	}
 
 	#ephemeral_block_device: {
-		device_name:  string
-		virtual_name: string
+		device_name!:  string
+		virtual_name!: string
 	}
 
 	#root_block_device: {

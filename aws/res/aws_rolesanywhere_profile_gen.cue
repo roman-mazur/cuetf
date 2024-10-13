@@ -8,9 +8,9 @@ package res
 	enabled?:          bool
 	id?:               string
 	managed_policy_arns?: [...string]
-	name:                         string
+	name!:                        string
 	require_instance_properties?: bool
-	role_arns: [...string]
+	role_arns?: [...string]
 	session_policy?: string
 	tags?: [string]: string
 	tags_all?: [string]: string

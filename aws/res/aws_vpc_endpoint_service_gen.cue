@@ -3,7 +3,7 @@ package res
 #aws_vpc_endpoint_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_vpc_endpoint_service")
-	acceptance_required: bool
+	acceptance_required!: bool
 	allowed_principals?: [...string]
 	arn?: string
 	availability_zones?: [...string]

@@ -7,7 +7,7 @@ package res
 	description?:     string
 	id?:              string
 	ipam_arn?:        string
-	ipam_id:          string
+	ipam_id!:         string
 	ipam_scope_type?: string
 	is_default?:      bool
 	pool_count?:      number

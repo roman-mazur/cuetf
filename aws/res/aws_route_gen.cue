@@ -17,7 +17,7 @@ package res
 	nat_gateway_id?:              string
 	network_interface_id?:        string
 	origin?:                      string
-	route_table_id:               string
+	route_table_id!:              string
 	state?:                       string
 	transit_gateway_id?:          string
 	vpc_endpoint_id?:             string

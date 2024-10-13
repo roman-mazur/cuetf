@@ -17,29 +17,37 @@ import "list"
 	drive_cache_type?:                  string
 	export_path?:                       string
 	file_system_type_version?:          string
-	id?:                                string
-	import_path?:                       string
-	imported_file_chunk_size?:          number
-	kms_key_id?:                        string
-	mount_name?:                        string
+	final_backup_tags?: [string]: string
+	id?:                       string
+	import_path?:              string
+	imported_file_chunk_size?: number
+	kms_key_id?:               string
+	mount_name?:               string
 	network_interface_ids?: [...string]
 	owner_id?:                    string
 	per_unit_storage_throughput?: number
 	security_group_ids?: [...string]
-	storage_capacity?: number
-	storage_type?:     string
-	subnet_ids: [...string]
+	skip_final_backup?: bool
+	storage_capacity?:  number
+	storage_type?:      string
+	subnet_ids!: [...string]
 	tags?: [string]: string
 	tags_all?: [string]: string
 	vpc_id?:                        string
 	weekly_maintenance_start_time?: string
-	log_configuration?:             #log_configuration | list.MaxItems(1) & [...#log_configuration]
-	root_squash_configuration?:     #root_squash_configuration | list.MaxItems(1) & [...#root_squash_configuration]
-	timeouts?:                      #timeouts
+	log_configuration?: #log_configuration | list.MaxItems(1) & [...#log_configuration]
+	metadata_configuration?: #metadata_configuration | list.MaxItems(1) & [...#metadata_configuration]
+	root_squash_configuration?: #root_squash_configuration | list.MaxItems(1) & [...#root_squash_configuration]
+	timeouts?: #timeouts
 
 	#log_configuration: {
 		destination?: string
 		level?:       string
+	}
+
+	#metadata_configuration: {
+		iops?: number
+		mode?: string
 	}
 
 	#root_squash_configuration: {

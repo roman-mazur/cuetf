@@ -9,7 +9,7 @@ package data
 	enabled?:                        bool
 	etag?:                           string
 	hosted_zone_id?:                 string
-	id:                              string
+	id!:                             string
 	in_progress_validation_batches?: number
 	last_modified_time?:             string
 	status?:                         string

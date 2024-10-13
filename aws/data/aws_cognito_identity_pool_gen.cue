@@ -13,7 +13,7 @@ package data
 	}]
 	developer_provider_name?: string
 	id?:                      string
-	identity_pool_name:       string
+	identity_pool_name!:      string
 	openid_connect_provider_arns?: [...string]
 	saml_provider_arns?: [...string]
 	supported_login_providers?: [string]: string

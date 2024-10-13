@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cloudwatch_query_definition")
 	id?: string
 	log_group_names?: [...string]
-	name:                 string
+	name!:                string
 	query_definition_id?: string
-	query_string:         string
+	query_string!:        string
 }

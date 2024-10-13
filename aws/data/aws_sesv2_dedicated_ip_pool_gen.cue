@@ -10,7 +10,7 @@ package data
 		warmup_status?:     string
 	}]
 	id?:           string
-	pool_name:     string
+	pool_name!:    string
 	scaling_mode?: string
 	tags?: [string]: string
 }

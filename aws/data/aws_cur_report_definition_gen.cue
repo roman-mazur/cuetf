@@ -9,10 +9,11 @@ package data
 	format?:                 string
 	id?:                     string
 	refresh_closed_reports?: bool
-	report_name:             string
+	report_name!:            string
 	report_versioning?:      string
 	s3_bucket?:              string
 	s3_prefix?:              string
 	s3_region?:              string
-	time_unit?:              string
+	tags?: [string]: string
+	time_unit?: string
 }

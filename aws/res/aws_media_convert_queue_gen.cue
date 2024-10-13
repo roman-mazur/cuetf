@@ -8,7 +8,7 @@ import "list"
 	arn?:          string
 	description?:  string
 	id?:           string
-	name:          string
+	name!:         string
 	pricing_plan?: string
 	status?:       string
 	tags?: [string]: string
@@ -16,8 +16,8 @@ import "list"
 	reservation_plan_settings?: #reservation_plan_settings | list.MaxItems(1) & [...#reservation_plan_settings]
 
 	#reservation_plan_settings: {
-		commitment:     string
-		renewal_type:   string
-		reserved_slots: number
+		commitment!:     string
+		renewal_type!:   string
+		reserved_slots!: number
 	}
 }

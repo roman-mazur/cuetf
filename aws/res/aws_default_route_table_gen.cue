@@ -3,10 +3,10 @@ package res
 #aws_default_route_table: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_default_route_table")
-	arn?:                   string
-	default_route_table_id: string
-	id?:                    string
-	owner_id?:              string
+	arn?:                    string
+	default_route_table_id!: string
+	id?:                     string
+	owner_id?:               string
 	propagating_vgws?: [...string]
 	route?: [...{
 		cidr_block?:                 string

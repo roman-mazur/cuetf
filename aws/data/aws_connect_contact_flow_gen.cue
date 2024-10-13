@@ -8,7 +8,7 @@ package data
 	content?:         string
 	description?:     string
 	id?:              string
-	instance_id:      string
+	instance_id!:     string
 	name?:            string
 	tags?: [string]: string
 	type?: string

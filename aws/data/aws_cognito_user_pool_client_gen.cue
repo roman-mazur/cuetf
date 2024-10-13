@@ -15,7 +15,7 @@ package data
 		user_data_shared?: bool
 	}]
 	callback_urls?: [...string]
-	client_id:                                      string
+	client_id!:                                     string
 	client_secret?:                                 string
 	default_redirect_uri?:                          string
 	enable_propagate_additional_user_context_data?: bool
@@ -35,6 +35,6 @@ package data
 		id_token?:      string
 		refresh_token?: string
 	}]
-	user_pool_id: string
+	user_pool_id!: string
 	write_attributes?: [...string]
 }

@@ -6,6 +6,6 @@ package res
 	arn?:                string
 	creation_timestamp?: string
 	id?:                 string
-	name:                string
-	stream_arn:          string
+	name!:               string
+	stream_arn!:         string
 }

@@ -18,11 +18,11 @@ package res
 	}]
 	global_replication_group_description?: string
 	global_replication_group_id?:          string
-	global_replication_group_id_suffix:    string
+	global_replication_group_id_suffix!:   string
 	id?:                                   string
 	num_node_groups?:                      number
 	parameter_group_name?:                 string
-	primary_replication_group_id:          string
+	primary_replication_group_id!:         string
 	transit_encryption_enabled?:           bool
 	timeouts?:                             #timeouts
 

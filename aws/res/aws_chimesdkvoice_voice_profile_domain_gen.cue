@@ -8,13 +8,13 @@ import "list"
 	arn?:         string
 	description?: string
 	id?:          string
-	name:         string
+	name!:        string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	server_side_encryption_configuration?: #server_side_encryption_configuration | list.MaxItems(1) & [_, ...] & [...#server_side_encryption_configuration]
-	timeouts?:                             #timeouts
+	timeouts?: #timeouts
 
-	#server_side_encryption_configuration: kms_key_arn: string
+	#server_side_encryption_configuration: kms_key_arn!: string
 
 	#timeouts: {
 		create?: string

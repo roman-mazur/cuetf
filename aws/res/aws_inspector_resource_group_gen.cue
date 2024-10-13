@@ -5,5 +5,5 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_inspector_resource_group")
 	arn?: string
 	id?:  string
-	tags: [string]: string
+	tags!: [string]: string
 }

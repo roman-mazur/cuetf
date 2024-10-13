@@ -17,8 +17,8 @@ import "list"
 	evaluation_strategy?: string
 	id?:                  string
 	last_updated_time?:   string
-	name:                 string
-	project:              string
+	name!:                string
+	project!:             string
 	status?:              string
 	tags?: [string]: string
 	tags_all?: [string]: string
@@ -33,7 +33,7 @@ import "list"
 	}
 
 	#variations: {
-		name:   string
+		name!: string
 		value?: #variations.#value | list.MaxItems(1) & [_, ...] & [...#variations.#value]
 
 		#value: {

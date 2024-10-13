@@ -12,9 +12,9 @@ package res
 		resource_record_type?:  string
 		resource_record_value?: string
 	}]
-	id?:     string
-	lb_name: string
-	name:    string
+	id?:      string
+	lb_name!: string
+	name!:    string
 	subject_alternative_names?: [...string]
 	support_code?: string
 }

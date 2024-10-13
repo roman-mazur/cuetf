@@ -15,16 +15,16 @@ import "list"
 	id?:                      string
 	last_updated_time?:       string
 	launch_count?:            number
-	name:                     string
+	name!:                    string
 	status?:                  string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	data_delivery?: #data_delivery | list.MaxItems(1) & [...#data_delivery]
-	timeouts?:      #timeouts
+	timeouts?: #timeouts
 
 	#data_delivery: {
 		cloudwatch_logs?: #data_delivery.#cloudwatch_logs | list.MaxItems(1) & [...#data_delivery.#cloudwatch_logs]
-		s3_destination?:  #data_delivery.#s3_destination | list.MaxItems(1) & [...#data_delivery.#s3_destination]
+		s3_destination?: #data_delivery.#s3_destination | list.MaxItems(1) & [...#data_delivery.#s3_destination]
 
 		#cloudwatch_logs: log_group?: string
 

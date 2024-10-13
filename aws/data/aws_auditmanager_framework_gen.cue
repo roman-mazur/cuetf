@@ -6,15 +6,15 @@ package data
 	arn?:             string
 	compliance_type?: string
 	description?:     string
-	framework_type:   string
+	framework_type!:  string
 	id?:              string
-	name:             string
+	name!:            string
 	tags?: [string]: string
 	control_sets?: #control_sets | [...#control_sets]
 
 	#control_sets: {
-		id?:       string
-		name?:     string
+		id?:   string
+		name?: string
 		controls?: #control_sets.#controls | [...#control_sets.#controls]
 
 		#controls: id?: string

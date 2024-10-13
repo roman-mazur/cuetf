@@ -6,6 +6,6 @@ package res
 	id?:          string
 	name?:        string
 	name_prefix?: string
-	policy:       string
-	user:         string
+	policy!:      string
+	user!:        string
 }

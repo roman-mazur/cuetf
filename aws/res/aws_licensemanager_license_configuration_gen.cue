@@ -8,9 +8,9 @@ package res
 	id?:                       string
 	license_count?:            number
 	license_count_hard_limit?: bool
-	license_counting_type:     string
+	license_counting_type!:    string
 	license_rules?: [...string]
-	name:              string
+	name!:             string
 	owner_account_id?: string
 	tags?: [string]: string
 	tags_all?: [string]: string

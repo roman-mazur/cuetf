@@ -6,6 +6,6 @@ package res
 	arn?:               string
 	id?:                string
 	owner_id?:          string
-	resource_id:        string
+	resource_id!:       string
 	validation_status?: string
 }

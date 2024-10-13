@@ -8,29 +8,29 @@ import "list"
 	arn?:                   string
 	audit_destination_arn?: string
 	bucket_region?:         string
-	client_list: [...string]
+	client_list!: [...string]
 	default_storage_class?:   string
 	file_share_name?:         string
 	fileshare_id?:            string
-	gateway_arn:              string
+	gateway_arn!:             string
 	guess_mime_type_enabled?: bool
 	id?:                      string
 	kms_encrypted?:           bool
 	kms_key_arn?:             string
-	location_arn:             string
+	location_arn!:            string
 	notification_policy?:     string
 	object_acl?:              string
 	path?:                    string
 	read_only?:               bool
 	requester_pays?:          bool
-	role_arn:                 string
+	role_arn!:                string
 	squash?:                  string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	vpc_endpoint_dns_name?:   string
-	cache_attributes?:        #cache_attributes | list.MaxItems(1) & [...#cache_attributes]
+	vpc_endpoint_dns_name?: string
+	cache_attributes?: #cache_attributes | list.MaxItems(1) & [...#cache_attributes]
 	nfs_file_share_defaults?: #nfs_file_share_defaults | list.MaxItems(1) & [...#nfs_file_share_defaults]
-	timeouts?:                #timeouts
+	timeouts?: #timeouts
 
 	#cache_attributes: cache_stale_timeout_in_seconds?: number
 

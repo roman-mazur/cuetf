@@ -4,7 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_s3_object_copy")
 	acl?:                          string
-	bucket:                        string
+	arn?:                          string
+	bucket!:                       string
 	bucket_key_enabled?:           bool
 	cache_control?:                string
 	checksum_algorithm?:           string
@@ -30,7 +31,7 @@ package res
 	expires?:                      string
 	force_destroy?:                bool
 	id?:                           string
-	key:                           string
+	key!:                          string
 	kms_encryption_context?:       string
 	kms_key_id?:                   string
 	last_modified?:                string
@@ -42,7 +43,7 @@ package res
 	request_charged?:               bool
 	request_payer?:                 string
 	server_side_encryption?:        string
-	source:                         string
+	source!:                        string
 	source_customer_algorithm?:     string
 	source_customer_key?:           string
 	source_customer_key_md5?:       string
@@ -53,13 +54,13 @@ package res
 	tags_all?: [string]: string
 	version_id?:       string
 	website_redirect?: string
-	grant?:            #grant | [...#grant]
+	grant?: #grant | [...#grant]
 
 	#grant: {
 		email?: string
 		id?:    string
-		permissions: [...string]
-		type: string
-		uri?: string
+		permissions!: [...string]
+		type!: string
+		uri?:  string
 	}
 }

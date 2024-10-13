@@ -7,7 +7,7 @@ package res
 	description?:        string
 	expiration_date?:    string
 	expired?:            bool
-	iam_role:            string
+	iam_role!:           string
 	id?:                 string
 	name?:               string
 	registration_count?: number

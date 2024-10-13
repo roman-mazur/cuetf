@@ -10,5 +10,5 @@ package res
 	password_length?:         number
 	password_reset_required?: bool
 	pgp_key?:                 string
-	user:                     string
+	user!:                    string
 }

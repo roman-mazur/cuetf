@@ -15,10 +15,10 @@ package data
 	transit_gateway_attachment_id?: string
 	transit_gateway_id?:            string
 	transit_gateway_owner_id?:      string
-	filter?:                        #filter | [...#filter]
+	filter?: #filter | [...#filter]
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 }

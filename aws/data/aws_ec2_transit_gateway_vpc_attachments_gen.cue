@@ -5,12 +5,12 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ec2_transit_gateway_vpc_attachments")
 	id?: string
 	ids?: [...string]
-	filter?:   #filter | [...#filter]
+	filter?: #filter | [...#filter]
 	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

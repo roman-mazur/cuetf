@@ -5,14 +5,14 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dx_connection")
 	arn?:                    string
 	aws_device?:             string
-	bandwidth:               string
+	bandwidth!:              string
 	encryption_mode?:        string
 	has_logical_redundancy?: string
 	id?:                     string
 	jumbo_frame_capable?:    bool
-	location:                string
+	location!:               string
 	macsec_capable?:         bool
-	name:                    string
+	name!:                   string
 	owner_account_id?:       string
 	partner_name?:           string
 	port_encryption_status?: string

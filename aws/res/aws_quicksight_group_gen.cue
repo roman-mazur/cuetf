@@ -6,7 +6,7 @@ package res
 	arn?:            string
 	aws_account_id?: string
 	description?:    string
-	group_name:      string
+	group_name!:     string
 	id?:             string
 	namespace?:      string
 }

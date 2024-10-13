@@ -4,14 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ssm_maintenance_window")
 	allow_unassociated_targets?: bool
-	cutoff:                      number
+	cutoff!:                     number
 	description?:                string
-	duration:                    number
+	duration!:                   number
 	enabled?:                    bool
 	end_date?:                   string
 	id?:                         string
-	name:                        string
-	schedule:                    string
+	name!:                       string
+	schedule!:                   string
 	schedule_offset?:            number
 	schedule_timezone?:          string
 	start_date?:                 string

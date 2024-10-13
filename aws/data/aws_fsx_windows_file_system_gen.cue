@@ -21,7 +21,7 @@ package data
 		mode?: string
 	}]
 	dns_name?:   string
-	id:          string
+	id!:         string
 	kms_key_id?: string
 	network_interface_ids?: [...string]
 	owner_id?:                 string

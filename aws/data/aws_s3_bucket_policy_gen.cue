@@ -3,7 +3,7 @@ package data
 #aws_s3_bucket_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_s3_bucket_policy")
-	bucket:  string
+	bucket!: string
 	id?:     string
 	policy?: string
 }

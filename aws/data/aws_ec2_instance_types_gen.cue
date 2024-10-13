@@ -5,12 +5,12 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ec2_instance_types")
 	id?: string
 	instance_types?: [...string]
-	filter?:   #filter | [...#filter]
+	filter?: #filter | [...#filter]
 	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

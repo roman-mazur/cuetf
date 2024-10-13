@@ -11,6 +11,6 @@ package data
 	name?:                          string
 	number_of_associated_services?: number
 	number_of_associated_vpcs?:     number
-	service_network_identifier:     string
+	service_network_identifier!:    string
 	tags?: [string]: string
 }

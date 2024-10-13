@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dynamodb_contributor_insights")
 	id?:         string
 	index_name?: string
-	table_name:  string
+	table_name!: string
 	timeouts?:   #timeouts
 
 	#timeouts: {

@@ -8,9 +8,9 @@ package res
 	connection_type?:             string
 	description?:                 string
 	id?:                          string
-	image_id?:                    string
-	instance_type:                string
-	name:                         string
+	image_id!:                    string
+	instance_type!:               string
+	name!:                        string
 	owner_arn?:                   string
 	subnet_id?:                   string
 	tags?: [string]: string

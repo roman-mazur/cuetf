@@ -5,7 +5,8 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_rds_orderable_db_instance")
 	availability_zone_group?: string
 	availability_zones?: [...string]
-	engine:                    string
+	engine!:                   string
+	engine_latest_version?:    bool
 	engine_version?:           string
 	id?:                       string
 	instance_class?:           string
@@ -24,11 +25,13 @@ package data
 	storage_type?:         string
 	supported_engine_modes?: [...string]
 	supported_network_types?: [...string]
+	supports_clusters?:                    bool
 	supports_enhanced_monitoring?:         bool
 	supports_global_databases?:            bool
 	supports_iam_database_authentication?: bool
 	supports_iops?:                        bool
 	supports_kerberos_authentication?:     bool
+	supports_multi_az?:                    bool
 	supports_performance_insights?:        bool
 	supports_storage_autoscaling?:         bool
 	supports_storage_encryption?:          bool

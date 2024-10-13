@@ -6,7 +6,7 @@ package data
 	iam_role_arn?: string
 	id?:           string
 	name?:         string
-	plan_id:       string
+	plan_id!:      string
 	resources?: [...string]
-	selection_id: string
+	selection_id!: string
 }

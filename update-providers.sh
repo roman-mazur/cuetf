@@ -14,12 +14,15 @@ function terraUpdate() {
 
 function process() {
   provider=$1
+  echo "Processing $provider..."
   (cd "$provider/internal" && terraUpdate "$provider")
 
   go run ./cmd/gen "$provider/internal/schema/schema.json" . 2> out/"$provider-log.txt" &
   defs_pid=$!
 
   (cd "$provider" && ([ -f import.sh ] && ./import.sh || exit 0))
+
+  echo "Waiting for the schemas import to finish..."
   wait $defs_pid
   echo "DONE: $provider"
 }

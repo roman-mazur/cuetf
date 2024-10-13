@@ -7,14 +7,16 @@ package data
 	direction?: string
 	id?:        string
 	ip_addresses?: [...string]
-	name?:                 string
-	resolver_endpoint_id?: string
-	status?:               string
-	vpc_id?:               string
-	filter?:               #filter | [...#filter]
+	name?: string
+	protocols?: [...string]
+	resolver_endpoint_id?:   string
+	resolver_endpoint_type?: string
+	status?:                 string
+	vpc_id?:                 string
+	filter?: #filter | [...#filter]
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 }

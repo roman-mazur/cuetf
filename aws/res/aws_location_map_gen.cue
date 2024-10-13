@@ -9,11 +9,11 @@ import "list"
 	description?: string
 	id?:          string
 	map_arn?:     string
-	map_name:     string
+	map_name!:    string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	update_time?:   string
+	update_time?: string
 	configuration?: #configuration | list.MaxItems(1) & [_, ...] & [...#configuration]
 
-	#configuration: style: string
+	#configuration: style!: string
 }

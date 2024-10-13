@@ -6,7 +6,7 @@ package res
 	add_column_name?:                             bool
 	add_trailing_padding_character?:              bool
 	bucket_folder?:                               string
-	bucket_name:                                  string
+	bucket_name!:                                 string
 	canned_acl_for_objects?:                      string
 	cdc_inserts_and_updates?:                     bool
 	cdc_inserts_only?:                            bool
@@ -31,8 +31,8 @@ package res
 	encoding_type?:                               string
 	encryption_mode?:                             string
 	endpoint_arn?:                                string
-	endpoint_id:                                  string
-	endpoint_type:                                string
+	endpoint_id!:                                 string
+	endpoint_type!:                               string
 	engine_display_name?:                         string
 	expected_bucket_owner?:                       string
 	external_id?:                                 string
@@ -49,7 +49,7 @@ package res
 	rfc_4180?:                                    bool
 	row_group_length?:                            number
 	server_side_encryption_kms_key_id?:           string
-	service_access_role_arn:                      string
+	service_access_role_arn!:                     string
 	ssl_mode?:                                    string
 	status?:                                      string
 	tags?: [string]: string

@@ -18,4 +18,5 @@ package data
 	outbound_calls_enabled?:           bool
 	service_role?:                     string
 	status?:                           string
+	tags?: [string]: string
 }

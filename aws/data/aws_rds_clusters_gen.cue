@@ -5,11 +5,11 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_rds_clusters")
 	cluster_arns?: [...string]
 	cluster_identifiers?: [...string]
-	id?:     string
+	id?: string
 	filter?: #filter | [...#filter]
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 }

@@ -12,10 +12,10 @@ package data
 	snapshot_ids?: [...string]
 	tags?: [string]: string
 	volume_id?: string
-	filter?:    #filter | [...#filter]
+	filter?: #filter | [...#filter]
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 }

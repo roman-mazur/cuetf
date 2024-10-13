@@ -8,13 +8,13 @@ package data
 		cidr?:  string
 		state?: string
 	}]
-	ipam_pool_id: string
-	filter?:      #filter | [...#filter]
-	timeouts?:    #timeouts
+	ipam_pool_id!: string
+	filter?: #filter | [...#filter]
+	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

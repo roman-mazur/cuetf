@@ -11,7 +11,7 @@ import "list"
 	automated_snapshot_retention_period?:  number
 	availability_zone?:                    string
 	availability_zone_relocation_enabled?: bool
-	cluster_identifier:                    string
+	cluster_identifier!:                   string
 	cluster_namespace_arn?:                string
 	cluster_nodes?: [...{
 		node_role?:          string
@@ -33,40 +33,45 @@ import "list"
 	enhanced_vpc_routing?:         bool
 	final_snapshot_identifier?:    string
 	iam_roles?: [...string]
-	id?:                               string
-	kms_key_id?:                       string
-	maintenance_track_name?:           string
-	manual_snapshot_retention_period?: number
-	master_password?:                  string
-	master_username?:                  string
-	node_type:                         string
-	number_of_nodes?:                  number
-	owner_account?:                    string
-	port?:                             number
-	preferred_maintenance_window?:     string
-	publicly_accessible?:              bool
-	skip_final_snapshot?:              bool
-	snapshot_cluster_identifier?:      string
-	snapshot_identifier?:              string
+	id?:                                string
+	kms_key_id?:                        string
+	maintenance_track_name?:            string
+	manage_master_password?:            bool
+	manual_snapshot_retention_period?:  number
+	master_password?:                   string
+	master_password_secret_arn?:        string
+	master_password_secret_kms_key_id?: string
+	master_username?:                   string
+	multi_az?:                          bool
+	node_type!:                         string
+	number_of_nodes?:                   number
+	owner_account?:                     string
+	port?:                              number
+	preferred_maintenance_window?:      string
+	publicly_accessible?:               bool
+	skip_final_snapshot?:               bool
+	snapshot_arn?:                      string
+	snapshot_cluster_identifier?:       string
+	snapshot_identifier?:               string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	vpc_security_group_ids?: [...string]
-	logging?:       #logging | list.MaxItems(1) & [...#logging]
+	logging?: #logging | list.MaxItems(1) & [...#logging]
 	snapshot_copy?: #snapshot_copy | list.MaxItems(1) & [...#snapshot_copy]
-	timeouts?:      #timeouts
+	timeouts?: #timeouts
 
 	#logging: {
 		bucket_name?:          string
-		enable:                bool
+		enable!:               bool
 		log_destination_type?: string
 		log_exports?: [...string]
 		s3_key_prefix?: string
 	}
 
 	#snapshot_copy: {
-		destination_region: string
-		grant_name?:        string
-		retention_period?:  number
+		destination_region!: string
+		grant_name?:         string
+		retention_period?:   number
 	}
 
 	#timeouts: {

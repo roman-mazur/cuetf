@@ -9,8 +9,8 @@ package res
 		resource?:  string
 		value?:     string
 	}]
-	application: string
-	arn?:        string
+	application!: string
+	arn?:         string
 	autoscaling_groups?: [...string]
 	cname?:        string
 	cname_prefix?: string
@@ -20,7 +20,7 @@ package res
 	instances?: [...string]
 	launch_configurations?: [...string]
 	load_balancers?: [...string]
-	name:           string
+	name!:          string
 	platform_arn?:  string
 	poll_interval?: string
 	queues?: [...string]
@@ -32,12 +32,12 @@ package res
 	triggers?: [...string]
 	version_label?:          string
 	wait_for_ready_timeout?: string
-	setting?:                #setting | [...#setting]
+	setting?: #setting | [...#setting]
 
 	#setting: {
-		name:      string
-		namespace: string
-		resource?: string
-		value:     string
+		name!:      string
+		namespace!: string
+		resource?:  string
+		value!:     string
 	}
 }

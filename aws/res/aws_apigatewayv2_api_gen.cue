@@ -15,14 +15,14 @@ import "list"
 	execution_arn?:                string
 	fail_on_warnings?:             bool
 	id?:                           string
-	name:                          string
-	protocol_type:                 string
+	name!:                         string
+	protocol_type!:                string
 	route_key?:                    string
 	route_selection_expression?:   string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	target?:             string
-	version?:            string
+	target?:  string
+	version?: string
 	cors_configuration?: #cors_configuration | list.MaxItems(1) & [...#cors_configuration]
 
 	#cors_configuration: {

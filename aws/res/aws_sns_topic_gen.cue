@@ -6,7 +6,9 @@ package res
 	application_failure_feedback_role_arn?:    string
 	application_success_feedback_role_arn?:    string
 	application_success_feedback_sample_rate?: number
+	archive_policy?:                           string
 	arn?:                                      string
+	beginning_archive_time?:                   string
 	content_based_deduplication?:              bool
 	delivery_policy?:                          string
 	display_name?:                             string

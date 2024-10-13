@@ -6,6 +6,6 @@ package res
 	availability_zone?: string
 	id?:                string
 	port?:              number
-	target_group_arn:   string
-	target_id:          string
+	target_group_arn!:  string
+	target_id!:         string
 }

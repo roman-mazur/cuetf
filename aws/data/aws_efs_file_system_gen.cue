@@ -13,11 +13,15 @@ package data
 	id?:                     string
 	kms_key_id?:             string
 	lifecycle_policy?: [...{
+		transition_to_archive?:               string
 		transition_to_ia?:                    string
 		transition_to_primary_storage_class?: string
 	}]
-	name?:                            string
-	performance_mode?:                string
+	name?:             string
+	performance_mode?: string
+	protection?: [...{
+		replication_overwrite?: string
+	}]
 	provisioned_throughput_in_mibps?: number
 	size_in_bytes?:                   number
 	tags?: [string]: string

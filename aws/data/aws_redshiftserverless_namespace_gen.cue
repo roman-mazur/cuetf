@@ -11,6 +11,6 @@ package data
 	id?:         string
 	kms_key_id?: string
 	log_exports?: [...string]
-	namespace_id?:  string
-	namespace_name: string
+	namespace_id?:   string
+	namespace_name!: string
 }

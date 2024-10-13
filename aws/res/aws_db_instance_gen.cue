@@ -22,13 +22,19 @@ import "list"
 	customer_owned_ip_enabled?:   bool
 	db_name?:                     string
 	db_subnet_group_name?:        string
+	dedicated_log_volume?:        bool
 	delete_automated_backups?:    bool
 	deletion_protection?:         bool
 	domain?:                      string
-	domain_iam_role_name?:        string
+	domain_auth_secret_arn?:      string
+	domain_dns_ips?: [...string]
+	domain_fqdn?:          string
+	domain_iam_role_name?: string
+	domain_ou?:            string
 	enabled_cloudwatch_logs_exports?: [...string]
 	endpoint?:                            string
 	engine?:                              string
+	engine_lifecycle_support?:            string
 	engine_version?:                      string
 	engine_version_actual?:               string
 	final_snapshot_identifier?:           string
@@ -37,7 +43,7 @@ import "list"
 	id?:                                  string
 	identifier?:                          string
 	identifier_prefix?:                   string
-	instance_class:                       string
+	instance_class!:                      string
 	iops?:                                number
 	kms_key_id?:                          string
 	latest_restorable_time?:              string
@@ -81,13 +87,14 @@ import "list"
 	storage_type?:        string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	timezone?: string
-	username?: string
+	timezone?:               string
+	upgrade_storage_config?: bool
+	username?:               string
 	vpc_security_group_ids?: [...string]
-	blue_green_update?:        #blue_green_update | list.MaxItems(1) & [...#blue_green_update]
+	blue_green_update?: #blue_green_update | list.MaxItems(1) & [...#blue_green_update]
 	restore_to_point_in_time?: #restore_to_point_in_time | list.MaxItems(1) & [...#restore_to_point_in_time]
-	s3_import?:                #s3_import | list.MaxItems(1) & [...#s3_import]
-	timeouts?:                 #timeouts
+	s3_import?: #s3_import | list.MaxItems(1) & [...#s3_import]
+	timeouts?: #timeouts
 
 	#blue_green_update: enabled?: bool
 
@@ -100,11 +107,11 @@ import "list"
 	}
 
 	#s3_import: {
-		bucket_name:           string
-		bucket_prefix?:        string
-		ingestion_role:        string
-		source_engine:         string
-		source_engine_version: string
+		bucket_name!:           string
+		bucket_prefix?:         string
+		ingestion_role!:        string
+		source_engine!:         string
+		source_engine_version!: string
 	}
 
 	#timeouts: {

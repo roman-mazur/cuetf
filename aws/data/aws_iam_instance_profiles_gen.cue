@@ -7,5 +7,5 @@ package data
 	id?: string
 	names?: [...string]
 	paths?: [...string]
-	role_name: string
+	role_name!: string
 }

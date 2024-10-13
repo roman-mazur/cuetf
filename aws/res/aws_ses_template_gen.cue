@@ -6,7 +6,7 @@ package res
 	arn?:     string
 	html?:    string
 	id?:      string
-	name:     string
+	name!:    string
 	subject?: string
 	text?:    string
 }

@@ -10,5 +10,5 @@ package res
 	name_prefix?: string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	workflow_execution_retention_period_in_days: string
+	workflow_execution_retention_period_in_days!: string
 }

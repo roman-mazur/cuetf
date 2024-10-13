@@ -14,7 +14,7 @@ package res
 	key_spec?:                           string
 	key_usage?:                          string
 	policy?:                             string
-	primary_key_arn:                     string
+	primary_key_arn!:                    string
 	tags?: [string]: string
 	tags_all?: [string]: string
 }

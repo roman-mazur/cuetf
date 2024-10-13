@@ -8,26 +8,26 @@ package res
 	arn?:                      string
 	description?:              string
 	id?:                       string
-	name:                      string
+	name!:                     string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	testing_information?:     string
-	type?:                    string
+	testing_information?: string
+	type?:                string
 	control_mapping_sources?: #control_mapping_sources | [...#control_mapping_sources]
 
 	#control_mapping_sources: {
 		source_description?:   string
 		source_frequency?:     string
 		source_id?:            string
-		source_name:           string
-		source_set_up_option:  string
-		source_type:           string
+		source_name!:          string
+		source_set_up_option!: string
+		source_type!:          string
 		troubleshooting_text?: string
-		source_keyword?:       #control_mapping_sources.#source_keyword | [...#control_mapping_sources.#source_keyword]
+		source_keyword?: #control_mapping_sources.#source_keyword | [...#control_mapping_sources.#source_keyword]
 
 		#source_keyword: {
-			keyword_input_type: string
-			keyword_value:      string
+			keyword_input_type!: string
+			keyword_value!:      string
 		}
 	}
 }

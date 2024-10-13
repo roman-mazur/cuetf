@@ -4,7 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_efs_access_points")
 	arns?: [...string]
-	file_system_id: string
-	id?:            string
+	file_system_id!: string
+	id?:             string
 	ids?: [...string]
 }

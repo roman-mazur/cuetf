@@ -9,5 +9,5 @@ package res
 	id?:                              string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	transit_gateway_id: string
+	transit_gateway_id!: string
 }

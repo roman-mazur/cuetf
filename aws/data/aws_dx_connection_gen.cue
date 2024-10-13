@@ -8,7 +8,7 @@ package data
 	bandwidth?:        string
 	id?:               string
 	location?:         string
-	name:              string
+	name!:             string
 	owner_account_id?: string
 	partner_name?:     string
 	provider_name?:    string

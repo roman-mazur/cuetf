@@ -8,7 +8,7 @@ package data
 	content_type?:        string
 	id?:                  string
 	parameters?: [string]: string
-	rest_api_id: string
-	sdk_type:    string
-	stage_name:  string
+	rest_api_id!: string
+	sdk_type!:    string
+	stage_name!:  string
 }

@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dax_subnet_group")
 	description?: string
 	id?:          string
-	name:         string
-	subnet_ids: [...string]
+	name!:        string
+	subnet_ids!: [...string]
 	vpc_id?: string
 }

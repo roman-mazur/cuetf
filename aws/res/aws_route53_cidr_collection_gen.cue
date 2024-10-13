@@ -5,6 +5,6 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_route53_cidr_collection")
 	arn?:     string
 	id?:      string
-	name:     string
+	name!:    string
 	version?: number
 }

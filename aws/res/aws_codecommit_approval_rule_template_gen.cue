@@ -4,12 +4,12 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_codecommit_approval_rule_template")
 	approval_rule_template_id?: string
-	content:                    string
+	content!:                   string
 	creation_date?:             string
 	description?:               string
 	id?:                        string
 	last_modified_date?:        string
 	last_modified_user?:        string
-	name:                       string
+	name!:                      string
 	rule_content_sha256?:       string
 }

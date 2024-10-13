@@ -25,9 +25,9 @@ import "list"
 		id?:     string
 		issuer?: string
 	}]
-	id?:               string
-	identity_store_id: string
-	locale?:           string
+	id?:                string
+	identity_store_id!: string
+	locale?:            string
 	name?: [...{
 		family_name?:      string
 		formatted?:        string
@@ -42,33 +42,33 @@ import "list"
 		type?:    string
 		value?:   string
 	}]
-	preferred_language?:   string
-	profile_url?:          string
-	timezone?:             string
-	title?:                string
-	user_id?:              string
-	user_name?:            string
-	user_type?:            string
+	preferred_language?: string
+	profile_url?:        string
+	timezone?:           string
+	title?:              string
+	user_id?:            string
+	user_name?:          string
+	user_type?:          string
 	alternate_identifier?: #alternate_identifier | list.MaxItems(1) & [...#alternate_identifier]
-	filter?:               #filter | list.MaxItems(1) & [...#filter]
+	filter?: #filter | list.MaxItems(1) & [...#filter]
 
 	#alternate_identifier: {
-		external_id?:      #alternate_identifier.#external_id | list.MaxItems(1) & [...#alternate_identifier.#external_id]
+		external_id?: #alternate_identifier.#external_id | list.MaxItems(1) & [...#alternate_identifier.#external_id]
 		unique_attribute?: #alternate_identifier.#unique_attribute | list.MaxItems(1) & [...#alternate_identifier.#unique_attribute]
 
 		#external_id: {
-			id:     string
-			issuer: string
+			id!:     string
+			issuer!: string
 		}
 
 		#unique_attribute: {
-			attribute_path:  string
-			attribute_value: string
+			attribute_path!:  string
+			attribute_value!: string
 		}
 	}
 
 	#filter: {
-		attribute_path:  string
-		attribute_value: string
+		attribute_path!:  string
+		attribute_value!: string
 	}
 }

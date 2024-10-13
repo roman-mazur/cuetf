@@ -8,13 +8,22 @@ import "list"
 	arn?:     string
 	enabled?: bool
 	id?:      string
-	name:     string
+	name!:    string
 	tags?: [string]: string
 	tags_all?: [string]: string
+	notification_settings?: #notification_settings | list.MaxItems(50) & [...#notification_settings]
 	source?: #source | list.MaxItems(1) & [_, ...] & [...#source]
 
+	#notification_settings: {
+		channel?:       string
+		configured_by?: string
+		enabled?:       bool
+		event?:         string
+		threshold?:     number
+	}
+
 	#source: {
-		source_type:  string
+		source_type!: string
 		source_data?: #source.#source_data | list.MaxItems(1) & [_, ...] & [...#source.#source_data]
 
 		#source_data: {

@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_default_subnet")
 	arn?:                                            string
 	assign_ipv6_address_on_creation?:                bool
-	availability_zone:                               string
+	availability_zone!:                              string
 	availability_zone_id?:                           string
 	cidr_block?:                                     string
 	customer_owned_ipv4_pool?:                       string

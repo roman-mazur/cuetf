@@ -5,16 +5,16 @@ import "list"
 #aws_ecrpublic_repository: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ecrpublic_repository")
-	arn?:            string
-	force_destroy?:  bool
-	id?:             string
-	registry_id?:    string
-	repository_name: string
-	repository_uri?: string
+	arn?:             string
+	force_destroy?:   bool
+	id?:              string
+	registry_id?:     string
+	repository_name!: string
+	repository_uri?:  string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	catalog_data?: #catalog_data | list.MaxItems(1) & [...#catalog_data]
-	timeouts?:     #timeouts
+	timeouts?: #timeouts
 
 	#catalog_data: {
 		about_text?: string

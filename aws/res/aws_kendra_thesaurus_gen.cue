@@ -8,19 +8,19 @@ import "list"
 	arn?:         string
 	description?: string
 	id?:          string
-	index_id:     string
-	name:         string
-	role_arn:     string
+	index_id!:    string
+	name!:        string
+	role_arn!:    string
 	status?:      string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	thesaurus_id?:   string
+	thesaurus_id?: string
 	source_s3_path?: #source_s3_path | list.MaxItems(1) & [_, ...] & [...#source_s3_path]
-	timeouts?:       #timeouts
+	timeouts?: #timeouts
 
 	#source_s3_path: {
-		bucket: string
-		key:    string
+		bucket!: string
+		key!:    string
 	}
 
 	#timeouts: {

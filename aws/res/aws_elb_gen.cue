@@ -24,32 +24,32 @@ import "list"
 	subnets?: [...string]
 	tags?: [string]: string
 	tags_all?: [string]: string
-	zone_id?:      string
-	access_logs?:  #access_logs | list.MaxItems(1) & [...#access_logs]
+	zone_id?: string
+	access_logs?: #access_logs | list.MaxItems(1) & [...#access_logs]
 	health_check?: #health_check | list.MaxItems(1) & [...#health_check]
-	listener?:     #listener | [_, ...] & [...#listener]
-	timeouts?:     #timeouts
+	listener?: #listener | [_, ...] & [...#listener]
+	timeouts?: #timeouts
 
 	#access_logs: {
-		bucket:         string
+		bucket!:        string
 		bucket_prefix?: string
 		enabled?:       bool
 		interval?:      number
 	}
 
 	#health_check: {
-		healthy_threshold:   number
-		interval:            number
-		target:              string
-		timeout:             number
-		unhealthy_threshold: number
+		healthy_threshold!:   number
+		interval!:            number
+		target!:              string
+		timeout!:             number
+		unhealthy_threshold!: number
 	}
 
 	#listener: {
-		instance_port:       number
-		instance_protocol:   string
-		lb_port:             number
-		lb_protocol:         string
+		instance_port!:      number
+		instance_protocol!:  string
+		lb_port!:            number
+		lb_protocol!:        string
 		ssl_certificate_id?: string
 	}
 

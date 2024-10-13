@@ -14,8 +14,9 @@ import "list"
 	daily_automatic_backup_start_time?: string
 	deployment_type?:                   string
 	dns_name?:                          string
-	id?:                                string
-	kms_key_id?:                        string
+	final_backup_tags?: [string]: string
+	id?:         string
+	kms_key_id?: string
 	network_interface_ids?: [...string]
 	owner_id?:                       string
 	preferred_file_server_ip?:       string
@@ -25,16 +26,16 @@ import "list"
 	skip_final_backup?: bool
 	storage_capacity?:  number
 	storage_type?:      string
-	subnet_ids: [...string]
+	subnet_ids!: [...string]
 	tags?: [string]: string
 	tags_all?: [string]: string
-	throughput_capacity:            number
+	throughput_capacity!:           number
 	vpc_id?:                        string
 	weekly_maintenance_start_time?: string
-	audit_log_configuration?:       #audit_log_configuration | list.MaxItems(1) & [...#audit_log_configuration]
-	disk_iops_configuration?:       #disk_iops_configuration | list.MaxItems(1) & [...#disk_iops_configuration]
+	audit_log_configuration?: #audit_log_configuration | list.MaxItems(1) & [...#audit_log_configuration]
+	disk_iops_configuration?: #disk_iops_configuration | list.MaxItems(1) & [...#disk_iops_configuration]
 	self_managed_active_directory?: #self_managed_active_directory | list.MaxItems(1) & [...#self_managed_active_directory]
-	timeouts?:                      #timeouts
+	timeouts?: #timeouts
 
 	#audit_log_configuration: {
 		audit_log_destination?:             string
@@ -48,12 +49,12 @@ import "list"
 	}
 
 	#self_managed_active_directory: {
-		dns_ips: [...string]
-		domain_name:                             string
+		dns_ips!: [...string]
+		domain_name!:                            string
 		file_system_administrators_group?:       string
 		organizational_unit_distinguished_name?: string
-		password:                                string
-		username:                                string
+		password!:                               string
+		username!:                               string
 	}
 
 	#timeouts: {

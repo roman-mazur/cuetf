@@ -11,14 +11,16 @@ package res
 	directory_id?:                     string
 	early_media_enabled?:              bool
 	id?:                               string
-	identity_management_type:          string
-	inbound_calls_enabled:             bool
+	identity_management_type!:         string
+	inbound_calls_enabled!:            bool
 	instance_alias?:                   string
 	multi_party_conference_enabled?:   bool
-	outbound_calls_enabled:            bool
+	outbound_calls_enabled!:           bool
 	service_role?:                     string
 	status?:                           string
-	timeouts?:                         #timeouts
+	tags?: [string]: string
+	tags_all?: [string]: string
+	timeouts?: #timeouts
 
 	#timeouts: {
 		create?: string

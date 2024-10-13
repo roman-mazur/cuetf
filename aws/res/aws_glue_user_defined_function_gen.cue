@@ -7,17 +7,17 @@ import "list"
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_glue_user_defined_function")
 	arn?:           string
 	catalog_id?:    string
-	class_name:     string
+	class_name!:    string
 	create_time?:   string
-	database_name:  string
+	database_name!: string
 	id?:            string
-	name:           string
-	owner_name:     string
-	owner_type:     string
+	name!:          string
+	owner_name!:    string
+	owner_type!:    string
 	resource_uris?: #resource_uris | list.MaxItems(1000) & [...#resource_uris]
 
 	#resource_uris: {
-		resource_type: string
-		uri:           string
+		resource_type!: string
+		uri!:           string
 	}
 }

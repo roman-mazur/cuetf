@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_grafana_workspace_saml_configuration")
 	admin_role_values?: [...string]
 	allowed_organizations?: [...string]
-	editor_role_values: [...string]
+	editor_role_values!: [...string]
 	email_assertion?:         string
 	groups_assertion?:        string
 	id?:                      string
@@ -17,7 +17,7 @@ package res
 	org_assertion?:           string
 	role_assertion?:          string
 	status?:                  string
-	workspace_id:             string
+	workspace_id!:            string
 	timeouts?:                #timeouts
 
 	#timeouts: {

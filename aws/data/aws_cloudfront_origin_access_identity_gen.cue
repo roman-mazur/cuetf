@@ -8,6 +8,6 @@ package data
 	comment?:                         string
 	etag?:                            string
 	iam_arn?:                         string
-	id:                               string
+	id!:                              string
 	s3_canonical_user_id?:            string
 }

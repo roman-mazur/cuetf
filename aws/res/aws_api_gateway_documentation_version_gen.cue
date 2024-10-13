@@ -5,6 +5,6 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_api_gateway_documentation_version")
 	description?: string
 	id?:          string
-	rest_api_id:  string
-	version:      string
+	rest_api_id!: string
+	version!:     string
 }

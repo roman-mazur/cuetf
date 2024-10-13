@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_iam_group")
 	arn?:       string
 	id?:        string
-	name:       string
+	name!:      string
 	path?:      string
 	unique_id?: string
 }

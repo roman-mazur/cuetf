@@ -8,13 +8,14 @@ import "list"
 	certificate_arn?:                 string
 	database_name?:                   string
 	endpoint_arn?:                    string
-	endpoint_id:                      string
-	endpoint_type:                    string
-	engine_name:                      string
+	endpoint_id!:                     string
+	endpoint_type!:                   string
+	engine_name!:                     string
 	extra_connection_attributes?:     string
 	id?:                              string
 	kms_key_arn?:                     string
 	password?:                        string
+	pause_replication_tasks?:         bool
 	port?:                            number
 	secrets_manager_access_role_arn?: string
 	secrets_manager_arn?:             string
@@ -23,25 +24,27 @@ import "list"
 	ssl_mode?:                        string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	username?:               string
+	username?: string
 	elasticsearch_settings?: #elasticsearch_settings | list.MaxItems(1) & [...#elasticsearch_settings]
-	kafka_settings?:         #kafka_settings | list.MaxItems(1) & [...#kafka_settings]
-	kinesis_settings?:       #kinesis_settings | list.MaxItems(1) & [...#kinesis_settings]
-	mongodb_settings?:       #mongodb_settings | list.MaxItems(1) & [...#mongodb_settings]
-	redis_settings?:         #redis_settings | list.MaxItems(1) & [...#redis_settings]
-	redshift_settings?:      #redshift_settings | list.MaxItems(1) & [...#redshift_settings]
-	s3_settings?:            #s3_settings | list.MaxItems(1) & [...#s3_settings]
-	timeouts?:               #timeouts
+	kafka_settings?: #kafka_settings | list.MaxItems(1) & [...#kafka_settings]
+	kinesis_settings?: #kinesis_settings | list.MaxItems(1) & [...#kinesis_settings]
+	mongodb_settings?: #mongodb_settings | list.MaxItems(1) & [...#mongodb_settings]
+	postgres_settings?: #postgres_settings | list.MaxItems(1) & [...#postgres_settings]
+	redis_settings?: #redis_settings | list.MaxItems(1) & [...#redis_settings]
+	redshift_settings?: #redshift_settings | list.MaxItems(1) & [...#redshift_settings]
+	s3_settings?: #s3_settings | list.MaxItems(1) & [...#s3_settings]
+	timeouts?: #timeouts
 
 	#elasticsearch_settings: {
-		endpoint_uri:                string
+		endpoint_uri!:               string
 		error_retry_duration?:       number
 		full_load_error_percentage?: number
-		service_access_role_arn:     string
+		service_access_role_arn!:    string
+		use_new_mapping_type?:       bool
 	}
 
 	#kafka_settings: {
-		broker:                          string
+		broker!:                         string
 		include_control_details?:        bool
 		include_null_and_empty?:         bool
 		include_partition_value?:        bool
@@ -82,12 +85,31 @@ import "list"
 		nesting_level?:       string
 	}
 
+	#postgres_settings: {
+		after_connect_script?:         string
+		babelfish_database_name?:      string
+		capture_ddls?:                 bool
+		database_mode?:                string
+		ddl_artifacts_schema?:         string
+		execute_timeout?:              number
+		fail_tasks_on_lob_truncation?: bool
+		heartbeat_enable?:             bool
+		heartbeat_frequency?:          number
+		heartbeat_schema?:             string
+		map_boolean_as_boolean?:       bool
+		map_jsonb_as_clob?:            bool
+		map_long_varchar_as?:          string
+		max_file_size?:                number
+		plugin_name?:                  string
+		slot_name?:                    string
+	}
+
 	#redis_settings: {
 		auth_password?:          string
-		auth_type:               string
+		auth_type!:              string
 		auth_user_name?:         string
-		port:                    number
-		server_name:             string
+		port!:                   number
+		server_name!:            string
 		ssl_ca_certificate_arn?: string
 		ssl_security_protocol?:  string
 	}

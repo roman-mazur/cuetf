@@ -6,7 +6,7 @@ package data
 	arn?:                    string
 	id?:                     string
 	minimum_engine_version?: string
-	name:                    string
+	name!:                   string
 	tags?: [string]: string
 	user_names?: [...string]
 }

@@ -6,7 +6,7 @@ package data
 	arn?:             string
 	id?:              string
 	kms_key_arn?:     string
-	name:             string
+	name!:            string
 	recovery_points?: number
 	tags?: [string]: string
 }

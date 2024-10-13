@@ -50,10 +50,11 @@ package data
 		type?:  string
 	}]
 	instance_storage_supported?:           bool
-	instance_type:                         string
+	instance_type!:                        string
 	ipv6_supported?:                       bool
 	maximum_ipv4_addresses_per_interface?: number
 	maximum_ipv6_addresses_per_interface?: number
+	maximum_network_cards?:                number
 	maximum_network_interfaces?:           number
 	memory_size?:                          number
 	network_performance?:                  string

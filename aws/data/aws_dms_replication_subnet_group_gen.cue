@@ -6,7 +6,7 @@ package data
 	id?:                                   string
 	replication_subnet_group_arn?:         string
 	replication_subnet_group_description?: string
-	replication_subnet_group_id:           string
+	replication_subnet_group_id!:          string
 	subnet_group_status?:                  string
 	subnet_ids?: [...string]
 	tags?: [string]: string

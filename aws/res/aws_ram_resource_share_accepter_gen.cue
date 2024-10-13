@@ -8,7 +8,7 @@ package res
 	receiver_account_id?: string
 	resources?: [...string]
 	sender_account_id?: string
-	share_arn:          string
+	share_arn!:         string
 	share_id?:          string
 	share_name?:        string
 	status?:            string

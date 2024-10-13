@@ -3,12 +3,12 @@ package res
 #aws_amplify_branch: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_amplify_branch")
-	app_id: string
-	arn?:   string
+	app_id!: string
+	arn?:    string
 	associated_resources?: [...string]
 	backend_environment_arn?: string
 	basic_auth_credentials?:  string
-	branch_name:              string
+	branch_name!:             string
 	custom_domains?: [...string]
 	description?:                 string
 	destination_branch?:          string

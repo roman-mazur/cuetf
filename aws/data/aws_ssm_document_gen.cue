@@ -9,5 +9,5 @@ package data
 	document_type?:    string
 	document_version?: string
 	id?:               string
-	name:              string
+	name!:             string
 }

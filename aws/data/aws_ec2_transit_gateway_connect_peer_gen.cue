@@ -14,12 +14,12 @@ package data
 	transit_gateway_address?:         string
 	transit_gateway_attachment_id?:   string
 	transit_gateway_connect_peer_id?: string
-	filter?:                          #filter | [...#filter]
-	timeouts?:                        #timeouts
+	filter?: #filter | [...#filter]
+	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

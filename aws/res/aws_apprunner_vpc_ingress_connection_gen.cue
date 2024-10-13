@@ -8,8 +8,8 @@ import "list"
 	arn?:         string
 	domain_name?: string
 	id?:          string
-	name:         string
-	service_arn:  string
+	name!:        string
+	service_arn!: string
 	status?:      string
 	tags?: [string]: string
 	tags_all?: [string]: string

@@ -15,11 +15,11 @@ import "list"
 		ip_addresses?: [...string]
 		ip_family?: string
 	}]
-	name: string
+	name!: string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	attributes?: #attributes | list.MaxItems(1) & [...#attributes]
-	timeouts?:   #timeouts
+	timeouts?: #timeouts
 
 	#attributes: {
 		flow_logs_enabled?:   bool

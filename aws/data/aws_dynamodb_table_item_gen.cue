@@ -6,7 +6,7 @@ package data
 	expression_attribute_names?: [string]: string
 	id?:                    string
 	item?:                  string
-	key:                    string
+	key!:                   string
 	projection_expression?: string
-	table_name:             string
+	table_name!:            string
 }

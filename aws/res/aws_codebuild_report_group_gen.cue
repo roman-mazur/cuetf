@@ -9,20 +9,20 @@ import "list"
 	created?:        string
 	delete_reports?: bool
 	id?:             string
-	name:            string
+	name!:           string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	type:           string
+	type!: string
 	export_config?: #export_config | list.MaxItems(1) & [_, ...] & [...#export_config]
 
 	#export_config: {
-		type:            string
+		type!: string
 		s3_destination?: #export_config.#s3_destination | list.MaxItems(1) & [...#export_config.#s3_destination]
 
 		#s3_destination: {
-			bucket:               string
+			bucket!:              string
 			encryption_disabled?: bool
-			encryption_key:       string
+			encryption_key!:      string
 			packaging?:           string
 			path?:                string
 		}

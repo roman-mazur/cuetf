@@ -6,13 +6,13 @@ package res
 	config_version?: string
 	description?:    string
 	id?:             string
-	name:            string
-	type:            string
+	name!:           string
+	type!:           string
 	saml_options?:   #saml_options
 
 	#saml_options: {
 		group_attribute?: string
-		metadata:         string
+		metadata!:        string
 		session_timeout?: number
 		user_attribute?:  string
 	}

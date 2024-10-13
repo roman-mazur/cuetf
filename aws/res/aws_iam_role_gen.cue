@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_iam_role")
 	arn?:                   string
-	assume_role_policy:     string
+	assume_role_policy!:    string
 	create_date?:           string
 	description?:           string
 	force_detach_policies?: bool
@@ -17,7 +17,7 @@ package res
 	permissions_boundary?: string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	unique_id?:     string
+	unique_id?: string
 	inline_policy?: #inline_policy | [...#inline_policy]
 
 	#inline_policy: {

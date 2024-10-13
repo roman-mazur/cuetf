@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_neptune_cluster_parameter_group")
 	arn?:         string
 	description?: string
-	family:       string
+	family!:      string
 	id?:          string
 	name?:        string
 	name_prefix?: string
@@ -15,7 +15,7 @@ package res
 
 	#parameter: {
 		apply_method?: string
-		name:          string
-		value:         string
+		name!:         string
+		value!:        string
 	}
 }

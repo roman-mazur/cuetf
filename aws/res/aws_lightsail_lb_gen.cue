@@ -8,9 +8,9 @@ package res
 	dns_name?:          string
 	health_check_path?: string
 	id?:                string
-	instance_port:      number
+	instance_port!:     number
 	ip_address_type?:   string
-	name:               string
+	name!:              string
 	protocol?:          string
 	public_ports?: [...number]
 	support_code?: string

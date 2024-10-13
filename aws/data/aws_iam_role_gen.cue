@@ -9,7 +9,7 @@ package data
 	description?:          string
 	id?:                   string
 	max_session_duration?: number
-	name:                  string
+	name!:                 string
 	path?:                 string
 	permissions_boundary?: string
 	role_last_used?: [...{

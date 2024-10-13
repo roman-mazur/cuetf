@@ -7,9 +7,9 @@ package data
 	body?:                string
 	content_disposition?: string
 	content_type?:        string
-	export_type:          string
+	export_type!:         string
 	id?:                  string
 	parameters?: [string]: string
-	rest_api_id: string
-	stage_name:  string
+	rest_api_id!: string
+	stage_name!:  string
 }

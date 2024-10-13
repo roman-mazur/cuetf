@@ -6,7 +6,8 @@ package res
 	arn?:         string
 	domain_name?: string
 	domain_name_servers?: [...string]
-	id?: string
+	id?:                                string
+	ipv6_address_preferred_lease_time?: string
 	netbios_name_servers?: [...string]
 	netbios_node_type?: string
 	ntp_servers?: [...string]

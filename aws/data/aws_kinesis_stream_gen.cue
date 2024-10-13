@@ -6,8 +6,10 @@ package data
 	arn?: string
 	closed_shards?: [...string]
 	creation_timestamp?: number
+	encryption_type?:    string
 	id?:                 string
-	name:                string
+	kms_key_id?:         string
+	name!:               string
 	open_shards?: [...string]
 	retention_period?: number
 	shard_level_metrics?: [...string]

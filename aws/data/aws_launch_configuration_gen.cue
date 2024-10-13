@@ -32,7 +32,7 @@ package data
 		http_put_response_hop_limit?: number
 		http_tokens?:                 string
 	}]
-	name:               string
+	name!:              string
 	placement_tenancy?: string
 	root_block_device?: [...{
 		delete_on_termination?: bool

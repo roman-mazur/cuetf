@@ -4,7 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_apigatewayv2_api")
 	api_endpoint?:                 string
-	api_id:                        string
+	api_id!:                       string
 	api_key_selection_expression?: string
 	arn?:                          string
 	cors_configuration?: [...{

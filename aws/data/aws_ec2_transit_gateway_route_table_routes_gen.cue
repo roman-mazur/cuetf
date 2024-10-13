@@ -11,11 +11,11 @@ package data
 		transit_gateway_route_table_announcement_id?: string
 		type?:                                        string
 	}]
-	transit_gateway_route_table_id: string
-	filter?:                        #filter | [_, ...] & [...#filter]
+	transit_gateway_route_table_id!: string
+	filter?: #filter | [_, ...] & [...#filter]
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 }

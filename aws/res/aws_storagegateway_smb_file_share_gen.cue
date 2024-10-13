@@ -15,27 +15,27 @@ import "list"
 	default_storage_class?:   string
 	file_share_name?:         string
 	fileshare_id?:            string
-	gateway_arn:              string
+	gateway_arn!:             string
 	guess_mime_type_enabled?: bool
 	id?:                      string
 	invalid_user_list?: [...string]
 	kms_encrypted?:       bool
 	kms_key_arn?:         string
-	location_arn:         string
+	location_arn!:        string
 	notification_policy?: string
 	object_acl?:          string
 	oplocks_enabled?:     bool
 	path?:                string
 	read_only?:           bool
 	requester_pays?:      bool
-	role_arn:             string
+	role_arn!:            string
 	smb_acl_enabled?:     bool
 	tags?: [string]: string
 	tags_all?: [string]: string
 	valid_user_list?: [...string]
 	vpc_endpoint_dns_name?: string
-	cache_attributes?:      #cache_attributes | list.MaxItems(1) & [...#cache_attributes]
-	timeouts?:              #timeouts
+	cache_attributes?: #cache_attributes | list.MaxItems(1) & [...#cache_attributes]
+	timeouts?: #timeouts
 
 	#cache_attributes: cache_stale_timeout_in_seconds?: number
 

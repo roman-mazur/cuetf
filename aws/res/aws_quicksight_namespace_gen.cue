@@ -9,7 +9,7 @@ package res
 	creation_status?: string
 	id?:              string
 	identity_store?:  string
-	namespace:        string
+	namespace!:       string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	timeouts?: #timeouts

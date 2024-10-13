@@ -7,14 +7,15 @@ package data
 	peer_account_id?:         string
 	peer_region?:             string
 	peer_transit_gateway_id?: string
+	state?:                   string
 	tags?: [string]: string
 	transit_gateway_id?: string
-	filter?:             #filter | [...#filter]
-	timeouts?:           #timeouts
+	filter?: #filter | [...#filter]
+	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

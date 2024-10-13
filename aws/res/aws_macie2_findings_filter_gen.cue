@@ -5,7 +5,7 @@ import "list"
 #aws_macie2_findings_filter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_macie2_findings_filter")
-	action:       string
+	action!:      string
 	arn?:         string
 	description?: string
 	id?:          string
@@ -22,11 +22,11 @@ import "list"
 		#criterion: {
 			eq?: [...string]
 			eq_exact_match?: [...string]
-			field: string
-			gt?:   string
-			gte?:  string
-			lt?:   string
-			lte?:  string
+			field!: string
+			gt?:    string
+			gte?:   string
+			lt?:    string
+			lte?:   string
 			neq?: [...string]
 		}
 	}

@@ -9,7 +9,8 @@ package res
 	description?:         string
 	id?:                  string
 	kms_key_arn?:         string
-	name:                 string
+	name!:                string
+	standby_replicas?:    string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	type?:     string

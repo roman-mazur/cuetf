@@ -29,7 +29,7 @@ import "list"
 		projection_type?: string
 		range_key?:       string
 	}]
-	name: string
+	name!: string
 	point_in_time_recovery?: [...{
 		enabled?: bool
 	}]
@@ -49,7 +49,7 @@ import "list"
 		attribute_name?: string
 		enabled?:        bool
 	}]
-	write_capacity?:         number
+	write_capacity?: number
 	server_side_encryption?: #server_side_encryption | list.MaxItems(1) & [...#server_side_encryption]
 
 	#server_side_encryption: {

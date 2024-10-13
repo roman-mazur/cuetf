@@ -7,12 +7,12 @@ package data
 	id?: string
 	public_ips?: [...string]
 	tags?: [string]: string
-	filter?:   #filter | [...#filter]
+	filter?: #filter | [...#filter]
 	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

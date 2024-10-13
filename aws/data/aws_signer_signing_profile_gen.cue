@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_signer_signing_profile")
 	arn?:                   string
 	id?:                    string
-	name:                   string
+	name!:                  string
 	platform_display_name?: string
 	platform_id?:           string
 	revocation_record?: [...{

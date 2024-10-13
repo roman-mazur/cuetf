@@ -11,19 +11,20 @@ package data
 	manages_vpc_endpoints?: bool
 	owner?:                 string
 	private_dns_name?:      string
-	service?:               string
-	service_id?:            string
-	service_name?:          string
-	service_type?:          string
+	private_dns_names?: [...string]
+	service?:      string
+	service_id?:   string
+	service_name?: string
+	service_type?: string
 	supported_ip_address_types?: [...string]
 	tags?: [string]: string
 	vpc_endpoint_policy_supported?: bool
-	filter?:                        #filter | [...#filter]
-	timeouts?:                      #timeouts
+	filter?: #filter | [...#filter]
+	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

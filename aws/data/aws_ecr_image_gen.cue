@@ -9,7 +9,8 @@ package data
 	image_size_in_bytes?: number
 	image_tag?:           string
 	image_tags?: [...string]
-	most_recent?:    bool
-	registry_id?:    string
-	repository_name: string
+	image_uri?:       string
+	most_recent?:     bool
+	registry_id?:     string
+	repository_name!: string
 }

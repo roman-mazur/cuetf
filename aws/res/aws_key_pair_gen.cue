@@ -10,7 +10,7 @@ package res
 	key_name_prefix?: string
 	key_pair_id?:     string
 	key_type?:        string
-	public_key:       string
+	public_key!:      string
 	tags?: [string]: string
 	tags_all?: [string]: string
 }

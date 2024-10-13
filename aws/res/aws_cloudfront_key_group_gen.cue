@@ -6,6 +6,6 @@ package res
 	comment?: string
 	etag?:    string
 	id?:      string
-	items: [...string]
-	name: string
+	items!: [...string]
+	name!: string
 }

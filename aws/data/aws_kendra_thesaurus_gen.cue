@@ -9,7 +9,7 @@ package data
 	error_message?:   string
 	file_size_bytes?: number
 	id?:              string
-	index_id:         string
+	index_id!:        string
 	name?:            string
 	role_arn?:        string
 	source_s3_path?: [...{
@@ -19,7 +19,7 @@ package data
 	status?:             string
 	synonym_rule_count?: number
 	tags?: [string]: string
-	term_count?:  number
-	thesaurus_id: string
-	updated_at?:  string
+	term_count?:   number
+	thesaurus_id!: string
+	updated_at?:   string
 }

@@ -9,5 +9,5 @@ package data
 	duration_seconds?: number
 	expiration?:       string
 	id?:               string
-	workgroup_name:    string
+	workgroup_name!:   string
 }

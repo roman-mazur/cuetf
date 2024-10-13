@@ -6,6 +6,6 @@ package res
 	allow_self_management?: bool
 	id?:                    string
 	ssh_public_key?:        string
-	ssh_username:           string
-	user_arn:               string
+	ssh_username!:          string
+	user_arn!:              string
 }

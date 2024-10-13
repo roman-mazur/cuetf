@@ -12,9 +12,9 @@ package res
 	tags?: [string]: string
 	tags_all?: [string]: string
 	operating_regions?: #operating_regions | [_, ...] & [...#operating_regions]
-	timeouts?:          #timeouts
+	timeouts?: #timeouts
 
-	#operating_regions: region_name: string
+	#operating_regions: region_name!: string
 
 	#timeouts: {
 		create?: string

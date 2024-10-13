@@ -7,7 +7,7 @@ package data
 	created_date?:     string
 	description?:      string
 	id?:               string
-	instance_arn:      string
+	instance_arn!:     string
 	name?:             string
 	relay_state?:      string
 	session_duration?: string

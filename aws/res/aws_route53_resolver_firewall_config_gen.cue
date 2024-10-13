@@ -6,5 +6,5 @@ package res
 	firewall_fail_open?: string
 	id?:                 string
 	owner_id?:           string
-	resource_id:         string
+	resource_id!:        string
 }

@@ -11,15 +11,15 @@ import "list"
 	description?:              string
 	id?:                       string
 	last_updated_date?:        string
-	name:                      string
+	name!:                     string
 	value_selection_strategy?: string
 	version?:                  string
-	enumeration_value?:        #enumeration_value | list.MaxItems(10000) & [_, ...] & [...#enumeration_value]
-	timeouts?:                 #timeouts
+	enumeration_value?: #enumeration_value | list.MaxItems(10000) & [_, ...] & [...#enumeration_value]
+	timeouts?: #timeouts
 
 	#enumeration_value: {
 		synonyms?: [...string]
-		value: string
+		value!: string
 	}
 
 	#timeouts: {

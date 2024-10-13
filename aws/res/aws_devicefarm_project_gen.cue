@@ -6,7 +6,7 @@ package res
 	arn?:                         string
 	default_job_timeout_minutes?: number
 	id?:                          string
-	name:                         string
+	name!:                        string
 	tags?: [string]: string
 	tags_all?: [string]: string
 }

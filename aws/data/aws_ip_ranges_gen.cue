@@ -8,7 +8,7 @@ package data
 	id?:          string
 	ipv6_cidr_blocks?: [...string]
 	regions?: [...string]
-	services: [...string]
+	services!: [...string]
 	sync_token?: number
 	url?:        string
 }

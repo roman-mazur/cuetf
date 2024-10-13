@@ -7,25 +7,25 @@ package data
 	language?:      string
 	python_script?: string
 	scala_code?:    string
-	dag_edge?:      #dag_edge | [_, ...] & [...#dag_edge]
-	dag_node?:      #dag_node | [_, ...] & [...#dag_node]
+	dag_edge?: #dag_edge | [_, ...] & [...#dag_edge]
+	dag_node?: #dag_node | [_, ...] & [...#dag_node]
 
 	#dag_edge: {
-		source:            string
-		target:            string
+		source!:           string
+		target!:           string
 		target_parameter?: string
 	}
 
 	#dag_node: {
-		id:           string
+		id!:          string
 		line_number?: number
-		node_type:    string
-		args?:        #dag_node.#args | [_, ...] & [...#dag_node.#args]
+		node_type!:   string
+		args?: #dag_node.#args | [_, ...] & [...#dag_node.#args]
 
 		#args: {
-			name:   string
+			name!:  string
 			param?: bool
-			value:  string
+			value!: string
 		}
 	}
 }

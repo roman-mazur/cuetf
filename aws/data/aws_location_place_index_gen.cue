@@ -11,7 +11,7 @@ package data
 	description?: string
 	id?:          string
 	index_arn?:   string
-	index_name:   string
+	index_name!:  string
 	tags?: [string]: string
 	update_time?: string
 }

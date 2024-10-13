@@ -5,6 +5,6 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_route53_delegation_set")
 	arn?:              string
 	caller_reference?: string
-	id:                string
+	id!:               string
 	name_servers?: [...string]
 }

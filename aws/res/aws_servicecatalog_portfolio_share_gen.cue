@@ -6,11 +6,11 @@ package res
 	accept_language?:     string
 	accepted?:            bool
 	id?:                  string
-	portfolio_id:         string
-	principal_id:         string
+	portfolio_id!:        string
+	principal_id!:        string
 	share_principals?:    bool
 	share_tag_options?:   bool
-	type:                 string
+	type!:                string
 	wait_for_acceptance?: bool
 	timeouts?:            #timeouts
 

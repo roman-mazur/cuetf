@@ -8,16 +8,16 @@ package res
 	description?:     string
 	framework_type?:  string
 	id?:              string
-	name:             string
+	name!:            string
 	tags?: [string]: string
 	tags_all?: [string]: string
 	control_sets?: #control_sets | [...#control_sets]
 
 	#control_sets: {
-		id?:       string
-		name:      string
+		id?:   string
+		name!: string
 		controls?: #control_sets.#controls | [...#control_sets.#controls]
 
-		#controls: id: string
+		#controls: id!: string
 	}
 }

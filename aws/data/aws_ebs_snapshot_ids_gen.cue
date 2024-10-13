@@ -7,12 +7,12 @@ package data
 	ids?: [...string]
 	owners?: [...string]
 	restorable_by_user_ids?: [...string]
-	filter?:   #filter | [...#filter]
+	filter?: #filter | [...#filter]
 	timeouts?: #timeouts
 
 	#filter: {
-		name: string
-		values: [...string]
+		name!: string
+		values!: [...string]
 	}
 
 	#timeouts: read?: string

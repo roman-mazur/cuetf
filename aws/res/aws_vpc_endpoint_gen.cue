@@ -22,19 +22,26 @@ import "list"
 	requester_managed?:   bool
 	route_table_ids?: [...string]
 	security_group_ids?: [...string]
-	service_name: string
-	state?:       string
+	service_name!: string
+	state?:        string
 	subnet_ids?: [...string]
 	tags?: [string]: string
 	tags_all?: [string]: string
 	vpc_endpoint_type?: string
-	vpc_id:             string
-	dns_options?:       #dns_options | list.MaxItems(1) & [...#dns_options]
-	timeouts?:          #timeouts
+	vpc_id!:            string
+	dns_options?: #dns_options | list.MaxItems(1) & [...#dns_options]
+	subnet_configuration?: #subnet_configuration | [...#subnet_configuration]
+	timeouts?: #timeouts
 
 	#dns_options: {
 		dns_record_ip_type?:                             string
 		private_dns_only_for_inbound_resolver_endpoint?: bool
+	}
+
+	#subnet_configuration: {
+		ipv4?:      string
+		ipv6?:      string
+		subnet_id?: string
 	}
 
 	#timeouts: {

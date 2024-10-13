@@ -7,8 +7,8 @@ package res
 	arn?:                          string
 	availability_zone?:            string
 	backup_retention_enabled?:     bool
-	blueprint_id:                  string
-	bundle_id:                     string
+	blueprint_id!:                 string
+	bundle_id!:                    string
 	ca_certificate_identifier?:    string
 	cpu_count?:                    number
 	created_at?:                   string
@@ -17,16 +17,16 @@ package res
 	engine_version?:               string
 	final_snapshot_name?:          string
 	id?:                           string
-	master_database_name:          string
+	master_database_name!:         string
 	master_endpoint_address?:      string
 	master_endpoint_port?:         number
-	master_password:               string
-	master_username:               string
+	master_password!:              string
+	master_username!:              string
 	preferred_backup_window?:      string
 	preferred_maintenance_window?: string
 	publicly_accessible?:          bool
 	ram_size?:                     number
-	relational_database_name:      string
+	relational_database_name!:     string
 	secondary_availability_zone?:  string
 	skip_final_snapshot?:          bool
 	support_code?:                 string

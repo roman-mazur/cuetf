@@ -7,12 +7,12 @@ package res
 	created_by?: string
 	id?:         string
 	security_group_ids?: [...string]
-	service_network_identifier: string
-	status?:                    string
+	service_network_identifier!: string
+	status?:                     string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	vpc_identifier: string
-	timeouts?:      #timeouts
+	vpc_identifier!: string
+	timeouts?:       #timeouts
 
 	#timeouts: {
 		create?: string

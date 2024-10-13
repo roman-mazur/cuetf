@@ -8,8 +8,8 @@ import "list"
 	actions_enabled?: bool
 	alarm_actions?: [...string]
 	alarm_description?: string
-	alarm_name:         string
-	alarm_rule:         string
+	alarm_name!:        string
+	alarm_rule!:        string
 	arn?:               string
 	id?:                string
 	insufficient_data_actions?: [...string]
@@ -19,8 +19,8 @@ import "list"
 	actions_suppressor?: #actions_suppressor | list.MaxItems(1) & [...#actions_suppressor]
 
 	#actions_suppressor: {
-		alarm:            string
-		extension_period: number
-		wait_period:      number
+		alarm!:            string
+		extension_period!: number
+		wait_period!:      number
 	}
 }

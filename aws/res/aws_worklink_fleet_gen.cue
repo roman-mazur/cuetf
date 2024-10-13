@@ -13,19 +13,19 @@ import "list"
 	display_name?:                   string
 	id?:                             string
 	last_updated_time?:              string
-	name:                            string
+	name!:                           string
 	optimize_for_end_user_location?: bool
-	identity_provider?:              #identity_provider | list.MaxItems(1) & [...#identity_provider]
-	network?:                        #network | list.MaxItems(1) & [...#network]
+	identity_provider?: #identity_provider | list.MaxItems(1) & [...#identity_provider]
+	network?: #network | list.MaxItems(1) & [...#network]
 
 	#identity_provider: {
-		saml_metadata: string
-		type:          string
+		saml_metadata!: string
+		type!:          string
 	}
 
 	#network: {
-		security_group_ids: [...string]
-		subnet_ids: [...string]
-		vpc_id: string
+		security_group_ids!: [...string]
+		subnet_ids!: [...string]
+		vpc_id!: string
 	}
 }

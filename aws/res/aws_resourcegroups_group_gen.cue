@@ -8,26 +8,26 @@ import "list"
 	arn?:         string
 	description?: string
 	id?:          string
-	name:         string
+	name!:        string
 	tags?: [string]: string
 	tags_all?: [string]: string
-	configuration?:  #configuration | [...#configuration]
+	configuration?: #configuration | [...#configuration]
 	resource_query?: #resource_query | list.MaxItems(1) & [...#resource_query]
-	timeouts?:       #timeouts
+	timeouts?: #timeouts
 
 	#configuration: {
-		type:        string
+		type!: string
 		parameters?: #configuration.#parameters | [...#configuration.#parameters]
 
 		#parameters: {
-			name: string
-			values: [...string]
+			name!: string
+			values!: [...string]
 		}
 	}
 
 	#resource_query: {
-		query: string
-		type?: string
+		query!: string
+		type?:  string
 	}
 
 	#timeouts: {

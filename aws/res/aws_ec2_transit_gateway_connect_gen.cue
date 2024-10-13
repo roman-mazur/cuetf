@@ -9,8 +9,8 @@ package res
 	tags_all?: [string]: string
 	transit_gateway_default_route_table_association?: bool
 	transit_gateway_default_route_table_propagation?: bool
-	transit_gateway_id:                               string
-	transport_attachment_id:                          string
+	transit_gateway_id!:                              string
+	transport_attachment_id!:                         string
 	timeouts?:                                        #timeouts
 
 	#timeouts: {

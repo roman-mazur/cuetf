@@ -8,6 +8,6 @@ package data
 		id?:   string
 		name?: string
 	}]
-	id?:       string
-	parent_id: string
+	id?:        string
+	parent_id!: string
 }

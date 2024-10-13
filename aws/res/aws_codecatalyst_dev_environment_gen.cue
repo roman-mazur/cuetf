@@ -8,24 +8,24 @@ import "list"
 	alias?:                      string
 	id?:                         string
 	inactivity_timeout_minutes?: number
-	instance_type:               string
-	project_name:                string
-	space_name:                  string
-	ides?:                       #ides | list.MaxItems(1) & [_, ...] & [...#ides]
-	persistent_storage?:         #persistent_storage | list.MaxItems(1) & [_, ...] & [...#persistent_storage]
-	repositories?:               #repositories | list.MaxItems(100) & [...#repositories]
-	timeouts?:                   #timeouts
+	instance_type!:              string
+	project_name!:               string
+	space_name!:                 string
+	ides?: #ides | list.MaxItems(1) & [_, ...] & [...#ides]
+	persistent_storage?: #persistent_storage | list.MaxItems(1) & [_, ...] & [...#persistent_storage]
+	repositories?: #repositories | list.MaxItems(100) & [...#repositories]
+	timeouts?: #timeouts
 
 	#ides: {
 		name?:    string
 		runtime?: string
 	}
 
-	#persistent_storage: size: number
+	#persistent_storage: size!: number
 
 	#repositories: {
-		branch_name?:    string
-		repository_name: string
+		branch_name?:     string
+		repository_name!: string
 	}
 
 	#timeouts: {
