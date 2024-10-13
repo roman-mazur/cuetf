@@ -7,15 +7,15 @@ import "list"
 	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_custom_ssl")
 	expires_on?: string
 	hosts?: [...string]
-	id?:                  string
-	issuer?:              string
-	modified_on?:         string
-	priority?:            number
-	signature?:           string
-	status?:              string
-	uploaded_on?:         string
-	zone_id:              string
-	custom_ssl_options?:  #custom_ssl_options | list.MaxItems(1) & [...#custom_ssl_options]
+	id?:          string
+	issuer?:      string
+	modified_on?: string
+	priority?:    number
+	signature?:   string
+	status?:      string
+	uploaded_on?: string
+	zone_id!:     string
+	custom_ssl_options?: #custom_ssl_options | list.MaxItems(1) & [...#custom_ssl_options]
 	custom_ssl_priority?: #custom_ssl_priority | [...#custom_ssl_priority]
 
 	#custom_ssl_options: {

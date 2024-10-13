@@ -94,9 +94,21 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						optional:         true
 						computed:         true
 					}
+					allow_authenticate_via_warp: {
+						type:             "bool"
+						description:      "When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication."
+						description_kind: "markdown"
+						optional:         true
+					}
 					allowed_idps: {
 						type: ["set", "string"]
 						description:      "The identity providers selected for the application."
+						description_kind: "markdown"
+						optional:         true
+					}
+					app_launcher_logo_url: {
+						type:             "string"
+						description:      "The logo URL of the app launcher."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -115,6 +127,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					auto_redirect_to_identity: {
 						type:             "bool"
 						description:      "Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					bg_color: {
+						type:             "string"
+						description:      "The background color of the app launcher."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -155,6 +173,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "markdown"
 						optional:         true
 					}
+					header_bg_color: {
+						type:             "string"
+						description:      "The background color of the header bar in the app launcher."
+						description_kind: "markdown"
+						optional:         true
+					}
 					http_only_cookie_attribute: {
 						type:             "bool"
 						description:      "Option to add the `HttpOnly` cookie flag to access tokens."
@@ -177,7 +201,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type:             "string"
 						description:      "Friendly name of the Access Application."
 						description_kind: "markdown"
-						required:         true
+						optional:         true
+						computed:         true
+					}
+					options_preflight_bypass: {
+						type:             "bool"
+						description:      "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					policies: {
+						type: ["list", "string"]
+						description:      "The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare_access_policy` resource, as it can result in an inconsistent state."
+						description_kind: "markdown"
+						optional:         true
 					}
 					same_site_cookie_attribute: {
 						type:             "string"
@@ -203,6 +240,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "markdown"
 						optional:         true
 					}
+					skip_app_launcher_login_page: {
+						type:             "bool"
+						description:      "Option to skip the App Launcher landing page. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+					}
 					skip_interstitial: {
 						type:             "bool"
 						description:      "Option to skip the authorization interstitial when using the CLI. Defaults to `false`."
@@ -217,7 +260,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					type: {
 						type:             "string"
-						description:      "The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`."
+						description:      "The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -287,15 +330,132 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							description_kind: "markdown"
 						}
 					}
+					footer_links: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								name: {
+									type:             "string"
+									description:      "The name of the footer link."
+									description_kind: "markdown"
+									optional:         true
+								}
+								url: {
+									type:             "string"
+									description:      "The URL of the footer link."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							description:      "The footer links of the app launcher."
+							description_kind: "markdown"
+						}
+					}
+					landing_page_design: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								button_color: {
+									type:             "string"
+									description:      "The button color of the landing page."
+									description_kind: "markdown"
+									optional:         true
+								}
+								button_text_color: {
+									type:             "string"
+									description:      "The button text color of the landing page."
+									description_kind: "markdown"
+									optional:         true
+								}
+								image_url: {
+									type:             "string"
+									description:      "The URL of the image to be displayed in the landing page."
+									description_kind: "markdown"
+									optional:         true
+								}
+								message: {
+									type:             "string"
+									description:      "The message of the landing page."
+									description_kind: "markdown"
+									optional:         true
+								}
+								title: {
+									type:             "string"
+									description:      "The title of the landing page."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							description:      "The landing page design of the app launcher."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
 					saas_app: {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								access_token_lifetime: {
+									type:             "string"
+									description:      "The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h."
+									description_kind: "markdown"
+									optional:         true
+								}
+								allow_pkce_without_client_secret: {
+									type:             "bool"
+									description:      "Allow PKCE flow without a client secret."
+									description_kind: "markdown"
+									optional:         true
+								}
+								app_launcher_url: {
+									type:             "string"
+									description:      "The URL where this applications tile redirects users."
+									description_kind: "markdown"
+									optional:         true
+								}
+								auth_type: {
+									type:             "string"
+									description:      "**Modifying this attribute will force creation of a new resource.**"
+									description_kind: "markdown"
+									optional:         true
+								}
+								client_id: {
+									type:             "string"
+									description:      "The application client id."
+									description_kind: "markdown"
+									computed:         true
+								}
+								client_secret: {
+									type:             "string"
+									description:      "The application client secret, only returned on initial apply."
+									description_kind: "markdown"
+									computed:         true
+									sensitive:        true
+								}
 								consumer_service_url: {
 									type:             "string"
 									description:      "The service provider's endpoint that is responsible for receiving and parsing a SAML assertion."
 									description_kind: "markdown"
-									required:         true
+									optional:         true
+								}
+								default_relay_state: {
+									type:             "string"
+									description:      "The relay state used if not provided by the identity provider."
+									description_kind: "markdown"
+									optional:         true
+								}
+								grant_types: {
+									type: ["set", "string"]
+									description:      "The OIDC flows supported by this application."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								group_filter_regex: {
+									type:             "string"
+									description:      "A regex to filter Cloudflare groups returned in ID token and userinfo endpoint."
+									description_kind: "markdown"
+									optional:         true
 								}
 								idp_entity_id: {
 									type:             "string"
@@ -305,7 +465,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								name_id_format: {
 									type:             "string"
-									description:      "The format of the name identifier sent to the SaaS application. Defaults to `email`."
+									description:      "The format of the name identifier sent to the SaaS application."
+									description_kind: "markdown"
+									optional:         true
+								}
+								name_id_transform_jsonata: {
+									type:             "string"
+									description:      "A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -315,11 +481,30 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "markdown"
 									computed:         true
 								}
+								redirect_uris: {
+									type: ["set", "string"]
+									description:      "The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens."
+									description_kind: "markdown"
+									optional:         true
+								}
+								saml_attribute_transform_jsonata: {
+									type:             "string"
+									description:      "A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml_attributes or oidc_fields of the identity provider used to authenticate. The output of this expression must be a JSON object."
+									description_kind: "markdown"
+									optional:         true
+								}
+								scopes: {
+									type: ["set", "string"]
+									description:      "Define the user information shared with access."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
 								sp_entity_id: {
 									type:             "string"
 									description:      "A globally unique name for an identity or service provider."
 									description_kind: "markdown"
-									required:         true
+									optional:         true
 								}
 								sso_endpoint: {
 									type:             "string"
@@ -328,57 +513,355 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									computed:         true
 								}
 							}
-							block_types: custom_attribute: {
-								nesting_mode: "list"
-								block: {
-									attributes: {
-										friendly_name: {
-											type:             "string"
-											description:      "A friendly name for the attribute as provided to the SaaS app."
-											description_kind: "markdown"
-											optional:         true
-										}
-										name: {
-											type:             "string"
-											description:      "The name of the attribute as provided to the SaaS app."
-											description_kind: "markdown"
-											optional:         true
-										}
-										name_format: {
-											type:             "string"
-											description:      "A globally unique name for an identity or service provider."
-											description_kind: "markdown"
-											optional:         true
-										}
-										required: {
-											type:             "bool"
-											description:      "True if the attribute must be always present."
-											description_kind: "markdown"
-											optional:         true
-										}
-									}
-									block_types: source: {
-										nesting_mode: "list"
-										block: {
-											attributes: name: {
+							block_types: {
+								custom_attribute: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											friendly_name: {
 												type:             "string"
-												description:      "The name of the attribute as provided by the IDP."
+												description:      "A friendly name for the attribute as provided to the SaaS app."
 												description_kind: "markdown"
-												required:         true
+												optional:         true
 											}
-											description_kind: "plain"
+											name: {
+												type:             "string"
+												description:      "The name of the attribute as provided to the SaaS app."
+												description_kind: "markdown"
+												optional:         true
+											}
+											name_format: {
+												type:             "string"
+												description:      "A globally unique name for an identity or service provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+											required: {
+												type:             "bool"
+												description:      "True if the attribute must be always present."
+												description_kind: "markdown"
+												optional:         true
+											}
 										}
-										min_items: 1
-										max_items: 1
+										block_types: source: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													name: {
+														type:             "string"
+														description:      "The name of the attribute as provided by the IDP."
+														description_kind: "markdown"
+														required:         true
+													}
+													name_by_idp: {
+														type: ["map", "string"]
+														description:      "A mapping from IdP ID to claim name."
+														description_kind: "markdown"
+														optional:         true
+													}
+												}
+												description_kind: "plain"
+											}
+											min_items: 1
+											max_items: 1
+										}
+										description:      "Custom attribute mapped from IDPs."
+										description_kind: "markdown"
 									}
-									description:      "Custom attribute mapped from IDPs."
-									description_kind: "markdown"
+								}
+								custom_claim: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											name: {
+												type:             "string"
+												description:      "The name of the attribute as provided to the SaaS app."
+												description_kind: "markdown"
+												optional:         true
+											}
+											required: {
+												type:             "bool"
+												description:      "True if the attribute must be always present."
+												description_kind: "markdown"
+												optional:         true
+											}
+											scope: {
+												type:             "string"
+												description:      "The scope of the claim."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										block_types: source: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													name: {
+														type:             "string"
+														description:      "The name of the attribute as provided by the IDP."
+														description_kind: "markdown"
+														required:         true
+													}
+													name_by_idp: {
+														type: ["map", "string"]
+														description:      "A mapping from IdP ID to claim name."
+														description_kind: "markdown"
+														optional:         true
+													}
+												}
+												description_kind: "plain"
+											}
+											min_items: 1
+											max_items: 1
+										}
+										description:      "Custom claim mapped from IDPs."
+										description_kind: "markdown"
+									}
+								}
+								hybrid_and_implicit_options: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											return_access_token_from_authorization_endpoint: {
+												type:             "bool"
+												description:      "If true, the authorization endpoint will return an access token."
+												description_kind: "markdown"
+												optional:         true
+											}
+											return_id_token_from_authorization_endpoint: {
+												type:             "bool"
+												description:      "If true, the authorization endpoint will return an id token."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Hybrid and Implicit Flow options."
+										description_kind: "markdown"
+									}
+									max_items: 1
+								}
+								refresh_token_options: {
+									nesting_mode: "list"
+									block: {
+										attributes: lifetime: {
+											type:             "string"
+											description:      "How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m."
+											description_kind: "markdown"
+											optional:         true
+										}
+										description:      "Refresh token grant options."
+										description_kind: "markdown"
+									}
 								}
 							}
 							description:      "SaaS configuration for the Access Application."
 							description_kind: "markdown"
 						}
 						max_items: 1
+					}
+					scim_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								deactivate_on_delete: {
+									type:             "bool"
+									description:      "If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations."
+									description_kind: "markdown"
+									optional:         true
+								}
+								enabled: {
+									type:             "bool"
+									description:      "Whether SCIM provisioning is turned on for this application."
+									description_kind: "markdown"
+									optional:         true
+								}
+								idp_uid: {
+									type:             "string"
+									description:      "The UID of the IdP to use as the source for SCIM resources to provision to this application."
+									description_kind: "markdown"
+									required:         true
+								}
+								remote_uri: {
+									type:             "string"
+									description:      "The base URI for the application's SCIM-compatible API."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							block_types: {
+								authentication: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											authorization_url: {
+												type:             "string"
+												description:      "URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											client_id: {
+												type:             "string"
+												description:      "Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											client_secret: {
+												type:             "string"
+												description:      "Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											password: {
+												type:             "string"
+												description:      "Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											scheme: {
+												type:             "string"
+												description:      "The authentication scheme to use when making SCIM requests to this application."
+												description_kind: "markdown"
+												required:         true
+											}
+											scopes: {
+												type: ["set", "string"]
+												description:      "The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											token: {
+												type:             "string"
+												description:      "Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											token_url: {
+												type:             "string"
+												description:      "URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											user: {
+												type:             "string"
+												description:      "User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application."
+										description_kind: "markdown"
+									}
+									max_items: 1
+								}
+								mappings: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											enabled: {
+												type:             "bool"
+												description:      "Whether or not this mapping is enabled."
+												description_kind: "markdown"
+												optional:         true
+											}
+											filter: {
+												type:             "string"
+												description:      "A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application."
+												description_kind: "markdown"
+												optional:         true
+											}
+											schema: {
+												type:             "string"
+												description:      "Which SCIM resource type this mapping applies to."
+												description_kind: "markdown"
+												required:         true
+											}
+											transform_jsonata: {
+												type:             "string"
+												description:      "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										block_types: operations: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													create: {
+														type:             "bool"
+														description:      "Whether or not this mapping applies to create (POST) operations."
+														description_kind: "markdown"
+														optional:         true
+													}
+													delete: {
+														type:             "bool"
+														description:      "Whether or not this mapping applies to DELETE operations."
+														description_kind: "markdown"
+														optional:         true
+													}
+													update: {
+														type:             "bool"
+														description:      "Whether or not this mapping applies to update (PATCH/PUT) operations."
+														description_kind: "markdown"
+														optional:         true
+													}
+												}
+												description:      "Whether or not this mapping applies to creates, updates, or deletes."
+												description_kind: "markdown"
+											}
+											max_items: 1
+										}
+										description:      "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned."
+										description_kind: "markdown"
+									}
+								}
+							}
+							description:      "Configuration for provisioning to this application via SCIM. This is currently in closed beta."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					target_criteria: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								port: {
+									type:             "number"
+									description:      "The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols."
+									description_kind: "markdown"
+									required:         true
+								}
+								protocol: {
+									type:             "string"
+									description:      "The communication protocol your application secures."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							block_types: target_attributes: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										name: {
+											type:             "string"
+											description:      "The key of the attribute."
+											description_kind: "markdown"
+											required:         true
+										}
+										values: {
+											type: ["list", "string"]
+											description:      "The values of the attribute."
+											description_kind: "markdown"
+											required:         true
+										}
+									}
+									description:      "Contains a map of target attribute keys to target attribute values."
+									description_kind: "markdown"
+								}
+								min_items: 1
+							}
+							description:      "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned."
+							description_kind: "markdown"
+						}
 					}
 				}
 				description: """
@@ -388,6 +871,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_access_ca_certificate: {
@@ -440,6 +924,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_access_custom_page: {
@@ -495,6 +980,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_access_group: {
@@ -533,52 +1019,74 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							attributes: {
 								any_valid_service_token: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches any valid Access service token."
+									description_kind: "markdown"
 									optional:         true
 								}
 								auth_method: {
 									type:             "string"
-									description_kind: "plain"
+									description:      "The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types."
+									description_kind: "markdown"
 									optional:         true
 								}
 								certificate: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches any valid client certificate."
+									description_kind: "markdown"
 									optional:         true
 								}
 								common_name: {
 									type:             "string"
-									description_kind: "plain"
+									description:      "Matches a valid client certificate common name."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_names: {
+									type: ["list", "string"]
+									description:      "Overflow field if you need to have multiple common_name rules in a single policy.  Use in place of the singular common_name field."
+									description_kind: "markdown"
 									optional:         true
 								}
 								device_posture: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a device posture integration."
+									description_kind: "markdown"
 									optional:         true
 								}
 								email: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The email of the user."
+									description_kind: "markdown"
 									optional:         true
 								}
 								email_domain: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The email domain to match."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created email list."
+									description_kind: "markdown"
 									optional:         true
 								}
 								everyone: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches everyone."
+									description_kind: "markdown"
 									optional:         true
 								}
 								geo: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "Matches a specific country."
+									description_kind: "markdown"
 									optional:         true
 								}
 								group: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a previously created Access group."
+									description_kind: "markdown"
 									optional:         true
 								}
 								ip: {
@@ -589,18 +1097,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								ip_list: {
 									type: ["list", "string"]
-									description:      "The ID of an existing IP list to reference."
+									description:      "The ID of a previously created IP list."
 									description_kind: "markdown"
 									optional:         true
 								}
 								login_method: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a configured identity provider."
+									description_kind: "markdown"
 									optional:         true
 								}
 								service_token: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of an Access service token."
+									description_kind: "markdown"
 									optional:         true
 								}
 							}
@@ -623,7 +1133,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											identity_provider_id: {
 												type:             "string"
-												description:      "The ID of the Azure Identity provider."
+												description:      "The ID of the Azure identity provider."
 												description_kind: "markdown"
 												required:         true
 											}
@@ -643,12 +1153,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											identity_provider_id: {
 												type:             "string"
-												description:      "The ID of the Azure Identity provider."
+												description:      "The ID of the Azure identity provider."
 												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches an Azure group. Requires an Azure identity provider."
+										description_kind: "markdown"
 									}
 								}
 								external_evaluation: {
@@ -657,18 +1168,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											evaluate_url: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The API endpoint containing your business logic."
+												description_kind: "markdown"
 												optional:         true
 											}
 											keys_url: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The API endpoint containing the key that Access uses to verify that the response came from your API."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/."
+										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								github: {
 									nesting_mode: "list"
@@ -676,21 +1189,25 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Github identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 											name: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The name of the organization."
+												description_kind: "markdown"
 												optional:         true
 											}
 											teams: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The teams that should be matched."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a Github organization. Requires a Github identity provider."
+										description_kind: "markdown"
 									}
 								}
 								gsuite: {
@@ -699,16 +1216,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											email: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The email of the Google Workspace group."
+												description_kind: "markdown"
 												optional:         true
 											}
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Google Workspace identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a group in Google Workspace. Requires a Google Workspace identity provider."
+										description_kind: "markdown"
 									}
 								}
 								okta: {
@@ -717,16 +1237,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Okta identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 											name: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The name of the Okta Group."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches an Okta group. Requires an Okta identity provider."
+										description_kind: "markdown"
 									}
 								}
 								saml: {
@@ -735,21 +1258,25 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											attribute_name: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The name of the SAML attribute."
+												description_kind: "markdown"
 												optional:         true
 											}
 											attribute_value: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The SAML attribute value to look for."
+												description_kind: "markdown"
 												optional:         true
 											}
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your SAML identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a SAML group. Requires a SAML identity provider."
+										description_kind: "markdown"
 									}
 								}
 							}
@@ -762,52 +1289,74 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							attributes: {
 								any_valid_service_token: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches any valid Access service token."
+									description_kind: "markdown"
 									optional:         true
 								}
 								auth_method: {
 									type:             "string"
-									description_kind: "plain"
+									description:      "The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types."
+									description_kind: "markdown"
 									optional:         true
 								}
 								certificate: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches any valid client certificate."
+									description_kind: "markdown"
 									optional:         true
 								}
 								common_name: {
 									type:             "string"
-									description_kind: "plain"
+									description:      "Matches a valid client certificate common name."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_names: {
+									type: ["list", "string"]
+									description:      "Overflow field if you need to have multiple common_name rules in a single policy.  Use in place of the singular common_name field."
+									description_kind: "markdown"
 									optional:         true
 								}
 								device_posture: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a device posture integration."
+									description_kind: "markdown"
 									optional:         true
 								}
 								email: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The email of the user."
+									description_kind: "markdown"
 									optional:         true
 								}
 								email_domain: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The email domain to match."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created email list."
+									description_kind: "markdown"
 									optional:         true
 								}
 								everyone: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches everyone."
+									description_kind: "markdown"
 									optional:         true
 								}
 								geo: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "Matches a specific country."
+									description_kind: "markdown"
 									optional:         true
 								}
 								group: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a previously created Access group."
+									description_kind: "markdown"
 									optional:         true
 								}
 								ip: {
@@ -818,18 +1367,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								ip_list: {
 									type: ["list", "string"]
-									description:      "The ID of an existing IP list to reference."
+									description:      "The ID of a previously created IP list."
 									description_kind: "markdown"
 									optional:         true
 								}
 								login_method: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a configured identity provider."
+									description_kind: "markdown"
 									optional:         true
 								}
 								service_token: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of an Access service token."
+									description_kind: "markdown"
 									optional:         true
 								}
 							}
@@ -852,7 +1403,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											identity_provider_id: {
 												type:             "string"
-												description:      "The ID of the Azure Identity provider."
+												description:      "The ID of the Azure identity provider."
 												description_kind: "markdown"
 												required:         true
 											}
@@ -872,12 +1423,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											identity_provider_id: {
 												type:             "string"
-												description:      "The ID of the Azure Identity provider."
+												description:      "The ID of the Azure identity provider."
 												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches an Azure group. Requires an Azure identity provider."
+										description_kind: "markdown"
 									}
 								}
 								external_evaluation: {
@@ -886,18 +1438,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											evaluate_url: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The API endpoint containing your business logic."
+												description_kind: "markdown"
 												optional:         true
 											}
 											keys_url: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The API endpoint containing the key that Access uses to verify that the response came from your API."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/."
+										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								github: {
 									nesting_mode: "list"
@@ -905,21 +1459,25 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Github identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 											name: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The name of the organization."
+												description_kind: "markdown"
 												optional:         true
 											}
 											teams: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The teams that should be matched."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a Github organization. Requires a Github identity provider."
+										description_kind: "markdown"
 									}
 								}
 								gsuite: {
@@ -928,16 +1486,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											email: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The email of the Google Workspace group."
+												description_kind: "markdown"
 												optional:         true
 											}
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Google Workspace identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a group in Google Workspace. Requires a Google Workspace identity provider."
+										description_kind: "markdown"
 									}
 								}
 								okta: {
@@ -946,16 +1507,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Okta identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 											name: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The name of the Okta Group."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches an Okta group. Requires an Okta identity provider."
+										description_kind: "markdown"
 									}
 								}
 								saml: {
@@ -964,21 +1528,25 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											attribute_name: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The name of the SAML attribute."
+												description_kind: "markdown"
 												optional:         true
 											}
 											attribute_value: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The SAML attribute value to look for."
+												description_kind: "markdown"
 												optional:         true
 											}
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your SAML identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a SAML group. Requires a SAML identity provider."
+										description_kind: "markdown"
 									}
 								}
 							}
@@ -992,52 +1560,74 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							attributes: {
 								any_valid_service_token: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches any valid Access service token."
+									description_kind: "markdown"
 									optional:         true
 								}
 								auth_method: {
 									type:             "string"
-									description_kind: "plain"
+									description:      "The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types."
+									description_kind: "markdown"
 									optional:         true
 								}
 								certificate: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches any valid client certificate."
+									description_kind: "markdown"
 									optional:         true
 								}
 								common_name: {
 									type:             "string"
-									description_kind: "plain"
+									description:      "Matches a valid client certificate common name."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_names: {
+									type: ["list", "string"]
+									description:      "Overflow field if you need to have multiple common_name rules in a single policy.  Use in place of the singular common_name field."
+									description_kind: "markdown"
 									optional:         true
 								}
 								device_posture: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a device posture integration."
+									description_kind: "markdown"
 									optional:         true
 								}
 								email: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The email of the user."
+									description_kind: "markdown"
 									optional:         true
 								}
 								email_domain: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The email domain to match."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created email list."
+									description_kind: "markdown"
 									optional:         true
 								}
 								everyone: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches everyone."
+									description_kind: "markdown"
 									optional:         true
 								}
 								geo: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "Matches a specific country."
+									description_kind: "markdown"
 									optional:         true
 								}
 								group: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a previously created Access group."
+									description_kind: "markdown"
 									optional:         true
 								}
 								ip: {
@@ -1048,18 +1638,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								ip_list: {
 									type: ["list", "string"]
-									description:      "The ID of an existing IP list to reference."
+									description:      "The ID of a previously created IP list."
 									description_kind: "markdown"
 									optional:         true
 								}
 								login_method: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a configured identity provider."
+									description_kind: "markdown"
 									optional:         true
 								}
 								service_token: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of an Access service token."
+									description_kind: "markdown"
 									optional:         true
 								}
 							}
@@ -1082,7 +1674,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											identity_provider_id: {
 												type:             "string"
-												description:      "The ID of the Azure Identity provider."
+												description:      "The ID of the Azure identity provider."
 												description_kind: "markdown"
 												required:         true
 											}
@@ -1102,12 +1694,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											identity_provider_id: {
 												type:             "string"
-												description:      "The ID of the Azure Identity provider."
+												description:      "The ID of the Azure identity provider."
 												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches an Azure group. Requires an Azure identity provider."
+										description_kind: "markdown"
 									}
 								}
 								external_evaluation: {
@@ -1116,18 +1709,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											evaluate_url: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The API endpoint containing your business logic."
+												description_kind: "markdown"
 												optional:         true
 											}
 											keys_url: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The API endpoint containing the key that Access uses to verify that the response came from your API."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/."
+										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								github: {
 									nesting_mode: "list"
@@ -1135,21 +1730,25 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Github identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 											name: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The name of the organization."
+												description_kind: "markdown"
 												optional:         true
 											}
 											teams: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The teams that should be matched."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a Github organization. Requires a Github identity provider."
+										description_kind: "markdown"
 									}
 								}
 								gsuite: {
@@ -1158,16 +1757,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											email: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The email of the Google Workspace group."
+												description_kind: "markdown"
 												optional:         true
 											}
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Google Workspace identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a group in Google Workspace. Requires a Google Workspace identity provider."
+										description_kind: "markdown"
 									}
 								}
 								okta: {
@@ -1176,16 +1778,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Okta identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 											name: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The name of the Okta Group."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches an Okta group. Requires an Okta identity provider."
+										description_kind: "markdown"
 									}
 								}
 								saml: {
@@ -1194,21 +1799,25 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											attribute_name: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The name of the SAML attribute."
+												description_kind: "markdown"
 												optional:         true
 											}
 											attribute_value: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The SAML attribute value to look for."
+												description_kind: "markdown"
 												optional:         true
 											}
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your SAML identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a SAML group. Requires a SAML identity provider."
+										description_kind: "markdown"
 									}
 								}
 							}
@@ -1223,6 +1832,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_access_identity_provider: {
@@ -1452,6 +2062,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_access_keys_configuration: {
@@ -1484,6 +2095,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_access_mutual_tls_certificate: {
@@ -1498,7 +2110,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						computed:         true
 					}
 					associated_hostnames: {
-						type: ["list", "string"]
+						type: ["set", "string"]
 						description:      "The hostnames that will be prompted for this certificate."
 						description_kind: "markdown"
 						optional:         true
@@ -1543,6 +2155,55 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
+			}
+		}
+		cloudflare_access_mutual_tls_hostname_settings: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "plain"
+						optional:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: settings: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							china_network: {
+								type:             "bool"
+								description:      "Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled."
+								description_kind: "plain"
+								optional:         true
+							}
+							client_certificate_forwarding: {
+								type:             "bool"
+								description:      "Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin."
+								description_kind: "plain"
+								optional:         true
+							}
+							hostname: {
+								type:             "string"
+								description:      "The hostname that these settings apply to."
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description:      "Provides a Cloudflare Access Mutual TLS Certificate Settings resource."
+				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		cloudflare_access_organization: {
@@ -1555,6 +2216,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
+					}
+					allow_authenticate_via_warp: {
+						type:             "bool"
+						description:      "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value."
+						description_kind: "markdown"
+						optional:         true
 					}
 					auth_domain: {
 						type:             "string"
@@ -1584,11 +2251,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type:             "string"
 						description:      "The name of your Zero Trust organization."
 						description_kind: "markdown"
-						optional:         true
+						required:         true
 					}
 					session_duration: {
 						type:             "string"
-						description:      "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`."
+						description:      "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -1601,6 +2268,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					user_seat_expiration_inactive_time: {
 						type:             "string"
 						description:      "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					warp_auth_session_duration: {
+						type:             "string"
+						description:      "The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -1678,6 +2351,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_access_policy: {
@@ -1689,13 +2363,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "The account identifier to target for the resource. Conflicts with `zone_id`."
 						description_kind: "markdown"
 						optional:         true
-						computed:         true
 					}
 					application_id: {
 						type:             "string"
-						description:      "The ID of the application the policy is associated with."
+						description:      "The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**"
 						description_kind: "markdown"
-						required:         true
+						optional:         true
 					}
 					approval_required: {
 						type:             "bool"
@@ -1728,9 +2401,9 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					precedence: {
 						type:             "number"
-						description:      "The unique precedence for policies on a single application."
+						description:      "The unique precedence for policies on a single application. Required when using `application_id`."
 						description_kind: "markdown"
-						required:         true
+						optional:         true
 					}
 					purpose_justification_prompt: {
 						type:             "string"
@@ -1746,7 +2419,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					session_duration: {
 						type:             "string"
-						description:      "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`."
+						description:      "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -1755,7 +2428,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "The zone identifier to target for the resource. Conflicts with `account_id`."
 						description_kind: "markdown"
 						optional:         true
-						computed:         true
 					}
 				}
 				block_types: {
@@ -1784,58 +2456,103 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							description_kind: "plain"
 						}
 					}
+					connection_rules: {
+						nesting_mode: "list"
+						block: {
+							block_types: ssh: {
+								nesting_mode: "list"
+								block: {
+									attributes: usernames: {
+										type: ["list", "string"]
+										description:      "Contains the Unix usernames that may be used when connecting over SSH."
+										description_kind: "markdown"
+										required:         true
+									}
+									description:      "The SSH-specific rules that define how users may connect to the targets secured by your application."
+									description_kind: "markdown"
+								}
+								min_items: 1
+								max_items: 1
+							}
+							description:      "The rules that define how users may connect to the targets secured by your application."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
 					exclude: {
 						nesting_mode: "list"
 						block: {
 							attributes: {
 								any_valid_service_token: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches any valid Access service token."
+									description_kind: "markdown"
 									optional:         true
 								}
 								auth_method: {
 									type:             "string"
-									description_kind: "plain"
+									description:      "The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types."
+									description_kind: "markdown"
 									optional:         true
 								}
 								certificate: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches any valid client certificate."
+									description_kind: "markdown"
 									optional:         true
 								}
 								common_name: {
 									type:             "string"
-									description_kind: "plain"
+									description:      "Matches a valid client certificate common name."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_names: {
+									type: ["list", "string"]
+									description:      "Overflow field if you need to have multiple common_name rules in a single policy.  Use in place of the singular common_name field."
+									description_kind: "markdown"
 									optional:         true
 								}
 								device_posture: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a device posture integration."
+									description_kind: "markdown"
 									optional:         true
 								}
 								email: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The email of the user."
+									description_kind: "markdown"
 									optional:         true
 								}
 								email_domain: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The email domain to match."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created email list."
+									description_kind: "markdown"
 									optional:         true
 								}
 								everyone: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches everyone."
+									description_kind: "markdown"
 									optional:         true
 								}
 								geo: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "Matches a specific country."
+									description_kind: "markdown"
 									optional:         true
 								}
 								group: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a previously created Access group."
+									description_kind: "markdown"
 									optional:         true
 								}
 								ip: {
@@ -1846,18 +2563,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								ip_list: {
 									type: ["list", "string"]
-									description:      "The ID of an existing IP list to reference."
+									description:      "The ID of a previously created IP list."
 									description_kind: "markdown"
 									optional:         true
 								}
 								login_method: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a configured identity provider."
+									description_kind: "markdown"
 									optional:         true
 								}
 								service_token: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of an Access service token."
+									description_kind: "markdown"
 									optional:         true
 								}
 							}
@@ -1880,7 +2599,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											identity_provider_id: {
 												type:             "string"
-												description:      "The ID of the Azure Identity provider."
+												description:      "The ID of the Azure identity provider."
 												description_kind: "markdown"
 												required:         true
 											}
@@ -1900,12 +2619,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											identity_provider_id: {
 												type:             "string"
-												description:      "The ID of the Azure Identity provider."
+												description:      "The ID of the Azure identity provider."
 												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches an Azure group. Requires an Azure identity provider."
+										description_kind: "markdown"
 									}
 								}
 								external_evaluation: {
@@ -1914,18 +2634,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											evaluate_url: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The API endpoint containing your business logic."
+												description_kind: "markdown"
 												optional:         true
 											}
 											keys_url: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The API endpoint containing the key that Access uses to verify that the response came from your API."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/."
+										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								github: {
 									nesting_mode: "list"
@@ -1933,21 +2655,25 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Github identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 											name: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The name of the organization."
+												description_kind: "markdown"
 												optional:         true
 											}
 											teams: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The teams that should be matched."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a Github organization. Requires a Github identity provider."
+										description_kind: "markdown"
 									}
 								}
 								gsuite: {
@@ -1956,16 +2682,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											email: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The email of the Google Workspace group."
+												description_kind: "markdown"
 												optional:         true
 											}
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Google Workspace identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a group in Google Workspace. Requires a Google Workspace identity provider."
+										description_kind: "markdown"
 									}
 								}
 								okta: {
@@ -1974,16 +2703,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Okta identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 											name: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The name of the Okta Group."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches an Okta group. Requires an Okta identity provider."
+										description_kind: "markdown"
 									}
 								}
 								saml: {
@@ -1992,21 +2724,25 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											attribute_name: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The name of the SAML attribute."
+												description_kind: "markdown"
 												optional:         true
 											}
 											attribute_value: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The SAML attribute value to look for."
+												description_kind: "markdown"
 												optional:         true
 											}
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your SAML identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a SAML group. Requires a SAML identity provider."
+										description_kind: "markdown"
 									}
 								}
 							}
@@ -2020,52 +2756,74 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							attributes: {
 								any_valid_service_token: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches any valid Access service token."
+									description_kind: "markdown"
 									optional:         true
 								}
 								auth_method: {
 									type:             "string"
-									description_kind: "plain"
+									description:      "The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types."
+									description_kind: "markdown"
 									optional:         true
 								}
 								certificate: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches any valid client certificate."
+									description_kind: "markdown"
 									optional:         true
 								}
 								common_name: {
 									type:             "string"
-									description_kind: "plain"
+									description:      "Matches a valid client certificate common name."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_names: {
+									type: ["list", "string"]
+									description:      "Overflow field if you need to have multiple common_name rules in a single policy.  Use in place of the singular common_name field."
+									description_kind: "markdown"
 									optional:         true
 								}
 								device_posture: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a device posture integration."
+									description_kind: "markdown"
 									optional:         true
 								}
 								email: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The email of the user."
+									description_kind: "markdown"
 									optional:         true
 								}
 								email_domain: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The email domain to match."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created email list."
+									description_kind: "markdown"
 									optional:         true
 								}
 								everyone: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches everyone."
+									description_kind: "markdown"
 									optional:         true
 								}
 								geo: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "Matches a specific country."
+									description_kind: "markdown"
 									optional:         true
 								}
 								group: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a previously created Access group."
+									description_kind: "markdown"
 									optional:         true
 								}
 								ip: {
@@ -2076,18 +2834,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								ip_list: {
 									type: ["list", "string"]
-									description:      "The ID of an existing IP list to reference."
+									description:      "The ID of a previously created IP list."
 									description_kind: "markdown"
 									optional:         true
 								}
 								login_method: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a configured identity provider."
+									description_kind: "markdown"
 									optional:         true
 								}
 								service_token: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of an Access service token."
+									description_kind: "markdown"
 									optional:         true
 								}
 							}
@@ -2110,7 +2870,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											identity_provider_id: {
 												type:             "string"
-												description:      "The ID of the Azure Identity provider."
+												description:      "The ID of the Azure identity provider."
 												description_kind: "markdown"
 												required:         true
 											}
@@ -2130,12 +2890,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											identity_provider_id: {
 												type:             "string"
-												description:      "The ID of the Azure Identity provider."
+												description:      "The ID of the Azure identity provider."
 												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches an Azure group. Requires an Azure identity provider."
+										description_kind: "markdown"
 									}
 								}
 								external_evaluation: {
@@ -2144,18 +2905,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											evaluate_url: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The API endpoint containing your business logic."
+												description_kind: "markdown"
 												optional:         true
 											}
 											keys_url: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The API endpoint containing the key that Access uses to verify that the response came from your API."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/."
+										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								github: {
 									nesting_mode: "list"
@@ -2163,21 +2926,25 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Github identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 											name: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The name of the organization."
+												description_kind: "markdown"
 												optional:         true
 											}
 											teams: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The teams that should be matched."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a Github organization. Requires a Github identity provider."
+										description_kind: "markdown"
 									}
 								}
 								gsuite: {
@@ -2186,16 +2953,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											email: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The email of the Google Workspace group."
+												description_kind: "markdown"
 												optional:         true
 											}
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Google Workspace identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a group in Google Workspace. Requires a Google Workspace identity provider."
+										description_kind: "markdown"
 									}
 								}
 								okta: {
@@ -2204,16 +2974,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Okta identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 											name: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The name of the Okta Group."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches an Okta group. Requires an Okta identity provider."
+										description_kind: "markdown"
 									}
 								}
 								saml: {
@@ -2222,21 +2995,25 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											attribute_name: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The name of the SAML attribute."
+												description_kind: "markdown"
 												optional:         true
 											}
 											attribute_value: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The SAML attribute value to look for."
+												description_kind: "markdown"
 												optional:         true
 											}
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your SAML identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a SAML group. Requires a SAML identity provider."
+										description_kind: "markdown"
 									}
 								}
 							}
@@ -2251,52 +3028,74 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							attributes: {
 								any_valid_service_token: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches any valid Access service token."
+									description_kind: "markdown"
 									optional:         true
 								}
 								auth_method: {
 									type:             "string"
-									description_kind: "plain"
+									description:      "The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types."
+									description_kind: "markdown"
 									optional:         true
 								}
 								certificate: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches any valid client certificate."
+									description_kind: "markdown"
 									optional:         true
 								}
 								common_name: {
 									type:             "string"
-									description_kind: "plain"
+									description:      "Matches a valid client certificate common name."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_names: {
+									type: ["list", "string"]
+									description:      "Overflow field if you need to have multiple common_name rules in a single policy.  Use in place of the singular common_name field."
+									description_kind: "markdown"
 									optional:         true
 								}
 								device_posture: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a device posture integration."
+									description_kind: "markdown"
 									optional:         true
 								}
 								email: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The email of the user."
+									description_kind: "markdown"
 									optional:         true
 								}
 								email_domain: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The email domain to match."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created email list."
+									description_kind: "markdown"
 									optional:         true
 								}
 								everyone: {
 									type:             "bool"
-									description_kind: "plain"
+									description:      "Matches everyone."
+									description_kind: "markdown"
 									optional:         true
 								}
 								geo: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "Matches a specific country."
+									description_kind: "markdown"
 									optional:         true
 								}
 								group: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a previously created Access group."
+									description_kind: "markdown"
 									optional:         true
 								}
 								ip: {
@@ -2307,18 +3106,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								ip_list: {
 									type: ["list", "string"]
-									description:      "The ID of an existing IP list to reference."
+									description:      "The ID of a previously created IP list."
 									description_kind: "markdown"
 									optional:         true
 								}
 								login_method: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of a configured identity provider."
+									description_kind: "markdown"
 									optional:         true
 								}
 								service_token: {
 									type: ["list", "string"]
-									description_kind: "plain"
+									description:      "The ID of an Access service token."
+									description_kind: "markdown"
 									optional:         true
 								}
 							}
@@ -2341,7 +3142,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											identity_provider_id: {
 												type:             "string"
-												description:      "The ID of the Azure Identity provider."
+												description:      "The ID of the Azure identity provider."
 												description_kind: "markdown"
 												required:         true
 											}
@@ -2361,12 +3162,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											identity_provider_id: {
 												type:             "string"
-												description:      "The ID of the Azure Identity provider."
+												description:      "The ID of the Azure identity provider."
 												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches an Azure group. Requires an Azure identity provider."
+										description_kind: "markdown"
 									}
 								}
 								external_evaluation: {
@@ -2375,18 +3177,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											evaluate_url: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The API endpoint containing your business logic."
+												description_kind: "markdown"
 												optional:         true
 											}
 											keys_url: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The API endpoint containing the key that Access uses to verify that the response came from your API."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/."
+										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								github: {
 									nesting_mode: "list"
@@ -2394,21 +3198,25 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Github identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 											name: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The name of the organization."
+												description_kind: "markdown"
 												optional:         true
 											}
 											teams: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The teams that should be matched."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a Github organization. Requires a Github identity provider."
+										description_kind: "markdown"
 									}
 								}
 								gsuite: {
@@ -2417,16 +3225,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											email: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The email of the Google Workspace group."
+												description_kind: "markdown"
 												optional:         true
 											}
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Google Workspace identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a group in Google Workspace. Requires a Google Workspace identity provider."
+										description_kind: "markdown"
 									}
 								}
 								okta: {
@@ -2435,16 +3246,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your Okta identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 											name: {
 												type: ["list", "string"]
-												description_kind: "plain"
+												description:      "The name of the Okta Group."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches an Okta group. Requires an Okta identity provider."
+										description_kind: "markdown"
 									}
 								}
 								saml: {
@@ -2453,21 +3267,25 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										attributes: {
 											attribute_name: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The name of the SAML attribute."
+												description_kind: "markdown"
 												optional:         true
 											}
 											attribute_value: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The SAML attribute value to look for."
+												description_kind: "markdown"
 												optional:         true
 											}
 											identity_provider_id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of your SAML identity provider."
+												description_kind: "markdown"
 												optional:         true
 											}
 										}
-										description_kind: "plain"
+										description:      "Matches a SAML group. Requires a SAML identity provider."
+										description_kind: "markdown"
 									}
 								}
 							}
@@ -2483,6 +3301,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_access_rule: {
@@ -2566,7 +3385,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					client_id: {
 						type:             "string"
-						description:      "UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**"
+						description:      "Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**"
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -2621,6 +3440,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_access_tag: {
@@ -2665,6 +3485,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_account: {
@@ -2931,6 +3752,42 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				description_kind: "markdown"
 			}
 		}
+		cloudflare_api_shield_operation_schema_validation_settings: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					mitigation_action: {
+						type:             "string"
+						description:      "The mitigation action to apply to this operation."
+						description_kind: "markdown"
+						optional:         true
+					}
+					operation_id: {
+						type:             "string"
+						description:      "Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description: """
+					Provides a resource to manage operation-level settings in API Shield Schema Validation 2.0.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
 		cloudflare_api_shield_schema: {
 			version: 0
 			block: {
@@ -2974,6 +3831,42 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				}
 				description: """
 					Provides a resource to manage a schema in API Shield Schema Validation 2.0.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_api_shield_schema_validation_settings: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					validation_default_mitigation_action: {
+						type:             "string"
+						description:      "The default mitigation action used when there is no mitigation action defined on the operation."
+						description_kind: "markdown"
+						required:         true
+					}
+					validation_override_mitigation_action: {
+						type:             "string"
+						description:      "When set, this overrides both zone level and operation level mitigation actions."
+						description_kind: "markdown"
+						optional:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description: """
+					Provides a resource to manage settings in API Shield Schema Validation 2.0.
 
 					"""
 				description_kind: "markdown"
@@ -3122,6 +4015,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type:             "string"
 						description:      "Whether tiered caching is enabled. Available values: `on`, `off`."
 						description_kind: "markdown"
+						deprecated:       true
 						optional:         true
 					}
 					zone_id: {
@@ -3278,6 +4172,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			version: 0
 			block: {
 				attributes: {
+					ai_bots_protection: {
+						type:             "string"
+						description:      "Enable rule to block AI Scrapers and Crawlers."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
 					auto_update_model: {
 						type:             "bool"
 						description:      "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)."
@@ -3539,6 +4440,68 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				description_kind: "markdown"
 			}
 		}
+		cloudflare_cloud_connector_rules: {
+			version: 1
+			block: {
+				attributes: zone_id: {
+					type:             "string"
+					description:      "The zone identifier to target for the resource."
+					description_kind: "markdown"
+					required:         true
+				}
+				block_types: rules: {
+					nesting_mode: "set"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description:      "Brief summary of the cloud connector rule and its intended use."
+								description_kind: "markdown"
+								optional:         true
+							}
+							enabled: {
+								type:             "bool"
+								description:      "Whether the headers rule is active."
+								description_kind: "markdown"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description:      "Criteria for an HTTP request to trigger the cloud connector rule. Uses the Firewall Rules expression language based on Wireshark display filters."
+								description_kind: "markdown"
+								required:         true
+							}
+							provider: {
+								type:             "string"
+								description:      "Type of provider. Available values: `aws_s3`, `cloudflare_r2`, `azure_storage`, `gcp_storage`"
+								description_kind: "markdown"
+								required:         true
+							}
+						}
+						block_types: parameters: {
+							nesting_mode: "single"
+							block: {
+								attributes: host: {
+									type:             "string"
+									description:      "Host parameter for cloud connector rule"
+									description_kind: "markdown"
+									required:         true
+								}
+								description:      "Cloud Connector Rule Parameters"
+								description_kind: "markdown"
+							}
+						}
+						description:      "List of Cloud Connector Rules"
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					The [Cloud Connector Rules](add link to doc) resource allows you to create and manage cloud connector rules for a zone.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
 		cloudflare_custom_hostname: {
 			version: 0
 			block: {
@@ -3781,7 +4744,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					type: {
 						type:             "string"
-						description:      "The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`."
+						description:      "The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`."
 						description_kind: "markdown"
 						required:         true
 					}
@@ -4044,6 +5007,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				}
 				description:      "Provides a Cloudflare Device Dex Test resource. Device Dex Tests allow for building location-aware device settings policies."
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_device_managed_networks: {
@@ -4100,6 +5064,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				}
 				description:      "Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies."
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_device_policy_certificates: {
@@ -4132,6 +5097,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_device_posture_integration: {
@@ -4169,7 +5135,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					type: {
 						type:             "string"
-						description:      "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`."
+						description:      "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`."
 						description_kind: "markdown"
 						required:         true
 					}
@@ -4178,6 +5144,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					nesting_mode: "list"
 					block: {
 						attributes: {
+							access_client_id: {
+								type:             "string"
+								description:      "The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							access_client_secret: {
+								type:             "string"
+								description:      "The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							api_url: {
 								type:             "string"
 								description:      "The third-party API's URL."
@@ -4228,6 +5208,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_device_posture_rule: {
@@ -4271,7 +5252,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					type: {
 						type:             "string"
-						description:      "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`."
+						description:      "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`."
 						description_kind: "markdown"
 						required:         true
 					}
@@ -4299,6 +5280,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "markdown"
 									optional:         true
 								}
+								check_private_key: {
+									type:             "bool"
+									description:      "Confirm the certificate was not imported from another device."
+									description_kind: "markdown"
+									optional:         true
+								}
 								cn: {
 									type:             "string"
 									description:      "The common name for a certificate."
@@ -4307,13 +5294,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								compliance_status: {
 									type:             "string"
-									description:      "The workspace one device compliance status. Available values: `compliant`, `noncompliant`."
+									description:      "The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`."
 									description_kind: "markdown"
 									optional:         true
 								}
 								connection_id: {
 									type:             "string"
-									description:      "The workspace one connection id."
+									description:      "The workspace one or intune connection id."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -4331,7 +5318,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								eid_last_seen: {
 									type:             "string"
-									description:      "The datetime a device last seen in RFC 3339 format from Tanium."
+									description:      "The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -4349,9 +5336,15 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									optional:         true
 									computed:         true
 								}
+								extended_key_usage: {
+									type: ["set", "string"]
+									description:      "List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`."
+									description_kind: "markdown"
+									optional:         true
+								}
 								id: {
 									type:             "string"
-									description:      "The Teams List id."
+									description:      "The Teams List id. Required for `serial_number` and `unique_client_id` rule types."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -4372,6 +5365,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								issue_count: {
 									type:             "string"
 									description:      "The number of issues for kolide."
+									description_kind: "markdown"
+									optional:         true
+								}
+								last_seen: {
+									type:             "string"
+									description:      "The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -4402,6 +5401,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								os_distro_revision: {
 									type:             "string"
 									description:      "The operating system version excluding OS name information or release name."
+									description_kind: "markdown"
+									optional:         true
+								}
+								os_version_extra: {
+									type:             "string"
+									description:      "Extra version value following the operating system semantic version."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -4437,6 +5442,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									optional:         true
 									computed:         true
 								}
+								score: {
+									type:             "number"
+									description:      "A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations."
+									description_kind: "markdown"
+									optional:         true
+								}
 								sensor_config: {
 									type:             "string"
 									description:      "Sensor signal score from Crowdstrike. Value must be between 1 and 100."
@@ -4446,6 +5457,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								sha256: {
 									type:             "string"
 									description:      "The sha256 hash of the file."
+									description_kind: "markdown"
+									optional:         true
+								}
+								state: {
+									type:             "string"
+									description:      "The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -4469,12 +5486,34 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								version_operator: {
 									type:             "string"
-									description:      "The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`."
+									description:      "The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`."
 									description_kind: "markdown"
 									optional:         true
 								}
 							}
-							description_kind: "plain"
+							block_types: locations: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										paths: {
+											type: ["set", "string"]
+											description:      "List of paths to check for client certificate rule."
+											description_kind: "markdown"
+											optional:         true
+										}
+										trust_stores: {
+											type: ["set", "string"]
+											description:      "List of trust stores to check for client certificate rule. Available values: `system`, `user`."
+											description_kind: "markdown"
+											optional:         true
+										}
+									}
+									description:      "List of operating system locations to check for a client certificate.."
+									description_kind: "markdown"
+								}
+							}
+							description:      "Required for all rule types except `warp`, `gateway`, and `tanium`."
+							description_kind: "markdown"
 						}
 					}
 					match: {
@@ -4496,6 +5535,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_device_settings_policy: {
@@ -4528,7 +5568,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					auto_connect: {
 						type:             "number"
-						description:      "The amount of time in minutes to reconnect after having been disabled."
+						description:      "The amount of time in seconds to reconnect after having been disabled."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -4616,9 +5656,16 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "markdown"
 						optional:         true
 					}
+					tunnel_protocol: {
+						type:             "string"
+						description:      "Determines which tunnel protocol to use. Available values: `\"\"`, `wireguard`, `masque`. Defaults to `wireguard`."
+						description_kind: "markdown"
+						optional:         true
+					}
 				}
 				description:      "Provides a Cloudflare Device Settings Policy resource. Device policies configure settings applied to WARP devices."
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_dlp_profile: {
@@ -4655,6 +5702,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "markdown"
 						required:         true
 					}
+					ocr_enabled: {
+						type:             "bool"
+						description:      "If true, scan images via OCR to determine if any text present matches filters."
+						description_kind: "markdown"
+						optional:         true
+					}
 					type: {
 						type:             "string"
 						description:      "The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**"
@@ -4662,55 +5715,86 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						required:         true
 					}
 				}
-				block_types: entry: {
-					nesting_mode: "set"
-					block: {
-						attributes: {
-							enabled: {
+				block_types: {
+					context_awareness: {
+						nesting_mode: "list"
+						block: {
+							attributes: enabled: {
 								type:             "bool"
-								description:      "Whether the entry is active. Defaults to `false`."
-								description_kind: "markdown"
-								optional:         true
-							}
-							id: {
-								type:             "string"
-								description:      "Unique entry identifier."
-								description_kind: "markdown"
-								optional:         true
-								computed:         true
-							}
-							name: {
-								type:             "string"
-								description:      "Name of the entry to deploy."
+								description:      "Scan the context of predefined entries to only return matches surrounded by keywords."
 								description_kind: "markdown"
 								required:         true
 							}
-						}
-						block_types: pattern: {
-							nesting_mode: "list"
-							block: {
-								attributes: {
-									regex: {
-										type:             "string"
-										description:      "The regex that defines the pattern."
+							block_types: skip: {
+								nesting_mode: "list"
+								block: {
+									attributes: files: {
+										type:             "bool"
+										description:      "Return all matches, regardless of context analysis result, if the data is a file."
 										description_kind: "markdown"
 										required:         true
 									}
-									validation: {
-										type:             "string"
-										description:      "The validation algorithm to apply with this pattern."
-										description_kind: "markdown"
-										optional:         true
-									}
+									description:      "Content types to exclude from context analysis and return all matches."
+									description_kind: "markdown"
 								}
-								description_kind: "plain"
+								min_items: 1
+								max_items: 1
 							}
-							max_items: 1
+							description:      "Scan the context of predefined entries to only return matches surrounded by keywords."
+							description_kind: "markdown"
 						}
-						description:      "List of entries to apply to the profile."
-						description_kind: "markdown"
+						max_items: 1
 					}
-					min_items: 1
+					entry: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								enabled: {
+									type:             "bool"
+									description:      "Whether the entry is active. Defaults to `false`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								id: {
+									type:             "string"
+									description:      "Unique entry identifier."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Name of the entry to deploy."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							block_types: pattern: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										regex: {
+											type:             "string"
+											description:      "The regex that defines the pattern."
+											description_kind: "markdown"
+											required:         true
+										}
+										validation: {
+											type:             "string"
+											description:      "The validation algorithm to apply with this pattern."
+											description_kind: "markdown"
+											optional:         true
+										}
+									}
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							description:      "List of entries to apply to the profile."
+							description_kind: "markdown"
+						}
+						min_items: 1
+					}
 				}
 				description: """
 					Provides a Cloudflare DLP Profile resource. Data Loss Prevention profiles
@@ -4719,15 +5803,16 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_email_routing_address: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**"
+						description:      "The account identifier to target for the resource."
 						description_kind: "markdown"
 						required:         true
 					}
@@ -4739,19 +5824,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					email: {
 						type:             "string"
-						description:      "The contact email address of the user. **Modifying this attribute will force creation of a new resource.**"
+						description:      "The contact email address of the user."
 						description_kind: "markdown"
 						required:         true
 					}
 					id: {
 						type:             "string"
-						description_kind: "plain"
-						optional:         true
+						description:      "The identifier of this resource."
+						description_kind: "markdown"
 						computed:         true
 					}
 					modified: {
 						type:             "string"
-						description:      "The date and time the destination address was last modified."
+						description:      "The date and time the destination address has been modified."
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -4769,7 +5854,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 				}
 				description: """
-					Provides a resource for managing Email Routing Addresses.
+					The [Email Routing Address](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#destination-addresses) resource allows you to manage Cloudflare Email Routing Destination Addresses.
 
 					"""
 				description_kind: "markdown"
@@ -4856,19 +5941,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_email_routing_rule: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					enabled: {
 						type:             "bool"
-						description:      "Routing rule status."
+						description:      "Whether the email routing rule is enabled."
 						description_kind: "markdown"
 						optional:         true
 					}
 					id: {
 						type:             "string"
-						description_kind: "plain"
-						optional:         true
+						description:      "The ID of the email routing rule."
+						description_kind: "markdown"
 						computed:         true
 					}
 					name: {
@@ -4879,14 +5964,14 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					priority: {
 						type:             "number"
-						description:      "Priority of the routing rule."
+						description:      "The priority of the email routing rule."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
 					tag: {
 						type:             "string"
-						description:      "Routing rule identifier."
+						description:      "The tag of the email routing rule."
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -4904,21 +5989,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							attributes: {
 								type: {
 									type:             "string"
-									description:      "Type of supported action."
+									description:      "Type of action. Available values: `forward`, `worker`, `drop`"
 									description_kind: "markdown"
 									required:         true
 								}
 								value: {
-									type: ["list", "string"]
-									description:      "An array with items in the following form."
+									type: ["set", "string"]
+									description:      "Value to match on. Required for `type` of `literal`."
 									description_kind: "markdown"
-									required:         true
+									optional:         true
 								}
 							}
-							description:      "List actions patterns."
+							description:      "Actions to take when a match is found."
 							description_kind: "markdown"
 						}
-						min_items: 1
 					}
 					matcher: {
 						nesting_mode: "set"
@@ -4926,19 +6010,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							attributes: {
 								field: {
 									type:             "string"
-									description:      "Field for type matcher."
+									description:      "Field to match on. Required for `type` of `literal`."
 									description_kind: "markdown"
 									optional:         true
 								}
 								type: {
 									type:             "string"
-									description:      "Type of matcher."
+									description:      "Type of matcher. Available values: `literal`, `all`"
 									description_kind: "markdown"
 									required:         true
 								}
 								value: {
 									type:             "string"
-									description:      "Value for matcher."
+									description:      "Value to match on. Required for `type` of `literal`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -4946,11 +6030,10 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							description:      "Matching patterns to forward to your actions."
 							description_kind: "markdown"
 						}
-						min_items: 1
 					}
 				}
 				description: """
-					Provides a resource for managing Email Routing rules.
+					The [Email Routing Rule](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#email-rule-actions) resource allows you to create and manage email routing rules for a zone.
 
 					"""
 				description_kind: "markdown"
@@ -5081,6 +6164,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_filter: {
@@ -5285,6 +6369,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				}
 				description:      "Provides a resource, that manages GRE tunnels for Magic Transit."
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_healthcheck: {
@@ -5572,6 +6657,222 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				description_kind: "markdown"
 			}
 		}
+		cloudflare_hyperdrive_config: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					caching: {
+						nested_type: {
+							attributes: {
+								disabled: {
+									type:             "bool"
+									description:      "Disable caching for this Hyperdrive configuration."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								max_age: {
+									type:             "number"
+									description:      "Configure the `max_age` value of this Hyperdrive configuration."
+									description_kind: "markdown"
+									optional:         true
+								}
+								stale_while_revalidate: {
+									type:             "number"
+									description:      "Disable caching for this Hyperdrive configuration."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "The caching details for the Hyperdrive configuration."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The identifier of this resource. This is the hyperdrive config value."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the Hyperdrive configuration."
+						description_kind: "markdown"
+						required:         true
+					}
+					origin: {
+						nested_type: {
+							attributes: {
+								access_client_id: {
+									type:             "string"
+									description:      "Client ID associated with the Cloudflare Access Service Token used to connect via Access."
+									description_kind: "markdown"
+									optional:         true
+								}
+								access_client_secret: {
+									type:             "string"
+									description:      "Client Secret associated with the Cloudflare Access Service Token used to connect via Access."
+									description_kind: "markdown"
+									optional:         true
+								}
+								database: {
+									type:             "string"
+									description:      "The name of your origin database."
+									description_kind: "markdown"
+									required:         true
+								}
+								host: {
+									type:             "string"
+									description:      "The host (hostname or IP) of your origin database."
+									description_kind: "markdown"
+									required:         true
+								}
+								password: {
+									type:             "string"
+									description:      "The password of the Hyperdrive configuration."
+									description_kind: "markdown"
+									required:         true
+									sensitive:        true
+								}
+								port: {
+									type:             "number"
+									description:      "The port (default: 5432 for Postgres) of your origin database."
+									description_kind: "markdown"
+									optional:         true
+								}
+								scheme: {
+									type:             "string"
+									description:      "Specifies the URL scheme used to connect to your origin database."
+									description_kind: "markdown"
+									required:         true
+								}
+								user: {
+									type:             "string"
+									description:      "The user of your origin database."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "The origin details for the Hyperdrive configuration."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description: """
+					The [Hyperdrive Config](https://developers.cloudflare.com/hyperdrive/) resource allows you to manage Cloudflare Hyperdrive Configs.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_infrastructure_access_target: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The date and time at which the target was created."
+						description_kind: "markdown"
+						computed:         true
+					}
+					hostname: {
+						type:             "string"
+						description:      "A non-unique field that refers to a target."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The identifier of this resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					ip: {
+						nested_type: {
+							attributes: {
+								ipv4: {
+									nested_type: {
+										attributes: {
+											ip_addr: {
+												type:             "string"
+												description:      "The IP address of the target."
+												description_kind: "markdown"
+												required:         true
+											}
+											virtual_network_id: {
+												type:             "string"
+												description:      "The private virtual network identifier for the target."
+												description_kind: "markdown"
+												required:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "The target's IPv4 address."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ipv6: {
+									nested_type: {
+										attributes: {
+											ip_addr: {
+												type:             "string"
+												description:      "The IP address of the target."
+												description_kind: "markdown"
+												required:         true
+											}
+											virtual_network_id: {
+												type:             "string"
+												description:      "The private virtual network identifier for the target."
+												description_kind: "markdown"
+												required:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "The target's IPv6 address."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "The IPv4/IPv6 address that identifies where to reach a target."
+						description_kind: "markdown"
+						required:         true
+					}
+					modified_at: {
+						type:             "string"
+						description:      "The date and time at which the target was last modified."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					The [Infrastructure Access Target](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
 		cloudflare_ipsec_tunnel: {
 			version: 0
 			block: {
@@ -5613,9 +6914,23 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						optional:         true
 						computed:         true
 					}
+					health_check_direction: {
+						type:             "string"
+						description:      "Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
 					health_check_enabled: {
 						type:             "bool"
 						description:      "Specifies if ICMP tunnel health checks are enabled. Default: `true`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					health_check_rate: {
+						type:             "string"
+						description:      "Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -5674,6 +6989,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						optional:         true
 						computed:         true
 					}
+					replay_protection: {
+						type:             "bool"
+						description:      "Specifies if replay protection is enabled. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+					}
 					user_id: {
 						type:             "string"
 						description:      "`remote_id` in the form of an email address. This value is generated by cloudflare."
@@ -5684,6 +7005,73 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				}
 				description: """
 					Provides a resource, that manages IPsec tunnels for Magic Transit.
+
+					"""
+				description_kind: "markdown"
+				deprecated:       true
+			}
+		}
+		cloudflare_keyless_certificate: {
+			version: 0
+			block: {
+				attributes: {
+					bundle_method: {
+						type:             "string"
+						description:      "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+					certificate: {
+						type:             "string"
+						description:      "The zone's SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					enabled: {
+						type:             "bool"
+						description:      "Whether the KeyLess SSL is on."
+						description_kind: "markdown"
+						optional:         true
+					}
+					host: {
+						type:             "string"
+						description:      "The KeyLess SSL host."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The KeyLess SSL name."
+						description_kind: "markdown"
+						optional:         true
+					}
+					port: {
+						type:             "number"
+						description:      "The KeyLess SSL port used to communicate between Cloudflare and the client's KeyLess SSL server. Defaults to `24008`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					status: {
+						type:             "string"
+						description:      "Status of the KeyLess SSL."
+						description_kind: "markdown"
+						computed:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description: """
+					Provides a resource, that manages Keyless certificates.
 
 					"""
 				description_kind: "markdown"
@@ -5829,7 +7217,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_list_item: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -5840,7 +7228,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					asn: {
 						type:             "number"
-						description:      "Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**"
+						description:      "Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -5852,13 +7240,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description_kind: "plain"
-						optional:         true
+						description:      "The list item identifier."
+						description_kind: "markdown"
 						computed:         true
 					}
 					ip: {
 						type:             "string"
-						description:      "IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**"
+						description:      "IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -5879,30 +7267,29 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								description_kind: "markdown"
 								required:         true
 							}
-							description:      "Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**"
+							description:      "Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`."
 							description_kind: "markdown"
 						}
-						max_items: 1
 					}
 					redirect: {
 						nesting_mode: "list"
 						block: {
 							attributes: {
 								include_subdomains: {
-									type:             "string"
-									description:      "Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`."
+									type:             "bool"
+									description:      "Whether the redirect also matches subdomains of the source url."
 									description_kind: "markdown"
 									optional:         true
 								}
 								preserve_path_suffix: {
-									type:             "string"
-									description:      "Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`."
+									type:             "bool"
+									description:      "Whether the redirect target url should keep the query string of the request's url."
 									description_kind: "markdown"
 									optional:         true
 								}
 								preserve_query_string: {
-									type:             "string"
-									description:      "Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`."
+									type:             "bool"
+									description:      "Whether the redirect target url should keep the query string of the request's url."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -5919,8 +7306,8 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									optional:         true
 								}
 								subpath_matching: {
-									type:             "string"
-									description:      "Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`."
+									type:             "bool"
+									description:      "Whether the redirect also matches subpaths of the source url."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -5931,14 +7318,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									required:         true
 								}
 							}
-							description:      "Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**"
+							description:      "Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`."
 							description_kind: "markdown"
 						}
-						max_items: 1
 					}
 				}
 				description: """
-					Provides individual list items (IPs, Redirects) to be used in Edge Rules Engine
+					Provides individual list items (IPs, Redirects, ASNs, Hostnames) to be used in Edge Rules Engine
 					across all zones within the same account.
 
 					"""
@@ -6017,7 +7403,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					steering_policy: {
 						type:             "string"
-						description:      "The method the load balancer uses to determine the route to your origin. Value `off` uses [`default_pool_ids`](#default_pool_ids). Value `geo` uses [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools). For non-proxied requests, the [`country`](#country) for [`country_pools`](#country_pools) is determined by [`location_strategy`](#location_strategy). Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in [`default_pool_ids`](#default_pool_ids) (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by [`location_strategy`](#location_strategy) for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration [`random_steering`](#random_steering) weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `\"\"` maps to `geo` if you use [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `\"\"` Defaults to `\"\"`."
+						description:      "The method the load balancer uses to determine the route to your origin. Value `off` uses [`default_pool_ids`](#default_pool_ids). Value `geo` uses [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools). For non-proxied requests, the [`country`](#country) for [`country_pools`](#country_pools) is determined by [`location_strategy`](#location_strategy). Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in [`default_pool_ids`](#default_pool_ids) (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by [`location_strategy`](#location_strategy) for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration [`random_steering`](#random_steering) weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects a pool by taking into consideration [`random_steering`](#random_steering) weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `\"\"` maps to `geo` if you use [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `least_connections`, `\"\"` Defaults to `\"\"`."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -6130,7 +7516,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									optional:         true
 								}
 							}
-							description:      "Configures pool weights. When [`steering_policy=\"random\"`](#steering_policy), a random pool is selected with probability proportional to pool weights. When [`steering_policy=\"least_outstanding_requests\"`](#steering_policy), pool weights are used to scale each pool's outstanding requests."
+							description:      "Configures pool weights. When [`steering_policy=\"random\"`](#steering_policy), a random pool is selected with probability proportional to pool weights. When [`steering_policy=\"least_outstanding_requests\"`](#steering_policy), pool weights are used to scale each pool's outstanding requests. When [`steering_policy=\"least_connections\"`](#steering_policy), pool weights are used to scale each pool's open connections."
 							description_kind: "markdown"
 						}
 					}
@@ -6257,7 +7643,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											steering_policy: {
 												type:             "string"
-												description:      "The method the load balancer uses to determine the route to your origin. Value `off` uses [`default_pool_ids`](#default_pool_ids). Value `geo` uses [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools). For non-proxied requests, the [`country`](#country) for [`country_pools`](#country_pools) is determined by [`location_strategy`](#location_strategy). Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in [`default_pool_ids`](#default_pool_ids) (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by [`location_strategy`](#location_strategy) for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration [`random_steering`](#random_steering) weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `\"\"` maps to `geo` if you use [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `\"\"` Defaults to `\"\"`."
+												description:      "The method the load balancer uses to determine the route to your origin. Value `off` uses [`default_pool_ids`](#default_pool_ids). Value `geo` uses [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools). For non-proxied requests, the [`country`](#country) for [`country_pools`](#country_pools) is determined by [`location_strategy`](#location_strategy). Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in [`default_pool_ids`](#default_pool_ids) (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by [`location_strategy`](#location_strategy) for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration [`random_steering`](#random_steering) weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects a pool by taking into consideration [`random_steering`](#random_steering) weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `\"\"` maps to `geo` if you use [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `least_connections`, `\"\"` Defaults to `\"\"`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -6362,7 +7748,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 															optional:         true
 														}
 													}
-													description:      "Configures pool weights. When [`steering_policy=\"random\"`](#steering_policy), a random pool is selected with probability proportional to pool weights. When [`steering_policy=\"least_outstanding_requests\"`](#steering_policy), pool weights are used to scale each pool's outstanding requests."
+													description:      "Configures pool weights. When [`steering_policy=\"random\"`](#steering_policy), a random pool is selected with probability proportional to pool weights. When [`steering_policy=\"least_outstanding_requests\"`](#steering_policy), pool weights are used to scale each pool's outstanding requests. When [`steering_policy=\"least_connections\"`](#steering_policy), pool weights are used to scale each pool's open connections."
 													description_kind: "markdown"
 												}
 											}
@@ -6768,7 +8154,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						block: {
 							attributes: policy: {
 								type:             "string"
-								description:      "Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `least_outstanding_requests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `\"\"`, `hash`, `random`, `least_outstanding_requests`. Defaults to `random`."
+								description:      "Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `least_outstanding_requests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects an origin by taking into consideration origin weights, as well as each origin's number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Available values: `\"\"`, `hash`, `random`, `least_outstanding_requests`, `least_connections`. Defaults to `random`."
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -6798,9 +8184,15 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "markdown"
 									required:         true
 								}
+								virtual_network_id: {
+									type:             "string"
+									description:      "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account."
+									description_kind: "markdown"
+									optional:         true
+								}
 								weight: {
 									type:             "number"
-									description:      "The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When [`origin_steering.policy=\"least_outstanding_requests\"`](#policy), weight is used to scale the origin's outstanding requests. Defaults to `1`."
+									description:      "The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When [`origin_steering.policy=\"least_outstanding_requests\"`](#policy), weight is used to scale the origin's outstanding requests. When [`origin_steering.policy=\"least_connections\"`](#policy), weight is used to scale the origin's open connections. Defaults to `1`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -6879,7 +8271,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					dataset: {
 						type:             "string"
-						description:      "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`."
+						description:      "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`, `page_shield_events`."
 						description_kind: "markdown"
 						required:         true
 					}
@@ -6905,6 +8297,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type:             "string"
 						description:      "A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`."
 						description_kind: "markdown"
+						deprecated:       true
 						optional:         true
 					}
 					id: {
@@ -6961,6 +8354,91 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "markdown"
 						optional:         true
 					}
+				}
+				block_types: output_options: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							batch_prefix: {
+								type:             "string"
+								description:      "String to be prepended before each batch."
+								description_kind: "markdown"
+								optional:         true
+							}
+							batch_suffix: {
+								type:             "string"
+								description:      "String to be appended after each batch."
+								description_kind: "markdown"
+								optional:         true
+							}
+							cve20214428: {
+								type:             "bool"
+								description:      "Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`."
+								description_kind: "markdown"
+								optional:         true
+							}
+							field_delimiter: {
+								type:             "string"
+								description:      "String to join fields. This field be ignored when record_template is set. Defaults to `,`."
+								description_kind: "markdown"
+								optional:         true
+							}
+							field_names: {
+								type: ["list", "string"]
+								description:      "List of field names to be included in the Logpush output."
+								description_kind: "markdown"
+								optional:         true
+							}
+							output_type: {
+								type:             "string"
+								description:      "Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`."
+								description_kind: "markdown"
+								optional:         true
+							}
+							record_delimiter: {
+								type:             "string"
+								description:      "String to be inserted in-between the records as separator."
+								description_kind: "markdown"
+								optional:         true
+							}
+							record_prefix: {
+								type:             "string"
+								description:      "String to be prepended before each record. Defaults to `{`."
+								description_kind: "markdown"
+								optional:         true
+							}
+							record_suffix: {
+								type: "string"
+								description: """
+												String to be appended after each record. Defaults to `}
+												`.
+												"""
+								description_kind: "markdown"
+								optional:         true
+							}
+							record_template: {
+								type:             "string"
+								description:      "String to use as template for each record instead of the default comma-separated list."
+								description_kind: "markdown"
+								optional:         true
+							}
+							sample_rate: {
+								type:             "number"
+								description:      "Specifies the sampling rate. Defaults to `1`."
+								description_kind: "markdown"
+								optional:         true
+							}
+							timestamp_format: {
+								type:             "string"
+								description:      "Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Structured replacement for logpull_options. When including this field, the logpull_option field will be ignored."
+						description_kind: "markdown"
+					}
+					max_items: 1
 				}
 				description: """
 					Provides a resource which manages Cloudflare Logpush jobs. For
@@ -7057,6 +8535,297 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 				}
 				description_kind: "plain"
+			}
+		}
+		cloudflare_magic_wan_gre_tunnel: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+					cloudflare_gre_endpoint: {
+						type:             "string"
+						description:      "The IP address assigned to the Cloudflare side of the GRE tunnel."
+						description_kind: "markdown"
+						required:         true
+					}
+					customer_gre_endpoint: {
+						type:             "string"
+						description:      "The IP address assigned to the customer side of the GRE tunnel."
+						description_kind: "markdown"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of the GRE tunnel intent."
+						description_kind: "markdown"
+						optional:         true
+					}
+					health_check_enabled: {
+						type:             "bool"
+						description:      "Specifies if ICMP tunnel health checks are enabled."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					health_check_target: {
+						type:             "string"
+						description:      "The IP address of the customer endpoint that will receive tunnel health checks."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					health_check_type: {
+						type:             "string"
+						description:      "Specifies the ICMP echo type for the health check. Available values: `request`, `reply`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					interface_address: {
+						type:             "string"
+						description:      "31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel."
+						description_kind: "markdown"
+						required:         true
+					}
+					mtu: {
+						type:             "number"
+						description:      "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the GRE tunnel."
+						description_kind: "markdown"
+						required:         true
+					}
+					ttl: {
+						type:             "number"
+						description:      "Time To Live (TTL) in number of hops of the GRE tunnel."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				description:      "Provides a resource, that manages GRE tunnels for Magic Transit."
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_magic_wan_ipsec_tunnel: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+					allow_null_cipher: {
+						type:             "bool"
+						description:      "Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					cloudflare_endpoint: {
+						type:             "string"
+						description:      "IP address assigned to the Cloudflare side of the IPsec tunnel."
+						description_kind: "markdown"
+						required:         true
+					}
+					customer_endpoint: {
+						type:             "string"
+						description:      "IP address assigned to the customer side of the IPsec tunnel."
+						description_kind: "markdown"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description:      "An optional description of the IPsec tunnel."
+						description_kind: "markdown"
+						optional:         true
+					}
+					fqdn_id: {
+						type:             "string"
+						description:      "`remote_id` in the form of a fqdn. This value is generated by cloudflare."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					health_check_direction: {
+						type:             "string"
+						description:      "Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					health_check_enabled: {
+						type:             "bool"
+						description:      "Specifies if ICMP tunnel health checks are enabled. Default: `true`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					health_check_rate: {
+						type:             "string"
+						description:      "Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					health_check_target: {
+						type:             "string"
+						description:      "The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					health_check_type: {
+						type:             "string"
+						description:      "Specifies the ICMP echo type for the health check (`request` or `reply`). Available values: `request`, `reply` Default: `reply`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					hex_id: {
+						type:             "string"
+						description:      "`remote_id` as a hex string. This value is generated by cloudflare."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					interface_address: {
+						type:             "string"
+						description:      "31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel."
+						description_kind: "markdown"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the IPsec tunnel."
+						description_kind: "markdown"
+						required:         true
+					}
+					psk: {
+						type:             "string"
+						description:      "Pre shared key to be used with the IPsec tunnel. If left unset, it will be autogenerated."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+						sensitive:        true
+					}
+					remote_id: {
+						type:             "string"
+						description:      "ID to be used while setting up the IPsec tunnel. This value is generated by cloudflare."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					replay_protection: {
+						type:             "bool"
+						description:      "Specifies if replay protection is enabled. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					user_id: {
+						type:             "string"
+						description:      "`remote_id` in the form of an email address. This value is generated by cloudflare."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				description: """
+					Provides a resource, that manages IPsec tunnels for Magic Transit.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_magic_wan_static_route: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+					colo_names: {
+						type: ["list", "string"]
+						description:      "List of Cloudflare colocation regions for this static route."
+						description_kind: "markdown"
+						optional:         true
+					}
+					colo_regions: {
+						type: ["list", "string"]
+						description:      "List of Cloudflare colocation names for this static route."
+						description_kind: "markdown"
+						optional:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of the static route."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					nexthop: {
+						type:             "string"
+						description:      "The nexthop IP address where traffic will be routed to."
+						description_kind: "markdown"
+						required:         true
+					}
+					prefix: {
+						type:             "string"
+						description:      "Your network prefix using CIDR notation."
+						description_kind: "markdown"
+						required:         true
+					}
+					priority: {
+						type:             "number"
+						description:      "The priority for the static route."
+						description_kind: "markdown"
+						required:         true
+					}
+					weight: {
+						type:             "number"
+						description:      "The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				description: """
+					Provides a resource, that manages Cloudflare static routes for Magic
+					Transit or Magic WAN. Static routes are used to route traffic
+					through GRE tunnels.
+
+					"""
+				description_kind: "markdown"
 			}
 		}
 		cloudflare_managed_headers: {
@@ -7219,7 +8988,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					alert_type: {
 						type:             "string"
-						description:      "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`."
+						description:      "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`."
 						description_kind: "markdown"
 						required:         true
 					}
@@ -7276,7 +9045,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									optional:         true
 								}
 							}
-							description:      "The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required."
+							description:      "The email ID to which the notification should be dispatched."
 							description_kind: "markdown"
 						}
 					}
@@ -7287,6 +9056,18 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								actions: {
 									type: ["set", "string"]
 									description:      "Targeted actions for alert."
+									description_kind: "markdown"
+									optional:         true
+								}
+								affected_components: {
+									type: ["set", "string"]
+									description:      "Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								airport_code: {
+									type: ["set", "string"]
+									description:      "Filter on Points of Presence."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -7338,6 +9119,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "markdown"
 									optional:         true
 								}
+								incident_impact: {
+									type: ["set", "string"]
+									description:      "The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`."
+									description_kind: "markdown"
+									optional:         true
+								}
 								input_id: {
 									type: ["set", "string"]
 									description:      "Stream input id to alert on."
@@ -7359,6 +9146,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								new_health: {
 									type: ["set", "string"]
 									description:      "Health status to alert on for pool or origin."
+									description_kind: "markdown"
+									optional:         true
+								}
+								new_status: {
+									type: ["set", "string"]
+									description:      "Tunnel health status to alert on."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -7398,6 +9191,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "markdown"
 									optional:         true
 								}
+								selectors: {
+									type: ["set", "string"]
+									description:      "Selectors for alert. Valid options depend on the alert type."
+									description_kind: "markdown"
+									optional:         true
+								}
 								services: {
 									type: ["set", "string"]
 									description_kind: "plain"
@@ -7421,9 +9220,27 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "markdown"
 									optional:         true
 								}
+								target_ip: {
+									type: ["set", "string"]
+									description:      "Target ip to alert on for dos in CIDR notation."
+									description_kind: "markdown"
+									optional:         true
+								}
 								target_zone_name: {
 									type: ["set", "string"]
 									description:      "Target domain to alert on."
+									description_kind: "markdown"
+									optional:         true
+								}
+								tunnel_id: {
+									type: ["set", "string"]
+									description:      "Tunnel IDs to alert on."
+									description_kind: "markdown"
+									optional:         true
+								}
+								tunnel_name: {
+									type: ["set", "string"]
+									description:      "Tunnel Names to alert on."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -7460,7 +9277,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									optional:         true
 								}
 							}
-							description:      "The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required."
+							description:      "The unique ID of a configured pagerduty endpoint to which the notification should be dispatched."
 							description_kind: "markdown"
 						}
 					}
@@ -7479,7 +9296,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									optional:         true
 								}
 							}
-							description:      "The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required."
+							description:      "The unique ID of a configured webhooks endpoint to which the notification should be dispatched."
 							description_kind: "markdown"
 						}
 					}
@@ -7517,7 +9334,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					last_failure: {
 						type:             "string"
-						description:      "Timestamp of when the notification webhook last faiuled."
+						description:      "Timestamp of when the notification webhook last failed."
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -7573,7 +9390,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					region: {
 						type:             "string"
-						description:      "The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**"
+						description:      "The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**"
 						description_kind: "markdown"
 						required:         true
 					}
@@ -8164,6 +9981,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								build_caching: {
+									type:             "bool"
+									description:      "Enable build caching for the project."
+									description_kind: "markdown"
+									optional:         true
+								}
 								build_command: {
 									type:             "string"
 									description:      "Command used to build project."
@@ -8273,7 +10096,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											usage_model: {
 												type:             "string"
-												description:      "Usage model used for Pages Functions. Defaults to `bundled`."
+												description:      "Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -8396,7 +10219,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											usage_model: {
 												type:             "string"
-												description:      "Usage model used for Pages Functions. Defaults to `bundled`."
+												description:      "Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -8503,7 +10326,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										}
 										preview_deployment_setting: {
 											type:             "string"
-											description:      "Preview Deployment Setting. Defaults to `all`."
+											description:      "Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`."
 											description_kind: "markdown"
 											optional:         true
 										}
@@ -8589,7 +10412,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					location: {
 						type:             "string"
-						description:      "The location hint of the R2 bucket."
+						description:      "The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`"
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -8793,10 +10616,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_record: {
-			version: 2
+			version: 3
 			block: {
 				attributes: {
 					allow_overwrite: {
@@ -8810,6 +10634,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "Comments or notes about the DNS record. This field has no effect on DNS responses."
 						description_kind: "markdown"
 						optional:         true
+					}
+					content: {
+						type:             "string"
+						description:      "The content of the record. Must provide only one of `data`, `content`, `value`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
 					}
 					created_on: {
 						type:             "string"
@@ -8886,8 +10717,9 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					value: {
 						type:             "string"
-						description:      "The value of the record. Conflicts with `data`."
+						description:      "The value of the record. Must provide only one of `data`, `content`, `value`."
 						description_kind: "markdown"
+						deprecated:       true
 						optional:         true
 						computed:         true
 					}
@@ -9099,7 +10931,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									optional:         true
 								}
 							}
-							description:      "Map of attributes that constitute the record value. Conflicts with `value`."
+							description:      "Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`."
 							description_kind: "markdown"
 						}
 						max_items: 1
@@ -9213,6 +11045,50 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+			}
+		}
+		cloudflare_risk_behavior: {
+			version: 0
+			block: {
+				attributes: account_id: {
+					type:             "string"
+					description:      "The account identifier to target for the resource."
+					description_kind: "markdown"
+					required:         true
+				}
+				block_types: behavior: {
+					nesting_mode: "set"
+					block: {
+						attributes: {
+							enabled: {
+								type:             "bool"
+								description:      "Whether this risk behavior type is enabled."
+								description_kind: "markdown"
+								required:         true
+							}
+							name: {
+								type:             "string"
+								description:      "Name of this risk behavior type"
+								description_kind: "markdown"
+								required:         true
+							}
+							risk_level: {
+								type:             "string"
+								description:      "Risk level. Available values: `low`, `medium`, `high`"
+								description_kind: "markdown"
+								required:         true
+							}
+						}
+						description:      "Zero Trust risk behaviors configured on this account"
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					The [Risk Behavior](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.
+
+					"""
+				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_ruleset: {
@@ -9378,6 +11254,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											description_kind: "markdown"
 											optional:         true
 										}
+										disable_rum: {
+											type:             "bool"
+											description:      "Turn off RUM feature."
+											description_kind: "markdown"
+											optional:         true
+										}
 										disable_zaraz: {
 											type:             "bool"
 											description:      "Turn off zaraz feature."
@@ -9387,6 +11269,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										email_obfuscation: {
 											type:             "bool"
 											description:      "Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app."
+											description_kind: "markdown"
+											optional:         true
+										}
+										fonts: {
+											type:             "bool"
+											description:      "Toggle fonts."
 											description_kind: "markdown"
 											optional:         true
 										}
@@ -9661,6 +11549,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 																			description_kind: "markdown"
 																			optional:         true
 																		}
+																		contains: {
+																			type: ["map", ["set", "string"]]
+																			description:      "Dictionary of headers mapping to lists of values to check for presence in the custom key."
+																			description_kind: "markdown"
+																			optional:         true
+																		}
 																		exclude_origin: {
 																			type:             "bool"
 																			description:      "Exclude the origin header from the custom key."
@@ -9746,6 +11640,27 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 													}
 												}
 												description:      "List of cache key parameters to apply to the request."
+												description_kind: "markdown"
+											}
+										}
+										cache_reserve: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													eligible: {
+														type:             "bool"
+														description:      "Determines whether Cloudflare will write the eligible resource to cache reserve."
+														description_kind: "markdown"
+														required:         true
+													}
+													minimum_file_size: {
+														type:             "number"
+														description:      "The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and \"eligible\" is true, Cloudflare will use 0 bytes by default."
+														description_kind: "markdown"
+														optional:         true
+													}
+												}
+												description:      "List of cache reserve parameters to apply to the request."
 												description_kind: "markdown"
 											}
 										}
@@ -10223,7 +12138,8 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											type:             "bool"
 											description:      "Whether to include requests to origin within the Rate Limiting count."
 											description_kind: "markdown"
-											required:         true
+											optional:         true
+											computed:         true
 										}
 										score_per_period: {
 											type:             "number"
@@ -10491,6 +12407,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_static_route: {
@@ -10559,6 +12476,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_teams_account: {
@@ -10583,6 +12501,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						optional:         true
 						computed:         true
 					}
+					non_identity_browser_isolation_enabled: {
+						type:             "bool"
+						description:      "Enable non-identity onramp for Browser Isolation. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+					}
 					protocol_detection_enabled: {
 						type:             "bool"
 						description:      "Indicator that protocol detection is enabled."
@@ -10597,7 +12521,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					url_browser_isolation_enabled: {
 						type:             "bool"
-						description:      "Safely browse websites in Browser Isolation through a URL."
+						description:      "Safely browse websites in Browser Isolation through a URL. Defaults to `false`."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -10625,6 +12549,34 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "markdown"
 									required:         true
 								}
+							}
+							block_types: notification_settings: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										enabled: {
+											type:             "bool"
+											description:      "Enable notification settings."
+											description_kind: "markdown"
+											optional:         true
+										}
+										message: {
+											type:             "string"
+											description:      "Notification content."
+											description_kind: "markdown"
+											optional:         true
+										}
+										support_url: {
+											type:             "string"
+											description:      "Support URL to show in the notification."
+											description_kind: "markdown"
+											optional:         true
+										}
+									}
+									description:      "Set notifications for antivirus."
+									description_kind: "markdown"
+								}
+								max_items: 1
 							}
 							description:      "Configuration block for antivirus traffic scanning."
 							description_kind: "markdown"
@@ -10685,6 +12637,77 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 							}
 							description:      "Configuration for a custom block page."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					body_scanning: {
+						nesting_mode: "list"
+						block: {
+							attributes: inspection_mode: {
+								type:             "string"
+								description:      "Body scanning inspection mode. Available values: `deep`, `shallow`."
+								description_kind: "markdown"
+								required:         true
+							}
+							description:      "Configuration for body scanning."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					certificate: {
+						nesting_mode: "list"
+						block: {
+							attributes: id: {
+								type:             "string"
+								description:      "ID of certificate for TLS interception."
+								description_kind: "markdown"
+								required:         true
+							}
+							description:      "Configuration for TLS interception certificate. This will be required starting Feb 2025."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					custom_certificate: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								enabled: {
+									type:             "bool"
+									description:      "Whether TLS encryption should use a custom certificate."
+									description_kind: "markdown"
+									required:         true
+								}
+								id: {
+									type:             "string"
+									description:      "ID of custom certificate."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								updated_at: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							description:      "Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`."
+							description_kind: "markdown"
+							deprecated:       true
+						}
+						max_items: 1
+					}
+					extended_email_matching: {
+						nesting_mode: "list"
+						block: {
+							attributes: enabled: {
+								type:             "bool"
+								description:      "Whether e-mails should be matched on all variants of user emails (with + or . modifiers) in Firewall policies."
+								description_kind: "markdown"
+								required:         true
+							}
+							description:      "Configuration for extended e-mail matching."
 							description_kind: "markdown"
 						}
 						max_items: 1
@@ -10811,6 +12834,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								disable_for_time: {
+									type:             "number"
+									description:      "Sets the time limit in seconds that a user can use an override code to bypass WARP."
+									description_kind: "markdown"
+									required:         true
+								}
 								root_ca: {
 									type:             "bool"
 									description:      "Whether root ca is enabled account wide for ZT clients."
@@ -10826,6 +12855,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								udp: {
 									type:             "bool"
 									description:      "Whether gateway proxy is enabled on gateway devices for UDP traffic."
+									description_kind: "markdown"
+									required:         true
+								}
+								virtual_ip: {
+									type:             "bool"
+									description:      "Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients."
 									description_kind: "markdown"
 									required:         true
 								}
@@ -10856,6 +12891,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_teams_list: {
@@ -10886,6 +12922,15 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "markdown"
 						optional:         true
 					}
+					items_with_description: {
+						type: ["set", ["object", {
+							description: "string"
+							value:       "string"
+						}]]
+						description:      "The items of the teams list that has explicit description."
+						description_kind: "markdown"
+						optional:         true
+					}
 					name: {
 						type:             "string"
 						description:      "Name of the teams list."
@@ -10906,6 +12951,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_teams_location: {
@@ -10935,6 +12981,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "The FQDN that DoH clients should be pointed at."
 						description_kind: "markdown"
 						computed:         true
+					}
+					ecs_support: {
+						type:             "bool"
+						description:      "Indicator that this location needs to resolve EDNS queries."
+						description_kind: "markdown"
+						optional:         true
 					}
 					id: {
 						type:             "string"
@@ -10992,6 +13044,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_teams_proxy_endpoint: {
@@ -11036,6 +13089,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_teams_rule: {
@@ -11050,7 +13104,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					action: {
 						type:             "string"
-						description:      "The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`."
+						description:      "The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`."
 						description_kind: "markdown"
 						required:         true
 					}
@@ -11148,6 +13202,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								description_kind: "markdown"
 								optional:         true
 							}
+							ignore_cname_category_matches: {
+								type:             "bool"
+								description:      "Set to true, to ignore the category matches at CNAME domains in a response."
+								description_kind: "markdown"
+								optional:         true
+							}
 							insecure_disable_dnssec_validation: {
 								type:             "bool"
 								description:      "Disable DNSSEC validation (must be Allow rule)."
@@ -11172,6 +13232,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								description_kind: "markdown"
 								optional:         true
 							}
+							resolve_dns_through_cloudflare: {
+								type:             "bool"
+								description:      "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified."
+								description_kind: "markdown"
+								optional:         true
+							}
 						}
 						block_types: {
 							audit_ssh: {
@@ -11192,6 +13258,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								nesting_mode: "list"
 								block: {
 									attributes: {
+										disable_clipboard_redirection: {
+											type:             "bool"
+											description:      "Disable clipboard redirection."
+											description_kind: "markdown"
+											optional:         true
+										}
 										disable_copy_paste: {
 											type:             "bool"
 											description:      "Disable copy-paste."
@@ -11250,6 +13322,84 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								max_items: 1
 							}
+							dns_resolvers: {
+								nesting_mode: "list"
+								block: {
+									block_types: {
+										ipv4: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													ip: {
+														type:             "string"
+														description:      "The IPv4 or IPv6 address of the upstream resolver."
+														description_kind: "markdown"
+														required:         true
+													}
+													port: {
+														type:             "number"
+														description:      "A port number to use for the upstream resolver. Defaults to `53`."
+														description_kind: "markdown"
+														optional:         true
+													}
+													route_through_private_network: {
+														type:             "bool"
+														description:      "Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set."
+														description_kind: "markdown"
+														optional:         true
+													}
+													vnet_id: {
+														type:             "string"
+														description:      "specify a virtual network for this resolver. Uses default virtual network id if omitted."
+														description_kind: "markdown"
+														optional:         true
+													}
+												}
+												description:      "IPv4 resolvers."
+												description_kind: "markdown"
+											}
+											max_items: 10
+										}
+										ipv6: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													ip: {
+														type:             "string"
+														description:      "The IPv4 or IPv6 address of the upstream resolver."
+														description_kind: "markdown"
+														required:         true
+													}
+													port: {
+														type:             "number"
+														description:      "A port number to use for the upstream resolver. Defaults to `53`."
+														description_kind: "markdown"
+														optional:         true
+													}
+													route_through_private_network: {
+														type:             "bool"
+														description:      "Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set."
+														description_kind: "markdown"
+														optional:         true
+													}
+													vnet_id: {
+														type:             "string"
+														description:      "specify a virtual network for this resolver. Uses default virtual network id if omitted."
+														description_kind: "markdown"
+														optional:         true
+													}
+												}
+												description:      "IPv6 resolvers."
+												description_kind: "markdown"
+											}
+											max_items: 10
+										}
+									}
+									description:      "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin."
+									description_kind: "markdown"
+								}
+								max_items: 1
+							}
 							egress: {
 								nesting_mode: "list"
 								block: {
@@ -11300,6 +13450,34 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								max_items: 1
 							}
+							notification_settings: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										enabled: {
+											type:             "bool"
+											description:      "Enable notification settings."
+											description_kind: "markdown"
+											optional:         true
+										}
+										message: {
+											type:             "string"
+											description:      "Notification content."
+											description_kind: "markdown"
+											optional:         true
+										}
+										support_url: {
+											type:             "string"
+											description:      "Support URL to show in the notification."
+											description_kind: "markdown"
+											optional:         true
+										}
+									}
+									description:      "Notification settings on a block rule."
+									description_kind: "markdown"
+								}
+								max_items: 1
+							}
 							payload_log: {
 								nesting_mode: "list"
 								block: {
@@ -11336,6 +13514,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				}
 				description:      "Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies."
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_tiered_cache: {
@@ -11461,6 +13640,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_tunnel_config: {
@@ -11675,7 +13855,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										}
 										max_items: 1
 									}
-									description:      "Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/)."
+									description:      "Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = \"http_status:503\"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/)."
 									description_kind: "markdown"
 								}
 								min_items: 1
@@ -11868,6 +14048,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_tunnel_route: {
@@ -11918,6 +14099,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_tunnel_virtual_network: {
@@ -11963,6 +14145,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 					"""
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_turnstile_widget: {
@@ -12168,6 +14351,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					disable_session_renewal: {
 						type:             "bool"
 						description:      "Disables automatic renewal of session cookies."
+						description_kind: "markdown"
+						optional:         true
+					}
+					enabled_origin_commands: {
+						type: ["list", "string"]
+						description:      "The list of enabled origin commands for the waiting room. Available values: `revoke`."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -12797,6 +14986,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				}
 				description:      "Creates a Worker Custom Domain."
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_worker_route: {
@@ -12830,6 +15020,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				}
 				description:      "Provides a Cloudflare worker route resource. A route will also require a `cloudflare_worker_script`."
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_worker_script: {
@@ -12861,6 +15052,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "markdown"
 						required:         true
 					}
+					dispatch_namespace: {
+						type:             "string"
+						description:      "Name of the Workers for Platforms dispatch namespace."
+						description_kind: "markdown"
+						optional:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
@@ -12885,6 +15082,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "markdown"
 						required:         true
 					}
+					tags: {
+						type: ["set", "string"]
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 				}
 				block_types: {
 					analytics_engine_binding: {
@@ -12900,6 +15103,46 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								name: {
 									type:             "string"
 									description:      "The global variable for the binding in your Worker code."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					d1_database_binding: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								database_id: {
+									type:             "string"
+									description:      "Database ID of D1 database to use."
+									description_kind: "markdown"
+									required:         true
+								}
+								name: {
+									type:             "string"
+									description:      "The global variable for the binding in your Worker code."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					hyperdrive_config_binding: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								binding: {
+									type:             "string"
+									description:      "The global variable for the binding in your Worker code."
+									description_kind: "markdown"
+									required:         true
+								}
+								id: {
+									type:             "string"
+									description:      "The ID of the Hyperdrive config to use."
 									description_kind: "markdown"
 									required:         true
 								}
@@ -12923,6 +15166,598 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "markdown"
 									required:         true
 								}
+							}
+							description_kind: "plain"
+						}
+					}
+					placement: {
+						nesting_mode: "set"
+						block: {
+							attributes: mode: {
+								type:             "string"
+								description:      "The placement mode for the Worker. Available values: `smart`."
+								description_kind: "markdown"
+								required:         true
+							}
+							description_kind: "plain"
+						}
+					}
+					plain_text_binding: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								name: {
+									type:             "string"
+									description:      "The global variable for the binding in your Worker code."
+									description_kind: "markdown"
+									required:         true
+								}
+								text: {
+									type:             "string"
+									description:      "The plain text you want to store."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					queue_binding: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								binding: {
+									type:             "string"
+									description:      "The name of the global variable for the binding in your Worker code."
+									description_kind: "markdown"
+									required:         true
+								}
+								queue: {
+									type:             "string"
+									description:      "Name of the queue you want to use."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					r2_bucket_binding: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								bucket_name: {
+									type:             "string"
+									description:      "The name of the Bucket to bind to."
+									description_kind: "markdown"
+									required:         true
+								}
+								name: {
+									type:             "string"
+									description:      "The global variable for the binding in your Worker code."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					secret_text_binding: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								name: {
+									type:             "string"
+									description:      "The global variable for the binding in your Worker code."
+									description_kind: "markdown"
+									required:         true
+								}
+								text: {
+									type:             "string"
+									description:      "The secret text you want to store."
+									description_kind: "markdown"
+									required:         true
+									sensitive:        true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					service_binding: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								environment: {
+									type:             "string"
+									description:      "The name of the Worker environment to bind to."
+									description_kind: "markdown"
+									optional:         true
+								}
+								name: {
+									type:             "string"
+									description:      "The global variable for the binding in your Worker code."
+									description_kind: "markdown"
+									required:         true
+								}
+								service: {
+									type:             "string"
+									description:      "The name of the Worker to bind to."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					webassembly_binding: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								module: {
+									type:             "string"
+									description:      "The base64 encoded wasm module you want to store."
+									description_kind: "markdown"
+									required:         true
+								}
+								name: {
+									type:             "string"
+									description:      "The global variable for the binding in your Worker code."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description:      "Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare_worker_route`."
+				description_kind: "markdown"
+				deprecated:       true
+			}
+		}
+		cloudflare_worker_secret: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					script_name: {
+						type:             "string"
+						description:      "The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					secret_text: {
+						type:             "string"
+						description:      "The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+						sensitive:        true
+					}
+				}
+				description:      "Provides a Cloudflare Worker secret resource."
+				description_kind: "markdown"
+				deprecated:       true
+			}
+		}
+		cloudflare_workers_cron_trigger: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					schedules: {
+						type: ["set", "string"]
+						description:      "Cron expressions to execute the Worker script."
+						description_kind: "markdown"
+						required:         true
+					}
+					script_name: {
+						type:             "string"
+						description:      "Worker script to target for the schedules."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description: """
+					Worker Cron Triggers allow users to map a cron expression to a Worker script
+					using a `ScheduledEvent` listener that enables Workers to be executed on a
+					schedule. Worker Cron Triggers are ideal for running periodic jobs for
+					maintenance or calling third-party APIs to collect up-to-date data.
+
+					"""
+				description_kind: "markdown"
+				deprecated:       true
+			}
+		}
+		cloudflare_workers_domain: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					environment: {
+						type:             "string"
+						description:      "The name of the Worker environment. Defaults to `production`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					hostname: {
+						type:             "string"
+						description:      "Hostname of the Worker Domain."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					service: {
+						type:             "string"
+						description:      "Name of worker script to attach the domain to."
+						description_kind: "markdown"
+						required:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description:      "Creates a Worker Custom Domain."
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_workers_for_platforms_dispatch_namespace: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The identifier of this resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the Workers for Platforms namespace."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description: """
+					The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you
+					to manage Cloudflare Workers for Platforms dispatch namespaces.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_workers_for_platforms_namespace: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The identifier of this resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the Workers for Platforms namespace."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description: """
+					The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you
+					to manage Cloudflare Workers for Platforms namespaces.
+
+					"""
+				description_kind: "markdown"
+				deprecated:       true
+			}
+		}
+		cloudflare_workers_kv: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					key: {
+						type:             "string"
+						description:      "Name of the KV pair. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					namespace_id: {
+						type:             "string"
+						description:      "The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					value: {
+						type:             "string"
+						description:      "Value of the KV pair."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description:      "Provides a resource to manage a Cloudflare Workers KV Pair."
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_workers_kv_namespace: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					title: {
+						type:             "string"
+						description:      "Title value of the Worker KV Namespace."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description:      "Provides the ability to manage Cloudflare Workers KV Namespace features."
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_workers_route: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					pattern: {
+						type:             "string"
+						description:      "The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with."
+						description_kind: "markdown"
+						required:         true
+					}
+					script_name: {
+						type:             "string"
+						description:      "Worker script name to invoke for requests that match the route pattern."
+						description_kind: "markdown"
+						optional:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description:      "Provides a Cloudflare worker route resource. A route will also require a `cloudflare_worker_script`."
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_workers_script: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					compatibility_date: {
+						type:             "string"
+						description:      "The date to use for the compatibility flag."
+						description_kind: "markdown"
+						optional:         true
+					}
+					compatibility_flags: {
+						type: ["set", "string"]
+						description:      "Compatibility flags used for Worker Scripts."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					content: {
+						type:             "string"
+						description:      "The script content."
+						description_kind: "markdown"
+						required:         true
+					}
+					dispatch_namespace: {
+						type:             "string"
+						description:      "Name of the Workers for Platforms dispatch namespace."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					logpush: {
+						type:             "bool"
+						description:      "Enabling allows Worker events to be sent to a defined Logpush destination."
+						description_kind: "markdown"
+						optional:         true
+					}
+					module: {
+						type:             "bool"
+						description:      "Whether to upload Worker as a module."
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name for the script. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					tags: {
+						type: ["set", "string"]
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: {
+					analytics_engine_binding: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								dataset: {
+									type:             "string"
+									description:      "The name of the Analytics Engine dataset to write to."
+									description_kind: "markdown"
+									required:         true
+								}
+								name: {
+									type:             "string"
+									description:      "The global variable for the binding in your Worker code."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					d1_database_binding: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								database_id: {
+									type:             "string"
+									description:      "Database ID of D1 database to use."
+									description_kind: "markdown"
+									required:         true
+								}
+								name: {
+									type:             "string"
+									description:      "The global variable for the binding in your Worker code."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					hyperdrive_config_binding: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								binding: {
+									type:             "string"
+									description:      "The global variable for the binding in your Worker code."
+									description_kind: "markdown"
+									required:         true
+								}
+								id: {
+									type:             "string"
+									description:      "The ID of the Hyperdrive config to use."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					kv_namespace_binding: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								name: {
+									type:             "string"
+									description:      "The global variable for the binding in your Worker code."
+									description_kind: "markdown"
+									required:         true
+								}
+								namespace_id: {
+									type:             "string"
+									description:      "ID of the KV namespace you want to use."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					placement: {
+						nesting_mode: "set"
+						block: {
+							attributes: mode: {
+								type:             "string"
+								description:      "The placement mode for the Worker. Available values: `smart`."
+								description_kind: "markdown"
+								required:         true
 							}
 							description_kind: "plain"
 						}
@@ -13059,7 +15894,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				description_kind: "markdown"
 			}
 		}
-		cloudflare_workers_kv: {
+		cloudflare_workers_secret: {
 			version: 0
 			block: {
 				attributes: {
@@ -13075,30 +15910,3355 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						optional:         true
 						computed:         true
 					}
-					key: {
+					name: {
 						type:             "string"
-						description:      "Name of the KV pair. **Modifying this attribute will force creation of a new resource.**"
+						description:      "The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**"
 						description_kind: "markdown"
 						required:         true
 					}
-					namespace_id: {
+					script_name: {
 						type:             "string"
-						description:      "The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**"
+						description:      "The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**"
 						description_kind: "markdown"
 						required:         true
 					}
-					value: {
+					secret_text: {
 						type:             "string"
-						description:      "Value of the KV pair."
+						description:      "The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**"
 						description_kind: "markdown"
 						required:         true
+						sensitive:        true
 					}
 				}
-				description:      "Provides a resource to manage a Cloudflare Workers KV Pair."
+				description:      "Provides a Cloudflare Worker secret resource."
 				description_kind: "markdown"
 			}
 		}
-		cloudflare_workers_kv_namespace: {
+		cloudflare_zero_trust_access_application: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. Conflicts with `zone_id`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					allow_authenticate_via_warp: {
+						type:             "bool"
+						description:      "When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication."
+						description_kind: "markdown"
+						optional:         true
+					}
+					allowed_idps: {
+						type: ["set", "string"]
+						description:      "The identity providers selected for the application."
+						description_kind: "markdown"
+						optional:         true
+					}
+					app_launcher_logo_url: {
+						type:             "string"
+						description:      "The logo URL of the app launcher."
+						description_kind: "markdown"
+						optional:         true
+					}
+					app_launcher_visible: {
+						type:             "bool"
+						description:      "Option to show/hide applications in App Launcher. Defaults to `true`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					aud: {
+						type:             "string"
+						description:      "Application Audience (AUD) Tag of the application."
+						description_kind: "markdown"
+						computed:         true
+					}
+					auto_redirect_to_identity: {
+						type:             "bool"
+						description:      "Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					bg_color: {
+						type:             "string"
+						description:      "The background color of the app launcher."
+						description_kind: "markdown"
+						optional:         true
+					}
+					custom_deny_message: {
+						type:             "string"
+						description:      "Option that returns a custom error message when a user is denied access to the application."
+						description_kind: "markdown"
+						optional:         true
+					}
+					custom_deny_url: {
+						type:             "string"
+						description:      "Option that redirects to a custom URL when a user is denied access to the application via identity based rules."
+						description_kind: "markdown"
+						optional:         true
+					}
+					custom_non_identity_deny_url: {
+						type:             "string"
+						description:      "Option that redirects to a custom URL when a user is denied access to the application via non identity rules."
+						description_kind: "markdown"
+						optional:         true
+					}
+					custom_pages: {
+						type: ["set", "string"]
+						description:      "The custom pages selected for the application."
+						description_kind: "markdown"
+						optional:         true
+					}
+					domain: {
+						type:             "string"
+						description:      "The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					enable_binding_cookie: {
+						type:             "bool"
+						description:      "Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional \"binding\" cookie on requests. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					header_bg_color: {
+						type:             "string"
+						description:      "The background color of the header bar in the app launcher."
+						description_kind: "markdown"
+						optional:         true
+					}
+					http_only_cookie_attribute: {
+						type:             "bool"
+						description:      "Option to add the `HttpOnly` cookie flag to access tokens."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					logo_url: {
+						type:             "string"
+						description:      "Image URL for the logo shown in the app launcher dashboard."
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Friendly name of the Access Application."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					options_preflight_bypass: {
+						type:             "bool"
+						description:      "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					policies: {
+						type: ["list", "string"]
+						description:      "The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare_access_policy` resource, as it can result in an inconsistent state."
+						description_kind: "markdown"
+						optional:         true
+					}
+					same_site_cookie_attribute: {
+						type:             "string"
+						description:      "Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					self_hosted_domains: {
+						type: ["set", "string"]
+						description:      "List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					service_auth_401_redirect: {
+						type:             "bool"
+						description:      "Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					session_duration: {
+						type:             "string"
+						description:      "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					skip_app_launcher_login_page: {
+						type:             "bool"
+						description:      "Option to skip the App Launcher landing page. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					skip_interstitial: {
+						type:             "bool"
+						description:      "Option to skip the authorization interstitial when using the CLI. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					tags: {
+						type: ["set", "string"]
+						description:      "The itags associated with the application."
+						description_kind: "markdown"
+						optional:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource. Conflicts with `account_id`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: {
+					cors_headers: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								allow_all_headers: {
+									type:             "bool"
+									description:      "Value to determine whether all HTTP headers are exposed."
+									description_kind: "markdown"
+									optional:         true
+								}
+								allow_all_methods: {
+									type:             "bool"
+									description:      "Value to determine whether all methods are exposed."
+									description_kind: "markdown"
+									optional:         true
+								}
+								allow_all_origins: {
+									type:             "bool"
+									description:      "Value to determine whether all origins are permitted to make CORS requests."
+									description_kind: "markdown"
+									optional:         true
+								}
+								allow_credentials: {
+									type:             "bool"
+									description:      "Value to determine if credentials (cookies, authorization headers, or TLS client certificates) are included with requests."
+									description_kind: "markdown"
+									optional:         true
+								}
+								allowed_headers: {
+									type: ["set", "string"]
+									description:      "List of HTTP headers to expose via CORS."
+									description_kind: "markdown"
+									optional:         true
+								}
+								allowed_methods: {
+									type: ["set", "string"]
+									description:      "List of methods to expose via CORS."
+									description_kind: "markdown"
+									optional:         true
+								}
+								allowed_origins: {
+									type: ["set", "string"]
+									description:      "List of origins permitted to make CORS requests."
+									description_kind: "markdown"
+									optional:         true
+								}
+								max_age: {
+									type:             "number"
+									description:      "The maximum time a preflight request will be cached."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							description:      "CORS configuration for the Access Application. See below for reference structure."
+							description_kind: "markdown"
+						}
+					}
+					footer_links: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								name: {
+									type:             "string"
+									description:      "The name of the footer link."
+									description_kind: "markdown"
+									optional:         true
+								}
+								url: {
+									type:             "string"
+									description:      "The URL of the footer link."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							description:      "The footer links of the app launcher."
+							description_kind: "markdown"
+						}
+					}
+					landing_page_design: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								button_color: {
+									type:             "string"
+									description:      "The button color of the landing page."
+									description_kind: "markdown"
+									optional:         true
+								}
+								button_text_color: {
+									type:             "string"
+									description:      "The button text color of the landing page."
+									description_kind: "markdown"
+									optional:         true
+								}
+								image_url: {
+									type:             "string"
+									description:      "The URL of the image to be displayed in the landing page."
+									description_kind: "markdown"
+									optional:         true
+								}
+								message: {
+									type:             "string"
+									description:      "The message of the landing page."
+									description_kind: "markdown"
+									optional:         true
+								}
+								title: {
+									type:             "string"
+									description:      "The title of the landing page."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							description:      "The landing page design of the app launcher."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					saas_app: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								access_token_lifetime: {
+									type:             "string"
+									description:      "The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h."
+									description_kind: "markdown"
+									optional:         true
+								}
+								allow_pkce_without_client_secret: {
+									type:             "bool"
+									description:      "Allow PKCE flow without a client secret."
+									description_kind: "markdown"
+									optional:         true
+								}
+								app_launcher_url: {
+									type:             "string"
+									description:      "The URL where this applications tile redirects users."
+									description_kind: "markdown"
+									optional:         true
+								}
+								auth_type: {
+									type:             "string"
+									description:      "**Modifying this attribute will force creation of a new resource.**"
+									description_kind: "markdown"
+									optional:         true
+								}
+								client_id: {
+									type:             "string"
+									description:      "The application client id."
+									description_kind: "markdown"
+									computed:         true
+								}
+								client_secret: {
+									type:             "string"
+									description:      "The application client secret, only returned on initial apply."
+									description_kind: "markdown"
+									computed:         true
+									sensitive:        true
+								}
+								consumer_service_url: {
+									type:             "string"
+									description:      "The service provider's endpoint that is responsible for receiving and parsing a SAML assertion."
+									description_kind: "markdown"
+									optional:         true
+								}
+								default_relay_state: {
+									type:             "string"
+									description:      "The relay state used if not provided by the identity provider."
+									description_kind: "markdown"
+									optional:         true
+								}
+								grant_types: {
+									type: ["set", "string"]
+									description:      "The OIDC flows supported by this application."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								group_filter_regex: {
+									type:             "string"
+									description:      "A regex to filter Cloudflare groups returned in ID token and userinfo endpoint."
+									description_kind: "markdown"
+									optional:         true
+								}
+								idp_entity_id: {
+									type:             "string"
+									description:      "The unique identifier for the SaaS application."
+									description_kind: "markdown"
+									computed:         true
+								}
+								name_id_format: {
+									type:             "string"
+									description:      "The format of the name identifier sent to the SaaS application."
+									description_kind: "markdown"
+									optional:         true
+								}
+								name_id_transform_jsonata: {
+									type:             "string"
+									description:      "A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting."
+									description_kind: "markdown"
+									optional:         true
+								}
+								public_key: {
+									type:             "string"
+									description:      "The public certificate that will be used to verify identities."
+									description_kind: "markdown"
+									computed:         true
+								}
+								redirect_uris: {
+									type: ["set", "string"]
+									description:      "The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens."
+									description_kind: "markdown"
+									optional:         true
+								}
+								saml_attribute_transform_jsonata: {
+									type:             "string"
+									description:      "A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml_attributes or oidc_fields of the identity provider used to authenticate. The output of this expression must be a JSON object."
+									description_kind: "markdown"
+									optional:         true
+								}
+								scopes: {
+									type: ["set", "string"]
+									description:      "Define the user information shared with access."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								sp_entity_id: {
+									type:             "string"
+									description:      "A globally unique name for an identity or service provider."
+									description_kind: "markdown"
+									optional:         true
+								}
+								sso_endpoint: {
+									type:             "string"
+									description:      "The endpoint where the SaaS application will send login requests."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							block_types: {
+								custom_attribute: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											friendly_name: {
+												type:             "string"
+												description:      "A friendly name for the attribute as provided to the SaaS app."
+												description_kind: "markdown"
+												optional:         true
+											}
+											name: {
+												type:             "string"
+												description:      "The name of the attribute as provided to the SaaS app."
+												description_kind: "markdown"
+												optional:         true
+											}
+											name_format: {
+												type:             "string"
+												description:      "A globally unique name for an identity or service provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+											required: {
+												type:             "bool"
+												description:      "True if the attribute must be always present."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										block_types: source: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													name: {
+														type:             "string"
+														description:      "The name of the attribute as provided by the IDP."
+														description_kind: "markdown"
+														required:         true
+													}
+													name_by_idp: {
+														type: ["map", "string"]
+														description:      "A mapping from IdP ID to claim name."
+														description_kind: "markdown"
+														optional:         true
+													}
+												}
+												description_kind: "plain"
+											}
+											min_items: 1
+											max_items: 1
+										}
+										description:      "Custom attribute mapped from IDPs."
+										description_kind: "markdown"
+									}
+								}
+								custom_claim: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											name: {
+												type:             "string"
+												description:      "The name of the attribute as provided to the SaaS app."
+												description_kind: "markdown"
+												optional:         true
+											}
+											required: {
+												type:             "bool"
+												description:      "True if the attribute must be always present."
+												description_kind: "markdown"
+												optional:         true
+											}
+											scope: {
+												type:             "string"
+												description:      "The scope of the claim."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										block_types: source: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													name: {
+														type:             "string"
+														description:      "The name of the attribute as provided by the IDP."
+														description_kind: "markdown"
+														required:         true
+													}
+													name_by_idp: {
+														type: ["map", "string"]
+														description:      "A mapping from IdP ID to claim name."
+														description_kind: "markdown"
+														optional:         true
+													}
+												}
+												description_kind: "plain"
+											}
+											min_items: 1
+											max_items: 1
+										}
+										description:      "Custom claim mapped from IDPs."
+										description_kind: "markdown"
+									}
+								}
+								hybrid_and_implicit_options: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											return_access_token_from_authorization_endpoint: {
+												type:             "bool"
+												description:      "If true, the authorization endpoint will return an access token."
+												description_kind: "markdown"
+												optional:         true
+											}
+											return_id_token_from_authorization_endpoint: {
+												type:             "bool"
+												description:      "If true, the authorization endpoint will return an id token."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Hybrid and Implicit Flow options."
+										description_kind: "markdown"
+									}
+									max_items: 1
+								}
+								refresh_token_options: {
+									nesting_mode: "list"
+									block: {
+										attributes: lifetime: {
+											type:             "string"
+											description:      "How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m."
+											description_kind: "markdown"
+											optional:         true
+										}
+										description:      "Refresh token grant options."
+										description_kind: "markdown"
+									}
+								}
+							}
+							description:      "SaaS configuration for the Access Application."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					scim_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								deactivate_on_delete: {
+									type:             "bool"
+									description:      "If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations."
+									description_kind: "markdown"
+									optional:         true
+								}
+								enabled: {
+									type:             "bool"
+									description:      "Whether SCIM provisioning is turned on for this application."
+									description_kind: "markdown"
+									optional:         true
+								}
+								idp_uid: {
+									type:             "string"
+									description:      "The UID of the IdP to use as the source for SCIM resources to provision to this application."
+									description_kind: "markdown"
+									required:         true
+								}
+								remote_uri: {
+									type:             "string"
+									description:      "The base URI for the application's SCIM-compatible API."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							block_types: {
+								authentication: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											authorization_url: {
+												type:             "string"
+												description:      "URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											client_id: {
+												type:             "string"
+												description:      "Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											client_secret: {
+												type:             "string"
+												description:      "Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											password: {
+												type:             "string"
+												description:      "Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											scheme: {
+												type:             "string"
+												description:      "The authentication scheme to use when making SCIM requests to this application."
+												description_kind: "markdown"
+												required:         true
+											}
+											scopes: {
+												type: ["set", "string"]
+												description:      "The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											token: {
+												type:             "string"
+												description:      "Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											token_url: {
+												type:             "string"
+												description:      "URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											user: {
+												type:             "string"
+												description:      "User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application."
+										description_kind: "markdown"
+									}
+									max_items: 1
+								}
+								mappings: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											enabled: {
+												type:             "bool"
+												description:      "Whether or not this mapping is enabled."
+												description_kind: "markdown"
+												optional:         true
+											}
+											filter: {
+												type:             "string"
+												description:      "A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application."
+												description_kind: "markdown"
+												optional:         true
+											}
+											schema: {
+												type:             "string"
+												description:      "Which SCIM resource type this mapping applies to."
+												description_kind: "markdown"
+												required:         true
+											}
+											transform_jsonata: {
+												type:             "string"
+												description:      "A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										block_types: operations: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													create: {
+														type:             "bool"
+														description:      "Whether or not this mapping applies to create (POST) operations."
+														description_kind: "markdown"
+														optional:         true
+													}
+													delete: {
+														type:             "bool"
+														description:      "Whether or not this mapping applies to DELETE operations."
+														description_kind: "markdown"
+														optional:         true
+													}
+													update: {
+														type:             "bool"
+														description:      "Whether or not this mapping applies to update (PATCH/PUT) operations."
+														description_kind: "markdown"
+														optional:         true
+													}
+												}
+												description:      "Whether or not this mapping applies to creates, updates, or deletes."
+												description_kind: "markdown"
+											}
+											max_items: 1
+										}
+										description:      "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned."
+										description_kind: "markdown"
+									}
+								}
+							}
+							description:      "Configuration for provisioning to this application via SCIM. This is currently in closed beta."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					target_criteria: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								port: {
+									type:             "number"
+									description:      "The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols."
+									description_kind: "markdown"
+									required:         true
+								}
+								protocol: {
+									type:             "string"
+									description:      "The communication protocol your application secures."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							block_types: target_attributes: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										name: {
+											type:             "string"
+											description:      "The key of the attribute."
+											description_kind: "markdown"
+											required:         true
+										}
+										values: {
+											type: ["list", "string"]
+											description:      "The values of the attribute."
+											description_kind: "markdown"
+											required:         true
+										}
+									}
+									description:      "Contains a map of target attribute keys to target attribute values."
+									description_kind: "markdown"
+								}
+								min_items: 1
+							}
+							description:      "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned."
+							description_kind: "markdown"
+						}
+					}
+				}
+				description: """
+					Provides a Cloudflare Access Application resource. Access
+					Applications are used to restrict access to a whole application using an
+					authorisation gateway managed by Cloudflare.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_access_custom_page: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+					app_count: {
+						type:             "number"
+						description:      "Number of apps to display on the custom page."
+						description_kind: "markdown"
+						optional:         true
+					}
+					custom_html: {
+						type:             "string"
+						description:      "Custom HTML to display on the custom page."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Friendly name of the Access Custom Page configuration."
+						description_kind: "markdown"
+						required:         true
+					}
+					type: {
+						type:             "string"
+						description:      "Type of Access custom page to create. Available values: `identity_denied`, `forbidden`."
+						description_kind: "markdown"
+						required:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				description: """
+					Provides a resource to customize the pages your end users will see
+					when trying to reach applications behind Cloudflare Access.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_access_group: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource. Conflicts with `account_id`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: {
+					exclude: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								any_valid_service_token: {
+									type:             "bool"
+									description:      "Matches any valid Access service token."
+									description_kind: "markdown"
+									optional:         true
+								}
+								auth_method: {
+									type:             "string"
+									description:      "The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types."
+									description_kind: "markdown"
+									optional:         true
+								}
+								certificate: {
+									type:             "bool"
+									description:      "Matches any valid client certificate."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_name: {
+									type:             "string"
+									description:      "Matches a valid client certificate common name."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_names: {
+									type: ["list", "string"]
+									description:      "Overflow field if you need to have multiple common_name rules in a single policy.  Use in place of the singular common_name field."
+									description_kind: "markdown"
+									optional:         true
+								}
+								device_posture: {
+									type: ["list", "string"]
+									description:      "The ID of a device posture integration."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email: {
+									type: ["list", "string"]
+									description:      "The email of the user."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_domain: {
+									type: ["list", "string"]
+									description:      "The email domain to match."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created email list."
+									description_kind: "markdown"
+									optional:         true
+								}
+								everyone: {
+									type:             "bool"
+									description:      "Matches everyone."
+									description_kind: "markdown"
+									optional:         true
+								}
+								geo: {
+									type: ["list", "string"]
+									description:      "Matches a specific country."
+									description_kind: "markdown"
+									optional:         true
+								}
+								group: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created Access group."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ip: {
+									type: ["list", "string"]
+									description:      "An IPv4 or IPv6 CIDR block."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ip_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created IP list."
+									description_kind: "markdown"
+									optional:         true
+								}
+								login_method: {
+									type: ["list", "string"]
+									description:      "The ID of a configured identity provider."
+									description_kind: "markdown"
+									optional:         true
+								}
+								service_token: {
+									type: ["list", "string"]
+									description:      "The ID of an Access service token."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							block_types: {
+								auth_context: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											ac_id: {
+												type:             "string"
+												description:      "The ACID of the Authentication Context."
+												description_kind: "markdown"
+												required:         true
+											}
+											id: {
+												type:             "string"
+												description:      "The ID of the Authentication Context."
+												description_kind: "markdown"
+												required:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of the Azure identity provider."
+												description_kind: "markdown"
+												required:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								azure: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											id: {
+												type: ["list", "string"]
+												description:      "The ID of the Azure group or user."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of the Azure identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches an Azure group. Requires an Azure identity provider."
+										description_kind: "markdown"
+									}
+								}
+								external_evaluation: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											evaluate_url: {
+												type:             "string"
+												description:      "The API endpoint containing your business logic."
+												description_kind: "markdown"
+												optional:         true
+											}
+											keys_url: {
+												type:             "string"
+												description:      "The API endpoint containing the key that Access uses to verify that the response came from your API."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/."
+										description_kind: "markdown"
+									}
+								}
+								github: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Github identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+											name: {
+												type:             "string"
+												description:      "The name of the organization."
+												description_kind: "markdown"
+												optional:         true
+											}
+											teams: {
+												type: ["list", "string"]
+												description:      "The teams that should be matched."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a Github organization. Requires a Github identity provider."
+										description_kind: "markdown"
+									}
+								}
+								gsuite: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											email: {
+												type: ["list", "string"]
+												description:      "The email of the Google Workspace group."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Google Workspace identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a group in Google Workspace. Requires a Google Workspace identity provider."
+										description_kind: "markdown"
+									}
+								}
+								okta: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Okta identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+											name: {
+												type: ["list", "string"]
+												description:      "The name of the Okta Group."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches an Okta group. Requires an Okta identity provider."
+										description_kind: "markdown"
+									}
+								}
+								saml: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											attribute_name: {
+												type:             "string"
+												description:      "The name of the SAML attribute."
+												description_kind: "markdown"
+												optional:         true
+											}
+											attribute_value: {
+												type:             "string"
+												description:      "The SAML attribute value to look for."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your SAML identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a SAML group. Requires a SAML identity provider."
+										description_kind: "markdown"
+									}
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					include: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								any_valid_service_token: {
+									type:             "bool"
+									description:      "Matches any valid Access service token."
+									description_kind: "markdown"
+									optional:         true
+								}
+								auth_method: {
+									type:             "string"
+									description:      "The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types."
+									description_kind: "markdown"
+									optional:         true
+								}
+								certificate: {
+									type:             "bool"
+									description:      "Matches any valid client certificate."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_name: {
+									type:             "string"
+									description:      "Matches a valid client certificate common name."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_names: {
+									type: ["list", "string"]
+									description:      "Overflow field if you need to have multiple common_name rules in a single policy.  Use in place of the singular common_name field."
+									description_kind: "markdown"
+									optional:         true
+								}
+								device_posture: {
+									type: ["list", "string"]
+									description:      "The ID of a device posture integration."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email: {
+									type: ["list", "string"]
+									description:      "The email of the user."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_domain: {
+									type: ["list", "string"]
+									description:      "The email domain to match."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created email list."
+									description_kind: "markdown"
+									optional:         true
+								}
+								everyone: {
+									type:             "bool"
+									description:      "Matches everyone."
+									description_kind: "markdown"
+									optional:         true
+								}
+								geo: {
+									type: ["list", "string"]
+									description:      "Matches a specific country."
+									description_kind: "markdown"
+									optional:         true
+								}
+								group: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created Access group."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ip: {
+									type: ["list", "string"]
+									description:      "An IPv4 or IPv6 CIDR block."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ip_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created IP list."
+									description_kind: "markdown"
+									optional:         true
+								}
+								login_method: {
+									type: ["list", "string"]
+									description:      "The ID of a configured identity provider."
+									description_kind: "markdown"
+									optional:         true
+								}
+								service_token: {
+									type: ["list", "string"]
+									description:      "The ID of an Access service token."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							block_types: {
+								auth_context: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											ac_id: {
+												type:             "string"
+												description:      "The ACID of the Authentication Context."
+												description_kind: "markdown"
+												required:         true
+											}
+											id: {
+												type:             "string"
+												description:      "The ID of the Authentication Context."
+												description_kind: "markdown"
+												required:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of the Azure identity provider."
+												description_kind: "markdown"
+												required:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								azure: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											id: {
+												type: ["list", "string"]
+												description:      "The ID of the Azure group or user."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of the Azure identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches an Azure group. Requires an Azure identity provider."
+										description_kind: "markdown"
+									}
+								}
+								external_evaluation: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											evaluate_url: {
+												type:             "string"
+												description:      "The API endpoint containing your business logic."
+												description_kind: "markdown"
+												optional:         true
+											}
+											keys_url: {
+												type:             "string"
+												description:      "The API endpoint containing the key that Access uses to verify that the response came from your API."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/."
+										description_kind: "markdown"
+									}
+								}
+								github: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Github identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+											name: {
+												type:             "string"
+												description:      "The name of the organization."
+												description_kind: "markdown"
+												optional:         true
+											}
+											teams: {
+												type: ["list", "string"]
+												description:      "The teams that should be matched."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a Github organization. Requires a Github identity provider."
+										description_kind: "markdown"
+									}
+								}
+								gsuite: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											email: {
+												type: ["list", "string"]
+												description:      "The email of the Google Workspace group."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Google Workspace identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a group in Google Workspace. Requires a Google Workspace identity provider."
+										description_kind: "markdown"
+									}
+								}
+								okta: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Okta identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+											name: {
+												type: ["list", "string"]
+												description:      "The name of the Okta Group."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches an Okta group. Requires an Okta identity provider."
+										description_kind: "markdown"
+									}
+								}
+								saml: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											attribute_name: {
+												type:             "string"
+												description:      "The name of the SAML attribute."
+												description_kind: "markdown"
+												optional:         true
+											}
+											attribute_value: {
+												type:             "string"
+												description:      "The SAML attribute value to look for."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your SAML identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a SAML group. Requires a SAML identity provider."
+										description_kind: "markdown"
+									}
+								}
+							}
+							description_kind: "plain"
+						}
+						min_items: 1
+					}
+					require: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								any_valid_service_token: {
+									type:             "bool"
+									description:      "Matches any valid Access service token."
+									description_kind: "markdown"
+									optional:         true
+								}
+								auth_method: {
+									type:             "string"
+									description:      "The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types."
+									description_kind: "markdown"
+									optional:         true
+								}
+								certificate: {
+									type:             "bool"
+									description:      "Matches any valid client certificate."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_name: {
+									type:             "string"
+									description:      "Matches a valid client certificate common name."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_names: {
+									type: ["list", "string"]
+									description:      "Overflow field if you need to have multiple common_name rules in a single policy.  Use in place of the singular common_name field."
+									description_kind: "markdown"
+									optional:         true
+								}
+								device_posture: {
+									type: ["list", "string"]
+									description:      "The ID of a device posture integration."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email: {
+									type: ["list", "string"]
+									description:      "The email of the user."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_domain: {
+									type: ["list", "string"]
+									description:      "The email domain to match."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created email list."
+									description_kind: "markdown"
+									optional:         true
+								}
+								everyone: {
+									type:             "bool"
+									description:      "Matches everyone."
+									description_kind: "markdown"
+									optional:         true
+								}
+								geo: {
+									type: ["list", "string"]
+									description:      "Matches a specific country."
+									description_kind: "markdown"
+									optional:         true
+								}
+								group: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created Access group."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ip: {
+									type: ["list", "string"]
+									description:      "An IPv4 or IPv6 CIDR block."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ip_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created IP list."
+									description_kind: "markdown"
+									optional:         true
+								}
+								login_method: {
+									type: ["list", "string"]
+									description:      "The ID of a configured identity provider."
+									description_kind: "markdown"
+									optional:         true
+								}
+								service_token: {
+									type: ["list", "string"]
+									description:      "The ID of an Access service token."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							block_types: {
+								auth_context: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											ac_id: {
+												type:             "string"
+												description:      "The ACID of the Authentication Context."
+												description_kind: "markdown"
+												required:         true
+											}
+											id: {
+												type:             "string"
+												description:      "The ID of the Authentication Context."
+												description_kind: "markdown"
+												required:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of the Azure identity provider."
+												description_kind: "markdown"
+												required:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								azure: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											id: {
+												type: ["list", "string"]
+												description:      "The ID of the Azure group or user."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of the Azure identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches an Azure group. Requires an Azure identity provider."
+										description_kind: "markdown"
+									}
+								}
+								external_evaluation: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											evaluate_url: {
+												type:             "string"
+												description:      "The API endpoint containing your business logic."
+												description_kind: "markdown"
+												optional:         true
+											}
+											keys_url: {
+												type:             "string"
+												description:      "The API endpoint containing the key that Access uses to verify that the response came from your API."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/."
+										description_kind: "markdown"
+									}
+								}
+								github: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Github identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+											name: {
+												type:             "string"
+												description:      "The name of the organization."
+												description_kind: "markdown"
+												optional:         true
+											}
+											teams: {
+												type: ["list", "string"]
+												description:      "The teams that should be matched."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a Github organization. Requires a Github identity provider."
+										description_kind: "markdown"
+									}
+								}
+								gsuite: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											email: {
+												type: ["list", "string"]
+												description:      "The email of the Google Workspace group."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Google Workspace identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a group in Google Workspace. Requires a Google Workspace identity provider."
+										description_kind: "markdown"
+									}
+								}
+								okta: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Okta identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+											name: {
+												type: ["list", "string"]
+												description:      "The name of the Okta Group."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches an Okta group. Requires an Okta identity provider."
+										description_kind: "markdown"
+									}
+								}
+								saml: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											attribute_name: {
+												type:             "string"
+												description:      "The name of the SAML attribute."
+												description_kind: "markdown"
+												optional:         true
+											}
+											attribute_value: {
+												type:             "string"
+												description:      "The SAML attribute value to look for."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your SAML identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a SAML group. Requires a SAML identity provider."
+										description_kind: "markdown"
+									}
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description: """
+					Provides a Cloudflare Access Group resource. Access Groups are used
+					in conjunction with Access Policies to restrict access to a
+					particular resource based on group membership.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_access_identity_provider: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Friendly name of the Access Identity Provider configuration."
+						description_kind: "markdown"
+						required:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`."
+						description_kind: "markdown"
+						required:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				block_types: {
+					config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								api_token: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								apps_domain: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								attributes: {
+									type: ["list", "string"]
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								auth_url: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								authorization_server_id: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								centrify_account: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								centrify_app_id: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								certs_url: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								claims: {
+									type: ["list", "string"]
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								client_id: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								client_secret: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								conditional_access_enabled: {
+									type:             "bool"
+									description_kind: "plain"
+									optional:         true
+								}
+								directory_id: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								email_attribute_name: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								email_claim_name: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								idp_public_cert: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								issuer_url: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								okta_account: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								onelogin_account: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								ping_env_id: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								pkce_enabled: {
+									type:             "bool"
+									description_kind: "plain"
+									optional:         true
+								}
+								redirect_url: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								scopes: {
+									type: ["list", "string"]
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								sign_request: {
+									type:             "bool"
+									description_kind: "plain"
+									optional:         true
+								}
+								sso_target_url: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								support_groups: {
+									type:             "bool"
+									description_kind: "plain"
+									optional:         true
+								}
+								token_url: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/)."
+							description_kind: "markdown"
+						}
+					}
+					scim_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								enabled: {
+									type:             "bool"
+									description_kind: "plain"
+									optional:         true
+								}
+								group_member_deprovision: {
+									type:             "bool"
+									description_kind: "plain"
+									optional:         true
+								}
+								seat_deprovision: {
+									type:             "bool"
+									description_kind: "plain"
+									optional:         true
+								}
+								secret: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+									sensitive:        true
+								}
+								user_deprovision: {
+									type:             "bool"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "Configuration for SCIM settings for a given IDP."
+							description_kind: "markdown"
+						}
+					}
+				}
+				description: """
+					Provides a Cloudflare Access Identity Provider resource. Identity
+					Providers are used as an authentication or authorisation source
+					within Access.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_access_mtls_certificate: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. Conflicts with `zone_id`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					associated_hostnames: {
+						type: ["set", "string"]
+						description:      "The hostnames that will be prompted for this certificate."
+						description_kind: "markdown"
+						optional:         true
+					}
+					certificate: {
+						type:             "string"
+						description:      "The Root CA for your certificates."
+						description_kind: "markdown"
+						optional:         true
+					}
+					fingerprint: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the certificate."
+						description_kind: "markdown"
+						required:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource. Conflicts with `account_id`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				description: """
+					Provides a Cloudflare Access Mutual TLS Certificate resource.
+					Mutual TLS authentication ensures that the traffic is secure and
+					trusted in both directions between a client and server and can be
+					 used with Access to only allows requests from devices with a
+					 corresponding client certificate.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_access_mtls_hostname_settings: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "plain"
+						optional:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: settings: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							china_network: {
+								type:             "bool"
+								description:      "Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled."
+								description_kind: "plain"
+								optional:         true
+							}
+							client_certificate_forwarding: {
+								type:             "bool"
+								description:      "Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin."
+								description_kind: "plain"
+								optional:         true
+							}
+							hostname: {
+								type:             "string"
+								description:      "The hostname that these settings apply to."
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description:      "Provides a Cloudflare Access Mutual TLS Certificate Settings resource."
+				description_kind: "plain"
+			}
+		}
+		cloudflare_zero_trust_access_organization: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. Conflicts with `zone_id`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					allow_authenticate_via_warp: {
+						type:             "bool"
+						description:      "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value."
+						description_kind: "markdown"
+						optional:         true
+					}
+					auth_domain: {
+						type:             "string"
+						description:      "The unique subdomain assigned to your Zero Trust organization."
+						description_kind: "markdown"
+						required:         true
+					}
+					auto_redirect_to_identity: {
+						type:             "bool"
+						description:      "When set to true, users skip the identity provider selection step during login."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					is_ui_read_only: {
+						type:             "bool"
+						description:      "When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard."
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of your Zero Trust organization."
+						description_kind: "markdown"
+						required:         true
+					}
+					session_duration: {
+						type:             "string"
+						description:      "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					ui_read_only_toggle_reason: {
+						type:             "string"
+						description:      "A description of the reason why the UI read only field is being toggled."
+						description_kind: "markdown"
+						optional:         true
+					}
+					user_seat_expiration_inactive_time: {
+						type:             "string"
+						description:      "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					warp_auth_session_duration: {
+						type:             "string"
+						description:      "The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h."
+						description_kind: "markdown"
+						optional:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource. Conflicts with `account_id`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: {
+					custom_pages: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								forbidden: {
+									type:             "string"
+									description:      "The id of the forbidden page."
+									description_kind: "markdown"
+									optional:         true
+								}
+								identity_denied: {
+									type:             "string"
+									description:      "The id of the identity denied page."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							description:      "Custom pages for your Zero Trust organization."
+							description_kind: "markdown"
+						}
+					}
+					login_design: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								background_color: {
+									type:             "string"
+									description:      "The background color on the login page."
+									description_kind: "markdown"
+									optional:         true
+								}
+								footer_text: {
+									type:             "string"
+									description:      "The text at the bottom of the login page."
+									description_kind: "markdown"
+									optional:         true
+								}
+								header_text: {
+									type:             "string"
+									description:      "The text at the top of the login page."
+									description_kind: "markdown"
+									optional:         true
+								}
+								logo_path: {
+									type:             "string"
+									description:      "The URL of the logo on the login page."
+									description_kind: "markdown"
+									optional:         true
+								}
+								text_color: {
+									type:             "string"
+									description:      "The text color on the login page."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description: """
+					A Zero Trust organization defines the user login experience.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_access_policy: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. Conflicts with `zone_id`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					application_id: {
+						type:             "string"
+						description:      "The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+					approval_required: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+					}
+					decision: {
+						type:             "string"
+						description:      "Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					isolation_required: {
+						type:             "bool"
+						description:      "Require this application to be served in an isolated browser for users matching this policy."
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Friendly name of the Access Policy."
+						description_kind: "markdown"
+						required:         true
+					}
+					precedence: {
+						type:             "number"
+						description:      "The unique precedence for policies on a single application. Required when using `application_id`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					purpose_justification_prompt: {
+						type:             "string"
+						description:      "The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					purpose_justification_required: {
+						type:             "bool"
+						description:      "Whether to prompt the user for a justification for accessing the resource."
+						description_kind: "markdown"
+						optional:         true
+					}
+					session_duration: {
+						type:             "string"
+						description:      "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource. Conflicts with `account_id`."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				block_types: {
+					approval_group: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								approvals_needed: {
+									type:             "number"
+									description:      "Number of approvals needed."
+									description_kind: "markdown"
+									required:         true
+								}
+								email_addresses: {
+									type: ["list", "string"]
+									description:      "List of emails to request approval from."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_list_uuid: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					connection_rules: {
+						nesting_mode: "list"
+						block: {
+							block_types: ssh: {
+								nesting_mode: "list"
+								block: {
+									attributes: usernames: {
+										type: ["list", "string"]
+										description:      "Contains the Unix usernames that may be used when connecting over SSH."
+										description_kind: "markdown"
+										required:         true
+									}
+									description:      "The SSH-specific rules that define how users may connect to the targets secured by your application."
+									description_kind: "markdown"
+								}
+								min_items: 1
+								max_items: 1
+							}
+							description:      "The rules that define how users may connect to the targets secured by your application."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					exclude: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								any_valid_service_token: {
+									type:             "bool"
+									description:      "Matches any valid Access service token."
+									description_kind: "markdown"
+									optional:         true
+								}
+								auth_method: {
+									type:             "string"
+									description:      "The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types."
+									description_kind: "markdown"
+									optional:         true
+								}
+								certificate: {
+									type:             "bool"
+									description:      "Matches any valid client certificate."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_name: {
+									type:             "string"
+									description:      "Matches a valid client certificate common name."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_names: {
+									type: ["list", "string"]
+									description:      "Overflow field if you need to have multiple common_name rules in a single policy.  Use in place of the singular common_name field."
+									description_kind: "markdown"
+									optional:         true
+								}
+								device_posture: {
+									type: ["list", "string"]
+									description:      "The ID of a device posture integration."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email: {
+									type: ["list", "string"]
+									description:      "The email of the user."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_domain: {
+									type: ["list", "string"]
+									description:      "The email domain to match."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created email list."
+									description_kind: "markdown"
+									optional:         true
+								}
+								everyone: {
+									type:             "bool"
+									description:      "Matches everyone."
+									description_kind: "markdown"
+									optional:         true
+								}
+								geo: {
+									type: ["list", "string"]
+									description:      "Matches a specific country."
+									description_kind: "markdown"
+									optional:         true
+								}
+								group: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created Access group."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ip: {
+									type: ["list", "string"]
+									description:      "An IPv4 or IPv6 CIDR block."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ip_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created IP list."
+									description_kind: "markdown"
+									optional:         true
+								}
+								login_method: {
+									type: ["list", "string"]
+									description:      "The ID of a configured identity provider."
+									description_kind: "markdown"
+									optional:         true
+								}
+								service_token: {
+									type: ["list", "string"]
+									description:      "The ID of an Access service token."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							block_types: {
+								auth_context: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											ac_id: {
+												type:             "string"
+												description:      "The ACID of the Authentication Context."
+												description_kind: "markdown"
+												required:         true
+											}
+											id: {
+												type:             "string"
+												description:      "The ID of the Authentication Context."
+												description_kind: "markdown"
+												required:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of the Azure identity provider."
+												description_kind: "markdown"
+												required:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								azure: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											id: {
+												type: ["list", "string"]
+												description:      "The ID of the Azure group or user."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of the Azure identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches an Azure group. Requires an Azure identity provider."
+										description_kind: "markdown"
+									}
+								}
+								external_evaluation: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											evaluate_url: {
+												type:             "string"
+												description:      "The API endpoint containing your business logic."
+												description_kind: "markdown"
+												optional:         true
+											}
+											keys_url: {
+												type:             "string"
+												description:      "The API endpoint containing the key that Access uses to verify that the response came from your API."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/."
+										description_kind: "markdown"
+									}
+								}
+								github: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Github identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+											name: {
+												type:             "string"
+												description:      "The name of the organization."
+												description_kind: "markdown"
+												optional:         true
+											}
+											teams: {
+												type: ["list", "string"]
+												description:      "The teams that should be matched."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a Github organization. Requires a Github identity provider."
+										description_kind: "markdown"
+									}
+								}
+								gsuite: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											email: {
+												type: ["list", "string"]
+												description:      "The email of the Google Workspace group."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Google Workspace identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a group in Google Workspace. Requires a Google Workspace identity provider."
+										description_kind: "markdown"
+									}
+								}
+								okta: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Okta identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+											name: {
+												type: ["list", "string"]
+												description:      "The name of the Okta Group."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches an Okta group. Requires an Okta identity provider."
+										description_kind: "markdown"
+									}
+								}
+								saml: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											attribute_name: {
+												type:             "string"
+												description:      "The name of the SAML attribute."
+												description_kind: "markdown"
+												optional:         true
+											}
+											attribute_value: {
+												type:             "string"
+												description:      "The SAML attribute value to look for."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your SAML identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a SAML group. Requires a SAML identity provider."
+										description_kind: "markdown"
+									}
+								}
+							}
+							description:      "A series of access conditions, see [Access Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions)."
+							description_kind: "markdown"
+						}
+					}
+					include: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								any_valid_service_token: {
+									type:             "bool"
+									description:      "Matches any valid Access service token."
+									description_kind: "markdown"
+									optional:         true
+								}
+								auth_method: {
+									type:             "string"
+									description:      "The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types."
+									description_kind: "markdown"
+									optional:         true
+								}
+								certificate: {
+									type:             "bool"
+									description:      "Matches any valid client certificate."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_name: {
+									type:             "string"
+									description:      "Matches a valid client certificate common name."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_names: {
+									type: ["list", "string"]
+									description:      "Overflow field if you need to have multiple common_name rules in a single policy.  Use in place of the singular common_name field."
+									description_kind: "markdown"
+									optional:         true
+								}
+								device_posture: {
+									type: ["list", "string"]
+									description:      "The ID of a device posture integration."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email: {
+									type: ["list", "string"]
+									description:      "The email of the user."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_domain: {
+									type: ["list", "string"]
+									description:      "The email domain to match."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created email list."
+									description_kind: "markdown"
+									optional:         true
+								}
+								everyone: {
+									type:             "bool"
+									description:      "Matches everyone."
+									description_kind: "markdown"
+									optional:         true
+								}
+								geo: {
+									type: ["list", "string"]
+									description:      "Matches a specific country."
+									description_kind: "markdown"
+									optional:         true
+								}
+								group: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created Access group."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ip: {
+									type: ["list", "string"]
+									description:      "An IPv4 or IPv6 CIDR block."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ip_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created IP list."
+									description_kind: "markdown"
+									optional:         true
+								}
+								login_method: {
+									type: ["list", "string"]
+									description:      "The ID of a configured identity provider."
+									description_kind: "markdown"
+									optional:         true
+								}
+								service_token: {
+									type: ["list", "string"]
+									description:      "The ID of an Access service token."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							block_types: {
+								auth_context: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											ac_id: {
+												type:             "string"
+												description:      "The ACID of the Authentication Context."
+												description_kind: "markdown"
+												required:         true
+											}
+											id: {
+												type:             "string"
+												description:      "The ID of the Authentication Context."
+												description_kind: "markdown"
+												required:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of the Azure identity provider."
+												description_kind: "markdown"
+												required:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								azure: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											id: {
+												type: ["list", "string"]
+												description:      "The ID of the Azure group or user."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of the Azure identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches an Azure group. Requires an Azure identity provider."
+										description_kind: "markdown"
+									}
+								}
+								external_evaluation: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											evaluate_url: {
+												type:             "string"
+												description:      "The API endpoint containing your business logic."
+												description_kind: "markdown"
+												optional:         true
+											}
+											keys_url: {
+												type:             "string"
+												description:      "The API endpoint containing the key that Access uses to verify that the response came from your API."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/."
+										description_kind: "markdown"
+									}
+								}
+								github: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Github identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+											name: {
+												type:             "string"
+												description:      "The name of the organization."
+												description_kind: "markdown"
+												optional:         true
+											}
+											teams: {
+												type: ["list", "string"]
+												description:      "The teams that should be matched."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a Github organization. Requires a Github identity provider."
+										description_kind: "markdown"
+									}
+								}
+								gsuite: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											email: {
+												type: ["list", "string"]
+												description:      "The email of the Google Workspace group."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Google Workspace identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a group in Google Workspace. Requires a Google Workspace identity provider."
+										description_kind: "markdown"
+									}
+								}
+								okta: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Okta identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+											name: {
+												type: ["list", "string"]
+												description:      "The name of the Okta Group."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches an Okta group. Requires an Okta identity provider."
+										description_kind: "markdown"
+									}
+								}
+								saml: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											attribute_name: {
+												type:             "string"
+												description:      "The name of the SAML attribute."
+												description_kind: "markdown"
+												optional:         true
+											}
+											attribute_value: {
+												type:             "string"
+												description:      "The SAML attribute value to look for."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your SAML identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a SAML group. Requires a SAML identity provider."
+										description_kind: "markdown"
+									}
+								}
+							}
+							description:      "A series of access conditions, see [Access Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions)."
+							description_kind: "markdown"
+						}
+						min_items: 1
+					}
+					require: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								any_valid_service_token: {
+									type:             "bool"
+									description:      "Matches any valid Access service token."
+									description_kind: "markdown"
+									optional:         true
+								}
+								auth_method: {
+									type:             "string"
+									description:      "The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types."
+									description_kind: "markdown"
+									optional:         true
+								}
+								certificate: {
+									type:             "bool"
+									description:      "Matches any valid client certificate."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_name: {
+									type:             "string"
+									description:      "Matches a valid client certificate common name."
+									description_kind: "markdown"
+									optional:         true
+								}
+								common_names: {
+									type: ["list", "string"]
+									description:      "Overflow field if you need to have multiple common_name rules in a single policy.  Use in place of the singular common_name field."
+									description_kind: "markdown"
+									optional:         true
+								}
+								device_posture: {
+									type: ["list", "string"]
+									description:      "The ID of a device posture integration."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email: {
+									type: ["list", "string"]
+									description:      "The email of the user."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_domain: {
+									type: ["list", "string"]
+									description:      "The email domain to match."
+									description_kind: "markdown"
+									optional:         true
+								}
+								email_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created email list."
+									description_kind: "markdown"
+									optional:         true
+								}
+								everyone: {
+									type:             "bool"
+									description:      "Matches everyone."
+									description_kind: "markdown"
+									optional:         true
+								}
+								geo: {
+									type: ["list", "string"]
+									description:      "Matches a specific country."
+									description_kind: "markdown"
+									optional:         true
+								}
+								group: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created Access group."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ip: {
+									type: ["list", "string"]
+									description:      "An IPv4 or IPv6 CIDR block."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ip_list: {
+									type: ["list", "string"]
+									description:      "The ID of a previously created IP list."
+									description_kind: "markdown"
+									optional:         true
+								}
+								login_method: {
+									type: ["list", "string"]
+									description:      "The ID of a configured identity provider."
+									description_kind: "markdown"
+									optional:         true
+								}
+								service_token: {
+									type: ["list", "string"]
+									description:      "The ID of an Access service token."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							block_types: {
+								auth_context: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											ac_id: {
+												type:             "string"
+												description:      "The ACID of the Authentication Context."
+												description_kind: "markdown"
+												required:         true
+											}
+											id: {
+												type:             "string"
+												description:      "The ID of the Authentication Context."
+												description_kind: "markdown"
+												required:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of the Azure identity provider."
+												description_kind: "markdown"
+												required:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								azure: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											id: {
+												type: ["list", "string"]
+												description:      "The ID of the Azure group or user."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of the Azure identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches an Azure group. Requires an Azure identity provider."
+										description_kind: "markdown"
+									}
+								}
+								external_evaluation: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											evaluate_url: {
+												type:             "string"
+												description:      "The API endpoint containing your business logic."
+												description_kind: "markdown"
+												optional:         true
+											}
+											keys_url: {
+												type:             "string"
+												description:      "The API endpoint containing the key that Access uses to verify that the response came from your API."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/."
+										description_kind: "markdown"
+									}
+								}
+								github: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Github identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+											name: {
+												type:             "string"
+												description:      "The name of the organization."
+												description_kind: "markdown"
+												optional:         true
+											}
+											teams: {
+												type: ["list", "string"]
+												description:      "The teams that should be matched."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a Github organization. Requires a Github identity provider."
+										description_kind: "markdown"
+									}
+								}
+								gsuite: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											email: {
+												type: ["list", "string"]
+												description:      "The email of the Google Workspace group."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Google Workspace identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a group in Google Workspace. Requires a Google Workspace identity provider."
+										description_kind: "markdown"
+									}
+								}
+								okta: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your Okta identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+											name: {
+												type: ["list", "string"]
+												description:      "The name of the Okta Group."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches an Okta group. Requires an Okta identity provider."
+										description_kind: "markdown"
+									}
+								}
+								saml: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											attribute_name: {
+												type:             "string"
+												description:      "The name of the SAML attribute."
+												description_kind: "markdown"
+												optional:         true
+											}
+											attribute_value: {
+												type:             "string"
+												description:      "The SAML attribute value to look for."
+												description_kind: "markdown"
+												optional:         true
+											}
+											identity_provider_id: {
+												type:             "string"
+												description:      "The ID of your SAML identity provider."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										description:      "Matches a SAML group. Requires a SAML identity provider."
+										description_kind: "markdown"
+									}
+								}
+							}
+							description:      "A series of access conditions, see [Access Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions)."
+							description_kind: "markdown"
+						}
+					}
+				}
+				description: """
+					Provides a Cloudflare Access Policy resource. Access Policies are
+					used in conjunction with Access Applications to restrict access to
+					a particular resource.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_access_service_token: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. Conflicts with `zone_id`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					client_id: {
+						type:             "string"
+						description:      "Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						computed:         true
+					}
+					client_secret: {
+						type:             "string"
+						description:      "A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						computed:         true
+						sensitive:        true
+					}
+					duration: {
+						type:             "string"
+						description:      "Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					expires_at: {
+						type:             "string"
+						description:      "Date when the token expires."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					min_days_for_renewal: {
+						type:             "number"
+						description:      "Refresh the token if terraform is run within the specified amount of days before expiration. Defaults to `0`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Friendly name of the token's intent."
+						description_kind: "markdown"
+						required:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource. Conflicts with `account_id`."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				description: """
+					Access Service Tokens are used for service-to-service communication
+					when an application is behind Cloudflare Access.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_access_short_lived_certificate: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. Conflicts with `zone_id`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					application_id: {
+						type:             "string"
+						description:      "The Access Application ID to associate with the CA certificate."
+						description_kind: "markdown"
+						required:         true
+					}
+					aud: {
+						type:             "string"
+						description:      "Application Audience (AUD) Tag of the CA certificate."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					public_key: {
+						type:             "string"
+						description:      "Cryptographic public key of the generated CA certificate."
+						description_kind: "markdown"
+						computed:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource. Conflicts with `account_id`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				description: """
+					Cloudflare Access can replace traditional SSH key models with
+					short-lived certificates issued to your users based on the token
+					generated by their Access login.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_access_tag: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+					app_count: {
+						type:             "number"
+						description:      "Number of apps associated with the tag."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Friendly name of the Access Tag."
+						description_kind: "markdown"
+						required:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				description: """
+					Provides a resource to customize the pages your end users will see
+					when trying to reach applications behind Cloudflare Access.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_device_certificates: {
+			version: 0
+			block: {
+				attributes: {
+					enabled: {
+						type:             "bool"
+						description:      "`true` if certificate generation is enabled."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description: """
+					Provides a Cloudflare device policy certificates resource. Device
+					policy certificate resources enable client device certificate
+					generation.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_device_managed_networks: {
 			version: 0
 			block: {
 				attributes: {
@@ -13114,14 +19274,2762 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						optional:         true
 						computed:         true
 					}
-					title: {
+					name: {
 						type:             "string"
-						description:      "Title value of the Worker KV Namespace."
+						description:      "The name of the Device Managed Network. Must be unique."
+						description_kind: "markdown"
+						required:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The type of Device Managed Network. Available values: `tls`."
 						description_kind: "markdown"
 						required:         true
 					}
 				}
-				description:      "Provides the ability to manage Cloudflare Workers KV Namespace features."
+				block_types: config: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							sha256: {
+								type:             "string"
+								description:      "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate."
+								description_kind: "markdown"
+								required:         true
+							}
+							tls_sockaddr: {
+								type:             "string"
+								description:      "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host."
+								description_kind: "markdown"
+								required:         true
+							}
+						}
+						description:      "The configuration containing information for the WARP client to detect the managed network."
+						description_kind: "markdown"
+					}
+					min_items: 1
+					max_items: 1
+				}
+				description:      "Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies."
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_device_posture_integration: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					identifier: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					interval: {
+						type:             "string"
+						description:      "Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the device posture integration."
+						description_kind: "markdown"
+						required:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				block_types: config: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							access_client_id: {
+								type:             "string"
+								description:      "The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							access_client_secret: {
+								type:             "string"
+								description:      "The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							api_url: {
+								type:             "string"
+								description:      "The third-party API's URL."
+								description_kind: "markdown"
+								optional:         true
+							}
+							auth_url: {
+								type:             "string"
+								description:      "The third-party authorization API URL."
+								description_kind: "markdown"
+								optional:         true
+							}
+							client_id: {
+								type:             "string"
+								description:      "The client identifier for authenticating API calls."
+								description_kind: "markdown"
+								optional:         true
+							}
+							client_key: {
+								type:             "string"
+								description:      "The client key for authenticating API calls."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							client_secret: {
+								type:             "string"
+								description:      "The client secret for authenticating API calls."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							customer_id: {
+								type:             "string"
+								description:      "The customer identifier for authenticating API calls."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "The device posture integration's connection authorization parameters."
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					Provides a Cloudflare Device Posture Integration resource. Device
+					posture integrations configure third-party data providers for device
+					posture rules.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_device_posture_rule: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					expiration: {
+						type:             "string"
+						description:      "Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the device posture rule."
+						description_kind: "markdown"
+						optional:         true
+					}
+					schedule: {
+						type:             "string"
+						description:      "Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				block_types: {
+					input: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								active_threats: {
+									type:             "number"
+									description:      "The number of active threats from SentinelOne."
+									description_kind: "markdown"
+									optional:         true
+								}
+								certificate_id: {
+									type:             "string"
+									description:      "The UUID of a Cloudflare managed certificate."
+									description_kind: "markdown"
+									optional:         true
+								}
+								check_disks: {
+									type: ["set", "string"]
+									description:      "Specific volume(s) to check for encryption."
+									description_kind: "markdown"
+									optional:         true
+								}
+								check_private_key: {
+									type:             "bool"
+									description:      "Confirm the certificate was not imported from another device."
+									description_kind: "markdown"
+									optional:         true
+								}
+								cn: {
+									type:             "string"
+									description:      "The common name for a certificate."
+									description_kind: "markdown"
+									optional:         true
+								}
+								compliance_status: {
+									type:             "string"
+									description:      "The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								connection_id: {
+									type:             "string"
+									description:      "The workspace one or intune connection id."
+									description_kind: "markdown"
+									optional:         true
+								}
+								count_operator: {
+									type:             "string"
+									description:      "The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								domain: {
+									type:             "string"
+									description:      "The domain that the client must join."
+									description_kind: "markdown"
+									optional:         true
+								}
+								eid_last_seen: {
+									type:             "string"
+									description:      "The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								enabled: {
+									type:             "bool"
+									description:      "True if the firewall must be enabled."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								exists: {
+									type:             "bool"
+									description:      "Checks if the file should exist."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								extended_key_usage: {
+									type: ["set", "string"]
+									description:      "List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								id: {
+									type:             "string"
+									description:      "The Teams List id. Required for `serial_number` and `unique_client_id` rule types."
+									description_kind: "markdown"
+									optional:         true
+								}
+								infected: {
+									type:             "bool"
+									description:      "True if SentinelOne device is infected."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								is_active: {
+									type:             "bool"
+									description:      "True if SentinelOne device is active."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								issue_count: {
+									type:             "string"
+									description:      "The number of issues for kolide."
+									description_kind: "markdown"
+									optional:         true
+								}
+								last_seen: {
+									type:             "string"
+									description:      "The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								network_status: {
+									type:             "string"
+									description:      "The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								operator: {
+									type:             "string"
+									description:      "The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								os: {
+									type:             "string"
+									description:      "OS signal score from Crowdstrike. Value must be between 1 and 100."
+									description_kind: "markdown"
+									optional:         true
+								}
+								os_distro_name: {
+									type:             "string"
+									description:      "The operating system excluding version information."
+									description_kind: "markdown"
+									optional:         true
+								}
+								os_distro_revision: {
+									type:             "string"
+									description:      "The operating system version excluding OS name information or release name."
+									description_kind: "markdown"
+									optional:         true
+								}
+								os_version_extra: {
+									type:             "string"
+									description:      "Extra version value following the operating system semantic version."
+									description_kind: "markdown"
+									optional:         true
+								}
+								overall: {
+									type:             "string"
+									description:      "Overall ZTA score from Crowdstrike. Value must be between 1 and 100."
+									description_kind: "markdown"
+									optional:         true
+								}
+								path: {
+									type:             "string"
+									description:      "The path to the file."
+									description_kind: "markdown"
+									optional:         true
+								}
+								require_all: {
+									type:             "bool"
+									description:      "True if all drives must be encrypted."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								risk_level: {
+									type:             "string"
+									description:      "The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								running: {
+									type:             "bool"
+									description:      "Checks if the application should be running."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								score: {
+									type:             "number"
+									description:      "A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations."
+									description_kind: "markdown"
+									optional:         true
+								}
+								sensor_config: {
+									type:             "string"
+									description:      "Sensor signal score from Crowdstrike. Value must be between 1 and 100."
+									description_kind: "markdown"
+									optional:         true
+								}
+								sha256: {
+									type:             "string"
+									description:      "The sha256 hash of the file."
+									description_kind: "markdown"
+									optional:         true
+								}
+								state: {
+									type:             "string"
+									description:      "The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								thumbprint: {
+									type:             "string"
+									description:      "The thumbprint of the file certificate."
+									description_kind: "markdown"
+									optional:         true
+								}
+								total_score: {
+									type:             "number"
+									description:      "The total score from Tanium."
+									description_kind: "markdown"
+									optional:         true
+								}
+								version: {
+									type:             "string"
+									description:      "The operating system semantic version."
+									description_kind: "markdown"
+									optional:         true
+								}
+								version_operator: {
+									type:             "string"
+									description:      "The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							block_types: locations: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										paths: {
+											type: ["set", "string"]
+											description:      "List of paths to check for client certificate rule."
+											description_kind: "markdown"
+											optional:         true
+										}
+										trust_stores: {
+											type: ["set", "string"]
+											description:      "List of trust stores to check for client certificate rule. Available values: `system`, `user`."
+											description_kind: "markdown"
+											optional:         true
+										}
+									}
+									description:      "List of operating system locations to check for a client certificate.."
+									description_kind: "markdown"
+								}
+							}
+							description:      "Required for all rule types except `warp`, `gateway`, and `tanium`."
+							description_kind: "markdown"
+						}
+					}
+					match: {
+						nesting_mode: "list"
+						block: {
+							attributes: platform: {
+								type:             "string"
+								description:      "The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`."
+								description_kind: "markdown"
+								optional:         true
+							}
+							description:      "The conditions that the client must match to run the rule."
+							description_kind: "markdown"
+						}
+					}
+				}
+				description: """
+					Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_device_profiles: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					allow_mode_switch: {
+						type:             "bool"
+						description:      "Whether to allow mode switch for this policy."
+						description_kind: "markdown"
+						optional:         true
+					}
+					allow_updates: {
+						type:             "bool"
+						description:      "Whether to allow updates under this policy."
+						description_kind: "markdown"
+						optional:         true
+					}
+					allowed_to_leave: {
+						type:             "bool"
+						description:      "Whether to allow devices to leave the organization. Defaults to `true`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					auto_connect: {
+						type:             "number"
+						description:      "The amount of time in seconds to reconnect after having been disabled."
+						description_kind: "markdown"
+						optional:         true
+					}
+					captive_portal: {
+						type:             "number"
+						description:      "The captive portal value for this policy. Defaults to `180`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					default: {
+						type:             "bool"
+						description:      "Whether the policy refers to the default account policy."
+						description_kind: "markdown"
+						optional:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of Policy."
+						description_kind: "markdown"
+						required:         true
+					}
+					disable_auto_fallback: {
+						type:             "bool"
+						description:      "Whether to disable auto fallback for this policy."
+						description_kind: "markdown"
+						optional:         true
+					}
+					enabled: {
+						type:             "bool"
+						description:      "Whether the policy is enabled (cannot be set for default policies). Defaults to `true`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					exclude_office_ips: {
+						type:             "bool"
+						description:      "Whether to add Microsoft IPs to split tunnel exclusions."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					match: {
+						type:             "string"
+						description:      "Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device."
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the policy."
+						description_kind: "markdown"
+						required:         true
+					}
+					precedence: {
+						type:             "number"
+						description:      "The precedence of the policy. Lower values indicate higher precedence."
+						description_kind: "markdown"
+						optional:         true
+					}
+					service_mode_v2_mode: {
+						type:             "string"
+						description:      "The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					service_mode_v2_port: {
+						type:             "number"
+						description:      "The port to use for the proxy service mode. Required when using `service_mode_v2_mode`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					support_url: {
+						type:             "string"
+						description:      "The support URL that will be opened when sending feedback."
+						description_kind: "markdown"
+						optional:         true
+					}
+					switch_locked: {
+						type:             "bool"
+						description:      "Enablement of the ZT client switch lock."
+						description_kind: "markdown"
+						optional:         true
+					}
+					tunnel_protocol: {
+						type:             "string"
+						description:      "Determines which tunnel protocol to use. Available values: `\"\"`, `wireguard`, `masque`. Defaults to `wireguard`."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				description:      "Provides a Cloudflare Device Settings Policy resource. Device policies configure settings applied to WARP devices."
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_dex_test: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					created: {
+						type:             "string"
+						description:      "Timestamp of when the Dex Test was created."
+						description_kind: "markdown"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Additional details about the test."
+						description_kind: "markdown"
+						required:         true
+					}
+					enabled: {
+						type:             "bool"
+						description:      "Determines whether or not the test is active."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					interval: {
+						type:             "string"
+						description:      "How often the test will run."
+						description_kind: "markdown"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the Device Dex Test. Must be unique."
+						description_kind: "markdown"
+						required:         true
+					}
+					updated: {
+						type:             "string"
+						description:      "Timestamp of when the Dex Test was last updated."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				block_types: data: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							host: {
+								type:             "string"
+								description:      "The host URL for `http` test `kind`. For `traceroute`, it must be a valid hostname or IP address."
+								description_kind: "markdown"
+								required:         true
+							}
+							kind: {
+								type:             "string"
+								description:      "The type of Device Dex Test. Available values: `http`, `traceroute`."
+								description_kind: "markdown"
+								required:         true
+							}
+							method: {
+								type:             "string"
+								description:      "The http request method. Available values: `GET`."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "The configuration object which contains the details for the WARP client to conduct the test."
+						description_kind: "markdown"
+					}
+					min_items: 1
+					max_items: 1
+				}
+				description:      "Provides a Cloudflare Device Dex Test resource. Device Dex Tests allow for building location-aware device settings policies."
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_dlp_profile: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					allowed_match_count: {
+						type:             "number"
+						description:      "Related DLP policies will trigger when the match count exceeds the number set."
+						description_kind: "markdown"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Brief summary of the profile and its intended use."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the profile. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					ocr_enabled: {
+						type:             "bool"
+						description:      "If true, scan images via OCR to determine if any text present matches filters."
+						description_kind: "markdown"
+						optional:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				block_types: {
+					context_awareness: {
+						nesting_mode: "list"
+						block: {
+							attributes: enabled: {
+								type:             "bool"
+								description:      "Scan the context of predefined entries to only return matches surrounded by keywords."
+								description_kind: "markdown"
+								required:         true
+							}
+							block_types: skip: {
+								nesting_mode: "list"
+								block: {
+									attributes: files: {
+										type:             "bool"
+										description:      "Return all matches, regardless of context analysis result, if the data is a file."
+										description_kind: "markdown"
+										required:         true
+									}
+									description:      "Content types to exclude from context analysis and return all matches."
+									description_kind: "markdown"
+								}
+								min_items: 1
+								max_items: 1
+							}
+							description:      "Scan the context of predefined entries to only return matches surrounded by keywords."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					entry: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								enabled: {
+									type:             "bool"
+									description:      "Whether the entry is active. Defaults to `false`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								id: {
+									type:             "string"
+									description:      "Unique entry identifier."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Name of the entry to deploy."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							block_types: pattern: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										regex: {
+											type:             "string"
+											description:      "The regex that defines the pattern."
+											description_kind: "markdown"
+											required:         true
+										}
+										validation: {
+											type:             "string"
+											description:      "The validation algorithm to apply with this pattern."
+											description_kind: "markdown"
+											optional:         true
+										}
+									}
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							description:      "List of entries to apply to the profile."
+							description_kind: "markdown"
+						}
+						min_items: 1
+					}
+				}
+				description: """
+					Provides a Cloudflare DLP Profile resource. Data Loss Prevention profiles
+					are a set of entries that can be matched in HTTP bodies or files.
+					They are referenced in Zero Trust Gateway rules.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_dns_location: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					anonymized_logs_enabled: {
+						type:             "bool"
+						description:      "Indicator that anonymized logs are enabled."
+						description_kind: "markdown"
+						computed:         true
+					}
+					client_default: {
+						type:             "bool"
+						description:      "Indicator that this is the default location."
+						description_kind: "markdown"
+						optional:         true
+					}
+					doh_subdomain: {
+						type:             "string"
+						description:      "The FQDN that DoH clients should be pointed at."
+						description_kind: "markdown"
+						computed:         true
+					}
+					ecs_support: {
+						type:             "bool"
+						description:      "Indicator that this location needs to resolve EDNS queries."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					ip: {
+						type:             "string"
+						description:      "Client IP address."
+						description_kind: "markdown"
+						computed:         true
+					}
+					ipv4_destination: {
+						type:             "string"
+						description:      "IP to direct all IPv4 DNS queries to."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the teams location."
+						description_kind: "markdown"
+						required:         true
+					}
+					policy_ids: {
+						type: ["list", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: networks: {
+					nesting_mode: "set"
+					block: {
+						attributes: {
+							id: {
+								type:             "string"
+								description_kind: "plain"
+								computed:         true
+							}
+							network: {
+								type:             "string"
+								description:      "CIDR notation representation of the network IP."
+								description_kind: "markdown"
+								required:         true
+							}
+						}
+						description:      "The networks CIDRs that comprise the location."
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					Provides a Cloudflare Teams Location resource. Teams Locations are
+					referenced when creating secure web gateway policies.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_gateway_certificate: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					activate: {
+						type:             "bool"
+						description:      "Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					binding_status: {
+						type:             "string"
+						description:      "The deployment status of the certificate on the edge Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					custom: {
+						type:             "bool"
+						description:      "The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					expires_on: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					gateway_managed: {
+						type:             "bool"
+						description:      "The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Certificate UUID. Computed for Gateway-managed certificates. Required when using `custom`. Conflicts with `gateway_managed`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					in_use: {
+						type:             "bool"
+						description:      "Whether the certificate is in use by Gateway for TLS interception and the block page."
+						description_kind: "markdown"
+						computed:         true
+					}
+					qs_pack_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					uploaded_on: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					validity_period_days: {
+						type:             "number"
+						description:      "Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gateway_managed`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				description: """
+					Provides a Cloudflare Teams Gateway Certificate resource. A Teams Certificate can
+					be specified for Gateway TLS interception and block pages.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_gateway_policy: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					action: {
+						type:             "string"
+						description:      "The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`."
+						description_kind: "markdown"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The description of the teams rule."
+						description_kind: "markdown"
+						required:         true
+					}
+					device_posture: {
+						type:             "string"
+						description:      "The wirefilter expression to be used for device_posture check matching."
+						description_kind: "markdown"
+						optional:         true
+					}
+					enabled: {
+						type:             "bool"
+						description:      "Indicator of rule enablement."
+						description_kind: "markdown"
+						optional:         true
+					}
+					filters: {
+						type: ["list", "string"]
+						description:      "The protocol or layer to evaluate the traffic and identity expressions."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					identity: {
+						type:             "string"
+						description:      "The wirefilter expression to be used for identity matching."
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the teams rule."
+						description_kind: "markdown"
+						required:         true
+					}
+					precedence: {
+						type:             "number"
+						description:      "The evaluation precedence of the teams rule."
+						description_kind: "markdown"
+						required:         true
+					}
+					traffic: {
+						type:             "string"
+						description:      "The wirefilter expression to be used for traffic matching."
+						description_kind: "markdown"
+						optional:         true
+					}
+					version: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: rule_settings: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							add_headers: {
+								type: ["map", "string"]
+								description:      "Add custom headers to allowed requests in the form of key-value pairs."
+								description_kind: "markdown"
+								optional:         true
+							}
+							allow_child_bypass: {
+								type:             "bool"
+								description:      "Allow parent MSP accounts to enable bypass their children's rules."
+								description_kind: "markdown"
+								optional:         true
+							}
+							block_page_enabled: {
+								type:             "bool"
+								description:      "Indicator of block page enablement."
+								description_kind: "markdown"
+								optional:         true
+							}
+							block_page_reason: {
+								type:             "string"
+								description:      "The displayed reason for a user being blocked."
+								description_kind: "markdown"
+								optional:         true
+							}
+							bypass_parent_rule: {
+								type:             "bool"
+								description:      "Allow child MSP accounts to bypass their parent's rule."
+								description_kind: "markdown"
+								optional:         true
+							}
+							ignore_cname_category_matches: {
+								type:             "bool"
+								description:      "Set to true, to ignore the category matches at CNAME domains in a response."
+								description_kind: "markdown"
+								optional:         true
+							}
+							insecure_disable_dnssec_validation: {
+								type:             "bool"
+								description:      "Disable DNSSEC validation (must be Allow rule)."
+								description_kind: "markdown"
+								optional:         true
+							}
+							ip_categories: {
+								type:             "bool"
+								description:      "Turns on IP category based filter on dns if the rule contains dns category checks."
+								description_kind: "markdown"
+								optional:         true
+							}
+							override_host: {
+								type:             "string"
+								description:      "The host to override matching DNS queries with."
+								description_kind: "markdown"
+								optional:         true
+							}
+							override_ips: {
+								type: ["list", "string"]
+								description:      "The IPs to override matching DNS queries with."
+								description_kind: "markdown"
+								optional:         true
+							}
+							resolve_dns_through_cloudflare: {
+								type:             "bool"
+								description:      "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						block_types: {
+							audit_ssh: {
+								nesting_mode: "list"
+								block: {
+									attributes: command_logging: {
+										type:             "bool"
+										description:      "Log all SSH commands."
+										description_kind: "markdown"
+										required:         true
+									}
+									description:      "Settings for auditing SSH usage."
+									description_kind: "markdown"
+								}
+								max_items: 1
+							}
+							biso_admin_controls: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										disable_clipboard_redirection: {
+											type:             "bool"
+											description:      "Disable clipboard redirection."
+											description_kind: "markdown"
+											optional:         true
+										}
+										disable_copy_paste: {
+											type:             "bool"
+											description:      "Disable copy-paste."
+											description_kind: "markdown"
+											optional:         true
+										}
+										disable_download: {
+											type:             "bool"
+											description:      "Disable download."
+											description_kind: "markdown"
+											optional:         true
+										}
+										disable_keyboard: {
+											type:             "bool"
+											description:      "Disable keyboard usage."
+											description_kind: "markdown"
+											optional:         true
+										}
+										disable_printing: {
+											type:             "bool"
+											description:      "Disable printing."
+											description_kind: "markdown"
+											optional:         true
+										}
+										disable_upload: {
+											type:             "bool"
+											description:      "Disable upload."
+											description_kind: "markdown"
+											optional:         true
+										}
+									}
+									description:      "Configure how browser isolation behaves."
+									description_kind: "markdown"
+								}
+								max_items: 1
+							}
+							check_session: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										duration: {
+											type:             "string"
+											description:      "Configure how fresh the session needs to be to be considered valid."
+											description_kind: "markdown"
+											required:         true
+										}
+										enforce: {
+											type:             "bool"
+											description:      "Enable session enforcement for this rule."
+											description_kind: "markdown"
+											required:         true
+										}
+									}
+									description:      "Configure how session check behaves."
+									description_kind: "markdown"
+								}
+								max_items: 1
+							}
+							dns_resolvers: {
+								nesting_mode: "list"
+								block: {
+									block_types: {
+										ipv4: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													ip: {
+														type:             "string"
+														description:      "The IPv4 or IPv6 address of the upstream resolver."
+														description_kind: "markdown"
+														required:         true
+													}
+													port: {
+														type:             "number"
+														description:      "A port number to use for the upstream resolver. Defaults to `53`."
+														description_kind: "markdown"
+														optional:         true
+													}
+													route_through_private_network: {
+														type:             "bool"
+														description:      "Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set."
+														description_kind: "markdown"
+														optional:         true
+													}
+													vnet_id: {
+														type:             "string"
+														description:      "specify a virtual network for this resolver. Uses default virtual network id if omitted."
+														description_kind: "markdown"
+														optional:         true
+													}
+												}
+												description:      "IPv4 resolvers."
+												description_kind: "markdown"
+											}
+											max_items: 10
+										}
+										ipv6: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													ip: {
+														type:             "string"
+														description:      "The IPv4 or IPv6 address of the upstream resolver."
+														description_kind: "markdown"
+														required:         true
+													}
+													port: {
+														type:             "number"
+														description:      "A port number to use for the upstream resolver. Defaults to `53`."
+														description_kind: "markdown"
+														optional:         true
+													}
+													route_through_private_network: {
+														type:             "bool"
+														description:      "Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set."
+														description_kind: "markdown"
+														optional:         true
+													}
+													vnet_id: {
+														type:             "string"
+														description:      "specify a virtual network for this resolver. Uses default virtual network id if omitted."
+														description_kind: "markdown"
+														optional:         true
+													}
+												}
+												description:      "IPv6 resolvers."
+												description_kind: "markdown"
+											}
+											max_items: 10
+										}
+									}
+									description:      "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin."
+									description_kind: "markdown"
+								}
+								max_items: 1
+							}
+							egress: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										ipv4: {
+											type:             "string"
+											description:      "The IPv4 address to be used for egress."
+											description_kind: "markdown"
+											required:         true
+										}
+										ipv4_fallback: {
+											type:             "string"
+											description:      "The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egreass via Warp IPs."
+											description_kind: "markdown"
+											optional:         true
+										}
+										ipv6: {
+											type:             "string"
+											description:      "The IPv6 range to be used for egress."
+											description_kind: "markdown"
+											required:         true
+										}
+									}
+									description:      "Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs."
+									description_kind: "markdown"
+								}
+								max_items: 1
+							}
+							l4override: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										ip: {
+											type:             "string"
+											description:      "Override IP to forward traffic to."
+											description_kind: "markdown"
+											required:         true
+										}
+										port: {
+											type:             "number"
+											description:      "Override Port to forward traffic to."
+											description_kind: "markdown"
+											required:         true
+										}
+									}
+									description:      "Settings to forward layer 4 traffic."
+									description_kind: "markdown"
+								}
+								max_items: 1
+							}
+							notification_settings: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										enabled: {
+											type:             "bool"
+											description:      "Enable notification settings."
+											description_kind: "markdown"
+											optional:         true
+										}
+										message: {
+											type:             "string"
+											description:      "Notification content."
+											description_kind: "markdown"
+											optional:         true
+										}
+										support_url: {
+											type:             "string"
+											description:      "Support URL to show in the notification."
+											description_kind: "markdown"
+											optional:         true
+										}
+									}
+									description:      "Notification settings on a block rule."
+									description_kind: "markdown"
+								}
+								max_items: 1
+							}
+							payload_log: {
+								nesting_mode: "list"
+								block: {
+									attributes: enabled: {
+										type:             "bool"
+										description:      "Enable or disable DLP Payload Logging for this rule."
+										description_kind: "markdown"
+										required:         true
+									}
+									description:      "Configure DLP Payload Logging settings for this rule."
+									description_kind: "markdown"
+								}
+								max_items: 1
+							}
+							untrusted_cert: {
+								nesting_mode: "list"
+								block: {
+									attributes: action: {
+										type:             "string"
+										description:      "Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`."
+										description_kind: "markdown"
+										optional:         true
+									}
+									description:      "Configure untrusted certificate settings for this rule."
+									description_kind: "markdown"
+								}
+								max_items: 1
+							}
+						}
+						description:      "Additional rule settings."
+						description_kind: "markdown"
+					}
+					max_items: 1
+				}
+				description:      "Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies."
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_gateway_proxy_endpoint: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					ips: {
+						type: ["set", "string"]
+						description:      "The networks CIDRs that will be allowed to initiate proxy connections."
+						description_kind: "markdown"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the teams proxy endpoint."
+						description_kind: "markdown"
+						required:         true
+					}
+					subdomain: {
+						type:             "string"
+						description:      "The FQDN that proxy clients should be pointed at."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy
+					Endpoints are used for pointing proxy clients at Cloudflare Secure
+					Gateway.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_gateway_settings: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					activity_log_enabled: {
+						type:             "bool"
+						description:      "Whether to enable the activity log."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					non_identity_browser_isolation_enabled: {
+						type:             "bool"
+						description:      "Enable non-identity onramp for Browser Isolation. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					protocol_detection_enabled: {
+						type:             "bool"
+						description:      "Indicator that protocol detection is enabled."
+						description_kind: "markdown"
+						optional:         true
+					}
+					tls_decrypt_enabled: {
+						type:             "bool"
+						description:      "Indicator that decryption of TLS traffic is enabled."
+						description_kind: "markdown"
+						optional:         true
+					}
+					url_browser_isolation_enabled: {
+						type:             "bool"
+						description:      "Safely browse websites in Browser Isolation through a URL. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				block_types: {
+					antivirus: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								enabled_download_phase: {
+									type:             "bool"
+									description:      "Scan on file download."
+									description_kind: "markdown"
+									required:         true
+								}
+								enabled_upload_phase: {
+									type:             "bool"
+									description:      "Scan on file upload."
+									description_kind: "markdown"
+									required:         true
+								}
+								fail_closed: {
+									type:             "bool"
+									description:      "Block requests for files that cannot be scanned."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							block_types: notification_settings: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										enabled: {
+											type:             "bool"
+											description:      "Enable notification settings."
+											description_kind: "markdown"
+											optional:         true
+										}
+										message: {
+											type:             "string"
+											description:      "Notification content."
+											description_kind: "markdown"
+											optional:         true
+										}
+										support_url: {
+											type:             "string"
+											description:      "Support URL to show in the notification."
+											description_kind: "markdown"
+											optional:         true
+										}
+									}
+									description:      "Set notifications for antivirus."
+									description_kind: "markdown"
+								}
+								max_items: 1
+							}
+							description:      "Configuration block for antivirus traffic scanning."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					block_page: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								background_color: {
+									type:             "string"
+									description:      "Hex code of block page background color."
+									description_kind: "markdown"
+									optional:         true
+								}
+								enabled: {
+									type:             "bool"
+									description:      "Indicator of enablement."
+									description_kind: "markdown"
+									optional:         true
+								}
+								footer_text: {
+									type:             "string"
+									description:      "Block page footer text."
+									description_kind: "markdown"
+									optional:         true
+								}
+								header_text: {
+									type:             "string"
+									description:      "Block page header text."
+									description_kind: "markdown"
+									optional:         true
+								}
+								logo_path: {
+									type:             "string"
+									description:      "URL of block page logo."
+									description_kind: "markdown"
+									optional:         true
+								}
+								mailto_address: {
+									type:             "string"
+									description:      "Admin email for users to contact."
+									description_kind: "markdown"
+									optional:         true
+								}
+								mailto_subject: {
+									type:             "string"
+									description:      "Subject line for emails created from block page."
+									description_kind: "markdown"
+									optional:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Name of block page configuration."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							description:      "Configuration for a custom block page."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					body_scanning: {
+						nesting_mode: "list"
+						block: {
+							attributes: inspection_mode: {
+								type:             "string"
+								description:      "Body scanning inspection mode. Available values: `deep`, `shallow`."
+								description_kind: "markdown"
+								required:         true
+							}
+							description:      "Configuration for body scanning."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					certificate: {
+						nesting_mode: "list"
+						block: {
+							attributes: id: {
+								type:             "string"
+								description:      "ID of certificate for TLS interception."
+								description_kind: "markdown"
+								required:         true
+							}
+							description:      "Configuration for TLS interception certificate. This will be required starting Feb 2025."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					custom_certificate: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								enabled: {
+									type:             "bool"
+									description:      "Whether TLS encryption should use a custom certificate."
+									description_kind: "markdown"
+									required:         true
+								}
+								id: {
+									type:             "string"
+									description:      "ID of custom certificate."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								updated_at: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							description:      "Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`."
+							description_kind: "markdown"
+							deprecated:       true
+						}
+						max_items: 1
+					}
+					extended_email_matching: {
+						nesting_mode: "list"
+						block: {
+							attributes: enabled: {
+								type:             "bool"
+								description:      "Whether e-mails should be matched on all variants of user emails (with + or . modifiers) in Firewall policies."
+								description_kind: "markdown"
+								required:         true
+							}
+							description:      "Configuration for extended e-mail matching."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					fips: {
+						nesting_mode: "list"
+						block: {
+							attributes: tls: {
+								type:             "bool"
+								description:      "Only allow FIPS-compliant TLS configuration."
+								description_kind: "markdown"
+								optional:         true
+							}
+							description:      "Configure compliance with Federal Information Processing Standards."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					logging: {
+						nesting_mode: "list"
+						block: {
+							attributes: redact_pii: {
+								type:             "bool"
+								description:      "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent)."
+								description_kind: "markdown"
+								required:         true
+							}
+							block_types: settings_by_rule_type: {
+								nesting_mode: "list"
+								block: {
+									block_types: {
+										dns: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													log_all: {
+														type:             "bool"
+														description:      "Whether to log all activity."
+														description_kind: "markdown"
+														required:         true
+													}
+													log_blocks: {
+														type:             "bool"
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description:      "Logging configuration for DNS requests."
+												description_kind: "markdown"
+											}
+											min_items: 1
+											max_items: 1
+										}
+										http: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													log_all: {
+														type:             "bool"
+														description:      "Whether to log all activity."
+														description_kind: "markdown"
+														required:         true
+													}
+													log_blocks: {
+														type:             "bool"
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description:      "Logging configuration for HTTP requests."
+												description_kind: "markdown"
+											}
+											min_items: 1
+											max_items: 1
+										}
+										l4: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													log_all: {
+														type:             "bool"
+														description:      "Whether to log all activity."
+														description_kind: "markdown"
+														required:         true
+													}
+													log_blocks: {
+														type:             "bool"
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description:      "Logging configuration for layer 4 requests."
+												description_kind: "markdown"
+											}
+											min_items: 1
+											max_items: 1
+										}
+									}
+									description:      "Represents whether all requests are logged or only the blocked requests are slogged in DNS, HTTP and L4 filters."
+									description_kind: "markdown"
+								}
+								min_items: 1
+								max_items: 1
+							}
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					payload_log: {
+						nesting_mode: "list"
+						block: {
+							attributes: public_key: {
+								type:             "string"
+								description:      "Public key used to encrypt matched payloads."
+								description_kind: "markdown"
+								required:         true
+							}
+							description:      "Configuration for DLP Payload Logging."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					proxy: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								disable_for_time: {
+									type:             "number"
+									description:      "Sets the time limit in seconds that a user can use an override code to bypass WARP."
+									description_kind: "markdown"
+									required:         true
+								}
+								root_ca: {
+									type:             "bool"
+									description:      "Whether root ca is enabled account wide for ZT clients."
+									description_kind: "markdown"
+									required:         true
+								}
+								tcp: {
+									type:             "bool"
+									description:      "Whether gateway proxy is enabled on gateway devices for TCP traffic."
+									description_kind: "markdown"
+									required:         true
+								}
+								udp: {
+									type:             "bool"
+									description:      "Whether gateway proxy is enabled on gateway devices for UDP traffic."
+									description_kind: "markdown"
+									required:         true
+								}
+								virtual_ip: {
+									type:             "bool"
+									description:      "Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							description:      "Configuration block for specifying which protocols are proxied."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+					ssh_session_log: {
+						nesting_mode: "list"
+						block: {
+							attributes: public_key: {
+								type:             "string"
+								description:      "Public key used to encrypt ssh session."
+								description_kind: "markdown"
+								required:         true
+							}
+							description:      "Configuration for SSH Session Logging."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
+				}
+				description: """
+					Provides a Cloudflare Teams Account resource. The Teams Account
+					resource defines configuration for secure web gateway.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_key_access_key_configuration: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					key_rotation_interval_days: {
+						type:             "number"
+						description:      "Number of days to trigger a rotation of the keys."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				description: """
+					Access Keys Configuration defines the rotation policy for the keys
+					that access will use to sign data.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_list: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The description of the teams list."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					items: {
+						type: ["set", "string"]
+						description:      "The items of the teams list."
+						description_kind: "markdown"
+						optional:         true
+					}
+					items_with_description: {
+						type: ["set", ["object", {
+							description: "string"
+							value:       "string"
+						}]]
+						description:      "The items of the teams list that has explicit description."
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the teams list."
+						description_kind: "markdown"
+						required:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description: """
+					Provides a Cloudflare Teams List resource. Teams lists are
+					referenced when creating secure web gateway policies or device
+					posture rules.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_local_fallback_domain: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					policy_id: {
+						type:             "string"
+						description:      "The settings policy for which to configure this fallback domain policy."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				block_types: domains: {
+					nesting_mode: "set"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description:      "A description of the fallback domain, displayed in the client UI."
+								description_kind: "markdown"
+								optional:         true
+							}
+							dns_server: {
+								type: ["list", "string"]
+								description:      "A list of IP addresses to handle domain resolution."
+								description_kind: "markdown"
+								optional:         true
+							}
+							suffix: {
+								type:             "string"
+								description:      "The domain suffix to match when resolving locally."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					min_items: 1
+				}
+				description: """
+					Provides a Cloudflare Fallback Domain resource. Fallback domains are
+					used to ignore DNS requests to a given list of domains. These DNS
+					requests will be passed back to other DNS servers configured on
+					existing network interfaces on the device.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_risk_behavior: {
+			version: 0
+			block: {
+				attributes: account_id: {
+					type:             "string"
+					description:      "The account identifier to target for the resource."
+					description_kind: "markdown"
+					required:         true
+				}
+				block_types: behavior: {
+					nesting_mode: "set"
+					block: {
+						attributes: {
+							enabled: {
+								type:             "bool"
+								description:      "Whether this risk behavior type is enabled."
+								description_kind: "markdown"
+								required:         true
+							}
+							name: {
+								type:             "string"
+								description:      "Name of this risk behavior type"
+								description_kind: "markdown"
+								required:         true
+							}
+							risk_level: {
+								type:             "string"
+								description:      "Risk level. Available values: `low`, `medium`, `high`"
+								description_kind: "markdown"
+								required:         true
+							}
+						}
+						description:      "Zero Trust risk behaviors configured on this account"
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					The [Risk Behavior](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_risk_score_integration: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					active: {
+						type:             "bool"
+						description:      "Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The identifier of this resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					integration_type: {
+						type:             "string"
+						description:      "The type of integration, e.g. 'Okta'. Full list of allowed values can be found here: https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body"
+						description_kind: "markdown"
+						required:         true
+					}
+					reference_id: {
+						type:             "string"
+						description:      "A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If omitted, a random UUIDv4 is used. https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider"
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					tenant_url: {
+						type:             "string"
+						description:      "The base url of the tenant, e.g. 'https://tenant.okta.com'. Must be your Okta Tenant URL and not your custom domain."
+						description_kind: "markdown"
+						required:         true
+					}
+					well_known_url: {
+						type:             "string"
+						description:      "The URL for the Shared Signals Framework configuration, e.g. '/.well-known/sse-configuration/{integration_uuid}/'. https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1"
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					The [Risk Score Integration](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#send-risk-score-to-okta) resource allows you to transmit changes in User Risk Score to a specified vendor such as Okta.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_split_tunnel: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					mode: {
+						type:             "string"
+						description:      "The mode of the split tunnel policy. Available values: `include`, `exclude`."
+						description_kind: "markdown"
+						required:         true
+					}
+					policy_id: {
+						type:             "string"
+						description:      "The settings policy for which to configure this split tunnel policy."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				block_types: tunnels: {
+					nesting_mode: "set"
+					block: {
+						attributes: {
+							address: {
+								type:             "string"
+								description:      "The address for the tunnel."
+								description_kind: "markdown"
+								optional:         true
+							}
+							description: {
+								type:             "string"
+								description:      "A description for the tunnel."
+								description_kind: "markdown"
+								optional:         true
+							}
+							host: {
+								type:             "string"
+								description:      "The domain name for the tunnel."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "The value of the tunnel attributes."
+						description_kind: "markdown"
+					}
+					min_items: 1
+				}
+				description: """
+					Provides a Cloudflare Split Tunnel resource. Split tunnels are used to either
+					include or exclude lists of routes from the WARP client's tunnel.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_tunnel_cloudflared: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					cname: {
+						type:             "string"
+						description:      "Usable CNAME for accessing the Tunnel."
+						description_kind: "markdown"
+						computed:         true
+					}
+					config_src: {
+						type:             "string"
+						description:      "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel_config, tunnel_route or tunnel_virtual_network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					secret: {
+						type:             "string"
+						description:      "32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+						sensitive:        true
+					}
+					tunnel_token: {
+						type:             "string"
+						description:      "Token used by a connector to authenticate and run the tunnel."
+						description_kind: "markdown"
+						computed:         true
+						sensitive:        true
+					}
+				}
+				description: """
+					Tunnel exposes applications running on your local web server on any
+					network with an internet connection without manually adding DNS
+					records or configuring a firewall or router.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_tunnel_cloudflared_config: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					tunnel_id: {
+						type:             "string"
+						description:      "Identifier of the Tunnel to target for this configuration."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				block_types: config: {
+					nesting_mode: "list"
+					block: {
+						block_types: {
+							ingress_rule: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										hostname: {
+											type:             "string"
+											description:      "Hostname to match the incoming request with. If the hostname matches, the request will be sent to the service."
+											description_kind: "markdown"
+											optional:         true
+										}
+										path: {
+											type:             "string"
+											description:      "Path of the incoming request. If the path matches, the request will be sent to the local service."
+											description_kind: "markdown"
+											optional:         true
+										}
+										service: {
+											type:             "string"
+											description:      "Name of the service to which the request will be sent."
+											description_kind: "markdown"
+											required:         true
+										}
+									}
+									block_types: origin_request: {
+										nesting_mode: "list"
+										block: {
+											attributes: {
+												bastion_mode: {
+													type:             "bool"
+													description:      "Runs as jump host."
+													description_kind: "markdown"
+													optional:         true
+												}
+												ca_pool: {
+													type:             "string"
+													description:      "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `\"\"`."
+													description_kind: "markdown"
+													optional:         true
+												}
+												connect_timeout: {
+													type:             "string"
+													description:      "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`."
+													description_kind: "markdown"
+													optional:         true
+												}
+												disable_chunked_encoding: {
+													type:             "bool"
+													description:      "Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`."
+													description_kind: "markdown"
+													optional:         true
+												}
+												http2_origin: {
+													type:             "bool"
+													description:      "Enables HTTP/2 support for the origin connection. Defaults to `false`."
+													description_kind: "markdown"
+													optional:         true
+												}
+												http_host_header: {
+													type:             "string"
+													description:      "Sets the HTTP Host header on requests sent to the local service. Defaults to `\"\"`."
+													description_kind: "markdown"
+													optional:         true
+												}
+												keep_alive_connections: {
+													type:             "number"
+													description:      "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`."
+													description_kind: "markdown"
+													optional:         true
+												}
+												keep_alive_timeout: {
+													type:             "string"
+													description:      "Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`."
+													description_kind: "markdown"
+													optional:         true
+												}
+												no_happy_eyeballs: {
+													type:             "bool"
+													description:      "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`."
+													description_kind: "markdown"
+													optional:         true
+												}
+												no_tls_verify: {
+													type:             "bool"
+													description:      "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`."
+													description_kind: "markdown"
+													optional:         true
+												}
+												origin_server_name: {
+													type:             "string"
+													description:      "Hostname that cloudflared should expect from your origin server certificate. Defaults to `\"\"`."
+													description_kind: "markdown"
+													optional:         true
+												}
+												proxy_address: {
+													type:             "string"
+													description:      "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`."
+													description_kind: "markdown"
+													optional:         true
+												}
+												proxy_port: {
+													type:             "number"
+													description:      "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`."
+													description_kind: "markdown"
+													optional:         true
+												}
+												proxy_type: {
+													type:             "string"
+													description:      "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `\"\"`, `socks`. Defaults to `\"\"`."
+													description_kind: "markdown"
+													optional:         true
+												}
+												tcp_keep_alive: {
+													type:             "string"
+													description:      "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`."
+													description_kind: "markdown"
+													optional:         true
+												}
+												tls_timeout: {
+													type:             "string"
+													description:      "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`."
+													description_kind: "markdown"
+													optional:         true
+												}
+											}
+											block_types: {
+												access: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															aud_tag: {
+																type: ["set", "string"]
+																description:      "Audience tags of the access rule."
+																description_kind: "markdown"
+																optional:         true
+															}
+															required: {
+																type:             "bool"
+																description:      "Whether the access rule is required."
+																description_kind: "markdown"
+																optional:         true
+															}
+															team_name: {
+																type:             "string"
+																description:      "Name of the team to which the access rule applies."
+																description_kind: "markdown"
+																optional:         true
+															}
+														}
+														description:      "Access rules for the ingress service."
+														description_kind: "markdown"
+													}
+													max_items: 1
+												}
+												ip_rules: {
+													nesting_mode: "set"
+													block: {
+														attributes: {
+															allow: {
+																type:             "bool"
+																description:      "Whether to allow the IP prefix."
+																description_kind: "markdown"
+																optional:         true
+															}
+															ports: {
+																type: ["list", "number"]
+																description:      "Ports to use within the IP rule."
+																description_kind: "markdown"
+																optional:         true
+															}
+															prefix: {
+																type:             "string"
+																description:      "IP rule prefix."
+																description_kind: "markdown"
+																optional:         true
+															}
+														}
+														description:      "IP rules for the proxy service."
+														description_kind: "markdown"
+													}
+												}
+											}
+											description_kind: "plain"
+										}
+										max_items: 1
+									}
+									description:      "Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = \"http_status:503\"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/)."
+									description_kind: "markdown"
+								}
+								min_items: 1
+							}
+							origin_request: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										bastion_mode: {
+											type:             "bool"
+											description:      "Runs as jump host."
+											description_kind: "markdown"
+											optional:         true
+										}
+										ca_pool: {
+											type:             "string"
+											description:      "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `\"\"`."
+											description_kind: "markdown"
+											optional:         true
+										}
+										connect_timeout: {
+											type:             "string"
+											description:      "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`."
+											description_kind: "markdown"
+											optional:         true
+										}
+										disable_chunked_encoding: {
+											type:             "bool"
+											description:      "Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`."
+											description_kind: "markdown"
+											optional:         true
+										}
+										http2_origin: {
+											type:             "bool"
+											description:      "Enables HTTP/2 support for the origin connection. Defaults to `false`."
+											description_kind: "markdown"
+											optional:         true
+										}
+										http_host_header: {
+											type:             "string"
+											description:      "Sets the HTTP Host header on requests sent to the local service. Defaults to `\"\"`."
+											description_kind: "markdown"
+											optional:         true
+										}
+										keep_alive_connections: {
+											type:             "number"
+											description:      "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`."
+											description_kind: "markdown"
+											optional:         true
+										}
+										keep_alive_timeout: {
+											type:             "string"
+											description:      "Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`."
+											description_kind: "markdown"
+											optional:         true
+										}
+										no_happy_eyeballs: {
+											type:             "bool"
+											description:      "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`."
+											description_kind: "markdown"
+											optional:         true
+										}
+										no_tls_verify: {
+											type:             "bool"
+											description:      "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`."
+											description_kind: "markdown"
+											optional:         true
+										}
+										origin_server_name: {
+											type:             "string"
+											description:      "Hostname that cloudflared should expect from your origin server certificate. Defaults to `\"\"`."
+											description_kind: "markdown"
+											optional:         true
+										}
+										proxy_address: {
+											type:             "string"
+											description:      "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`."
+											description_kind: "markdown"
+											optional:         true
+										}
+										proxy_port: {
+											type:             "number"
+											description:      "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`."
+											description_kind: "markdown"
+											optional:         true
+										}
+										proxy_type: {
+											type:             "string"
+											description:      "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `\"\"`, `socks`. Defaults to `\"\"`."
+											description_kind: "markdown"
+											optional:         true
+										}
+										tcp_keep_alive: {
+											type:             "string"
+											description:      "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`."
+											description_kind: "markdown"
+											optional:         true
+										}
+										tls_timeout: {
+											type:             "string"
+											description:      "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`."
+											description_kind: "markdown"
+											optional:         true
+										}
+									}
+									block_types: {
+										access: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													aud_tag: {
+														type: ["set", "string"]
+														description:      "Audience tags of the access rule."
+														description_kind: "markdown"
+														optional:         true
+													}
+													required: {
+														type:             "bool"
+														description:      "Whether the access rule is required."
+														description_kind: "markdown"
+														optional:         true
+													}
+													team_name: {
+														type:             "string"
+														description:      "Name of the team to which the access rule applies."
+														description_kind: "markdown"
+														optional:         true
+													}
+												}
+												description:      "Access rules for the ingress service."
+												description_kind: "markdown"
+											}
+											max_items: 1
+										}
+										ip_rules: {
+											nesting_mode: "set"
+											block: {
+												attributes: {
+													allow: {
+														type:             "bool"
+														description:      "Whether to allow the IP prefix."
+														description_kind: "markdown"
+														optional:         true
+													}
+													ports: {
+														type: ["list", "number"]
+														description:      "Ports to use within the IP rule."
+														description_kind: "markdown"
+														optional:         true
+													}
+													prefix: {
+														type:             "string"
+														description:      "IP rule prefix."
+														description_kind: "markdown"
+														optional:         true
+													}
+												}
+												description:      "IP rules for the proxy service."
+												description_kind: "markdown"
+											}
+										}
+									}
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							warp_routing: {
+								nesting_mode: "list"
+								block: {
+									attributes: enabled: {
+										type:             "bool"
+										description:      "Whether WARP routing is enabled."
+										description_kind: "markdown"
+										optional:         true
+									}
+									description:      "If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`."
+									description_kind: "markdown"
+								}
+								max_items: 1
+							}
+						}
+						description:      "Configuration block for Tunnel Configuration."
+						description_kind: "markdown"
+					}
+					min_items: 1
+					max_items: 1
+				}
+				description: """
+					Provides a Cloudflare Tunnel configuration resource.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_tunnel_route: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					comment: {
+						type:             "string"
+						description:      "Description of the tunnel route."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					network: {
+						type:             "string"
+						description:      "The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation."
+						description_kind: "markdown"
+						required:         true
+					}
+					tunnel_id: {
+						type:             "string"
+						description:      "The ID of the tunnel that will service the tunnel route."
+						description_kind: "markdown"
+						required:         true
+					}
+					virtual_network_id: {
+						type:             "string"
+						description:      "The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				description: """
+					Provides a resource, that manages Cloudflare tunnel routes for Zero
+					Trust. Tunnel routes are used to direct IP traffic through
+					Cloudflare Tunnels.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_tunnel_virtual_network: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					comment: {
+						type:             "string"
+						description:      "Description of the tunnel virtual network."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					is_default_network: {
+						type:             "bool"
+						description:      "Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case."
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "A user-friendly name chosen when the virtual network is created."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description: """
+					Provides a resource, that manages Cloudflare tunnel virtual networks
+					for Zero Trust. Tunnel virtual networks are used for segregation of
+					Tunnel IP Routes via Virtualized Networks to handle overlapping
+					private IPs in your origins.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -13179,7 +22087,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					type: {
 						type:             "string"
-						description:      "A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`."
+						description:      "A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -13187,6 +22095,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type: ["list", "string"]
 						description:      "List of Vanity Nameservers (if set)."
 						description_kind: "markdown"
+						optional:         true
 						computed:         true
 					}
 					verification_key: {
@@ -13538,7 +22447,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zone_settings_override: {
-			version: 0
+			version: 2
 			block: {
 				attributes: {
 					id: {
@@ -13586,6 +22495,9 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								status:           "string"
 								strip_uri:        "bool"
 							}]]
+							nel: ["list", ["object", {
+								enabled: "bool"
+							}]]
 							opportunistic_encryption:    "string"
 							opportunistic_onion:         "string"
 							orange_to_orange:            "string"
@@ -13596,6 +22508,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							privacy_pass:                "string"
 							proxy_read_timeout:          "string"
 							pseudo_ipv4:                 "string"
+							replace_insecure_js:         "string"
 							response_buffering:          "string"
 							rocket_loader:               "string"
 							security_header: ["list", ["object", {
@@ -13608,6 +22521,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							security_level:              "string"
 							server_side_exclude:         "string"
 							sort_query_string_for_cache: "string"
+							speed_brain:                 "string"
 							ssl:                         "string"
 							tls_1_2_only:                "string"
 							tls_1_3:                     "string"
@@ -13876,6 +22790,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								optional:         true
 								computed:         true
 							}
+							replace_insecure_js: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+								computed:         true
+							}
 							response_buffering: {
 								type:             "string"
 								description_kind: "plain"
@@ -13901,6 +22821,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								computed:         true
 							}
 							sort_query_string_for_cache: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+								computed:         true
+							}
+							speed_brain: {
 								type:             "string"
 								description_kind: "plain"
 								optional:         true
@@ -14020,6 +22946,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										}
 									}
 									description_kind: "plain"
+									deprecated:       true
+								}
+								max_items: 1
+							}
+							nel: {
+								nesting_mode: "list"
+								block: {
+									attributes: enabled: {
+										type:             "bool"
+										description_kind: "plain"
+										required:         true
+									}
+									description_kind: "plain"
 								}
 								max_items: 1
 							}
@@ -14118,6 +23057,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				}
 				description:      "Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)"
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_access_identity_provider: {
@@ -14157,6 +23097,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				}
 				description:      "Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name."
 				description_kind: "markdown"
+				deprecated:       true
 			}
 		}
 		cloudflare_account_roles: {
@@ -14271,6 +23212,79 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				description_kind: "plain"
 			}
 		}
+		cloudflare_dcv_delegation: {
+			version: 0
+			block: {
+				attributes: {
+					hostname: {
+						type:             "string"
+						description:      "The DCV Delegation hostname"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The DCV Delegation unique identifier"
+						description_kind: "plain"
+						computed:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description:      "Use this data source to retrieve the DCV Delegation unique identifier for a zone."
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_device_posture_rules: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the Device Posture Rule."
+						description_kind: "markdown"
+						optional:         true
+					}
+					rules: {
+						type: ["list", ["object", {
+							description: "string"
+							expiration:  "string"
+							id:          "string"
+							name:        "string"
+							schedule:    "string"
+							type:        "string"
+						}]]
+						description:      "A list of matching Device Posture Rules."
+						description_kind: "markdown"
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				description:      "Use this data source to lookup a list of [Device Posture Rule](https://developers.cloudflare.com/cloudflare-one/identity/devices)"
+				description_kind: "markdown"
+			}
+		}
 		cloudflare_devices: {
 			version: 0
 			block: {
@@ -14297,6 +23311,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							os_distro_name:     "string"
 							os_distro_revision: "string"
 							os_version:         "string"
+							os_version_extra:   "string"
 							revoked_at:         "string"
 							serial_number:      "string"
 							updated:            "string"
@@ -14316,6 +23331,327 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 				}
 				description:      "Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices)."
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_dlp_datasets: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account ID to fetch DLP Datasets from."
+						description_kind: "plain"
+						required:         true
+					}
+					datasets: {
+						type: ["list", ["object", {
+							description: "string"
+							id:          "string"
+							name:        "string"
+							secret:      "bool"
+							status:      "string"
+						}]]
+						description:      "A list of DLP Datasets."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description:      "Use this data source to retrieve all DLP datasets for an account."
+				description_kind: "plain"
+			}
+		}
+		cloudflare_gateway_app_types: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account ID to fetch Gateway App Types from."
+						description_kind: "plain"
+						required:         true
+					}
+					app_types: {
+						nested_type: {
+							attributes: {
+								application_type_id: {
+									type:             "number"
+									description:      "The identifier for the application type of this app."
+									description_kind: "plain"
+									computed:         true
+								}
+								description: {
+									type:             "string"
+									description:      "A short summary of the app type."
+									description_kind: "plain"
+									computed:         true
+								}
+								id: {
+									type:             "number"
+									description:      "The identifier for this app type. There is only one app type per ID."
+									description_kind: "plain"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "The name of the app type."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "A list of Gateway App Types."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description:      "Use this data source to retrieve all Gateway application types for an account."
+				description_kind: "plain"
+			}
+		}
+		cloudflare_gateway_categories: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account ID to fetch Gateway Categories from."
+						description_kind: "plain"
+						required:         true
+					}
+					categories: {
+						nested_type: {
+							attributes: {
+								beta: {
+									type:             "bool"
+									description:      "True if the category is in beta and subject to change."
+									description_kind: "plain"
+									computed:         true
+								}
+								class: {
+									type:             "string"
+									description:      "Which account types are allowed to create policies based on this category."
+									description_kind: "plain"
+									computed:         true
+								}
+								description: {
+									type:             "string"
+									description:      "A short summary of domains in the category."
+									description_kind: "plain"
+									computed:         true
+								}
+								id: {
+									type:             "number"
+									description:      "The identifier for this category. There is only one category per ID."
+									description_kind: "plain"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "The name of the category."
+									description_kind: "plain"
+									computed:         true
+								}
+								subcategories: {
+									nested_type: {
+										attributes: {
+											beta: {
+												type:             "bool"
+												description:      "True if the subcategory is in beta and subject to change."
+												description_kind: "plain"
+												computed:         true
+											}
+											class: {
+												type:             "string"
+												description:      "Which account types are allowed to create policies based on this subcategory."
+												description_kind: "plain"
+												computed:         true
+											}
+											description: {
+												type:             "string"
+												description:      "A short summary of domains in the subcategory."
+												description_kind: "plain"
+												computed:         true
+											}
+											id: {
+												type:             "number"
+												description:      "The identifier for this subcategory. There is only one subcategory per ID."
+												description_kind: "plain"
+												computed:         true
+											}
+											name: {
+												type:             "string"
+												description:      "The name of the subcategory."
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description:      "A list of subcategories."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "A list of Gateway Categories."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description:      "Use this data source to retrieve all Gateway categories for an account."
+				description_kind: "plain"
+			}
+		}
+		cloudflare_infrastructure_access_targets: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					created_after: {
+						type:             "string"
+						description:      "A date and time after a target was created to filter on."
+						description_kind: "plain"
+						optional:         true
+					}
+					hostname: {
+						type:             "string"
+						description:      "The name of the app type."
+						description_kind: "plain"
+						optional:         true
+					}
+					hostname_contains: {
+						type:             "string"
+						description:      "The name of the app type."
+						description_kind: "plain"
+						optional:         true
+					}
+					ipv4: {
+						type:             "string"
+						description:      "The name of the app type."
+						description_kind: "plain"
+						optional:         true
+					}
+					ipv6: {
+						type:             "string"
+						description:      "The name of the app type."
+						description_kind: "plain"
+						optional:         true
+					}
+					modified_after: {
+						type:             "string"
+						description:      "A date and time after a target was modified to filter on."
+						description_kind: "plain"
+						optional:         true
+					}
+					targets: {
+						nested_type: {
+							attributes: {
+								account_id: {
+									type:             "string"
+									description:      "The account identifier to target for the resource."
+									description_kind: "markdown"
+									computed:         true
+								}
+								created_at: {
+									type:             "string"
+									description:      "The date and time at which the target was created."
+									description_kind: "markdown"
+									computed:         true
+								}
+								hostname: {
+									type:             "string"
+									description:      "A non-unique field that refers to a target."
+									description_kind: "markdown"
+									computed:         true
+								}
+								id: {
+									type:             "string"
+									description:      "The identifier of this resource. This is target's unique identifier."
+									description_kind: "markdown"
+									computed:         true
+								}
+								ip: {
+									nested_type: {
+										attributes: {
+											ipv4: {
+												nested_type: {
+													attributes: {
+														ip_addr: {
+															type:             "string"
+															description:      "The IP address of the target."
+															description_kind: "markdown"
+															required:         true
+														}
+														virtual_network_id: {
+															type:             "string"
+															description:      "The private virtual network identifier for the target."
+															description_kind: "markdown"
+															required:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "The target's IPv4 address."
+												description_kind: "markdown"
+												optional:         true
+											}
+											ipv6: {
+												nested_type: {
+													attributes: {
+														ip_addr: {
+															type:             "string"
+															description:      "The IP address of the target."
+															description_kind: "markdown"
+															required:         true
+														}
+														virtual_network_id: {
+															type:             "string"
+															description:      "The private virtual network identifier for the target."
+															description_kind: "markdown"
+															required:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "The target's IPv6 address."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "The IPv4/IPv6 address that identifies where to reach a target."
+									description_kind: "markdown"
+									required:         true
+								}
+								modified_at: {
+									type:             "string"
+									description:      "The date and time at which the target was last modified."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description_kind: "plain"
+						computed:         true
+					}
+					virtual_network_id: {
+						type:             "string"
+						description:      "The name of the app type."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description:      "Use this data source to retrieve all Infrastructure Access Targets."
 				description_kind: "markdown"
 			}
 		}
@@ -14568,8 +23904,9 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											header: "string"
 											values: ["set", "string"]
 										}]]
-										name:   "string"
-										weight: "number"
+										name:               "string"
+										virtual_network_id: "string"
+										weight:             "number"
 									}]]
 									description:      "The list of origins within this pool."
 									description_kind: "markdown"
@@ -14582,6 +23919,51 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 				}
 				description:      "A datasource to find Load Balancer Pools."
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_origin_ca_certificate: {
+			version: 0
+			block: {
+				attributes: {
+					certificate: {
+						type:             "string"
+						description:      "The Origin CA certificate."
+						description_kind: "plain"
+						computed:         true
+					}
+					expires_on: {
+						type:             "string"
+						description:      "The timestamp when the certificate will expire."
+						description_kind: "plain"
+						computed:         true
+					}
+					hostnames: {
+						type: ["list", "string"]
+						description:      "A list of hostnames or wildcard names bound to the certificate."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The Origin CA Certificate unique identifier."
+						description_kind: "plain"
+						required:         true
+					}
+					request_type: {
+						type:             "string"
+						description:      "The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`"
+						description_kind: "plain"
+						computed:         true
+					}
+					revoked_at: {
+						type:             "string"
+						description:      "The timestamp when the certificate was revoked."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description:      "Use this data source to retrieve an existing origin ca certificate."
 				description_kind: "markdown"
 			}
 		}
@@ -14618,9 +24000,15 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_record: {
-			version: 2
+			version: 3
 			block: {
 				attributes: {
+					content: {
+						type:             "string"
+						description:      "Content to filter record results on."
+						description_kind: "markdown"
+						optional:         true
+					}
 					hostname: {
 						type:             "string"
 						description:      "Hostname to filter DNS record results on."
@@ -14631,12 +24019,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
-						computed:         true
-					}
-					locked: {
-						type:             "bool"
-						description:      "Locked status of the found DNS record."
-						description_kind: "markdown"
 						computed:         true
 					}
 					priority: {
@@ -14680,12 +24062,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "The zone identifier to target for the resource."
 						description_kind: "markdown"
 						required:         true
-					}
-					zone_name: {
-						type:             "string"
-						description:      "Zone name of the found DNS record."
-						description_kind: "markdown"
-						computed:         true
 					}
 				}
 				description: """
@@ -14750,6 +24126,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}]]
 											header: ["list", ["object", {
 												check_presence: ["list", "string"]
+												contains: ["map", ["set", "string"]]
 												exclude_origin: "bool"
 												include: ["list", "string"]
 											}]]
@@ -14767,6 +24144,10 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}]]
 										}]]
 										ignore_query_strings_order: "bool"
+									}]]
+									cache_reserve: ["list", ["object", {
+										eligible:          "bool"
+										minimum_file_size: "number"
 									}]]
 									content:      "string"
 									content_type: "string"
@@ -14964,6 +24345,98 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				description_kind: "markdown"
 			}
 		}
+		cloudflare_tunnel: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description:      "ID of the tunnel."
+						description_kind: "markdown"
+						computed:         true
+					}
+					is_deleted: {
+						type:             "bool"
+						description:      "If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the tunnel. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					remote_config: {
+						type:             "bool"
+						description:      "Whether the tunnel can be configured remotely from the Zero Trust dashboard."
+						description_kind: "markdown"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description:      "The status of the tunnel. Available values: `inactive`, `degraded`, `healthy`, `down`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					tunnel_type: {
+						type:             "string"
+						description:      "The type of the tunnel. Available values: `cfd_tunnel`, `warp_connector`."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description:      "Use this datasource to lookup a tunnel in an account."
+				description_kind: "markdown"
+				deprecated:       true
+			}
+		}
+		cloudflare_tunnel_virtual_network: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					comment: {
+						type:             "string"
+						description:      "The Virtual Network Comment."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					is_default: {
+						type:             "bool"
+						description:      "If true, only include deleted virtual networks. If false, exclude deleted virtual networks. If empty, all virtual networks will be included."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The Virtual Network Name."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description:      "Use this datasource to lookup a tunnel virtual network in an account."
+				description_kind: "markdown"
+				deprecated:       true
+			}
+		}
 		cloudflare_user: {
 			version: 0
 			block: {
@@ -14988,6 +24461,182 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 				}
 				description:      "Use this data source to retrieve information about the currently authenticated user."
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_access_application: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					aud: {
+						type:             "string"
+						description:      "Application Audience (AUD) Tag of the application."
+						description_kind: "markdown"
+						computed:         true
+					}
+					domain: {
+						type:             "string"
+						description:      "The primary hostname and path that Access will secure. Must provide only one of `name`, `domain`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Friendly name of the Access Application. Must provide only one of `name`, `domain`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				description:      "Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)"
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_access_identity_provider: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Access Identity Provider name to search for."
+						description_kind: "markdown"
+						required:         true
+					}
+					type: {
+						type:             "string"
+						description:      "Access Identity Provider Type."
+						description_kind: "markdown"
+						computed:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				description:      "Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name."
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_tunnel_cloudflared: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description:      "ID of the tunnel."
+						description_kind: "markdown"
+						computed:         true
+					}
+					is_deleted: {
+						type:             "bool"
+						description:      "If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the tunnel. **Modifying this attribute will force creation of a new resource.**"
+						description_kind: "markdown"
+						required:         true
+					}
+					remote_config: {
+						type:             "bool"
+						description:      "Whether the tunnel can be configured remotely from the Zero Trust dashboard."
+						description_kind: "markdown"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description:      "The status of the tunnel. Available values: `inactive`, `degraded`, `healthy`, `down`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					tunnel_type: {
+						type:             "string"
+						description:      "The type of the tunnel. Available values: `cfd_tunnel`, `warp_connector`."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description:      "Use this datasource to lookup a tunnel in an account."
+				description_kind: "markdown"
+			}
+		}
+		cloudflare_zero_trust_tunnel_virtual_network: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "The account identifier to target for the resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					comment: {
+						type:             "string"
+						description:      "The Virtual Network Comment."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					is_default: {
+						type:             "bool"
+						description:      "If true, only include deleted virtual networks. If false, exclude deleted virtual networks. If empty, all virtual networks will be included."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The Virtual Network Name."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description:      "Use this datasource to lookup a tunnel virtual network in an account."
 				description_kind: "markdown"
 			}
 		}

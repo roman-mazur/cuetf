@@ -4,7 +4,7 @@ package cloudflare
 #Terraform: {
   terraform: required_providers: cloudflare: {
       source: "cloudflare/cloudflare"
-      version: "= 4.17"
+      version: "= 4.43"
 	}
 
 	provider?: cloudflare: #provider

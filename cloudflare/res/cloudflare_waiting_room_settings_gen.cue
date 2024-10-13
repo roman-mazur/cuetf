@@ -5,5 +5,5 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_waiting_room_settings")
 	id?:                           string
 	search_engine_crawler_bypass?: bool
-	zone_id:                       string
+	zone_id!:                      string
 }

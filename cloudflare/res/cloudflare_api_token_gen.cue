@@ -9,12 +9,12 @@ import "list"
 	id?:          string
 	issued_on?:   string
 	modified_on?: string
-	name:         string
+	name!:        string
 	not_before?:  string
 	status?:      string
 	value?:       string
-	condition?:   #condition | list.MaxItems(1) & [...#condition]
-	policy?:      #policy | [_, ...] & [...#policy]
+	condition?: #condition | list.MaxItems(1) & [...#condition]
+	policy?: #policy | [_, ...] & [...#policy]
 
 	#condition: {
 		request_ip?: #condition.#request_ip | list.MaxItems(1) & [...#condition.#request_ip]
@@ -27,7 +27,7 @@ import "list"
 
 	#policy: {
 		effect?: string
-		permission_groups: [...string]
-		resources: [string]: string
+		permission_groups!: [...string]
+		resources!: [string]: string
 	}
 }

@@ -5,8 +5,8 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_api_shield_schema")
 	id?:                 string
 	kind?:               string
-	name:                string
-	source:              string
+	name!:               string
+	source!:             string
 	validation_enabled?: bool
-	zone_id:             string
+	zone_id!:            string
 }

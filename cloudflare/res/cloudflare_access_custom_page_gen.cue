@@ -7,7 +7,7 @@ package res
 	app_count?:   number
 	custom_html?: string
 	id?:          string
-	name:         string
-	type:         string
+	name!:        string
+	type!:        string
 	zone_id?:     string
 }

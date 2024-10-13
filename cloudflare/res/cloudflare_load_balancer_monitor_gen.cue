@@ -3,7 +3,7 @@ package res
 #cloudflare_load_balancer_monitor: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_load_balancer_monitor")
-	account_id:        string
+	account_id!:       string
 	allow_insecure?:   bool
 	consecutive_down?: number
 	consecutive_up?:   number
@@ -22,10 +22,10 @@ package res
 	retries?:          number
 	timeout?:          number
 	type?:             string
-	header?:           #header | [...#header]
+	header?: #header | [...#header]
 
 	#header: {
-		header: string
-		values: [...string]
+		header!: string
+		values!: [...string]
 	}
 }

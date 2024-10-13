@@ -7,11 +7,11 @@ package res
 	custom_page_html?:        string
 	description?:             string
 	disable_session_renewal?: bool
-	event_end_time:           string
-	event_start_time:         string
+	event_end_time!:          string
+	event_start_time!:        string
 	id?:                      string
 	modified_on?:             string
-	name:                     string
+	name!:                    string
 	new_users_per_minute?:    number
 	prequeue_start_time?:     string
 	queueing_method?:         string
@@ -19,6 +19,6 @@ package res
 	shuffle_at_event_start?:  bool
 	suspended?:               bool
 	total_active_users?:      number
-	waiting_room_id:          string
-	zone_id:                  string
+	waiting_room_id!:         string
+	zone_id!:                 string
 }

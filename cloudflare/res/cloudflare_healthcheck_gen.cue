@@ -3,7 +3,7 @@ package res
 #cloudflare_healthcheck: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_healthcheck")
-	address:         string
+	address!:        string
 	allow_insecure?: bool
 	check_regions?: [...string]
 	consecutive_fails?:     number
@@ -17,20 +17,20 @@ package res
 	interval?:         number
 	method?:           string
 	modified_on?:      string
-	name:              string
+	name!:             string
 	path?:             string
 	port?:             number
 	retries?:          number
 	suspended?:        bool
 	timeout?:          number
-	type:              string
-	zone_id:           string
-	header?:           #header | [...#header]
-	timeouts?:         #timeouts
+	type!:             string
+	zone_id!:          string
+	header?: #header | [...#header]
+	timeouts?: #timeouts
 
 	#header: {
-		header: string
-		values: [...string]
+		header!: string
+		values!: [...string]
 	}
 
 	#timeouts: create?: string

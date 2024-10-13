@@ -10,6 +10,6 @@ package res
 	expires_at?:           string
 	id?:                   string
 	min_days_for_renewal?: number
-	name:                  string
+	name!:                 string
 	zone_id?:              string
 }

@@ -5,5 +5,5 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_zone_cache_reserve")
 	enabled?: bool
 	id?:      string
-	zone_id:  string
+	zone_id!: string
 }

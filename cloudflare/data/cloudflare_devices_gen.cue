@@ -3,7 +3,7 @@ package data
 #cloudflare_devices: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_devices")
-	account_id: string
+	account_id!: string
 	devices?: [...{
 		created?:            string
 		deleted?:            bool
@@ -19,6 +19,7 @@ package data
 		os_distro_name?:     string
 		os_distro_revision?: string
 		os_version?:         string
+		os_version_extra?:   string
 		revoked_at?:         string
 		serial_number?:      string
 		updated?:            string

@@ -7,21 +7,21 @@ import "list"
 	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_record")
 	allow_overwrite?: bool
 	comment?:         string
+	content?:         string
 	created_on?:      string
 	hostname?:        string
 	id?:              string
 	metadata?: [string]: string
 	modified_on?: string
-	name:         string
+	name!:        string
 	priority?:    number
 	proxiable?:   bool
 	proxied?:     bool
 	tags?: [...string]
-	ttl?:      number
-	type:      string
-	value?:    string
-	zone_id:   string
-	data?:     #data | list.MaxItems(1) & [...#data]
+	ttl?:     number
+	type!:    string
+	zone_id!: string
+	data?: #data | list.MaxItems(1) & [...#data]
 	timeouts?: #timeouts
 
 	#data: {

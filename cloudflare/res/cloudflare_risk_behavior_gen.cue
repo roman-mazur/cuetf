@@ -1,0 +1,14 @@
+package res
+
+#cloudflare_risk_behavior: {
+	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
+	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_risk_behavior")
+	account_id!: string
+	behavior?: #behavior | [...#behavior]
+
+	#behavior: {
+		enabled!:    bool
+		name!:       string
+		risk_level!: string
+	}
+}

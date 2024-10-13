@@ -6,6 +6,6 @@ package res
 	account_id?: string
 	app_count?:  number
 	id?:         string
-	name:        string
+	name!:       string
 	zone_id?:    string
 }

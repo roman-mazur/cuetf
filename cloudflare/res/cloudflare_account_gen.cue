@@ -5,6 +5,6 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_account")
 	enforce_twofactor?: bool
 	id?:                string
-	name:               string
+	name!:              string
 	type?:              string
 }

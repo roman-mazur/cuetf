@@ -15,5 +15,5 @@ package res
 	modified_on?:      string
 	public_key?:       string
 	status?:           string
-	zone_id:           string
+	zone_id!:          string
 }

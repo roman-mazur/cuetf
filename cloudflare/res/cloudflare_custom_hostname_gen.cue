@@ -6,14 +6,14 @@ package res
 	custom_metadata?: [string]: string
 	custom_origin_server?: string
 	custom_origin_sni?:    string
-	hostname:              string
+	hostname!:             string
 	id?:                   string
 	ownership_verification?: [string]: string
 	ownership_verification_http?: [string]: string
 	status?:                          string
 	wait_for_ssl_pending_validation?: bool
-	zone_id:                          string
-	ssl?:                             #ssl | [...#ssl]
+	zone_id!:                         string
+	ssl?: #ssl | [...#ssl]
 
 	#ssl: {
 		bundle_method?:         string

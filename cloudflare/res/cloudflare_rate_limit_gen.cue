@@ -9,28 +9,28 @@ import "list"
 	description?: string
 	disabled?:    bool
 	id?:          string
-	period:       number
-	threshold:    number
-	zone_id:      string
-	action?:      #action | list.MaxItems(1) & [_, ...] & [...#action]
-	correlate?:   #correlate | list.MaxItems(1) & [...#correlate]
-	match?:       #match | list.MaxItems(1) & [...#match]
+	period!:      number
+	threshold!:   number
+	zone_id!:     string
+	action?: #action | list.MaxItems(1) & [_, ...] & [...#action]
+	correlate?: #correlate | list.MaxItems(1) & [...#correlate]
+	match?: #match | list.MaxItems(1) & [...#match]
 
 	#action: {
-		mode:      string
-		timeout?:  number
+		mode!:    string
+		timeout?: number
 		response?: #action.#response | list.MaxItems(1) & [...#action.#response]
 
 		#response: {
-			body:         string
-			content_type: string
+			body!:         string
+			content_type!: string
 		}
 	}
 
 	#correlate: by?: string
 
 	#match: {
-		request?:  #match.#request | list.MaxItems(1) & [...#match.#request]
+		request?: #match.#request | list.MaxItems(1) & [...#match.#request]
 		response?: #match.#response | list.MaxItems(1) & [...#match.#response]
 
 		#request: {

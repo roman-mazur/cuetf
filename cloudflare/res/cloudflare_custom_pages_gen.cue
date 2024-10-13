@@ -6,7 +6,7 @@ package res
 	account_id?: string
 	id?:         string
 	state?:      string
-	type:        string
-	url:         string
+	type!:       string
+	url!:        string
 	zone_id?:    string
 }

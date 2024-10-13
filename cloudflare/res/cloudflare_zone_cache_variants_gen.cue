@@ -15,5 +15,5 @@ package res
 	tif?: [...string]
 	tiff?: [...string]
 	webp?: [...string]
-	zone_id: string
+	zone_id!: string
 }

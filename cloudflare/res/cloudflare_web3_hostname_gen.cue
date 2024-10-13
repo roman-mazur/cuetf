@@ -8,8 +8,8 @@ package res
 	dnslink?:     string
 	id?:          string
 	modified_on?: string
-	name:         string
+	name!:        string
 	status?:      string
-	target:       string
-	zone_id:      string
+	target!:      string
+	zone_id!:     string
 }

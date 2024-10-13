@@ -14,5 +14,5 @@ package data
 	key_type?:         string
 	public_key?:       string
 	status?:           string
-	zone_id:           string
+	zone_id!:          string
 }

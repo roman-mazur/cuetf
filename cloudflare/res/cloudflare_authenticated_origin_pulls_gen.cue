@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_authenticated_origin_pulls")
 	authenticated_origin_pulls_certificate?: string
-	enabled:                                 bool
+	enabled!:                                bool
 	hostname?:                               string
 	id?:                                     string
-	zone_id:                                 string
+	zone_id!:                                string
 }

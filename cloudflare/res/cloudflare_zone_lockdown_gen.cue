@@ -7,12 +7,12 @@ package res
 	id?:          string
 	paused?:      bool
 	priority?:    number
-	urls: [...string]
-	zone_id:         string
+	urls!: [...string]
+	zone_id!: string
 	configurations?: #configurations | [_, ...] & [...#configurations]
 
 	#configurations: {
-		target: string
-		value:  string
+		target!: string
+		value!:  string
 	}
 }

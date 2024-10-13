@@ -8,6 +8,6 @@ package res
 	certificate?: string
 	fingerprint?: string
 	id?:          string
-	name:         string
+	name!:        string
 	zone_id?:     string
 }

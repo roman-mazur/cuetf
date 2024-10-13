@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_access_identity_provider")
 	account_id?: string
 	id?:         string
-	name:        string
+	name!:       string
 	type?:       string
 	zone_id?:    string
 }

@@ -8,8 +8,8 @@ package res
 	colo_regions?: [...string]
 	description?: string
 	id?:          string
-	nexthop:      string
-	prefix:       string
-	priority:     number
+	nexthop!:     string
+	prefix!:      string
+	priority!:    number
 	weight?:      number
 }

@@ -5,16 +5,16 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_email_routing_catch_all")
 	enabled?: bool
 	id?:      string
-	name:     string
+	name!:    string
 	tag?:     string
-	zone_id:  string
-	action?:  #action | [_, ...] & [...#action]
+	zone_id!: string
+	action?: #action | [_, ...] & [...#action]
 	matcher?: #matcher | [_, ...] & [...#matcher]
 
 	#action: {
-		type: string
-		value: [...string]
+		type!: string
+		value!: [...string]
 	}
 
-	#matcher: type: string
+	#matcher: type!: string
 }
