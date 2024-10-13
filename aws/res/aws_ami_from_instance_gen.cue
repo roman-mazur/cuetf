@@ -28,7 +28,7 @@ package res
 	snapshot_without_reboot?: bool
 	source_instance_id!:      string
 	sriov_net_support?:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	tpm_support?:         string
 	usage_operation?:     string

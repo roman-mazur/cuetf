@@ -18,7 +18,7 @@ package res
 	placement_group_arn?:        string
 	reservation_type?:           string
 	start_date?:                 string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	tenancy?:  string
 	timeouts?: #timeouts

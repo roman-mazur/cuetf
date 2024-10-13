@@ -9,7 +9,7 @@ import "list"
 	id?:          string
 	metric_name!: string
 	name!:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	activated_rule?: #activated_rule | [...#activated_rule]
 

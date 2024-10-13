@@ -24,7 +24,7 @@ package res
 	resource_path?:       string
 	routing_control_arn?: string
 	search_string?:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type!: string
 }

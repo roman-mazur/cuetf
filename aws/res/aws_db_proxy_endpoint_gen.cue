@@ -9,7 +9,7 @@ package res
 	endpoint?:               string
 	id?:                     string
 	is_default?:             bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_role?: string
 	vpc_id?:      string

@@ -13,7 +13,7 @@ package res
 	instance_type?:     string
 	outpost_arn?:       string
 	owner_id?:          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

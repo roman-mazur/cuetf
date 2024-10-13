@@ -25,7 +25,7 @@ import "list"
 	requester_pays?:          bool
 	role_arn!:                string
 	squash?:                  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_endpoint_dns_name?: string
 	cache_attributes?: #cache_attributes | list.MaxItems(1) & [...#cache_attributes]

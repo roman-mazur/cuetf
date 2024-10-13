@@ -12,7 +12,7 @@ package res
 	name_prefix?:                    string
 	policy?:                         string
 	recovery_window_in_days?:        number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	replica?: #replica | [...#replica]
 

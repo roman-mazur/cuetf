@@ -19,7 +19,7 @@ import "list"
 	parameters?: [string]: string
 	schedule_expression?: string
 	sync_compliance?:     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	wait_for_success_timeout_seconds?: number
 	output_location?: #output_location | list.MaxItems(1) & [...#output_location]

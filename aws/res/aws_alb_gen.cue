@@ -30,7 +30,7 @@ import "list"
 	preserve_host_header?:                                         bool
 	security_groups?: [...string]
 	subnets?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_id?:                     string
 	xff_header_processing_mode?: string

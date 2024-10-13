@@ -25,7 +25,7 @@ import "list"
 	region!:                        string
 	service_role_arn!:              string
 	stack_endpoint?:                string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	use_custom_cookbooks?:         bool
 	use_opsworks_security_groups?: bool

@@ -12,7 +12,7 @@ import "list"
 	latest_revision?: number
 	name!:            string
 	state?:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	location?: #location | list.MaxItems(1) & [_, ...] & [...#location]
 	timeouts?: #timeouts

@@ -11,6 +11,6 @@ package res
 	key_pair_id?:     string
 	key_type?:        string
 	public_key!:      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

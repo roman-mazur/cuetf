@@ -9,7 +9,7 @@ import "list"
 	arn?:                    string
 	id?:                     string
 	minimum_engine_version?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	user_name!: string
 	authentication_mode?: #authentication_mode | list.MaxItems(1) & [_, ...] & [...#authentication_mode]

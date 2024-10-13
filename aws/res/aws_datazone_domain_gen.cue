@@ -11,7 +11,7 @@ package res
 	name!:                  string
 	portal_url?:            string
 	skip_deletion_check?:   bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	single_sign_on?: #single_sign_on | [...#single_sign_on]
 	timeouts?: #timeouts

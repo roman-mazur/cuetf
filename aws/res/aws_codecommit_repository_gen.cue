@@ -12,6 +12,6 @@ package res
 	kms_key_id?:      string
 	repository_id?:   string
 	repository_name!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

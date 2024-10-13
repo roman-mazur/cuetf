@@ -12,6 +12,6 @@ package res
 	id?:                             string
 	name!:                           string
 	replicate_to!:                   string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

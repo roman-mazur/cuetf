@@ -9,7 +9,7 @@ package res
 	kms_key?:             string
 	name?:                string
 	permissions_mode!:    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

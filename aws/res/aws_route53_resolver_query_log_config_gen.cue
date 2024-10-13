@@ -9,6 +9,6 @@ package res
 	name!:            string
 	owner_id?:        string
 	share_status?:    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

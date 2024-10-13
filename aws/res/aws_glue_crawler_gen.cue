@@ -16,7 +16,7 @@ import "list"
 	schedule?:               string
 	security_configuration?: string
 	table_prefix?:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	catalog_target?: #catalog_target | [...#catalog_target]
 	delta_target?: #delta_target | [...#delta_target]

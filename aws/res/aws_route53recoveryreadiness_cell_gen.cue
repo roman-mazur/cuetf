@@ -8,7 +8,7 @@ package res
 	cells?: [...string]
 	id?: string
 	parent_readiness_scopes?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

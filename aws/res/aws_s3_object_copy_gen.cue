@@ -50,7 +50,7 @@ package res
 	source_version_id?:             string
 	storage_class?:                 string
 	tagging_directive?:             string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	version_id?:       string
 	website_redirect?: string

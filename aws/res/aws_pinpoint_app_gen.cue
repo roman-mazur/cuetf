@@ -10,7 +10,7 @@ import "list"
 	id?:             string
 	name?:           string
 	name_prefix?:    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	campaign_hook?: #campaign_hook | list.MaxItems(1) & [...#campaign_hook]
 	limits?: #limits | list.MaxItems(1) & [...#limits]

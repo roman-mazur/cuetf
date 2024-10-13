@@ -13,7 +13,7 @@ package res
 		message?: string
 		status?:  string
 	}]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_arn!: string
 	type!:       string

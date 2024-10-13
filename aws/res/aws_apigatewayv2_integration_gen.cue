@@ -20,7 +20,7 @@ import "list"
 	passthrough_behavior?:                      string
 	payload_format_version?:                    string
 	request_parameters?: [string]: string
-	request_templates?: [string]: string
+	request_templates?: [string]:  string
 	template_selection_expression?: string
 	timeout_milliseconds?:          number
 	response_parameters?: #response_parameters | [...#response_parameters]

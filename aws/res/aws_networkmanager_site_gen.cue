@@ -9,7 +9,7 @@ import "list"
 	description?:       string
 	global_network_id!: string
 	id?:                string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	location?: #location | list.MaxItems(1) & [...#location]
 	timeouts?: #timeouts

@@ -11,7 +11,7 @@ import "list"
 	description?:       string
 	id?:                string
 	name!:              string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	report_delivery_channel?: #report_delivery_channel | list.MaxItems(1) & [_, ...] & [...#report_delivery_channel]
 	report_setting?: #report_setting | list.MaxItems(1) & [_, ...] & [...#report_setting]

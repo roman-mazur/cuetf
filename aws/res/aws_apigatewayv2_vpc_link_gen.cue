@@ -8,6 +8,6 @@ package res
 	name!: string
 	security_group_ids!: [...string]
 	subnet_ids!: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

@@ -12,6 +12,6 @@ package res
 	owner?:            string
 	repository_count?: number
 	s3_bucket_arn?:    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

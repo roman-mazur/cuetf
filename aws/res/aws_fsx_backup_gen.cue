@@ -8,7 +8,7 @@ package res
 	id?:             string
 	kms_key_id?:     string
 	owner_id?:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?:      string
 	volume_id?: string

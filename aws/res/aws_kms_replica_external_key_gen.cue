@@ -16,7 +16,7 @@ package res
 	key_usage?:                          string
 	policy?:                             string
 	primary_key_arn!:                    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	valid_to?: string
 }

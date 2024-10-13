@@ -12,7 +12,7 @@ package res
 	name!:              string
 	region?:            string
 	support_code?:      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	url?: string
 }

@@ -11,6 +11,6 @@ package res
 	lock_token?:         string
 	name!:               string
 	scope!:              string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

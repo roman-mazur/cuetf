@@ -9,7 +9,7 @@ package res
 	priority!:              number
 	scheduling_policy_arn?: string
 	state!:                 string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	compute_environment_order?: #compute_environment_order | [...#compute_environment_order]
 	job_state_time_limit_action?: #job_state_time_limit_action | [...#job_state_time_limit_action]

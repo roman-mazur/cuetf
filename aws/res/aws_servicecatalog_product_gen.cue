@@ -18,7 +18,7 @@ import "list"
 	support_description?: string
 	support_email?:       string
 	support_url?:         string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type!: string
 	provisioning_artifact_parameters?: #provisioning_artifact_parameters | list.MaxItems(1) & [_, ...] & [...#provisioning_artifact_parameters]

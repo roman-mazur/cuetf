@@ -16,6 +16,6 @@ package res
 	parent_id?:                  string
 	role_name?:                  string
 	status?:                     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

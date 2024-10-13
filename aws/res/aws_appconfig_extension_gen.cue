@@ -7,7 +7,7 @@ package res
 	description?: string
 	id?:          string
 	name!:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	version?: number
 	action_point?: #action_point | [_, ...] & [...#action_point]

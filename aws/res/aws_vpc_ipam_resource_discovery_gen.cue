@@ -9,7 +9,7 @@ package res
 	ipam_resource_discovery_region?: string
 	is_default?:                     bool
 	owner_id?:                       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	operating_regions?: #operating_regions | [_, ...] & [...#operating_regions]
 	timeouts?: #timeouts

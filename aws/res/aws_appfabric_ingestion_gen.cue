@@ -8,7 +8,7 @@ package res
 	arn?:            string
 	id?:             string
 	ingestion_type!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	tenant_id!: string
 }

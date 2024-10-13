@@ -11,7 +11,7 @@ package res
 	name!:             string
 	relay_state?:      string
 	session_duration?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

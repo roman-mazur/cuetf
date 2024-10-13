@@ -11,7 +11,7 @@ import "list"
 	kms_key!:     string
 	name!:        string
 	source_uri!:  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	schedule_config?: #schedule_config | list.MaxItems(1) & [_, ...] & [...#schedule_config]
 

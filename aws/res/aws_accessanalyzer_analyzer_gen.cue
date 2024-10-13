@@ -8,7 +8,7 @@ import "list"
 	analyzer_name!: string
 	arn?:           string
 	id?:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?: string
 	configuration?: #configuration | list.MaxItems(1) & [...#configuration]

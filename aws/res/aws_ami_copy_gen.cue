@@ -31,7 +31,7 @@ package res
 	source_ami_id!:           string
 	source_ami_region!:       string
 	sriov_net_support?:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	tpm_support?:         string
 	usage_operation?:     string

@@ -11,7 +11,7 @@ import "list"
 	s3_bucket_arn!:    string
 	s3_storage_class?: string
 	subdirectory!:     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	uri?: string
 	s3_config?: #s3_config | list.MaxItems(1) & [_, ...] & [...#s3_config]

@@ -11,7 +11,7 @@ import "list"
 	registry_id?:     string
 	repository_name!: string
 	repository_uri?:  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	catalog_data?: #catalog_data | list.MaxItems(1) & [...#catalog_data]
 	timeouts?: #timeouts

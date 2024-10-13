@@ -17,6 +17,6 @@ package res
 	manage_admin_password?: bool
 	namespace_id?:          string
 	namespace_name!:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

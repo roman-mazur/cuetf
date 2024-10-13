@@ -9,7 +9,7 @@ import "list"
 	description?: string
 	id?:          string
 	name!:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	configuration?: #configuration | [...#configuration]
 	resource_query?: #resource_query | list.MaxItems(1) & [...#resource_query]

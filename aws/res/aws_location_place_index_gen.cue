@@ -11,7 +11,7 @@ import "list"
 	id?:          string
 	index_arn?:   string
 	index_name!:  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	update_time?: string
 	data_source_configuration?: #data_source_configuration | list.MaxItems(1) & [...#data_source_configuration]

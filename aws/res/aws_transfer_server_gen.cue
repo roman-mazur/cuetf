@@ -25,7 +25,7 @@ import "list"
 	security_policy_name?:        string
 	sftp_authentication_methods?: string
 	structured_log_destinations?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	url?: string
 	endpoint_details?: #endpoint_details | list.MaxItems(1) & [...#endpoint_details]

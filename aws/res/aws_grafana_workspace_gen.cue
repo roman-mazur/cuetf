@@ -22,7 +22,7 @@ import "list"
 	role_arn?:                  string
 	saml_configuration_status?: string
 	stack_set_name?:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	network_access_control?: #network_access_control | list.MaxItems(1) & [...#network_access_control]
 	timeouts?: #timeouts

@@ -17,8 +17,8 @@ import "list"
 	invoke_url?:            string
 	rest_api_id!:           string
 	stage_name!:            string
-	tags?: [string]: string
-	tags_all?: [string]: string
+	tags?: [string]:      string
+	tags_all?: [string]:  string
 	variables?: [string]: string
 	web_acl_arn?:          string
 	xray_tracing_enabled?: bool

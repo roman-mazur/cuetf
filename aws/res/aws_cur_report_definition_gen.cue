@@ -15,7 +15,7 @@ package res
 	s3_bucket!:              string
 	s3_prefix?:              string
 	s3_region!:              string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	time_unit!: string
 }

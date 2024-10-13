@@ -12,6 +12,6 @@ package res
 	path?:             string
 	policy!:           string
 	policy_id?:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

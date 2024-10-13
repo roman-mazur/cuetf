@@ -8,7 +8,7 @@ package res
 	id?:       string
 	name!:     string
 	rules_package_arns!: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_arn!: string
 	event_subscription?: #event_subscription | [...#event_subscription]

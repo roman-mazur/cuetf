@@ -15,7 +15,7 @@ package res
 	master_account_id?:                     string
 	relationship_status?:                   string
 	status?:                                string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	updated_at?: string
 	timeouts?:   #timeouts

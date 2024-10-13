@@ -11,7 +11,7 @@ import "list"
 	name!:        string
 	service_arn!: string
 	status?:      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	ingress_vpc_configuration?: #ingress_vpc_configuration | list.MaxItems(1) & [_, ...] & [...#ingress_vpc_configuration]
 

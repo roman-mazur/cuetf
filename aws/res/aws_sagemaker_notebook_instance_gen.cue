@@ -21,7 +21,7 @@ import "list"
 	root_access?:             string
 	security_groups?: [...string]
 	subnet_id?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	url?:         string
 	volume_size?: number

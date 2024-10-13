@@ -13,7 +13,7 @@ import "list"
 	server_certificate_arns?: [...string]
 	service_type?: string
 	status?:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	validation_certificate_arn?: string
 	authorizer_config?: #authorizer_config | list.MaxItems(1) & [...#authorizer_config]

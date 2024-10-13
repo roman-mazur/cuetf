@@ -14,7 +14,7 @@ package res
 	name!:                           string
 	service_role!:                   string
 	subnet_ids!: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	url?:                         string
 	user_role?:                   string

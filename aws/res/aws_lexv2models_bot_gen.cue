@@ -9,8 +9,8 @@ package res
 	idle_session_ttl_in_seconds!: number
 	name!:                        string
 	role_arn!:                    string
-	tags?: [string]: string
-	tags_all?: [string]: string
+	tags?: [string]:                string
+	tags_all?: [string]:            string
 	test_bot_alias_tags?: [string]: string
 	type?: string
 	data_privacy?: #data_privacy | [...#data_privacy]

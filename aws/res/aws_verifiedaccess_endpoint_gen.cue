@@ -16,7 +16,7 @@ import "list"
 	id?:                       string
 	policy_document?:          string
 	security_group_ids?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	verified_access_group_id!:    string
 	verified_access_instance_id?: string

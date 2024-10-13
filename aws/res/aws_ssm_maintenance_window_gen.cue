@@ -15,6 +15,6 @@ package res
 	schedule_offset?:            number
 	schedule_timezone?:          string
 	start_date?:                 string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

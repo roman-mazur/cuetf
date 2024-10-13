@@ -10,7 +10,7 @@ package res
 	last_modified?: string
 	name!:          string
 	registry_name!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type!:                 string
 	version?:              string

@@ -11,7 +11,7 @@ import "list"
 	domain_id!:  string
 	id?:         string
 	space_name?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	user_profile_name?: string
 	resource_spec?: #resource_spec | list.MaxItems(1) & [...#resource_spec]

@@ -12,6 +12,6 @@ package res
 	launch_count?:      number
 	name!:              string
 	pattern!:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

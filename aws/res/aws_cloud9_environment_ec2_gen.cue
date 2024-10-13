@@ -13,7 +13,7 @@ package res
 	name!:                        string
 	owner_arn?:                   string
 	subnet_id?:                   string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?: string
 }

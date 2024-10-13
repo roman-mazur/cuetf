@@ -17,7 +17,7 @@ package res
 	name!:                    string
 	read_write?:              bool
 	status?:                  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	segment_configurations?: #segment_configurations | [...#segment_configurations]
 	timeouts?: #timeouts

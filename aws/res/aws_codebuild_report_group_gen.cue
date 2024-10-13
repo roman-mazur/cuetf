@@ -10,7 +10,7 @@ import "list"
 	delete_reports?: bool
 	id?:             string
 	name!:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type!: string
 	export_config?: #export_config | list.MaxItems(1) & [_, ...] & [...#export_config]

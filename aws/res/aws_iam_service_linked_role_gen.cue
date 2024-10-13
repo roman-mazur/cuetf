@@ -11,7 +11,7 @@ package res
 	id?:               string
 	name?:             string
 	path?:             string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	unique_id?: string
 }

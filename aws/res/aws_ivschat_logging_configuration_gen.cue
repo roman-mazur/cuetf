@@ -9,7 +9,7 @@ import "list"
 	id?:    string
 	name?:  string
 	state?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	destination_configuration?: #destination_configuration | list.MaxItems(1) & [...#destination_configuration]
 	timeouts?: #timeouts

@@ -20,7 +20,7 @@ import "list"
 	private_ip_address?: string
 	public_ip_address?:  string
 	ram_size?:           number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	user_data?: string
 	username?:  string

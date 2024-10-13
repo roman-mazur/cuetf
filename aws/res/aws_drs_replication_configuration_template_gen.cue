@@ -17,8 +17,8 @@ package res
 	replication_servers_security_groups_ids!: [...string]
 	staging_area_subnet_id!: string
 	staging_area_tags!: [string]: string
-	tags?: [string]: string
-	tags_all?: [string]: string
+	tags?: [string]:              string
+	tags_all?: [string]:          string
 	use_dedicated_replication_server!: bool
 	pit_policy?: #pit_policy | [...#pit_policy]
 	timeouts?: #timeouts

@@ -13,7 +13,7 @@ import "list"
 	name!:                  string
 	recommendation_run_id?: string
 	ruleset!:               string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_table?: #target_table | list.MaxItems(1) & [...#target_table]
 

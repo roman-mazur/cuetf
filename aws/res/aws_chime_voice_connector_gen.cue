@@ -9,6 +9,6 @@ package res
 	name!:               string
 	outbound_host_name?: string
 	require_encryption!: bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

@@ -6,7 +6,7 @@ package res
 	http_method!: string
 	id?:          string
 	resource_id!: string
-	response_models?: [string]: string
+	response_models?: [string]:     string
 	response_parameters?: [string]: bool
 	rest_api_id!: string
 	status_code!: string

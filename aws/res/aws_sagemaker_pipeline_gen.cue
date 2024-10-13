@@ -12,7 +12,7 @@ import "list"
 	pipeline_display_name!: string
 	pipeline_name!:         string
 	role_arn?:              string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	parallelism_configuration?: #parallelism_configuration | list.MaxItems(1) & [...#parallelism_configuration]
 	pipeline_definition_s3_location?: #pipeline_definition_s3_location | list.MaxItems(1) & [...#pipeline_definition_s3_location]

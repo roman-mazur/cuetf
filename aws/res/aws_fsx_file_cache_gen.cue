@@ -19,7 +19,7 @@ import "list"
 	security_group_ids?: [...string]
 	storage_capacity!: number
 	subnet_ids!: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_id?: string
 	data_repository_association?: #data_repository_association | list.MaxItems(8) & [...#data_repository_association]

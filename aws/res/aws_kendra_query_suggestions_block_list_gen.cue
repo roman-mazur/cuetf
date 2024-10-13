@@ -13,7 +13,7 @@ import "list"
 	query_suggestions_block_list_id?: string
 	role_arn!:                        string
 	status?:                          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	source_s3_path?: #source_s3_path | list.MaxItems(1) & [_, ...] & [...#source_s3_path]
 	timeouts?: #timeouts

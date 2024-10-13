@@ -20,7 +20,7 @@ import "list"
 	resource_access_role?:   string
 	service_role!:           string
 	source_version?:         string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	artifacts?: #artifacts | list.MaxItems(1) & [_, ...] & [...#artifacts]
 	build_batch_config?: #build_batch_config | list.MaxItems(1) & [...#build_batch_config]

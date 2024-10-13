@@ -23,7 +23,7 @@ import "list"
 	resource_type?:     string
 	status?:            string
 	support_code?:      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	cache_behavior?: #cache_behavior | [...#cache_behavior]
 	cache_behavior_settings?: #cache_behavior_settings | list.MaxItems(1) & [...#cache_behavior_settings]

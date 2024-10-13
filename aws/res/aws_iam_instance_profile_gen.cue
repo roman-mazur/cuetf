@@ -10,7 +10,7 @@ package res
 	name_prefix?: string
 	path?:        string
 	role?:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	unique_id?: string
 }

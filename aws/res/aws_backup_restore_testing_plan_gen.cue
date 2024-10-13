@@ -8,7 +8,7 @@ package res
 	schedule_expression!:          string
 	schedule_expression_timezone?: string
 	start_window_hours?:           number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	recovery_point_selection?: #recovery_point_selection | [...#recovery_point_selection]
 

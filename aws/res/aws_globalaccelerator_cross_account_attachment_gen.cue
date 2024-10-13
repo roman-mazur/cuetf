@@ -9,7 +9,7 @@ package res
 	last_modified_time?: string
 	name!:               string
 	principals?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	resource?: #resource | [...#resource]
 

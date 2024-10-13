@@ -13,7 +13,7 @@ import "list"
 	platform_capabilities?: [...string]
 	propagate_tags?: bool
 	revision?:       number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type!: string
 	retry_strategy?: #retry_strategy | list.MaxItems(1) & [...#retry_strategy]

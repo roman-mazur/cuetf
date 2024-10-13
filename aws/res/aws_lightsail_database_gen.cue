@@ -30,6 +30,6 @@ package res
 	secondary_availability_zone?:  string
 	skip_final_snapshot?:          bool
 	support_code?:                 string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

@@ -23,7 +23,7 @@ import "list"
 		value_in_ia?:       number
 		value_in_standard?: number
 	}]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	throughput_mode?: string
 	lifecycle_policy?: #lifecycle_policy | list.MaxItems(3) & [...#lifecycle_policy]

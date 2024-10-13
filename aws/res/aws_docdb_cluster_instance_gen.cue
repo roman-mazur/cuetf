@@ -28,7 +28,7 @@ package res
 	promotion_tier?:                  number
 	publicly_accessible?:             bool
 	storage_encrypted?:               bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	writer?:   bool
 	timeouts?: #timeouts

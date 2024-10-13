@@ -14,6 +14,6 @@ package res
 	role_arn?:            string
 	schedule_expression?: string
 	state?:               string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

@@ -13,7 +13,7 @@ import "list"
 	id?:               string
 	name!:             string
 	query_log_status!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	update_time?: string
 	data_encryption_metadata?: #data_encryption_metadata | list.MaxItems(1) & [...#data_encryption_metadata]

@@ -17,7 +17,7 @@ package res
 		role_type?: string
 	}]
 	status?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	assessment_reports_destination?: #assessment_reports_destination | [...#assessment_reports_destination]
 	scope?: #scope | [...#scope]

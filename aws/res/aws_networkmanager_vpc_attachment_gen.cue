@@ -17,7 +17,7 @@ import "list"
 	segment_name?:                  string
 	state?:                         string
 	subnet_arns!: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_arn!: string
 	options?: #options | list.MaxItems(1) & [...#options]

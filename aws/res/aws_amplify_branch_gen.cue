@@ -24,7 +24,7 @@ package res
 	pull_request_environment_name?: string
 	source_branch?:                 string
 	stage?:                         string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	ttl?: string
 }

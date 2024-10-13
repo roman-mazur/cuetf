@@ -12,7 +12,7 @@ package res
 	role_arn!: string
 	security_group_ids!: [...string]
 	subnet_ids!: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_connection_id!: string
 	timeouts?:          #timeouts

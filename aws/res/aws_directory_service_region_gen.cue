@@ -9,7 +9,7 @@ import "list"
 	directory_id!:                         string
 	id?:                                   string
 	region_name!:                          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 	vpc_settings?: #vpc_settings | list.MaxItems(1) & [_, ...] & [...#vpc_settings]

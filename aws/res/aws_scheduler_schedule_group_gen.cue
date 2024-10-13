@@ -10,7 +10,7 @@ package res
 	name?:                   string
 	name_prefix?:            string
 	state?:                  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

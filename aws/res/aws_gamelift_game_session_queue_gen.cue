@@ -9,7 +9,7 @@ package res
 	id?:                  string
 	name!:                string
 	notification_target?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeout_in_seconds?: number
 	player_latency_policy?: #player_latency_policy | [...#player_latency_policy]

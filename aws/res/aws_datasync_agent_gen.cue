@@ -11,7 +11,7 @@ package res
 	private_link_endpoint?: string
 	security_group_arns?: [...string]
 	subnet_arns?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_endpoint_id?: string
 	timeouts?:        #timeouts

@@ -10,7 +10,7 @@ package res
 	device_name?:      string
 	id?:               string
 	ip_address?:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type!: string
 }

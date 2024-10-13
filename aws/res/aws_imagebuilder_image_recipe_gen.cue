@@ -13,7 +13,7 @@ import "list"
 	owner?:        string
 	parent_image!: string
 	platform?:     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	user_data_base64?:  string
 	version!:           string

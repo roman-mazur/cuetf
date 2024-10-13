@@ -12,7 +12,7 @@ import "list"
 	ip_address?:                     string
 	root_volume_encryption_enabled?: bool
 	state?:                          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	user_name!:                      string
 	user_volume_encryption_enabled?: bool

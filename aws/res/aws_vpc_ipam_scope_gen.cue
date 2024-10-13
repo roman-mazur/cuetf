@@ -11,7 +11,7 @@ package res
 	ipam_scope_type?: string
 	is_default?:      bool
 	pool_count?:      number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

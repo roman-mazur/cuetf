@@ -8,7 +8,7 @@ import "list"
 	arn?:                string
 	human_task_ui_name!: string
 	id?:                 string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	ui_template?: #ui_template | list.MaxItems(1) & [_, ...] & [...#ui_template]
 

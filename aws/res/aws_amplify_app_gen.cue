@@ -30,7 +30,7 @@ import "list"
 		thumbnail_url?:    string
 	}]
 	repository?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	auto_branch_creation_config?: #auto_branch_creation_config | list.MaxItems(1) & [...#auto_branch_creation_config]
 	cache_config?: #cache_config | list.MaxItems(1) & [...#cache_config]

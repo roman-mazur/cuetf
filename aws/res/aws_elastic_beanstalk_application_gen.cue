@@ -9,7 +9,7 @@ import "list"
 	description?: string
 	id?:          string
 	name!:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	appversion_lifecycle?: #appversion_lifecycle | list.MaxItems(1) & [...#appversion_lifecycle]
 

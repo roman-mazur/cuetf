@@ -7,7 +7,7 @@ package res
 	collection_id!:      string
 	face_model_version?: string
 	id?:                 string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

@@ -9,7 +9,7 @@ package res
 	ipv6_support?:                       string
 	security_group_referencing_support?: string
 	subnet_ids!: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	transit_gateway_default_route_table_association?: bool
 	transit_gateway_default_route_table_propagation?: bool

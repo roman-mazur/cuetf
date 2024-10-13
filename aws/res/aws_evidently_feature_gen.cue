@@ -20,7 +20,7 @@ import "list"
 	name!:                string
 	project!:             string
 	status?:              string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	value_type?: string
 	timeouts?:   #timeouts

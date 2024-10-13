@@ -15,7 +15,7 @@ import "list"
 	service!:          string
 	stability_status?: string
 	status?:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	task_definition!:           string
 	task_set_id?:               string

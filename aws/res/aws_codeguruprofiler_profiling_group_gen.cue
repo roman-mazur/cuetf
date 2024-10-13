@@ -7,7 +7,7 @@ package res
 	compute_platform?: string
 	id?:               string
 	name!:             string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	agent_orchestration_config?: #agent_orchestration_config | [...#agent_orchestration_config]
 

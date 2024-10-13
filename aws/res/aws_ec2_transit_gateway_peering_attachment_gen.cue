@@ -10,7 +10,7 @@ import "list"
 	peer_region!:             string
 	peer_transit_gateway_id!: string
 	state?:                   string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	transit_gateway_id!: string
 	options?: #options | list.MaxItems(1) & [...#options]

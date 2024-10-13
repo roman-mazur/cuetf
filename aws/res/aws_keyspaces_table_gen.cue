@@ -10,7 +10,7 @@ import "list"
 	id?:                   string
 	keyspace_name!:        string
 	table_name!:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	capacity_specification?: #capacity_specification | list.MaxItems(1) & [...#capacity_specification]
 	client_side_timestamps?: #client_side_timestamps | list.MaxItems(1) & [...#client_side_timestamps]

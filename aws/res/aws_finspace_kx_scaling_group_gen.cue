@@ -14,7 +14,7 @@ package res
 	name!:                    string
 	status?:                  string
 	status_reason?:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

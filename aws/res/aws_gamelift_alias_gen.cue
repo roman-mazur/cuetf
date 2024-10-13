@@ -9,7 +9,7 @@ import "list"
 	description?: string
 	id?:          string
 	name!:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	routing_strategy?: #routing_strategy | list.MaxItems(1) & [_, ...] & [...#routing_strategy]
 

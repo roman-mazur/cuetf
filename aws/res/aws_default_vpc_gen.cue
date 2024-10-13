@@ -24,6 +24,6 @@ package res
 	ipv6_netmask_length?:                  number
 	main_route_table_id?:                  string
 	owner_id?:                             string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

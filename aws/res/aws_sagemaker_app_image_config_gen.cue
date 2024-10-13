@@ -8,7 +8,7 @@ import "list"
 	app_image_config_name!: string
 	arn?:                   string
 	id?:                    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	code_editor_app_image_config?: #code_editor_app_image_config | list.MaxItems(1) & [...#code_editor_app_image_config]
 	jupyter_lab_image_config?: #jupyter_lab_image_config | list.MaxItems(1) & [...#jupyter_lab_image_config]

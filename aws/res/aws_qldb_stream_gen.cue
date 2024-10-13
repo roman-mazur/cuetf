@@ -12,7 +12,7 @@ import "list"
 	ledger_name!:          string
 	role_arn!:             string
 	stream_name!:          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	kinesis_configuration?: #kinesis_configuration | list.MaxItems(1) & [_, ...] & [...#kinesis_configuration]
 	timeouts?: #timeouts

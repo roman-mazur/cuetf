@@ -6,7 +6,7 @@ package res
 	arn?: string
 	client_id_list!: [...string]
 	id?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	thumbprint_list!: [...string]
 	url!: string

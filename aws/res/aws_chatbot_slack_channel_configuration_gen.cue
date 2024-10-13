@@ -13,7 +13,7 @@ package res
 	slack_team_id!:      string
 	slack_team_name?:    string
 	sns_topic_arns?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	user_authorization_required?: bool
 	timeouts?:                    #timeouts

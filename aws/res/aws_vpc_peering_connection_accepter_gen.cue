@@ -11,7 +11,7 @@ import "list"
 	peer_owner_id?: string
 	peer_region?:   string
 	peer_vpc_id?:   string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_id?:                    string
 	vpc_peering_connection_id!: string

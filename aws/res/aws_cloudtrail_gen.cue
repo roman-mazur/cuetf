@@ -20,7 +20,7 @@ import "list"
 	s3_bucket_name!:                string
 	s3_key_prefix?:                 string
 	sns_topic_name?:                string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	advanced_event_selector?: #advanced_event_selector | [...#advanced_event_selector]
 	event_selector?: #event_selector | list.MaxItems(5) & [...#event_selector]

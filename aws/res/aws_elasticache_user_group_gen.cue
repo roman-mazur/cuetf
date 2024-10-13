@@ -6,7 +6,7 @@ package res
 	arn?:    string
 	engine!: string
 	id?:     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	user_group_id!: string
 	user_ids?: [...string]

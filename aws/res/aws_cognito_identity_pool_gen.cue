@@ -12,8 +12,8 @@ package res
 	openid_connect_provider_arns?: [...string]
 	saml_provider_arns?: [...string]
 	supported_login_providers?: [string]: string
-	tags?: [string]: string
-	tags_all?: [string]: string
+	tags?: [string]:                      string
+	tags_all?: [string]:                  string
 	cognito_identity_providers?: #cognito_identity_providers | [...#cognito_identity_providers]
 
 	#cognito_identity_providers: {

@@ -8,7 +8,7 @@ package res
 	id?:                 string
 	kms_key_id?:         string
 	position_filtering?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	tracker_arn?:  string
 	tracker_name!: string

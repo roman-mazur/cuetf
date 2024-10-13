@@ -7,6 +7,6 @@ package res
 	id?:           string
 	pool_name!:    string
 	scaling_mode?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

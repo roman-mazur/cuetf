@@ -22,7 +22,7 @@ import "list"
 	source_security_group?:    string
 	source_security_group_id?: string
 	subnets?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	zone_id?: string
 	access_logs?: #access_logs | list.MaxItems(1) & [...#access_logs]

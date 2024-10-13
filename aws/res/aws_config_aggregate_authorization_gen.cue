@@ -7,6 +7,6 @@ package res
 	arn?:        string
 	id?:         string
 	region!:     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

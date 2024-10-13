@@ -11,7 +11,7 @@ package res
 	name!:              string
 	name_servers?: [...string]
 	primary_name_server?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	zone_id?: string
 	vpc?: #vpc | [...#vpc]

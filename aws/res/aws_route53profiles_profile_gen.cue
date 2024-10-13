@@ -10,7 +10,7 @@ package res
 	share_status?:   string
 	status?:         string
 	status_message?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

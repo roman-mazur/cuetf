@@ -10,7 +10,7 @@ package res
 	id?: string
 	inside_cidr_blocks!: [...string]
 	peer_address!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	transit_gateway_address?:       string
 	transit_gateway_attachment_id!: string

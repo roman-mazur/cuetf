@@ -19,7 +19,7 @@ import "list"
 	protocol_type!:                string
 	route_key?:                    string
 	route_selection_expression?:   string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target?:  string
 	version?: string

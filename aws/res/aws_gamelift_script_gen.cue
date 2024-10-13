@@ -8,7 +8,7 @@ import "list"
 	arn?:  string
 	id?:   string
 	name!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	version?:  string
 	zip_file?: string

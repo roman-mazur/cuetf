@@ -12,7 +12,7 @@ import "list"
 	name!:        string
 	role_arn!:    string
 	status?:      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	thesaurus_id?: string
 	source_s3_path?: #source_s3_path | list.MaxItems(1) & [_, ...] & [...#source_s3_path]

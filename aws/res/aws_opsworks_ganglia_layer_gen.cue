@@ -26,7 +26,7 @@ import "list"
 	password!:                  string
 	stack_id!:                  string
 	system_packages?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	url?:                         string
 	use_ebs_optimized_instances?: bool

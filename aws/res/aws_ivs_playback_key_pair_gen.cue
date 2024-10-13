@@ -8,7 +8,7 @@ package res
 	id?:          string
 	name?:        string
 	public_key!:  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

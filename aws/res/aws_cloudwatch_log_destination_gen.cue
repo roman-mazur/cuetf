@@ -7,7 +7,7 @@ package res
 	id?:       string
 	name!:     string
 	role_arn!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_arn!: string
 }

@@ -10,7 +10,7 @@ package res
 	name_prefix?: string
 	subnet_ids!: [...string]
 	supported_network_types?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_id?: string
 }

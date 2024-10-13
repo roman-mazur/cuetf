@@ -9,6 +9,6 @@ package res
 	id?:                string
 	name!:              string
 	provider_type?:     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

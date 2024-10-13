@@ -8,7 +8,7 @@ package res
 	max_retention_days!: number
 	min_retention_days!: number
 	name!:               string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

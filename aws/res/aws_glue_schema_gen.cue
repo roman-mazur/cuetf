@@ -15,6 +15,6 @@ package res
 	schema_checkpoint?:     number
 	schema_definition!:     string
 	schema_name!:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

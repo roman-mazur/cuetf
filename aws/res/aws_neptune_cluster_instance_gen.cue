@@ -28,7 +28,7 @@ package res
 	skip_final_snapshot?:          bool
 	storage_encrypted?:            bool
 	storage_type?:                 string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	writer?:   bool
 	timeouts?: #timeouts

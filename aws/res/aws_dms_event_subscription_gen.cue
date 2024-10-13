@@ -11,7 +11,7 @@ package res
 	sns_topic_arn!: string
 	source_ids?: [...string]
 	source_type!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

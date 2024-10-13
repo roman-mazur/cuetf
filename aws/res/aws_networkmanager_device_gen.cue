@@ -12,7 +12,7 @@ import "list"
 	model?:             string
 	serial_number?:     string
 	site_id?:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?:   string
 	vendor?: string

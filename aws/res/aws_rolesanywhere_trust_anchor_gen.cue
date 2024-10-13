@@ -9,7 +9,7 @@ import "list"
 	enabled?: bool
 	id?:      string
 	name!:    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	notification_settings?: #notification_settings | list.MaxItems(50) & [...#notification_settings]
 	source?: #source | list.MaxItems(1) & [_, ...] & [...#source]

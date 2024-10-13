@@ -12,6 +12,6 @@ package res
 	name?:               string
 	registration_count?: number
 	registration_limit?: number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

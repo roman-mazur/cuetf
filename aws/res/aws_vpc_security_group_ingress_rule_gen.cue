@@ -14,7 +14,7 @@ package res
 	referenced_security_group_id?: string
 	security_group_id!:            string
 	security_group_rule_id?:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	to_port?: number
 }

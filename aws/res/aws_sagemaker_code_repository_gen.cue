@@ -8,7 +8,7 @@ import "list"
 	arn?:                  string
 	code_repository_name!: string
 	id?:                   string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	git_config?: #git_config | list.MaxItems(1) & [_, ...] & [...#git_config]
 

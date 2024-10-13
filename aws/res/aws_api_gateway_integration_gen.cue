@@ -16,7 +16,7 @@ import "list"
 	integration_http_method?: string
 	passthrough_behavior?:    string
 	request_parameters?: [string]: string
-	request_templates?: [string]: string
+	request_templates?: [string]:  string
 	resource_id!:          string
 	rest_api_id!:          string
 	timeout_milliseconds?: number

@@ -14,7 +14,7 @@ import "list"
 	retention_period?:          number
 	shard_count?:               number
 	shard_level_metrics?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	stream_mode_details?: #stream_mode_details | list.MaxItems(1) & [...#stream_mode_details]
 	timeouts?: #timeouts

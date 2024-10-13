@@ -18,7 +18,7 @@ import "list"
 	security_group_ids?: [...string]
 	sns_topic_arn?: string
 	subnet_id?:     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	terminate_instance_on_failure?: bool
 	instance_metadata_options?: #instance_metadata_options | list.MaxItems(1) & [...#instance_metadata_options]

@@ -12,7 +12,7 @@ import "list"
 	id?:                string
 	name!:              string
 	status?:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	control?: #control | [_, ...] & [...#control]
 	timeouts?: #timeouts

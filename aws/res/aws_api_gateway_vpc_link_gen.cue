@@ -7,7 +7,7 @@ package res
 	description?: string
 	id?:          string
 	name!:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_arns!: [...string]
 }

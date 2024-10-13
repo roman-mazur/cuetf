@@ -14,7 +14,7 @@ import "list"
 	id?:                string
 	insufficient_data_actions?: [...string]
 	ok_actions?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	actions_suppressor?: #actions_suppressor | list.MaxItems(1) & [...#actions_suppressor]
 

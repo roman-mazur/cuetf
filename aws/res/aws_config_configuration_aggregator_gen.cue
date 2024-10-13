@@ -8,7 +8,7 @@ import "list"
 	arn?:  string
 	id?:   string
 	name!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	account_aggregation_source?: #account_aggregation_source | list.MaxItems(1) & [...#account_aggregation_source]
 	organization_aggregation_source?: #organization_aggregation_source | list.MaxItems(1) & [...#organization_aggregation_source]

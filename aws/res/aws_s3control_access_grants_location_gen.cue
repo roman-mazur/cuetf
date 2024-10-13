@@ -9,6 +9,6 @@ package res
 	iam_role_arn!:               string
 	id?:                         string
 	location_scope!:             string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

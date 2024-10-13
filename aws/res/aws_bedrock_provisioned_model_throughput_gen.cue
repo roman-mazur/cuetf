@@ -9,7 +9,7 @@ package res
 	model_units!:            number
 	provisioned_model_arn?:  string
 	provisioned_model_name!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

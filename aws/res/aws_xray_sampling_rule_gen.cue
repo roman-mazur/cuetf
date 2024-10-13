@@ -15,7 +15,7 @@ package res
 	rule_name?:      string
 	service_name!:   string
 	service_type!:   string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	url_path!: string
 	version!:  number

@@ -15,7 +15,7 @@ import "list"
 	start_replication?:             bool
 	supplemental_settings?:         string
 	table_mappings!:                string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_endpoint_arn!: string
 	compute_config?: #compute_config | list.MaxItems(1) & [_, ...] & [...#compute_config]

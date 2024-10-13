@@ -15,7 +15,7 @@ package res
 	network_interface_port?: number
 	preserve_existing_data!: bool
 	snapshot_id?:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_arn?:               string
 	target_name!:              string

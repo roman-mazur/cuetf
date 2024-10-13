@@ -7,6 +7,6 @@ package res
 	hsm_client_certificate_identifier!: string
 	hsm_client_certificate_public_key?: string
 	id?:                                string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

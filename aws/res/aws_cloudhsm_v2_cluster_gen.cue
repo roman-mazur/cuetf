@@ -18,7 +18,7 @@ package res
 	security_group_id?:        string
 	source_backup_identifier?: string
 	subnet_ids!: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_id?:   string
 	timeouts?: #timeouts

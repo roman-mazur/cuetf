@@ -8,7 +8,7 @@ package res
 	iam_role!:       string
 	id?:             string
 	name!:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

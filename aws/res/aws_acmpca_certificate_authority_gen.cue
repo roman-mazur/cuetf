@@ -16,7 +16,7 @@ import "list"
 	not_before?:                      string
 	permanent_deletion_time_in_days?: number
 	serial?:                          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?:       string
 	usage_mode?: string

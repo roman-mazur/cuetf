@@ -13,7 +13,7 @@ import "list"
 	id?:              string
 	match_criteria?: [...string]
 	name!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	physical_connection_requirements?: #physical_connection_requirements | list.MaxItems(1) & [...#physical_connection_requirements]
 

@@ -12,7 +12,7 @@ import "list"
 	mesh_owner?:        string
 	name!:              string
 	resource_owner?:    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	spec?: #spec | list.MaxItems(1) & [...#spec]
 

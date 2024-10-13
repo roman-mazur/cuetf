@@ -11,7 +11,7 @@ package res
 	created_at?:     string
 	id?:             string
 	persona?:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	updated_at?: string
 	credential?: #credential | [...#credential]

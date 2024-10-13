@@ -9,7 +9,7 @@ package res
 	igmpv2_support?:                  string
 	owner_id?:                        string
 	static_sources_support?:          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	transit_gateway_id!: string
 	timeouts?:           #timeouts

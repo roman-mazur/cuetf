@@ -15,9 +15,9 @@ import "list"
 	query_depth_limit?:             number
 	resolver_count_limit?:          number
 	schema?:                        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
-	uris?: [string]: string
+	uris?: [string]:     string
 	visibility?:   string
 	xray_enabled?: bool
 	additional_authentication_provider?: #additional_authentication_provider | [...#additional_authentication_provider]

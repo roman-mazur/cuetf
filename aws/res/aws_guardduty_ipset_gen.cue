@@ -10,6 +10,6 @@ package res
 	id?:          string
 	location!:    string
 	name!:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

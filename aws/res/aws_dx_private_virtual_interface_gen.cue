@@ -18,7 +18,7 @@ package res
 	mtu?:                 number
 	name!:                string
 	sitelink_enabled?:    bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vlan!:           number
 	vpn_gateway_id?: string

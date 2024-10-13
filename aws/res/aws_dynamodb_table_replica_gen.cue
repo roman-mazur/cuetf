@@ -9,7 +9,7 @@ package res
 	kms_key_arn?:            string
 	point_in_time_recovery?: bool
 	table_class_override?:   string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

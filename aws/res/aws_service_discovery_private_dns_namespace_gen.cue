@@ -8,7 +8,7 @@ package res
 	hosted_zone?: string
 	id?:          string
 	name!:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc!: string
 }

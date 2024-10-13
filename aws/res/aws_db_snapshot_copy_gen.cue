@@ -23,7 +23,7 @@ package res
 	source_db_snapshot_identifier!: string
 	source_region?:                 string
 	storage_type?:                  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_custom_availability_zone?: string
 	target_db_snapshot_identifier!:   string

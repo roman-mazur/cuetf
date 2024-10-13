@@ -17,7 +17,7 @@ package res
 	multi_region?:                       bool
 	policy?:                             string
 	rotation_period_in_days?:            number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	xks_key_id?: string
 	timeouts?:   #timeouts

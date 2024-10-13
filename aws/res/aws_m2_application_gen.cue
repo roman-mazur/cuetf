@@ -12,7 +12,7 @@ package res
 	kms_key_id?:      string
 	name!:            string
 	role_arn?:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	definition?: #definition | [...#definition]
 	timeouts?: #timeouts

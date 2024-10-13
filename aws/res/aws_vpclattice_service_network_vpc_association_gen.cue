@@ -9,7 +9,7 @@ package res
 	security_group_ids?: [...string]
 	service_network_identifier!: string
 	status?:                     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_identifier!: string
 	timeouts?:       #timeouts

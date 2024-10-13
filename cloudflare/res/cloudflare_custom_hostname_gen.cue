@@ -8,7 +8,7 @@ package res
 	custom_origin_sni?:    string
 	hostname!:             string
 	id?:                   string
-	ownership_verification?: [string]: string
+	ownership_verification?: [string]:      string
 	ownership_verification_http?: [string]: string
 	status?:                          string
 	wait_for_ssl_pending_validation?: bool

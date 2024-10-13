@@ -10,9 +10,9 @@ package data
 	id?:               string
 	name!:             string
 	notification_arns?: [...string]
-	outputs?: [string]: string
+	outputs?: [string]:    string
 	parameters?: [string]: string
-	tags?: [string]: string
+	tags?: [string]:       string
 	template_body?:      string
 	timeout_in_minutes?: number
 }

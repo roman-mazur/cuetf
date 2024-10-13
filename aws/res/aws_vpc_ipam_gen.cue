@@ -13,7 +13,7 @@ package res
 	private_default_scope_id?:                  string
 	public_default_scope_id?:                   string
 	scope_count?:                               number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	tier?: string
 	operating_regions?: #operating_regions | [_, ...] & [...#operating_regions]

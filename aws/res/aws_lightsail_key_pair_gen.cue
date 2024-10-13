@@ -13,6 +13,6 @@ package res
 	pgp_key?:               string
 	private_key?:           string
 	public_key?:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

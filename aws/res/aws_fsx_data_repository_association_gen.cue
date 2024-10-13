@@ -14,7 +14,7 @@ import "list"
 	file_system_path!:                 string
 	id?:                               string
 	imported_file_chunk_size?:         number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	s3?: #s3 | list.MaxItems(1) & [...#s3]
 	timeouts?: #timeouts

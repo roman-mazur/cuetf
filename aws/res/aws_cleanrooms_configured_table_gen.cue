@@ -12,7 +12,7 @@ import "list"
 	description?:     string
 	id?:              string
 	name!:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	update_time?: string
 	table_reference?: #table_reference | list.MaxItems(1) & [_, ...] & [...#table_reference]

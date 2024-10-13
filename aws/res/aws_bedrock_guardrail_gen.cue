@@ -12,7 +12,7 @@ package res
 	kms_key_arn?:               string
 	name!:                      string
 	status?:                    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	version?: string
 	content_policy_config?: #content_policy_config | [...#content_policy_config]

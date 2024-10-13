@@ -10,7 +10,7 @@ package res
 	owner_id?:             string
 	packet_length?:        number
 	session_number!:       number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	traffic_mirror_filter_id!: string
 	traffic_mirror_target_id!: string

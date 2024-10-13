@@ -52,7 +52,7 @@ package res
 	service_access_role_arn!:                     string
 	ssl_mode?:                                    string
 	status?:                                      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timestamp_column_name?:                       string
 	use_csv_no_sup_value?:                        bool

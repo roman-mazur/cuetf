@@ -11,7 +11,7 @@ import "list"
 	maximum_message_length?:          number
 	maximum_message_rate_per_second?: number
 	name?:                            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	message_review_handler?: #message_review_handler | list.MaxItems(1) & [...#message_review_handler]
 	timeouts?: #timeouts

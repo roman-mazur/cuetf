@@ -17,7 +17,7 @@ package res
 	shard_capacity!:               number
 	shard_count!:                  number
 	subnet_ids?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_security_group_ids?: [...string]
 	timeouts?: #timeouts

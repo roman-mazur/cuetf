@@ -11,6 +11,6 @@ package res
 	name_prefix?:       string
 	retention_in_days?: number
 	skip_destroy?:      bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

@@ -15,6 +15,6 @@ package res
 	id?:   string
 	name!: string
 	subject_alternative_names?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

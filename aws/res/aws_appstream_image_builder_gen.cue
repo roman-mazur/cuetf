@@ -18,7 +18,7 @@ import "list"
 	instance_type!:                  string
 	name!:                           string
 	state?:                          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	access_endpoint?: #access_endpoint | list.MaxItems(4) & [...#access_endpoint]
 	domain_join_info?: #domain_join_info | list.MaxItems(1) & [...#domain_join_info]

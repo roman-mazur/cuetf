@@ -12,7 +12,7 @@ import "list"
 	domain_owner?:          string
 	id?:                    string
 	repository!:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	external_connections?: #external_connections | list.MaxItems(1) & [...#external_connections]
 	upstream?: #upstream | [...#upstream]

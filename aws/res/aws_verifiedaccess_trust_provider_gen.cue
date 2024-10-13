@@ -9,7 +9,7 @@ import "list"
 	device_trust_provider_type?: string
 	id?:                         string
 	policy_reference_name!:      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	trust_provider_type!:      string
 	user_trust_provider_type?: string

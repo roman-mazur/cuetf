@@ -11,7 +11,7 @@ package res
 	kms_key_id?:              string
 	media_type?:              string
 	name!:                    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	version?:  string
 	timeouts?: #timeouts

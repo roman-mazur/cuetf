@@ -8,6 +8,6 @@ package res
 	default_sender_id?:    string
 	id?:                   string
 	name!:                 string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

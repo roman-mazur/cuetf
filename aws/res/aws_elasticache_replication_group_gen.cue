@@ -47,7 +47,7 @@ import "list"
 	snapshot_retention_limit?: number
 	snapshot_window?:          string
 	subnet_group_name?:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	transit_encryption_enabled?: bool
 	transit_encryption_mode?:    string

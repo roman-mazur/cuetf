@@ -9,7 +9,7 @@ package res
 	environment_id?: string
 	name!:           string
 	state?:          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	monitor?: #monitor | [...#monitor]
 

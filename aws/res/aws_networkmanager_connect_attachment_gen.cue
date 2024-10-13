@@ -17,7 +17,7 @@ import "list"
 	resource_arn?:                  string
 	segment_name?:                  string
 	state?:                         string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	transport_attachment_id!: string
 	options?: #options | list.MaxItems(1) & [_, ...] & [...#options]

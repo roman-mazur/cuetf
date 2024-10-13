@@ -7,7 +7,7 @@ package res
 	id?:      string
 	name!:    string
 	sink_id?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

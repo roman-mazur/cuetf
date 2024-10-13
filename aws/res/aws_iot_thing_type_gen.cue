@@ -9,7 +9,7 @@ import "list"
 	deprecated?: bool
 	id?:         string
 	name!:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	properties?: #properties | list.MaxItems(1) & [...#properties]
 

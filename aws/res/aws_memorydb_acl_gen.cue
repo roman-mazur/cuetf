@@ -8,7 +8,7 @@ package res
 	minimum_engine_version?: string
 	name?:                   string
 	name_prefix?:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	user_names?: [...string]
 }

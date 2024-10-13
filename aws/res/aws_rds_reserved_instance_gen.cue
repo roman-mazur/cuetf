@@ -22,7 +22,7 @@ package res
 	reservation_id?: string
 	start_time?:     string
 	state?:          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	usage_price?: number
 	timeouts?:    #timeouts

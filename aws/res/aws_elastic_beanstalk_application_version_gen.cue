@@ -12,6 +12,6 @@ package res
 	key!:          string
 	name!:         string
 	process?:      bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

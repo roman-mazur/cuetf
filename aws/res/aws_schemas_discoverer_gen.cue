@@ -7,6 +7,6 @@ package res
 	description?: string
 	id?:          string
 	source_arn!:  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

@@ -13,6 +13,6 @@ package res
 	source!:           string
 	source_arn?:       string
 	source_ip?:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

@@ -9,7 +9,7 @@ package res
 	name!:        string
 	rate_key!:    string
 	rate_limit!:  number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	predicates?: #predicates | [...#predicates]
 

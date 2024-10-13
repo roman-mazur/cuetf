@@ -8,7 +8,7 @@ import "list"
 	arn?:                    string
 	configuration_set_name!: string
 	id?:                     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	delivery_options?: #delivery_options | list.MaxItems(1) & [...#delivery_options]
 	reputation_options?: #reputation_options | list.MaxItems(1) & [...#reputation_options]

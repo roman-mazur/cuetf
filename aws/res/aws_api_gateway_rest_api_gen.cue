@@ -21,7 +21,7 @@ import "list"
 	policy?:            string
 	put_rest_api_mode?: string
 	root_resource_id?:  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	endpoint_configuration?: #endpoint_configuration | list.MaxItems(1) & [...#endpoint_configuration]
 

@@ -14,7 +14,7 @@ package res
 	owner_id?:               string
 	permanent_restore?:      bool
 	storage_tier?:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	temporary_restore_days?: number
 	volume_id!:              string

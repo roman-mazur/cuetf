@@ -9,15 +9,15 @@ import "list"
 	id?:      string
 	name:     string
 	role_arn: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	artifact_store?: #artifact_store | [_, ...] & [...#artifact_store]
-	stage?:          #stage | [_, _, ...] & [...#stage]
+	stage?: #stage | [_, _, ...] & [...#stage]
 
 	#artifact_store: {
-		location:        string
-		region?:         string
-		type:            string
+		location: string
+		region?:  string
+		type:     string
 		encryption_key?: #artifact_store.#encryption_key | list.MaxItems(1) & [...#artifact_store.#encryption_key]
 
 		#encryption_key: {
@@ -27,7 +27,7 @@ import "list"
 	}
 
 	#stage: {
-		name:    string
+		name: string
 		action?: #stage.#action | [_, ...] & [...#stage.#action]
 
 		#action: {

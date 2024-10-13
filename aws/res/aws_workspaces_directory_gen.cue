@@ -16,7 +16,7 @@ import "list"
 	ip_group_ids?: [...string]
 	registration_code?: string
 	subnet_ids?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	workspace_security_group_id?: string
 	self_service_permissions?: #self_service_permissions | list.MaxItems(1) & [...#self_service_permissions]

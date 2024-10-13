@@ -45,7 +45,7 @@ package data
 	sriov_net_support?: string
 	state?:             string
 	state_reason?: [string]: string
-	tags?: [string]: string
+	tags?: [string]:         string
 	tpm_support?:         string
 	usage_operation?:     string
 	virtualization_type?: string

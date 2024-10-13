@@ -10,11 +10,11 @@ package res
 	name!:             string
 	notification_arns?: [...string]
 	on_failure?: string
-	outputs?: [string]: string
+	outputs?: [string]:    string
 	parameters?: [string]: string
 	policy_body?: string
 	policy_url?:  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	template_body?:      string
 	template_url?:       string

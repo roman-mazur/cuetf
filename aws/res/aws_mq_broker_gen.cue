@@ -27,7 +27,7 @@ import "list"
 	security_groups?: [...string]
 	storage_type?: string
 	subnet_ids?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	configuration?: #configuration | list.MaxItems(1) & [...#configuration]
 	encryption_options?: #encryption_options | list.MaxItems(1) & [...#encryption_options]

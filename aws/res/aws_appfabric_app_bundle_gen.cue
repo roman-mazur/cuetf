@@ -6,6 +6,6 @@ package res
 	arn?:                      string
 	customer_managed_key_arn?: string
 	id?:                       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

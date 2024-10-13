@@ -11,7 +11,7 @@ import "list"
 	monitor_name!:                 string
 	resources?: [...string]
 	status?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	traffic_percentage_to_monitor?: number
 	health_events_config?: #health_events_config | list.MaxItems(1) & [...#health_events_config]

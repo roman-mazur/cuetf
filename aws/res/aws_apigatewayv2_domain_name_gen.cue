@@ -9,7 +9,7 @@ import "list"
 	arn?:                              string
 	domain_name!:                      string
 	id?:                               string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	domain_name_configuration?: #domain_name_configuration | list.MaxItems(1) & [_, ...] & [...#domain_name_configuration]
 	mutual_tls_authentication?: #mutual_tls_authentication | list.MaxItems(1) & [...#mutual_tls_authentication]

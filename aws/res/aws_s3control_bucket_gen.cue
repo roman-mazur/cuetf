@@ -9,6 +9,6 @@ package res
 	id?:                          string
 	outpost_id!:                  string
 	public_access_block_enabled?: bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

@@ -10,7 +10,7 @@ package res
 	pipeline_arn?:                string
 	pipeline_configuration_body!: string
 	pipeline_name!:               string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	buffer_options?: #buffer_options | [...#buffer_options]
 	encryption_at_rest_options?: #encryption_at_rest_options | [...#encryption_at_rest_options]

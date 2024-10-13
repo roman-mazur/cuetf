@@ -10,7 +10,7 @@ import "list"
 	id?:           string
 	name!:         string
 	product_code?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	api_stages?: #api_stages | [...#api_stages]
 	quota_settings?: #quota_settings | list.MaxItems(1) & [...#quota_settings]

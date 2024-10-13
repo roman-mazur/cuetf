@@ -10,7 +10,7 @@ import "list"
 	id?:            string
 	owner?:         string
 	provider_name!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	version!: string
 	configuration_property?: #configuration_property | list.MaxItems(10) & [...#configuration_property]

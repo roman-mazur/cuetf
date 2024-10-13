@@ -11,6 +11,6 @@ package res
 	hsm_partition_password!:        string
 	hsm_server_public_certificate!: string
 	id?:                            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

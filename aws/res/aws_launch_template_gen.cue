@@ -22,7 +22,7 @@ import "list"
 	name_prefix?:                          string
 	ram_disk_id?:                          string
 	security_group_names?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	update_default_version?: bool
 	user_data?:              string

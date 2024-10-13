@@ -12,7 +12,7 @@ package res
 	name_prefix?:       string
 	path?:              string
 	private_key!:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	upload_date?: string
 	timeouts?:    #timeouts

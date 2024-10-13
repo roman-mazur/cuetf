@@ -10,7 +10,7 @@ package res
 	name?:         string
 	name_prefix?:  string
 	skip_destroy?: bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	parameter?: #parameter | [...#parameter]
 

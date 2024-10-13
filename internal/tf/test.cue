@@ -29,7 +29,7 @@ import (
 #TestSuite: {
 	#provider: #ProviderSchema
 	#tests: [...#Test]
-	output: strings.Join([ for t in #tests {t.code}], "\n")
+	output: strings.Join([for t in #tests {t.code}], "\n")
 
 	...
 }

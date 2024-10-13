@@ -15,7 +15,7 @@ import "list"
 	log_format?:                 string
 	max_aggregation_interval?:   number
 	subnet_id?:                  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	traffic_type?:                  string
 	transit_gateway_attachment_id?: string

@@ -12,6 +12,6 @@ package res
 	ops_center_enabled?:     bool
 	ops_item_sns_topic_arn?: string
 	resource_group_name!:    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

@@ -23,7 +23,7 @@ import "list"
 	ok_actions?: [...string]
 	period?:    number
 	statistic?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	threshold?:           number
 	threshold_metric_id?: string

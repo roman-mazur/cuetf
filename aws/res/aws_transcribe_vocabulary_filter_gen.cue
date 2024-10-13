@@ -7,7 +7,7 @@ package res
 	download_uri?:  string
 	id?:            string
 	language_code!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vocabulary_filter_file_uri?: string
 	vocabulary_filter_name!:     string

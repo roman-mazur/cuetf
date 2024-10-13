@@ -12,6 +12,6 @@ package res
 	id?:                      string
 	latest_revision?:         number
 	name!:                    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

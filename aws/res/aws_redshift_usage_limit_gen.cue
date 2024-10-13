@@ -11,6 +11,6 @@ package res
 	id?:                 string
 	limit_type!:         string
 	period?:             string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

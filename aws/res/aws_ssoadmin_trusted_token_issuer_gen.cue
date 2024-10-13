@@ -8,7 +8,7 @@ package res
 	id?:           string
 	instance_arn!: string
 	name!:         string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	trusted_token_issuer_type!: string
 	trusted_token_issuer_configuration?: #trusted_token_issuer_configuration | [...#trusted_token_issuer_configuration]

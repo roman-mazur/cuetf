@@ -13,7 +13,7 @@ import "list"
 	rest_api_id!:       string
 	stage_description?: string
 	stage_name?:        string
-	triggers?: [string]: string
+	triggers?: [string]:  string
 	variables?: [string]: string
 	canary_settings?: #canary_settings | list.MaxItems(1) & [...#canary_settings]
 

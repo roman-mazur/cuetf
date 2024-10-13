@@ -16,7 +16,7 @@ package res
 	start_replication_task?:    bool
 	status?:                    string
 	table_mappings!:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_endpoint_arn!: string
 }

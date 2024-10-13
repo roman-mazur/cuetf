@@ -8,7 +8,7 @@ package res
 	id?:          string
 	name!:        string
 	parameters!: [string]: string
-	tags?: [string]: string
-	tags_all?: [string]: string
+	tags?: [string]:       string
+	tags_all?: [string]:   string
 	type!: string
 }

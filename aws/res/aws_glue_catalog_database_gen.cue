@@ -12,8 +12,8 @@ import "list"
 	location_uri?: string
 	name!:         string
 	parameters?: [string]: string
-	tags?: [string]: string
-	tags_all?: [string]: string
+	tags?: [string]:       string
+	tags_all?: [string]:   string
 	create_table_default_permission?: #create_table_default_permission | [...#create_table_default_permission]
 	federated_database?: #federated_database | list.MaxItems(1) & [...#federated_database]
 	target_database?: #target_database | list.MaxItems(1) & [...#target_database]

@@ -19,7 +19,7 @@ package res
 	password!:                          string
 	publicly_accessible?:               bool
 	secondary_availability_zone?:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	username!: string
 	vpc_security_group_ids!: [...string]

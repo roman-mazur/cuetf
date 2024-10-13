@@ -14,7 +14,7 @@ import "list"
 	input_source_type?: string
 	name!:              string
 	role_arn?:          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type!: string
 	destinations?: #destinations | [...#destinations]

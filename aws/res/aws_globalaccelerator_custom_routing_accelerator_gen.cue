@@ -16,7 +16,7 @@ import "list"
 		ip_family?: string
 	}]
 	name!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	attributes?: #attributes | list.MaxItems(1) & [...#attributes]
 	timeouts?: #timeouts

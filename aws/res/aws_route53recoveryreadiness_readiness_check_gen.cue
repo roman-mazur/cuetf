@@ -7,7 +7,7 @@ package res
 	id?:                   string
 	readiness_check_name!: string
 	resource_set_name!:    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

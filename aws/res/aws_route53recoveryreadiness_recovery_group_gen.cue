@@ -7,7 +7,7 @@ package res
 	cells?: [...string]
 	id?:                  string
 	recovery_group_name!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

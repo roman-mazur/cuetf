@@ -9,7 +9,7 @@ import "list"
 	description?: string
 	id?:          string
 	name!:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_config?: #vpc_config | list.MaxItems(1) & [...#vpc_config]
 

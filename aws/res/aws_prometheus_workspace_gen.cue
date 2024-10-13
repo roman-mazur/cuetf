@@ -10,7 +10,7 @@ import "list"
 	id?:                  string
 	kms_key_arn?:         string
 	prometheus_endpoint?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	logging_configuration?: #logging_configuration | list.MaxItems(1) & [...#logging_configuration]
 

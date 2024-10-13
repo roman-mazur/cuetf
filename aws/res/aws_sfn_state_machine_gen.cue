@@ -17,7 +17,7 @@ import "list"
 	role_arn!:                  string
 	state_machine_version_arn?: string
 	status?:                    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?:                string
 	version_description?: string

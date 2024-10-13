@@ -10,7 +10,7 @@ package res
 	name!:                    string
 	signing_disabled?:        bool
 	status?:                  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	token_key_name?: string
 	token_signing_public_keys?: [string]: string

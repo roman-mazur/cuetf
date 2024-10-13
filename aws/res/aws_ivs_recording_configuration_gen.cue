@@ -10,7 +10,7 @@ import "list"
 	name?:                               string
 	recording_reconnect_window_seconds?: number
 	state?:                              string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	destination_configuration?: #destination_configuration | list.MaxItems(1) & [_, ...] & [...#destination_configuration]
 	thumbnail_configuration?: #thumbnail_configuration | list.MaxItems(1) & [...#thumbnail_configuration]

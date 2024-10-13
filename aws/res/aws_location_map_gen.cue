@@ -10,7 +10,7 @@ import "list"
 	id?:          string
 	map_arn?:     string
 	map_name!:    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	update_time?: string
 	configuration?: #configuration | list.MaxItems(1) & [_, ...] & [...#configuration]

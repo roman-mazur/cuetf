@@ -21,7 +21,7 @@ import "list"
 		message?:     string
 		status_code?: string
 	}]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	scaling_configuration?: #scaling_configuration | list.MaxItems(1) & [...#scaling_configuration]
 	vpc_config?: #vpc_config | [...#vpc_config]

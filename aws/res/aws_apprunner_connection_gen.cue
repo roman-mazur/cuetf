@@ -8,6 +8,6 @@ package res
 	id?:              string
 	provider_type!:   string
 	status?:          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

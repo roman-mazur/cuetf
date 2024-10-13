@@ -22,7 +22,7 @@ import "list"
 	start_canary?:             bool
 	status?:                   string
 	success_retention_period?: number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeline?: [...{
 		created?:       string

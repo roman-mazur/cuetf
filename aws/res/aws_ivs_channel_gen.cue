@@ -11,7 +11,7 @@ package res
 	name?:                        string
 	playback_url?:                string
 	recording_configuration_arn?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?:     string
 	timeouts?: #timeouts

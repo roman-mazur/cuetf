@@ -19,7 +19,7 @@ package res
 	source_db_cluster_snapshot_arn?: string
 	status?:                         string
 	storage_encrypted?:              bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_id?:   string
 	timeouts?: #timeouts

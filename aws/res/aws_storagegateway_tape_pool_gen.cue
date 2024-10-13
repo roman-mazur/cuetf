@@ -9,6 +9,6 @@ package res
 	retention_lock_time_in_days?: number
 	retention_lock_type?:         string
 	storage_class!:               string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

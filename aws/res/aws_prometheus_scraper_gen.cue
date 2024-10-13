@@ -8,7 +8,7 @@ package res
 	id?:                   string
 	role_arn?:             string
 	scrape_configuration!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	destination?: #destination | [...#destination]
 	source?: #source | [...#source]

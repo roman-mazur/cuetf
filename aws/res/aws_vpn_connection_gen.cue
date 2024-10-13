@@ -23,7 +23,7 @@ import "list"
 		state?:                  string
 	}]
 	static_routes_only?: bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	transit_gateway_attachment_id?:           string
 	transit_gateway_id?:                      string

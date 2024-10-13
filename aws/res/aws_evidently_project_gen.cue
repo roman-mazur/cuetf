@@ -17,7 +17,7 @@ import "list"
 	launch_count?:            number
 	name!:                    string
 	status?:                  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	data_delivery?: #data_delivery | list.MaxItems(1) & [...#data_delivery]
 	timeouts?: #timeouts

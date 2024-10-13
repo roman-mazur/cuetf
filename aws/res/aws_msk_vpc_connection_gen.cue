@@ -8,7 +8,7 @@ package res
 	client_subnets!: [...string]
 	id?: string
 	security_groups!: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_cluster_arn!: string
 	vpc_id!:             string

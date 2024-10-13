@@ -8,7 +8,7 @@ import "list"
 	description!: string
 	id?:          string
 	role_arn!:    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	action?: #action | [_, ...] & [...#action]
 	experiment_options?: #experiment_options | list.MaxItems(1) & [...#experiment_options]

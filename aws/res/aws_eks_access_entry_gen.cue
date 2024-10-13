@@ -10,7 +10,7 @@ package res
 	kubernetes_groups?: [...string]
 	modified_at?:   string
 	principal_arn!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?:      string
 	user_name?: string

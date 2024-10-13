@@ -24,7 +24,7 @@ import "list"
 	protocol_version?:                  string
 	proxy_protocol_v2?:                 bool
 	slow_start?:                        number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_type?: string
 	vpc_id?:      string

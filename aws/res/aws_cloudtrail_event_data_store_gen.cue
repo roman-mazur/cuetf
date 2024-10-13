@@ -11,7 +11,7 @@ package res
 	name!:                 string
 	organization_enabled?: bool
 	retention_period?:     number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	termination_protection_enabled?: bool
 	advanced_event_selector?: #advanced_event_selector | [...#advanced_event_selector]

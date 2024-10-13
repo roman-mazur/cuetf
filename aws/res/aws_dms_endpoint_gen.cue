@@ -22,7 +22,7 @@ import "list"
 	server_name?:                     string
 	service_access_role?:             string
 	ssl_mode?:                        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	username?: string
 	elasticsearch_settings?: #elasticsearch_settings | list.MaxItems(1) & [...#elasticsearch_settings]

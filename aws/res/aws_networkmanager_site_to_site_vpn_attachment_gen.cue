@@ -14,7 +14,7 @@ package res
 	resource_arn?:                  string
 	segment_name?:                  string
 	state?:                         string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpn_connection_arn!: string
 	timeouts?:           #timeouts

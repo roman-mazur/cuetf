@@ -11,7 +11,7 @@ import "list"
 	name!:         string
 	pricing_plan?: string
 	status?:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	reservation_plan_settings?: #reservation_plan_settings | list.MaxItems(1) & [...#reservation_plan_settings]
 

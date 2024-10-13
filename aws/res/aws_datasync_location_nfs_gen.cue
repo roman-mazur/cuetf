@@ -9,7 +9,7 @@ import "list"
 	id?:              string
 	server_hostname!: string
 	subdirectory!:    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	uri?: string
 	mount_options?: #mount_options | list.MaxItems(1) & [...#mount_options]

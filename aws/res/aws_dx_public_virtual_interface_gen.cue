@@ -15,7 +15,7 @@ package res
 	id?:               string
 	name!:             string
 	route_filter_prefixes!: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vlan!:     number
 	timeouts?: #timeouts

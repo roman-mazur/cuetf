@@ -8,7 +8,7 @@ import "list"
 	creation_date?: string
 	id?:            string
 	name!:          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	encryption_configuration?: #encryption_configuration | list.MaxItems(1) & [...#encryption_configuration]
 

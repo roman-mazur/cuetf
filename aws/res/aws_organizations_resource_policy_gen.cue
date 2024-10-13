@@ -6,6 +6,6 @@ package res
 	arn?:     string
 	content!: string
 	id?:      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

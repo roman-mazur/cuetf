@@ -32,7 +32,7 @@ package res
 	sqs_failure_feedback_role_arn?:            string
 	sqs_success_feedback_role_arn?:            string
 	sqs_success_feedback_sample_rate?:         number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	tracing_config?: string
 }

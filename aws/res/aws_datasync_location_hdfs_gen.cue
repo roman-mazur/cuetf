@@ -19,7 +19,7 @@ import "list"
 	replication_factor?:        number
 	simple_user?:               string
 	subdirectory?:              string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	uri?: string
 	name_node?: #name_node | [_, ...] & [...#name_node]

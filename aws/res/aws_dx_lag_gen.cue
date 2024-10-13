@@ -14,6 +14,6 @@ package res
 	name!:                   string
 	owner_account_id?:       string
 	provider_name?:          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

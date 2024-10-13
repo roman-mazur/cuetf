@@ -10,6 +10,6 @@ package res
 	placement_group_id?: string
 	spread_level?:       string
 	strategy!:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

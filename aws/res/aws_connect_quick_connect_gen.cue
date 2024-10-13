@@ -11,7 +11,7 @@ import "list"
 	instance_id!:      string
 	name!:             string
 	quick_connect_id?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	quick_connect_config?: #quick_connect_config | list.MaxItems(1) & [_, ...] & [...#quick_connect_config]
 

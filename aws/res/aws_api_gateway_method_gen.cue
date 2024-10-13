@@ -10,7 +10,7 @@ package res
 	http_method!:    string
 	id?:             string
 	operation_name?: string
-	request_models?: [string]: string
+	request_models?: [string]:     string
 	request_parameters?: [string]: bool
 	request_validator_id?: string
 	resource_id!:          string

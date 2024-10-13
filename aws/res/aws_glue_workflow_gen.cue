@@ -9,6 +9,6 @@ package res
 	id?:                  string
 	max_concurrent_runs?: number
 	name?:                string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

@@ -10,6 +10,6 @@ package res
 	id?:                  string
 	linked_to_github?:    bool
 	name!:                string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

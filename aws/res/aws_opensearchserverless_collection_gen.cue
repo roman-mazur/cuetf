@@ -11,7 +11,7 @@ package res
 	kms_key_arn?:         string
 	name!:                string
 	standby_replicas?:    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?:     string
 	timeouts?: #timeouts

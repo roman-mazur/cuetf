@@ -14,7 +14,7 @@ import "list"
 	password?:           string
 	routing_profile_id!: string
 	security_profile_ids!: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	user_id?: string
 	identity_info?: #identity_info | list.MaxItems(1) & [...#identity_info]

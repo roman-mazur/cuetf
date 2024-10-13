@@ -17,7 +17,7 @@ package res
 	outpost_arn?:             string
 	owner_id?:                string
 	placement_group_arn?:     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	tenancy?:  string
 	timeouts?: #timeouts

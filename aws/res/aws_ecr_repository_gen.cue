@@ -12,7 +12,7 @@ import "list"
 	name!:                 string
 	registry_id?:          string
 	repository_url?:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	encryption_configuration?: #encryption_configuration | [...#encryption_configuration]
 	image_scanning_configuration?: #image_scanning_configuration | list.MaxItems(1) & [...#image_scanning_configuration]

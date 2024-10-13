@@ -14,7 +14,7 @@ package res
 	outpost_arn?:          string
 	size?:                 number
 	snapshot_id?:          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	throughput?: number
 	type?:       string

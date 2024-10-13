@@ -31,7 +31,7 @@ import "list"
 	retain_physical_resources?:  bool
 	status?:                     string
 	status_message?:             string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?: string
 	provisioning_parameters?: #provisioning_parameters | [...#provisioning_parameters]

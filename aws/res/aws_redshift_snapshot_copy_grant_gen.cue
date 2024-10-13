@@ -7,6 +7,6 @@ package res
 	id?:                       string
 	kms_key_id?:               string
 	snapshot_copy_grant_name!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

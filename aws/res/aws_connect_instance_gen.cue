@@ -18,7 +18,7 @@ package res
 	outbound_calls_enabled!:           bool
 	service_role?:                     string
 	status?:                           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

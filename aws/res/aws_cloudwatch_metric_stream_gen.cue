@@ -14,7 +14,7 @@ package res
 	output_format!:                   string
 	role_arn!:                        string
 	state?:                           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	exclude_filter?: #exclude_filter | [...#exclude_filter]
 	include_filter?: #include_filter | [...#include_filter]

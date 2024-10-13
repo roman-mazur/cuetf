@@ -28,7 +28,7 @@ import "list"
 	replication_factor!:     number
 	security_group_ids?: [...string]
 	subnet_group_name?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	server_side_encryption?: #server_side_encryption | list.MaxItems(1) & [...#server_side_encryption]
 	timeouts?: #timeouts

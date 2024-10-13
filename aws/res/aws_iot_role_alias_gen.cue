@@ -8,6 +8,6 @@ package res
 	credential_duration?: number
 	id?:                  string
 	role_arn!:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

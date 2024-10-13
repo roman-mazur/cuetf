@@ -14,7 +14,7 @@ package res
 	source_ids?: [...string]
 	source_type?: string
 	status?:      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

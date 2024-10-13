@@ -21,7 +21,7 @@ import "list"
 	name!:                             string
 	platform?:                         string
 	status?:                           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	image_scanning_configuration?: #image_scanning_configuration | list.MaxItems(1) & [...#image_scanning_configuration]
 	image_tests_configuration?: #image_tests_configuration | list.MaxItems(1) & [...#image_tests_configuration]

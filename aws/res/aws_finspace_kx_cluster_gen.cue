@@ -20,7 +20,7 @@ import "list"
 	release_label!:           string
 	status?:                  string
 	status_reason?:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type!: string
 	auto_scaling_configuration?: #auto_scaling_configuration | list.MaxItems(1) & [...#auto_scaling_configuration]

@@ -6,7 +6,7 @@ package res
 	arn?:           string
 	dx_gateway_id?: string
 	id?:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	virtual_interface_id!: string
 	vpn_gateway_id?:       string

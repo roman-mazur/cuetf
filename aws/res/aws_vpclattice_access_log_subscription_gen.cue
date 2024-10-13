@@ -8,6 +8,6 @@ package res
 	id?:                  string
 	resource_arn?:        string
 	resource_identifier!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

@@ -7,7 +7,7 @@ package res
 	id?:          string
 	metric_name!: string
 	name!:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	predicates?: #predicates | [...#predicates]
 

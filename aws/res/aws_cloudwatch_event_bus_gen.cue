@@ -8,6 +8,6 @@ package res
 	id?:                 string
 	kms_key_identifier?: string
 	name!:               string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

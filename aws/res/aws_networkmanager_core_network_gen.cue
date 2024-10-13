@@ -22,7 +22,7 @@ package res
 		shared_segments?: [...string]
 	}]
 	state?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

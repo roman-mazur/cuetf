@@ -15,7 +15,7 @@ package res
 	resolve_conflicts_on_create?: string
 	resolve_conflicts_on_update?: string
 	service_account_role_arn?:    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

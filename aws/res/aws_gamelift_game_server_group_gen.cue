@@ -14,7 +14,7 @@ import "list"
 	max_size!:                      number
 	min_size!:                      number
 	role_arn!:                      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_subnets?: [...string]
 	auto_scaling_policy?: #auto_scaling_policy | list.MaxItems(1) & [...#auto_scaling_policy]

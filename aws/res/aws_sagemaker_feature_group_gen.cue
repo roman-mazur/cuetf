@@ -12,7 +12,7 @@ import "list"
 	id?:                             string
 	record_identifier_feature_name!: string
 	role_arn!:                       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	feature_definition?: #feature_definition | list.MaxItems(2500) & [_, ...] & [...#feature_definition]
 	offline_store_config?: #offline_store_config | list.MaxItems(1) & [...#offline_store_config]

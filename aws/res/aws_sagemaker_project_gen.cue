@@ -10,7 +10,7 @@ import "list"
 	project_description?: string
 	project_id?:          string
 	project_name!:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	service_catalog_provisioning_details?: #service_catalog_provisioning_details | list.MaxItems(1) & [_, ...] & [...#service_catalog_provisioning_details]
 

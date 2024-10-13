@@ -9,7 +9,7 @@ package res
 	latest_revision?:         number
 	name!:                    string
 	properties_file_content!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

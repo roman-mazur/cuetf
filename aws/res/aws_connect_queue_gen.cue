@@ -15,7 +15,7 @@ import "list"
 	queue_id?:              string
 	quick_connect_ids?: [...string]
 	status?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	outbound_caller_config?: #outbound_caller_config | list.MaxItems(1) & [...#outbound_caller_config]
 

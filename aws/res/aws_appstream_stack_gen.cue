@@ -14,7 +14,7 @@ import "list"
 	id?:           string
 	name!:         string
 	redirect_url?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	access_endpoints?: #access_endpoints | list.MaxItems(4) & [...#access_endpoints]
 	application_settings?: #application_settings | list.MaxItems(1) & [...#application_settings]

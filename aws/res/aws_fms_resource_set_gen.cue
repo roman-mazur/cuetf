@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_fms_resource_set")
 	arn?: string
 	id?:  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	resource_set?: #resource_set | [...#resource_set]
 	timeouts?: #timeouts

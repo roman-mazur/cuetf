@@ -11,12 +11,12 @@ import "list"
 	device_posture?: string
 	enabled?:        bool
 	filters?: [...string]
-	id?:            string
-	identity?:      string
-	name:           string
-	precedence:     number
-	traffic?:       string
-	version?:       number
+	id?:        string
+	identity?:  string
+	name:       string
+	precedence: number
+	traffic?:   string
+	version?:   number
 	rule_settings?: #rule_settings | list.MaxItems(1) & [...#rule_settings]
 
 	#rule_settings: {
@@ -29,13 +29,13 @@ import "list"
 		ip_categories?:                      bool
 		override_host?:                      string
 		override_ips?: [...string]
-		audit_ssh?:           #rule_settings.#audit_ssh | list.MaxItems(1) & [...#rule_settings.#audit_ssh]
+		audit_ssh?: #rule_settings.#audit_ssh | list.MaxItems(1) & [...#rule_settings.#audit_ssh]
 		biso_admin_controls?: #rule_settings.#biso_admin_controls | list.MaxItems(1) & [...#rule_settings.#biso_admin_controls]
-		check_session?:       #rule_settings.#check_session | list.MaxItems(1) & [...#rule_settings.#check_session]
-		egress?:              #rule_settings.#egress | list.MaxItems(1) & [...#rule_settings.#egress]
-		l4override?:          #rule_settings.#l4override | list.MaxItems(1) & [...#rule_settings.#l4override]
-		payload_log?:         #rule_settings.#payload_log | list.MaxItems(1) & [...#rule_settings.#payload_log]
-		untrusted_cert?:      #rule_settings.#untrusted_cert | list.MaxItems(1) & [...#rule_settings.#untrusted_cert]
+		check_session?: #rule_settings.#check_session | list.MaxItems(1) & [...#rule_settings.#check_session]
+		egress?: #rule_settings.#egress | list.MaxItems(1) & [...#rule_settings.#egress]
+		l4override?: #rule_settings.#l4override | list.MaxItems(1) & [...#rule_settings.#l4override]
+		payload_log?: #rule_settings.#payload_log | list.MaxItems(1) & [...#rule_settings.#payload_log]
+		untrusted_cert?: #rule_settings.#untrusted_cert | list.MaxItems(1) & [...#rule_settings.#untrusted_cert]
 
 		#audit_ssh: command_logging: bool
 

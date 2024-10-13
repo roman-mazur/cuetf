@@ -12,7 +12,7 @@ package res
 	kms_key_id?:         string
 	name!:               string
 	owner?:              string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type!:    string
 	uri?:     string

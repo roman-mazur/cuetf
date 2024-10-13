@@ -9,7 +9,7 @@ package res
 	kms_key_arn?:     string
 	name!:            string
 	recovery_points?: number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

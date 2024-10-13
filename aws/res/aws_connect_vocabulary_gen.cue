@@ -12,7 +12,7 @@ package res
 	last_modified_time?: string
 	name!:               string
 	state?:              string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vocabulary_id?: string
 	timeouts?:      #timeouts

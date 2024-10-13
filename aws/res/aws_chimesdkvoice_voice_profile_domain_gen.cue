@@ -9,7 +9,7 @@ import "list"
 	description?: string
 	id?:          string
 	name!:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	server_side_encryption_configuration?: #server_side_encryption_configuration | list.MaxItems(1) & [_, ...] & [...#server_side_encryption_configuration]
 	timeouts?: #timeouts

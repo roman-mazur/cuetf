@@ -10,7 +10,7 @@ package res
 	instance_id!:               string
 	name!:                      string
 	routing_profile_id?:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	media_concurrencies?: #media_concurrencies | [_, ...] & [...#media_concurrencies]
 	queue_configs?: #queue_configs | [...#queue_configs]

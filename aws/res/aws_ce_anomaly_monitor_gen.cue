@@ -9,6 +9,6 @@ package res
 	monitor_specification?: string
 	monitor_type!:          string
 	name!:                  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

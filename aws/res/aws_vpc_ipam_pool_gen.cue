@@ -22,7 +22,7 @@ package res
 	publicly_advertisable?: bool
 	source_ipam_pool_id?:   string
 	state?:                 string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

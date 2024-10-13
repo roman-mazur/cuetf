@@ -21,7 +21,7 @@ package res
 	redrive_allow_policy?:              string
 	redrive_policy?:                    string
 	sqs_managed_sse_enabled?:           bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	url?:                        string
 	visibility_timeout_seconds?: number

@@ -9,7 +9,7 @@ package res
 	max_entries!:    number
 	name!:           string
 	owner_id?:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	version?: number
 	entry?: #entry | [...#entry]

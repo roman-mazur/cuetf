@@ -19,7 +19,7 @@ package res
 	name!:                    string
 	status?:                  string
 	status_reason?:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type!: string
 	nas1_configuration?: #nas1_configuration | [...#nas1_configuration]

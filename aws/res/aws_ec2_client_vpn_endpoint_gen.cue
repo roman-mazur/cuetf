@@ -17,7 +17,7 @@ import "list"
 	server_certificate_arn!:  string
 	session_timeout_hours?:   number
 	split_tunnel?:            bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	transport_protocol?: string
 	vpc_id?:             string

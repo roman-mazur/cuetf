@@ -11,7 +11,7 @@ package res
 	id?:                        string
 	permission!:                string
 	s3_prefix_type?:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	access_grants_location_configuration?: #access_grants_location_configuration | [...#access_grants_location_configuration]
 	grantee?: #grantee | [...#grantee]

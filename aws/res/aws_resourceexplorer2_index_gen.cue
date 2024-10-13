@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_resourceexplorer2_index")
 	arn?: string
 	id?:  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type!:     string
 	timeouts?: #timeouts

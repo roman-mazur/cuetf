@@ -13,7 +13,7 @@ import "list"
 	schedule?:          string
 	start_on_creation?: bool
 	state?:             string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type!:          string
 	workflow_name?: string

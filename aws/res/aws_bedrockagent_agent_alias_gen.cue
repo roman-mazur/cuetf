@@ -13,7 +13,7 @@ package res
 		agent_version?:          string
 		provisioned_throughput?: string
 	}]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

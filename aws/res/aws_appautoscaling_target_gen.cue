@@ -13,7 +13,7 @@ import "list"
 	role_arn?:           string
 	scalable_dimension!: string
 	service_namespace!:  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	suspended_state?: #suspended_state | list.MaxItems(1) & [...#suspended_state]
 

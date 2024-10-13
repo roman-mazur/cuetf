@@ -6,7 +6,7 @@ package res
 	arn?: string
 	id?:  string
 	inputs?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 	whitelist_rules?: #whitelist_rules | [_, ...] & [...#whitelist_rules]

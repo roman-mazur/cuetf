@@ -8,7 +8,7 @@ package res
 	id?:               string
 	resource_id!:      string
 	response_parameters?: [string]: string
-	response_templates?: [string]: string
+	response_templates?: [string]:  string
 	rest_api_id!:       string
 	selection_pattern?: string
 	status_code!:       string

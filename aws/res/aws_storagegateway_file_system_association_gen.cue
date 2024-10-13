@@ -11,7 +11,7 @@ import "list"
 	id?:                    string
 	location_arn!:          string
 	password!:              string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	username!: string
 	cache_attributes?: #cache_attributes | list.MaxItems(1) & [...#cache_attributes]

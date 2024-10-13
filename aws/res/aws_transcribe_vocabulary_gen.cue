@@ -8,7 +8,7 @@ package res
 	id?:            string
 	language_code!: string
 	phrases?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vocabulary_file_uri?: string
 	vocabulary_name!:     string

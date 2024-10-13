@@ -40,7 +40,7 @@ import "list"
 	source_dest_check?:        bool
 	spot_instance_request_id?: string
 	subnet_id?:                string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	tenancy?:                     string
 	user_data?:                   string
@@ -88,7 +88,7 @@ import "list"
 		iops?:                  number
 		kms_key_id?:            string
 		snapshot_id?:           string
-		tags?: [string]: string
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		throughput?:  number
 		volume_id?:   string
@@ -151,7 +151,7 @@ import "list"
 		encrypted?:             bool
 		iops?:                  number
 		kms_key_id?:            string
-		tags?: [string]: string
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		throughput?:  number
 		volume_id?:   string

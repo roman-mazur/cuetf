@@ -29,7 +29,7 @@ import "list"
 	platform_types?: [...string]
 	schema_version?: string
 	status?:         string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_type?:  string
 	version_name?: string

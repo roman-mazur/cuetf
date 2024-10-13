@@ -12,6 +12,6 @@ package res
 	require_instance_properties?: bool
 	role_arns?: [...string]
 	session_policy?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

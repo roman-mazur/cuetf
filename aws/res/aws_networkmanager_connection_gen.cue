@@ -11,7 +11,7 @@ package res
 	global_network_id!:   string
 	id?:                  string
 	link_id?:             string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

@@ -26,7 +26,7 @@ package res
 	snapshot_retention_limit?: number
 	status?:                   string
 	subnet_ids?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	user_group_id?: string
 	cache_usage_limits?: #cache_usage_limits | [...#cache_usage_limits]

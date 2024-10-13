@@ -11,7 +11,7 @@ package res
 	owner_account_id?: string
 	peering_type?:     string
 	resource_arn?:     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	transit_gateway_arn!:                   string
 	transit_gateway_peering_attachment_id?: string

@@ -12,7 +12,7 @@ import "list"
 	maximum_execution_frequency?: string
 	name!:                        string
 	rule_id?:                     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	evaluation_mode?: #evaluation_mode | [...#evaluation_mode]
 	scope?: #scope | list.MaxItems(1) & [...#scope]

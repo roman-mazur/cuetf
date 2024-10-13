@@ -14,7 +14,7 @@ package res
 	subscriber_endpoint?:    string
 	subscriber_name?:        string
 	subscriber_status?:      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	source?: #source | [...#source]
 	subscriber_identity?: #subscriber_identity | [...#subscriber_identity]

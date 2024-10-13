@@ -20,7 +20,7 @@ import "list"
 	operating_system?:                   string
 	script_arn?:                         string
 	script_id?:                          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	certificate_configuration?: #certificate_configuration | list.MaxItems(1) & [...#certificate_configuration]
 	ec2_inbound_permission?: #ec2_inbound_permission | list.MaxItems(50) & [...#ec2_inbound_permission]

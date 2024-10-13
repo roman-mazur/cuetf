@@ -70,7 +70,7 @@ import "list"
 	source_region?:                         string
 	storage_encrypted?:                     bool
 	storage_type?:                          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_security_group_ids?: [...string]
 	restore_to_point_in_time?: #restore_to_point_in_time | list.MaxItems(1) & [...#restore_to_point_in_time]

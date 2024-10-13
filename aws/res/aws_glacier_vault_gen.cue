@@ -10,7 +10,7 @@ import "list"
 	id?:            string
 	location?:      string
 	name!:          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	notification?: #notification | list.MaxItems(1) & [...#notification]
 

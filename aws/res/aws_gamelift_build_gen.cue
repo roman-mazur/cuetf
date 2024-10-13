@@ -9,7 +9,7 @@ import "list"
 	id?:               string
 	name!:             string
 	operating_system!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	version?: string
 	storage_location?: #storage_location | list.MaxItems(1) & [_, ...] & [...#storage_location]

@@ -15,7 +15,7 @@ package res
 	phone_number?:                  string
 	registration_id?:               string
 	self_managed_opt_outs_enabled?: bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	two_way_channel_arn?:     string
 	two_way_channel_enabled?: bool

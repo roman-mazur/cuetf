@@ -25,7 +25,7 @@ import "list"
 	service_name!: string
 	state?:        string
 	subnet_ids?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_endpoint_type?: string
 	vpc_id!:            string

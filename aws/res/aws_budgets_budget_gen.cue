@@ -13,7 +13,7 @@ import "list"
 	limit_unit?:   string
 	name?:         string
 	name_prefix?:  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	time_period_end?:   string
 	time_period_start?: string

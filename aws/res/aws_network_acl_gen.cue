@@ -29,7 +29,7 @@ package res
 	}]
 	owner_id?: string
 	subnet_ids?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_id!: string
 }

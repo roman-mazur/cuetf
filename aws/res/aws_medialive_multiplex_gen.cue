@@ -10,7 +10,7 @@ import "list"
 	id?:              string
 	name!:            string
 	start_multiplex?: bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	multiplex_settings?: #multiplex_settings | list.MaxItems(1) & [...#multiplex_settings]
 	timeouts?: #timeouts

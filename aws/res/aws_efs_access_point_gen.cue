@@ -10,7 +10,7 @@ import "list"
 	file_system_id!:  string
 	id?:              string
 	owner_id?:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	posix_user?: #posix_user | list.MaxItems(1) & [...#posix_user]
 	root_directory?: #root_directory | list.MaxItems(1) & [...#root_directory]

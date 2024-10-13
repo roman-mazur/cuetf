@@ -10,7 +10,7 @@ import "list"
 	eventbridge_bus!: string
 	id?:              string
 	name!:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	event_filter?: #event_filter | list.MaxItems(1) & [_, ...] & [...#event_filter]
 

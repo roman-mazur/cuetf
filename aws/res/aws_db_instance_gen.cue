@@ -85,7 +85,7 @@ import "list"
 	storage_encrypted?:   bool
 	storage_throughput?:  number
 	storage_type?:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timezone?:               string
 	upgrade_storage_config?: bool

@@ -13,7 +13,7 @@ import "list"
 	protocols?: [...string]
 	resolver_endpoint_type?: string
 	security_group_ids!: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	ip_address?: #ip_address | list.MaxItems(10) & [_, _, ...] & [...#ip_address]
 	timeouts?: #timeouts

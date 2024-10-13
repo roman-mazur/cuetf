@@ -12,7 +12,7 @@ import "list"
 	domain!:         string
 	id?:             string
 	name!:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	app_monitor_configuration?: #app_monitor_configuration | list.MaxItems(1) & [...#app_monitor_configuration]
 	custom_events?: #custom_events | list.MaxItems(1) & [...#custom_events]

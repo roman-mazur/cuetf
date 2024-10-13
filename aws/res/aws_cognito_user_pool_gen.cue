@@ -22,7 +22,7 @@ import "list"
 	name!:                       string
 	sms_authentication_message?: string
 	sms_verification_message?:   string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	username_attributes?: [...string]
 	account_recovery_setting?: #account_recovery_setting | list.MaxItems(1) & [...#account_recovery_setting]

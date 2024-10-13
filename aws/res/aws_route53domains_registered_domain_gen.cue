@@ -19,7 +19,7 @@ import "list"
 	registrar_url?:       string
 	reseller?:            string
 	status_list?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	tech_privacy?:  bool
 	transfer_lock?: bool

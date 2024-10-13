@@ -13,6 +13,6 @@ package res
 	name?:                   string
 	name_prefix?:            string
 	regex?:                  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

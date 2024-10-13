@@ -12,7 +12,7 @@ import "list"
 	id?:                    string
 	iot_role_alias?:        string
 	role_arn!:              string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	output_config?: #output_config | list.MaxItems(1) & [_, ...] & [...#output_config]
 

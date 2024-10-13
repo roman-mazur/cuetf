@@ -25,7 +25,7 @@ import (
 
 	#ref: {
 		#name: string
-		"#/\(path.Join([ for el in #path + [#name] {"$defs/\(el)"}]))"
+		"#/\(path.Join([for el in #path + [#name] {"$defs/\(el)"}]))"
 	}
 
 	properties: {
@@ -72,7 +72,7 @@ import (
 		}
 	}
 
-	required: [ for name, info in #block.attributes if info.required {name}]
+	required: [for name, info in #block.attributes if info.required {name}]
 
 	additionalProperties: false
 }
@@ -99,8 +99,8 @@ _complexMap: {
 	}
 
 	map: {
-		#defs:                _
-		type:                 "object"
+		#defs: _
+		type:  "object"
 		additionalProperties: #fieldTransform & {#type: #defs}
 	}
 

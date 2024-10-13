@@ -9,7 +9,7 @@ import "list"
 	cluster_name!: string
 	id?:           string
 	status?:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	oidc?: #oidc | list.MaxItems(1) & [_, ...] & [...#oidc]
 	timeouts?: #timeouts

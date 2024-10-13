@@ -9,6 +9,6 @@ package res
 	expiration_date?:         string
 	id?:                      string
 	pem_encoded_certificate?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

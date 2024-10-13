@@ -9,7 +9,7 @@ package res
 	description?:            string
 	id?:                     string
 	last_updated_timestamp?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	topic?: #topic | [...#topic]
 

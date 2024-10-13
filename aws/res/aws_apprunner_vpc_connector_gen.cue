@@ -8,7 +8,7 @@ package res
 	security_groups!: [...string]
 	status?: string
 	subnets!: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_connector_name!:     string
 	vpc_connector_revision?: number

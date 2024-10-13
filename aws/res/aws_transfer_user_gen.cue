@@ -12,7 +12,7 @@ import "list"
 	policy?:              string
 	role!:                string
 	server_id!:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	user_name!: string
 	home_directory_mappings?: #home_directory_mappings | [...#home_directory_mappings]

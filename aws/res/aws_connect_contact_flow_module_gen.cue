@@ -12,6 +12,6 @@ package res
 	id?:                     string
 	instance_id!:            string
 	name!:                   string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

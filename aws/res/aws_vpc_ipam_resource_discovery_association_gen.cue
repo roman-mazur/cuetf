@@ -12,7 +12,7 @@ package res
 	is_default?:                 bool
 	owner_id?:                   string
 	state?:                      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

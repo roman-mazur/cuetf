@@ -8,7 +8,7 @@ import "list"
 	arn?:  string
 	id?:   string
 	name!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	fair_share_policy?: #fair_share_policy | list.MaxItems(1) & [...#fair_share_policy]
 

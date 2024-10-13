@@ -11,7 +11,7 @@ package res
 	iam_role_arn!:  string
 	logging_level?: string
 	sns_topic_arns?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	team_id!:                     string
 	team_name?:                   string

@@ -19,7 +19,7 @@ package res
 	provider_name?:          string
 	request_macsec?:         bool
 	skip_destroy?:           bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vlan_id?: number
 }

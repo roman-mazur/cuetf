@@ -30,7 +30,7 @@ import "list"
 	requester_pays?:      bool
 	role_arn!:            string
 	smb_acl_enabled?:     bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	valid_user_list?: [...string]
 	vpc_endpoint_dns_name?: string

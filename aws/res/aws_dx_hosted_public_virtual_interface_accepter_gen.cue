@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dx_hosted_public_virtual_interface_accepter")
 	arn?: string
 	id?:  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	virtual_interface_id!: string
 	timeouts?:             #timeouts

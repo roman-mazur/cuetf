@@ -13,7 +13,7 @@ package res
 	probe_id?:         string
 	protocol!:         string
 	source_arn!:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_id?: string
 }

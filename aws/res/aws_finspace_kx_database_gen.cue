@@ -10,7 +10,7 @@ package res
 	id?:                      string
 	last_modified_timestamp?: string
 	name!:                    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

@@ -7,7 +7,7 @@ package res
 	default_view?: bool
 	id?:           string
 	name!:         string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	filters?: #filters | [...#filters]
 	included_property?: #included_property | [...#included_property]

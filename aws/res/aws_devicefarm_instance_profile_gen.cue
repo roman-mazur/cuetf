@@ -10,6 +10,6 @@ package res
 	name!:             string
 	package_cleanup?:  bool
 	reboot_after_use?: bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

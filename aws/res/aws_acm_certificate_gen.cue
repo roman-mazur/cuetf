@@ -31,7 +31,7 @@ import "list"
 	}]
 	status?: string
 	subject_alternative_names?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?: string
 	validation_emails?: [...string]

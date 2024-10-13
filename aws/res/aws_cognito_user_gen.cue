@@ -3,7 +3,7 @@ package res
 #aws_cognito_user: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cognito_user")
-	attributes?: [string]: string
+	attributes?: [string]:      string
 	client_metadata?: [string]: string
 	creation_date?: string
 	desired_delivery_mediums?: [...string]

@@ -10,6 +10,6 @@ package res
 	namespace!:       string
 	role_arn!:        string
 	service_account!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

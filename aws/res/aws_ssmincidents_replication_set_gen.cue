@@ -9,7 +9,7 @@ package res
 	id?:                 string
 	last_modified_by?:   string
 	status?:             string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	region?: #region | [_, ...] & [...#region]
 	timeouts?: #timeouts

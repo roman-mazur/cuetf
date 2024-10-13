@@ -7,7 +7,7 @@ package res
 	peer_account_id?:         string
 	peer_region?:             string
 	peer_transit_gateway_id?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	transit_gateway_attachment_id!: string
 	transit_gateway_id?:            string

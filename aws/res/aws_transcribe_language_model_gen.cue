@@ -10,7 +10,7 @@ import "list"
 	id?:              string
 	language_code!:   string
 	model_name!:      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	input_data_config?: #input_data_config | list.MaxItems(1) & [_, ...] & [...#input_data_config]
 	timeouts?: #timeouts

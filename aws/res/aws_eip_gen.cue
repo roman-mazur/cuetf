@@ -23,7 +23,7 @@ package res
 	public_dns?:                string
 	public_ip?:                 string
 	public_ipv4_pool?:          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

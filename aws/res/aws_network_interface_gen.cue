@@ -27,7 +27,7 @@ package res
 	security_groups?: [...string]
 	source_dest_check?: bool
 	subnet_id!:         string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	attachment?: #attachment | [...#attachment]
 

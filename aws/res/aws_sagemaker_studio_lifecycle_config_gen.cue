@@ -8,6 +8,6 @@ package res
 	studio_lifecycle_config_app_type!: string
 	studio_lifecycle_config_content!:  string
 	studio_lifecycle_config_name!:     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

@@ -23,7 +23,7 @@ package res
 	service_type?: string
 	state?:        string
 	supported_ip_address_types?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

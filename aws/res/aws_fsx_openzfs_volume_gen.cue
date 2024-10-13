@@ -16,7 +16,7 @@ import "list"
 	record_size_kib?:                  number
 	storage_capacity_quota_gib?:       number
 	storage_capacity_reservation_gib?: number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	volume_type?: string
 	nfs_exports?: #nfs_exports | list.MaxItems(1) & [...#nfs_exports]

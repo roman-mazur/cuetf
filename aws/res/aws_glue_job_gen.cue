@@ -21,7 +21,7 @@ import "list"
 	number_of_workers?:      number
 	role_arn!:               string
 	security_configuration?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeout?:     number
 	worker_type?: string

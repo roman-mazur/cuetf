@@ -16,7 +16,7 @@ package res
 	platform!:           string
 	skip_destroy?:       bool
 	supported_os_versions?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?:    string
 	uri?:     string

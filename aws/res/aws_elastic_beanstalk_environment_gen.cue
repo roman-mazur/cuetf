@@ -25,7 +25,7 @@ package res
 	poll_interval?: string
 	queues?: [...string]
 	solution_stack_name?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	template_name?: string
 	tier?:          string

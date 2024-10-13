@@ -26,7 +26,7 @@ package res
 	root_device_name?:     string
 	root_snapshot_id?:     string
 	sriov_net_support?:    string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	tpm_support?:         string
 	usage_operation?:     string

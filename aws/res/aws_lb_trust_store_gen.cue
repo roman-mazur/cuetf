@@ -11,7 +11,7 @@ package res
 	id?:                                       string
 	name?:                                     string
 	name_prefix?:                              string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

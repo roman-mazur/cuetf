@@ -11,7 +11,7 @@ package res
 	resolver_endpoint_id?: string
 	rule_type!:            string
 	share_status?:         string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_ip?: #target_ip | [...#target_ip]
 	timeouts?: #timeouts

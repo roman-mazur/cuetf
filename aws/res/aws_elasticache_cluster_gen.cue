@@ -43,7 +43,7 @@ import "list"
 	snapshot_retention_limit?: number
 	snapshot_window?:          string
 	subnet_group_name?:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	transit_encryption_enabled?: bool
 	log_delivery_configuration?: #log_delivery_configuration | list.MaxItems(2) & [...#log_delivery_configuration]

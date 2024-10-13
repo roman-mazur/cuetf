@@ -31,7 +31,7 @@ import "list"
 	storage_capacity?:  number
 	storage_type?:      string
 	subnet_ids!: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_id?:                        string
 	weekly_maintenance_start_time?: string

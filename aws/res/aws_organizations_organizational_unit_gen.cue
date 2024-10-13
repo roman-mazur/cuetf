@@ -13,6 +13,6 @@ package res
 	id?:        string
 	name!:      string
 	parent_id!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

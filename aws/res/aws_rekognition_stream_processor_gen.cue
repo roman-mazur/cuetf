@@ -7,7 +7,7 @@ package res
 	name!:                 string
 	role_arn!:             string
 	stream_processor_arn?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	data_sharing_preference?: #data_sharing_preference | [...#data_sharing_preference]
 	input?: #input | [...#input]

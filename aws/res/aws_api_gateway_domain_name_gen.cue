@@ -22,7 +22,7 @@ import "list"
 	regional_domain_name?:                   string
 	regional_zone_id?:                       string
 	security_policy?:                        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	endpoint_configuration?: #endpoint_configuration | list.MaxItems(1) & [...#endpoint_configuration]
 	mutual_tls_authentication?: #mutual_tls_authentication | list.MaxItems(1) & [...#mutual_tls_authentication]

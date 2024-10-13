@@ -12,7 +12,7 @@ package res
 	id?:                string
 	inactive_date?:     string
 	private_key?:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	usage!: string
 }

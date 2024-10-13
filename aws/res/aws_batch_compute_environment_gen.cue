@@ -14,7 +14,7 @@ import "list"
 	state?:                           string
 	status?:                          string
 	status_reason?:                   string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type!: string
 	compute_resources?: #compute_resources | list.MaxItems(1) & [...#compute_resources]

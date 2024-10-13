@@ -17,7 +17,7 @@ import "list"
 	name!:          string
 	role_arn!:      string
 	status?:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	updated_at?: string
 	s3_path?: #s3_path | list.MaxItems(1) & [_, ...] & [...#s3_path]

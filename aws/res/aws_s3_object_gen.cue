@@ -34,7 +34,7 @@ import "list"
 	source?:                        string
 	source_hash?:                   string
 	storage_class?:                 string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	version_id?:       string
 	website_redirect?: string

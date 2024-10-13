@@ -12,7 +12,7 @@ import "list"
 	last_updated_time?: string
 	owner?:             string
 	policy_document?:   string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	verifiedaccess_group_arn?:   string
 	verifiedaccess_group_id?:    string

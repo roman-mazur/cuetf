@@ -18,7 +18,7 @@ import "list"
 	resource_type?:       string
 	scale!:               number
 	state?:               string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	url?: string
 	private_registry_access?: #private_registry_access | list.MaxItems(1) & [...#private_registry_access]

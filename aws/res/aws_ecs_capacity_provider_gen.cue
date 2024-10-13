@@ -8,7 +8,7 @@ import "list"
 	arn?:  string
 	id?:   string
 	name!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	auto_scaling_group_provider?: #auto_scaling_group_provider | list.MaxItems(1) & [_, ...] & [...#auto_scaling_group_provider]
 

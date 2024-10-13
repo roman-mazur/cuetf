@@ -6,7 +6,7 @@ package res
 	arn?:         string
 	description?: string
 	id?:          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

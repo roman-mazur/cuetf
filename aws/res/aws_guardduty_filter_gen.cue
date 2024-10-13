@@ -12,7 +12,7 @@ import "list"
 	id?:          string
 	name!:        string
 	rank!:        number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	finding_criteria?: #finding_criteria | list.MaxItems(1) & [_, ...] & [...#finding_criteria]
 

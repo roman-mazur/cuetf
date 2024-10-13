@@ -9,7 +9,7 @@ package res
 	max_devices?: number
 	name!:        string
 	project_arn!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?: string
 	rule?: #rule | [_, ...] & [...#rule]

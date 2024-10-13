@@ -7,6 +7,6 @@ package res
 	auth_type?: string
 	id?:        string
 	name!:      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

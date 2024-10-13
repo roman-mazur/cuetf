@@ -11,7 +11,7 @@ import "list"
 	id?:            string
 	name!:          string
 	namespace_id?:  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?: string
 	dns_config?: #dns_config | list.MaxItems(1) & [...#dns_config]

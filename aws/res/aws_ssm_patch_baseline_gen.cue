@@ -16,7 +16,7 @@ import "list"
 	operating_system?:                     string
 	rejected_patches?: [...string]
 	rejected_patches_action?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	approval_rule?: #approval_rule | [...#approval_rule]
 	global_filter?: #global_filter | list.MaxItems(4) & [...#global_filter]

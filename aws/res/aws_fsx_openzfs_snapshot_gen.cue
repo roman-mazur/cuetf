@@ -7,7 +7,7 @@ package res
 	creation_time?: string
 	id?:            string
 	name!:          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	volume_id!: string
 	timeouts?:  #timeouts

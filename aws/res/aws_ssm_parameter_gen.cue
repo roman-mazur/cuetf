@@ -11,7 +11,7 @@ package res
 	insecure_value?:  string
 	key_id?:          string
 	name!:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	tier?:    string
 	type!:    string

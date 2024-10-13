@@ -19,7 +19,7 @@ package res
 	publicly_accessible?:                     bool
 	security_group_ids?: [...string]
 	subnet_ids?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	high_availability_config?: #high_availability_config | [...#high_availability_config]
 	storage_configuration?: #storage_configuration | [...#storage_configuration]

@@ -7,7 +7,7 @@ package data
 	cpu?:                number
 	disable_networking?: bool
 	docker_labels?: [string]: string
-	environment?: [string]: string
+	environment?: [string]:   string
 	id?:                 string
 	image?:              string
 	image_digest?:       string

@@ -8,7 +8,7 @@ package res
 	fips_enabled?:      bool
 	id?:                string
 	last_updated_time?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	verified_access_trust_providers?: [...{
 		description?:                       string

@@ -15,7 +15,7 @@ import "list"
 	id?:                 string
 	notification_type!:  string
 	status?:             string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	action_threshold?: #action_threshold | list.MaxItems(1) & [_, ...] & [...#action_threshold]
 	definition?: #definition | list.MaxItems(1) & [_, ...] & [...#definition]

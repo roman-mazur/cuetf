@@ -37,7 +37,7 @@ import "list"
 	skip_destroy?:                   bool
 	source_code_hash?:               string
 	source_code_size?:               number
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeout?: number
 	version?: string

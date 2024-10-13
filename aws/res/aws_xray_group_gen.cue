@@ -9,7 +9,7 @@ import "list"
 	filter_expression!: string
 	group_name!:        string
 	id?:                string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	insights_configuration?: #insights_configuration | list.MaxItems(1) & [...#insights_configuration]
 

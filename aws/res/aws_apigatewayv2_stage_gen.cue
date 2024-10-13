@@ -16,8 +16,8 @@ import "list"
 	invoke_url?:            string
 	name!:                  string
 	stage_variables?: [string]: string
-	tags?: [string]: string
-	tags_all?: [string]: string
+	tags?: [string]:            string
+	tags_all?: [string]:        string
 	access_log_settings?: #access_log_settings | list.MaxItems(1) & [...#access_log_settings]
 	default_route_settings?: #default_route_settings | list.MaxItems(1) & [...#default_route_settings]
 	route_settings?: #route_settings | [...#route_settings]

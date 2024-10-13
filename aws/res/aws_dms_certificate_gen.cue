@@ -8,6 +8,6 @@ package res
 	certificate_pem?:    string
 	certificate_wallet?: string
 	id?:                 string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

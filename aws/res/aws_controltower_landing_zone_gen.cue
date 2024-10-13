@@ -10,7 +10,7 @@ package res
 	id?:                       string
 	latest_available_version?: string
 	manifest_json!:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	version!:  string
 	timeouts?: #timeouts

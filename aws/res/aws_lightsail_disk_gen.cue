@@ -10,6 +10,6 @@ package res
 	name!:              string
 	size_in_gb!:        number
 	support_code?:      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

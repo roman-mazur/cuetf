@@ -14,7 +14,7 @@ package res
 	job_name!:   string
 	job_status?: string
 	role_arn!:   string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	training_metrics?: [...{
 		training_loss?: number

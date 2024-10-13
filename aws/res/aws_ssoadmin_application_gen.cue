@@ -12,7 +12,7 @@ package res
 	instance_arn!:             string
 	name!:                     string
 	status?:                   string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	portal_options?: #portal_options | [...#portal_options]
 

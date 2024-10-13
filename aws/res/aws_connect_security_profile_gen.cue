@@ -11,6 +11,6 @@ package res
 	organization_resource_id?: string
 	permissions?: [...string]
 	security_profile_id?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

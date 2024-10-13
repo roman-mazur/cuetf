@@ -10,7 +10,7 @@ package res
 	pod_execution_role_arn!: string
 	status?:                 string
 	subnet_ids?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	selector?: #selector | [_, ...] & [...#selector]
 	timeouts?: #timeouts

@@ -11,6 +11,6 @@ package res
 	excluded_members?: [...string]
 	id?: string
 	static_members?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

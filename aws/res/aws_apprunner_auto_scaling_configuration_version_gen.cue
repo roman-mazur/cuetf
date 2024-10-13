@@ -14,6 +14,6 @@ package res
 	max_size?:                            number
 	min_size?:                            number
 	status?:                              string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

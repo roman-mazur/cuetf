@@ -9,7 +9,7 @@ import "list"
 	authentication!: string
 	id?:             string
 	name!:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_action!:   string
 	target_pipeline!: string

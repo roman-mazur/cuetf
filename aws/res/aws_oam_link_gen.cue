@@ -13,7 +13,7 @@ import "list"
 	resource_types!: [...string]
 	sink_arn?:        string
 	sink_identifier!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	link_configuration?: #link_configuration | list.MaxItems(1) & [...#link_configuration]
 	timeouts?: #timeouts

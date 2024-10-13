@@ -9,7 +9,7 @@ package res
 	integration_name!: string
 	kms_key_id?:       string
 	source_arn!:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_arn!: string
 	timeouts?:   #timeouts

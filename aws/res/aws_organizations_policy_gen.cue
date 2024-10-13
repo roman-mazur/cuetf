@@ -9,7 +9,7 @@ package res
 	id?:           string
 	name!:         string
 	skip_destroy?: bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?: string
 }

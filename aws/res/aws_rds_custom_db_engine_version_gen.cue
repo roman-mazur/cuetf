@@ -21,7 +21,7 @@ package res
 	manifest_hash?:                              string
 	source_image_id?:                            string
 	status?:                                     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

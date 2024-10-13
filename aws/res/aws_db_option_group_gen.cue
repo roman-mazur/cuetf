@@ -11,7 +11,7 @@ package res
 	name_prefix?:              string
 	option_group_description?: string
 	skip_destroy?:             bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	option?: #option | [...#option]
 	timeouts?: #timeouts

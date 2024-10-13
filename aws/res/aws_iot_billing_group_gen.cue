@@ -11,7 +11,7 @@ import "list"
 		creation_date?: string
 	}]
 	name!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	version?: number
 	properties?: #properties | list.MaxItems(1) & [...#properties]

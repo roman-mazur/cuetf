@@ -7,6 +7,6 @@ package res
 	description?: string
 	id?:          string
 	network_services?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

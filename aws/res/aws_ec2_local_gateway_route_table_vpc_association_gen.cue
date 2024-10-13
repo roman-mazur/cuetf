@@ -6,7 +6,7 @@ package res
 	id?:                           string
 	local_gateway_id?:             string
 	local_gateway_route_table_id!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_id!: string
 }

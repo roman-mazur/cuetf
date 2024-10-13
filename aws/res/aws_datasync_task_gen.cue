@@ -11,7 +11,7 @@ import "list"
 	id?:                       string
 	name?:                     string
 	source_location_arn!:      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	excludes?: #excludes | list.MaxItems(1) & [...#excludes]
 	includes?: #includes | list.MaxItems(1) & [...#includes]

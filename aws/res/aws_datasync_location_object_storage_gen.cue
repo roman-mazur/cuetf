@@ -14,7 +14,7 @@ package res
 	server_port?:        number
 	server_protocol?:    string
 	subdirectory?:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	uri?: string
 }

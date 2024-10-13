@@ -11,7 +11,7 @@ import "list"
 	id?:                   string
 	logging_role?:         string
 	security_policy_name?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	url!: string
 	as2_config?: #as2_config | list.MaxItems(1) & [...#as2_config]

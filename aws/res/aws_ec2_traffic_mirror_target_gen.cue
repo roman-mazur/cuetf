@@ -10,6 +10,6 @@ package res
 	network_interface_id?:              string
 	network_load_balancer_arn?:         string
 	owner_id?:                          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

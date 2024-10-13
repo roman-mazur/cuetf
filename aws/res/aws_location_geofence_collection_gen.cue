@@ -9,7 +9,7 @@ package res
 	description?:     string
 	id?:              string
 	kms_key_id?:      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	update_time?: string
 	timeouts?:    #timeouts

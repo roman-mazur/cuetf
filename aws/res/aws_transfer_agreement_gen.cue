@@ -13,6 +13,6 @@ package res
 	partner_profile_id!: string
 	server_id!:          string
 	status?:             string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

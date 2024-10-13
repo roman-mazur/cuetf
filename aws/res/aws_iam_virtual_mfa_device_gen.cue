@@ -9,7 +9,7 @@ package res
 	id?:                  string
 	path?:                string
 	qr_code_png?:         string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	user_name?:               string
 	virtual_mfa_device_name!: string

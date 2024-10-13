@@ -10,6 +10,6 @@ package res
 	protection_group_arn?: string
 	protection_group_id!:  string
 	resource_type?:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

@@ -12,7 +12,7 @@ import "list"
 	id?:                          string
 	in_transit_encryption?:       string
 	subdirectory?:                string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	uri?: string
 	ec2_config?: #ec2_config | list.MaxItems(1) & [_, ...] & [...#ec2_config]

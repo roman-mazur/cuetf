@@ -6,7 +6,7 @@ package res
 	arn?:      string
 	id?:       string
 	owner_id?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_id!: string
 }

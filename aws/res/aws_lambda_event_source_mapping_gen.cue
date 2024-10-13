@@ -26,7 +26,7 @@ import "list"
 	starting_position_timestamp?: string
 	state?:                       string
 	state_transition_reason?:     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	topics?: [...string]
 	tumbling_window_in_seconds?: number

@@ -32,7 +32,7 @@ package res
 	name_prefix?:            string
 	owner_id?:               string
 	revoke_rules_on_delete?: bool
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_id?:   string
 	timeouts?: #timeouts

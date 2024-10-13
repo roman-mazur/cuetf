@@ -23,7 +23,7 @@ import "list"
 	name!:                               string
 	state?:                              string
 	stream_view?:                        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	compute_capacity?: #compute_capacity | list.MaxItems(1) & [_, ...] & [...#compute_capacity]
 	domain_join_info?: #domain_join_info | list.MaxItems(1) & [...#domain_join_info]

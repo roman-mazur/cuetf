@@ -12,6 +12,6 @@ package res
 	license_rules?: [...string]
 	name!:             string
 	owner_account_id?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

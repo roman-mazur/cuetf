@@ -7,6 +7,6 @@ package res
 	description?:   string
 	id?:            string
 	registry_name!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

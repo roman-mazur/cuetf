@@ -15,7 +15,7 @@ package res
 	name_prefix?:          string
 	path?:                 string
 	permissions_boundary?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	unique_id?: string
 	inline_policy?: #inline_policy | [...#inline_policy]

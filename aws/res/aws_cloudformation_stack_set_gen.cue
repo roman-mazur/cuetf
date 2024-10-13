@@ -16,7 +16,7 @@ import "list"
 	parameters?: [string]: string
 	permission_model?: string
 	stack_set_id?:     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	template_body?: string
 	template_url?:  string

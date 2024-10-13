@@ -9,7 +9,7 @@ import "list"
 	aws_region!: string
 	id?:         string
 	name!:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	endpoints?: #endpoints | list.MaxItems(1) & [_, ...] & [...#endpoints]
 

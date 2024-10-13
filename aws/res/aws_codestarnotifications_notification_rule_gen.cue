@@ -12,7 +12,7 @@ import "list"
 	name!:     string
 	resource!: string
 	status?:   string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target?: #target | list.MaxItems(10) & [...#target]
 

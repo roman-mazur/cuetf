@@ -21,7 +21,7 @@ package res
 	replication_instance_private_ips?: [...string]
 	replication_instance_public_ips?: [...string]
 	replication_subnet_group_id?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_security_group_ids?: [...string]
 	timeouts?: #timeouts

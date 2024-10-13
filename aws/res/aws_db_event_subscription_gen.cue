@@ -13,7 +13,7 @@ package res
 	sns_topic!:   string
 	source_ids?: [...string]
 	source_type?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

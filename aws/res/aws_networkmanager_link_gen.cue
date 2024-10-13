@@ -11,7 +11,7 @@ import "list"
 	id?:                string
 	provider_name?:     string
 	site_id!:           string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?: string
 	bandwidth?: #bandwidth | list.MaxItems(1) & [_, ...] & [...#bandwidth]

@@ -10,7 +10,7 @@ _github: schema.provider_schemas["registry.terraform.io/integrations/github"].da
 jsonschema.#ProviderTest
 
 importSamples: github: [name=string]: {
-	#name: name
+	#name:  name
 	#block: _github[name].block
 }
 //importSamples: github: github_repository: _

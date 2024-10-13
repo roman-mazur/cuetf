@@ -11,7 +11,7 @@ import "list"
 	lock_token?:  string
 	name!:        string
 	scope!:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	regular_expression?: #regular_expression | list.MaxItems(10) & [...#regular_expression]
 

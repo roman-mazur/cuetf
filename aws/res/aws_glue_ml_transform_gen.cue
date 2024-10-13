@@ -19,7 +19,7 @@ import "list"
 		data_type?: string
 		name?:      string
 	}]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeout?:     number
 	worker_type?: string

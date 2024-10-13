@@ -14,7 +14,7 @@ package res
 	network_interface_port?: number
 	snapshot_id?:            string
 	source_volume_arn?:      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	target_arn?:           string
 	target_name!:          string

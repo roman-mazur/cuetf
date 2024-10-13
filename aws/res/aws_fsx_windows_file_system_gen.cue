@@ -27,7 +27,7 @@ import "list"
 	storage_capacity?:  number
 	storage_type?:      string
 	subnet_ids!: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	throughput_capacity!:           number
 	vpc_id?:                        string

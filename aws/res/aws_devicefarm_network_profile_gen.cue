@@ -12,7 +12,7 @@ package res
 	id?:                      string
 	name!:                    string
 	project_arn!:             string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?:                  string
 	uplink_bandwidth_bits?: number

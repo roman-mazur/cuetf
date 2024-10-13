@@ -15,7 +15,7 @@ import "list"
 	last_updated_time?: string
 	name?:              string
 	parent_folder_arn?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	permissions?: #permissions | list.MaxItems(64) & [...#permissions]
 	timeouts?: #timeouts

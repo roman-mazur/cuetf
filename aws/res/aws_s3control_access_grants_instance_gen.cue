@@ -9,6 +9,6 @@ package res
 	id?:                              string
 	identity_center_application_arn?: string
 	identity_center_arn?:             string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

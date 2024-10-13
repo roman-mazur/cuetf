@@ -22,7 +22,7 @@ package res
 	outpost_arn?:                                    string
 	owner_id?:                                       string
 	private_dns_hostname_type_on_launch?:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_id!:   string
 	timeouts?: #timeouts

@@ -31,7 +31,7 @@ import "list"
 	stats_url?:                 string
 	stats_user?:                string
 	system_packages?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	use_ebs_optimized_instances?: bool
 	cloudwatch_configuration?: #cloudwatch_configuration | list.MaxItems(1) & [...#cloudwatch_configuration]

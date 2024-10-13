@@ -22,7 +22,7 @@ package res
 		vpc_endpoint_id?:            string
 		vpc_peering_connection_id?:  string
 	}]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_id!:   string
 	timeouts?: #timeouts

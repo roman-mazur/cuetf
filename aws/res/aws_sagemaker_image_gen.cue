@@ -9,6 +9,6 @@ package res
 	id?:           string
 	image_name!:   string
 	role_arn!:     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

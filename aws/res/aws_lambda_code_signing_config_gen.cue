@@ -10,7 +10,7 @@ import "list"
 	description?:   string
 	id?:            string
 	last_modified?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	allowed_publishers?: #allowed_publishers | list.MaxItems(1) & [_, ...] & [...#allowed_publishers]
 	policies?: #policies | list.MaxItems(1) & [...#policies]

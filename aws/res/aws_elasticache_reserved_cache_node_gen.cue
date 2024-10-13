@@ -18,7 +18,7 @@ package res
 	reserved_cache_nodes_offering_id!: string
 	start_time?:                       string
 	state?:                            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	usage_price?: number
 	timeouts?:    #timeouts

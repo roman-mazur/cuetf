@@ -7,6 +7,6 @@ package res
 	domains?: [...string]
 	id?:   string
 	name!: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

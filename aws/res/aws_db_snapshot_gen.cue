@@ -23,7 +23,7 @@ package res
 	source_region?:                 string
 	status?:                        string
 	storage_type?:                  string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	vpc_id?:   string
 	timeouts?: #timeouts

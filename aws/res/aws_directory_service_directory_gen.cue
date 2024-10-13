@@ -18,7 +18,7 @@ import "list"
 	security_group_id?: string
 	short_name?:        string
 	size?:              string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?: string
 	connect_settings?: #connect_settings | list.MaxItems(1) & [...#connect_settings]

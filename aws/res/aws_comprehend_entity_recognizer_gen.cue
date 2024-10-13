@@ -11,7 +11,7 @@ import "list"
 	language_code!:        string
 	model_kms_key_id?:     string
 	name!:                 string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	version_name?:        string
 	version_name_prefix?: string

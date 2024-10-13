@@ -14,7 +14,7 @@ import "list"
 	location_uri!:             string
 	name!:                     string
 	retrieval_role_arn?:       string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	type?: string
 	validator?: #validator | list.MaxItems(2) & [...#validator]

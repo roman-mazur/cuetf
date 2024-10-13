@@ -9,7 +9,7 @@ package res
 	framework_type?:  string
 	id?:              string
 	name!:            string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	control_sets?: #control_sets | [...#control_sets]
 

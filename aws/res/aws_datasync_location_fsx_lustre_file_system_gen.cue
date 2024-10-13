@@ -9,7 +9,7 @@ package res
 	id?:                 string
 	security_group_arns!: [...string]
 	subdirectory?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	uri?: string
 }

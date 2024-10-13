@@ -12,7 +12,7 @@ import "list"
 	lock_state?:    string
 	resource_type!: string
 	status?:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	lock_configuration?: #lock_configuration | list.MaxItems(1) & [...#lock_configuration]
 	resource_tags?: #resource_tags | list.MaxItems(50) & [...#resource_tags]

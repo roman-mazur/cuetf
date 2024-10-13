@@ -13,7 +13,7 @@ import "list"
 	container_url!:       string
 	id?:                  string
 	subdirectory?:        string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	uri?: string
 	sas_configuration?: #sas_configuration | list.MaxItems(1) & [...#sas_configuration]

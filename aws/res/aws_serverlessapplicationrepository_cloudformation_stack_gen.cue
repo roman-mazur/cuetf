@@ -7,10 +7,10 @@ package res
 	capabilities!: [...string]
 	id?:   string
 	name!: string
-	outputs?: [string]: string
+	outputs?: [string]:    string
 	parameters?: [string]: string
 	semantic_version?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	timeouts?: #timeouts
 

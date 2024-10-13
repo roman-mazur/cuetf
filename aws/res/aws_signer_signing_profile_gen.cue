@@ -17,7 +17,7 @@ import "list"
 		revoked_by?:                string
 	}]
 	status?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	version?:     string
 	version_arn?: string

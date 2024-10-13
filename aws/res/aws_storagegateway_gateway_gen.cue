@@ -27,7 +27,7 @@ import "list"
 	smb_file_share_visibility?: bool
 	smb_guest_password?:        string
 	smb_security_strategy?:     string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	tape_drive_type?: string
 	maintenance_start_time?: #maintenance_start_time | list.MaxItems(1) & [...#maintenance_start_time]

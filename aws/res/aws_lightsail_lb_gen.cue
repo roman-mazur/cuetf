@@ -14,6 +14,6 @@ package res
 	protocol?:          string
 	public_ports?: [...number]
 	support_code?: string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

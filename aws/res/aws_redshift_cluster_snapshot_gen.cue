@@ -10,6 +10,6 @@ package res
 	manual_snapshot_retention_period?: number
 	owner_account?:                    string
 	snapshot_identifier!:              string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 }

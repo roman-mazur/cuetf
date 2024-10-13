@@ -11,7 +11,7 @@ import "list"
 	id?:                   string
 	no_password_required?: bool
 	passwords?: [...string]
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	user_id!:   string
 	user_name!: string

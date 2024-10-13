@@ -13,7 +13,7 @@ import "list"
 	customer_version?:        number
 	generation_id?:           string
 	id?:                      string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	validity?: [...{
 		not_after?:  string

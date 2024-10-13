@@ -10,7 +10,7 @@ import "list"
 	email_identity!:         string
 	id?:                     string
 	identity_type?:          string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	verified_for_sending_status?: bool
 	dkim_signing_attributes?: #dkim_signing_attributes | list.MaxItems(1) & [...#dkim_signing_attributes]

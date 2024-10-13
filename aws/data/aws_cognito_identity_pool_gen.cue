@@ -17,5 +17,5 @@ package data
 	openid_connect_provider_arns?: [...string]
 	saml_provider_arns?: [...string]
 	supported_login_providers?: [string]: string
-	tags?: [string]: string
+	tags?: [string]:                      string
 }

@@ -23,8 +23,8 @@ _recDepth: [0, 1, 2, 3, 4, 5]
 	#complexType: "object" | "list" | "map" | "set"
 	#complexDef: [#complexType, _]
 
-	_levels: [ // Implementation of a bounded recursion.
-			for i in _recDepth {
+	_levels: [// Implementation of a bounded recursion.
+		for i in _recDepth {
 			{
 				if i == 0 {
 					#_prev: #primitive

@@ -12,7 +12,7 @@ package res
 	key_check_value_algorithm?: string
 	key_origin?:                string
 	key_state?:                 string
-	tags?: [string]: string
+	tags?: [string]:     string
 	tags_all?: [string]: string
 	key_attributes?: #key_attributes
 	timeouts?:       #timeouts
