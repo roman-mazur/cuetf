@@ -1,4 +1,4 @@
-package cloudflare
+package github
 
 // #Terraform defines the schema of terraform json document that uses the Cloudflare provider.
 #Terraform: {
@@ -8,7 +8,7 @@ package cloudflare
 	data?: [type=#githubTypes]: [name=string]:     _ds[type]
 }
 
-#githubTypes: =~"^cloudflare_.+"
+#githubTypes: =~"^github_.+"
 
 _res: [#githubTypes]: _
 _ds: [#githubTypes]:  _
