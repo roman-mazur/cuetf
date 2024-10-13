@@ -12,11 +12,6 @@ package aws
 //		}
 //
 #Terraform: {
-  terraform: required_providers: cloudflare: {
-      source: "hashicorp/aws"
-      version: "= 5.71"
-	}
-
 	provider?: aws: #provider
 
 	resource?: [type=#awsTypes]: [name=string]: _res[type]
