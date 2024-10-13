@@ -20,5 +20,10 @@ EOF
 }
 
 importRegion us-east-1
+importRegion us-east-2
+importRegion us-west-1
+importRegion us-west-2
 importRegion eu-central-1
+importRegion eu-west-1
+importRegion eu-west-2
 importRegion eu-west-3
