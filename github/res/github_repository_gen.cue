@@ -33,7 +33,7 @@ import "list"
 	license_template?:                        string
 	merge_commit_message?:                    string
 	merge_commit_title?:                      string
-	name:                                     string
+	name!:                                    string
 	node_id?:                                 string
 	primary_language?:                        string
 	repo_id?:                                 number
@@ -42,11 +42,12 @@ import "list"
 	ssh_clone_url?:                           string
 	svn_url?:                                 string
 	topics?: [...string]
-	visibility?:            string
-	vulnerability_alerts?:  bool
-	pages?:                 #pages | list.MaxItems(1) & [...#pages]
+	visibility?:                  string
+	vulnerability_alerts?:        bool
+	web_commit_signoff_required?: bool
+	pages?: #pages | list.MaxItems(1) & [...#pages]
 	security_and_analysis?: #security_and_analysis | list.MaxItems(1) & [...#security_and_analysis]
-	template?:              #template | list.MaxItems(1) & [...#template]
+	template?: #template | list.MaxItems(1) & [...#template]
 
 	#pages: {
 		build_type?: string
@@ -55,29 +56,29 @@ import "list"
 		html_url?:   string
 		status?:     string
 		url?:        string
-		source?:     #pages.#source | list.MaxItems(1) & [...#pages.#source]
+		source?: #pages.#source | list.MaxItems(1) & [...#pages.#source]
 
 		#source: {
-			branch: string
-			path?:  string
+			branch!: string
+			path?:   string
 		}
 	}
 
 	#security_and_analysis: {
-		advanced_security?:               #security_and_analysis.#advanced_security | list.MaxItems(1) & [...#security_and_analysis.#advanced_security]
-		secret_scanning?:                 #security_and_analysis.#secret_scanning | list.MaxItems(1) & [...#security_and_analysis.#secret_scanning]
+		advanced_security?: #security_and_analysis.#advanced_security | list.MaxItems(1) & [...#security_and_analysis.#advanced_security]
+		secret_scanning?: #security_and_analysis.#secret_scanning | list.MaxItems(1) & [...#security_and_analysis.#secret_scanning]
 		secret_scanning_push_protection?: #security_and_analysis.#secret_scanning_push_protection | list.MaxItems(1) & [...#security_and_analysis.#secret_scanning_push_protection]
 
-		#advanced_security: status: string
+		#advanced_security: status!: string
 
-		#secret_scanning: status: string
+		#secret_scanning: status!: string
 
-		#secret_scanning_push_protection: status: string
+		#secret_scanning_push_protection: status!: string
 	}
 
 	#template: {
 		include_all_branches?: bool
-		owner:                 string
-		repository:            string
+		owner!:                string
+		repository!:           string
 	}
 }

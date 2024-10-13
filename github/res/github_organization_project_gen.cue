@@ -6,6 +6,6 @@ package res
 	body?: string
 	etag?: string
 	id?:   string
-	name:  string
+	name!: string
 	url?:  string
 }

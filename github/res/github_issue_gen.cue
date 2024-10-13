@@ -11,6 +11,6 @@ package res
 	labels?: [...string]
 	milestone_number?: number
 	"number"?:         number
-	repository:        string
-	title:             string
+	repository!:       string
+	title!:            string
 }

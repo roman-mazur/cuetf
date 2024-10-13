@@ -3,8 +3,8 @@ package res
 #github_repository_environment_deployment_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/github_repository_environment_deployment_policy")
-	branch_pattern: string
-	environment:    string
-	id?:            string
-	repository:     string
+	branch_pattern!: string
+	environment!:    string
+	id?:             string
+	repository!:     string
 }

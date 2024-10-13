@@ -24,5 +24,5 @@ package data
 	ssh_keys?: [...string]
 	suspended_at?: string
 	updated_at?:   string
-	username:      string
+	username!:     string
 }

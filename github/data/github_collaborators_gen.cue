@@ -22,7 +22,8 @@ package data
 		type?:                string
 		url?:                 string
 	}]
-	id?:        string
-	owner:      string
-	repository: string
+	id?:         string
+	owner!:      string
+	permission?: string
+	repository!: string
 }

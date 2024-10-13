@@ -7,5 +7,5 @@ package data
 	id?:          string
 	name?:        string
 	node_id?:     string
-	slug:         string
+	slug!:        string
 }

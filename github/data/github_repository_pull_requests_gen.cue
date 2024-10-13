@@ -3,11 +3,11 @@ package data
 #github_repository_pull_requests: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/github_repository_pull_requests")
-	base_ref?:       string
-	base_repository: string
-	head_ref?:       string
-	id?:             string
-	owner?:          string
+	base_ref?:        string
+	base_repository!: string
+	head_ref?:        string
+	id?:              string
+	owner?:           string
 	results?: [...{
 		base_ref?:        string
 		base_sha?:        string

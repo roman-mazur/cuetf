@@ -6,6 +6,6 @@ package res
 	etag?:       string
 	id?:         string
 	permission?: string
-	repository:  string
-	team_id:     string
+	repository!: string
+	team_id!:    string
 }

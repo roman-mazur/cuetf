@@ -7,6 +7,6 @@ package res
 	invitation_id?:               string
 	permission?:                  string
 	permission_diff_suppression?: bool
-	repository:                   string
-	username:                     string
+	repository!:                  string
+	username!:                    string
 }

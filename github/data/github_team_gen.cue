@@ -17,6 +17,6 @@ package data
 		role_name?: string
 	}]
 	results_per_page?: number
-	slug:              string
+	slug!:             string
 	summary_only?:     bool
 }

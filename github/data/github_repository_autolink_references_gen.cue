@@ -8,6 +8,6 @@ package data
 		key_prefix?:          string
 		target_url_template?: string
 	}]
-	id?:        string
-	repository: string
+	id?:         string
+	repository!: string
 }

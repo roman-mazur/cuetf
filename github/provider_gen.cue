@@ -7,16 +7,19 @@ import "list"
 	@jsonschema(id="https://rmazur.io/cuetf/schema/provider")
 	base_url?:          string
 	insecure?:          bool
+	max_retries?:       number
 	owner?:             string
 	parallel_requests?: bool
 	read_delay_ms?:     number
-	token?:             string
-	write_delay_ms?:    number
-	app_auth?:          #app_auth | list.MaxItems(1) & [...#app_auth]
+	retry_delay_ms?:    number
+	retryable_errors?: [...number]
+	token?:          string
+	write_delay_ms?: number
+	app_auth?: #app_auth | list.MaxItems(1) & [...#app_auth]
 
 	#app_auth: {
-		id:              string
-		installation_id: string
-		pem_file:        string
+		id!:              string
+		installation_id!: string
+		pem_file!:        string
 	}
 }

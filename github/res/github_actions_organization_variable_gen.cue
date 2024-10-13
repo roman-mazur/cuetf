@@ -6,8 +6,8 @@ package res
 	created_at?: string
 	id?:         string
 	selected_repository_ids?: [...number]
-	updated_at?:   string
-	value:         string
-	variable_name: string
-	visibility:    string
+	updated_at?:    string
+	value!:         string
+	variable_name!: string
+	visibility!:    string
 }

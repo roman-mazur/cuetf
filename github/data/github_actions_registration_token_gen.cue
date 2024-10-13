@@ -5,6 +5,6 @@ package data
 	@jsonschema(id="https://rmazur.io/cuetf/schema/github_actions_registration_token")
 	expires_at?: number
 	id?:         string
-	repository:  string
+	repository!: string
 	token?:      string
 }

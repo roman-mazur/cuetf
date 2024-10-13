@@ -7,7 +7,7 @@ package data
 		id?:   string
 		name?: string
 	}]
-	environment_name: string
-	id?:              string
-	repository:       string
+	environment_name!: string
+	id?:               string
+	repository!:       string
 }

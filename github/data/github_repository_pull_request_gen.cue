@@ -4,7 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/github_repository_pull_request")
 	base_ref?:        string
-	base_repository:  string
+	base_repository!: string
 	base_sha?:        string
 	body?:            string
 	draft?:           bool
@@ -15,7 +15,7 @@ package data
 	id?:              string
 	labels?: [...string]
 	maintainer_can_modify?: bool
-	"number":               number
+	"number"!:              number
 	opened_at?:             number
 	opened_by?:             string
 	owner?:                 string

@@ -4,9 +4,10 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/github_enterprise")
 	created_at?:  string
+	database_id?: number
 	description?: string
 	id?:          string
 	name?:        string
-	slug:         string
+	slug!:        string
 	url?:         string
 }

@@ -7,7 +7,7 @@ package data
 	id?:              string
 	include_repo_id?: bool
 	names?: [...string]
-	query: string
+	query!: string
 	repo_ids?: [...number]
 	results_per_page?: number
 	sort?:             string

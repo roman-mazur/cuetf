@@ -7,17 +7,16 @@ import "list"
 	@jsonschema(id="https://rmazur.io/cuetf/schema/github_repository_webhook")
 	active?: bool
 	etag?:   string
-	events: [...string]
-	id?:            string
-	name?:          string
-	repository:     string
-	url?:           string
+	events!: [...string]
+	id?:         string
+	repository!: string
+	url?:        string
 	configuration?: #configuration | list.MaxItems(1) & [...#configuration]
 
 	#configuration: {
 		content_type?: string
 		insecure_ssl?: bool
 		secret?:       string
-		url:           string
+		url!:          string
 	}
 }

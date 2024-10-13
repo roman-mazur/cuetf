@@ -8,5 +8,5 @@ package data
 	organization?: string
 	role?:         string
 	state?:        string
-	username:      string
+	username!:     string
 }

@@ -8,5 +8,5 @@ package data
 	logins?: [...string]
 	node_ids?: [...string]
 	unknown_logins?: [...string]
-	usernames: [...string]
+	usernames!: [...string]
 }

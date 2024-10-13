@@ -22,13 +22,13 @@ package data
 	html_url?:         string
 	id?:               string
 	name?:             string
-	owner:             string
+	owner!:            string
 	prerelease?:       bool
 	published_at?:     string
 	release_id?:       number
 	release_tag?:      string
-	repository:        string
-	retrieve_by:       string
+	repository!:       string
+	retrieve_by!:      string
 	tarball_url?:      string
 	target_commitish?: string
 	upload_url?:       string

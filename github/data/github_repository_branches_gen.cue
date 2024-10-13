@@ -10,5 +10,5 @@ package data
 	id?:                          string
 	only_non_protected_branches?: bool
 	only_protected_branches?:     bool
-	repository:                   string
+	repository!:                  string
 }

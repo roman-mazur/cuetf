@@ -9,7 +9,7 @@ package res
 	id?:                        string
 	ldap_dn?:                   string
 	members_count?:             number
-	name:                       string
+	name!:                      string
 	node_id?:                   string
 	parent_team_id?:            string
 	parent_team_read_id?:       string

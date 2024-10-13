@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/github_organization_settings")
 	advanced_security_enabled_for_new_repositories?:               bool
-	billing_email:                                                 string
+	billing_email!:                                                string
 	blog?:                                                         string
 	company?:                                                      string
 	default_repository_permission?:                                string

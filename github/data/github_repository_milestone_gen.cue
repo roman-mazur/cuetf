@@ -6,9 +6,9 @@ package data
 	description?: string
 	due_date?:    string
 	id?:          string
-	"number":     number
-	owner:        string
-	repository:   string
+	"number"!:    number
+	owner!:       string
+	repository!:  string
 	state?:       string
 	title?:       string
 }

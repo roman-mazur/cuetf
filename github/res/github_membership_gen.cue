@@ -7,5 +7,5 @@ package res
 	etag?:                 string
 	id?:                   string
 	role?:                 string
-	username:              string
+	username!:             string
 }

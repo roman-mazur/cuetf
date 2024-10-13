@@ -29,9 +29,12 @@ _res: github_dependabot_organization_secret: res.#github_dependabot_organization
 _res: github_dependabot_organization_secret_repositories: res.#github_dependabot_organization_secret_repositories
 _res: github_dependabot_secret: res.#github_dependabot_secret
 _res: github_emu_group_mapping: res.#github_emu_group_mapping
+_res: github_enterprise_actions_permissions: res.#github_enterprise_actions_permissions
+_res: github_enterprise_actions_runner_group: res.#github_enterprise_actions_runner_group
 _res: github_enterprise_organization: res.#github_enterprise_organization
 _res: github_issue: res.#github_issue
 _res: github_issue_label: res.#github_issue_label
+_res: github_issue_labels: res.#github_issue_labels
 _res: github_membership: res.#github_membership
 _res: github_organization_block: res.#github_organization_block
 _res: github_organization_custom_role: res.#github_organization_custom_role

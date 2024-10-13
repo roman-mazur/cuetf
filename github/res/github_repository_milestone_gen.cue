@@ -7,8 +7,8 @@ package res
 	due_date?:    string
 	id?:          string
 	"number"?:    number
-	owner:        string
-	repository:   string
+	owner!:       string
+	repository!:  string
 	state?:       string
-	title:        string
+	title!:       string
 }

@@ -10,5 +10,5 @@ package data
 		title?:    string
 		verified?: bool
 	}]
-	repository: string
+	repository!: string
 }

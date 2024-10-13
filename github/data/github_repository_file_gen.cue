@@ -9,9 +9,9 @@ package data
 	commit_message?: string
 	commit_sha?:     string
 	content?:        string
-	file:            string
+	file!:           string
 	id?:             string
 	ref?:            string
-	repository:      string
+	repository!:     string
 	sha?:            string
 }

@@ -5,6 +5,6 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/github_actions_repository_oidc_subject_claim_customization_template")
 	id?: string
 	include_claim_keys?: [...string]
-	repository:  string
-	use_default: bool
+	repository!:  string
+	use_default!: bool
 }

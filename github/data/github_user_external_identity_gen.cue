@@ -7,5 +7,5 @@ package data
 	login?: string
 	saml_identity?: [string]: string
 	scim_identity?: [string]: string
-	username: string
+	username!: string
 }

@@ -7,6 +7,6 @@ package data
 		name?:    string
 		node_id?: string
 	}]
-	id?:        string
-	repository: string
+	id?:         string
+	repository!: string
 }

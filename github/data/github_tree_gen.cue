@@ -10,8 +10,8 @@ package data
 		size?: number
 		type?: string
 	}]
-	id?:        string
-	recursive?: bool
-	repository: string
-	tree_sha:   string
+	id?:         string
+	recursive?:  bool
+	repository!: string
+	tree_sha!:   string
 }

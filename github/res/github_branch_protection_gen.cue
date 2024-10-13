@@ -5,19 +5,18 @@ package res
 	@jsonschema(id="https://rmazur.io/cuetf/schema/github_branch_protection")
 	allows_deletions?:    bool
 	allows_force_pushes?: bool
-	blocks_creations?:    bool
 	enforce_admins?:      bool
 	force_push_bypassers?: [...string]
-	id?:          string
-	lock_branch?: bool
-	pattern:      string
-	push_restrictions?: [...string]
-	repository_id:                    string
+	id?:                              string
+	lock_branch?:                     bool
+	pattern!:                         string
+	repository_id!:                   string
 	require_conversation_resolution?: bool
 	require_signed_commits?:          bool
 	required_linear_history?:         bool
-	required_pull_request_reviews?:   #required_pull_request_reviews | [...#required_pull_request_reviews]
-	required_status_checks?:          #required_status_checks | [...#required_status_checks]
+	required_pull_request_reviews?: #required_pull_request_reviews | [...#required_pull_request_reviews]
+	required_status_checks?: #required_status_checks | [...#required_status_checks]
+	restrict_pushes?: #restrict_pushes | [...#restrict_pushes]
 
 	#required_pull_request_reviews: {
 		dismiss_stale_reviews?: bool
@@ -32,5 +31,10 @@ package res
 	#required_status_checks: {
 		contexts?: [...string]
 		strict?: bool
+	}
+
+	#restrict_pushes: {
+		blocks_creations?: bool
+		push_allowances?: [...string]
 	}
 }

@@ -7,7 +7,7 @@ package res
 	encrypted_value?: string
 	id?:              string
 	plaintext_value?: string
-	repository:       string
-	secret_name:      string
+	repository!:      string
+	secret_name!:     string
 	updated_at?:      string
 }

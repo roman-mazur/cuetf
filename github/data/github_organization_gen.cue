@@ -10,6 +10,7 @@ package data
 	dependency_graph_enabled_for_new_repositories?:            bool
 	description?:                                              string
 	id?:                                                       string
+	ignore_archived_repos?:                                    bool
 	login?:                                                    string
 	members_allowed_repository_creation_type?:                 string
 	members_can_create_internal_repositories?:                 bool
@@ -20,13 +21,14 @@ package data
 	members_can_create_public_repositories?:                   bool
 	members_can_create_repositories?:                          bool
 	members_can_fork_private_repositories?:                    bool
-	name:                                                      string
+	name!:                                                     string
 	node_id?:                                                  string
 	orgname?:                                                  string
 	plan?:                                                     string
 	repositories?: [...string]
 	secret_scanning_enabled_for_new_repositories?:                 bool
 	secret_scanning_push_protection_enabled_for_new_repositories?: bool
+	summary_only?:                                                 bool
 	two_factor_requirement_enabled?:                               bool
 	users?: [...{
 		[string]: string
