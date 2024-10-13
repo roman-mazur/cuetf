@@ -1,0 +1,49 @@
+package elasticstack
+
+import "rmazur.io/cuetf/elasticstack/data"
+
+_ds: elasticstack_elasticsearch_enrich_policy:                      data.#elasticstack_elasticsearch_enrich_policy
+_ds: elasticstack_elasticsearch_info:                               data.#elasticstack_elasticsearch_info
+_ds: elasticstack_elasticsearch_ingest_processor_append:            data.#elasticstack_elasticsearch_ingest_processor_append
+_ds: elasticstack_elasticsearch_ingest_processor_bytes:             data.#elasticstack_elasticsearch_ingest_processor_bytes
+_ds: elasticstack_elasticsearch_ingest_processor_circle:            data.#elasticstack_elasticsearch_ingest_processor_circle
+_ds: elasticstack_elasticsearch_ingest_processor_community_id:      data.#elasticstack_elasticsearch_ingest_processor_community_id
+_ds: elasticstack_elasticsearch_ingest_processor_convert:           data.#elasticstack_elasticsearch_ingest_processor_convert
+_ds: elasticstack_elasticsearch_ingest_processor_csv:               data.#elasticstack_elasticsearch_ingest_processor_csv
+_ds: elasticstack_elasticsearch_ingest_processor_date:              data.#elasticstack_elasticsearch_ingest_processor_date
+_ds: elasticstack_elasticsearch_ingest_processor_date_index_name:   data.#elasticstack_elasticsearch_ingest_processor_date_index_name
+_ds: elasticstack_elasticsearch_ingest_processor_dissect:           data.#elasticstack_elasticsearch_ingest_processor_dissect
+_ds: elasticstack_elasticsearch_ingest_processor_dot_expander:      data.#elasticstack_elasticsearch_ingest_processor_dot_expander
+_ds: elasticstack_elasticsearch_ingest_processor_drop:              data.#elasticstack_elasticsearch_ingest_processor_drop
+_ds: elasticstack_elasticsearch_ingest_processor_enrich:            data.#elasticstack_elasticsearch_ingest_processor_enrich
+_ds: elasticstack_elasticsearch_ingest_processor_fail:              data.#elasticstack_elasticsearch_ingest_processor_fail
+_ds: elasticstack_elasticsearch_ingest_processor_fingerprint:       data.#elasticstack_elasticsearch_ingest_processor_fingerprint
+_ds: elasticstack_elasticsearch_ingest_processor_foreach:           data.#elasticstack_elasticsearch_ingest_processor_foreach
+_ds: elasticstack_elasticsearch_ingest_processor_geoip:             data.#elasticstack_elasticsearch_ingest_processor_geoip
+_ds: elasticstack_elasticsearch_ingest_processor_grok:              data.#elasticstack_elasticsearch_ingest_processor_grok
+_ds: elasticstack_elasticsearch_ingest_processor_gsub:              data.#elasticstack_elasticsearch_ingest_processor_gsub
+_ds: elasticstack_elasticsearch_ingest_processor_html_strip:        data.#elasticstack_elasticsearch_ingest_processor_html_strip
+_ds: elasticstack_elasticsearch_ingest_processor_join:              data.#elasticstack_elasticsearch_ingest_processor_join
+_ds: elasticstack_elasticsearch_ingest_processor_json:              data.#elasticstack_elasticsearch_ingest_processor_json
+_ds: elasticstack_elasticsearch_ingest_processor_kv:                data.#elasticstack_elasticsearch_ingest_processor_kv
+_ds: elasticstack_elasticsearch_ingest_processor_lowercase:         data.#elasticstack_elasticsearch_ingest_processor_lowercase
+_ds: elasticstack_elasticsearch_ingest_processor_network_direction: data.#elasticstack_elasticsearch_ingest_processor_network_direction
+_ds: elasticstack_elasticsearch_ingest_processor_pipeline:          data.#elasticstack_elasticsearch_ingest_processor_pipeline
+_ds: elasticstack_elasticsearch_ingest_processor_registered_domain: data.#elasticstack_elasticsearch_ingest_processor_registered_domain
+_ds: elasticstack_elasticsearch_ingest_processor_remove:            data.#elasticstack_elasticsearch_ingest_processor_remove
+_ds: elasticstack_elasticsearch_ingest_processor_rename:            data.#elasticstack_elasticsearch_ingest_processor_rename
+_ds: elasticstack_elasticsearch_ingest_processor_script:            data.#elasticstack_elasticsearch_ingest_processor_script
+_ds: elasticstack_elasticsearch_ingest_processor_set:               data.#elasticstack_elasticsearch_ingest_processor_set
+_ds: elasticstack_elasticsearch_ingest_processor_set_security_user: data.#elasticstack_elasticsearch_ingest_processor_set_security_user
+_ds: elasticstack_elasticsearch_ingest_processor_sort:              data.#elasticstack_elasticsearch_ingest_processor_sort
+_ds: elasticstack_elasticsearch_ingest_processor_split:             data.#elasticstack_elasticsearch_ingest_processor_split
+_ds: elasticstack_elasticsearch_ingest_processor_trim:              data.#elasticstack_elasticsearch_ingest_processor_trim
+_ds: elasticstack_elasticsearch_ingest_processor_uppercase:         data.#elasticstack_elasticsearch_ingest_processor_uppercase
+_ds: elasticstack_elasticsearch_ingest_processor_uri_parts:         data.#elasticstack_elasticsearch_ingest_processor_uri_parts
+_ds: elasticstack_elasticsearch_ingest_processor_urldecode:         data.#elasticstack_elasticsearch_ingest_processor_urldecode
+_ds: elasticstack_elasticsearch_ingest_processor_user_agent:        data.#elasticstack_elasticsearch_ingest_processor_user_agent
+_ds: elasticstack_elasticsearch_security_role_mapping:              data.#elasticstack_elasticsearch_security_role_mapping
+_ds: elasticstack_elasticsearch_security_user:                      data.#elasticstack_elasticsearch_security_user
+_ds: elasticstack_elasticsearch_snapshot_repository:                data.#elasticstack_elasticsearch_snapshot_repository
+_ds: elasticstack_fleet_integration:                                data.#elasticstack_fleet_integration
+_ds: elasticstack_kibana_action_connector:                          data.#elasticstack_kibana_action_connector
