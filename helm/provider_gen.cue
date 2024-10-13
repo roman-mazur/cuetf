@@ -12,9 +12,9 @@ import "list"
 	registry_config_path?:   string
 	repository_cache?:       string
 	repository_config_path?: string
-	experiments?:            #experiments | list.MaxItems(1) & [...#experiments]
-	kubernetes?:             #kubernetes | list.MaxItems(1) & [...#kubernetes]
-	registry?:               #registry | [...#registry]
+	experiments?: #experiments | list.MaxItems(1) & [...#experiments]
+	kubernetes?: #kubernetes | list.MaxItems(1) & [...#kubernetes]
+	registry?: #registry | [...#registry]
 
 	#experiments: manifest?: bool
 
@@ -34,19 +34,19 @@ import "list"
 		tls_server_name?: string
 		token?:           string
 		username?:        string
-		exec?:            #kubernetes.#exec | list.MaxItems(1) & [...#kubernetes.#exec]
+		exec?: #kubernetes.#exec | list.MaxItems(1) & [...#kubernetes.#exec]
 
 		#exec: {
-			api_version: string
+			api_version!: string
 			args?: [...string]
-			command: string
+			command!: string
 			env?: [string]: string
 		}
 	}
 
 	#registry: {
-		password: string
-		url:      string
-		username: string
+		password!: string
+		url!:      string
+		username!: string
 	}
 }

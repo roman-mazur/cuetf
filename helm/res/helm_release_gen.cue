@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://rmazur.io/cuetf/schema/helm_release")
 	atomic?:                     bool
-	chart:                       string
+	chart!:                      string
 	cleanup_on_fail?:            bool
 	create_namespace?:           bool
 	dependency_update?:          bool
@@ -22,15 +22,18 @@ import "list"
 	manifest?:                   string
 	max_history?:                number
 	metadata?: [...{
-		app_version?: string
-		chart?:       string
-		name?:        string
-		namespace?:   string
-		revision?:    number
-		values?:      string
-		version?:     string
+		app_version?:    string
+		chart?:          string
+		first_deployed?: number
+		last_deployed?:  number
+		name?:           string
+		namespace?:      string
+		notes?:          string
+		revision?:       number
+		values?:         string
+		version?:        string
 	}]
-	name:                   string
+	name!:                  string
 	namespace?:             string
 	pass_credentials?:      bool
 	recreate_pods?:         bool
@@ -47,35 +50,36 @@ import "list"
 	skip_crds?:             bool
 	status?:                string
 	timeout?:               number
+	upgrade_install?:       bool
 	values?: [...string]
 	verify?:        bool
 	version?:       string
 	wait?:          bool
 	wait_for_jobs?: bool
-	postrender?:    #postrender | list.MaxItems(1) & [...#postrender]
-	set?:           #set | [...#set]
-	set_list?:      #set_list | [...#set_list]
+	postrender?: #postrender | list.MaxItems(1) & [...#postrender]
+	set?: #set | [...#set]
+	set_list?: #set_list | [...#set_list]
 	set_sensitive?: #set_sensitive | [...#set_sensitive]
 
 	#postrender: {
 		args?: [...string]
-		binary_path: string
+		binary_path!: string
 	}
 
 	#set: {
-		name:  string
-		type?: string
-		value: string
+		name!:  string
+		type?:  string
+		value!: string
 	}
 
 	#set_list: {
-		name: string
-		value: [...string]
+		name!: string
+		value!: [...string]
 	}
 
 	#set_sensitive: {
-		name:  string
-		type?: string
-		value: string
+		name!:  string
+		type?:  string
+		value!: string
 	}
 }

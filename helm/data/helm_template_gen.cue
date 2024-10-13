@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://rmazur.io/cuetf/schema/helm_template")
 	api_versions?: [...string]
 	atomic?: bool
-	chart:   string
+	chart!:  string
 	crds?: [...string]
 	create_namespace?:           bool
 	dependency_update?:          bool
@@ -22,7 +22,7 @@ import "list"
 	kube_version?:               string
 	manifest?:                   string
 	manifests?: [string]: string
-	name:                   string
+	name!:                  string
 	namespace?:             string
 	notes?:                 string
 	pass_credentials?:      bool
@@ -42,36 +42,36 @@ import "list"
 	timeout?:    number
 	validate?:   bool
 	values?: [...string]
-	verify?:        bool
-	version?:       string
-	wait?:          bool
-	postrender?:    #postrender | list.MaxItems(1) & [...#postrender]
-	set?:           #set | [...#set]
-	set_list?:      #set_list | [...#set_list]
+	verify?:  bool
+	version?: string
+	wait?:    bool
+	postrender?: #postrender | list.MaxItems(1) & [...#postrender]
+	set?: #set | [...#set]
+	set_list?: #set_list | [...#set_list]
 	set_sensitive?: #set_sensitive | [...#set_sensitive]
-	set_string?:    #set_string | [...#set_string]
+	set_string?: #set_string | [...#set_string]
 
-	#postrender: binary_path: string
+	#postrender: binary_path!: string
 
 	#set: {
-		name:  string
-		type?: string
-		value: string
+		name!:  string
+		type?:  string
+		value!: string
 	}
 
 	#set_list: {
-		name: string
-		value: [...string]
+		name!: string
+		value!: [...string]
 	}
 
 	#set_sensitive: {
-		name:  string
-		type?: string
-		value: string
+		name!:  string
+		type?:  string
+		value!: string
 	}
 
 	#set_string: {
-		name:  string
-		value: string
+		name!:  string
+		value!: string
 	}
 }
