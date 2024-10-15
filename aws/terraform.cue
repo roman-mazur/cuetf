@@ -4,7 +4,7 @@ package aws
 //
 // Example:
 //
-//		import "rmazur.io/cuetf/aws"
+//		import "github.com/roman-mazur/cuetf/aws"
 //
 //		myAwsTerraform: aws.#Terraform & {
 //			provider: aws: region: "us-east-1"

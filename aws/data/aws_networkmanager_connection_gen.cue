@@ -2,7 +2,7 @@ package data
 
 #aws_networkmanager_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_networkmanager_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_networkmanager_connection")
 	arn?:                 string
 	connected_device_id?: string
 	connected_link_id?:   string

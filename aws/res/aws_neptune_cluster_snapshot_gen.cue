@@ -2,7 +2,7 @@ package res
 
 #aws_neptune_cluster_snapshot: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_neptune_cluster_snapshot")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_neptune_cluster_snapshot")
 	allocated_storage?: number
 	availability_zones?: [...string]
 	db_cluster_identifier!:          string

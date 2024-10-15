@@ -2,7 +2,7 @@ package res
 
 #aws_lakeformation_resource: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_lakeformation_resource")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lakeformation_resource")
 	arn!:                     string
 	hybrid_access_enabled?:   bool
 	id?:                      string

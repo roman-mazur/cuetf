@@ -4,7 +4,7 @@ import "list"
 
 #aws_gamelift_fleet: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_gamelift_fleet")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_gamelift_fleet")
 	arn?:               string
 	build_arn?:         string
 	build_id?:          string

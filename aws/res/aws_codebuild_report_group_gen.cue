@@ -4,7 +4,7 @@ import "list"
 
 #aws_codebuild_report_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_codebuild_report_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codebuild_report_group")
 	arn?:            string
 	created?:        string
 	delete_reports?: bool

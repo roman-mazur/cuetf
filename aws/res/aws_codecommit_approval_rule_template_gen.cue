@@ -2,7 +2,7 @@ package res
 
 #aws_codecommit_approval_rule_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_codecommit_approval_rule_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codecommit_approval_rule_template")
 	approval_rule_template_id?: string
 	content!:                   string
 	creation_date?:             string

@@ -4,7 +4,7 @@ import "list"
 
 #aws_synthetics_canary: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_synthetics_canary")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_synthetics_canary")
 	arn?:                      string
 	artifact_s3_location!:     string
 	delete_lambda?:            bool

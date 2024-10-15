@@ -2,7 +2,7 @@ package res
 
 #aws_route53recoveryreadiness_readiness_check: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_route53recoveryreadiness_readiness_check")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_route53recoveryreadiness_readiness_check")
 	arn?:                  string
 	id?:                   string
 	readiness_check_name!: string

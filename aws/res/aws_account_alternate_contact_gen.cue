@@ -2,7 +2,7 @@ package res
 
 #aws_account_alternate_contact: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_account_alternate_contact")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_account_alternate_contact")
 	account_id?:             string
 	alternate_contact_type!: string
 	email_address!:          string

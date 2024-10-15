@@ -4,7 +4,7 @@ import "list"
 
 #elasticstack_elasticsearch_cluster_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/elasticstack_elasticsearch_cluster_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_cluster_settings")
 	id?: string
 	elasticsearch_connection?: #elasticsearch_connection | list.MaxItems(1) & [...#elasticsearch_connection]
 	persistent?: #persistent | list.MaxItems(1) & [...#persistent]

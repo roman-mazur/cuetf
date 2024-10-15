@@ -2,7 +2,7 @@ package data
 
 #aws_glue_script: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_glue_script")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_script")
 	id?:            string
 	language?:      string
 	python_script?: string

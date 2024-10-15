@@ -2,7 +2,7 @@ package res
 
 #aws_globalaccelerator_custom_routing_endpoint_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_globalaccelerator_custom_routing_endpoint_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_globalaccelerator_custom_routing_endpoint_group")
 	arn?:                   string
 	endpoint_group_region?: string
 	id?:                    string

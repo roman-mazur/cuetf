@@ -2,7 +2,7 @@ package res
 
 #aws_dx_hosted_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dx_hosted_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dx_hosted_connection")
 	aws_device?:             string
 	bandwidth!:              string
 	connection_id!:          string

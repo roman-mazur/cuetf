@@ -2,7 +2,7 @@ package res
 
 #aws_sns_platform_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_sns_platform_application")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_sns_platform_application")
 	apple_platform_bundle_id?:         string
 	apple_platform_team_id?:           string
 	arn?:                              string

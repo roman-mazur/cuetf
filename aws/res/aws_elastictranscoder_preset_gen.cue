@@ -4,7 +4,7 @@ import "list"
 
 #aws_elastictranscoder_preset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_elastictranscoder_preset")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_elastictranscoder_preset")
 	arn?:         string
 	container!:   string
 	description?: string

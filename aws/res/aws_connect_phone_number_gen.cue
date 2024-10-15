@@ -2,7 +2,7 @@ package res
 
 #aws_connect_phone_number: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_connect_phone_number")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_connect_phone_number")
 	arn?:          string
 	country_code!: string
 	description?:  string

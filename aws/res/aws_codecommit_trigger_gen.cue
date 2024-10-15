@@ -4,7 +4,7 @@ import "list"
 
 #aws_codecommit_trigger: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_codecommit_trigger")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codecommit_trigger")
 	configuration_id?: string
 	id?:               string
 	repository_name!:  string

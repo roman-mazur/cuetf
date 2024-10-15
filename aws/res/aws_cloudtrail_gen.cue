@@ -4,7 +4,7 @@ import "list"
 
 #aws_cloudtrail: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cloudtrail")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudtrail")
 	arn?:                           string
 	cloud_watch_logs_group_arn?:    string
 	cloud_watch_logs_role_arn?:     string

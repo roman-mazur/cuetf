@@ -2,7 +2,7 @@ package res
 
 #cloudflare_bot_management: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_bot_management")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_bot_management")
 	ai_bots_protection?:              string
 	auto_update_model?:               bool
 	enable_js?:                       bool

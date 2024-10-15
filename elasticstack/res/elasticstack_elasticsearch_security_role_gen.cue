@@ -4,7 +4,7 @@ import "list"
 
 #elasticstack_elasticsearch_security_role: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/elasticstack_elasticsearch_security_role")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_security_role")
 	cluster?: [...string]
 	global?:   string
 	id?:       string

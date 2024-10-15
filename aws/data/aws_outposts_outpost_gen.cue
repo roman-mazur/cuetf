@@ -2,7 +2,7 @@ package data
 
 #aws_outposts_outpost: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_outposts_outpost")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_outposts_outpost")
 	arn?:                     string
 	availability_zone?:       string
 	availability_zone_id?:    string

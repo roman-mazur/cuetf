@@ -2,7 +2,7 @@ package res
 
 #aws_ram_resource_share: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ram_resource_share")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ram_resource_share")
 	allow_external_principals?: bool
 	arn?:                       string
 	id?:                        string

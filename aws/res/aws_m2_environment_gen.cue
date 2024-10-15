@@ -2,7 +2,7 @@ package res
 
 #aws_m2_environment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_m2_environment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_m2_environment")
 	apply_changes_during_maintenance_window?: bool
 	arn?:                                     string
 	description?:                             string

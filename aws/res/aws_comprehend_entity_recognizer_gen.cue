@@ -4,7 +4,7 @@ import "list"
 
 #aws_comprehend_entity_recognizer: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_comprehend_entity_recognizer")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_comprehend_entity_recognizer")
 	arn?:                  string
 	data_access_role_arn!: string
 	id?:                   string

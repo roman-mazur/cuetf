@@ -2,7 +2,7 @@ package res
 
 #cloudflare_waiting_room_event: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_waiting_room_event")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_waiting_room_event")
 	created_on?:              string
 	custom_page_html?:        string
 	description?:             string

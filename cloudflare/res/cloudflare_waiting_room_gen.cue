@@ -2,7 +2,7 @@ package res
 
 #cloudflare_waiting_room: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_waiting_room")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_waiting_room")
 	cookie_suffix?:             string
 	custom_page_html?:          string
 	default_template_language?: string

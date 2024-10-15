@@ -4,7 +4,7 @@ import "list"
 
 #aws_route53recoverycontrolconfig_safety_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_route53recoverycontrolconfig_safety_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_route53recoverycontrolconfig_safety_rule")
 	arn?: string
 	asserted_controls?: [...string]
 	control_panel_arn!: string

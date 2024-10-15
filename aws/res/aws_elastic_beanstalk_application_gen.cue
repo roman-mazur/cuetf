@@ -4,7 +4,7 @@ import "list"
 
 #aws_elastic_beanstalk_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_elastic_beanstalk_application")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_elastic_beanstalk_application")
 	arn?:         string
 	description?: string
 	id?:          string

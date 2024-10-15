@@ -4,7 +4,7 @@ import "list"
 
 #aws_acmpca_certificate_authority: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_acmpca_certificate_authority")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_acmpca_certificate_authority")
 	arn?:                             string
 	certificate?:                     string
 	certificate_chain?:               string

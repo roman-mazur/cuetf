@@ -2,7 +2,7 @@ package res
 
 #cloudflare_fallback_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_fallback_domain")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_fallback_domain")
 	account_id!: string
 	id?:         string
 	policy_id?:  string

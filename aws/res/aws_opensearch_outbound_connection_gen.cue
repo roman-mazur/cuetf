@@ -4,7 +4,7 @@ import "list"
 
 #aws_opensearch_outbound_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_opensearch_outbound_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opensearch_outbound_connection")
 	accept_connection?: bool
 	connection_alias!:  string
 	connection_mode?:   string

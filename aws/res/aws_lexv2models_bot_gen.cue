@@ -2,7 +2,7 @@ package res
 
 #aws_lexv2models_bot: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_lexv2models_bot")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lexv2models_bot")
 	arn?:                         string
 	description?:                 string
 	id?:                          string

@@ -2,7 +2,7 @@ package data
 
 #aws_dms_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dms_endpoint")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dms_endpoint")
 	certificate_arn?: string
 	database_name?:   string
 	elasticsearch_settings?: [...{

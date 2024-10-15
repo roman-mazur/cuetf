@@ -4,7 +4,7 @@ import "list"
 
 #aws_medialive_multiplex: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_medialive_multiplex")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_medialive_multiplex")
 	arn?: string
 	availability_zones!: [...string]
 	id?:              string

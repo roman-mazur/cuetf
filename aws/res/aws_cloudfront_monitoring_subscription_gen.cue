@@ -4,7 +4,7 @@ import "list"
 
 #aws_cloudfront_monitoring_subscription: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cloudfront_monitoring_subscription")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudfront_monitoring_subscription")
 	distribution_id!: string
 	id?:              string
 	monitoring_subscription?: #monitoring_subscription | list.MaxItems(1) & [_, ...] & [...#monitoring_subscription]

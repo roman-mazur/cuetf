@@ -4,7 +4,7 @@ import "list"
 
 #aws_cloudwatch_event_target: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cloudwatch_event_target")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudwatch_event_target")
 	arn!:            string
 	event_bus_name?: string
 	force_destroy?:  bool

@@ -4,7 +4,7 @@ import "list"
 
 #aws_directory_service_region: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_directory_service_region")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_directory_service_region")
 	desired_number_of_domain_controllers?: number
 	directory_id!:                         string
 	id?:                                   string

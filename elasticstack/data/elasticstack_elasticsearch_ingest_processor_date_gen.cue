@@ -2,7 +2,7 @@ package data
 
 #elasticstack_elasticsearch_ingest_processor_date: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/elasticstack_elasticsearch_ingest_processor_date")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_ingest_processor_date")
 	description?: string
 	field!:       string
 	formats!: [...string]

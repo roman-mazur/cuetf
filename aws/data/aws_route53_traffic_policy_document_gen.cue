@@ -4,7 +4,7 @@ import "list"
 
 #aws_route53_traffic_policy_document: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_route53_traffic_policy_document")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_route53_traffic_policy_document")
 	id?:             string
 	json?:           string
 	record_type?:    string

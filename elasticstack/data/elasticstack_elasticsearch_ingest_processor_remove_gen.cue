@@ -2,7 +2,7 @@ package data
 
 #elasticstack_elasticsearch_ingest_processor_remove: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/elasticstack_elasticsearch_ingest_processor_remove")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_ingest_processor_remove")
 	description?: string
 	field!: [...string]
 	id?:             string

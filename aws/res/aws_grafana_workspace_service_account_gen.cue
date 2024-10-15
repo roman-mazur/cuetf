@@ -2,7 +2,7 @@ package res
 
 #aws_grafana_workspace_service_account: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_grafana_workspace_service_account")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_grafana_workspace_service_account")
 	grafana_role!:       string
 	id?:                 string
 	name!:               string

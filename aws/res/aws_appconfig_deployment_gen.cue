@@ -2,7 +2,7 @@ package res
 
 #aws_appconfig_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_appconfig_deployment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appconfig_deployment")
 	application_id!:           string
 	arn?:                      string
 	configuration_profile_id!: string

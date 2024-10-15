@@ -2,7 +2,7 @@ package jsonschema
 
 import (
 	"path"
-	"rmazur.io/cuetf/internal/tf"
+	"github.com/roman-mazur/cuetf/internal/tf"
 )
 
 // #SchemaTransform can be used to tranform the Terraform provider schema document into a an equivalent JSON Schema.
@@ -11,7 +11,7 @@ import (
 	#name:  string
 
 	"$schema": "https://json-schema.org/draft/2020-12/schema"
-	"$id":     "https://rmazur.io/cuetf/schema/\(#name)"
+	"$id":     "https://github.com/roman-mazur/cuetf/schema/\(#name)"
 
 	#blockTransform & {#path: []}
 }

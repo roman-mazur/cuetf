@@ -1,4 +1,4 @@
-module: "rmazur.io/cuetf"
+module: "github.com/roman-mazur/cuetf"
 language: {
 	version: "v0.9.0"
 }

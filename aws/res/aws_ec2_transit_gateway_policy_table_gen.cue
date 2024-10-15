@@ -2,7 +2,7 @@ package res
 
 #aws_ec2_transit_gateway_policy_table: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ec2_transit_gateway_policy_table")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_transit_gateway_policy_table")
 	arn?:   string
 	id?:    string
 	state?: string

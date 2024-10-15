@@ -2,7 +2,7 @@ package res
 
 #aws_cognito_managed_user_pool_client: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cognito_managed_user_pool_client")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cognito_managed_user_pool_client")
 	access_token_validity?: number
 	allowed_oauth_flows?: [...string]
 	allowed_oauth_flows_user_pool_client?: bool

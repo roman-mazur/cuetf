@@ -2,7 +2,7 @@ package res
 
 #aws_applicationinsights_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_applicationinsights_application")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_applicationinsights_application")
 	arn?:                    string
 	auto_config_enabled?:    bool
 	auto_create?:            bool

@@ -2,7 +2,7 @@ package res
 
 #aws_network_interface: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_network_interface")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_network_interface")
 	arn?:               string
 	description?:       string
 	id?:                string

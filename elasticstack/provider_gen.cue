@@ -4,7 +4,7 @@ import "list"
 
 #provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/provider")
 	elasticsearch?: #elasticsearch | list.MaxItems(1) & [...#elasticsearch]
 	fleet?: #fleet | list.MaxItems(1) & [...#fleet]
 	kibana?: #kibana | list.MaxItems(1) & [...#kibana]

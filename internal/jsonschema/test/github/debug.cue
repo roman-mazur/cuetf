@@ -1,8 +1,8 @@
 package github
 
-import "rmazur.io/cuetf/internal/jsonschema"
+import "github.com/roman-mazur/cuetf/internal/jsonschema"
 
-_case: string | *"error" @tag(case)
+_case: string | *"ok" @tag(case)
 
 if _case == "error" {
 	debug: input: ["list", ["object", {

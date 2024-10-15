@@ -4,7 +4,7 @@ import "list"
 
 #aws_storagegateway_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_storagegateway_gateway")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_storagegateway_gateway")
 	activation_key?:                              string
 	arn?:                                         string
 	average_download_rate_limit_in_bits_per_sec?: number

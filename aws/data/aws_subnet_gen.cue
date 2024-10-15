@@ -2,7 +2,7 @@ package data
 
 #aws_subnet: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_subnet")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_subnet")
 	arn?:                                            string
 	assign_ipv6_address_on_creation?:                bool
 	availability_zone?:                              string

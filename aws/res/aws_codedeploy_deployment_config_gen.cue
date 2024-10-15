@@ -4,7 +4,7 @@ import "list"
 
 #aws_codedeploy_deployment_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_codedeploy_deployment_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codedeploy_deployment_config")
 	arn?:                    string
 	compute_platform?:       string
 	deployment_config_id?:   string

@@ -2,7 +2,7 @@ package data
 
 #aws_redshift_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_redshift_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_redshift_cluster")
 	allow_version_upgrade?:                bool
 	aqua_configuration_status?:            string
 	arn?:                                  string

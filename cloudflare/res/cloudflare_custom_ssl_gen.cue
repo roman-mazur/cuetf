@@ -4,7 +4,7 @@ import "list"
 
 #cloudflare_custom_ssl: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_custom_ssl")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_custom_ssl")
 	expires_on?: string
 	hosts?: [...string]
 	id?:          string

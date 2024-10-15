@@ -2,7 +2,7 @@ package data
 
 #aws_eip: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_eip")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_eip")
 	arn?:                        string
 	association_id?:             string
 	carrier_ip?:                 string

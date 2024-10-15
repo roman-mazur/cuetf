@@ -4,7 +4,7 @@ import "list"
 
 #elasticstack_elasticsearch_transform: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/elasticstack_elasticsearch_transform")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_transform")
 	align_checkpoints?:     bool
 	dates_as_epoch_millis?: bool
 	deduce_mappings?:       bool

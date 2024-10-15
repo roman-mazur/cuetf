@@ -4,7 +4,7 @@ import "list"
 
 #cloudflare_spectrum_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_spectrum_application")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_spectrum_application")
 	argo_smart_routing?: bool
 	id?:                 string
 	ip_firewall?:        bool

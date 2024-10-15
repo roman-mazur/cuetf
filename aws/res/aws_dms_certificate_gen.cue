@@ -2,7 +2,7 @@ package res
 
 #aws_dms_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dms_certificate")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dms_certificate")
 	certificate_arn?:    string
 	certificate_id!:     string
 	certificate_pem?:    string

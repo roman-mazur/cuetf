@@ -4,7 +4,7 @@ import "list"
 
 #aws_api_gateway_domain_name: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_api_gateway_domain_name")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_api_gateway_domain_name")
 	arn?:                                    string
 	certificate_arn?:                        string
 	certificate_body?:                       string

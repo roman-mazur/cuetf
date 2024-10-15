@@ -4,7 +4,7 @@ import "list"
 
 #aws_iot_billing_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_iot_billing_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_iot_billing_group")
 	arn?: string
 	id?:  string
 	metadata?: [...{

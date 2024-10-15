@@ -2,7 +2,7 @@ package res
 
 #aws_api_gateway_integration_response: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_api_gateway_integration_response")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_api_gateway_integration_response")
 	content_handling?: string
 	http_method!:      string
 	id?:               string

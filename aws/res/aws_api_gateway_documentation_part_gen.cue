@@ -4,7 +4,7 @@ import "list"
 
 #aws_api_gateway_documentation_part: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_api_gateway_documentation_part")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_api_gateway_documentation_part")
 	documentation_part_id?: string
 	id?:                    string
 	properties!:            string

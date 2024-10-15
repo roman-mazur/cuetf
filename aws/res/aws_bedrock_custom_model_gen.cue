@@ -2,7 +2,7 @@ package res
 
 #aws_bedrock_custom_model: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_bedrock_custom_model")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrock_custom_model")
 	base_model_identifier!:   string
 	custom_model_arn?:        string
 	custom_model_kms_key_id?: string

@@ -2,7 +2,7 @@ package res
 
 #cloudflare_load_balancer_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_load_balancer_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_load_balancer_pool")
 	account_id!: string
 	check_regions?: [...string]
 	created_on?:         string

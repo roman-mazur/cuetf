@@ -4,7 +4,7 @@ import "list"
 
 #github_enterprise_actions_permissions: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/github_enterprise_actions_permissions")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_enterprise_actions_permissions")
 	allowed_actions?:       string
 	enabled_organizations!: string
 	enterprise_slug!:       string

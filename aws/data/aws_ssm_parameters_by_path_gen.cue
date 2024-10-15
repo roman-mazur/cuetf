@@ -2,7 +2,7 @@ package data
 
 #aws_ssm_parameters_by_path: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ssm_parameters_by_path")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ssm_parameters_by_path")
 	arns?: [...string]
 	id?: string
 	names?: [...string]

@@ -4,7 +4,7 @@ import "list"
 
 #aws_lambda_function_event_invoke_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_lambda_function_event_invoke_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lambda_function_event_invoke_config")
 	function_name!:                string
 	id?:                           string
 	maximum_event_age_in_seconds?: number

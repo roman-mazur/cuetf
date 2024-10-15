@@ -4,7 +4,7 @@ import "list"
 
 #aws_lambda_event_source_mapping: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_lambda_event_source_mapping")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lambda_event_source_mapping")
 	arn?:                            string
 	batch_size?:                     number
 	bisect_batch_on_function_error?: bool

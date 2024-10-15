@@ -4,7 +4,7 @@ import "list"
 
 #aws_cloudsearch_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cloudsearch_domain")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudsearch_domain")
 	arn?:                       string
 	document_service_endpoint?: string
 	domain_id?:                 string

@@ -2,7 +2,7 @@ package res
 
 #aws_finspace_kx_scaling_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_finspace_kx_scaling_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_finspace_kx_scaling_group")
 	arn?:                  string
 	availability_zone_id!: string
 	clusters?: [...string]

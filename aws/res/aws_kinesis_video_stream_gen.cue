@@ -2,7 +2,7 @@ package res
 
 #aws_kinesis_video_stream: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_kinesis_video_stream")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_kinesis_video_stream")
 	arn?:                     string
 	creation_time?:           string
 	data_retention_in_hours?: number

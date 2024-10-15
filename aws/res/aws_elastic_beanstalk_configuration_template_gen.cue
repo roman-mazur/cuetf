@@ -2,7 +2,7 @@ package res
 
 #aws_elastic_beanstalk_configuration_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_elastic_beanstalk_configuration_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_elastic_beanstalk_configuration_template")
 	application!:         string
 	description?:         string
 	environment_id?:      string

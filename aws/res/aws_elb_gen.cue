@@ -4,7 +4,7 @@ import "list"
 
 #aws_elb: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_elb")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_elb")
 	arn?: string
 	availability_zones?: [...string]
 	connection_draining?:         bool

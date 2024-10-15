@@ -2,7 +2,7 @@ package res
 
 #aws_datapipeline_pipeline_definition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_datapipeline_pipeline_definition")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_datapipeline_pipeline_definition")
 	id?:          string
 	pipeline_id!: string
 	parameter_object?: #parameter_object | [...#parameter_object]

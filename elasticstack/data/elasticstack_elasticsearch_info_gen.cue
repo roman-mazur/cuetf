@@ -2,7 +2,7 @@ package data
 
 #elasticstack_elasticsearch_info: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/elasticstack_elasticsearch_info")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_info")
 	cluster_name?: string
 	cluster_uuid?: string
 	id?:           string

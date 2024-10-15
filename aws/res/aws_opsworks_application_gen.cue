@@ -2,7 +2,7 @@ package res
 
 #aws_opsworks_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_opsworks_application")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opsworks_application")
 	auto_bundle_on_deploy?:     string
 	aws_flow_ruby_settings?:    string
 	data_source_arn?:           string

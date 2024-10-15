@@ -2,7 +2,7 @@ package data
 
 #aws_ec2_public_ipv4_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ec2_public_ipv4_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_public_ipv4_pool")
 	description?:          string
 	id?:                   string
 	network_border_group?: string

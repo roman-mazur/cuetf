@@ -2,7 +2,7 @@ package data
 
 #aws_organizations_delegated_administrators: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_organizations_delegated_administrators")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_organizations_delegated_administrators")
 	delegated_administrators?: [...{
 		arn?:                     string
 		delegation_enabled_date?: string

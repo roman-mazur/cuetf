@@ -2,7 +2,7 @@ package res
 
 #aws_ec2_instance_connect_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ec2_instance_connect_endpoint")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_instance_connect_endpoint")
 	arn?:               string
 	availability_zone?: string
 	dns_name?:          string

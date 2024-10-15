@@ -2,7 +2,7 @@ package data
 
 #aws_rds_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_rds_certificate")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_rds_certificate")
 	arn?:                          string
 	certificate_type?:             string
 	customer_override?:            bool

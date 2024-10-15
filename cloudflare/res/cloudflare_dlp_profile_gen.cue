@@ -4,7 +4,7 @@ import "list"
 
 #cloudflare_dlp_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_dlp_profile")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_dlp_profile")
 	account_id!:          string
 	allowed_match_count!: number
 	description?:         string

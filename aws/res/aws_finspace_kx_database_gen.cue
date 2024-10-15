@@ -2,7 +2,7 @@ package res
 
 #aws_finspace_kx_database: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_finspace_kx_database")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_finspace_kx_database")
 	arn?:                     string
 	created_timestamp?:       string
 	description?:             string

@@ -4,7 +4,7 @@ import "list"
 
 #aws_cleanrooms_collaboration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cleanrooms_collaboration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cleanrooms_collaboration")
 	arn?:                  string
 	create_time?:          string
 	creator_display_name!: string

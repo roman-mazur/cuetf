@@ -2,7 +2,7 @@ package res
 
 #aws_pinpoint_email_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_pinpoint_email_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_pinpoint_email_template")
 	arn?: string
 	tags?: [string]:     string
 	tags_all?: [string]: string

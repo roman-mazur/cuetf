@@ -4,7 +4,7 @@ import "list"
 
 #aws_ses_event_destination: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ses_event_destination")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ses_event_destination")
 	arn?:                    string
 	configuration_set_name!: string
 	enabled?:                bool

@@ -4,7 +4,7 @@ import "list"
 
 #aws_appstream_directory_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_appstream_directory_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appstream_directory_config")
 	created_time?:   string
 	directory_name!: string
 	id?:             string

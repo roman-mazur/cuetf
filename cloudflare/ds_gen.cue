@@ -1,6 +1,6 @@
 package cloudflare
 
-import "rmazur.io/cuetf/cloudflare/data"
+import "github.com/roman-mazur/cuetf/cloudflare/data"
 
 _ds: cloudflare_access_application:                  data.#cloudflare_access_application
 _ds: cloudflare_access_identity_provider:            data.#cloudflare_access_identity_provider

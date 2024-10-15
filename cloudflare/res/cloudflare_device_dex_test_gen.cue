@@ -4,7 +4,7 @@ import "list"
 
 #cloudflare_device_dex_test: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_device_dex_test")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_device_dex_test")
 	account_id!:  string
 	created?:     string
 	description!: string

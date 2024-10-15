@@ -4,7 +4,7 @@ import "list"
 
 #aws_opsworks_haproxy_layer: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_opsworks_haproxy_layer")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opsworks_haproxy_layer")
 	arn?:                     string
 	auto_assign_elastic_ips?: bool
 	auto_assign_public_ips?:  bool

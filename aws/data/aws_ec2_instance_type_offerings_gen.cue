@@ -2,7 +2,7 @@ package data
 
 #aws_ec2_instance_type_offerings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ec2_instance_type_offerings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_instance_type_offerings")
 	id?: string
 	instance_types?: [...string]
 	location_type?: string

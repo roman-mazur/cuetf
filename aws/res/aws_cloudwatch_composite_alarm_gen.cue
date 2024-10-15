@@ -4,7 +4,7 @@ import "list"
 
 #aws_cloudwatch_composite_alarm: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cloudwatch_composite_alarm")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudwatch_composite_alarm")
 	actions_enabled?: bool
 	alarm_actions?: [...string]
 	alarm_description?: string

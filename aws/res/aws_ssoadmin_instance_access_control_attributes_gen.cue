@@ -2,7 +2,7 @@ package res
 
 #aws_ssoadmin_instance_access_control_attributes: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ssoadmin_instance_access_control_attributes")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ssoadmin_instance_access_control_attributes")
 	id?:            string
 	instance_arn!:  string
 	status?:        string

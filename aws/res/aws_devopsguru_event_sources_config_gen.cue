@@ -2,7 +2,7 @@ package res
 
 #aws_devopsguru_event_sources_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_devopsguru_event_sources_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_devopsguru_event_sources_config")
 	id?: string
 	event_sources?: #event_sources | [...#event_sources]
 

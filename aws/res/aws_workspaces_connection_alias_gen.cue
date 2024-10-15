@@ -2,7 +2,7 @@ package res
 
 #aws_workspaces_connection_alias: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_workspaces_connection_alias")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_workspaces_connection_alias")
 	connection_string!: string
 	id?:                string
 	owner_account_id?:  string

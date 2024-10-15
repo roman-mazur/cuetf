@@ -2,7 +2,7 @@ package res
 
 #aws_quicksight_account_subscription: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_quicksight_account_subscription")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_quicksight_account_subscription")
 	account_name!:                string
 	account_subscription_status?: string
 	active_directory_name?:       string

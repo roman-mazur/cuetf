@@ -2,7 +2,7 @@ package res
 
 #aws_s3control_bucket: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_s3control_bucket")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_s3control_bucket")
 	arn?:                         string
 	bucket!:                      string
 	creation_date?:               string

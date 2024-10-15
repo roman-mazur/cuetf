@@ -2,7 +2,7 @@ package res
 
 #cloudflare_access_organization: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_access_organization")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_access_organization")
 	account_id?:                         string
 	allow_authenticate_via_warp?:        bool
 	auth_domain!:                        string

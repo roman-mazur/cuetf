@@ -4,7 +4,7 @@ import "list"
 
 #aws_sagemaker_code_repository: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_sagemaker_code_repository")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_sagemaker_code_repository")
 	arn?:                  string
 	code_repository_name!: string
 	id?:                   string

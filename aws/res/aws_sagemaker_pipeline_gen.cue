@@ -4,7 +4,7 @@ import "list"
 
 #aws_sagemaker_pipeline: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_sagemaker_pipeline")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_sagemaker_pipeline")
 	arn?:                   string
 	id?:                    string
 	pipeline_definition?:   string

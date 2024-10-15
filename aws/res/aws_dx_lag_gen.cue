@@ -2,7 +2,7 @@ package res
 
 #aws_dx_lag: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dx_lag")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dx_lag")
 	arn?:                    string
 	connection_id?:          string
 	connections_bandwidth!:  string

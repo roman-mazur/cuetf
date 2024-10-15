@@ -4,7 +4,7 @@ import "list"
 
 #aws_verifiedaccess_instance_logging_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_verifiedaccess_instance_logging_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_verifiedaccess_instance_logging_configuration")
 	id?:                         string
 	verifiedaccess_instance_id!: string
 	access_logs?: #access_logs | list.MaxItems(1) & [_, ...] & [...#access_logs]

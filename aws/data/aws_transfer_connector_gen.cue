@@ -2,7 +2,7 @@ package data
 
 #aws_transfer_connector: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_transfer_connector")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_transfer_connector")
 	access_role?: string
 	arn?:         string
 	as2_config?: [...{

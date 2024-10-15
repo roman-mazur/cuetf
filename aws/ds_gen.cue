@@ -1,6 +1,6 @@
 package aws
 
-import "rmazur.io/cuetf/aws/data"
+import "github.com/roman-mazur/cuetf/aws/data"
 
 _ds: aws_acm_certificate:                                                   data.#aws_acm_certificate
 _ds: aws_acmpca_certificate:                                                data.#aws_acmpca_certificate

@@ -2,7 +2,7 @@ package res
 
 #cloudflare_zero_trust_device_profiles: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_zero_trust_device_profiles")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_device_profiles")
 	account_id!:            string
 	allow_mode_switch?:     bool
 	allow_updates?:         bool

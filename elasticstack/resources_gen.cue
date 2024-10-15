@@ -1,6 +1,6 @@
 package elasticstack
 
-import "rmazur.io/cuetf/elasticstack/res"
+import "github.com/roman-mazur/cuetf/elasticstack/res"
 
 _res: elasticstack_elasticsearch_cluster_settings:      res.#elasticstack_elasticsearch_cluster_settings
 _res: elasticstack_elasticsearch_component_template:    res.#elasticstack_elasticsearch_component_template

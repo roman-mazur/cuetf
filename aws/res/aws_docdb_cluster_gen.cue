@@ -4,7 +4,7 @@ import "list"
 
 #aws_docdb_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_docdb_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_docdb_cluster")
 	allow_major_version_upgrade?: bool
 	apply_immediately?:           bool
 	arn?:                         string

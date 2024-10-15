@@ -4,7 +4,7 @@ import "list"
 
 #aws_appmesh_mesh: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_appmesh_mesh")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appmesh_mesh")
 	arn?:               string
 	created_date?:      string
 	id?:                string

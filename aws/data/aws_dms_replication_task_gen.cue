@@ -2,7 +2,7 @@ package data
 
 #aws_dms_replication_task: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dms_replication_task")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dms_replication_task")
 	cdc_start_position?:        string
 	cdc_start_time?:            string
 	id?:                        string

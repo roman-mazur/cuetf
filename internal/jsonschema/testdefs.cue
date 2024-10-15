@@ -1,6 +1,6 @@
 package jsonschema
 
-import "rmazur.io/cuetf/internal/tf"
+import "github.com/roman-mazur/cuetf/internal/tf"
 
 #ProviderTest: {
 	importSamples: [provider=string]: [name=string]: #SchemaTransform & {

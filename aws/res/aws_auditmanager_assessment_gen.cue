@@ -2,7 +2,7 @@ package res
 
 #aws_auditmanager_assessment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_auditmanager_assessment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_auditmanager_assessment")
 	arn?:          string
 	description?:  string
 	framework_id!: string

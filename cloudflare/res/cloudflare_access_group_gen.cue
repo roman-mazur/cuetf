@@ -2,7 +2,7 @@ package res
 
 #cloudflare_access_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_access_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_access_group")
 	account_id?: string
 	id?:         string
 	name!:       string

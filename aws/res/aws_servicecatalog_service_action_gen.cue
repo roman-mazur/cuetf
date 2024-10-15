@@ -4,7 +4,7 @@ import "list"
 
 #aws_servicecatalog_service_action: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_servicecatalog_service_action")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_servicecatalog_service_action")
 	accept_language?: string
 	description?:     string
 	id?:              string

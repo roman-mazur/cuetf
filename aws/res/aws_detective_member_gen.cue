@@ -2,7 +2,7 @@ package res
 
 #aws_detective_member: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_detective_member")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_detective_member")
 	account_id!:                 string
 	administrator_id?:           string
 	disable_email_notification?: bool

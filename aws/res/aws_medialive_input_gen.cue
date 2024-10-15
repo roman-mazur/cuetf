@@ -4,7 +4,7 @@ import "list"
 
 #aws_medialive_input: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_medialive_input")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_medialive_input")
 	arn?: string
 	attached_channels?: [...string]
 	id?:          string

@@ -102,7 +102,7 @@ func generateMappings(providerPath string, pkgName string) {
 func mappingHeader(pkgName, typ string) string {
 	const code = `package %s
 
-import "rmazur.io/cuetf/%s/%s"
+import "github.com/roman-mazur/cuetf/%s/%s"
 
 `
 	return fmt.Sprintf(code, pkgName, pkgName, typ)
@@ -220,7 +220,7 @@ type blockData map[string]any
 
 const transformCode = `package tmp
 
-import "rmazur.io/cuetf/internal/jsonschema"
+import "github.com/roman-mazur/cuetf/internal/jsonschema"
 
 jsonSchema: jsonschema.#SchemaTransform & {#block: input, #name: %q}
 `

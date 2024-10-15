@@ -4,7 +4,7 @@ import "list"
 
 #aws_apigatewayv2_stage: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_apigatewayv2_stage")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_apigatewayv2_stage")
 	api_id!:                string
 	arn?:                   string
 	auto_deploy?:           bool

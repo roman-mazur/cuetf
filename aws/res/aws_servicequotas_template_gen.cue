@@ -2,7 +2,7 @@ package res
 
 #aws_servicequotas_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_servicequotas_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_servicequotas_template")
 	global_quota?: bool
 	id?:           string
 	quota_code!:   string

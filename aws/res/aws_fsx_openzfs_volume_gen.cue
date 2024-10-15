@@ -4,7 +4,7 @@ import "list"
 
 #aws_fsx_openzfs_volume: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_fsx_openzfs_volume")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_fsx_openzfs_volume")
 	arn?:                    string
 	copy_tags_to_snapshots?: bool
 	data_compression_type?:  string

@@ -2,7 +2,7 @@ package data
 
 #aws_secretsmanager_secret_rotation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_secretsmanager_secret_rotation")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_secretsmanager_secret_rotation")
 	id?:                  string
 	rotation_enabled?:    bool
 	rotation_lambda_arn?: string

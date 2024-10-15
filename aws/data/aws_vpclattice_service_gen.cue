@@ -2,7 +2,7 @@ package data
 
 #aws_vpclattice_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_vpclattice_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpclattice_service")
 	arn?:                string
 	auth_type?:          string
 	certificate_arn?:    string

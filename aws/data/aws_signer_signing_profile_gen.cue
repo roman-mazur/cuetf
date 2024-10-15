@@ -2,7 +2,7 @@ package data
 
 #aws_signer_signing_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_signer_signing_profile")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_signer_signing_profile")
 	arn?:                   string
 	id?:                    string
 	name!:                  string

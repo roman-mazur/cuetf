@@ -4,7 +4,7 @@ import "list"
 
 #aws_s3control_multi_region_access_point: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_s3control_multi_region_access_point")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_s3control_multi_region_access_point")
 	account_id?:  string
 	alias?:       string
 	arn?:         string

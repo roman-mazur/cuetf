@@ -1,6 +1,6 @@
 package elasticstack
 
-import "rmazur.io/cuetf/elasticstack/data"
+import "github.com/roman-mazur/cuetf/elasticstack/data"
 
 _ds: elasticstack_elasticsearch_enrich_policy:                      data.#elasticstack_elasticsearch_enrich_policy
 _ds: elasticstack_elasticsearch_info:                               data.#elasticstack_elasticsearch_info

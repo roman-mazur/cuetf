@@ -4,7 +4,7 @@ import "list"
 
 #aws_imagebuilder_image_pipeline: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_imagebuilder_image_pipeline")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_imagebuilder_image_pipeline")
 	arn?:                              string
 	container_recipe_arn?:             string
 	date_created?:                     string

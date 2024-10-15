@@ -2,7 +2,7 @@ package data
 
 #aws_rds_engine_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_rds_engine_version")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_rds_engine_version")
 	default_character_set?: string
 	default_only?:          bool
 	engine!:                string

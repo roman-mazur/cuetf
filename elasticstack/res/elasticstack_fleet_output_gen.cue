@@ -2,7 +2,7 @@ package res
 
 #elasticstack_fleet_output: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/elasticstack_fleet_output")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_fleet_output")
 	ca_sha256?:              string
 	ca_trusted_fingerprint?: string
 	config_yaml?:            string

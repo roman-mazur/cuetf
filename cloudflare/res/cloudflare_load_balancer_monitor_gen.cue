@@ -2,7 +2,7 @@ package res
 
 #cloudflare_load_balancer_monitor: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_load_balancer_monitor")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_load_balancer_monitor")
 	account_id!:       string
 	allow_insecure?:   bool
 	consecutive_down?: number

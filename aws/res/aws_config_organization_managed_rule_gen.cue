@@ -2,7 +2,7 @@ package res
 
 #aws_config_organization_managed_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_config_organization_managed_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_config_organization_managed_rule")
 	arn?:         string
 	description?: string
 	excluded_accounts?: [...string]

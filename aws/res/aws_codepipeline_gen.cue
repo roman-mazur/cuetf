@@ -4,7 +4,7 @@ import "list"
 
 #aws_codepipeline: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_codepipeline")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codepipeline")
 	arn?:     string
 	id?:      string
 	name:     string

@@ -2,7 +2,7 @@ package res
 
 #aws_devopsguru_notification_channel: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_devopsguru_notification_channel")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_devopsguru_notification_channel")
 	id?: string
 	filters?: #filters | [...#filters]
 	sns?: #sns | [...#sns]

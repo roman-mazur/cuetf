@@ -4,7 +4,7 @@ import "list"
 
 #aws_vpc_peering_connection_accepter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_vpc_peering_connection_accepter")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc_peering_connection_accepter")
 	accept_status?: string
 	auto_accept?:   bool
 	id?:            string

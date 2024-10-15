@@ -1,6 +1,6 @@
 package github
 
-import "rmazur.io/cuetf/github/data"
+import "github.com/roman-mazur/cuetf/github/data"
 
 _ds: github_actions_environment_secrets:                                    data.#github_actions_environment_secrets
 _ds: github_actions_environment_variables:                                  data.#github_actions_environment_variables

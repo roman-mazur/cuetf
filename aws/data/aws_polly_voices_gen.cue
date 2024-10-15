@@ -2,7 +2,7 @@ package data
 
 #aws_polly_voices: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_polly_voices")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_polly_voices")
 	engine?:                            string
 	id?:                                string
 	include_additional_language_codes?: bool

@@ -4,7 +4,7 @@ import "list"
 
 #aws_flow_log: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_flow_log")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_flow_log")
 	arn?:                        string
 	deliver_cross_account_role?: string
 	eni_id?:                     string

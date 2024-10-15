@@ -2,7 +2,7 @@ package res
 
 #aws_rds_global_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_rds_global_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_rds_global_cluster")
 	arn?:                       string
 	database_name?:             string
 	deletion_protection?:       bool

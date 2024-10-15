@@ -2,7 +2,7 @@ package res
 
 #aws_finspace_kx_dataview: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_finspace_kx_dataview")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_finspace_kx_dataview")
 	arn?:                     string
 	auto_update!:             bool
 	availability_zone_id?:    string

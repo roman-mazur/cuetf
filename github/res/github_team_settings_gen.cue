@@ -4,7 +4,7 @@ import "list"
 
 #github_team_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/github_team_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_team_settings")
 	id?:        string
 	team_id!:   string
 	team_slug?: string

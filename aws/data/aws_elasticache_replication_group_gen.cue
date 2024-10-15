@@ -2,7 +2,7 @@ package data
 
 #aws_elasticache_replication_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_elasticache_replication_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_elasticache_replication_group")
 	arn?:                            string
 	auth_token_enabled?:             bool
 	automatic_failover_enabled?:     bool

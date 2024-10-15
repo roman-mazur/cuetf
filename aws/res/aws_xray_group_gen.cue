@@ -4,7 +4,7 @@ import "list"
 
 #aws_xray_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_xray_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_xray_group")
 	arn?:               string
 	filter_expression!: string
 	group_name!:        string

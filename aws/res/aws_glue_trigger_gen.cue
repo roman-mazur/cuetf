@@ -4,7 +4,7 @@ import "list"
 
 #aws_glue_trigger: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_glue_trigger")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_trigger")
 	arn?:               string
 	description?:       string
 	enabled?:           bool

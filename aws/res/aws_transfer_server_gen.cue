@@ -4,7 +4,7 @@ import "list"
 
 #aws_transfer_server: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_transfer_server")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_transfer_server")
 	arn?:                              string
 	certificate?:                      string
 	directory_id?:                     string

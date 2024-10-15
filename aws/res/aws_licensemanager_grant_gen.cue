@@ -2,7 +2,7 @@ package res
 
 #aws_licensemanager_grant: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_licensemanager_grant")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_licensemanager_grant")
 	allowed_operations!: [...string]
 	arn?:         string
 	home_region?: string

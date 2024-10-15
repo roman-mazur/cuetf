@@ -2,7 +2,7 @@ package res
 
 #aws_dynamodb_table_export: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dynamodb_table_export")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dynamodb_table_export")
 	arn?:                   string
 	billed_size_in_bytes?:  number
 	end_time?:              string

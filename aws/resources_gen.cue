@@ -1,6 +1,6 @@
 package aws
 
-import "rmazur.io/cuetf/aws/res"
+import "github.com/roman-mazur/cuetf/aws/res"
 
 _res: aws_accessanalyzer_analyzer:                                 res.#aws_accessanalyzer_analyzer
 _res: aws_accessanalyzer_archive_rule:                             res.#aws_accessanalyzer_archive_rule

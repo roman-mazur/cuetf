@@ -2,7 +2,7 @@ package res
 
 #aws_security_group_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_security_group_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_security_group_rule")
 	cidr_blocks?: [...string]
 	description?: string
 	from_port!:   number

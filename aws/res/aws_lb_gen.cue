@@ -4,7 +4,7 @@ import "list"
 
 #aws_lb: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_lb")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lb")
 	arn?:                                                          string
 	arn_suffix?:                                                   string
 	client_keep_alive?:                                            number

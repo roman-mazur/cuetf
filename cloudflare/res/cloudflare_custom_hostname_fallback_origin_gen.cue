@@ -2,7 +2,7 @@ package res
 
 #cloudflare_custom_hostname_fallback_origin: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_custom_hostname_fallback_origin")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_custom_hostname_fallback_origin")
 	id?:      string
 	origin!:  string
 	status?:  string

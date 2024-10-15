@@ -2,7 +2,7 @@ package res
 
 #aws_imagebuilder_workflow: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_imagebuilder_workflow")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_imagebuilder_workflow")
 	arn?:                string
 	change_description?: string
 	data?:               string

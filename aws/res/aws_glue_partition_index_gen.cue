@@ -4,7 +4,7 @@ import "list"
 
 #aws_glue_partition_index: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_glue_partition_index")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_partition_index")
 	catalog_id?:    string
 	database_name!: string
 	id?:            string

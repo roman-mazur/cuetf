@@ -2,7 +2,7 @@ package res
 
 #aws_transcribe_vocabulary_filter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_transcribe_vocabulary_filter")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_transcribe_vocabulary_filter")
 	arn?:           string
 	download_uri?:  string
 	id?:            string

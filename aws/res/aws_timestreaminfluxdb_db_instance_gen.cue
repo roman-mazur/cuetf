@@ -2,7 +2,7 @@ package res
 
 #aws_timestreaminfluxdb_db_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_timestreaminfluxdb_db_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_timestreaminfluxdb_db_instance")
 	allocated_storage!:                 number
 	arn?:                               string
 	availability_zone?:                 string

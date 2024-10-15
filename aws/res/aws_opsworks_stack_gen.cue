@@ -4,7 +4,7 @@ import "list"
 
 #aws_opsworks_stack: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_opsworks_stack")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opsworks_stack")
 	agent_version?:                 string
 	arn?:                           string
 	berkshelf_version?:             string

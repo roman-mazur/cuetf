@@ -4,7 +4,7 @@ import "list"
 
 #aws_chime_voice_connector_origination: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_chime_voice_connector_origination")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_chime_voice_connector_origination")
 	disabled?:           bool
 	id?:                 string
 	voice_connector_id!: string

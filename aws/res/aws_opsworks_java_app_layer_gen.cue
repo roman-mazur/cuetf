@@ -4,7 +4,7 @@ import "list"
 
 #aws_opsworks_java_app_layer: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_opsworks_java_app_layer")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opsworks_java_app_layer")
 	app_server?:              string
 	app_server_version?:      string
 	arn?:                     string

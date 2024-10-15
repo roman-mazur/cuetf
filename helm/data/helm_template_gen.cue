@@ -4,7 +4,7 @@ import "list"
 
 #helm_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/helm_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/helm_template")
 	api_versions?: [...string]
 	atomic?: bool
 	chart!:  string

@@ -2,7 +2,7 @@ package res
 
 #elasticstack_fleet_agent_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/elasticstack_fleet_agent_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_fleet_agent_policy")
 	data_output_id?:       string
 	description?:          string
 	download_source_id?:   string

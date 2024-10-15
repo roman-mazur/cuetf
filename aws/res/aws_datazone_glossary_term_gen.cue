@@ -2,7 +2,7 @@ package res
 
 #aws_datazone_glossary_term: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_datazone_glossary_term")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_datazone_glossary_term")
 	created_at?:          string
 	created_by?:          string
 	domain_identifier?:   string

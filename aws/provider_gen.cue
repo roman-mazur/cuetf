@@ -2,7 +2,7 @@ package aws
 
 #provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/provider")
 	access_key?: string
 	allowed_account_ids?: [...string]
 	custom_ca_bundle?:                   string

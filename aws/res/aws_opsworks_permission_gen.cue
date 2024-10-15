@@ -2,7 +2,7 @@ package res
 
 #aws_opsworks_permission: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_opsworks_permission")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opsworks_permission")
 	allow_ssh?:  bool
 	allow_sudo?: bool
 	id?:         string

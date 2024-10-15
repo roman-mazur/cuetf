@@ -4,7 +4,7 @@ import "list"
 
 #aws_appsync_function: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_appsync_function")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appsync_function")
 	api_id!:                    string
 	arn?:                       string
 	code?:                      string

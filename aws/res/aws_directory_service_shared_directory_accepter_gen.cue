@@ -2,7 +2,7 @@ package res
 
 #aws_directory_service_shared_directory_accepter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_directory_service_shared_directory_accepter")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_directory_service_shared_directory_accepter")
 	id?:                  string
 	method?:              string
 	notes?:               string

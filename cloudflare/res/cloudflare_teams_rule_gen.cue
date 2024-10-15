@@ -4,7 +4,7 @@ import "list"
 
 #cloudflare_teams_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_teams_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_teams_rule")
 	account_id:      string
 	action:          string
 	description:     string

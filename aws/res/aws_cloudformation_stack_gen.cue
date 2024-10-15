@@ -2,7 +2,7 @@ package res
 
 #aws_cloudformation_stack: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cloudformation_stack")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudformation_stack")
 	capabilities?: [...string]
 	disable_rollback?: bool
 	iam_role_arn?:     string

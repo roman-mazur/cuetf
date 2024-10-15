@@ -4,7 +4,7 @@ import "list"
 
 #aws_networkmanager_device: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_networkmanager_device")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_networkmanager_device")
 	arn?:               string
 	description?:       string
 	global_network_id!: string

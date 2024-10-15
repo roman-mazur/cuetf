@@ -2,7 +2,7 @@ package res
 
 #github_repository_file: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/github_repository_file")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_repository_file")
 	autocreate_branch?:               bool
 	autocreate_branch_source_branch?: string
 	autocreate_branch_source_sha?:    string

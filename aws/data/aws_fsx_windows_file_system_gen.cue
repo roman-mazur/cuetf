@@ -2,7 +2,7 @@ package data
 
 #aws_fsx_windows_file_system: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_fsx_windows_file_system")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_fsx_windows_file_system")
 	active_directory_id?: string
 	aliases?: [...string]
 	arn?: string

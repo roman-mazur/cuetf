@@ -4,7 +4,7 @@ import "list"
 
 #aws_keyspaces_table: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_keyspaces_table")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_keyspaces_table")
 	arn?:                  string
 	default_time_to_live?: number
 	id?:                   string

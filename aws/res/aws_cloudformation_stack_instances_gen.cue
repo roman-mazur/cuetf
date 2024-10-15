@@ -4,7 +4,7 @@ import "list"
 
 #aws_cloudformation_stack_instances: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cloudformation_stack_instances")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudformation_stack_instances")
 	accounts?: [...string]
 	call_as?: string
 	id?:      string

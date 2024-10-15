@@ -2,7 +2,7 @@ package res
 
 #github_actions_organization_secret: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/github_actions_organization_secret")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_actions_organization_secret")
 	created_at?:      string
 	encrypted_value?: string
 	id?:              string

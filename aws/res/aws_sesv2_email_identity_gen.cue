@@ -4,7 +4,7 @@ import "list"
 
 #aws_sesv2_email_identity: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_sesv2_email_identity")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_sesv2_email_identity")
 	arn?:                    string
 	configuration_set_name?: string
 	email_identity!:         string

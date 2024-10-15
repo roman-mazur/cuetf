@@ -2,7 +2,7 @@ package data
 
 #aws_ami_ids: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ami_ids")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ami_ids")
 	executable_users?: [...string]
 	id?: string
 	ids?: [...string]

@@ -4,7 +4,7 @@ import "list"
 
 #aws_wafregional_xss_match_set: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_wafregional_xss_match_set")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_wafregional_xss_match_set")
 	id?:   string
 	name!: string
 	xss_match_tuple?: #xss_match_tuple | [...#xss_match_tuple]

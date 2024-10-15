@@ -4,7 +4,7 @@ import "list"
 
 #aws_codestarnotifications_notification_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_codestarnotifications_notification_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codestarnotifications_notification_rule")
 	arn?:         string
 	detail_type!: string
 	event_type_ids!: [...string]

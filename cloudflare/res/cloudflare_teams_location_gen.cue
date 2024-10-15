@@ -2,7 +2,7 @@ package res
 
 #cloudflare_teams_location: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_teams_location")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_teams_location")
 	account_id!:              string
 	anonymized_logs_enabled?: bool
 	client_default?:          bool

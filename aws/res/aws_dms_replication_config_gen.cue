@@ -4,7 +4,7 @@ import "list"
 
 #aws_dms_replication_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dms_replication_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dms_replication_config")
 	arn?:                           string
 	id?:                            string
 	replication_config_identifier!: string

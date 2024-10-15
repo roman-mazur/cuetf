@@ -4,7 +4,7 @@ import "list"
 
 #aws_codeartifact_repository: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_codeartifact_repository")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codeartifact_repository")
 	administrator_account?: string
 	arn?:                   string
 	description?:           string

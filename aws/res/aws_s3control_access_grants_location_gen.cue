@@ -2,7 +2,7 @@ package res
 
 #aws_s3control_access_grants_location: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_s3control_access_grants_location")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_s3control_access_grants_location")
 	access_grants_location_arn?: string
 	access_grants_location_id?:  string
 	account_id?:                 string

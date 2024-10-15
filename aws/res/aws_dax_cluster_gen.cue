@@ -4,7 +4,7 @@ import "list"
 
 #aws_dax_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dax_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dax_cluster")
 	arn?: string
 	availability_zones?: [...string]
 	cluster_address?:                  string

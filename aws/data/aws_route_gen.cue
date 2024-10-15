@@ -2,7 +2,7 @@ package data
 
 #aws_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_route")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_route")
 	carrier_gateway_id?:          string
 	core_network_arn?:            string
 	destination_cidr_block?:      string

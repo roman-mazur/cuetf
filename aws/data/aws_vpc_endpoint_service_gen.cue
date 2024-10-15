@@ -2,7 +2,7 @@ package data
 
 #aws_vpc_endpoint_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_vpc_endpoint_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc_endpoint_service")
 	acceptance_required?: bool
 	arn?:                 string
 	availability_zones?: [...string]

@@ -2,7 +2,7 @@ package res
 
 #aws_msk_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_msk_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_msk_configuration")
 	arn?:         string
 	description?: string
 	id?:          string

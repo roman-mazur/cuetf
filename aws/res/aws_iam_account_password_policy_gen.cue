@@ -2,7 +2,7 @@ package res
 
 #aws_iam_account_password_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_iam_account_password_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_iam_account_password_policy")
 	allow_users_to_change_password?: bool
 	expire_passwords?:               bool
 	hard_expiry?:                    bool

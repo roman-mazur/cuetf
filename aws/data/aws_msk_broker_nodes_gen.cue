@@ -2,7 +2,7 @@ package data
 
 #aws_msk_broker_nodes: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_msk_broker_nodes")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_msk_broker_nodes")
 	cluster_arn!: string
 	id?:          string
 	node_info_list?: [...{

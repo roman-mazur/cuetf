@@ -4,7 +4,7 @@ import "list"
 
 #github_repository: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/github_repository")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_repository")
 	allow_auto_merge?:                        bool
 	allow_merge_commit?:                      bool
 	allow_rebase_merge?:                      bool

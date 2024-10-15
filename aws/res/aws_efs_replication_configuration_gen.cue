@@ -4,7 +4,7 @@ import "list"
 
 #aws_efs_replication_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_efs_replication_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_efs_replication_configuration")
 	creation_time?:                   string
 	id?:                              string
 	original_source_file_system_arn?: string

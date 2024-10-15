@@ -2,7 +2,7 @@ package res
 
 #aws_dms_s3_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dms_s3_endpoint")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dms_s3_endpoint")
 	add_column_name?:                             bool
 	add_trailing_padding_character?:              bool
 	bucket_folder?:                               string

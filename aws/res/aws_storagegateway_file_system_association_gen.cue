@@ -4,7 +4,7 @@ import "list"
 
 #aws_storagegateway_file_system_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_storagegateway_file_system_association")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_storagegateway_file_system_association")
 	arn?:                   string
 	audit_destination_arn?: string
 	gateway_arn!:           string

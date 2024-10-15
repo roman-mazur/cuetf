@@ -2,7 +2,7 @@ package res
 
 #cloudflare_certificate_pack: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_certificate_pack")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_certificate_pack")
 	certificate_authority!: string
 	cloudflare_branding?:   bool
 	hosts!: [...string]

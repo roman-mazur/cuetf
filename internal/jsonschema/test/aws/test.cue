@@ -1,8 +1,8 @@
 package aws
 
 import (
-	"rmazur.io/cuetf/internal/jsonschema"
-	"rmazur.io/cuetf/aws/internal/schema"
+	"github.com/roman-mazur/cuetf/internal/jsonschema"
+	"github.com/roman-mazur/cuetf/aws/internal/schema"
 )
 
 _aws: schema.provider_schemas["registry.terraform.io/hashicorp/aws"].resource_schemas
@@ -18,7 +18,7 @@ importSamples: aws: aws_acm_certificate:                   _
 importSamples: aws: aws_security_group:                    _
 importSamples: aws: aws_appintegrations_event_integration: _
 
-examplesCode: """
+exampleCode: """
 	package samples
 	
 	aws_instance: #aws_instance & {
@@ -31,10 +31,10 @@ examplesCode: """
 		certificate_body: "something"
 	}
 	
-	aws_security_group: #aws_security_group & {}
+	aws_security_group: #aws_security_group
 	
-	aws_appintegrations_event_integration: #aws_appintegrations_event_integration & {}
+	aws_appintegrations_event_integration: #aws_appintegrations_event_integration & {
+		name: "test"
+		eventbridge_bus: "sample"
+	}
 	"""
-
-debug: input: _aws.resource_schemas.aws_appintegrations_event_integration.block
-debug: output: jsonschema.#blockTransform & {#block: debug}

@@ -4,7 +4,7 @@ import "list"
 
 #aws_iot_indexing_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_iot_indexing_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_iot_indexing_configuration")
 	id?: string
 	thing_group_indexing_configuration?: #thing_group_indexing_configuration | list.MaxItems(1) & [...#thing_group_indexing_configuration]
 	thing_indexing_configuration?: #thing_indexing_configuration | list.MaxItems(1) & [...#thing_indexing_configuration]

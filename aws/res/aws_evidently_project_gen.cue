@@ -4,7 +4,7 @@ import "list"
 
 #aws_evidently_project: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_evidently_project")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_evidently_project")
 	active_experiment_count?: number
 	active_launch_count?:     number
 	arn?:                     string

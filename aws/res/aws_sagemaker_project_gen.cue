@@ -4,7 +4,7 @@ import "list"
 
 #aws_sagemaker_project: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_sagemaker_project")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_sagemaker_project")
 	arn?:                 string
 	id?:                  string
 	project_description?: string

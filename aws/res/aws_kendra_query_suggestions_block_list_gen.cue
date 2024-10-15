@@ -4,7 +4,7 @@ import "list"
 
 #aws_kendra_query_suggestions_block_list: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_kendra_query_suggestions_block_list")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_kendra_query_suggestions_block_list")
 	arn?:                             string
 	description?:                     string
 	id?:                              string

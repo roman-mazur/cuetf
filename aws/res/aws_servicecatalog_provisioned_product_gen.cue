@@ -4,7 +4,7 @@ import "list"
 
 #aws_servicecatalog_provisioned_product: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_servicecatalog_provisioned_product")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_servicecatalog_provisioned_product")
 	accept_language?: string
 	arn?:             string
 	cloudwatch_dashboard_names?: [...string]

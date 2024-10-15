@@ -2,7 +2,7 @@ package res
 
 #aws_opsworks_rds_db_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_opsworks_rds_db_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opsworks_rds_db_instance")
 	db_password!:         string
 	db_user!:             string
 	id?:                  string

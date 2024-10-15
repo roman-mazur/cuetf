@@ -2,7 +2,7 @@ package res
 
 #aws_dx_bgp_peer: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_dx_bgp_peer")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dx_bgp_peer")
 	address_family!:       string
 	amazon_address?:       string
 	aws_device?:           string

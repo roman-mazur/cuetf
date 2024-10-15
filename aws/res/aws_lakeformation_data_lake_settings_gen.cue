@@ -4,7 +4,7 @@ import "list"
 
 #aws_lakeformation_data_lake_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_lakeformation_data_lake_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lakeformation_data_lake_settings")
 	admins?: [...string]
 	allow_external_data_filtering?:         bool
 	allow_full_table_external_data_access?: bool

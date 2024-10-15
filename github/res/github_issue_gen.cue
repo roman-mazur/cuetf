@@ -2,7 +2,7 @@ package res
 
 #github_issue: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/github_issue")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_issue")
 	assignees?: [...string]
 	body?:     string
 	etag?:     string

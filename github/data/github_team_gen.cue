@@ -2,7 +2,7 @@ package data
 
 #github_team: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/github_team")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_team")
 	description?: string
 	id?:          string
 	members?: [...string]

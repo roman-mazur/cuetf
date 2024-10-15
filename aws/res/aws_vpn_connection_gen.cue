@@ -4,7 +4,7 @@ import "list"
 
 #aws_vpn_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_vpn_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpn_connection")
 	arn?:                            string
 	core_network_arn?:               string
 	core_network_attachment_arn?:    string

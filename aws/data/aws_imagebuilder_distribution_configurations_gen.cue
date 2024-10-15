@@ -2,7 +2,7 @@ package data
 
 #aws_imagebuilder_distribution_configurations: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_imagebuilder_distribution_configurations")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_imagebuilder_distribution_configurations")
 	arns?: [...string]
 	id?: string
 	names?: [...string]

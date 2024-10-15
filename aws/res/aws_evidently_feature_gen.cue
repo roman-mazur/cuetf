@@ -4,7 +4,7 @@ import "list"
 
 #aws_evidently_feature: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_evidently_feature")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_evidently_feature")
 	arn?:               string
 	created_time?:      string
 	default_variation?: string

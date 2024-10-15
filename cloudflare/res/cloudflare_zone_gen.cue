@@ -2,7 +2,7 @@ package res
 
 #cloudflare_zone: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_zone")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zone")
 	account_id!: string
 	id?:         string
 	jump_start?: bool

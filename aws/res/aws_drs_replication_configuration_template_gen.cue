@@ -2,7 +2,7 @@ package res
 
 #aws_drs_replication_configuration_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_drs_replication_configuration_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_drs_replication_configuration_template")
 	arn?:                              string
 	associate_default_security_group!: bool
 	auto_replicate_new_disks?:         bool

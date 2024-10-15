@@ -2,7 +2,7 @@ package data
 
 #aws_ssoadmin_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ssoadmin_application")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ssoadmin_application")
 	application_account?:      string
 	application_arn!:          string
 	application_provider_arn?: string

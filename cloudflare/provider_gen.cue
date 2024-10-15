@@ -2,7 +2,7 @@ package cloudflare
 
 #provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/provider")
 	api_base_path?:              string
 	api_client_logging?:         bool
 	api_hostname?:               string

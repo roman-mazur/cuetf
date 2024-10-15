@@ -4,7 +4,7 @@ import "list"
 
 #aws_config_configuration_recorder: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_config_configuration_recorder")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_config_configuration_recorder")
 	id?:       string
 	name?:     string
 	role_arn!: string

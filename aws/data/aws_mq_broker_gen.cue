@@ -2,7 +2,7 @@ package data
 
 #aws_mq_broker: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_mq_broker")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_mq_broker")
 	arn?:                        string
 	authentication_strategy?:    string
 	auto_minor_version_upgrade?: bool

@@ -2,7 +2,7 @@ package res
 
 #cloudflare_worker_script: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_worker_script")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_worker_script")
 	account_id!:         string
 	compatibility_date?: string
 	compatibility_flags?: [...string]

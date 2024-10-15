@@ -4,7 +4,7 @@ import "list"
 
 #aws_ecr_registry_scanning_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ecr_registry_scanning_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ecr_registry_scanning_configuration")
 	id?:          string
 	registry_id?: string
 	scan_type!:   string

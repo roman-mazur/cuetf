@@ -2,7 +2,7 @@ package data
 
 #aws_ec2_transit_gateway_attachments: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ec2_transit_gateway_attachments")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_transit_gateway_attachments")
 	id?: string
 	ids?: [...string]
 	tags?: [string]: string

@@ -2,7 +2,7 @@ package res
 
 #aws_ses_domain_mail_from: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ses_domain_mail_from")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ses_domain_mail_from")
 	behavior_on_mx_failure?: string
 	domain!:                 string
 	id?:                     string

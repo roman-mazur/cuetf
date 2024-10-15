@@ -2,7 +2,7 @@ package res
 
 #aws_lambda_layer_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_lambda_layer_version")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lambda_layer_version")
 	arn?:         string
 	code_sha256?: string
 	compatible_architectures?: [...string]

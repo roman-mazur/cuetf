@@ -2,7 +2,7 @@ package data
 
 #aws_lambda_function: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_lambda_function")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lambda_function")
 	architectures?: [...string]
 	arn?:                     string
 	code_sha256?:             string

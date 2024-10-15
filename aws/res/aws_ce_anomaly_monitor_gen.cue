@@ -2,7 +2,7 @@ package res
 
 #aws_ce_anomaly_monitor: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ce_anomaly_monitor")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ce_anomaly_monitor")
 	arn?:                   string
 	id?:                    string
 	monitor_dimension?:     string

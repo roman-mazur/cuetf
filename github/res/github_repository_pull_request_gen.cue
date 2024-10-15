@@ -2,7 +2,7 @@ package res
 
 #github_repository_pull_request: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/github_repository_pull_request")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_repository_pull_request")
 	base_ref!:        string
 	base_repository!: string
 	base_sha?:        string

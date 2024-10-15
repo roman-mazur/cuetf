@@ -2,7 +2,7 @@ package res
 
 #aws_emr_studio: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_emr_studio")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_emr_studio")
 	arn?:                            string
 	auth_mode!:                      string
 	default_s3_location!:            string

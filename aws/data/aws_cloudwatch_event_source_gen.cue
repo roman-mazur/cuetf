@@ -2,7 +2,7 @@ package data
 
 #aws_cloudwatch_event_source: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cloudwatch_event_source")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudwatch_event_source")
 	arn?:         string
 	created_by?:  string
 	id?:          string

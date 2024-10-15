@@ -2,7 +2,7 @@ package data
 
 #aws_apigatewayv2_api: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_apigatewayv2_api")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_apigatewayv2_api")
 	api_endpoint?:                 string
 	api_id!:                       string
 	api_key_selection_expression?: string

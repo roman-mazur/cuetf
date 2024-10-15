@@ -2,7 +2,7 @@ package res
 
 #aws_wafregional_rate_based_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_wafregional_rate_based_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_wafregional_rate_based_rule")
 	arn?:         string
 	id?:          string
 	metric_name!: string

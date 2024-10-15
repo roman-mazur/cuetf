@@ -2,7 +2,7 @@ package res
 
 #aws_opensearchserverless_vpc_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_opensearchserverless_vpc_endpoint")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opensearchserverless_vpc_endpoint")
 	id?:   string
 	name!: string
 	security_group_ids?: [...string]

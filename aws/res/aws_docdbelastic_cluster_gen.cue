@@ -2,7 +2,7 @@ package res
 
 #aws_docdbelastic_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_docdbelastic_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_docdbelastic_cluster")
 	admin_user_name!:              string
 	admin_user_password!:          string
 	arn?:                          string

@@ -2,7 +2,7 @@ package res
 
 #aws_datazone_form_type: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_datazone_form_type")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_datazone_form_type")
 	created_at?:        string
 	created_by?:        string
 	description?:       string

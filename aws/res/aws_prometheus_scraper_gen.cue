@@ -2,7 +2,7 @@ package res
 
 #aws_prometheus_scraper: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_prometheus_scraper")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_prometheus_scraper")
 	alias?:                string
 	arn?:                  string
 	id?:                   string

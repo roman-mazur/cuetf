@@ -2,7 +2,7 @@ package res
 
 #aws_connect_vocabulary: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_connect_vocabulary")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_connect_vocabulary")
 	arn?:                string
 	content!:            string
 	failure_reason?:     string

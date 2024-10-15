@@ -2,7 +2,7 @@ package res
 
 #aws_backup_vault: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_backup_vault")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_backup_vault")
 	arn?:             string
 	force_destroy?:   bool
 	id?:              string

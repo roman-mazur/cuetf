@@ -4,7 +4,7 @@ import "list"
 
 #aws_sagemaker_notebook_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_sagemaker_notebook_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_sagemaker_notebook_instance")
 	accelerator_types?: [...string]
 	additional_code_repositories?: [...string]
 	arn?:                     string

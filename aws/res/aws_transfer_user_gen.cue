@@ -4,7 +4,7 @@ import "list"
 
 #aws_transfer_user: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_transfer_user")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_transfer_user")
 	arn?:                 string
 	home_directory?:      string
 	home_directory_type?: string

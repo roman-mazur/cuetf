@@ -2,7 +2,7 @@ package res
 
 #cloudflare_address_map: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/cloudflare_address_map")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_address_map")
 	account_id!:     string
 	can_delete?:     bool
 	can_modify_ips?: bool

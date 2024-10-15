@@ -4,7 +4,7 @@ import "list"
 
 #aws_apigatewayv2_integration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_apigatewayv2_integration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_apigatewayv2_integration")
 	api_id!:                                    string
 	connection_id?:                             string
 	connection_type?:                           string

@@ -2,7 +2,7 @@ package res
 
 #aws_lexv2models_bot_locale: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_lexv2models_bot_locale")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lexv2models_bot_locale")
 	bot_id!:                           string
 	bot_version!:                      string
 	description?:                      string

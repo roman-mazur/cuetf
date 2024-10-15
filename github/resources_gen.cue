@@ -1,6 +1,6 @@
 package github
 
-import "rmazur.io/cuetf/github/res"
+import "github.com/roman-mazur/cuetf/github/res"
 
 _res: github_actions_environment_secret:                                     res.#github_actions_environment_secret
 _res: github_actions_environment_variable:                                   res.#github_actions_environment_variable

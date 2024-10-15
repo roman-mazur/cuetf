@@ -4,7 +4,7 @@ import "list"
 
 #elasticstack_elasticsearch_logstash_pipeline: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/elasticstack_elasticsearch_logstash_pipeline")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_logstash_pipeline")
 	description?:                  string
 	id?:                           string
 	last_modified?:                string

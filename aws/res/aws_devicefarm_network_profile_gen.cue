@@ -2,7 +2,7 @@ package res
 
 #aws_devicefarm_network_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_devicefarm_network_profile")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_devicefarm_network_profile")
 	arn?:                     string
 	description?:             string
 	downlink_bandwidth_bits?: number

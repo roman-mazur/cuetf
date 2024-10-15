@@ -1,6 +1,6 @@
 package cloudflare
 
-import "rmazur.io/cuetf/cloudflare/res"
+import "github.com/roman-mazur/cuetf/cloudflare/res"
 
 _res: cloudflare_access_ca_certificate:                           res.#cloudflare_access_ca_certificate
 _res: cloudflare_access_custom_page:                              res.#cloudflare_access_custom_page

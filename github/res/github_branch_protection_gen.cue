@@ -2,7 +2,7 @@ package res
 
 #github_branch_protection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/github_branch_protection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_branch_protection")
 	allows_deletions?:    bool
 	allows_force_pushes?: bool
 	enforce_admins?:      bool

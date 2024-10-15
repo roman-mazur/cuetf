@@ -2,7 +2,7 @@ package data
 
 #github_organization: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/github_organization")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_organization")
 	advanced_security_enabled_for_new_repositories?:           bool
 	default_repository_permission?:                            string
 	dependabot_alerts_enabled_for_new_repositories?:           bool

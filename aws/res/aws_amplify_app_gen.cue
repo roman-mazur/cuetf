@@ -4,7 +4,7 @@ import "list"
 
 #aws_amplify_app: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_amplify_app")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_amplify_app")
 	access_token?: string
 	arn?:          string
 	auto_branch_creation_patterns?: [...string]

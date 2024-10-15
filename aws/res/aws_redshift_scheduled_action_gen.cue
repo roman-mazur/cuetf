@@ -4,7 +4,7 @@ import "list"
 
 #aws_redshift_scheduled_action: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_redshift_scheduled_action")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_redshift_scheduled_action")
 	description?: string
 	enable?:      bool
 	end_time?:    string

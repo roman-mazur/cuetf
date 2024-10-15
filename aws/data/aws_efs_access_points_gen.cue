@@ -2,7 +2,7 @@ package data
 
 #aws_efs_access_points: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_efs_access_points")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_efs_access_points")
 	arns?: [...string]
 	file_system_id!: string
 	id?:             string

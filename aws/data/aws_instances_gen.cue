@@ -2,7 +2,7 @@ package data
 
 #aws_instances: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_instances")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_instances")
 	id?: string
 	ids?: [...string]
 	instance_state_names?: [...string]

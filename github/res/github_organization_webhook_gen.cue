@@ -4,7 +4,7 @@ import "list"
 
 #github_organization_webhook: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/github_organization_webhook")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_organization_webhook")
 	active?: bool
 	etag?:   string
 	events!: [...string]

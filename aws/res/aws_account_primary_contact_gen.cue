@@ -2,7 +2,7 @@ package res
 
 #aws_account_primary_contact: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_account_primary_contact")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_account_primary_contact")
 	account_id?:         string
 	address_line_1!:     string
 	address_line_2?:     string

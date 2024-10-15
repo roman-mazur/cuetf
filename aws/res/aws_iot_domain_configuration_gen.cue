@@ -4,7 +4,7 @@ import "list"
 
 #aws_iot_domain_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_iot_domain_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_iot_domain_configuration")
 	arn?:         string
 	domain_name?: string
 	domain_type?: string

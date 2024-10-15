@@ -2,7 +2,7 @@ package res
 
 #aws_iam_virtual_mfa_device: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_iam_virtual_mfa_device")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_iam_virtual_mfa_device")
 	arn?:                 string
 	base_32_string_seed?: string
 	enable_date?:         string

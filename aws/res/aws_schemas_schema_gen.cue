@@ -2,7 +2,7 @@ package res
 
 #aws_schemas_schema: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_schemas_schema")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_schemas_schema")
 	arn?:           string
 	content!:       string
 	description?:   string

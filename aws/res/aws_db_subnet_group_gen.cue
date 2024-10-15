@@ -2,7 +2,7 @@ package res
 
 #aws_db_subnet_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_db_subnet_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_db_subnet_group")
 	arn?:         string
 	description?: string
 	id?:          string

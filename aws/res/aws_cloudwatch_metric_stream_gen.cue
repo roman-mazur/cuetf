@@ -2,7 +2,7 @@ package res
 
 #aws_cloudwatch_metric_stream: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_cloudwatch_metric_stream")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudwatch_metric_stream")
 	arn?:                             string
 	creation_date?:                   string
 	firehose_arn!:                    string

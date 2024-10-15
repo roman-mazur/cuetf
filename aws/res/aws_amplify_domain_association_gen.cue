@@ -4,7 +4,7 @@ import "list"
 
 #aws_amplify_domain_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_amplify_domain_association")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_amplify_domain_association")
 	app_id!:                              string
 	arn?:                                 string
 	certificate_verification_dns_record?: string

@@ -2,7 +2,7 @@ package res
 
 #aws_eks_fargate_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_eks_fargate_profile")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_eks_fargate_profile")
 	arn?:                    string
 	cluster_name!:           string
 	fargate_profile_name!:   string

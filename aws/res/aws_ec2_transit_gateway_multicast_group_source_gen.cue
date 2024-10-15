@@ -2,7 +2,7 @@ package res
 
 #aws_ec2_transit_gateway_multicast_group_source: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_ec2_transit_gateway_multicast_group_source")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_transit_gateway_multicast_group_source")
 	group_ip_address!:                    string
 	id?:                                  string
 	network_interface_id!:                string

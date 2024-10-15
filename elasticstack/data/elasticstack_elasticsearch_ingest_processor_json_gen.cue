@@ -2,7 +2,7 @@ package data
 
 #elasticstack_elasticsearch_ingest_processor_json: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/elasticstack_elasticsearch_ingest_processor_json")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_ingest_processor_json")
 	add_to_root?:                   bool
 	add_to_root_conflict_strategy?: string
 	allow_duplicate_keys?:          bool

@@ -4,7 +4,7 @@ import "list"
 
 #aws_workspaces_workspace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://rmazur.io/cuetf/schema/aws_workspaces_workspace")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_workspaces_workspace")
 	bundle_id!:                      string
 	computer_name?:                  string
 	directory_id!:                   string
