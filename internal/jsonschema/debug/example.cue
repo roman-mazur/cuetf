@@ -2,21 +2,25 @@ package debug
 
 import "github.com/roman-mazur/cuetf/internal/jsonschema"
 
-_case: string | *"ok" @tag(case)
+_case: string | *"easy" @tag(case)
 
-if _case == "error" {
-	debug: input: ["list", ["object", {
-		branch: "string"
-		path:   "string"
-		some_list: ["list", ["list", "string"]]
-	}]]
-}
-if _case == "ok" {
-	debug: input: ["list", ["object", {
-		branch: "string"
-		path:   "string"
-		some_list: ["list", "string"]
-	}]]
+cases: {
+	// The problem: https://github.com/cue-lang/cue/discussions/2665#discussioncomment-7402853
+	hard: {
+		input: ["list", ["object", {
+			branch: "string"
+			path:   "string"
+			some_list: ["list", ["list", "string"]]
+		}]]
+	}
+
+	easy: {
+		input: ["list", ["object", {
+			branch: "string"
+			path:   "string"
+			some_list: ["list", "string"]
+		}]]
+	}
 }
 
-debug: output: jsonschema.#fieldTransform & {#type: debug.input}
+output: jsonschema.#fieldTransform & {#type: cases[_case].input}

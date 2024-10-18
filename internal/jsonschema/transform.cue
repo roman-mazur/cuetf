@@ -1,6 +1,7 @@
 package jsonschema
 
 import (
+	"list"
 	"path"
 	"github.com/roman-mazur/cuetf/internal/tf"
 )
@@ -25,7 +26,7 @@ import (
 
 	#ref: {
 		#name: string
-		"#/\(path.Join([for el in #path + [#name] {"$defs/\(el)"}]))"
+		"#/\(path.Join([for el in list.Concat(#path, [#name]) {"$defs/\(el)"}]))"
 	}
 
 	properties: {
@@ -62,7 +63,7 @@ import (
 
 	_defPaths: {
 		for name, _ in #block.block_types {
-			(name): #path + [name]
+			(name): list.Concat(#path, [name])
 		}
 	}
 
@@ -79,47 +80,35 @@ import (
 
 // Helper to transform into an object property.
 #fieldTransform: {
-	#type: tf.#attr.#primitive
-	type:  _primitivesMap[#type]
+	#type: "number" | "string"
+	type:  #type
 } | {
-	#type: tf.#attr.#complexDef
-	_complexMap[#type[0]] & {#defs: #type[1]}
-}
-
-_complexMap: {
-	object: {
-		#defs:                _
-		type:                 "object"
-		additionalProperties: false
-		properties: {
-			for name, fType in #defs {
-				(name): #fieldTransform & {#type: fType}
-			}
+	#type: "bool"
+	type:  "boolean"
+} | {
+	#type: ["list", _]
+	type: "array"
+	_child: #type[1]
+	items: #fieldTransform & {#type: _child}
+} | {
+	#type: ["set", _]
+	type: "array"
+	uniqueItems: true
+	_child: #type[1]
+	items: #fieldTransform & {#type: _child}
+} | {
+	#type: ["map", _]
+	type: "object"
+	_child: #type[1]
+	additionalProperties: #fieldTransform & {#type: _child}
+} | {
+	#type: ["object", _]
+	type: "object"
+	additionalProperties: false
+	_child: #type[1]
+	properties: {
+		for key, fType in _child {
+			(key): #fieldTransform & {#type: fType}
 		}
 	}
-
-	map: {
-		#defs: _
-		type:  "object"
-		additionalProperties: #fieldTransform & {#type: #defs}
-	}
-
-	set: {
-		#defs: _
-		type:  "array"
-		items: #fieldTransform & {#type: #defs}
-	}
-
-	list: {
-		#defs: _
-		type:  "array"
-		items: #fieldTransform & {#type: #defs}
-	}
-}
-
-// Map primitives from Terraform to JSON Schema values.
-_primitivesMap: {
-	number: "number"
-	string: "string"
-	"bool": "boolean"
 }
