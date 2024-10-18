@@ -8,6 +8,8 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+
+	. "rmazur.io/cuetf/internal/testtools"
 )
 
 func TestProviders(t *testing.T) {
@@ -61,8 +63,8 @@ func testProvider(t *testing.T, provider string, names []string) {
 	basePath := runGen(t, provider, names)
 	workDir := filepath.Join(basePath, provider)
 	injectSamples(t, provider, workDir)
-	runCue(t, workDir, []string{"vet"})
-	runCue(t, workDir, []string{"export"})
+	RunCUE(t, workDir, "vet")
+	RunCUE(t, workDir, "export")
 }
 
 func runGen(t *testing.T, provider string, names []string) string {
@@ -73,7 +75,7 @@ func runGen(t *testing.T, provider string, names []string) string {
 	filter := fmt.Sprintf("^(%s)$", strings.Join(names, "|"))
 	cmd := exec.Command("go", "run", "../../cmd/gen", "-v", "-f", filter,
 		filepath.Join("../..", provider, "internal/schema/schema.json"), dst)
-	runCmd(t, cmd)
+	RunCommand(t, cmd)
 	return dst
 }
 
@@ -102,28 +104,10 @@ func injectSamples(t *testing.T, provider string, dst string) {
 	}
 }
 
-func runCue(t *testing.T, wd string, args []string) {
-	t.Helper()
-	cmd := exec.Command("cue", args...)
-	cmd.Dir = wd
-	runCmd(t, cmd)
-}
-
 func initTestModule(t *testing.T, workDir string, provider string) {
-	runCue(t, workDir, []string{"mod", "init", "github.com/roman-mazur/cuetf"})
-	runCmd(t, exec.Command("cp", "-r", "..", filepath.Join(workDir, "internal")))
+	RunCUE(t, workDir, "mod", "init", "github.com/roman-mazur/cuetf")
+	RunCommand(t, exec.Command("cp", "-r", "..", filepath.Join(workDir, "internal")))
 	providerDir := filepath.Join(workDir, provider)
-	runCmd(t, exec.Command("mkdir", providerDir))
-	runCmd(t, exec.Command("cp", filepath.Join("../..", provider, "terraform.cue"), providerDir))
-}
-
-func runCmd(t *testing.T, cmd *exec.Cmd) {
-	t.Helper()
-	out, err := cmd.CombinedOutput()
-	if len(out) > 0 {
-		t.Log(string(out))
-	}
-	if err != nil {
-		t.Fatal(err)
-	}
+	RunCommand(t, exec.Command("mkdir", providerDir))
+	RunCommand(t, exec.Command("cp", filepath.Join("../..", provider, "terraform.cue"), providerDir))
 }
