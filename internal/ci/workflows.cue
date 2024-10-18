@@ -4,7 +4,7 @@ import "github.com/roman-mazur/cuetf/internal/ci/github"
 
 #versions: {
 	go: "1.23.2"
-	cue: "0.10.3"
+	cue: "0.10.0"
 }
 
 workflows: [N=string]: github.#Workflow & {name: N}
