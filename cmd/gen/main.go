@@ -119,7 +119,7 @@ func mapping(prefix string, typ string, defs []string) string {
 func listDefs(p string) []string {
 	entries, err := os.ReadDir(p)
 	if err != nil {
-		panic(err)
+		return nil
 	}
 	res := make([]string, 0, len(entries))
 	for _, e := range entries {

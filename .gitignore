@@ -1,9 +1,6 @@
 .terraform
 .terraform*
 
-# Imported terraform schema.
-*/internal/schema/*.json
-
 # Defs generation logs.
 out/
 
