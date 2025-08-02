@@ -111,3 +111,18 @@ func initTestModule(t *testing.T, workDir string, provider string) {
 	RunCommand(t, exec.Command("mkdir", providerDir))
 	RunCommand(t, exec.Command("cp", filepath.Join("../..", provider, "terraform.cue"), providerDir))
 }
+
+func TestParseTerraform(t *testing.T) {
+	f, err := os.Open("../../aws/internal/schema/schema.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() {
+		_ = f.Close()
+	})
+	res, err := ParseTerraform(f)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Log(res)
+}
