@@ -18,15 +18,191 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 					description_kind: "plain"
 					optional:         true
 				}
+				experiments: {
+					nested_type: {
+						attributes: manifest: {
+							type:             "bool"
+							description:      "Enable full diff by storing the rendered manifest in the state."
+							description_kind: "plain"
+							optional:         true
+						}
+						nesting_mode: "single"
+					}
+					description:      "Enable and disable experimental features."
+					description_kind: "plain"
+					optional:         true
+				}
 				helm_driver: {
 					type:             "string"
 					description:      "The backend storage driver. Values are: configmap, secret, memory, sql"
 					description_kind: "plain"
 					optional:         true
 				}
+				kubernetes: {
+					nested_type: {
+						attributes: {
+							client_certificate: {
+								type:             "string"
+								description:      "PEM-encoded client certificate for TLS authentication."
+								description_kind: "plain"
+								optional:         true
+							}
+							client_key: {
+								type:             "string"
+								description:      "PEM-encoded client certificate key for TLS authentication."
+								description_kind: "plain"
+								optional:         true
+							}
+							cluster_ca_certificate: {
+								type:             "string"
+								description:      "PEM-encoded root certificates bundle for TLS authentication."
+								description_kind: "plain"
+								optional:         true
+							}
+							config_context: {
+								type:             "string"
+								description:      "Context to choose from the config file. Can be sourced from KUBE_CTX."
+								description_kind: "plain"
+								optional:         true
+							}
+							config_context_auth_info: {
+								type:             "string"
+								description:      "Authentication info context of the kube config (name of the kubeconfig user, --user flag in kubectl). Can be sourced from KUBE_CTX_AUTH_INFO."
+								description_kind: "plain"
+								optional:         true
+							}
+							config_context_cluster: {
+								type:             "string"
+								description:      "Cluster context of the kube config (name of the kubeconfig cluster, --cluster flag in kubectl). Can be sourced from KUBE_CTX_CLUSTER."
+								description_kind: "plain"
+								optional:         true
+							}
+							config_path: {
+								type:             "string"
+								description:      "Path to the kube config file. Can be set with KUBE_CONFIG_PATH."
+								description_kind: "plain"
+								optional:         true
+							}
+							config_paths: {
+								type: ["list", "string"]
+								description:      "A list of paths to kube config files. Can be set with KUBE_CONFIG_PATHS environment variable."
+								description_kind: "plain"
+								optional:         true
+							}
+							exec: {
+								nested_type: {
+									attributes: {
+										api_version: {
+											type:             "string"
+											description:      "API version for the exec plugin."
+											description_kind: "plain"
+											required:         true
+										}
+										args: {
+											type: ["list", "string"]
+											description:      "Arguments for the exec plugin"
+											description_kind: "plain"
+											optional:         true
+										}
+										command: {
+											type:             "string"
+											description:      "Command to run for Kubernetes exec plugin"
+											description_kind: "plain"
+											required:         true
+										}
+										env: {
+											type: ["map", "string"]
+											description:      "Environment variables for the exec plugin"
+											description_kind: "plain"
+											optional:         true
+										}
+									}
+									nesting_mode: "single"
+								}
+								description:      "Exec configuration for Kubernetes authentication"
+								description_kind: "plain"
+								optional:         true
+							}
+							host: {
+								type:             "string"
+								description:      "The hostname (in form of URI) of kubernetes master"
+								description_kind: "plain"
+								optional:         true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Whether server should be accessed without verifying the TLS certificate."
+								description_kind: "plain"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "The password to use for HTTP basic authentication when accessing the Kubernetes master endpoint."
+								description_kind: "plain"
+								optional:         true
+							}
+							proxy_url: {
+								type:             "string"
+								description:      "URL to the proxy to be used for all API requests."
+								description_kind: "plain"
+								optional:         true
+							}
+							tls_server_name: {
+								type:             "string"
+								description:      "Server name passed to the server for SNI and is used in the client to check server certificates against."
+								description_kind: "plain"
+								optional:         true
+							}
+							token: {
+								type:             "string"
+								description:      "Token to authenticate a service account."
+								description_kind: "plain"
+								optional:         true
+							}
+							username: {
+								type:             "string"
+								description:      "The username to use for HTTP basic authentication when accessing the Kubernetes master endpoint"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						nesting_mode: "single"
+					}
+					description:      "Kubernetes Configuration"
+					description_kind: "plain"
+					optional:         true
+				}
 				plugins_path: {
 					type:             "string"
 					description:      "The path to the helm plugins directory"
+					description_kind: "plain"
+					optional:         true
+				}
+				registries: {
+					nested_type: {
+						attributes: {
+							password: {
+								type:             "string"
+								description:      "The password to use for the OCI HTTP basic authentication when accessing the Kubernetes master endpoint."
+								description_kind: "plain"
+								required:         true
+							}
+							url: {
+								type:             "string"
+								description:      "OCI URL in form of oci://host:port or oci://host"
+								description_kind: "plain"
+								required:         true
+							}
+							username: {
+								type:             "string"
+								description:      "The username to use for the OCI HTTP basic authentication when accessing the Kubernetes master endpoint."
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						nesting_mode: "list"
+					}
+					description:      "RegistryClient configuration."
 					description_kind: "plain"
 					optional:         true
 				}
@@ -49,265 +225,106 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 					optional:         true
 				}
 			}
-			block_types: {
-				experiments: {
-					nesting_mode: "list"
-					block: {
-						attributes: manifest: {
-							type:             "bool"
-							description:      "Enable full diff by storing the rendered manifest in the state. This has similar limitations as when using helm install --dry-run. See https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#install-a-crd-declaration-before-using-the-resource"
-							description_kind: "plain"
-							optional:         true
-						}
-						description:      "Enable and disable experimental features."
-						description_kind: "plain"
-					}
-					max_items: 1
-				}
-				kubernetes: {
-					nesting_mode: "list"
-					block: {
-						attributes: {
-							client_certificate: {
-								type:             "string"
-								description:      "PEM-encoded client certificate for TLS authentication."
-								description_kind: "plain"
-								optional:         true
-							}
-							client_key: {
-								type:             "string"
-								description:      "PEM-encoded client certificate key for TLS authentication."
-								description_kind: "plain"
-								optional:         true
-							}
-							cluster_ca_certificate: {
-								type:             "string"
-								description:      "PEM-encoded root certificates bundle for TLS authentication."
-								description_kind: "plain"
-								optional:         true
-							}
-							config_context: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-							config_context_auth_info: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-							config_context_cluster: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-							config_path: {
-								type:             "string"
-								description:      "Path to the kube config file. Can be set with KUBE_CONFIG_PATH."
-								description_kind: "plain"
-								optional:         true
-							}
-							config_paths: {
-								type: ["list", "string"]
-								description:      "A list of paths to kube config files. Can be set with KUBE_CONFIG_PATHS environment variable."
-								description_kind: "plain"
-								optional:         true
-							}
-							host: {
-								type:             "string"
-								description:      "The hostname (in form of URI) of Kubernetes master."
-								description_kind: "plain"
-								optional:         true
-							}
-							insecure: {
-								type:             "bool"
-								description:      "Whether server should be accessed without verifying the TLS certificate."
-								description_kind: "plain"
-								optional:         true
-							}
-							password: {
-								type:             "string"
-								description:      "The password to use for HTTP basic authentication when accessing the Kubernetes master endpoint."
-								description_kind: "plain"
-								optional:         true
-							}
-							proxy_url: {
-								type:             "string"
-								description:      "URL to the proxy to be used for all API requests"
-								description_kind: "plain"
-								optional:         true
-							}
-							tls_server_name: {
-								type:             "string"
-								description:      "Server name passed to the server for SNI and is used in the client to check server certificates against."
-								description_kind: "plain"
-								optional:         true
-							}
-							token: {
-								type:             "string"
-								description:      "Token to authenticate an service account"
-								description_kind: "plain"
-								optional:         true
-							}
-							username: {
-								type:             "string"
-								description:      "The username to use for HTTP basic authentication when accessing the Kubernetes master endpoint."
-								description_kind: "plain"
-								optional:         true
-							}
-						}
-						block_types: exec: {
-							nesting_mode: "list"
-							block: {
-								attributes: {
-									api_version: {
-										type:             "string"
-										description_kind: "plain"
-										required:         true
-									}
-									args: {
-										type: ["list", "string"]
-										description_kind: "plain"
-										optional:         true
-									}
-									command: {
-										type:             "string"
-										description_kind: "plain"
-										required:         true
-									}
-									env: {
-										type: ["map", "string"]
-										description_kind: "plain"
-										optional:         true
-									}
-								}
-								description_kind: "plain"
-							}
-							max_items: 1
-						}
-						description:      "Kubernetes configuration."
-						description_kind: "plain"
-					}
-					max_items: 1
-				}
-				registry: {
-					nesting_mode: "list"
-					block: {
-						attributes: {
-							password: {
-								type:             "string"
-								description:      "The password to use for the OCI HTTP basic authentication when accessing the Kubernetes master endpoint."
-								description_kind: "plain"
-								required:         true
-							}
-							url: {
-								type:             "string"
-								description:      "OCI URL in form of oci://host:port or oci://host"
-								description_kind: "plain"
-								required:         true
-							}
-							username: {
-								type:             "string"
-								description:      "The username to use for the OCI HTTP basic authentication when accessing the Kubernetes master endpoint."
-								description_kind: "plain"
-								required:         true
-							}
-						}
-						description:      "RegistryClient configuration."
-						description_kind: "plain"
-					}
-				}
-			}
+			description:      "Schema to define attributes that are available in the provider"
 			description_kind: "plain"
 		}
 	}
 	resource_schemas: helm_release: {
-		version: 1
+		version: 2
 		block: {
 			attributes: {
 				atomic: {
 					type:             "bool"
-					description:      "If set, installation process purges chart on fail. The wait flag will be set automatically if atomic is used. Defaults to `false`."
+					description:      "If set, installation process purges chart on fail. The wait flag will be set automatically if atomic is used"
 					description_kind: "plain"
 					optional:         true
+					computed:         true
 				}
 				chart: {
 					type:             "string"
-					description:      "Chart name to be installed. A path may be used."
+					description:      "Chart name to be installed. A path may be used"
 					description_kind: "plain"
 					required:         true
 				}
 				cleanup_on_fail: {
 					type:             "bool"
-					description:      "Allow deletion of new resources created in this upgrade when upgrade fails. Defaults to `false`."
+					description:      "Allow deletion of new resources created in this upgrade when upgrade fails"
 					description_kind: "plain"
 					optional:         true
+					computed:         true
 				}
 				create_namespace: {
 					type:             "bool"
-					description:      "Create the namespace if it does not exist. Defaults to `false`."
+					description:      "Create the namespace if it does not exist"
 					description_kind: "plain"
 					optional:         true
+					computed:         true
 				}
 				dependency_update: {
 					type:             "bool"
-					description:      "Run helm dependency update before installing the chart. Defaults to `false`."
+					description:      "Run helm dependency update before installing the chart"
 					description_kind: "plain"
 					optional:         true
+					computed:         true
 				}
 				description: {
 					type:             "string"
 					description:      "Add a custom description"
 					description_kind: "plain"
 					optional:         true
+					computed:         true
 				}
 				devel: {
 					type:             "bool"
-					description:      "Use chart development versions, too. Equivalent to version '>0.0.0-0'. If `version` is set, this is ignored"
+					description:      "Use chart development versions, too. Equivalent to version '>0.0.0-0'. If 'version' is set, this is ignored"
 					description_kind: "plain"
 					optional:         true
 				}
 				disable_crd_hooks: {
 					type:             "bool"
-					description:      "Prevent CRD hooks from, running, but run other hooks.  See helm install --no-crd-hook"
-					description_kind: "plain"
-					optional:         true
-				}
-				disable_openapi_validation: {
-					type:             "bool"
-					description:      "If set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema. Defaults to `false`."
-					description_kind: "plain"
-					optional:         true
-				}
-				disable_webhooks: {
-					type:             "bool"
-					description:      "Prevent hooks from running.Defaults to `false`."
-					description_kind: "plain"
-					optional:         true
-				}
-				force_update: {
-					type:             "bool"
-					description:      "Force resource update through delete/recreate if needed. Defaults to `false`."
-					description_kind: "plain"
-					optional:         true
-				}
-				id: {
-					type:             "string"
+					description:      "Prevent CRD hooks from running, but run other hooks. See helm install --no-crd-hook"
 					description_kind: "plain"
 					optional:         true
 					computed:         true
 				}
+				disable_openapi_validation: {
+					type:             "bool"
+					description:      "If set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema"
+					description_kind: "plain"
+					optional:         true
+					computed:         true
+				}
+				disable_webhooks: {
+					type:             "bool"
+					description:      "Prevent hooks from running"
+					description_kind: "plain"
+					optional:         true
+					computed:         true
+				}
+				force_update: {
+					type:             "bool"
+					description:      "Force resource update through delete/recreate if needed."
+					description_kind: "plain"
+					optional:         true
+					computed:         true
+				}
+				id: {
+					type:             "string"
+					description_kind: "plain"
+					computed:         true
+				}
 				keyring: {
 					type:             "string"
-					description:      "Location of public keys used for verification. Used only if `verify` is true. Defaults to `/.gnupg/pubring.gpg` in the location set by `home`."
+					description:      "Location of public keys used for verification, Used only if 'verify is true'"
 					description_kind: "plain"
 					optional:         true
 				}
 				lint: {
 					type:             "bool"
-					description:      "Run helm lint when planning. Defaults to `false`."
+					description:      "Run helm lint when planning"
 					description_kind: "plain"
 					optional:         true
+					computed:         true
 				}
 				manifest: {
 					type:             "string"
@@ -317,72 +334,153 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 				}
 				max_history: {
 					type:             "number"
-					description:      "Limit the maximum number of revisions saved per release. Use 0 for no limit. Defaults to 0 (no limit)."
+					description:      "Limit the maximum number of revisions saved per release. Use 0 for no limit"
 					description_kind: "plain"
 					optional:         true
+					computed:         true
 				}
 				metadata: {
-					type: ["list", ["object", {
-						app_version:    "string"
-						chart:          "string"
-						first_deployed: "number"
-						last_deployed:  "number"
-						name:           "string"
-						namespace:      "string"
-						notes:          "string"
-						revision:       "number"
-						values:         "string"
-						version:        "string"
-					}]]
+					nested_type: {
+						attributes: {
+							app_version: {
+								type:             "string"
+								description:      "The version number of the application being deployed"
+								description_kind: "plain"
+								computed:         true
+							}
+							chart: {
+								type:             "string"
+								description:      "The name of the chart"
+								description_kind: "plain"
+								computed:         true
+							}
+							first_deployed: {
+								type:             "number"
+								description:      "FirstDeployed is an int64 which represents timestamp when the release was first deployed."
+								description_kind: "plain"
+								computed:         true
+							}
+							last_deployed: {
+								type:             "number"
+								description:      "LastDeployed is an int64 which represents timestamp when the release was last deployed."
+								description_kind: "plain"
+								computed:         true
+							}
+							name: {
+								type:             "string"
+								description:      "Name is the name of the release"
+								description_kind: "plain"
+								computed:         true
+							}
+							namespace: {
+								type:             "string"
+								description:      "Namespace is the kubernetes namespace of the release"
+								description_kind: "plain"
+								computed:         true
+							}
+							notes: {
+								type:             "string"
+								description:      "Notes is the description of the deployed release, rendered from templates."
+								description_kind: "plain"
+								computed:         true
+							}
+							revision: {
+								type:             "number"
+								description:      "Version is an int32 which represents the version of the release"
+								description_kind: "plain"
+								computed:         true
+							}
+							values: {
+								type:             "string"
+								description:      "Set of extra values. added to the chart. The sensitive data is cloaked. JSON encoded."
+								description_kind: "plain"
+								computed:         true
+							}
+							version: {
+								type:             "string"
+								description:      "A SemVer 2 conformant version string of the chart"
+								description_kind: "plain"
+								computed:         true
+							}
+						}
+						nesting_mode: "single"
+					}
 					description:      "Status of the deployed release."
 					description_kind: "plain"
 					computed:         true
 				}
 				name: {
 					type:             "string"
-					description:      "Release name. The length must not be longer than 53 characters."
+					description:      "Release name. The length must not be longer than 53 characters"
 					description_kind: "plain"
 					required:         true
 				}
 				namespace: {
 					type:             "string"
-					description:      "Namespace to install the release into. Defaults to `default`."
+					description:      "Namespace to install the release into"
 					description_kind: "plain"
 					optional:         true
+					computed:         true
 				}
 				pass_credentials: {
 					type:             "bool"
-					description:      "Pass credentials to all domains. Defaults to `false`."
+					description:      "Pass credentials to all domains"
+					description_kind: "plain"
+					optional:         true
+					computed:         true
+				}
+				postrender: {
+					nested_type: {
+						attributes: {
+							args: {
+								type: ["list", "string"]
+								description:      "An argument to the post-renderer (can specify multiple)"
+								description_kind: "plain"
+								optional:         true
+							}
+							binary_path: {
+								type:             "string"
+								description:      "The common binary path"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						nesting_mode: "single"
+					}
+					description:      "Postrender command config"
 					description_kind: "plain"
 					optional:         true
 				}
 				recreate_pods: {
 					type:             "bool"
-					description:      "Perform pods restart during upgrade/rollback. Defaults to `false`."
+					description:      "Perform pods restart during upgrade/rollback"
 					description_kind: "plain"
 					optional:         true
+					computed:         true
 				}
 				render_subchart_notes: {
 					type:             "bool"
-					description:      "If set, render subchart notes along with the parent. Defaults to `true`."
+					description:      "If set, render subchart notes along with the parent"
 					description_kind: "plain"
 					optional:         true
+					computed:         true
 				}
 				replace: {
 					type:             "bool"
-					description:      "Re-use the given name, even if that name is already used. This is unsafe in production. Defaults to `false`."
+					description:      "Re-use the given name, even if that name is already used. This is unsafe in production"
 					description_kind: "plain"
 					optional:         true
+					computed:         true
 				}
 				repository: {
 					type:             "string"
-					description:      "Repository where to locate the requested chart. If is a URL the chart is installed without installing the repository."
+					description:      "Repository where to locate the requested chart. If it is a URL, the chart is installed without installing the repository"
 					description_kind: "plain"
 					optional:         true
 				}
 				repository_ca_file: {
 					type:             "string"
-					description:      "The Repositories CA File"
+					description:      "The Repositories CA file"
 					description_kind: "plain"
 					optional:         true
 				}
@@ -413,98 +511,20 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 				}
 				reset_values: {
 					type:             "bool"
-					description:      "When upgrading, reset the values to the ones built into the chart. Defaults to `false`."
+					description:      "When upgrading, reset the values to the ones built into the chart"
 					description_kind: "plain"
 					optional:         true
+					computed:         true
 				}
 				reuse_values: {
 					type:             "bool"
-					description:      "When upgrading, reuse the last release's values and merge in any overrides. If 'reset_values' is specified, this is ignored. Defaults to `false`."
-					description_kind: "plain"
-					optional:         true
-				}
-				skip_crds: {
-					type:             "bool"
-					description:      "If set, no CRDs will be installed. By default, CRDs are installed if not already present. Defaults to `false`."
-					description_kind: "plain"
-					optional:         true
-				}
-				status: {
-					type:             "string"
-					description:      "Status of the release."
-					description_kind: "plain"
-					computed:         true
-				}
-				timeout: {
-					type:             "number"
-					description:      "Time in seconds to wait for any individual kubernetes operation. Defaults to 300 seconds."
-					description_kind: "plain"
-					optional:         true
-				}
-				upgrade_install: {
-					type:             "bool"
-					description:      "If true, the provider will install the release at the specified version even if a release not controlled by the provider is present: this is equivalent to running 'helm upgrade --install' with the Helm CLI. WARNING: this may not be suitable for production use -- see the 'Upgrade Mode' note in the provider documentation. Defaults to `false`."
-					description_kind: "plain"
-					optional:         true
-				}
-				values: {
-					type: ["list", "string"]
-					description:      "List of values in raw yaml format to pass to helm."
-					description_kind: "plain"
-					optional:         true
-				}
-				verify: {
-					type:             "bool"
-					description:      "Verify the package before installing it.Defaults to `false`."
-					description_kind: "plain"
-					optional:         true
-				}
-				version: {
-					type:             "string"
-					description:      "Specify the exact chart version to install. If this is not specified, the latest version is installed."
+					description:      "When upgrading, reuse the last release's values and merge in any overrides. If 'reset_values' is specified, this is ignored"
 					description_kind: "plain"
 					optional:         true
 					computed:         true
-				}
-				wait: {
-					type:             "bool"
-					description:      "Will wait until all resources are in a ready state before marking the release as successful. Defaults to `true`."
-					description_kind: "plain"
-					optional:         true
-				}
-				wait_for_jobs: {
-					type:             "bool"
-					description:      "If wait is enabled, will wait until all Jobs have been completed before marking the release as successful. Defaults to `false``."
-					description_kind: "plain"
-					optional:         true
-				}
-			}
-			block_types: {
-				postrender: {
-					nesting_mode: "list"
-					block: {
-						attributes: {
-							args: {
-								type: ["list", "string"]
-								description:      "an argument to the post-renderer (can specify multiple)"
-								description_kind: "plain"
-								optional:         true
-							}
-							binary_path: {
-								type:             "string"
-								description:      "The command binary path."
-								description_kind: "plain"
-								required:         true
-							}
-						}
-						description:      "Postrender command configuration."
-						description_kind: "plain"
-					}
-					max_items: 1
 				}
 				set: {
-					nesting_mode: "set"
-					block: {
+					nested_type: {
 						attributes: {
 							name: {
 								type:             "string"
@@ -515,20 +535,22 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 								type:             "string"
 								description_kind: "plain"
 								optional:         true
+								computed:         true
 							}
 							value: {
 								type:             "string"
 								description_kind: "plain"
-								required:         true
+								optional:         true
 							}
 						}
-						description:      "Custom values to be merged with the values."
-						description_kind: "plain"
+						nesting_mode: "list"
 					}
+					description:      "Custom values to be merged with the values"
+					description_kind: "plain"
+					optional:         true
 				}
 				set_list: {
-					nesting_mode: "list"
-					block: {
+					nested_type: {
 						attributes: {
 							name: {
 								type:             "string"
@@ -541,13 +563,14 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 								required:         true
 							}
 						}
-						description:      "Custom list values to be merged with the values."
-						description_kind: "plain"
+						nesting_mode: "list"
 					}
+					description:      "Custom sensitive values to be merged with the values"
+					description_kind: "plain"
+					optional:         true
 				}
 				set_sensitive: {
-					nesting_mode: "set"
-					block: {
+					nested_type: {
 						attributes: {
 							name: {
 								type:             "string"
@@ -566,11 +589,99 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 								sensitive:        true
 							}
 						}
-						description:      "Custom sensitive values to be merged with the values."
-						description_kind: "plain"
+						nesting_mode: "list"
 					}
+					description:      "Custom sensitive values to be merged with the values"
+					description_kind: "plain"
+					optional:         true
+				}
+				set_wo: {
+					nested_type: {
+						attributes: {
+							name: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							type: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							value: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						nesting_mode: "list"
+					}
+					description:      "Custom values to be merged with the values"
+					description_kind: "plain"
+					optional:         true
+				}
+				set_wo_revision: {
+					type:             "number"
+					description:      "The current revision of the write-only \"set_wo\" attribute. Incrementing this integer value will cause Terraform to update the write-only value."
+					description_kind: "plain"
+					optional:         true
+				}
+				skip_crds: {
+					type:             "bool"
+					description:      "If set, no CRDs will be installed. By default, CRDs are installed if not already present"
+					description_kind: "plain"
+					optional:         true
+					computed:         true
+				}
+				status: {
+					type:             "string"
+					description:      "Status of the release"
+					description_kind: "plain"
+					computed:         true
+				}
+				timeout: {
+					type:             "number"
+					description:      "Time in seconds to wait for any individual kubernetes operation"
+					description_kind: "plain"
+					optional:         true
+					computed:         true
+				}
+				values: {
+					type: ["list", "string"]
+					description:      "List of values in raw YAML format to pass to helm"
+					description_kind: "plain"
+					optional:         true
+				}
+				verify: {
+					type:             "bool"
+					description:      "Verify the package before installing it."
+					description_kind: "plain"
+					optional:         true
+					computed:         true
+				}
+				version: {
+					type:             "string"
+					description:      "Specify the exact chart version to install. If this is not specified, the latest version is installed"
+					description_kind: "plain"
+					optional:         true
+					computed:         true
+				}
+				wait: {
+					type:             "bool"
+					description:      "Will wait until all resources are in a ready state before marking the release as successful."
+					description_kind: "plain"
+					optional:         true
+					computed:         true
+				}
+				wait_for_jobs: {
+					type:             "bool"
+					description:      "If wait is enabled, will wait until all Jobs have been completed before marking the release as successful."
+					description_kind: "plain"
+					optional:         true
+					computed:         true
 				}
 			}
+			description:      "Schema to define attributes that are available in the resource"
 			description_kind: "plain"
 		}
 	}
@@ -580,13 +691,13 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 			attributes: {
 				api_versions: {
 					type: ["list", "string"]
-					description:      "Kubernetes api versions used for Capabilities.APIVersions"
+					description:      "Kubernetes api versions used for Capabilities.APIVersions."
 					description_kind: "plain"
 					optional:         true
 				}
 				atomic: {
 					type:             "bool"
-					description:      "If set, installation process purges chart on fail. The wait flag will be set automatically if atomic is used. Defaults to `false`."
+					description:      "If set, the installation process purges the chart on fail. The 'wait' flag will be set automatically if 'atomic' is used."
 					description_kind: "plain"
 					optional:         true
 				}
@@ -605,67 +716,66 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 				}
 				create_namespace: {
 					type:             "bool"
-					description:      "Create the namespace if it does not exist. Defaults to `false`."
+					description:      "Create the namespace if it does not exist."
 					description_kind: "plain"
 					optional:         true
 				}
 				dependency_update: {
 					type:             "bool"
-					description:      "Run helm dependency update before installing the chart. Defaults to `false`."
+					description:      "Run helm dependency update before installing the chart."
 					description_kind: "plain"
 					optional:         true
 				}
 				description: {
 					type:             "string"
-					description:      "Add a custom description"
+					description:      "Add a custom description."
 					description_kind: "plain"
 					optional:         true
 				}
 				devel: {
 					type:             "bool"
-					description:      "Use chart development versions, too. Equivalent to version '>0.0.0-0'. If `version` is set, this is ignored"
+					description:      "Use chart development versions, too. Equivalent to version '>0.0.0-0'. If `version` is set, this is ignored."
 					description_kind: "plain"
 					optional:         true
 				}
 				disable_openapi_validation: {
 					type:             "bool"
-					description:      "If set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema.Defaults to `false`."
+					description:      "If set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema."
 					description_kind: "plain"
 					optional:         true
 				}
 				disable_webhooks: {
 					type:             "bool"
-					description:      "Prevent hooks from running.Defaults to `300` seconds."
+					description:      "Prevent hooks from running."
 					description_kind: "plain"
 					optional:         true
 				}
 				id: {
 					type:             "string"
 					description_kind: "plain"
-					optional:         true
 					computed:         true
 				}
 				include_crds: {
 					type:             "bool"
-					description:      "Include CRDs in the templated output"
+					description:      "Include CRDs in the templated output."
 					description_kind: "plain"
 					optional:         true
 				}
 				is_upgrade: {
 					type:             "bool"
-					description:      "Set .Release.IsUpgrade instead of .Release.IsInstall"
+					description:      "Set .Release.IsUpgrade instead of .Release.IsInstall."
 					description_kind: "plain"
 					optional:         true
 				}
 				keyring: {
 					type:             "string"
-					description:      "Location of public keys used for verification. Used only if `verify` is true. Defaults to `/.gnupg/pubring.gpg` in the location set by `home`."
+					description:      "Location of public keys used for verification. Used only if `verify` is true."
 					description_kind: "plain"
 					optional:         true
 				}
 				kube_version: {
 					type:             "string"
-					description:      "Kubernetes version used for Capabilities.KubeVersion"
+					description:      "Kubernetes version used for Capabilities.KubeVersion."
 					description_kind: "plain"
 					optional:         true
 				}
@@ -685,13 +795,13 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 				}
 				name: {
 					type:             "string"
-					description:      "Release name."
+					description:      "Release name"
 					description_kind: "plain"
 					required:         true
 				}
 				namespace: {
 					type:             "string"
-					description:      "Namespace to install the release into. Defaults to `default`."
+					description:      "Namespace to install the release into."
 					description_kind: "plain"
 					optional:         true
 				}
@@ -704,43 +814,65 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 				}
 				pass_credentials: {
 					type:             "bool"
-					description:      "Pass credentials to all domains. Defaults to `false`."
+					description:      "Pass credentials to all domains"
+					description_kind: "plain"
+					optional:         true
+				}
+				postrender: {
+					nested_type: {
+						attributes: {
+							args: {
+								type: ["list", "string"]
+								description:      "An argument to the post-renderer (can specify multiple)"
+								description_kind: "plain"
+								optional:         true
+							}
+							binary_path: {
+								type:             "string"
+								description:      "The common binary path"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						nesting_mode: "single"
+					}
+					description:      "Postrender command config"
 					description_kind: "plain"
 					optional:         true
 				}
 				render_subchart_notes: {
 					type:             "bool"
-					description:      "If set, render subchart notes along with the parent. Defaults to `true`."
+					description:      "If set, render subchart notes along with the parent."
 					description_kind: "plain"
 					optional:         true
 				}
 				replace: {
 					type:             "bool"
-					description:      "Re-use the given name, even if that name is already used. This is unsafe in production. Defaults to `false`."
+					description:      "Re-use the given name, even if that name is already used. This is unsafe in production."
 					description_kind: "plain"
 					optional:         true
 				}
 				repository: {
 					type:             "string"
-					description:      "Repository where to locate the requested chart. If is a URL the chart is installed without installing the repository."
+					description:      "Repository where to locate the requested chart. If it is a URL the chart is installed without installing the repository."
 					description_kind: "plain"
 					optional:         true
 				}
 				repository_ca_file: {
 					type:             "string"
-					description:      "The Repositories CA File"
+					description:      "The repository's CA file"
 					description_kind: "plain"
 					optional:         true
 				}
 				repository_cert_file: {
 					type:             "string"
-					description:      "The repositories cert file"
+					description:      "The repository's cert file"
 					description_kind: "plain"
 					optional:         true
 				}
 				repository_key_file: {
 					type:             "string"
-					description:      "The repositories cert key file"
+					description:      "The repository's cert key file"
 					description_kind: "plain"
 					optional:         true
 				}
@@ -759,90 +891,18 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 				}
 				reset_values: {
 					type:             "bool"
-					description:      "When upgrading, reset the values to the ones built into the chart.Defaults to `false`. "
+					description:      "When upgrading, reset the values to the ones built into the chart."
 					description_kind: "plain"
 					optional:         true
 				}
 				reuse_values: {
 					type:             "bool"
-					description:      "When upgrading, reuse the last release's values and merge in any overrides. If 'reset_values' is specified, this is ignored. Defaults to `false`. "
+					description:      "When upgrading, reuse the last release's values and merge in any overrides. If 'reset_values' is specified, this is ignored."
 					description_kind: "plain"
 					optional:         true
-				}
-				show_only: {
-					type: ["list", "string"]
-					description:      "Only show manifests rendered from the given templates"
-					description_kind: "plain"
-					optional:         true
-				}
-				skip_crds: {
-					type:             "bool"
-					description:      "If set, no CRDs will be installed. By default, CRDs are installed if not already present. Defaults to `false`."
-					description_kind: "plain"
-					optional:         true
-				}
-				skip_tests: {
-					type:             "bool"
-					description:      "If set, tests will not be rendered. By default, tests are rendered. Defaults to `false`."
-					description_kind: "plain"
-					optional:         true
-				}
-				timeout: {
-					type:             "number"
-					description:      "Time in seconds to wait for any individual kubernetes operation. Defaults to `300` seconds."
-					description_kind: "plain"
-					optional:         true
-				}
-				validate: {
-					type:             "bool"
-					description:      "Validate your manifests against the Kubernetes cluster you are currently pointing at. This is the same validation performed on an install"
-					description_kind: "plain"
-					optional:         true
-				}
-				values: {
-					type: ["list", "string"]
-					description:      "List of values in raw yaml format to pass to helm."
-					description_kind: "plain"
-					optional:         true
-				}
-				verify: {
-					type:             "bool"
-					description:      "Verify the package before installing it.Defaults to `false`."
-					description_kind: "plain"
-					optional:         true
-				}
-				version: {
-					type:             "string"
-					description:      "Specify the exact chart version to install. If this is not specified, the latest version is installed."
-					description_kind: "plain"
-					optional:         true
-					computed:         true
-				}
-				wait: {
-					type:             "bool"
-					description:      "Will wait until all resources are in a ready state before marking the release as successful.Defaults to `true`."
-					description_kind: "plain"
-					optional:         true
-				}
-			}
-			block_types: {
-				postrender: {
-					nesting_mode: "list"
-					block: {
-						attributes: binary_path: {
-							type:             "string"
-							description:      "The command binary path."
-							description_kind: "plain"
-							required:         true
-						}
-						description:      "Postrender command configuration."
-						description_kind: "plain"
-					}
-					max_items: 1
 				}
 				set: {
-					nesting_mode: "set"
-					block: {
+					nested_type: {
 						attributes: {
 							name: {
 								type:             "string"
@@ -853,25 +913,27 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 								type:             "string"
 								description_kind: "plain"
 								optional:         true
+								computed:         true
 							}
 							value: {
 								type:             "string"
 								description_kind: "plain"
-								required:         true
+								optional:         true
 							}
 						}
-						description:      "Custom values to be merged with the values."
-						description_kind: "plain"
+						nesting_mode: "set"
 					}
+					description:      "Custom values to be merged with the values"
+					description_kind: "plain"
+					optional:         true
 				}
 				set_list: {
-					nesting_mode: "list"
-					block: {
+					nested_type: {
 						attributes: {
 							name: {
 								type:             "string"
 								description_kind: "plain"
-								required:         true
+								optional:         true
 							}
 							value: {
 								type: ["list", "string"]
@@ -879,13 +941,14 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 								required:         true
 							}
 						}
-						description:      "Custom list values to be merged with the values."
-						description_kind: "plain"
+						nesting_mode: "list"
 					}
+					description:      "Custom sensitive values to be merged with the values"
+					description_kind: "plain"
+					optional:         true
 				}
 				set_sensitive: {
-					nesting_mode: "set"
-					block: {
+					nested_type: {
 						attributes: {
 							name: {
 								type:             "string"
@@ -904,31 +967,69 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 								sensitive:        true
 							}
 						}
-						description:      "Custom sensitive values to be merged with the values."
-						description_kind: "plain"
+						nesting_mode: "set"
 					}
+					description:      "Custom sensitive values to be merged with the values"
+					description_kind: "plain"
+					optional:         true
 				}
-				set_string: {
-					nesting_mode: "set"
-					block: {
-						attributes: {
-							name: {
-								type:             "string"
-								description_kind: "plain"
-								required:         true
-							}
-							value: {
-								type:             "string"
-								description_kind: "plain"
-								required:         true
-							}
-						}
-						description:      "Custom string values to be merged with the values."
-						description_kind: "plain"
-						deprecated:       true
-					}
+				show_only: {
+					type: ["list", "string"]
+					description:      "Only show manifests rendered from the given templates."
+					description_kind: "plain"
+					optional:         true
+				}
+				skip_crds: {
+					type:             "bool"
+					description:      "If set, no CRDs will be installed. By default, CRDs are installed if not already present."
+					description_kind: "plain"
+					optional:         true
+				}
+				skip_tests: {
+					type:             "bool"
+					description:      "If set, tests will not be rendered. By default, tests are rendered."
+					description_kind: "plain"
+					optional:         true
+				}
+				timeout: {
+					type:             "number"
+					description:      "Time in seconds to wait for any individual Kubernetes operation."
+					description_kind: "plain"
+					optional:         true
+				}
+				validate: {
+					type:             "bool"
+					description:      "Validate your manifests against the Kubernetes cluster you are currently pointing at. This is the same validation performed on an install."
+					description_kind: "plain"
+					optional:         true
+				}
+				values: {
+					type: ["list", "string"]
+					description:      "List of values in raw yaml format to pass to helm."
+					description_kind: "plain"
+					optional:         true
+				}
+				verify: {
+					type:             "bool"
+					description:      "Verify the package before installing it."
+					description_kind: "plain"
+					optional:         true
+				}
+				version: {
+					type:             "string"
+					description:      "Specify the exact chart version to install. If this is not specified, the latest version is installed."
+					description_kind: "plain"
+					optional:         true
+					computed:         true
+				}
+				wait: {
+					type:             "bool"
+					description:      "Will wait until all resources are in a ready state before marking the release as successful."
+					description_kind: "plain"
+					optional:         true
 				}
 			}
+			description:      "Data source to render Helm chart templates."
 			description_kind: "plain"
 		}
 	}
