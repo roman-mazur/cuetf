@@ -64,17 +64,17 @@ _recDepth: [0, 1, 2, 3, 4, 5]
 }
 
 _attrTypeOptions: {	type: #attr.#type } | {
-		nested_type: {
+		nested_type: nestable & {
 			attributes: [name=string]: #attributeDescription
-			nesting_mode: #nestingModes
 		}
 }
 
-#blockTypeDescription: {
-	nesting_mode: #nestingModes
+#blockTypeDescription: nestable & {
 	block:        #block
+}
+
+nestable: {
+	nesting_mode: "set" | "list" | "single"
 	max_items?:   uint
 	min_items?:   uint
 }
-
-#nestingModes: "set" | "list" | "single"
