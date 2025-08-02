@@ -55,19 +55,26 @@ _recDepth: [0, 1, 2, 3, 4, 5]
 	block_types: [name=string]: #blockTypeDescription
 }
 
-#attributeDescription: documented & {
+#attributeDescription: documented & _attrTypeOptions & {
 	optional:   bool | *false
 	required:   bool | *false
 	computed:   bool | *false
 	sensitive:  bool | *false
 	deprecated: bool | *false
+}
 
-	type: #attr.#type
+_attrTypeOptions: {	type: #attr.#type } | {
+		nested_type: {
+			attributes: [name=string]: #attributeDescription
+			nesting_mode: #nestingModes
+		}
 }
 
 #blockTypeDescription: {
-	nesting_mode: "set" | "list" | "single"
+	nesting_mode: #nestingModes
 	block:        #block
 	max_items?:   uint
 	min_items?:   uint
 }
+
+#nestingModes: "set" | "list" | "single"
