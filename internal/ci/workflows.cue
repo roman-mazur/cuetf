@@ -3,7 +3,7 @@ package ci
 import "github.com/roman-mazur/cuetf/internal/ci/github"
 
 #versions: {
-	go: "1.23.2"
+	go: "1.24.5"
 	cue: "0.10.0"
 }
 

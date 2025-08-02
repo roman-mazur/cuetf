@@ -1,3 +1,3 @@
 module rmazur.io/cuetf
 
-go 1.23
+go 1.24
