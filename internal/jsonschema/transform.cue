@@ -1,6 +1,7 @@
 package jsonschema
 
 import (
+	"list"
 	"path"
 	"github.com/roman-mazur/cuetf/internal/tf"
 )
@@ -27,7 +28,7 @@ import (
 
 		#ref: {
 			#name: string
-			"#/\(path.Join([for el in #path + [#name] {"$defs/\(el)"}]))"
+			path.Join([for el in list.Concat([#path, [#name]]) {"$defs/\(el)"}])
 		}
 
 		properties: {
@@ -40,7 +41,7 @@ import (
 						#nest: info.nested_type
 						#def: (#blockTransform & {#block: {
 							attributes: info.nested_type.attributes
-							block_types: []
+							block_types: {}
 						}}).out
 					}).out
 				}
@@ -63,7 +64,7 @@ import (
 		_defPaths: {
 			if #block.block_types != _|_ {
 				for name, _ in #block.block_types {
-					(name): #path + [name]
+					(name): list.Concat([#path, [name]])
 				}
 			}
 		}

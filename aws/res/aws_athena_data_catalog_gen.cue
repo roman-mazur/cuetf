@@ -3,12 +3,15 @@ package res
 #aws_athena_data_catalog: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_athena_data_catalog")
-	arn?:         string
-	description!: string
-	id?:          string
-	name!:        string
-	parameters!: [string]: string
-	tags?: [string]:       string
-	tags_all?: [string]:   string
-	type!: string
+	close({
+		arn?:         string
+		description!: string
+		id?:          string
+		name!:        string
+		parameters!: [string]: string
+		region?: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
+		type!: string
+	})
 }

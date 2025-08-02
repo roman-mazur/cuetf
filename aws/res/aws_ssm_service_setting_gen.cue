@@ -3,9 +3,12 @@ package res
 #aws_ssm_service_setting: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ssm_service_setting")
-	arn?:           string
-	id?:            string
-	setting_id!:    string
-	setting_value!: string
-	status?:        string
+	close({
+		arn?:           string
+		id?:            string
+		region?:        string
+		setting_id!:    string
+		setting_value!: string
+		status?:        string
+	})
 }

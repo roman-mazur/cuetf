@@ -52,7 +52,7 @@ _recDepth: [0, 1, 2, 3, 4, 5]
 #block: documented & {
 	deprecated: bool | *false
 	attributes: [name=string]:  #attributeDescription
-	block_types: [name=string]: #blockTypeDescription
+	block_types?: [name=string]: #blockTypeDescription
 }
 
 #attributeDescription: documented & _attrTypeOptions & {
