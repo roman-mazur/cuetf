@@ -3,14 +3,17 @@ package data
 #aws_memorydb_parameter_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_memorydb_parameter_group")
-	arn?:         string
-	description?: string
-	family?:      string
-	id?:          string
-	name!:        string
-	parameter?: [...{
-		name?:  string
-		value?: string
-	}]
-	tags?: [string]: string
+	close({
+		arn?:         string
+		description?: string
+		family?:      string
+		id?:          string
+		name!:        string
+		parameter?: [...close({
+			name?:  string
+			value?: string
+		})]
+		region?: string
+		tags?: [string]: string
+	})
 }

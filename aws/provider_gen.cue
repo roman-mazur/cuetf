@@ -3,41 +3,43 @@ package aws
 #provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/provider")
-	access_key?: string
-	allowed_account_ids?: [...string]
-	custom_ca_bundle?:                   string
-	ec2_metadata_service_endpoint?:      string
-	ec2_metadata_service_endpoint_mode?: string
-	forbidden_account_ids?: [...string]
-	http_proxy?:                     string
-	https_proxy?:                    string
-	insecure?:                       bool
-	max_retries?:                    number
-	no_proxy?:                       string
-	profile?:                        string
-	region?:                         string
-	retry_mode?:                     string
-	s3_us_east_1_regional_endpoint?: string
-	s3_use_path_style?:              bool
-	secret_key?:                     string
-	shared_config_files?: [...string]
-	shared_credentials_files?: [...string]
-	skip_credentials_validation?:        bool
-	skip_metadata_api_check?:            string
-	skip_region_validation?:             bool
-	skip_requesting_account_id?:         bool
-	sts_region?:                         string
-	token?:                              string
-	token_bucket_rate_limiter_capacity?: number
-	use_dualstack_endpoint?:             bool
-	use_fips_endpoint?:                  bool
-	assume_role?: #assume_role | [...#assume_role]
-	assume_role_with_web_identity?: #assume_role_with_web_identity | [...#assume_role_with_web_identity]
-	default_tags?: #default_tags | [...#default_tags]
-	endpoints?: #endpoints | [...#endpoints]
-	ignore_tags?: #ignore_tags | [...#ignore_tags]
+	close({
+		access_key?: string
+		allowed_account_ids?: [...string]
+		assume_role?: matchN(1, [#assume_role, [...#assume_role]])
+		assume_role_with_web_identity?: matchN(1, [#assume_role_with_web_identity, [...#assume_role_with_web_identity]])
+		default_tags?: matchN(1, [#default_tags, [...#default_tags]])
+		endpoints?: matchN(1, [#endpoints, [...#endpoints]])
+		ignore_tags?: matchN(1, [#ignore_tags, [...#ignore_tags]])
+		custom_ca_bundle?:                   string
+		ec2_metadata_service_endpoint?:      string
+		ec2_metadata_service_endpoint_mode?: string
+		forbidden_account_ids?: [...string]
+		http_proxy?:                     string
+		https_proxy?:                    string
+		insecure?:                       bool
+		max_retries?:                    number
+		no_proxy?:                       string
+		profile?:                        string
+		region?:                         string
+		retry_mode?:                     string
+		s3_us_east_1_regional_endpoint?: string
+		s3_use_path_style?:              bool
+		secret_key?:                     string
+		shared_config_files?: [...string]
+		shared_credentials_files?: [...string]
+		skip_credentials_validation?:        bool
+		skip_metadata_api_check?:            string
+		skip_region_validation?:             bool
+		skip_requesting_account_id?:         bool
+		sts_region?:                         string
+		token?:                              string
+		token_bucket_rate_limiter_capacity?: number
+		use_dualstack_endpoint?:             bool
+		use_fips_endpoint?:                  bool
+	})
 
-	#assume_role: {
+	#assume_role: close({
 		duration?:    string
 		external_id?: string
 		policy?:      string
@@ -47,9 +49,9 @@ package aws
 		source_identity?: string
 		tags?: [string]: string
 		transitive_tag_keys?: [...string]
-	}
+	})
 
-	#assume_role_with_web_identity: {
+	#assume_role_with_web_identity: close({
 		duration?: string
 		policy?:   string
 		policy_arns?: [...string]
@@ -57,11 +59,13 @@ package aws
 		session_name?:            string
 		web_identity_token?:      string
 		web_identity_token_file?: string
-	}
+	})
 
-	#default_tags: tags?: [string]: string
+	#default_tags: close({
+		tags?: [string]: string
+	})
 
-	#endpoints: {
+	#endpoints: close({
 		accessanalyzer?:                       string
 		account?:                              string
 		acm?:                                  string
@@ -95,6 +99,7 @@ package aws
 		beanstalk?:                            string
 		bedrock?:                              string
 		bedrockagent?:                         string
+		billing?:                              string
 		budgets?:                              string
 		ce?:                                   string
 		chatbot?:                              string
@@ -165,6 +170,7 @@ package aws
 		docdbelastic?:                         string
 		drs?:                                  string
 		ds?:                                   string
+		dsql?:                                 string
 		dynamodb?:                             string
 		ec2?:                                  string
 		ecr?:                                  string
@@ -188,6 +194,7 @@ package aws
 		eventbridge?:                          string
 		events?:                               string
 		evidently?:                            string
+		evs?:                                  string
 		finspace?:                             string
 		firehose?:                             string
 		fis?:                                  string
@@ -210,9 +217,8 @@ package aws
 		inspector2?:                           string
 		inspectorv2?:                          string
 		internetmonitor?:                      string
+		invoicing?:                            string
 		iot?:                                  string
-		iotanalytics?:                         string
-		iotevents?:                            string
 		ivs?:                                  string
 		ivschat?:                              string
 		kafka?:                                string
@@ -247,8 +253,10 @@ package aws
 		medialive?:                            string
 		mediapackage?:                         string
 		mediapackagev2?:                       string
+		mediapackagevod?:                      string
 		mediastore?:                           string
 		memorydb?:                             string
+		mgn?:                                  string
 		mq?:                                   string
 		msk?:                                  string
 		mwaa?:                                 string
@@ -257,12 +265,13 @@ package aws
 		networkfirewall?:                      string
 		networkmanager?:                       string
 		networkmonitor?:                       string
+		notifications?:                        string
+		notificationscontacts?:                string
 		oam?:                                  string
 		opensearch?:                           string
 		opensearchingestion?:                  string
 		opensearchserverless?:                 string
 		opensearchservice?:                    string
-		opsworks?:                             string
 		organizations?:                        string
 		osis?:                                 string
 		outposts?:                             string
@@ -305,10 +314,10 @@ package aws
 		s3api?:                                string
 		s3control?:                            string
 		s3outposts?:                           string
+		s3tables?:                             string
 		sagemaker?:                            string
 		scheduler?:                            string
 		schemas?:                              string
-		sdb?:                                  string
 		secretsmanager?:                       string
 		securityhub?:                          string
 		securitylake?:                         string
@@ -324,7 +333,6 @@ package aws
 		sfn?:                                  string
 		shield?:                               string
 		signer?:                               string
-		simpledb?:                             string
 		sns?:                                  string
 		sqs?:                                  string
 		ssm?:                                  string
@@ -339,7 +347,9 @@ package aws
 		sts?:                                  string
 		swf?:                                  string
 		synthetics?:                           string
+		taxsettings?:                          string
 		timestreaminfluxdb?:                   string
+		timestreamquery?:                      string
 		timestreamwrite?:                      string
 		transcribe?:                           string
 		transcribeservice?:                    string
@@ -350,14 +360,13 @@ package aws
 		wafregional?:                          string
 		wafv2?:                                string
 		wellarchitected?:                      string
-		worklink?:                             string
 		workspaces?:                           string
 		workspacesweb?:                        string
 		xray?:                                 string
-	}
+	})
 
-	#ignore_tags: {
+	#ignore_tags: close({
 		key_prefixes?: [...string]
 		keys?: [...string]
-	}
+	})
 }

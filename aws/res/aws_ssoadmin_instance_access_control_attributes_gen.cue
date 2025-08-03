@@ -3,16 +3,21 @@ package res
 #aws_ssoadmin_instance_access_control_attributes: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ssoadmin_instance_access_control_attributes")
-	id?:            string
-	instance_arn!:  string
-	status?:        string
-	status_reason?: string
-	attribute?: #attribute | [_, ...] & [...#attribute]
+	close({
+		id?: string
+		attribute?: matchN(1, [#attribute, [_, ...] & [...#attribute]])
+		instance_arn!:  string
+		region?:        string
+		status?:        string
+		status_reason?: string
+	})
 
-	#attribute: {
+	#attribute: close({
 		key!: string
-		value?: #attribute.#value | [_, ...] & [...#attribute.#value]
+		value?: matchN(1, [_#defs."/$defs/attribute/$defs/value", [_, ...] & [..._#defs."/$defs/attribute/$defs/value"]])
+	})
 
-		#value: source!: [...string]
-	}
+	_#defs: "/$defs/attribute/$defs/value": close({
+		source!: [...string]
+	})
 }

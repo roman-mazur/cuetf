@@ -5,33 +5,36 @@ import "list"
 #aws_resourcegroups_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_resourcegroups_group")
-	arn?:         string
-	description?: string
-	id?:          string
-	name!:        string
-	tags?: [string]:     string
-	tags_all?: [string]: string
-	configuration?: #configuration | [...#configuration]
-	resource_query?: #resource_query | list.MaxItems(1) & [...#resource_query]
-	timeouts?: #timeouts
+	close({
+		arn?: string
+		configuration?: matchN(1, [#configuration, [...#configuration]])
+		resource_query?: matchN(1, [#resource_query, list.MaxItems(1) & [...#resource_query]])
+		timeouts?:    #timeouts
+		description?: string
+		id?:          string
+		name!:        string
+		region?:      string
+		tags?: [string]:     string
+		tags_all?: [string]: string
+	})
 
-	#configuration: {
+	#configuration: close({
 		type!: string
-		parameters?: #configuration.#parameters | [...#configuration.#parameters]
+		parameters?: matchN(1, [_#defs."/$defs/configuration/$defs/parameters", [..._#defs."/$defs/configuration/$defs/parameters"]])
+	})
 
-		#parameters: {
-			name!: string
-			values!: [...string]
-		}
-	}
-
-	#resource_query: {
+	#resource_query: close({
 		query!: string
 		type?:  string
-	}
+	})
 
-	#timeouts: {
+	#timeouts: close({
 		create?: string
 		update?: string
-	}
+	})
+
+	_#defs: "/$defs/configuration/$defs/parameters": close({
+		name!: string
+		values!: [...string]
+	})
 }

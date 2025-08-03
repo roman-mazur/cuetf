@@ -5,15 +5,18 @@ import "list"
 #aws_cognito_resource_server: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cognito_resource_server")
-	id?:         string
-	identifier!: string
-	name!:       string
-	scope_identifiers?: [...string]
-	user_pool_id!: string
-	scope?: #scope | list.MaxItems(100) & [...#scope]
+	close({
+		id?: string
+		scope?: matchN(1, [#scope, list.MaxItems(100) & [...#scope]])
+		identifier!: string
+		name!:       string
+		region?:     string
+		scope_identifiers?: [...string]
+		user_pool_id!: string
+	})
 
-	#scope: {
+	#scope: close({
 		scope_description!: string
 		scope_name!:        string
-	}
+	})
 }

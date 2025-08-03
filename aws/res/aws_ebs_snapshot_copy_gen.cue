@@ -3,28 +3,32 @@ package res
 #aws_ebs_snapshot_copy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ebs_snapshot_copy")
-	arn?:                    string
-	data_encryption_key_id?: string
-	description?:            string
-	encrypted?:              bool
-	id?:                     string
-	kms_key_id?:             string
-	outpost_arn?:            string
-	owner_alias?:            string
-	owner_id?:               string
-	permanent_restore?:      bool
-	source_region!:          string
-	source_snapshot_id!:     string
-	storage_tier?:           string
-	tags?: [string]:     string
-	tags_all?: [string]: string
-	temporary_restore_days?: number
-	volume_id?:              string
-	volume_size?:            number
-	timeouts?:               #timeouts
+	close({
+		arn?:                         string
+		completion_duration_minutes?: number
+		data_encryption_key_id?:      string
+		description?:                 string
+		encrypted?:                   bool
+		id?:                          string
+		kms_key_id?:                  string
+		outpost_arn?:                 string
+		owner_alias?:                 string
+		owner_id?:                    string
+		timeouts?:                    #timeouts
+		permanent_restore?:           bool
+		region?:                      string
+		source_region!:               string
+		source_snapshot_id!:          string
+		storage_tier?:                string
+		tags?: [string]:     string
+		tags_all?: [string]: string
+		temporary_restore_days?: number
+		volume_id?:              string
+		volume_size?:            number
+	})
 
-	#timeouts: {
+	#timeouts: close({
 		create?: string
 		delete?: string
-	}
+	})
 }

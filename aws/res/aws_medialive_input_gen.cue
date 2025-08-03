@@ -5,45 +5,54 @@ import "list"
 #aws_medialive_input: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_medialive_input")
-	arn?: string
-	attached_channels?: [...string]
-	id?:          string
-	input_class?: string
-	input_partner_ids?: [...string]
-	input_security_groups?: [...string]
-	input_source_type?: string
-	name!:              string
-	role_arn?:          string
-	tags?: [string]:     string
-	tags_all?: [string]: string
-	type!: string
-	destinations?: #destinations | [...#destinations]
-	input_devices?: #input_devices | [...#input_devices]
-	media_connect_flows?: #media_connect_flows | [...#media_connect_flows]
-	sources?: #sources | [...#sources]
-	timeouts?: #timeouts
-	vpc?: #vpc | list.MaxItems(1) & [...#vpc]
+	close({
+		arn?: string
+		attached_channels?: [...string]
+		destinations?: matchN(1, [#destinations, [...#destinations]])
+		input_devices?: matchN(1, [#input_devices, [...#input_devices]])
+		media_connect_flows?: matchN(1, [#media_connect_flows, [...#media_connect_flows]])
+		sources?: matchN(1, [#sources, [...#sources]])
+		timeouts?: #timeouts
+		vpc?: matchN(1, [#vpc, list.MaxItems(1) & [...#vpc]])
+		id?:          string
+		input_class?: string
+		input_partner_ids?: [...string]
+		input_security_groups?: [...string]
+		input_source_type?: string
+		name!:              string
+		region?:            string
+		role_arn?:          string
+		tags?: [string]:     string
+		tags_all?: [string]: string
+		type!: string
+	})
 
-	#destinations: stream_name!: string
+	#destinations: close({
+		stream_name!: string
+	})
 
-	#input_devices: id!: string
+	#input_devices: close({
+		id!: string
+	})
 
-	#media_connect_flows: flow_arn!: string
+	#media_connect_flows: close({
+		flow_arn!: string
+	})
 
-	#sources: {
+	#sources: close({
 		password_param!: string
 		url!:            string
 		username!:       string
-	}
+	})
 
-	#timeouts: {
+	#timeouts: close({
 		create?: string
 		delete?: string
 		update?: string
-	}
+	})
 
-	#vpc: {
+	#vpc: close({
 		security_group_ids?: [...string]
 		subnet_ids!: [...string]
-	}
+	})
 }

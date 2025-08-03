@@ -3,14 +3,19 @@ package data
 #aws_devopsguru_notification_channel: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_devopsguru_notification_channel")
-	id!: string
-	filters?: #filters | [...#filters]
-	sns?: #sns | [...#sns]
+	close({
+		id!:     string
+		region?: string
+		filters?: matchN(1, [#filters, [...#filters]])
+		sns?: matchN(1, [#sns, [...#sns]])
+	})
 
-	#filters: {
+	#filters: close({
 		message_types?: [...string]
 		severities?: [...string]
-	}
+	})
 
-	#sns: topic_arn?: string
+	#sns: close({
+		topic_arn?: string
+	})
 }

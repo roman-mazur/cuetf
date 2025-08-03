@@ -3,10 +3,13 @@ package data
 #aws_dynamodb_table_item: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dynamodb_table_item")
-	expression_attribute_names?: [string]: string
-	id?:                    string
-	item?:                  string
-	key!:                   string
-	projection_expression?: string
-	table_name!:            string
+	close({
+		expression_attribute_names?: [string]: string
+		id?:                    string
+		item?:                  string
+		key!:                   string
+		projection_expression?: string
+		region?:                string
+		table_name!:            string
+	})
 }

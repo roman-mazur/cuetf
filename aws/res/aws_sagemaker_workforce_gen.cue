@@ -5,21 +5,24 @@ import "list"
 #aws_sagemaker_workforce: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_sagemaker_workforce")
-	arn?:            string
-	id?:             string
-	subdomain?:      string
-	workforce_name!: string
-	cognito_config?: #cognito_config | list.MaxItems(1) & [...#cognito_config]
-	oidc_config?: #oidc_config | list.MaxItems(1) & [...#oidc_config]
-	source_ip_config?: #source_ip_config | list.MaxItems(1) & [...#source_ip_config]
-	workforce_vpc_config?: #workforce_vpc_config | list.MaxItems(1) & [...#workforce_vpc_config]
+	close({
+		cognito_config?: matchN(1, [#cognito_config, list.MaxItems(1) & [...#cognito_config]])
+		arn?: string
+		oidc_config?: matchN(1, [#oidc_config, list.MaxItems(1) & [...#oidc_config]])
+		source_ip_config?: matchN(1, [#source_ip_config, list.MaxItems(1) & [...#source_ip_config]])
+		workforce_vpc_config?: matchN(1, [#workforce_vpc_config, list.MaxItems(1) & [...#workforce_vpc_config]])
+		id?:             string
+		region?:         string
+		subdomain?:      string
+		workforce_name!: string
+	})
 
-	#cognito_config: {
+	#cognito_config: close({
 		client_id!: string
 		user_pool!: string
-	}
+	})
 
-	#oidc_config: {
+	#oidc_config: close({
 		authentication_request_extra_params?: [string]: string
 		authorization_endpoint!: string
 		client_id!:              string
@@ -30,14 +33,16 @@ import "list"
 		scope?:                  string
 		token_endpoint!:         string
 		user_info_endpoint!:     string
-	}
+	})
 
-	#source_ip_config: cidrs!: [...string]
+	#source_ip_config: close({
+		cidrs!: [...string]
+	})
 
-	#workforce_vpc_config: {
+	#workforce_vpc_config: close({
 		security_group_ids?: [...string]
 		subnets?: [...string]
 		vpc_endpoint_id?: string
 		vpc_id?:          string
-	}
+	})
 }

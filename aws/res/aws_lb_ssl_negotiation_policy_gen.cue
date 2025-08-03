@@ -3,15 +3,18 @@ package res
 #aws_lb_ssl_negotiation_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lb_ssl_negotiation_policy")
-	id?:            string
-	lb_port!:       number
-	load_balancer!: string
-	name!:          string
-	triggers?: [string]: string
-	attribute?: #attribute | [...#attribute]
+	close({
+		id?: string
+		attribute?: matchN(1, [#attribute, [...#attribute]])
+		lb_port!:       number
+		load_balancer!: string
+		name!:          string
+		region?:        string
+		triggers?: [string]: string
+	})
 
-	#attribute: {
+	#attribute: close({
 		name!:  string
 		value!: string
-	}
+	})
 }

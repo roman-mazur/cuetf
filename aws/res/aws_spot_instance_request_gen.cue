@@ -5,91 +5,91 @@ import "list"
 #aws_spot_instance_request: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_spot_instance_request")
-	ami?:                                  string
-	arn?:                                  string
-	associate_public_ip_address?:          bool
-	availability_zone?:                    string
-	block_duration_minutes?:               number
-	disable_api_stop?:                     bool
-	disable_api_termination?:              bool
-	ebs_optimized?:                        bool
-	get_password_data?:                    bool
-	hibernation?:                          bool
-	host_id?:                              string
-	host_resource_group_arn?:              string
-	iam_instance_profile?:                 string
-	id?:                                   string
-	instance_initiated_shutdown_behavior?: string
-	instance_interruption_behavior?:       string
-	instance_state?:                       string
-	instance_type?:                        string
-	ipv6_address_count?:                   number
-	ipv6_addresses?: [...string]
-	key_name?:                     string
-	launch_group?:                 string
-	monitoring?:                   bool
-	outpost_arn?:                  string
-	password_data?:                string
-	placement_group?:              string
-	placement_partition_number?:   number
-	primary_network_interface_id?: string
-	private_dns?:                  string
-	private_ip?:                   string
-	public_dns?:                   string
-	public_ip?:                    string
-	secondary_private_ips?: [...string]
-	security_groups?: [...string]
-	source_dest_check?:  bool
-	spot_bid_status?:    string
-	spot_instance_id?:   string
-	spot_price?:         string
-	spot_request_state?: string
-	spot_type?:          string
-	subnet_id?:          string
-	tags?: [string]:     string
-	tags_all?: [string]: string
-	tenancy?:                     string
-	user_data?:                   string
-	user_data_base64?:            string
-	user_data_replace_on_change?: bool
-	valid_from?:                  string
-	valid_until?:                 string
-	volume_tags?: [string]: string
-	vpc_security_group_ids?: [...string]
-	wait_for_fulfillment?: bool
-	capacity_reservation_specification?: #capacity_reservation_specification | list.MaxItems(1) & [...#capacity_reservation_specification]
-	cpu_options?: #cpu_options | list.MaxItems(1) & [...#cpu_options]
-	credit_specification?: #credit_specification | list.MaxItems(1) & [...#credit_specification]
-	ebs_block_device?: #ebs_block_device | [...#ebs_block_device]
-	enclave_options?: #enclave_options | list.MaxItems(1) & [...#enclave_options]
-	ephemeral_block_device?: #ephemeral_block_device | [...#ephemeral_block_device]
-	launch_template?: #launch_template | list.MaxItems(1) & [...#launch_template]
-	maintenance_options?: #maintenance_options | list.MaxItems(1) & [...#maintenance_options]
-	metadata_options?: #metadata_options | list.MaxItems(1) & [...#metadata_options]
-	network_interface?: #network_interface | [...#network_interface]
-	private_dns_name_options?: #private_dns_name_options | list.MaxItems(1) & [...#private_dns_name_options]
-	root_block_device?: #root_block_device | list.MaxItems(1) & [...#root_block_device]
-	timeouts?: #timeouts
+	close({
+		ami?: string
+		arn?: string
+		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
+		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
+		credit_specification?: matchN(1, [#credit_specification, list.MaxItems(1) & [...#credit_specification]])
+		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
+		enclave_options?: matchN(1, [#enclave_options, list.MaxItems(1) & [...#enclave_options]])
+		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
+		launch_template?: matchN(1, [#launch_template, list.MaxItems(1) & [...#launch_template]])
+		maintenance_options?: matchN(1, [#maintenance_options, list.MaxItems(1) & [...#maintenance_options]])
+		metadata_options?: matchN(1, [#metadata_options, list.MaxItems(1) & [...#metadata_options]])
+		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
+		private_dns_name_options?: matchN(1, [#private_dns_name_options, list.MaxItems(1) & [...#private_dns_name_options]])
+		root_block_device?: matchN(1, [#root_block_device, list.MaxItems(1) & [...#root_block_device]])
+		timeouts?:                             #timeouts
+		associate_public_ip_address?:          bool
+		availability_zone?:                    string
+		disable_api_stop?:                     bool
+		disable_api_termination?:              bool
+		ebs_optimized?:                        bool
+		enable_primary_ipv6?:                  bool
+		get_password_data?:                    bool
+		hibernation?:                          bool
+		host_id?:                              string
+		host_resource_group_arn?:              string
+		iam_instance_profile?:                 string
+		id?:                                   string
+		instance_initiated_shutdown_behavior?: string
+		instance_interruption_behavior?:       string
+		instance_state?:                       string
+		instance_type?:                        string
+		ipv6_address_count?:                   number
+		ipv6_addresses?: [...string]
+		key_name?:                     string
+		launch_group?:                 string
+		monitoring?:                   bool
+		outpost_arn?:                  string
+		password_data?:                string
+		placement_group?:              string
+		placement_partition_number?:   number
+		primary_network_interface_id?: string
+		private_dns?:                  string
+		private_ip?:                   string
+		public_dns?:                   string
+		public_ip?:                    string
+		region?:                       string
+		secondary_private_ips?: [...string]
+		security_groups?: [...string]
+		source_dest_check?:  bool
+		spot_bid_status?:    string
+		spot_instance_id?:   string
+		spot_price?:         string
+		spot_request_state?: string
+		spot_type?:          string
+		subnet_id?:          string
+		tags?: [string]:     string
+		tags_all?: [string]: string
+		tenancy?:                     string
+		user_data?:                   string
+		user_data_base64?:            string
+		user_data_replace_on_change?: bool
+		valid_from?:                  string
+		valid_until?:                 string
+		volume_tags?: [string]: string
+		vpc_security_group_ids?: [...string]
+		wait_for_fulfillment?: bool
+	})
 
-	#capacity_reservation_specification: {
+	#capacity_reservation_specification: close({
 		capacity_reservation_preference?: string
-		capacity_reservation_target?: #capacity_reservation_specification.#capacity_reservation_target | list.MaxItems(1) & [...#capacity_reservation_specification.#capacity_reservation_target]
+		capacity_reservation_target?: matchN(1, [_#defs."/$defs/capacity_reservation_specification/$defs/capacity_reservation_target", list.MaxItems(1) & [..._#defs."/$defs/capacity_reservation_specification/$defs/capacity_reservation_target"]])
+	})
 
-		#capacity_reservation_target: {
-			capacity_reservation_id?:                 string
-			capacity_reservation_resource_group_arn?: string
-		}
-	}
-
-	#cpu_options: {
+	#cpu_options: close({
 		amd_sev_snp?:      string
 		core_count?:       number
 		threads_per_core?: number
-	}
+	})
 
-	#credit_specification: cpu_credits?: string
+	#credit_specification: close({
+		cpu_credits?: string
+	})
 
-	#ebs_block_device: {
+	#ebs_block_device: close({
 		delete_on_termination?: bool
 		device_name!:           string
 		encrypted?:             bool
@@ -102,46 +102,50 @@ import "list"
 		volume_id?:   string
 		volume_size?: number
 		volume_type?: string
-	}
+	})
 
-	#enclave_options: enabled?: bool
+	#enclave_options: close({
+		enabled?: bool
+	})
 
-	#ephemeral_block_device: {
+	#ephemeral_block_device: close({
 		device_name!:  string
 		no_device?:    bool
 		virtual_name?: string
-	}
+	})
 
-	#launch_template: {
+	#launch_template: close({
 		id?:      string
 		name?:    string
 		version?: string
-	}
+	})
 
-	#maintenance_options: auto_recovery?: string
+	#maintenance_options: close({
+		auto_recovery?: string
+	})
 
-	#metadata_options: {
+	#metadata_options: close({
 		http_endpoint?:               string
 		http_protocol_ipv6?:          string
 		http_put_response_hop_limit?: number
 		http_tokens?:                 string
 		instance_metadata_tags?:      string
-	}
+	})
 
-	#network_interface: {
+	#network_interface: close({
 		delete_on_termination?: bool
 		device_index!:          number
 		network_card_index?:    number
 		network_interface_id!:  string
-	}
+	})
 
-	#private_dns_name_options: {
+	#private_dns_name_options: close({
 		enable_resource_name_dns_a_record?:    bool
 		enable_resource_name_dns_aaaa_record?: bool
 		hostname_type?:                        string
-	}
+	})
 
-	#root_block_device: {
+	#root_block_device: close({
 		delete_on_termination?: bool
 		device_name?:           string
 		encrypted?:             bool
@@ -153,11 +157,16 @@ import "list"
 		volume_id?:   string
 		volume_size?: number
 		volume_type?: string
-	}
+	})
 
-	#timeouts: {
+	#timeouts: close({
 		create?: string
 		delete?: string
 		read?:   string
-	}
+	})
+
+	_#defs: "/$defs/capacity_reservation_specification/$defs/capacity_reservation_target": close({
+		capacity_reservation_id?:                 string
+		capacity_reservation_resource_group_arn?: string
+	})
 }

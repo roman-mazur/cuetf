@@ -5,13 +5,18 @@ import "list"
 #aws_chimesdkvoice_sip_media_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_chimesdkvoice_sip_media_application")
-	arn?:        string
-	aws_region!: string
-	id?:         string
-	name!:       string
-	tags?: [string]:     string
-	tags_all?: [string]: string
-	endpoints?: #endpoints | list.MaxItems(1) & [_, ...] & [...#endpoints]
+	close({
+		arn?: string
+		endpoints?: matchN(1, [#endpoints, list.MaxItems(1) & [_, ...] & [...#endpoints]])
+		aws_region!: string
+		id?:         string
+		name!:       string
+		region?:     string
+		tags?: [string]:     string
+		tags_all?: [string]: string
+	})
 
-	#endpoints: lambda_arn!: string
+	#endpoints: close({
+		lambda_arn!: string
+	})
 }

@@ -3,12 +3,15 @@ package res
 #aws_appconfig_hosted_configuration_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appconfig_hosted_configuration_version")
-	application_id!:           string
-	arn?:                      string
-	configuration_profile_id!: string
-	content!:                  string
-	content_type!:             string
-	description?:              string
-	id?:                       string
-	version_number?:           number
+	close({
+		application_id!:           string
+		arn?:                      string
+		configuration_profile_id!: string
+		content!:                  string
+		content_type!:             string
+		description?:              string
+		id?:                       string
+		region?:                   string
+		version_number?:           number
+	})
 }

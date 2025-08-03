@@ -3,10 +3,13 @@ package data
 #aws_mskconnect_connector: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_mskconnect_connector")
-	arn?:         string
-	description?: string
-	id?:          string
-	name!:        string
-	tags?: [string]: string
-	version?: string
+	close({
+		arn?:         string
+		description?: string
+		id?:          string
+		name!:        string
+		region?:      string
+		tags?: [string]: string
+		version?: string
+	})
 }

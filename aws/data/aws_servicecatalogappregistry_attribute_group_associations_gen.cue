@@ -1,0 +1,12 @@
+package data
+
+#aws_servicecatalogappregistry_attribute_group_associations: {
+	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_servicecatalogappregistry_attribute_group_associations")
+	close({
+		attribute_group_ids?: [...string]
+		id?:     string
+		name?:   string
+		region?: string
+	})
+}
