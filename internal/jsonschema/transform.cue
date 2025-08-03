@@ -26,9 +26,9 @@ import (
 	out: {
 		type: "object"
 
-		#ref: {
+		#refComposer: {
 			#name: string
-			path.Join([for el in list.Concat([#path, [#name]]) {"$defs/\(el)"}])
+			out: "#/\(path.Join([for el in list.Concat([#path, [#name]]) {"$defs/\(el)"}]))"
 		}
 
 		properties: {
@@ -55,7 +55,7 @@ import (
 				for name, info in #block.block_types {
 					(name): (#nestingTransform & {
 						#nest: info
-						#def: "$ref": {#ref, #name: name}
+						#def: "$ref": (#refComposer & {#name: name}).out
 					}).out
 				}
 			}
