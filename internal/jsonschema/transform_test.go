@@ -25,6 +25,7 @@ func TestProviders(t *testing.T) {
 				"aws_acm_certificate",
 				"aws_security_group",
 				"aws_appintegrations_event_integration",
+				"aws_vpn_connection",
 			},
 		},
 		{
@@ -63,6 +64,7 @@ func testProvider(t *testing.T, provider string, names []string) {
 	basePath := runGen(t, provider, names)
 	workDir := filepath.Join(basePath, provider)
 	injectSamples(t, provider, workDir)
+	RunCUE(t, workDir, "def", "-e", "testSamples")
 	RunCUE(t, workDir, "vet")
 	RunCUE(t, workDir, "export")
 }

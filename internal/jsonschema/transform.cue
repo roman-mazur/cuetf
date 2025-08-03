@@ -28,27 +28,29 @@ import (
 
 		#refComposer: {
 			#name: string
-			out: "#/\(path.Join([for el in list.Concat([#path, [#name]]) {"$defs/\(el)"}]))"
+			out:   "#/\(path.Join([for el in list.Concat([#path, [#name]]) {"$defs/\(el)"}]))"
 		}
 
 		properties: {
-			for name, info in #block.attributes if info.deprecated == _|_ {
-				if info.type != _|_ {
-					(name): (#fieldTransform & {#type: info.type}).out
-				}
-				if info.nested_type != _|_ {
-					(name): (#nestingTransform & {
-						#nest: info.nested_type
-						#def: (#blockTransform & {#block: {
-							attributes: info.nested_type.attributes
-							block_types: {}
-						}}).out
-					}).out
-				}
+			if #block.attributes != _|_ {
+				for name, info in #block.attributes if info.deprecated == _|_ {
+					if info.type != _|_ {
+						(name): (#fieldTransform & {#type: info.type}).out
+					}
+					if info.nested_type != _|_ {
+						(name): (#nestingTransform & {
+							#nest: info.nested_type
+							#def: (#blockTransform & {#block: {
+								attributes: info.nested_type.attributes
+								block_types: {}
+							}}).out
+						}).out
+					}
 
-				//				if info.description != _|_ && len(info.description) > 0 {
-				//					(name): description: info.description
-				//				}
+					//				if info.description != _|_ && len(info.description) > 0 {
+					//					(name): description: info.description
+					//				}
+				}
 			}
 
 			if #block.block_types != _|_ {
@@ -77,7 +79,9 @@ import (
 			}
 		}
 
-		required: [for name, info in #block.attributes if info.required != _|_ {name}]
+		if #block.attributes != _|_ {
+			required: [for name, info in #block.attributes if info.required != _|_ {name}]
+		}
 
 		additionalProperties: false
 	}

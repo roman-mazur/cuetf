@@ -18,4 +18,9 @@ testSamples: resource: {
 		name: "test"
 		eventbridge_bus: "sample"
 	}
+
+	aws_vpn_connection: samples: {
+		customer_gateway_id: "sample-id"
+		type: "test"
+	}
 }
