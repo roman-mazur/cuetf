@@ -47,9 +47,9 @@ import (
 						}).out
 					}
 
-					//				if info.description != _|_ && len(info.description) > 0 {
-					//					(name): description: info.description
-					//				}
+					if info.description != _|_ {
+						(name): description: info.description
+					}
 				}
 			}
 
@@ -85,31 +85,31 @@ import (
 
 		additionalProperties: false
 	}
-}
 
-#nestingTransform: {
-	#nest: tf.nestable & {...}
-	#def: _
+	#nestingTransform: {
+		#nest: tf.nestable & {...}
+		#def: _
 
-	out: {
-		if #nest.nesting_mode == "single" {
-			#def
-		}
+		out: {
+			if #nest.nesting_mode == "single" {
+				#def
+			}
 
-		if #nest.nesting_mode == "list" || #nest.nesting_mode == "set" {
-			"oneOf": [
-				#def,
-				{
-					type:  "array"
-					items: #def
-					if #nest.min_items != _|_ {
-						minItems: #nest.min_items
-					}
-					if #nest.max_items != _|_ {
-						maxItems: #nest.max_items
-					}
-				},
-			]
+			if #nest.nesting_mode == "list" || #nest.nesting_mode == "set" {
+				"oneOf": [
+					#def,
+					{
+						type:  "array"
+						items: #def
+						if #nest.min_items != _|_ {
+							minItems: #nest.min_items
+						}
+						if #nest.max_items != _|_ {
+							maxItems: #nest.max_items
+						}
+					},
+				]
+			}
 		}
 	}
 }

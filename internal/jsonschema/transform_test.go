@@ -37,6 +37,12 @@ func TestProviders(t *testing.T) {
 			},
 		},
 		{
+			name: "cloudflare",
+			examples: []string{
+				"cloudflare_zero_trust_gateway_logging",
+			},
+		},
+		{
 			name: "elasticstack",
 			examples: []string{
 				"provider",
