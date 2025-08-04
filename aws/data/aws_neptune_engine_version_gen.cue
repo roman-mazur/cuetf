@@ -3,16 +3,35 @@ package data
 #aws_neptune_engine_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_neptune_engine_version")
-	engine?:             string
-	engine_description?: string
-	exportable_log_types?: [...string]
-	id?:                     string
-	parameter_group_family?: string
-	preferred_versions?: [...string]
-	supported_timezones?: [...string]
-	supports_log_exports_to_cloudwatch?: bool
-	supports_read_replica?:              bool
-	valid_upgrade_targets?: [...string]
-	version?:             string
-	version_description?: string
+	close({
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                string
+		default_character_set?: string
+		default_only?:          bool
+		engine?:                string
+		engine_description?:    string
+		exportable_log_types?: [...string]
+		has_major_target?:       bool
+		has_minor_target?:       bool
+		id?:                     string
+		latest?:                 bool
+		parameter_group_family?: string
+		preferred_major_targets?: [...string]
+		preferred_upgrade_targets?: [...string]
+		preferred_versions?: [...string]
+		supported_character_sets?: [...string]
+		supported_timezones?: [...string]
+		supports_global_databases?:          bool
+		supports_log_exports_to_cloudwatch?: bool
+		supports_read_replica?:              bool
+		valid_major_targets?: [...string]
+		valid_minor_targets?: [...string]
+		valid_upgrade_targets?: [...string]
+		version?:             string
+		version_actual?:      string
+		version_description?: string
+	})
 }

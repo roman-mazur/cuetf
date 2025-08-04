@@ -57,7 +57,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							es_client_authentication: {
 								type:             "string"
-								description:      "ES Client Authentication field to be used with the bearer token"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -203,6 +210,45 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 		}
 	}
 	resource_schemas: {
+		elasticstack_apm_agent_configuration: {
+			version: 0
+			block: {
+				attributes: {
+					agent_name: {
+						type:             "string"
+						description:      "The agent name is used by the UI to determine which settings to display."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					service_environment: {
+						type:             "string"
+						description:      "The environment of the service."
+						description_kind: "plain"
+						optional:         true
+					}
+					service_name: {
+						type:             "string"
+						description:      "The name of the service."
+						description_kind: "plain"
+						required:         true
+					}
+					settings: {
+						type: ["map", "string"]
+						description:      "Agent configuration settings."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description:      "Manages APM agent configuration."
+				description_kind: "plain"
+			}
+		}
 		elasticstack_elasticsearch_cluster_settings: {
 			version: 0
 			block: {
@@ -264,7 +310,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 								es_client_authentication: {
 									type:             "string"
-									description:      "ES Client Authentication field to be used with the bearer token"
+									description:      "ES Client Authentication field to be used with the JWT token"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								headers: {
+									type: ["map", "string"]
+									description:      "A list of headers to be sent with each request to Elasticsearch."
 									description_kind: "markdown"
 									optional:         true
 									sensitive:        true
@@ -466,7 +519,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 								es_client_authentication: {
 									type:             "string"
-									description:      "ES Client Authentication field to be used with the bearer token"
+									description:      "ES Client Authentication field to be used with the JWT token"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								headers: {
+									type: ["map", "string"]
+									description:      "A list of headers to be sent with each request to Elasticsearch."
 									description_kind: "markdown"
 									optional:         true
 									sensitive:        true
@@ -720,7 +780,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							es_client_authentication: {
 								type:             "string"
-								description:      "ES Client Authentication field to be used with the bearer token"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -766,6 +833,170 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				}
 				description:      "Managing Elasticsearch data streams, see: https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-apis.html"
 				description_kind: "markdown"
+			}
+		}
+		elasticstack_elasticsearch_data_stream_lifecycle: {
+			version: 0
+			block: {
+				attributes: {
+					data_retention: {
+						type:             "string"
+						description:      "Every document added to this data stream will be stored at least for this time frame. When empty, every document in this data stream will be stored indefinitely"
+						description_kind: "plain"
+						optional:         true
+					}
+					downsampling: {
+						nested_type: {
+							attributes: {
+								after: {
+									type:             "string"
+									description:      "Interval representing when the backing index is meant to be downsampled"
+									description_kind: "plain"
+									required:         true
+								}
+								fixed_interval: {
+									type:             "string"
+									description:      "The interval at which to aggregate the original time series index."
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Downsampling configuration objects, each defining an after interval representing when the backing index is meant to be downsampled and a fixed_interval representing the downsampling interval."
+						description_kind: "plain"
+						optional:         true
+					}
+					enabled: {
+						type:             "bool"
+						description:      "Data stream lifecycle on/off."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					expand_wildcards: {
+						type:             "string"
+						description:      "Determines how wildcard patterns in the `indices` parameter match data streams and indices. Supports comma-separated values, such as `closed,hidden`."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource."
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the data stream. Supports wildcards."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block. "
+						description_kind: "markdown"
+						deprecated:       true
+					}
+				}
+				description:      "Configures the data stream lifecycle for the targeted data streams, see: https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-apis.html"
+				description_kind: "plain"
 			}
 		}
 		elasticstack_elasticsearch_enrich_policy: {
@@ -872,7 +1103,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							es_client_authentication: {
 								type:             "string"
-								description:      "ES Client Authentication field to be used with the bearer token"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -1037,13 +1275,6 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						type:             "string"
 						description:      "Internal identifier of the resource"
 						description_kind: "plain"
-						computed:         true
-					}
-					include_type_name: {
-						type:             "bool"
-						description:      "If true, a mapping type is expected in the body of mappings. Defaults to false. Supported for Elasticsearch 7.x."
-						description_kind: "plain"
-						optional:         true
 						computed:         true
 					}
 					indexing_slowlog_level: {
@@ -1442,7 +1673,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 								es_client_authentication: {
 									type:             "string"
-									description:      "ES Client Authentication field to be used with the bearer token"
+									description:      "ES Client Authentication field to be used with the JWT token"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								headers: {
+									type: ["map", "string"]
+									description:      "A list of headers to be sent with each request to Elasticsearch."
 									description_kind: "markdown"
 									optional:         true
 									sensitive:        true
@@ -1820,7 +2058,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 								es_client_authentication: {
 									type:             "string"
-									description:      "ES Client Authentication field to be used with the bearer token"
+									description:      "ES Client Authentication field to be used with the JWT token"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								headers: {
+									type: ["map", "string"]
+									description:      "A list of headers to be sent with each request to Elasticsearch."
 									description_kind: "markdown"
 									optional:         true
 									sensitive:        true
@@ -1984,6 +2229,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											max_docs: {
 												type:             "number"
 												description:      "Triggers rollover after the specified maximum number of documents is reached."
+												description_kind: "markdown"
+												optional:         true
+											}
+											max_primary_shard_docs: {
+												type:             "number"
+												description:      "Triggers rollover when the largest primary shard in the index reaches a certain number of documents. Supported from Elasticsearch version **8.2**"
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -2432,7 +2683,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 								es_client_authentication: {
 									type:             "string"
-									description:      "ES Client Authentication field to be used with the bearer token"
+									description:      "ES Client Authentication field to be used with the JWT token"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								headers: {
+									type: ["map", "string"]
+									description:      "A list of headers to be sent with each request to Elasticsearch."
 									description_kind: "markdown"
 									optional:         true
 									sensitive:        true
@@ -2662,7 +2920,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							es_client_authentication: {
 								type:             "string"
-								description:      "ES Client Authentication field to be used with the bearer token"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -2898,7 +3163,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							es_client_authentication: {
 								type:             "string"
-								description:      "ES Client Authentication field to be used with the bearer token"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -3038,7 +3310,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							es_client_authentication: {
 								type:             "string"
-								description:      "ES Client Authentication field to be used with the bearer token"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -3087,65 +3366,66 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			}
 		}
 		elasticstack_elasticsearch_security_api_key: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					api_key: {
 						type:             "string"
 						description:      "Generated API Key."
-						description_kind: "markdown"
+						description_kind: "plain"
 						computed:         true
 						sensitive:        true
 					}
 					encoded: {
 						type:             "string"
 						description:      "API key credentials which is the Base64-encoding of the UTF-8 representation of the id and api_key joined by a colon (:)."
-						description_kind: "markdown"
+						description_kind: "plain"
 						computed:         true
 						sensitive:        true
 					}
 					expiration: {
 						type:             "string"
 						description:      "Expiration time for the API key. By default, API keys never expire."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
 					}
 					expiration_timestamp: {
 						type:             "number"
 						description:      "Expiration time in milliseconds for the API key. By default, API keys never expire."
-						description_kind: "markdown"
+						description_kind: "plain"
 						computed:         true
 					}
 					id: {
 						type:             "string"
 						description:      "Internal identifier of the resource."
-						description_kind: "markdown"
+						description_kind: "plain"
 						computed:         true
 					}
 					key_id: {
 						type:             "string"
 						description:      "Unique id for this API key."
-						description_kind: "markdown"
+						description_kind: "plain"
 						computed:         true
 					}
 					metadata: {
 						type:             "string"
 						description:      "Arbitrary metadata that you want to associate with the API key."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
 						computed:         true
 					}
 					name: {
 						type:             "string"
 						description:      "Specifies the name for this API key."
-						description_kind: "markdown"
+						description_kind: "plain"
 						required:         true
 					}
 					role_descriptors: {
 						type:             "string"
 						description:      "Role descriptors for this API key."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: elasticsearch_connection: {
@@ -3199,7 +3479,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							es_client_authentication: {
 								type:             "string"
-								description:      "ES Client Authentication field to be used with the bearer token"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -3237,14 +3524,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+						description:      "Elasticsearch connection configuration block. "
 						description_kind: "markdown"
 						deprecated:       true
 					}
-					max_items: 1
 				}
 				description:      "Creates an API key for access without requiring basic authentication. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html"
-				description_kind: "markdown"
+				description_kind: "plain"
 			}
 		}
 		elasticstack_elasticsearch_security_role: {
@@ -3254,6 +3540,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					cluster: {
 						type: ["set", "string"]
 						description:      "A list of cluster privileges. These privileges define the cluster level actions that users with this role are able to execute."
+						description_kind: "markdown"
+						optional:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The description of the role."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -3368,7 +3660,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 								es_client_authentication: {
 									type:             "string"
-									description:      "ES Client Authentication field to be used with the bearer token"
+									description:      "ES Client Authentication field to be used with the JWT token"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								headers: {
+									type: ["map", "string"]
+									description:      "A list of headers to be sent with each request to Elasticsearch."
 									description_kind: "markdown"
 									optional:         true
 									sensitive:        true
@@ -3625,7 +3924,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							es_client_authentication: {
 								type:             "string"
-								description:      "ES Client Authentication field to be used with the bearer token"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -3682,6 +3988,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "Specifies whether the user is enabled. The default value is true."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					id: {
 						type:             "string"
@@ -3691,14 +3998,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					password: {
 						type:             "string"
-						description:      "The user’s password. Passwords must be at least 6 characters long."
+						description:      "The user's password. Passwords must be at least 6 characters long."
 						description_kind: "markdown"
 						optional:         true
 						sensitive:        true
 					}
 					password_hash: {
 						type:             "string"
-						description:      "A hash of the user’s password. This must be produced using the same hashing algorithm as has been configured for password storage (see https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings)."
+						description:      "A hash of the user's password. This must be produced using the same hashing algorithm as has been configured for password storage (see https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings)."
 						description_kind: "markdown"
 						optional:         true
 						sensitive:        true
@@ -3761,7 +4068,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							es_client_authentication: {
 								type:             "string"
-								description:      "ES Client Authentication field to be used with the bearer token"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -3799,11 +4113,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+						description:      "Elasticsearch connection configuration block. "
 						description_kind: "markdown"
 						deprecated:       true
 					}
-					max_items: 1
 				}
 				description:      "Updates system user's password and enablement. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html"
 				description_kind: "markdown"
@@ -3922,7 +4235,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							es_client_authentication: {
 								type:             "string"
-								description:      "ES Client Authentication field to be used with the bearer token"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -4119,7 +4439,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							es_client_authentication: {
 								type:             "string"
-								description:      "ES Client Authentication field to be used with the bearer token"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -4307,7 +4634,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 								es_client_authentication: {
 									type:             "string"
-									description:      "ES Client Authentication field to be used with the bearer token"
+									description:      "ES Client Authentication field to be used with the JWT token"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								headers: {
+									type: ["map", "string"]
+									description:      "A list of headers to be sent with each request to Elasticsearch."
 									description_kind: "markdown"
 									optional:         true
 									sensitive:        true
@@ -4568,6 +4902,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description_kind: "markdown"
 									optional:         true
 								}
+								endpoint: {
+									type:             "string"
+									description:      "Custom S3 service endpoint, useful when using VPC endpoints or non-default S3 URLs."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
 								max_restore_bytes_per_sec: {
 									type:             "string"
 									description:      "Maximum snapshot restore rate per node."
@@ -4721,7 +5062,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					enabled: {
 						type:             "bool"
-						description:      "Controls wether the transform should be started or stopped. Default is `false` (stopped)."
+						description:      "Controls whether the transform should be started or stopped. Default is `false` (stopped)."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -4775,7 +5116,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					timeout: {
 						type:             "string"
-						description:      "Period to wait for a response from Elastisearch when performing any management operation. If no response is received before the timeout expires, the operation fails and returns an error. Defaults to `30s`."
+						description:      "Period to wait for a response from Elasticsearch when performing any management operation. If no response is received before the timeout expires, the operation fails and returns an error. Defaults to `30s`."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -4802,6 +5143,27 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description:      "The unique identifier for an ingest pipeline."
 									description_kind: "markdown"
 									optional:         true
+								}
+							}
+							block_types: aliases: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										alias: {
+											type:             "string"
+											description:      "The name of the alias."
+											description_kind: "markdown"
+											required:         true
+										}
+										move_on_creation: {
+											type:             "bool"
+											description:      "Whether the destination index should be the only index in this alias. Defaults to false."
+											description_kind: "markdown"
+											optional:         true
+										}
+									}
+									description:      "The aliases that the destination index for the transform should have."
+									description_kind: "markdown"
 								}
 							}
 							description:      "The destination for the transform."
@@ -5003,6 +5365,29 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						optional:         true
 					}
+					global_data_tags: {
+						nested_type: {
+							attributes: {
+								number_value: {
+									type:             "number"
+									description:      "Number value for the field. If this is set, string_value must not be defined."
+									description_kind: "plain"
+									optional:         true
+								}
+								string_value: {
+									type:             "string"
+									description:      "String value for the field. If this is set, number_value must not be defined."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "map"
+						}
+						description:      "User-defined data tags to apply to all inputs. Values can be strings (string_value) or numbers (number_value) but not both. Example -- key1 = {string_value = value1}, key2 = {number_value = 42}"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					id: {
 						type:             "string"
 						description:      "The ID of this resource."
@@ -5051,6 +5436,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					skip_destroy: {
 						type:             "bool"
 						description:      "Set to true if you do not wish the agent policy to be deleted at destroy time, and instead just remove the agent policy from the Terraform state."
+						description_kind: "plain"
+						optional:         true
+					}
+					supports_agentless: {
+						type:             "bool"
+						description:      "Set to true to enable agentless data collection."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -5105,7 +5496,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			}
 		}
 		elasticstack_fleet_integration_policy: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					agent_policy_id: {
@@ -5249,12 +5640,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "Make this output the default for agent integrations."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					default_monitoring: {
 						type:             "bool"
 						description:      "Make this output the default for agent monitoring."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					hosts: {
 						type: ["list", "string"]
@@ -5419,6 +5812,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "The secrets configuration for the connector. Secrets configuration properties vary depending on the connector type."
 						description_kind: "markdown"
 						optional:         true
+						sensitive:        true
 					}
 					space_id: {
 						type:             "string"
@@ -5497,7 +5891,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					rule_id: {
 						type:             "string"
-						description:      "A UUID v1 or v4 to use instead of a randomly generated ID."
+						description:      "The identifier for the rule. Until Kibana version 8.17.0 this should be a UUID v1 or v4, for later versions any format can be used. If it is omitted, an ID is randomly generated."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -5683,25 +6077,163 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										attributes: {
 											id: {
 												type:             "string"
-												description_kind: "plain"
+												description:      "The ID of the field format. Valid values include: `boolean`, `color`, `date`, `duration`, `number`, `percent`, `relative_date`, `static_lookup`, `string`, `truncate`, `url`."
+												description_kind: "markdown"
 												required:         true
 											}
 											params: {
 												nested_type: {
 													attributes: {
+														colors: {
+															nested_type: {
+																attributes: {
+																	background: {
+																		type:             "string"
+																		description:      "Background color in hex format."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	range: {
+																		type:             "string"
+																		description:      "Range for the color rule (e.g., `-Infinity:Infinity`)."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	regex: {
+																		type:             "string"
+																		description:      "Regex pattern for the color rule."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	text: {
+																		type:             "string"
+																		description:      "Text color in hex format."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																}
+																nesting_mode: "list"
+															}
+															description:      "Color rules for the field."
+															description_kind: "markdown"
+															optional:         true
+														}
+														field_length: {
+															type:             "number"
+															description:      "Length to truncate the field value."
+															description_kind: "markdown"
+															optional:         true
+														}
+														field_type: {
+															type:             "string"
+															description:      "Field type for color formatting (e.g., `string`, `number`)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														height: {
+															type:             "number"
+															description:      "Height for image type URLs."
+															description_kind: "markdown"
+															optional:         true
+														}
+														include_space_with_suffix: {
+															type:             "bool"
+															description:      "Whether to include a space before the suffix in duration format."
+															description_kind: "markdown"
+															optional:         true
+														}
+														input_format: {
+															type:             "string"
+															description:      "Input format for duration fields (e.g., `hours`, `minutes`)."
+															description_kind: "markdown"
+															optional:         true
+														}
 														labeltemplate: {
 															type:             "string"
-															description_kind: "plain"
+															description:      "Label template for the field value."
+															description_kind: "markdown"
+															optional:         true
+														}
+														lookup_entries: {
+															nested_type: {
+																attributes: {
+																	key: {
+																		type:             "string"
+																		description:      "Key for the lookup entry."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	value: {
+																		type:             "string"
+																		description:      "Value for the lookup entry."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "list"
+															}
+															description:      "Key-value pairs for static lookup."
+															description_kind: "markdown"
+															optional:         true
+														}
+														output_format: {
+															type:             "string"
+															description:      "Output format for duration fields (e.g., `humanizePrecise`, `humanize`)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														output_precision: {
+															type:             "number"
+															description:      "Precision for duration output."
+															description_kind: "markdown"
 															optional:         true
 														}
 														pattern: {
 															type:             "string"
-															description_kind: "plain"
+															description:      "Pattern for formatting the field value."
+															description_kind: "markdown"
+															optional:         true
+														}
+														timezone: {
+															type:             "string"
+															description:      "Timezone for date formatting (e.g., `America/New_York`)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														transform: {
+															type:             "string"
+															description:      "Transform to apply to string fields (e.g., `upper`, `lower`)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														type: {
+															type:             "string"
+															description:      "Type of URL format (e.g., `a`, `img`, `audio`)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														unknown_key_value: {
+															type:             "string"
+															description:      "Value to display when key is not found in lookup."
+															description_kind: "markdown"
 															optional:         true
 														}
 														urltemplate: {
 															type:             "string"
-															description_kind: "plain"
+															description:      "URL template for the field value."
+															description_kind: "markdown"
+															optional:         true
+														}
+														use_short_suffix: {
+															type:             "bool"
+															description:      "Whether to use short suffixes in duration format."
+															description_kind: "markdown"
+															optional:         true
+														}
+														width: {
+															type:             "number"
+															description:      "Width for image type URLs."
+															description_kind: "markdown"
 															optional:         true
 														}
 													}
@@ -5893,6 +6425,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			version: 0
 			block: {
 				attributes: {
+					description: {
+						type:             "string"
+						description:      "Optional description for the role"
+						description_kind: "markdown"
+						optional:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
@@ -6091,7 +6629,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			}
 		}
 		elasticstack_kibana_slo: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					budgeting_method: {
@@ -6107,10 +6645,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 					group_by: {
-						type:             "string"
-						description:      "Optional group by field to use to generate an SLO per distinct value."
+						type: ["list", "string"]
+						description:      "Optional group by fields to use to generate an SLO per distinct value."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					id: {
 						type:             "string"
@@ -6537,6 +7076,95 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						min_items: 1
 						max_items: 1
 					}
+					timeslice_metric_indicator: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								filter: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								index: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+								timestamp_field: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							block_types: metric: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										comparator: {
+											type:             "string"
+											description_kind: "plain"
+											required:         true
+										}
+										equation: {
+											type:             "string"
+											description_kind: "plain"
+											required:         true
+										}
+										threshold: {
+											type:             "number"
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									block_types: metrics: {
+										nesting_mode: "list"
+										block: {
+											attributes: {
+												aggregation: {
+													type:             "string"
+													description:      "The aggregation type for this metric. One of: sum, avg, min, max, value_count, percentile, doc_count. Determines which other fields are required:"
+													description_kind: "markdown"
+													required:         true
+												}
+												field: {
+													type:             "string"
+													description:      "Field to aggregate. Required for aggregations: sum, avg, min, max, value_count, percentile. Must NOT be set for doc_count."
+													description_kind: "markdown"
+													optional:         true
+												}
+												filter: {
+													type:             "string"
+													description:      "Optional KQL filter for this metric. Supported for all aggregations except doc_count."
+													description_kind: "markdown"
+													optional:         true
+												}
+												name: {
+													type:             "string"
+													description:      "The unique name for this metric. Used as a variable in the equation field."
+													description_kind: "markdown"
+													required:         true
+												}
+												percentile: {
+													type:             "number"
+													description:      "Percentile value (e.g., 99). Required if aggregation is 'percentile'. Must NOT be set for other aggregations."
+													description_kind: "markdown"
+													optional:         true
+												}
+											}
+											description_kind: "plain"
+										}
+										min_items: 1
+									}
+									description_kind: "plain"
+								}
+								min_items: 1
+								max_items: 1
+							}
+							description:      "Defines a timeslice metric indicator for SLO."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
 				}
 				description:      "Creates an SLO."
 				description_kind: "markdown"
@@ -6614,6 +7242,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											type:             "bool"
 											description_kind: "plain"
 											optional:         true
+											computed:         true
 										}
 										nesting_mode: "single"
 									}
@@ -6626,6 +7255,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											type:             "bool"
 											description_kind: "plain"
 											optional:         true
+											computed:         true
 										}
 										nesting_mode: "single"
 									}
@@ -6638,6 +7268,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "Alert configuration. Default: `{ status: { enabled: true }, tls: { enabled: true } }`."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					browser: {
 						nested_type: {
@@ -6686,6 +7317,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "Whether the monitor is enabled. Default: `true`"
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					http: {
 						nested_type: {
@@ -6701,12 +7333,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description:      "Whether to ping using the ipv4 protocol."
 									description_kind: "markdown"
 									optional:         true
+									computed:         true
 								}
 								ipv6: {
 									type:             "bool"
 									description:      "Whether to ping using the ipv6 protocol."
 									description_kind: "markdown"
 									optional:         true
+									computed:         true
 								}
 								max_redirects: {
 									type:             "number"
@@ -6720,6 +7354,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description:      "The mode of the monitor. Can be \"all\" or \"any\". If you’re using a DNS-load balancer and want to ping every IP address for the specified hostname, you should use all."
 									description_kind: "markdown"
 									optional:         true
+									computed:         true
 								}
 								password: {
 									type:             "string"
@@ -6745,6 +7380,35 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description:      "Controls the indexing of the HTTP response body contents to the `http.response.body.contents` field.. Raw JSON object, use `jsonencode` function to represent JSON"
 									description_kind: "markdown"
 									optional:         true
+								}
+								ssl_certificate: {
+									type:             "string"
+									description:      "Certificate."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								ssl_certificate_authorities: {
+									type: ["list", "string"]
+									description:      "The list of root certificates for verifications is required."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ssl_key: {
+									type:             "string"
+									description:      "Certificate key."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+									sensitive:        true
+								}
+								ssl_key_passphrase: {
+									type:             "string"
+									description:      "Key passphrase."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+									sensitive:        true
 								}
 								ssl_supported_protocols: {
 									type: ["list", "string"]
@@ -6843,18 +7507,21 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "The monitor’s schedule in minutes. Supported values are 1, 3, 5, 10, 15, 30, 60, 120 and 240."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					service_name: {
 						type:             "string"
 						description:      "The APM service name."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					space_id: {
 						type:             "string"
 						description:      "The namespace field should be lowercase and not contain spaces. The namespace must not include any of the following characters: *, \\, /, ?, \", <, >, |, whitespace, ,, #, :, or -. Default: `default`"
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -6895,6 +7562,36 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description:      " A Boolean value that determines whether hostnames are resolved locally instead of being resolved on the proxy server. The default value is false, which means that name resolution occurs on the proxy server."
 									description_kind: "markdown"
 									optional:         true
+									computed:         true
+								}
+								ssl_certificate: {
+									type:             "string"
+									description:      "Certificate."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								ssl_certificate_authorities: {
+									type: ["list", "string"]
+									description:      "The list of root certificates for verifications is required."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ssl_key: {
+									type:             "string"
+									description:      "Certificate key."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+									sensitive:        true
+								}
+								ssl_key_passphrase: {
+									type:             "string"
+									description:      "Key passphrase."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+									sensitive:        true
 								}
 								ssl_supported_protocols: {
 									type: ["list", "string"]
@@ -6922,9 +7619,59 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "The monitor timeout in seconds, monitor will fail if it doesn’t complete within this time. Default: `16`"
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 				}
 				description:      "Synthetics monitor config, see https://www.elastic.co/guide/en/kibana/current/add-monitor-api.html for more details. The monitor must have one of the following: http, tcp, icmp or browser."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_synthetics_parameter: {
+			version: 0
+			block: {
+				attributes: {
+					description: {
+						type:             "string"
+						description:      "A description of the parameter."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Generated id for the parameter."
+						description_kind: "markdown"
+						computed:         true
+					}
+					key: {
+						type:             "string"
+						description:      "The key of the parameter."
+						description_kind: "markdown"
+						required:         true
+					}
+					share_across_spaces: {
+						type:             "bool"
+						description:      "Whether the parameter should be shared across spaces."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "An array of tags to categorize the parameter."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					value: {
+						type:             "string"
+						description:      "The value associated with the parameter."
+						description_kind: "markdown"
+						required:         true
+						sensitive:        true
+					}
+				}
+				description:      "Synthetics parameter config, see https://www.elastic.co/docs/api/doc/kibana/group/endpoint-synthetics for more details"
 				description_kind: "markdown"
 			}
 		}
@@ -7033,6 +7780,189 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 				}
 				description:      "Returns information about an enrich policy. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/get-enrich-policy-api.html"
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_elasticsearch_index_template: {
+			version: 0
+			block: {
+				attributes: {
+					composed_of: {
+						type: ["list", "string"]
+						description:      "An ordered list of component template names."
+						description_kind: "markdown"
+						computed:         true
+					}
+					data_stream: {
+						type: ["list", ["object", {
+							allow_custom_routing: "bool"
+							hidden:               "bool"
+						}]]
+						description:      "If this object is included, the template is used to create data streams and their backing indices. Supports an empty object."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource"
+						description_kind: "markdown"
+						computed:         true
+					}
+					index_patterns: {
+						type: ["set", "string"]
+						description:      "Array of wildcard (*) expressions used to match the names of data streams and indices during creation."
+						description_kind: "markdown"
+						computed:         true
+					}
+					metadata: {
+						type:             "string"
+						description:      "Optional user metadata about the index template."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the index template."
+						description_kind: "markdown"
+						required:         true
+					}
+					priority: {
+						type:             "number"
+						description:      "Priority to determine index template precedence when a new data stream or index is created."
+						description_kind: "markdown"
+						computed:         true
+					}
+					template: {
+						type: ["list", ["object", {
+							alias: ["set", ["object", {
+								filter:         "string"
+								index_routing:  "string"
+								is_hidden:      "bool"
+								is_write_index: "bool"
+								name:           "string"
+								routing:        "string"
+								search_routing: "string"
+							}]]
+							lifecycle: ["set", ["object", {
+								data_retention: "string"
+							}]]
+							mappings: "string"
+							settings: "string"
+						}]]
+						description:      "Template to be applied. It may optionally include an aliases, mappings, lifecycle, or settings configuration."
+						description_kind: "markdown"
+						computed:         true
+					}
+					version: {
+						type:             "number"
+						description:      "Version number used to manage index templates externally."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+						description_kind: "markdown"
+						deprecated:       true
+					}
+					max_items: 1
+				}
+				description:      "Retrieves index template definition. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-template.html"
 				description_kind: "markdown"
 			}
 		}
@@ -7219,13 +8149,6 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									type:             "string"
 									description:      "Internal identifier of the resource."
 									description_kind: "plain"
-									computed:         true
-								}
-								include_type_name: {
-									type:             "bool"
-									description:      "If true, a mapping type is expected in the body of mappings. Defaults to false. Supported for Elasticsearch 7.x."
-									description_kind: "plain"
-									optional:         true
 									computed:         true
 								}
 								indexing_slowlog_level: {
@@ -9749,6 +10672,75 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description_kind: "markdown"
 			}
 		}
+		elasticstack_elasticsearch_ingest_processor_reroute: {
+			version: 0
+			block: {
+				attributes: {
+					dataset: {
+						type:             "string"
+						description:      "The destination dataset to route the document to."
+						description_kind: "markdown"
+						optional:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of the processor. "
+						description_kind: "markdown"
+						optional:         true
+					}
+					destination: {
+						type:             "string"
+						description:      "The destination data stream, index, or index alias to route the document to."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					if: {
+						type:             "string"
+						description:      "Conditionally execute the processor"
+						description_kind: "markdown"
+						optional:         true
+					}
+					ignore_failure: {
+						type:             "bool"
+						description:      "Ignore failures for the processor. "
+						description_kind: "markdown"
+						optional:         true
+					}
+					json: {
+						type:             "string"
+						description:      "JSON representation of this data source."
+						description_kind: "markdown"
+						computed:         true
+					}
+					namespace: {
+						type:             "string"
+						description:      "The destination namespace to route the document to."
+						description_kind: "markdown"
+						optional:         true
+					}
+					on_failure: {
+						type: ["list", "string"]
+						description:      "Handle failures for the processor."
+						description_kind: "markdown"
+						optional:         true
+					}
+					tag: {
+						type:             "string"
+						description:      "Identifier for the processor."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				description:      "Reroutes a document to a different data stream, index, or index alias. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/reroute-processor.html"
+				description_kind: "markdown"
+			}
+		}
 		elasticstack_elasticsearch_ingest_processor_script: {
 			version: 0
 			block: {
@@ -10483,6 +11475,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						computed:         true
 					}
+					description: {
+						type:             "string"
+						description:      "The description of the role."
+						description_kind: "markdown"
+						computed:         true
+					}
 					global: {
 						type:             "string"
 						description:      "An object defining global privileges."
@@ -10595,7 +11593,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							es_client_authentication: {
 								type:             "string"
-								description:      "ES Client Authentication field to be used with the bearer token"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -10741,7 +11746,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							es_client_authentication: {
 								type:             "string"
-								description:      "ES Client Authentication field to be used with the bearer token"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -10887,7 +11899,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							es_client_authentication: {
 								type:             "string"
-								description:      "ES Client Authentication field to be used with the bearer token"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -11105,7 +12124,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							es_client_authentication: {
 								type:             "string"
-								description:      "ES Client Authentication field to be used with the bearer token"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -11327,6 +12353,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			version: 0
 			block: {
 				attributes: {
+					description: {
+						type:             "string"
+						description:      "Description for the role"
+						description_kind: "markdown"
+						optional:         true
+					}
 					elasticsearch: {
 						type: ["set", ["object", {
 							cluster: ["set", "string"]

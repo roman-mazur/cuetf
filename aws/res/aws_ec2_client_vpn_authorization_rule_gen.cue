@@ -3,16 +3,24 @@ package res
 #aws_ec2_client_vpn_authorization_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_client_vpn_authorization_rule")
-	access_group_id?:        string
-	authorize_all_groups?:   bool
-	client_vpn_endpoint_id!: string
-	description?:            string
-	id?:                     string
-	target_network_cidr!:    string
-	timeouts?:               #timeouts
+	close({
+		access_group_id?:      string
+		authorize_all_groups?: bool
 
-	#timeouts: {
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                 string
+		client_vpn_endpoint_id!: string
+		description?:            string
+		id?:                     string
+		target_network_cidr!:    string
+		timeouts?:               #timeouts
+	})
+
+	#timeouts: close({
 		create?: string
 		delete?: string
-	}
+	})
 }

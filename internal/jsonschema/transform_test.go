@@ -25,6 +25,7 @@ func TestProviders(t *testing.T) {
 				"aws_acm_certificate",
 				"aws_security_group",
 				"aws_appintegrations_event_integration",
+				"aws_vpn_connection",
 			},
 		},
 		{
@@ -33,6 +34,12 @@ func TestProviders(t *testing.T) {
 				"provider",
 				"github_issue",
 				"github_branch",
+			},
+		},
+		{
+			name: "cloudflare",
+			examples: []string{
+				"cloudflare_zero_trust_gateway_logging",
 			},
 		},
 		{

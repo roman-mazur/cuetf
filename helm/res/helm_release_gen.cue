@@ -1,85 +1,227 @@
 package res
 
-import "list"
-
 #helm_release: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/helm_release")
-	atomic?:                     bool
-	chart!:                      string
-	cleanup_on_fail?:            bool
-	create_namespace?:           bool
-	dependency_update?:          bool
-	description?:                string
-	devel?:                      bool
-	disable_crd_hooks?:          bool
-	disable_openapi_validation?: bool
-	disable_webhooks?:           bool
-	force_update?:               bool
-	id?:                         string
-	keyring?:                    string
-	lint?:                       bool
-	manifest?:                   string
-	max_history?:                number
-	metadata?: [...{
-		app_version?:    string
-		chart?:          string
-		first_deployed?: number
-		last_deployed?:  number
-		name?:           string
-		namespace?:      string
-		notes?:          string
-		revision?:       number
-		values?:         string
-		version?:        string
-	}]
-	name!:                  string
-	namespace?:             string
-	pass_credentials?:      bool
-	recreate_pods?:         bool
-	render_subchart_notes?: bool
-	replace?:               bool
-	repository?:            string
-	repository_ca_file?:    string
-	repository_cert_file?:  string
-	repository_key_file?:   string
-	repository_password?:   string
-	repository_username?:   string
-	reset_values?:          bool
-	reuse_values?:          bool
-	skip_crds?:             bool
-	status?:                string
-	timeout?:               number
-	upgrade_install?:       bool
-	values?: [...string]
-	verify?:        bool
-	version?:       string
-	wait?:          bool
-	wait_for_jobs?: bool
-	postrender?: #postrender | list.MaxItems(1) & [...#postrender]
-	set?: #set | [...#set]
-	set_list?: #set_list | [...#set_list]
-	set_sensitive?: #set_sensitive | [...#set_sensitive]
+	close({
+		// If set, installation process purges chart on fail. The wait
+		// flag will be set automatically if atomic is used
+		atomic?: bool
 
-	#postrender: {
-		args?: [...string]
-		binary_path!: string
-	}
+		// Chart name to be installed. A path may be used
+		chart!: string
 
-	#set: {
-		name!:  string
-		type?:  string
-		value!: string
-	}
+		// Allow deletion of new resources created in this upgrade when
+		// upgrade fails
+		cleanup_on_fail?: bool
 
-	#set_list: {
+		// Create the namespace if it does not exist
+		create_namespace?: bool
+
+		// Run helm dependency update before installing the chart
+		dependency_update?: bool
+
+		// Add a custom description
+		description?: string
+
+		// Use chart development versions, too. Equivalent to version
+		// '>0.0.0-0'. If 'version' is set, this is ignored
+		devel?: bool
+
+		// Prevent CRD hooks from running, but run other hooks. See helm
+		// install --no-crd-hook
+		disable_crd_hooks?: bool
+
+		// If set, the installation process will not validate rendered
+		// templates against the Kubernetes OpenAPI Schema
+		disable_openapi_validation?: bool
+
+		// Prevent hooks from running
+		disable_webhooks?: bool
+
+		// Force resource update through delete/recreate if needed.
+		force_update?: bool
+
+		// Status of the deployed release.
+		metadata?: close({
+			// The version number of the application being deployed
+			app_version?: string
+
+			// The name of the chart
+			chart?: string
+
+			// FirstDeployed is an int64 which represents timestamp when the
+			// release was first deployed.
+			first_deployed?: number
+
+			// LastDeployed is an int64 which represents timestamp when the
+			// release was last deployed.
+			last_deployed?: number
+
+			// Name is the name of the release
+			name?: string
+
+			// Namespace is the kubernetes namespace of the release
+			namespace?: string
+
+			// Notes is the description of the deployed release, rendered from
+			// templates.
+			notes?: string
+
+			// Version is an int32 which represents the version of the release
+			revision?: number
+
+			// Set of extra values. added to the chart. The sensitive data is
+			// cloaked. JSON encoded.
+			values?: string
+
+			// A SemVer 2 conformant version string of the chart
+			version?: string
+		})
+
+		// Location of public keys used for verification, Used only if
+		// 'verify is true'
+		keyring?: string
+
+		// Postrender command config
+		postrender?: close({
+			// An argument to the post-renderer (can specify multiple)
+			args?: [...string]
+
+			// The common binary path
+			binary_path!: string
+		})
+
+		// Run helm lint when planning
+		lint?: bool
+
+		// Custom values to be merged with the values
+		set?: matchN(1, [close({
+			name!:  string
+			type?:  string
+			value?: string
+		}), [...close({
+			name!:  string
+			type?:  string
+			value?: string
+		})]])
+
+		// The rendered manifest as JSON.
+		manifest?: string
+
+		// Custom sensitive values to be merged with the values
+		set_list?: matchN(1, [close({
+			name!: string
+			value!: [...string]
+		}), [...close({
+			name!: string
+			value!: [...string]
+		})]])
+
+		// Limit the maximum number of revisions saved per release. Use 0
+		// for no limit
+		max_history?: number
+		id?:          string
+
+		// Release name. The length must not be longer than 53 characters
 		name!: string
-		value!: [...string]
-	}
 
-	#set_sensitive: {
-		name!:  string
-		type?:  string
-		value!: string
-	}
+		// Namespace to install the release into
+		namespace?: string
+
+		// Pass credentials to all domains
+		pass_credentials?: bool
+
+		// Perform pods restart during upgrade/rollback
+		recreate_pods?: bool
+
+		// If set, render subchart notes along with the parent
+		render_subchart_notes?: bool
+
+		// Re-use the given name, even if that name is already used. This
+		// is unsafe in production
+		replace?: bool
+
+		// Repository where to locate the requested chart. If it is a URL,
+		// the chart is installed without installing the repository
+		repository?: string
+
+		// The Repositories CA file
+		repository_ca_file?: string
+
+		// The repositories cert file
+		repository_cert_file?: string
+
+		// The repositories cert key file
+		repository_key_file?: string
+
+		// Password for HTTP basic authentication
+		repository_password?: string
+
+		// Username for HTTP basic authentication
+		repository_username?: string
+
+		// When upgrading, reset the values to the ones built into the
+		// chart
+		reset_values?: bool
+
+		// When upgrading, reuse the last release's values and merge in
+		// any overrides. If 'reset_values' is specified, this is ignored
+		reuse_values?: bool
+
+		// Custom sensitive values to be merged with the values
+		set_sensitive?: matchN(1, [close({
+			name!:  string
+			type?:  string
+			value!: string
+		}), [...close({
+			name!:  string
+			type?:  string
+			value!: string
+		})]])
+
+		// Custom values to be merged with the values
+		set_wo?: matchN(1, [close({
+			name!:  string
+			type?:  string
+			value!: string
+		}), [...close({
+			name!:  string
+			type?:  string
+			value!: string
+		})]])
+
+		// The current revision of the write-only "set_wo" attribute.
+		// Incrementing this integer value will cause Terraform to update
+		// the write-only value.
+		set_wo_revision?: number
+
+		// If set, no CRDs will be installed. By default, CRDs are
+		// installed if not already present
+		skip_crds?: bool
+
+		// Status of the release
+		status?: string
+
+		// Time in seconds to wait for any individual kubernetes operation
+		timeout?: number
+
+		// List of values in raw YAML format to pass to helm
+		values?: [...string]
+
+		// Verify the package before installing it.
+		verify?: bool
+
+		// Specify the exact chart version to install. If this is not
+		// specified, the latest version is installed
+		version?: string
+
+		// Will wait until all resources are in a ready state before
+		// marking the release as successful.
+		wait?: bool
+
+		// If wait is enabled, will wait until all Jobs have been
+		// completed before marking the release as successful.
+		wait_for_jobs?: bool
+	})
 }

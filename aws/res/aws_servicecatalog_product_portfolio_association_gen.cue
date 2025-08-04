@@ -3,16 +3,24 @@ package res
 #aws_servicecatalog_product_portfolio_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_servicecatalog_product_portfolio_association")
-	accept_language?:     string
-	id?:                  string
-	portfolio_id!:        string
-	product_id!:          string
-	source_portfolio_id?: string
-	timeouts?:            #timeouts
+	close({
+		accept_language?: string
+		id?:              string
 
-	#timeouts: {
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:              string
+		portfolio_id!:        string
+		product_id!:          string
+		source_portfolio_id?: string
+		timeouts?:            #timeouts
+	})
+
+	#timeouts: close({
 		create?: string
 		delete?: string
 		read?:   string
-	}
+	})
 }

@@ -5,45 +5,53 @@ import "list"
 #aws_dms_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dms_endpoint")
-	certificate_arn?:                 string
-	database_name?:                   string
-	endpoint_arn?:                    string
-	endpoint_id!:                     string
-	endpoint_type!:                   string
-	engine_name!:                     string
-	extra_connection_attributes?:     string
-	id?:                              string
-	kms_key_arn?:                     string
-	password?:                        string
-	pause_replication_tasks?:         bool
-	port?:                            number
-	secrets_manager_access_role_arn?: string
-	secrets_manager_arn?:             string
-	server_name?:                     string
-	service_access_role?:             string
-	ssl_mode?:                        string
-	tags?: [string]:     string
-	tags_all?: [string]: string
-	username?: string
-	elasticsearch_settings?: #elasticsearch_settings | list.MaxItems(1) & [...#elasticsearch_settings]
-	kafka_settings?: #kafka_settings | list.MaxItems(1) & [...#kafka_settings]
-	kinesis_settings?: #kinesis_settings | list.MaxItems(1) & [...#kinesis_settings]
-	mongodb_settings?: #mongodb_settings | list.MaxItems(1) & [...#mongodb_settings]
-	postgres_settings?: #postgres_settings | list.MaxItems(1) & [...#postgres_settings]
-	redis_settings?: #redis_settings | list.MaxItems(1) & [...#redis_settings]
-	redshift_settings?: #redshift_settings | list.MaxItems(1) & [...#redshift_settings]
-	s3_settings?: #s3_settings | list.MaxItems(1) & [...#s3_settings]
-	timeouts?: #timeouts
+	close({
+		certificate_arn?:             string
+		database_name?:               string
+		endpoint_arn?:                string
+		endpoint_id!:                 string
+		endpoint_type!:               string
+		engine_name!:                 string
+		extra_connection_attributes?: string
+		elasticsearch_settings?: matchN(1, [#elasticsearch_settings, list.MaxItems(1) & [...#elasticsearch_settings]])
+		id?:          string
+		kms_key_arn?: string
+		password?:    string
+		kafka_settings?: matchN(1, [#kafka_settings, list.MaxItems(1) & [...#kafka_settings]])
+		pause_replication_tasks?: bool
+		port?:                    number
 
-	#elasticsearch_settings: {
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		kinesis_settings?: matchN(1, [#kinesis_settings, list.MaxItems(1) & [...#kinesis_settings]])
+		secrets_manager_access_role_arn?: string
+		secrets_manager_arn?:             string
+		mongodb_settings?: matchN(1, [#mongodb_settings, list.MaxItems(1) & [...#mongodb_settings]])
+		server_name?:         string
+		service_access_role?: string
+		ssl_mode?:            string
+		tags?: [string]:     string
+		tags_all?: [string]: string
+		oracle_settings?: matchN(1, [#oracle_settings, list.MaxItems(1) & [...#oracle_settings]])
+		postgres_settings?: matchN(1, [#postgres_settings, list.MaxItems(1) & [...#postgres_settings]])
+		redis_settings?: matchN(1, [#redis_settings, list.MaxItems(1) & [...#redis_settings]])
+		username?: string
+		redshift_settings?: matchN(1, [#redshift_settings, list.MaxItems(1) & [...#redshift_settings]])
+		timeouts?: #timeouts
+	})
+
+	#elasticsearch_settings: close({
 		endpoint_uri!:               string
 		error_retry_duration?:       number
 		full_load_error_percentage?: number
 		service_access_role_arn!:    string
 		use_new_mapping_type?:       bool
-	}
+	})
 
-	#kafka_settings: {
+	#kafka_settings: close({
 		broker!:                         string
 		include_control_details?:        bool
 		include_null_and_empty?:         bool
@@ -54,6 +62,7 @@ import "list"
 		message_max_bytes?:              number
 		no_hex_prefix?:                  bool
 		partition_include_schema_table?: bool
+		sasl_mechanism?:                 string
 		sasl_password?:                  string
 		sasl_username?:                  string
 		security_protocol?:              string
@@ -62,9 +71,9 @@ import "list"
 		ssl_client_key_arn?:             string
 		ssl_client_key_password?:        string
 		topic?:                          string
-	}
+	})
 
-	#kinesis_settings: {
+	#kinesis_settings: close({
 		include_control_details?:        bool
 		include_null_and_empty?:         bool
 		include_partition_value?:        bool
@@ -74,19 +83,25 @@ import "list"
 		partition_include_schema_table?: bool
 		service_access_role_arn?:        string
 		stream_arn?:                     string
-	}
+		use_large_integer_value?:        bool
+	})
 
-	#mongodb_settings: {
+	#mongodb_settings: close({
 		auth_mechanism?:      string
 		auth_source?:         string
 		auth_type?:           string
 		docs_to_investigate?: string
 		extract_doc_id?:      string
 		nesting_level?:       string
-	}
+	})
 
-	#postgres_settings: {
+	#oracle_settings: close({
+		authentication_method?: string
+	})
+
+	#postgres_settings: close({
 		after_connect_script?:         string
+		authentication_method?:        string
 		babelfish_database_name?:      string
 		capture_ddls?:                 bool
 		database_mode?:                string
@@ -101,10 +116,11 @@ import "list"
 		map_long_varchar_as?:          string
 		max_file_size?:                number
 		plugin_name?:                  string
+		service_access_role_arn?:      string
 		slot_name?:                    string
-	}
+	})
 
-	#redis_settings: {
+	#redis_settings: close({
 		auth_password?:          string
 		auth_type!:              string
 		auth_user_name?:         string
@@ -112,59 +128,18 @@ import "list"
 		server_name!:            string
 		ssl_ca_certificate_arn?: string
 		ssl_security_protocol?:  string
-	}
+	})
 
-	#redshift_settings: {
+	#redshift_settings: close({
 		bucket_folder?:                     string
 		bucket_name?:                       string
 		encryption_mode?:                   string
 		server_side_encryption_kms_key_id?: string
 		service_access_role_arn?:           string
-	}
+	})
 
-	#s3_settings: {
-		add_column_name?:                             bool
-		bucket_folder?:                               string
-		bucket_name?:                                 string
-		canned_acl_for_objects?:                      string
-		cdc_inserts_and_updates?:                     bool
-		cdc_inserts_only?:                            bool
-		cdc_max_batch_interval?:                      number
-		cdc_min_file_size?:                           number
-		cdc_path?:                                    string
-		compression_type?:                            string
-		csv_delimiter?:                               string
-		csv_no_sup_value?:                            string
-		csv_null_value?:                              string
-		csv_row_delimiter?:                           string
-		data_format?:                                 string
-		data_page_size?:                              number
-		date_partition_delimiter?:                    string
-		date_partition_enabled?:                      bool
-		date_partition_sequence?:                     string
-		dict_page_size_limit?:                        number
-		enable_statistics?:                           bool
-		encoding_type?:                               string
-		encryption_mode?:                             string
-		external_table_definition?:                   string
-		glue_catalog_generation?:                     bool
-		ignore_header_rows?:                          number
-		include_op_for_full_load?:                    bool
-		max_file_size?:                               number
-		parquet_timestamp_in_millisecond?:            bool
-		parquet_version?:                             string
-		preserve_transactions?:                       bool
-		rfc_4180?:                                    bool
-		row_group_length?:                            number
-		server_side_encryption_kms_key_id?:           string
-		service_access_role_arn?:                     string
-		timestamp_column_name?:                       string
-		use_csv_no_sup_value?:                        bool
-		use_task_start_time_for_full_load_timestamp?: bool
-	}
-
-	#timeouts: {
+	#timeouts: close({
 		create?: string
 		delete?: string
-	}
+	})
 }

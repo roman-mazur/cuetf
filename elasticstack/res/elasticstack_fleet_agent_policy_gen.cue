@@ -3,17 +3,55 @@ package res
 #elasticstack_fleet_agent_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_fleet_agent_policy")
-	data_output_id?:       string
-	description?:          string
-	download_source_id?:   string
-	fleet_server_host_id?: string
-	id?:                   string
-	monitor_logs?:         bool
-	monitor_metrics?:      bool
-	monitoring_output_id?: string
-	name!:                 string
-	namespace!:            string
-	policy_id?:            string
-	skip_destroy?:         bool
-	sys_monitoring?:       bool
+	close({
+		// The identifier for the data output.
+		data_output_id?: string
+
+		// The description of the agent policy.
+		description?: string
+
+		// The identifier for the Elastic Agent binary download server.
+		download_source_id?: string
+
+		// The identifier for the Fleet server host.
+		fleet_server_host_id?: string
+
+		// User-defined data tags to apply to all inputs. Values can be
+		// strings (string_value) or numbers (number_value) but not both.
+		// Example -- key1 = {string_value = value1}, key2 =
+		// {number_value = 42}
+		global_data_tags?: _
+
+		// The ID of this resource.
+		id?: string
+
+		// Enable collection of agent logs.
+		monitor_logs?: bool
+
+		// Enable collection of agent metrics.
+		monitor_metrics?: bool
+
+		// The identifier for monitoring output.
+		monitoring_output_id?: string
+
+		// The name of the agent policy.
+		name!: string
+
+		// The namespace of the agent policy.
+		namespace!: string
+
+		// Unique identifier of the agent policy.
+		policy_id?: string
+
+		// Set to true if you do not wish the agent policy to be deleted
+		// at destroy time, and instead just remove the agent policy from
+		// the Terraform state.
+		skip_destroy?: bool
+
+		// Set to true to enable agentless data collection.
+		supports_agentless?: bool
+
+		// Enable collection of system logs and metrics.
+		sys_monitoring?: bool
+	})
 }

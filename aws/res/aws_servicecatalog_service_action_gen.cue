@@ -5,25 +5,33 @@ import "list"
 #aws_servicecatalog_service_action: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_servicecatalog_service_action")
-	accept_language?: string
-	description?:     string
-	id?:              string
-	name!:            string
-	definition?: #definition | list.MaxItems(1) & [_, ...] & [...#definition]
-	timeouts?: #timeouts
+	close({
+		accept_language?: string
+		description?:     string
 
-	#definition: {
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		id?:     string
+		name!:   string
+		definition?: matchN(1, [#definition, list.MaxItems(1) & [_, ...] & [...#definition]])
+		timeouts?: #timeouts
+	})
+
+	#definition: close({
 		assume_role?: string
 		name!:        string
 		parameters?:  string
 		type?:        string
 		version!:     string
-	}
+	})
 
-	#timeouts: {
+	#timeouts: close({
 		create?: string
 		delete?: string
 		read?:   string
 		update?: string
-	}
+	})
 }

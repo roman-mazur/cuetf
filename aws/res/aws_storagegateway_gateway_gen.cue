@@ -5,43 +5,51 @@ import "list"
 #aws_storagegateway_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_storagegateway_gateway")
-	activation_key?:                              string
-	arn?:                                         string
-	average_download_rate_limit_in_bits_per_sec?: number
-	average_upload_rate_limit_in_bits_per_sec?:   number
-	cloudwatch_log_group_arn?:                    string
-	ec2_instance_id?:                             string
-	endpoint_type?:                               string
-	gateway_id?:                                  string
-	gateway_ip_address?:                          string
-	gateway_name!:                                string
-	gateway_network_interface?: [...{
-		ipv4_address?: string
-	}]
-	gateway_timezone!:          string
-	gateway_type?:              string
-	gateway_vpc_endpoint?:      string
-	host_environment?:          string
-	id?:                        string
-	medium_changer_type?:       string
-	smb_file_share_visibility?: bool
-	smb_guest_password?:        string
-	smb_security_strategy?:     string
-	tags?: [string]:     string
-	tags_all?: [string]: string
-	tape_drive_type?: string
-	maintenance_start_time?: #maintenance_start_time | list.MaxItems(1) & [...#maintenance_start_time]
-	smb_active_directory_settings?: #smb_active_directory_settings | list.MaxItems(1) & [...#smb_active_directory_settings]
-	timeouts?: #timeouts
+	close({
+		activation_key?:                              string
+		arn?:                                         string
+		average_download_rate_limit_in_bits_per_sec?: number
+		average_upload_rate_limit_in_bits_per_sec?:   number
+		cloudwatch_log_group_arn?:                    string
+		ec2_instance_id?:                             string
+		endpoint_type?:                               string
+		gateway_id?:                                  string
 
-	#maintenance_start_time: {
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
+		gateway_ip_address?: string
+		gateway_name!:       string
+		gateway_network_interface?: [...close({
+			ipv4_address?: string
+		})]
+		gateway_timezone!: string
+		maintenance_start_time?: matchN(1, [#maintenance_start_time, list.MaxItems(1) & [...#maintenance_start_time]])
+		smb_active_directory_settings?: matchN(1, [#smb_active_directory_settings, list.MaxItems(1) & [...#smb_active_directory_settings]])
+		gateway_type?:              string
+		gateway_vpc_endpoint?:      string
+		host_environment?:          string
+		id?:                        string
+		medium_changer_type?:       string
+		smb_file_share_visibility?: bool
+		smb_guest_password?:        string
+		smb_security_strategy?:     string
+		tags?: [string]:     string
+		tags_all?: [string]: string
+		tape_drive_type?: string
+		timeouts?:        #timeouts
+	})
+
+	#maintenance_start_time: close({
 		day_of_month?:   string
 		day_of_week?:    string
 		hour_of_day!:    number
 		minute_of_hour?: number
-	}
+	})
 
-	#smb_active_directory_settings: {
+	#smb_active_directory_settings: close({
 		active_directory_status?: string
 		domain_controllers?: [...string]
 		domain_name!:         string
@@ -49,7 +57,9 @@ import "list"
 		password!:            string
 		timeout_in_seconds?:  number
 		username!:            string
-	}
+	})
 
-	#timeouts: create?: string
+	#timeouts: close({
+		create?: string
+	})
 }

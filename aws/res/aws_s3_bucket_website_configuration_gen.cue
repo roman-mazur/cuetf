@@ -5,41 +5,53 @@ import "list"
 #aws_s3_bucket_website_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_s3_bucket_website_configuration")
-	bucket!:                string
-	expected_bucket_owner?: string
-	id?:                    string
-	routing_rules?:         string
-	website_domain?:        string
-	website_endpoint?:      string
-	error_document?: #error_document | list.MaxItems(1) & [...#error_document]
-	index_document?: #index_document | list.MaxItems(1) & [...#index_document]
-	redirect_all_requests_to?: #redirect_all_requests_to | list.MaxItems(1) & [...#redirect_all_requests_to]
-	routing_rule?: #routing_rule | [...#routing_rule]
+	close({
+		bucket!:                string
+		expected_bucket_owner?: string
+		id?:                    string
 
-	#error_document: key!: string
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:         string
+		routing_rules?:  string
+		website_domain?: string
+		error_document?: matchN(1, [#error_document, list.MaxItems(1) & [...#error_document]])
+		website_endpoint?: string
+		index_document?: matchN(1, [#index_document, list.MaxItems(1) & [...#index_document]])
+		redirect_all_requests_to?: matchN(1, [#redirect_all_requests_to, list.MaxItems(1) & [...#redirect_all_requests_to]])
+		routing_rule?: matchN(1, [#routing_rule, [...#routing_rule]])
+	})
 
-	#index_document: suffix!: string
+	#error_document: close({
+		key!: string
+	})
 
-	#redirect_all_requests_to: {
+	#index_document: close({
+		suffix!: string
+	})
+
+	#redirect_all_requests_to: close({
 		host_name!: string
 		protocol?:  string
-	}
+	})
 
-	#routing_rule: {
-		condition?: #routing_rule.#condition | list.MaxItems(1) & [...#routing_rule.#condition]
-		redirect?: #routing_rule.#redirect | list.MaxItems(1) & [_, ...] & [...#routing_rule.#redirect]
+	#routing_rule: close({
+		condition?: matchN(1, [_#defs."/$defs/routing_rule/$defs/condition", list.MaxItems(1) & [..._#defs."/$defs/routing_rule/$defs/condition"]])
+		redirect?: matchN(1, [_#defs."/$defs/routing_rule/$defs/redirect", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/routing_rule/$defs/redirect"]])
+	})
 
-		#condition: {
-			http_error_code_returned_equals?: string
-			key_prefix_equals?:               string
-		}
+	_#defs: "/$defs/routing_rule/$defs/condition": close({
+		http_error_code_returned_equals?: string
+		key_prefix_equals?:               string
+	})
 
-		#redirect: {
-			host_name?:               string
-			http_redirect_code?:      string
-			protocol?:                string
-			replace_key_prefix_with?: string
-			replace_key_with?:        string
-		}
-	}
+	_#defs: "/$defs/routing_rule/$defs/redirect": close({
+		host_name?:               string
+		http_redirect_code?:      string
+		protocol?:                string
+		replace_key_prefix_with?: string
+		replace_key_with?:        string
+	})
 }

@@ -3,11 +3,20 @@ package res
 #aws_lakeformation_resource: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lakeformation_resource")
-	arn!:                     string
-	hybrid_access_enabled?:   bool
-	id?:                      string
-	last_modified?:           string
-	role_arn?:                string
-	use_service_linked_role?: bool
-	with_federation?:         bool
+	close({
+		arn!:                   string
+		hybrid_access_enabled?: bool
+		id?:                    string
+		last_modified?:         string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                  string
+		role_arn?:                string
+		use_service_linked_role?: bool
+		with_federation?:         bool
+		with_privileged_access?:  bool
+	})
 }

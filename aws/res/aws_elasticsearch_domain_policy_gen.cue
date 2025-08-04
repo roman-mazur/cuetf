@@ -3,13 +3,21 @@ package res
 #aws_elasticsearch_domain_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_elasticsearch_domain_policy")
-	access_policies!: string
-	domain_name!:     string
-	id?:              string
-	timeouts?:        #timeouts
+	close({
+		access_policies!: string
 
-	#timeouts: {
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:      string
+		domain_name!: string
+		id?:          string
+		timeouts?:    #timeouts
+	})
+
+	#timeouts: close({
 		delete?: string
 		update?: string
-	}
+	})
 }
