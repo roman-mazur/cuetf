@@ -10,9 +10,9 @@ package res
 		id?:          string
 		ignore_words?: [...string]
 		keywords?: [...string]
-		timeouts?:               #timeouts
 		maximum_match_distance?: number
 		name?:                   string
+		timeouts?:               #timeouts
 		name_prefix?:            string
 		regex?:                  string
 		region?:                 string

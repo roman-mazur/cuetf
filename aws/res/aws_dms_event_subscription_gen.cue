@@ -4,9 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dms_event_subscription")
 	close({
-		arn?:      string
-		timeouts?: #timeouts
-		enabled?:  bool
+		arn?:     string
+		enabled?: bool
 		event_categories!: [...string]
 		id?:            string
 		name!:          string
@@ -14,6 +13,7 @@ package res
 		sns_topic_arn!: string
 		source_ids?: [...string]
 		source_type!: string
+		timeouts?:    #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

@@ -6,8 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appautoscaling_scheduled_action")
 	close({
-		arn?: string
-		scalable_target_action?: matchN(1, [#scalable_target_action, list.MaxItems(1) & [_, ...] & [...#scalable_target_action]])
+		arn?:                string
 		end_time?:           string
 		id?:                 string
 		name!:               string
@@ -16,8 +15,9 @@ import "list"
 		scalable_dimension!: string
 		schedule!:           string
 		service_namespace!:  string
-		start_time?:         string
-		timezone?:           string
+		scalable_target_action?: matchN(1, [#scalable_target_action, list.MaxItems(1) & [_, ...] & [...#scalable_target_action]])
+		start_time?: string
+		timezone?:   string
 	})
 
 	#scalable_target_action: close({

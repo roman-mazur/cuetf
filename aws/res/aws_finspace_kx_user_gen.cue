@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_finspace_kx_user")
 	close({
-		arn?:            string
 		timeouts?:       #timeouts
+		arn?:            string
 		environment_id!: string
 		iam_role!:       string
 		id?:             string

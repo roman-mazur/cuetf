@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dx_bgp_peer")
 	close({
 		address_family!:       string
-		timeouts?:             #timeouts
 		amazon_address?:       string
 		aws_device?:           string
 		bgp_asn!:              number
@@ -14,6 +13,7 @@ package res
 		bgp_status?:           string
 		customer_address?:     string
 		id?:                   string
+		timeouts?:             #timeouts
 		region?:               string
 		virtual_interface_id!: string
 	})

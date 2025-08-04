@@ -6,19 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_elastictranscoder_pipeline")
 	close({
-		arn?:             string
-		aws_kms_key_arn?: string
+		arn?: string
 		content_config?: matchN(1, [#content_config, list.MaxItems(1) & [...#content_config]])
+		aws_kms_key_arn?: string
+		id?:              string
+		input_bucket!:    string
+		name?:            string
 		content_config_permissions?: matchN(1, [#content_config_permissions, [...#content_config_permissions]])
-		notifications?: matchN(1, [#notifications, list.MaxItems(1) & [...#notifications]])
-		thumbnail_config?: matchN(1, [#thumbnail_config, list.MaxItems(1) & [...#thumbnail_config]])
-		id?:           string
-		input_bucket!: string
-		name?:         string
-		thumbnail_config_permissions?: matchN(1, [#thumbnail_config_permissions, [...#thumbnail_config_permissions]])
 		output_bucket?: string
 		region?:        string
-		role!:          string
+		notifications?: matchN(1, [#notifications, list.MaxItems(1) & [...#notifications]])
+		thumbnail_config?: matchN(1, [#thumbnail_config, list.MaxItems(1) & [...#thumbnail_config]])
+		thumbnail_config_permissions?: matchN(1, [#thumbnail_config_permissions, [...#thumbnail_config_permissions]])
+		role!: string
 	})
 
 	#content_config: close({

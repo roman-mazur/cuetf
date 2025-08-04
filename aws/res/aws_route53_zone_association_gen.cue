@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_route53_zone_association")
 	close({
-		id?:             string
 		timeouts?:       #timeouts
+		id?:             string
 		owning_account?: string
 		vpc_id!:         string
 		vpc_region?:     string

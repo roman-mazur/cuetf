@@ -7,9 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_datasync_location_hdfs")
 	close({
 		agent_arns!: [...string]
-		arn?: string
-		name_node?: matchN(1, [#name_node, [_, ...] & [...#name_node]])
-		qop_configuration?: matchN(1, [#qop_configuration, list.MaxItems(1) & [...#qop_configuration]])
+		arn?:                       string
 		authentication_type?:       string
 		block_size?:                number
 		id?:                        string
@@ -18,11 +16,13 @@ import "list"
 		kerberos_krb5_conf?:        string
 		kerberos_krb5_conf_base64?: string
 		kerberos_principal?:        string
-		kms_key_provider_uri?:      string
-		region?:                    string
-		replication_factor?:        number
-		simple_user?:               string
-		subdirectory?:              string
+		name_node?: matchN(1, [#name_node, [_, ...] & [...#name_node]])
+		kms_key_provider_uri?: string
+		region?:               string
+		replication_factor?:   number
+		simple_user?:          string
+		qop_configuration?: matchN(1, [#qop_configuration, list.MaxItems(1) & [...#qop_configuration]])
+		subdirectory?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		uri?: string

@@ -4,10 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_wafregional_geo_match_set")
 	close({
+		geo_match_constraint?: matchN(1, [#geo_match_constraint, [...#geo_match_constraint]])
 		id?:     string
 		name!:   string
 		region?: string
-		geo_match_constraint?: matchN(1, [#geo_match_constraint, [...#geo_match_constraint]])
 	})
 
 	#geo_match_constraint: close({

@@ -4,11 +4,11 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ecs_cluster_capacity_providers")
 	close({
+		default_capacity_provider_strategy?: matchN(1, [#default_capacity_provider_strategy, [...#default_capacity_provider_strategy]])
 		capacity_providers?: [...string]
 		cluster_name!: string
 		id?:           string
 		region?:       string
-		default_capacity_provider_strategy?: matchN(1, [#default_capacity_provider_strategy, [...#default_capacity_provider_strategy]])
 	})
 
 	#default_capacity_provider_strategy: close({

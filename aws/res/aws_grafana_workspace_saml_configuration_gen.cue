@@ -12,8 +12,8 @@ package res
 		id?:                      string
 		idp_metadata_url?:        string
 		idp_metadata_xml?:        string
-		timeouts?:                #timeouts
 		login_assertion?:         string
+		timeouts?:                #timeouts
 		login_validity_duration?: number
 		name_assertion?:          string
 		org_assertion?:           string

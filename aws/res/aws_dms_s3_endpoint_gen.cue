@@ -32,7 +32,6 @@ package res
 		encoding_type?:                               string
 		encryption_mode?:                             string
 		endpoint_arn?:                                string
-		timeouts?:                                    #timeouts
 		endpoint_id!:                                 string
 		endpoint_type!:                               string
 		engine_display_name?:                         string
@@ -43,6 +42,7 @@ package res
 		id?:                                          string
 		ignore_header_rows?:                          number
 		include_op_for_full_load?:                    bool
+		timeouts?:                                    #timeouts
 		kms_key_arn?:                                 string
 		max_file_size?:                               number
 		parquet_timestamp_in_millisecond?:            bool

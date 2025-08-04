@@ -6,8 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_elastic_beanstalk_application")
 	close({
-		arn?: string
 		appversion_lifecycle?: matchN(1, [#appversion_lifecycle, list.MaxItems(1) & [...#appversion_lifecycle]])
+		arn?:         string
 		description?: string
 		id?:          string
 		name!:        string

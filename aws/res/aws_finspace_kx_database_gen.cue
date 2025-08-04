@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_finspace_kx_database")
 	close({
 		arn?:                     string
-		timeouts?:                #timeouts
 		created_timestamp?:       string
 		description?:             string
 		environment_id!:          string
 		id?:                      string
 		last_modified_timestamp?: string
 		name!:                    string
+		timeouts?:                #timeouts
 		region?:                  string
 		tags?: [string]:     string
 		tags_all?: [string]: string

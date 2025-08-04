@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_rds_global_cluster")
 	close({
 		arn?:                       string
-		timeouts?:                  #timeouts
 		database_name?:             string
 		deletion_protection?:       bool
 		endpoint?:                  string
@@ -23,6 +22,7 @@ package res
 		id?:                           string
 		region?:                       string
 		source_db_cluster_identifier?: string
+		timeouts?:                     #timeouts
 		storage_encrypted?:            bool
 		tags?: [string]:     string
 		tags_all?: [string]: string

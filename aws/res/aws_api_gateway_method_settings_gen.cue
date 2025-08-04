@@ -6,8 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_api_gateway_method_settings")
 	close({
-		id?: string
 		settings?: matchN(1, [#settings, list.MaxItems(1) & [_, ...] & [...#settings]])
+		id?:          string
 		method_path!: string
 		region?:      string
 		rest_api_id!: string

@@ -10,9 +10,9 @@ package res
 		id?:                          string
 		input_parameters?:            string
 		maximum_execution_frequency?: string
-		timeouts?:                    #timeouts
 		name!:                        string
 		region?:                      string
+		timeouts?:                    #timeouts
 		resource_id_scope?:           string
 		resource_types_scope?: [...string]
 		rule_identifier!: string

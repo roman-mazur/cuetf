@@ -28,7 +28,6 @@ import "list"
 		id?:                        string
 		restore_to_point_in_time?: matchN(1, [#restore_to_point_in_time, list.MaxItems(1) & [...#restore_to_point_in_time]])
 		kms_key_id?:                  string
-		timeouts?:                    #timeouts
 		manage_master_user_password?: bool
 		master_password?:             string
 		master_password_wo?:          string
@@ -41,6 +40,7 @@ import "list"
 		master_username?:              string
 		port?:                         number
 		preferred_backup_window?:      string
+		timeouts?:                     #timeouts
 		preferred_maintenance_window?: string
 		reader_endpoint?:              string
 		region?:                       string

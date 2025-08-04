@@ -6,10 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_elasticache_cluster")
 	close({
-		apply_immediately?: bool
-		arn?:               string
-		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, list.MaxItems(2) & [...#log_delivery_configuration]])
-		timeouts?:                   #timeouts
+		apply_immediately?:          bool
+		arn?:                        string
 		auto_minor_version_upgrade?: string
 		availability_zone?:          string
 		az_mode?:                    string
@@ -28,16 +26,18 @@ import "list"
 		engine_version_actual?:     string
 		final_snapshot_identifier?: string
 		id?:                        string
-		ip_discovery?:              string
-		maintenance_window?:        string
-		network_type?:              string
-		node_type?:                 string
-		notification_topic_arn?:    string
-		num_cache_nodes?:           number
-		outpost_mode?:              string
-		parameter_group_name?:      string
-		port?:                      number
+		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, list.MaxItems(2) & [...#log_delivery_configuration]])
+		ip_discovery?:           string
+		maintenance_window?:     string
+		network_type?:           string
+		node_type?:              string
+		notification_topic_arn?: string
+		num_cache_nodes?:        number
+		outpost_mode?:           string
+		parameter_group_name?:   string
+		port?:                   number
 		preferred_availability_zones?: [...string]
+		timeouts?:              #timeouts
 		preferred_outpost_arn?: string
 		region?:                string
 		replication_group_id?:  string

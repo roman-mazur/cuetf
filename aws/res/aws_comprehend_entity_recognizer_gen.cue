@@ -8,15 +8,15 @@ import "list"
 	close({
 		arn?:                  string
 		data_access_role_arn!: string
+		id?:                   string
+		language_code!:        string
+		model_kms_key_id?:     string
+		name!:                 string
+		region?:               string
 		input_data_config?: matchN(1, [#input_data_config, list.MaxItems(1) & [_, ...] & [...#input_data_config]])
 		timeouts?: #timeouts
+		tags?: [string]: string
 		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
-		id?:               string
-		language_code!:    string
-		model_kms_key_id?: string
-		name!:             string
-		region?:           string
-		tags?: [string]:     string
 		tags_all?: [string]: string
 		version_name?:        string
 		version_name_prefix?: string
@@ -24,12 +24,12 @@ import "list"
 	})
 
 	#input_data_config: close({
-		data_format?: string
 		annotations?: matchN(1, [_#defs."/$defs/input_data_config/$defs/annotations", list.MaxItems(1) & [..._#defs."/$defs/input_data_config/$defs/annotations"]])
 		augmented_manifests?: matchN(1, [_#defs."/$defs/input_data_config/$defs/augmented_manifests", [..._#defs."/$defs/input_data_config/$defs/augmented_manifests"]])
 		documents?: matchN(1, [_#defs."/$defs/input_data_config/$defs/documents", list.MaxItems(1) & [..._#defs."/$defs/input_data_config/$defs/documents"]])
 		entity_list?: matchN(1, [_#defs."/$defs/input_data_config/$defs/entity_list", list.MaxItems(1) & [..._#defs."/$defs/input_data_config/$defs/entity_list"]])
 		entity_types?: matchN(1, [_#defs."/$defs/input_data_config/$defs/entity_types", list.MaxItems(25) & [_, ...] & [..._#defs."/$defs/input_data_config/$defs/entity_types"]])
+		data_format?: string
 	})
 
 	#timeouts: close({

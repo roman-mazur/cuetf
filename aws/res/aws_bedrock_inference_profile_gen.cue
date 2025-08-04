@@ -4,18 +4,18 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrock_inference_profile")
 	close({
-		arn?:        string
-		created_at?: string
-		model_source?: matchN(1, [#model_source, [...#model_source]])
-		timeouts?:    #timeouts
+		arn?:         string
+		created_at?:  string
 		description?: string
 		id?:          string
 		models?: [...close({
 			model_arn?: string
 		})]
-		name!:   string
-		region?: string
-		status?: string
+		name!: string
+		model_source?: matchN(1, [#model_source, [...#model_source]])
+		region?:   string
+		timeouts?: #timeouts
+		status?:   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type?:       string

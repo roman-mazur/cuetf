@@ -8,14 +8,14 @@ import "list"
 	close({
 		arn?:                   string
 		audit_destination_arn?: string
+		gateway_arn!:           string
+		id?:                    string
+		location_arn!:          string
+		password!:              string
+		region?:                string
 		cache_attributes?: matchN(1, [#cache_attributes, list.MaxItems(1) & [...#cache_attributes]])
-		timeouts?:     #timeouts
-		gateway_arn!:  string
-		id?:           string
-		location_arn!: string
-		password!:     string
-		region?:       string
-		tags?: [string]:     string
+		tags?: [string]: string
+		timeouts?: #timeouts
 		tags_all?: [string]: string
 		username!: string
 	})

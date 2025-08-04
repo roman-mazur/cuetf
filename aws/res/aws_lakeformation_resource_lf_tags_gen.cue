@@ -7,13 +7,13 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lakeformation_resource_lf_tags")
 	close({
 		database?: matchN(1, [#database, list.MaxItems(1) & [...#database]])
-		catalog_id?: string
-		id?:         string
-		region?:     string
 		lf_tag?: matchN(1, [#lf_tag, [_, ...] & [...#lf_tag]])
+		catalog_id?: string
 		table?: matchN(1, [#table, list.MaxItems(1) & [...#table]])
+		id?: string
 		table_with_columns?: matchN(1, [#table_with_columns, list.MaxItems(1) & [...#table_with_columns]])
 		timeouts?: #timeouts
+		region?:   string
 	})
 
 	#database: close({

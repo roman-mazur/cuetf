@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_route53profiles_association")
 	close({
 		arn?:            string
-		timeouts?:       #timeouts
 		id?:             string
 		name!:           string
 		owner_id?:       string
@@ -14,6 +13,7 @@ package res
 		resource_id!:    string
 		status?:         string
 		status_message?: string
+		timeouts?:       #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

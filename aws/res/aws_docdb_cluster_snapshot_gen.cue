@@ -12,11 +12,11 @@ package res
 		engine_version?:                 string
 		id?:                             string
 		kms_key_id?:                     string
-		timeouts?:                       #timeouts
 		port?:                           number
 		region?:                         string
 		snapshot_type?:                  string
 		source_db_cluster_snapshot_arn?: string
+		timeouts?:                       #timeouts
 		status?:                         string
 		storage_encrypted?:              bool
 		vpc_id?:                         string

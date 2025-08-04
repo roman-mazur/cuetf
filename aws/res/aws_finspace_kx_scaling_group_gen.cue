@@ -10,13 +10,13 @@ package res
 		created_timestamp?:       string
 		environment_id!:          string
 		host_type!:               string
-		timeouts?:                #timeouts
 		id?:                      string
 		last_modified_timestamp?: string
 		name!:                    string
 		region?:                  string
 		status?:                  string
 		status_reason?:           string
+		timeouts?:                #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

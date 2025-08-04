@@ -14,7 +14,6 @@ package res
 		aws_service?:           string
 		cascade?:               bool
 		description?:           string
-		timeouts?:              #timeouts
 		id?:                    string
 		ipam_scope_id!:         string
 		ipam_scope_type?:       string
@@ -23,6 +22,7 @@ package res
 		public_ip_source?:      string
 		publicly_advertisable?: bool
 		region?:                string
+		timeouts?:              #timeouts
 		source_ipam_pool_id?:   string
 		state?:                 string
 		tags?: [string]:     string

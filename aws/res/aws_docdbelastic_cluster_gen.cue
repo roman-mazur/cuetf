@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_docdbelastic_cluster")
 	close({
 		admin_user_name!:              string
-		timeouts?:                     #timeouts
 		admin_user_password!:          string
 		arn?:                          string
 		auth_type!:                    string
@@ -20,6 +19,7 @@ package res
 		shard_capacity!:               number
 		shard_count!:                  number
 		subnet_ids?: [...string]
+		timeouts?: #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		vpc_security_group_ids?: [...string]

@@ -6,14 +6,14 @@ package res
 	close({
 		arn?:                       string
 		default_outbound_queue_id!: string
+		description!:               string
+		id?:                        string
+		instance_id!:               string
+		name!:                      string
+		region?:                    string
 		media_concurrencies?: matchN(1, [#media_concurrencies, [_, ...] & [...#media_concurrencies]])
-		queue_configs?: matchN(1, [#queue_configs, [...#queue_configs]])
-		description!:        string
-		id?:                 string
-		instance_id!:        string
-		name!:               string
-		region?:             string
 		routing_profile_id?: string
+		queue_configs?: matchN(1, [#queue_configs, [...#queue_configs]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

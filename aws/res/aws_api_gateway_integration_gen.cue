@@ -7,7 +7,6 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_api_gateway_integration")
 	close({
 		cache_key_parameters?: [...string]
-		tls_config?: matchN(1, [#tls_config, list.MaxItems(1) & [...#tls_config]])
 		cache_namespace?:         string
 		connection_id?:           string
 		connection_type?:         string
@@ -20,8 +19,9 @@ import "list"
 		region?:                  string
 		request_parameters?: [string]: string
 		request_templates?: [string]:  string
-		resource_id!:          string
-		rest_api_id!:          string
+		resource_id!: string
+		rest_api_id!: string
+		tls_config?: matchN(1, [#tls_config, list.MaxItems(1) & [...#tls_config]])
 		timeout_milliseconds?: number
 		type!:                 string
 		uri?:                  string

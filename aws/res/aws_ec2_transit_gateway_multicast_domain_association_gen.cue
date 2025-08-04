@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_transit_gateway_multicast_domain_association")
 	close({
-		id?:                                  string
 		timeouts?:                            #timeouts
+		id?:                                  string
 		region?:                              string
 		subnet_id!:                           string
 		transit_gateway_attachment_id!:       string

@@ -49,6 +49,7 @@ _ds: aws_bedrockagent_agent_versions: data.#aws_bedrockagent_agent_versions
 _ds: aws_billing_service_account: data.#aws_billing_service_account
 _ds: aws_caller_identity: data.#aws_caller_identity
 _ds: aws_canonical_user_id: data.#aws_canonical_user_id
+_ds: aws_ce_tags: data.#aws_ce_tags
 _ds: aws_chatbot_slack_workspace: data.#aws_chatbot_slack_workspace
 _ds: aws_cloudcontrolapi_resource: data.#aws_cloudcontrolapi_resource
 _ds: aws_cloudformation_export: data.#aws_cloudformation_export
@@ -66,6 +67,7 @@ _ds: aws_cloudwatch_event_bus: data.#aws_cloudwatch_event_bus
 _ds: aws_cloudwatch_event_buses: data.#aws_cloudwatch_event_buses
 _ds: aws_cloudwatch_event_connection: data.#aws_cloudwatch_event_connection
 _ds: aws_cloudwatch_event_source: data.#aws_cloudwatch_event_source
+_ds: aws_cloudwatch_log_data_protection_policy_document: data.#aws_cloudwatch_log_data_protection_policy_document
 _ds: aws_cloudwatch_log_group: data.#aws_cloudwatch_log_group
 _ds: aws_cloudwatch_log_groups: data.#aws_cloudwatch_log_groups
 _ds: aws_codeartifact_authorization_token: data.#aws_codeartifact_authorization_token
@@ -238,7 +240,9 @@ _ds: aws_iam_session_context: data.#aws_iam_session_context
 _ds: aws_iam_user: data.#aws_iam_user
 _ds: aws_iam_user_ssh_key: data.#aws_iam_user_ssh_key
 _ds: aws_iam_users: data.#aws_iam_users
+_ds: aws_identitystore_group: data.#aws_identitystore_group
 _ds: aws_identitystore_group_memberships: data.#aws_identitystore_group_memberships
+_ds: aws_identitystore_user: data.#aws_identitystore_user
 _ds: aws_imagebuilder_component: data.#aws_imagebuilder_component
 _ds: aws_imagebuilder_components: data.#aws_imagebuilder_components
 _ds: aws_imagebuilder_container_recipes: data.#aws_imagebuilder_container_recipes
@@ -281,6 +285,7 @@ _ds: aws_lambda_layer_version: data.#aws_lambda_layer_version
 _ds: aws_launch_configuration: data.#aws_launch_configuration
 _ds: aws_lb: data.#aws_lb
 _ds: aws_lb_hosted_zone_id: data.#aws_lb_hosted_zone_id
+_ds: aws_lb_listener_rule: data.#aws_lb_listener_rule
 _ds: aws_lb_target_group: data.#aws_lb_target_group
 _ds: aws_lb_trust_store: data.#aws_lb_trust_store
 _ds: aws_lbs: data.#aws_lbs

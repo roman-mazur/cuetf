@@ -6,8 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_batch_scheduling_policy")
 	close({
-		arn?: string
 		fair_share_policy?: matchN(1, [#fair_share_policy, list.MaxItems(1) & [...#fair_share_policy]])
+		arn?:    string
 		id?:     string
 		name!:   string
 		region?: string
@@ -16,9 +16,9 @@ import "list"
 	})
 
 	#fair_share_policy: close({
+		share_distribution?: matchN(1, [_#defs."/$defs/fair_share_policy/$defs/share_distribution", list.MaxItems(500) & [..._#defs."/$defs/fair_share_policy/$defs/share_distribution"]])
 		compute_reservation?: number
 		share_decay_seconds?: number
-		share_distribution?: matchN(1, [_#defs."/$defs/fair_share_policy/$defs/share_distribution", list.MaxItems(500) & [..._#defs."/$defs/fair_share_policy/$defs/share_distribution"]])
 	})
 
 	_#defs: "/$defs/fair_share_policy/$defs/share_distribution": close({

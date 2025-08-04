@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_connect_user")
 	close({
-		arn?:               string
-		directory_user_id?: string
-		identity_info?: matchN(1, [#identity_info, list.MaxItems(1) & [...#identity_info]])
+		arn?:                string
+		directory_user_id?:  string
 		hierarchy_group_id?: string
 		id?:                 string
 		instance_id!:        string
-		phone_config?: matchN(1, [#phone_config, list.MaxItems(1) & [_, ...] & [...#phone_config]])
 		name!:               string
 		password?:           string
+		identity_info?: matchN(1, [#identity_info, list.MaxItems(1) & [...#identity_info]])
 		region?:             string
 		routing_profile_id!: string
+		phone_config?: matchN(1, [#phone_config, list.MaxItems(1) & [_, ...] & [...#phone_config]])
 		security_profile_ids!: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string

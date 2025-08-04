@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_directory_service_radius_settings")
 	close({
 		authentication_protocol!: string
-		timeouts?:                #timeouts
 		directory_id!:            string
 		display_label!:           string
 		id?:                      string
@@ -14,6 +13,7 @@ package res
 		radius_servers!: [...string]
 		radius_timeout!:    number
 		region?:            string
+		timeouts?:          #timeouts
 		shared_secret!:     string
 		use_same_username?: bool
 	})

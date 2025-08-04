@@ -6,12 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_trigger")
 	close({
-		arn?:         string
-		description?: string
-		actions?: matchN(1, [#actions, [_, ...] & [...#actions]])
-		event_batching_condition?: matchN(1, [#event_batching_condition, [...#event_batching_condition]])
-		predicate?: matchN(1, [#predicate, list.MaxItems(1) & [...#predicate]])
-		timeouts?:          #timeouts
+		arn?:               string
+		description?:       string
 		enabled?:           bool
 		id?:                string
 		name!:              string
@@ -19,15 +15,19 @@ import "list"
 		schedule?:          string
 		start_on_creation?: bool
 		state?:             string
+		actions?: matchN(1, [#actions, [_, ...] & [...#actions]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type!:          string
 		workflow_name?: string
+		event_batching_condition?: matchN(1, [#event_batching_condition, [...#event_batching_condition]])
+		predicate?: matchN(1, [#predicate, list.MaxItems(1) & [...#predicate]])
+		timeouts?: #timeouts
 	})
 
 	#actions: close({
-		arguments?: [string]: string
 		notification_property?: matchN(1, [_#defs."/$defs/actions/$defs/notification_property", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/notification_property"]])
+		arguments?: [string]: string
 		crawler_name?:           string
 		job_name?:               string
 		security_configuration?: string
@@ -40,8 +40,8 @@ import "list"
 	})
 
 	#predicate: close({
-		logical?: string
 		conditions?: matchN(1, [_#defs."/$defs/predicate/$defs/conditions", [_, ...] & [..._#defs."/$defs/predicate/$defs/conditions"]])
+		logical?: string
 	})
 
 	#timeouts: close({

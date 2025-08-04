@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lb_trust_store_revocation")
 	close({
-		id?:                            string
 		timeouts?:                      #timeouts
+		id?:                            string
 		region?:                        string
 		revocation_id?:                 number
 		revocations_s3_bucket!:         string

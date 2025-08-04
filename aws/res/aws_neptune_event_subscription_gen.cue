@@ -10,9 +10,9 @@ package res
 		event_categories?: [...string]
 		id?:            string
 		name?:          string
-		timeouts?:      #timeouts
 		name_prefix?:   string
 		region?:        string
+		timeouts?:      #timeouts
 		sns_topic_arn!: string
 		source_ids?: [...string]
 		source_type?: string

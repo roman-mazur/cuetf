@@ -4,10 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_devopsguru_notification_channel")
 	close({
-		id?:     string
-		region?: string
 		filters?: matchN(1, [#filters, [...#filters]])
 		sns?: matchN(1, [#sns, [...#sns]])
+		id?:     string
+		region?: string
 	})
 
 	#filters: close({

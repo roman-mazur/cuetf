@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpclattice_service")
 	close({
 		arn?:                string
-		timeouts?:           #timeouts
 		auth_type?:          string
 		certificate_arn?:    string
 		custom_domain_name?: string
@@ -13,10 +12,11 @@ package res
 			domain_name?:    string
 			hosted_zone_id?: string
 		})]
-		id?:     string
-		name!:   string
-		region?: string
-		status?: string
+		id?:       string
+		name!:     string
+		region?:   string
+		status?:   string
+		timeouts?: #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

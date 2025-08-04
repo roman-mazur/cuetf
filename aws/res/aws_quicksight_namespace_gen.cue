@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_quicksight_namespace")
 	close({
 		arn?:             string
-		timeouts?:        #timeouts
 		aws_account_id?:  string
 		capacity_region?: string
 		creation_status?: string
 		id?:              string
 		identity_store?:  string
 		namespace!:       string
+		timeouts?:        #timeouts
 		region?:          string
 		tags?: [string]:     string
 		tags_all?: [string]: string

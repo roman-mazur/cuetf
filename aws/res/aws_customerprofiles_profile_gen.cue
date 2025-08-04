@@ -8,10 +8,6 @@ import "list"
 	close({
 		account_number?:         string
 		additional_information?: string
-		address?: matchN(1, [#address, list.MaxItems(1) & [...#address]])
-		billing_address?: matchN(1, [#billing_address, list.MaxItems(1) & [...#billing_address]])
-		mailing_address?: matchN(1, [#mailing_address, list.MaxItems(1) & [...#mailing_address]])
-		shipping_address?: matchN(1, [#shipping_address, list.MaxItems(1) & [...#shipping_address]])
 		attributes?: [string]: string
 		birth_date?:             string
 		business_email_address?: string
@@ -21,6 +17,9 @@ import "list"
 		email_address?:          string
 		first_name?:             string
 		gender_string?:          string
+		address?: matchN(1, [#address, list.MaxItems(1) & [...#address]])
+		billing_address?: matchN(1, [#billing_address, list.MaxItems(1) & [...#billing_address]])
+		mailing_address?: matchN(1, [#mailing_address, list.MaxItems(1) & [...#mailing_address]])
 		home_phone_number?:      string
 		id?:                     string
 		last_name?:              string
@@ -30,6 +29,7 @@ import "list"
 		personal_email_address?: string
 		phone_number?:           string
 		region?:                 string
+		shipping_address?: matchN(1, [#shipping_address, list.MaxItems(1) & [...#shipping_address]])
 	})
 
 	#address: close({

@@ -6,16 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_route53_resolver_endpoint")
 	close({
-		arn?:       string
-		direction!: string
-		ip_address?: matchN(1, [#ip_address, list.MaxItems(10) & [_, _, ...] & [...#ip_address]])
+		arn?:         string
+		direction!:   string
 		host_vpc_id?: string
 		id?:          string
 		name?:        string
 		protocols?: [...string]
+		ip_address?: matchN(1, [#ip_address, list.MaxItems(10) & [_, _, ...] & [...#ip_address]])
 		region?:                 string
-		timeouts?:               #timeouts
 		resolver_endpoint_type?: string
+		timeouts?:               #timeouts
 		security_group_ids!: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string

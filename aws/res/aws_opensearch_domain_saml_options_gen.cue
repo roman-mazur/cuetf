@@ -6,16 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opensearch_domain_saml_options")
 	close({
+		saml_options?: matchN(1, [#saml_options, list.MaxItems(1) & [...#saml_options]])
+		timeouts?:    #timeouts
 		domain_name!: string
 		id?:          string
 		region?:      string
-		saml_options?: matchN(1, [#saml_options, list.MaxItems(1) & [...#saml_options]])
-		timeouts?: #timeouts
 	})
 
 	#saml_options: close({
-		enabled?: bool
 		idp?: matchN(1, [_#defs."/$defs/saml_options/$defs/idp", list.MaxItems(1) & [..._#defs."/$defs/saml_options/$defs/idp"]])
+		enabled?:                 bool
 		master_backend_role?:     string
 		master_user_name?:        string
 		roles_key?:               string

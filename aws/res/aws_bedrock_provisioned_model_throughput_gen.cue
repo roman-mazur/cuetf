@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrock_provisioned_model_throughput")
 	close({
-		commitment_duration?:    string
 		timeouts?:               #timeouts
+		commitment_duration?:    string
 		model_arn!:              string
 		model_units!:            number
 		provisioned_model_arn?:  string

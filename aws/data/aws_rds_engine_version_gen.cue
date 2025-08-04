@@ -5,10 +5,9 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_rds_engine_version")
 	close({
 		default_character_set?: string
-		filter?: matchN(1, [#filter, [...#filter]])
-		default_only?:       bool
-		engine!:             string
-		engine_description?: string
+		default_only?:          bool
+		engine!:                string
+		engine_description?:    string
 		exportable_log_types?: [...string]
 		has_major_target?:       bool
 		has_minor_target?:       bool
@@ -32,7 +31,8 @@ package data
 		supports_local_write_forwarding?:               bool
 		supports_log_exports_to_cloudwatch?:            bool
 		supports_parallel_query?:                       bool
-		supports_read_replica?:                         bool
+		filter?: matchN(1, [#filter, [...#filter]])
+		supports_read_replica?: bool
 		valid_major_targets?: [...string]
 		valid_minor_targets?: [...string]
 		valid_upgrade_targets?: [...string]

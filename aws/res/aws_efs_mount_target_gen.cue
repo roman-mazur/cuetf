@@ -10,9 +10,9 @@ package res
 		file_system_arn?:        string
 		file_system_id!:         string
 		id?:                     string
-		timeouts?:               #timeouts
 		ip_address?:             string
 		mount_target_dns_name?:  string
+		timeouts?:               #timeouts
 		network_interface_id?:   string
 		owner_id?:               string
 		region?:                 string

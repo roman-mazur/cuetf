@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_fsx_backup")
 	close({
 		arn?:            string
-		timeouts?:       #timeouts
 		file_system_id?: string
 		id?:             string
 		kms_key_id?:     string
 		owner_id?:       string
 		region?:         string
-		tags?: [string]:     string
+		tags?: [string]: string
+		timeouts?: #timeouts
 		tags_all?: [string]: string
 		type?:      string
 		volume_id?: string

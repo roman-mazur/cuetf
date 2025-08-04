@@ -12,8 +12,8 @@ package res
 		input_parameters?:            string
 		maximum_execution_frequency?: string
 		name!:                        string
-		timeouts?:                    #timeouts
 		policy_runtime!:              string
+		timeouts?:                    #timeouts
 		policy_text!:                 string
 		region?:                      string
 		resource_id_scope?:           string

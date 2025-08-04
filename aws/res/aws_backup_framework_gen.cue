@@ -6,24 +6,24 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_backup_framework")
 	close({
-		arn?:           string
-		creation_time?: string
-		control?: matchN(1, [#control, [_, ...] & [...#control]])
-		timeouts?:          #timeouts
+		arn?:               string
+		creation_time?:     string
 		deployment_status?: string
 		description?:       string
 		id?:                string
 		name!:              string
 		region?:            string
-		status?:            string
+		control?: matchN(1, [#control, [_, ...] & [...#control]])
+		status?:   string
+		timeouts?: #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 
 	#control: close({
-		name!: string
 		input_parameter?: matchN(1, [_#defs."/$defs/control/$defs/input_parameter", [..._#defs."/$defs/control/$defs/input_parameter"]])
 		scope?: matchN(1, [_#defs."/$defs/control/$defs/scope", list.MaxItems(1) & [..._#defs."/$defs/control/$defs/scope"]])
+		name!: string
 	})
 
 	#timeouts: close({

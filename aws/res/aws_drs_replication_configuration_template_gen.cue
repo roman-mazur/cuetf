@@ -6,8 +6,6 @@ package res
 	close({
 		arn?:                              string
 		associate_default_security_group!: bool
-		pit_policy?: matchN(1, [#pit_policy, [...#pit_policy]])
-		timeouts?:                         #timeouts
 		auto_replicate_new_disks?:         bool
 		bandwidth_throttling!:             number
 		create_public_ip!:                 bool
@@ -16,10 +14,12 @@ package res
 		ebs_encryption!:                   string
 		ebs_encryption_key_arn?:           string
 		id?:                               string
+		pit_policy?: matchN(1, [#pit_policy, [...#pit_policy]])
 		region?:                           string
 		replication_server_instance_type!: string
 		replication_servers_security_groups_ids!: [...string]
 		staging_area_subnet_id!: string
+		timeouts?:               #timeouts
 		staging_area_tags!: [string]: string
 		tags?: [string]:              string
 		tags_all?: [string]:          string

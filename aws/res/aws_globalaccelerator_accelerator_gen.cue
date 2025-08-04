@@ -6,15 +6,15 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_globalaccelerator_accelerator")
 	close({
-		arn?:      string
-		dns_name?: string
-		attributes?: matchN(1, [#attributes, list.MaxItems(1) & [...#attributes]])
-		timeouts?:            #timeouts
+		arn?:                 string
+		dns_name?:            string
 		dual_stack_dns_name?: string
 		enabled?:             bool
 		hosted_zone_id?:      string
 		id?:                  string
-		ip_address_type?:     string
+		attributes?: matchN(1, [#attributes, list.MaxItems(1) & [...#attributes]])
+		ip_address_type?: string
+		timeouts?:        #timeouts
 		ip_addresses?: [...string]
 		ip_sets?: [...close({
 			ip_addresses?: [...string]

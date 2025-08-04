@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_servicecatalog_constraint")
 	close({
 		accept_language?: string
-		timeouts?:        #timeouts
 		description?:     string
 		id?:              string
 		owner?:           string
 		parameters!:      string
 		portfolio_id!:    string
 		product_id!:      string
+		timeouts?:        #timeouts
 		region?:          string
 		status?:          string
 		type!:            string

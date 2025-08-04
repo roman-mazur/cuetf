@@ -4,9 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_shield_application_layer_automatic_response")
 	close({
+		timeouts?:     #timeouts
 		action!:       string
 		resource_arn!: string
-		timeouts?:     #timeouts
 	})
 
 	#timeouts: close({

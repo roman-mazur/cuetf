@@ -5,8 +5,6 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc_peering_connection")
 	close({
 		accepter?: [string]: bool
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?:   #timeouts
 		cidr_block?: string
 		cidr_block_set?: [...close({
 			cidr_block?: string
@@ -23,8 +21,10 @@ package data
 		peer_ipv6_cidr_block_set?: [...close({
 			ipv6_cidr_block?: string
 		})]
+		filter?: matchN(1, [#filter, [...#filter]])
 		peer_owner_id?: string
 		peer_region?:   string
+		timeouts?:      #timeouts
 		peer_vpc_id?:   string
 		requester?: [string]: bool
 		requester_region?: string

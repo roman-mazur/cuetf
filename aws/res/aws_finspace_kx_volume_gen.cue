@@ -10,17 +10,17 @@ package res
 			cluster_status?: string
 			cluster_type?:   string
 		})]
-		nas1_configuration?: matchN(1, [#nas1_configuration, [...#nas1_configuration]])
-		timeouts?: #timeouts
 		availability_zones!: [...string]
-		az_mode!:                 string
-		created_timestamp?:       string
-		description?:             string
-		environment_id!:          string
-		id?:                      string
+		az_mode!:           string
+		created_timestamp?: string
+		description?:       string
+		environment_id!:    string
+		id?:                string
+		nas1_configuration?: matchN(1, [#nas1_configuration, [...#nas1_configuration]])
 		last_modified_timestamp?: string
 		name!:                    string
 		region?:                  string
+		timeouts?:                #timeouts
 		status?:                  string
 		status_reason?:           string
 		tags?: [string]:     string

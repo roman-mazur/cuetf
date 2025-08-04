@@ -14,11 +14,11 @@ import "list"
 		log_destination?:            string
 		log_destination_type?:       string
 		log_format?:                 string
+		max_aggregation_interval?:   number
+		region?:                     string
+		subnet_id?:                  string
+		tags?: [string]: string
 		destination_options?: matchN(1, [#destination_options, list.MaxItems(1) & [...#destination_options]])
-		max_aggregation_interval?: number
-		region?:                   string
-		subnet_id?:                string
-		tags?: [string]:     string
 		tags_all?: [string]: string
 		traffic_type?:                  string
 		transit_gateway_attachment_id?: string

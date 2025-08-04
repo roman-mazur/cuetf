@@ -6,8 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_sagemaker_human_task_ui")
 	close({
-		arn?: string
 		ui_template?: matchN(1, [#ui_template, list.MaxItems(1) & [_, ...] & [...#ui_template]])
+		arn?:                string
 		human_task_ui_name!: string
 		id?:                 string
 		region?:             string

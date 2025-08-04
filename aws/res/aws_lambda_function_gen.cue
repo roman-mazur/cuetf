@@ -7,18 +7,8 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lambda_function")
 	close({
 		architectures?: [...string]
-		arn?: string
-		dead_letter_config?: matchN(1, [#dead_letter_config, list.MaxItems(1) & [...#dead_letter_config]])
-		environment?: matchN(1, [#environment, list.MaxItems(1) & [...#environment]])
-		ephemeral_storage?: matchN(1, [#ephemeral_storage, list.MaxItems(1) & [...#ephemeral_storage]])
-		file_system_config?: matchN(1, [#file_system_config, list.MaxItems(1) & [...#file_system_config]])
-		image_config?: matchN(1, [#image_config, list.MaxItems(1) & [...#image_config]])
-		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
-		snap_start?: matchN(1, [#snap_start, list.MaxItems(1) & [...#snap_start]])
-		code_sha256?: string
-		timeouts?:    #timeouts
-		tracing_config?: matchN(1, [#tracing_config, list.MaxItems(1) & [...#tracing_config]])
-		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
+		arn?:                     string
+		code_sha256?:             string
 		code_signing_config_arn?: string
 		description?:             string
 		filename?:                string
@@ -30,29 +20,39 @@ import "list"
 		kms_key_arn?:             string
 		last_modified?:           string
 		layers?: [...string]
-		memory_size?:                        number
-		package_type?:                       string
-		publish?:                            bool
+		memory_size?:  number
+		package_type?: string
+		publish?:      bool
+		dead_letter_config?: matchN(1, [#dead_letter_config, list.MaxItems(1) & [...#dead_letter_config]])
 		qualified_arn?:                      string
 		qualified_invoke_arn?:               string
 		region?:                             string
 		replace_security_groups_on_destroy?: bool
 		replacement_security_group_ids?: [...string]
+		environment?: matchN(1, [#environment, list.MaxItems(1) & [...#environment]])
 		reserved_concurrent_executions?: number
 		role!:                           string
-		runtime?:                        string
-		s3_bucket?:                      string
-		s3_key?:                         string
-		s3_object_version?:              string
-		signing_job_arn?:                string
-		signing_profile_version_arn?:    string
-		skip_destroy?:                   bool
-		source_code_hash?:               string
-		source_code_size?:               number
+		ephemeral_storage?: matchN(1, [#ephemeral_storage, list.MaxItems(1) & [...#ephemeral_storage]])
+		runtime?:                     string
+		s3_bucket?:                   string
+		s3_key?:                      string
+		s3_object_version?:           string
+		signing_job_arn?:             string
+		signing_profile_version_arn?: string
+		skip_destroy?:                bool
+		source_code_hash?:            string
+		source_code_size?:            number
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		timeout?: number
 		version?: string
+		file_system_config?: matchN(1, [#file_system_config, list.MaxItems(1) & [...#file_system_config]])
+		image_config?: matchN(1, [#image_config, list.MaxItems(1) & [...#image_config]])
+		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
+		snap_start?: matchN(1, [#snap_start, list.MaxItems(1) & [...#snap_start]])
+		timeouts?: #timeouts
+		tracing_config?: matchN(1, [#tracing_config, list.MaxItems(1) & [...#tracing_config]])
+		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
 	})
 
 	#dead_letter_config: close({

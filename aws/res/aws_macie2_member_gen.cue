@@ -12,8 +12,8 @@ package res
 		invitation_disable_email_notification?: bool
 		invitation_message?:                    string
 		invite?:                                bool
-		timeouts?:                              #timeouts
 		invited_at?:                            string
+		timeouts?:                              #timeouts
 		master_account_id?:                     string
 		region?:                                string
 		relationship_status?:                   string

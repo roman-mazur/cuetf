@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc_ipam_pools")
 	close({
+		filter?: matchN(1, [#filter, [...#filter]])
 		id?: string
 		ipam_pools?: [...close({
 			address_family?:                    string
@@ -26,7 +27,6 @@ package data
 			tags?: [string]: string
 		})]
 		region?: string
-		filter?: matchN(1, [#filter, [...#filter]])
 	})
 
 	#filter: close({

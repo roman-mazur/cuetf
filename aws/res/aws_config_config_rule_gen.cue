@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_config_config_rule")
 	close({
-		arn?:         string
-		description?: string
-		evaluation_mode?: matchN(1, [#evaluation_mode, [...#evaluation_mode]])
-		scope?: matchN(1, [#scope, list.MaxItems(1) & [...#scope]])
-		source?: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		arn?:                         string
+		description?:                 string
 		id?:                          string
 		input_parameters?:            string
 		maximum_execution_frequency?: string
 		name!:                        string
-		region?:                      string
-		rule_id?:                     string
+		evaluation_mode?: matchN(1, [#evaluation_mode, [...#evaluation_mode]])
+		region?: string
+		scope?: matchN(1, [#scope, list.MaxItems(1) & [...#scope]])
+		source?: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		rule_id?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
@@ -33,10 +33,10 @@ import "list"
 	})
 
 	#source: close({
-		owner!:             string
-		source_identifier?: string
 		custom_policy_details?: matchN(1, [_#defs."/$defs/source/$defs/custom_policy_details", list.MaxItems(1) & [..._#defs."/$defs/source/$defs/custom_policy_details"]])
 		source_detail?: matchN(1, [_#defs."/$defs/source/$defs/source_detail", list.MaxItems(25) & [..._#defs."/$defs/source/$defs/source_detail"]])
+		owner!:             string
+		source_identifier?: string
 	})
 
 	_#defs: "/$defs/source/$defs/custom_policy_details": close({

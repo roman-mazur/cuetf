@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_transcribe_vocabulary")
 	close({
 		arn?:           string
-		timeouts?:      #timeouts
 		download_uri?:  string
 		id?:            string
 		language_code!: string
 		phrases?: [...string]
 		region?: string
-		tags?: [string]:     string
+		tags?: [string]: string
+		timeouts?: #timeouts
 		tags_all?: [string]: string
 		vocabulary_file_uri?: string
 		vocabulary_name!:     string

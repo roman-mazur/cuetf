@@ -4,10 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_instance")
 	close({
-		ami?: string
-		arn?: string
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?:                    #timeouts
+		ami?:                         string
+		arn?:                         string
 		associate_public_ip_address?: bool
 		availability_zone?:           string
 		credit_specification?: [...close({
@@ -50,6 +48,7 @@ package data
 		ipv6_addresses?: [...string]
 		key_name?:    string
 		launch_time?: string
+		filter?: matchN(1, [#filter, [...#filter]])
 		maintenance_options?: [...close({
 			auto_recovery?: string
 		})]
@@ -60,6 +59,7 @@ package data
 			http_tokens?:                 string
 			instance_metadata_tags?:      string
 		})]
+		timeouts?:                   #timeouts
 		monitoring?:                 bool
 		network_interface_id?:       string
 		outpost_arn?:                string

@@ -6,18 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_elastictranscoder_preset")
 	close({
-		arn?:       string
-		container!: string
+		arn?: string
 		audio?: matchN(1, [#audio, list.MaxItems(1) & [...#audio]])
-		audio_codec_options?: matchN(1, [#audio_codec_options, list.MaxItems(1) & [...#audio_codec_options]])
-		thumbnails?: matchN(1, [#thumbnails, list.MaxItems(1) & [...#thumbnails]])
-		video?: matchN(1, [#video, list.MaxItems(1) & [...#video]])
+		container!:   string
 		description?: string
 		id?:          string
 		name?:        string
-		video_watermarks?: matchN(1, [#video_watermarks, [...#video_watermarks]])
+		audio_codec_options?: matchN(1, [#audio_codec_options, list.MaxItems(1) & [...#audio_codec_options]])
 		region?: string
 		type?:   string
+		thumbnails?: matchN(1, [#thumbnails, list.MaxItems(1) & [...#thumbnails]])
+		video?: matchN(1, [#video, list.MaxItems(1) & [...#video]])
+		video_watermarks?: matchN(1, [#video_watermarks, [...#video_watermarks]])
 		video_codec_options?: [string]: string
 	})
 

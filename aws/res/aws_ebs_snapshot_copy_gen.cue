@@ -14,8 +14,8 @@ package res
 		outpost_arn?:                 string
 		owner_alias?:                 string
 		owner_id?:                    string
-		timeouts?:                    #timeouts
 		permanent_restore?:           bool
+		timeouts?:                    #timeouts
 		region?:                      string
 		source_region!:               string
 		source_snapshot_id!:          string

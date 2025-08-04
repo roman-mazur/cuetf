@@ -16,8 +16,8 @@ import "list"
 		execution_arn?:                string
 		fail_on_warnings?:             bool
 		id?:                           string
+		ip_address_type?:              string
 		cors_configuration?: matchN(1, [#cors_configuration, list.MaxItems(1) & [...#cors_configuration]])
-		ip_address_type?:            string
 		name!:                       string
 		protocol_type!:              string
 		region?:                     string

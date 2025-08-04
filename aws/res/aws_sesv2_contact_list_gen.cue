@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_sesv2_contact_list")
 	close({
-		arn?: string
 		topic?: matchN(1, [#topic, [...#topic]])
+		arn?:                    string
 		contact_list_name!:      string
 		created_timestamp?:      string
 		description?:            string

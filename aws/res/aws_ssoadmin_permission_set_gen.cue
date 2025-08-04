@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ssoadmin_permission_set")
 	close({
 		arn?:              string
-		timeouts?:         #timeouts
 		created_date?:     string
 		description?:      string
 		id?:               string
@@ -14,6 +13,7 @@ package res
 		region?:           string
 		relay_state?:      string
 		session_duration?: string
+		timeouts?:         #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

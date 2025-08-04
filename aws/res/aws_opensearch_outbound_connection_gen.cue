@@ -6,21 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opensearch_outbound_connection")
 	close({
+		connection_properties?: matchN(1, [#connection_properties, list.MaxItems(1) & [...#connection_properties]])
 		accept_connection?: bool
 		connection_alias!:  string
-		connection_properties?: matchN(1, [#connection_properties, list.MaxItems(1) & [...#connection_properties]])
-		local_domain_info?: matchN(1, [#local_domain_info, list.MaxItems(1) & [_, ...] & [...#local_domain_info]])
-		remote_domain_info?: matchN(1, [#remote_domain_info, list.MaxItems(1) & [_, ...] & [...#remote_domain_info]])
-		timeouts?:          #timeouts
 		connection_mode?:   string
 		connection_status?: string
 		id?:                string
 		region?:            string
+		local_domain_info?: matchN(1, [#local_domain_info, list.MaxItems(1) & [_, ...] & [...#local_domain_info]])
+		remote_domain_info?: matchN(1, [#remote_domain_info, list.MaxItems(1) & [_, ...] & [...#remote_domain_info]])
+		timeouts?: #timeouts
 	})
 
 	#connection_properties: close({
-		endpoint?: string
 		cross_cluster_search?: matchN(1, [_#defs."/$defs/connection_properties/$defs/cross_cluster_search", list.MaxItems(1) & [..._#defs."/$defs/connection_properties/$defs/cross_cluster_search"]])
+		endpoint?: string
 	})
 
 	#local_domain_info: close({

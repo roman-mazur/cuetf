@@ -6,22 +6,22 @@ package res
 	close({
 		name!: string
 		openzfs_configuration?: matchN(1, [#openzfs_configuration, [...#openzfs_configuration]])
-		s3_access_point?: matchN(1, [#s3_access_point, [...#s3_access_point]])
-		timeouts?:              #timeouts
 		region?:                string
 		s3_access_point_alias?: string
 		s3_access_point_arn?:   string
 		type!:                  string
+		s3_access_point?: matchN(1, [#s3_access_point, [...#s3_access_point]])
+		timeouts?: #timeouts
 	})
 
 	#openzfs_configuration: close({
-		volume_id!: string
 		file_system_identity?: matchN(1, [_#defs."/$defs/openzfs_configuration/$defs/file_system_identity", [..._#defs."/$defs/openzfs_configuration/$defs/file_system_identity"]])
+		volume_id!: string
 	})
 
 	#s3_access_point: close({
-		policy?: string
 		vpc_configuration?: matchN(1, [_#defs."/$defs/s3_access_point/$defs/vpc_configuration", [..._#defs."/$defs/s3_access_point/$defs/vpc_configuration"]])
+		policy?: string
 	})
 
 	#timeouts: close({
@@ -30,8 +30,8 @@ package res
 	})
 
 	_#defs: "/$defs/openzfs_configuration/$defs/file_system_identity": close({
-		type!: string
 		posix_user?: matchN(1, [_#defs."/$defs/openzfs_configuration/$defs/file_system_identity/$defs/posix_user", [..._#defs."/$defs/openzfs_configuration/$defs/file_system_identity/$defs/posix_user"]])
+		type!: string
 	})
 
 	_#defs: "/$defs/openzfs_configuration/$defs/file_system_identity/$defs/posix_user": close({

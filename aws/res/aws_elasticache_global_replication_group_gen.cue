@@ -17,12 +17,12 @@ package res
 			global_node_group_id?: string
 			slots?:                string
 		})]
-		timeouts?:                             #timeouts
 		global_replication_group_description?: string
 		global_replication_group_id?:          string
 		global_replication_group_id_suffix!:   string
 		id?:                                   string
 		num_node_groups?:                      number
+		timeouts?:                             #timeouts
 		parameter_group_name?:                 string
 		primary_replication_group_id!:         string
 		region?:                               string

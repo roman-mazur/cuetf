@@ -6,22 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appsync_resolver")
 	close({
-		api_id!: string
-		arn?:    string
+		api_id!:      string
+		arn?:         string
+		code?:        string
+		data_source?: string
+		field!:       string
+		id?:          string
+		kind?:        string
 		caching_config?: matchN(1, [#caching_config, list.MaxItems(1) & [...#caching_config]])
 		pipeline_config?: matchN(1, [#pipeline_config, list.MaxItems(1) & [...#pipeline_config]])
 		runtime?: matchN(1, [#runtime, list.MaxItems(1) & [...#runtime]])
-		sync_config?: matchN(1, [#sync_config, list.MaxItems(1) & [...#sync_config]])
-		code?:              string
-		data_source?:       string
-		field!:             string
-		id?:                string
-		kind?:              string
 		max_batch_size?:    number
 		region?:            string
 		request_template?:  string
 		response_template?: string
 		type!:              string
+		sync_config?: matchN(1, [#sync_config, list.MaxItems(1) & [...#sync_config]])
 	})
 
 	#caching_config: close({
@@ -39,9 +39,9 @@ import "list"
 	})
 
 	#sync_config: close({
+		lambda_conflict_handler_config?: matchN(1, [_#defs."/$defs/sync_config/$defs/lambda_conflict_handler_config", list.MaxItems(1) & [..._#defs."/$defs/sync_config/$defs/lambda_conflict_handler_config"]])
 		conflict_detection?: string
 		conflict_handler?:   string
-		lambda_conflict_handler_config?: matchN(1, [_#defs."/$defs/sync_config/$defs/lambda_conflict_handler_config", list.MaxItems(1) & [..._#defs."/$defs/sync_config/$defs/lambda_conflict_handler_config"]])
 	})
 
 	_#defs: "/$defs/sync_config/$defs/lambda_conflict_handler_config": close({

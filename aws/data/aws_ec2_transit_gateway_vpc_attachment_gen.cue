@@ -6,13 +6,13 @@ package data
 	close({
 		appliance_mode_support?: string
 		arn?:                    string
+		dns_support?:            string
+		id?:                     string
+		ipv6_support?:           string
+		region?:                 string
 		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?:                           #timeouts
-		dns_support?:                        string
-		id?:                                 string
-		ipv6_support?:                       string
-		region?:                             string
 		security_group_referencing_support?: string
+		timeouts?:                           #timeouts
 		subnet_ids?: [...string]
 		tags?: [string]: string
 		transit_gateway_id?: string

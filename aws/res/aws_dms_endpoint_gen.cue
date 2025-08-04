@@ -6,36 +6,36 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dms_endpoint")
 	close({
-		certificate_arn?: string
-		database_name?:   string
+		certificate_arn?:             string
+		database_name?:               string
+		endpoint_arn?:                string
+		endpoint_id!:                 string
+		endpoint_type!:               string
+		engine_name!:                 string
+		extra_connection_attributes?: string
 		elasticsearch_settings?: matchN(1, [#elasticsearch_settings, list.MaxItems(1) & [...#elasticsearch_settings]])
+		id?: string
 		kafka_settings?: matchN(1, [#kafka_settings, list.MaxItems(1) & [...#kafka_settings]])
+		kms_key_arn?:             string
+		password?:                string
+		pause_replication_tasks?: bool
+		port?:                    number
+		region?:                  string
 		kinesis_settings?: matchN(1, [#kinesis_settings, list.MaxItems(1) & [...#kinesis_settings]])
+		secrets_manager_access_role_arn?: string
 		mongodb_settings?: matchN(1, [#mongodb_settings, list.MaxItems(1) & [...#mongodb_settings]])
+		secrets_manager_arn?: string
+		server_name?:         string
+		service_access_role?: string
+		ssl_mode?:            string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 		oracle_settings?: matchN(1, [#oracle_settings, list.MaxItems(1) & [...#oracle_settings]])
-		endpoint_arn?: string
 		postgres_settings?: matchN(1, [#postgres_settings, list.MaxItems(1) & [...#postgres_settings]])
 		redis_settings?: matchN(1, [#redis_settings, list.MaxItems(1) & [...#redis_settings]])
-		redshift_settings?: matchN(1, [#redshift_settings, list.MaxItems(1) & [...#redshift_settings]])
-		endpoint_id!:                     string
-		endpoint_type!:                   string
-		engine_name!:                     string
-		extra_connection_attributes?:     string
-		id?:                              string
-		kms_key_arn?:                     string
-		password?:                        string
-		pause_replication_tasks?:         bool
-		port?:                            number
-		region?:                          string
-		secrets_manager_access_role_arn?: string
-		secrets_manager_arn?:             string
-		server_name?:                     string
-		service_access_role?:             string
-		ssl_mode?:                        string
-		tags?: [string]: string
-		timeouts?: #timeouts
-		tags_all?: [string]: string
 		username?: string
+		redshift_settings?: matchN(1, [#redshift_settings, list.MaxItems(1) & [...#redshift_settings]])
+		timeouts?: #timeouts
 	})
 
 	#elasticsearch_settings: close({

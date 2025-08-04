@@ -4,11 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ami_copy")
 	close({
-		architecture?: string
-		arn?:          string
-		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
-		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
-		timeouts?:                #timeouts
+		architecture?:            string
+		arn?:                     string
 		boot_mode?:               string
 		deprecation_time?:        string
 		description?:             string
@@ -26,17 +23,20 @@ package res
 		last_launched_time?:      string
 		manage_ebs_snapshots?:    bool
 		name!:                    string
-		owner_id?:                string
-		platform?:                string
-		platform_details?:        string
-		public?:                  bool
-		ramdisk_id?:              string
-		region?:                  string
-		root_device_name?:        string
-		root_snapshot_id?:        string
-		source_ami_id!:           string
-		source_ami_region!:       string
-		sriov_net_support?:       string
+		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
+		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
+		owner_id?:          string
+		timeouts?:          #timeouts
+		platform?:          string
+		platform_details?:  string
+		public?:            bool
+		ramdisk_id?:        string
+		region?:            string
+		root_device_name?:  string
+		root_snapshot_id?:  string
+		source_ami_id!:     string
+		source_ami_region!: string
+		sriov_net_support?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		tpm_support?:         string

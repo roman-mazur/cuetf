@@ -6,7 +6,6 @@ package data
 	close({
 		arn?: string
 		cidr_blocks?: [...string]
-		filter?: matchN(1, [#filter, [...#filter]])
 		dns_entry?: [...close({
 			dns_name?:       string
 			hosted_zone_id?: string
@@ -20,11 +19,12 @@ package data
 		network_interface_ids?: [...string]
 		owner_id?:            string
 		policy?:              string
-		timeouts?:            #timeouts
 		prefix_list_id?:      string
 		private_dns_enabled?: bool
-		region?:              string
-		requester_managed?:   bool
+		filter?: matchN(1, [#filter, [...#filter]])
+		region?:            string
+		requester_managed?: bool
+		timeouts?:          #timeouts
 		route_table_ids?: [...string]
 		security_group_ids?: [...string]
 		service_name?: string

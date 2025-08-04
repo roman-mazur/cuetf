@@ -16,9 +16,9 @@ package res
 		id?:                        string
 		instance?:                  string
 		ipam_pool_id?:              string
-		timeouts?:                  #timeouts
 		network_border_group?:      string
 		network_interface?:         string
+		timeouts?:                  #timeouts
 		private_dns?:               string
 		private_ip?:                string
 		ptr_record?:                string

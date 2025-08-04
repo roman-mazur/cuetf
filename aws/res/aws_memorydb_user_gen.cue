@@ -6,8 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_memorydb_user")
 	close({
-		access_string!: string
 		authentication_mode?: matchN(1, [#authentication_mode, list.MaxItems(1) & [_, ...] & [...#authentication_mode]])
+		access_string!:          string
 		arn?:                    string
 		id?:                     string
 		minimum_engine_version?: string

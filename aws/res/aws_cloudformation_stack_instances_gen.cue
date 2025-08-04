@@ -8,14 +8,14 @@ import "list"
 	close({
 		accounts?: [...string]
 		call_as?: string
-		deployment_targets?: matchN(1, [#deployment_targets, list.MaxItems(1) & [...#deployment_targets]])
-		operation_preferences?: matchN(1, [#operation_preferences, list.MaxItems(1) & [...#operation_preferences]])
-		timeouts?: #timeouts
-		id?:       string
+		id?:      string
 		parameter_overrides?: [string]: string
 		region?: string
 		regions?: [...string]
+		deployment_targets?: matchN(1, [#deployment_targets, list.MaxItems(1) & [...#deployment_targets]])
 		retain_stacks?: bool
+		operation_preferences?: matchN(1, [#operation_preferences, list.MaxItems(1) & [...#operation_preferences]])
+		timeouts?: #timeouts
 		stack_instance_summaries?: [...close({
 			account_id?:             string
 			detailed_status?:        string

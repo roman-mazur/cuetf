@@ -8,14 +8,14 @@ import "list"
 	close({
 		api_mapping_selection_expression?: string
 		domain_name_configuration?: matchN(1, [#domain_name_configuration, list.MaxItems(1) & [_, ...] & [...#domain_name_configuration]])
-		mutual_tls_authentication?: matchN(1, [#mutual_tls_authentication, list.MaxItems(1) & [...#mutual_tls_authentication]])
-		timeouts?:    #timeouts
 		arn?:         string
 		domain_name!: string
 		id?:          string
 		region?:      string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		mutual_tls_authentication?: matchN(1, [#mutual_tls_authentication, list.MaxItems(1) & [...#mutual_tls_authentication]])
+		timeouts?: #timeouts
 	})
 
 	#domain_name_configuration: close({

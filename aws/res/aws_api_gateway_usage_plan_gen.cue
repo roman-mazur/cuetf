@@ -8,21 +8,21 @@ import "list"
 	close({
 		arn?:         string
 		description?: string
+		id?:          string
+		name!:        string
 		api_stages?: matchN(1, [#api_stages, [...#api_stages]])
-		quota_settings?: matchN(1, [#quota_settings, list.MaxItems(1) & [...#quota_settings]])
-		throttle_settings?: matchN(1, [#throttle_settings, list.MaxItems(1) & [...#throttle_settings]])
-		id?:           string
-		name!:         string
 		product_code?: string
 		region?:       string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		quota_settings?: matchN(1, [#quota_settings, list.MaxItems(1) & [...#quota_settings]])
+		throttle_settings?: matchN(1, [#throttle_settings, list.MaxItems(1) & [...#throttle_settings]])
 	})
 
 	#api_stages: close({
+		throttle?: matchN(1, [_#defs."/$defs/api_stages/$defs/throttle", [..._#defs."/$defs/api_stages/$defs/throttle"]])
 		api_id!: string
 		stage!:  string
-		throttle?: matchN(1, [_#defs."/$defs/api_stages/$defs/throttle", [..._#defs."/$defs/api_stages/$defs/throttle"]])
 	})
 
 	#quota_settings: close({

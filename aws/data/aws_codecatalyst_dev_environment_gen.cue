@@ -17,13 +17,13 @@ import "list"
 		inactivity_timeout_minutes?: number
 		instance_type?:              string
 		last_updated_time?:          string
-		repositories?: matchN(1, [#repositories, list.MaxItems(100) & [...#repositories]])
 		persistent_storage?: [...close({
 			size?: number
 		})]
-		project_name!:  string
-		region?:        string
-		space_name!:    string
+		project_name!: string
+		region?:       string
+		space_name!:   string
+		repositories?: matchN(1, [#repositories, list.MaxItems(100) & [...#repositories]])
 		status?:        string
 		status_reason?: string
 		tags?: [string]: string

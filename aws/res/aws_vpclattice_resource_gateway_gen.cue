@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpclattice_resource_gateway")
 	close({
 		arn?:             string
-		timeouts?:        #timeouts
 		id?:              string
 		ip_address_type?: string
 		name!:            string
@@ -13,7 +12,8 @@ package res
 		security_group_ids?: [...string]
 		status?: string
 		subnet_ids!: [...string]
-		tags?: [string]:     string
+		tags?: [string]: string
+		timeouts?: #timeouts
 		tags_all?: [string]: string
 		vpc_id!: string
 	})

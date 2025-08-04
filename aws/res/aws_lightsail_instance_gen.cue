@@ -15,9 +15,9 @@ import "list"
 		id?:                string
 		ip_address_type?:   string
 		ipv6_addresses?: [...string]
-		is_static_ip?: bool
+		is_static_ip?:  bool
+		key_pair_name?: string
 		add_on?: matchN(1, [#add_on, list.MaxItems(1) & [...#add_on]])
-		key_pair_name?:      string
 		name!:               string
 		private_ip_address?: string
 		public_ip_address?:  string

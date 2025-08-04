@@ -8,27 +8,27 @@ import "list"
 	close({
 		arn?: string
 		cookies_config?: matchN(1, [#cookies_config, list.MaxItems(1) & [_, ...] & [...#cookies_config]])
-		headers_config?: matchN(1, [#headers_config, list.MaxItems(1) & [_, ...] & [...#headers_config]])
-		query_strings_config?: matchN(1, [#query_strings_config, list.MaxItems(1) & [_, ...] & [...#query_strings_config]])
 		comment?: string
 		etag?:    string
 		id?:      string
 		name!:    string
+		headers_config?: matchN(1, [#headers_config, list.MaxItems(1) & [_, ...] & [...#headers_config]])
+		query_strings_config?: matchN(1, [#query_strings_config, list.MaxItems(1) & [_, ...] & [...#query_strings_config]])
 	})
 
 	#cookies_config: close({
-		cookie_behavior!: string
 		cookies?: matchN(1, [_#defs."/$defs/cookies_config/$defs/cookies", list.MaxItems(1) & [..._#defs."/$defs/cookies_config/$defs/cookies"]])
+		cookie_behavior!: string
 	})
 
 	#headers_config: close({
-		header_behavior?: string
 		headers?: matchN(1, [_#defs."/$defs/headers_config/$defs/headers", list.MaxItems(1) & [..._#defs."/$defs/headers_config/$defs/headers"]])
+		header_behavior?: string
 	})
 
 	#query_strings_config: close({
-		query_string_behavior!: string
 		query_strings?: matchN(1, [_#defs."/$defs/query_strings_config/$defs/query_strings", list.MaxItems(1) & [..._#defs."/$defs/query_strings_config/$defs/query_strings"]])
+		query_string_behavior!: string
 	})
 
 	_#defs: "/$defs/cookies_config/$defs/cookies": close({

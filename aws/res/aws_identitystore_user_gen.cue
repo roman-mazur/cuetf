@@ -11,10 +11,6 @@ import "list"
 			id?:     string
 			issuer?: string
 		})]
-		addresses?: matchN(1, [#addresses, list.MaxItems(1) & [...#addresses]])
-		emails?: matchN(1, [#emails, list.MaxItems(1) & [...#emails]])
-		name?: matchN(1, [#name, list.MaxItems(1) & [_, ...] & [...#name]])
-		phone_numbers?: matchN(1, [#phone_numbers, list.MaxItems(1) & [...#phone_numbers]])
 		id?:                 string
 		identity_store_id!:  string
 		locale?:             string
@@ -22,11 +18,15 @@ import "list"
 		preferred_language?: string
 		profile_url?:        string
 		region?:             string
-		timezone?:           string
-		title?:              string
-		user_id?:            string
-		user_name!:          string
-		user_type?:          string
+		addresses?: matchN(1, [#addresses, list.MaxItems(1) & [...#addresses]])
+		timezone?: string
+		title?:    string
+		emails?: matchN(1, [#emails, list.MaxItems(1) & [...#emails]])
+		name?: matchN(1, [#name, list.MaxItems(1) & [_, ...] & [...#name]])
+		user_id?:   string
+		user_name!: string
+		user_type?: string
+		phone_numbers?: matchN(1, [#phone_numbers, list.MaxItems(1) & [...#phone_numbers]])
 	})
 
 	#addresses: close({

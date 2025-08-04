@@ -4,8 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_memorydb_snapshot")
 	close({
-		arn?:      string
-		timeouts?: #timeouts
+		arn?: string
 		cluster_configuration?: [...close({
 			description?:              string
 			engine?:                   string
@@ -29,6 +28,7 @@ package res
 		name_prefix?:  string
 		region?:       string
 		source?:       string
+		timeouts?:     #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

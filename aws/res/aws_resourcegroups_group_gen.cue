@@ -8,19 +8,19 @@ import "list"
 	close({
 		arn?: string
 		configuration?: matchN(1, [#configuration, [...#configuration]])
-		resource_query?: matchN(1, [#resource_query, list.MaxItems(1) & [...#resource_query]])
-		timeouts?:    #timeouts
 		description?: string
 		id?:          string
 		name!:        string
 		region?:      string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		resource_query?: matchN(1, [#resource_query, list.MaxItems(1) & [...#resource_query]])
+		timeouts?: #timeouts
 	})
 
 	#configuration: close({
-		type!: string
 		parameters?: matchN(1, [_#defs."/$defs/configuration/$defs/parameters", [..._#defs."/$defs/configuration/$defs/parameters"]])
+		type!: string
 	})
 
 	#resource_query: close({

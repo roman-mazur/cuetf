@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_capacity_reservation")
 	close({
 		arn?:                     string
-		timeouts?:                #timeouts
 		availability_zone!:       string
 		ebs_optimized?:           bool
 		end_date?:                string
@@ -20,6 +19,7 @@ package res
 		owner_id?:                string
 		placement_group_arn?:     string
 		region?:                  string
+		timeouts?:                #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		tenancy?: string

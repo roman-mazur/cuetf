@@ -12,11 +12,11 @@ package res
 		kms_key_id?:             string
 		outpost_arn?:            string
 		owner_alias?:            string
-		timeouts?:               #timeouts
 		owner_id?:               string
 		permanent_restore?:      bool
 		region?:                 string
 		storage_tier?:           string
+		timeouts?:               #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		temporary_restore_days?: number

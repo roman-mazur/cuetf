@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appsync_source_api_association")
 	close({
 		arn?:            string
-		timeouts?:       #timeouts
 		association_id?: string
 		description?:    string
 		id?:             string
 		merged_api_arn?: string
 		merged_api_id?:  string
 		region?:         string
+		timeouts?:       #timeouts
 		source_api_arn?: string
 		source_api_association_config?: [...close({
 			merge_type?: string

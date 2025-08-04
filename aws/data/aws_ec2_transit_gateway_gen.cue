@@ -4,9 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_transit_gateway")
 	close({
-		amazon_side_asn?: number
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?:                           #timeouts
+		amazon_side_asn?:                    number
 		arn?:                                string
 		association_default_route_table_id?: string
 		auto_accept_shared_attachments?:     string
@@ -15,8 +13,10 @@ package data
 		description?:                        string
 		dns_support?:                        string
 		id?:                                 string
+		filter?: matchN(1, [#filter, [...#filter]])
 		multicast_support?:                  string
 		owner_id?:                           string
+		timeouts?:                           #timeouts
 		propagation_default_route_table_id?: string
 		region?:                             string
 		security_group_referencing_support?: string

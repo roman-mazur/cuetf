@@ -6,9 +6,7 @@ package data
 	close({
 		allow_unsafe_filter?: bool
 		architecture?:        string
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?: #timeouts
-		arn?:      string
+		arn?:                 string
 		block_device_mappings?: [...close({
 			device_name?: string
 			ebs?: [string]: string
@@ -33,8 +31,9 @@ package data
 		last_launched_time?: string
 		most_recent?:        bool
 		name?:               string
-		name_regex?:         string
-		owner_id?:           string
+		filter?: matchN(1, [#filter, [...#filter]])
+		name_regex?: string
+		owner_id?:   string
 		owners?: [...string]
 		platform?:         string
 		platform_details?: string
@@ -46,6 +45,7 @@ package data
 		ramdisk_id?:        string
 		region?:            string
 		root_device_name?:  string
+		timeouts?:          #timeouts
 		root_device_type?:  string
 		root_snapshot_id?:  string
 		sriov_net_support?: string

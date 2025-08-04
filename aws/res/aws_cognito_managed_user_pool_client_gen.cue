@@ -6,9 +6,6 @@ package res
 	close({
 		access_token_validity?: number
 		allowed_oauth_flows?: [...string]
-		analytics_configuration?: matchN(1, [#analytics_configuration, [...#analytics_configuration]])
-		refresh_token_rotation?: matchN(1, [#refresh_token_rotation, [...#refresh_token_rotation]])
-		token_validity_units?: matchN(1, [#token_validity_units, [...#token_validity_units]])
 		allowed_oauth_flows_user_pool_client?: bool
 		allowed_oauth_scopes?: [...string]
 		auth_session_validity?: number
@@ -20,7 +17,10 @@ package res
 		explicit_auth_flows?: [...string]
 		id?:                string
 		id_token_validity?: number
+		analytics_configuration?: matchN(1, [#analytics_configuration, [...#analytics_configuration]])
+		refresh_token_rotation?: matchN(1, [#refresh_token_rotation, [...#refresh_token_rotation]])
 		logout_urls?: [...string]
+		token_validity_units?: matchN(1, [#token_validity_units, [...#token_validity_units]])
 		name?:                          string
 		name_pattern?:                  string
 		name_prefix?:                   string

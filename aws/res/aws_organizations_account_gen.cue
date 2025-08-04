@@ -12,11 +12,11 @@ package res
 		iam_user_access_to_billing?: string
 		id?:                         string
 		joined_method?:              string
-		timeouts?:                   #timeouts
 		joined_timestamp?:           string
 		name!:                       string
 		parent_id?:                  string
 		role_name?:                  string
+		timeouts?:                   #timeouts
 		status?:                     string
 		tags?: [string]:     string
 		tags_all?: [string]: string

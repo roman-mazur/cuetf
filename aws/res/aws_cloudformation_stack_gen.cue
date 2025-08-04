@@ -11,12 +11,12 @@ package res
 		name!:             string
 		notification_arns?: [...string]
 		on_failure?: string
-		outputs?: [string]: string
-		timeouts?: #timeouts
+		outputs?: [string]:    string
 		parameters?: [string]: string
 		policy_body?: string
 		policy_url?:  string
 		region?:      string
+		timeouts?:    #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		template_body?:      string

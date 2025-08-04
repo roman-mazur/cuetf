@@ -7,13 +7,13 @@ package res
 		api_id!:           string
 		api_key_required?: bool
 		authorization_scopes?: [...string]
-		authorization_type?: string
-		authorizer_id?:      string
-		id?:                 string
-		request_parameter?: matchN(1, [#request_parameter, [...#request_parameter]])
+		authorization_type?:         string
+		authorizer_id?:              string
+		id?:                         string
 		model_selection_expression?: string
 		operation_name?:             string
-		region?:                     string
+		request_parameter?: matchN(1, [#request_parameter, [...#request_parameter]])
+		region?: string
 		request_models?: [string]: string
 		route_key!:                           string
 		route_response_selection_expression?: string

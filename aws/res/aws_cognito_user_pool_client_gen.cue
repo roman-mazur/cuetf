@@ -6,8 +6,6 @@ package res
 	close({
 		access_token_validity?: number
 		allowed_oauth_flows?: [...string]
-		analytics_configuration?: matchN(1, [#analytics_configuration, [...#analytics_configuration]])
-		refresh_token_rotation?: matchN(1, [#refresh_token_rotation, [...#refresh_token_rotation]])
 		allowed_oauth_flows_user_pool_client?: bool
 		allowed_oauth_scopes?: [...string]
 		auth_session_validity?: number
@@ -16,9 +14,11 @@ package res
 		default_redirect_uri?:                          string
 		enable_propagate_additional_user_context_data?: bool
 		enable_token_revocation?:                       bool
-		token_validity_units?: matchN(1, [#token_validity_units, [...#token_validity_units]])
 		explicit_auth_flows?: [...string]
-		generate_secret?:   bool
+		generate_secret?: bool
+		analytics_configuration?: matchN(1, [#analytics_configuration, [...#analytics_configuration]])
+		refresh_token_rotation?: matchN(1, [#refresh_token_rotation, [...#refresh_token_rotation]])
+		token_validity_units?: matchN(1, [#token_validity_units, [...#token_validity_units]])
 		id?:                string
 		id_token_validity?: number
 		logout_urls?: [...string]

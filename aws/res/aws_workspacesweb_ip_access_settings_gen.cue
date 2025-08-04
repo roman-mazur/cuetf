@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_workspacesweb_ip_access_settings")
 	close({
-		additional_encryption_context?: [string]: string
 		ip_rule?: matchN(1, [#ip_rule, [...#ip_rule]])
+		additional_encryption_context?: [string]: string
 		associated_portal_arns?: [...string]
 		customer_managed_key?:   string
 		description?:            string

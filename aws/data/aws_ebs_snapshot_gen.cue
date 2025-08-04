@@ -6,19 +6,19 @@ package data
 	close({
 		arn?:                    string
 		data_encryption_key_id?: string
-		filter?: matchN(1, [#filter, [...#filter]])
-		description?: string
-		encrypted?:   bool
-		id?:          string
-		kms_key_id?:  string
-		most_recent?: bool
-		outpost_arn?: string
-		owner_alias?: string
-		timeouts?:    #timeouts
-		owner_id?:    string
+		description?:            string
+		encrypted?:              bool
+		id?:                     string
+		kms_key_id?:             string
+		most_recent?:            bool
+		outpost_arn?:            string
+		owner_alias?:            string
+		owner_id?:               string
 		owners?: [...string]
+		filter?: matchN(1, [#filter, [...#filter]])
 		region?: string
 		restorable_by_user_ids?: [...string]
+		timeouts?:    #timeouts
 		snapshot_id?: string
 		snapshot_ids?: [...string]
 		start_time?:   string

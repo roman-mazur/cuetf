@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_account_alternate_contact")
 	close({
-		account_id?:             string
 		timeouts?:               #timeouts
+		account_id?:             string
 		alternate_contact_type!: string
 		email_address!:          string
 		id?:                     string

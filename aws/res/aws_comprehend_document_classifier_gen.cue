@@ -8,29 +8,29 @@ import "list"
 	close({
 		arn?:                  string
 		data_access_role_arn!: string
+		id?:                   string
+		language_code!:        string
+		mode?:                 string
+		model_kms_key_id?:     string
+		name!:                 string
+		region?:               string
+		tags?: [string]: string
 		input_data_config?: matchN(1, [#input_data_config, list.MaxItems(1) & [_, ...] & [...#input_data_config]])
-		output_data_config?: matchN(1, [#output_data_config, list.MaxItems(1) & [...#output_data_config]])
-		timeouts?: #timeouts
-		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
-		id?:               string
-		language_code!:    string
-		mode?:             string
-		model_kms_key_id?: string
-		name!:             string
-		region?:           string
-		tags?: [string]:     string
 		tags_all?: [string]: string
 		version_name?:        string
 		version_name_prefix?: string
 		volume_kms_key_id?:   string
+		output_data_config?: matchN(1, [#output_data_config, list.MaxItems(1) & [...#output_data_config]])
+		timeouts?: #timeouts
+		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
 	})
 
 	#input_data_config: close({
+		augmented_manifests?: matchN(1, [_#defs."/$defs/input_data_config/$defs/augmented_manifests", [..._#defs."/$defs/input_data_config/$defs/augmented_manifests"]])
 		data_format?:     string
 		label_delimiter?: string
 		s3_uri?:          string
 		test_s3_uri?:     string
-		augmented_manifests?: matchN(1, [_#defs."/$defs/input_data_config/$defs/augmented_manifests", [..._#defs."/$defs/input_data_config/$defs/augmented_manifests"]])
 	})
 
 	#output_data_config: close({

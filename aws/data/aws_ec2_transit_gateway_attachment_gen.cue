@@ -10,10 +10,10 @@ package data
 		id?:                                         string
 		region?:                                     string
 		resource_id?:                                string
+		resource_owner_id?:                          string
+		resource_type?:                              string
 		filter?: matchN(1, [#filter, [...#filter]])
-		resource_owner_id?: string
-		resource_type?:     string
-		state?:             string
+		state?: string
 		tags?: [string]: string
 		transit_gateway_attachment_id?: string
 		transit_gateway_id?:            string

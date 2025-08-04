@@ -6,14 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_mq_broker")
 	close({
-		apply_immediately?: bool
-		arn?:               string
-		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
-		encryption_options?: matchN(1, [#encryption_options, list.MaxItems(1) & [...#encryption_options]])
-		ldap_server_metadata?: matchN(1, [#ldap_server_metadata, list.MaxItems(1) & [...#ldap_server_metadata]])
-		logs?: matchN(1, [#logs, list.MaxItems(1) & [...#logs]])
-		maintenance_window_start_time?: matchN(1, [#maintenance_window_start_time, list.MaxItems(1) & [...#maintenance_window_start_time]])
-		timeouts?:                            #timeouts
+		apply_immediately?:                   bool
+		arn?:                                 string
 		authentication_strategy?:             string
 		auto_minor_version_upgrade?:          bool
 		broker_name!:                         string
@@ -22,22 +16,28 @@ import "list"
 		deployment_mode?:                     string
 		engine_type!:                         string
 		engine_version!:                      string
-		host_instance_type!:                  string
-		id?:                                  string
+		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
+		host_instance_type!: string
+		encryption_options?: matchN(1, [#encryption_options, list.MaxItems(1) & [...#encryption_options]])
+		id?: string
 		instances?: [...close({
 			console_url?: string
 			endpoints?: [...string]
 			ip_address?: string
 		})]
+		ldap_server_metadata?: matchN(1, [#ldap_server_metadata, list.MaxItems(1) & [...#ldap_server_metadata]])
 		pending_data_replication_mode?: string
 		publicly_accessible?:           bool
 		region?:                        string
 		security_groups?: [...string]
 		storage_type?: string
 		subnet_ids?: [...string]
-		user?: matchN(1, [#user, [_, ...] & [...#user]])
-		tags?: [string]:     string
+		logs?: matchN(1, [#logs, list.MaxItems(1) & [...#logs]])
+		tags?: [string]: string
+		maintenance_window_start_time?: matchN(1, [#maintenance_window_start_time, list.MaxItems(1) & [...#maintenance_window_start_time]])
 		tags_all?: [string]: string
+		timeouts?: #timeouts
+		user?: matchN(1, [#user, [_, ...] & [...#user]])
 	})
 
 	#configuration: close({

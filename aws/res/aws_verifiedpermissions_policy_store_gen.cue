@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_verifiedpermissions_policy_store")
 	close({
-		arn?: string
 		validation_settings?: matchN(1, [#validation_settings, [...#validation_settings]])
+		arn?:                 string
 		deletion_protection?: string
 		description?:         string
 		id?:                  string

@@ -8,19 +8,19 @@ import "list"
 	close({
 		arn?:                            string
 		auto_scaling_configuration_arn?: string
+		id?:                             string
+		region?:                         string
+		service_id?:                     string
+		service_name!:                   string
+		service_url?:                    string
+		status?:                         string
 		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
+		tags?: [string]: string
 		health_check_configuration?: matchN(1, [#health_check_configuration, list.MaxItems(1) & [...#health_check_configuration]])
-		id?: string
 		instance_configuration?: matchN(1, [#instance_configuration, list.MaxItems(1) & [...#instance_configuration]])
 		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
-		region?: string
 		observability_configuration?: matchN(1, [#observability_configuration, list.MaxItems(1) & [...#observability_configuration]])
-		service_id?:   string
-		service_name!: string
-		service_url?:  string
-		status?:       string
 		source_configuration?: matchN(1, [#source_configuration, list.MaxItems(1) & [_, ...] & [...#source_configuration]])
-		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 
@@ -44,9 +44,9 @@ import "list"
 	})
 
 	#network_configuration: close({
-		ip_address_type?: string
 		egress_configuration?: matchN(1, [_#defs."/$defs/network_configuration/$defs/egress_configuration", list.MaxItems(1) & [..._#defs."/$defs/network_configuration/$defs/egress_configuration"]])
 		ingress_configuration?: matchN(1, [_#defs."/$defs/network_configuration/$defs/ingress_configuration", list.MaxItems(1) & [..._#defs."/$defs/network_configuration/$defs/ingress_configuration"]])
+		ip_address_type?: string
 	})
 
 	#observability_configuration: close({
@@ -55,10 +55,10 @@ import "list"
 	})
 
 	#source_configuration: close({
-		auto_deployments_enabled?: bool
 		authentication_configuration?: matchN(1, [_#defs."/$defs/source_configuration/$defs/authentication_configuration", list.MaxItems(1) & [..._#defs."/$defs/source_configuration/$defs/authentication_configuration"]])
 		code_repository?: matchN(1, [_#defs."/$defs/source_configuration/$defs/code_repository", list.MaxItems(1) & [..._#defs."/$defs/source_configuration/$defs/code_repository"]])
 		image_repository?: matchN(1, [_#defs."/$defs/source_configuration/$defs/image_repository", list.MaxItems(1) & [..._#defs."/$defs/source_configuration/$defs/image_repository"]])
+		auto_deployments_enabled?: bool
 	})
 
 	_#defs: "/$defs/network_configuration/$defs/egress_configuration": close({
@@ -76,15 +76,15 @@ import "list"
 	})
 
 	_#defs: "/$defs/source_configuration/$defs/code_repository": close({
-		repository_url!:   string
-		source_directory?: string
 		code_configuration?: matchN(1, [_#defs."/$defs/source_configuration/$defs/code_repository/$defs/code_configuration", list.MaxItems(1) & [..._#defs."/$defs/source_configuration/$defs/code_repository/$defs/code_configuration"]])
 		source_code_version?: matchN(1, [_#defs."/$defs/source_configuration/$defs/code_repository/$defs/source_code_version", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/source_configuration/$defs/code_repository/$defs/source_code_version"]])
+		repository_url!:   string
+		source_directory?: string
 	})
 
 	_#defs: "/$defs/source_configuration/$defs/code_repository/$defs/code_configuration": close({
-		configuration_source!: string
 		code_configuration_values?: matchN(1, [_#defs."/$defs/source_configuration/$defs/code_repository/$defs/code_configuration/$defs/code_configuration_values", list.MaxItems(1) & [..._#defs."/$defs/source_configuration/$defs/code_repository/$defs/code_configuration/$defs/code_configuration_values"]])
+		configuration_source!: string
 	})
 
 	_#defs: "/$defs/source_configuration/$defs/code_repository/$defs/code_configuration/$defs/code_configuration_values": close({
@@ -102,9 +102,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/source_configuration/$defs/image_repository": close({
+		image_configuration?: matchN(1, [_#defs."/$defs/source_configuration/$defs/image_repository/$defs/image_configuration", list.MaxItems(1) & [..._#defs."/$defs/source_configuration/$defs/image_repository/$defs/image_configuration"]])
 		image_identifier!:      string
 		image_repository_type!: string
-		image_configuration?: matchN(1, [_#defs."/$defs/source_configuration/$defs/image_repository/$defs/image_configuration", list.MaxItems(1) & [..._#defs."/$defs/source_configuration/$defs/image_repository/$defs/image_configuration"]])
 	})
 
 	_#defs: "/$defs/source_configuration/$defs/image_repository/$defs/image_configuration": close({

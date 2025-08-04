@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appconfig_environment")
 	close({
-		application_id!: string
 		monitor?: matchN(1, [#monitor, [...#monitor]])
+		application_id!: string
 		arn?:            string
 		description?:    string
 		environment_id?: string

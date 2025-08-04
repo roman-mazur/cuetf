@@ -13,6 +13,7 @@ package res
 		application!: string
 		arn?:         string
 		autoscaling_groups?: [...string]
+		setting?: matchN(1, [#setting, [...#setting]])
 		cname?:        string
 		cname_prefix?: string
 		description?:  string
@@ -21,7 +22,6 @@ package res
 		instances?: [...string]
 		launch_configurations?: [...string]
 		load_balancers?: [...string]
-		setting?: matchN(1, [#setting, [...#setting]])
 		name!:          string
 		platform_arn?:  string
 		poll_interval?: string

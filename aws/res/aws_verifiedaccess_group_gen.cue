@@ -12,9 +12,9 @@ import "list"
 		id?:                string
 		last_updated_time?: string
 		owner?:             string
+		policy_document?:   string
+		region?:            string
 		sse_configuration?: matchN(1, [#sse_configuration, list.MaxItems(1) & [...#sse_configuration]])
-		policy_document?: string
-		region?:          string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		verifiedaccess_group_arn?:   string

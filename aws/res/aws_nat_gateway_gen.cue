@@ -10,13 +10,13 @@ package res
 		id?:                   string
 		network_interface_id?: string
 		private_ip?:           string
-		timeouts?:             #timeouts
 		public_ip?:            string
 		region?:               string
 		secondary_allocation_ids?: [...string]
 		secondary_private_ip_address_count?: number
 		secondary_private_ip_addresses?: [...string]
 		subnet_id!: string
+		timeouts?:  #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

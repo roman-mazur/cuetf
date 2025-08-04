@@ -16,8 +16,8 @@ package res
 		iops?:                   number
 		kms_key_id?:             string
 		license_model?:          string
-		timeouts?:               #timeouts
 		option_group_name?:      string
+		timeouts?:               #timeouts
 		port?:                   number
 		region?:                 string
 		shared_accounts?: [...string]

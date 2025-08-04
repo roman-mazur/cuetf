@@ -6,13 +6,13 @@ package data
 	close({
 		arn?:             string
 		dhcp_options_id?: string
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?:    #timeouts
-		domain_name?: string
+		domain_name?:     string
 		domain_name_servers?: [...string]
 		id?:                                string
 		ipv6_address_preferred_lease_time?: string
+		filter?: matchN(1, [#filter, [...#filter]])
 		netbios_name_servers?: [...string]
+		timeouts?:          #timeouts
 		netbios_node_type?: string
 		ntp_servers?: [...string]
 		owner_id?: string

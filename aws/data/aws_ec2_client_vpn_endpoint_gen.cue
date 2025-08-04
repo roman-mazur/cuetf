@@ -12,7 +12,6 @@ package data
 			self_service_saml_provider_arn?: string
 			type?:                           string
 		})]
-		filter?: matchN(1, [#filter, [...#filter]])
 		client_cidr_block?: string
 		client_connect_options?: [...close({
 			enabled?:             bool
@@ -34,13 +33,14 @@ package data
 		description?: string
 		dns_name?:    string
 		dns_servers?: [...string]
-		timeouts?: #timeouts
-		id?:       string
-		region?:   string
+		id?: string
+		filter?: matchN(1, [#filter, [...#filter]])
+		region?: string
 		security_group_ids?: [...string]
 		self_service_portal?:     string
 		self_service_portal_url?: string
 		server_certificate_arn?:  string
+		timeouts?:                #timeouts
 		session_timeout_hours?:   number
 		split_tunnel?:            bool
 		tags?: [string]: string

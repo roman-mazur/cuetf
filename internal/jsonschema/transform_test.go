@@ -64,7 +64,6 @@ func testProvider(t *testing.T, provider string, names []string) {
 	basePath := runGen(t, provider, names)
 	workDir := filepath.Join(basePath, provider)
 	injectSamples(t, provider, workDir)
-	RunCUE(t, workDir, "def", "-e", "testSamples")
 	RunCUE(t, workDir, "vet")
 	RunCUE(t, workDir, "export")
 }

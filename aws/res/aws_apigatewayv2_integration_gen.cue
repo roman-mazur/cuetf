@@ -6,9 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_apigatewayv2_integration")
 	close({
-		api_id!:        string
-		connection_id?: string
-		response_parameters?: matchN(1, [#response_parameters, [...#response_parameters]])
+		api_id!:                                    string
+		connection_id?:                             string
 		connection_type?:                           string
 		content_handling_strategy?:                 string
 		credentials_arn?:                           string
@@ -16,13 +15,14 @@ import "list"
 		id?:                                        string
 		integration_method?:                        string
 		integration_response_selection_expression?: string
-		tls_config?: matchN(1, [#tls_config, list.MaxItems(1) & [...#tls_config]])
-		integration_subtype?:    string
+		integration_subtype?:                       string
+		response_parameters?: matchN(1, [#response_parameters, [...#response_parameters]])
 		integration_type!:       string
 		integration_uri?:        string
 		passthrough_behavior?:   string
 		payload_format_version?: string
-		region?:                 string
+		tls_config?: matchN(1, [#tls_config, list.MaxItems(1) & [...#tls_config]])
+		region?: string
 		request_parameters?: [string]: string
 		request_templates?: [string]:  string
 		template_selection_expression?: string

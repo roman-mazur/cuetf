@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrockagent_agent_alias")
 	close({
 		agent_alias_arn?:  string
-		timeouts?:         #timeouts
 		agent_alias_id?:   string
 		agent_alias_name!: string
 		agent_id!:         string
 		description?:      string
 		id?:               string
 		region?:           string
+		timeouts?:         #timeouts
 		routing_configuration?: [...close({
 			agent_version?:          string
 			provisioned_throughput?: string

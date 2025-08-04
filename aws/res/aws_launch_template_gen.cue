@@ -6,25 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_launch_template")
 	close({
+		arn?:             string
+		default_version?: number
 		block_device_mappings?: matchN(1, [#block_device_mappings, [...#block_device_mappings]])
-		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
-		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
-		credit_specification?: matchN(1, [#credit_specification, list.MaxItems(1) & [...#credit_specification]])
-		enclave_options?: matchN(1, [#enclave_options, list.MaxItems(1) & [...#enclave_options]])
-		hibernation_options?: matchN(1, [#hibernation_options, list.MaxItems(1) & [...#hibernation_options]])
-		iam_instance_profile?: matchN(1, [#iam_instance_profile, list.MaxItems(1) & [...#iam_instance_profile]])
-		instance_market_options?: matchN(1, [#instance_market_options, list.MaxItems(1) & [...#instance_market_options]])
-		instance_requirements?: matchN(1, [#instance_requirements, list.MaxItems(1) & [...#instance_requirements]])
-		license_specification?: matchN(1, [#license_specification, [...#license_specification]])
-		maintenance_options?: matchN(1, [#maintenance_options, list.MaxItems(1) & [...#maintenance_options]])
-		metadata_options?: matchN(1, [#metadata_options, list.MaxItems(1) & [...#metadata_options]])
-		monitoring?: matchN(1, [#monitoring, list.MaxItems(1) & [...#monitoring]])
-		network_interfaces?: matchN(1, [#network_interfaces, [...#network_interfaces]])
-		placement?: matchN(1, [#placement, list.MaxItems(1) & [...#placement]])
-		private_dns_name_options?: matchN(1, [#private_dns_name_options, list.MaxItems(1) & [...#private_dns_name_options]])
-		arn?: string
-		tag_specifications?: matchN(1, [#tag_specifications, [...#tag_specifications]])
-		default_version?:                      number
 		description?:                          string
 		disable_api_stop?:                     bool
 		disable_api_termination?:              bool
@@ -46,18 +30,34 @@ import "list"
 		update_default_version?: bool
 		user_data?:              string
 		vpc_security_group_ids?: [...string]
+		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
+		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
+		credit_specification?: matchN(1, [#credit_specification, list.MaxItems(1) & [...#credit_specification]])
+		enclave_options?: matchN(1, [#enclave_options, list.MaxItems(1) & [...#enclave_options]])
+		hibernation_options?: matchN(1, [#hibernation_options, list.MaxItems(1) & [...#hibernation_options]])
+		iam_instance_profile?: matchN(1, [#iam_instance_profile, list.MaxItems(1) & [...#iam_instance_profile]])
+		instance_market_options?: matchN(1, [#instance_market_options, list.MaxItems(1) & [...#instance_market_options]])
+		instance_requirements?: matchN(1, [#instance_requirements, list.MaxItems(1) & [...#instance_requirements]])
+		license_specification?: matchN(1, [#license_specification, [...#license_specification]])
+		maintenance_options?: matchN(1, [#maintenance_options, list.MaxItems(1) & [...#maintenance_options]])
+		metadata_options?: matchN(1, [#metadata_options, list.MaxItems(1) & [...#metadata_options]])
+		monitoring?: matchN(1, [#monitoring, list.MaxItems(1) & [...#monitoring]])
+		network_interfaces?: matchN(1, [#network_interfaces, [...#network_interfaces]])
+		placement?: matchN(1, [#placement, list.MaxItems(1) & [...#placement]])
+		private_dns_name_options?: matchN(1, [#private_dns_name_options, list.MaxItems(1) & [...#private_dns_name_options]])
+		tag_specifications?: matchN(1, [#tag_specifications, [...#tag_specifications]])
 	})
 
 	#block_device_mappings: close({
+		ebs?: matchN(1, [_#defs."/$defs/block_device_mappings/$defs/ebs", list.MaxItems(1) & [..._#defs."/$defs/block_device_mappings/$defs/ebs"]])
 		device_name?:  string
 		no_device?:    string
 		virtual_name?: string
-		ebs?: matchN(1, [_#defs."/$defs/block_device_mappings/$defs/ebs", list.MaxItems(1) & [..._#defs."/$defs/block_device_mappings/$defs/ebs"]])
 	})
 
 	#capacity_reservation_specification: close({
-		capacity_reservation_preference?: string
 		capacity_reservation_target?: matchN(1, [_#defs."/$defs/capacity_reservation_specification/$defs/capacity_reservation_target", list.MaxItems(1) & [..._#defs."/$defs/capacity_reservation_specification/$defs/capacity_reservation_target"]])
+		capacity_reservation_preference?: string
 	})
 
 	#cpu_options: close({
@@ -84,22 +84,14 @@ import "list"
 	})
 
 	#instance_market_options: close({
-		market_type?: string
 		spot_options?: matchN(1, [_#defs."/$defs/instance_market_options/$defs/spot_options", list.MaxItems(1) & [..._#defs."/$defs/instance_market_options/$defs/spot_options"]])
+		market_type?: string
 	})
 
 	#instance_requirements: close({
 		accelerator_manufacturers?: [...string]
 		accelerator_names?: [...string]
 		accelerator_count?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/accelerator_count", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/accelerator_count"]])
-		accelerator_total_memory_mib?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/accelerator_total_memory_mib", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/accelerator_total_memory_mib"]])
-		baseline_ebs_bandwidth_mbps?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/baseline_ebs_bandwidth_mbps", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/baseline_ebs_bandwidth_mbps"]])
-		memory_gib_per_vcpu?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/memory_gib_per_vcpu", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/memory_gib_per_vcpu"]])
-		memory_mib?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/memory_mib", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/instance_requirements/$defs/memory_mib"]])
-		network_bandwidth_gbps?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/network_bandwidth_gbps", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/network_bandwidth_gbps"]])
-		network_interface_count?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/network_interface_count", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/network_interface_count"]])
-		total_local_storage_gb?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/total_local_storage_gb", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/total_local_storage_gb"]])
-		vcpu_count?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/vcpu_count", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/instance_requirements/$defs/vcpu_count"]])
 		accelerator_types?: [...string]
 		allowed_instance_types?: [...string]
 		bare_metal?:            string
@@ -110,9 +102,17 @@ import "list"
 		local_storage?: string
 		local_storage_types?: [...string]
 		max_spot_price_as_percentage_of_optimal_on_demand_price?: number
-		on_demand_max_price_percentage_over_lowest_price?:        number
-		require_hibernate_support?:                               bool
-		spot_max_price_percentage_over_lowest_price?:             number
+		accelerator_total_memory_mib?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/accelerator_total_memory_mib", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/accelerator_total_memory_mib"]])
+		on_demand_max_price_percentage_over_lowest_price?: number
+		require_hibernate_support?:                        bool
+		spot_max_price_percentage_over_lowest_price?:      number
+		baseline_ebs_bandwidth_mbps?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/baseline_ebs_bandwidth_mbps", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/baseline_ebs_bandwidth_mbps"]])
+		memory_gib_per_vcpu?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/memory_gib_per_vcpu", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/memory_gib_per_vcpu"]])
+		memory_mib?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/memory_mib", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/instance_requirements/$defs/memory_mib"]])
+		network_bandwidth_gbps?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/network_bandwidth_gbps", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/network_bandwidth_gbps"]])
+		network_interface_count?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/network_interface_count", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/network_interface_count"]])
+		total_local_storage_gb?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/total_local_storage_gb", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/total_local_storage_gb"]])
+		vcpu_count?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/vcpu_count", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/instance_requirements/$defs/vcpu_count"]])
 	})
 
 	#license_specification: close({
@@ -137,14 +137,14 @@ import "list"
 
 	#network_interfaces: close({
 		associate_carrier_ip_address?: string
-		associate_public_ip_address?:  string
 		connection_tracking_specification?: matchN(1, [_#defs."/$defs/network_interfaces/$defs/connection_tracking_specification", list.MaxItems(1) & [..._#defs."/$defs/network_interfaces/$defs/connection_tracking_specification"]])
+		associate_public_ip_address?: string
+		delete_on_termination?:       string
+		description?:                 string
+		device_index?:                number
 		ena_srd_specification?: matchN(1, [_#defs."/$defs/network_interfaces/$defs/ena_srd_specification", list.MaxItems(1) & [..._#defs."/$defs/network_interfaces/$defs/ena_srd_specification"]])
-		delete_on_termination?: string
-		description?:           string
-		device_index?:          number
-		interface_type?:        string
-		ipv4_address_count?:    number
+		interface_type?:     string
+		ipv4_address_count?: number
 		ipv4_addresses?: [...string]
 		ipv4_prefix_count?: number
 		ipv4_prefixes?: [...string]
@@ -259,8 +259,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/network_interfaces/$defs/ena_srd_specification": close({
-		ena_srd_enabled?: bool
 		ena_srd_udp_specification?: matchN(1, [_#defs."/$defs/network_interfaces/$defs/ena_srd_specification/$defs/ena_srd_udp_specification", list.MaxItems(1) & [..._#defs."/$defs/network_interfaces/$defs/ena_srd_specification/$defs/ena_srd_udp_specification"]])
+		ena_srd_enabled?: bool
 	})
 
 	_#defs: "/$defs/network_interfaces/$defs/ena_srd_specification/$defs/ena_srd_udp_specification": close({

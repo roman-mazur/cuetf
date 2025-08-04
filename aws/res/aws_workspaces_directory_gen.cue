@@ -8,15 +8,9 @@ import "list"
 	close({
 		alias?:              string
 		customer_user_name?: string
-		active_directory_config?: matchN(1, [#active_directory_config, list.MaxItems(1) & [...#active_directory_config]])
-		certificate_based_auth_properties?: matchN(1, [#certificate_based_auth_properties, list.MaxItems(1) & [...#certificate_based_auth_properties]])
-		saml_properties?: matchN(1, [#saml_properties, list.MaxItems(1) & [...#saml_properties]])
-		self_service_permissions?: matchN(1, [#self_service_permissions, list.MaxItems(1) & [...#self_service_permissions]])
-		workspace_access_properties?: matchN(1, [#workspace_access_properties, list.MaxItems(1) & [...#workspace_access_properties]])
-		workspace_creation_properties?: matchN(1, [#workspace_creation_properties, list.MaxItems(1) & [...#workspace_creation_properties]])
-		directory_id?:   string
-		directory_name?: string
-		directory_type?: string
+		directory_id?:       string
+		directory_name?:     string
+		directory_type?:     string
 		dns_ip_addresses?: [...string]
 		iam_role_id?: string
 		id?:          string
@@ -24,13 +18,19 @@ import "list"
 		region?:            string
 		registration_code?: string
 		subnet_ids?: [...string]
+		active_directory_config?: matchN(1, [#active_directory_config, list.MaxItems(1) & [...#active_directory_config]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		user_identity_type?:              string
+		certificate_based_auth_properties?: matchN(1, [#certificate_based_auth_properties, list.MaxItems(1) & [...#certificate_based_auth_properties]])
+		user_identity_type?: string
+		saml_properties?: matchN(1, [#saml_properties, list.MaxItems(1) & [...#saml_properties]])
 		workspace_directory_description?: string
 		workspace_directory_name?:        string
 		workspace_security_group_id?:     string
-		workspace_type?:                  string
+		self_service_permissions?: matchN(1, [#self_service_permissions, list.MaxItems(1) & [...#self_service_permissions]])
+		workspace_access_properties?: matchN(1, [#workspace_access_properties, list.MaxItems(1) & [...#workspace_access_properties]])
+		workspace_creation_properties?: matchN(1, [#workspace_creation_properties, list.MaxItems(1) & [...#workspace_creation_properties]])
+		workspace_type?: string
 	})
 
 	#active_directory_config: close({

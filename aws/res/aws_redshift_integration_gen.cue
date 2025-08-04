@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_redshift_integration")
 	close({
 		additional_encryption_context?: [string]: string
-		timeouts?:         #timeouts
 		arn?:              string
 		description?:      string
 		integration_name!: string
 		kms_key_id?:       string
 		region?:           string
 		source_arn!:       string
+		timeouts?:         #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		target_arn!: string

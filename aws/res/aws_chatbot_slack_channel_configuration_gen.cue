@@ -10,13 +10,13 @@ package res
 		iam_role_arn!:       string
 		logging_level?:      string
 		region?:             string
-		timeouts?:           #timeouts
 		slack_channel_id!:   string
 		slack_channel_name?: string
 		slack_team_id!:      string
 		slack_team_name?:    string
 		sns_topic_arns?: [...string]
-		tags?: [string]:     string
+		tags?: [string]: string
+		timeouts?: #timeouts
 		tags_all?: [string]: string
 		user_authorization_required?: bool
 	})

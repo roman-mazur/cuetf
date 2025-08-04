@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc_ipam_scope")
 	close({
 		arn?:             string
-		timeouts?:        #timeouts
 		description?:     string
 		id?:              string
 		ipam_arn?:        string
@@ -14,6 +13,7 @@ package res
 		is_default?:      bool
 		pool_count?:      number
 		region?:          string
+		timeouts?:        #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

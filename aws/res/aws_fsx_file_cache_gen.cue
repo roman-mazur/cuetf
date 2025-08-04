@@ -8,9 +8,6 @@ import "list"
 	close({
 		arn?:                                       string
 		copy_tags_to_data_repository_associations?: bool
-		data_repository_association?: matchN(1, [#data_repository_association, list.MaxItems(8) & [...#data_repository_association]])
-		lustre_configuration?: matchN(1, [#lustre_configuration, [...#lustre_configuration]])
-		timeouts?: #timeouts
 		data_repository_association_ids?: [...string]
 		dns_name?:                string
 		file_cache_id?:           string
@@ -19,9 +16,12 @@ import "list"
 		id?:                      string
 		kms_key_id?:              string
 		network_interface_ids?: [...string]
+		data_repository_association?: matchN(1, [#data_repository_association, list.MaxItems(8) & [...#data_repository_association]])
+		lustre_configuration?: matchN(1, [#lustre_configuration, [...#lustre_configuration]])
 		owner_id?: string
 		region?:   string
 		security_group_ids?: [...string]
+		timeouts?:         #timeouts
 		storage_capacity!: number
 		subnet_ids!: [...string]
 		tags?: [string]:     string
@@ -30,22 +30,22 @@ import "list"
 	})
 
 	#data_repository_association: close({
-		association_id?: string
-		nfs?: matchN(1, [_#defs."/$defs/data_repository_association/$defs/nfs", [..._#defs."/$defs/data_repository_association/$defs/nfs"]])
+		association_id?:       string
 		data_repository_path!: string
 		data_repository_subdirectories?: [...string]
-		file_cache_id?:            string
-		file_cache_path!:          string
-		file_system_id?:           string
-		file_system_path?:         string
+		file_cache_id?:    string
+		file_cache_path!:  string
+		file_system_id?:   string
+		file_system_path?: string
+		nfs?: matchN(1, [_#defs."/$defs/data_repository_association/$defs/nfs", [..._#defs."/$defs/data_repository_association/$defs/nfs"]])
 		imported_file_chunk_size?: number
 		resource_arn?:             string
 		tags?: [string]: string
 	})
 
 	#lustre_configuration: close({
-		deployment_type!: string
 		metadata_configuration?: matchN(1, [_#defs."/$defs/lustre_configuration/$defs/metadata_configuration", list.MaxItems(8) & [_, ...] & [..._#defs."/$defs/lustre_configuration/$defs/metadata_configuration"]])
+		deployment_type!: string
 		log_configuration?: [...close({
 			destination?: string
 			level?:       string

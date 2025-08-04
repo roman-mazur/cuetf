@@ -6,8 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_chimesdkvoice_sip_rule")
 	close({
-		disabled?: bool
 		target_applications?: matchN(1, [#target_applications, list.MaxItems(25) & [_, ...] & [...#target_applications]])
+		disabled?:      bool
 		id?:            string
 		name!:          string
 		region?:        string

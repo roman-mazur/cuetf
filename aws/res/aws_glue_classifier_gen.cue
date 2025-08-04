@@ -6,13 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_classifier")
 	close({
-		id?:     string
-		name!:   string
-		region?: string
 		csv_classifier?: matchN(1, [#csv_classifier, list.MaxItems(1) & [...#csv_classifier]])
 		grok_classifier?: matchN(1, [#grok_classifier, list.MaxItems(1) & [...#grok_classifier]])
 		json_classifier?: matchN(1, [#json_classifier, list.MaxItems(1) & [...#json_classifier]])
 		xml_classifier?: matchN(1, [#xml_classifier, list.MaxItems(1) & [...#xml_classifier]])
+		id?:     string
+		name!:   string
+		region?: string
 	})
 
 	#csv_classifier: close({

@@ -8,9 +8,6 @@ import "list"
 	close({
 		accept_language?: string
 		arn?:             string
-		provisioning_parameters?: matchN(1, [#provisioning_parameters, [...#provisioning_parameters]])
-		stack_set_provisioning_preferences?: matchN(1, [#stack_set_provisioning_preferences, list.MaxItems(1) & [...#stack_set_provisioning_preferences]])
-		timeouts?: #timeouts
 		cloudwatch_dashboard_names?: [...string]
 		created_time?:                           string
 		id?:                                     string
@@ -26,12 +23,15 @@ import "list"
 			key?:         string
 			value?:       string
 		})]
-		path_id?:                    string
+		path_id?: string
+		provisioning_parameters?: matchN(1, [#provisioning_parameters, [...#provisioning_parameters]])
+		stack_set_provisioning_preferences?: matchN(1, [#stack_set_provisioning_preferences, list.MaxItems(1) & [...#stack_set_provisioning_preferences]])
 		path_name?:                  string
 		product_id?:                 string
 		product_name?:               string
 		provisioning_artifact_id?:   string
 		provisioning_artifact_name?: string
+		timeouts?:                   #timeouts
 		region?:                     string
 		retain_physical_resources?:  bool
 		status?:                     string

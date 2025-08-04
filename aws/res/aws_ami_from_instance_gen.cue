@@ -4,33 +4,32 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ami_from_instance")
 	close({
-		architecture?: string
-		arn?:          string
+		architecture?:         string
+		arn?:                  string
+		boot_mode?:            string
+		deprecation_time?:     string
+		description?:          string
+		ena_support?:          bool
+		hypervisor?:           string
+		id?:                   string
+		image_location?:       string
+		image_owner_alias?:    string
+		image_type?:           string
+		imds_support?:         string
+		kernel_id?:            string
+		last_launched_time?:   string
+		manage_ebs_snapshots?: bool
+		name!:                 string
+		owner_id?:             string
+		platform?:             string
+		platform_details?:     string
 		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
+		public?:           bool
+		ramdisk_id?:       string
+		region?:           string
+		root_device_name?: string
+		root_snapshot_id?: string
 		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
-		boot_mode?:               string
-		deprecation_time?:        string
-		description?:             string
-		ena_support?:             bool
-		hypervisor?:              string
-		id?:                      string
-		image_location?:          string
-		image_owner_alias?:       string
-		image_type?:              string
-		imds_support?:            string
-		kernel_id?:               string
-		last_launched_time?:      string
-		manage_ebs_snapshots?:    bool
-		name!:                    string
-		timeouts?:                #timeouts
-		owner_id?:                string
-		platform?:                string
-		platform_details?:        string
-		public?:                  bool
-		ramdisk_id?:              string
-		region?:                  string
-		root_device_name?:        string
-		root_snapshot_id?:        string
 		snapshot_without_reboot?: bool
 		source_instance_id!:      string
 		sriov_net_support?:       string
@@ -40,6 +39,7 @@ package res
 		uefi_data?:           string
 		usage_operation?:     string
 		virtualization_type?: string
+		timeouts?:            #timeouts
 	})
 
 	#ebs_block_device: close({

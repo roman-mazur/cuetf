@@ -6,12 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_db_instance")
 	close({
-		address?:           string
-		allocated_storage?: number
-		blue_green_update?: matchN(1, [#blue_green_update, list.MaxItems(1) & [...#blue_green_update]])
-		restore_to_point_in_time?: matchN(1, [#restore_to_point_in_time, list.MaxItems(1) & [...#restore_to_point_in_time]])
-		s3_import?: matchN(1, [#s3_import, list.MaxItems(1) & [...#s3_import]])
-		timeouts?:                    #timeouts
+		address?:                     string
+		allocated_storage?:           number
 		allow_major_version_upgrade?: bool
 		apply_immediately?:           bool
 		arn?:                         string
@@ -34,6 +30,7 @@ import "list"
 		domain?:                      string
 		domain_auth_secret_arn?:      string
 		domain_dns_ips?: [...string]
+		blue_green_update?: matchN(1, [#blue_green_update, list.MaxItems(1) & [...#blue_green_update]])
 		domain_fqdn?:          string
 		domain_iam_role_name?: string
 		domain_ou?:            string
@@ -52,8 +49,9 @@ import "list"
 		instance_class!:                      string
 		iops?:                                number
 		kms_key_id?:                          string
-		latest_restorable_time?:              string
-		license_model?:                       string
+		restore_to_point_in_time?: matchN(1, [#restore_to_point_in_time, list.MaxItems(1) & [...#restore_to_point_in_time]])
+		latest_restorable_time?: string
+		license_model?:          string
 		listener_endpoint?: [...close({
 			address?:        string
 			hosted_zone_id?: string
@@ -96,10 +94,12 @@ import "list"
 		storage_type?:        string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		s3_import?: matchN(1, [#s3_import, list.MaxItems(1) & [...#s3_import]])
 		timezone?:               string
 		upgrade_storage_config?: bool
 		username?:               string
 		vpc_security_group_ids?: [...string]
+		timeouts?: #timeouts
 	})
 
 	#blue_green_update: close({

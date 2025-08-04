@@ -8,20 +8,20 @@ import "list"
 	close({
 		arn?:                    string
 		data_encryption_key_id?: string
+		description?:            string
+		encrypted?:              bool
+		id?:                     string
+		kms_key_id?:             string
+		outpost_arn?:            string
+		owner_alias?:            string
+		owner_id?:               string
+		permanent_restore?:      bool
 		client_data?: matchN(1, [#client_data, list.MaxItems(1) & [...#client_data]])
 		disk_container?: matchN(1, [#disk_container, list.MaxItems(1) & [_, ...] & [...#disk_container]])
-		timeouts?:          #timeouts
-		description?:       string
-		encrypted?:         bool
-		id?:                string
-		kms_key_id?:        string
-		outpost_arn?:       string
-		owner_alias?:       string
-		owner_id?:          string
-		permanent_restore?: bool
-		region?:            string
-		role_name?:         string
-		storage_tier?:      string
+		region?:       string
+		role_name?:    string
+		storage_tier?: string
+		timeouts?:     #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		temporary_restore_days?: number
@@ -37,10 +37,10 @@ import "list"
 	})
 
 	#disk_container: close({
+		user_bucket?: matchN(1, [_#defs."/$defs/disk_container/$defs/user_bucket", list.MaxItems(1) & [..._#defs."/$defs/disk_container/$defs/user_bucket"]])
 		description?: string
 		format!:      string
 		url?:         string
-		user_bucket?: matchN(1, [_#defs."/$defs/disk_container/$defs/user_bucket", list.MaxItems(1) & [..._#defs."/$defs/disk_container/$defs/user_bucket"]])
 	})
 
 	#timeouts: close({

@@ -4,16 +4,16 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_datazone_asset_type")
 	close({
-		created_at?: string
-		created_by?: string
 		forms_input?: matchN(1, [#forms_input, [...#forms_input]])
-		timeouts?:                  #timeouts
+		created_at?:                string
+		created_by?:                string
 		description?:               string
 		domain_identifier!:         string
 		name!:                      string
 		owning_project_identifier!: string
 		region?:                    string
 		revision?:                  string
+		timeouts?:                  #timeouts
 	})
 
 	#forms_input: close({

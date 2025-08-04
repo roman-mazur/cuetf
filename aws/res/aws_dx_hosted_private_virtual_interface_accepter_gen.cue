@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dx_hosted_private_virtual_interface_accepter")
 	close({
-		arn?:           string
 		timeouts?:      #timeouts
+		arn?:           string
 		dx_gateway_id?: string
 		id?:            string
 		region?:        string

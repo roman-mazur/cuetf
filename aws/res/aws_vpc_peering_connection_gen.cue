@@ -8,14 +8,14 @@ import "list"
 	close({
 		accept_status?: string
 		auto_accept?:   bool
-		accepter?: matchN(1, [#accepter, list.MaxItems(1) & [...#accepter]])
-		requester?: matchN(1, [#requester, list.MaxItems(1) & [...#requester]])
-		timeouts?:      #timeouts
 		id?:            string
 		peer_owner_id?: string
 		peer_region?:   string
 		peer_vpc_id!:   string
-		region?:        string
+		accepter?: matchN(1, [#accepter, list.MaxItems(1) & [...#accepter]])
+		region?: string
+		requester?: matchN(1, [#requester, list.MaxItems(1) & [...#requester]])
+		timeouts?: #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		vpc_id!: string

@@ -8,25 +8,25 @@ import "list"
 	close({
 		arn?:           string
 		creation_date?: string
+		definition!:    string
+		description?:   string
+		id?:            string
+		name?:          string
+		name_prefix?:   string
+		publish?:       bool
+		region?:        string
+		revision_id?:   string
+		role_arn!:      string
 		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
-		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [...#logging_configuration]])
-		timeouts?: #timeouts
-		tracing_configuration?: matchN(1, [#tracing_configuration, list.MaxItems(1) & [...#tracing_configuration]])
-		definition!:                string
-		description?:               string
-		id?:                        string
-		name?:                      string
-		name_prefix?:               string
-		publish?:                   bool
-		region?:                    string
-		revision_id?:               string
-		role_arn!:                  string
 		state_machine_version_arn?: string
 		status?:                    string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type?:                string
 		version_description?: string
+		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [...#logging_configuration]])
+		timeouts?: #timeouts
+		tracing_configuration?: matchN(1, [#tracing_configuration, list.MaxItems(1) & [...#tracing_configuration]])
 	})
 
 	#encryption_configuration: close({

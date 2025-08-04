@@ -10,13 +10,13 @@ package res
 		fips_dns_name?:     string
 		id?:                string
 		network_interface_ids?: [...string]
-		timeouts?:           #timeouts
 		owner_id?:           string
 		preserve_client_ip?: bool
 		region?:             string
 		security_group_ids?: [...string]
 		subnet_id!: string
-		tags?: [string]:     string
+		tags?: [string]: string
+		timeouts?: #timeouts
 		tags_all?: [string]: string
 		vpc_id?: string
 	})

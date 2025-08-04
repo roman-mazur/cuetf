@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_networkmanager_customer_gateway_association")
 	close({
-		customer_gateway_arn!: string
 		timeouts?:             #timeouts
+		customer_gateway_arn!: string
 		device_id!:            string
 		global_network_id!:    string
 		id?:                   string

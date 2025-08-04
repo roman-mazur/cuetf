@@ -8,14 +8,14 @@ import "list"
 	close({
 		arn?:         string
 		description?: string
+		id?:          string
+		index_id!:    string
+		name!:        string
+		region?:      string
 		source_s3_path?: matchN(1, [#source_s3_path, list.MaxItems(1) & [_, ...] & [...#source_s3_path]])
-		id?:       string
-		index_id!: string
-		name!:     string
-		region?:   string
 		role_arn!: string
-		timeouts?: #timeouts
 		status?:   string
+		timeouts?: #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		thesaurus_id?: string

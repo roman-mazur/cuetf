@@ -4,17 +4,17 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_batch_job_queue")
 	close({
-		arn?:  string
-		name!: string
+		arn?:      string
+		name!:     string
+		priority!: number
+		region?:   string
 		compute_environment_order?: matchN(1, [#compute_environment_order, [...#compute_environment_order]])
-		job_state_time_limit_action?: matchN(1, [#job_state_time_limit_action, [...#job_state_time_limit_action]])
-		timeouts?:              #timeouts
-		priority!:              number
-		region?:                string
 		scheduling_policy_arn?: string
 		state!:                 string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		job_state_time_limit_action?: matchN(1, [#job_state_time_limit_action, [...#job_state_time_limit_action]])
+		timeouts?: #timeouts
 	})
 
 	#compute_environment_order: close({

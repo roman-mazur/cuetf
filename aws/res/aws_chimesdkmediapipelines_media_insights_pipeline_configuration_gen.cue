@@ -8,18 +8,17 @@ import "list"
 	close({
 		arn?: string
 		elements?: matchN(1, [#elements, [_, ...] & [...#elements]])
-		real_time_alert_configuration?: matchN(1, [#real_time_alert_configuration, list.MaxItems(1) & [...#real_time_alert_configuration]])
-		timeouts?:                 #timeouts
 		id?:                       string
 		name!:                     string
 		region?:                   string
 		resource_access_role_arn!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		real_time_alert_configuration?: matchN(1, [#real_time_alert_configuration, list.MaxItems(1) & [...#real_time_alert_configuration]])
+		timeouts?: #timeouts
 	})
 
 	#elements: close({
-		type!: string
 		amazon_transcribe_call_analytics_processor_configuration?: matchN(1, [_#defs."/$defs/elements/$defs/amazon_transcribe_call_analytics_processor_configuration", list.MaxItems(1) & [..._#defs."/$defs/elements/$defs/amazon_transcribe_call_analytics_processor_configuration"]])
 		amazon_transcribe_processor_configuration?: matchN(1, [_#defs."/$defs/elements/$defs/amazon_transcribe_processor_configuration", list.MaxItems(1) & [..._#defs."/$defs/elements/$defs/amazon_transcribe_processor_configuration"]])
 		kinesis_data_stream_sink_configuration?: matchN(1, [_#defs."/$defs/elements/$defs/kinesis_data_stream_sink_configuration", list.MaxItems(1) & [..._#defs."/$defs/elements/$defs/kinesis_data_stream_sink_configuration"]])
@@ -28,11 +27,12 @@ import "list"
 		sns_topic_sink_configuration?: matchN(1, [_#defs."/$defs/elements/$defs/sns_topic_sink_configuration", list.MaxItems(1) & [..._#defs."/$defs/elements/$defs/sns_topic_sink_configuration"]])
 		sqs_queue_sink_configuration?: matchN(1, [_#defs."/$defs/elements/$defs/sqs_queue_sink_configuration", list.MaxItems(1) & [..._#defs."/$defs/elements/$defs/sqs_queue_sink_configuration"]])
 		voice_analytics_processor_configuration?: matchN(1, [_#defs."/$defs/elements/$defs/voice_analytics_processor_configuration", list.MaxItems(1) & [..._#defs."/$defs/elements/$defs/voice_analytics_processor_configuration"]])
+		type!: string
 	})
 
 	#real_time_alert_configuration: close({
-		disabled?: bool
 		rules?: matchN(1, [_#defs."/$defs/real_time_alert_configuration/$defs/rules", list.MaxItems(3) & [_, ...] & [..._#defs."/$defs/real_time_alert_configuration/$defs/rules"]])
+		disabled?: bool
 	})
 
 	#timeouts: close({
@@ -105,10 +105,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/real_time_alert_configuration/$defs/rules": close({
-		type!: string
 		issue_detection_configuration?: matchN(1, [_#defs."/$defs/real_time_alert_configuration/$defs/rules/$defs/issue_detection_configuration", list.MaxItems(1) & [..._#defs."/$defs/real_time_alert_configuration/$defs/rules/$defs/issue_detection_configuration"]])
 		keyword_match_configuration?: matchN(1, [_#defs."/$defs/real_time_alert_configuration/$defs/rules/$defs/keyword_match_configuration", list.MaxItems(1) & [..._#defs."/$defs/real_time_alert_configuration/$defs/rules/$defs/keyword_match_configuration"]])
 		sentiment_configuration?: matchN(1, [_#defs."/$defs/real_time_alert_configuration/$defs/rules/$defs/sentiment_configuration", list.MaxItems(1) & [..._#defs."/$defs/real_time_alert_configuration/$defs/rules/$defs/sentiment_configuration"]])
+		type!: string
 	})
 
 	_#defs: "/$defs/real_time_alert_configuration/$defs/rules/$defs/issue_detection_configuration": close({

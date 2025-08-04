@@ -6,8 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_sagemaker_device")
 	close({
-		agent_version?: string
 		device?: matchN(1, [#device, list.MaxItems(1) & [_, ...] & [...#device]])
+		agent_version?:     string
 		arn?:               string
 		device_fleet_name!: string
 		id?:                string

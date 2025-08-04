@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpclattice_service_network_service_association")
 	close({
 		arn?:                string
-		timeouts?:           #timeouts
 		created_by?:         string
 		custom_domain_name?: string
 		dns_entry?: [...close({
@@ -17,6 +16,7 @@ package res
 		service_identifier!:         string
 		service_network_identifier!: string
 		status?:                     string
+		timeouts?:                   #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

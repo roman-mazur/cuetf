@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ebs_volume")
 	close({
 		arn?:                  string
-		timeouts?:             #timeouts
 		availability_zone!:    string
 		create_time?:          string
 		encrypted?:            bool
@@ -20,6 +19,7 @@ package res
 		snapshot_id?:          string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		timeouts?:                   #timeouts
 		throughput?:                 number
 		type?:                       string
 		volume_initialization_rate?: number

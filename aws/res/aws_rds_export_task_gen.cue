@@ -12,11 +12,11 @@ package res
 		kms_key_id!:             string
 		percent_progress?:       number
 		region?:                 string
-		timeouts?:               #timeouts
 		s3_bucket_name!:         string
 		s3_prefix?:              string
 		snapshot_time?:          string
 		source_arn!:             string
+		timeouts?:               #timeouts
 		source_type?:            string
 		status?:                 string
 		task_end_time?:          string

@@ -10,13 +10,13 @@ package res
 		description?:                 string
 		disable_template_validation?: bool
 		guidance?:                    string
-		timeouts?:                    #timeouts
 		id?:                          string
 		name?:                        string
 		product_id!:                  string
 		provisioning_artifact_id?:    string
 		region?:                      string
 		template_physical_id?:        string
+		timeouts?:                    #timeouts
 		template_url?:                string
 		type?:                        string
 	})

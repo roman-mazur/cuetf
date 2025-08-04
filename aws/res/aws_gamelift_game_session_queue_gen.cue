@@ -4,14 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_gamelift_game_session_queue")
 	close({
-		arn?: string
-		player_latency_policy?: matchN(1, [#player_latency_policy, [...#player_latency_policy]])
+		arn?:               string
 		custom_event_data?: string
 		destinations?: [...string]
 		id?:                  string
 		name!:                string
 		notification_target?: string
 		region?:              string
+		player_latency_policy?: matchN(1, [#player_latency_policy, [...#player_latency_policy]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		timeout_in_seconds?: number

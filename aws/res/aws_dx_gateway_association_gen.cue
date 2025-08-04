@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dx_gateway_association")
 	close({
 		allowed_prefixes?: [...string]
-		timeouts?:                            #timeouts
 		associated_gateway_id?:               string
 		associated_gateway_owner_account_id?: string
 		associated_gateway_type?:             string
@@ -14,6 +13,7 @@ package res
 		dx_gateway_owner_account_id?:         string
 		id?:                                  string
 		proposal_id?:                         string
+		timeouts?:                            #timeouts
 		region?:                              string
 		transit_gateway_attachment_id?:       string
 	})

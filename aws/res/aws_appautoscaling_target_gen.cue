@@ -6,8 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appautoscaling_target")
 	close({
-		arn?: string
-		suspended_state?: matchN(1, [#suspended_state, list.MaxItems(1) & [...#suspended_state]])
+		arn?:                string
 		id?:                 string
 		max_capacity!:       number
 		min_capacity!:       number
@@ -16,6 +15,7 @@ import "list"
 		role_arn?:           string
 		scalable_dimension!: string
 		service_namespace!:  string
+		suspended_state?: matchN(1, [#suspended_state, list.MaxItems(1) & [...#suspended_state]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

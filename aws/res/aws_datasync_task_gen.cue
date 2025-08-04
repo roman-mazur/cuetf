@@ -8,19 +8,19 @@ import "list"
 	close({
 		arn?:                      string
 		cloudwatch_log_group_arn?: string
-		excludes?: matchN(1, [#excludes, list.MaxItems(1) & [...#excludes]])
-		includes?: matchN(1, [#includes, list.MaxItems(1) & [...#includes]])
 		destination_location_arn!: string
+		id?:                       string
+		name?:                     string
+		region?:                   string
+		source_location_arn!:      string
+		tags?: [string]: string
+		excludes?: matchN(1, [#excludes, list.MaxItems(1) & [...#excludes]])
+		tags_all?: [string]: string
+		includes?: matchN(1, [#includes, list.MaxItems(1) & [...#includes]])
 		options?: matchN(1, [#options, list.MaxItems(1) & [...#options]])
 		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [...#schedule]])
-		id?: string
 		task_report_config?: matchN(1, [#task_report_config, list.MaxItems(1) & [...#task_report_config]])
-		name?:                string
-		region?:              string
-		source_location_arn!: string
-		tags?: [string]: string
-		timeouts?: #timeouts
-		tags_all?: [string]: string
+		timeouts?:  #timeouts
 		task_mode?: string
 	})
 
@@ -57,11 +57,11 @@ import "list"
 	})
 
 	#task_report_config: close({
+		report_overrides?: matchN(1, [_#defs."/$defs/task_report_config/$defs/report_overrides", list.MaxItems(1) & [..._#defs."/$defs/task_report_config/$defs/report_overrides"]])
+		s3_destination?: matchN(1, [_#defs."/$defs/task_report_config/$defs/s3_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/task_report_config/$defs/s3_destination"]])
 		output_type?:          string
 		report_level?:         string
 		s3_object_versioning?: string
-		report_overrides?: matchN(1, [_#defs."/$defs/task_report_config/$defs/report_overrides", list.MaxItems(1) & [..._#defs."/$defs/task_report_config/$defs/report_overrides"]])
-		s3_destination?: matchN(1, [_#defs."/$defs/task_report_config/$defs/s3_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/task_report_config/$defs/s3_destination"]])
 	})
 
 	#timeouts: close({

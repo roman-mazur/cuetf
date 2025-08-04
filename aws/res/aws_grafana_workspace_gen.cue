@@ -8,9 +8,6 @@ import "list"
 	close({
 		account_access_type!: string
 		arn?:                 string
-		network_access_control?: matchN(1, [#network_access_control, list.MaxItems(1) & [...#network_access_control]])
-		timeouts?: #timeouts
-		vpc_configuration?: matchN(1, [#vpc_configuration, list.MaxItems(1) & [...#vpc_configuration]])
 		authentication_providers!: [...string]
 		configuration?: string
 		data_sources?: [...string]
@@ -20,7 +17,10 @@ import "list"
 		id?:              string
 		name?:            string
 		notification_destinations?: [...string]
+		network_access_control?: matchN(1, [#network_access_control, list.MaxItems(1) & [...#network_access_control]])
+		timeouts?:               #timeouts
 		organization_role_name?: string
+		vpc_configuration?: matchN(1, [#vpc_configuration, list.MaxItems(1) & [...#vpc_configuration]])
 		organizational_units?: [...string]
 		permission_type!:           string
 		region?:                    string

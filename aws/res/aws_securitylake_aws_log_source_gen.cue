@@ -4,9 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_securitylake_aws_log_source")
 	close({
+		source?: matchN(1, [#source, [...#source]])
 		id?:     string
 		region?: string
-		source?: matchN(1, [#source, [...#source]])
 	})
 
 	#source: close({

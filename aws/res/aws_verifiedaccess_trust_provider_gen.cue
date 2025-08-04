@@ -8,18 +8,18 @@ import "list"
 	close({
 		description?:                string
 		device_trust_provider_type?: string
+		id?:                         string
+		policy_reference_name!:      string
+		region?:                     string
 		device_options?: matchN(1, [#device_options, list.MaxItems(1) & [...#device_options]])
-		native_application_oidc_options?: matchN(1, [#native_application_oidc_options, list.MaxItems(1) & [...#native_application_oidc_options]])
-		oidc_options?: matchN(1, [#oidc_options, list.MaxItems(1) & [...#oidc_options]])
-		id?: string
-		sse_specification?: matchN(1, [#sse_specification, list.MaxItems(1) & [...#sse_specification]])
-		policy_reference_name!: string
-		region?:                string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		trust_provider_type!:      string
-		user_trust_provider_type?: string
+		native_application_oidc_options?: matchN(1, [#native_application_oidc_options, list.MaxItems(1) & [...#native_application_oidc_options]])
+		oidc_options?: matchN(1, [#oidc_options, list.MaxItems(1) & [...#oidc_options]])
+		trust_provider_type!: string
+		sse_specification?: matchN(1, [#sse_specification, list.MaxItems(1) & [...#sse_specification]])
 		timeouts?:                 #timeouts
+		user_trust_provider_type?: string
 	})
 
 	#device_options: close({

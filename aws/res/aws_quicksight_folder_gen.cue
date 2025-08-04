@@ -8,15 +8,15 @@ import "list"
 	close({
 		arn?:            string
 		aws_account_id?: string
-		permissions?: matchN(1, [#permissions, list.MaxItems(64) & [...#permissions]])
-		created_time?: string
-		folder_id!:    string
+		created_time?:   string
+		folder_id!:      string
 		folder_path?: [...string]
-		timeouts?:          #timeouts
-		folder_type?:       string
-		id?:                string
+		folder_type?: string
+		id?:          string
+		permissions?: matchN(1, [#permissions, list.MaxItems(64) & [...#permissions]])
 		last_updated_time?: string
 		name?:              string
+		timeouts?:          #timeouts
 		parent_folder_arn?: string
 		region?:            string
 		tags?: [string]:     string

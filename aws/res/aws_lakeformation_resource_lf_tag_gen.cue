@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lakeformation_resource_lf_tag")
 	close({
 		database?: matchN(1, [#database, [...#database]])
-		catalog_id?: string
-		id?:         string
-		region?:     string
 		lf_tag?: matchN(1, [#lf_tag, [...#lf_tag]])
+		catalog_id?: string
 		table?: matchN(1, [#table, [...#table]])
+		id?: string
 		table_with_columns?: matchN(1, [#table_with_columns, [...#table_with_columns]])
 		timeouts?: #timeouts
+		region?:   string
 	})
 
 	#database: close({
@@ -33,11 +33,11 @@ package res
 	})
 
 	#table_with_columns: close({
+		column_wildcard?: matchN(1, [_#defs."/$defs/table_with_columns/$defs/column_wildcard", [..._#defs."/$defs/table_with_columns/$defs/column_wildcard"]])
 		catalog_id?: string
 		column_names?: [...string]
 		database_name!: string
 		name!:          string
-		column_wildcard?: matchN(1, [_#defs."/$defs/table_with_columns/$defs/column_wildcard", [..._#defs."/$defs/table_with_columns/$defs/column_wildcard"]])
 	})
 
 	#timeouts: close({

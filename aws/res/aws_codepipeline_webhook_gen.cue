@@ -8,14 +8,14 @@ import "list"
 	close({
 		arn?:            string
 		authentication!: string
-		authentication_configuration?: matchN(1, [#authentication_configuration, list.MaxItems(1) & [...#authentication_configuration]])
-		filter?: matchN(1, [#filter, list.MaxItems(5) & [_, ...] & [...#filter]])
-		id?:     string
-		name!:   string
-		region?: string
+		id?:             string
+		name!:           string
+		region?:         string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		target_action!:   string
+		authentication_configuration?: matchN(1, [#authentication_configuration, list.MaxItems(1) & [...#authentication_configuration]])
+		target_action!: string
+		filter?: matchN(1, [#filter, list.MaxItems(5) & [_, ...] & [...#filter]])
 		target_pipeline!: string
 		url?:             string
 	})

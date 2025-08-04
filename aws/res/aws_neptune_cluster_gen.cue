@@ -8,9 +8,7 @@ import "list"
 	close({
 		allow_major_version_upgrade?: bool
 		apply_immediately?:           bool
-		serverless_v2_scaling_configuration?: matchN(1, [#serverless_v2_scaling_configuration, list.MaxItems(1) & [...#serverless_v2_scaling_configuration]])
-		timeouts?: #timeouts
-		arn?:      string
+		arn?:                         string
 		availability_zones?: [...string]
 		backup_retention_period?:   number
 		cluster_identifier?:        string
@@ -28,6 +26,7 @@ import "list"
 		hosted_zone_id?:                      string
 		iam_database_authentication_enabled?: bool
 		iam_roles?: [...string]
+		serverless_v2_scaling_configuration?: matchN(1, [#serverless_v2_scaling_configuration, list.MaxItems(1) & [...#serverless_v2_scaling_configuration]])
 		id?:                                    string
 		kms_key_arn?:                           string
 		neptune_cluster_parameter_group_name?:  string
@@ -37,6 +36,7 @@ import "list"
 		preferred_backup_window?:               string
 		preferred_maintenance_window?:          string
 		reader_endpoint?:                       string
+		timeouts?:                              #timeouts
 		region?:                                string
 		replication_source_identifier?:         string
 		skip_final_snapshot?:                   bool

@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_workspaces_connection_alias")
 	close({
-		connection_string!: string
 		timeouts?:          #timeouts
+		connection_string!: string
 		id?:                string
 		owner_account_id?:  string
 		region?:            string

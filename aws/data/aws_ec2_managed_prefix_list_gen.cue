@@ -6,8 +6,6 @@ package data
 	close({
 		address_family?: string
 		arn?:            string
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?: #timeouts
 		entries?: [...close({
 			cidr?:        string
 			description?: string
@@ -16,7 +14,9 @@ package data
 		max_entries?: number
 		name?:        string
 		owner_id?:    string
-		region?:      string
+		filter?: matchN(1, [#filter, [...#filter]])
+		region?:   string
+		timeouts?: #timeouts
 		tags?: [string]: string
 		version?: number
 	})

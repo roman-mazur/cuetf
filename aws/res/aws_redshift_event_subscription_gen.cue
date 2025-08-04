@@ -10,13 +10,13 @@ package res
 		event_categories?: [...string]
 		id?:            string
 		name!:          string
-		timeouts?:      #timeouts
 		region?:        string
 		severity?:      string
 		sns_topic_arn!: string
 		source_ids?: [...string]
 		source_type?: string
 		status?:      string
+		timeouts?:    #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

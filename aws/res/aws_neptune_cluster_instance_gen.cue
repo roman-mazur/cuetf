@@ -12,13 +12,13 @@ package res
 		cluster_identifier!:           string
 		dbi_resource_id?:              string
 		endpoint?:                     string
+		timeouts?:                     #timeouts
 		engine?:                       string
 		engine_version?:               string
 		id?:                           string
 		identifier?:                   string
 		identifier_prefix?:            string
 		instance_class!:               string
-		timeouts?:                     #timeouts
 		kms_key_arn?:                  string
 		neptune_parameter_group_name?: string
 		neptune_subnet_group_name?:    string

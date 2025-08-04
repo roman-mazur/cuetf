@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_location_geofence_collection")
 	close({
 		collection_arn?:  string
-		timeouts?:        #timeouts
 		collection_name!: string
 		create_time?:     string
 		description?:     string
 		id?:              string
 		kms_key_id?:      string
 		region?:          string
+		timeouts?:        #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		update_time?: string

@@ -6,20 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_apigatewayv2_stage")
 	close({
-		api_id!: string
-		arn?:    string
-		access_log_settings?: matchN(1, [#access_log_settings, list.MaxItems(1) & [...#access_log_settings]])
-		default_route_settings?: matchN(1, [#default_route_settings, list.MaxItems(1) & [...#default_route_settings]])
-		route_settings?: matchN(1, [#route_settings, [...#route_settings]])
+		api_id!:                string
+		arn?:                   string
 		auto_deploy?:           bool
 		client_certificate_id?: string
 		deployment_id?:         string
 		description?:           string
 		execution_arn?:         string
 		id?:                    string
-		invoke_url?:            string
-		name!:                  string
-		region?:                string
+		access_log_settings?: matchN(1, [#access_log_settings, list.MaxItems(1) & [...#access_log_settings]])
+		default_route_settings?: matchN(1, [#default_route_settings, list.MaxItems(1) & [...#default_route_settings]])
+		invoke_url?: string
+		name!:       string
+		route_settings?: matchN(1, [#route_settings, [...#route_settings]])
+		region?: string
 		stage_variables?: [string]: string
 		tags?: [string]:            string
 		tags_all?: [string]:        string

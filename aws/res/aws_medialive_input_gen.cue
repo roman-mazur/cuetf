@@ -8,12 +8,6 @@ import "list"
 	close({
 		arn?: string
 		attached_channels?: [...string]
-		destinations?: matchN(1, [#destinations, [...#destinations]])
-		input_devices?: matchN(1, [#input_devices, [...#input_devices]])
-		media_connect_flows?: matchN(1, [#media_connect_flows, [...#media_connect_flows]])
-		sources?: matchN(1, [#sources, [...#sources]])
-		timeouts?: #timeouts
-		vpc?: matchN(1, [#vpc, list.MaxItems(1) & [...#vpc]])
 		id?:          string
 		input_class?: string
 		input_partner_ids?: [...string]
@@ -22,9 +16,15 @@ import "list"
 		name!:              string
 		region?:            string
 		role_arn?:          string
-		tags?: [string]:     string
+		tags?: [string]: string
+		destinations?: matchN(1, [#destinations, [...#destinations]])
 		tags_all?: [string]: string
 		type!: string
+		input_devices?: matchN(1, [#input_devices, [...#input_devices]])
+		media_connect_flows?: matchN(1, [#media_connect_flows, [...#media_connect_flows]])
+		sources?: matchN(1, [#sources, [...#sources]])
+		timeouts?: #timeouts
+		vpc?: matchN(1, [#vpc, list.MaxItems(1) & [...#vpc]])
 	})
 
 	#destinations: close({

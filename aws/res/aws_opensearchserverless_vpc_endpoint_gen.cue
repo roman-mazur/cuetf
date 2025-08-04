@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opensearchserverless_vpc_endpoint")
 	close({
-		id?:       string
 		timeouts?: #timeouts
+		id?:       string
 		name!:     string
 		region?:   string
 		security_group_ids?: [...string]

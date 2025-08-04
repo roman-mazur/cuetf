@@ -6,18 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_s3control_bucket_lifecycle_configuration")
 	close({
+		rule?: matchN(1, [#rule, [_, ...] & [...#rule]])
 		bucket!: string
 		id?:     string
 		region?: string
-		rule?: matchN(1, [#rule, [_, ...] & [...#rule]])
 	})
 
 	#rule: close({
-		id!:     string
-		status?: string
 		abort_incomplete_multipart_upload?: matchN(1, [_#defs."/$defs/rule/$defs/abort_incomplete_multipart_upload", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/abort_incomplete_multipart_upload"]])
 		expiration?: matchN(1, [_#defs."/$defs/rule/$defs/expiration", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/expiration"]])
 		filter?: matchN(1, [_#defs."/$defs/rule/$defs/filter", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/filter"]])
+		id!:     string
+		status?: string
 	})
 
 	_#defs: "/$defs/rule/$defs/abort_incomplete_multipart_upload": close({

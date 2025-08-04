@@ -8,10 +8,6 @@ import "list"
 	close({
 		active_directory_id?: string
 		aliases?: [...string]
-		audit_log_configuration?: matchN(1, [#audit_log_configuration, list.MaxItems(1) & [...#audit_log_configuration]])
-		disk_iops_configuration?: matchN(1, [#disk_iops_configuration, list.MaxItems(1) & [...#disk_iops_configuration]])
-		self_managed_active_directory?: matchN(1, [#self_managed_active_directory, list.MaxItems(1) & [...#self_managed_active_directory]])
-		timeouts?:                          #timeouts
 		arn?:                               string
 		automatic_backup_retention_days?:   number
 		backup_id?:                         string
@@ -23,8 +19,11 @@ import "list"
 		id?:         string
 		kms_key_id?: string
 		network_interface_ids?: [...string]
-		owner_id?:                       string
-		preferred_file_server_ip?:       string
+		owner_id?:                 string
+		preferred_file_server_ip?: string
+		audit_log_configuration?: matchN(1, [#audit_log_configuration, list.MaxItems(1) & [...#audit_log_configuration]])
+		disk_iops_configuration?: matchN(1, [#disk_iops_configuration, list.MaxItems(1) & [...#disk_iops_configuration]])
+		self_managed_active_directory?: matchN(1, [#self_managed_active_directory, list.MaxItems(1) & [...#self_managed_active_directory]])
 		preferred_subnet_id?:            string
 		region?:                         string
 		remote_administration_endpoint?: string
@@ -38,6 +37,7 @@ import "list"
 		throughput_capacity!:           number
 		vpc_id?:                        string
 		weekly_maintenance_start_time?: string
+		timeouts?:                      #timeouts
 	})
 
 	#audit_log_configuration: close({

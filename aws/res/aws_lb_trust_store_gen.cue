@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lb_trust_store")
 	close({
 		arn?:                                      string
-		timeouts?:                                 #timeouts
 		arn_suffix?:                               string
 		ca_certificates_bundle_s3_bucket!:         string
 		ca_certificates_bundle_s3_key!:            string
@@ -14,6 +13,7 @@ package res
 		name?:                                     string
 		name_prefix?:                              string
 		region?:                                   string
+		timeouts?:                                 #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

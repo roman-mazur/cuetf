@@ -9,12 +9,7 @@ import "list"
 		allocated_storage?:           number
 		allow_major_version_upgrade?: bool
 		apply_immediately?:           bool
-		restore_to_point_in_time?: matchN(1, [#restore_to_point_in_time, list.MaxItems(1) & [...#restore_to_point_in_time]])
-		s3_import?: matchN(1, [#s3_import, list.MaxItems(1) & [...#s3_import]])
-		scaling_configuration?: matchN(1, [#scaling_configuration, list.MaxItems(1) & [...#scaling_configuration]])
-		serverlessv2_scaling_configuration?: matchN(1, [#serverlessv2_scaling_configuration, list.MaxItems(1) & [...#serverlessv2_scaling_configuration]])
-		timeouts?: #timeouts
-		arn?:      string
+		arn?:                         string
 		availability_zones?: [...string]
 		backtrack_window?:          number
 		backup_retention_period?:   number
@@ -32,23 +27,26 @@ import "list"
 		db_cluster_parameter_group_name?:  string
 		db_instance_parameter_group_name?: string
 		db_subnet_group_name?:             string
-		db_system_id?:                     string
-		delete_automated_backups?:         bool
-		deletion_protection?:              bool
-		domain?:                           string
-		domain_iam_role_name?:             string
-		enable_global_write_forwarding?:   bool
-		enable_http_endpoint?:             bool
-		enable_local_write_forwarding?:    bool
+		restore_to_point_in_time?: matchN(1, [#restore_to_point_in_time, list.MaxItems(1) & [...#restore_to_point_in_time]])
+		db_system_id?:                   string
+		delete_automated_backups?:       bool
+		deletion_protection?:            bool
+		domain?:                         string
+		domain_iam_role_name?:           string
+		enable_global_write_forwarding?: bool
+		enable_http_endpoint?:           bool
+		enable_local_write_forwarding?:  bool
 		enabled_cloudwatch_logs_exports?: [...string]
-		endpoint?:                            string
-		engine!:                              string
-		engine_lifecycle_support?:            string
-		engine_mode?:                         string
-		engine_version?:                      string
-		engine_version_actual?:               string
-		final_snapshot_identifier?:           string
-		global_cluster_identifier?:           string
+		endpoint?:                  string
+		engine!:                    string
+		engine_lifecycle_support?:  string
+		engine_mode?:               string
+		engine_version?:            string
+		engine_version_actual?:     string
+		final_snapshot_identifier?: string
+		s3_import?: matchN(1, [#s3_import, list.MaxItems(1) & [...#s3_import]])
+		global_cluster_identifier?: string
+		scaling_configuration?: matchN(1, [#scaling_configuration, list.MaxItems(1) & [...#scaling_configuration]])
 		hosted_zone_id?:                      string
 		iam_database_authentication_enabled?: bool
 		iam_roles?: [...string]
@@ -76,16 +74,18 @@ import "list"
 		preferred_backup_window?:               string
 		preferred_maintenance_window?:          string
 		reader_endpoint?:                       string
-		region?:                                string
-		replication_source_identifier?:         string
-		skip_final_snapshot?:                   bool
-		snapshot_identifier?:                   string
-		source_region?:                         string
-		storage_encrypted?:                     bool
-		storage_type?:                          string
+		serverlessv2_scaling_configuration?: matchN(1, [#serverlessv2_scaling_configuration, list.MaxItems(1) & [...#serverlessv2_scaling_configuration]])
+		region?:                        string
+		replication_source_identifier?: string
+		skip_final_snapshot?:           bool
+		snapshot_identifier?:           string
+		source_region?:                 string
+		storage_encrypted?:             bool
+		storage_type?:                  string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		vpc_security_group_ids?: [...string]
+		timeouts?: #timeouts
 	})
 
 	#restore_to_point_in_time: close({

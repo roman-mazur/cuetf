@@ -14,12 +14,12 @@ package res
 		contact_number?:                   string
 		directory_id?:                     string
 		edition!:                          string
-		timeouts?:                         #timeouts
 		email_address?:                    string
 		first_name?:                       string
 		iam_identity_center_instance_arn?: string
 		id?:                               string
 		last_name?:                        string
+		timeouts?:                         #timeouts
 		notification_email!:               string
 		reader_group?: [...string]
 		realm?:  string

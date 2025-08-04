@@ -8,14 +8,14 @@ import "list"
 	close({
 		administrator_account?: string
 		arn?:                   string
+		description?:           string
+		domain!:                string
+		domain_owner?:          string
+		id?:                    string
+		region?:                string
 		external_connections?: matchN(1, [#external_connections, list.MaxItems(1) & [...#external_connections]])
+		repository!: string
 		upstream?: matchN(1, [#upstream, [...#upstream]])
-		description?:  string
-		domain!:       string
-		domain_owner?: string
-		id?:           string
-		region?:       string
-		repository!:   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

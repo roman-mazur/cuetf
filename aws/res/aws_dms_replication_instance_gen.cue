@@ -6,9 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dms_replication_instance")
 	close({
-		allocated_storage?:           number
-		allow_major_version_upgrade?: bool
-		kerberos_authentication_settings?: matchN(1, [#kerberos_authentication_settings, list.MaxItems(1) & [...#kerberos_authentication_settings]])
+		allocated_storage?:            number
+		allow_major_version_upgrade?:  bool
 		apply_immediately?:            bool
 		auto_minor_version_upgrade?:   bool
 		availability_zone?:            string
@@ -18,13 +17,14 @@ import "list"
 		kms_key_arn?:                  string
 		multi_az?:                     bool
 		network_type?:                 string
-		timeouts?:                     #timeouts
 		preferred_maintenance_window?: string
-		publicly_accessible?:          bool
-		region?:                       string
-		replication_instance_arn?:     string
-		replication_instance_class!:   string
-		replication_instance_id!:      string
+		kerberos_authentication_settings?: matchN(1, [#kerberos_authentication_settings, list.MaxItems(1) & [...#kerberos_authentication_settings]])
+		publicly_accessible?:        bool
+		region?:                     string
+		replication_instance_arn?:   string
+		replication_instance_class!: string
+		replication_instance_id!:    string
+		timeouts?:                   #timeouts
 		replication_instance_private_ips?: [...string]
 		replication_instance_public_ips?: [...string]
 		replication_subnet_group_id?: string

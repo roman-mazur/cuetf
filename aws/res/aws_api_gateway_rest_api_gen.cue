@@ -16,14 +16,14 @@ import "list"
 		execution_arn?:                string
 		fail_on_warnings?:             bool
 		id?:                           string
-		endpoint_configuration?: matchN(1, [#endpoint_configuration, list.MaxItems(1) & [...#endpoint_configuration]])
-		minimum_compression_size?: string
-		name!:                     string
+		minimum_compression_size?:     string
+		name!:                         string
 		parameters?: [string]: string
 		policy?:            string
 		put_rest_api_mode?: string
-		region?:            string
-		root_resource_id?:  string
+		endpoint_configuration?: matchN(1, [#endpoint_configuration, list.MaxItems(1) & [...#endpoint_configuration]])
+		region?:           string
+		root_resource_id?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

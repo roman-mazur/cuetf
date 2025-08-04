@@ -7,16 +7,16 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lambda_function_url")
 	close({
 		authorization_type!: string
+		function_arn?:       string
+		function_name!:      string
+		function_url?:       string
 		cors?: matchN(1, [#cors, list.MaxItems(1) & [...#cors]])
-		timeouts?:      #timeouts
-		function_arn?:  string
-		function_name!: string
-		function_url?:  string
-		id?:            string
-		invoke_mode?:   string
-		qualifier?:     string
-		region?:        string
-		url_id?:        string
+		id?:          string
+		invoke_mode?: string
+		qualifier?:   string
+		region?:      string
+		url_id?:      string
+		timeouts?:    #timeouts
 	})
 
 	#cors: close({

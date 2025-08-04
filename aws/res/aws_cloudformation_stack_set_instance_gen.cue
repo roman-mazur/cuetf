@@ -6,16 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudformation_stack_set_instance")
 	close({
-		account_id?: string
-		call_as?:    string
-		deployment_targets?: matchN(1, [#deployment_targets, list.MaxItems(1) & [...#deployment_targets]])
-		operation_preferences?: matchN(1, [#operation_preferences, list.MaxItems(1) & [...#operation_preferences]])
-		timeouts?:               #timeouts
+		account_id?:             string
+		call_as?:                string
 		id?:                     string
 		organizational_unit_id?: string
 		parameter_overrides?: [string]: string
 		retain_stack?: bool
-		stack_id?:     string
+		deployment_targets?: matchN(1, [#deployment_targets, list.MaxItems(1) & [...#deployment_targets]])
+		stack_id?: string
+		operation_preferences?: matchN(1, [#operation_preferences, list.MaxItems(1) & [...#operation_preferences]])
+		timeouts?: #timeouts
 		stack_instance_summaries?: [...close({
 			account_id?:             string
 			organizational_unit_id?: string

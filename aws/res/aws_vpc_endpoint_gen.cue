@@ -8,8 +8,6 @@ import "list"
 	close({
 		arn?:         string
 		auto_accept?: bool
-		dns_options?: matchN(1, [#dns_options, list.MaxItems(1) & [...#dns_options]])
-		subnet_configuration?: matchN(1, [#subnet_configuration, [...#subnet_configuration]])
 		cidr_blocks?: [...string]
 		dns_entry?: [...close({
 			dns_name?:       string
@@ -18,12 +16,12 @@ import "list"
 		id?:              string
 		ip_address_type?: string
 		network_interface_ids?: [...string]
-		owner_id?:                   string
-		policy?:                     string
+		owner_id?: string
+		policy?:   string
+		dns_options?: matchN(1, [#dns_options, list.MaxItems(1) & [...#dns_options]])
 		prefix_list_id?:             string
 		private_dns_enabled?:        bool
 		region?:                     string
-		timeouts?:                   #timeouts
 		requester_managed?:          bool
 		resource_configuration_arn?: string
 		route_table_ids?: [...string]
@@ -35,6 +33,8 @@ import "list"
 		subnet_ids?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		subnet_configuration?: matchN(1, [#subnet_configuration, [...#subnet_configuration]])
+		timeouts?:          #timeouts
 		vpc_endpoint_type?: string
 		vpc_id!:            string
 	})

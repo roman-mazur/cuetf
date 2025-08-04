@@ -7,21 +7,21 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cleanrooms_collaboration")
 	close({
 		analytics_engine?: string
-		arn?:              string
 		data_encryption_metadata?: matchN(1, [#data_encryption_metadata, list.MaxItems(1) & [...#data_encryption_metadata]])
-		member?: matchN(1, [#member, [...#member]])
+		arn?:                  string
 		create_time?:          string
 		creator_display_name!: string
 		creator_member_abilities!: [...string]
-		description!:      string
-		timeouts?:         #timeouts
-		id?:               string
+		description!: string
+		id?:          string
+		member?: matchN(1, [#member, [...#member]])
 		name!:             string
 		query_log_status!: string
 		region?:           string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		update_time?: string
+		timeouts?:    #timeouts
 	})
 
 	#data_encryption_metadata: close({

@@ -10,9 +10,9 @@ package res
 		dns_resolvers?: [...string]
 		id?:       string
 		name!:     string
-		timeouts?: #timeouts
 		region?:   string
 		role_arn!: string
+		timeouts?: #timeouts
 		security_group_ids!: [...string]
 		subnet_ids!: [...string]
 		tags?: [string]:     string

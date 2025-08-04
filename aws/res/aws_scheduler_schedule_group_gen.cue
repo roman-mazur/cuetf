@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_scheduler_schedule_group")
 	close({
 		arn?:                    string
-		timeouts?:               #timeouts
 		creation_date?:          string
 		id?:                     string
 		last_modification_date?: string
 		name?:                   string
 		name_prefix?:            string
 		region?:                 string
+		timeouts?:               #timeouts
 		state?:                  string
 		tags?: [string]:     string
 		tags_all?: [string]: string

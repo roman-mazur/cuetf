@@ -10,9 +10,9 @@ package res
 		core_network_arn?:              string
 		core_network_id!:               string
 		direct_connect_gateway_arn!:    string
-		timeouts?:                      #timeouts
 		edge_locations!: [...string]
 		id?:               string
+		timeouts?:         #timeouts
 		owner_account_id?: string
 		segment_name?:     string
 		state?:            string

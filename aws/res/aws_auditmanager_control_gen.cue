@@ -5,15 +5,15 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_auditmanager_control")
 	close({
 		action_plan_instructions?: string
-		control_mapping_sources?: matchN(1, [#control_mapping_sources, [...#control_mapping_sources]])
-		action_plan_title?: string
-		arn?:               string
-		description?:       string
-		id?:                string
-		name!:              string
-		region?:            string
+		action_plan_title?:        string
+		arn?:                      string
+		description?:              string
+		id?:                       string
+		name!:                     string
+		region?:                   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		control_mapping_sources?: matchN(1, [#control_mapping_sources, [...#control_mapping_sources]])
 		testing_information?: string
 		type?:                string
 	})

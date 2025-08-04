@@ -6,8 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_apprunner_observability_configuration")
 	close({
-		arn?: string
 		trace_configuration?: matchN(1, [#trace_configuration, list.MaxItems(1) & [...#trace_configuration]])
+		arn?:                                  string
 		id?:                                   string
 		latest?:                               bool
 		observability_configuration_name!:     string

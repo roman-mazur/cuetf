@@ -6,10 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_elasticache_replication_group")
 	close({
-		apply_immediately?: bool
-		arn?:               string
-		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, list.MaxItems(2) & [...#log_delivery_configuration]])
-		timeouts?:                       #timeouts
+		apply_immediately?:              bool
+		arn?:                            string
 		at_rest_encryption_enabled?:     string
 		auth_token?:                     string
 		auth_token_update_strategy?:     string
@@ -30,10 +28,12 @@ import "list"
 		kms_key_id?:                     string
 		maintenance_window?:             string
 		member_clusters?: [...string]
-		multi_az_enabled?:       bool
-		network_type?:           string
+		multi_az_enabled?: bool
+		network_type?:     string
+		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, list.MaxItems(2) & [...#log_delivery_configuration]])
 		node_type?:              string
 		notification_topic_arn?: string
+		timeouts?:               #timeouts
 		num_cache_clusters?:     number
 		num_node_groups?:        number
 		parameter_group_name?:   string

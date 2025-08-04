@@ -6,20 +6,20 @@ package data
 	close({
 		all_availability_zones?: bool
 		group_long_name?:        string
+		group_name?:             string
+		id?:                     string
+		name?:                   string
+		name_suffix?:            string
+		network_border_group?:   string
+		opt_in_status?:          string
 		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?:             #timeouts
-		group_name?:           string
-		id?:                   string
-		name?:                 string
-		name_suffix?:          string
-		network_border_group?: string
-		opt_in_status?:        string
-		parent_zone_id?:       string
-		parent_zone_name?:     string
-		region?:               string
-		state?:                string
-		zone_id?:              string
-		zone_type?:            string
+		parent_zone_id?:   string
+		parent_zone_name?: string
+		region?:           string
+		timeouts?:         #timeouts
+		state?:            string
+		zone_id?:          string
+		zone_type?:        string
 	})
 
 	#filter: close({

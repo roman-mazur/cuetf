@@ -8,15 +8,15 @@ import "list"
 	close({
 		application_id?: string
 		arn?:            string
+		id?:             string
+		name?:           string
 		campaign_hook?: matchN(1, [#campaign_hook, list.MaxItems(1) & [...#campaign_hook]])
-		limits?: matchN(1, [#limits, list.MaxItems(1) & [...#limits]])
-		quiet_time?: matchN(1, [#quiet_time, list.MaxItems(1) & [...#quiet_time]])
-		id?:          string
-		name?:        string
 		name_prefix?: string
 		region?:      string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		limits?: matchN(1, [#limits, list.MaxItems(1) & [...#limits]])
+		quiet_time?: matchN(1, [#quiet_time, list.MaxItems(1) & [...#quiet_time]])
 	})
 
 	#campaign_hook: close({

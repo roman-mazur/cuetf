@@ -6,13 +6,13 @@ package res
 	close({
 		arn?:                     string
 		deletion_window_in_days?: number
+		enabled?:                 bool
+		exportable!:              bool
+		id?:                      string
+		key_check_value?:         string
 		key_attributes?: matchN(1, [#key_attributes, [...#key_attributes]])
-		timeouts?:                  #timeouts
-		enabled?:                   bool
-		exportable!:                bool
-		id?:                        string
-		key_check_value?:           string
 		key_check_value_algorithm?: string
+		timeouts?:                  #timeouts
 		key_origin?:                string
 		key_state?:                 string
 		region?:                    string
@@ -21,10 +21,10 @@ package res
 	})
 
 	#key_attributes: close({
+		key_modes_of_use?: matchN(1, [_#defs."/$defs/key_attributes/$defs/key_modes_of_use", [..._#defs."/$defs/key_attributes/$defs/key_modes_of_use"]])
 		key_algorithm!: string
 		key_class!:     string
 		key_usage!:     string
-		key_modes_of_use?: matchN(1, [_#defs."/$defs/key_attributes/$defs/key_modes_of_use", [..._#defs."/$defs/key_attributes/$defs/key_modes_of_use"]])
 	})
 
 	#timeouts: close({

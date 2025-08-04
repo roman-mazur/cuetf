@@ -6,14 +6,14 @@ package res
 	close({
 		cluster_identifier?: string
 		database!:           string
+		db_user?:            string
+		id?:                 string
+		region?:             string
+		secret_arn?:         string
+		sql!:                string
 		parameters?: matchN(1, [#parameters, [...#parameters]])
-		timeouts?:       #timeouts
-		db_user?:        string
-		id?:             string
-		region?:         string
-		secret_arn?:     string
-		sql!:            string
 		statement_name?: string
+		timeouts?:       #timeouts
 		with_event?:     bool
 		workgroup_name?: string
 	})

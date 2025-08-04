@@ -16,11 +16,11 @@ import "list"
 		lifecycle_config_name?:   string
 		name!:                    string
 		network_interface_id?:    string
+		platform_identifier?:     string
 		instance_metadata_service_configuration?: matchN(1, [#instance_metadata_service_configuration, list.MaxItems(1) & [...#instance_metadata_service_configuration]])
-		platform_identifier?: string
-		region?:              string
-		role_arn!:            string
-		root_access?:         string
+		region?:      string
+		role_arn!:    string
+		root_access?: string
 		security_groups?: [...string]
 		subnet_id?: string
 		tags?: [string]:     string

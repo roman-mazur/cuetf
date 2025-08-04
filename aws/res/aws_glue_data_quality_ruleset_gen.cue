@@ -6,8 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_data_quality_ruleset")
 	close({
-		arn?: string
-		target_table?: matchN(1, [#target_table, list.MaxItems(1) & [...#target_table]])
+		arn?:                   string
 		created_on?:            string
 		description?:           string
 		id?:                    string
@@ -16,6 +15,7 @@ import "list"
 		recommendation_run_id?: string
 		region?:                string
 		ruleset!:               string
+		target_table?: matchN(1, [#target_table, list.MaxItems(1) & [...#target_table]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

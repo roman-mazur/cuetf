@@ -6,14 +6,14 @@ package res
 	close({
 		arn?:         string
 		domain_name!: string
+		id?:          string
+		name?:        string
+		owner_id?:    string
+		region?:      string
 		target_ip?: matchN(1, [#target_ip, [...#target_ip]])
-		id?:                   string
-		name?:                 string
-		owner_id?:             string
-		region?:               string
 		resolver_endpoint_id?: string
-		timeouts?:             #timeouts
 		rule_type!:            string
+		timeouts?:             #timeouts
 		share_status?:         string
 		tags?: [string]:     string
 		tags_all?: [string]: string

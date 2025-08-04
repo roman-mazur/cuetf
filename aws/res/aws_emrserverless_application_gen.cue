@@ -8,20 +8,20 @@ import "list"
 	close({
 		architecture?: string
 		arn?:          string
+		id?:           string
+		name!:         string
 		auto_start_configuration?: matchN(1, [#auto_start_configuration, list.MaxItems(1) & [...#auto_start_configuration]])
+		region?:        string
+		release_label!: string
 		auto_stop_configuration?: matchN(1, [#auto_stop_configuration, list.MaxItems(1) & [...#auto_stop_configuration]])
-		id?: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 		image_configuration?: matchN(1, [#image_configuration, list.MaxItems(1) & [...#image_configuration]])
 		initial_capacity?: matchN(1, [#initial_capacity, [...#initial_capacity]])
 		interactive_configuration?: matchN(1, [#interactive_configuration, list.MaxItems(1) & [...#interactive_configuration]])
-		maximum_capacity?: matchN(1, [#maximum_capacity, list.MaxItems(1) & [...#maximum_capacity]])
-		name!:          string
-		region?:        string
-		release_label!: string
-		tags?: [string]: string
-		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
-		tags_all?: [string]: string
 		type!: string
+		maximum_capacity?: matchN(1, [#maximum_capacity, list.MaxItems(1) & [...#maximum_capacity]])
+		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
 	})
 
 	#auto_start_configuration: close({
@@ -38,8 +38,8 @@ import "list"
 	})
 
 	#initial_capacity: close({
-		initial_capacity_type!: string
 		initial_capacity_config?: matchN(1, [_#defs."/$defs/initial_capacity/$defs/initial_capacity_config", list.MaxItems(1) & [..._#defs."/$defs/initial_capacity/$defs/initial_capacity_config"]])
+		initial_capacity_type!: string
 	})
 
 	#interactive_configuration: close({
@@ -59,8 +59,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/initial_capacity/$defs/initial_capacity_config": close({
-		worker_count!: number
 		worker_configuration?: matchN(1, [_#defs."/$defs/initial_capacity/$defs/initial_capacity_config/$defs/worker_configuration", list.MaxItems(1) & [..._#defs."/$defs/initial_capacity/$defs/initial_capacity_config/$defs/worker_configuration"]])
+		worker_count!: number
 	})
 
 	_#defs: "/$defs/initial_capacity/$defs/initial_capacity_config/$defs/worker_configuration": close({

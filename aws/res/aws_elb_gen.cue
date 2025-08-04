@@ -8,10 +8,6 @@ import "list"
 	close({
 		arn?: string
 		availability_zones?: [...string]
-		access_logs?: matchN(1, [#access_logs, list.MaxItems(1) & [...#access_logs]])
-		health_check?: matchN(1, [#health_check, list.MaxItems(1) & [...#health_check]])
-		listener?: matchN(1, [#listener, [_, ...] & [...#listener]])
-		timeouts?:                    #timeouts
 		connection_draining?:         bool
 		connection_draining_timeout?: number
 		cross_zone_load_balancing?:   bool
@@ -19,9 +15,11 @@ import "list"
 		dns_name?:                    string
 		id?:                          string
 		idle_timeout?:                number
+		access_logs?: matchN(1, [#access_logs, list.MaxItems(1) & [...#access_logs]])
 		instances?: [...string]
-		internal?:    bool
-		name?:        string
+		internal?: bool
+		name?:     string
+		health_check?: matchN(1, [#health_check, list.MaxItems(1) & [...#health_check]])
 		name_prefix?: string
 		region?:      string
 		security_groups?: [...string]
@@ -30,7 +28,9 @@ import "list"
 		subnets?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		zone_id?: string
+		listener?: matchN(1, [#listener, [_, ...] & [...#listener]])
+		timeouts?: #timeouts
+		zone_id?:  string
 	})
 
 	#access_logs: close({

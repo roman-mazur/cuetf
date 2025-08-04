@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc_ipv6_cidr_block_association")
 	close({
 		assign_generated_ipv6_cidr_block?: bool
-		timeouts?:                         #timeouts
 		id?:                               string
 		ip_source?:                        string
 		ipv6_address_attribute?:           string
 		ipv6_cidr_block?:                  string
 		ipv6_ipam_pool_id?:                string
 		ipv6_netmask_length?:              number
+		timeouts?:                         #timeouts
 		ipv6_pool?:                        string
 		region?:                           string
 		vpc_id!:                           string

@@ -4,11 +4,11 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_s3_bucket_notification")
 	close({
+		lambda_function?: matchN(1, [#lambda_function, [...#lambda_function]])
 		bucket!:      string
 		eventbridge?: bool
 		id?:          string
 		region?:      string
-		lambda_function?: matchN(1, [#lambda_function, [...#lambda_function]])
 		queue?: matchN(1, [#queue, [...#queue]])
 		topic?: matchN(1, [#topic, [...#topic]])
 	})

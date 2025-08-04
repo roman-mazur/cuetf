@@ -12,11 +12,11 @@ package res
 		edge_location?:                 string
 		id?:                            string
 		owner_account_id?:              string
-		timeouts?:                      #timeouts
 		peering_id!:                    string
 		resource_arn?:                  string
 		segment_name?:                  string
 		state?:                         string
+		timeouts?:                      #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		transit_gateway_route_table_arn!: string

@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_servicecatalog_portfolio_share")
 	close({
 		accept_language?:     string
-		timeouts?:            #timeouts
 		accepted?:            bool
 		id?:                  string
 		portfolio_id!:        string
 		principal_id!:        string
 		region?:              string
 		share_principals?:    bool
+		timeouts?:            #timeouts
 		share_tag_options?:   bool
 		type!:                string
 		wait_for_acceptance?: bool

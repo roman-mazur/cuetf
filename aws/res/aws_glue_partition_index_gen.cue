@@ -6,13 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_partition_index")
 	close({
-		catalog_id?: string
 		partition_index?: matchN(1, [#partition_index, list.MaxItems(1) & [_, ...] & [...#partition_index]])
-		timeouts?:      #timeouts
+		catalog_id?:    string
 		database_name!: string
 		id?:            string
 		region?:        string
 		table_name!:    string
+		timeouts?:      #timeouts
 	})
 
 	#partition_index: close({

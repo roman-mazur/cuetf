@@ -5,6 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_instance_type")
 	close({
 		auto_recovery_supported?: bool
+		timeouts?:                #timeouts
 		bandwidth_weightings?: [...string]
 		bare_metal?: bool
 		boot_modes?: [...string]
@@ -51,7 +52,6 @@ package data
 			memory_size?:  number
 			name?:         string
 		})]
-		timeouts?: #timeouts
 		instance_disks?: [...close({
 			count?: number
 			size?:  number

@@ -4,19 +4,19 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_finspace_kx_dataview")
 	close({
-		arn?: string
+		arn?:                  string
+		auto_update!:          bool
+		availability_zone_id?: string
+		az_mode!:              string
+		changeset_id?:         string
+		created_timestamp?:    string
+		database_name!:        string
+		description?:          string
+		environment_id!:       string
 		segment_configurations?: matchN(1, [#segment_configurations, [...#segment_configurations]])
-		timeouts?:                #timeouts
-		auto_update!:             bool
-		availability_zone_id?:    string
-		az_mode!:                 string
-		changeset_id?:            string
-		created_timestamp?:       string
-		database_name!:           string
-		description?:             string
-		environment_id!:          string
 		id?:                      string
 		last_modified_timestamp?: string
+		timeouts?:                #timeouts
 		name!:                    string
 		read_write?:              bool
 		region?:                  string

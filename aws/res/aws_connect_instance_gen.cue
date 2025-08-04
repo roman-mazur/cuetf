@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_connect_instance")
 	close({
 		arn?:                              string
-		timeouts?:                         #timeouts
 		auto_resolve_best_voices_enabled?: bool
 		contact_flow_logs_enabled?:        bool
 		contact_lens_enabled?:             bool
@@ -20,6 +19,7 @@ package res
 		outbound_calls_enabled!:           bool
 		region?:                           string
 		service_role?:                     string
+		timeouts?:                         #timeouts
 		status?:                           string
 		tags?: [string]:     string
 		tags_all?: [string]: string

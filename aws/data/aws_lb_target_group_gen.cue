@@ -26,9 +26,9 @@ package data
 		load_balancing_anomaly_mitigation?: string
 		load_balancing_cross_zone_enabled?: string
 		name?:                              string
-		timeouts?:                          #timeouts
 		port?:                              number
 		preserve_client_ip?:                string
+		timeouts?:                          #timeouts
 		protocol?:                          string
 		protocol_version?:                  string
 		proxy_protocol_v2?:                 bool

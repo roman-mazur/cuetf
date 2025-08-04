@@ -10,12 +10,12 @@ package res
 		engine?:                    string
 		engine_version?:            string
 		global_cluster_identifier!: string
-		timeouts?:                  #timeouts
 		global_cluster_members?: [...close({
 			db_cluster_arn?: string
 			is_writer?:      bool
 		})]
 		global_cluster_resource_id?:   string
+		timeouts?:                     #timeouts
 		id?:                           string
 		region?:                       string
 		source_db_cluster_identifier?: string

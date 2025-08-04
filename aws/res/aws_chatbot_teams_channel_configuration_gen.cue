@@ -12,11 +12,11 @@ package res
 		iam_role_arn!:  string
 		logging_level?: string
 		region?:        string
-		timeouts?:      #timeouts
 		sns_topic_arns?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		team_id!:                     string
+		timeouts?:                    #timeouts
 		team_name?:                   string
 		tenant_id!:                   string
 		user_authorization_required?: bool

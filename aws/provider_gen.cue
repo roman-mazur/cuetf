@@ -6,11 +6,6 @@ package aws
 	close({
 		access_key?: string
 		allowed_account_ids?: [...string]
-		assume_role?: matchN(1, [#assume_role, [...#assume_role]])
-		assume_role_with_web_identity?: matchN(1, [#assume_role_with_web_identity, [...#assume_role_with_web_identity]])
-		default_tags?: matchN(1, [#default_tags, [...#default_tags]])
-		endpoints?: matchN(1, [#endpoints, [...#endpoints]])
-		ignore_tags?: matchN(1, [#ignore_tags, [...#ignore_tags]])
 		custom_ca_bundle?:                   string
 		ec2_metadata_service_endpoint?:      string
 		ec2_metadata_service_endpoint_mode?: string
@@ -28,15 +23,20 @@ package aws
 		secret_key?:                     string
 		shared_config_files?: [...string]
 		shared_credentials_files?: [...string]
-		skip_credentials_validation?:        bool
-		skip_metadata_api_check?:            string
-		skip_region_validation?:             bool
-		skip_requesting_account_id?:         bool
+		skip_credentials_validation?: bool
+		skip_metadata_api_check?:     string
+		skip_region_validation?:      bool
+		skip_requesting_account_id?:  bool
+		assume_role?: matchN(1, [#assume_role, [...#assume_role]])
 		sts_region?:                         string
 		token?:                              string
 		token_bucket_rate_limiter_capacity?: number
 		use_dualstack_endpoint?:             bool
-		use_fips_endpoint?:                  bool
+		assume_role_with_web_identity?: matchN(1, [#assume_role_with_web_identity, [...#assume_role_with_web_identity]])
+		default_tags?: matchN(1, [#default_tags, [...#default_tags]])
+		endpoints?: matchN(1, [#endpoints, [...#endpoints]])
+		ignore_tags?: matchN(1, [#ignore_tags, [...#ignore_tags]])
+		use_fips_endpoint?: bool
 	})
 
 	#assume_role: close({

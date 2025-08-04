@@ -8,10 +8,6 @@ import "list"
 	close({
 		access_token?: string
 		arn?:          string
-		auto_branch_creation_config?: matchN(1, [#auto_branch_creation_config, list.MaxItems(1) & [...#auto_branch_creation_config]])
-		cache_config?: matchN(1, [#cache_config, list.MaxItems(1) & [...#cache_config]])
-		custom_rule?: matchN(1, [#custom_rule, [...#custom_rule]])
-		job_config?: matchN(1, [#job_config, list.MaxItems(1) & [...#job_config]])
 		auto_branch_creation_patterns?: [...string]
 		basic_auth_credentials?:      string
 		build_spec?:                  string
@@ -23,6 +19,9 @@ import "list"
 		enable_basic_auth?:           bool
 		enable_branch_auto_build?:    bool
 		enable_branch_auto_deletion?: bool
+		auto_branch_creation_config?: matchN(1, [#auto_branch_creation_config, list.MaxItems(1) & [...#auto_branch_creation_config]])
+		cache_config?: matchN(1, [#cache_config, list.MaxItems(1) & [...#cache_config]])
+		custom_rule?: matchN(1, [#custom_rule, [...#custom_rule]])
 		environment_variables?: [string]: string
 		iam_service_role_arn?: string
 		id?:                   string
@@ -39,6 +38,7 @@ import "list"
 		repository?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		job_config?: matchN(1, [#job_config, list.MaxItems(1) & [...#job_config]])
 	})
 
 	#auto_branch_creation_config: close({

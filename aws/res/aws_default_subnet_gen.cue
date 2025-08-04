@@ -8,6 +8,7 @@ package res
 		assign_ipv6_address_on_creation?:                bool
 		availability_zone!:                              string
 		availability_zone_id?:                           string
+		timeouts?:                                       #timeouts
 		cidr_block?:                                     string
 		customer_owned_ipv4_pool?:                       string
 		enable_dns64?:                                   bool
@@ -16,7 +17,6 @@ package res
 		enable_resource_name_dns_aaaa_record_on_launch?: bool
 		existing_default_subnet?:                        bool
 		force_destroy?:                                  bool
-		timeouts?:                                       #timeouts
 		id?:                                             string
 		ipv6_cidr_block?:                                string
 		ipv6_cidr_block_association_id?:                 string

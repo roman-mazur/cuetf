@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_transit_gateway_default_route_table_association")
 	close({
-		id?:                              string
 		timeouts?:                        #timeouts
+		id?:                              string
 		original_default_route_table_id?: string
 		region?:                          string
 		transit_gateway_id!:              string

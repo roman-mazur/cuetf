@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_transit_gateway_multicast_domain")
 	close({
 		arn?:                             string
-		timeouts?:                        #timeouts
 		auto_accept_shared_associations?: string
 		id?:                              string
 		igmpv2_support?:                  string
 		owner_id?:                        string
 		region?:                          string
 		static_sources_support?:          string
+		timeouts?:                        #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		transit_gateway_id!: string

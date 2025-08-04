@@ -6,13 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_client_vpn_endpoint")
 	close({
-		arn?:               string
-		client_cidr_block!: string
-		authentication_options?: matchN(1, [#authentication_options, list.MaxItems(2) & [_, ...] & [...#authentication_options]])
-		client_connect_options?: matchN(1, [#client_connect_options, list.MaxItems(1) & [...#client_connect_options]])
-		client_login_banner_options?: matchN(1, [#client_login_banner_options, list.MaxItems(1) & [...#client_login_banner_options]])
-		client_route_enforcement_options?: matchN(1, [#client_route_enforcement_options, list.MaxItems(1) & [...#client_route_enforcement_options]])
-		connection_log_options?: matchN(1, [#connection_log_options, list.MaxItems(1) & [_, ...] & [...#connection_log_options]])
+		arn?:                           string
+		client_cidr_block!:             string
 		description?:                   string
 		disconnect_on_session_timeout?: bool
 		dns_name?:                      string
@@ -20,11 +15,16 @@ import "list"
 		id?:     string
 		region?: string
 		security_group_ids?: [...string]
+		authentication_options?: matchN(1, [#authentication_options, list.MaxItems(2) & [_, ...] & [...#authentication_options]])
 		self_service_portal?:     string
 		self_service_portal_url?: string
-		server_certificate_arn!:  string
-		session_timeout_hours?:   number
-		split_tunnel?:            bool
+		client_connect_options?: matchN(1, [#client_connect_options, list.MaxItems(1) & [...#client_connect_options]])
+		client_login_banner_options?: matchN(1, [#client_login_banner_options, list.MaxItems(1) & [...#client_login_banner_options]])
+		server_certificate_arn!: string
+		client_route_enforcement_options?: matchN(1, [#client_route_enforcement_options, list.MaxItems(1) & [...#client_route_enforcement_options]])
+		connection_log_options?: matchN(1, [#connection_log_options, list.MaxItems(1) & [_, ...] & [...#connection_log_options]])
+		session_timeout_hours?: number
+		split_tunnel?:          bool
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		transport_protocol?: string

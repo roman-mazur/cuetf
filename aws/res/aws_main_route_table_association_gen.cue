@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_main_route_table_association")
 	close({
-		id?:                      string
 		timeouts?:                #timeouts
+		id?:                      string
 		original_route_table_id?: string
 		region?:                  string
 		route_table_id!:          string

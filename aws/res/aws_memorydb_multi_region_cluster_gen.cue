@@ -12,11 +12,11 @@ package res
 		multi_region_cluster_name_suffix!:  string
 		multi_region_parameter_group_name?: string
 		node_type!:                         string
-		timeouts?:                          #timeouts
 		num_shards?:                        number
 		region?:                            string
 		status?:                            string
-		tags?: [string]:     string
+		tags?: [string]: string
+		timeouts?: #timeouts
 		tags_all?: [string]: string
 		tls_enabled?:     bool
 		update_strategy?: string

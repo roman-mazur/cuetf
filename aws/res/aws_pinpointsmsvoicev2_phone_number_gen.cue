@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_pinpointsmsvoicev2_phone_number")
 	close({
 		arn?:                         string
-		timeouts?:                    #timeouts
 		deletion_protection_enabled?: bool
 		id?:                          string
 		iso_country_code!:            string
@@ -20,6 +19,7 @@ package res
 		self_managed_opt_outs_enabled?: bool
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		timeouts?:                #timeouts
 		two_way_channel_arn?:     string
 		two_way_channel_enabled?: bool
 		two_way_channel_role?:    string

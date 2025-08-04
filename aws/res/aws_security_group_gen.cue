@@ -30,9 +30,9 @@ package res
 			to_port?: number
 		})]
 		name?:                   string
-		timeouts?:               #timeouts
 		name_prefix?:            string
 		owner_id?:               string
+		timeouts?:               #timeouts
 		region?:                 string
 		revoke_rules_on_delete?: bool
 		tags?: [string]:     string

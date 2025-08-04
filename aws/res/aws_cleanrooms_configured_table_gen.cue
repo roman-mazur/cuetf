@@ -8,14 +8,14 @@ import "list"
 	close({
 		allowed_columns!: [...string]
 		analysis_method!: string
+		arn?:             string
+		create_time?:     string
+		description?:     string
+		id?:              string
 		table_reference?: matchN(1, [#table_reference, list.MaxItems(1) & [_, ...] & [...#table_reference]])
-		arn?:         string
-		create_time?: string
-		description?: string
-		id?:          string
-		name!:        string
-		timeouts?:    #timeouts
-		region?:      string
+		name!:     string
+		region?:   string
+		timeouts?: #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		update_time?: string

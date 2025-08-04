@@ -8,14 +8,14 @@ import "list"
 	close({
 		app_monitor_id?: string
 		arn?:            string
-		app_monitor_configuration?: matchN(1, [#app_monitor_configuration, list.MaxItems(1) & [...#app_monitor_configuration]])
 		cw_log_enabled?: bool
 		cw_log_group?:   string
 		domain?:         string
 		domain_list?: [...string]
-		id?: string
+		app_monitor_configuration?: matchN(1, [#app_monitor_configuration, list.MaxItems(1) & [...#app_monitor_configuration]])
+		id?:   string
+		name!: string
 		custom_events?: matchN(1, [#custom_events, list.MaxItems(1) & [...#custom_events]])
-		name!:   string
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

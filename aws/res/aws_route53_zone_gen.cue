@@ -6,14 +6,14 @@ package res
 	close({
 		arn?:               string
 		comment?:           string
-		timeouts?:          #timeouts
 		delegation_set_id?: string
 		force_destroy?:     bool
 		id?:                string
 		name!:              string
+		timeouts?:          #timeouts
 		name_servers?: [...string]
-		vpc?: matchN(1, [#vpc, [...#vpc]])
 		primary_name_server?: string
+		vpc?: matchN(1, [#vpc, [...#vpc]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		zone_id?: string

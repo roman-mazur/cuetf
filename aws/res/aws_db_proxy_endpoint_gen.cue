@@ -10,9 +10,9 @@ package res
 		endpoint?:               string
 		id?:                     string
 		is_default?:             bool
-		timeouts?:               #timeouts
 		region?:                 string
-		tags?: [string]:     string
+		tags?: [string]: string
+		timeouts?: #timeouts
 		tags_all?: [string]: string
 		target_role?: string
 		vpc_id?:      string

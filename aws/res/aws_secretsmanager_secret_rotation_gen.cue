@@ -6,8 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_secretsmanager_secret_rotation")
 	close({
-		id?: string
 		rotation_rules?: matchN(1, [#rotation_rules, list.MaxItems(1) & [_, ...] & [...#rotation_rules]])
+		id?:                  string
 		region?:              string
 		rotate_immediately?:  bool
 		rotation_enabled?:    bool

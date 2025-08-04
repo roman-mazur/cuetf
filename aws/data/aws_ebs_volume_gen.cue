@@ -4,10 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ebs_volume")
 	close({
-		arn?:               string
-		availability_zone?: string
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?:             #timeouts
+		arn?:                  string
+		availability_zone?:    string
 		create_time?:          string
 		encrypted?:            bool
 		id?:                   string
@@ -16,10 +14,12 @@ package data
 		most_recent?:          bool
 		multi_attach_enabled?: bool
 		outpost_arn?:          string
-		region?:               string
-		size?:                 number
-		snapshot_id?:          string
+		filter?: matchN(1, [#filter, [...#filter]])
+		region?:      string
+		size?:        number
+		snapshot_id?: string
 		tags?: [string]: string
+		timeouts?:                   #timeouts
 		throughput?:                 number
 		volume_id?:                  string
 		volume_initialization_rate?: number

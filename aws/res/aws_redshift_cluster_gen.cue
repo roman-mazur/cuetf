@@ -32,7 +32,6 @@ package res
 		enhanced_vpc_routing?:         bool
 		final_snapshot_identifier?:    string
 		iam_roles?: [...string]
-		timeouts?:                          #timeouts
 		id?:                                string
 		kms_key_id?:                        string
 		maintenance_track_name?:            string
@@ -56,6 +55,7 @@ package res
 		snapshot_arn?:                      string
 		snapshot_cluster_identifier?:       string
 		snapshot_identifier?:               string
+		timeouts?:                          #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		vpc_security_group_ids?: [...string]

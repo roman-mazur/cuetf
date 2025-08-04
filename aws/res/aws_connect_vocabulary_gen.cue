@@ -10,9 +10,9 @@ package res
 		id?:                 string
 		instance_id!:        string
 		language_code!:      string
-		timeouts?:           #timeouts
 		last_modified_time?: string
 		name!:               string
+		timeouts?:           #timeouts
 		region?:             string
 		state?:              string
 		tags?: [string]:     string

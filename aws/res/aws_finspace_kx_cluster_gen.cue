@@ -8,33 +8,33 @@ import "list"
 	close({
 		arn?:                  string
 		availability_zone_id?: string
-		auto_scaling_configuration?: matchN(1, [#auto_scaling_configuration, list.MaxItems(1) & [...#auto_scaling_configuration]])
-		cache_storage_configurations?: matchN(1, [#cache_storage_configurations, [...#cache_storage_configurations]])
-		capacity_configuration?: matchN(1, [#capacity_configuration, list.MaxItems(1) & [...#capacity_configuration]])
-		code?: matchN(1, [#code, list.MaxItems(1) & [...#code]])
-		database?: matchN(1, [#database, [...#database]])
-		savedown_storage_configuration?: matchN(1, [#savedown_storage_configuration, list.MaxItems(1) & [...#savedown_storage_configuration]])
-		scaling_group_configuration?: matchN(1, [#scaling_group_configuration, list.MaxItems(1) & [...#scaling_group_configuration]])
-		az_mode!: string
-		tickerplant_log_configuration?: matchN(1, [#tickerplant_log_configuration, [...#tickerplant_log_configuration]])
-		timeouts?: #timeouts
+		az_mode!:              string
 		command_line_arguments?: [string]: string
-		created_timestamp?:       string
-		description?:             string
-		environment_id!:          string
-		execution_role?:          string
+		created_timestamp?: string
+		description?:       string
+		environment_id!:    string
+		execution_role?:    string
+		auto_scaling_configuration?: matchN(1, [#auto_scaling_configuration, list.MaxItems(1) & [...#auto_scaling_configuration]])
 		id?:                      string
 		initialization_script?:   string
 		last_modified_timestamp?: string
 		name!:                    string
 		region?:                  string
-		release_label!:           string
-		status?:                  string
-		status_reason?:           string
-		vpc_configuration?: matchN(1, [#vpc_configuration, list.MaxItems(1) & [_, ...] & [...#vpc_configuration]])
-		tags?: [string]:     string
+		cache_storage_configurations?: matchN(1, [#cache_storage_configurations, [...#cache_storage_configurations]])
+		release_label!: string
+		capacity_configuration?: matchN(1, [#capacity_configuration, list.MaxItems(1) & [...#capacity_configuration]])
+		status?:        string
+		status_reason?: string
+		tags?: [string]: string
+		code?: matchN(1, [#code, list.MaxItems(1) & [...#code]])
+		database?: matchN(1, [#database, [...#database]])
+		savedown_storage_configuration?: matchN(1, [#savedown_storage_configuration, list.MaxItems(1) & [...#savedown_storage_configuration]])
+		scaling_group_configuration?: matchN(1, [#scaling_group_configuration, list.MaxItems(1) & [...#scaling_group_configuration]])
+		tickerplant_log_configuration?: matchN(1, [#tickerplant_log_configuration, [...#tickerplant_log_configuration]])
 		tags_all?: [string]: string
-		type!: string
+		type!:     string
+		timeouts?: #timeouts
+		vpc_configuration?: matchN(1, [#vpc_configuration, list.MaxItems(1) & [_, ...] & [...#vpc_configuration]])
 	})
 
 	#auto_scaling_configuration: close({
@@ -63,10 +63,10 @@ import "list"
 	})
 
 	#database: close({
+		cache_configurations?: matchN(1, [_#defs."/$defs/database/$defs/cache_configurations", [..._#defs."/$defs/database/$defs/cache_configurations"]])
 		changeset_id?:  string
 		database_name!: string
 		dataview_name?: string
-		cache_configurations?: matchN(1, [_#defs."/$defs/database/$defs/cache_configurations", [..._#defs."/$defs/database/$defs/cache_configurations"]])
 	})
 
 	#savedown_storage_configuration: close({

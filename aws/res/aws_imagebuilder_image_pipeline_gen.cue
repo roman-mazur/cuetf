@@ -6,22 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_imagebuilder_image_pipeline")
 	close({
-		arn?:                  string
-		container_recipe_arn?: string
+		arn?: string
 		image_scanning_configuration?: matchN(1, [#image_scanning_configuration, list.MaxItems(1) & [...#image_scanning_configuration]])
+		container_recipe_arn?:            string
+		date_created?:                    string
+		date_last_run?:                   string
+		date_next_run?:                   string
+		date_updated?:                    string
+		description?:                     string
+		distribution_configuration_arn?:  string
+		enhanced_image_metadata_enabled?: bool
+		execution_role?:                  string
+		id?:                              string
 		image_tests_configuration?: matchN(1, [#image_tests_configuration, list.MaxItems(1) & [...#image_tests_configuration]])
 		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [...#schedule]])
+		image_recipe_arn?: string
 		workflow?: matchN(1, [#workflow, [...#workflow]])
-		date_created?:                     string
-		date_last_run?:                    string
-		date_next_run?:                    string
-		date_updated?:                     string
-		description?:                      string
-		distribution_configuration_arn?:   string
-		enhanced_image_metadata_enabled?:  bool
-		execution_role?:                   string
-		id?:                               string
-		image_recipe_arn?:                 string
 		infrastructure_configuration_arn!: string
 		name!:                             string
 		platform?:                         string
@@ -32,8 +32,8 @@ import "list"
 	})
 
 	#image_scanning_configuration: close({
-		image_scanning_enabled?: bool
 		ecr_configuration?: matchN(1, [_#defs."/$defs/image_scanning_configuration/$defs/ecr_configuration", list.MaxItems(1) & [..._#defs."/$defs/image_scanning_configuration/$defs/ecr_configuration"]])
+		image_scanning_enabled?: bool
 	})
 
 	#image_tests_configuration: close({
@@ -48,10 +48,10 @@ import "list"
 	})
 
 	#workflow: close({
+		parameter?: matchN(1, [_#defs."/$defs/workflow/$defs/parameter", [..._#defs."/$defs/workflow/$defs/parameter"]])
 		on_failure?:     string
 		parallel_group?: string
 		workflow_arn!:   string
-		parameter?: matchN(1, [_#defs."/$defs/workflow/$defs/parameter", [..._#defs."/$defs/workflow/$defs/parameter"]])
 	})
 
 	_#defs: "/$defs/image_scanning_configuration/$defs/ecr_configuration": close({

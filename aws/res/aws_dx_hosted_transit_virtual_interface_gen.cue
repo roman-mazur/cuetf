@@ -12,8 +12,8 @@ package res
 		bgp_asn!:             number
 		bgp_auth_key?:        string
 		connection_id!:       string
-		timeouts?:            #timeouts
 		customer_address?:    string
+		timeouts?:            #timeouts
 		id?:                  string
 		jumbo_frame_capable?: bool
 		mtu?:                 number

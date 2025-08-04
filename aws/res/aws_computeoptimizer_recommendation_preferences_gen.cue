@@ -6,15 +6,15 @@ package res
 	close({
 		enhanced_infrastructure_metrics?: string
 		id?:                              string
+		inferred_workload_types?:         string
+		look_back_period?:                string
+		region?:                          string
+		resource_type!:                   string
 		external_metrics_preference?: matchN(1, [#external_metrics_preference, [...#external_metrics_preference]])
+		savings_estimation_mode?: string
 		preferred_resource?: matchN(1, [#preferred_resource, [...#preferred_resource]])
 		scope?: matchN(1, [#scope, [...#scope]])
 		utilization_preference?: matchN(1, [#utilization_preference, [...#utilization_preference]])
-		inferred_workload_types?: string
-		look_back_period?:        string
-		region?:                  string
-		resource_type!:           string
-		savings_estimation_mode?: string
 	})
 
 	#external_metrics_preference: close({
@@ -33,8 +33,8 @@ package res
 	})
 
 	#utilization_preference: close({
-		metric_name!: string
 		metric_parameters?: matchN(1, [_#defs."/$defs/utilization_preference/$defs/metric_parameters", [..._#defs."/$defs/utilization_preference/$defs/metric_parameters"]])
+		metric_name!: string
 	})
 
 	_#defs: "/$defs/utilization_preference/$defs/metric_parameters": close({

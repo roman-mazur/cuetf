@@ -4,12 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudwatch_metric_stream")
 	close({
-		arn?:           string
-		creation_date?: string
-		exclude_filter?: matchN(1, [#exclude_filter, [...#exclude_filter]])
-		include_filter?: matchN(1, [#include_filter, [...#include_filter]])
-		statistics_configuration?: matchN(1, [#statistics_configuration, [...#statistics_configuration]])
-		timeouts?:                        #timeouts
+		arn?:                             string
+		creation_date?:                   string
 		firehose_arn!:                    string
 		id?:                              string
 		include_linked_accounts_metrics?: bool
@@ -17,11 +13,15 @@ package res
 		name?:                            string
 		name_prefix?:                     string
 		output_format!:                   string
-		region?:                          string
-		role_arn!:                        string
-		state?:                           string
+		exclude_filter?: matchN(1, [#exclude_filter, [...#exclude_filter]])
+		region?:   string
+		role_arn!: string
+		include_filter?: matchN(1, [#include_filter, [...#include_filter]])
+		statistics_configuration?: matchN(1, [#statistics_configuration, [...#statistics_configuration]])
+		state?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		timeouts?: #timeouts
 	})
 
 	#exclude_filter: close({
@@ -35,8 +35,8 @@ package res
 	})
 
 	#statistics_configuration: close({
-		additional_statistics!: [...string]
 		include_metric?: matchN(1, [_#defs."/$defs/statistics_configuration/$defs/include_metric", [_, ...] & [..._#defs."/$defs/statistics_configuration/$defs/include_metric"]])
+		additional_statistics!: [...string]
 	})
 
 	#timeouts: close({

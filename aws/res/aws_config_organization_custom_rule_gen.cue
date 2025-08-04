@@ -10,13 +10,13 @@ package res
 		id?:                          string
 		input_parameters?:            string
 		lambda_function_arn!:         string
-		timeouts?:                    #timeouts
 		maximum_execution_frequency?: string
 		name!:                        string
 		region?:                      string
 		resource_id_scope?:           string
 		resource_types_scope?: [...string]
 		tag_key_scope?:   string
+		timeouts?:        #timeouts
 		tag_value_scope?: string
 		trigger_types!: [...string]
 	})

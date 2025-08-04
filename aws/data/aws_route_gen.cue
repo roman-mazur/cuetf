@@ -12,8 +12,8 @@ package data
 		egress_only_gateway_id?:      string
 		gateway_id?:                  string
 		id?:                          string
-		timeouts?:                    #timeouts
 		instance_id?:                 string
+		timeouts?:                    #timeouts
 		local_gateway_id?:            string
 		nat_gateway_id?:              string
 		network_interface_id?:        string

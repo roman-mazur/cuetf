@@ -10,9 +10,9 @@ package res
 		availability_zone!: string
 		host_recovery?:     string
 		id?:                string
-		timeouts?:          #timeouts
 		instance_family?:   string
 		instance_type?:     string
+		timeouts?:          #timeouts
 		outpost_arn?:       string
 		owner_id?:          string
 		region?:            string

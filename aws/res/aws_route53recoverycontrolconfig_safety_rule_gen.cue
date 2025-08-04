@@ -6,8 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_route53recoverycontrolconfig_safety_rule")
 	close({
-		arn?: string
 		rule_config?: matchN(1, [#rule_config, list.MaxItems(1) & [_, ...] & [...#rule_config]])
+		arn?: string
 		asserted_controls?: [...string]
 		control_panel_arn!: string
 		gating_controls?: [...string]

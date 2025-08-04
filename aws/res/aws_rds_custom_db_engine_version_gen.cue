@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_rds_custom_db_engine_version")
 	close({
 		arn?:                                        string
+		timeouts?:                                   #timeouts
 		create_time?:                                string
 		database_installation_files_s3_bucket_name?: string
 		database_installation_files_s3_prefix?:      string
@@ -14,7 +15,6 @@ package res
 		engine_version!:                             string
 		filename?:                                   string
 		id?:                                         string
-		timeouts?:                                   #timeouts
 		image_id?:                                   string
 		kms_key_id?:                                 string
 		major_engine_version?:                       string

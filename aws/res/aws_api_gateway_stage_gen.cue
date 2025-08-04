@@ -8,8 +8,6 @@ import "list"
 	close({
 		arn?:                   string
 		cache_cluster_enabled?: bool
-		access_log_settings?: matchN(1, [#access_log_settings, list.MaxItems(1) & [...#access_log_settings]])
-		canary_settings?: matchN(1, [#canary_settings, list.MaxItems(1) & [...#canary_settings]])
 		cache_cluster_size?:    string
 		client_certificate_id?: string
 		deployment_id!:         string
@@ -18,10 +16,12 @@ import "list"
 		execution_arn?:         string
 		id?:                    string
 		invoke_url?:            string
-		region?:                string
-		rest_api_id!:           string
-		stage_name!:            string
-		tags?: [string]:      string
+		access_log_settings?: matchN(1, [#access_log_settings, list.MaxItems(1) & [...#access_log_settings]])
+		region?:      string
+		rest_api_id!: string
+		stage_name!:  string
+		tags?: [string]: string
+		canary_settings?: matchN(1, [#canary_settings, list.MaxItems(1) & [...#canary_settings]])
 		tags_all?: [string]:  string
 		variables?: [string]: string
 		web_acl_arn?:          string

@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_rekognition_collection")
 	close({
-		arn?:                string
 		timeouts?:           #timeouts
+		arn?:                string
 		collection_id!:      string
 		face_model_version?: string
 		id?:                 string

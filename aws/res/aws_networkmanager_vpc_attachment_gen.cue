@@ -8,17 +8,17 @@ import "list"
 	close({
 		arn?:                           string
 		attachment_policy_rule_number?: number
+		attachment_type?:               string
+		core_network_arn?:              string
+		core_network_id!:               string
+		edge_location?:                 string
+		id?:                            string
+		owner_account_id?:              string
 		options?: matchN(1, [#options, list.MaxItems(1) & [...#options]])
-		attachment_type?:  string
-		core_network_arn?: string
-		core_network_id!:  string
-		edge_location?:    string
-		id?:               string
-		timeouts?:         #timeouts
-		owner_account_id?: string
-		resource_arn?:     string
-		segment_name?:     string
-		state?:            string
+		resource_arn?: string
+		segment_name?: string
+		state?:        string
+		timeouts?:     #timeouts
 		subnet_arns!: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string

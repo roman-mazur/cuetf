@@ -16,9 +16,9 @@ package res
 		max_message_size?:                  number
 		message_retention_seconds?:         number
 		name?:                              string
-		timeouts?:                          #timeouts
 		name_prefix?:                       string
 		policy?:                            string
+		timeouts?:                          #timeouts
 		receive_wait_time_seconds?:         number
 		redrive_allow_policy?:              string
 		redrive_policy?:                    string

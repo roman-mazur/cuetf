@@ -10,13 +10,13 @@ package res
 		core_network_arn?:              string
 		core_network_id!:               string
 		edge_location?:                 string
-		timeouts?:                      #timeouts
 		id?:                            string
 		owner_account_id?:              string
 		resource_arn?:                  string
 		segment_name?:                  string
 		state?:                         string
-		tags?: [string]:     string
+		tags?: [string]: string
+		timeouts?: #timeouts
 		tags_all?: [string]: string
 		vpn_connection_arn!: string
 	})

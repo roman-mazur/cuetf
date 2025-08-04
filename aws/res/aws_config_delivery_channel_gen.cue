@@ -6,8 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_config_delivery_channel")
 	close({
-		id?: string
 		snapshot_delivery_properties?: matchN(1, [#snapshot_delivery_properties, list.MaxItems(1) & [...#snapshot_delivery_properties]])
+		id?:             string
 		name?:           string
 		region?:         string
 		s3_bucket_name!: string

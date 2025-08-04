@@ -12,11 +12,11 @@ package res
 		bgp_asn!:          number
 		bgp_auth_key?:     string
 		connection_id!:    string
-		timeouts?:         #timeouts
 		customer_address?: string
 		id?:               string
 		name!:             string
 		owner_account_id!: string
+		timeouts?:         #timeouts
 		region?:           string
 		route_filter_prefixes!: [...string]
 		vlan!: number

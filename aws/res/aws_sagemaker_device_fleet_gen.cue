@@ -6,15 +6,15 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_sagemaker_device_fleet")
 	close({
-		arn?: string
-		output_config?: matchN(1, [#output_config, list.MaxItems(1) & [_, ...] & [...#output_config]])
+		arn?:                   string
 		description?:           string
 		device_fleet_name!:     string
 		enable_iot_role_alias?: bool
 		id?:                    string
 		iot_role_alias?:        string
 		region?:                string
-		role_arn!:              string
+		output_config?: matchN(1, [#output_config, list.MaxItems(1) & [_, ...] & [...#output_config]])
+		role_arn!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

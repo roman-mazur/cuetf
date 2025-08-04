@@ -9,7 +9,6 @@ package data
 			subnet_id?:                     string
 			transit_gateway_attachment_id?: string
 		})]
-		filter?: matchN(1, [#filter, [...#filter]])
 		auto_accept_shared_associations?: string
 		id?:                              string
 		igmpv2_support?:                  string
@@ -18,14 +17,15 @@ package data
 			network_interface_id?: string
 		})]
 		owner_id?: string
-		timeouts?: #timeouts
 		region?:   string
+		filter?: matchN(1, [#filter, [...#filter]])
 		sources?: [...close({
 			group_ip_address?:     string
 			network_interface_id?: string
 		})]
 		state?:                  string
 		static_sources_support?: string
+		timeouts?:               #timeouts
 		tags?: [string]: string
 		transit_gateway_attachment_id?:       string
 		transit_gateway_id?:                  string

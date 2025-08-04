@@ -16,9 +16,9 @@ package res
 		hsm_type!:                 string
 		id?:                       string
 		mode?:                     string
-		timeouts?:                 #timeouts
 		region?:                   string
 		security_group_id?:        string
+		timeouts?:                 #timeouts
 		source_backup_identifier?: string
 		subnet_ids!: [...string]
 		tags?: [string]:     string

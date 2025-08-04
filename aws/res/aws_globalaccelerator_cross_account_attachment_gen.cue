@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_globalaccelerator_cross_account_attachment")
 	close({
-		arn?: string
 		resource?: matchN(1, [#resource, [...#resource]])
+		arn?:                string
 		created_time?:       string
 		id?:                 string
 		last_modified_time?: string

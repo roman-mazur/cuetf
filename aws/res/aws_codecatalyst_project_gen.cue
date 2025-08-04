@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codecatalyst_project")
 	close({
-		description?:  string
 		timeouts?:     #timeouts
+		description?:  string
 		display_name!: string
 		id?:           string
 		name?:         string

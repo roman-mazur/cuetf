@@ -10,13 +10,13 @@ package res
 		create_base_policy?: bool
 		created_at?:         string
 		description?:        string
-		timeouts?:           #timeouts
 		edges?: [...close({
 			asn?:           number
 			edge_location?: string
 			inside_cidr_blocks?: [...string]
 		})]
 		global_network_id!: string
+		timeouts?:          #timeouts
 		id?:                string
 		segments?: [...close({
 			edge_locations?: [...string]

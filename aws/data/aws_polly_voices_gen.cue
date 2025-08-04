@@ -4,8 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_polly_voices")
 	close({
-		engine?: string
 		voices?: matchN(1, [#voices, [...#voices]])
+		engine?:                            string
 		id?:                                string
 		include_additional_language_codes?: bool
 		language_code?:                     string

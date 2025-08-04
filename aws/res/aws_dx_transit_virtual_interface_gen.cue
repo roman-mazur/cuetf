@@ -14,12 +14,12 @@ package res
 		connection_id!:       string
 		customer_address?:    string
 		dx_gateway_id!:       string
-		timeouts?:            #timeouts
 		id?:                  string
 		jumbo_frame_capable?: bool
 		mtu?:                 number
 		name!:                string
 		region?:              string
+		timeouts?:            #timeouts
 		sitelink_enabled?:    bool
 		tags?: [string]:     string
 		tags_all?: [string]: string

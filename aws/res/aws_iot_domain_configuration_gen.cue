@@ -8,17 +8,17 @@ import "list"
 	close({
 		application_protocol?: string
 		arn?:                  string
+		authentication_type?:  string
+		domain_name?:          string
+		domain_type?:          string
+		id?:                   string
+		name!:                 string
+		region?:               string
 		authorizer_config?: matchN(1, [#authorizer_config, list.MaxItems(1) & [...#authorizer_config]])
-		tls_config?: matchN(1, [#tls_config, list.MaxItems(1) & [...#tls_config]])
-		authentication_type?: string
-		domain_name?:         string
-		domain_type?:         string
-		id?:                  string
-		name!:                string
-		region?:              string
 		server_certificate_arns?: [...string]
 		service_type?: string
 		status?:       string
+		tls_config?: matchN(1, [#tls_config, list.MaxItems(1) & [...#tls_config]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		validation_certificate_arn?: string

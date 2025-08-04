@@ -16,7 +16,6 @@ package res
 		iops?:               number
 		kms_key_id?:         string
 		license_model?:      string
-		timeouts?:           #timeouts
 		option_group_name?:  string
 		port?:               number
 		presigned_url?:      string
@@ -26,6 +25,7 @@ package res
 		source_db_snapshot_identifier!: string
 		source_region?:                 string
 		storage_type?:                  string
+		timeouts?:                      #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		target_custom_availability_zone?: string

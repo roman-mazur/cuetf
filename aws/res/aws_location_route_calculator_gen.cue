@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_location_route_calculator")
 	close({
 		calculator_arn?:  string
-		timeouts?:        #timeouts
 		calculator_name!: string
 		create_time?:     string
 		data_source!:     string
 		description?:     string
 		id?:              string
 		region?:          string
+		timeouts?:        #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		update_time?: string

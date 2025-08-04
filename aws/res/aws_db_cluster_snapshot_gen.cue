@@ -14,8 +14,8 @@ package res
 		id?:                             string
 		kms_key_id?:                     string
 		license_model?:                  string
-		timeouts?:                       #timeouts
 		port?:                           number
+		timeouts?:                       #timeouts
 		region?:                         string
 		shared_accounts?: [...string]
 		snapshot_type?:                  string

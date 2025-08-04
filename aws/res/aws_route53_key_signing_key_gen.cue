@@ -12,11 +12,11 @@ package res
 		flag?:                       number
 		hosted_zone_id!:             string
 		id?:                         string
-		timeouts?:                   #timeouts
 		key_management_service_arn!: string
 		key_tag?:                    number
 		name!:                       string
 		public_key?:                 string
+		timeouts?:                   #timeouts
 		signing_algorithm_mnemonic?: string
 		signing_algorithm_type?:     number
 		status?:                     string

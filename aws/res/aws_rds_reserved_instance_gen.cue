@@ -14,8 +14,8 @@ package res
 		lease_id?:            string
 		multi_az?:            bool
 		offering_id!:         string
-		timeouts?:            #timeouts
 		offering_type?:       string
+		timeouts?:            #timeouts
 		product_description?: string
 		recurring_charges?: [...close({
 			recurring_charge_amount?:    number

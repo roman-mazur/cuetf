@@ -8,12 +8,9 @@ import "list"
 	close({
 		arn?: string
 		connections?: [...string]
-		command?: matchN(1, [#command, list.MaxItems(1) & [_, ...] & [...#command]])
-		execution_property?: matchN(1, [#execution_property, list.MaxItems(1) & [...#execution_property]])
-		notification_property?: matchN(1, [#notification_property, list.MaxItems(1) & [...#notification_property]])
-		source_control_details?: matchN(1, [#source_control_details, list.MaxItems(1) & [...#source_control_details]])
 		default_arguments?: [string]: string
-		description?:             string
+		description?: string
+		command?: matchN(1, [#command, list.MaxItems(1) & [_, ...] & [...#command]])
 		execution_class?:         string
 		glue_version?:            string
 		id?:                      string
@@ -21,8 +18,10 @@ import "list"
 		job_run_queuing_enabled?: bool
 		maintenance_window?:      string
 		max_capacity?:            number
-		max_retries?:             number
-		name!:                    string
+		execution_property?: matchN(1, [#execution_property, list.MaxItems(1) & [...#execution_property]])
+		notification_property?: matchN(1, [#notification_property, list.MaxItems(1) & [...#notification_property]])
+		max_retries?: number
+		name!:        string
 		non_overridable_arguments?: [string]: string
 		number_of_workers?:      number
 		region?:                 string
@@ -32,6 +31,7 @@ import "list"
 		tags_all?: [string]: string
 		timeout?:     number
 		worker_type?: string
+		source_control_details?: matchN(1, [#source_control_details, list.MaxItems(1) & [...#source_control_details]])
 	})
 
 	#command: close({

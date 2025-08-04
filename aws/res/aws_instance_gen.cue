@@ -9,29 +9,16 @@ import "list"
 		ami?:                         string
 		arn?:                         string
 		associate_public_ip_address?: bool
+		availability_zone?:           string
+		disable_api_stop?:            bool
+		disable_api_termination?:     bool
+		ebs_optimized?:               bool
+		enable_primary_ipv6?:         bool
+		get_password_data?:           bool
+		hibernation?:                 bool
+		host_id?:                     string
+		host_resource_group_arn?:     string
 		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
-		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
-		credit_specification?: matchN(1, [#credit_specification, list.MaxItems(1) & [...#credit_specification]])
-		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
-		enclave_options?: matchN(1, [#enclave_options, list.MaxItems(1) & [...#enclave_options]])
-		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
-		instance_market_options?: matchN(1, [#instance_market_options, list.MaxItems(1) & [...#instance_market_options]])
-		launch_template?: matchN(1, [#launch_template, list.MaxItems(1) & [...#launch_template]])
-		maintenance_options?: matchN(1, [#maintenance_options, list.MaxItems(1) & [...#maintenance_options]])
-		metadata_options?: matchN(1, [#metadata_options, list.MaxItems(1) & [...#metadata_options]])
-		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
-		private_dns_name_options?: matchN(1, [#private_dns_name_options, list.MaxItems(1) & [...#private_dns_name_options]])
-		root_block_device?: matchN(1, [#root_block_device, list.MaxItems(1) & [...#root_block_device]])
-		timeouts?:                             #timeouts
-		availability_zone?:                    string
-		disable_api_stop?:                     bool
-		disable_api_termination?:              bool
-		ebs_optimized?:                        bool
-		enable_primary_ipv6?:                  bool
-		get_password_data?:                    bool
-		hibernation?:                          bool
-		host_id?:                              string
-		host_resource_group_arn?:              string
 		iam_instance_profile?:                 string
 		id?:                                   string
 		instance_initiated_shutdown_behavior?: string
@@ -47,11 +34,12 @@ import "list"
 		placement_group?:              string
 		placement_partition_number?:   number
 		primary_network_interface_id?: string
-		private_dns?:                  string
-		private_ip?:                   string
-		public_dns?:                   string
-		public_ip?:                    string
-		region?:                       string
+		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
+		private_dns?: string
+		private_ip?:  string
+		public_dns?:  string
+		public_ip?:   string
+		region?:      string
 		secondary_private_ips?: [...string]
 		security_groups?: [...string]
 		source_dest_check?:        bool
@@ -64,12 +52,24 @@ import "list"
 		user_data_base64?:            string
 		user_data_replace_on_change?: bool
 		volume_tags?: [string]: string
+		credit_specification?: matchN(1, [#credit_specification, list.MaxItems(1) & [...#credit_specification]])
+		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
+		enclave_options?: matchN(1, [#enclave_options, list.MaxItems(1) & [...#enclave_options]])
+		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
+		instance_market_options?: matchN(1, [#instance_market_options, list.MaxItems(1) & [...#instance_market_options]])
+		launch_template?: matchN(1, [#launch_template, list.MaxItems(1) & [...#launch_template]])
+		maintenance_options?: matchN(1, [#maintenance_options, list.MaxItems(1) & [...#maintenance_options]])
 		vpc_security_group_ids?: [...string]
+		metadata_options?: matchN(1, [#metadata_options, list.MaxItems(1) & [...#metadata_options]])
+		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
+		private_dns_name_options?: matchN(1, [#private_dns_name_options, list.MaxItems(1) & [...#private_dns_name_options]])
+		root_block_device?: matchN(1, [#root_block_device, list.MaxItems(1) & [...#root_block_device]])
+		timeouts?: #timeouts
 	})
 
 	#capacity_reservation_specification: close({
-		capacity_reservation_preference?: string
 		capacity_reservation_target?: matchN(1, [_#defs."/$defs/capacity_reservation_specification/$defs/capacity_reservation_target", list.MaxItems(1) & [..._#defs."/$defs/capacity_reservation_specification/$defs/capacity_reservation_target"]])
+		capacity_reservation_preference?: string
 	})
 
 	#cpu_options: close({
@@ -108,8 +108,8 @@ import "list"
 	})
 
 	#instance_market_options: close({
-		market_type?: string
 		spot_options?: matchN(1, [_#defs."/$defs/instance_market_options/$defs/spot_options", list.MaxItems(1) & [..._#defs."/$defs/instance_market_options/$defs/spot_options"]])
+		market_type?: string
 	})
 
 	#launch_template: close({

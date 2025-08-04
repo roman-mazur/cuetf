@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_kms_key")
 	close({
 		arn?:                                string
-		timeouts?:                           #timeouts
 		bypass_policy_lockout_safety_check?: bool
 		custom_key_store_id?:                string
 		customer_master_key_spec?:           string
@@ -20,6 +19,7 @@ package res
 		policy?:                             string
 		region?:                             string
 		rotation_period_in_days?:            number
+		timeouts?:                           #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		xks_key_id?: string

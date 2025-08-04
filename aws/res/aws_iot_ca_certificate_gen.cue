@@ -12,10 +12,10 @@ import "list"
 		ca_certificate_pem!:      string
 		certificate_mode?:        string
 		customer_version?:        number
+		generation_id?:           string
+		id?:                      string
 		registration_config?: matchN(1, [#registration_config, list.MaxItems(1) & [...#registration_config]])
-		generation_id?: string
-		id?:            string
-		region?:        string
+		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		validity?: [...close({

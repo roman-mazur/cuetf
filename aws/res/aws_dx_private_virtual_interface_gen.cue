@@ -14,8 +14,8 @@ package res
 		connection_id!:       string
 		customer_address?:    string
 		dx_gateway_id?:       string
-		timeouts?:            #timeouts
 		id?:                  string
+		timeouts?:            #timeouts
 		jumbo_frame_capable?: bool
 		mtu?:                 number
 		name!:                string

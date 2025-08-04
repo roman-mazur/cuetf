@@ -12,11 +12,11 @@ package res
 		id?:                  string
 		offering_type?:       string
 		product_description?: string
-		timeouts?:            #timeouts
 		recurring_charges?: [...close({
 			recurring_charge_amount?:    number
 			recurring_charge_frequency?: string
 		})]
+		timeouts?:                         #timeouts
 		region?:                           string
 		reserved_cache_nodes_offering_id!: string
 		start_time?:                       string

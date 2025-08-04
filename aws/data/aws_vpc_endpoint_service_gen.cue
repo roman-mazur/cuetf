@@ -6,8 +6,6 @@ package data
 	close({
 		acceptance_required?: bool
 		arn?:                 string
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?: #timeouts
 		availability_zones?: [...string]
 		base_endpoint_dns_names?: [...string]
 		id?:                    string
@@ -15,11 +13,13 @@ package data
 		owner?:                 string
 		private_dns_name?:      string
 		private_dns_names?: [...string]
-		service?:        string
+		service?: string
+		filter?: matchN(1, [#filter, [...#filter]])
 		service_id?:     string
 		service_name?:   string
 		service_region?: string
 		service_regions?: [...string]
+		timeouts?:     #timeouts
 		service_type?: string
 		supported_ip_address_types?: [...string]
 		tags?: [string]: string

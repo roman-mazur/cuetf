@@ -1,0 +1,104 @@
+package res
+
+#aws_bedrock_guardrail: {
+	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrock_guardrail")
+	close({
+		blocked_input_messaging!:   string
+		blocked_outputs_messaging!: string
+		created_at?:                string
+		description?:               string
+		guardrail_arn?:             string
+		guardrail_id?:              string
+		kms_key_arn?:               string
+		name!:                      string
+		region?:                    string
+		content_policy_config?: matchN(1, [#content_policy_config, [...#content_policy_config]])
+		contextual_grounding_policy_config?: matchN(1, [#contextual_grounding_policy_config, [...#contextual_grounding_policy_config]])
+		cross_region_config?: matchN(1, [#cross_region_config, [...#cross_region_config]])
+		status?: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
+		sensitive_information_policy_config?: matchN(1, [#sensitive_information_policy_config, [...#sensitive_information_policy_config]])
+		timeouts?: #timeouts
+		topic_policy_config?: matchN(1, [#topic_policy_config, [...#topic_policy_config]])
+		version?: string
+		word_policy_config?: matchN(1, [#word_policy_config, [...#word_policy_config]])
+	})
+
+	#content_policy_config: close({
+		filters_config?: matchN(1, [_#defs."/$defs/content_policy_config/$defs/filters_config", [..._#defs."/$defs/content_policy_config/$defs/filters_config"]])
+		tier_config?: [...close({
+			tier_name?: string
+		})]
+	})
+
+	#contextual_grounding_policy_config: close({
+		filters_config?: matchN(1, [_#defs."/$defs/contextual_grounding_policy_config/$defs/filters_config", [..._#defs."/$defs/contextual_grounding_policy_config/$defs/filters_config"]])
+	})
+
+	#cross_region_config: close({
+		guardrail_profile_identifier!: string
+	})
+
+	#sensitive_information_policy_config: close({
+		pii_entities_config?: matchN(1, [_#defs."/$defs/sensitive_information_policy_config/$defs/pii_entities_config", [..._#defs."/$defs/sensitive_information_policy_config/$defs/pii_entities_config"]])
+		regexes_config?: matchN(1, [_#defs."/$defs/sensitive_information_policy_config/$defs/regexes_config", [..._#defs."/$defs/sensitive_information_policy_config/$defs/regexes_config"]])
+	})
+
+	#timeouts: close({
+		create?: string
+		delete?: string
+		update?: string
+	})
+
+	#topic_policy_config: close({
+		topics_config?: matchN(1, [_#defs."/$defs/topic_policy_config/$defs/topics_config", [..._#defs."/$defs/topic_policy_config/$defs/topics_config"]])
+		tier_config?: [...close({
+			tier_name?: string
+		})]
+	})
+
+	#word_policy_config: close({
+		managed_word_lists_config?: matchN(1, [_#defs."/$defs/word_policy_config/$defs/managed_word_lists_config", [..._#defs."/$defs/word_policy_config/$defs/managed_word_lists_config"]])
+		words_config?: matchN(1, [_#defs."/$defs/word_policy_config/$defs/words_config", [..._#defs."/$defs/word_policy_config/$defs/words_config"]])
+	})
+
+	_#defs: "/$defs/content_policy_config/$defs/filters_config": close({
+		input_strength!:  string
+		output_strength!: string
+		type!:            string
+	})
+
+	_#defs: "/$defs/contextual_grounding_policy_config/$defs/filters_config": close({
+		threshold!: number
+		type!:      string
+	})
+
+	_#defs: "/$defs/sensitive_information_policy_config/$defs/pii_entities_config": close({
+		action!: string
+		type!:   string
+	})
+
+	_#defs: "/$defs/sensitive_information_policy_config/$defs/regexes_config": close({
+		action!:      string
+		description?: string
+		name!:        string
+		pattern!:     string
+	})
+
+	_#defs: "/$defs/topic_policy_config/$defs/topics_config": close({
+		definition!: string
+		examples?: [...string]
+		name!: string
+		type!: string
+	})
+
+	_#defs: "/$defs/word_policy_config/$defs/managed_word_lists_config": close({
+		type!: string
+	})
+
+	_#defs: "/$defs/word_policy_config/$defs/words_config": close({
+		text!: string
+	})
+}

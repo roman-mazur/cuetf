@@ -6,19 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_crawler")
 	close({
-		catalog_target?: matchN(1, [#catalog_target, [...#catalog_target]])
-		delta_target?: matchN(1, [#delta_target, [...#delta_target]])
 		arn?: string
-		dynamodb_target?: matchN(1, [#dynamodb_target, [...#dynamodb_target]])
-		hudi_target?: matchN(1, [#hudi_target, [...#hudi_target]])
-		iceberg_target?: matchN(1, [#iceberg_target, [...#iceberg_target]])
-		jdbc_target?: matchN(1, [#jdbc_target, [...#jdbc_target]])
-		lake_formation_configuration?: matchN(1, [#lake_formation_configuration, list.MaxItems(1) & [...#lake_formation_configuration]])
-		lineage_configuration?: matchN(1, [#lineage_configuration, list.MaxItems(1) & [...#lineage_configuration]])
-		mongodb_target?: matchN(1, [#mongodb_target, [...#mongodb_target]])
-		recrawl_policy?: matchN(1, [#recrawl_policy, list.MaxItems(1) & [...#recrawl_policy]])
-		s3_target?: matchN(1, [#s3_target, [...#s3_target]])
-		schema_change_policy?: matchN(1, [#schema_change_policy, list.MaxItems(1) & [...#schema_change_policy]])
 		classifiers?: [...string]
 		configuration?:          string
 		database_name!:          string
@@ -30,8 +18,20 @@ import "list"
 		schedule?:               string
 		security_configuration?: string
 		table_prefix?:           string
-		tags?: [string]:     string
+		tags?: [string]: string
+		catalog_target?: matchN(1, [#catalog_target, [...#catalog_target]])
 		tags_all?: [string]: string
+		delta_target?: matchN(1, [#delta_target, [...#delta_target]])
+		dynamodb_target?: matchN(1, [#dynamodb_target, [...#dynamodb_target]])
+		hudi_target?: matchN(1, [#hudi_target, [...#hudi_target]])
+		iceberg_target?: matchN(1, [#iceberg_target, [...#iceberg_target]])
+		jdbc_target?: matchN(1, [#jdbc_target, [...#jdbc_target]])
+		lake_formation_configuration?: matchN(1, [#lake_formation_configuration, list.MaxItems(1) & [...#lake_formation_configuration]])
+		lineage_configuration?: matchN(1, [#lineage_configuration, list.MaxItems(1) & [...#lineage_configuration]])
+		mongodb_target?: matchN(1, [#mongodb_target, [...#mongodb_target]])
+		recrawl_policy?: matchN(1, [#recrawl_policy, list.MaxItems(1) & [...#recrawl_policy]])
+		s3_target?: matchN(1, [#s3_target, [...#s3_target]])
+		schema_change_policy?: matchN(1, [#schema_change_policy, list.MaxItems(1) & [...#schema_change_policy]])
 	})
 
 	#catalog_target: close({

@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_backup_restore_testing_plan")
 	close({
-		arn?: string
 		recovery_point_selection?: matchN(1, [#recovery_point_selection, [...#recovery_point_selection]])
+		arn?:                          string
 		name!:                         string
 		region?:                       string
 		schedule_expression!:          string

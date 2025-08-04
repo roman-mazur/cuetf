@@ -12,8 +12,8 @@ package data
 		has_default_path?:    bool
 		id!:                  string
 		name?:                string
-		timeouts?:            #timeouts
 		owner?:               string
+		timeouts?:            #timeouts
 		region?:              string
 		status?:              string
 		support_description?: string

@@ -6,19 +6,19 @@ package res
 	close({
 		id?: string
 		ingest_endpoint_urls?: [...string]
-		buffer_options?: matchN(1, [#buffer_options, [...#buffer_options]])
-		encryption_at_rest_options?: matchN(1, [#encryption_at_rest_options, [...#encryption_at_rest_options]])
 		max_units!: number
-		log_publishing_options?: matchN(1, [#log_publishing_options, [...#log_publishing_options]])
-		timeouts?:                    #timeouts
-		min_units!:                   number
+		min_units!: number
+		buffer_options?: matchN(1, [#buffer_options, [...#buffer_options]])
 		pipeline_arn?:                string
 		pipeline_configuration_body!: string
-		pipeline_name!:               string
-		region?:                      string
+		encryption_at_rest_options?: matchN(1, [#encryption_at_rest_options, [...#encryption_at_rest_options]])
+		pipeline_name!: string
+		region?:        string
 		tags?: [string]: string
-		vpc_options?: matchN(1, [#vpc_options, [...#vpc_options]])
+		log_publishing_options?: matchN(1, [#log_publishing_options, [...#log_publishing_options]])
+		timeouts?: #timeouts
 		tags_all?: [string]: string
+		vpc_options?: matchN(1, [#vpc_options, [...#vpc_options]])
 	})
 
 	#buffer_options: close({
@@ -30,8 +30,8 @@ package res
 	})
 
 	#log_publishing_options: close({
-		is_logging_enabled?: bool
 		cloudwatch_log_destination?: matchN(1, [_#defs."/$defs/log_publishing_options/$defs/cloudwatch_log_destination", [..._#defs."/$defs/log_publishing_options/$defs/cloudwatch_log_destination"]])
+		is_logging_enabled?: bool
 	})
 
 	#timeouts: close({

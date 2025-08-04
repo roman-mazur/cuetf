@@ -9,7 +9,6 @@ package data
 			enabled?: bool
 			prefix?:  string
 		})]
-		timeouts?:          #timeouts
 		arn?:               string
 		arn_suffix?:        string
 		client_keep_alive?: number
@@ -42,6 +41,7 @@ package data
 		name?:                 string
 		preserve_host_header?: bool
 		region?:               string
+		timeouts?:             #timeouts
 		security_groups?: [...string]
 		subnet_mapping?: [...close({
 			allocation_id?:        string

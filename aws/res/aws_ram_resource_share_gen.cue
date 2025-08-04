@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ram_resource_share")
 	close({
-		allow_external_principals?: bool
 		timeouts?:                  #timeouts
+		allow_external_principals?: bool
 		arn?:                       string
 		id?:                        string
 		name!:                      string

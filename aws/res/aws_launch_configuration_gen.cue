@@ -8,25 +8,25 @@ import "list"
 	close({
 		arn?:                         string
 		associate_public_ip_address?: bool
+		ebs_optimized?:               bool
+		enable_monitoring?:           bool
+		iam_instance_profile?:        string
+		id?:                          string
+		image_id!:                    string
+		instance_type!:               string
+		key_name?:                    string
+		name?:                        string
+		name_prefix?:                 string
 		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
-		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
-		metadata_options?: matchN(1, [#metadata_options, list.MaxItems(1) & [...#metadata_options]])
-		root_block_device?: matchN(1, [#root_block_device, list.MaxItems(1) & [...#root_block_device]])
-		ebs_optimized?:        bool
-		enable_monitoring?:    bool
-		iam_instance_profile?: string
-		id?:                   string
-		image_id!:             string
-		instance_type!:        string
-		key_name?:             string
-		name?:                 string
-		name_prefix?:          string
-		placement_tenancy?:    string
-		region?:               string
+		placement_tenancy?: string
+		region?:            string
 		security_groups?: [...string]
 		spot_price?:       string
 		user_data?:        string
 		user_data_base64?: string
+		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
+		metadata_options?: matchN(1, [#metadata_options, list.MaxItems(1) & [...#metadata_options]])
+		root_block_device?: matchN(1, [#root_block_device, list.MaxItems(1) & [...#root_block_device]])
 	})
 
 	#ebs_block_device: close({

@@ -4,13 +4,13 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudfront_vpc_origin")
 	close({
-		arn?:      string
 		timeouts?: #timeouts
-		vpc_origin_endpoint_config?: matchN(1, [#vpc_origin_endpoint_config, [...#vpc_origin_endpoint_config]])
-		etag?: string
-		id?:   string
+		arn?:      string
+		etag?:     string
+		id?:       string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		vpc_origin_endpoint_config?: matchN(1, [#vpc_origin_endpoint_config, [...#vpc_origin_endpoint_config]])
 	})
 
 	#timeouts: close({
@@ -20,8 +20,8 @@ package res
 	})
 
 	#vpc_origin_endpoint_config: close({
-		arn!: string
 		origin_ssl_protocols?: matchN(1, [_#defs."/$defs/vpc_origin_endpoint_config/$defs/origin_ssl_protocols", [..._#defs."/$defs/vpc_origin_endpoint_config/$defs/origin_ssl_protocols"]])
+		arn!:                    string
 		http_port!:              number
 		https_port!:             number
 		name!:                   string

@@ -4,23 +4,21 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ami")
 	close({
-		architecture?: string
-		arn?:          string
+		architecture?:      string
+		arn?:               string
+		boot_mode?:         string
+		deprecation_time?:  string
+		description?:       string
+		ena_support?:       bool
+		hypervisor?:        string
+		id?:                string
+		image_location?:    string
+		image_owner_alias?: string
+		image_type?:        string
+		imds_support?:      string
 		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
-		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
-		boot_mode?:            string
-		deprecation_time?:     string
-		description?:          string
-		ena_support?:          bool
-		hypervisor?:           string
-		id?:                   string
-		image_location?:       string
-		image_owner_alias?:    string
-		image_type?:           string
-		imds_support?:         string
 		kernel_id?:            string
 		last_launched_time?:   string
-		timeouts?:             #timeouts
 		manage_ebs_snapshots?: bool
 		name!:                 string
 		owner_id?:             string
@@ -34,10 +32,12 @@ package res
 		sriov_net_support?:    string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		tpm_support?:         string
-		uefi_data?:           string
-		usage_operation?:     string
+		tpm_support?:     string
+		uefi_data?:       string
+		usage_operation?: string
+		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
 		virtualization_type?: string
+		timeouts?:            #timeouts
 	})
 
 	#ebs_block_device: close({

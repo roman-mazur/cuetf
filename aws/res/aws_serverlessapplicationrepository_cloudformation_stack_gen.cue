@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_serverlessapplicationrepository_cloudformation_stack")
 	close({
 		application_id!: string
-		timeouts?:       #timeouts
 		capabilities!: [...string]
 		id?:   string
 		name!: string
 		outputs?: [string]:    string
 		parameters?: [string]: string
 		region?:           string
+		timeouts?:         #timeouts
 		semantic_version?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

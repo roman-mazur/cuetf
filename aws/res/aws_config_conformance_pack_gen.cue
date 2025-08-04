@@ -6,8 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_config_conformance_pack")
 	close({
-		arn?: string
 		input_parameter?: matchN(1, [#input_parameter, list.MaxItems(60) & [...#input_parameter]])
+		arn?:                    string
 		delivery_s3_bucket?:     string
 		delivery_s3_key_prefix?: string
 		id?:                     string

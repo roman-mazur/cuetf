@@ -6,19 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dms_replication_config")
 	close({
-		arn?: string
-		id?:  string
-		compute_config?: matchN(1, [#compute_config, list.MaxItems(1) & [_, ...] & [...#compute_config]])
-		timeouts?:                      #timeouts
+		arn?:                           string
+		id?:                            string
 		region?:                        string
 		replication_config_identifier!: string
 		replication_settings?:          string
 		replication_type!:              string
 		resource_identifier?:           string
 		source_endpoint_arn!:           string
-		start_replication?:             bool
-		supplemental_settings?:         string
-		table_mappings!:                string
+		compute_config?: matchN(1, [#compute_config, list.MaxItems(1) & [_, ...] & [...#compute_config]])
+		start_replication?:     bool
+		supplemental_settings?: string
+		table_mappings!:        string
+		timeouts?:              #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		target_endpoint_arn!: string

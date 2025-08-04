@@ -14,12 +14,12 @@ package res
 		id?:                         string
 		instance_count?:             number
 		instance_platform!:          string
-		timeouts?:                   #timeouts
 		instance_type?:              string
 		outpost_arn?:                string
 		placement_group_arn?:        string
 		region?:                     string
 		reservation_type?:           string
+		timeouts?:                   #timeouts
 		start_date?:                 string
 		tags?: [string]:     string
 		tags_all?: [string]: string

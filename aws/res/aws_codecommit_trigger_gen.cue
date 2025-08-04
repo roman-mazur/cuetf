@@ -6,11 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codecommit_trigger")
 	close({
+		trigger?: matchN(1, [#trigger, list.MaxItems(10) & [_, ...] & [...#trigger]])
 		configuration_id?: string
 		id?:               string
 		region?:           string
 		repository_name!:  string
-		trigger?: matchN(1, [#trigger, list.MaxItems(10) & [_, ...] & [...#trigger]])
 	})
 
 	#trigger: close({

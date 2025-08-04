@@ -8,10 +8,9 @@ import "list"
 	close({
 		arn?:                       string
 		certificate_authority_arn?: string
-		options?: matchN(1, [#options, list.MaxItems(1) & [...#options]])
-		certificate_body?:  string
-		certificate_chain?: string
-		domain_name?:       string
+		certificate_body?:          string
+		certificate_chain?:         string
+		domain_name?:               string
 		domain_validation_options?: [...close({
 			domain_name?:           string
 			resource_record_name?:  string
@@ -23,8 +22,8 @@ import "list"
 		key_algorithm?:          string
 		not_after?:              string
 		not_before?:             string
-		validation_option?: matchN(1, [#validation_option, [...#validation_option]])
-		pending_renewal?:     bool
+		pending_renewal?:        bool
+		options?: matchN(1, [#options, list.MaxItems(1) & [...#options]])
 		private_key?:         string
 		region?:              string
 		renewal_eligibility?: string
@@ -34,6 +33,7 @@ import "list"
 			updated_at?:            string
 		})]
 		status?: string
+		validation_option?: matchN(1, [#validation_option, [...#validation_option]])
 		subject_alternative_names?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string

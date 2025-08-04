@@ -8,17 +8,17 @@ import "list"
 	close({
 		arn?:          string
 		date_created?: string
-		block_device_mapping?: matchN(1, [#block_device_mapping, [...#block_device_mapping]])
-		component?: matchN(1, [#component, [_, ...] & [...#component]])
-		systems_manager_agent?: matchN(1, [#systems_manager_agent, list.MaxItems(1) & [...#systems_manager_agent]])
 		description?:  string
 		id?:           string
 		name!:         string
 		owner?:        string
 		parent_image!: string
 		platform?:     string
-		region?:       string
-		tags?: [string]:     string
+		block_device_mapping?: matchN(1, [#block_device_mapping, [...#block_device_mapping]])
+		component?: matchN(1, [#component, [_, ...] & [...#component]])
+		region?: string
+		tags?: [string]: string
+		systems_manager_agent?: matchN(1, [#systems_manager_agent, list.MaxItems(1) & [...#systems_manager_agent]])
 		tags_all?: [string]: string
 		user_data_base64?:  string
 		version!:           string
@@ -26,15 +26,15 @@ import "list"
 	})
 
 	#block_device_mapping: close({
+		ebs?: matchN(1, [_#defs."/$defs/block_device_mapping/$defs/ebs", list.MaxItems(1) & [..._#defs."/$defs/block_device_mapping/$defs/ebs"]])
 		device_name?:  string
 		no_device?:    bool
 		virtual_name?: string
-		ebs?: matchN(1, [_#defs."/$defs/block_device_mapping/$defs/ebs", list.MaxItems(1) & [..._#defs."/$defs/block_device_mapping/$defs/ebs"]])
 	})
 
 	#component: close({
-		component_arn!: string
 		parameter?: matchN(1, [_#defs."/$defs/component/$defs/parameter", [..._#defs."/$defs/component/$defs/parameter"]])
+		component_arn!: string
 	})
 
 	#systems_manager_agent: close({

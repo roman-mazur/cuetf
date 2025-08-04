@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ecr_repository_creation_template")
 	close({
 		applied_for!: [...string]
-		encryption_configuration?: matchN(1, [#encryption_configuration, [...#encryption_configuration]])
 		custom_role_arn?:      string
 		description?:          string
 		id?:                   string
@@ -14,7 +13,8 @@ package res
 		prefix!:               string
 		region?:               string
 		registry_id?:          string
-		repository_policy?:    string
+		encryption_configuration?: matchN(1, [#encryption_configuration, [...#encryption_configuration]])
+		repository_policy?: string
 		resource_tags?: [string]: string
 	})
 

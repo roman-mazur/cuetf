@@ -12,13 +12,13 @@ package res
 		cluster_identifier!:              string
 		copy_tags_to_snapshot?:           bool
 		db_subnet_group_name?:            string
+		timeouts?:                        #timeouts
 		dbi_resource_id?:                 string
 		enable_performance_insights?:     bool
 		endpoint?:                        string
 		engine?:                          string
 		engine_version?:                  string
 		id?:                              string
-		timeouts?:                        #timeouts
 		identifier?:                      string
 		identifier_prefix?:               string
 		instance_class!:                  string

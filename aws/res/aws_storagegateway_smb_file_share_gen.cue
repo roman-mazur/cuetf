@@ -8,8 +8,6 @@ import "list"
 	close({
 		access_based_enumeration?: bool
 		admin_user_list?: [...string]
-		cache_attributes?: matchN(1, [#cache_attributes, list.MaxItems(1) & [...#cache_attributes]])
-		timeouts?:                #timeouts
 		arn?:                     string
 		audit_destination_arn?:   string
 		authentication?:          string
@@ -22,8 +20,9 @@ import "list"
 		guess_mime_type_enabled?: bool
 		id?:                      string
 		invalid_user_list?: [...string]
-		kms_encrypted?:       bool
-		kms_key_arn?:         string
+		kms_encrypted?: bool
+		kms_key_arn?:   string
+		cache_attributes?: matchN(1, [#cache_attributes, list.MaxItems(1) & [...#cache_attributes]])
 		location_arn!:        string
 		notification_policy?: string
 		object_acl?:          string
@@ -31,6 +30,7 @@ import "list"
 		path?:                string
 		read_only?:           bool
 		region?:              string
+		timeouts?:            #timeouts
 		requester_pays?:      bool
 		role_arn!:            string
 		smb_acl_enabled?:     bool

@@ -18,8 +18,8 @@ import "list"
 		hash_type?:        string
 		id?:               string
 		latest_version?:   string
+		name!:             string
 		attachments_source?: matchN(1, [#attachments_source, list.MaxItems(20) & [...#attachments_source]])
-		name!:  string
 		owner?: string
 		parameter?: [...close({
 			default_value?: string

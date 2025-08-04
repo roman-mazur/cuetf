@@ -12,9 +12,9 @@ import "list"
 		description?:              string
 		id?:                       string
 		kms_key_identifier?:       string
+		location_uri!:             string
+		name!:                     string
 		validator?: matchN(1, [#validator, list.MaxItems(2) & [...#validator]])
-		location_uri!:       string
-		name!:               string
 		region?:             string
 		retrieval_role_arn?: string
 		tags?: [string]:     string

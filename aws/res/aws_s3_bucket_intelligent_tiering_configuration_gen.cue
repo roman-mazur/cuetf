@@ -6,13 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_s3_bucket_intelligent_tiering_configuration")
 	close({
-		bucket!: string
 		filter?: matchN(1, [#filter, list.MaxItems(1) & [...#filter]])
-		tiering?: matchN(1, [#tiering, [_, ...] & [...#tiering]])
+		bucket!: string
 		id?:     string
 		name!:   string
 		region?: string
 		status?: string
+		tiering?: matchN(1, [#tiering, [_, ...] & [...#tiering]])
 	})
 
 	#filter: close({

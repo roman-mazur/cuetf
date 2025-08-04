@@ -12,9 +12,9 @@ import "list"
 		id?:                    string
 		instance_id!:           string
 		max_contacts?:          number
+		name!:                  string
+		queue_id?:              string
 		outbound_caller_config?: matchN(1, [#outbound_caller_config, list.MaxItems(1) & [...#outbound_caller_config]])
-		name!:     string
-		queue_id?: string
 		quick_connect_ids?: [...string]
 		region?: string
 		status?: string

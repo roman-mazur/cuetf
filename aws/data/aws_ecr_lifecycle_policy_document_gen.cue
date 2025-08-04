@@ -4,15 +4,15 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ecr_lifecycle_policy_document")
 	close({
-		json?: string
 		rule?: matchN(1, [#rule, [...#rule]])
+		json?: string
 	})
 
 	#rule: close({
-		description?: string
-		priority!:    number
 		action?: matchN(1, [_#defs."/$defs/rule/$defs/action", [..._#defs."/$defs/rule/$defs/action"]])
 		selection?: matchN(1, [_#defs."/$defs/rule/$defs/selection", [..._#defs."/$defs/rule/$defs/selection"]])
+		description?: string
+		priority!:    number
 	})
 
 	_#defs: "/$defs/rule/$defs/action": close({

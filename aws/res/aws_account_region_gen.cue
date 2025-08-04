@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_account_region")
 	close({
-		account_id?:  string
 		timeouts?:    #timeouts
+		account_id?:  string
 		enabled!:     bool
 		id?:          string
 		opt_status?:  string

@@ -7,21 +7,21 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_finspace_kx_environment")
 	close({
 		arn?: string
-		availability_zones?: [...string]
 		custom_dns_configuration?: matchN(1, [#custom_dns_configuration, [...#custom_dns_configuration]])
-		timeouts?:                  #timeouts
+		availability_zones?: [...string]
 		created_timestamp?:         string
 		description?:               string
 		id?:                        string
 		infrastructure_account_id?: string
-		transit_gateway_configuration?: matchN(1, [#transit_gateway_configuration, list.MaxItems(1) & [...#transit_gateway_configuration]])
-		kms_key_id!:              string
-		last_modified_timestamp?: string
-		name!:                    string
-		region?:                  string
-		status?:                  string
+		kms_key_id!:                string
+		timeouts?:                  #timeouts
+		last_modified_timestamp?:   string
+		name!:                      string
+		region?:                    string
+		status?:                    string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		transit_gateway_configuration?: matchN(1, [#transit_gateway_configuration, list.MaxItems(1) & [...#transit_gateway_configuration]])
 	})
 
 	#custom_dns_configuration: close({
@@ -36,17 +36,17 @@ import "list"
 	})
 
 	#transit_gateway_configuration: close({
+		attachment_network_acl_configuration?: matchN(1, [_#defs."/$defs/transit_gateway_configuration/$defs/attachment_network_acl_configuration", list.MaxItems(100) & [..._#defs."/$defs/transit_gateway_configuration/$defs/attachment_network_acl_configuration"]])
 		routable_cidr_space!: string
 		transit_gateway_id!:  string
-		attachment_network_acl_configuration?: matchN(1, [_#defs."/$defs/transit_gateway_configuration/$defs/attachment_network_acl_configuration", list.MaxItems(100) & [..._#defs."/$defs/transit_gateway_configuration/$defs/attachment_network_acl_configuration"]])
 	})
 
 	_#defs: "/$defs/transit_gateway_configuration/$defs/attachment_network_acl_configuration": close({
+		icmp_type_code?: matchN(1, [_#defs."/$defs/transit_gateway_configuration/$defs/attachment_network_acl_configuration/$defs/icmp_type_code", list.MaxItems(1) & [..._#defs."/$defs/transit_gateway_configuration/$defs/attachment_network_acl_configuration/$defs/icmp_type_code"]])
 		cidr_block!:  string
 		protocol!:    string
 		rule_action!: string
 		rule_number!: number
-		icmp_type_code?: matchN(1, [_#defs."/$defs/transit_gateway_configuration/$defs/attachment_network_acl_configuration/$defs/icmp_type_code", list.MaxItems(1) & [..._#defs."/$defs/transit_gateway_configuration/$defs/attachment_network_acl_configuration/$defs/icmp_type_code"]])
 		port_range?: matchN(1, [_#defs."/$defs/transit_gateway_configuration/$defs/attachment_network_acl_configuration/$defs/port_range", list.MaxItems(1) & [..._#defs."/$defs/transit_gateway_configuration/$defs/attachment_network_acl_configuration/$defs/port_range"]])
 	})
 

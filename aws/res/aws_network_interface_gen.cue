@@ -18,8 +18,8 @@ package res
 		ipv6_prefix_count?: number
 		ipv6_prefixes?: [...string]
 		mac_address?: string
+		outpost_arn?: string
 		attachment?: matchN(1, [#attachment, [...#attachment]])
-		outpost_arn?:      string
 		owner_id?:         string
 		private_dns_name?: string
 		private_ip?:       string

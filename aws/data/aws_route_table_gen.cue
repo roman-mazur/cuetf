@@ -12,13 +12,12 @@ package data
 			route_table_id?:             string
 			subnet_id?:                  string
 		})]
+		gateway_id?: string
+		id?:         string
+		owner_id?:   string
+		region?:     string
 		filter?: matchN(1, [#filter, [...#filter]])
-		gateway_id?:     string
-		id?:             string
-		owner_id?:       string
-		region?:         string
 		route_table_id?: string
-		timeouts?:       #timeouts
 		routes?: [...close({
 			carrier_gateway_id?:         string
 			cidr_block?:                 string
@@ -35,6 +34,7 @@ package data
 			vpc_endpoint_id?:            string
 			vpc_peering_connection_id?:  string
 		})]
+		timeouts?:  #timeouts
 		subnet_id?: string
 		tags?: [string]: string
 		vpc_id?: string

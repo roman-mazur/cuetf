@@ -8,8 +8,9 @@ import "list"
 	close({
 		actions_enabled?: bool
 		alarm_actions?: [...string]
-		alarm_description?:   string
-		alarm_name!:          string
+		alarm_description?: string
+		alarm_name!:        string
+		metric_query?: matchN(1, [#metric_query, [...#metric_query]])
 		arn?:                 string
 		comparison_operator!: string
 		datapoints_to_alarm?: number
@@ -18,7 +19,6 @@ import "list"
 		evaluation_periods!:                    number
 		extended_statistic?:                    string
 		id?:                                    string
-		metric_query?: matchN(1, [#metric_query, [...#metric_query]])
 		insufficient_data_actions?: [...string]
 		metric_name?: string
 		namespace?:   string
@@ -35,8 +35,8 @@ import "list"
 	})
 
 	#metric_query: close({
-		account_id?: string
 		metric?: matchN(1, [_#defs."/$defs/metric_query/$defs/metric", list.MaxItems(1) & [..._#defs."/$defs/metric_query/$defs/metric"]])
+		account_id?:  string
 		expression?:  string
 		id!:          string
 		label?:       string

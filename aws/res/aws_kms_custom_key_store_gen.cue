@@ -8,14 +8,14 @@ import "list"
 	close({
 		cloud_hsm_cluster_id?:     string
 		custom_key_store_name!:    string
-		timeouts?:                 #timeouts
 		custom_key_store_type?:    string
 		id?:                       string
 		key_store_password?:       string
 		region?:                   string
+		timeouts?:                 #timeouts
 		trust_anchor_certificate?: string
+		xks_proxy_connectivity?:   string
 		xks_proxy_authentication_credential?: matchN(1, [#xks_proxy_authentication_credential, list.MaxItems(1) & [...#xks_proxy_authentication_credential]])
-		xks_proxy_connectivity?:              string
 		xks_proxy_uri_endpoint?:              string
 		xks_proxy_uri_path?:                  string
 		xks_proxy_vpc_endpoint_service_name?: string

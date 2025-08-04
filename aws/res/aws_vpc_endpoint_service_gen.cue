@@ -14,7 +14,6 @@ package res
 		manages_vpc_endpoints?: bool
 		network_load_balancer_arns?: [...string]
 		private_dns_name?: string
-		timeouts?:         #timeouts
 		private_dns_name_configuration?: [...close({
 			name?:  string
 			state?: string
@@ -25,6 +24,7 @@ package res
 		service_name?: string
 		service_type?: string
 		state?:        string
+		timeouts?:     #timeouts
 		supported_ip_address_types?: [...string]
 		supported_regions?: [...string]
 		tags?: [string]:     string

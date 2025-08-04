@@ -5,6 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_network_interface")
 	close({
 		arn?: string
+		filter?: matchN(1, [#filter, [...#filter]])
 		association?: [...close({
 			allocation_id?:     string
 			association_id?:    string
@@ -14,8 +15,6 @@ package data
 			public_dns_name?:   string
 			public_ip?:         string
 		})]
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?: #timeouts
 		attachment?: [...close({
 			attachment_id?:     string
 			device_index?:      number
@@ -24,6 +23,7 @@ package data
 		})]
 		availability_zone?: string
 		description?:       string
+		timeouts?:          #timeouts
 		id?:                string
 		interface_type?:    string
 		ipv6_addresses?: [...string]

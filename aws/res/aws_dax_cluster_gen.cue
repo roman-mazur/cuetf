@@ -8,7 +8,6 @@ import "list"
 	close({
 		arn?: string
 		availability_zones?: [...string]
-		server_side_encryption?: matchN(1, [#server_side_encryption, list.MaxItems(1) & [...#server_side_encryption]])
 		cluster_address?:                  string
 		cluster_endpoint_encryption_type?: string
 		cluster_name!:                     string
@@ -16,9 +15,9 @@ import "list"
 		description?:                      string
 		iam_role_arn!:                     string
 		id?:                               string
-		timeouts?:                         #timeouts
 		maintenance_window?:               string
 		node_type!:                        string
+		server_side_encryption?: matchN(1, [#server_side_encryption, list.MaxItems(1) & [...#server_side_encryption]])
 		nodes?: [...close({
 			address?:           string
 			availability_zone?: string
@@ -26,6 +25,7 @@ import "list"
 			port?:              number
 		})]
 		notification_topic_arn?: string
+		timeouts?:               #timeouts
 		parameter_group_name?:   string
 		port?:                   number
 		region?:                 string

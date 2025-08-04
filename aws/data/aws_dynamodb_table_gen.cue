@@ -43,10 +43,10 @@ import "list"
 			enabled?:                 bool
 			recovery_period_in_days?: number
 		})]
-		range_key?: string
-		server_side_encryption?: matchN(1, [#server_side_encryption, list.MaxItems(1) & [...#server_side_encryption]])
+		range_key?:     string
 		read_capacity?: number
 		region?:        string
+		server_side_encryption?: matchN(1, [#server_side_encryption, list.MaxItems(1) & [...#server_side_encryption]])
 		replica?: [...close({
 			kms_key_arn?: string
 			region_name?: string

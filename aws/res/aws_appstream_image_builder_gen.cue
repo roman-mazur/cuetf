@@ -6,11 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appstream_image_builder")
 	close({
-		appstream_agent_version?: string
-		arn?:                     string
-		access_endpoint?: matchN(1, [#access_endpoint, list.MaxItems(4) & [...#access_endpoint]])
-		domain_join_info?: matchN(1, [#domain_join_info, list.MaxItems(1) & [...#domain_join_info]])
-		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
+		appstream_agent_version?:        string
+		arn?:                            string
 		created_time?:                   string
 		description?:                    string
 		display_name?:                   string
@@ -18,11 +15,14 @@ import "list"
 		iam_role_arn?:                   string
 		id?:                             string
 		image_arn?:                      string
-		image_name?:                     string
-		instance_type!:                  string
-		name!:                           string
-		region?:                         string
-		state?:                          string
+		access_endpoint?: matchN(1, [#access_endpoint, list.MaxItems(4) & [...#access_endpoint]])
+		domain_join_info?: matchN(1, [#domain_join_info, list.MaxItems(1) & [...#domain_join_info]])
+		image_name?: string
+		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
+		instance_type!: string
+		name!:          string
+		region?:        string
+		state?:         string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

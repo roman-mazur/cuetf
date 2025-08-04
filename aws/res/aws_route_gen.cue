@@ -14,8 +14,8 @@ package res
 		id?:                          string
 		instance_id?:                 string
 		instance_owner_id?:           string
-		timeouts?:                    #timeouts
 		local_gateway_id?:            string
+		timeouts?:                    #timeouts
 		nat_gateway_id?:              string
 		network_interface_id?:        string
 		origin?:                      string

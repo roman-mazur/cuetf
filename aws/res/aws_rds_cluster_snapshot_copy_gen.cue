@@ -14,8 +14,8 @@ package res
 		kms_key_id?:              string
 		license_model?:           string
 		presigned_url?:           string
-		timeouts?:                #timeouts
 		region?:                  string
+		timeouts?:                #timeouts
 		shared_accounts?: [...string]
 		snapshot_type?:                         string
 		source_db_cluster_snapshot_identifier!: string

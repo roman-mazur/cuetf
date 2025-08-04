@@ -22,7 +22,6 @@ package res
 		force_destroy?:                         bool
 		id?:                                    string
 		identifier?:                            string
-		timeouts?:                              #timeouts
 		identifier_prefix?:                     string
 		instance_class!:                        string
 		kms_key_id?:                            string
@@ -30,6 +29,7 @@ package res
 		monitoring_role_arn?:                   string
 		network_type?:                          string
 		performance_insights_enabled?:          bool
+		timeouts?:                              #timeouts
 		performance_insights_kms_key_id?:       string
 		performance_insights_retention_period?: number
 		port?:                                  number
