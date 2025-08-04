@@ -3,22 +3,24 @@ package res
 #github_branch_protection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_branch_protection")
-	allows_deletions?:    bool
-	allows_force_pushes?: bool
-	enforce_admins?:      bool
-	force_push_bypassers?: [...string]
-	id?:                              string
-	lock_branch?:                     bool
-	pattern!:                         string
-	repository_id!:                   string
-	require_conversation_resolution?: bool
-	require_signed_commits?:          bool
-	required_linear_history?:         bool
-	required_pull_request_reviews?: #required_pull_request_reviews | [...#required_pull_request_reviews]
-	required_status_checks?: #required_status_checks | [...#required_status_checks]
-	restrict_pushes?: #restrict_pushes | [...#restrict_pushes]
+	close({
+		allows_deletions?:    bool
+		allows_force_pushes?: bool
+		enforce_admins?:      bool
+		force_push_bypassers?: [...string]
+		required_pull_request_reviews?: matchN(1, [#required_pull_request_reviews, [...#required_pull_request_reviews]])
+		id?:                              string
+		lock_branch?:                     bool
+		pattern!:                         string
+		repository_id!:                   string
+		require_conversation_resolution?: bool
+		require_signed_commits?:          bool
+		required_status_checks?: matchN(1, [#required_status_checks, [...#required_status_checks]])
+		restrict_pushes?: matchN(1, [#restrict_pushes, [...#restrict_pushes]])
+		required_linear_history?: bool
+	})
 
-	#required_pull_request_reviews: {
+	#required_pull_request_reviews: close({
 		dismiss_stale_reviews?: bool
 		dismissal_restrictions?: [...string]
 		pull_request_bypassers?: [...string]
@@ -26,15 +28,15 @@ package res
 		require_last_push_approval?:      bool
 		required_approving_review_count?: number
 		restrict_dismissals?:             bool
-	}
+	})
 
-	#required_status_checks: {
+	#required_status_checks: close({
 		contexts?: [...string]
 		strict?: bool
-	}
+	})
 
-	#restrict_pushes: {
+	#restrict_pushes: close({
 		blocks_creations?: bool
 		push_allowances?: [...string]
-	}
+	})
 }
