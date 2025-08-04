@@ -6,9 +6,14 @@ package res
 	close({
 		api_key!:        string
 		application_id!: string
-		enabled?:        bool
-		id?:             string
-		region?:         string
-		secret_key!:     string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:     string
+		enabled?:    bool
+		id?:         string
+		secret_key!: string
 	})
 }

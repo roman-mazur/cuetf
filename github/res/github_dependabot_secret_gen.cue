@@ -4,12 +4,24 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_dependabot_secret")
 	close({
-		created_at?:      string
+		// Date of 'dependabot_secret' creation.
+		created_at?: string
+
+		// Encrypted value of the secret using the GitHub public key in
+		// Base64 format.
 		encrypted_value?: string
-		id?:              string
+
+		// Plaintext value of the secret to be encrypted.
 		plaintext_value?: string
-		repository!:      string
-		secret_name!:     string
-		updated_at?:      string
+		id?:              string
+
+		// Name of the repository.
+		repository!: string
+
+		// Name of the secret.
+		secret_name!: string
+
+		// Date of 'dependabot_secret' update.
+		updated_at?: string
 	})
 }

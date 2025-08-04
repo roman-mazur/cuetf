@@ -14,17 +14,22 @@ import "list"
 		engine_name!:                 string
 		extra_connection_attributes?: string
 		elasticsearch_settings?: matchN(1, [#elasticsearch_settings, list.MaxItems(1) & [...#elasticsearch_settings]])
-		id?: string
+		id?:          string
+		kms_key_arn?: string
+		password?:    string
 		kafka_settings?: matchN(1, [#kafka_settings, list.MaxItems(1) & [...#kafka_settings]])
-		kms_key_arn?:             string
-		password?:                string
 		pause_replication_tasks?: bool
 		port?:                    number
-		region?:                  string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		kinesis_settings?: matchN(1, [#kinesis_settings, list.MaxItems(1) & [...#kinesis_settings]])
 		secrets_manager_access_role_arn?: string
+		secrets_manager_arn?:             string
 		mongodb_settings?: matchN(1, [#mongodb_settings, list.MaxItems(1) & [...#mongodb_settings]])
-		secrets_manager_arn?: string
 		server_name?:         string
 		service_access_role?: string
 		ssl_mode?:            string

@@ -7,13 +7,18 @@ package data
 		common_prefixes?: [...string]
 		delimiter?:     string
 		encoding_type?: string
-		fetch_owner?:   bool
-		id?:            string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:      string
+		fetch_owner?: bool
+		id?:          string
 		keys?: [...string]
 		max_keys?: number
 		owners?: [...string]
 		prefix?:      string
-		region?:      string
 		start_after?: string
 		bucket!:      _
 	})

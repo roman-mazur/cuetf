@@ -8,8 +8,13 @@ package res
 		id?:                              string
 		inferred_workload_types?:         string
 		look_back_period?:                string
-		region?:                          string
-		resource_type!:                   string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:        string
+		resource_type!: string
 		external_metrics_preference?: matchN(1, [#external_metrics_preference, [...#external_metrics_preference]])
 		savings_estimation_mode?: string
 		preferred_resource?: matchN(1, [#preferred_resource, [...#preferred_resource]])

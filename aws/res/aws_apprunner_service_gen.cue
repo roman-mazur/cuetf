@@ -6,21 +6,26 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_apprunner_service")
 	close({
-		arn?:                            string
+		arn?: string
+		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
 		auto_scaling_configuration_arn?: string
 		id?:                             string
-		region?:                         string
-		service_id?:                     string
-		service_name!:                   string
-		service_url?:                    string
-		status?:                         string
-		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
-		tags?: [string]: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:       string
+		service_id?:   string
+		service_name!: string
+		service_url?:  string
 		health_check_configuration?: matchN(1, [#health_check_configuration, list.MaxItems(1) & [...#health_check_configuration]])
 		instance_configuration?: matchN(1, [#instance_configuration, list.MaxItems(1) & [...#instance_configuration]])
+		status?: string
 		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
 		observability_configuration?: matchN(1, [#observability_configuration, list.MaxItems(1) & [...#observability_configuration]])
 		source_configuration?: matchN(1, [#source_configuration, list.MaxItems(1) & [_, ...] & [...#source_configuration]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 

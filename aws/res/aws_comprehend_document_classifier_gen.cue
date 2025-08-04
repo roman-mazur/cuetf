@@ -13,15 +13,20 @@ import "list"
 		mode?:                 string
 		model_kms_key_id?:     string
 		name!:                 string
-		region?:               string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		tags?: [string]: string
 		input_data_config?: matchN(1, [#input_data_config, list.MaxItems(1) & [_, ...] & [...#input_data_config]])
+		output_data_config?: matchN(1, [#output_data_config, list.MaxItems(1) & [...#output_data_config]])
 		tags_all?: [string]: string
 		version_name?:        string
 		version_name_prefix?: string
 		volume_kms_key_id?:   string
-		output_data_config?: matchN(1, [#output_data_config, list.MaxItems(1) & [...#output_data_config]])
-		timeouts?: #timeouts
+		timeouts?:            #timeouts
 		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
 	})
 

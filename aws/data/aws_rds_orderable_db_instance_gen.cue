@@ -20,10 +20,15 @@ package data
 		min_storage_size?:         number
 		multi_az_capable?:         bool
 		outpost_capable?:          bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		preferred_engine_versions?: [...string]
 		preferred_instance_classes?: [...string]
 		read_replica_capable?: bool
-		region?:               string
 		storage_type?:         string
 		supported_engine_modes?: [...string]
 		supported_network_types?: [...string]

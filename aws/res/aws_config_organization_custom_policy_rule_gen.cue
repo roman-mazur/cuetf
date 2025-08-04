@@ -11,12 +11,17 @@ package res
 		id?:                          string
 		input_parameters?:            string
 		maximum_execution_frequency?: string
-		name!:                        string
-		policy_runtime!:              string
-		timeouts?:                    #timeouts
-		policy_text!:                 string
-		region?:                      string
-		resource_id_scope?:           string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:            string
+		timeouts?:          #timeouts
+		name!:              string
+		policy_runtime!:    string
+		policy_text!:       string
+		resource_id_scope?: string
 		resource_types_scope?: [...string]
 		tag_key_scope?:   string
 		tag_value_scope?: string

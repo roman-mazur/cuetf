@@ -8,6 +8,12 @@ package res
 		apple_platform_team_id?:           string
 		arn?:                              string
 		event_delivery_failure_topic_arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                           string
 		event_endpoint_created_topic_arn?: string
 		event_endpoint_deleted_topic_arn?: string
 		event_endpoint_updated_topic_arn?: string
@@ -17,7 +23,6 @@ package res
 		platform!:                         string
 		platform_credential!:              string
 		platform_principal?:               string
-		region?:                           string
 		success_feedback_role_arn?:        string
 		success_feedback_sample_rate?:     string
 	})

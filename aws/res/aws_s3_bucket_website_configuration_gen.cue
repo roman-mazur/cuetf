@@ -9,9 +9,14 @@ import "list"
 		bucket!:                string
 		expected_bucket_owner?: string
 		id?:                    string
-		region?:                string
-		routing_rules?:         string
-		website_domain?:        string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:         string
+		routing_rules?:  string
+		website_domain?: string
 		error_document?: matchN(1, [#error_document, list.MaxItems(1) & [...#error_document]])
 		website_endpoint?: string
 		index_document?: matchN(1, [#index_document, list.MaxItems(1) & [...#index_document]])

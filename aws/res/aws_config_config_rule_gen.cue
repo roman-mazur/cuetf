@@ -11,14 +11,19 @@ import "list"
 		id?:                          string
 		input_parameters?:            string
 		maximum_execution_frequency?: string
-		name!:                        string
-		evaluation_mode?: matchN(1, [#evaluation_mode, [...#evaluation_mode]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		evaluation_mode?: matchN(1, [#evaluation_mode, [...#evaluation_mode]])
 		scope?: matchN(1, [#scope, list.MaxItems(1) & [...#scope]])
-		source?: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		name!:    string
 		rule_id?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		source?: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
 	})
 
 	#evaluation_mode: close({

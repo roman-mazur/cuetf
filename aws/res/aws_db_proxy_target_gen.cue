@@ -11,10 +11,15 @@ package res
 		id?:                     string
 		port?:                   number
 		rds_resource_id?:        string
-		region?:                 string
-		target_arn?:             string
-		target_group_name!:      string
-		tracked_cluster_id?:     string
-		type?:                   string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
+		target_arn?:         string
+		target_group_name!:  string
+		tracked_cluster_id?: string
+		type?:               string
 	})
 }

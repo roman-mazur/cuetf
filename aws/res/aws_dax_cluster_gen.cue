@@ -13,22 +13,27 @@ import "list"
 		cluster_name!:                     string
 		configuration_endpoint?:           string
 		description?:                      string
-		iam_role_arn!:                     string
-		id?:                               string
-		maintenance_window?:               string
-		node_type!:                        string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:       string
+		iam_role_arn!: string
 		server_side_encryption?: matchN(1, [#server_side_encryption, list.MaxItems(1) & [...#server_side_encryption]])
+		id?:                 string
+		maintenance_window?: string
+		node_type!:          string
 		nodes?: [...close({
 			address?:           string
 			availability_zone?: string
 			id?:                string
 			port?:              number
 		})]
-		notification_topic_arn?: string
 		timeouts?:               #timeouts
+		notification_topic_arn?: string
 		parameter_group_name?:   string
 		port?:                   number
-		region?:                 string
 		replication_factor!:     number
 		security_group_ids?: [...string]
 		subnet_group_name?: string

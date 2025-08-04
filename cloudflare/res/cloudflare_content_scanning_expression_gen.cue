@@ -5,11 +5,19 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_content_scanning_expression")
 	close({
 		body!: matchN(1, [close({
+			// Defines the ruleset expression to use in matching content
+			// objects.
 			payload!: string
 		}), [...close({
+			// Defines the ruleset expression to use in matching content
+			// objects.
 			payload!: string
 		})]])
-		id?:      string
+
+		// defines the unique ID for this custom scan expression.
+		id?: string
+
+		// Defines an identifier.
 		zone_id!: string
 	})
 }

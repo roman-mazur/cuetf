@@ -10,9 +10,14 @@ package res
 		bgp_transit_gateway_addresses?: [...string]
 		id?: string
 		inside_cidr_blocks!: [...string]
-		peer_address!: string
+		timeouts?: #timeouts
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:       string
-		timeouts?:     #timeouts
+		peer_address!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		transit_gateway_address?:       string

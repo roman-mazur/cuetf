@@ -10,17 +10,22 @@ import "list"
 		description?:   string
 		id?:            string
 		lock_end_time?: string
-		exclude_resource_tags?: matchN(1, [#exclude_resource_tags, list.MaxItems(5) & [...#exclude_resource_tags]])
-		lock_state?: string
-		region?:     string
-		lock_configuration?: matchN(1, [#lock_configuration, list.MaxItems(1) & [...#lock_configuration]])
+		lock_state?:    string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:        string
 		resource_type!: string
-		status?:        string
+		exclude_resource_tags?: matchN(1, [#exclude_resource_tags, list.MaxItems(5) & [...#exclude_resource_tags]])
+		status?: string
+		lock_configuration?: matchN(1, [#lock_configuration, list.MaxItems(1) & [...#lock_configuration]])
 		tags?: [string]: string
 		resource_tags?: matchN(1, [#resource_tags, list.MaxItems(50) & [...#resource_tags]])
 		retention_period?: matchN(1, [#retention_period, list.MaxItems(1) & [_, ...] & [...#retention_period]])
-		tags_all?: [string]: string
 		timeouts?: #timeouts
+		tags_all?: [string]: string
 	})
 
 	#exclude_resource_tags: close({

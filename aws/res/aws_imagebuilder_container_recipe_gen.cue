@@ -6,27 +6,32 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_imagebuilder_container_recipe")
 	close({
-		arn?:                      string
+		arn?: string
+		component?: matchN(1, [#component, [_, ...] & [...#component]])
 		container_type!:           string
 		date_created?:             string
 		description?:              string
 		dockerfile_template_data?: string
-		dockerfile_template_uri?:  string
-		encrypted?:                bool
-		id?:                       string
-		kms_key_id?:               string
-		name!:                     string
-		owner?:                    string
-		component?: matchN(1, [#component, [_, ...] & [...#component]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                  string
+		dockerfile_template_uri?: string
+		encrypted?:               bool
+		id?:                      string
+		kms_key_id?:              string
+		name!:                    string
 		instance_configuration?: matchN(1, [#instance_configuration, list.MaxItems(1) & [...#instance_configuration]])
-		parent_image!:      string
+		owner?:        string
+		parent_image!: string
+		target_repository?: matchN(1, [#target_repository, list.MaxItems(1) & [_, ...] & [...#target_repository]])
 		platform?:          string
 		platform_override?: string
-		region?:            string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		version!: string
-		target_repository?: matchN(1, [#target_repository, list.MaxItems(1) & [_, ...] & [...#target_repository]])
+		version!:           string
 		working_directory?: string
 	})
 

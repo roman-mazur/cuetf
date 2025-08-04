@@ -7,11 +7,16 @@ package res
 		arn?:         string
 		description?: string
 		exclude_app_packages_from_cleanup?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:           string
 		id?:               string
 		name!:             string
 		package_cleanup?:  bool
 		reboot_after_use?: bool
-		region?:           string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

@@ -12,12 +12,17 @@ import "list"
 		direct_internet_access?:  string
 		id?:                      string
 		instance_type!:           string
-		kms_key_id?:              string
-		lifecycle_config_name?:   string
-		name!:                    string
-		network_interface_id?:    string
-		platform_identifier?:     string
 		instance_metadata_service_configuration?: matchN(1, [#instance_metadata_service_configuration, list.MaxItems(1) & [...#instance_metadata_service_configuration]])
+		kms_key_id?:            string
+		lifecycle_config_name?: string
+		name!:                  string
+		network_interface_id?:  string
+		platform_identifier?:   string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:      string
 		role_arn!:    string
 		root_access?: string

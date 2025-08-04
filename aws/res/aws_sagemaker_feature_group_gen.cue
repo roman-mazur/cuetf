@@ -6,18 +6,23 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_sagemaker_feature_group")
 	close({
-		arn?:                            string
-		description?:                    string
-		event_time_feature_name!:        string
-		feature_group_name!:             string
-		id?:                             string
-		record_identifier_feature_name!: string
+		arn?:                     string
+		description?:             string
+		event_time_feature_name!: string
+		feature_group_name!:      string
 		feature_definition?: matchN(1, [#feature_definition, list.MaxItems(2500) & [_, ...] & [...#feature_definition]])
+		id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		offline_store_config?: matchN(1, [#offline_store_config, list.MaxItems(1) & [...#offline_store_config]])
+		record_identifier_feature_name!: string
+		role_arn!:                       string
+		tags?: [string]: string
 		online_store_config?: matchN(1, [#online_store_config, list.MaxItems(1) & [...#online_store_config]])
-		region?:   string
-		role_arn!: string
-		tags?: [string]:     string
 		tags_all?: [string]: string
 		throughput_config?: matchN(1, [#throughput_config, list.MaxItems(1) & [...#throughput_config]])
 	})

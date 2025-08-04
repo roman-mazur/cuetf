@@ -6,24 +6,29 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lex_intent")
 	close({
-		arn?:                     string
-		checksum?:                string
-		create_version?:          bool
-		created_date?:            string
-		description?:             string
-		id?:                      string
-		last_updated_date?:       string
-		name!:                    string
-		parent_intent_signature?: string
-		region?:                  string
-		sample_utterances?: [...string]
+		arn?:            string
+		checksum?:       string
+		create_version?: bool
+		created_date?:   string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:            string
+		description?:       string
+		id?:                string
+		last_updated_date?: string
+		name!:              string
 		conclusion_statement?: matchN(1, [#conclusion_statement, list.MaxItems(1) & [...#conclusion_statement]])
-		version?: string
 		confirmation_prompt?: matchN(1, [#confirmation_prompt, list.MaxItems(1) & [...#confirmation_prompt]])
 		dialog_code_hook?: matchN(1, [#dialog_code_hook, list.MaxItems(1) & [...#dialog_code_hook]])
+		parent_intent_signature?: string
+		sample_utterances?: [...string]
 		follow_up_prompt?: matchN(1, [#follow_up_prompt, list.MaxItems(1) & [...#follow_up_prompt]])
 		fulfillment_activity?: matchN(1, [#fulfillment_activity, list.MaxItems(1) & [_, ...] & [...#fulfillment_activity]])
 		rejection_statement?: matchN(1, [#rejection_statement, list.MaxItems(1) & [...#rejection_statement]])
+		version?: string
 		slot?: matchN(1, [#slot, list.MaxItems(100) & [...#slot]])
 		timeouts?: #timeouts
 	})

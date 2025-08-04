@@ -8,6 +8,12 @@ package data
 		arn?:            string
 		binary_media_types?: [...string]
 		description?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		endpoint_configuration?: [...close({
 			ip_address_type?: string
 			types?: [...string]
@@ -18,7 +24,6 @@ package data
 		minimum_compression_size?: string
 		name!:                     string
 		policy?:                   string
-		region?:                   string
 		root_resource_id?:         string
 		tags?: [string]: string
 	})

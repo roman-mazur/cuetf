@@ -9,7 +9,12 @@ import "list"
 		hierarchy_structure?: matchN(1, [#hierarchy_structure, list.MaxItems(1) & [_, ...] & [...#hierarchy_structure]])
 		id?:          string
 		instance_id!: string
-		region?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 	})
 
 	#hierarchy_structure: close({

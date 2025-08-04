@@ -10,12 +10,17 @@ import "list"
 		id?:                           string
 		max_city_networks_to_monitor?: number
 		monitor_name!:                 string
-		region?:                       string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		resources?: [...string]
-		status?: string
 		health_events_config?: matchN(1, [#health_events_config, list.MaxItems(1) & [...#health_events_config]])
-		tags?: [string]: string
 		internet_measurements_log_delivery?: matchN(1, [#internet_measurements_log_delivery, list.MaxItems(1) & [...#internet_measurements_log_delivery]])
+		status?: string
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		traffic_percentage_to_monitor?: number
 	})

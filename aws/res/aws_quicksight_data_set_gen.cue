@@ -10,18 +10,23 @@ import "list"
 		aws_account_id?: string
 		data_set_id!:    string
 		id?:             string
-		import_mode!:    string
-		name!:           string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:      string
+		import_mode!: string
+		name!:        string
 		output_columns?: [...close({
 			description?: string
 			name?:        string
 			type?:        string
 		})]
-		region?: string
 		tags?: [string]: string
 		column_groups?: matchN(1, [#column_groups, list.MaxItems(8) & [...#column_groups]])
-		tags_all?: [string]: string
 		column_level_permission_rules?: matchN(1, [#column_level_permission_rules, [...#column_level_permission_rules]])
+		tags_all?: [string]: string
 		data_set_usage_configuration?: matchN(1, [#data_set_usage_configuration, list.MaxItems(1) & [...#data_set_usage_configuration]])
 		field_folders?: matchN(1, [#field_folders, list.MaxItems(1000) & [...#field_folders]])
 		logical_table_map?: matchN(1, [#logical_table_map, list.MaxItems(64) & [...#logical_table_map]])

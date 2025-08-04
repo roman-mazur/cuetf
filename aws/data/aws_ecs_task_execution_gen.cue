@@ -12,21 +12,26 @@ import "list"
 		enable_ecs_managed_tags?: bool
 		enable_execute_command?:  bool
 		group?:                   string
-		id?:                      string
-		launch_type?:             string
-		platform_version?:        string
-		propagate_tags?:          string
-		reference_id?:            string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:           string
+		id?:               string
+		launch_type?:      string
+		platform_version?: string
+		propagate_tags?:   string
 		capacity_provider_strategy?: matchN(1, [#capacity_provider_strategy, [...#capacity_provider_strategy]])
-		region?:     string
-		started_by?: string
-		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
+		reference_id?: string
+		started_by?:   string
 		tags?: [string]: string
+		task_arns?: [...string]
+		task_definition!: string
+		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
 		overrides?: matchN(1, [#overrides, list.MaxItems(1) & [...#overrides]])
 		placement_constraints?: matchN(1, [#placement_constraints, list.MaxItems(10) & [...#placement_constraints]])
 		placement_strategy?: matchN(1, [#placement_strategy, list.MaxItems(5) & [...#placement_strategy]])
-		task_arns?: [...string]
-		task_definition!: string
 	})
 
 	#capacity_provider_strategy: close({

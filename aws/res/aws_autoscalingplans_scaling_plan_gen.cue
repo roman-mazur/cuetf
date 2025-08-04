@@ -6,11 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_autoscalingplans_scaling_plan")
 	close({
-		application_source?: matchN(1, [#application_source, list.MaxItems(1) & [_, ...] & [...#application_source]])
-		id?:                   string
-		name!:                 string
+		id?:   string
+		name!: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:               string
 		scaling_plan_version?: number
+		application_source?: matchN(1, [#application_source, list.MaxItems(1) & [_, ...] & [...#application_source]])
 		scaling_instruction?: matchN(1, [#scaling_instruction, [_, ...] & [...#scaling_instruction]])
 	})
 

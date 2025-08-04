@@ -8,11 +8,17 @@ package res
 		admin_password_secret_kms_key_id?: string
 		admin_user_password?:              string
 		admin_user_password_wo?:           string
-		admin_user_password_wo_version?:   number
-		admin_username?:                   string
-		arn?:                              string
-		db_name?:                          string
-		default_iam_role_arn?:             string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                         string
+		admin_user_password_wo_version?: number
+		admin_username?:                 string
+		arn?:                            string
+		db_name?:                        string
+		default_iam_role_arn?:           string
 		iam_roles?: [...string]
 		id?:         string
 		kms_key_id?: string
@@ -20,7 +26,6 @@ package res
 		manage_admin_password?: bool
 		namespace_id?:          string
 		namespace_name!:        string
-		region?:                string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

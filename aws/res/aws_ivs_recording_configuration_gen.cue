@@ -6,16 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ivs_recording_configuration")
 	close({
-		arn?:                                string
-		id?:                                 string
-		name?:                               string
-		recording_reconnect_window_seconds?: number
-		destination_configuration?: matchN(1, [#destination_configuration, list.MaxItems(1) & [_, ...] & [...#destination_configuration]])
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		state?:  string
+		destination_configuration?: matchN(1, [#destination_configuration, list.MaxItems(1) & [_, ...] & [...#destination_configuration]])
+		arn?:  string
+		id?:   string
+		name?: string
+		thumbnail_configuration?: matchN(1, [#thumbnail_configuration, list.MaxItems(1) & [...#thumbnail_configuration]])
+		recording_reconnect_window_seconds?: number
+		state?:                              string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		thumbnail_configuration?: matchN(1, [#thumbnail_configuration, list.MaxItems(1) & [...#thumbnail_configuration]])
 		timeouts?: #timeouts
 	})
 

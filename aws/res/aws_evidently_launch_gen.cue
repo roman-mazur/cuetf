@@ -13,13 +13,18 @@ import "list"
 			ended_time?:   string
 			started_time?: string
 		})]
-		id?: string
+		id?:                string
+		last_updated_time?: string
+		name!:              string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:  string
+		project!: string
 		groups?: matchN(1, [#groups, list.MaxItems(5) & [_, ...] & [...#groups]])
-		last_updated_time?:  string
-		name!:               string
-		project!:            string
 		randomization_salt?: string
-		region?:             string
 		metric_monitors?: matchN(1, [#metric_monitors, list.MaxItems(3) & [...#metric_monitors]])
 		status?:        string
 		status_reason?: string

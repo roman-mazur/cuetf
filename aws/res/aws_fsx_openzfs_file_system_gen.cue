@@ -20,25 +20,30 @@ import "list"
 		final_backup_tags?: [string]: string
 		id?:         string
 		kms_key_id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		network_interface_ids?: [...string]
 		owner_id?: string
 		disk_iops_configuration?: matchN(1, [#disk_iops_configuration, list.MaxItems(1) & [...#disk_iops_configuration]])
-		root_volume_configuration?: matchN(1, [#root_volume_configuration, list.MaxItems(1) & [...#root_volume_configuration]])
 		preferred_subnet_id?: string
-		region?:              string
 		root_volume_id?:      string
 		route_table_ids?: [...string]
 		security_group_ids?: [...string]
 		skip_final_backup?: bool
-		timeouts?:          #timeouts
 		storage_capacity?:  number
-		storage_type?:      string
+		root_volume_configuration?: matchN(1, [#root_volume_configuration, list.MaxItems(1) & [...#root_volume_configuration]])
+		storage_type?: string
 		subnet_ids!: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		throughput_capacity!:           number
 		vpc_id?:                        string
 		weekly_maintenance_start_time?: string
+		timeouts?:                      #timeouts
 	})
 
 	#disk_iops_configuration: close({

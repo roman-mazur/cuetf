@@ -11,8 +11,13 @@ import "list"
 		device_fleet_name!:     string
 		enable_iot_role_alias?: bool
 		id?:                    string
-		iot_role_alias?:        string
-		region?:                string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:         string
+		iot_role_alias?: string
 		output_config?: matchN(1, [#output_config, list.MaxItems(1) & [_, ...] & [...#output_config]])
 		role_arn!: string
 		tags?: [string]:     string

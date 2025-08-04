@@ -11,14 +11,19 @@ import "list"
 		listener_identifier!: string
 		name!:                string
 		priority!:            number
-		region?:              string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		action?: matchN(1, [#action, list.MaxItems(1) & [_, ...] & [...#action]])
-		rule_id?: string
 		match?: matchN(1, [#match, list.MaxItems(1) & [_, ...] & [...#match]])
-		timeouts?:           #timeouts
+		rule_id?:            string
 		service_identifier!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		timeouts?: #timeouts
 	})
 
 	#action: close({

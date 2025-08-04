@@ -16,6 +16,12 @@ package data
 			user_data_shared?: bool
 		})]
 		callback_urls?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                                        string
 		client_id!:                                     string
 		client_secret?:                                 string
 		default_redirect_uri?:                          string
@@ -34,7 +40,6 @@ package data
 			retry_grace_period_seconds?: number
 		})]
 		refresh_token_validity?: number
-		region?:                 string
 		supported_identity_providers?: [...string]
 		token_validity_units?: [...close({
 			access_token?:  string

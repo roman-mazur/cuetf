@@ -11,9 +11,14 @@ package data
 		certificate_pem?:           string
 		certificate_wallet?:        string
 		id?:                        string
-		key_length?:                number
-		region?:                    string
-		signing_algorithm?:         string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:            string
+		key_length?:        number
+		signing_algorithm?: string
 		tags?: [string]: string
 		valid_from_date?: string
 		valid_to_date?:   string

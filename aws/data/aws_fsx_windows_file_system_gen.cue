@@ -21,14 +21,19 @@ package data
 			iops?: number
 			mode?: string
 		})]
-		dns_name?:   string
+		dns_name?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:     string
 		id!:         string
 		kms_key_id?: string
 		network_interface_ids?: [...string]
 		owner_id?:                 string
 		preferred_file_server_ip?: string
 		preferred_subnet_id?:      string
-		region?:                   string
 		security_group_ids?: [...string]
 		skip_final_backup?: bool
 		storage_capacity?:  number

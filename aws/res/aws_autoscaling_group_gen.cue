@@ -15,42 +15,47 @@ import "list"
 		desired_capacity?:        number
 		desired_capacity_type?:   string
 		enabled_metrics?: [...string]
-		availability_zone_distribution?: matchN(1, [#availability_zone_distribution, list.MaxItems(1) & [...#availability_zone_distribution]])
-		force_delete?:                     bool
+		force_delete?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                           string
 		force_delete_warm_pool?:           bool
 		health_check_grace_period?:        number
 		health_check_type?:                string
 		id?:                               string
 		ignore_failed_scaling_activities?: bool
 		launch_configuration?:             string
+		availability_zone_distribution?: matchN(1, [#availability_zone_distribution, list.MaxItems(1) & [...#availability_zone_distribution]])
 		load_balancers?: [...string]
 		max_instance_lifetime?: number
 		max_size!:              number
 		metrics_granularity?:   string
+		min_elb_capacity?:      number
+		min_size!:              number
+		name?:                  string
 		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
 		initial_lifecycle_hook?: matchN(1, [#initial_lifecycle_hook, [...#initial_lifecycle_hook]])
-		min_elb_capacity?: number
-		min_size!:         number
-		instance_maintenance_policy?: matchN(1, [#instance_maintenance_policy, list.MaxItems(1) & [...#instance_maintenance_policy]])
-		instance_refresh?: matchN(1, [#instance_refresh, list.MaxItems(1) & [...#instance_refresh]])
-		launch_template?: matchN(1, [#launch_template, list.MaxItems(1) & [...#launch_template]])
-		name?:                    string
 		name_prefix?:             string
 		placement_group?:         string
 		predicted_capacity?:      number
 		protect_from_scale_in?:   bool
-		region?:                  string
 		service_linked_role_arn?: string
 		suspended_processes?: [...string]
 		target_group_arns?: [...string]
 		termination_policies?: [...string]
 		vpc_zone_identifier?: [...string]
-		mixed_instances_policy?: matchN(1, [#mixed_instances_policy, list.MaxItems(1) & [...#mixed_instances_policy]])
-		tag?: matchN(1, [#tag, [...#tag]])
-		timeouts?:                  #timeouts
 		wait_for_capacity_timeout?: string
 		wait_for_elb_capacity?:     number
-		warm_pool_size?:            number
+		instance_maintenance_policy?: matchN(1, [#instance_maintenance_policy, list.MaxItems(1) & [...#instance_maintenance_policy]])
+		instance_refresh?: matchN(1, [#instance_refresh, list.MaxItems(1) & [...#instance_refresh]])
+		launch_template?: matchN(1, [#launch_template, list.MaxItems(1) & [...#launch_template]])
+		mixed_instances_policy?: matchN(1, [#mixed_instances_policy, list.MaxItems(1) & [...#mixed_instances_policy]])
+		tag?: matchN(1, [#tag, [...#tag]])
+		warm_pool_size?: number
+		timeouts?:       #timeouts
 		traffic_source?: matchN(1, [#traffic_source, [...#traffic_source]])
 		warm_pool?: matchN(1, [#warm_pool, list.MaxItems(1) & [...#warm_pool]])
 	})

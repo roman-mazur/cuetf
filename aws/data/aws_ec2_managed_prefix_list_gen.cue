@@ -10,13 +10,18 @@ package data
 			cidr?:        string
 			description?: string
 		})]
-		id?:          string
+		id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:      string
 		max_entries?: number
-		name?:        string
-		owner_id?:    string
 		filter?: matchN(1, [#filter, [...#filter]])
-		region?:   string
+		name?:     string
 		timeouts?: #timeouts
+		owner_id?: string
 		tags?: [string]: string
 		version?: number
 	})

@@ -13,18 +13,23 @@ import "list"
 		enabled?:                       bool
 		id?:                            string
 		key_storage_security_standard?: string
-		not_after?:                     string
-		not_before?:                    string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:     string
+		not_after?:  string
+		not_before?: string
 		certificate_authority_configuration?: matchN(1, [#certificate_authority_configuration, list.MaxItems(1) & [_, ...] & [...#certificate_authority_configuration]])
-		revocation_configuration?: matchN(1, [#revocation_configuration, list.MaxItems(1) & [...#revocation_configuration]])
 		permanent_deletion_time_in_days?: number
-		timeouts?:                        #timeouts
-		region?:                          string
-		serial?:                          string
+		revocation_configuration?: matchN(1, [#revocation_configuration, list.MaxItems(1) & [...#revocation_configuration]])
+		serial?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type?:       string
 		usage_mode?: string
+		timeouts?:   #timeouts
 	})
 
 	#certificate_authority_configuration: close({

@@ -6,24 +6,29 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_fleet")
 	close({
-		arn?:                                string
-		context?:                            string
+		arn?:     string
+		context?: string
+		fleet_instance_set?: matchN(1, [#fleet_instance_set, [...#fleet_instance_set]])
 		excess_capacity_termination_policy?: string
 		fleet_state?:                        string
 		fulfilled_capacity?:                 number
 		fulfilled_on_demand_capacity?:       number
 		id?:                                 string
-		region?:                             string
-		replace_unhealthy_instances?:        bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                      string
+		replace_unhealthy_instances?: bool
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		fleet_instance_set?: matchN(1, [#fleet_instance_set, [...#fleet_instance_set]])
+		launch_template_config?: matchN(1, [#launch_template_config, list.MaxItems(50) & [_, ...] & [...#launch_template_config]])
 		terminate_instances?:                 bool
 		terminate_instances_with_expiration?: bool
 		type?:                                string
 		valid_from?:                          string
 		valid_until?:                         string
-		launch_template_config?: matchN(1, [#launch_template_config, list.MaxItems(50) & [_, ...] & [...#launch_template_config]])
 		on_demand_options?: matchN(1, [#on_demand_options, list.MaxItems(1) & [...#on_demand_options]])
 		spot_options?: matchN(1, [#spot_options, list.MaxItems(1) & [...#spot_options]])
 		target_capacity_specification?: matchN(1, [#target_capacity_specification, list.MaxItems(1) & [_, ...] & [...#target_capacity_specification]])

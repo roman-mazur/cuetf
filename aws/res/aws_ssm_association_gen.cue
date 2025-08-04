@@ -17,12 +17,17 @@ import "list"
 		max_concurrency?:                  string
 		max_errors?:                       string
 		output_location?: matchN(1, [#output_location, list.MaxItems(1) & [...#output_location]])
-		name!: string
-		parameters?: [string]: string
-		region?:              string
-		schedule_expression?: string
 		targets?: matchN(1, [#targets, list.MaxItems(5) & [...#targets]])
-		sync_compliance?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		name!:   string
+		parameters?: [string]: string
+		schedule_expression?: string
+		sync_compliance?:     string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		wait_for_success_timeout_seconds?: number

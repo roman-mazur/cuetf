@@ -15,18 +15,23 @@ import "list"
 		function_name!:           string
 		handler?:                 string
 		id?:                      string
-		image_uri?:               string
-		invoke_arn?:              string
-		kms_key_arn?:             string
-		last_modified?:           string
-		layers?: [...string]
-		memory_size?:  number
-		package_type?: string
-		publish?:      bool
 		dead_letter_config?: matchN(1, [#dead_letter_config, list.MaxItems(1) & [...#dead_letter_config]])
-		qualified_arn?:                      string
-		qualified_invoke_arn?:               string
+		image_uri?:     string
+		invoke_arn?:    string
+		kms_key_arn?:   string
+		last_modified?: string
+		layers?: [...string]
+		memory_size?:   number
+		package_type?:  string
+		publish?:       bool
+		qualified_arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                             string
+		qualified_invoke_arn?:               string
 		replace_security_groups_on_destroy?: bool
 		replacement_security_group_ids?: [...string]
 		environment?: matchN(1, [#environment, list.MaxItems(1) & [...#environment]])
@@ -44,12 +49,12 @@ import "list"
 		source_code_size?:            number
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		timeout?: number
-		version?: string
 		file_system_config?: matchN(1, [#file_system_config, list.MaxItems(1) & [...#file_system_config]])
 		image_config?: matchN(1, [#image_config, list.MaxItems(1) & [...#image_config]])
 		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
 		snap_start?: matchN(1, [#snap_start, list.MaxItems(1) & [...#snap_start]])
+		timeout?:  number
+		version?:  string
 		timeouts?: #timeouts
 		tracing_config?: matchN(1, [#tracing_config, list.MaxItems(1) & [...#tracing_config]])
 		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])

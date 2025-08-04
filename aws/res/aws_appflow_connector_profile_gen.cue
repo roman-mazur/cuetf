@@ -6,8 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appflow_connector_profile")
 	close({
-		connector_profile_config?: matchN(1, [#connector_profile_config, list.MaxItems(1) & [_, ...] & [...#connector_profile_config]])
-		arn?:             string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:          string
 		connection_mode!: string
 		connector_label?: string
 		connector_type!:  string
@@ -15,7 +20,7 @@ import "list"
 		id?:              string
 		kms_arn?:         string
 		name!:            string
-		region?:          string
+		connector_profile_config?: matchN(1, [#connector_profile_config, list.MaxItems(1) & [_, ...] & [...#connector_profile_config]])
 	})
 
 	#connector_profile_config: close({

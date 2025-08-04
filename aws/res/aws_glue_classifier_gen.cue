@@ -7,12 +7,17 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_classifier")
 	close({
 		csv_classifier?: matchN(1, [#csv_classifier, list.MaxItems(1) & [...#csv_classifier]])
+		id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		grok_classifier?: matchN(1, [#grok_classifier, list.MaxItems(1) & [...#grok_classifier]])
+		name!: string
 		json_classifier?: matchN(1, [#json_classifier, list.MaxItems(1) & [...#json_classifier]])
 		xml_classifier?: matchN(1, [#xml_classifier, list.MaxItems(1) & [...#xml_classifier]])
-		id?:     string
-		name!:   string
-		region?: string
 	})
 
 	#csv_classifier: close({

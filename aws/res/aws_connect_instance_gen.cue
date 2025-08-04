@@ -10,17 +10,22 @@ package res
 		contact_lens_enabled?:             bool
 		created_time?:                     string
 		directory_id?:                     string
-		early_media_enabled?:              bool
-		id?:                               string
-		identity_management_type!:         string
-		inbound_calls_enabled!:            bool
-		instance_alias?:                   string
-		multi_party_conference_enabled?:   bool
-		outbound_calls_enabled!:           bool
-		region?:                           string
-		service_role?:                     string
-		timeouts?:                         #timeouts
-		status?:                           string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                         string
+		early_media_enabled?:            bool
+		id?:                             string
+		identity_management_type!:       string
+		timeouts?:                       #timeouts
+		inbound_calls_enabled!:          bool
+		instance_alias?:                 string
+		multi_party_conference_enabled?: bool
+		outbound_calls_enabled!:         bool
+		service_role?:                   string
+		status?:                         string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

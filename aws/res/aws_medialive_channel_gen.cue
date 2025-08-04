@@ -12,13 +12,18 @@ import "list"
 		id?:            string
 		log_level?:     string
 		name!:          string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:        string
 		role_arn?:      string
 		start_channel?: bool
 		cdi_input_specification?: matchN(1, [#cdi_input_specification, list.MaxItems(1) & [...#cdi_input_specification]])
+		destinations?: matchN(1, [#destinations, [_, ...] & [...#destinations]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		destinations?: matchN(1, [#destinations, [_, ...] & [...#destinations]])
 		encoder_settings?: matchN(1, [#encoder_settings, list.MaxItems(1) & [_, ...] & [...#encoder_settings]])
 		input_attachments?: matchN(1, [#input_attachments, [_, ...] & [...#input_attachments]])
 		input_specification?: matchN(1, [#input_specification, list.MaxItems(1) & [_, ...] & [...#input_specification]])

@@ -4,25 +4,30 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lexv2models_intent")
 	close({
-		bot_id!:                 string
-		bot_version!:            string
-		creation_date_time?:     string
-		description?:            string
+		bot_id!:      string
+		bot_version!: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
+		creation_date_time?: string
+		description?:        string
+		closing_setting?: matchN(1, [#closing_setting, [...#closing_setting]])
 		id?:                     string
 		intent_id?:              string
 		last_updated_date_time?: string
 		locale_id!:              string
 		name!:                   string
-		closing_setting?: matchN(1, [#closing_setting, [...#closing_setting]])
 		confirmation_setting?: matchN(1, [#confirmation_setting, [...#confirmation_setting]])
-		dialog_code_hook?: matchN(1, [#dialog_code_hook, [...#dialog_code_hook]])
 		parent_intent_signature?: string
+		dialog_code_hook?: matchN(1, [#dialog_code_hook, [...#dialog_code_hook]])
 		fulfillment_code_hook?: matchN(1, [#fulfillment_code_hook, [...#fulfillment_code_hook]])
 		initial_response_setting?: matchN(1, [#initial_response_setting, [...#initial_response_setting]])
 		input_context?: matchN(1, [#input_context, [...#input_context]])
 		kendra_configuration?: matchN(1, [#kendra_configuration, [...#kendra_configuration]])
 		output_context?: matchN(1, [#output_context, [...#output_context]])
-		region?: string
 		sample_utterance?: matchN(1, [#sample_utterance, [...#sample_utterance]])
 		slot_priority?: matchN(1, [#slot_priority, [...#slot_priority]])
 		timeouts?: #timeouts
@@ -95,8 +100,25 @@ package res
 	})
 
 	#timeouts: close({
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
 		create?: string
+
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// Setting a timeout for a Delete operation is only applicable if
+		// changes are saved into state before the destroy operation
+		// occurs.
 		delete?: string
+
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
 		update?: string
 	})
 

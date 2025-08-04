@@ -4,21 +4,26 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrockagent_agent_action_group")
 	close({
-		action_group_id?:               string
-		action_group_name!:             string
-		action_group_state?:            string
-		agent_id!:                      string
-		agent_version!:                 string
-		description?:                   string
-		id?:                            string
-		parent_action_group_signature?: string
+		action_group_id?: string
 		action_group_executor?: matchN(1, [#action_group_executor, [...#action_group_executor]])
-		prepare_agent?: bool
+		action_group_name!: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
+		action_group_state?: string
+		agent_id!:           string
+		agent_version!:      string
+		description?:        string
+		id?:                 string
 		api_schema?: matchN(1, [#api_schema, [...#api_schema]])
-		region?: string
 		function_schema?: matchN(1, [#function_schema, [...#function_schema]])
-		timeouts?:                   #timeouts
-		skip_resource_in_use_check?: bool
+		parent_action_group_signature?: string
+		prepare_agent?:                 bool
+		timeouts?:                      #timeouts
+		skip_resource_in_use_check?:    bool
 	})
 
 	#action_group_executor: close({
@@ -36,7 +41,16 @@ package res
 	})
 
 	#timeouts: close({
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
 		create?: string
+
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
 		update?: string
 	})
 

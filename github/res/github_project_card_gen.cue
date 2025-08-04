@@ -4,12 +4,21 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_project_card")
 	close({
-		card_id?:      number
-		column_id!:    string
-		content_id?:   number
+		// The ID of the card.
+		card_id?: number
+
+		// The ID of the project column.
+		column_id!: string
+
+		// 'github_issue.issue_id'.
+		content_id?: number
+
+		// Must be either 'Issue' or 'PullRequest'.
 		content_type?: string
 		etag?:         string
 		id?:           string
-		note?:         string
+
+		// The note contents of the card. Markdown supported.
+		note?: string
 	})
 }

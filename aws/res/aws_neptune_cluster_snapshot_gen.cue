@@ -11,12 +11,17 @@ package res
 		db_cluster_snapshot_identifier!: string
 		engine?:                         string
 		engine_version?:                 string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                         string
 		id?:                             string
+		timeouts?:                       #timeouts
 		kms_key_id?:                     string
 		license_model?:                  string
 		port?:                           number
-		region?:                         string
-		timeouts?:                       #timeouts
 		snapshot_type?:                  string
 		source_db_cluster_snapshot_arn?: string
 		status?:                         string

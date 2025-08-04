@@ -6,9 +6,16 @@ package res
 	close({
 		account_id!: string
 		created_at?: string
-		id?:         string
+
+		// A list of CIDRs to restrict ingress connections.
 		ips!: [...string]
-		name!:       string
+		id?: string
+
+		// The name of the proxy endpoint.
+		name!: string
+
+		// The subdomain to be used as the destination in the proxy
+		// client.
 		subdomain?:  string
 		updated_at?: string
 	})

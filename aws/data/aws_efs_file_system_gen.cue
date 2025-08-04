@@ -9,10 +9,16 @@ package data
 		availability_zone_name?: string
 		creation_token?:         string
 		dns_name?:               string
-		encrypted?:              bool
-		file_system_id?:         string
-		id?:                     string
-		kms_key_id?:             string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:         string
+		encrypted?:      bool
+		file_system_id?: string
+		id?:             string
+		kms_key_id?:     string
 		lifecycle_policy?: [...close({
 			transition_to_archive?:               string
 			transition_to_ia?:                    string
@@ -24,7 +30,6 @@ package data
 			replication_overwrite?: string
 		})]
 		provisioned_throughput_in_mibps?: number
-		region?:                          string
 		size_in_bytes?:                   number
 		tags?: [string]: string
 		throughput_mode?: string

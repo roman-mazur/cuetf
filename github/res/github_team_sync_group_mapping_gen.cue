@@ -5,14 +5,21 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_team_sync_group_mapping")
 	close({
 		group?: matchN(1, [#group, [...#group]])
-		etag?:      string
-		id?:        string
+		etag?: string
+		id?:   string
+
+		// Slug of the team.
 		team_slug!: string
 	})
 
 	#group: close({
+		// The description of the IdP group.
 		group_description!: string
-		group_id!:          string
-		group_name!:        string
+
+		// The ID of the IdP group.
+		group_id!: string
+
+		// The name of the IdP group.
+		group_name!: string
 	})
 }

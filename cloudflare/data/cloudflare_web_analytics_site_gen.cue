@@ -4,39 +4,84 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_web_analytics_site")
 	close({
-		account_id!:   string
+		// Identifier.
+		account_id!: string
+
+		// If enabled, the JavaScript snippet is automatically injected
+		// for orange-clouded sites.
 		auto_install?: bool
 		created?:      string
-		id?:           string
-		site_id?:      string
-		filter?: close({
-			order_by?: string
-		})
+
+		// Identifier.
+		id?: string
+
+		// Identifier.
+		site_id?: string
+
+		// A list of rules.
 		rules?: matchN(1, [close({
-			created?:   string
-			host?:      string
-			id?:        string
+			created?: string
+
+			// The hostname the rule will be applied to.
+			host?: string
+
+			// The Web Analytics rule identifier.
+			id?: string
+
+			// Whether the rule includes or excludes traffic from being
+			// measured.
 			inclusive?: bool
+
+			// Whether the rule is paused or not.
 			is_paused?: bool
+
+			// The paths the rule will be applied to.
 			paths?: [...string]
 			priority?: number
 		}), [...close({
-			created?:   string
-			host?:      string
-			id?:        string
+			created?: string
+
+			// The hostname the rule will be applied to.
+			host?: string
+
+			// The Web Analytics rule identifier.
+			id?: string
+
+			// Whether the rule includes or excludes traffic from being
+			// measured.
 			inclusive?: bool
+
+			// Whether the rule is paused or not.
 			is_paused?: bool
+
+			// The paths the rule will be applied to.
 			paths?: [...string]
 			priority?: number
 		})]])
+		filter?: close({
+			// The property used to sort the list of results.
+			// Available values: "host", "created".
+			order_by?: string
+		})
+
+		// The Web Analytics site identifier.
 		site_tag?: string
+
+		// The Web Analytics site token.
+		site_token?: string
+
+		// Encoded JavaScript snippet.
+		snippet?: string
 		ruleset?: close({
-			enabled?:   bool
+			// Whether the ruleset is enabled.
+			enabled?: bool
+
+			// The Web Analytics ruleset identifier.
 			id?:        string
 			zone_name?: string
-			zone_tag?:  string
+
+			// The zone identifier.
+			zone_tag?: string
 		})
-		site_token?: string
-		snippet?:    string
 	})
 }

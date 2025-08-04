@@ -8,20 +8,25 @@ import "list"
 	close({
 		arn?: string
 		classifiers?: [...string]
-		configuration?:          string
-		database_name!:          string
-		description?:            string
-		id?:                     string
-		name!:                   string
+		configuration?: string
+		database_name!: string
+		description?:   string
+		id?:            string
+		name!:          string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                 string
 		role!:                   string
 		schedule?:               string
 		security_configuration?: string
-		table_prefix?:           string
-		tags?: [string]: string
 		catalog_target?: matchN(1, [#catalog_target, [...#catalog_target]])
-		tags_all?: [string]: string
 		delta_target?: matchN(1, [#delta_target, [...#delta_target]])
+		table_prefix?: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 		dynamodb_target?: matchN(1, [#dynamodb_target, [...#dynamodb_target]])
 		hudi_target?: matchN(1, [#hudi_target, [...#hudi_target]])
 		iceberg_target?: matchN(1, [#iceberg_target, [...#iceberg_target]])

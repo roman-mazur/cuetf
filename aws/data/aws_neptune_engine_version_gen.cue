@@ -4,6 +4,11 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_neptune_engine_version")
 	close({
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                string
 		default_character_set?: string
 		default_only?:          bool
 		engine?:                string
@@ -17,7 +22,6 @@ package data
 		preferred_major_targets?: [...string]
 		preferred_upgrade_targets?: [...string]
 		preferred_versions?: [...string]
-		region?: string
 		supported_character_sets?: [...string]
 		supported_timezones?: [...string]
 		supports_global_databases?:          bool

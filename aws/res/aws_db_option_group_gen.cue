@@ -8,14 +8,19 @@ package res
 		engine_name!:          string
 		id?:                   string
 		major_engine_version!: string
-		name?:                 string
-		name_prefix?:          string
 		option?: matchN(1, [#option, [...#option]])
-		option_group_description?: string
+		name?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                   string
-		timeouts?:                 #timeouts
+		name_prefix?:              string
+		option_group_description?: string
 		skip_destroy?:             bool
-		tags?: [string]:     string
+		tags?: [string]: string
+		timeouts?: #timeouts
 		tags_all?: [string]: string
 	})
 

@@ -6,16 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_partition")
 	close({
-		catalog_id?:         string
-		creation_time?:      string
-		database_name!:      string
+		catalog_id?:    string
+		creation_time?: string
+		database_name!: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
 		id?:                 string
 		last_accessed_time?: string
 		last_analyzed_time?: string
-		parameters?: [string]: string
 		storage_descriptor?: matchN(1, [#storage_descriptor, list.MaxItems(1) & [...#storage_descriptor]])
+		parameters?: [string]: string
 		partition_values!: [...string]
-		region?:     string
 		table_name!: string
 	})
 

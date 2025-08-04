@@ -6,19 +6,23 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_sagemaker_space")
 	close({
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                   string
 		arn?:                      string
 		domain_id!:                string
 		home_efs_file_system_uid?: string
 		id?:                       string
-		region?:                   string
-		space_display_name?:       string
 		ownership_settings?: matchN(1, [#ownership_settings, list.MaxItems(1) & [...#ownership_settings]])
-		space_name!: string
 		space_settings?: matchN(1, [#space_settings, list.MaxItems(1) & [...#space_settings]])
-		space_sharing_settings?: matchN(1, [#space_sharing_settings, list.MaxItems(1) & [...#space_sharing_settings]])
+		space_display_name?: string
+		space_name!:         string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		url?: string
+		space_sharing_settings?: matchN(1, [#space_sharing_settings, list.MaxItems(1) & [...#space_sharing_settings]])
 	})
 
 	#ownership_settings: close({

@@ -7,15 +7,20 @@ package res
 		allowed_prefixes?: [...string]
 		associated_gateway_id?:               string
 		associated_gateway_owner_account_id?: string
-		associated_gateway_type?:             string
-		dx_gateway_association_id?:           string
-		dx_gateway_id!:                       string
-		dx_gateway_owner_account_id?:         string
-		id?:                                  string
-		proposal_id?:                         string
-		timeouts?:                            #timeouts
-		region?:                              string
-		transit_gateway_attachment_id?:       string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                        string
+		associated_gateway_type?:       string
+		dx_gateway_association_id?:     string
+		timeouts?:                      #timeouts
+		dx_gateway_id!:                 string
+		dx_gateway_owner_account_id?:   string
+		id?:                            string
+		proposal_id?:                   string
+		transit_gateway_attachment_id?: string
 	})
 
 	#timeouts: close({

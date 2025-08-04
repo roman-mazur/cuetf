@@ -29,11 +29,16 @@ package res
 			self?:    bool
 			to_port?: number
 		})]
-		name?:                   string
+		name?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                 string
+		timeouts?:               #timeouts
 		name_prefix?:            string
 		owner_id?:               string
-		timeouts?:               #timeouts
-		region?:                 string
 		revoke_rules_on_delete?: bool
 		tags?: [string]:     string
 		tags_all?: [string]: string

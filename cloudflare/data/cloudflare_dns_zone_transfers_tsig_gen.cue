@@ -5,10 +5,16 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_dns_zone_transfers_tsig")
 	close({
 		account_id!: string
-		algo?:       string
-		id?:         string
-		name?:       string
-		secret?:     string
-		tsig_id?:    string
+
+		// TSIG algorithm.
+		algo?: string
+
+		// TSIG key name.
+		name?: string
+		id?:   string
+
+		// TSIG secret.
+		secret?:  string
+		tsig_id?: string
 	})
 }

@@ -6,20 +6,25 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_synthetics_canary")
 	close({
-		arn?:                  string
-		artifact_s3_location!: string
-		delete_lambda?:        bool
-		engine_arn?:           string
-		artifact_config?: matchN(1, [#artifact_config, list.MaxItems(1) & [...#artifact_config]])
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                   string
+		arn?:                      string
+		artifact_s3_location!:     string
+		delete_lambda?:            bool
+		engine_arn?:               string
 		execution_role_arn!:       string
 		failure_retention_period?: number
 		handler!:                  string
 		id?:                       string
 		name!:                     string
-		region?:                   string
-		runtime_version!:          string
+		artifact_config?: matchN(1, [#artifact_config, list.MaxItems(1) & [...#artifact_config]])
 		run_config?: matchN(1, [#run_config, list.MaxItems(1) & [...#run_config]])
 		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [_, ...] & [...#schedule]])
+		runtime_version!: string
+		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
 		s3_bucket?:                string
 		s3_key?:                   string
 		s3_version?:               string
@@ -36,7 +41,6 @@ import "list"
 			last_stopped?:  string
 		})]
 		zip_file?: string
-		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
 	})
 
 	#artifact_config: close({

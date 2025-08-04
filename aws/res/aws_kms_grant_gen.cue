@@ -8,12 +8,17 @@ package res
 		grant_id?:          string
 		grant_token?:       string
 		grantee_principal!: string
-		id?:                string
-		key_id!:            string
-		name?:              string
-		operations!: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		id?:     string
 		constraints?: matchN(1, [#constraints, [...#constraints]])
+		key_id!: string
+		name?:   string
+		operations!: [...string]
 		retire_on_delete?:   bool
 		retiring_principal?: string
 	})

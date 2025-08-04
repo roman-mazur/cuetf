@@ -14,19 +14,24 @@ import "list"
 		file_cache_type!:         string
 		file_cache_type_version!: string
 		id?:                      string
-		kms_key_id?:              string
-		network_interface_ids?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:     string
+		kms_key_id?: string
 		data_repository_association?: matchN(1, [#data_repository_association, list.MaxItems(8) & [...#data_repository_association]])
 		lustre_configuration?: matchN(1, [#lustre_configuration, [...#lustre_configuration]])
+		network_interface_ids?: [...string]
 		owner_id?: string
-		region?:   string
 		security_group_ids?: [...string]
-		timeouts?:         #timeouts
 		storage_capacity!: number
 		subnet_ids!: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		vpc_id?: string
+		vpc_id?:   string
+		timeouts?: #timeouts
 	})
 
 	#data_repository_association: close({

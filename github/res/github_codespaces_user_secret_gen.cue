@@ -4,12 +4,24 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_codespaces_user_secret")
 	close({
-		created_at?:      string
+		// Date of 'codespaces_secret' creation.
+		created_at?: string
+
+		// Encrypted value of the secret using the GitHub public key in
+		// Base64 format.
 		encrypted_value?: string
-		id?:              string
+
+		// Plaintext value of the secret to be encrypted.
 		plaintext_value?: string
-		secret_name!:     string
+		id?:              string
+
+		// Name of the secret.
+		secret_name!: string
+
+		// An array of repository ids that can access the user secret.
 		selected_repository_ids?: [...number]
+
+		// Date of 'codespaces_secret' update.
 		updated_at?: string
 	})
 }

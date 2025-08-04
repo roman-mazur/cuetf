@@ -8,20 +8,25 @@ import "list"
 	close({
 		access_policies?: string
 		advanced_options?: [string]: string
-		arn?:                               string
-		dashboard_endpoint?:                string
+		arn?:                string
+		dashboard_endpoint?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                            string
 		dashboard_endpoint_v2?:             string
 		domain_endpoint_v2_hosted_zone_id?: string
 		domain_id?:                         string
 		domain_name!:                       string
-		endpoint?:                          string
 		advanced_security_options?: matchN(1, [#advanced_security_options, list.MaxItems(1) & [...#advanced_security_options]])
+		endpoint?:       string
 		endpoint_v2?:    string
 		engine_version?: string
 		id?:             string
 		auto_tune_options?: matchN(1, [#auto_tune_options, list.MaxItems(1) & [...#auto_tune_options]])
 		ip_address_type?: string
-		region?:          string
 		tags?: [string]: string
 		cluster_config?: matchN(1, [#cluster_config, list.MaxItems(1) & [...#cluster_config]])
 		cognito_options?: matchN(1, [#cognito_options, list.MaxItems(1) & [...#cognito_options]])
@@ -30,8 +35,8 @@ import "list"
 		encrypt_at_rest?: matchN(1, [#encrypt_at_rest, list.MaxItems(1) & [...#encrypt_at_rest]])
 		log_publishing_options?: matchN(1, [#log_publishing_options, [...#log_publishing_options]])
 		node_to_node_encryption?: matchN(1, [#node_to_node_encryption, list.MaxItems(1) & [...#node_to_node_encryption]])
-		off_peak_window_options?: matchN(1, [#off_peak_window_options, list.MaxItems(1) & [...#off_peak_window_options]])
 		tags_all?: [string]: string
+		off_peak_window_options?: matchN(1, [#off_peak_window_options, list.MaxItems(1) & [...#off_peak_window_options]])
 		snapshot_options?: matchN(1, [#snapshot_options, list.MaxItems(1) & [...#snapshot_options]])
 		software_update_options?: matchN(1, [#software_update_options, list.MaxItems(1) & [...#software_update_options]])
 		timeouts?: #timeouts

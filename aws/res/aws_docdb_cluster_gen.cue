@@ -14,7 +14,13 @@ import "list"
 		cluster_identifier?:        string
 		cluster_identifier_prefix?: string
 		cluster_members?: [...string]
-		cluster_resource_id?:             string
+		cluster_resource_id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                          string
 		db_cluster_parameter_group_name?: string
 		db_subnet_group_name?:            string
 		deletion_protection?:             bool
@@ -30,6 +36,7 @@ import "list"
 		kms_key_id?:                  string
 		manage_master_user_password?: bool
 		master_password?:             string
+		timeouts?:                    #timeouts
 		master_password_wo?:          string
 		master_password_wo_version?:  number
 		master_user_secret?: [...close({
@@ -40,10 +47,8 @@ import "list"
 		master_username?:              string
 		port?:                         number
 		preferred_backup_window?:      string
-		timeouts?:                     #timeouts
 		preferred_maintenance_window?: string
 		reader_endpoint?:              string
-		region?:                       string
 		skip_final_snapshot?:          bool
 		snapshot_identifier?:          string
 		storage_encrypted?:            bool

@@ -5,16 +5,30 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_dns_zone_transfers_tsigs")
 	close({
 		account_id!: string
-		max_items?:  number
+
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// The items returned by the data source
 		result?: matchN(1, [close({
-			algo?:   string
-			id?:     string
-			name?:   string
+			// TSIG algorithm.
+			algo?: string
+			id?:   string
+
+			// TSIG key name.
+			name?: string
+
+			// TSIG secret.
 			secret?: string
 		}), [...close({
-			algo?:   string
-			id?:     string
-			name?:   string
+			// TSIG algorithm.
+			algo?: string
+			id?:   string
+
+			// TSIG key name.
+			name?: string
+
+			// TSIG secret.
 			secret?: string
 		})]])
 	})

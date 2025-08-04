@@ -4,17 +4,42 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_ingest_processor_split")
 	close({
-		description?:    string
-		field!:          string
-		id?:             string
-		if?:             string
+		// Description of the processor.
+		description?: string
+
+		// The field to split
+		field!: string
+
+		// Internal identifier of the resource.
+		id?: string
+
+		// Conditionally execute the processor
+		if?: string
+
+		// Ignore failures for the processor.
 		ignore_failure?: bool
+
+		// If `true` and `field` does not exist or is `null`, the
+		// processor quietly exits without modifying the document.
 		ignore_missing?: bool
-		json?:           string
+
+		// JSON representation of this data source.
+		json?: string
+
+		// Handle failures for the processor.
 		on_failure?: [...string]
+
+		// Preserves empty trailing fields, if any.
 		preserve_trailing?: bool
-		separator!:         string
-		tag?:               string
-		target_field?:      string
+
+		// A regex which matches the separator, eg `,` or `\s+`
+		separator!: string
+
+		// Identifier for the processor.
+		tag?: string
+
+		// The field to assign the converted value to, by default `field`
+		// is updated in-place.
+		target_field?: string
 	})
 }

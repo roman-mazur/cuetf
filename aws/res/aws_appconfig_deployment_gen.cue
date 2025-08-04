@@ -9,14 +9,19 @@ package res
 		configuration_profile_id!: string
 		configuration_version!:    string
 		deployment_number?:        number
-		deployment_strategy_id!:   string
-		description?:              string
-		environment_id!:           string
-		id?:                       string
-		kms_key_arn?:              string
-		kms_key_identifier?:       string
-		region?:                   string
-		state?:                    string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                 string
+		deployment_strategy_id!: string
+		description?:            string
+		environment_id!:         string
+		id?:                     string
+		kms_key_arn?:            string
+		kms_key_identifier?:     string
+		state?:                  string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

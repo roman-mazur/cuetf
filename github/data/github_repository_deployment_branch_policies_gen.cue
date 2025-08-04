@@ -8,8 +8,12 @@ package data
 			id?:   string
 			name?: string
 		})]
+
+		// The target environment name.
 		environment_name!: string
 		id?:               string
-		repository!:       string
+
+		// The GitHub repository name.
+		repository!: string
 	})
 }

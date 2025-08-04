@@ -8,17 +8,22 @@ package res
 		bot_version!: string
 		description?: string
 		id?:          string
-		multiple_values_setting?: matchN(1, [#multiple_values_setting, [...#multiple_values_setting]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:    string
 		intent_id!: string
 		locale_id!: string
+		name!:      string
+		multiple_values_setting?: matchN(1, [#multiple_values_setting, [...#multiple_values_setting]])
 		obfuscation_setting?: matchN(1, [#obfuscation_setting, [...#obfuscation_setting]])
-		name!:    string
-		region?:  string
 		slot_id?: string
 		sub_slot_setting?: matchN(1, [#sub_slot_setting, [...#sub_slot_setting]])
-		timeouts?:     #timeouts
-		slot_type_id?: string
+		timeouts?: #timeouts
 		value_elicitation_setting?: matchN(1, [#value_elicitation_setting, [...#value_elicitation_setting]])
+		slot_type_id?: string
 	})
 
 	#multiple_values_setting: close({
@@ -35,8 +40,25 @@ package res
 	})
 
 	#timeouts: close({
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
 		create?: string
+
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// Setting a timeout for a Delete operation is only applicable if
+		// changes are saved into state before the destroy operation
+		// occurs.
 		delete?: string
+
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
 		update?: string
 	})
 

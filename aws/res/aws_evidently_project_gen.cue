@@ -7,19 +7,24 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_evidently_project")
 	close({
 		active_experiment_count?: number
-		active_launch_count?:     number
-		arn?:                     string
-		created_time?:            string
-		description?:             string
-		experiment_count?:        number
-		feature_count?:           number
-		id?:                      string
 		data_delivery?: matchN(1, [#data_delivery, list.MaxItems(1) & [...#data_delivery]])
+		active_launch_count?: number
+		arn?:                 string
+		created_time?:        string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:            string
+		description?:       string
+		experiment_count?:  number
+		feature_count?:     number
+		timeouts?:          #timeouts
+		id?:                string
 		last_updated_time?: string
 		launch_count?:      number
 		name!:              string
-		timeouts?:          #timeouts
-		region?:            string
 		status?:            string
 		tags?: [string]:     string
 		tags_all?: [string]: string

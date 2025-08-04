@@ -6,17 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_workspaces_workspace")
 	close({
-		bundle_id!:                      string
-		computer_name?:                  string
-		directory_id!:                   string
-		id?:                             string
-		ip_address?:                     string
-		region?:                         string
-		root_volume_encryption_enabled?: bool
-		timeouts?:                       #timeouts
-		state?:                          string
-		tags?: [string]: string
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:        string
+		timeouts?:      #timeouts
+		bundle_id!:     string
+		computer_name?: string
+		directory_id!:  string
+		id?:            string
+		ip_address?:    string
 		workspace_properties?: matchN(1, [#workspace_properties, list.MaxItems(1) & [...#workspace_properties]])
+		root_volume_encryption_enabled?: bool
+		state?:                          string
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		user_name!:                      string
 		user_volume_encryption_enabled?: bool

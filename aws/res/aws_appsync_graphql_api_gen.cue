@@ -6,24 +6,29 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appsync_graphql_api")
 	close({
-		api_type?:                      string
-		arn?:                           string
+		api_type?: string
+		arn?:      string
+		additional_authentication_provider?: matchN(1, [#additional_authentication_provider, [...#additional_authentication_provider]])
 		authentication_type!:           string
 		id?:                            string
 		introspection_config?:          string
 		merged_api_execution_role_arn?: string
 		name!:                          string
 		query_depth_limit?:             number
-		region?:                        string
-		resolver_count_limit?:          number
-		schema?:                        string
-		additional_authentication_provider?: matchN(1, [#additional_authentication_provider, [...#additional_authentication_provider]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:               string
+		resolver_count_limit?: number
+		schema?:               string
+		enhanced_metrics_config?: matchN(1, [#enhanced_metrics_config, list.MaxItems(1) & [...#enhanced_metrics_config]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		uris?: [string]:     string
 		visibility?:   string
 		xray_enabled?: bool
-		enhanced_metrics_config?: matchN(1, [#enhanced_metrics_config, list.MaxItems(1) & [...#enhanced_metrics_config]])
 		lambda_authorizer_config?: matchN(1, [#lambda_authorizer_config, list.MaxItems(1) & [...#lambda_authorizer_config]])
 		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
 		openid_connect_config?: matchN(1, [#openid_connect_config, list.MaxItems(1) & [...#openid_connect_config]])

@@ -18,8 +18,14 @@ package data
 		configuration_endpoint?: string
 		engine?:                 string
 		engine_version?:         string
-		id?:                     string
-		ip_discovery?:           string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:       string
+		id?:           string
+		ip_discovery?: string
 		log_delivery_configuration?: [...close({
 			destination?:      string
 			destination_type?: string
@@ -34,7 +40,6 @@ package data
 		parameter_group_name?:   string
 		port?:                   number
 		preferred_outpost_arn?:  string
-		region?:                 string
 		replication_group_id?:   string
 		security_group_ids?: [...string]
 		snapshot_retention_limit?: number

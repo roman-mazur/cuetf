@@ -17,6 +17,12 @@ package data
 		cross_zone_load_balancing?:   bool
 		desync_mitigation_mode?:      string
 		dns_name?:                    string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		health_check?: [...close({
 			healthy_threshold?:   number
 			interval?:            number
@@ -35,8 +41,7 @@ package data
 			lb_protocol?:        string
 			ssl_certificate_id?: string
 		})]
-		name!:   string
-		region?: string
+		name!: string
 		security_groups?: [...string]
 		source_security_group?:    string
 		source_security_group_id?: string

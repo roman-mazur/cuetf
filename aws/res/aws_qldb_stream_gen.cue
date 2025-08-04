@@ -11,11 +11,16 @@ import "list"
 		id?:                   string
 		inclusive_start_time!: string
 		ledger_name!:          string
-		region?:               string
-		role_arn!:             string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		kinesis_configuration?: matchN(1, [#kinesis_configuration, list.MaxItems(1) & [_, ...] & [...#kinesis_configuration]])
-		stream_name!: string
+		role_arn!:    string
 		timeouts?:    #timeouts
+		stream_name!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

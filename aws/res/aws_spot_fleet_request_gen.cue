@@ -15,28 +15,33 @@ import "list"
 		id?:                                 string
 		instance_interruption_behaviour?:    string
 		instance_pools_to_use_count?:        number
+		launch_specification?: matchN(1, [#launch_specification, [...#launch_specification]])
 		load_balancers?: [...string]
 		on_demand_allocation_strategy?: string
 		on_demand_max_total_price?:     string
 		on_demand_target_capacity?:     number
-		region?:                        string
-		replace_unhealthy_instances?:   bool
-		launch_specification?: matchN(1, [#launch_specification, [...#launch_specification]])
-		spot_price?:         string
-		spot_request_state?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		launch_template_config?: matchN(1, [#launch_template_config, [...#launch_template_config]])
+		replace_unhealthy_instances?: bool
+		spot_price?:                  string
+		spot_request_state?:          string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		target_capacity!:           number
 		target_capacity_unit_type?: string
 		target_group_arns?: [...string]
-		terminate_instances_on_delete?:       string
+		terminate_instances_on_delete?: string
+		spot_maintenance_strategies?: matchN(1, [#spot_maintenance_strategies, list.MaxItems(1) & [...#spot_maintenance_strategies]])
 		terminate_instances_with_expiration?: bool
 		valid_from?:                          string
+		timeouts?:                            #timeouts
 		valid_until?:                         string
-		launch_template_config?: matchN(1, [#launch_template_config, [...#launch_template_config]])
-		wait_for_fulfillment?: bool
-		spot_maintenance_strategies?: matchN(1, [#spot_maintenance_strategies, list.MaxItems(1) & [...#spot_maintenance_strategies]])
-		timeouts?: #timeouts
+		wait_for_fulfillment?:                bool
 	})
 
 	#launch_specification: close({

@@ -21,11 +21,17 @@ import "list"
 		id?:                     string
 		key_algorithm?:          string
 		not_after?:              string
-		not_before?:             string
-		pending_renewal?:        bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:     string
+		not_before?: string
 		options?: matchN(1, [#options, list.MaxItems(1) & [...#options]])
+		validation_option?: matchN(1, [#validation_option, [...#validation_option]])
+		pending_renewal?:     bool
 		private_key?:         string
-		region?:              string
 		renewal_eligibility?: string
 		renewal_summary?: [...close({
 			renewal_status?:        string
@@ -33,7 +39,6 @@ import "list"
 			updated_at?:            string
 		})]
 		status?: string
-		validation_option?: matchN(1, [#validation_option, [...#validation_option]])
 		subject_alternative_names?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string

@@ -7,9 +7,14 @@ package data
 		arns?: [...string]
 		id?: string
 		names?: [...string]
-		path!:      string
-		recursive?: bool
+		path!: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:    string
+		recursive?: bool
 		types?: [...string]
 		values?: [...string]
 		with_decryption?: bool

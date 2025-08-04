@@ -10,15 +10,20 @@ import "list"
 		direction!:   string
 		host_vpc_id?: string
 		id?:          string
-		name?:        string
-		protocols?: [...string]
 		ip_address?: matchN(1, [#ip_address, list.MaxItems(10) & [_, _, ...] & [...#ip_address]])
+		name?: string
+		protocols?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                 string
 		resolver_endpoint_type?: string
-		timeouts?:               #timeouts
 		security_group_ids!: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		timeouts?: #timeouts
 	})
 
 	#ip_address: close({

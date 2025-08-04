@@ -18,28 +18,33 @@ import "list"
 			outpost_arn?:       string
 			port?:              number
 		})]
-		cluster_address?:           string
-		cluster_id!:                string
-		configuration_endpoint?:    string
-		engine?:                    string
-		engine_version?:            string
-		engine_version_actual?:     string
+		cluster_address?:        string
+		cluster_id!:             string
+		configuration_endpoint?: string
+		engine?:                 string
+		engine_version?:         string
+		engine_version_actual?:  string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                    string
 		final_snapshot_identifier?: string
 		id?:                        string
+		ip_discovery?:              string
+		maintenance_window?:        string
+		network_type?:              string
+		node_type?:                 string
 		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, list.MaxItems(2) & [...#log_delivery_configuration]])
-		ip_discovery?:           string
-		maintenance_window?:     string
-		network_type?:           string
-		node_type?:              string
+		timeouts?:               #timeouts
 		notification_topic_arn?: string
 		num_cache_nodes?:        number
 		outpost_mode?:           string
 		parameter_group_name?:   string
 		port?:                   number
 		preferred_availability_zones?: [...string]
-		timeouts?:              #timeouts
 		preferred_outpost_arn?: string
-		region?:                string
 		replication_group_id?:  string
 		security_group_ids?: [...string]
 		snapshot_arns?: [...string]

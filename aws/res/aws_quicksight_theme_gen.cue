@@ -13,16 +13,21 @@ import "list"
 		id?:                string
 		last_updated_time?: string
 		name!:              string
-		region?:            string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
-		permissions?: matchN(1, [#permissions, list.MaxItems(64) & [...#permissions]])
 		status?: string
-		tags?: [string]: string
-		timeouts?: #timeouts
+		tags?: [string]:     string
 		tags_all?: [string]: string
+		permissions?: matchN(1, [#permissions, list.MaxItems(64) & [...#permissions]])
 		theme_id!:            string
 		version_description?: string
 		version_number?:      number
+		timeouts?:            #timeouts
 	})
 
 	#configuration: close({

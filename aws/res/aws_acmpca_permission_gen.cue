@@ -6,10 +6,15 @@ package res
 	close({
 		actions!: [...string]
 		certificate_authority_arn!: string
-		id?:                        string
-		policy?:                    string
-		principal!:                 string
-		region?:                    string
-		source_account?:            string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:         string
+		id?:             string
+		policy?:         string
+		principal!:      string
+		source_account?: string
 	})
 }

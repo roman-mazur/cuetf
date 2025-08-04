@@ -22,18 +22,24 @@ import "list"
 		engine_version?:                 string
 		engine_version_actual?:          string
 		final_snapshot_identifier?:      string
-		global_replication_group_id?:    string
-		id?:                             string
-		ip_discovery?:                   string
-		kms_key_id?:                     string
-		maintenance_window?:             string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                      string
+		global_replication_group_id?: string
+		id?:                          string
+		ip_discovery?:                string
+		kms_key_id?:                  string
+		maintenance_window?:          string
 		member_clusters?: [...string]
 		multi_az_enabled?: bool
 		network_type?:     string
 		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, list.MaxItems(2) & [...#log_delivery_configuration]])
+		timeouts?:               #timeouts
 		node_type?:              string
 		notification_topic_arn?: string
-		timeouts?:               #timeouts
 		num_cache_clusters?:     number
 		num_node_groups?:        number
 		parameter_group_name?:   string
@@ -41,7 +47,6 @@ import "list"
 		preferred_cache_cluster_azs?: [...string]
 		primary_endpoint_address?: string
 		reader_endpoint_address?:  string
-		region?:                   string
 		replicas_per_node_group?:  number
 		replication_group_id!:     string
 		security_group_ids?: [...string]

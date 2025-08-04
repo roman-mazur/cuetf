@@ -10,6 +10,12 @@ package data
 		backup_retention_period?: number
 		cluster_identifier!:      string
 		cluster_members?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                          string
 		cluster_resource_id?:             string
 		cluster_scalability_type?:        string
 		database_insights_mode?:          string
@@ -41,7 +47,6 @@ package data
 		preferred_backup_window?:       string
 		preferred_maintenance_window?:  string
 		reader_endpoint?:               string
-		region?:                        string
 		replication_source_identifier?: string
 		storage_encrypted?:             bool
 		tags?: [string]: string

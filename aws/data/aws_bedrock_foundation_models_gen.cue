@@ -5,10 +5,16 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrock_foundation_models")
 	close({
 		by_customization_type?: string
-		by_inference_type?:     string
-		by_output_modality?:    string
-		by_provider?:           string
-		id?:                    string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
+		by_inference_type?:  string
+		by_output_modality?: string
+		by_provider?:        string
+		id?:                 string
 		model_summaries?: [...close({
 			customizations_supported?: [...string]
 			inference_types_supported?: [...string]
@@ -20,6 +26,5 @@ package data
 			provider_name?:                string
 			response_streaming_supported?: bool
 		})]
-		region?: string
 	})
 }

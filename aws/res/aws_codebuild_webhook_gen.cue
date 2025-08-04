@@ -10,13 +10,18 @@ import "list"
 		build_type?:      string
 		id?:              string
 		manual_creation?: bool
-		filter_group?: matchN(1, [#filter_group, [...#filter_group]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:       string
 		payload_url?:  string
 		project_name!: string
-		region?:       string
 		secret?:       string
-		url?:          string
+		filter_group?: matchN(1, [#filter_group, [...#filter_group]])
 		scope_configuration?: matchN(1, [#scope_configuration, list.MaxItems(1) & [...#scope_configuration]])
+		url?: string
 	})
 
 	#filter_group: close({

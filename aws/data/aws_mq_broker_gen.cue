@@ -14,6 +14,12 @@ package data
 			revision?: number
 		})]
 		deployment_mode?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		encryption_options?: [...close({
 			kms_key_id?:        string
 			use_aws_owned_key?: bool
@@ -50,7 +56,6 @@ package data
 			time_zone?:   string
 		})]
 		publicly_accessible?: bool
-		region?:              string
 		security_groups?: [...string]
 		storage_type?: string
 		subnet_ids?: [...string]

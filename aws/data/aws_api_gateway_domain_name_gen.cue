@@ -12,13 +12,18 @@ package data
 		cloudfront_zone_id?:      string
 		domain_name!:             string
 		domain_name_id?:          string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		endpoint_configuration?: [...close({
 			ip_address_type?: string
 			types?: [...string]
 		})]
 		id?:                        string
 		policy?:                    string
-		region?:                    string
 		regional_certificate_arn?:  string
 		regional_certificate_name?: string
 		regional_domain_name?:      string

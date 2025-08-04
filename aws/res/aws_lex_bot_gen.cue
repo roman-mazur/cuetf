@@ -6,30 +6,35 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lex_bot")
 	close({
-		arn?:                         string
-		checksum?:                    string
-		child_directed!:              bool
-		create_version?:              bool
-		created_date?:                string
-		description?:                 string
-		detect_sentiment?:            bool
-		enable_model_improvements?:   bool
+		arn?:            string
+		checksum?:       string
+		child_directed!: bool
+		create_version?: bool
+		created_date?:   string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                    string
+		description?:               string
+		detect_sentiment?:          bool
+		enable_model_improvements?: bool
+		abort_statement?: matchN(1, [#abort_statement, list.MaxItems(1) & [_, ...] & [...#abort_statement]])
+		clarification_prompt?: matchN(1, [#clarification_prompt, list.MaxItems(1) & [...#clarification_prompt]])
 		failure_reason?:              string
 		id?:                          string
 		idle_session_ttl_in_seconds?: number
-		abort_statement?: matchN(1, [#abort_statement, list.MaxItems(1) & [_, ...] & [...#abort_statement]])
-		clarification_prompt?: matchN(1, [#clarification_prompt, list.MaxItems(1) & [...#clarification_prompt]])
+		last_updated_date?:           string
 		intent?: matchN(1, [#intent, list.MaxItems(250) & [_, ...] & [...#intent]])
-		last_updated_date?:               string
 		locale?:                          string
 		name!:                            string
 		nlu_intent_confidence_threshold?: number
 		process_behavior?:                string
-		region?:                          string
 		status?:                          string
+		timeouts?:                        #timeouts
 		version?:                         string
 		voice_id?:                        string
-		timeouts?:                        #timeouts
 	})
 
 	#abort_statement: close({

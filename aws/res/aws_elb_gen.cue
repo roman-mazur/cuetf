@@ -17,20 +17,25 @@ import "list"
 		idle_timeout?:                number
 		access_logs?: matchN(1, [#access_logs, list.MaxItems(1) & [...#access_logs]])
 		instances?: [...string]
-		internal?: bool
-		name?:     string
-		health_check?: matchN(1, [#health_check, list.MaxItems(1) & [...#health_check]])
+		internal?:    bool
+		name?:        string
 		name_prefix?: string
-		region?:      string
+		health_check?: matchN(1, [#health_check, list.MaxItems(1) & [...#health_check]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		security_groups?: [...string]
 		source_security_group?:    string
 		source_security_group_id?: string
 		subnets?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		zone_id?: string
 		listener?: matchN(1, [#listener, [_, ...] & [...#listener]])
 		timeouts?: #timeouts
-		zone_id?:  string
 	})
 
 	#access_logs: close({

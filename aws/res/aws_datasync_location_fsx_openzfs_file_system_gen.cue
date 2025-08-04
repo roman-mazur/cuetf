@@ -10,10 +10,15 @@ import "list"
 		creation_time?:      string
 		fsx_filesystem_arn!: string
 		id?:                 string
-		region?:             string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		security_group_arns!: [...string]
-		subdirectory?: string
 		protocol?: matchN(1, [#protocol, list.MaxItems(1) & [_, ...] & [...#protocol]])
+		subdirectory?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		uri?: string

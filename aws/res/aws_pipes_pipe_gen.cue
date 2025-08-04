@@ -6,25 +6,30 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_pipes_pipe")
 	close({
-		arn?: string
+		arn?:           string
+		description?:   string
+		desired_state?: string
+		enrichment?:    string
+		id?:            string
 		enrichment_parameters?: matchN(1, [#enrichment_parameters, list.MaxItems(1) & [...#enrichment_parameters]])
-		description?:        string
-		desired_state?:      string
-		enrichment?:         string
-		id?:                 string
 		kms_key_identifier?: string
 		name?:               string
-		name_prefix?:        string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:      string
+		name_prefix?: string
 		log_configuration?: matchN(1, [#log_configuration, list.MaxItems(1) & [...#log_configuration]])
-		source_parameters?: matchN(1, [#source_parameters, list.MaxItems(1) & [...#source_parameters]])
-		region?:   string
 		role_arn!: string
 		source!:   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		target!: string
+		source_parameters?: matchN(1, [#source_parameters, list.MaxItems(1) & [...#source_parameters]])
 		target_parameters?: matchN(1, [#target_parameters, list.MaxItems(1) & [...#target_parameters]])
 		timeouts?: #timeouts
-		target!:   string
 	})
 
 	#enrichment_parameters: close({

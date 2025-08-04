@@ -11,15 +11,20 @@ package res
 		default_route_table_association?:    string
 		default_route_table_propagation?:    string
 		description?:                        string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                             string
 		dns_support?:                        string
 		id?:                                 string
+		timeouts?:                           #timeouts
 		multicast_support?:                  string
 		owner_id?:                           string
 		propagation_default_route_table_id?: string
-		region?:                             string
 		security_group_referencing_support?: string
-		tags?: [string]: string
-		timeouts?: #timeouts
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		transit_gateway_cidr_blocks?: [...string]
 		vpn_ecmp_support?: string

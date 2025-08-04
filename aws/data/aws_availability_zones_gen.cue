@@ -8,13 +8,18 @@ package data
 		exclude_names?: [...string]
 		exclude_zone_ids?: [...string]
 		group_names?: [...string]
-		filter?: matchN(1, [#filter, [...#filter]])
-		id?: string
-		names?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		state?:  string
-		zone_ids?: [...string]
+		id?:     string
+		names?: [...string]
+		state?: string
+		filter?: matchN(1, [#filter, [...#filter]])
 		timeouts?: #timeouts
+		zone_ids?: [...string]
 	})
 
 	#filter: close({

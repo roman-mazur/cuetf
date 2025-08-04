@@ -6,13 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_spot_instance_request")
 	close({
-		ami?:                         string
-		arn?:                         string
-		associate_public_ip_address?: bool
-		availability_zone?:           string
-		disable_api_stop?:            bool
-		disable_api_termination?:     bool
-		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
+		ami?:                                  string
+		arn?:                                  string
+		associate_public_ip_address?:          bool
+		availability_zone?:                    string
+		disable_api_stop?:                     bool
+		disable_api_termination?:              bool
 		ebs_optimized?:                        bool
 		enable_primary_ipv6?:                  bool
 		get_password_data?:                    bool
@@ -24,12 +23,17 @@ import "list"
 		instance_initiated_shutdown_behavior?: string
 		instance_interruption_behavior?:       string
 		instance_state?:                       string
-		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
-		instance_type?:      string
-		ipv6_address_count?: number
+		instance_type?:                        string
+		ipv6_address_count?:                   number
 		ipv6_addresses?: [...string]
-		key_name?:                     string
-		launch_group?:                 string
+		key_name?:     string
+		launch_group?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                       string
 		monitoring?:                   bool
 		outpost_arn?:                  string
 		password_data?:                string
@@ -37,13 +41,11 @@ import "list"
 		placement_partition_number?:   number
 		primary_network_interface_id?: string
 		private_dns?:                  string
-		credit_specification?: matchN(1, [#credit_specification, list.MaxItems(1) & [...#credit_specification]])
-		private_ip?: string
-		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
-		public_dns?: string
-		public_ip?:  string
-		enclave_options?: matchN(1, [#enclave_options, list.MaxItems(1) & [...#enclave_options]])
-		region?: string
+		private_ip?:                   string
+		public_dns?:                   string
+		public_ip?:                    string
+		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
+		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
 		secondary_private_ips?: [...string]
 		security_groups?: [...string]
 		source_dest_check?:  bool
@@ -51,8 +53,9 @@ import "list"
 		spot_instance_id?:   string
 		spot_price?:         string
 		spot_request_state?: string
-		spot_type?:          string
-		subnet_id?:          string
+		credit_specification?: matchN(1, [#credit_specification, list.MaxItems(1) & [...#credit_specification]])
+		spot_type?: string
+		subnet_id?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		tenancy?:                     string
@@ -60,15 +63,17 @@ import "list"
 		user_data_base64?:            string
 		user_data_replace_on_change?: bool
 		valid_from?:                  string
-		valid_until?:                 string
+		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
+		valid_until?: string
 		volume_tags?: [string]: string
+		enclave_options?: matchN(1, [#enclave_options, list.MaxItems(1) & [...#enclave_options]])
 		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
 		launch_template?: matchN(1, [#launch_template, list.MaxItems(1) & [...#launch_template]])
 		maintenance_options?: matchN(1, [#maintenance_options, list.MaxItems(1) & [...#maintenance_options]])
 		metadata_options?: matchN(1, [#metadata_options, list.MaxItems(1) & [...#metadata_options]])
-		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
 		vpc_security_group_ids?: [...string]
 		wait_for_fulfillment?: bool
+		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
 		private_dns_name_options?: matchN(1, [#private_dns_name_options, list.MaxItems(1) & [...#private_dns_name_options]])
 		root_block_device?: matchN(1, [#root_block_device, list.MaxItems(1) & [...#root_block_device]])
 		timeouts?: #timeouts

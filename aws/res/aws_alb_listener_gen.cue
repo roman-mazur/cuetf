@@ -6,40 +6,45 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_alb_listener")
 	close({
-		alpn_policy?:                                                           string
-		arn?:                                                                   string
-		certificate_arn?:                                                       string
-		id?:                                                                    string
-		load_balancer_arn!:                                                     string
-		port?:                                                                  number
-		protocol?:                                                              string
+		alpn_policy?:       string
+		arn?:               string
+		certificate_arn?:   string
+		id?:                string
+		load_balancer_arn!: string
+		port?:              number
+		protocol?:          string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                                                                string
 		routing_http_request_x_amzn_mtls_clientcert_header_name?:               string
 		routing_http_request_x_amzn_mtls_clientcert_issuer_header_name?:        string
 		routing_http_request_x_amzn_mtls_clientcert_leaf_header_name?:          string
 		routing_http_request_x_amzn_mtls_clientcert_serial_number_header_name?: string
+		routing_http_request_x_amzn_mtls_clientcert_subject_header_name?:       string
+		routing_http_request_x_amzn_mtls_clientcert_validity_header_name?:      string
+		routing_http_request_x_amzn_tls_cipher_suite_header_name?:              string
+		routing_http_request_x_amzn_tls_version_header_name?:                   string
+		routing_http_response_access_control_allow_credentials_header_value?:   string
+		routing_http_response_access_control_allow_headers_header_value?:       string
+		routing_http_response_access_control_allow_methods_header_value?:       string
 		default_action?: matchN(1, [#default_action, [_, ...] & [...#default_action]])
-		routing_http_request_x_amzn_mtls_clientcert_subject_header_name?:     string
-		routing_http_request_x_amzn_mtls_clientcert_validity_header_name?:    string
-		routing_http_request_x_amzn_tls_cipher_suite_header_name?:            string
-		routing_http_request_x_amzn_tls_version_header_name?:                 string
-		routing_http_response_access_control_allow_credentials_header_value?: string
-		routing_http_response_access_control_allow_headers_header_value?:     string
-		routing_http_response_access_control_allow_methods_header_value?:     string
-		routing_http_response_access_control_allow_origin_header_value?:      string
-		routing_http_response_access_control_expose_headers_header_value?:    string
-		routing_http_response_access_control_max_age_header_value?:           string
-		routing_http_response_content_security_policy_header_value?:          string
-		routing_http_response_server_enabled?:                                bool
-		routing_http_response_strict_transport_security_header_value?:        string
-		routing_http_response_x_content_type_options_header_value?:           string
-		routing_http_response_x_frame_options_header_value?:                  string
-		ssl_policy?:                                                          string
+		routing_http_response_access_control_allow_origin_header_value?:   string
+		routing_http_response_access_control_expose_headers_header_value?: string
+		routing_http_response_access_control_max_age_header_value?:        string
+		routing_http_response_content_security_policy_header_value?:       string
+		routing_http_response_server_enabled?:                             bool
+		routing_http_response_strict_transport_security_header_value?:     string
+		routing_http_response_x_content_type_options_header_value?:        string
+		routing_http_response_x_frame_options_header_value?:               string
+		ssl_policy?:                                                       string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		mutual_authentication?: matchN(1, [#mutual_authentication, list.MaxItems(1) & [...#mutual_authentication]])
 		tcp_idle_timeout_seconds?: number
-		timeouts?:                 #timeouts
+		mutual_authentication?: matchN(1, [#mutual_authentication, list.MaxItems(1) & [...#mutual_authentication]])
+		timeouts?: #timeouts
 	})
 
 	#default_action: close({

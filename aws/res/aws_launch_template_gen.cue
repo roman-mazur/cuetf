@@ -6,14 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_launch_template")
 	close({
-		arn?:             string
-		default_version?: number
+		arn?: string
 		block_device_mappings?: matchN(1, [#block_device_mappings, [...#block_device_mappings]])
-		description?:                          string
-		disable_api_stop?:                     bool
-		disable_api_termination?:              bool
-		ebs_optimized?:                        string
-		id?:                                   string
+		default_version?:         number
+		description?:             string
+		disable_api_stop?:        bool
+		disable_api_termination?: bool
+		ebs_optimized?:           string
+		id?:                      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                               string
 		image_id?:                             string
 		instance_initiated_shutdown_behavior?: string
 		instance_type?:                        string
@@ -22,16 +28,14 @@ import "list"
 		latest_version?:                       number
 		name?:                                 string
 		name_prefix?:                          string
-		ram_disk_id?:                          string
-		region?:                               string
+		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
+		ram_disk_id?: string
 		security_group_names?: [...string]
+		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		update_default_version?: bool
 		user_data?:              string
-		vpc_security_group_ids?: [...string]
-		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
-		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
 		credit_specification?: matchN(1, [#credit_specification, list.MaxItems(1) & [...#credit_specification]])
 		enclave_options?: matchN(1, [#enclave_options, list.MaxItems(1) & [...#enclave_options]])
 		hibernation_options?: matchN(1, [#hibernation_options, list.MaxItems(1) & [...#hibernation_options]])
@@ -40,6 +44,7 @@ import "list"
 		instance_requirements?: matchN(1, [#instance_requirements, list.MaxItems(1) & [...#instance_requirements]])
 		license_specification?: matchN(1, [#license_specification, [...#license_specification]])
 		maintenance_options?: matchN(1, [#maintenance_options, list.MaxItems(1) & [...#maintenance_options]])
+		vpc_security_group_ids?: [...string]
 		metadata_options?: matchN(1, [#metadata_options, list.MaxItems(1) & [...#metadata_options]])
 		monitoring?: matchN(1, [#monitoring, list.MaxItems(1) & [...#monitoring]])
 		network_interfaces?: matchN(1, [#network_interfaces, [...#network_interfaces]])

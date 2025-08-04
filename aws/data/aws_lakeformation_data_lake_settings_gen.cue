@@ -7,6 +7,12 @@ package data
 		admins?: [...string]
 		allow_external_data_filtering?:         bool
 		allow_full_table_external_data_access?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		authorized_session_tag_value_list?: [...string]
 		catalog_id?: string
 		create_database_default_permissions?: [...close({
@@ -21,7 +27,6 @@ package data
 		id?: string
 		parameters?: [string]: string
 		read_only_admins?: [...string]
-		region?: string
 		trusted_resource_owners?: [...string]
 	})
 }

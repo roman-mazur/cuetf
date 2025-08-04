@@ -8,12 +8,17 @@ package data
 		local_address?:    string
 		local_bgp_asn?:    number
 		local_gateway_id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		local_gateway_virtual_interface_ids?: [...string]
-		peer_address?: string
-		peer_bgp_asn?: number
 		filter?: matchN(1, [#filter, [...#filter]])
-		region?:   string
-		timeouts?: #timeouts
+		peer_address?: string
+		timeouts?:     #timeouts
+		peer_bgp_asn?: number
 		tags?: [string]: string
 		vlan?: number
 	})

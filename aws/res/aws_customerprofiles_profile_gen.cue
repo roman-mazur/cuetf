@@ -8,28 +8,33 @@ import "list"
 	close({
 		account_number?:         string
 		additional_information?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		attributes?: [string]: string
 		birth_date?:             string
 		business_email_address?: string
 		business_name?:          string
 		business_phone_number?:  string
 		domain_name!:            string
-		email_address?:          string
-		first_name?:             string
-		gender_string?:          string
 		address?: matchN(1, [#address, list.MaxItems(1) & [...#address]])
 		billing_address?: matchN(1, [#billing_address, list.MaxItems(1) & [...#billing_address]])
+		email_address?:     string
+		first_name?:        string
+		gender_string?:     string
+		home_phone_number?: string
 		mailing_address?: matchN(1, [#mailing_address, list.MaxItems(1) & [...#mailing_address]])
-		home_phone_number?:      string
 		id?:                     string
 		last_name?:              string
 		middle_name?:            string
 		mobile_phone_number?:    string
 		party_type_string?:      string
 		personal_email_address?: string
-		phone_number?:           string
-		region?:                 string
 		shipping_address?: matchN(1, [#shipping_address, list.MaxItems(1) & [...#shipping_address]])
+		phone_number?: string
 	})
 
 	#address: close({

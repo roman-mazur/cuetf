@@ -14,6 +14,12 @@ import "list"
 		deletion_protection?:        string
 		domain?:                     string
 		email_verification_message?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                     string
 		email_verification_subject?: string
 		endpoint?:                   string
 		estimated_number_of_users?:  number
@@ -21,16 +27,15 @@ import "list"
 		last_modified_date?:         string
 		mfa_configuration?:          string
 		name!:                       string
-		account_recovery_setting?: matchN(1, [#account_recovery_setting, list.MaxItems(1) & [...#account_recovery_setting]])
-		region?:                     string
 		sms_authentication_message?: string
-		sms_verification_message?:   string
-		admin_create_user_config?: matchN(1, [#admin_create_user_config, list.MaxItems(1) & [...#admin_create_user_config]])
-		device_configuration?: matchN(1, [#device_configuration, list.MaxItems(1) & [...#device_configuration]])
+		account_recovery_setting?: matchN(1, [#account_recovery_setting, list.MaxItems(1) & [...#account_recovery_setting]])
+		sms_verification_message?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		user_pool_tier?: string
 		username_attributes?: [...string]
+		admin_create_user_config?: matchN(1, [#admin_create_user_config, list.MaxItems(1) & [...#admin_create_user_config]])
+		device_configuration?: matchN(1, [#device_configuration, list.MaxItems(1) & [...#device_configuration]])
 		email_configuration?: matchN(1, [#email_configuration, list.MaxItems(1) & [...#email_configuration]])
 		email_mfa_configuration?: matchN(1, [#email_mfa_configuration, list.MaxItems(1) & [...#email_mfa_configuration]])
 		lambda_config?: matchN(1, [#lambda_config, list.MaxItems(1) & [...#lambda_config]])

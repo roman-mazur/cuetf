@@ -6,21 +6,26 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_datasync_task")
 	close({
-		arn?:                      string
+		arn?: string
+		excludes?: matchN(1, [#excludes, list.MaxItems(1) & [...#excludes]])
 		cloudwatch_log_group_arn?: string
 		destination_location_arn!: string
 		id?:                       string
 		name?:                     string
-		region?:                   string
-		source_location_arn!:      string
-		tags?: [string]: string
-		excludes?: matchN(1, [#excludes, list.MaxItems(1) & [...#excludes]])
-		tags_all?: [string]: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:              string
+		source_location_arn!: string
 		includes?: matchN(1, [#includes, list.MaxItems(1) & [...#includes]])
 		options?: matchN(1, [#options, list.MaxItems(1) & [...#options]])
+		tags?: [string]: string
 		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [...#schedule]])
 		task_report_config?: matchN(1, [#task_report_config, list.MaxItems(1) & [...#task_report_config]])
-		timeouts?:  #timeouts
+		timeouts?: #timeouts
+		tags_all?: [string]: string
 		task_mode?: string
 	})
 

@@ -6,33 +6,38 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_fsx_ontap_volume")
 	close({
-		arn?:                                  string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                               string
 		bypass_snaplock_enterprise_retention?: bool
 		copy_tags_to_backups?:                 bool
 		file_system_id?:                       string
 		final_backup_tags?: [string]: string
 		flexcache_endpoint_type?: string
-		id?:                      string
 		aggregate_configuration?: matchN(1, [#aggregate_configuration, list.MaxItems(1) & [...#aggregate_configuration]])
+		id?: string
+		snaplock_configuration?: matchN(1, [#snaplock_configuration, list.MaxItems(1) & [...#snaplock_configuration]])
 		junction_path?:     string
 		name!:              string
 		ontap_volume_type?: string
-		region?:            string
 		security_style?:    string
-		snaplock_configuration?: matchN(1, [#snaplock_configuration, list.MaxItems(1) & [...#snaplock_configuration]])
+		tiering_policy?: matchN(1, [#tiering_policy, list.MaxItems(1) & [...#tiering_policy]])
 		size_in_bytes?:              string
 		size_in_megabytes?:          number
 		skip_final_backup?:          bool
 		snapshot_policy?:            string
 		storage_efficiency_enabled?: bool
 		storage_virtual_machine_id!: string
-		tags?: [string]: string
-		tiering_policy?: matchN(1, [#tiering_policy, list.MaxItems(1) & [...#tiering_policy]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		uuid?:         string
 		volume_style?: string
-		volume_type?:  string
 		timeouts?:     #timeouts
+		volume_type?:  string
 	})
 
 	#aggregate_configuration: close({

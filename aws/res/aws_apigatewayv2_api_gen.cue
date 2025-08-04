@@ -12,15 +12,20 @@ import "list"
 		body?:                         string
 		credentials_arn?:              string
 		description?:                  string
-		disable_execute_api_endpoint?: bool
-		execution_arn?:                string
-		fail_on_warnings?:             bool
-		id?:                           string
-		ip_address_type?:              string
 		cors_configuration?: matchN(1, [#cors_configuration, list.MaxItems(1) & [...#cors_configuration]])
+		disable_execute_api_endpoint?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                     string
+		execution_arn?:              string
+		fail_on_warnings?:           bool
+		id?:                         string
+		ip_address_type?:            string
 		name!:                       string
 		protocol_type!:              string
-		region?:                     string
 		route_key?:                  string
 		route_selection_expression?: string
 		tags?: [string]:     string

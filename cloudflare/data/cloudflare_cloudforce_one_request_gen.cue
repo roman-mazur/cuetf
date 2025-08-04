@@ -4,32 +4,79 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_cloudforce_one_request")
 	close({
-		account_id!:     string
-		completed?:      string
-		content?:        string
-		created?:        string
-		id?:             string
+		// Identifier.
+		account_id!: string
+		completed?:  string
+
+		// Request content.
+		content?: string
+
+		// UUID.
+		id?:      string
+		created?: string
+
+		// Tokens for the request messages.
 		message_tokens?: number
-		priority?:       string
-		readable_id?:    string
-		request?:        string
-		request_id?:     string
-		status?:         string
-		summary?:        string
-		tlp?:            string
-		tokens?:         number
+
+		// Readable Request ID.
+		readable_id?: string
+
+		// Requested information from request.
+		request?: string
+
+		// UUID.
+		request_id?: string
 		filter?: close({
-			completed_after?:  string
+			// Retrieve requests completed after this time.
+			completed_after?: string
+
+			// Retrieve requests completed before this time.
 			completed_before?: string
-			created_after?:    string
-			created_before?:   string
-			page!:             number
-			per_page!:         number
-			request_type?:     string
-			sort_by?:          string
-			sort_order?:       string
-			status?:           string
+
+			// Retrieve requests created after this time.
+			created_after?: string
+
+			// Retrieve requests created before this time.
+			created_before?: string
+
+			// Page number of results.
+			page!: number
+
+			// Number of results per page.
+			per_page!: number
+
+			// Requested information from request.
+			request_type?: string
+
+			// Field to sort results by.
+			sort_by?: string
+
+			// Sort order (asc or desc).
+			// Available values: "asc", "desc".
+			sort_order?: string
+
+			// Request Status.
+			// Available values: "open", "accepted", "reported", "approved",
+			// "completed", "declined".
+			status?: string
 		})
+		priority?: string
+
+		// Request Status.
+		// Available values: "open", "accepted", "reported", "approved",
+		// "completed", "declined".
+		status?: string
+
+		// Brief description of the request.
+		summary?: string
+
+		// The CISA defined Traffic Light Protocol (TLP).
+		// Available values: "clear", "amber", "amber-strict", "green",
+		// "red".
+		tlp?: string
+
+		// Tokens for the request.
+		tokens?:  number
 		updated?: string
 	})
 }

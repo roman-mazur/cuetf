@@ -10,17 +10,22 @@ import "list"
 		arn?:          string
 		id?:           string
 		name!:         string
-		auto_start_configuration?: matchN(1, [#auto_start_configuration, list.MaxItems(1) & [...#auto_start_configuration]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:        string
 		release_label!: string
-		auto_stop_configuration?: matchN(1, [#auto_stop_configuration, list.MaxItems(1) & [...#auto_stop_configuration]])
-		tags?: [string]:     string
+		tags?: [string]: string
+		auto_start_configuration?: matchN(1, [#auto_start_configuration, list.MaxItems(1) & [...#auto_start_configuration]])
 		tags_all?: [string]: string
+		auto_stop_configuration?: matchN(1, [#auto_stop_configuration, list.MaxItems(1) & [...#auto_stop_configuration]])
 		image_configuration?: matchN(1, [#image_configuration, list.MaxItems(1) & [...#image_configuration]])
 		initial_capacity?: matchN(1, [#initial_capacity, [...#initial_capacity]])
 		interactive_configuration?: matchN(1, [#interactive_configuration, list.MaxItems(1) & [...#interactive_configuration]])
-		type!: string
 		maximum_capacity?: matchN(1, [#maximum_capacity, list.MaxItems(1) & [...#maximum_capacity]])
+		type!: string
 		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
 	})
 

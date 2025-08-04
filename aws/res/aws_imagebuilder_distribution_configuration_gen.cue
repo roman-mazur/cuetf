@@ -6,16 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_imagebuilder_distribution_configuration")
 	close({
-		distribution?: matchN(1, [#distribution, [_, ...] & [...#distribution]])
 		arn?:          string
 		date_created?: string
 		date_updated?: string
-		description?:  string
-		id?:           string
-		name!:         string
-		region?:       string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:      string
+		description?: string
+		id?:          string
+		name!:        string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		distribution?: matchN(1, [#distribution, [_, ...] & [...#distribution]])
 	})
 
 	#distribution: close({

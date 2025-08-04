@@ -6,13 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codedeploy_deployment_config")
 	close({
-		minimum_healthy_hosts?: matchN(1, [#minimum_healthy_hosts, list.MaxItems(1) & [...#minimum_healthy_hosts]])
-		arn?:                    string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                 string
 		compute_platform?:       string
 		deployment_config_id?:   string
 		deployment_config_name!: string
 		id?:                     string
-		region?:                 string
+		minimum_healthy_hosts?: matchN(1, [#minimum_healthy_hosts, list.MaxItems(1) & [...#minimum_healthy_hosts]])
 		traffic_routing_config?: matchN(1, [#traffic_routing_config, list.MaxItems(1) & [...#traffic_routing_config]])
 		zonal_config?: matchN(1, [#zonal_config, list.MaxItems(1) & [...#zonal_config]])
 	})

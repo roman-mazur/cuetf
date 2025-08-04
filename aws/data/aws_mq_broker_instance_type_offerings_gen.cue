@@ -14,10 +14,15 @@ package data
 			supported_deployment_modes?: [...string]
 			supported_engine_versions?: [...string]
 		})]
-		engine_type?:        string
+		engine_type?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
 		host_instance_type?: string
 		id?:                 string
-		region?:             string
 		storage_type?:       string
 	})
 }

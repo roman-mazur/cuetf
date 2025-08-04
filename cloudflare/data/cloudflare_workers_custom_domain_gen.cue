@@ -4,20 +4,44 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_workers_custom_domain")
 	close({
-		account_id!:  string
-		domain_id?:   string
+		// Identifer of the account.
+		account_id!: string
+
+		// Identifer of the Worker Domain.
+		domain_id?: string
+
+		// Worker environment associated with the zone and hostname.
 		environment?: string
-		hostname?:    string
-		id?:          string
-		service?:     string
+
+		// Hostname of the Worker Domain.
+		hostname?: string
+
+		// Identifer of the Worker Domain.
+		id?: string
+
+		// Worker service associated with the zone and hostname.
+		service?: string
+
+		// Identifier of the zone.
+		zone_id?: string
 		filter?: close({
+			// Worker environment associated with the zone and hostname.
 			environment?: string
-			hostname?:    string
-			service?:     string
-			zone_id?:     string
-			zone_name?:   string
+
+			// Hostname of the Worker Domain.
+			hostname?: string
+
+			// Worker service associated with the zone and hostname.
+			service?: string
+
+			// Identifier of the zone.
+			zone_id?: string
+
+			// Name of the zone.
+			zone_name?: string
 		})
-		zone_id?:   string
+
+		// Name of the zone.
 		zone_name?: string
 	})
 }

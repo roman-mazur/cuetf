@@ -5,10 +5,15 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_emr_security_configuration")
 	close({
 		configuration!: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:        string
 		creation_date?: string
 		id?:            string
 		name?:          string
 		name_prefix?:   string
-		region?:        string
 	})
 }

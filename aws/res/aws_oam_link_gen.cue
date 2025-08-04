@@ -10,14 +10,19 @@ import "list"
 		id?:             string
 		label?:          string
 		label_template!: string
-		link_id?:        string
-		region?:         string
 		link_configuration?: matchN(1, [#link_configuration, list.MaxItems(1) & [...#link_configuration]])
+		link_id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		resource_types!: [...string]
 		sink_arn?:        string
-		timeouts?:        #timeouts
 		sink_identifier!: string
-		tags?: [string]:     string
+		tags?: [string]: string
+		timeouts?: #timeouts
 		tags_all?: [string]: string
 	})
 

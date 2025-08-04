@@ -12,18 +12,23 @@ import "list"
 		input_class?: string
 		input_partner_ids?: [...string]
 		input_security_groups?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:            string
 		input_source_type?: string
 		name!:              string
-		region?:            string
-		role_arn?:          string
-		tags?: [string]: string
 		destinations?: matchN(1, [#destinations, [...#destinations]])
-		tags_all?: [string]: string
-		type!: string
 		input_devices?: matchN(1, [#input_devices, [...#input_devices]])
 		media_connect_flows?: matchN(1, [#media_connect_flows, [...#media_connect_flows]])
+		role_arn?: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 		sources?: matchN(1, [#sources, [...#sources]])
 		timeouts?: #timeouts
+		type!:     string
 		vpc?: matchN(1, [#vpc, list.MaxItems(1) & [...#vpc]])
 	})
 

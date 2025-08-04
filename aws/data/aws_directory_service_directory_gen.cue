@@ -19,8 +19,14 @@ package data
 		dns_ip_addresses?: [...string]
 		edition?:    string
 		enable_sso?: bool
-		id?:         string
-		name?:       string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		id?:     string
+		name?:   string
 		radius_settings?: [...close({
 			authentication_protocol?: string
 			display_label?:           string
@@ -30,7 +36,6 @@ package data
 			radius_timeout?:    number
 			use_same_username?: bool
 		})]
-		region?:            string
 		security_group_id?: string
 		short_name?:        string
 		size?:              string

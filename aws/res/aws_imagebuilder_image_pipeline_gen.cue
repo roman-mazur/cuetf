@@ -6,26 +6,31 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_imagebuilder_image_pipeline")
 	close({
-		arn?: string
+		arn?:                  string
+		container_recipe_arn?: string
+		date_created?:         string
+		date_last_run?:        string
+		date_next_run?:        string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                         string
+		date_updated?:                   string
+		description?:                    string
+		distribution_configuration_arn?: string
 		image_scanning_configuration?: matchN(1, [#image_scanning_configuration, list.MaxItems(1) & [...#image_scanning_configuration]])
-		container_recipe_arn?:            string
-		date_created?:                    string
-		date_last_run?:                   string
-		date_next_run?:                   string
-		date_updated?:                    string
-		description?:                     string
-		distribution_configuration_arn?:  string
 		enhanced_image_metadata_enabled?: bool
 		execution_role?:                  string
-		id?:                              string
 		image_tests_configuration?: matchN(1, [#image_tests_configuration, list.MaxItems(1) & [...#image_tests_configuration]])
-		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [...#schedule]])
+		id?:               string
 		image_recipe_arn?: string
+		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [...#schedule]])
 		workflow?: matchN(1, [#workflow, [...#workflow]])
 		infrastructure_configuration_arn!: string
 		name!:                             string
 		platform?:                         string
-		region?:                           string
 		status?:                           string
 		tags?: [string]:     string
 		tags_all?: [string]: string

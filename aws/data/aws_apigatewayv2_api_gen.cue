@@ -16,6 +16,12 @@ package data
 			expose_headers?: [...string]
 			max_age?: number
 		})]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                       string
 		description?:                  string
 		disable_execute_api_endpoint?: bool
 		execution_arn?:                string
@@ -23,7 +29,6 @@ package data
 		ip_address_type?:              string
 		name?:                         string
 		protocol_type?:                string
-		region?:                       string
 		route_selection_expression?:   string
 		tags?: [string]: string
 		version?: string

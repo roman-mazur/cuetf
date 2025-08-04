@@ -7,10 +7,15 @@ package res
 		account_id!:         string
 		cluster_identifier!: string
 		database_name!:      string
-		id?:                 string
-		partner_name!:       string
-		region?:             string
-		status?:             string
-		status_message?:     string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:         string
+		id?:             string
+		partner_name!:   string
+		status?:         string
+		status_message?: string
 	})
 }

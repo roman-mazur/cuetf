@@ -12,11 +12,16 @@ package res
 		force_alias_creation?: bool
 		id?:                   string
 		last_modified_date?:   string
-		message_action?:       string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:         string
+		message_action?: string
 		mfa_setting_list?: [...string]
 		password?:              string
 		preferred_mfa_setting?: string
-		region?:                string
 		status?:                string
 		sub?:                   string
 		temporary_password?:    string

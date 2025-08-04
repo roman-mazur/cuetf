@@ -8,23 +8,28 @@ import "list"
 	close({
 		access_policies?: string
 		advanced_options?: [string]: string
-		arn?:                   string
-		domain_id?:             string
+		arn?:       string
+		domain_id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                string
 		domain_name!:           string
 		elasticsearch_version?: string
 		endpoint?:              string
 		id?:                    string
 		kibana_endpoint?:       string
-		region?:                string
-		tags?: [string]:     string
-		tags_all?: [string]: string
 		advanced_security_options?: matchN(1, [#advanced_security_options, list.MaxItems(1) & [...#advanced_security_options]])
 		auto_tune_options?: matchN(1, [#auto_tune_options, list.MaxItems(1) & [...#auto_tune_options]])
+		tags?: [string]: string
 		cluster_config?: matchN(1, [#cluster_config, list.MaxItems(1) & [...#cluster_config]])
 		cognito_options?: matchN(1, [#cognito_options, list.MaxItems(1) & [...#cognito_options]])
 		domain_endpoint_options?: matchN(1, [#domain_endpoint_options, list.MaxItems(1) & [...#domain_endpoint_options]])
 		ebs_options?: matchN(1, [#ebs_options, list.MaxItems(1) & [...#ebs_options]])
 		encrypt_at_rest?: matchN(1, [#encrypt_at_rest, list.MaxItems(1) & [...#encrypt_at_rest]])
+		tags_all?: [string]: string
 		log_publishing_options?: matchN(1, [#log_publishing_options, [...#log_publishing_options]])
 		node_to_node_encryption?: matchN(1, [#node_to_node_encryption, list.MaxItems(1) & [...#node_to_node_encryption]])
 		snapshot_options?: matchN(1, [#snapshot_options, list.MaxItems(1) & [...#snapshot_options]])

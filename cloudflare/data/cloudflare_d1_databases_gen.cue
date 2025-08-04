@@ -4,19 +4,38 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_d1_databases")
 	close({
+		// Account identifier tag.
 		account_id!: string
-		max_items?:  number
-		name?:       string
+
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// a database name to search for.
+		name?: string
+
+		// The items returned by the data source
 		result?: matchN(1, [close({
+			// Specifies the timestamp the resource was created as an ISO8601
+			// string.
 			created_at?: string
-			name?:       string
-			uuid?:       string
-			version?:    string
+
+			// D1 database name.
+			name?: string
+
+			// D1 database identifier (UUID).
+			uuid?:    string
+			version?: string
 		}), [...close({
+			// Specifies the timestamp the resource was created as an ISO8601
+			// string.
 			created_at?: string
-			name?:       string
-			uuid?:       string
-			version?:    string
+
+			// D1 database name.
+			name?: string
+
+			// D1 database identifier (UUID).
+			uuid?:    string
+			version?: string
 		})]])
 	})
 }

@@ -9,16 +9,21 @@ package data
 		auto_placement?:    string
 		availability_zone?: string
 		cores?:             number
-		host_id?:           string
-		host_recovery?:     string
-		id?:                string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:        string
+		host_id?:       string
+		host_recovery?: string
+		id?:            string
 		filter?: matchN(1, [#filter, [...#filter]])
+		timeouts?:        #timeouts
 		instance_family?: string
 		instance_type?:   string
 		outpost_arn?:     string
-		timeouts?:        #timeouts
 		owner_id?:        string
-		region?:          string
 		sockets?:         number
 		tags?: [string]: string
 		total_vcpus?: number

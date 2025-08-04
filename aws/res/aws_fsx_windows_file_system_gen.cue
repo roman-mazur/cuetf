@@ -19,25 +19,30 @@ import "list"
 		id?:         string
 		kms_key_id?: string
 		network_interface_ids?: [...string]
-		owner_id?:                 string
-		preferred_file_server_ip?: string
-		audit_log_configuration?: matchN(1, [#audit_log_configuration, list.MaxItems(1) & [...#audit_log_configuration]])
-		disk_iops_configuration?: matchN(1, [#disk_iops_configuration, list.MaxItems(1) & [...#disk_iops_configuration]])
-		self_managed_active_directory?: matchN(1, [#self_managed_active_directory, list.MaxItems(1) & [...#self_managed_active_directory]])
-		preferred_subnet_id?:            string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                         string
+		owner_id?:                       string
+		preferred_file_server_ip?:       string
+		preferred_subnet_id?:            string
 		remote_administration_endpoint?: string
 		security_group_ids?: [...string]
 		skip_final_backup?: bool
 		storage_capacity?:  number
 		storage_type?:      string
+		audit_log_configuration?: matchN(1, [#audit_log_configuration, list.MaxItems(1) & [...#audit_log_configuration]])
 		subnet_ids!: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		throughput_capacity!:           number
-		vpc_id?:                        string
-		weekly_maintenance_start_time?: string
+		throughput_capacity!: number
+		vpc_id?:              string
+		disk_iops_configuration?: matchN(1, [#disk_iops_configuration, list.MaxItems(1) & [...#disk_iops_configuration]])
+		self_managed_active_directory?: matchN(1, [#self_managed_active_directory, list.MaxItems(1) & [...#self_managed_active_directory]])
 		timeouts?:                      #timeouts
+		weekly_maintenance_start_time?: string
 	})
 
 	#audit_log_configuration: close({

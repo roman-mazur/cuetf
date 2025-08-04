@@ -10,14 +10,19 @@ package res
 		directory_id!:                            string
 		id?:                                      string
 		last_updated_date_time?:                  string
-		region?:                                  string
-		remote_domain_name!:                      string
-		selective_auth?:                          string
-		state_last_updated_date_time?:            string
-		trust_direction!:                         string
-		trust_password!:                          string
-		trust_state?:                             string
-		trust_state_reason?:                      string
-		trust_type?:                              string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                       string
+		remote_domain_name!:           string
+		selective_auth?:               string
+		state_last_updated_date_time?: string
+		trust_direction!:              string
+		trust_password!:               string
+		trust_state?:                  string
+		trust_state_reason?:           string
+		trust_type?:                   string
 	})
 }

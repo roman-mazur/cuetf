@@ -13,26 +13,31 @@ import "list"
 		id?:                          string
 		name!:                        string
 		range_key?:                   string
+		read_capacity?:               number
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		attribute?: matchN(1, [#attribute, [...#attribute]])
-		read_capacity?:     number
-		region?:            string
-		restore_date_time?: string
+		restore_date_time?:   string
+		restore_source_name?: string
 		global_secondary_index?: matchN(1, [#global_secondary_index, [...#global_secondary_index]])
-		restore_source_name?:      string
 		restore_source_table_arn?: string
 		restore_to_latest_time?:   bool
 		import_table?: matchN(1, [#import_table, list.MaxItems(1) & [...#import_table]])
-		stream_arn?:     string
-		stream_enabled?: bool
-		local_secondary_index?: matchN(1, [#local_secondary_index, [...#local_secondary_index]])
+		stream_arn?:       string
+		stream_enabled?:   bool
 		stream_label?:     string
 		stream_view_type?: string
 		table_class?:      string
-		tags?: [string]:     string
-		tags_all?: [string]: string
+		tags?: [string]: string
+		local_secondary_index?: matchN(1, [#local_secondary_index, [...#local_secondary_index]])
 		on_demand_throughput?: matchN(1, [#on_demand_throughput, list.MaxItems(1) & [...#on_demand_throughput]])
 		point_in_time_recovery?: matchN(1, [#point_in_time_recovery, list.MaxItems(1) & [...#point_in_time_recovery]])
 		replica?: matchN(1, [#replica, [...#replica]])
+		tags_all?: [string]: string
 		write_capacity?: number
 		server_side_encryption?: matchN(1, [#server_side_encryption, list.MaxItems(1) & [...#server_side_encryption]])
 		timeouts?: #timeouts

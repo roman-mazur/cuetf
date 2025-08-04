@@ -8,24 +8,29 @@ import "list"
 	close({
 		arn?:           string
 		creation_date?: string
-		definition!:    string
-		description?:   string
-		id?:            string
-		name?:          string
-		name_prefix?:   string
-		publish?:       bool
-		region?:        string
-		revision_id?:   string
-		role_arn!:      string
 		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
+		definition!:  string
+		description?: string
+		id?:          string
+		name?:        string
+		name_prefix?: string
+		publish?:     bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:      string
+		revision_id?: string
+		role_arn!:    string
+		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [...#logging_configuration]])
 		state_machine_version_arn?: string
 		status?:                    string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type?:                string
 		version_description?: string
-		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [...#logging_configuration]])
-		timeouts?: #timeouts
+		timeouts?:            #timeouts
 		tracing_configuration?: matchN(1, [#tracing_configuration, list.MaxItems(1) & [...#tracing_configuration]])
 	})
 

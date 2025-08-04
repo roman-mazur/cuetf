@@ -5,13 +5,27 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_api_shield")
 	close({
 		auth_id_characteristics?: matchN(1, [close({
+			// The name of the characteristic field, i.e., the header or
+			// cookie name.
 			name?: string
+
+			// The type of characteristic.
+			// Available values: "header", "cookie", "jwt".
 			type?: string
 		}), [...close({
+			// The name of the characteristic field, i.e., the header or
+			// cookie name.
 			name?: string
+
+			// The type of characteristic.
+			// Available values: "header", "cookie", "jwt".
 			type?: string
 		})]])
+
+		// Requests information about certain properties.
 		properties?: [...string]
+
+		// Identifier.
 		zone_id!: string
 	})
 }

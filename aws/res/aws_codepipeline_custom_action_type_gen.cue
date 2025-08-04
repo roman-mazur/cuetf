@@ -12,13 +12,18 @@ import "list"
 		owner?:         string
 		provider_name!: string
 		configuration_property?: matchN(1, [#configuration_property, list.MaxItems(10) & [...#configuration_property]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		tags?: [string]: string
 		input_artifact_details?: matchN(1, [#input_artifact_details, list.MaxItems(1) & [_, ...] & [...#input_artifact_details]])
-		tags?: [string]:     string
-		tags_all?: [string]: string
 		output_artifact_details?: matchN(1, [#output_artifact_details, list.MaxItems(1) & [_, ...] & [...#output_artifact_details]])
-		settings?: matchN(1, [#settings, list.MaxItems(1) & [...#settings]])
+		tags_all?: [string]: string
 		version!: string
+		settings?: matchN(1, [#settings, list.MaxItems(1) & [...#settings]])
 	})
 
 	#configuration_property: close({

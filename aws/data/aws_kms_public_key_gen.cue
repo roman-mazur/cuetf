@@ -7,13 +7,18 @@ package data
 		arn?:                      string
 		customer_master_key_spec?: string
 		encryption_algorithms?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		grant_tokens?: [...string]
 		id?:             string
 		key_id!:         string
 		key_usage?:      string
 		public_key?:     string
 		public_key_pem?: string
-		region?:         string
 		signing_algorithms?: [...string]
 	})
 }

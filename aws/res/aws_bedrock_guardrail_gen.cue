@@ -9,20 +9,25 @@ package res
 		created_at?:                string
 		description?:               string
 		guardrail_arn?:             string
-		guardrail_id?:              string
-		kms_key_arn?:               string
-		name!:                      string
-		region?:                    string
 		content_policy_config?: matchN(1, [#content_policy_config, [...#content_policy_config]])
+		guardrail_id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:      string
+		kms_key_arn?: string
+		name!:        string
 		contextual_grounding_policy_config?: matchN(1, [#contextual_grounding_policy_config, [...#contextual_grounding_policy_config]])
-		cross_region_config?: matchN(1, [#cross_region_config, [...#cross_region_config]])
 		status?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		version?: string
+		cross_region_config?: matchN(1, [#cross_region_config, [...#cross_region_config]])
 		sensitive_information_policy_config?: matchN(1, [#sensitive_information_policy_config, [...#sensitive_information_policy_config]])
 		timeouts?: #timeouts
 		topic_policy_config?: matchN(1, [#topic_policy_config, [...#topic_policy_config]])
-		version?: string
 		word_policy_config?: matchN(1, [#word_policy_config, [...#word_policy_config]])
 	})
 
@@ -47,8 +52,25 @@ package res
 	})
 
 	#timeouts: close({
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
 		create?: string
+
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// Setting a timeout for a Delete operation is only applicable if
+		// changes are saved into state before the destroy operation
+		// occurs.
 		delete?: string
+
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
 		update?: string
 	})
 

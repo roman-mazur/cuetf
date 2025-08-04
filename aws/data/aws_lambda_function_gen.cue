@@ -26,6 +26,12 @@ package data
 		handler?:       string
 		id?:            string
 		image_uri?:     string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:        string
 		invoke_arn?:    string
 		kms_key_arn?:   string
 		last_modified?: string
@@ -40,7 +46,6 @@ package data
 		qualified_arn?:                  string
 		qualified_invoke_arn?:           string
 		qualifier?:                      string
-		region?:                         string
 		reserved_concurrent_executions?: number
 		role?:                           string
 		runtime?:                        string

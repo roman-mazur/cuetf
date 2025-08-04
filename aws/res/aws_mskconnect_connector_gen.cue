@@ -8,17 +8,22 @@ import "list"
 	close({
 		arn?: string
 		connector_configuration!: [string]: string
-		description?:                string
-		id?:                         string
-		kafkaconnect_version!:       string
-		name!:                       string
+		description?:          string
+		id?:                   string
+		kafkaconnect_version!: string
+		name!:                 string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                     string
 		service_execution_role_arn!: string
 		tags?: [string]: string
 		capacity?: matchN(1, [#capacity, list.MaxItems(1) & [_, ...] & [...#capacity]])
+		kafka_cluster?: matchN(1, [#kafka_cluster, list.MaxItems(1) & [_, ...] & [...#kafka_cluster]])
 		tags_all?: [string]: string
 		version?: string
-		kafka_cluster?: matchN(1, [#kafka_cluster, list.MaxItems(1) & [_, ...] & [...#kafka_cluster]])
 		kafka_cluster_client_authentication?: matchN(1, [#kafka_cluster_client_authentication, list.MaxItems(1) & [_, ...] & [...#kafka_cluster_client_authentication]])
 		kafka_cluster_encryption_in_transit?: matchN(1, [#kafka_cluster_encryption_in_transit, list.MaxItems(1) & [_, ...] & [...#kafka_cluster_encryption_in_transit]])
 		log_delivery?: matchN(1, [#log_delivery, list.MaxItems(1) & [...#log_delivery]])

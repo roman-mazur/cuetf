@@ -12,15 +12,20 @@ import "list"
 		description?:   string
 		id?:            string
 		name!:          string
-		owner?:         string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		owner?:  string
 		parameters?: [string]: string
-		region?:    string
 		retention?: number
 		open_table_format_input?: matchN(1, [#open_table_format_input, list.MaxItems(1) & [...#open_table_format_input]])
-		partition_index?: matchN(1, [#partition_index, list.MaxItems(3) & [...#partition_index]])
 		table_type?:         string
 		view_expanded_text?: string
 		view_original_text?: string
+		partition_index?: matchN(1, [#partition_index, list.MaxItems(3) & [...#partition_index]])
 		partition_keys?: matchN(1, [#partition_keys, [...#partition_keys]])
 		storage_descriptor?: matchN(1, [#storage_descriptor, list.MaxItems(1) & [...#storage_descriptor]])
 		target_table?: matchN(1, [#target_table, list.MaxItems(1) & [...#target_table]])

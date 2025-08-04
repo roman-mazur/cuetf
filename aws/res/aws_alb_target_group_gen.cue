@@ -13,28 +13,33 @@ import "list"
 		id?:                                 string
 		ip_address_type?:                    string
 		lambda_multi_value_headers_enabled?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		load_balancer_arns?: [...string]
-		load_balancing_algorithm_type?: string
-		health_check?: matchN(1, [#health_check, list.MaxItems(1) & [...#health_check]])
+		load_balancing_algorithm_type?:     string
 		load_balancing_anomaly_mitigation?: string
 		load_balancing_cross_zone_enabled?: string
-		stickiness?: matchN(1, [#stickiness, list.MaxItems(1) & [...#stickiness]])
-		name?:               string
-		name_prefix?:        string
+		name?:                              string
+		name_prefix?:                       string
+		health_check?: matchN(1, [#health_check, list.MaxItems(1) & [...#health_check]])
 		port?:               number
 		preserve_client_ip?: string
 		protocol?:           string
 		protocol_version?:   string
 		proxy_protocol_v2?:  bool
-		region?:             string
-		slow_start?:         number
+		stickiness?: matchN(1, [#stickiness, list.MaxItems(1) & [...#stickiness]])
+		slow_start?: number
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		target_type?: string
 		target_failover?: matchN(1, [#target_failover, [...#target_failover]])
 		target_group_health?: matchN(1, [#target_group_health, list.MaxItems(1) & [...#target_group_health]])
 		target_health_state?: matchN(1, [#target_health_state, [...#target_health_state]])
-		target_type?: string
-		vpc_id?:      string
+		vpc_id?: string
 	})
 
 	#health_check: close({

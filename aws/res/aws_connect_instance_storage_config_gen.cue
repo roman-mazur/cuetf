@@ -6,12 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_connect_instance_storage_config")
 	close({
-		storage_config?: matchN(1, [#storage_config, list.MaxItems(1) & [_, ...] & [...#storage_config]])
 		association_id?: string
 		id?:             string
-		instance_id!:    string
-		region?:         string
-		resource_type!:  string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:        string
+		instance_id!:   string
+		resource_type!: string
+		storage_config?: matchN(1, [#storage_config, list.MaxItems(1) & [_, ...] & [...#storage_config]])
 	})
 
 	#storage_config: close({

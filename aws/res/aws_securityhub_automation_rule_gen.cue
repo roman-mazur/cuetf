@@ -8,12 +8,17 @@ package res
 		description!: string
 		id?:          string
 		is_terminal?: bool
-		region?:      string
-		rule_name!:   string
-		rule_order!:  number
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:    string
+		rule_name!: string
 		actions?: matchN(1, [#actions, [...#actions]])
-		rule_status?: string
 		criteria?: matchN(1, [#criteria, [...#criteria]])
+		rule_order!:  number
+		rule_status?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

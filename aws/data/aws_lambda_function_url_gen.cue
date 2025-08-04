@@ -13,7 +13,13 @@ package data
 			expose_headers?: [...string]
 			max_age?: number
 		})]
-		creation_time?:      string
+		creation_time?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
 		function_arn?:       string
 		function_name!:      string
 		function_url?:       string
@@ -21,7 +27,6 @@ package data
 		invoke_mode?:        string
 		last_modified_time?: string
 		qualifier?:          string
-		region?:             string
 		url_id?:             string
 	})
 }

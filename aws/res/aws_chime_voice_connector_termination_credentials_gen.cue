@@ -7,7 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_chime_voice_connector_termination_credentials")
 	close({
 		credentials?: matchN(1, [#credentials, list.MaxItems(10) & [_, ...] & [...#credentials]])
-		id?:                 string
+		id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:             string
 		voice_connector_id!: string
 	})

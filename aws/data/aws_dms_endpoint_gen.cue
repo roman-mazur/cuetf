@@ -39,6 +39,12 @@ package data
 			ssl_client_key_password?:        string
 			topic?:                          string
 		})]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		kinesis_settings?: [...close({
 			include_control_details?:        bool
 			include_null_and_empty?:         bool
@@ -98,7 +104,6 @@ package data
 			server_side_encryption_kms_key_id?: string
 			service_access_role_arn?:           string
 		})]
-		region?: string
 		s3_settings?: [...close({
 			add_column_name?:                             bool
 			bucket_folder?:                               string

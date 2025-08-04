@@ -11,9 +11,14 @@ package data
 		id?:                       string
 		kms_key_identifier?:       string
 		location_uri?:             string
-		name?:                     string
-		region?:                   string
-		retrieval_role_arn?:       string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
+		name?:               string
+		retrieval_role_arn?: string
 		tags?: [string]: string
 		type?: string
 		validator?: [...close({

@@ -6,7 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_db_instance")
 	close({
-		address?:                     string
+		address?: string
+		blue_green_update?: matchN(1, [#blue_green_update, list.MaxItems(1) & [...#blue_green_update]])
 		allocated_storage?:           number
 		allow_major_version_upgrade?: bool
 		apply_immediately?:           bool
@@ -23,14 +24,19 @@ import "list"
 		customer_owned_ip_enabled?:   bool
 		database_insights_mode?:      string
 		db_name?:                     string
-		db_subnet_group_name?:        string
-		dedicated_log_volume?:        bool
-		delete_automated_backups?:    bool
-		deletion_protection?:         bool
-		domain?:                      string
-		domain_auth_secret_arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                   string
+		db_subnet_group_name?:     string
+		dedicated_log_volume?:     bool
+		delete_automated_backups?: bool
+		deletion_protection?:      bool
+		domain?:                   string
+		domain_auth_secret_arn?:   string
 		domain_dns_ips?: [...string]
-		blue_green_update?: matchN(1, [#blue_green_update, list.MaxItems(1) & [...#blue_green_update]])
 		domain_fqdn?:          string
 		domain_iam_role_name?: string
 		domain_ou?:            string
@@ -49,15 +55,15 @@ import "list"
 		instance_class!:                      string
 		iops?:                                number
 		kms_key_id?:                          string
-		restore_to_point_in_time?: matchN(1, [#restore_to_point_in_time, list.MaxItems(1) & [...#restore_to_point_in_time]])
-		latest_restorable_time?: string
-		license_model?:          string
+		latest_restorable_time?:              string
+		license_model?:                       string
 		listener_endpoint?: [...close({
 			address?:        string
 			hosted_zone_id?: string
 			port?:           number
 		})]
-		maintenance_window?:          string
+		maintenance_window?: string
+		restore_to_point_in_time?: matchN(1, [#restore_to_point_in_time, list.MaxItems(1) & [...#restore_to_point_in_time]])
 		manage_master_user_password?: bool
 		master_user_secret?: [...close({
 			kms_key_id?:    string
@@ -81,7 +87,6 @@ import "list"
 		performance_insights_retention_period?: number
 		port?:                                  number
 		publicly_accessible?:                   bool
-		region?:                                string
 		replica_mode?:                          string
 		replicas?: [...string]
 		replicate_source_db?: string
@@ -94,10 +99,10 @@ import "list"
 		storage_type?:        string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		s3_import?: matchN(1, [#s3_import, list.MaxItems(1) & [...#s3_import]])
 		timezone?:               string
 		upgrade_storage_config?: bool
-		username?:               string
+		s3_import?: matchN(1, [#s3_import, list.MaxItems(1) & [...#s3_import]])
+		username?: string
 		vpc_security_group_ids?: [...string]
 		timeouts?: #timeouts
 	})

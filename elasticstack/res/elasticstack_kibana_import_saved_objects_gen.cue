@@ -16,13 +16,34 @@ package res
 			title?: string
 			type?:  string
 		})]
-		file_contents!:        string
-		id?:                   string
+
+		// The contents of the exported saved objects file.
+		file_contents!: string
+
+		// Generated ID for the import.
+		id?: string
+
+		// If set to true, errors during the import process will not fail
+		// the configuration application
 		ignore_import_errors?: bool
-		overwrite?:            bool
-		space_id?:             string
-		success?:              bool
-		success_count?:        number
+
+		// Overwrites saved objects when they already exist. When used,
+		// potential conflict errors are automatically resolved by
+		// overwriting the destination object.
+		overwrite?: bool
+
+		// An identifier for the space. If space_id is not provided, the
+		// default space is used.
+		space_id?: string
+
+		// Indicates when the import was successfully completed. When set
+		// to false, some objects may not have been created. For
+		// additional information, refer to the errors and
+		// success_results properties.
+		success?: bool
+
+		// Indicates the number of successfully imported records.
+		success_count?: number
 		success_results?: [...close({
 			destination_id?: string
 			id?:             string

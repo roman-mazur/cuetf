@@ -6,8 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dms_replication_config")
 	close({
-		arn?:                           string
-		id?:                            string
+		arn?: string
+		id?:  string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                        string
 		replication_config_identifier!: string
 		replication_settings?:          string
@@ -15,10 +20,10 @@ import "list"
 		resource_identifier?:           string
 		source_endpoint_arn!:           string
 		compute_config?: matchN(1, [#compute_config, list.MaxItems(1) & [_, ...] & [...#compute_config]])
+		timeouts?:              #timeouts
 		start_replication?:     bool
 		supplemental_settings?: string
 		table_mappings!:        string
-		timeouts?:              #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		target_endpoint_arn!: string

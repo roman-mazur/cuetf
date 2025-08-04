@@ -6,25 +6,30 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_s3_bucket")
 	close({
-		arn?:                         string
-		bucket?:                      string
-		bucket_domain_name?:          string
-		bucket_prefix?:               string
+		arn?:                string
+		bucket?:             string
+		bucket_domain_name?: string
+		bucket_prefix?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                      string
 		bucket_region?:               string
 		bucket_regional_domain_name?: string
 		force_destroy?:               bool
 		hosted_zone_id?:              string
 		id?:                          string
-		object_lock_enabled?:         bool
-		region?:                      string
-		tags?: [string]: string
 		cors_rule?: matchN(1, [#cors_rule, [...#cors_rule]])
-		tags_all?: [string]: string
+		object_lock_enabled?: bool
 		grant?: matchN(1, [#grant, [...#grant]])
 		lifecycle_rule?: matchN(1, [#lifecycle_rule, [...#lifecycle_rule]])
+		tags?: [string]: string
 		logging?: matchN(1, [#logging, list.MaxItems(1) & [...#logging]])
 		object_lock_configuration?: matchN(1, [#object_lock_configuration, list.MaxItems(1) & [...#object_lock_configuration]])
 		replication_configuration?: matchN(1, [#replication_configuration, list.MaxItems(1) & [...#replication_configuration]])
+		tags_all?: [string]: string
 		server_side_encryption_configuration?: matchN(1, [#server_side_encryption_configuration, list.MaxItems(1) & [...#server_side_encryption_configuration]])
 		timeouts?: #timeouts
 		versioning?: matchN(1, [#versioning, list.MaxItems(1) & [...#versioning]])

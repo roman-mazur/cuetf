@@ -10,16 +10,21 @@ import "list"
 		description?: string
 		flow_status?: string
 		id?:          string
-		kms_arn?:     string
 		destination_flow_config?: matchN(1, [#destination_flow_config, [_, ...] & [...#destination_flow_config]])
-		name!:   string
+		kms_arn?: string
+		name!:    string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		metadata_catalog_config?: matchN(1, [#metadata_catalog_config, list.MaxItems(1) & [...#metadata_catalog_config]])
-		source_flow_config?: matchN(1, [#source_flow_config, list.MaxItems(1) & [_, ...] & [...#source_flow_config]])
 		tags?: [string]: string
+		metadata_catalog_config?: matchN(1, [#metadata_catalog_config, list.MaxItems(1) & [...#metadata_catalog_config]])
+		tags_all?: [string]: string
+		source_flow_config?: matchN(1, [#source_flow_config, list.MaxItems(1) & [_, ...] & [...#source_flow_config]])
 		task?: matchN(1, [#task, [_, ...] & [...#task]])
 		trigger_config?: matchN(1, [#trigger_config, list.MaxItems(1) & [_, ...] & [...#trigger_config]])
-		tags_all?: [string]: string
 	})
 
 	#destination_flow_config: close({

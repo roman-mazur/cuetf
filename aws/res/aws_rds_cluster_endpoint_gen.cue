@@ -9,9 +9,14 @@ package res
 		cluster_identifier!:          string
 		custom_endpoint_type!:        string
 		endpoint?:                    string
-		excluded_members?: [...string]
-		id?:     string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		excluded_members?: [...string]
+		id?: string
 		static_members?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string

@@ -6,11 +6,15 @@ package res
 	close({
 		account_id!: string
 		created_at?: string
+
+		// This field is not actually used as the owning profile for a
+		// predefined entry is already set
+		// to a predefined profile
+		profile_id?: string
 		enabled!:    bool
 		entry_id!:   string
 		id?:         string
 		name?:       string
-		profile_id?: string
 		updated_at?: string
 	})
 }

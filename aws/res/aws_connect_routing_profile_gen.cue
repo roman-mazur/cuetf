@@ -9,11 +9,16 @@ package res
 		description!:               string
 		id?:                        string
 		instance_id!:               string
-		name!:                      string
-		region?:                    string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		media_concurrencies?: matchN(1, [#media_concurrencies, [_, ...] & [...#media_concurrencies]])
-		routing_profile_id?: string
+		name!: string
 		queue_configs?: matchN(1, [#queue_configs, [...#queue_configs]])
+		routing_profile_id?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

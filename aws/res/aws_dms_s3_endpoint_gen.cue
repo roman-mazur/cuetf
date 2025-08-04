@@ -4,19 +4,25 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dms_s3_endpoint")
 	close({
-		add_column_name?:                             bool
-		add_trailing_padding_character?:              bool
-		bucket_folder?:                               string
-		bucket_name!:                                 string
-		canned_acl_for_objects?:                      string
-		cdc_inserts_and_updates?:                     bool
-		cdc_inserts_only?:                            bool
-		cdc_max_batch_interval?:                      number
-		cdc_min_file_size?:                           number
-		cdc_path?:                                    string
-		certificate_arn?:                             string
-		compression_type?:                            string
-		csv_delimiter?:                               string
+		add_column_name?:                bool
+		add_trailing_padding_character?: bool
+		bucket_folder?:                  string
+		bucket_name!:                    string
+		canned_acl_for_objects?:         string
+		cdc_inserts_and_updates?:        bool
+		cdc_inserts_only?:               bool
+		cdc_max_batch_interval?:         number
+		cdc_min_file_size?:              number
+		cdc_path?:                       string
+		certificate_arn?:                string
+		compression_type?:               string
+		csv_delimiter?:                  string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                                      string
 		csv_no_sup_value?:                            string
 		csv_null_value?:                              string
 		csv_row_delimiter?:                           string
@@ -31,6 +37,7 @@ package res
 		enable_statistics?:                           bool
 		encoding_type?:                               string
 		encryption_mode?:                             string
+		timeouts?:                                    #timeouts
 		endpoint_arn?:                                string
 		endpoint_id!:                                 string
 		endpoint_type!:                               string
@@ -42,13 +49,11 @@ package res
 		id?:                                          string
 		ignore_header_rows?:                          number
 		include_op_for_full_load?:                    bool
-		timeouts?:                                    #timeouts
 		kms_key_arn?:                                 string
 		max_file_size?:                               number
 		parquet_timestamp_in_millisecond?:            bool
 		parquet_version?:                             string
 		preserve_transactions?:                       bool
-		region?:                                      string
 		rfc_4180?:                                    bool
 		row_group_length?:                            number
 		server_side_encryption_kms_key_id?:           string

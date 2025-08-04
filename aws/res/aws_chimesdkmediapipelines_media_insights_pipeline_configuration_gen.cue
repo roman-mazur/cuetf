@@ -6,12 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_chimesdkmediapipelines_media_insights_pipeline_configuration")
 	close({
-		arn?: string
-		elements?: matchN(1, [#elements, [_, ...] & [...#elements]])
-		id?:                       string
-		name!:                     string
+		arn?:  string
+		id?:   string
+		name!: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                   string
 		resource_access_role_arn!: string
+		elements?: matchN(1, [#elements, [_, ...] & [...#elements]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		real_time_alert_configuration?: matchN(1, [#real_time_alert_configuration, list.MaxItems(1) & [...#real_time_alert_configuration]])

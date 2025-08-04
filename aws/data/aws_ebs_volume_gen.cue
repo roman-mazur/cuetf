@@ -13,13 +13,18 @@ package data
 		kms_key_id?:           string
 		most_recent?:          bool
 		multi_attach_enabled?: bool
-		outpost_arn?:          string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		filter?: matchN(1, [#filter, [...#filter]])
-		region?:      string
+		timeouts?:    #timeouts
+		outpost_arn?: string
 		size?:        number
 		snapshot_id?: string
 		tags?: [string]: string
-		timeouts?:                   #timeouts
 		throughput?:                 number
 		volume_id?:                  string
 		volume_initialization_rate?: number

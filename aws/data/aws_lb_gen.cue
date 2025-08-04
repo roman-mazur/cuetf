@@ -30,18 +30,23 @@ package data
 		enable_xff_client_port?:                                       bool
 		enable_zonal_shift?:                                           bool
 		enforce_security_group_inbound_rules_on_private_link_traffic?: string
+		timeouts?:                                                     #timeouts
 		id?:                                                           string
-		idle_timeout?:                                                 number
-		internal?:                                                     bool
-		ip_address_type?:                                              string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:          string
+		idle_timeout?:    number
+		internal?:        bool
+		ip_address_type?: string
 		ipam_pools?: [...close({
 			ipv4_ipam_pool_id?: string
 		})]
 		load_balancer_type?:   string
 		name?:                 string
 		preserve_host_header?: bool
-		region?:               string
-		timeouts?:             #timeouts
 		security_groups?: [...string]
 		subnet_mapping?: [...close({
 			allocation_id?:        string

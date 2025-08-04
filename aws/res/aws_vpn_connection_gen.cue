@@ -18,9 +18,13 @@ import "list"
 		outside_ip_address_type?:        string
 		preshared_key_arn?:              string
 		preshared_key_storage?:          string
-		region?:                         string
-		remote_ipv4_network_cidr?:       string
-		tunnel1_log_options?: matchN(1, [#tunnel1_log_options, list.MaxItems(1) & [...#tunnel1_log_options]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                   string
+		remote_ipv4_network_cidr?: string
 		remote_ipv6_network_cidr?: string
 		routes?: [...close({
 			destination_cidr_block?: string
@@ -49,12 +53,13 @@ import "list"
 		tunnel1_phase1_lifetime_seconds?: number
 		tunnel1_phase2_dh_group_numbers?: [...number]
 		tunnel1_phase2_encryption_algorithms?: [...string]
+		tunnel1_log_options?: matchN(1, [#tunnel1_log_options, list.MaxItems(1) & [...#tunnel1_log_options]])
 		tunnel1_phase2_integrity_algorithms?: [...string]
-		tunnel1_phase2_lifetime_seconds?:   number
-		tunnel1_preshared_key?:             string
-		tunnel1_rekey_fuzz_percentage?:     number
-		tunnel1_rekey_margin_time_seconds?: number
 		tunnel2_log_options?: matchN(1, [#tunnel2_log_options, list.MaxItems(1) & [...#tunnel2_log_options]])
+		tunnel1_phase2_lifetime_seconds?:         number
+		tunnel1_preshared_key?:                   string
+		tunnel1_rekey_fuzz_percentage?:           number
+		tunnel1_rekey_margin_time_seconds?:       number
 		tunnel1_replay_window_size?:              number
 		tunnel1_startup_action?:                  string
 		tunnel1_vgw_inside_address?:              string

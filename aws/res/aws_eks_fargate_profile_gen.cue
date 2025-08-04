@@ -9,11 +9,16 @@ package res
 		fargate_profile_name!:   string
 		id?:                     string
 		pod_execution_role_arn!: string
-		region?:                 string
-		status?:                 string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		selector?: matchN(1, [#selector, [_, ...] & [...#selector]])
-		subnet_ids?: [...string]
+		status?:   string
 		timeouts?: #timeouts
+		subnet_ids?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

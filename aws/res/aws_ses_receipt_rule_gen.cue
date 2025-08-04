@@ -4,23 +4,28 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ses_receipt_rule")
 	close({
-		after?: string
-		add_header_action?: matchN(1, [#add_header_action, [...#add_header_action]])
+		after?:   string
 		arn?:     string
 		enabled?: bool
 		id?:      string
 		name!:    string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		recipients?: [...string]
-		region?:        string
 		rule_set_name!: string
+		scan_enabled?:  bool
+		add_header_action?: matchN(1, [#add_header_action, [...#add_header_action]])
+		tls_policy?: string
 		bounce_action?: matchN(1, [#bounce_action, [...#bounce_action]])
 		lambda_action?: matchN(1, [#lambda_action, [...#lambda_action]])
 		s3_action?: matchN(1, [#s3_action, [...#s3_action]])
 		sns_action?: matchN(1, [#sns_action, [...#sns_action]])
 		stop_action?: matchN(1, [#stop_action, [...#stop_action]])
 		workmail_action?: matchN(1, [#workmail_action, [...#workmail_action]])
-		scan_enabled?: bool
-		tls_policy?:   string
 	})
 
 	#add_header_action: close({

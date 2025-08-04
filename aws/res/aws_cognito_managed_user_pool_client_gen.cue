@@ -9,28 +9,33 @@ package res
 		allowed_oauth_flows_user_pool_client?: bool
 		allowed_oauth_scopes?: [...string]
 		auth_session_validity?: number
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		callback_urls?: [...string]
 		client_secret?:                                 string
 		default_redirect_uri?:                          string
 		enable_propagate_additional_user_context_data?: bool
 		enable_token_revocation?:                       bool
 		explicit_auth_flows?: [...string]
-		id?:                string
-		id_token_validity?: number
+		id?: string
 		analytics_configuration?: matchN(1, [#analytics_configuration, [...#analytics_configuration]])
 		refresh_token_rotation?: matchN(1, [#refresh_token_rotation, [...#refresh_token_rotation]])
+		id_token_validity?: number
 		logout_urls?: [...string]
-		token_validity_units?: matchN(1, [#token_validity_units, [...#token_validity_units]])
 		name?:                          string
 		name_pattern?:                  string
 		name_prefix?:                   string
 		prevent_user_existence_errors?: string
 		read_attributes?: [...string]
 		refresh_token_validity?: number
-		region?:                 string
 		supported_identity_providers?: [...string]
 		user_pool_id!: string
 		write_attributes?: [...string]
+		token_validity_units?: matchN(1, [#token_validity_units, [...#token_validity_units]])
 	})
 
 	#analytics_configuration: close({

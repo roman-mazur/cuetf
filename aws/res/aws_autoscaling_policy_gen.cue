@@ -6,21 +6,26 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_autoscaling_policy")
 	close({
-		adjustment_type?: string
-		predictive_scaling_configuration?: matchN(1, [#predictive_scaling_configuration, list.MaxItems(1) & [...#predictive_scaling_configuration]])
-		arn?:                       string
-		autoscaling_group_name!:    string
+		adjustment_type?:        string
+		arn?:                    string
+		autoscaling_group_name!: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                    string
 		cooldown?:                  number
 		enabled?:                   bool
 		estimated_instance_warmup?: number
 		id?:                        string
-		step_adjustment?: matchN(1, [#step_adjustment, [...#step_adjustment]])
-		metric_aggregation_type?:  string
+		metric_aggregation_type?:   string
+		predictive_scaling_configuration?: matchN(1, [#predictive_scaling_configuration, list.MaxItems(1) & [...#predictive_scaling_configuration]])
 		min_adjustment_magnitude?: number
 		name!:                     string
 		policy_type?:              string
-		region?:                   string
 		scaling_adjustment?:       number
+		step_adjustment?: matchN(1, [#step_adjustment, [...#step_adjustment]])
 		target_tracking_configuration?: matchN(1, [#target_tracking_configuration, list.MaxItems(1) & [...#target_tracking_configuration]])
 	})
 

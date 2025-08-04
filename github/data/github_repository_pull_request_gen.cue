@@ -10,15 +10,19 @@ package data
 		body?:            string
 		draft?:           bool
 		head_owner?:      string
-		head_ref?:        string
-		head_repository?: string
-		head_sha?:        string
-		id?:              string
+
+		// List of names of labels on the PR
 		labels?: [...string]
+
+		// Username of the PR creator
+		opened_by?:             string
+		head_ref?:              string
+		head_repository?:       string
+		head_sha?:              string
+		id?:                    string
 		maintainer_can_modify?: bool
 		"number"!:              number
 		opened_at?:             number
-		opened_by?:             string
 		owner?:                 string
 		state?:                 string
 		title?:                 string

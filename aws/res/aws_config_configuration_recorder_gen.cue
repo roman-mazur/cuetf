@@ -6,11 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_config_configuration_recorder")
 	close({
-		recording_group?: matchN(1, [#recording_group, list.MaxItems(1) & [...#recording_group]])
-		id?:       string
-		name?:     string
+		id?:   string
+		name?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:   string
 		role_arn!: string
+		recording_group?: matchN(1, [#recording_group, list.MaxItems(1) & [...#recording_group]])
 		recording_mode?: matchN(1, [#recording_mode, list.MaxItems(1) & [...#recording_mode]])
 	})
 

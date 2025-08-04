@@ -6,12 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_wafregional_web_acl")
 	close({
-		arn?: string
-		default_action?: matchN(1, [#default_action, list.MaxItems(1) & [_, ...] & [...#default_action]])
+		arn?:         string
 		id?:          string
 		metric_name!: string
 		name!:        string
-		region?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		default_action?: matchN(1, [#default_action, list.MaxItems(1) & [_, ...] & [...#default_action]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [...#logging_configuration]])

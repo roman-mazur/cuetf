@@ -13,14 +13,19 @@ import "list"
 		id?:                    string
 		last_update_timestamp?: string
 		name!:                  string
-		region?:                string
-		start_application?:     bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:            string
+		start_application?: bool
 		cloudwatch_logging_options?: matchN(1, [#cloudwatch_logging_options, list.MaxItems(1) & [...#cloudwatch_logging_options]])
+		inputs?: matchN(1, [#inputs, list.MaxItems(1) & [...#inputs]])
 		status?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		version?: number
-		inputs?: matchN(1, [#inputs, list.MaxItems(1) & [...#inputs]])
 		outputs?: matchN(1, [#outputs, list.MaxItems(3) & [...#outputs]])
 		reference_data_sources?: matchN(1, [#reference_data_sources, list.MaxItems(1) & [...#reference_data_sources]])
 	})

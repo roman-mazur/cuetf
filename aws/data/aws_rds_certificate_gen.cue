@@ -9,11 +9,16 @@ package data
 		customer_override?:            bool
 		customer_override_valid_till?: string
 		default_for_new_launches?:     bool
-		id?:                           string
-		latest_valid_till?:            bool
-		region?:                       string
-		thumbprint?:                   string
-		valid_from?:                   string
-		valid_till?:                   string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:            string
+		id?:                string
+		latest_valid_till?: bool
+		thumbprint?:        string
+		valid_from?:        string
+		valid_till?:        string
 	})
 }

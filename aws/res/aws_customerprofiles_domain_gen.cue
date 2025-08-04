@@ -10,13 +10,18 @@ import "list"
 		dead_letter_queue_url?:   string
 		default_encryption_key?:  string
 		default_expiration_days!: number
-		matching?: matchN(1, [#matching, list.MaxItems(1) & [...#matching]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:      string
 		domain_name!: string
 		id?:          string
-		region?:      string
-		tags?: [string]:     string
-		tags_all?: [string]: string
+		tags?: [string]: string
+		matching?: matchN(1, [#matching, list.MaxItems(1) & [...#matching]])
 		rule_based_matching?: matchN(1, [#rule_based_matching, list.MaxItems(1) & [...#rule_based_matching]])
+		tags_all?: [string]: string
 	})
 
 	#matching: close({

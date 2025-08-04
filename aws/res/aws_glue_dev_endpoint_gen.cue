@@ -17,9 +17,14 @@ package res
 		number_of_workers?:         number
 		private_address?:           string
 		public_address?:            string
-		public_key?:                string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:     string
+		public_key?: string
 		public_keys?: [...string]
-		region?:                 string
 		role_arn!:               string
 		security_configuration?: string
 		security_group_ids?: [...string]

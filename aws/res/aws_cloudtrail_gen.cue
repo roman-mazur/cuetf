@@ -6,27 +6,32 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudtrail")
 	close({
-		arn?:                           string
-		cloud_watch_logs_group_arn?:    string
-		cloud_watch_logs_role_arn?:     string
-		enable_log_file_validation?:    bool
-		enable_logging?:                bool
-		home_region?:                   string
-		id?:                            string
+		arn?: string
+		advanced_event_selector?: matchN(1, [#advanced_event_selector, [...#advanced_event_selector]])
+		cloud_watch_logs_group_arn?: string
+		cloud_watch_logs_role_arn?:  string
+		enable_log_file_validation?: bool
+		enable_logging?:             bool
+		home_region?:                string
+		id?:                         string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                        string
 		include_global_service_events?: bool
 		is_multi_region_trail?:         bool
 		is_organization_trail?:         bool
-		kms_key_id?:                    string
-		advanced_event_selector?: matchN(1, [#advanced_event_selector, [...#advanced_event_selector]])
 		event_selector?: matchN(1, [#event_selector, list.MaxItems(5) & [...#event_selector]])
-		name!:           string
-		region?:         string
+		kms_key_id?: string
+		name!:       string
+		insight_selector?: matchN(1, [#insight_selector, [...#insight_selector]])
 		s3_bucket_name!: string
 		s3_key_prefix?:  string
 		sns_topic_arn?:  string
 		sns_topic_name?: string
-		tags?: [string]: string
-		insight_selector?: matchN(1, [#insight_selector, [...#insight_selector]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 

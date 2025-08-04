@@ -4,10 +4,17 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_app_token")
 	close({
-		app_id!:          string
-		id?:              string
+		// The GitHub App ID.
+		app_id!: string
+		id?:     string
+
+		// The GitHub App installation instance ID.
 		installation_id!: string
-		pem_file!:        string
-		token?:           string
+
+		// The GitHub App PEM file contents.
+		pem_file!: string
+
+		// The generated token from the credentials.
+		token?: string
 	})
 }

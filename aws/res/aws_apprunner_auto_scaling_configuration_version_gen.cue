@@ -9,13 +9,18 @@ package res
 		auto_scaling_configuration_revision?: number
 		has_associated_service?:              bool
 		id?:                                  string
-		is_default?:                          bool
-		latest?:                              bool
-		max_concurrency?:                     number
-		max_size?:                            number
-		min_size?:                            number
-		region?:                              string
-		status?:                              string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:          string
+		is_default?:      bool
+		latest?:          bool
+		max_concurrency?: number
+		max_size?:        number
+		min_size?:        number
+		status?:          string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

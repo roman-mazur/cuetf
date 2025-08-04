@@ -10,14 +10,19 @@ import "list"
 		container?: matchN(1, [#container, [...#container]])
 		enable_network_isolation?: bool
 		execution_role_arn!:       string
-		id?:                       string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		id?:     string
 		inference_execution_config?: matchN(1, [#inference_execution_config, list.MaxItems(1) & [...#inference_execution_config]])
 		name?: string
+		tags?: [string]: string
 		primary_container?: matchN(1, [#primary_container, list.MaxItems(1) & [...#primary_container]])
-		region?: string
-		tags?: [string]:     string
-		tags_all?: [string]: string
 		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
+		tags_all?: [string]: string
 	})
 
 	#container: close({

@@ -33,14 +33,19 @@ package data
 		description?: string
 		dns_name?:    string
 		dns_servers?: [...string]
-		id?: string
-		filter?: matchN(1, [#filter, [...#filter]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		filter?: matchN(1, [#filter, [...#filter]])
+		timeouts?: #timeouts
+		id?:       string
 		security_group_ids?: [...string]
 		self_service_portal?:     string
 		self_service_portal_url?: string
 		server_certificate_arn?:  string
-		timeouts?:                #timeouts
 		session_timeout_hours?:   number
 		split_tunnel?:            bool
 		tags?: [string]: string

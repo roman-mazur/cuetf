@@ -16,7 +16,13 @@ import "list"
 		cluster_members?: [...string]
 		cluster_resource_id?:   string
 		copy_tags_to_snapshot?: bool
-		deletion_protection?:   bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:              string
+		deletion_protection?: bool
 		enable_cloudwatch_logs_exports?: [...string]
 		endpoint?:                            string
 		engine?:                              string
@@ -25,8 +31,9 @@ import "list"
 		global_cluster_identifier?:           string
 		hosted_zone_id?:                      string
 		iam_database_authentication_enabled?: bool
-		iam_roles?: [...string]
 		serverless_v2_scaling_configuration?: matchN(1, [#serverless_v2_scaling_configuration, list.MaxItems(1) & [...#serverless_v2_scaling_configuration]])
+		timeouts?: #timeouts
+		iam_roles?: [...string]
 		id?:                                    string
 		kms_key_arn?:                           string
 		neptune_cluster_parameter_group_name?:  string
@@ -36,8 +43,6 @@ import "list"
 		preferred_backup_window?:               string
 		preferred_maintenance_window?:          string
 		reader_endpoint?:                       string
-		timeouts?:                              #timeouts
-		region?:                                string
 		replication_source_identifier?:         string
 		skip_final_snapshot?:                   bool
 		snapshot_identifier?:                   string

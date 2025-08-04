@@ -9,18 +9,23 @@ package res
 		confirmation_was_authenticated?:  bool
 		delivery_policy?:                 string
 		endpoint!:                        string
-		endpoint_auto_confirms?:          bool
-		filter_policy?:                   string
-		filter_policy_scope?:             string
-		id?:                              string
-		owner_id?:                        string
-		pending_confirmation?:            bool
-		protocol!:                        string
-		raw_message_delivery?:            bool
-		redrive_policy?:                  string
-		region?:                          string
-		replay_policy?:                   string
-		subscription_role_arn?:           string
-		topic_arn!:                       string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                 string
+		endpoint_auto_confirms?: bool
+		filter_policy?:          string
+		filter_policy_scope?:    string
+		id?:                     string
+		owner_id?:               string
+		pending_confirmation?:   bool
+		protocol!:               string
+		raw_message_delivery?:   bool
+		redrive_policy?:         string
+		replay_policy?:          string
+		subscription_role_arn?:  string
+		topic_arn!:              string
 	})
 }

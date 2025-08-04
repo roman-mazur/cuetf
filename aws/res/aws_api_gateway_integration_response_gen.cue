@@ -7,8 +7,13 @@ package res
 		content_handling?: string
 		http_method!:      string
 		id?:               string
-		region?:           string
-		resource_id!:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:      string
+		resource_id!: string
 		response_parameters?: [string]: string
 		response_templates?: [string]:  string
 		rest_api_id!:       string

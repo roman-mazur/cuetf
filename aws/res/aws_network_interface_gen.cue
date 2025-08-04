@@ -11,15 +11,21 @@ package res
 		interface_type?:      string
 		ipv4_prefix_count?:   number
 		ipv4_prefixes?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
 		ipv6_address_count?: number
 		ipv6_address_list?: [...string]
 		ipv6_address_list_enabled?: bool
 		ipv6_addresses?: [...string]
 		ipv6_prefix_count?: number
 		ipv6_prefixes?: [...string]
-		mac_address?: string
-		outpost_arn?: string
 		attachment?: matchN(1, [#attachment, [...#attachment]])
+		mac_address?:      string
+		outpost_arn?:      string
 		owner_id?:         string
 		private_dns_name?: string
 		private_ip?:       string
@@ -27,7 +33,6 @@ package res
 		private_ip_list_enabled?: bool
 		private_ips?: [...string]
 		private_ips_count?: number
-		region?:            string
 		security_groups?: [...string]
 		source_dest_check?: bool
 		subnet_id!:         string

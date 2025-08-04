@@ -10,14 +10,19 @@ import "list"
 		capacity!:    number
 		description?: string
 		id?:          string
-		name!:        string
-		region?:      string
 		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
-		rules?: string
-		tags?: [string]: string
-		rule_group?: matchN(1, [#rule_group, list.MaxItems(1) & [...#rule_group]])
+		name!: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		rules?:  string
+		tags?: [string]:     string
 		tags_all?: [string]: string
-		type!:         string
+		type!: string
+		rule_group?: matchN(1, [#rule_group, list.MaxItems(1) & [...#rule_group]])
 		update_token?: string
 	})
 

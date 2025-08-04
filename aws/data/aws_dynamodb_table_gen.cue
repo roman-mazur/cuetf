@@ -43,10 +43,15 @@ import "list"
 			enabled?:                 bool
 			recovery_period_in_days?: number
 		})]
-		range_key?:     string
-		read_capacity?: number
-		region?:        string
+		range_key?: string
 		server_side_encryption?: matchN(1, [#server_side_encryption, list.MaxItems(1) & [...#server_side_encryption]])
+		read_capacity?: number
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		replica?: [...close({
 			kms_key_arn?: string
 			region_name?: string

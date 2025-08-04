@@ -7,17 +7,22 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_fis_experiment_template")
 	close({
 		action?: matchN(1, [#action, [_, ...] & [...#action]])
+		experiment_options?: matchN(1, [#experiment_options, list.MaxItems(1) & [...#experiment_options]])
 		description!: string
 		id?:          string
-		region?:      string
-		role_arn!:    string
-		tags?: [string]:     string
-		tags_all?: [string]: string
-		experiment_options?: matchN(1, [#experiment_options, list.MaxItems(1) & [...#experiment_options]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		experiment_report_configuration?: matchN(1, [#experiment_report_configuration, list.MaxItems(1) & [...#experiment_report_configuration]])
+		role_arn!: string
 		log_configuration?: matchN(1, [#log_configuration, list.MaxItems(1) & [...#log_configuration]])
 		stop_condition?: matchN(1, [#stop_condition, [_, ...] & [...#stop_condition]])
 		target?: matchN(1, [#target, [...#target]])
+		tags?: [string]:     string
+		tags_all?: [string]: string
 		timeouts?: #timeouts
 	})
 

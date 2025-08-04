@@ -4,9 +4,17 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_workers_script_subdomain")
 	close({
-		account_id!:       string
-		enabled?:          bool
+		// Identifier.
+		account_id!: string
+
+		// Whether the Worker is available on the workers.dev subdomain.
+		enabled?: bool
+
+		// Whether the Worker's Preview URLs are available on the
+		// workers.dev subdomain.
 		previews_enabled?: bool
-		script_name!:      string
+
+		// Name of the script, used in URLs and route configuration.
+		script_name!: string
 	})
 }

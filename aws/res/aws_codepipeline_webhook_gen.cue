@@ -10,12 +10,17 @@ import "list"
 		authentication!: string
 		id?:             string
 		name!:           string
-		region?:         string
-		tags?: [string]:     string
-		tags_all?: [string]: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		tags?: [string]: string
 		authentication_configuration?: matchN(1, [#authentication_configuration, list.MaxItems(1) & [...#authentication_configuration]])
-		target_action!: string
 		filter?: matchN(1, [#filter, list.MaxItems(5) & [_, ...] & [...#filter]])
+		tags_all?: [string]: string
+		target_action!:   string
 		target_pipeline!: string
 		url?:             string
 	})

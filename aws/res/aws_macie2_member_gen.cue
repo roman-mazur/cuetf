@@ -11,13 +11,18 @@ package res
 		id?:                                    string
 		invitation_disable_email_notification?: bool
 		invitation_message?:                    string
-		invite?:                                bool
-		invited_at?:                            string
-		timeouts?:                              #timeouts
-		master_account_id?:                     string
-		region?:                                string
-		relationship_status?:                   string
-		status?:                                string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:              string
+		timeouts?:            #timeouts
+		invite?:              bool
+		invited_at?:          string
+		master_account_id?:   string
+		relationship_status?: string
+		status?:              string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		updated_at?: string

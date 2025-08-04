@@ -9,9 +9,14 @@ package res
 		description?:                     string
 		fips_enabled?:                    bool
 		id?:                              string
-		last_updated_time?:               string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:            string
+		last_updated_time?: string
 		name_servers?: [...string]
-		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		verified_access_trust_providers?: [...close({

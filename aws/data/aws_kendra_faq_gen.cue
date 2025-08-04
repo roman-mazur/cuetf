@@ -11,10 +11,15 @@ package data
 		faq_id!:        string
 		file_format?:   string
 		id?:            string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:        string
 		index_id!:      string
 		language_code?: string
 		name?:          string
-		region?:        string
 		role_arn?:      string
 		s3_path?: [...close({
 			bucket?: string

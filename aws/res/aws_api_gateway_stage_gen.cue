@@ -15,13 +15,18 @@ import "list"
 		documentation_version?: string
 		execution_arn?:         string
 		id?:                    string
-		invoke_url?:            string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		access_log_settings?: matchN(1, [#access_log_settings, list.MaxItems(1) & [...#access_log_settings]])
-		region?:      string
+		canary_settings?: matchN(1, [#canary_settings, list.MaxItems(1) & [...#canary_settings]])
+		invoke_url?:  string
 		rest_api_id!: string
 		stage_name!:  string
-		tags?: [string]: string
-		canary_settings?: matchN(1, [#canary_settings, list.MaxItems(1) & [...#canary_settings]])
+		tags?: [string]:      string
 		tags_all?: [string]:  string
 		variables?: [string]: string
 		web_acl_arn?:          string

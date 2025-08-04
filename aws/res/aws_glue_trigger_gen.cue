@@ -6,21 +6,26 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_trigger")
 	close({
-		arn?:               string
-		description?:       string
-		enabled?:           bool
-		id?:                string
-		name!:              string
+		arn?:         string
+		description?: string
+		enabled?:     bool
+		id?:          string
+		name!:        string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:            string
 		schedule?:          string
 		start_on_creation?: bool
 		state?:             string
 		actions?: matchN(1, [#actions, [_, ...] & [...#actions]])
+		event_batching_condition?: matchN(1, [#event_batching_condition, [...#event_batching_condition]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type!:          string
 		workflow_name?: string
-		event_batching_condition?: matchN(1, [#event_batching_condition, [...#event_batching_condition]])
 		predicate?: matchN(1, [#predicate, list.MaxItems(1) & [...#predicate]])
 		timeouts?: #timeouts
 	})

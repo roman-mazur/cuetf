@@ -9,7 +9,12 @@ package data
 		id?:                 string
 		kms_key_id?:         string
 		position_filtering?: string
-		region?:             string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		tags?: [string]: string
 		tracker_arn?:  string
 		tracker_name!: string

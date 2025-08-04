@@ -10,13 +10,18 @@ import "list"
 		alarm_actions?: [...string]
 		alarm_description?: string
 		alarm_name!:        string
-		alarm_rule!:        string
-		arn?:               string
-		id?:                string
-		insufficient_data_actions?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:     string
+		alarm_rule!: string
 		actions_suppressor?: matchN(1, [#actions_suppressor, list.MaxItems(1) & [...#actions_suppressor]])
+		arn?: string
+		id?:  string
+		insufficient_data_actions?: [...string]
 		ok_actions?: [...string]
-		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

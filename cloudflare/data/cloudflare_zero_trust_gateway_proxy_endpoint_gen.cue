@@ -5,12 +5,19 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_gateway_proxy_endpoint")
 	close({
 		account_id!: string
-		created_at?: string
-		id?:         string
+
+		// A list of CIDRs to restrict ingress connections.
 		ips?: [...string]
-		name?:              string
-		proxy_endpoint_id!: string
+		created_at?: string
+
+		// The name of the proxy endpoint.
+		name?: string
+		id?:   string
+
+		// The subdomain to be used as the destination in the proxy
+		// client.
 		subdomain?:         string
+		proxy_endpoint_id!: string
 		updated_at?:        string
 	})
 }

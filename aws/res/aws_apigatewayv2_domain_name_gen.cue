@@ -7,11 +7,16 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_apigatewayv2_domain_name")
 	close({
 		api_mapping_selection_expression?: string
+		arn?:                              string
+		domain_name!:                      string
+		id?:                               string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		domain_name_configuration?: matchN(1, [#domain_name_configuration, list.MaxItems(1) & [_, ...] & [...#domain_name_configuration]])
-		arn?:         string
-		domain_name!: string
-		id?:          string
-		region?:      string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		mutual_tls_authentication?: matchN(1, [#mutual_tls_authentication, list.MaxItems(1) & [...#mutual_tls_authentication]])

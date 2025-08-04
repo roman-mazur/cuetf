@@ -7,10 +7,15 @@ package res
 		access_grants_location_arn?: string
 		access_grants_location_id?:  string
 		account_id?:                 string
-		iam_role_arn!:               string
-		id?:                         string
-		location_scope!:             string
-		region?:                     string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:         string
+		iam_role_arn!:   string
+		id?:             string
+		location_scope!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

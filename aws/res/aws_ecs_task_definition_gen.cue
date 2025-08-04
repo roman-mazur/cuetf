@@ -16,21 +16,26 @@ import "list"
 		id?:                     string
 		ipc_mode?:               string
 		ephemeral_storage?: matchN(1, [#ephemeral_storage, list.MaxItems(1) & [...#ephemeral_storage]])
-		placement_constraints?: matchN(1, [#placement_constraints, list.MaxItems(10) & [...#placement_constraints]])
 		memory?:       string
 		network_mode?: string
-		proxy_configuration?: matchN(1, [#proxy_configuration, list.MaxItems(1) & [...#proxy_configuration]])
-		pid_mode?: string
-		runtime_platform?: matchN(1, [#runtime_platform, list.MaxItems(1) & [...#runtime_platform]])
+		pid_mode?:     string
+		placement_constraints?: matchN(1, [#placement_constraints, list.MaxItems(10) & [...#placement_constraints]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		requires_compatibilities?: [...string]
 		revision?:     number
 		skip_destroy?: bool
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		volume?: matchN(1, [#volume, [...#volume]])
 		task_role_arn?: string
 		track_latest?:  bool
+		proxy_configuration?: matchN(1, [#proxy_configuration, list.MaxItems(1) & [...#proxy_configuration]])
+		runtime_platform?: matchN(1, [#runtime_platform, list.MaxItems(1) & [...#runtime_platform]])
+		volume?: matchN(1, [#volume, [...#volume]])
 	})
 
 	#ephemeral_storage: close({

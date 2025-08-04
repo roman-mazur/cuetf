@@ -14,9 +14,14 @@ package data
 		})]
 		gateway_id?: string
 		id?:         string
-		owner_id?:   string
-		region?:     string
 		filter?: matchN(1, [#filter, [...#filter]])
+		owner_id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:         string
 		route_table_id?: string
 		routes?: [...close({
 			carrier_gateway_id?:         string
@@ -34,10 +39,10 @@ package data
 			vpc_endpoint_id?:            string
 			vpc_peering_connection_id?:  string
 		})]
-		timeouts?:  #timeouts
 		subnet_id?: string
 		tags?: [string]: string
-		vpc_id?: string
+		timeouts?: #timeouts
+		vpc_id?:   string
 	})
 
 	#filter: close({

@@ -4,7 +4,13 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dms_replication_instance")
 	close({
-		allocated_storage?:            number
+		allocated_storage?: number
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                       string
 		auto_minor_version_upgrade?:   bool
 		availability_zone?:            string
 		engine_version?:               string
@@ -14,7 +20,6 @@ package data
 		network_type?:                 string
 		preferred_maintenance_window?: string
 		publicly_accessible?:          bool
-		region?:                       string
 		replication_instance_arn?:     string
 		replication_instance_class?:   string
 		replication_instance_id!:      string

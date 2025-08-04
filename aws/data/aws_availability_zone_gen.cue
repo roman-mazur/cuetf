@@ -9,14 +9,19 @@ package data
 		group_name?:             string
 		id?:                     string
 		name?:                   string
-		name_suffix?:            string
-		network_border_group?:   string
-		opt_in_status?:          string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:               string
+		name_suffix?:          string
+		network_border_group?: string
 		filter?: matchN(1, [#filter, [...#filter]])
+		timeouts?:         #timeouts
+		opt_in_status?:    string
 		parent_zone_id?:   string
 		parent_zone_name?: string
-		region?:           string
-		timeouts?:         #timeouts
 		state?:            string
 		zone_id?:          string
 		zone_type?:        string

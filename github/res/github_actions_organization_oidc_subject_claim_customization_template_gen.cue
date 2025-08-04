@@ -5,6 +5,8 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_actions_organization_oidc_subject_claim_customization_template")
 	close({
 		id?: string
+
+		// A list of OpenID Connect claims.
 		include_claim_keys!: [...string]
 	})
 }

@@ -15,12 +15,17 @@ package res
 		created_timestamp?: string
 		description?:       string
 		environment_id!:    string
-		id?:                string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		id?:     string
 		nas1_configuration?: matchN(1, [#nas1_configuration, [...#nas1_configuration]])
+		timeouts?:                #timeouts
 		last_modified_timestamp?: string
 		name!:                    string
-		region?:                  string
-		timeouts?:                #timeouts
 		status?:                  string
 		status_reason?:           string
 		tags?: [string]:     string

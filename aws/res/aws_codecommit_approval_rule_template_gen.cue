@@ -6,13 +6,18 @@ package res
 	close({
 		approval_rule_template_id?: string
 		content!:                   string
-		creation_date?:             string
-		description?:               string
-		id?:                        string
-		last_modified_date?:        string
-		last_modified_user?:        string
-		name!:                      string
-		region?:                    string
-		rule_content_sha256?:       string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:              string
+		creation_date?:       string
+		description?:         string
+		id?:                  string
+		last_modified_date?:  string
+		last_modified_user?:  string
+		name!:                string
+		rule_content_sha256?: string
 	})
 }

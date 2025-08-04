@@ -5,11 +5,16 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appsync_domain_name")
 	close({
 		appsync_domain_name?: string
-		certificate_arn!:     string
-		description?:         string
-		domain_name!:         string
-		hosted_zone_id?:      string
-		id?:                  string
-		region?:              string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:          string
+		certificate_arn!: string
+		description?:     string
+		domain_name!:     string
+		hosted_zone_id?:  string
+		id?:              string
 	})
 }

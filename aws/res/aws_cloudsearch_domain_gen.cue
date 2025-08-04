@@ -9,15 +9,20 @@ import "list"
 		arn?: string
 		endpoint_options?: matchN(1, [#endpoint_options, list.MaxItems(1) & [...#endpoint_options]])
 		document_service_endpoint?: string
-		domain_id?:                 string
-		id?:                        string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:    string
+		domain_id?: string
+		id?:        string
 		index_field?: matchN(1, [#index_field, [...#index_field]])
 		multi_az?: bool
+		name!:     string
 		scaling_parameters?: matchN(1, [#scaling_parameters, list.MaxItems(1) & [...#scaling_parameters]])
-		name!:                    string
-		region?:                  string
-		search_service_endpoint?: string
 		timeouts?:                #timeouts
+		search_service_endpoint?: string
 	})
 
 	#endpoint_options: close({

@@ -4,14 +4,24 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_web_analytics_rule")
 	close({
+		// Identifier.
 		account_id!: string
-		created?:    string
-		host?:       string
-		id?:         string
-		inclusive?:  bool
-		is_paused?:  bool
+
+		// The Web Analytics rule identifier.
+		id?:      string
+		created?: string
+		host?:    string
+
+		// Whether the rule includes or excludes traffic from being
+		// measured.
+		inclusive?: bool
+
+		// Whether the rule is paused or not.
+		is_paused?: bool
 		paths?: [...string]
-		priority?:   number
+		priority?: number
+
+		// The Web Analytics ruleset identifier.
 		ruleset_id!: string
 	})
 }

@@ -7,16 +7,21 @@ package res
 		arn?:                  string
 		availability_zone_id!: string
 		clusters?: [...string]
-		created_timestamp?:       string
-		environment_id!:          string
-		host_type!:               string
+		created_timestamp?: string
+		environment_id!:    string
+		host_type!:         string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                  string
 		id?:                      string
+		timeouts?:                #timeouts
 		last_modified_timestamp?: string
 		name!:                    string
-		region?:                  string
 		status?:                  string
 		status_reason?:           string
-		timeouts?:                #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

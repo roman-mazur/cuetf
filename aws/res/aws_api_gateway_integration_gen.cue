@@ -16,12 +16,17 @@ import "list"
 		id?:                      string
 		integration_http_method?: string
 		passthrough_behavior?:    string
-		region?:                  string
+		tls_config?: matchN(1, [#tls_config, list.MaxItems(1) & [...#tls_config]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		request_parameters?: [string]: string
 		request_templates?: [string]:  string
-		resource_id!: string
-		rest_api_id!: string
-		tls_config?: matchN(1, [#tls_config, list.MaxItems(1) & [...#tls_config]])
+		resource_id!:          string
+		rest_api_id!:          string
 		timeout_milliseconds?: number
 		type!:                 string
 		uri?:                  string

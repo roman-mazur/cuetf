@@ -8,12 +8,17 @@ import "list"
 	close({
 		database?: matchN(1, [#database, list.MaxItems(1) & [...#database]])
 		lf_tag?: matchN(1, [#lf_tag, [_, ...] & [...#lf_tag]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:     string
 		catalog_id?: string
+		id?:         string
 		table?: matchN(1, [#table, list.MaxItems(1) & [...#table]])
-		id?: string
 		table_with_columns?: matchN(1, [#table_with_columns, list.MaxItems(1) & [...#table_with_columns]])
 		timeouts?: #timeouts
-		region?:   string
 	})
 
 	#database: close({

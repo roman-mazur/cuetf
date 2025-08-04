@@ -4,7 +4,13 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_redshift_cluster")
 	close({
-		allow_version_upgrade?:                bool
+		allow_version_upgrade?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                               string
 		apply_immediately?:                    bool
 		arn?:                                  string
 		automated_snapshot_retention_period?:  number
@@ -33,6 +39,7 @@ package res
 		final_snapshot_identifier?:    string
 		iam_roles?: [...string]
 		id?:                                string
+		timeouts?:                          #timeouts
 		kms_key_id?:                        string
 		maintenance_track_name?:            string
 		manage_master_password?:            bool
@@ -50,12 +57,10 @@ package res
 		port?:                              number
 		preferred_maintenance_window?:      string
 		publicly_accessible?:               bool
-		region?:                            string
 		skip_final_snapshot?:               bool
 		snapshot_arn?:                      string
 		snapshot_cluster_identifier?:       string
 		snapshot_identifier?:               string
-		timeouts?:                          #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		vpc_security_group_ids?: [...string]

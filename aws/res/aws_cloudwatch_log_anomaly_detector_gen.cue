@@ -8,11 +8,16 @@ package res
 		arn?:                     string
 		detector_name?:           string
 		enabled!:                 bool
-		evaluation_frequency?:    string
-		filter_pattern?:          string
-		kms_key_id?:              string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:               string
+		evaluation_frequency?: string
+		filter_pattern?:       string
+		kms_key_id?:           string
 		log_group_arn_list!: [...string]
-		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

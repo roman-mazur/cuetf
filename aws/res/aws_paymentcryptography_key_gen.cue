@@ -8,14 +8,19 @@ package res
 		deletion_window_in_days?: number
 		enabled?:                 bool
 		exportable!:              bool
-		id?:                      string
-		key_check_value?:         string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:          string
+		id?:              string
+		key_check_value?: string
 		key_attributes?: matchN(1, [#key_attributes, [...#key_attributes]])
-		key_check_value_algorithm?: string
 		timeouts?:                  #timeouts
+		key_check_value_algorithm?: string
 		key_origin?:                string
 		key_state?:                 string
-		region?:                    string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
@@ -28,8 +33,25 @@ package res
 	})
 
 	#timeouts: close({
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
 		create?: string
+
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// Setting a timeout for a Delete operation is only applicable if
+		// changes are saved into state before the destroy operation
+		// occurs.
 		delete?: string
+
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
 		update?: string
 	})
 

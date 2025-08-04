@@ -6,15 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_emr_instance_fleet")
 	close({
-		instance_type_configs?: matchN(1, [#instance_type_configs, [...#instance_type_configs]])
-		cluster_id!:                     string
-		id?:                             string
-		name?:                           string
+		cluster_id!: string
+		id?:         string
+		name?:       string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                         string
 		provisioned_on_demand_capacity?: number
 		provisioned_spot_capacity?:      number
-		region?:                         string
 		target_on_demand_capacity?:      number
 		target_spot_capacity?:           number
+		instance_type_configs?: matchN(1, [#instance_type_configs, [...#instance_type_configs]])
 		launch_specifications?: matchN(1, [#launch_specifications, list.MaxItems(1) & [...#launch_specifications]])
 	})
 

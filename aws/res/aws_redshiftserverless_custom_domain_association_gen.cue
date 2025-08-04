@@ -6,9 +6,14 @@ package res
 	close({
 		custom_domain_certificate_arn!:         string
 		custom_domain_certificate_expiry_time?: string
-		custom_domain_name!:                    string
-		id?:                                    string
-		region?:                                string
-		workgroup_name!:                        string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
+		custom_domain_name!: string
+		id?:                 string
+		workgroup_name!:     string
 	})
 }

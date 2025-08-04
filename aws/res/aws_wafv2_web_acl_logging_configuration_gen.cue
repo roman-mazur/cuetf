@@ -6,11 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_wafv2_web_acl_logging_configuration")
 	close({
-		logging_filter?: matchN(1, [#logging_filter, list.MaxItems(1) & [...#logging_filter]])
 		id?: string
+
+		// AWS Kinesis Firehose Delivery Stream ARNs
 		log_destination_configs!: [...string]
-		region?:       string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+
+		// AWS WebACL ARN
 		resource_arn!: string
+		logging_filter?: matchN(1, [#logging_filter, list.MaxItems(1) & [...#logging_filter]])
 		redacted_fields?: matchN(1, [#redacted_fields, list.MaxItems(100) & [...#redacted_fields]])
 	})
 

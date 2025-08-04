@@ -9,11 +9,16 @@ package data
 		capacity_duration_hours!:    number
 		currency_code?:              string
 		end_date_range?:             string
-		instance_count!:             number
-		instance_type!:              string
-		region?:                     string
-		start_date_range?:           string
-		tenancy?:                    string
-		upfront_fee?:                string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:           string
+		instance_count!:   number
+		instance_type!:    string
+		start_date_range?: string
+		tenancy?:          string
+		upfront_fee?:      string
 	})
 }

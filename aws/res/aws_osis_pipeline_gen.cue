@@ -8,17 +8,22 @@ package res
 		ingest_endpoint_urls?: [...string]
 		max_units!: number
 		min_units!: number
-		buffer_options?: matchN(1, [#buffer_options, [...#buffer_options]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                      string
 		pipeline_arn?:                string
 		pipeline_configuration_body!: string
+		pipeline_name!:               string
+		buffer_options?: matchN(1, [#buffer_options, [...#buffer_options]])
 		encryption_at_rest_options?: matchN(1, [#encryption_at_rest_options, [...#encryption_at_rest_options]])
-		pipeline_name!: string
-		region?:        string
 		tags?: [string]: string
 		log_publishing_options?: matchN(1, [#log_publishing_options, [...#log_publishing_options]])
 		timeouts?: #timeouts
-		tags_all?: [string]: string
 		vpc_options?: matchN(1, [#vpc_options, [...#vpc_options]])
+		tags_all?: [string]: string
 	})
 
 	#buffer_options: close({
@@ -35,8 +40,25 @@ package res
 	})
 
 	#timeouts: close({
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
 		create?: string
+
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// Setting a timeout for a Delete operation is only applicable if
+		// changes are saved into state before the destroy operation
+		// occurs.
 		delete?: string
+
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
 		update?: string
 	})
 

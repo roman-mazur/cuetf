@@ -6,14 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudwatch_event_endpoint")
 	close({
-		arn?: string
-		event_bus?: matchN(1, [#event_bus, list.MaxItems(2) & [_, _, ...] & [...#event_bus]])
+		arn?:          string
 		description?:  string
 		endpoint_url?: string
-		id?:           string
-		name!:         string
-		region?:       string
-		role_arn?:     string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		id?:     string
+		name!:   string
+		event_bus?: matchN(1, [#event_bus, list.MaxItems(2) & [_, _, ...] & [...#event_bus]])
+		role_arn?: string
 		replication_config?: matchN(1, [#replication_config, list.MaxItems(1) & [...#replication_config]])
 		routing_config?: matchN(1, [#routing_config, list.MaxItems(1) & [_, ...] & [...#routing_config]])
 	})

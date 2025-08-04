@@ -15,22 +15,27 @@ import "list"
 		iam_role_id?: string
 		id?:          string
 		ip_group_ids?: [...string]
-		region?:            string
+		active_directory_config?: matchN(1, [#active_directory_config, list.MaxItems(1) & [...#active_directory_config]])
+		certificate_based_auth_properties?: matchN(1, [#certificate_based_auth_properties, list.MaxItems(1) & [...#certificate_based_auth_properties]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		saml_properties?: matchN(1, [#saml_properties, list.MaxItems(1) & [...#saml_properties]])
 		registration_code?: string
 		subnet_ids?: [...string]
-		active_directory_config?: matchN(1, [#active_directory_config, list.MaxItems(1) & [...#active_directory_config]])
+		self_service_permissions?: matchN(1, [#self_service_permissions, list.MaxItems(1) & [...#self_service_permissions]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		certificate_based_auth_properties?: matchN(1, [#certificate_based_auth_properties, list.MaxItems(1) & [...#certificate_based_auth_properties]])
-		user_identity_type?: string
-		saml_properties?: matchN(1, [#saml_properties, list.MaxItems(1) & [...#saml_properties]])
+		user_identity_type?:              string
 		workspace_directory_description?: string
 		workspace_directory_name?:        string
-		workspace_security_group_id?:     string
-		self_service_permissions?: matchN(1, [#self_service_permissions, list.MaxItems(1) & [...#self_service_permissions]])
 		workspace_access_properties?: matchN(1, [#workspace_access_properties, list.MaxItems(1) & [...#workspace_access_properties]])
+		workspace_security_group_id?: string
+		workspace_type?:              string
 		workspace_creation_properties?: matchN(1, [#workspace_creation_properties, list.MaxItems(1) & [...#workspace_creation_properties]])
-		workspace_type?: string
 	})
 
 	#active_directory_config: close({

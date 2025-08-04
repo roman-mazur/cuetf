@@ -8,10 +8,15 @@ package data
 		id?:                string
 		name?:              string
 		owning_account_id?: string
-		region?:            string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		resource_arns?: [...string]
-		resource_owner!: string
 		filter?: matchN(1, [#filter, [...#filter]])
+		resource_owner!:        string
 		resource_share_status?: string
 		status?:                string
 		tags?: [string]: string

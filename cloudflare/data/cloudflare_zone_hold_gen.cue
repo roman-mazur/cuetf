@@ -7,6 +7,8 @@ package data
 		hold?:               bool
 		hold_after?:         string
 		include_subdomains?: string
-		zone_id!:            string
+
+		// Identifier.
+		zone_id!: string
 	})
 }

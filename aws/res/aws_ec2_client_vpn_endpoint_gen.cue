@@ -12,24 +12,29 @@ import "list"
 		disconnect_on_session_timeout?: bool
 		dns_name?:                      string
 		dns_servers?: [...string]
-		id?:     string
+		id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		security_group_ids?: [...string]
-		authentication_options?: matchN(1, [#authentication_options, list.MaxItems(2) & [_, ...] & [...#authentication_options]])
 		self_service_portal?:     string
 		self_service_portal_url?: string
-		client_connect_options?: matchN(1, [#client_connect_options, list.MaxItems(1) & [...#client_connect_options]])
-		client_login_banner_options?: matchN(1, [#client_login_banner_options, list.MaxItems(1) & [...#client_login_banner_options]])
-		server_certificate_arn!: string
-		client_route_enforcement_options?: matchN(1, [#client_route_enforcement_options, list.MaxItems(1) & [...#client_route_enforcement_options]])
-		connection_log_options?: matchN(1, [#connection_log_options, list.MaxItems(1) & [_, ...] & [...#connection_log_options]])
+		server_certificate_arn!:  string
+		authentication_options?: matchN(1, [#authentication_options, list.MaxItems(2) & [_, ...] & [...#authentication_options]])
 		session_timeout_hours?: number
-		split_tunnel?:          bool
+		client_connect_options?: matchN(1, [#client_connect_options, list.MaxItems(1) & [...#client_connect_options]])
+		split_tunnel?: bool
+		client_login_banner_options?: matchN(1, [#client_login_banner_options, list.MaxItems(1) & [...#client_login_banner_options]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		transport_protocol?: string
 		vpc_id?:             string
-		vpn_port?:           number
+		client_route_enforcement_options?: matchN(1, [#client_route_enforcement_options, list.MaxItems(1) & [...#client_route_enforcement_options]])
+		connection_log_options?: matchN(1, [#connection_log_options, list.MaxItems(1) & [_, ...] & [...#connection_log_options]])
+		vpn_port?: number
 	})
 
 	#authentication_options: close({

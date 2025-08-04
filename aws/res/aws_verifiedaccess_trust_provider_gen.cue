@@ -10,16 +10,21 @@ import "list"
 		device_trust_provider_type?: string
 		id?:                         string
 		policy_reference_name!:      string
-		region?:                     string
 		device_options?: matchN(1, [#device_options, list.MaxItems(1) & [...#device_options]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		native_application_oidc_options?: matchN(1, [#native_application_oidc_options, list.MaxItems(1) & [...#native_application_oidc_options]])
-		oidc_options?: matchN(1, [#oidc_options, list.MaxItems(1) & [...#oidc_options]])
 		trust_provider_type!: string
+		oidc_options?: matchN(1, [#oidc_options, list.MaxItems(1) & [...#oidc_options]])
 		sse_specification?: matchN(1, [#sse_specification, list.MaxItems(1) & [...#sse_specification]])
-		timeouts?:                 #timeouts
 		user_trust_provider_type?: string
+		timeouts?:                 #timeouts
 	})
 
 	#device_options: close({

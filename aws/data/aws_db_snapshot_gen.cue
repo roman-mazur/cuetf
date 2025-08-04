@@ -4,16 +4,22 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_db_snapshot")
 	close({
-		allocated_storage?:             number
-		availability_zone?:             string
-		db_instance_identifier?:        string
-		db_snapshot_arn?:               string
-		db_snapshot_identifier?:        string
-		encrypted?:                     bool
-		engine?:                        string
-		engine_version?:                string
-		id?:                            string
-		include_public?:                bool
+		allocated_storage?:      number
+		availability_zone?:      string
+		db_instance_identifier?: string
+		db_snapshot_arn?:        string
+		db_snapshot_identifier?: string
+		encrypted?:              bool
+		engine?:                 string
+		engine_version?:         string
+		id?:                     string
+		include_public?:         bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                        string
 		include_shared?:                bool
 		iops?:                          number
 		kms_key_id?:                    string
@@ -22,7 +28,6 @@ package data
 		option_group_name?:             string
 		original_snapshot_create_time?: string
 		port?:                          number
-		region?:                        string
 		snapshot_create_time?:          string
 		snapshot_type?:                 string
 		source_db_snapshot_identifier?: string

@@ -15,15 +15,20 @@ import "list"
 			runtime?: string
 		})]
 		inactivity_timeout_minutes?: number
-		instance_type?:              string
-		last_updated_time?:          string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:        string
+		instance_type?: string
+		repositories?: matchN(1, [#repositories, list.MaxItems(100) & [...#repositories]])
+		last_updated_time?: string
 		persistent_storage?: [...close({
 			size?: number
 		})]
-		project_name!: string
-		region?:       string
-		space_name!:   string
-		repositories?: matchN(1, [#repositories, list.MaxItems(100) & [...#repositories]])
+		project_name!:  string
+		space_name!:    string
 		status?:        string
 		status_reason?: string
 		tags?: [string]: string

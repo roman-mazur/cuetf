@@ -9,21 +9,26 @@ import "list"
 		api_key_source?: string
 		arn?:            string
 		binary_media_types?: [...string]
-		body?:                         string
-		created_date?:                 string
+		body?:         string
+		created_date?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                       string
 		description?:                  string
 		disable_execute_api_endpoint?: bool
 		execution_arn?:                string
 		fail_on_warnings?:             bool
-		id?:                           string
-		minimum_compression_size?:     string
-		name!:                         string
+		endpoint_configuration?: matchN(1, [#endpoint_configuration, list.MaxItems(1) & [...#endpoint_configuration]])
+		id?:                       string
+		minimum_compression_size?: string
+		name!:                     string
 		parameters?: [string]: string
 		policy?:            string
 		put_rest_api_mode?: string
-		endpoint_configuration?: matchN(1, [#endpoint_configuration, list.MaxItems(1) & [...#endpoint_configuration]])
-		region?:           string
-		root_resource_id?: string
+		root_resource_id?:  string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

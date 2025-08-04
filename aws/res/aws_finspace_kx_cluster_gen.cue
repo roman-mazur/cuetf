@@ -6,33 +6,38 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_finspace_kx_cluster")
 	close({
-		arn?:                  string
+		arn?: string
+		auto_scaling_configuration?: matchN(1, [#auto_scaling_configuration, list.MaxItems(1) & [...#auto_scaling_configuration]])
 		availability_zone_id?: string
 		az_mode!:              string
 		command_line_arguments?: [string]: string
 		created_timestamp?: string
 		description?:       string
 		environment_id!:    string
-		execution_role?:    string
-		auto_scaling_configuration?: matchN(1, [#auto_scaling_configuration, list.MaxItems(1) & [...#auto_scaling_configuration]])
-		id?:                      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:         string
+		execution_role?: string
+		cache_storage_configurations?: matchN(1, [#cache_storage_configurations, [...#cache_storage_configurations]])
+		id?: string
+		capacity_configuration?: matchN(1, [#capacity_configuration, list.MaxItems(1) & [...#capacity_configuration]])
 		initialization_script?:   string
 		last_modified_timestamp?: string
-		name!:                    string
-		region?:                  string
-		cache_storage_configurations?: matchN(1, [#cache_storage_configurations, [...#cache_storage_configurations]])
+		code?: matchN(1, [#code, list.MaxItems(1) & [...#code]])
+		name!:          string
 		release_label!: string
-		capacity_configuration?: matchN(1, [#capacity_configuration, list.MaxItems(1) & [...#capacity_configuration]])
 		status?:        string
 		status_reason?: string
 		tags?: [string]: string
-		code?: matchN(1, [#code, list.MaxItems(1) & [...#code]])
 		database?: matchN(1, [#database, [...#database]])
 		savedown_storage_configuration?: matchN(1, [#savedown_storage_configuration, list.MaxItems(1) & [...#savedown_storage_configuration]])
 		scaling_group_configuration?: matchN(1, [#scaling_group_configuration, list.MaxItems(1) & [...#scaling_group_configuration]])
-		tickerplant_log_configuration?: matchN(1, [#tickerplant_log_configuration, [...#tickerplant_log_configuration]])
 		tags_all?: [string]: string
-		type!:     string
+		type!: string
+		tickerplant_log_configuration?: matchN(1, [#tickerplant_log_configuration, [...#tickerplant_log_configuration]])
 		timeouts?: #timeouts
 		vpc_configuration?: matchN(1, [#vpc_configuration, list.MaxItems(1) & [_, ...] & [...#vpc_configuration]])
 	})

@@ -10,14 +10,19 @@ import "list"
 		description?: string
 		id?:          string
 		index_id!:    string
-		name!:        string
-		region?:      string
 		source_s3_path?: matchN(1, [#source_s3_path, list.MaxItems(1) & [_, ...] & [...#source_s3_path]])
+		name!: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:   string
 		role_arn!: string
 		status?:   string
-		timeouts?: #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		timeouts?:     #timeouts
 		thesaurus_id?: string
 	})
 

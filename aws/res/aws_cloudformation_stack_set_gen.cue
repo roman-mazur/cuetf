@@ -13,19 +13,24 @@ import "list"
 		description?:         string
 		execution_role_name?: string
 		id?:                  string
-		name!:                string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		name!:   string
 		parameters?: [string]: string
 		permission_model?: string
 		auto_deployment?: matchN(1, [#auto_deployment, list.MaxItems(1) & [...#auto_deployment]])
-		managed_execution?: matchN(1, [#managed_execution, list.MaxItems(1) & [...#managed_execution]])
-		operation_preferences?: matchN(1, [#operation_preferences, list.MaxItems(1) & [...#operation_preferences]])
-		region?:       string
 		stack_set_id?: string
+		managed_execution?: matchN(1, [#managed_execution, list.MaxItems(1) & [...#managed_execution]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		operation_preferences?: matchN(1, [#operation_preferences, list.MaxItems(1) & [...#operation_preferences]])
+		timeouts?:      #timeouts
 		template_body?: string
 		template_url?:  string
-		timeouts?:      #timeouts
 	})
 
 	#auto_deployment: close({

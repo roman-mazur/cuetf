@@ -19,9 +19,15 @@ package data
 		description?:      string
 		ena_support?:      bool
 		executable_users?: [...string]
-		hypervisor?:         string
-		id?:                 string
-		image_id?:           string
+		hypervisor?: string
+		id?:         string
+		image_id?:   string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
 		image_location?:     string
 		image_owner_alias?:  string
 		image_type?:         string
@@ -30,8 +36,9 @@ package data
 		kernel_id?:          string
 		last_launched_time?: string
 		most_recent?:        bool
-		name?:               string
 		filter?: matchN(1, [#filter, [...#filter]])
+		timeouts?:   #timeouts
+		name?:       string
 		name_regex?: string
 		owner_id?:   string
 		owners?: [...string]
@@ -43,9 +50,7 @@ package data
 		})]
 		public?:            bool
 		ramdisk_id?:        string
-		region?:            string
 		root_device_name?:  string
-		timeouts?:          #timeouts
 		root_device_type?:  string
 		root_snapshot_id?:  string
 		sriov_net_support?: string

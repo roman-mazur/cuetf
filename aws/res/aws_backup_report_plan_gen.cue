@@ -10,13 +10,18 @@ import "list"
 		creation_time?:     string
 		deployment_status?: string
 		description?:       string
-		report_delivery_channel?: matchN(1, [#report_delivery_channel, list.MaxItems(1) & [_, ...] & [...#report_delivery_channel]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		id?:     string
 		name!:   string
-		region?: string
-		tags?: [string]:     string
-		tags_all?: [string]: string
+		tags?: [string]: string
+		report_delivery_channel?: matchN(1, [#report_delivery_channel, list.MaxItems(1) & [_, ...] & [...#report_delivery_channel]])
 		report_setting?: matchN(1, [#report_setting, list.MaxItems(1) & [_, ...] & [...#report_setting]])
+		tags_all?: [string]: string
 	})
 
 	#report_delivery_channel: close({

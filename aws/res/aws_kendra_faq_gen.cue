@@ -13,12 +13,17 @@ import "list"
 		faq_id?:        string
 		file_format?:   string
 		id?:            string
-		index_id!:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:   string
+		index_id!: string
 		s3_path?: matchN(1, [#s3_path, list.MaxItems(1) & [_, ...] & [...#s3_path]])
+		timeouts?:      #timeouts
 		language_code?: string
 		name!:          string
-		region?:        string
-		timeouts?:      #timeouts
 		role_arn!:      string
 		status?:        string
 		tags?: [string]:     string

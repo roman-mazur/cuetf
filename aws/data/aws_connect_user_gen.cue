@@ -16,13 +16,18 @@ package data
 		})]
 		instance_id!: string
 		name?:        string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		phone_config?: [...close({
 			after_contact_work_time_limit?: number
 			auto_accept?:                   bool
 			desk_phone_number?:             string
 			phone_type?:                    string
 		})]
-		region?:             string
 		routing_profile_id?: string
 		security_profile_ids?: [...string]
 		tags?: [string]: string

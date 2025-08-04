@@ -13,16 +13,21 @@ import "list"
 		name!:         string
 		owner?:        string
 		parent_image!: string
-		platform?:     string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:   string
+		platform?: string
 		block_device_mapping?: matchN(1, [#block_device_mapping, [...#block_device_mapping]])
-		component?: matchN(1, [#component, [_, ...] & [...#component]])
-		region?: string
-		tags?: [string]: string
-		systems_manager_agent?: matchN(1, [#systems_manager_agent, list.MaxItems(1) & [...#systems_manager_agent]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
+		component?: matchN(1, [#component, [_, ...] & [...#component]])
 		user_data_base64?:  string
 		version!:           string
 		working_directory?: string
+		systems_manager_agent?: matchN(1, [#systems_manager_agent, list.MaxItems(1) & [...#systems_manager_agent]])
 	})
 
 	#block_device_mapping: close({

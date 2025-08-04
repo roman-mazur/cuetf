@@ -8,12 +8,17 @@ package res
 		authorizer_credentials?:           string
 		authorizer_result_ttl_in_seconds?: number
 		authorizer_uri?:                   string
-		id?:                               string
-		identity_source?:                  string
-		identity_validation_expression?:   string
-		name!:                             string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                         string
+		id?:                             string
+		identity_source?:                string
+		identity_validation_expression?: string
+		name!:                           string
 		provider_arns?: [...string]
-		region?:      string
 		rest_api_id!: string
 		type?:        string
 	})

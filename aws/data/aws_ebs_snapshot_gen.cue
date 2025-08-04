@@ -13,12 +13,17 @@ package data
 		most_recent?:            bool
 		outpost_arn?:            string
 		owner_alias?:            string
-		owner_id?:               string
-		owners?: [...string]
 		filter?: matchN(1, [#filter, [...#filter]])
-		region?: string
+		owner_id?: string
+		owners?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:   string
+		timeouts?: #timeouts
 		restorable_by_user_ids?: [...string]
-		timeouts?:    #timeouts
 		snapshot_id?: string
 		snapshot_ids?: [...string]
 		start_time?:   string

@@ -6,8 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_fms_policy")
 	close({
-		arn?: string
-		exclude_map?: matchN(1, [#exclude_map, list.MaxItems(1) & [...#exclude_map]])
+		arn?:                                string
 		delete_all_policy_resources?:        bool
 		delete_unused_fm_managed_resources?: bool
 		description?:                        string
@@ -15,17 +14,23 @@ import "list"
 		id?:                                 string
 		name!:                               string
 		policy_update_token?:                string
-		region?:                             string
-		remediation_enabled?:                bool
-		include_map?: matchN(1, [#include_map, list.MaxItems(1) & [...#include_map]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:              string
+		remediation_enabled?: bool
+		exclude_map?: matchN(1, [#exclude_map, list.MaxItems(1) & [...#exclude_map]])
 		resource_set_ids?: [...string]
 		resource_tag_logical_operator?: string
 		resource_tags?: [string]: string
 		resource_type?: string
-		security_service_policy_data?: matchN(1, [#security_service_policy_data, list.MaxItems(1) & [_, ...] & [...#security_service_policy_data]])
 		resource_type_list?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		include_map?: matchN(1, [#include_map, list.MaxItems(1) & [...#include_map]])
+		security_service_policy_data?: matchN(1, [#security_service_policy_data, list.MaxItems(1) & [_, ...] & [...#security_service_policy_data]])
 	})
 
 	#exclude_map: close({

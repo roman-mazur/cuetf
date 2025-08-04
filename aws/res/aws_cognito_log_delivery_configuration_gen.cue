@@ -5,6 +5,11 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cognito_log_delivery_configuration")
 	close({
 		log_configurations?: matchN(1, [#log_configurations, [...#log_configurations]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:       string
 		user_pool_id!: string
 	})

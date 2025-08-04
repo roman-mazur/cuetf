@@ -11,11 +11,16 @@ import "list"
 		deployment_status?: string
 		description?:       string
 		id?:                string
-		name!:              string
-		region?:            string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		control?: matchN(1, [#control, [_, ...] & [...#control]])
-		status?:   string
+		name!:     string
 		timeouts?: #timeouts
+		status?:   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

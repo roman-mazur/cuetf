@@ -15,6 +15,12 @@ import "list"
 		dns_record_client_routing_policy?: string
 		drop_invalid_header_fields?:       bool
 		enable_cross_zone_load_balancing?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		access_logs?: matchN(1, [#access_logs, list.MaxItems(1) & [...#access_logs]])
 		enable_deletion_protection?:                                   bool
 		enable_http2?:                                                 bool
@@ -24,26 +30,25 @@ import "list"
 		enable_zonal_shift?:                                           bool
 		enforce_security_group_inbound_rules_on_private_link_traffic?: string
 		id?:                                                           string
-		idle_timeout?:                                                 number
 		connection_logs?: matchN(1, [#connection_logs, list.MaxItems(1) & [...#connection_logs]])
-		internal?: bool
+		idle_timeout?:    number
+		internal?:        bool
+		ip_address_type?: string
 		ipam_pools?: matchN(1, [#ipam_pools, list.MaxItems(1) & [...#ipam_pools]])
-		ip_address_type?:      string
 		load_balancer_type?:   string
 		name?:                 string
 		name_prefix?:          string
 		preserve_host_header?: bool
-		region?:               string
 		security_groups?: [...string]
 		subnets?: [...string]
+		minimum_load_balancer_capacity?: matchN(1, [#minimum_load_balancer_capacity, list.MaxItems(1) & [...#minimum_load_balancer_capacity]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		subnet_mapping?: matchN(1, [#subnet_mapping, [...#subnet_mapping]])
+		timeouts?:                   #timeouts
 		vpc_id?:                     string
 		xff_header_processing_mode?: string
 		zone_id?:                    string
-		minimum_load_balancer_capacity?: matchN(1, [#minimum_load_balancer_capacity, list.MaxItems(1) & [...#minimum_load_balancer_capacity]])
-		subnet_mapping?: matchN(1, [#subnet_mapping, [...#subnet_mapping]])
-		timeouts?: #timeouts
 	})
 
 	#access_logs: close({

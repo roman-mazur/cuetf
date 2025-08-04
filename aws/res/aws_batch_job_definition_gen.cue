@@ -6,26 +6,31 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_batch_job_definition")
 	close({
-		arn?: string
-		eks_properties?: matchN(1, [#eks_properties, list.MaxItems(1) & [...#eks_properties]])
+		arn?:                        string
 		arn_prefix?:                 string
 		container_properties?:       string
 		deregister_on_new_revision?: bool
 		ecs_properties?:             string
 		id?:                         string
 		name!:                       string
-		node_properties?:            string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:          string
+		node_properties?: string
 		parameters?: [string]: string
 		platform_capabilities?: [...string]
-		retry_strategy?: matchN(1, [#retry_strategy, list.MaxItems(1) & [...#retry_strategy]])
+		eks_properties?: matchN(1, [#eks_properties, list.MaxItems(1) & [...#eks_properties]])
 		propagate_tags?:      bool
-		region?:              string
 		revision?:            number
 		scheduling_priority?: number
-		timeout?: matchN(1, [#timeout, list.MaxItems(1) & [...#timeout]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type!: string
+		retry_strategy?: matchN(1, [#retry_strategy, list.MaxItems(1) & [...#retry_strategy]])
+		timeout?: matchN(1, [#timeout, list.MaxItems(1) & [...#timeout]])
 	})
 
 	#eks_properties: close({

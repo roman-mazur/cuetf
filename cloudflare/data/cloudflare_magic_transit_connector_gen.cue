@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_magic_transit_connector")
 	close({
+		// Account identifier
 		account_id!:                      string
 		activated?:                       bool
 		connector_id?:                    string
@@ -14,10 +15,10 @@ package data
 		last_seen_version?:               string
 		last_updated?:                    string
 		notes?:                           string
-		timezone?:                        string
 		device?: close({
 			id?:            string
 			serial_number?: string
 		})
+		timezone?: string
 	})
 }

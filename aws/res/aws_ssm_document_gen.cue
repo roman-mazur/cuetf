@@ -14,13 +14,19 @@ import "list"
 		document_format?:  string
 		document_type!:    string
 		document_version?: string
-		hash?:             string
-		hash_type?:        string
-		id?:               string
-		latest_version?:   string
-		name!:             string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:    string
+		hash?:      string
+		hash_type?: string
+		id?:        string
 		attachments_source?: matchN(1, [#attachments_source, list.MaxItems(20) & [...#attachments_source]])
-		owner?: string
+		latest_version?: string
+		name!:           string
+		owner?:          string
 		parameter?: [...close({
 			default_value?: string
 			description?:   string
@@ -29,7 +35,6 @@ import "list"
 		})]
 		permissions?: [string]: string
 		platform_types?: [...string]
-		region?:         string
 		schema_version?: string
 		status?:         string
 		tags?: [string]:     string

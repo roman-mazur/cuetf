@@ -5,14 +5,24 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_issue_labels")
 	close({
 		label?: matchN(1, [#label, [...#label]])
-		id?:         string
+		id?: string
+
+		// The GitHub repository.
 		repository!: string
 	})
 
 	#label: close({
-		color!:       string
+		// A 6 character hex code, without the leading '#', identifying
+		// the color of the label.
+		color!: string
+
+		// A short description of the label.
 		description?: string
-		name!:        string
-		url?:         string
+
+		// The name of the label.
+		name!: string
+
+		// The URL to the issue label.
+		url?: string
 	})
 }

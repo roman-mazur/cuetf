@@ -6,34 +6,42 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_transfer_server")
 	close({
-		arn?:                    string
-		certificate?:            string
-		directory_id?:           string
-		domain?:                 string
-		endpoint?:               string
-		endpoint_type?:          string
-		force_destroy?:          bool
-		function?:               string
+		arn?:          string
+		certificate?:  string
+		directory_id?: string
+		domain?:       string
+		endpoint?:     string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:        string
+		endpoint_type?: string
+		force_destroy?: bool
+		function?:      string
+
+		// This is a set of arns of destinations that will receive
+		// structured logs from the transfer server
+		structured_log_destinations?: [...string]
 		host_key?:               string
 		host_key_fingerprint?:   string
 		id?:                     string
 		identity_provider_type?: string
-		invocation_role?:        string
 		endpoint_details?: matchN(1, [#endpoint_details, list.MaxItems(1) & [...#endpoint_details]])
-		protocol_details?: matchN(1, [#protocol_details, list.MaxItems(1) & [...#protocol_details]])
-		s3_storage_options?: matchN(1, [#s3_storage_options, list.MaxItems(1) & [...#s3_storage_options]])
+		invocation_role?:                  string
 		logging_role?:                     string
 		post_authentication_login_banner?: string
 		pre_authentication_login_banner?:  string
 		protocols?: [...string]
-		region?:                      string
+		protocol_details?: matchN(1, [#protocol_details, list.MaxItems(1) & [...#protocol_details]])
 		security_policy_name?:        string
 		sftp_authentication_methods?: string
-		structured_log_destinations?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		url?: string
+		s3_storage_options?: matchN(1, [#s3_storage_options, list.MaxItems(1) & [...#s3_storage_options]])
 		workflow_details?: matchN(1, [#workflow_details, list.MaxItems(1) & [...#workflow_details]])
+		url?: string
 	})
 
 	#endpoint_details: close({

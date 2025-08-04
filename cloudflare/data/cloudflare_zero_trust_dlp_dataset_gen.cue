@@ -7,34 +7,55 @@ package data
 		account_id!:     string
 		case_sensitive?: bool
 		columns?: matchN(1, [close({
-			entry_id?:      string
-			header_name?:   string
-			num_cells?:     number
+			entry_id?:    string
+			header_name?: string
+			num_cells?:   number
+
+			// Available values: "empty", "uploading", "pending",
+			// "processing", "failed", "complete".
 			upload_status?: string
 		}), [...close({
-			entry_id?:      string
-			header_name?:   string
-			num_cells?:     number
+			entry_id?:    string
+			header_name?: string
+			num_cells?:   number
+
+			// Available values: "empty", "uploading", "pending",
+			// "processing", "failed", "complete".
 			upload_status?: string
 		})]])
-		created_at?:       string
+
+		// The description of the dataset.
+		description?: string
+		created_at?:  string
+
+		// Available values: "empty", "uploading", "pending",
+		// "processing", "failed", "complete".
+		status?:           string
 		dataset_id!:       string
-		description?:      string
 		encoding_version?: number
-		id?:               string
-		name?:             string
 		uploads?: matchN(1, [close({
 			num_cells?: number
-			status?:    string
-			version?:   number
+
+			// Available values: "empty", "uploading", "pending",
+			// "processing", "failed", "complete".
+			status?:  string
+			version?: number
 		}), [...close({
 			num_cells?: number
-			status?:    string
-			version?:   number
+
+			// Available values: "empty", "uploading", "pending",
+			// "processing", "failed", "complete".
+			status?:  string
+			version?: number
 		})]])
+		id?: string
+
+		// When the dataset was last updated.
+		//
+		// This includes name or description changes as well as uploads.
+		updated_at?: string
+		name?:       string
 		num_cells?:  number
 		secret?:     bool
-		status?:     string
-		updated_at?: string
 	})
 }

@@ -12,19 +12,24 @@ package data
 		content_encoding?:    string
 		content_language?:    string
 		content_length?:      number
-		content_type?:        string
-		etag?:                string
-		expiration?:          string
-		expires?:             string
-		id?:                  string
-		key!:                 string
-		last_modified?:       string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:        string
+		content_type?:  string
+		etag?:          string
+		expiration?:    string
+		expires?:       string
+		id?:            string
+		key!:           string
+		last_modified?: string
 		metadata?: [string]: string
 		object_lock_legal_hold_status?: string
 		object_lock_mode?:              string
 		object_lock_retain_until_date?: string
 		range?:                         string
-		region?:                        string
 		server_side_encryption?:        string
 		sse_kms_key_id?:                string
 		storage_class?:                 string

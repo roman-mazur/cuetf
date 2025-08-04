@@ -6,12 +6,24 @@ package res
 	close({
 		account_id!: string
 		domains!: matchN(1, [close({
+			// A description of the fallback domain, displayed in the client
+			// UI.
 			description?: string
+
+			// A list of IP addresses to handle domain resolution.
 			dns_server?: [...string]
+
+			// The domain suffix to match when resolving locally.
 			suffix!: string
 		}), [...close({
+			// A description of the fallback domain, displayed in the client
+			// UI.
 			description?: string
+
+			// A list of IP addresses to handle domain resolution.
 			dns_server?: [...string]
+
+			// The domain suffix to match when resolving locally.
 			suffix!: string
 		})]])
 		id?: string

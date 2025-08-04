@@ -4,21 +4,43 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_email_security_block_sender")
 	close({
-		account_id!:    string
-		comments?:      string
+		// Account Identifier
+		account_id!: string
+
+		// The unique identifier for the allow policy.
+		id?:       number
+		comments?: string
+
+		// The unique identifier for the allow policy.
+		pattern_id?: number
+
+		// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+		pattern_type?:  string
 		created_at?:    string
-		id?:            number
 		is_regex?:      bool
 		last_modified?: string
 		pattern?:       string
 		filter?: close({
-			direction?:    string
-			order?:        string
-			pattern?:      string
+			// The sorting direction.
+			// Available values: "asc", "desc".
+			direction?: string
+
+			// The field to sort by.
+			// Available values: "pattern", "created_at".
+			order?:   string
+			pattern?: string
+
+			// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 			pattern_type?: string
-			search?:       string
+
+			// Allows searching in multiple properties of a record
+			// simultaneously.
+			// This parameter is intended for human users, not automation. Its
+			// exact
+			// behavior is intentionally left unspecified and is subject to
+			// change
+			// in the future.
+			search?: string
 		})
-		pattern_id?:   number
-		pattern_type?: string
 	})
 }
