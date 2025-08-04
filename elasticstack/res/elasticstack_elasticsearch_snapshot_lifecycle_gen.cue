@@ -5,24 +5,26 @@ import "list"
 #elasticstack_elasticsearch_snapshot_lifecycle: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_snapshot_lifecycle")
-	expand_wildcards?: string
-	expire_after?:     string
-	feature_states?: [...string]
-	id?:                   string
-	ignore_unavailable?:   bool
-	include_global_state?: bool
-	indices?: [...string]
-	max_count?:     number
-	metadata?:      string
-	min_count?:     number
-	name!:          string
-	partial?:       bool
-	repository!:    string
-	schedule!:      string
-	snapshot_name?: string
-	elasticsearch_connection?: #elasticsearch_connection | list.MaxItems(1) & [...#elasticsearch_connection]
+	close({
+		expand_wildcards?: string
+		expire_after?:     string
+		feature_states?: [...string]
+		id?:                   string
+		ignore_unavailable?:   bool
+		include_global_state?: bool
+		indices?: [...string]
+		max_count?: number
+		metadata?:  string
+		min_count?: number
+		name!:      string
+		partial?:   bool
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+		repository!:    string
+		schedule!:      string
+		snapshot_name?: string
+	})
 
-	#elasticsearch_connection: {
+	#elasticsearch_connection: close({
 		api_key?:      string
 		bearer_token?: string
 		ca_data?:      string
@@ -31,10 +33,11 @@ import "list"
 		cert_file?:    string
 		endpoints?: [...string]
 		es_client_authentication?: string
-		insecure?:                 bool
-		key_data?:                 string
-		key_file?:                 string
-		password?:                 string
-		username?:                 string
-	}
+		headers?: [string]: string
+		insecure?: bool
+		key_data?: string
+		key_file?: string
+		password?: string
+		username?: string
+	})
 }
