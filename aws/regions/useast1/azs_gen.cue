@@ -1,7 +1,6 @@
 package useast1
 
 AvailabilityZones: [{
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "us-east-1"
@@ -10,8 +9,9 @@ AvailabilityZones: [{
 	GroupName:          "us-east-1-zg-1"
 	NetworkBorderGroup: "us-east-1"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "US East (N. Virginia) 1"
+	State:              "available"
 }, {
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "us-east-1"
@@ -20,8 +20,9 @@ AvailabilityZones: [{
 	GroupName:          "us-east-1-zg-1"
 	NetworkBorderGroup: "us-east-1"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "US East (N. Virginia) 1"
+	State:              "available"
 }, {
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "us-east-1"
@@ -30,8 +31,9 @@ AvailabilityZones: [{
 	GroupName:          "us-east-1-zg-1"
 	NetworkBorderGroup: "us-east-1"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "US East (N. Virginia) 1"
+	State:              "available"
 }, {
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "us-east-1"
@@ -40,8 +42,9 @@ AvailabilityZones: [{
 	GroupName:          "us-east-1-zg-1"
 	NetworkBorderGroup: "us-east-1"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "US East (N. Virginia) 1"
+	State:              "available"
 }, {
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "us-east-1"
@@ -50,8 +53,9 @@ AvailabilityZones: [{
 	GroupName:          "us-east-1-zg-1"
 	NetworkBorderGroup: "us-east-1"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "US East (N. Virginia) 1"
+	State:              "available"
 }, {
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "us-east-1"
@@ -60,4 +64,6 @@ AvailabilityZones: [{
 	GroupName:          "us-east-1-zg-1"
 	NetworkBorderGroup: "us-east-1"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "US East (N. Virginia) 1"
+	State:              "available"
 }]

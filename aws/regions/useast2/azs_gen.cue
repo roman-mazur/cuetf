@@ -1,7 +1,6 @@
 package useast2
 
 AvailabilityZones: [{
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "us-east-2"
@@ -10,8 +9,9 @@ AvailabilityZones: [{
 	GroupName:          "us-east-2-zg-1"
 	NetworkBorderGroup: "us-east-2"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "US East (Ohio) 1"
+	State:              "available"
 }, {
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "us-east-2"
@@ -20,8 +20,9 @@ AvailabilityZones: [{
 	GroupName:          "us-east-2-zg-1"
 	NetworkBorderGroup: "us-east-2"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "US East (Ohio) 1"
+	State:              "available"
 }, {
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "us-east-2"
@@ -30,4 +31,6 @@ AvailabilityZones: [{
 	GroupName:          "us-east-2-zg-1"
 	NetworkBorderGroup: "us-east-2"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "US East (Ohio) 1"
+	State:              "available"
 }]

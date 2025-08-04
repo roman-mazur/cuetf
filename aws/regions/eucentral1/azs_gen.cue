@@ -1,7 +1,6 @@
 package eucentral1
 
 AvailabilityZones: [{
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "eu-central-1"
@@ -10,8 +9,9 @@ AvailabilityZones: [{
 	GroupName:          "eu-central-1-zg-1"
 	NetworkBorderGroup: "eu-central-1"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "Europe (Frankfurt) 1"
+	State:              "available"
 }, {
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "eu-central-1"
@@ -20,8 +20,9 @@ AvailabilityZones: [{
 	GroupName:          "eu-central-1-zg-1"
 	NetworkBorderGroup: "eu-central-1"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "Europe (Frankfurt) 1"
+	State:              "available"
 }, {
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "eu-central-1"
@@ -30,4 +31,6 @@ AvailabilityZones: [{
 	GroupName:          "eu-central-1-zg-1"
 	NetworkBorderGroup: "eu-central-1"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "Europe (Frankfurt) 1"
+	State:              "available"
 }]

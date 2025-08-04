@@ -1,7 +1,6 @@
 package uswest1
 
 AvailabilityZones: [{
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "us-west-1"
@@ -10,8 +9,9 @@ AvailabilityZones: [{
 	GroupName:          "us-west-1-zg-1"
 	NetworkBorderGroup: "us-west-1"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "US West (N. California) 1"
+	State:              "available"
 }, {
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "us-west-1"
@@ -20,4 +20,6 @@ AvailabilityZones: [{
 	GroupName:          "us-west-1-zg-1"
 	NetworkBorderGroup: "us-west-1"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "US West (N. California) 1"
+	State:              "available"
 }]

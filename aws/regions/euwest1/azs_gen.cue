@@ -1,7 +1,6 @@
 package euwest1
 
 AvailabilityZones: [{
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "eu-west-1"
@@ -10,8 +9,9 @@ AvailabilityZones: [{
 	GroupName:          "eu-west-1-zg-1"
 	NetworkBorderGroup: "eu-west-1"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "Europe (Ireland) 1"
+	State:              "available"
 }, {
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "eu-west-1"
@@ -20,8 +20,9 @@ AvailabilityZones: [{
 	GroupName:          "eu-west-1-zg-1"
 	NetworkBorderGroup: "eu-west-1"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "Europe (Ireland) 1"
+	State:              "available"
 }, {
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "eu-west-1"
@@ -30,4 +31,6 @@ AvailabilityZones: [{
 	GroupName:          "eu-west-1-zg-1"
 	NetworkBorderGroup: "eu-west-1"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "Europe (Ireland) 1"
+	State:              "available"
 }]

@@ -1,7 +1,6 @@
 package uswest2
 
 AvailabilityZones: [{
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "us-west-2"
@@ -10,8 +9,9 @@ AvailabilityZones: [{
 	GroupName:          "us-west-2-zg-1"
 	NetworkBorderGroup: "us-west-2"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "US West (Oregon) 1"
+	State:              "available"
 }, {
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "us-west-2"
@@ -20,8 +20,9 @@ AvailabilityZones: [{
 	GroupName:          "us-west-2-zg-1"
 	NetworkBorderGroup: "us-west-2"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "US West (Oregon) 1"
+	State:              "available"
 }, {
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "us-west-2"
@@ -30,8 +31,9 @@ AvailabilityZones: [{
 	GroupName:          "us-west-2-zg-1"
 	NetworkBorderGroup: "us-west-2"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "US West (Oregon) 1"
+	State:              "available"
 }, {
-	State:       "available"
 	OptInStatus: "opt-in-not-required"
 	Messages: []
 	RegionName:         "us-west-2"
@@ -40,4 +42,6 @@ AvailabilityZones: [{
 	GroupName:          "us-west-2-zg-1"
 	NetworkBorderGroup: "us-west-2"
 	ZoneType:           "availability-zone"
+	GroupLongName:      "US West (Oregon) 1"
+	State:              "available"
 }]
