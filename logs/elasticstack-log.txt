@@ -1,0 +1,182 @@
+2025/08/04 20:26:11 1/1 provider at elasticstack
+2025/08/04 20:26:12 DONE in 119.313672ms: provider at elasticstack
+2025/08/04 20:26:12 1/52 elasticstack_kibana_action_connector at elasticstack/data
+2025/08/04 20:26:12 1/36 elasticstack_elasticsearch_component_template at elasticstack/res
+2025/08/04 20:26:12 DONE in 152.551284ms: elasticstack_kibana_action_connector at elasticstack/data
+2025/08/04 20:26:12 2/52 elasticstack_elasticsearch_enrich_policy at elasticstack/data
+2025/08/04 20:26:12 DONE in 160.336364ms: elasticstack_elasticsearch_component_template at elasticstack/res
+2025/08/04 20:26:12 2/36 elasticstack_elasticsearch_security_role at elasticstack/res
+2025/08/04 20:26:12 DONE in 137.13856ms: elasticstack_elasticsearch_enrich_policy at elasticstack/data
+2025/08/04 20:26:12 3/52 elasticstack_elasticsearch_ingest_processor_bytes at elasticstack/data
+2025/08/04 20:26:12 DONE in 158.10493ms: elasticstack_elasticsearch_security_role at elasticstack/res
+2025/08/04 20:26:12 3/36 elasticstack_kibana_synthetics_monitor at elasticstack/res
+2025/08/04 20:26:12 DONE in 135.403672ms: elasticstack_elasticsearch_ingest_processor_bytes at elasticstack/data
+2025/08/04 20:26:12 4/52 elasticstack_elasticsearch_ingest_processor_geoip at elasticstack/data
+2025/08/04 20:26:12 ERROR with elasticstack_kibana_synthetics_monitor
+2025/08/04 20:26:12 DONE in 122.275998ms: elasticstack_kibana_synthetics_monitor at elasticstack/res
+2025/08/04 20:26:12 4/36 elasticstack_elasticsearch_security_api_key at elasticstack/res
+2025/08/04 20:26:12 DONE in 136.144399ms: elasticstack_elasticsearch_ingest_processor_geoip at elasticstack/data
+2025/08/04 20:26:12 5/52 elasticstack_elasticsearch_ingest_processor_sort at elasticstack/data
+2025/08/04 20:26:12 DONE in 143.157771ms: elasticstack_elasticsearch_security_api_key at elasticstack/res
+2025/08/04 20:26:12 5/36 elasticstack_elasticsearch_watch at elasticstack/res
+2025/08/04 20:26:12 DONE in 136.785515ms: elasticstack_elasticsearch_ingest_processor_sort at elasticstack/data
+2025/08/04 20:26:12 6/52 elasticstack_elasticsearch_ingest_processor_trim at elasticstack/data
+2025/08/04 20:26:12 DONE in 135.514502ms: elasticstack_elasticsearch_watch at elasticstack/res
+2025/08/04 20:26:12 6/36 elasticstack_kibana_alerting_rule at elasticstack/res
+2025/08/04 20:26:12 DONE in 134.896452ms: elasticstack_elasticsearch_ingest_processor_trim at elasticstack/data
+2025/08/04 20:26:12 7/52 elasticstack_elasticsearch_ingest_processor_community_id at elasticstack/data
+2025/08/04 20:26:12 DONE in 150.090088ms: elasticstack_kibana_alerting_rule at elasticstack/res
+2025/08/04 20:26:12 7/36 elasticstack_elasticsearch_data_stream_lifecycle at elasticstack/res
+2025/08/04 20:26:13 DONE in 140.142541ms: elasticstack_elasticsearch_ingest_processor_community_id at elasticstack/data
+2025/08/04 20:26:13 8/52 elasticstack_elasticsearch_ingest_processor_dissect at elasticstack/data
+2025/08/04 20:26:13 DONE in 147.136543ms: elasticstack_elasticsearch_data_stream_lifecycle at elasticstack/res
+2025/08/04 20:26:13 8/36 elasticstack_elasticsearch_security_role_mapping at elasticstack/res
+2025/08/04 20:26:13 DONE in 136.155026ms: elasticstack_elasticsearch_ingest_processor_dissect at elasticstack/data
+2025/08/04 20:26:13 9/52 elasticstack_elasticsearch_ingest_processor_drop at elasticstack/data
+2025/08/04 20:26:13 DONE in 142.633336ms: elasticstack_elasticsearch_security_role_mapping at elasticstack/res
+2025/08/04 20:26:13 9/36 elasticstack_kibana_action_connector at elasticstack/res
+2025/08/04 20:26:13 DONE in 136.641788ms: elasticstack_elasticsearch_ingest_processor_drop at elasticstack/data
+2025/08/04 20:26:13 10/52 elasticstack_elasticsearch_ingest_processor_foreach at elasticstack/data
+2025/08/04 20:26:13 DONE in 136.783878ms: elasticstack_kibana_action_connector at elasticstack/res
+2025/08/04 20:26:13 10/36 elasticstack_kibana_data_view at elasticstack/res
+2025/08/04 20:26:13 DONE in 138.855795ms: elasticstack_elasticsearch_ingest_processor_foreach at elasticstack/data
+2025/08/04 20:26:13 11/52 elasticstack_elasticsearch_ingest_processor_gsub at elasticstack/data
+2025/08/04 20:26:13 DONE in 145.139256ms: elasticstack_kibana_data_view at elasticstack/res
+2025/08/04 20:26:13 11/36 elasticstack_kibana_space at elasticstack/res
+2025/08/04 20:26:13 DONE in 137.331474ms: elasticstack_elasticsearch_ingest_processor_gsub at elasticstack/data
+2025/08/04 20:26:13 12/52 elasticstack_elasticsearch_ingest_processor_set_security_user at elasticstack/data
+2025/08/04 20:26:13 DONE in 137.06605ms: elasticstack_kibana_space at elasticstack/res
+2025/08/04 20:26:13 12/36 elasticstack_kibana_synthetics_private_location at elasticstack/res
+2025/08/04 20:26:13 DONE in 137.939591ms: elasticstack_elasticsearch_ingest_processor_set_security_user at elasticstack/data
+2025/08/04 20:26:13 13/52 elasticstack_elasticsearch_ingest_processor_user_agent at elasticstack/data
+2025/08/04 20:26:13 DONE in 138.819494ms: elasticstack_kibana_synthetics_private_location at elasticstack/res
+2025/08/04 20:26:13 13/36 elasticstack_elasticsearch_index at elasticstack/res
+2025/08/04 20:26:13 DONE in 137.767453ms: elasticstack_elasticsearch_ingest_processor_user_agent at elasticstack/data
+2025/08/04 20:26:13 14/52 elasticstack_elasticsearch_security_role_mapping at elasticstack/data
+2025/08/04 20:26:13 DONE in 172.860047ms: elasticstack_elasticsearch_index at elasticstack/res
+2025/08/04 20:26:13 14/36 elasticstack_elasticsearch_security_system_user at elasticstack/res
+2025/08/04 20:26:14 DONE in 145.778124ms: elasticstack_elasticsearch_security_role_mapping at elasticstack/data
+2025/08/04 20:26:14 15/52 elasticstack_elasticsearch_index_template at elasticstack/data
+2025/08/04 20:26:14 DONE in 142.274121ms: elasticstack_elasticsearch_security_system_user at elasticstack/res
+2025/08/04 20:26:14 15/36 elasticstack_elasticsearch_transform at elasticstack/res
+2025/08/04 20:26:14 DONE in 149.093138ms: elasticstack_elasticsearch_index_template at elasticstack/data
+2025/08/04 20:26:14 16/52 elasticstack_elasticsearch_ingest_processor_circle at elasticstack/data
+2025/08/04 20:26:14 DONE in 157.555129ms: elasticstack_elasticsearch_transform at elasticstack/res
+2025/08/04 20:26:14 16/36 elasticstack_kibana_import_saved_objects at elasticstack/res
+2025/08/04 20:26:14 DONE in 143.840769ms: elasticstack_elasticsearch_ingest_processor_circle at elasticstack/data
+2025/08/04 20:26:14 17/52 elasticstack_elasticsearch_ingest_processor_kv at elasticstack/data
+2025/08/04 20:26:14 DONE in 145.266636ms: elasticstack_kibana_import_saved_objects at elasticstack/res
+2025/08/04 20:26:14 17/36 elasticstack_kibana_slo at elasticstack/res
+2025/08/04 20:26:14 DONE in 145.127703ms: elasticstack_elasticsearch_ingest_processor_kv at elasticstack/data
+2025/08/04 20:26:14 18/52 elasticstack_elasticsearch_ingest_processor_remove at elasticstack/data
+2025/08/04 20:26:14 DONE in 177.275956ms: elasticstack_kibana_slo at elasticstack/res
+2025/08/04 20:26:14 18/36 elasticstack_elasticsearch_ingest_pipeline at elasticstack/res
+2025/08/04 20:26:14 DONE in 134.739818ms: elasticstack_elasticsearch_ingest_processor_remove at elasticstack/data
+2025/08/04 20:26:14 19/52 elasticstack_elasticsearch_ingest_processor_rename at elasticstack/data
+2025/08/04 20:26:14 DONE in 222.637385ms: elasticstack_elasticsearch_ingest_pipeline at elasticstack/res
+2025/08/04 20:26:14 19/36 elasticstack_elasticsearch_security_user at elasticstack/res
+2025/08/04 20:26:14 DONE in 218.738747ms: elasticstack_elasticsearch_ingest_processor_rename at elasticstack/data
+2025/08/04 20:26:14 20/52 elasticstack_elasticsearch_ingest_processor_uri_parts at elasticstack/data
+2025/08/04 20:26:14 DONE in 141.621177ms: elasticstack_elasticsearch_ingest_processor_uri_parts at elasticstack/data
+2025/08/04 20:26:14 21/52 elasticstack_kibana_spaces at elasticstack/data
+2025/08/04 20:26:14 DONE in 147.943823ms: elasticstack_elasticsearch_security_user at elasticstack/res
+2025/08/04 20:26:14 20/36 elasticstack_fleet_integration_policy at elasticstack/res
+2025/08/04 20:26:15 DONE in 135.759521ms: elasticstack_kibana_spaces at elasticstack/data
+2025/08/04 20:26:15 22/52 elasticstack_elasticsearch_ingest_processor_convert at elasticstack/data
+2025/08/04 20:26:15 DONE in 131.10001ms: elasticstack_fleet_integration_policy at elasticstack/res
+2025/08/04 20:26:15 21/36 elasticstack_kibana_security_role at elasticstack/res
+2025/08/04 20:26:15 DONE in 129.934187ms: elasticstack_elasticsearch_ingest_processor_convert at elasticstack/data
+2025/08/04 20:26:15 23/52 elasticstack_elasticsearch_ingest_processor_date_index_name at elasticstack/data
+2025/08/04 20:26:15 DONE in 146.390169ms: elasticstack_kibana_security_role at elasticstack/res
+2025/08/04 20:26:15 22/36 elasticstack_elasticsearch_index_lifecycle at elasticstack/res
+2025/08/04 20:26:15 DONE in 141.370231ms: elasticstack_elasticsearch_ingest_processor_date_index_name at elasticstack/data
+2025/08/04 20:26:15 24/52 elasticstack_elasticsearch_ingest_processor_enrich at elasticstack/data
+2025/08/04 20:26:15 DONE in 197.830463ms: elasticstack_elasticsearch_index_lifecycle at elasticstack/res
+2025/08/04 20:26:15 23/36 elasticstack_elasticsearch_index_template at elasticstack/res
+2025/08/04 20:26:15 DONE in 131.689244ms: elasticstack_elasticsearch_ingest_processor_enrich at elasticstack/data
+2025/08/04 20:26:15 25/52 elasticstack_elasticsearch_ingest_processor_network_direction at elasticstack/data
+2025/08/04 20:26:15 DONE in 148.957538ms: elasticstack_elasticsearch_index_template at elasticstack/res
+2025/08/04 20:26:15 24/36 elasticstack_elasticsearch_logstash_pipeline at elasticstack/res
+2025/08/04 20:26:15 DONE in 135.677859ms: elasticstack_elasticsearch_ingest_processor_network_direction at elasticstack/data
+2025/08/04 20:26:15 26/52 elasticstack_elasticsearch_snapshot_repository at elasticstack/data
+2025/08/04 20:26:15 DONE in 148.418184ms: elasticstack_elasticsearch_logstash_pipeline at elasticstack/res
+2025/08/04 20:26:15 25/36 elasticstack_elasticsearch_snapshot_lifecycle at elasticstack/res
+2025/08/04 20:26:15 DONE in 153.645137ms: elasticstack_elasticsearch_snapshot_repository at elasticstack/data
+2025/08/04 20:26:15 27/52 elasticstack_kibana_security_role at elasticstack/data
+2025/08/04 20:26:15 DONE in 146.266622ms: elasticstack_elasticsearch_snapshot_lifecycle at elasticstack/res
+2025/08/04 20:26:15 26/36 elasticstack_elasticsearch_snapshot_repository at elasticstack/res
+2025/08/04 20:26:15 ERROR with elasticstack_kibana_security_role
+2025/08/04 20:26:15 DONE in 108.203039ms: elasticstack_kibana_security_role at elasticstack/data
+2025/08/04 20:26:15 28/52 elasticstack_elasticsearch_indices at elasticstack/data
+2025/08/04 20:26:16 ERROR with elasticstack_elasticsearch_indices
+2025/08/04 20:26:16 DONE in 127.476799ms: elasticstack_elasticsearch_indices at elasticstack/data
+2025/08/04 20:26:16 29/52 elasticstack_elasticsearch_ingest_processor_date at elasticstack/data
+2025/08/04 20:26:16 DONE in 161.402678ms: elasticstack_elasticsearch_snapshot_repository at elasticstack/res
+2025/08/04 20:26:16 27/36 elasticstack_fleet_output at elasticstack/res
+2025/08/04 20:26:16 DONE in 151.405276ms: elasticstack_elasticsearch_ingest_processor_date at elasticstack/data
+2025/08/04 20:26:16 30/52 elasticstack_elasticsearch_ingest_processor_html_strip at elasticstack/data
+2025/08/04 20:26:16 DONE in 145.936015ms: elasticstack_fleet_output at elasticstack/res
+2025/08/04 20:26:16 28/36 elasticstack_elasticsearch_cluster_settings at elasticstack/res
+2025/08/04 20:26:16 DONE in 146.005106ms: elasticstack_elasticsearch_ingest_processor_html_strip at elasticstack/data
+2025/08/04 20:26:16 31/52 elasticstack_elasticsearch_ingest_processor_join at elasticstack/data
+2025/08/04 20:26:16 DONE in 159.219419ms: elasticstack_elasticsearch_cluster_settings at elasticstack/res
+2025/08/04 20:26:16 29/36 elasticstack_elasticsearch_script at elasticstack/res
+2025/08/04 20:26:16 DONE in 153.727896ms: elasticstack_elasticsearch_ingest_processor_join at elasticstack/data
+2025/08/04 20:26:16 32/52 elasticstack_elasticsearch_ingest_processor_fail at elasticstack/data
+2025/08/04 20:26:16 DONE in 154.346898ms: elasticstack_elasticsearch_script at elasticstack/res
+2025/08/04 20:26:16 30/36 elasticstack_fleet_integration at elasticstack/res
+2025/08/04 20:26:16 DONE in 154.029509ms: elasticstack_elasticsearch_ingest_processor_fail at elasticstack/data
+2025/08/04 20:26:16 33/52 elasticstack_elasticsearch_ingest_processor_lowercase at elasticstack/data
+2025/08/04 20:26:16 DONE in 152.876821ms: elasticstack_fleet_integration at elasticstack/res
+2025/08/04 20:26:16 31/36 elasticstack_apm_agent_configuration at elasticstack/res
+2025/08/04 20:26:16 DONE in 161.446919ms: elasticstack_elasticsearch_ingest_processor_lowercase at elasticstack/data
+2025/08/04 20:26:16 34/52 elasticstack_elasticsearch_ingest_processor_pipeline at elasticstack/data
+2025/08/04 20:26:16 DONE in 152.742194ms: elasticstack_apm_agent_configuration at elasticstack/res
+2025/08/04 20:26:16 32/36 elasticstack_elasticsearch_data_stream at elasticstack/res
+2025/08/04 20:26:16 DONE in 152.445202ms: elasticstack_elasticsearch_ingest_processor_pipeline at elasticstack/data
+2025/08/04 20:26:16 35/52 elasticstack_elasticsearch_ingest_processor_reroute at elasticstack/data
+2025/08/04 20:26:17 DONE in 196.420658ms: elasticstack_elasticsearch_data_stream at elasticstack/res
+2025/08/04 20:26:17 33/36 elasticstack_elasticsearch_enrich_policy at elasticstack/res
+2025/08/04 20:26:17 DONE in 297.906902ms: elasticstack_elasticsearch_ingest_processor_reroute at elasticstack/data
+2025/08/04 20:26:17 36/52 elasticstack_elasticsearch_ingest_processor_set at elasticstack/data
+2025/08/04 20:26:17 DONE in 311.55907ms: elasticstack_elasticsearch_enrich_policy at elasticstack/res
+2025/08/04 20:26:17 34/36 elasticstack_fleet_agent_policy at elasticstack/res
+2025/08/04 20:26:17 DONE in 213.916164ms: elasticstack_elasticsearch_ingest_processor_set at elasticstack/data
+2025/08/04 20:26:17 37/52 elasticstack_elasticsearch_ingest_processor_split at elasticstack/data
+2025/08/04 20:26:17 DONE in 214.282057ms: elasticstack_fleet_agent_policy at elasticstack/res
+2025/08/04 20:26:17 35/36 elasticstack_fleet_server_host at elasticstack/res
+2025/08/04 20:26:17 DONE in 184.121776ms: elasticstack_elasticsearch_ingest_processor_split at elasticstack/data
+2025/08/04 20:26:17 38/52 elasticstack_elasticsearch_ingest_processor_urldecode at elasticstack/data
+2025/08/04 20:26:17 DONE in 169.64559ms: elasticstack_fleet_server_host at elasticstack/res
+2025/08/04 20:26:17 36/36 elasticstack_kibana_synthetics_parameter at elasticstack/res
+2025/08/04 20:26:17 DONE in 154.796179ms: elasticstack_elasticsearch_ingest_processor_urldecode at elasticstack/data
+2025/08/04 20:26:17 39/52 elasticstack_elasticsearch_info at elasticstack/data
+2025/08/04 20:26:17 DONE in 145.961199ms: elasticstack_kibana_synthetics_parameter at elasticstack/res
+2025/08/04 20:26:17 DONE in 140.896806ms: elasticstack_elasticsearch_info at elasticstack/data
+2025/08/04 20:26:17 40/52 elasticstack_elasticsearch_ingest_processor_dot_expander at elasticstack/data
+2025/08/04 20:26:18 DONE in 151.633818ms: elasticstack_elasticsearch_ingest_processor_dot_expander at elasticstack/data
+2025/08/04 20:26:18 41/52 elasticstack_elasticsearch_ingest_processor_fingerprint at elasticstack/data
+2025/08/04 20:26:18 DONE in 128.29732ms: elasticstack_elasticsearch_ingest_processor_fingerprint at elasticstack/data
+2025/08/04 20:26:18 42/52 elasticstack_elasticsearch_ingest_processor_grok at elasticstack/data
+2025/08/04 20:26:18 DONE in 128.138667ms: elasticstack_elasticsearch_ingest_processor_grok at elasticstack/data
+2025/08/04 20:26:18 43/52 elasticstack_elasticsearch_ingest_processor_json at elasticstack/data
+2025/08/04 20:26:18 DONE in 127.176952ms: elasticstack_elasticsearch_ingest_processor_json at elasticstack/data
+2025/08/04 20:26:18 44/52 elasticstack_elasticsearch_security_user at elasticstack/data
+2025/08/04 20:26:18 DONE in 135.05266ms: elasticstack_elasticsearch_security_user at elasticstack/data
+2025/08/04 20:26:18 45/52 elasticstack_fleet_enrollment_tokens at elasticstack/data
+2025/08/04 20:26:18 DONE in 138.898637ms: elasticstack_fleet_enrollment_tokens at elasticstack/data
+2025/08/04 20:26:18 46/52 elasticstack_fleet_integration at elasticstack/data
+2025/08/04 20:26:18 DONE in 128.950948ms: elasticstack_fleet_integration at elasticstack/data
+2025/08/04 20:26:18 47/52 elasticstack_elasticsearch_ingest_processor_append at elasticstack/data
+2025/08/04 20:26:19 DONE in 127.866364ms: elasticstack_elasticsearch_ingest_processor_append at elasticstack/data
+2025/08/04 20:26:19 48/52 elasticstack_elasticsearch_ingest_processor_csv at elasticstack/data
+2025/08/04 20:26:19 DONE in 128.83517ms: elasticstack_elasticsearch_ingest_processor_csv at elasticstack/data
+2025/08/04 20:26:19 49/52 elasticstack_elasticsearch_ingest_processor_registered_domain at elasticstack/data
+2025/08/04 20:26:19 DONE in 135.760519ms: elasticstack_elasticsearch_ingest_processor_registered_domain at elasticstack/data
+2025/08/04 20:26:19 50/52 elasticstack_elasticsearch_ingest_processor_script at elasticstack/data
+2025/08/04 20:26:19 DONE in 126.238089ms: elasticstack_elasticsearch_ingest_processor_script at elasticstack/data
+2025/08/04 20:26:19 51/52 elasticstack_elasticsearch_ingest_processor_uppercase at elasticstack/data
+2025/08/04 20:26:19 DONE in 127.698936ms: elasticstack_elasticsearch_ingest_processor_uppercase at elasticstack/data
+2025/08/04 20:26:19 52/52 elasticstack_elasticsearch_security_role at elasticstack/data
+2025/08/04 20:26:19 ERROR with elasticstack_elasticsearch_security_role
+2025/08/04 20:26:19 DONE in 107.17094ms: elasticstack_elasticsearch_security_role at elasticstack/data
