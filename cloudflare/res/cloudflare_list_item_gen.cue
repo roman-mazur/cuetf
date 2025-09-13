@@ -3,24 +3,56 @@ package res
 #cloudflare_list_item: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_list_item")
-	account_id!: string
-	asn?:        number
-	comment?:    string
-	id?:         string
-	ip?:         string
-	list_id!:    string
-	hostname?: #hostname | [...#hostname]
-	redirect?: #redirect | [...#redirect]
+	close({
+		// The Account ID for this resource.
+		account_id!: string
 
-	#hostname: url_hostname!: string
+		// A non-negative 32 bit integer
+		asn?: number
 
-	#redirect: {
-		include_subdomains?:    bool
-		preserve_path_suffix?:  bool
-		preserve_query_string?: bool
-		source_url!:            string
-		status_code?:           number
-		subpath_matching?:      bool
-		target_url!:            string
-	}
+		// Valid characters for hostnames are ASCII(7) letters from a to
+		// z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+		hostname?: close({
+			// Only applies to wildcard hostnames (e.g., *.example.com). When
+			// true (default), only subdomains are blocked. When false, both
+			// the root domain and subdomains are blocked.
+			exclude_exact_hostname?: bool
+			url_hostname!:           string
+		})
+
+		// An informative summary of the list item.
+		comment?: string
+
+		// The RFC 3339 timestamp of when the item was created.
+		created_on?: string
+
+		// The unique ID of the item in the List.
+		id?: string
+
+		// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6
+		// CIDR.
+		ip?: string
+
+		// The unique ID of the list.
+		list_id!: string
+
+		// The RFC 3339 timestamp of when the item was last modified.
+		modified_on?: string
+
+		// The unique operation ID of the asynchronous action.
+		operation_id?: string
+
+		// The definition of the redirect.
+		redirect?: close({
+			include_subdomains?:    bool
+			preserve_path_suffix?:  bool
+			preserve_query_string?: bool
+
+			// Available values: 301, 302, 307, 308.
+			status_code?:      number
+			source_url!:       string
+			subpath_matching?: bool
+			target_url!:       string
+		})
+	})
 }

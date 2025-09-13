@@ -3,13 +3,19 @@ package data
 #aws_synthetics_runtime_versions: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_synthetics_runtime_versions")
-	id?: string
-	runtime_versions?: #runtime_versions | [...#runtime_versions]
+	close({
+		id?: string
 
-	#runtime_versions: {
-		deprecation_date?: string
-		description?:      string
-		release_date?:     string
-		version_name?:     string
-	}
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		runtime_versions?: [...close({
+			deprecation_date?: string
+			description?:      string
+			release_date?:     string
+			version_name?:     string
+		})]
+	})
 }

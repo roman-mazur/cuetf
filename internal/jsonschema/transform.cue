@@ -1,89 +1,128 @@
 package jsonschema
 
 import (
+	"list"
 	"path"
 	"github.com/roman-mazur/cuetf/internal/tf"
 )
 
 // #SchemaTransform can be used to tranform the Terraform provider schema document into a an equivalent JSON Schema.
 #SchemaTransform: {
-	#block: tf.#block
+	#block: _
 	#name:  string
 
 	"$schema": "https://json-schema.org/draft/2020-12/schema"
 	"$id":     "https://github.com/roman-mazur/cuetf/schema/\(#name)"
 
-	#blockTransform & {#path: []}
+	let b = #block
+	(#blockTransform & {#path: [], #block: b}).out
 }
 
 // Transform Terraform block representation into an object schema.
 #blockTransform: {
 	#path: [...string]
-	#block: tf.#block
+	#block: _
 
-	type: "object"
+	out: {
+		type: "object"
 
-	#ref: {
-		#name: string
-		"#/\(path.Join([for el in #path + [#name] {"$defs/\(el)"}]))"
-	}
-
-	properties: {
-		for name, info in #block.attributes if !info.deprecated {
-			(name): #fieldTransform & {#type: info.type}
+		#refComposer: {
+			#name: string
+			out:   "#/\(path.Join([for el in list.Concat([#path, [#name]]) {"$defs/\(el)"}]))"
 		}
 
-		for name, info in #block.block_types {
-			(name): {
-				#defRef: "$ref": {#ref, #name: name}
+		properties: {
+			if #block.attributes != _|_ {
+				for name, info in #block.attributes if info.deprecated == _|_ {
+					if info.type != _|_ {
+						(name): (#fieldTransform & {#type: info.type}).out
+					}
+					if info.nested_type != _|_ {
+						(name): (#nestingTransform & {
+							#nest: info.nested_type
+							#def: (#blockTransform & {#block: {
+								attributes: info.nested_type.attributes
+								block_types: {}
+							}}).out
+						}).out
+					}
 
-				if info.nesting_mode == "single" {
-					#defRef
+					if info.description != _|_ {
+						(name): description: info.description
+					}
 				}
+			}
 
-				if info.nesting_mode == "list" || info.nesting_mode == "set" {
-					"oneOf": [
-						#defRef,
-						{
-							type:  "array"
-							items: #defRef
-							if info.min_items != _|_ {
-								minItems: info.min_items
-							}
-							if info.max_items != _|_ {
-								maxItems: info.max_items
-							}
-						},
-					]
+			if #block.block_types != _|_ {
+				for name, info in #block.block_types {
+					(name): (#nestingTransform & {
+						#nest: info
+						#def: "$ref": (#refComposer & {#name: name}).out
+					}).out
 				}
 			}
 		}
+
+		_defPaths: {
+			if #block.block_types != _|_ {
+				for name, _ in #block.block_types {
+					(name): list.Concat([#path, [name]])
+				}
+			}
+		}
+
+		"$defs": {
+			if #block.block_types != _|_ {
+				for name, info in #block.block_types {
+					(name): (#blockTransform & {#block: info.block, #path: _defPaths[name]}).out
+				}
+			}
+		}
+
+		if #block.attributes != _|_ {
+			required: [for name, info in #block.attributes if info.required != _|_ {name}]
+		}
+
+		additionalProperties: false
 	}
 
-	_defPaths: {
-		for name, _ in #block.block_types {
-			(name): #path + [name]
+	#nestingTransform: {
+		#nest: tf.nestable & {...}
+		#def: _
+
+		out: {
+			if #nest.nesting_mode == "single" {
+				#def
+			}
+
+			if #nest.nesting_mode == "list" || #nest.nesting_mode == "set" {
+				"oneOf": [
+					#def,
+					{
+						type:  "array"
+						items: #def
+						if #nest.min_items != _|_ {
+							minItems: #nest.min_items
+						}
+						if #nest.max_items != _|_ {
+							maxItems: #nest.max_items
+						}
+					},
+				]
+			}
 		}
 	}
-
-	"$defs": {
-		for name, info in #block.block_types {
-			(name): #blockTransform & {#block: info.block, #path: _defPaths[name]}
-		}
-	}
-
-	required: [for name, info in #block.attributes if info.required {name}]
-
-	additionalProperties: false
 }
 
 // Helper to transform into an object property.
 #fieldTransform: {
-	#type: tf.#attr.#primitive
-	type:  _primitivesMap[#type]
-} | {
-	#type: tf.#attr.#complexDef
-	_complexMap[#type[0]] & {#defs: #type[1]}
+	#type: _
+	if (#type & tf.#attr.#primitive) != _|_ {
+		out: type: _primitivesMap[#type]
+	}
+	if (#type & tf.#attr.#complexDef) != _|_ {
+		out: _complexMap[#type[0]] & {#defs: #type[1]}
+	}
 }
 
 _complexMap: {
@@ -93,7 +132,7 @@ _complexMap: {
 		additionalProperties: false
 		properties: {
 			for name, fType in #defs {
-				(name): #fieldTransform & {#type: fType}
+				(name): (#fieldTransform & {#type: fType}).out
 			}
 		}
 	}
@@ -101,19 +140,19 @@ _complexMap: {
 	map: {
 		#defs: _
 		type:  "object"
-		additionalProperties: #fieldTransform & {#type: #defs}
+		additionalProperties: (#fieldTransform & {#type: #defs}).out
 	}
 
 	set: {
 		#defs: _
 		type:  "array"
-		items: #fieldTransform & {#type: #defs}
+		items: (#fieldTransform & {#type: #defs}).out
 	}
 
 	list: {
 		#defs: _
 		type:  "array"
-		items: #fieldTransform & {#type: #defs}
+		items: (#fieldTransform & {#type: #defs}).out
 	}
 }
 

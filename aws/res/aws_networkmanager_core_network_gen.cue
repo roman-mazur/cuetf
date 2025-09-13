@@ -3,32 +3,34 @@ package res
 #aws_networkmanager_core_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_networkmanager_core_network")
-	arn?:                  string
-	base_policy_document?: string
-	base_policy_regions?: [...string]
-	create_base_policy?: bool
-	created_at?:         string
-	description?:        string
-	edges?: [...{
-		asn?:           number
-		edge_location?: string
-		inside_cidr_blocks?: [...string]
-	}]
-	global_network_id!: string
-	id?:                string
-	segments?: [...{
-		edge_locations?: [...string]
-		name?: string
-		shared_segments?: [...string]
-	}]
-	state?: string
-	tags?: [string]:     string
-	tags_all?: [string]: string
-	timeouts?: #timeouts
+	close({
+		arn?:                  string
+		base_policy_document?: string
+		base_policy_regions?: [...string]
+		create_base_policy?: bool
+		created_at?:         string
+		description?:        string
+		edges?: [...close({
+			asn?:           number
+			edge_location?: string
+			inside_cidr_blocks?: [...string]
+		})]
+		global_network_id!: string
+		timeouts?:          #timeouts
+		id?:                string
+		segments?: [...close({
+			edge_locations?: [...string]
+			name?: string
+			shared_segments?: [...string]
+		})]
+		state?: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
+	})
 
-	#timeouts: {
+	#timeouts: close({
 		create?: string
 		delete?: string
 		update?: string
-	}
+	})
 }

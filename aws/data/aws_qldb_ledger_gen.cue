@@ -3,11 +3,19 @@ package data
 #aws_qldb_ledger: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_qldb_ledger")
-	arn?:                 string
-	deletion_protection?: bool
-	id?:                  string
-	kms_key?:             string
-	name!:                string
-	permissions_mode?:    string
-	tags?: [string]: string
+	close({
+		arn?:                 string
+		deletion_protection?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:           string
+		id?:               string
+		kms_key?:          string
+		name!:             string
+		permissions_mode?: string
+		tags?: [string]: string
+	})
 }

@@ -5,20 +5,30 @@ import "list"
 #aws_chimesdkvoice_voice_profile_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_chimesdkvoice_voice_profile_domain")
-	arn?:         string
-	description?: string
-	id?:          string
-	name!:        string
-	tags?: [string]:     string
-	tags_all?: [string]: string
-	server_side_encryption_configuration?: #server_side_encryption_configuration | list.MaxItems(1) & [_, ...] & [...#server_side_encryption_configuration]
-	timeouts?: #timeouts
+	close({
+		arn?: string
+		server_side_encryption_configuration?: matchN(1, [#server_side_encryption_configuration, list.MaxItems(1) & [_, ...] & [...#server_side_encryption_configuration]])
+		description?: string
+		id?:          string
 
-	#server_side_encryption_configuration: kms_key_arn!: string
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		name!:   string
+		tags?: [string]: string
+		timeouts?: #timeouts
+		tags_all?: [string]: string
+	})
 
-	#timeouts: {
+	#server_side_encryption_configuration: close({
+		kms_key_arn!: string
+	})
+
+	#timeouts: close({
 		create?: string
 		delete?: string
 		update?: string
-	}
+	})
 }

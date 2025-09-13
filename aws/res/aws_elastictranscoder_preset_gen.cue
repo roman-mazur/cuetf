@@ -5,35 +5,43 @@ import "list"
 #aws_elastictranscoder_preset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_elastictranscoder_preset")
-	arn?:         string
-	container!:   string
-	description?: string
-	id?:          string
-	name?:        string
-	type?:        string
-	video_codec_options?: [string]: string
-	audio?: #audio | list.MaxItems(1) & [...#audio]
-	audio_codec_options?: #audio_codec_options | list.MaxItems(1) & [...#audio_codec_options]
-	thumbnails?: #thumbnails | list.MaxItems(1) & [...#thumbnails]
-	video?: #video | list.MaxItems(1) & [...#video]
-	video_watermarks?: #video_watermarks | [...#video_watermarks]
+	close({
+		arn?:         string
+		container!:   string
+		description?: string
+		id?:          string
 
-	#audio: {
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		audio?: matchN(1, [#audio, list.MaxItems(1) & [...#audio]])
+		name?: string
+		audio_codec_options?: matchN(1, [#audio_codec_options, list.MaxItems(1) & [...#audio_codec_options]])
+		type?: string
+		thumbnails?: matchN(1, [#thumbnails, list.MaxItems(1) & [...#thumbnails]])
+		video?: matchN(1, [#video, list.MaxItems(1) & [...#video]])
+		video_watermarks?: matchN(1, [#video_watermarks, [...#video_watermarks]])
+		video_codec_options?: [string]: string
+	})
+
+	#audio: close({
 		audio_packing_mode?: string
 		bit_rate?:           string
 		channels?:           string
 		codec?:              string
 		sample_rate?:        string
-	}
+	})
 
-	#audio_codec_options: {
+	#audio_codec_options: close({
 		bit_depth?: string
 		bit_order?: string
 		profile?:   string
 		signed?:    string
-	}
+	})
 
-	#thumbnails: {
+	#thumbnails: close({
 		aspect_ratio?:   string
 		format?:         string
 		interval?:       string
@@ -42,9 +50,9 @@ import "list"
 		padding_policy?: string
 		resolution?:     string
 		sizing_policy?:  string
-	}
+	})
 
-	#video: {
+	#video: close({
 		aspect_ratio?:         string
 		bit_rate?:             string
 		codec?:                string
@@ -58,9 +66,9 @@ import "list"
 		padding_policy?:       string
 		resolution?:           string
 		sizing_policy?:        string
-	}
+	})
 
-	#video_watermarks: {
+	#video_watermarks: close({
 		horizontal_align?:  string
 		horizontal_offset?: string
 		id?:                string
@@ -71,5 +79,5 @@ import "list"
 		target?:            string
 		vertical_align?:    string
 		vertical_offset?:   string
-	}
+	})
 }

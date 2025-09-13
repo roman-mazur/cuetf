@@ -3,14 +3,41 @@ package res
 #aws_licensemanager_grant: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_licensemanager_grant")
-	allowed_operations!: [...string]
-	arn?:         string
-	home_region?: string
-	id?:          string
-	license_arn!: string
-	name!:        string
-	parent_arn?:  string
-	principal!:   string
-	status?:      string
-	version?:     string
+	close({
+		// Allowed operations for the grant. This is a subset of the
+		// allowed operations on the license.
+		allowed_operations!: [...string]
+
+		// Amazon Resource Name (ARN) of the grant.
+		arn?: string
+
+		// Home Region of the grant.
+		home_region?: string
+
+		// License ARN.
+		license_arn!: string
+		id?:          string
+
+		// Name of the grant.
+		name!: string
+
+		// Parent ARN.
+		parent_arn?: string
+
+		// The grantee principal ARN. The target account for the grant in
+		// the form of the ARN for an account principal of the root user.
+		principal!: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+
+		// Grant status.
+		status?: string
+
+		// Grant version.
+		version?: string
+	})
 }

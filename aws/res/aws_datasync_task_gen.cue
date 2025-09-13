@@ -5,32 +5,41 @@ import "list"
 #aws_datasync_task: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_datasync_task")
-	arn?:                      string
-	cloudwatch_log_group_arn?: string
-	destination_location_arn!: string
-	id?:                       string
-	name?:                     string
-	source_location_arn!:      string
-	tags?: [string]:     string
-	tags_all?: [string]: string
-	excludes?: #excludes | list.MaxItems(1) & [...#excludes]
-	includes?: #includes | list.MaxItems(1) & [...#includes]
-	options?: #options | list.MaxItems(1) & [...#options]
-	schedule?: #schedule | list.MaxItems(1) & [...#schedule]
-	task_report_config?: #task_report_config | list.MaxItems(1) & [...#task_report_config]
-	timeouts?: #timeouts
+	close({
+		arn?: string
+		excludes?: matchN(1, [#excludes, list.MaxItems(1) & [...#excludes]])
+		cloudwatch_log_group_arn?: string
+		destination_location_arn!: string
+		id?:                       string
+		name?:                     string
 
-	#excludes: {
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:              string
+		source_location_arn!: string
+		includes?: matchN(1, [#includes, list.MaxItems(1) & [...#includes]])
+		options?: matchN(1, [#options, list.MaxItems(1) & [...#options]])
+		tags?: [string]: string
+		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [...#schedule]])
+		task_report_config?: matchN(1, [#task_report_config, list.MaxItems(1) & [...#task_report_config]])
+		timeouts?: #timeouts
+		tags_all?: [string]: string
+		task_mode?: string
+	})
+
+	#excludes: close({
 		filter_type?: string
 		value?:       string
-	}
+	})
 
-	#includes: {
+	#includes: close({
 		filter_type?: string
 		value?:       string
-	}
+	})
 
-	#options: {
+	#options: close({
 		atime?:                          string
 		bytes_per_second?:               number
 		gid?:                            string
@@ -46,30 +55,34 @@ import "list"
 		transfer_mode?:                  string
 		uid?:                            string
 		verify_mode?:                    string
-	}
+	})
 
-	#schedule: schedule_expression!: string
+	#schedule: close({
+		schedule_expression!: string
+	})
 
-	#task_report_config: {
+	#task_report_config: close({
+		report_overrides?: matchN(1, [_#defs."/$defs/task_report_config/$defs/report_overrides", list.MaxItems(1) & [..._#defs."/$defs/task_report_config/$defs/report_overrides"]])
+		s3_destination?: matchN(1, [_#defs."/$defs/task_report_config/$defs/s3_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/task_report_config/$defs/s3_destination"]])
 		output_type?:          string
 		report_level?:         string
 		s3_object_versioning?: string
-		report_overrides?: #task_report_config.#report_overrides | list.MaxItems(1) & [...#task_report_config.#report_overrides]
-		s3_destination?: #task_report_config.#s3_destination | list.MaxItems(1) & [_, ...] & [...#task_report_config.#s3_destination]
+	})
 
-		#report_overrides: {
-			deleted_override?:     string
-			skipped_override?:     string
-			transferred_override?: string
-			verified_override?:    string
-		}
+	#timeouts: close({
+		create?: string
+	})
 
-		#s3_destination: {
-			bucket_access_role_arn!: string
-			s3_bucket_arn!:          string
-			subdirectory?:           string
-		}
-	}
+	_#defs: "/$defs/task_report_config/$defs/report_overrides": close({
+		deleted_override?:     string
+		skipped_override?:     string
+		transferred_override?: string
+		verified_override?:    string
+	})
 
-	#timeouts: create?: string
+	_#defs: "/$defs/task_report_config/$defs/s3_destination": close({
+		bucket_access_role_arn!: string
+		s3_bucket_arn!:          string
+		subdirectory?:           string
+	})
 }

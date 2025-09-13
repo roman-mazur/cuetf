@@ -3,7 +3,14 @@ package res
 #github_codespaces_organization_secret_repositories: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_codespaces_organization_secret_repositories")
-	id?:          string
-	secret_name!: string
-	selected_repository_ids!: [...number]
+	close({
+		id?: string
+
+		// Name of the existing secret.
+		secret_name!: string
+
+		// An array of repository ids that can access the organization
+		// secret.
+		selected_repository_ids!: [...number]
+	})
 }

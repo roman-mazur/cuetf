@@ -5,23 +5,31 @@ import "list"
 #aws_glue_data_catalog_encryption_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_data_catalog_encryption_settings")
-	catalog_id?: string
-	id?:         string
-	data_catalog_encryption_settings?: #data_catalog_encryption_settings | list.MaxItems(1) & [_, ...] & [...#data_catalog_encryption_settings]
+	close({
+		data_catalog_encryption_settings?: matchN(1, [#data_catalog_encryption_settings, list.MaxItems(1) & [_, ...] & [...#data_catalog_encryption_settings]])
+		catalog_id?: string
+		id?:         string
 
-	#data_catalog_encryption_settings: {
-		connection_password_encryption?: #data_catalog_encryption_settings.#connection_password_encryption | list.MaxItems(1) & [_, ...] & [...#data_catalog_encryption_settings.#connection_password_encryption]
-		encryption_at_rest?: #data_catalog_encryption_settings.#encryption_at_rest | list.MaxItems(1) & [_, ...] & [...#data_catalog_encryption_settings.#encryption_at_rest]
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+	})
 
-		#connection_password_encryption: {
-			aws_kms_key_id?:                       string
-			return_connection_password_encrypted!: bool
-		}
+	#data_catalog_encryption_settings: close({
+		connection_password_encryption?: matchN(1, [_#defs."/$defs/data_catalog_encryption_settings/$defs/connection_password_encryption", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/data_catalog_encryption_settings/$defs/connection_password_encryption"]])
+		encryption_at_rest?: matchN(1, [_#defs."/$defs/data_catalog_encryption_settings/$defs/encryption_at_rest", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/data_catalog_encryption_settings/$defs/encryption_at_rest"]])
+	})
 
-		#encryption_at_rest: {
-			catalog_encryption_mode!:         string
-			catalog_encryption_service_role?: string
-			sse_aws_kms_key_id?:              string
-		}
-	}
+	_#defs: "/$defs/data_catalog_encryption_settings/$defs/connection_password_encryption": close({
+		aws_kms_key_id?:                       string
+		return_connection_password_encrypted!: bool
+	})
+
+	_#defs: "/$defs/data_catalog_encryption_settings/$defs/encryption_at_rest": close({
+		catalog_encryption_mode!:         string
+		catalog_encryption_service_role?: string
+		sse_aws_kms_key_id?:              string
+	})
 }

@@ -1,9 +1,6 @@
 .terraform
 .terraform*
 
-# Defs generation logs.
-out/
-
 # Temporary directory created by ./cmd/gen
 */res/tmp/
 */data/tmp/

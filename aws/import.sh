@@ -27,3 +27,12 @@ importRegion eu-central-1
 importRegion eu-west-1
 importRegion eu-west-2
 importRegion eu-west-3
+importRegion eu-north-1
+importRegion ap-south-1
+importRegion ap-southeast-1
+importRegion ap-southeast-2
+importRegion ap-northeast-1
+importRegion ap-northeast-2
+importRegion ap-northeast-3
+importRegion ca-central-1
+importRegion sa-east-1

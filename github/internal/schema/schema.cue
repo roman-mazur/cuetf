@@ -2478,6 +2478,42 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 									}
 									max_items: 1
 								}
+								required_code_scanning: {
+									nesting_mode: "list"
+									block: {
+										block_types: required_code_scanning_tool: {
+											nesting_mode: "set"
+											block: {
+												attributes: {
+													alerts_threshold: {
+														type:             "string"
+														description:      "The severity level at which code scanning results that raise alerts block a reference update. Can be one of: `none`, `errors`, `errors_and_warnings`, `all`."
+														description_kind: "plain"
+														required:         true
+													}
+													security_alerts_threshold: {
+														type:             "string"
+														description:      "The severity level at which code scanning results that raise security alerts block a reference update. Can be one of: `none`, `critical`, `high_or_higher`, `medium_or_higher`, `all`."
+														description_kind: "plain"
+														required:         true
+													}
+													tool: {
+														type:             "string"
+														description:      "The name of a code scanning tool."
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description:      "Tools that must provide code scanning results for this rule to pass."
+												description_kind: "plain"
+											}
+											min_items: 1
+										}
+										description:      "Choose which tools must provide code scanning results before the reference is updated. When configured, code scanning must be enabled and have results for both the commit and the reference being updated."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 								required_status_checks: {
 									nesting_mode: "list"
 									block: {
@@ -3599,6 +3635,19 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 				}
 				block_types: {
+					ignore_team: {
+						nesting_mode: "set"
+						block: {
+							attributes: team_id: {
+								type:             "string"
+								description:      "ID or slug of the team to ignore."
+								description_kind: "plain"
+								required:         true
+							}
+							description:      "List of teams to ignore."
+							description_kind: "plain"
+						}
+					}
 					team: {
 						nesting_mode: "set"
 						block: {
@@ -3615,7 +3664,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 									required:         true
 								}
 							}
-							description:      "List of teams"
+							description:      "List of teams."
 							description_kind: "plain"
 						}
 					}
@@ -3635,9 +3684,47 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 									required:         true
 								}
 							}
-							description:      "List of users"
+							description:      "List of users."
 							description_kind: "plain"
 						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		github_repository_custom_property: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					property_name: {
+						type:             "string"
+						description:      "Name of the custom property."
+						description_kind: "plain"
+						required:         true
+					}
+					property_type: {
+						type:             "string"
+						description:      "Type of the custom property"
+						description_kind: "plain"
+						required:         true
+					}
+					property_value: {
+						type: ["set", "string"]
+						description:      "Value of the custom property."
+						description_kind: "plain"
+						required:         true
+					}
+					repository: {
+						type:             "string"
+						description:      "Name of the repository which the custom properties should be on."
+						description_kind: "plain"
+						required:         true
 					}
 				}
 				description_kind: "plain"
@@ -3848,7 +3935,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						type:             "string"
 						description:      "The name pattern that branches must match in order to deploy to the environment."
 						description_kind: "plain"
-						required:         true
+						optional:         true
 					}
 					environment: {
 						type:             "string"
@@ -3867,6 +3954,12 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description:      "The name of the repository. The name is not case sensitive."
 						description_kind: "plain"
 						required:         true
+					}
+					tag_pattern: {
+						type:             "string"
+						description:      "The name pattern that tags must match in order to deploy to the environment."
+						description_kind: "plain"
+						optional:         true
 					}
 				}
 				description_kind: "plain"
@@ -4475,6 +4568,58 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 									}
 									max_items: 1
 								}
+								merge_queue: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											check_response_timeout_minutes: {
+												type:             "number"
+												description:      "Maximum time for a required status check to report a conclusion. After this much time has elapsed, checks that have not reported a conclusion will be assumed to have failed. Defaults to `60`."
+												description_kind: "plain"
+												optional:         true
+											}
+											grouping_strategy: {
+												type:             "string"
+												description:      "When set to ALLGREEN, the merge commit created by merge queue for each PR in the group must pass all required checks to merge. When set to HEADGREEN, only the commit at the head of the merge group, i.e. the commit containing changes from all of the PRs in the group, must pass its required checks to merge. Can be one of: ALLGREEN, HEADGREEN. Defaults to `ALLGREEN`."
+												description_kind: "plain"
+												optional:         true
+											}
+											max_entries_to_build: {
+												type:             "number"
+												description:      "Limit the number of queued pull requests requesting checks and workflow runs at the same time. Defaults to `5`."
+												description_kind: "plain"
+												optional:         true
+											}
+											max_entries_to_merge: {
+												type:             "number"
+												description:      "The maximum number of PRs that will be merged together in a group. Defaults to `5`."
+												description_kind: "plain"
+												optional:         true
+											}
+											merge_method: {
+												type:             "string"
+												description:      "Method to use when merging changes from queued pull requests. Can be one of: MERGE, SQUASH, REBASE. Defaults to `MERGE`."
+												description_kind: "plain"
+												optional:         true
+											}
+											min_entries_to_merge: {
+												type:             "number"
+												description:      "The minimum number of PRs that will be merged together in a group. Defaults to `1`."
+												description_kind: "plain"
+												optional:         true
+											}
+											min_entries_to_merge_wait_minutes: {
+												type:             "number"
+												description:      "The time merge queue should wait after the first PR is added to the queue for the minimum group size to be met. After this time has elapsed, the minimum group size will be ignored and a smaller group will be merged. Defaults to `5`."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Merges must be performed via a merge queue."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 								pull_request: {
 									nesting_mode: "list"
 									block: {
@@ -4515,6 +4660,42 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 									}
 									max_items: 1
 								}
+								required_code_scanning: {
+									nesting_mode: "list"
+									block: {
+										block_types: required_code_scanning_tool: {
+											nesting_mode: "set"
+											block: {
+												attributes: {
+													alerts_threshold: {
+														type:             "string"
+														description:      "The severity level at which code scanning results that raise alerts block a reference update. Can be one of: `none`, `errors`, `errors_and_warnings`, `all`."
+														description_kind: "plain"
+														required:         true
+													}
+													security_alerts_threshold: {
+														type:             "string"
+														description:      "The severity level at which code scanning results that raise security alerts block a reference update. Can be one of: `none`, `critical`, `high_or_higher`, `medium_or_higher`, `all`."
+														description_kind: "plain"
+														required:         true
+													}
+													tool: {
+														type:             "string"
+														description:      "The name of a code scanning tool"
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description:      "Tools that must provide code scanning results for this rule to pass."
+												description_kind: "plain"
+											}
+											min_items: 1
+										}
+										description:      "Choose which tools must provide code scanning results before the reference is updated. When configured, code scanning must be enabled and have results for both the commit and the reference being updated."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 								required_deployments: {
 									nesting_mode: "list"
 									block: {
@@ -4532,11 +4713,19 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 								required_status_checks: {
 									nesting_mode: "list"
 									block: {
-										attributes: strict_required_status_checks_policy: {
-											type:             "bool"
-											description:      "Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled. Defaults to `false`."
-											description_kind: "plain"
-											optional:         true
+										attributes: {
+											do_not_enforce_on_create: {
+												type:             "bool"
+												description:      "Allow repositories and branches to be created if a check would otherwise prohibit it."
+												description_kind: "plain"
+												optional:         true
+											}
+											strict_required_status_checks_policy: {
+												type:             "bool"
+												description:      "Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled. Defaults to `false`."
+												description_kind: "plain"
+												optional:         true
+											}
 										}
 										block_types: required_check: {
 											nesting_mode: "set"
@@ -4605,38 +4794,6 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						}
 						min_items: 1
 						max_items: 1
-					}
-				}
-				description_kind: "plain"
-			}
-		}
-		github_repository_tag_protection: {
-			version: 0
-			block: {
-				attributes: {
-					id: {
-						type:             "string"
-						description_kind: "plain"
-						optional:         true
-						computed:         true
-					}
-					pattern: {
-						type:             "string"
-						description:      "The pattern of the tag to protect."
-						description_kind: "plain"
-						required:         true
-					}
-					repository: {
-						type:             "string"
-						description:      "Name of the repository to add the tag protection to."
-						description_kind: "plain"
-						required:         true
-					}
-					tag_protection_id: {
-						type:             "number"
-						description:      "The ID of the tag protection."
-						description_kind: "plain"
-						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -7112,6 +7269,35 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 					repository: {
 						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		github_repository_custom_properties: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					property: {
+						type: ["set", ["object", {
+							property_name: "string"
+							property_value: ["set", "string"]
+						}]]
+						description:      "List of custom properties"
+						description_kind: "plain"
+						computed:         true
+					}
+					repository: {
+						type:             "string"
+						description:      "Name of the repository which the custom properties should be on."
 						description_kind: "plain"
 						required:         true
 					}

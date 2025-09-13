@@ -52,22 +52,29 @@ _recDepth: [0, 1, 2, 3, 4, 5]
 #block: documented & {
 	deprecated: bool | *false
 	attributes: [name=string]:  #attributeDescription
-	block_types: [name=string]: #blockTypeDescription
+	block_types?: [name=string]: #blockTypeDescription
 }
 
-#attributeDescription: documented & {
+#attributeDescription: documented & _attrTypeOptions & {
 	optional:   bool | *false
 	required:   bool | *false
 	computed:   bool | *false
 	sensitive:  bool | *false
 	deprecated: bool | *false
-
-	type: #attr.#type
 }
 
-#blockTypeDescription: {
-	nesting_mode: "set" | "list" | "single"
+_attrTypeOptions: {	type: #attr.#type } | {
+		nested_type: nestable & {
+			attributes: [name=string]: #attributeDescription
+		}
+}
+
+#blockTypeDescription: nestable & {
 	block:        #block
+}
+
+nestable: {
+	nesting_mode: "set" | "list" | "single"
 	max_items?:   uint
 	min_items?:   uint
 }

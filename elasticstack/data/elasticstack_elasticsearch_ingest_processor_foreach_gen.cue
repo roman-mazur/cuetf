@@ -3,14 +3,36 @@ package data
 #elasticstack_elasticsearch_ingest_processor_foreach: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_ingest_processor_foreach")
-	description?:    string
-	field!:          string
-	id?:             string
-	if?:             string
-	ignore_failure?: bool
-	ignore_missing?: bool
-	json?:           string
-	on_failure?: [...string]
-	processor!: string
-	tag?:       string
+	close({
+		// Description of the processor.
+		description?: string
+
+		// Field containing array or object values.
+		field!: string
+
+		// Internal identifier of the resource
+		id?: string
+
+		// Conditionally execute the processor
+		if?: string
+
+		// Ignore failures for the processor.
+		ignore_failure?: bool
+
+		// If `true`, the processor silently exits without changing the
+		// document if the `field` is `null` or missing.
+		ignore_missing?: bool
+
+		// JSON representation of this data source.
+		json?: string
+
+		// Handle failures for the processor.
+		on_failure?: [...string]
+
+		// Ingest processor to run on each element.
+		processor!: string
+
+		// Identifier for the processor.
+		tag?: string
+	})
 }
