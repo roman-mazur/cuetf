@@ -6,7 +6,7 @@ tool cuelang.org/go/cmd/cue
 
 require (
 	cuelabs.dev/go/oci/ociregistry v0.0.0-20250715075730-49cab49c8e9d // indirect
-	cuelang.org/go v0.14.0 // indirect
+	cuelang.org/go v0.14.1 // indirect
 	github.com/cockroachdb/apd/v3 v3.2.1 // indirect
 	github.com/emicklei/proto v1.14.2 // indirect
 	github.com/google/uuid v1.6.0 // indirect

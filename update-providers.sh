@@ -18,7 +18,7 @@ function process() {
   echo "Processing $provider..."
   (cd "$provider/internal" && terraUpdate "$provider")
 
-  go run ./cmd/gen "$provider/internal/schema/schema.json" . 2> out/"$provider-log.txt" &
+  go run ./cmd/gen "$provider/internal/schema/schema.json" . 2> logs/"$provider-log.txt" &
   defs_pid=$!
 
   (cd "$provider" && ([ -f import.sh ] && ./import.sh || exit 0))
@@ -35,6 +35,7 @@ if [ -z "$input_provider" ]; then
   process cloudflare
   process elasticstack
   process github
+  process google
   process helm
 else
   process "$input_provider"
