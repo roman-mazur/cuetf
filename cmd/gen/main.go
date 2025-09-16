@@ -25,6 +25,7 @@ var (
 
 func main() {
 	flag.Parse()
+	log.SetFlags(0)
 
 	schemaPath := flag.Arg(0)
 	if schemaPath == "" {
