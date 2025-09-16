@@ -6,17 +6,14 @@ package data
 	close({
 		// Account Identifier
 		account_id!: string
+		comments?:   string
+		created_at?: string
 
 		// The unique identifier for the allow policy.
-		id?:       number
-		comments?: string
+		id?: number
 
 		// The unique identifier for the allow policy.
-		pattern_id?: number
-
-		// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-		pattern_type?:  string
-		created_at?:    string
+		pattern_id?:    number
 		is_regex?:      bool
 		last_modified?: string
 		pattern?:       string
@@ -42,5 +39,8 @@ package data
 			// in the future.
 			search?: string
 		})
+
+		// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+		pattern_type?: string
 	})
 }

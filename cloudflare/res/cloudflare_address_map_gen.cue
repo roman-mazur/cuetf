@@ -11,11 +11,6 @@ package res
 		// API. This is true for Cloudflare-managed maps.
 		can_delete?: bool
 
-		// If set to false, then the IPs on the Address Map cannot be
-		// modified via the API. This is true for Cloudflare-managed
-		// maps.
-		can_modify_ips?: bool
-
 		// Zones and Accounts which will be assigned IPs on this Address
 		// Map. A zone membership will take priority over an account
 		// membership.
@@ -44,7 +39,12 @@ package res
 			// Available values: "zone", "account".
 			kind?: string
 		})]])
-		created_at?: string
+
+		// If set to false, then the IPs on the Address Map cannot be
+		// modified via the API. This is true for Cloudflare-managed
+		// maps.
+		can_modify_ips?: bool
+		created_at?:     string
 
 		// If you have legacy TLS clients which do not send the TLS server
 		// name indicator, then you can specify one default SNI on the

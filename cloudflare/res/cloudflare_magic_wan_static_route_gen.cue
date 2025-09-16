@@ -13,6 +13,9 @@ package res
 		// An optional human provided description of the static route.
 		description?: string
 
+		// Identifier
+		id?: string
+
 		// Used only for ECMP routes.
 		scope?: close({
 			// List of colo names for the ECMP scope.
@@ -21,9 +24,6 @@ package res
 			// List of colo regions for the ECMP scope.
 			colo_regions?: [...string]
 		})
-
-		// Identifier
-		id?: string
 
 		// When the route was last modified.
 		modified_on?: string

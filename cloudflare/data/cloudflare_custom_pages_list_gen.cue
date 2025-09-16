@@ -4,10 +4,6 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_custom_pages_list")
 	close({
-		// The Account ID to use for this endpoint. Mutually exclusive
-		// with the Zone ID.
-		account_id?: string
-
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			created_on?: string
@@ -38,6 +34,10 @@ package data
 			preview_target?: string
 			required_tokens?: [...string]
 		})]])
+
+		// The Account ID to use for this endpoint. Mutually exclusive
+		// with the Zone ID.
+		account_id?: string
 
 		// Max items to fetch, default: 1000
 		max_items?: number

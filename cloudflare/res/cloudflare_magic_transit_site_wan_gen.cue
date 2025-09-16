@@ -32,9 +32,9 @@ package res
 			// A valid CIDR notation representing an IP range.
 			secondary_address?: string
 		})
-		priority?: number
 
 		// VLAN ID. Use zero for untagged.
 		vlan_tag?: number
+		priority?: number
 	})
 }

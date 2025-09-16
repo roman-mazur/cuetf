@@ -4,17 +4,17 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_account_permission_group")
 	close({
-		// Account identifier tag.
-		account_id!: string
-
-		// Identifier of the permission group.
-		id?: string
-
 		// Attributes associated to the permission group.
 		meta?: close({
 			key?:   string
 			value?: string
 		})
+
+		// Account identifier tag.
+		account_id!: string
+
+		// Identifier of the permission group.
+		id?: string
 
 		// Name of the permission group.
 		name?: string

@@ -5,20 +5,23 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_tunnel_warp_connectors")
 	close({
 		// Cloudflare account ID
-		account_id!:     string
-		exclude_prefix?: string
+		account_id!: string
 
 		// If provided, include only resources that were created (and not
 		// deleted) before this time. URL encoded.
 		existed_at?:     string
-		include_prefix?: string
+		exclude_prefix?: string
 
 		// If `true`, only include deleted tunnels. If `false`, exclude
 		// deleted tunnels. If empty, all tunnels will be included.
 		is_deleted?: bool
 
 		// Max items to fetch, default: 1000
-		max_items?: number
+		max_items?:      number
+		include_prefix?: string
+
+		// A user-friendly name for the tunnel.
+		name?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
@@ -116,9 +119,6 @@ package data
 			// "magic", "ip_sec", "gre", "cni".
 			tun_type?: string
 		})]])
-
-		// A user-friendly name for the tunnel.
-		name?: string
 
 		// The status of the tunnel. Valid values are `inactive` (tunnel
 		// has never been run), `degraded` (tunnel is active and able to

@@ -31,6 +31,12 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Filters the returned cookies that match the specified name.
+		// Wildcards are supported at the start and end to support starts
+		// with, ends with
+		// and contains. e.g. session*
+		name?: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			domain_attribute?:  string
@@ -75,12 +81,6 @@ package data
 			type?:             string
 			secure_attribute?: bool
 		})]])
-
-		// Filters the returned cookies that match the specified name.
-		// Wildcards are supported at the start and end to support starts
-		// with, ends with
-		// and contains. e.g. session*
-		name?: string
 
 		// The field used to sort returned cookies.
 		// Available values: "first_seen_at", "last_seen_at".

@@ -4,9 +4,10 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_page_shield_scripts")
 	close({
+		added_at?: string
+
 		// The cryptomining score of the JavaScript content.
 		cryptomining_score?: number
-		added_at?:           string
 
 		// The dataflow score of the JavaScript content.
 		dataflow_score?: number
@@ -68,10 +69,10 @@ package data
 
 		// The computed hash of the analyzed script.
 		hash?: string
+		host?: string
 
 		// Identifier
-		id?:   string
-		host?: string
+		id?: string
 
 		// The integrity score of the JavaScript content.
 		js_integrity_score?: number

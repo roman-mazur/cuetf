@@ -5,14 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_dlp_entry")
 	close({
 		account_id!: string
-		confidence?: close({
-			// Indicates whether this entry has AI remote service validation.
-			ai_context_available?: bool
-
-			// Indicates whether this entry has any form of validation that is
-			// not an AI remote service.
-			available?: bool
-		})
 
 		// Only applies to custom word lists.
 		// Determines if the words should be matched in a case-sensitive
@@ -24,7 +16,15 @@ package res
 		id?:             string
 		name!:           string
 		profile_id!:     string
-		secret?:         bool
+		confidence?: close({
+			// Indicates whether this entry has AI remote service validation.
+			ai_context_available?: bool
+
+			// Indicates whether this entry has any form of validation that is
+			// not an AI remote service.
+			available?: bool
+		})
+		secret?: bool
 
 		// Available values: "custom", "predefined", "integration".
 		type?:       string

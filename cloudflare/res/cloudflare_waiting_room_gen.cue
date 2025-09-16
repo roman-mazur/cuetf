@@ -10,6 +10,7 @@ package res
 		// `__cf_waitingroom_abcd`. This field is required if using
 		// `additional_routes`.
 		cookie_suffix?: string
+		created_on?:    string
 
 		// Only available for the Waiting Room Advanced subscription.
 		// Additional hostname and path combinations to which this
@@ -43,27 +44,6 @@ package res
 			// query parameters are not supported.
 			path?: string
 		})]])
-
-		// Configures cookie attributes for the waiting room cookie. This
-		// encrypted cookie stores a user's status in the waiting room,
-		// such as queue position.
-		cookie_attributes?: close({
-			// Configures the SameSite attribute on the waiting room cookie.
-			// Value `auto` will be translated to `lax` or `none` depending
-			// if **Always Use HTTPS** is enabled. Note that when using value
-			// `none`, the secure attribute cannot be set to `never`.
-			// Available values: "auto", "lax", "none", "strict".
-			samesite?: string
-
-			// Configures the Secure attribute on the waiting room cookie.
-			// Value `always` indicates that the Secure attribute will be set
-			// in the Set-Cookie header, `never` indicates that the Secure
-			// attribute will not be set, and `auto` will set the Secure
-			// attribute depending if **Always Use HTTPS** is enabled.
-			// Available values: "auto", "always", "never".
-			secure?: string
-		})
-		created_on?: string
 
 		// Only available for the Waiting Room Advanced subscription. This
 		// is a template html file that will be rendered at the edge. If
@@ -100,6 +80,26 @@ package res
 		// "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI",
 		// "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
 		default_template_language?: string
+
+		// Configures cookie attributes for the waiting room cookie. This
+		// encrypted cookie stores a user's status in the waiting room,
+		// such as queue position.
+		cookie_attributes?: close({
+			// Configures the SameSite attribute on the waiting room cookie.
+			// Value `auto` will be translated to `lax` or `none` depending
+			// if **Always Use HTTPS** is enabled. Note that when using value
+			// `none`, the secure attribute cannot be set to `never`.
+			// Available values: "auto", "lax", "none", "strict".
+			samesite?: string
+
+			// Configures the Secure attribute on the waiting room cookie.
+			// Value `always` indicates that the Secure attribute will be set
+			// in the Set-Cookie header, `never` indicates that the Secure
+			// attribute will not be set, and `auto` will set the Secure
+			// attribute depending if **Always Use HTTPS** is enabled.
+			// Available values: "auto", "always", "never".
+			secure?: string
+		})
 
 		// A note that you can use to add more details about the waiting
 		// room.

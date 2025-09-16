@@ -18,9 +18,6 @@ package res
 		// When the record was created.
 		created_on?: string
 
-		// Identifier.
-		id?: string
-
 		// Components of a CAA record.
 		data?: close({
 			// Algorithm.
@@ -135,6 +132,9 @@ package res
 			// The record weight.
 			weight?: number
 		})
+
+		// Identifier.
+		id?: string
 
 		// Extra Cloudflare-specific information about the record.
 		meta?: string

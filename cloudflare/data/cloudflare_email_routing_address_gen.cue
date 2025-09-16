@@ -4,15 +4,6 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_email_routing_address")
 	close({
-		filter?: close({
-			// Sorts results in an ascending or descending order.
-			// Available values: "asc", "desc".
-			direction?: string
-
-			// Filter by verified destination addresses.
-			verified?: bool
-		})
-
 		// Identifier.
 		account_id!: string
 
@@ -27,6 +18,14 @@ package data
 
 		// Destination address identifier.
 		id?: string
+		filter?: close({
+			// Sorts results in an ascending or descending order.
+			// Available values: "asc", "desc".
+			direction?: string
+
+			// Filter by verified destination addresses.
+			verified?: bool
+		})
 
 		// The date and time the destination address was last modified.
 		modified?: string

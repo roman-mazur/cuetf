@@ -22,6 +22,9 @@ package res
 			// response. Omitted if set to the default (15).
 			stale_while_revalidate?: number
 		})
+
+		// Define configurations using a unique string identifier.
+		id?: string
 		mtls?: close({
 			// Define CA certificate ID obtained after uploading CA cert.
 			ca_certificate_id?: string
@@ -34,6 +37,14 @@ package res
 			// verify the CA.
 			sslmode?: string
 		})
+
+		// Defines the last modified time of the Hyperdrive configuration.
+		modified_on?: string
+		name!:        string
+
+		// The (soft) maximum number of connections the Hyperdrive is
+		// allowed to make to the origin database.
+		origin_connection_limit?: number
 		origin!: close({
 			// Defines the Client ID of the Access token to use when
 			// connecting to the origin database.
@@ -66,16 +77,5 @@ package res
 			// Set the user of your origin database.
 			user!: string
 		})
-
-		// Define configurations using a unique string identifier.
-		id?: string
-
-		// Defines the last modified time of the Hyperdrive configuration.
-		modified_on?: string
-		name!:        string
-
-		// The (soft) maximum number of connections the Hyperdrive is
-		// allowed to make to the origin database.
-		origin_connection_limit?: number
 	})
 }

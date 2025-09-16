@@ -20,8 +20,11 @@ package data
 		duration?: string
 
 		// UUID.
-		id?:           string
-		expires_at?:   string
+		id?:         string
+		expires_at?: string
+
+		// The name of the service token.
+		name?:         string
 		last_seen_at?: string
 		filter?: close({
 			// The name of the service token.
@@ -30,9 +33,6 @@ package data
 			// Search for service tokens by other listed query parameters.
 			search?: string
 		})
-
-		// The name of the service token.
-		name?: string
 
 		// UUID.
 		service_token_id?: string

@@ -6,14 +6,11 @@ package data
 	close({
 		// Whether to allow the user to switch WARP between modes.
 		allow_mode_switch?: bool
+		account_id!:        string
 
 		// Whether to receive update notifications when a new version of
 		// the client is available.
 		allow_updates?: bool
-
-		// Whether to allow devices to leave the organization.
-		allowed_to_leave?: bool
-		account_id!:       string
 
 		// List of routes excluded in the WARP client's tunnel.
 		exclude?: matchN(1, [close({
@@ -42,12 +39,12 @@ package data
 			host?: string
 		})]])
 
+		// Whether to allow devices to leave the organization.
+		allowed_to_leave?: bool
+
 		// The amount of time in seconds to reconnect after having been
 		// disabled.
 		auto_connect?: number
-
-		// Turn on the captive portal after the specified amount of time.
-		captive_portal?: number
 		fallback_domains?: matchN(1, [close({
 			// A description of the fallback domain, displayed in the client
 			// UI.
@@ -69,6 +66,9 @@ package data
 			// The domain suffix to match when resolving locally.
 			suffix?: string
 		})]])
+
+		// Turn on the captive portal after the specified amount of time.
+		captive_portal?: number
 
 		// Whether the policy is the default policy for an account.
 		default?: bool
@@ -115,7 +115,6 @@ package data
 			// `address` must not be present.
 			host?: string
 		})]])
-		id?: string
 
 		// The amount of time in minutes a user is allowed access to their
 		// LAN. A value of 0 will allow LAN access until the next WARP
@@ -123,6 +122,7 @@ package data
 		// Note that this field is omitted from the response if null or
 		// unset.
 		lan_allow_minutes?: number
+		id?:                string
 		service_mode_v2?: close({
 			// The mode to run the WARP client under.
 			mode?: string

@@ -13,10 +13,8 @@ package data
 		health_check_rate?: string
 
 		// Identifier
-		id?: string
-
-		// Priority of WAN for traffic loadbalancing.
-		priority?: number
+		id?:   string
+		name?: string
 
 		// (optional) if omitted, use DHCP. Submit secondary_address when
 		// site is in high availability mode.
@@ -31,10 +29,12 @@ package data
 			secondary_address?: string
 		})
 
-		// Identifier
-		site_id!:  string
-		name?:     string
+		// Priority of WAN for traffic loadbalancing.
+		priority?: number
 		physport?: number
+
+		// Identifier
+		site_id!: string
 
 		// VLAN ID. Use zero for untagged.
 		vlan_tag?: number

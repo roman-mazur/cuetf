@@ -19,7 +19,6 @@ package data
 		// When set to `true`, users skip the identity provider selection
 		// step during login.
 		auto_redirect_to_identity?: bool
-		created_at?:                string
 
 		// Lock all settings as Read-Only in the Dashboard, regardless of
 		// user permission. Updates may only be made via the API or
@@ -27,7 +26,8 @@ package data
 		is_ui_read_only?: bool
 
 		// The name of your Zero Trust organization.
-		name?: string
+		name?:       string
+		created_at?: string
 
 		// The amount of time that tokens issued for applications will be
 		// valid. Must be in the format `300ms` or `2h45m`. Valid time

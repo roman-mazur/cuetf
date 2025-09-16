@@ -10,9 +10,6 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
-		// a database name to search for.
-		name?: string
-
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Specifies the timestamp the resource was created as an ISO8601
@@ -37,5 +34,8 @@ package data
 			uuid?:    string
 			version?: string
 		})]])
+
+		// a database name to search for.
+		name?: string
 	})
 }

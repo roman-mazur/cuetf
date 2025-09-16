@@ -40,6 +40,13 @@ package data
 
 		// The live input ID used to upload a video with Stream Live.
 		live_input?: string
+		playback?: close({
+			// DASH Media Presentation Description for the video.
+			dash?: string
+
+			// The HLS manifest for the video.
+			hls?: string
+		})
 
 		// The maximum duration in seconds for a video upload. Can be set
 		// for a video that is not yet uploaded to limit its duration.
@@ -50,13 +57,6 @@ package data
 		// A user modifiable key-value store used to reference other
 		// systems of record for managing videos.
 		meta?: string
-		playback?: close({
-			// DASH Media Presentation Description for the video.
-			dash?: string
-
-			// The HLS manifest for the video.
-			hls?: string
-		})
 
 		// The date and time the media item was last modified.
 		modified?: string

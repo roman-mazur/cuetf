@@ -10,6 +10,9 @@ package data
 		// Whether to refuse to answer queries for the ANY type
 		deprecate_any_requests?: bool
 
+		// Identifier.
+		dns_firewall_id?: string
+
 		// Attack mitigation settings
 		attack_mitigation?: close({
 			// When enabled, automatically mitigate random-prefix attacks to
@@ -19,9 +22,6 @@ package data
 			// Only mitigate attacks when upstream servers seem unhealthy
 			only_when_upstream_unhealthy?: bool
 		})
-
-		// Identifier.
-		dns_firewall_id?: string
 		dns_firewall_ips?: [...string]
 
 		// Whether to forward client IP (resolver) subnet if no EDNS

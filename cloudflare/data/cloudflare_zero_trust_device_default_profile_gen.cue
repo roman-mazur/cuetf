@@ -4,9 +4,10 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_device_default_profile")
 	close({
+		account_id!: string
+
 		// Whether to allow the user to switch WARP between modes.
 		allow_mode_switch?: bool
-		account_id!:        string
 
 		// Whether to receive update notifications when a new version of
 		// the client is available.
@@ -51,12 +52,6 @@ package data
 
 		// Whether the policy will be applied to matching devices.
 		default?: bool
-
-		// If the `dns_server` field of a fallback domain is not present,
-		// the client will fall back to a best guess of the
-		// default/system DNS resolvers unless this policy option is set
-		// to `true`.
-		disable_auto_fallback?: bool
 		fallback_domains?: matchN(1, [close({
 			// A description of the fallback domain, displayed in the client
 			// UI.
@@ -78,6 +73,12 @@ package data
 			// The domain suffix to match when resolving locally.
 			suffix?: string
 		})]])
+
+		// If the `dns_server` field of a fallback domain is not present,
+		// the client will fall back to a best guess of the
+		// default/system DNS resolvers unless this policy option is set
+		// to `true`.
+		disable_auto_fallback?: bool
 
 		// List of routes included in the WARP client's tunnel.
 		include?: matchN(1, [close({

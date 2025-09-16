@@ -4,9 +4,6 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zone_lockdown")
 	close({
-		// The timestamp of when the rule was created.
-		created_on?: string
-
 		// A list of IP addresses or CIDR ranges that will be allowed to
 		// access the URLs specified in the Zone Lockdown rule. You can
 		// include any number of `ip` or `ip_range` configurations.
@@ -29,6 +26,9 @@ package res
 			// IP address of incoming requests.
 			value?: string
 		})]])
+
+		// The timestamp of when the rule was created.
+		created_on?: string
 
 		// An informative summary of the rule. This value is sanitized and
 		// any tags will be removed.

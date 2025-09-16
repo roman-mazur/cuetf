@@ -6,9 +6,6 @@ package data
 	close({
 		// Account ID.
 		account_id!: string
-
-		// Name of the bucket.
-		bucket_name!: string
 		rules?: matchN(1, [close({
 			// Array of R2 object actions that will trigger notifications.
 			actions?: [...string]
@@ -48,6 +45,9 @@ package data
 			// Notifications will be sent only for objects with this suffix.
 			suffix?: string
 		})]])
+
+		// Name of the bucket.
+		bucket_name!: string
 
 		// Queue ID.
 		queue_id!: string

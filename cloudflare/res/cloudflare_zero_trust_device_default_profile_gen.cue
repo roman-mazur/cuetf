@@ -6,20 +6,6 @@ package res
 	close({
 		account_id!: string
 
-		// Whether to allow the user to switch WARP between modes.
-		allow_mode_switch?: bool
-
-		// Whether to receive update notifications when a new version of
-		// the client is available.
-		allow_updates?: bool
-
-		// Whether to allow devices to leave the organization.
-		allowed_to_leave?: bool
-
-		// The amount of time in seconds to reconnect after having been
-		// disabled.
-		auto_connect?: number
-
 		// List of routes excluded in the WARP client's tunnel. Both
 		// 'exclude' and 'include' cannot be set in the same request.
 		exclude?: matchN(1, [close({
@@ -48,20 +34,19 @@ package res
 			host?: string
 		})]])
 
-		// Turn on the captive portal after the specified amount of time.
-		captive_portal?: number
+		// Whether to allow the user to switch WARP between modes.
+		allow_mode_switch?: bool
 
-		// Whether the policy will be applied to matching devices.
-		default?: bool
+		// Whether to receive update notifications when a new version of
+		// the client is available.
+		allow_updates?: bool
 
-		// If the `dns_server` field of a fallback domain is not present,
-		// the client will fall back to a best guess of the
-		// default/system DNS resolvers unless this policy option is set
-		// to `true`.
-		disable_auto_fallback?: bool
+		// Whether to allow devices to leave the organization.
+		allowed_to_leave?: bool
 
-		// Whether the policy will be applied to matching devices.
-		enabled?: bool
+		// The amount of time in seconds to reconnect after having been
+		// disabled.
+		auto_connect?: number
 		fallback_domains?: matchN(1, [close({
 			// A description of the fallback domain, displayed in the client
 			// UI.
@@ -83,6 +68,21 @@ package res
 			// The domain suffix to match when resolving locally.
 			suffix?: string
 		})]])
+
+		// Turn on the captive portal after the specified amount of time.
+		captive_portal?: number
+
+		// Whether the policy will be applied to matching devices.
+		default?: bool
+
+		// If the `dns_server` field of a fallback domain is not present,
+		// the client will fall back to a best guess of the
+		// default/system DNS resolvers unless this policy option is set
+		// to `true`.
+		disable_auto_fallback?: bool
+
+		// Whether the policy will be applied to matching devices.
+		enabled?: bool
 
 		// Whether to add Microsoft IPs to Split Tunnel exclusions.
 		exclude_office_ips?: bool

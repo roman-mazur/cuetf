@@ -10,6 +10,10 @@ package data
 		// Identifier of an Address Map.
 		address_map_id?: string
 
+		// If set to false, then the Address Map cannot be deleted via
+		// API. This is true for Cloudflare-managed maps.
+		can_delete?: bool
+
 		// The set of IPs on the Address Map.
 		ips?: matchN(1, [close({
 			created_at?: string
@@ -22,10 +26,6 @@ package data
 			// An IPv4 or IPv6 address.
 			ip?: string
 		})]])
-
-		// If set to false, then the Address Map cannot be deleted via
-		// API. This is true for Cloudflare-managed maps.
-		can_delete?: bool
 
 		// Zones and Accounts which will be assigned IPs on this Address
 		// Map. A zone membership will take priority over an account

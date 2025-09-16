@@ -14,6 +14,10 @@ package res
 		// due.
 		current_period_end?: string
 
+		// When the current billing period started. May match
+		// initial_period_start if this is the first period.
+		current_period_start?: string
+
 		// The rate plan applied to the subscription.
 		rate_plan?: close({
 			// The currency applied to the rate plan subscription.
@@ -41,10 +45,6 @@ package res
 			// The list of sets this rate plan applies to.
 			sets?: [...string]
 		})
-
-		// When the current billing period started. May match
-		// initial_period_start if this is the first period.
-		current_period_start?: string
 
 		// How often the subscription is renewed automatically.
 		// Available values: "weekly", "monthly", "quarterly", "yearly".

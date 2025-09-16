@@ -11,16 +11,6 @@ package res
 
 		// The unique identifier for the trusted domain.
 		id?: number
-
-		// Select to prevent recently registered domains from triggering a
-		// Suspicious or Malicious disposition.
-		is_recent?: bool
-
-		// Select for partner or other approved domains that have similar
-		// spelling to your connected domains. Prevents listed domains
-		// from
-		// triggering a Spoof disposition.
-		is_similarity?: bool
 		body?: matchN(1, [close({
 			comments?: string
 
@@ -50,7 +40,17 @@ package res
 			is_similarity!: bool
 			pattern!:       string
 		})]])
-		is_regex?:      bool
+
+		// Select to prevent recently registered domains from triggering a
+		// Suspicious or Malicious disposition.
+		is_recent?: bool
+		is_regex?:  bool
+
+		// Select for partner or other approved domains that have similar
+		// spelling to your connected domains. Prevents listed domains
+		// from
+		// triggering a Spoof disposition.
+		is_similarity?: bool
 		last_modified?: string
 		pattern?:       string
 	})

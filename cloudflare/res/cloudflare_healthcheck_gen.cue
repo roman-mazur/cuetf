@@ -19,12 +19,7 @@ package res
 		// The number of consecutive successes required from a health
 		// check before changing the health to healthy.
 		consecutive_successes?: number
-
-		// A human-readable description of the health check.
-		description?: string
-
-		// The current failure reason if status is unhealthy.
-		failure_reason?: string
+		created_on?:            string
 
 		// Parameters specific to an HTTP or HTTPS health check.
 		http_config?: close({
@@ -62,9 +57,14 @@ package res
 			port?: number
 		})
 
+		// A human-readable description of the health check.
+		description?: string
+
+		// The current failure reason if status is unhealthy.
+		failure_reason?: string
+
 		// Identifier
-		id?:         string
-		created_on?: string
+		id?: string
 
 		// The interval between each health check. Shorter intervals may
 		// give quicker notifications if the origin status changes, but

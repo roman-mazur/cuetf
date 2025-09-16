@@ -5,16 +5,16 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_magic_transit_connector")
 	close({
 		// Account identifier
-		account_id!:                      string
-		activated?:                       bool
-		id?:                              string
-		interrupt_window_duration_hours?: number
-		interrupt_window_hour_of_day?:    number
+		account_id!: string
 		device!: close({
 			id?:            string
 			serial_number?: string
 		})
-		notes?:    string
-		timezone?: string
+		activated?:                       bool
+		id?:                              string
+		interrupt_window_duration_hours?: number
+		interrupt_window_hour_of_day?:    number
+		notes?:                           string
+		timezone?:                        string
 	})
 }

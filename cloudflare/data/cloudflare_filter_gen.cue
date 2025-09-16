@@ -16,9 +16,6 @@ package data
 
 		// The unique identifier of the filter.
 		id?: string
-
-		// When true, indicates that the filter is currently paused.
-		paused?: bool
 		filter?: close({
 			// A case-insensitive string to find in the description.
 			description?: string
@@ -36,6 +33,9 @@ package data
 			// an exact match.
 			ref?: string
 		})
+
+		// When true, indicates that the filter is currently paused.
+		paused?: bool
 
 		// A short reference tag. Allows you to select related filters.
 		ref?: string

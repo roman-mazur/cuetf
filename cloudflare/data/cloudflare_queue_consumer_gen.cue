@@ -9,6 +9,7 @@ package data
 
 		// A Resource identifier.
 		consumer_id!: string
+		created_on?:  string
 		settings?: close({
 			// The maximum number of messages to include in a batch.
 			batch_size?: number
@@ -39,8 +40,7 @@ package data
 		queue_id!: string
 
 		// Name of a Worker
-		script?:     string
-		created_on?: string
+		script?: string
 
 		// Name of a Worker
 		script_name?: string

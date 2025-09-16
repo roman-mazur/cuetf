@@ -4,9 +4,10 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_list")
 	close({
+		account_id!: string
+
 		// The description of the list.
 		description?: string
-		account_id!:  string
 		created_at?:  string
 
 		// API Resource UUID tag.
@@ -36,14 +37,14 @@ package data
 
 		// API Resource UUID tag.
 		list_id?: string
+
+		// The name of the list.
+		name?: string
 		filter?: close({
 			// The type of list.
 			// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 			type?: string
 		})
-
-		// The name of the list.
-		name?: string
 
 		// The type of list.
 		// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".

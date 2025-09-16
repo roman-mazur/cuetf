@@ -4,6 +4,24 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_magic_transit_site_acl")
 	close({
+		// Identifier
+		account_id!: string
+
+		// Identifier
+		acl_id?: string
+
+		// Description for the ACL.
+		description?: string
+
+		// The desired forwarding action for this ACL policy. If set to
+		// "false", the policy will forward traffic to Cloudflare. If set
+		// to "true", the policy will forward traffic locally on the
+		// Magic Connector. If not included in request, will default to
+		// false.
+		forward_locally?: bool
+
+		// Identifier
+		id?: string
 		lan_1?: close({
 			// The identifier for the LAN you want to create an ACL policy
 			// with.
@@ -27,25 +45,6 @@ package data
 			// on this LAN are allowed.
 			subnets?: [...string]
 		})
-
-		// Identifier
-		account_id!: string
-
-		// Identifier
-		acl_id?: string
-
-		// Description for the ACL.
-		description?: string
-
-		// The desired forwarding action for this ACL policy. If set to
-		// "false", the policy will forward traffic to Cloudflare. If set
-		// to "true", the policy will forward traffic locally on the
-		// Magic Connector. If not included in request, will default to
-		// false.
-		forward_locally?: bool
-
-		// Identifier
-		id?: string
 		lan_2?: close({
 			// The identifier for the LAN you want to create an ACL policy
 			// with.

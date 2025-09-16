@@ -4,8 +4,6 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_waiting_room_rules")
 	close({
-		// The ID of the rule.
-		id?: string
 		rules!: matchN(1, [close({
 			// The action to take when the expression matches.
 			// Available values: "bypass_waiting_room".
@@ -33,6 +31,9 @@ package res
 			// Criteria defining when there is a match for the current rule.
 			expression!: string
 		})]])
+
+		// The ID of the rule.
+		id?:              string
 		waiting_room_id!: string
 
 		// Identifier.

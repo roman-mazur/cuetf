@@ -38,6 +38,9 @@ package res
 			id!: string
 		})]])
 
+		// The unique ID of the zone.
+		zone_id!: string
+
 		// The list of Managed Response Transforms.
 		managed_response_headers!: matchN(1, [close({
 			// The Managed Transforms that this Managed Transform conflicts
@@ -68,8 +71,5 @@ package res
 			// The human-readable identifier of the Managed Transform.
 			id!: string
 		})]])
-
-		// The unique ID of the zone.
-		zone_id!: string
 	})
 }

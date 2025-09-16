@@ -50,6 +50,9 @@ package data
 		// after creation.
 		// Available values: "world", "china".
 		region?: string
+
+		// Secret key for this widget.
+		secret?: string
 		filter?: close({
 			// Direction to order widgets.
 			// Available values: "asc", "desc".
@@ -60,9 +63,6 @@ package data
 			// "modified_on".
 			order?: string
 		})
-
-		// Secret key for this widget.
-		secret?: string
 
 		// Widget item identifier tag.
 		sitekey?: string

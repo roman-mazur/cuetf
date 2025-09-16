@@ -10,22 +10,20 @@ package data
 
 		// Request content.
 		content?: string
+		created?: string
 
 		// UUID.
-		id?:      string
-		created?: string
+		id?: string
 
 		// Tokens for the request messages.
 		message_tokens?: number
 
 		// Readable Request ID.
 		readable_id?: string
+		priority?:    string
 
 		// Requested information from request.
 		request?: string
-
-		// UUID.
-		request_id?: string
 		filter?: close({
 			// Retrieve requests completed after this time.
 			completed_after?: string
@@ -60,7 +58,9 @@ package data
 			// "completed", "declined".
 			status?: string
 		})
-		priority?: string
+
+		// UUID.
+		request_id?: string
 
 		// Request Status.
 		// Available values: "open", "accepted", "reported", "approved",

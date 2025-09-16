@@ -4,6 +4,12 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_web_analytics_site")
 	close({
+		filter?: close({
+			// The property used to sort the list of results.
+			// Available values: "host", "created".
+			order_by?: string
+		})
+
 		// Identifier.
 		account_id!: string
 
@@ -14,9 +20,6 @@ package data
 
 		// Identifier.
 		id?: string
-
-		// Identifier.
-		site_id?: string
 
 		// A list of rules.
 		rules?: matchN(1, [close({
@@ -58,11 +61,9 @@ package data
 			paths?: [...string]
 			priority?: number
 		})]])
-		filter?: close({
-			// The property used to sort the list of results.
-			// Available values: "host", "created".
-			order_by?: string
-		})
+
+		// Identifier.
+		site_id?: string
 
 		// The Web Analytics site identifier.
 		site_tag?: string

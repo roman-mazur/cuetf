@@ -4,8 +4,6 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_dex_test")
 	close({
-		account_id!: string
-
 		// The configuration object which contains the details for the
 		// WARP client to conduct the test.
 		data!: close({
@@ -23,7 +21,8 @@ package res
 		description?: string
 
 		// Determines whether or not the test is active.
-		enabled!: bool
+		enabled!:    bool
+		account_id!: string
 
 		// The unique identifier for the test.
 		id?: string
@@ -32,8 +31,7 @@ package res
 		interval!: string
 
 		// The name of the DEX test. Must be unique.
-		name!:     string
-		targeted?: bool
+		name!: string
 
 		// DEX rules targeted by this test
 		target_policies?: matchN(1, [close({
@@ -55,6 +53,7 @@ package res
 			// The name of the DEX rule
 			name?: string
 		})]])
+		targeted?: bool
 
 		// The unique identifier for the test.
 		test_id?: string

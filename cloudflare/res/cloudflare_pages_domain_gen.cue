@@ -6,10 +6,6 @@ package res
 	close({
 		// Identifier
 		account_id!: string
-
-		// Available values: "google", "lets_encrypt".
-		certificate_authority?: string
-		created_on?:            string
 		validation_data?: close({
 			error_message?: string
 
@@ -22,17 +18,14 @@ package res
 			txt_name?:  string
 			txt_value?: string
 		})
-		verification_data?: close({
-			error_message?: string
 
-			// Available values: "pending", "active", "deactivated",
-			// "blocked", "error".
-			status?: string
-		})
-		domain_id?: string
+		// Available values: "google", "lets_encrypt".
+		certificate_authority?: string
 
 		// Name of the project.
 		project_name!: string
+		created_on?:   string
+		domain_id?:    string
 		id?:           string
 		name!:         string
 
@@ -40,5 +33,12 @@ package res
 		// "deactivated", "blocked", "error".
 		status?:   string
 		zone_tag?: string
+		verification_data?: close({
+			error_message?: string
+
+			// Available values: "pending", "active", "deactivated",
+			// "blocked", "error".
+			status?: string
+		})
 	})
 }

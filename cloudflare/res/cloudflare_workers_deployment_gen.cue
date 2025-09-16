@@ -18,6 +18,7 @@ package res
 		// Name of the script, used in URLs and route configuration.
 		script_name!:  string
 		author_email?: string
+		created_on?:   string
 		versions!: matchN(1, [close({
 			percentage!: number
 			version_id!: string
@@ -25,8 +26,7 @@ package res
 			percentage!: number
 			version_id!: string
 		})]])
-		created_on?: string
-		id?:         string
+		id?: string
 
 		// Available values: "percentage".
 		strategy!: string

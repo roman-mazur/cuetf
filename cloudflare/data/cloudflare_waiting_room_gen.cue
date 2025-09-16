@@ -4,6 +4,13 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_waiting_room")
 	close({
+		// Appends a '_' + a custom suffix to the end of Cloudflare
+		// Waiting Room's cookie name(__cf_waitingroom). If
+		// `cookie_suffix` is "abcd", the cookie name will be
+		// `__cf_waitingroom_abcd`. This field is required if using
+		// `additional_routes`.
+		cookie_suffix?: string
+
 		// Only available for the Waiting Room Advanced subscription.
 		// Additional hostname and path combinations to which this
 		// waiting room will be applied. There is an implied wildcard at
@@ -56,14 +63,7 @@ package data
 			// Available values: "auto", "always", "never".
 			secure?: string
 		})
-
-		// Appends a '_' + a custom suffix to the end of Cloudflare
-		// Waiting Room's cookie name(__cf_waitingroom). If
-		// `cookie_suffix` is "abcd", the cookie name will be
-		// `__cf_waitingroom_abcd`. This field is required if using
-		// `additional_routes`.
-		cookie_suffix?: string
-		created_on?:    string
+		created_on?: string
 
 		// Only available for the Waiting Room Advanced subscription. This
 		// is a template html file that will be rendered at the edge. If
@@ -120,6 +120,7 @@ package data
 		// wildcards). Please do not include the scheme (http:// or
 		// https://). The host and path combination must be unique.
 		host?: string
+		id?:   string
 
 		// Only available for the Waiting Room Advanced subscription. If
 		// `true`, requests to the waiting room with the header `Accept:
@@ -294,8 +295,8 @@ package data
 
 		// A unique name to identify the waiting room. Only alphanumeric
 		// characters, hyphens and underscores are allowed.
-		name?: string
-		id?:   string
+		name?:        string
+		modified_on?: string
 
 		// Sets the number of new users that will be let into the route
 		// every minute. This value is used as baseline for the number of
@@ -303,7 +304,6 @@ package data
 		// is a little more or little less traffic coming to the route
 		// based on the traffic patterns at that time around the world.
 		new_users_per_minute?: number
-		modified_on?:          string
 
 		// An ISO 8601 timestamp that marks when the next event will begin
 		// queueing.

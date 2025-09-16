@@ -4,11 +4,6 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zone")
 	close({
-		account!: close({
-			// Identifier
-			id?: string
-		})
-
 		// The last time proof of ownership was detected and the zone was
 		// made
 		// active.
@@ -26,6 +21,13 @@ package res
 		// domain. If development mode has never been enabled, this value
 		// is 0.
 		development_mode?: number
+
+		// Identifier
+		id?: string
+		account!: close({
+			// Identifier
+			id?: string
+		})
 
 		// Metadata about the zone.
 		meta?: close({
@@ -49,8 +51,14 @@ package res
 			step?:              number
 		})
 
-		// Identifier
-		id?: string
+		// When the zone was last modified.
+		modified_on?: string
+
+		// The domain name.
+		name!: string
+
+		// The name servers Cloudflare assigns to a zone.
+		name_servers?: [...string]
 
 		// The owner of the zone.
 		owner?: close({
@@ -63,15 +71,6 @@ package res
 			// The type of owner.
 			type?: string
 		})
-
-		// When the zone was last modified.
-		modified_on?: string
-
-		// The domain name.
-		name!: string
-
-		// The name servers Cloudflare assigns to a zone.
-		name_servers?: [...string]
 
 		// DNS host at the time of switching to Cloudflare.
 		original_dnshost?: string

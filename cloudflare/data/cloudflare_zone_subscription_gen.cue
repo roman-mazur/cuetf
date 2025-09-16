@@ -19,6 +19,9 @@ package data
 		// Available values: "weekly", "monthly", "quarterly", "yearly".
 		frequency?: string
 
+		// Subscription identifier tag.
+		id?: string
+
 		// The rate plan applied to the subscription.
 		rate_plan?: close({
 			// The currency applied to the rate plan subscription.
@@ -46,9 +49,6 @@ package data
 			// The list of sets this rate plan applies to.
 			sets?: [...string]
 		})
-
-		// Subscription identifier tag.
-		id?: string
 
 		// The price of the subscription that will be billed, in US
 		// dollars.

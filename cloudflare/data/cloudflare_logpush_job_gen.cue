@@ -28,6 +28,9 @@ package data
 		// supported by the destination may be included.
 		destination_conf?: string
 
+		// Flag that indicates if the job is enabled.
+		enabled?: bool
+
 		// The structured replacement for `logpull_options`. When
 		// including this field, the `logpull_option` field will be
 		// ignored.
@@ -85,9 +88,6 @@ package data
 			// Available values: "unixnano", "unix", "rfc3339".
 			timestamp_format?: string
 		})
-
-		// Flag that indicates if the job is enabled.
-		enabled?: bool
 
 		// If not null, the job is currently failing. Failures are usually
 		// repetitive (example: no permissions to write to destination

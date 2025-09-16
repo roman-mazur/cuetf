@@ -6,6 +6,7 @@ package data
 	close({
 		account_id!:     string
 		case_sensitive?: bool
+		created_at?:     string
 		columns?: matchN(1, [close({
 			entry_id?:    string
 			header_name?: string
@@ -26,13 +27,7 @@ package data
 
 		// The description of the dataset.
 		description?: string
-		created_at?:  string
-
-		// Available values: "empty", "uploading", "pending",
-		// "processing", "failed", "complete".
-		status?:           string
-		dataset_id!:       string
-		encoding_version?: number
+		dataset_id!:  string
 		uploads?: matchN(1, [close({
 			num_cells?: number
 
@@ -48,13 +43,18 @@ package data
 			status?:  string
 			version?: number
 		})]])
-		id?: string
+		encoding_version?: number
+
+		// Available values: "empty", "uploading", "pending",
+		// "processing", "failed", "complete".
+		status?: string
+		id?:     string
+		name?:   string
 
 		// When the dataset was last updated.
 		//
 		// This includes name or description changes as well as uploads.
 		updated_at?: string
-		name?:       string
 		num_cells?:  number
 		secret?:     bool
 	})

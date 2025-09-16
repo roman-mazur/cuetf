@@ -4,14 +4,6 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_hyperdrive_config")
 	close({
-		// Define configurations using a unique string identifier.
-		account_id!: string
-
-		// Defines the creation time of the Hyperdrive configuration.
-		created_on?: string
-
-		// Define configurations using a unique string identifier.
-		hyperdrive_id?: string
 		caching?: close({
 			// Set to true to disable caching of SQL responses. Default is
 			// false.
@@ -25,6 +17,12 @@ package data
 			// response. Omitted if set to the default (15).
 			stale_while_revalidate?: number
 		})
+
+		// Define configurations using a unique string identifier.
+		account_id!: string
+
+		// Defines the creation time of the Hyperdrive configuration.
+		created_on?: string
 		mtls?: close({
 			// Define CA certificate ID obtained after uploading CA cert.
 			ca_certificate_id?: string
@@ -39,11 +37,18 @@ package data
 		})
 
 		// Define configurations using a unique string identifier.
+		hyperdrive_id?: string
+
+		// Define configurations using a unique string identifier.
 		id?: string
 
 		// Defines the last modified time of the Hyperdrive configuration.
 		modified_on?: string
 		name?:        string
+
+		// The (soft) maximum number of connections the Hyperdrive is
+		// allowed to make to the origin database.
+		origin_connection_limit?: number
 		origin?: close({
 			// Defines the Client ID of the Access token to use when
 			// connecting to the origin database.
@@ -76,9 +81,5 @@ package data
 			// Set the user of your origin database.
 			user?: string
 		})
-
-		// The (soft) maximum number of connections the Hyperdrive is
-		// allowed to make to the origin database.
-		origin_connection_limit?: number
 	})
 }

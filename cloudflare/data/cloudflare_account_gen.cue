@@ -4,6 +4,11 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_account")
 	close({
+		// Account identifier tag.
+		account_id?: string
+
+		// Timestamp for the creation of the account
+		created_on?: string
 		filter?: close({
 			// Direction to order results.
 			// Available values: "asc", "desc".
@@ -14,10 +19,7 @@ package data
 		})
 
 		// Account identifier tag.
-		account_id?: string
-
-		// Timestamp for the creation of the account
-		created_on?: string
+		id?: string
 
 		// Account settings
 		settings?: close({
@@ -28,9 +30,6 @@ package data
 			// Two-Factor Authentication is enabled
 			enforce_twofactor?: bool
 		})
-
-		// Account identifier tag.
-		id?: string
 
 		// Account name
 		name?: string

@@ -9,6 +9,7 @@ package res
 
 		// A Resource identifier.
 		consumer_id?: string
+		created_on?:  string
 		settings?: close({
 			// The maximum number of messages to include in a batch.
 			batch_size?: number
@@ -34,7 +35,6 @@ package res
 			// another attempt.
 			visibility_timeout_ms?: number
 		})
-		created_on?:        string
 		dead_letter_queue?: string
 
 		// A Resource identifier.

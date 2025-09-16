@@ -10,9 +10,6 @@ package res
 		// Identifier
 		id?: string
 
-		// Account name
-		name!: string
-
 		// Account settings
 		settings?: close({
 			// Sets an abuse contact email to notify for abuse reports.
@@ -22,6 +19,9 @@ package res
 			// Two-Factor Authentication is enabled
 			enforce_twofactor?: bool
 		})
+
+		// Account name
+		name!: string
 
 		// information related to the tenant unit, and optionally, an id
 		// of the unit to create the account on. see

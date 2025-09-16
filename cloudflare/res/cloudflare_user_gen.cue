@@ -21,6 +21,9 @@ package res
 
 		// Indicates whether user has any pro zones
 		has_pro_zones?: bool
+
+		// Identifier of the user.
+		id?: string
 		organizations?: matchN(1, [close({
 			// Identifier
 			id?: string
@@ -56,9 +59,6 @@ package res
 			// Available values: "member", "invited".
 			status?: string
 		})]])
-
-		// Identifier of the user.
-		id?: string
 
 		// User's last name
 		last_name?: string

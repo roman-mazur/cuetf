@@ -14,6 +14,9 @@ package res
 		// The D1 database's size, in bytes.
 		file_size?: number
 
+		// D1 database identifier (UUID).
+		id?: string
+
 		// Configuration for D1 read replication.
 		read_replication?: close({
 			// The read replication mode for the database. Use 'auto' to
@@ -24,18 +27,15 @@ package res
 			mode!: string
 		})
 
-		// D1 database identifier (UUID).
-		id?: string
-
 		// D1 database name.
-		name!: string
+		name!:       string
+		num_tables?: number
 
 		// Specify the region to create the D1 primary, if available. If
 		// this option is omitted, the D1 will be created as close as
 		// possible to the current user.
 		// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
 		primary_location_hint?: string
-		num_tables?:            number
 
 		// D1 database identifier (UUID).
 		uuid?:    string

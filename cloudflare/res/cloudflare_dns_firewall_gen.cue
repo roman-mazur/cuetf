@@ -11,6 +11,13 @@ package res
 		deprecate_any_requests?: bool
 		dns_firewall_ips?: [...string]
 
+		// Whether to forward client IP (resolver) subnet if no EDNS
+		// Client Subnet is sent
+		ecs_fallback?: bool
+
+		// Identifier.
+		id?: string
+
 		// Attack mitigation settings
 		attack_mitigation?: close({
 			// When enabled, automatically mitigate random-prefix attacks to
@@ -20,13 +27,6 @@ package res
 			// Only mitigate attacks when upstream servers seem unhealthy
 			only_when_upstream_unhealthy?: bool
 		})
-
-		// Whether to forward client IP (resolver) subnet if no EDNS
-		// Client Subnet is sent
-		ecs_fallback?: bool
-
-		// Identifier.
-		id?: string
 
 		// Maximum DNS cache TTL This setting sets an upper bound on DNS
 		// TTLs for purposes of caching between DNS Firewall and the

@@ -6,11 +6,11 @@ package data
 	close({
 		// Account Identifier
 		account_id!: string
-
-		// The unique identifier for the trusted domain.
-		id?:         number
 		comments?:   string
 		created_at?: string
+
+		// The unique identifier for the trusted domain.
+		id?: number
 
 		// Select to prevent recently registered domains from triggering a
 		// Suspicious or Malicious disposition.

@@ -9,12 +9,12 @@ package data
 
 		// The sorting direction.
 		// Available values: "asc", "desc".
-		direction?: string
-
-		// Max items to fetch, default: 1000
-		max_items?:     number
+		direction?:     string
 		is_recent?:     bool
 		is_similarity?: bool
+
+		// Max items to fetch, default: 1000
+		max_items?: number
 
 		// The field to sort by.
 		// Available values: "pattern", "created_at".
@@ -60,6 +60,7 @@ package data
 			last_modified?: string
 			pattern?:       string
 		})]])
+		pattern?: string
 
 		// Allows searching in multiple properties of a record
 		// simultaneously.
@@ -68,7 +69,6 @@ package data
 		// behavior is intentionally left unspecified and is subject to
 		// change
 		// in the future.
-		search?:  string
-		pattern?: string
+		search?: string
 	})
 }

@@ -38,6 +38,11 @@ package data
 		// "zero_trust_network_sessions".
 		dataset_id?: string
 
+		// Uniquely identifies a resource (such as an s3 bucket) where
+		// data will be pushed. Additional configuration parameters
+		// supported by the destination may be included.
+		destination_conf?: string
+
 		// The structured replacement for `logpull_options`. When
 		// including this field, the `logpull_option` field will be
 		// ignored.
@@ -95,11 +100,6 @@ package data
 			// Available values: "unixnano", "unix", "rfc3339".
 			timestamp_format?: string
 		})
-
-		// Uniquely identifies a resource (such as an s3 bucket) where
-		// data will be pushed. Additional configuration parameters
-		// supported by the destination may be included.
-		destination_conf?: string
 
 		// Flag that indicates if the job is enabled.
 		enabled?: bool

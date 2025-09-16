@@ -41,9 +41,6 @@ package res
 		// State of Sippy for this bucket.
 		enabled?: bool
 
-		// Jurisdiction of the bucket
-		jurisdiction?: string
-
 		// AWS S3 bucket to copy objects from.
 		source?: close({
 			// Access Key ID of an IAM credential (ideally scoped to a single
@@ -71,5 +68,8 @@ package res
 			// single S3 bucket).
 			secret_access_key?: string
 		})
+
+		// Jurisdiction of the bucket
+		jurisdiction?: string
 	})
 }

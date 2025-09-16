@@ -16,6 +16,11 @@ package data
 		// Whether this bucket is publicly accessible at the specified
 		// custom domain.
 		enabled?: bool
+
+		// Minimum TLS Version the custom domain will accept for incoming
+		// connections. If not set, defaults to 1.0.
+		// Available values: "1.0", "1.1", "1.2", "1.3".
+		min_tls?: string
 		status?: close({
 			// Ownership status of the domain.
 			// Available values: "pending", "active", "deactivated",
@@ -27,11 +32,6 @@ package data
 			// "deactivated", "error", "unknown".
 			ssl?: string
 		})
-
-		// Minimum TLS Version the custom domain will accept for incoming
-		// connections. If not set, defaults to 1.0.
-		// Available values: "1.0", "1.1", "1.2", "1.3".
-		min_tls?: string
 
 		// Zone ID of the custom domain resides in.
 		zone_id?: string
