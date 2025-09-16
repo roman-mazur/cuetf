@@ -1,3 +1,5 @@
+// Package tf profides a schema for the output of
+//		terraform providers schema -json
 package tf
 
 #ProviderSchema: {
@@ -51,7 +53,7 @@ _recDepth: [0, 1, 2, 3, 4, 5]
 
 #block: documented & {
 	deprecated: bool | *false
-	attributes: [name=string]:  #attributeDescription
+	attributes: [name=string]:   #attributeDescription
 	block_types?: [name=string]: #blockTypeDescription
 }
 
@@ -63,14 +65,14 @@ _recDepth: [0, 1, 2, 3, 4, 5]
 	deprecated: bool | *false
 }
 
-_attrTypeOptions: {	type: #attr.#type } | {
-		nested_type: nestable & {
-			attributes: [name=string]: #attributeDescription
-		}
+_attrTypeOptions: {type: #attr.#type} | {
+	nested_type: nestable & {
+		attributes: [name=string]: #attributeDescription
+	}
 }
 
 #blockTypeDescription: nestable & {
-	block:        #block
+	block: #block
 }
 
 nestable: {
