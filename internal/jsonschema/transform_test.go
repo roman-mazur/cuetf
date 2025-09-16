@@ -39,6 +39,7 @@ func TestProviders(t *testing.T) {
 		{
 			name: "cloudflare",
 			examples: []string{
+				"provider",
 				"cloudflare_zero_trust_gateway_logging",
 			},
 		},
