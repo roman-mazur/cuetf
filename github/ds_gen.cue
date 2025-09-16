@@ -51,6 +51,7 @@ _ds: github_repository_deploy_keys: data.#github_repository_deploy_keys
 _ds: github_repository_deployment_branch_policies: data.#github_repository_deployment_branch_policies
 _ds: github_repository_environments: data.#github_repository_environments
 _ds: github_repository_file: data.#github_repository_file
+_ds: github_repository: data.#github_repository
 _ds: github_repository_milestone: data.#github_repository_milestone
 _ds: github_repository_pull_request: data.#github_repository_pull_request
 _ds: github_repository_pull_requests: data.#github_repository_pull_requests
