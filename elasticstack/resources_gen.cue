@@ -35,5 +35,6 @@ _res: elasticstack_kibana_import_saved_objects: res.#elasticstack_kibana_import_
 _res: elasticstack_kibana_security_role: res.#elasticstack_kibana_security_role
 _res: elasticstack_kibana_slo: res.#elasticstack_kibana_slo
 _res: elasticstack_kibana_space: res.#elasticstack_kibana_space
+_res: elasticstack_kibana_synthetics_monitor: res.#elasticstack_kibana_synthetics_monitor
 _res: elasticstack_kibana_synthetics_parameter: res.#elasticstack_kibana_synthetics_parameter
 _res: elasticstack_kibana_synthetics_private_location: res.#elasticstack_kibana_synthetics_private_location

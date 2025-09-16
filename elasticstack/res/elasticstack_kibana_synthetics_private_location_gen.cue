@@ -10,6 +10,13 @@ package res
 		// agentPolicyId
 		agent_policy_id!: string
 
+		// Generated id for the private location. For monitor setup please
+		// use private location label.
+		id?: string
+
+		// A label for the private location, used as unique identifier
+		label!: string
+
 		// Geographic coordinates (WGS84) for the location
 		geo?: close({
 			// The latitude of the location.
@@ -18,13 +25,6 @@ package res
 			// The longitude of the location.
 			lon!: number
 		})
-
-		// Generated id for the private location. For monitor setup please
-		// use private location label.
-		id?: string
-
-		// A label for the private location, used as unique identifier
-		label!: string
 
 		// An array of tags to categorize the private location.
 		tags?: [...string]

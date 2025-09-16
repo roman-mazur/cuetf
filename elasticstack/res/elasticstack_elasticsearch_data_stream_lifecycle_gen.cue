@@ -4,10 +4,15 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_data_stream_lifecycle")
 	close({
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+
 		// Every document added to this data stream will be stored at
 		// least for this time frame. When empty, every document in this
 		// data stream will be stored indefinitely
 		data_retention?: string
+
+		// Data stream lifecycle on/off.
+		enabled?: bool
 
 		// Downsampling configuration objects, each defining an after
 		// interval representing when the backing index is meant to be
@@ -31,9 +36,6 @@ package res
 			fixed_interval!: string
 		})]])
 
-		// Data stream lifecycle on/off.
-		enabled?: bool
-
 		// Determines how wildcard patterns in the `indices` parameter
 		// match data streams and indices. Supports comma-separated
 		// values, such as `closed,hidden`.
@@ -44,7 +46,6 @@ package res
 
 		// Name of the data stream. Supports wildcards.
 		name!: string
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 	})
 
 	#elasticsearch_connection: close({
