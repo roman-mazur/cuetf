@@ -51,45 +51,29 @@ debug: fields: {
 debug: blocks: helmExtract: {
 	input: {
 		attributes: {
-			burst_limit: {
-				type:             "number"
-				description:      "Helm burst limit. Increase this if you have a cluster with many CRDs"
-				description_kind: "plain"
-				optional:         true
-			}
-			experiments: {
+			kubernetes: {
 				nested_type: {
-					attributes: manifest: {
-						type:             "bool"
-						description:      "Enable full diff by storing the rendered manifest in the state."
-						description_kind: "plain"
-						optional:         true
+					attributes: {
+						exec: {
+							nested_type: {
+								attributes: {
+									env: {
+										type: ["map", "string"]
+										description:      "Environment variables for the exec plugin"
+										description_kind: "plain"
+										optional:         true
+									}
+								}
+								nesting_mode: "single"
+							}
+							description:      "Exec configuration for Kubernetes authentication"
+							description_kind: "plain"
+							optional:         true
+						}
 					}
 					nesting_mode: "single"
 				}
-				description:      "Enable and disable experimental features."
-				description_kind: "plain"
-				optional:         true
-			}
-			helm_driver: {
-				type:             "string"
-				description:      "The backend storage driver. Values are: configmap, secret, memory, sql"
-				description_kind: "plain"
-				optional:         true
-			}
-			registries: {
-				nested_type: {
-					attributes: {
-						url: {
-							type:             "string"
-							description:      "OCI URL in form of oci://host:port or oci://host"
-							description_kind: "plain"
-							required:         true
-						}
-					}
-					nesting_mode: "list"
-				}
-				description:      "RegistryClient configuration."
+				description:      "Kubernetes Configuration"
 				description_kind: "plain"
 				optional:         true
 			}

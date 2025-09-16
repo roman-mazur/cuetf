@@ -38,13 +38,14 @@ import (
 						(name): (#fieldTransform & {#type: info.type}).out
 					}
 					if info.nested_type != _|_ {
-						(name): (#nestingTransform & {
+						#: "nested_\(name)": #nestingTransform & {
 							#nest: info.nested_type
 							#def: (#blockTransform & {#block: {
 								attributes: info.nested_type.attributes
 								block_types: {}
 							}}).out
-						}).out
+						}
+						(name): properties.#["nested_\(name)"].out
 					}
 
 					if info.description != _|_ {
