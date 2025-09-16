@@ -41,9 +41,6 @@ package data
 		// Include CRDs in the templated output.
 		include_crds?: bool
 
-		// Set .Release.IsUpgrade instead of .Release.IsInstall.
-		is_upgrade?: bool
-
 		// Postrender command config
 		postrender?: close({
 			// An argument to the post-renderer (can specify multiple)
@@ -52,6 +49,9 @@ package data
 			// The common binary path
 			binary_path!: string
 		})
+
+		// Set .Release.IsUpgrade instead of .Release.IsInstall.
+		is_upgrade?: bool
 
 		// Custom values to be merged with the values
 		set?: matchN(1, [close({
@@ -64,6 +64,10 @@ package data
 			value?: string
 		})]])
 
+		// Location of public keys used for verification. Used only if
+		// `verify` is true.
+		keyring?: string
+
 		// Custom sensitive values to be merged with the values
 		set_list?: matchN(1, [close({
 			name?: string
@@ -72,10 +76,6 @@ package data
 			name?: string
 			value!: [...string]
 		})]])
-
-		// Location of public keys used for verification. Used only if
-		// `verify` is true.
-		keyring?: string
 
 		// Kubernetes version used for Capabilities.KubeVersion.
 		kube_version?: string
@@ -93,6 +93,9 @@ package data
 		// Namespace to install the release into.
 		namespace?: string
 
+		// Rendered notes if the chart contains a `NOTES.txt`.
+		notes?: string
+
 		// Custom sensitive values to be merged with the values
 		set_sensitive?: matchN(1, [close({
 			name!:  string
@@ -103,9 +106,6 @@ package data
 			type?:  string
 			value!: string
 		})]])
-
-		// Rendered notes if the chart contains a `NOTES.txt`.
-		notes?: string
 
 		// Pass credentials to all domains
 		pass_credentials?: bool

@@ -1,7 +1,6 @@
-2025/08/04 20:22:37 1/1 provider at helm
-2025/08/04 20:22:37 ERROR with provider
-2025/08/04 20:22:37 DONE in 87.704288ms: provider at helm
-2025/08/04 20:22:37 1/1 helm_template at helm/data
-2025/08/04 20:22:37 1/1 helm_release at helm/res
-2025/08/04 20:22:37 DONE in 138.088185ms: helm_template at helm/data
-2025/08/04 20:22:37 DONE in 143.597773ms: helm_release at helm/res
+1/1 provider at helm
+DONE in 137.996181ms: provider at helm
+1/1 helm_template at helm/data
+1/1 helm_release at helm/res
+DONE in 146.09268ms: helm_template at helm/data
+DONE in 151.317191ms: helm_release at helm/res

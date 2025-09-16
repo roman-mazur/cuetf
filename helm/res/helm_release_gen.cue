@@ -42,6 +42,13 @@ package res
 		// Force resource update through delete/recreate if needed.
 		force_update?: bool
 
+		// Location of public keys used for verification, Used only if
+		// 'verify is true'
+		keyring?: string
+
+		// Run helm lint when planning
+		lint?: bool
+
 		// Status of the deployed release.
 		metadata?: close({
 			// The version number of the application being deployed
@@ -79,9 +86,8 @@ package res
 			version?: string
 		})
 
-		// Location of public keys used for verification, Used only if
-		// 'verify is true'
-		keyring?: string
+		// The rendered manifest as JSON.
+		manifest?: string
 
 		// Postrender command config
 		postrender?: close({
@@ -92,8 +98,9 @@ package res
 			binary_path!: string
 		})
 
-		// Run helm lint when planning
-		lint?: bool
+		// Limit the maximum number of revisions saved per release. Use 0
+		// for no limit
+		max_history?: number
 
 		// Custom values to be merged with the values
 		set?: matchN(1, [close({
@@ -106,9 +113,6 @@ package res
 			value?: string
 		})]])
 
-		// The rendered manifest as JSON.
-		manifest?: string
-
 		// Custom sensitive values to be merged with the values
 		set_list?: matchN(1, [close({
 			name!: string
@@ -118,11 +122,6 @@ package res
 			value!: [...string]
 		})]])
 
-		// Limit the maximum number of revisions saved per release. Use 0
-		// for no limit
-		max_history?: number
-		id?:          string
-
 		// Release name. The length must not be longer than 53 characters
 		name!: string
 
@@ -131,6 +130,7 @@ package res
 
 		// Pass credentials to all domains
 		pass_credentials?: bool
+		id?:               string
 
 		// Perform pods restart during upgrade/rollback
 		recreate_pods?: bool
