@@ -1,181 +1,180 @@
 1/1 provider at elasticstack
-DONE in 131.408138ms: provider at elasticstack
-1/52 elasticstack_elasticsearch_ingest_processor_script at elasticstack/data
-1/36 elasticstack_elasticsearch_data_stream at elasticstack/res
-DONE in 177.332382ms: elasticstack_elasticsearch_ingest_processor_script at elasticstack/data
-2/52 elasticstack_kibana_spaces at elasticstack/data
-DONE in 183.818888ms: elasticstack_elasticsearch_data_stream at elasticstack/res
-2/36 elasticstack_elasticsearch_security_user at elasticstack/res
-DONE in 151.212907ms: elasticstack_kibana_spaces at elasticstack/data
-3/52 elasticstack_elasticsearch_enrich_policy at elasticstack/data
-DONE in 155.917326ms: elasticstack_elasticsearch_security_user at elasticstack/res
-3/36 elasticstack_kibana_security_role at elasticstack/res
-DONE in 145.840734ms: elasticstack_elasticsearch_enrich_policy at elasticstack/data
-4/52 elasticstack_elasticsearch_ingest_processor_convert at elasticstack/data
-DONE in 169.043138ms: elasticstack_kibana_security_role at elasticstack/res
-4/36 elasticstack_apm_agent_configuration at elasticstack/res
-DONE in 150.406481ms: elasticstack_elasticsearch_ingest_processor_convert at elasticstack/data
-5/52 elasticstack_elasticsearch_ingest_processor_foreach at elasticstack/data
-DONE in 149.187882ms: elasticstack_apm_agent_configuration at elasticstack/res
-5/36 elasticstack_elasticsearch_component_template at elasticstack/res
-DONE in 144.157993ms: elasticstack_elasticsearch_ingest_processor_foreach at elasticstack/data
-6/52 elasticstack_elasticsearch_ingest_processor_geoip at elasticstack/data
-DONE in 161.902827ms: elasticstack_elasticsearch_component_template at elasticstack/res
-6/36 elasticstack_elasticsearch_security_role_mapping at elasticstack/res
-DONE in 146.554062ms: elasticstack_elasticsearch_ingest_processor_geoip at elasticstack/data
-7/52 elasticstack_elasticsearch_ingest_processor_lowercase at elasticstack/data
-DONE in 154.797215ms: elasticstack_elasticsearch_security_role_mapping at elasticstack/res
-7/36 elasticstack_fleet_integration at elasticstack/res
-DONE in 144.828752ms: elasticstack_elasticsearch_ingest_processor_lowercase at elasticstack/data
-8/52 elasticstack_kibana_security_role at elasticstack/data
-DONE in 144.622599ms: elasticstack_fleet_integration at elasticstack/res
-8/36 elasticstack_kibana_data_view at elasticstack/res
-ERROR with elasticstack_kibana_security_role
-DONE in 123.773051ms: elasticstack_kibana_security_role at elasticstack/data
-9/52 elasticstack_elasticsearch_ingest_processor_kv at elasticstack/data
-ERROR with elasticstack_kibana_data_view
-DONE in 152.808293ms: elasticstack_kibana_data_view at elasticstack/res
-9/36 elasticstack_elasticsearch_index_template at elasticstack/res
-DONE in 147.525412ms: elasticstack_elasticsearch_ingest_processor_kv at elasticstack/data
-10/52 elasticstack_elasticsearch_ingest_processor_drop at elasticstack/data
-DONE in 163.047683ms: elasticstack_elasticsearch_index_template at elasticstack/res
-10/36 elasticstack_elasticsearch_script at elasticstack/res
-DONE in 142.202347ms: elasticstack_elasticsearch_ingest_processor_drop at elasticstack/data
-11/52 elasticstack_elasticsearch_ingest_processor_fail at elasticstack/data
-DONE in 152.469541ms: elasticstack_elasticsearch_script at elasticstack/res
-11/36 elasticstack_elasticsearch_security_system_user at elasticstack/res
-DONE in 143.016268ms: elasticstack_elasticsearch_ingest_processor_fail at elasticstack/data
+DONE in 154.213517ms: provider at elasticstack
+1/52 elasticstack_elasticsearch_ingest_processor_registered_domain at elasticstack/data
+1/36 elasticstack_elasticsearch_security_role at elasticstack/res
+DONE in 214.811626ms: elasticstack_elasticsearch_ingest_processor_registered_domain at elasticstack/data
+2/52 elasticstack_elasticsearch_ingest_processor_reroute at elasticstack/data
+DONE in 259.848628ms: elasticstack_elasticsearch_security_role at elasticstack/res
+2/36 elasticstack_kibana_synthetics_private_location at elasticstack/res
+DONE in 226.201466ms: elasticstack_elasticsearch_ingest_processor_reroute at elasticstack/data
+3/52 elasticstack_elasticsearch_ingest_processor_set_security_user at elasticstack/data
+DONE in 237.004319ms: elasticstack_kibana_synthetics_private_location at elasticstack/res
+3/36 elasticstack_elasticsearch_ingest_pipeline at elasticstack/res
+DONE in 213.073609ms: elasticstack_elasticsearch_ingest_processor_set_security_user at elasticstack/data
+4/52 elasticstack_elasticsearch_security_user at elasticstack/data
+DONE in 223.478706ms: elasticstack_elasticsearch_ingest_pipeline at elasticstack/res
+4/36 elasticstack_fleet_integration_policy at elasticstack/res
+DONE in 233.373148ms: elasticstack_elasticsearch_security_user at elasticstack/data
+5/52 elasticstack_elasticsearch_indices at elasticstack/data
+DONE in 233.005608ms: elasticstack_fleet_integration_policy at elasticstack/res
+5/36 elasticstack_kibana_slo at elasticstack/res
+DONE in 341.541772ms: elasticstack_elasticsearch_indices at elasticstack/data
+6/52 elasticstack_elasticsearch_ingest_processor_convert at elasticstack/data
+DONE in 384.957054ms: elasticstack_kibana_slo at elasticstack/res
+6/36 elasticstack_kibana_space at elasticstack/res
+DONE in 269.129883ms: elasticstack_elasticsearch_ingest_processor_convert at elasticstack/data
+7/52 elasticstack_elasticsearch_ingest_processor_set at elasticstack/data
+DONE in 356.010299ms: elasticstack_kibana_space at elasticstack/res
+7/36 elasticstack_kibana_synthetics_monitor at elasticstack/res
+DONE in 421.523639ms: elasticstack_elasticsearch_ingest_processor_set at elasticstack/data
+8/52 elasticstack_elasticsearch_security_role at elasticstack/data
+DONE in 448.325077ms: elasticstack_kibana_synthetics_monitor at elasticstack/res
+8/36 elasticstack_elasticsearch_snapshot_lifecycle at elasticstack/res
+DONE in 276.887128ms: elasticstack_elasticsearch_security_role at elasticstack/data
+9/52 elasticstack_elasticsearch_security_role_mapping at elasticstack/data
+DONE in 196.252009ms: elasticstack_elasticsearch_snapshot_lifecycle at elasticstack/res
+9/36 elasticstack_fleet_server_host at elasticstack/res
+DONE in 184.848284ms: elasticstack_elasticsearch_security_role_mapping at elasticstack/data
+10/52 elasticstack_elasticsearch_enrich_policy at elasticstack/data
+DONE in 151.645884ms: elasticstack_fleet_server_host at elasticstack/res
+10/36 elasticstack_kibana_import_saved_objects at elasticstack/res
+DONE in 156.507706ms: elasticstack_elasticsearch_enrich_policy at elasticstack/data
+11/52 elasticstack_elasticsearch_ingest_processor_dot_expander at elasticstack/data
+DONE in 164.468076ms: elasticstack_kibana_import_saved_objects at elasticstack/res
+11/36 elasticstack_kibana_synthetics_parameter at elasticstack/res
+DONE in 147.575549ms: elasticstack_elasticsearch_ingest_processor_dot_expander at elasticstack/data
 12/52 elasticstack_elasticsearch_ingest_processor_grok at elasticstack/data
-DONE in 153.702612ms: elasticstack_elasticsearch_security_system_user at elasticstack/res
-12/36 elasticstack_kibana_synthetics_private_location at elasticstack/res
-DONE in 144.797666ms: elasticstack_elasticsearch_ingest_processor_grok at elasticstack/data
-13/52 elasticstack_elasticsearch_ingest_processor_join at elasticstack/data
-DONE in 148.516939ms: elasticstack_kibana_synthetics_private_location at elasticstack/res
-13/36 elasticstack_elasticsearch_index_lifecycle at elasticstack/res
-DONE in 145.690348ms: elasticstack_elasticsearch_ingest_processor_join at elasticstack/data
-14/52 elasticstack_elasticsearch_ingest_processor_remove at elasticstack/data
-DONE in 156.278487ms: elasticstack_elasticsearch_ingest_processor_remove at elasticstack/data
-15/52 elasticstack_elasticsearch_ingest_processor_rename at elasticstack/data
-DONE in 241.296999ms: elasticstack_elasticsearch_index_lifecycle at elasticstack/res
-14/36 elasticstack_elasticsearch_logstash_pipeline at elasticstack/res
-DONE in 175.419693ms: elasticstack_elasticsearch_ingest_processor_rename at elasticstack/data
-16/52 elasticstack_elasticsearch_ingest_processor_set at elasticstack/data
-DONE in 170.989092ms: elasticstack_elasticsearch_logstash_pipeline at elasticstack/res
-15/36 elasticstack_elasticsearch_snapshot_lifecycle at elasticstack/res
-DONE in 170.949184ms: elasticstack_elasticsearch_ingest_processor_set at elasticstack/data
-17/52 elasticstack_elasticsearch_ingest_processor_append at elasticstack/data
-DONE in 246.35574ms: elasticstack_elasticsearch_snapshot_lifecycle at elasticstack/res
-16/36 elasticstack_elasticsearch_snapshot_repository at elasticstack/res
-DONE in 274.240842ms: elasticstack_elasticsearch_ingest_processor_append at elasticstack/data
-18/52 elasticstack_elasticsearch_ingest_processor_reroute at elasticstack/data
-DONE in 334.89033ms: elasticstack_elasticsearch_snapshot_repository at elasticstack/res
-17/36 elasticstack_elasticsearch_watch at elasticstack/res
-DONE in 249.246281ms: elasticstack_elasticsearch_ingest_processor_reroute at elasticstack/data
-19/52 elasticstack_elasticsearch_ingest_processor_uri_parts at elasticstack/data
-DONE in 322.239045ms: elasticstack_elasticsearch_watch at elasticstack/res
-18/36 elasticstack_fleet_output at elasticstack/res
-DONE in 348.7667ms: elasticstack_elasticsearch_ingest_processor_uri_parts at elasticstack/data
-20/52 elasticstack_fleet_enrollment_tokens at elasticstack/data
-DONE in 272.844998ms: elasticstack_fleet_output at elasticstack/res
-19/36 elasticstack_kibana_action_connector at elasticstack/res
-DONE in 280.602841ms: elasticstack_fleet_enrollment_tokens at elasticstack/data
-21/52 elasticstack_fleet_integration at elasticstack/data
-DONE in 256.228425ms: elasticstack_kibana_action_connector at elasticstack/res
-20/36 elasticstack_kibana_synthetics_monitor at elasticstack/res
-DONE in 196.252655ms: elasticstack_fleet_integration at elasticstack/data
-22/52 elasticstack_elasticsearch_ingest_processor_circle at elasticstack/data
-DONE in 150.793752ms: elasticstack_elasticsearch_ingest_processor_circle at elasticstack/data
-23/52 elasticstack_elasticsearch_ingest_processor_date at elasticstack/data
-DONE in 194.519804ms: elasticstack_kibana_synthetics_monitor at elasticstack/res
-21/36 elasticstack_elasticsearch_ingest_pipeline at elasticstack/res
-DONE in 157.692567ms: elasticstack_elasticsearch_ingest_processor_date at elasticstack/data
-24/52 elasticstack_elasticsearch_ingest_processor_uppercase at elasticstack/data
-DONE in 167.924888ms: elasticstack_elasticsearch_ingest_pipeline at elasticstack/res
-22/36 elasticstack_fleet_agent_policy at elasticstack/res
+DONE in 153.340294ms: elasticstack_kibana_synthetics_parameter at elasticstack/res
+12/36 elasticstack_elasticsearch_data_stream_lifecycle at elasticstack/res
+DONE in 160.708892ms: elasticstack_elasticsearch_ingest_processor_grok at elasticstack/data
+13/52 elasticstack_elasticsearch_ingest_processor_kv at elasticstack/data
+DONE in 170.58766ms: elasticstack_elasticsearch_data_stream_lifecycle at elasticstack/res
+13/36 elasticstack_elasticsearch_index_template at elasticstack/res
+DONE in 167.348429ms: elasticstack_elasticsearch_ingest_processor_kv at elasticstack/data
+14/52 elasticstack_elasticsearch_ingest_processor_lowercase at elasticstack/data
+DONE in 184.411055ms: elasticstack_elasticsearch_index_template at elasticstack/res
+14/36 elasticstack_kibana_action_connector at elasticstack/res
+DONE in 152.210683ms: elasticstack_elasticsearch_ingest_processor_lowercase at elasticstack/data
+15/52 elasticstack_elasticsearch_ingest_processor_sort at elasticstack/data
+DONE in 153.901157ms: elasticstack_kibana_action_connector at elasticstack/res
+15/36 elasticstack_kibana_alerting_rule at elasticstack/res
+DONE in 151.706852ms: elasticstack_elasticsearch_ingest_processor_sort at elasticstack/data
+16/52 elasticstack_elasticsearch_snapshot_repository at elasticstack/data
+DONE in 175.962106ms: elasticstack_kibana_alerting_rule at elasticstack/res
+16/36 elasticstack_elasticsearch_cluster_settings at elasticstack/res
+DONE in 213.24413ms: elasticstack_elasticsearch_snapshot_repository at elasticstack/data
+17/52 elasticstack_kibana_security_role at elasticstack/data
+DONE in 186.037847ms: elasticstack_elasticsearch_cluster_settings at elasticstack/res
+17/36 elasticstack_elasticsearch_logstash_pipeline at elasticstack/res
+DONE in 224.300416ms: elasticstack_kibana_security_role at elasticstack/data
+18/52 elasticstack_elasticsearch_ingest_processor_csv at elasticstack/data
+DONE in 187.981576ms: elasticstack_elasticsearch_logstash_pipeline at elasticstack/res
+18/36 elasticstack_elasticsearch_security_role_mapping at elasticstack/res
+DONE in 176.345298ms: elasticstack_elasticsearch_ingest_processor_csv at elasticstack/data
+19/52 elasticstack_elasticsearch_ingest_processor_date_index_name at elasticstack/data
+DONE in 169.767279ms: elasticstack_elasticsearch_security_role_mapping at elasticstack/res
+19/36 elasticstack_elasticsearch_security_system_user at elasticstack/res
+DONE in 198.403787ms: elasticstack_elasticsearch_ingest_processor_date_index_name at elasticstack/data
+20/52 elasticstack_elasticsearch_ingest_processor_dissect at elasticstack/data
+DONE in 196.707452ms: elasticstack_elasticsearch_security_system_user at elasticstack/res
+20/36 elasticstack_fleet_output at elasticstack/res
+DONE in 161.172305ms: elasticstack_elasticsearch_ingest_processor_dissect at elasticstack/data
+21/52 elasticstack_elasticsearch_ingest_processor_drop at elasticstack/data
+DONE in 159.719387ms: elasticstack_fleet_output at elasticstack/res
+21/36 elasticstack_elasticsearch_snapshot_repository at elasticstack/res
+DONE in 150.670824ms: elasticstack_elasticsearch_ingest_processor_drop at elasticstack/data
+22/52 elasticstack_elasticsearch_ingest_processor_remove at elasticstack/data
+DONE in 149.039516ms: elasticstack_elasticsearch_ingest_processor_remove at elasticstack/data
+23/52 elasticstack_elasticsearch_ingest_processor_script at elasticstack/data
+DONE in 206.61403ms: elasticstack_elasticsearch_snapshot_repository at elasticstack/res
+22/36 elasticstack_elasticsearch_transform at elasticstack/res
+DONE in 158.493058ms: elasticstack_elasticsearch_ingest_processor_script at elasticstack/data
+24/52 elasticstack_elasticsearch_ingest_processor_trim at elasticstack/data
+DONE in 183.568321ms: elasticstack_elasticsearch_transform at elasticstack/res
+23/36 elasticstack_fleet_agent_policy at elasticstack/res
+DONE in 162.662632ms: elasticstack_elasticsearch_ingest_processor_trim at elasticstack/data
+25/52 elasticstack_elasticsearch_ingest_processor_uri_parts at elasticstack/data
 ERROR with elasticstack_fleet_agent_policy
-DONE in 121.876693ms: elasticstack_fleet_agent_policy at elasticstack/res
-23/36 elasticstack_fleet_integration_policy at elasticstack/res
-DONE in 151.407242ms: elasticstack_elasticsearch_ingest_processor_uppercase at elasticstack/data
-25/52 elasticstack_elasticsearch_ingest_processor_user_agent at elasticstack/data
-DONE in 144.315727ms: elasticstack_elasticsearch_ingest_processor_user_agent at elasticstack/data
-26/52 elasticstack_elasticsearch_ingest_processor_community_id at elasticstack/data
-DONE in 149.983749ms: elasticstack_fleet_integration_policy at elasticstack/res
-24/36 elasticstack_elasticsearch_enrich_policy at elasticstack/res
-DONE in 162.741243ms: elasticstack_elasticsearch_ingest_processor_community_id at elasticstack/data
-27/52 elasticstack_elasticsearch_ingest_processor_html_strip at elasticstack/data
-DONE in 173.36328ms: elasticstack_elasticsearch_enrich_policy at elasticstack/res
-25/36 elasticstack_elasticsearch_index at elasticstack/res
-DONE in 164.26499ms: elasticstack_elasticsearch_ingest_processor_html_strip at elasticstack/data
-28/52 elasticstack_elasticsearch_ingest_processor_network_direction at elasticstack/data
-DONE in 198.923456ms: elasticstack_elasticsearch_index at elasticstack/res
-26/36 elasticstack_elasticsearch_security_api_key at elasticstack/res
-DONE in 145.697443ms: elasticstack_elasticsearch_ingest_processor_network_direction at elasticstack/data
-29/52 elasticstack_elasticsearch_ingest_processor_pipeline at elasticstack/data
-DONE in 155.184023ms: elasticstack_elasticsearch_security_api_key at elasticstack/res
-27/36 elasticstack_elasticsearch_transform at elasticstack/res
-DONE in 143.3272ms: elasticstack_elasticsearch_ingest_processor_pipeline at elasticstack/data
-30/52 elasticstack_elasticsearch_ingest_processor_set_security_user at elasticstack/data
-DONE in 166.809428ms: elasticstack_elasticsearch_transform at elasticstack/res
-28/36 elasticstack_fleet_server_host at elasticstack/res
-DONE in 149.198268ms: elasticstack_elasticsearch_ingest_processor_set_security_user at elasticstack/data
-31/52 elasticstack_elasticsearch_ingest_processor_sort at elasticstack/data
-DONE in 147.930559ms: elasticstack_fleet_server_host at elasticstack/res
-29/36 elasticstack_kibana_alerting_rule at elasticstack/res
-DONE in 145.686654ms: elasticstack_elasticsearch_ingest_processor_sort at elasticstack/data
-32/52 elasticstack_elasticsearch_ingest_processor_split at elasticstack/data
-DONE in 163.665292ms: elasticstack_kibana_alerting_rule at elasticstack/res
-30/36 elasticstack_kibana_slo at elasticstack/res
-DONE in 145.492922ms: elasticstack_elasticsearch_ingest_processor_split at elasticstack/data
-33/52 elasticstack_elasticsearch_ingest_processor_trim at elasticstack/data
-DONE in 183.329397ms: elasticstack_kibana_slo at elasticstack/res
-31/36 elasticstack_kibana_space at elasticstack/res
-DONE in 144.190104ms: elasticstack_elasticsearch_ingest_processor_trim at elasticstack/data
-34/52 elasticstack_elasticsearch_index_template at elasticstack/data
-DONE in 146.057857ms: elasticstack_kibana_space at elasticstack/res
-32/36 elasticstack_kibana_synthetics_parameter at elasticstack/res
-DONE in 153.250743ms: elasticstack_elasticsearch_index_template at elasticstack/data
-35/52 elasticstack_elasticsearch_ingest_processor_csv at elasticstack/data
-DONE in 145.187797ms: elasticstack_kibana_synthetics_parameter at elasticstack/res
-33/36 elasticstack_elasticsearch_cluster_settings at elasticstack/res
-DONE in 142.84135ms: elasticstack_elasticsearch_ingest_processor_csv at elasticstack/data
-36/52 elasticstack_elasticsearch_ingest_processor_enrich at elasticstack/data
-DONE in 144.017875ms: elasticstack_elasticsearch_ingest_processor_enrich at elasticstack/data
-37/52 elasticstack_elasticsearch_ingest_processor_json at elasticstack/data
-DONE in 159.533031ms: elasticstack_elasticsearch_cluster_settings at elasticstack/res
-34/36 elasticstack_elasticsearch_data_stream_lifecycle at elasticstack/res
-DONE in 142.181662ms: elasticstack_elasticsearch_ingest_processor_json at elasticstack/data
-38/52 elasticstack_elasticsearch_security_role at elasticstack/data
-DONE in 149.208887ms: elasticstack_elasticsearch_data_stream_lifecycle at elasticstack/res
-35/36 elasticstack_elasticsearch_security_role at elasticstack/res
-DONE in 158.195099ms: elasticstack_elasticsearch_security_role at elasticstack/data
-39/52 elasticstack_elasticsearch_security_role_mapping at elasticstack/data
-DONE in 164.052228ms: elasticstack_elasticsearch_security_role at elasticstack/res
-36/36 elasticstack_kibana_import_saved_objects at elasticstack/res
-DONE in 155.099784ms: elasticstack_elasticsearch_security_role_mapping at elasticstack/data
-40/52 elasticstack_elasticsearch_security_user at elasticstack/data
-DONE in 149.292885ms: elasticstack_kibana_import_saved_objects at elasticstack/res
-DONE in 147.007933ms: elasticstack_elasticsearch_security_user at elasticstack/data
-41/52 elasticstack_elasticsearch_snapshot_repository at elasticstack/data
-DONE in 149.007498ms: elasticstack_elasticsearch_snapshot_repository at elasticstack/data
-42/52 elasticstack_elasticsearch_info at elasticstack/data
-DONE in 132.250511ms: elasticstack_elasticsearch_info at elasticstack/data
-43/52 elasticstack_elasticsearch_ingest_processor_date_index_name at elasticstack/data
-DONE in 132.532957ms: elasticstack_elasticsearch_ingest_processor_date_index_name at elasticstack/data
-44/52 elasticstack_elasticsearch_ingest_processor_dot_expander at elasticstack/data
-DONE in 134.877464ms: elasticstack_elasticsearch_ingest_processor_dot_expander at elasticstack/data
+DONE in 131.808677ms: elasticstack_fleet_agent_policy at elasticstack/res
+24/36 elasticstack_kibana_security_role at elasticstack/res
+DONE in 157.865399ms: elasticstack_elasticsearch_ingest_processor_uri_parts at elasticstack/data
+26/52 elasticstack_elasticsearch_ingest_processor_circle at elasticstack/data
+DONE in 185.804409ms: elasticstack_kibana_security_role at elasticstack/res
+25/36 elasticstack_apm_agent_configuration at elasticstack/res
+DONE in 156.604883ms: elasticstack_elasticsearch_ingest_processor_circle at elasticstack/data
+27/52 elasticstack_elasticsearch_ingest_processor_fail at elasticstack/data
+DONE in 151.148446ms: elasticstack_apm_agent_configuration at elasticstack/res
+26/36 elasticstack_elasticsearch_component_template at elasticstack/res
+DONE in 164.235427ms: elasticstack_elasticsearch_ingest_processor_fail at elasticstack/data
+28/52 elasticstack_elasticsearch_ingest_processor_html_strip at elasticstack/data
+DONE in 185.042957ms: elasticstack_elasticsearch_component_template at elasticstack/res
+27/36 elasticstack_elasticsearch_enrich_policy at elasticstack/res
+DONE in 147.047792ms: elasticstack_elasticsearch_ingest_processor_html_strip at elasticstack/data
+29/52 elasticstack_elasticsearch_ingest_processor_json at elasticstack/data
+DONE in 183.856894ms: elasticstack_elasticsearch_enrich_policy at elasticstack/res
+28/36 elasticstack_elasticsearch_index at elasticstack/res
+DONE in 165.065726ms: elasticstack_elasticsearch_ingest_processor_json at elasticstack/data
+30/52 elasticstack_elasticsearch_ingest_processor_uppercase at elasticstack/data
+DONE in 241.470103ms: elasticstack_elasticsearch_index at elasticstack/res
+29/36 elasticstack_elasticsearch_security_user at elasticstack/res
+DONE in 175.769689ms: elasticstack_elasticsearch_ingest_processor_uppercase at elasticstack/data
+31/52 elasticstack_fleet_enrollment_tokens at elasticstack/data
+DONE in 162.885125ms: elasticstack_elasticsearch_security_user at elasticstack/res
+30/36 elasticstack_elasticsearch_index_lifecycle at elasticstack/res
+DONE in 149.195979ms: elasticstack_fleet_enrollment_tokens at elasticstack/data
+32/52 elasticstack_fleet_integration at elasticstack/data
+DONE in 147.863746ms: elasticstack_fleet_integration at elasticstack/data
+33/52 elasticstack_kibana_spaces at elasticstack/data
+DONE in 246.981943ms: elasticstack_elasticsearch_index_lifecycle at elasticstack/res
+31/36 elasticstack_elasticsearch_script at elasticstack/res
+DONE in 155.975584ms: elasticstack_kibana_spaces at elasticstack/data
+34/52 elasticstack_elasticsearch_ingest_processor_date at elasticstack/data
+DONE in 162.030023ms: elasticstack_elasticsearch_script at elasticstack/res
+32/36 elasticstack_elasticsearch_security_api_key at elasticstack/res
+DONE in 151.734737ms: elasticstack_elasticsearch_ingest_processor_date at elasticstack/data
+35/52 elasticstack_elasticsearch_ingest_processor_foreach at elasticstack/data
+DONE in 173.008826ms: elasticstack_elasticsearch_security_api_key at elasticstack/res
+33/36 elasticstack_elasticsearch_watch at elasticstack/res
+DONE in 164.122724ms: elasticstack_elasticsearch_ingest_processor_foreach at elasticstack/data
+36/52 elasticstack_elasticsearch_ingest_processor_geoip at elasticstack/data
+DONE in 160.531939ms: elasticstack_elasticsearch_watch at elasticstack/res
+34/36 elasticstack_fleet_integration at elasticstack/res
+DONE in 158.987523ms: elasticstack_elasticsearch_ingest_processor_geoip at elasticstack/data
+37/52 elasticstack_elasticsearch_ingest_processor_gsub at elasticstack/data
+DONE in 154.558408ms: elasticstack_fleet_integration at elasticstack/res
+35/36 elasticstack_kibana_data_view at elasticstack/res
+DONE in 156.883417ms: elasticstack_elasticsearch_ingest_processor_gsub at elasticstack/data
+38/52 elasticstack_elasticsearch_index_template at elasticstack/data
+ERROR with elasticstack_kibana_data_view
+DONE in 199.778373ms: elasticstack_kibana_data_view at elasticstack/res
+36/36 elasticstack_elasticsearch_data_stream at elasticstack/res
+DONE in 190.191807ms: elasticstack_elasticsearch_index_template at elasticstack/data
+39/52 elasticstack_elasticsearch_ingest_processor_bytes at elasticstack/data
+DONE in 177.955421ms: elasticstack_elasticsearch_data_stream at elasticstack/res
+DONE in 164.627703ms: elasticstack_elasticsearch_ingest_processor_bytes at elasticstack/data
+40/52 elasticstack_elasticsearch_ingest_processor_join at elasticstack/data
+DONE in 156.160932ms: elasticstack_elasticsearch_ingest_processor_join at elasticstack/data
+41/52 elasticstack_elasticsearch_ingest_processor_rename at elasticstack/data
+DONE in 143.547964ms: elasticstack_elasticsearch_ingest_processor_rename at elasticstack/data
+42/52 elasticstack_elasticsearch_ingest_processor_urldecode at elasticstack/data
+DONE in 163.397081ms: elasticstack_elasticsearch_ingest_processor_urldecode at elasticstack/data
+43/52 elasticstack_kibana_action_connector at elasticstack/data
+DONE in 151.661836ms: elasticstack_kibana_action_connector at elasticstack/data
+44/52 elasticstack_elasticsearch_info at elasticstack/data
+DONE in 153.658906ms: elasticstack_elasticsearch_info at elasticstack/data
 45/52 elasticstack_elasticsearch_ingest_processor_fingerprint at elasticstack/data
-DONE in 157.580118ms: elasticstack_elasticsearch_ingest_processor_fingerprint at elasticstack/data
-46/52 elasticstack_elasticsearch_ingest_processor_gsub at elasticstack/data
-DONE in 145.629635ms: elasticstack_elasticsearch_ingest_processor_gsub at elasticstack/data
-47/52 elasticstack_elasticsearch_ingest_processor_registered_domain at elasticstack/data
-DONE in 134.566598ms: elasticstack_elasticsearch_ingest_processor_registered_domain at elasticstack/data
-48/52 elasticstack_elasticsearch_ingest_processor_urldecode at elasticstack/data
-DONE in 133.423606ms: elasticstack_elasticsearch_ingest_processor_urldecode at elasticstack/data
-49/52 elasticstack_kibana_action_connector at elasticstack/data
-DONE in 138.643633ms: elasticstack_kibana_action_connector at elasticstack/data
-50/52 elasticstack_elasticsearch_indices at elasticstack/data
-DONE in 180.853027ms: elasticstack_elasticsearch_indices at elasticstack/data
-51/52 elasticstack_elasticsearch_ingest_processor_bytes at elasticstack/data
-DONE in 146.271245ms: elasticstack_elasticsearch_ingest_processor_bytes at elasticstack/data
-52/52 elasticstack_elasticsearch_ingest_processor_dissect at elasticstack/data
-DONE in 139.018031ms: elasticstack_elasticsearch_ingest_processor_dissect at elasticstack/data
+DONE in 148.948863ms: elasticstack_elasticsearch_ingest_processor_fingerprint at elasticstack/data
+46/52 elasticstack_elasticsearch_ingest_processor_network_direction at elasticstack/data
+DONE in 145.690621ms: elasticstack_elasticsearch_ingest_processor_network_direction at elasticstack/data
+47/52 elasticstack_elasticsearch_ingest_processor_pipeline at elasticstack/data
+DONE in 137.930808ms: elasticstack_elasticsearch_ingest_processor_pipeline at elasticstack/data
+48/52 elasticstack_elasticsearch_ingest_processor_split at elasticstack/data
+DONE in 159.163303ms: elasticstack_elasticsearch_ingest_processor_split at elasticstack/data
+49/52 elasticstack_elasticsearch_ingest_processor_user_agent at elasticstack/data
+DONE in 152.892318ms: elasticstack_elasticsearch_ingest_processor_user_agent at elasticstack/data
+50/52 elasticstack_elasticsearch_ingest_processor_append at elasticstack/data
+DONE in 139.640592ms: elasticstack_elasticsearch_ingest_processor_append at elasticstack/data
+51/52 elasticstack_elasticsearch_ingest_processor_community_id at elasticstack/data
+DONE in 156.274722ms: elasticstack_elasticsearch_ingest_processor_community_id at elasticstack/data
+52/52 elasticstack_elasticsearch_ingest_processor_enrich at elasticstack/data
+DONE in 155.897949ms: elasticstack_elasticsearch_ingest_processor_enrich at elasticstack/data
