@@ -4,8 +4,6 @@ import (
 	"github.com/roman-mazur/cuetf/internal/jsonschema"
 )
 
-_case: string | *"ok" @tag(case)
-
 debug: [type=string]: [name=string]: close({
 	input:  _
 	output: _
@@ -43,9 +41,8 @@ debug: fields: {
 		some_list: ["set", "number"]
 	}]]
 
-	if _case == "error" {
-		listOfLists: input: ["list", ["list", "string"]]
-	}
+	listOfLists: input: ["list", ["list", "string"]]
+	anotherComplexList: input: ["list", ["object", {foo: ["list", ["list", "string"]]}]]
 }
 
 debug: blocks: helmExtract: {

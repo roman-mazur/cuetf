@@ -117,43 +117,39 @@ import (
 
 // Helper to transform into an object property.
 #fieldTransform: {
-	#type: _
-	if (#type & tf.#attr.#primitive) != _|_ {
-		out: type: _primitivesMap[#type]
-	}
-	if (#type & tf.#attr.#complexDef) != _|_ {
-		out: _complexMap[#type[0]] & {#defs: #type[1]}
-	}
-}
-
-_complexMap: {
-	object: {
-		#defs:                _
+	#type!: tf.#attr.#primitive
+	out: type: _primitivesMap[#type]
+} | {
+	#type!: ["object", _]
+	out: {
 		type:                 "object"
 		additionalProperties: false
 		properties: {
-			for name, fType in #defs {
+			for name, fType in #type[1] {
 				(name): (#fieldTransform & {#type: fType}).out
 			}
 		}
 	}
-
-	map: {
-		#defs: _
-		type:  "object"
-		additionalProperties: (#fieldTransform & {#type: #defs}).out
+} | {
+	#type!: ["map", _]
+	out: {
+		type: "object"
+		let value = #type[1]
+		additionalProperties: (#fieldTransform & {#type: value}).out
 	}
-
-	set: {
-		#defs: _
-		type:  "array"
-		items: (#fieldTransform & {#type: #defs}).out
+} | {
+	#type!: ["set", _]
+	out: {
+		type: "array"
+		let value = #type[1]
+		items: (#fieldTransform & {#type: value}).out
 	}
-
-	list: {
-		#defs: _
-		type:  "array"
-		items: (#fieldTransform & {#type: #defs}).out
+} | {
+	#type!: ["list", _]
+	out: {
+		type: "array"
+		let value = #type[1]
+		items: (#fieldTransform & {#type: value}).out
 	}
 }
 
