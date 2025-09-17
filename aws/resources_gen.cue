@@ -210,6 +210,7 @@ _res: aws_cloudformation_stack_set_instance: res.#aws_cloudformation_stack_set_i
 _res: aws_cloudformation_type: res.#aws_cloudformation_type
 _res: aws_cloudfront_cache_policy: res.#aws_cloudfront_cache_policy
 _res: aws_cloudfront_continuous_deployment_policy: res.#aws_cloudfront_continuous_deployment_policy
+_res: aws_cloudfront_distribution: res.#aws_cloudfront_distribution
 _res: aws_cloudfront_field_level_encryption_config: res.#aws_cloudfront_field_level_encryption_config
 _res: aws_cloudfront_field_level_encryption_profile: res.#aws_cloudfront_field_level_encryption_profile
 _res: aws_cloudfront_function: res.#aws_cloudfront_function
@@ -286,7 +287,9 @@ _res: aws_codedeploy_app: res.#aws_codedeploy_app
 _res: aws_codedeploy_deployment_config: res.#aws_codedeploy_deployment_config
 _res: aws_codedeploy_deployment_group: res.#aws_codedeploy_deployment_group
 _res: aws_codeguruprofiler_profiling_group: res.#aws_codeguruprofiler_profiling_group
+_res: aws_codegurureviewer_repository_association: res.#aws_codegurureviewer_repository_association
 _res: aws_codepipeline_custom_action_type: res.#aws_codepipeline_custom_action_type
+_res: aws_codepipeline: res.#aws_codepipeline
 _res: aws_codepipeline_webhook: res.#aws_codepipeline_webhook
 _res: aws_codestarconnections_connection: res.#aws_codestarconnections_connection
 _res: aws_codestarconnections_host: res.#aws_codestarconnections_host
@@ -369,6 +372,7 @@ _res: aws_datasync_task: res.#aws_datasync_task
 _res: aws_datazone_asset_type: res.#aws_datazone_asset_type
 _res: aws_datazone_domain: res.#aws_datazone_domain
 _res: aws_datazone_environment_blueprint_configuration: res.#aws_datazone_environment_blueprint_configuration
+_res: aws_datazone_environment: res.#aws_datazone_environment
 _res: aws_datazone_environment_profile: res.#aws_datazone_environment_profile
 _res: aws_datazone_form_type: res.#aws_datazone_form_type
 _res: aws_datazone_glossary: res.#aws_datazone_glossary
@@ -555,8 +559,10 @@ _res: aws_eip: res.#aws_eip
 _res: aws_eks_access_entry: res.#aws_eks_access_entry
 _res: aws_eks_access_policy_association: res.#aws_eks_access_policy_association
 _res: aws_eks_addon: res.#aws_eks_addon
+_res: aws_eks_cluster: res.#aws_eks_cluster
 _res: aws_eks_fargate_profile: res.#aws_eks_fargate_profile
 _res: aws_eks_identity_provider_config: res.#aws_eks_identity_provider_config
+_res: aws_eks_node_group: res.#aws_eks_node_group
 _res: aws_eks_pod_identity_association: res.#aws_eks_pod_identity_association
 _res: aws_elastic_beanstalk_application: res.#aws_elastic_beanstalk_application
 _res: aws_elastic_beanstalk_application_version: res.#aws_elastic_beanstalk_application_version
@@ -581,6 +587,7 @@ _res: aws_elastictranscoder_preset: res.#aws_elastictranscoder_preset
 _res: aws_elb_attachment: res.#aws_elb_attachment
 _res: aws_elb: res.#aws_elb
 _res: aws_emr_block_public_access_configuration: res.#aws_emr_block_public_access_configuration
+_res: aws_emr_cluster: res.#aws_emr_cluster
 _res: aws_emr_instance_fleet: res.#aws_emr_instance_fleet
 _res: aws_emr_instance_group: res.#aws_emr_instance_group
 _res: aws_emr_managed_scaling_policy: res.#aws_emr_managed_scaling_policy
@@ -610,6 +617,8 @@ _res: aws_fsx_backup: res.#aws_fsx_backup
 _res: aws_fsx_data_repository_association: res.#aws_fsx_data_repository_association
 _res: aws_fsx_file_cache: res.#aws_fsx_file_cache
 _res: aws_fsx_lustre_file_system: res.#aws_fsx_lustre_file_system
+_res: aws_fsx_ontap_file_system: res.#aws_fsx_ontap_file_system
+_res: aws_fsx_ontap_storage_virtual_machine: res.#aws_fsx_ontap_storage_virtual_machine
 _res: aws_fsx_ontap_volume: res.#aws_fsx_ontap_volume
 _res: aws_fsx_openzfs_file_system: res.#aws_fsx_openzfs_file_system
 _res: aws_fsx_openzfs_snapshot: res.#aws_fsx_openzfs_snapshot
@@ -663,6 +672,7 @@ _res: aws_guardduty_detector: res.#aws_guardduty_detector
 _res: aws_guardduty_filter: res.#aws_guardduty_filter
 _res: aws_guardduty_invite_accepter: res.#aws_guardduty_invite_accepter
 _res: aws_guardduty_ipset: res.#aws_guardduty_ipset
+_res: aws_guardduty_malware_protection_plan: res.#aws_guardduty_malware_protection_plan
 _res: aws_guardduty_member_detector_feature: res.#aws_guardduty_member_detector_feature
 _res: aws_guardduty_member: res.#aws_guardduty_member
 _res: aws_guardduty_organization_admin_account: res.#aws_guardduty_organization_admin_account
@@ -710,6 +720,7 @@ _res: aws_identitystore_user: res.#aws_identitystore_user
 _res: aws_imagebuilder_component: res.#aws_imagebuilder_component
 _res: aws_imagebuilder_container_recipe: res.#aws_imagebuilder_container_recipe
 _res: aws_imagebuilder_distribution_configuration: res.#aws_imagebuilder_distribution_configuration
+_res: aws_imagebuilder_image: res.#aws_imagebuilder_image
 _res: aws_imagebuilder_image_pipeline: res.#aws_imagebuilder_image_pipeline
 _res: aws_imagebuilder_image_recipe: res.#aws_imagebuilder_image_recipe
 _res: aws_imagebuilder_infrastructure_configuration: res.#aws_imagebuilder_infrastructure_configuration
@@ -740,6 +751,7 @@ _res: aws_iot_policy: res.#aws_iot_policy
 _res: aws_iot_provisioning_template: res.#aws_iot_provisioning_template
 _res: aws_iot_role_alias: res.#aws_iot_role_alias
 _res: aws_iot_thing: res.#aws_iot_thing
+_res: aws_iot_thing_group: res.#aws_iot_thing_group
 _res: aws_iot_thing_group_membership: res.#aws_iot_thing_group_membership
 _res: aws_iot_thing_principal_attachment: res.#aws_iot_thing_principal_attachment
 _res: aws_iot_thing_type: res.#aws_iot_thing_type
@@ -753,6 +765,7 @@ _res: aws_ivschat_room: res.#aws_ivschat_room
 _res: aws_kendra_data_source: res.#aws_kendra_data_source
 _res: aws_kendra_experience: res.#aws_kendra_experience
 _res: aws_kendra_faq: res.#aws_kendra_faq
+_res: aws_kendra_index: res.#aws_kendra_index
 _res: aws_kendra_query_suggestions_block_list: res.#aws_kendra_query_suggestions_block_list
 _res: aws_kendra_thesaurus: res.#aws_kendra_thesaurus
 _res: aws_key_pair: res.#aws_key_pair
@@ -868,6 +881,7 @@ _res: aws_macie2_organization_admin_account: res.#aws_macie2_organization_admin_
 _res: aws_macie2_organization_configuration: res.#aws_macie2_organization_configuration
 _res: aws_main_route_table_association: res.#aws_main_route_table_association
 _res: aws_media_convert_queue: res.#aws_media_convert_queue
+_res: aws_media_package_channel: res.#aws_media_package_channel
 _res: aws_media_packagev2_channel_group: res.#aws_media_packagev2_channel_group
 _res: aws_media_store_container: res.#aws_media_store_container
 _res: aws_media_store_container_policy: res.#aws_media_store_container_policy
@@ -895,6 +909,7 @@ _res: aws_msk_vpc_connection: res.#aws_msk_vpc_connection
 _res: aws_mskconnect_connector: res.#aws_mskconnect_connector
 _res: aws_mskconnect_custom_plugin: res.#aws_mskconnect_custom_plugin
 _res: aws_mskconnect_worker_configuration: res.#aws_mskconnect_worker_configuration
+_res: aws_mwaa_environment: res.#aws_mwaa_environment
 _res: aws_nat_gateway_eip_association: res.#aws_nat_gateway_eip_association
 _res: aws_nat_gateway: res.#aws_nat_gateway
 _res: aws_neptune_cluster_endpoint: res.#aws_neptune_cluster_endpoint
@@ -914,6 +929,7 @@ _res: aws_network_interface_attachment: res.#aws_network_interface_attachment
 _res: aws_network_interface: res.#aws_network_interface
 _res: aws_network_interface_permission: res.#aws_network_interface_permission
 _res: aws_network_interface_sg_attachment: res.#aws_network_interface_sg_attachment
+_res: aws_networkfirewall_firewall: res.#aws_networkfirewall_firewall
 _res: aws_networkfirewall_firewall_policy: res.#aws_networkfirewall_firewall_policy
 _res: aws_networkfirewall_firewall_transit_gateway_attachment_accepter: res.#aws_networkfirewall_firewall_transit_gateway_attachment_accepter
 _res: aws_networkfirewall_logging_configuration: res.#aws_networkfirewall_logging_configuration
@@ -965,6 +981,7 @@ _res: aws_opensearchserverless_security_policy: res.#aws_opensearchserverless_se
 _res: aws_opensearchserverless_vpc_endpoint: res.#aws_opensearchserverless_vpc_endpoint
 _res: aws_organizations_account: res.#aws_organizations_account
 _res: aws_organizations_delegated_administrator: res.#aws_organizations_delegated_administrator
+_res: aws_organizations_organization: res.#aws_organizations_organization
 _res: aws_organizations_organizational_unit: res.#aws_organizations_organizational_unit
 _res: aws_organizations_policy_attachment: res.#aws_organizations_policy_attachment
 _res: aws_organizations_policy: res.#aws_organizations_policy
@@ -1048,6 +1065,7 @@ _res: aws_redshift_cluster_iam_roles: res.#aws_redshift_cluster_iam_roles
 _res: aws_redshift_cluster_snapshot: res.#aws_redshift_cluster_snapshot
 _res: aws_redshift_data_share_authorization: res.#aws_redshift_data_share_authorization
 _res: aws_redshift_data_share_consumer_association: res.#aws_redshift_data_share_consumer_association
+_res: aws_redshift_endpoint_access: res.#aws_redshift_endpoint_access
 _res: aws_redshift_endpoint_authorization: res.#aws_redshift_endpoint_authorization
 _res: aws_redshift_event_subscription: res.#aws_redshift_event_subscription
 _res: aws_redshift_hsm_client_certificate: res.#aws_redshift_hsm_client_certificate
@@ -1107,6 +1125,7 @@ _res: aws_route53_vpc_association_authorization: res.#aws_route53_vpc_associatio
 _res: aws_route53_zone_association: res.#aws_route53_zone_association
 _res: aws_route53_zone: res.#aws_route53_zone
 _res: aws_route53domains_delegation_signer_record: res.#aws_route53domains_delegation_signer_record
+_res: aws_route53domains_domain: res.#aws_route53domains_domain
 _res: aws_route53domains_registered_domain: res.#aws_route53domains_registered_domain
 _res: aws_route53profiles_association: res.#aws_route53profiles_association
 _res: aws_route53profiles_profile: res.#aws_route53profiles_profile
@@ -1167,7 +1186,9 @@ _res: aws_s3control_object_lambda_access_point_policy: res.#aws_s3control_object
 _res: aws_s3control_storage_lens_configuration: res.#aws_s3control_storage_lens_configuration
 _res: aws_s3outposts_endpoint: res.#aws_s3outposts_endpoint
 _res: aws_s3tables_namespace: res.#aws_s3tables_namespace
+_res: aws_s3tables_table_bucket: res.#aws_s3tables_table_bucket
 _res: aws_s3tables_table_bucket_policy: res.#aws_s3tables_table_bucket_policy
+_res: aws_s3tables_table: res.#aws_s3tables_table
 _res: aws_s3tables_table_policy: res.#aws_s3tables_table_policy
 _res: aws_sagemaker_app: res.#aws_sagemaker_app
 _res: aws_sagemaker_app_image_config: res.#aws_sagemaker_app_image_config
@@ -1253,6 +1274,7 @@ _res: aws_servicecatalog_tag_option_resource_association: res.#aws_servicecatalo
 _res: aws_servicecatalogappregistry_application: res.#aws_servicecatalogappregistry_application
 _res: aws_servicecatalogappregistry_attribute_group_association: res.#aws_servicecatalogappregistry_attribute_group_association
 _res: aws_servicecatalogappregistry_attribute_group: res.#aws_servicecatalogappregistry_attribute_group
+_res: aws_servicequotas_service_quota: res.#aws_servicequotas_service_quota
 _res: aws_servicequotas_template_association: res.#aws_servicequotas_template_association
 _res: aws_servicequotas_template: res.#aws_servicequotas_template
 _res: aws_ses_active_receipt_rule_set: res.#aws_ses_active_receipt_rule_set
@@ -1291,6 +1313,7 @@ _res: aws_shield_protection: res.#aws_shield_protection
 _res: aws_shield_protection_group: res.#aws_shield_protection_group
 _res: aws_shield_protection_health_check_association: res.#aws_shield_protection_health_check_association
 _res: aws_shield_subscription: res.#aws_shield_subscription
+_res: aws_signer_signing_job: res.#aws_signer_signing_job
 _res: aws_signer_signing_profile: res.#aws_signer_signing_profile
 _res: aws_signer_signing_profile_permission: res.#aws_signer_signing_profile_permission
 _res: aws_snapshot_create_volume_permission: res.#aws_snapshot_create_volume_permission
