@@ -19,13 +19,16 @@ import (
 var (
 	filter   = flag.String("f", "", "Definition name filter (regexp)")
 	verbose  = flag.Bool("v", false, "Verbose mode")
+	logTime  = flag.Bool("t", false, "Log time")
 	defs     = flag.Bool("defs", true, "Whether to regenerate all the defs")
 	mappings = flag.Bool("mappings", true, "Whether to regenerate the mappings")
 )
 
 func main() {
 	flag.Parse()
-	log.SetFlags(0)
+	if !*logTime {
+		log.SetFlags(0)
+	}
 
 	schemaPath := flag.Arg(0)
 	if schemaPath == "" {
@@ -155,7 +158,11 @@ func processSchema(name string, s *schemaData, dir string, logPrefix string) {
 
 	start := time.Now()
 	defer func() {
-		log.Printf("DONE in %s: %s at %s", time.Since(start), name, dir)
+		timeInfo := ""
+		if *logTime {
+			timeInfo = fmt.Sprintf(" in %s", time.Since(start))
+		}
+		log.Printf("DONE%s: %s at %s", timeInfo, name, dir)
 	}()
 
 	inputFile, err := os.Create(filepath.Join(dir, name+"-input.json"))
