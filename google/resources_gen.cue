@@ -264,6 +264,7 @@ _res: google_compute_firewall: res.#google_compute_firewall
 _res: google_compute_firewall_policy_association: res.#google_compute_firewall_policy_association
 _res: google_compute_firewall_policy: res.#google_compute_firewall_policy
 _res: google_compute_firewall_policy_rule: res.#google_compute_firewall_policy_rule
+_res: google_compute_firewall_policy_with_rules: res.#google_compute_firewall_policy_with_rules
 _res: google_compute_forwarding_rule: res.#google_compute_forwarding_rule
 _res: google_compute_global_address: res.#google_compute_global_address
 _res: google_compute_global_forwarding_rule: res.#google_compute_global_forwarding_rule
@@ -280,6 +281,7 @@ _res: google_compute_image_iam_policy: res.#google_compute_image_iam_policy
 _res: google_compute_instance_from_template: res.#google_compute_instance_from_template
 _res: google_compute_instance: res.#google_compute_instance
 _res: google_compute_instance_group: res.#google_compute_instance_group
+_res: google_compute_instance_group_manager: res.#google_compute_instance_group_manager
 _res: google_compute_instance_group_membership: res.#google_compute_instance_group_membership
 _res: google_compute_instance_group_named_port: res.#google_compute_instance_group_named_port
 _res: google_compute_instance_iam_binding: res.#google_compute_instance_iam_binding
@@ -295,7 +297,9 @@ _res: google_compute_instant_snapshot_iam_binding: res.#google_compute_instant_s
 _res: google_compute_instant_snapshot_iam_member: res.#google_compute_instant_snapshot_iam_member
 _res: google_compute_instant_snapshot_iam_policy: res.#google_compute_instant_snapshot_iam_policy
 _res: google_compute_interconnect_attachment: res.#google_compute_interconnect_attachment
+_res: google_compute_interconnect_attachment_group: res.#google_compute_interconnect_attachment_group
 _res: google_compute_interconnect: res.#google_compute_interconnect
+_res: google_compute_interconnect_group: res.#google_compute_interconnect_group
 _res: google_compute_managed_ssl_certificate: res.#google_compute_managed_ssl_certificate
 _res: google_compute_network_attachment: res.#google_compute_network_attachment
 _res: google_compute_network_endpoint: res.#google_compute_network_endpoint
@@ -304,6 +308,7 @@ _res: google_compute_network_endpoints: res.#google_compute_network_endpoints
 _res: google_compute_network_firewall_policy_association: res.#google_compute_network_firewall_policy_association
 _res: google_compute_network_firewall_policy: res.#google_compute_network_firewall_policy
 _res: google_compute_network_firewall_policy_rule: res.#google_compute_network_firewall_policy_rule
+_res: google_compute_network_firewall_policy_with_rules: res.#google_compute_network_firewall_policy_with_rules
 _res: google_compute_network: res.#google_compute_network
 _res: google_compute_network_peering: res.#google_compute_network_peering
 _res: google_compute_network_peering_routes_config: res.#google_compute_network_peering_routes_config
@@ -326,12 +331,14 @@ _res: google_compute_region_disk_iam_member: res.#google_compute_region_disk_iam
 _res: google_compute_region_disk_iam_policy: res.#google_compute_region_disk_iam_policy
 _res: google_compute_region_disk_resource_policy_attachment: res.#google_compute_region_disk_resource_policy_attachment
 _res: google_compute_region_health_check: res.#google_compute_region_health_check
+_res: google_compute_region_instance_group_manager: res.#google_compute_region_instance_group_manager
 _res: google_compute_region_instance_template: res.#google_compute_region_instance_template
 _res: google_compute_region_network_endpoint: res.#google_compute_region_network_endpoint
 _res: google_compute_region_network_endpoint_group: res.#google_compute_region_network_endpoint_group
 _res: google_compute_region_network_firewall_policy_association: res.#google_compute_region_network_firewall_policy_association
 _res: google_compute_region_network_firewall_policy: res.#google_compute_region_network_firewall_policy
 _res: google_compute_region_network_firewall_policy_rule: res.#google_compute_region_network_firewall_policy_rule
+_res: google_compute_region_network_firewall_policy_with_rules: res.#google_compute_region_network_firewall_policy_with_rules
 _res: google_compute_region_per_instance_config: res.#google_compute_region_per_instance_config
 _res: google_compute_region_security_policy: res.#google_compute_region_security_policy
 _res: google_compute_region_security_policy_rule: res.#google_compute_region_security_policy_rule
@@ -342,6 +349,7 @@ _res: google_compute_region_target_https_proxy: res.#google_compute_region_targe
 _res: google_compute_region_target_tcp_proxy: res.#google_compute_region_target_tcp_proxy
 _res: google_compute_region_url_map: res.#google_compute_region_url_map
 _res: google_compute_reservation: res.#google_compute_reservation
+_res: google_compute_resize_request: res.#google_compute_resize_request
 _res: google_compute_resource_policy_attachment: res.#google_compute_resource_policy_attachment
 _res: google_compute_resource_policy: res.#google_compute_resource_policy
 _res: google_compute_route: res.#google_compute_route
@@ -520,6 +528,7 @@ _res: google_dialogflow_cx_intent: res.#google_dialogflow_cx_intent
 _res: google_dialogflow_cx_page: res.#google_dialogflow_cx_page
 _res: google_dialogflow_cx_playbook: res.#google_dialogflow_cx_playbook
 _res: google_dialogflow_cx_security_settings: res.#google_dialogflow_cx_security_settings
+_res: google_dialogflow_cx_test_case: res.#google_dialogflow_cx_test_case
 _res: google_dialogflow_cx_tool: res.#google_dialogflow_cx_tool
 _res: google_dialogflow_cx_version: res.#google_dialogflow_cx_version
 _res: google_dialogflow_cx_webhook: res.#google_dialogflow_cx_webhook
@@ -582,6 +591,7 @@ _res: google_firebase_app_check_service_config: res.#google_firebase_app_check_s
 _res: google_firebase_app_hosting_backend: res.#google_firebase_app_hosting_backend
 _res: google_firebase_app_hosting_build: res.#google_firebase_app_hosting_build
 _res: google_firebase_app_hosting_default_domain: res.#google_firebase_app_hosting_default_domain
+_res: google_firebase_app_hosting_domain: res.#google_firebase_app_hosting_domain
 _res: google_firebase_app_hosting_traffic: res.#google_firebase_app_hosting_traffic
 _res: google_firebase_data_connect_service: res.#google_firebase_data_connect_service
 _res: google_firebaserules_release: res.#google_firebaserules_release
@@ -640,7 +650,11 @@ _res: google_gke_hub_scope_iam_binding: res.#google_gke_hub_scope_iam_binding
 _res: google_gke_hub_scope_iam_member: res.#google_gke_hub_scope_iam_member
 _res: google_gke_hub_scope_iam_policy: res.#google_gke_hub_scope_iam_policy
 _res: google_gke_hub_scope_rbac_role_binding: res.#google_gke_hub_scope_rbac_role_binding
+_res: google_gkeonprem_bare_metal_admin_cluster: res.#google_gkeonprem_bare_metal_admin_cluster
+_res: google_gkeonprem_bare_metal_cluster: res.#google_gkeonprem_bare_metal_cluster
 _res: google_gkeonprem_bare_metal_node_pool: res.#google_gkeonprem_bare_metal_node_pool
+_res: google_gkeonprem_vmware_admin_cluster: res.#google_gkeonprem_vmware_admin_cluster
+_res: google_gkeonprem_vmware_cluster: res.#google_gkeonprem_vmware_cluster
 _res: google_gkeonprem_vmware_node_pool: res.#google_gkeonprem_vmware_node_pool
 _res: google_healthcare_consent_store: res.#google_healthcare_consent_store
 _res: google_healthcare_consent_store_iam_binding: res.#google_healthcare_consent_store_iam_binding
@@ -781,6 +795,7 @@ _res: google_managed_kafka_cluster: res.#google_managed_kafka_cluster
 _res: google_managed_kafka_topic: res.#google_managed_kafka_topic
 _res: google_memcache_instance: res.#google_memcache_instance
 _res: google_memorystore_instance_desired_user_created_endpoints: res.#google_memorystore_instance_desired_user_created_endpoints
+_res: google_memorystore_instance: res.#google_memorystore_instance
 _res: google_migration_center_group: res.#google_migration_center_group
 _res: google_migration_center_preference_set: res.#google_migration_center_preference_set
 _res: google_ml_engine_model: res.#google_ml_engine_model
@@ -878,6 +893,9 @@ _res: google_organization_iam_policy: res.#google_organization_iam_policy
 _res: google_organization_policy: res.#google_organization_policy
 _res: google_os_config_os_policy_assignment: res.#google_os_config_os_policy_assignment
 _res: google_os_config_patch_deployment: res.#google_os_config_patch_deployment
+_res: google_os_config_v2_policy_orchestrator_for_folder: res.#google_os_config_v2_policy_orchestrator_for_folder
+_res: google_os_config_v2_policy_orchestrator_for_organization: res.#google_os_config_v2_policy_orchestrator_for_organization
+_res: google_os_config_v2_policy_orchestrator: res.#google_os_config_v2_policy_orchestrator
 _res: google_os_login_ssh_public_key: res.#google_os_login_ssh_public_key
 _res: google_parallelstore_instance: res.#google_parallelstore_instance
 _res: google_parameter_manager_parameter: res.#google_parameter_manager_parameter
@@ -889,6 +907,7 @@ _res: google_privateca_ca_pool_iam_binding: res.#google_privateca_ca_pool_iam_bi
 _res: google_privateca_ca_pool_iam_member: res.#google_privateca_ca_pool_iam_member
 _res: google_privateca_ca_pool_iam_policy: res.#google_privateca_ca_pool_iam_policy
 _res: google_privateca_certificate_authority: res.#google_privateca_certificate_authority
+_res: google_privateca_certificate: res.#google_privateca_certificate
 _res: google_privateca_certificate_template: res.#google_privateca_certificate_template
 _res: google_privateca_certificate_template_iam_binding: res.#google_privateca_certificate_template_iam_binding
 _res: google_privateca_certificate_template_iam_member: res.#google_privateca_certificate_template_iam_member
@@ -1052,6 +1071,7 @@ _res: google_transcoder_job: res.#google_transcoder_job
 _res: google_transcoder_job_template: res.#google_transcoder_job_template
 _res: google_vertex_ai_dataset: res.#google_vertex_ai_dataset
 _res: google_vertex_ai_deployment_resource_pool: res.#google_vertex_ai_deployment_resource_pool
+_res: google_vertex_ai_endpoint: res.#google_vertex_ai_endpoint
 _res: google_vertex_ai_endpoint_with_model_garden_deployment: res.#google_vertex_ai_endpoint_with_model_garden_deployment
 _res: google_vertex_ai_feature_group_feature: res.#google_vertex_ai_feature_group_feature
 _res: google_vertex_ai_feature_group: res.#google_vertex_ai_feature_group
