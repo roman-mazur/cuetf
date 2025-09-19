@@ -56,6 +56,7 @@ _res: cloudflare_email_security_trusted_domains: res.#cloudflare_email_security_
 _res: cloudflare_filter: res.#cloudflare_filter
 _res: cloudflare_firewall_rule: res.#cloudflare_firewall_rule
 _res: cloudflare_healthcheck: res.#cloudflare_healthcheck
+_res: cloudflare_hostname_tls_setting: res.#cloudflare_hostname_tls_setting
 _res: cloudflare_hyperdrive_config: res.#cloudflare_hyperdrive_config
 _res: cloudflare_image: res.#cloudflare_image
 _res: cloudflare_image_variant: res.#cloudflare_image_variant
@@ -110,6 +111,7 @@ _res: cloudflare_schema_validation_schemas: res.#cloudflare_schema_validation_sc
 _res: cloudflare_schema_validation_settings: res.#cloudflare_schema_validation_settings
 _res: cloudflare_snippet_rules: res.#cloudflare_snippet_rules
 _res: cloudflare_snippets: res.#cloudflare_snippets
+_res: cloudflare_spectrum_application: res.#cloudflare_spectrum_application
 _res: cloudflare_stream_audio_track: res.#cloudflare_stream_audio_track
 _res: cloudflare_stream_caption_language: res.#cloudflare_stream_caption_language
 _res: cloudflare_stream_download: res.#cloudflare_stream_download
@@ -191,4 +193,5 @@ _res: cloudflare_zone_dnssec: res.#cloudflare_zone_dnssec
 _res: cloudflare_zone: res.#cloudflare_zone
 _res: cloudflare_zone_hold: res.#cloudflare_zone_hold
 _res: cloudflare_zone_lockdown: res.#cloudflare_zone_lockdown
+_res: cloudflare_zone_setting: res.#cloudflare_zone_setting
 _res: cloudflare_zone_subscription: res.#cloudflare_zone_subscription

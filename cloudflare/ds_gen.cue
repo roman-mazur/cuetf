@@ -68,6 +68,8 @@ _ds: cloudflare_d1_databases: data.#cloudflare_d1_databases
 _ds: cloudflare_dcv_delegation: data.#cloudflare_dcv_delegation
 _ds: cloudflare_dns_firewall: data.#cloudflare_dns_firewall
 _ds: cloudflare_dns_firewalls: data.#cloudflare_dns_firewalls
+_ds: cloudflare_dns_record: data.#cloudflare_dns_record
+_ds: cloudflare_dns_records: data.#cloudflare_dns_records
 _ds: cloudflare_dns_zone_transfers_acl: data.#cloudflare_dns_zone_transfers_acl
 _ds: cloudflare_dns_zone_transfers_acls: data.#cloudflare_dns_zone_transfers_acls
 _ds: cloudflare_dns_zone_transfers_incoming: data.#cloudflare_dns_zone_transfers_incoming
@@ -190,6 +192,7 @@ _ds: cloudflare_schema_validation_settings: data.#cloudflare_schema_validation_s
 _ds: cloudflare_snippet_rules_list: data.#cloudflare_snippet_rules_list
 _ds: cloudflare_snippets: data.#cloudflare_snippets
 _ds: cloudflare_snippets_list: data.#cloudflare_snippets_list
+_ds: cloudflare_spectrum_application: data.#cloudflare_spectrum_application
 _ds: cloudflare_spectrum_applications: data.#cloudflare_spectrum_applications
 _ds: cloudflare_stream_audio_track: data.#cloudflare_stream_audio_track
 _ds: cloudflare_stream_caption_language: data.#cloudflare_stream_caption_language
