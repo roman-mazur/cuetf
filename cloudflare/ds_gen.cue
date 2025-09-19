@@ -158,6 +158,8 @@ _ds: cloudflare_page_shield_scripts: data.#cloudflare_page_shield_scripts
 _ds: cloudflare_page_shield_scripts_list: data.#cloudflare_page_shield_scripts_list
 _ds: cloudflare_pages_domain: data.#cloudflare_pages_domain
 _ds: cloudflare_pages_domains: data.#cloudflare_pages_domains
+_ds: cloudflare_pages_project: data.#cloudflare_pages_project
+_ds: cloudflare_pages_projects: data.#cloudflare_pages_projects
 _ds: cloudflare_queue_consumer: data.#cloudflare_queue_consumer
 _ds: cloudflare_queue_consumers: data.#cloudflare_queue_consumers
 _ds: cloudflare_queue: data.#cloudflare_queue
@@ -178,6 +180,7 @@ _ds: cloudflare_registrar_domain: data.#cloudflare_registrar_domain
 _ds: cloudflare_registrar_domains: data.#cloudflare_registrar_domains
 _ds: cloudflare_resource_group: data.#cloudflare_resource_group
 _ds: cloudflare_resource_groups: data.#cloudflare_resource_groups
+_ds: cloudflare_ruleset: data.#cloudflare_ruleset
 _ds: cloudflare_rulesets: data.#cloudflare_rulesets
 _ds: cloudflare_schema_validation_operation_settings: data.#cloudflare_schema_validation_operation_settings
 _ds: cloudflare_schema_validation_operation_settings_list: data.#cloudflare_schema_validation_operation_settings_list

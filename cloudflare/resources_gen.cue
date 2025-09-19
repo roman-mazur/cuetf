@@ -89,6 +89,7 @@ _res: cloudflare_origin_ca_certificate: res.#cloudflare_origin_ca_certificate
 _res: cloudflare_page_rule: res.#cloudflare_page_rule
 _res: cloudflare_page_shield_policy: res.#cloudflare_page_shield_policy
 _res: cloudflare_pages_domain: res.#cloudflare_pages_domain
+_res: cloudflare_pages_project: res.#cloudflare_pages_project
 _res: cloudflare_queue_consumer: res.#cloudflare_queue_consumer
 _res: cloudflare_queue: res.#cloudflare_queue
 _res: cloudflare_r2_bucket_cors: res.#cloudflare_r2_bucket_cors
@@ -103,6 +104,7 @@ _res: cloudflare_rate_limit: res.#cloudflare_rate_limit
 _res: cloudflare_regional_hostname: res.#cloudflare_regional_hostname
 _res: cloudflare_regional_tiered_cache: res.#cloudflare_regional_tiered_cache
 _res: cloudflare_registrar_domain: res.#cloudflare_registrar_domain
+_res: cloudflare_ruleset: res.#cloudflare_ruleset
 _res: cloudflare_schema_validation_operation_settings: res.#cloudflare_schema_validation_operation_settings
 _res: cloudflare_schema_validation_schemas: res.#cloudflare_schema_validation_schemas
 _res: cloudflare_schema_validation_settings: res.#cloudflare_schema_validation_settings
