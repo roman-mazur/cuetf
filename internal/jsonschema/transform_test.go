@@ -41,6 +41,7 @@ func TestProviders(t *testing.T) {
 			examples: []string{
 				"provider",
 				"cloudflare_zero_trust_gateway_logging",
+				"cloudflare_zone_setting",
 			},
 		},
 		{

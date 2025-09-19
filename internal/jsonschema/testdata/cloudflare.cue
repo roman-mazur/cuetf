@@ -9,4 +9,9 @@ testSamples: resource: {
 			dns: log_blocks: true
 		}
 	}
+	cloudflare_zone_setting: sample: {
+		setting_id: "test"
+		value: 42
+		zone_id: "sample"
+	}
 }

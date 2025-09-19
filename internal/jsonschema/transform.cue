@@ -39,12 +39,12 @@ import (
 					}
 					if info.nested_type != _|_ {
 						#: "nested_block_\(name)": (#blockTransform & {#block: {
-								attributes: info.nested_type.attributes
-								block_types: {}
-							}}).out
+							attributes: info.nested_type.attributes
+							block_types: {}
+						}}).out
 						(name): (#nestingTransform & {
 							#nest: info.nested_type
-							#def: #["nested_block_\(name)"]
+							#def:  #["nested_block_\(name)"]
 						}).out
 					}
 
@@ -158,4 +158,5 @@ _primitivesMap: {
 	number: "number"
 	string: "string"
 	"bool": "boolean"
+	dynamic: ["number", "string", "boolean", "null", "array", "object"]
 }

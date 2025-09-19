@@ -21,7 +21,7 @@ documented: {
 _recDepth: [0, 1, 2, 3, 4, 5]
 
 #attr: {
-	#primitive:   "string" | "number" | "bool"
+	#primitive:   "string" | "number" | "bool" | "dynamic"
 	#complexType: "object" | "list" | "map" | "set"
 	#complexDef: [#complexType, _]
 
