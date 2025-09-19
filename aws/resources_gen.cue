@@ -172,6 +172,7 @@ _res: aws_bedrock_provisioned_model_throughput: res.#aws_bedrock_provisioned_mod
 _res: aws_bedrockagent_agent_action_group: res.#aws_bedrockagent_agent_action_group
 _res: aws_bedrockagent_agent_alias: res.#aws_bedrockagent_agent_alias
 _res: aws_bedrockagent_agent_collaborator: res.#aws_bedrockagent_agent_collaborator
+_res: aws_bedrockagent_agent: res.#aws_bedrockagent_agent
 _res: aws_bedrockagent_agent_knowledge_base_association: res.#aws_bedrockagent_agent_knowledge_base_association
 _res: aws_bedrockagent_data_source: res.#aws_bedrockagent_data_source
 _res: aws_bedrockagent_flow: res.#aws_bedrockagent_flow
@@ -340,6 +341,7 @@ _res: aws_connect_quick_connect: res.#aws_connect_quick_connect
 _res: aws_connect_routing_profile: res.#aws_connect_routing_profile
 _res: aws_connect_security_profile: res.#aws_connect_security_profile
 _res: aws_connect_user: res.#aws_connect_user
+_res: aws_connect_user_hierarchy_group: res.#aws_connect_user_hierarchy_group
 _res: aws_connect_user_hierarchy_structure: res.#aws_connect_user_hierarchy_structure
 _res: aws_connect_vocabulary: res.#aws_connect_vocabulary
 _res: aws_controltower_control: res.#aws_controltower_control
@@ -378,6 +380,7 @@ _res: aws_datazone_form_type: res.#aws_datazone_form_type
 _res: aws_datazone_glossary: res.#aws_datazone_glossary
 _res: aws_datazone_glossary_term: res.#aws_datazone_glossary_term
 _res: aws_datazone_project: res.#aws_datazone_project
+_res: aws_datazone_user_profile: res.#aws_datazone_user_profile
 _res: aws_dax_cluster: res.#aws_dax_cluster
 _res: aws_dax_parameter_group: res.#aws_dax_parameter_group
 _res: aws_dax_subnet_group: res.#aws_dax_subnet_group
@@ -499,6 +502,7 @@ _res: aws_ec2_local_gateway_route: res.#aws_ec2_local_gateway_route
 _res: aws_ec2_local_gateway_route_table_vpc_association: res.#aws_ec2_local_gateway_route_table_vpc_association
 _res: aws_ec2_managed_prefix_list_entry: res.#aws_ec2_managed_prefix_list_entry
 _res: aws_ec2_managed_prefix_list: res.#aws_ec2_managed_prefix_list
+_res: aws_ec2_network_insights_analysis: res.#aws_ec2_network_insights_analysis
 _res: aws_ec2_network_insights_path: res.#aws_ec2_network_insights_path
 _res: aws_ec2_serial_console_access: res.#aws_ec2_serial_console_access
 _res: aws_ec2_subnet_cidr_reservation: res.#aws_ec2_subnet_cidr_reservation
@@ -891,6 +895,7 @@ _res: aws_medialive_input_security_group: res.#aws_medialive_input_security_grou
 _res: aws_medialive_multiplex: res.#aws_medialive_multiplex
 _res: aws_medialive_multiplex_program: res.#aws_medialive_multiplex_program
 _res: aws_memorydb_acl: res.#aws_memorydb_acl
+_res: aws_memorydb_cluster: res.#aws_memorydb_cluster
 _res: aws_memorydb_multi_region_cluster: res.#aws_memorydb_multi_region_cluster
 _res: aws_memorydb_parameter_group: res.#aws_memorydb_parameter_group
 _res: aws_memorydb_snapshot: res.#aws_memorydb_snapshot
@@ -938,6 +943,7 @@ _res: aws_networkfirewall_rule_group: res.#aws_networkfirewall_rule_group
 _res: aws_networkfirewall_tls_inspection_configuration: res.#aws_networkfirewall_tls_inspection_configuration
 _res: aws_networkmanager_attachment_accepter: res.#aws_networkmanager_attachment_accepter
 _res: aws_networkmanager_connect_attachment: res.#aws_networkmanager_connect_attachment
+_res: aws_networkmanager_connect_peer: res.#aws_networkmanager_connect_peer
 _res: aws_networkmanager_connection: res.#aws_networkmanager_connection
 _res: aws_networkmanager_core_network: res.#aws_networkmanager_core_network
 _res: aws_networkmanager_core_network_policy_attachment: res.#aws_networkmanager_core_network_policy_attachment
@@ -1084,10 +1090,12 @@ _res: aws_redshift_subnet_group: res.#aws_redshift_subnet_group
 _res: aws_redshift_usage_limit: res.#aws_redshift_usage_limit
 _res: aws_redshiftdata_statement: res.#aws_redshiftdata_statement
 _res: aws_redshiftserverless_custom_domain_association: res.#aws_redshiftserverless_custom_domain_association
+_res: aws_redshiftserverless_endpoint_access: res.#aws_redshiftserverless_endpoint_access
 _res: aws_redshiftserverless_namespace: res.#aws_redshiftserverless_namespace
 _res: aws_redshiftserverless_resource_policy: res.#aws_redshiftserverless_resource_policy
 _res: aws_redshiftserverless_snapshot: res.#aws_redshiftserverless_snapshot
 _res: aws_redshiftserverless_usage_limit: res.#aws_redshiftserverless_usage_limit
+_res: aws_redshiftserverless_workgroup: res.#aws_redshiftserverless_workgroup
 _res: aws_rekognition_collection: res.#aws_rekognition_collection
 _res: aws_rekognition_project: res.#aws_rekognition_project
 _res: aws_rekognition_stream_processor: res.#aws_rekognition_stream_processor

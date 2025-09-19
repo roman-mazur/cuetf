@@ -7,6 +7,7 @@ _ds: aws_acm_certificate: data.#aws_acm_certificate
 _ds: aws_acmpca_certificate_authority: data.#aws_acmpca_certificate_authority
 _ds: aws_acmpca_certificate: data.#aws_acmpca_certificate
 _ds: aws_alb: data.#aws_alb
+_ds: aws_alb_listener: data.#aws_alb_listener
 _ds: aws_alb_target_group: data.#aws_alb_target_group
 _ds: aws_ami: data.#aws_ami
 _ds: aws_ami_ids: data.#aws_ami_ids
@@ -29,21 +30,30 @@ _ds: aws_appconfig_configuration_profiles: data.#aws_appconfig_configuration_pro
 _ds: aws_appconfig_environment: data.#aws_appconfig_environment
 _ds: aws_appconfig_environments: data.#aws_appconfig_environments
 _ds: aws_appintegrations_event_integration: data.#aws_appintegrations_event_integration
+_ds: aws_appmesh_gateway_route: data.#aws_appmesh_gateway_route
 _ds: aws_appmesh_mesh: data.#aws_appmesh_mesh
+_ds: aws_appmesh_route: data.#aws_appmesh_route
+_ds: aws_appmesh_virtual_gateway: data.#aws_appmesh_virtual_gateway
+_ds: aws_appmesh_virtual_node: data.#aws_appmesh_virtual_node
+_ds: aws_appmesh_virtual_router: data.#aws_appmesh_virtual_router
+_ds: aws_appmesh_virtual_service: data.#aws_appmesh_virtual_service
 _ds: aws_apprunner_hosted_zone_id: data.#aws_apprunner_hosted_zone_id
 _ds: aws_appstream_image: data.#aws_appstream_image
 _ds: aws_arn: data.#aws_arn
 _ds: aws_athena_named_query: data.#aws_athena_named_query
 _ds: aws_auditmanager_control: data.#aws_auditmanager_control
 _ds: aws_auditmanager_framework: data.#aws_auditmanager_framework
+_ds: aws_autoscaling_group: data.#aws_autoscaling_group
 _ds: aws_autoscaling_groups: data.#aws_autoscaling_groups
 _ds: aws_availability_zone: data.#aws_availability_zone
 _ds: aws_availability_zones: data.#aws_availability_zones
 _ds: aws_backup_framework: data.#aws_backup_framework
+_ds: aws_backup_plan: data.#aws_backup_plan
 _ds: aws_backup_report_plan: data.#aws_backup_report_plan
 _ds: aws_backup_selection: data.#aws_backup_selection
 _ds: aws_backup_vault: data.#aws_backup_vault
 _ds: aws_batch_compute_environment: data.#aws_batch_compute_environment
+_ds: aws_batch_job_definition: data.#aws_batch_job_definition
 _ds: aws_batch_job_queue: data.#aws_batch_job_queue
 _ds: aws_batch_scheduling_policy: data.#aws_batch_scheduling_policy
 _ds: aws_bedrock_custom_model: data.#aws_bedrock_custom_model
@@ -57,12 +67,14 @@ _ds: aws_billing_service_account: data.#aws_billing_service_account
 _ds: aws_budgets_budget: data.#aws_budgets_budget
 _ds: aws_caller_identity: data.#aws_caller_identity
 _ds: aws_canonical_user_id: data.#aws_canonical_user_id
+_ds: aws_ce_cost_category: data.#aws_ce_cost_category
 _ds: aws_ce_tags: data.#aws_ce_tags
 _ds: aws_chatbot_slack_workspace: data.#aws_chatbot_slack_workspace
 _ds: aws_cloudcontrolapi_resource: data.#aws_cloudcontrolapi_resource
 _ds: aws_cloudformation_export: data.#aws_cloudformation_export
 _ds: aws_cloudformation_stack: data.#aws_cloudformation_stack
 _ds: aws_cloudformation_type: data.#aws_cloudformation_type
+_ds: aws_cloudfront_cache_policy: data.#aws_cloudfront_cache_policy
 _ds: aws_cloudfront_distribution: data.#aws_cloudfront_distribution
 _ds: aws_cloudfront_function: data.#aws_cloudfront_function
 _ds: aws_cloudfront_log_delivery_canonical_user_id: data.#aws_cloudfront_log_delivery_canonical_user_id
@@ -103,6 +115,7 @@ _ds: aws_connect_contact_flow: data.#aws_connect_contact_flow
 _ds: aws_connect_contact_flow_module: data.#aws_connect_contact_flow_module
 _ds: aws_connect_hours_of_operation: data.#aws_connect_hours_of_operation
 _ds: aws_connect_instance: data.#aws_connect_instance
+_ds: aws_connect_instance_storage_config: data.#aws_connect_instance_storage_config
 _ds: aws_connect_lambda_function_association: data.#aws_connect_lambda_function_association
 _ds: aws_connect_prompt: data.#aws_connect_prompt
 _ds: aws_connect_queue: data.#aws_connect_queue
@@ -171,6 +184,7 @@ _ds: aws_ec2_local_gateway_virtual_interface_groups: data.#aws_ec2_local_gateway
 _ds: aws_ec2_local_gateways: data.#aws_ec2_local_gateways
 _ds: aws_ec2_managed_prefix_list: data.#aws_ec2_managed_prefix_list
 _ds: aws_ec2_managed_prefix_lists: data.#aws_ec2_managed_prefix_lists
+_ds: aws_ec2_network_insights_analysis: data.#aws_ec2_network_insights_analysis
 _ds: aws_ec2_network_insights_path: data.#aws_ec2_network_insights_path
 _ds: aws_ec2_public_ipv4_pool: data.#aws_ec2_public_ipv4_pool
 _ds: aws_ec2_public_ipv4_pools: data.#aws_ec2_public_ipv4_pools
@@ -238,6 +252,7 @@ _ds: aws_elb_hosted_zone_id: data.#aws_elb_hosted_zone_id
 _ds: aws_elb_service_account: data.#aws_elb_service_account
 _ds: aws_emr_release_labels: data.#aws_emr_release_labels
 _ds: aws_emr_supported_instance_types: data.#aws_emr_supported_instance_types
+_ds: aws_emrcontainers_virtual_cluster: data.#aws_emrcontainers_virtual_cluster
 _ds: aws_fis_experiment_templates: data.#aws_fis_experiment_templates
 _ds: aws_fsx_ontap_file_system: data.#aws_fsx_ontap_file_system
 _ds: aws_fsx_ontap_storage_virtual_machine: data.#aws_fsx_ontap_storage_virtual_machine
@@ -246,6 +261,7 @@ _ds: aws_fsx_openzfs_snapshot: data.#aws_fsx_openzfs_snapshot
 _ds: aws_fsx_windows_file_system: data.#aws_fsx_windows_file_system
 _ds: aws_globalaccelerator_accelerator: data.#aws_globalaccelerator_accelerator
 _ds: aws_globalaccelerator_custom_routing_accelerator: data.#aws_globalaccelerator_custom_routing_accelerator
+_ds: aws_glue_catalog_table: data.#aws_glue_catalog_table
 _ds: aws_glue_connection: data.#aws_glue_connection
 _ds: aws_glue_data_catalog_encryption_settings: data.#aws_glue_data_catalog_encryption_settings
 _ds: aws_glue_registry: data.#aws_glue_registry
@@ -279,6 +295,7 @@ _ds: aws_imagebuilder_component: data.#aws_imagebuilder_component
 _ds: aws_imagebuilder_components: data.#aws_imagebuilder_components
 _ds: aws_imagebuilder_container_recipe: data.#aws_imagebuilder_container_recipe
 _ds: aws_imagebuilder_container_recipes: data.#aws_imagebuilder_container_recipes
+_ds: aws_imagebuilder_distribution_configuration: data.#aws_imagebuilder_distribution_configuration
 _ds: aws_imagebuilder_distribution_configurations: data.#aws_imagebuilder_distribution_configurations
 _ds: aws_imagebuilder_image: data.#aws_imagebuilder_image
 _ds: aws_imagebuilder_image_pipeline: data.#aws_imagebuilder_image_pipeline
@@ -325,6 +342,7 @@ _ds: aws_launch_configuration: data.#aws_launch_configuration
 _ds: aws_launch_template: data.#aws_launch_template
 _ds: aws_lb: data.#aws_lb
 _ds: aws_lb_hosted_zone_id: data.#aws_lb_hosted_zone_id
+_ds: aws_lb_listener: data.#aws_lb_listener
 _ds: aws_lb_listener_rule: data.#aws_lb_listener_rule
 _ds: aws_lb_target_group: data.#aws_lb_target_group
 _ds: aws_lb_trust_store: data.#aws_lb_trust_store
@@ -346,6 +364,7 @@ _ds: aws_location_tracker: data.#aws_location_tracker
 _ds: aws_media_convert_queue: data.#aws_media_convert_queue
 _ds: aws_medialive_input: data.#aws_medialive_input
 _ds: aws_memorydb_acl: data.#aws_memorydb_acl
+_ds: aws_memorydb_cluster: data.#aws_memorydb_cluster
 _ds: aws_memorydb_parameter_group: data.#aws_memorydb_parameter_group
 _ds: aws_memorydb_snapshot: data.#aws_memorydb_snapshot
 _ds: aws_memorydb_subnet_group: data.#aws_memorydb_subnet_group
@@ -355,6 +374,7 @@ _ds: aws_mq_broker: data.#aws_mq_broker
 _ds: aws_mq_broker_instance_type_offerings: data.#aws_mq_broker_instance_type_offerings
 _ds: aws_msk_bootstrap_brokers: data.#aws_msk_bootstrap_brokers
 _ds: aws_msk_broker_nodes: data.#aws_msk_broker_nodes
+_ds: aws_msk_cluster: data.#aws_msk_cluster
 _ds: aws_msk_configuration: data.#aws_msk_configuration
 _ds: aws_msk_kafka_version: data.#aws_msk_kafka_version
 _ds: aws_msk_vpc_connection: data.#aws_msk_vpc_connection
@@ -368,6 +388,8 @@ _ds: aws_neptune_orderable_db_instance: data.#aws_neptune_orderable_db_instance
 _ds: aws_network_acls: data.#aws_network_acls
 _ds: aws_network_interface: data.#aws_network_interface
 _ds: aws_network_interfaces: data.#aws_network_interfaces
+_ds: aws_networkfirewall_firewall: data.#aws_networkfirewall_firewall
+_ds: aws_networkfirewall_firewall_policy: data.#aws_networkfirewall_firewall_policy
 _ds: aws_networkfirewall_resource_policy: data.#aws_networkfirewall_resource_policy
 _ds: aws_networkmanager_connection: data.#aws_networkmanager_connection
 _ds: aws_networkmanager_connections: data.#aws_networkmanager_connections
@@ -384,6 +406,7 @@ _ds: aws_oam_link: data.#aws_oam_link
 _ds: aws_oam_links: data.#aws_oam_links
 _ds: aws_oam_sink: data.#aws_oam_sink
 _ds: aws_oam_sinks: data.#aws_oam_sinks
+_ds: aws_opensearch_domain: data.#aws_opensearch_domain
 _ds: aws_opensearchserverless_access_policy: data.#aws_opensearchserverless_access_policy
 _ds: aws_opensearchserverless_collection: data.#aws_opensearchserverless_collection
 _ds: aws_opensearchserverless_lifecycle_policy: data.#aws_opensearchserverless_lifecycle_policy
@@ -418,7 +441,10 @@ _ds: aws_prometheus_default_scraper_configuration: data.#aws_prometheus_default_
 _ds: aws_prometheus_workspace: data.#aws_prometheus_workspace
 _ds: aws_prometheus_workspaces: data.#aws_prometheus_workspaces
 _ds: aws_qldb_ledger: data.#aws_qldb_ledger
+_ds: aws_quicksight_analysis: data.#aws_quicksight_analysis
+_ds: aws_quicksight_data_set: data.#aws_quicksight_data_set
 _ds: aws_quicksight_group: data.#aws_quicksight_group
+_ds: aws_quicksight_theme: data.#aws_quicksight_theme
 _ds: aws_quicksight_user: data.#aws_quicksight_user
 _ds: aws_ram_resource_share: data.#aws_ram_resource_share
 _ds: aws_rds_certificate: data.#aws_rds_certificate
@@ -436,6 +462,7 @@ _ds: aws_redshift_producer_data_shares: data.#aws_redshift_producer_data_shares
 _ds: aws_redshift_subnet_group: data.#aws_redshift_subnet_group
 _ds: aws_redshiftserverless_credentials: data.#aws_redshiftserverless_credentials
 _ds: aws_redshiftserverless_namespace: data.#aws_redshiftserverless_namespace
+_ds: aws_redshiftserverless_workgroup: data.#aws_redshiftserverless_workgroup
 _ds: aws_region: data.#aws_region
 _ds: aws_regions: data.#aws_regions
 _ds: aws_resourceexplorer2_search: data.#aws_resourceexplorer2_search
@@ -523,7 +550,10 @@ _ds: aws_ssm_patch_baseline: data.#aws_ssm_patch_baseline
 _ds: aws_ssm_patch_baselines: data.#aws_ssm_patch_baselines
 _ds: aws_ssmcontacts_contact_channel: data.#aws_ssmcontacts_contact_channel
 _ds: aws_ssmcontacts_contact: data.#aws_ssmcontacts_contact
+_ds: aws_ssmcontacts_plan: data.#aws_ssmcontacts_plan
+_ds: aws_ssmcontacts_rotation: data.#aws_ssmcontacts_rotation
 _ds: aws_ssmincidents_replication_set: data.#aws_ssmincidents_replication_set
+_ds: aws_ssmincidents_response_plan: data.#aws_ssmincidents_response_plan
 _ds: aws_ssoadmin_application_assignments: data.#aws_ssoadmin_application_assignments
 _ds: aws_ssoadmin_application: data.#aws_ssoadmin_application
 _ds: aws_ssoadmin_application_providers: data.#aws_ssoadmin_application_providers
@@ -537,6 +567,7 @@ _ds: aws_subnets: data.#aws_subnets
 _ds: aws_synthetics_runtime_version: data.#aws_synthetics_runtime_version
 _ds: aws_synthetics_runtime_versions: data.#aws_synthetics_runtime_versions
 _ds: aws_timestreamwrite_database: data.#aws_timestreamwrite_database
+_ds: aws_timestreamwrite_table: data.#aws_timestreamwrite_table
 _ds: aws_transfer_connector: data.#aws_transfer_connector
 _ds: aws_transfer_server: data.#aws_transfer_server
 _ds: aws_verifiedpermissions_policy_store: data.#aws_verifiedpermissions_policy_store
@@ -556,6 +587,7 @@ _ds: aws_vpc_peering_connections: data.#aws_vpc_peering_connections
 _ds: aws_vpc_security_group_rule: data.#aws_vpc_security_group_rule
 _ds: aws_vpc_security_group_rules: data.#aws_vpc_security_group_rules
 _ds: aws_vpclattice_auth_policy: data.#aws_vpclattice_auth_policy
+_ds: aws_vpclattice_listener: data.#aws_vpclattice_listener
 _ds: aws_vpclattice_resource_policy: data.#aws_vpclattice_resource_policy
 _ds: aws_vpclattice_service: data.#aws_vpclattice_service
 _ds: aws_vpclattice_service_network: data.#aws_vpclattice_service_network
