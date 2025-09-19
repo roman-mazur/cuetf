@@ -1,6 +1,6 @@
 1/1 provider at helm
-DONE in 137.996181ms: provider at helm
+DONE: provider at helm
 1/1 helm_template at helm/data
 1/1 helm_release at helm/res
-DONE in 146.09268ms: helm_template at helm/data
-DONE in 151.317191ms: helm_release at helm/res
+DONE: helm_template at helm/data
+DONE: helm_release at helm/res
