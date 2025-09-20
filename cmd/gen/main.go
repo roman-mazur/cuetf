@@ -1,3 +1,6 @@
+// Command gen can be used to generate the CUE definitions from a Terraform provider schema.
+//
+//	gen provider-schema.json output/dir
 package main
 
 import (
