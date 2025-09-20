@@ -18,7 +18,8 @@ package data
 			node_pools?: [...string]
 			node_role_arn?: string
 		})]
-		created_at?: string
+		created_at?:          string
+		deletion_protection?: bool
 		enabled_cluster_log_types?: [...string]
 		endpoint?: string
 		id?:       string
@@ -27,6 +28,12 @@ package data
 				issuer?: string
 			})]
 		})]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		kubernetes_network_config?: [...close({
 			elastic_load_balancing?: [...close({
 				enabled?: bool
@@ -44,12 +51,6 @@ package data
 			outpost_arns?: [...string]
 		})]
 		platform_version?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		remote_network_config?: [...close({
 			remote_node_networks?: [...close({
 				cidrs?: [...string]

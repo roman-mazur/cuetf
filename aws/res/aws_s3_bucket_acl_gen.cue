@@ -30,7 +30,6 @@ import "list"
 	})
 
 	_#defs: "/$defs/access_control_policy/$defs/grant/$defs/grantee": close({
-		display_name?:  string
 		email_address?: string
 		id?:            string
 		type!:          string
@@ -38,7 +37,6 @@ import "list"
 	})
 
 	_#defs: "/$defs/access_control_policy/$defs/owner": close({
-		display_name?: string
-		id!:           string
+		id!: string
 	})
 }

@@ -98,15 +98,23 @@ package res
 	})
 
 	_#defs: "/$defs/sensitive_information_policy_config/$defs/pii_entities_config": close({
-		action!: string
-		type!:   string
+		action!:         string
+		input_action?:   string
+		input_enabled?:  bool
+		output_action?:  string
+		output_enabled?: bool
+		type!:           string
 	})
 
 	_#defs: "/$defs/sensitive_information_policy_config/$defs/regexes_config": close({
-		action!:      string
-		description?: string
-		name!:        string
-		pattern!:     string
+		action!:         string
+		description?:    string
+		input_action?:   string
+		input_enabled?:  bool
+		name!:           string
+		output_action?:  string
+		output_enabled?: bool
+		pattern!:        string
 	})
 
 	_#defs: "/$defs/topic_policy_config/$defs/topics_config": close({
@@ -117,10 +125,18 @@ package res
 	})
 
 	_#defs: "/$defs/word_policy_config/$defs/managed_word_lists_config": close({
-		type!: string
+		input_action?:   string
+		input_enabled?:  bool
+		output_action?:  string
+		output_enabled?: bool
+		type!:           string
 	})
 
 	_#defs: "/$defs/word_policy_config/$defs/words_config": close({
-		text!: string
+		input_action?:   string
+		input_enabled?:  bool
+		output_action?:  string
+		output_enabled?: bool
+		text!:           string
 	})
 }

@@ -25,20 +25,19 @@ import "list"
 		db_subnet_group_name?:            string
 		deletion_protection?:             bool
 		enabled_cloudwatch_logs_exports?: [...string]
-		endpoint?:                  string
-		engine?:                    string
-		engine_version?:            string
-		final_snapshot_identifier?: string
-		global_cluster_identifier?: string
-		hosted_zone_id?:            string
-		id?:                        string
-		restore_to_point_in_time?: matchN(1, [#restore_to_point_in_time, list.MaxItems(1) & [...#restore_to_point_in_time]])
+		endpoint?:                    string
+		engine?:                      string
+		engine_version?:              string
+		final_snapshot_identifier?:   string
+		global_cluster_identifier?:   string
+		hosted_zone_id?:              string
+		id?:                          string
 		kms_key_id?:                  string
 		manage_master_user_password?: bool
-		master_password?:             string
-		timeouts?:                    #timeouts
-		master_password_wo?:          string
-		master_password_wo_version?:  number
+		restore_to_point_in_time?: matchN(1, [#restore_to_point_in_time, list.MaxItems(1) & [...#restore_to_point_in_time]])
+		master_password?:            string
+		master_password_wo?:         string
+		master_password_wo_version?: number
 		master_user_secret?: [...close({
 			kms_key_id?:    string
 			secret_arn?:    string
@@ -49,13 +48,15 @@ import "list"
 		preferred_backup_window?:      string
 		preferred_maintenance_window?: string
 		reader_endpoint?:              string
-		skip_final_snapshot?:          bool
-		snapshot_identifier?:          string
-		storage_encrypted?:            bool
-		storage_type?:                 string
+		serverless_v2_scaling_configuration?: matchN(1, [#serverless_v2_scaling_configuration, list.MaxItems(1) & [...#serverless_v2_scaling_configuration]])
+		skip_final_snapshot?: bool
+		snapshot_identifier?: string
+		storage_encrypted?:   bool
+		storage_type?:        string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		vpc_security_group_ids?: [...string]
+		timeouts?: #timeouts
 	})
 
 	#restore_to_point_in_time: close({
@@ -63,6 +64,11 @@ import "list"
 		restore_type?:               string
 		source_cluster_identifier!:  string
 		use_latest_restorable_time?: bool
+	})
+
+	#serverless_v2_scaling_configuration: close({
+		max_capacity!: number
+		min_capacity!: number
 	})
 
 	#timeouts: close({

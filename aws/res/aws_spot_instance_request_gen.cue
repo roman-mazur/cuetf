@@ -6,14 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_spot_instance_request")
 	close({
-		ami?:                                  string
-		arn?:                                  string
-		associate_public_ip_address?:          bool
-		availability_zone?:                    string
-		disable_api_stop?:                     bool
-		disable_api_termination?:              bool
-		ebs_optimized?:                        bool
-		enable_primary_ipv6?:                  bool
+		ami?: string
+		arn?: string
+		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
+		associate_public_ip_address?: bool
+		availability_zone?:           string
+		disable_api_stop?:            bool
+		disable_api_termination?:     bool
+		ebs_optimized?:               bool
+		enable_primary_ipv6?:         bool
+		force_destroy?:               bool
+		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
 		get_password_data?:                    bool
 		hibernation?:                          bool
 		host_id?:                              string
@@ -26,26 +29,31 @@ import "list"
 		instance_type?:                        string
 		ipv6_address_count?:                   number
 		ipv6_addresses?: [...string]
-		key_name?:     string
-		launch_group?: string
+		key_name?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                       string
-		monitoring?:                   bool
-		outpost_arn?:                  string
-		password_data?:                string
-		placement_group?:              string
-		placement_partition_number?:   number
+		region?:                     string
+		launch_group?:               string
+		monitoring?:                 bool
+		outpost_arn?:                string
+		password_data?:              string
+		placement_group?:            string
+		placement_group_id?:         string
+		placement_partition_number?: number
+		primary_network_interface?: [...close({
+			delete_on_termination?: bool
+			network_interface_id?:  string
+		})]
+		credit_specification?: matchN(1, [#credit_specification, list.MaxItems(1) & [...#credit_specification]])
 		primary_network_interface_id?: string
 		private_dns?:                  string
 		private_ip?:                   string
-		public_dns?:                   string
-		public_ip?:                    string
-		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
-		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
+		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
+		public_dns?: string
+		public_ip?:  string
 		secondary_private_ips?: [...string]
 		security_groups?: [...string]
 		source_dest_check?:  bool
@@ -53,9 +61,8 @@ import "list"
 		spot_instance_id?:   string
 		spot_price?:         string
 		spot_request_state?: string
-		credit_specification?: matchN(1, [#credit_specification, list.MaxItems(1) & [...#credit_specification]])
-		spot_type?: string
-		subnet_id?: string
+		spot_type?:          string
+		subnet_id?:          string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		tenancy?:                     string
@@ -63,8 +70,7 @@ import "list"
 		user_data_base64?:            string
 		user_data_replace_on_change?: bool
 		valid_from?:                  string
-		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
-		valid_until?: string
+		valid_until?:                 string
 		volume_tags?: [string]: string
 		enclave_options?: matchN(1, [#enclave_options, list.MaxItems(1) & [...#enclave_options]])
 		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
@@ -72,8 +78,8 @@ import "list"
 		maintenance_options?: matchN(1, [#maintenance_options, list.MaxItems(1) & [...#maintenance_options]])
 		metadata_options?: matchN(1, [#metadata_options, list.MaxItems(1) & [...#metadata_options]])
 		vpc_security_group_ids?: [...string]
-		wait_for_fulfillment?: bool
 		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
+		wait_for_fulfillment?: bool
 		private_dns_name_options?: matchN(1, [#private_dns_name_options, list.MaxItems(1) & [...#private_dns_name_options]])
 		root_block_device?: matchN(1, [#root_block_device, list.MaxItems(1) & [...#root_block_device]])
 		timeouts?: #timeouts

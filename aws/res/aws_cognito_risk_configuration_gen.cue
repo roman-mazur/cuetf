@@ -22,7 +22,7 @@ import "list"
 
 	#account_takeover_risk_configuration: close({
 		actions?: matchN(1, [_#defs."/$defs/account_takeover_risk_configuration/$defs/actions", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/account_takeover_risk_configuration/$defs/actions"]])
-		notify_configuration?: matchN(1, [_#defs."/$defs/account_takeover_risk_configuration/$defs/notify_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/account_takeover_risk_configuration/$defs/notify_configuration"]])
+		notify_configuration?: matchN(1, [_#defs."/$defs/account_takeover_risk_configuration/$defs/notify_configuration", list.MaxItems(1) & [..._#defs."/$defs/account_takeover_risk_configuration/$defs/notify_configuration"]])
 	})
 
 	#compromised_credentials_risk_configuration: close({

@@ -115,13 +115,14 @@ import "list"
 	})
 
 	#origin: close({
-		connection_attempts?: number
+		connection_attempts?:         number
+		connection_timeout?:          number
+		domain_name!:                 string
+		origin_access_control_id?:    string
+		origin_id!:                   string
+		origin_path?:                 string
+		response_completion_timeout?: number
 		custom_header?: matchN(1, [_#defs."/$defs/origin/$defs/custom_header", [..._#defs."/$defs/origin/$defs/custom_header"]])
-		connection_timeout?:       number
-		domain_name!:              string
-		origin_access_control_id?: string
-		origin_id!:                string
-		origin_path?:              string
 		custom_origin_config?: matchN(1, [_#defs."/$defs/origin/$defs/custom_origin_config", list.MaxItems(1) & [..._#defs."/$defs/origin/$defs/custom_origin_config"]])
 		origin_shield?: matchN(1, [_#defs."/$defs/origin/$defs/origin_shield", list.MaxItems(1) & [..._#defs."/$defs/origin/$defs/origin_shield"]])
 		s3_origin_config?: matchN(1, [_#defs."/$defs/origin/$defs/s3_origin_config", list.MaxItems(1) & [..._#defs."/$defs/origin/$defs/s3_origin_config"]])

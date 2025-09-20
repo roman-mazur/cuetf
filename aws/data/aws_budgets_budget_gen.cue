@@ -14,7 +14,8 @@ package data
 			})]
 			last_auto_adjust_time?: string
 		})]
-		budget_exceeded?: bool
+		billing_view_arn?: string
+		budget_exceeded?:  bool
 		budget_limit?: [...close({
 			amount?: string
 			unit?:   string

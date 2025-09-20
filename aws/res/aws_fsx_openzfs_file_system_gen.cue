@@ -57,7 +57,7 @@ import "list"
 		data_compression_type?:  string
 		read_only?:              bool
 		record_size_kib?:        number
-		user_and_group_quotas?: matchN(1, [_#defs."/$defs/root_volume_configuration/$defs/user_and_group_quotas", list.MaxItems(100) & [..._#defs."/$defs/root_volume_configuration/$defs/user_and_group_quotas"]])
+		user_and_group_quotas?: matchN(1, [_#defs."/$defs/root_volume_configuration/$defs/user_and_group_quotas", [..._#defs."/$defs/root_volume_configuration/$defs/user_and_group_quotas"]])
 	})
 
 	#timeouts: close({

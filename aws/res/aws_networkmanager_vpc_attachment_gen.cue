@@ -26,8 +26,10 @@ import "list"
 	})
 
 	#options: close({
-		appliance_mode_support?: bool
-		ipv6_support?:           bool
+		appliance_mode_support?:             bool
+		dns_support?:                        bool
+		ipv6_support?:                       bool
+		security_group_referencing_support?: bool
 	})
 
 	#timeouts: close({

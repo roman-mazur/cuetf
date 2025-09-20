@@ -88,13 +88,14 @@ import "list"
 	})
 
 	#iceberg_configuration: close({
-		cloudwatch_logging_options?: matchN(1, [_#defs."/$defs/iceberg_configuration/$defs/cloudwatch_logging_options", list.MaxItems(1) & [..._#defs."/$defs/iceberg_configuration/$defs/cloudwatch_logging_options"]])
+		append_only?:        bool
 		buffering_interval?: number
 		buffering_size?:     number
 		catalog_arn!:        string
 		retry_duration?:     number
 		role_arn!:           string
-		s3_backup_mode?:     string
+		cloudwatch_logging_options?: matchN(1, [_#defs."/$defs/iceberg_configuration/$defs/cloudwatch_logging_options", list.MaxItems(1) & [..._#defs."/$defs/iceberg_configuration/$defs/cloudwatch_logging_options"]])
+		s3_backup_mode?: string
 		destination_table_configuration?: matchN(1, [_#defs."/$defs/iceberg_configuration/$defs/destination_table_configuration", [..._#defs."/$defs/iceberg_configuration/$defs/destination_table_configuration"]])
 		processing_configuration?: matchN(1, [_#defs."/$defs/iceberg_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/iceberg_configuration/$defs/processing_configuration"]])
 		s3_configuration?: matchN(1, [_#defs."/$defs/iceberg_configuration/$defs/s3_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/iceberg_configuration/$defs/s3_configuration"]])

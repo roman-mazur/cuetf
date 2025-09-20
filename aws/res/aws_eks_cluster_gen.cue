@@ -6,22 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_eks_cluster")
 	close({
-		arn?:                           string
+		arn?: string
+		access_config?: matchN(1, [#access_config, list.MaxItems(1) & [...#access_config]])
 		bootstrap_self_managed_addons?: bool
 		certificate_authority?: [...close({
 			data?: string
 		})]
-		cluster_id?: string
-		created_at?: string
+		cluster_id?:          string
+		created_at?:          string
+		deletion_protection?: bool
+		compute_config?: matchN(1, [#compute_config, list.MaxItems(1) & [...#compute_config]])
 		enabled_cluster_log_types?: [...string]
-		endpoint?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		access_config?: matchN(1, [#access_config, list.MaxItems(1) & [...#access_config]])
+		endpoint?:             string
 		force_update_version?: bool
 		id?:                   string
 		identity?: [...close({
@@ -31,19 +27,24 @@ import "list"
 		})]
 		name!:             string
 		platform_version?: string
-		compute_config?: matchN(1, [#compute_config, list.MaxItems(1) & [...#compute_config]])
 		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:   string
 		role_arn!: string
 		status?:   string
-		tags?: [string]: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 		kubernetes_network_config?: matchN(1, [#kubernetes_network_config, list.MaxItems(1) & [...#kubernetes_network_config]])
 		outpost_config?: matchN(1, [#outpost_config, list.MaxItems(1) & [...#outpost_config]])
 		remote_network_config?: matchN(1, [#remote_network_config, list.MaxItems(1) & [...#remote_network_config]])
 		storage_config?: matchN(1, [#storage_config, list.MaxItems(1) & [...#storage_config]])
 		timeouts?: #timeouts
-		tags_all?: [string]: string
-		version?: string
 		upgrade_policy?: matchN(1, [#upgrade_policy, list.MaxItems(1) & [...#upgrade_policy]])
+		version?: string
 		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [_, ...] & [...#vpc_config]])
 		zonal_shift_config?: matchN(1, [#zonal_shift_config, list.MaxItems(1) & [...#zonal_shift_config]])
 	})

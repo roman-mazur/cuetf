@@ -64,6 +64,7 @@ _ds: aws_bedrock_inference_profile: data.#aws_bedrock_inference_profile
 _ds: aws_bedrock_inference_profiles: data.#aws_bedrock_inference_profiles
 _ds: aws_bedrockagent_agent_versions: data.#aws_bedrockagent_agent_versions
 _ds: aws_billing_service_account: data.#aws_billing_service_account
+_ds: aws_billing_views: data.#aws_billing_views
 _ds: aws_budgets_budget: data.#aws_budgets_budget
 _ds: aws_caller_identity: data.#aws_caller_identity
 _ds: aws_canonical_user_id: data.#aws_canonical_user_id
@@ -406,6 +407,11 @@ _ds: aws_oam_link: data.#aws_oam_link
 _ds: aws_oam_links: data.#aws_oam_links
 _ds: aws_oam_sink: data.#aws_oam_sink
 _ds: aws_oam_sinks: data.#aws_oam_sinks
+_ds: aws_odb_cloud_autonomous_vm_cluster: data.#aws_odb_cloud_autonomous_vm_cluster
+_ds: aws_odb_cloud_exadata_infrastructure: data.#aws_odb_cloud_exadata_infrastructure
+_ds: aws_odb_cloud_vm_cluster: data.#aws_odb_cloud_vm_cluster
+_ds: aws_odb_network: data.#aws_odb_network
+_ds: aws_odb_network_peering_connection: data.#aws_odb_network_peering_connection
 _ds: aws_opensearch_domain: data.#aws_opensearch_domain
 _ds: aws_opensearchserverless_access_policy: data.#aws_opensearchserverless_access_policy
 _ds: aws_opensearchserverless_collection: data.#aws_opensearchserverless_collection

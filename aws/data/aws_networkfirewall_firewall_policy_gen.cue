@@ -17,6 +17,9 @@ package data
 			})]
 			stateful_default_actions?: [...string]
 			stateful_engine_options?: [...close({
+				flow_timeouts?: [...close({
+					tcp_idle_timeout_seconds?: number
+				})]
 				rule_order?:              string
 				stream_exception_policy?: string
 			})]

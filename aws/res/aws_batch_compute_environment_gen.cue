@@ -55,8 +55,8 @@ import "list"
 	})
 
 	#update_policy: close({
-		job_execution_timeout_minutes!: number
-		terminate_jobs_on_update!:      bool
+		job_execution_timeout_minutes?: number
+		terminate_jobs_on_update?:      bool
 	})
 
 	_#defs: "/$defs/compute_resources/$defs/ec2_configuration": close({

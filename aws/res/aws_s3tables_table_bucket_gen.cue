@@ -16,6 +16,7 @@ package res
 			kms_key_arn?:   string
 			sse_algorithm?: string
 		})
+		force_destroy?: bool
 		maintenance_configuration?: close({
 			iceberg_unreferenced_file_removal?: close({
 				settings?: close({

@@ -6,34 +6,36 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_client_vpn_endpoint")
 	close({
-		arn?:                           string
-		client_cidr_block!:             string
-		description?:                   string
-		disconnect_on_session_timeout?: bool
-		dns_name?:                      string
-		dns_servers?: [...string]
-		id?: string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:                        string
+		client_cidr_block?:             string
+		description?:                   string
+		disconnect_on_session_timeout?: bool
+		dns_name?:                      string
+		dns_servers?: [...string]
+		endpoint_ip_address_type?: string
+		authentication_options?: matchN(1, [#authentication_options, list.MaxItems(2) & [_, ...] & [...#authentication_options]])
+		id?: string
 		security_group_ids?: [...string]
 		self_service_portal?:     string
 		self_service_portal_url?: string
-		server_certificate_arn!:  string
-		authentication_options?: matchN(1, [#authentication_options, list.MaxItems(2) & [_, ...] & [...#authentication_options]])
-		session_timeout_hours?: number
 		client_connect_options?: matchN(1, [#client_connect_options, list.MaxItems(1) & [...#client_connect_options]])
-		split_tunnel?: bool
+		server_certificate_arn!: string
 		client_login_banner_options?: matchN(1, [#client_login_banner_options, list.MaxItems(1) & [...#client_login_banner_options]])
+		session_timeout_hours?: number
+		split_tunnel?:          bool
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		transport_protocol?: string
-		vpc_id?:             string
+		traffic_ip_address_type?: string
+		transport_protocol?:      string
 		client_route_enforcement_options?: matchN(1, [#client_route_enforcement_options, list.MaxItems(1) & [...#client_route_enforcement_options]])
 		connection_log_options?: matchN(1, [#connection_log_options, list.MaxItems(1) & [_, ...] & [...#connection_log_options]])
+		vpc_id?:   string
 		vpn_port?: number
 	})
 

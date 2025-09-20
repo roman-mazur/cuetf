@@ -50,16 +50,19 @@ import "list"
 	#run_config: close({
 		active_tracing?: bool
 		environment_variables?: [string]: string
+		ephemeral_storage?:  number
 		memory_in_mb?:       number
 		timeout_in_seconds?: number
 	})
 
 	#schedule: close({
+		retry_config?: matchN(1, [_#defs."/$defs/schedule/$defs/retry_config", list.MaxItems(1) & [..._#defs."/$defs/schedule/$defs/retry_config"]])
 		duration_in_seconds?: number
 		expression!:          string
 	})
 
 	#vpc_config: close({
+		ipv6_allowed_for_dual_stack?: bool
 		security_group_ids?: [...string]
 		subnet_ids?: [...string]
 		vpc_id?: string
@@ -68,5 +71,9 @@ import "list"
 	_#defs: "/$defs/artifact_config/$defs/s3_encryption": close({
 		encryption_mode?: string
 		kms_key_arn?:     string
+	})
+
+	_#defs: "/$defs/schedule/$defs/retry_config": close({
+		max_retries!: number
 	})
 }

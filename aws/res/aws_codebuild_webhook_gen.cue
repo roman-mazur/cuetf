@@ -15,17 +15,23 @@ import "list"
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:       string
-		payload_url?:  string
+		region?: string
+		filter_group?: matchN(1, [#filter_group, [...#filter_group]])
+		payload_url?: string
+		pull_request_build_policy?: matchN(1, [#pull_request_build_policy, list.MaxItems(1) & [...#pull_request_build_policy]])
 		project_name!: string
 		secret?:       string
-		filter_group?: matchN(1, [#filter_group, [...#filter_group]])
 		scope_configuration?: matchN(1, [#scope_configuration, list.MaxItems(1) & [...#scope_configuration]])
 		url?: string
 	})
 
 	#filter_group: close({
 		filter?: matchN(1, [_#defs."/$defs/filter_group/$defs/filter", [..._#defs."/$defs/filter_group/$defs/filter"]])
+	})
+
+	#pull_request_build_policy: close({
+		approver_roles?: [...string]
+		requires_comment_approval!: string
 	})
 
 	#scope_configuration: close({

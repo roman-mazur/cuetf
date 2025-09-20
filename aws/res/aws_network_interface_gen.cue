@@ -41,8 +41,9 @@ package res
 	})
 
 	#attachment: close({
-		attachment_id?: string
-		device_index!:  number
-		instance!:      string
+		attachment_id?:      string
+		device_index!:       number
+		instance!:           string
+		network_card_index?: number
 	})
 }

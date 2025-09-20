@@ -26,13 +26,13 @@ package data
 		handler?:       string
 		id?:            string
 		image_uri?:     string
+		invoke_arn?:    string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:        string
-		invoke_arn?:    string
 		kms_key_arn?:   string
 		last_modified?: string
 		layers?: [...string]
@@ -52,6 +52,7 @@ package data
 		signing_job_arn?:                string
 		signing_profile_version_arn?:    string
 		source_code_size?:               number
+		source_kms_key_arn?:             string
 		tags?: [string]: string
 		timeout?: number
 		tracing_config?: [...close({

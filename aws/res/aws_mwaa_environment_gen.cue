@@ -29,15 +29,13 @@ import "list"
 		max_workers?:    number
 		min_webservers?: number
 		min_workers?:    number
+		name!:           string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		name!:   string
-		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [...#logging_configuration]])
-		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [_, ...] & [...#network_configuration]])
+		region?:                           string
 		plugins_s3_object_version?:        string
 		plugins_s3_path?:                  string
 		requirements_s3_object_version?:   string
@@ -50,10 +48,13 @@ import "list"
 		status?:                           string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		webserver_access_mode?:           string
-		webserver_url?:                   string
+		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [...#logging_configuration]])
+		webserver_access_mode?: string
+		webserver_url?:         string
+		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [_, ...] & [...#network_configuration]])
 		webserver_vpc_endpoint_service?:  string
 		weekly_maintenance_window_start?: string
+		worker_replacement_strategy?:     string
 		timeouts?:                        #timeouts
 	})
 

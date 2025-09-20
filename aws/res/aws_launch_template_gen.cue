@@ -168,6 +168,7 @@ import "list"
 	#placement: close({
 		affinity?:                string
 		availability_zone?:       string
+		group_id?:                string
 		group_name?:              string
 		host_id?:                 string
 		host_resource_group_arn?: string

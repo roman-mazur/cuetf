@@ -31,17 +31,17 @@ package data
 			enabled?:               bool
 		})]
 		description?: string
-		dns_name?:    string
+		filter?: matchN(1, [#filter, [...#filter]])
+		dns_name?: string
 		dns_servers?: [...string]
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?: #timeouts
-		id?:       string
+		region?:                   string
+		endpoint_ip_address_type?: string
+		id?:                       string
 		security_group_ids?: [...string]
 		self_service_portal?:     string
 		self_service_portal_url?: string
@@ -49,9 +49,11 @@ package data
 		session_timeout_hours?:   number
 		split_tunnel?:            bool
 		tags?: [string]: string
-		transport_protocol?: string
-		vpc_id?:             string
-		vpn_port?:           number
+		traffic_ip_address_type?: string
+		transport_protocol?:      string
+		timeouts?:                #timeouts
+		vpc_id?:                  string
+		vpn_port?:                number
 	})
 
 	#filter: close({

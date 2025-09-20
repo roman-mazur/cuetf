@@ -29,7 +29,7 @@ import "list"
 		tags_all?: [string]: string
 		volume_type?: string
 		timeouts?:    #timeouts
-		user_and_group_quotas?: matchN(1, [#user_and_group_quotas, list.MaxItems(100) & [...#user_and_group_quotas]])
+		user_and_group_quotas?: matchN(1, [#user_and_group_quotas, [...#user_and_group_quotas]])
 	})
 
 	#nfs_exports: close({

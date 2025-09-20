@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_rds_cluster_role_association")
 	close({
 		db_cluster_identifier!: string
-		feature_name!:          string
+		feature_name?:          string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

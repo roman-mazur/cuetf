@@ -71,6 +71,7 @@ package data
 		outpost_arn?:                string
 		password_data?:              string
 		placement_group?:            string
+		placement_group_id?:         string
 		placement_partition_number?: number
 		private_dns?:                string
 		private_dns_name_options?: [...close({

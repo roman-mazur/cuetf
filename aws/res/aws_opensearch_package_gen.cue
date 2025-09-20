@@ -13,6 +13,7 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:              string
+		engine_version?:      string
 		id?:                  string
 		package_description?: string
 		package_id?:          string

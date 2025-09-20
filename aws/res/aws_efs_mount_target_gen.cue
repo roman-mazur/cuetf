@@ -16,8 +16,10 @@ package res
 		region?:                string
 		file_system_id!:        string
 		id?:                    string
-		timeouts?:              #timeouts
 		ip_address?:            string
+		timeouts?:              #timeouts
+		ip_address_type?:       string
+		ipv6_address?:          string
 		mount_target_dns_name?: string
 		network_interface_id?:  string
 		owner_id?:              string

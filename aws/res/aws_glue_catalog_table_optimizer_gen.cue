@@ -31,6 +31,7 @@ package res
 	_#defs: "/$defs/configuration/$defs/orphan_file_deletion_configuration/$defs/iceberg_configuration": close({
 		location?:                             string
 		orphan_file_retention_period_in_days?: number
+		run_rate_in_hours?:                    number
 	})
 
 	_#defs: "/$defs/configuration/$defs/retention_configuration": close({
@@ -40,6 +41,7 @@ package res
 	_#defs: "/$defs/configuration/$defs/retention_configuration/$defs/iceberg_configuration": close({
 		clean_expired_files?:               bool
 		number_of_snapshots_to_retain?:     number
+		run_rate_in_hours?:                 number
 		snapshot_retention_period_in_days?: number
 	})
 }

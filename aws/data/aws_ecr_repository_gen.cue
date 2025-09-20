@@ -20,6 +20,10 @@ package data
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		image_tag_mutability_exclusion_filter?: [...close({
+			filter?:      string
+			filter_type?: string
+		})]
 		most_recent_image_tags?: [...string]
 		name!:           string
 		registry_id?:    string

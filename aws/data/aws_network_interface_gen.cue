@@ -15,10 +15,11 @@ package data
 			public_ip?:         string
 		})]
 		attachment?: [...close({
-			attachment_id?:     string
-			device_index?:      number
-			instance_id?:       string
-			instance_owner_id?: string
+			attachment_id?:      string
+			device_index?:       number
+			instance_id?:        string
+			instance_owner_id?:  string
+			network_card_index?: number
 		})]
 		availability_zone?: string
 		description?:       string

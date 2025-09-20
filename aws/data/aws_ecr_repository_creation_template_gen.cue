@@ -19,10 +19,14 @@ package data
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:               string
 		image_tag_mutability?: string
-		lifecycle_policy?:     string
-		prefix!:               string
-		registry_id?:          string
-		repository_policy?:    string
+		image_tag_mutability_exclusion_filter?: [...close({
+			filter?:      string
+			filter_type?: string
+		})]
+		lifecycle_policy?:  string
+		prefix!:            string
+		registry_id?:       string
+		repository_policy?: string
 		resource_tags?: [string]: string
 	})
 }

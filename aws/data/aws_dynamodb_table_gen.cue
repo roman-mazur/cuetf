@@ -24,7 +24,11 @@ import "list"
 			projection_type?: string
 			range_key?:       string
 			read_capacity?:   number
-			write_capacity?:  number
+			warm_throughput?: [...close({
+				read_units_per_second?:  number
+				write_units_per_second?: number
+			})]
+			write_capacity?: number
 		})]
 		hash_key?: string
 		id?:       string
@@ -45,13 +49,13 @@ import "list"
 		})]
 		range_key?: string
 		server_side_encryption?: matchN(1, [#server_side_encryption, list.MaxItems(1) & [...#server_side_encryption]])
-		read_capacity?: number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:        string
+		read_capacity?: number
 		replica?: [...close({
 			kms_key_arn?: string
 			region_name?: string
@@ -65,6 +69,10 @@ import "list"
 		ttl?: [...close({
 			attribute_name?: string
 			enabled?:        bool
+		})]
+		warm_throughput?: [...close({
+			read_units_per_second?:  number
+			write_units_per_second?: number
 		})]
 		write_capacity?: number
 	})

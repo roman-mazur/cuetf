@@ -32,7 +32,6 @@ import "list"
 	})
 
 	_#defs: "/$defs/target_grant/$defs/grantee": close({
-		display_name?:  string
 		email_address?: string
 		id?:            string
 		type!:          string

@@ -44,7 +44,8 @@ import "list"
 	#partition_keys: close({
 		comment?: string
 		name!:    string
-		type?:    string
+		parameters?: [string]: string
+		type?: string
 	})
 
 	#storage_descriptor: close({

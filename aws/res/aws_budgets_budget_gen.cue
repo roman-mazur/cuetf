@@ -6,24 +6,25 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_budgets_budget")
 	close({
-		account_id?:   string
-		arn?:          string
-		budget_type!:  string
-		id?:           string
-		limit_amount?: string
-		limit_unit?:   string
-		name?:         string
-		name_prefix?:  string
+		account_id?: string
+		auto_adjust_data?: matchN(1, [#auto_adjust_data, list.MaxItems(1) & [...#auto_adjust_data]])
+		arn?:              string
+		billing_view_arn?: string
+		budget_type!:      string
+		id?:               string
+		limit_amount?:     string
+		limit_unit?:       string
+		name?:             string
+		cost_filter?: matchN(1, [#cost_filter, [...#cost_filter]])
+		cost_types?: matchN(1, [#cost_types, list.MaxItems(1) & [...#cost_types]])
+		name_prefix?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		auto_adjust_data?: matchN(1, [#auto_adjust_data, list.MaxItems(1) & [...#auto_adjust_data]])
-		cost_filter?: matchN(1, [#cost_filter, [...#cost_filter]])
 		time_period_end?:   string
 		time_period_start?: string
-		time_unit!:         string
-		cost_types?: matchN(1, [#cost_types, list.MaxItems(1) & [...#cost_types]])
 		notification?: matchN(1, [#notification, [...#notification]])
 		planned_limit?: matchN(1, [#planned_limit, [...#planned_limit]])
+		time_unit!: string
 	})
 
 	#auto_adjust_data: close({

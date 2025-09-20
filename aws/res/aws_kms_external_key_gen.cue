@@ -18,6 +18,7 @@ package res
 		expiration_model?:    string
 		id?:                  string
 		key_material_base64?: string
+		key_spec?:            string
 		key_state?:           string
 		key_usage?:           string
 		multi_region?:        bool

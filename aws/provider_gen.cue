@@ -269,6 +269,9 @@ package aws
 		appsync?: string
 
 		// Use this to override the default service endpoint URL
+		arcregionswitch?: string
+
+		// Use this to override the default service endpoint URL
 		athena?: string
 
 		// Use this to override the default service endpoint URL
@@ -297,6 +300,9 @@ package aws
 
 		// Use this to override the default service endpoint URL
 		bedrockagent?: string
+
+		// Use this to override the default service endpoint URL
+		bedrockagentcore?: string
 
 		// Use this to override the default service endpoint URL
 		billing?: string
@@ -806,6 +812,9 @@ package aws
 		oam?: string
 
 		// Use this to override the default service endpoint URL
+		odb?: string
+
+		// Use this to override the default service endpoint URL
 		opensearch?: string
 
 		// Use this to override the default service endpoint URL
@@ -947,6 +956,9 @@ package aws
 		s3tables?: string
 
 		// Use this to override the default service endpoint URL
+		s3vectors?: string
+
+		// Use this to override the default service endpoint URL
 		sagemaker?: string
 
 		// Use this to override the default service endpoint URL
@@ -1080,6 +1092,9 @@ package aws
 
 		// Use this to override the default service endpoint URL
 		wellarchitected?: string
+
+		// Use this to override the default service endpoint URL
+		workmail?: string
 
 		// Use this to override the default service endpoint URL
 		workspaces?: string

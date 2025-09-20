@@ -18,6 +18,8 @@ package data
 		file_system_id?:        string
 		id?:                    string
 		ip_address?:            string
+		ip_address_type?:       string
+		ipv6_address?:          string
 		mount_target_dns_name?: string
 		mount_target_id?:       string
 		network_interface_id?:  string

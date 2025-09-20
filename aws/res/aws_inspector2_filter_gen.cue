@@ -22,6 +22,8 @@ package res
 
 	#filter_criteria: close({
 		aws_account_id?: matchN(1, [_#defs."/$defs/filter_criteria/$defs/aws_account_id", [..._#defs."/$defs/filter_criteria/$defs/aws_account_id"]])
+		code_repository_project_name?: matchN(1, [_#defs."/$defs/filter_criteria/$defs/code_repository_project_name", [..._#defs."/$defs/filter_criteria/$defs/code_repository_project_name"]])
+		code_repository_provider_type?: matchN(1, [_#defs."/$defs/filter_criteria/$defs/code_repository_provider_type", [..._#defs."/$defs/filter_criteria/$defs/code_repository_provider_type"]])
 		code_vulnerability_detector_name?: matchN(1, [_#defs."/$defs/filter_criteria/$defs/code_vulnerability_detector_name", [..._#defs."/$defs/filter_criteria/$defs/code_vulnerability_detector_name"]])
 		code_vulnerability_detector_tags?: matchN(1, [_#defs."/$defs/filter_criteria/$defs/code_vulnerability_detector_tags", [..._#defs."/$defs/filter_criteria/$defs/code_vulnerability_detector_tags"]])
 		code_vulnerability_file_path?: matchN(1, [_#defs."/$defs/filter_criteria/$defs/code_vulnerability_file_path", [..._#defs."/$defs/filter_criteria/$defs/code_vulnerability_file_path"]])
@@ -32,6 +34,8 @@ package res
 		ec2_instance_vpc_id?: matchN(1, [_#defs."/$defs/filter_criteria/$defs/ec2_instance_vpc_id", [..._#defs."/$defs/filter_criteria/$defs/ec2_instance_vpc_id"]])
 		ecr_image_architecture?: matchN(1, [_#defs."/$defs/filter_criteria/$defs/ecr_image_architecture", [..._#defs."/$defs/filter_criteria/$defs/ecr_image_architecture"]])
 		ecr_image_hash?: matchN(1, [_#defs."/$defs/filter_criteria/$defs/ecr_image_hash", [..._#defs."/$defs/filter_criteria/$defs/ecr_image_hash"]])
+		ecr_image_in_use_count?: matchN(1, [_#defs."/$defs/filter_criteria/$defs/ecr_image_in_use_count", [..._#defs."/$defs/filter_criteria/$defs/ecr_image_in_use_count"]])
+		ecr_image_last_in_use_at?: matchN(1, [_#defs."/$defs/filter_criteria/$defs/ecr_image_last_in_use_at", [..._#defs."/$defs/filter_criteria/$defs/ecr_image_last_in_use_at"]])
 		ecr_image_pushed_at?: matchN(1, [_#defs."/$defs/filter_criteria/$defs/ecr_image_pushed_at", [..._#defs."/$defs/filter_criteria/$defs/ecr_image_pushed_at"]])
 		ecr_image_registry?: matchN(1, [_#defs."/$defs/filter_criteria/$defs/ecr_image_registry", [..._#defs."/$defs/filter_criteria/$defs/ecr_image_registry"]])
 		ecr_image_repository_name?: matchN(1, [_#defs."/$defs/filter_criteria/$defs/ecr_image_repository_name", [..._#defs."/$defs/filter_criteria/$defs/ecr_image_repository_name"]])
@@ -66,6 +70,16 @@ package res
 	})
 
 	_#defs: "/$defs/filter_criteria/$defs/aws_account_id": close({
+		comparison!: string
+		value!:      string
+	})
+
+	_#defs: "/$defs/filter_criteria/$defs/code_repository_project_name": close({
+		comparison!: string
+		value!:      string
+	})
+
+	_#defs: "/$defs/filter_criteria/$defs/code_repository_provider_type": close({
 		comparison!: string
 		value!:      string
 	})
@@ -118,6 +132,16 @@ package res
 	_#defs: "/$defs/filter_criteria/$defs/ecr_image_hash": close({
 		comparison!: string
 		value!:      string
+	})
+
+	_#defs: "/$defs/filter_criteria/$defs/ecr_image_in_use_count": close({
+		lower_inclusive!: number
+		upper_inclusive!: number
+	})
+
+	_#defs: "/$defs/filter_criteria/$defs/ecr_image_last_in_use_at": close({
+		end_inclusive?:   string
+		start_inclusive?: string
 	})
 
 	_#defs: "/$defs/filter_criteria/$defs/ecr_image_pushed_at": close({

@@ -20,7 +20,8 @@ package data
 		partition_keys?: [...close({
 			comment?: string
 			name?:    string
-			type?:    string
+			parameters?: [string]: string
+			type?: string
 		})]
 		query_as_of_time?: string
 

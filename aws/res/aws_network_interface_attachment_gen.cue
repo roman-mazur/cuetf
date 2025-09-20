@@ -14,6 +14,7 @@ package res
 		region?:               string
 		id?:                   string
 		instance_id!:          string
+		network_card_index?:   number
 		network_interface_id!: string
 		status?:               string
 	})
