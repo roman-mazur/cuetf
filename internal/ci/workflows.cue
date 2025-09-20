@@ -3,7 +3,7 @@ package ci
 import "github.com/roman-mazur/cuetf/internal/ci/github"
 
 #versions: {
-	go: "1.24.5"
+	go: "1.25"
 }
 
 workflows: [N=string]: github.#Workflow & {name: N}
