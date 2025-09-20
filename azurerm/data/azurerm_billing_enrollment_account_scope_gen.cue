@@ -1,0 +1,16 @@
+package data
+
+#azurerm_billing_enrollment_account_scope: {
+	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_billing_enrollment_account_scope")
+	close({
+		timeouts?:                #timeouts
+		billing_account_name!:    string
+		enrollment_account_name!: string
+		id?:                      string
+	})
+
+	#timeouts: close({
+		read?: string
+	})
+}

@@ -1,0 +1,17 @@
+package data
+
+#azurerm_network_manager_network_group: {
+	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_network_manager_network_group")
+	close({
+		timeouts?:           #timeouts
+		description?:        string
+		id?:                 string
+		name!:               string
+		network_manager_id!: string
+	})
+
+	#timeouts: close({
+		read?: string
+	})
+}

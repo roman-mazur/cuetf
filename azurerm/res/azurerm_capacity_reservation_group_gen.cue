@@ -1,0 +1,22 @@
+package res
+
+#azurerm_capacity_reservation_group: {
+	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_capacity_reservation_group")
+	close({
+		timeouts?:            #timeouts
+		id?:                  string
+		location!:            string
+		name!:                string
+		resource_group_name!: string
+		tags?: [string]: string
+		zones?: [...string]
+	})
+
+	#timeouts: close({
+		create?: string
+		delete?: string
+		read?:   string
+		update?: string
+	})
+}
