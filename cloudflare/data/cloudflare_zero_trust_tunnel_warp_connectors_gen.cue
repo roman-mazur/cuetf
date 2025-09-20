@@ -28,6 +28,13 @@ package data
 			// Cloudflare account ID
 			account_tag?: string
 
+			// Indicates if this is a locally or remotely configured tunnel.
+			// If `local`, manage the tunnel using a YAML file on the origin
+			// machine. If `cloudflare`, manage the tunnel on the Zero Trust
+			// dashboard.
+			// Available values: "local", "cloudflare".
+			config_src?: string
+
 			// Timestamp of when the tunnel established at least one
 			// connection to Cloudflare's edge. If `null`, the tunnel is
 			// inactive.
@@ -52,11 +59,6 @@ package data
 
 			// A user-friendly name for a tunnel.
 			name?: string
-
-			// If `true`, the tunnel can be configured remotely from the Zero
-			// Trust dashboard. If `false`, the tunnel must be configured
-			// locally on the origin machine.
-			remote_config?: bool
 
 			// The status of the tunnel. Valid values are `inactive` (tunnel
 			// has never been run), `degraded` (tunnel is active and able to
@@ -75,6 +77,13 @@ package data
 			// Cloudflare account ID
 			account_tag?: string
 
+			// Indicates if this is a locally or remotely configured tunnel.
+			// If `local`, manage the tunnel using a YAML file on the origin
+			// machine. If `cloudflare`, manage the tunnel on the Zero Trust
+			// dashboard.
+			// Available values: "local", "cloudflare".
+			config_src?: string
+
 			// Timestamp of when the tunnel established at least one
 			// connection to Cloudflare's edge. If `null`, the tunnel is
 			// inactive.
@@ -99,11 +108,6 @@ package data
 
 			// A user-friendly name for a tunnel.
 			name?: string
-
-			// If `true`, the tunnel can be configured remotely from the Zero
-			// Trust dashboard. If `false`, the tunnel must be configured
-			// locally on the origin machine.
-			remote_config?: bool
 
 			// The status of the tunnel. Valid values are `inactive` (tunnel
 			// has never been run), `degraded` (tunnel is active and able to

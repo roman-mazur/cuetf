@@ -42,11 +42,51 @@ package data
 			// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
 			// The minimum value is 576.
 			mtu?: number
+			bgp?: close({
+				// ASN used on the customer end of the BGP session
+				customer_asn?: number
 
-			// The name of the tunnel. The name cannot contain spaces or
-			// special characters, must be 15 characters or less, and cannot
-			// share a name with another GRE tunnel.
-			name?: string
+				// Prefixes in this list will be advertised to the customer
+				// device, in addition to the routes in the Magic routing table.
+				extra_prefixes?: [...string]
+
+				// MD5 key to use for session authentication.
+				//
+				// Note that *this is not a security measure*. MD5 is not a valid
+				// security mechanism, and the
+				// key is not treated as a secret value. This is *only* supported
+				// for preventing
+				// misconfiguration, not for defending against malicious attacks.
+				//
+				// The MD5 key, if set, must be of non-zero length and consist
+				// only of the following types of
+				// character:
+				//
+				// * ASCII alphanumerics: `[a-zA-Z0-9]`
+				// * Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`=
+				// \|`
+				//
+				// In other words, MD5 keys may contain any printable ASCII
+				// character aside from newline (0x0A),
+				// quotation mark (`"`), vertical tab (0x0B), carriage return
+				// (0x0D), tab (0x09), form feed
+				// (0x0C), and the question mark (`?`). Requests specifying an MD5
+				// key with one or more of
+				// these disallowed characters will be rejected.
+				md5_key?: string
+			})
+			bgp_status?: close({
+				bgp_state?:       string
+				cf_speaker_ip?:   string
+				cf_speaker_port?: number
+
+				// Available values: "BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING".
+				state?:                 string
+				customer_speaker_ip?:   string
+				customer_speaker_port?: number
+				tcp_established?:       bool
+				updated_at?:            string
+			})
 			health_check?: close({
 				// The destination address in a request type health check. After
 				// the healthcheck is decapsulated at the customer end of the
@@ -90,6 +130,11 @@ package data
 				// Available values: "reply", "request".
 				type?: string
 			})
+
+			// The name of the tunnel. The name cannot contain spaces or
+			// special characters, must be 15 characters or less, and cannot
+			// share a name with another GRE tunnel.
+			name?: string
 
 			// Time To Live (TTL) in number of hops of the GRE tunnel.
 			ttl?: number

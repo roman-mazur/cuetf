@@ -10,7 +10,7 @@ package data
 			// on the [Developer
 			// Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
 			// Available values: "access_requests", "audit_logs",
-			// "biso_user_actions", "casb_findings",
+			// "audit_logs_v2", "biso_user_actions", "casb_findings",
 			// "device_posture_results", "dlp_forensic_copies",
 			// "dns_firewall_logs", "dns_logs", "email_security_alerts",
 			// "firewall_events", "gateway_dns", "gateway_http",
@@ -22,7 +22,7 @@ package data
 			dataset?: string
 
 			// Uniquely identifies a resource (such as an s3 bucket) where
-			// data will be pushed. Additional configuration parameters
+			// data. will be pushed. Additional configuration parameters
 			// supported by the destination may be included.
 			destination_conf?: string
 
@@ -87,11 +87,11 @@ package data
 				timestamp_format?: string
 			})
 
-			// If not null, the job is currently failing. Failures are usually
-			// repetitive (example: no permissions to write to destination
-			// bucket). Only the last failure is recorded. On successful
-			// execution of a job the error_message and last_error are set to
-			// null.
+			// If not null, the job is currently failing. Failures are
+			// usually. repetitive (example: no permissions to write to
+			// destination bucket). Only the last failure is recorded. On
+			// successful execution of a job the error_message and last_error
+			// are set to null.
 			error_message?: string
 
 			// Unique id of the job.
@@ -112,8 +112,8 @@ package data
 			last_complete?: string
 
 			// Records the last time the job failed. If not null, the job is
-			// currently failing. If null, the job has either never failed or
-			// has run successfully at least once since last failure. See
+			// currently. failing. If null, the job has either never failed
+			// or has run successfully at least once since last failure. See
 			// also the error_message field.
 			last_error?: string
 
@@ -138,7 +138,7 @@ package data
 			max_upload_records?: number
 
 			// Optional human readable job name. Not unique. Cloudflare
-			// suggests that you set this to a meaningful string, like the
+			// suggests. that you set this to a meaningful string, like the
 			// domain name, to make it easier to identify your job.
 			name?: string
 		}), [...close({
@@ -146,7 +146,7 @@ package data
 			// on the [Developer
 			// Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
 			// Available values: "access_requests", "audit_logs",
-			// "biso_user_actions", "casb_findings",
+			// "audit_logs_v2", "biso_user_actions", "casb_findings",
 			// "device_posture_results", "dlp_forensic_copies",
 			// "dns_firewall_logs", "dns_logs", "email_security_alerts",
 			// "firewall_events", "gateway_dns", "gateway_http",
@@ -158,7 +158,7 @@ package data
 			dataset?: string
 
 			// Uniquely identifies a resource (such as an s3 bucket) where
-			// data will be pushed. Additional configuration parameters
+			// data. will be pushed. Additional configuration parameters
 			// supported by the destination may be included.
 			destination_conf?: string
 
@@ -223,11 +223,11 @@ package data
 				timestamp_format?: string
 			})
 
-			// If not null, the job is currently failing. Failures are usually
-			// repetitive (example: no permissions to write to destination
-			// bucket). Only the last failure is recorded. On successful
-			// execution of a job the error_message and last_error are set to
-			// null.
+			// If not null, the job is currently failing. Failures are
+			// usually. repetitive (example: no permissions to write to
+			// destination bucket). Only the last failure is recorded. On
+			// successful execution of a job the error_message and last_error
+			// are set to null.
 			error_message?: string
 
 			// Unique id of the job.
@@ -248,8 +248,8 @@ package data
 			last_complete?: string
 
 			// Records the last time the job failed. If not null, the job is
-			// currently failing. If null, the job has either never failed or
-			// has run successfully at least once since last failure. See
+			// currently. failing. If null, the job has either never failed
+			// or has run successfully at least once since last failure. See
 			// also the error_message field.
 			last_error?: string
 
@@ -274,7 +274,7 @@ package data
 			max_upload_records?: number
 
 			// Optional human readable job name. Not unique. Cloudflare
-			// suggests that you set this to a meaningful string, like the
+			// suggests. that you set this to a meaningful string, like the
 			// domain name, to make it easier to identify your job.
 			name?: string
 		})]])

@@ -35,11 +35,11 @@ package res
 			// Digest Type.
 			digest_type?: number
 
-			// fingerprint.
+			// Fingerprint.
 			fingerprint?: string
 
 			// Flags for the CAA record.
-			flags?: number
+			flags?: _
 
 			// Key Tag.
 			key_tag?: number
@@ -88,7 +88,7 @@ package res
 			// Preference.
 			preference?: number
 
-			// priority.
+			// Priority.
 			priority?: number
 
 			// Protocol.
@@ -116,7 +116,7 @@ package res
 			// issuewild, iodef).
 			tag?: string
 
-			// target.
+			// Target.
 			target?: string
 
 			// Type.

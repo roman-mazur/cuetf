@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zone_cache_variants")
 	close({
-		// Whether the setting is editable
+		// Whether the setting is editable.
 		editable?: bool
 
 		// Value of the zone setting.
@@ -54,13 +54,13 @@ package res
 			webp?: [...string]
 		})
 
-		// Identifier
+		// Identifier.
 		id?: string
 
 		// Last time this setting was modified.
 		modified_on?: string
 
-		// Identifier
+		// Identifier.
 		zone_id!: string
 	})
 }

@@ -4,10 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_regional_tiered_cache")
 	close({
-		// Whether the setting is editable
+		// Whether the setting is editable.
 		editable?: bool
 
-		// Identifier
+		// Identifier.
 		id?: string
 
 		// Last time this setting was modified.
@@ -17,7 +17,7 @@ package res
 		// Available values: "on", "off".
 		value?: string
 
-		// Identifier
+		// Identifier.
 		zone_id!: string
 	})
 }

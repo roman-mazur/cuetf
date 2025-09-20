@@ -6,30 +6,14 @@ package data
 	close({
 		// The list of Managed Request Transforms.
 		managed_request_headers?: matchN(1, [close({
-			// The Managed Transforms that this Managed Transform conflicts
-			// with.
-			conflicts_with?: [...string]
-
 			// Whether the Managed Transform is enabled.
 			enabled?: bool
-
-			// Whether the Managed Transform conflicts with the
-			// currently-enabled Managed Transforms.
-			has_conflict?: bool
 
 			// The human-readable identifier of the Managed Transform.
 			id?: string
 		}), [...close({
-			// The Managed Transforms that this Managed Transform conflicts
-			// with.
-			conflicts_with?: [...string]
-
 			// Whether the Managed Transform is enabled.
 			enabled?: bool
-
-			// Whether the Managed Transform conflicts with the
-			// currently-enabled Managed Transforms.
-			has_conflict?: bool
 
 			// The human-readable identifier of the Managed Transform.
 			id?: string
@@ -37,30 +21,14 @@ package data
 
 		// The list of Managed Response Transforms.
 		managed_response_headers?: matchN(1, [close({
-			// The Managed Transforms that this Managed Transform conflicts
-			// with.
-			conflicts_with?: [...string]
-
 			// Whether the Managed Transform is enabled.
 			enabled?: bool
-
-			// Whether the Managed Transform conflicts with the
-			// currently-enabled Managed Transforms.
-			has_conflict?: bool
 
 			// The human-readable identifier of the Managed Transform.
 			id?: string
 		}), [...close({
-			// The Managed Transforms that this Managed Transform conflicts
-			// with.
-			conflicts_with?: [...string]
-
 			// Whether the Managed Transform is enabled.
 			enabled?: bool
-
-			// Whether the Managed Transform conflicts with the
-			// currently-enabled Managed Transforms.
-			has_conflict?: bool
 
 			// The human-readable identifier of the Managed Transform.
 			id?: string

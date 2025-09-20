@@ -32,6 +32,7 @@ input_provider=$1
 
 if [ -z "$input_provider" ]; then
   process aws
+  process azurerm
   process cloudflare
   process elasticstack
   process github

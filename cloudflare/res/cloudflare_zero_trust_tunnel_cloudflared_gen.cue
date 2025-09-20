@@ -42,11 +42,6 @@ package res
 		// A user-friendly name for a tunnel.
 		name!: string
 
-		// If `true`, the tunnel can be configured remotely from the Zero
-		// Trust dashboard. If `false`, the tunnel must be configured
-		// locally on the origin machine.
-		remote_config?: bool
-
 		// The status of the tunnel. Valid values are `inactive` (tunnel
 		// has never been run), `degraded` (tunnel is active and able to
 		// serve traffic but in an unhealthy state), `healthy` (tunnel is

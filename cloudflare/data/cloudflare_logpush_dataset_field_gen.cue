@@ -12,7 +12,7 @@ package data
 		// on the [Developer
 		// Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
 		// Available values: "access_requests", "audit_logs",
-		// "biso_user_actions", "casb_findings",
+		// "audit_logs_v2", "biso_user_actions", "casb_findings",
 		// "device_posture_results", "dlp_forensic_copies",
 		// "dns_firewall_logs", "dns_logs", "email_security_alerts",
 		// "firewall_events", "gateway_dns", "gateway_http",

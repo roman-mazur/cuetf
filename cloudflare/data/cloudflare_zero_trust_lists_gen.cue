@@ -17,7 +17,7 @@ package data
 			items?: matchN(1, [close({
 				created_at?: string
 
-				// The description of the list item, if present
+				// The description of the list item, if present.
 				description?: string
 
 				// The value of the item in a list.
@@ -25,7 +25,7 @@ package data
 			}), [...close({
 				created_at?: string
 
-				// The description of the list item, if present
+				// The description of the list item, if present.
 				description?: string
 
 				// The value of the item in a list.
@@ -54,7 +54,7 @@ package data
 			items?: matchN(1, [close({
 				created_at?: string
 
-				// The description of the list item, if present
+				// The description of the list item, if present.
 				description?: string
 
 				// The value of the item in a list.
@@ -62,7 +62,7 @@ package data
 			}), [...close({
 				created_at?: string
 
-				// The description of the list item, if present
+				// The description of the list item, if present.
 				description?: string
 
 				// The value of the item in a list.

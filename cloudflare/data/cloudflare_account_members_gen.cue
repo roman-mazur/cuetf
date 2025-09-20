@@ -9,6 +9,9 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
+			// The contact email address of the user.
+			email?: string
+
 			// Membership identifier tag.
 			id?: string
 
@@ -390,10 +393,6 @@ package data
 				name?: string
 			})]])
 
-			// A member's status in the account.
-			// Available values: "accepted", "pending".
-			status?: string
-
 			// Details of the user associated to the membership.
 			user?: close({
 				// The contact email address of the user.
@@ -412,7 +411,14 @@ package data
 				// user account. Does not apply to API authentication.
 				two_factor_authentication_enabled?: bool
 			})
+
+			// A member's status in the account.
+			// Available values: "accepted", "pending".
+			status?: string
 		}), [...close({
+			// The contact email address of the user.
+			email?: string
+
 			// Membership identifier tag.
 			id?: string
 
@@ -794,10 +800,6 @@ package data
 				name?: string
 			})]])
 
-			// A member's status in the account.
-			// Available values: "accepted", "pending".
-			status?: string
-
 			// Details of the user associated to the membership.
 			user?: close({
 				// The contact email address of the user.
@@ -816,6 +818,10 @@ package data
 				// user account. Does not apply to API authentication.
 				two_factor_authentication_enabled?: bool
 			})
+
+			// A member's status in the account.
+			// Available values: "accepted", "pending".
+			status?: string
 		})]])
 
 		// Direction to order results.

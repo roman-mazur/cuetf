@@ -109,6 +109,7 @@ _res: cloudflare_ruleset: res.#cloudflare_ruleset
 _res: cloudflare_schema_validation_operation_settings: res.#cloudflare_schema_validation_operation_settings
 _res: cloudflare_schema_validation_schemas: res.#cloudflare_schema_validation_schemas
 _res: cloudflare_schema_validation_settings: res.#cloudflare_schema_validation_settings
+_res: cloudflare_snippet: res.#cloudflare_snippet
 _res: cloudflare_snippet_rules: res.#cloudflare_snippet_rules
 _res: cloudflare_snippets: res.#cloudflare_snippets
 _res: cloudflare_spectrum_application: res.#cloudflare_spectrum_application
@@ -133,6 +134,8 @@ _res: cloudflare_waiting_room_settings: res.#cloudflare_waiting_room_settings
 _res: cloudflare_web3_hostname: res.#cloudflare_web3_hostname
 _res: cloudflare_web_analytics_rule: res.#cloudflare_web_analytics_rule
 _res: cloudflare_web_analytics_site: res.#cloudflare_web_analytics_site
+_res: cloudflare_worker: res.#cloudflare_worker
+_res: cloudflare_worker_version: res.#cloudflare_worker_version
 _res: cloudflare_workers_cron_trigger: res.#cloudflare_workers_cron_trigger
 _res: cloudflare_workers_custom_domain: res.#cloudflare_workers_custom_domain
 _res: cloudflare_workers_deployment: res.#cloudflare_workers_deployment

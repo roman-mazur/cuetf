@@ -7,6 +7,27 @@ package data
 		// The account identifier tag.
 		account_id!: string
 
+		// Lists videos in ascending order of creation.
+		asc?: bool
+
+		// A user-defined identifier for the media creator.
+		creator?: string
+
+		// Lists videos created before the specified date.
+		end?: string
+
+		// Includes the total number of videos associated with the
+		// submitted query parameters.
+		include_counts?: bool
+
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// Provides a partial word match of the `name` key in the `meta`
+		// field. Slow for medium to large video libraries. May be
+		// unavailable for very large libraries.
+		search?: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Lists the origins allowed to display the video. Enter allowed
@@ -362,26 +383,6 @@ package data
 			uploaded?: string
 		})]])
 
-		// Lists videos in ascending order of creation.
-		asc?: bool
-
-		// A user-defined identifier for the media creator.
-		creator?: string
-
-		// Lists videos created before the specified date.
-		end?: string
-
-		// Includes the total number of videos associated with the
-		// submitted query parameters.
-		include_counts?: bool
-
-		// Max items to fetch, default: 1000
-		max_items?: number
-
-		// Searches over the `name` key in the `meta` field. This field
-		// can be set with or after the upload request.
-		search?: string
-
 		// Lists videos created after the specified date.
 		start?: string
 
@@ -393,5 +394,9 @@ package data
 
 		// Specifies whether the video is `vod` or `live`.
 		type?: string
+
+		// Provides a fast, exact string match on the `name` key in the
+		// `meta` field.
+		video_name?: string
 	})
 }

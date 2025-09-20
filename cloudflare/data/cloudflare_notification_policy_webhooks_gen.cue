@@ -32,7 +32,8 @@ package data
 		secret?: string
 
 		// Type of webhook endpoint.
-		// Available values: "slack", "generic", "gchat".
+		// Available values: "datadog", "discord", "feishu", "gchat",
+		// "generic", "opsgenie", "slack", "splunk".
 		type?: string
 
 		// The POST endpoint to call when dispatching a notification.

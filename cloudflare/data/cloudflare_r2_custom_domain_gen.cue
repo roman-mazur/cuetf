@@ -10,6 +10,10 @@ package data
 		// Name of the bucket.
 		bucket_name!: string
 
+		// An allowlist of ciphers for TLS termination. These ciphers must
+		// be in the BoringSSL format.
+		ciphers?: [...string]
+
 		// Name of the custom domain.
 		domain!: string
 
@@ -21,6 +25,9 @@ package data
 		// connections. If not set, defaults to 1.0.
 		// Available values: "1.0", "1.1", "1.2", "1.3".
 		min_tls?: string
+
+		// Zone ID of the custom domain resides in.
+		zone_id?: string
 		status?: close({
 			// Ownership status of the domain.
 			// Available values: "pending", "active", "deactivated",
@@ -32,9 +39,6 @@ package data
 			// "deactivated", "error", "unknown".
 			ssl?: string
 		})
-
-		// Zone ID of the custom domain resides in.
-		zone_id?: string
 
 		// Zone that the custom domain resides in.
 		zone_name?: string

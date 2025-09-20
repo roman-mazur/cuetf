@@ -13,12 +13,6 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// Timestamp for the creation of the account
-			created_on?: string
-
-			// Identifier
-			id?: string
-
 			// Account settings
 			settings?: close({
 				// Sets an abuse contact email to notify for abuse reports.
@@ -29,15 +23,18 @@ package data
 				enforce_twofactor?: bool
 			})
 
+			// Timestamp for the creation of the account
+			created_on?: string
+
+			// Identifier
+			id?: string
+
 			// Account name
 			name?: string
+
+			// Available values: "standard", "enterprise".
+			type?: string
 		}), [...close({
-			// Timestamp for the creation of the account
-			created_on?: string
-
-			// Identifier
-			id?: string
-
 			// Account settings
 			settings?: close({
 				// Sets an abuse contact email to notify for abuse reports.
@@ -48,8 +45,17 @@ package data
 				enforce_twofactor?: bool
 			})
 
+			// Timestamp for the creation of the account
+			created_on?: string
+
+			// Identifier
+			id?: string
+
 			// Account name
 			name?: string
+
+			// Available values: "standard", "enterprise".
+			type?: string
 		})]])
 
 		// Name of the account.

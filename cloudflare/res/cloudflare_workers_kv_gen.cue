@@ -17,9 +17,11 @@ package res
 		// define key names as part of a URL.
 		key_name!: string
 
+		// Associates arbitrary JSON data with a key/value pair.
+		metadata?: string
+
 		// Namespace identifier tag.
 		namespace_id!: string
-		metadata?:     string
 
 		// A byte sequence to be stored, up to 25 MiB in length.
 		value!: string

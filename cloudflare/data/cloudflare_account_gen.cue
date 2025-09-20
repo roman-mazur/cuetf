@@ -6,9 +6,6 @@ package data
 	close({
 		// Account identifier tag.
 		account_id?: string
-
-		// Timestamp for the creation of the account
-		created_on?: string
 		filter?: close({
 			// Direction to order results.
 			// Available values: "asc", "desc".
@@ -18,8 +15,8 @@ package data
 			name?: string
 		})
 
-		// Account identifier tag.
-		id?: string
+		// Timestamp for the creation of the account
+		created_on?: string
 
 		// Account settings
 		settings?: close({
@@ -31,7 +28,13 @@ package data
 			enforce_twofactor?: bool
 		})
 
+		// Account identifier tag.
+		id?: string
+
 		// Account name
 		name?: string
+
+		// Available values: "standard", "enterprise".
+		type?: string
 	})
 }

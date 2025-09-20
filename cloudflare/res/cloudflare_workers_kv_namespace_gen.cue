@@ -7,9 +7,6 @@ package res
 		// Identifier.
 		account_id!: string
 
-		// True if new beta namespace, with additional preview features.
-		beta?: bool
-
 		// Namespace identifier tag.
 		id?: string
 

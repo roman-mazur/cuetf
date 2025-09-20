@@ -11,11 +11,6 @@ package res
 		// manner
 		// Cannot be set to false if secret is true
 		case_sensitive?: bool
-		created_at?:     string
-		enabled!:        bool
-		id?:             string
-		name!:           string
-		profile_id!:     string
 		confidence?: close({
 			// Indicates whether this entry has AI remote service validation.
 			ai_context_available?: bool
@@ -24,14 +19,28 @@ package res
 			// not an AI remote service.
 			available?: bool
 		})
-		secret?: bool
+		created_at?: string
+		enabled!:    bool
+		id?:         string
 
 		// Available values: "custom", "predefined", "integration".
-		type?:       string
-		updated_at?: string
-		word_list?:  string
+		type?: string
+		name!: string
 		pattern!: close({
 			regex!: string
+		})
+		profile_id!: string
+		secret?:     bool
+		updated_at?: string
+		word_list?:  string
+		variant?: close({
+			description?: string
+
+			// Available values: "Intent", "Content".
+			topic_type?: string
+
+			// Available values: "PromptTopic".
+			type?: string
 		})
 	})
 }

@@ -32,14 +32,6 @@ package data
 			// Cannot be set to false if secret is true
 			case_sensitive?: bool
 			created_at?:     string
-			enabled?:        bool
-			id?:             string
-			name?:           string
-
-			// Available values: "custom", "predefined", "integration",
-			// "exact_data", "document_fingerprint", "word_list".
-			type?:       string
-			profile_id?: string
 			confidence?: close({
 				// Indicates whether this entry has AI remote service validation.
 				ai_context_available?: bool
@@ -48,12 +40,29 @@ package data
 				// not an AI remote service.
 				available?: bool
 			})
+			enabled?: bool
+			id?:      string
+			name?:    string
+
+			// Available values: "custom", "predefined", "integration",
+			// "exact_data", "document_fingerprint", "word_list".
+			type?:       string
+			profile_id?: string
 			pattern?: close({
 				regex?: string
 			})
 			secret?:     bool
 			updated_at?: string
 			word_list?:  string
+			variant?: close({
+				description?: string
+
+				// Available values: "Intent", "Content".
+				topic_type?: string
+
+				// Available values: "PromptTopic".
+				type?: string
+			})
 		}), [...close({
 			// Only applies to custom word lists.
 			// Determines if the words should be matched in a case-sensitive
@@ -61,14 +70,6 @@ package data
 			// Cannot be set to false if secret is true
 			case_sensitive?: bool
 			created_at?:     string
-			enabled?:        bool
-			id?:             string
-			name?:           string
-
-			// Available values: "custom", "predefined", "integration",
-			// "exact_data", "document_fingerprint", "word_list".
-			type?:       string
-			profile_id?: string
 			confidence?: close({
 				// Indicates whether this entry has AI remote service validation.
 				ai_context_available?: bool
@@ -77,12 +78,29 @@ package data
 				// not an AI remote service.
 				available?: bool
 			})
+			enabled?: bool
+			id?:      string
+			name?:    string
+
+			// Available values: "custom", "predefined", "integration",
+			// "exact_data", "document_fingerprint", "word_list".
+			type?:       string
+			profile_id?: string
 			pattern?: close({
 				regex?: string
 			})
 			secret?:     bool
 			updated_at?: string
 			word_list?:  string
+			variant?: close({
+				description?: string
+
+				// Available values: "Intent", "Content".
+				topic_type?: string
+
+				// Available values: "PromptTopic".
+				type?: string
+			})
 		})]])
 		ocr_enabled?: bool
 

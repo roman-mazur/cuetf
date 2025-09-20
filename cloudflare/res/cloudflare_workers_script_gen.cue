@@ -7,12 +7,12 @@ package res
 		// Identifier.
 		account_id!: string
 
-		// Configuration for assets within a Worker
+		// Configuration for assets within a Worker.
 		assets?: close({
 			// Configuration for assets within a Worker.
 			config?: close({
 				// The contents of a _headers file (used to attach custom headers
-				// on asset responses)
+				// on asset responses).
 				headers?: string
 
 				// Determines the redirects and rewrites of requests for HTML
@@ -28,7 +28,7 @@ package res
 				not_found_handling?: string
 
 				// The contents of a _redirects file (used to apply redirects or
-				// proxy paths ahead of asset serving)
+				// proxy paths ahead of asset serving).
 				redirects?: string
 
 				// When true, requests will always invoke the Worker script.
@@ -41,6 +41,11 @@ package res
 			// registered manifest.
 			jwt?: string
 		})
+
+		// Name of the part in the multipart request that contains the
+		// script (e.g. the file adding a listener to the `fetch` event).
+		// Indicates a `service worker syntax` Worker.
+		body_part?: string
 
 		// List of bindings attached to a Worker. You can find more about
 		// bindings on our docs:
@@ -259,11 +264,6 @@ package res
 			workflow_name?: string
 		})]])
 
-		// Name of the part in the multipart request that contains the
-		// script (e.g. the file adding a listener to the `fetch` event).
-		// Indicates a `service worker syntax` Worker.
-		body_part?: string
-
 		// Date indicating targeted support in the Workers runtime.
 		// Backwards incompatible fixes to the runtime following this
 		// date will not affect this Worker.
@@ -273,6 +273,12 @@ package res
 		// runtime. Used to enable upcoming features or opt in or out of
 		// specific changes not included in a `compatibility_date`.
 		compatibility_flags?: [...string]
+
+		// Limits to apply for this Worker.
+		limits?: close({
+			// The amount of CPU time this Worker can use in milliseconds.
+			cpu_ms?: number
+		})
 
 		// Module or Service Worker contents of the Worker. Exactly one of
 		// `content` or `content_file` must be specified.
@@ -398,6 +404,33 @@ package res
 		// is specified.
 		content_sha256?: string
 
+		// Named exports, such as Durable Object class implementations and
+		// named entrypoints.
+		named_handlers?: matchN(1, [close({
+			// The names of handlers exported as part of the named export.
+			handlers?: [...string]
+
+			// The name of the export.
+			name?: string
+		}), [...close({
+			// The names of handlers exported as part of the named export.
+			handlers?: [...string]
+
+			// The name of the export.
+			name?: string
+		})]])
+
+		// Content-Type of the Worker. Required if uploading a
+		// non-JavaScript Worker (e.g. "text/x-python").
+		content_type?: string
+
+		// When the script was created.
+		created_on?: string
+
+		// Hashed script content, can be used in a If-None-Match header
+		// when updating.
+		etag?: string
+
 		// Observability settings for the Worker.
 		observability?: close({
 			// Whether observability is enabled for the Worker.
@@ -423,16 +456,8 @@ package res
 			})
 		})
 
-		// Content-Type of the Worker. Required if uploading a
-		// non-JavaScript Worker (e.g. "text/x-python").
-		content_type?: string
-
-		// When the script was created.
-		created_on?: string
-
-		// Hashed script content, can be used in a If-None-Match header
-		// when updating.
-		etag?: string
+		// The names of handlers exported as part of the default export.
+		handlers?: [...string]
 
 		// Whether a Worker contains assets.
 		has_assets?: bool
@@ -442,6 +467,10 @@ package res
 
 		// Name of the script, used in URLs and route configuration.
 		id?: string
+
+		// Retain assets which exist for a previously uploaded Worker
+		// version; used in lieu of providing a completion token.
+		keep_assets?: bool
 
 		// Configuration for [Smart
 		// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -462,9 +491,8 @@ package res
 			status?: string
 		})
 
-		// Retain assets which exist for a previously uploaded Worker
-		// version; used in lieu of providing a completion token.
-		keep_assets?: bool
+		// List of binding types to keep from previous_upload.
+		keep_bindings?: [...string]
 
 		// List of Workers that will consume logs from the attached
 		// Worker.
@@ -488,8 +516,8 @@ package res
 			service!: string
 		})]])
 
-		// List of binding types to keep from previous_upload.
-		keep_bindings?: [...string]
+		// The client most recently used to deploy this Worker.
+		last_deployed_from?: string
 
 		// Whether Logpush is turned on for the Worker.
 		logpush?: bool
@@ -499,6 +527,10 @@ package res
 		// Indicates a `module syntax` Worker.
 		main_module?: string
 
+		// The tag of the Durable Object migration that was most recently
+		// applied for this Worker.
+		migration_tag?: string
+
 		// When the script was last modified.
 		modified_on?: string
 
@@ -507,7 +539,7 @@ package res
 		startup_time_ms?: number
 
 		// Usage model for the Worker invocations.
-		// Available values: "standard".
+		// Available values: "standard", "bundled", "unbound".
 		usage_model?: string
 	})
 }

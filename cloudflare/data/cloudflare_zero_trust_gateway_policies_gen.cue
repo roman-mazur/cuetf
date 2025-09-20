@@ -28,14 +28,16 @@ package data
 			description?: string
 
 			// The wirefilter expression used for device posture check
-			// matching.
+			// matching. The API automatically formats and sanitizes this
+			// expression. This returns a normalized version that may differ
+			// from your input and cause Terraform state drift.
 			device_posture?: string
 
 			// True if the rule is enabled.
 			enabled?: bool
 
 			// The protocol or layer to evaluate the traffic, identity, and
-			// device posture expressions.
+			// device. posture expressions.
 			filters?: [...string]
 
 			// The expiration time stamp and default duration of a DNS policy.
@@ -150,17 +152,20 @@ package data
 				// Custom block page settings. If missing/null, blocking will use
 				// the the account settings.
 				block_page?: close({
-					// If true, context information will be passed as query parameters
+					// If true, context information will be passed as query
+					// parameters.
 					include_context?: bool
 
-					// URI to which the user will be redirected
+					// URI to which the user will be redirected.
 					target_uri?: string
 				})
 
 				// Configure how session check behaves.
 				check_session?: close({
 					// Configure how fresh the session needs to be to be considered
-					// valid.
+					// valid. The API automatically formats and sanitizes this
+					// expression. This returns a normalized version that may differ
+					// from your input and cause Terraform state drift.
 					duration?: string
 
 					// Set to true to enable session enforcement.
@@ -264,7 +269,7 @@ package data
 				// Set by children MSP accounts to bypass their parent's rules.
 				bypass_parent_rule?: bool
 
-				// Send matching traffic to the supplied destination IP address
+				// Send matching traffic to the supplied destination IP address.
 				// and port.
 				l4override?: close({
 					// IPv4 or IPv6 address.
@@ -294,10 +299,11 @@ package data
 				// Configure a notification to display on the user's device when
 				// this rule is matched.
 				notification_settings?: close({
-					// Set notification on
+					// Set notification on.
 					enabled?: bool
 
-					// If true, context information will be passed as query parameters
+					// If true, context information will be passed as query
+					// parameters.
 					include_context?: bool
 
 					// Customize the message shown in the notification.
@@ -317,7 +323,7 @@ package data
 				// Override matching DNS queries with a hostname.
 				override_host?: string
 
-				// Settings that apply to quarantine rules
+				// Settings that apply to quarantine rules.
 				quarantine?: close({
 					// Types of files to sandbox.
 					file_types?: [...string]
@@ -332,16 +338,17 @@ package data
 				// set. Only valid when a rule's action is set to 'resolve'.
 				resolve_dns_through_cloudflare?: bool
 
-				// Settings that apply to redirect rules
+				// Settings that apply to redirect rules.
 				redirect?: close({
-					// If true, context information will be passed as query parameters
+					// If true, context information will be passed as query
+					// parameters.
 					include_context?: bool
 
 					// If true, the path and query parameters from the original
-					// request will be appended to target_uri
+					// request will be appended to target_uri.
 					preserve_path_and_query?: bool
 
-					// URI to which the user will be redirected
+					// URI to which the user will be redirected.
 					target_uri?: string
 				})
 
@@ -375,13 +382,16 @@ package data
 			// The API resource UUID.
 			id?: string
 
-			// The wirefilter expression used for identity matching.
+			// The wirefilter expression used for identity matching. The API
+			// automatically formats and sanitizes this expression. This
+			// returns a normalized version that may differ from your input
+			// and cause Terraform state drift.
 			identity?: string
 
 			// The name of the rule.
 			name?: string
 
-			// The rule cannot be shared via the Orgs API
+			// The rule cannot be shared via the Orgs API.
 			not_sharable?: bool
 
 			// Precedence sets the order of your rules. Lower values indicate
@@ -393,10 +403,10 @@ package data
 			precedence?: number
 
 			// The rule was shared via the Orgs API and cannot be edited by
-			// the current account
+			// the current account.
 			read_only?: bool
 
-			// account tag of account that created the rule
+			// account tag of account that created the rule.
 			source_account?: string
 
 			// The schedule for activating DNS policies. This does not apply
@@ -449,11 +459,14 @@ package data
 				wed?: string
 			})
 
-			// The wirefilter expression used for traffic matching.
+			// The wirefilter expression used for traffic matching. The API
+			// automatically formats and sanitizes this expression. This
+			// returns a normalized version that may differ from your input
+			// and cause Terraform state drift.
 			traffic?:    string
 			updated_at?: string
 
-			// version number of the rule
+			// version number of the rule.
 			version?: number
 
 			// Warning for a misconfigured rule, if any.
@@ -476,14 +489,16 @@ package data
 			description?: string
 
 			// The wirefilter expression used for device posture check
-			// matching.
+			// matching. The API automatically formats and sanitizes this
+			// expression. This returns a normalized version that may differ
+			// from your input and cause Terraform state drift.
 			device_posture?: string
 
 			// True if the rule is enabled.
 			enabled?: bool
 
 			// The protocol or layer to evaluate the traffic, identity, and
-			// device posture expressions.
+			// device. posture expressions.
 			filters?: [...string]
 
 			// The expiration time stamp and default duration of a DNS policy.
@@ -598,17 +613,20 @@ package data
 				// Custom block page settings. If missing/null, blocking will use
 				// the the account settings.
 				block_page?: close({
-					// If true, context information will be passed as query parameters
+					// If true, context information will be passed as query
+					// parameters.
 					include_context?: bool
 
-					// URI to which the user will be redirected
+					// URI to which the user will be redirected.
 					target_uri?: string
 				})
 
 				// Configure how session check behaves.
 				check_session?: close({
 					// Configure how fresh the session needs to be to be considered
-					// valid.
+					// valid. The API automatically formats and sanitizes this
+					// expression. This returns a normalized version that may differ
+					// from your input and cause Terraform state drift.
 					duration?: string
 
 					// Set to true to enable session enforcement.
@@ -712,7 +730,7 @@ package data
 				// Set by children MSP accounts to bypass their parent's rules.
 				bypass_parent_rule?: bool
 
-				// Send matching traffic to the supplied destination IP address
+				// Send matching traffic to the supplied destination IP address.
 				// and port.
 				l4override?: close({
 					// IPv4 or IPv6 address.
@@ -742,10 +760,11 @@ package data
 				// Configure a notification to display on the user's device when
 				// this rule is matched.
 				notification_settings?: close({
-					// Set notification on
+					// Set notification on.
 					enabled?: bool
 
-					// If true, context information will be passed as query parameters
+					// If true, context information will be passed as query
+					// parameters.
 					include_context?: bool
 
 					// Customize the message shown in the notification.
@@ -765,7 +784,7 @@ package data
 				// Override matching DNS queries with a hostname.
 				override_host?: string
 
-				// Settings that apply to quarantine rules
+				// Settings that apply to quarantine rules.
 				quarantine?: close({
 					// Types of files to sandbox.
 					file_types?: [...string]
@@ -780,16 +799,17 @@ package data
 				// set. Only valid when a rule's action is set to 'resolve'.
 				resolve_dns_through_cloudflare?: bool
 
-				// Settings that apply to redirect rules
+				// Settings that apply to redirect rules.
 				redirect?: close({
-					// If true, context information will be passed as query parameters
+					// If true, context information will be passed as query
+					// parameters.
 					include_context?: bool
 
 					// If true, the path and query parameters from the original
-					// request will be appended to target_uri
+					// request will be appended to target_uri.
 					preserve_path_and_query?: bool
 
-					// URI to which the user will be redirected
+					// URI to which the user will be redirected.
 					target_uri?: string
 				})
 
@@ -823,13 +843,16 @@ package data
 			// The API resource UUID.
 			id?: string
 
-			// The wirefilter expression used for identity matching.
+			// The wirefilter expression used for identity matching. The API
+			// automatically formats and sanitizes this expression. This
+			// returns a normalized version that may differ from your input
+			// and cause Terraform state drift.
 			identity?: string
 
 			// The name of the rule.
 			name?: string
 
-			// The rule cannot be shared via the Orgs API
+			// The rule cannot be shared via the Orgs API.
 			not_sharable?: bool
 
 			// Precedence sets the order of your rules. Lower values indicate
@@ -841,10 +864,10 @@ package data
 			precedence?: number
 
 			// The rule was shared via the Orgs API and cannot be edited by
-			// the current account
+			// the current account.
 			read_only?: bool
 
-			// account tag of account that created the rule
+			// account tag of account that created the rule.
 			source_account?: string
 
 			// The schedule for activating DNS policies. This does not apply
@@ -897,11 +920,14 @@ package data
 				wed?: string
 			})
 
-			// The wirefilter expression used for traffic matching.
+			// The wirefilter expression used for traffic matching. The API
+			// automatically formats and sanitizes this expression. This
+			// returns a normalized version that may differ from your input
+			// and cause Terraform state drift.
 			traffic?:    string
 			updated_at?: string
 
-			// version number of the rule
+			// version number of the rule.
 			version?: number
 
 			// Warning for a misconfigured rule, if any.

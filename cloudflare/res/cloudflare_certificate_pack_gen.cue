@@ -11,6 +11,16 @@ package res
 		// Available values: "google", "lets_encrypt", "ssl_com".
 		certificate_authority!: string
 
+		// Domain validation errors that have been received by the
+		// certificate authority (CA).
+		validation_errors?: matchN(1, [close({
+			// A domain validation error.
+			message?: string
+		}), [...close({
+			// A domain validation error.
+			message?: string
+		})]])
+
 		// Whether or not to add Cloudflare Branding for the order. This
 		// will add a subdomain of sni.cloudflaressl.com as the Common
 		// Name if set to true.
@@ -23,6 +33,48 @@ package res
 
 		// Identifier.
 		id?: string
+
+		// Certificates' validation records. Only present when certificate
+		// pack is in "pending_validation" status
+		validation_records?: matchN(1, [close({
+			// The set of email addresses that the certificate authority (CA)
+			// will use to complete domain validation.
+			emails?: [...string]
+
+			// The content that the certificate authority (CA) will expect to
+			// find at the http_url during the domain validation.
+			http_body?: string
+
+			// The url that will be checked during domain validation.
+			http_url?: string
+
+			// The hostname that the certificate authority (CA) will check for
+			// a TXT record during domain validation .
+			txt_name?: string
+
+			// The TXT record that the certificate authority (CA) will check
+			// during domain validation.
+			txt_value?: string
+		}), [...close({
+			// The set of email addresses that the certificate authority (CA)
+			// will use to complete domain validation.
+			emails?: [...string]
+
+			// The content that the certificate authority (CA) will expect to
+			// find at the http_url during the domain validation.
+			http_body?: string
+
+			// The url that will be checked during domain validation.
+			http_url?: string
+
+			// The hostname that the certificate authority (CA) will check for
+			// a TXT record during domain validation .
+			txt_name?: string
+
+			// The TXT record that the certificate authority (CA) will check
+			// during domain validation.
+			txt_value?: string
+		})]])
 
 		// Status of certificate pack.
 		// Available values: "initializing", "pending_validation",

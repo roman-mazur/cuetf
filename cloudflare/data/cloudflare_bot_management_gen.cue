@@ -15,6 +15,10 @@ package data
 		// more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 		auto_update_model?: bool
 
+		// Indicates that the bot management cookie can be placed on end
+		// user devices accessing the site. Defaults to true
+		bm_cookie_enabled?: bool
+
 		// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 		// Available values: "enabled", "disabled".
 		crawler_protection?: string
@@ -26,6 +30,38 @@ package data
 
 		// Whether to enable Bot Fight Mode.
 		fight_mode?: bool
+
+		// Enable cloudflare managed robots.txt. If an existing robots.txt
+		// is detected, then managed robots.txt will be prepended to the
+		// existing robots.txt.
+		is_robots_txt_managed?: bool
+
+		// Whether to optimize Super Bot Fight Mode protections for
+		// Wordpress.
+		optimize_wordpress?: bool
+
+		// Super Bot Fight Mode (SBFM) action to take on definitely
+		// automated requests.
+		// Available values: "allow", "block", "managed_challenge".
+		sbfm_definitely_automated?: string
+
+		// Super Bot Fight Mode (SBFM) action to take on likely automated
+		// requests.
+		// Available values: "allow", "block", "managed_challenge".
+		sbfm_likely_automated?: string
+
+		// Super Bot Fight Mode (SBFM) to enable static resource
+		// protection.
+		// Enable if static resources on your application need bot
+		// protection.
+		// Note: Static resource protection can also result in legitimate
+		// traffic being blocked.
+		sbfm_static_resource_protection?: bool
+
+		// Super Bot Fight Mode (SBFM) action to take on verified bots
+		// requests.
+		// Available values: "allow", "block".
+		sbfm_verified_bots?: string
 
 		// A read-only field that shows which unauthorized settings are
 		// currently active on the zone. These settings typically result
@@ -57,33 +93,6 @@ package data
 			// Indicates that the zone's session score tracking is disabled.
 			suppress_session_score?: bool
 		})
-
-		// Whether to optimize Super Bot Fight Mode protections for
-		// Wordpress.
-		optimize_wordpress?: bool
-
-		// Super Bot Fight Mode (SBFM) action to take on definitely
-		// automated requests.
-		// Available values: "allow", "block", "managed_challenge".
-		sbfm_definitely_automated?: string
-
-		// Super Bot Fight Mode (SBFM) action to take on likely automated
-		// requests.
-		// Available values: "allow", "block", "managed_challenge".
-		sbfm_likely_automated?: string
-
-		// Super Bot Fight Mode (SBFM) to enable static resource
-		// protection.
-		// Enable if static resources on your application need bot
-		// protection.
-		// Note: Static resource protection can also result in legitimate
-		// traffic being blocked.
-		sbfm_static_resource_protection?: bool
-
-		// Super Bot Fight Mode (SBFM) action to take on verified bots
-		// requests.
-		// Available values: "allow", "block".
-		sbfm_verified_bots?: string
 
 		// Whether to disable tracking the highest bot score for a session
 		// in the Bot Management cookie.

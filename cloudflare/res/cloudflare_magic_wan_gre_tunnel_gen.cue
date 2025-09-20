@@ -29,17 +29,19 @@ package res
 		// 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 		interface_address!: string
 
+		// A 127 bit IPV6 prefix from within the virtual_subnet6 prefix
+		// space with the address being the first IP of the subnet and
+		// not same as the address of virtual_subnet6. Eg if
+		// virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 ,
+		// interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+		interface_address6?: string
+
 		// The date and time the tunnel was last modified.
 		modified_on?: string
 
 		// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
 		// The minimum value is 576.
 		mtu?: number
-
-		// The name of the tunnel. The name cannot contain spaces or
-		// special characters, must be 15 characters or less, and cannot
-		// share a name with another GRE tunnel.
-		name!: string
 		health_check?: close({
 			// The destination address in a request type health check. After
 			// the healthcheck is decapsulated at the customer end of the
@@ -83,6 +85,11 @@ package res
 			// Available values: "reply", "request".
 			type?: string
 		})
+
+		// The name of the tunnel. The name cannot contain spaces or
+		// special characters, must be 15 characters or less, and cannot
+		// share a name with another GRE tunnel.
+		name!: string
 
 		// Time To Live (TTL) in number of hops of the GRE tunnel.
 		ttl?: number

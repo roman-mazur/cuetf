@@ -19,6 +19,12 @@ package data
 			status?: string
 		})
 
+		// Account identifier tag.
+		account_id!: string
+
+		// The contact email address of the user.
+		email?: string
+
 		// Access policy for the membership
 		policies?: matchN(1, [close({
 			// Allow or deny operations against the resources.
@@ -276,8 +282,11 @@ package data
 			})]])
 		})]])
 
-		// Account identifier tag.
-		account_id!: string
+		// Membership identifier tag.
+		id?: string
+
+		// Membership identifier tag.
+		member_id?: string
 
 		// Roles assigned to this Member.
 		roles?: matchN(1, [close({
@@ -399,12 +408,6 @@ package data
 			// Role name.
 			name?: string
 		})]])
-
-		// Membership identifier tag.
-		id?: string
-
-		// Membership identifier tag.
-		member_id?: string
 
 		// A member's status in the account.
 		// Available values: "accepted", "pending".

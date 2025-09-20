@@ -97,7 +97,7 @@ package res
 			pool_weights?: [string]: number
 		})
 
-		// (Enterprise only): A mapping of Cloudflare PoP identifiers to a
+		// Enterprise only: A mapping of Cloudflare PoP identifiers to a
 		// list of pool IDs (ordered by their failover priority) for the
 		// PoP (datacenter). Any PoPs not explicitly defined will fall
 		// back to using the corresponding country_pool, then region_pool
@@ -214,7 +214,7 @@ package res
 					prefer_ecs?: string
 				})
 
-				// (Enterprise only): A mapping of Cloudflare PoP identifiers to a
+				// Enterprise only: A mapping of Cloudflare PoP identifiers to a
 				// list of pool IDs (ordered by their failover priority) for the
 				// PoP (datacenter). Any PoPs not explicitly defined will fall
 				// back to using the corresponding country_pool, then region_pool
@@ -244,20 +244,19 @@ package res
 				region_pools?: [string]: [...string]
 
 				// Specifies the type of session affinity the load balancer should
-				// use unless specified as `"none"`. The supported types are:
-				// - `"cookie"`: On the first request to a proxied load balancer,
-				// a cookie is generated, encoding information of which origin
-				// the request will be forwarded to. Subsequent requests, by the
-				// same client to the same load balancer, will be sent to the
-				// origin server the cookie encodes, for the duration of the
-				// cookie and as long as the origin server remains healthy. If
-				// the cookie has expired or the origin server is unhealthy, then
-				// a new origin server is calculated and used.
-				// - `"ip_cookie"`: Behaves the same as `"cookie"` except the
-				// initial origin selection is stable and based on the client's
-				// ip address.
-				// - `"header"`: On the first request to a proxied load balancer,
-				// a session key based on the configured HTTP headers (see
+				// use unless specified as `"none"`. The supported types are: -
+				// `"cookie"`: On the first request to a proxied load balancer, a
+				// cookie is generated, encoding information of which origin the
+				// request will be forwarded to. Subsequent requests, by the same
+				// client to the same load balancer, will be sent to the origin
+				// server the cookie encodes, for the duration of the cookie and
+				// as long as the origin server remains healthy. If the cookie
+				// has expired or the origin server is unhealthy, then a new
+				// origin server is calculated and used. - `"ip_cookie"`: Behaves
+				// the same as `"cookie"` except the initial origin selection is
+				// stable and based on the client's ip address. - `"header"`: On
+				// the first request to a proxied load balancer, a session key
+				// based on the configured HTTP headers (see
 				// `session_affinity_attributes.headers`) is generated, encoding
 				// the request headers used for storing in the load balancer
 				// session state which origin the request will be forwarded to.
@@ -275,15 +274,14 @@ package res
 				// Time, in seconds, until a client's session expires after being
 				// created. Once the expiry time has been reached, subsequent
 				// requests may get sent to a different origin server. The
-				// accepted ranges per `session_affinity` policy are:
-				// - `"cookie"` / `"ip_cookie"`: The current default of 23 hours
+				// accepted ranges per `session_affinity` policy are: -
+				// `"cookie"` / `"ip_cookie"`: The current default of 23 hours
 				// will be used unless explicitly set. The accepted range of
-				// values is between [1800, 604800].
-				// - `"header"`: The current default of 1800 seconds will be used
-				// unless explicitly set. The accepted range of values is between
-				// [30, 3600]. Note: With session affinity by header, sessions
-				// only expire after they haven't been used for the number of
-				// seconds specified.
+				// values is between [1800, 604800]. - `"header"`: The current
+				// default of 1800 seconds will be used unless explicitly set.
+				// The accepted range of values is between [30, 3600]. Note: With
+				// session affinity by header, sessions only expire after they
+				// haven't been used for the number of seconds specified.
 				session_affinity_ttl?: number
 
 				// Steering Policy for this load balancer.
@@ -334,13 +332,13 @@ package res
 
 					// When header `session_affinity` is enabled, this option can be
 					// used to specify how HTTP headers on load balancing requests
-					// will be used. The supported values are:
-					// - `"true"`: Load balancing requests must contain *all* of the
-					// HTTP headers specified by the `headers` session affinity
-					// attribute, otherwise sessions aren't created.
-					// - `"false"`: Load balancing requests must contain *at least
-					// one* of the HTTP headers specified by the `headers` session
-					// affinity attribute, otherwise sessions aren't created.
+					// will be used. The supported values are: - `"true"`: Load
+					// balancing requests must contain *all* of the HTTP headers
+					// specified by the `headers` session affinity attribute,
+					// otherwise sessions aren't created. - `"false"`: Load balancing
+					// requests must contain *at least one* of the HTTP headers
+					// specified by the `headers` session affinity attribute,
+					// otherwise sessions aren't created.
 					require_all_headers?: bool
 
 					// Configures the SameSite attribute on session affinity cookie.
@@ -361,13 +359,12 @@ package res
 					// Configures the zero-downtime failover between origins within a
 					// pool when session affinity is enabled. This feature is
 					// currently incompatible with Argo, Tiered Cache, and Bandwidth
-					// Alliance. The supported values are:
-					// - `"none"`: No failover takes place for sessions pinned to the
-					// origin (default).
-					// - `"temporary"`: Traffic will be sent to another other healthy
+					// Alliance. The supported values are: - `"none"`: No failover
+					// takes place for sessions pinned to the origin (default). -
+					// `"temporary"`: Traffic will be sent to another other healthy
 					// origin until the originally pinned origin is available; note
-					// that this can potentially result in heavy origin flapping.
-					// - `"sticky"`: The session affinity cookie is updated and
+					// that this can potentially result in heavy origin flapping. -
+					// `"sticky"`: The session affinity cookie is updated and
 					// subsequent requests are sent to the new origin. Note:
 					// Zero-downtime failover with sticky sessions is currently not
 					// supported for session affinity by header.
@@ -483,7 +480,7 @@ package res
 					prefer_ecs?: string
 				})
 
-				// (Enterprise only): A mapping of Cloudflare PoP identifiers to a
+				// Enterprise only: A mapping of Cloudflare PoP identifiers to a
 				// list of pool IDs (ordered by their failover priority) for the
 				// PoP (datacenter). Any PoPs not explicitly defined will fall
 				// back to using the corresponding country_pool, then region_pool
@@ -513,20 +510,19 @@ package res
 				region_pools?: [string]: [...string]
 
 				// Specifies the type of session affinity the load balancer should
-				// use unless specified as `"none"`. The supported types are:
-				// - `"cookie"`: On the first request to a proxied load balancer,
-				// a cookie is generated, encoding information of which origin
-				// the request will be forwarded to. Subsequent requests, by the
-				// same client to the same load balancer, will be sent to the
-				// origin server the cookie encodes, for the duration of the
-				// cookie and as long as the origin server remains healthy. If
-				// the cookie has expired or the origin server is unhealthy, then
-				// a new origin server is calculated and used.
-				// - `"ip_cookie"`: Behaves the same as `"cookie"` except the
-				// initial origin selection is stable and based on the client's
-				// ip address.
-				// - `"header"`: On the first request to a proxied load balancer,
-				// a session key based on the configured HTTP headers (see
+				// use unless specified as `"none"`. The supported types are: -
+				// `"cookie"`: On the first request to a proxied load balancer, a
+				// cookie is generated, encoding information of which origin the
+				// request will be forwarded to. Subsequent requests, by the same
+				// client to the same load balancer, will be sent to the origin
+				// server the cookie encodes, for the duration of the cookie and
+				// as long as the origin server remains healthy. If the cookie
+				// has expired or the origin server is unhealthy, then a new
+				// origin server is calculated and used. - `"ip_cookie"`: Behaves
+				// the same as `"cookie"` except the initial origin selection is
+				// stable and based on the client's ip address. - `"header"`: On
+				// the first request to a proxied load balancer, a session key
+				// based on the configured HTTP headers (see
 				// `session_affinity_attributes.headers`) is generated, encoding
 				// the request headers used for storing in the load balancer
 				// session state which origin the request will be forwarded to.
@@ -544,15 +540,14 @@ package res
 				// Time, in seconds, until a client's session expires after being
 				// created. Once the expiry time has been reached, subsequent
 				// requests may get sent to a different origin server. The
-				// accepted ranges per `session_affinity` policy are:
-				// - `"cookie"` / `"ip_cookie"`: The current default of 23 hours
+				// accepted ranges per `session_affinity` policy are: -
+				// `"cookie"` / `"ip_cookie"`: The current default of 23 hours
 				// will be used unless explicitly set. The accepted range of
-				// values is between [1800, 604800].
-				// - `"header"`: The current default of 1800 seconds will be used
-				// unless explicitly set. The accepted range of values is between
-				// [30, 3600]. Note: With session affinity by header, sessions
-				// only expire after they haven't been used for the number of
-				// seconds specified.
+				// values is between [1800, 604800]. - `"header"`: The current
+				// default of 1800 seconds will be used unless explicitly set.
+				// The accepted range of values is between [30, 3600]. Note: With
+				// session affinity by header, sessions only expire after they
+				// haven't been used for the number of seconds specified.
 				session_affinity_ttl?: number
 
 				// Steering Policy for this load balancer.
@@ -603,13 +598,13 @@ package res
 
 					// When header `session_affinity` is enabled, this option can be
 					// used to specify how HTTP headers on load balancing requests
-					// will be used. The supported values are:
-					// - `"true"`: Load balancing requests must contain *all* of the
-					// HTTP headers specified by the `headers` session affinity
-					// attribute, otherwise sessions aren't created.
-					// - `"false"`: Load balancing requests must contain *at least
-					// one* of the HTTP headers specified by the `headers` session
-					// affinity attribute, otherwise sessions aren't created.
+					// will be used. The supported values are: - `"true"`: Load
+					// balancing requests must contain *all* of the HTTP headers
+					// specified by the `headers` session affinity attribute,
+					// otherwise sessions aren't created. - `"false"`: Load balancing
+					// requests must contain *at least one* of the HTTP headers
+					// specified by the `headers` session affinity attribute,
+					// otherwise sessions aren't created.
 					require_all_headers?: bool
 
 					// Configures the SameSite attribute on session affinity cookie.
@@ -630,13 +625,12 @@ package res
 					// Configures the zero-downtime failover between origins within a
 					// pool when session affinity is enabled. This feature is
 					// currently incompatible with Argo, Tiered Cache, and Bandwidth
-					// Alliance. The supported values are:
-					// - `"none"`: No failover takes place for sessions pinned to the
-					// origin (default).
-					// - `"temporary"`: Traffic will be sent to another other healthy
+					// Alliance. The supported values are: - `"none"`: No failover
+					// takes place for sessions pinned to the origin (default). -
+					// `"temporary"`: Traffic will be sent to another other healthy
 					// origin until the originally pinned origin is available; note
-					// that this can potentially result in heavy origin flapping.
-					// - `"sticky"`: The session affinity cookie is updated and
+					// that this can potentially result in heavy origin flapping. -
+					// `"sticky"`: The session affinity cookie is updated and
 					// subsequent requests are sent to the new origin. Note:
 					// Zero-downtime failover with sticky sessions is currently not
 					// supported for session affinity by header.
@@ -656,20 +650,19 @@ package res
 		})]])
 
 		// Specifies the type of session affinity the load balancer should
-		// use unless specified as `"none"`. The supported types are:
-		// - `"cookie"`: On the first request to a proxied load balancer,
-		// a cookie is generated, encoding information of which origin
-		// the request will be forwarded to. Subsequent requests, by the
-		// same client to the same load balancer, will be sent to the
-		// origin server the cookie encodes, for the duration of the
-		// cookie and as long as the origin server remains healthy. If
-		// the cookie has expired or the origin server is unhealthy, then
-		// a new origin server is calculated and used.
-		// - `"ip_cookie"`: Behaves the same as `"cookie"` except the
-		// initial origin selection is stable and based on the client's
-		// ip address.
-		// - `"header"`: On the first request to a proxied load balancer,
-		// a session key based on the configured HTTP headers (see
+		// use unless specified as `"none"`. The supported types are: -
+		// `"cookie"`: On the first request to a proxied load balancer, a
+		// cookie is generated, encoding information of which origin the
+		// request will be forwarded to. Subsequent requests, by the same
+		// client to the same load balancer, will be sent to the origin
+		// server the cookie encodes, for the duration of the cookie and
+		// as long as the origin server remains healthy. If the cookie
+		// has expired or the origin server is unhealthy, then a new
+		// origin server is calculated and used. - `"ip_cookie"`: Behaves
+		// the same as `"cookie"` except the initial origin selection is
+		// stable and based on the client's ip address. - `"header"`: On
+		// the first request to a proxied load balancer, a session key
+		// based on the configured HTTP headers (see
 		// `session_affinity_attributes.headers`) is generated, encoding
 		// the request headers used for storing in the load balancer
 		// session state which origin the request will be forwarded to.
@@ -704,13 +697,13 @@ package res
 
 			// When header `session_affinity` is enabled, this option can be
 			// used to specify how HTTP headers on load balancing requests
-			// will be used. The supported values are:
-			// - `"true"`: Load balancing requests must contain *all* of the
-			// HTTP headers specified by the `headers` session affinity
-			// attribute, otherwise sessions aren't created.
-			// - `"false"`: Load balancing requests must contain *at least
-			// one* of the HTTP headers specified by the `headers` session
-			// affinity attribute, otherwise sessions aren't created.
+			// will be used. The supported values are: - `"true"`: Load
+			// balancing requests must contain *all* of the HTTP headers
+			// specified by the `headers` session affinity attribute,
+			// otherwise sessions aren't created. - `"false"`: Load balancing
+			// requests must contain *at least one* of the HTTP headers
+			// specified by the `headers` session affinity attribute,
+			// otherwise sessions aren't created.
 			require_all_headers?: bool
 
 			// Configures the SameSite attribute on session affinity cookie.
@@ -731,13 +724,12 @@ package res
 			// Configures the zero-downtime failover between origins within a
 			// pool when session affinity is enabled. This feature is
 			// currently incompatible with Argo, Tiered Cache, and Bandwidth
-			// Alliance. The supported values are:
-			// - `"none"`: No failover takes place for sessions pinned to the
-			// origin (default).
-			// - `"temporary"`: Traffic will be sent to another other healthy
+			// Alliance. The supported values are: - `"none"`: No failover
+			// takes place for sessions pinned to the origin (default). -
+			// `"temporary"`: Traffic will be sent to another other healthy
 			// origin until the originally pinned origin is available; note
-			// that this can potentially result in heavy origin flapping.
-			// - `"sticky"`: The session affinity cookie is updated and
+			// that this can potentially result in heavy origin flapping. -
+			// `"sticky"`: The session affinity cookie is updated and
 			// subsequent requests are sent to the new origin. Note:
 			// Zero-downtime failover with sticky sessions is currently not
 			// supported for session affinity by header.
@@ -748,15 +740,14 @@ package res
 		// Time, in seconds, until a client's session expires after being
 		// created. Once the expiry time has been reached, subsequent
 		// requests may get sent to a different origin server. The
-		// accepted ranges per `session_affinity` policy are:
-		// - `"cookie"` / `"ip_cookie"`: The current default of 23 hours
+		// accepted ranges per `session_affinity` policy are: -
+		// `"cookie"` / `"ip_cookie"`: The current default of 23 hours
 		// will be used unless explicitly set. The accepted range of
-		// values is between [1800, 604800].
-		// - `"header"`: The current default of 1800 seconds will be used
-		// unless explicitly set. The accepted range of values is between
-		// [30, 3600]. Note: With session affinity by header, sessions
-		// only expire after they haven't been used for the number of
-		// seconds specified.
+		// values is between [1800, 604800]. - `"header"`: The current
+		// default of 1800 seconds will be used unless explicitly set.
+		// The accepted range of values is between [30, 3600]. Note: With
+		// session affinity by header, sessions only expire after they
+		// haven't been used for the number of seconds specified.
 		session_affinity_ttl?: number
 
 		// Steering Policy for this load balancer.

@@ -13,9 +13,6 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// True if new beta namespace, with additional preview features.
-			beta?: bool
-
 			// Namespace identifier tag.
 			id?: string
 
@@ -27,9 +24,6 @@ package data
 			// A human-readable string name for a Namespace.
 			title?: string
 		}), [...close({
-			// True if new beta namespace, with additional preview features.
-			beta?: bool
-
 			// Namespace identifier tag.
 			id?: string
 

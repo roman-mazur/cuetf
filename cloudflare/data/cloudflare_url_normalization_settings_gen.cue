@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_url_normalization_settings")
 	close({
 		// The scope of the URL normalization.
-		// Available values: "incoming", "both".
+		// Available values: "incoming", "both", "none".
 		scope?: string
 
 		// The type of URL normalization performed by Cloudflare.

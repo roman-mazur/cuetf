@@ -8,7 +8,7 @@ package res
 		created_at?: string
 		id?:         string
 
-		// Account settings
+		// Account settings.
 		settings?: close({
 			// Activity log settings.
 			activity_log?: close({
@@ -27,10 +27,11 @@ package res
 				// Configure a message to display on the user's device when an
 				// antivirus search is performed.
 				notification_settings?: close({
-					// Set notification on
+					// Set notification on.
 					enabled?: bool
 
-					// If true, context information will be passed as query parameters
+					// If true, context information will be passed as query
+					// parameters.
 					include_context?: bool
 
 					// Customize the message shown in the notification.
@@ -51,7 +52,7 @@ package res
 				// in #rrggbb format.
 				background_color?: string
 
-				// Enable only cipher suites and TLS versions compliant with FIPS
+				// Enable only cipher suites and TLS versions compliant with FIPS.
 				// 140-2.
 				enabled?: bool
 
@@ -78,17 +79,17 @@ package res
 
 				// Controls whether the user is redirected to a Cloudflare-hosted
 				// block page or to a customer-provided URI.
-				// Available values: "customized_block_page", "redirect_uri".
+				// Available values: "", "customized_block_page", "redirect_uri".
 				mode?: string
 
 				// If mode is customized_block_page: block page title.
 				name?: string
 
 				// This setting was shared via the Orgs API and cannot be edited
-				// by the current account
+				// by the current account.
 				read_only?: bool
 
-				// Account tag of account that shared this setting
+				// Account tag of account that shared this setting.
 				source_account?: string
 
 				// If mode is customized_block_page: suppress detailed info at the
@@ -99,7 +100,7 @@ package res
 				// redirected.
 				target_uri?: string
 
-				// Version number of the setting
+				// Version number of the setting.
 				version?: number
 			})
 
@@ -135,19 +136,19 @@ package res
 				enabled?: bool
 
 				// This setting was shared via the Orgs API and cannot be edited
-				// by the current account
+				// by the current account.
 				read_only?: bool
 
-				// Account tag of account that shared this setting
+				// Account tag of account that shared this setting.
 				source_account?: string
 
-				// Version number of the setting
+				// Version number of the setting.
 				version?: number
 			})
 
 			// FIPS settings.
 			fips?: close({
-				// Enable only cipher suites and TLS versions compliant with FIPS
+				// Enable only cipher suites and TLS versions compliant with FIPS.
 				// 140-2.
 				tls?: bool
 			})
@@ -158,7 +159,7 @@ package res
 				enabled?: bool
 			})
 
-			// Setting to define inspection settings
+			// Setting to define inspection settings.
 			inspection?: close({
 				// Defines the mode of inspection the proxy will use.
 				// - static: Gateway will use static inspection to inspect HTTP on

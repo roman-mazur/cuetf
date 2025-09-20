@@ -4,8 +4,9 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_rulesets")
 	close({
-		// The items returned by the data source
-		result?: matchN(1, [close({
+		// A list of rulesets. The returned information will not include
+		// the rules in each ruleset.
+		rulesets?: matchN(1, [close({
 			// An informative description of the ruleset.
 			description?: string
 
@@ -15,6 +16,9 @@ package data
 			// The kind of the ruleset.
 			// Available values: "managed", "custom", "root", "zone".
 			kind?: string
+
+			// The timestamp of when the ruleset was last modified.
+			last_updated?: string
 
 			// The human-readable name of the ruleset.
 			name?: string
@@ -34,6 +38,9 @@ package data
 			// "magic_transit_ids_managed", "magic_transit_managed",
 			// "magic_transit_ratelimit".
 			phase?: string
+
+			// The version of the ruleset.
+			version?: string
 		}), [...close({
 			// An informative description of the ruleset.
 			description?: string
@@ -45,6 +52,9 @@ package data
 			// Available values: "managed", "custom", "root", "zone".
 			kind?: string
 
+			// The timestamp of when the ruleset was last modified.
+			last_updated?: string
+
 			// The human-readable name of the ruleset.
 			name?: string
 
@@ -63,17 +73,18 @@ package data
 			// "magic_transit_ids_managed", "magic_transit_managed",
 			// "magic_transit_ratelimit".
 			phase?: string
+
+			// The version of the ruleset.
+			version?: string
 		})]])
 
-		// The Account ID to use for this endpoint. Mutually exclusive
-		// with the Zone ID.
+		// The unique ID of the account.
 		account_id?: string
 
-		// Max items to fetch, default: 1000
+		// Maximum number of rulesets to fetch (defaults to 1000).
 		max_items?: number
 
-		// The Zone ID to use for this endpoint. Mutually exclusive with
-		// the Account ID.
+		// The unique ID of the zone.
 		zone_id?: string
 	})
 }

@@ -15,6 +15,10 @@ package res
 		// more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 		auto_update_model?: bool
 
+		// Indicates that the bot management cookie can be placed on end
+		// user devices accessing the site. Defaults to true
+		bm_cookie_enabled?: bool
+
 		// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 		// Available values: "enabled", "disabled".
 		crawler_protection?: string
@@ -60,6 +64,11 @@ package res
 
 		// Identifier.
 		id?: string
+
+		// Enable cloudflare managed robots.txt. If an existing robots.txt
+		// is detected, then managed robots.txt will be prepended to the
+		// existing robots.txt.
+		is_robots_txt_managed?: bool
 
 		// Whether to optimize Super Bot Fight Mode protections for
 		// Wordpress.

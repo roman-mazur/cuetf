@@ -6,13 +6,13 @@ package res
 	close({
 		// items to add to the list.
 		items?: matchN(1, [close({
-			// The description of the list item, if present
+			// The description of the list item, if present.
 			description?: string
 
 			// The value of the item in a list.
 			value?: string
 		}), [...close({
-			// The description of the list item, if present
+			// The description of the list item, if present.
 			description?: string
 
 			// The value of the item in a list.

@@ -9,7 +9,7 @@ package res
 
 		// The filter expression. For more information, refer to
 		// [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
-		expression!: string
+		expression?: string
 
 		// The unique identifier of the filter.
 		id?: string
@@ -22,5 +22,38 @@ package res
 
 		// Defines an identifier.
 		zone_id!: string
+		body!: matchN(1, [close({
+			// An informative summary of the filter.
+			description?: string
+
+			// The filter expression. For more information, refer to
+			// [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+			expression?: string
+
+			// The unique identifier of the filter.
+			id?: string
+
+			// When true, indicates that the filter is currently paused.
+			paused?: bool
+
+			// A short reference tag. Allows you to select related filters.
+			ref?: string
+		}), [...close({
+			// An informative summary of the filter.
+			description?: string
+
+			// The filter expression. For more information, refer to
+			// [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+			expression?: string
+
+			// The unique identifier of the filter.
+			id?: string
+
+			// When true, indicates that the filter is currently paused.
+			paused?: bool
+
+			// A short reference tag. Allows you to select related filters.
+			ref?: string
+		})]])
 	})
 }

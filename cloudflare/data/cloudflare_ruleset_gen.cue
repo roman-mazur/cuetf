@@ -4,8 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_ruleset")
 	close({
-		// The Account ID to use for this endpoint. Mutually exclusive
-		// with the Zone ID.
+		// The unique ID of the account.
 		account_id?: string
 
 		// An informative description of the ruleset.
@@ -18,308 +17,305 @@ package data
 		// Available values: "managed", "custom", "root", "zone".
 		kind?: string
 
-		// The human-readable name of the ruleset.
-		name?: string
+		// The timestamp of when the ruleset was last modified.
+		last_updated?: string
 
 		// The list of rules in the ruleset.
 		rules?: matchN(1, [close({
 			// The parameters configuring the rule's action.
 			action_parameters?: close({
+				// A list of additional ports that caching should be enabled on.
+				additional_cacheable_ports?: [...number]
+
+				// The name of a custom asset to serve as the response.
+				asset_name?: string
+
 				// Custom order for compression algorithms.
 				algorithms?: matchN(1, [close({
-					// Name of compression algorithm to enable.
+					// Name of the compression algorithm to enable.
 					// Available values: "none", "auto", "default", "gzip", "brotli",
 					// "zstd".
 					name?: string
 				}), [...close({
-					// Name of compression algorithm to enable.
+					// Name of the compression algorithm to enable.
 					// Available values: "none", "auto", "default", "gzip", "brotli",
 					// "zstd".
 					name?: string
 				})]])
 
-				// List of additional ports that caching can be enabled on.
-				additional_cacheable_ports?: [...number]
-
-				// Select which file extensions to minify automatically.
+				// Which file extensions to minify automatically.
 				autominify?: close({
-					// Minify CSS files.
+					// Whether to minify CSS files.
 					css?: bool
 
-					// Minify HTML files.
+					// Whether to minify HTML files.
 					html?: bool
 
-					// Minify JS files.
+					// Whether to minify JavaScript files.
 					js?: bool
 				})
 
-				// Specify how long client browsers should cache the response.
-				// Cloudflare cache purge will not purge content cached on client
-				// browsers, so high browser TTLs may lead to stale content.
+				// Whether to enable Automatic HTTPS Rewrites.
+				automatic_https_rewrites?: bool
+
+				// Whether to enable Browser Integrity Check (BIC).
+				bic?: bool
+
+				// Whether the request's response from the origin is eligible for
+				// caching. Caching itself will still depend on the cache control
+				// header and your other caching configurations.
+				cache?: bool
+
+				// How long client browsers should cache the response. Cloudflare
+				// cache purge will not purge content cached on client browsers,
+				// so high browser TTLs may lead to stale content.
 				browser_ttl?: close({
-					// The TTL (in seconds) if you choose override_origin mode.
+					// The browser TTL (in seconds) if you choose the
+					// "override_origin" mode.
 					default?: number
 
-					// Determines which browser ttl mode to use.
+					// The browser TTL mode.
 					// Available values: "respect_origin", "bypass_by_default",
 					// "override_origin", "bypass".
 					mode?: string
 				})
 
-				// Turn on or off Automatic HTTPS Rewrites.
-				automatic_https_rewrites?: bool
+				// The response content.
+				content?: string
 
-				// Turn on or off Browser Integrity Check.
-				bic?: bool
+				// The content type header to set with the error response.
+				// Available values: "application/json", "text/html",
+				// "text/plain", "text/xml".
+				content_type?: string
 
-				// Mark whether the request’s response from origin is eligible for
-				// caching. Caching itself will still depend on the cache-control
-				// header and your other caching configurations.
-				cache?: bool
-
-				// Define which components of the request are included or excluded
+				// Which components of the request are included in or excluded
 				// from the cache key Cloudflare uses to store the response in
 				// cache.
 				cache_key?: close({
-					// Customize which components of the request are included or
-					// excluded from the cache key.
+					// Which components of the request are included or excluded from
+					// the cache key.
 					custom_key?: close({
-						// The cookies to include in building the cache key.
+						// Which cookies to include in the cache key.
 						cookie?: close({
-							// Checks for the presence of these cookie names. The presence of
-							// these cookies is used in building the cache key.
+							// A list of cookies to check for the presence of. The presence of
+							// these cookies is included in the cache key.
 							check_presence?: [...string]
 
-							// Include these cookies' names and their values.
+							// A list of cookies to include in the cache key.
 							include?: [...string]
 						})
 
-						// The header names and values to include in building the cache
-						// key.
+						// Which headers to include in the cache key.
 						header?: close({
-							// Checks for the presence of these header names. The presence of
-							// these headers is used in building the cache key.
+							// A list of headers to check for the presence of. The presence of
+							// these headers is included in the cache key.
 							check_presence?: [...string]
 
-							// For each header name and list of values combination, check if
-							// the request header contains any of the values provided. The
-							// presence of the request header and whether any of the values
-							// provided are contained in the request header value is used in
-							// building the cache key.
+							// A mapping of header names to a list of values. If a header is
+							// present in the request and contains any of the values
+							// provided, its value is included in the cache key.
 							contains?: [string]: [...string]
 
-							// Whether or not to include the origin header. A value of true
-							// will exclude the origin header in the cache key.
+							// Whether to exclude the origin header in the cache key.
 							exclude_origin?: bool
 
-							// Include these headers' names and their values.
+							// A list of headers to include in the cache key.
 							include?: [...string]
 						})
 
-						// Whether to use the original host or the resolved host in the
-						// cache key.
+						// How to use the host in the cache key.
 						host?: close({
-							// Use the resolved host in the cache key. A value of true will
-							// use the resolved host, while a value or false will use the
-							// original host.
+							// Whether to use the resolved host in the cache key.
 							resolved?: bool
 						})
 
-						// Use the presence of parameters in the query string to build the
+						// Which query string parameters to include in or exclude from the
 						// cache key.
 						query_string?: close({
-							// A list of query string parameters NOT used to build the cache
-							// key. All parameters present in the request but missing in this
-							// list will be used to build the cache key.
+							// Which query string parameters to exclude from the cache key.
 							exclude?: close({
-								// Determines whether to exclude all query string parameters from
-								// the cache key.
+								// Whether to exclude all query string parameters from the cache
+								// key.
 								all?: bool
+
+								// A list of query string parameters to exclude from the cache
+								// key.
 								list?: [...string]
 							})
 
-							// A list of query string parameters used to build the cache key.
+							// Which query string parameters to include in the cache key.
 							include?: close({
-								// Determines whether to include all query string parameters in
-								// the cache key.
+								// Whether to include all query string parameters in the cache
+								// key.
 								all?: bool
+
+								// A list of query string parameters to include in the cache key.
 								list?: [...string]
 							})
 						})
 
-						// Characteristics of the request user agent used in building the
+						// How to use characteristics of the request user agent in the
 						// cache key.
 						user?: close({
-							// Use the user agent's device type in the cache key.
+							// Whether to use the user agent's device type in the cache key.
 							device_type?: bool
 
-							// Use the user agents's country in the cache key.
+							// Whether to use the user agents's country in the cache key.
 							geo?: bool
 
-							// Use the user agent's language in the cache key.
+							// Whether to use the user agent's language in the cache key.
 							lang?: bool
 						})
 					})
 
-					// Separate cached content based on the visitor’s device type.
+					// Whether to separate cached content based on the visitor's
+					// device type.
 					cache_by_device_type?: bool
 
-					// Protect from web cache deception attacks while allowing static
-					// assets to be cached.
+					// Whether to protect from web cache deception attacks, while
+					// allowing static assets to be cached.
 					cache_deception_armor?: bool
 
-					// Treat requests with the same query parameters the same,
-					// regardless of the order those query parameters are in. A value
-					// of true ignores the query strings' order.
+					// Whether to treat requests with the same query parameters the
+					// same, regardless of the order those query parameters are in.
 					ignore_query_strings_order?: bool
 				})
 
-				// Error response content.
-				content?: string
+				// Whether to disable Cloudflare Apps.
+				disable_apps?: bool
 
-				// Content-type header to set with the response.
-				// Available values: "application/json", "text/xml", "text/plain",
-				// "text/html".
-				content_type?: string
-
-				// Mark whether the request's response from origin is eligible for
-				// Cache Reserve (requires a Cache Reserve add-on plan).
+				// Settings to determine whether the request's response from
+				// origin is eligible for Cache Reserve (requires a Cache Reserve
+				// add-on plan).
 				cache_reserve?: close({
-					// Determines whether cache reserve is enabled. If this is true
-					// and a request meets eligibility criteria, Cloudflare will
-					// write the resource to cache reserve.
+					// Whether Cache Reserve is enabled. If this is true and a request
+					// meets eligibility criteria, Cloudflare will write the resource
+					// to Cache Reserve.
 					eligible?: bool
 
-					// The minimum file size eligible for store in cache reserve.
+					// The minimum file size eligible for storage in Cache Reserve.
 					minimum_file_size?: number
 				})
 
-				// Turn off all active Cloudflare Apps.
-				disable_apps?: bool
-
-				// Turn off Real User Monitoring (RUM).
+				// Whether to disable Real User Monitoring (RUM).
 				disable_rum?: bool
 
-				// Turn off Zaraz.
+				// Whether to disable Zaraz.
 				disable_zaraz?: bool
+
+				// Whether to enable Email Obfuscation.
+				email_obfuscation?: bool
 
 				// The cookie fields to log.
 				cookie_fields?: matchN(1, [close({
-					// The name of the field.
+					// The name of the cookie.
 					name?: string
 				}), [...close({
-					// The name of the field.
+					// The name of the cookie.
 					name?: string
 				})]])
 
-				// Turn on or off Email Obfuscation.
-				email_obfuscation?: bool
-
-				// Turn on or off Cloudflare Fonts.
+				// Whether to enable Cloudflare Fonts.
 				fonts?: bool
 
-				// TTL (Time to Live) specifies the maximum time to cache a
-				// resource in the Cloudflare edge network.
+				// A value to rewrite the HTTP host header to.
+				host_header?: string
+
+				// How long the Cloudflare edge network should cache the response.
 				edge_ttl?: close({
-					// The TTL (in seconds) if you choose override_origin mode.
+					// The edge TTL (in seconds) if you choose the "override_origin"
+					// mode.
 					default?: number
 
-					// Edge TTL options.
+					// The edge TTL mode.
 					// Available values: "respect_origin", "bypass_by_default",
 					// "override_origin".
 					mode?: string
 
-					// List of single status codes, or status code ranges to apply the
-					// selected mode.
+					// A list of TTLs to apply to specific status codes or status code
+					// ranges.
 					status_code_ttl?: matchN(1, [close({
-						// Set the TTL for responses with this specific status code.
-						status_code_value?: number
-
-						// The range of status codes used to apply the selected mode.
+						// A range of status codes to apply the TTL to.
 						status_code_range?: close({
-							// Response status code lower bound.
+							// The lower bound of the range.
 							from?: number
 
-							// Response status code upper bound.
+							// The upper bound of the range.
 							to?: number
 						})
 
-						// Time to cache a response (in seconds). A value of 0 is
-						// equivalent to setting the Cache-Control header with the value
-						// "no-cache". A value of -1 is equivalent to setting
-						// Cache-Control header with the value of "no-store".
+						// A single status code to apply the TTL to.
+						status_code?: number
+
+						// The time to cache the response for (in seconds). A value of 0
+						// is equivalent to setting the cache control header with the
+						// value "no-cache". A value of -1 is equivalent to setting the
+						// cache control header with the value of "no-store".
 						value?: number
 					}), [...close({
-						// Set the TTL for responses with this specific status code.
-						status_code_value?: number
-
-						// The range of status codes used to apply the selected mode.
+						// A range of status codes to apply the TTL to.
 						status_code_range?: close({
-							// Response status code lower bound.
+							// The lower bound of the range.
 							from?: number
 
-							// Response status code upper bound.
+							// The upper bound of the range.
 							to?: number
 						})
 
-						// Time to cache a response (in seconds). A value of 0 is
-						// equivalent to setting the Cache-Control header with the value
-						// "no-cache". A value of -1 is equivalent to setting
-						// Cache-Control header with the value of "no-store".
+						// A single status code to apply the TTL to.
+						status_code?: number
+
+						// The time to cache the response for (in seconds). A value of 0
+						// is equivalent to setting the cache control header with the
+						// value "no-cache". A value of -1 is equivalent to setting the
+						// cache control header with the value of "no-store".
 						value?: number
 					})]])
 				})
 
-				// Rewrite the HTTP Host header.
-				host_header?: string
+				// Whether to enable Hotlink Protection.
+				hotlink_protection?: bool
 
-				// Serve a redirect based on a bulk list lookup.
+				// A redirect based on a bulk list lookup.
 				from_list?: close({
-					// Expression that evaluates to the list lookup key.
+					// An expression that evaluates to the list lookup key.
 					key?: string
 
 					// The name of the list to match against.
 					name?: string
 				})
 
-				// Turn on or off the Hotlink Protection.
-				hotlink_protection?: bool
+				// The ID of the ruleset to execute.
+				id?: string
 
-				// Serve a redirect based on the request properties.
+				// A redirect based on the request properties.
 				from_value?: close({
-					// Keep the query string of the original request.
+					// Whether to keep the query string of the original request.
 					preserve_query_string?: bool
 
-					// The status code to be used for the redirect.
-					// Available values: 301, 302, 303, 307, 308.
+					// The status code to use for the redirect.
 					status_code?: number
 
-					// The URL to redirect the request to.
+					// A URL to redirect the request to.
 					target_url?: close({
-						// An expression to evaluate to get the URL to redirect the
-						// request to.
+						// An expression that evaluates to a URL to redirect the request
+						// to.
 						expression?: string
 
-						// The URL to redirect the request to.
+						// A URL to redirect the request to.
 						value?: string
 					})
 				})
 
-				// The ID of the ruleset to execute.
-				id?: string
-
-				// Map of request headers to modify.
-				headers?: _
-
-				// Increment contains the delta to change the score and can be
-				// either positive or negative.
+				// A delta to change the score by, which can be either positive or
+				// negative.
 				increment?: number
 
-				// Turn on or off Mirage.
-				mirage?: bool
+				// A map of headers to rewrite.
+				headers?: _
 
-				// Turn on or off Opportunistic Encryption.
-				opportunistic_encryption?: bool
+				// Whether to enable Mirage.
+				mirage?: bool
 
 				// The configuration to use for matched data logging.
 				matched_data?: close({
@@ -327,32 +323,45 @@ package data
 					public_key?: string
 				})
 
-				// When enabled, Cloudflare will aim to strictly adhere to RFC
-				// 7234.
+				// Whether to enable Opportunistic Encryption.
+				opportunistic_encryption?: bool
+
+				// Whether Cloudflare will aim to strictly adhere to RFC 7234.
 				origin_cache_control?: bool
 
-				// Generate Cloudflare error pages from issues sent from the
-				// origin server. When on, error pages will trigger for issues
-				// from the origin.
+				// Whether to generate Cloudflare error pages for issues from the
+				// origin server.
 				origin_error_page_passthru?: bool
 
-				// Override the IP/TCP destination.
+				// An origin to route to.
 				origin?: close({
-					// Override the resolved hostname.
+					// A resolved host to route to.
 					host?: string
 
-					// Override the destination port.
+					// A destination port to route to.
 					port?: number
 				})
 
-				// A phase to skip the execution of. This property is only
-				// compatible with products.
-				// Available values: "current".
-				phase?: string
-
 				// A list of phases to skip the execution of. This option is
 				// incompatible with the rulesets option.
+				// Available values: "ddos_l4", "ddos_l7", "http_config_settings",
+				// "http_custom_errors", "http_log_custom_fields",
+				// "http_ratelimit", "http_request_cache_settings",
+				// "http_request_dynamic_redirect",
+				// "http_request_firewall_custom",
+				// "http_request_firewall_managed",
+				// "http_request_late_transform", "http_request_origin",
+				// "http_request_redirect", "http_request_sanitize",
+				// "http_request_sbfm", "http_request_transform",
+				// "http_response_compression", "http_response_firewall_managed",
+				// "http_response_headers_transform", "magic_transit",
+				// "magic_transit_ids_managed", "magic_transit_managed",
+				// "magic_transit_ratelimit".
 				phases?: [...string]
+
+				// The Polish level to configure.
+				// Available values: "off", "lossless", "lossy", "webp".
+				polish?: string
 
 				// A set of overrides to apply to the target ruleset.
 				overrides?: close({
@@ -372,7 +381,8 @@ package data
 						// Whether to enable execution of rules in the category.
 						enabled?: bool
 
-						// The sensitivity level to use for rules in the category.
+						// The sensitivity level to use for rules in the category. This
+						// option is only applicable for DDoS phases.
 						// Available values: "default", "medium", "low", "eoff".
 						sensitivity_level?: string
 					}), [...close({
@@ -385,7 +395,8 @@ package data
 						// Whether to enable execution of rules in the category.
 						enabled?: bool
 
-						// The sensitivity level to use for rules in the category.
+						// The sensitivity level to use for rules in the category. This
+						// option is only applicable for DDoS phases.
 						// Available values: "default", "medium", "low", "eoff".
 						sensitivity_level?: string
 					})]])
@@ -415,7 +426,8 @@ package data
 						// The score threshold to use for the rule.
 						score_threshold?: number
 
-						// The sensitivity level to use for the rule.
+						// The sensitivity level to use for the rule. This option is only
+						// applicable for DDoS phases.
 						// Available values: "default", "medium", "low", "eoff".
 						sensitivity_level?: string
 					}), [...close({
@@ -431,28 +443,35 @@ package data
 						// The score threshold to use for the rule.
 						score_threshold?: number
 
-						// The sensitivity level to use for the rule.
+						// The sensitivity level to use for the rule. This option is only
+						// applicable for DDoS phases.
 						// Available values: "default", "medium", "low", "eoff".
 						sensitivity_level?: string
 					})]])
 				})
 
-				// Configure the Polish level.
-				// Available values: "off", "lossless", "lossy", "webp".
-				polish?: string
-
 				// A list of legacy security products to skip the execution of.
+				// Available values: "bic", "hot", "rateLimit", "securityLevel",
+				// "uaBlock", "waf", "zoneLockdown".
 				products?: [...string]
+
+				// A timeout value between two successive read operations to use
+				// for your origin server. Historically, the timeout value
+				// between two read options from Cloudflare to an origin server
+				// is 100 seconds. If you are attempting to reduce HTTP 524
+				// errors because of timeouts from an origin server, try
+				// increasing this timeout value.
+				read_timeout?: number
 
 				// The raw response fields to log.
 				raw_response_fields?: matchN(1, [close({
-					// The name of the field.
+					// The name of the response header.
 					name?: string
 
 					// Whether to log duplicate values of the same header.
 					preserve_duplicates?: bool
 				}), [...close({
-					// The name of the field.
+					// The name of the response header.
 					name?: string
 
 					// Whether to log duplicate values of the same header.
@@ -461,25 +480,20 @@ package data
 
 				// The raw request fields to log.
 				request_fields?: matchN(1, [close({
-					// The name of the field.
+					// The name of the header.
 					name?: string
 				}), [...close({
-					// The name of the field.
+					// The name of the header.
 					name?: string
 				})]])
 
-				// Define a timeout value between two successive read operations
-				// to your origin server. Historically, the timeout value between
-				// two read options from Cloudflare to an origin server is 100
-				// seconds. If you are attempting to reduce HTTP 524 errors
-				// because of timeouts from an origin server, try increasing this
-				// timeout value.
-				read_timeout?: number
-
-				// Specify whether or not Cloudflare should respect strong ETag
-				// (entity tag) headers. When off, Cloudflare converts strong
-				// ETag headers to weak ETag headers.
+				// Whether Cloudflare should respect strong ETag (entity tag)
+				// headers. If false, Cloudflare converts strong ETag headers to
+				// weak ETag headers.
 				respect_strong_etags?: bool
+
+				// Whether to enable Rocket Loader.
+				rocket_loader?: bool
 
 				// The response to show when the block is applied.
 				response?: close({
@@ -495,21 +509,18 @@ package data
 
 				// The transformed response fields to log.
 				response_fields?: matchN(1, [close({
-					// The name of the field.
+					// The name of the response header.
 					name?: string
 
 					// Whether to log duplicate values of the same header.
 					preserve_duplicates?: bool
 				}), [...close({
-					// The name of the field.
+					// The name of the response header.
 					name?: string
 
 					// Whether to log duplicate values of the same header.
 					preserve_duplicates?: bool
 				})]])
-
-				// Turn on or off Rocket Loader.
-				rocket_loader?: bool
 
 				// A mapping of ruleset IDs to a list of rule IDs in that ruleset
 				// to skip the execution of. This option is incompatible with the
@@ -525,91 +536,92 @@ package data
 				// incompatible with the ruleset and phases options.
 				rulesets?: [...string]
 
-				// Configure the Security Level.
+				// The Security Level to configure.
 				// Available values: "off", "essentially_off", "low", "medium",
 				// "high", "under_attack".
 				security_level?: string
 
-				// Define if Cloudflare should serve stale content while getting
-				// the latest content from the origin. If on, Cloudflare will not
-				// serve stale content while getting the latest content from the
-				// origin.
+				// When to serve stale content from cache.
 				serve_stale?: close({
-					// Defines whether Cloudflare should serve stale content while
-					// updating. If true, Cloudflare will not serve stale content
-					// while getting the latest content from the origin.
+					// Whether Cloudflare should disable serving stale content while
+					// getting the latest content from the origin.
 					disable_stale_while_updating?: bool
 				})
 
-				// Turn on or off Server Side Excludes.
+				// Whether to enable Server-Side Excludes.
 				server_side_excludes?: bool
 
-				// Override the Server Name Indication (SNI).
+				// A Server Name Indication (SNI) override.
 				sni?: close({
-					// The SNI override.
+					// A value to override the SNI to.
 					value?: string
 				})
 
-				// The transformed request fields to log.
-				transformed_request_fields?: matchN(1, [close({
-					// The name of the field.
-					name?: string
-				}), [...close({
-					// The name of the field.
-					name?: string
-				})]])
-
-				// Configure the SSL level.
+				// The SSL level to configure.
 				// Available values: "off", "flexible", "full", "strict",
 				// "origin_pull".
 				ssl?: string
 
+				// The transformed request fields to log.
+				transformed_request_fields?: matchN(1, [close({
+					// The name of the header.
+					name?: string
+				}), [...close({
+					// The name of the header.
+					name?: string
+				})]])
+
 				// The status code to use for the error.
 				status_code?: number
 
-				// Turn on or off Signed Exchanges (SXG).
-				sxg?: bool
-
-				// URI to rewrite the request to.
+				// A URI rewrite.
 				uri?: close({
-					// Path portion rewrite.
+					// A URI path rewrite.
 					path?: close({
-						// Expression to evaluate for the replacement value.
+						// An expression that evaluates to a value to rewrite the URI path
+						// to.
 						expression?: string
 
-						// Predefined replacement value.
+						// A value to rewrite the URI path to.
 						value?: string
 					})
 
-					// Query portion rewrite.
+					// Whether to propagate the rewritten URI to origin.
+					origin?: bool
+
+					// A URI query rewrite.
 					query?: close({
-						// Expression to evaluate for the replacement value.
+						// An expression that evaluates to a value to rewrite the URI
+						// query to.
 						expression?: string
 
-						// Predefined replacement value.
+						// A value to rewrite the URI query to.
 						value?: string
 					})
 				})
+
+				// Whether to enable Signed Exchanges (SXG).
+				sxg?: bool
 			})
 
 			// The action to perform when the rule matches.
 			// Available values: "block", "challenge", "compress_response",
-			// "execute", "js_challenge", "log", "managed_challenge",
-			// "redirect", "rewrite", "route", "score", "serve_error",
-			// "set_config", "skip", "set_cache_settings",
-			// "log_custom_field", "ddos_dynamic", "force_connection_close".
+			// "ddos_dynamic", "execute", "force_connection_close",
+			// "js_challenge", "log", "log_custom_field",
+			// "managed_challenge", "redirect", "rewrite", "route", "score",
+			// "serve_error", "set_cache_settings", "set_config", "skip".
 			action?: string
 
 			// The categories of the rule.
 			categories?: [...string]
 
-			// Configure checks for exposed credentials.
+			// Configuration for exposed credential checking.
 			exposed_credential_check?: close({
-				// Expression that selects the password used in the credentials
+				// An expression that selects the password used in the credentials
 				// check.
 				password_expression?: string
 
-				// Expression that selects the user ID used in the credentials
+				// An expression that selects the user ID used in the credentials
 				// check.
 				username_expression?: string
 			})
@@ -626,14 +638,15 @@ package data
 			// Whether the rule should be executed.
 			enabled?: bool
 
-			// An object configuring the rule's ratelimit behavior.
+			// An object configuring the rule's rate limit behavior.
 			ratelimit?: close({
-				// Characteristics of the request on which the ratelimiter counter
+				// Characteristics of the request on which the rate limit counter
 				// will be incremented.
 				characteristics?: [...string]
 
-				// Defines when the ratelimit counter should be incremented. It is
-				// optional and defaults to the same as the rule's expression.
+				// An expression that defines when the rate limit counter should
+				// be incremented. It defaults to the same as the rule's
+				// expression.
 				counting_expression?: string
 
 				// Period of time in seconds after which the action will be
@@ -647,16 +660,15 @@ package data
 				// will be executed for the first time.
 				requests_per_period?: number
 
-				// Defines if ratelimit counting is only done when an origin is
-				// reached.
+				// Whether counting is only performed when an origin is reached.
 				requests_to_origin?: bool
 
 				// The score threshold per period for which the action will be
 				// executed the first time.
 				score_per_period?: number
 
-				// The response header name provided by the origin which should
-				// contain the score to increment ratelimit counter on.
+				// A response header name provided by the origin, which contains
+				// the score to increment rate limit counter with.
 				score_response_header_name?: string
 			})
 
@@ -666,306 +678,303 @@ package data
 			// The unique ID of the rule.
 			id?: string
 
-			// The reference of the rule (the rule ID by default).
+			// The reference of the rule (the rule's ID by default).
 			ref?: string
 		}), [...close({
 			// The parameters configuring the rule's action.
 			action_parameters?: close({
+				// A list of additional ports that caching should be enabled on.
+				additional_cacheable_ports?: [...number]
+
+				// The name of a custom asset to serve as the response.
+				asset_name?: string
+
 				// Custom order for compression algorithms.
 				algorithms?: matchN(1, [close({
-					// Name of compression algorithm to enable.
+					// Name of the compression algorithm to enable.
 					// Available values: "none", "auto", "default", "gzip", "brotli",
 					// "zstd".
 					name?: string
 				}), [...close({
-					// Name of compression algorithm to enable.
+					// Name of the compression algorithm to enable.
 					// Available values: "none", "auto", "default", "gzip", "brotli",
 					// "zstd".
 					name?: string
 				})]])
 
-				// List of additional ports that caching can be enabled on.
-				additional_cacheable_ports?: [...number]
-
-				// Select which file extensions to minify automatically.
+				// Which file extensions to minify automatically.
 				autominify?: close({
-					// Minify CSS files.
+					// Whether to minify CSS files.
 					css?: bool
 
-					// Minify HTML files.
+					// Whether to minify HTML files.
 					html?: bool
 
-					// Minify JS files.
+					// Whether to minify JavaScript files.
 					js?: bool
 				})
 
-				// Specify how long client browsers should cache the response.
-				// Cloudflare cache purge will not purge content cached on client
-				// browsers, so high browser TTLs may lead to stale content.
+				// Whether to enable Automatic HTTPS Rewrites.
+				automatic_https_rewrites?: bool
+
+				// Whether to enable Browser Integrity Check (BIC).
+				bic?: bool
+
+				// Whether the request's response from the origin is eligible for
+				// caching. Caching itself will still depend on the cache control
+				// header and your other caching configurations.
+				cache?: bool
+
+				// How long client browsers should cache the response. Cloudflare
+				// cache purge will not purge content cached on client browsers,
+				// so high browser TTLs may lead to stale content.
 				browser_ttl?: close({
-					// The TTL (in seconds) if you choose override_origin mode.
+					// The browser TTL (in seconds) if you choose the
+					// "override_origin" mode.
 					default?: number
 
-					// Determines which browser ttl mode to use.
+					// The browser TTL mode.
 					// Available values: "respect_origin", "bypass_by_default",
 					// "override_origin", "bypass".
 					mode?: string
 				})
 
-				// Turn on or off Automatic HTTPS Rewrites.
-				automatic_https_rewrites?: bool
+				// The response content.
+				content?: string
 
-				// Turn on or off Browser Integrity Check.
-				bic?: bool
+				// The content type header to set with the error response.
+				// Available values: "application/json", "text/html",
+				// "text/plain", "text/xml".
+				content_type?: string
 
-				// Mark whether the request’s response from origin is eligible for
-				// caching. Caching itself will still depend on the cache-control
-				// header and your other caching configurations.
-				cache?: bool
-
-				// Define which components of the request are included or excluded
+				// Which components of the request are included in or excluded
 				// from the cache key Cloudflare uses to store the response in
 				// cache.
 				cache_key?: close({
-					// Customize which components of the request are included or
-					// excluded from the cache key.
+					// Which components of the request are included or excluded from
+					// the cache key.
 					custom_key?: close({
-						// The cookies to include in building the cache key.
+						// Which cookies to include in the cache key.
 						cookie?: close({
-							// Checks for the presence of these cookie names. The presence of
-							// these cookies is used in building the cache key.
+							// A list of cookies to check for the presence of. The presence of
+							// these cookies is included in the cache key.
 							check_presence?: [...string]
 
-							// Include these cookies' names and their values.
+							// A list of cookies to include in the cache key.
 							include?: [...string]
 						})
 
-						// The header names and values to include in building the cache
-						// key.
+						// Which headers to include in the cache key.
 						header?: close({
-							// Checks for the presence of these header names. The presence of
-							// these headers is used in building the cache key.
+							// A list of headers to check for the presence of. The presence of
+							// these headers is included in the cache key.
 							check_presence?: [...string]
 
-							// For each header name and list of values combination, check if
-							// the request header contains any of the values provided. The
-							// presence of the request header and whether any of the values
-							// provided are contained in the request header value is used in
-							// building the cache key.
+							// A mapping of header names to a list of values. If a header is
+							// present in the request and contains any of the values
+							// provided, its value is included in the cache key.
 							contains?: [string]: [...string]
 
-							// Whether or not to include the origin header. A value of true
-							// will exclude the origin header in the cache key.
+							// Whether to exclude the origin header in the cache key.
 							exclude_origin?: bool
 
-							// Include these headers' names and their values.
+							// A list of headers to include in the cache key.
 							include?: [...string]
 						})
 
-						// Whether to use the original host or the resolved host in the
-						// cache key.
+						// How to use the host in the cache key.
 						host?: close({
-							// Use the resolved host in the cache key. A value of true will
-							// use the resolved host, while a value or false will use the
-							// original host.
+							// Whether to use the resolved host in the cache key.
 							resolved?: bool
 						})
 
-						// Use the presence of parameters in the query string to build the
+						// Which query string parameters to include in or exclude from the
 						// cache key.
 						query_string?: close({
-							// A list of query string parameters NOT used to build the cache
-							// key. All parameters present in the request but missing in this
-							// list will be used to build the cache key.
+							// Which query string parameters to exclude from the cache key.
 							exclude?: close({
-								// Determines whether to exclude all query string parameters from
-								// the cache key.
+								// Whether to exclude all query string parameters from the cache
+								// key.
 								all?: bool
+
+								// A list of query string parameters to exclude from the cache
+								// key.
 								list?: [...string]
 							})
 
-							// A list of query string parameters used to build the cache key.
+							// Which query string parameters to include in the cache key.
 							include?: close({
-								// Determines whether to include all query string parameters in
-								// the cache key.
+								// Whether to include all query string parameters in the cache
+								// key.
 								all?: bool
+
+								// A list of query string parameters to include in the cache key.
 								list?: [...string]
 							})
 						})
 
-						// Characteristics of the request user agent used in building the
+						// How to use characteristics of the request user agent in the
 						// cache key.
 						user?: close({
-							// Use the user agent's device type in the cache key.
+							// Whether to use the user agent's device type in the cache key.
 							device_type?: bool
 
-							// Use the user agents's country in the cache key.
+							// Whether to use the user agents's country in the cache key.
 							geo?: bool
 
-							// Use the user agent's language in the cache key.
+							// Whether to use the user agent's language in the cache key.
 							lang?: bool
 						})
 					})
 
-					// Separate cached content based on the visitor’s device type.
+					// Whether to separate cached content based on the visitor's
+					// device type.
 					cache_by_device_type?: bool
 
-					// Protect from web cache deception attacks while allowing static
-					// assets to be cached.
+					// Whether to protect from web cache deception attacks, while
+					// allowing static assets to be cached.
 					cache_deception_armor?: bool
 
-					// Treat requests with the same query parameters the same,
-					// regardless of the order those query parameters are in. A value
-					// of true ignores the query strings' order.
+					// Whether to treat requests with the same query parameters the
+					// same, regardless of the order those query parameters are in.
 					ignore_query_strings_order?: bool
 				})
 
-				// Error response content.
-				content?: string
+				// Whether to disable Cloudflare Apps.
+				disable_apps?: bool
 
-				// Content-type header to set with the response.
-				// Available values: "application/json", "text/xml", "text/plain",
-				// "text/html".
-				content_type?: string
-
-				// Mark whether the request's response from origin is eligible for
-				// Cache Reserve (requires a Cache Reserve add-on plan).
+				// Settings to determine whether the request's response from
+				// origin is eligible for Cache Reserve (requires a Cache Reserve
+				// add-on plan).
 				cache_reserve?: close({
-					// Determines whether cache reserve is enabled. If this is true
-					// and a request meets eligibility criteria, Cloudflare will
-					// write the resource to cache reserve.
+					// Whether Cache Reserve is enabled. If this is true and a request
+					// meets eligibility criteria, Cloudflare will write the resource
+					// to Cache Reserve.
 					eligible?: bool
 
-					// The minimum file size eligible for store in cache reserve.
+					// The minimum file size eligible for storage in Cache Reserve.
 					minimum_file_size?: number
 				})
 
-				// Turn off all active Cloudflare Apps.
-				disable_apps?: bool
-
-				// Turn off Real User Monitoring (RUM).
+				// Whether to disable Real User Monitoring (RUM).
 				disable_rum?: bool
 
-				// Turn off Zaraz.
+				// Whether to disable Zaraz.
 				disable_zaraz?: bool
+
+				// Whether to enable Email Obfuscation.
+				email_obfuscation?: bool
 
 				// The cookie fields to log.
 				cookie_fields?: matchN(1, [close({
-					// The name of the field.
+					// The name of the cookie.
 					name?: string
 				}), [...close({
-					// The name of the field.
+					// The name of the cookie.
 					name?: string
 				})]])
 
-				// Turn on or off Email Obfuscation.
-				email_obfuscation?: bool
-
-				// Turn on or off Cloudflare Fonts.
+				// Whether to enable Cloudflare Fonts.
 				fonts?: bool
 
-				// TTL (Time to Live) specifies the maximum time to cache a
-				// resource in the Cloudflare edge network.
+				// A value to rewrite the HTTP host header to.
+				host_header?: string
+
+				// How long the Cloudflare edge network should cache the response.
 				edge_ttl?: close({
-					// The TTL (in seconds) if you choose override_origin mode.
+					// The edge TTL (in seconds) if you choose the "override_origin"
+					// mode.
 					default?: number
 
-					// Edge TTL options.
+					// The edge TTL mode.
 					// Available values: "respect_origin", "bypass_by_default",
 					// "override_origin".
 					mode?: string
 
-					// List of single status codes, or status code ranges to apply the
-					// selected mode.
+					// A list of TTLs to apply to specific status codes or status code
+					// ranges.
 					status_code_ttl?: matchN(1, [close({
-						// Set the TTL for responses with this specific status code.
-						status_code_value?: number
-
-						// The range of status codes used to apply the selected mode.
+						// A range of status codes to apply the TTL to.
 						status_code_range?: close({
-							// Response status code lower bound.
+							// The lower bound of the range.
 							from?: number
 
-							// Response status code upper bound.
+							// The upper bound of the range.
 							to?: number
 						})
 
-						// Time to cache a response (in seconds). A value of 0 is
-						// equivalent to setting the Cache-Control header with the value
-						// "no-cache". A value of -1 is equivalent to setting
-						// Cache-Control header with the value of "no-store".
+						// A single status code to apply the TTL to.
+						status_code?: number
+
+						// The time to cache the response for (in seconds). A value of 0
+						// is equivalent to setting the cache control header with the
+						// value "no-cache". A value of -1 is equivalent to setting the
+						// cache control header with the value of "no-store".
 						value?: number
 					}), [...close({
-						// Set the TTL for responses with this specific status code.
-						status_code_value?: number
-
-						// The range of status codes used to apply the selected mode.
+						// A range of status codes to apply the TTL to.
 						status_code_range?: close({
-							// Response status code lower bound.
+							// The lower bound of the range.
 							from?: number
 
-							// Response status code upper bound.
+							// The upper bound of the range.
 							to?: number
 						})
 
-						// Time to cache a response (in seconds). A value of 0 is
-						// equivalent to setting the Cache-Control header with the value
-						// "no-cache". A value of -1 is equivalent to setting
-						// Cache-Control header with the value of "no-store".
+						// A single status code to apply the TTL to.
+						status_code?: number
+
+						// The time to cache the response for (in seconds). A value of 0
+						// is equivalent to setting the cache control header with the
+						// value "no-cache". A value of -1 is equivalent to setting the
+						// cache control header with the value of "no-store".
 						value?: number
 					})]])
 				})
 
-				// Rewrite the HTTP Host header.
-				host_header?: string
+				// Whether to enable Hotlink Protection.
+				hotlink_protection?: bool
 
-				// Serve a redirect based on a bulk list lookup.
+				// A redirect based on a bulk list lookup.
 				from_list?: close({
-					// Expression that evaluates to the list lookup key.
+					// An expression that evaluates to the list lookup key.
 					key?: string
 
 					// The name of the list to match against.
 					name?: string
 				})
 
-				// Turn on or off the Hotlink Protection.
-				hotlink_protection?: bool
+				// The ID of the ruleset to execute.
+				id?: string
 
-				// Serve a redirect based on the request properties.
+				// A redirect based on the request properties.
 				from_value?: close({
-					// Keep the query string of the original request.
+					// Whether to keep the query string of the original request.
 					preserve_query_string?: bool
 
-					// The status code to be used for the redirect.
-					// Available values: 301, 302, 303, 307, 308.
+					// The status code to use for the redirect.
 					status_code?: number
 
-					// The URL to redirect the request to.
+					// A URL to redirect the request to.
 					target_url?: close({
-						// An expression to evaluate to get the URL to redirect the
-						// request to.
+						// An expression that evaluates to a URL to redirect the request
+						// to.
 						expression?: string
 
-						// The URL to redirect the request to.
+						// A URL to redirect the request to.
 						value?: string
 					})
 				})
 
-				// The ID of the ruleset to execute.
-				id?: string
-
-				// Map of request headers to modify.
-				headers?: _
-
-				// Increment contains the delta to change the score and can be
-				// either positive or negative.
+				// A delta to change the score by, which can be either positive or
+				// negative.
 				increment?: number
 
-				// Turn on or off Mirage.
-				mirage?: bool
+				// A map of headers to rewrite.
+				headers?: _
 
-				// Turn on or off Opportunistic Encryption.
-				opportunistic_encryption?: bool
+				// Whether to enable Mirage.
+				mirage?: bool
 
 				// The configuration to use for matched data logging.
 				matched_data?: close({
@@ -973,32 +982,45 @@ package data
 					public_key?: string
 				})
 
-				// When enabled, Cloudflare will aim to strictly adhere to RFC
-				// 7234.
+				// Whether to enable Opportunistic Encryption.
+				opportunistic_encryption?: bool
+
+				// Whether Cloudflare will aim to strictly adhere to RFC 7234.
 				origin_cache_control?: bool
 
-				// Generate Cloudflare error pages from issues sent from the
-				// origin server. When on, error pages will trigger for issues
-				// from the origin.
+				// Whether to generate Cloudflare error pages for issues from the
+				// origin server.
 				origin_error_page_passthru?: bool
 
-				// Override the IP/TCP destination.
+				// An origin to route to.
 				origin?: close({
-					// Override the resolved hostname.
+					// A resolved host to route to.
 					host?: string
 
-					// Override the destination port.
+					// A destination port to route to.
 					port?: number
 				})
 
-				// A phase to skip the execution of. This property is only
-				// compatible with products.
-				// Available values: "current".
-				phase?: string
-
 				// A list of phases to skip the execution of. This option is
 				// incompatible with the rulesets option.
+				// Available values: "ddos_l4", "ddos_l7", "http_config_settings",
+				// "http_custom_errors", "http_log_custom_fields",
+				// "http_ratelimit", "http_request_cache_settings",
+				// "http_request_dynamic_redirect",
+				// "http_request_firewall_custom",
+				// "http_request_firewall_managed",
+				// "http_request_late_transform", "http_request_origin",
+				// "http_request_redirect", "http_request_sanitize",
+				// "http_request_sbfm", "http_request_transform",
+				// "http_response_compression", "http_response_firewall_managed",
+				// "http_response_headers_transform", "magic_transit",
+				// "magic_transit_ids_managed", "magic_transit_managed",
+				// "magic_transit_ratelimit".
 				phases?: [...string]
+
+				// The Polish level to configure.
+				// Available values: "off", "lossless", "lossy", "webp".
+				polish?: string
 
 				// A set of overrides to apply to the target ruleset.
 				overrides?: close({
@@ -1018,7 +1040,8 @@ package data
 						// Whether to enable execution of rules in the category.
 						enabled?: bool
 
-						// The sensitivity level to use for rules in the category.
+						// The sensitivity level to use for rules in the category. This
+						// option is only applicable for DDoS phases.
 						// Available values: "default", "medium", "low", "eoff".
 						sensitivity_level?: string
 					}), [...close({
@@ -1031,7 +1054,8 @@ package data
 						// Whether to enable execution of rules in the category.
 						enabled?: bool
 
-						// The sensitivity level to use for rules in the category.
+						// The sensitivity level to use for rules in the category. This
+						// option is only applicable for DDoS phases.
 						// Available values: "default", "medium", "low", "eoff".
 						sensitivity_level?: string
 					})]])
@@ -1061,7 +1085,8 @@ package data
 						// The score threshold to use for the rule.
 						score_threshold?: number
 
-						// The sensitivity level to use for the rule.
+						// The sensitivity level to use for the rule. This option is only
+						// applicable for DDoS phases.
 						// Available values: "default", "medium", "low", "eoff".
 						sensitivity_level?: string
 					}), [...close({
@@ -1077,28 +1102,35 @@ package data
 						// The score threshold to use for the rule.
 						score_threshold?: number
 
-						// The sensitivity level to use for the rule.
+						// The sensitivity level to use for the rule. This option is only
+						// applicable for DDoS phases.
 						// Available values: "default", "medium", "low", "eoff".
 						sensitivity_level?: string
 					})]])
 				})
 
-				// Configure the Polish level.
-				// Available values: "off", "lossless", "lossy", "webp".
-				polish?: string
-
 				// A list of legacy security products to skip the execution of.
+				// Available values: "bic", "hot", "rateLimit", "securityLevel",
+				// "uaBlock", "waf", "zoneLockdown".
 				products?: [...string]
+
+				// A timeout value between two successive read operations to use
+				// for your origin server. Historically, the timeout value
+				// between two read options from Cloudflare to an origin server
+				// is 100 seconds. If you are attempting to reduce HTTP 524
+				// errors because of timeouts from an origin server, try
+				// increasing this timeout value.
+				read_timeout?: number
 
 				// The raw response fields to log.
 				raw_response_fields?: matchN(1, [close({
-					// The name of the field.
+					// The name of the response header.
 					name?: string
 
 					// Whether to log duplicate values of the same header.
 					preserve_duplicates?: bool
 				}), [...close({
-					// The name of the field.
+					// The name of the response header.
 					name?: string
 
 					// Whether to log duplicate values of the same header.
@@ -1107,25 +1139,20 @@ package data
 
 				// The raw request fields to log.
 				request_fields?: matchN(1, [close({
-					// The name of the field.
+					// The name of the header.
 					name?: string
 				}), [...close({
-					// The name of the field.
+					// The name of the header.
 					name?: string
 				})]])
 
-				// Define a timeout value between two successive read operations
-				// to your origin server. Historically, the timeout value between
-				// two read options from Cloudflare to an origin server is 100
-				// seconds. If you are attempting to reduce HTTP 524 errors
-				// because of timeouts from an origin server, try increasing this
-				// timeout value.
-				read_timeout?: number
-
-				// Specify whether or not Cloudflare should respect strong ETag
-				// (entity tag) headers. When off, Cloudflare converts strong
-				// ETag headers to weak ETag headers.
+				// Whether Cloudflare should respect strong ETag (entity tag)
+				// headers. If false, Cloudflare converts strong ETag headers to
+				// weak ETag headers.
 				respect_strong_etags?: bool
+
+				// Whether to enable Rocket Loader.
+				rocket_loader?: bool
 
 				// The response to show when the block is applied.
 				response?: close({
@@ -1141,21 +1168,18 @@ package data
 
 				// The transformed response fields to log.
 				response_fields?: matchN(1, [close({
-					// The name of the field.
+					// The name of the response header.
 					name?: string
 
 					// Whether to log duplicate values of the same header.
 					preserve_duplicates?: bool
 				}), [...close({
-					// The name of the field.
+					// The name of the response header.
 					name?: string
 
 					// Whether to log duplicate values of the same header.
 					preserve_duplicates?: bool
 				})]])
-
-				// Turn on or off Rocket Loader.
-				rocket_loader?: bool
 
 				// A mapping of ruleset IDs to a list of rule IDs in that ruleset
 				// to skip the execution of. This option is incompatible with the
@@ -1171,91 +1195,92 @@ package data
 				// incompatible with the ruleset and phases options.
 				rulesets?: [...string]
 
-				// Configure the Security Level.
+				// The Security Level to configure.
 				// Available values: "off", "essentially_off", "low", "medium",
 				// "high", "under_attack".
 				security_level?: string
 
-				// Define if Cloudflare should serve stale content while getting
-				// the latest content from the origin. If on, Cloudflare will not
-				// serve stale content while getting the latest content from the
-				// origin.
+				// When to serve stale content from cache.
 				serve_stale?: close({
-					// Defines whether Cloudflare should serve stale content while
-					// updating. If true, Cloudflare will not serve stale content
-					// while getting the latest content from the origin.
+					// Whether Cloudflare should disable serving stale content while
+					// getting the latest content from the origin.
 					disable_stale_while_updating?: bool
 				})
 
-				// Turn on or off Server Side Excludes.
+				// Whether to enable Server-Side Excludes.
 				server_side_excludes?: bool
 
-				// Override the Server Name Indication (SNI).
+				// A Server Name Indication (SNI) override.
 				sni?: close({
-					// The SNI override.
+					// A value to override the SNI to.
 					value?: string
 				})
 
-				// The transformed request fields to log.
-				transformed_request_fields?: matchN(1, [close({
-					// The name of the field.
-					name?: string
-				}), [...close({
-					// The name of the field.
-					name?: string
-				})]])
-
-				// Configure the SSL level.
+				// The SSL level to configure.
 				// Available values: "off", "flexible", "full", "strict",
 				// "origin_pull".
 				ssl?: string
 
+				// The transformed request fields to log.
+				transformed_request_fields?: matchN(1, [close({
+					// The name of the header.
+					name?: string
+				}), [...close({
+					// The name of the header.
+					name?: string
+				})]])
+
 				// The status code to use for the error.
 				status_code?: number
 
-				// Turn on or off Signed Exchanges (SXG).
-				sxg?: bool
-
-				// URI to rewrite the request to.
+				// A URI rewrite.
 				uri?: close({
-					// Path portion rewrite.
+					// A URI path rewrite.
 					path?: close({
-						// Expression to evaluate for the replacement value.
+						// An expression that evaluates to a value to rewrite the URI path
+						// to.
 						expression?: string
 
-						// Predefined replacement value.
+						// A value to rewrite the URI path to.
 						value?: string
 					})
 
-					// Query portion rewrite.
+					// Whether to propagate the rewritten URI to origin.
+					origin?: bool
+
+					// A URI query rewrite.
 					query?: close({
-						// Expression to evaluate for the replacement value.
+						// An expression that evaluates to a value to rewrite the URI
+						// query to.
 						expression?: string
 
-						// Predefined replacement value.
+						// A value to rewrite the URI query to.
 						value?: string
 					})
 				})
+
+				// Whether to enable Signed Exchanges (SXG).
+				sxg?: bool
 			})
 
 			// The action to perform when the rule matches.
 			// Available values: "block", "challenge", "compress_response",
-			// "execute", "js_challenge", "log", "managed_challenge",
-			// "redirect", "rewrite", "route", "score", "serve_error",
-			// "set_config", "skip", "set_cache_settings",
-			// "log_custom_field", "ddos_dynamic", "force_connection_close".
+			// "ddos_dynamic", "execute", "force_connection_close",
+			// "js_challenge", "log", "log_custom_field",
+			// "managed_challenge", "redirect", "rewrite", "route", "score",
+			// "serve_error", "set_cache_settings", "set_config", "skip".
 			action?: string
 
 			// The categories of the rule.
 			categories?: [...string]
 
-			// Configure checks for exposed credentials.
+			// Configuration for exposed credential checking.
 			exposed_credential_check?: close({
-				// Expression that selects the password used in the credentials
+				// An expression that selects the password used in the credentials
 				// check.
 				password_expression?: string
 
-				// Expression that selects the user ID used in the credentials
+				// An expression that selects the user ID used in the credentials
 				// check.
 				username_expression?: string
 			})
@@ -1272,14 +1297,15 @@ package data
 			// Whether the rule should be executed.
 			enabled?: bool
 
-			// An object configuring the rule's ratelimit behavior.
+			// An object configuring the rule's rate limit behavior.
 			ratelimit?: close({
-				// Characteristics of the request on which the ratelimiter counter
+				// Characteristics of the request on which the rate limit counter
 				// will be incremented.
 				characteristics?: [...string]
 
-				// Defines when the ratelimit counter should be incremented. It is
-				// optional and defaults to the same as the rule's expression.
+				// An expression that defines when the rate limit counter should
+				// be incremented. It defaults to the same as the rule's
+				// expression.
 				counting_expression?: string
 
 				// Period of time in seconds after which the action will be
@@ -1293,16 +1319,15 @@ package data
 				// will be executed for the first time.
 				requests_per_period?: number
 
-				// Defines if ratelimit counting is only done when an origin is
-				// reached.
+				// Whether counting is only performed when an origin is reached.
 				requests_to_origin?: bool
 
 				// The score threshold per period for which the action will be
 				// executed the first time.
 				score_per_period?: number
 
-				// The response header name provided by the origin which should
-				// contain the score to increment ratelimit counter on.
+				// A response header name provided by the origin, which contains
+				// the score to increment rate limit counter with.
 				score_response_header_name?: string
 			})
 
@@ -1312,9 +1337,12 @@ package data
 			// The unique ID of the rule.
 			id?: string
 
-			// The reference of the rule (the rule ID by default).
+			// The reference of the rule (the rule's ID by default).
 			ref?: string
 		})]])
+
+		// The human-readable name of the ruleset.
+		name?: string
 
 		// The phase of the ruleset.
 		// Available values: "ddos_l4", "ddos_l7", "http_config_settings",
@@ -1332,11 +1360,10 @@ package data
 		// "magic_transit_ratelimit".
 		phase?: string
 
-		// The unique ID of the ruleset.
-		ruleset_id?: string
+		// The version of the ruleset.
+		version?: string
 
-		// The Zone ID to use for this endpoint. Mutually exclusive with
-		// the Account ID.
+		// The unique ID of the zone.
 		zone_id?: string
 	})
 }

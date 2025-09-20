@@ -31,9 +31,7 @@ package res
 			id?: string
 		})
 
-		// the type of account being created. For self-serve customers,
-		// use standard. for enterprise customers, use enterprise.
 		// Available values: "standard", "enterprise".
-		type!: string
+		type?: string
 	})
 }

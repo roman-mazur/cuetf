@@ -72,11 +72,24 @@ package res
 		// Identifier
 		id?: string
 
+		// The PSK metadata that includes when the PSK was generated.
+		psk_metadata?: close({
+			// The date and time the tunnel was last modified.
+			last_generated_on?: string
+		})
+
 		// A 31-bit prefix (/31 in CIDR notation) supporting two hosts,
 		// one for each side of the tunnel. Select the subnet from the
 		// following private IP space: 10.0.0.0–10.255.255.255,
 		// 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 		interface_address!: string
+
+		// A 127 bit IPV6 prefix from within the virtual_subnet6 prefix
+		// space with the address being the first IP of the subnet and
+		// not same as the address of virtual_subnet6. Eg if
+		// virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 ,
+		// interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+		interface_address6?: string
 
 		// The date and time the tunnel was last modified.
 		modified_on?: string
@@ -84,12 +97,6 @@ package res
 		// The name of the IPsec tunnel. The name cannot share a name with
 		// other tunnels.
 		name!: string
-
-		// The PSK metadata that includes when the PSK was generated.
-		psk_metadata?: close({
-			// The date and time the tunnel was last modified.
-			last_generated_on?: string
-		})
 
 		// A randomly generated or provided string for use in the IPsec
 		// tunnel.

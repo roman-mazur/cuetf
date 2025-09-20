@@ -4,21 +4,6 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_snippet_rules")
 	close({
-		// An informative description of the rule.
-		description?: string
-
-		// Whether the rule should be executed.
-		enabled?: bool
-
-		// The expression defining which traffic will match the rule.
-		expression?: string
-
-		// The unique ID of the rule.
-		id?: string
-
-		// The timestamp of when the rule was last modified.
-		last_updated?: string
-
 		// A list of snippet rules.
 		rules!: matchN(1, [close({
 			// An informative description of the rule.
@@ -57,9 +42,6 @@ package res
 			// The identifying name of the snippet.
 			snippet_name!: string
 		})]])
-
-		// The identifying name of the snippet.
-		snippet_name?: string
 
 		// The unique ID of the zone.
 		zone_id!: string

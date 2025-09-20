@@ -33,5 +33,14 @@ package res
 
 		// The current number of scripts in this Dispatch Namespace.
 		script_count?: number
+
+		// Whether the Workers in the namespace are executed in a
+		// "trusted" manner. When a Worker is trusted, it has access to
+		// the shared caches for the zone in the Cache API, and has
+		// access to the `request.cf` object on incoming Requests. When a
+		// Worker is untrusted, caches are not shared across the zone,
+		// and `request.cf` is undefined. By default, Workers in a
+		// namespace are "untrusted".
+		trusted_workers?: bool
 	})
 }

@@ -85,7 +85,7 @@ package data
 				// Digest Type.
 				digest_type?: number
 
-				// fingerprint.
+				// Fingerprint.
 				fingerprint?: string
 
 				// Flags for the CAA record.
@@ -138,7 +138,7 @@ package data
 				// Preference.
 				preference?: number
 
-				// priority.
+				// Priority.
 				priority?: number
 
 				// Protocol.
@@ -166,7 +166,7 @@ package data
 				// issuewild, iodef).
 				tag?: string
 
-				// target.
+				// Target.
 				target?: string
 
 				// Type.
@@ -281,7 +281,7 @@ package data
 				// Digest Type.
 				digest_type?: number
 
-				// fingerprint.
+				// Fingerprint.
 				fingerprint?: string
 
 				// Flags for the CAA record.
@@ -334,7 +334,7 @@ package data
 				// Preference.
 				preference?: number
 
-				// priority.
+				// Priority.
 				priority?: number
 
 				// Protocol.
@@ -362,7 +362,7 @@ package data
 				// issuewild, iodef).
 				tag?: string
 
-				// target.
+				// Target.
 				target?: string
 
 				// Type.

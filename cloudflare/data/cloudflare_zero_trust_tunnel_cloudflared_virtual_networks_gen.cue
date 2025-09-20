@@ -10,6 +10,11 @@ package data
 		// UUID of the virtual network.
 		id?: string
 
+		// If `true`, only include the default virtual network. If
+		// `false`, exclude the default virtual network. If empty, all
+		// virtual networks will be included.
+		is_default?: bool
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Optional remark describing the virtual network.
@@ -54,7 +59,7 @@ package data
 		// If `true`, only include the default virtual network. If
 		// `false`, exclude the default virtual network. If empty, all
 		// virtual networks will be included.
-		is_default?: bool
+		is_default_network?: bool
 
 		// If `true`, only include deleted virtual networks. If `false`,
 		// exclude deleted virtual networks. If empty, all virtual

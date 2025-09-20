@@ -16,6 +16,76 @@ package res
 		// The unique ID of the list.
 		id?: string
 
+		// The items in the list. If set, this overwrites all items in the
+		// list. Do not use with `cloudflare_list_item`.
+		items?: matchN(1, [close({
+			// A non-negative 32 bit integer
+			asn?: number
+
+			// An informative summary of the list item.
+			comment?: string
+
+			// Valid characters for hostnames are ASCII(7) letters from a to
+			// z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+			hostname?: close({
+				// Only applies to wildcard hostnames (e.g., *.example.com). When
+				// true (default), only subdomains are blocked. When false, both
+				// the root domain and subdomains are blocked.
+				exclude_exact_hostname?: bool
+				url_hostname!:           string
+			})
+
+			// The definition of the redirect.
+			redirect?: close({
+				include_subdomains?:    bool
+				preserve_path_suffix?:  bool
+				preserve_query_string?: bool
+
+				// Available values: 301, 302, 307, 308.
+				status_code?:      number
+				source_url!:       string
+				subpath_matching?: bool
+				target_url!:       string
+			})
+
+			// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6
+			// CIDR.
+			ip?: string
+		}), [...close({
+			// A non-negative 32 bit integer
+			asn?: number
+
+			// An informative summary of the list item.
+			comment?: string
+
+			// Valid characters for hostnames are ASCII(7) letters from a to
+			// z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+			hostname?: close({
+				// Only applies to wildcard hostnames (e.g., *.example.com). When
+				// true (default), only subdomains are blocked. When false, both
+				// the root domain and subdomains are blocked.
+				exclude_exact_hostname?: bool
+				url_hostname!:           string
+			})
+
+			// The definition of the redirect.
+			redirect?: close({
+				include_subdomains?:    bool
+				preserve_path_suffix?:  bool
+				preserve_query_string?: bool
+
+				// Available values: 301, 302, 307, 308.
+				status_code?:      number
+				source_url!:       string
+				subpath_matching?: bool
+				target_url!:       string
+			})
+
+			// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6
+			// CIDR.
+			ip?: string
+		})]])
+
 		// The type of the list. Each type supports specific list items
 		// (IP addresses, ASNs, hostnames or redirects).
 		// Available values: "ip", "redirect", "hostname", "asn".
