@@ -292,6 +292,11 @@ import "list"
 		// comma separated list with IPv4 CIDRs or IPv4 host addresses.
 		allowed_clients?: string
 
+		// An integer representing the anonymous user ID. Range is 0 to
+		// 4294967295. Required when 'squash_mode' is 'ROOT_SQUASH' or
+		// 'ALL_SQUASH'.
+		anon_uid?: number
+
 		// If enabled, the root user (UID = 0) of the specified clients
 		// doesn't get mapped to nobody (UID = 65534). This is also known
 		// as no_root_squash.
@@ -341,6 +346,13 @@ import "list"
 
 		// Enable to apply the export rule to NFSV4.1 clients.
 		nfsv4?: bool
+
+		// SquashMode defines how remote user privileges are restricted
+		// when accessing an NFS export. It controls how the user
+		// identities (like root) are mapped to anonymous users to limit
+		// access and enforce security. Possible values:
+		// ["NO_ROOT_SQUASH", "ROOT_SQUASH", "ALL_SQUASH"]
+		squash_mode?: string
 	})
 
 	_#defs: "/$defs/snapshot_policy/$defs/daily_schedule": close({

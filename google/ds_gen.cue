@@ -31,9 +31,11 @@ _ds: google_artifact_registry_tags: data.#google_artifact_registry_tags
 _ds: google_artifact_registry_version: data.#google_artifact_registry_version
 _ds: google_backup_dr_backup: data.#google_backup_dr_backup
 _ds: google_backup_dr_backup_plan_association: data.#google_backup_dr_backup_plan_association
+_ds: google_backup_dr_backup_plan_associations: data.#google_backup_dr_backup_plan_associations
 _ds: google_backup_dr_backup_plan: data.#google_backup_dr_backup_plan
 _ds: google_backup_dr_backup_vault: data.#google_backup_dr_backup_vault
 _ds: google_backup_dr_data_source: data.#google_backup_dr_data_source
+_ds: google_backup_dr_data_source_reference: data.#google_backup_dr_data_source_reference
 _ds: google_backup_dr_data_source_references: data.#google_backup_dr_data_source_references
 _ds: google_backup_dr_management_server: data.#google_backup_dr_management_server
 _ds: google_beyondcorp_app_connection: data.#google_beyondcorp_app_connection
@@ -46,6 +48,7 @@ _ds: google_bigquery_analytics_hub_data_exchange_iam_policy: data.#google_bigque
 _ds: google_bigquery_analytics_hub_listing_iam_policy: data.#google_bigquery_analytics_hub_listing_iam_policy
 _ds: google_bigquery_connection_iam_policy: data.#google_bigquery_connection_iam_policy
 _ds: google_bigquery_datapolicy_data_policy_iam_policy: data.#google_bigquery_datapolicy_data_policy_iam_policy
+_ds: google_bigquery_datapolicyv2_data_policy_iam_policy: data.#google_bigquery_datapolicyv2_data_policy_iam_policy
 _ds: google_bigquery_dataset: data.#google_bigquery_dataset
 _ds: google_bigquery_dataset_iam_policy: data.#google_bigquery_dataset_iam_policy
 _ds: google_bigquery_datasets: data.#google_bigquery_datasets

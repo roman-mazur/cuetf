@@ -127,6 +127,7 @@ import "list"
 		// The location for the resource.
 		location!: string
 		id?:       string
+		extended_attributes_oauth2_client?: matchN(1, [#extended_attributes_oauth2_client, list.MaxItems(1) & [...#extended_attributes_oauth2_client]])
 
 		// Output only. The resource name of the provider.
 		// Format:
@@ -135,6 +136,7 @@ import "list"
 		extra_attributes_oauth2_client?: matchN(1, [#extra_attributes_oauth2_client, list.MaxItems(1) & [...#extra_attributes_oauth2_client]])
 		oidc?: matchN(1, [#oidc, list.MaxItems(1) & [...#oidc]])
 		saml?: matchN(1, [#saml, list.MaxItems(1) & [...#saml]])
+		timeouts?: #timeouts
 
 		// The ID for the provider, which becomes the final component of
 		// the resource name.
@@ -143,7 +145,6 @@ import "list"
 		// The prefix 'gcp-' is reserved for use by Google, and may not be
 		// specified.
 		provider_id!: string
-		timeouts?:    #timeouts
 
 		// The current state of the provider.
 		// * STATE_UNSPECIFIED: State unspecified.
@@ -164,6 +165,36 @@ import "list"
 		// The prefix 'gcp-' is reserved for use by Google, and may not be
 		// specified.
 		workforce_pool_id!: string
+	})
+
+	#extended_attributes_oauth2_client: close({
+		// Represents the IdP and type of claims that should be fetched.
+		// * AZURE_AD_GROUPS_ID: Used to get the user's group claims from
+		// the Azure AD identity provider
+		// using configuration provided in ExtendedAttributesOAuth2Client
+		// and 'id'
+		// property of the 'microsoft.graph.group' object is used for
+		// claim mapping. See
+		// https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+		// for more details on 'microsoft.graph.group' properties. The
+		// group IDs obtained from Azure AD are present in
+		// 'assertion.groups' for
+		// OIDC providers and 'assertion.attributes.groups' for SAML
+		// providers for
+		// attribute mapping. Possible values: ["AZURE_AD_GROUPS_ID"]
+		attributes_type!: string
+
+		// The OAuth 2.0 client ID for retrieving extended attributes from
+		// the identity provider. Required to get the Access Token using
+		// client credentials grant flow.
+		client_id!: string
+		client_secret?: matchN(1, [_#defs."/$defs/extended_attributes_oauth2_client/$defs/client_secret", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/extended_attributes_oauth2_client/$defs/client_secret"]])
+
+		// The OIDC identity provider's issuer URI. Must be a valid URI
+		// using the 'https' scheme. Required to get the OIDC discovery
+		// document.
+		issuer_uri!: string
+		query_parameters?: matchN(1, [_#defs."/$defs/extended_attributes_oauth2_client/$defs/query_parameters", list.MaxItems(1) & [..._#defs."/$defs/extended_attributes_oauth2_client/$defs/query_parameters"]])
 	})
 
 	#extra_attributes_oauth2_client: close({
@@ -275,6 +306,30 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/extended_attributes_oauth2_client/$defs/client_secret": close({
+		value?: matchN(1, [_#defs."/$defs/extended_attributes_oauth2_client/$defs/client_secret/$defs/value", list.MaxItems(1) & [..._#defs."/$defs/extended_attributes_oauth2_client/$defs/client_secret/$defs/value"]])
+	})
+
+	_#defs: "/$defs/extended_attributes_oauth2_client/$defs/client_secret/$defs/value": close({
+		// The plain text of the client secret value.
+		plain_text!: string
+
+		// A thumbprint to represent the current client secret value.
+		thumbprint?: string
+	})
+
+	_#defs: "/$defs/extended_attributes_oauth2_client/$defs/query_parameters": close({
+		// The filter used to request specific records from IdP. In case
+		// of attributes type as AZURE_AD_GROUPS_ID, it represents the
+		// filter used to request specific groups for users from IdP. By
+		// default, all of the groups associated with the user are
+		// fetched. The
+		// groups should be security enabled. See
+		// https://learn.microsoft.com/en-us/graph/search-query-parameter
+		// for more details.
+		filter?: string
 	})
 
 	_#defs: "/$defs/extra_attributes_oauth2_client/$defs/client_secret": close({

@@ -174,6 +174,7 @@ package data
 					volume_mounts?: [...close({
 						mount_path?: string
 						name?:       string
+						sub_path?:   string
 					})]
 					working_dir?: string
 				})]

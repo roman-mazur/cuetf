@@ -19,7 +19,6 @@ import "list"
 		// ["COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED",
 		// "DISABLED", "ENABLED"]
 		complex_data_type_reference_parsing?: string
-		notification_config?: matchN(1, [#notification_config, list.MaxItems(1) & [...#notification_config]])
 
 		// Identifies the dataset addressed by this request. Must be in
 		// the format
@@ -121,10 +120,12 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
+		notification_config?: matchN(1, [#notification_config, list.MaxItems(1) & [...#notification_config]])
 		notification_configs?: matchN(1, [#notification_configs, [...#notification_configs]])
 		stream_configs?: matchN(1, [#stream_configs, [...#stream_configs]])
 		timeouts?: #timeouts
-		id?:       string
+		validation_config?: matchN(1, [#validation_config, list.MaxItems(1) & [...#validation_config]])
+		id?: string
 
 		// The resource name for the FhirStore.
 		//
@@ -216,6 +217,65 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	#validation_config: close({
+		// Whether to disable FHIRPath validation for incoming resources.
+		// The default value is false. Set this to true to disable
+		// checking incoming resources for conformance against FHIRPath
+		// requirement defined in the FHIR specification. This property
+		// only affects resource types that do not have profiles
+		// configured for them, any rules in enabled implementation
+		// guides will still be enforced.
+		disable_fhirpath_validation?: bool
+
+		// Whether to disable profile validation for this FHIR store. The
+		// default value is false. Set this to true to disable checking
+		// incoming resources for conformance against structure
+		// definitions in this FHIR store.
+		disable_profile_validation?: bool
+
+		// Whether to disable reference type validation for incoming
+		// resources. The default value is false. Set this to true to
+		// disable checking incoming resources for conformance against
+		// reference type requirement defined in the FHIR specification.
+		// This property only affects resource types that do not have
+		// profiles configured for them, any rules in enabled
+		// implementation guides will still be enforced.
+		disable_reference_type_validation?: bool
+
+		// Whether to disable required fields validation for incoming
+		// resources. The default value is false. Set this to true to
+		// disable checking incoming resources for conformance against
+		// required fields requirement defined in the FHIR specification.
+		// This property only affects resource types that do not have
+		// profiles configured for them, any rules in enabled
+		// implementation guides will still be enforced.
+		disable_required_field_validation?: bool
+
+		// A list of implementation guide URLs in this FHIR store that are
+		// used to configure the profiles to use for validation.
+		// When a URL cannot be resolved (for example, in a type
+		// assertion), the server does not return an error.
+		// For example, to use the US Core profiles for validation, set
+		// enabledImplementationGuides to
+		// ["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]. If
+		// enabledImplementationGuides is empty or omitted, then incoming
+		// resources are only required to conform to the base FHIR
+		// profiles. Otherwise, a resource must conform to at least one
+		// profile listed in the global property of one of the enabled
+		// ImplementationGuides.
+		// The Cloud Healthcare API does not currently enforce all of the
+		// rules in a StructureDefinition. The following rules are
+		// supported:
+		// - min/max
+		// - minValue/maxValue
+		// - maxLength
+		// - type
+		// - fixed[x]
+		// - pattern[x] on simple types
+		// - slicing, when using "value" as the discriminator type
+		enabled_implementation_guides?: [...string]
 	})
 
 	_#defs: "/$defs/stream_configs/$defs/bigquery_destination": close({

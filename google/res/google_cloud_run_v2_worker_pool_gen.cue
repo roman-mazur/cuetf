@@ -449,6 +449,10 @@ import "list"
 
 		// This must match the Name of a Volume.
 		name!: string
+
+		// Path within the volume from which the container's volume should
+		// be mounted.
+		sub_path?: string
 	})
 
 	_#defs: "/$defs/template/$defs/node_selector": close({
@@ -547,6 +551,11 @@ import "list"
 
 	_#defs: "/$defs/template/$defs/vpc_access": close({
 		network_interfaces?: matchN(1, [_#defs."/$defs/template/$defs/vpc_access/$defs/network_interfaces", [..._#defs."/$defs/template/$defs/vpc_access/$defs/network_interfaces"]])
+
+		// VPC Access connector name. Format:
+		// projects/{project}/locations/{location}/connectors/{connector},
+		// where {project} can be project id or number.
+		connector?: string
 
 		// Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC",
 		// "PRIVATE_RANGES_ONLY"]

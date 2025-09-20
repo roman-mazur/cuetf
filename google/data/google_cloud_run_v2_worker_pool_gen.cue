@@ -253,6 +253,7 @@ package data
 				volume_mounts?: [...close({
 					mount_path?: string
 					name?:       string
+					sub_path?:   string
 				})]
 				working_dir?: string
 			})]
@@ -295,7 +296,8 @@ package data
 				})]
 			})]
 			vpc_access?: [...close({
-				egress?: string
+				connector?: string
+				egress?:    string
 				network_interfaces?: [...close({
 					network?:    string
 					subnetwork?: string

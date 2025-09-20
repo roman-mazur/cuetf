@@ -10,7 +10,6 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
-		id?: string
 
 		// Labels with user-defined metadata.
 		//
@@ -24,6 +23,7 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
+		id?: string
 
 		// Location of the CaPool. A full list of valid locations can be
 		// found by
@@ -32,18 +32,25 @@ import "list"
 
 		// The name for this CaPool.
 		name!: string
-		issuance_policy?: matchN(1, [#issuance_policy, list.MaxItems(1) & [...#issuance_policy]])
-		publishing_options?: matchN(1, [#publishing_options, list.MaxItems(1) & [...#publishing_options]])
-		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 		project?: string
+		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
+		issuance_policy?: matchN(1, [#issuance_policy, list.MaxItems(1) & [...#issuance_policy]])
+		publishing_options?: matchN(1, [#publishing_options, list.MaxItems(1) & [...#publishing_options]])
 
 		// The Tier of this CaPool. Possible values: ["ENTERPRISE",
 		// "DEVOPS"]
-		tier!: string
+		tier!:     string
+		timeouts?: #timeouts
+	})
+
+	#encryption_spec: close({
+		// The resource name for an existing Cloud KMS key in the format
+		// 'projects/*/locations/*/keyRings/*/cryptoKeys/*'.
+		cloud_kms_key?: string
 	})
 
 	#issuance_policy: close({

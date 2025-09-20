@@ -32,7 +32,7 @@ package res
 		// A purpose denotes that this Tag is intended for use in policies
 		// of a specific policy engine, and will involve that policy
 		// engine in management operations involving this Tag. Possible
-		// values: ["GCE_FIREWALL"]
+		// values: ["GCE_FIREWALL", "DATA_GOVERNANCE"]
 		purpose?:  string
 		timeouts?: #timeouts
 

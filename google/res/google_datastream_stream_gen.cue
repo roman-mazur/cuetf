@@ -347,6 +347,11 @@ import "list"
 
 	_#defs: "/$defs/destination_config/$defs/bigquery_destination_config/$defs/source_hierarchy_datasets": close({
 		dataset_template?: matchN(1, [_#defs."/$defs/destination_config/$defs/bigquery_destination_config/$defs/source_hierarchy_datasets/$defs/dataset_template", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination_config/$defs/bigquery_destination_config/$defs/source_hierarchy_datasets/$defs/dataset_template"]])
+
+		// Optional. The project id of the BigQuery dataset. If not
+		// specified, the project will be inferred from the stream
+		// resource.
+		project_id?: string
 	})
 
 	_#defs: "/$defs/destination_config/$defs/bigquery_destination_config/$defs/source_hierarchy_datasets/$defs/dataset_template": close({

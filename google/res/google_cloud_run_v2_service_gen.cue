@@ -727,6 +727,10 @@ import "list"
 
 		// This must match the Name of a Volume.
 		name!: string
+
+		// Path within the volume from which the container's volume should
+		// be mounted.
+		sub_path?: string
 	})
 
 	_#defs: "/$defs/template/$defs/node_selector": close({

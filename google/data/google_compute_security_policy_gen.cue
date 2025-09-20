@@ -41,16 +41,33 @@ package data
 		// 2048.
 		description?: string
 
+		// All of labels (key/value pairs) present on the resource in GCP,
+		// including the labels configured through Terraform, other
+		// clients and services.
+		effective_labels?: [string]: string
+
 		// Fingerprint of this resource.
 		fingerprint?: string
 
+		// The unique fingerprint of the labels.
+		label_fingerprint?: string
+
+		// Labels to apply to this address. A list of key->value pairs.
+		//
+		//
+		// **Note**: This field is non-authoritative, and will only manage
+		// the labels present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the
+		// labels present on the resource.
+		labels?: [string]: string
+
 		// The name of the security policy.
 		name?: string
-		id?:   string
 
 		// The project in which the resource belongs. If it is not
 		// provided, the provider project is used.
 		project?: string
+		id?:      string
 
 		// reCAPTCHA configuration options to be applied for the security
 		// policy.
@@ -141,6 +158,10 @@ package data
 
 		// The URI of the created resource.
 		self_link?: string
+
+		// The combination of labels configured directly on the resource
+		// and default labels configured on the provider.
+		terraform_labels?: [string]: string
 
 		// The type indicates the intended use of the security policy.
 		// CLOUD_ARMOR - Cloud Armor backend security policies can be

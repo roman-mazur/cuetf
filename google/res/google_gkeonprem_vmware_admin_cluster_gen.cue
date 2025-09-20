@@ -94,7 +94,9 @@ import "list"
 		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [_, ...] & [...#network_config]])
 		platform_config?: matchN(1, [#platform_config, list.MaxItems(1) & [...#platform_config]])
 		private_registry_config?: matchN(1, [#private_registry_config, list.MaxItems(1) & [...#private_registry_config]])
+		proxy?: matchN(1, [#proxy, list.MaxItems(1) & [...#proxy]])
 		timeouts?: #timeouts
+		vcenter?: matchN(1, [#vcenter, list.MaxItems(1) & [...#vcenter]])
 
 		// The VMware admin cluster resource name.
 		name!: string
@@ -102,8 +104,7 @@ import "list"
 		// The Anthos clusters on the VMware version for the admin
 		// cluster.
 		on_prem_version?: string
-		vcenter?: matchN(1, [#vcenter, list.MaxItems(1) & [...#vcenter]])
-		project?: string
+		project?:         string
 
 		// If set, there are currently changes in flight to the VMware
 		// admin cluster.
@@ -241,6 +242,16 @@ import "list"
 
 		// The CA certificate public key for private registry.
 		ca_cert?: string
+	})
+
+	#proxy: close({
+		// A comma-separated list of IP addresses, IP address ranges,
+		// host names, and domain names that should not go through the
+		// proxy server.
+		no_proxy?: string
+
+		// The proxy url.
+		url!: string
 	})
 
 	#timeouts: close({
