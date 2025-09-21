@@ -1,0 +1,18 @@
+name: regenerate
+"on":
+  pull_request:
+    branches:
+      - main
+    types:
+      - labeled
+jobs:
+  regenerate:
+    if: startsWith(github.event.event.label.name, 'provider:')
+    runs-on: ubuntu:latest
+    steps:
+      - name: execute
+        run: |-
+          export label="${{ github.event.event.label.name }}"
+          export provider=${label#"provider:"}
+          echo "Regenerating for $provider"
+          ./update-provider.sh "$provider"

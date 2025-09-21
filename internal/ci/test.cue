@@ -5,7 +5,6 @@ workflows: test: {
 	on: pull_request: branches: ["main"]
 
 	jobs: main: {
-		"runs-on": "ubuntu-latest"
 		steps: [
 			{name: "Checkout", uses: "actions/checkout@v4"},
 

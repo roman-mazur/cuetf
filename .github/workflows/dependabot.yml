@@ -5,16 +5,17 @@ name: dependabot
       - main
 jobs:
   dependabot:
-    runs-on: ubuntu:latest
     if: github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: ubuntu:latest
     steps:
       - id: metadata
         name: 'dependabot: metadata'
         uses: dependabot/fetch-metadata@v2
         with:
           github-token: ${{ secrets.DEPENDABOT_GITUB }}
-      - name: regenerate
+      - name: label
         run: |-
           export dep_name="${{ steps.metadata.outputs.dependency-names }}"
-          echo "Regenerating for $dep_name"
-          ./update-provider.sh "$dep_name"
+          export label="provider:$(basename $dep_name)"
+          echo "Setting label $label"
+          gh pr edit "${{ github.event.pull_request.html_url }}" --add-label "$label"

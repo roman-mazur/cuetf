@@ -9,11 +9,32 @@ package ci
 		}
 	]
 
+workflows: regenerate: {
+	on: pull_request: {
+		branches: ["main"]
+		types: ["labeled"]
+	}
+
+	jobs: regenerate: {
+		"if": "startsWith(github.event.event.label.name, 'provider:')"
+		steps: [
+			{
+				name: "execute"
+				run: """
+					export label="${{ github.event.event.label.name }}"
+					export provider=${label#"provider:"}
+					echo "Regenerating for $provider"
+					./update-provider.sh "$provider"
+					"""
+			}
+		]
+	}
+}
+
 workflows: (#dbot): {
 	on: pull_request: branches: ["main"]
 
 	jobs: (#dbot): {
-		"runs-on": "ubuntu:latest"
 		"if": "github.event.pull_request.user.login == '\(#dbot)[bot]'"
 		steps: [
 			{
@@ -23,11 +44,12 @@ workflows: (#dbot): {
 				with: "github-token": "${{ secrets.DEPENDABOT_GITUB }}"
 			},
 			{
-				name: "regenerate"
+				name: "label"
 				run: """
 					export dep_name="${{ steps.metadata.outputs.dependency-names }}"
-					echo "Regenerating for $dep_name"
-					./update-provider.sh "$dep_name"
+					export label="provider:$(basename $dep_name)"
+					echo "Setting label $label"
+					gh pr edit "${{ github.event.pull_request.html_url }}" --add-label "$label"
 					"""
 			}
 		]
