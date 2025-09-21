@@ -8,7 +8,7 @@ name: regenerate
 jobs:
   regenerate:
     if: startsWith(github.event.label.name, 'provider:')
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       - name: execute
         run: |-
