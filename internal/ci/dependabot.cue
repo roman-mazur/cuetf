@@ -1,0 +1,14 @@
+package ci
+
+dependabot: {
+	version: 2
+
+	updates: [
+		{
+			"package-ecosystem": "terraform"
+			directories: ["*/internal"]
+			schedule: interval: "weekly"
+			"open-pull-requests-limit": 2
+		}
+	]
+}
