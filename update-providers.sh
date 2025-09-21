@@ -26,6 +26,12 @@ function process() {
   echo "Waiting for the schemas import to finish..."
   wait $defs_pid
   echo "DONE: $provider"
+
+  errors_cnt=$(grep -c ERROR < "logs/$provider-log.txt")
+  if [ "$errors_cnt" != "0" ]; then
+    echo "Update generated $errors_cnt errors"
+    exit 1
+  fi
 }
 
 input_provider=$1
