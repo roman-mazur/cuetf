@@ -16,12 +16,12 @@ workflows: regenerate: {
 	}
 
 	jobs: regenerate: {
-		"if": "startsWith(github.event.event.label.name, 'provider:')"
+		"if": "startsWith(github.event.label.name, 'provider:')"
 		steps: [
 			{
 				name: "execute"
 				run: """
-					export label="${{ github.event.event.label.name }}"
+					export label="${{ github.event.label.name }}"
 					export provider=${label#"provider:"}
 					echo "Regenerating for $provider"
 					./update-provider.sh "$provider"
