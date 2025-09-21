@@ -16,7 +16,11 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: "1.25"
-      - name: Test
-        run: |-
-          go install cuelang.org/go/cmd/cue
-          go test ./...
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.5.7
+      - name: Set up CUE
+        run: go install cuelang.org/go/cmd/cue
+      - name: Execute
+        run: go test ./...

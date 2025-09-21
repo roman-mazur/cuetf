@@ -8,11 +8,36 @@ name: regenerate
 jobs:
   regenerate:
     if: startsWith(github.event.label.name, 'provider:')
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
-      - name: execute
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.25"
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.5.7
+      - name: Set up CUE
+        run: go install cuelang.org/go/cmd/cue
+      - uses: actions4git/setup-git@v1
+      - name: Execute
         run: |-
+          branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+          git checkout "origin/$branch"
+
           export label="${{ github.event.label.name }}"
           export provider=${label#"provider:"}
           echo "Regenerating for $provider"
-          ./update-provider.sh "$provider"
+          ./update-providers.sh "$provider"
+
+          git add "$provider"
+          git add "logs/$provider-log.txt"
+          git commit -m "$provider: regenerate on dep update"
+          git push origin HEAD:"$branch"

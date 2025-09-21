@@ -1,13 +1,13 @@
 package ci
 
 (#dbot): updates: [
-		{
-			"package-ecosystem": "terraform"
-			directories: ["*/internal"]
-			schedule: interval: "weekly"
-			"open-pull-requests-limit": 2
-		}
-	]
+	{
+		"package-ecosystem": "terraform"
+		directories: ["*/internal"]
+		schedule: interval: "weekly"
+		"open-pull-requests-limit": 2
+	},
+]
 
 workflows: regenerate: {
 	on: pull_request: {
@@ -17,17 +17,23 @@ workflows: regenerate: {
 
 	jobs: regenerate: {
 		"if": "startsWith(github.event.label.name, 'provider:')"
-		steps: [
-			{
-				name: "execute"
-				run: """
-					export label="${{ github.event.label.name }}"
-					export provider=${label#"provider:"}
-					echo "Regenerating for $provider"
-					./update-provider.sh "$provider"
-					"""
-			}
-		]
+		permissions: contents: "write"
+
+		#useGit: true
+		#script: """
+			branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+			git checkout "origin/$branch"
+
+			export label="${{ github.event.label.name }}"
+			export provider=${label#"provider:"}
+			echo "Regenerating for $provider"
+			./update-providers.sh "$provider"
+
+			git add "$provider"
+			git add "logs/$provider-log.txt"
+			git commit -m "$provider: regenerate on dep update"
+			git push origin HEAD:"$branch"
+			"""
 	}
 }
 
@@ -38,7 +44,7 @@ workflows: (#dbot): {
 		"if": "github.event.pull_request.user.login == '\(#dbot)[bot]'"
 		steps: [
 			{
-				id: "metadata"
+				id:   "metadata"
 				name: "\(#dbot): \(id)"
 				uses: "\(#dbot)/fetch-metadata@v2"
 				with: "github-token": "${{ secrets.DEPENDABOT_GITUB }}"
@@ -51,7 +57,7 @@ workflows: (#dbot): {
 					echo "Setting label $label"
 					gh pr edit "${{ github.event.pull_request.html_url }}" --add-label "$label"
 					"""
-			}
+			},
 		]
 	}
 }

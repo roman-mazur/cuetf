@@ -27,7 +27,7 @@ function process() {
   wait $defs_pid
   echo "DONE: $provider"
 
-  errors_cnt=$(grep -c ERROR < "logs/$provider-log.txt")
+  errors_cnt=$(grep -c ERROR < "logs/$provider-log.txt" || exit 0)
   if [ "$errors_cnt" != "0" ]; then
     echo "Update generated $errors_cnt errors"
     exit 1
