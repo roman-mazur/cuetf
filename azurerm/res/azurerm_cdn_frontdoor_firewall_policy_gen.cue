@@ -6,22 +6,23 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_cdn_frontdoor_firewall_policy")
 	close({
-		custom_block_response_body?:        string
-		custom_block_response_status_code?: number
-		enabled?:                           bool
+		captcha_cookie_expiration_in_minutes?: number
+		custom_block_response_body?:           string
+		custom_block_response_status_code?:    number
+		enabled?:                              bool
 		frontend_endpoint_ids?: [...string]
 		id?:                                        string
 		js_challenge_cookie_expiration_in_minutes?: number
 		mode!:                                      string
 		name!:                                      string
-		redirect_url?:                              string
 		custom_rule?: matchN(1, [#custom_rule, list.MaxItems(100) & [...#custom_rule]])
+		redirect_url?:               string
 		request_body_check_enabled?: bool
-		resource_group_name!:        string
-		sku_name!:                   string
-		tags?: [string]: string
 		log_scrubbing?: matchN(1, [#log_scrubbing, list.MaxItems(1) & [...#log_scrubbing]])
 		managed_rule?: matchN(1, [#managed_rule, list.MaxItems(100) & [...#managed_rule]])
+		resource_group_name!: string
+		sku_name!:            string
+		tags?: [string]: string
 		timeouts?: #timeouts
 	})
 

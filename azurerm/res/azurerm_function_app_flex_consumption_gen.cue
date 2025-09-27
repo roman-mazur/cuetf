@@ -27,6 +27,7 @@ import "list"
 		// Is the Function App enabled.
 		enabled?:                bool
 		hosting_environment_id?: string
+		http_concurrency?:       number
 
 		// Can the Function App only be accessed via HTTPS?
 		https_only?:             bool
@@ -41,10 +42,11 @@ import "list"
 		outbound_ip_address_list?: [...string]
 		outbound_ip_addresses?: string
 		possible_outbound_ip_address_list?: [...string]
+		always_ready?: matchN(1, [#always_ready, [...#always_ready]])
 		possible_outbound_ip_addresses?: string
 		public_network_access_enabled?:  bool
 		resource_group_name!:            string
-		always_ready?: matchN(1, [#always_ready, [...#always_ready]])
+		auth_settings?: matchN(1, [#auth_settings, list.MaxItems(1) & [...#auth_settings]])
 		runtime_name!:    string
 		runtime_version!: string
 
@@ -65,7 +67,6 @@ import "list"
 		// The type of the storage container where the function app's code
 		// is hosted. Only `blobContainer` is supported currently.
 		storage_container_type!: string
-		auth_settings?: matchN(1, [#auth_settings, list.MaxItems(1) & [...#auth_settings]])
 		auth_settings_v2?: matchN(1, [#auth_settings_v2, list.MaxItems(1) & [...#auth_settings_v2]])
 		connection_string?: matchN(1, [#connection_string, [...#connection_string]])
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])

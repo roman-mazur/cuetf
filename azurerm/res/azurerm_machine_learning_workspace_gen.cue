@@ -14,24 +14,25 @@ import "list"
 		high_business_impact?:     bool
 		id?:                       string
 		image_build_compute_name?: string
-		key_vault_id!:             string
 		encryption?: matchN(1, [#encryption, list.MaxItems(1) & [...#encryption]])
-		kind?:     string
-		location!: string
-		name!:     string
-		feature_store?: matchN(1, [#feature_store, list.MaxItems(1) & [...#feature_store]])
+		key_vault_id!:                   string
+		kind?:                           string
+		location!:                       string
+		name!:                           string
 		primary_user_assigned_identity?: string
-		public_network_access_enabled?:  bool
-		resource_group_name!:            string
-		sku_name?:                       string
-		storage_account_id!:             string
-		tags?: [string]: string
-		v1_legacy_mode_enabled?: bool
+		feature_store?: matchN(1, [#feature_store, list.MaxItems(1) & [...#feature_store]])
+		public_network_access_enabled?: bool
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		resource_group_name!:             string
+		service_side_encryption_enabled?: bool
+		sku_name?:                        string
+		storage_account_id!:              string
+		tags?: [string]: string
 		managed_network?: matchN(1, [#managed_network, list.MaxItems(1) & [...#managed_network]])
 		serverless_compute?: matchN(1, [#serverless_compute, list.MaxItems(1) & [...#serverless_compute]])
-		timeouts?:     #timeouts
-		workspace_id?: string
+		timeouts?:               #timeouts
+		v1_legacy_mode_enabled?: bool
+		workspace_id?:           string
 	})
 
 	#encryption: close({

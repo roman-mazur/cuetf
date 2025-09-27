@@ -21,6 +21,7 @@ import "list"
 		create?: string
 		delete?: string
 		read?:   string
+		update?: string
 	})
 
 	_#defs: "/$defs/security_policies/$defs/firewall": close({

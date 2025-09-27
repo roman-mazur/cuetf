@@ -103,6 +103,8 @@ import "list"
 
 	#api_server_access_profile: close({
 		authorized_ip_ranges?: [...string]
+		subnet_id?:                           string
+		virtual_network_integration_enabled?: bool
 	})
 
 	#auto_scaler_profile: close({
