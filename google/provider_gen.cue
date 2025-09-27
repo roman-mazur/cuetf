@@ -94,8 +94,7 @@ package google
 		gemini_custom_endpoint?:                string
 		gke_backup_custom_endpoint?:            string
 		batching?: matchN(1, [#batching, [...#batching]])
-		gke_hub2_custom_endpoint?: string
-		external_credentials?: matchN(1, [#external_credentials, [...#external_credentials]])
+		gke_hub2_custom_endpoint?:           string
 		gke_hub_custom_endpoint?:            string
 		gkeonprem_custom_endpoint?:          string
 		healthcare_custom_endpoint?:         string
@@ -148,6 +147,7 @@ package google
 		region?:                                     string
 		request_reason?:                             string
 		request_timeout?:                            string
+		resource_manager3_custom_endpoint?:          string
 		resource_manager_custom_endpoint?:           string
 		resource_manager_v3_custom_endpoint?:        string
 		scopes?: [...string]
@@ -179,9 +179,10 @@ package google
 		vertex_ai_custom_endpoint?:                     string
 		vmwareengine_custom_endpoint?:                  string
 		vpc_access_custom_endpoint?:                    string
-		workbench_custom_endpoint?:                     string
-		workflows_custom_endpoint?:                     string
-		zone?:                                          string
+		external_credentials?: matchN(1, [#external_credentials, [...#external_credentials]])
+		workbench_custom_endpoint?: string
+		workflows_custom_endpoint?: string
+		zone?:                      string
 	})
 
 	#batching: close({

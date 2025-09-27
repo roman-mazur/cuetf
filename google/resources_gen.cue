@@ -872,6 +872,7 @@ _res: google_network_services_mesh: res.#google_network_services_mesh
 _res: google_network_services_service_binding: res.#google_network_services_service_binding
 _res: google_network_services_tcp_route: res.#google_network_services_tcp_route
 _res: google_network_services_tls_route: res.#google_network_services_tls_route
+_res: google_network_services_wasm_plugin: res.#google_network_services_wasm_plugin
 _res: google_notebooks_environment: res.#google_notebooks_environment
 _res: google_notebooks_instance: res.#google_notebooks_instance
 _res: google_notebooks_instance_iam_binding: res.#google_notebooks_instance_iam_binding
@@ -949,6 +950,7 @@ _res: google_recaptcha_enterprise_key: res.#google_recaptcha_enterprise_key
 _res: google_redis_cluster: res.#google_redis_cluster
 _res: google_redis_cluster_user_created_connections: res.#google_redis_cluster_user_created_connections
 _res: google_redis_instance: res.#google_redis_instance
+_res: google_resource_manager_capability: res.#google_resource_manager_capability
 _res: google_resource_manager_lien: res.#google_resource_manager_lien
 _res: google_scc_event_threat_detection_custom_module: res.#google_scc_event_threat_detection_custom_module
 _res: google_scc_folder_custom_module: res.#google_scc_folder_custom_module

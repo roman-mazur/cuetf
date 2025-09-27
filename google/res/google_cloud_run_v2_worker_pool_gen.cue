@@ -504,6 +504,11 @@ import "list"
 		// GCS Bucket name
 		bucket!: string
 
+		// A list of flags to pass to the gcsfuse command for configuring
+		// this volume.
+		// Flags should be passed without leading dashes.
+		mount_options?: [...string]
+
 		// If true, mount the GCS bucket as read-only
 		read_only?: bool
 	})

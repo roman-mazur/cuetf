@@ -87,6 +87,13 @@ package res
 		// 'send_propagated_connection_limit_if_zero = true'.
 		propagated_connection_limit?: number
 		consumer_accept_lists?: matchN(1, [#consumer_accept_lists, [...#consumer_accept_lists]])
+		timeouts?: #timeouts
+
+		// An 128-bit global unique ID of the PSC service attachment.
+		psc_service_attachment_id?: [...close({
+			high?: string
+			low?:  string
+		})]
 
 		// This flag determines whether a consumer accept/reject list
 		// change can reconcile the statuses of existing ACCEPTED or
@@ -104,7 +111,6 @@ package res
 		// URL of the region where the resource resides.
 		region?:    string
 		self_link?: string
-		timeouts?:  #timeouts
 
 		// Controls the behavior of propagated_connection_limit.
 		// When false, setting propagated_connection_limit to zero causes

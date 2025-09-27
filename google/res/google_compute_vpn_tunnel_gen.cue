@@ -1,5 +1,7 @@
 package res
 
+import "list"
+
 #google_compute_vpn_tunnel: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_vpn_tunnel")
@@ -17,7 +19,6 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
-		id?: string
 
 		// IKE protocol version to use when establishing the VPN tunnel
 		// with
@@ -37,6 +38,7 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
+		id?: string
 
 		// Local traffic selector to use when establishing the VPN tunnel
 		// with
@@ -74,11 +76,12 @@ package res
 
 		// IP address of the peer VPN gateway. Only IPv4 is supported.
 		peer_ip?: string
-		project?: string
 
 		// The region where the tunnel is located. If unset, is set to the
 		// region of 'target_vpn_gateway'.
-		region?:   string
+		region?:  string
+		project?: string
+		cipher_suite?: matchN(1, [#cipher_suite, list.MaxItems(1) & [...#cipher_suite]])
 		timeouts?: #timeouts
 
 		// Remote traffic selector to use when establishing the VPN tunnel
@@ -89,13 +92,13 @@ package res
 		remote_traffic_selector?: [...string]
 
 		// URL of router resource to be used for dynamic routing.
-		router?:    string
-		self_link?: string
+		router?: string
 
 		// Shared secret used to set the secure session between the Cloud
 		// VPN
 		// gateway and the peer VPN gateway.
 		shared_secret!: string
+		self_link?:     string
 
 		// Hash of the shared secret.
 		shared_secret_hash?: string
@@ -125,9 +128,39 @@ package res
 		vpn_gateway_interface?: number
 	})
 
+	#cipher_suite: close({
+		phase1?: matchN(1, [_#defs."/$defs/cipher_suite/$defs/phase1", list.MaxItems(1) & [..._#defs."/$defs/cipher_suite/$defs/phase1"]])
+		phase2?: matchN(1, [_#defs."/$defs/cipher_suite/$defs/phase2", list.MaxItems(1) & [..._#defs."/$defs/cipher_suite/$defs/phase2"]])
+	})
+
 	#timeouts: close({
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/cipher_suite/$defs/phase1": close({
+		// Diffie-Hellman groups.
+		dh?: [...string]
+
+		// Encryption algorithms.
+		encryption?: [...string]
+
+		// Integrity algorithms.
+		integrity?: [...string]
+
+		// Pseudo-random functions.
+		prf?: [...string]
+	})
+
+	_#defs: "/$defs/cipher_suite/$defs/phase2": close({
+		// Encryption algorithms.
+		encryption?: [...string]
+
+		// Integrity algorithms.
+		integrity?: [...string]
+
+		// Perfect forward secrecy groups.
+		pfs?: [...string]
 	})
 }

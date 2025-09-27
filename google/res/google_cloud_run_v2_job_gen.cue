@@ -551,6 +551,11 @@ import "list"
 		// bucket.
 		bucket!: string
 
+		// A list of flags to pass to the gcsfuse command for configuring
+		// this volume.
+		// Flags should be passed without leading dashes.
+		mount_options?: [...string]
+
 		// If true, mount this volume as read-only in all mounts. If
 		// false, mount this volume as read-write.
 		read_only?: bool

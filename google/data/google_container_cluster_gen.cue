@@ -318,6 +318,9 @@ package data
 			additional_pod_ranges_config?: [...close({
 				pod_range_names?: [...string]
 			})]
+			auto_ipam_config?: [...close({
+				enabled?: bool
+			})]
 			cluster_ipv4_cidr_block?:      string
 			cluster_secondary_range_name?: string
 			pod_cidr_overprovision_config?: [...close({

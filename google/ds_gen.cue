@@ -20,6 +20,7 @@ _ds: google_apphub_discovered_workload: data.#google_apphub_discovered_workload
 _ds: google_artifact_registry_docker_image: data.#google_artifact_registry_docker_image
 _ds: google_artifact_registry_docker_images: data.#google_artifact_registry_docker_images
 _ds: google_artifact_registry_locations: data.#google_artifact_registry_locations
+_ds: google_artifact_registry_maven_artifact: data.#google_artifact_registry_maven_artifact
 _ds: google_artifact_registry_npm_package: data.#google_artifact_registry_npm_package
 _ds: google_artifact_registry_package: data.#google_artifact_registry_package
 _ds: google_artifact_registry_python_package: data.#google_artifact_registry_python_package
@@ -122,6 +123,8 @@ _ds: google_compute_instance_serial_port: data.#google_compute_instance_serial_p
 _ds: google_compute_instance_template: data.#google_compute_instance_template
 _ds: google_compute_instance_template_iam_policy: data.#google_compute_instance_template_iam_policy
 _ds: google_compute_instant_snapshot_iam_policy: data.#google_compute_instant_snapshot_iam_policy
+_ds: google_compute_interconnect_location: data.#google_compute_interconnect_location
+_ds: google_compute_interconnect_locations: data.#google_compute_interconnect_locations
 _ds: google_compute_lb_ip_ranges: data.#google_compute_lb_ip_ranges
 _ds: google_compute_machine_types: data.#google_compute_machine_types
 _ds: google_compute_network_attachment: data.#google_compute_network_attachment
