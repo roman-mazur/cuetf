@@ -47,10 +47,11 @@ workflows: (#dbot): {
 				id:   "metadata"
 				name: "\(#dbot): \(id)"
 				uses: "\(#dbot)/fetch-metadata@v2"
-				with: "github-token": "${{ secrets.DEPENDABOT_GITUB }}"
+				with: "github-token": "${{ secrets.GITHUB_TOKEN }}"
 			},
 			{
 				name: "label"
+				env: GH_TOKEN: "${{ secrets.DEPENDABOT_GITHUB }}"
 				run: """
 					export dep_name="${{ steps.metadata.outputs.dependency-names }}"
 					export label="provider:$(basename $dep_name)"
