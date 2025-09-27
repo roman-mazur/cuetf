@@ -22,7 +22,7 @@ workflows: [N=string]: github.#Workflow & {
 					uses: "actions/checkout@v4"
 					if #useGit {
 						with: "fetch-depth": 0
-						with: token: "${{ secrets.GENERATOR_TOKEN }}"
+						with: token:         "${{ secrets.GENERATOR_TOKEN }}"
 					}
 				},
 

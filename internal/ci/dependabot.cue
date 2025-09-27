@@ -40,10 +40,13 @@ workflows: regenerate: {
 }
 
 workflows: (#dbot): {
-	on: pull_request: branches: ["main"]
+	on: pull_request: {
+		branches: ["main"]
+		types: ["opened"]
+	}
 
 	jobs: (#dbot): {
-		"if": "github.event.pull_request.head.user.login == '\(#dbot)[bot]'"
+		"if": "github.event.pull_request.user.login == '\(#dbot)[bot]'"
 		steps: [
 			{
 				id:   "metadata"
