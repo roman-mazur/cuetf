@@ -115,8 +115,12 @@ import "list"
 		// and the last a letter or a number.
 		name!: string
 
-		// The reference to the service that runs the extension. Must be a
-		// reference to a backend service
+		// The reference to the service that runs the extension.
+		//
+		// * To configure a callout extension, service must be a
+		// fully-qualified reference to a backend service.
+		// * To configure a plugin extension, service must be a reference
+		// to a WasmPlugin resource.
 		service!: string
 
 		// A set of events during request or response processing for which

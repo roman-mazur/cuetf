@@ -349,7 +349,8 @@ package data
 					size_limit?: string
 				})]
 				gcs?: [...close({
-					bucket?:    string
+					bucket?: string
+					mount_options?: [...string]
 					read_only?: bool
 				})]
 				name?: string

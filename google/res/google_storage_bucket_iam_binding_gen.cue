@@ -11,12 +11,17 @@ import "list"
 		etag?:   string
 		id?:     string
 		members!: [...string]
-		role!: string
+		role!:     string
+		timeouts?: #timeouts
 	})
 
 	#condition: close({
 		description?: string
 		expression!:  string
 		title!:       string
+	})
+
+	#timeouts: close({
+		create?: string
 	})
 }
