@@ -27,6 +27,8 @@ jobs:
       - name: Set up CUE
         run: go install cuelang.org/go/cmd/cue
       - uses: actions4git/setup-git@v1
+        with:
+          github-token: ${{ secrets.DEPENDABOT_GITHUB }}
       - name: Execute
         run: |-
           branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
