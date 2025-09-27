@@ -35,7 +35,7 @@ workflows: [N=string]: github.#Workflow & {
 
 				{name: "Set up CUE", run: "go install cuelang.org/go/cmd/cue"},
 
-				if #useGit {uses: "actions4git/setup-git@v1", with: "github-token": "${{ secrets.DEPENDABOT_GITHUB }}"},
+				if #useGit {uses: "actions4git/setup-git@v1", with: "github-token": "${{ secrets.GENERATOR_TOKEN }}"},
 
 				{name: "Execute", run: #script},
 			]
