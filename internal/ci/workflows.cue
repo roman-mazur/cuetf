@@ -22,6 +22,7 @@ workflows: [N=string]: github.#Workflow & {
 					uses: "actions/checkout@v4"
 					if #useGit {
 						with: "fetch-depth": 0
+						with: token: "${{ secrets.GENERATOR_TOKEN }}"
 					}
 				},
 
@@ -34,8 +35,6 @@ workflows: [N=string]: github.#Workflow & {
 				},
 
 				{name: "Set up CUE", run: "go install cuelang.org/go/cmd/cue"},
-
-				if #useGit {uses: "actions4git/setup-git@v1", with: "github-token": "${{ secrets.GENERATOR_TOKEN }}"},
 
 				{name: "Execute", run: #script},
 			]
