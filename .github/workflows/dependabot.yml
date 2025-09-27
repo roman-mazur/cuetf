@@ -5,7 +5,7 @@ name: dependabot
       - main
 jobs:
   dependabot:
-    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    if: github.event.pull_request.head.user.login == 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
       - id: metadata
