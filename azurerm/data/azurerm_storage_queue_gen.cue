@@ -7,9 +7,9 @@ package data
 		timeouts?: #timeouts
 		id?:       string
 		metadata?: [string]: string
-		name!:                 string
-		resource_manager_id?:  string
-		storage_account_name!: string
+		name!:               string
+		storage_account_id?: string
+		url?:                string
 	})
 
 	#timeouts: close({

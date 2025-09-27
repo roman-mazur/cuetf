@@ -42,6 +42,7 @@ import "list"
 		geo_backup_key_vault_key_id?:          string
 		geo_backup_user_assigned_identity_id?: string
 		key_vault_key_id?:                     string
+		managed_hsm_key_id?:                   string
 		primary_user_assigned_identity_id?:    string
 	})
 
