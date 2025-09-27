@@ -5,6 +5,7 @@ name: dependabot
       - main
     types:
       - opened
+      - reopened
 jobs:
   dependabot:
     if: github.event.pull_request.user.login == 'dependabot[bot]'

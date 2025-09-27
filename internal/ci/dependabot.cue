@@ -42,7 +42,7 @@ workflows: regenerate: {
 workflows: (#dbot): {
 	on: pull_request: {
 		branches: ["main"]
-		types: ["opened"]
+		types: ["opened", "reopened"]
 	}
 
 	jobs: (#dbot): {
