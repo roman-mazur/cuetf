@@ -17,6 +17,18 @@ package $pkgName
 
 #Name: "$region"
 EOF
+
+  # Sort instance types.
+  echo "package $pkgName" > regions/$pkgName/sort_tmp.cue
+  echo 'import "github.com/roman-mazur/cuetf/aws/regions"' >> regions/$pkgName/sort_tmp.cue
+  echo "sortedOutput: (regions.#InstaceTypesSort & {input: InstanceTypes}).output" >> regions/$pkgName/sort_tmp.cue
+  echo "result: InstanceTypes: sortedOutput" >> regions/$pkgName/sort_tmp.cue
+
+  (cd regions/$pkgName \
+    && cue vet \
+    && ( echo "package $pkgName"; echo "" ) > itypes_gen2.cue \
+    && cue eval -e "result" >> itypes_gen2.cue \
+    && mv itypes_gen2.cue itypes_gen.cue && rm sort_tmp.cue && cue import -p "$pkgName" itypes_gen.cue)
 }
 
 importRegion us-east-1
