@@ -2,5 +2,8 @@ package ci
 
 workflows: analysis: {
 	on: "workflow_dispatch"
-	jobs: main: #script: "go generate ./internal/analysis"
+	jobs: main: {
+		#useGit: true
+		#script: "go generate ./internal/analysis"
+	}
 }
