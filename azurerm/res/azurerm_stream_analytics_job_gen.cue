@@ -17,7 +17,7 @@ import "list"
 		location!:                                 string
 		name!:                                     string
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		job_storage_account?: matchN(1, [#job_storage_account, [...#job_storage_account]])
+		job_storage_account?: matchN(1, [#job_storage_account, list.MaxItems(1) & [...#job_storage_account]])
 		output_error_policy?:         string
 		resource_group_name!:         string
 		sku_name?:                    string
@@ -37,7 +37,7 @@ import "list"
 	})
 
 	#job_storage_account: close({
-		account_key!:         string
+		account_key?:         string
 		account_name!:        string
 		authentication_mode?: string
 	})

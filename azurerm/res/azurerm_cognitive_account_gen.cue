@@ -12,27 +12,29 @@ import "list"
 		dynamic_throttling_enabled?:                   bool
 		endpoint?:                                     string
 		fqdns?: [...string]
-		id?: string
-		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])
-		kind!: string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		id?:                              string
+		kind!:                            string
 		local_auth_enabled?:              bool
 		location!:                        string
 		metrics_advisor_aad_client_id?:   string
 		metrics_advisor_aad_tenant_id?:   string
 		metrics_advisor_super_user_name?: string
-		network_acls?: matchN(1, [#network_acls, list.MaxItems(1) & [...#network_acls]])
-		metrics_advisor_website_name?: string
-		storage?: matchN(1, [#storage, [...#storage]])
+		metrics_advisor_website_name?:    string
+		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])
 		name!:                               string
 		outbound_network_access_restricted?: bool
 		primary_access_key?:                 string
+		project_management_enabled?:         bool
 		public_network_access_enabled?:      bool
-		qna_runtime_endpoint?:               string
-		resource_group_name!:                string
-		secondary_access_key?:               string
-		sku_name!:                           string
-		timeouts?:                           #timeouts
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		qna_runtime_endpoint?: string
+		resource_group_name!:  string
+		secondary_access_key?: string
+		sku_name!:             string
+		network_acls?: matchN(1, [#network_acls, list.MaxItems(1) & [...#network_acls]])
+		network_injection?: matchN(1, [#network_injection, list.MaxItems(1) & [...#network_injection]])
+		storage?: matchN(1, [#storage, [...#storage]])
+		timeouts?: #timeouts
 		tags?: [string]: string
 	})
 
@@ -53,6 +55,11 @@ import "list"
 		bypass?:         string
 		default_action!: string
 		ip_rules?: [...string]
+	})
+
+	#network_injection: close({
+		scenario!:  string
+		subnet_id!: string
 	})
 
 	#storage: close({
