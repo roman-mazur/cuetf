@@ -221,12 +221,7 @@ import "list"
 		// spaces.
 		command?: [...string]
 
-		// The amount of vCPU to allocate to the container. Possible
-		// values include `0.25`, `0.5`, `0.75`, `1.0`, `1.25`, `1.5`,
-		// `1.75`, and `2.0`. **NOTE:** `cpu` and `memory` must be
-		// specified in `0.25'/'0.5Gi` combination increments. e.g. `1.0`
-		// / `2.0` or `0.5` / `1.0`. When there's a workload profile
-		// specified, there's no such constraint.
+		// The amount of vCPU to allocate to the container.
 		cpu!: number
 
 		// The amount of ephemeral storage available to the Container App.
@@ -235,12 +230,7 @@ import "list"
 		// The image to use to create the container.
 		image!: string
 
-		// The amount of memory to allocate to the container. Possible
-		// values include `0.5Gi`, `1.0Gi`, `1.5Gi`, `2.0Gi`, `2.5Gi`,
-		// `3.0Gi`, `3.5Gi`, and `4.0Gi`. **NOTE:** `cpu` and `memory`
-		// must be specified in `0.25'/'0.5Gi` combination increments.
-		// e.g. `1.25` / `2.5Gi` or `0.75` / `1.5Gi`. When there's a
-		// workload profile specified, there's no such constraint.
+		// The amount of memory to allocate to the container.
 		memory!: string
 		env?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/env", [..._#defs."/$defs/template/$defs/container/$defs/env"]])
 		liveness_probe?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/liveness_probe", [..._#defs."/$defs/template/$defs/container/$defs/liveness_probe"]])
@@ -456,12 +446,7 @@ import "list"
 		// spaces.
 		command?: [...string]
 
-		// The amount of vCPU to allocate to the container. Possible
-		// values include `0.25`, `0.5`, `0.75`, `1.0`, `1.25`, `1.5`,
-		// `1.75`, and `2.0`. **NOTE:** `cpu` and `memory` must be
-		// specified in `0.25'/'0.5Gi` combination increments. e.g. `1.0`
-		// / `2.0` or `0.5` / `1.0`. When there's a workload profile
-		// specified, there's no such constraint.
+		// The amount of vCPU to allocate to the container.
 		cpu?: number
 
 		// The amount of ephemeral storage available to the Container App.
@@ -472,12 +457,7 @@ import "list"
 		env?: matchN(1, [_#defs."/$defs/template/$defs/init_container/$defs/env", [..._#defs."/$defs/template/$defs/init_container/$defs/env"]])
 		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/init_container/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/init_container/$defs/volume_mounts"]])
 
-		// The amount of memory to allocate to the container. Possible
-		// values include `0.5Gi`, `1.0Gi`, `1.5Gi`, `2.0Gi`, `2.5Gi`,
-		// `3.0Gi`, `3.5Gi`, and `4.0Gi`. **NOTE:** `cpu` and `memory`
-		// must be specified in `0.25'/'0.5Gi` combination increments.
-		// e.g. `1.25` / `2.5Gi` or `0.75` / `1.5Gi`. When there's a
-		// workload profile specified, there's no such constraint.
+		// The amount of memory to allocate to the container.
 		memory?: string
 
 		// The name of the container.

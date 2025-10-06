@@ -62,6 +62,7 @@ _res: azurerm_api_management_subscription: res.#azurerm_api_management_subscript
 _res: azurerm_api_management_tag: res.#azurerm_api_management_tag
 _res: azurerm_api_management_user: res.#azurerm_api_management_user
 _res: azurerm_api_management_workspace: res.#azurerm_api_management_workspace
+_res: azurerm_api_management_workspace_policy: res.#azurerm_api_management_workspace_policy
 _res: azurerm_app_configuration_feature: res.#azurerm_app_configuration_feature
 _res: azurerm_app_configuration: res.#azurerm_app_configuration
 _res: azurerm_app_configuration_key: res.#azurerm_app_configuration_key
