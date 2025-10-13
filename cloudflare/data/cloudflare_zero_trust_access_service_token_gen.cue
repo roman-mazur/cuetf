@@ -10,22 +10,17 @@ package data
 
 		// The Client ID for the service token. Access will check for this
 		// value in the `CF-Access-Client-ID` request header.
-		client_id?:  string
-		created_at?: string
+		client_id?: string
 
 		// The duration for how long the service token will be valid. Must
 		// be in the format `300ms` or `2h45m`. Valid time units are: ns,
 		// us (or µs), ms, s, m, h. The default is 1 year in hours
 		// (8760h).
-		duration?: string
-
-		// UUID.
-		id?:         string
+		duration?:   string
 		expires_at?: string
 
-		// The name of the service token.
-		name?:         string
-		last_seen_at?: string
+		// UUID.
+		id?: string
 		filter?: close({
 			// The name of the service token.
 			name?: string
@@ -34,9 +29,11 @@ package data
 			search?: string
 		})
 
+		// The name of the service token.
+		name?: string
+
 		// UUID.
 		service_token_id?: string
-		updated_at?:       string
 
 		// The Zone ID to use for this endpoint. Mutually exclusive with
 		// the Account ID.

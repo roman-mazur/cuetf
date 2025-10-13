@@ -532,7 +532,6 @@ package data
 					token_id?: string
 				})
 			})]])
-			created_at?: string
 
 			// Rules evaluated with an AND logical operator. To match a
 			// policy, a user must meet all of the Require rules.
@@ -797,8 +796,7 @@ package data
 			})]])
 
 			// The name of the Access group.
-			name?:       string
-			updated_at?: string
+			name?: string
 
 			// Rules evaluated with an AND logical operator. To match a
 			// policy, a user must meet all of the Require rules.
@@ -1588,7 +1586,6 @@ package data
 					token_id?: string
 				})
 			})]])
-			created_at?: string
 
 			// Rules evaluated with an AND logical operator. To match a
 			// policy, a user must meet all of the Require rules.
@@ -1853,8 +1850,7 @@ package data
 			})]])
 
 			// The name of the Access group.
-			name?:       string
-			updated_at?: string
+			name?: string
 
 			// Rules evaluated with an AND logical operator. To match a
 			// policy, a user must meet all of the Require rules.

@@ -145,13 +145,6 @@ package data
 			// in allowed_idps.
 			auto_redirect_to_identity?: bool
 
-			// The background color of the App Launcher page.
-			bg_color?: string
-
-			// The custom error message shown to a user when they are denied
-			// access to the application.
-			custom_deny_message?: string
-
 			// The links in the App Launcher footer.
 			footer_links?: matchN(1, [close({
 				// The hypertext in the footer link.
@@ -167,9 +160,8 @@ package data
 				url?: string
 			})]])
 
-			// The custom URL a user is redirected to when they are denied
-			// access to the application when failing identity-based rules.
-			custom_deny_url?: string
+			// The background color of the App Launcher page.
+			bg_color?: string
 
 			// The design of the App Launcher landing page shown to users when
 			// they log in.
@@ -190,10 +182,9 @@ package data
 				title?: string
 			})
 
-			// The custom URL a user is redirected to when they are denied
-			// access to the application when failing non-identity rules.
-			custom_non_identity_deny_url?: string
-			created_at?:                   string
+			// The custom error message shown to a user when they are denied
+			// access to the application.
+			custom_deny_message?: string
 			policies?: matchN(1, [close({
 				// Requires the user to request access from an administrator at
 				// the start of each session.
@@ -1922,9 +1913,28 @@ package data
 				})]])
 			})]])
 
+			// The custom URL a user is redirected to when they are denied
+			// access to the application when failing identity-based rules.
+			custom_deny_url?: string
+
+			// The custom URL a user is redirected to when they are denied
+			// access to the application when failing non-identity rules.
+			custom_non_identity_deny_url?: string
+
 			// The custom pages that will be displayed when applicable for
 			// this application
 			custom_pages?: [...string]
+
+			// The primary hostname and path secured by Access. This domain
+			// will be displayed if the app is visible in the App Launcher.
+			domain?: string
+
+			// Enables the binding cookie, which increases security against
+			// compromised authorization tokens and CSRF attacks.
+			enable_binding_cookie?: bool
+
+			// The background color of the App Launcher header.
+			header_bg_color?: string
 			saas_app?: close({
 				// The lifetime of the OIDC Access Token after creation. Valid
 				// units are m,h. Must be greater than or equal to 1m and less
@@ -1949,10 +1959,6 @@ package data
 
 				// The application client secret, only returned on POST request.
 				client_secret?: string
-
-				// The service provider's endpoint that is responsible for
-				// receiving and parsing a SAML assertion.
-				consumer_service_url?: string
 				custom_attributes?: matchN(1, [close({
 					// The SAML FriendlyName of the attribute.
 					friendly_name?: string
@@ -2024,7 +2030,10 @@ package data
 					// If the attribute is required when building a SAML assertion.
 					required?: bool
 				})]])
-				created_at?: string
+
+				// The service provider's endpoint that is responsible for
+				// receiving and parsing a SAML assertion.
+				consumer_service_url?: string
 
 				// The URL that the user will be redirected to after a successful
 				// login for IDP initiated logins.
@@ -2036,9 +2045,6 @@ package data
 				// A regex to filter Cloudflare groups returned in ID token and
 				// userinfo endpoint
 				group_filter_regex?: string
-
-				// The unique identifier for your SaaS application.
-				idp_entity_id?: string
 				custom_claims?: matchN(1, [close({
 					// The name of the claim.
 					name?: string
@@ -2074,15 +2080,9 @@ package data
 					// Available values: "groups", "profile", "email", "openid".
 					scope?: string
 				})]])
-				hybrid_and_implicit_options?: close({
-					// If an Access Token should be returned from the OIDC
-					// Authorization endpoint
-					return_access_token_from_authorization_endpoint?: bool
 
-					// If an ID Token should be returned from the OIDC Authorization
-					// endpoint
-					return_id_token_from_authorization_endpoint?: bool
-				})
+				// The unique identifier for your SaaS application.
+				idp_entity_id?: string
 
 				// The format of the name identifier sent to the SaaS application.
 				// Available values: "id", "email".
@@ -2123,7 +2123,15 @@ package data
 				// The endpoint where your SaaS application will send login
 				// requests.
 				sso_endpoint?: string
-				updated_at?:   string
+				hybrid_and_implicit_options?: close({
+					// If an Access Token should be returned from the OIDC
+					// Authorization endpoint
+					return_access_token_from_authorization_endpoint?: bool
+
+					// If an ID Token should be returned from the OIDC Authorization
+					// endpoint
+					return_id_token_from_authorization_endpoint?: bool
+				})
 				refresh_token_options?: close({
 					// How long a refresh token will be valid for after creation.
 					// Valid units are m,h,d. Must be longer than 1m.
@@ -2131,23 +2139,9 @@ package data
 				})
 			})
 
-			// The primary hostname and path secured by Access. This domain
-			// will be displayed if the app is visible in the App Launcher.
-			domain?: string
-
-			// Enables the binding cookie, which increases security against
-			// compromised authorization tokens and CSRF attacks.
-			enable_binding_cookie?: bool
-
-			// The background color of the App Launcher header.
-			header_bg_color?: string
-
 			// Enables the HttpOnly cookie attribute, which increases security
 			// against XSS attacks.
 			http_only_cookie_attribute?: bool
-
-			// UUID.
-			id?: string
 
 			// Configuration for provisioning to this application via SCIM.
 			// This is currently in closed beta.
@@ -2287,6 +2281,9 @@ package data
 				remote_uri?: string
 			})
 
+			// UUID.
+			id?: string
+
 			// The image URL for the logo shown in the App Launcher dashboard.
 			logo_url?: string
 
@@ -2336,16 +2333,6 @@ package data
 
 			// Enables automatic authentication through cloudflared.
 			skip_interstitial?: bool
-
-			// The tags you want assigned to an application. Tags are used to
-			// filter applications in the App Launcher dashboard.
-			tags?: [...string]
-
-			// The application type.
-			// Available values: "self_hosted", "saas", "ssh", "vnc",
-			// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
-			// "infrastructure", "rdp".
-			type?: string
 			target_criteria?: matchN(1, [close({
 				// The port that the targets use for the chosen communication
 				// protocol. A port cannot be assigned to multiple protocols.
@@ -2371,7 +2358,16 @@ package data
 				// values.
 				target_attributes?: [string]: [...string]
 			})]])
-			updated_at?: string
+
+			// The tags you want assigned to an application. Tags are used to
+			// filter applications in the App Launcher dashboard.
+			tags?: [...string]
+
+			// The application type.
+			// Available values: "self_hosted", "saas", "ssh", "vnc",
+			// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
+			// "infrastructure", "rdp".
+			type?: string
 		}), [...close({
 			cors_headers?: close({
 				// Allows all HTTP request headers.
@@ -2495,13 +2491,6 @@ package data
 			// in allowed_idps.
 			auto_redirect_to_identity?: bool
 
-			// The background color of the App Launcher page.
-			bg_color?: string
-
-			// The custom error message shown to a user when they are denied
-			// access to the application.
-			custom_deny_message?: string
-
 			// The links in the App Launcher footer.
 			footer_links?: matchN(1, [close({
 				// The hypertext in the footer link.
@@ -2517,9 +2506,8 @@ package data
 				url?: string
 			})]])
 
-			// The custom URL a user is redirected to when they are denied
-			// access to the application when failing identity-based rules.
-			custom_deny_url?: string
+			// The background color of the App Launcher page.
+			bg_color?: string
 
 			// The design of the App Launcher landing page shown to users when
 			// they log in.
@@ -2540,10 +2528,9 @@ package data
 				title?: string
 			})
 
-			// The custom URL a user is redirected to when they are denied
-			// access to the application when failing non-identity rules.
-			custom_non_identity_deny_url?: string
-			created_at?:                   string
+			// The custom error message shown to a user when they are denied
+			// access to the application.
+			custom_deny_message?: string
 			policies?: matchN(1, [close({
 				// Requires the user to request access from an administrator at
 				// the start of each session.
@@ -4272,9 +4259,28 @@ package data
 				})]])
 			})]])
 
+			// The custom URL a user is redirected to when they are denied
+			// access to the application when failing identity-based rules.
+			custom_deny_url?: string
+
+			// The custom URL a user is redirected to when they are denied
+			// access to the application when failing non-identity rules.
+			custom_non_identity_deny_url?: string
+
 			// The custom pages that will be displayed when applicable for
 			// this application
 			custom_pages?: [...string]
+
+			// The primary hostname and path secured by Access. This domain
+			// will be displayed if the app is visible in the App Launcher.
+			domain?: string
+
+			// Enables the binding cookie, which increases security against
+			// compromised authorization tokens and CSRF attacks.
+			enable_binding_cookie?: bool
+
+			// The background color of the App Launcher header.
+			header_bg_color?: string
 			saas_app?: close({
 				// The lifetime of the OIDC Access Token after creation. Valid
 				// units are m,h. Must be greater than or equal to 1m and less
@@ -4299,10 +4305,6 @@ package data
 
 				// The application client secret, only returned on POST request.
 				client_secret?: string
-
-				// The service provider's endpoint that is responsible for
-				// receiving and parsing a SAML assertion.
-				consumer_service_url?: string
 				custom_attributes?: matchN(1, [close({
 					// The SAML FriendlyName of the attribute.
 					friendly_name?: string
@@ -4374,7 +4376,10 @@ package data
 					// If the attribute is required when building a SAML assertion.
 					required?: bool
 				})]])
-				created_at?: string
+
+				// The service provider's endpoint that is responsible for
+				// receiving and parsing a SAML assertion.
+				consumer_service_url?: string
 
 				// The URL that the user will be redirected to after a successful
 				// login for IDP initiated logins.
@@ -4386,9 +4391,6 @@ package data
 				// A regex to filter Cloudflare groups returned in ID token and
 				// userinfo endpoint
 				group_filter_regex?: string
-
-				// The unique identifier for your SaaS application.
-				idp_entity_id?: string
 				custom_claims?: matchN(1, [close({
 					// The name of the claim.
 					name?: string
@@ -4424,15 +4426,9 @@ package data
 					// Available values: "groups", "profile", "email", "openid".
 					scope?: string
 				})]])
-				hybrid_and_implicit_options?: close({
-					// If an Access Token should be returned from the OIDC
-					// Authorization endpoint
-					return_access_token_from_authorization_endpoint?: bool
 
-					// If an ID Token should be returned from the OIDC Authorization
-					// endpoint
-					return_id_token_from_authorization_endpoint?: bool
-				})
+				// The unique identifier for your SaaS application.
+				idp_entity_id?: string
 
 				// The format of the name identifier sent to the SaaS application.
 				// Available values: "id", "email".
@@ -4473,7 +4469,15 @@ package data
 				// The endpoint where your SaaS application will send login
 				// requests.
 				sso_endpoint?: string
-				updated_at?:   string
+				hybrid_and_implicit_options?: close({
+					// If an Access Token should be returned from the OIDC
+					// Authorization endpoint
+					return_access_token_from_authorization_endpoint?: bool
+
+					// If an ID Token should be returned from the OIDC Authorization
+					// endpoint
+					return_id_token_from_authorization_endpoint?: bool
+				})
 				refresh_token_options?: close({
 					// How long a refresh token will be valid for after creation.
 					// Valid units are m,h,d. Must be longer than 1m.
@@ -4481,23 +4485,9 @@ package data
 				})
 			})
 
-			// The primary hostname and path secured by Access. This domain
-			// will be displayed if the app is visible in the App Launcher.
-			domain?: string
-
-			// Enables the binding cookie, which increases security against
-			// compromised authorization tokens and CSRF attacks.
-			enable_binding_cookie?: bool
-
-			// The background color of the App Launcher header.
-			header_bg_color?: string
-
 			// Enables the HttpOnly cookie attribute, which increases security
 			// against XSS attacks.
 			http_only_cookie_attribute?: bool
-
-			// UUID.
-			id?: string
 
 			// Configuration for provisioning to this application via SCIM.
 			// This is currently in closed beta.
@@ -4637,6 +4627,9 @@ package data
 				remote_uri?: string
 			})
 
+			// UUID.
+			id?: string
+
 			// The image URL for the logo shown in the App Launcher dashboard.
 			logo_url?: string
 
@@ -4686,16 +4679,6 @@ package data
 
 			// Enables automatic authentication through cloudflared.
 			skip_interstitial?: bool
-
-			// The tags you want assigned to an application. Tags are used to
-			// filter applications in the App Launcher dashboard.
-			tags?: [...string]
-
-			// The application type.
-			// Available values: "self_hosted", "saas", "ssh", "vnc",
-			// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
-			// "infrastructure", "rdp".
-			type?: string
 			target_criteria?: matchN(1, [close({
 				// The port that the targets use for the chosen communication
 				// protocol. A port cannot be assigned to multiple protocols.
@@ -4721,7 +4704,16 @@ package data
 				// values.
 				target_attributes?: [string]: [...string]
 			})]])
-			updated_at?: string
+
+			// The tags you want assigned to an application. Tags are used to
+			// filter applications in the App Launcher dashboard.
+			tags?: [...string]
+
+			// The application type.
+			// Available values: "self_hosted", "saas", "ssh", "vnc",
+			// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
+			// "infrastructure", "rdp".
+			type?: string
 		})]])
 
 		// The name of the app.

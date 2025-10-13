@@ -12,21 +12,11 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// The number of applications that have this tag
-			app_count?: number
-
 			// The name of the tag
-			name?:       string
-			created_at?: string
-			updated_at?: string
+			name?: string
 		}), [...close({
-			// The number of applications that have this tag
-			app_count?: number
-
 			// The name of the tag
-			name?:       string
-			created_at?: string
-			updated_at?: string
+			name?: string
 		})]])
 	})
 }

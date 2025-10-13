@@ -269,7 +269,6 @@ package data
 				token_id?: string
 			})
 		})]])
-		created_at?: string
 
 		// UUID.
 		group_id?: string
@@ -1072,7 +1071,6 @@ package data
 				token_id?: string
 			})
 		})]])
-		updated_at?: string
 
 		// The Zone ID to use for this endpoint. Mutually exclusive with
 		// the Account ID.

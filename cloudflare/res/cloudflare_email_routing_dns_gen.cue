@@ -32,7 +32,7 @@ package res
 		modified?: string
 
 		// Domain of your zone.
-		name!: string
+		name?: string
 
 		// Flag to check if the user skipped the configuration wizard.
 		skip_wizard?: bool

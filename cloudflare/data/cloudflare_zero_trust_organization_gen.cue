@@ -26,8 +26,7 @@ package data
 		is_ui_read_only?: bool
 
 		// The name of your Zero Trust organization.
-		name?:       string
-		created_at?: string
+		name?: string
 
 		// The amount of time that tokens issued for applications will be
 		// valid. Must be in the format `300ms` or `2h45m`. Valid time
@@ -53,7 +52,11 @@ package data
 		// month (730h). Must be in the format `300ms` or `2h45m`. Valid
 		// time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
 		user_seat_expiration_inactive_time?: string
-		updated_at?:                         string
+
+		// The amount of time that tokens issued for applications will be
+		// valid. Must be in the format `30m` or `2h45m`. Valid time
+		// units are: m, h.
+		warp_auth_session_duration?: string
 		login_design?: close({
 			// The background color on your login page.
 			background_color?: string
@@ -70,11 +73,6 @@ package data
 			// The text color on your login page.
 			text_color?: string
 		})
-
-		// The amount of time that tokens issued for applications will be
-		// valid. Must be in the format `30m` or `2h45m`. Valid time
-		// units are: m, h.
-		warp_auth_session_duration?: string
 
 		// The Zone ID to use for this endpoint. Mutually exclusive with
 		// the Account ID.

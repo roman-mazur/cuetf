@@ -14,21 +14,19 @@ package data
 
 		// UUID.
 		certificate_id?: string
-		created_at?:     string
 
 		// The MD5 fingerprint of the certificate.
 		fingerprint?: string
-		expires_on?:  string
 
 		// UUID.
-		id?: string
+		id?:         string
+		expires_on?: string
 
 		// The name of the certificate.
 		name?: string
 
 		// The Zone ID to use for this endpoint. Mutually exclusive with
 		// the Account ID.
-		zone_id?:    string
-		updated_at?: string
+		zone_id?: string
 	})
 }

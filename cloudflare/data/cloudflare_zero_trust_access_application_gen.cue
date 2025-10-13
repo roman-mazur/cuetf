@@ -47,14 +47,6 @@ package data
 		// Enables loading application content in an iFrame.
 		allow_iframe?: bool
 
-		// The identity providers your users can select when connecting to
-		// this application. Defaults to all IdPs configured in your
-		// account.
-		allowed_idps?: [...string]
-
-		// Identifier.
-		app_id?: string
-
 		// List of destinations secured by Access. This supersedes
 		// `self_hosted_domains` to allow for more flexibility in
 		// defining different types of domains. If `destinations` are
@@ -119,6 +111,14 @@ package data
 			vnet_id?: string
 		})]])
 
+		// The identity providers your users can select when connecting to
+		// this application. Defaults to all IdPs configured in your
+		// account.
+		allowed_idps?: [...string]
+
+		// Identifier.
+		app_id?: string
+
 		// The image URL of the logo shown in the App Launcher header.
 		app_launcher_logo_url?: string
 
@@ -132,9 +132,6 @@ package data
 		// step during login. You must specify only one identity provider
 		// in allowed_idps.
 		auto_redirect_to_identity?: bool
-
-		// The background color of the App Launcher page.
-		bg_color?: string
 		filter?: close({
 			// The aud of the app.
 			aud?: string
@@ -152,7 +149,9 @@ package data
 			// Search for apps by other listed query parameters.
 			search?: string
 		})
-		created_at?: string
+
+		// The background color of the App Launcher page.
+		bg_color?: string
 
 		// The links in the App Launcher footer.
 		footer_links?: matchN(1, [close({
@@ -1941,6 +1940,209 @@ package data
 				})
 			})]])
 		})]])
+		saas_app?: close({
+			// The lifetime of the OIDC Access Token after creation. Valid
+			// units are m,h. Must be greater than or equal to 1m and less
+			// than or equal to 24h.
+			access_token_lifetime?: string
+
+			// If client secret should be required on the token endpoint when
+			// authorization_code_with_pkce grant is used.
+			allow_pkce_without_client_secret?: bool
+
+			// The URL where this applications tile redirects users
+			app_launcher_url?: string
+
+			// Optional identifier indicating the authentication protocol used
+			// for the saas app. Required for OIDC. Default if unset is
+			// "saml"
+			// Available values: "saml", "oidc".
+			auth_type?: string
+
+			// The application client id
+			client_id?: string
+
+			// The application client secret, only returned on POST request.
+			client_secret?: string
+			custom_attributes?: matchN(1, [close({
+				// The SAML FriendlyName of the attribute.
+				friendly_name?: string
+
+				// The name of the attribute.
+				name?: string
+				source?: close({
+					// The name of the IdP attribute.
+					name?: string
+
+					// A mapping from IdP ID to attribute name.
+					name_by_idp?: matchN(1, [close({
+						// The UID of the IdP.
+						idp_id?: string
+
+						// The name of the IdP provided attribute.
+						source_name?: string
+					}), [...close({
+						// The UID of the IdP.
+						idp_id?: string
+
+						// The name of the IdP provided attribute.
+						source_name?: string
+					})]])
+				})
+
+				// A globally unique name for an identity or service provider.
+				// Available values:
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
+				name_format?: string
+
+				// If the attribute is required when building a SAML assertion.
+				required?: bool
+			}), [...close({
+				// The SAML FriendlyName of the attribute.
+				friendly_name?: string
+
+				// The name of the attribute.
+				name?: string
+				source?: close({
+					// The name of the IdP attribute.
+					name?: string
+
+					// A mapping from IdP ID to attribute name.
+					name_by_idp?: matchN(1, [close({
+						// The UID of the IdP.
+						idp_id?: string
+
+						// The name of the IdP provided attribute.
+						source_name?: string
+					}), [...close({
+						// The UID of the IdP.
+						idp_id?: string
+
+						// The name of the IdP provided attribute.
+						source_name?: string
+					})]])
+				})
+
+				// A globally unique name for an identity or service provider.
+				// Available values:
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
+				name_format?: string
+
+				// If the attribute is required when building a SAML assertion.
+				required?: bool
+			})]])
+
+			// The service provider's endpoint that is responsible for
+			// receiving and parsing a SAML assertion.
+			consumer_service_url?: string
+
+			// The URL that the user will be redirected to after a successful
+			// login for IDP initiated logins.
+			default_relay_state?: string
+
+			// The OIDC flows supported by this application
+			grant_types?: [...string]
+
+			// A regex to filter Cloudflare groups returned in ID token and
+			// userinfo endpoint
+			group_filter_regex?: string
+			custom_claims?: matchN(1, [close({
+				// The name of the claim.
+				name?: string
+				source?: close({
+					// The name of the IdP claim.
+					name?: string
+
+					// A mapping from IdP ID to claim name.
+					name_by_idp?: [string]: string
+				})
+
+				// If the claim is required when building an OIDC token.
+				required?: bool
+
+				// The scope of the claim.
+				// Available values: "groups", "profile", "email", "openid".
+				scope?: string
+			}), [...close({
+				// The name of the claim.
+				name?: string
+				source?: close({
+					// The name of the IdP claim.
+					name?: string
+
+					// A mapping from IdP ID to claim name.
+					name_by_idp?: [string]: string
+				})
+
+				// If the claim is required when building an OIDC token.
+				required?: bool
+
+				// The scope of the claim.
+				// Available values: "groups", "profile", "email", "openid".
+				scope?: string
+			})]])
+
+			// The unique identifier for your SaaS application.
+			idp_entity_id?: string
+
+			// The format of the name identifier sent to the SaaS application.
+			// Available values: "id", "email".
+			name_id_format?: string
+
+			// A [JSONata](https://jsonata.org/) expression that transforms an
+			// application's user identities into a NameID value for its SAML
+			// assertion. This expression should evaluate to a singular
+			// string. The output of this expression can override the
+			// `name_id_format` setting.
+			name_id_transform_jsonata?: string
+
+			// The Access public certificate that will be used to verify your
+			// identity.
+			public_key?: string
+
+			// The permitted URL's for Cloudflare to return Authorization
+			// codes and Access/ID tokens
+			redirect_uris?: [...string]
+
+			// A [JSONata] (https://jsonata.org/) expression that transforms
+			// an application's user identities into attribute assertions in
+			// the SAML response. The expression can transform id, email,
+			// name, and groups values. It can also transform fields listed
+			// in the saml_attributes or oidc_fields of the identity provider
+			// used to authenticate. The output of this expression must be a
+			// JSON object.
+			saml_attribute_transform_jsonata?: string
+
+			// Define the user information shared with access,
+			// "offline_access" scope will be automatically enabled if
+			// refresh tokens are enabled
+			scopes?: [...string]
+
+			// A globally unique name for an identity or service provider.
+			sp_entity_id?: string
+
+			// The endpoint where your SaaS application will send login
+			// requests.
+			sso_endpoint?: string
+			hybrid_and_implicit_options?: close({
+				// If an Access Token should be returned from the OIDC
+				// Authorization endpoint
+				return_access_token_from_authorization_endpoint?: bool
+
+				// If an ID Token should be returned from the OIDC Authorization
+				// endpoint
+				return_id_token_from_authorization_endpoint?: bool
+			})
+			refresh_token_options?: close({
+				// How long a refresh token will be valid for after creation.
+				// Valid units are m,h,d. Must be longer than 1m.
+				lifetime?: string
+			})
+		})
 
 		// Enables the HttpOnly cookie attribute, which increases security
 		// against XSS attacks.
@@ -1982,10 +2184,6 @@ package data
 		// Sets the SameSite cookie setting, which provides increased
 		// security against CSRF attacks.
 		same_site_cookie_attribute?: string
-
-		// Returns a 401 status code when the request is blocked by a
-		// Service Auth policy.
-		service_auth_401_redirect?: bool
 
 		// Configuration for provisioning to this application via SCIM.
 		// This is currently in closed beta.
@@ -2124,211 +2322,10 @@ package data
 			// The base URI for the application's SCIM-compatible API.
 			remote_uri?: string
 		})
-		saas_app?: close({
-			// The lifetime of the OIDC Access Token after creation. Valid
-			// units are m,h. Must be greater than or equal to 1m and less
-			// than or equal to 24h.
-			access_token_lifetime?: string
 
-			// If client secret should be required on the token endpoint when
-			// authorization_code_with_pkce grant is used.
-			allow_pkce_without_client_secret?: bool
-
-			// The URL where this applications tile redirects users
-			app_launcher_url?: string
-
-			// Optional identifier indicating the authentication protocol used
-			// for the saas app. Required for OIDC. Default if unset is
-			// "saml"
-			// Available values: "saml", "oidc".
-			auth_type?: string
-
-			// The application client id
-			client_id?: string
-
-			// The application client secret, only returned on POST request.
-			client_secret?: string
-
-			// The service provider's endpoint that is responsible for
-			// receiving and parsing a SAML assertion.
-			consumer_service_url?: string
-			custom_attributes?: matchN(1, [close({
-				// The SAML FriendlyName of the attribute.
-				friendly_name?: string
-
-				// The name of the attribute.
-				name?: string
-				source?: close({
-					// The name of the IdP attribute.
-					name?: string
-
-					// A mapping from IdP ID to attribute name.
-					name_by_idp?: matchN(1, [close({
-						// The UID of the IdP.
-						idp_id?: string
-
-						// The name of the IdP provided attribute.
-						source_name?: string
-					}), [...close({
-						// The UID of the IdP.
-						idp_id?: string
-
-						// The name of the IdP provided attribute.
-						source_name?: string
-					})]])
-				})
-
-				// A globally unique name for an identity or service provider.
-				// Available values:
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
-				name_format?: string
-
-				// If the attribute is required when building a SAML assertion.
-				required?: bool
-			}), [...close({
-				// The SAML FriendlyName of the attribute.
-				friendly_name?: string
-
-				// The name of the attribute.
-				name?: string
-				source?: close({
-					// The name of the IdP attribute.
-					name?: string
-
-					// A mapping from IdP ID to attribute name.
-					name_by_idp?: matchN(1, [close({
-						// The UID of the IdP.
-						idp_id?: string
-
-						// The name of the IdP provided attribute.
-						source_name?: string
-					}), [...close({
-						// The UID of the IdP.
-						idp_id?: string
-
-						// The name of the IdP provided attribute.
-						source_name?: string
-					})]])
-				})
-
-				// A globally unique name for an identity or service provider.
-				// Available values:
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
-				name_format?: string
-
-				// If the attribute is required when building a SAML assertion.
-				required?: bool
-			})]])
-			created_at?: string
-
-			// The URL that the user will be redirected to after a successful
-			// login for IDP initiated logins.
-			default_relay_state?: string
-
-			// The OIDC flows supported by this application
-			grant_types?: [...string]
-
-			// A regex to filter Cloudflare groups returned in ID token and
-			// userinfo endpoint
-			group_filter_regex?: string
-
-			// The unique identifier for your SaaS application.
-			idp_entity_id?: string
-			custom_claims?: matchN(1, [close({
-				// The name of the claim.
-				name?: string
-				source?: close({
-					// The name of the IdP claim.
-					name?: string
-
-					// A mapping from IdP ID to claim name.
-					name_by_idp?: [string]: string
-				})
-
-				// If the claim is required when building an OIDC token.
-				required?: bool
-
-				// The scope of the claim.
-				// Available values: "groups", "profile", "email", "openid".
-				scope?: string
-			}), [...close({
-				// The name of the claim.
-				name?: string
-				source?: close({
-					// The name of the IdP claim.
-					name?: string
-
-					// A mapping from IdP ID to claim name.
-					name_by_idp?: [string]: string
-				})
-
-				// If the claim is required when building an OIDC token.
-				required?: bool
-
-				// The scope of the claim.
-				// Available values: "groups", "profile", "email", "openid".
-				scope?: string
-			})]])
-			hybrid_and_implicit_options?: close({
-				// If an Access Token should be returned from the OIDC
-				// Authorization endpoint
-				return_access_token_from_authorization_endpoint?: bool
-
-				// If an ID Token should be returned from the OIDC Authorization
-				// endpoint
-				return_id_token_from_authorization_endpoint?: bool
-			})
-
-			// The format of the name identifier sent to the SaaS application.
-			// Available values: "id", "email".
-			name_id_format?: string
-
-			// A [JSONata](https://jsonata.org/) expression that transforms an
-			// application's user identities into a NameID value for its SAML
-			// assertion. This expression should evaluate to a singular
-			// string. The output of this expression can override the
-			// `name_id_format` setting.
-			name_id_transform_jsonata?: string
-
-			// The Access public certificate that will be used to verify your
-			// identity.
-			public_key?: string
-
-			// The permitted URL's for Cloudflare to return Authorization
-			// codes and Access/ID tokens
-			redirect_uris?: [...string]
-
-			// A [JSONata] (https://jsonata.org/) expression that transforms
-			// an application's user identities into attribute assertions in
-			// the SAML response. The expression can transform id, email,
-			// name, and groups values. It can also transform fields listed
-			// in the saml_attributes or oidc_fields of the identity provider
-			// used to authenticate. The output of this expression must be a
-			// JSON object.
-			saml_attribute_transform_jsonata?: string
-
-			// Define the user information shared with access,
-			// "offline_access" scope will be automatically enabled if
-			// refresh tokens are enabled
-			scopes?: [...string]
-
-			// A globally unique name for an identity or service provider.
-			sp_entity_id?: string
-
-			// The endpoint where your SaaS application will send login
-			// requests.
-			sso_endpoint?: string
-			updated_at?:   string
-			refresh_token_options?: close({
-				// How long a refresh token will be valid for after creation.
-				// Valid units are m,h,d. Must be longer than 1m.
-				lifetime?: string
-			})
-		})
+		// Returns a 401 status code when the request is blocked by a
+		// Service Auth policy.
+		service_auth_401_redirect?: bool
 
 		// The amount of time that tokens issued for this application will
 		// be valid. Must be in the format `300ms` or `2h45m`. Valid time
@@ -2345,13 +2342,6 @@ package data
 		// The tags you want assigned to an application. Tags are used to
 		// filter applications in the App Launcher dashboard.
 		tags?: [...string]
-
-		// The application type.
-		// Available values: "self_hosted", "saas", "ssh", "vnc",
-		// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
-		// "infrastructure", "rdp".
-		type?:       string
-		updated_at?: string
 		target_criteria?: matchN(1, [close({
 			// The port that the targets use for the chosen communication
 			// protocol. A port cannot be assigned to multiple protocols.
@@ -2377,6 +2367,12 @@ package data
 			// values.
 			target_attributes?: [string]: [...string]
 		})]])
+
+		// The application type.
+		// Available values: "self_hosted", "saas", "ssh", "vnc",
+		// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
+		// "infrastructure", "rdp".
+		type?: string
 
 		// The Zone ID to use for this endpoint. Mutually exclusive with
 		// the Account ID.

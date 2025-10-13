@@ -7,10 +7,6 @@ package data
 		// Identifier.
 		account_id!: string
 
-		// The number of applications that have this tag
-		app_count?:  number
-		created_at?: string
-
 		// The name of the tag
 		id?: string
 
@@ -18,7 +14,6 @@ package data
 		name?: string
 
 		// The name of the tag
-		tag_name?:   string
-		updated_at?: string
+		tag_name?: string
 	})
 }

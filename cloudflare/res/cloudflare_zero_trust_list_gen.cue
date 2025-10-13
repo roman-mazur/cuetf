@@ -4,36 +4,36 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_list")
 	close({
-		// items to add to the list.
+		// Add items to the list.
 		items?: matchN(1, [close({
-			// The description of the list item, if present.
+			// Provide the list item description (optional).
 			description?: string
 
-			// The value of the item in a list.
+			// Specify the item value.
 			value?: string
 		}), [...close({
-			// The description of the list item, if present.
+			// Provide the list item description (optional).
 			description?: string
 
-			// The value of the item in a list.
+			// Specify the item value.
 			value?: string
 		})]])
 		account_id!: string
 		created_at?: string
 
-		// The description of the list.
+		// Provide the list description.
 		description?: string
 
-		// API Resource UUID tag.
+		// Identify the API resource with a UUID.
 		id?: string
 
-		// The number of items in the list.
+		// Indicate the number of items in the list.
 		list_count?: number
 
-		// The name of the list.
+		// Specify the list name.
 		name!: string
 
-		// The type of list.
+		// Specify the list type.
 		// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 		type!:       string
 		updated_at?: string

@@ -7,10 +7,6 @@ package data
 		// Identifier.
 		account_id!: string
 
-		// Number of apps the custom page is assigned to.
-		app_count?:  number
-		created_at?: string
-
 		// Custom page HTML.
 		custom_html?: string
 
@@ -28,7 +24,6 @@ package data
 		type?: string
 
 		// UUID.
-		uid?:        string
-		updated_at?: string
+		uid?: string
 	})
 }

@@ -15,11 +15,6 @@ package res
 		// Map. A zone membership will take priority over an account
 		// membership.
 		memberships?: matchN(1, [close({
-			// Controls whether the membership can be deleted via the API or
-			// not.
-			can_delete?: bool
-			created_at?: string
-
 			// The identifier for the membership (eg. a zone or account tag).
 			identifier?: string
 
@@ -27,11 +22,6 @@ package res
 			// Available values: "zone", "account".
 			kind?: string
 		}), [...close({
-			// Controls whether the membership can be deleted via the API or
-			// not.
-			can_delete?: bool
-			created_at?: string
-
 			// The identifier for the membership (eg. a zone or account tag).
 			identifier?: string
 

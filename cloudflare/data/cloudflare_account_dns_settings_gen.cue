@@ -56,7 +56,7 @@ package data
 				min_ttl?: number
 
 				// The primary nameserver, which may be used for outbound zone
-				// transfers.
+				// transfers. If null, a Cloudflare-assigned value will be used.
 				mname?: string
 
 				// Time in seconds after which secondary servers should re-check

@@ -6,47 +6,47 @@ package data
 	close({
 		account_id!: string
 
-		// The description of the list.
+		// Provide the list description.
 		description?: string
 		created_at?:  string
 
-		// API Resource UUID tag.
+		// Identify the API resource with a UUID.
 		id?: string
 
-		// The items in the list.
+		// Provide the list items.
 		items?: matchN(1, [close({
 			created_at?: string
 
-			// The description of the list item, if present.
+			// Provide the list item description (optional).
 			description?: string
 
-			// The value of the item in a list.
+			// Specify the item value.
 			value?: string
 		}), [...close({
 			created_at?: string
 
-			// The description of the list item, if present.
+			// Provide the list item description (optional).
 			description?: string
 
-			// The value of the item in a list.
+			// Specify the item value.
 			value?: string
 		})]])
 
-		// The number of items in the list.
+		// Indicate the number of items in the list.
 		list_count?: number
 
-		// API Resource UUID tag.
+		// Identify the API resource with a UUID.
 		list_id?: string
 
-		// The name of the list.
+		// Specify the list name.
 		name?: string
 		filter?: close({
-			// The type of list.
+			// Specify the list type.
 			// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 			type?: string
 		})
 
-		// The type of list.
+		// Specify the list type.
 		// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 		type?:       string
 		updated_at?: string

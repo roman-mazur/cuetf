@@ -23,7 +23,7 @@ package data
 		// separated by commas.
 		exclude_urls?: string
 
-		// Export the list of scripts as a file.
+		// Export the list of scripts as a file, limited to 50000 entries.
 		// Available values: "csv".
 		export?: string
 

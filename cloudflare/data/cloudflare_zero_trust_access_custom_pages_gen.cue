@@ -12,10 +12,6 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// Number of apps the custom page is assigned to.
-			app_count?:  number
-			created_at?: string
-
 			// Custom page name.
 			name?: string
 
@@ -24,13 +20,8 @@ package data
 			type?: string
 
 			// UUID.
-			uid?:        string
-			updated_at?: string
+			uid?: string
 		}), [...close({
-			// Number of apps the custom page is assigned to.
-			app_count?:  number
-			created_at?: string
-
 			// Custom page name.
 			name?: string
 
@@ -39,8 +30,7 @@ package data
 			type?: string
 
 			// UUID.
-			uid?:        string
-			updated_at?: string
+			uid?: string
 		})]])
 	})
 }

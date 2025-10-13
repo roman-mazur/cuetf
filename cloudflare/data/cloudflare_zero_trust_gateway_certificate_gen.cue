@@ -6,42 +6,43 @@ package data
 	close({
 		account_id!: string
 
-		// The read only deployment status of the certificate on
-		// Cloudflare's edge. Certificates in the 'available' (previously
-		// called 'active') state may be used for Gateway TLS
-		// interception.
+		// Indicate the read-only deployment status of the certificate on
+		// Cloudflare's edge. Gateway TLS interception can use
+		// certificates in the 'available' (previously called 'active')
+		// state.
 		// Available values: "pending_deployment", "available",
 		// "pending_deletion", "inactive".
 		binding_status?: string
 
-		// The CA certificate(read only).
+		// Provide the CA certificate (read-only).
 		certificate?: string
 
-		// Certificate UUID tag.
+		// Identify the certificate with a UUID.
 		certificate_id?: string
 		created_at?:     string
 
-		// The SHA256 fingerprint of the certificate(read only).
+		// Provide the SHA256 fingerprint of the certificate (read-only).
 		fingerprint?: string
 		expires_on?:  string
 
-		// Certificate UUID tag.
+		// Identify the certificate with a UUID.
 		id?: string
 
-		// Read-only field that shows whether Gateway TLS interception is
-		// using this certificate. This value cannot be set directly. To
-		// configure the certificate for interception, use the Gateway
-		// configuration setting named certificate.
+		// Indicate whether Gateway TLS interception uses this certificate
+		// (read-only). You cannot set this value directly. To configure
+		// interception, use the Gateway configuration setting named
+		// `certificate` (read-only).
 		in_use?: bool
 
-		// The organization that issued the certificate(read only).
+		// Indicate the organization that issued the certificate
+		// (read-only).
 		issuer_org?: string
 
-		// The entire issuer field of the certificate(read only).
+		// Provide the entire issuer field of the certificate (read-only).
 		issuer_raw?: string
 
-		// The type of certificate, either BYO-PKI (custom) or
-		// Gateway-managed(read only).
+		// Indicate the read-only certificate type, BYO-PKI (custom) or
+		// Gateway-managed.
 		// Available values: "custom", "gateway_managed".
 		type?:        string
 		updated_at?:  string
