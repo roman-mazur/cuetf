@@ -20,17 +20,26 @@ import (
 )
 
 var (
-	filter   = flag.String("f", "", "Definition name filter (regexp)")
+	filter   = flag.String("f", "", "Definition name filter (regexp, what to include)")
+	exclude  = flag.String("e", "", "Exclusion name filter (regexp, what to exclude)")
 	verbose  = flag.Bool("v", false, "Verbose mode")
 	logTime  = flag.Bool("t", false, "Log time")
 	defs     = flag.Bool("defs", true, "Whether to regenerate all the defs")
 	mappings = flag.Bool("mappings", true, "Whether to regenerate the mappings")
+
+	includeRegexp, excludeRegexp *regexp.Regexp
 )
 
 func main() {
 	flag.Parse()
 	if !*logTime {
 		log.SetFlags(0)
+	}
+	if *filter != "" {
+		includeRegexp = regexp.MustCompile(*filter)
+	}
+	if *exclude != "" {
+		excludeRegexp = regexp.MustCompile(*exclude)
 	}
 
 	schemaPath := flag.Arg(0)
@@ -140,15 +149,16 @@ func listDefs(p string) []string {
 }
 
 func shouldProcess(name string) bool {
-	if *filter == "" {
+	if includeRegexp == nil && excludeRegexp == nil {
 		return true
 	}
-
-	r, err := regexp.Compile(*filter)
-	if err != nil {
-		log.Fatal("bad filter", *filter)
+	if includeRegexp != nil && !includeRegexp.MatchString(name) {
+		return false
 	}
-	return r.MatchString(name)
+	if excludeRegexp != nil && excludeRegexp.MatchString(name) {
+		return false
+	}
+	return true
 }
 
 func processSchema(name string, s *schemaData, dir string, logPrefix string) {

@@ -18,7 +18,11 @@ function process() {
   echo "Processing $provider..."
   (cd "$provider/internal" && terraUpdate "$provider")
 
-  go run ./cmd/gen "$provider/internal/schema/schema.json" . 2> logs/"$provider-log.txt" &
+  exclude=$(cat "$provider/exclude" || echo "")
+  if [ -n "$exclude" ]; then
+    exclude="-e $exclude"
+  fi
+  go run ./cmd/gen $exclude "$provider/internal/schema/schema.json" . 2> logs/"$provider-log.txt" &
   defs_pid=$!
 
   (cd "$provider" && ([ -f import.sh ] && ./import.sh || exit 0))
