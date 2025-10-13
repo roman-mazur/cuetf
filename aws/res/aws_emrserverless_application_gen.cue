@@ -7,9 +7,10 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_emrserverless_application")
 	close({
 		architecture?: string
-		arn?:          string
-		id?:           string
-		name!:         string
+		auto_start_configuration?: matchN(1, [#auto_start_configuration, list.MaxItems(1) & [...#auto_start_configuration]])
+		arn?:  string
+		id?:   string
+		name!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -18,15 +19,15 @@ import "list"
 		region?:        string
 		release_label!: string
 		tags?: [string]: string
-		auto_start_configuration?: matchN(1, [#auto_start_configuration, list.MaxItems(1) & [...#auto_start_configuration]])
-		tags_all?: [string]: string
 		auto_stop_configuration?: matchN(1, [#auto_stop_configuration, list.MaxItems(1) & [...#auto_stop_configuration]])
 		image_configuration?: matchN(1, [#image_configuration, list.MaxItems(1) & [...#image_configuration]])
 		initial_capacity?: matchN(1, [#initial_capacity, [...#initial_capacity]])
 		interactive_configuration?: matchN(1, [#interactive_configuration, list.MaxItems(1) & [...#interactive_configuration]])
 		maximum_capacity?: matchN(1, [#maximum_capacity, list.MaxItems(1) & [...#maximum_capacity]])
-		type!: string
 		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
+		tags_all?: [string]: string
+		type!: string
+		scheduler_configuration?: matchN(1, [#scheduler_configuration, list.MaxItems(1) & [...#scheduler_configuration]])
 	})
 
 	#auto_start_configuration: close({
@@ -61,6 +62,11 @@ import "list"
 	#network_configuration: close({
 		security_group_ids?: [...string]
 		subnet_ids?: [...string]
+	})
+
+	#scheduler_configuration: close({
+		max_concurrent_runs?:   number
+		queue_timeout_minutes?: number
 	})
 
 	_#defs: "/$defs/initial_capacity/$defs/initial_capacity_config": close({

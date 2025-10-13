@@ -798,6 +798,7 @@ _res: aws_kms_replica_external_key: res.#aws_kms_replica_external_key
 _res: aws_kms_replica_key: res.#aws_kms_replica_key
 _res: aws_lakeformation_data_cells_filter: res.#aws_lakeformation_data_cells_filter
 _res: aws_lakeformation_data_lake_settings: res.#aws_lakeformation_data_lake_settings
+_res: aws_lakeformation_lf_tag_expression: res.#aws_lakeformation_lf_tag_expression
 _res: aws_lakeformation_lf_tag: res.#aws_lakeformation_lf_tag
 _res: aws_lakeformation_opt_in: res.#aws_lakeformation_opt_in
 _res: aws_lakeformation_permissions: res.#aws_lakeformation_permissions
@@ -1024,6 +1025,7 @@ _res: aws_pipes_pipe: res.#aws_pipes_pipe
 _res: aws_placement_group: res.#aws_placement_group
 _res: aws_prometheus_alert_manager_definition: res.#aws_prometheus_alert_manager_definition
 _res: aws_prometheus_query_logging_configuration: res.#aws_prometheus_query_logging_configuration
+_res: aws_prometheus_resource_policy: res.#aws_prometheus_resource_policy
 _res: aws_prometheus_rule_group_namespace: res.#aws_prometheus_rule_group_namespace
 _res: aws_prometheus_scraper: res.#aws_prometheus_scraper
 _res: aws_prometheus_workspace_configuration: res.#aws_prometheus_workspace_configuration
@@ -1410,11 +1412,14 @@ _res: aws_transfer_access: res.#aws_transfer_access
 _res: aws_transfer_agreement: res.#aws_transfer_agreement
 _res: aws_transfer_certificate: res.#aws_transfer_certificate
 _res: aws_transfer_connector: res.#aws_transfer_connector
+_res: aws_transfer_host_key: res.#aws_transfer_host_key
 _res: aws_transfer_profile: res.#aws_transfer_profile
 _res: aws_transfer_server: res.#aws_transfer_server
 _res: aws_transfer_ssh_key: res.#aws_transfer_ssh_key
 _res: aws_transfer_tag: res.#aws_transfer_tag
 _res: aws_transfer_user: res.#aws_transfer_user
+_res: aws_transfer_web_app_customization: res.#aws_transfer_web_app_customization
+_res: aws_transfer_web_app: res.#aws_transfer_web_app
 _res: aws_transfer_workflow: res.#aws_transfer_workflow
 _res: aws_verifiedaccess_endpoint: res.#aws_verifiedaccess_endpoint
 _res: aws_verifiedaccess_group: res.#aws_verifiedaccess_group

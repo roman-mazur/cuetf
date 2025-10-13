@@ -51,6 +51,7 @@ import "list"
 	})
 
 	#amazon_managed_kafka_event_source_config: close({
+		schema_registry_config?: matchN(1, [_#defs."/$defs/amazon_managed_kafka_event_source_config/$defs/schema_registry_config", list.MaxItems(1) & [..._#defs."/$defs/amazon_managed_kafka_event_source_config/$defs/schema_registry_config"]])
 		consumer_group_id?: string
 	})
 
@@ -86,6 +87,7 @@ import "list"
 	})
 
 	#self_managed_kafka_event_source_config: close({
+		schema_registry_config?: matchN(1, [_#defs."/$defs/self_managed_kafka_event_source_config/$defs/schema_registry_config", list.MaxItems(1) & [..._#defs."/$defs/self_managed_kafka_event_source_config/$defs/schema_registry_config"]])
 		consumer_group_id?: string
 	})
 
@@ -94,11 +96,43 @@ import "list"
 		uri!:  string
 	})
 
+	_#defs: "/$defs/amazon_managed_kafka_event_source_config/$defs/schema_registry_config": close({
+		access_config?: matchN(1, [_#defs."/$defs/amazon_managed_kafka_event_source_config/$defs/schema_registry_config/$defs/access_config", [..._#defs."/$defs/amazon_managed_kafka_event_source_config/$defs/schema_registry_config/$defs/access_config"]])
+		schema_validation_config?: matchN(1, [_#defs."/$defs/amazon_managed_kafka_event_source_config/$defs/schema_registry_config/$defs/schema_validation_config", [..._#defs."/$defs/amazon_managed_kafka_event_source_config/$defs/schema_registry_config/$defs/schema_validation_config"]])
+		event_record_format?: string
+		schema_registry_uri?: string
+	})
+
+	_#defs: "/$defs/amazon_managed_kafka_event_source_config/$defs/schema_registry_config/$defs/access_config": close({
+		type?: string
+		uri?:  string
+	})
+
+	_#defs: "/$defs/amazon_managed_kafka_event_source_config/$defs/schema_registry_config/$defs/schema_validation_config": close({
+		attribute?: string
+	})
+
 	_#defs: "/$defs/destination_config/$defs/on_failure": close({
 		destination_arn!: string
 	})
 
 	_#defs: "/$defs/filter_criteria/$defs/filter": close({
 		pattern?: string
+	})
+
+	_#defs: "/$defs/self_managed_kafka_event_source_config/$defs/schema_registry_config": close({
+		access_config?: matchN(1, [_#defs."/$defs/self_managed_kafka_event_source_config/$defs/schema_registry_config/$defs/access_config", [..._#defs."/$defs/self_managed_kafka_event_source_config/$defs/schema_registry_config/$defs/access_config"]])
+		schema_validation_config?: matchN(1, [_#defs."/$defs/self_managed_kafka_event_source_config/$defs/schema_registry_config/$defs/schema_validation_config", [..._#defs."/$defs/self_managed_kafka_event_source_config/$defs/schema_registry_config/$defs/schema_validation_config"]])
+		event_record_format?: string
+		schema_registry_uri?: string
+	})
+
+	_#defs: "/$defs/self_managed_kafka_event_source_config/$defs/schema_registry_config/$defs/access_config": close({
+		type?: string
+		uri?:  string
+	})
+
+	_#defs: "/$defs/self_managed_kafka_event_source_config/$defs/schema_registry_config/$defs/schema_validation_config": close({
+		attribute?: string
 	})
 }

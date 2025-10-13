@@ -11,5 +11,7 @@ package res
 		name!:                  string
 		routing_control_count?: number
 		status?:                string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 	})
 }

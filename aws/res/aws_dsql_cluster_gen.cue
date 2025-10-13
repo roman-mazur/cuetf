@@ -10,18 +10,19 @@ package res
 			encryption_status?: string
 			encryption_type?:   string
 		})]
-		identifier?:         string
-		kms_encryption_key?: string
+		force_destroy?: bool
+		identifier?:    string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		multi_region_properties?: matchN(1, [#multi_region_properties, [...#multi_region_properties]])
+		kms_encryption_key?: string
+		timeouts?:           #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		multi_region_properties?: matchN(1, [#multi_region_properties, [...#multi_region_properties]])
-		timeouts?:                  #timeouts
 		vpc_endpoint_service_name?: string
 	})
 

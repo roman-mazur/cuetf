@@ -209,6 +209,7 @@ import "list"
 	_#defs: "/$defs/origin/$defs/custom_origin_config": close({
 		http_port!:                number
 		https_port!:               number
+		ip_address_type?:          string
 		origin_keepalive_timeout?: number
 		origin_protocol_policy!:   string
 		origin_read_timeout?:      number

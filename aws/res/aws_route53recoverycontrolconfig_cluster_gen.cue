@@ -9,8 +9,11 @@ package res
 			endpoint?: string
 			region?:   string
 		})]
-		id?:     string
-		name!:   string
-		status?: string
+		id?:           string
+		name!:         string
+		network_type?: string
+		status?:       string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 	})
 }

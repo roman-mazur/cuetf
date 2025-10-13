@@ -6,15 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_networkfirewall_logging_configuration")
 	close({
-		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [_, ...] & [...#logging_configuration]])
-		firewall_arn!: string
-		id?:           string
+		enable_monitoring_dashboard?: bool
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:       string
+		firewall_arn!: string
+		id?:           string
+		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [_, ...] & [...#logging_configuration]])
 	})
 
 	#logging_configuration: close({

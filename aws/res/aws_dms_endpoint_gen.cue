@@ -13,32 +13,33 @@ import "list"
 		endpoint_type!:               string
 		engine_name!:                 string
 		extra_connection_attributes?: string
+		id?:                          string
+		kms_key_arn?:                 string
 		elasticsearch_settings?: matchN(1, [#elasticsearch_settings, list.MaxItems(1) & [...#elasticsearch_settings]])
-		id?:          string
-		kms_key_arn?: string
-		password?:    string
-		kafka_settings?: matchN(1, [#kafka_settings, list.MaxItems(1) & [...#kafka_settings]])
-		pause_replication_tasks?: bool
-		port?:                    number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:   string
+		password?: string
+		kafka_settings?: matchN(1, [#kafka_settings, list.MaxItems(1) & [...#kafka_settings]])
+		pause_replication_tasks?: bool
+		port?:                    number
 		kinesis_settings?: matchN(1, [#kinesis_settings, list.MaxItems(1) & [...#kinesis_settings]])
 		secrets_manager_access_role_arn?: string
 		secrets_manager_arn?:             string
+		server_name?:                     string
+		service_access_role?:             string
+		ssl_mode?:                        string
+		tags?: [string]: string
 		mongodb_settings?: matchN(1, [#mongodb_settings, list.MaxItems(1) & [...#mongodb_settings]])
-		server_name?:         string
-		service_access_role?: string
-		ssl_mode?:            string
-		tags?: [string]:     string
-		tags_all?: [string]: string
+		mysql_settings?: matchN(1, [#mysql_settings, list.MaxItems(1) & [...#mysql_settings]])
 		oracle_settings?: matchN(1, [#oracle_settings, list.MaxItems(1) & [...#oracle_settings]])
 		postgres_settings?: matchN(1, [#postgres_settings, list.MaxItems(1) & [...#postgres_settings]])
-		redis_settings?: matchN(1, [#redis_settings, list.MaxItems(1) & [...#redis_settings]])
+		tags_all?: [string]: string
 		username?: string
+		redis_settings?: matchN(1, [#redis_settings, list.MaxItems(1) & [...#redis_settings]])
 		redshift_settings?: matchN(1, [#redshift_settings, list.MaxItems(1) & [...#redshift_settings]])
 		timeouts?: #timeouts
 	})
@@ -93,6 +94,19 @@ import "list"
 		docs_to_investigate?: string
 		extract_doc_id?:      string
 		nesting_level?:       string
+	})
+
+	#mysql_settings: close({
+		after_connect_script?:              string
+		authentication_method?:             string
+		clean_source_metadata_on_mismatch?: bool
+		events_poll_interval?:              number
+		execute_timeout?:                   number
+		max_file_size?:                     number
+		parallel_load_threads?:             number
+		server_timezone?:                   string
+		service_access_role_arn?:           string
+		target_db_type?:                    string
 	})
 
 	#oracle_settings: close({
