@@ -19,6 +19,10 @@ package data
 		// user devices accessing the site. Defaults to true
 		bm_cookie_enabled?: bool
 
+		// Specifies the Robots Access Control License variant to use.
+		// Available values: "off", "policy_only".
+		cf_robots_variant?: string
+
 		// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 		// Available values: "enabled", "disabled".
 		crawler_protection?: string
@@ -27,6 +31,37 @@ package data
 		// Management. [Learn more about JavaScript
 		// Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
 		enable_js?: bool
+
+		// A read-only field that shows which unauthorized settings are
+		// currently active on the zone. These settings typically result
+		// from upgrades or downgrades.
+		stale_zone_configuration?: close({
+			// Indicates that the zone's Bot Fight Mode is turned on.
+			fight_mode?: bool
+
+			// Indicates that the zone's wordpress optimization for SBFM is
+			// turned on.
+			optimize_wordpress?: bool
+
+			// Indicates that the zone's definitely automated requests are
+			// being blocked or challenged.
+			sbfm_definitely_automated?: string
+
+			// Indicates that the zone's likely automated requests are being
+			// blocked or challenged.
+			sbfm_likely_automated?: string
+
+			// Indicates that the zone's static resource protection is turned
+			// on.
+			sbfm_static_resource_protection?: string
+
+			// Indicates that the zone's verified bot requests are being
+			// blocked.
+			sbfm_verified_bots?: string
+
+			// Indicates that the zone's session score tracking is disabled.
+			suppress_session_score?: bool
+		})
 
 		// Whether to enable Bot Fight Mode.
 		fight_mode?: bool
@@ -62,37 +97,6 @@ package data
 		// requests.
 		// Available values: "allow", "block".
 		sbfm_verified_bots?: string
-
-		// A read-only field that shows which unauthorized settings are
-		// currently active on the zone. These settings typically result
-		// from upgrades or downgrades.
-		stale_zone_configuration?: close({
-			// Indicates that the zone's Bot Fight Mode is turned on.
-			fight_mode?: bool
-
-			// Indicates that the zone's wordpress optimization for SBFM is
-			// turned on.
-			optimize_wordpress?: bool
-
-			// Indicates that the zone's definitely automated requests are
-			// being blocked or challenged.
-			sbfm_definitely_automated?: string
-
-			// Indicates that the zone's likely automated requests are being
-			// blocked or challenged.
-			sbfm_likely_automated?: string
-
-			// Indicates that the zone's static resource protection is turned
-			// on.
-			sbfm_static_resource_protection?: string
-
-			// Indicates that the zone's verified bot requests are being
-			// blocked.
-			sbfm_verified_bots?: string
-
-			// Indicates that the zone's session score tracking is disabled.
-			suppress_session_score?: bool
-		})
 
 		// Whether to disable tracking the highest bot score for a session
 		// in the Bot Management cookie.

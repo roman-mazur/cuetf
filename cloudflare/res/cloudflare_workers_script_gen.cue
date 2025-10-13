@@ -9,6 +9,16 @@ package res
 
 		// Configuration for assets within a Worker.
 		assets?: close({
+			// The SHA-256 hash of the asset manifest of files to upload.
+			asset_manifest_sha256?: string
+
+			// Path to the directory containing asset files to upload.
+			directory?: string
+
+			// Token provided upon successful upload of all files from a
+			// registered manifest.
+			jwt?: string
+
 			// Configuration for assets within a Worker.
 			config?: close({
 				// The contents of a _headers file (used to attach custom headers
@@ -36,40 +46,26 @@ package res
 				// falling back to the Worker script.
 				run_worker_first?: bool
 			})
-
-			// Token provided upon successful upload of all files from a
-			// registered manifest.
-			jwt?: string
 		})
 
-		// Name of the part in the multipart request that contains the
-		// script (e.g. the file adding a listener to the `fetch` event).
-		// Indicates a `service worker syntax` Worker.
+		// Name of the uploaded file that contains the script (e.g. the
+		// file adding a listener to the `fetch` event). Indicates a
+		// `service worker syntax` Worker.
 		body_part?: string
 
 		// List of bindings attached to a Worker. You can find more about
 		// bindings on our docs:
 		// https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 		bindings?: matchN(1, [close({
-			// Outbound worker.
-			outbound?: close({
-				// Pass information from the Dispatch Worker to the Outbound
-				// Worker through the parameters.
-				params?: [...string]
-
-				// Outbound worker.
-				worker?: close({
-					// Environment of the outbound worker.
-					environment?: string
-
-					// Name of the outbound worker.
-					service?: string
-				})
-			})
-
 			// Algorithm-specific key parameters. [Learn
 			// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
 			algorithm?: string
+
+			// List of allowed destination addresses.
+			allowed_destination_addresses?: [...string]
+
+			// List of allowed sender addresses.
+			allowed_sender_addresses?: [...string]
 
 			// R2 bucket to bind to.
 			bucket_name?: string
@@ -82,6 +78,9 @@ package res
 
 			// The name of the dataset to bind to.
 			dataset?: string
+
+			// Destination address for the email.
+			destination_address?: string
 
 			// The environment of the script_name to bind to.
 			environment?: string
@@ -100,9 +99,31 @@ package res
 			// JSON data to use.
 			json?: string
 
+			// The
+			// [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
+			// of the R2 bucket.
+			// Available values: "eu", "fedramp".
+			jurisdiction?: string
+
 			// Base64-encoded key data. Required if `format` is "raw",
 			// "pkcs8", or "spki".
 			key_base64?: string
+
+			// Outbound worker.
+			outbound?: close({
+				// Pass information from the Dispatch Worker to the Outbound
+				// Worker through the parameters.
+				params?: [...string]
+
+				// Outbound worker.
+				worker?: close({
+					// Environment of the outbound worker.
+					environment?: string
+
+					// Name of the outbound worker.
+					service?: string
+				})
+			})
 
 			// Key data in [JSON Web
 			// Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key)
@@ -117,6 +138,15 @@ package res
 
 			// Namespace identifier tag.
 			namespace_id?: string
+
+			// The old name of the inherited binding. If set, the binding will
+			// be renamed from `old_name` to `name` in the new version. If
+			// not set, the binding will keep the same name between versions.
+			old_name?: string
+
+			// The name of the file containing the data content. Only accepted
+			// for `service worker syntax` Workers.
+			part?: string
 
 			// Name of the Pipeline to bind to.
 			pipeline?: string
@@ -142,40 +172,37 @@ package res
 
 			// The kind of resource that the binding provides.
 			// Available values: "ai", "analytics_engine", "assets",
-			// "browser", "d1", "dispatch_namespace",
-			// "durable_object_namespace", "hyperdrive", "json",
-			// "kv_namespace", "mtls_certificate", "plain_text", "pipelines",
-			// "queue", "r2_bucket", "secret_text", "service",
-			// "tail_consumer", "vectorize", "version_metadata",
-			// "secrets_store_secret", "secret_key", "workflow".
+			// "browser", "d1", "data_blob", "dispatch_namespace",
+			// "durable_object_namespace", "hyperdrive", "inherit", "images",
+			// "json", "kv_namespace", "mtls_certificate", "plain_text",
+			// "pipelines", "queue", "r2_bucket", "secret_text",
+			// "send_email", "service", "tail_consumer", "text_blob",
+			// "vectorize", "version_metadata", "secrets_store_secret",
+			// "secret_key", "workflow", "wasm_module".
 			type!: string
 
 			// Allowed operations with the key. [Learn
 			// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
 			usages?: [...string]
+
+			// Identifier for the version to inherit the binding from, which
+			// can be the version ID or the literal "latest" to inherit from
+			// the latest version. Defaults to inheriting the binding from
+			// the latest version.
+			version_id?: string
 
 			// Name of the Workflow to bind to.
 			workflow_name?: string
 		}), [...close({
-			// Outbound worker.
-			outbound?: close({
-				// Pass information from the Dispatch Worker to the Outbound
-				// Worker through the parameters.
-				params?: [...string]
-
-				// Outbound worker.
-				worker?: close({
-					// Environment of the outbound worker.
-					environment?: string
-
-					// Name of the outbound worker.
-					service?: string
-				})
-			})
-
 			// Algorithm-specific key parameters. [Learn
 			// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
 			algorithm?: string
+
+			// List of allowed destination addresses.
+			allowed_destination_addresses?: [...string]
+
+			// List of allowed sender addresses.
+			allowed_sender_addresses?: [...string]
 
 			// R2 bucket to bind to.
 			bucket_name?: string
@@ -188,6 +215,9 @@ package res
 
 			// The name of the dataset to bind to.
 			dataset?: string
+
+			// Destination address for the email.
+			destination_address?: string
 
 			// The environment of the script_name to bind to.
 			environment?: string
@@ -206,9 +236,31 @@ package res
 			// JSON data to use.
 			json?: string
 
+			// The
+			// [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
+			// of the R2 bucket.
+			// Available values: "eu", "fedramp".
+			jurisdiction?: string
+
 			// Base64-encoded key data. Required if `format` is "raw",
 			// "pkcs8", or "spki".
 			key_base64?: string
+
+			// Outbound worker.
+			outbound?: close({
+				// Pass information from the Dispatch Worker to the Outbound
+				// Worker through the parameters.
+				params?: [...string]
+
+				// Outbound worker.
+				worker?: close({
+					// Environment of the outbound worker.
+					environment?: string
+
+					// Name of the outbound worker.
+					service?: string
+				})
+			})
 
 			// Key data in [JSON Web
 			// Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key)
@@ -223,6 +275,15 @@ package res
 
 			// Namespace identifier tag.
 			namespace_id?: string
+
+			// The old name of the inherited binding. If set, the binding will
+			// be renamed from `old_name` to `name` in the new version. If
+			// not set, the binding will keep the same name between versions.
+			old_name?: string
+
+			// The name of the file containing the data content. Only accepted
+			// for `service worker syntax` Workers.
+			part?: string
 
 			// Name of the Pipeline to bind to.
 			pipeline?: string
@@ -248,17 +309,24 @@ package res
 
 			// The kind of resource that the binding provides.
 			// Available values: "ai", "analytics_engine", "assets",
-			// "browser", "d1", "dispatch_namespace",
-			// "durable_object_namespace", "hyperdrive", "json",
-			// "kv_namespace", "mtls_certificate", "plain_text", "pipelines",
-			// "queue", "r2_bucket", "secret_text", "service",
-			// "tail_consumer", "vectorize", "version_metadata",
-			// "secrets_store_secret", "secret_key", "workflow".
+			// "browser", "d1", "data_blob", "dispatch_namespace",
+			// "durable_object_namespace", "hyperdrive", "inherit", "images",
+			// "json", "kv_namespace", "mtls_certificate", "plain_text",
+			// "pipelines", "queue", "r2_bucket", "secret_text",
+			// "send_email", "service", "tail_consumer", "text_blob",
+			// "vectorize", "version_metadata", "secrets_store_secret",
+			// "secret_key", "workflow", "wasm_module".
 			type!: string
 
 			// Allowed operations with the key. [Learn
 			// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
 			usages?: [...string]
+
+			// Identifier for the version to inherit the binding from, which
+			// can be the version ID or the literal "latest" to inherit from
+			// the latest version. Defaults to inheriting the binding from
+			// the latest version.
+			version_id?: string
 
 			// Name of the Workflow to bind to.
 			workflow_name?: string
@@ -280,8 +348,8 @@ package res
 			cpu_ms?: number
 		})
 
-		// Module or Service Worker contents of the Worker. Exactly one of
-		// `content` or `content_file` must be specified.
+		// Module or Service Worker contents of the Worker. Conflicts with
+		// `content_file`.
 		content?: string
 
 		// Migrations to apply for Durable Objects associated with this
@@ -395,8 +463,8 @@ package res
 		})
 
 		// Path to a file containing the Module or Service Worker contents
-		// of the Worker. Exactly one of `content` or `content_file` must
-		// be specified. Must be paired with `content_sha256`.
+		// of the Worker. Conflicts with `content`. Must be paired with
+		// `content_sha256`.
 		content_file?: string
 
 		// SHA-256 hash of the Worker contents. Used to trigger updates
@@ -442,6 +510,9 @@ package res
 
 			// Log settings for the Worker.
 			logs?: close({
+				// A list of destinations where logs will be exported to.
+				destinations?: [...string]
+
 				// Whether logs are enabled for the Worker.
 				enabled!: bool
 
@@ -453,6 +524,9 @@ package res
 				// logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs)
 				// are enabled for the Worker.
 				invocation_logs!: bool
+
+				// Whether log persistence is enabled for the Worker.
+				persist?: bool
 			})
 		})
 
@@ -522,9 +596,9 @@ package res
 		// Whether Logpush is turned on for the Worker.
 		logpush?: bool
 
-		// Name of the part in the multipart request that contains the
-		// main module (e.g. the file exporting a `fetch` handler).
-		// Indicates a `module syntax` Worker.
+		// Name of the uploaded file that contains the main module (e.g.
+		// the file exporting a `fetch` handler). Indicates a `module
+		// syntax` Worker.
 		main_module?: string
 
 		// The tag of the Durable Object migration that was most recently

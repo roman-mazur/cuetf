@@ -6,15 +6,15 @@ package data
 	close({
 		account_id!: string
 
-		// A list of CIDRs to restrict ingress connections.
+		// Specify the list of CIDRs to restrict ingress connections.
 		ips?: [...string]
 		created_at?: string
 
-		// The name of the proxy endpoint.
+		// Specify the name of the proxy endpoint.
 		name?: string
 		id?:   string
 
-		// The subdomain to be used as the destination in the proxy
+		// Specify the subdomain to use as the destination in the proxy
 		// client.
 		subdomain?:         string
 		proxy_endpoint_id!: string

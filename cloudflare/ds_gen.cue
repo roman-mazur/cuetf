@@ -242,6 +242,8 @@ _ds: cloudflare_workers_routes: data.#cloudflare_workers_routes
 _ds: cloudflare_workers_script: data.#cloudflare_workers_script
 _ds: cloudflare_workers_script_subdomain: data.#cloudflare_workers_script_subdomain
 _ds: cloudflare_workers_scripts: data.#cloudflare_workers_scripts
+_ds: cloudflare_workflow: data.#cloudflare_workflow
+_ds: cloudflare_workflows: data.#cloudflare_workflows
 _ds: cloudflare_zero_trust_access_application: data.#cloudflare_zero_trust_access_application
 _ds: cloudflare_zero_trust_access_applications: data.#cloudflare_zero_trust_access_applications
 _ds: cloudflare_zero_trust_access_custom_page: data.#cloudflare_zero_trust_access_custom_page
@@ -304,6 +306,8 @@ _ds: cloudflare_zero_trust_gateway_proxy_endpoint: data.#cloudflare_zero_trust_g
 _ds: cloudflare_zero_trust_gateway_settings: data.#cloudflare_zero_trust_gateway_settings
 _ds: cloudflare_zero_trust_list: data.#cloudflare_zero_trust_list
 _ds: cloudflare_zero_trust_lists: data.#cloudflare_zero_trust_lists
+_ds: cloudflare_zero_trust_network_hostname_route: data.#cloudflare_zero_trust_network_hostname_route
+_ds: cloudflare_zero_trust_network_hostname_routes: data.#cloudflare_zero_trust_network_hostname_routes
 _ds: cloudflare_zero_trust_organization: data.#cloudflare_zero_trust_organization
 _ds: cloudflare_zero_trust_risk_behavior: data.#cloudflare_zero_trust_risk_behavior
 _ds: cloudflare_zero_trust_risk_scoring_integration: data.#cloudflare_zero_trust_risk_scoring_integration

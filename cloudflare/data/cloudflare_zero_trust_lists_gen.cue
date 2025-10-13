@@ -6,76 +6,76 @@ package data
 	close({
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// The description of the list.
+			// Provide the list description.
 			description?: string
 
-			// API Resource UUID tag.
+			// Identify the API resource with a UUID.
 			id?:         string
 			created_at?: string
 
-			// The items in the list.
+			// Provide the list items.
 			items?: matchN(1, [close({
 				created_at?: string
 
-				// The description of the list item, if present.
+				// Provide the list item description (optional).
 				description?: string
 
-				// The value of the item in a list.
+				// Specify the item value.
 				value?: string
 			}), [...close({
 				created_at?: string
 
-				// The description of the list item, if present.
+				// Provide the list item description (optional).
 				description?: string
 
-				// The value of the item in a list.
+				// Specify the item value.
 				value?: string
 			})]])
 
-			// The number of items in the list.
+			// Indicate the number of items in the list.
 			list_count?: number
 
-			// The name of the list.
+			// Specify the list name.
 			name?: string
 
-			// The type of list.
+			// Specify the list type.
 			// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 			type?:       string
 			updated_at?: string
 		}), [...close({
-			// The description of the list.
+			// Provide the list description.
 			description?: string
 
-			// API Resource UUID tag.
+			// Identify the API resource with a UUID.
 			id?:         string
 			created_at?: string
 
-			// The items in the list.
+			// Provide the list items.
 			items?: matchN(1, [close({
 				created_at?: string
 
-				// The description of the list item, if present.
+				// Provide the list item description (optional).
 				description?: string
 
-				// The value of the item in a list.
+				// Specify the item value.
 				value?: string
 			}), [...close({
 				created_at?: string
 
-				// The description of the list item, if present.
+				// Provide the list item description (optional).
 				description?: string
 
-				// The value of the item in a list.
+				// Specify the item value.
 				value?: string
 			})]])
 
-			// The number of items in the list.
+			// Indicate the number of items in the list.
 			list_count?: number
 
-			// The name of the list.
+			// Specify the list name.
 			name?: string
 
-			// The type of list.
+			// Specify the list type.
 			// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 			type?:       string
 			updated_at?: string
@@ -85,7 +85,7 @@ package data
 		max_items?:  number
 		account_id!: string
 
-		// The type of list.
+		// Specify the list type.
 		// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 		type?: string
 	})

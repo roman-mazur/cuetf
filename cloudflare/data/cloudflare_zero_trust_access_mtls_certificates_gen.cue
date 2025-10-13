@@ -9,7 +9,6 @@ package data
 			// The hostnames of the applications that will use this
 			// certificate.
 			associated_hostnames?: [...string]
-			created_at?: string
 
 			// The MD5 fingerprint of the certificate.
 			fingerprint?: string
@@ -19,13 +18,11 @@ package data
 			id?: string
 
 			// The name of the certificate.
-			name?:       string
-			updated_at?: string
+			name?: string
 		}), [...close({
 			// The hostnames of the applications that will use this
 			// certificate.
 			associated_hostnames?: [...string]
-			created_at?: string
 
 			// The MD5 fingerprint of the certificate.
 			fingerprint?: string
@@ -35,8 +32,7 @@ package data
 			id?: string
 
 			// The name of the certificate.
-			name?:       string
-			updated_at?: string
+			name?: string
 		})]])
 
 		// The Account ID to use for this endpoint. Mutually exclusive

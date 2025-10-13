@@ -2038,10 +2038,6 @@ package res
 
 			// The application client secret, only returned on POST request.
 			client_secret?: string
-
-			// The service provider's endpoint that is responsible for
-			// receiving and parsing a SAML assertion.
-			consumer_service_url?: string
 			custom_attributes?: matchN(1, [close({
 				// The SAML FriendlyName of the attribute.
 				friendly_name?: string
@@ -2113,7 +2109,10 @@ package res
 				// If the attribute is required when building a SAML assertion.
 				required?: bool
 			})]])
-			created_at?: string
+
+			// The service provider's endpoint that is responsible for
+			// receiving and parsing a SAML assertion.
+			consumer_service_url?: string
 
 			// The URL that the user will be redirected to after a successful
 			// login for IDP initiated logins.
@@ -2125,9 +2124,6 @@ package res
 			// A regex to filter Cloudflare groups returned in ID token and
 			// userinfo endpoint
 			group_filter_regex?: string
-
-			// The unique identifier for your SaaS application.
-			idp_entity_id?: string
 			custom_claims?: matchN(1, [close({
 				// The name of the claim.
 				name?: string
@@ -2163,15 +2159,9 @@ package res
 				// Available values: "groups", "profile", "email", "openid".
 				scope?: string
 			})]])
-			hybrid_and_implicit_options?: close({
-				// If an Access Token should be returned from the OIDC
-				// Authorization endpoint
-				return_access_token_from_authorization_endpoint?: bool
 
-				// If an ID Token should be returned from the OIDC Authorization
-				// endpoint
-				return_id_token_from_authorization_endpoint?: bool
-			})
+			// The unique identifier for your SaaS application.
+			idp_entity_id?: string
 
 			// The format of the name identifier sent to the SaaS application.
 			// Available values: "id", "email".
@@ -2212,7 +2202,15 @@ package res
 			// The endpoint where your SaaS application will send login
 			// requests.
 			sso_endpoint?: string
-			updated_at?:   string
+			hybrid_and_implicit_options?: close({
+				// If an Access Token should be returned from the OIDC
+				// Authorization endpoint
+				return_access_token_from_authorization_endpoint?: bool
+
+				// If an ID Token should be returned from the OIDC Authorization
+				// endpoint
+				return_id_token_from_authorization_endpoint?: bool
+			})
 			refresh_token_options?: close({
 				// How long a refresh token will be valid for after creation.
 				// Valid units are m,h,d. Must be longer than 1m.

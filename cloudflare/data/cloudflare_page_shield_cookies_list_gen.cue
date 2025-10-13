@@ -12,7 +12,7 @@ package data
 		// attribute
 		domain?: string
 
-		// Export the list of cookies as a file.
+		// Export the list of cookies as a file, limited to 50000 entries.
 		// Available values: "csv".
 		export?: string
 

@@ -15,9 +15,7 @@ package data
 			// A list of regions from which to run health checks. Null means
 			// every Cloudflare data center.
 			check_regions?: [...string]
-
-			// A human-readable description of the pool.
-			description?: string
+			created_on?: string
 
 			// Configures load shedding policies and percentages for the pool.
 			load_shedding?: close({
@@ -43,9 +41,8 @@ package data
 				session_policy?: string
 			})
 
-			// This field shows up only if the pool is disabled. This field is
-			// set with the time the pool was disabled at.
-			disabled_at?: string
+			// A human-readable description of the pool.
+			description?: string
 
 			// Filter pool and origin health notifications by resource type or
 			// health status. Use null to reset.
@@ -77,37 +74,9 @@ package data
 				})
 			})
 
-			// Whether to enable (the default) or disable this pool. Disabled
-			// pools will not receive traffic and are excluded from health
-			// checks. Disabling a pool will cause any load balancers using
-			// it to failover to the next pool (if any).
-			enabled?: bool
-
-			// The latitude of the data center containing the origins used in
-			// this pool in decimal degrees. If this is set, longitude must
-			// also be set.
-			latitude?:   number
-			created_on?: string
-
-			// The longitude of the data center containing the origins used in
-			// this pool in decimal degrees. If this is set, latitude must
-			// also be set.
-			longitude?: number
-
-			// The minimum number of origins that must be healthy for this
-			// pool to serve traffic. If the number of healthy origins falls
-			// below this number, the pool will be marked unhealthy and will
-			// failover to the next available pool.
-			minimum_origins?: number
-			id?:              string
-
-			// The ID of the Monitor to use for checking the health of origins
-			// within this pool.
-			monitor?: string
-
-			// A short name (tag) for the pool. Only alphanumeric characters,
-			// hyphens, and underscores are allowed.
-			name?: string
+			// This field shows up only if the pool is disabled. This field is
+			// set with the time the pool was disabled at.
+			disabled_at?: string
 
 			// Configures origin steering for the pool. Controls how origins
 			// are selected for new sessions and traffic without session
@@ -131,9 +100,44 @@ package data
 				policy?: string
 			})
 
+			// Whether to enable (the default) or disable this pool. Disabled
+			// pools will not receive traffic and are excluded from health
+			// checks. Disabling a pool will cause any load balancers using
+			// it to failover to the next pool (if any).
+			enabled?: bool
+
+			// The latitude of the data center containing the origins used in
+			// this pool in decimal degrees. If this is set, longitude must
+			// also be set.
+			latitude?: number
+
+			// The longitude of the data center containing the origins used in
+			// this pool in decimal degrees. If this is set, latitude must
+			// also be set.
+			longitude?: number
+
+			// The minimum number of origins that must be healthy for this
+			// pool to serve traffic. If the number of healthy origins falls
+			// below this number, the pool will be marked unhealthy and will
+			// failover to the next available pool.
+			minimum_origins?: number
+
+			// The ID of the Monitor to use for checking the health of origins
+			// within this pool.
+			monitor?: string
+			id?:      string
+
+			// The ID of the Monitor Group to use for checking the health of
+			// origins within this pool.
+			monitor_group?: string
+			modified_on?:   string
+
+			// A short name (tag) for the pool. Only alphanumeric characters,
+			// hyphens, and underscores are allowed.
+			name?: string
+
 			// List of networks where Load Balancer or Pool is enabled.
 			networks?: [...string]
-			modified_on?: string
 
 			// This field is now deprecated. It has been moved to Cloudflare's
 			// Centralized Notification service
@@ -243,9 +247,7 @@ package data
 			// A list of regions from which to run health checks. Null means
 			// every Cloudflare data center.
 			check_regions?: [...string]
-
-			// A human-readable description of the pool.
-			description?: string
+			created_on?: string
 
 			// Configures load shedding policies and percentages for the pool.
 			load_shedding?: close({
@@ -271,9 +273,8 @@ package data
 				session_policy?: string
 			})
 
-			// This field shows up only if the pool is disabled. This field is
-			// set with the time the pool was disabled at.
-			disabled_at?: string
+			// A human-readable description of the pool.
+			description?: string
 
 			// Filter pool and origin health notifications by resource type or
 			// health status. Use null to reset.
@@ -305,37 +306,9 @@ package data
 				})
 			})
 
-			// Whether to enable (the default) or disable this pool. Disabled
-			// pools will not receive traffic and are excluded from health
-			// checks. Disabling a pool will cause any load balancers using
-			// it to failover to the next pool (if any).
-			enabled?: bool
-
-			// The latitude of the data center containing the origins used in
-			// this pool in decimal degrees. If this is set, longitude must
-			// also be set.
-			latitude?:   number
-			created_on?: string
-
-			// The longitude of the data center containing the origins used in
-			// this pool in decimal degrees. If this is set, latitude must
-			// also be set.
-			longitude?: number
-
-			// The minimum number of origins that must be healthy for this
-			// pool to serve traffic. If the number of healthy origins falls
-			// below this number, the pool will be marked unhealthy and will
-			// failover to the next available pool.
-			minimum_origins?: number
-			id?:              string
-
-			// The ID of the Monitor to use for checking the health of origins
-			// within this pool.
-			monitor?: string
-
-			// A short name (tag) for the pool. Only alphanumeric characters,
-			// hyphens, and underscores are allowed.
-			name?: string
+			// This field shows up only if the pool is disabled. This field is
+			// set with the time the pool was disabled at.
+			disabled_at?: string
 
 			// Configures origin steering for the pool. Controls how origins
 			// are selected for new sessions and traffic without session
@@ -359,9 +332,44 @@ package data
 				policy?: string
 			})
 
+			// Whether to enable (the default) or disable this pool. Disabled
+			// pools will not receive traffic and are excluded from health
+			// checks. Disabling a pool will cause any load balancers using
+			// it to failover to the next pool (if any).
+			enabled?: bool
+
+			// The latitude of the data center containing the origins used in
+			// this pool in decimal degrees. If this is set, longitude must
+			// also be set.
+			latitude?: number
+
+			// The longitude of the data center containing the origins used in
+			// this pool in decimal degrees. If this is set, latitude must
+			// also be set.
+			longitude?: number
+
+			// The minimum number of origins that must be healthy for this
+			// pool to serve traffic. If the number of healthy origins falls
+			// below this number, the pool will be marked unhealthy and will
+			// failover to the next available pool.
+			minimum_origins?: number
+
+			// The ID of the Monitor to use for checking the health of origins
+			// within this pool.
+			monitor?: string
+			id?:      string
+
+			// The ID of the Monitor Group to use for checking the health of
+			// origins within this pool.
+			monitor_group?: string
+			modified_on?:   string
+
+			// A short name (tag) for the pool. Only alphanumeric characters,
+			// hyphens, and underscores are allowed.
+			name?: string
+
 			// List of networks where Load Balancer or Pool is enabled.
 			networks?: [...string]
-			modified_on?: string
 
 			// This field is now deprecated. It has been moved to Cloudflare's
 			// Centralized Notification service

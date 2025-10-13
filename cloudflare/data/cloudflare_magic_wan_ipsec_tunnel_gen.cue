@@ -11,17 +11,16 @@ package data
 			// the ESP tunnel (Phase 2).
 			allow_null_cipher?: bool
 
+			// True if automatic stateful return routing should be enabled for
+			// a tunnel, false otherwise.
+			automatic_return_routing?: bool
+
 			// The IP address assigned to the Cloudflare side of the IPsec
 			// tunnel.
 			cloudflare_endpoint?: string
 
 			// The date and time the tunnel was created.
 			created_on?: string
-
-			// The IP address assigned to the customer side of the IPsec
-			// tunnel. Not required, but must be set for proactive
-			// traceroutes to work.
-			customer_endpoint?: string
 			bgp?: close({
 				// ASN used on the customer end of the BGP session
 				customer_asn?: number
@@ -56,31 +55,13 @@ package data
 				md5_key?: string
 			})
 
+			// The IP address assigned to the customer side of the IPsec
+			// tunnel. Not required, but must be set for proactive
+			// traceroutes to work.
+			customer_endpoint?: string
+
 			// An optional description forthe IPsec tunnel.
 			description?: string
-
-			// Identifier
-			id?: string
-
-			// A 31-bit prefix (/31 in CIDR notation) supporting two hosts,
-			// one for each side of the tunnel. Select the subnet from the
-			// following private IP space: 10.0.0.0–10.255.255.255,
-			// 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-			interface_address?: string
-
-			// A 127 bit IPV6 prefix from within the virtual_subnet6 prefix
-			// space with the address being the first IP of the subnet and
-			// not same as the address of virtual_subnet6. Eg if
-			// virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 ,
-			// interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
-			interface_address6?: string
-
-			// The date and time the tunnel was last modified.
-			modified_on?: string
-
-			// The name of the IPsec tunnel. The name cannot share a name with
-			// other tunnels.
-			name?: string
 			bgp_status?: close({
 				bgp_state?:       string
 				cf_speaker_ip?:   string
@@ -92,6 +73,31 @@ package data
 				customer_speaker_port?: number
 				tcp_established?:       bool
 				updated_at?:            string
+			})
+
+			// Identifier
+			id?: string
+
+			// A 31-bit prefix (/31 in CIDR notation) supporting two hosts,
+			// one for each side of the tunnel. Select the subnet from the
+			// following private IP space: 10.0.0.0–10.255.255.255,
+			// 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+			interface_address?: string
+			custom_remote_identities?: close({
+				// A custom IKE ID of type FQDN that may be used to identity the
+				// IPsec tunnel. The
+				// generated IKE IDs can still be used even if this custom value
+				// is specified.
+				//
+				// Must be of the form `<custom label>.<account
+				// ID>.custom.ipsec.cloudflare.com`.
+				//
+				// This custom ID does not need to be unique. Two IPsec tunnels
+				// may have the same custom
+				// fqdn_id. However, if another IPsec tunnel has the same value
+				// then the two tunnels
+				// cannot have the same cloudflare_endpoint.
+				fqdn_id?: string
 			})
 			health_check?: close({
 				// The destination address in a request type health check. After
@@ -136,6 +142,20 @@ package data
 				// Available values: "reply", "request".
 				type?: string
 			})
+
+			// A 127 bit IPV6 prefix from within the virtual_subnet6 prefix
+			// space with the address being the first IP of the subnet and
+			// not same as the address of virtual_subnet6. Eg if
+			// virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 ,
+			// interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+			interface_address6?: string
+
+			// The date and time the tunnel was last modified.
+			modified_on?: string
+
+			// The name of the IPsec tunnel. The name cannot share a name with
+			// other tunnels.
+			name?: string
 
 			// The PSK metadata that includes when the PSK was generated.
 			psk_metadata?: close({

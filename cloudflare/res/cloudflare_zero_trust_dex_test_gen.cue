@@ -8,10 +8,10 @@ package res
 		// WARP client to conduct the test.
 		data!: close({
 			// The desired endpoint to test.
-			host?: string
+			host!: string
 
 			// The type of test.
-			kind?: string
+			kind!: string
 
 			// The HTTP request method type.
 			method?: string
@@ -39,7 +39,7 @@ package res
 			default?: bool
 
 			// The id of the DEX rule
-			id?: string
+			id!: string
 
 			// The name of the DEX rule
 			name?: string
@@ -48,7 +48,7 @@ package res
 			default?: bool
 
 			// The id of the DEX rule
-			id?: string
+			id!: string
 
 			// The name of the DEX rule
 			name?: string

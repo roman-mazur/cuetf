@@ -10,7 +10,7 @@ package res
 		// When the Worker was created.
 		created_on?: string
 
-		// Identifier.
+		// Immutable ID of the Worker.
 		id?: string
 
 		// Whether logpush is enabled for the Worker.

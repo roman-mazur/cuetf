@@ -7,6 +7,10 @@ package data
 		// Identifier
 		account_id!: string
 		gre_tunnel?: close({
+			// True if automatic stateful return routing should be enabled for
+			// a tunnel, false otherwise.
+			automatic_return_routing?: bool
+
 			// The IP address assigned to the Cloudflare side of the GRE
 			// tunnel.
 			cloudflare_gre_endpoint?: string
@@ -87,6 +91,11 @@ package data
 				tcp_established?:       bool
 				updated_at?:            string
 			})
+
+			// The name of the tunnel. The name cannot contain spaces or
+			// special characters, must be 15 characters or less, and cannot
+			// share a name with another GRE tunnel.
+			name?: string
 			health_check?: close({
 				// The destination address in a request type health check. After
 				// the healthcheck is decapsulated at the customer end of the
@@ -130,11 +139,6 @@ package data
 				// Available values: "reply", "request".
 				type?: string
 			})
-
-			// The name of the tunnel. The name cannot contain spaces or
-			// special characters, must be 15 characters or less, and cannot
-			// share a name with another GRE tunnel.
-			name?: string
 
 			// Time To Live (TTL) in number of hops of the GRE tunnel.
 			ttl?: number

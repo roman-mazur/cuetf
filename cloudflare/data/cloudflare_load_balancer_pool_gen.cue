@@ -17,9 +17,6 @@ package data
 			monitor?: string
 		})
 
-		// A human-readable description of the pool.
-		description?: string
-
 		// Configures load shedding policies and percentages for the pool.
 		load_shedding?: close({
 			// The percent of traffic to shed from the pool, according to the
@@ -44,9 +41,8 @@ package data
 			session_policy?: string
 		})
 
-		// This field shows up only if the pool is disabled. This field is
-		// set with the time the pool was disabled at.
-		disabled_at?: string
+		// A human-readable description of the pool.
+		description?: string
 
 		// Filter pool and origin health notifications by resource type or
 		// health status. Use null to reset.
@@ -78,6 +74,10 @@ package data
 			})
 		})
 
+		// This field shows up only if the pool is disabled. This field is
+		// set with the time the pool was disabled at.
+		disabled_at?: string
+
 		// Whether to enable (the default) or disable this pool. Disabled
 		// pools will not receive traffic and are excluded from health
 		// checks. Disabling a pool will cause any load balancers using
@@ -88,7 +88,6 @@ package data
 		// this pool in decimal degrees. If this is set, longitude must
 		// also be set.
 		latitude?: number
-		id?:       string
 
 		// The longitude of the data center containing the origins used in
 		// this pool in decimal degrees. If this is set, latitude must
@@ -100,6 +99,15 @@ package data
 		// below this number, the pool will be marked unhealthy and will
 		// failover to the next available pool.
 		minimum_origins?: number
+		id?:              string
+
+		// The ID of the Monitor to use for checking the health of origins
+		// within this pool.
+		monitor?: string
+
+		// The ID of the Monitor Group to use for checking the health of
+		// origins within this pool.
+		monitor_group?: string
 
 		// Configures origin steering for the pool. Controls how origins
 		// are selected for new sessions and traffic without session
@@ -123,14 +131,9 @@ package data
 			policy?: string
 		})
 
-		// The ID of the Monitor to use for checking the health of origins
-		// within this pool.
-		monitor?: string
-
 		// A short name (tag) for the pool. Only alphanumeric characters,
 		// hyphens, and underscores are allowed.
-		name?:        string
-		modified_on?: string
+		name?: string
 
 		// List of networks where Load Balancer or Pool is enabled.
 		networks?: [...string]
@@ -142,6 +145,7 @@ package data
 		// can be an individual mailbox or a mailing list. Multiple
 		// emails can be supplied as a comma delimited list.
 		notification_email?: string
+		modified_on?:        string
 
 		// The list of origins within this pool. Traffic directed at this
 		// pool is balanced across all currently healthy origins,

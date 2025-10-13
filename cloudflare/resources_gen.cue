@@ -145,6 +145,7 @@ _res: cloudflare_workers_kv_namespace: res.#cloudflare_workers_kv_namespace
 _res: cloudflare_workers_route: res.#cloudflare_workers_route
 _res: cloudflare_workers_script: res.#cloudflare_workers_script
 _res: cloudflare_workers_script_subdomain: res.#cloudflare_workers_script_subdomain
+_res: cloudflare_workflow: res.#cloudflare_workflow
 _res: cloudflare_zero_trust_access_application: res.#cloudflare_zero_trust_access_application
 _res: cloudflare_zero_trust_access_custom_page: res.#cloudflare_zero_trust_access_custom_page
 _res: cloudflare_zero_trust_access_group: res.#cloudflare_zero_trust_access_group
@@ -181,6 +182,7 @@ _res: cloudflare_zero_trust_gateway_policy: res.#cloudflare_zero_trust_gateway_p
 _res: cloudflare_zero_trust_gateway_proxy_endpoint: res.#cloudflare_zero_trust_gateway_proxy_endpoint
 _res: cloudflare_zero_trust_gateway_settings: res.#cloudflare_zero_trust_gateway_settings
 _res: cloudflare_zero_trust_list: res.#cloudflare_zero_trust_list
+_res: cloudflare_zero_trust_network_hostname_route: res.#cloudflare_zero_trust_network_hostname_route
 _res: cloudflare_zero_trust_organization: res.#cloudflare_zero_trust_organization
 _res: cloudflare_zero_trust_risk_behavior: res.#cloudflare_zero_trust_risk_behavior
 _res: cloudflare_zero_trust_risk_scoring_integration: res.#cloudflare_zero_trust_risk_scoring_integration

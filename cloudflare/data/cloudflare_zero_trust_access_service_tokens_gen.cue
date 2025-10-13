@@ -8,8 +8,7 @@ package data
 		result?: matchN(1, [close({
 			// The Client ID for the service token. Access will check for this
 			// value in the `CF-Access-Client-ID` request header.
-			client_id?:  string
-			created_at?: string
+			client_id?: string
 
 			// The duration for how long the service token will be valid. Must
 			// be in the format `300ms` or `2h45m`. Valid time units are: ns,
@@ -19,17 +18,14 @@ package data
 			expires_at?: string
 
 			// The ID of the service token.
-			id?:           string
-			last_seen_at?: string
+			id?: string
 
 			// The name of the service token.
-			name?:       string
-			updated_at?: string
+			name?: string
 		}), [...close({
 			// The Client ID for the service token. Access will check for this
 			// value in the `CF-Access-Client-ID` request header.
-			client_id?:  string
-			created_at?: string
+			client_id?: string
 
 			// The duration for how long the service token will be valid. Must
 			// be in the format `300ms` or `2h45m`. Valid time units are: ns,
@@ -39,12 +35,10 @@ package data
 			expires_at?: string
 
 			// The ID of the service token.
-			id?:           string
-			last_seen_at?: string
+			id?: string
 
 			// The name of the service token.
-			name?:       string
-			updated_at?: string
+			name?: string
 		})]])
 
 		// The Account ID to use for this endpoint. Mutually exclusive

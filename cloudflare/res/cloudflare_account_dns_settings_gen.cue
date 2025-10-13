@@ -29,7 +29,7 @@ package res
 				// Available values: "cloudflare.standard",
 				// "cloudflare.standard.random", "custom.account",
 				// "custom.tenant".
-				type!: string
+				type?: string
 			})
 
 			// Whether to enable multi-provider DNS, which causes Cloudflare
@@ -49,30 +49,30 @@ package res
 			soa?: close({
 				// Time in seconds of being unable to query the primary server
 				// after which secondary servers should stop serving the zone.
-				expire!: number
+				expire?: number
 
 				// The time to live (TTL) for negative caching of records within
 				// the zone.
-				min_ttl!: number
+				min_ttl?: number
 
 				// The primary nameserver, which may be used for outbound zone
-				// transfers.
-				mname!: string
+				// transfers. If null, a Cloudflare-assigned value will be used.
+				mname?: string
 
 				// Time in seconds after which secondary servers should re-check
 				// the SOA record to see if the zone has been updated.
-				refresh!: number
+				refresh?: number
 
 				// Time in seconds after which secondary servers should retry
 				// queries after the primary server was unresponsive.
-				retry!: number
+				retry?: number
 
 				// The email address of the zone administrator, with the first
 				// label representing the local part of the email address.
-				rname!: string
+				rname?: string
 
 				// The time to live (TTL) of the SOA record itself.
-				ttl!: number
+				ttl?: number
 			})
 
 			// Whether the zone mode is a regular or CDN/DNS only zone.

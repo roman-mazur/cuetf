@@ -34,7 +34,7 @@ package data
 		// When the Worker was created.
 		created_on?: string
 
-		// Identifier.
+		// Identifier for the Worker, which can be ID or name.
 		id?: string
 
 		// Whether logpush is enabled for the Worker.
@@ -69,7 +69,7 @@ package data
 		// When the Worker was most recently updated.
 		updated_on?: string
 
-		// Identifier.
+		// Identifier for the Worker, which can be ID or name.
 		worker_id?: string
 	})
 }

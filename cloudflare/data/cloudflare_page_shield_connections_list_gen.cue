@@ -16,7 +16,8 @@ package data
 		// URLs separated by commas.
 		exclude_urls?: string
 
-		// Export the list of connections as a file.
+		// Export the list of connections as a file, limited to 50000
+		// entries.
 		// Available values: "csv".
 		export?: string
 
