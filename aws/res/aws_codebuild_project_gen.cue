@@ -6,36 +6,40 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codebuild_project")
 	close({
-		arn?:                    string
+		arn?: string
+		artifacts?: matchN(1, [#artifacts, list.MaxItems(1) & [_, ...] & [...#artifacts]])
+
+		// Maximum number of additional automatic retries after a failed
+		// build. The default value is 0.
+		auto_retry_limit?:       number
 		badge_enabled?:          bool
 		badge_url?:              string
 		build_timeout?:          number
 		concurrent_build_limit?: number
-		description?:            string
-		encryption_key?:         string
+		build_batch_config?: matchN(1, [#build_batch_config, list.MaxItems(1) & [...#build_batch_config]])
+		description?: string
+		cache?: matchN(1, [#cache, list.MaxItems(1) & [...#cache]])
+		encryption_key?:       string
+		id?:                   string
+		name!:                 string
+		project_visibility?:   string
+		public_project_alias?: string
+		queued_timeout?:       number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		artifacts?: matchN(1, [#artifacts, list.MaxItems(1) & [_, ...] & [...#artifacts]])
-		id?:                   string
-		name!:                 string
-		project_visibility?:   string
-		public_project_alias?: string
-		queued_timeout?:       number
-		build_batch_config?: matchN(1, [#build_batch_config, list.MaxItems(1) & [...#build_batch_config]])
-		cache?: matchN(1, [#cache, list.MaxItems(1) & [...#cache]])
+		environment?: matchN(1, [#environment, list.MaxItems(1) & [_, ...] & [...#environment]])
 		resource_access_role?: string
 		service_role!:         string
 		source_version?:       string
-		environment?: matchN(1, [#environment, list.MaxItems(1) & [_, ...] & [...#environment]])
 		file_system_locations?: matchN(1, [#file_system_locations, [...#file_system_locations]])
 		logs_config?: matchN(1, [#logs_config, list.MaxItems(1) & [...#logs_config]])
 		secondary_artifacts?: matchN(1, [#secondary_artifacts, list.MaxItems(12) & [...#secondary_artifacts]])
+		tags?: [string]: string
 		secondary_source_version?: matchN(1, [#secondary_source_version, list.MaxItems(12) & [...#secondary_source_version]])
-		tags?: [string]:     string
 		tags_all?: [string]: string
 		secondary_sources?: matchN(1, [#secondary_sources, list.MaxItems(12) & [...#secondary_sources]])
 		source?: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])

@@ -29,7 +29,7 @@ package res
 		// The size of the data disk group, in terabytes (TBs), to
 		// allocate for the VM cluster. Changing this will create a new
 		// resource.
-		data_storage_size_in_tbs?: number
+		data_storage_size_in_tbs!: number
 
 		// The amount of local node storage, in gigabytes (GBs), to
 		// allocate for the VM cluster. Changing this will create a new
@@ -57,6 +57,9 @@ package res
 		// 19.0.0.0 This member is required. Changing this will create a
 		// new resource.
 		gi_version!: string
+
+		// A complete software version of Oracle Grid Infrastructure (GI).
+		gi_version_computed?: string
 
 		// The host name prefix for the VM cluster. Constraints: - Can't
 		// be "localhost" or "hostname". - Can't contain "-version". -

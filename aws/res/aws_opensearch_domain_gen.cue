@@ -19,15 +19,15 @@ import "list"
 		dashboard_endpoint_v2?:             string
 		domain_endpoint_v2_hosted_zone_id?: string
 		domain_id?:                         string
-		domain_name!:                       string
 		advanced_security_options?: matchN(1, [#advanced_security_options, list.MaxItems(1) & [...#advanced_security_options]])
+		domain_name!:    string
 		endpoint?:       string
 		endpoint_v2?:    string
 		engine_version?: string
 		id?:             string
-		auto_tune_options?: matchN(1, [#auto_tune_options, list.MaxItems(1) & [...#auto_tune_options]])
+		aiml_options?: matchN(1, [#aiml_options, list.MaxItems(1) & [...#aiml_options]])
 		ip_address_type?: string
-		tags?: [string]: string
+		auto_tune_options?: matchN(1, [#auto_tune_options, list.MaxItems(1) & [...#auto_tune_options]])
 		cluster_config?: matchN(1, [#cluster_config, list.MaxItems(1) & [...#cluster_config]])
 		cognito_options?: matchN(1, [#cognito_options, list.MaxItems(1) & [...#cognito_options]])
 		domain_endpoint_options?: matchN(1, [#domain_endpoint_options, list.MaxItems(1) & [...#domain_endpoint_options]])
@@ -35,6 +35,7 @@ import "list"
 		encrypt_at_rest?: matchN(1, [#encrypt_at_rest, list.MaxItems(1) & [...#encrypt_at_rest]])
 		log_publishing_options?: matchN(1, [#log_publishing_options, [...#log_publishing_options]])
 		node_to_node_encryption?: matchN(1, [#node_to_node_encryption, list.MaxItems(1) & [...#node_to_node_encryption]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		off_peak_window_options?: matchN(1, [#off_peak_window_options, list.MaxItems(1) & [...#off_peak_window_options]])
 		snapshot_options?: matchN(1, [#snapshot_options, list.MaxItems(1) & [...#snapshot_options]])
@@ -48,6 +49,11 @@ import "list"
 		anonymous_auth_enabled?:         bool
 		enabled!:                        bool
 		internal_user_database_enabled?: bool
+	})
+
+	#aiml_options: close({
+		natural_language_query_generation_options?: matchN(1, [_#defs."/$defs/aiml_options/$defs/natural_language_query_generation_options", list.MaxItems(1) & [..._#defs."/$defs/aiml_options/$defs/natural_language_query_generation_options"]])
+		s3_vectors_engine?: matchN(1, [_#defs."/$defs/aiml_options/$defs/s3_vectors_engine", list.MaxItems(1) & [..._#defs."/$defs/aiml_options/$defs/s3_vectors_engine"]])
 	})
 
 	#auto_tune_options: close({
@@ -141,6 +147,14 @@ import "list"
 		master_user_arn?:      string
 		master_user_name?:     string
 		master_user_password?: string
+	})
+
+	_#defs: "/$defs/aiml_options/$defs/natural_language_query_generation_options": close({
+		desired_state?: string
+	})
+
+	_#defs: "/$defs/aiml_options/$defs/s3_vectors_engine": close({
+		enabled?: bool
 	})
 
 	_#defs: "/$defs/auto_tune_options/$defs/maintenance_schedule": close({
