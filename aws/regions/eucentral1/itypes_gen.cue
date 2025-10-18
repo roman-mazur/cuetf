@@ -63608,7 +63608,7 @@ InstanceTypes: [{
         EnaSupport:                   "required"
         EfaSupported:                 false
         EncryptionInTransitSupported: true
-        EnaSrdSupported:              false
+        EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
