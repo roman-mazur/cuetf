@@ -63682,7 +63682,7 @@ InstanceTypes: [{
             MaximumEfaInterfaces: 1
         }
         EncryptionInTransitSupported: true
-        EnaSrdSupported:              true
+        EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
