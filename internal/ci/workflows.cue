@@ -1,13 +1,17 @@
 package ci
 
-import "github.com/roman-mazur/cuetf/internal/ci/github"
+import (
+	"cue.dev/x/githubactions"
+
+	"github.com/roman-mazur/cuetf/internal/ci/github"
+)
 
 #versions: {
 	go:        "1.25"
 	terraform: "1.5.7"
 }
 
-workflows: [N=string]: github.#Workflow & {
+workflows: [N=string]: githubactions.#Workflow & {
 	name: N
 	jobs: [string]: {
 		"runs-on": "ubuntu-latest"
@@ -45,3 +49,10 @@ workflows: [N=string]: github.#Workflow & {
 #dbot: "dependabot"
 
 (#dbot): github.#Dependabot & {version: 2}
+
+_scriptPrepareForGitPush: """
+	git config user.name "cuetf generator (bot)"
+	git config user.email "cuetf-bot@rmazur.io"
+	branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+	git checkout "origin/$branch"
+	"""
