@@ -21,10 +21,7 @@ workflows: regenerate: {
 
 		#useGit: true
 		#script: """
-			git config user.name "cuetf generator (bot)"
-			git config user.email "cuetf-bot@rmazur.io"
-			branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
-			git checkout "origin/$branch"
+			\(_scriptPrepareForGitPush)
 
 			export label="${{ github.event.label.name }}"
 			export provider=${label#"provider:"}
