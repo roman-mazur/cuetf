@@ -6,10 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_kubernetes_cluster")
 	close({
-		automatic_upgrade_channel?:  string
-		azure_policy_enabled?:       bool
-		cost_analysis_enabled?:      bool
-		current_kubernetes_version?: string
+		ai_toolchain_operator_enabled?: bool
+		automatic_upgrade_channel?:     string
+		azure_policy_enabled?:          bool
+		cost_analysis_enabled?:         bool
+		current_kubernetes_version?:    string
 		custom_ca_trust_certificates_base64?: [...string]
 		disk_encryption_set_id?:     string
 		dns_prefix?:                 string
@@ -39,14 +40,13 @@ import "list"
 			password?:               string
 			username?:               string
 		})]
-		kube_config_raw?:         string
-		kubernetes_version?:      string
-		local_account_disabled?:  bool
-		location!:                string
-		name!:                    string
-		node_os_upgrade_channel?: string
-		node_resource_group?:     string
-		api_server_access_profile?: matchN(1, [#api_server_access_profile, list.MaxItems(1) & [...#api_server_access_profile]])
+		kube_config_raw?:                     string
+		kubernetes_version?:                  string
+		local_account_disabled?:              bool
+		location!:                            string
+		name!:                                string
+		node_os_upgrade_channel?:             string
+		node_resource_group?:                 string
 		node_resource_group_id?:              string
 		oidc_issuer_enabled?:                 bool
 		oidc_issuer_url?:                     string
@@ -60,7 +60,8 @@ import "list"
 		role_based_access_control_enabled?:   bool
 		run_command_enabled?:                 bool
 		sku_tier?:                            string
-		support_plan?:                        string
+		api_server_access_profile?: matchN(1, [#api_server_access_profile, list.MaxItems(1) & [...#api_server_access_profile]])
+		support_plan?: string
 		tags?: [string]: string
 		auto_scaler_profile?: matchN(1, [#auto_scaler_profile, list.MaxItems(1) & [...#auto_scaler_profile]])
 		azure_active_directory_role_based_access_control?: matchN(1, [#azure_active_directory_role_based_access_control, list.MaxItems(1) & [...#azure_active_directory_role_based_access_control]])
@@ -77,8 +78,8 @@ import "list"
 		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
 		maintenance_window_auto_upgrade?: matchN(1, [#maintenance_window_auto_upgrade, list.MaxItems(1) & [...#maintenance_window_auto_upgrade]])
 		maintenance_window_node_os?: matchN(1, [#maintenance_window_node_os, list.MaxItems(1) & [...#maintenance_window_node_os]])
-		microsoft_defender?: matchN(1, [#microsoft_defender, list.MaxItems(1) & [...#microsoft_defender]])
 		workload_identity_enabled?: bool
+		microsoft_defender?: matchN(1, [#microsoft_defender, list.MaxItems(1) & [...#microsoft_defender]])
 		monitor_metrics?: matchN(1, [#monitor_metrics, list.MaxItems(1) & [...#monitor_metrics]])
 		network_profile?: matchN(1, [#network_profile, list.MaxItems(1) & [...#network_profile]])
 		oms_agent?: matchN(1, [#oms_agent, list.MaxItems(1) & [...#oms_agent]])

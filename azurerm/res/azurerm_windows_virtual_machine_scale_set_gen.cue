@@ -22,9 +22,9 @@ import "list"
 		host_group_id?:                                     string
 		id?:                                                string
 		instances!:                                         number
+		license_type?:                                      string
 		additional_capabilities?: matchN(1, [#additional_capabilities, list.MaxItems(1) & [...#additional_capabilities]])
 		additional_unattend_content?: matchN(1, [#additional_unattend_content, [...#additional_unattend_content]])
-		license_type?:                 string
 		location!:                     string
 		max_bid_price?:                number
 		name!:                         string
@@ -33,20 +33,21 @@ import "list"
 		priority?:                     string
 		provision_vm_agent?:           bool
 		proximity_placement_group_id?: string
-		resource_group_name!:          string
-		secure_boot_enabled?:          bool
 		automatic_instance_repair?: matchN(1, [#automatic_instance_repair, list.MaxItems(1) & [...#automatic_instance_repair]])
-		automatic_os_upgrade_policy?: matchN(1, [#automatic_os_upgrade_policy, list.MaxItems(1) & [...#automatic_os_upgrade_policy]])
-		single_placement_group?: bool
-		sku!:                    string
-		source_image_id?:        string
+		resilient_vm_creation_enabled?: bool
+		resilient_vm_deletion_enabled?: bool
+		resource_group_name!:           string
+		secure_boot_enabled?:           bool
+		single_placement_group?:        bool
+		sku!:                           string
+		source_image_id?:               string
 		tags?: [string]: string
 		timezone?:     string
 		unique_id?:    string
 		upgrade_mode?: string
 		user_data?:    string
 		vtpm_enabled?: bool
-		zone_balance?: bool
+		automatic_os_upgrade_policy?: matchN(1, [#automatic_os_upgrade_policy, list.MaxItems(1) & [...#automatic_os_upgrade_policy]])
 		boot_diagnostics?: matchN(1, [#boot_diagnostics, list.MaxItems(1) & [...#boot_diagnostics]])
 		data_disk?: matchN(1, [#data_disk, [...#data_disk]])
 		extension?: matchN(1, [#extension, [...#extension]])
@@ -55,8 +56,9 @@ import "list"
 		network_interface?: matchN(1, [#network_interface, [_, ...] & [...#network_interface]])
 		os_disk?: matchN(1, [#os_disk, list.MaxItems(1) & [_, ...] & [...#os_disk]])
 		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
-		zones?: [...string]
 		rolling_upgrade_policy?: matchN(1, [#rolling_upgrade_policy, list.MaxItems(1) & [...#rolling_upgrade_policy]])
+		zone_balance?: bool
+		zones?: [...string]
 		scale_in?: matchN(1, [#scale_in, list.MaxItems(1) & [...#scale_in]])
 		secret?: matchN(1, [#secret, [...#secret]])
 		source_image_reference?: matchN(1, [#source_image_reference, list.MaxItems(1) & [...#source_image_reference]])

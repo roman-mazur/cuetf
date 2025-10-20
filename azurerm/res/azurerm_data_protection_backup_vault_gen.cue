@@ -22,6 +22,7 @@ import "list"
 	})
 
 	#identity: close({
+		identity_ids?: [...string]
 		principal_id?: string
 		tenant_id?:    string
 		type!:         string

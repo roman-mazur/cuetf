@@ -148,6 +148,7 @@ _ds: azurerm_firewall: data.#azurerm_firewall
 _ds: azurerm_firewall_policy: data.#azurerm_firewall_policy
 _ds: azurerm_function_app: data.#azurerm_function_app
 _ds: azurerm_function_app_host_keys: data.#azurerm_function_app_host_keys
+_ds: azurerm_graph_services_account: data.#azurerm_graph_services_account
 _ds: azurerm_hdinsight_cluster: data.#azurerm_hdinsight_cluster
 _ds: azurerm_healthcare_dicom_service: data.#azurerm_healthcare_dicom_service
 _ds: azurerm_healthcare_fhir_service: data.#azurerm_healthcare_fhir_service
@@ -262,12 +263,15 @@ _ds: azurerm_oracle_adbs_character_sets: data.#azurerm_oracle_adbs_character_set
 _ds: azurerm_oracle_adbs_national_character_sets: data.#azurerm_oracle_adbs_national_character_sets
 _ds: azurerm_oracle_autonomous_database_backup: data.#azurerm_oracle_autonomous_database_backup
 _ds: azurerm_oracle_autonomous_database_backups: data.#azurerm_oracle_autonomous_database_backups
+_ds: azurerm_oracle_autonomous_database_clone_from_backup: data.#azurerm_oracle_autonomous_database_clone_from_backup
+_ds: azurerm_oracle_autonomous_database_clone_from_database: data.#azurerm_oracle_autonomous_database_clone_from_database
 _ds: azurerm_oracle_autonomous_database: data.#azurerm_oracle_autonomous_database
 _ds: azurerm_oracle_cloud_vm_cluster: data.#azurerm_oracle_cloud_vm_cluster
 _ds: azurerm_oracle_db_nodes: data.#azurerm_oracle_db_nodes
 _ds: azurerm_oracle_db_servers: data.#azurerm_oracle_db_servers
 _ds: azurerm_oracle_db_system_shapes: data.#azurerm_oracle_db_system_shapes
 _ds: azurerm_oracle_exadata_infrastructure: data.#azurerm_oracle_exadata_infrastructure
+_ds: azurerm_oracle_exascale_database_storage_vault: data.#azurerm_oracle_exascale_database_storage_vault
 _ds: azurerm_oracle_gi_versions: data.#azurerm_oracle_gi_versions
 _ds: azurerm_orchestrated_virtual_machine_scale_set: data.#azurerm_orchestrated_virtual_machine_scale_set
 _ds: azurerm_palo_alto_local_rulestack: data.#azurerm_palo_alto_local_rulestack

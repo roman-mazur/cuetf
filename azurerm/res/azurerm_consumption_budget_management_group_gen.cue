@@ -13,7 +13,7 @@ import "list"
 		management_group_id!: string
 		name!:                string
 		time_grain?:          string
-		notification?: matchN(1, [#notification, list.MaxItems(5) & [_, ...] & [...#notification]])
+		notification?: matchN(1, [#notification, [_, ...] & [...#notification]])
 		time_period?: matchN(1, [#time_period, list.MaxItems(1) & [_, ...] & [...#time_period]])
 		timeouts?: #timeouts
 	})

@@ -62,6 +62,7 @@ _res: azurerm_api_management_subscription: res.#azurerm_api_management_subscript
 _res: azurerm_api_management_tag: res.#azurerm_api_management_tag
 _res: azurerm_api_management_user: res.#azurerm_api_management_user
 _res: azurerm_api_management_workspace: res.#azurerm_api_management_workspace
+_res: azurerm_api_management_workspace_policy_fragment: res.#azurerm_api_management_workspace_policy_fragment
 _res: azurerm_api_management_workspace_policy: res.#azurerm_api_management_workspace_policy
 _res: azurerm_app_configuration_feature: res.#azurerm_app_configuration_feature
 _res: azurerm_app_configuration: res.#azurerm_app_configuration
@@ -712,9 +713,12 @@ _res: azurerm_notification_hub_authorization_rule: res.#azurerm_notification_hub
 _res: azurerm_notification_hub: res.#azurerm_notification_hub
 _res: azurerm_notification_hub_namespace: res.#azurerm_notification_hub_namespace
 _res: azurerm_oracle_autonomous_database_backup: res.#azurerm_oracle_autonomous_database_backup
+_res: azurerm_oracle_autonomous_database_clone_from_backup: res.#azurerm_oracle_autonomous_database_clone_from_backup
+_res: azurerm_oracle_autonomous_database_clone_from_database: res.#azurerm_oracle_autonomous_database_clone_from_database
 _res: azurerm_oracle_autonomous_database: res.#azurerm_oracle_autonomous_database
 _res: azurerm_oracle_cloud_vm_cluster: res.#azurerm_oracle_cloud_vm_cluster
 _res: azurerm_oracle_exadata_infrastructure: res.#azurerm_oracle_exadata_infrastructure
+_res: azurerm_oracle_exascale_database_storage_vault: res.#azurerm_oracle_exascale_database_storage_vault
 _res: azurerm_orbital_contact: res.#azurerm_orbital_contact
 _res: azurerm_orbital_contact_profile: res.#azurerm_orbital_contact_profile
 _res: azurerm_orbital_spacecraft: res.#azurerm_orbital_spacecraft
