@@ -14,8 +14,10 @@ package res
 		region?:                string
 		active_directory_name?: string
 		admin_group?: [...string]
+		admin_pro_group?: [...string]
 		authentication_method!: string
 		author_group?: [...string]
+		author_pro_group?: [...string]
 		aws_account_id?:                   string
 		contact_number?:                   string
 		directory_id?:                     string
@@ -28,6 +30,7 @@ package res
 		last_name?:                        string
 		notification_email!:               string
 		reader_group?: [...string]
+		reader_pro_group?: [...string]
 		realm?: string
 	})
 

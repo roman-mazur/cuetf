@@ -470,6 +470,7 @@ _ds: aws_rds_cluster: data.#aws_rds_cluster
 _ds: aws_rds_cluster_parameter_group: data.#aws_rds_cluster_parameter_group
 _ds: aws_rds_clusters: data.#aws_rds_clusters
 _ds: aws_rds_engine_version: data.#aws_rds_engine_version
+_ds: aws_rds_global_cluster: data.#aws_rds_global_cluster
 _ds: aws_rds_orderable_db_instance: data.#aws_rds_orderable_db_instance
 _ds: aws_rds_reserved_instance_offering: data.#aws_rds_reserved_instance_offering
 _ds: aws_redshift_cluster_credentials: data.#aws_redshift_cluster_credentials
@@ -610,6 +611,7 @@ _ds: aws_vpclattice_resource_policy: data.#aws_vpclattice_resource_policy
 _ds: aws_vpclattice_service: data.#aws_vpclattice_service
 _ds: aws_vpclattice_service_network: data.#aws_vpclattice_service_network
 _ds: aws_vpcs: data.#aws_vpcs
+_ds: aws_vpn_connection: data.#aws_vpn_connection
 _ds: aws_vpn_gateway: data.#aws_vpn_gateway
 _ds: aws_waf_ipset: data.#aws_waf_ipset
 _ds: aws_waf_rate_based_rule: data.#aws_waf_rate_based_rule
