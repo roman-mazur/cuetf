@@ -78,8 +78,10 @@ import "list"
 		// for more details
 		mappings?: string
 
-		// Configuration options for the index. See,
-		// https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings
+		// Configuration options for the index. See the [index modules
+		// settings
+		// documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings)
+		// for more details.
 		settings?: string
 	})
 
@@ -98,8 +100,10 @@ import "list"
 		// If true, the index is the write index for the alias.
 		is_write_index?: bool
 
-		// The alias name. Index alias names support date math. See,
-		// https://www.elastic.co/guide/en/elasticsearch/reference/current/date-math-index-names.html
+		// The alias name. Index alias names support date math. See the
+		// [date math index names
+		// documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/date-math-index-names.html)
+		// for more details.
 		name!: string
 
 		// Value used to route indexing and search operations to a

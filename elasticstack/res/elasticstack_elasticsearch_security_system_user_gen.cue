@@ -17,13 +17,13 @@ package res
 
 		// A hash of the user's password. This must be produced using the
 		// same hashing algorithm as has been configured for password
-		// storage (see
-		// https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings).
+		// storage (see the [security settings
+		// documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings)).
 		password_hash?: string
 		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
-		// An identifier for the system user (see
-		// https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html).
+		// An identifier for the system user (see the [built-in users
+		// documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html)).
 		username!: string
 	})
 

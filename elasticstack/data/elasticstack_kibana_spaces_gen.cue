@@ -35,6 +35,10 @@ package data
 
 			// The display name for the space.
 			name!: string
+
+			// The solution view for the space. Valid options are `security`,
+			// `oblt`, `es`, or `classic`.
+			solution?: string
 		}), [...close({
 			// The hexadecimal color code used in the space avatar. By
 			// default, the color is automatically generated from the space
@@ -62,6 +66,10 @@ package data
 
 			// The display name for the space.
 			name!: string
+
+			// The solution view for the space. Valid options are `security`,
+			// `oblt`, `es`, or `classic`.
+			solution?: string
 		})]])
 	})
 }

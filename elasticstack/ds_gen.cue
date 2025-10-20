@@ -52,5 +52,6 @@ _ds: elasticstack_elasticsearch_snapshot_repository: data.#elasticstack_elastics
 _ds: elasticstack_fleet_enrollment_tokens: data.#elasticstack_fleet_enrollment_tokens
 _ds: elasticstack_fleet_integration: data.#elasticstack_fleet_integration
 _ds: elasticstack_kibana_action_connector: data.#elasticstack_kibana_action_connector
+_ds: elasticstack_kibana_export_saved_objects: data.#elasticstack_kibana_export_saved_objects
 _ds: elasticstack_kibana_security_role: data.#elasticstack_kibana_security_role
 _ds: elasticstack_kibana_spaces: data.#elasticstack_kibana_spaces

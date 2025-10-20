@@ -4,6 +4,48 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_security_api_key")
 	close({
+		// Access configuration for cross-cluster API keys. Only
+		// applicable when type is 'cross_cluster'.
+		access?: close({
+			// A list of replication configurations for which the
+			// cross-cluster API key will have replication privileges.
+			replication?: matchN(1, [close({
+				// A list of index patterns for replication.
+				names!: [...string]
+			}), [...close({
+				// A list of index patterns for replication.
+				names!: [...string]
+			})]])
+
+			// A list of search configurations for which the cross-cluster API
+			// key will have search privileges.
+			search?: matchN(1, [close({
+				// Whether to allow access to restricted indices.
+				allow_restricted_indices?: bool
+
+				// Field-level security configuration in JSON format.
+				field_security?: string
+
+				// A list of index patterns for search.
+				names!: [...string]
+
+				// Query to filter documents for search operations in JSON format.
+				query?: string
+			}), [...close({
+				// Whether to allow access to restricted indices.
+				allow_restricted_indices?: bool
+
+				// Field-level security configuration in JSON format.
+				field_security?: string
+
+				// A list of index patterns for search.
+				names!: [...string]
+
+				// Query to filter documents for search operations in JSON format.
+				query?: string
+			})]])
+		})
+
 		// Generated API Key.
 		api_key?: string
 
@@ -34,6 +76,11 @@ package res
 
 		// Role descriptors for this API key.
 		role_descriptors?: string
+
+		// The type of API key. Valid values are 'rest' (default) and
+		// 'cross_cluster'. Cross-cluster API keys are used for
+		// cross-cluster search and replication.
+		type?: string
 	})
 
 	#elasticsearch_connection: close({

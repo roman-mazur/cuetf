@@ -1,7 +1,5 @@
 package res
 
-import "list"
-
 #elasticstack_elasticsearch_script: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_script")
@@ -9,9 +7,11 @@ import "list"
 		// Context in which the script or search template should run.
 		context?: string
 
+		// Internal identifier of the resource
+		id?: string
+
 		// Script language. For search templates, use `mustache`.
 		lang!: string
-		id?:   string
 
 		// Parameters for the script or search template.
 		params?: string
@@ -19,11 +19,11 @@ import "list"
 		// Identifier for the stored script. Must be unique within the
 		// cluster.
 		script_id!: string
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
 
 		// For scripts, a string containing the script. For search
 		// templates, an object containing the search template.
 		source!: string
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 	})
 
 	#elasticsearch_connection: close({

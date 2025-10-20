@@ -25,6 +25,11 @@ package res
 		// The ID of this resource.
 		id?: string
 
+		// The inactivity timeout for the agent policy. If an agent does
+		// not report within this time period, it will be considered
+		// inactive. Supports duration strings (e.g., '30s', '2m', '1h').
+		inactivity_timeout?: string
+
 		// Enable collection of agent logs.
 		monitor_logs?: bool
 
@@ -53,5 +58,10 @@ package res
 
 		// Enable collection of system logs and metrics.
 		sys_monitoring?: bool
+
+		// The unenrollment timeout for the agent policy. If an agent is
+		// inactive for this period, it will be automatically unenrolled.
+		// Supports duration strings (e.g., '30s', '2m', '1h').
+		unenrollment_timeout?: string
 	})
 }

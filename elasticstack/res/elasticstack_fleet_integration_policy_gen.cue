@@ -5,7 +5,10 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_fleet_integration_policy")
 	close({
 		// ID of the agent policy.
-		agent_policy_id!: string
+		agent_policy_id?: string
+
+		// List of agent policy IDs.
+		agent_policy_ids?: [...string]
 
 		// The description of the integration policy.
 		description?: string
@@ -24,10 +27,10 @@ package res
 
 		// The version of the integration package.
 		integration_version!: string
+		input?: matchN(1, [#input, [...#input]])
 
 		// The name of the integration policy.
 		name!: string
-		input?: matchN(1, [#input, [...#input]])
 
 		// The namespace of the integration policy.
 		namespace!: string

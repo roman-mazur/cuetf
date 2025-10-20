@@ -31,6 +31,10 @@ package res
 		// The display name for the space.
 		name!: string
 
+		// The solution view for the space. Valid options are `security`,
+		// `oblt`, `es`, or `classic`.
+		solution?: string
+
 		// The space ID that is part of the Kibana URL when inside the
 		// space.
 		space_id!: string

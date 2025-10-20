@@ -245,7 +245,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
-				description:      "Manages APM agent configuration."
+				description:      "Creates or updates an APM agent configuration. See https://www.elastic.co/docs/solutions/observability/apm/apm-agent-central-configuration."
 				description_kind: "plain"
 			}
 		}
@@ -434,7 +434,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						max_items: 1
 					}
 				}
-				description:      "Updates cluster-wide settings. If the Elasticsearch security features are enabled, you must have the manage cluster privilege to use this API. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html"
+				description:      "Updates cluster-wide settings. If the Elasticsearch security features are enabled, you must have the manage cluster privilege to use this API. See the [cluster settings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -582,7 +582,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 								settings: {
 									type:             "string"
-									description:      "Configuration options for the index. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings"
+									description:      "Configuration options for the index. See the [index modules settings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings) for more details."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -617,7 +617,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										name: {
 											type:             "string"
-											description:      "The alias name. Index alias names support date math. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/date-math-index-names.html"
+											description:      "The alias name. Index alias names support date math. See the [date math index names documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/date-math-index-names.html) for more details."
 											description_kind: "markdown"
 											required:         true
 										}
@@ -645,7 +645,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						max_items: 1
 					}
 				}
-				description:      "Creates or updates a component template. Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
+				description:      "Creates or updates a component template. Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases. See the [component template documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -1014,11 +1014,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "Whether to call the execute API function in order to create the enrich index."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					id: {
 						type:             "string"
-						description_kind: "plain"
-						optional:         true
+						description:      "Internal identifier of the resource"
+						description_kind: "markdown"
 						computed:         true
 					}
 					indices: {
@@ -1148,13 +1149,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+						description:      "Elasticsearch connection configuration block. "
 						description_kind: "markdown"
 						deprecated:       true
 					}
-					max_items: 1
 				}
-				description:      "Managing Elasticsearch enrich policies, see: https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-apis.html"
+				description:      "Managing Elasticsearch enrich policies. See the [enrich API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-apis.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -2578,6 +2578,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						computed:         true
 					}
+					ignore_missing_component_templates: {
+						type: ["list", "string"]
+						description:      "A list of component template names that are ignored if missing."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
 					index_patterns: {
 						type: ["set", "string"]
 						description:      "Array of wildcard (*) expressions used to match the names of data streams and indices during creation."
@@ -3230,8 +3237,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description_kind: "plain"
-						optional:         true
+						description:      "Internal identifier of the resource"
+						description_kind: "markdown"
 						computed:         true
 					}
 					lang: {
@@ -3355,20 +3362,77 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+						description:      "Elasticsearch connection configuration block. "
 						description_kind: "markdown"
 						deprecated:       true
 					}
-					max_items: 1
 				}
-				description:      "Creates or updates a stored script or search template. See https://www.elastic.co/guide/en/elasticsearch/reference/current/create-stored-script-api.html"
+				description:      "Creates or updates a stored script or search template. See the [create stored script API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/create-stored-script-api.html) for more details."
 				description_kind: "markdown"
 			}
 		}
 		elasticstack_elasticsearch_security_api_key: {
-			version: 1
+			version: 2
 			block: {
 				attributes: {
+					access: {
+						nested_type: {
+							attributes: {
+								replication: {
+									nested_type: {
+										attributes: names: {
+											type: ["list", "string"]
+											description:      "A list of index patterns for replication."
+											description_kind: "plain"
+											required:         true
+										}
+										nesting_mode: "list"
+									}
+									description:      "A list of replication configurations for which the cross-cluster API key will have replication privileges."
+									description_kind: "plain"
+									optional:         true
+								}
+								search: {
+									nested_type: {
+										attributes: {
+											allow_restricted_indices: {
+												type:             "bool"
+												description:      "Whether to allow access to restricted indices."
+												description_kind: "plain"
+												optional:         true
+											}
+											field_security: {
+												type:             "string"
+												description:      "Field-level security configuration in JSON format."
+												description_kind: "plain"
+												optional:         true
+											}
+											names: {
+												type: ["list", "string"]
+												description:      "A list of index patterns for search."
+												description_kind: "plain"
+												required:         true
+											}
+											query: {
+												type:             "string"
+												description:      "Query to filter documents for search operations in JSON format."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description:      "A list of search configurations for which the cross-cluster API key will have search privileges."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Access configuration for cross-cluster API keys. Only applicable when type is 'cross_cluster'."
+						description_kind: "plain"
+						optional:         true
+					}
 					api_key: {
 						type:             "string"
 						description:      "Generated API Key."
@@ -3423,6 +3487,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					role_descriptors: {
 						type:             "string"
 						description:      "Role descriptors for this API key."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The type of API key. Valid values are 'rest' (default) and 'cross_cluster'. Cross-cluster API keys are used for cross-cluster search and replication."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -3529,7 +3600,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						deprecated:       true
 					}
 				}
-				description:      "Creates an API key for access without requiring basic authentication. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html"
+				description:      "Creates an API key for access without requiring basic authentication. Supports both regular API keys and cross-cluster API keys. See the [security API create API key documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) and [create cross-cluster API key documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html) for more details."
 				description_kind: "plain"
 			}
 		}
@@ -3822,7 +3893,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						}
 					}
 				}
-				description:      "Adds and updates roles in the native realm. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html"
+				description:      "Adds and updates roles in the native realm. See the [security API put role documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -3835,6 +3906,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "Mappings that have `enabled` set to `false` are ignored when role mapping is performed."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					id: {
 						type:             "string"
@@ -3847,6 +3919,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "Additional metadata that helps define which roles are assigned to each user. Keys beginning with `_` are reserved for system usage."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					name: {
 						type:             "string"
@@ -3969,13 +4042,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+						description:      "Elasticsearch connection configuration block. "
 						description_kind: "markdown"
 						deprecated:       true
 					}
-					max_items: 1
 				}
-				description:      "Manage role mappings. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html"
+				description:      "Manage role mappings. See the [role mapping API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -4005,14 +4077,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					password_hash: {
 						type:             "string"
-						description:      "A hash of the user's password. This must be produced using the same hashing algorithm as has been configured for password storage (see https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings)."
+						description:      "A hash of the user's password. This must be produced using the same hashing algorithm as has been configured for password storage (see the [security settings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings))."
 						description_kind: "markdown"
 						optional:         true
 						sensitive:        true
 					}
 					username: {
 						type:             "string"
-						description:      "An identifier for the system user (see https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html)."
+						description:      "An identifier for the system user (see the [built-in users documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html))."
 						description_kind: "markdown"
 						required:         true
 					}
@@ -4118,7 +4190,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						deprecated:       true
 					}
 				}
-				description:      "Updates system user's password and enablement. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html"
+				description: """
+					Updates system user's password and enablement. See the [built-in users documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html) for more details.
+
+					Since this resource is to manage built-in users, destroy will not delete the underlying Elasticsearch and will only remove it from Terraform state.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -4179,7 +4256,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					username: {
 						type:             "string"
-						description:      "An identifier for the user (see https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html#security-api-put-user-path-params)."
+						description:      "An identifier for the user see the [security API put user documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html#security-api-put-user-path-params) for more details."
 						description_kind: "markdown"
 						required:         true
 					}
@@ -4286,7 +4363,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					max_items: 1
 				}
-				description:      "Adds and updates users in the native realm. These users are commonly referred to as native users. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html"
+				description:      "Adds and updates users in the native realm. These users are commonly referred to as native users. See the [security user API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -4490,7 +4567,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					max_items: 1
 				}
-				description:      "Creates or updates a snapshot lifecycle policy. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-put-policy.html"
+				description:      "Creates or updates a snapshot lifecycle policy. See the [SLM API policy documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-put-policy.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -4555,7 +4632,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 								location_mode: {
 									type:             "string"
-									description:      "Location mode. `primary_only` or `secondary_only`. See: https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy"
+									description:      "Location mode. `primary_only` or `secondary_only`. See the [Azure storage redundancy documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy) for more details."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -4578,7 +4655,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 							}
-							description:      "Support for using Azure Blob storage as a repository for Snapshot/Restore. See: https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-azure.html"
+							description:      "Support for using Azure Blob storage as a repository for Snapshot/Restore. See the [repository Azure plugin documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-azure.html) for more details."
 							description_kind: "markdown"
 						}
 						max_items: 1
@@ -4791,7 +4868,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 							}
-							description:      "Support for using the Google Cloud Storage service as a repository for Snapshot/Restore. See: https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-gcs.html"
+							description:      "Support for using the Google Cloud Storage service as a repository for Snapshot/Restore. See the [repository GCS plugin documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-gcs.html) for more details."
 							description_kind: "markdown"
 						}
 						max_items: 1
@@ -4849,7 +4926,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									required:         true
 								}
 							}
-							description:      "Support for using HDFS File System as a repository for Snapshot/Restore. See: https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-hdfs.html"
+							description:      "Support for using HDFS File System as a repository for Snapshot/Restore. See the [repository HDFS plugin documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-hdfs.html) for more details."
 							description_kind: "markdown"
 						}
 						max_items: 1
@@ -4946,7 +5023,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 							}
-							description:      "Support for using AWS S3 as a repository for Snapshot/Restore. See: https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-s3-repository.html"
+							description:      "Support for using AWS S3 as a repository for Snapshot/Restore. See the [repository S3 plugin documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-s3-repository.html) for more details."
 							description_kind: "markdown"
 						}
 						max_items: 1
@@ -5016,7 +5093,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						max_items: 1
 					}
 				}
-				description:      "Registers or updates a snapshot repository. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/put-snapshot-repo-api.html and https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html"
+				description:      "Registers or updates a snapshot repository. See the [put snapshot repository API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-snapshot-repo-api.html) and [register repository documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -5264,7 +5341,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						max_items: 1
 					}
 				}
-				description:      "Manages Elasticsearch transforms. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/transforms.html"
+				description: """
+					Manages Elasticsearch transforms. See the [transforms documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/transforms.html) for more details.
+
+					**NOTE:** Some transform settings require a minimum Elasticsearch version. Such settings will be ignored when applied to versions below the required one (a warning will be issued in the logs).
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -5333,7 +5415,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
-				description:      "Manage Watches. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api.html"
+				description:      "Manage Watches. See the [Watcher API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -5394,6 +5476,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						computed:         true
 					}
+					inactivity_timeout: {
+						type:             "string"
+						description:      "The inactivity timeout for the agent policy. If an agent does not report within this time period, it will be considered inactive. Supports duration strings (e.g., '30s', '2m', '1h')."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					monitor_logs: {
 						type:             "bool"
 						description:      "Enable collection of agent logs."
@@ -5451,6 +5540,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						optional:         true
 					}
+					unenrollment_timeout: {
+						type:             "string"
+						description:      "The unenrollment timeout for the agent policy. If an agent is inactive for this period, it will be automatically unenrolled. Supports duration strings (e.g., '30s', '2m', '1h')."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 				}
 				description:      "Creates a new Fleet Agent Policy. See https://www.elastic.co/guide/en/fleet/current/agent-policy.html"
 				description_kind: "plain"
@@ -5491,7 +5587,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
-				description:      "Manage installation of a Fleet integration package."
+				description: """
+					Installs or uninstalls a Fleet integration package. The Kibana Fleet UI can be
+					used to view available packages. Additional information for managing integration
+					packages can be found [here](https://www.elastic.co/guide/en/fleet/current/install-uninstall-integration-assets.html).
+
+					To prevent the package from being uninstalled when the resource is destroyed,
+					set `skip_destroy` to `true`.
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -5503,7 +5606,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						type:             "string"
 						description:      "ID of the agent policy."
 						description_kind: "plain"
-						required:         true
+						optional:         true
+					}
+					agent_policy_ids: {
+						type: ["list", "string"]
+						description:      "List of agent policy IDs."
+						description_kind: "plain"
+						optional:         true
 					}
 					description: {
 						type:             "string"
@@ -5608,12 +5717,24 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 					}
 				}
-				description:      "Creates a new Fleet Integration Policy. See https://www.elastic.co/guide/en/fleet/current/add-integration-to-policy.html"
+				description: """
+					Creates or updates a Fleet Integration Policy.
+
+					It is highly recommended that all inputs and streams are provided in the
+					Terraform plan, even if some are disabled. Otherwise, differences may appear
+					between what is in the plan versus what is returned by the Fleet API.
+
+					The [Kibana Fleet UI](https://www.elastic.co/guide/en/fleet/current/add-integration-to-policy.html)
+					can be used as a reference for what data needs to be provided. Instead of saving
+					a new integration configuration, the API request can be previewed, showing what
+					values need to be provided for inputs and their streams.
+
+					"""
 				description_kind: "plain"
 			}
 		}
 		elasticstack_fleet_output: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					ca_sha256: {
@@ -5661,6 +5782,193 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						computed:         true
 					}
+					kafka: {
+						nested_type: {
+							attributes: {
+								auth_type: {
+									type:             "string"
+									description:      "Authentication type for Kafka output."
+									description_kind: "plain"
+									optional:         true
+								}
+								broker_timeout: {
+									type:             "number"
+									description:      "Kafka broker timeout."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								client_id: {
+									type:             "string"
+									description:      "Kafka client ID."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								compression: {
+									type:             "string"
+									description:      "Compression type for Kafka output."
+									description_kind: "plain"
+									optional:         true
+								}
+								compression_level: {
+									type:             "number"
+									description:      "Compression level for Kafka output."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								connection_type: {
+									type:             "string"
+									description:      "Connection type for Kafka output."
+									description_kind: "plain"
+									optional:         true
+								}
+								hash: {
+									nested_type: {
+										attributes: {
+											hash: {
+												type:             "string"
+												description:      "Hash field."
+												description_kind: "plain"
+												optional:         true
+											}
+											random: {
+												type:             "bool"
+												description:      "Use random hash."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Hash configuration for Kafka partition."
+									description_kind: "plain"
+									optional:         true
+								}
+								headers: {
+									nested_type: {
+										attributes: {
+											key: {
+												type:             "string"
+												description:      "Header key."
+												description_kind: "plain"
+												required:         true
+											}
+											value: {
+												type:             "string"
+												description:      "Header value."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description:      "Headers for Kafka messages."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								key: {
+									type:             "string"
+									description:      "Key field for Kafka messages."
+									description_kind: "plain"
+									optional:         true
+								}
+								partition: {
+									type:             "string"
+									description:      "Partition strategy for Kafka output."
+									description_kind: "plain"
+									optional:         true
+								}
+								password: {
+									type:             "string"
+									description:      "Password for Kafka authentication."
+									description_kind: "plain"
+									optional:         true
+									sensitive:        true
+								}
+								random: {
+									nested_type: {
+										attributes: group_events: {
+											type:             "number"
+											description:      "Number of events to group."
+											description_kind: "plain"
+											optional:         true
+										}
+										nesting_mode: "single"
+									}
+									description:      "Random configuration for Kafka partition."
+									description_kind: "plain"
+									optional:         true
+								}
+								required_acks: {
+									type:             "number"
+									description:      "Number of acknowledgments required for Kafka output."
+									description_kind: "plain"
+									optional:         true
+								}
+								round_robin: {
+									nested_type: {
+										attributes: group_events: {
+											type:             "number"
+											description:      "Number of events to group."
+											description_kind: "plain"
+											optional:         true
+										}
+										nesting_mode: "single"
+									}
+									description:      "Round robin configuration for Kafka partition."
+									description_kind: "plain"
+									optional:         true
+								}
+								sasl: {
+									nested_type: {
+										attributes: mechanism: {
+											type:             "string"
+											description:      "SASL mechanism."
+											description_kind: "plain"
+											optional:         true
+										}
+										nesting_mode: "single"
+									}
+									description:      "SASL configuration for Kafka authentication."
+									description_kind: "plain"
+									optional:         true
+								}
+								timeout: {
+									type:             "number"
+									description:      "Timeout for Kafka output."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								topic: {
+									type:             "string"
+									description:      "Kafka topic."
+									description_kind: "plain"
+									optional:         true
+								}
+								username: {
+									type:             "string"
+									description:      "Username for Kafka authentication."
+									description_kind: "plain"
+									optional:         true
+								}
+								version: {
+									type:             "string"
+									description:      "Kafka version."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Kafka-specific configuration."
+						description_kind: "plain"
+						optional:         true
+					}
 					name: {
 						type:             "string"
 						description:      "The name of the output."
@@ -5674,39 +5982,40 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					ssl: {
+						nested_type: {
+							attributes: {
+								certificate: {
+									type:             "string"
+									description:      "Client SSL certificate."
+									description_kind: "plain"
+									required:         true
+								}
+								certificate_authorities: {
+									type: ["list", "string"]
+									description:      "Server SSL certificate authorities."
+									description_kind: "plain"
+									optional:         true
+								}
+								key: {
+									type:             "string"
+									description:      "Client SSL certificate key."
+									description_kind: "plain"
+									required:         true
+									sensitive:        true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "SSL configuration."
+						description_kind: "plain"
+						optional:         true
+					}
 					type: {
 						type:             "string"
 						description:      "The output type."
 						description_kind: "plain"
 						required:         true
-					}
-				}
-				block_types: ssl: {
-					nesting_mode: "list"
-					block: {
-						attributes: {
-							certificate: {
-								type:             "string"
-								description:      "Client SSL certificate."
-								description_kind: "plain"
-								required:         true
-							}
-							certificate_authorities: {
-								type: ["list", "string"]
-								description:      "Server SSL certificate authorities."
-								description_kind: "plain"
-								optional:         true
-							}
-							key: {
-								type:             "string"
-								description:      "Client SSL certificate key."
-								description_kind: "plain"
-								required:         true
-								sensitive:        true
-							}
-						}
-						description:      "SSL configuration."
-						description_kind: "plain"
 					}
 				}
 				description:      "Creates a new Fleet Output."
@@ -5754,75 +6063,124 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			}
 		}
 		elasticstack_kibana_action_connector: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					config: {
 						type:             "string"
 						description:      "The configuration for the connector. Configuration properties vary depending on the connector type."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
 						computed:         true
 					}
 					connector_id: {
 						type:             "string"
 						description:      "A UUID v1 or v4 to use instead of a randomly generated ID."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
 						computed:         true
 					}
 					connector_type_id: {
 						type:             "string"
 						description:      "The ID of the connector type, e.g. `.index`."
-						description_kind: "markdown"
+						description_kind: "plain"
 						required:         true
 					}
 					id: {
 						type:             "string"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
-						optional:         true
 						computed:         true
 					}
 					is_deprecated: {
 						type:             "bool"
 						description:      "Indicates whether the connector type is deprecated."
-						description_kind: "markdown"
+						description_kind: "plain"
 						computed:         true
 					}
 					is_missing_secrets: {
 						type:             "bool"
 						description:      "Indicates whether secrets are missing for the connector."
-						description_kind: "markdown"
+						description_kind: "plain"
 						computed:         true
 					}
 					is_preconfigured: {
 						type:             "bool"
 						description:      "Indicates whether it is a preconfigured connector."
-						description_kind: "markdown"
+						description_kind: "plain"
 						computed:         true
 					}
 					name: {
 						type:             "string"
 						description:      "The name of the connector. While this name does not have to be unique, a distinctive name can help you identify a connector."
-						description_kind: "markdown"
+						description_kind: "plain"
 						required:         true
 					}
 					secrets: {
 						type:             "string"
 						description:      "The secrets configuration for the connector. Secrets configuration properties vary depending on the connector type."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
 						sensitive:        true
 					}
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
 					}
 				}
 				description:      "Creates a Kibana action connector. See https://www.elastic.co/guide/en/kibana/current/action-types.html"
-				description_kind: "markdown"
+				description_kind: "plain"
 			}
 		}
 		elasticstack_kibana_alerting_rule: {
@@ -6032,7 +6390,15 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 					}
 				}
-				description:      "Creates a Kibana rule. See https://www.elastic.co/guide/en/kibana/master/create-rule-api.html"
+				description: """
+					Creates a Kibana rule. See the [create rule API documentation](https://www.elastic.co/guide/en/kibana/master/create-rule-api.html) for more details.
+
+					**NOTE:** `api_key` authentication is only supported for alerting rule resources from version 8.8.0 of the Elastic stack. Using an `api_key` will result in an error message like:
+
+					```
+					Could not create API key - Unsupported scheme "ApiKey" for granting API Key
+					```
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -6337,8 +6703,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
-				description:      "Manages Kibana data views"
-				description_kind: "plain"
+				description:      "Manages Kibana [data views](https://www.elastic.co/guide/en/kibana/current/data-views-api.html)"
+				description_kind: "markdown"
 			}
 		}
 		elasticstack_kibana_import_saved_objects: {
@@ -6417,8 +6783,1059 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
-				description:      "Imports saved objects from the referenced file"
+				description:      "Create sets of Kibana saved objects from a file created by the export API. See https://www.elastic.co/guide/en/kibana/current/saved-objects-api-import.html"
 				description_kind: "plain"
+			}
+		}
+		elasticstack_kibana_maintenance_window: {
+			version: 0
+			block: {
+				attributes: {
+					custom_schedule: {
+						nested_type: {
+							attributes: {
+								duration: {
+									type:             "string"
+									description:      "The duration of the schedule. It allows values in `<integer><unit>` format. `<unit>` is one of `d`, `h`, `m`, or `s` for days, hours, minutes, seconds. For example: `1d`, `5h`, `30m`, `5000s`."
+									description_kind: "plain"
+									required:         true
+								}
+								recurring: {
+									nested_type: {
+										attributes: {
+											end: {
+												type:             "string"
+												description:      "The end date and time of the schedule, provided in ISO 8601 format and set to the UTC timezone. For example: `2025-03-12T12:00:00.000Z`."
+												description_kind: "plain"
+												optional:         true
+											}
+											every: {
+												type:             "string"
+												description:      "The duration of the schedule. It allows values in `<integer><unit>` format. `<unit>` is one of `d`, `h`, `m`, or `s` for days, hours, minutes, seconds. For example: `1d`, `5h`, `30m`, `5000s`."
+												description_kind: "plain"
+												optional:         true
+											}
+											occurrences: {
+												type:             "number"
+												description:      "The total number of recurrences of the schedule."
+												description_kind: "plain"
+												optional:         true
+											}
+											on_month: {
+												type: ["list", "number"]
+												description:      "The specific months for a recurring schedule. Valid values are 1-12."
+												description_kind: "plain"
+												optional:         true
+											}
+											on_month_day: {
+												type: ["list", "number"]
+												description:      "The specific days of the month for a recurring schedule. Valid values are 1-31."
+												description_kind: "plain"
+												optional:         true
+											}
+											on_week_day: {
+												type: ["list", "string"]
+												description:      "The specific days of the week (`[MO,TU,WE,TH,FR,SA,SU]`) or nth day of month (`[+1MO, -3FR, +2WE, -4SA, -5SU]`) for a recurring schedule."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "A set schedule over which the maintenance window applies."
+									description_kind: "plain"
+									required:         true
+								}
+								start: {
+									type:             "string"
+									description:      "The start date and time of the schedule, provided in ISO 8601 format and set to the UTC timezone. For example: `2025-03-12T12:00:00.000Z`."
+									description_kind: "plain"
+									required:         true
+								}
+								timezone: {
+									type:             "string"
+									description:      "The timezone of the schedule. The default timezone is UTC."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "A set schedule over which the maintenance window applies."
+						description_kind: "plain"
+						required:         true
+					}
+					enabled: {
+						type:             "bool"
+						description:      "Whether the current maintenance window is enabled."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Generated ID for the maintenance window."
+						description_kind: "markdown"
+						computed:         true
+					}
+					scope: {
+						nested_type: {
+							attributes: alerting: {
+								nested_type: {
+									attributes: kql: {
+										type:             "string"
+										description:      "A filter written in Kibana Query Language (KQL)."
+										description_kind: "plain"
+										required:         true
+									}
+									nesting_mode: "single"
+								}
+								description:      "A set schedule over which the maintenance window applies."
+								description_kind: "plain"
+								required:         true
+							}
+							nesting_mode: "single"
+						}
+						description:      "An object that narrows the scope of what is affected by this maintenance window."
+						description_kind: "plain"
+						optional:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					title: {
+						type:             "string"
+						description:      "The name of the maintenance window."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description:      "Creates and manages Kibana [maintenance windows](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-maintenance-window)"
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_security_detection_rule: {
+			version: 0
+			block: {
+				attributes: {
+					actions: {
+						nested_type: {
+							attributes: {
+								action_type_id: {
+									type:             "string"
+									description:      "The action type used for sending notifications (e.g., .slack, .email, .webhook, .pagerduty, etc.)."
+									description_kind: "markdown"
+									required:         true
+								}
+								alerts_filter: {
+									type: ["map", "string"]
+									description:      "Object containing an action's conditional filters."
+									description_kind: "markdown"
+									optional:         true
+								}
+								frequency: {
+									nested_type: {
+										attributes: {
+											notify_when: {
+												type:             "string"
+												description:      "Defines how often rules run actions. Valid values: onActionGroupChange, onActiveAlert, onThrottleInterval."
+												description_kind: "markdown"
+												required:         true
+											}
+											summary: {
+												type:             "bool"
+												description:      "Action summary indicates whether we will send a summary notification about all the generated alerts or notification per individual alert."
+												description_kind: "markdown"
+												required:         true
+											}
+											throttle: {
+												type:             "string"
+												description:      "Time interval for throttling actions (e.g., '1h', '30m', 'no_actions', 'rule')."
+												description_kind: "markdown"
+												required:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "The action frequency defines when the action runs."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								group: {
+									type:             "string"
+									description:      "Optionally groups actions by use cases. Use 'default' for alert notifications."
+									description_kind: "markdown"
+									optional:         true
+								}
+								id: {
+									type:             "string"
+									description:      "The connector ID."
+									description_kind: "markdown"
+									required:         true
+								}
+								params: {
+									type: ["map", "string"]
+									description:      "Object containing the allowed connector fields, which varies according to the connector type."
+									description_kind: "markdown"
+									required:         true
+								}
+								uuid: {
+									type:             "string"
+									description:      "A unique identifier for the action."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Array of automated actions taken when alerts are generated by the rule."
+						description_kind: "markdown"
+						optional:         true
+					}
+					alert_suppression: {
+						nested_type: {
+							attributes: {
+								duration: {
+									type:             "string"
+									description:      "Duration for which alerts are suppressed."
+									description_kind: "plain"
+									optional:         true
+								}
+								group_by: {
+									type: ["list", "string"]
+									description:      "Array of field names to group alerts by for suppression."
+									description_kind: "markdown"
+									optional:         true
+								}
+								missing_fields_strategy: {
+									type:             "string"
+									description:      "Strategy for handling missing fields in suppression grouping: 'suppress' - only one alert will be created per suppress by bucket, 'doNotSuppress' - per each document a separate alert will be created."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Defines alert suppression configuration to reduce duplicate alerts."
+						description_kind: "markdown"
+						optional:         true
+					}
+					anomaly_threshold: {
+						type:             "number"
+						description:      "Anomaly score threshold above which the rule creates an alert. Valid values are from 0 to 100. Required for machine_learning rules."
+						description_kind: "markdown"
+						optional:         true
+					}
+					author: {
+						type: ["list", "string"]
+						description:      "The rule's author."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					building_block_type: {
+						type:             "string"
+						description:      "Determines if the rule acts as a building block. If set, value must be `default`. Building-block alerts are not displayed in the UI by default and are used as a foundation for other rules."
+						description_kind: "markdown"
+						optional:         true
+					}
+					concurrent_searches: {
+						type:             "number"
+						description:      "Number of concurrent searches for threat intelligence. Optional for threat_match rules."
+						description_kind: "markdown"
+						optional:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The time the rule was created."
+						description_kind: "markdown"
+						computed:         true
+					}
+					created_by: {
+						type:             "string"
+						description:      "The user who created the rule."
+						description_kind: "markdown"
+						computed:         true
+					}
+					data_view_id: {
+						type:             "string"
+						description:      "Data view ID for the rule. Not supported for esql and machine_learning rule types."
+						description_kind: "markdown"
+						optional:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The rule's description."
+						description_kind: "markdown"
+						required:         true
+					}
+					enabled: {
+						type:             "bool"
+						description:      "Determines whether the rule is enabled."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					exceptions_list: {
+						nested_type: {
+							attributes: {
+								id: {
+									type:             "string"
+									description:      "The exception container ID."
+									description_kind: "markdown"
+									required:         true
+								}
+								list_id: {
+									type:             "string"
+									description:      "The exception container's list ID."
+									description_kind: "markdown"
+									required:         true
+								}
+								namespace_type: {
+									type:             "string"
+									description:      "The namespace type for the exception container."
+									description_kind: "markdown"
+									required:         true
+								}
+								type: {
+									type:             "string"
+									description:      "The type of exception container."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Array of exception containers to prevent the rule from generating alerts."
+						description_kind: "markdown"
+						optional:         true
+					}
+					false_positives: {
+						type: ["list", "string"]
+						description:      "String array used to describe common reasons why the rule may issue false-positive alerts."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					filters: {
+						type:             "string"
+						description:      "Query and filter context array to define alert conditions as JSON. Supports complex filter structures including bool queries, term filters, range filters, etc. Available for all rule types."
+						description_kind: "markdown"
+						optional:         true
+					}
+					from: {
+						type:             "string"
+						description:      "Time from which data is analyzed each time the rule runs, using a date math range."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					history_window_start: {
+						type:             "string"
+						description:      "Start date to use when checking if a term has been seen before. Supports relative dates like 'now-30d'. Required for new_terms rules."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource"
+						description_kind: "markdown"
+						computed:         true
+					}
+					index: {
+						type: ["list", "string"]
+						description:      "Indices on which the rule functions."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					interval: {
+						type:             "string"
+						description:      "Frequency of rule execution, using a date math range."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					investigation_fields: {
+						type: ["list", "string"]
+						description:      "Array of field names to include in alert investigation. Available for all rule types."
+						description_kind: "markdown"
+						optional:         true
+					}
+					items_per_search: {
+						type:             "number"
+						description:      "Number of items to search for in each concurrent search. Optional for threat_match rules."
+						description_kind: "markdown"
+						optional:         true
+					}
+					language: {
+						type:             "string"
+						description:      "The query language (KQL or Lucene)."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					license: {
+						type:             "string"
+						description:      "The rule's license."
+						description_kind: "markdown"
+						optional:         true
+					}
+					machine_learning_job_id: {
+						type: ["list", "string"]
+						description:      "Machine learning job ID(s) the rule monitors for anomaly scores. Required for machine_learning rules."
+						description_kind: "markdown"
+						optional:         true
+					}
+					max_signals: {
+						type:             "number"
+						description:      "Maximum number of alerts the rule can create during a single run."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "A human-readable name for the rule."
+						description_kind: "markdown"
+						required:         true
+					}
+					namespace: {
+						type:             "string"
+						description:      "Alerts index namespace. Available for all rule types."
+						description_kind: "markdown"
+						optional:         true
+					}
+					new_terms_fields: {
+						type: ["list", "string"]
+						description:      "Field names containing the new terms. Required for new_terms rules."
+						description_kind: "markdown"
+						optional:         true
+					}
+					note: {
+						type:             "string"
+						description:      "Notes to help investigate alerts produced by the rule."
+						description_kind: "markdown"
+						optional:         true
+					}
+					query: {
+						type:             "string"
+						description:      "The query language definition."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					references: {
+						type: ["list", "string"]
+						description:      "String array containing references and URLs to sources of additional information."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					related_integrations: {
+						nested_type: {
+							attributes: {
+								integration: {
+									type:             "string"
+									description:      "Name of the specific integration."
+									description_kind: "markdown"
+									optional:         true
+								}
+								package: {
+									type:             "string"
+									description:      "Name of the integration package."
+									description_kind: "markdown"
+									required:         true
+								}
+								version: {
+									type:             "string"
+									description:      "Version of the integration package."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Array of related integrations that provide additional context for the rule."
+						description_kind: "markdown"
+						optional:         true
+					}
+					required_fields: {
+						nested_type: {
+							attributes: {
+								ecs: {
+									type:             "bool"
+									description:      "Indicates whether the field is ECS-compliant. This is computed by the backend based on the field name and type."
+									description_kind: "markdown"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Name of the Elasticsearch field."
+									description_kind: "markdown"
+									required:         true
+								}
+								type: {
+									type:             "string"
+									description:      "Type of the Elasticsearch field."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Array of Elasticsearch fields and types that must be present in source indices for the rule to function properly."
+						description_kind: "markdown"
+						optional:         true
+					}
+					response_actions: {
+						nested_type: {
+							attributes: {
+								action_type_id: {
+									type:             "string"
+									description:      "The action type used for response actions (.osquery, .endpoint)."
+									description_kind: "markdown"
+									required:         true
+								}
+								params: {
+									nested_type: {
+										attributes: {
+											command: {
+												type:             "string"
+												description:      "Command to run (endpoint only). Valid values: isolate, kill-process, suspend-process."
+												description_kind: "markdown"
+												optional:         true
+											}
+											comment: {
+												type:             "string"
+												description:      "Comment describing the action (endpoint only)."
+												description_kind: "markdown"
+												optional:         true
+											}
+											config: {
+												nested_type: {
+													attributes: {
+														field: {
+															type:             "string"
+															description:      "Field to use instead of process.pid."
+															description_kind: "markdown"
+															required:         true
+														}
+														overwrite: {
+															type:             "bool"
+															description:      "Whether to overwrite field with process.pid."
+															description_kind: "markdown"
+															optional:         true
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Configuration for process commands (endpoint only)."
+												description_kind: "markdown"
+												optional:         true
+											}
+											ecs_mapping: {
+												type: ["map", "string"]
+												description:      "Map Osquery results columns to ECS fields (osquery only)."
+												description_kind: "markdown"
+												optional:         true
+											}
+											pack_id: {
+												type:             "string"
+												description:      "Query pack identifier (osquery only)."
+												description_kind: "markdown"
+												optional:         true
+											}
+											queries: {
+												nested_type: {
+													attributes: {
+														ecs_mapping: {
+															type: ["map", "string"]
+															description:      "ECS field mappings for this query."
+															description_kind: "markdown"
+															optional:         true
+														}
+														id: {
+															type:             "string"
+															description:      "Query ID."
+															description_kind: "markdown"
+															required:         true
+														}
+														platform: {
+															type:             "string"
+															description:      "Platform to run the query on."
+															description_kind: "markdown"
+															optional:         true
+														}
+														query: {
+															type:             "string"
+															description:      "Query to run."
+															description_kind: "markdown"
+															required:         true
+														}
+														removed: {
+															type:             "bool"
+															description:      "Whether the query is removed."
+															description_kind: "markdown"
+															optional:         true
+														}
+														snapshot: {
+															type:             "bool"
+															description:      "Whether this is a snapshot query."
+															description_kind: "markdown"
+															optional:         true
+														}
+														version: {
+															type:             "string"
+															description:      "Query version."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "list"
+												}
+												description:      "Array of queries to run (osquery only)."
+												description_kind: "markdown"
+												optional:         true
+											}
+											query: {
+												type:             "string"
+												description:      "SQL query to run (osquery only). Example: 'SELECT * FROM processes;'"
+												description_kind: "markdown"
+												optional:         true
+											}
+											saved_query_id: {
+												type:             "string"
+												description:      "Saved query identifier (osquery only)."
+												description_kind: "markdown"
+												optional:         true
+											}
+											timeout: {
+												type:             "number"
+												description:      "Timeout period in seconds (osquery only). Min: 60, Max: 900."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Parameters for the response action. Structure varies based on action_type_id."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Array of response actions to take when alerts are generated by the rule."
+						description_kind: "markdown"
+						optional:         true
+					}
+					revision: {
+						type:             "number"
+						description:      "The rule's revision number."
+						description_kind: "markdown"
+						computed:         true
+					}
+					risk_score: {
+						type:             "number"
+						description:      "A numerical representation of the alert's severity from 0 to 100."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					risk_score_mapping: {
+						nested_type: {
+							attributes: {
+								field: {
+									type:             "string"
+									description:      "Source event field used to override the default risk_score."
+									description_kind: "markdown"
+									required:         true
+								}
+								operator: {
+									type:             "string"
+									description:      "Operator to use for field value matching. Currently only 'equals' is supported."
+									description_kind: "markdown"
+									required:         true
+								}
+								risk_score: {
+									type:             "number"
+									description:      "Risk score to use when the field matches the value (0-100). If omitted, uses the rule's default risk_score."
+									description_kind: "markdown"
+									optional:         true
+								}
+								value: {
+									type:             "string"
+									description:      "Value to match against the field."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Array of risk score mappings to override the default risk score based on source event field values."
+						description_kind: "markdown"
+						optional:         true
+					}
+					rule_id: {
+						type:             "string"
+						description:      "A stable unique identifier for the rule object. If omitted, a UUID is generated."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					rule_name_override: {
+						type:             "string"
+						description:      "Override the rule name in Kibana. Available for all rule types."
+						description_kind: "markdown"
+						optional:         true
+					}
+					saved_id: {
+						type:             "string"
+						description:      "Identifier of the saved query used for the rule. Required for saved_query rules."
+						description_kind: "markdown"
+						optional:         true
+					}
+					setup: {
+						type:             "string"
+						description:      "Setup guide with instructions on rule prerequisites."
+						description_kind: "markdown"
+						optional:         true
+					}
+					severity: {
+						type:             "string"
+						description:      "Severity level of alerts produced by the rule."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					severity_mapping: {
+						nested_type: {
+							attributes: {
+								field: {
+									type:             "string"
+									description:      "Source event field used to override the default severity."
+									description_kind: "markdown"
+									required:         true
+								}
+								operator: {
+									type:             "string"
+									description:      "Operator to use for field value matching. Currently only 'equals' is supported."
+									description_kind: "markdown"
+									required:         true
+								}
+								severity: {
+									type:             "string"
+									description:      "Severity level to use when the field matches the value."
+									description_kind: "markdown"
+									required:         true
+								}
+								value: {
+									type:             "string"
+									description:      "Value to match against the field."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Array of severity mappings to override the default severity based on source event field values."
+						description_kind: "markdown"
+						optional:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "String array containing words and phrases to help categorize, filter, and search rules."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					threat: {
+						nested_type: {
+							attributes: {
+								framework: {
+									type:             "string"
+									description:      "Threat framework (typically 'MITRE ATT&CK')."
+									description_kind: "markdown"
+									required:         true
+								}
+								tactic: {
+									nested_type: {
+										attributes: {
+											id: {
+												type:             "string"
+												description:      "MITRE ATT&CK tactic ID."
+												description_kind: "markdown"
+												required:         true
+											}
+											name: {
+												type:             "string"
+												description:      "MITRE ATT&CK tactic name."
+												description_kind: "markdown"
+												required:         true
+											}
+											reference: {
+												type:             "string"
+												description:      "MITRE ATT&CK tactic reference URL."
+												description_kind: "markdown"
+												required:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "MITRE ATT&CK tactic information."
+									description_kind: "markdown"
+									required:         true
+								}
+								technique: {
+									nested_type: {
+										attributes: {
+											id: {
+												type:             "string"
+												description:      "MITRE ATT&CK technique ID."
+												description_kind: "markdown"
+												required:         true
+											}
+											name: {
+												type:             "string"
+												description:      "MITRE ATT&CK technique name."
+												description_kind: "markdown"
+												required:         true
+											}
+											reference: {
+												type:             "string"
+												description:      "MITRE ATT&CK technique reference URL."
+												description_kind: "markdown"
+												required:         true
+											}
+											subtechnique: {
+												nested_type: {
+													attributes: {
+														id: {
+															type:             "string"
+															description:      "MITRE ATT&CK sub-technique ID."
+															description_kind: "markdown"
+															required:         true
+														}
+														name: {
+															type:             "string"
+															description:      "MITRE ATT&CK sub-technique name."
+															description_kind: "markdown"
+															required:         true
+														}
+														reference: {
+															type:             "string"
+															description:      "MITRE ATT&CK sub-technique reference URL."
+															description_kind: "markdown"
+															required:         true
+														}
+													}
+													nesting_mode: "list"
+												}
+												description:      "MITRE ATT&CK sub-technique information."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description:      "MITRE ATT&CK technique information."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "MITRE ATT&CK framework threat information."
+						description_kind: "markdown"
+						optional:         true
+					}
+					threat_filters: {
+						type: ["list", "string"]
+						description:      "Additional filters for threat intelligence data. Optional for threat_match rules."
+						description_kind: "markdown"
+						optional:         true
+					}
+					threat_index: {
+						type: ["list", "string"]
+						description:      "Array of index patterns for the threat intelligence indices. Required for threat_match rules."
+						description_kind: "markdown"
+						optional:         true
+					}
+					threat_indicator_path: {
+						type:             "string"
+						description:      "Path to the threat indicator in the indicator documents. Optional for threat_match rules."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					threat_mapping: {
+						nested_type: {
+							attributes: entries: {
+								nested_type: {
+									attributes: {
+										field: {
+											type:             "string"
+											description:      "Event field to match."
+											description_kind: "markdown"
+											required:         true
+										}
+										type: {
+											type:             "string"
+											description:      "Type of match (mapping)."
+											description_kind: "markdown"
+											required:         true
+										}
+										value: {
+											type:             "string"
+											description:      "Threat intelligence field to match against."
+											description_kind: "markdown"
+											required:         true
+										}
+									}
+									nesting_mode: "list"
+								}
+								description:      "Array of mapping entries."
+								description_kind: "markdown"
+								required:         true
+							}
+							nesting_mode: "list"
+						}
+						description:      "Array of threat mappings that specify how to match events with threat intelligence. Required for threat_match rules."
+						description_kind: "markdown"
+						optional:         true
+					}
+					threat_query: {
+						type:             "string"
+						description:      "Query used to filter threat intelligence data. Optional for threat_match rules."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					threshold: {
+						nested_type: {
+							attributes: {
+								cardinality: {
+									nested_type: {
+										attributes: {
+											field: {
+												type:             "string"
+												description:      "The field on which to calculate and compare the cardinality."
+												description_kind: "markdown"
+												required:         true
+											}
+											value: {
+												type:             "number"
+												description:      "The threshold cardinality value."
+												description_kind: "markdown"
+												required:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description:      "Cardinality settings for threshold rule."
+									description_kind: "markdown"
+									optional:         true
+								}
+								field: {
+									type: ["list", "string"]
+									description:      "Field(s) to use for threshold aggregation."
+									description_kind: "markdown"
+									optional:         true
+								}
+								value: {
+									type:             "number"
+									description:      "The threshold value from which an alert is generated."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Threshold settings for the rule. Required for threshold rules."
+						description_kind: "markdown"
+						optional:         true
+					}
+					tiebreaker_field: {
+						type:             "string"
+						description:      "Sets the tiebreaker field. Required for EQL rules when event.dataset is not provided."
+						description_kind: "markdown"
+						optional:         true
+					}
+					timeline_id: {
+						type:             "string"
+						description:      "Timeline template ID for the rule."
+						description_kind: "markdown"
+						optional:         true
+					}
+					timeline_title: {
+						type:             "string"
+						description:      "Timeline template title for the rule."
+						description_kind: "markdown"
+						optional:         true
+					}
+					timestamp_override: {
+						type:             "string"
+						description:      "Field name to use for timestamp override. Available for all rule types."
+						description_kind: "markdown"
+						optional:         true
+					}
+					timestamp_override_fallback_disabled: {
+						type:             "bool"
+						description:      "Disables timestamp override fallback. Available for all rule types."
+						description_kind: "markdown"
+						optional:         true
+					}
+					to: {
+						type:             "string"
+						description:      "Time to which data is analyzed each time the rule runs, using a date math range."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description:      "Rule type. Supported types: query, eql, esql, machine_learning, new_terms, saved_query, threat_match, threshold."
+						description_kind: "markdown"
+						required:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The time the rule was last updated."
+						description_kind: "markdown"
+						computed:         true
+					}
+					updated_by: {
+						type:             "string"
+						description:      "The user who last updated the rule."
+						description_kind: "markdown"
+						computed:         true
+					}
+					version: {
+						type:             "number"
+						description:      "The rule's version number."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				description:      "Creates or updates a Kibana security detection rule. See the [rules API documentation](https://www.elastic.co/guide/en/security/current/rules-api-create.html) for more details."
+				description_kind: "markdown"
 			}
 		}
 		elasticstack_kibana_security_role: {
@@ -6624,7 +8041,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						}
 					}
 				}
-				description:      "Creates a Kibana role. See, https://www.elastic.co/guide/en/kibana/master/role-management-api-put.html"
+				description: """
+					Creates or updates a Kibana role. See the [role management API documentation](https://www.elastic.co/guide/en/kibana/master/role-management-api-put.html) for more details.
+
+					For Features, see the [features API documentation](https://www.elastic.co/guide/en/kibana/current/features-api-get.html).
+
+					For Security Privileges, see the [security privileges documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html).
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -6665,7 +8089,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					slo_id: {
 						type:             "string"
-						description:      "An ID (8 and 36 characters). If omitted, a UUIDv1 will be generated server-side."
+						description:      "An ID (8 to 48 characters) that contains only letters, numbers, hyphens, and underscores. If omitted, a UUIDv1 will be generated server-side."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -6771,6 +8195,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								data_view_id: {
+									type:             "string"
+									description:      "Optional data view id to use for this indicator."
+									description_kind: "markdown"
+									optional:         true
+								}
 								filter: {
 									type:             "string"
 									description_kind: "plain"
@@ -6867,6 +8297,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								data_view_id: {
+									type:             "string"
+									description:      "Optional data view id to use for this indicator."
+									description_kind: "markdown"
+									optional:         true
+								}
 								filter: {
 									type:             "string"
 									description_kind: "plain"
@@ -6901,6 +8337,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								data_view_id: {
+									type:             "string"
+									description:      "Optional data view id to use for this indicator."
+									description_kind: "markdown"
+									optional:         true
+								}
 								filter: {
 									type:             "string"
 									description_kind: "plain"
@@ -7043,6 +8485,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 									computed:         true
 								}
+								prevent_initial_backfill: {
+									type:             "bool"
+									description:      "Prevents the underlying ES transform from attempting to backfill data on start, which can sometimes be resource-intensive or time-consuming and unnecessary"
+									description_kind: "markdown"
+									optional:         true
+								}
 								sync_delay: {
 									type:             "string"
 									description_kind: "plain"
@@ -7080,6 +8528,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								data_view_id: {
+									type:             "string"
+									description:      "Optional data view id to use for this indicator."
+									description_kind: "markdown"
+									optional:         true
+								}
 								filter: {
 									type:             "string"
 									description_kind: "plain"
@@ -7166,7 +8620,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						max_items: 1
 					}
 				}
-				description:      "Creates an SLO."
+				description:      "Creates or updates a Kibana SLO. See the [Kibana SLO docs](https://www.elastic.co/guide/en/observability/current/slo.html) and [dev docs](https://github.com/elastic/kibana/blob/main/x-pack/plugins/observability/dev_docs/slo.md) for more information."
 				description_kind: "markdown"
 			}
 		}
@@ -7192,6 +8646,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "The list of disabled features for the space. To get a list of available feature IDs, use the Features API (https://www.elastic.co/guide/en/kibana/master/features-api-get.html)."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					id: {
 						type:             "string"
@@ -7218,6 +8673,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
+					solution: {
+						type:             "string"
+						description:      "The solution view for the space. Valid options are `security`, `oblt`, `es`, or `classic`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
 					space_id: {
 						type:             "string"
 						description:      "The space ID that is part of the Kibana URL when inside the space."
@@ -7225,7 +8687,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
-				description:      "Creates a Kibana space. See, https://www.elastic.co/guide/en/kibana/master/spaces-api-post.html"
+				description:      "Creates a Kibana space. See the [spaces API documentation](https://www.elastic.co/guide/en/kibana/master/spaces-api-post.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -7472,6 +8934,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						computed:         true
 					}
+					labels: {
+						type: ["map", "string"]
+						description:      "Key-value pairs of labels to associate with the monitor. Labels can be used for filtering and grouping monitors."
+						description_kind: "markdown"
+						optional:         true
+					}
 					locations: {
 						type: ["list", "string"]
 						description:      "Where to deploy the monitor. Monitors can be deployed in multiple locations so that you can detect differences in availability and response times across those locations."
@@ -7483,6 +8951,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "The monitor’s name."
 						description_kind: "markdown"
 						required:         true
+					}
+					namespace: {
+						type:             "string"
+						description:      "The data stream namespace. Note: if you change its value, kibana creates new datastream. A user needs permissions for new/old datastream in update case to be able to see full monitor history. The `namespace` field should be lowercase and not contain spaces. The namespace must not include any of the following characters: *, \\, /, ?, \", <, >, |, whitespace, ,, #, :, or -. Default: `default`"
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
 					}
 					params: {
 						type:             "string"
@@ -7518,7 +8993,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "The namespace field should be lowercase and not contain spaces. The namespace must not include any of the following characters: *, \\, /, ?, \", <, >, |, whitespace, ,, #, :, or -. Default: `default`"
+						description:      "Kibana space. The space ID that is part of the Kibana URL when inside the space. Space IDs are limited to lowercase alphanumeric, underscore, and hyphen characters (a-z, 0-9, _, and -). You are cannot change the ID with the update operation."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -7622,7 +9097,20 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
-				description:      "Synthetics monitor config, see https://www.elastic.co/guide/en/kibana/current/add-monitor-api.html for more details. The monitor must have one of the following: http, tcp, icmp or browser."
+				description: """
+					Creates or updates a Kibana synthetics monitor. See [API docs](https://www.elastic.co/guide/en/kibana/current/add-monitor-api.html)
+
+					## Supported monitor types
+					 * `http`
+					 * `tcp`
+					 * `icmp`
+					 * `browser`
+
+					The monitor type is determined by the fields in the `suite` block. See the [API docs](https://www.elastic.co/guide/en/kibana/current/add-monitor-api.html#add-monitor-api-request-body) for more details on which fields are required for each monitor type.
+
+					**NOTE:** Due-to nature of partial update API, reset values to defaults is not supported.
+					In case you would like to reset an optional monitor value, please set it explicitly or delete and create new monitor.
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -7671,7 +9159,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						sensitive:        true
 					}
 				}
-				description:      "Synthetics parameter config, see https://www.elastic.co/docs/api/doc/kibana/group/endpoint-synthetics for more details"
+				description: """
+					Creates or updates a Kibana synthetics parameter.
+
+					See [Working with secrets and sensitive values](https://www.elastic.co/docs/solutions/observability/synthetics/work-with-params-secrets)
+					and [API docs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-synthetics)
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -7726,7 +9220,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Synthetics private location config, see https://www.elastic.co/guide/en/kibana/current/create-private-location-api.html for more details"
+				description: """
+					Creates or updates a Kibana synthetics private location.
+
+					See [Monitor via a private agent](https://www.elastic.co/guide/en/observability/current/synthetics-private-location.html#monitor-via-private-agent)
+					and [API docs](https://www.elastic.co/guide/en/kibana/current/create-private-location-api.html)
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -7756,7 +9256,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					match_field: {
 						type:             "string"
-						description:      "Field in source indices used to match incoming documents."
+						description:      "Field from the source indices used to match incoming documents."
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -7779,7 +9279,108 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
-				description:      "Returns information about an enrich policy. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/get-enrich-policy-api.html"
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block. "
+						description_kind: "markdown"
+						deprecated:       true
+					}
+				}
+				description:      "Returns information about an enrich policy. See the [enrich policy API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-enrich-policy-api.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -7805,6 +9406,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					id: {
 						type:             "string"
 						description:      "Internal identifier of the resource"
+						description_kind: "markdown"
+						computed:         true
+					}
+					ignore_missing_component_templates: {
+						type: ["list", "string"]
+						description:      "A list of component template names that are ignored if missing."
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -7962,7 +9569,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					max_items: 1
 				}
-				description:      "Retrieves index template definition. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-template.html"
+				description:      "Retrieves information about an existing index template definition. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-template.html"
 				description_kind: "markdown"
 			}
 		}
@@ -8453,7 +10060,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Manages Elasticsearch indices. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-index.html"
+				description:      "Retrieves information about existing Elasticsearch indices. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-index.html"
 				description_kind: "plain"
 			}
 		}
@@ -8583,7 +10190,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
-				description:      "Appends one or more values to an existing array if the field already exists and it is an array. Converts a scalar to an array and appends one or more values to it if the field exists and it is a scalar. Creates an array containing the provided values if the field doesn’t exist. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/append-processor.html"
+				description:      "Helper data source which can be used to create the configuration for an append processor. This processor appends one or more values to an existing array if the field already exists and it is an array. Converts a scalar to an array and appends one or more values to it if the field exists and it is a scalar. Creates an array containing the provided values if the field doesn’t exist. See the [append processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/append-processor.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -8652,7 +10259,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Converts a human readable byte value (e.g. 1kb) to its value in bytes (e.g. 1024). See: https://www.elastic.co/guide/en/elasticsearch/reference/current/bytes-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a bytes processor. The processor converts a human readable byte value (e.g. 1kb) to its value in bytes (e.g. 1024). See the [bytes processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/bytes-processor.html) for more details.
+
+					If the field is an array of strings, all members of the array will be converted.
+
+					Supported human readable units are "b", "kb", "mb", "gb", "tb", "pb" case insensitive. An error will occur if the field is not a supported format or resultant value exceeds 2^63.
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -8733,7 +10346,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Converts circle definitions of shapes to regular polygons which approximate them. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-circle-processor.html"
+				description:      "Helper data source which can be used to create the configuration for an circle processor. This processor converts circle definitions of shapes to regular polygons which approximate them. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-circle-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -8850,7 +10463,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Computes the Community ID for network flow data as defined in the Community ID Specification. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/community-id-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a community ID processor. This processor computes the Community ID for network flow data as defined in the Community ID Specification. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/community-id-processor.html
+					You can use a community ID to correlate network events related to a single flow.
+
+					The community ID processor reads network flow data from related [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/1.12) fields by default. If you use the ECS, no configuration is required.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -8925,7 +10544,25 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
-				description:      "Converts a field in the currently ingested document to a different type, such as converting a string to an integer. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/convert-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a convert processor. This processor converts a field in the currently ingested document to a different type, such as converting a string to an integer. See the [convert processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/convert-processor.html) for more details.
+
+					The supported types include: 
+					- `integer`
+					- `long`
+					- `float`
+					- `double`
+					- `string`
+					- `boolean`
+					- `ip`
+					- `auto`
+
+					Specifying `boolean` will set the field to true if its string value is equal to true (ignoring case), to false if its string value is equal to false (ignoring case), or it will throw an exception otherwise.
+
+					Specifying `ip` will set the target field to the value of `field` if it contains a valid IPv4 or IPv6 address that can be indexed into an IP field type.
+
+					Specifying `auto` will attempt to convert the string-valued `field` into the closest non-string, non-IP type. For example, a field whose value is "true" will be converted to its respective boolean type: true. Do note that float takes precedence of double in auto. A value of "242.15" will "automatically" be converted to 242.15 of type `float`. If a provided field cannot be appropriately converted, the processor will still process successfully and leave the field value as-is. In such a case, `target_field` will be updated with the unconverted field value.
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -9018,7 +10655,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Extracts fields from CSV line out of a single text field within a document. Any empty field in CSV will be skipped. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/csv-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a CSV processor. This processor extracts fields from CSV line out of a single text field within a document. Any empty field in CSV will be skipped. See the [CSV processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/csv-processor.html) for more details.
+
+					If the `trim` option is enabled then any whitespace in the beginning and in the end of each unquoted field will be trimmed. For example with configuration above, a value of A, B will result in field field2 having value {nbsp}B (with space at the beginning). If trim is enabled A, B will result in field field2 having value B (no whitespace). Quoted fields will be left untouched.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -9105,7 +10747,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Parses dates from fields, and then uses the date or timestamp as the timestamp for the document. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/date-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a date processor. This processor parses dates from fields, and then uses the date or timestamp as the timestamp for the document. See the [date processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/date-processor.html) for more details.
+
+					By default, the date processor adds the parsed date as a new field called `@timestamp`. You can specify a different field by setting the `target_field` configuration parameter. Multiple date formats are supported as part of the same date processor definition. They will be used sequentially to attempt parsing the date field, in the same order they were defined as part of the processor definition.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -9198,7 +10845,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "The purpose of this processor is to point documents to the right time based index based on a date or timestamp field in a document by using the date math index name support. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/date-index-name-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a date index name processor. The purpose of this processor is to point documents to the right time based index based on a date or timestamp field in a document by using the date math index name support. See the [date index name processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/date-index-name-processor.html) for more details.
+
+					The processor sets the _index metadata field with a date math index name expression based on the provided index name prefix, a date or timestamp field in the documents being processed and the provided date rounding.
+
+					First, this processor fetches the date or timestamp from a field in the document being processed. Optionally, date formatting can be configured on how the field’s value should be parsed into a date. Then this date, the provided index name prefix and the provided date rounding get formatted into a date math index name expression. Also here optionally date formatting can be specified on how the date should be formatted into a date math index name expression.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -9273,7 +10927,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Extracts structured fields out of a single text field within a document. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/dissect-processor.html#dissect-processor"
+				description: """
+					Helper data source which can be used to create the configuration for a dissect processor. This processor extracts structured fields out of a single text field within a document. See the [dissect processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/dissect-processor.html#dissect-processor) for more details.
+
+					Similar to the Grok Processor, dissect also extracts structured fields out of a single text field within a document. However unlike the Grok Processor, dissect does not use Regular Expressions. This allows dissect’s syntax to be simple and for some cases faster than the Grok Processor.
+
+					Dissect matches a single text field against a defined pattern.
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -9342,7 +11002,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Expands a field with dots into an object field. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/dot-expand-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a dot expander processor. This processor expands a field with dots into an object field. See the [dot expand processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/dot-expand-processor.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -9393,7 +11053,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Drops the document without raising any errors. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/drop-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a drop processor. This processor drops the document without raising any errors. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/drop-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -9486,7 +11146,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
-				description:      "The enrich processor can enrich documents with data from another index. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html"
+				description:      "Helper data source which can be used to create the configuration for an enrich processor. The enrich processor can enrich documents with data from another index. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -9543,7 +11203,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Raises an exception. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/fail-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a fail processor. This processor raises an exception. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/fail-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -9624,7 +11284,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Computes a hash of the document’s content. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/fingerprint-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a fingerprint processor. This processor computes a hash of the document’s content. See the [fingerprint processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/fingerprint-processor.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -9693,7 +11353,21 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Runs an ingest processor on each element of an array or object. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/foreach-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a foreach processor. This processor runs an ingest processor on each element of an array or object. See the [foreach processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/foreach-processor.html) for more details.
+
+					All ingest processors can run on array or object elements. However, if the number of elements is unknown, it can be cumbersome to process each one in the same way.
+
+					The `foreach` processor lets you specify a `field` containing array or object values and a `processor` to run on each element in the field.
+
+					### Access keys and values
+
+					When iterating through an array or object, the foreach processor stores the current element’s value in the `_ingest._value` ingest metadata field. `_ingest._value` contains the entire element value, including any child fields. You can access child field values using dot notation on the `_ingest._value` field.
+
+					When iterating through an object, the foreach processor also stores the current element’s key as a string in `_ingest._key`.
+
+					You can access and change `_ingest._key` and `_ingest._value` in the processor.
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -9750,7 +11424,16 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "The geoip processor adds information about the geographical location of an IPv4 or IPv6 address. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/geoip-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a geoip processor. The geoip processor adds information about the geographical location of an IPv4 or IPv6 address. See the [geoip processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/geoip-processor.html) for more details.
+
+					By default, the processor uses the GeoLite2 City, GeoLite2 Country, and GeoLite2 ASN GeoIP2 databases from MaxMind, shared under the CC BY-SA 4.0 license. Elasticsearch automatically downloads updates for these databases from the Elastic GeoIP endpoint: https://geoip.elastic.co/v1/database. To get download statistics for these updates, use the GeoIP stats API.
+
+					If your cluster can’t connect to the Elastic GeoIP endpoint or you want to manage your own updates, [see Manage your own GeoIP2 database updates](https://www.elastic.co/guide/en/elasticsearch/reference/current/geoip-processor.html#manage-geoip-database-updates).
+
+					If Elasticsearch can’t connect to the endpoint for 30 days all updated databases will become invalid. Elasticsearch will stop enriching documents with geoip data and will add `tags: ["_geoip_expired_database"]` field instead.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -9837,7 +11520,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Extracts structured fields out of a single text field within a document. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/grok-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a grok processor. This processor extracts structured fields out of a single text field within a document. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/grok-processor.html
+
+					This processor comes packaged with many [reusable patterns](https://github.com/elastic/elasticsearch/blob/master/libs/grok/src/main/resources/patterns).
+
+					If you need help building patterns to match your logs, you will find the [Grok Debugger](https://www.elastic.co/guide/en/kibana/master/xpack-grokdebugger.html) tool quite useful! [The Grok Constructor](https://grokconstructor.appspot.com/) is also a useful tool.
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -9918,7 +11607,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Converts a string field by applying a regular expression and a replacement. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/gsub-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a gsub processor. This processor converts a string field by applying a regular expression and a replacement. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/gsub-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -9987,7 +11676,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Removes HTML tags from the field. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/htmlstrip-processor.html"
+				description:      "Helper data source which can be used to create the configuration for an HTML strip processor. This processor removes HTML tags from the field. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/htmlstrip-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -10056,7 +11745,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Joins each element of an array into a single string using a separator character between each element. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/join-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a join processor. This processor joins each element of an array into a single string using a separator character between each element. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/join-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -10137,7 +11826,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Converts a JSON string into a structured JSON object. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/json-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a JSON processor. This processor converts a JSON string into a structured JSON object. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/json-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -10254,7 +11943,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
-				description:      "This processor helps automatically parse messages (or specific event fields) which are of the foo=bar variety. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/kv-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a KV processor. This processor helps automatically parse messages (or specific event fields) which are of the foo=bar variety. See the [KV processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/kv-processor.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -10323,7 +12012,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Converts a string to its lowercase equivalent. If the field is an array of strings, all members of the array will be converted. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/lowercase-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a lowercase processor. This processor converts a string to its lowercase equivalent. If the field is an array of strings, all members of the array will be converted. See the [lowercase processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/lowercase-processor.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -10410,7 +12099,27 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Calculates the network direction given a source IP address, destination IP address, and a list of internal networks. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/network-direction-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a network direction processor. This processor calculates the network direction given a source IP address, destination IP address, and a list of internal networks. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/network-direction-processor.html
+
+					The network direction processor reads IP addresses from Elastic Common Schema (ECS) fields by default. If you use the ECS, only the `internal_networks` option must be specified.
+
+					One of either `internal_networks` or `internal_networks_field` must be specified. If `internal_networks_field` is specified, it follows the behavior specified by `ignore_missing`.
+
+					### Supported named network ranges
+
+					The named ranges supported for the internal_networks option are:
+
+					* `loopback` - Matches loopback addresses in the range of 127.0.0.0/8 or ::1/128.
+					* `unicast` or `global_unicast` - Matches global unicast addresses defined in RFC 1122, RFC 4632, and RFC 4291 with the exception of the IPv4 broadcast address (255.255.255.255). This includes private address ranges.
+					* `multicast` - Matches multicast addresses.
+					* `interface_local_multicast` - Matches IPv6 interface-local multicast addresses.
+					* `link_local_unicast` - Matches link-local unicast addresses.
+					* `link_local_multicast` - Matches link-local multicast addresses.
+					* `private` - Matches private address ranges defined in RFC 1918 (IPv4) and RFC 4193 (IPv6).
+					* `public` - Matches addresses that are not loopback, unspecified, IPv4 broadcast, link local unicast, link local multicast, interface local multicast, or private.
+					* `unspecified` - Matches unspecified addresses (either the IPv4 address "0.0.0.0" or the IPv6 address "::").
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -10467,7 +12176,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Executes another pipeline. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/pipeline-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a pipeline processor. This processor executes another pipeline. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/pipeline-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -10536,7 +12245,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Extracts the registered domain (also known as the effective top-level domain or eTLD), sub-domain, and top-level domain from a fully qualified domain name (FQDN). See: https://www.elastic.co/guide/en/elasticsearch/reference/current/registered-domain-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a registered domain processor. This processor extracts the registered domain (also known as the effective top-level domain or eTLD), sub-domain, and top-level domain from a fully qualified domain name (FQDN). See: https://www.elastic.co/guide/en/elasticsearch/reference/current/registered-domain-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -10599,7 +12308,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Removes existing fields. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/remove-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a remove processor. This processor removes existing fields. See the [remove processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/remove-processor.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -10668,7 +12377,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
-				description:      "Renames an existing field. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/rename-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a rename processor. This processor renames an existing field. See the [rename processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/rename-processor.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -10737,7 +12446,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Reroutes a document to a different data stream, index, or index alias. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/reroute-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a reroute processor. This processor reroutes a document to a different data stream, index, or index alias. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/reroute-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -10812,7 +12521,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Runs an inline or stored script on incoming documents. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/script-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a script processor. This processor runs an inline or stored script on incoming documents. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/script-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -10899,7 +12608,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Sets one field and associates it with the specified value. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/set-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a set processor. This processor sets one field and associates it with the specified value. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/set-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -10962,7 +12671,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Sets user-related details (such as username, roles, email, full_name, metadata, api_key, realm and authentication_type) from the current authenticated user to the current document by pre-processing the ingest. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-node-set-security-user-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a set security user processor. This processor sets user-related details (such as username, roles, email, full_name, metadata, api_key, realm and authentication_type) from the current authenticated user to the current document by pre-processing the ingest. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-node-set-security-user-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -11031,7 +12740,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Sorts the elements of an array ascending or descending. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a sort processor. This processor sorts the elements of an array ascending or descending. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -11112,7 +12821,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Splits a field into an array using a separator character. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/split-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a split processor. This processor splits a field into an array using a separator character. See the [split processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/split-processor.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -11181,7 +12890,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Trims whitespace from field. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/trim-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a trim processor. This processor trims whitespace from field. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/trim-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -11250,7 +12959,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Converts a string to its uppercase equivalent. If the field is an array of strings, all members of the array will be converted. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/uppercase-processor.html"
+				description:      "Helper data source which can be used to create the configuration for an uppercase processor. This processor converts a string to its uppercase equivalent. If the field is an array of strings, all members of the array will be converted. See the [uppercase processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/uppercase-processor.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -11325,7 +13034,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Parses a Uniform Resource Identifier (URI) string and extracts its components as an object. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/uri-parts-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a URI parts processor. This processor parses a Uniform Resource Identifier (URI) string and extracts its components as an object. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/uri-parts-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -11394,7 +13103,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "URL-decodes a string. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/urldecode-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a URL-decode processor. This processor URL-decodes a string. See the [URL decode processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/urldecode-processor.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -11451,7 +13160,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Extracts details from the user agent string a browser sends with its web requests. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/user-agent-processor.html"
+				description:      "Helper data source which can be used to create the configuration for a user agent processor. This processor extracts details from the user agent string a browser sends with its web requests. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/user-agent-processor.html"
 				description_kind: "markdown"
 			}
 		}
@@ -11791,11 +13500,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+						description:      "Elasticsearch connection configuration block. "
 						description_kind: "markdown"
 						deprecated:       true
 					}
-					max_items: 1
 				}
 				description:      "Retrieves role mappings. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role-mapping.html"
 				description_kind: "markdown"
@@ -11950,7 +13658,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					max_items: 1
 				}
-				description:      "Get the information about the user in the ES cluster. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-user.html"
+				description:      "Get the information about the user in the ES cluster. See the [security API get user documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-user.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -12249,7 +13957,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
-				description:      "Retrieves Elasticsearch API keys used to enroll Elastic Agents in Fleet. See: https://www.elastic.co/guide/en/fleet/current/fleet-enrollment-tokens.html"
+				description:      "Retrieves Elasticsearch API keys used to enroll Elastic Agents in Fleet. See the [Fleet enrollment tokens documentation](https://www.elastic.co/guide/en/fleet/current/fleet-enrollment-tokens.html) for more details."
 				description_kind: "plain"
 			}
 		}
@@ -12282,12 +13990,23 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
-				description:      "Retrieves the latest version of an integration package in Fleet."
+				description: """
+					This data source provides information about a Fleet integration package. Currently,
+					the data source will retrieve the latest available version of the package. Version
+					selection is determined by the Fleet API, which is currently based on semantic
+					versioning.
+
+					By default, the highest GA release version will be selected. If a
+					package is not GA (the version is below 1.0.0) or if a new non-GA version of the
+					package is to be selected (i.e., the GA version of the package is 1.5.0, but there's
+					a new 1.5.1-beta version available), then the `prerelease` parameter in the plan
+					should be set to `true`.
+					"""
 				description_kind: "plain"
 			}
 		}
 		elasticstack_kibana_action_connector: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					config: {
@@ -12347,6 +14066,67 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				}
 				description:      "Search for a connector by name, space id, and type. Note, that this data source will fail if more than one connector shares the same name."
 				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_export_saved_objects: {
+			version: 0
+			block: {
+				attributes: {
+					exclude_export_details: {
+						type:             "bool"
+						description:      "Do not add export details. Defaults to true."
+						description_kind: "plain"
+						optional:         true
+					}
+					exported_objects: {
+						type:             "string"
+						description:      "The exported objects in NDJSON format."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Generated ID for the export."
+						description_kind: "plain"
+						computed:         true
+					}
+					include_references_deep: {
+						type:             "bool"
+						description:      "Include references to other saved objects recursively. Defaults to true."
+						description_kind: "plain"
+						optional:         true
+					}
+					objects: {
+						nested_type: {
+							attributes: {
+								id: {
+									type:             "string"
+									description:      "The ID of the saved object."
+									description_kind: "plain"
+									required:         true
+								}
+								type: {
+									type:             "string"
+									description:      "The type of the saved object."
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "List of objects to export."
+						description_kind: "plain"
+						required:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description:      "Export Kibana saved objects. This data source allows you to export saved objects from Kibana and store the result in the Terraform state."
+				description_kind: "plain"
 			}
 		}
 		elasticstack_kibana_security_role: {
@@ -12420,7 +14200,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
-				description:      "Retrieve a specific role. See, https://www.elastic.co/guide/en/kibana/current/role-management-specific-api-get.html"
+				description:      "Retrieve a specific role. See the [role management API documentation](https://www.elastic.co/guide/en/kibana/current/role-management-specific-api-get.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -12453,7 +14233,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									type: ["list", "string"]
 									description:      "The list of disabled features for the space. To get a list of available feature IDs, use the Features API (https://www.elastic.co/guide/en/kibana/master/features-api-get.html)."
 									description_kind: "plain"
-									optional:         true
+									computed:         true
 								}
 								id: {
 									type:             "string"
@@ -12479,6 +14259,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description_kind: "plain"
 									required:         true
 								}
+								solution: {
+									type:             "string"
+									description:      "The solution view for the space. Valid options are `security`, `oblt`, `es`, or `classic`."
+									description_kind: "plain"
+									computed:         true
+								}
 							}
 							nesting_mode: "list"
 						}
@@ -12487,7 +14273,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
-				description:      "Manages Kibana spaces"
+				description:      "Use this data source to retrieve and get information about all existing Kibana spaces. See https://www.elastic.co/guide/en/kibana/master/spaces-api-get-all.html"
 				description_kind: "plain"
 			}
 		}
