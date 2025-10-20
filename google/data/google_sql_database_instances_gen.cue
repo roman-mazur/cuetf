@@ -14,9 +14,10 @@ package data
 			clone?: [...close({
 				allocated_ip_range?: string
 				database_names?: [...string]
-				point_in_time?:        string
-				preferred_zone?:       string
-				source_instance_name?: string
+				point_in_time?:                 string
+				preferred_zone?:                string
+				source_instance_deletion_time?: string
+				source_instance_name?:          string
 			})]
 			connection_name?:     string
 			database_version?:    string
@@ -36,10 +37,17 @@ package data
 				time_to_retire?: string
 				type?:           string
 			})]
-			maintenance_version?:         string
-			master_instance_name?:        string
-			name?:                        string
-			node_count?:                  number
+			maintenance_version?:  string
+			master_instance_name?: string
+			name?:                 string
+			node_count?:           number
+			point_in_time_restore_context?: [...close({
+				allocated_ip_range?: string
+				datasource?:         string
+				point_in_time?:      string
+				preferred_zone?:     string
+				target_instance?:    string
+			})]
 			private_ip_address?:          string
 			project?:                     string
 			psc_service_attachment_link?: string

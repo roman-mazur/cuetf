@@ -6,12 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_vmwareengine_cluster")
 	close({
-		id?: string
+		// Creation time of this resource.
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+		// resolution and
+		// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
+		// and "2014-10-02T15:01:23.045123456Z".
+		create_time?: string
 
 		// True if the cluster is a management cluster; false otherwise.
 		// There can only be one management cluster in a private cloud and
 		// it has to be the first one.
 		management?: bool
+		id?:         string
 
 		// The ID of the Cluster.
 		name!: string
@@ -23,15 +29,22 @@ import "list"
 		// For example:
 		// projects/my-project/locations/us-west1-a/privateClouds/my-cloud
 		parent!: string
-		autoscaling_settings?: matchN(1, [#autoscaling_settings, list.MaxItems(1) & [...#autoscaling_settings]])
-		node_type_configs?: matchN(1, [#node_type_configs, [...#node_type_configs]])
-		timeouts?: #timeouts
 
 		// State of the Cluster.
 		state?: string
 
 		// System-generated unique identifier for the resource.
 		uid?: string
+		autoscaling_settings?: matchN(1, [#autoscaling_settings, list.MaxItems(1) & [...#autoscaling_settings]])
+		node_type_configs?: matchN(1, [#node_type_configs, [...#node_type_configs]])
+		timeouts?: #timeouts
+
+		// Last updated time of this resource.
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+		// resolution and up to nine
+		// fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
+		update_time?: string
 	})
 
 	#autoscaling_settings: close({

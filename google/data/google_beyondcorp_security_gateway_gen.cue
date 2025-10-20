@@ -41,11 +41,40 @@ package data
 		name?:    string
 		project?: string
 
+		// Shared proxy configuration for all apps.
+		proxy_protocol_config?: [...close({
+			allowed_client_headers?: [...string]
+			client_ip?: bool
+			contextual_headers?: [...close({
+				device_info?: [...close({
+					output_type?: string
+				})]
+				group_info?: [...close({
+					output_type?: string
+				})]
+				output_type?: string
+				user_info?: [...close({
+					output_type?: string
+				})]
+			})]
+			gateway_identity?: string
+			metadata_headers?: [string]: string
+		})]
+
 		// Optional. User-settable SecurityGateway resource ID.
 		// * Must start with a letter.
 		// * Must contain between 4-63 characters from '/a-z-/'.
 		// * Must end with a number or letter.
 		security_gateway_id!: string
+
+		// Settings related to the Service Discovery.
+		service_discovery?: [...close({
+			api_gateway?: [...close({
+				resource_override?: [...close({
+					path?: string
+				})]
+			})]
+		})]
 
 		// Output only. The operational state of the SecurityGateway.
 		// Possible values:

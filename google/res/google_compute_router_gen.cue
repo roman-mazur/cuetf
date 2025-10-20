@@ -29,17 +29,18 @@ import "list"
 		// digit,
 		// except the last character, which cannot be a dash.
 		name!: string
-		bgp?: matchN(1, [#bgp, list.MaxItems(1) & [...#bgp]])
 
 		// A reference to the network to which this router belongs.
 		network!: string
+		bgp?: matchN(1, [#bgp, list.MaxItems(1) & [...#bgp]])
 		project?: string
 		md5_authentication_keys?: matchN(1, [#md5_authentication_keys, list.MaxItems(1) & [...#md5_authentication_keys]])
-		timeouts?: #timeouts
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 
 		// Region where the router resides.
 		region?:    string
 		self_link?: string
+		timeouts?:  #timeouts
 	})
 
 	#bgp: close({
@@ -105,6 +106,15 @@ import "list"
 		// Must be referenced by exactly one bgpPeer. Must comply with
 		// RFC1035.
 		name!: string
+	})
+
+	#params: close({
+		// Resource manager tags to be bound to the router. Tag keys and
+		// values have the
+		// same definition as resource manager tags. Keys must be in the
+		// format tagKeys/{tag_key_id},
+		// and values are in the format tagValues/456.
+		resource_manager_tags?: [string]: string
 	})
 
 	#timeouts: close({

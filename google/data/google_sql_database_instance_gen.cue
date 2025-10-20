@@ -15,9 +15,10 @@ package data
 		clone?: [...close({
 			allocated_ip_range?: string
 			database_names?: [...string]
-			point_in_time?:        string
-			preferred_zone?:       string
-			source_instance_name?: string
+			point_in_time?:                 string
+			preferred_zone?:                string
+			source_instance_deletion_time?: string
+			source_instance_name?:          string
 		})]
 
 		// The connection name of the instance to be used in connection
@@ -67,6 +68,11 @@ package data
 		// https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType
 		// for supported values.
 		instance_type?: string
+		ip_address?: [...close({
+			ip_address?:     string
+			time_to_retire?: string
+			type?:           string
+		})]
 
 		// Maintenance version.
 		maintenance_version?: string
@@ -75,11 +81,6 @@ package data
 		// replication setup. Note, this requires the master to have
 		// binary_log_enabled set, as well as existing backups.
 		master_instance_name?: string
-		ip_address?: [...close({
-			ip_address?:     string
-			time_to_retire?: string
-			type?:           string
-		})]
 
 		// The name of the instance. If the name is left blank, Terraform
 		// will randomly generate one when the instance is first created.
@@ -89,6 +90,16 @@ package data
 
 		// For a read pool instance, the number of nodes in the read pool.
 		node_count?: number
+
+		// Configuration for creating a new instance using
+		// point-in-time-restore from backupdr backup.
+		point_in_time_restore_context?: [...close({
+			allocated_ip_range?: string
+			datasource?:         string
+			point_in_time?:      string
+			preferred_zone?:     string
+			target_instance?:    string
+		})]
 
 		// IPv4 address assigned. This is a workaround for an issue fixed
 		// in Terraform 0.12 but also provides a convenient way to access

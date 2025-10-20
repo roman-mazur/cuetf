@@ -49,13 +49,14 @@ import "list"
 		// Where '{project}' is a project number, as in '12345', and
 		// '{network}' is network name.
 		network?: string
-		project?: string
-		private_service_connect_config?: matchN(1, [#private_service_connect_config, list.MaxItems(1) & [...#private_service_connect_config]])
-		timeouts?: #timeouts
 
 		// If publicEndpointEnabled is true, this field will be populated
 		// with the domain name to use for this index endpoint.
 		public_endpoint_domain_name?: string
+		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
+		private_service_connect_config?: matchN(1, [#private_service_connect_config, list.MaxItems(1) & [...#private_service_connect_config]])
+		timeouts?: #timeouts
+		project?:  string
 
 		// If true, the deployed index will be accessible through public
 		// endpoint.
@@ -72,6 +73,16 @@ import "list"
 		// "Zulu" format, with nanosecond resolution and up to nine
 		// fractional digits.
 		update_time?: string
+	})
+
+	#encryption_spec: close({
+		// Required. The Cloud KMS resource identifier of the customer
+		// managed encryption key used to protect a resource. Has the
+		// form:
+		// 'projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key'.
+		// The key needs to be in the same region as where the compute
+		// resource is created.
+		kms_key_name!: string
 	})
 
 	#private_service_connect_config: close({

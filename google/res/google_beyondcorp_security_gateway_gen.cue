@@ -25,15 +25,17 @@ import "list"
 
 		// Identifier. Name of the resource.
 		name?: string
+		hubs?: matchN(1, [#hubs, [...#hubs]])
+		project?: string
+		proxy_protocol_config?: matchN(1, [#proxy_protocol_config, list.MaxItems(1) & [...#proxy_protocol_config]])
+		service_discovery?: matchN(1, [#service_discovery, list.MaxItems(1) & [...#service_discovery]])
+		timeouts?: #timeouts
 
 		// Optional. User-settable SecurityGateway resource ID.
 		// * Must start with a letter.
 		// * Must contain between 4-63 characters from '/a-z-/'.
 		// * Must end with a number or letter.
 		security_gateway_id!: string
-		project?:             string
-		hubs?: matchN(1, [#hubs, [...#hubs]])
-		timeouts?: #timeouts
 
 		// Output only. The operational state of the SecurityGateway.
 		// Possible values:
@@ -55,6 +57,33 @@ import "list"
 		region!: string
 	})
 
+	#proxy_protocol_config: close({
+		// The configuration for the proxy.
+		allowed_client_headers?: [...string]
+
+		// Client IP configuration. The client IP address is included if
+		// true.
+		client_ip?: bool
+
+		// Gateway identity configuration. Possible values:
+		// ["RESOURCE_NAME"]
+		gateway_identity?: string
+		contextual_headers?: matchN(1, [_#defs."/$defs/proxy_protocol_config/$defs/contextual_headers", list.MaxItems(1) & [..._#defs."/$defs/proxy_protocol_config/$defs/contextual_headers"]])
+
+		// Custom resource specific headers along with the values.
+		// The names should conform to RFC 9110:
+		// > Field names SHOULD constrain themselves to alphanumeric
+		// characters, "-",
+		// and ".", and SHOULD begin with a letter.
+		// > Field values SHOULD contain only ASCII printable characters
+		// and tab.
+		metadata_headers?: [string]: string
+	})
+
+	#service_discovery: close({
+		api_gateway?: matchN(1, [_#defs."/$defs/service_discovery/$defs/api_gateway", list.MaxItems(1) & [..._#defs."/$defs/service_discovery/$defs/api_gateway"]])
+	})
+
 	#timeouts: close({
 		create?: string
 		delete?: string
@@ -64,5 +93,42 @@ import "list"
 	_#defs: "/$defs/hubs/$defs/internet_gateway": close({
 		// Output only. List of IP addresses assigned to the Cloud NAT.
 		assigned_ips?: [...string]
+	})
+
+	_#defs: "/$defs/proxy_protocol_config/$defs/contextual_headers": close({
+		device_info?: matchN(1, [_#defs."/$defs/proxy_protocol_config/$defs/contextual_headers/$defs/device_info", list.MaxItems(1) & [..._#defs."/$defs/proxy_protocol_config/$defs/contextual_headers/$defs/device_info"]])
+		group_info?: matchN(1, [_#defs."/$defs/proxy_protocol_config/$defs/contextual_headers/$defs/group_info", list.MaxItems(1) & [..._#defs."/$defs/proxy_protocol_config/$defs/contextual_headers/$defs/group_info"]])
+		user_info?: matchN(1, [_#defs."/$defs/proxy_protocol_config/$defs/contextual_headers/$defs/user_info", list.MaxItems(1) & [..._#defs."/$defs/proxy_protocol_config/$defs/contextual_headers/$defs/user_info"]])
+
+		// Default output type for all enabled headers. Possible values:
+		// ["PROTOBUF", "JSON", "NONE"]
+		output_type?: string
+	})
+
+	_#defs: "/$defs/proxy_protocol_config/$defs/contextual_headers/$defs/device_info": close({
+		// The output type of the delegated device info. Possible values:
+		// ["PROTOBUF", "JSON", "NONE"]
+		output_type?: string
+	})
+
+	_#defs: "/$defs/proxy_protocol_config/$defs/contextual_headers/$defs/group_info": close({
+		// The output type of the delegated group info. Possible values:
+		// ["PROTOBUF", "JSON", "NONE"]
+		output_type?: string
+	})
+
+	_#defs: "/$defs/proxy_protocol_config/$defs/contextual_headers/$defs/user_info": close({
+		// The output type of the delegated user info. Possible values:
+		// ["PROTOBUF", "JSON", "NONE"]
+		output_type?: string
+	})
+
+	_#defs: "/$defs/service_discovery/$defs/api_gateway": close({
+		resource_override?: matchN(1, [_#defs."/$defs/service_discovery/$defs/api_gateway/$defs/resource_override", list.MaxItems(1) & [..._#defs."/$defs/service_discovery/$defs/api_gateway/$defs/resource_override"]])
+	})
+
+	_#defs: "/$defs/service_discovery/$defs/api_gateway/$defs/resource_override": close({
+		// Contains uri path fragment where HTTP request is sent.
+		path?: string
 	})
 }

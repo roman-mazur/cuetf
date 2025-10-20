@@ -246,9 +246,51 @@ package data
 					})]
 				})]
 				image?: string
-				name?:  string
+				liveness_probe?: [...close({
+					failure_threshold?: number
+					grpc?: [...close({
+						port?:    number
+						service?: string
+					})]
+					http_get?: [...close({
+						http_headers?: [...close({
+							port?:  number
+							value?: string
+						})]
+						path?: string
+						port?: number
+					})]
+					initial_delay_seconds?: number
+					period_seconds?:        number
+					tcp_socket?: [...close({
+						port?: number
+					})]
+					timeout_seconds?: number
+				})]
+				name?: string
 				resources?: [...close({
 					limits?: [string]: string
+				})]
+				startup_probe?: [...close({
+					failure_threshold?: number
+					grpc?: [...close({
+						port?:    number
+						service?: string
+					})]
+					http_get?: [...close({
+						http_headers?: [...close({
+							port?:  number
+							value?: string
+						})]
+						path?: string
+						port?: number
+					})]
+					initial_delay_seconds?: number
+					period_seconds?:        number
+					tcp_socket?: [...close({
+						port?: number
+					})]
+					timeout_seconds?: number
 				})]
 				volume_mounts?: [...close({
 					mount_path?: string

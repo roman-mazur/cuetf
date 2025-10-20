@@ -28,6 +28,13 @@ package data
 			min_cluster_node_count?: number
 		})]
 
+		// Creation time of this resource.
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+		// resolution and
+		// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
+		// and "2014-10-02T15:01:23.045123456Z".
+		create_time?: string
+
 		// True if the cluster is a management cluster; false otherwise.
 		// There can only be one management cluster in a private cloud and
 		// it has to be the first one.
@@ -59,5 +66,12 @@ package data
 
 		// System-generated unique identifier for the resource.
 		uid?: string
+
+		// Last updated time of this resource.
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+		// resolution and up to nine
+		// fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
+		update_time?: string
 	})
 }

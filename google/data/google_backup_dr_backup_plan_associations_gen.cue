@@ -8,8 +8,18 @@ package data
 		associations?: [...close({
 			backup_plan?: string
 			create_time?: string
+			data_source?: string
 			name?:        string
 			resource?:    string
+			rules_config_info?: [...close({
+				last_backup_error?: [...close({
+					code?:    number
+					message?: string
+				})]
+				last_backup_state?:                       string
+				last_successful_backup_consistency_time?: string
+				rule_id?:                                 string
+			})]
 		})]
 		id?: string
 

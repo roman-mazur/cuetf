@@ -66,7 +66,12 @@ import "list"
 
 		// Hybrid replication type.
 		hybrid_replication_type?: string
-		id?:                      string
+
+		// Copy pastable snapmirror commands to be executed on onprem
+		// cluster by the customer.
+		hybrid_replication_user_commands?: [...close({
+			commands?: [...string]
+		})]
 
 		// Labels as key value pairs. Example: '{ "owner": "Bob",
 		// "department": "finance", "purpose": "testing" }'
@@ -77,6 +82,7 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
+		id?: string
 
 		// Name of region for this resource. The resource needs to be
 		// created in the region of the destination volume.
@@ -92,10 +98,7 @@ import "list"
 		mirror_state?: string
 
 		// The name of the replication. Needs to be unique per location.
-		name!:    string
-		project?: string
-		destination_volume_parameters?: matchN(1, [#destination_volume_parameters, list.MaxItems(1) & [...#destination_volume_parameters]])
-		timeouts?: #timeouts
+		name!: string
 
 		// Set to false to stop/break the mirror. Stopping the mirror
 		// makes the destination volume read-write
@@ -105,10 +108,13 @@ import "list"
 		// done to the destination volume with the content of the source
 		// volume.
 		replication_enabled?: bool
+		destination_volume_parameters?: matchN(1, [#destination_volume_parameters, list.MaxItems(1) & [...#destination_volume_parameters]])
+		timeouts?: #timeouts
 
 		// Specifies the replication interval. Possible values:
 		// ["EVERY_10_MINUTES", "HOURLY", "DAILY"]
 		replication_schedule!: string
+		project?:              string
 
 		// Reverting a replication can swap source and destination volume
 		// roles. This field indicates if the 'location' hosts

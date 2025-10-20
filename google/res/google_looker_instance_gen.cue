@@ -34,7 +34,10 @@ import "list"
 		// FIPS 140-2 Encryption enablement for Looker (Google Cloud
 		// Core).
 		fips_enabled?: bool
-		id?:           string
+
+		// Gemini enablement for Looker (Google Cloud Core).
+		gemini_enabled?: bool
+		id?:             string
 
 		// Private Ingress IP (IPv4).
 		ingress_private_ip?: string
@@ -53,6 +56,7 @@ import "list"
 		// instance.
 		name!: string
 		custom_domain?: matchN(1, [#custom_domain, list.MaxItems(1) & [...#custom_domain]])
+		deny_maintenance_period?: matchN(1, [#deny_maintenance_period, list.MaxItems(1) & [...#deny_maintenance_period]])
 
 		// Platform editions for a Looker instance. Each edition maps to a
 		// set of instance features, like its size. Must be one of these
@@ -85,7 +89,6 @@ import "list"
 		// "LOOKER_CORE_TRIAL_STANDARD", "LOOKER_CORE_TRIAL_ENTERPRISE",
 		// "LOOKER_CORE_TRIAL_EMBED"]
 		platform_edition?: string
-		deny_maintenance_period?: matchN(1, [#deny_maintenance_period, list.MaxItems(1) & [...#deny_maintenance_period]])
 		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
 		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
 		oauth_config?: matchN(1, [#oauth_config, list.MaxItems(1) & [_, ...] & [...#oauth_config]])
@@ -95,11 +98,11 @@ import "list"
 
 		// Whether private IP is enabled on the Looker instance.
 		private_ip_enabled?: bool
+		project?:            string
 
 		// Whether Public Service Connect (PSC) is enabled on the Looker
 		// instance
 		psc_enabled?: bool
-		project?:     string
 
 		// Whether public IP is enabled on the Looker instance.
 		public_ip_enabled?: bool

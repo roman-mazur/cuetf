@@ -135,6 +135,7 @@ import "list"
 		// The name of the GCE VPC network to which the
 		// instance is connected.
 		network!: string
+		psc_config?: matchN(1, [_#defs."/$defs/networks/$defs/psc_config", list.MaxItems(1) & [..._#defs."/$defs/networks/$defs/psc_config"]])
 
 		// A /29 CIDR block that identifies the range of IP
 		// addresses reserved for this instance.
@@ -182,6 +183,11 @@ import "list"
 		// among all NfsExportOptions.
 		ip_ranges?: [...string]
 
+		// The source VPC network for 'ip_ranges'.
+		// Required for instances using Private Service Connect, optional
+		// otherwise.
+		network?: string
+
 		// Either NO_ROOT_SQUASH, for allowing root access on the exported
 		// directory, or ROOT_SQUASH,
 		// for not allowing root access. The default is NO_ROOT_SQUASH.
@@ -193,6 +199,17 @@ import "list"
 	_#defs: "/$defs/initial_replication/$defs/replicas": close({
 		// The peer instance.
 		peer_instance!: string
+	})
+
+	_#defs: "/$defs/networks/$defs/psc_config": close({
+		// Consumer service project in which the Private Service Connect
+		// endpoint
+		// would be set up. This is optional, and only relevant in case
+		// the network
+		// is a shared VPC. If this is not specified, the endpoint would
+		// be set up
+		// in the VPC host project.
+		endpoint_project?: string
 	})
 
 	_#defs: "/$defs/performance_config/$defs/fixed_iops": close({

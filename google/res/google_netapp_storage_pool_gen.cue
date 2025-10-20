@@ -22,6 +22,10 @@ package res
 		// Capacity of the storage pool (in GiB).
 		capacity_gib!: string
 
+		// Total cold tier data rounded down to the nearest GiB used by
+		// the storage pool.
+		cold_tier_size_used_gib?: string
+
 		// Optional. True if using Independent Scaling of capacity and
 		// performance (Hyperdisk). Default is false.
 		custom_performance_enabled?: bool
@@ -34,9 +38,28 @@ package res
 		// clients and services.
 		effective_labels?: [string]: string
 
+		// Flag indicating that the hot-tier threshold will be
+		// auto-increased by 10% of the hot-tier when it hits 100%.
+		// Default is true.
+		// The increment will kick in only if the new size after increment
+		// is still less than or equal to storage pool size.
+		enable_hot_tier_auto_resize?: bool
+
 		// Reports if volumes in the pool are encrypted using a
 		// Google-managed encryption key or CMEK.
 		encryption_type?: string
+
+		// Total hot tier capacity for the Storage Pool. It is applicable
+		// only to Flex service level.
+		// It should be less than the minimum storage pool size and cannot
+		// be more than the current storage pool size. It cannot be
+		// decreased once set.
+		hot_tier_size_gib?: string
+
+		// Total hot tier data rounded down to the nearest GiB used by the
+		// storage pool.
+		hot_tier_size_used_gib?: string
+		id?:                     string
 
 		// Specifies the CMEK policy to be used for volume encryption.
 		// Format:
@@ -44,7 +67,6 @@ package res
 		// The policy needs to be in the same location as the storage
 		// pool.
 		kms_config?: string
-		id?:         string
 
 		// Labels as key value pairs. Example: '{ "owner": "Bob",
 		// "department": "finance", "purpose": "testing" }'.
@@ -66,6 +88,7 @@ package res
 		// Name of the location. For zonal Flex pools specify a zone name,
 		// in all other cases a region name.
 		location!: string
+		timeouts?: #timeouts
 
 		// The resource name of the storage pool. Needs to be unique per
 		// location/region.
@@ -73,8 +96,7 @@ package res
 
 		// VPC network name with format:
 		// 'projects/{{project}}/global/networks/{{network}}'
-		network!:  string
-		timeouts?: #timeouts
+		network!: string
 
 		// QoS (Quality of Service) type of the storage pool.
 		// Possible values are: AUTO, MANUAL. Possible values:

@@ -28,10 +28,12 @@ _res: google_alloydb_cluster: res.#google_alloydb_cluster
 _res: google_alloydb_instance: res.#google_alloydb_instance
 _res: google_alloydb_user: res.#google_alloydb_user
 _res: google_apigee_addons_config: res.#google_apigee_addons_config
+_res: google_apigee_api_deployment: res.#google_apigee_api_deployment
 _res: google_apigee_api: res.#google_apigee_api
 _res: google_apigee_api_product: res.#google_apigee_api_product
 _res: google_apigee_app_group: res.#google_apigee_app_group
 _res: google_apigee_control_plane_access: res.#google_apigee_control_plane_access
+_res: google_apigee_developer_app: res.#google_apigee_developer_app
 _res: google_apigee_developer: res.#google_apigee_developer
 _res: google_apigee_dns_zone: res.#google_apigee_dns_zone
 _res: google_apigee_endpoint_attachment: res.#google_apigee_endpoint_attachment
@@ -543,7 +545,9 @@ _res: google_dialogflow_intent: res.#google_dialogflow_intent
 _res: google_discovery_engine_acl_config: res.#google_discovery_engine_acl_config
 _res: google_discovery_engine_chat_engine: res.#google_discovery_engine_chat_engine
 _res: google_discovery_engine_cmek_config: res.#google_discovery_engine_cmek_config
+_res: google_discovery_engine_data_connector: res.#google_discovery_engine_data_connector
 _res: google_discovery_engine_data_store: res.#google_discovery_engine_data_store
+_res: google_discovery_engine_license_config: res.#google_discovery_engine_license_config
 _res: google_discovery_engine_recommendation_engine: res.#google_discovery_engine_recommendation_engine
 _res: google_discovery_engine_schema: res.#google_discovery_engine_schema
 _res: google_discovery_engine_search_engine: res.#google_discovery_engine_search_engine
@@ -696,6 +700,7 @@ _res: google_iam_workforce_pool_iam_member: res.#google_iam_workforce_pool_iam_m
 _res: google_iam_workforce_pool_iam_policy: res.#google_iam_workforce_pool_iam_policy
 _res: google_iam_workforce_pool_provider: res.#google_iam_workforce_pool_provider
 _res: google_iam_workforce_pool_provider_key: res.#google_iam_workforce_pool_provider_key
+_res: google_iam_workforce_pool_provider_scim_tenant: res.#google_iam_workforce_pool_provider_scim_tenant
 _res: google_iam_workload_identity_pool: res.#google_iam_workload_identity_pool
 _res: google_iam_workload_identity_pool_provider: res.#google_iam_workload_identity_pool_provider
 _res: google_iap_app_engine_service_iam_binding: res.#google_iap_app_engine_service_iam_binding
@@ -796,6 +801,8 @@ _res: google_looker_instance: res.#google_looker_instance
 _res: google_lustre_instance: res.#google_lustre_instance
 _res: google_managed_kafka_acl: res.#google_managed_kafka_acl
 _res: google_managed_kafka_cluster: res.#google_managed_kafka_cluster
+_res: google_managed_kafka_connect_cluster: res.#google_managed_kafka_connect_cluster
+_res: google_managed_kafka_connector: res.#google_managed_kafka_connector
 _res: google_managed_kafka_topic: res.#google_managed_kafka_topic
 _res: google_memcache_instance: res.#google_memcache_instance
 _res: google_memorystore_instance_desired_user_created_endpoints: res.#google_memorystore_instance_desired_user_created_endpoints
@@ -1076,6 +1083,7 @@ _res: google_tags_tag_value_iam_member: res.#google_tags_tag_value_iam_member
 _res: google_tags_tag_value_iam_policy: res.#google_tags_tag_value_iam_policy
 _res: google_transcoder_job: res.#google_transcoder_job
 _res: google_transcoder_job_template: res.#google_transcoder_job_template
+_res: google_vertex_ai_cache_config: res.#google_vertex_ai_cache_config
 _res: google_vertex_ai_dataset: res.#google_vertex_ai_dataset
 _res: google_vertex_ai_deployment_resource_pool: res.#google_vertex_ai_deployment_resource_pool
 _res: google_vertex_ai_endpoint: res.#google_vertex_ai_endpoint
@@ -1091,6 +1099,7 @@ _res: google_vertex_ai_index_endpoint_deployed_index: res.#google_vertex_ai_inde
 _res: google_vertex_ai_index_endpoint: res.#google_vertex_ai_index_endpoint
 _res: google_vertex_ai_index: res.#google_vertex_ai_index
 _res: google_vertex_ai_rag_engine_config: res.#google_vertex_ai_rag_engine_config
+_res: google_vertex_ai_reasoning_engine: res.#google_vertex_ai_reasoning_engine
 _res: google_vertex_ai_tensorboard: res.#google_vertex_ai_tensorboard
 _res: google_vmwareengine_cluster: res.#google_vmwareengine_cluster
 _res: google_vmwareengine_external_access_rule: res.#google_vmwareengine_external_access_rule

@@ -6,6 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_vmwareengine_private_cloud")
 	close({
+		// Creation time of this resource.
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+		// resolution and up to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
+		create_time?: string
+
+		// Time when the resource was scheduled for deletion.
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+		// resolution and up to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
+		delete_time?: string
+
 		// The number of hours to delay this request. You can set this
 		// value to an hour between 0 to 8, where setting it to 0 starts
 		// the deletion request immediately. If no value is set, a
@@ -15,6 +29,13 @@ import "list"
 		// User-provided description for this private cloud.
 		description?: string
 
+		// Time when the resource will be irreversibly deleted.
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+		// resolution and up to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
+		expire_time?: string
+
 		// Details about a HCX Cloud Manager appliance.
 		hcx?: [...close({
 			fqdn?:        string
@@ -22,10 +43,10 @@ import "list"
 			state?:       string
 			version?:     string
 		})]
+		id?: string
 
 		// The location where the PrivateCloud should reside.
 		location!: string
-		id?:       string
 
 		// The ID of the PrivateCloud.
 		name!: string
@@ -37,6 +58,7 @@ import "list"
 			state?:       string
 			version?:     string
 		})]
+		project?: string
 
 		// While set true, deletion_delay_hours value will be sent in the
 		// request even for zero value of the field. This field is only
@@ -44,21 +66,27 @@ import "list"
 		// It can be used both alone and together with
 		// deletion_delay_hours.
 		send_deletion_delay_hours_if_zero?: bool
+		management_cluster?: matchN(1, [#management_cluster, list.MaxItems(1) & [_, ...] & [...#management_cluster]])
+		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [_, ...] & [...#network_config]])
+		timeouts?: #timeouts
 
 		// State of the resource. New values may be added to this enum
 		// when appropriate.
-		state?:   string
-		project?: string
-		management_cluster?: matchN(1, [#management_cluster, list.MaxItems(1) & [_, ...] & [...#management_cluster]])
-		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [_, ...] & [...#network_config]])
+		state?: string
 
 		// Initial type of the private cloud. Possible values:
 		// ["STANDARD", "TIME_LIMITED", "STRETCHED"]
 		type?: string
 
 		// System-generated unique identifier for the resource.
-		uid?:      string
-		timeouts?: #timeouts
+		uid?: string
+
+		// Last update time of this resource.
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+		// resolution and up to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
+		update_time?: string
 
 		// Details about a vCenter Server management appliance.
 		vcenter?: [...close({

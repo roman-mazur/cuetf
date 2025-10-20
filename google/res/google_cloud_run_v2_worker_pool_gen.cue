@@ -387,14 +387,16 @@ import "list"
 
 		// Name of the container specified as a DNS_LABEL.
 		name?: string
+		env?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/env", [..._#defs."/$defs/template/$defs/containers/$defs/env"]])
+		liveness_probe?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/liveness_probe", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/liveness_probe"]])
+		resources?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/resources", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/resources"]])
+		startup_probe?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/startup_probe", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/startup_probe"]])
+		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/containers/$defs/volume_mounts"]])
 
 		// Container's working directory. If not specified, the container
 		// runtime's default will be used, which might be configured in
 		// the container image.
 		working_dir?: string
-		env?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/env", [..._#defs."/$defs/template/$defs/containers/$defs/env"]])
-		resources?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/resources", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/resources"]])
-		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/containers/$defs/volume_mounts"]])
 	})
 
 	_#defs: "/$defs/template/$defs/containers/$defs/env": close({
@@ -426,6 +428,77 @@ import "list"
 		version?: string
 	})
 
+	_#defs: "/$defs/template/$defs/containers/$defs/liveness_probe": close({
+		// Optional. Minimum consecutive failures for the probe to be
+		// considered failed after having succeeded. Defaults to 3.
+		// Minimum value is 1.
+		failure_threshold?: number
+
+		// Optional. Number of seconds after the container has started
+		// before the probe is initiated. Defaults to 0 seconds. Minimum
+		// value is 0. Maximum value for liveness probe is 3600. Maximum
+		// value for startup probe is 240.
+		initial_delay_seconds?: number
+
+		// Optional. How often (in seconds) to perform the probe. Default
+		// to 10 seconds. Minimum value is 1. Maximum value for liveness
+		// probe is 3600. Maximum value for startup probe is 240. Must be
+		// greater or equal than timeout_seconds.
+		period_seconds?: number
+		grpc?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/grpc"]])
+		http_get?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get"]])
+
+		// Optional. Number of seconds after which the probe times out.
+		// Defaults to 1 second. Minimum value is 1. Maximum value is
+		// 3600. Must be smaller than period_seconds.
+		timeout_seconds?: number
+		tcp_socket?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/tcp_socket"]])
+	})
+
+	_#defs: "/$defs/template/$defs/containers/$defs/liveness_probe/$defs/grpc": close({
+		// Optional. Port number of the gRPC service. Number must be in
+		// the range 1 to 65535. If not specified, defaults to the
+		// exposed port of the container, which is the value of
+		// container.ports[0].containerPort.
+		port?: number
+
+		// Optional. Service is the name of the service to place in the
+		// gRPC HealthCheckRequest (see
+		// https://github.com/grpc/grpc/blob/master/doc/health-checking.md
+		// ). If this is not specified, the default behavior is defined
+		// by gRPC
+		service?: string
+	})
+
+	_#defs: "/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get": close({
+		http_headers?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get/$defs/http_headers", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get/$defs/http_headers"]])
+
+		// Optional. Path to access on the HTTP server. Defaults to '/'.
+		path?: string
+
+		// Optional. Port number to access on the container. Must be in
+		// the range 1 to 65535. If not specified, defaults to the
+		// exposed port of the container, which is the value of
+		// container.ports[0].containerPort.
+		port?: number
+	})
+
+	_#defs: "/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get/$defs/http_headers": close({
+		// Required. The header field name
+		port!: number
+
+		// Optional. The header field value
+		value?: string
+	})
+
+	_#defs: "/$defs/template/$defs/containers/$defs/liveness_probe/$defs/tcp_socket": close({
+		// Optional. Port number to access on the container. Must be in
+		// the range 1 to 65535. If not specified, defaults to the
+		// exposed port of the container, which is the value of
+		// container.ports[0].containerPort.
+		port?: number
+	})
+
 	_#defs: "/$defs/template/$defs/containers/$defs/resources": close({
 		// Only memory, CPU, and nvidia.com/gpu are supported. Use key
 		// 'cpu' for CPU limit, 'memory' for memory limit,
@@ -435,6 +508,77 @@ import "list"
 		// string form of the 'quantity' k8s type:
 		// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 		limits?: [string]: string
+	})
+
+	_#defs: "/$defs/template/$defs/containers/$defs/startup_probe": close({
+		// Optional. Minimum consecutive failures for the probe to be
+		// considered failed after having succeeded. Defaults to 3.
+		// Minimum value is 1.
+		failure_threshold?: number
+
+		// Optional. Number of seconds after the container has started
+		// before the probe is initiated. Defaults to 0 seconds. Minimum
+		// value is 0. Maximum value for liveness probe is 3600. Maximum
+		// value for startup probe is 240.
+		initial_delay_seconds?: number
+
+		// Optional. How often (in seconds) to perform the probe. Default
+		// to 10 seconds. Minimum value is 1. Maximum value for liveness
+		// probe is 3600. Maximum value for startup probe is 240. Must be
+		// greater or equal than timeout_seconds.
+		period_seconds?: number
+		grpc?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/grpc"]])
+		http_get?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get"]])
+
+		// Optional. Number of seconds after which the probe times out.
+		// Defaults to 1 second. Minimum value is 1. Maximum value is
+		// 3600. Must be smaller than period_seconds.
+		timeout_seconds?: number
+		tcp_socket?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/tcp_socket"]])
+	})
+
+	_#defs: "/$defs/template/$defs/containers/$defs/startup_probe/$defs/grpc": close({
+		// Optional. Port number of the gRPC service. Number must be in
+		// the range 1 to 65535. If not specified, defaults to the
+		// exposed port of the container, which is the value of
+		// container.ports[0].containerPort.
+		port?: number
+
+		// Optional. Service is the name of the service to place in the
+		// gRPC HealthCheckRequest (see
+		// https://github.com/grpc/grpc/blob/master/doc/health-checking.md
+		// ). If this is not specified, the default behavior is defined
+		// by gRPC
+		service?: string
+	})
+
+	_#defs: "/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get": close({
+		http_headers?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get/$defs/http_headers", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get/$defs/http_headers"]])
+
+		// Optional. Path to access on the HTTP server. Defaults to '/'.
+		path?: string
+
+		// Optional. Port number to access on the container. Must be in
+		// the range 1 to 65535. If not specified, defaults to the
+		// exposed port of the container, which is the value of
+		// container.ports[0].containerPort.
+		port?: number
+	})
+
+	_#defs: "/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get/$defs/http_headers": close({
+		// Required. The header field name
+		port!: number
+
+		// Optional. The header field value
+		value?: string
+	})
+
+	_#defs: "/$defs/template/$defs/containers/$defs/startup_probe/$defs/tcp_socket": close({
+		// Optional. Port number to access on the container. Must be in
+		// the range 1 to 65535. If not specified, defaults to the
+		// exposed port of the container, which is the value of
+		// container.ports[0].containerPort.
+		port?: number
 	})
 
 	_#defs: "/$defs/template/$defs/containers/$defs/volume_mounts": close({

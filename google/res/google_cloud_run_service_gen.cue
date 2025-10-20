@@ -286,6 +286,8 @@ import "list"
 		// [GPU zonal
 		// redundancy](https://cloud.google.com/run/docs/configuring/services/gpu-zonal-redundancy)
 		// for the Revision.
+		// - 'run.googleapis.com/health-check-disabled' disabled health
+		// checking containers during deployment.
 		annotations?: [string]: string
 
 		// A sequence number representing a specific generation of the

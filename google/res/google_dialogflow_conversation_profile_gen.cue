@@ -23,15 +23,16 @@ import "list"
 
 		// Name of the CX SecuritySettings reference for the agent.
 		security_settings?: string
+		project?:           string
 		automated_agent_config?: matchN(1, [#automated_agent_config, list.MaxItems(1) & [...#automated_agent_config]])
 		human_agent_assistant_config?: matchN(1, [#human_agent_assistant_config, list.MaxItems(1) & [...#human_agent_assistant_config]])
 		human_agent_handoff_config?: matchN(1, [#human_agent_handoff_config, list.MaxItems(1) & [...#human_agent_handoff_config]])
 		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
 		new_message_event_notification_config?: matchN(1, [#new_message_event_notification_config, list.MaxItems(1) & [...#new_message_event_notification_config]])
+		new_recognition_result_notification_config?: matchN(1, [#new_recognition_result_notification_config, list.MaxItems(1) & [...#new_recognition_result_notification_config]])
 		notification_config?: matchN(1, [#notification_config, list.MaxItems(1) & [...#notification_config]])
 		stt_config?: matchN(1, [#stt_config, list.MaxItems(1) & [...#stt_config]])
 		timeouts?: #timeouts
-		project?:  string
 		tts_config?: matchN(1, [#tts_config, list.MaxItems(1) & [...#tts_config]])
 
 		// The time zone of this conversational profile.
@@ -70,6 +71,26 @@ import "list"
 		message_format?: string
 
 		// Name of the Pub/Sub topic to publish conversation events
+		topic?: string
+	})
+
+	#new_recognition_result_notification_config: close({
+		// Format of message. Possible values:
+		// ["MESSAGE_FORMAT_UNSPECIFIED", "PROTO", "JSON"]
+		message_format?: string
+
+		// Name of the Pub/Sub topic to publish conversation events like
+		// CONVERSATION_STARTED as serialized ConversationEvent protos.
+		// For telephony integration to receive notification, make sure
+		// either this topic is in the same project as the conversation
+		// or you grant service-<Conversation Project
+		// Number>@gcp-sa-dialogflow.iam.gserviceaccount.com the
+		// Dialogflow Service Agent role in the topic project.
+		// For chat integration to receive notification, make sure API
+		// caller has been granted the Dialogflow Service Agent role for
+		// the topic.
+		// Format: projects/<Project ID>/locations/<Location
+		// ID>/topics/<Topic ID>.
 		topic?: string
 	})
 

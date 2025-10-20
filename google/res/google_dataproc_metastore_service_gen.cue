@@ -9,7 +9,6 @@ import "list"
 		// A Cloud Storage URI (starting with gs://) that specifies where
 		// artifacts related to the metastore service are stored.
 		artifact_gcs_uri?: string
-		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
 
 		// Output only. The time when the metastore service was created.
 		create_time?: string
@@ -29,6 +28,7 @@ import "list"
 
 		// The URI of the endpoint used to access the metastore service.
 		endpoint_uri?: string
+		id?:           string
 
 		// User-defined labels for the metastore service.
 		//
@@ -37,7 +37,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location where the metastore service should reside.
 		// The default value is 'global'.
@@ -55,12 +54,14 @@ import "list"
 
 		// The TCP port at which the metastore service is reached.
 		// Default: 9083.
-		port?: number
+		port?:    number
+		project?: string
 
 		// The release channel of the service. If unspecified, defaults to
 		// 'STABLE'. Default value: "STABLE" Possible values: ["CANARY",
 		// "STABLE"]
 		release_channel?: string
+		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
 		hive_metastore_config?: matchN(1, [#hive_metastore_config, list.MaxItems(1) & [...#hive_metastore_config]])
 		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
 		metadata_integration?: matchN(1, [#metadata_integration, list.MaxItems(1) & [...#metadata_integration]])
@@ -69,7 +70,6 @@ import "list"
 		scheduled_backup?: matchN(1, [#scheduled_backup, list.MaxItems(1) & [...#scheduled_backup]])
 		telemetry_config?: matchN(1, [#telemetry_config, list.MaxItems(1) & [...#telemetry_config]])
 		timeouts?: #timeouts
-		project?:  string
 
 		// The ID of the metastore service. The id must contain only
 		// letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -84,6 +84,13 @@ import "list"
 		// Additional information about the current state of the metastore
 		// service, if available.
 		state_message?: string
+
+		// A map of resource manager tags.
+		// Resource manager tag keys and values have the same definition
+		// as resource manager tags.
+		// Keys must be in the format tagKeys/{tag_key_id}, and values are
+		// in the format tagValues/{tag_value_id}.
+		tags?: [string]: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

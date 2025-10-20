@@ -28,7 +28,11 @@ import "list"
 
 		// Unique ID to use for Search Engine App.
 		engine_id!: string
-		id?:        string
+
+		// A map of the feature config for the engine to opt in or opt out
+		// of features.
+		features?: [string]: string
+		id?: string
 
 		// The industry vertical that the engine registers. The
 		// restriction of the Engine industry vertical is based on
@@ -37,6 +41,18 @@ import "list"
 		// engine. Default value: "GENERIC" Possible values: ["GENERIC",
 		// "MEDIA", "HEALTHCARE_FHIR"]
 		industry_vertical?: string
+
+		// The KMS key to be used to protect this Engine at creation time.
+		//
+		// Must be set for requests that need to comply with CMEK Org
+		// Policy
+		// protections.
+		//
+		// If this field is set and processed successfully, the Engine
+		// will be
+		// protected by the KMS key, as indicated in the cmek_config
+		// field.
+		kms_key_name?: string
 		common_config?: matchN(1, [#common_config, list.MaxItems(1) & [...#common_config]])
 		search_engine_config?: matchN(1, [#search_engine_config, list.MaxItems(1) & [_, ...] & [...#search_engine_config]])
 		timeouts?: #timeouts

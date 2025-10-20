@@ -9,7 +9,6 @@ import "list"
 		// Reports the resource name of the Active Directory policy being
 		// used. Inherited from storage pool.
 		active_directory?: string
-		backup_config?: matchN(1, [#backup_config, list.MaxItems(1) & [...#backup_config]])
 
 		// Capacity of the volume (in GiB).
 		capacity_gib!: string
@@ -44,7 +43,11 @@ import "list"
 		// Indicates whether the volume is part of a volume replication
 		// relationship.
 		has_replication?: bool
-		id?:              string
+
+		// Total hot tier data rounded down to the nearest GiB used by the
+		// volume. This field is only used for flex Service Level
+		hot_tier_size_used_gib?: string
+		id?:                     string
 
 		// Flag indicating if the volume is a kerberos volume or not,
 		// export policy rules control kerberos security modes (krb5,
@@ -82,6 +85,7 @@ import "list"
 			export?:       string
 			export_full?:  string
 			instructions?: string
+			ip_address?:   string
 			protocol?:     string
 		})]
 
@@ -104,13 +108,14 @@ import "list"
 		// '['SMB', 'NFSV3']' and '['SMB', 'NFSV4']'. Possible values:
 		// ["NFSV3", "NFSV4", "SMB"]
 		protocols!: [...string]
-		project?: string
+		backup_config?: matchN(1, [#backup_config, list.MaxItems(1) & [...#backup_config]])
 		export_policy?: matchN(1, [#export_policy, list.MaxItems(1) & [...#export_policy]])
 		hybrid_replication_parameters?: matchN(1, [#hybrid_replication_parameters, list.MaxItems(1) & [...#hybrid_replication_parameters]])
 		restore_parameters?: matchN(1, [#restore_parameters, list.MaxItems(1) & [...#restore_parameters]])
 		snapshot_policy?: matchN(1, [#snapshot_policy, list.MaxItems(1) & [...#snapshot_policy]])
 		tiering_policy?: matchN(1, [#tiering_policy, list.MaxItems(1) & [...#tiering_policy]])
 		timeouts?: #timeouts
+		project?:  string
 
 		// Name of the Private Service Access allocated range. Inherited
 		// from storage pool.
@@ -210,18 +215,26 @@ import "list"
 		// Optional. Description of the replication.
 		description?: string
 
+		// Optional. Type of the volume's hybrid replication. Possible
+		// values: ["MIGRATION", "CONTINUOUS_REPLICATION",
+		// "ONPREM_REPLICATION", "REVERSE_ONPREM_REPLICATION"]
+		hybrid_replication_type?: string
+
 		// Optional. Labels to be added to the replication as the key
 		// value pairs.
 		// An object containing a list of "key": value pairs. Example: {
 		// "name": "wrench", "mass": "1.3kg", "count": "3" }.
 		labels?: [string]: string
 
+		// Optional. Constituent volume count for large volume.
+		large_volume_constituent_count?: number
+
 		// Required. Name of the user's local source cluster to be peered
 		// with the destination cluster.
 		peer_cluster_name?: string
 
 		// Required. List of node ip addresses to be peered with.
-		peer_ip_addresses?: string
+		peer_ip_addresses?: [...string]
 
 		// Required. Name of the user's local source vserver svm to be
 		// peered with the destination vserver svm.
@@ -233,6 +246,10 @@ import "list"
 
 		// Required. Desired name for the replication of this volume.
 		replication?: string
+
+		// Optional. Replication Schedule for the replication created.
+		// Possible values: ["EVERY_10_MINUTES", "HOURLY", "DAILY"]
+		replication_schedule?: string
 	})
 
 	#restore_parameters: close({
@@ -269,6 +286,11 @@ import "list"
 		// and make it eligible for tiering, can be range from 2-183.
 		// Default is 31.
 		cooling_threshold_days?: number
+
+		// Optional. Flag indicating that the hot tier bypass mode is
+		// enabled. Default is false.
+		// Only applicable to Flex service level.
+		hot_tier_bypass_mode_enabled?: bool
 
 		// Optional. Flag indicating if the volume has tiering policy
 		// enable/pause. Default is PAUSED. Default value: "PAUSED"

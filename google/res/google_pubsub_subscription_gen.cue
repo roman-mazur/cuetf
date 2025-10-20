@@ -36,7 +36,6 @@ import "list"
 		// system
 		// will eventually redeliver the message.
 		ack_deadline_seconds?: number
-		bigquery_config?: matchN(1, [#bigquery_config, list.MaxItems(1) & [...#bigquery_config]])
 
 		// All of labels (key/value pairs) present on the resource in GCP,
 		// including the labels configured through Terraform, other
@@ -75,9 +74,7 @@ import "list"
 		// bytes. After creating the subscription,
 		// you can't modify the filter.
 		filter?: string
-		cloud_storage_config?: matchN(1, [#cloud_storage_config, list.MaxItems(1) & [...#cloud_storage_config]])
-		dead_letter_policy?: matchN(1, [#dead_letter_policy, list.MaxItems(1) & [...#dead_letter_policy]])
-		id?: string
+		id?:     string
 
 		// A set of key/value label pairs to assign to this Subscription.
 		//
@@ -87,7 +84,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		expiration_policy?: matchN(1, [#expiration_policy, list.MaxItems(1) & [...#expiration_policy]])
 
 		// How long to retain unacknowledged messages in the
 		// subscription's
@@ -104,14 +100,17 @@ import "list"
 		// terminated
 		// by 's'. Example: '"600.5s"'.
 		message_retention_duration?: string
+
+		// Name of the subscription.
+		name!: string
+		bigquery_config?: matchN(1, [#bigquery_config, list.MaxItems(1) & [...#bigquery_config]])
+		cloud_storage_config?: matchN(1, [#cloud_storage_config, list.MaxItems(1) & [...#cloud_storage_config]])
+		dead_letter_policy?: matchN(1, [#dead_letter_policy, list.MaxItems(1) & [...#dead_letter_policy]])
+		expiration_policy?: matchN(1, [#expiration_policy, list.MaxItems(1) & [...#expiration_policy]])
 		message_transforms?: matchN(1, [#message_transforms, [...#message_transforms]])
 		push_config?: matchN(1, [#push_config, list.MaxItems(1) & [...#push_config]])
 		retry_policy?: matchN(1, [#retry_policy, list.MaxItems(1) & [...#retry_policy]])
 		timeouts?: #timeouts
-
-		// Name of the subscription.
-		name!:    string
-		project?: string
 
 		// Indicates whether to retain acknowledged messages. If 'true',
 		// then
@@ -120,6 +119,24 @@ import "list"
 		// they are acknowledged, until they fall out of the
 		// messageRetentionDuration window.
 		retain_acked_messages?: bool
+		project?:               string
+
+		// Input only. Resource manager tags to be bound to the
+		// subscription. Tag
+		// keys and values have the same definition as resource manager
+		// tags. Keys
+		// must be in the format tagKeys/{tag_key_id}, and values are in
+		// the format
+		// tagValues/456. The field is ignored when empty. The field is
+		// immutable and
+		// causes resource replacement when mutated. This field is only
+		// set at create
+		// time and modifying this field after creation will trigger
+		// recreation. To
+		// apply tags to an existing resource, see the
+		// 'google_tags_tag_value'
+		// resource.
+		tags?: [string]: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

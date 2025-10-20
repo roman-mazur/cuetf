@@ -143,7 +143,6 @@ package data
 		// bytes. After creating the subscription,
 		// you can't modify the filter.
 		filter?: string
-		id?:     string
 
 		// A set of key/value label pairs to assign to this Subscription.
 		//
@@ -153,6 +152,7 @@ package data
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
+		id?: string
 
 		// How long to retain unacknowledged messages in the
 		// subscription's
@@ -182,8 +182,7 @@ package data
 		})]
 
 		// Name of the subscription.
-		name!:    string
-		project?: string
+		name!: string
 
 		// If push delivery is used with this subscription, this field is
 		// used to
@@ -209,6 +208,7 @@ package data
 		// they are acknowledged, until they fall out of the
 		// messageRetentionDuration window.
 		retain_acked_messages?: bool
+		project?:               string
 
 		// A policy that specifies how Pub/Sub retries message delivery
 		// for this subscription.
@@ -222,6 +222,23 @@ package data
 			maximum_backoff?: string
 			minimum_backoff?: string
 		})]
+
+		// Input only. Resource manager tags to be bound to the
+		// subscription. Tag
+		// keys and values have the same definition as resource manager
+		// tags. Keys
+		// must be in the format tagKeys/{tag_key_id}, and values are in
+		// the format
+		// tagValues/456. The field is ignored when empty. The field is
+		// immutable and
+		// causes resource replacement when mutated. This field is only
+		// set at create
+		// time and modifying this field after creation will trigger
+		// recreation. To
+		// apply tags to an existing resource, see the
+		// 'google_tags_tag_value'
+		// resource.
+		tags?: [string]: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

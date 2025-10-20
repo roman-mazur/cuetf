@@ -19,6 +19,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// IKE protocol version to use when establishing the VPN tunnel
 		// with
@@ -38,7 +39,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Local traffic selector to use when establishing the VPN tunnel
 		// with
@@ -76,13 +76,11 @@ import "list"
 
 		// IP address of the peer VPN gateway. Only IPv4 is supported.
 		peer_ip?: string
+		project?: string
 
 		// The region where the tunnel is located. If unset, is set to the
 		// region of 'target_vpn_gateway'.
-		region?:  string
-		project?: string
-		cipher_suite?: matchN(1, [#cipher_suite, list.MaxItems(1) & [...#cipher_suite]])
-		timeouts?: #timeouts
+		region?: string
 
 		// Remote traffic selector to use when establishing the VPN tunnel
 		// with
@@ -90,18 +88,33 @@ import "list"
 		// for example '192.168.0.0/16'. The ranges should be disjoint.
 		// Only IPv4 is supported.
 		remote_traffic_selector?: [...string]
+		cipher_suite?: matchN(1, [#cipher_suite, list.MaxItems(1) & [...#cipher_suite]])
+		timeouts?: #timeouts
 
 		// URL of router resource to be used for dynamic routing.
-		router?: string
+		router?:    string
+		self_link?: string
 
 		// Shared secret used to set the secure session between the Cloud
 		// VPN
 		// gateway and the peer VPN gateway.
-		shared_secret!: string
-		self_link?:     string
+		shared_secret?: string
 
 		// Hash of the shared secret.
 		shared_secret_hash?: string
+
+		// Shared secret used to set the secure session between the Cloud
+		// VPN
+		// gateway and the peer VPN gateway.
+		// Note: This property is write-only and will not be read from the
+		// API. For more info see [updating write-only
+		// attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+		shared_secret_wo?: string
+
+		// Triggers update of shared_secret_wo write-only. For more info
+		// see [updating write-only
+		// attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+		shared_secret_wo_version?: string
 
 		// URL of the Target VPN gateway with which this VPN tunnel is
 		// associated.

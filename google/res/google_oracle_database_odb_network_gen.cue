@@ -21,7 +21,13 @@ package res
 		// The ID of the subscription entitlement associated with the
 		// OdbNetwork.
 		entitlement_id?: string
-		id?:             string
+
+		// The GCP Oracle zone where OdbNetwork is hosted.
+		// Example: us-east4-b-r2.
+		// If not specified, the system will pick a zone based on
+		// availability.
+		gcp_oracle_zone?: string
+		id?:              string
 
 		// Labels or tags associated with the resource.
 		//
@@ -39,12 +45,12 @@ package res
 		// Identifier. The name of the OdbNetwork resource in the
 		// following format:
 		// projects/{project}/locations/{region}/odbNetworks/{odb_network}
-		name?: string
+		name?:     string
+		timeouts?: #timeouts
 
 		// The name of the VPC network in the following format:
 		// projects/{project}/global/networks/{network}
-		network!:  string
-		timeouts?: #timeouts
+		network!: string
 
 		// The ID of the OdbNetwork to create. This value is restricted
 		// to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of

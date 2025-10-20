@@ -53,20 +53,15 @@ import "list"
 		// accessing the first address in the list in a terraform output
 		// when the resource is configured with a count.
 		first_ip_address?: string
-		id?:               string
 
 		// The type of the instance. See
 		// https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType
 		// for supported values.
 		instance_type?: string
-		ip_address?: [...close({
-			ip_address?:     string
-			time_to_retire?: string
-			type?:           string
-		})]
 
 		// Maintenance version.
 		maintenance_version?: string
+		id?:                  string
 
 		// The name of the instance that will act as the master in the
 		// replication setup. Note, this requires the master to have
@@ -78,21 +73,27 @@ import "list"
 		// This is done because after a name is used, it cannot be reused
 		// for up to one week.
 		name?: string
+		ip_address?: [...close({
+			ip_address?:     string
+			time_to_retire?: string
+			type?:           string
+		})]
 
 		// For a read pool instance, the number of nodes in the read pool.
 		node_count?: number
-		clone?: matchN(1, [#clone, list.MaxItems(1) & [...#clone]])
-		replica_configuration?: matchN(1, [#replica_configuration, list.MaxItems(1) & [...#replica_configuration]])
-		replication_cluster?: matchN(1, [#replication_cluster, list.MaxItems(1) & [...#replication_cluster]])
-		restore_backup_context?: matchN(1, [#restore_backup_context, list.MaxItems(1) & [...#restore_backup_context]])
-		settings?: matchN(1, [#settings, list.MaxItems(1) & [...#settings]])
-		timeouts?: #timeouts
 
 		// IPv4 address assigned. This is a workaround for an issue fixed
 		// in Terraform 0.12 but also provides a convenient way to access
 		// an IP of a specific type without performing filtering in a
 		// Terraform config.
 		private_ip_address?: string
+		clone?: matchN(1, [#clone, list.MaxItems(1) & [...#clone]])
+		point_in_time_restore_context?: matchN(1, [#point_in_time_restore_context, list.MaxItems(1) & [...#point_in_time_restore_context]])
+		replica_configuration?: matchN(1, [#replica_configuration, list.MaxItems(1) & [...#replica_configuration]])
+		replication_cluster?: matchN(1, [#replication_cluster, list.MaxItems(1) & [...#replication_cluster]])
+		restore_backup_context?: matchN(1, [#restore_backup_context, list.MaxItems(1) & [...#restore_backup_context]])
+		settings?: matchN(1, [#settings, list.MaxItems(1) & [...#settings]])
+		timeouts?: #timeouts
 
 		// The ID of the project in which the resource belongs. If it is
 		// not provided, the provider project is used.
@@ -160,9 +161,40 @@ import "list"
 		// to the same zone as the source instance.
 		preferred_zone?: string
 
+		// The timestamp of when the source instance was deleted for a
+		// clone from a deleted instance.
+		source_instance_deletion_time?: string
+
 		// The name of the instance from which the point in time should be
 		// restored.
 		source_instance_name!: string
+	})
+
+	#point_in_time_restore_context: close({
+		// The name of the allocated IP range for the internal IP Cloud
+		// SQL instance. For example: "google-managed-services-default".
+		// If you set this, then Cloud SQL creates the IP address for the
+		// cloned instance in the allocated range. This range must comply
+		// with [RFC 1035](https://tools.ietf.org/html/rfc1035)
+		// standards. Specifically, the name must be 1-63 characters long
+		// and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
+		allocated_ip_range?: string
+
+		// The Google Cloud Backup and Disaster Recovery Datasource URI.
+		// For example:
+		// "projects/my-project/locations/us-central1/datasources/my-datasource".
+		datasource!: string
+
+		// The date and time to which you want to restore the instance.
+		point_in_time?: string
+
+		// Point-in-time recovery of an instance to the specified zone. If
+		// no zone is specified, then clone to the same primary zone as
+		// the source instance.
+		preferred_zone?: string
+
+		// The name of the target instance to restore to.
+		target_instance?: string
 	})
 
 	#replica_configuration: close({

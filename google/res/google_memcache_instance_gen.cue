@@ -14,6 +14,20 @@ import "list"
 		// Creation timestamp in RFC3339 text format.
 		create_time?: string
 
+		// Whether Terraform will be prevented from destroying the
+		// instance.
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is not set to false in
+		// Terraform state.
+		// When the field is set to true or unset in Terraform state, a
+		// 'terraform apply'
+		// or 'terraform destroy' that would delete the instance will
+		// fail.
+		// When the field is set to false, deleting the instance is
+		// allowed.
+		deletion_protection?: bool
+
 		// Endpoint for Discovery API
 		discovery_endpoint?: string
 
@@ -62,13 +76,13 @@ import "list"
 		// version. Default value: "MEMCACHE_1_5" Possible values:
 		// ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
 		memcache_version?: string
-
-		// The resource name of the instance.
-		name!: string
 		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
 		memcache_parameters?: matchN(1, [#memcache_parameters, list.MaxItems(1) & [...#memcache_parameters]])
 		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [_, ...] & [...#node_config]])
 		timeouts?: #timeouts
+
+		// The resource name of the instance.
+		name!: string
 
 		// Number of nodes in the memcache instance.
 		node_count!: number

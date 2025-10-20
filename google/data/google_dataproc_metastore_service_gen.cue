@@ -53,6 +53,7 @@ package data
 			})]
 			version?: string
 		})]
+		id?: string
 
 		// User-defined labels for the metastore service.
 		//
@@ -65,7 +66,6 @@ package data
 		// The location where the metastore service should reside.
 		// The default value is 'global'.
 		location!: string
-		id?:       string
 
 		// The one hour maintenance window of the metastore service.
 		// This specifies when the service can be restarted for
@@ -106,7 +106,8 @@ package data
 
 		// The TCP port at which the metastore service is reached.
 		// Default: 9083.
-		port?: number
+		port?:    number
+		project?: string
 
 		// The release channel of the service. If unspecified, defaults to
 		// 'STABLE'. Default value: "STABLE" Possible values: ["CANARY",
@@ -126,7 +127,6 @@ package data
 			instance_size?:  string
 			scaling_factor?: number
 		})]
-		project?: string
 
 		// The configuration of scheduled backup for the metastore
 		// service.
@@ -150,6 +150,13 @@ package data
 		// Additional information about the current state of the metastore
 		// service, if available.
 		state_message?: string
+
+		// A map of resource manager tags.
+		// Resource manager tag keys and values have the same definition
+		// as resource manager tags.
+		// Keys must be in the format tagKeys/{tag_key_id}, and values are
+		// in the format tagValues/{tag_value_id}.
+		tags?: [string]: string
 
 		// The configuration specifying telemetry settings for the
 		// Dataproc Metastore service. If unspecified defaults to JSON.

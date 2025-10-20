@@ -125,6 +125,22 @@ package data
 			schema?:   string
 		})]
 
+		// Input only. Resource manager tags to be bound to the topic. Tag
+		// keys and
+		// values have the same definition as resource manager tags. Keys
+		// must be in
+		// the format tagKeys/{tag_key_id}, and values are in the format
+		// tagValues/456. The field is ignored when empty. The field is
+		// immutable and
+		// causes resource replacement when mutated. This field is only
+		// set at create
+		// time and modifying this field after creation will trigger
+		// recreation. To
+		// apply tags to an existing resource, see the
+		// 'google_tags_tag_value'
+		// resource.
+		tags?: [string]: string
+
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string

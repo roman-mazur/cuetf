@@ -91,18 +91,19 @@ import "list"
 		// be included
 		// when they fall into the scope of Backups.
 		include_secrets?: bool
+		encryption_key?: matchN(1, [_#defs."/$defs/backup_config/$defs/encryption_key", list.MaxItems(1) & [..._#defs."/$defs/backup_config/$defs/encryption_key"]])
 
 		// This flag specifies whether volume data should be backed up
 		// when PVCs are
 		// included in the scope of a Backup.
 		include_volume_data?: bool
-		encryption_key?: matchN(1, [_#defs."/$defs/backup_config/$defs/encryption_key", list.MaxItems(1) & [..._#defs."/$defs/backup_config/$defs/encryption_key"]])
 		selected_applications?: matchN(1, [_#defs."/$defs/backup_config/$defs/selected_applications", list.MaxItems(1) & [..._#defs."/$defs/backup_config/$defs/selected_applications"]])
 
 		// This flag specifies whether Backups will not fail when
 		// Backup for GKE detects Kubernetes configuration that is
 		// non-standard or requires additional setup to restore.
 		permissive_mode?: bool
+		selected_namespace_labels?: matchN(1, [_#defs."/$defs/backup_config/$defs/selected_namespace_labels", list.MaxItems(1) & [..._#defs."/$defs/backup_config/$defs/selected_namespace_labels"]])
 		selected_namespaces?: matchN(1, [_#defs."/$defs/backup_config/$defs/selected_namespaces", list.MaxItems(1) & [..._#defs."/$defs/backup_config/$defs/selected_namespaces"]])
 	})
 
@@ -185,6 +186,18 @@ import "list"
 
 		// The namespace of a Kubernetes Resource.
 		namespace!: string
+	})
+
+	_#defs: "/$defs/backup_config/$defs/selected_namespace_labels": close({
+		resource_labels?: matchN(1, [_#defs."/$defs/backup_config/$defs/selected_namespace_labels/$defs/resource_labels", [_, ...] & [..._#defs."/$defs/backup_config/$defs/selected_namespace_labels/$defs/resource_labels"]])
+	})
+
+	_#defs: "/$defs/backup_config/$defs/selected_namespace_labels/$defs/resource_labels": close({
+		// The key of the kubernetes label.
+		key!: string
+
+		// The value of the Label.
+		value!: string
 	})
 
 	_#defs: "/$defs/backup_config/$defs/selected_namespaces": close({
