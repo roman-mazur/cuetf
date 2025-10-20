@@ -28,7 +28,8 @@ import "list"
 		name!: string
 		id?:   string
 
-		// An ID (8 and 36 characters). If omitted, a UUIDv1 will be
+		// An ID (8 to 48 characters) that contains only letters, numbers,
+		// hyphens, and underscores. If omitted, a UUIDv1 will be
 		// generated server-side.
 		slo_id?: string
 		apm_availability_indicator?: matchN(1, [#apm_availability_indicator, list.MaxItems(1) & [...#apm_availability_indicator]])
@@ -69,14 +70,18 @@ import "list"
 	})
 
 	#histogram_custom_indicator: close({
-		good?: matchN(1, [_#defs."/$defs/histogram_custom_indicator/$defs/good", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/histogram_custom_indicator/$defs/good"]])
-		total?: matchN(1, [_#defs."/$defs/histogram_custom_indicator/$defs/total", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/histogram_custom_indicator/$defs/total"]])
+		// Optional data view id to use for this indicator.
+		data_view_id?:    string
 		filter?:          string
 		index!:           string
 		timestamp_field?: string
+		good?: matchN(1, [_#defs."/$defs/histogram_custom_indicator/$defs/good", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/histogram_custom_indicator/$defs/good"]])
+		total?: matchN(1, [_#defs."/$defs/histogram_custom_indicator/$defs/total", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/histogram_custom_indicator/$defs/total"]])
 	})
 
 	#kql_custom_indicator: close({
+		// Optional data view id to use for this indicator.
+		data_view_id?:    string
 		filter?:          string
 		good?:            string
 		index!:           string
@@ -85,11 +90,13 @@ import "list"
 	})
 
 	#metric_custom_indicator: close({
-		good?: matchN(1, [_#defs."/$defs/metric_custom_indicator/$defs/good", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/metric_custom_indicator/$defs/good"]])
-		total?: matchN(1, [_#defs."/$defs/metric_custom_indicator/$defs/total", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/metric_custom_indicator/$defs/total"]])
+		// Optional data view id to use for this indicator.
+		data_view_id?:    string
 		filter?:          string
 		index!:           string
 		timestamp_field?: string
+		good?: matchN(1, [_#defs."/$defs/metric_custom_indicator/$defs/good", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/metric_custom_indicator/$defs/good"]])
+		total?: matchN(1, [_#defs."/$defs/metric_custom_indicator/$defs/total", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/metric_custom_indicator/$defs/total"]])
 	})
 
 	#objective: close({
@@ -99,8 +106,13 @@ import "list"
 	})
 
 	#settings: close({
-		frequency?:  string
-		sync_delay?: string
+		frequency?: string
+
+		// Prevents the underlying ES transform from attempting to
+		// backfill data on start, which can sometimes be
+		// resource-intensive or time-consuming and unnecessary
+		prevent_initial_backfill?: bool
+		sync_delay?:               string
 	})
 
 	#time_window: close({
@@ -109,10 +121,12 @@ import "list"
 	})
 
 	#timeslice_metric_indicator: close({
-		metric?: matchN(1, [_#defs."/$defs/timeslice_metric_indicator/$defs/metric", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/timeslice_metric_indicator/$defs/metric"]])
+		// Optional data view id to use for this indicator.
+		data_view_id?:    string
 		filter?:          string
 		index!:           string
 		timestamp_field!: string
+		metric?: matchN(1, [_#defs."/$defs/timeslice_metric_indicator/$defs/metric", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/timeslice_metric_indicator/$defs/metric"]])
 	})
 
 	_#defs: "/$defs/histogram_custom_indicator/$defs/good": close({

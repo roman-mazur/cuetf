@@ -43,8 +43,10 @@ import "list"
 		// creating the repository.
 		container!: string
 
-		// Location mode. `primary_only` or `secondary_only`. See:
-		// https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy
+		// Location mode. `primary_only` or `secondary_only`. See the
+		// [Azure storage redundancy
+		// documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy)
+		// for more details.
 		location_mode?: string
 
 		// Maximum snapshot restore rate per node.

@@ -14,15 +14,18 @@ package res
 		// The ID of the connector type, e.g. `.index`.
 		connector_type_id!: string
 
+		// Internal identifier of the resource.
+		id?: string
+
 		// Indicates whether the connector type is deprecated.
 		is_deprecated?: bool
-		id?:            string
 
 		// Indicates whether secrets are missing for the connector.
 		is_missing_secrets?: bool
 
 		// Indicates whether it is a preconfigured connector.
 		is_preconfigured?: bool
+		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
 		// The name of the connector. While this name does not have to be
 		// unique, a distinctive name can help you identify a connector.
@@ -35,5 +38,28 @@ package res
 		// An identifier for the space. If space_id is not provided, the
 		// default space is used.
 		space_id?: string
+	})
+
+	#kibana_connection: close({
+		// API Key to use for authentication to Kibana
+		api_key?: string
+
+		// A list of paths to CA certificates to validate the certificate
+		// presented by the Kibana server.
+		ca_certs?: [...string]
+
+		// A comma-separated list of endpoints where the terraform
+		// provider will point to, this must include the http(s) schema
+		// and port number.
+		endpoints?: [...string]
+
+		// Disable TLS certificate validation
+		insecure?: bool
+
+		// Password to use for API authentication to Kibana.
+		password?: string
+
+		// Username to use for API authentication to Kibana.
+		username?: string
 	})
 }

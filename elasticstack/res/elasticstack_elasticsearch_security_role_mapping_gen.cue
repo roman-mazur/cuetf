@@ -1,7 +1,5 @@
 package res
 
-import "list"
-
 #elasticstack_elasticsearch_security_role_mapping: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_security_role_mapping")
@@ -30,7 +28,7 @@ import "list"
 		// A list of role names that are granted to the users that match
 		// the role mapping rules.
 		roles?: [...string]
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
 		// The rules that determine which users should be matched by the
 		// mapping. A rule is a logical condition that is expressed by

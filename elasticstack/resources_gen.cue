@@ -32,6 +32,8 @@ _res: elasticstack_kibana_action_connector: res.#elasticstack_kibana_action_conn
 _res: elasticstack_kibana_alerting_rule: res.#elasticstack_kibana_alerting_rule
 _res: elasticstack_kibana_data_view: res.#elasticstack_kibana_data_view
 _res: elasticstack_kibana_import_saved_objects: res.#elasticstack_kibana_import_saved_objects
+_res: elasticstack_kibana_maintenance_window: res.#elasticstack_kibana_maintenance_window
+_res: elasticstack_kibana_security_detection_rule: res.#elasticstack_kibana_security_detection_rule
 _res: elasticstack_kibana_security_role: res.#elasticstack_kibana_security_role
 _res: elasticstack_kibana_slo: res.#elasticstack_kibana_slo
 _res: elasticstack_kibana_space: res.#elasticstack_kibana_space

@@ -12,6 +12,9 @@ import "list"
 		// Internal identifier of the resource
 		id?: string
 
+		// A list of component template names that are ignored if missing.
+		ignore_missing_component_templates?: [...string]
+
 		// Array of wildcard (*) expressions used to match the names of
 		// data streams and indices during creation.
 		index_patterns!: [...string]
@@ -23,11 +26,11 @@ import "list"
 		name!: string
 		data_stream?: matchN(1, [#data_stream, list.MaxItems(1) & [...#data_stream]])
 		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+		template?: matchN(1, [#template, list.MaxItems(1) & [...#template]])
 
 		// Priority to determine index template precedence when a new data
 		// stream or index is created.
 		priority?: number
-		template?: matchN(1, [#template, list.MaxItems(1) & [...#template]])
 
 		// Version number used to manage index templates externally.
 		version?: number
