@@ -4,6 +4,20 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_vmwareengine_private_cloud")
 	close({
+		// Creation time of this resource.
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+		// resolution and up to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
+		create_time?: string
+
+		// Time when the resource was scheduled for deletion.
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+		// resolution and up to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
+		delete_time?: string
+
 		// The number of hours to delay this request. You can set this
 		// value to an hour between 0 to 8, where setting it to 0 starts
 		// the deletion request immediately. If no value is set, a
@@ -13,6 +27,13 @@ package data
 		// User-provided description for this private cloud.
 		description?: string
 
+		// Time when the resource will be irreversibly deleted.
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+		// resolution and up to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
+		expire_time?: string
+
 		// Details about a HCX Cloud Manager appliance.
 		hcx?: [...close({
 			fqdn?:        string
@@ -20,10 +41,10 @@ package data
 			state?:       string
 			version?:     string
 		})]
+		id?: string
 
 		// The location where the PrivateCloud should reside.
 		location!: string
-		id?:       string
 
 		// The management cluster for this private cloud. This used for
 		// creating and managing the default cluster.
@@ -101,6 +122,13 @@ package data
 
 		// System-generated unique identifier for the resource.
 		uid?: string
+
+		// Last update time of this resource.
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+		// resolution and up to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
+		update_time?: string
 
 		// Details about a vCenter Server management appliance.
 		vcenter?: [...close({

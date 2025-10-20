@@ -31,7 +31,6 @@ package res
 		// Must consist of between
 		// 3 and 63 characters.
 		federation_id!: string
-		id?:            string
 
 		// User-defined labels for the metastore federation.
 		//
@@ -43,19 +42,27 @@ package res
 
 		// The location where the metastore federation should reside.
 		location?: string
+		id?:       string
 
 		// The relative resource name of the metastore federation.
-		name?:    string
-		project?: string
+		name?: string
 
 		// The current state of the metastore federation.
 		state?: string
-		backend_metastores?: matchN(1, [#backend_metastores, [_, ...] & [...#backend_metastores]])
-		timeouts?: #timeouts
 
 		// Additional information about the current state of the metastore
 		// federation, if available.
 		state_message?: string
+
+		// A map of resource manager tags.
+		// Resource manager tag keys and values have the same definition
+		// as resource manager tags.
+		// Keys must be in the format tagKeys/{tag_key_id}, and values are
+		// in the format tagValues/{tag_value_id}.
+		tags?: [string]: string
+		backend_metastores?: matchN(1, [#backend_metastores, [_, ...] & [...#backend_metastores]])
+		timeouts?: #timeouts
+		project?:  string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

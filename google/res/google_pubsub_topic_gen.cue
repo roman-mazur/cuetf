@@ -10,7 +10,6 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
-		id?: string
 
 		// The resource name of the Cloud KMS CryptoKey to be used to
 		// protect access
@@ -23,6 +22,7 @@ import "list"
 		// The expected format is
 		// 'projects/*/locations/*/keyRings/*/cryptoKeys/*'
 		kms_key_name?: string
+		id?:           string
 
 		// A set of key/value label pairs to assign to this Topic.
 		//
@@ -53,16 +53,32 @@ import "list"
 
 		// Name of the topic.
 		name!: string
+
+		// Input only. Resource manager tags to be bound to the topic. Tag
+		// keys and
+		// values have the same definition as resource manager tags. Keys
+		// must be in
+		// the format tagKeys/{tag_key_id}, and values are in the format
+		// tagValues/456. The field is ignored when empty. The field is
+		// immutable and
+		// causes resource replacement when mutated. This field is only
+		// set at create
+		// time and modifying this field after creation will trigger
+		// recreation. To
+		// apply tags to an existing resource, see the
+		// 'google_tags_tag_value'
+		// resource.
+		tags?: [string]: string
 		ingestion_data_source_settings?: matchN(1, [#ingestion_data_source_settings, list.MaxItems(1) & [...#ingestion_data_source_settings]])
 		message_storage_policy?: matchN(1, [#message_storage_policy, list.MaxItems(1) & [...#message_storage_policy]])
 		message_transforms?: matchN(1, [#message_transforms, [...#message_transforms]])
 		schema_settings?: matchN(1, [#schema_settings, list.MaxItems(1) & [...#schema_settings]])
-		timeouts?: #timeouts
-		project?:  string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+		project?:  string
+		timeouts?: #timeouts
 	})
 
 	#ingestion_data_source_settings: close({

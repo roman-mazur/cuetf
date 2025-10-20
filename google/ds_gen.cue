@@ -21,7 +21,9 @@ _ds: google_artifact_registry_docker_image: data.#google_artifact_registry_docke
 _ds: google_artifact_registry_docker_images: data.#google_artifact_registry_docker_images
 _ds: google_artifact_registry_locations: data.#google_artifact_registry_locations
 _ds: google_artifact_registry_maven_artifact: data.#google_artifact_registry_maven_artifact
+_ds: google_artifact_registry_maven_artifacts: data.#google_artifact_registry_maven_artifacts
 _ds: google_artifact_registry_npm_package: data.#google_artifact_registry_npm_package
+_ds: google_artifact_registry_npm_packages: data.#google_artifact_registry_npm_packages
 _ds: google_artifact_registry_package: data.#google_artifact_registry_package
 _ds: google_artifact_registry_python_package: data.#google_artifact_registry_python_package
 _ds: google_artifact_registry_repositories: data.#google_artifact_registry_repositories
@@ -272,6 +274,7 @@ _ds: google_monitoring_notification_channel: data.#google_monitoring_notificatio
 _ds: google_monitoring_uptime_check_ips: data.#google_monitoring_uptime_check_ips
 _ds: google_netblock_ip_ranges: data.#google_netblock_ip_ranges
 _ds: google_network_management_connectivity_test_run: data.#google_network_management_connectivity_test_run
+_ds: google_network_management_connectivity_tests: data.#google_network_management_connectivity_tests
 _ds: google_network_security_address_group_iam_policy: data.#google_network_security_address_group_iam_policy
 _ds: google_notebooks_instance_iam_policy: data.#google_notebooks_instance_iam_policy
 _ds: google_notebooks_runtime_iam_policy: data.#google_notebooks_runtime_iam_policy

@@ -46,6 +46,7 @@ package data
 				anon_gid?:    number
 				anon_uid?:    number
 				ip_ranges?: [...string]
+				network?:     string
 				squash_mode?: string
 			})]
 			source_backup?: string
@@ -88,7 +89,10 @@ package data
 			connect_mode?: string
 			ip_addresses?: [...string]
 			modes?: [...string]
-			network?:           string
+			network?: string
+			psc_config?: [...close({
+				endpoint_project?: string
+			})]
 			reserved_ip_range?: string
 		})]
 

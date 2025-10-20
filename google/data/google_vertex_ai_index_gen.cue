@@ -29,15 +29,22 @@ package data
 		// clients and services.
 		effective_labels?: [string]: string
 
+		// Customer-managed encryption key spec for an Index. If set, this
+		// Index and all sub-resources of this Index will be secured by
+		// this key.
+		encryption_spec?: [...close({
+			kms_key_name?: string
+		})]
+
 		// Used to perform consistent read-modify-write updates.
 		etag?: string
-		id?:   string
 
 		// Stats of the index resource.
 		index_stats?: [...close({
 			shards_count?:  number
 			vectors_count?: string
 		})]
+		id?: string
 
 		// The update method to use with this Index. The value must be the
 		// followings. If not set, BATCH_UPDATE will be used by default.

@@ -80,6 +80,9 @@ package data
 		// https://cloud.google.com/run/docs/configuring/custom-audiences.
 		custom_audiences?: [...string]
 
+		// Disables public resolution of the default URI of this service.
+		default_uri_disabled?: bool
+
 		// The deletion time.
 		delete_time?: string
 
@@ -233,6 +236,7 @@ package data
 		// Additional information on the failure can be found in
 		// terminalCondition and conditions.
 		reconciling?: bool
+		project?:     string
 
 		// Scaling settings that apply to the whole service
 		scaling?: [...close({
@@ -327,6 +331,7 @@ package data
 			encryption_key?:                string
 			execution_environment?:         string
 			gpu_zonal_redundancy_disabled?: bool
+			health_check_disabled?:         bool
 			labels?: [string]: string
 			max_instance_request_concurrency?: number
 			node_selector?: [...close({
@@ -379,7 +384,6 @@ package data
 				})]
 			})]
 		})]
-		project?: string
 
 		// The Condition of this Service, containing its readiness status,
 		// and detailed error information in case it did not reach a

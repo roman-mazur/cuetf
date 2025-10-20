@@ -49,6 +49,12 @@ package data
 
 		// A reference to the network to which this router belongs.
 		network!: string
+
+		// Additional params passed with the request, but not persisted as
+		// part of resource payload
+		params?: [...close({
+			resource_manager_tags?: [string]: string
+		})]
 		project?: string
 
 		// Region where the router resides.

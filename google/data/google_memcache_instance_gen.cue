@@ -12,6 +12,20 @@ package data
 		// Creation timestamp in RFC3339 text format.
 		create_time?: string
 
+		// Whether Terraform will be prevented from destroying the
+		// instance.
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is not set to false in
+		// Terraform state.
+		// When the field is set to true or unset in Terraform state, a
+		// 'terraform apply'
+		// or 'terraform destroy' that would delete the instance will
+		// fail.
+		// When the field is set to false, deleting the instance is
+		// allowed.
+		deletion_protection?: bool
+
 		// Endpoint for Discovery API
 		discovery_endpoint?: string
 
@@ -22,7 +36,6 @@ package data
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
-		id?: string
 
 		// Resource labels to represent user-provided metadata.
 		//
@@ -32,6 +45,7 @@ package data
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
+		id?: string
 
 		// Maintenance policy for an instance.
 		maintenance_policy?: [...close({
@@ -95,11 +109,11 @@ package data
 
 		// Number of nodes in the memcache instance.
 		node_count?: number
+		project?:    string
 
 		// The region of the Memcache instance. If it is not provided, the
 		// provider region is used.
-		region?:  string
-		project?: string
+		region?: string
 
 		// Contains the name of allocated IP address ranges associated
 		// with

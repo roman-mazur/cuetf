@@ -53,7 +53,7 @@ package res
 		// connected to, for example:
 		// 'projects/123456789/locations/global/mirroringDeploymentGroups/my-dg'.
 		// See https://google.aip.dev/124.
-		mirroring_deployment_group!: string
+		mirroring_deployment_group?: string
 
 		// The ID to use for the endpoint group, which will become the
 		// final component

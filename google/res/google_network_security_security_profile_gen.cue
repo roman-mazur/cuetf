@@ -58,7 +58,8 @@ import "list"
 		terraform_labels?: [string]: string
 
 		// The type of security profile. Possible values:
-		// ["THREAT_PREVENTION", "CUSTOM_MIRRORING", "CUSTOM_INTERCEPT"]
+		// ["THREAT_PREVENTION", "URL_FILTERING", "CUSTOM_MIRRORING",
+		// "CUSTOM_INTERCEPT"]
 		type!: string
 
 		// Time the security profile was updated in UTC.

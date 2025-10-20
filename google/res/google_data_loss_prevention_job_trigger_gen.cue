@@ -158,7 +158,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/actions/$defs/save_findings/$defs/output_config": close({
-		table?: matchN(1, [_#defs."/$defs/inspect_job/$defs/actions/$defs/save_findings/$defs/output_config/$defs/table", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/actions/$defs/save_findings/$defs/output_config/$defs/table"]])
+		storage_path?: matchN(1, [_#defs."/$defs/inspect_job/$defs/actions/$defs/save_findings/$defs/output_config/$defs/storage_path", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/actions/$defs/save_findings/$defs/output_config/$defs/storage_path"]])
+		table?: matchN(1, [_#defs."/$defs/inspect_job/$defs/actions/$defs/save_findings/$defs/output_config/$defs/table", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/actions/$defs/save_findings/$defs/output_config/$defs/table"]])
 
 		// Schema used for writing the findings for Inspect jobs. This
 		// field is only used for
@@ -177,6 +178,13 @@ import "list"
 		// ["BASIC_COLUMNS", "GCS_COLUMNS", "DATASTORE_COLUMNS",
 		// "BIG_QUERY_COLUMNS", "ALL_COLUMNS"]
 		output_schema?: string
+	})
+
+	_#defs: "/$defs/inspect_job/$defs/actions/$defs/save_findings/$defs/output_config/$defs/storage_path": close({
+		// A URL representing a file or path (no wildcards) in Cloud
+		// Storage.
+		// Example: 'gs://[BUCKET_NAME]/dictionary.txt'
+		path!: string
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/actions/$defs/save_findings/$defs/output_config/$defs/table": close({

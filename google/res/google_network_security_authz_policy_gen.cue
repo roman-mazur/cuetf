@@ -121,11 +121,32 @@ import "list"
 	})
 
 	_#defs: "/$defs/http_rules/$defs/from/$defs/not_sources": close({
+		ip_blocks?: matchN(1, [_#defs."/$defs/http_rules/$defs/from/$defs/not_sources/$defs/ip_blocks", [..._#defs."/$defs/http_rules/$defs/from/$defs/not_sources/$defs/ip_blocks"]])
 		principals?: matchN(1, [_#defs."/$defs/http_rules/$defs/from/$defs/not_sources/$defs/principals", [..._#defs."/$defs/http_rules/$defs/from/$defs/not_sources/$defs/principals"]])
 		resources?: matchN(1, [_#defs."/$defs/http_rules/$defs/from/$defs/not_sources/$defs/resources", [..._#defs."/$defs/http_rules/$defs/from/$defs/not_sources/$defs/resources"]])
 	})
 
+	_#defs: "/$defs/http_rules/$defs/from/$defs/not_sources/$defs/ip_blocks": close({
+		// The length of the address range.
+		length!: number
+
+		// The address prefix.
+		prefix!: string
+	})
+
 	_#defs: "/$defs/http_rules/$defs/from/$defs/not_sources/$defs/principals": close({
+		principal?: matchN(1, [_#defs."/$defs/http_rules/$defs/from/$defs/not_sources/$defs/principals/$defs/principal", list.MaxItems(1) & [..._#defs."/$defs/http_rules/$defs/from/$defs/not_sources/$defs/principals/$defs/principal"]])
+
+		// An enum to decide what principal value the principal rule will
+		// match against. If not specified, the PrincipalSelector is
+		// CLIENT_CERT_URI_SAN. Default value: "CLIENT_CERT_URI_SAN"
+		// Possible values: ["PRINCIPAL_SELECTOR_UNSPECIFIED",
+		// "CLIENT_CERT_URI_SAN", "CLIENT_CERT_DNS_NAME_SAN",
+		// "CLIENT_CERT_COMMON_NAME"]
+		principal_selector?: string
+	})
+
+	_#defs: "/$defs/http_rules/$defs/from/$defs/not_sources/$defs/principals/$defs/principal": close({
 		// The input string must have the substring specified here. Note:
 		// empty contains match is not allowed, please use regex instead.
 		// Examples:
@@ -200,11 +221,32 @@ import "list"
 	})
 
 	_#defs: "/$defs/http_rules/$defs/from/$defs/sources": close({
+		ip_blocks?: matchN(1, [_#defs."/$defs/http_rules/$defs/from/$defs/sources/$defs/ip_blocks", [..._#defs."/$defs/http_rules/$defs/from/$defs/sources/$defs/ip_blocks"]])
 		principals?: matchN(1, [_#defs."/$defs/http_rules/$defs/from/$defs/sources/$defs/principals", [..._#defs."/$defs/http_rules/$defs/from/$defs/sources/$defs/principals"]])
 		resources?: matchN(1, [_#defs."/$defs/http_rules/$defs/from/$defs/sources/$defs/resources", [..._#defs."/$defs/http_rules/$defs/from/$defs/sources/$defs/resources"]])
 	})
 
+	_#defs: "/$defs/http_rules/$defs/from/$defs/sources/$defs/ip_blocks": close({
+		// The length of the address range.
+		length!: number
+
+		// The address prefix.
+		prefix!: string
+	})
+
 	_#defs: "/$defs/http_rules/$defs/from/$defs/sources/$defs/principals": close({
+		principal?: matchN(1, [_#defs."/$defs/http_rules/$defs/from/$defs/sources/$defs/principals/$defs/principal", list.MaxItems(1) & [..._#defs."/$defs/http_rules/$defs/from/$defs/sources/$defs/principals/$defs/principal"]])
+
+		// An enum to decide what principal value the principal rule will
+		// match against. If not specified, the PrincipalSelector is
+		// CLIENT_CERT_URI_SAN. Default value: "CLIENT_CERT_URI_SAN"
+		// Possible values: ["PRINCIPAL_SELECTOR_UNSPECIFIED",
+		// "CLIENT_CERT_URI_SAN", "CLIENT_CERT_DNS_NAME_SAN",
+		// "CLIENT_CERT_COMMON_NAME"]
+		principal_selector?: string
+	})
+
+	_#defs: "/$defs/http_rules/$defs/from/$defs/sources/$defs/principals/$defs/principal": close({
 		// The input string must have the substring specified here. Note:
 		// empty contains match is not allowed, please use regex instead.
 		// Examples:

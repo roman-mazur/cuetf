@@ -27,10 +27,10 @@ import "list"
 			})]
 			timestamp?: string
 		})]
+		id?: string
 
 		// Detection logic for profile generation
 		inspect_templates?: [...string]
-		id?: string
 
 		// Output only. The timestamp of the last time this config was
 		// executed
@@ -38,12 +38,15 @@ import "list"
 
 		// Location to create the discovery config in.
 		location!: string
+		actions?: matchN(1, [#actions, [...#actions]])
 
 		// Unique resource name for the DiscoveryConfig, assigned by the
 		// service when the DiscoveryConfig is created.
 		name?: string
-		actions?: matchN(1, [#actions, [...#actions]])
 		org_config?: matchN(1, [#org_config, list.MaxItems(1) & [...#org_config]])
+		other_cloud_starting_location?: matchN(1, [#other_cloud_starting_location, list.MaxItems(1) & [...#other_cloud_starting_location]])
+		targets?: matchN(1, [#targets, [...#targets]])
+		timeouts?: #timeouts
 
 		// The parent of the discovery config in any of the following
 		// formats:
@@ -51,8 +54,6 @@ import "list"
 		// * 'projects/{{project}}/locations/{{location}}'
 		// * 'organizations/{{organization_id}}/locations/{{location}}'
 		parent!: string
-		targets?: matchN(1, [#targets, [...#targets]])
-		timeouts?: #timeouts
 
 		// Required. A status for this configuration Possible values:
 		// ["RUNNING", "PAUSED"]
@@ -65,6 +66,7 @@ import "list"
 	#actions: close({
 		export_data?: matchN(1, [_#defs."/$defs/actions/$defs/export_data", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/export_data"]])
 		pub_sub_notification?: matchN(1, [_#defs."/$defs/actions/$defs/pub_sub_notification", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/pub_sub_notification"]])
+		publish_to_dataplex_catalog?: matchN(1, [_#defs."/$defs/actions/$defs/publish_to_dataplex_catalog", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/publish_to_dataplex_catalog"]])
 		tag_resources?: matchN(1, [_#defs."/$defs/actions/$defs/tag_resources", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/tag_resources"]])
 	})
 
@@ -78,10 +80,15 @@ import "list"
 		project_id?: string
 	})
 
+	#other_cloud_starting_location: close({
+		aws_location?: matchN(1, [_#defs."/$defs/other_cloud_starting_location/$defs/aws_location", list.MaxItems(1) & [..._#defs."/$defs/other_cloud_starting_location/$defs/aws_location"]])
+	})
+
 	#targets: close({
 		big_query_target?: matchN(1, [_#defs."/$defs/targets/$defs/big_query_target", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/big_query_target"]])
 		cloud_sql_target?: matchN(1, [_#defs."/$defs/targets/$defs/cloud_sql_target", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/cloud_sql_target"]])
 		cloud_storage_target?: matchN(1, [_#defs."/$defs/targets/$defs/cloud_storage_target", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/cloud_storage_target"]])
+		other_cloud_target?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target"]])
 		secrets_target?: matchN(1, [_#defs."/$defs/targets/$defs/secrets_target", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/secrets_target"]])
 	})
 
@@ -147,6 +154,8 @@ import "list"
 		minimum_sensitivity_score?: string
 	})
 
+	_#defs: "/$defs/actions/$defs/publish_to_dataplex_catalog": close({})
+
 	_#defs: "/$defs/actions/$defs/tag_resources": close({
 		tag_conditions?: matchN(1, [_#defs."/$defs/actions/$defs/tag_resources/$defs/tag_conditions", [..._#defs."/$defs/actions/$defs/tag_resources/$defs/tag_conditions"]])
 
@@ -182,7 +191,7 @@ import "list"
 	_#defs: "/$defs/actions/$defs/tag_resources/$defs/tag_conditions/$defs/sensitivity_score": close({
 		// The sensitivity score applied to the resource. Possible values:
 		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE",
-		// "SENSITIVITY_HIGH"]
+		// "SENSITIVITY_HIGH", "SENSITIVITY_UNKNOWN"]
 		score!: string
 	})
 
@@ -200,6 +209,18 @@ import "list"
 
 		// The ID of an organization to scan
 		organization_id?: string
+	})
+
+	_#defs: "/$defs/other_cloud_starting_location/$defs/aws_location": close({
+		// The AWS account ID that this discovery config applies to.
+		// Within an organization, you can find the AWS account ID inside
+		// an AWS account ARN. Example:
+		// arn:<partition>:organizations::<management-account-id>:account/<organization-id>/<account-id>
+		account_id?: string
+
+		// All AWS assets stored in Asset Inventory that didn't match
+		// other AWS discovery configs.
+		all_asset_inventory_assets?: bool
 	})
 
 	_#defs: "/$defs/targets/$defs/big_query_target": close({
@@ -526,6 +547,113 @@ import "list"
 	})
 
 	_#defs: "/$defs/targets/$defs/cloud_storage_target/$defs/generation_cadence/$defs/inspect_template_modified_cadence": close({
+		// How frequently data profiles can be updated when the template
+		// is modified. Defaults to never. Possible values:
+		// ["UPDATE_FREQUENCY_NEVER", "UPDATE_FREQUENCY_DAILY",
+		// "UPDATE_FREQUENCY_MONTHLY"]
+		frequency?: string
+	})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target": close({
+		conditions?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/conditions", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/conditions"]])
+		data_source_type?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/data_source_type", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/data_source_type"]])
+		disabled?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/disabled", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/disabled"]])
+		filter?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter"]])
+		generation_cadence?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/generation_cadence", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/generation_cadence"]])
+	})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target/$defs/conditions": close({
+		amazon_s3_bucket_conditions?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/conditions/$defs/amazon_s3_bucket_conditions", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/conditions/$defs/amazon_s3_bucket_conditions"]])
+
+		// Duration format. Minimum age a resource must be before a
+		// profile can be generated. Value must be 1 hour or greater.
+		// Minimum age is not supported for Azure Blob Storage
+		// containers.
+		min_age?: string
+	})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target/$defs/conditions/$defs/amazon_s3_bucket_conditions": close({
+		// Bucket types that should be profiled. Optional. Defaults to
+		// TYPE_ALL_SUPPORTED if unspecified. Possible values:
+		// ["TYPE_ALL_SUPPORTED", "TYPE_GENERAL_PURPOSE"]
+		bucket_types?: [...string]
+
+		// Object classes that should be profiled. Optional. Defaults to
+		// ALL_SUPPORTED_CLASSES if unspecified. Possible values:
+		// ["ALL_SUPPORTED_CLASSES", "STANDARD",
+		// "STANDARD_INFREQUENT_ACCESS", "GLACIER_INSTANT_RETRIEVAL",
+		// "INTELLIGENT_TIERING"]
+		object_storage_classes?: [...string]
+	})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target/$defs/data_source_type": close({
+		data_source?: string
+	})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target/$defs/disabled": close({})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target/$defs/filter": close({
+		collection?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/collection", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/collection"]])
+		others?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/others", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/others"]])
+		single_resource?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/single_resource", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/single_resource"]])
+	})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/collection": close({
+		include_regexes?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/collection/$defs/include_regexes", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/collection/$defs/include_regexes"]])
+	})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/collection/$defs/include_regexes": close({
+		patterns?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/collection/$defs/include_regexes/$defs/patterns", [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/collection/$defs/include_regexes/$defs/patterns"]])
+	})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/collection/$defs/include_regexes/$defs/patterns": close({
+		amazon_s3_bucket_regex?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/collection/$defs/include_regexes/$defs/patterns/$defs/amazon_s3_bucket_regex", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/collection/$defs/include_regexes/$defs/patterns/$defs/amazon_s3_bucket_regex"]])
+	})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/collection/$defs/include_regexes/$defs/patterns/$defs/amazon_s3_bucket_regex": close({
+		aws_account_regex?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/collection/$defs/include_regexes/$defs/patterns/$defs/amazon_s3_bucket_regex/$defs/aws_account_regex", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/collection/$defs/include_regexes/$defs/patterns/$defs/amazon_s3_bucket_regex/$defs/aws_account_regex"]])
+
+		// Regex to test the bucket name against. If empty, all buckets
+		// match.
+		bucket_name_regex?: string
+	})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/collection/$defs/include_regexes/$defs/patterns/$defs/amazon_s3_bucket_regex/$defs/aws_account_regex": close({
+		// Regex to test the AWS account ID against. If empty, all
+		// accounts match. Example:
+		// arn:aws:organizations::123:account/o-b2c3d4/345
+		account_id_regex?: string
+	})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/others": close({})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/single_resource": close({
+		amazon_s3_bucket?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/single_resource/$defs/amazon_s3_bucket", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/single_resource/$defs/amazon_s3_bucket"]])
+	})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/single_resource/$defs/amazon_s3_bucket": close({
+		aws_account?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/single_resource/$defs/amazon_s3_bucket/$defs/aws_account", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/single_resource/$defs/amazon_s3_bucket/$defs/aws_account"]])
+
+		// The bucket name.
+		bucket_name?: string
+	})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target/$defs/filter/$defs/single_resource/$defs/amazon_s3_bucket/$defs/aws_account": close({
+		// AWS account ID.
+		account_id?: string
+	})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target/$defs/generation_cadence": close({
+		inspect_template_modified_cadence?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/generation_cadence/$defs/inspect_template_modified_cadence", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/generation_cadence/$defs/inspect_template_modified_cadence"]])
+
+		// Frequency to update profiles regardless of whether the
+		// underlying resource has changes. Defaults to never. Possible
+		// values: ["UPDATE_FREQUENCY_NEVER", "UPDATE_FREQUENCY_DAILY",
+		// "UPDATE_FREQUENCY_MONTHLY"]
+		refresh_frequency?: string
+	})
+
+	_#defs: "/$defs/targets/$defs/other_cloud_target/$defs/generation_cadence/$defs/inspect_template_modified_cadence": close({
 		// How frequently data profiles can be updated when the template
 		// is modified. Defaults to never. Possible values:
 		// ["UPDATE_FREQUENCY_NEVER", "UPDATE_FREQUENCY_DAILY",

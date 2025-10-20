@@ -62,6 +62,9 @@ import "list"
 		// https://cloud.google.com/run/docs/configuring/custom-audiences.
 		custom_audiences?: [...string]
 
+		// Disables public resolution of the default URI of this service.
+		default_uri_disabled?: bool
+
 		// The deletion time.
 		delete_time?: string
 
@@ -141,9 +144,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-
-		// Email address of the last authenticated modifier.
-		last_modifier?: string
 		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
 		build_config?: matchN(1, [#build_config, list.MaxItems(1) & [...#build_config]])
 		multi_region_settings?: matchN(1, [#multi_region_settings, list.MaxItems(1) & [...#multi_region_settings]])
@@ -151,6 +151,9 @@ import "list"
 		template?: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
 		timeouts?: #timeouts
 		traffic?: matchN(1, [#traffic, [...#traffic]])
+
+		// Email address of the last authenticated modifier.
+		last_modifier?: string
 
 		// Name of the last created revision. See comments in reconciling
 		// for additional information on reconciliation process in Cloud
@@ -378,6 +381,9 @@ import "list"
 
 		// True if GPU zonal redundancy is disabled on this revision.
 		gpu_zonal_redundancy_disabled?: bool
+
+		// Disables health checking containers during deployment.
+		health_check_disabled?: bool
 
 		// Unstructured key value map that can be used to organize and
 		// categorize objects. User-provided labels are shared with

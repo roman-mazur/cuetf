@@ -61,6 +61,8 @@ import "list"
 	})
 
 	#endpoint_config: close({
+		private_service_connect_config?: matchN(1, [_#defs."/$defs/endpoint_config/$defs/private_service_connect_config", list.MaxItems(1) & [..._#defs."/$defs/endpoint_config/$defs/private_service_connect_config"]])
+
 		// If true, the endpoint will be exposed through a dedicated
 		// DNS [Endpoint.dedicated_endpoint_dns]. Your request to the
 		// dedicated DNS
@@ -242,6 +244,47 @@ import "list"
 		// must be the
 		// full resource name of the reservation or reservation block.
 		values?: [...string]
+	})
+
+	_#defs: "/$defs/endpoint_config/$defs/private_service_connect_config": close({
+		// Required. If true, expose the IndexEndpoint via private service
+		// connect.
+		enable_private_service_connect!: bool
+		psc_automation_configs?: matchN(1, [_#defs."/$defs/endpoint_config/$defs/private_service_connect_config/$defs/psc_automation_configs", list.MaxItems(1) & [..._#defs."/$defs/endpoint_config/$defs/private_service_connect_config/$defs/psc_automation_configs"]])
+
+		// A list of Projects from which the forwarding rule will target
+		// the service attachment.
+		project_allowlist?: [...string]
+
+		// Output only. The name of the generated service attachment
+		// resource.
+		// This is only populated if the endpoint is deployed with
+		// PrivateServiceConnect.
+		service_attachment?: string
+	})
+
+	_#defs: "/$defs/endpoint_config/$defs/private_service_connect_config/$defs/psc_automation_configs": close({
+		// Output only. Error message if the PSC service automation
+		// failed.
+		error_message?: string
+
+		// Output only. Forwarding rule created by the PSC service
+		// automation.
+		forwarding_rule?: string
+
+		// Output only. IP address rule created by the PSC service
+		// automation.
+		ip_address?: string
+
+		// Required. The full name of the Google Compute Engine network.
+		// Format: projects/{project}/global/networks/{network}.
+		network!: string
+
+		// Required. Project id used to create forwarding rule.
+		project_id!: string
+
+		// Output only. The state of the PSC service automation.
+		state?: string
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec": close({
