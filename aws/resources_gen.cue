@@ -180,6 +180,13 @@ _res: aws_bedrockagent_data_source: res.#aws_bedrockagent_data_source
 _res: aws_bedrockagent_flow: res.#aws_bedrockagent_flow
 _res: aws_bedrockagent_knowledge_base: res.#aws_bedrockagent_knowledge_base
 _res: aws_bedrockagent_prompt: res.#aws_bedrockagent_prompt
+_res: aws_bedrockagentcore_agent_runtime_endpoint: res.#aws_bedrockagentcore_agent_runtime_endpoint
+_res: aws_bedrockagentcore_agent_runtime: res.#aws_bedrockagentcore_agent_runtime
+_res: aws_bedrockagentcore_api_key_credential_provider: res.#aws_bedrockagentcore_api_key_credential_provider
+_res: aws_bedrockagentcore_browser: res.#aws_bedrockagentcore_browser
+_res: aws_bedrockagentcore_code_interpreter: res.#aws_bedrockagentcore_code_interpreter
+_res: aws_bedrockagentcore_gateway: res.#aws_bedrockagentcore_gateway
+_res: aws_bedrockagentcore_gateway_target: res.#aws_bedrockagentcore_gateway_target
 _res: aws_budgets_budget_action: res.#aws_budgets_budget_action
 _res: aws_budgets_budget: res.#aws_budgets_budget
 _res: aws_ce_anomaly_monitor: res.#aws_ce_anomaly_monitor
