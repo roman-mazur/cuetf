@@ -8,6 +8,7 @@ package data
 		datastore_type?: string
 		id?:             string
 		identity?: [...close({
+			identity_ids?: [...string]
 			principal_id?: string
 			tenant_id?:    string
 			type?:         string

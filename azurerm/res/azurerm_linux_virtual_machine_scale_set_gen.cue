@@ -6,8 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_linux_virtual_machine_scale_set")
 	close({
-		admin_password?: string
-		additional_capabilities?: matchN(1, [#additional_capabilities, list.MaxItems(1) & [...#additional_capabilities]])
+		admin_password?:                                    string
 		admin_username!:                                    string
 		capacity_reservation_group_id?:                     string
 		computer_name_prefix?:                              string
@@ -25,35 +24,38 @@ import "list"
 		instances?:                                         number
 		location!:                                          string
 		max_bid_price?:                                     number
-		name!:                                              string
-		overprovision?:                                     bool
-		platform_fault_domain_count?:                       number
-		admin_ssh_key?: matchN(1, [#admin_ssh_key, [...#admin_ssh_key]])
-		priority?: string
-		automatic_instance_repair?: matchN(1, [#automatic_instance_repair, list.MaxItems(1) & [...#automatic_instance_repair]])
+		additional_capabilities?: matchN(1, [#additional_capabilities, list.MaxItems(1) & [...#additional_capabilities]])
+		name!:                         string
+		overprovision?:                bool
+		platform_fault_domain_count?:  number
+		priority?:                     string
 		provision_vm_agent?:           bool
 		proximity_placement_group_id?: string
-		resource_group_name!:          string
+		admin_ssh_key?: matchN(1, [#admin_ssh_key, [...#admin_ssh_key]])
+		resilient_vm_creation_enabled?: bool
+		automatic_instance_repair?: matchN(1, [#automatic_instance_repair, list.MaxItems(1) & [...#automatic_instance_repair]])
+		resilient_vm_deletion_enabled?: bool
 		automatic_os_upgrade_policy?: matchN(1, [#automatic_os_upgrade_policy, list.MaxItems(1) & [...#automatic_os_upgrade_policy]])
-		secure_boot_enabled?: bool
 		boot_diagnostics?: matchN(1, [#boot_diagnostics, list.MaxItems(1) & [...#boot_diagnostics]])
+		resource_group_name!:    string
+		secure_boot_enabled?:    bool
 		single_placement_group?: bool
-		sku!:                    string
-		source_image_id?:        string
+		data_disk?: matchN(1, [#data_disk, [...#data_disk]])
+		sku!:             string
+		source_image_id?: string
 		tags?: [string]: string
 		unique_id?:    string
 		upgrade_mode?: string
 		user_data?:    string
-		vtpm_enabled?: bool
-		data_disk?: matchN(1, [#data_disk, [...#data_disk]])
 		extension?: matchN(1, [#extension, [...#extension]])
 		gallery_application?: matchN(1, [#gallery_application, list.MaxItems(100) & [...#gallery_application]])
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		network_interface?: matchN(1, [#network_interface, [_, ...] & [...#network_interface]])
 		os_disk?: matchN(1, [#os_disk, list.MaxItems(1) & [_, ...] & [...#os_disk]])
 		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
-		zone_balance?: bool
 		rolling_upgrade_policy?: matchN(1, [#rolling_upgrade_policy, list.MaxItems(1) & [...#rolling_upgrade_policy]])
+		vtpm_enabled?: bool
+		zone_balance?: bool
 		zones?: [...string]
 		scale_in?: matchN(1, [#scale_in, list.MaxItems(1) & [...#scale_in]])
 		secret?: matchN(1, [#secret, [...#secret]])
