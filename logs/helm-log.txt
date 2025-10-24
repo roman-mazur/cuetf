@@ -1,6 +1,6 @@
 1/1 provider at helm
 DONE: provider at helm
-1/1 helm_release at helm/res
 1/1 helm_template at helm/data
+1/1 helm_release at helm/res
 DONE: helm_template at helm/data
 DONE: helm_release at helm/res
