@@ -15,14 +15,20 @@ function terraUpdate() {
 
 function process() {
   provider=$1
-  echo "Processing $provider..."
+  version=$(go run ./internal/cmd/pversion "$provider")
+  if [ -z "$version" ]; then
+    echo "failed to obtain provider version"
+    exit 1
+  fi
+
+  echo "Processing $provider ($version)..."
   (cd "$provider/internal" && terraUpdate "$provider")
 
-  exclude=$(cat "$provider/exclude" || echo "")
+  exclude=$(cat "$provider/exclude" 2>/dev/null || echo "")
   if [ -n "$exclude" ]; then
     exclude="-e $exclude"
   fi
-  go run ./cmd/gen $exclude "$provider/internal/schema/schema.json" . 2> logs/"$provider-log.txt" &
+  go run ./cmd/gen $exclude --version="$version" "$provider/internal/schema/schema.json" . 2> logs/"$provider-log.txt" &
   defs_pid=$!
 
   (cd "$provider" && ([ -f import.sh ] && ./import.sh || exit 0))

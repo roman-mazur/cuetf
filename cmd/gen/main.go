@@ -18,6 +18,7 @@ var (
 	logTime  = flag.Bool("t", false, "Log time")
 	defs     = flag.Bool("defs", true, "Whether to regenerate all the defs")
 	mappings = flag.Bool("mappings", true, "Whether to regenerate the mappings")
+	version  = flag.String("version", "", "Provider schema version")
 )
 
 func main() {
@@ -28,6 +29,7 @@ func main() {
 	cfg := &gen.Config{
 		SchemaPath:       flag.Arg(0),
 		OutputPath:       flag.Arg(1),
+		Version:          *version,
 		GenerateDefs:     *defs,
 		GenerateMappings: *mappings,
 		Verbose:          *verbose,

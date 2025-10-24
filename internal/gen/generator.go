@@ -18,6 +18,7 @@ import (
 type Config struct {
 	SchemaPath string
 	OutputPath string
+	Version    string
 
 	GenerateDefs     bool
 	GenerateMappings bool
@@ -59,6 +60,13 @@ func Generate(cfg *Config) error {
 
 func generateDefs(cfg *Config, data providerSchema, providerPath string) {
 	processSchema(cfg, "provider", data.Provider, providerPath, "1/1")
+	if cfg.Version != "" {
+		providerName := filepath.Base(providerPath)
+		createFile(
+			filepath.Join(providerPath, "version_gen.cue"),
+			fmt.Sprintf("package %s\n\n#Version: %q\n", providerName, cfg.Version),
+		)
+	}
 
 	done := make(chan struct{})
 	go func() {
