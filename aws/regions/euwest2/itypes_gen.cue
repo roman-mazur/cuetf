@@ -36,7 +36,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  125.0
             MaximumIops:              8000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "High"
@@ -108,7 +110,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  250.0
             MaximumIops:              16000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "High"
@@ -180,7 +184,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  500.0
             MaximumIops:              32000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -252,7 +258,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  62.5
             MaximumIops:              4000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Moderate"
@@ -324,7 +332,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  93.75
             MaximumIops:              6000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "High"
@@ -396,7 +406,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -471,7 +483,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -546,7 +560,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -621,7 +637,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -696,7 +714,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -771,7 +791,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -846,7 +868,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -918,7 +942,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -990,7 +1016,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -1065,7 +1093,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -1140,7 +1170,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  787.5
             MaximumIops:              26700
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -1215,7 +1247,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -1290,7 +1324,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  396.25
             MaximumIops:              13300
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -1365,7 +1401,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  396.25
             MaximumIops:              13300
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -1440,7 +1478,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  396.25
             MaximumIops:              13300
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -1515,7 +1555,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  396.25
             MaximumIops:              13300
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -1590,7 +1632,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  396.25
             MaximumIops:              13300
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -1675,7 +1719,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -1760,7 +1806,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -1845,7 +1893,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -1930,7 +1980,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -2015,7 +2067,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -2100,7 +2154,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -2185,7 +2241,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -2267,7 +2325,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -2349,7 +2409,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -2424,7 +2486,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -2502,7 +2566,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -2577,7 +2643,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -2652,7 +2720,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -2730,7 +2800,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -2802,7 +2874,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -2877,7 +2951,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -2953,7 +3029,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "18.75 Gigabit"
@@ -3029,7 +3107,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -3104,7 +3184,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "37.5 Gigabit"
@@ -3180,7 +3262,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -3255,7 +3339,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -3330,7 +3416,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -3409,7 +3497,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -3485,7 +3575,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12.5 Gigabit"
@@ -3561,7 +3653,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -3633,7 +3727,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -3709,7 +3805,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -3784,7 +3882,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1781.25
             MaximumIops:              50000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -3859,7 +3959,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -3934,7 +4036,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -4009,7 +4113,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -4084,7 +4190,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -4159,7 +4267,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -4232,7 +4342,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -4304,7 +4416,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -4376,7 +4490,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -4461,7 +4577,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1781.25
             MaximumIops:              50000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -4546,7 +4664,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -4631,7 +4751,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -4716,7 +4838,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -4801,7 +4925,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -4886,7 +5012,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -4969,7 +5097,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -5051,7 +5181,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -5133,7 +5265,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -5208,7 +5342,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3562.5
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "75 Gigabit"
@@ -5283,7 +5419,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  4750.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -5361,7 +5499,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -5436,7 +5576,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -5511,7 +5653,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -5586,7 +5730,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -5661,7 +5807,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 16 Gigabit"
@@ -5736,7 +5884,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -5811,7 +5961,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "18.75 Gigabit"
@@ -5888,7 +6040,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -5965,7 +6119,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "37.5 Gigabit"
@@ -6042,7 +6198,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -6119,7 +6277,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -6199,7 +6359,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -6276,7 +6438,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12.5 Gigabit"
@@ -6353,7 +6517,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -6427,7 +6593,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -6503,7 +6671,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -6590,7 +6760,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "18.75 Gigabit"
@@ -6677,7 +6849,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -6764,7 +6938,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "37.5 Gigabit"
@@ -6851,7 +7027,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -6938,7 +7116,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -7028,7 +7208,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -7115,7 +7297,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12.5 Gigabit"
@@ -7202,7 +7386,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -7286,7 +7472,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -7372,7 +7560,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -7449,7 +7639,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  4687.5
             MaximumIops:              150000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "75 Gigabit"
@@ -7526,7 +7718,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  6250.0
             MaximumIops:              200000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -7603,7 +7797,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  9375.0
             MaximumIops:              300000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "150 Gigabit"
@@ -7680,7 +7876,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3125.0
             MaximumIops:              100000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 40 Gigabit"
@@ -7757,7 +7955,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  12500.0
             MaximumIops:              400000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "200 Gigabit"
@@ -7846,7 +8046,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3125.0
             MaximumIops:              100000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 50 Gigabit"
@@ -7923,7 +8125,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3125.0
             MaximumIops:              100000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -8000,7 +8204,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3125.0
             MaximumIops:              100000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -8074,7 +8280,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  12500.0
             MaximumIops:              400000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "200 Gigabit"
@@ -8156,7 +8364,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3125.0
             MaximumIops:              100000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 30 Gigabit"
@@ -8233,7 +8443,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "18.75 Gigabit"
@@ -8308,7 +8520,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -8383,7 +8597,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "37.5 Gigabit"
@@ -8458,7 +8674,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -8533,7 +8751,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 88
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -8608,7 +8828,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -8686,7 +8908,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -8761,7 +8985,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "12.5 Gigabit"
@@ -8836,7 +9062,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -8909,7 +9137,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -8981,7 +9211,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 79
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -9056,7 +9288,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -9131,7 +9365,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "22.5 Gigabit"
@@ -9206,7 +9442,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "30 Gigabit"
@@ -9284,7 +9522,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -9359,7 +9599,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -9434,7 +9676,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "15 Gigabit"
@@ -9509,7 +9753,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -9582,7 +9828,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -9654,7 +9902,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "30 Gigabit"
@@ -9729,7 +9979,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -9814,7 +10066,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "22.5 Gigabit"
@@ -9899,7 +10153,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "30 Gigabit"
@@ -9987,7 +10243,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -10072,7 +10330,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -10157,7 +10417,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "15 Gigabit"
@@ -10242,7 +10504,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -10325,7 +10589,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -10407,7 +10673,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "30 Gigabit"
@@ -10492,7 +10760,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -10567,7 +10837,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 18.75 Gigabit"
@@ -10642,7 +10914,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -10717,7 +10991,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -10792,7 +11068,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -10867,7 +11145,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -10942,7 +11222,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -11017,7 +11299,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -11092,7 +11376,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "18.75 Gigabit"
@@ -11167,7 +11453,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -11242,7 +11530,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "37.5 Gigabit"
@@ -11317,7 +11607,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -11392,7 +11684,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -11470,7 +11764,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -11545,7 +11841,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "12.5 Gigabit"
@@ -11620,7 +11918,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -11692,7 +11992,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 39
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "37.5 Gigabit"
@@ -11761,7 +12063,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 79
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -11836,7 +12140,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -11911,7 +12217,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "22.5 Gigabit"
@@ -11987,7 +12295,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "30 Gigabit"
@@ -12063,7 +12373,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "40 Gigabit"
@@ -12142,7 +12454,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -12218,7 +12532,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -12297,7 +12613,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -12373,7 +12691,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "15 Gigabit"
@@ -12449,7 +12769,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -12523,7 +12845,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -12596,7 +12920,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 39
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "40 Gigabit"
@@ -12669,7 +12995,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 79
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -12745,7 +13073,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -12831,7 +13161,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  125.0
             MaximumIops:              8000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "High"
@@ -12913,7 +13245,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  250.0
             MaximumIops:              16000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "High"
@@ -12995,7 +13329,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  500.0
             MaximumIops:              32000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -13077,7 +13413,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  93.75
             MaximumIops:              6000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Moderate"
@@ -13159,7 +13497,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  350.0
             MaximumIops:              15000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 21
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -13244,7 +13584,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  350.0
             MaximumIops:              15000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 15
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -13329,7 +13671,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  625.0
             MaximumIops:              30000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 3
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -13414,7 +13758,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  350.0
             MaximumIops:              15000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 24
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -13499,7 +13845,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  212.5
             MaximumIops:              12000
         }
-        NvmeSupport: "supported"
+        NvmeSupport:           "supported"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -13591,7 +13939,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  437.5
             MaximumIops:              44000
         }
-        NvmeSupport: "supported"
+        NvmeSupport:           "supported"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -13683,7 +14033,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -13779,7 +14131,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  7500.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -13878,7 +14232,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  937.5
             MaximumIops:              30000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "12.5 Gigabit"
@@ -13974,7 +14330,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  787.5
             MaximumIops:              26667
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 21
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -14067,7 +14425,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  396.25
             MaximumIops:              13333
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -14160,7 +14520,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  396.25
             MaximumIops:              13333
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -14253,7 +14615,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  396.25
             MaximumIops:              13333
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 24
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "15 Gigabit"
@@ -14346,7 +14710,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  396.25
             MaximumIops:              13333
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -14439,7 +14805,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 22
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -14538,7 +14906,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -14637,7 +15007,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  437.5
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -14733,7 +15105,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -14829,7 +15203,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -14925,7 +15301,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -15021,7 +15399,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  437.5
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -15115,7 +15495,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2000.0
             MaximumIops:              65000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 22
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "40 Gigabit"
@@ -15212,7 +15594,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2000.0
             MaximumIops:              65000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -15309,7 +15693,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 22
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -15406,7 +15792,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  437.5
             MaximumIops:              15000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -15500,7 +15888,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 9
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -15597,7 +15987,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -15691,7 +16083,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2000.0
             MaximumIops:              65000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -15788,7 +16182,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  437.5
             MaximumIops:              15000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -15884,7 +16280,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "40 Gigabit"
@@ -15983,7 +16381,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -16082,7 +16482,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -16181,7 +16583,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  625.0
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -16277,7 +16681,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  7500.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -16376,7 +16782,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1000.0
             MaximumIops:              32000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -16472,7 +16880,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2000.0
             MaximumIops:              64000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -16571,7 +16981,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  625.0
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -16667,7 +17079,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  625.0
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -16763,7 +17177,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  750.0
             MaximumIops:              24000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -16859,7 +17275,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  625.0
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -16955,7 +17373,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  625.0
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -17051,7 +17471,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1000.0
             MaximumIops:              32000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -17147,7 +17569,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2000.0
             MaximumIops:              64000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -17246,7 +17670,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1000.0
             MaximumIops:              32000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -17342,7 +17768,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1750.0
             MaximumIops:              65000
         }
-        NvmeSupport: "supported"
+        NvmeSupport:           "supported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -17424,7 +17852,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  212.5
             MaximumIops:              12000
         }
-        NvmeSupport: "supported"
+        NvmeSupport:           "supported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -17506,7 +17936,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  437.5
             MaximumIops:              16000
         }
-        NvmeSupport: "supported"
+        NvmeSupport:           "supported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -17588,7 +18020,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  875.0
             MaximumIops:              32500
         }
-        NvmeSupport: "supported"
+        NvmeSupport:           "supported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -17670,7 +18104,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  53.125
             MaximumIops:              3000
         }
-        NvmeSupport: "supported"
+        NvmeSupport:           "supported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -17752,7 +18188,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  106.25
             MaximumIops:              6000
         }
-        NvmeSupport: "supported"
+        NvmeSupport:           "supported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -17834,7 +18272,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -17922,7 +18362,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 19
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -18010,7 +18452,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -18095,7 +18539,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -18180,7 +18626,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -18265,7 +18713,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -18347,7 +18797,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -18432,7 +18884,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -18517,7 +18971,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 24
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "28.12 Gigabit"
@@ -18602,7 +19058,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "37.5 Gigabit"
@@ -18687,7 +19145,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 21
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "56.25 Gigabit"
@@ -18772,7 +19232,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12 Gigabit"
@@ -18857,7 +19319,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 19
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "75 Gigabit"
@@ -18945,7 +19409,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -19030,7 +19496,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "18.75 Gigabit"
@@ -19115,7 +19583,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -19197,7 +19667,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "75 Gigabit"
@@ -19282,7 +19754,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -19367,7 +19841,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 28 Gigabit"
@@ -19452,7 +19928,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 37.5 Gigabit"
@@ -19537,7 +20015,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 56.25 Gigabit"
@@ -19625,7 +20105,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12 Gigabit"
@@ -19710,7 +20192,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  7500.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 100 Gigabit"
@@ -19798,7 +20282,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -19883,7 +20369,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -19968,7 +20456,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -20050,7 +20540,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 39
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 56.25 Gigabit"
@@ -20129,7 +20621,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  7500.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 79
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 100 Gigabit"
@@ -20214,7 +20708,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -20299,7 +20795,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 50 Gigabit"
@@ -20384,7 +20882,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2812.5
             MaximumIops:              90000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 75 Gigabit"
@@ -20469,7 +20969,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 100 Gigabit"
@@ -20554,7 +21056,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -20639,7 +21143,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -20724,7 +21230,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  7500.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -20812,7 +21320,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -20897,7 +21407,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -20979,7 +21491,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 39
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 100 Gigabit"
@@ -21058,7 +21572,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  7500.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 79
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -21143,7 +21659,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -21175,6 +21693,873 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
     SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "unsupported"
+}, {
+    InstanceType:      "i8g.12xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["arm64"]
+        SustainedClockSpeedInGhz: 2.8
+        Manufacturer:             "AWS"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          48
+        DefaultCores:          48
+        DefaultThreadsPerCore: 1
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 393216
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 11250
+        Disks: [{
+            SizeInGB: 3750
+            Count:    3
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  15000
+            BaselineThroughputInMBps: 1875.0
+            BaselineIops:             60000
+            MaximumBandwidthInMbps:   15000
+            MaximumThroughputInMBps:  1875.0
+            MaximumIops:              60000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 28.12 Gigabit"
+        MaximumNetworkInterfaces: 8
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 28.12 Gigabit"
+            MaximumNetworkInterfaces:         8
+            BaselineBandwidthInGbps:          22.5
+            PeakBandwidthInGbps:              28.125
+            DefaultEnaQueueCountPerInterface: 8
+        }]
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "unsupported"
+}, {
+    InstanceType:      "i8g.16xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["arm64"]
+        SustainedClockSpeedInGhz: 2.8
+        Manufacturer:             "AWS"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          64
+        DefaultCores:          64
+        DefaultThreadsPerCore: 1
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 524288
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 15000
+        Disks: [{
+            SizeInGB: 3750
+            Count:    4
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  20000
+            BaselineThroughputInMBps: 2500.0
+            BaselineIops:             80000
+            MaximumBandwidthInMbps:   20000
+            MaximumThroughputInMBps:  2500.0
+            MaximumIops:              80000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 37.5 Gigabit"
+        MaximumNetworkInterfaces: 15
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 37.5 Gigabit"
+            MaximumNetworkInterfaces:         15
+            BaselineBandwidthInGbps:          30.0
+            PeakBandwidthInGbps:              37.5
+            DefaultEnaQueueCountPerInterface: 8
+        }]
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "unsupported"
+}, {
+    InstanceType:      "i8g.24xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["arm64"]
+        SustainedClockSpeedInGhz: 2.8
+        Manufacturer:             "AWS"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          96
+        DefaultCores:          96
+        DefaultThreadsPerCore: 1
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 786432
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 22500
+        Disks: [{
+            SizeInGB: 3750
+            Count:    6
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  30000
+            BaselineThroughputInMBps: 3750.0
+            BaselineIops:             120000
+            MaximumBandwidthInMbps:   30000
+            MaximumThroughputInMBps:  3750.0
+            MaximumIops:              120000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 56.25 Gigabit"
+        MaximumNetworkInterfaces: 15
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 56.25 Gigabit"
+            MaximumNetworkInterfaces:         15
+            BaselineBandwidthInGbps:          45.0
+            PeakBandwidthInGbps:              56.25
+            DefaultEnaQueueCountPerInterface: 16
+        }]
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "unsupported"
+}, {
+    InstanceType:      "i8g.2xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["arm64"]
+        SustainedClockSpeedInGhz: 2.8
+        Manufacturer:             "AWS"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          8
+        DefaultCores:          8
+        DefaultThreadsPerCore: 1
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 65536
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 1875
+        Disks: [{
+            SizeInGB: 1875
+            Count:    1
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  2500
+            BaselineThroughputInMBps: 312.5
+            BaselineIops:             10000
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 12 Gigabit"
+        MaximumNetworkInterfaces: 4
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 12 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          4.688
+            PeakBandwidthInGbps:              12.0
+            DefaultEnaQueueCountPerInterface: 8
+        }]
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "unsupported"
+}, {
+    InstanceType:      "i8g.48xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["arm64"]
+        SustainedClockSpeedInGhz: 2.8
+        Manufacturer:             "AWS"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          192
+        DefaultCores:          192
+        DefaultThreadsPerCore: 1
+        ValidCores: [4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 184, 186, 188, 190, 192]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 1572864
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 45000
+        Disks: [{
+            SizeInGB: 3750
+            Count:    12
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  60000
+            BaselineThroughputInMBps: 7500.0
+            BaselineIops:             240000
+            MaximumBandwidthInMbps:   60000
+            MaximumThroughputInMBps:  7500.0
+            MaximumIops:              240000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 100 Gigabit"
+        MaximumNetworkInterfaces: 15
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 100 Gigabit"
+            MaximumNetworkInterfaces:         15
+            BaselineBandwidthInGbps:          90.0
+            PeakBandwidthInGbps:              100.0
+            DefaultEnaQueueCountPerInterface: 16
+        }]
+        Ipv4AddressesPerInterface: 50
+        Ipv6AddressesPerInterface: 50
+        Ipv6Supported:             true
+        EnaSupport:                "required"
+        EfaSupported:              true
+        EfaInfo: {
+            MaximumEfaInterfaces: 1
+        }
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "unsupported"
+}, {
+    InstanceType:      "i8g.4xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["arm64"]
+        SustainedClockSpeedInGhz: 2.8
+        Manufacturer:             "AWS"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          16
+        DefaultCores:          16
+        DefaultThreadsPerCore: 1
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 131072
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 3750
+        Disks: [{
+            SizeInGB: 3750
+            Count:    1
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  5000
+            BaselineThroughputInMBps: 625.0
+            BaselineIops:             20000
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 25 Gigabit"
+        MaximumNetworkInterfaces: 8
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 25 Gigabit"
+            MaximumNetworkInterfaces:         8
+            BaselineBandwidthInGbps:          9.375
+            PeakBandwidthInGbps:              25.0
+            DefaultEnaQueueCountPerInterface: 8
+        }]
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "unsupported"
+}, {
+    InstanceType:      "i8g.8xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["arm64"]
+        SustainedClockSpeedInGhz: 2.8
+        Manufacturer:             "AWS"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          32
+        DefaultCores:          32
+        DefaultThreadsPerCore: 1
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 262144
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 7500
+        Disks: [{
+            SizeInGB: 3750
+            Count:    2
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  10000
+            BaselineThroughputInMBps: 1250.0
+            BaselineIops:             40000
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 25 Gigabit"
+        MaximumNetworkInterfaces: 8
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 25 Gigabit"
+            MaximumNetworkInterfaces:         8
+            BaselineBandwidthInGbps:          15.0
+            PeakBandwidthInGbps:              25.0
+            DefaultEnaQueueCountPerInterface: 8
+        }]
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "unsupported"
+}, {
+    InstanceType:      "i8g.large"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["arm64"]
+        SustainedClockSpeedInGhz: 2.8
+        Manufacturer:             "AWS"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          2
+        DefaultCores:          2
+        DefaultThreadsPerCore: 1
+        ValidCores: [1, 2]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 16384
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 468
+        Disks: [{
+            SizeInGB: 468
+            Count:    1
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  625
+            BaselineThroughputInMBps: 78.125
+            BaselineIops:             2500
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 10 Gigabit"
+        MaximumNetworkInterfaces: 3
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 10 Gigabit"
+            MaximumNetworkInterfaces:         3
+            BaselineBandwidthInGbps:          1.172
+            PeakBandwidthInGbps:              10.0
+            DefaultEnaQueueCountPerInterface: 2
+        }]
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "unsupported"
+}, {
+    InstanceType:      "i8g.metal-24xl"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal: true
+    ProcessorInfo: {
+        SupportedArchitectures: ["arm64"]
+        SustainedClockSpeedInGhz: 2.8
+        Manufacturer:             "AWS"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          96
+        DefaultCores:          96
+        DefaultThreadsPerCore: 1
+    }
+    MemoryInfo: {
+        SizeInMiB: 786432
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 22500
+        Disks: [{
+            SizeInGB: 3750
+            Count:    6
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  30000
+            BaselineThroughputInMBps: 3750.0
+            BaselineIops:             120000
+            MaximumBandwidthInMbps:   30000
+            MaximumThroughputInMBps:  3750.0
+            MaximumIops:              120000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 39
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 56.25 Gigabit"
+        MaximumNetworkInterfaces: 15
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 56.25 Gigabit"
+            MaximumNetworkInterfaces:         15
+            BaselineBandwidthInGbps:          45.0
+            PeakBandwidthInGbps:              56.25
+            DefaultEnaQueueCountPerInterface: 32
+        }]
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["uefi"]
+    NitroEnclavesSupport:   "unsupported"
+    NitroTpmSupport:        "unsupported"
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "unsupported"
+}, {
+    InstanceType:      "i8g.xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["arm64"]
+        SustainedClockSpeedInGhz: 2.8
+        Manufacturer:             "AWS"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          4
+        DefaultCores:          4
+        DefaultThreadsPerCore: 1
+        ValidCores: [1, 2, 3, 4]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 32768
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 937
+        Disks: [{
+            SizeInGB: 937
+            Count:    1
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  1250
+            BaselineThroughputInMBps: 156.25
+            BaselineIops:             5000
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 10 Gigabit"
+        MaximumNetworkInterfaces: 4
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 10 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          2.344
+            PeakBandwidthInGbps:              10.0
+            DefaultEnaQueueCountPerInterface: 4
+        }]
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["uefi"]
     NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
@@ -21228,7 +22613,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -21313,7 +22700,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -21395,7 +22784,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -21477,7 +22868,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -21559,7 +22952,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -21641,7 +23036,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -21713,7 +23110,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 11
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -21816,7 +23215,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -21916,7 +23317,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -22016,7 +23419,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -22116,7 +23521,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 28
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -22216,7 +23623,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  7500.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 28
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -22316,7 +23725,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -22416,7 +23827,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -22526,7 +23939,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -22608,7 +24023,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -22690,7 +24107,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -22772,7 +24191,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -22854,7 +24275,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -22936,7 +24359,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -23008,7 +24433,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  500.0
             MaximumIops:              32000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -23080,7 +24507,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              65000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -23152,7 +24581,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  125.0
             MaximumIops:              8000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "High"
@@ -23224,7 +24655,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  250.0
             MaximumIops:              16000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "High"
@@ -23296,7 +24729,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  56.25
             MaximumIops:              3600
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Moderate"
@@ -23368,7 +24803,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  93.75
             MaximumIops:              6000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "High"
@@ -23440,7 +24877,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -23515,7 +24954,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1700.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -23590,7 +25031,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -23665,7 +25108,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -23740,7 +25185,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -23815,7 +25262,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  850.0
             MaximumIops:              30000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -23890,7 +25339,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -23962,7 +25413,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -24034,7 +25487,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -24109,7 +25564,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  847.5
             MaximumIops:              30000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -24184,7 +25641,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -24259,7 +25718,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1718.75
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -24334,7 +25795,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  360.0
             MaximumIops:              16000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -24409,7 +25872,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  360.0
             MaximumIops:              16000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -24484,7 +25949,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -24559,7 +26026,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  360.0
             MaximumIops:              16000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -24634,7 +26103,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  360.0
             MaximumIops:              16000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -24719,7 +26190,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  847.5
             MaximumIops:              30000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -24804,7 +26277,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -24889,7 +26364,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1718.75
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -24974,7 +26451,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  360.0
             MaximumIops:              16000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -25059,7 +26538,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  360.0
             MaximumIops:              16000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -25144,7 +26625,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -25229,7 +26712,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  360.0
             MaximumIops:              16000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -25314,7 +26799,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  360.0
             MaximumIops:              16000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -25399,7 +26886,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -25484,7 +26973,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1700.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -25569,7 +27060,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -25654,7 +27147,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -25739,7 +27234,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -25824,7 +27321,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  850.0
             MaximumIops:              30000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -25909,7 +27408,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -25991,7 +27492,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -26073,7 +27576,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -26148,7 +27653,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "18.75 Gigabit"
@@ -26223,7 +27730,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -26298,7 +27807,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "37.5 Gigabit"
@@ -26374,7 +27885,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -26449,7 +27962,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -26524,7 +28039,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -26603,7 +28120,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -26679,7 +28198,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12.5 Gigabit"
@@ -26755,7 +28276,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -26827,7 +28350,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -26903,7 +28428,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -26978,7 +28505,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1781.25
             MaximumIops:              50000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -27053,7 +28582,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -27128,7 +28659,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -27203,7 +28736,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -27278,7 +28813,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -27353,7 +28890,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -27426,7 +28965,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -27498,7 +29039,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -27570,7 +29113,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -27655,7 +29200,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1781.25
             MaximumIops:              50000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -27740,7 +29287,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -27825,7 +29374,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -27910,7 +29461,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -27995,7 +29548,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -28080,7 +29635,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -28163,7 +29720,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -28245,7 +29804,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -28327,7 +29888,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -28402,7 +29965,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "18.75 Gigabit"
@@ -28479,7 +30044,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -28556,7 +30123,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "37.5 Gigabit"
@@ -28633,7 +30202,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -28710,7 +30281,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -28790,7 +30363,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -28867,7 +30442,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12.5 Gigabit"
@@ -28944,7 +30521,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -29018,7 +30597,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -29094,7 +30675,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -29181,7 +30764,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "18.75 Gigabit"
@@ -29268,7 +30853,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -29355,7 +30942,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "37.5 Gigabit"
@@ -29442,7 +31031,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -29529,7 +31120,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -29619,7 +31212,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -29706,7 +31301,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12.5 Gigabit"
@@ -29793,7 +31390,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -29877,7 +31476,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -29963,7 +31564,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -30040,7 +31643,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "22.5 Gigabit"
@@ -30115,7 +31720,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "30 Gigabit"
@@ -30193,7 +31800,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -30268,7 +31877,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -30343,7 +31954,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "15 Gigabit"
@@ -30418,7 +32031,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -30491,7 +32106,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -30563,7 +32180,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "30 Gigabit"
@@ -30638,7 +32257,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -30713,7 +32334,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 18.75 Gigabit"
@@ -30788,7 +32411,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -30863,7 +32488,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -30938,7 +32565,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -31013,7 +32642,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -31088,7 +32719,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -31163,7 +32796,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -31238,7 +32873,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "18.75 Gigabit"
@@ -31313,7 +32950,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -31388,7 +33027,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "37.5 Gigabit"
@@ -31463,7 +33104,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -31538,7 +33181,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -31616,7 +33261,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -31691,7 +33338,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "12.5 Gigabit"
@@ -31766,7 +33415,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -31838,7 +33489,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 39
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "37.5 Gigabit"
@@ -31907,7 +33560,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 79
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -31982,7 +33637,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -32057,7 +33714,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "22.5 Gigabit"
@@ -32133,7 +33792,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "30 Gigabit"
@@ -32209,7 +33870,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "40 Gigabit"
@@ -32288,7 +33951,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -32364,7 +34029,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -32443,7 +34110,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -32519,7 +34188,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "15 Gigabit"
@@ -32595,7 +34266,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -32669,7 +34342,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -32742,7 +34417,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 39
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "40 Gigabit"
@@ -32815,7 +34492,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 79
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -32891,7 +34570,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -32977,7 +34658,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "22.5 Gigabit"
@@ -33063,7 +34746,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "30 Gigabit"
@@ -33149,7 +34834,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "40 Gigabit"
@@ -33238,7 +34925,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -33324,7 +35013,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -33413,7 +35104,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -33499,7 +35192,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "15 Gigabit"
@@ -33585,7 +35280,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -33669,7 +35366,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -33752,7 +35451,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 39
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "40 Gigabit"
@@ -33835,7 +35536,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 79
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -33921,7 +35624,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -33994,7 +35699,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1750.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 16
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -34066,7 +35773,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1750.0
             MaximumIops:              80000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 19
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -34148,7 +35857,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  218.75
             MaximumIops:              10000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -34230,7 +35941,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  875.0
             MaximumIops:              40000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -34322,7 +36035,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  10000.0
             MaximumIops:              260000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "3200 Gigabit"
@@ -34638,7 +36353,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              32500
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -34737,7 +36454,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  10000.0
             MaximumIops:              260000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "3200 Gigabit"
@@ -35043,7 +36762,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1750.0
             MaximumIops:              75000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -35115,7 +36836,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  212.5
             MaximumIops:              12000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -35187,7 +36910,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  437.5
             MaximumIops:              18750
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -35259,7 +36984,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  875.0
             MaximumIops:              37500
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -35331,7 +37058,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  53.125
             MaximumIops:              3000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -35403,7 +37132,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  106.25
             MaximumIops:              6000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -35475,7 +37206,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -35550,7 +37283,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1700.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -35625,7 +37360,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -35700,7 +37437,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -35775,7 +37514,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -35850,7 +37591,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  850.0
             MaximumIops:              30000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -35925,7 +37668,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -35997,7 +37742,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -36069,7 +37816,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -36144,7 +37893,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  847.5
             MaximumIops:              30000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -36219,7 +37970,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -36294,7 +38047,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1696.25
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -36369,7 +38124,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  360.0
             MaximumIops:              16000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -36444,7 +38201,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  360.0
             MaximumIops:              16000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -36519,7 +38278,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -36594,7 +38355,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  360.0
             MaximumIops:              16000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -36669,7 +38432,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  360.0
             MaximumIops:              16000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -36754,7 +38519,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  847.5
             MaximumIops:              30000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -36839,7 +38606,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -36924,7 +38693,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1696.25
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -37009,7 +38780,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  360.0
             MaximumIops:              16000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -37094,7 +38867,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  360.0
             MaximumIops:              16000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -37179,7 +38954,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -37264,7 +39041,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  360.0
             MaximumIops:              16000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -37349,7 +39128,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  360.0
             MaximumIops:              16000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -37424,7 +39205,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              130000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -37499,7 +39282,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              173333
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -37574,7 +39359,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  7500.0
             MaximumIops:              260000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -37649,7 +39436,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              43333
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -37724,7 +39513,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              43333
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -37799,7 +39590,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              86667
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -37874,7 +39667,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              43333
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -37946,7 +39741,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  7500.0
             MaximumIops:              260000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -38018,7 +39815,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              43333
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -38103,7 +39902,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -38188,7 +39989,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1700.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -38273,7 +40076,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -38358,7 +40163,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -38443,7 +40250,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -38528,7 +40337,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  850.0
             MaximumIops:              30000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -38613,7 +40424,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -38695,7 +40508,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -38777,7 +40592,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -38852,7 +40669,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -38927,7 +40746,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1700.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "75 Gigabit"
@@ -39002,7 +40823,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -39080,7 +40903,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -39155,7 +40980,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -39230,7 +41057,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  850.0
             MaximumIops:              30000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -39305,7 +41134,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -39377,7 +41208,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -39452,7 +41285,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              18750
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -39527,7 +41362,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1781.25
             MaximumIops:              50000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -39602,7 +41439,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -39677,7 +41516,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -39752,7 +41593,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -39827,7 +41670,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -39902,7 +41747,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -39975,7 +41822,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -40047,7 +41896,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -40119,7 +41970,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -40204,7 +42057,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1781.25
             MaximumIops:              50000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "20 Gigabit"
@@ -40289,7 +42144,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -40374,7 +42231,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -40459,7 +42318,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -40544,7 +42405,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -40629,7 +42492,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -40712,7 +42577,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -40794,7 +42661,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -40876,7 +42745,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -40951,7 +42822,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "18.75 Gigabit"
@@ -41028,7 +42901,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -41105,7 +42980,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "37.5 Gigabit"
@@ -41182,7 +43059,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -41259,7 +43138,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -41339,7 +43220,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -41416,7 +43299,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12.5 Gigabit"
@@ -41493,7 +43378,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -41567,7 +43454,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -41643,7 +43532,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -41730,7 +43621,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "18.75 Gigabit"
@@ -41817,7 +43710,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -41904,7 +43799,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "37.5 Gigabit"
@@ -41991,7 +43888,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -42078,7 +43977,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 23
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -42168,7 +44069,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -42255,7 +44158,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12.5 Gigabit"
@@ -42342,7 +44247,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -42426,7 +44333,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -42512,7 +44421,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -42589,7 +44500,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "22.5 Gigabit"
@@ -42664,7 +44577,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "30 Gigabit"
@@ -42742,7 +44657,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -42817,7 +44734,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -42892,7 +44811,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "15 Gigabit"
@@ -42967,7 +44888,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -43040,7 +44963,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -43112,7 +45037,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "30 Gigabit"
@@ -43187,7 +45114,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -43272,7 +45201,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "22.5 Gigabit"
@@ -43357,7 +45288,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "30 Gigabit"
@@ -43445,7 +45378,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -43530,7 +45465,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -43615,7 +45552,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "15 Gigabit"
@@ -43700,7 +45639,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -43783,7 +45724,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -43865,7 +45808,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "30 Gigabit"
@@ -43950,7 +45895,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -44025,7 +45972,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "18.75 Gigabit"
@@ -44100,7 +46049,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -44175,7 +46126,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "37.5 Gigabit"
@@ -44250,7 +46203,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -44325,7 +46280,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -44403,7 +46360,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -44478,7 +46437,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "12.5 Gigabit"
@@ -44553,7 +46514,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -44625,7 +46588,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 39
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "37.5 Gigabit"
@@ -44694,7 +46659,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 79
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -44769,7 +46736,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -44844,7 +46813,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1875.0
             MaximumIops:              60000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "22.5 Gigabit"
@@ -44920,7 +46891,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "30 Gigabit"
@@ -44996,7 +46969,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "40 Gigabit"
@@ -45075,7 +47050,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -45151,7 +47128,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -45230,7 +47209,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 15 Gigabit"
@@ -45306,7 +47287,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "15 Gigabit"
@@ -45382,7 +47365,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -45456,7 +47441,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -45529,7 +47516,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  3750.0
             MaximumIops:              120000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 39
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "40 Gigabit"
@@ -45602,7 +47591,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              240000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 79
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -45678,7 +47669,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1250.0
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 12.5 Gigabit"
@@ -45719,6 +47712,1602 @@ InstanceTypes: [{
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
+    InstanceType:      "r8i-flex.12xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          48
+        DefaultCores:          24
+        DefaultThreadsPerCore: 2
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 393216
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  7500
+            BaselineThroughputInMBps: 937.5
+            BaselineIops:             30000
+            MaximumBandwidthInMbps:   15000
+            MaximumThroughputInMBps:  1875.0
+            MaximumIops:              60000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 22.5 Gigabit"
+        MaximumNetworkInterfaces: 12
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 22.5 Gigabit"
+            MaximumNetworkInterfaces:         12
+            BaselineBandwidthInGbps:          11.25
+            PeakBandwidthInGbps:              22.5
+            DefaultEnaQueueCountPerInterface: 8
+            MaximumEnaQueueCount:             96
+            MaximumEnaQueueCountPerInterface: 32
+        }]
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i-flex.16xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          64
+        DefaultCores:          32
+        DefaultThreadsPerCore: 2
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 524288
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  10000
+            BaselineThroughputInMBps: 1250.0
+            BaselineIops:             40000
+            MaximumBandwidthInMbps:   20000
+            MaximumThroughputInMBps:  2500.0
+            MaximumIops:              80000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 30 Gigabit"
+        MaximumNetworkInterfaces: 16
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 30 Gigabit"
+            MaximumNetworkInterfaces:         16
+            BaselineBandwidthInGbps:          15.0
+            PeakBandwidthInGbps:              30.0
+            DefaultEnaQueueCountPerInterface: 8
+            MaximumEnaQueueCount:             128
+            MaximumEnaQueueCountPerInterface: 32
+        }]
+        Ipv4AddressesPerInterface:    64
+        Ipv6AddressesPerInterface:    64
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i-flex.2xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          8
+        DefaultCores:          4
+        DefaultThreadsPerCore: 2
+        ValidCores: [1, 2, 3, 4]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 65536
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  1250
+            BaselineThroughputInMBps: 156.25
+            BaselineIops:             6000
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 15 Gigabit"
+        MaximumNetworkInterfaces: 4
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          1.875
+            PeakBandwidthInGbps:              15.0
+            DefaultEnaQueueCountPerInterface: 4
+            MaximumEnaQueueCount:             16
+            MaximumEnaQueueCountPerInterface: 4
+        }]
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i-flex.4xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          16
+        DefaultCores:          8
+        DefaultThreadsPerCore: 2
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 131072
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  2500
+            BaselineThroughputInMBps: 312.5
+            BaselineIops:             12000
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 15 Gigabit"
+        MaximumNetworkInterfaces: 8
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:         8
+            BaselineBandwidthInGbps:          3.75
+            PeakBandwidthInGbps:              15.0
+            DefaultEnaQueueCountPerInterface: 4
+            MaximumEnaQueueCount:             32
+            MaximumEnaQueueCountPerInterface: 8
+        }]
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i-flex.8xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          32
+        DefaultCores:          16
+        DefaultThreadsPerCore: 2
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 262144
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  5000
+            BaselineThroughputInMBps: 625.0
+            BaselineIops:             20000
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 15 Gigabit"
+        MaximumNetworkInterfaces: 10
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:         10
+            BaselineBandwidthInGbps:          7.5
+            PeakBandwidthInGbps:              15.0
+            DefaultEnaQueueCountPerInterface: 4
+            MaximumEnaQueueCount:             64
+            MaximumEnaQueueCountPerInterface: 16
+        }]
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i-flex.large"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          2
+        DefaultCores:          1
+        DefaultThreadsPerCore: 2
+        ValidCores: [1]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 16384
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  315
+            BaselineThroughputInMBps: 39.375
+            BaselineIops:             2500
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 12.5 Gigabit"
+        MaximumNetworkInterfaces: 3
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:         3
+            BaselineBandwidthInGbps:          0.468
+            PeakBandwidthInGbps:              12.5
+            DefaultEnaQueueCountPerInterface: 1
+            MaximumEnaQueueCount:             3
+            MaximumEnaQueueCountPerInterface: 1
+        }]
+        Ipv4AddressesPerInterface:    20
+        Ipv6AddressesPerInterface:    20
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i-flex.xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          4
+        DefaultCores:          2
+        DefaultThreadsPerCore: 2
+        ValidCores: [1, 2]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 32768
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  630
+            BaselineThroughputInMBps: 78.75
+            BaselineIops:             3600
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 12.5 Gigabit"
+        MaximumNetworkInterfaces: 4
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          0.937
+            PeakBandwidthInGbps:              12.5
+            DefaultEnaQueueCountPerInterface: 2
+            MaximumEnaQueueCount:             8
+            MaximumEnaQueueCountPerInterface: 2
+        }]
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i.12xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          48
+        DefaultCores:          24
+        DefaultThreadsPerCore: 2
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 393216
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  15000
+            BaselineThroughputInMBps: 1875.0
+            BaselineIops:             60000
+            MaximumBandwidthInMbps:   15000
+            MaximumThroughputInMBps:  1875.0
+            MaximumIops:              60000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "22.5 Gigabit"
+        MaximumNetworkInterfaces: 12
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "22.5 Gigabit"
+            MaximumNetworkInterfaces:         12
+            BaselineBandwidthInGbps:          22.5
+            PeakBandwidthInGbps:              22.5
+            DefaultEnaQueueCountPerInterface: 16
+            MaximumEnaQueueCount:             192
+            MaximumEnaQueueCountPerInterface: 64
+        }]
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i.16xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          64
+        DefaultCores:          32
+        DefaultThreadsPerCore: 2
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 524288
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  20000
+            BaselineThroughputInMBps: 2500.0
+            BaselineIops:             80000
+            MaximumBandwidthInMbps:   20000
+            MaximumThroughputInMBps:  2500.0
+            MaximumIops:              80000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "30 Gigabit"
+        MaximumNetworkInterfaces: 16
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "30 Gigabit"
+            MaximumNetworkInterfaces:         16
+            BaselineBandwidthInGbps:          30.0
+            PeakBandwidthInGbps:              30.0
+            DefaultEnaQueueCountPerInterface: 16
+            MaximumEnaQueueCount:             256
+            MaximumEnaQueueCountPerInterface: 64
+        }]
+        Ipv4AddressesPerInterface:    64
+        Ipv6AddressesPerInterface:    64
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i.24xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          96
+        DefaultCores:          48
+        DefaultThreadsPerCore: 2
+        ValidCores: [4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 786432
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  30000
+            BaselineThroughputInMBps: 3750.0
+            BaselineIops:             120000
+            MaximumBandwidthInMbps:   30000
+            MaximumThroughputInMBps:  3750.0
+            MaximumIops:              120000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "40 Gigabit"
+        MaximumNetworkInterfaces: 16
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "40 Gigabit"
+            MaximumNetworkInterfaces:         16
+            BaselineBandwidthInGbps:          40.0
+            PeakBandwidthInGbps:              40.0
+            DefaultEnaQueueCountPerInterface: 16
+            MaximumEnaQueueCount:             384
+            MaximumEnaQueueCountPerInterface: 128
+        }]
+        Ipv4AddressesPerInterface:    64
+        Ipv6AddressesPerInterface:    64
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i.2xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          8
+        DefaultCores:          4
+        DefaultThreadsPerCore: 2
+        ValidCores: [1, 2, 3, 4]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 65536
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  2500
+            BaselineThroughputInMBps: 312.5
+            BaselineIops:             12000
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 15 Gigabit"
+        MaximumNetworkInterfaces: 4
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          3.75
+            PeakBandwidthInGbps:              15.0
+            DefaultEnaQueueCountPerInterface: 8
+            MaximumEnaQueueCount:             32
+            MaximumEnaQueueCountPerInterface: 8
+        }]
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i.32xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          128
+        DefaultCores:          64
+        DefaultThreadsPerCore: 2
+        ValidCores: [4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 1048576
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  40000
+            BaselineThroughputInMBps: 5000.0
+            BaselineIops:             160000
+            MaximumBandwidthInMbps:   40000
+            MaximumThroughputInMBps:  5000.0
+            MaximumIops:              160000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 88
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "50 Gigabit"
+        MaximumNetworkInterfaces: 24
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "50 Gigabit"
+            MaximumNetworkInterfaces:         24
+            BaselineBandwidthInGbps:          50.0
+            PeakBandwidthInGbps:              50.0
+            DefaultEnaQueueCountPerInterface: 16
+            MaximumEnaQueueCount:             512
+            MaximumEnaQueueCountPerInterface: 128
+        }]
+        Ipv4AddressesPerInterface:    64
+        Ipv6AddressesPerInterface:    64
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i.48xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          192
+        DefaultCores:          96
+        DefaultThreadsPerCore: 2
+        ValidCores: [6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60, 63, 66, 69, 72, 75, 78, 81, 84, 87, 90, 93, 96]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 1572864
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  60000
+            BaselineThroughputInMBps: 7500.0
+            BaselineIops:             240000
+            MaximumBandwidthInMbps:   60000
+            MaximumThroughputInMBps:  7500.0
+            MaximumIops:              240000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "75 Gigabit"
+        MaximumNetworkInterfaces: 24
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "75 Gigabit"
+            MaximumNetworkInterfaces:         24
+            BaselineBandwidthInGbps:          75.0
+            PeakBandwidthInGbps:              75.0
+            DefaultEnaQueueCountPerInterface: 32
+            MaximumEnaQueueCount:             768
+            MaximumEnaQueueCountPerInterface: 128
+        }]
+        Ipv4AddressesPerInterface: 64
+        Ipv6AddressesPerInterface: 64
+        Ipv6Supported:             true
+        EnaSupport:                "required"
+        EfaSupported:              true
+        EfaInfo: {
+            MaximumEfaInterfaces: 1
+        }
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i.4xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          16
+        DefaultCores:          8
+        DefaultThreadsPerCore: 2
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 131072
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  5000
+            BaselineThroughputInMBps: 625.0
+            BaselineIops:             20000
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 15 Gigabit"
+        MaximumNetworkInterfaces: 8
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:         8
+            BaselineBandwidthInGbps:          7.5
+            PeakBandwidthInGbps:              15.0
+            DefaultEnaQueueCountPerInterface: 8
+            MaximumEnaQueueCount:             64
+            MaximumEnaQueueCountPerInterface: 16
+        }]
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i.8xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          32
+        DefaultCores:          16
+        DefaultThreadsPerCore: 2
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 262144
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  10000
+            BaselineThroughputInMBps: 1250.0
+            BaselineIops:             40000
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "15 Gigabit"
+        MaximumNetworkInterfaces: 10
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "15 Gigabit"
+            MaximumNetworkInterfaces:         10
+            BaselineBandwidthInGbps:          15.0
+            PeakBandwidthInGbps:              15.0
+            DefaultEnaQueueCountPerInterface: 8
+            MaximumEnaQueueCount:             128
+            MaximumEnaQueueCountPerInterface: 32
+        }]
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i.96xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          384
+        DefaultCores:          192
+        DefaultThreadsPerCore: 2
+        ValidCores: [12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84, 90, 96, 102, 108, 114, 120, 126, 132, 138, 144, 150, 156, 162, 168, 174, 180, 186, 192]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 3145728
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  80000
+            BaselineThroughputInMBps: 10000.0
+            BaselineIops:             480000
+            MaximumBandwidthInMbps:   80000
+            MaximumThroughputInMBps:  10000.0
+            MaximumIops:              480000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "100 Gigabit"
+        MaximumNetworkInterfaces: 24
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "100 Gigabit"
+            MaximumNetworkInterfaces:         24
+            BaselineBandwidthInGbps:          100.0
+            PeakBandwidthInGbps:              100.0
+            DefaultEnaQueueCountPerInterface: 32
+            MaximumEnaQueueCount:             1536
+            MaximumEnaQueueCountPerInterface: 128
+        }]
+        Ipv4AddressesPerInterface: 64
+        Ipv6AddressesPerInterface: 64
+        Ipv6Supported:             true
+        EnaSupport:                "required"
+        EfaSupported:              true
+        EfaInfo: {
+            MaximumEfaInterfaces: 1
+        }
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i.large"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          2
+        DefaultCores:          1
+        DefaultThreadsPerCore: 2
+        ValidCores: [1]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 16384
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  650
+            BaselineThroughputInMBps: 81.25
+            BaselineIops:             3600
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 12.5 Gigabit"
+        MaximumNetworkInterfaces: 3
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:         3
+            BaselineBandwidthInGbps:          0.937
+            PeakBandwidthInGbps:              12.5
+            DefaultEnaQueueCountPerInterface: 2
+            MaximumEnaQueueCount:             6
+            MaximumEnaQueueCountPerInterface: 2
+        }]
+        Ipv4AddressesPerInterface:    20
+        Ipv6AddressesPerInterface:    20
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8i.metal-48xl"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal: true
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          192
+        DefaultCores:          96
+        DefaultThreadsPerCore: 2
+    }
+    MemoryInfo: {
+        SizeInMiB: 1572864
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  60000
+            BaselineThroughputInMBps: 7500.0
+            BaselineIops:             240000
+            MaximumBandwidthInMbps:   60000
+            MaximumThroughputInMBps:  7500.0
+            MaximumIops:              240000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "75 Gigabit"
+        MaximumNetworkInterfaces: 24
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "75 Gigabit"
+            MaximumNetworkInterfaces:         24
+            BaselineBandwidthInGbps:          75.0
+            PeakBandwidthInGbps:              75.0
+            DefaultEnaQueueCountPerInterface: 32
+        }]
+        Ipv4AddressesPerInterface: 64
+        Ipv6AddressesPerInterface: 64
+        Ipv6Supported:             true
+        EnaSupport:                "required"
+        EfaSupported:              true
+        EfaInfo: {
+            MaximumEfaInterfaces: 1
+        }
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "unsupported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios"]
+    NitroEnclavesSupport:   "unsupported"
+    NitroTpmSupport:        "unsupported"
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "unsupported"
+}, {
+    InstanceType:      "r8i.metal-96xl"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal: true
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          384
+        DefaultCores:          192
+        DefaultThreadsPerCore: 2
+    }
+    MemoryInfo: {
+        SizeInMiB: 3145728
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  80000
+            BaselineThroughputInMBps: 10000.0
+            BaselineIops:             480000
+            MaximumBandwidthInMbps:   80000
+            MaximumThroughputInMBps:  10000.0
+            MaximumIops:              480000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 79
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "100 Gigabit"
+        MaximumNetworkInterfaces: 24
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "100 Gigabit"
+            MaximumNetworkInterfaces:         24
+            BaselineBandwidthInGbps:          100.0
+            PeakBandwidthInGbps:              100.0
+            DefaultEnaQueueCountPerInterface: 32
+        }]
+        Ipv4AddressesPerInterface: 64
+        Ipv6AddressesPerInterface: 64
+        Ipv6Supported:             true
+        EnaSupport:                "required"
+        EfaSupported:              true
+        EfaInfo: {
+            MaximumEfaInterfaces: 1
+        }
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "unsupported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios"]
+    NitroEnclavesSupport:   "unsupported"
+    NitroTpmSupport:        "unsupported"
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "unsupported"
+}, {
+    InstanceType:      "r8i.xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          4
+        DefaultCores:          2
+        DefaultThreadsPerCore: 2
+        ValidCores: [1, 2]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 32768
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  1250
+            BaselineThroughputInMBps: 156.25
+            BaselineIops:             6000
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 12.5 Gigabit"
+        MaximumNetworkInterfaces: 4
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          1.875
+            PeakBandwidthInGbps:              12.5
+            DefaultEnaQueueCountPerInterface: 4
+            MaximumEnaQueueCount:             16
+            MaximumEnaQueueCountPerInterface: 4
+        }]
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
     InstanceType:      "t2.2xlarge"
     CurrentGeneration: true
     FreeTierEligible:  false
@@ -45742,9 +49331,11 @@ InstanceTypes: [{
     }
     InstanceStorageSupported: false
     EbsInfo: {
-        EbsOptimizedSupport: "unsupported"
-        EncryptionSupport:   "supported"
-        NvmeSupport:         "unsupported"
+        EbsOptimizedSupport:   "unsupported"
+        EncryptionSupport:     "supported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Moderate"
@@ -45804,9 +49395,11 @@ InstanceTypes: [{
     }
     InstanceStorageSupported: false
     EbsInfo: {
-        EbsOptimizedSupport: "unsupported"
-        EncryptionSupport:   "supported"
-        NvmeSupport:         "unsupported"
+        EbsOptimizedSupport:   "unsupported"
+        EncryptionSupport:     "supported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Low to Moderate"
@@ -45866,9 +49459,11 @@ InstanceTypes: [{
     }
     InstanceStorageSupported: false
     EbsInfo: {
-        EbsOptimizedSupport: "unsupported"
-        EncryptionSupport:   "supported"
-        NvmeSupport:         "unsupported"
+        EbsOptimizedSupport:   "unsupported"
+        EncryptionSupport:     "supported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Low to Moderate"
@@ -45928,9 +49523,11 @@ InstanceTypes: [{
     }
     InstanceStorageSupported: false
     EbsInfo: {
-        EbsOptimizedSupport: "unsupported"
-        EncryptionSupport:   "supported"
-        NvmeSupport:         "unsupported"
+        EbsOptimizedSupport:   "unsupported"
+        EncryptionSupport:     "supported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Low to Moderate"
@@ -45990,9 +49587,11 @@ InstanceTypes: [{
     }
     InstanceStorageSupported: false
     EbsInfo: {
-        EbsOptimizedSupport: "unsupported"
-        EncryptionSupport:   "supported"
-        NvmeSupport:         "unsupported"
+        EbsOptimizedSupport:   "unsupported"
+        EncryptionSupport:     "supported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Low to Moderate"
@@ -46052,9 +49651,11 @@ InstanceTypes: [{
     }
     InstanceStorageSupported: false
     EbsInfo: {
-        EbsOptimizedSupport: "unsupported"
-        EncryptionSupport:   "supported"
-        NvmeSupport:         "unsupported"
+        EbsOptimizedSupport:   "unsupported"
+        EncryptionSupport:     "supported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Low to Moderate"
@@ -46114,9 +49715,11 @@ InstanceTypes: [{
     }
     InstanceStorageSupported: false
     EbsInfo: {
-        EbsOptimizedSupport: "unsupported"
-        EncryptionSupport:   "supported"
-        NvmeSupport:         "unsupported"
+        EbsOptimizedSupport:   "unsupported"
+        EncryptionSupport:     "supported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Moderate"
@@ -46188,7 +49791,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  347.5
             MaximumIops:              15700
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -46263,7 +49868,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  347.5
             MaximumIops:              15700
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -46338,7 +49945,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  260.625
             MaximumIops:              11800
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -46413,7 +50022,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  260.625
             MaximumIops:              11800
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -46488,7 +50099,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  260.625
             MaximumIops:              11800
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -46563,7 +50176,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  260.625
             MaximumIops:              11800
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -46638,7 +50253,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  347.5
             MaximumIops:              15700
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -46713,7 +50330,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  347.5
             MaximumIops:              15700
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -46788,7 +50407,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  347.5
             MaximumIops:              15700
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -46863,7 +50484,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  260.625
             MaximumIops:              11800
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -46938,7 +50561,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  260.625
             MaximumIops:              11800
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -47013,7 +50638,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  260.625
             MaximumIops:              11800
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -47088,7 +50715,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  260.625
             MaximumIops:              11800
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -47163,7 +50792,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  347.5
             MaximumIops:              15700
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -47238,7 +50869,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  347.5
             MaximumIops:              15700
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -47313,7 +50946,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  347.5
             MaximumIops:              15700
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -47388,7 +51023,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  260.625
             MaximumIops:              11800
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -47463,7 +51100,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  260.625
             MaximumIops:              11800
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -47538,7 +51177,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  260.625
             MaximumIops:              11800
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -47613,7 +51254,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  260.625
             MaximumIops:              11800
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -47688,7 +51331,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  347.5
             MaximumIops:              15700
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 5 Gigabit"
@@ -47763,7 +51408,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  4750.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -47835,7 +51482,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  4750.0
             MaximumIops:              160000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 27
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -47871,6 +51520,86 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "u7i-6tb.112xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 1.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          448
+        DefaultCores:          224
+        DefaultThreadsPerCore: 2
+        ValidCores: [8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96, 100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 144, 148, 152, 156, 160, 164, 168, 172, 176, 180, 184, 188, 192, 196, 200, 204, 208, 212, 216, 220, 224]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 6291456
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  100000
+            BaselineThroughputInMBps: 12500.0
+            BaselineIops:             560000
+            MaximumBandwidthInMbps:   100000
+            MaximumThroughputInMBps:  12500.0
+            MaximumIops:              560000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "100 Gigabit"
+        MaximumNetworkInterfaces: 15
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "100 Gigabit"
+            MaximumNetworkInterfaces:         15
+            BaselineBandwidthInGbps:          100.0
+            PeakBandwidthInGbps:              100.0
+            DefaultEnaQueueCountPerInterface: 16
+        }]
+        Ipv4AddressesPerInterface: 50
+        Ipv6AddressesPerInterface: 50
+        Ipv6Supported:             true
+        EnaSupport:                "required"
+        EfaSupported:              true
+        EfaInfo: {
+            MaximumEfaInterfaces: 1
+        }
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "x1.16xlarge"
     CurrentGeneration: true
@@ -47917,7 +51646,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  875.0
             MaximumIops:              40000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "10 Gigabit"
@@ -47999,7 +51730,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1750.0
             MaximumIops:              80000
         }
-        NvmeSupport: "unsupported"
+        NvmeSupport:           "unsupported"
+        MaximumEbsAttachments: 40
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -48081,7 +51814,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              173333
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -48166,7 +51901,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  7500.0
             MaximumIops:              260000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "75 Gigabit"
@@ -48251,7 +51988,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  10000.0
             MaximumIops:              260000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -48336,7 +52075,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  10000.0
             MaximumIops:              260000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -48421,7 +52162,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  5000.0
             MaximumIops:              130000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "50 Gigabit"
@@ -48506,7 +52249,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  7500.0
             MaximumIops:              195000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "75 Gigabit"
@@ -48591,7 +52336,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              65000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -48676,7 +52423,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  10000.0
             MaximumIops:              260000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -48764,7 +52513,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              65000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -48849,7 +52600,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              65000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -48931,7 +52684,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  10000.0
             MaximumIops:              260000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -49016,7 +52771,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2500.0
             MaximumIops:              65000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 25 Gigabit"
@@ -49101,7 +52858,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -49186,7 +52945,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  396.25
             MaximumIops:              13333
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -49271,7 +53032,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  593.75
             MaximumIops:              20000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -49356,7 +53119,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  1187.5
             MaximumIops:              40000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "12 Gigabit"
@@ -49441,7 +53206,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  396.25
             MaximumIops:              13333
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
@@ -49523,7 +53290,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  2375.0
             MaximumIops:              80000
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 31
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "25 Gigabit"
@@ -49605,7 +53374,9 @@ InstanceTypes: [{
             MaximumThroughputInMBps:  396.25
             MaximumIops:              13333
         }
-        NvmeSupport: "required"
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 26
+        AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 10 Gigabit"
