@@ -1,7 +1,7 @@
 package ci
 
 workflows: metadata: {
-	on: schedule: [{cron: "35 * * * *"}]
+	on: schedule: [{cron: "40 9 * * FRI"}]
 
 	jobs: aws: {
 		env: {

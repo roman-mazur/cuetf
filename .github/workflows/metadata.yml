@@ -1,7 +1,7 @@
 name: metadata
 "on":
   schedule:
-    - cron: 35 * * * *
+    - cron: 40 9 * * FRI
 jobs:
   aws:
     env:
