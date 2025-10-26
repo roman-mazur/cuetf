@@ -8813,7 +8813,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 								mode: {
 									type:             "string"
-									description:      "The mode of the monitor. Can be \"all\" or \"any\". If you’re using a DNS-load balancer and want to ping every IP address for the specified hostname, you should use all."
+									description:      "The mode of the monitor. Can be \"all\" or \"any\". If you're using a DNS-load balancer and want to ping every IP address for the specified hostname, you should use all."
 									description_kind: "markdown"
 									optional:         true
 									computed:         true
@@ -8948,7 +8948,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					name: {
 						type:             "string"
-						description:      "The monitor’s name."
+						description:      "The monitor's name."
 						description_kind: "markdown"
 						required:         true
 					}
@@ -8967,7 +8967,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					private_locations: {
 						type: ["list", "string"]
-						description:      "These Private Locations refer to locations hosted and managed by you, whereas locations are hosted by Elastic. You can specify a Private Location using the location’s name."
+						description:      "These Private Locations refer to locations hosted and managed by you, whereas locations are hosted by Elastic. You can specify a Private Location using the location's name."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -8979,7 +8979,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					schedule: {
 						type:             "number"
-						description:      "The monitor’s schedule in minutes. Supported values are 1, 3, 5, 10, 15, 30, 60, 120 and 240."
+						description:      "The monitor's schedule in minutes. Supported values are 1, 3, 5, 10, 15, 30, 60, 120 and 240."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -9091,7 +9091,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					timeout: {
 						type:             "number"
-						description:      "The monitor timeout in seconds, monitor will fail if it doesn’t complete within this time. Default: `16`"
+						description:      "The monitor timeout in seconds, monitor will fail if it doesn't complete within this time. Default: `16`"
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
