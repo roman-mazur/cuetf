@@ -50,7 +50,8 @@ func main() {
 		log.Fatal("out path is not specified")
 	}
 
-	if err := gen.Generate(cfg); err != nil {
+	g := gen.NewGenerator(log.Printf)
+	if err := g.Generate(cfg); err != nil {
 		log.Fatal(err)
 	}
 }
