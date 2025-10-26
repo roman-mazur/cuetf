@@ -41,10 +41,14 @@ package data
 		// server.
 		platform_reserved_dns_ip_address?: string
 		timeouts?:                         #timeouts
-		resource_group_name!:              string
+
+		// The public network access setting for this Container App
+		// Environment.
+		public_network_access?: string
 
 		// The Static IP Address of the Environment.
-		static_ip_address?: string
+		static_ip_address?:   string
+		resource_group_name!: string
 		tags?: [string]: string
 	})
 

@@ -203,6 +203,7 @@ _ds: azurerm_managed_api: data.#azurerm_managed_api
 _ds: azurerm_managed_application_definition: data.#azurerm_managed_application_definition
 _ds: azurerm_managed_disk: data.#azurerm_managed_disk
 _ds: azurerm_managed_disks: data.#azurerm_managed_disks
+_ds: azurerm_managed_redis: data.#azurerm_managed_redis
 _ds: azurerm_management_group: data.#azurerm_management_group
 _ds: azurerm_management_group_template_deployment: data.#azurerm_management_group_template_deployment
 _ds: azurerm_maps_account: data.#azurerm_maps_account

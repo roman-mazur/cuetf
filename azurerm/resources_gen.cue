@@ -576,6 +576,8 @@ _res: azurerm_managed_application: res.#azurerm_managed_application
 _res: azurerm_managed_disk: res.#azurerm_managed_disk
 _res: azurerm_managed_disk_sas_token: res.#azurerm_managed_disk_sas_token
 _res: azurerm_managed_lustre_file_system: res.#azurerm_managed_lustre_file_system
+_res: azurerm_managed_redis: res.#azurerm_managed_redis
+_res: azurerm_managed_redis_geo_replication: res.#azurerm_managed_redis_geo_replication
 _res: azurerm_management_group: res.#azurerm_management_group
 _res: azurerm_management_group_policy_assignment: res.#azurerm_management_group_policy_assignment
 _res: azurerm_management_group_policy_exemption: res.#azurerm_management_group_policy_exemption
