@@ -39,7 +39,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 				}
 				parallel_requests: {
 					type:             "bool"
-					description:      "Allow the provider to make parallel API calls to GitHub. You may want to set it to true when you have a private Github Enterprise without strict rate limits. Although, it is not possible to enable this setting on github.com because we enforce the respect of github.com's best practices to avoid hitting abuse rate limitsDefaults to false if not set"
+					description:      "Allow the provider to make parallel API calls to GitHub. You may want to set it to true when you have a private Github Enterprise without strict rate limits. While it is possible to enable this setting on github.com, github.com's best practices recommend using serialization to avoid hitting abuse rate limitsDefaults to false if not set"
 					description_kind: "plain"
 					optional:         true
 				}
@@ -315,6 +315,11 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description_kind: "plain"
 						computed:         true
 					}
+					destroy_on_drift: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+					}
 					encrypted_value: {
 						type:             "string"
 						description:      "Encrypted value of the secret using the GitHub public key in Base64 format."
@@ -382,6 +387,32 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					selected_repository_ids: {
 						type: ["set", "number"]
 						description:      "An array of repository ids that can access the organization secret."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		github_actions_organization_secret_repository: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					repository_id: {
+						type:             "number"
+						description:      "The repository ID that can access the organization secret."
+						description_kind: "plain"
+						required:         true
+					}
+					secret_name: {
+						type:             "string"
+						description:      "Name of the existing secret."
 						description_kind: "plain"
 						required:         true
 					}
@@ -1191,12 +1222,14 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 									description:      "The list of status checks to require in order to merge into this branch. No status checks are required by default. Checks should be strings containing the 'context' and 'app_id' like so 'context:app_id'"
 									description_kind: "plain"
 									optional:         true
+									computed:         true
 								}
 								contexts: {
 									type: ["set", "string"]
 									description_kind: "plain"
 									deprecated:       true
 									optional:         true
+									computed:         true
 								}
 								include_admins: {
 									type:             "bool"
@@ -2046,6 +2079,59 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 				description_kind: "plain"
 			}
 		}
+		github_organization_custom_properties: {
+			version: 0
+			block: {
+				attributes: {
+					allowed_values: {
+						type: ["list", "string"]
+						description:      "The allowed values of the custom property"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					default_value: {
+						type:             "string"
+						description:      "The default value of the custom property"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The description of the custom property"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					property_name: {
+						type:             "string"
+						description:      "The name of the custom property"
+						description_kind: "plain"
+						required:         true
+					}
+					required: {
+						type:             "bool"
+						description:      "Whether the custom property is required"
+						description_kind: "plain"
+						optional:         true
+					}
+					value_type: {
+						type:             "string"
+						description:      "The type of the custom property"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		github_organization_custom_role: {
 			version: 0
 			block: {
@@ -2082,6 +2168,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		github_organization_project: {
@@ -2118,6 +2205,178 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						computed:         true
 					}
 				}
+				description_kind: "plain"
+				deprecated:       true
+			}
+		}
+		github_organization_repository_role: {
+			version: 0
+			block: {
+				attributes: {
+					base_role: {
+						type:             "string"
+						description:      "The base role for the organization repository role."
+						description_kind: "plain"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The description of the organization repository role."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the organization repository role."
+						description_kind: "plain"
+						required:         true
+					}
+					permissions: {
+						type: ["set", "string"]
+						description:      "The permissions for the organization repository role."
+						description_kind: "plain"
+						required:         true
+					}
+					role_id: {
+						type:             "number"
+						description:      "The ID of the organization repository role."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description:      "Manage a custom organization repository role."
+				description_kind: "plain"
+			}
+		}
+		github_organization_role: {
+			version: 0
+			block: {
+				attributes: {
+					base_role: {
+						type:             "string"
+						description:      "The base role for the organization role."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The description of the organization role."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the organization role."
+						description_kind: "plain"
+						required:         true
+					}
+					permissions: {
+						type: ["set", "string"]
+						description:      "The permissions for the organization role."
+						description_kind: "plain"
+						required:         true
+					}
+					role_id: {
+						type:             "number"
+						description:      "The ID of the organization role."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description:      "Manage a custom organization role."
+				description_kind: "plain"
+			}
+		}
+		github_organization_role_team: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role_id: {
+						type:             "number"
+						description:      "The ID of the organization role."
+						description_kind: "plain"
+						required:         true
+					}
+					team_slug: {
+						type:             "string"
+						description:      "The slug of the team name."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description:      "Manage an association between an organization role and a team."
+				description_kind: "plain"
+			}
+		}
+		github_organization_role_team_assignment: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role_id: {
+						type:             "string"
+						description:      "The GitHub organization role id"
+						description_kind: "plain"
+						required:         true
+					}
+					team_slug: {
+						type:             "string"
+						description:      "The GitHub team slug."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		github_organization_role_user: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					login: {
+						type:             "string"
+						description:      "The login for the GitHub user account."
+						description_kind: "plain"
+						required:         true
+					}
+					role_id: {
+						type:             "number"
+						description:      "The unique identifier of the organization role."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description:      "Manage an association between an organization role and a user."
 				description_kind: "plain"
 			}
 		}
@@ -2174,19 +2433,19 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 							attributes: {
 								actor_id: {
 									type:             "number"
-									description:      "The ID of the actor that can bypass a ruleset. When `actor_type` is `OrganizationAdmin`, this should be set to `1`."
+									description:      "The ID of the actor that can bypass a ruleset. When `actor_type` is `OrganizationAdmin`, this should be set to `1`. Some resources such as DeployKey do not have an ID and this should be omitted."
 									description_kind: "plain"
-									required:         true
+									optional:         true
 								}
 								actor_type: {
 									type:             "string"
-									description:      "The type of actor that can bypass a ruleset. Can be one of: `RepositoryRole`, `Team`, `Integration`, `OrganizationAdmin`."
+									description:      "The type of actor that can bypass a ruleset. See https://docs.github.com/en/rest/orgs/rules for more information"
 									description_kind: "plain"
 									required:         true
 								}
 								bypass_mode: {
 									type:             "string"
-									description:      "When the specified actor can bypass the ruleset. pull_request means that an actor can only bypass rules on pull requests. Can be one of: `always`, `pull_request`."
+									description:      "When the specified actor can bypass the ruleset. pull_request means that an actor can only bypass rules on pull requests. Can be one of: `always`, `pull_request`, `exempt`."
 									description_kind: "plain"
 									required:         true
 								}
@@ -2517,11 +2776,19 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 								required_status_checks: {
 									nesting_mode: "list"
 									block: {
-										attributes: strict_required_status_checks_policy: {
-											type:             "bool"
-											description:      "Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled. Defaults to `false`."
-											description_kind: "plain"
-											optional:         true
+										attributes: {
+											do_not_enforce_on_create: {
+												type:             "bool"
+												description:      "Allow repositories and branches to be created if a check would otherwise prohibit it."
+												description_kind: "plain"
+												optional:         true
+											}
+											strict_required_status_checks_policy: {
+												type:             "bool"
+												description:      "Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled. Defaults to `false`."
+												description_kind: "plain"
+												optional:         true
+											}
 										}
 										block_types: required_check: {
 											nesting_mode: "set"
@@ -2553,6 +2820,12 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 								required_workflows: {
 									nesting_mode: "list"
 									block: {
+										attributes: do_not_enforce_on_create: {
+											type:             "bool"
+											description:      "Allow repositories and branches to be created if a check would otherwise prohibit it."
+											description_kind: "plain"
+											optional:         true
+										}
 										block_types: required_workflow: {
 											nesting_mode: "set"
 											block: {
@@ -2941,6 +3214,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		github_project_column: {
@@ -2978,6 +3252,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		github_release: {
@@ -3365,6 +3640,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description:      "Set to 'true' to enable security alerts for vulnerable dependencies. Enabling requires alerts to be enabled on the owner level. (Note for importing: GitHub enables the alerts on public repos but disables them on private repos by default). Note that vulnerability alerts have not been successfully tested on any GitHub Enterprise instance and may be unavailable in those settings."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					web_commit_signoff_required: {
 						type:             "bool"
@@ -4162,6 +4438,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		github_repository_pull_request: {
@@ -4321,7 +4598,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 					target: {
 						type:             "string"
-						description:      "Possible values are `branch` and `tag`."
+						description:      "Possible values are `branch`, `push` and `tag`."
 						description_kind: "plain"
 						required:         true
 					}
@@ -4333,19 +4610,19 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 							attributes: {
 								actor_id: {
 									type:             "number"
-									description:      "The ID of the actor that can bypass a ruleset. When `actor_type` is `OrganizationAdmin`, this should be set to `1`."
+									description:      "The ID of the actor that can bypass a ruleset. When `actor_type` is `OrganizationAdmin`, this should be set to `1`. Some resources such as DeployKey do not have an ID and this should be omitted."
 									description_kind: "plain"
-									required:         true
+									optional:         true
 								}
 								actor_type: {
 									type:             "string"
-									description:      "The type of actor that can bypass a ruleset. Can be one of: `RepositoryRole`, `Team`, `Integration`, `OrganizationAdmin`."
+									description:      "The type of actor that can bypass a ruleset. See https://docs.github.com/en/rest/repos/rules for more information."
 									description_kind: "plain"
 									required:         true
 								}
 								bypass_mode: {
 									type:             "string"
-									description:      "When the specified actor can bypass the ruleset. pull_request means that an actor can only bypass rules on pull requests. Can be one of: `always`, `pull_request`."
+									description:      "When the specified actor can bypass the ruleset. pull_request means that an actor can only bypass rules on pull requests. Can be one of: `always`, `pull_request`, `exempt`."
 									description_kind: "plain"
 									required:         true
 								}
@@ -4564,6 +4841,48 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 											}
 										}
 										description:      "Parameters to be used for the committer_email_pattern rule. This rule only applies to repositories within an enterprise, it cannot be applied to repositories owned by individuals or regular organizations."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								file_extension_restriction: {
+									nesting_mode: "list"
+									block: {
+										attributes: restricted_file_extensions: {
+											type: ["set", "string"]
+											description:      "A list of file extensions."
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "Prevent pushes based on file extensions."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								file_path_restriction: {
+									nesting_mode: "list"
+									block: {
+										attributes: restricted_file_paths: {
+											type: ["list", "string"]
+											description:      "The file paths that are restricted from being pushed to the commit graph."
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "Prevent commits that include changes in specified file paths from being pushed to the commit graph."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								max_file_size: {
+									nesting_mode: "list"
+									block: {
+										attributes: max_file_size: {
+											type:             "number"
+											description:      "The maximum allowed size of a file in bytes."
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "Prevent pushes based on file size."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -4854,7 +5173,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 					repository: {
 						type:             "string"
-						description:      "The repository of the webhook."
+						description:      "The repository name of the webhook, not including the organization, which will be inferred."
 						description_kind: "plain"
 						required:         true
 					}
@@ -6581,6 +6900,53 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 				description_kind: "plain"
 			}
 		}
+		github_organization_custom_properties: {
+			version: 0
+			block: {
+				attributes: {
+					allowed_values: {
+						type: ["list", "string"]
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					default_value: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					property_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					required: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+					}
+					value_type: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		github_organization_custom_role: {
 			version: 0
 			block: {
@@ -6613,6 +6979,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		github_organization_external_identities: {
@@ -6656,6 +7023,243 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 							is_active:        "bool"
 							name:             "string"
 							updated_at:       "string"
+						}]]
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		github_organization_repository_role: {
+			version: 0
+			block: {
+				attributes: {
+					base_role: {
+						type:             "string"
+						description:      "The system role from which this role inherits permissions."
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The description of the organization repository role."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the organization repository role."
+						description_kind: "plain"
+						computed:         true
+					}
+					permissions: {
+						type: ["set", "string"]
+						description:      "The permissions included in this role."
+						description_kind: "plain"
+						computed:         true
+					}
+					role_id: {
+						type:             "number"
+						description:      "The ID of the organization repository role."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description:      "Lookup a custom organization repository role."
+				description_kind: "plain"
+			}
+		}
+		github_organization_repository_roles: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					roles: {
+						type: ["list", ["object", {
+							base_role:   "string"
+							description: "string"
+							name:        "string"
+							permissions: ["set", "string"]
+							role_id: "number"
+						}]]
+						description:      "Available organization repository roles."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description:      "Lookup all custom repository roles in an organization."
+				description_kind: "plain"
+			}
+		}
+		github_organization_role: {
+			version: 0
+			block: {
+				attributes: {
+					base_role: {
+						type:             "string"
+						description:      "The system role from which this role inherits permissions."
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The description of the organization role."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the organization role."
+						description_kind: "plain"
+						computed:         true
+					}
+					permissions: {
+						type: ["set", "string"]
+						description:      "A list of permissions included in this role."
+						description_kind: "plain"
+						computed:         true
+					}
+					role_id: {
+						type:             "number"
+						description:      "The ID of the organization role."
+						description_kind: "plain"
+						required:         true
+					}
+					source: {
+						type:             "string"
+						description:      "The source of this role; one of `Predefined`, `Organization`, or `Enterprise`."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description:      "Lookup a custom organization role."
+				description_kind: "plain"
+			}
+		}
+		github_organization_role_teams: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role_id: {
+						type:             "number"
+						description:      "The unique identifier of the organization role."
+						description_kind: "plain"
+						required:         true
+					}
+					teams: {
+						type: ["list", ["object", {
+							name:       "string"
+							permission: "string"
+							slug:       "string"
+							team_id:    "number"
+						}]]
+						description:      "Teams assigned to the organization role."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description:      "Lookup all teams assigned to a custom organization role."
+				description_kind: "plain"
+			}
+		}
+		github_organization_role_users: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role_id: {
+						type:             "number"
+						description:      "The ID of the organization role."
+						description_kind: "plain"
+						required:         true
+					}
+					users: {
+						type: ["list", ["object", {
+							login:   "string"
+							user_id: "number"
+						}]]
+						description:      "Users assigned to the organization role."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description:      "Lookup all users assigned to a custom organization role."
+				description_kind: "plain"
+			}
+		}
+		github_organization_roles: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					roles: {
+						type: ["list", ["object", {
+							base_role:   "string"
+							description: "string"
+							name:        "string"
+							permissions: ["set", "string"]
+							role_id: "number"
+							source:  "string"
+						}]]
+						description:      "Available organization roles."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description:      "Lookup all custom roles in an organization."
+				description_kind: "plain"
+			}
+		}
+		github_organization_security_managers: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					teams: {
+						type: ["list", ["object", {
+							id:         "number"
+							name:       "string"
+							permission: "string"
+							slug:       "string"
 						}]]
 						description_kind: "plain"
 						computed:         true
@@ -6720,7 +7324,9 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 							name:    "string"
 							node_id: "string"
 							parent: ["map", "string"]
-							privacy: "string"
+							parent_team_id:   "string"
+							parent_team_slug: "string"
+							privacy:          "string"
 							repositories: ["list", "string"]
 							slug: "string"
 						}]]
@@ -7866,11 +8472,13 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					repositories: {
 						type: ["list", "string"]
 						description_kind: "plain"
+						deprecated:       true
 						computed:         true
 					}
 					repositories_detailed: {
 						type: ["list", ["object", {
 							repo_id:   "number"
+							repo_name: "string"
 							role_name: "string"
 						}]]
 						description_kind: "plain"

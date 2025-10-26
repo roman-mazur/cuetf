@@ -33,16 +33,18 @@ import "list"
 	#bypass_actors: close({
 		// The ID of the actor that can bypass a ruleset. When
 		// `actor_type` is `OrganizationAdmin`, this should be set to
-		// `1`.
-		actor_id!: number
+		// `1`. Some resources such as DeployKey do not have an ID and
+		// this should be omitted.
+		actor_id?: number
 
-		// The type of actor that can bypass a ruleset. Can be one of:
-		// `RepositoryRole`, `Team`, `Integration`, `OrganizationAdmin`.
+		// The type of actor that can bypass a ruleset. See
+		// https://docs.github.com/en/rest/orgs/rules for more
+		// information
 		actor_type!: string
 
 		// When the specified actor can bypass the ruleset. pull_request
 		// means that an actor can only bypass rules on pull requests.
-		// Can be one of: `always`, `pull_request`.
+		// Can be one of: `always`, `pull_request`, `exempt`.
 		bypass_mode!: string
 	})
 
@@ -220,6 +222,10 @@ import "list"
 	_#defs: "/$defs/rules/$defs/required_status_checks": close({
 		required_check?: matchN(1, [_#defs."/$defs/rules/$defs/required_status_checks/$defs/required_check", [_, ...] & [..._#defs."/$defs/rules/$defs/required_status_checks/$defs/required_check"]])
 
+		// Allow repositories and branches to be created if a check would
+		// otherwise prohibit it.
+		do_not_enforce_on_create?: bool
+
 		// Whether pull requests targeting a matching branch must be
 		// tested with the latest code. This setting will not take effect
 		// unless at least one status check is enabled. Defaults to
@@ -239,6 +245,10 @@ import "list"
 
 	_#defs: "/$defs/rules/$defs/required_workflows": close({
 		required_workflow?: matchN(1, [_#defs."/$defs/rules/$defs/required_workflows/$defs/required_workflow", [_, ...] & [..._#defs."/$defs/rules/$defs/required_workflows/$defs/required_workflow"]])
+
+		// Allow repositories and branches to be created if a check would
+		// otherwise prohibit it.
+		do_not_enforce_on_create?: bool
 	})
 
 	_#defs: "/$defs/rules/$defs/required_workflows/$defs/required_workflow": close({

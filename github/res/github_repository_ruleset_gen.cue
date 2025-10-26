@@ -28,23 +28,25 @@ import "list"
 		// GitHub ID for the ruleset.
 		ruleset_id?: number
 
-		// Possible values are `branch` and `tag`.
+		// Possible values are `branch`, `push` and `tag`.
 		target!: string
 	})
 
 	#bypass_actors: close({
 		// The ID of the actor that can bypass a ruleset. When
 		// `actor_type` is `OrganizationAdmin`, this should be set to
-		// `1`.
-		actor_id!: number
+		// `1`. Some resources such as DeployKey do not have an ID and
+		// this should be omitted.
+		actor_id?: number
 
-		// The type of actor that can bypass a ruleset. Can be one of:
-		// `RepositoryRole`, `Team`, `Integration`, `OrganizationAdmin`.
+		// The type of actor that can bypass a ruleset. See
+		// https://docs.github.com/en/rest/repos/rules for more
+		// information.
 		actor_type!: string
 
 		// When the specified actor can bypass the ruleset. pull_request
 		// means that an actor can only bypass rules on pull requests.
-		// Can be one of: `always`, `pull_request`.
+		// Can be one of: `always`, `pull_request`, `exempt`.
 		bypass_mode!: string
 	})
 
@@ -56,27 +58,30 @@ import "list"
 		// Only allow users with bypass permission to create matching
 		// refs.
 		creation?: bool
+		branch_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/branch_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/branch_name_pattern"]])
 
 		// Only allow users with bypass permissions to delete matching
 		// refs.
 		deletion?: bool
+		commit_author_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_author_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_author_email_pattern"]])
 
 		// Prevent users with push access from force pushing to branches.
 		non_fast_forward?: bool
 
 		// Prevent merge commits from being pushed to matching branches.
 		required_linear_history?: bool
+		commit_message_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_message_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_message_pattern"]])
+		committer_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/committer_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/committer_email_pattern"]])
+		file_extension_restriction?: matchN(1, [_#defs."/$defs/rules/$defs/file_extension_restriction", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/file_extension_restriction"]])
+		file_path_restriction?: matchN(1, [_#defs."/$defs/rules/$defs/file_path_restriction", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/file_path_restriction"]])
+		max_file_size?: matchN(1, [_#defs."/$defs/rules/$defs/max_file_size", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/max_file_size"]])
+		merge_queue?: matchN(1, [_#defs."/$defs/rules/$defs/merge_queue", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/merge_queue"]])
+		pull_request?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/pull_request"]])
+		required_code_scanning?: matchN(1, [_#defs."/$defs/rules/$defs/required_code_scanning", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_code_scanning"]])
 
 		// Commits pushed to matching branches must have verified
 		// signatures.
 		required_signatures?: bool
-		branch_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/branch_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/branch_name_pattern"]])
-		commit_author_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_author_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_author_email_pattern"]])
-		commit_message_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_message_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_message_pattern"]])
-		committer_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/committer_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/committer_email_pattern"]])
-		merge_queue?: matchN(1, [_#defs."/$defs/rules/$defs/merge_queue", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/merge_queue"]])
-		pull_request?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/pull_request"]])
-		required_code_scanning?: matchN(1, [_#defs."/$defs/rules/$defs/required_code_scanning", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_code_scanning"]])
 		required_deployments?: matchN(1, [_#defs."/$defs/rules/$defs/required_deployments", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_deployments"]])
 		required_status_checks?: matchN(1, [_#defs."/$defs/rules/$defs/required_status_checks", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_status_checks"]])
 		tag_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/tag_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/tag_name_pattern"]])
@@ -161,6 +166,22 @@ import "list"
 
 		// The pattern to match with.
 		pattern!: string
+	})
+
+	_#defs: "/$defs/rules/$defs/file_extension_restriction": close({
+		// A list of file extensions.
+		restricted_file_extensions!: [...string]
+	})
+
+	_#defs: "/$defs/rules/$defs/file_path_restriction": close({
+		// The file paths that are restricted from being pushed to the
+		// commit graph.
+		restricted_file_paths!: [...string]
+	})
+
+	_#defs: "/$defs/rules/$defs/max_file_size": close({
+		// The maximum allowed size of a file in bytes.
+		max_file_size!: number
 	})
 
 	_#defs: "/$defs/rules/$defs/merge_queue": close({

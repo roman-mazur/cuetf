@@ -9,7 +9,9 @@ package res
 
 		// Encrypted value of the secret using the GitHub public key in
 		// Base64 format.
-		encrypted_value?: string
+		encrypted_value?:  string
+		destroy_on_drift?: bool
+		id?:               string
 
 		// Plaintext value of the secret to be encrypted.
 		plaintext_value?: string
@@ -20,7 +22,6 @@ package res
 		// An array of repository ids that can access the organization
 		// secret.
 		selected_repository_ids?: [...number]
-		id?: string
 
 		// Date of 'actions_secret' update.
 		updated_at?: string
