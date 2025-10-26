@@ -55,6 +55,9 @@ package res
 		// will force terraform to create new resource.
 		default_dns_prefix?: string
 
+		// If set to true deletes associated OCI resources. Default false.
+		delete_associated_resources?: bool
+
 		// The user-friendly name for the odb network. Changing this will
 		// force terraform to create a new resource.
 		display_name!: string
@@ -139,12 +142,12 @@ package res
 		// Additional information about the current status of the ODB
 		// network.
 		status_reason?: string
-		tags?: [string]:     string
-		tags_all?: [string]: string
+		tags?: [string]: string
 
 		// Specifies the configuration for Zero-ETL access from the ODB
 		// network.
 		zero_etl_access!: string
+		tags_all?: [string]: string
 	})
 
 	#timeouts: close({

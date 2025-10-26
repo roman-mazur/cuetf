@@ -5,11 +5,14 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_organizations_organizational_unit_descendant_accounts")
 	close({
 		accounts?: [...close({
-			arn?:    string
-			email?:  string
-			id?:     string
-			name?:   string
-			status?: string
+			arn?:              string
+			email?:            string
+			id?:               string
+			joined_method?:    string
+			joined_timestamp?: string
+			name?:             string
+			state?:            string
+			status?:           string
 		})]
 		id?:        string
 		parent_id!: string
