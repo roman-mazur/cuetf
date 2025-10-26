@@ -64,7 +64,7 @@ package res
 			// The maximum number of redirects to follow. Default: `0`
 			max_redirects?: number
 
-			// The mode of the monitor. Can be "all" or "any". If you’re using
+			// The mode of the monitor. Can be "all" or "any". If you're using
 			// a DNS-load balancer and want to ping every IP address for the
 			// specified hostname, you should use all.
 			mode?: string
@@ -111,7 +111,7 @@ package res
 			username?: string
 		})
 
-		// The monitor’s name.
+		// The monitor's name.
 		name!: string
 
 		// ICMP Monitor specific fields
@@ -138,7 +138,7 @@ package res
 
 		// These Private Locations refer to locations hosted and managed
 		// by you, whereas locations are hosted by Elastic. You can
-		// specify a Private Location using the location’s name.
+		// specify a Private Location using the location's name.
 		private_locations?: [...string]
 
 		// Enable or disable retesting when a monitor fails. By default,
@@ -150,7 +150,7 @@ package res
 		// transient problems. Default: `true`.
 		retest_on_failure?: bool
 
-		// The monitor’s schedule in minutes. Supported values are 1, 3,
+		// The monitor's schedule in minutes. Supported values are 1, 3,
 		// 5, 10, 15, 30, 60, 120 and 240.
 		schedule?: number
 
@@ -214,7 +214,7 @@ package res
 		// An array of tags.
 		tags?: [...string]
 
-		// The monitor timeout in seconds, monitor will fail if it doesn’t
+		// The monitor timeout in seconds, monitor will fail if it doesn't
 		// complete within this time. Default: `16`
 		timeout?: number
 	})
