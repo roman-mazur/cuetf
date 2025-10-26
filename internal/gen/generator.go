@@ -5,14 +5,16 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"log"
 	"os"
 	"os/exec"
 	"path"
 	"path/filepath"
 	"regexp"
 	"strings"
+	"sync"
 	"time"
+
+	"rmazur.io/cuetf/internal/clog"
 )
 
 type Config struct {
@@ -30,7 +32,15 @@ type Config struct {
 	Verbose bool
 }
 
-func Generate(cfg *Config) error {
+type Generator struct {
+	lg *clog.Logger
+}
+
+func NewGenerator(logf clog.Logf) *Generator {
+	return &Generator{lg: clog.New(logf)}
+}
+
+func (g *Generator) Generate(cfg *Config) error {
 	sf, err := os.Open(cfg.SchemaPath)
 	if err != nil {
 		return fmt.Errorf("could not open schema file: %w", err)
@@ -49,7 +59,7 @@ func Generate(cfg *Config) error {
 		providerPath := filepath.Join(cfg.OutputPath, shortName)
 
 		if cfg.GenerateDefs {
-			generateDefs(cfg, data, providerPath)
+			g.generateDefs(cfg, data, providerPath)
 		}
 		if cfg.GenerateMappings {
 			generateMappings(providerPath, shortName)
@@ -58,34 +68,39 @@ func Generate(cfg *Config) error {
 	return nil
 }
 
-func generateDefs(cfg *Config, data providerSchema, providerPath string) {
-	processSchema(cfg, "provider", data.Provider, providerPath, "1/1")
-	if cfg.Version != "" {
-		providerName := filepath.Base(providerPath)
-		createFile(
-			filepath.Join(providerPath, "version_gen.cue"),
-			fmt.Sprintf("package %s\n\n#Version: %q\n", providerName, cfg.Version),
-		)
-	}
+func (g *Generator) generateDefs(cfg *Config, data providerSchema, providerPath string) {
+	var wg sync.WaitGroup
 
-	done := make(chan struct{})
-	go func() {
-		generateMapDefs(cfg, data.Resources, filepath.Join(providerPath, "res"))
-		done <- struct{}{}
-	}()
-	go func() {
-		generateMapDefs(cfg, data.DataSources, filepath.Join(providerPath, "data"))
-		done <- struct{}{}
-	}()
-	<-done
-	<-done
+	wg.Go(func() {
+		processSchema(cfg, g.lg.LogPart(clog.PartProvider), "provider", data.Provider, providerPath, "1/1")
+		if cfg.Version != "" {
+			providerName := filepath.Base(providerPath)
+			createFile(
+				filepath.Join(providerPath, "version_gen.cue"),
+				fmt.Sprintf("package %s\n\n#Version: %q\n", providerName, cfg.Version),
+			)
+		}
+		g.lg.Finish(clog.PartProvider)
+	})
+
+	wg.Go(func() {
+		generateMapDefs(cfg, g.lg.LogPart(clog.PartResources), data.Resources, filepath.Join(providerPath, "res"))
+		g.lg.Finish(clog.PartResources)
+	})
+
+	wg.Go(func() {
+		generateMapDefs(cfg, g.lg.LogPart(clog.PartDataSources), data.DataSources, filepath.Join(providerPath, "data"))
+		g.lg.Finish(clog.PartDataSources)
+	})
+
+	wg.Wait()
 }
 
-func generateMapDefs(cfg *Config, data map[string]*schemaData, dir string) {
+func generateMapDefs(cfg *Config, logf clog.Logf, data map[string]*schemaData, dir string) {
 	i := 0
 	for name, schema := range data {
 		i++
-		processSchema(cfg, name, schema, dir, fmt.Sprintf("%d/%d", i, len(data)))
+		processSchema(cfg, logf, name, schema, dir, fmt.Sprintf("%d/%d", i, len(data)))
 	}
 }
 
@@ -148,12 +163,12 @@ func ShouldProcess(cfg *Config, name string) bool {
 	return true
 }
 
-func processSchema(cfg *Config, name string, s *schemaData, dir string, logPrefix string) {
+func processSchema(cfg *Config, logf clog.Logf, name string, s *schemaData, dir string, logPrefix string) {
 	if !ShouldProcess(cfg, name) {
 		return
 	}
 
-	log.Println(logPrefix, name, "at", dir)
+	logf("%s %s at %s", logPrefix, name, dir)
 	_ = os.MkdirAll(dir, 0777)
 
 	start := time.Now()
@@ -162,7 +177,7 @@ func processSchema(cfg *Config, name string, s *schemaData, dir string, logPrefi
 		if cfg.LogTime {
 			timeInfo = fmt.Sprintf(" in %s", time.Since(start))
 		}
-		log.Printf("DONE%s: %s at %s", timeInfo, name, dir)
+		logf("DONE%s: %s at %s", timeInfo, name, dir)
 	}()
 
 	inputFile, err := os.Create(filepath.Join(dir, name+"-input.json"))
@@ -182,12 +197,12 @@ func processSchema(cfg *Config, name string, s *schemaData, dir string, logPrefi
 	transformCmd.Dir = dir
 	output, err := transformCmd.CombinedOutput()
 	if err != nil {
-		log.Printf("ERROR with %s: %s", name, err)
+		logf("ERROR with %s: %s", name, err)
 	}
 	if len(output) > 0 {
-		log.Printf("ERROR with %s", name)
+		logf("ERROR with %s", name)
 		if cfg.Verbose {
-			log.Println(string(output))
+			logf(string(output))
 		}
 	}
 }
