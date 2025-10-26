@@ -65,6 +65,7 @@ import "list"
 	})
 
 	#backfill_all: close({
+		mongodb_excluded_objects?: matchN(1, [_#defs."/$defs/backfill_all/$defs/mongodb_excluded_objects", list.MaxItems(1) & [..._#defs."/$defs/backfill_all/$defs/mongodb_excluded_objects"]])
 		mysql_excluded_objects?: matchN(1, [_#defs."/$defs/backfill_all/$defs/mysql_excluded_objects", list.MaxItems(1) & [..._#defs."/$defs/backfill_all/$defs/mysql_excluded_objects"]])
 		oracle_excluded_objects?: matchN(1, [_#defs."/$defs/backfill_all/$defs/oracle_excluded_objects", list.MaxItems(1) & [..._#defs."/$defs/backfill_all/$defs/oracle_excluded_objects"]])
 		postgresql_excluded_objects?: matchN(1, [_#defs."/$defs/backfill_all/$defs/postgresql_excluded_objects", list.MaxItems(1) & [..._#defs."/$defs/backfill_all/$defs/postgresql_excluded_objects"]])
@@ -84,6 +85,7 @@ import "list"
 	})
 
 	#source_config: close({
+		mongodb_source_config?: matchN(1, [_#defs."/$defs/source_config/$defs/mongodb_source_config", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/mongodb_source_config"]])
 		mysql_source_config?: matchN(1, [_#defs."/$defs/source_config/$defs/mysql_source_config", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/mysql_source_config"]])
 		oracle_source_config?: matchN(1, [_#defs."/$defs/source_config/$defs/oracle_source_config", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/oracle_source_config"]])
 		postgresql_source_config?: matchN(1, [_#defs."/$defs/source_config/$defs/postgresql_source_config", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/postgresql_source_config"]])
@@ -99,6 +101,29 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/backfill_all/$defs/mongodb_excluded_objects": close({
+		databases?: matchN(1, [_#defs."/$defs/backfill_all/$defs/mongodb_excluded_objects/$defs/databases", [_, ...] & [..._#defs."/$defs/backfill_all/$defs/mongodb_excluded_objects/$defs/databases"]])
+	})
+
+	_#defs: "/$defs/backfill_all/$defs/mongodb_excluded_objects/$defs/databases": close({
+		collections?: matchN(1, [_#defs."/$defs/backfill_all/$defs/mongodb_excluded_objects/$defs/databases/$defs/collections", [..._#defs."/$defs/backfill_all/$defs/mongodb_excluded_objects/$defs/databases/$defs/collections"]])
+
+		// Database name.
+		database!: string
+	})
+
+	_#defs: "/$defs/backfill_all/$defs/mongodb_excluded_objects/$defs/databases/$defs/collections": close({
+		fields?: matchN(1, [_#defs."/$defs/backfill_all/$defs/mongodb_excluded_objects/$defs/databases/$defs/collections/$defs/fields", [..._#defs."/$defs/backfill_all/$defs/mongodb_excluded_objects/$defs/databases/$defs/collections/$defs/fields"]])
+
+		// Collection name.
+		collection!: string
+	})
+
+	_#defs: "/$defs/backfill_all/$defs/mongodb_excluded_objects/$defs/databases/$defs/collections/$defs/fields": close({
+		// Field name.
+		field?: string
 	})
 
 	_#defs: "/$defs/backfill_all/$defs/mysql_excluded_objects": close({
@@ -403,6 +428,63 @@ import "list"
 		// The schema file format along JSON data files. Possible values:
 		// ["NO_SCHEMA_FILE", "AVRO_SCHEMA_FILE"]
 		schema_file_format?: string
+	})
+
+	_#defs: "/$defs/source_config/$defs/mongodb_source_config": close({
+		exclude_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/exclude_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/exclude_objects"]])
+		include_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/include_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/include_objects"]])
+
+		// Optional. Maximum number of concurrent backfill tasks. The
+		// number
+		// should be non-negative and less than or equal to 50. If not set
+		// (or set to 0), the system''s default value is used
+		max_concurrent_backfill_tasks?: number
+	})
+
+	_#defs: "/$defs/source_config/$defs/mongodb_source_config/$defs/exclude_objects": close({
+		databases?: matchN(1, [_#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/exclude_objects/$defs/databases", [..._#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/exclude_objects/$defs/databases"]])
+	})
+
+	_#defs: "/$defs/source_config/$defs/mongodb_source_config/$defs/exclude_objects/$defs/databases": close({
+		collections?: matchN(1, [_#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/exclude_objects/$defs/databases/$defs/collections", [..._#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/exclude_objects/$defs/databases/$defs/collections"]])
+
+		// Database name.
+		database?: string
+	})
+
+	_#defs: "/$defs/source_config/$defs/mongodb_source_config/$defs/exclude_objects/$defs/databases/$defs/collections": close({
+		fields?: matchN(1, [_#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/exclude_objects/$defs/databases/$defs/collections/$defs/fields", [..._#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/exclude_objects/$defs/databases/$defs/collections/$defs/fields"]])
+
+		// Collection name.
+		collection?: string
+	})
+
+	_#defs: "/$defs/source_config/$defs/mongodb_source_config/$defs/exclude_objects/$defs/databases/$defs/collections/$defs/fields": close({
+		// Field name.
+		field?: string
+	})
+
+	_#defs: "/$defs/source_config/$defs/mongodb_source_config/$defs/include_objects": close({
+		databases?: matchN(1, [_#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/include_objects/$defs/databases", [..._#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/include_objects/$defs/databases"]])
+	})
+
+	_#defs: "/$defs/source_config/$defs/mongodb_source_config/$defs/include_objects/$defs/databases": close({
+		collections?: matchN(1, [_#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/include_objects/$defs/databases/$defs/collections", [..._#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/include_objects/$defs/databases/$defs/collections"]])
+
+		// Database name.
+		database?: string
+	})
+
+	_#defs: "/$defs/source_config/$defs/mongodb_source_config/$defs/include_objects/$defs/databases/$defs/collections": close({
+		fields?: matchN(1, [_#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/include_objects/$defs/databases/$defs/collections/$defs/fields", [..._#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/include_objects/$defs/databases/$defs/collections/$defs/fields"]])
+
+		// Collection name.
+		collection?: string
+	})
+
+	_#defs: "/$defs/source_config/$defs/mongodb_source_config/$defs/include_objects/$defs/databases/$defs/collections/$defs/fields": close({
+		// Field name.
+		field?: string
 	})
 
 	_#defs: "/$defs/source_config/$defs/mysql_source_config": close({

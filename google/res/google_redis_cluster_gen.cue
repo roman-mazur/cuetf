@@ -12,6 +12,11 @@ import "list"
 		// ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
 		// "AUTH_MODE_DISABLED"]
 		authorization_mode?: string
+		automated_backup_config?: matchN(1, [#automated_backup_config, list.MaxItems(1) & [...#automated_backup_config]])
+
+		// This field is used to determine the available maintenance
+		// versions for the self service update.
+		available_maintenance_versions?: [...string]
 
 		// The backup collection full resource name.
 		// Example:
@@ -43,10 +48,14 @@ import "list"
 				network?: string
 			})]
 		})]
-		id?: string
+
+		// This field represents the actual maintenance version of the
+		// cluster.
+		effective_maintenance_version?: string
 
 		// The KMS key used to encrypt the at-rest data of the cluster.
 		kms_key?: string
+		id?:      string
 
 		// Upcoming maintenance schedule.
 		maintenance_schedule?: [...close({
@@ -54,6 +63,15 @@ import "list"
 			schedule_deadline_time?: string
 			start_time?:             string
 		})]
+
+		// This field can be used to trigger self service update to
+		// indicate the desired maintenance version. The input to this
+		// field can be determined by the available_maintenance_versions
+		// field.
+		// *Note*: This field can only be specified when updating an
+		// existing cluster to a newer version. Downgrades are currently
+		// not supported!
+		maintenance_version?: string
 
 		// Cluster's Certificate Authority. This field will only be
 		// populated if Redis Cluster's transit_encryption_mode is
@@ -79,7 +97,6 @@ import "list"
 		// Output only. Redis memory precise size in GB for the entire
 		// cluster.
 		precise_size_gb?: number
-		project?:         string
 
 		// Output only. PSC connections for discovery of the cluster
 		// topology and accessing the cluster.
@@ -90,13 +107,7 @@ import "list"
 			project_id?:        string
 			psc_connection_id?: string
 		})]
-
-		// Service attachment details to configure Psc connections.
-		psc_service_attachments?: [...close({
-			connection_type?:    string
-			service_attachment?: string
-		})]
-		automated_backup_config?: matchN(1, [#automated_backup_config, list.MaxItems(1) & [...#automated_backup_config]])
+		project?: string
 		cross_cluster_replication_config?: matchN(1, [#cross_cluster_replication_config, list.MaxItems(1) & [...#cross_cluster_replication_config]])
 		gcs_source?: matchN(1, [#gcs_source, list.MaxItems(1) & [...#gcs_source]])
 		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
@@ -104,7 +115,12 @@ import "list"
 		persistence_config?: matchN(1, [#persistence_config, list.MaxItems(1) & [...#persistence_config]])
 		psc_configs?: matchN(1, [#psc_configs, [...#psc_configs]])
 		timeouts?: #timeouts
-		zone_distribution_config?: matchN(1, [#zone_distribution_config, list.MaxItems(1) & [...#zone_distribution_config]])
+
+		// Service attachment details to configure Psc connections.
+		psc_service_attachments?: [...close({
+			connection_type?:    string
+			service_attachment?: string
+		})]
 
 		// Configure Redis Cluster behavior using a subset of native Redis
 		// configuration parameters.
@@ -115,6 +131,7 @@ import "list"
 
 		// The name of the region of the Redis cluster.
 		region?: string
+		zone_distribution_config?: matchN(1, [#zone_distribution_config, list.MaxItems(1) & [...#zone_distribution_config]])
 
 		// Optional. The number of replica nodes per shard.
 		replica_count?: number

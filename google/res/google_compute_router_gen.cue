@@ -31,7 +31,7 @@ import "list"
 		name!: string
 
 		// A reference to the network to which this router belongs.
-		network!: string
+		network?: string
 		bgp?: matchN(1, [#bgp, list.MaxItems(1) & [...#bgp]])
 		project?: string
 		md5_authentication_keys?: matchN(1, [#md5_authentication_keys, list.MaxItems(1) & [...#md5_authentication_keys]])

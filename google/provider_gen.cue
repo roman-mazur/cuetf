@@ -4,61 +4,63 @@ package google
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/provider")
 	close({
-		access_approval_custom_endpoint?:            string
-		access_context_manager_custom_endpoint?:     string
-		access_token?:                               string
-		active_directory_custom_endpoint?:           string
-		add_terraform_attribution_label?:            bool
-		alloydb_custom_endpoint?:                    string
-		apigee_custom_endpoint?:                     string
-		apihub_custom_endpoint?:                     string
-		apikeys_custom_endpoint?:                    string
-		app_engine_custom_endpoint?:                 string
-		apphub_custom_endpoint?:                     string
-		artifact_registry_custom_endpoint?:          string
-		assured_workloads_custom_endpoint?:          string
-		backup_dr_custom_endpoint?:                  string
-		beyondcorp_custom_endpoint?:                 string
-		big_query_custom_endpoint?:                  string
-		biglake_custom_endpoint?:                    string
-		bigquery_analytics_hub_custom_endpoint?:     string
-		bigquery_connection_custom_endpoint?:        string
-		bigquery_data_transfer_custom_endpoint?:     string
-		bigquery_datapolicy_custom_endpoint?:        string
-		bigquery_datapolicyv2_custom_endpoint?:      string
-		bigquery_reservation_custom_endpoint?:       string
-		bigtable_custom_endpoint?:                   string
-		billing_custom_endpoint?:                    string
-		billing_project?:                            string
-		binary_authorization_custom_endpoint?:       string
-		blockchain_node_engine_custom_endpoint?:     string
-		certificate_manager_custom_endpoint?:        string
-		chronicle_custom_endpoint?:                  string
-		cloud_asset_custom_endpoint?:                string
-		cloud_billing_custom_endpoint?:              string
-		cloud_build_custom_endpoint?:                string
-		cloud_functions_custom_endpoint?:            string
-		cloud_identity_custom_endpoint?:             string
-		cloud_ids_custom_endpoint?:                  string
-		cloud_quotas_custom_endpoint?:               string
-		cloud_resource_manager_custom_endpoint?:     string
-		cloud_run_custom_endpoint?:                  string
-		cloud_run_v2_custom_endpoint?:               string
-		cloud_scheduler_custom_endpoint?:            string
-		cloud_tasks_custom_endpoint?:                string
-		cloudbuildv2_custom_endpoint?:               string
-		clouddeploy_custom_endpoint?:                string
-		clouddomains_custom_endpoint?:               string
-		cloudfunctions2_custom_endpoint?:            string
-		colab_custom_endpoint?:                      string
-		composer_custom_endpoint?:                   string
-		compute_custom_endpoint?:                    string
-		contact_center_insights_custom_endpoint?:    string
-		container_analysis_custom_endpoint?:         string
-		container_attached_custom_endpoint?:         string
-		container_aws_custom_endpoint?:              string
-		container_azure_custom_endpoint?:            string
-		container_custom_endpoint?:                  string
+		access_approval_custom_endpoint?:        string
+		access_context_manager_custom_endpoint?: string
+		access_token?:                           string
+		active_directory_custom_endpoint?:       string
+		add_terraform_attribution_label?:        bool
+		alloydb_custom_endpoint?:                string
+		apigee_custom_endpoint?:                 string
+		apihub_custom_endpoint?:                 string
+		apikeys_custom_endpoint?:                string
+		app_engine_custom_endpoint?:             string
+		apphub_custom_endpoint?:                 string
+		artifact_registry_custom_endpoint?:      string
+		assured_workloads_custom_endpoint?:      string
+		backup_dr_custom_endpoint?:              string
+		beyondcorp_custom_endpoint?:             string
+		big_query_custom_endpoint?:              string
+		biglake_custom_endpoint?:                string
+		bigquery_analytics_hub_custom_endpoint?: string
+		bigquery_connection_custom_endpoint?:    string
+		bigquery_data_transfer_custom_endpoint?: string
+		bigquery_datapolicy_custom_endpoint?:    string
+		bigquery_datapolicyv2_custom_endpoint?:  string
+		bigquery_reservation_custom_endpoint?:   string
+		bigtable_custom_endpoint?:               string
+		billing_custom_endpoint?:                string
+		billing_project?:                        string
+		binary_authorization_custom_endpoint?:   string
+		blockchain_node_engine_custom_endpoint?: string
+		certificate_manager_custom_endpoint?:    string
+		chronicle_custom_endpoint?:              string
+		cloud_asset_custom_endpoint?:            string
+		cloud_billing_custom_endpoint?:          string
+		cloud_build_custom_endpoint?:            string
+		cloud_functions_custom_endpoint?:        string
+		cloud_identity_custom_endpoint?:         string
+		cloud_ids_custom_endpoint?:              string
+		cloud_quotas_custom_endpoint?:           string
+		cloud_resource_manager_custom_endpoint?: string
+		cloud_run_custom_endpoint?:              string
+		cloud_run_v2_custom_endpoint?:           string
+		cloud_scheduler_custom_endpoint?:        string
+		cloud_tasks_custom_endpoint?:            string
+		cloudbuildv2_custom_endpoint?:           string
+		clouddeploy_custom_endpoint?:            string
+		clouddomains_custom_endpoint?:           string
+		cloudfunctions2_custom_endpoint?:        string
+		batching?: matchN(1, [#batching, [...#batching]])
+		colab_custom_endpoint?:                   string
+		composer_custom_endpoint?:                string
+		compute_custom_endpoint?:                 string
+		contact_center_insights_custom_endpoint?: string
+		container_analysis_custom_endpoint?:      string
+		container_attached_custom_endpoint?:      string
+		container_aws_custom_endpoint?:           string
+		container_azure_custom_endpoint?:         string
+		container_custom_endpoint?:               string
+		external_credentials?: matchN(1, [#external_credentials, [...#external_credentials]])
 		core_billing_custom_endpoint?:               string
 		credentials?:                                string
 		data_catalog_custom_endpoint?:               string
@@ -93,20 +95,19 @@ package google
 		firestore_custom_endpoint?:             string
 		gemini_custom_endpoint?:                string
 		gke_backup_custom_endpoint?:            string
-		batching?: matchN(1, [#batching, [...#batching]])
-		gke_hub2_custom_endpoint?:           string
-		gke_hub_custom_endpoint?:            string
-		gkeonprem_custom_endpoint?:          string
-		healthcare_custom_endpoint?:         string
-		iam2_custom_endpoint?:               string
-		iam3_custom_endpoint?:               string
-		iam_beta_custom_endpoint?:           string
-		iam_credentials_custom_endpoint?:    string
-		iam_custom_endpoint?:                string
-		iam_workforce_pool_custom_endpoint?: string
-		iap_custom_endpoint?:                string
-		identity_platform_custom_endpoint?:  string
-		impersonate_service_account?:        string
+		gke_hub2_custom_endpoint?:              string
+		gke_hub_custom_endpoint?:               string
+		gkeonprem_custom_endpoint?:             string
+		healthcare_custom_endpoint?:            string
+		iam2_custom_endpoint?:                  string
+		iam3_custom_endpoint?:                  string
+		iam_beta_custom_endpoint?:              string
+		iam_credentials_custom_endpoint?:       string
+		iam_custom_endpoint?:                   string
+		iam_workforce_pool_custom_endpoint?:    string
+		iap_custom_endpoint?:                   string
+		identity_platform_custom_endpoint?:     string
+		impersonate_service_account?:           string
 		impersonate_service_account_delegates?: [...string]
 		integration_connectors_custom_endpoint?:     string
 		integrations_custom_endpoint?:               string
@@ -124,10 +125,12 @@ package google
 		monitoring_custom_endpoint?:                 string
 		netapp_custom_endpoint?:                     string
 		network_connectivity_custom_endpoint?:       string
+		network_connectivityv1_custom_endpoint?:     string
 		network_management_custom_endpoint?:         string
 		network_security_custom_endpoint?:           string
 		network_services_custom_endpoint?:           string
 		notebooks_custom_endpoint?:                  string
+		observability_custom_endpoint?:              string
 		oracle_database_custom_endpoint?:            string
 		org_policy_custom_endpoint?:                 string
 		os_config_custom_endpoint?:                  string
@@ -179,10 +182,9 @@ package google
 		vertex_ai_custom_endpoint?:                     string
 		vmwareengine_custom_endpoint?:                  string
 		vpc_access_custom_endpoint?:                    string
-		external_credentials?: matchN(1, [#external_credentials, [...#external_credentials]])
-		workbench_custom_endpoint?: string
-		workflows_custom_endpoint?: string
-		zone?:                      string
+		workbench_custom_endpoint?:                     string
+		workflows_custom_endpoint?:                     string
+		zone?:                                          string
 	})
 
 	#batching: close({

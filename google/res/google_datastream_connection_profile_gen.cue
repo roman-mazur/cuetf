@@ -28,26 +28,27 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
+		bigquery_profile?: matchN(1, [#bigquery_profile, list.MaxItems(1) & [...#bigquery_profile]])
 
 		// The name of the location this connection profile is located in.
 		location!: string
-		bigquery_profile?: matchN(1, [#bigquery_profile, list.MaxItems(1) & [...#bigquery_profile]])
 		forward_ssh_connectivity?: matchN(1, [#forward_ssh_connectivity, list.MaxItems(1) & [...#forward_ssh_connectivity]])
 		gcs_profile?: matchN(1, [#gcs_profile, list.MaxItems(1) & [...#gcs_profile]])
+		mongodb_profile?: matchN(1, [#mongodb_profile, list.MaxItems(1) & [...#mongodb_profile]])
 		mysql_profile?: matchN(1, [#mysql_profile, list.MaxItems(1) & [...#mysql_profile]])
 		oracle_profile?: matchN(1, [#oracle_profile, list.MaxItems(1) & [...#oracle_profile]])
 		postgresql_profile?: matchN(1, [#postgresql_profile, list.MaxItems(1) & [...#postgresql_profile]])
 		private_connectivity?: matchN(1, [#private_connectivity, list.MaxItems(1) & [...#private_connectivity]])
+		sql_server_profile?: matchN(1, [#sql_server_profile, list.MaxItems(1) & [...#sql_server_profile]])
+		timeouts?: #timeouts
 
 		// The resource's name.
-		name?: string
-		sql_server_profile?: matchN(1, [#sql_server_profile, list.MaxItems(1) & [...#sql_server_profile]])
+		name?:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?:  string
-		timeouts?: #timeouts
 	})
 
 	#bigquery_profile: close({})
@@ -75,6 +76,27 @@ import "list"
 
 		// The root path inside the Cloud Storage bucket.
 		root_path?: string
+	})
+
+	#mongodb_profile: close({
+		// Password for the MongoDB connection. Mutually exclusive with
+		// secretManagerStoredPassword.
+		password?: string
+
+		// Name of the replica set.
+		replica_set?: string
+		host_addresses?: matchN(1, [_#defs."/$defs/mongodb_profile/$defs/host_addresses", [_, ...] & [..._#defs."/$defs/mongodb_profile/$defs/host_addresses"]])
+
+		// A reference to a Secret Manager resource name storing the
+		// MongoDB
+		// connection password. Mutually exclusive with password.
+		secret_manager_stored_password?: string
+		srv_connection_format?: matchN(1, [_#defs."/$defs/mongodb_profile/$defs/srv_connection_format", list.MaxItems(1) & [..._#defs."/$defs/mongodb_profile/$defs/srv_connection_format"]])
+
+		// Username for the MongoDB connection.
+		username!: string
+		ssl_config?: matchN(1, [_#defs."/$defs/mongodb_profile/$defs/ssl_config", list.MaxItems(1) & [..._#defs."/$defs/mongodb_profile/$defs/ssl_config"]])
+		standard_connection_format?: matchN(1, [_#defs."/$defs/mongodb_profile/$defs/standard_connection_format", list.MaxItems(1) & [..._#defs."/$defs/mongodb_profile/$defs/standard_connection_format"]])
 	})
 
 	#mysql_profile: close({
@@ -172,6 +194,53 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/mongodb_profile/$defs/host_addresses": close({
+		// Hostname for the connection.
+		hostname!: string
+
+		// Port for the connection.
+		port?: number
+	})
+
+	_#defs: "/$defs/mongodb_profile/$defs/srv_connection_format": close({})
+
+	_#defs: "/$defs/mongodb_profile/$defs/ssl_config": close({
+		// PEM-encoded certificate of the CA that signed the source
+		// database
+		// server's certificate.
+		ca_certificate?: string
+
+		// Indicates whether the clientKey field is set.
+		ca_certificate_set?: bool
+
+		// PEM-encoded certificate that will be used by the replica to
+		// authenticate against the source database server. If this field
+		// is used then the 'clientKey' and the 'caCertificate' fields are
+		// mandatory.
+		client_certificate?: string
+
+		// Indicates whether the clientCertificate field is set.
+		client_certificate_set?: bool
+
+		// PEM-encoded private key associated with the Client Certificate.
+		// If this field is used then the 'client_certificate' and the
+		// 'ca_certificate' fields are mandatory.
+		client_key?: string
+
+		// Indicates whether the clientKey field is set.
+		client_key_set?: bool
+
+		// A reference to a Secret Manager resource name storing the
+		// PEM-encoded private key. Mutually exclusive with clientKey.
+		secret_manager_stored_client_key?: string
+	})
+
+	_#defs: "/$defs/mongodb_profile/$defs/standard_connection_format": close({
+		// Specifies whether the client connects directly to the
+		// host[:port] in the connection URI.
+		direct_connection?: bool
 	})
 
 	_#defs: "/$defs/mysql_profile/$defs/ssl_config": close({

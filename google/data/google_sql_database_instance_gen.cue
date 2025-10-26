@@ -89,6 +89,8 @@ package data
 		name!: string
 
 		// For a read pool instance, the number of nodes in the read pool.
+		// For read pools with auto scaling enabled, this field is read
+		// only.
 		node_count?: number
 
 		// Configuration for creating a new instance using
@@ -288,7 +290,19 @@ package data
 				password_change_interval?:    string
 				reuse_interval?:              number
 			})]
-			pricing_plan?:             string
+			pricing_plan?: string
+			read_pool_auto_scale_config?: [...close({
+				disable_scale_in?:           bool
+				enabled?:                    bool
+				max_node_count?:             number
+				min_node_count?:             number
+				scale_in_cooldown_seconds?:  number
+				scale_out_cooldown_seconds?: number
+				target_metrics?: [...close({
+					metric?:       string
+					target_value?: number
+				})]
+			})]
 			retain_backups_on_delete?: bool
 			sql_server_audit_config?: [...close({
 				bucket?:             string

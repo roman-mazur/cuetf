@@ -20,6 +20,10 @@ package data
 			retention?: string
 		})]
 
+		// This field is used to determine the available maintenance
+		// versions for the self service update.
+		available_maintenance_versions?: [...string]
+
 		// The backup collection full resource name.
 		// Example:
 		// projects/{project}/locations/{location}/backupCollections/{collection}
@@ -83,6 +87,10 @@ package data
 		// clients and services.
 		effective_labels?: [string]: string
 
+		// This field represents the actual maintenance version of the
+		// cluster.
+		effective_maintenance_version?: string
+
 		// Endpoints for the instance.
 		endpoints?: [...close({
 			connections?: [...close({
@@ -109,6 +117,7 @@ package data
 		gcs_source?: [...close({
 			uris?: [...string]
 		})]
+		id?: string
 
 		// Required. The ID to use for the instance, which will become the
 		// final component of
@@ -133,7 +142,6 @@ package data
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -163,6 +171,15 @@ package data
 			schedule_deadline_time?: string
 			start_time?:             string
 		})]
+
+		// This field can be used to trigger self service update to
+		// indicate the desired maintenance version. The input to this
+		// field can be determined by the available_maintenance_versions
+		// field.
+		// *Note*: This field can only be specified when updating an
+		// existing cluster to a newer version. Downgrades are currently
+		// not supported!
+		maintenance_version?: string
 
 		// Managed backup source for the instance.
 		managed_backup_source?: [...close({
@@ -221,7 +238,6 @@ package data
 			connection_type?:    string
 			service_attachment?: string
 		})]
-		project?: string
 
 		// Output only. User inputs and resource details of the
 		// auto-created PSC connections.
@@ -236,6 +252,7 @@ package data
 			psc_connection_status?: string
 			service_attachment?:    string
 		})]
+		project?: string
 
 		// Optional. Number of replica nodes per shard. If omitted the
 		// default is 0 replicas.

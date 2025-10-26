@@ -48,7 +48,7 @@ package res
 		// unspecified and policyMode = PRESET, the presetTopology
 		// defaults to MESH. When policyMode = CUSTOM, the presetTopology
 		// is set to PRESET_TOPOLOGY_UNSPECIFIED. Possible values:
-		// ["MESH", "STAR"]
+		// ["MESH", "STAR", "HYBRID_INSPECTION"]
 		preset_topology?: string
 
 		// The VPC network associated with this hub's spokes. All of the

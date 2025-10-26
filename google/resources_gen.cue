@@ -42,6 +42,7 @@ _res: google_apigee_env_references: res.#google_apigee_env_references
 _res: google_apigee_envgroup_attachment: res.#google_apigee_envgroup_attachment
 _res: google_apigee_envgroup: res.#google_apigee_envgroup
 _res: google_apigee_environment_addons_config: res.#google_apigee_environment_addons_config
+_res: google_apigee_environment_api_revision_deployment: res.#google_apigee_environment_api_revision_deployment
 _res: google_apigee_environment: res.#google_apigee_environment
 _res: google_apigee_environment_iam_binding: res.#google_apigee_environment_iam_binding
 _res: google_apigee_environment_iam_member: res.#google_apigee_environment_iam_member
@@ -322,6 +323,7 @@ _res: google_compute_node_group: res.#google_compute_node_group
 _res: google_compute_node_template: res.#google_compute_node_template
 _res: google_compute_packet_mirroring: res.#google_compute_packet_mirroring
 _res: google_compute_per_instance_config: res.#google_compute_per_instance_config
+_res: google_compute_preview_feature: res.#google_compute_preview_feature
 _res: google_compute_project_cloud_armor_tier: res.#google_compute_project_cloud_armor_tier
 _res: google_compute_project_default_network_tier: res.#google_compute_project_default_network_tier
 _res: google_compute_project_metadata: res.#google_compute_project_metadata
@@ -460,6 +462,7 @@ _res: google_dataplex_entry_group: res.#google_dataplex_entry_group
 _res: google_dataplex_entry_group_iam_binding: res.#google_dataplex_entry_group_iam_binding
 _res: google_dataplex_entry_group_iam_member: res.#google_dataplex_entry_group_iam_member
 _res: google_dataplex_entry_group_iam_policy: res.#google_dataplex_entry_group_iam_policy
+_res: google_dataplex_entry_link: res.#google_dataplex_entry_link
 _res: google_dataplex_entry_type: res.#google_dataplex_entry_type
 _res: google_dataplex_entry_type_iam_binding: res.#google_dataplex_entry_type_iam_binding
 _res: google_dataplex_entry_type_iam_member: res.#google_dataplex_entry_type_iam_member
@@ -543,6 +546,7 @@ _res: google_dialogflow_entity_type: res.#google_dialogflow_entity_type
 _res: google_dialogflow_fulfillment: res.#google_dialogflow_fulfillment
 _res: google_dialogflow_intent: res.#google_dialogflow_intent
 _res: google_discovery_engine_acl_config: res.#google_discovery_engine_acl_config
+_res: google_discovery_engine_assistant: res.#google_discovery_engine_assistant
 _res: google_discovery_engine_chat_engine: res.#google_discovery_engine_chat_engine
 _res: google_discovery_engine_cmek_config: res.#google_discovery_engine_cmek_config
 _res: google_discovery_engine_data_connector: res.#google_discovery_engine_data_connector
@@ -892,6 +896,7 @@ _res: google_notebooks_runtime_iam_policy: res.#google_notebooks_runtime_iam_pol
 _res: google_oracle_database_autonomous_database: res.#google_oracle_database_autonomous_database
 _res: google_oracle_database_cloud_exadata_infrastructure: res.#google_oracle_database_cloud_exadata_infrastructure
 _res: google_oracle_database_cloud_vm_cluster: res.#google_oracle_database_cloud_vm_cluster
+_res: google_oracle_database_db_system: res.#google_oracle_database_db_system
 _res: google_oracle_database_odb_network: res.#google_oracle_database_odb_network
 _res: google_oracle_database_odb_subnet: res.#google_oracle_database_odb_subnet
 _res: google_org_policy_custom_constraint: res.#google_org_policy_custom_constraint

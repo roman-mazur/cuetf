@@ -33,7 +33,6 @@ import "list"
 		// this
 		// object. This field is used in optimistic locking.
 		fingerprint?: string
-		backend?: matchN(1, [#backend, [...#backend]])
 
 		// The unique identifier for the resource. This identifier is
 		// defined by the server.
@@ -47,12 +46,12 @@ import "list"
 		// uses an internet
 		// or serverless NEG as a backend.
 		health_checks?: [...string]
+		id?: string
 
 		// Specifies preference of traffic to the backend (from the proxy
 		// and from the client for proxyless gRPC). Possible values:
 		// ["IPV4_ONLY", "PREFER_IPV6", "IPV6_ONLY"]
 		ip_address_selection_policy?: string
-		id?:                          string
 
 		// Indicates what kind of load balancing this regional backend
 		// service
@@ -165,18 +164,6 @@ import "list"
 		// the last
 		// character, which cannot be a dash.
 		name!: string
-		cdn_policy?: matchN(1, [#cdn_policy, list.MaxItems(1) & [...#cdn_policy]])
-		circuit_breakers?: matchN(1, [#circuit_breakers, list.MaxItems(1) & [...#circuit_breakers]])
-		consistent_hash?: matchN(1, [#consistent_hash, list.MaxItems(1) & [...#consistent_hash]])
-		custom_metrics?: matchN(1, [#custom_metrics, [...#custom_metrics]])
-		failover_policy?: matchN(1, [#failover_policy, list.MaxItems(1) & [...#failover_policy]])
-		ha_policy?: matchN(1, [#ha_policy, list.MaxItems(1) & [...#ha_policy]])
-		iap?: matchN(1, [#iap, list.MaxItems(1) & [...#iap]])
-		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		outlier_detection?: matchN(1, [#outlier_detection, list.MaxItems(1) & [...#outlier_detection]])
-		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
-		strong_session_affinity_cookie?: matchN(1, [#strong_session_affinity_cookie, list.MaxItems(1) & [...#strong_session_affinity_cookie]])
-		timeouts?: #timeouts
 
 		// The URL of the network to which this backend service belongs.
 		// This field must be set for Internal Passthrough Network Load
@@ -188,6 +175,18 @@ import "list"
 		// to EXTERNAL and haPolicy fastIpMove is enabled.
 		// Changes to this field force recreation of the resource.
 		network?: string
+		backend?: matchN(1, [#backend, [...#backend]])
+		cdn_policy?: matchN(1, [#cdn_policy, list.MaxItems(1) & [...#cdn_policy]])
+		circuit_breakers?: matchN(1, [#circuit_breakers, list.MaxItems(1) & [...#circuit_breakers]])
+		consistent_hash?: matchN(1, [#consistent_hash, list.MaxItems(1) & [...#consistent_hash]])
+		custom_metrics?: matchN(1, [#custom_metrics, [...#custom_metrics]])
+		failover_policy?: matchN(1, [#failover_policy, list.MaxItems(1) & [...#failover_policy]])
+		ha_policy?: matchN(1, [#ha_policy, list.MaxItems(1) & [...#ha_policy]])
+		iap?: matchN(1, [#iap, list.MaxItems(1) & [...#iap]])
+		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
+		outlier_detection?: matchN(1, [#outlier_detection, list.MaxItems(1) & [...#outlier_detection]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
+		strong_session_affinity_cookie?: matchN(1, [#strong_session_affinity_cookie, list.MaxItems(1) & [...#strong_session_affinity_cookie]])
 
 		// A named port on a backend instance group representing the port
 		// for
@@ -203,6 +202,7 @@ import "list"
 		// Must be omitted when the loadBalancingScheme is INTERNAL
 		// (Internal TCP/UDP Load Balancing).
 		port_name?: string
+		timeouts?:  #timeouts
 		project?:   string
 
 		// The protocol this BackendService uses to communicate with
@@ -217,8 +217,11 @@ import "list"
 
 		// The Region in which the created backend service should reside.
 		// If it is not provided, the provider region is used.
-		region?:    string
-		self_link?: string
+		region?: string
+
+		// The security policy associated with this backend service.
+		security_policy?: string
+		self_link?:       string
 
 		// Type of session affinity to use. The default is NONE. Session
 		// affinity is

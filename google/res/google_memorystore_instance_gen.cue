@@ -12,6 +12,10 @@ import "list"
 		// IAM_AUTH
 		authorization_mode?: string
 
+		// This field is used to determine the available maintenance
+		// versions for the self service update.
+		available_maintenance_versions?: [...string]
+
 		// The backup collection full resource name.
 		// Example:
 		// projects/{project}/locations/{location}/backupCollections/{collection}
@@ -27,6 +31,10 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+
+		// This field represents the actual maintenance version of the
+		// cluster.
+		effective_maintenance_version?: string
 
 		// Endpoints for the instance.
 		endpoints?: [...close({
@@ -49,6 +57,7 @@ import "list"
 
 		// Optional. Engine version of the instance.
 		engine_version?: string
+		id?:             string
 
 		// Required. The ID to use for the instance, which will become the
 		// final component of
@@ -62,7 +71,6 @@ import "list"
 		// * Must not end with a hyphen
 		// * Must be unique within a location
 		instance_id!: string
-		id?:          string
 
 		// The KMS key used to encrypt the at-rest data of the cluster
 		kms_key?: string
@@ -88,6 +96,15 @@ import "list"
 			start_time?:             string
 		})]
 
+		// This field can be used to trigger self service update to
+		// indicate the desired maintenance version. The input to this
+		// field can be determined by the available_maintenance_versions
+		// field.
+		// *Note*: This field can only be specified when updating an
+		// existing cluster to a newer version. Downgrades are currently
+		// not supported!
+		maintenance_version?: string
+
 		// Instance's Certificate Authority. This field will only be
 		// populated if instance's transit_encryption_mode is
 		// SERVER_AUTHENTICATION
@@ -96,6 +113,16 @@ import "list"
 				certificates?: [...string]
 			})]
 		})]
+		automated_backup_config?: matchN(1, [#automated_backup_config, list.MaxItems(1) & [...#automated_backup_config]])
+		cross_instance_replication_config?: matchN(1, [#cross_instance_replication_config, list.MaxItems(1) & [...#cross_instance_replication_config]])
+		desired_auto_created_endpoints?: matchN(1, [#desired_auto_created_endpoints, [...#desired_auto_created_endpoints]])
+		desired_psc_auto_connections?: matchN(1, [#desired_psc_auto_connections, [...#desired_psc_auto_connections]])
+		gcs_source?: matchN(1, [#gcs_source, list.MaxItems(1) & [...#gcs_source]])
+		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
+		managed_backup_source?: matchN(1, [#managed_backup_source, list.MaxItems(1) & [...#managed_backup_source]])
+		persistence_config?: matchN(1, [#persistence_config, list.MaxItems(1) & [...#persistence_config]])
+		timeouts?: #timeouts
+		zone_distribution_config?: matchN(1, [#zone_distribution_config, list.MaxItems(1) & [...#zone_distribution_config]])
 
 		// Optional. cluster or cluster-disabled.
 		// Possible values:
@@ -108,20 +135,11 @@ import "list"
 		// Format:
 		// projects/{project}/locations/{location}/instances/{instance}
 		name?: string
-		automated_backup_config?: matchN(1, [#automated_backup_config, list.MaxItems(1) & [...#automated_backup_config]])
-		cross_instance_replication_config?: matchN(1, [#cross_instance_replication_config, list.MaxItems(1) & [...#cross_instance_replication_config]])
 
 		// Represents configuration for nodes of the instance.
 		node_config?: [...close({
 			size_gb?: number
 		})]
-		desired_auto_created_endpoints?: matchN(1, [#desired_auto_created_endpoints, [...#desired_auto_created_endpoints]])
-		desired_psc_auto_connections?: matchN(1, [#desired_psc_auto_connections, [...#desired_psc_auto_connections]])
-		gcs_source?: matchN(1, [#gcs_source, list.MaxItems(1) & [...#gcs_source]])
-		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
-		managed_backup_source?: matchN(1, [#managed_backup_source, list.MaxItems(1) & [...#managed_backup_source]])
-		persistence_config?: matchN(1, [#persistence_config, list.MaxItems(1) & [...#persistence_config]])
-		timeouts?: #timeouts
 
 		// Optional. Machine type for individual nodes of the instance.
 		// Possible values:
@@ -138,7 +156,6 @@ import "list"
 			connection_type?:    string
 			service_attachment?: string
 		})]
-		zone_distribution_config?: matchN(1, [#zone_distribution_config, list.MaxItems(1) & [...#zone_distribution_config]])
 
 		// Optional. Number of replica nodes per shard. If omitted the
 		// default is 0 replicas.

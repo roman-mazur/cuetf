@@ -48,6 +48,20 @@ package data
 		// instance. If this is provided, CMEK is enabled.
 		customer_managed_key?: string
 
+		// Whether Terraform will be prevented from destroying the
+		// instance.
+		// When a'terraform destroy' or 'terraform apply' would delete the
+		// instance,
+		// the command will fail if this field is not set to false in
+		// Terraform state.
+		// When the field is set to true or unset in Terraform state, a
+		// 'terraform apply'
+		// or 'terraform destroy' that would delete the instance will
+		// fail.
+		// When the field is set to false, deleting the instance is
+		// allowed.
+		deletion_protection?: bool
+
 		// An arbitrary and optional user-provided name for the instance.
 		display_name?: string
 
@@ -89,6 +103,7 @@ package data
 		// must
 		// be different from [locationId].
 		location_id?: string
+		id?:          string
 
 		// Maintenance policy for an instance.
 		maintenance_policy?: [...close({
@@ -113,7 +128,6 @@ package data
 			schedule_deadline_time?: string
 			start_time?:             string
 		})]
-		id?: string
 
 		// The self service update maintenance version.
 		maintenance_version?: string
@@ -149,7 +163,8 @@ package data
 		persistence_iam_identity?: string
 
 		// The port number of the exposed Redis endpoint.
-		port?: number
+		port?:    number
+		project?: string
 
 		// Output only. Hostname or IP address of the exposed readonly
 		// Redis endpoint. Standard tier only.
@@ -158,7 +173,6 @@ package data
 		// will exhibit some lag behind the primary. Write requests must
 		// target 'host'.
 		read_endpoint?: string
-		project?:       string
 
 		// Output only. The port number of the exposed readonly redis
 		// endpoint. Standard tier only.

@@ -25,6 +25,7 @@ _ds: google_artifact_registry_maven_artifacts: data.#google_artifact_registry_ma
 _ds: google_artifact_registry_npm_package: data.#google_artifact_registry_npm_package
 _ds: google_artifact_registry_npm_packages: data.#google_artifact_registry_npm_packages
 _ds: google_artifact_registry_package: data.#google_artifact_registry_package
+_ds: google_artifact_registry_packages: data.#google_artifact_registry_packages
 _ds: google_artifact_registry_python_package: data.#google_artifact_registry_python_package
 _ds: google_artifact_registry_repositories: data.#google_artifact_registry_repositories
 _ds: google_artifact_registry_repository: data.#google_artifact_registry_repository
