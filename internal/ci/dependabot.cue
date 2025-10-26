@@ -5,7 +5,7 @@ package ci
 		"package-ecosystem": "terraform"
 		directories: ["*/internal"]
 		schedule: interval: "weekly"
-		"open-pull-requests-limit": 2
+		"open-pull-requests-limit": 5
 	},
 ]
 
