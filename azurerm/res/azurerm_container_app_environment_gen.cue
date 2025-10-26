@@ -68,7 +68,11 @@ import "list"
 		// `platform_reserved_cidr` that is reserved for the internal DNS
 		// server.
 		platform_reserved_dns_ip_address?: string
-		resource_group_name!:              string
+
+		// The public network access setting for the Container App
+		// Environment.
+		public_network_access?: string
+		resource_group_name!:   string
 
 		// The Static IP Address of the Environment.
 		static_ip_address?: string
