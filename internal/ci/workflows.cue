@@ -8,7 +8,7 @@ import (
 
 #versions: {
 	go:        "1.25"
-	terraform: "1.5.7"
+	terraform: "1.13.4"
 }
 
 workflows: [N=string]: githubactions.#Workflow & {
