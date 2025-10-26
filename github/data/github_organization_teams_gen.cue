@@ -15,7 +15,9 @@ package data
 			name?:    string
 			node_id?: string
 			parent?: [string]: string
-			privacy?: string
+			parent_team_id?:   string
+			parent_team_slug?: string
+			privacy?:          string
 			repositories?: [...string]
 			slug?: string
 		})]

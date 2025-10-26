@@ -12,9 +12,9 @@ package data
 		node_id?:         string
 		permission?:      string
 		privacy?:         string
-		repositories?: [...string]
 		repositories_detailed?: [...close({
 			repo_id?:   number
+			repo_name?: string
 			role_name?: string
 		})]
 		results_per_page?: number

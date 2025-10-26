@@ -8,6 +8,7 @@ _res: github_actions_organization_oidc_subject_claim_customization_template: res
 _res: github_actions_organization_permissions: res.#github_actions_organization_permissions
 _res: github_actions_organization_secret: res.#github_actions_organization_secret
 _res: github_actions_organization_secret_repositories: res.#github_actions_organization_secret_repositories
+_res: github_actions_organization_secret_repository: res.#github_actions_organization_secret_repository
 _res: github_actions_organization_variable: res.#github_actions_organization_variable
 _res: github_actions_repository_access_level: res.#github_actions_repository_access_level
 _res: github_actions_repository_oidc_subject_claim_customization_template: res.#github_actions_repository_oidc_subject_claim_customization_template
@@ -37,8 +38,14 @@ _res: github_issue_label: res.#github_issue_label
 _res: github_issue_labels: res.#github_issue_labels
 _res: github_membership: res.#github_membership
 _res: github_organization_block: res.#github_organization_block
+_res: github_organization_custom_properties: res.#github_organization_custom_properties
 _res: github_organization_custom_role: res.#github_organization_custom_role
 _res: github_organization_project: res.#github_organization_project
+_res: github_organization_repository_role: res.#github_organization_repository_role
+_res: github_organization_role: res.#github_organization_role
+_res: github_organization_role_team_assignment: res.#github_organization_role_team_assignment
+_res: github_organization_role_team: res.#github_organization_role_team
+_res: github_organization_role_user: res.#github_organization_role_user
 _res: github_organization_ruleset: res.#github_organization_ruleset
 _res: github_organization_security_manager: res.#github_organization_security_manager
 _res: github_organization_settings: res.#github_organization_settings

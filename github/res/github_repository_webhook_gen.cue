@@ -15,7 +15,8 @@ import "list"
 		events!: [...string]
 		id?: string
 
-		// The repository of the webhook.
+		// The repository name of the webhook, not including the
+		// organization, which will be inferred.
 		repository!: string
 		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
 
