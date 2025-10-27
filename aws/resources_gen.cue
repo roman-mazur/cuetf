@@ -187,6 +187,11 @@ _res: aws_bedrockagentcore_browser: res.#aws_bedrockagentcore_browser
 _res: aws_bedrockagentcore_code_interpreter: res.#aws_bedrockagentcore_code_interpreter
 _res: aws_bedrockagentcore_gateway: res.#aws_bedrockagentcore_gateway
 _res: aws_bedrockagentcore_gateway_target: res.#aws_bedrockagentcore_gateway_target
+_res: aws_bedrockagentcore_memory: res.#aws_bedrockagentcore_memory
+_res: aws_bedrockagentcore_memory_strategy: res.#aws_bedrockagentcore_memory_strategy
+_res: aws_bedrockagentcore_oauth2_credential_provider: res.#aws_bedrockagentcore_oauth2_credential_provider
+_res: aws_bedrockagentcore_token_vault_cmk: res.#aws_bedrockagentcore_token_vault_cmk
+_res: aws_bedrockagentcore_workload_identity: res.#aws_bedrockagentcore_workload_identity
 _res: aws_budgets_budget_action: res.#aws_budgets_budget_action
 _res: aws_budgets_budget: res.#aws_budgets_budget
 _res: aws_ce_anomaly_monitor: res.#aws_ce_anomaly_monitor

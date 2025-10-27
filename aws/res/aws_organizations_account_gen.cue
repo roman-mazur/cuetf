@@ -17,7 +17,7 @@ package res
 		parent_id?:                  string
 		role_name?:                  string
 		timeouts?:                   #timeouts
-		status?:                     string
+		state?:                      string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

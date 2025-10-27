@@ -797,6 +797,9 @@ package aws
 		networkfirewall?: string
 
 		// Use this to override the default service endpoint URL
+		networkflowmonitor?: string
+
+		// Use this to override the default service endpoint URL
 		networkmanager?: string
 
 		// Use this to override the default service endpoint URL
@@ -810,6 +813,9 @@ package aws
 
 		// Use this to override the default service endpoint URL
 		oam?: string
+
+		// Use this to override the default service endpoint URL
+		observabilityadmin?: string
 
 		// Use this to override the default service endpoint URL
 		odb?: string
