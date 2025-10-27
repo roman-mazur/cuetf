@@ -80,6 +80,8 @@ import "list"
 		})]
 
 		// For a read pool instance, the number of nodes in the read pool.
+		// For read pools with auto scaling enabled, this field is read
+		// only.
 		node_count?: number
 
 		// IPv4 address assigned. This is a workaround for an issue fixed
@@ -352,17 +354,18 @@ import "list"
 		ip_configuration?: matchN(1, [_#defs."/$defs/settings/$defs/ip_configuration", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/ip_configuration"]])
 		location_preference?: matchN(1, [_#defs."/$defs/settings/$defs/location_preference", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/location_preference"]])
 		maintenance_window?: matchN(1, [_#defs."/$defs/settings/$defs/maintenance_window", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/maintenance_window"]])
+		password_validation_policy?: matchN(1, [_#defs."/$defs/settings/$defs/password_validation_policy", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/password_validation_policy"]])
+		read_pool_auto_scale_config?: matchN(1, [_#defs."/$defs/settings/$defs/read_pool_auto_scale_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/read_pool_auto_scale_config"]])
 
 		// Enables Dataplex Integration.
 		enable_dataplex_integration?: bool
-		password_validation_policy?: matchN(1, [_#defs."/$defs/settings/$defs/password_validation_policy", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/password_validation_policy"]])
+		sql_server_audit_config?: matchN(1, [_#defs."/$defs/settings/$defs/sql_server_audit_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/sql_server_audit_config"]])
 
 		// Enables Vertex AI Integration.
 		enable_google_ml_integration?: bool
 
 		// Pricing plan for this instance, can only be PER_USE.
 		pricing_plan?: string
-		sql_server_audit_config?: matchN(1, [_#defs."/$defs/settings/$defs/sql_server_audit_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/sql_server_audit_config"]])
 
 		// When this parameter is set to true, Cloud SQL retains backups
 		// of the instance even after the instance is deleted. The
@@ -656,6 +659,37 @@ import "list"
 
 		// Number of previous passwords that cannot be reused.
 		reuse_interval?: number
+	})
+
+	_#defs: "/$defs/settings/$defs/read_pool_auto_scale_config": close({
+		// True if auto scale in is disabled.
+		disable_scale_in?: bool
+
+		// True if Read Pool Auto Scale is enabled.
+		enabled?: bool
+
+		// Maximum number of nodes in the read pool. If set to lower than
+		// current node count, node count will be updated.
+		max_node_count?: number
+
+		// Minimum number of nodes in the read pool. If set to higher than
+		// current node count, node count will be updated.
+		min_node_count?: number
+
+		// The cooldown period for scale in operations.
+		scale_in_cooldown_seconds?: number
+
+		// The cooldown period for scale out operations.
+		scale_out_cooldown_seconds?: number
+		target_metrics?: matchN(1, [_#defs."/$defs/settings/$defs/read_pool_auto_scale_config/$defs/target_metrics", [..._#defs."/$defs/settings/$defs/read_pool_auto_scale_config/$defs/target_metrics"]])
+	})
+
+	_#defs: "/$defs/settings/$defs/read_pool_auto_scale_config/$defs/target_metrics": close({
+		// Metric name for Read Pool Auto Scale.
+		metric?: string
+
+		// Target value for Read Pool Auto Scale.
+		target_value?: number
 	})
 
 	_#defs: "/$defs/settings/$defs/sql_server_audit_config": close({

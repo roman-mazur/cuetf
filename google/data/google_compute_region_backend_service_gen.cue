@@ -377,8 +377,11 @@ package data
 
 		// The Region in which the created backend service should reside.
 		// If it is not provided, the provider region is used.
-		region?:    string
-		self_link?: string
+		region?: string
+
+		// The security policy associated with this backend service.
+		security_policy?: string
+		self_link?:       string
 
 		// Type of session affinity to use. The default is NONE. Session
 		// affinity is

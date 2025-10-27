@@ -21,6 +21,10 @@ package data
 			retention?: string
 		})]
 
+		// This field is used to determine the available maintenance
+		// versions for the self service update.
+		available_maintenance_versions?: [...string]
+
 		// The backup collection full resource name.
 		// Example:
 		// projects/{project}/locations/{location}/backupCollections/{collection}
@@ -76,15 +80,19 @@ package data
 			})]
 		})]
 
+		// This field represents the actual maintenance version of the
+		// cluster.
+		effective_maintenance_version?: string
+
 		// Backups stored in Cloud Storage buckets. The Cloud Storage
 		// buckets need to be the same region as the clusters.
 		gcs_source?: [...close({
 			uris?: [...string]
 		})]
-		id?: string
 
 		// The KMS key used to encrypt the at-rest data of the cluster.
 		kms_key?: string
+		id?:      string
 
 		// Maintenance policy for a cluster
 		maintenance_policy?: [...close({
@@ -108,6 +116,15 @@ package data
 			schedule_deadline_time?: string
 			start_time?:             string
 		})]
+
+		// This field can be used to trigger self service update to
+		// indicate the desired maintenance version. The input to this
+		// field can be determined by the available_maintenance_versions
+		// field.
+		// *Note*: This field can only be specified when updating an
+		// existing cluster to a newer version. Downgrades are currently
+		// not supported!
+		maintenance_version?: string
 
 		// Backups that generated and managed by memorystore.
 		managed_backup_source?: [...close({
@@ -150,7 +167,6 @@ package data
 		// Output only. Redis memory precise size in GB for the entire
 		// cluster.
 		precise_size_gb?: number
-		project?:         string
 
 		// Required. Each PscConfig configures the consumer network where
 		// two
@@ -183,6 +199,7 @@ package data
 		// supported parameters:
 		// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
 		redis_configs?: [string]: string
+		project?: string
 
 		// The name of the region of the Redis cluster.
 		region?: string

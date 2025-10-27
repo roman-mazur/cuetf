@@ -50,6 +50,20 @@ import "list"
 		// instance. If this is provided, CMEK is enabled.
 		customer_managed_key?: string
 
+		// Whether Terraform will be prevented from destroying the
+		// instance.
+		// When a'terraform destroy' or 'terraform apply' would delete the
+		// instance,
+		// the command will fail if this field is not set to false in
+		// Terraform state.
+		// When the field is set to true or unset in Terraform state, a
+		// 'terraform apply'
+		// or 'terraform destroy' that would delete the instance will
+		// fail.
+		// When the field is set to false, deleting the instance is
+		// allowed.
+		deletion_protection?: bool
+
 		// An arbitrary and optional user-provided name for the instance.
 		display_name?: string
 
@@ -80,6 +94,7 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
+		id?: string
 
 		// The zone where the instance will be provisioned. If not
 		// provided,
@@ -101,7 +116,6 @@ import "list"
 
 		// The self service update maintenance version.
 		maintenance_version?: string
-		id?:                  string
 
 		// Redis memory size in GiB.
 		memory_size_gb!: number
@@ -143,7 +157,6 @@ import "list"
 		// endpoint. Standard tier only.
 		// Write requests should target 'port'.
 		read_endpoint_port?: number
-		project?:            string
 
 		// Optional. Read replica mode. Can only be specified when trying
 		// to create the instance.
@@ -157,6 +170,7 @@ import "list"
 		// can scale up and down the number of replicas. Possible values:
 		// ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
 		read_replicas_mode?: string
+		project?:            string
 
 		// Redis configuration parameters, according to
 		// http://redis.io/topics/config.
