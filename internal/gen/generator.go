@@ -5,11 +5,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"maps"
 	"os"
 	"os/exec"
 	"path"
 	"path/filepath"
 	"regexp"
+	"slices"
 	"strings"
 	"sync"
 	"time"
@@ -97,10 +99,11 @@ func (g *Generator) generateDefs(cfg *Config, data providerSchema, providerPath 
 }
 
 func generateMapDefs(cfg *Config, logf clog.Logf, data map[string]*schemaData, dir string) {
-	i := 0
-	for name, schema := range data {
-		i++
-		processSchema(cfg, logf, name, schema, dir, fmt.Sprintf("%d/%d", i, len(data)))
+	keys := slices.Collect(maps.Keys(data))
+	slices.Sort(keys)
+	for i, name := range keys {
+		schema := data[name]
+		processSchema(cfg, logf, name, schema, dir, fmt.Sprintf("%d/%d", i+1, len(data)))
 	}
 }
 
