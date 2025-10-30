@@ -37,6 +37,13 @@ func TestProviders(t *testing.T) {
 			},
 		},
 		{
+			name: "google",
+			examples: []string{
+				"provider",
+				"google_compute_instance",
+			},
+		},
+		{
 			name: "cloudflare",
 			examples: []string{
 				"provider",
