@@ -7577,7 +7577,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 			}
 		}
 		github_repository: {
-			version: 1
+			version: 0
 			block: {
 				attributes: {
 					allow_auto_merge: {
