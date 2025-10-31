@@ -23531,7 +23531,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 28.12 Gigabit"
             MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          14.063
+            BaselineBandwidthInGbps:          22.5
             PeakBandwidthInGbps:              28.125
             DefaultEnaQueueCountPerInterface: 8
         }]
@@ -23618,7 +23618,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 37.5 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          18.75
+            BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
@@ -23705,7 +23705,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 56.25 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          28.125
+            BaselineBandwidthInGbps:          45.0
             PeakBandwidthInGbps:              56.25
             DefaultEnaQueueCountPerInterface: 8
         }]
@@ -23882,7 +23882,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 100 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          56.25
+            BaselineBandwidthInGbps:          90.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
         }]
@@ -24059,7 +24059,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 25 Gigabit"
             MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          12.5
+            BaselineBandwidthInGbps:          15.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
@@ -24230,7 +24230,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 56.25 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          28.125
+            BaselineBandwidthInGbps:          45.0
             PeakBandwidthInGbps:              56.25
             DefaultEnaQueueCountPerInterface: 8
         }]
@@ -24311,7 +24311,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 100 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          56.25
+            BaselineBandwidthInGbps:          90.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
         }]
@@ -25436,7 +25436,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 28.12 Gigabit"
             MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          14.063
+            BaselineBandwidthInGbps:          22.5
             PeakBandwidthInGbps:              28.125
             DefaultEnaQueueCountPerInterface: 8
         }]
@@ -25523,7 +25523,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 37.5 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          18.75
+            BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
@@ -25610,7 +25610,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 56.25 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          28.125
+            BaselineBandwidthInGbps:          45.0
             PeakBandwidthInGbps:              56.25
             DefaultEnaQueueCountPerInterface: 16
         }]
@@ -25784,7 +25784,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 100 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          56.25
+            BaselineBandwidthInGbps:          90.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
         }]
@@ -25961,7 +25961,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 25 Gigabit"
             MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          12.5
+            BaselineBandwidthInGbps:          15.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
@@ -26132,7 +26132,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 56.25 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          28.125
+            BaselineBandwidthInGbps:          45.0
             PeakBandwidthInGbps:              56.25
             DefaultEnaQueueCountPerInterface: 32
         }]
@@ -35014,7 +35014,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "m6i.12xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -35093,7 +35093,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m6i.16xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -35172,7 +35172,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m6i.24xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -35251,7 +35251,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m6i.2xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -35330,7 +35330,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m6i.32xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -35412,7 +35412,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m6i.4xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -35491,7 +35491,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m6i.8xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -35570,7 +35570,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m6i.large"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -35649,7 +35649,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m6i.metal"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -35724,7 +35724,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m6i.xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]

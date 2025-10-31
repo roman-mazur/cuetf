@@ -17321,6 +17321,8 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          300.0
             PeakBandwidthInGbps:              300.0
             DefaultEnaQueueCountPerInterface: 32
+            MaximumEnaQueueCount:             768
+            MaximumEnaQueueCountPerInterface: 128
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -17332,7 +17334,7 @@ InstanceTypes: [{
         }
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
-        FlexibleEnaQueuesSupport:     "unsupported"
+        FlexibleEnaQueuesSupport:     "supported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -18139,7 +18141,7 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
@@ -18219,7 +18221,7 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
@@ -18542,7 +18544,7 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
@@ -19095,7 +19097,7 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
@@ -33243,8 +33245,11 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
     SupportedBootModes: ["uefi"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
 }, {
@@ -33411,8 +33416,11 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
     SupportedBootModes: ["uefi"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
 }, {
@@ -53257,7 +53265,7 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
@@ -53337,7 +53345,7 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
@@ -53420,7 +53428,7 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
@@ -53500,7 +53508,7 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
@@ -53580,7 +53588,7 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
@@ -53874,6 +53882,8 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            MaximumEnaQueueCount:             1536
+            MaximumEnaQueueCountPerInterface: 128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -53886,7 +53896,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport: "unsupported"
+        FlexibleEnaQueuesSupport: "supported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -53973,7 +53983,7 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
@@ -76125,7 +76135,7 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
@@ -76205,7 +76215,7 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
@@ -76504,6 +76514,8 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          75.0
             PeakBandwidthInGbps:              75.0
             DefaultEnaQueueCountPerInterface: 32
+            MaximumEnaQueueCount:             768
+            MaximumEnaQueueCountPerInterface: 128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -76516,7 +76528,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport: "unsupported"
+        FlexibleEnaQueuesSupport: "supported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -76579,6 +76591,8 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            MaximumEnaQueueCount:             1536
+            MaximumEnaQueueCountPerInterface: 128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -76591,7 +76605,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport: "unsupported"
+        FlexibleEnaQueuesSupport: "supported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -76678,7 +76692,7 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
@@ -79648,7 +79662,7 @@ InstanceTypes: [{
         SupportedVersions: ["2.0"]
     }
     PhcSupport:             "supported"
-    RebootMigrationSupport: "unsupported"
+    RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "u7i-8tb.112xlarge"
     CurrentGeneration: true
@@ -79728,7 +79742,7 @@ InstanceTypes: [{
         SupportedVersions: ["2.0"]
     }
     PhcSupport:             "supported"
-    RebootMigrationSupport: "unsupported"
+    RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "u7in-16tb.224xlarge"
     CurrentGeneration: true

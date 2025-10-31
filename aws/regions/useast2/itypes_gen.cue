@@ -67625,7 +67625,7 @@ InstanceTypes: [{
         EnaSupport:                   "required"
         EfaSupported:                 false
         EncryptionInTransitSupported: true
-        EnaSrdSupported:              false
+        EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
@@ -67702,7 +67702,7 @@ InstanceTypes: [{
         EnaSupport:                   "required"
         EfaSupported:                 false
         EncryptionInTransitSupported: true
-        EnaSrdSupported:              false
+        EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
@@ -67859,7 +67859,7 @@ InstanceTypes: [{
             MaximumEfaInterfaces: 1
         }
         EncryptionInTransitSupported: true
-        EnaSrdSupported:              false
+        EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
@@ -68013,7 +68013,7 @@ InstanceTypes: [{
         EnaSupport:                   "required"
         EfaSupported:                 false
         EncryptionInTransitSupported: true
-        EnaSrdSupported:              false
+        EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
@@ -68164,7 +68164,7 @@ InstanceTypes: [{
         EnaSupport:                   "required"
         EfaSupported:                 false
         EncryptionInTransitSupported: true
-        EnaSrdSupported:              false
+        EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
@@ -68238,7 +68238,7 @@ InstanceTypes: [{
             MaximumEfaInterfaces: 1
         }
         EncryptionInTransitSupported: true
-        EnaSrdSupported:              false
+        EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {

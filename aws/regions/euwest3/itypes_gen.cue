@@ -14735,8 +14735,11 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
     SupportedBootModes: ["uefi"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
 }, {
@@ -14819,8 +14822,11 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
     SupportedBootModes: ["uefi"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
 }, {
@@ -14903,8 +14909,11 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
     SupportedBootModes: ["uefi"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
 }, {
@@ -14987,8 +14996,11 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
     SupportedBootModes: ["uefi"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
 }, {
@@ -15071,8 +15083,11 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
     SupportedBootModes: ["uefi"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
 }, {
@@ -15155,8 +15170,11 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
     SupportedBootModes: ["uefi"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
 }, {
