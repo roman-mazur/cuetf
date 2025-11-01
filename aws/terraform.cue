@@ -12,6 +12,7 @@ package aws
 //		}
 //
 #Terraform: {
+	terraform?: required_providers?: aws: version: #Version
 	provider?: aws: #provider
 
 	resource?: [type=#awsTypes]: [name=string]: _res[type]
