@@ -274,6 +274,7 @@ _ds: azurerm_oracle_db_system_shapes: data.#azurerm_oracle_db_system_shapes
 _ds: azurerm_oracle_exadata_infrastructure: data.#azurerm_oracle_exadata_infrastructure
 _ds: azurerm_oracle_exascale_database_storage_vault: data.#azurerm_oracle_exascale_database_storage_vault
 _ds: azurerm_oracle_gi_versions: data.#azurerm_oracle_gi_versions
+_ds: azurerm_oracle_resource_anchor: data.#azurerm_oracle_resource_anchor
 _ds: azurerm_orchestrated_virtual_machine_scale_set: data.#azurerm_orchestrated_virtual_machine_scale_set
 _ds: azurerm_palo_alto_local_rulestack: data.#azurerm_palo_alto_local_rulestack
 _ds: azurerm_platform_image: data.#azurerm_platform_image
