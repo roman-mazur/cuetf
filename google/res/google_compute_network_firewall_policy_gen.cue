@@ -25,17 +25,25 @@ package res
 		// be a dash, lowercase letter, or digit, except the last
 		// character, which cannot be a dash.
 		name!: string
+		id?:   string
 
 		// The unique identifier for the resource. This identifier is
 		// defined by the server.
 		network_firewall_policy_id?: string
-		id?:                         string
+
+		// Policy type is used to determine which resources (networks) the
+		// policy can be associated with.
+		// A policy can be associated with a network only if the network
+		// has the matching policyType in its network profile.
+		// Different policy types may support some of the Firewall Rules
+		// features. Possible values: ["VPC_POLICY"]
+		policy_type?: string
 
 		// Total count of all firewall policy rule tuples. A firewall
 		// policy can not exceed a set number of tuples.
 		rule_tuple_count?: number
-		project?:          string
 		timeouts?:         #timeouts
+		project?:          string
 
 		// Server-defined URL for the resource.
 		self_link?: string

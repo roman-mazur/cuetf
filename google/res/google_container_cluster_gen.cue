@@ -396,6 +396,9 @@ import "list"
 		// Location of the fleet membership, for example "us-central1".
 		membership_location?: string
 
+		// The type of the cluster's fleet membership.
+		membership_type?: string
+
 		// Whether the cluster has been registered via the fleet API.
 		pre_registered?: bool
 
@@ -1090,6 +1093,12 @@ import "list"
 		// Note that GCP-managed services may still use the endpoint even
 		// if this is false.
 		allow_external_traffic?: bool
+
+		// Controls whether the k8s certs auth is allowed via dns.
+		enable_k8s_certs_via_dns?: bool
+
+		// Controls whether the k8s token auth is allowed via dns.
+		enable_k8s_tokens_via_dns?: bool
 
 		// The cluster's DNS endpoint.
 		endpoint?: string

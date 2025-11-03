@@ -613,6 +613,7 @@ _res: google_firestore_database: res.#google_firestore_database
 _res: google_firestore_document: res.#google_firestore_document
 _res: google_firestore_field: res.#google_firestore_field
 _res: google_firestore_index: res.#google_firestore_index
+_res: google_firestore_user_creds: res.#google_firestore_user_creds
 _res: google_folder_access_approval_settings: res.#google_folder_access_approval_settings
 _res: google_folder: res.#google_folder
 _res: google_folder_iam_audit_config: res.#google_folder_iam_audit_config

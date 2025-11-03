@@ -34,6 +34,14 @@ import "list"
 		// defined by the server.
 		network_firewall_policy_id?: string
 
+		// Policy type is used to determine which resources (networks) the
+		// policy can be associated with.
+		// A policy can be associated with a network only if the network
+		// has the matching policyType in its network profile.
+		// Different policy types may support some of the Firewall Rules
+		// features. Possible values: ["VPC_POLICY"]
+		policy_type?: string
+
 		// A list of firewall policy pre-defined rules.
 		predefined_rules?: [...close({
 			action?:         string
@@ -71,12 +79,12 @@ import "list"
 			target_service_accounts?: [...string]
 			tls_inspect?: bool
 		})]
-		project?: string
 
 		// Total count of all firewall policy rule tuples. A firewall
 		// policy can not exceed a set number of tuples.
 		rule_tuple_count?: number
 		rule?: matchN(1, [#rule, [_, ...] & [...#rule]])
+		project?:  string
 		timeouts?: #timeouts
 
 		// Server-defined URL for the resource.

@@ -15,6 +15,7 @@ import "list"
 		// Fingerprint of the resource. This field is used internally
 		// during updates of this resource.
 		fingerprint?: string
+		id?:          string
 
 		// User-provided name of the Network firewall policy.
 		// The name should be unique in the project in which the firewall
@@ -28,11 +29,18 @@ import "list"
 		// lowercase letter, or digit, except the last character, which
 		// cannot be a dash.
 		name!: string
-		id?:   string
 
 		// The unique identifier for the resource. This identifier is
 		// defined by the server.
 		network_firewall_policy_id?: string
+
+		// Policy type is used to determine which resources (networks) the
+		// policy can be associated with.
+		// A policy can be associated with a network only if the network
+		// has the matching policyType in its network profile.
+		// Different policy types may support some of the Firewall Rules
+		// features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY"]
+		policy_type?: string
 
 		// A list of firewall policy pre-defined rules.
 		predefined_rules?: [...close({
@@ -71,6 +79,9 @@ import "list"
 			target_service_accounts?: [...string]
 			tls_inspect?: bool
 		})]
+		project?: string
+		rule?: matchN(1, [#rule, [_, ...] & [...#rule]])
+		timeouts?: #timeouts
 
 		// The region of this resource.
 		region?: string
@@ -78,9 +89,6 @@ import "list"
 		// Total count of all firewall policy rule tuples. A firewall
 		// policy can not exceed a set number of tuples.
 		rule_tuple_count?: number
-		rule?: matchN(1, [#rule, [_, ...] & [...#rule]])
-		project?:  string
-		timeouts?: #timeouts
 
 		// Server-defined URL for the resource.
 		self_link?: string

@@ -29,19 +29,24 @@ import "list"
 
 		// The location to serve the app from.
 		location_id!: string
+		id?:          string
 
 		// Unique name of the app.
 		name?: string
-		id?:   string
 		feature_settings?: matchN(1, [#feature_settings, list.MaxItems(1) & [...#feature_settings]])
 		iap?: matchN(1, [#iap, list.MaxItems(1) & [...#iap]])
+		timeouts?: #timeouts
 
 		// The project ID to create the application under.
 		project?: string
 
 		// The serving status of the app.
 		serving_status?: string
-		timeouts?:       #timeouts
+
+		// The SSL policy that will be applied to the application. If set
+		// to Modern it will restrict traffic with TLS \u003c 1.2 and
+		// allow only Modern Ciphers suite
+		ssl_policy?: string
 
 		// A list of dispatch rule blocks. Each block has a domain, path,
 		// and service field.
