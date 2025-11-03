@@ -30,7 +30,7 @@ package res
 		pattern!: close({
 			regex!: string
 		})
-		profile_id!: string
+		profile_id?: string
 		secret?:     bool
 		updated_at?: string
 		word_list?:  string

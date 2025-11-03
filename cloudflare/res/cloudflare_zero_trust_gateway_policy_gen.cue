@@ -53,14 +53,11 @@ package res
 		// Specify whether the rule is enabled.
 		enabled?: bool
 
-		// Set settings related to this rule. Each setting is only valid
-		// for specific rule types and can only be used with the
-		// appropriate selectors. If Terraform drift is observed in these
-		// setting values, verify that the setting is supported for the
-		// given rule type and that the API response reflects the
-		// requested value. If the API response returns sanitized or
-		// modified values that differ from the request, use the
-		// API-provided values in Terraform to ensure consistency.
+		// Defines settings for this rule. Settings apply only to specific
+		// rule types and must use compatible selectors. If Terraform
+		// detects drift, confirm the setting supports your rule type and
+		// check whether the API modifies the value. Use API-returned
+		// values in your configuration to prevent drift.
 		rule_settings?: close({
 			// Add custom headers to allowed requests as key-value pairs. Use
 			// header names as keys that map to arrays of header values.
@@ -394,7 +391,8 @@ package res
 		})
 
 		// Specify the protocol or layer to evaluate the traffic,
-		// identity, and device posture expressions.
+		// identity, and device posture expressions. Can only contain a
+		// single value.
 		filters?: [...string]
 
 		// Identify the API resource with a UUID.

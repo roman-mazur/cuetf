@@ -22,9 +22,6 @@ package data
 			type?: string
 		})]])
 
-		// Requests information about certain properties.
-		properties?: [...string]
-
 		// Identifier.
 		zone_id!: string
 	})

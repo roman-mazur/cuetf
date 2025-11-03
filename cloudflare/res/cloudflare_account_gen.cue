@@ -10,6 +10,18 @@ package res
 		// Identifier
 		id?: string
 
+		// Parent container details
+		managed_by?: close({
+			// ID of the parent Organization, if one exists
+			parent_org_id?: string
+
+			// Name of the parent Organization, if one exists
+			parent_org_name?: string
+		})
+
+		// Account name
+		name!: string
+
 		// Account settings
 		settings?: close({
 			// Sets an abuse contact email to notify for abuse reports.
@@ -20,8 +32,8 @@ package res
 			enforce_twofactor?: bool
 		})
 
-		// Account name
-		name!: string
+		// Available values: "standard", "enterprise".
+		type?: string
 
 		// information related to the tenant unit, and optionally, an id
 		// of the unit to create the account on. see
@@ -30,8 +42,5 @@ package res
 			// Tenant unit ID
 			id?: string
 		})
-
-		// Available values: "standard", "enterprise".
-		type?: string
 	})
 }

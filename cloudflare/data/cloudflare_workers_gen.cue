@@ -12,15 +12,6 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// When the Worker was created.
-			created_on?: string
-
-			// Immutable ID of the Worker.
-			id?: string
-
-			// Whether logpush is enabled for the Worker.
-			logpush?: bool
-
 			// Observability settings for the Worker.
 			observability?: close({
 				// Whether observability is enabled for the Worker.
@@ -45,8 +36,141 @@ package data
 				})
 			})
 
-			// Name of the Worker.
-			name?: string
+			// Other resources that reference the Worker and depend on it
+			// existing.
+			references?: close({
+				// Other Workers that reference the Worker as an outbound for a
+				// dispatch namespace.
+				dispatch_namespace_outbounds?: matchN(1, [close({
+					// ID of the dispatch namespace.
+					namespace_id?: string
+
+					// Name of the dispatch namespace.
+					namespace_name?: string
+
+					// ID of the Worker using the dispatch namespace.
+					worker_id?: string
+
+					// Name of the Worker using the dispatch namespace.
+					worker_name?: string
+				}), [...close({
+					// ID of the dispatch namespace.
+					namespace_id?: string
+
+					// Name of the dispatch namespace.
+					namespace_name?: string
+
+					// ID of the Worker using the dispatch namespace.
+					worker_id?: string
+
+					// Name of the Worker using the dispatch namespace.
+					worker_name?: string
+				})]])
+
+				// Custom domains connected to the Worker.
+				domains?: matchN(1, [close({
+					// ID of the TLS certificate issued for the custom domain.
+					certificate_id?: string
+
+					// Full hostname of the custom domain, including the zone name.
+					hostname?: string
+
+					// ID of the custom domain.
+					id?: string
+
+					// ID of the zone.
+					zone_id?: string
+
+					// Name of the zone.
+					zone_name?: string
+				}), [...close({
+					// ID of the TLS certificate issued for the custom domain.
+					certificate_id?: string
+
+					// Full hostname of the custom domain, including the zone name.
+					hostname?: string
+
+					// ID of the custom domain.
+					id?: string
+
+					// ID of the zone.
+					zone_id?: string
+
+					// Name of the zone.
+					zone_name?: string
+				})]])
+
+				// Other Workers that reference Durable Object classes implemented
+				// by the Worker.
+				durable_objects?: matchN(1, [close({
+					// ID of the Durable Object namespace being used.
+					namespace_id?: string
+
+					// Name of the Durable Object namespace being used.
+					namespace_name?: string
+
+					// ID of the Worker using the Durable Object implementation.
+					worker_id?: string
+
+					// Name of the Worker using the Durable Object implementation.
+					worker_name?: string
+				}), [...close({
+					// ID of the Durable Object namespace being used.
+					namespace_id?: string
+
+					// Name of the Durable Object namespace being used.
+					namespace_name?: string
+
+					// ID of the Worker using the Durable Object implementation.
+					worker_id?: string
+
+					// Name of the Worker using the Durable Object implementation.
+					worker_name?: string
+				})]])
+
+				// Queues that send messages to the Worker.
+				queues?: matchN(1, [close({
+					// ID of the queue consumer configuration.
+					queue_consumer_id?: string
+
+					// ID of the queue.
+					queue_id?: string
+
+					// Name of the queue.
+					queue_name?: string
+				}), [...close({
+					// ID of the queue consumer configuration.
+					queue_consumer_id?: string
+
+					// ID of the queue.
+					queue_id?: string
+
+					// Name of the queue.
+					queue_name?: string
+				})]])
+
+				// Other Workers that reference the Worker using [service
+				// bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).
+				workers?: matchN(1, [close({
+					// ID of the referencing Worker.
+					id?: string
+
+					// Name of the referencing Worker.
+					name?: string
+				}), [...close({
+					// ID of the referencing Worker.
+					id?: string
+
+					// Name of the referencing Worker.
+					name?: string
+				})]])
+			})
+
+			// When the Worker was created.
+			created_on?: string
+
+			// Immutable ID of the Worker.
+			id?: string
 
 			// Subdomain settings for the Worker.
 			subdomain?: close({
@@ -59,8 +183,11 @@ package data
 				previews_enabled?: bool
 			})
 
-			// Tags associated with the Worker.
-			tags?: [...string]
+			// Whether logpush is enabled for the Worker.
+			logpush?: bool
+
+			// Name of the Worker.
+			name?: string
 
 			// Other Workers that should consume logs from the Worker.
 			tail_consumers?: matchN(1, [close({
@@ -70,19 +197,13 @@ package data
 				// Name of the consumer Worker.
 				name?: string
 			})]])
+
+			// Tags associated with the Worker.
+			tags?: [...string]
 
 			// When the Worker was most recently updated.
 			updated_on?: string
 		}), [...close({
-			// When the Worker was created.
-			created_on?: string
-
-			// Immutable ID of the Worker.
-			id?: string
-
-			// Whether logpush is enabled for the Worker.
-			logpush?: bool
-
 			// Observability settings for the Worker.
 			observability?: close({
 				// Whether observability is enabled for the Worker.
@@ -107,8 +228,141 @@ package data
 				})
 			})
 
-			// Name of the Worker.
-			name?: string
+			// Other resources that reference the Worker and depend on it
+			// existing.
+			references?: close({
+				// Other Workers that reference the Worker as an outbound for a
+				// dispatch namespace.
+				dispatch_namespace_outbounds?: matchN(1, [close({
+					// ID of the dispatch namespace.
+					namespace_id?: string
+
+					// Name of the dispatch namespace.
+					namespace_name?: string
+
+					// ID of the Worker using the dispatch namespace.
+					worker_id?: string
+
+					// Name of the Worker using the dispatch namespace.
+					worker_name?: string
+				}), [...close({
+					// ID of the dispatch namespace.
+					namespace_id?: string
+
+					// Name of the dispatch namespace.
+					namespace_name?: string
+
+					// ID of the Worker using the dispatch namespace.
+					worker_id?: string
+
+					// Name of the Worker using the dispatch namespace.
+					worker_name?: string
+				})]])
+
+				// Custom domains connected to the Worker.
+				domains?: matchN(1, [close({
+					// ID of the TLS certificate issued for the custom domain.
+					certificate_id?: string
+
+					// Full hostname of the custom domain, including the zone name.
+					hostname?: string
+
+					// ID of the custom domain.
+					id?: string
+
+					// ID of the zone.
+					zone_id?: string
+
+					// Name of the zone.
+					zone_name?: string
+				}), [...close({
+					// ID of the TLS certificate issued for the custom domain.
+					certificate_id?: string
+
+					// Full hostname of the custom domain, including the zone name.
+					hostname?: string
+
+					// ID of the custom domain.
+					id?: string
+
+					// ID of the zone.
+					zone_id?: string
+
+					// Name of the zone.
+					zone_name?: string
+				})]])
+
+				// Other Workers that reference Durable Object classes implemented
+				// by the Worker.
+				durable_objects?: matchN(1, [close({
+					// ID of the Durable Object namespace being used.
+					namespace_id?: string
+
+					// Name of the Durable Object namespace being used.
+					namespace_name?: string
+
+					// ID of the Worker using the Durable Object implementation.
+					worker_id?: string
+
+					// Name of the Worker using the Durable Object implementation.
+					worker_name?: string
+				}), [...close({
+					// ID of the Durable Object namespace being used.
+					namespace_id?: string
+
+					// Name of the Durable Object namespace being used.
+					namespace_name?: string
+
+					// ID of the Worker using the Durable Object implementation.
+					worker_id?: string
+
+					// Name of the Worker using the Durable Object implementation.
+					worker_name?: string
+				})]])
+
+				// Queues that send messages to the Worker.
+				queues?: matchN(1, [close({
+					// ID of the queue consumer configuration.
+					queue_consumer_id?: string
+
+					// ID of the queue.
+					queue_id?: string
+
+					// Name of the queue.
+					queue_name?: string
+				}), [...close({
+					// ID of the queue consumer configuration.
+					queue_consumer_id?: string
+
+					// ID of the queue.
+					queue_id?: string
+
+					// Name of the queue.
+					queue_name?: string
+				})]])
+
+				// Other Workers that reference the Worker using [service
+				// bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).
+				workers?: matchN(1, [close({
+					// ID of the referencing Worker.
+					id?: string
+
+					// Name of the referencing Worker.
+					name?: string
+				}), [...close({
+					// ID of the referencing Worker.
+					id?: string
+
+					// Name of the referencing Worker.
+					name?: string
+				})]])
+			})
+
+			// When the Worker was created.
+			created_on?: string
+
+			// Immutable ID of the Worker.
+			id?: string
 
 			// Subdomain settings for the Worker.
 			subdomain?: close({
@@ -121,8 +375,11 @@ package data
 				previews_enabled?: bool
 			})
 
-			// Tags associated with the Worker.
-			tags?: [...string]
+			// Whether logpush is enabled for the Worker.
+			logpush?: bool
+
+			// Name of the Worker.
+			name?: string
 
 			// Other Workers that should consume logs from the Worker.
 			tail_consumers?: matchN(1, [close({
@@ -132,6 +389,9 @@ package data
 				// Name of the consumer Worker.
 				name?: string
 			})]])
+
+			// Tags associated with the Worker.
+			tags?: [...string]
 
 			// When the Worker was most recently updated.
 			updated_on?: string

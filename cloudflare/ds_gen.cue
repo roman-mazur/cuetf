@@ -56,6 +56,7 @@ _ds: cloudflare_cloudforce_one_request_message: data.#cloudflare_cloudforce_one_
 _ds: cloudflare_cloudforce_one_request_priority: data.#cloudflare_cloudforce_one_request_priority
 _ds: cloudflare_cloudforce_one_requests: data.#cloudflare_cloudforce_one_requests
 _ds: cloudflare_content_scanning_expressions: data.#cloudflare_content_scanning_expressions
+_ds: cloudflare_content_scanning: data.#cloudflare_content_scanning
 _ds: cloudflare_custom_hostname_fallback_origin: data.#cloudflare_custom_hostname_fallback_origin
 _ds: cloudflare_custom_hostname: data.#cloudflare_custom_hostname
 _ds: cloudflare_custom_hostnames: data.#cloudflare_custom_hostnames
@@ -147,6 +148,9 @@ _ds: cloudflare_notification_policy: data.#cloudflare_notification_policy
 _ds: cloudflare_notification_policy_webhooks: data.#cloudflare_notification_policy_webhooks
 _ds: cloudflare_notification_policy_webhooks_list: data.#cloudflare_notification_policy_webhooks_list
 _ds: cloudflare_observatory_scheduled_test: data.#cloudflare_observatory_scheduled_test
+_ds: cloudflare_organization: data.#cloudflare_organization
+_ds: cloudflare_organization_profile: data.#cloudflare_organization_profile
+_ds: cloudflare_organizations: data.#cloudflare_organizations
 _ds: cloudflare_origin_ca_certificate: data.#cloudflare_origin_ca_certificate
 _ds: cloudflare_origin_ca_certificates: data.#cloudflare_origin_ca_certificates
 _ds: cloudflare_page_rule: data.#cloudflare_page_rule

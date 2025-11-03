@@ -97,20 +97,48 @@ package data
 			project_id?: string
 			source?: close({
 				config?: close({
-					deployments_enabled?: bool
-					owner?:               string
+					// The owner of the repository.
+					owner?: string
+
+					// A list of paths that should be excluded from triggering a
+					// preview deployment. Wildcard syntax (`*`) is supported.
 					path_excludes?: [...string]
+
+					// A list of paths that should be watched to trigger a preview
+					// deployment. Wildcard syntax (`*`) is supported.
 					path_includes?: [...string]
+
+					// Whether to enable PR comments.
 					pr_comments_enabled?: bool
 
+					// A list of branches that should not trigger a preview
+					// deployment. Wildcard syntax (`*`) is supported. Must be used
+					// with `preview_deployment_setting` set to `custom`.
+					preview_branch_excludes?: [...string]
+
+					// A list of branches that should trigger a preview deployment.
+					// Wildcard syntax (`*`) is supported. Must be used with
+					// `preview_deployment_setting` set to `custom`.
+					preview_branch_includes?: [...string]
+
+					// Controls whether commits to preview branches trigger a preview
+					// deployment.
 					// Available values: "all", "none", "custom".
 					preview_deployment_setting?: string
-					preview_branch_excludes?: [...string]
-					preview_branch_includes?: [...string]
-					production_branch?:              string
+
+					// The production branch of the repository.
+					production_branch?: string
+
+					// Whether to trigger a production deployment on commits to the
+					// production branch.
 					production_deployments_enabled?: bool
-					repo_name?:                      string
+
+					// The name of the repository.
+					repo_name?: string
 				})
+
+				// The source control management provider.
+				// Available values: "github", "gitlab".
 				type?: string
 			})
 
@@ -243,20 +271,48 @@ package data
 			project_id?: string
 			source?: close({
 				config?: close({
-					deployments_enabled?: bool
-					owner?:               string
+					// The owner of the repository.
+					owner?: string
+
+					// A list of paths that should be excluded from triggering a
+					// preview deployment. Wildcard syntax (`*`) is supported.
 					path_excludes?: [...string]
+
+					// A list of paths that should be watched to trigger a preview
+					// deployment. Wildcard syntax (`*`) is supported.
 					path_includes?: [...string]
+
+					// Whether to enable PR comments.
 					pr_comments_enabled?: bool
 
+					// A list of branches that should not trigger a preview
+					// deployment. Wildcard syntax (`*`) is supported. Must be used
+					// with `preview_deployment_setting` set to `custom`.
+					preview_branch_excludes?: [...string]
+
+					// A list of branches that should trigger a preview deployment.
+					// Wildcard syntax (`*`) is supported. Must be used with
+					// `preview_deployment_setting` set to `custom`.
+					preview_branch_includes?: [...string]
+
+					// Controls whether commits to preview branches trigger a preview
+					// deployment.
 					// Available values: "all", "none", "custom".
 					preview_deployment_setting?: string
-					preview_branch_excludes?: [...string]
-					preview_branch_includes?: [...string]
-					production_branch?:              string
+
+					// The production branch of the repository.
+					production_branch?: string
+
+					// Whether to trigger a production deployment on commits to the
+					// production branch.
 					production_deployments_enabled?: bool
-					repo_name?:                      string
+
+					// The name of the repository.
+					repo_name?: string
 				})
+
+				// The source control management provider.
+				// Available values: "github", "gitlab".
 				type?: string
 			})
 

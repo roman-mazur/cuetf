@@ -133,7 +133,7 @@ package res
 			// A JavaScript variable name for the binding.
 			name!: string
 
-			// Namespace to bind to.
+			// The name of the dispatch namespace.
 			namespace?: string
 
 			// Namespace identifier tag.
@@ -270,7 +270,7 @@ package res
 			// A JavaScript variable name for the binding.
 			name!: string
 
-			// Namespace to bind to.
+			// The name of the dispatch namespace.
 			namespace?: string
 
 			// Namespace identifier tag.

@@ -265,13 +265,6 @@ package res
 				// if you have chosen to connect Tunnel to an HTTPS server.
 				tls_timeout?: number
 			})
-
-			// Enable private network access from WARP users to private
-			// network routes. This is enabled if the tunnel has an assigned
-			// route.
-			warp_routing?: close({
-				enabled?: bool
-			})
 		})
 
 		// Indicates if this is a locally or remotely configured tunnel.
@@ -286,5 +279,10 @@ package res
 
 		// The version of the Tunnel Configuration.
 		version?: number
+
+		// Enable private network access from WARP users to private
+		// network routes. This is enabled if the tunnel has an assigned
+		// route.
+		warp_routing_enabled?: bool
 	})
 }

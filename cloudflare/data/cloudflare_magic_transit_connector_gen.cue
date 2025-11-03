@@ -14,6 +14,7 @@ package data
 		last_heartbeat?:                  string
 		last_seen_version?:               string
 		last_updated?:                    string
+		license_key?:                     string
 		notes?:                           string
 		device?: close({
 			id?:            string

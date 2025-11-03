@@ -11,7 +11,7 @@ package res
 		bucket_name!: string
 
 		// Array of rules to drive notifications.
-		rules?: matchN(1, [close({
+		rules!: matchN(1, [close({
 			// Array of R2 object actions that will trigger notifications.
 			actions!: [...string]
 

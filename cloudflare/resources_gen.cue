@@ -33,6 +33,7 @@ _res: cloudflare_cloudforce_one_request: res.#cloudflare_cloudforce_one_request
 _res: cloudflare_cloudforce_one_request_message: res.#cloudflare_cloudforce_one_request_message
 _res: cloudflare_cloudforce_one_request_priority: res.#cloudflare_cloudforce_one_request_priority
 _res: cloudflare_content_scanning_expression: res.#cloudflare_content_scanning_expression
+_res: cloudflare_content_scanning: res.#cloudflare_content_scanning
 _res: cloudflare_custom_hostname_fallback_origin: res.#cloudflare_custom_hostname_fallback_origin
 _res: cloudflare_custom_hostname: res.#cloudflare_custom_hostname
 _res: cloudflare_custom_pages: res.#cloudflare_custom_pages
@@ -86,6 +87,8 @@ _res: cloudflare_mtls_certificate: res.#cloudflare_mtls_certificate
 _res: cloudflare_notification_policy: res.#cloudflare_notification_policy
 _res: cloudflare_notification_policy_webhooks: res.#cloudflare_notification_policy_webhooks
 _res: cloudflare_observatory_scheduled_test: res.#cloudflare_observatory_scheduled_test
+_res: cloudflare_organization: res.#cloudflare_organization
+_res: cloudflare_organization_profile: res.#cloudflare_organization_profile
 _res: cloudflare_origin_ca_certificate: res.#cloudflare_origin_ca_certificate
 _res: cloudflare_page_rule: res.#cloudflare_page_rule
 _res: cloudflare_page_shield_policy: res.#cloudflare_page_shield_policy

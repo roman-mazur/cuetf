@@ -65,6 +65,10 @@ package data
 			// Available values: "tcp", "udp".
 			l4_protocol?: string
 
+			// A MCP server id configured in ai-controls. Access will secure
+			// the MCP server if accessed through a MCP portal.
+			mcp_server_id?: string
+
 			// The port range of the destination. Can be a single port or a
 			// range of ports. When omitted, all ports will match.
 			port_range?: string
@@ -93,6 +97,10 @@ package data
 			// TCP traffic will match.
 			// Available values: "tcp", "udp".
 			l4_protocol?: string
+
+			// A MCP server id configured in ai-controls. Access will secure
+			// the MCP server if accessed through a MCP portal.
+			mcp_server_id?: string
 
 			// The port range of the destination. Can be a single port or a
 			// range of ports. When omitted, all ports will match.
@@ -2371,7 +2379,7 @@ package data
 		// The application type.
 		// Available values: "self_hosted", "saas", "ssh", "vnc",
 		// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
-		// "infrastructure", "rdp".
+		// "infrastructure", "rdp", "mcp", "mcp_portal".
 		type?: string
 
 		// The Zone ID to use for this endpoint. Mutually exclusive with
