@@ -13,9 +13,10 @@ package data
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		tags?: [string]: string
 		action?: matchN(1, [#action, [...#action]])
+		tags?: [string]: string
 		condition?: matchN(1, [#condition, [...#condition]])
+		transform?: matchN(1, [#transform, [...#transform]])
 	})
 
 	#action: close({
@@ -35,6 +36,12 @@ package data
 		path_pattern?: matchN(1, [_#defs."/$defs/condition/$defs/path_pattern", [..._#defs."/$defs/condition/$defs/path_pattern"]])
 		query_string?: matchN(1, [_#defs."/$defs/condition/$defs/query_string", [..._#defs."/$defs/condition/$defs/query_string"]])
 		source_ip?: matchN(1, [_#defs."/$defs/condition/$defs/source_ip", [..._#defs."/$defs/condition/$defs/source_ip"]])
+	})
+
+	#transform: close({
+		host_header_rewrite_config?: matchN(1, [_#defs."/$defs/transform/$defs/host_header_rewrite_config", [..._#defs."/$defs/transform/$defs/host_header_rewrite_config"]])
+		url_rewrite_config?: matchN(1, [_#defs."/$defs/transform/$defs/url_rewrite_config", [..._#defs."/$defs/transform/$defs/url_rewrite_config"]])
+		type?: string
 	})
 
 	_#defs: "/$defs/action/$defs/authenticate_cognito": close({
@@ -92,11 +99,13 @@ package data
 	})
 
 	_#defs: "/$defs/condition/$defs/host_header": close({
+		regex_values?: [...string]
 		values?: [...string]
 	})
 
 	_#defs: "/$defs/condition/$defs/http_header": close({
 		http_header_name?: string
+		regex_values?: [...string]
 		values?: [...string]
 	})
 
@@ -105,6 +114,7 @@ package data
 	})
 
 	_#defs: "/$defs/condition/$defs/path_pattern": close({
+		regex_values?: [...string]
 		values?: [...string]
 	})
 
@@ -119,5 +129,23 @@ package data
 
 	_#defs: "/$defs/condition/$defs/source_ip": close({
 		values?: [...string]
+	})
+
+	_#defs: "/$defs/transform/$defs/host_header_rewrite_config": close({
+		rewrite?: matchN(1, [_#defs."/$defs/transform/$defs/host_header_rewrite_config/$defs/rewrite", [..._#defs."/$defs/transform/$defs/host_header_rewrite_config/$defs/rewrite"]])
+	})
+
+	_#defs: "/$defs/transform/$defs/host_header_rewrite_config/$defs/rewrite": close({
+		regex?:   string
+		replace?: string
+	})
+
+	_#defs: "/$defs/transform/$defs/url_rewrite_config": close({
+		rewrite?: matchN(1, [_#defs."/$defs/transform/$defs/url_rewrite_config/$defs/rewrite", [..._#defs."/$defs/transform/$defs/url_rewrite_config/$defs/rewrite"]])
+	})
+
+	_#defs: "/$defs/transform/$defs/url_rewrite_config/$defs/rewrite": close({
+		regex?:   string
+		replace?: string
 	})
 }
