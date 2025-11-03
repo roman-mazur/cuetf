@@ -11,14 +11,4 @@ package google
 //			resource: google_compute_instance: my_server: instance_type: "e2-micro" // Validated with the schema.
 //		}
 //
-#Terraform: {
-	provider?: google: #provider
-
-	resource?: [type=#googleTypes]: [name=string]: _res[type]
-	data?: [type=#googleTypes]: [name=string]:     _ds[type]
-}
-
-#googleTypes: =~"^google_.+"
-
-_res: [#googleTypes]: _
-_ds: [#googleTypes]:  _
+#Terraform: _

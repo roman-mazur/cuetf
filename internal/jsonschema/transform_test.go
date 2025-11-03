@@ -126,6 +126,6 @@ func initTestModule(t *testing.T, workDir string, provider string) {
 	RunCommand(t, exec.Command("cp", "-r", "..", filepath.Join(workDir, "internal")))
 	providerDir := filepath.Join(workDir, provider)
 	RunCommand(t, exec.Command("mkdir", providerDir))
-	RunCommand(t, exec.Command("cp", filepath.Join("../..", provider, "terraform.cue"), providerDir))
+	RunCommand(t, exec.Command("cp", filepath.Join("../..", provider, "terraform_gen.cue"), providerDir))
 	RunCommand(t, exec.Command("cp", filepath.Join("../..", provider, "version_gen.cue"), providerDir))
 }

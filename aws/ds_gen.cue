@@ -2,633 +2,637 @@ package aws
 
 import "github.com/roman-mazur/cuetf/aws/data"
 
-_ds: aws_account_primary_contact: data.#aws_account_primary_contact
-_ds: aws_acm_certificate: data.#aws_acm_certificate
-_ds: aws_acmpca_certificate_authority: data.#aws_acmpca_certificate_authority
-_ds: aws_acmpca_certificate: data.#aws_acmpca_certificate
-_ds: aws_alb: data.#aws_alb
-_ds: aws_alb_listener: data.#aws_alb_listener
-_ds: aws_alb_target_group: data.#aws_alb_target_group
-_ds: aws_ami: data.#aws_ami
-_ds: aws_ami_ids: data.#aws_ami_ids
-_ds: aws_api_gateway_api_key: data.#aws_api_gateway_api_key
-_ds: aws_api_gateway_api_keys: data.#aws_api_gateway_api_keys
-_ds: aws_api_gateway_authorizer: data.#aws_api_gateway_authorizer
-_ds: aws_api_gateway_authorizers: data.#aws_api_gateway_authorizers
-_ds: aws_api_gateway_domain_name: data.#aws_api_gateway_domain_name
-_ds: aws_api_gateway_export: data.#aws_api_gateway_export
-_ds: aws_api_gateway_resource: data.#aws_api_gateway_resource
-_ds: aws_api_gateway_rest_api: data.#aws_api_gateway_rest_api
-_ds: aws_api_gateway_sdk: data.#aws_api_gateway_sdk
-_ds: aws_api_gateway_vpc_link: data.#aws_api_gateway_vpc_link
-_ds: aws_apigatewayv2_api: data.#aws_apigatewayv2_api
-_ds: aws_apigatewayv2_apis: data.#aws_apigatewayv2_apis
-_ds: aws_apigatewayv2_export: data.#aws_apigatewayv2_export
-_ds: aws_apigatewayv2_vpc_link: data.#aws_apigatewayv2_vpc_link
-_ds: aws_appconfig_application: data.#aws_appconfig_application
-_ds: aws_appconfig_configuration_profile: data.#aws_appconfig_configuration_profile
-_ds: aws_appconfig_configuration_profiles: data.#aws_appconfig_configuration_profiles
-_ds: aws_appconfig_environment: data.#aws_appconfig_environment
-_ds: aws_appconfig_environments: data.#aws_appconfig_environments
-_ds: aws_appintegrations_event_integration: data.#aws_appintegrations_event_integration
-_ds: aws_appmesh_gateway_route: data.#aws_appmesh_gateway_route
-_ds: aws_appmesh_mesh: data.#aws_appmesh_mesh
-_ds: aws_appmesh_route: data.#aws_appmesh_route
-_ds: aws_appmesh_virtual_gateway: data.#aws_appmesh_virtual_gateway
-_ds: aws_appmesh_virtual_node: data.#aws_appmesh_virtual_node
-_ds: aws_appmesh_virtual_router: data.#aws_appmesh_virtual_router
-_ds: aws_appmesh_virtual_service: data.#aws_appmesh_virtual_service
-_ds: aws_apprunner_hosted_zone_id: data.#aws_apprunner_hosted_zone_id
-_ds: aws_appstream_image: data.#aws_appstream_image
-_ds: aws_arn: data.#aws_arn
-_ds: aws_athena_named_query: data.#aws_athena_named_query
-_ds: aws_auditmanager_control: data.#aws_auditmanager_control
-_ds: aws_auditmanager_framework: data.#aws_auditmanager_framework
-_ds: aws_autoscaling_group: data.#aws_autoscaling_group
-_ds: aws_autoscaling_groups: data.#aws_autoscaling_groups
-_ds: aws_availability_zone: data.#aws_availability_zone
-_ds: aws_availability_zones: data.#aws_availability_zones
-_ds: aws_backup_framework: data.#aws_backup_framework
-_ds: aws_backup_plan: data.#aws_backup_plan
-_ds: aws_backup_report_plan: data.#aws_backup_report_plan
-_ds: aws_backup_selection: data.#aws_backup_selection
-_ds: aws_backup_vault: data.#aws_backup_vault
-_ds: aws_batch_compute_environment: data.#aws_batch_compute_environment
-_ds: aws_batch_job_definition: data.#aws_batch_job_definition
-_ds: aws_batch_job_queue: data.#aws_batch_job_queue
-_ds: aws_batch_scheduling_policy: data.#aws_batch_scheduling_policy
-_ds: aws_bedrock_custom_model: data.#aws_bedrock_custom_model
-_ds: aws_bedrock_custom_models: data.#aws_bedrock_custom_models
-_ds: aws_bedrock_foundation_model: data.#aws_bedrock_foundation_model
-_ds: aws_bedrock_foundation_models: data.#aws_bedrock_foundation_models
-_ds: aws_bedrock_inference_profile: data.#aws_bedrock_inference_profile
-_ds: aws_bedrock_inference_profiles: data.#aws_bedrock_inference_profiles
-_ds: aws_bedrockagent_agent_versions: data.#aws_bedrockagent_agent_versions
-_ds: aws_billing_service_account: data.#aws_billing_service_account
-_ds: aws_billing_views: data.#aws_billing_views
-_ds: aws_budgets_budget: data.#aws_budgets_budget
-_ds: aws_caller_identity: data.#aws_caller_identity
-_ds: aws_canonical_user_id: data.#aws_canonical_user_id
-_ds: aws_ce_cost_category: data.#aws_ce_cost_category
-_ds: aws_ce_tags: data.#aws_ce_tags
-_ds: aws_chatbot_slack_workspace: data.#aws_chatbot_slack_workspace
-_ds: aws_cloudcontrolapi_resource: data.#aws_cloudcontrolapi_resource
-_ds: aws_cloudformation_export: data.#aws_cloudformation_export
-_ds: aws_cloudformation_stack: data.#aws_cloudformation_stack
-_ds: aws_cloudformation_type: data.#aws_cloudformation_type
-_ds: aws_cloudfront_cache_policy: data.#aws_cloudfront_cache_policy
-_ds: aws_cloudfront_distribution: data.#aws_cloudfront_distribution
-_ds: aws_cloudfront_function: data.#aws_cloudfront_function
-_ds: aws_cloudfront_log_delivery_canonical_user_id: data.#aws_cloudfront_log_delivery_canonical_user_id
-_ds: aws_cloudfront_origin_access_control: data.#aws_cloudfront_origin_access_control
-_ds: aws_cloudfront_origin_access_identities: data.#aws_cloudfront_origin_access_identities
-_ds: aws_cloudfront_origin_access_identity: data.#aws_cloudfront_origin_access_identity
-_ds: aws_cloudfront_origin_request_policy: data.#aws_cloudfront_origin_request_policy
-_ds: aws_cloudfront_realtime_log_config: data.#aws_cloudfront_realtime_log_config
-_ds: aws_cloudfront_response_headers_policy: data.#aws_cloudfront_response_headers_policy
-_ds: aws_cloudhsm_v2_cluster: data.#aws_cloudhsm_v2_cluster
-_ds: aws_cloudtrail_service_account: data.#aws_cloudtrail_service_account
-_ds: aws_cloudwatch_contributor_managed_insight_rules: data.#aws_cloudwatch_contributor_managed_insight_rules
-_ds: aws_cloudwatch_event_bus: data.#aws_cloudwatch_event_bus
-_ds: aws_cloudwatch_event_buses: data.#aws_cloudwatch_event_buses
-_ds: aws_cloudwatch_event_connection: data.#aws_cloudwatch_event_connection
-_ds: aws_cloudwatch_event_source: data.#aws_cloudwatch_event_source
-_ds: aws_cloudwatch_log_data_protection_policy_document: data.#aws_cloudwatch_log_data_protection_policy_document
-_ds: aws_cloudwatch_log_group: data.#aws_cloudwatch_log_group
-_ds: aws_cloudwatch_log_groups: data.#aws_cloudwatch_log_groups
-_ds: aws_codeartifact_authorization_token: data.#aws_codeartifact_authorization_token
-_ds: aws_codeartifact_repository_endpoint: data.#aws_codeartifact_repository_endpoint
-_ds: aws_codebuild_fleet: data.#aws_codebuild_fleet
-_ds: aws_codecatalyst_dev_environment: data.#aws_codecatalyst_dev_environment
-_ds: aws_codecommit_approval_rule_template: data.#aws_codecommit_approval_rule_template
-_ds: aws_codecommit_repository: data.#aws_codecommit_repository
-_ds: aws_codeguruprofiler_profiling_group: data.#aws_codeguruprofiler_profiling_group
-_ds: aws_codestarconnections_connection: data.#aws_codestarconnections_connection
-_ds: aws_cognito_identity_pool: data.#aws_cognito_identity_pool
-_ds: aws_cognito_user_group: data.#aws_cognito_user_group
-_ds: aws_cognito_user_groups: data.#aws_cognito_user_groups
-_ds: aws_cognito_user_pool_client: data.#aws_cognito_user_pool_client
-_ds: aws_cognito_user_pool_clients: data.#aws_cognito_user_pool_clients
-_ds: aws_cognito_user_pool: data.#aws_cognito_user_pool
-_ds: aws_cognito_user_pool_signing_certificate: data.#aws_cognito_user_pool_signing_certificate
-_ds: aws_cognito_user_pools: data.#aws_cognito_user_pools
-_ds: aws_connect_bot_association: data.#aws_connect_bot_association
-_ds: aws_connect_contact_flow: data.#aws_connect_contact_flow
-_ds: aws_connect_contact_flow_module: data.#aws_connect_contact_flow_module
-_ds: aws_connect_hours_of_operation: data.#aws_connect_hours_of_operation
-_ds: aws_connect_instance: data.#aws_connect_instance
-_ds: aws_connect_instance_storage_config: data.#aws_connect_instance_storage_config
-_ds: aws_connect_lambda_function_association: data.#aws_connect_lambda_function_association
-_ds: aws_connect_prompt: data.#aws_connect_prompt
-_ds: aws_connect_queue: data.#aws_connect_queue
-_ds: aws_connect_quick_connect: data.#aws_connect_quick_connect
-_ds: aws_connect_routing_profile: data.#aws_connect_routing_profile
-_ds: aws_connect_security_profile: data.#aws_connect_security_profile
-_ds: aws_connect_user: data.#aws_connect_user
-_ds: aws_connect_user_hierarchy_group: data.#aws_connect_user_hierarchy_group
-_ds: aws_connect_user_hierarchy_structure: data.#aws_connect_user_hierarchy_structure
-_ds: aws_connect_vocabulary: data.#aws_connect_vocabulary
-_ds: aws_controltower_controls: data.#aws_controltower_controls
-_ds: aws_cur_report_definition: data.#aws_cur_report_definition
-_ds: aws_customer_gateway: data.#aws_customer_gateway
-_ds: aws_datapipeline_pipeline_definition: data.#aws_datapipeline_pipeline_definition
-_ds: aws_datapipeline_pipeline: data.#aws_datapipeline_pipeline
-_ds: aws_datazone_domain: data.#aws_datazone_domain
-_ds: aws_datazone_environment_blueprint: data.#aws_datazone_environment_blueprint
-_ds: aws_db_cluster_snapshot: data.#aws_db_cluster_snapshot
-_ds: aws_db_event_categories: data.#aws_db_event_categories
-_ds: aws_db_instance: data.#aws_db_instance
-_ds: aws_db_instances: data.#aws_db_instances
-_ds: aws_db_parameter_group: data.#aws_db_parameter_group
-_ds: aws_db_proxy: data.#aws_db_proxy
-_ds: aws_db_snapshot: data.#aws_db_snapshot
-_ds: aws_db_subnet_group: data.#aws_db_subnet_group
-_ds: aws_default_tags: data.#aws_default_tags
-_ds: aws_devopsguru_notification_channel: data.#aws_devopsguru_notification_channel
-_ds: aws_devopsguru_resource_collection: data.#aws_devopsguru_resource_collection
-_ds: aws_directory_service_directory: data.#aws_directory_service_directory
-_ds: aws_dms_certificate: data.#aws_dms_certificate
-_ds: aws_dms_endpoint: data.#aws_dms_endpoint
-_ds: aws_dms_replication_instance: data.#aws_dms_replication_instance
-_ds: aws_dms_replication_subnet_group: data.#aws_dms_replication_subnet_group
-_ds: aws_dms_replication_task: data.#aws_dms_replication_task
-_ds: aws_docdb_engine_version: data.#aws_docdb_engine_version
-_ds: aws_docdb_orderable_db_instance: data.#aws_docdb_orderable_db_instance
-_ds: aws_dx_connection: data.#aws_dx_connection
-_ds: aws_dx_gateway: data.#aws_dx_gateway
-_ds: aws_dx_location: data.#aws_dx_location
-_ds: aws_dx_locations: data.#aws_dx_locations
-_ds: aws_dx_router_configuration: data.#aws_dx_router_configuration
-_ds: aws_dynamodb_table: data.#aws_dynamodb_table
-_ds: aws_dynamodb_table_item: data.#aws_dynamodb_table_item
-_ds: aws_dynamodb_tables: data.#aws_dynamodb_tables
-_ds: aws_ebs_default_kms_key: data.#aws_ebs_default_kms_key
-_ds: aws_ebs_encryption_by_default: data.#aws_ebs_encryption_by_default
-_ds: aws_ebs_snapshot: data.#aws_ebs_snapshot
-_ds: aws_ebs_snapshot_ids: data.#aws_ebs_snapshot_ids
-_ds: aws_ebs_volume: data.#aws_ebs_volume
-_ds: aws_ebs_volumes: data.#aws_ebs_volumes
-_ds: aws_ec2_capacity_block_offering: data.#aws_ec2_capacity_block_offering
-_ds: aws_ec2_client_vpn_endpoint: data.#aws_ec2_client_vpn_endpoint
-_ds: aws_ec2_coip_pool: data.#aws_ec2_coip_pool
-_ds: aws_ec2_coip_pools: data.#aws_ec2_coip_pools
-_ds: aws_ec2_host: data.#aws_ec2_host
-_ds: aws_ec2_instance_type: data.#aws_ec2_instance_type
-_ds: aws_ec2_instance_type_offering: data.#aws_ec2_instance_type_offering
-_ds: aws_ec2_instance_type_offerings: data.#aws_ec2_instance_type_offerings
-_ds: aws_ec2_instance_types: data.#aws_ec2_instance_types
-_ds: aws_ec2_local_gateway: data.#aws_ec2_local_gateway
-_ds: aws_ec2_local_gateway_route_table: data.#aws_ec2_local_gateway_route_table
-_ds: aws_ec2_local_gateway_route_tables: data.#aws_ec2_local_gateway_route_tables
-_ds: aws_ec2_local_gateway_virtual_interface: data.#aws_ec2_local_gateway_virtual_interface
-_ds: aws_ec2_local_gateway_virtual_interface_group: data.#aws_ec2_local_gateway_virtual_interface_group
-_ds: aws_ec2_local_gateway_virtual_interface_groups: data.#aws_ec2_local_gateway_virtual_interface_groups
-_ds: aws_ec2_local_gateways: data.#aws_ec2_local_gateways
-_ds: aws_ec2_managed_prefix_list: data.#aws_ec2_managed_prefix_list
-_ds: aws_ec2_managed_prefix_lists: data.#aws_ec2_managed_prefix_lists
-_ds: aws_ec2_network_insights_analysis: data.#aws_ec2_network_insights_analysis
-_ds: aws_ec2_network_insights_path: data.#aws_ec2_network_insights_path
-_ds: aws_ec2_public_ipv4_pool: data.#aws_ec2_public_ipv4_pool
-_ds: aws_ec2_public_ipv4_pools: data.#aws_ec2_public_ipv4_pools
-_ds: aws_ec2_serial_console_access: data.#aws_ec2_serial_console_access
-_ds: aws_ec2_spot_price: data.#aws_ec2_spot_price
-_ds: aws_ec2_transit_gateway_attachment: data.#aws_ec2_transit_gateway_attachment
-_ds: aws_ec2_transit_gateway_attachments: data.#aws_ec2_transit_gateway_attachments
-_ds: aws_ec2_transit_gateway_connect: data.#aws_ec2_transit_gateway_connect
-_ds: aws_ec2_transit_gateway_connect_peer: data.#aws_ec2_transit_gateway_connect_peer
-_ds: aws_ec2_transit_gateway_dx_gateway_attachment: data.#aws_ec2_transit_gateway_dx_gateway_attachment
-_ds: aws_ec2_transit_gateway: data.#aws_ec2_transit_gateway
-_ds: aws_ec2_transit_gateway_multicast_domain: data.#aws_ec2_transit_gateway_multicast_domain
-_ds: aws_ec2_transit_gateway_peering_attachment: data.#aws_ec2_transit_gateway_peering_attachment
-_ds: aws_ec2_transit_gateway_peering_attachments: data.#aws_ec2_transit_gateway_peering_attachments
-_ds: aws_ec2_transit_gateway_route_table_associations: data.#aws_ec2_transit_gateway_route_table_associations
-_ds: aws_ec2_transit_gateway_route_table: data.#aws_ec2_transit_gateway_route_table
-_ds: aws_ec2_transit_gateway_route_table_propagations: data.#aws_ec2_transit_gateway_route_table_propagations
-_ds: aws_ec2_transit_gateway_route_table_routes: data.#aws_ec2_transit_gateway_route_table_routes
-_ds: aws_ec2_transit_gateway_route_tables: data.#aws_ec2_transit_gateway_route_tables
-_ds: aws_ec2_transit_gateway_vpc_attachment: data.#aws_ec2_transit_gateway_vpc_attachment
-_ds: aws_ec2_transit_gateway_vpc_attachments: data.#aws_ec2_transit_gateway_vpc_attachments
-_ds: aws_ec2_transit_gateway_vpn_attachment: data.#aws_ec2_transit_gateway_vpn_attachment
-_ds: aws_ecr_authorization_token: data.#aws_ecr_authorization_token
-_ds: aws_ecr_image: data.#aws_ecr_image
-_ds: aws_ecr_images: data.#aws_ecr_images
-_ds: aws_ecr_lifecycle_policy_document: data.#aws_ecr_lifecycle_policy_document
-_ds: aws_ecr_pull_through_cache_rule: data.#aws_ecr_pull_through_cache_rule
-_ds: aws_ecr_repositories: data.#aws_ecr_repositories
-_ds: aws_ecr_repository_creation_template: data.#aws_ecr_repository_creation_template
-_ds: aws_ecr_repository: data.#aws_ecr_repository
-_ds: aws_ecrpublic_authorization_token: data.#aws_ecrpublic_authorization_token
-_ds: aws_ecrpublic_images: data.#aws_ecrpublic_images
-_ds: aws_ecs_cluster: data.#aws_ecs_cluster
-_ds: aws_ecs_clusters: data.#aws_ecs_clusters
-_ds: aws_ecs_container_definition: data.#aws_ecs_container_definition
-_ds: aws_ecs_service: data.#aws_ecs_service
-_ds: aws_ecs_task_definition: data.#aws_ecs_task_definition
-_ds: aws_ecs_task_execution: data.#aws_ecs_task_execution
-_ds: aws_efs_access_point: data.#aws_efs_access_point
-_ds: aws_efs_access_points: data.#aws_efs_access_points
-_ds: aws_efs_file_system: data.#aws_efs_file_system
-_ds: aws_efs_mount_target: data.#aws_efs_mount_target
-_ds: aws_eip: data.#aws_eip
-_ds: aws_eips: data.#aws_eips
-_ds: aws_eks_access_entry: data.#aws_eks_access_entry
-_ds: aws_eks_addon: data.#aws_eks_addon
-_ds: aws_eks_addon_version: data.#aws_eks_addon_version
-_ds: aws_eks_cluster_auth: data.#aws_eks_cluster_auth
-_ds: aws_eks_cluster: data.#aws_eks_cluster
-_ds: aws_eks_cluster_versions: data.#aws_eks_cluster_versions
-_ds: aws_eks_clusters: data.#aws_eks_clusters
-_ds: aws_eks_node_group: data.#aws_eks_node_group
-_ds: aws_eks_node_groups: data.#aws_eks_node_groups
-_ds: aws_elastic_beanstalk_application: data.#aws_elastic_beanstalk_application
-_ds: aws_elastic_beanstalk_hosted_zone: data.#aws_elastic_beanstalk_hosted_zone
-_ds: aws_elastic_beanstalk_solution_stack: data.#aws_elastic_beanstalk_solution_stack
-_ds: aws_elasticache_cluster: data.#aws_elasticache_cluster
-_ds: aws_elasticache_replication_group: data.#aws_elasticache_replication_group
-_ds: aws_elasticache_reserved_cache_node_offering: data.#aws_elasticache_reserved_cache_node_offering
-_ds: aws_elasticache_serverless_cache: data.#aws_elasticache_serverless_cache
-_ds: aws_elasticache_subnet_group: data.#aws_elasticache_subnet_group
-_ds: aws_elasticache_user: data.#aws_elasticache_user
-_ds: aws_elasticsearch_domain: data.#aws_elasticsearch_domain
-_ds: aws_elb: data.#aws_elb
-_ds: aws_elb_hosted_zone_id: data.#aws_elb_hosted_zone_id
-_ds: aws_elb_service_account: data.#aws_elb_service_account
-_ds: aws_emr_release_labels: data.#aws_emr_release_labels
-_ds: aws_emr_supported_instance_types: data.#aws_emr_supported_instance_types
-_ds: aws_emrcontainers_virtual_cluster: data.#aws_emrcontainers_virtual_cluster
-_ds: aws_fis_experiment_templates: data.#aws_fis_experiment_templates
-_ds: aws_fsx_ontap_file_system: data.#aws_fsx_ontap_file_system
-_ds: aws_fsx_ontap_storage_virtual_machine: data.#aws_fsx_ontap_storage_virtual_machine
-_ds: aws_fsx_ontap_storage_virtual_machines: data.#aws_fsx_ontap_storage_virtual_machines
-_ds: aws_fsx_openzfs_snapshot: data.#aws_fsx_openzfs_snapshot
-_ds: aws_fsx_windows_file_system: data.#aws_fsx_windows_file_system
-_ds: aws_globalaccelerator_accelerator: data.#aws_globalaccelerator_accelerator
-_ds: aws_globalaccelerator_custom_routing_accelerator: data.#aws_globalaccelerator_custom_routing_accelerator
-_ds: aws_glue_catalog_table: data.#aws_glue_catalog_table
-_ds: aws_glue_connection: data.#aws_glue_connection
-_ds: aws_glue_data_catalog_encryption_settings: data.#aws_glue_data_catalog_encryption_settings
-_ds: aws_glue_registry: data.#aws_glue_registry
-_ds: aws_glue_script: data.#aws_glue_script
-_ds: aws_grafana_workspace: data.#aws_grafana_workspace
-_ds: aws_guardduty_detector: data.#aws_guardduty_detector
-_ds: aws_guardduty_finding_ids: data.#aws_guardduty_finding_ids
-_ds: aws_iam_access_keys: data.#aws_iam_access_keys
-_ds: aws_iam_account_alias: data.#aws_iam_account_alias
-_ds: aws_iam_group: data.#aws_iam_group
-_ds: aws_iam_instance_profile: data.#aws_iam_instance_profile
-_ds: aws_iam_instance_profiles: data.#aws_iam_instance_profiles
-_ds: aws_iam_openid_connect_provider: data.#aws_iam_openid_connect_provider
-_ds: aws_iam_policy_document: data.#aws_iam_policy_document
-_ds: aws_iam_policy: data.#aws_iam_policy
-_ds: aws_iam_principal_policy_simulation: data.#aws_iam_principal_policy_simulation
-_ds: aws_iam_role: data.#aws_iam_role
-_ds: aws_iam_roles: data.#aws_iam_roles
-_ds: aws_iam_saml_provider: data.#aws_iam_saml_provider
-_ds: aws_iam_server_certificate: data.#aws_iam_server_certificate
-_ds: aws_iam_session_context: data.#aws_iam_session_context
-_ds: aws_iam_user: data.#aws_iam_user
-_ds: aws_iam_user_ssh_key: data.#aws_iam_user_ssh_key
-_ds: aws_iam_users: data.#aws_iam_users
-_ds: aws_identitystore_group: data.#aws_identitystore_group
-_ds: aws_identitystore_group_memberships: data.#aws_identitystore_group_memberships
-_ds: aws_identitystore_groups: data.#aws_identitystore_groups
-_ds: aws_identitystore_user: data.#aws_identitystore_user
-_ds: aws_identitystore_users: data.#aws_identitystore_users
-_ds: aws_imagebuilder_component: data.#aws_imagebuilder_component
-_ds: aws_imagebuilder_components: data.#aws_imagebuilder_components
-_ds: aws_imagebuilder_container_recipe: data.#aws_imagebuilder_container_recipe
-_ds: aws_imagebuilder_container_recipes: data.#aws_imagebuilder_container_recipes
-_ds: aws_imagebuilder_distribution_configuration: data.#aws_imagebuilder_distribution_configuration
-_ds: aws_imagebuilder_distribution_configurations: data.#aws_imagebuilder_distribution_configurations
-_ds: aws_imagebuilder_image: data.#aws_imagebuilder_image
-_ds: aws_imagebuilder_image_pipeline: data.#aws_imagebuilder_image_pipeline
-_ds: aws_imagebuilder_image_pipelines: data.#aws_imagebuilder_image_pipelines
-_ds: aws_imagebuilder_image_recipe: data.#aws_imagebuilder_image_recipe
-_ds: aws_imagebuilder_image_recipes: data.#aws_imagebuilder_image_recipes
-_ds: aws_imagebuilder_infrastructure_configuration: data.#aws_imagebuilder_infrastructure_configuration
-_ds: aws_imagebuilder_infrastructure_configurations: data.#aws_imagebuilder_infrastructure_configurations
-_ds: aws_inspector_rules_packages: data.#aws_inspector_rules_packages
-_ds: aws_instance: data.#aws_instance
-_ds: aws_instances: data.#aws_instances
-_ds: aws_internet_gateway: data.#aws_internet_gateway
-_ds: aws_iot_endpoint: data.#aws_iot_endpoint
-_ds: aws_iot_registration_code: data.#aws_iot_registration_code
-_ds: aws_ip_ranges: data.#aws_ip_ranges
-_ds: aws_ivs_stream_key: data.#aws_ivs_stream_key
-_ds: aws_kendra_experience: data.#aws_kendra_experience
-_ds: aws_kendra_faq: data.#aws_kendra_faq
-_ds: aws_kendra_index: data.#aws_kendra_index
-_ds: aws_kendra_query_suggestions_block_list: data.#aws_kendra_query_suggestions_block_list
-_ds: aws_kendra_thesaurus: data.#aws_kendra_thesaurus
-_ds: aws_key_pair: data.#aws_key_pair
-_ds: aws_kinesis_firehose_delivery_stream: data.#aws_kinesis_firehose_delivery_stream
-_ds: aws_kinesis_stream_consumer: data.#aws_kinesis_stream_consumer
-_ds: aws_kinesis_stream: data.#aws_kinesis_stream
-_ds: aws_kms_alias: data.#aws_kms_alias
-_ds: aws_kms_ciphertext: data.#aws_kms_ciphertext
-_ds: aws_kms_custom_key_store: data.#aws_kms_custom_key_store
-_ds: aws_kms_key: data.#aws_kms_key
-_ds: aws_kms_public_key: data.#aws_kms_public_key
-_ds: aws_kms_secret: data.#aws_kms_secret
-_ds: aws_kms_secrets: data.#aws_kms_secrets
-_ds: aws_lakeformation_data_lake_settings: data.#aws_lakeformation_data_lake_settings
-_ds: aws_lakeformation_permissions: data.#aws_lakeformation_permissions
-_ds: aws_lakeformation_resource: data.#aws_lakeformation_resource
-_ds: aws_lambda_alias: data.#aws_lambda_alias
-_ds: aws_lambda_code_signing_config: data.#aws_lambda_code_signing_config
-_ds: aws_lambda_function: data.#aws_lambda_function
-_ds: aws_lambda_function_url: data.#aws_lambda_function_url
-_ds: aws_lambda_functions: data.#aws_lambda_functions
-_ds: aws_lambda_invocation: data.#aws_lambda_invocation
-_ds: aws_lambda_layer_version: data.#aws_lambda_layer_version
-_ds: aws_launch_configuration: data.#aws_launch_configuration
-_ds: aws_launch_template: data.#aws_launch_template
-_ds: aws_lb: data.#aws_lb
-_ds: aws_lb_hosted_zone_id: data.#aws_lb_hosted_zone_id
-_ds: aws_lb_listener: data.#aws_lb_listener
-_ds: aws_lb_listener_rule: data.#aws_lb_listener_rule
-_ds: aws_lb_target_group: data.#aws_lb_target_group
-_ds: aws_lb_trust_store: data.#aws_lb_trust_store
-_ds: aws_lbs: data.#aws_lbs
-_ds: aws_lex_bot_alias: data.#aws_lex_bot_alias
-_ds: aws_lex_bot: data.#aws_lex_bot
-_ds: aws_lex_intent: data.#aws_lex_intent
-_ds: aws_lex_slot_type: data.#aws_lex_slot_type
-_ds: aws_licensemanager_grants: data.#aws_licensemanager_grants
-_ds: aws_licensemanager_received_license: data.#aws_licensemanager_received_license
-_ds: aws_licensemanager_received_licenses: data.#aws_licensemanager_received_licenses
-_ds: aws_location_geofence_collection: data.#aws_location_geofence_collection
-_ds: aws_location_map: data.#aws_location_map
-_ds: aws_location_place_index: data.#aws_location_place_index
-_ds: aws_location_route_calculator: data.#aws_location_route_calculator
-_ds: aws_location_tracker_association: data.#aws_location_tracker_association
-_ds: aws_location_tracker_associations: data.#aws_location_tracker_associations
-_ds: aws_location_tracker: data.#aws_location_tracker
-_ds: aws_media_convert_queue: data.#aws_media_convert_queue
-_ds: aws_medialive_input: data.#aws_medialive_input
-_ds: aws_memorydb_acl: data.#aws_memorydb_acl
-_ds: aws_memorydb_cluster: data.#aws_memorydb_cluster
-_ds: aws_memorydb_parameter_group: data.#aws_memorydb_parameter_group
-_ds: aws_memorydb_snapshot: data.#aws_memorydb_snapshot
-_ds: aws_memorydb_subnet_group: data.#aws_memorydb_subnet_group
-_ds: aws_memorydb_user: data.#aws_memorydb_user
-_ds: aws_mq_broker_engine_types: data.#aws_mq_broker_engine_types
-_ds: aws_mq_broker: data.#aws_mq_broker
-_ds: aws_mq_broker_instance_type_offerings: data.#aws_mq_broker_instance_type_offerings
-_ds: aws_msk_bootstrap_brokers: data.#aws_msk_bootstrap_brokers
-_ds: aws_msk_broker_nodes: data.#aws_msk_broker_nodes
-_ds: aws_msk_cluster: data.#aws_msk_cluster
-_ds: aws_msk_configuration: data.#aws_msk_configuration
-_ds: aws_msk_kafka_version: data.#aws_msk_kafka_version
-_ds: aws_msk_vpc_connection: data.#aws_msk_vpc_connection
-_ds: aws_mskconnect_connector: data.#aws_mskconnect_connector
-_ds: aws_mskconnect_custom_plugin: data.#aws_mskconnect_custom_plugin
-_ds: aws_mskconnect_worker_configuration: data.#aws_mskconnect_worker_configuration
-_ds: aws_nat_gateway: data.#aws_nat_gateway
-_ds: aws_nat_gateways: data.#aws_nat_gateways
-_ds: aws_neptune_engine_version: data.#aws_neptune_engine_version
-_ds: aws_neptune_orderable_db_instance: data.#aws_neptune_orderable_db_instance
-_ds: aws_network_acls: data.#aws_network_acls
-_ds: aws_network_interface: data.#aws_network_interface
-_ds: aws_network_interfaces: data.#aws_network_interfaces
-_ds: aws_networkfirewall_firewall: data.#aws_networkfirewall_firewall
-_ds: aws_networkfirewall_firewall_policy: data.#aws_networkfirewall_firewall_policy
-_ds: aws_networkfirewall_resource_policy: data.#aws_networkfirewall_resource_policy
-_ds: aws_networkmanager_connection: data.#aws_networkmanager_connection
-_ds: aws_networkmanager_connections: data.#aws_networkmanager_connections
-_ds: aws_networkmanager_core_network_policy_document: data.#aws_networkmanager_core_network_policy_document
-_ds: aws_networkmanager_device: data.#aws_networkmanager_device
-_ds: aws_networkmanager_devices: data.#aws_networkmanager_devices
-_ds: aws_networkmanager_global_network: data.#aws_networkmanager_global_network
-_ds: aws_networkmanager_global_networks: data.#aws_networkmanager_global_networks
-_ds: aws_networkmanager_link: data.#aws_networkmanager_link
-_ds: aws_networkmanager_links: data.#aws_networkmanager_links
-_ds: aws_networkmanager_site: data.#aws_networkmanager_site
-_ds: aws_networkmanager_sites: data.#aws_networkmanager_sites
-_ds: aws_oam_link: data.#aws_oam_link
-_ds: aws_oam_links: data.#aws_oam_links
-_ds: aws_oam_sink: data.#aws_oam_sink
-_ds: aws_oam_sinks: data.#aws_oam_sinks
-_ds: aws_odb_cloud_autonomous_vm_cluster: data.#aws_odb_cloud_autonomous_vm_cluster
-_ds: aws_odb_cloud_autonomous_vm_clusters: data.#aws_odb_cloud_autonomous_vm_clusters
-_ds: aws_odb_cloud_exadata_infrastructure: data.#aws_odb_cloud_exadata_infrastructure
-_ds: aws_odb_cloud_exadata_infrastructures: data.#aws_odb_cloud_exadata_infrastructures
-_ds: aws_odb_cloud_vm_cluster: data.#aws_odb_cloud_vm_cluster
-_ds: aws_odb_cloud_vm_clusters: data.#aws_odb_cloud_vm_clusters
-_ds: aws_odb_db_node: data.#aws_odb_db_node
-_ds: aws_odb_db_nodes: data.#aws_odb_db_nodes
-_ds: aws_odb_db_server: data.#aws_odb_db_server
-_ds: aws_odb_db_servers: data.#aws_odb_db_servers
-_ds: aws_odb_db_system_shapes: data.#aws_odb_db_system_shapes
-_ds: aws_odb_gi_versions: data.#aws_odb_gi_versions
-_ds: aws_odb_network: data.#aws_odb_network
-_ds: aws_odb_network_peering_connection: data.#aws_odb_network_peering_connection
-_ds: aws_odb_network_peering_connections: data.#aws_odb_network_peering_connections
-_ds: aws_odb_networks: data.#aws_odb_networks
-_ds: aws_opensearch_domain: data.#aws_opensearch_domain
-_ds: aws_opensearchserverless_access_policy: data.#aws_opensearchserverless_access_policy
-_ds: aws_opensearchserverless_collection: data.#aws_opensearchserverless_collection
-_ds: aws_opensearchserverless_lifecycle_policy: data.#aws_opensearchserverless_lifecycle_policy
-_ds: aws_opensearchserverless_security_config: data.#aws_opensearchserverless_security_config
-_ds: aws_opensearchserverless_security_policy: data.#aws_opensearchserverless_security_policy
-_ds: aws_opensearchserverless_vpc_endpoint: data.#aws_opensearchserverless_vpc_endpoint
-_ds: aws_organizations_delegated_administrators: data.#aws_organizations_delegated_administrators
-_ds: aws_organizations_delegated_services: data.#aws_organizations_delegated_services
-_ds: aws_organizations_organization: data.#aws_organizations_organization
-_ds: aws_organizations_organizational_unit_child_accounts: data.#aws_organizations_organizational_unit_child_accounts
-_ds: aws_organizations_organizational_unit_descendant_accounts: data.#aws_organizations_organizational_unit_descendant_accounts
-_ds: aws_organizations_organizational_unit_descendant_organizational_units: data.#aws_organizations_organizational_unit_descendant_organizational_units
-_ds: aws_organizations_organizational_unit: data.#aws_organizations_organizational_unit
-_ds: aws_organizations_organizational_units: data.#aws_organizations_organizational_units
-_ds: aws_organizations_policies_for_target: data.#aws_organizations_policies_for_target
-_ds: aws_organizations_policies: data.#aws_organizations_policies
-_ds: aws_organizations_policy: data.#aws_organizations_policy
-_ds: aws_organizations_resource_tags: data.#aws_organizations_resource_tags
-_ds: aws_outposts_asset: data.#aws_outposts_asset
-_ds: aws_outposts_assets: data.#aws_outposts_assets
-_ds: aws_outposts_outpost: data.#aws_outposts_outpost
-_ds: aws_outposts_outpost_instance_type: data.#aws_outposts_outpost_instance_type
-_ds: aws_outposts_outpost_instance_types: data.#aws_outposts_outpost_instance_types
-_ds: aws_outposts_outposts: data.#aws_outposts_outposts
-_ds: aws_outposts_site: data.#aws_outposts_site
-_ds: aws_outposts_sites: data.#aws_outposts_sites
-_ds: aws_partition: data.#aws_partition
-_ds: aws_polly_voices: data.#aws_polly_voices
-_ds: aws_prefix_list: data.#aws_prefix_list
-_ds: aws_pricing_product: data.#aws_pricing_product
-_ds: aws_prometheus_default_scraper_configuration: data.#aws_prometheus_default_scraper_configuration
-_ds: aws_prometheus_workspace: data.#aws_prometheus_workspace
-_ds: aws_prometheus_workspaces: data.#aws_prometheus_workspaces
-_ds: aws_qldb_ledger: data.#aws_qldb_ledger
-_ds: aws_quicksight_analysis: data.#aws_quicksight_analysis
-_ds: aws_quicksight_data_set: data.#aws_quicksight_data_set
-_ds: aws_quicksight_group: data.#aws_quicksight_group
-_ds: aws_quicksight_theme: data.#aws_quicksight_theme
-_ds: aws_quicksight_user: data.#aws_quicksight_user
-_ds: aws_ram_resource_share: data.#aws_ram_resource_share
-_ds: aws_rds_certificate: data.#aws_rds_certificate
-_ds: aws_rds_cluster: data.#aws_rds_cluster
-_ds: aws_rds_cluster_parameter_group: data.#aws_rds_cluster_parameter_group
-_ds: aws_rds_clusters: data.#aws_rds_clusters
-_ds: aws_rds_engine_version: data.#aws_rds_engine_version
-_ds: aws_rds_global_cluster: data.#aws_rds_global_cluster
-_ds: aws_rds_orderable_db_instance: data.#aws_rds_orderable_db_instance
-_ds: aws_rds_reserved_instance_offering: data.#aws_rds_reserved_instance_offering
-_ds: aws_redshift_cluster_credentials: data.#aws_redshift_cluster_credentials
-_ds: aws_redshift_cluster: data.#aws_redshift_cluster
-_ds: aws_redshift_data_shares: data.#aws_redshift_data_shares
-_ds: aws_redshift_orderable_cluster: data.#aws_redshift_orderable_cluster
-_ds: aws_redshift_producer_data_shares: data.#aws_redshift_producer_data_shares
-_ds: aws_redshift_subnet_group: data.#aws_redshift_subnet_group
-_ds: aws_redshiftserverless_credentials: data.#aws_redshiftserverless_credentials
-_ds: aws_redshiftserverless_namespace: data.#aws_redshiftserverless_namespace
-_ds: aws_redshiftserverless_workgroup: data.#aws_redshiftserverless_workgroup
-_ds: aws_region: data.#aws_region
-_ds: aws_regions: data.#aws_regions
-_ds: aws_resourceexplorer2_search: data.#aws_resourceexplorer2_search
-_ds: aws_resourcegroupstaggingapi_resources: data.#aws_resourcegroupstaggingapi_resources
-_ds: aws_route53_delegation_set: data.#aws_route53_delegation_set
-_ds: aws_route53_records: data.#aws_route53_records
-_ds: aws_route53_resolver_endpoint: data.#aws_route53_resolver_endpoint
-_ds: aws_route53_resolver_firewall_config: data.#aws_route53_resolver_firewall_config
-_ds: aws_route53_resolver_firewall_domain_list: data.#aws_route53_resolver_firewall_domain_list
-_ds: aws_route53_resolver_firewall_rule_group_association: data.#aws_route53_resolver_firewall_rule_group_association
-_ds: aws_route53_resolver_firewall_rule_group: data.#aws_route53_resolver_firewall_rule_group
-_ds: aws_route53_resolver_firewall_rules: data.#aws_route53_resolver_firewall_rules
-_ds: aws_route53_resolver_query_log_config: data.#aws_route53_resolver_query_log_config
-_ds: aws_route53_resolver_rule: data.#aws_route53_resolver_rule
-_ds: aws_route53_resolver_rules: data.#aws_route53_resolver_rules
-_ds: aws_route53_traffic_policy_document: data.#aws_route53_traffic_policy_document
-_ds: aws_route53_zone: data.#aws_route53_zone
-_ds: aws_route53_zones: data.#aws_route53_zones
-_ds: aws_route53profiles_profiles: data.#aws_route53profiles_profiles
-_ds: aws_route: data.#aws_route
-_ds: aws_route_table: data.#aws_route_table
-_ds: aws_route_tables: data.#aws_route_tables
-_ds: aws_s3_access_point: data.#aws_s3_access_point
-_ds: aws_s3_account_public_access_block: data.#aws_s3_account_public_access_block
-_ds: aws_s3_bucket: data.#aws_s3_bucket
-_ds: aws_s3_bucket_object: data.#aws_s3_bucket_object
-_ds: aws_s3_bucket_objects: data.#aws_s3_bucket_objects
-_ds: aws_s3_bucket_policy: data.#aws_s3_bucket_policy
-_ds: aws_s3_directory_buckets: data.#aws_s3_directory_buckets
-_ds: aws_s3_object: data.#aws_s3_object
-_ds: aws_s3_objects: data.#aws_s3_objects
-_ds: aws_s3control_multi_region_access_point: data.#aws_s3control_multi_region_access_point
-_ds: aws_sagemaker_prebuilt_ecr_image: data.#aws_sagemaker_prebuilt_ecr_image
-_ds: aws_secretsmanager_random_password: data.#aws_secretsmanager_random_password
-_ds: aws_secretsmanager_secret: data.#aws_secretsmanager_secret
-_ds: aws_secretsmanager_secret_rotation: data.#aws_secretsmanager_secret_rotation
-_ds: aws_secretsmanager_secret_version: data.#aws_secretsmanager_secret_version
-_ds: aws_secretsmanager_secret_versions: data.#aws_secretsmanager_secret_versions
-_ds: aws_secretsmanager_secrets: data.#aws_secretsmanager_secrets
-_ds: aws_security_group: data.#aws_security_group
-_ds: aws_security_groups: data.#aws_security_groups
-_ds: aws_securityhub_standards_control_associations: data.#aws_securityhub_standards_control_associations
-_ds: aws_serverlessapplicationrepository_application: data.#aws_serverlessapplicationrepository_application
-_ds: aws_service_discovery_dns_namespace: data.#aws_service_discovery_dns_namespace
-_ds: aws_service_discovery_http_namespace: data.#aws_service_discovery_http_namespace
-_ds: aws_service_discovery_service: data.#aws_service_discovery_service
-_ds: aws_service: data.#aws_service
-_ds: aws_service_principal: data.#aws_service_principal
-_ds: aws_servicecatalog_constraint: data.#aws_servicecatalog_constraint
-_ds: aws_servicecatalog_launch_paths: data.#aws_servicecatalog_launch_paths
-_ds: aws_servicecatalog_portfolio_constraints: data.#aws_servicecatalog_portfolio_constraints
-_ds: aws_servicecatalog_portfolio: data.#aws_servicecatalog_portfolio
-_ds: aws_servicecatalog_product: data.#aws_servicecatalog_product
-_ds: aws_servicecatalog_provisioning_artifacts: data.#aws_servicecatalog_provisioning_artifacts
-_ds: aws_servicecatalogappregistry_application: data.#aws_servicecatalogappregistry_application
-_ds: aws_servicecatalogappregistry_attribute_group_associations: data.#aws_servicecatalogappregistry_attribute_group_associations
-_ds: aws_servicecatalogappregistry_attribute_group: data.#aws_servicecatalogappregistry_attribute_group
-_ds: aws_servicequotas_service: data.#aws_servicequotas_service
-_ds: aws_servicequotas_service_quota: data.#aws_servicequotas_service_quota
-_ds: aws_servicequotas_templates: data.#aws_servicequotas_templates
-_ds: aws_ses_active_receipt_rule_set: data.#aws_ses_active_receipt_rule_set
-_ds: aws_ses_domain_identity: data.#aws_ses_domain_identity
-_ds: aws_ses_email_identity: data.#aws_ses_email_identity
-_ds: aws_sesv2_configuration_set: data.#aws_sesv2_configuration_set
-_ds: aws_sesv2_dedicated_ip_pool: data.#aws_sesv2_dedicated_ip_pool
-_ds: aws_sesv2_email_identity: data.#aws_sesv2_email_identity
-_ds: aws_sesv2_email_identity_mail_from_attributes: data.#aws_sesv2_email_identity_mail_from_attributes
-_ds: aws_sfn_activity: data.#aws_sfn_activity
-_ds: aws_sfn_alias: data.#aws_sfn_alias
-_ds: aws_sfn_state_machine: data.#aws_sfn_state_machine
-_ds: aws_sfn_state_machine_versions: data.#aws_sfn_state_machine_versions
-_ds: aws_shield_protection: data.#aws_shield_protection
-_ds: aws_signer_signing_job: data.#aws_signer_signing_job
-_ds: aws_signer_signing_profile: data.#aws_signer_signing_profile
-_ds: aws_sns_topic: data.#aws_sns_topic
-_ds: aws_spot_datafeed_subscription: data.#aws_spot_datafeed_subscription
-_ds: aws_sqs_queue: data.#aws_sqs_queue
-_ds: aws_sqs_queues: data.#aws_sqs_queues
-_ds: aws_ssm_document: data.#aws_ssm_document
-_ds: aws_ssm_instances: data.#aws_ssm_instances
-_ds: aws_ssm_maintenance_windows: data.#aws_ssm_maintenance_windows
-_ds: aws_ssm_parameter: data.#aws_ssm_parameter
-_ds: aws_ssm_parameters_by_path: data.#aws_ssm_parameters_by_path
-_ds: aws_ssm_patch_baseline: data.#aws_ssm_patch_baseline
-_ds: aws_ssm_patch_baselines: data.#aws_ssm_patch_baselines
-_ds: aws_ssmcontacts_contact_channel: data.#aws_ssmcontacts_contact_channel
-_ds: aws_ssmcontacts_contact: data.#aws_ssmcontacts_contact
-_ds: aws_ssmcontacts_plan: data.#aws_ssmcontacts_plan
-_ds: aws_ssmcontacts_rotation: data.#aws_ssmcontacts_rotation
-_ds: aws_ssmincidents_replication_set: data.#aws_ssmincidents_replication_set
-_ds: aws_ssmincidents_response_plan: data.#aws_ssmincidents_response_plan
-_ds: aws_ssoadmin_application_assignments: data.#aws_ssoadmin_application_assignments
-_ds: aws_ssoadmin_application: data.#aws_ssoadmin_application
-_ds: aws_ssoadmin_application_providers: data.#aws_ssoadmin_application_providers
-_ds: aws_ssoadmin_instances: data.#aws_ssoadmin_instances
-_ds: aws_ssoadmin_permission_set: data.#aws_ssoadmin_permission_set
-_ds: aws_ssoadmin_permission_sets: data.#aws_ssoadmin_permission_sets
-_ds: aws_ssoadmin_principal_application_assignments: data.#aws_ssoadmin_principal_application_assignments
-_ds: aws_storagegateway_local_disk: data.#aws_storagegateway_local_disk
-_ds: aws_subnet: data.#aws_subnet
-_ds: aws_subnets: data.#aws_subnets
-_ds: aws_synthetics_runtime_version: data.#aws_synthetics_runtime_version
-_ds: aws_synthetics_runtime_versions: data.#aws_synthetics_runtime_versions
-_ds: aws_timestreamwrite_database: data.#aws_timestreamwrite_database
-_ds: aws_timestreamwrite_table: data.#aws_timestreamwrite_table
-_ds: aws_transfer_connector: data.#aws_transfer_connector
-_ds: aws_transfer_server: data.#aws_transfer_server
-_ds: aws_verifiedpermissions_policy_store: data.#aws_verifiedpermissions_policy_store
-_ds: aws_vpc_dhcp_options: data.#aws_vpc_dhcp_options
-_ds: aws_vpc_endpoint_associations: data.#aws_vpc_endpoint_associations
-_ds: aws_vpc_endpoint: data.#aws_vpc_endpoint
-_ds: aws_vpc_endpoint_service: data.#aws_vpc_endpoint_service
-_ds: aws_vpc: data.#aws_vpc
-_ds: aws_vpc_ipam: data.#aws_vpc_ipam
-_ds: aws_vpc_ipam_pool_cidrs: data.#aws_vpc_ipam_pool_cidrs
-_ds: aws_vpc_ipam_pool: data.#aws_vpc_ipam_pool
-_ds: aws_vpc_ipam_pools: data.#aws_vpc_ipam_pools
-_ds: aws_vpc_ipam_preview_next_cidr: data.#aws_vpc_ipam_preview_next_cidr
-_ds: aws_vpc_ipams: data.#aws_vpc_ipams
-_ds: aws_vpc_peering_connection: data.#aws_vpc_peering_connection
-_ds: aws_vpc_peering_connections: data.#aws_vpc_peering_connections
-_ds: aws_vpc_security_group_rule: data.#aws_vpc_security_group_rule
-_ds: aws_vpc_security_group_rules: data.#aws_vpc_security_group_rules
-_ds: aws_vpclattice_auth_policy: data.#aws_vpclattice_auth_policy
-_ds: aws_vpclattice_listener: data.#aws_vpclattice_listener
-_ds: aws_vpclattice_resource_policy: data.#aws_vpclattice_resource_policy
-_ds: aws_vpclattice_service: data.#aws_vpclattice_service
-_ds: aws_vpclattice_service_network: data.#aws_vpclattice_service_network
-_ds: aws_vpcs: data.#aws_vpcs
-_ds: aws_vpn_connection: data.#aws_vpn_connection
-_ds: aws_vpn_gateway: data.#aws_vpn_gateway
-_ds: aws_waf_ipset: data.#aws_waf_ipset
-_ds: aws_waf_rate_based_rule: data.#aws_waf_rate_based_rule
-_ds: aws_waf_rule: data.#aws_waf_rule
-_ds: aws_waf_subscribed_rule_group: data.#aws_waf_subscribed_rule_group
-_ds: aws_waf_web_acl: data.#aws_waf_web_acl
-_ds: aws_wafregional_ipset: data.#aws_wafregional_ipset
-_ds: aws_wafregional_rate_based_rule: data.#aws_wafregional_rate_based_rule
-_ds: aws_wafregional_rule: data.#aws_wafregional_rule
-_ds: aws_wafregional_subscribed_rule_group: data.#aws_wafregional_subscribed_rule_group
-_ds: aws_wafregional_web_acl: data.#aws_wafregional_web_acl
-_ds: aws_wafv2_ip_set: data.#aws_wafv2_ip_set
-_ds: aws_wafv2_regex_pattern_set: data.#aws_wafv2_regex_pattern_set
-_ds: aws_wafv2_rule_group: data.#aws_wafv2_rule_group
-_ds: aws_wafv2_web_acl: data.#aws_wafv2_web_acl
-_ds: aws_workspaces_bundle: data.#aws_workspaces_bundle
-_ds: aws_workspaces_directory: data.#aws_workspaces_directory
-_ds: aws_workspaces_image: data.#aws_workspaces_image
-_ds: aws_workspaces_workspace: data.#aws_workspaces_workspace
+#Terraform: {
+	#prefix: string
+	#ds: "\(#prefix)_account_primary_contact": data.#aws_account_primary_contact
+	#ds: "\(#prefix)_acm_certificate": data.#aws_acm_certificate
+	#ds: "\(#prefix)_acmpca_certificate_authority": data.#aws_acmpca_certificate_authority
+	#ds: "\(#prefix)_acmpca_certificate": data.#aws_acmpca_certificate
+	#ds: "\(#prefix)_alb": data.#aws_alb
+	#ds: "\(#prefix)_alb_listener": data.#aws_alb_listener
+	#ds: "\(#prefix)_alb_target_group": data.#aws_alb_target_group
+	#ds: "\(#prefix)_ami": data.#aws_ami
+	#ds: "\(#prefix)_ami_ids": data.#aws_ami_ids
+	#ds: "\(#prefix)_api_gateway_api_key": data.#aws_api_gateway_api_key
+	#ds: "\(#prefix)_api_gateway_api_keys": data.#aws_api_gateway_api_keys
+	#ds: "\(#prefix)_api_gateway_authorizer": data.#aws_api_gateway_authorizer
+	#ds: "\(#prefix)_api_gateway_authorizers": data.#aws_api_gateway_authorizers
+	#ds: "\(#prefix)_api_gateway_domain_name": data.#aws_api_gateway_domain_name
+	#ds: "\(#prefix)_api_gateway_export": data.#aws_api_gateway_export
+	#ds: "\(#prefix)_api_gateway_resource": data.#aws_api_gateway_resource
+	#ds: "\(#prefix)_api_gateway_rest_api": data.#aws_api_gateway_rest_api
+	#ds: "\(#prefix)_api_gateway_sdk": data.#aws_api_gateway_sdk
+	#ds: "\(#prefix)_api_gateway_vpc_link": data.#aws_api_gateway_vpc_link
+	#ds: "\(#prefix)_apigatewayv2_api": data.#aws_apigatewayv2_api
+	#ds: "\(#prefix)_apigatewayv2_apis": data.#aws_apigatewayv2_apis
+	#ds: "\(#prefix)_apigatewayv2_export": data.#aws_apigatewayv2_export
+	#ds: "\(#prefix)_apigatewayv2_vpc_link": data.#aws_apigatewayv2_vpc_link
+	#ds: "\(#prefix)_appconfig_application": data.#aws_appconfig_application
+	#ds: "\(#prefix)_appconfig_configuration_profile": data.#aws_appconfig_configuration_profile
+	#ds: "\(#prefix)_appconfig_configuration_profiles": data.#aws_appconfig_configuration_profiles
+	#ds: "\(#prefix)_appconfig_environment": data.#aws_appconfig_environment
+	#ds: "\(#prefix)_appconfig_environments": data.#aws_appconfig_environments
+	#ds: "\(#prefix)_appintegrations_event_integration": data.#aws_appintegrations_event_integration
+	#ds: "\(#prefix)_appmesh_gateway_route": data.#aws_appmesh_gateway_route
+	#ds: "\(#prefix)_appmesh_mesh": data.#aws_appmesh_mesh
+	#ds: "\(#prefix)_appmesh_route": data.#aws_appmesh_route
+	#ds: "\(#prefix)_appmesh_virtual_gateway": data.#aws_appmesh_virtual_gateway
+	#ds: "\(#prefix)_appmesh_virtual_node": data.#aws_appmesh_virtual_node
+	#ds: "\(#prefix)_appmesh_virtual_router": data.#aws_appmesh_virtual_router
+	#ds: "\(#prefix)_appmesh_virtual_service": data.#aws_appmesh_virtual_service
+	#ds: "\(#prefix)_apprunner_hosted_zone_id": data.#aws_apprunner_hosted_zone_id
+	#ds: "\(#prefix)_appstream_image": data.#aws_appstream_image
+	#ds: "\(#prefix)_arn": data.#aws_arn
+	#ds: "\(#prefix)_athena_named_query": data.#aws_athena_named_query
+	#ds: "\(#prefix)_auditmanager_control": data.#aws_auditmanager_control
+	#ds: "\(#prefix)_auditmanager_framework": data.#aws_auditmanager_framework
+	#ds: "\(#prefix)_autoscaling_group": data.#aws_autoscaling_group
+	#ds: "\(#prefix)_autoscaling_groups": data.#aws_autoscaling_groups
+	#ds: "\(#prefix)_availability_zone": data.#aws_availability_zone
+	#ds: "\(#prefix)_availability_zones": data.#aws_availability_zones
+	#ds: "\(#prefix)_backup_framework": data.#aws_backup_framework
+	#ds: "\(#prefix)_backup_plan": data.#aws_backup_plan
+	#ds: "\(#prefix)_backup_report_plan": data.#aws_backup_report_plan
+	#ds: "\(#prefix)_backup_selection": data.#aws_backup_selection
+	#ds: "\(#prefix)_backup_vault": data.#aws_backup_vault
+	#ds: "\(#prefix)_batch_compute_environment": data.#aws_batch_compute_environment
+	#ds: "\(#prefix)_batch_job_definition": data.#aws_batch_job_definition
+	#ds: "\(#prefix)_batch_job_queue": data.#aws_batch_job_queue
+	#ds: "\(#prefix)_batch_scheduling_policy": data.#aws_batch_scheduling_policy
+	#ds: "\(#prefix)_bedrock_custom_model": data.#aws_bedrock_custom_model
+	#ds: "\(#prefix)_bedrock_custom_models": data.#aws_bedrock_custom_models
+	#ds: "\(#prefix)_bedrock_foundation_model": data.#aws_bedrock_foundation_model
+	#ds: "\(#prefix)_bedrock_foundation_models": data.#aws_bedrock_foundation_models
+	#ds: "\(#prefix)_bedrock_inference_profile": data.#aws_bedrock_inference_profile
+	#ds: "\(#prefix)_bedrock_inference_profiles": data.#aws_bedrock_inference_profiles
+	#ds: "\(#prefix)_bedrockagent_agent_versions": data.#aws_bedrockagent_agent_versions
+	#ds: "\(#prefix)_billing_service_account": data.#aws_billing_service_account
+	#ds: "\(#prefix)_billing_views": data.#aws_billing_views
+	#ds: "\(#prefix)_budgets_budget": data.#aws_budgets_budget
+	#ds: "\(#prefix)_caller_identity": data.#aws_caller_identity
+	#ds: "\(#prefix)_canonical_user_id": data.#aws_canonical_user_id
+	#ds: "\(#prefix)_ce_cost_category": data.#aws_ce_cost_category
+	#ds: "\(#prefix)_ce_tags": data.#aws_ce_tags
+	#ds: "\(#prefix)_chatbot_slack_workspace": data.#aws_chatbot_slack_workspace
+	#ds: "\(#prefix)_cloudcontrolapi_resource": data.#aws_cloudcontrolapi_resource
+	#ds: "\(#prefix)_cloudformation_export": data.#aws_cloudformation_export
+	#ds: "\(#prefix)_cloudformation_stack": data.#aws_cloudformation_stack
+	#ds: "\(#prefix)_cloudformation_type": data.#aws_cloudformation_type
+	#ds: "\(#prefix)_cloudfront_cache_policy": data.#aws_cloudfront_cache_policy
+	#ds: "\(#prefix)_cloudfront_distribution": data.#aws_cloudfront_distribution
+	#ds: "\(#prefix)_cloudfront_function": data.#aws_cloudfront_function
+	#ds: "\(#prefix)_cloudfront_log_delivery_canonical_user_id": data.#aws_cloudfront_log_delivery_canonical_user_id
+	#ds: "\(#prefix)_cloudfront_origin_access_control": data.#aws_cloudfront_origin_access_control
+	#ds: "\(#prefix)_cloudfront_origin_access_identities": data.#aws_cloudfront_origin_access_identities
+	#ds: "\(#prefix)_cloudfront_origin_access_identity": data.#aws_cloudfront_origin_access_identity
+	#ds: "\(#prefix)_cloudfront_origin_request_policy": data.#aws_cloudfront_origin_request_policy
+	#ds: "\(#prefix)_cloudfront_realtime_log_config": data.#aws_cloudfront_realtime_log_config
+	#ds: "\(#prefix)_cloudfront_response_headers_policy": data.#aws_cloudfront_response_headers_policy
+	#ds: "\(#prefix)_cloudhsm_v2_cluster": data.#aws_cloudhsm_v2_cluster
+	#ds: "\(#prefix)_cloudtrail_service_account": data.#aws_cloudtrail_service_account
+	#ds: "\(#prefix)_cloudwatch_contributor_managed_insight_rules": data.#aws_cloudwatch_contributor_managed_insight_rules
+	#ds: "\(#prefix)_cloudwatch_event_bus": data.#aws_cloudwatch_event_bus
+	#ds: "\(#prefix)_cloudwatch_event_buses": data.#aws_cloudwatch_event_buses
+	#ds: "\(#prefix)_cloudwatch_event_connection": data.#aws_cloudwatch_event_connection
+	#ds: "\(#prefix)_cloudwatch_event_source": data.#aws_cloudwatch_event_source
+	#ds: "\(#prefix)_cloudwatch_log_data_protection_policy_document": data.#aws_cloudwatch_log_data_protection_policy_document
+	#ds: "\(#prefix)_cloudwatch_log_group": data.#aws_cloudwatch_log_group
+	#ds: "\(#prefix)_cloudwatch_log_groups": data.#aws_cloudwatch_log_groups
+	#ds: "\(#prefix)_codeartifact_authorization_token": data.#aws_codeartifact_authorization_token
+	#ds: "\(#prefix)_codeartifact_repository_endpoint": data.#aws_codeartifact_repository_endpoint
+	#ds: "\(#prefix)_codebuild_fleet": data.#aws_codebuild_fleet
+	#ds: "\(#prefix)_codecatalyst_dev_environment": data.#aws_codecatalyst_dev_environment
+	#ds: "\(#prefix)_codecommit_approval_rule_template": data.#aws_codecommit_approval_rule_template
+	#ds: "\(#prefix)_codecommit_repository": data.#aws_codecommit_repository
+	#ds: "\(#prefix)_codeguruprofiler_profiling_group": data.#aws_codeguruprofiler_profiling_group
+	#ds: "\(#prefix)_codestarconnections_connection": data.#aws_codestarconnections_connection
+	#ds: "\(#prefix)_cognito_identity_pool": data.#aws_cognito_identity_pool
+	#ds: "\(#prefix)_cognito_user_group": data.#aws_cognito_user_group
+	#ds: "\(#prefix)_cognito_user_groups": data.#aws_cognito_user_groups
+	#ds: "\(#prefix)_cognito_user_pool_client": data.#aws_cognito_user_pool_client
+	#ds: "\(#prefix)_cognito_user_pool_clients": data.#aws_cognito_user_pool_clients
+	#ds: "\(#prefix)_cognito_user_pool": data.#aws_cognito_user_pool
+	#ds: "\(#prefix)_cognito_user_pool_signing_certificate": data.#aws_cognito_user_pool_signing_certificate
+	#ds: "\(#prefix)_cognito_user_pools": data.#aws_cognito_user_pools
+	#ds: "\(#prefix)_connect_bot_association": data.#aws_connect_bot_association
+	#ds: "\(#prefix)_connect_contact_flow": data.#aws_connect_contact_flow
+	#ds: "\(#prefix)_connect_contact_flow_module": data.#aws_connect_contact_flow_module
+	#ds: "\(#prefix)_connect_hours_of_operation": data.#aws_connect_hours_of_operation
+	#ds: "\(#prefix)_connect_instance": data.#aws_connect_instance
+	#ds: "\(#prefix)_connect_instance_storage_config": data.#aws_connect_instance_storage_config
+	#ds: "\(#prefix)_connect_lambda_function_association": data.#aws_connect_lambda_function_association
+	#ds: "\(#prefix)_connect_prompt": data.#aws_connect_prompt
+	#ds: "\(#prefix)_connect_queue": data.#aws_connect_queue
+	#ds: "\(#prefix)_connect_quick_connect": data.#aws_connect_quick_connect
+	#ds: "\(#prefix)_connect_routing_profile": data.#aws_connect_routing_profile
+	#ds: "\(#prefix)_connect_security_profile": data.#aws_connect_security_profile
+	#ds: "\(#prefix)_connect_user": data.#aws_connect_user
+	#ds: "\(#prefix)_connect_user_hierarchy_group": data.#aws_connect_user_hierarchy_group
+	#ds: "\(#prefix)_connect_user_hierarchy_structure": data.#aws_connect_user_hierarchy_structure
+	#ds: "\(#prefix)_connect_vocabulary": data.#aws_connect_vocabulary
+	#ds: "\(#prefix)_controltower_controls": data.#aws_controltower_controls
+	#ds: "\(#prefix)_cur_report_definition": data.#aws_cur_report_definition
+	#ds: "\(#prefix)_customer_gateway": data.#aws_customer_gateway
+	#ds: "\(#prefix)_datapipeline_pipeline_definition": data.#aws_datapipeline_pipeline_definition
+	#ds: "\(#prefix)_datapipeline_pipeline": data.#aws_datapipeline_pipeline
+	#ds: "\(#prefix)_datazone_domain": data.#aws_datazone_domain
+	#ds: "\(#prefix)_datazone_environment_blueprint": data.#aws_datazone_environment_blueprint
+	#ds: "\(#prefix)_db_cluster_snapshot": data.#aws_db_cluster_snapshot
+	#ds: "\(#prefix)_db_event_categories": data.#aws_db_event_categories
+	#ds: "\(#prefix)_db_instance": data.#aws_db_instance
+	#ds: "\(#prefix)_db_instances": data.#aws_db_instances
+	#ds: "\(#prefix)_db_parameter_group": data.#aws_db_parameter_group
+	#ds: "\(#prefix)_db_proxy": data.#aws_db_proxy
+	#ds: "\(#prefix)_db_snapshot": data.#aws_db_snapshot
+	#ds: "\(#prefix)_db_subnet_group": data.#aws_db_subnet_group
+	#ds: "\(#prefix)_default_tags": data.#aws_default_tags
+	#ds: "\(#prefix)_devopsguru_notification_channel": data.#aws_devopsguru_notification_channel
+	#ds: "\(#prefix)_devopsguru_resource_collection": data.#aws_devopsguru_resource_collection
+	#ds: "\(#prefix)_directory_service_directory": data.#aws_directory_service_directory
+	#ds: "\(#prefix)_dms_certificate": data.#aws_dms_certificate
+	#ds: "\(#prefix)_dms_endpoint": data.#aws_dms_endpoint
+	#ds: "\(#prefix)_dms_replication_instance": data.#aws_dms_replication_instance
+	#ds: "\(#prefix)_dms_replication_subnet_group": data.#aws_dms_replication_subnet_group
+	#ds: "\(#prefix)_dms_replication_task": data.#aws_dms_replication_task
+	#ds: "\(#prefix)_docdb_engine_version": data.#aws_docdb_engine_version
+	#ds: "\(#prefix)_docdb_orderable_db_instance": data.#aws_docdb_orderable_db_instance
+	#ds: "\(#prefix)_dx_connection": data.#aws_dx_connection
+	#ds: "\(#prefix)_dx_gateway": data.#aws_dx_gateway
+	#ds: "\(#prefix)_dx_location": data.#aws_dx_location
+	#ds: "\(#prefix)_dx_locations": data.#aws_dx_locations
+	#ds: "\(#prefix)_dx_router_configuration": data.#aws_dx_router_configuration
+	#ds: "\(#prefix)_dynamodb_table": data.#aws_dynamodb_table
+	#ds: "\(#prefix)_dynamodb_table_item": data.#aws_dynamodb_table_item
+	#ds: "\(#prefix)_dynamodb_tables": data.#aws_dynamodb_tables
+	#ds: "\(#prefix)_ebs_default_kms_key": data.#aws_ebs_default_kms_key
+	#ds: "\(#prefix)_ebs_encryption_by_default": data.#aws_ebs_encryption_by_default
+	#ds: "\(#prefix)_ebs_snapshot": data.#aws_ebs_snapshot
+	#ds: "\(#prefix)_ebs_snapshot_ids": data.#aws_ebs_snapshot_ids
+	#ds: "\(#prefix)_ebs_volume": data.#aws_ebs_volume
+	#ds: "\(#prefix)_ebs_volumes": data.#aws_ebs_volumes
+	#ds: "\(#prefix)_ec2_capacity_block_offering": data.#aws_ec2_capacity_block_offering
+	#ds: "\(#prefix)_ec2_client_vpn_endpoint": data.#aws_ec2_client_vpn_endpoint
+	#ds: "\(#prefix)_ec2_coip_pool": data.#aws_ec2_coip_pool
+	#ds: "\(#prefix)_ec2_coip_pools": data.#aws_ec2_coip_pools
+	#ds: "\(#prefix)_ec2_host": data.#aws_ec2_host
+	#ds: "\(#prefix)_ec2_instance_type": data.#aws_ec2_instance_type
+	#ds: "\(#prefix)_ec2_instance_type_offering": data.#aws_ec2_instance_type_offering
+	#ds: "\(#prefix)_ec2_instance_type_offerings": data.#aws_ec2_instance_type_offerings
+	#ds: "\(#prefix)_ec2_instance_types": data.#aws_ec2_instance_types
+	#ds: "\(#prefix)_ec2_local_gateway": data.#aws_ec2_local_gateway
+	#ds: "\(#prefix)_ec2_local_gateway_route_table": data.#aws_ec2_local_gateway_route_table
+	#ds: "\(#prefix)_ec2_local_gateway_route_tables": data.#aws_ec2_local_gateway_route_tables
+	#ds: "\(#prefix)_ec2_local_gateway_virtual_interface": data.#aws_ec2_local_gateway_virtual_interface
+	#ds: "\(#prefix)_ec2_local_gateway_virtual_interface_group": data.#aws_ec2_local_gateway_virtual_interface_group
+	#ds: "\(#prefix)_ec2_local_gateway_virtual_interface_groups": data.#aws_ec2_local_gateway_virtual_interface_groups
+	#ds: "\(#prefix)_ec2_local_gateways": data.#aws_ec2_local_gateways
+	#ds: "\(#prefix)_ec2_managed_prefix_list": data.#aws_ec2_managed_prefix_list
+	#ds: "\(#prefix)_ec2_managed_prefix_lists": data.#aws_ec2_managed_prefix_lists
+	#ds: "\(#prefix)_ec2_network_insights_analysis": data.#aws_ec2_network_insights_analysis
+	#ds: "\(#prefix)_ec2_network_insights_path": data.#aws_ec2_network_insights_path
+	#ds: "\(#prefix)_ec2_public_ipv4_pool": data.#aws_ec2_public_ipv4_pool
+	#ds: "\(#prefix)_ec2_public_ipv4_pools": data.#aws_ec2_public_ipv4_pools
+	#ds: "\(#prefix)_ec2_serial_console_access": data.#aws_ec2_serial_console_access
+	#ds: "\(#prefix)_ec2_spot_price": data.#aws_ec2_spot_price
+	#ds: "\(#prefix)_ec2_transit_gateway_attachment": data.#aws_ec2_transit_gateway_attachment
+	#ds: "\(#prefix)_ec2_transit_gateway_attachments": data.#aws_ec2_transit_gateway_attachments
+	#ds: "\(#prefix)_ec2_transit_gateway_connect": data.#aws_ec2_transit_gateway_connect
+	#ds: "\(#prefix)_ec2_transit_gateway_connect_peer": data.#aws_ec2_transit_gateway_connect_peer
+	#ds: "\(#prefix)_ec2_transit_gateway_dx_gateway_attachment": data.#aws_ec2_transit_gateway_dx_gateway_attachment
+	#ds: "\(#prefix)_ec2_transit_gateway": data.#aws_ec2_transit_gateway
+	#ds: "\(#prefix)_ec2_transit_gateway_multicast_domain": data.#aws_ec2_transit_gateway_multicast_domain
+	#ds: "\(#prefix)_ec2_transit_gateway_peering_attachment": data.#aws_ec2_transit_gateway_peering_attachment
+	#ds: "\(#prefix)_ec2_transit_gateway_peering_attachments": data.#aws_ec2_transit_gateway_peering_attachments
+	#ds: "\(#prefix)_ec2_transit_gateway_route_table_associations": data.#aws_ec2_transit_gateway_route_table_associations
+	#ds: "\(#prefix)_ec2_transit_gateway_route_table": data.#aws_ec2_transit_gateway_route_table
+	#ds: "\(#prefix)_ec2_transit_gateway_route_table_propagations": data.#aws_ec2_transit_gateway_route_table_propagations
+	#ds: "\(#prefix)_ec2_transit_gateway_route_table_routes": data.#aws_ec2_transit_gateway_route_table_routes
+	#ds: "\(#prefix)_ec2_transit_gateway_route_tables": data.#aws_ec2_transit_gateway_route_tables
+	#ds: "\(#prefix)_ec2_transit_gateway_vpc_attachment": data.#aws_ec2_transit_gateway_vpc_attachment
+	#ds: "\(#prefix)_ec2_transit_gateway_vpc_attachments": data.#aws_ec2_transit_gateway_vpc_attachments
+	#ds: "\(#prefix)_ec2_transit_gateway_vpn_attachment": data.#aws_ec2_transit_gateway_vpn_attachment
+	#ds: "\(#prefix)_ecr_authorization_token": data.#aws_ecr_authorization_token
+	#ds: "\(#prefix)_ecr_image": data.#aws_ecr_image
+	#ds: "\(#prefix)_ecr_images": data.#aws_ecr_images
+	#ds: "\(#prefix)_ecr_lifecycle_policy_document": data.#aws_ecr_lifecycle_policy_document
+	#ds: "\(#prefix)_ecr_pull_through_cache_rule": data.#aws_ecr_pull_through_cache_rule
+	#ds: "\(#prefix)_ecr_repositories": data.#aws_ecr_repositories
+	#ds: "\(#prefix)_ecr_repository_creation_template": data.#aws_ecr_repository_creation_template
+	#ds: "\(#prefix)_ecr_repository": data.#aws_ecr_repository
+	#ds: "\(#prefix)_ecrpublic_authorization_token": data.#aws_ecrpublic_authorization_token
+	#ds: "\(#prefix)_ecrpublic_images": data.#aws_ecrpublic_images
+	#ds: "\(#prefix)_ecs_cluster": data.#aws_ecs_cluster
+	#ds: "\(#prefix)_ecs_clusters": data.#aws_ecs_clusters
+	#ds: "\(#prefix)_ecs_container_definition": data.#aws_ecs_container_definition
+	#ds: "\(#prefix)_ecs_service": data.#aws_ecs_service
+	#ds: "\(#prefix)_ecs_task_definition": data.#aws_ecs_task_definition
+	#ds: "\(#prefix)_ecs_task_execution": data.#aws_ecs_task_execution
+	#ds: "\(#prefix)_efs_access_point": data.#aws_efs_access_point
+	#ds: "\(#prefix)_efs_access_points": data.#aws_efs_access_points
+	#ds: "\(#prefix)_efs_file_system": data.#aws_efs_file_system
+	#ds: "\(#prefix)_efs_mount_target": data.#aws_efs_mount_target
+	#ds: "\(#prefix)_eip": data.#aws_eip
+	#ds: "\(#prefix)_eips": data.#aws_eips
+	#ds: "\(#prefix)_eks_access_entry": data.#aws_eks_access_entry
+	#ds: "\(#prefix)_eks_addon": data.#aws_eks_addon
+	#ds: "\(#prefix)_eks_addon_version": data.#aws_eks_addon_version
+	#ds: "\(#prefix)_eks_cluster_auth": data.#aws_eks_cluster_auth
+	#ds: "\(#prefix)_eks_cluster": data.#aws_eks_cluster
+	#ds: "\(#prefix)_eks_cluster_versions": data.#aws_eks_cluster_versions
+	#ds: "\(#prefix)_eks_clusters": data.#aws_eks_clusters
+	#ds: "\(#prefix)_eks_node_group": data.#aws_eks_node_group
+	#ds: "\(#prefix)_eks_node_groups": data.#aws_eks_node_groups
+	#ds: "\(#prefix)_elastic_beanstalk_application": data.#aws_elastic_beanstalk_application
+	#ds: "\(#prefix)_elastic_beanstalk_hosted_zone": data.#aws_elastic_beanstalk_hosted_zone
+	#ds: "\(#prefix)_elastic_beanstalk_solution_stack": data.#aws_elastic_beanstalk_solution_stack
+	#ds: "\(#prefix)_elasticache_cluster": data.#aws_elasticache_cluster
+	#ds: "\(#prefix)_elasticache_replication_group": data.#aws_elasticache_replication_group
+	#ds: "\(#prefix)_elasticache_reserved_cache_node_offering": data.#aws_elasticache_reserved_cache_node_offering
+	#ds: "\(#prefix)_elasticache_serverless_cache": data.#aws_elasticache_serverless_cache
+	#ds: "\(#prefix)_elasticache_subnet_group": data.#aws_elasticache_subnet_group
+	#ds: "\(#prefix)_elasticache_user": data.#aws_elasticache_user
+	#ds: "\(#prefix)_elasticsearch_domain": data.#aws_elasticsearch_domain
+	#ds: "\(#prefix)_elb": data.#aws_elb
+	#ds: "\(#prefix)_elb_hosted_zone_id": data.#aws_elb_hosted_zone_id
+	#ds: "\(#prefix)_elb_service_account": data.#aws_elb_service_account
+	#ds: "\(#prefix)_emr_release_labels": data.#aws_emr_release_labels
+	#ds: "\(#prefix)_emr_supported_instance_types": data.#aws_emr_supported_instance_types
+	#ds: "\(#prefix)_emrcontainers_virtual_cluster": data.#aws_emrcontainers_virtual_cluster
+	#ds: "\(#prefix)_fis_experiment_templates": data.#aws_fis_experiment_templates
+	#ds: "\(#prefix)_fsx_ontap_file_system": data.#aws_fsx_ontap_file_system
+	#ds: "\(#prefix)_fsx_ontap_storage_virtual_machine": data.#aws_fsx_ontap_storage_virtual_machine
+	#ds: "\(#prefix)_fsx_ontap_storage_virtual_machines": data.#aws_fsx_ontap_storage_virtual_machines
+	#ds: "\(#prefix)_fsx_openzfs_snapshot": data.#aws_fsx_openzfs_snapshot
+	#ds: "\(#prefix)_fsx_windows_file_system": data.#aws_fsx_windows_file_system
+	#ds: "\(#prefix)_globalaccelerator_accelerator": data.#aws_globalaccelerator_accelerator
+	#ds: "\(#prefix)_globalaccelerator_custom_routing_accelerator": data.#aws_globalaccelerator_custom_routing_accelerator
+	#ds: "\(#prefix)_glue_catalog_table": data.#aws_glue_catalog_table
+	#ds: "\(#prefix)_glue_connection": data.#aws_glue_connection
+	#ds: "\(#prefix)_glue_data_catalog_encryption_settings": data.#aws_glue_data_catalog_encryption_settings
+	#ds: "\(#prefix)_glue_registry": data.#aws_glue_registry
+	#ds: "\(#prefix)_glue_script": data.#aws_glue_script
+	#ds: "\(#prefix)_grafana_workspace": data.#aws_grafana_workspace
+	#ds: "\(#prefix)_guardduty_detector": data.#aws_guardduty_detector
+	#ds: "\(#prefix)_guardduty_finding_ids": data.#aws_guardduty_finding_ids
+	#ds: "\(#prefix)_iam_access_keys": data.#aws_iam_access_keys
+	#ds: "\(#prefix)_iam_account_alias": data.#aws_iam_account_alias
+	#ds: "\(#prefix)_iam_group": data.#aws_iam_group
+	#ds: "\(#prefix)_iam_instance_profile": data.#aws_iam_instance_profile
+	#ds: "\(#prefix)_iam_instance_profiles": data.#aws_iam_instance_profiles
+	#ds: "\(#prefix)_iam_openid_connect_provider": data.#aws_iam_openid_connect_provider
+	#ds: "\(#prefix)_iam_policy_document": data.#aws_iam_policy_document
+	#ds: "\(#prefix)_iam_policy": data.#aws_iam_policy
+	#ds: "\(#prefix)_iam_principal_policy_simulation": data.#aws_iam_principal_policy_simulation
+	#ds: "\(#prefix)_iam_role": data.#aws_iam_role
+	#ds: "\(#prefix)_iam_roles": data.#aws_iam_roles
+	#ds: "\(#prefix)_iam_saml_provider": data.#aws_iam_saml_provider
+	#ds: "\(#prefix)_iam_server_certificate": data.#aws_iam_server_certificate
+	#ds: "\(#prefix)_iam_session_context": data.#aws_iam_session_context
+	#ds: "\(#prefix)_iam_user": data.#aws_iam_user
+	#ds: "\(#prefix)_iam_user_ssh_key": data.#aws_iam_user_ssh_key
+	#ds: "\(#prefix)_iam_users": data.#aws_iam_users
+	#ds: "\(#prefix)_identitystore_group": data.#aws_identitystore_group
+	#ds: "\(#prefix)_identitystore_group_memberships": data.#aws_identitystore_group_memberships
+	#ds: "\(#prefix)_identitystore_groups": data.#aws_identitystore_groups
+	#ds: "\(#prefix)_identitystore_user": data.#aws_identitystore_user
+	#ds: "\(#prefix)_identitystore_users": data.#aws_identitystore_users
+	#ds: "\(#prefix)_imagebuilder_component": data.#aws_imagebuilder_component
+	#ds: "\(#prefix)_imagebuilder_components": data.#aws_imagebuilder_components
+	#ds: "\(#prefix)_imagebuilder_container_recipe": data.#aws_imagebuilder_container_recipe
+	#ds: "\(#prefix)_imagebuilder_container_recipes": data.#aws_imagebuilder_container_recipes
+	#ds: "\(#prefix)_imagebuilder_distribution_configuration": data.#aws_imagebuilder_distribution_configuration
+	#ds: "\(#prefix)_imagebuilder_distribution_configurations": data.#aws_imagebuilder_distribution_configurations
+	#ds: "\(#prefix)_imagebuilder_image": data.#aws_imagebuilder_image
+	#ds: "\(#prefix)_imagebuilder_image_pipeline": data.#aws_imagebuilder_image_pipeline
+	#ds: "\(#prefix)_imagebuilder_image_pipelines": data.#aws_imagebuilder_image_pipelines
+	#ds: "\(#prefix)_imagebuilder_image_recipe": data.#aws_imagebuilder_image_recipe
+	#ds: "\(#prefix)_imagebuilder_image_recipes": data.#aws_imagebuilder_image_recipes
+	#ds: "\(#prefix)_imagebuilder_infrastructure_configuration": data.#aws_imagebuilder_infrastructure_configuration
+	#ds: "\(#prefix)_imagebuilder_infrastructure_configurations": data.#aws_imagebuilder_infrastructure_configurations
+	#ds: "\(#prefix)_inspector_rules_packages": data.#aws_inspector_rules_packages
+	#ds: "\(#prefix)_instance": data.#aws_instance
+	#ds: "\(#prefix)_instances": data.#aws_instances
+	#ds: "\(#prefix)_internet_gateway": data.#aws_internet_gateway
+	#ds: "\(#prefix)_iot_endpoint": data.#aws_iot_endpoint
+	#ds: "\(#prefix)_iot_registration_code": data.#aws_iot_registration_code
+	#ds: "\(#prefix)_ip_ranges": data.#aws_ip_ranges
+	#ds: "\(#prefix)_ivs_stream_key": data.#aws_ivs_stream_key
+	#ds: "\(#prefix)_kendra_experience": data.#aws_kendra_experience
+	#ds: "\(#prefix)_kendra_faq": data.#aws_kendra_faq
+	#ds: "\(#prefix)_kendra_index": data.#aws_kendra_index
+	#ds: "\(#prefix)_kendra_query_suggestions_block_list": data.#aws_kendra_query_suggestions_block_list
+	#ds: "\(#prefix)_kendra_thesaurus": data.#aws_kendra_thesaurus
+	#ds: "\(#prefix)_key_pair": data.#aws_key_pair
+	#ds: "\(#prefix)_kinesis_firehose_delivery_stream": data.#aws_kinesis_firehose_delivery_stream
+	#ds: "\(#prefix)_kinesis_stream_consumer": data.#aws_kinesis_stream_consumer
+	#ds: "\(#prefix)_kinesis_stream": data.#aws_kinesis_stream
+	#ds: "\(#prefix)_kms_alias": data.#aws_kms_alias
+	#ds: "\(#prefix)_kms_ciphertext": data.#aws_kms_ciphertext
+	#ds: "\(#prefix)_kms_custom_key_store": data.#aws_kms_custom_key_store
+	#ds: "\(#prefix)_kms_key": data.#aws_kms_key
+	#ds: "\(#prefix)_kms_public_key": data.#aws_kms_public_key
+	#ds: "\(#prefix)_kms_secret": data.#aws_kms_secret
+	#ds: "\(#prefix)_kms_secrets": data.#aws_kms_secrets
+	#ds: "\(#prefix)_lakeformation_data_lake_settings": data.#aws_lakeformation_data_lake_settings
+	#ds: "\(#prefix)_lakeformation_permissions": data.#aws_lakeformation_permissions
+	#ds: "\(#prefix)_lakeformation_resource": data.#aws_lakeformation_resource
+	#ds: "\(#prefix)_lambda_alias": data.#aws_lambda_alias
+	#ds: "\(#prefix)_lambda_code_signing_config": data.#aws_lambda_code_signing_config
+	#ds: "\(#prefix)_lambda_function": data.#aws_lambda_function
+	#ds: "\(#prefix)_lambda_function_url": data.#aws_lambda_function_url
+	#ds: "\(#prefix)_lambda_functions": data.#aws_lambda_functions
+	#ds: "\(#prefix)_lambda_invocation": data.#aws_lambda_invocation
+	#ds: "\(#prefix)_lambda_layer_version": data.#aws_lambda_layer_version
+	#ds: "\(#prefix)_launch_configuration": data.#aws_launch_configuration
+	#ds: "\(#prefix)_launch_template": data.#aws_launch_template
+	#ds: "\(#prefix)_lb": data.#aws_lb
+	#ds: "\(#prefix)_lb_hosted_zone_id": data.#aws_lb_hosted_zone_id
+	#ds: "\(#prefix)_lb_listener": data.#aws_lb_listener
+	#ds: "\(#prefix)_lb_listener_rule": data.#aws_lb_listener_rule
+	#ds: "\(#prefix)_lb_target_group": data.#aws_lb_target_group
+	#ds: "\(#prefix)_lb_trust_store": data.#aws_lb_trust_store
+	#ds: "\(#prefix)_lbs": data.#aws_lbs
+	#ds: "\(#prefix)_lex_bot_alias": data.#aws_lex_bot_alias
+	#ds: "\(#prefix)_lex_bot": data.#aws_lex_bot
+	#ds: "\(#prefix)_lex_intent": data.#aws_lex_intent
+	#ds: "\(#prefix)_lex_slot_type": data.#aws_lex_slot_type
+	#ds: "\(#prefix)_licensemanager_grants": data.#aws_licensemanager_grants
+	#ds: "\(#prefix)_licensemanager_received_license": data.#aws_licensemanager_received_license
+	#ds: "\(#prefix)_licensemanager_received_licenses": data.#aws_licensemanager_received_licenses
+	#ds: "\(#prefix)_location_geofence_collection": data.#aws_location_geofence_collection
+	#ds: "\(#prefix)_location_map": data.#aws_location_map
+	#ds: "\(#prefix)_location_place_index": data.#aws_location_place_index
+	#ds: "\(#prefix)_location_route_calculator": data.#aws_location_route_calculator
+	#ds: "\(#prefix)_location_tracker_association": data.#aws_location_tracker_association
+	#ds: "\(#prefix)_location_tracker_associations": data.#aws_location_tracker_associations
+	#ds: "\(#prefix)_location_tracker": data.#aws_location_tracker
+	#ds: "\(#prefix)_media_convert_queue": data.#aws_media_convert_queue
+	#ds: "\(#prefix)_medialive_input": data.#aws_medialive_input
+	#ds: "\(#prefix)_memorydb_acl": data.#aws_memorydb_acl
+	#ds: "\(#prefix)_memorydb_cluster": data.#aws_memorydb_cluster
+	#ds: "\(#prefix)_memorydb_parameter_group": data.#aws_memorydb_parameter_group
+	#ds: "\(#prefix)_memorydb_snapshot": data.#aws_memorydb_snapshot
+	#ds: "\(#prefix)_memorydb_subnet_group": data.#aws_memorydb_subnet_group
+	#ds: "\(#prefix)_memorydb_user": data.#aws_memorydb_user
+	#ds: "\(#prefix)_mq_broker_engine_types": data.#aws_mq_broker_engine_types
+	#ds: "\(#prefix)_mq_broker": data.#aws_mq_broker
+	#ds: "\(#prefix)_mq_broker_instance_type_offerings": data.#aws_mq_broker_instance_type_offerings
+	#ds: "\(#prefix)_msk_bootstrap_brokers": data.#aws_msk_bootstrap_brokers
+	#ds: "\(#prefix)_msk_broker_nodes": data.#aws_msk_broker_nodes
+	#ds: "\(#prefix)_msk_cluster": data.#aws_msk_cluster
+	#ds: "\(#prefix)_msk_configuration": data.#aws_msk_configuration
+	#ds: "\(#prefix)_msk_kafka_version": data.#aws_msk_kafka_version
+	#ds: "\(#prefix)_msk_vpc_connection": data.#aws_msk_vpc_connection
+	#ds: "\(#prefix)_mskconnect_connector": data.#aws_mskconnect_connector
+	#ds: "\(#prefix)_mskconnect_custom_plugin": data.#aws_mskconnect_custom_plugin
+	#ds: "\(#prefix)_mskconnect_worker_configuration": data.#aws_mskconnect_worker_configuration
+	#ds: "\(#prefix)_nat_gateway": data.#aws_nat_gateway
+	#ds: "\(#prefix)_nat_gateways": data.#aws_nat_gateways
+	#ds: "\(#prefix)_neptune_engine_version": data.#aws_neptune_engine_version
+	#ds: "\(#prefix)_neptune_orderable_db_instance": data.#aws_neptune_orderable_db_instance
+	#ds: "\(#prefix)_network_acls": data.#aws_network_acls
+	#ds: "\(#prefix)_network_interface": data.#aws_network_interface
+	#ds: "\(#prefix)_network_interfaces": data.#aws_network_interfaces
+	#ds: "\(#prefix)_networkfirewall_firewall": data.#aws_networkfirewall_firewall
+	#ds: "\(#prefix)_networkfirewall_firewall_policy": data.#aws_networkfirewall_firewall_policy
+	#ds: "\(#prefix)_networkfirewall_resource_policy": data.#aws_networkfirewall_resource_policy
+	#ds: "\(#prefix)_networkmanager_connection": data.#aws_networkmanager_connection
+	#ds: "\(#prefix)_networkmanager_connections": data.#aws_networkmanager_connections
+	#ds: "\(#prefix)_networkmanager_core_network_policy_document": data.#aws_networkmanager_core_network_policy_document
+	#ds: "\(#prefix)_networkmanager_device": data.#aws_networkmanager_device
+	#ds: "\(#prefix)_networkmanager_devices": data.#aws_networkmanager_devices
+	#ds: "\(#prefix)_networkmanager_global_network": data.#aws_networkmanager_global_network
+	#ds: "\(#prefix)_networkmanager_global_networks": data.#aws_networkmanager_global_networks
+	#ds: "\(#prefix)_networkmanager_link": data.#aws_networkmanager_link
+	#ds: "\(#prefix)_networkmanager_links": data.#aws_networkmanager_links
+	#ds: "\(#prefix)_networkmanager_site": data.#aws_networkmanager_site
+	#ds: "\(#prefix)_networkmanager_sites": data.#aws_networkmanager_sites
+	#ds: "\(#prefix)_oam_link": data.#aws_oam_link
+	#ds: "\(#prefix)_oam_links": data.#aws_oam_links
+	#ds: "\(#prefix)_oam_sink": data.#aws_oam_sink
+	#ds: "\(#prefix)_oam_sinks": data.#aws_oam_sinks
+	#ds: "\(#prefix)_odb_cloud_autonomous_vm_cluster": data.#aws_odb_cloud_autonomous_vm_cluster
+	#ds: "\(#prefix)_odb_cloud_autonomous_vm_clusters": data.#aws_odb_cloud_autonomous_vm_clusters
+	#ds: "\(#prefix)_odb_cloud_exadata_infrastructure": data.#aws_odb_cloud_exadata_infrastructure
+	#ds: "\(#prefix)_odb_cloud_exadata_infrastructures": data.#aws_odb_cloud_exadata_infrastructures
+	#ds: "\(#prefix)_odb_cloud_vm_cluster": data.#aws_odb_cloud_vm_cluster
+	#ds: "\(#prefix)_odb_cloud_vm_clusters": data.#aws_odb_cloud_vm_clusters
+	#ds: "\(#prefix)_odb_db_node": data.#aws_odb_db_node
+	#ds: "\(#prefix)_odb_db_nodes": data.#aws_odb_db_nodes
+	#ds: "\(#prefix)_odb_db_server": data.#aws_odb_db_server
+	#ds: "\(#prefix)_odb_db_servers": data.#aws_odb_db_servers
+	#ds: "\(#prefix)_odb_db_system_shapes": data.#aws_odb_db_system_shapes
+	#ds: "\(#prefix)_odb_gi_versions": data.#aws_odb_gi_versions
+	#ds: "\(#prefix)_odb_network": data.#aws_odb_network
+	#ds: "\(#prefix)_odb_network_peering_connection": data.#aws_odb_network_peering_connection
+	#ds: "\(#prefix)_odb_network_peering_connections": data.#aws_odb_network_peering_connections
+	#ds: "\(#prefix)_odb_networks": data.#aws_odb_networks
+	#ds: "\(#prefix)_opensearch_domain": data.#aws_opensearch_domain
+	#ds: "\(#prefix)_opensearchserverless_access_policy": data.#aws_opensearchserverless_access_policy
+	#ds: "\(#prefix)_opensearchserverless_collection": data.#aws_opensearchserverless_collection
+	#ds: "\(#prefix)_opensearchserverless_lifecycle_policy": data.#aws_opensearchserverless_lifecycle_policy
+	#ds: "\(#prefix)_opensearchserverless_security_config": data.#aws_opensearchserverless_security_config
+	#ds: "\(#prefix)_opensearchserverless_security_policy": data.#aws_opensearchserverless_security_policy
+	#ds: "\(#prefix)_opensearchserverless_vpc_endpoint": data.#aws_opensearchserverless_vpc_endpoint
+	#ds: "\(#prefix)_organizations_delegated_administrators": data.#aws_organizations_delegated_administrators
+	#ds: "\(#prefix)_organizations_delegated_services": data.#aws_organizations_delegated_services
+	#ds: "\(#prefix)_organizations_organization": data.#aws_organizations_organization
+	#ds: "\(#prefix)_organizations_organizational_unit_child_accounts": data.#aws_organizations_organizational_unit_child_accounts
+	#ds: "\(#prefix)_organizations_organizational_unit_descendant_accounts": data.#aws_organizations_organizational_unit_descendant_accounts
+	#ds: "\(#prefix)_organizations_organizational_unit_descendant_organizational_units": data.#aws_organizations_organizational_unit_descendant_organizational_units
+	#ds: "\(#prefix)_organizations_organizational_unit": data.#aws_organizations_organizational_unit
+	#ds: "\(#prefix)_organizations_organizational_units": data.#aws_organizations_organizational_units
+	#ds: "\(#prefix)_organizations_policies_for_target": data.#aws_organizations_policies_for_target
+	#ds: "\(#prefix)_organizations_policies": data.#aws_organizations_policies
+	#ds: "\(#prefix)_organizations_policy": data.#aws_organizations_policy
+	#ds: "\(#prefix)_organizations_resource_tags": data.#aws_organizations_resource_tags
+	#ds: "\(#prefix)_outposts_asset": data.#aws_outposts_asset
+	#ds: "\(#prefix)_outposts_assets": data.#aws_outposts_assets
+	#ds: "\(#prefix)_outposts_outpost": data.#aws_outposts_outpost
+	#ds: "\(#prefix)_outposts_outpost_instance_type": data.#aws_outposts_outpost_instance_type
+	#ds: "\(#prefix)_outposts_outpost_instance_types": data.#aws_outposts_outpost_instance_types
+	#ds: "\(#prefix)_outposts_outposts": data.#aws_outposts_outposts
+	#ds: "\(#prefix)_outposts_site": data.#aws_outposts_site
+	#ds: "\(#prefix)_outposts_sites": data.#aws_outposts_sites
+	#ds: "\(#prefix)_partition": data.#aws_partition
+	#ds: "\(#prefix)_polly_voices": data.#aws_polly_voices
+	#ds: "\(#prefix)_prefix_list": data.#aws_prefix_list
+	#ds: "\(#prefix)_pricing_product": data.#aws_pricing_product
+	#ds: "\(#prefix)_prometheus_default_scraper_configuration": data.#aws_prometheus_default_scraper_configuration
+	#ds: "\(#prefix)_prometheus_workspace": data.#aws_prometheus_workspace
+	#ds: "\(#prefix)_prometheus_workspaces": data.#aws_prometheus_workspaces
+	#ds: "\(#prefix)_qldb_ledger": data.#aws_qldb_ledger
+	#ds: "\(#prefix)_quicksight_analysis": data.#aws_quicksight_analysis
+	#ds: "\(#prefix)_quicksight_data_set": data.#aws_quicksight_data_set
+	#ds: "\(#prefix)_quicksight_group": data.#aws_quicksight_group
+	#ds: "\(#prefix)_quicksight_theme": data.#aws_quicksight_theme
+	#ds: "\(#prefix)_quicksight_user": data.#aws_quicksight_user
+	#ds: "\(#prefix)_ram_resource_share": data.#aws_ram_resource_share
+	#ds: "\(#prefix)_rds_certificate": data.#aws_rds_certificate
+	#ds: "\(#prefix)_rds_cluster": data.#aws_rds_cluster
+	#ds: "\(#prefix)_rds_cluster_parameter_group": data.#aws_rds_cluster_parameter_group
+	#ds: "\(#prefix)_rds_clusters": data.#aws_rds_clusters
+	#ds: "\(#prefix)_rds_engine_version": data.#aws_rds_engine_version
+	#ds: "\(#prefix)_rds_global_cluster": data.#aws_rds_global_cluster
+	#ds: "\(#prefix)_rds_orderable_db_instance": data.#aws_rds_orderable_db_instance
+	#ds: "\(#prefix)_rds_reserved_instance_offering": data.#aws_rds_reserved_instance_offering
+	#ds: "\(#prefix)_redshift_cluster_credentials": data.#aws_redshift_cluster_credentials
+	#ds: "\(#prefix)_redshift_cluster": data.#aws_redshift_cluster
+	#ds: "\(#prefix)_redshift_data_shares": data.#aws_redshift_data_shares
+	#ds: "\(#prefix)_redshift_orderable_cluster": data.#aws_redshift_orderable_cluster
+	#ds: "\(#prefix)_redshift_producer_data_shares": data.#aws_redshift_producer_data_shares
+	#ds: "\(#prefix)_redshift_subnet_group": data.#aws_redshift_subnet_group
+	#ds: "\(#prefix)_redshiftserverless_credentials": data.#aws_redshiftserverless_credentials
+	#ds: "\(#prefix)_redshiftserverless_namespace": data.#aws_redshiftserverless_namespace
+	#ds: "\(#prefix)_redshiftserverless_workgroup": data.#aws_redshiftserverless_workgroup
+	#ds: "\(#prefix)_region": data.#aws_region
+	#ds: "\(#prefix)_regions": data.#aws_regions
+	#ds: "\(#prefix)_resourceexplorer2_search": data.#aws_resourceexplorer2_search
+	#ds: "\(#prefix)_resourcegroupstaggingapi_resources": data.#aws_resourcegroupstaggingapi_resources
+	#ds: "\(#prefix)_route53_delegation_set": data.#aws_route53_delegation_set
+	#ds: "\(#prefix)_route53_records": data.#aws_route53_records
+	#ds: "\(#prefix)_route53_resolver_endpoint": data.#aws_route53_resolver_endpoint
+	#ds: "\(#prefix)_route53_resolver_firewall_config": data.#aws_route53_resolver_firewall_config
+	#ds: "\(#prefix)_route53_resolver_firewall_domain_list": data.#aws_route53_resolver_firewall_domain_list
+	#ds: "\(#prefix)_route53_resolver_firewall_rule_group_association": data.#aws_route53_resolver_firewall_rule_group_association
+	#ds: "\(#prefix)_route53_resolver_firewall_rule_group": data.#aws_route53_resolver_firewall_rule_group
+	#ds: "\(#prefix)_route53_resolver_firewall_rules": data.#aws_route53_resolver_firewall_rules
+	#ds: "\(#prefix)_route53_resolver_query_log_config": data.#aws_route53_resolver_query_log_config
+	#ds: "\(#prefix)_route53_resolver_rule": data.#aws_route53_resolver_rule
+	#ds: "\(#prefix)_route53_resolver_rules": data.#aws_route53_resolver_rules
+	#ds: "\(#prefix)_route53_traffic_policy_document": data.#aws_route53_traffic_policy_document
+	#ds: "\(#prefix)_route53_zone": data.#aws_route53_zone
+	#ds: "\(#prefix)_route53_zones": data.#aws_route53_zones
+	#ds: "\(#prefix)_route53profiles_profiles": data.#aws_route53profiles_profiles
+	#ds: "\(#prefix)_route": data.#aws_route
+	#ds: "\(#prefix)_route_table": data.#aws_route_table
+	#ds: "\(#prefix)_route_tables": data.#aws_route_tables
+	#ds: "\(#prefix)_s3_access_point": data.#aws_s3_access_point
+	#ds: "\(#prefix)_s3_account_public_access_block": data.#aws_s3_account_public_access_block
+	#ds: "\(#prefix)_s3_bucket": data.#aws_s3_bucket
+	#ds: "\(#prefix)_s3_bucket_object": data.#aws_s3_bucket_object
+	#ds: "\(#prefix)_s3_bucket_objects": data.#aws_s3_bucket_objects
+	#ds: "\(#prefix)_s3_bucket_policy": data.#aws_s3_bucket_policy
+	#ds: "\(#prefix)_s3_directory_buckets": data.#aws_s3_directory_buckets
+	#ds: "\(#prefix)_s3_object": data.#aws_s3_object
+	#ds: "\(#prefix)_s3_objects": data.#aws_s3_objects
+	#ds: "\(#prefix)_s3control_multi_region_access_point": data.#aws_s3control_multi_region_access_point
+	#ds: "\(#prefix)_sagemaker_prebuilt_ecr_image": data.#aws_sagemaker_prebuilt_ecr_image
+	#ds: "\(#prefix)_secretsmanager_random_password": data.#aws_secretsmanager_random_password
+	#ds: "\(#prefix)_secretsmanager_secret": data.#aws_secretsmanager_secret
+	#ds: "\(#prefix)_secretsmanager_secret_rotation": data.#aws_secretsmanager_secret_rotation
+	#ds: "\(#prefix)_secretsmanager_secret_version": data.#aws_secretsmanager_secret_version
+	#ds: "\(#prefix)_secretsmanager_secret_versions": data.#aws_secretsmanager_secret_versions
+	#ds: "\(#prefix)_secretsmanager_secrets": data.#aws_secretsmanager_secrets
+	#ds: "\(#prefix)_security_group": data.#aws_security_group
+	#ds: "\(#prefix)_security_groups": data.#aws_security_groups
+	#ds: "\(#prefix)_securityhub_standards_control_associations": data.#aws_securityhub_standards_control_associations
+	#ds: "\(#prefix)_serverlessapplicationrepository_application": data.#aws_serverlessapplicationrepository_application
+	#ds: "\(#prefix)_service_discovery_dns_namespace": data.#aws_service_discovery_dns_namespace
+	#ds: "\(#prefix)_service_discovery_http_namespace": data.#aws_service_discovery_http_namespace
+	#ds: "\(#prefix)_service_discovery_service": data.#aws_service_discovery_service
+	#ds: "\(#prefix)_service": data.#aws_service
+	#ds: "\(#prefix)_service_principal": data.#aws_service_principal
+	#ds: "\(#prefix)_servicecatalog_constraint": data.#aws_servicecatalog_constraint
+	#ds: "\(#prefix)_servicecatalog_launch_paths": data.#aws_servicecatalog_launch_paths
+	#ds: "\(#prefix)_servicecatalog_portfolio_constraints": data.#aws_servicecatalog_portfolio_constraints
+	#ds: "\(#prefix)_servicecatalog_portfolio": data.#aws_servicecatalog_portfolio
+	#ds: "\(#prefix)_servicecatalog_product": data.#aws_servicecatalog_product
+	#ds: "\(#prefix)_servicecatalog_provisioning_artifacts": data.#aws_servicecatalog_provisioning_artifacts
+	#ds: "\(#prefix)_servicecatalogappregistry_application": data.#aws_servicecatalogappregistry_application
+	#ds: "\(#prefix)_servicecatalogappregistry_attribute_group_associations": data.#aws_servicecatalogappregistry_attribute_group_associations
+	#ds: "\(#prefix)_servicecatalogappregistry_attribute_group": data.#aws_servicecatalogappregistry_attribute_group
+	#ds: "\(#prefix)_servicequotas_service": data.#aws_servicequotas_service
+	#ds: "\(#prefix)_servicequotas_service_quota": data.#aws_servicequotas_service_quota
+	#ds: "\(#prefix)_servicequotas_templates": data.#aws_servicequotas_templates
+	#ds: "\(#prefix)_ses_active_receipt_rule_set": data.#aws_ses_active_receipt_rule_set
+	#ds: "\(#prefix)_ses_domain_identity": data.#aws_ses_domain_identity
+	#ds: "\(#prefix)_ses_email_identity": data.#aws_ses_email_identity
+	#ds: "\(#prefix)_sesv2_configuration_set": data.#aws_sesv2_configuration_set
+	#ds: "\(#prefix)_sesv2_dedicated_ip_pool": data.#aws_sesv2_dedicated_ip_pool
+	#ds: "\(#prefix)_sesv2_email_identity": data.#aws_sesv2_email_identity
+	#ds: "\(#prefix)_sesv2_email_identity_mail_from_attributes": data.#aws_sesv2_email_identity_mail_from_attributes
+	#ds: "\(#prefix)_sfn_activity": data.#aws_sfn_activity
+	#ds: "\(#prefix)_sfn_alias": data.#aws_sfn_alias
+	#ds: "\(#prefix)_sfn_state_machine": data.#aws_sfn_state_machine
+	#ds: "\(#prefix)_sfn_state_machine_versions": data.#aws_sfn_state_machine_versions
+	#ds: "\(#prefix)_shield_protection": data.#aws_shield_protection
+	#ds: "\(#prefix)_signer_signing_job": data.#aws_signer_signing_job
+	#ds: "\(#prefix)_signer_signing_profile": data.#aws_signer_signing_profile
+	#ds: "\(#prefix)_sns_topic": data.#aws_sns_topic
+	#ds: "\(#prefix)_spot_datafeed_subscription": data.#aws_spot_datafeed_subscription
+	#ds: "\(#prefix)_sqs_queue": data.#aws_sqs_queue
+	#ds: "\(#prefix)_sqs_queues": data.#aws_sqs_queues
+	#ds: "\(#prefix)_ssm_document": data.#aws_ssm_document
+	#ds: "\(#prefix)_ssm_instances": data.#aws_ssm_instances
+	#ds: "\(#prefix)_ssm_maintenance_windows": data.#aws_ssm_maintenance_windows
+	#ds: "\(#prefix)_ssm_parameter": data.#aws_ssm_parameter
+	#ds: "\(#prefix)_ssm_parameters_by_path": data.#aws_ssm_parameters_by_path
+	#ds: "\(#prefix)_ssm_patch_baseline": data.#aws_ssm_patch_baseline
+	#ds: "\(#prefix)_ssm_patch_baselines": data.#aws_ssm_patch_baselines
+	#ds: "\(#prefix)_ssmcontacts_contact_channel": data.#aws_ssmcontacts_contact_channel
+	#ds: "\(#prefix)_ssmcontacts_contact": data.#aws_ssmcontacts_contact
+	#ds: "\(#prefix)_ssmcontacts_plan": data.#aws_ssmcontacts_plan
+	#ds: "\(#prefix)_ssmcontacts_rotation": data.#aws_ssmcontacts_rotation
+	#ds: "\(#prefix)_ssmincidents_replication_set": data.#aws_ssmincidents_replication_set
+	#ds: "\(#prefix)_ssmincidents_response_plan": data.#aws_ssmincidents_response_plan
+	#ds: "\(#prefix)_ssoadmin_application_assignments": data.#aws_ssoadmin_application_assignments
+	#ds: "\(#prefix)_ssoadmin_application": data.#aws_ssoadmin_application
+	#ds: "\(#prefix)_ssoadmin_application_providers": data.#aws_ssoadmin_application_providers
+	#ds: "\(#prefix)_ssoadmin_instances": data.#aws_ssoadmin_instances
+	#ds: "\(#prefix)_ssoadmin_permission_set": data.#aws_ssoadmin_permission_set
+	#ds: "\(#prefix)_ssoadmin_permission_sets": data.#aws_ssoadmin_permission_sets
+	#ds: "\(#prefix)_ssoadmin_principal_application_assignments": data.#aws_ssoadmin_principal_application_assignments
+	#ds: "\(#prefix)_storagegateway_local_disk": data.#aws_storagegateway_local_disk
+	#ds: "\(#prefix)_subnet": data.#aws_subnet
+	#ds: "\(#prefix)_subnets": data.#aws_subnets
+	#ds: "\(#prefix)_synthetics_runtime_version": data.#aws_synthetics_runtime_version
+	#ds: "\(#prefix)_synthetics_runtime_versions": data.#aws_synthetics_runtime_versions
+	#ds: "\(#prefix)_timestreamwrite_database": data.#aws_timestreamwrite_database
+	#ds: "\(#prefix)_timestreamwrite_table": data.#aws_timestreamwrite_table
+	#ds: "\(#prefix)_transfer_connector": data.#aws_transfer_connector
+	#ds: "\(#prefix)_transfer_server": data.#aws_transfer_server
+	#ds: "\(#prefix)_verifiedpermissions_policy_store": data.#aws_verifiedpermissions_policy_store
+	#ds: "\(#prefix)_vpc_dhcp_options": data.#aws_vpc_dhcp_options
+	#ds: "\(#prefix)_vpc_endpoint_associations": data.#aws_vpc_endpoint_associations
+	#ds: "\(#prefix)_vpc_endpoint": data.#aws_vpc_endpoint
+	#ds: "\(#prefix)_vpc_endpoint_service": data.#aws_vpc_endpoint_service
+	#ds: "\(#prefix)_vpc": data.#aws_vpc
+	#ds: "\(#prefix)_vpc_ipam": data.#aws_vpc_ipam
+	#ds: "\(#prefix)_vpc_ipam_pool_cidrs": data.#aws_vpc_ipam_pool_cidrs
+	#ds: "\(#prefix)_vpc_ipam_pool": data.#aws_vpc_ipam_pool
+	#ds: "\(#prefix)_vpc_ipam_pools": data.#aws_vpc_ipam_pools
+	#ds: "\(#prefix)_vpc_ipam_preview_next_cidr": data.#aws_vpc_ipam_preview_next_cidr
+	#ds: "\(#prefix)_vpc_ipams": data.#aws_vpc_ipams
+	#ds: "\(#prefix)_vpc_peering_connection": data.#aws_vpc_peering_connection
+	#ds: "\(#prefix)_vpc_peering_connections": data.#aws_vpc_peering_connections
+	#ds: "\(#prefix)_vpc_security_group_rule": data.#aws_vpc_security_group_rule
+	#ds: "\(#prefix)_vpc_security_group_rules": data.#aws_vpc_security_group_rules
+	#ds: "\(#prefix)_vpclattice_auth_policy": data.#aws_vpclattice_auth_policy
+	#ds: "\(#prefix)_vpclattice_listener": data.#aws_vpclattice_listener
+	#ds: "\(#prefix)_vpclattice_resource_policy": data.#aws_vpclattice_resource_policy
+	#ds: "\(#prefix)_vpclattice_service": data.#aws_vpclattice_service
+	#ds: "\(#prefix)_vpclattice_service_network": data.#aws_vpclattice_service_network
+	#ds: "\(#prefix)_vpcs": data.#aws_vpcs
+	#ds: "\(#prefix)_vpn_connection": data.#aws_vpn_connection
+	#ds: "\(#prefix)_vpn_gateway": data.#aws_vpn_gateway
+	#ds: "\(#prefix)_waf_ipset": data.#aws_waf_ipset
+	#ds: "\(#prefix)_waf_rate_based_rule": data.#aws_waf_rate_based_rule
+	#ds: "\(#prefix)_waf_rule": data.#aws_waf_rule
+	#ds: "\(#prefix)_waf_subscribed_rule_group": data.#aws_waf_subscribed_rule_group
+	#ds: "\(#prefix)_waf_web_acl": data.#aws_waf_web_acl
+	#ds: "\(#prefix)_wafregional_ipset": data.#aws_wafregional_ipset
+	#ds: "\(#prefix)_wafregional_rate_based_rule": data.#aws_wafregional_rate_based_rule
+	#ds: "\(#prefix)_wafregional_rule": data.#aws_wafregional_rule
+	#ds: "\(#prefix)_wafregional_subscribed_rule_group": data.#aws_wafregional_subscribed_rule_group
+	#ds: "\(#prefix)_wafregional_web_acl": data.#aws_wafregional_web_acl
+	#ds: "\(#prefix)_wafv2_ip_set": data.#aws_wafv2_ip_set
+	#ds: "\(#prefix)_wafv2_regex_pattern_set": data.#aws_wafv2_regex_pattern_set
+	#ds: "\(#prefix)_wafv2_rule_group": data.#aws_wafv2_rule_group
+	#ds: "\(#prefix)_wafv2_web_acl": data.#aws_wafv2_web_acl
+	#ds: "\(#prefix)_workspaces_bundle": data.#aws_workspaces_bundle
+	#ds: "\(#prefix)_workspaces_directory": data.#aws_workspaces_directory
+	#ds: "\(#prefix)_workspaces_image": data.#aws_workspaces_image
+	#ds: "\(#prefix)_workspaces_workspace": data.#aws_workspaces_workspace
+
+}
