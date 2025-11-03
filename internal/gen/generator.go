@@ -14,6 +14,7 @@ import (
 	"slices"
 	"strings"
 	"sync"
+	"text/template"
 	"time"
 
 	"rmazur.io/cuetf/internal/clog"
@@ -44,18 +45,10 @@ func NewGenerator(logf clog.Logf) *Generator {
 }
 
 func (g *Generator) Generate(cfg *Config) error {
-	sf, err := os.Open(cfg.SchemaPath)
-	if err != nil {
-		return fmt.Errorf("could not open schema file: %w", err)
-	}
-	defer sf.Close()
-
 	var fullData terraformData
-	err = json.NewDecoder(sf).Decode(&fullData)
-	if err != nil {
-		return fmt.Errorf("could not parse schema file: %w", err)
+	if err := parseTerraformData(cfg.SchemaPath, &fullData); err != nil {
+		return err
 	}
-	_ = sf.Close()
 
 	for provider, data := range fullData.ProviderSchemas {
 		shortName := path.Base(provider)
@@ -70,6 +63,20 @@ func (g *Generator) Generate(cfg *Config) error {
 		if cfg.GenerateInterface {
 			generateInterface(providerPath, provider, shortName)
 		}
+	}
+	return nil
+}
+
+func parseTerraformData(p string, d *terraformData) error {
+	sf, err := os.Open(p)
+	if err != nil {
+		return fmt.Errorf("could not open schema file: %w", err)
+	}
+	defer sf.Close()
+
+	err = json.NewDecoder(sf).Decode(&d)
+	if err != nil {
+		return fmt.Errorf("could not parse schema file: %w", err)
 	}
 	return nil
 }
@@ -115,38 +122,52 @@ func generateMappings(providerPath string, pkgName string) {
 	createFile(
 		filepath.Join(providerPath, "resources_gen.cue"),
 		wrapWithMappingHeader(pkgName, "res",
-			mapping("#res", "res", pkgName, listDefs(filepath.Join(providerPath, "res")))),
+			mapping("_#res", "res", pkgName, listDefs(filepath.Join(providerPath, "res")))),
 	)
 	createFile(
 		filepath.Join(providerPath, "ds_gen.cue"),
 		wrapWithMappingHeader(pkgName, "data",
-			mapping("#ds", "data", pkgName, listDefs(filepath.Join(providerPath, "data")))),
+			mapping("_#ds", "data", pkgName, listDefs(filepath.Join(providerPath, "data")))),
 	)
 }
 
 func generateInterface(providerPath string, providerUri string, pkgName string) {
-	const template = `package %s
+	const tpl = `package {{.PackageName}}
 
-#Terraform: {
-	#prefix:       string | *%q
-	#providerName: =~"^\(#prefix)_.+"
+import "github.com/roman-mazur/cuetf/internal/tfjson"
 
-	#res: [#providerName]: _
-	#ds: [#providerName]:  _
+#Terraform: tfjson.#Schema & {
+	#{{.PackageName}}Prefix:       string | *{{.PackageName | printf "%q"}}
+	let prefix = #{{.PackageName}}Prefix
+	_#{{.PackageName}}ProviderName: =~"^\(prefix)_.+"
+	let providerName = _#{{.PackageName}}ProviderName
 
-	terraform?: required_providers?: (#prefix): {
-		source:  %q
+	_#res: [providerName]: _
+	_#ds: [providerName]:  _
+
+	terraform?: required_providers?: (prefix): {
+		source:  {{.Source | printf "%q"}}
 		version: #Version
 	}
-	provider?: (#prefix): #provider
+	provider?: (prefix): #provider
 
-	resource?: [type=#providerName]: [name=string]: #res[type]
-	data?: [type=#providerName]: [name=string]:     #ds[type]
+	resource?: [type=providerName]: [name=string]: _#res[type]
+	data?: [type=providerName]: [name=string]:     _#ds[type]
 }
 `
+
+	var code bytes.Buffer
+	template.Must(template.New("terraform").Parse(tpl)).Execute(&code, struct {
+		PackageName string
+		Source      string
+	}{
+		PackageName: pkgName,
+		Source:      strings.TrimPrefix(providerUri, "registry.terraform.io/"),
+	})
+
 	createFile(
 		filepath.Join(providerPath, "terraform_gen.cue"),
-		fmt.Sprintf(template, pkgName, pkgName, strings.TrimPrefix(providerUri, "registry.terraform.io/")),
+		code.String(),
 	)
 }
 
@@ -156,17 +177,17 @@ func wrapWithMappingHeader(pkgName, typ, content string) string {
 import "github.com/roman-mazur/cuetf/%s/%s"
 
 #Terraform: {
-	#prefix: string
+	#%sPrefix: string
 %s
 }
 `
-	return fmt.Sprintf(code, pkgName, pkgName, typ, content)
+	return fmt.Sprintf(code, pkgName, pkgName, typ, pkgName, content)
 }
 
 func mapping(prefix string, typ string, provider string, defs []string) string {
 	var res bytes.Buffer
 	for _, d := range defs {
-		prefixDef := fmt.Sprintf(`"\(#prefix)_%s"`, strings.TrimPrefix(d, provider+"_"))
+		prefixDef := fmt.Sprintf(`"\(#%sPrefix)_%s"`, provider, strings.TrimPrefix(d, provider+"_"))
 		_, _ = fmt.Fprintf(&res, "\t%s: %s: %s.#%s\n", prefix, prefixDef, typ, d)
 	}
 	return res.String()
