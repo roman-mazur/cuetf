@@ -24,8 +24,9 @@ type Config struct {
 	OutputPath string
 	Version    string
 
-	GenerateDefs     bool
-	GenerateMappings bool
+	GenerateDefs      bool
+	GenerateMappings  bool
+	GenerateInterface bool
 
 	IncludeFilter *regexp.Regexp
 	ExcludeFilter *regexp.Regexp
@@ -65,6 +66,9 @@ func (g *Generator) Generate(cfg *Config) error {
 		}
 		if cfg.GenerateMappings {
 			generateMappings(providerPath, shortName)
+		}
+		if cfg.GenerateInterface {
+			generateInterface(providerPath, provider, shortName)
 		}
 	}
 	return nil
@@ -110,29 +114,60 @@ func generateMapDefs(cfg *Config, logf clog.Logf, data map[string]*schemaData, d
 func generateMappings(providerPath string, pkgName string) {
 	createFile(
 		filepath.Join(providerPath, "resources_gen.cue"),
-		mappingHeader(pkgName, "res")+
-			mapping("_res", "res", listDefs(filepath.Join(providerPath, "res"))),
+		wrapWithMappingHeader(pkgName, "res",
+			mapping("#res", "res", pkgName, listDefs(filepath.Join(providerPath, "res")))),
 	)
 	createFile(
 		filepath.Join(providerPath, "ds_gen.cue"),
-		mappingHeader(pkgName, "data")+
-			mapping("_ds", "data", listDefs(filepath.Join(providerPath, "data"))),
+		wrapWithMappingHeader(pkgName, "data",
+			mapping("#ds", "data", pkgName, listDefs(filepath.Join(providerPath, "data")))),
 	)
 }
 
-func mappingHeader(pkgName, typ string) string {
+func generateInterface(providerPath string, providerUri string, pkgName string) {
+	const template = `package %s
+
+#Terraform: {
+	#prefix:       string | *%q
+	#providerName: =~"^\(#prefix)_.+"
+
+	#res: [#providerName]: _
+	#ds: [#providerName]:  _
+
+	terraform?: required_providers?: (#prefix): {
+		source:  %q
+		version: #Version
+	}
+	provider?: (#prefix): #provider
+
+	resource?: [type=#providerName]: [name=string]: #res[type]
+	data?: [type=#providerName]: [name=string]:     #ds[type]
+}
+`
+	createFile(
+		filepath.Join(providerPath, "terraform_gen.cue"),
+		fmt.Sprintf(template, pkgName, pkgName, strings.TrimPrefix(providerUri, "registry.terraform.io/")),
+	)
+}
+
+func wrapWithMappingHeader(pkgName, typ, content string) string {
 	const code = `package %s
 
 import "github.com/roman-mazur/cuetf/%s/%s"
 
+#Terraform: {
+	#prefix: string
+%s
+}
 `
-	return fmt.Sprintf(code, pkgName, pkgName, typ)
+	return fmt.Sprintf(code, pkgName, pkgName, typ, content)
 }
 
-func mapping(prefix string, typ string, defs []string) string {
+func mapping(prefix string, typ string, provider string, defs []string) string {
 	var res bytes.Buffer
 	for _, d := range defs {
-		_, _ = fmt.Fprintf(&res, "%s: %s: %s.#%s\n", prefix, d, typ, d)
+		prefixDef := fmt.Sprintf(`"\(#prefix)_%s"`, strings.TrimPrefix(d, provider+"_"))
+		_, _ = fmt.Fprintf(&res, "\t%s: %s: %s.#%s\n", prefix, prefixDef, typ, d)
 	}
 	return res.String()
 }

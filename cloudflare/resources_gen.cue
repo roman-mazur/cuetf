@@ -2,204 +2,208 @@ package cloudflare
 
 import "github.com/roman-mazur/cuetf/cloudflare/res"
 
-_res: cloudflare_access_rule: res.#cloudflare_access_rule
-_res: cloudflare_account_dns_settings: res.#cloudflare_account_dns_settings
-_res: cloudflare_account_dns_settings_internal_view: res.#cloudflare_account_dns_settings_internal_view
-_res: cloudflare_account: res.#cloudflare_account
-_res: cloudflare_account_member: res.#cloudflare_account_member
-_res: cloudflare_account_subscription: res.#cloudflare_account_subscription
-_res: cloudflare_account_token: res.#cloudflare_account_token
-_res: cloudflare_address_map: res.#cloudflare_address_map
-_res: cloudflare_api_shield_discovery_operation: res.#cloudflare_api_shield_discovery_operation
-_res: cloudflare_api_shield: res.#cloudflare_api_shield
-_res: cloudflare_api_shield_operation: res.#cloudflare_api_shield_operation
-_res: cloudflare_api_shield_operation_schema_validation_settings: res.#cloudflare_api_shield_operation_schema_validation_settings
-_res: cloudflare_api_shield_schema: res.#cloudflare_api_shield_schema
-_res: cloudflare_api_shield_schema_validation_settings: res.#cloudflare_api_shield_schema_validation_settings
-_res: cloudflare_api_token: res.#cloudflare_api_token
-_res: cloudflare_argo_smart_routing: res.#cloudflare_argo_smart_routing
-_res: cloudflare_argo_tiered_caching: res.#cloudflare_argo_tiered_caching
-_res: cloudflare_authenticated_origin_pulls_certificate: res.#cloudflare_authenticated_origin_pulls_certificate
-_res: cloudflare_authenticated_origin_pulls: res.#cloudflare_authenticated_origin_pulls
-_res: cloudflare_authenticated_origin_pulls_settings: res.#cloudflare_authenticated_origin_pulls_settings
-_res: cloudflare_bot_management: res.#cloudflare_bot_management
-_res: cloudflare_byo_ip_prefix: res.#cloudflare_byo_ip_prefix
-_res: cloudflare_calls_sfu_app: res.#cloudflare_calls_sfu_app
-_res: cloudflare_calls_turn_app: res.#cloudflare_calls_turn_app
-_res: cloudflare_certificate_pack: res.#cloudflare_certificate_pack
-_res: cloudflare_cloud_connector_rules: res.#cloudflare_cloud_connector_rules
-_res: cloudflare_cloudforce_one_request_asset: res.#cloudflare_cloudforce_one_request_asset
-_res: cloudflare_cloudforce_one_request: res.#cloudflare_cloudforce_one_request
-_res: cloudflare_cloudforce_one_request_message: res.#cloudflare_cloudforce_one_request_message
-_res: cloudflare_cloudforce_one_request_priority: res.#cloudflare_cloudforce_one_request_priority
-_res: cloudflare_content_scanning_expression: res.#cloudflare_content_scanning_expression
-_res: cloudflare_content_scanning: res.#cloudflare_content_scanning
-_res: cloudflare_custom_hostname_fallback_origin: res.#cloudflare_custom_hostname_fallback_origin
-_res: cloudflare_custom_hostname: res.#cloudflare_custom_hostname
-_res: cloudflare_custom_pages: res.#cloudflare_custom_pages
-_res: cloudflare_custom_ssl: res.#cloudflare_custom_ssl
-_res: cloudflare_d1_database: res.#cloudflare_d1_database
-_res: cloudflare_dns_firewall: res.#cloudflare_dns_firewall
-_res: cloudflare_dns_record: res.#cloudflare_dns_record
-_res: cloudflare_dns_zone_transfers_acl: res.#cloudflare_dns_zone_transfers_acl
-_res: cloudflare_dns_zone_transfers_incoming: res.#cloudflare_dns_zone_transfers_incoming
-_res: cloudflare_dns_zone_transfers_outgoing: res.#cloudflare_dns_zone_transfers_outgoing
-_res: cloudflare_dns_zone_transfers_peer: res.#cloudflare_dns_zone_transfers_peer
-_res: cloudflare_dns_zone_transfers_tsig: res.#cloudflare_dns_zone_transfers_tsig
-_res: cloudflare_email_routing_address: res.#cloudflare_email_routing_address
-_res: cloudflare_email_routing_catch_all: res.#cloudflare_email_routing_catch_all
-_res: cloudflare_email_routing_dns: res.#cloudflare_email_routing_dns
-_res: cloudflare_email_routing_rule: res.#cloudflare_email_routing_rule
-_res: cloudflare_email_routing_settings: res.#cloudflare_email_routing_settings
-_res: cloudflare_email_security_block_sender: res.#cloudflare_email_security_block_sender
-_res: cloudflare_email_security_impersonation_registry: res.#cloudflare_email_security_impersonation_registry
-_res: cloudflare_email_security_trusted_domains: res.#cloudflare_email_security_trusted_domains
-_res: cloudflare_filter: res.#cloudflare_filter
-_res: cloudflare_firewall_rule: res.#cloudflare_firewall_rule
-_res: cloudflare_healthcheck: res.#cloudflare_healthcheck
-_res: cloudflare_hostname_tls_setting: res.#cloudflare_hostname_tls_setting
-_res: cloudflare_hyperdrive_config: res.#cloudflare_hyperdrive_config
-_res: cloudflare_image: res.#cloudflare_image
-_res: cloudflare_image_variant: res.#cloudflare_image_variant
-_res: cloudflare_keyless_certificate: res.#cloudflare_keyless_certificate
-_res: cloudflare_leaked_credential_check: res.#cloudflare_leaked_credential_check
-_res: cloudflare_leaked_credential_check_rule: res.#cloudflare_leaked_credential_check_rule
-_res: cloudflare_list: res.#cloudflare_list
-_res: cloudflare_list_item: res.#cloudflare_list_item
-_res: cloudflare_load_balancer: res.#cloudflare_load_balancer
-_res: cloudflare_load_balancer_monitor: res.#cloudflare_load_balancer_monitor
-_res: cloudflare_load_balancer_pool: res.#cloudflare_load_balancer_pool
-_res: cloudflare_logpull_retention: res.#cloudflare_logpull_retention
-_res: cloudflare_logpush_job: res.#cloudflare_logpush_job
-_res: cloudflare_logpush_ownership_challenge: res.#cloudflare_logpush_ownership_challenge
-_res: cloudflare_magic_network_monitoring_configuration: res.#cloudflare_magic_network_monitoring_configuration
-_res: cloudflare_magic_network_monitoring_rule: res.#cloudflare_magic_network_monitoring_rule
-_res: cloudflare_magic_transit_connector: res.#cloudflare_magic_transit_connector
-_res: cloudflare_magic_transit_site_acl: res.#cloudflare_magic_transit_site_acl
-_res: cloudflare_magic_transit_site: res.#cloudflare_magic_transit_site
-_res: cloudflare_magic_transit_site_lan: res.#cloudflare_magic_transit_site_lan
-_res: cloudflare_magic_transit_site_wan: res.#cloudflare_magic_transit_site_wan
-_res: cloudflare_magic_wan_gre_tunnel: res.#cloudflare_magic_wan_gre_tunnel
-_res: cloudflare_magic_wan_ipsec_tunnel: res.#cloudflare_magic_wan_ipsec_tunnel
-_res: cloudflare_magic_wan_static_route: res.#cloudflare_magic_wan_static_route
-_res: cloudflare_managed_transforms: res.#cloudflare_managed_transforms
-_res: cloudflare_mtls_certificate: res.#cloudflare_mtls_certificate
-_res: cloudflare_notification_policy: res.#cloudflare_notification_policy
-_res: cloudflare_notification_policy_webhooks: res.#cloudflare_notification_policy_webhooks
-_res: cloudflare_observatory_scheduled_test: res.#cloudflare_observatory_scheduled_test
-_res: cloudflare_organization: res.#cloudflare_organization
-_res: cloudflare_organization_profile: res.#cloudflare_organization_profile
-_res: cloudflare_origin_ca_certificate: res.#cloudflare_origin_ca_certificate
-_res: cloudflare_page_rule: res.#cloudflare_page_rule
-_res: cloudflare_page_shield_policy: res.#cloudflare_page_shield_policy
-_res: cloudflare_pages_domain: res.#cloudflare_pages_domain
-_res: cloudflare_pages_project: res.#cloudflare_pages_project
-_res: cloudflare_queue_consumer: res.#cloudflare_queue_consumer
-_res: cloudflare_queue: res.#cloudflare_queue
-_res: cloudflare_r2_bucket_cors: res.#cloudflare_r2_bucket_cors
-_res: cloudflare_r2_bucket_event_notification: res.#cloudflare_r2_bucket_event_notification
-_res: cloudflare_r2_bucket: res.#cloudflare_r2_bucket
-_res: cloudflare_r2_bucket_lifecycle: res.#cloudflare_r2_bucket_lifecycle
-_res: cloudflare_r2_bucket_lock: res.#cloudflare_r2_bucket_lock
-_res: cloudflare_r2_bucket_sippy: res.#cloudflare_r2_bucket_sippy
-_res: cloudflare_r2_custom_domain: res.#cloudflare_r2_custom_domain
-_res: cloudflare_r2_managed_domain: res.#cloudflare_r2_managed_domain
-_res: cloudflare_rate_limit: res.#cloudflare_rate_limit
-_res: cloudflare_regional_hostname: res.#cloudflare_regional_hostname
-_res: cloudflare_regional_tiered_cache: res.#cloudflare_regional_tiered_cache
-_res: cloudflare_registrar_domain: res.#cloudflare_registrar_domain
-_res: cloudflare_ruleset: res.#cloudflare_ruleset
-_res: cloudflare_schema_validation_operation_settings: res.#cloudflare_schema_validation_operation_settings
-_res: cloudflare_schema_validation_schemas: res.#cloudflare_schema_validation_schemas
-_res: cloudflare_schema_validation_settings: res.#cloudflare_schema_validation_settings
-_res: cloudflare_snippet: res.#cloudflare_snippet
-_res: cloudflare_snippet_rules: res.#cloudflare_snippet_rules
-_res: cloudflare_snippets: res.#cloudflare_snippets
-_res: cloudflare_spectrum_application: res.#cloudflare_spectrum_application
-_res: cloudflare_stream_audio_track: res.#cloudflare_stream_audio_track
-_res: cloudflare_stream_caption_language: res.#cloudflare_stream_caption_language
-_res: cloudflare_stream_download: res.#cloudflare_stream_download
-_res: cloudflare_stream: res.#cloudflare_stream
-_res: cloudflare_stream_key: res.#cloudflare_stream_key
-_res: cloudflare_stream_live_input: res.#cloudflare_stream_live_input
-_res: cloudflare_stream_watermark: res.#cloudflare_stream_watermark
-_res: cloudflare_stream_webhook: res.#cloudflare_stream_webhook
-_res: cloudflare_tiered_cache: res.#cloudflare_tiered_cache
-_res: cloudflare_total_tls: res.#cloudflare_total_tls
-_res: cloudflare_turnstile_widget: res.#cloudflare_turnstile_widget
-_res: cloudflare_url_normalization_settings: res.#cloudflare_url_normalization_settings
-_res: cloudflare_user_agent_blocking_rule: res.#cloudflare_user_agent_blocking_rule
-_res: cloudflare_user: res.#cloudflare_user
-_res: cloudflare_waiting_room_event: res.#cloudflare_waiting_room_event
-_res: cloudflare_waiting_room: res.#cloudflare_waiting_room
-_res: cloudflare_waiting_room_rules: res.#cloudflare_waiting_room_rules
-_res: cloudflare_waiting_room_settings: res.#cloudflare_waiting_room_settings
-_res: cloudflare_web3_hostname: res.#cloudflare_web3_hostname
-_res: cloudflare_web_analytics_rule: res.#cloudflare_web_analytics_rule
-_res: cloudflare_web_analytics_site: res.#cloudflare_web_analytics_site
-_res: cloudflare_worker: res.#cloudflare_worker
-_res: cloudflare_worker_version: res.#cloudflare_worker_version
-_res: cloudflare_workers_cron_trigger: res.#cloudflare_workers_cron_trigger
-_res: cloudflare_workers_custom_domain: res.#cloudflare_workers_custom_domain
-_res: cloudflare_workers_deployment: res.#cloudflare_workers_deployment
-_res: cloudflare_workers_for_platforms_dispatch_namespace: res.#cloudflare_workers_for_platforms_dispatch_namespace
-_res: cloudflare_workers_kv: res.#cloudflare_workers_kv
-_res: cloudflare_workers_kv_namespace: res.#cloudflare_workers_kv_namespace
-_res: cloudflare_workers_route: res.#cloudflare_workers_route
-_res: cloudflare_workers_script: res.#cloudflare_workers_script
-_res: cloudflare_workers_script_subdomain: res.#cloudflare_workers_script_subdomain
-_res: cloudflare_workflow: res.#cloudflare_workflow
-_res: cloudflare_zero_trust_access_application: res.#cloudflare_zero_trust_access_application
-_res: cloudflare_zero_trust_access_custom_page: res.#cloudflare_zero_trust_access_custom_page
-_res: cloudflare_zero_trust_access_group: res.#cloudflare_zero_trust_access_group
-_res: cloudflare_zero_trust_access_identity_provider: res.#cloudflare_zero_trust_access_identity_provider
-_res: cloudflare_zero_trust_access_infrastructure_target: res.#cloudflare_zero_trust_access_infrastructure_target
-_res: cloudflare_zero_trust_access_key_configuration: res.#cloudflare_zero_trust_access_key_configuration
-_res: cloudflare_zero_trust_access_mtls_certificate: res.#cloudflare_zero_trust_access_mtls_certificate
-_res: cloudflare_zero_trust_access_mtls_hostname_settings: res.#cloudflare_zero_trust_access_mtls_hostname_settings
-_res: cloudflare_zero_trust_access_policy: res.#cloudflare_zero_trust_access_policy
-_res: cloudflare_zero_trust_access_service_token: res.#cloudflare_zero_trust_access_service_token
-_res: cloudflare_zero_trust_access_short_lived_certificate: res.#cloudflare_zero_trust_access_short_lived_certificate
-_res: cloudflare_zero_trust_access_tag: res.#cloudflare_zero_trust_access_tag
-_res: cloudflare_zero_trust_device_custom_profile: res.#cloudflare_zero_trust_device_custom_profile
-_res: cloudflare_zero_trust_device_custom_profile_local_domain_fallback: res.#cloudflare_zero_trust_device_custom_profile_local_domain_fallback
-_res: cloudflare_zero_trust_device_default_profile_certificates: res.#cloudflare_zero_trust_device_default_profile_certificates
-_res: cloudflare_zero_trust_device_default_profile: res.#cloudflare_zero_trust_device_default_profile
-_res: cloudflare_zero_trust_device_default_profile_local_domain_fallback: res.#cloudflare_zero_trust_device_default_profile_local_domain_fallback
-_res: cloudflare_zero_trust_device_managed_networks: res.#cloudflare_zero_trust_device_managed_networks
-_res: cloudflare_zero_trust_device_posture_integration: res.#cloudflare_zero_trust_device_posture_integration
-_res: cloudflare_zero_trust_device_posture_rule: res.#cloudflare_zero_trust_device_posture_rule
-_res: cloudflare_zero_trust_device_settings: res.#cloudflare_zero_trust_device_settings
-_res: cloudflare_zero_trust_dex_test: res.#cloudflare_zero_trust_dex_test
-_res: cloudflare_zero_trust_dlp_custom_entry: res.#cloudflare_zero_trust_dlp_custom_entry
-_res: cloudflare_zero_trust_dlp_custom_profile: res.#cloudflare_zero_trust_dlp_custom_profile
-_res: cloudflare_zero_trust_dlp_dataset: res.#cloudflare_zero_trust_dlp_dataset
-_res: cloudflare_zero_trust_dlp_entry: res.#cloudflare_zero_trust_dlp_entry
-_res: cloudflare_zero_trust_dlp_integration_entry: res.#cloudflare_zero_trust_dlp_integration_entry
-_res: cloudflare_zero_trust_dlp_predefined_entry: res.#cloudflare_zero_trust_dlp_predefined_entry
-_res: cloudflare_zero_trust_dlp_predefined_profile: res.#cloudflare_zero_trust_dlp_predefined_profile
-_res: cloudflare_zero_trust_dns_location: res.#cloudflare_zero_trust_dns_location
-_res: cloudflare_zero_trust_gateway_certificate: res.#cloudflare_zero_trust_gateway_certificate
-_res: cloudflare_zero_trust_gateway_logging: res.#cloudflare_zero_trust_gateway_logging
-_res: cloudflare_zero_trust_gateway_policy: res.#cloudflare_zero_trust_gateway_policy
-_res: cloudflare_zero_trust_gateway_proxy_endpoint: res.#cloudflare_zero_trust_gateway_proxy_endpoint
-_res: cloudflare_zero_trust_gateway_settings: res.#cloudflare_zero_trust_gateway_settings
-_res: cloudflare_zero_trust_list: res.#cloudflare_zero_trust_list
-_res: cloudflare_zero_trust_network_hostname_route: res.#cloudflare_zero_trust_network_hostname_route
-_res: cloudflare_zero_trust_organization: res.#cloudflare_zero_trust_organization
-_res: cloudflare_zero_trust_risk_behavior: res.#cloudflare_zero_trust_risk_behavior
-_res: cloudflare_zero_trust_risk_scoring_integration: res.#cloudflare_zero_trust_risk_scoring_integration
-_res: cloudflare_zero_trust_tunnel_cloudflared_config: res.#cloudflare_zero_trust_tunnel_cloudflared_config
-_res: cloudflare_zero_trust_tunnel_cloudflared: res.#cloudflare_zero_trust_tunnel_cloudflared
-_res: cloudflare_zero_trust_tunnel_cloudflared_route: res.#cloudflare_zero_trust_tunnel_cloudflared_route
-_res: cloudflare_zero_trust_tunnel_cloudflared_virtual_network: res.#cloudflare_zero_trust_tunnel_cloudflared_virtual_network
-_res: cloudflare_zero_trust_tunnel_warp_connector: res.#cloudflare_zero_trust_tunnel_warp_connector
-_res: cloudflare_zone_cache_reserve: res.#cloudflare_zone_cache_reserve
-_res: cloudflare_zone_cache_variants: res.#cloudflare_zone_cache_variants
-_res: cloudflare_zone_dns_settings: res.#cloudflare_zone_dns_settings
-_res: cloudflare_zone_dnssec: res.#cloudflare_zone_dnssec
-_res: cloudflare_zone: res.#cloudflare_zone
-_res: cloudflare_zone_hold: res.#cloudflare_zone_hold
-_res: cloudflare_zone_lockdown: res.#cloudflare_zone_lockdown
-_res: cloudflare_zone_setting: res.#cloudflare_zone_setting
-_res: cloudflare_zone_subscription: res.#cloudflare_zone_subscription
+#Terraform: {
+	#prefix: string
+	#res: "\(#prefix)_access_rule": res.#cloudflare_access_rule
+	#res: "\(#prefix)_account_dns_settings": res.#cloudflare_account_dns_settings
+	#res: "\(#prefix)_account_dns_settings_internal_view": res.#cloudflare_account_dns_settings_internal_view
+	#res: "\(#prefix)_account": res.#cloudflare_account
+	#res: "\(#prefix)_account_member": res.#cloudflare_account_member
+	#res: "\(#prefix)_account_subscription": res.#cloudflare_account_subscription
+	#res: "\(#prefix)_account_token": res.#cloudflare_account_token
+	#res: "\(#prefix)_address_map": res.#cloudflare_address_map
+	#res: "\(#prefix)_api_shield_discovery_operation": res.#cloudflare_api_shield_discovery_operation
+	#res: "\(#prefix)_api_shield": res.#cloudflare_api_shield
+	#res: "\(#prefix)_api_shield_operation": res.#cloudflare_api_shield_operation
+	#res: "\(#prefix)_api_shield_operation_schema_validation_settings": res.#cloudflare_api_shield_operation_schema_validation_settings
+	#res: "\(#prefix)_api_shield_schema": res.#cloudflare_api_shield_schema
+	#res: "\(#prefix)_api_shield_schema_validation_settings": res.#cloudflare_api_shield_schema_validation_settings
+	#res: "\(#prefix)_api_token": res.#cloudflare_api_token
+	#res: "\(#prefix)_argo_smart_routing": res.#cloudflare_argo_smart_routing
+	#res: "\(#prefix)_argo_tiered_caching": res.#cloudflare_argo_tiered_caching
+	#res: "\(#prefix)_authenticated_origin_pulls_certificate": res.#cloudflare_authenticated_origin_pulls_certificate
+	#res: "\(#prefix)_authenticated_origin_pulls": res.#cloudflare_authenticated_origin_pulls
+	#res: "\(#prefix)_authenticated_origin_pulls_settings": res.#cloudflare_authenticated_origin_pulls_settings
+	#res: "\(#prefix)_bot_management": res.#cloudflare_bot_management
+	#res: "\(#prefix)_byo_ip_prefix": res.#cloudflare_byo_ip_prefix
+	#res: "\(#prefix)_calls_sfu_app": res.#cloudflare_calls_sfu_app
+	#res: "\(#prefix)_calls_turn_app": res.#cloudflare_calls_turn_app
+	#res: "\(#prefix)_certificate_pack": res.#cloudflare_certificate_pack
+	#res: "\(#prefix)_cloud_connector_rules": res.#cloudflare_cloud_connector_rules
+	#res: "\(#prefix)_cloudforce_one_request_asset": res.#cloudflare_cloudforce_one_request_asset
+	#res: "\(#prefix)_cloudforce_one_request": res.#cloudflare_cloudforce_one_request
+	#res: "\(#prefix)_cloudforce_one_request_message": res.#cloudflare_cloudforce_one_request_message
+	#res: "\(#prefix)_cloudforce_one_request_priority": res.#cloudflare_cloudforce_one_request_priority
+	#res: "\(#prefix)_content_scanning_expression": res.#cloudflare_content_scanning_expression
+	#res: "\(#prefix)_content_scanning": res.#cloudflare_content_scanning
+	#res: "\(#prefix)_custom_hostname_fallback_origin": res.#cloudflare_custom_hostname_fallback_origin
+	#res: "\(#prefix)_custom_hostname": res.#cloudflare_custom_hostname
+	#res: "\(#prefix)_custom_pages": res.#cloudflare_custom_pages
+	#res: "\(#prefix)_custom_ssl": res.#cloudflare_custom_ssl
+	#res: "\(#prefix)_d1_database": res.#cloudflare_d1_database
+	#res: "\(#prefix)_dns_firewall": res.#cloudflare_dns_firewall
+	#res: "\(#prefix)_dns_record": res.#cloudflare_dns_record
+	#res: "\(#prefix)_dns_zone_transfers_acl": res.#cloudflare_dns_zone_transfers_acl
+	#res: "\(#prefix)_dns_zone_transfers_incoming": res.#cloudflare_dns_zone_transfers_incoming
+	#res: "\(#prefix)_dns_zone_transfers_outgoing": res.#cloudflare_dns_zone_transfers_outgoing
+	#res: "\(#prefix)_dns_zone_transfers_peer": res.#cloudflare_dns_zone_transfers_peer
+	#res: "\(#prefix)_dns_zone_transfers_tsig": res.#cloudflare_dns_zone_transfers_tsig
+	#res: "\(#prefix)_email_routing_address": res.#cloudflare_email_routing_address
+	#res: "\(#prefix)_email_routing_catch_all": res.#cloudflare_email_routing_catch_all
+	#res: "\(#prefix)_email_routing_dns": res.#cloudflare_email_routing_dns
+	#res: "\(#prefix)_email_routing_rule": res.#cloudflare_email_routing_rule
+	#res: "\(#prefix)_email_routing_settings": res.#cloudflare_email_routing_settings
+	#res: "\(#prefix)_email_security_block_sender": res.#cloudflare_email_security_block_sender
+	#res: "\(#prefix)_email_security_impersonation_registry": res.#cloudflare_email_security_impersonation_registry
+	#res: "\(#prefix)_email_security_trusted_domains": res.#cloudflare_email_security_trusted_domains
+	#res: "\(#prefix)_filter": res.#cloudflare_filter
+	#res: "\(#prefix)_firewall_rule": res.#cloudflare_firewall_rule
+	#res: "\(#prefix)_healthcheck": res.#cloudflare_healthcheck
+	#res: "\(#prefix)_hostname_tls_setting": res.#cloudflare_hostname_tls_setting
+	#res: "\(#prefix)_hyperdrive_config": res.#cloudflare_hyperdrive_config
+	#res: "\(#prefix)_image": res.#cloudflare_image
+	#res: "\(#prefix)_image_variant": res.#cloudflare_image_variant
+	#res: "\(#prefix)_keyless_certificate": res.#cloudflare_keyless_certificate
+	#res: "\(#prefix)_leaked_credential_check": res.#cloudflare_leaked_credential_check
+	#res: "\(#prefix)_leaked_credential_check_rule": res.#cloudflare_leaked_credential_check_rule
+	#res: "\(#prefix)_list": res.#cloudflare_list
+	#res: "\(#prefix)_list_item": res.#cloudflare_list_item
+	#res: "\(#prefix)_load_balancer": res.#cloudflare_load_balancer
+	#res: "\(#prefix)_load_balancer_monitor": res.#cloudflare_load_balancer_monitor
+	#res: "\(#prefix)_load_balancer_pool": res.#cloudflare_load_balancer_pool
+	#res: "\(#prefix)_logpull_retention": res.#cloudflare_logpull_retention
+	#res: "\(#prefix)_logpush_job": res.#cloudflare_logpush_job
+	#res: "\(#prefix)_logpush_ownership_challenge": res.#cloudflare_logpush_ownership_challenge
+	#res: "\(#prefix)_magic_network_monitoring_configuration": res.#cloudflare_magic_network_monitoring_configuration
+	#res: "\(#prefix)_magic_network_monitoring_rule": res.#cloudflare_magic_network_monitoring_rule
+	#res: "\(#prefix)_magic_transit_connector": res.#cloudflare_magic_transit_connector
+	#res: "\(#prefix)_magic_transit_site_acl": res.#cloudflare_magic_transit_site_acl
+	#res: "\(#prefix)_magic_transit_site": res.#cloudflare_magic_transit_site
+	#res: "\(#prefix)_magic_transit_site_lan": res.#cloudflare_magic_transit_site_lan
+	#res: "\(#prefix)_magic_transit_site_wan": res.#cloudflare_magic_transit_site_wan
+	#res: "\(#prefix)_magic_wan_gre_tunnel": res.#cloudflare_magic_wan_gre_tunnel
+	#res: "\(#prefix)_magic_wan_ipsec_tunnel": res.#cloudflare_magic_wan_ipsec_tunnel
+	#res: "\(#prefix)_magic_wan_static_route": res.#cloudflare_magic_wan_static_route
+	#res: "\(#prefix)_managed_transforms": res.#cloudflare_managed_transforms
+	#res: "\(#prefix)_mtls_certificate": res.#cloudflare_mtls_certificate
+	#res: "\(#prefix)_notification_policy": res.#cloudflare_notification_policy
+	#res: "\(#prefix)_notification_policy_webhooks": res.#cloudflare_notification_policy_webhooks
+	#res: "\(#prefix)_observatory_scheduled_test": res.#cloudflare_observatory_scheduled_test
+	#res: "\(#prefix)_organization": res.#cloudflare_organization
+	#res: "\(#prefix)_organization_profile": res.#cloudflare_organization_profile
+	#res: "\(#prefix)_origin_ca_certificate": res.#cloudflare_origin_ca_certificate
+	#res: "\(#prefix)_page_rule": res.#cloudflare_page_rule
+	#res: "\(#prefix)_page_shield_policy": res.#cloudflare_page_shield_policy
+	#res: "\(#prefix)_pages_domain": res.#cloudflare_pages_domain
+	#res: "\(#prefix)_pages_project": res.#cloudflare_pages_project
+	#res: "\(#prefix)_queue_consumer": res.#cloudflare_queue_consumer
+	#res: "\(#prefix)_queue": res.#cloudflare_queue
+	#res: "\(#prefix)_r2_bucket_cors": res.#cloudflare_r2_bucket_cors
+	#res: "\(#prefix)_r2_bucket_event_notification": res.#cloudflare_r2_bucket_event_notification
+	#res: "\(#prefix)_r2_bucket": res.#cloudflare_r2_bucket
+	#res: "\(#prefix)_r2_bucket_lifecycle": res.#cloudflare_r2_bucket_lifecycle
+	#res: "\(#prefix)_r2_bucket_lock": res.#cloudflare_r2_bucket_lock
+	#res: "\(#prefix)_r2_bucket_sippy": res.#cloudflare_r2_bucket_sippy
+	#res: "\(#prefix)_r2_custom_domain": res.#cloudflare_r2_custom_domain
+	#res: "\(#prefix)_r2_managed_domain": res.#cloudflare_r2_managed_domain
+	#res: "\(#prefix)_rate_limit": res.#cloudflare_rate_limit
+	#res: "\(#prefix)_regional_hostname": res.#cloudflare_regional_hostname
+	#res: "\(#prefix)_regional_tiered_cache": res.#cloudflare_regional_tiered_cache
+	#res: "\(#prefix)_registrar_domain": res.#cloudflare_registrar_domain
+	#res: "\(#prefix)_ruleset": res.#cloudflare_ruleset
+	#res: "\(#prefix)_schema_validation_operation_settings": res.#cloudflare_schema_validation_operation_settings
+	#res: "\(#prefix)_schema_validation_schemas": res.#cloudflare_schema_validation_schemas
+	#res: "\(#prefix)_schema_validation_settings": res.#cloudflare_schema_validation_settings
+	#res: "\(#prefix)_snippet": res.#cloudflare_snippet
+	#res: "\(#prefix)_snippet_rules": res.#cloudflare_snippet_rules
+	#res: "\(#prefix)_snippets": res.#cloudflare_snippets
+	#res: "\(#prefix)_spectrum_application": res.#cloudflare_spectrum_application
+	#res: "\(#prefix)_stream_audio_track": res.#cloudflare_stream_audio_track
+	#res: "\(#prefix)_stream_caption_language": res.#cloudflare_stream_caption_language
+	#res: "\(#prefix)_stream_download": res.#cloudflare_stream_download
+	#res: "\(#prefix)_stream": res.#cloudflare_stream
+	#res: "\(#prefix)_stream_key": res.#cloudflare_stream_key
+	#res: "\(#prefix)_stream_live_input": res.#cloudflare_stream_live_input
+	#res: "\(#prefix)_stream_watermark": res.#cloudflare_stream_watermark
+	#res: "\(#prefix)_stream_webhook": res.#cloudflare_stream_webhook
+	#res: "\(#prefix)_tiered_cache": res.#cloudflare_tiered_cache
+	#res: "\(#prefix)_total_tls": res.#cloudflare_total_tls
+	#res: "\(#prefix)_turnstile_widget": res.#cloudflare_turnstile_widget
+	#res: "\(#prefix)_url_normalization_settings": res.#cloudflare_url_normalization_settings
+	#res: "\(#prefix)_user_agent_blocking_rule": res.#cloudflare_user_agent_blocking_rule
+	#res: "\(#prefix)_user": res.#cloudflare_user
+	#res: "\(#prefix)_waiting_room_event": res.#cloudflare_waiting_room_event
+	#res: "\(#prefix)_waiting_room": res.#cloudflare_waiting_room
+	#res: "\(#prefix)_waiting_room_rules": res.#cloudflare_waiting_room_rules
+	#res: "\(#prefix)_waiting_room_settings": res.#cloudflare_waiting_room_settings
+	#res: "\(#prefix)_web3_hostname": res.#cloudflare_web3_hostname
+	#res: "\(#prefix)_web_analytics_rule": res.#cloudflare_web_analytics_rule
+	#res: "\(#prefix)_web_analytics_site": res.#cloudflare_web_analytics_site
+	#res: "\(#prefix)_worker": res.#cloudflare_worker
+	#res: "\(#prefix)_worker_version": res.#cloudflare_worker_version
+	#res: "\(#prefix)_workers_cron_trigger": res.#cloudflare_workers_cron_trigger
+	#res: "\(#prefix)_workers_custom_domain": res.#cloudflare_workers_custom_domain
+	#res: "\(#prefix)_workers_deployment": res.#cloudflare_workers_deployment
+	#res: "\(#prefix)_workers_for_platforms_dispatch_namespace": res.#cloudflare_workers_for_platforms_dispatch_namespace
+	#res: "\(#prefix)_workers_kv": res.#cloudflare_workers_kv
+	#res: "\(#prefix)_workers_kv_namespace": res.#cloudflare_workers_kv_namespace
+	#res: "\(#prefix)_workers_route": res.#cloudflare_workers_route
+	#res: "\(#prefix)_workers_script": res.#cloudflare_workers_script
+	#res: "\(#prefix)_workers_script_subdomain": res.#cloudflare_workers_script_subdomain
+	#res: "\(#prefix)_workflow": res.#cloudflare_workflow
+	#res: "\(#prefix)_zero_trust_access_application": res.#cloudflare_zero_trust_access_application
+	#res: "\(#prefix)_zero_trust_access_custom_page": res.#cloudflare_zero_trust_access_custom_page
+	#res: "\(#prefix)_zero_trust_access_group": res.#cloudflare_zero_trust_access_group
+	#res: "\(#prefix)_zero_trust_access_identity_provider": res.#cloudflare_zero_trust_access_identity_provider
+	#res: "\(#prefix)_zero_trust_access_infrastructure_target": res.#cloudflare_zero_trust_access_infrastructure_target
+	#res: "\(#prefix)_zero_trust_access_key_configuration": res.#cloudflare_zero_trust_access_key_configuration
+	#res: "\(#prefix)_zero_trust_access_mtls_certificate": res.#cloudflare_zero_trust_access_mtls_certificate
+	#res: "\(#prefix)_zero_trust_access_mtls_hostname_settings": res.#cloudflare_zero_trust_access_mtls_hostname_settings
+	#res: "\(#prefix)_zero_trust_access_policy": res.#cloudflare_zero_trust_access_policy
+	#res: "\(#prefix)_zero_trust_access_service_token": res.#cloudflare_zero_trust_access_service_token
+	#res: "\(#prefix)_zero_trust_access_short_lived_certificate": res.#cloudflare_zero_trust_access_short_lived_certificate
+	#res: "\(#prefix)_zero_trust_access_tag": res.#cloudflare_zero_trust_access_tag
+	#res: "\(#prefix)_zero_trust_device_custom_profile": res.#cloudflare_zero_trust_device_custom_profile
+	#res: "\(#prefix)_zero_trust_device_custom_profile_local_domain_fallback": res.#cloudflare_zero_trust_device_custom_profile_local_domain_fallback
+	#res: "\(#prefix)_zero_trust_device_default_profile_certificates": res.#cloudflare_zero_trust_device_default_profile_certificates
+	#res: "\(#prefix)_zero_trust_device_default_profile": res.#cloudflare_zero_trust_device_default_profile
+	#res: "\(#prefix)_zero_trust_device_default_profile_local_domain_fallback": res.#cloudflare_zero_trust_device_default_profile_local_domain_fallback
+	#res: "\(#prefix)_zero_trust_device_managed_networks": res.#cloudflare_zero_trust_device_managed_networks
+	#res: "\(#prefix)_zero_trust_device_posture_integration": res.#cloudflare_zero_trust_device_posture_integration
+	#res: "\(#prefix)_zero_trust_device_posture_rule": res.#cloudflare_zero_trust_device_posture_rule
+	#res: "\(#prefix)_zero_trust_device_settings": res.#cloudflare_zero_trust_device_settings
+	#res: "\(#prefix)_zero_trust_dex_test": res.#cloudflare_zero_trust_dex_test
+	#res: "\(#prefix)_zero_trust_dlp_custom_entry": res.#cloudflare_zero_trust_dlp_custom_entry
+	#res: "\(#prefix)_zero_trust_dlp_custom_profile": res.#cloudflare_zero_trust_dlp_custom_profile
+	#res: "\(#prefix)_zero_trust_dlp_dataset": res.#cloudflare_zero_trust_dlp_dataset
+	#res: "\(#prefix)_zero_trust_dlp_entry": res.#cloudflare_zero_trust_dlp_entry
+	#res: "\(#prefix)_zero_trust_dlp_integration_entry": res.#cloudflare_zero_trust_dlp_integration_entry
+	#res: "\(#prefix)_zero_trust_dlp_predefined_entry": res.#cloudflare_zero_trust_dlp_predefined_entry
+	#res: "\(#prefix)_zero_trust_dlp_predefined_profile": res.#cloudflare_zero_trust_dlp_predefined_profile
+	#res: "\(#prefix)_zero_trust_dns_location": res.#cloudflare_zero_trust_dns_location
+	#res: "\(#prefix)_zero_trust_gateway_certificate": res.#cloudflare_zero_trust_gateway_certificate
+	#res: "\(#prefix)_zero_trust_gateway_logging": res.#cloudflare_zero_trust_gateway_logging
+	#res: "\(#prefix)_zero_trust_gateway_policy": res.#cloudflare_zero_trust_gateway_policy
+	#res: "\(#prefix)_zero_trust_gateway_proxy_endpoint": res.#cloudflare_zero_trust_gateway_proxy_endpoint
+	#res: "\(#prefix)_zero_trust_gateway_settings": res.#cloudflare_zero_trust_gateway_settings
+	#res: "\(#prefix)_zero_trust_list": res.#cloudflare_zero_trust_list
+	#res: "\(#prefix)_zero_trust_network_hostname_route": res.#cloudflare_zero_trust_network_hostname_route
+	#res: "\(#prefix)_zero_trust_organization": res.#cloudflare_zero_trust_organization
+	#res: "\(#prefix)_zero_trust_risk_behavior": res.#cloudflare_zero_trust_risk_behavior
+	#res: "\(#prefix)_zero_trust_risk_scoring_integration": res.#cloudflare_zero_trust_risk_scoring_integration
+	#res: "\(#prefix)_zero_trust_tunnel_cloudflared_config": res.#cloudflare_zero_trust_tunnel_cloudflared_config
+	#res: "\(#prefix)_zero_trust_tunnel_cloudflared": res.#cloudflare_zero_trust_tunnel_cloudflared
+	#res: "\(#prefix)_zero_trust_tunnel_cloudflared_route": res.#cloudflare_zero_trust_tunnel_cloudflared_route
+	#res: "\(#prefix)_zero_trust_tunnel_cloudflared_virtual_network": res.#cloudflare_zero_trust_tunnel_cloudflared_virtual_network
+	#res: "\(#prefix)_zero_trust_tunnel_warp_connector": res.#cloudflare_zero_trust_tunnel_warp_connector
+	#res: "\(#prefix)_zone_cache_reserve": res.#cloudflare_zone_cache_reserve
+	#res: "\(#prefix)_zone_cache_variants": res.#cloudflare_zone_cache_variants
+	#res: "\(#prefix)_zone_dns_settings": res.#cloudflare_zone_dns_settings
+	#res: "\(#prefix)_zone_dnssec": res.#cloudflare_zone_dnssec
+	#res: "\(#prefix)_zone": res.#cloudflare_zone
+	#res: "\(#prefix)_zone_hold": res.#cloudflare_zone_hold
+	#res: "\(#prefix)_zone_lockdown": res.#cloudflare_zone_lockdown
+	#res: "\(#prefix)_zone_setting": res.#cloudflare_zone_setting
+	#res: "\(#prefix)_zone_subscription": res.#cloudflare_zone_subscription
+
+}

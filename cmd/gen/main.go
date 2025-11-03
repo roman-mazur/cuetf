@@ -19,6 +19,7 @@ var (
 	defs     = flag.Bool("defs", true, "Whether to regenerate all the defs")
 	mappings = flag.Bool("mappings", true, "Whether to regenerate the mappings")
 	version  = flag.String("version", "", "Provider schema version")
+	iface    = flag.Bool("iface", true, "Whether to generate the user-exposed interface")
 )
 
 func main() {
@@ -27,13 +28,15 @@ func main() {
 		log.SetFlags(0)
 	}
 	cfg := &gen.Config{
-		SchemaPath:       flag.Arg(0),
-		OutputPath:       flag.Arg(1),
-		Version:          *version,
-		GenerateDefs:     *defs,
-		GenerateMappings: *mappings,
-		Verbose:          *verbose,
-		LogTime:          *logTime,
+		SchemaPath: flag.Arg(0),
+		OutputPath: flag.Arg(1),
+		Version:    *version,
+		Verbose:    *verbose,
+		LogTime:    *logTime,
+
+		GenerateDefs:      *defs,
+		GenerateMappings:  *mappings,
+		GenerateInterface: *iface,
 	}
 
 	if *filter != "" {

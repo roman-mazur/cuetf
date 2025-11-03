@@ -2,402 +2,406 @@ package azurerm
 
 import "github.com/roman-mazur/cuetf/azurerm/data"
 
-_ds: azurerm_aadb2c_directory: data.#azurerm_aadb2c_directory
-_ds: azurerm_active_directory_domain_service: data.#azurerm_active_directory_domain_service
-_ds: azurerm_advisor_recommendations: data.#azurerm_advisor_recommendations
-_ds: azurerm_api_connection: data.#azurerm_api_connection
-_ds: azurerm_api_management_api: data.#azurerm_api_management_api
-_ds: azurerm_api_management_api_version_set: data.#azurerm_api_management_api_version_set
-_ds: azurerm_api_management_gateway: data.#azurerm_api_management_gateway
-_ds: azurerm_api_management_gateway_host_name_configuration: data.#azurerm_api_management_gateway_host_name_configuration
-_ds: azurerm_api_management: data.#azurerm_api_management
-_ds: azurerm_api_management_group: data.#azurerm_api_management_group
-_ds: azurerm_api_management_product: data.#azurerm_api_management_product
-_ds: azurerm_api_management_subscription: data.#azurerm_api_management_subscription
-_ds: azurerm_api_management_user: data.#azurerm_api_management_user
-_ds: azurerm_app_configuration: data.#azurerm_app_configuration
-_ds: azurerm_app_configuration_key: data.#azurerm_app_configuration_key
-_ds: azurerm_app_configuration_keys: data.#azurerm_app_configuration_keys
-_ds: azurerm_app_service_certificate: data.#azurerm_app_service_certificate
-_ds: azurerm_app_service_certificate_order: data.#azurerm_app_service_certificate_order
-_ds: azurerm_app_service_environment_v3: data.#azurerm_app_service_environment_v3
-_ds: azurerm_app_service: data.#azurerm_app_service
-_ds: azurerm_app_service_plan: data.#azurerm_app_service_plan
-_ds: azurerm_application_gateway: data.#azurerm_application_gateway
-_ds: azurerm_application_insights: data.#azurerm_application_insights
-_ds: azurerm_application_security_group: data.#azurerm_application_security_group
-_ds: azurerm_arc_machine: data.#azurerm_arc_machine
-_ds: azurerm_arc_resource_bridge_appliance: data.#azurerm_arc_resource_bridge_appliance
-_ds: azurerm_attestation_provider: data.#azurerm_attestation_provider
-_ds: azurerm_automation_account: data.#azurerm_automation_account
-_ds: azurerm_automation_runbook: data.#azurerm_automation_runbook
-_ds: azurerm_automation_variable_bool: data.#azurerm_automation_variable_bool
-_ds: azurerm_automation_variable_datetime: data.#azurerm_automation_variable_datetime
-_ds: azurerm_automation_variable_int: data.#azurerm_automation_variable_int
-_ds: azurerm_automation_variable_object: data.#azurerm_automation_variable_object
-_ds: azurerm_automation_variable_string: data.#azurerm_automation_variable_string
-_ds: azurerm_automation_variables: data.#azurerm_automation_variables
-_ds: azurerm_availability_set: data.#azurerm_availability_set
-_ds: azurerm_backup_policy_file_share: data.#azurerm_backup_policy_file_share
-_ds: azurerm_backup_policy_vm: data.#azurerm_backup_policy_vm
-_ds: azurerm_bastion_host: data.#azurerm_bastion_host
-_ds: azurerm_batch_account: data.#azurerm_batch_account
-_ds: azurerm_batch_application: data.#azurerm_batch_application
-_ds: azurerm_batch_certificate: data.#azurerm_batch_certificate
-_ds: azurerm_batch_pool: data.#azurerm_batch_pool
-_ds: azurerm_billing_enrollment_account_scope: data.#azurerm_billing_enrollment_account_scope
-_ds: azurerm_billing_mca_account_scope: data.#azurerm_billing_mca_account_scope
-_ds: azurerm_billing_mpa_account_scope: data.#azurerm_billing_mpa_account_scope
-_ds: azurerm_blueprint_definition: data.#azurerm_blueprint_definition
-_ds: azurerm_blueprint_published_version: data.#azurerm_blueprint_published_version
-_ds: azurerm_cdn_frontdoor_custom_domain: data.#azurerm_cdn_frontdoor_custom_domain
-_ds: azurerm_cdn_frontdoor_endpoint: data.#azurerm_cdn_frontdoor_endpoint
-_ds: azurerm_cdn_frontdoor_firewall_policy: data.#azurerm_cdn_frontdoor_firewall_policy
-_ds: azurerm_cdn_frontdoor_origin_group: data.#azurerm_cdn_frontdoor_origin_group
-_ds: azurerm_cdn_frontdoor_profile: data.#azurerm_cdn_frontdoor_profile
-_ds: azurerm_cdn_frontdoor_rule_set: data.#azurerm_cdn_frontdoor_rule_set
-_ds: azurerm_cdn_frontdoor_secret: data.#azurerm_cdn_frontdoor_secret
-_ds: azurerm_cdn_profile: data.#azurerm_cdn_profile
-_ds: azurerm_client_config: data.#azurerm_client_config
-_ds: azurerm_cognitive_account: data.#azurerm_cognitive_account
-_ds: azurerm_communication_service: data.#azurerm_communication_service
-_ds: azurerm_confidential_ledger: data.#azurerm_confidential_ledger
-_ds: azurerm_consumption_budget_resource_group: data.#azurerm_consumption_budget_resource_group
-_ds: azurerm_consumption_budget_subscription: data.#azurerm_consumption_budget_subscription
-_ds: azurerm_container_app_environment_certificate: data.#azurerm_container_app_environment_certificate
-_ds: azurerm_container_app_environment: data.#azurerm_container_app_environment
-_ds: azurerm_container_app: data.#azurerm_container_app
-_ds: azurerm_container_group: data.#azurerm_container_group
-_ds: azurerm_container_registry_cache_rule: data.#azurerm_container_registry_cache_rule
-_ds: azurerm_container_registry: data.#azurerm_container_registry
-_ds: azurerm_container_registry_scope_map: data.#azurerm_container_registry_scope_map
-_ds: azurerm_container_registry_token: data.#azurerm_container_registry_token
-_ds: azurerm_cosmosdb_account: data.#azurerm_cosmosdb_account
-_ds: azurerm_cosmosdb_mongo_database: data.#azurerm_cosmosdb_mongo_database
-_ds: azurerm_cosmosdb_restorable_database_accounts: data.#azurerm_cosmosdb_restorable_database_accounts
-_ds: azurerm_cosmosdb_sql_database: data.#azurerm_cosmosdb_sql_database
-_ds: azurerm_cosmosdb_sql_role_definition: data.#azurerm_cosmosdb_sql_role_definition
-_ds: azurerm_dashboard_grafana: data.#azurerm_dashboard_grafana
-_ds: azurerm_data_factory: data.#azurerm_data_factory
-_ds: azurerm_data_factory_trigger_schedule: data.#azurerm_data_factory_trigger_schedule
-_ds: azurerm_data_factory_trigger_schedules: data.#azurerm_data_factory_trigger_schedules
-_ds: azurerm_data_protection_backup_vault: data.#azurerm_data_protection_backup_vault
-_ds: azurerm_data_share_account: data.#azurerm_data_share_account
-_ds: azurerm_data_share_dataset_blob_storage: data.#azurerm_data_share_dataset_blob_storage
-_ds: azurerm_data_share_dataset_data_lake_gen2: data.#azurerm_data_share_dataset_data_lake_gen2
-_ds: azurerm_data_share_dataset_kusto_cluster: data.#azurerm_data_share_dataset_kusto_cluster
-_ds: azurerm_data_share_dataset_kusto_database: data.#azurerm_data_share_dataset_kusto_database
-_ds: azurerm_data_share: data.#azurerm_data_share
-_ds: azurerm_database_migration_project: data.#azurerm_database_migration_project
-_ds: azurerm_database_migration_service: data.#azurerm_database_migration_service
-_ds: azurerm_databox_edge_device: data.#azurerm_databox_edge_device
-_ds: azurerm_databricks_access_connector: data.#azurerm_databricks_access_connector
-_ds: azurerm_databricks_workspace: data.#azurerm_databricks_workspace
-_ds: azurerm_databricks_workspace_private_endpoint_connection: data.#azurerm_databricks_workspace_private_endpoint_connection
-_ds: azurerm_dedicated_host: data.#azurerm_dedicated_host
-_ds: azurerm_dedicated_host_group: data.#azurerm_dedicated_host_group
-_ds: azurerm_dev_center_attached_network: data.#azurerm_dev_center_attached_network
-_ds: azurerm_dev_center_catalog: data.#azurerm_dev_center_catalog
-_ds: azurerm_dev_center_dev_box_definition: data.#azurerm_dev_center_dev_box_definition
-_ds: azurerm_dev_center_environment_type: data.#azurerm_dev_center_environment_type
-_ds: azurerm_dev_center_gallery: data.#azurerm_dev_center_gallery
-_ds: azurerm_dev_center: data.#azurerm_dev_center
-_ds: azurerm_dev_center_network_connection: data.#azurerm_dev_center_network_connection
-_ds: azurerm_dev_center_project_environment_type: data.#azurerm_dev_center_project_environment_type
-_ds: azurerm_dev_center_project: data.#azurerm_dev_center_project
-_ds: azurerm_dev_center_project_pool: data.#azurerm_dev_center_project_pool
-_ds: azurerm_dev_test_lab: data.#azurerm_dev_test_lab
-_ds: azurerm_dev_test_virtual_network: data.#azurerm_dev_test_virtual_network
-_ds: azurerm_digital_twins_instance: data.#azurerm_digital_twins_instance
-_ds: azurerm_disk_access: data.#azurerm_disk_access
-_ds: azurerm_disk_encryption_set: data.#azurerm_disk_encryption_set
-_ds: azurerm_dns_a_record: data.#azurerm_dns_a_record
-_ds: azurerm_dns_aaaa_record: data.#azurerm_dns_aaaa_record
-_ds: azurerm_dns_caa_record: data.#azurerm_dns_caa_record
-_ds: azurerm_dns_cname_record: data.#azurerm_dns_cname_record
-_ds: azurerm_dns_mx_record: data.#azurerm_dns_mx_record
-_ds: azurerm_dns_ns_record: data.#azurerm_dns_ns_record
-_ds: azurerm_dns_ptr_record: data.#azurerm_dns_ptr_record
-_ds: azurerm_dns_soa_record: data.#azurerm_dns_soa_record
-_ds: azurerm_dns_srv_record: data.#azurerm_dns_srv_record
-_ds: azurerm_dns_txt_record: data.#azurerm_dns_txt_record
-_ds: azurerm_dns_zone: data.#azurerm_dns_zone
-_ds: azurerm_dynatrace_monitor: data.#azurerm_dynatrace_monitor
-_ds: azurerm_elastic_cloud_elasticsearch: data.#azurerm_elastic_cloud_elasticsearch
-_ds: azurerm_elastic_san: data.#azurerm_elastic_san
-_ds: azurerm_elastic_san_volume_group: data.#azurerm_elastic_san_volume_group
-_ds: azurerm_elastic_san_volume_snapshot: data.#azurerm_elastic_san_volume_snapshot
-_ds: azurerm_eventgrid_domain: data.#azurerm_eventgrid_domain
-_ds: azurerm_eventgrid_domain_topic: data.#azurerm_eventgrid_domain_topic
-_ds: azurerm_eventgrid_partner_namespace: data.#azurerm_eventgrid_partner_namespace
-_ds: azurerm_eventgrid_partner_registration: data.#azurerm_eventgrid_partner_registration
-_ds: azurerm_eventgrid_system_topic: data.#azurerm_eventgrid_system_topic
-_ds: azurerm_eventgrid_topic: data.#azurerm_eventgrid_topic
-_ds: azurerm_eventhub_authorization_rule: data.#azurerm_eventhub_authorization_rule
-_ds: azurerm_eventhub_cluster: data.#azurerm_eventhub_cluster
-_ds: azurerm_eventhub_consumer_group: data.#azurerm_eventhub_consumer_group
-_ds: azurerm_eventhub: data.#azurerm_eventhub
-_ds: azurerm_eventhub_namespace_authorization_rule: data.#azurerm_eventhub_namespace_authorization_rule
-_ds: azurerm_eventhub_namespace: data.#azurerm_eventhub_namespace
-_ds: azurerm_eventhub_sas: data.#azurerm_eventhub_sas
-_ds: azurerm_express_route_circuit: data.#azurerm_express_route_circuit
-_ds: azurerm_express_route_circuit_peering: data.#azurerm_express_route_circuit_peering
-_ds: azurerm_extended_location_custom_location: data.#azurerm_extended_location_custom_location
-_ds: azurerm_extended_locations: data.#azurerm_extended_locations
-_ds: azurerm_firewall: data.#azurerm_firewall
-_ds: azurerm_firewall_policy: data.#azurerm_firewall_policy
-_ds: azurerm_function_app: data.#azurerm_function_app
-_ds: azurerm_function_app_host_keys: data.#azurerm_function_app_host_keys
-_ds: azurerm_graph_services_account: data.#azurerm_graph_services_account
-_ds: azurerm_hdinsight_cluster: data.#azurerm_hdinsight_cluster
-_ds: azurerm_healthcare_dicom_service: data.#azurerm_healthcare_dicom_service
-_ds: azurerm_healthcare_fhir_service: data.#azurerm_healthcare_fhir_service
-_ds: azurerm_healthcare_medtech_service: data.#azurerm_healthcare_medtech_service
-_ds: azurerm_healthcare_service: data.#azurerm_healthcare_service
-_ds: azurerm_healthcare_workspace: data.#azurerm_healthcare_workspace
-_ds: azurerm_image: data.#azurerm_image
-_ds: azurerm_images: data.#azurerm_images
-_ds: azurerm_iothub_dps: data.#azurerm_iothub_dps
-_ds: azurerm_iothub_dps_shared_access_policy: data.#azurerm_iothub_dps_shared_access_policy
-_ds: azurerm_iothub: data.#azurerm_iothub
-_ds: azurerm_iothub_shared_access_policy: data.#azurerm_iothub_shared_access_policy
-_ds: azurerm_ip_group: data.#azurerm_ip_group
-_ds: azurerm_ip_groups: data.#azurerm_ip_groups
-_ds: azurerm_key_vault_access_policy: data.#azurerm_key_vault_access_policy
-_ds: azurerm_key_vault_certificate_data: data.#azurerm_key_vault_certificate_data
-_ds: azurerm_key_vault_certificate: data.#azurerm_key_vault_certificate
-_ds: azurerm_key_vault_certificate_issuer: data.#azurerm_key_vault_certificate_issuer
-_ds: azurerm_key_vault_certificates: data.#azurerm_key_vault_certificates
-_ds: azurerm_key_vault_encrypted_value: data.#azurerm_key_vault_encrypted_value
-_ds: azurerm_key_vault: data.#azurerm_key_vault
-_ds: azurerm_key_vault_key: data.#azurerm_key_vault_key
-_ds: azurerm_key_vault_managed_hardware_security_module: data.#azurerm_key_vault_managed_hardware_security_module
-_ds: azurerm_key_vault_managed_hardware_security_module_key: data.#azurerm_key_vault_managed_hardware_security_module_key
-_ds: azurerm_key_vault_managed_hardware_security_module_role_definition: data.#azurerm_key_vault_managed_hardware_security_module_role_definition
-_ds: azurerm_key_vault_secret: data.#azurerm_key_vault_secret
-_ds: azurerm_key_vault_secrets: data.#azurerm_key_vault_secrets
-_ds: azurerm_kubernetes_cluster: data.#azurerm_kubernetes_cluster
-_ds: azurerm_kubernetes_cluster_node_pool: data.#azurerm_kubernetes_cluster_node_pool
-_ds: azurerm_kubernetes_fleet_manager: data.#azurerm_kubernetes_fleet_manager
-_ds: azurerm_kubernetes_node_pool_snapshot: data.#azurerm_kubernetes_node_pool_snapshot
-_ds: azurerm_kubernetes_service_versions: data.#azurerm_kubernetes_service_versions
-_ds: azurerm_kusto_cluster: data.#azurerm_kusto_cluster
-_ds: azurerm_kusto_database: data.#azurerm_kusto_database
-_ds: azurerm_lb_backend_address_pool: data.#azurerm_lb_backend_address_pool
-_ds: azurerm_lb: data.#azurerm_lb
-_ds: azurerm_lb_outbound_rule: data.#azurerm_lb_outbound_rule
-_ds: azurerm_lb_rule: data.#azurerm_lb_rule
-_ds: azurerm_linux_function_app: data.#azurerm_linux_function_app
-_ds: azurerm_linux_web_app: data.#azurerm_linux_web_app
-_ds: azurerm_load_test: data.#azurerm_load_test
-_ds: azurerm_local_network_gateway: data.#azurerm_local_network_gateway
-_ds: azurerm_location: data.#azurerm_location
-_ds: azurerm_log_analytics_workspace: data.#azurerm_log_analytics_workspace
-_ds: azurerm_log_analytics_workspace_table: data.#azurerm_log_analytics_workspace_table
-_ds: azurerm_logic_app_integration_account: data.#azurerm_logic_app_integration_account
-_ds: azurerm_logic_app_standard: data.#azurerm_logic_app_standard
-_ds: azurerm_logic_app_workflow: data.#azurerm_logic_app_workflow
-_ds: azurerm_machine_learning_workspace: data.#azurerm_machine_learning_workspace
-_ds: azurerm_maintenance_configuration: data.#azurerm_maintenance_configuration
-_ds: azurerm_managed_api: data.#azurerm_managed_api
-_ds: azurerm_managed_application_definition: data.#azurerm_managed_application_definition
-_ds: azurerm_managed_disk: data.#azurerm_managed_disk
-_ds: azurerm_managed_disks: data.#azurerm_managed_disks
-_ds: azurerm_managed_redis: data.#azurerm_managed_redis
-_ds: azurerm_management_group: data.#azurerm_management_group
-_ds: azurerm_management_group_template_deployment: data.#azurerm_management_group_template_deployment
-_ds: azurerm_maps_account: data.#azurerm_maps_account
-_ds: azurerm_marketplace_agreement: data.#azurerm_marketplace_agreement
-_ds: azurerm_mobile_network_attached_data_network: data.#azurerm_mobile_network_attached_data_network
-_ds: azurerm_mobile_network_data_network: data.#azurerm_mobile_network_data_network
-_ds: azurerm_mobile_network: data.#azurerm_mobile_network
-_ds: azurerm_mobile_network_packet_core_control_plane: data.#azurerm_mobile_network_packet_core_control_plane
-_ds: azurerm_mobile_network_packet_core_data_plane: data.#azurerm_mobile_network_packet_core_data_plane
-_ds: azurerm_mobile_network_service: data.#azurerm_mobile_network_service
-_ds: azurerm_mobile_network_sim: data.#azurerm_mobile_network_sim
-_ds: azurerm_mobile_network_sim_group: data.#azurerm_mobile_network_sim_group
-_ds: azurerm_mobile_network_sim_policy: data.#azurerm_mobile_network_sim_policy
-_ds: azurerm_mobile_network_site: data.#azurerm_mobile_network_site
-_ds: azurerm_mobile_network_slice: data.#azurerm_mobile_network_slice
-_ds: azurerm_monitor_action_group: data.#azurerm_monitor_action_group
-_ds: azurerm_monitor_data_collection_endpoint: data.#azurerm_monitor_data_collection_endpoint
-_ds: azurerm_monitor_data_collection_rule: data.#azurerm_monitor_data_collection_rule
-_ds: azurerm_monitor_diagnostic_categories: data.#azurerm_monitor_diagnostic_categories
-_ds: azurerm_monitor_scheduled_query_rules_alert: data.#azurerm_monitor_scheduled_query_rules_alert
-_ds: azurerm_monitor_scheduled_query_rules_log: data.#azurerm_monitor_scheduled_query_rules_log
-_ds: azurerm_monitor_workspace: data.#azurerm_monitor_workspace
-_ds: azurerm_mssql_database: data.#azurerm_mssql_database
-_ds: azurerm_mssql_elasticpool: data.#azurerm_mssql_elasticpool
-_ds: azurerm_mssql_failover_group: data.#azurerm_mssql_failover_group
-_ds: azurerm_mssql_managed_database: data.#azurerm_mssql_managed_database
-_ds: azurerm_mssql_managed_instance: data.#azurerm_mssql_managed_instance
-_ds: azurerm_mssql_server: data.#azurerm_mssql_server
-_ds: azurerm_mysql_flexible_server: data.#azurerm_mysql_flexible_server
-_ds: azurerm_nat_gateway: data.#azurerm_nat_gateway
-_ds: azurerm_netapp_account_encryption: data.#azurerm_netapp_account_encryption
-_ds: azurerm_netapp_account: data.#azurerm_netapp_account
-_ds: azurerm_netapp_backup_policy: data.#azurerm_netapp_backup_policy
-_ds: azurerm_netapp_backup_vault: data.#azurerm_netapp_backup_vault
-_ds: azurerm_netapp_pool: data.#azurerm_netapp_pool
-_ds: azurerm_netapp_snapshot: data.#azurerm_netapp_snapshot
-_ds: azurerm_netapp_snapshot_policy: data.#azurerm_netapp_snapshot_policy
-_ds: azurerm_netapp_volume: data.#azurerm_netapp_volume
-_ds: azurerm_netapp_volume_group_oracle: data.#azurerm_netapp_volume_group_oracle
-_ds: azurerm_netapp_volume_group_sap_hana: data.#azurerm_netapp_volume_group_sap_hana
-_ds: azurerm_netapp_volume_quota_rule: data.#azurerm_netapp_volume_quota_rule
-_ds: azurerm_network_ddos_protection_plan: data.#azurerm_network_ddos_protection_plan
-_ds: azurerm_network_interface: data.#azurerm_network_interface
-_ds: azurerm_network_manager_connectivity_configuration: data.#azurerm_network_manager_connectivity_configuration
-_ds: azurerm_network_manager: data.#azurerm_network_manager
-_ds: azurerm_network_manager_ipam_pool: data.#azurerm_network_manager_ipam_pool
-_ds: azurerm_network_manager_network_group: data.#azurerm_network_manager_network_group
-_ds: azurerm_network_security_group: data.#azurerm_network_security_group
-_ds: azurerm_network_service_tags: data.#azurerm_network_service_tags
-_ds: azurerm_network_watcher: data.#azurerm_network_watcher
-_ds: azurerm_nginx_api_key: data.#azurerm_nginx_api_key
-_ds: azurerm_nginx_certificate: data.#azurerm_nginx_certificate
-_ds: azurerm_nginx_configuration: data.#azurerm_nginx_configuration
-_ds: azurerm_nginx_deployment: data.#azurerm_nginx_deployment
-_ds: azurerm_notification_hub: data.#azurerm_notification_hub
-_ds: azurerm_notification_hub_namespace: data.#azurerm_notification_hub_namespace
-_ds: azurerm_oracle_adbs_character_sets: data.#azurerm_oracle_adbs_character_sets
-_ds: azurerm_oracle_adbs_national_character_sets: data.#azurerm_oracle_adbs_national_character_sets
-_ds: azurerm_oracle_autonomous_database_backup: data.#azurerm_oracle_autonomous_database_backup
-_ds: azurerm_oracle_autonomous_database_backups: data.#azurerm_oracle_autonomous_database_backups
-_ds: azurerm_oracle_autonomous_database_clone_from_backup: data.#azurerm_oracle_autonomous_database_clone_from_backup
-_ds: azurerm_oracle_autonomous_database_clone_from_database: data.#azurerm_oracle_autonomous_database_clone_from_database
-_ds: azurerm_oracle_autonomous_database: data.#azurerm_oracle_autonomous_database
-_ds: azurerm_oracle_cloud_vm_cluster: data.#azurerm_oracle_cloud_vm_cluster
-_ds: azurerm_oracle_db_nodes: data.#azurerm_oracle_db_nodes
-_ds: azurerm_oracle_db_servers: data.#azurerm_oracle_db_servers
-_ds: azurerm_oracle_db_system_shapes: data.#azurerm_oracle_db_system_shapes
-_ds: azurerm_oracle_exadata_infrastructure: data.#azurerm_oracle_exadata_infrastructure
-_ds: azurerm_oracle_exascale_database_storage_vault: data.#azurerm_oracle_exascale_database_storage_vault
-_ds: azurerm_oracle_gi_versions: data.#azurerm_oracle_gi_versions
-_ds: azurerm_oracle_resource_anchor: data.#azurerm_oracle_resource_anchor
-_ds: azurerm_orchestrated_virtual_machine_scale_set: data.#azurerm_orchestrated_virtual_machine_scale_set
-_ds: azurerm_palo_alto_local_rulestack: data.#azurerm_palo_alto_local_rulestack
-_ds: azurerm_platform_image: data.#azurerm_platform_image
-_ds: azurerm_policy_assignment: data.#azurerm_policy_assignment
-_ds: azurerm_policy_definition_built_in: data.#azurerm_policy_definition_built_in
-_ds: azurerm_policy_definition: data.#azurerm_policy_definition
-_ds: azurerm_policy_set_definition: data.#azurerm_policy_set_definition
-_ds: azurerm_policy_virtual_machine_configuration_assignment: data.#azurerm_policy_virtual_machine_configuration_assignment
-_ds: azurerm_portal_dashboard: data.#azurerm_portal_dashboard
-_ds: azurerm_postgresql_flexible_server: data.#azurerm_postgresql_flexible_server
-_ds: azurerm_postgresql_server: data.#azurerm_postgresql_server
-_ds: azurerm_private_dns_a_record: data.#azurerm_private_dns_a_record
-_ds: azurerm_private_dns_aaaa_record: data.#azurerm_private_dns_aaaa_record
-_ds: azurerm_private_dns_cname_record: data.#azurerm_private_dns_cname_record
-_ds: azurerm_private_dns_mx_record: data.#azurerm_private_dns_mx_record
-_ds: azurerm_private_dns_ptr_record: data.#azurerm_private_dns_ptr_record
-_ds: azurerm_private_dns_resolver_dns_forwarding_ruleset: data.#azurerm_private_dns_resolver_dns_forwarding_ruleset
-_ds: azurerm_private_dns_resolver_forwarding_rule: data.#azurerm_private_dns_resolver_forwarding_rule
-_ds: azurerm_private_dns_resolver: data.#azurerm_private_dns_resolver
-_ds: azurerm_private_dns_resolver_inbound_endpoint: data.#azurerm_private_dns_resolver_inbound_endpoint
-_ds: azurerm_private_dns_resolver_outbound_endpoint: data.#azurerm_private_dns_resolver_outbound_endpoint
-_ds: azurerm_private_dns_resolver_virtual_network_link: data.#azurerm_private_dns_resolver_virtual_network_link
-_ds: azurerm_private_dns_soa_record: data.#azurerm_private_dns_soa_record
-_ds: azurerm_private_dns_srv_record: data.#azurerm_private_dns_srv_record
-_ds: azurerm_private_dns_txt_record: data.#azurerm_private_dns_txt_record
-_ds: azurerm_private_dns_zone: data.#azurerm_private_dns_zone
-_ds: azurerm_private_dns_zone_virtual_network_link: data.#azurerm_private_dns_zone_virtual_network_link
-_ds: azurerm_private_endpoint_connection: data.#azurerm_private_endpoint_connection
-_ds: azurerm_private_link_service_endpoint_connections: data.#azurerm_private_link_service_endpoint_connections
-_ds: azurerm_private_link_service: data.#azurerm_private_link_service
-_ds: azurerm_proximity_placement_group: data.#azurerm_proximity_placement_group
-_ds: azurerm_public_ip: data.#azurerm_public_ip
-_ds: azurerm_public_ip_prefix: data.#azurerm_public_ip_prefix
-_ds: azurerm_public_ips: data.#azurerm_public_ips
-_ds: azurerm_public_maintenance_configurations: data.#azurerm_public_maintenance_configurations
-_ds: azurerm_recovery_services_vault: data.#azurerm_recovery_services_vault
-_ds: azurerm_redis_cache: data.#azurerm_redis_cache
-_ds: azurerm_redis_enterprise_database: data.#azurerm_redis_enterprise_database
-_ds: azurerm_resource_group: data.#azurerm_resource_group
-_ds: azurerm_resource_group_template_deployment: data.#azurerm_resource_group_template_deployment
-_ds: azurerm_resources: data.#azurerm_resources
-_ds: azurerm_role_assignments: data.#azurerm_role_assignments
-_ds: azurerm_role_definition: data.#azurerm_role_definition
-_ds: azurerm_role_management_policy: data.#azurerm_role_management_policy
-_ds: azurerm_route_filter: data.#azurerm_route_filter
-_ds: azurerm_route_table: data.#azurerm_route_table
-_ds: azurerm_search_service: data.#azurerm_search_service
-_ds: azurerm_sentinel_alert_rule_anomaly: data.#azurerm_sentinel_alert_rule_anomaly
-_ds: azurerm_sentinel_alert_rule: data.#azurerm_sentinel_alert_rule
-_ds: azurerm_sentinel_alert_rule_template: data.#azurerm_sentinel_alert_rule_template
-_ds: azurerm_service_plan: data.#azurerm_service_plan
-_ds: azurerm_servicebus_namespace_authorization_rule: data.#azurerm_servicebus_namespace_authorization_rule
-_ds: azurerm_servicebus_namespace_disaster_recovery_config: data.#azurerm_servicebus_namespace_disaster_recovery_config
-_ds: azurerm_servicebus_namespace: data.#azurerm_servicebus_namespace
-_ds: azurerm_servicebus_queue_authorization_rule: data.#azurerm_servicebus_queue_authorization_rule
-_ds: azurerm_servicebus_queue: data.#azurerm_servicebus_queue
-_ds: azurerm_servicebus_subscription: data.#azurerm_servicebus_subscription
-_ds: azurerm_servicebus_topic_authorization_rule: data.#azurerm_servicebus_topic_authorization_rule
-_ds: azurerm_servicebus_topic: data.#azurerm_servicebus_topic
-_ds: azurerm_shared_image_gallery: data.#azurerm_shared_image_gallery
-_ds: azurerm_shared_image: data.#azurerm_shared_image
-_ds: azurerm_shared_image_version: data.#azurerm_shared_image_version
-_ds: azurerm_shared_image_versions: data.#azurerm_shared_image_versions
-_ds: azurerm_signalr_service: data.#azurerm_signalr_service
-_ds: azurerm_site_recovery_fabric: data.#azurerm_site_recovery_fabric
-_ds: azurerm_site_recovery_protection_container: data.#azurerm_site_recovery_protection_container
-_ds: azurerm_site_recovery_replication_policy: data.#azurerm_site_recovery_replication_policy
-_ds: azurerm_site_recovery_replication_recovery_plan: data.#azurerm_site_recovery_replication_recovery_plan
-_ds: azurerm_snapshot: data.#azurerm_snapshot
-_ds: azurerm_source_control_token: data.#azurerm_source_control_token
-_ds: azurerm_spatial_anchors_account: data.#azurerm_spatial_anchors_account
-_ds: azurerm_spring_cloud_app: data.#azurerm_spring_cloud_app
-_ds: azurerm_spring_cloud_service: data.#azurerm_spring_cloud_service
-_ds: azurerm_ssh_public_key: data.#azurerm_ssh_public_key
-_ds: azurerm_stack_hci_cluster: data.#azurerm_stack_hci_cluster
-_ds: azurerm_stack_hci_storage_path: data.#azurerm_stack_hci_storage_path
-_ds: azurerm_static_web_app: data.#azurerm_static_web_app
-_ds: azurerm_storage_account_blob_container_sas: data.#azurerm_storage_account_blob_container_sas
-_ds: azurerm_storage_account: data.#azurerm_storage_account
-_ds: azurerm_storage_account_sas: data.#azurerm_storage_account_sas
-_ds: azurerm_storage_blob: data.#azurerm_storage_blob
-_ds: azurerm_storage_container: data.#azurerm_storage_container
-_ds: azurerm_storage_containers: data.#azurerm_storage_containers
-_ds: azurerm_storage_encryption_scope: data.#azurerm_storage_encryption_scope
-_ds: azurerm_storage_management_policy: data.#azurerm_storage_management_policy
-_ds: azurerm_storage_queue: data.#azurerm_storage_queue
-_ds: azurerm_storage_share: data.#azurerm_storage_share
-_ds: azurerm_storage_sync: data.#azurerm_storage_sync
-_ds: azurerm_storage_sync_group: data.#azurerm_storage_sync_group
-_ds: azurerm_storage_table_entities: data.#azurerm_storage_table_entities
-_ds: azurerm_storage_table_entity: data.#azurerm_storage_table_entity
-_ds: azurerm_storage_table: data.#azurerm_storage_table
-_ds: azurerm_stream_analytics_job: data.#azurerm_stream_analytics_job
-_ds: azurerm_subnet: data.#azurerm_subnet
-_ds: azurerm_subscription: data.#azurerm_subscription
-_ds: azurerm_subscription_template_deployment: data.#azurerm_subscription_template_deployment
-_ds: azurerm_subscriptions: data.#azurerm_subscriptions
-_ds: azurerm_synapse_workspace: data.#azurerm_synapse_workspace
-_ds: azurerm_system_center_virtual_machine_manager_inventory_items: data.#azurerm_system_center_virtual_machine_manager_inventory_items
-_ds: azurerm_template_spec_version: data.#azurerm_template_spec_version
-_ds: azurerm_tenant_template_deployment: data.#azurerm_tenant_template_deployment
-_ds: azurerm_traffic_manager_geographical_location: data.#azurerm_traffic_manager_geographical_location
-_ds: azurerm_traffic_manager_profile: data.#azurerm_traffic_manager_profile
-_ds: azurerm_trusted_signing_account: data.#azurerm_trusted_signing_account
-_ds: azurerm_user_assigned_identity: data.#azurerm_user_assigned_identity
-_ds: azurerm_virtual_desktop_application_group: data.#azurerm_virtual_desktop_application_group
-_ds: azurerm_virtual_desktop_host_pool: data.#azurerm_virtual_desktop_host_pool
-_ds: azurerm_virtual_desktop_workspace: data.#azurerm_virtual_desktop_workspace
-_ds: azurerm_virtual_hub_connection: data.#azurerm_virtual_hub_connection
-_ds: azurerm_virtual_hub: data.#azurerm_virtual_hub
-_ds: azurerm_virtual_hub_route_table: data.#azurerm_virtual_hub_route_table
-_ds: azurerm_virtual_machine: data.#azurerm_virtual_machine
-_ds: azurerm_virtual_machine_scale_set: data.#azurerm_virtual_machine_scale_set
-_ds: azurerm_virtual_network_gateway_connection: data.#azurerm_virtual_network_gateway_connection
-_ds: azurerm_virtual_network_gateway: data.#azurerm_virtual_network_gateway
-_ds: azurerm_virtual_network: data.#azurerm_virtual_network
-_ds: azurerm_virtual_network_peering: data.#azurerm_virtual_network_peering
-_ds: azurerm_virtual_wan: data.#azurerm_virtual_wan
-_ds: azurerm_vmware_private_cloud: data.#azurerm_vmware_private_cloud
-_ds: azurerm_vpn_gateway: data.#azurerm_vpn_gateway
-_ds: azurerm_vpn_server_configuration: data.#azurerm_vpn_server_configuration
-_ds: azurerm_web_application_firewall_policy: data.#azurerm_web_application_firewall_policy
-_ds: azurerm_web_pubsub: data.#azurerm_web_pubsub
-_ds: azurerm_web_pubsub_private_link_resource: data.#azurerm_web_pubsub_private_link_resource
-_ds: azurerm_windows_function_app: data.#azurerm_windows_function_app
-_ds: azurerm_windows_web_app: data.#azurerm_windows_web_app
+#Terraform: {
+	#prefix: string
+	#ds: "\(#prefix)_aadb2c_directory": data.#azurerm_aadb2c_directory
+	#ds: "\(#prefix)_active_directory_domain_service": data.#azurerm_active_directory_domain_service
+	#ds: "\(#prefix)_advisor_recommendations": data.#azurerm_advisor_recommendations
+	#ds: "\(#prefix)_api_connection": data.#azurerm_api_connection
+	#ds: "\(#prefix)_api_management_api": data.#azurerm_api_management_api
+	#ds: "\(#prefix)_api_management_api_version_set": data.#azurerm_api_management_api_version_set
+	#ds: "\(#prefix)_api_management_gateway": data.#azurerm_api_management_gateway
+	#ds: "\(#prefix)_api_management_gateway_host_name_configuration": data.#azurerm_api_management_gateway_host_name_configuration
+	#ds: "\(#prefix)_api_management": data.#azurerm_api_management
+	#ds: "\(#prefix)_api_management_group": data.#azurerm_api_management_group
+	#ds: "\(#prefix)_api_management_product": data.#azurerm_api_management_product
+	#ds: "\(#prefix)_api_management_subscription": data.#azurerm_api_management_subscription
+	#ds: "\(#prefix)_api_management_user": data.#azurerm_api_management_user
+	#ds: "\(#prefix)_app_configuration": data.#azurerm_app_configuration
+	#ds: "\(#prefix)_app_configuration_key": data.#azurerm_app_configuration_key
+	#ds: "\(#prefix)_app_configuration_keys": data.#azurerm_app_configuration_keys
+	#ds: "\(#prefix)_app_service_certificate": data.#azurerm_app_service_certificate
+	#ds: "\(#prefix)_app_service_certificate_order": data.#azurerm_app_service_certificate_order
+	#ds: "\(#prefix)_app_service_environment_v3": data.#azurerm_app_service_environment_v3
+	#ds: "\(#prefix)_app_service": data.#azurerm_app_service
+	#ds: "\(#prefix)_app_service_plan": data.#azurerm_app_service_plan
+	#ds: "\(#prefix)_application_gateway": data.#azurerm_application_gateway
+	#ds: "\(#prefix)_application_insights": data.#azurerm_application_insights
+	#ds: "\(#prefix)_application_security_group": data.#azurerm_application_security_group
+	#ds: "\(#prefix)_arc_machine": data.#azurerm_arc_machine
+	#ds: "\(#prefix)_arc_resource_bridge_appliance": data.#azurerm_arc_resource_bridge_appliance
+	#ds: "\(#prefix)_attestation_provider": data.#azurerm_attestation_provider
+	#ds: "\(#prefix)_automation_account": data.#azurerm_automation_account
+	#ds: "\(#prefix)_automation_runbook": data.#azurerm_automation_runbook
+	#ds: "\(#prefix)_automation_variable_bool": data.#azurerm_automation_variable_bool
+	#ds: "\(#prefix)_automation_variable_datetime": data.#azurerm_automation_variable_datetime
+	#ds: "\(#prefix)_automation_variable_int": data.#azurerm_automation_variable_int
+	#ds: "\(#prefix)_automation_variable_object": data.#azurerm_automation_variable_object
+	#ds: "\(#prefix)_automation_variable_string": data.#azurerm_automation_variable_string
+	#ds: "\(#prefix)_automation_variables": data.#azurerm_automation_variables
+	#ds: "\(#prefix)_availability_set": data.#azurerm_availability_set
+	#ds: "\(#prefix)_backup_policy_file_share": data.#azurerm_backup_policy_file_share
+	#ds: "\(#prefix)_backup_policy_vm": data.#azurerm_backup_policy_vm
+	#ds: "\(#prefix)_bastion_host": data.#azurerm_bastion_host
+	#ds: "\(#prefix)_batch_account": data.#azurerm_batch_account
+	#ds: "\(#prefix)_batch_application": data.#azurerm_batch_application
+	#ds: "\(#prefix)_batch_certificate": data.#azurerm_batch_certificate
+	#ds: "\(#prefix)_batch_pool": data.#azurerm_batch_pool
+	#ds: "\(#prefix)_billing_enrollment_account_scope": data.#azurerm_billing_enrollment_account_scope
+	#ds: "\(#prefix)_billing_mca_account_scope": data.#azurerm_billing_mca_account_scope
+	#ds: "\(#prefix)_billing_mpa_account_scope": data.#azurerm_billing_mpa_account_scope
+	#ds: "\(#prefix)_blueprint_definition": data.#azurerm_blueprint_definition
+	#ds: "\(#prefix)_blueprint_published_version": data.#azurerm_blueprint_published_version
+	#ds: "\(#prefix)_cdn_frontdoor_custom_domain": data.#azurerm_cdn_frontdoor_custom_domain
+	#ds: "\(#prefix)_cdn_frontdoor_endpoint": data.#azurerm_cdn_frontdoor_endpoint
+	#ds: "\(#prefix)_cdn_frontdoor_firewall_policy": data.#azurerm_cdn_frontdoor_firewall_policy
+	#ds: "\(#prefix)_cdn_frontdoor_origin_group": data.#azurerm_cdn_frontdoor_origin_group
+	#ds: "\(#prefix)_cdn_frontdoor_profile": data.#azurerm_cdn_frontdoor_profile
+	#ds: "\(#prefix)_cdn_frontdoor_rule_set": data.#azurerm_cdn_frontdoor_rule_set
+	#ds: "\(#prefix)_cdn_frontdoor_secret": data.#azurerm_cdn_frontdoor_secret
+	#ds: "\(#prefix)_cdn_profile": data.#azurerm_cdn_profile
+	#ds: "\(#prefix)_client_config": data.#azurerm_client_config
+	#ds: "\(#prefix)_cognitive_account": data.#azurerm_cognitive_account
+	#ds: "\(#prefix)_communication_service": data.#azurerm_communication_service
+	#ds: "\(#prefix)_confidential_ledger": data.#azurerm_confidential_ledger
+	#ds: "\(#prefix)_consumption_budget_resource_group": data.#azurerm_consumption_budget_resource_group
+	#ds: "\(#prefix)_consumption_budget_subscription": data.#azurerm_consumption_budget_subscription
+	#ds: "\(#prefix)_container_app_environment_certificate": data.#azurerm_container_app_environment_certificate
+	#ds: "\(#prefix)_container_app_environment": data.#azurerm_container_app_environment
+	#ds: "\(#prefix)_container_app": data.#azurerm_container_app
+	#ds: "\(#prefix)_container_group": data.#azurerm_container_group
+	#ds: "\(#prefix)_container_registry_cache_rule": data.#azurerm_container_registry_cache_rule
+	#ds: "\(#prefix)_container_registry": data.#azurerm_container_registry
+	#ds: "\(#prefix)_container_registry_scope_map": data.#azurerm_container_registry_scope_map
+	#ds: "\(#prefix)_container_registry_token": data.#azurerm_container_registry_token
+	#ds: "\(#prefix)_cosmosdb_account": data.#azurerm_cosmosdb_account
+	#ds: "\(#prefix)_cosmosdb_mongo_database": data.#azurerm_cosmosdb_mongo_database
+	#ds: "\(#prefix)_cosmosdb_restorable_database_accounts": data.#azurerm_cosmosdb_restorable_database_accounts
+	#ds: "\(#prefix)_cosmosdb_sql_database": data.#azurerm_cosmosdb_sql_database
+	#ds: "\(#prefix)_cosmosdb_sql_role_definition": data.#azurerm_cosmosdb_sql_role_definition
+	#ds: "\(#prefix)_dashboard_grafana": data.#azurerm_dashboard_grafana
+	#ds: "\(#prefix)_data_factory": data.#azurerm_data_factory
+	#ds: "\(#prefix)_data_factory_trigger_schedule": data.#azurerm_data_factory_trigger_schedule
+	#ds: "\(#prefix)_data_factory_trigger_schedules": data.#azurerm_data_factory_trigger_schedules
+	#ds: "\(#prefix)_data_protection_backup_vault": data.#azurerm_data_protection_backup_vault
+	#ds: "\(#prefix)_data_share_account": data.#azurerm_data_share_account
+	#ds: "\(#prefix)_data_share_dataset_blob_storage": data.#azurerm_data_share_dataset_blob_storage
+	#ds: "\(#prefix)_data_share_dataset_data_lake_gen2": data.#azurerm_data_share_dataset_data_lake_gen2
+	#ds: "\(#prefix)_data_share_dataset_kusto_cluster": data.#azurerm_data_share_dataset_kusto_cluster
+	#ds: "\(#prefix)_data_share_dataset_kusto_database": data.#azurerm_data_share_dataset_kusto_database
+	#ds: "\(#prefix)_data_share": data.#azurerm_data_share
+	#ds: "\(#prefix)_database_migration_project": data.#azurerm_database_migration_project
+	#ds: "\(#prefix)_database_migration_service": data.#azurerm_database_migration_service
+	#ds: "\(#prefix)_databox_edge_device": data.#azurerm_databox_edge_device
+	#ds: "\(#prefix)_databricks_access_connector": data.#azurerm_databricks_access_connector
+	#ds: "\(#prefix)_databricks_workspace": data.#azurerm_databricks_workspace
+	#ds: "\(#prefix)_databricks_workspace_private_endpoint_connection": data.#azurerm_databricks_workspace_private_endpoint_connection
+	#ds: "\(#prefix)_dedicated_host": data.#azurerm_dedicated_host
+	#ds: "\(#prefix)_dedicated_host_group": data.#azurerm_dedicated_host_group
+	#ds: "\(#prefix)_dev_center_attached_network": data.#azurerm_dev_center_attached_network
+	#ds: "\(#prefix)_dev_center_catalog": data.#azurerm_dev_center_catalog
+	#ds: "\(#prefix)_dev_center_dev_box_definition": data.#azurerm_dev_center_dev_box_definition
+	#ds: "\(#prefix)_dev_center_environment_type": data.#azurerm_dev_center_environment_type
+	#ds: "\(#prefix)_dev_center_gallery": data.#azurerm_dev_center_gallery
+	#ds: "\(#prefix)_dev_center": data.#azurerm_dev_center
+	#ds: "\(#prefix)_dev_center_network_connection": data.#azurerm_dev_center_network_connection
+	#ds: "\(#prefix)_dev_center_project_environment_type": data.#azurerm_dev_center_project_environment_type
+	#ds: "\(#prefix)_dev_center_project": data.#azurerm_dev_center_project
+	#ds: "\(#prefix)_dev_center_project_pool": data.#azurerm_dev_center_project_pool
+	#ds: "\(#prefix)_dev_test_lab": data.#azurerm_dev_test_lab
+	#ds: "\(#prefix)_dev_test_virtual_network": data.#azurerm_dev_test_virtual_network
+	#ds: "\(#prefix)_digital_twins_instance": data.#azurerm_digital_twins_instance
+	#ds: "\(#prefix)_disk_access": data.#azurerm_disk_access
+	#ds: "\(#prefix)_disk_encryption_set": data.#azurerm_disk_encryption_set
+	#ds: "\(#prefix)_dns_a_record": data.#azurerm_dns_a_record
+	#ds: "\(#prefix)_dns_aaaa_record": data.#azurerm_dns_aaaa_record
+	#ds: "\(#prefix)_dns_caa_record": data.#azurerm_dns_caa_record
+	#ds: "\(#prefix)_dns_cname_record": data.#azurerm_dns_cname_record
+	#ds: "\(#prefix)_dns_mx_record": data.#azurerm_dns_mx_record
+	#ds: "\(#prefix)_dns_ns_record": data.#azurerm_dns_ns_record
+	#ds: "\(#prefix)_dns_ptr_record": data.#azurerm_dns_ptr_record
+	#ds: "\(#prefix)_dns_soa_record": data.#azurerm_dns_soa_record
+	#ds: "\(#prefix)_dns_srv_record": data.#azurerm_dns_srv_record
+	#ds: "\(#prefix)_dns_txt_record": data.#azurerm_dns_txt_record
+	#ds: "\(#prefix)_dns_zone": data.#azurerm_dns_zone
+	#ds: "\(#prefix)_dynatrace_monitor": data.#azurerm_dynatrace_monitor
+	#ds: "\(#prefix)_elastic_cloud_elasticsearch": data.#azurerm_elastic_cloud_elasticsearch
+	#ds: "\(#prefix)_elastic_san": data.#azurerm_elastic_san
+	#ds: "\(#prefix)_elastic_san_volume_group": data.#azurerm_elastic_san_volume_group
+	#ds: "\(#prefix)_elastic_san_volume_snapshot": data.#azurerm_elastic_san_volume_snapshot
+	#ds: "\(#prefix)_eventgrid_domain": data.#azurerm_eventgrid_domain
+	#ds: "\(#prefix)_eventgrid_domain_topic": data.#azurerm_eventgrid_domain_topic
+	#ds: "\(#prefix)_eventgrid_partner_namespace": data.#azurerm_eventgrid_partner_namespace
+	#ds: "\(#prefix)_eventgrid_partner_registration": data.#azurerm_eventgrid_partner_registration
+	#ds: "\(#prefix)_eventgrid_system_topic": data.#azurerm_eventgrid_system_topic
+	#ds: "\(#prefix)_eventgrid_topic": data.#azurerm_eventgrid_topic
+	#ds: "\(#prefix)_eventhub_authorization_rule": data.#azurerm_eventhub_authorization_rule
+	#ds: "\(#prefix)_eventhub_cluster": data.#azurerm_eventhub_cluster
+	#ds: "\(#prefix)_eventhub_consumer_group": data.#azurerm_eventhub_consumer_group
+	#ds: "\(#prefix)_eventhub": data.#azurerm_eventhub
+	#ds: "\(#prefix)_eventhub_namespace_authorization_rule": data.#azurerm_eventhub_namespace_authorization_rule
+	#ds: "\(#prefix)_eventhub_namespace": data.#azurerm_eventhub_namespace
+	#ds: "\(#prefix)_eventhub_sas": data.#azurerm_eventhub_sas
+	#ds: "\(#prefix)_express_route_circuit": data.#azurerm_express_route_circuit
+	#ds: "\(#prefix)_express_route_circuit_peering": data.#azurerm_express_route_circuit_peering
+	#ds: "\(#prefix)_extended_location_custom_location": data.#azurerm_extended_location_custom_location
+	#ds: "\(#prefix)_extended_locations": data.#azurerm_extended_locations
+	#ds: "\(#prefix)_firewall": data.#azurerm_firewall
+	#ds: "\(#prefix)_firewall_policy": data.#azurerm_firewall_policy
+	#ds: "\(#prefix)_function_app": data.#azurerm_function_app
+	#ds: "\(#prefix)_function_app_host_keys": data.#azurerm_function_app_host_keys
+	#ds: "\(#prefix)_graph_services_account": data.#azurerm_graph_services_account
+	#ds: "\(#prefix)_hdinsight_cluster": data.#azurerm_hdinsight_cluster
+	#ds: "\(#prefix)_healthcare_dicom_service": data.#azurerm_healthcare_dicom_service
+	#ds: "\(#prefix)_healthcare_fhir_service": data.#azurerm_healthcare_fhir_service
+	#ds: "\(#prefix)_healthcare_medtech_service": data.#azurerm_healthcare_medtech_service
+	#ds: "\(#prefix)_healthcare_service": data.#azurerm_healthcare_service
+	#ds: "\(#prefix)_healthcare_workspace": data.#azurerm_healthcare_workspace
+	#ds: "\(#prefix)_image": data.#azurerm_image
+	#ds: "\(#prefix)_images": data.#azurerm_images
+	#ds: "\(#prefix)_iothub_dps": data.#azurerm_iothub_dps
+	#ds: "\(#prefix)_iothub_dps_shared_access_policy": data.#azurerm_iothub_dps_shared_access_policy
+	#ds: "\(#prefix)_iothub": data.#azurerm_iothub
+	#ds: "\(#prefix)_iothub_shared_access_policy": data.#azurerm_iothub_shared_access_policy
+	#ds: "\(#prefix)_ip_group": data.#azurerm_ip_group
+	#ds: "\(#prefix)_ip_groups": data.#azurerm_ip_groups
+	#ds: "\(#prefix)_key_vault_access_policy": data.#azurerm_key_vault_access_policy
+	#ds: "\(#prefix)_key_vault_certificate_data": data.#azurerm_key_vault_certificate_data
+	#ds: "\(#prefix)_key_vault_certificate": data.#azurerm_key_vault_certificate
+	#ds: "\(#prefix)_key_vault_certificate_issuer": data.#azurerm_key_vault_certificate_issuer
+	#ds: "\(#prefix)_key_vault_certificates": data.#azurerm_key_vault_certificates
+	#ds: "\(#prefix)_key_vault_encrypted_value": data.#azurerm_key_vault_encrypted_value
+	#ds: "\(#prefix)_key_vault": data.#azurerm_key_vault
+	#ds: "\(#prefix)_key_vault_key": data.#azurerm_key_vault_key
+	#ds: "\(#prefix)_key_vault_managed_hardware_security_module": data.#azurerm_key_vault_managed_hardware_security_module
+	#ds: "\(#prefix)_key_vault_managed_hardware_security_module_key": data.#azurerm_key_vault_managed_hardware_security_module_key
+	#ds: "\(#prefix)_key_vault_managed_hardware_security_module_role_definition": data.#azurerm_key_vault_managed_hardware_security_module_role_definition
+	#ds: "\(#prefix)_key_vault_secret": data.#azurerm_key_vault_secret
+	#ds: "\(#prefix)_key_vault_secrets": data.#azurerm_key_vault_secrets
+	#ds: "\(#prefix)_kubernetes_cluster": data.#azurerm_kubernetes_cluster
+	#ds: "\(#prefix)_kubernetes_cluster_node_pool": data.#azurerm_kubernetes_cluster_node_pool
+	#ds: "\(#prefix)_kubernetes_fleet_manager": data.#azurerm_kubernetes_fleet_manager
+	#ds: "\(#prefix)_kubernetes_node_pool_snapshot": data.#azurerm_kubernetes_node_pool_snapshot
+	#ds: "\(#prefix)_kubernetes_service_versions": data.#azurerm_kubernetes_service_versions
+	#ds: "\(#prefix)_kusto_cluster": data.#azurerm_kusto_cluster
+	#ds: "\(#prefix)_kusto_database": data.#azurerm_kusto_database
+	#ds: "\(#prefix)_lb_backend_address_pool": data.#azurerm_lb_backend_address_pool
+	#ds: "\(#prefix)_lb": data.#azurerm_lb
+	#ds: "\(#prefix)_lb_outbound_rule": data.#azurerm_lb_outbound_rule
+	#ds: "\(#prefix)_lb_rule": data.#azurerm_lb_rule
+	#ds: "\(#prefix)_linux_function_app": data.#azurerm_linux_function_app
+	#ds: "\(#prefix)_linux_web_app": data.#azurerm_linux_web_app
+	#ds: "\(#prefix)_load_test": data.#azurerm_load_test
+	#ds: "\(#prefix)_local_network_gateway": data.#azurerm_local_network_gateway
+	#ds: "\(#prefix)_location": data.#azurerm_location
+	#ds: "\(#prefix)_log_analytics_workspace": data.#azurerm_log_analytics_workspace
+	#ds: "\(#prefix)_log_analytics_workspace_table": data.#azurerm_log_analytics_workspace_table
+	#ds: "\(#prefix)_logic_app_integration_account": data.#azurerm_logic_app_integration_account
+	#ds: "\(#prefix)_logic_app_standard": data.#azurerm_logic_app_standard
+	#ds: "\(#prefix)_logic_app_workflow": data.#azurerm_logic_app_workflow
+	#ds: "\(#prefix)_machine_learning_workspace": data.#azurerm_machine_learning_workspace
+	#ds: "\(#prefix)_maintenance_configuration": data.#azurerm_maintenance_configuration
+	#ds: "\(#prefix)_managed_api": data.#azurerm_managed_api
+	#ds: "\(#prefix)_managed_application_definition": data.#azurerm_managed_application_definition
+	#ds: "\(#prefix)_managed_disk": data.#azurerm_managed_disk
+	#ds: "\(#prefix)_managed_disks": data.#azurerm_managed_disks
+	#ds: "\(#prefix)_managed_redis": data.#azurerm_managed_redis
+	#ds: "\(#prefix)_management_group": data.#azurerm_management_group
+	#ds: "\(#prefix)_management_group_template_deployment": data.#azurerm_management_group_template_deployment
+	#ds: "\(#prefix)_maps_account": data.#azurerm_maps_account
+	#ds: "\(#prefix)_marketplace_agreement": data.#azurerm_marketplace_agreement
+	#ds: "\(#prefix)_mobile_network_attached_data_network": data.#azurerm_mobile_network_attached_data_network
+	#ds: "\(#prefix)_mobile_network_data_network": data.#azurerm_mobile_network_data_network
+	#ds: "\(#prefix)_mobile_network": data.#azurerm_mobile_network
+	#ds: "\(#prefix)_mobile_network_packet_core_control_plane": data.#azurerm_mobile_network_packet_core_control_plane
+	#ds: "\(#prefix)_mobile_network_packet_core_data_plane": data.#azurerm_mobile_network_packet_core_data_plane
+	#ds: "\(#prefix)_mobile_network_service": data.#azurerm_mobile_network_service
+	#ds: "\(#prefix)_mobile_network_sim": data.#azurerm_mobile_network_sim
+	#ds: "\(#prefix)_mobile_network_sim_group": data.#azurerm_mobile_network_sim_group
+	#ds: "\(#prefix)_mobile_network_sim_policy": data.#azurerm_mobile_network_sim_policy
+	#ds: "\(#prefix)_mobile_network_site": data.#azurerm_mobile_network_site
+	#ds: "\(#prefix)_mobile_network_slice": data.#azurerm_mobile_network_slice
+	#ds: "\(#prefix)_monitor_action_group": data.#azurerm_monitor_action_group
+	#ds: "\(#prefix)_monitor_data_collection_endpoint": data.#azurerm_monitor_data_collection_endpoint
+	#ds: "\(#prefix)_monitor_data_collection_rule": data.#azurerm_monitor_data_collection_rule
+	#ds: "\(#prefix)_monitor_diagnostic_categories": data.#azurerm_monitor_diagnostic_categories
+	#ds: "\(#prefix)_monitor_scheduled_query_rules_alert": data.#azurerm_monitor_scheduled_query_rules_alert
+	#ds: "\(#prefix)_monitor_scheduled_query_rules_log": data.#azurerm_monitor_scheduled_query_rules_log
+	#ds: "\(#prefix)_monitor_workspace": data.#azurerm_monitor_workspace
+	#ds: "\(#prefix)_mssql_database": data.#azurerm_mssql_database
+	#ds: "\(#prefix)_mssql_elasticpool": data.#azurerm_mssql_elasticpool
+	#ds: "\(#prefix)_mssql_failover_group": data.#azurerm_mssql_failover_group
+	#ds: "\(#prefix)_mssql_managed_database": data.#azurerm_mssql_managed_database
+	#ds: "\(#prefix)_mssql_managed_instance": data.#azurerm_mssql_managed_instance
+	#ds: "\(#prefix)_mssql_server": data.#azurerm_mssql_server
+	#ds: "\(#prefix)_mysql_flexible_server": data.#azurerm_mysql_flexible_server
+	#ds: "\(#prefix)_nat_gateway": data.#azurerm_nat_gateway
+	#ds: "\(#prefix)_netapp_account_encryption": data.#azurerm_netapp_account_encryption
+	#ds: "\(#prefix)_netapp_account": data.#azurerm_netapp_account
+	#ds: "\(#prefix)_netapp_backup_policy": data.#azurerm_netapp_backup_policy
+	#ds: "\(#prefix)_netapp_backup_vault": data.#azurerm_netapp_backup_vault
+	#ds: "\(#prefix)_netapp_pool": data.#azurerm_netapp_pool
+	#ds: "\(#prefix)_netapp_snapshot": data.#azurerm_netapp_snapshot
+	#ds: "\(#prefix)_netapp_snapshot_policy": data.#azurerm_netapp_snapshot_policy
+	#ds: "\(#prefix)_netapp_volume": data.#azurerm_netapp_volume
+	#ds: "\(#prefix)_netapp_volume_group_oracle": data.#azurerm_netapp_volume_group_oracle
+	#ds: "\(#prefix)_netapp_volume_group_sap_hana": data.#azurerm_netapp_volume_group_sap_hana
+	#ds: "\(#prefix)_netapp_volume_quota_rule": data.#azurerm_netapp_volume_quota_rule
+	#ds: "\(#prefix)_network_ddos_protection_plan": data.#azurerm_network_ddos_protection_plan
+	#ds: "\(#prefix)_network_interface": data.#azurerm_network_interface
+	#ds: "\(#prefix)_network_manager_connectivity_configuration": data.#azurerm_network_manager_connectivity_configuration
+	#ds: "\(#prefix)_network_manager": data.#azurerm_network_manager
+	#ds: "\(#prefix)_network_manager_ipam_pool": data.#azurerm_network_manager_ipam_pool
+	#ds: "\(#prefix)_network_manager_network_group": data.#azurerm_network_manager_network_group
+	#ds: "\(#prefix)_network_security_group": data.#azurerm_network_security_group
+	#ds: "\(#prefix)_network_service_tags": data.#azurerm_network_service_tags
+	#ds: "\(#prefix)_network_watcher": data.#azurerm_network_watcher
+	#ds: "\(#prefix)_nginx_api_key": data.#azurerm_nginx_api_key
+	#ds: "\(#prefix)_nginx_certificate": data.#azurerm_nginx_certificate
+	#ds: "\(#prefix)_nginx_configuration": data.#azurerm_nginx_configuration
+	#ds: "\(#prefix)_nginx_deployment": data.#azurerm_nginx_deployment
+	#ds: "\(#prefix)_notification_hub": data.#azurerm_notification_hub
+	#ds: "\(#prefix)_notification_hub_namespace": data.#azurerm_notification_hub_namespace
+	#ds: "\(#prefix)_oracle_adbs_character_sets": data.#azurerm_oracle_adbs_character_sets
+	#ds: "\(#prefix)_oracle_adbs_national_character_sets": data.#azurerm_oracle_adbs_national_character_sets
+	#ds: "\(#prefix)_oracle_autonomous_database_backup": data.#azurerm_oracle_autonomous_database_backup
+	#ds: "\(#prefix)_oracle_autonomous_database_backups": data.#azurerm_oracle_autonomous_database_backups
+	#ds: "\(#prefix)_oracle_autonomous_database_clone_from_backup": data.#azurerm_oracle_autonomous_database_clone_from_backup
+	#ds: "\(#prefix)_oracle_autonomous_database_clone_from_database": data.#azurerm_oracle_autonomous_database_clone_from_database
+	#ds: "\(#prefix)_oracle_autonomous_database": data.#azurerm_oracle_autonomous_database
+	#ds: "\(#prefix)_oracle_cloud_vm_cluster": data.#azurerm_oracle_cloud_vm_cluster
+	#ds: "\(#prefix)_oracle_db_nodes": data.#azurerm_oracle_db_nodes
+	#ds: "\(#prefix)_oracle_db_servers": data.#azurerm_oracle_db_servers
+	#ds: "\(#prefix)_oracle_db_system_shapes": data.#azurerm_oracle_db_system_shapes
+	#ds: "\(#prefix)_oracle_exadata_infrastructure": data.#azurerm_oracle_exadata_infrastructure
+	#ds: "\(#prefix)_oracle_exascale_database_storage_vault": data.#azurerm_oracle_exascale_database_storage_vault
+	#ds: "\(#prefix)_oracle_gi_versions": data.#azurerm_oracle_gi_versions
+	#ds: "\(#prefix)_oracle_resource_anchor": data.#azurerm_oracle_resource_anchor
+	#ds: "\(#prefix)_orchestrated_virtual_machine_scale_set": data.#azurerm_orchestrated_virtual_machine_scale_set
+	#ds: "\(#prefix)_palo_alto_local_rulestack": data.#azurerm_palo_alto_local_rulestack
+	#ds: "\(#prefix)_platform_image": data.#azurerm_platform_image
+	#ds: "\(#prefix)_policy_assignment": data.#azurerm_policy_assignment
+	#ds: "\(#prefix)_policy_definition_built_in": data.#azurerm_policy_definition_built_in
+	#ds: "\(#prefix)_policy_definition": data.#azurerm_policy_definition
+	#ds: "\(#prefix)_policy_set_definition": data.#azurerm_policy_set_definition
+	#ds: "\(#prefix)_policy_virtual_machine_configuration_assignment": data.#azurerm_policy_virtual_machine_configuration_assignment
+	#ds: "\(#prefix)_portal_dashboard": data.#azurerm_portal_dashboard
+	#ds: "\(#prefix)_postgresql_flexible_server": data.#azurerm_postgresql_flexible_server
+	#ds: "\(#prefix)_postgresql_server": data.#azurerm_postgresql_server
+	#ds: "\(#prefix)_private_dns_a_record": data.#azurerm_private_dns_a_record
+	#ds: "\(#prefix)_private_dns_aaaa_record": data.#azurerm_private_dns_aaaa_record
+	#ds: "\(#prefix)_private_dns_cname_record": data.#azurerm_private_dns_cname_record
+	#ds: "\(#prefix)_private_dns_mx_record": data.#azurerm_private_dns_mx_record
+	#ds: "\(#prefix)_private_dns_ptr_record": data.#azurerm_private_dns_ptr_record
+	#ds: "\(#prefix)_private_dns_resolver_dns_forwarding_ruleset": data.#azurerm_private_dns_resolver_dns_forwarding_ruleset
+	#ds: "\(#prefix)_private_dns_resolver_forwarding_rule": data.#azurerm_private_dns_resolver_forwarding_rule
+	#ds: "\(#prefix)_private_dns_resolver": data.#azurerm_private_dns_resolver
+	#ds: "\(#prefix)_private_dns_resolver_inbound_endpoint": data.#azurerm_private_dns_resolver_inbound_endpoint
+	#ds: "\(#prefix)_private_dns_resolver_outbound_endpoint": data.#azurerm_private_dns_resolver_outbound_endpoint
+	#ds: "\(#prefix)_private_dns_resolver_virtual_network_link": data.#azurerm_private_dns_resolver_virtual_network_link
+	#ds: "\(#prefix)_private_dns_soa_record": data.#azurerm_private_dns_soa_record
+	#ds: "\(#prefix)_private_dns_srv_record": data.#azurerm_private_dns_srv_record
+	#ds: "\(#prefix)_private_dns_txt_record": data.#azurerm_private_dns_txt_record
+	#ds: "\(#prefix)_private_dns_zone": data.#azurerm_private_dns_zone
+	#ds: "\(#prefix)_private_dns_zone_virtual_network_link": data.#azurerm_private_dns_zone_virtual_network_link
+	#ds: "\(#prefix)_private_endpoint_connection": data.#azurerm_private_endpoint_connection
+	#ds: "\(#prefix)_private_link_service_endpoint_connections": data.#azurerm_private_link_service_endpoint_connections
+	#ds: "\(#prefix)_private_link_service": data.#azurerm_private_link_service
+	#ds: "\(#prefix)_proximity_placement_group": data.#azurerm_proximity_placement_group
+	#ds: "\(#prefix)_public_ip": data.#azurerm_public_ip
+	#ds: "\(#prefix)_public_ip_prefix": data.#azurerm_public_ip_prefix
+	#ds: "\(#prefix)_public_ips": data.#azurerm_public_ips
+	#ds: "\(#prefix)_public_maintenance_configurations": data.#azurerm_public_maintenance_configurations
+	#ds: "\(#prefix)_recovery_services_vault": data.#azurerm_recovery_services_vault
+	#ds: "\(#prefix)_redis_cache": data.#azurerm_redis_cache
+	#ds: "\(#prefix)_redis_enterprise_database": data.#azurerm_redis_enterprise_database
+	#ds: "\(#prefix)_resource_group": data.#azurerm_resource_group
+	#ds: "\(#prefix)_resource_group_template_deployment": data.#azurerm_resource_group_template_deployment
+	#ds: "\(#prefix)_resources": data.#azurerm_resources
+	#ds: "\(#prefix)_role_assignments": data.#azurerm_role_assignments
+	#ds: "\(#prefix)_role_definition": data.#azurerm_role_definition
+	#ds: "\(#prefix)_role_management_policy": data.#azurerm_role_management_policy
+	#ds: "\(#prefix)_route_filter": data.#azurerm_route_filter
+	#ds: "\(#prefix)_route_table": data.#azurerm_route_table
+	#ds: "\(#prefix)_search_service": data.#azurerm_search_service
+	#ds: "\(#prefix)_sentinel_alert_rule_anomaly": data.#azurerm_sentinel_alert_rule_anomaly
+	#ds: "\(#prefix)_sentinel_alert_rule": data.#azurerm_sentinel_alert_rule
+	#ds: "\(#prefix)_sentinel_alert_rule_template": data.#azurerm_sentinel_alert_rule_template
+	#ds: "\(#prefix)_service_plan": data.#azurerm_service_plan
+	#ds: "\(#prefix)_servicebus_namespace_authorization_rule": data.#azurerm_servicebus_namespace_authorization_rule
+	#ds: "\(#prefix)_servicebus_namespace_disaster_recovery_config": data.#azurerm_servicebus_namespace_disaster_recovery_config
+	#ds: "\(#prefix)_servicebus_namespace": data.#azurerm_servicebus_namespace
+	#ds: "\(#prefix)_servicebus_queue_authorization_rule": data.#azurerm_servicebus_queue_authorization_rule
+	#ds: "\(#prefix)_servicebus_queue": data.#azurerm_servicebus_queue
+	#ds: "\(#prefix)_servicebus_subscription": data.#azurerm_servicebus_subscription
+	#ds: "\(#prefix)_servicebus_topic_authorization_rule": data.#azurerm_servicebus_topic_authorization_rule
+	#ds: "\(#prefix)_servicebus_topic": data.#azurerm_servicebus_topic
+	#ds: "\(#prefix)_shared_image_gallery": data.#azurerm_shared_image_gallery
+	#ds: "\(#prefix)_shared_image": data.#azurerm_shared_image
+	#ds: "\(#prefix)_shared_image_version": data.#azurerm_shared_image_version
+	#ds: "\(#prefix)_shared_image_versions": data.#azurerm_shared_image_versions
+	#ds: "\(#prefix)_signalr_service": data.#azurerm_signalr_service
+	#ds: "\(#prefix)_site_recovery_fabric": data.#azurerm_site_recovery_fabric
+	#ds: "\(#prefix)_site_recovery_protection_container": data.#azurerm_site_recovery_protection_container
+	#ds: "\(#prefix)_site_recovery_replication_policy": data.#azurerm_site_recovery_replication_policy
+	#ds: "\(#prefix)_site_recovery_replication_recovery_plan": data.#azurerm_site_recovery_replication_recovery_plan
+	#ds: "\(#prefix)_snapshot": data.#azurerm_snapshot
+	#ds: "\(#prefix)_source_control_token": data.#azurerm_source_control_token
+	#ds: "\(#prefix)_spatial_anchors_account": data.#azurerm_spatial_anchors_account
+	#ds: "\(#prefix)_spring_cloud_app": data.#azurerm_spring_cloud_app
+	#ds: "\(#prefix)_spring_cloud_service": data.#azurerm_spring_cloud_service
+	#ds: "\(#prefix)_ssh_public_key": data.#azurerm_ssh_public_key
+	#ds: "\(#prefix)_stack_hci_cluster": data.#azurerm_stack_hci_cluster
+	#ds: "\(#prefix)_stack_hci_storage_path": data.#azurerm_stack_hci_storage_path
+	#ds: "\(#prefix)_static_web_app": data.#azurerm_static_web_app
+	#ds: "\(#prefix)_storage_account_blob_container_sas": data.#azurerm_storage_account_blob_container_sas
+	#ds: "\(#prefix)_storage_account": data.#azurerm_storage_account
+	#ds: "\(#prefix)_storage_account_sas": data.#azurerm_storage_account_sas
+	#ds: "\(#prefix)_storage_blob": data.#azurerm_storage_blob
+	#ds: "\(#prefix)_storage_container": data.#azurerm_storage_container
+	#ds: "\(#prefix)_storage_containers": data.#azurerm_storage_containers
+	#ds: "\(#prefix)_storage_encryption_scope": data.#azurerm_storage_encryption_scope
+	#ds: "\(#prefix)_storage_management_policy": data.#azurerm_storage_management_policy
+	#ds: "\(#prefix)_storage_queue": data.#azurerm_storage_queue
+	#ds: "\(#prefix)_storage_share": data.#azurerm_storage_share
+	#ds: "\(#prefix)_storage_sync": data.#azurerm_storage_sync
+	#ds: "\(#prefix)_storage_sync_group": data.#azurerm_storage_sync_group
+	#ds: "\(#prefix)_storage_table_entities": data.#azurerm_storage_table_entities
+	#ds: "\(#prefix)_storage_table_entity": data.#azurerm_storage_table_entity
+	#ds: "\(#prefix)_storage_table": data.#azurerm_storage_table
+	#ds: "\(#prefix)_stream_analytics_job": data.#azurerm_stream_analytics_job
+	#ds: "\(#prefix)_subnet": data.#azurerm_subnet
+	#ds: "\(#prefix)_subscription": data.#azurerm_subscription
+	#ds: "\(#prefix)_subscription_template_deployment": data.#azurerm_subscription_template_deployment
+	#ds: "\(#prefix)_subscriptions": data.#azurerm_subscriptions
+	#ds: "\(#prefix)_synapse_workspace": data.#azurerm_synapse_workspace
+	#ds: "\(#prefix)_system_center_virtual_machine_manager_inventory_items": data.#azurerm_system_center_virtual_machine_manager_inventory_items
+	#ds: "\(#prefix)_template_spec_version": data.#azurerm_template_spec_version
+	#ds: "\(#prefix)_tenant_template_deployment": data.#azurerm_tenant_template_deployment
+	#ds: "\(#prefix)_traffic_manager_geographical_location": data.#azurerm_traffic_manager_geographical_location
+	#ds: "\(#prefix)_traffic_manager_profile": data.#azurerm_traffic_manager_profile
+	#ds: "\(#prefix)_trusted_signing_account": data.#azurerm_trusted_signing_account
+	#ds: "\(#prefix)_user_assigned_identity": data.#azurerm_user_assigned_identity
+	#ds: "\(#prefix)_virtual_desktop_application_group": data.#azurerm_virtual_desktop_application_group
+	#ds: "\(#prefix)_virtual_desktop_host_pool": data.#azurerm_virtual_desktop_host_pool
+	#ds: "\(#prefix)_virtual_desktop_workspace": data.#azurerm_virtual_desktop_workspace
+	#ds: "\(#prefix)_virtual_hub_connection": data.#azurerm_virtual_hub_connection
+	#ds: "\(#prefix)_virtual_hub": data.#azurerm_virtual_hub
+	#ds: "\(#prefix)_virtual_hub_route_table": data.#azurerm_virtual_hub_route_table
+	#ds: "\(#prefix)_virtual_machine": data.#azurerm_virtual_machine
+	#ds: "\(#prefix)_virtual_machine_scale_set": data.#azurerm_virtual_machine_scale_set
+	#ds: "\(#prefix)_virtual_network_gateway_connection": data.#azurerm_virtual_network_gateway_connection
+	#ds: "\(#prefix)_virtual_network_gateway": data.#azurerm_virtual_network_gateway
+	#ds: "\(#prefix)_virtual_network": data.#azurerm_virtual_network
+	#ds: "\(#prefix)_virtual_network_peering": data.#azurerm_virtual_network_peering
+	#ds: "\(#prefix)_virtual_wan": data.#azurerm_virtual_wan
+	#ds: "\(#prefix)_vmware_private_cloud": data.#azurerm_vmware_private_cloud
+	#ds: "\(#prefix)_vpn_gateway": data.#azurerm_vpn_gateway
+	#ds: "\(#prefix)_vpn_server_configuration": data.#azurerm_vpn_server_configuration
+	#ds: "\(#prefix)_web_application_firewall_policy": data.#azurerm_web_application_firewall_policy
+	#ds: "\(#prefix)_web_pubsub": data.#azurerm_web_pubsub
+	#ds: "\(#prefix)_web_pubsub_private_link_resource": data.#azurerm_web_pubsub_private_link_resource
+	#ds: "\(#prefix)_windows_function_app": data.#azurerm_windows_function_app
+	#ds: "\(#prefix)_windows_web_app": data.#azurerm_windows_web_app
+
+}
