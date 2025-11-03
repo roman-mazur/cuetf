@@ -6,6 +6,14 @@ package data
 	close({
 		// Identifier.
 		account_id!: string
+		created_at?: string
+
+		// Indicates if this is a locally or remotely configured tunnel.
+		// If `local`, manage the tunnel using a YAML file on the origin
+		// machine. If `cloudflare`, manage the tunnel's configuration on
+		// the Zero Trust dashboard.
+		// Available values: "local", "cloudflare".
+		source?: string
 
 		// The tunnel configuration and ingress rules.
 		config?: close({
@@ -263,18 +271,15 @@ package data
 			})
 		})
 
-		// Indicates if this is a locally or remotely configured tunnel.
-		// If `local`, manage the tunnel using a YAML file on the origin
-		// machine. If `cloudflare`, manage the tunnel's configuration on
-		// the Zero Trust dashboard.
-		// Available values: "local", "cloudflare".
-		source?:     string
-		created_at?: string
-
 		// UUID of the tunnel.
 		tunnel_id!: string
 
 		// The version of the Tunnel Configuration.
 		version?: number
+
+		// Enable private network access from WARP users to private
+		// network routes. This is enabled if the tunnel has an assigned
+		// route.
+		warp_routing_enabled?: bool
 	})
 }

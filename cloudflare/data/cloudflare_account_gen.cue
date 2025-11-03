@@ -6,6 +6,12 @@ package data
 	close({
 		// Account identifier tag.
 		account_id?: string
+
+		// Timestamp for the creation of the account
+		created_on?: string
+
+		// Account identifier tag.
+		id?: string
 		filter?: close({
 			// Direction to order results.
 			// Available values: "asc", "desc".
@@ -15,8 +21,17 @@ package data
 			name?: string
 		})
 
-		// Timestamp for the creation of the account
-		created_on?: string
+		// Parent container details
+		managed_by?: close({
+			// ID of the parent Organization, if one exists
+			parent_org_id?: string
+
+			// Name of the parent Organization, if one exists
+			parent_org_name?: string
+		})
+
+		// Account name
+		name?: string
 
 		// Account settings
 		settings?: close({
@@ -27,12 +42,6 @@ package data
 			// Two-Factor Authentication is enabled
 			enforce_twofactor?: bool
 		})
-
-		// Account identifier tag.
-		id?: string
-
-		// Account name
-		name?: string
 
 		// Available values: "standard", "enterprise".
 		type?: string

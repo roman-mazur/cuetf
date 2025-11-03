@@ -13,6 +13,24 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
+			// Timestamp for the creation of the account
+			created_on?: string
+
+			// Identifier
+			id?: string
+
+			// Parent container details
+			managed_by?: close({
+				// ID of the parent Organization, if one exists
+				parent_org_id?: string
+
+				// Name of the parent Organization, if one exists
+				parent_org_name?: string
+			})
+
+			// Account name
+			name?: string
+
 			// Account settings
 			settings?: close({
 				// Sets an abuse contact email to notify for abuse reports.
@@ -22,19 +40,28 @@ package data
 				// Two-Factor Authentication is enabled
 				enforce_twofactor?: bool
 			})
-
-			// Timestamp for the creation of the account
-			created_on?: string
-
-			// Identifier
-			id?: string
-
-			// Account name
-			name?: string
 
 			// Available values: "standard", "enterprise".
 			type?: string
 		}), [...close({
+			// Timestamp for the creation of the account
+			created_on?: string
+
+			// Identifier
+			id?: string
+
+			// Parent container details
+			managed_by?: close({
+				// ID of the parent Organization, if one exists
+				parent_org_id?: string
+
+				// Name of the parent Organization, if one exists
+				parent_org_name?: string
+			})
+
+			// Account name
+			name?: string
+
 			// Account settings
 			settings?: close({
 				// Sets an abuse contact email to notify for abuse reports.
@@ -44,15 +71,6 @@ package data
 				// Two-Factor Authentication is enabled
 				enforce_twofactor?: bool
 			})
-
-			// Timestamp for the creation of the account
-			created_on?: string
-
-			// Identifier
-			id?: string
-
-			// Account name
-			name?: string
 
 			// Available values: "standard", "enterprise".
 			type?: string

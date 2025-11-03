@@ -25,40 +25,7 @@ package res
 		// Identifier.
 		id?: string
 
-		// Whether the API call was successful.
-		success?: bool
-
 		// Identifier.
 		zone_id!: string
-		errors?: matchN(1, [close({
-			code?:              number
-			documentation_url?: string
-			message?:           string
-			source?: close({
-				pointer?: string
-			})
-		}), [...close({
-			code?:              number
-			documentation_url?: string
-			message?:           string
-			source?: close({
-				pointer?: string
-			})
-		})]])
-		messages?: matchN(1, [close({
-			code?:              number
-			documentation_url?: string
-			message?:           string
-			source?: close({
-				pointer?: string
-			})
-		}), [...close({
-			code?:              number
-			documentation_url?: string
-			message?:           string
-			source?: close({
-				pointer?: string
-			})
-		})]])
 	})
 }

@@ -138,6 +138,9 @@ package data
 				tunnel_name?: [...string]
 
 				// Usage depends on specific alert type
+				type?: [...string]
+
+				// Usage depends on specific alert type
 				where?: [...string]
 
 				// Usage depends on specific alert type
@@ -151,7 +154,8 @@ package data
 			// Refers to which event will trigger a Notification dispatch. You
 			// can use the endpoint to get available alert types which then
 			// will give you a list of possible values.
-			// Available values: "access_custom_certificate_expiration_type",
+			// Available values: "abuse_report_alert",
+			// "access_custom_certificate_expiration_type",
 			// "advanced_ddos_attack_l4_alert",
 			// "advanced_ddos_attack_l7_alert", "advanced_http_alert_error",
 			// "bgp_hijack_notification", "billing_usage_alert",
@@ -366,6 +370,9 @@ package data
 				tunnel_name?: [...string]
 
 				// Usage depends on specific alert type
+				type?: [...string]
+
+				// Usage depends on specific alert type
 				where?: [...string]
 
 				// Usage depends on specific alert type
@@ -379,7 +386,8 @@ package data
 			// Refers to which event will trigger a Notification dispatch. You
 			// can use the endpoint to get available alert types which then
 			// will give you a list of possible values.
-			// Available values: "access_custom_certificate_expiration_type",
+			// Available values: "abuse_report_alert",
+			// "access_custom_certificate_expiration_type",
 			// "advanced_ddos_attack_l4_alert",
 			// "advanced_ddos_attack_l7_alert", "advanced_http_alert_error",
 			// "bgp_hijack_notification", "billing_usage_alert",

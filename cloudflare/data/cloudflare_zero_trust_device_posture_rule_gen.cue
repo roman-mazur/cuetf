@@ -110,8 +110,8 @@ package data
 			os_distro_revision?: string
 
 			// Additional version data. For Mac or iOS, the Product Version
-			// Extra. For Linux, the kernel release version. (Mac, iOS, and
-			// Linux only).
+			// Extra. For Linux, the distribution name and version. (Mac,
+			// iOS, and Linux only).
 			os_version_extra?: string
 
 			// Overall.

@@ -134,7 +134,7 @@ package data
 				// A JavaScript variable name for the binding.
 				name?: string
 
-				// Namespace to bind to.
+				// The name of the dispatch namespace.
 				namespace?: string
 
 				// Namespace identifier tag.
@@ -177,9 +177,9 @@ package data
 				// "durable_object_namespace", "hyperdrive", "inherit", "images",
 				// "json", "kv_namespace", "mtls_certificate", "plain_text",
 				// "pipelines", "queue", "r2_bucket", "secret_text",
-				// "send_email", "service", "tail_consumer", "text_blob",
-				// "vectorize", "version_metadata", "secrets_store_secret",
-				// "secret_key", "workflow", "wasm_module".
+				// "send_email", "service", "text_blob", "vectorize",
+				// "version_metadata", "secrets_store_secret", "secret_key",
+				// "workflow", "wasm_module".
 				type?: string
 
 				// Allowed operations with the key. [Learn
@@ -271,7 +271,7 @@ package data
 				// A JavaScript variable name for the binding.
 				name?: string
 
-				// Namespace to bind to.
+				// The name of the dispatch namespace.
 				namespace?: string
 
 				// Namespace identifier tag.
@@ -314,9 +314,9 @@ package data
 				// "durable_object_namespace", "hyperdrive", "inherit", "images",
 				// "json", "kv_namespace", "mtls_certificate", "plain_text",
 				// "pipelines", "queue", "r2_bucket", "secret_text",
-				// "send_email", "service", "tail_consumer", "text_blob",
-				// "vectorize", "version_metadata", "secrets_store_secret",
-				// "secret_key", "workflow", "wasm_module".
+				// "send_email", "service", "text_blob", "vectorize",
+				// "version_metadata", "secrets_store_secret", "secret_key",
+				// "workflow", "wasm_module".
 				type?: string
 
 				// Allowed operations with the key. [Learn
@@ -642,7 +642,7 @@ package data
 				// A JavaScript variable name for the binding.
 				name?: string
 
-				// Namespace to bind to.
+				// The name of the dispatch namespace.
 				namespace?: string
 
 				// Namespace identifier tag.
@@ -685,9 +685,9 @@ package data
 				// "durable_object_namespace", "hyperdrive", "inherit", "images",
 				// "json", "kv_namespace", "mtls_certificate", "plain_text",
 				// "pipelines", "queue", "r2_bucket", "secret_text",
-				// "send_email", "service", "tail_consumer", "text_blob",
-				// "vectorize", "version_metadata", "secrets_store_secret",
-				// "secret_key", "workflow", "wasm_module".
+				// "send_email", "service", "text_blob", "vectorize",
+				// "version_metadata", "secrets_store_secret", "secret_key",
+				// "workflow", "wasm_module".
 				type?: string
 
 				// Allowed operations with the key. [Learn
@@ -779,7 +779,7 @@ package data
 				// A JavaScript variable name for the binding.
 				name?: string
 
-				// Namespace to bind to.
+				// The name of the dispatch namespace.
 				namespace?: string
 
 				// Namespace identifier tag.
@@ -822,9 +822,9 @@ package data
 				// "durable_object_namespace", "hyperdrive", "inherit", "images",
 				// "json", "kv_namespace", "mtls_certificate", "plain_text",
 				// "pipelines", "queue", "r2_bucket", "secret_text",
-				// "send_email", "service", "tail_consumer", "text_blob",
-				// "vectorize", "version_metadata", "secrets_store_secret",
-				// "secret_key", "workflow", "wasm_module".
+				// "send_email", "service", "text_blob", "vectorize",
+				// "version_metadata", "secrets_store_secret", "secret_key",
+				// "workflow", "wasm_module".
 				type?: string
 
 				// Allowed operations with the key. [Learn
