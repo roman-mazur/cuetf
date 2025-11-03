@@ -6,20 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lb_listener_rule")
 	close({
-		arn?: string
-		action?: matchN(1, [#action, [_, ...] & [...#action]])
+		arn?:          string
 		id?:           string
 		listener_arn!: string
+		priority?:     number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
-		priority?: number
-		tags?: [string]: string
-		condition?: matchN(1, [#condition, [_, ...] & [...#condition]])
+		region?: string
+		action?: matchN(1, [#action, [_, ...] & [...#action]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
+		condition?: matchN(1, [#condition, [_, ...] & [...#condition]])
+		transform?: matchN(1, [#transform, list.MaxItems(2) & [...#transform]])
 	})
 
 	#action: close({
@@ -40,6 +41,12 @@ import "list"
 		path_pattern?: matchN(1, [_#defs."/$defs/condition/$defs/path_pattern", list.MaxItems(1) & [..._#defs."/$defs/condition/$defs/path_pattern"]])
 		query_string?: matchN(1, [_#defs."/$defs/condition/$defs/query_string", [..._#defs."/$defs/condition/$defs/query_string"]])
 		source_ip?: matchN(1, [_#defs."/$defs/condition/$defs/source_ip", list.MaxItems(1) & [..._#defs."/$defs/condition/$defs/source_ip"]])
+	})
+
+	#transform: close({
+		host_header_rewrite_config?: matchN(1, [_#defs."/$defs/transform/$defs/host_header_rewrite_config", list.MaxItems(1) & [..._#defs."/$defs/transform/$defs/host_header_rewrite_config"]])
+		url_rewrite_config?: matchN(1, [_#defs."/$defs/transform/$defs/url_rewrite_config", list.MaxItems(1) & [..._#defs."/$defs/transform/$defs/url_rewrite_config"]])
+		type!: string
 	})
 
 	_#defs: "/$defs/action/$defs/authenticate_cognito": close({
@@ -98,12 +105,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/condition/$defs/host_header": close({
-		values!: [...string]
+		regex_values?: [...string]
+		values?: [...string]
 	})
 
 	_#defs: "/$defs/condition/$defs/http_header": close({
 		http_header_name!: string
-		values!: [...string]
+		regex_values?: [...string]
+		values?: [...string]
 	})
 
 	_#defs: "/$defs/condition/$defs/http_request_method": close({
@@ -111,7 +120,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/condition/$defs/path_pattern": close({
-		values!: [...string]
+		regex_values?: [...string]
+		values?: [...string]
 	})
 
 	_#defs: "/$defs/condition/$defs/query_string": close({
@@ -121,5 +131,23 @@ import "list"
 
 	_#defs: "/$defs/condition/$defs/source_ip": close({
 		values!: [...string]
+	})
+
+	_#defs: "/$defs/transform/$defs/host_header_rewrite_config": close({
+		rewrite?: matchN(1, [_#defs."/$defs/transform/$defs/host_header_rewrite_config/$defs/rewrite", list.MaxItems(1) & [..._#defs."/$defs/transform/$defs/host_header_rewrite_config/$defs/rewrite"]])
+	})
+
+	_#defs: "/$defs/transform/$defs/host_header_rewrite_config/$defs/rewrite": close({
+		regex!:   string
+		replace!: string
+	})
+
+	_#defs: "/$defs/transform/$defs/url_rewrite_config": close({
+		rewrite?: matchN(1, [_#defs."/$defs/transform/$defs/url_rewrite_config/$defs/rewrite", list.MaxItems(1) & [..._#defs."/$defs/transform/$defs/url_rewrite_config/$defs/rewrite"]])
+	})
+
+	_#defs: "/$defs/transform/$defs/url_rewrite_config/$defs/rewrite": close({
+		regex!:   string
+		replace!: string
 	})
 }

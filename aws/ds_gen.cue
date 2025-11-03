@@ -218,6 +218,7 @@ _ds: aws_ecr_repositories: data.#aws_ecr_repositories
 _ds: aws_ecr_repository_creation_template: data.#aws_ecr_repository_creation_template
 _ds: aws_ecr_repository: data.#aws_ecr_repository
 _ds: aws_ecrpublic_authorization_token: data.#aws_ecrpublic_authorization_token
+_ds: aws_ecrpublic_images: data.#aws_ecrpublic_images
 _ds: aws_ecs_cluster: data.#aws_ecs_cluster
 _ds: aws_ecs_clusters: data.#aws_ecs_clusters
 _ds: aws_ecs_container_definition: data.#aws_ecs_container_definition

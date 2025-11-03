@@ -810,6 +810,7 @@ _res: aws_kms_replica_external_key: res.#aws_kms_replica_external_key
 _res: aws_kms_replica_key: res.#aws_kms_replica_key
 _res: aws_lakeformation_data_cells_filter: res.#aws_lakeformation_data_cells_filter
 _res: aws_lakeformation_data_lake_settings: res.#aws_lakeformation_data_lake_settings
+_res: aws_lakeformation_identity_center_configuration: res.#aws_lakeformation_identity_center_configuration
 _res: aws_lakeformation_lf_tag_expression: res.#aws_lakeformation_lf_tag_expression
 _res: aws_lakeformation_lf_tag: res.#aws_lakeformation_lf_tag
 _res: aws_lakeformation_opt_in: res.#aws_lakeformation_opt_in
