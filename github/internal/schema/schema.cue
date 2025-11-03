@@ -306,7 +306,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 			}
 		}
 		github_actions_organization_secret: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					created_at: {
@@ -317,6 +317,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 					destroy_on_drift: {
 						type:             "bool"
+						description:      "Boolean indicating whether to recreate the secret if it's modified outside of Terraform. When `true` (default), Terraform will delete and recreate the secret if it detects external changes. When `false`, Terraform will acknowledge external changes but not recreate the secret."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -669,7 +670,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 			}
 		}
 		github_actions_secret: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					created_at: {
@@ -677,6 +678,12 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description:      "Date of 'actions_secret' creation."
 						description_kind: "plain"
 						computed:         true
+					}
+					destroy_on_drift: {
+						type:             "bool"
+						description:      "Boolean indicating whether to recreate the secret if it's modified outside of Terraform. When `true` (default), Terraform will delete and recreate the secret if it detects external changes. When `false`, Terraform will acknowledge external changes but not recreate the secret."
+						description_kind: "plain"
+						optional:         true
 					}
 					encrypted_value: {
 						type:             "string"
