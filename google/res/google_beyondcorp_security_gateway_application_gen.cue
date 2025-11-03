@@ -44,7 +44,7 @@ import "list"
 		hostname!: string
 
 		// Optional. Ports of the application.
-		ports?: [...number]
+		ports!: [...number]
 	})
 
 	#timeouts: close({

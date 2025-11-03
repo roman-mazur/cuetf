@@ -136,6 +136,7 @@ import "list"
 		object_conditions?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/object_conditions", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/object_conditions"]])
 		posix_data_sink?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/posix_data_sink", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/posix_data_sink"]])
 		posix_data_source?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/posix_data_source", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/posix_data_source"]])
+		transfer_manifest?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/transfer_manifest", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/transfer_manifest"]])
 		transfer_options?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/transfer_options", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/transfer_options"]])
 	})
 
@@ -500,6 +501,11 @@ import "list"
 	_#defs: "/$defs/transfer_spec/$defs/posix_data_source": close({
 		// Root directory path to the filesystem.
 		root_directory!: string
+	})
+
+	_#defs: "/$defs/transfer_spec/$defs/transfer_manifest": close({
+		// Cloud Storage path to the manifest CSV.
+		location!: string
 	})
 
 	_#defs: "/$defs/transfer_spec/$defs/transfer_options": close({

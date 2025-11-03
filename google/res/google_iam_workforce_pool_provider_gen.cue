@@ -123,20 +123,17 @@ import "list"
 		// A user-specified display name for the provider. Cannot exceed
 		// 32 characters.
 		display_name?: string
+		id?:           string
 
 		// The location for the resource.
 		location!: string
-		id?:       string
-		extended_attributes_oauth2_client?: matchN(1, [#extended_attributes_oauth2_client, list.MaxItems(1) & [...#extended_attributes_oauth2_client]])
 
 		// Output only. The resource name of the provider.
 		// Format:
 		// 'locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}'
 		name?: string
+		extended_attributes_oauth2_client?: matchN(1, [#extended_attributes_oauth2_client, list.MaxItems(1) & [...#extended_attributes_oauth2_client]])
 		extra_attributes_oauth2_client?: matchN(1, [#extra_attributes_oauth2_client, list.MaxItems(1) & [...#extra_attributes_oauth2_client]])
-		oidc?: matchN(1, [#oidc, list.MaxItems(1) & [...#oidc]])
-		saml?: matchN(1, [#saml, list.MaxItems(1) & [...#saml]])
-		timeouts?: #timeouts
 
 		// The ID for the provider, which becomes the final component of
 		// the resource name.
@@ -145,6 +142,25 @@ import "list"
 		// The prefix 'gcp-' is reserved for use by Google, and may not be
 		// specified.
 		provider_id!: string
+		oidc?: matchN(1, [#oidc, list.MaxItems(1) & [...#oidc]])
+		saml?: matchN(1, [#saml, list.MaxItems(1) & [...#saml]])
+
+		// Agentspace only. Specifies whether the workforce identity pool
+		// provider uses SCIM-managed groups instead of the
+		// 'google.groups'
+		// attribute mapping for authorization checks.
+		//
+		// The 'scimUsage' and 'extendedAttributesOauth2Client' fields are
+		// mutually exclusive. A request that enables both fields on the
+		// same
+		// workforce identity pool provider will produce an error.
+		// * SCIM_USAGE_UNSPECIFIED: Default behaviour
+		// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the
+		// 'google.groups'
+		// attribute mapping for authorization checks Possible values:
+		// ["SCIM_USAGE_UNSPECIFIED", "ENABLED_FOR_GROUPS"]
+		scim_usage?: string
+		timeouts?:   #timeouts
 
 		// The current state of the provider.
 		// * STATE_UNSPECIFIED: State unspecified.

@@ -151,8 +151,10 @@ package data
 		// private_cluster_config.
 		control_plane_endpoints_config?: [...close({
 			dns_endpoint_config?: [...close({
-				allow_external_traffic?: bool
-				endpoint?:               string
+				allow_external_traffic?:    bool
+				enable_k8s_certs_via_dns?:  bool
+				enable_k8s_tokens_via_dns?: bool
+				endpoint?:                  string
 			})]
 			ip_endpoints_config?: [...close({
 				enabled?: bool
@@ -273,6 +275,7 @@ package data
 			membership?:          string
 			membership_id?:       string
 			membership_location?: string
+			membership_type?:     string
 			pre_registered?:      bool
 			project?:             string
 		})]

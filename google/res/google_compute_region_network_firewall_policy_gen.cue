@@ -25,8 +25,16 @@ package res
 		// must be a lowercase letter, and all following characters must
 		// be a dash, lowercase letter, or digit, except the last
 		// character, which cannot be a dash.
-		name!:    string
-		project?: string
+		name!: string
+
+		// Policy type is used to determine which resources (networks) the
+		// policy can be associated with.
+		// A policy can be associated with a network only if the network
+		// has the matching policyType in its network profile.
+		// Different policy types may support some of the Firewall Rules
+		// features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY"]
+		policy_type?: string
+		project?:     string
 
 		// The region of this resource.
 		region?: string
@@ -34,11 +42,11 @@ package res
 		// The unique identifier for the resource. This identifier is
 		// defined by the server.
 		region_network_firewall_policy_id?: string
+		timeouts?:                          #timeouts
 
 		// Total count of all firewall policy rule tuples. A firewall
 		// policy can not exceed a set number of tuples.
 		rule_tuple_count?: number
-		timeouts?:         #timeouts
 
 		// Server-defined URL for the resource.
 		self_link?: string
