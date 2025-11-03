@@ -6,9 +6,9 @@ package res
 	close({
 		timeouts?:               #timeouts
 		bot_name!:               string
+		calling_enabled?:        bool
 		calling_web_hook?:       string
 		deployment_environment?: string
-		enable_calling?:         bool
 		id?:                     string
 		location!:               string
 		resource_group_name!:    string

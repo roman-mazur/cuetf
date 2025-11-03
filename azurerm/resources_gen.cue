@@ -693,6 +693,7 @@ _res: azurerm_network_manager_management_group_connection: res.#azurerm_network_
 _res: azurerm_network_manager_network_group: res.#azurerm_network_manager_network_group
 _res: azurerm_network_manager_routing_configuration: res.#azurerm_network_manager_routing_configuration
 _res: azurerm_network_manager_routing_rule_collection: res.#azurerm_network_manager_routing_rule_collection
+_res: azurerm_network_manager_routing_rule: res.#azurerm_network_manager_routing_rule
 _res: azurerm_network_manager_scope_connection: res.#azurerm_network_manager_scope_connection
 _res: azurerm_network_manager_security_admin_configuration: res.#azurerm_network_manager_security_admin_configuration
 _res: azurerm_network_manager_static_member: res.#azurerm_network_manager_static_member
@@ -721,6 +722,7 @@ _res: azurerm_oracle_autonomous_database: res.#azurerm_oracle_autonomous_databas
 _res: azurerm_oracle_cloud_vm_cluster: res.#azurerm_oracle_cloud_vm_cluster
 _res: azurerm_oracle_exadata_infrastructure: res.#azurerm_oracle_exadata_infrastructure
 _res: azurerm_oracle_exascale_database_storage_vault: res.#azurerm_oracle_exascale_database_storage_vault
+_res: azurerm_oracle_resource_anchor: res.#azurerm_oracle_resource_anchor
 _res: azurerm_orbital_contact: res.#azurerm_orbital_contact
 _res: azurerm_orbital_contact_profile: res.#azurerm_orbital_contact_profile
 _res: azurerm_orbital_spacecraft: res.#azurerm_orbital_spacecraft
