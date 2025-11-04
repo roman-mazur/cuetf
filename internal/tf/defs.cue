@@ -4,8 +4,10 @@ package tf
 
 #ProviderSchema: {
 	provider: #type
-	resource_schemas: [string]:    #type
-	data_source_schemas: [string]: #type
+	resource_schemas: [string]:           #type
+	data_source_schemas: [string]:        #type
+	resource_identity_schemas: [string]:  #type
+	ephemeral_resource_schemas: [string]: #type
 }
 
 #type: {
@@ -63,6 +65,7 @@ _recDepth: [0, 1, 2, 3, 4, 5]
 	computed:   bool | *false
 	sensitive:  bool | *false
 	deprecated: bool | *false
+	write_only: bool | *false
 }
 
 _attrTypeOptions: {type: #attr.#type} | {
