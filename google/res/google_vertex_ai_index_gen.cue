@@ -65,7 +65,7 @@ import "list"
 		// information.
 		metadata_schema_uri?: string
 		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
-		metadata?: matchN(1, [#metadata, list.MaxItems(1) & [_, ...] & [...#metadata]])
+		metadata!: matchN(1, [#metadata, list.MaxItems(1) & [_, ...] & [...#metadata]])
 		timeouts?: #timeouts
 
 		// The resource name of the Index.
@@ -96,7 +96,7 @@ import "list"
 	})
 
 	#metadata: close({
-		config?: matchN(1, [_#defs."/$defs/metadata/$defs/config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/metadata/$defs/config"]])
+		config!: matchN(1, [_#defs."/$defs/metadata/$defs/config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/metadata/$defs/config"]])
 
 		// Allows inserting, updating or deleting the contents of the
 		// Matching Engine Index.

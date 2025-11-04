@@ -398,7 +398,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/spec/$defs/containers/$defs/env/$defs/value_from": close({
-		secret_key_ref?: matchN(1, [_#defs."/$defs/template/$defs/spec/$defs/containers/$defs/env/$defs/value_from/$defs/secret_key_ref", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/template/$defs/spec/$defs/containers/$defs/env/$defs/value_from/$defs/secret_key_ref"]])
+		secret_key_ref!: matchN(1, [_#defs."/$defs/template/$defs/spec/$defs/containers/$defs/env/$defs/value_from/$defs/secret_key_ref", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/template/$defs/spec/$defs/containers/$defs/env/$defs/value_from/$defs/secret_key_ref"]])
 	})
 
 	_#defs: "/$defs/template/$defs/spec/$defs/containers/$defs/env/$defs/value_from/$defs/secret_key_ref": close({

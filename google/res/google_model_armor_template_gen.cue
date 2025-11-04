@@ -36,7 +36,7 @@ import "list"
 		// If auto-generating Id server-side, remove this field and
 		// template_id from the method_signature of Create RPC
 		template_id!: string
-		filter_config?: matchN(1, [#filter_config, list.MaxItems(1) & [_, ...] & [...#filter_config]])
+		filter_config!: matchN(1, [#filter_config, list.MaxItems(1) & [_, ...] & [...#filter_config]])
 		template_metadata?: matchN(1, [#template_metadata, list.MaxItems(1) & [...#template_metadata]])
 		timeouts?: #timeouts
 
@@ -124,7 +124,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/filter_config/$defs/rai_settings": close({
-		rai_filters?: matchN(1, [_#defs."/$defs/filter_config/$defs/rai_settings/$defs/rai_filters", [_, ...] & [..._#defs."/$defs/filter_config/$defs/rai_settings/$defs/rai_filters"]])
+		rai_filters!: matchN(1, [_#defs."/$defs/filter_config/$defs/rai_settings/$defs/rai_filters", [_, ...] & [..._#defs."/$defs/filter_config/$defs/rai_settings/$defs/rai_filters"]])
 	})
 
 	_#defs: "/$defs/filter_config/$defs/rai_settings/$defs/rai_filters": close({

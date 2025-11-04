@@ -203,7 +203,7 @@ import "list"
 	})
 
 	#export_policy: close({
-		rules?: matchN(1, [_#defs."/$defs/export_policy/$defs/rules", [_, ...] & [..._#defs."/$defs/export_policy/$defs/rules"]])
+		rules!: matchN(1, [_#defs."/$defs/export_policy/$defs/rules", [_, ...] & [..._#defs."/$defs/export_policy/$defs/rules"]])
 	})
 
 	#hybrid_replication_parameters: close({

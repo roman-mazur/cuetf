@@ -39,7 +39,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/access_levels/$defs/basic": close({
-		conditions?: matchN(1, [_#defs."/$defs/access_levels/$defs/basic/$defs/conditions", [_, ...] & [..._#defs."/$defs/access_levels/$defs/basic/$defs/conditions"]])
+		conditions!: matchN(1, [_#defs."/$defs/access_levels/$defs/basic/$defs/conditions", [_, ...] & [..._#defs."/$defs/access_levels/$defs/basic/$defs/conditions"]])
 
 		// How the conditions list should be combined to determine if a
 		// request
@@ -149,7 +149,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/access_levels/$defs/custom": close({
-		expr?: matchN(1, [_#defs."/$defs/access_levels/$defs/custom/$defs/expr", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/access_levels/$defs/custom/$defs/expr"]])
+		expr!: matchN(1, [_#defs."/$defs/access_levels/$defs/custom/$defs/expr", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/access_levels/$defs/custom/$defs/expr"]])
 	})
 
 	_#defs: "/$defs/access_levels/$defs/custom/$defs/expr": close({

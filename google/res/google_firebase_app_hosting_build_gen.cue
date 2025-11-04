@@ -81,7 +81,7 @@ import "list"
 		// resource.
 		etag?: string
 		id?:   string
-		source?: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
 		timeouts?: #timeouts
 
 		// The Artifact Registry

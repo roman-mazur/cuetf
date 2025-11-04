@@ -31,7 +31,7 @@ import "list"
 
 		// The state of the key.
 		state?: string
-		key_data?: matchN(1, [#key_data, list.MaxItems(1) & [_, ...] & [...#key_data]])
+		key_data!: matchN(1, [#key_data, list.MaxItems(1) & [_, ...] & [...#key_data]])
 		timeouts?: #timeouts
 
 		// The purpose of the key. Possible values: ["ENCRYPTION"]

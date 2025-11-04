@@ -24,7 +24,7 @@ import "list"
 
 		// The type of the membership.
 		type?: string
-		roles?: matchN(1, [#roles, [_, ...] & [...#roles]])
+		roles!: matchN(1, [#roles, [_, ...] & [...#roles]])
 		timeouts?: #timeouts
 
 		// The time when the Membership was last updated.

@@ -57,7 +57,7 @@ import "list"
 
 		// The bare metal node pool name.
 		name!: string
-		node_pool_config?: matchN(1, [#node_pool_config, list.MaxItems(1) & [_, ...] & [...#node_pool_config]])
+		node_pool_config!: matchN(1, [#node_pool_config, list.MaxItems(1) & [_, ...] & [...#node_pool_config]])
 		timeouts?: #timeouts
 		project?:  string
 
@@ -88,7 +88,7 @@ import "list"
 	})
 
 	#node_pool_config: close({
-		node_configs?: matchN(1, [_#defs."/$defs/node_pool_config/$defs/node_configs", [_, ...] & [..._#defs."/$defs/node_pool_config/$defs/node_configs"]])
+		node_configs!: matchN(1, [_#defs."/$defs/node_pool_config/$defs/node_configs", [_, ...] & [..._#defs."/$defs/node_pool_config/$defs/node_configs"]])
 		taints?: matchN(1, [_#defs."/$defs/node_pool_config/$defs/taints", [..._#defs."/$defs/node_pool_config/$defs/taints"]])
 
 		// The map of Kubernetes labels (key/value pairs) to be applied to

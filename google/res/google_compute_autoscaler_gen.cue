@@ -23,7 +23,7 @@ import "list"
 		name!:    string
 		id?:      string
 		project?: string
-		autoscaling_policy?: matchN(1, [#autoscaling_policy, list.MaxItems(1) & [_, ...] & [...#autoscaling_policy]])
+		autoscaling_policy!: matchN(1, [#autoscaling_policy, list.MaxItems(1) & [_, ...] & [...#autoscaling_policy]])
 
 		// URL of the managed instance group that this autoscaler will
 		// scale.

@@ -68,7 +68,7 @@ import "list"
 
 	#mapping_pipeline_job: close({
 		fhir_streaming_source?: matchN(1, [_#defs."/$defs/mapping_pipeline_job/$defs/fhir_streaming_source", list.MaxItems(1) & [..._#defs."/$defs/mapping_pipeline_job/$defs/fhir_streaming_source"]])
-		mapping_config?: matchN(1, [_#defs."/$defs/mapping_pipeline_job/$defs/mapping_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/mapping_pipeline_job/$defs/mapping_config"]])
+		mapping_config!: matchN(1, [_#defs."/$defs/mapping_pipeline_job/$defs/mapping_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/mapping_pipeline_job/$defs/mapping_config"]])
 
 		// If set, the mapping pipeline will write snapshots to this
 		// FHIR store without assigning stable IDs. You must
@@ -90,7 +90,7 @@ import "list"
 	})
 
 	#reconciliation_pipeline_job: close({
-		merge_config?: matchN(1, [_#defs."/$defs/reconciliation_pipeline_job/$defs/merge_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/reconciliation_pipeline_job/$defs/merge_config"]])
+		merge_config!: matchN(1, [_#defs."/$defs/reconciliation_pipeline_job/$defs/merge_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/reconciliation_pipeline_job/$defs/merge_config"]])
 
 		// The harmonized FHIR store to write harmonized FHIR resources
 		// to,
@@ -141,7 +141,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/reconciliation_pipeline_job/$defs/merge_config": close({
-		whistle_config_source?: matchN(1, [_#defs."/$defs/reconciliation_pipeline_job/$defs/merge_config/$defs/whistle_config_source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/reconciliation_pipeline_job/$defs/merge_config/$defs/whistle_config_source"]])
+		whistle_config_source!: matchN(1, [_#defs."/$defs/reconciliation_pipeline_job/$defs/merge_config/$defs/whistle_config_source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/reconciliation_pipeline_job/$defs/merge_config/$defs/whistle_config_source"]])
 
 		// Describes the mapping configuration.
 		description?: string

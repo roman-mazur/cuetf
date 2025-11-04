@@ -69,12 +69,12 @@ import "list"
 		// can be empty
 		// if the cluster does not have any worker nodes.
 		node_version?: string
-		authorization?: matchN(1, [#authorization, list.MaxItems(1) & [_, ...] & [...#authorization]])
+		authorization!: matchN(1, [#authorization, list.MaxItems(1) & [_, ...] & [...#authorization]])
 		control_plane?: matchN(1, [#control_plane, list.MaxItems(1) & [...#control_plane]])
 		control_plane_encryption?: matchN(1, [#control_plane_encryption, list.MaxItems(1) & [...#control_plane_encryption]])
-		fleet?: matchN(1, [#fleet, list.MaxItems(1) & [_, ...] & [...#fleet]])
+		fleet!: matchN(1, [#fleet, list.MaxItems(1) & [_, ...] & [...#fleet]])
 		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
-		networking?: matchN(1, [#networking, list.MaxItems(1) & [_, ...] & [...#networking]])
+		networking!: matchN(1, [#networking, list.MaxItems(1) & [_, ...] & [...#networking]])
 		system_addons_config?: matchN(1, [#system_addons_config, list.MaxItems(1) & [...#system_addons_config]])
 		timeouts?: #timeouts
 
@@ -101,7 +101,7 @@ import "list"
 	})
 
 	#authorization: close({
-		admin_users?: matchN(1, [_#defs."/$defs/authorization/$defs/admin_users", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/authorization/$defs/admin_users"]])
+		admin_users!: matchN(1, [_#defs."/$defs/authorization/$defs/admin_users", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/authorization/$defs/admin_users"]])
 	})
 
 	#control_plane: close({
@@ -158,7 +158,7 @@ import "list"
 
 	#maintenance_policy: close({
 		maintenance_exclusions?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/maintenance_exclusions", [..._#defs."/$defs/maintenance_policy/$defs/maintenance_exclusions"]])
-		window?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/window", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/window"]])
+		window!: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/window", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/window"]])
 	})
 
 	#networking: close({
@@ -262,7 +262,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/maintenance_policy/$defs/window": close({
-		recurring_window?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/window/$defs/recurring_window", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/window/$defs/recurring_window"]])
+		recurring_window!: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/window/$defs/recurring_window", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/window/$defs/recurring_window"]])
 	})
 
 	_#defs: "/$defs/maintenance_policy/$defs/window/$defs/recurring_window": close({

@@ -64,7 +64,7 @@ import "list"
 		// "projects/[project-id / number]" or "folders/[folder-id /
 		// number]" or "organizations/[org-id / number]".
 		parent?: string
-		quota_config?: matchN(1, [#quota_config, list.MaxItems(1) & [_, ...] & [...#quota_config]])
+		quota_config!: matchN(1, [#quota_config, list.MaxItems(1) & [_, ...] & [...#quota_config]])
 
 		// The id of the quota to which the quota preference is applied. A
 		// quota id is unique in the service.

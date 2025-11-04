@@ -177,7 +177,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/backup_config/$defs/selected_applications": close({
-		namespaced_names?: matchN(1, [_#defs."/$defs/backup_config/$defs/selected_applications/$defs/namespaced_names", [_, ...] & [..._#defs."/$defs/backup_config/$defs/selected_applications/$defs/namespaced_names"]])
+		namespaced_names!: matchN(1, [_#defs."/$defs/backup_config/$defs/selected_applications/$defs/namespaced_names", [_, ...] & [..._#defs."/$defs/backup_config/$defs/selected_applications/$defs/namespaced_names"]])
 	})
 
 	_#defs: "/$defs/backup_config/$defs/selected_applications/$defs/namespaced_names": close({
@@ -189,7 +189,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/backup_config/$defs/selected_namespace_labels": close({
-		resource_labels?: matchN(1, [_#defs."/$defs/backup_config/$defs/selected_namespace_labels/$defs/resource_labels", [_, ...] & [..._#defs."/$defs/backup_config/$defs/selected_namespace_labels/$defs/resource_labels"]])
+		resource_labels!: matchN(1, [_#defs."/$defs/backup_config/$defs/selected_namespace_labels/$defs/resource_labels", [_, ...] & [..._#defs."/$defs/backup_config/$defs/selected_namespace_labels/$defs/resource_labels"]])
 	})
 
 	_#defs: "/$defs/backup_config/$defs/selected_namespace_labels/$defs/resource_labels": close({
@@ -219,7 +219,7 @@ import "list"
 	_#defs: "/$defs/backup_schedule/$defs/rpo_config/$defs/exclusion_windows": close({
 		days_of_week?: matchN(1, [_#defs."/$defs/backup_schedule/$defs/rpo_config/$defs/exclusion_windows/$defs/days_of_week", list.MaxItems(1) & [..._#defs."/$defs/backup_schedule/$defs/rpo_config/$defs/exclusion_windows/$defs/days_of_week"]])
 		single_occurrence_date?: matchN(1, [_#defs."/$defs/backup_schedule/$defs/rpo_config/$defs/exclusion_windows/$defs/single_occurrence_date", list.MaxItems(1) & [..._#defs."/$defs/backup_schedule/$defs/rpo_config/$defs/exclusion_windows/$defs/single_occurrence_date"]])
-		start_time?: matchN(1, [_#defs."/$defs/backup_schedule/$defs/rpo_config/$defs/exclusion_windows/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/backup_schedule/$defs/rpo_config/$defs/exclusion_windows/$defs/start_time"]])
+		start_time!: matchN(1, [_#defs."/$defs/backup_schedule/$defs/rpo_config/$defs/exclusion_windows/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/backup_schedule/$defs/rpo_config/$defs/exclusion_windows/$defs/start_time"]])
 
 		// The exclusion window occurs every day if set to "True".
 		// Specifying this field to "False" is an error.

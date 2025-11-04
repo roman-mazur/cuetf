@@ -54,7 +54,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/restrictions/$defs/android_key_restrictions": close({
-		allowed_applications?: matchN(1, [_#defs."/$defs/restrictions/$defs/android_key_restrictions/$defs/allowed_applications", [_, ...] & [..._#defs."/$defs/restrictions/$defs/android_key_restrictions/$defs/allowed_applications"]])
+		allowed_applications!: matchN(1, [_#defs."/$defs/restrictions/$defs/android_key_restrictions/$defs/allowed_applications", [_, ...] & [..._#defs."/$defs/restrictions/$defs/android_key_restrictions/$defs/allowed_applications"]])
 	})
 
 	_#defs: "/$defs/restrictions/$defs/android_key_restrictions/$defs/allowed_applications": close({

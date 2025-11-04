@@ -52,7 +52,7 @@ import "list"
 	})
 
 	#big_query: close({
-		big_query_source?: matchN(1, [_#defs."/$defs/big_query/$defs/big_query_source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/big_query/$defs/big_query_source"]])
+		big_query_source!: matchN(1, [_#defs."/$defs/big_query/$defs/big_query_source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/big_query/$defs/big_query_source"]])
 
 		// Columns to construct entityId / row keys. If not provided
 		// defaults to entityId.

@@ -30,7 +30,7 @@ import "list"
 
 	#blocking_functions: close({
 		forward_inbound_credentials?: matchN(1, [_#defs."/$defs/blocking_functions/$defs/forward_inbound_credentials", list.MaxItems(1) & [..._#defs."/$defs/blocking_functions/$defs/forward_inbound_credentials"]])
-		triggers?: matchN(1, [_#defs."/$defs/blocking_functions/$defs/triggers", [_, ...] & [..._#defs."/$defs/blocking_functions/$defs/triggers"]])
+		triggers!: matchN(1, [_#defs."/$defs/blocking_functions/$defs/triggers", [_, ...] & [..._#defs."/$defs/blocking_functions/$defs/triggers"]])
 	})
 
 	#client: close({

@@ -23,7 +23,7 @@ package res
 		// the EKM. If unset, this defaults to MANUAL Default value:
 		// "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
 		key_management_mode?: string
-		service_resolvers?: matchN(1, [#service_resolvers, [_, ...] & [...#service_resolvers]])
+		service_resolvers!: matchN(1, [#service_resolvers, [_, ...] & [...#service_resolvers]])
 
 		// The location for the EkmConnection.
 		// A full list of valid locations can be found by running 'gcloud
@@ -44,7 +44,7 @@ package res
 		// examples, see
 		// https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
 		endpoint_filter?: string
-		server_certificates?: matchN(1, [_#defs."/$defs/service_resolvers/$defs/server_certificates", [_, ...] & [..._#defs."/$defs/service_resolvers/$defs/server_certificates"]])
+		server_certificates!: matchN(1, [_#defs."/$defs/service_resolvers/$defs/server_certificates", [_, ...] & [..._#defs."/$defs/service_resolvers/$defs/server_certificates"]])
 
 		// Required. The hostname of the EKM replica used at TLS and HTTP
 		// layers.

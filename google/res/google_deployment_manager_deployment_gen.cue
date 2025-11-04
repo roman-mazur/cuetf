@@ -57,7 +57,7 @@ import "list"
 		// to true or if other fields are updated while preview is true.
 		preview?: bool
 		labels?: matchN(1, [#labels, [...#labels]])
-		target?: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
+		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
 		timeouts?: #timeouts
 		project?:  string
 
@@ -74,7 +74,7 @@ import "list"
 	})
 
 	#target: close({
-		config?: matchN(1, [_#defs."/$defs/target/$defs/config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/target/$defs/config"]])
+		config!: matchN(1, [_#defs."/$defs/target/$defs/config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/target/$defs/config"]])
 		imports?: matchN(1, [_#defs."/$defs/target/$defs/imports", [..._#defs."/$defs/target/$defs/imports"]])
 	})
 

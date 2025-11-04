@@ -35,7 +35,7 @@ import "list"
 		// A server defined name for this index. Format:
 		// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
 		name?: string
-		fields?: matchN(1, [#fields, [_, ...] & [...#fields]])
+		fields!: matchN(1, [#fields, [_, ...] & [...#fields]])
 		timeouts?: #timeouts
 		project?:  string
 

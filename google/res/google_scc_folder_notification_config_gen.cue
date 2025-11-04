@@ -24,7 +24,7 @@ import "list"
 		// The Pub/Sub topic to send notifications to. Its format is
 		// "projects/[project_id]/topics/[topic]".
 		pubsub_topic!: string
-		streaming_config?: matchN(1, [#streaming_config, list.MaxItems(1) & [_, ...] & [...#streaming_config]])
+		streaming_config!: matchN(1, [#streaming_config, list.MaxItems(1) & [_, ...] & [...#streaming_config]])
 		timeouts?: #timeouts
 
 		// The service account that needs "pubsub.topics.publish"

@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dialogflow_encryption_spec")
 	close({
-		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [_, ...] & [...#encryption_spec]])
+		encryption_spec!: matchN(1, [#encryption_spec, list.MaxItems(1) & [_, ...] & [...#encryption_spec]])
 		timeouts?: #timeouts
 		id?:       string
 

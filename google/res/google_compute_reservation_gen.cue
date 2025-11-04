@@ -47,7 +47,7 @@ import "list"
 		specific_reservation_required?: bool
 		reservation_sharing_policy?: matchN(1, [#reservation_sharing_policy, list.MaxItems(1) & [...#reservation_sharing_policy]])
 		share_settings?: matchN(1, [#share_settings, list.MaxItems(1) & [...#share_settings]])
-		specific_reservation?: matchN(1, [#specific_reservation, list.MaxItems(1) & [_, ...] & [...#specific_reservation]])
+		specific_reservation!: matchN(1, [#specific_reservation, list.MaxItems(1) & [_, ...] & [...#specific_reservation]])
 		timeouts?:  #timeouts
 		self_link?: string
 

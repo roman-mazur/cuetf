@@ -15,7 +15,7 @@ import "list"
 		// Doamin for the zone.
 		domain!: string
 		id?:     string
-		peering_config?: matchN(1, [#peering_config, list.MaxItems(1) & [_, ...] & [...#peering_config]])
+		peering_config!: matchN(1, [#peering_config, list.MaxItems(1) & [_, ...] & [...#peering_config]])
 
 		// Name of the Dns Zone in the following format:
 		// organizations/{organization}/dnsZones/{dnsZone}.

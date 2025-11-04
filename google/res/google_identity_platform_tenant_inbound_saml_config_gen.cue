@@ -19,20 +19,20 @@ import "list"
 		// also start with a lowercase letter, end with an
 		// alphanumeric character, and have at least 2 characters.
 		name!: string
-		idp_config?: matchN(1, [#idp_config, list.MaxItems(1) & [_, ...] & [...#idp_config]])
+		idp_config!: matchN(1, [#idp_config, list.MaxItems(1) & [_, ...] & [...#idp_config]])
 		project?: string
 
 		// The name of the tenant where this inbound SAML config resource
 		// exists
 		tenant!: string
-		sp_config?: matchN(1, [#sp_config, list.MaxItems(1) & [_, ...] & [...#sp_config]])
+		sp_config!: matchN(1, [#sp_config, list.MaxItems(1) & [_, ...] & [...#sp_config]])
 		timeouts?: #timeouts
 	})
 
 	#idp_config: close({
 		// Unique identifier for all SAML entities
 		idp_entity_id!: string
-		idp_certificates?: matchN(1, [_#defs."/$defs/idp_config/$defs/idp_certificates", [_, ...] & [..._#defs."/$defs/idp_config/$defs/idp_certificates"]])
+		idp_certificates!: matchN(1, [_#defs."/$defs/idp_config/$defs/idp_certificates", [_, ...] & [..._#defs."/$defs/idp_config/$defs/idp_certificates"]])
 
 		// Indicates if outbounding SAMLRequest should be signed.
 		sign_request?: bool

@@ -37,7 +37,7 @@ import "list"
 		// The name of backup plan resource created
 		name?:    string
 		project?: string
-		backup_rules?: matchN(1, [#backup_rules, [_, ...] & [...#backup_rules]])
+		backup_rules!: matchN(1, [#backup_rules, [_, ...] & [...#backup_rules]])
 		timeouts?: #timeouts
 
 		// The resource type to which the 'BackupPlan' will be applied.
@@ -56,7 +56,7 @@ import "list"
 	})
 
 	#backup_rules: close({
-		standard_schedule?: matchN(1, [_#defs."/$defs/backup_rules/$defs/standard_schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/backup_rules/$defs/standard_schedule"]])
+		standard_schedule!: matchN(1, [_#defs."/$defs/backup_rules/$defs/standard_schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/backup_rules/$defs/standard_schedule"]])
 
 		// Configures the duration for which backup data will be kept. The
 		// value should be greater than or equal to minimum enforced

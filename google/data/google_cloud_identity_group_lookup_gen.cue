@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloud_identity_group_lookup")
 	close({
-		group_key?: matchN(1, [#group_key, list.MaxItems(1) & [_, ...] & [...#group_key]])
+		group_key!: matchN(1, [#group_key, list.MaxItems(1) & [_, ...] & [...#group_key]])
 		id?: string
 
 		// The [resource

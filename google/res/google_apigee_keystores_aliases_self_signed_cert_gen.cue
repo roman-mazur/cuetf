@@ -43,7 +43,7 @@ import "list"
 
 		// The Apigee keystore name associated in an Apigee environment
 		keystore!: string
-		subject?: matchN(1, [#subject, list.MaxItems(1) & [_, ...] & [...#subject]])
+		subject!: matchN(1, [#subject, list.MaxItems(1) & [_, ...] & [...#subject]])
 		subject_alternative_dns_names?: matchN(1, [#subject_alternative_dns_names, list.MaxItems(1) & [...#subject_alternative_dns_names]])
 		timeouts?: #timeouts
 

@@ -54,7 +54,7 @@ package res
 		// The acl pattern type derived from the name. One of: LITERAL,
 		// PREFIXED.
 		pattern_type?: string
-		acl_entries?: matchN(1, [#acl_entries, [_, ...] & [...#acl_entries]])
+		acl_entries!: matchN(1, [#acl_entries, [_, ...] & [...#acl_entries]])
 		timeouts?: #timeouts
 		project?:  string
 

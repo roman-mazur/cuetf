@@ -14,7 +14,7 @@ import "list"
 
 		// The region of the RagEngineConfig. eg us-central1
 		region?: string
-		rag_managed_db_config?: matchN(1, [#rag_managed_db_config, list.MaxItems(1) & [_, ...] & [...#rag_managed_db_config]])
+		rag_managed_db_config!: matchN(1, [#rag_managed_db_config, list.MaxItems(1) & [_, ...] & [...#rag_managed_db_config]])
 		timeouts?: #timeouts
 	})
 

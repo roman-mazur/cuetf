@@ -144,7 +144,7 @@ package res
 	})
 
 	#training_phrases: close({
-		parts?: matchN(1, [_#defs."/$defs/training_phrases/$defs/parts", [_, ...] & [..._#defs."/$defs/training_phrases/$defs/parts"]])
+		parts!: matchN(1, [_#defs."/$defs/training_phrases/$defs/parts", [_, ...] & [..._#defs."/$defs/training_phrases/$defs/parts"]])
 
 		// The unique identifier of the training phrase.
 		id?: string

@@ -45,8 +45,8 @@ import "list"
 	})
 
 	#frequency_options: close({
-		end_date?: matchN(1, [_#defs."/$defs/frequency_options/$defs/end_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/frequency_options/$defs/end_date"]])
-		start_date?: matchN(1, [_#defs."/$defs/frequency_options/$defs/start_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/frequency_options/$defs/start_date"]])
+		end_date!: matchN(1, [_#defs."/$defs/frequency_options/$defs/end_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/frequency_options/$defs/end_date"]])
+		start_date!: matchN(1, [_#defs."/$defs/frequency_options/$defs/start_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/frequency_options/$defs/start_date"]])
 
 		// The frequency in which inventory reports are generated. Values
 		// are DAILY or WEEKLY. Possible values: ["DAILY", "WEEKLY"]
@@ -54,7 +54,7 @@ import "list"
 	})
 
 	#object_metadata_report_options: close({
-		storage_destination_options?: matchN(1, [_#defs."/$defs/object_metadata_report_options/$defs/storage_destination_options", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/object_metadata_report_options/$defs/storage_destination_options"]])
+		storage_destination_options!: matchN(1, [_#defs."/$defs/object_metadata_report_options/$defs/storage_destination_options", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/object_metadata_report_options/$defs/storage_destination_options"]])
 		storage_filters?: matchN(1, [_#defs."/$defs/object_metadata_report_options/$defs/storage_filters", list.MaxItems(1) & [..._#defs."/$defs/object_metadata_report_options/$defs/storage_filters"]])
 
 		// The metadata fields included in an inventory report.

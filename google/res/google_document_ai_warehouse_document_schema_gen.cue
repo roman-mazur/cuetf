@@ -15,7 +15,7 @@ import "list"
 
 		// The location of the resource.
 		location!: string
-		property_definitions?: matchN(1, [#property_definitions, [_, ...] & [...#property_definitions]])
+		property_definitions!: matchN(1, [#property_definitions, [_, ...] & [...#property_definitions]])
 
 		// The resource name of the document schema.
 		name?: string
@@ -88,7 +88,7 @@ import "list"
 	_#defs: "/$defs/property_definitions/$defs/map_type_options": close({})
 
 	_#defs: "/$defs/property_definitions/$defs/property_type_options": close({
-		property_definitions?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions", [_, ...] & [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions"]])
+		property_definitions!: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions", [_, ...] & [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions"]])
 	})
 
 	_#defs: "/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions": close({

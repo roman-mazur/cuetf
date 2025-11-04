@@ -47,7 +47,7 @@ import "list"
 		// The folder this feed should be created in.
 		folder!: string
 		condition?: matchN(1, [#condition, list.MaxItems(1) & [...#condition]])
-		feed_output_config?: matchN(1, [#feed_output_config, list.MaxItems(1) & [_, ...] & [...#feed_output_config]])
+		feed_output_config!: matchN(1, [#feed_output_config, list.MaxItems(1) & [_, ...] & [...#feed_output_config]])
 
 		// The ID of the folder where this feed has been created. Both
 		// [FOLDER_NUMBER]
@@ -84,7 +84,7 @@ import "list"
 	})
 
 	#feed_output_config: close({
-		pubsub_destination?: matchN(1, [_#defs."/$defs/feed_output_config/$defs/pubsub_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/feed_output_config/$defs/pubsub_destination"]])
+		pubsub_destination!: matchN(1, [_#defs."/$defs/feed_output_config/$defs/pubsub_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/feed_output_config/$defs/pubsub_destination"]])
 	})
 
 	#timeouts: close({

@@ -204,7 +204,7 @@ import "list"
 		// the identity provider. Required to get the Access Token using
 		// client credentials grant flow.
 		client_id!: string
-		client_secret?: matchN(1, [_#defs."/$defs/extended_attributes_oauth2_client/$defs/client_secret", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/extended_attributes_oauth2_client/$defs/client_secret"]])
+		client_secret!: matchN(1, [_#defs."/$defs/extended_attributes_oauth2_client/$defs/client_secret", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/extended_attributes_oauth2_client/$defs/client_secret"]])
 
 		// The OIDC identity provider's issuer URI. Must be a valid URI
 		// using the 'https' scheme. Required to get the OIDC discovery
@@ -245,7 +245,7 @@ import "list"
 		// the identity provider. Required to get the Access Token using
 		// client credentials grant flow.
 		client_id!: string
-		client_secret?: matchN(1, [_#defs."/$defs/extra_attributes_oauth2_client/$defs/client_secret", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/extra_attributes_oauth2_client/$defs/client_secret"]])
+		client_secret!: matchN(1, [_#defs."/$defs/extra_attributes_oauth2_client/$defs/client_secret", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/extra_attributes_oauth2_client/$defs/client_secret"]])
 
 		// The OIDC identity provider's issuer URI. Must be a valid URI
 		// using the 'https' scheme. Required to get the OIDC discovery

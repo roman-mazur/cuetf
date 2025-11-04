@@ -38,7 +38,7 @@ import "list"
 
 		// The name of the database.
 		name!: string
-		hive_options?: matchN(1, [#hive_options, list.MaxItems(1) & [_, ...] & [...#hive_options]])
+		hive_options!: matchN(1, [#hive_options, list.MaxItems(1) & [_, ...] & [...#hive_options]])
 		timeouts?: #timeouts
 
 		// The database type.

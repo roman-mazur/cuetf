@@ -177,7 +177,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/fleet_default_member_config/$defs/policycontroller": close({
-		policy_controller_hub_config?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config"]])
+		policy_controller_hub_config!: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config"]])
 
 		// Configures the version of Policy Controller
 		version?: string
@@ -305,8 +305,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/clusterupgrade/$defs/gke_upgrade_overrides": close({
-		post_conditions?: matchN(1, [_#defs."/$defs/spec/$defs/clusterupgrade/$defs/gke_upgrade_overrides/$defs/post_conditions", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/clusterupgrade/$defs/gke_upgrade_overrides/$defs/post_conditions"]])
-		upgrade?: matchN(1, [_#defs."/$defs/spec/$defs/clusterupgrade/$defs/gke_upgrade_overrides/$defs/upgrade", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/clusterupgrade/$defs/gke_upgrade_overrides/$defs/upgrade"]])
+		post_conditions!: matchN(1, [_#defs."/$defs/spec/$defs/clusterupgrade/$defs/gke_upgrade_overrides/$defs/post_conditions", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/clusterupgrade/$defs/gke_upgrade_overrides/$defs/post_conditions"]])
+		upgrade!: matchN(1, [_#defs."/$defs/spec/$defs/clusterupgrade/$defs/gke_upgrade_overrides/$defs/upgrade", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/clusterupgrade/$defs/gke_upgrade_overrides/$defs/upgrade"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/clusterupgrade/$defs/gke_upgrade_overrides/$defs/post_conditions": close({

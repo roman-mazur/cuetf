@@ -49,7 +49,7 @@ import "list"
 		// Name of the HttpRoute resource.
 		name!:    string
 		project?: string
-		rules?: matchN(1, [#rules, [_, ...] & [...#rules]])
+		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
 		timeouts?: #timeouts
 
 		// Server-defined URL of this resource.

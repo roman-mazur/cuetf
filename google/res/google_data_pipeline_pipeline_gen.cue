@@ -112,7 +112,7 @@ import "list"
 		// The regional endpoint to which to direct the request. For
 		// example, us-central1, us-west1.
 		location!: string
-		launch_parameter?: matchN(1, [_#defs."/$defs/workload/$defs/dataflow_flex_template_request/$defs/launch_parameter", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/workload/$defs/dataflow_flex_template_request/$defs/launch_parameter"]])
+		launch_parameter!: matchN(1, [_#defs."/$defs/workload/$defs/dataflow_flex_template_request/$defs/launch_parameter", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/workload/$defs/dataflow_flex_template_request/$defs/launch_parameter"]])
 
 		// The ID of the Cloud Platform project that the job belongs to.
 		project_id!: string

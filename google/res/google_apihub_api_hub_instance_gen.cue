@@ -46,7 +46,7 @@ import "list"
 		// 'projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}'.
 		name?:    string
 		project?: string
-		config?: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
+		config!: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
 		timeouts?: #timeouts
 
 		// Output only. The current state of the ApiHub instance.

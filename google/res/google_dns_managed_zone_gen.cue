@@ -88,11 +88,11 @@ import "list"
 	})
 
 	#forwarding_config: close({
-		target_name_servers?: matchN(1, [_#defs."/$defs/forwarding_config/$defs/target_name_servers", [_, ...] & [..._#defs."/$defs/forwarding_config/$defs/target_name_servers"]])
+		target_name_servers!: matchN(1, [_#defs."/$defs/forwarding_config/$defs/target_name_servers", [_, ...] & [..._#defs."/$defs/forwarding_config/$defs/target_name_servers"]])
 	})
 
 	#peering_config: close({
-		target_network?: matchN(1, [_#defs."/$defs/peering_config/$defs/target_network", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/peering_config/$defs/target_network"]])
+		target_network!: matchN(1, [_#defs."/$defs/peering_config/$defs/target_network", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/peering_config/$defs/target_network"]])
 	})
 
 	#private_visibility_config: close({

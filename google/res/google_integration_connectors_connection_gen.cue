@@ -152,7 +152,7 @@ import "list"
 	#eventing_config: close({
 		additional_variable?: matchN(1, [_#defs."/$defs/eventing_config/$defs/additional_variable", [..._#defs."/$defs/eventing_config/$defs/additional_variable"]])
 		auth_config?: matchN(1, [_#defs."/$defs/eventing_config/$defs/auth_config", list.MaxItems(1) & [..._#defs."/$defs/eventing_config/$defs/auth_config"]])
-		registration_destination_config?: matchN(1, [_#defs."/$defs/eventing_config/$defs/registration_destination_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/eventing_config/$defs/registration_destination_config"]])
+		registration_destination_config!: matchN(1, [_#defs."/$defs/eventing_config/$defs/registration_destination_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/eventing_config/$defs/registration_destination_config"]])
 
 		// Enrichment Enabled.
 		enrichment_enabled?: bool
@@ -409,7 +409,7 @@ import "list"
 
 	_#defs: "/$defs/eventing_config/$defs/auth_config": close({
 		additional_variable?: matchN(1, [_#defs."/$defs/eventing_config/$defs/auth_config/$defs/additional_variable", [..._#defs."/$defs/eventing_config/$defs/auth_config/$defs/additional_variable"]])
-		user_password?: matchN(1, [_#defs."/$defs/eventing_config/$defs/auth_config/$defs/user_password", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/eventing_config/$defs/auth_config/$defs/user_password"]])
+		user_password!: matchN(1, [_#defs."/$defs/eventing_config/$defs/auth_config/$defs/user_password", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/eventing_config/$defs/auth_config/$defs/user_password"]])
 
 		// The type of authentication configured.
 		auth_key?: string

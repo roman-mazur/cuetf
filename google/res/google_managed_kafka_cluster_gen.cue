@@ -42,8 +42,8 @@ import "list"
 		// The name of the cluster. Structured like:
 		// 'projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID'.
 		name?: string
-		capacity_config?: matchN(1, [#capacity_config, list.MaxItems(1) & [_, ...] & [...#capacity_config]])
-		gcp_config?: matchN(1, [#gcp_config, list.MaxItems(1) & [_, ...] & [...#gcp_config]])
+		capacity_config!: matchN(1, [#capacity_config, list.MaxItems(1) & [_, ...] & [...#capacity_config]])
+		gcp_config!: matchN(1, [#gcp_config, list.MaxItems(1) & [_, ...] & [...#gcp_config]])
 		rebalance_config?: matchN(1, [#rebalance_config, list.MaxItems(1) & [...#rebalance_config]])
 		project?:  string
 		timeouts?: #timeouts
@@ -72,7 +72,7 @@ import "list"
 	})
 
 	#gcp_config: close({
-		access_config?: matchN(1, [_#defs."/$defs/gcp_config/$defs/access_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gcp_config/$defs/access_config"]])
+		access_config!: matchN(1, [_#defs."/$defs/gcp_config/$defs/access_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gcp_config/$defs/access_config"]])
 
 		// The Cloud KMS Key name to use for encryption. The key must be
 		// located in the same region as the cluster and cannot be
@@ -111,7 +111,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/gcp_config/$defs/access_config": close({
-		network_configs?: matchN(1, [_#defs."/$defs/gcp_config/$defs/access_config/$defs/network_configs", [_, ...] & [..._#defs."/$defs/gcp_config/$defs/access_config/$defs/network_configs"]])
+		network_configs!: matchN(1, [_#defs."/$defs/gcp_config/$defs/access_config/$defs/network_configs", [_, ...] & [..._#defs."/$defs/gcp_config/$defs/access_config/$defs/network_configs"]])
 	})
 
 	_#defs: "/$defs/gcp_config/$defs/access_config/$defs/network_configs": close({

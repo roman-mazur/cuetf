@@ -9,7 +9,7 @@ import "list"
 		// Output only. Time the `Ruleset` was created.
 		create_time?: string
 		id?:          string
-		source?: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
 
 		// Output only. The metadata for this ruleset.
 		metadata?: [...close({
@@ -27,7 +27,7 @@ import "list"
 	})
 
 	#source: close({
-		files?: matchN(1, [_#defs."/$defs/source/$defs/files", [_, ...] & [..._#defs."/$defs/source/$defs/files"]])
+		files!: matchN(1, [_#defs."/$defs/source/$defs/files", [_, ...] & [..._#defs."/$defs/source/$defs/files"]])
 
 		// `Language` of the `Source` bundle. If unspecified, the language
 		// will default to `FIREBASE_RULES`. Possible values:

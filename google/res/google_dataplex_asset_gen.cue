@@ -56,8 +56,8 @@ import "list"
 
 		// The name of the asset.
 		name!: string
-		discovery_spec?: matchN(1, [#discovery_spec, list.MaxItems(1) & [_, ...] & [...#discovery_spec]])
-		resource_spec?: matchN(1, [#resource_spec, list.MaxItems(1) & [_, ...] & [...#resource_spec]])
+		discovery_spec!: matchN(1, [#discovery_spec, list.MaxItems(1) & [_, ...] & [...#discovery_spec]])
+		resource_spec!: matchN(1, [#resource_spec, list.MaxItems(1) & [_, ...] & [...#resource_spec]])
 		timeouts?: #timeouts
 
 		// The project for the resource

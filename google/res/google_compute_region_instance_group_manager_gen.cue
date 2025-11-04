@@ -92,7 +92,7 @@ import "list"
 				is_reached?: bool
 			})]
 		})]
-		version?: matchN(1, [#version, [_, ...] & [...#version]])
+		version!: matchN(1, [#version, [_, ...] & [...#version]])
 
 		// The full URL of all target pools to which new instances in the
 		// group are added. Updating the target pools attribute does not

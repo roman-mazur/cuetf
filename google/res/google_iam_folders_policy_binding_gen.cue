@@ -49,7 +49,7 @@ import "list"
 		// Organization (or Project).
 		policy!: string
 		condition?: matchN(1, [#condition, list.MaxItems(1) & [...#condition]])
-		target?: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
+		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
 		timeouts?: #timeouts
 
 		// The Policy Binding ID.

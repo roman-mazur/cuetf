@@ -18,7 +18,7 @@ import "list"
 		name?: string
 		id?:   string
 		all_updates_rule?: matchN(1, [#all_updates_rule, list.MaxItems(1) & [...#all_updates_rule]])
-		amount?: matchN(1, [#amount, list.MaxItems(1) & [_, ...] & [...#amount]])
+		amount!: matchN(1, [#amount, list.MaxItems(1) & [_, ...] & [...#amount]])
 		budget_filter?: matchN(1, [#budget_filter, list.MaxItems(1) & [...#budget_filter]])
 
 		// The ownership scope of the budget. The ownership scope and
@@ -183,7 +183,7 @@ import "list"
 
 	_#defs: "/$defs/budget_filter/$defs/custom_period": close({
 		end_date?: matchN(1, [_#defs."/$defs/budget_filter/$defs/custom_period/$defs/end_date", list.MaxItems(1) & [..._#defs."/$defs/budget_filter/$defs/custom_period/$defs/end_date"]])
-		start_date?: matchN(1, [_#defs."/$defs/budget_filter/$defs/custom_period/$defs/start_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/budget_filter/$defs/custom_period/$defs/start_date"]])
+		start_date!: matchN(1, [_#defs."/$defs/budget_filter/$defs/custom_period/$defs/start_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/budget_filter/$defs/custom_period/$defs/start_date"]])
 	})
 
 	_#defs: "/$defs/budget_filter/$defs/custom_period/$defs/end_date": close({

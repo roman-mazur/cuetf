@@ -85,7 +85,7 @@ import "list"
 
 		// Name of the replica set.
 		replica_set?: string
-		host_addresses?: matchN(1, [_#defs."/$defs/mongodb_profile/$defs/host_addresses", [_, ...] & [..._#defs."/$defs/mongodb_profile/$defs/host_addresses"]])
+		host_addresses!: matchN(1, [_#defs."/$defs/mongodb_profile/$defs/host_addresses", [_, ...] & [..._#defs."/$defs/mongodb_profile/$defs/host_addresses"]])
 
 		// A reference to a Secret Manager resource name storing the
 		// MongoDB

@@ -42,7 +42,7 @@ import "list"
 		hadoop_config?: matchN(1, [#hadoop_config, list.MaxItems(1) & [...#hadoop_config]])
 		hive_config?: matchN(1, [#hive_config, list.MaxItems(1) & [...#hive_config]])
 		pig_config?: matchN(1, [#pig_config, list.MaxItems(1) & [...#pig_config]])
-		placement?: matchN(1, [#placement, list.MaxItems(1) & [_, ...] & [...#placement]])
+		placement!: matchN(1, [#placement, list.MaxItems(1) & [_, ...] & [...#placement]])
 		presto_config?: matchN(1, [#presto_config, list.MaxItems(1) & [...#presto_config]])
 		pyspark_config?: matchN(1, [#pyspark_config, list.MaxItems(1) & [...#pyspark_config]])
 		reference?: matchN(1, [#reference, list.MaxItems(1) & [...#reference]])

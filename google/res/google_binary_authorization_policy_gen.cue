@@ -20,7 +20,7 @@ import "list"
 		admission_whitelist_patterns?: matchN(1, [#admission_whitelist_patterns, [...#admission_whitelist_patterns]])
 		project?: string
 		cluster_admission_rules?: matchN(1, [#cluster_admission_rules, [...#cluster_admission_rules]])
-		default_admission_rule?: matchN(1, [#default_admission_rule, list.MaxItems(1) & [_, ...] & [...#default_admission_rule]])
+		default_admission_rule!: matchN(1, [#default_admission_rule, list.MaxItems(1) & [_, ...] & [...#default_admission_rule]])
 		timeouts?: #timeouts
 	})
 

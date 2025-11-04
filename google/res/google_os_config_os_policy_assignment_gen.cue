@@ -12,7 +12,7 @@ import "list"
 		// For a given OS policy assignment, there is only one revision
 		// with a value of 'true' for this field.
 		baseline?: bool
-		instance_filter?: matchN(1, [#instance_filter, list.MaxItems(1) & [_, ...] & [...#instance_filter]])
+		instance_filter!: matchN(1, [#instance_filter, list.MaxItems(1) & [_, ...] & [...#instance_filter]])
 
 		// Output only. Indicates that this revision deletes the OS policy
 		// assignment.
@@ -45,8 +45,8 @@ import "list"
 
 		// Output only. The timestamp that the revision was created.
 		revision_create_time?: string
-		os_policies?: matchN(1, [#os_policies, [_, ...] & [...#os_policies]])
-		rollout?: matchN(1, [#rollout, list.MaxItems(1) & [_, ...] & [...#rollout]])
+		os_policies!: matchN(1, [#os_policies, [_, ...] & [...#os_policies]])
+		rollout!: matchN(1, [#rollout, list.MaxItems(1) & [_, ...] & [...#rollout]])
 		timeouts?: #timeouts
 
 		// Output only. The assignment revision ID A new revision is
@@ -95,7 +95,7 @@ import "list"
 		// * Must end with a number or a letter.
 		// * Must be unique within the assignment.
 		id!: string
-		resource_groups?: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups", [_, ...] & [..._#defs."/$defs/os_policies/$defs/resource_groups"]])
+		resource_groups!: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups", [_, ...] & [..._#defs."/$defs/os_policies/$defs/resource_groups"]])
 
 		// Policy mode Possible values: ["MODE_UNSPECIFIED", "VALIDATION",
 		// "ENFORCEMENT"]
@@ -103,7 +103,7 @@ import "list"
 	})
 
 	#rollout: close({
-		disruption_budget?: matchN(1, [_#defs."/$defs/rollout/$defs/disruption_budget", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rollout/$defs/disruption_budget"]])
+		disruption_budget!: matchN(1, [_#defs."/$defs/rollout/$defs/disruption_budget", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rollout/$defs/disruption_budget"]])
 
 		// This determines the minimum duration of time to wait after the
 		// configuration changes are applied through the current rollout.
@@ -147,7 +147,7 @@ import "list"
 
 	_#defs: "/$defs/os_policies/$defs/resource_groups": close({
 		inventory_filters?: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/inventory_filters", [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/inventory_filters"]])
-		resources?: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources", [_, ...] & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources"]])
+		resources!: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources", [_, ...] & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources"]])
 	})
 
 	_#defs: "/$defs/os_policies/$defs/resource_groups/$defs/inventory_filters": close({
@@ -180,7 +180,7 @@ import "list"
 
 	_#defs: "/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec": close({
 		enforce?: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/enforce", list.MaxItems(1) & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/enforce"]])
-		validate?: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate"]])
+		validate!: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate"]])
 	})
 
 	_#defs: "/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/enforce": close({
@@ -378,7 +378,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/deb": close({
-		source?: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/deb/$defs/source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/deb/$defs/source"]])
+		source!: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/deb/$defs/source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/deb/$defs/source"]])
 
 		// Whether dependencies should also be installed. - install when
 		// false: 'dpkg -i package' - install when true: 'apt-get update
@@ -427,7 +427,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/msi": close({
-		source?: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/msi/$defs/source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/msi/$defs/source"]])
+		source!: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/msi/$defs/source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/msi/$defs/source"]])
 
 		// Additional properties to use during installation. This should
 		// be in the format of Property=Setting. Appended to the defaults
@@ -471,7 +471,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/rpm": close({
-		source?: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/rpm/$defs/source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/rpm/$defs/source"]])
+		source!: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/rpm/$defs/source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/rpm/$defs/source"]])
 
 		// Whether dependencies should also be installed. - install when
 		// false: 'rpm --upgrade --replacepkgs package.rpm' - install

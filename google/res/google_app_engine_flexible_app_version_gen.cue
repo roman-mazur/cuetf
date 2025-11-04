@@ -62,10 +62,10 @@ import "list"
 		entrypoint?: matchN(1, [#entrypoint, list.MaxItems(1) & [...#entrypoint]])
 		flexible_runtime_settings?: matchN(1, [#flexible_runtime_settings, list.MaxItems(1) & [...#flexible_runtime_settings]])
 		handlers?: matchN(1, [#handlers, [...#handlers]])
-		liveness_check?: matchN(1, [#liveness_check, list.MaxItems(1) & [_, ...] & [...#liveness_check]])
+		liveness_check!: matchN(1, [#liveness_check, list.MaxItems(1) & [_, ...] & [...#liveness_check]])
 		manual_scaling?: matchN(1, [#manual_scaling, list.MaxItems(1) & [...#manual_scaling]])
 		network?: matchN(1, [#network, list.MaxItems(1) & [...#network]])
-		readiness_check?: matchN(1, [#readiness_check, list.MaxItems(1) & [_, ...] & [...#readiness_check]])
+		readiness_check!: matchN(1, [#readiness_check, list.MaxItems(1) & [_, ...] & [...#readiness_check]])
 		resources?: matchN(1, [#resources, list.MaxItems(1) & [...#resources]])
 
 		// The version of the API in the given runtime environment.
@@ -157,7 +157,7 @@ import "list"
 		// Maximum number of instances that should be started to handle
 		// requests for this version. Default: 20
 		max_total_instances?: number
-		cpu_utilization?: matchN(1, [_#defs."/$defs/automatic_scaling/$defs/cpu_utilization", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/automatic_scaling/$defs/cpu_utilization"]])
+		cpu_utilization!: matchN(1, [_#defs."/$defs/automatic_scaling/$defs/cpu_utilization", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/automatic_scaling/$defs/cpu_utilization"]])
 		disk_utilization?: matchN(1, [_#defs."/$defs/automatic_scaling/$defs/disk_utilization", list.MaxItems(1) & [..._#defs."/$defs/automatic_scaling/$defs/disk_utilization"]])
 		network_utilization?: matchN(1, [_#defs."/$defs/automatic_scaling/$defs/network_utilization", list.MaxItems(1) & [..._#defs."/$defs/automatic_scaling/$defs/network_utilization"]])
 		request_utilization?: matchN(1, [_#defs."/$defs/automatic_scaling/$defs/request_utilization", list.MaxItems(1) & [..._#defs."/$defs/automatic_scaling/$defs/request_utilization"]])

@@ -312,7 +312,7 @@ import "list"
 	})
 
 	#metadata_filters: close({
-		filter_labels?: matchN(1, [_#defs."/$defs/metadata_filters/$defs/filter_labels", list.MaxItems(64) & [_, ...] & [..._#defs."/$defs/metadata_filters/$defs/filter_labels"]])
+		filter_labels!: matchN(1, [_#defs."/$defs/metadata_filters/$defs/filter_labels", list.MaxItems(64) & [_, ...] & [..._#defs."/$defs/metadata_filters/$defs/filter_labels"]])
 
 		// Specifies how individual filterLabel matches within the list of
 		// filterLabels contribute towards the overall metadataFilter

@@ -312,7 +312,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/maintenance_policy/$defs/weekly_maintenance_window": close({
-		start_time?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window/$defs/start_time"]])
+		start_time!: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window/$defs/start_time"]])
 
 		// Required. The day of week that maintenance updates occur.
 		//

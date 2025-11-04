@@ -40,7 +40,7 @@ import "list"
 		name!: string
 		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
 		timeouts?: #timeouts
-		versions?: matchN(1, [#versions, [_, ...] & [...#versions]])
+		versions!: matchN(1, [#versions, [_, ...] & [...#versions]])
 		project?: string
 
 		// The combination of labels configured directly on the resource

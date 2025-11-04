@@ -59,7 +59,7 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		properties?: matchN(1, [#properties, list.MaxItems(1) & [_, ...] & [...#properties]])
+		properties!: matchN(1, [#properties, list.MaxItems(1) & [_, ...] & [...#properties]])
 		timeouts?: #timeouts
 
 		// Resource ID segment making up resource 'name'. See

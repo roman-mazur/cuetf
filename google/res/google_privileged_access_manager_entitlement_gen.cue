@@ -52,9 +52,9 @@ import "list"
 		parent!: string
 		additional_notification_targets?: matchN(1, [#additional_notification_targets, list.MaxItems(1) & [...#additional_notification_targets]])
 		approval_workflow?: matchN(1, [#approval_workflow, list.MaxItems(1) & [...#approval_workflow]])
-		eligible_users?: matchN(1, [#eligible_users, [_, ...] & [...#eligible_users]])
-		privileged_access?: matchN(1, [#privileged_access, list.MaxItems(1) & [_, ...] & [...#privileged_access]])
-		requester_justification_config?: matchN(1, [#requester_justification_config, list.MaxItems(1) & [_, ...] & [...#requester_justification_config]])
+		eligible_users!: matchN(1, [#eligible_users, [_, ...] & [...#eligible_users]])
+		privileged_access!: matchN(1, [#privileged_access, list.MaxItems(1) & [_, ...] & [...#privileged_access]])
+		requester_justification_config!: matchN(1, [#requester_justification_config, list.MaxItems(1) & [_, ...] & [...#requester_justification_config]])
 		timeouts?: #timeouts
 
 		// Output only. The current state of the Entitlement.
@@ -79,7 +79,7 @@ import "list"
 	})
 
 	#approval_workflow: close({
-		manual_approvals?: matchN(1, [_#defs."/$defs/approval_workflow/$defs/manual_approvals", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/approval_workflow/$defs/manual_approvals"]])
+		manual_approvals!: matchN(1, [_#defs."/$defs/approval_workflow/$defs/manual_approvals", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/approval_workflow/$defs/manual_approvals"]])
 	})
 
 	#eligible_users: close({
@@ -91,7 +91,7 @@ import "list"
 	})
 
 	#privileged_access: close({
-		gcp_iam_access?: matchN(1, [_#defs."/$defs/privileged_access/$defs/gcp_iam_access", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/privileged_access/$defs/gcp_iam_access"]])
+		gcp_iam_access!: matchN(1, [_#defs."/$defs/privileged_access/$defs/gcp_iam_access", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/privileged_access/$defs/gcp_iam_access"]])
 	})
 
 	#requester_justification_config: close({
@@ -106,7 +106,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/approval_workflow/$defs/manual_approvals": close({
-		steps?: matchN(1, [_#defs."/$defs/approval_workflow/$defs/manual_approvals/$defs/steps", [_, ...] & [..._#defs."/$defs/approval_workflow/$defs/manual_approvals/$defs/steps"]])
+		steps!: matchN(1, [_#defs."/$defs/approval_workflow/$defs/manual_approvals/$defs/steps", [_, ...] & [..._#defs."/$defs/approval_workflow/$defs/manual_approvals/$defs/steps"]])
 
 		// Optional. Do the approvers need to provide a justification for
 		// their actions?
@@ -114,7 +114,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/approval_workflow/$defs/manual_approvals/$defs/steps": close({
-		approvers?: matchN(1, [_#defs."/$defs/approval_workflow/$defs/manual_approvals/$defs/steps/$defs/approvers", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/approval_workflow/$defs/manual_approvals/$defs/steps/$defs/approvers"]])
+		approvers!: matchN(1, [_#defs."/$defs/approval_workflow/$defs/manual_approvals/$defs/steps/$defs/approvers", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/approval_workflow/$defs/manual_approvals/$defs/steps/$defs/approvers"]])
 
 		// How many users from the above list need to approve.
 		// If there are not enough distinct users in the list above then
@@ -138,7 +138,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/privileged_access/$defs/gcp_iam_access": close({
-		role_bindings?: matchN(1, [_#defs."/$defs/privileged_access/$defs/gcp_iam_access/$defs/role_bindings", [_, ...] & [..._#defs."/$defs/privileged_access/$defs/gcp_iam_access/$defs/role_bindings"]])
+		role_bindings!: matchN(1, [_#defs."/$defs/privileged_access/$defs/gcp_iam_access/$defs/role_bindings", [_, ...] & [..._#defs."/$defs/privileged_access/$defs/gcp_iam_access/$defs/role_bindings"]])
 
 		// Name of the resource.
 		resource!: string

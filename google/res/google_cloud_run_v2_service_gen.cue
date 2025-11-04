@@ -148,7 +148,7 @@ import "list"
 		build_config?: matchN(1, [#build_config, list.MaxItems(1) & [...#build_config]])
 		multi_region_settings?: matchN(1, [#multi_region_settings, list.MaxItems(1) & [...#multi_region_settings]])
 		scaling?: matchN(1, [#scaling, list.MaxItems(1) & [...#scaling]])
-		template?: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
+		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
 		timeouts?: #timeouts
 		traffic?: matchN(1, [#traffic, [...#traffic]])
 

@@ -25,7 +25,7 @@ package res
 		// The relative resource name of the Entry Link, of the form:
 		// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}
 		name?: string
-		entry_references?: matchN(1, [#entry_references, [_, ...] & [...#entry_references]])
+		entry_references!: matchN(1, [#entry_references, [_, ...] & [...#entry_references]])
 		timeouts?: #timeouts
 		project?:  string
 

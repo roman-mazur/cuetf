@@ -11,7 +11,7 @@ import "list"
 
 		// The hash of the resource. Used internally during updates.
 		etag?: string
-		rules?: matchN(1, [#rules, [_, ...] & [...#rules]])
+		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
 
 		// The name of the policy.
 		name!:     string

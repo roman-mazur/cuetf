@@ -56,7 +56,7 @@ import "list"
 		project?: string
 		custom_provider?: matchN(1, [#custom_provider, list.MaxItems(1) & [...#custom_provider]])
 		http_rules?: matchN(1, [#http_rules, [...#http_rules]])
-		target?: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
+		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
 		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource

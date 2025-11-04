@@ -68,7 +68,7 @@ import "list"
 	})
 
 	#target: close({
-		splits?: matchN(1, [_#defs."/$defs/target/$defs/splits", [_, ...] & [..._#defs."/$defs/target/$defs/splits"]])
+		splits!: matchN(1, [_#defs."/$defs/target/$defs/splits", [_, ...] & [..._#defs."/$defs/target/$defs/splits"]])
 	})
 
 	#timeouts: close({

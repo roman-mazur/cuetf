@@ -42,7 +42,7 @@ import "list"
 		// * Must end with a number or a letter.
 		// * Must be unique within the project.
 		patch_deployment_id!: string
-		instance_filter?: matchN(1, [#instance_filter, list.MaxItems(1) & [_, ...] & [...#instance_filter]])
+		instance_filter!: matchN(1, [#instance_filter, list.MaxItems(1) & [_, ...] & [...#instance_filter]])
 		one_time_schedule?: matchN(1, [#one_time_schedule, list.MaxItems(1) & [...#one_time_schedule]])
 		patch_config?: matchN(1, [#patch_config, list.MaxItems(1) & [...#patch_config]])
 		recurring_schedule?: matchN(1, [#recurring_schedule, list.MaxItems(1) & [...#recurring_schedule]])
@@ -122,19 +122,19 @@ import "list"
 		// A timestamp in RFC3339 UTC "Zulu" format, accurate to
 		// nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 		next_execute_time?: string
-		time_of_day?: matchN(1, [_#defs."/$defs/recurring_schedule/$defs/time_of_day", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/recurring_schedule/$defs/time_of_day"]])
+		time_of_day!: matchN(1, [_#defs."/$defs/recurring_schedule/$defs/time_of_day", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/recurring_schedule/$defs/time_of_day"]])
 
 		// The time that the recurring schedule becomes effective.
 		// Defaults to createTime of the patch deployment.
 		// A timestamp in RFC3339 UTC "Zulu" format, accurate to
 		// nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 		start_time?: string
-		time_zone?: matchN(1, [_#defs."/$defs/recurring_schedule/$defs/time_zone", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/recurring_schedule/$defs/time_zone"]])
+		time_zone!: matchN(1, [_#defs."/$defs/recurring_schedule/$defs/time_zone", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/recurring_schedule/$defs/time_zone"]])
 		weekly?: matchN(1, [_#defs."/$defs/recurring_schedule/$defs/weekly", list.MaxItems(1) & [..._#defs."/$defs/recurring_schedule/$defs/weekly"]])
 	})
 
 	#rollout: close({
-		disruption_budget?: matchN(1, [_#defs."/$defs/rollout/$defs/disruption_budget", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rollout/$defs/disruption_budget"]])
+		disruption_budget!: matchN(1, [_#defs."/$defs/rollout/$defs/disruption_budget", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rollout/$defs/disruption_budget"]])
 
 		// Mode of the patch rollout. Possible values: ["ZONE_BY_ZONE",
 		// "CONCURRENT_ZONES"]

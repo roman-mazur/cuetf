@@ -51,8 +51,8 @@ import "list"
 		// Required. The resource name of the trigger. Must be unique
 		// within the location on the project.
 		name!: string
-		destination?: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
-		matching_criteria?: matchN(1, [#matching_criteria, [_, ...] & [...#matching_criteria]])
+		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
+		matching_criteria!: matchN(1, [#matching_criteria, [_, ...] & [...#matching_criteria]])
 		timeouts?: #timeouts
 		transport?: matchN(1, [#transport, list.MaxItems(1) & [...#transport]])
 

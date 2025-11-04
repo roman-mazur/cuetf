@@ -92,8 +92,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/routing_policy/$defs/primary_backup": close({
-		backup_geo?: matchN(1, [_#defs."/$defs/routing_policy/$defs/primary_backup/$defs/backup_geo", [_, ...] & [..._#defs."/$defs/routing_policy/$defs/primary_backup/$defs/backup_geo"]])
-		primary?: matchN(1, [_#defs."/$defs/routing_policy/$defs/primary_backup/$defs/primary", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/routing_policy/$defs/primary_backup/$defs/primary"]])
+		backup_geo!: matchN(1, [_#defs."/$defs/routing_policy/$defs/primary_backup/$defs/backup_geo", [_, ...] & [..._#defs."/$defs/routing_policy/$defs/primary_backup/$defs/backup_geo"]])
+		primary!: matchN(1, [_#defs."/$defs/routing_policy/$defs/primary_backup/$defs/primary", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/routing_policy/$defs/primary_backup/$defs/primary"]])
 
 		// Specifies whether to enable fencing for backup geo queries.
 		enable_geo_fencing_for_backups?: bool

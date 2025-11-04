@@ -28,7 +28,7 @@ import "list"
 		// Format: projects/<Project ID>/locations/<Location
 		// ID>/agents/<Agent ID>.
 		parent?: string
-		prompt_text?: matchN(1, [#prompt_text, list.MaxItems(1) & [_, ...] & [...#prompt_text]])
+		prompt_text!: matchN(1, [#prompt_text, list.MaxItems(1) & [_, ...] & [...#prompt_text]])
 		timeouts?: #timeouts
 	})
 

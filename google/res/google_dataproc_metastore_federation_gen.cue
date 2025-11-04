@@ -60,7 +60,7 @@ package res
 		// Keys must be in the format tagKeys/{tag_key_id}, and values are
 		// in the format tagValues/{tag_value_id}.
 		tags?: [string]: string
-		backend_metastores?: matchN(1, [#backend_metastores, [_, ...] & [...#backend_metastores]])
+		backend_metastores!: matchN(1, [#backend_metastores, [_, ...] & [...#backend_metastores]])
 		timeouts?: #timeouts
 		project?:  string
 

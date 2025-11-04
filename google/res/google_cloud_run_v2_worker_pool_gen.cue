@@ -141,7 +141,7 @@ import "list"
 		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
 		instance_splits?: matchN(1, [#instance_splits, [...#instance_splits]])
 		scaling?: matchN(1, [#scaling, list.MaxItems(1) & [...#scaling]])
-		template?: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
+		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
 		timeouts?: #timeouts
 
 		// Email address of the last authenticated modifier.

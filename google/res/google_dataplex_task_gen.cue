@@ -59,11 +59,11 @@ import "list"
 
 		// Current state of the task.
 		state?: string
-		execution_spec?: matchN(1, [#execution_spec, list.MaxItems(1) & [_, ...] & [...#execution_spec]])
+		execution_spec!: matchN(1, [#execution_spec, list.MaxItems(1) & [_, ...] & [...#execution_spec]])
 		notebook?: matchN(1, [#notebook, list.MaxItems(1) & [...#notebook]])
 		spark?: matchN(1, [#spark, list.MaxItems(1) & [...#spark]])
 		timeouts?: #timeouts
-		trigger_spec?: matchN(1, [#trigger_spec, list.MaxItems(1) & [_, ...] & [...#trigger_spec]])
+		trigger_spec!: matchN(1, [#trigger_spec, list.MaxItems(1) & [_, ...] & [...#trigger_spec]])
 
 		// The task Id of the task.
 		task_id?: string

@@ -93,7 +93,7 @@ import "list"
 				state?:             string
 			})]
 		})]
-		orchestrated_resource?: matchN(1, [#orchestrated_resource, list.MaxItems(1) & [_, ...] & [...#orchestrated_resource]])
+		orchestrated_resource!: matchN(1, [#orchestrated_resource, list.MaxItems(1) & [_, ...] & [...#orchestrated_resource]])
 		orchestration_scope?: matchN(1, [#orchestration_scope, list.MaxItems(1) & [...#orchestration_scope]])
 		timeouts?: #timeouts
 
@@ -206,9 +206,9 @@ import "list"
 
 		// The timestamp that the revision was created.
 		revision_create_time?: string
-		instance_filter?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/instance_filter", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/instance_filter"]])
-		os_policies?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies", [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies"]])
-		rollout?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/rollout", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/rollout"]])
+		instance_filter!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/instance_filter", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/instance_filter"]])
+		os_policies!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies", [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies"]])
+		rollout!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/rollout", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/rollout"]])
 
 		// The assignment revision ID
 		// A new revision is committed whenever a rollout is triggered for
@@ -290,7 +290,7 @@ import "list"
 		// * Must end with a number or a letter.
 		// * Must be unique within the assignment.
 		id!: string
-		resource_groups?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups", [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups"]])
+		resource_groups!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups", [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups"]])
 
 		// Policy mode Possible values: ["VALIDATION", "ENFORCEMENT"]
 		mode!: string
@@ -298,7 +298,7 @@ import "list"
 
 	_#defs: "/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups": close({
 		inventory_filters?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/inventory_filters", [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/inventory_filters"]])
-		resources?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources", [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources"]])
+		resources!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources", [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources"]])
 	})
 
 	_#defs: "/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/inventory_filters": close({
@@ -334,7 +334,7 @@ import "list"
 
 	_#defs: "/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec": close({
 		enforce?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/enforce", list.MaxItems(1) & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/enforce"]])
-		validate?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate"]])
+		validate!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate"]])
 	})
 
 	_#defs: "/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/enforce": close({
@@ -547,7 +547,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/deb": close({
-		source?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/deb/$defs/source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/deb/$defs/source"]])
+		source!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/deb/$defs/source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/deb/$defs/source"]])
 
 		// Whether dependencies should also be installed.
 		// - install when false: 'dpkg -i package'
@@ -598,7 +598,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/msi": close({
-		source?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/msi/$defs/source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/msi/$defs/source"]])
+		source!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/msi/$defs/source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/msi/$defs/source"]])
 
 		// Additional properties to use during installation.
 		// This should be in the format of Property=Setting.
@@ -644,7 +644,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/rpm": close({
-		source?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/rpm/$defs/source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/rpm/$defs/source"]])
+		source!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/rpm/$defs/source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/pkg/$defs/rpm/$defs/source"]])
 
 		// Whether dependencies should also be installed.
 		// - install when false: 'rpm --upgrade --replacepkgs package.rpm'
@@ -770,7 +770,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/rollout": close({
-		disruption_budget?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/rollout/$defs/disruption_budget", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/rollout/$defs/disruption_budget"]])
+		disruption_budget!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/rollout/$defs/disruption_budget", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/rollout/$defs/disruption_budget"]])
 
 		// This determines the minimum duration of time to wait after the
 		// configuration changes are applied through the current rollout.

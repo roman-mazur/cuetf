@@ -34,7 +34,7 @@ import "list"
 		// DELETING
 		state?: string
 		attributes?: matchN(1, [#attributes, list.MaxItems(1) & [...#attributes]])
-		scope?: matchN(1, [#scope, list.MaxItems(1) & [_, ...] & [...#scope]])
+		scope!: matchN(1, [#scope, list.MaxItems(1) & [_, ...] & [...#scope]])
 		timeouts?: #timeouts
 		project?:  string
 

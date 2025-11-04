@@ -26,7 +26,7 @@ import "list"
 
 		// URL of the region where the instance group resides.
 		region?: string
-		autoscaling_policy?: matchN(1, [#autoscaling_policy, list.MaxItems(1) & [_, ...] & [...#autoscaling_policy]])
+		autoscaling_policy!: matchN(1, [#autoscaling_policy, list.MaxItems(1) & [_, ...] & [...#autoscaling_policy]])
 		self_link?: string
 		timeouts?:  #timeouts
 

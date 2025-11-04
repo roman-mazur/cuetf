@@ -34,7 +34,7 @@ import "list"
 
 		// The region of the AppConnection.
 		region?: string
-		application_endpoint?: matchN(1, [#application_endpoint, list.MaxItems(1) & [_, ...] & [...#application_endpoint]])
+		application_endpoint!: matchN(1, [#application_endpoint, list.MaxItems(1) & [_, ...] & [...#application_endpoint]])
 		gateway?: matchN(1, [#gateway, list.MaxItems(1) & [...#gateway]])
 		timeouts?: #timeouts
 

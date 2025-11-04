@@ -192,7 +192,7 @@ import "list"
 	})
 
 	#synthetic_monitor: close({
-		cloud_function_v2?: matchN(1, [_#defs."/$defs/synthetic_monitor/$defs/cloud_function_v2", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/synthetic_monitor/$defs/cloud_function_v2"]])
+		cloud_function_v2!: matchN(1, [_#defs."/$defs/synthetic_monitor/$defs/cloud_function_v2", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/synthetic_monitor/$defs/cloud_function_v2"]])
 	})
 
 	#tcp_check: close({

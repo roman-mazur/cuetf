@@ -58,7 +58,7 @@ import "list"
 		// where group_id
 		// is the unique ID assigned to the Group.
 		name?: string
-		group_key?: matchN(1, [#group_key, list.MaxItems(1) & [_, ...] & [...#group_key]])
+		group_key!: matchN(1, [#group_key, list.MaxItems(1) & [_, ...] & [...#group_key]])
 		timeouts?: #timeouts
 
 		// The resource name of the entity under which this Group resides

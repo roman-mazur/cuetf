@@ -83,7 +83,7 @@ import "list"
 		// Total count of all firewall policy rule tuples. A firewall
 		// policy can not exceed a set number of tuples.
 		rule_tuple_count?: number
-		rule?: matchN(1, [#rule, [_, ...] & [...#rule]])
+		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
 		project?:  string
 		timeouts?: #timeouts
 
@@ -133,7 +133,7 @@ import "list"
 		// identifier
 		// and can be updated.
 		rule_name?: string
-		match?: matchN(1, [_#defs."/$defs/rule/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/match"]])
+		match!: matchN(1, [_#defs."/$defs/rule/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/match"]])
 		target_secure_tag?: matchN(1, [_#defs."/$defs/rule/$defs/target_secure_tag", [..._#defs."/$defs/rule/$defs/target_secure_tag"]])
 
 		// A fully-qualified URL of a SecurityProfile resource instance.
@@ -196,7 +196,7 @@ import "list"
 		// against
 		// traffic source. Maximum number of source fqdn allowed is 100.
 		src_fqdns?: [...string]
-		layer4_config?: matchN(1, [_#defs."/$defs/rule/$defs/match/$defs/layer4_config", [_, ...] & [..._#defs."/$defs/rule/$defs/match/$defs/layer4_config"]])
+		layer4_config!: matchN(1, [_#defs."/$defs/rule/$defs/match/$defs/layer4_config", [_, ...] & [..._#defs."/$defs/rule/$defs/match/$defs/layer4_config"]])
 		src_secure_tag?: matchN(1, [_#defs."/$defs/rule/$defs/match/$defs/src_secure_tag", [..._#defs."/$defs/rule/$defs/match/$defs/src_secure_tag"]])
 
 		// Source IP address range in CIDR format. Required for

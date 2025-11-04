@@ -50,7 +50,7 @@ import "list"
 		// This value should be 0-61 characters, and valid format is
 		// (^a-z?$).
 		security_action_id!: string
-		condition_config?: matchN(1, [#condition_config, list.MaxItems(1) & [_, ...] & [...#condition_config]])
+		condition_config!: matchN(1, [#condition_config, list.MaxItems(1) & [_, ...] & [...#condition_config]])
 		deny?: matchN(1, [#deny, list.MaxItems(1) & [...#deny]])
 		flag?: matchN(1, [#flag, list.MaxItems(1) & [...#flag]])
 		timeouts?: #timeouts

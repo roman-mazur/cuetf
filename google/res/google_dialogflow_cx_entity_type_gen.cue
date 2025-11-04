@@ -47,7 +47,7 @@ package res
 		// Format: projects/<Project ID>/locations/<Location
 		// ID>/agents/<Agent ID>/entityTypes/<Entity Type ID>.
 		name?: string
-		entities?: matchN(1, [#entities, [_, ...] & [...#entities]])
+		entities!: matchN(1, [#entities, [_, ...] & [...#entities]])
 		excluded_phrases?: matchN(1, [#excluded_phrases, [...#excluded_phrases]])
 		timeouts?: #timeouts
 

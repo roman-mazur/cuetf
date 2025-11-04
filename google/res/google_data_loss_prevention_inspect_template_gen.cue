@@ -68,7 +68,7 @@ import "list"
 
 	_#defs: "/$defs/inspect_config/$defs/custom_info_types": close({
 		dictionary?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary"]])
-		info_type?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/info_type", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/info_type"]])
+		info_type!: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/info_type", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/info_type"]])
 
 		// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a
 		// finding to be returned. It still can be used for rules
@@ -216,8 +216,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/rule_set": close({
-		info_types?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/info_types", [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/info_types"]])
-		rules?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules", [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules"]])
+		info_types!: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/info_types", [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/info_types"]])
+		rules!: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules", [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules"]])
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/info_types": close({
@@ -279,8 +279,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_hotword": close({
-		hotword_regex?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_hotword/$defs/hotword_regex", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_hotword/$defs/hotword_regex"]])
-		proximity?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_hotword/$defs/proximity", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_hotword/$defs/proximity"]])
+		hotword_regex!: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_hotword/$defs/hotword_regex", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_hotword/$defs/hotword_regex"]])
+		proximity!: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_hotword/$defs/proximity", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_hotword/$defs/proximity"]])
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_hotword/$defs/hotword_regex": close({
@@ -304,7 +304,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_info_types": close({
-		info_types?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_info_types/$defs/info_types", [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_info_types/$defs/info_types"]])
+		info_types!: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_info_types/$defs/info_types", [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_info_types/$defs/info_types"]])
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_info_types/$defs/info_types": close({
@@ -340,9 +340,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/hotword_rule": close({
-		hotword_regex?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/hotword_rule/$defs/hotword_regex", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/hotword_rule/$defs/hotword_regex"]])
-		likelihood_adjustment?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/hotword_rule/$defs/likelihood_adjustment", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/hotword_rule/$defs/likelihood_adjustment"]])
-		proximity?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/hotword_rule/$defs/proximity", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/hotword_rule/$defs/proximity"]])
+		hotword_regex!: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/hotword_rule/$defs/hotword_regex", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/hotword_rule/$defs/hotword_regex"]])
+		likelihood_adjustment!: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/hotword_rule/$defs/likelihood_adjustment", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/hotword_rule/$defs/likelihood_adjustment"]])
+		proximity!: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/hotword_rule/$defs/proximity", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/hotword_rule/$defs/proximity"]])
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/hotword_rule/$defs/hotword_regex": close({

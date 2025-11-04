@@ -8,7 +8,7 @@ import "list"
 	close({
 		// A human-readable description of the rule.
 		description?: string
-		collector_ilb?: matchN(1, [#collector_ilb, list.MaxItems(1) & [_, ...] & [...#collector_ilb]])
+		collector_ilb!: matchN(1, [#collector_ilb, list.MaxItems(1) & [_, ...] & [...#collector_ilb]])
 
 		// The name of the packet mirroring rule
 		name!: string
@@ -19,8 +19,8 @@ import "list"
 		// the same instances.
 		priority?: number
 		filter?: matchN(1, [#filter, list.MaxItems(1) & [...#filter]])
-		mirrored_resources?: matchN(1, [#mirrored_resources, list.MaxItems(1) & [_, ...] & [...#mirrored_resources]])
-		network?: matchN(1, [#network, list.MaxItems(1) & [_, ...] & [...#network]])
+		mirrored_resources!: matchN(1, [#mirrored_resources, list.MaxItems(1) & [_, ...] & [...#mirrored_resources]])
+		network!: matchN(1, [#network, list.MaxItems(1) & [_, ...] & [...#network]])
 
 		// The Region in which the created address should reside.
 		// If it is not provided, the provider region is used.

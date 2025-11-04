@@ -50,7 +50,7 @@ import "list"
 	})
 
 	#policycontroller: close({
-		policy_controller_hub_config?: matchN(1, [_#defs."/$defs/policycontroller/$defs/policy_controller_hub_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policycontroller/$defs/policy_controller_hub_config"]])
+		policy_controller_hub_config!: matchN(1, [_#defs."/$defs/policycontroller/$defs/policy_controller_hub_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policycontroller/$defs/policy_controller_hub_config"]])
 
 		// Optional. Version of Policy Controller to install. Defaults to
 		// the latest version.

@@ -307,7 +307,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/automated_backup_policy/$defs/weekly_schedule": close({
-		start_times?: matchN(1, [_#defs."/$defs/automated_backup_policy/$defs/weekly_schedule/$defs/start_times", [_, ...] & [..._#defs."/$defs/automated_backup_policy/$defs/weekly_schedule/$defs/start_times"]])
+		start_times!: matchN(1, [_#defs."/$defs/automated_backup_policy/$defs/weekly_schedule/$defs/start_times", [_, ...] & [..._#defs."/$defs/automated_backup_policy/$defs/weekly_schedule/$defs/start_times"]])
 
 		// The days of the week to perform a backup. At least one day of
 		// the week must be provided. Possible values: ["MONDAY",
@@ -343,7 +343,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/maintenance_update_policy/$defs/maintenance_windows": close({
-		start_time?: matchN(1, [_#defs."/$defs/maintenance_update_policy/$defs/maintenance_windows/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_update_policy/$defs/maintenance_windows/$defs/start_time"]])
+		start_time!: matchN(1, [_#defs."/$defs/maintenance_update_policy/$defs/maintenance_windows/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_update_policy/$defs/maintenance_windows/$defs/start_time"]])
 
 		// Preferred day of the week for maintenance, e.g. MONDAY,
 		// TUESDAY, etc. Possible values: ["MONDAY", "TUESDAY",

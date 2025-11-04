@@ -57,9 +57,9 @@ import "list"
 		// `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
 		name!: string
 		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
-		jobs?: matchN(1, [#jobs, [_, ...] & [...#jobs]])
+		jobs!: matchN(1, [#jobs, [_, ...] & [...#jobs]])
 		parameters?: matchN(1, [#parameters, [...#parameters]])
-		placement?: matchN(1, [#placement, list.MaxItems(1) & [_, ...] & [...#placement]])
+		placement!: matchN(1, [#placement, list.MaxItems(1) & [_, ...] & [...#placement]])
 		timeouts?: #timeouts
 
 		// The project for the resource
@@ -550,7 +550,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster": close({
-		config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config"]])
+		config!: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config"]])
 
 		// Required. The cluster name prefix. A unique cluster name will
 		// be formed by appending a random suffix. The name must contain

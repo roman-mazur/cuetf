@@ -57,7 +57,7 @@ import "list"
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		location!: string
-		endpoint?: matchN(1, [#endpoint, list.MaxItems(1) & [_, ...] & [...#endpoint]])
+		endpoint!: matchN(1, [#endpoint, list.MaxItems(1) & [_, ...] & [...#endpoint]])
 		timeouts?: #timeouts
 
 		// Identifier. The name of the curation.
@@ -82,7 +82,7 @@ import "list"
 	})
 
 	#endpoint: close({
-		application_integration_endpoint_details?: matchN(1, [_#defs."/$defs/endpoint/$defs/application_integration_endpoint_details", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/endpoint/$defs/application_integration_endpoint_details"]])
+		application_integration_endpoint_details!: matchN(1, [_#defs."/$defs/endpoint/$defs/application_integration_endpoint_details", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/endpoint/$defs/application_integration_endpoint_details"]])
 	})
 
 	#timeouts: close({

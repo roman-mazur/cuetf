@@ -25,7 +25,7 @@ import "list"
 
 	#dedicated_resources: close({
 		autoscaling_metric_specs?: matchN(1, [_#defs."/$defs/dedicated_resources/$defs/autoscaling_metric_specs", [..._#defs."/$defs/dedicated_resources/$defs/autoscaling_metric_specs"]])
-		machine_spec?: matchN(1, [_#defs."/$defs/dedicated_resources/$defs/machine_spec", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/dedicated_resources/$defs/machine_spec"]])
+		machine_spec!: matchN(1, [_#defs."/$defs/dedicated_resources/$defs/machine_spec", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/dedicated_resources/$defs/machine_spec"]])
 
 		// The maximum number of replicas this DeployedModel may be
 		// deployed on when the traffic against it increases. If the

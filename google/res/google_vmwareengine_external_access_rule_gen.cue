@@ -39,8 +39,8 @@ package res
 		// External access rule priority, which determines the external
 		// access rule to use when multiple rules apply.
 		priority!: number
-		destination_ip_ranges?: matchN(1, [#destination_ip_ranges, [_, ...] & [...#destination_ip_ranges]])
-		source_ip_ranges?: matchN(1, [#source_ip_ranges, [_, ...] & [...#source_ip_ranges]])
+		destination_ip_ranges!: matchN(1, [#destination_ip_ranges, [_, ...] & [...#destination_ip_ranges]])
+		source_ip_ranges!: matchN(1, [#source_ip_ranges, [_, ...] & [...#source_ip_ranges]])
 		timeouts?: #timeouts
 
 		// A list of source ports to which the external access rule

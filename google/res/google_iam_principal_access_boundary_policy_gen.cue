@@ -65,7 +65,7 @@ import "list"
 	})
 
 	#details: close({
-		rules?: matchN(1, [_#defs."/$defs/details/$defs/rules", [_, ...] & [..._#defs."/$defs/details/$defs/rules"]])
+		rules!: matchN(1, [_#defs."/$defs/details/$defs/rules", [_, ...] & [..._#defs."/$defs/details/$defs/rules"]])
 
 		// The version number that indicates which Google Cloud services
 		// are included in the enforcement (e.g. \"latest\", \"1\", ...).

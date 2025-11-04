@@ -115,12 +115,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options": close({
-		overrides?: matchN(1, [_#defs."/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/overrides", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/overrides"]])
-		replica_selection?: matchN(1, [_#defs."/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/replica_selection", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/replica_selection"]])
+		overrides!: matchN(1, [_#defs."/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/overrides", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/overrides"]])
+		replica_selection!: matchN(1, [_#defs."/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/replica_selection", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/replica_selection"]])
 	})
 
 	_#defs: "/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/overrides": close({
-		autoscaling_limits?: matchN(1, [_#defs."/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/overrides/$defs/autoscaling_limits", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/overrides/$defs/autoscaling_limits"]])
+		autoscaling_limits!: matchN(1, [_#defs."/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/overrides/$defs/autoscaling_limits", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/overrides/$defs/autoscaling_limits"]])
 	})
 
 	_#defs: "/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/overrides/$defs/autoscaling_limits": close({

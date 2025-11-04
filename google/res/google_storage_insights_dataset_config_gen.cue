@@ -56,7 +56,7 @@ import "list"
 		organization_number?: string
 		exclude_cloud_storage_buckets?: matchN(1, [#exclude_cloud_storage_buckets, list.MaxItems(1) & [...#exclude_cloud_storage_buckets]])
 		exclude_cloud_storage_locations?: matchN(1, [#exclude_cloud_storage_locations, list.MaxItems(1) & [...#exclude_cloud_storage_locations]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
 		include_cloud_storage_buckets?: matchN(1, [#include_cloud_storage_buckets, list.MaxItems(1) & [...#include_cloud_storage_buckets]])
 		include_cloud_storage_locations?: matchN(1, [#include_cloud_storage_locations, list.MaxItems(1) & [...#include_cloud_storage_locations]])
 		source_folders?: matchN(1, [#source_folders, list.MaxItems(1) & [...#source_folders]])
@@ -80,7 +80,7 @@ import "list"
 	})
 
 	#exclude_cloud_storage_buckets: close({
-		cloud_storage_buckets?: matchN(1, [_#defs."/$defs/exclude_cloud_storage_buckets/$defs/cloud_storage_buckets", [_, ...] & [..._#defs."/$defs/exclude_cloud_storage_buckets/$defs/cloud_storage_buckets"]])
+		cloud_storage_buckets!: matchN(1, [_#defs."/$defs/exclude_cloud_storage_buckets/$defs/cloud_storage_buckets", [_, ...] & [..._#defs."/$defs/exclude_cloud_storage_buckets/$defs/cloud_storage_buckets"]])
 	})
 
 	#exclude_cloud_storage_locations: close({
@@ -99,7 +99,7 @@ import "list"
 	})
 
 	#include_cloud_storage_buckets: close({
-		cloud_storage_buckets?: matchN(1, [_#defs."/$defs/include_cloud_storage_buckets/$defs/cloud_storage_buckets", [_, ...] & [..._#defs."/$defs/include_cloud_storage_buckets/$defs/cloud_storage_buckets"]])
+		cloud_storage_buckets!: matchN(1, [_#defs."/$defs/include_cloud_storage_buckets/$defs/cloud_storage_buckets", [_, ...] & [..._#defs."/$defs/include_cloud_storage_buckets/$defs/cloud_storage_buckets"]])
 	})
 
 	#include_cloud_storage_locations: close({

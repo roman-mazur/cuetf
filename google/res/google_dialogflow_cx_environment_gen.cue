@@ -28,7 +28,7 @@ package res
 		// fractional digits. Examples: "2014-10-02T15:01:23Z" and
 		// "2014-10-02T15:01:23.045123456Z".
 		update_time?: string
-		version_configs?: matchN(1, [#version_configs, [_, ...] & [...#version_configs]])
+		version_configs!: matchN(1, [#version_configs, [_, ...] & [...#version_configs]])
 	})
 
 	#timeouts: close({

@@ -146,11 +146,11 @@ import "list"
 	})
 
 	#metadata_integration: close({
-		data_catalog_config?: matchN(1, [_#defs."/$defs/metadata_integration/$defs/data_catalog_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/metadata_integration/$defs/data_catalog_config"]])
+		data_catalog_config!: matchN(1, [_#defs."/$defs/metadata_integration/$defs/data_catalog_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/metadata_integration/$defs/data_catalog_config"]])
 	})
 
 	#network_config: close({
-		consumers?: matchN(1, [_#defs."/$defs/network_config/$defs/consumers", [_, ...] & [..._#defs."/$defs/network_config/$defs/consumers"]])
+		consumers!: matchN(1, [_#defs."/$defs/network_config/$defs/consumers", [_, ...] & [..._#defs."/$defs/network_config/$defs/consumers"]])
 	})
 
 	#scaling_config: close({
@@ -219,7 +219,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/hive_metastore_config/$defs/kerberos_config": close({
-		keytab?: matchN(1, [_#defs."/$defs/hive_metastore_config/$defs/kerberos_config/$defs/keytab", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/hive_metastore_config/$defs/kerberos_config/$defs/keytab"]])
+		keytab!: matchN(1, [_#defs."/$defs/hive_metastore_config/$defs/kerberos_config/$defs/keytab", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/hive_metastore_config/$defs/kerberos_config/$defs/keytab"]])
 
 		// A Cloud Storage URI that specifies the path to a krb5.conf
 		// file. It is of the form gs://{bucket_name}/path/to/krb5.conf,

@@ -33,7 +33,7 @@ import "list"
 
 		// Represents the different states of a AppConnector.
 		state?: string
-		principal_info?: matchN(1, [#principal_info, list.MaxItems(1) & [_, ...] & [...#principal_info]])
+		principal_info!: matchN(1, [#principal_info, list.MaxItems(1) & [_, ...] & [...#principal_info]])
 		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource
@@ -42,7 +42,7 @@ import "list"
 	})
 
 	#principal_info: close({
-		service_account?: matchN(1, [_#defs."/$defs/principal_info/$defs/service_account", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/principal_info/$defs/service_account"]])
+		service_account!: matchN(1, [_#defs."/$defs/principal_info/$defs/service_account", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/principal_info/$defs/service_account"]])
 	})
 
 	#timeouts: close({

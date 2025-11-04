@@ -94,19 +94,19 @@ import "list"
 		// cluster controller logs.
 		local_name?: string
 		cluster_operations?: matchN(1, [#cluster_operations, list.MaxItems(1) & [...#cluster_operations]])
-		control_plane?: matchN(1, [#control_plane, list.MaxItems(1) & [_, ...] & [...#control_plane]])
-		load_balancer?: matchN(1, [#load_balancer, list.MaxItems(1) & [_, ...] & [...#load_balancer]])
+		control_plane!: matchN(1, [#control_plane, list.MaxItems(1) & [_, ...] & [...#control_plane]])
+		load_balancer!: matchN(1, [#load_balancer, list.MaxItems(1) & [_, ...] & [...#load_balancer]])
 
 		// The location of the resource.
 		location!: string
 		maintenance_config?: matchN(1, [#maintenance_config, list.MaxItems(1) & [...#maintenance_config]])
-		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [_, ...] & [...#network_config]])
+		network_config!: matchN(1, [#network_config, list.MaxItems(1) & [_, ...] & [...#network_config]])
 		node_access_config?: matchN(1, [#node_access_config, list.MaxItems(1) & [...#node_access_config]])
 		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
 		os_environment_config?: matchN(1, [#os_environment_config, list.MaxItems(1) & [...#os_environment_config]])
 		proxy?: matchN(1, [#proxy, list.MaxItems(1) & [...#proxy]])
 		security_config?: matchN(1, [#security_config, list.MaxItems(1) & [...#security_config]])
-		storage?: matchN(1, [#storage, list.MaxItems(1) & [_, ...] & [...#storage]])
+		storage!: matchN(1, [#storage, list.MaxItems(1) & [_, ...] & [...#storage]])
 		timeouts?: #timeouts
 		upgrade_policy?: matchN(1, [#upgrade_policy, list.MaxItems(1) & [...#upgrade_policy]])
 
@@ -172,15 +172,15 @@ import "list"
 
 	#control_plane: close({
 		api_server_args?: matchN(1, [_#defs."/$defs/control_plane/$defs/api_server_args", [..._#defs."/$defs/control_plane/$defs/api_server_args"]])
-		control_plane_node_pool_config?: matchN(1, [_#defs."/$defs/control_plane/$defs/control_plane_node_pool_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/control_plane_node_pool_config"]])
+		control_plane_node_pool_config!: matchN(1, [_#defs."/$defs/control_plane/$defs/control_plane_node_pool_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/control_plane_node_pool_config"]])
 	})
 
 	#load_balancer: close({
 		bgp_lb_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/bgp_lb_config", list.MaxItems(1) & [..._#defs."/$defs/load_balancer/$defs/bgp_lb_config"]])
 		manual_lb_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/manual_lb_config", list.MaxItems(1) & [..._#defs."/$defs/load_balancer/$defs/manual_lb_config"]])
 		metal_lb_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/metal_lb_config", list.MaxItems(1) & [..._#defs."/$defs/load_balancer/$defs/metal_lb_config"]])
-		port_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/port_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load_balancer/$defs/port_config"]])
-		vip_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/vip_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load_balancer/$defs/vip_config"]])
+		port_config!: matchN(1, [_#defs."/$defs/load_balancer/$defs/port_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load_balancer/$defs/port_config"]])
+		vip_config!: matchN(1, [_#defs."/$defs/load_balancer/$defs/vip_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load_balancer/$defs/vip_config"]])
 	})
 
 	#maintenance_config: close({
@@ -252,8 +252,8 @@ import "list"
 	})
 
 	#storage: close({
-		lvp_node_mounts_config?: matchN(1, [_#defs."/$defs/storage/$defs/lvp_node_mounts_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage/$defs/lvp_node_mounts_config"]])
-		lvp_share_config?: matchN(1, [_#defs."/$defs/storage/$defs/lvp_share_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage/$defs/lvp_share_config"]])
+		lvp_node_mounts_config!: matchN(1, [_#defs."/$defs/storage/$defs/lvp_node_mounts_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage/$defs/lvp_node_mounts_config"]])
+		lvp_share_config!: matchN(1, [_#defs."/$defs/storage/$defs/lvp_share_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage/$defs/lvp_share_config"]])
 	})
 
 	#timeouts: close({
@@ -279,7 +279,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/control_plane/$defs/control_plane_node_pool_config": close({
-		node_pool_config?: matchN(1, [_#defs."/$defs/control_plane/$defs/control_plane_node_pool_config/$defs/node_pool_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/control_plane_node_pool_config/$defs/node_pool_config"]])
+		node_pool_config!: matchN(1, [_#defs."/$defs/control_plane/$defs/control_plane_node_pool_config/$defs/node_pool_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/control_plane_node_pool_config/$defs/node_pool_config"]])
 	})
 
 	_#defs: "/$defs/control_plane/$defs/control_plane_node_pool_config/$defs/node_pool_config": close({
@@ -339,8 +339,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/load_balancer/$defs/bgp_lb_config": close({
-		address_pools?: matchN(1, [_#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/address_pools", [_, ...] & [..._#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/address_pools"]])
-		bgp_peer_configs?: matchN(1, [_#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/bgp_peer_configs", [_, ...] & [..._#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/bgp_peer_configs"]])
+		address_pools!: matchN(1, [_#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/address_pools", [_, ...] & [..._#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/address_pools"]])
+		bgp_peer_configs!: matchN(1, [_#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/bgp_peer_configs", [_, ...] & [..._#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/bgp_peer_configs"]])
 		load_balancer_node_pool_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config", list.MaxItems(1) & [..._#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config"]])
 
 		// BGP autonomous system number (ASN) of the cluster.
@@ -485,7 +485,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/load_balancer/$defs/metal_lb_config": close({
-		address_pools?: matchN(1, [_#defs."/$defs/load_balancer/$defs/metal_lb_config/$defs/address_pools", [_, ...] & [..._#defs."/$defs/load_balancer/$defs/metal_lb_config/$defs/address_pools"]])
+		address_pools!: matchN(1, [_#defs."/$defs/load_balancer/$defs/metal_lb_config/$defs/address_pools", [_, ...] & [..._#defs."/$defs/load_balancer/$defs/metal_lb_config/$defs/address_pools"]])
 		load_balancer_node_pool_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/metal_lb_config/$defs/load_balancer_node_pool_config", list.MaxItems(1) & [..._#defs."/$defs/load_balancer/$defs/metal_lb_config/$defs/load_balancer_node_pool_config"]])
 	})
 
@@ -610,7 +610,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/security_config/$defs/authorization": close({
-		admin_users?: matchN(1, [_#defs."/$defs/security_config/$defs/authorization/$defs/admin_users", [_, ...] & [..._#defs."/$defs/security_config/$defs/authorization/$defs/admin_users"]])
+		admin_users!: matchN(1, [_#defs."/$defs/security_config/$defs/authorization/$defs/admin_users", [_, ...] & [..._#defs."/$defs/security_config/$defs/authorization/$defs/admin_users"]])
 	})
 
 	_#defs: "/$defs/security_config/$defs/authorization/$defs/admin_users": close({
@@ -627,7 +627,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/storage/$defs/lvp_share_config": close({
-		lvp_config?: matchN(1, [_#defs."/$defs/storage/$defs/lvp_share_config/$defs/lvp_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage/$defs/lvp_share_config/$defs/lvp_config"]])
+		lvp_config!: matchN(1, [_#defs."/$defs/storage/$defs/lvp_share_config/$defs/lvp_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage/$defs/lvp_share_config/$defs/lvp_config"]])
 
 		// The number of subdirectories to create under path.
 		shared_path_pv_count?: number

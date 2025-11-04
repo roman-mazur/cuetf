@@ -8,7 +8,7 @@ import "list"
 	close({
 		// The time when the scan was created.
 		create_time?: string
-		data?: matchN(1, [#data, list.MaxItems(1) & [_, ...] & [...#data]])
+		data!: matchN(1, [#data, list.MaxItems(1) & [_, ...] & [...#data]])
 
 		// DataScan identifier. Must contain only lowercase letters,
 		// numbers and hyphens. Must start with a letter. Must end with a
@@ -53,7 +53,7 @@ import "list"
 		data_discovery_spec?: matchN(1, [#data_discovery_spec, list.MaxItems(1) & [...#data_discovery_spec]])
 		data_profile_spec?: matchN(1, [#data_profile_spec, list.MaxItems(1) & [...#data_profile_spec]])
 		data_quality_spec?: matchN(1, [#data_quality_spec, list.MaxItems(1) & [...#data_quality_spec]])
-		execution_spec?: matchN(1, [#execution_spec, list.MaxItems(1) & [_, ...] & [...#execution_spec]])
+		execution_spec!: matchN(1, [#execution_spec, list.MaxItems(1) & [_, ...] & [...#execution_spec]])
 		timeouts?: #timeouts
 		project?:  string
 
@@ -139,7 +139,7 @@ import "list"
 	})
 
 	#execution_spec: close({
-		trigger?: matchN(1, [_#defs."/$defs/execution_spec/$defs/trigger", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/execution_spec/$defs/trigger"]])
+		trigger!: matchN(1, [_#defs."/$defs/execution_spec/$defs/trigger", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/execution_spec/$defs/trigger"]])
 
 		// The unnested field (of type Date or Timestamp) that contains
 		// values which monotonically increase over time. If not
@@ -271,7 +271,7 @@ import "list"
 	_#defs: "/$defs/data_quality_spec/$defs/post_scan_actions/$defs/notification_report": close({
 		job_end_trigger?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/post_scan_actions/$defs/notification_report/$defs/job_end_trigger", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/post_scan_actions/$defs/notification_report/$defs/job_end_trigger"]])
 		job_failure_trigger?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/post_scan_actions/$defs/notification_report/$defs/job_failure_trigger", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/post_scan_actions/$defs/notification_report/$defs/job_failure_trigger"]])
-		recipients?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/post_scan_actions/$defs/notification_report/$defs/recipients", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/data_quality_spec/$defs/post_scan_actions/$defs/notification_report/$defs/recipients"]])
+		recipients!: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/post_scan_actions/$defs/notification_report/$defs/recipients", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/data_quality_spec/$defs/post_scan_actions/$defs/notification_report/$defs/recipients"]])
 		score_threshold_trigger?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/post_scan_actions/$defs/notification_report/$defs/score_threshold_trigger", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/post_scan_actions/$defs/notification_report/$defs/score_threshold_trigger"]])
 	})
 

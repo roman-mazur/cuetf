@@ -47,8 +47,8 @@ import "list"
 		runtime!: string
 		project?: string
 		basic_scaling?: matchN(1, [#basic_scaling, list.MaxItems(1) & [...#basic_scaling]])
-		deployment?: matchN(1, [#deployment, list.MaxItems(1) & [_, ...] & [...#deployment]])
-		entrypoint?: matchN(1, [#entrypoint, list.MaxItems(1) & [_, ...] & [...#entrypoint]])
+		deployment!: matchN(1, [#deployment, list.MaxItems(1) & [_, ...] & [...#deployment]])
+		entrypoint!: matchN(1, [#entrypoint, list.MaxItems(1) & [_, ...] & [...#entrypoint]])
 		handlers?: matchN(1, [#handlers, [...#handlers]])
 		libraries?: matchN(1, [#libraries, [...#libraries]])
 		manual_scaling?: matchN(1, [#manual_scaling, list.MaxItems(1) & [...#manual_scaling]])

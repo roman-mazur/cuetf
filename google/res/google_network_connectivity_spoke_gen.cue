@@ -107,7 +107,7 @@ import "list"
 	})
 
 	#linked_router_appliance_instances: close({
-		instances?: matchN(1, [_#defs."/$defs/linked_router_appliance_instances/$defs/instances", [_, ...] & [..._#defs."/$defs/linked_router_appliance_instances/$defs/instances"]])
+		instances!: matchN(1, [_#defs."/$defs/linked_router_appliance_instances/$defs/instances", [_, ...] & [..._#defs."/$defs/linked_router_appliance_instances/$defs/instances"]])
 
 		// IP ranges allowed to be included during import from hub (does
 		// not control transit connectivity).

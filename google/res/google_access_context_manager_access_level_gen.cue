@@ -29,7 +29,7 @@ import "list"
 	})
 
 	#basic: close({
-		conditions?: matchN(1, [_#defs."/$defs/basic/$defs/conditions", [_, ...] & [..._#defs."/$defs/basic/$defs/conditions"]])
+		conditions!: matchN(1, [_#defs."/$defs/basic/$defs/conditions", [_, ...] & [..._#defs."/$defs/basic/$defs/conditions"]])
 
 		// How the conditions list should be combined to determine if a
 		// request
@@ -44,7 +44,7 @@ import "list"
 	})
 
 	#custom: close({
-		expr?: matchN(1, [_#defs."/$defs/custom/$defs/expr", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/custom/$defs/expr"]])
+		expr!: matchN(1, [_#defs."/$defs/custom/$defs/expr", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/custom/$defs/expr"]])
 	})
 
 	#timeouts: close({

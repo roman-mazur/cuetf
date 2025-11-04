@@ -26,7 +26,7 @@ import "list"
 		// Config lives in.
 		organization!: string
 		id?:           string
-		streaming_config?: matchN(1, [#streaming_config, list.MaxItems(1) & [_, ...] & [...#streaming_config]])
+		streaming_config!: matchN(1, [#streaming_config, list.MaxItems(1) & [_, ...] & [...#streaming_config]])
 		timeouts?: #timeouts
 
 		// The Pub/Sub topic to send notifications to. Its format is

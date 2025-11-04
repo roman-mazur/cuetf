@@ -93,7 +93,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/deployment_spec/$defs/secret_env": close({
-		secret_ref?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/secret_env/$defs/secret_ref", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/secret_env/$defs/secret_ref"]])
+		secret_ref!: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/secret_env/$defs/secret_ref", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/secret_env/$defs/secret_ref"]])
 
 		// The name of the environment variable. Must be a valid C
 		// identifier.

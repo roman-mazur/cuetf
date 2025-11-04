@@ -189,7 +189,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/alloydb/$defs/settings": close({
-		initial_user?: matchN(1, [_#defs."/$defs/alloydb/$defs/settings/$defs/initial_user", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/alloydb/$defs/settings/$defs/initial_user"]])
+		initial_user!: matchN(1, [_#defs."/$defs/alloydb/$defs/settings/$defs/initial_user", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/alloydb/$defs/settings/$defs/initial_user"]])
 		primary_instance_settings?: matchN(1, [_#defs."/$defs/alloydb/$defs/settings/$defs/primary_instance_settings", list.MaxItems(1) & [..._#defs."/$defs/alloydb/$defs/settings/$defs/primary_instance_settings"]])
 
 		// Labels for the AlloyDB cluster created by DMS.
@@ -228,7 +228,7 @@ import "list"
 
 		// Labels for the AlloyDB primary instance created by DMS.
 		labels?: [string]: string
-		machine_config?: matchN(1, [_#defs."/$defs/alloydb/$defs/settings/$defs/primary_instance_settings/$defs/machine_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/alloydb/$defs/settings/$defs/primary_instance_settings/$defs/machine_config"]])
+		machine_config!: matchN(1, [_#defs."/$defs/alloydb/$defs/settings/$defs/primary_instance_settings/$defs/machine_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/alloydb/$defs/settings/$defs/primary_instance_settings/$defs/machine_config"]])
 
 		// Output only. The private IP address for the Instance. This is
 		// the connection endpoint for an end-user application.

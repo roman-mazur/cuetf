@@ -169,8 +169,8 @@ import "list"
 	})
 
 	#lifecycle_rule: close({
-		action?: matchN(1, [_#defs."/$defs/lifecycle_rule/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/lifecycle_rule/$defs/action"]])
-		condition?: matchN(1, [_#defs."/$defs/lifecycle_rule/$defs/condition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/lifecycle_rule/$defs/condition"]])
+		action!: matchN(1, [_#defs."/$defs/lifecycle_rule/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/lifecycle_rule/$defs/action"]])
+		condition!: matchN(1, [_#defs."/$defs/lifecycle_rule/$defs/condition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/lifecycle_rule/$defs/condition"]])
 	})
 
 	#logging: close({

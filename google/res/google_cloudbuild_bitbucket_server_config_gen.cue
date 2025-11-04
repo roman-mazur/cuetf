@@ -53,7 +53,7 @@ import "list"
 		// Server.
 		username!: string
 		connected_repositories?: matchN(1, [#connected_repositories, [...#connected_repositories]])
-		secrets?: matchN(1, [#secrets, list.MaxItems(1) & [_, ...] & [...#secrets]])
+		secrets!: matchN(1, [#secrets, list.MaxItems(1) & [_, ...] & [...#secrets]])
 		timeouts?: #timeouts
 		project?:  string
 

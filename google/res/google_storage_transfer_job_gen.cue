@@ -107,7 +107,7 @@ import "list"
 
 	#schedule: close({
 		schedule_end_date?: matchN(1, [_#defs."/$defs/schedule/$defs/schedule_end_date", list.MaxItems(1) & [..._#defs."/$defs/schedule/$defs/schedule_end_date"]])
-		schedule_start_date?: matchN(1, [_#defs."/$defs/schedule/$defs/schedule_start_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/schedule/$defs/schedule_start_date"]])
+		schedule_start_date!: matchN(1, [_#defs."/$defs/schedule/$defs/schedule_start_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/schedule/$defs/schedule_start_date"]])
 		start_time_of_day?: matchN(1, [_#defs."/$defs/schedule/$defs/start_time_of_day", list.MaxItems(1) & [..._#defs."/$defs/schedule/$defs/start_time_of_day"]])
 
 		// Interval between the start of each scheduled transfer. If

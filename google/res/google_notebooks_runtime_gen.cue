@@ -207,7 +207,7 @@ import "list"
 		reserved_ip_range?: string
 		accelerator_config?: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/accelerator_config", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/accelerator_config"]])
 		container_images?: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/container_images", [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/container_images"]])
-		data_disk?: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/data_disk", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/data_disk"]])
+		data_disk!: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/data_disk", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/data_disk"]])
 		encryption_config?: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/encryption_config", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/encryption_config"]])
 		shielded_instance_config?: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/shielded_instance_config"]])
 

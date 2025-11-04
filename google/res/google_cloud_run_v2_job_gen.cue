@@ -120,7 +120,7 @@ import "list"
 		// Email address of the last authenticated modifier.
 		last_modifier?: string
 		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
-		template?: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
+		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
 		timeouts?: #timeouts
 
 		// Name of the last created execution.
@@ -265,7 +265,7 @@ import "list"
 		// when there are fewer tasks waiting to be completed remaining,
 		// i.e. when the work left to do is less than max parallelism.
 		parallelism?: number
-		template?: matchN(1, [_#defs."/$defs/template/$defs/template", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/template/$defs/template"]])
+		template!: matchN(1, [_#defs."/$defs/template/$defs/template", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/template/$defs/template"]])
 
 		// Specifies the desired number of tasks the execution should run.
 		// Setting to 1 means that parallelism is limited to 1 and the

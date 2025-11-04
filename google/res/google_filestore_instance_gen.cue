@@ -54,9 +54,9 @@ import "list"
 		// The name of the location of the instance. This can be a region
 		// for ENTERPRISE tier instances.
 		location?: string
-		file_shares?: matchN(1, [#file_shares, list.MaxItems(1) & [_, ...] & [...#file_shares]])
+		file_shares!: matchN(1, [#file_shares, list.MaxItems(1) & [_, ...] & [...#file_shares]])
 		initial_replication?: matchN(1, [#initial_replication, list.MaxItems(1) & [...#initial_replication]])
-		networks?: matchN(1, [#networks, [_, ...] & [...#networks]])
+		networks!: matchN(1, [#networks, [_, ...] & [...#networks]])
 		performance_config?: matchN(1, [#performance_config, list.MaxItems(1) & [...#performance_config]])
 		timeouts?: #timeouts
 

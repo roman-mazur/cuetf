@@ -17,7 +17,7 @@ import "list"
 		// 'projects/{{projectId}}/notificationConfigs/{{config_id}}'.
 		name?: string
 		id?:   string
-		streaming_config?: matchN(1, [#streaming_config, list.MaxItems(1) & [_, ...] & [...#streaming_config]])
+		streaming_config!: matchN(1, [#streaming_config, list.MaxItems(1) & [_, ...] & [...#streaming_config]])
 		project?:  string
 		timeouts?: #timeouts
 

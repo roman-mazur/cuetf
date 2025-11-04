@@ -236,12 +236,12 @@ import "list"
 	})
 
 	#x509: close({
-		trust_store?: matchN(1, [_#defs."/$defs/x509/$defs/trust_store", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/x509/$defs/trust_store"]])
+		trust_store!: matchN(1, [_#defs."/$defs/x509/$defs/trust_store", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/x509/$defs/trust_store"]])
 	})
 
 	_#defs: "/$defs/x509/$defs/trust_store": close({
 		intermediate_cas?: matchN(1, [_#defs."/$defs/x509/$defs/trust_store/$defs/intermediate_cas", [..._#defs."/$defs/x509/$defs/trust_store/$defs/intermediate_cas"]])
-		trust_anchors?: matchN(1, [_#defs."/$defs/x509/$defs/trust_store/$defs/trust_anchors", [_, ...] & [..._#defs."/$defs/x509/$defs/trust_store/$defs/trust_anchors"]])
+		trust_anchors!: matchN(1, [_#defs."/$defs/x509/$defs/trust_store/$defs/trust_anchors", [_, ...] & [..._#defs."/$defs/x509/$defs/trust_store/$defs/trust_anchors"]])
 	})
 
 	_#defs: "/$defs/x509/$defs/trust_store/$defs/intermediate_cas": close({

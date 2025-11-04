@@ -32,8 +32,8 @@ import "list"
 	})
 
 	#data_store_spec: close({
-		data_store_connections?: matchN(1, [_#defs."/$defs/data_store_spec/$defs/data_store_connections", [_, ...] & [..._#defs."/$defs/data_store_spec/$defs/data_store_connections"]])
-		fallback_prompt?: matchN(1, [_#defs."/$defs/data_store_spec/$defs/fallback_prompt", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/data_store_spec/$defs/fallback_prompt"]])
+		data_store_connections!: matchN(1, [_#defs."/$defs/data_store_spec/$defs/data_store_connections", [_, ...] & [..._#defs."/$defs/data_store_spec/$defs/data_store_connections"]])
+		fallback_prompt!: matchN(1, [_#defs."/$defs/data_store_spec/$defs/fallback_prompt", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/data_store_spec/$defs/fallback_prompt"]])
 	})
 
 	#function_spec: close({
@@ -191,7 +191,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/open_api_spec/$defs/tls_config": close({
-		ca_certs?: matchN(1, [_#defs."/$defs/open_api_spec/$defs/tls_config/$defs/ca_certs", [_, ...] & [..._#defs."/$defs/open_api_spec/$defs/tls_config/$defs/ca_certs"]])
+		ca_certs!: matchN(1, [_#defs."/$defs/open_api_spec/$defs/tls_config/$defs/ca_certs", [_, ...] & [..._#defs."/$defs/open_api_spec/$defs/tls_config/$defs/ca_certs"]])
 	})
 
 	_#defs: "/$defs/open_api_spec/$defs/tls_config/$defs/ca_certs": close({

@@ -34,7 +34,7 @@ package res
 
 		// Required. Id of the Repository Group.
 		repository_group_id!: string
-		repositories?: matchN(1, [#repositories, [_, ...] & [...#repositories]])
+		repositories!: matchN(1, [#repositories, [_, ...] & [...#repositories]])
 		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource

@@ -44,8 +44,8 @@ import "list"
 		// source.
 		// Default value is false.
 		round_trip?: bool
-		destination?: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
-		source?: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
 		timeouts?: #timeouts
 		project?:  string
 

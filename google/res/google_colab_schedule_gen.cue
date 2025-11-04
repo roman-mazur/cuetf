@@ -51,7 +51,7 @@ import "list"
 
 		// The resource name of the Schedule
 		name?: string
-		create_notebook_execution_job_request?: matchN(1, [#create_notebook_execution_job_request, list.MaxItems(1) & [_, ...] & [...#create_notebook_execution_job_request]])
+		create_notebook_execution_job_request!: matchN(1, [#create_notebook_execution_job_request, list.MaxItems(1) & [_, ...] & [...#create_notebook_execution_job_request]])
 		timeouts?: #timeouts
 		project?:  string
 
@@ -65,7 +65,7 @@ import "list"
 	})
 
 	#create_notebook_execution_job_request: close({
-		notebook_execution_job?: matchN(1, [_#defs."/$defs/create_notebook_execution_job_request/$defs/notebook_execution_job", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/create_notebook_execution_job_request/$defs/notebook_execution_job"]])
+		notebook_execution_job!: matchN(1, [_#defs."/$defs/create_notebook_execution_job_request/$defs/notebook_execution_job", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/create_notebook_execution_job_request/$defs/notebook_execution_job"]])
 	})
 
 	#timeouts: close({
