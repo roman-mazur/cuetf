@@ -7,11 +7,16 @@ Usage example:
 ```cue
 import "github.com/roman-mazur/cuetf/google"
 
-googleInfra: google.#Terraform & {
-	provider: google: project: "my_proj"
+googleServer: google.#Terraform & {
+	provider: google: {
+		project: "my_proj"
+		zone:    "us-east1-b"
+	}
 	resource: google_compute_instance: test: {
 		name:         "test"
 		machine_type: "e2-micro"
+		boot_disk: initialize_params: image: "cos-cloud/cos-stable"
+		network_interface: network: "default"
 	}
 }
 ```
@@ -24,5 +29,3 @@ terraform plan
 ```
 
 See the [examples directory](examples) too.
-
-a test

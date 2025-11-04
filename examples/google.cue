@@ -3,7 +3,10 @@ package examples
 import "github.com/roman-mazur/cuetf/google"
 
 googleServer: google.#Terraform & {
-	provider: google: project: "my_proj"
+	provider: google: {
+		project: "my_proj"
+		zone:    "us-east1-b"
+	}
 	resource: google_compute_instance: test: {
 		name:         "test"
 		machine_type: "e2-micro"

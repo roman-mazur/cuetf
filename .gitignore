@@ -1,5 +1,6 @@
 .terraform
 .terraform*
+*.tf.json
 
 # Temporary directory created by ./cmd/gen
 */res/tmp/
