@@ -23,7 +23,7 @@ import "list"
 		id?:         string
 		bypass_actors?: matchN(1, [#bypass_actors, [...#bypass_actors]])
 		conditions?: matchN(1, [#conditions, list.MaxItems(1) & [...#conditions]])
-		rules?: matchN(1, [#rules, list.MaxItems(1) & [_, ...] & [...#rules]])
+		rules!: matchN(1, [#rules, list.MaxItems(1) & [_, ...] & [...#rules]])
 
 		// GitHub ID for the ruleset.
 		ruleset_id?: number
@@ -51,7 +51,7 @@ import "list"
 	})
 
 	#conditions: close({
-		ref_name?: matchN(1, [_#defs."/$defs/conditions/$defs/ref_name", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/conditions/$defs/ref_name"]])
+		ref_name!: matchN(1, [_#defs."/$defs/conditions/$defs/ref_name", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/conditions/$defs/ref_name"]])
 	})
 
 	#rules: close({
@@ -247,7 +247,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/required_code_scanning": close({
-		required_code_scanning_tool?: matchN(1, [_#defs."/$defs/rules/$defs/required_code_scanning/$defs/required_code_scanning_tool", [_, ...] & [..._#defs."/$defs/rules/$defs/required_code_scanning/$defs/required_code_scanning_tool"]])
+		required_code_scanning_tool!: matchN(1, [_#defs."/$defs/rules/$defs/required_code_scanning/$defs/required_code_scanning_tool", [_, ...] & [..._#defs."/$defs/rules/$defs/required_code_scanning/$defs/required_code_scanning_tool"]])
 	})
 
 	_#defs: "/$defs/rules/$defs/required_code_scanning/$defs/required_code_scanning_tool": close({
@@ -273,7 +273,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/required_status_checks": close({
-		required_check?: matchN(1, [_#defs."/$defs/rules/$defs/required_status_checks/$defs/required_check", [_, ...] & [..._#defs."/$defs/rules/$defs/required_status_checks/$defs/required_check"]])
+		required_check!: matchN(1, [_#defs."/$defs/rules/$defs/required_status_checks/$defs/required_check", [_, ...] & [..._#defs."/$defs/rules/$defs/required_status_checks/$defs/required_check"]])
 
 		// Allow repositories and branches to be created if a check would
 		// otherwise prohibit it.
