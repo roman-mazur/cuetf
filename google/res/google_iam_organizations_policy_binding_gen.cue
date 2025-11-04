@@ -52,7 +52,7 @@ import "list"
 		// The Policy Binding ID.
 		policy_binding_id!: string
 		condition?: matchN(1, [#condition, list.MaxItems(1) & [...#condition]])
-		target?: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
+		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
 		timeouts?: #timeouts
 
 		// Immutable. The kind of the policy to attach in this binding.

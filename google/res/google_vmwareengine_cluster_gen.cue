@@ -56,7 +56,7 @@ import "list"
 		// Mandatory for successful addition of autoscaling settings in
 		// cluster.
 		cool_down_period?: string
-		autoscaling_policies?: matchN(1, [_#defs."/$defs/autoscaling_settings/$defs/autoscaling_policies", [_, ...] & [..._#defs."/$defs/autoscaling_settings/$defs/autoscaling_policies"]])
+		autoscaling_policies!: matchN(1, [_#defs."/$defs/autoscaling_settings/$defs/autoscaling_policies", [_, ...] & [..._#defs."/$defs/autoscaling_settings/$defs/autoscaling_policies"]])
 
 		// Maximum number of nodes of any type in a cluster.
 		// Mandatory for successful addition of autoscaling settings in

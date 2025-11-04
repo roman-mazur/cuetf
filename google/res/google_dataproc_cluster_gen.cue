@@ -113,7 +113,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/auxiliary_node_groups": close({
-		node_group?: matchN(1, [_#defs."/$defs/cluster_config/$defs/auxiliary_node_groups/$defs/node_group", [_, ...] & [..._#defs."/$defs/cluster_config/$defs/auxiliary_node_groups/$defs/node_group"]])
+		node_group!: matchN(1, [_#defs."/$defs/cluster_config/$defs/auxiliary_node_groups/$defs/node_group", [_, ...] & [..._#defs."/$defs/cluster_config/$defs/auxiliary_node_groups/$defs/node_group"]])
 
 		// A node group ID. Generated if not specified. The ID must
 		// contain only letters (a-z, A-Z), numbers (0-9), underscores
@@ -187,7 +187,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/dataproc_metric_config": close({
-		metrics?: matchN(1, [_#defs."/$defs/cluster_config/$defs/dataproc_metric_config/$defs/metrics", [_, ...] & [..._#defs."/$defs/cluster_config/$defs/dataproc_metric_config/$defs/metrics"]])
+		metrics!: matchN(1, [_#defs."/$defs/cluster_config/$defs/dataproc_metric_config/$defs/metrics", [_, ...] & [..._#defs."/$defs/cluster_config/$defs/dataproc_metric_config/$defs/metrics"]])
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/dataproc_metric_config/$defs/metrics": close({
@@ -641,8 +641,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/virtual_cluster_config/$defs/kubernetes_cluster_config": close({
-		gke_cluster_config?: matchN(1, [_#defs."/$defs/virtual_cluster_config/$defs/kubernetes_cluster_config/$defs/gke_cluster_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/virtual_cluster_config/$defs/kubernetes_cluster_config/$defs/gke_cluster_config"]])
-		kubernetes_software_config?: matchN(1, [_#defs."/$defs/virtual_cluster_config/$defs/kubernetes_cluster_config/$defs/kubernetes_software_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/virtual_cluster_config/$defs/kubernetes_cluster_config/$defs/kubernetes_software_config"]])
+		gke_cluster_config!: matchN(1, [_#defs."/$defs/virtual_cluster_config/$defs/kubernetes_cluster_config/$defs/gke_cluster_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/virtual_cluster_config/$defs/kubernetes_cluster_config/$defs/gke_cluster_config"]])
+		kubernetes_software_config!: matchN(1, [_#defs."/$defs/virtual_cluster_config/$defs/kubernetes_cluster_config/$defs/kubernetes_software_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/virtual_cluster_config/$defs/kubernetes_cluster_config/$defs/kubernetes_software_config"]])
 
 		// A namespace within the Kubernetes cluster to deploy into. If
 		// this namespace does not exist, it is created. If it exists,

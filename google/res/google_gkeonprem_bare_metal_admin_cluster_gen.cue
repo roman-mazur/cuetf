@@ -156,13 +156,13 @@ import "list"
 
 	#control_plane: close({
 		api_server_args?: matchN(1, [_#defs."/$defs/control_plane/$defs/api_server_args", [..._#defs."/$defs/control_plane/$defs/api_server_args"]])
-		control_plane_node_pool_config?: matchN(1, [_#defs."/$defs/control_plane/$defs/control_plane_node_pool_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/control_plane_node_pool_config"]])
+		control_plane_node_pool_config!: matchN(1, [_#defs."/$defs/control_plane/$defs/control_plane_node_pool_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/control_plane_node_pool_config"]])
 	})
 
 	#load_balancer: close({
 		manual_lb_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/manual_lb_config", list.MaxItems(1) & [..._#defs."/$defs/load_balancer/$defs/manual_lb_config"]])
-		port_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/port_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load_balancer/$defs/port_config"]])
-		vip_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/vip_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load_balancer/$defs/vip_config"]])
+		port_config!: matchN(1, [_#defs."/$defs/load_balancer/$defs/port_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load_balancer/$defs/port_config"]])
+		vip_config!: matchN(1, [_#defs."/$defs/load_balancer/$defs/vip_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load_balancer/$defs/vip_config"]])
 	})
 
 	#maintenance_config: close({
@@ -213,8 +213,8 @@ import "list"
 	})
 
 	#storage: close({
-		lvp_node_mounts_config?: matchN(1, [_#defs."/$defs/storage/$defs/lvp_node_mounts_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage/$defs/lvp_node_mounts_config"]])
-		lvp_share_config?: matchN(1, [_#defs."/$defs/storage/$defs/lvp_share_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage/$defs/lvp_share_config"]])
+		lvp_node_mounts_config!: matchN(1, [_#defs."/$defs/storage/$defs/lvp_node_mounts_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage/$defs/lvp_node_mounts_config"]])
+		lvp_share_config!: matchN(1, [_#defs."/$defs/storage/$defs/lvp_share_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage/$defs/lvp_share_config"]])
 	})
 
 	#timeouts: close({
@@ -234,7 +234,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/control_plane/$defs/control_plane_node_pool_config": close({
-		node_pool_config?: matchN(1, [_#defs."/$defs/control_plane/$defs/control_plane_node_pool_config/$defs/node_pool_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/control_plane_node_pool_config/$defs/node_pool_config"]])
+		node_pool_config!: matchN(1, [_#defs."/$defs/control_plane/$defs/control_plane_node_pool_config/$defs/node_pool_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/control_plane_node_pool_config/$defs/node_pool_config"]])
 	})
 
 	_#defs: "/$defs/control_plane/$defs/control_plane_node_pool_config/$defs/node_pool_config": close({
@@ -324,7 +324,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/security_config/$defs/authorization": close({
-		admin_users?: matchN(1, [_#defs."/$defs/security_config/$defs/authorization/$defs/admin_users", [_, ...] & [..._#defs."/$defs/security_config/$defs/authorization/$defs/admin_users"]])
+		admin_users!: matchN(1, [_#defs."/$defs/security_config/$defs/authorization/$defs/admin_users", [_, ...] & [..._#defs."/$defs/security_config/$defs/authorization/$defs/admin_users"]])
 	})
 
 	_#defs: "/$defs/security_config/$defs/authorization/$defs/admin_users": close({
@@ -341,7 +341,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/storage/$defs/lvp_share_config": close({
-		lvp_config?: matchN(1, [_#defs."/$defs/storage/$defs/lvp_share_config/$defs/lvp_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage/$defs/lvp_share_config/$defs/lvp_config"]])
+		lvp_config!: matchN(1, [_#defs."/$defs/storage/$defs/lvp_share_config/$defs/lvp_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage/$defs/lvp_share_config/$defs/lvp_config"]])
 
 		// The number of subdirectories to create under path.
 		shared_path_pv_count?: number

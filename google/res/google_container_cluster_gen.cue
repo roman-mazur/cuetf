@@ -478,7 +478,7 @@ import "list"
 		// Base64 encoded public certificate used by clients to
 		// authenticate to the cluster endpoint.
 		client_certificate?: string
-		client_certificate_config?: matchN(1, [_#defs."/$defs/master_auth/$defs/client_certificate_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/master_auth/$defs/client_certificate_config"]])
+		client_certificate_config!: matchN(1, [_#defs."/$defs/master_auth/$defs/client_certificate_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/master_auth/$defs/client_certificate_config"]])
 
 		// Base64 encoded private key used by clients to authenticate to
 		// the cluster endpoint.
@@ -728,7 +728,7 @@ import "list"
 	})
 
 	#notification_config: close({
-		pubsub?: matchN(1, [_#defs."/$defs/notification_config/$defs/pubsub", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/notification_config/$defs/pubsub"]])
+		pubsub!: matchN(1, [_#defs."/$defs/notification_config/$defs/pubsub", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/notification_config/$defs/pubsub"]])
 	})
 
 	#pod_autoscaling: close({
@@ -808,7 +808,7 @@ import "list"
 	})
 
 	#resource_usage_export_config: close({
-		bigquery_destination?: matchN(1, [_#defs."/$defs/resource_usage_export_config/$defs/bigquery_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/resource_usage_export_config/$defs/bigquery_destination"]])
+		bigquery_destination!: matchN(1, [_#defs."/$defs/resource_usage_export_config/$defs/bigquery_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/resource_usage_export_config/$defs/bigquery_destination"]])
 
 		// Whether to enable network egress metering for this cluster. If
 		// enabled, a daemonset will be created in the cluster to meter
@@ -1247,7 +1247,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config": close({
-		gcp_secret_manager_certificate_config?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config/$defs/gcp_secret_manager_certificate_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config/$defs/gcp_secret_manager_certificate_config"]])
+		gcp_secret_manager_certificate_config!: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config/$defs/gcp_secret_manager_certificate_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config/$defs/gcp_secret_manager_certificate_config"]])
 
 		// List of fully-qualified-domain-names. IPv4s and port
 		// specification are supported.
@@ -1537,7 +1537,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_config/$defs/sole_tenant_config": close({
-		node_affinity?: matchN(1, [_#defs."/$defs/node_config/$defs/sole_tenant_config/$defs/node_affinity", [_, ...] & [..._#defs."/$defs/node_config/$defs/sole_tenant_config/$defs/node_affinity"]])
+		node_affinity!: matchN(1, [_#defs."/$defs/node_config/$defs/sole_tenant_config/$defs/node_affinity", [_, ...] & [..._#defs."/$defs/node_config/$defs/sole_tenant_config/$defs/node_affinity"]])
 
 		// Specifies the minimum number of vCPUs that each sole tenant
 		// node must have to use CPU overcommit. If not specified, the
@@ -1855,7 +1855,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config": close({
-		gcp_secret_manager_certificate_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config/$defs/gcp_secret_manager_certificate_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config/$defs/gcp_secret_manager_certificate_config"]])
+		gcp_secret_manager_certificate_config!: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config/$defs/gcp_secret_manager_certificate_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config/$defs/gcp_secret_manager_certificate_config"]])
 
 		// List of fully-qualified-domain-names. IPv4s and port
 		// specification are supported.
@@ -2145,7 +2145,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/sole_tenant_config": close({
-		node_affinity?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/sole_tenant_config/$defs/node_affinity", [_, ...] & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/sole_tenant_config/$defs/node_affinity"]])
+		node_affinity!: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/sole_tenant_config/$defs/node_affinity", [_, ...] & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/sole_tenant_config/$defs/node_affinity"]])
 
 		// Specifies the minimum number of vCPUs that each sole tenant
 		// node must have to use CPU overcommit. If not specified, the
@@ -2228,7 +2228,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_pool/$defs/upgrade_settings/$defs/blue_green_settings": close({
-		standard_rollout_policy?: matchN(1, [_#defs."/$defs/node_pool/$defs/upgrade_settings/$defs/blue_green_settings/$defs/standard_rollout_policy", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/node_pool/$defs/upgrade_settings/$defs/blue_green_settings/$defs/standard_rollout_policy"]])
+		standard_rollout_policy!: matchN(1, [_#defs."/$defs/node_pool/$defs/upgrade_settings/$defs/blue_green_settings/$defs/standard_rollout_policy", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/node_pool/$defs/upgrade_settings/$defs/blue_green_settings/$defs/standard_rollout_policy"]])
 
 		// Time needed after draining entire blue pool. After this period,
 		// blue pool will be cleaned up.
@@ -2290,7 +2290,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config": close({
-		gcp_secret_manager_certificate_config?: matchN(1, [_#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config/$defs/gcp_secret_manager_certificate_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config/$defs/gcp_secret_manager_certificate_config"]])
+		gcp_secret_manager_certificate_config!: matchN(1, [_#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config/$defs/gcp_secret_manager_certificate_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config/$defs/gcp_secret_manager_certificate_config"]])
 
 		// List of fully-qualified-domain-names. IPv4s and port
 		// specification are supported.

@@ -44,7 +44,7 @@ import "list"
 		// Other routes that will be referenced to determine the next hop
 		// of the packet. Possible values: ["DEFAULT_ROUTING"]
 		next_hop_other_routes?: string
-		filter?: matchN(1, [#filter, list.MaxItems(1) & [_, ...] & [...#filter]])
+		filter!: matchN(1, [#filter, list.MaxItems(1) & [_, ...] & [...#filter]])
 		interconnect_attachment?: matchN(1, [#interconnect_attachment, list.MaxItems(1) & [...#interconnect_attachment]])
 		timeouts?: #timeouts
 		virtual_machine?: matchN(1, [#virtual_machine, list.MaxItems(1) & [...#virtual_machine]])

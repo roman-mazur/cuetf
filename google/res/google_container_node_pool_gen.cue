@@ -398,7 +398,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config": close({
-		gcp_secret_manager_certificate_config?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config/$defs/gcp_secret_manager_certificate_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config/$defs/gcp_secret_manager_certificate_config"]])
+		gcp_secret_manager_certificate_config!: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config/$defs/gcp_secret_manager_certificate_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config/$defs/certificate_authority_domain_config/$defs/gcp_secret_manager_certificate_config"]])
 
 		// List of fully-qualified-domain-names. IPv4s and port
 		// specification are supported.
@@ -688,7 +688,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_config/$defs/sole_tenant_config": close({
-		node_affinity?: matchN(1, [_#defs."/$defs/node_config/$defs/sole_tenant_config/$defs/node_affinity", [_, ...] & [..._#defs."/$defs/node_config/$defs/sole_tenant_config/$defs/node_affinity"]])
+		node_affinity!: matchN(1, [_#defs."/$defs/node_config/$defs/sole_tenant_config/$defs/node_affinity", [_, ...] & [..._#defs."/$defs/node_config/$defs/sole_tenant_config/$defs/node_affinity"]])
 
 		// Specifies the minimum number of vCPUs that each sole tenant
 		// node must have to use CPU overcommit. If not specified, the
@@ -732,7 +732,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/upgrade_settings/$defs/blue_green_settings": close({
-		standard_rollout_policy?: matchN(1, [_#defs."/$defs/upgrade_settings/$defs/blue_green_settings/$defs/standard_rollout_policy", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/upgrade_settings/$defs/blue_green_settings/$defs/standard_rollout_policy"]])
+		standard_rollout_policy!: matchN(1, [_#defs."/$defs/upgrade_settings/$defs/blue_green_settings/$defs/standard_rollout_policy", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/upgrade_settings/$defs/blue_green_settings/$defs/standard_rollout_policy"]])
 
 		// Time needed after draining entire blue pool. After this period,
 		// blue pool will be cleaned up.

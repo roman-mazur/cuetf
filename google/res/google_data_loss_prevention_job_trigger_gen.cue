@@ -29,7 +29,7 @@ import "list"
 		parent!: string
 		inspect_job?: matchN(1, [#inspect_job, list.MaxItems(1) & [...#inspect_job]])
 		timeouts?: #timeouts
-		triggers?: matchN(1, [#triggers, [_, ...] & [...#triggers]])
+		triggers!: matchN(1, [#triggers, [_, ...] & [...#triggers]])
 
 		// Whether the trigger is currently active. Default value:
 		// "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
@@ -50,7 +50,7 @@ import "list"
 	#inspect_job: close({
 		actions?: matchN(1, [_#defs."/$defs/inspect_job/$defs/actions", [..._#defs."/$defs/inspect_job/$defs/actions"]])
 		inspect_config?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/inspect_config"]])
-		storage_config?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/storage_config"]])
+		storage_config!: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/storage_config"]])
 
 		// The name of the template to run when this job is triggered.
 		inspect_template_name?: string
@@ -125,7 +125,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/actions/$defs/deidentify/$defs/transformation_details_storage_config": close({
-		table?: matchN(1, [_#defs."/$defs/inspect_job/$defs/actions/$defs/deidentify/$defs/transformation_details_storage_config/$defs/table", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/actions/$defs/deidentify/$defs/transformation_details_storage_config/$defs/table"]])
+		table!: matchN(1, [_#defs."/$defs/inspect_job/$defs/actions/$defs/deidentify/$defs/transformation_details_storage_config/$defs/table", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/actions/$defs/deidentify/$defs/transformation_details_storage_config/$defs/table"]])
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/actions/$defs/deidentify/$defs/transformation_details_storage_config/$defs/table": close({
@@ -157,7 +157,7 @@ import "list"
 	_#defs: "/$defs/inspect_job/$defs/actions/$defs/publish_to_stackdriver": close({})
 
 	_#defs: "/$defs/inspect_job/$defs/actions/$defs/save_findings": close({
-		output_config?: matchN(1, [_#defs."/$defs/inspect_job/$defs/actions/$defs/save_findings/$defs/output_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/actions/$defs/save_findings/$defs/output_config"]])
+		output_config!: matchN(1, [_#defs."/$defs/inspect_job/$defs/actions/$defs/save_findings/$defs/output_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/actions/$defs/save_findings/$defs/output_config"]])
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/actions/$defs/save_findings/$defs/output_config": close({
@@ -226,7 +226,7 @@ import "list"
 
 	_#defs: "/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types": close({
 		dictionary?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary"]])
-		info_type?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/info_type", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/info_type"]])
+		info_type!: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/info_type", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/info_type"]])
 
 		// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a
 		// finding to be returned. It still can be used for rules
@@ -381,7 +381,7 @@ import "list"
 
 	_#defs: "/$defs/inspect_job/$defs/inspect_config/$defs/rule_set": close({
 		info_types?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/rule_set/$defs/info_types", [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/rule_set/$defs/info_types"]])
-		rules?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/rule_set/$defs/rules", [_, ...] & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/rule_set/$defs/rules"]])
+		rules!: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/rule_set/$defs/rules", [_, ...] & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/rule_set/$defs/rules"]])
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/inspect_config/$defs/rule_set/$defs/info_types": close({
@@ -471,7 +471,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_info_types": close({
-		info_types?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_info_types/$defs/info_types", [_, ...] & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_info_types/$defs/info_types"]])
+		info_types!: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_info_types/$defs/info_types", [_, ...] & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_info_types/$defs/info_types"]])
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_info_types/$defs/info_types": close({
@@ -592,7 +592,7 @@ import "list"
 		excluded_fields?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/excluded_fields", [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/excluded_fields"]])
 		identifying_fields?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/identifying_fields", [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/identifying_fields"]])
 		included_fields?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/included_fields", [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/included_fields"]])
-		table_reference?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/table_reference", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/table_reference"]])
+		table_reference!: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/table_reference", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/table_reference"]])
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/excluded_fields": close({
@@ -649,7 +649,7 @@ import "list"
 		// Must be between 0 and 100, inclusively. Both 0 and 100 means no
 		// limit.
 		files_limit_percent?: number
-		file_set?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/cloud_storage_options/$defs/file_set", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/cloud_storage_options/$defs/file_set"]])
+		file_set!: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/cloud_storage_options/$defs/file_set", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/cloud_storage_options/$defs/file_set"]])
 
 		// How to sample bytes if not all bytes are scanned. Meaningful
 		// only when used in conjunction with bytesLimitPerFile.
@@ -696,8 +696,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/storage_config/$defs/datastore_options": close({
-		kind?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/datastore_options/$defs/kind", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/datastore_options/$defs/kind"]])
-		partition_id?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/datastore_options/$defs/partition_id", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/datastore_options/$defs/partition_id"]])
+		kind!: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/datastore_options/$defs/kind", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/datastore_options/$defs/kind"]])
+		partition_id!: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/datastore_options/$defs/partition_id", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/datastore_options/$defs/partition_id"]])
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/storage_config/$defs/datastore_options/$defs/kind": close({

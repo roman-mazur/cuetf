@@ -44,7 +44,7 @@ import "list"
 
 		// Name of the TcpRoute resource.
 		name!: string
-		rules?: matchN(1, [#rules, [_, ...] & [...#rules]])
+		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
 		project?: string
 
 		// Server-defined URL of this resource.
@@ -60,7 +60,7 @@ import "list"
 	})
 
 	#rules: close({
-		action?: matchN(1, [_#defs."/$defs/rules/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rules/$defs/action"]])
+		action!: matchN(1, [_#defs."/$defs/rules/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rules/$defs/action"]])
 		matches?: matchN(1, [_#defs."/$defs/rules/$defs/matches", [..._#defs."/$defs/rules/$defs/matches"]])
 	})
 

@@ -177,7 +177,7 @@ import "list"
 
 		// Tags for annotation of a Build. These are not docker tags.
 		tags?: [...string]
-		step?: matchN(1, [_#defs."/$defs/build/$defs/step", [_, ...] & [..._#defs."/$defs/build/$defs/step"]])
+		step!: matchN(1, [_#defs."/$defs/build/$defs/step", [_, ...] & [..._#defs."/$defs/build/$defs/step"]])
 
 		// Amount of time that this build should be allowed to run, to
 		// second granularity.
@@ -502,7 +502,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/build/$defs/available_secrets": close({
-		secret_manager?: matchN(1, [_#defs."/$defs/build/$defs/available_secrets/$defs/secret_manager", [_, ...] & [..._#defs."/$defs/build/$defs/available_secrets/$defs/secret_manager"]])
+		secret_manager!: matchN(1, [_#defs."/$defs/build/$defs/available_secrets/$defs/secret_manager", [_, ...] & [..._#defs."/$defs/build/$defs/available_secrets/$defs/secret_manager"]])
 	})
 
 	_#defs: "/$defs/build/$defs/available_secrets/$defs/secret_manager": close({

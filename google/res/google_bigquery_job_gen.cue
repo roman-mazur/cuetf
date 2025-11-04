@@ -70,7 +70,7 @@ import "list"
 	#copy: close({
 		destination_encryption_configuration?: matchN(1, [_#defs."/$defs/copy/$defs/destination_encryption_configuration", list.MaxItems(1) & [..._#defs."/$defs/copy/$defs/destination_encryption_configuration"]])
 		destination_table?: matchN(1, [_#defs."/$defs/copy/$defs/destination_table", list.MaxItems(1) & [..._#defs."/$defs/copy/$defs/destination_table"]])
-		source_tables?: matchN(1, [_#defs."/$defs/copy/$defs/source_tables", [_, ...] & [..._#defs."/$defs/copy/$defs/source_tables"]])
+		source_tables!: matchN(1, [_#defs."/$defs/copy/$defs/source_tables", [_, ...] & [..._#defs."/$defs/copy/$defs/source_tables"]])
 
 		// Specifies whether the job is allowed to create new tables. The
 		// following values are supported:
@@ -234,7 +234,7 @@ import "list"
 		// backup, an invalid error is returned in the job result.
 		projection_fields?: [...string]
 		destination_encryption_configuration?: matchN(1, [_#defs."/$defs/load/$defs/destination_encryption_configuration", list.MaxItems(1) & [..._#defs."/$defs/load/$defs/destination_encryption_configuration"]])
-		destination_table?: matchN(1, [_#defs."/$defs/load/$defs/destination_table", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load/$defs/destination_table"]])
+		destination_table!: matchN(1, [_#defs."/$defs/load/$defs/destination_table", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load/$defs/destination_table"]])
 		parquet_options?: matchN(1, [_#defs."/$defs/load/$defs/parquet_options", list.MaxItems(1) & [..._#defs."/$defs/load/$defs/parquet_options"]])
 		time_partitioning?: matchN(1, [_#defs."/$defs/load/$defs/time_partitioning", list.MaxItems(1) & [..._#defs."/$defs/load/$defs/time_partitioning"]])
 

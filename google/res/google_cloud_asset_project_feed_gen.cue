@@ -47,7 +47,7 @@ import "list"
 		// to be unique under a specific parent.
 		feed_id!: string
 		id?:      string
-		feed_output_config?: matchN(1, [#feed_output_config, list.MaxItems(1) & [_, ...] & [...#feed_output_config]])
+		feed_output_config!: matchN(1, [#feed_output_config, list.MaxItems(1) & [_, ...] & [...#feed_output_config]])
 		timeouts?: #timeouts
 
 		// The format will be
@@ -79,7 +79,7 @@ import "list"
 	})
 
 	#feed_output_config: close({
-		pubsub_destination?: matchN(1, [_#defs."/$defs/feed_output_config/$defs/pubsub_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/feed_output_config/$defs/pubsub_destination"]])
+		pubsub_destination!: matchN(1, [_#defs."/$defs/feed_output_config/$defs/pubsub_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/feed_output_config/$defs/pubsub_destination"]])
 	})
 
 	#timeouts: close({

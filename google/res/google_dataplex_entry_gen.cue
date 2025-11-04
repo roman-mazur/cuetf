@@ -48,7 +48,7 @@ import "list"
 	})
 
 	#aspects: close({
-		aspect?: matchN(1, [_#defs."/$defs/aspects/$defs/aspect", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/aspects/$defs/aspect"]])
+		aspect!: matchN(1, [_#defs."/$defs/aspects/$defs/aspect", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/aspects/$defs/aspect"]])
 
 		// Depending on how the aspect is attached to the entry, the
 		// format of the aspect key can be one of the following:

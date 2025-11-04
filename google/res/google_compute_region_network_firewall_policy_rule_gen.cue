@@ -49,7 +49,7 @@ import "list"
 		// the highest priority and 2147483647 is the lowest prority.
 		priority!: number
 		project?:  string
-		match?: matchN(1, [#match, list.MaxItems(1) & [_, ...] & [...#match]])
+		match!: matchN(1, [#match, list.MaxItems(1) & [_, ...] & [...#match]])
 		target_secure_tags?: matchN(1, [#target_secure_tags, [...#target_secure_tags]])
 		timeouts?: #timeouts
 
@@ -116,7 +116,7 @@ import "list"
 		// against traffic source. Maximum number of source fqdn allowed
 		// is 100.
 		src_fqdns?: [...string]
-		layer4_configs?: matchN(1, [_#defs."/$defs/match/$defs/layer4_configs", [_, ...] & [..._#defs."/$defs/match/$defs/layer4_configs"]])
+		layer4_configs!: matchN(1, [_#defs."/$defs/match/$defs/layer4_configs", [_, ...] & [..._#defs."/$defs/match/$defs/layer4_configs"]])
 		src_secure_tags?: matchN(1, [_#defs."/$defs/match/$defs/src_secure_tags", [..._#defs."/$defs/match/$defs/src_secure_tags"]])
 
 		// CIDR IP address range. Maximum number of source CIDR IP ranges

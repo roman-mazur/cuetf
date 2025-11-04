@@ -22,7 +22,7 @@ import "list"
 
 		// The string used to identify this web resource.
 		web_resource_id?: string
-		site?: matchN(1, [#site, list.MaxItems(1) & [_, ...] & [...#site]])
+		site!: matchN(1, [#site, list.MaxItems(1) & [_, ...] & [...#site]])
 		timeouts?: #timeouts
 	})
 

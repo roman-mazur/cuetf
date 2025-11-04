@@ -124,7 +124,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/request_based_sli/$defs/distribution_cut": close({
-		range?: matchN(1, [_#defs."/$defs/request_based_sli/$defs/distribution_cut/$defs/range", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/request_based_sli/$defs/distribution_cut/$defs/range"]])
+		range!: matchN(1, [_#defs."/$defs/request_based_sli/$defs/distribution_cut/$defs/range", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/request_based_sli/$defs/distribution_cut/$defs/range"]])
 
 		// A TimeSeries [monitoring
 		// filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -240,7 +240,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/performance/$defs/distribution_cut": close({
-		range?: matchN(1, [_#defs."/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/performance/$defs/distribution_cut/$defs/range", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/performance/$defs/distribution_cut/$defs/range"]])
+		range!: matchN(1, [_#defs."/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/performance/$defs/distribution_cut/$defs/range", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/performance/$defs/distribution_cut/$defs/range"]])
 
 		// A TimeSeries [monitoring
 		// filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -296,7 +296,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/windows_based_sli/$defs/metric_mean_in_range": close({
-		range?: matchN(1, [_#defs."/$defs/windows_based_sli/$defs/metric_mean_in_range/$defs/range", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/windows_based_sli/$defs/metric_mean_in_range/$defs/range"]])
+		range!: matchN(1, [_#defs."/$defs/windows_based_sli/$defs/metric_mean_in_range/$defs/range", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/windows_based_sli/$defs/metric_mean_in_range/$defs/range"]])
 
 		// A [monitoring
 		// filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -321,7 +321,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/windows_based_sli/$defs/metric_sum_in_range": close({
-		range?: matchN(1, [_#defs."/$defs/windows_based_sli/$defs/metric_sum_in_range/$defs/range", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/windows_based_sli/$defs/metric_sum_in_range/$defs/range"]])
+		range!: matchN(1, [_#defs."/$defs/windows_based_sli/$defs/metric_sum_in_range/$defs/range", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/windows_based_sli/$defs/metric_sum_in_range/$defs/range"]])
 
 		// A [monitoring
 		// filter](https://cloud.google.com/monitoring/api/v3/filters)

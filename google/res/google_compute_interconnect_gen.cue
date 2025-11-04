@@ -227,7 +227,7 @@ import "list"
 	})
 
 	#macsec: close({
-		pre_shared_keys?: matchN(1, [_#defs."/$defs/macsec/$defs/pre_shared_keys", [_, ...] & [..._#defs."/$defs/macsec/$defs/pre_shared_keys"]])
+		pre_shared_keys!: matchN(1, [_#defs."/$defs/macsec/$defs/pre_shared_keys", [_, ...] & [..._#defs."/$defs/macsec/$defs/pre_shared_keys"]])
 
 		// If set to true, the Interconnect connection is configured with
 		// a should-secure

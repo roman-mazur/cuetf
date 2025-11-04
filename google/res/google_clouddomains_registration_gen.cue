@@ -52,11 +52,11 @@ import "list"
 		// Output only. The reason the domain registration failed. Only
 		// set for domains in REGISTRATION_FAILED state.
 		register_failure_reason?: string
-		contact_settings?: matchN(1, [#contact_settings, list.MaxItems(1) & [_, ...] & [...#contact_settings]])
+		contact_settings!: matchN(1, [#contact_settings, list.MaxItems(1) & [_, ...] & [...#contact_settings]])
 		dns_settings?: matchN(1, [#dns_settings, list.MaxItems(1) & [...#dns_settings]])
 		management_settings?: matchN(1, [#management_settings, list.MaxItems(1) & [...#management_settings]])
 		timeouts?: #timeouts
-		yearly_price?: matchN(1, [#yearly_price, list.MaxItems(1) & [_, ...] & [...#yearly_price]])
+		yearly_price!: matchN(1, [#yearly_price, list.MaxItems(1) & [_, ...] & [...#yearly_price]])
 		project?: string
 
 		// Output only. The current state of the Registration.
@@ -72,9 +72,9 @@ import "list"
 	})
 
 	#contact_settings: close({
-		admin_contact?: matchN(1, [_#defs."/$defs/contact_settings/$defs/admin_contact", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/admin_contact"]])
-		registrant_contact?: matchN(1, [_#defs."/$defs/contact_settings/$defs/registrant_contact", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/registrant_contact"]])
-		technical_contact?: matchN(1, [_#defs."/$defs/contact_settings/$defs/technical_contact", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/technical_contact"]])
+		admin_contact!: matchN(1, [_#defs."/$defs/contact_settings/$defs/admin_contact", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/admin_contact"]])
+		registrant_contact!: matchN(1, [_#defs."/$defs/contact_settings/$defs/registrant_contact", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/registrant_contact"]])
+		technical_contact!: matchN(1, [_#defs."/$defs/contact_settings/$defs/technical_contact", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/technical_contact"]])
 
 		// Required. Privacy setting for the contacts associated with the
 		// Registration.
@@ -139,7 +139,7 @@ import "list"
 	_#defs: "/$defs/contact_settings/$defs/admin_contact": close({
 		// Required. Email address of the contact.
 		email!: string
-		postal_address?: matchN(1, [_#defs."/$defs/contact_settings/$defs/admin_contact/$defs/postal_address", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/admin_contact/$defs/postal_address"]])
+		postal_address!: matchN(1, [_#defs."/$defs/contact_settings/$defs/admin_contact/$defs/postal_address", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/admin_contact/$defs/postal_address"]])
 
 		// Fax number of the contact in international format. For example,
 		// "+1-800-555-0123".
@@ -208,7 +208,7 @@ import "list"
 	_#defs: "/$defs/contact_settings/$defs/registrant_contact": close({
 		// Required. Email address of the contact.
 		email!: string
-		postal_address?: matchN(1, [_#defs."/$defs/contact_settings/$defs/registrant_contact/$defs/postal_address", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/registrant_contact/$defs/postal_address"]])
+		postal_address!: matchN(1, [_#defs."/$defs/contact_settings/$defs/registrant_contact/$defs/postal_address", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/registrant_contact/$defs/postal_address"]])
 
 		// Fax number of the contact in international format. For example,
 		// "+1-800-555-0123".
@@ -277,7 +277,7 @@ import "list"
 	_#defs: "/$defs/contact_settings/$defs/technical_contact": close({
 		// Required. Email address of the contact.
 		email!: string
-		postal_address?: matchN(1, [_#defs."/$defs/contact_settings/$defs/technical_contact/$defs/postal_address", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/technical_contact/$defs/postal_address"]])
+		postal_address!: matchN(1, [_#defs."/$defs/contact_settings/$defs/technical_contact/$defs/postal_address", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/technical_contact/$defs/postal_address"]])
 
 		// Fax number of the contact in international format. For example,
 		// "+1-800-555-0123".

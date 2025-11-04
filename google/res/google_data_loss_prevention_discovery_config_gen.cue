@@ -347,7 +347,7 @@ import "list"
 	_#defs: "/$defs/targets/$defs/cloud_sql_target": close({
 		conditions?: matchN(1, [_#defs."/$defs/targets/$defs/cloud_sql_target/$defs/conditions", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/cloud_sql_target/$defs/conditions"]])
 		disabled?: matchN(1, [_#defs."/$defs/targets/$defs/cloud_sql_target/$defs/disabled", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/cloud_sql_target/$defs/disabled"]])
-		filter?: matchN(1, [_#defs."/$defs/targets/$defs/cloud_sql_target/$defs/filter", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/targets/$defs/cloud_sql_target/$defs/filter"]])
+		filter!: matchN(1, [_#defs."/$defs/targets/$defs/cloud_sql_target/$defs/filter", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/targets/$defs/cloud_sql_target/$defs/filter"]])
 		generation_cadence?: matchN(1, [_#defs."/$defs/targets/$defs/cloud_sql_target/$defs/generation_cadence", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/cloud_sql_target/$defs/generation_cadence"]])
 	})
 
@@ -459,7 +459,7 @@ import "list"
 	_#defs: "/$defs/targets/$defs/cloud_storage_target": close({
 		conditions?: matchN(1, [_#defs."/$defs/targets/$defs/cloud_storage_target/$defs/conditions", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/cloud_storage_target/$defs/conditions"]])
 		disabled?: matchN(1, [_#defs."/$defs/targets/$defs/cloud_storage_target/$defs/disabled", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/cloud_storage_target/$defs/disabled"]])
-		filter?: matchN(1, [_#defs."/$defs/targets/$defs/cloud_storage_target/$defs/filter", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/targets/$defs/cloud_storage_target/$defs/filter"]])
+		filter!: matchN(1, [_#defs."/$defs/targets/$defs/cloud_storage_target/$defs/filter", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/targets/$defs/cloud_storage_target/$defs/filter"]])
 		generation_cadence?: matchN(1, [_#defs."/$defs/targets/$defs/cloud_storage_target/$defs/generation_cadence", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/cloud_storage_target/$defs/generation_cadence"]])
 	})
 
@@ -558,7 +558,7 @@ import "list"
 		conditions?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/conditions", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/conditions"]])
 		data_source_type?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/data_source_type", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/data_source_type"]])
 		disabled?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/disabled", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/disabled"]])
-		filter?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter"]])
+		filter!: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/filter"]])
 		generation_cadence?: matchN(1, [_#defs."/$defs/targets/$defs/other_cloud_target/$defs/generation_cadence", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/other_cloud_target/$defs/generation_cadence"]])
 	})
 

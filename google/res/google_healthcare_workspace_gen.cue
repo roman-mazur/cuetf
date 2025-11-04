@@ -27,7 +27,7 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		settings?: matchN(1, [#settings, list.MaxItems(1) & [_, ...] & [...#settings]])
+		settings!: matchN(1, [#settings, list.MaxItems(1) & [_, ...] & [...#settings]])
 
 		// The name of the workspace, in the format
 		// 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'

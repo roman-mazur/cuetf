@@ -12,7 +12,7 @@ package res
 		service!: string
 		id?:      string
 		project!: string
-		audit_log_config?: matchN(1, [#audit_log_config, [_, ...] & [...#audit_log_config]])
+		audit_log_config!: matchN(1, [#audit_log_config, [_, ...] & [...#audit_log_config]])
 	})
 
 	#audit_log_config: close({

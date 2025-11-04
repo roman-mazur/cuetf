@@ -33,7 +33,7 @@ import (
 
 		properties: {
 			if #block.attributes != _|_ {
-				for name, info in #block.attributes if info.deprecated == _|_ {
+				for name, info in #block.attributes if (info.deprecated & true) == _|_ {
 					if info.type != _|_ {
 						(name): (#fieldTransform & {#type: info.type}).out
 					}
@@ -80,9 +80,15 @@ import (
 			}
 		}
 
+		#requiredAttributes: [...string]
+		#requiredBlocks: [...string]
 		if #block.attributes != _|_ {
-			required: [for name, info in #block.attributes if info.required != _|_ {name}]
+			#requiredAttributes: [for name, info in #block.attributes if (info.required & true) != _|_ {name}]
 		}
+		if #block.block_types != _|_ {
+			#requiredBlocks: [for name, info in #block.block_types if (info.min_items & >0) != _|_ {name}]
+		}
+		required: list.Concat([#requiredAttributes, #requiredBlocks])
 
 		additionalProperties: false
 	}

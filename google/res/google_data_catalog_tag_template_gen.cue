@@ -18,7 +18,7 @@ import "list"
 		// projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
 		name?: string
 		id?:   string
-		fields?: matchN(1, [#fields, [_, ...] & [...#fields]])
+		fields!: matchN(1, [#fields, [_, ...] & [...#fields]])
 		project?:  string
 		timeouts?: #timeouts
 
@@ -44,7 +44,7 @@ import "list"
 		// Example:
 		// projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
 		name?: string
-		type?: matchN(1, [_#defs."/$defs/fields/$defs/type", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/fields/$defs/type"]])
+		type!: matchN(1, [_#defs."/$defs/fields/$defs/type", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/fields/$defs/type"]])
 
 		// The order of this field with respect to other fields in this
 		// tag template.
@@ -71,7 +71,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/fields/$defs/type/$defs/enum_type": close({
-		allowed_values?: matchN(1, [_#defs."/$defs/fields/$defs/type/$defs/enum_type/$defs/allowed_values", [_, ...] & [..._#defs."/$defs/fields/$defs/type/$defs/enum_type/$defs/allowed_values"]])
+		allowed_values!: matchN(1, [_#defs."/$defs/fields/$defs/type/$defs/enum_type/$defs/allowed_values", [_, ...] & [..._#defs."/$defs/fields/$defs/type/$defs/enum_type/$defs/allowed_values"]])
 	})
 
 	_#defs: "/$defs/fields/$defs/type/$defs/enum_type/$defs/allowed_values": close({

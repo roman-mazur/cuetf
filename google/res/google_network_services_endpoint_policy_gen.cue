@@ -44,7 +44,7 @@ import "list"
 		// used to determine the authentication policy to be applied to
 		// terminate the inbound traffic at the identified backends.
 		server_tls_policy?: string
-		endpoint_matcher?: matchN(1, [#endpoint_matcher, list.MaxItems(1) & [_, ...] & [...#endpoint_matcher]])
+		endpoint_matcher!: matchN(1, [#endpoint_matcher, list.MaxItems(1) & [_, ...] & [...#endpoint_matcher]])
 		project?:  string
 		timeouts?: #timeouts
 
@@ -63,7 +63,7 @@ import "list"
 	})
 
 	#endpoint_matcher: close({
-		metadata_label_matcher?: matchN(1, [_#defs."/$defs/endpoint_matcher/$defs/metadata_label_matcher", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/endpoint_matcher/$defs/metadata_label_matcher"]])
+		metadata_label_matcher!: matchN(1, [_#defs."/$defs/endpoint_matcher/$defs/metadata_label_matcher", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/endpoint_matcher/$defs/metadata_label_matcher"]])
 	})
 
 	#timeouts: close({

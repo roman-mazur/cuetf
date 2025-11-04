@@ -20,7 +20,7 @@ import "list"
 		// Please refer to the field `effective_annotations` for all of
 		// the annotations present on the resource.
 		annotations?: [string]: string
-		autoscaling?: matchN(1, [#autoscaling, list.MaxItems(1) & [_, ...] & [...#autoscaling]])
+		autoscaling!: matchN(1, [#autoscaling, list.MaxItems(1) & [_, ...] & [...#autoscaling]])
 
 		// Optional. The Azure availability zone of the nodes in this
 		// nodepool. When unspecified, it defaults to `1`.
@@ -56,9 +56,9 @@ import "list"
 		// Output only. If set, there are currently pending changes to the
 		// node pool.
 		reconciling?: bool
-		config?: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
+		config!: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
 		management?: matchN(1, [#management, list.MaxItems(1) & [...#management]])
-		max_pods_constraint?: matchN(1, [#max_pods_constraint, list.MaxItems(1) & [_, ...] & [...#max_pods_constraint]])
+		max_pods_constraint!: matchN(1, [#max_pods_constraint, list.MaxItems(1) & [_, ...] & [...#max_pods_constraint]])
 		timeouts?: #timeouts
 
 		// Output only. The current state of the node pool. Possible
@@ -112,7 +112,7 @@ import "list"
 		// options. When unspecified, it defaults to `Standard_DS2_v2`.
 		vm_size?: string
 		root_volume?: matchN(1, [_#defs."/$defs/config/$defs/root_volume", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/root_volume"]])
-		ssh_config?: matchN(1, [_#defs."/$defs/config/$defs/ssh_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/ssh_config"]])
+		ssh_config!: matchN(1, [_#defs."/$defs/config/$defs/ssh_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/ssh_config"]])
 	})
 
 	#management: close({

@@ -62,7 +62,7 @@ import "list"
 
 		// If set, there are currently changes in flight to the node pool.
 		reconciling?: bool
-		config?: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
+		config!: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
 		node_pool_autoscaling?: matchN(1, [#node_pool_autoscaling, list.MaxItems(1) & [...#node_pool_autoscaling]])
 		timeouts?: #timeouts
 

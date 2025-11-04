@@ -157,7 +157,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/auth_config/$defs/api_key_config": close({
-		api_key?: matchN(1, [_#defs."/$defs/auth_config/$defs/api_key_config/$defs/api_key", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_config/$defs/api_key_config/$defs/api_key"]])
+		api_key!: matchN(1, [_#defs."/$defs/auth_config/$defs/api_key_config/$defs/api_key", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_config/$defs/api_key_config/$defs/api_key"]])
 
 		// The location of the API key.
 		// The default value is QUERY.
@@ -192,7 +192,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/auth_config/$defs/oauth2_client_credentials_config": close({
-		client_secret?: matchN(1, [_#defs."/$defs/auth_config/$defs/oauth2_client_credentials_config/$defs/client_secret", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_config/$defs/oauth2_client_credentials_config/$defs/client_secret"]])
+		client_secret!: matchN(1, [_#defs."/$defs/auth_config/$defs/oauth2_client_credentials_config/$defs/client_secret", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_config/$defs/oauth2_client_credentials_config/$defs/client_secret"]])
 
 		// The client identifier.
 		client_id!: string
@@ -205,7 +205,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/auth_config/$defs/user_password_config": close({
-		password?: matchN(1, [_#defs."/$defs/auth_config/$defs/user_password_config/$defs/password", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_config/$defs/user_password_config/$defs/password"]])
+		password!: matchN(1, [_#defs."/$defs/auth_config/$defs/user_password_config/$defs/password", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_config/$defs/user_password_config/$defs/password"]])
 
 		// Username.
 		username!: string

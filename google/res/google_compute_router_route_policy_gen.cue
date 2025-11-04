@@ -17,7 +17,7 @@ import "list"
 		// the Router
 		name!:    string
 		project?: string
-		terms?: matchN(1, [#terms, [_, ...] & [...#terms]])
+		terms!: matchN(1, [#terms, [_, ...] & [...#terms]])
 
 		// Region where the router and NAT reside.
 		region?:   string
@@ -35,7 +35,7 @@ import "list"
 
 	#terms: close({
 		actions?: matchN(1, [_#defs."/$defs/terms/$defs/actions", [..._#defs."/$defs/terms/$defs/actions"]])
-		match?: matchN(1, [_#defs."/$defs/terms/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/terms/$defs/match"]])
+		match!: matchN(1, [_#defs."/$defs/terms/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/terms/$defs/match"]])
 
 		// The evaluation priority for this term, which must be between 0
 		// (inclusive) and 231 (exclusive), and unique within the list.

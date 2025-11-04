@@ -17,7 +17,7 @@ import "list"
 		// the form
 		// 'projects/<project>/instances/<instance>/tables/<table>/schemaBundles/<schemaBundleId>'.
 		name?: string
-		proto_schema?: matchN(1, [#proto_schema, list.MaxItems(1) & [_, ...] & [...#proto_schema]])
+		proto_schema!: matchN(1, [#proto_schema, list.MaxItems(1) & [_, ...] & [...#proto_schema]])
 		project?:  string
 		timeouts?: #timeouts
 

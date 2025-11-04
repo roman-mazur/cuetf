@@ -105,8 +105,8 @@ import "list"
 	})
 
 	#bitbucket_cloud_config: close({
-		authorizer_credential?: matchN(1, [_#defs."/$defs/bitbucket_cloud_config/$defs/authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bitbucket_cloud_config/$defs/authorizer_credential"]])
-		read_authorizer_credential?: matchN(1, [_#defs."/$defs/bitbucket_cloud_config/$defs/read_authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bitbucket_cloud_config/$defs/read_authorizer_credential"]])
+		authorizer_credential!: matchN(1, [_#defs."/$defs/bitbucket_cloud_config/$defs/authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bitbucket_cloud_config/$defs/authorizer_credential"]])
+		read_authorizer_credential!: matchN(1, [_#defs."/$defs/bitbucket_cloud_config/$defs/read_authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bitbucket_cloud_config/$defs/read_authorizer_credential"]])
 
 		// Required. Immutable. SecretManager resource containing the
 		// webhook secret used to verify webhook
@@ -133,8 +133,8 @@ import "list"
 		// requests to Bitbucket Data
 		// Center.
 		ssl_ca_certificate?: string
-		authorizer_credential?: matchN(1, [_#defs."/$defs/bitbucket_data_center_config/$defs/authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bitbucket_data_center_config/$defs/authorizer_credential"]])
-		read_authorizer_credential?: matchN(1, [_#defs."/$defs/bitbucket_data_center_config/$defs/read_authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bitbucket_data_center_config/$defs/read_authorizer_credential"]])
+		authorizer_credential!: matchN(1, [_#defs."/$defs/bitbucket_data_center_config/$defs/authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bitbucket_data_center_config/$defs/authorizer_credential"]])
+		read_authorizer_credential!: matchN(1, [_#defs."/$defs/bitbucket_data_center_config/$defs/read_authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bitbucket_data_center_config/$defs/read_authorizer_credential"]])
 
 		// Required. Immutable. SecretManager resource containing the
 		// webhook secret used to verify webhook
@@ -213,8 +213,8 @@ import "list"
 	})
 
 	#gitlab_config: close({
-		authorizer_credential?: matchN(1, [_#defs."/$defs/gitlab_config/$defs/authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gitlab_config/$defs/authorizer_credential"]])
-		read_authorizer_credential?: matchN(1, [_#defs."/$defs/gitlab_config/$defs/read_authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gitlab_config/$defs/read_authorizer_credential"]])
+		authorizer_credential!: matchN(1, [_#defs."/$defs/gitlab_config/$defs/authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gitlab_config/$defs/authorizer_credential"]])
+		read_authorizer_credential!: matchN(1, [_#defs."/$defs/gitlab_config/$defs/read_authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gitlab_config/$defs/read_authorizer_credential"]])
 
 		// Required. Immutable. SecretManager resource containing the
 		// webhook secret of a GitLab project,
@@ -237,8 +237,8 @@ import "list"
 		// requests to GitLab
 		// Enterprise instance.
 		ssl_ca_certificate?: string
-		authorizer_credential?: matchN(1, [_#defs."/$defs/gitlab_enterprise_config/$defs/authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gitlab_enterprise_config/$defs/authorizer_credential"]])
-		read_authorizer_credential?: matchN(1, [_#defs."/$defs/gitlab_enterprise_config/$defs/read_authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gitlab_enterprise_config/$defs/read_authorizer_credential"]])
+		authorizer_credential!: matchN(1, [_#defs."/$defs/gitlab_enterprise_config/$defs/authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gitlab_enterprise_config/$defs/authorizer_credential"]])
+		read_authorizer_credential!: matchN(1, [_#defs."/$defs/gitlab_enterprise_config/$defs/read_authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gitlab_enterprise_config/$defs/read_authorizer_credential"]])
 
 		// Required. Immutable. SecretManager resource containing the
 		// webhook secret of a GitLab project,

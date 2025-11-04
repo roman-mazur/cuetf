@@ -33,7 +33,7 @@ package res
 		// projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
 		// This field cannot be modified after creation.
 		template!: string
-		fields?: matchN(1, [#fields, [_, ...] & [...#fields]])
+		fields!: matchN(1, [#fields, [_, ...] & [...#fields]])
 
 		// The display name of the tag template.
 		template_displayname?: string

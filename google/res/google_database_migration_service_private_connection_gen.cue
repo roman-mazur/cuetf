@@ -42,7 +42,7 @@ import "list"
 		// The private connectivity identifier.
 		private_connection_id!: string
 		project?:               string
-		vpc_peering_config?: matchN(1, [#vpc_peering_config, list.MaxItems(1) & [_, ...] & [...#vpc_peering_config]])
+		vpc_peering_config!: matchN(1, [#vpc_peering_config, list.MaxItems(1) & [_, ...] & [...#vpc_peering_config]])
 
 		// State of the PrivateConnection.
 		state?: string

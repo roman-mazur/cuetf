@@ -78,7 +78,7 @@ import "list"
 		memcache_version?: string
 		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
 		memcache_parameters?: matchN(1, [#memcache_parameters, list.MaxItems(1) & [...#memcache_parameters]])
-		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [_, ...] & [...#node_config]])
+		node_config!: matchN(1, [#node_config, list.MaxItems(1) & [_, ...] & [...#node_config]])
 		timeouts?: #timeouts
 
 		// The resource name of the instance.
@@ -113,7 +113,7 @@ import "list"
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine fractional digits
 		create_time?: string
-		weekly_maintenance_window?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window", [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window"]])
+		weekly_maintenance_window!: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window", [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window"]])
 
 		// Optional. Description of what this policy is for.
 		// Create/Update methods return INVALID_ARGUMENT if the
@@ -149,7 +149,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/maintenance_policy/$defs/weekly_maintenance_window": close({
-		start_time?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window/$defs/start_time"]])
+		start_time!: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window/$defs/start_time"]])
 
 		// Required. The day of week that maintenance updates occur.
 		// - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.

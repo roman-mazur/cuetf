@@ -14,7 +14,7 @@ import "list"
 		// The resource name.
 		name!: string
 		id?:   string
-		attestation_authority_note?: matchN(1, [#attestation_authority_note, list.MaxItems(1) & [_, ...] & [...#attestation_authority_note]])
+		attestation_authority_note!: matchN(1, [#attestation_authority_note, list.MaxItems(1) & [_, ...] & [...#attestation_authority_note]])
 		timeouts?: #timeouts
 		project?:  string
 	})

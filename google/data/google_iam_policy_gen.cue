@@ -13,7 +13,7 @@ import "list"
 	})
 
 	#audit_config: close({
-		audit_log_configs?: matchN(1, [_#defs."/$defs/audit_config/$defs/audit_log_configs", [_, ...] & [..._#defs."/$defs/audit_config/$defs/audit_log_configs"]])
+		audit_log_configs!: matchN(1, [_#defs."/$defs/audit_config/$defs/audit_log_configs", [_, ...] & [..._#defs."/$defs/audit_config/$defs/audit_log_configs"]])
 		service!: string
 	})
 

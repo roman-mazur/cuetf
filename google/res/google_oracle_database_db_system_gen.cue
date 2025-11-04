@@ -184,7 +184,7 @@ import "list"
 		// versions, use the
 		// ListDbVersions operation.
 		db_version!: string
-		database?: matchN(1, [_#defs."/$defs/properties/$defs/db_home/$defs/database", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/properties/$defs/db_home/$defs/database"]])
+		database!: matchN(1, [_#defs."/$defs/properties/$defs/db_home/$defs/database", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/properties/$defs/db_home/$defs/database"]])
 
 		// The display name for the Database Home. The name does not have
 		// to

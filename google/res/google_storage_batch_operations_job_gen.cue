@@ -40,7 +40,7 @@ import "list"
 	})
 
 	#bucket_list: close({
-		buckets?: matchN(1, [_#defs."/$defs/bucket_list/$defs/buckets", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bucket_list/$defs/buckets"]])
+		buckets!: matchN(1, [_#defs."/$defs/bucket_list/$defs/buckets", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bucket_list/$defs/buckets"]])
 	})
 
 	#delete_object: close({

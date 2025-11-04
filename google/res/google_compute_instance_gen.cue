@@ -80,11 +80,11 @@ import "list"
 		// The machine type to create.
 		machine_type!: string
 		attached_disk?: matchN(1, [#attached_disk, [...#attached_disk]])
-		boot_disk?: matchN(1, [#boot_disk, list.MaxItems(1) & [_, ...] & [...#boot_disk]])
+		boot_disk!: matchN(1, [#boot_disk, list.MaxItems(1) & [_, ...] & [...#boot_disk]])
 		confidential_instance_config?: matchN(1, [#confidential_instance_config, list.MaxItems(1) & [...#confidential_instance_config]])
 		guest_accelerator?: matchN(1, [#guest_accelerator, [...#guest_accelerator]])
 		instance_encryption_key?: matchN(1, [#instance_encryption_key, list.MaxItems(1) & [...#instance_encryption_key]])
-		network_interface?: matchN(1, [#network_interface, [_, ...] & [...#network_interface]])
+		network_interface!: matchN(1, [#network_interface, [_, ...] & [...#network_interface]])
 		network_performance_config?: matchN(1, [#network_performance_config, list.MaxItems(1) & [...#network_performance_config]])
 
 		// Metadata key/value pairs made available within the instance.

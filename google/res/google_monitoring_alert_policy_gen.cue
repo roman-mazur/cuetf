@@ -50,7 +50,7 @@ import "list"
 		// entries in this field is
 		// 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
 		notification_channels?: [...string]
-		conditions?: matchN(1, [#conditions, [_, ...] & [...#conditions]])
+		conditions!: matchN(1, [#conditions, [_, ...] & [...#conditions]])
 		documentation?: matchN(1, [#documentation, list.MaxItems(1) & [...#documentation]])
 		timeouts?: #timeouts
 		project?:  string

@@ -91,7 +91,7 @@ import "list"
 		auto_repair_config?: matchN(1, [#auto_repair_config, list.MaxItems(1) & [...#auto_repair_config]])
 		control_plane_node?: matchN(1, [#control_plane_node, list.MaxItems(1) & [...#control_plane_node]])
 		load_balancer?: matchN(1, [#load_balancer, list.MaxItems(1) & [...#load_balancer]])
-		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [_, ...] & [...#network_config]])
+		network_config!: matchN(1, [#network_config, list.MaxItems(1) & [_, ...] & [...#network_config]])
 		platform_config?: matchN(1, [#platform_config, list.MaxItems(1) & [...#platform_config]])
 		private_registry_config?: matchN(1, [#private_registry_config, list.MaxItems(1) & [...#private_registry_config]])
 		proxy?: matchN(1, [#proxy, list.MaxItems(1) & [...#proxy]])
@@ -171,7 +171,7 @@ import "list"
 		f5_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/f5_config", list.MaxItems(1) & [..._#defs."/$defs/load_balancer/$defs/f5_config"]])
 		manual_lb_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/manual_lb_config", list.MaxItems(1) & [..._#defs."/$defs/load_balancer/$defs/manual_lb_config"]])
 		metal_lb_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/metal_lb_config", list.MaxItems(1) & [..._#defs."/$defs/load_balancer/$defs/metal_lb_config"]])
-		vip_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/vip_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load_balancer/$defs/vip_config"]])
+		vip_config!: matchN(1, [_#defs."/$defs/load_balancer/$defs/vip_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load_balancer/$defs/vip_config"]])
 	})
 
 	#network_config: close({
@@ -368,7 +368,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/network_config/$defs/ha_control_plane_config/$defs/control_plane_ip_block": close({
-		ips?: matchN(1, [_#defs."/$defs/network_config/$defs/ha_control_plane_config/$defs/control_plane_ip_block/$defs/ips", [_, ...] & [..._#defs."/$defs/network_config/$defs/ha_control_plane_config/$defs/control_plane_ip_block/$defs/ips"]])
+		ips!: matchN(1, [_#defs."/$defs/network_config/$defs/ha_control_plane_config/$defs/control_plane_ip_block/$defs/ips", [_, ...] & [..._#defs."/$defs/network_config/$defs/ha_control_plane_config/$defs/control_plane_ip_block/$defs/ips"]])
 
 		// The network gateway used by the VMware Admin Cluster.
 		gateway!: string
@@ -403,7 +403,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/network_config/$defs/static_ip_config/$defs/ip_blocks": close({
-		ips?: matchN(1, [_#defs."/$defs/network_config/$defs/static_ip_config/$defs/ip_blocks/$defs/ips", [_, ...] & [..._#defs."/$defs/network_config/$defs/static_ip_config/$defs/ip_blocks/$defs/ips"]])
+		ips!: matchN(1, [_#defs."/$defs/network_config/$defs/static_ip_config/$defs/ip_blocks/$defs/ips", [_, ...] & [..._#defs."/$defs/network_config/$defs/static_ip_config/$defs/ip_blocks/$defs/ips"]])
 
 		// The network gateway used by the VMware Admin Cluster.
 		gateway!: string

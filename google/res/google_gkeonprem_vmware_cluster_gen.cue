@@ -100,7 +100,7 @@ import "list"
 		// The location of the resource.
 		location!: string
 		auto_repair_config?: matchN(1, [#auto_repair_config, list.MaxItems(1) & [...#auto_repair_config]])
-		control_plane_node?: matchN(1, [#control_plane_node, list.MaxItems(1) & [_, ...] & [...#control_plane_node]])
+		control_plane_node!: matchN(1, [#control_plane_node, list.MaxItems(1) & [_, ...] & [...#control_plane_node]])
 		dataplane_v2?: matchN(1, [#dataplane_v2, list.MaxItems(1) & [...#dataplane_v2]])
 		load_balancer?: matchN(1, [#load_balancer, list.MaxItems(1) & [...#load_balancer]])
 		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
@@ -340,7 +340,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/load_balancer/$defs/metal_lb_config": close({
-		address_pools?: matchN(1, [_#defs."/$defs/load_balancer/$defs/metal_lb_config/$defs/address_pools", [_, ...] & [..._#defs."/$defs/load_balancer/$defs/metal_lb_config/$defs/address_pools"]])
+		address_pools!: matchN(1, [_#defs."/$defs/load_balancer/$defs/metal_lb_config/$defs/address_pools", [_, ...] & [..._#defs."/$defs/load_balancer/$defs/metal_lb_config/$defs/address_pools"]])
 	})
 
 	_#defs: "/$defs/load_balancer/$defs/metal_lb_config/$defs/address_pools": close({
@@ -415,11 +415,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/network_config/$defs/static_ip_config": close({
-		ip_blocks?: matchN(1, [_#defs."/$defs/network_config/$defs/static_ip_config/$defs/ip_blocks", [_, ...] & [..._#defs."/$defs/network_config/$defs/static_ip_config/$defs/ip_blocks"]])
+		ip_blocks!: matchN(1, [_#defs."/$defs/network_config/$defs/static_ip_config/$defs/ip_blocks", [_, ...] & [..._#defs."/$defs/network_config/$defs/static_ip_config/$defs/ip_blocks"]])
 	})
 
 	_#defs: "/$defs/network_config/$defs/static_ip_config/$defs/ip_blocks": close({
-		ips?: matchN(1, [_#defs."/$defs/network_config/$defs/static_ip_config/$defs/ip_blocks/$defs/ips", [_, ...] & [..._#defs."/$defs/network_config/$defs/static_ip_config/$defs/ip_blocks/$defs/ips"]])
+		ips!: matchN(1, [_#defs."/$defs/network_config/$defs/static_ip_config/$defs/ip_blocks/$defs/ips", [_, ...] & [..._#defs."/$defs/network_config/$defs/static_ip_config/$defs/ip_blocks/$defs/ips"]])
 
 		// The network gateway used by the VMware User Cluster.
 		gateway!: string

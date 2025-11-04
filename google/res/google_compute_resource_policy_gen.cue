@@ -90,7 +90,7 @@ import "list"
 
 	#snapshot_schedule_policy: close({
 		retention_policy?: matchN(1, [_#defs."/$defs/snapshot_schedule_policy/$defs/retention_policy", list.MaxItems(1) & [..._#defs."/$defs/snapshot_schedule_policy/$defs/retention_policy"]])
-		schedule?: matchN(1, [_#defs."/$defs/snapshot_schedule_policy/$defs/schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/snapshot_schedule_policy/$defs/schedule"]])
+		schedule!: matchN(1, [_#defs."/$defs/snapshot_schedule_policy/$defs/schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/snapshot_schedule_policy/$defs/schedule"]])
 		snapshot_properties?: matchN(1, [_#defs."/$defs/snapshot_schedule_policy/$defs/snapshot_properties", list.MaxItems(1) & [..._#defs."/$defs/snapshot_schedule_policy/$defs/snapshot_properties"]])
 	})
 
@@ -169,7 +169,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/snapshot_schedule_policy/$defs/schedule/$defs/weekly_schedule": close({
-		day_of_weeks?: matchN(1, [_#defs."/$defs/snapshot_schedule_policy/$defs/schedule/$defs/weekly_schedule/$defs/day_of_weeks", list.MaxItems(7) & [_, ...] & [..._#defs."/$defs/snapshot_schedule_policy/$defs/schedule/$defs/weekly_schedule/$defs/day_of_weeks"]])
+		day_of_weeks!: matchN(1, [_#defs."/$defs/snapshot_schedule_policy/$defs/schedule/$defs/weekly_schedule/$defs/day_of_weeks", list.MaxItems(7) & [_, ...] & [..._#defs."/$defs/snapshot_schedule_policy/$defs/schedule/$defs/weekly_schedule/$defs/day_of_weeks"]])
 	})
 
 	_#defs: "/$defs/snapshot_schedule_policy/$defs/schedule/$defs/weekly_schedule/$defs/day_of_weeks": close({

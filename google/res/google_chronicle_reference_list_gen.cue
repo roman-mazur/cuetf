@@ -40,7 +40,7 @@ import "list"
 		// Output only. The timestamp when the reference list was last
 		// updated.
 		revision_create_time?: string
-		entries?: matchN(1, [#entries, [_, ...] & [...#entries]])
+		entries!: matchN(1, [#entries, [_, ...] & [...#entries]])
 		scope_info?: matchN(1, [#scope_info, list.MaxItems(1) & [...#scope_info]])
 		timeouts?: #timeouts
 

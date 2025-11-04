@@ -52,7 +52,7 @@ import "list"
 		// A user-defined name of the certificate issuance config.
 		// CertificateIssuanceConfig names must be unique globally.
 		name!: string
-		certificate_authority_config?: matchN(1, [#certificate_authority_config, list.MaxItems(1) & [_, ...] & [...#certificate_authority_config]])
+		certificate_authority_config!: matchN(1, [#certificate_authority_config, list.MaxItems(1) & [_, ...] & [...#certificate_authority_config]])
 		timeouts?: #timeouts
 		project?:  string
 

@@ -168,7 +168,7 @@ import "list"
 	})
 
 	#automated_backup_config: close({
-		fixed_frequency_schedule?: matchN(1, [_#defs."/$defs/automated_backup_config/$defs/fixed_frequency_schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/automated_backup_config/$defs/fixed_frequency_schedule"]])
+		fixed_frequency_schedule!: matchN(1, [_#defs."/$defs/automated_backup_config/$defs/fixed_frequency_schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/automated_backup_config/$defs/fixed_frequency_schedule"]])
 
 		// How long to keep automated backups before the backups are
 		// deleted.
@@ -288,7 +288,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/automated_backup_config/$defs/fixed_frequency_schedule": close({
-		start_time?: matchN(1, [_#defs."/$defs/automated_backup_config/$defs/fixed_frequency_schedule/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/automated_backup_config/$defs/fixed_frequency_schedule/$defs/start_time"]])
+		start_time!: matchN(1, [_#defs."/$defs/automated_backup_config/$defs/fixed_frequency_schedule/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/automated_backup_config/$defs/fixed_frequency_schedule/$defs/start_time"]])
 	})
 
 	_#defs: "/$defs/automated_backup_config/$defs/fixed_frequency_schedule/$defs/start_time": close({
@@ -318,7 +318,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/maintenance_policy/$defs/weekly_maintenance_window": close({
-		start_time?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window/$defs/start_time"]])
+		start_time!: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window/$defs/start_time"]])
 
 		// Required. The day of week that maintenance updates occur.
 		//

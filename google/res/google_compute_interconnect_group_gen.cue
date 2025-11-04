@@ -62,7 +62,7 @@ import "list"
 				metro?: string
 			})]
 		})]
-		intent?: matchN(1, [#intent, list.MaxItems(1) & [_, ...] & [...#intent]])
+		intent!: matchN(1, [#intent, list.MaxItems(1) & [_, ...] & [...#intent]])
 		interconnects?: matchN(1, [#interconnects, [...#interconnects]])
 		project?:  string
 		timeouts?: #timeouts

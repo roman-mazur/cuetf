@@ -32,7 +32,7 @@ package res
 		// Identifier. Name of the resource.
 		// Format:projects/{project}/locations/{location}/codeToolsSettings/{codeToolsSetting}
 		name?: string
-		enabled_tool?: matchN(1, [#enabled_tool, [_, ...] & [...#enabled_tool]])
+		enabled_tool!: matchN(1, [#enabled_tool, [_, ...] & [...#enabled_tool]])
 		timeouts?: #timeouts
 		project?:  string
 

@@ -54,7 +54,7 @@ import "list"
 		// field.
 		kms_key_name?: string
 		common_config?: matchN(1, [#common_config, list.MaxItems(1) & [...#common_config]])
-		search_engine_config?: matchN(1, [#search_engine_config, list.MaxItems(1) & [_, ...] & [...#search_engine_config]])
+		search_engine_config!: matchN(1, [#search_engine_config, list.MaxItems(1) & [_, ...] & [...#search_engine_config]])
 		timeouts?: #timeouts
 
 		// Location.

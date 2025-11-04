@@ -68,7 +68,7 @@ import "list"
 		name?: string
 		advanced_machine_features?: matchN(1, [#advanced_machine_features, list.MaxItems(1) & [...#advanced_machine_features]])
 		confidential_instance_config?: matchN(1, [#confidential_instance_config, list.MaxItems(1) & [...#confidential_instance_config]])
-		disk?: matchN(1, [#disk, [_, ...] & [...#disk]])
+		disk!: matchN(1, [#disk, [_, ...] & [...#disk]])
 		guest_accelerator?: matchN(1, [#guest_accelerator, [...#guest_accelerator]])
 		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
 		network_performance_config?: matchN(1, [#network_performance_config, list.MaxItems(1) & [...#network_performance_config]])

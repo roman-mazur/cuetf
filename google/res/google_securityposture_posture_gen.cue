@@ -31,7 +31,7 @@ import "list"
 
 		// If set, there are currently changes in flight to the posture.
 		reconciling?: bool
-		policy_sets?: matchN(1, [#policy_sets, [_, ...] & [...#policy_sets]])
+		policy_sets!: matchN(1, [#policy_sets, [_, ...] & [...#policy_sets]])
 		timeouts?: #timeouts
 
 		// Revision_id of the posture.
@@ -48,7 +48,7 @@ import "list"
 	})
 
 	#policy_sets: close({
-		policies?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies", [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies"]])
+		policies!: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies", [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies"]])
 
 		// Description of the policy set.
 		description?: string
@@ -65,7 +65,7 @@ import "list"
 
 	_#defs: "/$defs/policy_sets/$defs/policies": close({
 		compliance_standards?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/compliance_standards", [..._#defs."/$defs/policy_sets/$defs/policies/$defs/compliance_standards"]])
-		constraint?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint"]])
+		constraint!: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint"]])
 
 		// Description of the policy.
 		description?: string
@@ -90,7 +90,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint": close({
-		policy_rules?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules", [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules"]])
+		policy_rules!: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules", [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules"]])
 
 		// Organization policy canned constraint Id
 		canned_constraint_id!: string
@@ -140,7 +140,7 @@ import "list"
 
 	_#defs: "/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom": close({
 		custom_constraint?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/custom_constraint", list.MaxItems(1) & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/custom_constraint"]])
-		policy_rules?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules", [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules"]])
+		policy_rules!: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules", [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules"]])
 	})
 
 	_#defs: "/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/custom_constraint": close({
@@ -227,7 +227,7 @@ import "list"
 		// are
 		// returned by this custom module.
 		display_name?: string
-		config?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config"]])
+		config!: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config"]])
 
 		// A server generated id of custom module.
 		id?: string
@@ -254,8 +254,8 @@ import "list"
 		// Possible values: ["SEVERITY_UNSPECIFIED", "CRITICAL", "HIGH",
 		// "MEDIUM", "LOW"]
 		severity!: string
-		predicate?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/predicate", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/predicate"]])
-		resource_selector?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/resource_selector", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/resource_selector"]])
+		predicate!: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/predicate", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/predicate"]])
+		resource_selector!: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/resource_selector", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/resource_selector"]])
 	})
 
 	_#defs: "/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/custom_output": close({

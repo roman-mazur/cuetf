@@ -63,7 +63,7 @@ import "list"
 
 		// Display name of the project of this subscription.
 		organization_display_name?: string
-		destination_dataset?: matchN(1, [#destination_dataset, list.MaxItems(1) & [_, ...] & [...#destination_dataset]])
+		destination_dataset!: matchN(1, [#destination_dataset, list.MaxItems(1) & [_, ...] & [...#destination_dataset]])
 		timeouts?: #timeouts
 
 		// Organization of the project this subscription belongs to.
@@ -93,7 +93,7 @@ import "list"
 		// The labels associated with this dataset. You can use these to
 		// organize and group your datasets.
 		labels?: [string]: string
-		dataset_reference?: matchN(1, [_#defs."/$defs/destination_dataset/$defs/dataset_reference", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination_dataset/$defs/dataset_reference"]])
+		dataset_reference!: matchN(1, [_#defs."/$defs/destination_dataset/$defs/dataset_reference", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination_dataset/$defs/dataset_reference"]])
 
 		// The geographic location where the dataset should reside.
 		// See https://cloud.google.com/bigquery/docs/locations for

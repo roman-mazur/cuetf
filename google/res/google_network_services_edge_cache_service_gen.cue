@@ -59,7 +59,7 @@ import "list"
 		// labels present on the resource.
 		labels?: [string]: string
 		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		routing?: matchN(1, [#routing, list.MaxItems(1) & [_, ...] & [...#routing]])
+		routing!: matchN(1, [#routing, list.MaxItems(1) & [_, ...] & [...#routing]])
 		timeouts?: #timeouts
 
 		// Name of the resource; provided by the client when the resource
@@ -108,8 +108,8 @@ import "list"
 	})
 
 	#routing: close({
-		host_rule?: matchN(1, [_#defs."/$defs/routing/$defs/host_rule", list.MaxItems(50) & [_, ...] & [..._#defs."/$defs/routing/$defs/host_rule"]])
-		path_matcher?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher", list.MaxItems(50) & [_, ...] & [..._#defs."/$defs/routing/$defs/path_matcher"]])
+		host_rule!: matchN(1, [_#defs."/$defs/routing/$defs/host_rule", list.MaxItems(50) & [_, ...] & [..._#defs."/$defs/routing/$defs/host_rule"]])
+		path_matcher!: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher", list.MaxItems(50) & [_, ...] & [..._#defs."/$defs/routing/$defs/path_matcher"]])
 	})
 
 	#timeouts: close({
@@ -157,7 +157,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/routing/$defs/path_matcher": close({
-		route_rule?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule", list.MaxItems(200) & [_, ...] & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule"]])
+		route_rule!: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule", list.MaxItems(200) & [_, ...] & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule"]])
 
 		// A human-readable description of the resource.
 		description?: string
@@ -195,7 +195,7 @@ import "list"
 		// rules.
 		priority!: string
 		header_action?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/header_action", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/header_action"]])
-		match_rule?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule"]])
+		match_rule!: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule"]])
 		route_action?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action"]])
 		route_methods?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_methods", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_methods"]])
 		url_redirect?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/url_redirect", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/url_redirect"]])

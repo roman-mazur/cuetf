@@ -62,7 +62,7 @@ import "list"
 	})
 
 	#bigtable: close({
-		auto_scaling?: matchN(1, [_#defs."/$defs/bigtable/$defs/auto_scaling", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bigtable/$defs/auto_scaling"]])
+		auto_scaling!: matchN(1, [_#defs."/$defs/bigtable/$defs/auto_scaling", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bigtable/$defs/auto_scaling"]])
 	})
 
 	#dedicated_serving_endpoint: close({

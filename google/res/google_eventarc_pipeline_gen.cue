@@ -14,7 +14,7 @@ import "list"
 		// Please refer to the field 'effective_annotations' for all of
 		// the annotations present on the resource.
 		annotations?: [string]: string
-		destinations?: matchN(1, [#destinations, [_, ...] & [...#destinations]])
+		destinations!: matchN(1, [#destinations, [_, ...] & [...#destinations]])
 
 		// The creation time.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond

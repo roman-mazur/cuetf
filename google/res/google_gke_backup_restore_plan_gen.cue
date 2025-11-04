@@ -40,7 +40,7 @@ import "list"
 		// The full name of the BackupPlan Resource.
 		name!:    string
 		project?: string
-		restore_config?: matchN(1, [#restore_config, list.MaxItems(1) & [_, ...] & [...#restore_config]])
+		restore_config!: matchN(1, [#restore_config, list.MaxItems(1) & [_, ...] & [...#restore_config]])
 		timeouts?: #timeouts
 
 		// The State of the RestorePlan.
@@ -167,12 +167,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/restore_config/$defs/restore_order": close({
-		group_kind_dependencies?: matchN(1, [_#defs."/$defs/restore_config/$defs/restore_order/$defs/group_kind_dependencies", [_, ...] & [..._#defs."/$defs/restore_config/$defs/restore_order/$defs/group_kind_dependencies"]])
+		group_kind_dependencies!: matchN(1, [_#defs."/$defs/restore_config/$defs/restore_order/$defs/group_kind_dependencies", [_, ...] & [..._#defs."/$defs/restore_config/$defs/restore_order/$defs/group_kind_dependencies"]])
 	})
 
 	_#defs: "/$defs/restore_config/$defs/restore_order/$defs/group_kind_dependencies": close({
-		requiring?: matchN(1, [_#defs."/$defs/restore_config/$defs/restore_order/$defs/group_kind_dependencies/$defs/requiring", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/restore_config/$defs/restore_order/$defs/group_kind_dependencies/$defs/requiring"]])
-		satisfying?: matchN(1, [_#defs."/$defs/restore_config/$defs/restore_order/$defs/group_kind_dependencies/$defs/satisfying", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/restore_config/$defs/restore_order/$defs/group_kind_dependencies/$defs/satisfying"]])
+		requiring!: matchN(1, [_#defs."/$defs/restore_config/$defs/restore_order/$defs/group_kind_dependencies/$defs/requiring", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/restore_config/$defs/restore_order/$defs/group_kind_dependencies/$defs/requiring"]])
+		satisfying!: matchN(1, [_#defs."/$defs/restore_config/$defs/restore_order/$defs/group_kind_dependencies/$defs/satisfying", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/restore_config/$defs/restore_order/$defs/group_kind_dependencies/$defs/satisfying"]])
 	})
 
 	_#defs: "/$defs/restore_config/$defs/restore_order/$defs/group_kind_dependencies/$defs/requiring": close({
@@ -198,7 +198,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/restore_config/$defs/selected_applications": close({
-		namespaced_names?: matchN(1, [_#defs."/$defs/restore_config/$defs/selected_applications/$defs/namespaced_names", [_, ...] & [..._#defs."/$defs/restore_config/$defs/selected_applications/$defs/namespaced_names"]])
+		namespaced_names!: matchN(1, [_#defs."/$defs/restore_config/$defs/selected_applications/$defs/namespaced_names", [_, ...] & [..._#defs."/$defs/restore_config/$defs/selected_applications/$defs/namespaced_names"]])
 	})
 
 	_#defs: "/$defs/restore_config/$defs/selected_applications/$defs/namespaced_names": close({
@@ -215,7 +215,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/restore_config/$defs/transformation_rules": close({
-		field_actions?: matchN(1, [_#defs."/$defs/restore_config/$defs/transformation_rules/$defs/field_actions", [_, ...] & [..._#defs."/$defs/restore_config/$defs/transformation_rules/$defs/field_actions"]])
+		field_actions!: matchN(1, [_#defs."/$defs/restore_config/$defs/transformation_rules/$defs/field_actions", [_, ...] & [..._#defs."/$defs/restore_config/$defs/transformation_rules/$defs/field_actions"]])
 		resource_filter?: matchN(1, [_#defs."/$defs/restore_config/$defs/transformation_rules/$defs/resource_filter", list.MaxItems(1) & [..._#defs."/$defs/restore_config/$defs/transformation_rules/$defs/resource_filter"]])
 
 		// The description is a user specified string description

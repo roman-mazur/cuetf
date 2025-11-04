@@ -67,7 +67,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/upstreams/$defs/external": close({
-		endpoints?: matchN(1, [_#defs."/$defs/upstreams/$defs/external/$defs/endpoints", [_, ...] & [..._#defs."/$defs/upstreams/$defs/external/$defs/endpoints"]])
+		endpoints!: matchN(1, [_#defs."/$defs/upstreams/$defs/external/$defs/endpoints", [_, ...] & [..._#defs."/$defs/upstreams/$defs/external/$defs/endpoints"]])
 	})
 
 	_#defs: "/$defs/upstreams/$defs/external/$defs/endpoints": close({

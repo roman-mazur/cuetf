@@ -51,7 +51,7 @@ import "list"
 	})
 
 	#aws: close({
-		access_role?: matchN(1, [_#defs."/$defs/aws/$defs/access_role", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/aws/$defs/access_role"]])
+		access_role!: matchN(1, [_#defs."/$defs/aws/$defs/access_role", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/aws/$defs/access_role"]])
 	})
 
 	#azure: close({
@@ -129,7 +129,7 @@ import "list"
 		// being used for connecting to the CloudSQL instance specified
 		// in this connection.
 		service_account_id?: string
-		credential?: matchN(1, [_#defs."/$defs/cloud_sql/$defs/credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/cloud_sql/$defs/credential"]])
+		credential!: matchN(1, [_#defs."/$defs/cloud_sql/$defs/credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/cloud_sql/$defs/credential"]])
 
 		// Type of the Cloud SQL database. Possible values:
 		// ["DATABASE_TYPE_UNSPECIFIED", "POSTGRES", "MYSQL"]

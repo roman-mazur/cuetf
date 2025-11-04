@@ -63,11 +63,11 @@ import "list"
 	})
 
 	#persistent: close({
-		setting?: matchN(1, [_#defs."/$defs/persistent/$defs/setting", [_, ...] & [..._#defs."/$defs/persistent/$defs/setting"]])
+		setting!: matchN(1, [_#defs."/$defs/persistent/$defs/setting", [_, ...] & [..._#defs."/$defs/persistent/$defs/setting"]])
 	})
 
 	#transient: close({
-		setting?: matchN(1, [_#defs."/$defs/transient/$defs/setting", [_, ...] & [..._#defs."/$defs/transient/$defs/setting"]])
+		setting!: matchN(1, [_#defs."/$defs/transient/$defs/setting", [_, ...] & [..._#defs."/$defs/transient/$defs/setting"]])
 	})
 
 	_#defs: "/$defs/persistent/$defs/setting": close({

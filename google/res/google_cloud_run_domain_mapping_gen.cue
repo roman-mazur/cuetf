@@ -34,7 +34,7 @@ import "list"
 			})]
 		})]
 		project?: string
-		spec?: matchN(1, [#spec, list.MaxItems(1) & [_, ...] & [...#spec]])
+		spec!: matchN(1, [#spec, list.MaxItems(1) & [_, ...] & [...#spec]])
 		timeouts?: #timeouts
 	})
 

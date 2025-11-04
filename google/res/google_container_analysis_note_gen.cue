@@ -26,7 +26,7 @@ import "list"
 
 		// Names of other notes related to this note.
 		related_note_names?: [...string]
-		attestation_authority?: matchN(1, [#attestation_authority, list.MaxItems(1) & [_, ...] & [...#attestation_authority]])
+		attestation_authority!: matchN(1, [#attestation_authority, list.MaxItems(1) & [_, ...] & [...#attestation_authority]])
 		related_url?: matchN(1, [#related_url, [...#related_url]])
 		timeouts?: #timeouts
 
@@ -38,7 +38,7 @@ import "list"
 	})
 
 	#attestation_authority: close({
-		hint?: matchN(1, [_#defs."/$defs/attestation_authority/$defs/hint", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/attestation_authority/$defs/hint"]])
+		hint!: matchN(1, [_#defs."/$defs/attestation_authority/$defs/hint", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/attestation_authority/$defs/hint"]])
 	})
 
 	#related_url: close({

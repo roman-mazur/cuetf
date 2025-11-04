@@ -153,7 +153,7 @@ import "list"
 		// VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
 		spot?: bool
 		autoscaling_metric_specs?: matchN(1, [_#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/autoscaling_metric_specs", [..._#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/autoscaling_metric_specs"]])
-		machine_spec?: matchN(1, [_#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/machine_spec", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/machine_spec"]])
+		machine_spec!: matchN(1, [_#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/machine_spec", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/machine_spec"]])
 	})
 
 	_#defs: "/$defs/deploy_config/$defs/dedicated_resources/$defs/autoscaling_metric_specs": close({

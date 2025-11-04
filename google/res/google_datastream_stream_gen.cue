@@ -48,8 +48,8 @@ import "list"
 		name?: string
 		backfill_all?: matchN(1, [#backfill_all, list.MaxItems(1) & [...#backfill_all]])
 		backfill_none?: matchN(1, [#backfill_none, list.MaxItems(1) & [...#backfill_none]])
-		destination_config?: matchN(1, [#destination_config, list.MaxItems(1) & [_, ...] & [...#destination_config]])
-		source_config?: matchN(1, [#source_config, list.MaxItems(1) & [_, ...] & [...#source_config]])
+		destination_config!: matchN(1, [#destination_config, list.MaxItems(1) & [_, ...] & [...#destination_config]])
+		source_config!: matchN(1, [#source_config, list.MaxItems(1) & [_, ...] & [...#source_config]])
 		timeouts?: #timeouts
 
 		// The state of the stream.
@@ -104,7 +104,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/backfill_all/$defs/mongodb_excluded_objects": close({
-		databases?: matchN(1, [_#defs."/$defs/backfill_all/$defs/mongodb_excluded_objects/$defs/databases", [_, ...] & [..._#defs."/$defs/backfill_all/$defs/mongodb_excluded_objects/$defs/databases"]])
+		databases!: matchN(1, [_#defs."/$defs/backfill_all/$defs/mongodb_excluded_objects/$defs/databases", [_, ...] & [..._#defs."/$defs/backfill_all/$defs/mongodb_excluded_objects/$defs/databases"]])
 	})
 
 	_#defs: "/$defs/backfill_all/$defs/mongodb_excluded_objects/$defs/databases": close({
@@ -127,7 +127,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/backfill_all/$defs/mysql_excluded_objects": close({
-		mysql_databases?: matchN(1, [_#defs."/$defs/backfill_all/$defs/mysql_excluded_objects/$defs/mysql_databases", [_, ...] & [..._#defs."/$defs/backfill_all/$defs/mysql_excluded_objects/$defs/mysql_databases"]])
+		mysql_databases!: matchN(1, [_#defs."/$defs/backfill_all/$defs/mysql_excluded_objects/$defs/mysql_databases", [_, ...] & [..._#defs."/$defs/backfill_all/$defs/mysql_excluded_objects/$defs/mysql_databases"]])
 	})
 
 	_#defs: "/$defs/backfill_all/$defs/mysql_excluded_objects/$defs/mysql_databases": close({
@@ -169,7 +169,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/backfill_all/$defs/oracle_excluded_objects": close({
-		oracle_schemas?: matchN(1, [_#defs."/$defs/backfill_all/$defs/oracle_excluded_objects/$defs/oracle_schemas", [_, ...] & [..._#defs."/$defs/backfill_all/$defs/oracle_excluded_objects/$defs/oracle_schemas"]])
+		oracle_schemas!: matchN(1, [_#defs."/$defs/backfill_all/$defs/oracle_excluded_objects/$defs/oracle_schemas", [_, ...] & [..._#defs."/$defs/backfill_all/$defs/oracle_excluded_objects/$defs/oracle_schemas"]])
 	})
 
 	_#defs: "/$defs/backfill_all/$defs/oracle_excluded_objects/$defs/oracle_schemas": close({
@@ -217,7 +217,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/backfill_all/$defs/postgresql_excluded_objects": close({
-		postgresql_schemas?: matchN(1, [_#defs."/$defs/backfill_all/$defs/postgresql_excluded_objects/$defs/postgresql_schemas", [_, ...] & [..._#defs."/$defs/backfill_all/$defs/postgresql_excluded_objects/$defs/postgresql_schemas"]])
+		postgresql_schemas!: matchN(1, [_#defs."/$defs/backfill_all/$defs/postgresql_excluded_objects/$defs/postgresql_schemas", [_, ...] & [..._#defs."/$defs/backfill_all/$defs/postgresql_excluded_objects/$defs/postgresql_schemas"]])
 	})
 
 	_#defs: "/$defs/backfill_all/$defs/postgresql_excluded_objects/$defs/postgresql_schemas": close({
@@ -263,7 +263,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/backfill_all/$defs/salesforce_excluded_objects": close({
-		objects?: matchN(1, [_#defs."/$defs/backfill_all/$defs/salesforce_excluded_objects/$defs/objects", [_, ...] & [..._#defs."/$defs/backfill_all/$defs/salesforce_excluded_objects/$defs/objects"]])
+		objects!: matchN(1, [_#defs."/$defs/backfill_all/$defs/salesforce_excluded_objects/$defs/objects", [_, ...] & [..._#defs."/$defs/backfill_all/$defs/salesforce_excluded_objects/$defs/objects"]])
 	})
 
 	_#defs: "/$defs/backfill_all/$defs/salesforce_excluded_objects/$defs/objects": close({
@@ -279,7 +279,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/backfill_all/$defs/sql_server_excluded_objects": close({
-		schemas?: matchN(1, [_#defs."/$defs/backfill_all/$defs/sql_server_excluded_objects/$defs/schemas", [_, ...] & [..._#defs."/$defs/backfill_all/$defs/sql_server_excluded_objects/$defs/schemas"]])
+		schemas!: matchN(1, [_#defs."/$defs/backfill_all/$defs/sql_server_excluded_objects/$defs/schemas", [_, ...] & [..._#defs."/$defs/backfill_all/$defs/sql_server_excluded_objects/$defs/schemas"]])
 	})
 
 	_#defs: "/$defs/backfill_all/$defs/sql_server_excluded_objects/$defs/schemas": close({
@@ -371,7 +371,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/destination_config/$defs/bigquery_destination_config/$defs/source_hierarchy_datasets": close({
-		dataset_template?: matchN(1, [_#defs."/$defs/destination_config/$defs/bigquery_destination_config/$defs/source_hierarchy_datasets/$defs/dataset_template", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination_config/$defs/bigquery_destination_config/$defs/source_hierarchy_datasets/$defs/dataset_template"]])
+		dataset_template!: matchN(1, [_#defs."/$defs/destination_config/$defs/bigquery_destination_config/$defs/source_hierarchy_datasets/$defs/dataset_template", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination_config/$defs/bigquery_destination_config/$defs/source_hierarchy_datasets/$defs/dataset_template"]])
 
 		// Optional. The project id of the BigQuery dataset. If not
 		// specified, the project will be inferred from the stream
@@ -508,7 +508,7 @@ import "list"
 	_#defs: "/$defs/source_config/$defs/mysql_source_config/$defs/binary_log_position": close({})
 
 	_#defs: "/$defs/source_config/$defs/mysql_source_config/$defs/exclude_objects": close({
-		mysql_databases?: matchN(1, [_#defs."/$defs/source_config/$defs/mysql_source_config/$defs/exclude_objects/$defs/mysql_databases", [_, ...] & [..._#defs."/$defs/source_config/$defs/mysql_source_config/$defs/exclude_objects/$defs/mysql_databases"]])
+		mysql_databases!: matchN(1, [_#defs."/$defs/source_config/$defs/mysql_source_config/$defs/exclude_objects/$defs/mysql_databases", [_, ...] & [..._#defs."/$defs/source_config/$defs/mysql_source_config/$defs/exclude_objects/$defs/mysql_databases"]])
 	})
 
 	_#defs: "/$defs/source_config/$defs/mysql_source_config/$defs/exclude_objects/$defs/mysql_databases": close({
@@ -552,7 +552,7 @@ import "list"
 	_#defs: "/$defs/source_config/$defs/mysql_source_config/$defs/gtid": close({})
 
 	_#defs: "/$defs/source_config/$defs/mysql_source_config/$defs/include_objects": close({
-		mysql_databases?: matchN(1, [_#defs."/$defs/source_config/$defs/mysql_source_config/$defs/include_objects/$defs/mysql_databases", [_, ...] & [..._#defs."/$defs/source_config/$defs/mysql_source_config/$defs/include_objects/$defs/mysql_databases"]])
+		mysql_databases!: matchN(1, [_#defs."/$defs/source_config/$defs/mysql_source_config/$defs/include_objects/$defs/mysql_databases", [_, ...] & [..._#defs."/$defs/source_config/$defs/mysql_source_config/$defs/include_objects/$defs/mysql_databases"]])
 	})
 
 	_#defs: "/$defs/source_config/$defs/mysql_source_config/$defs/include_objects/$defs/mysql_databases": close({
@@ -614,7 +614,7 @@ import "list"
 	_#defs: "/$defs/source_config/$defs/oracle_source_config/$defs/drop_large_objects": close({})
 
 	_#defs: "/$defs/source_config/$defs/oracle_source_config/$defs/exclude_objects": close({
-		oracle_schemas?: matchN(1, [_#defs."/$defs/source_config/$defs/oracle_source_config/$defs/exclude_objects/$defs/oracle_schemas", [_, ...] & [..._#defs."/$defs/source_config/$defs/oracle_source_config/$defs/exclude_objects/$defs/oracle_schemas"]])
+		oracle_schemas!: matchN(1, [_#defs."/$defs/source_config/$defs/oracle_source_config/$defs/exclude_objects/$defs/oracle_schemas", [_, ...] & [..._#defs."/$defs/source_config/$defs/oracle_source_config/$defs/exclude_objects/$defs/oracle_schemas"]])
 	})
 
 	_#defs: "/$defs/source_config/$defs/oracle_source_config/$defs/exclude_objects/$defs/oracle_schemas": close({
@@ -662,7 +662,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/source_config/$defs/oracle_source_config/$defs/include_objects": close({
-		oracle_schemas?: matchN(1, [_#defs."/$defs/source_config/$defs/oracle_source_config/$defs/include_objects/$defs/oracle_schemas", [_, ...] & [..._#defs."/$defs/source_config/$defs/oracle_source_config/$defs/include_objects/$defs/oracle_schemas"]])
+		oracle_schemas!: matchN(1, [_#defs."/$defs/source_config/$defs/oracle_source_config/$defs/include_objects/$defs/oracle_schemas", [_, ...] & [..._#defs."/$defs/source_config/$defs/oracle_source_config/$defs/include_objects/$defs/oracle_schemas"]])
 	})
 
 	_#defs: "/$defs/source_config/$defs/oracle_source_config/$defs/include_objects/$defs/oracle_schemas": close({
@@ -730,7 +730,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/source_config/$defs/postgresql_source_config/$defs/exclude_objects": close({
-		postgresql_schemas?: matchN(1, [_#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/exclude_objects/$defs/postgresql_schemas", [_, ...] & [..._#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/exclude_objects/$defs/postgresql_schemas"]])
+		postgresql_schemas!: matchN(1, [_#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/exclude_objects/$defs/postgresql_schemas", [_, ...] & [..._#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/exclude_objects/$defs/postgresql_schemas"]])
 	})
 
 	_#defs: "/$defs/source_config/$defs/postgresql_source_config/$defs/exclude_objects/$defs/postgresql_schemas": close({
@@ -776,7 +776,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/source_config/$defs/postgresql_source_config/$defs/include_objects": close({
-		postgresql_schemas?: matchN(1, [_#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/include_objects/$defs/postgresql_schemas", [_, ...] & [..._#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/include_objects/$defs/postgresql_schemas"]])
+		postgresql_schemas!: matchN(1, [_#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/include_objects/$defs/postgresql_schemas", [_, ...] & [..._#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/include_objects/$defs/postgresql_schemas"]])
 	})
 
 	_#defs: "/$defs/source_config/$defs/postgresql_source_config/$defs/include_objects/$defs/postgresql_schemas": close({
@@ -832,7 +832,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/source_config/$defs/salesforce_source_config/$defs/exclude_objects": close({
-		objects?: matchN(1, [_#defs."/$defs/source_config/$defs/salesforce_source_config/$defs/exclude_objects/$defs/objects", [_, ...] & [..._#defs."/$defs/source_config/$defs/salesforce_source_config/$defs/exclude_objects/$defs/objects"]])
+		objects!: matchN(1, [_#defs."/$defs/source_config/$defs/salesforce_source_config/$defs/exclude_objects/$defs/objects", [_, ...] & [..._#defs."/$defs/source_config/$defs/salesforce_source_config/$defs/exclude_objects/$defs/objects"]])
 	})
 
 	_#defs: "/$defs/source_config/$defs/salesforce_source_config/$defs/exclude_objects/$defs/objects": close({
@@ -848,7 +848,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/source_config/$defs/salesforce_source_config/$defs/include_objects": close({
-		objects?: matchN(1, [_#defs."/$defs/source_config/$defs/salesforce_source_config/$defs/include_objects/$defs/objects", [_, ...] & [..._#defs."/$defs/source_config/$defs/salesforce_source_config/$defs/include_objects/$defs/objects"]])
+		objects!: matchN(1, [_#defs."/$defs/source_config/$defs/salesforce_source_config/$defs/include_objects/$defs/objects", [_, ...] & [..._#defs."/$defs/source_config/$defs/salesforce_source_config/$defs/include_objects/$defs/objects"]])
 	})
 
 	_#defs: "/$defs/source_config/$defs/salesforce_source_config/$defs/include_objects/$defs/objects": close({
@@ -878,7 +878,7 @@ import "list"
 	_#defs: "/$defs/source_config/$defs/sql_server_source_config/$defs/change_tables": close({})
 
 	_#defs: "/$defs/source_config/$defs/sql_server_source_config/$defs/exclude_objects": close({
-		schemas?: matchN(1, [_#defs."/$defs/source_config/$defs/sql_server_source_config/$defs/exclude_objects/$defs/schemas", [_, ...] & [..._#defs."/$defs/source_config/$defs/sql_server_source_config/$defs/exclude_objects/$defs/schemas"]])
+		schemas!: matchN(1, [_#defs."/$defs/source_config/$defs/sql_server_source_config/$defs/exclude_objects/$defs/schemas", [_, ...] & [..._#defs."/$defs/source_config/$defs/sql_server_source_config/$defs/exclude_objects/$defs/schemas"]])
 	})
 
 	_#defs: "/$defs/source_config/$defs/sql_server_source_config/$defs/exclude_objects/$defs/schemas": close({
@@ -924,7 +924,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/source_config/$defs/sql_server_source_config/$defs/include_objects": close({
-		schemas?: matchN(1, [_#defs."/$defs/source_config/$defs/sql_server_source_config/$defs/include_objects/$defs/schemas", [_, ...] & [..._#defs."/$defs/source_config/$defs/sql_server_source_config/$defs/include_objects/$defs/schemas"]])
+		schemas!: matchN(1, [_#defs."/$defs/source_config/$defs/sql_server_source_config/$defs/include_objects/$defs/schemas", [_, ...] & [..._#defs."/$defs/source_config/$defs/sql_server_source_config/$defs/include_objects/$defs/schemas"]])
 	})
 
 	_#defs: "/$defs/source_config/$defs/sql_server_source_config/$defs/include_objects/$defs/schemas": close({

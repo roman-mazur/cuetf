@@ -31,7 +31,7 @@ import "list"
 		name?:    string
 		project?: string
 		end_date?: matchN(1, [#end_date, list.MaxItems(1) & [...#end_date]])
-		start_date?: matchN(1, [#start_date, list.MaxItems(1) & [_, ...] & [...#start_date]])
+		start_date!: matchN(1, [#start_date, list.MaxItems(1) & [_, ...] & [...#start_date]])
 		timeouts?: #timeouts
 
 		// Subscription term. Possible values:

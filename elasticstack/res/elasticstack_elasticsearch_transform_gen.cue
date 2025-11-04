@@ -50,9 +50,9 @@ import "list"
 		// Defines the initial page size to use for the composite
 		// aggregation for each checkpoint. Default is 500.
 		max_page_search_size?: number
-		destination?: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
+		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
 		retention_policy?: matchN(1, [#retention_policy, list.MaxItems(1) & [...#retention_policy]])
-		source?: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
 		sync?: matchN(1, [#sync, list.MaxItems(1) & [...#sync]])
 
 		// Defines optional transform metadata.
@@ -93,7 +93,7 @@ import "list"
 	})
 
 	#retention_policy: close({
-		time?: matchN(1, [_#defs."/$defs/retention_policy/$defs/time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/retention_policy/$defs/time"]])
+		time!: matchN(1, [_#defs."/$defs/retention_policy/$defs/time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/retention_policy/$defs/time"]])
 	})
 
 	#source: close({
@@ -110,7 +110,7 @@ import "list"
 	})
 
 	#sync: close({
-		time?: matchN(1, [_#defs."/$defs/sync/$defs/time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/sync/$defs/time"]])
+		time!: matchN(1, [_#defs."/$defs/sync/$defs/time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/sync/$defs/time"]])
 	})
 
 	_#defs: "/$defs/destination/$defs/aliases": close({

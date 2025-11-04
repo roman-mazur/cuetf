@@ -72,8 +72,8 @@ import "list"
 
 		// Name of the 'DeployPolicy'.
 		name!: string
-		rules?: matchN(1, [#rules, [_, ...] & [...#rules]])
-		selectors?: matchN(1, [#selectors, [_, ...] & [...#selectors]])
+		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
+		selectors!: matchN(1, [#selectors, [_, ...] & [...#selectors]])
 		timeouts?: #timeouts
 
 		// When suspended, the policy will not prevent actions from
@@ -135,10 +135,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows": close({
-		end_date?: matchN(1, [_#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/end_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/end_date"]])
-		end_time?: matchN(1, [_#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/end_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/end_time"]])
-		start_date?: matchN(1, [_#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/start_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/start_date"]])
-		start_time?: matchN(1, [_#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/start_time"]])
+		end_date!: matchN(1, [_#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/end_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/end_date"]])
+		end_time!: matchN(1, [_#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/end_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/end_time"]])
+		start_date!: matchN(1, [_#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/start_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/start_date"]])
+		start_time!: matchN(1, [_#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/start_time"]])
 	})
 
 	_#defs: "/$defs/rules/$defs/rollout_restriction/$defs/time_windows/$defs/one_time_windows/$defs/end_date": close({

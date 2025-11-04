@@ -43,7 +43,7 @@ import "list"
 		// List of meshes this GrpcRoute is attached to, as one of the
 		// routing rules to route the requests served by the mesh.
 		meshes?: [...string]
-		rules?: matchN(1, [#rules, [_, ...] & [...#rules]])
+		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
 		timeouts?: #timeouts
 
 		// Name of the GrpcRoute resource.

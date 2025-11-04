@@ -24,7 +24,7 @@ import "list"
 		// The resource name of this notification config, in the format
 		// 'folders/{{folder}}/locations/{{location}}/notificationConfigs/{{config_id}}'.
 		name?: string
-		streaming_config?: matchN(1, [#streaming_config, list.MaxItems(1) & [_, ...] & [...#streaming_config]])
+		streaming_config!: matchN(1, [#streaming_config, list.MaxItems(1) & [_, ...] & [...#streaming_config]])
 		timeouts?: #timeouts
 
 		// The Pub/Sub topic to send notifications to. Its format is

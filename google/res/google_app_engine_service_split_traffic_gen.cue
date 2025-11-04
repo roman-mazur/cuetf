@@ -14,7 +14,7 @@ import "list"
 
 		// The name of the service these settings apply to.
 		service!: string
-		split?: matchN(1, [#split, list.MaxItems(1) & [_, ...] & [...#split]])
+		split!: matchN(1, [#split, list.MaxItems(1) & [_, ...] & [...#split]])
 		timeouts?: #timeouts
 	})
 

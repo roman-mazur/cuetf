@@ -34,11 +34,11 @@ import "list"
 	})
 
 	#alternative_name_server_config: close({
-		target_name_servers?: matchN(1, [_#defs."/$defs/alternative_name_server_config/$defs/target_name_servers", [_, ...] & [..._#defs."/$defs/alternative_name_server_config/$defs/target_name_servers"]])
+		target_name_servers!: matchN(1, [_#defs."/$defs/alternative_name_server_config/$defs/target_name_servers", [_, ...] & [..._#defs."/$defs/alternative_name_server_config/$defs/target_name_servers"]])
 	})
 
 	#dns64_config: close({
-		scope?: matchN(1, [_#defs."/$defs/dns64_config/$defs/scope", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/dns64_config/$defs/scope"]])
+		scope!: matchN(1, [_#defs."/$defs/dns64_config/$defs/scope", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/dns64_config/$defs/scope"]])
 	})
 
 	#networks: close({

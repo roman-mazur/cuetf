@@ -95,8 +95,8 @@ import "list"
 		// CSR. This is needed when activating the subordiante CA with a
 		// third party issuer.
 		pem_ca_certificate?: string
-		config?: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
-		key_spec?: matchN(1, [#key_spec, list.MaxItems(1) & [_, ...] & [...#key_spec]])
+		config!: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
+		key_spec!: matchN(1, [#key_spec, list.MaxItems(1) & [_, ...] & [...#key_spec]])
 		subordinate_config?: matchN(1, [#subordinate_config, list.MaxItems(1) & [...#subordinate_config]])
 		timeouts?: #timeouts
 
@@ -148,9 +148,9 @@ import "list"
 	})
 
 	#config: close({
-		subject_config?: matchN(1, [_#defs."/$defs/config/$defs/subject_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/subject_config"]])
+		subject_config!: matchN(1, [_#defs."/$defs/config/$defs/subject_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/subject_config"]])
 		subject_key_id?: matchN(1, [_#defs."/$defs/config/$defs/subject_key_id", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/subject_key_id"]])
-		x509_config?: matchN(1, [_#defs."/$defs/config/$defs/x509_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/x509_config"]])
+		x509_config!: matchN(1, [_#defs."/$defs/config/$defs/x509_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/x509_config"]])
 	})
 
 	#key_spec: close({
@@ -199,7 +199,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/config/$defs/subject_config": close({
-		subject?: matchN(1, [_#defs."/$defs/config/$defs/subject_config/$defs/subject", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/subject_config/$defs/subject"]])
+		subject!: matchN(1, [_#defs."/$defs/config/$defs/subject_config/$defs/subject", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/subject_config/$defs/subject"]])
 		subject_alt_name?: matchN(1, [_#defs."/$defs/config/$defs/subject_config/$defs/subject_alt_name", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/subject_config/$defs/subject_alt_name"]])
 	})
 
@@ -251,8 +251,8 @@ import "list"
 
 	_#defs: "/$defs/config/$defs/x509_config": close({
 		additional_extensions?: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/additional_extensions", [..._#defs."/$defs/config/$defs/x509_config/$defs/additional_extensions"]])
-		ca_options?: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/ca_options", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/x509_config/$defs/ca_options"]])
-		key_usage?: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/key_usage", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/x509_config/$defs/key_usage"]])
+		ca_options!: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/ca_options", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/x509_config/$defs/ca_options"]])
+		key_usage!: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/key_usage", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/x509_config/$defs/key_usage"]])
 		name_constraints?: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/name_constraints", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/x509_config/$defs/name_constraints"]])
 		policy_ids?: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/policy_ids", [..._#defs."/$defs/config/$defs/x509_config/$defs/policy_ids"]])
 
@@ -263,7 +263,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/config/$defs/x509_config/$defs/additional_extensions": close({
-		object_id?: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/additional_extensions/$defs/object_id", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/x509_config/$defs/additional_extensions/$defs/object_id"]])
+		object_id!: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/additional_extensions/$defs/object_id", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/x509_config/$defs/additional_extensions/$defs/object_id"]])
 
 		// Indicates whether or not this extension is critical (i.e., if
 		// the client does not know how to
@@ -309,8 +309,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/config/$defs/x509_config/$defs/key_usage": close({
-		base_key_usage?: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/key_usage/$defs/base_key_usage", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/x509_config/$defs/key_usage/$defs/base_key_usage"]])
-		extended_key_usage?: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/key_usage/$defs/extended_key_usage", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/x509_config/$defs/key_usage/$defs/extended_key_usage"]])
+		base_key_usage!: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/key_usage/$defs/base_key_usage", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/x509_config/$defs/key_usage/$defs/base_key_usage"]])
+		extended_key_usage!: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/key_usage/$defs/extended_key_usage", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/x509_config/$defs/key_usage/$defs/extended_key_usage"]])
 		unknown_extended_key_usages?: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/key_usage/$defs/unknown_extended_key_usages", [..._#defs."/$defs/config/$defs/x509_config/$defs/key_usage/$defs/unknown_extended_key_usages"]])
 	})
 

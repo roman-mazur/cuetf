@@ -176,7 +176,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment": close({
-		phase_configs?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs", [_, ...] & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs"]])
+		phase_configs!: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs", [_, ...] & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs"]])
 	})
 
 	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs": close({

@@ -34,7 +34,7 @@ import "list"
 		// the occurrence applies. For example,
 		// https://gcr.io/project/image@sha256:123abc for a Docker image.
 		resource_uri!: string
-		attestation?: matchN(1, [#attestation, list.MaxItems(1) & [_, ...] & [...#attestation]])
+		attestation!: matchN(1, [#attestation, list.MaxItems(1) & [_, ...] & [...#attestation]])
 		timeouts?: #timeouts
 
 		// The time when the repository was last updated.
@@ -42,7 +42,7 @@ import "list"
 	})
 
 	#attestation: close({
-		signatures?: matchN(1, [_#defs."/$defs/attestation/$defs/signatures", [_, ...] & [..._#defs."/$defs/attestation/$defs/signatures"]])
+		signatures!: matchN(1, [_#defs."/$defs/attestation/$defs/signatures", [_, ...] & [..._#defs."/$defs/attestation/$defs/signatures"]])
 
 		// The serialized payload that is verified by one or
 		// more signatures. A base64-encoded string.

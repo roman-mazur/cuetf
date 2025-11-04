@@ -32,7 +32,7 @@ import "list"
 		// * 'organizations/{organizationId}'
 		parent!: string
 		ai_platform_floor_setting?: matchN(1, [#ai_platform_floor_setting, list.MaxItems(1) & [...#ai_platform_floor_setting]])
-		filter_config?: matchN(1, [#filter_config, list.MaxItems(1) & [_, ...] & [...#filter_config]])
+		filter_config!: matchN(1, [#filter_config, list.MaxItems(1) & [_, ...] & [...#filter_config]])
 		floor_setting_metadata?: matchN(1, [#floor_setting_metadata, list.MaxItems(1) & [...#floor_setting_metadata]])
 		timeouts?: #timeouts
 
@@ -97,7 +97,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/filter_config/$defs/rai_settings": close({
-		rai_filters?: matchN(1, [_#defs."/$defs/filter_config/$defs/rai_settings/$defs/rai_filters", [_, ...] & [..._#defs."/$defs/filter_config/$defs/rai_settings/$defs/rai_filters"]])
+		rai_filters!: matchN(1, [_#defs."/$defs/filter_config/$defs/rai_settings/$defs/rai_filters", [_, ...] & [..._#defs."/$defs/filter_config/$defs/rai_settings/$defs/rai_filters"]])
 	})
 
 	_#defs: "/$defs/filter_config/$defs/rai_settings/$defs/rai_filters": close({

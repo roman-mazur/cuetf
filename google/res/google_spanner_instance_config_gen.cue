@@ -38,7 +38,7 @@ package res
 		// of the
 		// form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
 		name?: string
-		replicas?: matchN(1, [#replicas, [_, ...] & [...#replicas]])
+		replicas!: matchN(1, [#replicas, [_, ...] & [...#replicas]])
 		timeouts?: #timeouts
 		project?:  string
 

@@ -95,7 +95,7 @@ import "list"
 		// This must be unique within the project.
 		secret_id!: string
 		project?:   string
-		replication?: matchN(1, [#replication, list.MaxItems(1) & [_, ...] & [...#replication]])
+		replication!: matchN(1, [#replication, list.MaxItems(1) & [_, ...] & [...#replication]])
 		rotation?: matchN(1, [#rotation, list.MaxItems(1) & [...#rotation]])
 
 		// A map of resource manager tags.
@@ -188,7 +188,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/replication/$defs/user_managed": close({
-		replicas?: matchN(1, [_#defs."/$defs/replication/$defs/user_managed/$defs/replicas", [_, ...] & [..._#defs."/$defs/replication/$defs/user_managed/$defs/replicas"]])
+		replicas!: matchN(1, [_#defs."/$defs/replication/$defs/user_managed/$defs/replicas", [_, ...] & [..._#defs."/$defs/replication/$defs/user_managed/$defs/replicas"]])
 	})
 
 	_#defs: "/$defs/replication/$defs/user_managed/$defs/replicas": close({

@@ -26,7 +26,7 @@ import "list"
 		// "projects/[project_id]/topics/[topic]".
 		pubsub_topic!: string
 		id?:           string
-		streaming_config?: matchN(1, [#streaming_config, list.MaxItems(1) & [_, ...] & [...#streaming_config]])
+		streaming_config!: matchN(1, [#streaming_config, list.MaxItems(1) & [_, ...] & [...#streaming_config]])
 		timeouts?: #timeouts
 
 		// The service account that needs "pubsub.topics.publish"

@@ -29,7 +29,7 @@ import "list"
 	})
 
 	#basic_algorithm: close({
-		yarn_config?: matchN(1, [_#defs."/$defs/basic_algorithm/$defs/yarn_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/basic_algorithm/$defs/yarn_config"]])
+		yarn_config!: matchN(1, [_#defs."/$defs/basic_algorithm/$defs/yarn_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/basic_algorithm/$defs/yarn_config"]])
 
 		// Duration between scaling events. A scaling period starts after
 		// the

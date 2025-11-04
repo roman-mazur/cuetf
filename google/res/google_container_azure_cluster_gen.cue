@@ -70,11 +70,11 @@ import "list"
 		// Output only. If set, there are currently changes in flight to
 		// the cluster.
 		reconciling?: bool
-		authorization?: matchN(1, [#authorization, list.MaxItems(1) & [_, ...] & [...#authorization]])
+		authorization!: matchN(1, [#authorization, list.MaxItems(1) & [_, ...] & [...#authorization]])
 		azure_services_authentication?: matchN(1, [#azure_services_authentication, list.MaxItems(1) & [...#azure_services_authentication]])
-		control_plane?: matchN(1, [#control_plane, list.MaxItems(1) & [_, ...] & [...#control_plane]])
-		fleet?: matchN(1, [#fleet, list.MaxItems(1) & [_, ...] & [...#fleet]])
-		networking?: matchN(1, [#networking, list.MaxItems(1) & [_, ...] & [...#networking]])
+		control_plane!: matchN(1, [#control_plane, list.MaxItems(1) & [_, ...] & [...#control_plane]])
+		fleet!: matchN(1, [#fleet, list.MaxItems(1) & [_, ...] & [...#fleet]])
+		networking!: matchN(1, [#networking, list.MaxItems(1) & [_, ...] & [...#networking]])
 		timeouts?: #timeouts
 
 		// The ARM ID of the resource group where the cluster resources
@@ -102,7 +102,7 @@ import "list"
 
 	#authorization: close({
 		admin_groups?: matchN(1, [_#defs."/$defs/authorization/$defs/admin_groups", [..._#defs."/$defs/authorization/$defs/admin_groups"]])
-		admin_users?: matchN(1, [_#defs."/$defs/authorization/$defs/admin_users", [_, ...] & [..._#defs."/$defs/authorization/$defs/admin_users"]])
+		admin_users!: matchN(1, [_#defs."/$defs/authorization/$defs/admin_users", [_, ...] & [..._#defs."/$defs/authorization/$defs/admin_users"]])
 	})
 
 	#azure_services_authentication: close({
@@ -140,7 +140,7 @@ import "list"
 		// When unspecified, it defaults to `Standard_DS2_v2`.
 		vm_size?: string
 		root_volume?: matchN(1, [_#defs."/$defs/control_plane/$defs/root_volume", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/root_volume"]])
-		ssh_config?: matchN(1, [_#defs."/$defs/control_plane/$defs/ssh_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/ssh_config"]])
+		ssh_config!: matchN(1, [_#defs."/$defs/control_plane/$defs/ssh_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/ssh_config"]])
 	})
 
 	#fleet: close({

@@ -82,7 +82,7 @@ import "list"
 	})
 
 	#dataset: close({
-		dataset?: matchN(1, [_#defs."/$defs/dataset/$defs/dataset", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/dataset/$defs/dataset"]])
+		dataset!: matchN(1, [_#defs."/$defs/dataset/$defs/dataset", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/dataset/$defs/dataset"]])
 
 		// Which resources in the dataset this entry applies to.
 		// Currently, only views are supported,

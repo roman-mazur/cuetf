@@ -37,9 +37,9 @@ import "list"
 		histogram_custom_indicator?: matchN(1, [#histogram_custom_indicator, list.MaxItems(1) & [...#histogram_custom_indicator]])
 		kql_custom_indicator?: matchN(1, [#kql_custom_indicator, list.MaxItems(1) & [...#kql_custom_indicator]])
 		metric_custom_indicator?: matchN(1, [#metric_custom_indicator, list.MaxItems(1) & [...#metric_custom_indicator]])
-		objective?: matchN(1, [#objective, list.MaxItems(1) & [_, ...] & [...#objective]])
+		objective!: matchN(1, [#objective, list.MaxItems(1) & [_, ...] & [...#objective]])
 		settings?: matchN(1, [#settings, list.MaxItems(1) & [...#settings]])
-		time_window?: matchN(1, [#time_window, list.MaxItems(1) & [_, ...] & [...#time_window]])
+		time_window!: matchN(1, [#time_window, list.MaxItems(1) & [_, ...] & [...#time_window]])
 		timeslice_metric_indicator?: matchN(1, [#timeslice_metric_indicator, list.MaxItems(1) & [...#timeslice_metric_indicator]])
 
 		// An identifier for the space. If space_id is not provided, the
@@ -75,8 +75,8 @@ import "list"
 		filter?:          string
 		index!:           string
 		timestamp_field?: string
-		good?: matchN(1, [_#defs."/$defs/histogram_custom_indicator/$defs/good", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/histogram_custom_indicator/$defs/good"]])
-		total?: matchN(1, [_#defs."/$defs/histogram_custom_indicator/$defs/total", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/histogram_custom_indicator/$defs/total"]])
+		good!: matchN(1, [_#defs."/$defs/histogram_custom_indicator/$defs/good", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/histogram_custom_indicator/$defs/good"]])
+		total!: matchN(1, [_#defs."/$defs/histogram_custom_indicator/$defs/total", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/histogram_custom_indicator/$defs/total"]])
 	})
 
 	#kql_custom_indicator: close({
@@ -95,8 +95,8 @@ import "list"
 		filter?:          string
 		index!:           string
 		timestamp_field?: string
-		good?: matchN(1, [_#defs."/$defs/metric_custom_indicator/$defs/good", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/metric_custom_indicator/$defs/good"]])
-		total?: matchN(1, [_#defs."/$defs/metric_custom_indicator/$defs/total", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/metric_custom_indicator/$defs/total"]])
+		good!: matchN(1, [_#defs."/$defs/metric_custom_indicator/$defs/good", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/metric_custom_indicator/$defs/good"]])
+		total!: matchN(1, [_#defs."/$defs/metric_custom_indicator/$defs/total", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/metric_custom_indicator/$defs/total"]])
 	})
 
 	#objective: close({
@@ -126,7 +126,7 @@ import "list"
 		filter?:          string
 		index!:           string
 		timestamp_field!: string
-		metric?: matchN(1, [_#defs."/$defs/timeslice_metric_indicator/$defs/metric", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/timeslice_metric_indicator/$defs/metric"]])
+		metric!: matchN(1, [_#defs."/$defs/timeslice_metric_indicator/$defs/metric", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/timeslice_metric_indicator/$defs/metric"]])
 	})
 
 	_#defs: "/$defs/histogram_custom_indicator/$defs/good": close({
@@ -146,7 +146,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/metric_custom_indicator/$defs/good": close({
-		metrics?: matchN(1, [_#defs."/$defs/metric_custom_indicator/$defs/good/$defs/metrics", [_, ...] & [..._#defs."/$defs/metric_custom_indicator/$defs/good/$defs/metrics"]])
+		metrics!: matchN(1, [_#defs."/$defs/metric_custom_indicator/$defs/good/$defs/metrics", [_, ...] & [..._#defs."/$defs/metric_custom_indicator/$defs/good/$defs/metrics"]])
 		equation!: string
 	})
 
@@ -158,7 +158,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/metric_custom_indicator/$defs/total": close({
-		metrics?: matchN(1, [_#defs."/$defs/metric_custom_indicator/$defs/total/$defs/metrics", [_, ...] & [..._#defs."/$defs/metric_custom_indicator/$defs/total/$defs/metrics"]])
+		metrics!: matchN(1, [_#defs."/$defs/metric_custom_indicator/$defs/total/$defs/metrics", [_, ...] & [..._#defs."/$defs/metric_custom_indicator/$defs/total/$defs/metrics"]])
 		equation!: string
 	})
 
@@ -170,7 +170,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/timeslice_metric_indicator/$defs/metric": close({
-		metrics?: matchN(1, [_#defs."/$defs/timeslice_metric_indicator/$defs/metric/$defs/metrics", [_, ...] & [..._#defs."/$defs/timeslice_metric_indicator/$defs/metric/$defs/metrics"]])
+		metrics!: matchN(1, [_#defs."/$defs/timeslice_metric_indicator/$defs/metric/$defs/metrics", [_, ...] & [..._#defs."/$defs/timeslice_metric_indicator/$defs/metric/$defs/metrics"]])
 		comparator!: string
 		equation!:   string
 		threshold!:  number

@@ -17,6 +17,7 @@ testSamples: resource: {
 	aws_appintegrations_event_integration: samples: {
 		name: "test"
 		eventbridge_bus: "sample"
+		event_filter: source: "sample"
 	}
 
 	aws_vpn_connection: samples: {

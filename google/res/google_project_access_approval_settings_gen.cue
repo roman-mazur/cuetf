@@ -34,7 +34,7 @@ package res
 		// The resource name of the settings. Format is
 		// "projects/{project_id}/accessApprovalSettings"
 		name?: string
-		enrolled_services?: matchN(1, [#enrolled_services, [_, ...] & [...#enrolled_services]])
+		enrolled_services!: matchN(1, [#enrolled_services, [_, ...] & [...#enrolled_services]])
 		timeouts?: #timeouts
 
 		// A list of email addresses to which notifications relating to

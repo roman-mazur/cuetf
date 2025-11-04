@@ -108,7 +108,7 @@ import "list"
 		// priority (lowest numerically) to lowest priority (highest
 		// numerically) in order.
 		priority!: number
-		match?: matchN(1, [_#defs."/$defs/rule/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/match"]])
+		match!: matchN(1, [_#defs."/$defs/rule/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/match"]])
 		preconfigured_waf_config?: matchN(1, [_#defs."/$defs/rule/$defs/preconfigured_waf_config", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/preconfigured_waf_config"]])
 		rate_limit_options?: matchN(1, [_#defs."/$defs/rule/$defs/rate_limit_options", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/rate_limit_options"]])
 		redirect_options?: matchN(1, [_#defs."/$defs/rule/$defs/redirect_options", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/redirect_options"]])
@@ -167,7 +167,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/rule/$defs/header_action": close({
-		request_headers_to_adds?: matchN(1, [_#defs."/$defs/rule/$defs/header_action/$defs/request_headers_to_adds", [_, ...] & [..._#defs."/$defs/rule/$defs/header_action/$defs/request_headers_to_adds"]])
+		request_headers_to_adds!: matchN(1, [_#defs."/$defs/rule/$defs/header_action/$defs/request_headers_to_adds", [_, ...] & [..._#defs."/$defs/rule/$defs/header_action/$defs/request_headers_to_adds"]])
 	})
 
 	_#defs: "/$defs/rule/$defs/header_action/$defs/request_headers_to_adds": close({
@@ -206,7 +206,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/rule/$defs/match/$defs/expr_options": close({
-		recaptcha_options?: matchN(1, [_#defs."/$defs/rule/$defs/match/$defs/expr_options/$defs/recaptcha_options", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/match/$defs/expr_options/$defs/recaptcha_options"]])
+		recaptcha_options!: matchN(1, [_#defs."/$defs/rule/$defs/match/$defs/expr_options/$defs/recaptcha_options", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/match/$defs/expr_options/$defs/recaptcha_options"]])
 	})
 
 	_#defs: "/$defs/rule/$defs/match/$defs/expr_options/$defs/recaptcha_options": close({
@@ -347,7 +347,7 @@ import "list"
 		// exceedRedirectOptions below.
 		exceed_action!: string
 		exceed_redirect_options?: matchN(1, [_#defs."/$defs/rule/$defs/rate_limit_options/$defs/exceed_redirect_options", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/rate_limit_options/$defs/exceed_redirect_options"]])
-		rate_limit_threshold?: matchN(1, [_#defs."/$defs/rule/$defs/rate_limit_options/$defs/rate_limit_threshold", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/rate_limit_options/$defs/rate_limit_threshold"]])
+		rate_limit_threshold!: matchN(1, [_#defs."/$defs/rule/$defs/rate_limit_options/$defs/rate_limit_threshold", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/rate_limit_options/$defs/rate_limit_threshold"]])
 	})
 
 	_#defs: "/$defs/rule/$defs/rate_limit_options/$defs/ban_threshold": close({

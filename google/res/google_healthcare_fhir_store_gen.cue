@@ -202,7 +202,7 @@ import "list"
 	})
 
 	#stream_configs: close({
-		bigquery_destination?: matchN(1, [_#defs."/$defs/stream_configs/$defs/bigquery_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/stream_configs/$defs/bigquery_destination"]])
+		bigquery_destination!: matchN(1, [_#defs."/$defs/stream_configs/$defs/bigquery_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/stream_configs/$defs/bigquery_destination"]])
 
 		// Supply a FHIR resource type (such as "Patient" or
 		// "Observation"). See
@@ -279,7 +279,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/stream_configs/$defs/bigquery_destination": close({
-		schema_config?: matchN(1, [_#defs."/$defs/stream_configs/$defs/bigquery_destination/$defs/schema_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/stream_configs/$defs/bigquery_destination/$defs/schema_config"]])
+		schema_config!: matchN(1, [_#defs."/$defs/stream_configs/$defs/bigquery_destination/$defs/schema_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/stream_configs/$defs/bigquery_destination/$defs/schema_config"]])
 
 		// BigQuery URI to a dataset, up to 2000 characters long, in the
 		// format bq://projectId.bqDatasetId

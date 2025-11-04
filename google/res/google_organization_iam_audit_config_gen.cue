@@ -11,7 +11,7 @@ package res
 		// The numeric ID of the organization in which you want to manage
 		// the audit logging config.
 		org_id!: string
-		audit_log_config?: matchN(1, [#audit_log_config, [_, ...] & [...#audit_log_config]])
+		audit_log_config!: matchN(1, [#audit_log_config, [_, ...] & [...#audit_log_config]])
 
 		// Service which will be enabled for audit logging. The special
 		// value allServices covers all services.

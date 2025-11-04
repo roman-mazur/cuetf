@@ -127,7 +127,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/predefined_values/$defs/additional_extensions": close({
-		object_id?: matchN(1, [_#defs."/$defs/predefined_values/$defs/additional_extensions/$defs/object_id", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/predefined_values/$defs/additional_extensions/$defs/object_id"]])
+		object_id!: matchN(1, [_#defs."/$defs/predefined_values/$defs/additional_extensions/$defs/object_id", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/predefined_values/$defs/additional_extensions/$defs/object_id"]])
 
 		// Optional. Indicates whether or not this extension is critical
 		// (i.e., if the client does not know how to handle this

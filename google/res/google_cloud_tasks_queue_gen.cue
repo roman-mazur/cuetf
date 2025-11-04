@@ -160,7 +160,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/http_target/$defs/header_overrides": close({
-		header?: matchN(1, [_#defs."/$defs/http_target/$defs/header_overrides/$defs/header", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/http_target/$defs/header_overrides/$defs/header"]])
+		header!: matchN(1, [_#defs."/$defs/http_target/$defs/header_overrides/$defs/header", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/http_target/$defs/header_overrides/$defs/header"]])
 	})
 
 	_#defs: "/$defs/http_target/$defs/header_overrides/$defs/header": close({

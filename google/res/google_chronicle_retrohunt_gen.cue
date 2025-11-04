@@ -46,7 +46,7 @@ import "list"
 		// The retrohunt ID of the Retrohunt. A retrohunt is an execution
 		// of a Rule over a time range in the past.
 		retrohunt?: string
-		process_interval?: matchN(1, [#process_interval, list.MaxItems(1) & [_, ...] & [...#process_interval]])
+		process_interval!: matchN(1, [#process_interval, list.MaxItems(1) & [_, ...] & [...#process_interval]])
 		timeouts?: #timeouts
 
 		// The Rule ID of the rule.

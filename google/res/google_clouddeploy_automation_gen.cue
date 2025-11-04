@@ -75,8 +75,8 @@ import "list"
 
 		// Name of the 'Automation'.
 		name!: string
-		rules?: matchN(1, [#rules, [_, ...] & [...#rules]])
-		selector?: matchN(1, [#selector, list.MaxItems(1) & [_, ...] & [...#selector]])
+		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
+		selector!: matchN(1, [#selector, list.MaxItems(1) & [_, ...] & [...#selector]])
 		timeouts?: #timeouts
 		project?:  string
 
@@ -107,7 +107,7 @@ import "list"
 	})
 
 	#selector: close({
-		targets?: matchN(1, [_#defs."/$defs/selector/$defs/targets", [_, ...] & [..._#defs."/$defs/selector/$defs/targets"]])
+		targets!: matchN(1, [_#defs."/$defs/selector/$defs/targets", [_, ...] & [..._#defs."/$defs/selector/$defs/targets"]])
 	})
 
 	#timeouts: close({

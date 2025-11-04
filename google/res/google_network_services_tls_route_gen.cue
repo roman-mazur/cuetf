@@ -32,7 +32,7 @@ import "list"
 		// Name of the TlsRoute resource.
 		name!:    string
 		project?: string
-		rules?: matchN(1, [#rules, [_, ...] & [...#rules]])
+		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
 		timeouts?: #timeouts
 
 		// Server-defined URL of this resource.
@@ -43,8 +43,8 @@ import "list"
 	})
 
 	#rules: close({
-		action?: matchN(1, [_#defs."/$defs/rules/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rules/$defs/action"]])
-		matches?: matchN(1, [_#defs."/$defs/rules/$defs/matches", [_, ...] & [..._#defs."/$defs/rules/$defs/matches"]])
+		action!: matchN(1, [_#defs."/$defs/rules/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rules/$defs/action"]])
+		matches!: matchN(1, [_#defs."/$defs/rules/$defs/matches", [_, ...] & [..._#defs."/$defs/rules/$defs/matches"]])
 	})
 
 	#timeouts: close({

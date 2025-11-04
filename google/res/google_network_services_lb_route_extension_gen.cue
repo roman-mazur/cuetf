@@ -41,7 +41,7 @@ import "list"
 
 		// The location of the route extension
 		location!: string
-		extension_chains?: matchN(1, [#extension_chains, [_, ...] & [...#extension_chains]])
+		extension_chains!: matchN(1, [#extension_chains, [_, ...] & [...#extension_chains]])
 		timeouts?: #timeouts
 
 		// Name of the LbRouteExtension resource in the following format:
@@ -55,8 +55,8 @@ import "list"
 	})
 
 	#extension_chains: close({
-		extensions?: matchN(1, [_#defs."/$defs/extension_chains/$defs/extensions", [_, ...] & [..._#defs."/$defs/extension_chains/$defs/extensions"]])
-		match_condition?: matchN(1, [_#defs."/$defs/extension_chains/$defs/match_condition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/extension_chains/$defs/match_condition"]])
+		extensions!: matchN(1, [_#defs."/$defs/extension_chains/$defs/extensions", [_, ...] & [..._#defs."/$defs/extension_chains/$defs/extensions"]])
+		match_condition!: matchN(1, [_#defs."/$defs/extension_chains/$defs/match_condition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/extension_chains/$defs/match_condition"]])
 
 		// The name for this extension chain. The name is logged as part
 		// of the HTTP request logs.

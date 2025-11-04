@@ -27,7 +27,7 @@ import "list"
 		// * 'organizations/{{organization_id}}'
 		// * 'organizations/{{organization_id}}/locations/{{location}}'
 		parent!: string
-		deidentify_config?: matchN(1, [#deidentify_config, list.MaxItems(1) & [_, ...] & [...#deidentify_config]])
+		deidentify_config!: matchN(1, [#deidentify_config, list.MaxItems(1) & [_, ...] & [...#deidentify_config]])
 		timeouts?: #timeouts
 
 		// The template id can contain uppercase and lowercase letters,
@@ -56,7 +56,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/image_transformations": close({
-		transforms?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/image_transformations/$defs/transforms", [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/image_transformations/$defs/transforms"]])
+		transforms!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/image_transformations/$defs/transforms", [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/image_transformations/$defs/transforms"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/image_transformations/$defs/transforms": close({
@@ -85,7 +85,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/image_transformations/$defs/transforms/$defs/selected_info_types": close({
-		info_types?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/image_transformations/$defs/transforms/$defs/selected_info_types/$defs/info_types", [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/image_transformations/$defs/transforms/$defs/selected_info_types/$defs/info_types"]])
+		info_types!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/image_transformations/$defs/transforms/$defs/selected_info_types/$defs/info_types", [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/image_transformations/$defs/transforms/$defs/selected_info_types/$defs/info_types"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/image_transformations/$defs/transforms/$defs/selected_info_types/$defs/info_types": close({
@@ -106,12 +106,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations": close({
-		transformations?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations", [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations"]])
+		transformations!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations", [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations": close({
 		info_types?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/info_types", [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/info_types"]])
-		primitive_transformation?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation"]])
+		primitive_transformation!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/info_types": close({
@@ -155,7 +155,7 @@ import "list"
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets": close({
 		max?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max"]])
 		min?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min"]])
-		replacement_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value"]])
+		replacement_value!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max": close({
@@ -605,8 +605,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config": close({
-		lower_bound?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound"]])
-		upper_bound?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound"]])
+		lower_bound!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound"]])
+		upper_bound!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound"]])
 
 		// Size of each bucket (except for minimum and maximum buckets).
 		// So if lower_bound = 10, upper_bound = 89, and bucketSize = 10,
@@ -635,7 +635,7 @@ import "list"
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/redact_config": close({})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config": close({
-		new_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value"]])
+		new_value!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value": close({
@@ -697,7 +697,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_dictionary_config": close({
-		word_list?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_dictionary_config/$defs/word_list", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_dictionary_config/$defs/word_list"]])
+		word_list!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_dictionary_config/$defs/word_list", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_dictionary_config/$defs/word_list"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_dictionary_config/$defs/word_list": close({
@@ -721,7 +721,7 @@ import "list"
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations": close({
 		condition?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition"]])
-		fields?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/fields", [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/fields"]])
+		fields!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/fields", [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/fields"]])
 		info_type_transformations?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations"]])
 		primitive_transformation?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation"]])
 	})
@@ -744,7 +744,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions": close({
-		field?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/field", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/field"]])
+		field!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/field", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/field"]])
 		value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value"]])
 
 		// Operator used to compare the field or infoType to the value.
@@ -824,12 +824,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations": close({
-		transformations?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations", [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations"]])
+		transformations!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations", [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations": close({
 		info_types?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/info_types", [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/info_types"]])
-		primitive_transformation?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation"]])
+		primitive_transformation!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/info_types": close({
@@ -865,13 +865,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config": close({
-		buckets?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets", [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets"]])
+		buckets!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets", [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets": close({
 		max?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max"]])
 		min?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min"]])
-		replacement_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value"]])
+		replacement_value!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max": close({
@@ -1093,8 +1093,8 @@ import "list"
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config": close({
 		context?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/context", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/context"]])
-		crypto_key?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/crypto_key", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/crypto_key"]])
-		surrogate_info_type?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/surrogate_info_type", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/surrogate_info_type"]])
+		crypto_key!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/crypto_key", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/crypto_key"]])
+		surrogate_info_type!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/surrogate_info_type", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/surrogate_info_type"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/context": close({
@@ -1159,7 +1159,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_hash_config": close({
-		crypto_key?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_hash_config/$defs/crypto_key", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_hash_config/$defs/crypto_key"]])
+		crypto_key!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_hash_config/$defs/crypto_key", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_hash_config/$defs/crypto_key"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_hash_config/$defs/crypto_key": close({
@@ -1220,7 +1220,7 @@ import "list"
 		// \[2, 95\]. Only one of this, 'custom_alphabet' or
 		// 'common_alphabet' must be specified.
 		radix?: number
-		crypto_key?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key"]])
+		crypto_key!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key"]])
 		surrogate_info_type?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type"]])
 	})
 
@@ -1343,8 +1343,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config": close({
-		lower_bound?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound"]])
-		upper_bound?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound"]])
+		lower_bound!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound"]])
+		upper_bound!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound"]])
 
 		// Size of each bucket (except for minimum and maximum buckets).
 		// So if lower_bound = 10, upper_bound = 89, and bucketSize = 10,
@@ -1373,7 +1373,7 @@ import "list"
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/redact_config": close({})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config": close({
-		new_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value"]])
+		new_value!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value": close({
@@ -1437,7 +1437,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_dictionary_config": close({
-		word_list?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_dictionary_config/$defs/word_list", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_dictionary_config/$defs/word_list"]])
+		word_list!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_dictionary_config/$defs/word_list", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_dictionary_config/$defs/word_list"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_dictionary_config/$defs/word_list": close({
@@ -1477,7 +1477,7 @@ import "list"
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets": close({
 		max?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max"]])
 		min?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min"]])
-		replacement_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value"]])
+		replacement_value!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max": close({
@@ -1954,8 +1954,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config": close({
-		lower_bound?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound"]])
-		upper_bound?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound"]])
+		lower_bound!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound"]])
+		upper_bound!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound"]])
 
 		// Size of each bucket (except for minimum and maximum buckets).
 		// So if lower_bound = 10, upper_bound = 89, and bucketSize = 10,
@@ -2086,7 +2086,7 @@ import "list"
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/redact_config": close({})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config": close({
-		new_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value"]])
+		new_value!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value": close({
@@ -2188,7 +2188,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions": close({
-		field?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/field", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/field"]])
+		field!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/field", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/field"]])
 		value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value"]])
 
 		// Operator used to compare the field or infoType to the value.

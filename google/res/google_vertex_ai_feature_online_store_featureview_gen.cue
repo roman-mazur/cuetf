@@ -64,7 +64,7 @@ import "list"
 	})
 
 	#feature_registry_source: close({
-		feature_groups?: matchN(1, [_#defs."/$defs/feature_registry_source/$defs/feature_groups", [_, ...] & [..._#defs."/$defs/feature_registry_source/$defs/feature_groups"]])
+		feature_groups!: matchN(1, [_#defs."/$defs/feature_registry_source/$defs/feature_groups", [_, ...] & [..._#defs."/$defs/feature_registry_source/$defs/feature_groups"]])
 
 		// The project number of the parent project of the feature Groups.
 		project_number?: string

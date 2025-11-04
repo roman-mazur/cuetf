@@ -34,7 +34,7 @@ import "list"
 		// on Engine has to match vertical of the DataStore linked to the
 		// engine. Default value: "GENERIC" Possible values: ["GENERIC"]
 		industry_vertical?: string
-		chat_engine_config?: matchN(1, [#chat_engine_config, list.MaxItems(1) & [_, ...] & [...#chat_engine_config]])
+		chat_engine_config!: matchN(1, [#chat_engine_config, list.MaxItems(1) & [_, ...] & [...#chat_engine_config]])
 		common_config?: matchN(1, [#common_config, list.MaxItems(1) & [...#common_config]])
 		timeouts?: #timeouts
 

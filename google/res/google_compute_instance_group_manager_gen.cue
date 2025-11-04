@@ -86,7 +86,7 @@ import "list"
 		stateful_internal_ip?: matchN(1, [#stateful_internal_ip, [...#stateful_internal_ip]])
 		timeouts?: #timeouts
 		update_policy?: matchN(1, [#update_policy, list.MaxItems(1) & [...#update_policy]])
-		version?: matchN(1, [#version, [_, ...] & [...#version]])
+		version!: matchN(1, [#version, [_, ...] & [...#version]])
 
 		// The target number of running instances for this managed
 		// instance group. This value should always be explicitly set

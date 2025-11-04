@@ -56,11 +56,11 @@ import "list"
 
 		// The project for the resource
 		project?: string
-		authorization?: matchN(1, [#authorization, list.MaxItems(1) & [_, ...] & [...#authorization]])
+		authorization!: matchN(1, [#authorization, list.MaxItems(1) & [_, ...] & [...#authorization]])
 		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
-		control_plane?: matchN(1, [#control_plane, list.MaxItems(1) & [_, ...] & [...#control_plane]])
-		fleet?: matchN(1, [#fleet, list.MaxItems(1) & [_, ...] & [...#fleet]])
-		networking?: matchN(1, [#networking, list.MaxItems(1) & [_, ...] & [...#networking]])
+		control_plane!: matchN(1, [#control_plane, list.MaxItems(1) & [_, ...] & [...#control_plane]])
+		fleet!: matchN(1, [#fleet, list.MaxItems(1) & [_, ...] & [...#fleet]])
+		networking!: matchN(1, [#networking, list.MaxItems(1) & [_, ...] & [...#networking]])
 		timeouts?: #timeouts
 
 		// Output only. If set, there are currently changes in flight to
@@ -88,7 +88,7 @@ import "list"
 
 	#authorization: close({
 		admin_groups?: matchN(1, [_#defs."/$defs/authorization/$defs/admin_groups", [..._#defs."/$defs/authorization/$defs/admin_groups"]])
-		admin_users?: matchN(1, [_#defs."/$defs/authorization/$defs/admin_users", [_, ...] & [..._#defs."/$defs/authorization/$defs/admin_users"]])
+		admin_users!: matchN(1, [_#defs."/$defs/authorization/$defs/admin_users", [_, ...] & [..._#defs."/$defs/authorization/$defs/admin_users"]])
 	})
 
 	#binary_authorization: close({
@@ -111,15 +111,15 @@ import "list"
 		// automatically create and manage security groups with the
 		// minimum rules needed for a functioning cluster.
 		security_group_ids?: [...string]
-		aws_services_authentication?: matchN(1, [_#defs."/$defs/control_plane/$defs/aws_services_authentication", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/aws_services_authentication"]])
+		aws_services_authentication!: matchN(1, [_#defs."/$defs/control_plane/$defs/aws_services_authentication", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/aws_services_authentication"]])
 
 		// The list of subnets where control plane replicas will run. A
 		// replica will be provisioned on each subnet and up to three
 		// values can be provided. Each subnet must be in a different AWS
 		// Availability Zone (AZ).
 		subnet_ids!: [...string]
-		config_encryption?: matchN(1, [_#defs."/$defs/control_plane/$defs/config_encryption", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/config_encryption"]])
-		database_encryption?: matchN(1, [_#defs."/$defs/control_plane/$defs/database_encryption", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/database_encryption"]])
+		config_encryption!: matchN(1, [_#defs."/$defs/control_plane/$defs/config_encryption", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/config_encryption"]])
+		database_encryption!: matchN(1, [_#defs."/$defs/control_plane/$defs/database_encryption", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/database_encryption"]])
 		main_volume?: matchN(1, [_#defs."/$defs/control_plane/$defs/main_volume", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/main_volume"]])
 		proxy_config?: matchN(1, [_#defs."/$defs/control_plane/$defs/proxy_config", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/proxy_config"]])
 

@@ -1150,7 +1150,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/fault_injection_policy/$defs/delay": close({
-		fixed_delay?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/fault_injection_policy/$defs/delay/$defs/fixed_delay", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/fault_injection_policy/$defs/delay/$defs/fixed_delay"]])
+		fixed_delay!: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/fault_injection_policy/$defs/delay/$defs/fixed_delay", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/fault_injection_policy/$defs/delay/$defs/fixed_delay"]])
 
 		// The percentage of traffic (connections/operations/requests) on
 		// which delay will
@@ -1689,7 +1689,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/metadata_filters": close({
-		filter_labels?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/metadata_filters/$defs/filter_labels", list.MaxItems(64) & [_, ...] & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/metadata_filters/$defs/filter_labels"]])
+		filter_labels!: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/metadata_filters/$defs/filter_labels", list.MaxItems(64) & [_, ...] & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/metadata_filters/$defs/filter_labels"]])
 
 		// Specifies how individual filterLabel matches within the list of
 		// filterLabels

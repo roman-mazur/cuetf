@@ -45,7 +45,7 @@ import "list"
 		// Format:
 		// projects/{project}/locations/{location}/instances/{instance}/watchlists/{watchlist}
 		name?: string
-		entity_population_mechanism?: matchN(1, [#entity_population_mechanism, list.MaxItems(1) & [_, ...] & [...#entity_population_mechanism]])
+		entity_population_mechanism!: matchN(1, [#entity_population_mechanism, list.MaxItems(1) & [_, ...] & [...#entity_population_mechanism]])
 		timeouts?: #timeouts
 		watchlist_user_preferences?: matchN(1, [#watchlist_user_preferences, list.MaxItems(1) & [...#watchlist_user_preferences]])
 		project?: string

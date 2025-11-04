@@ -39,7 +39,7 @@ import "list"
 		// directed by
 		// Google Support.
 		interconnect_group?: string
-		intent?: matchN(1, [#intent, list.MaxItems(1) & [_, ...] & [...#intent]])
+		intent!: matchN(1, [#intent, list.MaxItems(1) & [_, ...] & [...#intent]])
 		timeouts?: #timeouts
 
 		// An analysis of the logical layout of Attachments in this

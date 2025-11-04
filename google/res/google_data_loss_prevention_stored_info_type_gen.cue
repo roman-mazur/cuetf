@@ -44,7 +44,7 @@ import "list"
 	#large_custom_dictionary: close({
 		big_query_field?: matchN(1, [_#defs."/$defs/large_custom_dictionary/$defs/big_query_field", list.MaxItems(1) & [..._#defs."/$defs/large_custom_dictionary/$defs/big_query_field"]])
 		cloud_storage_file_set?: matchN(1, [_#defs."/$defs/large_custom_dictionary/$defs/cloud_storage_file_set", list.MaxItems(1) & [..._#defs."/$defs/large_custom_dictionary/$defs/cloud_storage_file_set"]])
-		output_path?: matchN(1, [_#defs."/$defs/large_custom_dictionary/$defs/output_path", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/large_custom_dictionary/$defs/output_path"]])
+		output_path!: matchN(1, [_#defs."/$defs/large_custom_dictionary/$defs/output_path", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/large_custom_dictionary/$defs/output_path"]])
 	})
 
 	#regex: close({
@@ -80,8 +80,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/large_custom_dictionary/$defs/big_query_field": close({
-		field?: matchN(1, [_#defs."/$defs/large_custom_dictionary/$defs/big_query_field/$defs/field", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/large_custom_dictionary/$defs/big_query_field/$defs/field"]])
-		table?: matchN(1, [_#defs."/$defs/large_custom_dictionary/$defs/big_query_field/$defs/table", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/large_custom_dictionary/$defs/big_query_field/$defs/table"]])
+		field!: matchN(1, [_#defs."/$defs/large_custom_dictionary/$defs/big_query_field/$defs/field", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/large_custom_dictionary/$defs/big_query_field/$defs/field"]])
+		table!: matchN(1, [_#defs."/$defs/large_custom_dictionary/$defs/big_query_field/$defs/table", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/large_custom_dictionary/$defs/big_query_field/$defs/table"]])
 	})
 
 	_#defs: "/$defs/large_custom_dictionary/$defs/big_query_field/$defs/field": close({

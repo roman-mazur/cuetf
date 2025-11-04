@@ -20,7 +20,7 @@ import "list"
 		// Please refer to the field `effective_annotations` for all of
 		// the annotations present on the resource.
 		annotations?: [string]: string
-		autoscaling?: matchN(1, [#autoscaling, list.MaxItems(1) & [_, ...] & [...#autoscaling]])
+		autoscaling!: matchN(1, [#autoscaling, list.MaxItems(1) & [_, ...] & [...#autoscaling]])
 
 		// The awsCluster for the resource
 		cluster!: string
@@ -52,7 +52,7 @@ import "list"
 		// Output only. If set, there are currently changes in flight to
 		// the node pool.
 		reconciling?: bool
-		config?: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
+		config!: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
 
 		// Output only. The lifecycle state of the node pool. Possible
 		// values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
@@ -60,7 +60,7 @@ import "list"
 		state?: string
 		kubelet_config?: matchN(1, [#kubelet_config, list.MaxItems(1) & [...#kubelet_config]])
 		management?: matchN(1, [#management, list.MaxItems(1) & [...#management]])
-		max_pods_constraint?: matchN(1, [#max_pods_constraint, list.MaxItems(1) & [_, ...] & [...#max_pods_constraint]])
+		max_pods_constraint!: matchN(1, [#max_pods_constraint, list.MaxItems(1) & [_, ...] & [...#max_pods_constraint]])
 		timeouts?: #timeouts
 		update_settings?: matchN(1, [#update_settings, list.MaxItems(1) & [...#update_settings]])
 
@@ -102,7 +102,7 @@ import "list"
 		// pool. An object containing a list of "key": value pairs.
 		// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 		labels?: [string]: string
-		config_encryption?: matchN(1, [_#defs."/$defs/config/$defs/config_encryption", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/config_encryption"]])
+		config_encryption!: matchN(1, [_#defs."/$defs/config/$defs/config_encryption", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/config_encryption"]])
 		proxy_config?: matchN(1, [_#defs."/$defs/config/$defs/proxy_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/proxy_config"]])
 		root_volume?: matchN(1, [_#defs."/$defs/config/$defs/root_volume", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/root_volume"]])
 

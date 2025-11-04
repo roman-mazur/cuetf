@@ -193,7 +193,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/match/$defs/expr_options": close({
-		recaptcha_options?: matchN(1, [_#defs."/$defs/match/$defs/expr_options/$defs/recaptcha_options", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/match/$defs/expr_options/$defs/recaptcha_options"]])
+		recaptcha_options!: matchN(1, [_#defs."/$defs/match/$defs/expr_options/$defs/recaptcha_options", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/match/$defs/expr_options/$defs/recaptcha_options"]])
 	})
 
 	_#defs: "/$defs/match/$defs/expr_options/$defs/recaptcha_options": close({

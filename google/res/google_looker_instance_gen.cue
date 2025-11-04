@@ -91,7 +91,7 @@ import "list"
 		platform_edition?: string
 		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
 		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
-		oauth_config?: matchN(1, [#oauth_config, list.MaxItems(1) & [_, ...] & [...#oauth_config]])
+		oauth_config!: matchN(1, [#oauth_config, list.MaxItems(1) & [_, ...] & [...#oauth_config]])
 		psc_config?: matchN(1, [#psc_config, list.MaxItems(1) & [...#psc_config]])
 		timeouts?: #timeouts
 		user_metadata?: matchN(1, [#user_metadata, list.MaxItems(1) & [...#user_metadata]])
@@ -143,9 +143,9 @@ import "list"
 	})
 
 	#deny_maintenance_period: close({
-		end_date?: matchN(1, [_#defs."/$defs/deny_maintenance_period/$defs/end_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deny_maintenance_period/$defs/end_date"]])
-		start_date?: matchN(1, [_#defs."/$defs/deny_maintenance_period/$defs/start_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deny_maintenance_period/$defs/start_date"]])
-		time?: matchN(1, [_#defs."/$defs/deny_maintenance_period/$defs/time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deny_maintenance_period/$defs/time"]])
+		end_date!: matchN(1, [_#defs."/$defs/deny_maintenance_period/$defs/end_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deny_maintenance_period/$defs/end_date"]])
+		start_date!: matchN(1, [_#defs."/$defs/deny_maintenance_period/$defs/start_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deny_maintenance_period/$defs/start_date"]])
+		time!: matchN(1, [_#defs."/$defs/deny_maintenance_period/$defs/time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deny_maintenance_period/$defs/time"]])
 	})
 
 	#encryption_config: close({
@@ -161,7 +161,7 @@ import "list"
 	})
 
 	#maintenance_window: close({
-		start_time?: matchN(1, [_#defs."/$defs/maintenance_window/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_window/$defs/start_time"]])
+		start_time!: matchN(1, [_#defs."/$defs/maintenance_window/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_window/$defs/start_time"]])
 
 		// Required. Day of the week for this MaintenanceWindow (in UTC).
 		//

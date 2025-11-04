@@ -294,7 +294,7 @@ import "list"
 	})
 
 	#range_partitioning: close({
-		range?: matchN(1, [_#defs."/$defs/range_partitioning/$defs/range", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/range_partitioning/$defs/range"]])
+		range!: matchN(1, [_#defs."/$defs/range_partitioning/$defs/range", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/range_partitioning/$defs/range"]])
 
 		// The field used to determine how to create a range-based
 		// partition.
@@ -581,8 +581,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/table_constraints/$defs/foreign_keys": close({
-		column_references?: matchN(1, [_#defs."/$defs/table_constraints/$defs/foreign_keys/$defs/column_references", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/table_constraints/$defs/foreign_keys/$defs/column_references"]])
-		referenced_table?: matchN(1, [_#defs."/$defs/table_constraints/$defs/foreign_keys/$defs/referenced_table", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/table_constraints/$defs/foreign_keys/$defs/referenced_table"]])
+		column_references!: matchN(1, [_#defs."/$defs/table_constraints/$defs/foreign_keys/$defs/column_references", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/table_constraints/$defs/foreign_keys/$defs/column_references"]])
+		referenced_table!: matchN(1, [_#defs."/$defs/table_constraints/$defs/foreign_keys/$defs/referenced_table", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/table_constraints/$defs/foreign_keys/$defs/referenced_table"]])
 
 		// Set only if the foreign key constraint is named.
 		name?: string

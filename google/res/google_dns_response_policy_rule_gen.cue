@@ -23,7 +23,7 @@ import "list"
 	})
 
 	#local_data: close({
-		local_datas?: matchN(1, [_#defs."/$defs/local_data/$defs/local_datas", [_, ...] & [..._#defs."/$defs/local_data/$defs/local_datas"]])
+		local_datas!: matchN(1, [_#defs."/$defs/local_data/$defs/local_datas", [_, ...] & [..._#defs."/$defs/local_data/$defs/local_datas"]])
 	})
 
 	#timeouts: close({

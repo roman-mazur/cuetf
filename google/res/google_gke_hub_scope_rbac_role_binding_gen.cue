@@ -47,7 +47,7 @@ import "list"
 		state?: [...close({
 			code?: string
 		})]
-		role?: matchN(1, [#role, list.MaxItems(1) & [_, ...] & [...#role]])
+		role!: matchN(1, [#role, list.MaxItems(1) & [_, ...] & [...#role]])
 		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource

@@ -23,7 +23,7 @@ package res
 		// Resource ID of the security profile.
 		profile_id!: string
 		id?:         string
-		profile_assessment_configs?: matchN(1, [#profile_assessment_configs, [_, ...] & [...#profile_assessment_configs]])
+		profile_assessment_configs!: matchN(1, [#profile_assessment_configs, [_, ...] & [...#profile_assessment_configs]])
 		timeouts?: #timeouts
 
 		// The timestamp at which this profile was most recently updated.
