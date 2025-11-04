@@ -18,7 +18,7 @@ import "list"
 		// Version number used to manage component templates externally.
 		version?: number
 		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
-		template?: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
+		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
 	})
 
 	#elasticsearch_connection: close({

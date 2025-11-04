@@ -15,7 +15,7 @@ import "list"
 
 		// The name for the role.
 		name!: string
-		elasticsearch?: matchN(1, [#elasticsearch, list.MaxItems(1) & [_, ...] & [...#elasticsearch]])
+		elasticsearch!: matchN(1, [#elasticsearch, list.MaxItems(1) & [_, ...] & [...#elasticsearch]])
 		kibana?: matchN(1, [#kibana, [...#kibana]])
 	})
 

@@ -7,5 +7,7 @@ googleServer: google.#Terraform & {
 	resource: google_compute_instance: test: {
 		name:         "test"
 		machine_type: "e2-micro"
+		boot_disk: initialize_params: image: "cos-cloud/cos-stable"
+		network_interface: network: "default"
 	}
 }
