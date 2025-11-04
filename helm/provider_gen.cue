@@ -21,6 +21,9 @@ package helm
 		// memory, sql
 		helm_driver?: string
 
+		// The path to the helm plugins directory
+		plugins_path?: string
+
 		// Kubernetes Configuration
 		kubernetes?: close({
 			// PEM-encoded client certificate for TLS authentication.
@@ -94,8 +97,12 @@ package helm
 			username?: string
 		})
 
-		// The path to the helm plugins directory
-		plugins_path?: string
+		// Queries per second used when communicating with the Kubernetes
+		// API. Can be used to avoid throttling.
+		qps?: number
+
+		// The path to the registry config file
+		registry_config_path?: string
 
 		// RegistryClient configuration.
 		registries?: matchN(1, [close({
@@ -121,9 +128,6 @@ package helm
 			// accessing the Kubernetes master endpoint.
 			username!: string
 		})]])
-
-		// The path to the registry config file
-		registry_config_path?: string
 
 		// The path to the file containing cached repository indexes
 		repository_cache?: string

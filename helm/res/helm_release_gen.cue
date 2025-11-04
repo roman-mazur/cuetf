@@ -32,23 +32,6 @@ package res
 		// install --no-crd-hook
 		disable_crd_hooks?: bool
 
-		// If set, the installation process will not validate rendered
-		// templates against the Kubernetes OpenAPI Schema
-		disable_openapi_validation?: bool
-
-		// Prevent hooks from running
-		disable_webhooks?: bool
-
-		// Force resource update through delete/recreate if needed.
-		force_update?: bool
-
-		// Location of public keys used for verification, Used only if
-		// 'verify is true'
-		keyring?: string
-
-		// Run helm lint when planning
-		lint?: bool
-
 		// Status of the deployed release.
 		metadata?: close({
 			// The version number of the application being deployed
@@ -86,8 +69,30 @@ package res
 			version?: string
 		})
 
+		// If set, the installation process will not validate rendered
+		// templates against the Kubernetes OpenAPI Schema
+		disable_openapi_validation?: bool
+
+		// Prevent hooks from running
+		disable_webhooks?: bool
+
+		// Force resource update through delete/recreate if needed.
+		force_update?: bool
+
+		// Location of public keys used for verification, Used only if
+		// 'verify is true'
+		keyring?: string
+
+		// Run helm lint when planning
+		lint?: bool
+
 		// The rendered manifest as JSON.
 		manifest?: string
+		id?:       string
+
+		// Limit the maximum number of revisions saved per release. Use 0
+		// for no limit
+		max_history?: number
 
 		// Postrender command config
 		postrender?: close({
@@ -97,10 +102,6 @@ package res
 			// The common binary path
 			binary_path!: string
 		})
-
-		// Limit the maximum number of revisions saved per release. Use 0
-		// for no limit
-		max_history?: number
 
 		// Custom values to be merged with the values
 		set?: matchN(1, [close({
@@ -113,6 +114,9 @@ package res
 			value?: string
 		})]])
 
+		// Release name. The length must not be longer than 53 characters
+		name!: string
+
 		// Custom sensitive values to be merged with the values
 		set_list?: matchN(1, [close({
 			name!: string
@@ -122,15 +126,22 @@ package res
 			value!: [...string]
 		})]])
 
-		// Release name. The length must not be longer than 53 characters
-		name!: string
-
 		// Namespace to install the release into
 		namespace?: string
 
+		// Custom sensitive values to be merged with the values
+		set_sensitive?: matchN(1, [close({
+			name!:  string
+			type?:  string
+			value!: string
+		}), [...close({
+			name!:  string
+			type?:  string
+			value!: string
+		})]])
+
 		// Pass credentials to all domains
 		pass_credentials?: bool
-		id?:               string
 
 		// Perform pods restart during upgrade/rollback
 		recreate_pods?: bool
@@ -165,31 +176,12 @@ package res
 		// chart
 		reset_values?: bool
 
+		// The kubernetes resources created by this release.
+		resources?: [string]: string
+
 		// When upgrading, reuse the last release's values and merge in
 		// any overrides. If 'reset_values' is specified, this is ignored
 		reuse_values?: bool
-
-		// Custom sensitive values to be merged with the values
-		set_sensitive?: matchN(1, [close({
-			name!:  string
-			type?:  string
-			value!: string
-		}), [...close({
-			name!:  string
-			type?:  string
-			value!: string
-		})]])
-
-		// Custom values to be merged with the values
-		set_wo?: matchN(1, [close({
-			name!:  string
-			type?:  string
-			value!: string
-		}), [...close({
-			name!:  string
-			type?:  string
-			value!: string
-		})]])
 
 		// The current revision of the write-only "set_wo" attribute.
 		// Incrementing this integer value will cause Terraform to update
@@ -203,8 +195,31 @@ package res
 		// Status of the release
 		status?: string
 
+		// Custom values to be merged with the values
+		set_wo?: matchN(1, [close({
+			name!:  string
+			type?:  string
+			value!: string
+		}), [...close({
+			name!:  string
+			type?:  string
+			value!: string
+		})]])
+
+		// If set, Helm will take ownership of resources not already
+		// annotated by this release. Useful for migrations or recovery.
+		take_ownership?: bool
+
 		// Time in seconds to wait for any individual kubernetes operation
 		timeout?: number
+
+		// If true, the provider will install the release at the specified
+		// version even if a release not controlled by the provider is
+		// present. This is equivalent to running 'helm upgrade
+		// --install'. WARNING: this may not be suitable for production
+		// use -- see the 'Upgrade Mode' note in the provider
+		// documentation. Defaults to `false`.
+		upgrade_install?: bool
 
 		// List of values in raw YAML format to pass to helm
 		values?: [...string]
@@ -215,6 +230,36 @@ package res
 		// Specify the exact chart version to install. If this is not
 		// specified, the latest version is installed
 		version?: string
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+			// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+			// time units are "s" (seconds), "m" (minutes), "h" (hours).
+			create?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+			// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+			// time units are "s" (seconds), "m" (minutes), "h" (hours).
+			// Setting a timeout for a Delete operation is only applicable if
+			// changes are saved into state before the destroy operation
+			// occurs.
+			delete?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+			// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+			// time units are "s" (seconds), "m" (minutes), "h" (hours). Read
+			// operations occur during any refresh or planning operation when
+			// refresh is enabled.
+			read?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+			// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+			// time units are "s" (seconds), "m" (minutes), "h" (hours).
+			update?: string
+		})
 
 		// Will wait until all resources are in a ready state before
 		// marking the release as successful.
