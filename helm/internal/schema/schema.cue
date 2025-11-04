@@ -178,6 +178,12 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 					description_kind: "plain"
 					optional:         true
 				}
+				qps: {
+					type:             "number"
+					description:      "Queries per second used when communicating with the Kubernetes API. Can be used to avoid throttling."
+					description_kind: "plain"
+					optional:         true
+				}
 				registries: {
 					nested_type: {
 						attributes: {
@@ -516,6 +522,12 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 					optional:         true
 					computed:         true
 				}
+				resources: {
+					type: ["map", "string"]
+					description:      "The kubernetes resources created by this release."
+					description_kind: "plain"
+					computed:         true
+				}
 				reuse_values: {
 					type:             "bool"
 					description:      "When upgrading, reuse the last release's values and merge in any overrides. If 'reset_values' is specified, this is ignored"
@@ -602,16 +614,19 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 								type:             "string"
 								description_kind: "plain"
 								required:         true
+								write_only:       true
 							}
 							type: {
 								type:             "string"
 								description_kind: "plain"
 								optional:         true
+								write_only:       true
 							}
 							value: {
 								type:             "string"
 								description_kind: "plain"
 								required:         true
+								write_only:       true
 							}
 						}
 						nesting_mode: "list"
@@ -619,6 +634,7 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 					description:      "Custom values to be merged with the values"
 					description_kind: "plain"
 					optional:         true
+					write_only:       true
 				}
 				set_wo_revision: {
 					type:             "number"
@@ -639,9 +655,56 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 					description_kind: "plain"
 					computed:         true
 				}
+				take_ownership: {
+					type:             "bool"
+					description:      "If set, Helm will take ownership of resources not already annotated by this release. Useful for migrations or recovery."
+					description_kind: "plain"
+					optional:         true
+					computed:         true
+				}
 				timeout: {
 					type:             "number"
 					description:      "Time in seconds to wait for any individual kubernetes operation"
+					description_kind: "plain"
+					optional:         true
+					computed:         true
+				}
+				timeouts: {
+					nested_type: {
+						attributes: {
+							create: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+								description_kind: "plain"
+								optional:         true
+							}
+							read: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						nesting_mode: "single"
+					}
+					description_kind: "plain"
+					optional:         true
+				}
+				upgrade_install: {
+					type:             "bool"
+					description:      "If true, the provider will install the release at the specified version even if a release not controlled by the provider is present. This is equivalent to running 'helm upgrade --install'. WARNING: this may not be suitable for production use -- see the 'Upgrade Mode' note in the provider documentation. Defaults to `false`."
 					description_kind: "plain"
 					optional:         true
 					computed:         true
@@ -973,6 +1036,31 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 					description_kind: "plain"
 					optional:         true
 				}
+				set_wo: {
+					nested_type: {
+						attributes: {
+							name: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							type: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							value: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						nesting_mode: "list"
+					}
+					description:      "Write-only custom values to be merged with the values."
+					description_kind: "plain"
+					optional:         true
+				}
 				show_only: {
 					type: ["list", "string"]
 					description:      "Only show manifests rendered from the given templates."
@@ -994,6 +1082,19 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 				timeout: {
 					type:             "number"
 					description:      "Time in seconds to wait for any individual Kubernetes operation."
+					description_kind: "plain"
+					optional:         true
+				}
+				timeouts: {
+					nested_type: {
+						attributes: read: {
+							type:             "string"
+							description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+							description_kind: "plain"
+							optional:         true
+						}
+						nesting_mode: "single"
+					}
 					description_kind: "plain"
 					optional:         true
 				}
@@ -1031,6 +1132,19 @@ provider_schemas: "registry.terraform.io/hashicorp/helm": {
 			}
 			description:      "Data source to render Helm chart templates."
 			description_kind: "plain"
+		}
+	}
+	resource_identity_schemas: helm_release: {
+		version: 0
+		attributes: {
+			namespace: {
+				type:                "string"
+				optional_for_import: true
+			}
+			release_name: {
+				type:                "string"
+				required_for_import: true
+			}
 		}
 	}
 }

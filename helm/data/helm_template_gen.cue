@@ -26,6 +26,15 @@ package data
 		// Add a custom description.
 		description?: string
 
+		// Postrender command config
+		postrender?: close({
+			// An argument to the post-renderer (can specify multiple)
+			args?: [...string]
+
+			// The common binary path
+			binary_path!: string
+		})
+
 		// Use chart development versions, too. Equivalent to version
 		// '>0.0.0-0'. If `version` is set, this is ignored.
 		devel?: bool
@@ -36,19 +45,9 @@ package data
 
 		// Prevent hooks from running.
 		disable_webhooks?: bool
-		id?:               string
 
 		// Include CRDs in the templated output.
 		include_crds?: bool
-
-		// Postrender command config
-		postrender?: close({
-			// An argument to the post-renderer (can specify multiple)
-			args?: [...string]
-
-			// The common binary path
-			binary_path!: string
-		})
 
 		// Set .Release.IsUpgrade instead of .Release.IsInstall.
 		is_upgrade?: bool
@@ -80,22 +79,6 @@ package data
 		// Kubernetes version used for Capabilities.KubeVersion.
 		kube_version?: string
 
-		// Concatenated rendered chart templates. This corresponds to the
-		// output of the `helm template` command.
-		manifest?: string
-
-		// Map of rendered chart templates indexed by the template name.
-		manifests?: [string]: string
-
-		// Release name
-		name!: string
-
-		// Namespace to install the release into.
-		namespace?: string
-
-		// Rendered notes if the chart contains a `NOTES.txt`.
-		notes?: string
-
 		// Custom sensitive values to be merged with the values
 		set_sensitive?: matchN(1, [close({
 			name!:  string
@@ -106,6 +89,34 @@ package data
 			type?:  string
 			value!: string
 		})]])
+
+		// Concatenated rendered chart templates. This corresponds to the
+		// output of the `helm template` command.
+		manifest?: string
+
+		// Write-only custom values to be merged with the values.
+		set_wo?: matchN(1, [close({
+			name!:  string
+			type?:  string
+			value!: string
+		}), [...close({
+			name!:  string
+			type?:  string
+			value!: string
+		})]])
+
+		// Map of rendered chart templates indexed by the template name.
+		manifests?: [string]: string
+
+		// Release name
+		name!: string
+		id?:   string
+
+		// Namespace to install the release into.
+		namespace?: string
+
+		// Rendered notes if the chart contains a `NOTES.txt`.
+		notes?: string
 
 		// Pass credentials to all domains
 		pass_credentials?: bool
@@ -178,5 +189,12 @@ package data
 		// Will wait until all resources are in a ready state before
 		// marking the release as successful.
 		wait?: bool
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+			// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+			// time units are "s" (seconds), "m" (minutes), "h" (hours).
+			read?: string
+		})
 	})
 }
