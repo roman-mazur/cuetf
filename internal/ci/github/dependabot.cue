@@ -58,7 +58,7 @@ import (
 	#registry: struct.MinFields(1) & close({
 		{[=~".+"]: close({
 			// Identifies the type of registry.
-			type!: "cargo-registry" | "composer-repository" | "docker-registry" | "git" | "hex-organization" | "hex-repository" | "maven-repository" | "npm-registry" | "nuget-feed" | "pub-repository" | "python-index" | "rubygems-server" | "terraform-registry"
+			type!: "cargo-registry" | "composer-repository" | "docker-registry" | "git" | "hex-organization" | "hex-repository" | "helm-registry" | "maven-repository" | "npm-registry" | "nuget-feed" | "pub-repository" | "python-index" | "rubygems-server" | "terraform-registry"
 
 			// The URL to use to access the dependencies in this registry. The
 			// protocol is optional. If not specified, 'https://' is assumed.
