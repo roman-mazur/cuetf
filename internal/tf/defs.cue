@@ -4,11 +4,17 @@ package tf
 
 #ProviderSchema: {
 	provider: #type
-	resource_schemas: [string]:           #type
-	data_source_schemas: [string]:        #type
-	resource_identity_schemas: [string]:  #type
+	resource_schemas: [string]:    #type
+	data_source_schemas: [string]: #type
+
+	// TODO: add support. Used in the AWS provider.
 	ephemeral_resource_schemas: [string]: #type
 
+	// Unused properties below.
+
+	// Used mainly for imports.
+	resource_identity_schemas: [string]: _
+	// Used by google provider.
 	functions?: [string]: _
 }
 
