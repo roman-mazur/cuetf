@@ -8,6 +8,8 @@ package tf
 	data_source_schemas: [string]:        #type
 	resource_identity_schemas: [string]:  #type
 	ephemeral_resource_schemas: [string]: #type
+
+	functions?: [string]: _
 }
 
 #type: {
