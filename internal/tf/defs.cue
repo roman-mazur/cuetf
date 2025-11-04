@@ -28,36 +28,10 @@ documented: {
 	description_kind: "plain" | "markdown"
 }
 
-_recDepth: [0, 1, 2, 3, 4, 5]
-
 #attr: {
 	#primitive:   "string" | "number" | "bool" | "dynamic"
-	#complexType: "object" | "list" | "map" | "set"
-	#complexDef: [#complexType, _]
+	#complexDef: ["object", {[string]: #type}] | ["list" | "map" | "set", #type]
 
-	_levels: [// Implementation of a bounded recursion.
-		for i in _recDepth {
-			{
-				if i == 0 {
-					#_prev: #primitive
-				}
-				if i > 0 {
-					#_prev: _levels[i-1].#variant
-				}
-
-				#fields: [string]: _levels[i].#_prev
-				#object: ["object", #fields]
-				#list: ["list", _levels[i].#_prev]
-				#map: ["map", _levels[i].#_prev]
-				#set: ["set", _levels[i].#_prev]
-
-				#variant: _levels[i].#_prev | #object | #list | #map | #set
-			}
-		},
-	]
-
-	// XXX: Unifying with the recursive defs takes too long.
-	//#type: _levels[len(_levels)-1].#variant
 	#type: #primitive | #complexDef
 }
 
