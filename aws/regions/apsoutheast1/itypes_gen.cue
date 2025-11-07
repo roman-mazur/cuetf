@@ -10868,7 +10868,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "c7gd.16xlarge"
@@ -10958,7 +10958,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "c7gd.2xlarge"
@@ -11045,7 +11045,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "c7gd.4xlarge"
@@ -11132,7 +11132,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "c7gd.8xlarge"
@@ -11219,7 +11219,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "c7gd.large"
@@ -11306,7 +11306,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "c7gd.medium"
@@ -11391,7 +11391,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "c7gd.metal"
@@ -11475,7 +11475,7 @@ InstanceTypes: [{
     SupportedBootModes: ["uefi"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "c7gd.xlarge"
@@ -11562,7 +11562,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "c7i-flex.12xlarge"
@@ -12178,7 +12178,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c7i.16xlarge"
@@ -12255,7 +12255,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c7i.24xlarge"
@@ -12332,7 +12332,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c7i.2xlarge"
@@ -12409,7 +12409,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c7i.48xlarge"
@@ -12489,7 +12489,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c7i.4xlarge"
@@ -12566,7 +12566,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c7i.8xlarge"
@@ -12643,7 +12643,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c7i.large"
@@ -12720,7 +12720,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c7i.metal-24xl"
@@ -12791,7 +12791,7 @@ InstanceTypes: [{
     SupportedBootModes: ["legacy-bios"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c7i.metal-48xl"
@@ -12865,7 +12865,7 @@ InstanceTypes: [{
     SupportedBootModes: ["legacy-bios"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c7i.xlarge"
@@ -12942,7 +12942,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c8g.12xlarge"
@@ -13020,7 +13020,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c8g.16xlarge"
@@ -13098,7 +13098,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c8g.24xlarge"
@@ -13179,7 +13179,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c8g.2xlarge"
@@ -13257,7 +13257,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c8g.48xlarge"
@@ -13338,7 +13338,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c8g.4xlarge"
@@ -13416,7 +13416,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c8g.8xlarge"
@@ -13494,7 +13494,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c8g.large"
@@ -13572,7 +13572,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c8g.medium"
@@ -13648,7 +13648,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c8g.metal-24xl"
@@ -13723,7 +13723,7 @@ InstanceTypes: [{
     SupportedBootModes: ["uefi"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c8g.metal-48xl"
@@ -13798,7 +13798,7 @@ InstanceTypes: [{
     SupportedBootModes: ["uefi"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c8g.xlarge"
@@ -13876,7 +13876,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c8gn.12xlarge"
@@ -20160,7 +20160,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "i8g.16xlarge"
@@ -20247,7 +20247,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "i8g.24xlarge"
@@ -20334,7 +20334,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "i8g.2xlarge"
@@ -20421,7 +20421,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "i8g.48xlarge"
@@ -20511,7 +20511,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "i8g.4xlarge"
@@ -20598,7 +20598,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "i8g.8xlarge"
@@ -20685,7 +20685,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "i8g.large"
@@ -20772,7 +20772,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "i8g.metal-24xl"
@@ -20853,7 +20853,7 @@ InstanceTypes: [{
     SupportedBootModes: ["uefi"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "i8g.xlarge"
@@ -20940,7 +20940,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "im4gn.16xlarge"
@@ -21025,8 +21025,11 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
     SupportedBootModes: ["uefi"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
 }, {
@@ -21109,8 +21112,11 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
     SupportedBootModes: ["uefi"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
 }, {
@@ -21193,8 +21199,11 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
     SupportedBootModes: ["uefi"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
 }, {
@@ -21277,8 +21286,11 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
     SupportedBootModes: ["uefi"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
 }, {
@@ -21361,8 +21373,11 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
     SupportedBootModes: ["uefi"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
 }, {
@@ -21445,8 +21460,11 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
     SupportedBootModes: ["uefi"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
 }, {
@@ -34647,7 +34665,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7g.16xlarge"
@@ -34727,7 +34745,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7g.2xlarge"
@@ -34804,7 +34822,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7g.4xlarge"
@@ -34881,7 +34899,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7g.8xlarge"
@@ -34958,7 +34976,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7g.large"
@@ -35035,7 +35053,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7g.medium"
@@ -35110,7 +35128,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7g.metal"
@@ -35184,7 +35202,7 @@ InstanceTypes: [{
     SupportedBootModes: ["uefi"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7g.xlarge"
@@ -35261,7 +35279,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7gd.12xlarge"
@@ -35348,7 +35366,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "m7gd.16xlarge"
@@ -35438,7 +35456,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "m7gd.2xlarge"
@@ -35525,7 +35543,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "m7gd.4xlarge"
@@ -35612,7 +35630,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "m7gd.8xlarge"
@@ -35699,7 +35717,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "m7gd.large"
@@ -35786,7 +35804,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "m7gd.medium"
@@ -35871,7 +35889,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "m7gd.metal"
@@ -35955,7 +35973,7 @@ InstanceTypes: [{
     SupportedBootModes: ["uefi"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "m7gd.xlarge"
@@ -36042,7 +36060,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "m7i-flex.12xlarge"
@@ -36658,7 +36676,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7i.16xlarge"
@@ -36735,7 +36753,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7i.24xlarge"
@@ -36812,7 +36830,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7i.2xlarge"
@@ -36889,7 +36907,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7i.48xlarge"
@@ -36969,7 +36987,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7i.4xlarge"
@@ -37046,7 +37064,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7i.8xlarge"
@@ -37123,7 +37141,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7i.large"
@@ -37200,7 +37218,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7i.metal-24xl"
@@ -37271,7 +37289,7 @@ InstanceTypes: [{
     SupportedBootModes: ["legacy-bios"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7i.metal-48xl"
@@ -37345,7 +37363,7 @@ InstanceTypes: [{
     SupportedBootModes: ["legacy-bios"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m7i.xlarge"
@@ -37422,7 +37440,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m8g.12xlarge"
@@ -37500,7 +37518,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m8g.16xlarge"
@@ -37578,7 +37596,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m8g.24xlarge"
@@ -37659,7 +37677,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m8g.2xlarge"
@@ -37737,7 +37755,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m8g.48xlarge"
@@ -37818,7 +37836,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m8g.4xlarge"
@@ -37896,7 +37914,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m8g.8xlarge"
@@ -37974,7 +37992,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m8g.large"
@@ -38052,7 +38070,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m8g.medium"
@@ -38128,7 +38146,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m8g.metal-24xl"
@@ -38203,7 +38221,7 @@ InstanceTypes: [{
     SupportedBootModes: ["uefi"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m8g.metal-48xl"
@@ -38278,7 +38296,7 @@ InstanceTypes: [{
     SupportedBootModes: ["uefi"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m8g.xlarge"
@@ -38356,7 +38374,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "mac1.metal"
@@ -50430,7 +50448,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7g.16xlarge"
@@ -50510,7 +50528,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7g.2xlarge"
@@ -50587,7 +50605,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7g.4xlarge"
@@ -50664,7 +50682,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7g.8xlarge"
@@ -50741,7 +50759,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7g.large"
@@ -50818,7 +50836,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7g.medium"
@@ -50893,7 +50911,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7g.metal"
@@ -50967,7 +50985,7 @@ InstanceTypes: [{
     SupportedBootModes: ["uefi"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7g.xlarge"
@@ -51044,7 +51062,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7gd.12xlarge"
@@ -51131,7 +51149,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "r7gd.16xlarge"
@@ -51221,7 +51239,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "r7gd.2xlarge"
@@ -51308,7 +51326,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "r7gd.4xlarge"
@@ -51395,7 +51413,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "r7gd.8xlarge"
@@ -51482,7 +51500,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "r7gd.large"
@@ -51569,7 +51587,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "r7gd.medium"
@@ -51654,7 +51672,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "r7gd.metal"
@@ -51738,7 +51756,7 @@ InstanceTypes: [{
     SupportedBootModes: ["uefi"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "r7gd.xlarge"
@@ -51825,7 +51843,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "r7i.12xlarge"
@@ -51902,7 +51920,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7i.16xlarge"
@@ -51979,7 +51997,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7i.24xlarge"
@@ -52056,7 +52074,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7i.2xlarge"
@@ -52133,7 +52151,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7i.48xlarge"
@@ -52213,7 +52231,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7i.4xlarge"
@@ -52290,7 +52308,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7i.8xlarge"
@@ -52367,7 +52385,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7i.large"
@@ -52444,7 +52462,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7i.metal-24xl"
@@ -52515,7 +52533,7 @@ InstanceTypes: [{
     SupportedBootModes: ["legacy-bios"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7i.metal-48xl"
@@ -52589,7 +52607,7 @@ InstanceTypes: [{
     SupportedBootModes: ["legacy-bios"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r7i.xlarge"
@@ -52666,7 +52684,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8g.12xlarge"
@@ -52744,7 +52762,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8g.16xlarge"
@@ -52822,7 +52840,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8g.24xlarge"
@@ -52903,7 +52921,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8g.2xlarge"
@@ -52981,7 +52999,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8g.48xlarge"
@@ -53062,7 +53080,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8g.4xlarge"
@@ -53140,7 +53158,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8g.8xlarge"
@@ -53218,7 +53236,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8g.large"
@@ -53296,7 +53314,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8g.medium"
@@ -53372,7 +53390,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8g.metal-24xl"
@@ -53447,7 +53465,7 @@ InstanceTypes: [{
     SupportedBootModes: ["uefi"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8g.metal-48xl"
@@ -53522,7 +53540,7 @@ InstanceTypes: [{
     SupportedBootModes: ["uefi"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8g.xlarge"
@@ -53600,7 +53618,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i-flex.12xlarge"
@@ -53680,7 +53698,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i-flex.16xlarge"
@@ -53760,7 +53778,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i-flex.2xlarge"
@@ -53840,7 +53858,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i-flex.4xlarge"
@@ -53920,7 +53938,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i-flex.8xlarge"
@@ -54000,7 +54018,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i-flex.large"
@@ -54080,7 +54098,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i-flex.xlarge"
@@ -54160,7 +54178,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i.12xlarge"
@@ -54235,12 +54253,12 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i.16xlarge"
@@ -54315,12 +54333,12 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i.24xlarge"
@@ -54395,12 +54413,12 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i.2xlarge"
@@ -54475,12 +54493,12 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i.32xlarge"
@@ -54555,12 +54573,12 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i.48xlarge"
@@ -54638,12 +54656,12 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i.4xlarge"
@@ -54718,12 +54736,12 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i.8xlarge"
@@ -54798,12 +54816,12 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i.96xlarge"
@@ -54881,12 +54899,12 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i.large"
@@ -54966,7 +54984,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8i.metal-48xl"
@@ -55017,6 +55035,8 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          75.0
             PeakBandwidthInGbps:              75.0
             DefaultEnaQueueCountPerInterface: 32
+            MaximumEnaQueueCount:             768
+            MaximumEnaQueueCountPerInterface: 128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -55029,7 +55049,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport: "unsupported"
+        FlexibleEnaQueuesSupport: "supported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -55041,7 +55061,7 @@ InstanceTypes: [{
     SupportedBootModes: ["legacy-bios"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "r8i.metal-96xl"
@@ -55092,6 +55112,8 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            MaximumEnaQueueCount:             1536
+            MaximumEnaQueueCountPerInterface: 128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -55104,7 +55126,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport: "unsupported"
+        FlexibleEnaQueuesSupport: "supported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -55116,7 +55138,7 @@ InstanceTypes: [{
     SupportedBootModes: ["legacy-bios"]
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "r8i.xlarge"
@@ -55191,12 +55213,12 @@ InstanceTypes: [{
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
-    NitroEnclavesSupport: "unsupported"
+    NitroEnclavesSupport: "supported"
     NitroTpmSupport:      "supported"
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "t1.micro"
@@ -57633,7 +57655,7 @@ InstanceTypes: [{
     NitroTpmInfo: {
         SupportedVersions: ["2.0"]
     }
-    PhcSupport:             "unsupported"
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "x1.16xlarge"

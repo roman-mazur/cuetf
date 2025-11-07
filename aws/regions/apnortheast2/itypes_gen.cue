@@ -45979,7 +45979,7 @@ InstanceTypes: [{
         SupportedVersions: ["2.0"]
     }
     PhcSupport:             "supported"
-    RebootMigrationSupport: "unsupported"
+    RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "u7i-8tb.112xlarge"
     CurrentGeneration: true
@@ -46059,7 +46059,7 @@ InstanceTypes: [{
         SupportedVersions: ["2.0"]
     }
     PhcSupport:             "supported"
-    RebootMigrationSupport: "unsupported"
+    RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "u7in-16tb.224xlarge"
     CurrentGeneration: true
