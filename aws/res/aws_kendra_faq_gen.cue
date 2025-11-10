@@ -20,7 +20,7 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:   string
 		index_id!: string
-		s3_path?: matchN(1, [#s3_path, list.MaxItems(1) & [_, ...] & [...#s3_path]])
+		s3_path!: matchN(1, [#s3_path, list.MaxItems(1) & [_, ...] & [...#s3_path]])
 		timeouts?:      #timeouts
 		language_code?: string
 		name!:          string

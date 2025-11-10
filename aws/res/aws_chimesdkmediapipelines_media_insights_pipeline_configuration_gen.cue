@@ -16,7 +16,7 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                   string
 		resource_access_role_arn!: string
-		elements?: matchN(1, [#elements, [_, ...] & [...#elements]])
+		elements!: matchN(1, [#elements, [_, ...] & [...#elements]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		real_time_alert_configuration?: matchN(1, [#real_time_alert_configuration, list.MaxItems(1) & [...#real_time_alert_configuration]])
@@ -36,7 +36,7 @@ import "list"
 	})
 
 	#real_time_alert_configuration: close({
-		rules?: matchN(1, [_#defs."/$defs/real_time_alert_configuration/$defs/rules", list.MaxItems(3) & [_, ...] & [..._#defs."/$defs/real_time_alert_configuration/$defs/rules"]])
+		rules!: matchN(1, [_#defs."/$defs/real_time_alert_configuration/$defs/rules", list.MaxItems(3) & [_, ...] & [..._#defs."/$defs/real_time_alert_configuration/$defs/rules"]])
 		disabled?: bool
 	})
 

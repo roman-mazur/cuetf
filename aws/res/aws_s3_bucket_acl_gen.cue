@@ -21,7 +21,7 @@ import "list"
 
 	#access_control_policy: close({
 		grant?: matchN(1, [_#defs."/$defs/access_control_policy/$defs/grant", [..._#defs."/$defs/access_control_policy/$defs/grant"]])
-		owner?: matchN(1, [_#defs."/$defs/access_control_policy/$defs/owner", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/access_control_policy/$defs/owner"]])
+		owner!: matchN(1, [_#defs."/$defs/access_control_policy/$defs/owner", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/access_control_policy/$defs/owner"]])
 	})
 
 	_#defs: "/$defs/access_control_policy/$defs/grant": close({

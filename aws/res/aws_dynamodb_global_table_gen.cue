@@ -13,7 +13,7 @@ package res
 		region?: string
 		id?:     string
 		name!:   string
-		replica?: matchN(1, [#replica, [_, ...] & [...#replica]])
+		replica!: matchN(1, [#replica, [_, ...] & [...#replica]])
 		timeouts?: #timeouts
 	})
 

@@ -20,13 +20,13 @@ import "list"
 		description?:               string
 		detect_sentiment?:          bool
 		enable_model_improvements?: bool
-		abort_statement?: matchN(1, [#abort_statement, list.MaxItems(1) & [_, ...] & [...#abort_statement]])
+		abort_statement!: matchN(1, [#abort_statement, list.MaxItems(1) & [_, ...] & [...#abort_statement]])
 		clarification_prompt?: matchN(1, [#clarification_prompt, list.MaxItems(1) & [...#clarification_prompt]])
 		failure_reason?:              string
 		id?:                          string
 		idle_session_ttl_in_seconds?: number
 		last_updated_date?:           string
-		intent?: matchN(1, [#intent, list.MaxItems(250) & [_, ...] & [...#intent]])
+		intent!: matchN(1, [#intent, list.MaxItems(250) & [_, ...] & [...#intent]])
 		locale?:                          string
 		name!:                            string
 		nlu_intent_confidence_threshold?: number
@@ -38,12 +38,12 @@ import "list"
 	})
 
 	#abort_statement: close({
-		message?: matchN(1, [_#defs."/$defs/abort_statement/$defs/message", list.MaxItems(15) & [_, ...] & [..._#defs."/$defs/abort_statement/$defs/message"]])
+		message!: matchN(1, [_#defs."/$defs/abort_statement/$defs/message", list.MaxItems(15) & [_, ...] & [..._#defs."/$defs/abort_statement/$defs/message"]])
 		response_card?: string
 	})
 
 	#clarification_prompt: close({
-		message?: matchN(1, [_#defs."/$defs/clarification_prompt/$defs/message", list.MaxItems(15) & [_, ...] & [..._#defs."/$defs/clarification_prompt/$defs/message"]])
+		message!: matchN(1, [_#defs."/$defs/clarification_prompt/$defs/message", list.MaxItems(15) & [_, ...] & [..._#defs."/$defs/clarification_prompt/$defs/message"]])
 		max_attempts!:  number
 		response_card?: string
 	})

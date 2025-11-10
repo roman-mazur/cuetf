@@ -16,7 +16,7 @@ import "list"
 		region?: string
 		id?:     string
 		name!:   string
-		definition?: matchN(1, [#definition, list.MaxItems(1) & [_, ...] & [...#definition]])
+		definition!: matchN(1, [#definition, list.MaxItems(1) & [_, ...] & [...#definition]])
 		timeouts?: #timeouts
 	})
 

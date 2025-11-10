@@ -21,7 +21,7 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                  string
 		job_run_queuing_enabled?: bool
-		command?: matchN(1, [#command, list.MaxItems(1) & [_, ...] & [...#command]])
+		command!: matchN(1, [#command, list.MaxItems(1) & [_, ...] & [...#command]])
 		maintenance_window?: string
 		execution_property?: matchN(1, [#execution_property, list.MaxItems(1) & [...#execution_property]])
 		notification_property?: matchN(1, [#notification_property, list.MaxItems(1) & [...#notification_property]])

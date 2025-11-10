@@ -17,7 +17,7 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		location?: matchN(1, [#location, list.MaxItems(1) & [_, ...] & [...#location]])
+		location!: matchN(1, [#location, list.MaxItems(1) & [_, ...] & [...#location]])
 		name!:     string
 		timeouts?: #timeouts
 		state?:    string
@@ -26,7 +26,7 @@ import "list"
 	})
 
 	#location: close({
-		s3?: matchN(1, [_#defs."/$defs/location/$defs/s3", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/location/$defs/s3"]])
+		s3!: matchN(1, [_#defs."/$defs/location/$defs/s3", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/location/$defs/s3"]])
 	})
 
 	#timeouts: close({

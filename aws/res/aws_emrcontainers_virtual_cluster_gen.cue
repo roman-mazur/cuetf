@@ -17,12 +17,12 @@ import "list"
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		container_provider?: matchN(1, [#container_provider, list.MaxItems(1) & [_, ...] & [...#container_provider]])
+		container_provider!: matchN(1, [#container_provider, list.MaxItems(1) & [_, ...] & [...#container_provider]])
 		timeouts?: #timeouts
 	})
 
 	#container_provider: close({
-		info?: matchN(1, [_#defs."/$defs/container_provider/$defs/info", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/container_provider/$defs/info"]])
+		info!: matchN(1, [_#defs."/$defs/container_provider/$defs/info", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/container_provider/$defs/info"]])
 		id!:   string
 		type!: string
 	})
@@ -32,7 +32,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/container_provider/$defs/info": close({
-		eks_info?: matchN(1, [_#defs."/$defs/container_provider/$defs/info/$defs/eks_info", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/container_provider/$defs/info/$defs/eks_info"]])
+		eks_info!: matchN(1, [_#defs."/$defs/container_provider/$defs/info/$defs/eks_info", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/container_provider/$defs/info/$defs/eks_info"]])
 	})
 
 	_#defs: "/$defs/container_provider/$defs/info/$defs/eks_info": close({

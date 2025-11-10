@@ -16,7 +16,7 @@ import "list"
 		region?:   string
 		id?:       string
 		proposed?: string
-		details?: matchN(1, [#details, list.MaxItems(1) & [_, ...] & [...#details]])
+		details!: matchN(1, [#details, list.MaxItems(1) & [_, ...] & [...#details]])
 		timeouts?: #timeouts
 	})
 

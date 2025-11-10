@@ -10,7 +10,7 @@ import "list"
 		description?: string
 		flow_status?: string
 		id?:          string
-		destination_flow_config?: matchN(1, [#destination_flow_config, [_, ...] & [...#destination_flow_config]])
+		destination_flow_config!: matchN(1, [#destination_flow_config, [_, ...] & [...#destination_flow_config]])
 		kms_arn?: string
 		name!:    string
 
@@ -22,13 +22,13 @@ import "list"
 		tags?: [string]: string
 		metadata_catalog_config?: matchN(1, [#metadata_catalog_config, list.MaxItems(1) & [...#metadata_catalog_config]])
 		tags_all?: [string]: string
-		source_flow_config?: matchN(1, [#source_flow_config, list.MaxItems(1) & [_, ...] & [...#source_flow_config]])
-		task?: matchN(1, [#task, [_, ...] & [...#task]])
-		trigger_config?: matchN(1, [#trigger_config, list.MaxItems(1) & [_, ...] & [...#trigger_config]])
+		source_flow_config!: matchN(1, [#source_flow_config, list.MaxItems(1) & [_, ...] & [...#source_flow_config]])
+		task!: matchN(1, [#task, [_, ...] & [...#task]])
+		trigger_config!: matchN(1, [#trigger_config, list.MaxItems(1) & [_, ...] & [...#trigger_config]])
 	})
 
 	#destination_flow_config: close({
-		destination_connector_properties?: matchN(1, [_#defs."/$defs/destination_flow_config/$defs/destination_connector_properties", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination_flow_config/$defs/destination_connector_properties"]])
+		destination_connector_properties!: matchN(1, [_#defs."/$defs/destination_flow_config/$defs/destination_connector_properties", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination_flow_config/$defs/destination_connector_properties"]])
 		api_version?:            string
 		connector_profile_name?: string
 		connector_type!:         string
@@ -40,7 +40,7 @@ import "list"
 
 	#source_flow_config: close({
 		incremental_pull_config?: matchN(1, [_#defs."/$defs/source_flow_config/$defs/incremental_pull_config", list.MaxItems(1) & [..._#defs."/$defs/source_flow_config/$defs/incremental_pull_config"]])
-		source_connector_properties?: matchN(1, [_#defs."/$defs/source_flow_config/$defs/source_connector_properties", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/source_flow_config/$defs/source_connector_properties"]])
+		source_connector_properties!: matchN(1, [_#defs."/$defs/source_flow_config/$defs/source_connector_properties", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/source_flow_config/$defs/source_connector_properties"]])
 		api_version?:            string
 		connector_profile_name?: string
 		connector_type!:         string
@@ -213,14 +213,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/destination_flow_config/$defs/destination_connector_properties/$defs/upsolver": close({
-		s3_output_format_config?: matchN(1, [_#defs."/$defs/destination_flow_config/$defs/destination_connector_properties/$defs/upsolver/$defs/s3_output_format_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination_flow_config/$defs/destination_connector_properties/$defs/upsolver/$defs/s3_output_format_config"]])
+		s3_output_format_config!: matchN(1, [_#defs."/$defs/destination_flow_config/$defs/destination_connector_properties/$defs/upsolver/$defs/s3_output_format_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination_flow_config/$defs/destination_connector_properties/$defs/upsolver/$defs/s3_output_format_config"]])
 		bucket_name!:   string
 		bucket_prefix?: string
 	})
 
 	_#defs: "/$defs/destination_flow_config/$defs/destination_connector_properties/$defs/upsolver/$defs/s3_output_format_config": close({
 		aggregation_config?: matchN(1, [_#defs."/$defs/destination_flow_config/$defs/destination_connector_properties/$defs/upsolver/$defs/s3_output_format_config/$defs/aggregation_config", list.MaxItems(1) & [..._#defs."/$defs/destination_flow_config/$defs/destination_connector_properties/$defs/upsolver/$defs/s3_output_format_config/$defs/aggregation_config"]])
-		prefix_config?: matchN(1, [_#defs."/$defs/destination_flow_config/$defs/destination_connector_properties/$defs/upsolver/$defs/s3_output_format_config/$defs/prefix_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination_flow_config/$defs/destination_connector_properties/$defs/upsolver/$defs/s3_output_format_config/$defs/prefix_config"]])
+		prefix_config!: matchN(1, [_#defs."/$defs/destination_flow_config/$defs/destination_connector_properties/$defs/upsolver/$defs/s3_output_format_config/$defs/prefix_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination_flow_config/$defs/destination_connector_properties/$defs/upsolver/$defs/s3_output_format_config/$defs/prefix_config"]])
 		file_type?: string
 	})
 

@@ -19,7 +19,7 @@ import "list"
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		update_time?: string
-		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [_, ...] & [...#configuration]])
+		configuration!: matchN(1, [#configuration, list.MaxItems(1) & [_, ...] & [...#configuration]])
 	})
 
 	#configuration: close({

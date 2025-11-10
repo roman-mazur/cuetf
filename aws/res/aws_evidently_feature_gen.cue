@@ -24,7 +24,7 @@ import "list"
 		evaluation_strategy?: string
 		id?:                  string
 		timeouts?:            #timeouts
-		variations?: matchN(1, [#variations, list.MaxItems(5) & [_, ...] & [...#variations]])
+		variations!: matchN(1, [#variations, list.MaxItems(5) & [_, ...] & [...#variations]])
 		last_updated_time?: string
 		name!:              string
 		project!:           string
@@ -41,7 +41,7 @@ import "list"
 	})
 
 	#variations: close({
-		value?: matchN(1, [_#defs."/$defs/variations/$defs/value", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/variations/$defs/value"]])
+		value!: matchN(1, [_#defs."/$defs/variations/$defs/value", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/variations/$defs/value"]])
 		name!: string
 	})
 

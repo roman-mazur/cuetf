@@ -24,7 +24,7 @@ import "list"
 		status?: string
 		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
 		observability_configuration?: matchN(1, [#observability_configuration, list.MaxItems(1) & [...#observability_configuration]])
-		source_configuration?: matchN(1, [#source_configuration, list.MaxItems(1) & [_, ...] & [...#source_configuration]])
+		source_configuration!: matchN(1, [#source_configuration, list.MaxItems(1) & [_, ...] & [...#source_configuration]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
@@ -82,7 +82,7 @@ import "list"
 
 	_#defs: "/$defs/source_configuration/$defs/code_repository": close({
 		code_configuration?: matchN(1, [_#defs."/$defs/source_configuration/$defs/code_repository/$defs/code_configuration", list.MaxItems(1) & [..._#defs."/$defs/source_configuration/$defs/code_repository/$defs/code_configuration"]])
-		source_code_version?: matchN(1, [_#defs."/$defs/source_configuration/$defs/code_repository/$defs/source_code_version", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/source_configuration/$defs/code_repository/$defs/source_code_version"]])
+		source_code_version!: matchN(1, [_#defs."/$defs/source_configuration/$defs/code_repository/$defs/source_code_version", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/source_configuration/$defs/code_repository/$defs/source_code_version"]])
 		repository_url!:   string
 		source_directory?: string
 	})

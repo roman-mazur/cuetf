@@ -70,7 +70,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/container/$defs/model_data_source": close({
-		s3_data_source?: matchN(1, [_#defs."/$defs/container/$defs/model_data_source/$defs/s3_data_source", [_, ...] & [..._#defs."/$defs/container/$defs/model_data_source/$defs/s3_data_source"]])
+		s3_data_source!: matchN(1, [_#defs."/$defs/container/$defs/model_data_source/$defs/s3_data_source", [_, ...] & [..._#defs."/$defs/container/$defs/model_data_source/$defs/s3_data_source"]])
 	})
 
 	_#defs: "/$defs/container/$defs/model_data_source/$defs/s3_data_source": close({
@@ -98,7 +98,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/primary_container/$defs/model_data_source": close({
-		s3_data_source?: matchN(1, [_#defs."/$defs/primary_container/$defs/model_data_source/$defs/s3_data_source", [_, ...] & [..._#defs."/$defs/primary_container/$defs/model_data_source/$defs/s3_data_source"]])
+		s3_data_source!: matchN(1, [_#defs."/$defs/primary_container/$defs/model_data_source/$defs/s3_data_source", [_, ...] & [..._#defs."/$defs/primary_container/$defs/model_data_source/$defs/s3_data_source"]])
 	})
 
 	_#defs: "/$defs/primary_container/$defs/model_data_source/$defs/s3_data_source": close({

@@ -16,7 +16,7 @@ import "list"
 		endpoint?: string
 		id?:       string
 		timeouts?: #timeouts
-		vpc_options?: matchN(1, [#vpc_options, list.MaxItems(1) & [_, ...] & [...#vpc_options]])
+		vpc_options!: matchN(1, [#vpc_options, list.MaxItems(1) & [_, ...] & [...#vpc_options]])
 	})
 
 	#timeouts: close({

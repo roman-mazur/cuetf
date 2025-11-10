@@ -21,14 +21,13 @@ import "list"
 		id?:                              string
 		in_progress_validation_batches?:  number
 		is_ipv6_enabled?:                 bool
+		last_modified_time?:              string
 		custom_error_response?: matchN(1, [#custom_error_response, [...#custom_error_response]])
-		last_modified_time?: string
-		default_cache_behavior?: matchN(1, [#default_cache_behavior, list.MaxItems(1) & [_, ...] & [...#default_cache_behavior]])
-		price_class?:      string
-		retain_on_delete?: bool
-		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
-		staging?: bool
-		status?:  string
+		logging_v1_enabled?: bool
+		price_class?:        string
+		retain_on_delete?:   bool
+		staging?:            bool
+		status?:             string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		trusted_key_groups?: [...close({
@@ -47,11 +46,13 @@ import "list"
 		})]
 		wait_for_deployment?: bool
 		web_acl_id?:          string
+		default_cache_behavior!: matchN(1, [#default_cache_behavior, list.MaxItems(1) & [_, ...] & [...#default_cache_behavior]])
+		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
 		ordered_cache_behavior?: matchN(1, [#ordered_cache_behavior, [...#ordered_cache_behavior]])
-		origin?: matchN(1, [#origin, [_, ...] & [...#origin]])
+		origin!: matchN(1, [#origin, [_, ...] & [...#origin]])
 		origin_group?: matchN(1, [#origin_group, [...#origin_group]])
-		restrictions?: matchN(1, [#restrictions, list.MaxItems(1) & [_, ...] & [...#restrictions]])
-		viewer_certificate?: matchN(1, [#viewer_certificate, list.MaxItems(1) & [_, ...] & [...#viewer_certificate]])
+		restrictions!: matchN(1, [#restrictions, list.MaxItems(1) & [_, ...] & [...#restrictions]])
+		viewer_certificate!: matchN(1, [#viewer_certificate, list.MaxItems(1) & [_, ...] & [...#viewer_certificate]])
 	})
 
 	#custom_error_response: close({
@@ -85,7 +86,7 @@ import "list"
 	})
 
 	#logging_config: close({
-		bucket!:          string
+		bucket?:          string
 		include_cookies?: bool
 		prefix?:          string
 	})
@@ -130,13 +131,13 @@ import "list"
 	})
 
 	#origin_group: close({
-		failover_criteria?: matchN(1, [_#defs."/$defs/origin_group/$defs/failover_criteria", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/origin_group/$defs/failover_criteria"]])
-		member?: matchN(1, [_#defs."/$defs/origin_group/$defs/member", list.MaxItems(2) & [_, _, ...] & [..._#defs."/$defs/origin_group/$defs/member"]])
+		failover_criteria!: matchN(1, [_#defs."/$defs/origin_group/$defs/failover_criteria", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/origin_group/$defs/failover_criteria"]])
+		member!: matchN(1, [_#defs."/$defs/origin_group/$defs/member", list.MaxItems(2) & [_, _, ...] & [..._#defs."/$defs/origin_group/$defs/member"]])
 		origin_id!: string
 	})
 
 	#restrictions: close({
-		geo_restriction?: matchN(1, [_#defs."/$defs/restrictions/$defs/geo_restriction", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/restrictions/$defs/geo_restriction"]])
+		geo_restriction!: matchN(1, [_#defs."/$defs/restrictions/$defs/geo_restriction", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/restrictions/$defs/geo_restriction"]])
 	})
 
 	#viewer_certificate: close({
@@ -148,7 +149,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/default_cache_behavior/$defs/forwarded_values": close({
-		cookies?: matchN(1, [_#defs."/$defs/default_cache_behavior/$defs/forwarded_values/$defs/cookies", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/default_cache_behavior/$defs/forwarded_values/$defs/cookies"]])
+		cookies!: matchN(1, [_#defs."/$defs/default_cache_behavior/$defs/forwarded_values/$defs/cookies", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/default_cache_behavior/$defs/forwarded_values/$defs/cookies"]])
 		headers?: [...string]
 		query_string!: bool
 		query_string_cache_keys?: [...string]
@@ -175,7 +176,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/ordered_cache_behavior/$defs/forwarded_values": close({
-		cookies?: matchN(1, [_#defs."/$defs/ordered_cache_behavior/$defs/forwarded_values/$defs/cookies", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/ordered_cache_behavior/$defs/forwarded_values/$defs/cookies"]])
+		cookies!: matchN(1, [_#defs."/$defs/ordered_cache_behavior/$defs/forwarded_values/$defs/cookies", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/ordered_cache_behavior/$defs/forwarded_values/$defs/cookies"]])
 		headers?: [...string]
 		query_string!: bool
 		query_string_cache_keys?: [...string]

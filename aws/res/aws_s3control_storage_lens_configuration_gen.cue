@@ -18,11 +18,11 @@ import "list"
 		id?:     string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		storage_lens_configuration?: matchN(1, [#storage_lens_configuration, list.MaxItems(1) & [_, ...] & [...#storage_lens_configuration]])
+		storage_lens_configuration!: matchN(1, [#storage_lens_configuration, list.MaxItems(1) & [_, ...] & [...#storage_lens_configuration]])
 	})
 
 	#storage_lens_configuration: close({
-		account_level?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level"]])
+		account_level!: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level"]])
 		aws_org?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/aws_org", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/aws_org"]])
 		data_export?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/data_export", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/data_export"]])
 		exclude?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/exclude", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/exclude"]])
@@ -34,7 +34,7 @@ import "list"
 		activity_metrics?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/activity_metrics", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/activity_metrics"]])
 		advanced_cost_optimization_metrics?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/advanced_cost_optimization_metrics", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/advanced_cost_optimization_metrics"]])
 		advanced_data_protection_metrics?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/advanced_data_protection_metrics", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/advanced_data_protection_metrics"]])
-		bucket_level?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level"]])
+		bucket_level!: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level"]])
 		detailed_status_code_metrics?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/detailed_status_code_metrics", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/detailed_status_code_metrics"]])
 	})
 
@@ -75,7 +75,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/prefix_level": close({
-		storage_metrics?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/prefix_level/$defs/storage_metrics", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/prefix_level/$defs/storage_metrics"]])
+		storage_metrics!: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/prefix_level/$defs/storage_metrics", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/prefix_level/$defs/storage_metrics"]])
 	})
 
 	_#defs: "/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/prefix_level/$defs/storage_metrics": close({

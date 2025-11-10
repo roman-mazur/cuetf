@@ -16,7 +16,7 @@ import "list"
 	})
 
 	#activated_rule: close({
-		action?: matchN(1, [_#defs."/$defs/activated_rule/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/activated_rule/$defs/action"]])
+		action!: matchN(1, [_#defs."/$defs/activated_rule/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/activated_rule/$defs/action"]])
 		priority!: number
 		rule_id!:  string
 		type?:     string

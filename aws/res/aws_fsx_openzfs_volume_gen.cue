@@ -33,7 +33,7 @@ import "list"
 	})
 
 	#nfs_exports: close({
-		client_configurations?: matchN(1, [_#defs."/$defs/nfs_exports/$defs/client_configurations", list.MaxItems(25) & [_, ...] & [..._#defs."/$defs/nfs_exports/$defs/client_configurations"]])
+		client_configurations!: matchN(1, [_#defs."/$defs/nfs_exports/$defs/client_configurations", list.MaxItems(25) & [_, ...] & [..._#defs."/$defs/nfs_exports/$defs/client_configurations"]])
 	})
 
 	#origin_snapshot: close({

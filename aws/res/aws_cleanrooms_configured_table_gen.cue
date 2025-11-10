@@ -10,7 +10,7 @@ import "list"
 		analysis_method!: string
 		arn?:             string
 		create_time?:     string
-		table_reference?: matchN(1, [#table_reference, list.MaxItems(1) & [_, ...] & [...#table_reference]])
+		table_reference!: matchN(1, [#table_reference, list.MaxItems(1) & [_, ...] & [...#table_reference]])
 		description?: string
 
 		// Region where this resource will be

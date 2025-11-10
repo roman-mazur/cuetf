@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ssmcontacts_plan")
 	close({
-		stage?: matchN(1, [#stage, [_, ...] & [...#stage]])
+		stage!: matchN(1, [#stage, [_, ...] & [...#stage]])
 		contact_id!: string
 		id?:         string
 

@@ -19,8 +19,8 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:      string
 		kms_key_arn?: string
-		flexible_time_window?: matchN(1, [#flexible_time_window, list.MaxItems(1) & [_, ...] & [...#flexible_time_window]])
-		target?: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
+		flexible_time_window!: matchN(1, [#flexible_time_window, list.MaxItems(1) & [_, ...] & [...#flexible_time_window]])
+		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
 		name?:                         string
 		name_prefix?:                  string
 		schedule_expression!:          string

@@ -19,7 +19,7 @@ import "list"
 	})
 
 	#rule: close({
-		repository_filter?: matchN(1, [_#defs."/$defs/rule/$defs/repository_filter", [_, ...] & [..._#defs."/$defs/rule/$defs/repository_filter"]])
+		repository_filter!: matchN(1, [_#defs."/$defs/rule/$defs/repository_filter", [_, ...] & [..._#defs."/$defs/rule/$defs/repository_filter"]])
 		scan_frequency!: string
 	})
 

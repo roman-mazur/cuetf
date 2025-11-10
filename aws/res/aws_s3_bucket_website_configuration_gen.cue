@@ -39,7 +39,7 @@ import "list"
 
 	#routing_rule: close({
 		condition?: matchN(1, [_#defs."/$defs/routing_rule/$defs/condition", list.MaxItems(1) & [..._#defs."/$defs/routing_rule/$defs/condition"]])
-		redirect?: matchN(1, [_#defs."/$defs/routing_rule/$defs/redirect", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/routing_rule/$defs/redirect"]])
+		redirect!: matchN(1, [_#defs."/$defs/routing_rule/$defs/redirect", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/routing_rule/$defs/redirect"]])
 	})
 
 	_#defs: "/$defs/routing_rule/$defs/condition": close({

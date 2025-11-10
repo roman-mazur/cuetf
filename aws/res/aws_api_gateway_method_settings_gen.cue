@@ -16,7 +16,7 @@ import "list"
 		region?:      string
 		rest_api_id!: string
 		stage_name!:  string
-		settings?: matchN(1, [#settings, list.MaxItems(1) & [_, ...] & [...#settings]])
+		settings!: matchN(1, [#settings, list.MaxItems(1) & [_, ...] & [...#settings]])
 	})
 
 	#settings: close({

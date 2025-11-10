@@ -7,7 +7,7 @@ package res
 		id?: string
 		parameter_object?: matchN(1, [#parameter_object, [...#parameter_object]])
 		parameter_value?: matchN(1, [#parameter_value, [...#parameter_value]])
-		pipeline_object?: matchN(1, [#pipeline_object, [_, ...] & [...#pipeline_object]])
+		pipeline_object!: matchN(1, [#pipeline_object, [_, ...] & [...#pipeline_object]])
 		pipeline_id!: string
 
 		// Region where this resource will be

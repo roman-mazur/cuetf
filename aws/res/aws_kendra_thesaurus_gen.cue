@@ -10,7 +10,7 @@ import "list"
 		description?: string
 		id?:          string
 		index_id!:    string
-		source_s3_path?: matchN(1, [#source_s3_path, list.MaxItems(1) & [_, ...] & [...#source_s3_path]])
+		source_s3_path!: matchN(1, [#source_s3_path, list.MaxItems(1) & [_, ...] & [...#source_s3_path]])
 		name!: string
 
 		// Region where this resource will be

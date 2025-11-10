@@ -19,7 +19,7 @@ import "list"
 		package_id?:          string
 		package_name!:        string
 		package_type!:        string
-		package_source?: matchN(1, [#package_source, list.MaxItems(1) & [_, ...] & [...#package_source]])
+		package_source!: matchN(1, [#package_source, list.MaxItems(1) & [_, ...] & [...#package_source]])
 	})
 
 	#package_source: close({

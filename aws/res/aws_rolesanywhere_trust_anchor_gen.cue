@@ -13,7 +13,7 @@ import "list"
 		name!:    string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		source?: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
 	})
 
 	#notification_settings: close({
@@ -25,7 +25,7 @@ import "list"
 	})
 
 	#source: close({
-		source_data?: matchN(1, [_#defs."/$defs/source/$defs/source_data", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/source/$defs/source_data"]])
+		source_data!: matchN(1, [_#defs."/$defs/source/$defs/source_data", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/source/$defs/source_data"]])
 		source_type!: string
 	})
 

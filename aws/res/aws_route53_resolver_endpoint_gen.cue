@@ -10,7 +10,7 @@ import "list"
 		direction!:   string
 		host_vpc_id?: string
 		id?:          string
-		ip_address?: matchN(1, [#ip_address, list.MaxItems(10) & [_, _, ...] & [...#ip_address]])
+		ip_address!: matchN(1, [#ip_address, list.MaxItems(10) & [_, _, ...] & [...#ip_address]])
 		name?: string
 		protocols?: [...string]
 

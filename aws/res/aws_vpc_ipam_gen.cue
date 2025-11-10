@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc_ipam")
 	close({
 		arn?: string
-		operating_regions?: matchN(1, [#operating_regions, [_, ...] & [...#operating_regions]])
+		operating_regions!: matchN(1, [#operating_regions, [_, ...] & [...#operating_regions]])
 		cascade?:                                   bool
 		default_resource_discovery_association_id?: string
 		default_resource_discovery_id?:             string

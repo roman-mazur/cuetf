@@ -21,12 +21,12 @@ import "list"
 		role_arn?:      string
 		start_channel?: bool
 		cdi_input_specification?: matchN(1, [#cdi_input_specification, list.MaxItems(1) & [...#cdi_input_specification]])
-		destinations?: matchN(1, [#destinations, [_, ...] & [...#destinations]])
+		destinations!: matchN(1, [#destinations, [_, ...] & [...#destinations]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		encoder_settings?: matchN(1, [#encoder_settings, list.MaxItems(1) & [_, ...] & [...#encoder_settings]])
-		input_attachments?: matchN(1, [#input_attachments, [_, ...] & [...#input_attachments]])
-		input_specification?: matchN(1, [#input_specification, list.MaxItems(1) & [_, ...] & [...#input_specification]])
+		encoder_settings!: matchN(1, [#encoder_settings, list.MaxItems(1) & [_, ...] & [...#encoder_settings]])
+		input_attachments!: matchN(1, [#input_attachments, [_, ...] & [...#input_attachments]])
+		input_specification!: matchN(1, [#input_specification, list.MaxItems(1) & [_, ...] & [...#input_specification]])
 		maintenance?: matchN(1, [#maintenance, list.MaxItems(1) & [...#maintenance]])
 		timeouts?: #timeouts
 		vpc?: matchN(1, [#vpc, list.MaxItems(1) & [...#vpc]])
@@ -50,8 +50,8 @@ import "list"
 		global_configuration?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/global_configuration", list.MaxItems(1) & [..._#defs."/$defs/encoder_settings/$defs/global_configuration"]])
 		motion_graphics_configuration?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/motion_graphics_configuration", list.MaxItems(1) & [..._#defs."/$defs/encoder_settings/$defs/motion_graphics_configuration"]])
 		nielsen_configuration?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/nielsen_configuration", list.MaxItems(1) & [..._#defs."/$defs/encoder_settings/$defs/nielsen_configuration"]])
-		output_groups?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups", [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups"]])
-		timecode_config?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/timecode_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/timecode_config"]])
+		output_groups!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups", [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups"]])
+		timecode_config!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/timecode_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/timecode_config"]])
 		video_descriptions?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/video_descriptions", [..._#defs."/$defs/encoder_settings/$defs/video_descriptions"]])
 	})
 
@@ -224,13 +224,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/encoder_settings/$defs/audio_descriptions/$defs/remix_settings": close({
-		channel_mappings?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/audio_descriptions/$defs/remix_settings/$defs/channel_mappings", [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/audio_descriptions/$defs/remix_settings/$defs/channel_mappings"]])
+		channel_mappings!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/audio_descriptions/$defs/remix_settings/$defs/channel_mappings", [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/audio_descriptions/$defs/remix_settings/$defs/channel_mappings"]])
 		channels_in?:  number
 		channels_out?: number
 	})
 
 	_#defs: "/$defs/encoder_settings/$defs/audio_descriptions/$defs/remix_settings/$defs/channel_mappings": close({
-		input_channel_levels?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/audio_descriptions/$defs/remix_settings/$defs/channel_mappings/$defs/input_channel_levels", [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/audio_descriptions/$defs/remix_settings/$defs/channel_mappings/$defs/input_channel_levels"]])
+		input_channel_levels!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/audio_descriptions/$defs/remix_settings/$defs/channel_mappings/$defs/input_channel_levels", [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/audio_descriptions/$defs/remix_settings/$defs/channel_mappings/$defs/input_channel_levels"]])
 		output_channel!: number
 	})
 
@@ -382,7 +382,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/encoder_settings/$defs/motion_graphics_configuration": close({
-		motion_graphics_settings?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/motion_graphics_configuration/$defs/motion_graphics_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/motion_graphics_configuration/$defs/motion_graphics_settings"]])
+		motion_graphics_settings!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/motion_graphics_configuration/$defs/motion_graphics_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/motion_graphics_configuration/$defs/motion_graphics_settings"]])
 		motion_graphics_insertion?: string
 	})
 
@@ -398,8 +398,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/encoder_settings/$defs/output_groups": close({
-		output_group_settings?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings"]])
-		outputs?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs", [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs"]])
+		output_group_settings!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings"]])
+		outputs!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs", [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs"]])
 		name?: string
 	})
 
@@ -416,7 +416,7 @@ import "list"
 
 	_#defs: "/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/archive_group_settings": close({
 		archive_cdn_settings?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/archive_group_settings/$defs/archive_cdn_settings", list.MaxItems(1) & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/archive_group_settings/$defs/archive_cdn_settings"]])
-		destination?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/archive_group_settings/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/archive_group_settings/$defs/destination"]])
+		destination!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/archive_group_settings/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/archive_group_settings/$defs/destination"]])
 		rollover_interval?: number
 	})
 
@@ -433,7 +433,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/frame_capture_group_settings": close({
-		destination?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/frame_capture_group_settings/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/frame_capture_group_settings/$defs/destination"]])
+		destination!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/frame_capture_group_settings/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/frame_capture_group_settings/$defs/destination"]])
 		frame_capture_cdn_settings?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/frame_capture_group_settings/$defs/frame_capture_cdn_settings", list.MaxItems(1) & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/frame_capture_group_settings/$defs/frame_capture_cdn_settings"]])
 	})
 
@@ -471,7 +471,7 @@ import "list"
 		iv_source?:                   string
 		keep_segments?:               number
 		caption_language_mappings?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/hls_group_settings/$defs/caption_language_mappings", list.MaxItems(4) & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/hls_group_settings/$defs/caption_language_mappings"]])
-		destination?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/hls_group_settings/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/hls_group_settings/$defs/destination"]])
+		destination!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/hls_group_settings/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/hls_group_settings/$defs/destination"]])
 		key_format?:               string
 		key_format_versions?:      string
 		manifest_compression?:     string
@@ -565,7 +565,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/media_package_group_settings": close({
-		destination?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/media_package_group_settings/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/media_package_group_settings/$defs/destination"]])
+		destination!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/media_package_group_settings/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/media_package_group_settings/$defs/destination"]])
 	})
 
 	_#defs: "/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/media_package_group_settings/$defs/destination": close({
@@ -588,7 +588,7 @@ import "list"
 		segmentation_mode?:           string
 		send_delay_ms?:               number
 		sparse_track_type?:           string
-		destination?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/ms_smooth_group_settings/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/ms_smooth_group_settings/$defs/destination"]])
+		destination!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/ms_smooth_group_settings/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/output_group_settings/$defs/ms_smooth_group_settings/$defs/destination"]])
 		stream_manifest_behavior?: string
 		timestamp_offset?:         string
 		timestamp_offset_mode?:    string
@@ -617,7 +617,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/encoder_settings/$defs/output_groups/$defs/outputs": close({
-		output_settings?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings"]])
+		output_settings!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings"]])
 		audio_description_names?: [...string]
 		caption_description_names?: [...string]
 		output_name?:            string
@@ -720,7 +720,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/hls_output_settings": close({
-		hls_settings?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/hls_output_settings/$defs/hls_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/hls_output_settings/$defs/hls_settings"]])
+		hls_settings!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/hls_output_settings/$defs/hls_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/hls_output_settings/$defs/hls_settings"]])
 		h265_packaging_type?: string
 		name_modifier?:       string
 		segment_modifier?:    string
@@ -755,7 +755,7 @@ import "list"
 	_#defs: "/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/hls_output_settings/$defs/hls_settings/$defs/frame_capture_hls_settings": close({})
 
 	_#defs: "/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/hls_output_settings/$defs/hls_settings/$defs/standard_hls_settings": close({
-		m3u8_settings?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/hls_output_settings/$defs/hls_settings/$defs/standard_hls_settings/$defs/m3u8_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/hls_output_settings/$defs/hls_settings/$defs/standard_hls_settings/$defs/m3u8_settings"]])
+		m3u8_settings!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/hls_output_settings/$defs/hls_settings/$defs/standard_hls_settings/$defs/m3u8_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/hls_output_settings/$defs/hls_settings/$defs/standard_hls_settings/$defs/m3u8_settings"]])
 		audio_rendition_sets?: string
 	})
 
@@ -787,7 +787,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/multiplex_output_settings": close({
-		destination?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/multiplex_output_settings/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/multiplex_output_settings/$defs/destination"]])
+		destination!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/multiplex_output_settings/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/multiplex_output_settings/$defs/destination"]])
 	})
 
 	_#defs: "/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/multiplex_output_settings/$defs/destination": close({
@@ -795,7 +795,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/rtmp_output_settings": close({
-		destination?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/rtmp_output_settings/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/rtmp_output_settings/$defs/destination"]])
+		destination!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/rtmp_output_settings/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/rtmp_output_settings/$defs/destination"]])
 		certificate_mode?:          string
 		connection_retry_interval?: number
 		num_retries?:               number
@@ -806,8 +806,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/udp_output_settings": close({
-		container_settings?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/udp_output_settings/$defs/container_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/udp_output_settings/$defs/container_settings"]])
-		destination?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/udp_output_settings/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/udp_output_settings/$defs/destination"]])
+		container_settings!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/udp_output_settings/$defs/container_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/udp_output_settings/$defs/container_settings"]])
+		destination!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/udp_output_settings/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/udp_output_settings/$defs/destination"]])
 		fec_output_settings?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/udp_output_settings/$defs/fec_output_settings", list.MaxItems(1) & [..._#defs."/$defs/encoder_settings/$defs/output_groups/$defs/outputs/$defs/output_settings/$defs/udp_output_settings/$defs/fec_output_settings"]])
 		buffer_msec?: number
 	})
@@ -1120,7 +1120,7 @@ import "list"
 
 	_#defs: "/$defs/input_attachments/$defs/input_settings/$defs/audio_selector/$defs/selector_settings/$defs/audio_track_selection": close({
 		dolby_e_decode?: matchN(1, [_#defs."/$defs/input_attachments/$defs/input_settings/$defs/audio_selector/$defs/selector_settings/$defs/audio_track_selection/$defs/dolby_e_decode", list.MaxItems(1) & [..._#defs."/$defs/input_attachments/$defs/input_settings/$defs/audio_selector/$defs/selector_settings/$defs/audio_track_selection/$defs/dolby_e_decode"]])
-		tracks?: matchN(1, [_#defs."/$defs/input_attachments/$defs/input_settings/$defs/audio_selector/$defs/selector_settings/$defs/audio_track_selection/$defs/tracks", [_, ...] & [..._#defs."/$defs/input_attachments/$defs/input_settings/$defs/audio_selector/$defs/selector_settings/$defs/audio_track_selection/$defs/tracks"]])
+		tracks!: matchN(1, [_#defs."/$defs/input_attachments/$defs/input_settings/$defs/audio_selector/$defs/selector_settings/$defs/audio_track_selection/$defs/tracks", [_, ...] & [..._#defs."/$defs/input_attachments/$defs/input_settings/$defs/audio_selector/$defs/selector_settings/$defs/audio_track_selection/$defs/tracks"]])
 	})
 
 	_#defs: "/$defs/input_attachments/$defs/input_settings/$defs/audio_selector/$defs/selector_settings/$defs/audio_track_selection/$defs/dolby_e_decode": close({

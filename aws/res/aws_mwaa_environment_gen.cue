@@ -51,7 +51,7 @@ import "list"
 		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [...#logging_configuration]])
 		webserver_access_mode?: string
 		webserver_url?:         string
-		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [_, ...] & [...#network_configuration]])
+		network_configuration!: matchN(1, [#network_configuration, list.MaxItems(1) & [_, ...] & [...#network_configuration]])
 		webserver_vpc_endpoint_service?:  string
 		weekly_maintenance_window_start?: string
 		worker_replacement_strategy?:     string

@@ -31,7 +31,7 @@ import "list"
 		state_reason?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		repository?: matchN(1, [#repository, list.MaxItems(1) & [_, ...] & [...#repository]])
+		repository!: matchN(1, [#repository, list.MaxItems(1) & [_, ...] & [...#repository]])
 		timeouts?: #timeouts
 	})
 

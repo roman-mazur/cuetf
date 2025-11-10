@@ -17,7 +17,7 @@ package res
 		is_default?: bool
 		owner_id?:   string
 		tags?: [string]: string
-		operating_regions?: matchN(1, [#operating_regions, [_, ...] & [...#operating_regions]])
+		operating_regions!: matchN(1, [#operating_regions, [_, ...] & [...#operating_regions]])
 		timeouts?: #timeouts
 		tags_all?: [string]: string
 	})

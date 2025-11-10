@@ -37,7 +37,7 @@ import "list"
 		status?: string
 		subnet_ids!: [...string]
 		tags?: [string]: string
-		scaling_config?: matchN(1, [#scaling_config, list.MaxItems(1) & [_, ...] & [...#scaling_config]])
+		scaling_config!: matchN(1, [#scaling_config, list.MaxItems(1) & [_, ...] & [...#scaling_config]])
 		taint?: matchN(1, [#taint, list.MaxItems(50) & [...#taint]])
 		timeouts?: #timeouts
 		tags_all?: [string]: string
@@ -52,7 +52,12 @@ import "list"
 	})
 
 	#node_repair_config: close({
-		enabled?: bool
+		node_repair_config_overrides?: matchN(1, [_#defs."/$defs/node_repair_config/$defs/node_repair_config_overrides", [..._#defs."/$defs/node_repair_config/$defs/node_repair_config_overrides"]])
+		enabled?:                                 bool
+		max_parallel_nodes_repaired_count?:       number
+		max_parallel_nodes_repaired_percentage?:  number
+		max_unhealthy_node_threshold_count?:      number
+		max_unhealthy_node_threshold_percentage?: number
 	})
 
 	#remote_access: close({
@@ -81,5 +86,12 @@ import "list"
 	#update_config: close({
 		max_unavailable?:            number
 		max_unavailable_percentage?: number
+	})
+
+	_#defs: "/$defs/node_repair_config/$defs/node_repair_config_overrides": close({
+		min_repair_wait_time_mins!: number
+		node_monitoring_condition!: string
+		node_unhealthy_reason!:     string
+		repair_action!:             string
 	})
 }

@@ -22,7 +22,7 @@ import "list"
 		name!:                     string
 		artifact_config?: matchN(1, [#artifact_config, list.MaxItems(1) & [...#artifact_config]])
 		run_config?: matchN(1, [#run_config, list.MaxItems(1) & [...#run_config]])
-		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [_, ...] & [...#schedule]])
+		schedule!: matchN(1, [#schedule, list.MaxItems(1) & [_, ...] & [...#schedule]])
 		runtime_version!: string
 		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
 		s3_bucket?:                string

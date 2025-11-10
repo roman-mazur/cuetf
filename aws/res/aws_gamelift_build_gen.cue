@@ -19,7 +19,7 @@ import "list"
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		version?: string
-		storage_location?: matchN(1, [#storage_location, list.MaxItems(1) & [_, ...] & [...#storage_location]])
+		storage_location!: matchN(1, [#storage_location, list.MaxItems(1) & [_, ...] & [...#storage_location]])
 	})
 
 	#storage_location: close({

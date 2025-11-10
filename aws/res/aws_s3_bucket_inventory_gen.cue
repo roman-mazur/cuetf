@@ -17,14 +17,14 @@ import "list"
 		id?:                       string
 		included_object_versions!: string
 		name!:                     string
-		destination?: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
+		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
 		optional_fields?: [...string]
 		filter?: matchN(1, [#filter, list.MaxItems(1) & [...#filter]])
-		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [_, ...] & [...#schedule]])
+		schedule!: matchN(1, [#schedule, list.MaxItems(1) & [_, ...] & [...#schedule]])
 	})
 
 	#destination: close({
-		bucket?: matchN(1, [_#defs."/$defs/destination/$defs/bucket", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination/$defs/bucket"]])
+		bucket!: matchN(1, [_#defs."/$defs/destination/$defs/bucket", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination/$defs/bucket"]])
 	})
 
 	#filter: close({

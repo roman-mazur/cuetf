@@ -9,8 +9,8 @@ package res
 		dns_name?:          string
 		fips_dns_name?:     string
 		id?:                string
+		ip_address_type?:   string
 		network_interface_ids?: [...string]
-		owner_id?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -18,6 +18,7 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:             string
 		timeouts?:           #timeouts
+		owner_id?:           string
 		preserve_client_ip?: bool
 		security_group_ids?: [...string]
 		subnet_id!: string

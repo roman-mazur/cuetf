@@ -17,7 +17,7 @@ import "list"
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		git_config?: matchN(1, [#git_config, list.MaxItems(1) & [_, ...] & [...#git_config]])
+		git_config!: matchN(1, [#git_config, list.MaxItems(1) & [_, ...] & [...#git_config]])
 	})
 
 	#git_config: close({

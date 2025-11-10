@@ -20,7 +20,7 @@ import "list"
 		tags_all?: [string]: string
 		uri?: string
 		mount_options?: matchN(1, [#mount_options, list.MaxItems(1) & [...#mount_options]])
-		on_prem_config?: matchN(1, [#on_prem_config, list.MaxItems(1) & [_, ...] & [...#on_prem_config]])
+		on_prem_config!: matchN(1, [#on_prem_config, list.MaxItems(1) & [_, ...] & [...#on_prem_config]])
 	})
 
 	#mount_options: close({

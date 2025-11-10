@@ -17,7 +17,7 @@ import "list"
 		method?:              string
 		notes?:               string
 		shared_directory_id?: string
-		target?: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
+		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
 		timeouts?: #timeouts
 	})
 

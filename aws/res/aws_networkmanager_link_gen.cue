@@ -10,7 +10,7 @@ import "list"
 		description?:       string
 		global_network_id!: string
 		id?:                string
-		bandwidth?: matchN(1, [#bandwidth, list.MaxItems(1) & [_, ...] & [...#bandwidth]])
+		bandwidth!: matchN(1, [#bandwidth, list.MaxItems(1) & [_, ...] & [...#bandwidth]])
 		provider_name?: string
 		site_id!:       string
 		tags?: [string]:     string

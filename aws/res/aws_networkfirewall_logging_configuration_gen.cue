@@ -15,11 +15,11 @@ import "list"
 		region?:       string
 		firewall_arn!: string
 		id?:           string
-		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [_, ...] & [...#logging_configuration]])
+		logging_configuration!: matchN(1, [#logging_configuration, list.MaxItems(1) & [_, ...] & [...#logging_configuration]])
 	})
 
 	#logging_configuration: close({
-		log_destination_config?: matchN(1, [_#defs."/$defs/logging_configuration/$defs/log_destination_config", list.MaxItems(3) & [_, ...] & [..._#defs."/$defs/logging_configuration/$defs/log_destination_config"]])
+		log_destination_config!: matchN(1, [_#defs."/$defs/logging_configuration/$defs/log_destination_config", list.MaxItems(3) & [_, ...] & [..._#defs."/$defs/logging_configuration/$defs/log_destination_config"]])
 	})
 
 	_#defs: "/$defs/logging_configuration/$defs/log_destination_config": close({

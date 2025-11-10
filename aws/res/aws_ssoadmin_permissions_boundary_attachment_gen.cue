@@ -15,7 +15,7 @@ import "list"
 		region?:             string
 		instance_arn!:       string
 		permission_set_arn!: string
-		permissions_boundary?: matchN(1, [#permissions_boundary, list.MaxItems(1) & [_, ...] & [...#permissions_boundary]])
+		permissions_boundary!: matchN(1, [#permissions_boundary, list.MaxItems(1) & [_, ...] & [...#permissions_boundary]])
 		timeouts?: #timeouts
 	})
 

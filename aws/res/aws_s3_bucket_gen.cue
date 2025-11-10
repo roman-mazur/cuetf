@@ -73,12 +73,12 @@ import "list"
 	})
 
 	#replication_configuration: close({
-		rules?: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rules", [_, ...] & [..._#defs."/$defs/replication_configuration/$defs/rules"]])
+		rules!: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rules", [_, ...] & [..._#defs."/$defs/replication_configuration/$defs/rules"]])
 		role!: string
 	})
 
 	#server_side_encryption_configuration: close({
-		rule?: matchN(1, [_#defs."/$defs/server_side_encryption_configuration/$defs/rule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/server_side_encryption_configuration/$defs/rule"]])
+		rule!: matchN(1, [_#defs."/$defs/server_side_encryption_configuration/$defs/rule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/server_side_encryption_configuration/$defs/rule"]])
 	})
 
 	#timeouts: close({
@@ -122,7 +122,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/object_lock_configuration/$defs/rule": close({
-		default_retention?: matchN(1, [_#defs."/$defs/object_lock_configuration/$defs/rule/$defs/default_retention", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/object_lock_configuration/$defs/rule/$defs/default_retention"]])
+		default_retention!: matchN(1, [_#defs."/$defs/object_lock_configuration/$defs/rule/$defs/default_retention", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/object_lock_configuration/$defs/rule/$defs/default_retention"]])
 	})
 
 	_#defs: "/$defs/object_lock_configuration/$defs/rule/$defs/default_retention": close({
@@ -133,7 +133,7 @@ import "list"
 
 	_#defs: "/$defs/replication_configuration/$defs/rules": close({
 		delete_marker_replication_status?: string
-		destination?: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rules/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/replication_configuration/$defs/rules/$defs/destination"]])
+		destination!: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rules/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/replication_configuration/$defs/rules/$defs/destination"]])
 		id?:       string
 		prefix?:   string
 		priority?: number
@@ -180,7 +180,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/server_side_encryption_configuration/$defs/rule": close({
-		apply_server_side_encryption_by_default?: matchN(1, [_#defs."/$defs/server_side_encryption_configuration/$defs/rule/$defs/apply_server_side_encryption_by_default", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/server_side_encryption_configuration/$defs/rule/$defs/apply_server_side_encryption_by_default"]])
+		apply_server_side_encryption_by_default!: matchN(1, [_#defs."/$defs/server_side_encryption_configuration/$defs/rule/$defs/apply_server_side_encryption_by_default", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/server_side_encryption_configuration/$defs/rule/$defs/apply_server_side_encryption_by_default"]])
 		bucket_key_enabled?: bool
 	})
 

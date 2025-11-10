@@ -18,7 +18,7 @@ import "list"
 		owner_information?: string
 		resource_type!:     string
 		window_id!:         string
-		targets?: matchN(1, [#targets, list.MaxItems(5) & [_, ...] & [...#targets]])
+		targets!: matchN(1, [#targets, list.MaxItems(5) & [_, ...] & [...#targets]])
 	})
 
 	#targets: close({

@@ -20,12 +20,12 @@ import "list"
 		id?:              string
 		kms_arn?:         string
 		name!:            string
-		connector_profile_config?: matchN(1, [#connector_profile_config, list.MaxItems(1) & [_, ...] & [...#connector_profile_config]])
+		connector_profile_config!: matchN(1, [#connector_profile_config, list.MaxItems(1) & [_, ...] & [...#connector_profile_config]])
 	})
 
 	#connector_profile_config: close({
-		connector_profile_credentials?: matchN(1, [_#defs."/$defs/connector_profile_config/$defs/connector_profile_credentials", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/connector_profile_config/$defs/connector_profile_credentials"]])
-		connector_profile_properties?: matchN(1, [_#defs."/$defs/connector_profile_config/$defs/connector_profile_properties", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/connector_profile_config/$defs/connector_profile_properties"]])
+		connector_profile_credentials!: matchN(1, [_#defs."/$defs/connector_profile_config/$defs/connector_profile_credentials", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/connector_profile_config/$defs/connector_profile_credentials"]])
+		connector_profile_properties!: matchN(1, [_#defs."/$defs/connector_profile_config/$defs/connector_profile_properties", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/connector_profile_config/$defs/connector_profile_properties"]])
 	})
 
 	_#defs: "/$defs/connector_profile_config/$defs/connector_profile_credentials": close({

@@ -38,7 +38,7 @@ import "list"
 	})
 
 	#public_domain_names: close({
-		certificate?: matchN(1, [_#defs."/$defs/public_domain_names/$defs/certificate", [_, ...] & [..._#defs."/$defs/public_domain_names/$defs/certificate"]])
+		certificate!: matchN(1, [_#defs."/$defs/public_domain_names/$defs/certificate", [_, ...] & [..._#defs."/$defs/public_domain_names/$defs/certificate"]])
 	})
 
 	#timeouts: close({

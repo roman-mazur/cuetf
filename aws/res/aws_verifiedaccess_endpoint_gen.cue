@@ -36,7 +36,7 @@ import "list"
 	})
 
 	#cidr_options: close({
-		port_range?: matchN(1, [_#defs."/$defs/cidr_options/$defs/port_range", [_, ...] & [..._#defs."/$defs/cidr_options/$defs/port_range"]])
+		port_range!: matchN(1, [_#defs."/$defs/cidr_options/$defs/port_range", [_, ...] & [..._#defs."/$defs/cidr_options/$defs/port_range"]])
 		cidr!:     string
 		protocol?: string
 		subnet_ids?: [...string]

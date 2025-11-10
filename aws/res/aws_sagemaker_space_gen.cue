@@ -45,7 +45,7 @@ import "list"
 
 	_#defs: "/$defs/space_settings/$defs/code_editor_app_settings": close({
 		app_lifecycle_management?: matchN(1, [_#defs."/$defs/space_settings/$defs/code_editor_app_settings/$defs/app_lifecycle_management", list.MaxItems(1) & [..._#defs."/$defs/space_settings/$defs/code_editor_app_settings/$defs/app_lifecycle_management"]])
-		default_resource_spec?: matchN(1, [_#defs."/$defs/space_settings/$defs/code_editor_app_settings/$defs/default_resource_spec", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/space_settings/$defs/code_editor_app_settings/$defs/default_resource_spec"]])
+		default_resource_spec!: matchN(1, [_#defs."/$defs/space_settings/$defs/code_editor_app_settings/$defs/default_resource_spec", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/space_settings/$defs/code_editor_app_settings/$defs/default_resource_spec"]])
 	})
 
 	_#defs: "/$defs/space_settings/$defs/code_editor_app_settings/$defs/app_lifecycle_management": close({
@@ -65,7 +65,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/space_settings/$defs/custom_file_system": close({
-		efs_file_system?: matchN(1, [_#defs."/$defs/space_settings/$defs/custom_file_system/$defs/efs_file_system", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/space_settings/$defs/custom_file_system/$defs/efs_file_system"]])
+		efs_file_system!: matchN(1, [_#defs."/$defs/space_settings/$defs/custom_file_system/$defs/efs_file_system", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/space_settings/$defs/custom_file_system/$defs/efs_file_system"]])
 	})
 
 	_#defs: "/$defs/space_settings/$defs/custom_file_system/$defs/efs_file_system": close({
@@ -75,7 +75,7 @@ import "list"
 	_#defs: "/$defs/space_settings/$defs/jupyter_lab_app_settings": close({
 		app_lifecycle_management?: matchN(1, [_#defs."/$defs/space_settings/$defs/jupyter_lab_app_settings/$defs/app_lifecycle_management", list.MaxItems(1) & [..._#defs."/$defs/space_settings/$defs/jupyter_lab_app_settings/$defs/app_lifecycle_management"]])
 		code_repository?: matchN(1, [_#defs."/$defs/space_settings/$defs/jupyter_lab_app_settings/$defs/code_repository", list.MaxItems(10) & [..._#defs."/$defs/space_settings/$defs/jupyter_lab_app_settings/$defs/code_repository"]])
-		default_resource_spec?: matchN(1, [_#defs."/$defs/space_settings/$defs/jupyter_lab_app_settings/$defs/default_resource_spec", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/space_settings/$defs/jupyter_lab_app_settings/$defs/default_resource_spec"]])
+		default_resource_spec!: matchN(1, [_#defs."/$defs/space_settings/$defs/jupyter_lab_app_settings/$defs/default_resource_spec", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/space_settings/$defs/jupyter_lab_app_settings/$defs/default_resource_spec"]])
 	})
 
 	_#defs: "/$defs/space_settings/$defs/jupyter_lab_app_settings/$defs/app_lifecycle_management": close({
@@ -100,7 +100,7 @@ import "list"
 
 	_#defs: "/$defs/space_settings/$defs/jupyter_server_app_settings": close({
 		code_repository?: matchN(1, [_#defs."/$defs/space_settings/$defs/jupyter_server_app_settings/$defs/code_repository", list.MaxItems(10) & [..._#defs."/$defs/space_settings/$defs/jupyter_server_app_settings/$defs/code_repository"]])
-		default_resource_spec?: matchN(1, [_#defs."/$defs/space_settings/$defs/jupyter_server_app_settings/$defs/default_resource_spec", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/space_settings/$defs/jupyter_server_app_settings/$defs/default_resource_spec"]])
+		default_resource_spec!: matchN(1, [_#defs."/$defs/space_settings/$defs/jupyter_server_app_settings/$defs/default_resource_spec", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/space_settings/$defs/jupyter_server_app_settings/$defs/default_resource_spec"]])
 		lifecycle_config_arns?: [...string]
 	})
 
@@ -118,7 +118,7 @@ import "list"
 
 	_#defs: "/$defs/space_settings/$defs/kernel_gateway_app_settings": close({
 		custom_image?: matchN(1, [_#defs."/$defs/space_settings/$defs/kernel_gateway_app_settings/$defs/custom_image", list.MaxItems(200) & [..._#defs."/$defs/space_settings/$defs/kernel_gateway_app_settings/$defs/custom_image"]])
-		default_resource_spec?: matchN(1, [_#defs."/$defs/space_settings/$defs/kernel_gateway_app_settings/$defs/default_resource_spec", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/space_settings/$defs/kernel_gateway_app_settings/$defs/default_resource_spec"]])
+		default_resource_spec!: matchN(1, [_#defs."/$defs/space_settings/$defs/kernel_gateway_app_settings/$defs/default_resource_spec", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/space_settings/$defs/kernel_gateway_app_settings/$defs/default_resource_spec"]])
 		lifecycle_config_arns?: [...string]
 	})
 
@@ -137,7 +137,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/space_settings/$defs/space_storage_settings": close({
-		ebs_storage_settings?: matchN(1, [_#defs."/$defs/space_settings/$defs/space_storage_settings/$defs/ebs_storage_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/space_settings/$defs/space_storage_settings/$defs/ebs_storage_settings"]])
+		ebs_storage_settings!: matchN(1, [_#defs."/$defs/space_settings/$defs/space_storage_settings/$defs/ebs_storage_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/space_settings/$defs/space_storage_settings/$defs/ebs_storage_settings"]])
 	})
 
 	_#defs: "/$defs/space_settings/$defs/space_storage_settings/$defs/ebs_storage_settings": close({

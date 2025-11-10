@@ -18,7 +18,7 @@ import "list"
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		rule?: matchN(1, [#rule, [_, ...] & [...#rule]])
+		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
 		version?: string
 	})
 

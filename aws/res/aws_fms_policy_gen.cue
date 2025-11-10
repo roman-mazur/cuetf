@@ -30,7 +30,7 @@ import "list"
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		include_map?: matchN(1, [#include_map, list.MaxItems(1) & [...#include_map]])
-		security_service_policy_data?: matchN(1, [#security_service_policy_data, list.MaxItems(1) & [_, ...] & [...#security_service_policy_data]])
+		security_service_policy_data!: matchN(1, [#security_service_policy_data, list.MaxItems(1) & [_, ...] & [...#security_service_policy_data]])
 	})
 
 	#exclude_map: close({

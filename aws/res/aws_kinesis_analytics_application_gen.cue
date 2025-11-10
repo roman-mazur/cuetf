@@ -44,7 +44,7 @@ import "list"
 		stream_names?: [...string]
 		parallelism?: matchN(1, [_#defs."/$defs/inputs/$defs/parallelism", list.MaxItems(1) & [..._#defs."/$defs/inputs/$defs/parallelism"]])
 		processing_configuration?: matchN(1, [_#defs."/$defs/inputs/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/inputs/$defs/processing_configuration"]])
-		schema?: matchN(1, [_#defs."/$defs/inputs/$defs/schema", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inputs/$defs/schema"]])
+		schema!: matchN(1, [_#defs."/$defs/inputs/$defs/schema", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inputs/$defs/schema"]])
 		starting_position_configuration?: matchN(1, [_#defs."/$defs/inputs/$defs/starting_position_configuration", [..._#defs."/$defs/inputs/$defs/starting_position_configuration"]])
 	})
 
@@ -52,14 +52,14 @@ import "list"
 		kinesis_firehose?: matchN(1, [_#defs."/$defs/outputs/$defs/kinesis_firehose", list.MaxItems(1) & [..._#defs."/$defs/outputs/$defs/kinesis_firehose"]])
 		kinesis_stream?: matchN(1, [_#defs."/$defs/outputs/$defs/kinesis_stream", list.MaxItems(1) & [..._#defs."/$defs/outputs/$defs/kinesis_stream"]])
 		lambda?: matchN(1, [_#defs."/$defs/outputs/$defs/lambda", list.MaxItems(1) & [..._#defs."/$defs/outputs/$defs/lambda"]])
-		schema?: matchN(1, [_#defs."/$defs/outputs/$defs/schema", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/outputs/$defs/schema"]])
+		schema!: matchN(1, [_#defs."/$defs/outputs/$defs/schema", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/outputs/$defs/schema"]])
 		id?:   string
 		name!: string
 	})
 
 	#reference_data_sources: close({
-		s3?: matchN(1, [_#defs."/$defs/reference_data_sources/$defs/s3", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/reference_data_sources/$defs/s3"]])
-		schema?: matchN(1, [_#defs."/$defs/reference_data_sources/$defs/schema", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/reference_data_sources/$defs/schema"]])
+		s3!: matchN(1, [_#defs."/$defs/reference_data_sources/$defs/s3", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/reference_data_sources/$defs/s3"]])
+		schema!: matchN(1, [_#defs."/$defs/reference_data_sources/$defs/schema", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/reference_data_sources/$defs/schema"]])
 		id?:         string
 		table_name!: string
 	})
@@ -79,7 +79,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/inputs/$defs/processing_configuration": close({
-		lambda?: matchN(1, [_#defs."/$defs/inputs/$defs/processing_configuration/$defs/lambda", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inputs/$defs/processing_configuration/$defs/lambda"]])
+		lambda!: matchN(1, [_#defs."/$defs/inputs/$defs/processing_configuration/$defs/lambda", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inputs/$defs/processing_configuration/$defs/lambda"]])
 	})
 
 	_#defs: "/$defs/inputs/$defs/processing_configuration/$defs/lambda": close({
@@ -88,8 +88,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/inputs/$defs/schema": close({
-		record_columns?: matchN(1, [_#defs."/$defs/inputs/$defs/schema/$defs/record_columns", list.MaxItems(1000) & [_, ...] & [..._#defs."/$defs/inputs/$defs/schema/$defs/record_columns"]])
-		record_format?: matchN(1, [_#defs."/$defs/inputs/$defs/schema/$defs/record_format", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inputs/$defs/schema/$defs/record_format"]])
+		record_columns!: matchN(1, [_#defs."/$defs/inputs/$defs/schema/$defs/record_columns", list.MaxItems(1000) & [_, ...] & [..._#defs."/$defs/inputs/$defs/schema/$defs/record_columns"]])
+		record_format!: matchN(1, [_#defs."/$defs/inputs/$defs/schema/$defs/record_format", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inputs/$defs/schema/$defs/record_format"]])
 		record_encoding?: string
 	})
 
@@ -148,8 +148,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/reference_data_sources/$defs/schema": close({
-		record_columns?: matchN(1, [_#defs."/$defs/reference_data_sources/$defs/schema/$defs/record_columns", list.MaxItems(1000) & [_, ...] & [..._#defs."/$defs/reference_data_sources/$defs/schema/$defs/record_columns"]])
-		record_format?: matchN(1, [_#defs."/$defs/reference_data_sources/$defs/schema/$defs/record_format", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/reference_data_sources/$defs/schema/$defs/record_format"]])
+		record_columns!: matchN(1, [_#defs."/$defs/reference_data_sources/$defs/schema/$defs/record_columns", list.MaxItems(1000) & [_, ...] & [..._#defs."/$defs/reference_data_sources/$defs/schema/$defs/record_columns"]])
+		record_format!: matchN(1, [_#defs."/$defs/reference_data_sources/$defs/schema/$defs/record_format", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/reference_data_sources/$defs/schema/$defs/record_format"]])
 		record_encoding?: string
 	})
 

@@ -24,7 +24,7 @@ import "list"
 		encryption_specification?: matchN(1, [#encryption_specification, list.MaxItems(1) & [...#encryption_specification]])
 		point_in_time_recovery?: matchN(1, [#point_in_time_recovery, list.MaxItems(1) & [...#point_in_time_recovery]])
 		tags_all?: [string]: string
-		schema_definition?: matchN(1, [#schema_definition, list.MaxItems(1) & [_, ...] & [...#schema_definition]])
+		schema_definition!: matchN(1, [#schema_definition, list.MaxItems(1) & [_, ...] & [...#schema_definition]])
 		timeouts?: #timeouts
 		ttl?: matchN(1, [#ttl, list.MaxItems(1) & [...#ttl]])
 	})
@@ -54,8 +54,8 @@ import "list"
 
 	#schema_definition: close({
 		clustering_key?: matchN(1, [_#defs."/$defs/schema_definition/$defs/clustering_key", [..._#defs."/$defs/schema_definition/$defs/clustering_key"]])
-		column?: matchN(1, [_#defs."/$defs/schema_definition/$defs/column", [_, ...] & [..._#defs."/$defs/schema_definition/$defs/column"]])
-		partition_key?: matchN(1, [_#defs."/$defs/schema_definition/$defs/partition_key", [_, ...] & [..._#defs."/$defs/schema_definition/$defs/partition_key"]])
+		column!: matchN(1, [_#defs."/$defs/schema_definition/$defs/column", [_, ...] & [..._#defs."/$defs/schema_definition/$defs/column"]])
+		partition_key!: matchN(1, [_#defs."/$defs/schema_definition/$defs/partition_key", [_, ...] & [..._#defs."/$defs/schema_definition/$defs/partition_key"]])
 		static_column?: matchN(1, [_#defs."/$defs/schema_definition/$defs/static_column", [..._#defs."/$defs/schema_definition/$defs/static_column"]])
 	})
 

@@ -121,8 +121,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/load_balancer_info/$defs/target_group_pair_info": close({
-		prod_traffic_route?: matchN(1, [_#defs."/$defs/load_balancer_info/$defs/target_group_pair_info/$defs/prod_traffic_route", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load_balancer_info/$defs/target_group_pair_info/$defs/prod_traffic_route"]])
-		target_group?: matchN(1, [_#defs."/$defs/load_balancer_info/$defs/target_group_pair_info/$defs/target_group", list.MaxItems(2) & [_, ...] & [..._#defs."/$defs/load_balancer_info/$defs/target_group_pair_info/$defs/target_group"]])
+		prod_traffic_route!: matchN(1, [_#defs."/$defs/load_balancer_info/$defs/target_group_pair_info/$defs/prod_traffic_route", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load_balancer_info/$defs/target_group_pair_info/$defs/prod_traffic_route"]])
+		target_group!: matchN(1, [_#defs."/$defs/load_balancer_info/$defs/target_group_pair_info/$defs/target_group", list.MaxItems(2) & [_, ...] & [..._#defs."/$defs/load_balancer_info/$defs/target_group_pair_info/$defs/target_group"]])
 		test_traffic_route?: matchN(1, [_#defs."/$defs/load_balancer_info/$defs/target_group_pair_info/$defs/test_traffic_route", list.MaxItems(1) & [..._#defs."/$defs/load_balancer_info/$defs/target_group_pair_info/$defs/test_traffic_route"]])
 	})
 

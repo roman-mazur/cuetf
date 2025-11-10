@@ -15,7 +15,7 @@ import "list"
 		region?:                string
 		expected_bucket_owner?: string
 		id?:                    string
-		cors_rule?: matchN(1, [#cors_rule, list.MaxItems(100) & [_, ...] & [...#cors_rule]])
+		cors_rule!: matchN(1, [#cors_rule, list.MaxItems(100) & [_, ...] & [...#cors_rule]])
 	})
 
 	#cors_rule: close({

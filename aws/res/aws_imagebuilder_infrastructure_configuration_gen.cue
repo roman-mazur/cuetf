@@ -39,7 +39,7 @@ import "list"
 	})
 
 	#logging: close({
-		s3_logs?: matchN(1, [_#defs."/$defs/logging/$defs/s3_logs", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/logging/$defs/s3_logs"]])
+		s3_logs!: matchN(1, [_#defs."/$defs/logging/$defs/s3_logs", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/logging/$defs/s3_logs"]])
 	})
 
 	#placement: close({

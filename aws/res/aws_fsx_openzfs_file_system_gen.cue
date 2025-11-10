@@ -67,7 +67,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/root_volume_configuration/$defs/nfs_exports": close({
-		client_configurations?: matchN(1, [_#defs."/$defs/root_volume_configuration/$defs/nfs_exports/$defs/client_configurations", list.MaxItems(25) & [_, ...] & [..._#defs."/$defs/root_volume_configuration/$defs/nfs_exports/$defs/client_configurations"]])
+		client_configurations!: matchN(1, [_#defs."/$defs/root_volume_configuration/$defs/nfs_exports/$defs/client_configurations", list.MaxItems(25) & [_, ...] & [..._#defs."/$defs/root_volume_configuration/$defs/nfs_exports/$defs/client_configurations"]])
 	})
 
 	_#defs: "/$defs/root_volume_configuration/$defs/nfs_exports/$defs/client_configurations": close({

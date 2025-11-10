@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_s3control_multi_region_access_point")
 	close({
 		account_id?: string
-		details?: matchN(1, [#details, list.MaxItems(1) & [_, ...] & [...#details]])
+		details!: matchN(1, [#details, list.MaxItems(1) & [_, ...] & [...#details]])
 		alias?: string
 
 		// Region where this resource will be
@@ -24,7 +24,7 @@ import "list"
 
 	#details: close({
 		public_access_block?: matchN(1, [_#defs."/$defs/details/$defs/public_access_block", list.MaxItems(1) & [..._#defs."/$defs/details/$defs/public_access_block"]])
-		region?: matchN(1, [_#defs."/$defs/details/$defs/region", list.MaxItems(20) & [_, ...] & [..._#defs."/$defs/details/$defs/region"]])
+		region!: matchN(1, [_#defs."/$defs/details/$defs/region", list.MaxItems(20) & [_, ...] & [..._#defs."/$defs/details/$defs/region"]])
 		name!: string
 	})
 

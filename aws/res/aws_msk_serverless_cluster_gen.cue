@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_msk_serverless_cluster")
 	close({
 		arn?: string
-		client_authentication?: matchN(1, [#client_authentication, list.MaxItems(1) & [_, ...] & [...#client_authentication]])
+		client_authentication!: matchN(1, [#client_authentication, list.MaxItems(1) & [_, ...] & [...#client_authentication]])
 		bootstrap_brokers_sasl_iam?: string
 		cluster_name!:               string
 
@@ -21,11 +21,11 @@ import "list"
 		id?:           string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		vpc_config?: matchN(1, [#vpc_config, [_, ...] & [...#vpc_config]])
+		vpc_config!: matchN(1, [#vpc_config, [_, ...] & [...#vpc_config]])
 	})
 
 	#client_authentication: close({
-		sasl?: matchN(1, [_#defs."/$defs/client_authentication/$defs/sasl", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/client_authentication/$defs/sasl"]])
+		sasl!: matchN(1, [_#defs."/$defs/client_authentication/$defs/sasl", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/client_authentication/$defs/sasl"]])
 	})
 
 	#timeouts: close({
@@ -39,7 +39,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/client_authentication/$defs/sasl": close({
-		iam?: matchN(1, [_#defs."/$defs/client_authentication/$defs/sasl/$defs/iam", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/client_authentication/$defs/sasl/$defs/iam"]])
+		iam!: matchN(1, [_#defs."/$defs/client_authentication/$defs/sasl/$defs/iam", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/client_authentication/$defs/sasl/$defs/iam"]])
 	})
 
 	_#defs: "/$defs/client_authentication/$defs/sasl/$defs/iam": close({

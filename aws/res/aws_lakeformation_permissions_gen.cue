@@ -51,7 +51,7 @@ import "list"
 	})
 
 	#lf_tag_policy: close({
-		expression?: matchN(1, [_#defs."/$defs/lf_tag_policy/$defs/expression", [_, ...] & [..._#defs."/$defs/lf_tag_policy/$defs/expression"]])
+		expression!: matchN(1, [_#defs."/$defs/lf_tag_policy/$defs/expression", [_, ...] & [..._#defs."/$defs/lf_tag_policy/$defs/expression"]])
 		catalog_id?:    string
 		resource_type!: string
 	})

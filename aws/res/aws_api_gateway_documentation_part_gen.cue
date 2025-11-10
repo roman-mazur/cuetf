@@ -16,7 +16,7 @@ import "list"
 		region?:      string
 		properties!:  string
 		rest_api_id!: string
-		location?: matchN(1, [#location, list.MaxItems(1) & [_, ...] & [...#location]])
+		location!: matchN(1, [#location, list.MaxItems(1) & [_, ...] & [...#location]])
 	})
 
 	#location: close({

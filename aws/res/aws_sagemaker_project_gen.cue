@@ -19,7 +19,7 @@ import "list"
 		project_name!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		service_catalog_provisioning_details?: matchN(1, [#service_catalog_provisioning_details, list.MaxItems(1) & [_, ...] & [...#service_catalog_provisioning_details]])
+		service_catalog_provisioning_details!: matchN(1, [#service_catalog_provisioning_details, list.MaxItems(1) & [_, ...] & [...#service_catalog_provisioning_details]])
 	})
 
 	#service_catalog_provisioning_details: close({

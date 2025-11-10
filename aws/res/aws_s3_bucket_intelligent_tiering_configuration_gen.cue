@@ -17,7 +17,7 @@ import "list"
 		region?: string
 		status?: string
 		filter?: matchN(1, [#filter, list.MaxItems(1) & [...#filter]])
-		tiering?: matchN(1, [#tiering, [_, ...] & [...#tiering]])
+		tiering!: matchN(1, [#tiering, [_, ...] & [...#tiering]])
 	})
 
 	#filter: close({

@@ -40,7 +40,7 @@ package res
 	})
 
 	#statistics_configuration: close({
-		include_metric?: matchN(1, [_#defs."/$defs/statistics_configuration/$defs/include_metric", [_, ...] & [..._#defs."/$defs/statistics_configuration/$defs/include_metric"]])
+		include_metric!: matchN(1, [_#defs."/$defs/statistics_configuration/$defs/include_metric", [_, ...] & [..._#defs."/$defs/statistics_configuration/$defs/include_metric"]])
 		additional_statistics!: [...string]
 	})
 

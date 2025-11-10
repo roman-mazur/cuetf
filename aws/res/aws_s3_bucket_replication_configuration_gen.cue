@@ -16,12 +16,12 @@ import "list"
 		region?: string
 		role!:   string
 		token?:  string
-		rule?: matchN(1, [#rule, list.MaxItems(1000) & [_, ...] & [...#rule]])
+		rule!: matchN(1, [#rule, list.MaxItems(1000) & [_, ...] & [...#rule]])
 	})
 
 	#rule: close({
 		delete_marker_replication?: matchN(1, [_#defs."/$defs/rule/$defs/delete_marker_replication", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/delete_marker_replication"]])
-		destination?: matchN(1, [_#defs."/$defs/rule/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/destination"]])
+		destination!: matchN(1, [_#defs."/$defs/rule/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/destination"]])
 		id?: string
 		existing_object_replication?: matchN(1, [_#defs."/$defs/rule/$defs/existing_object_replication", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/existing_object_replication"]])
 		priority?: number
@@ -62,7 +62,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/rule/$defs/destination/$defs/replication_time": close({
-		time?: matchN(1, [_#defs."/$defs/rule/$defs/destination/$defs/replication_time/$defs/time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/destination/$defs/replication_time/$defs/time"]])
+		time!: matchN(1, [_#defs."/$defs/rule/$defs/destination/$defs/replication_time/$defs/time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/destination/$defs/replication_time/$defs/time"]])
 		status!: string
 	})
 

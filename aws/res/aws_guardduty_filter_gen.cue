@@ -18,14 +18,14 @@ import "list"
 		region?: string
 		id?:     string
 		name!:   string
-		finding_criteria?: matchN(1, [#finding_criteria, list.MaxItems(1) & [_, ...] & [...#finding_criteria]])
+		finding_criteria!: matchN(1, [#finding_criteria, list.MaxItems(1) & [_, ...] & [...#finding_criteria]])
 		rank!: number
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 
 	#finding_criteria: close({
-		criterion?: matchN(1, [_#defs."/$defs/finding_criteria/$defs/criterion", [_, ...] & [..._#defs."/$defs/finding_criteria/$defs/criterion"]])
+		criterion!: matchN(1, [_#defs."/$defs/finding_criteria/$defs/criterion", [_, ...] & [..._#defs."/$defs/finding_criteria/$defs/criterion"]])
 	})
 
 	_#defs: "/$defs/finding_criteria/$defs/criterion": close({

@@ -17,7 +17,7 @@ import "list"
 		id?:     string
 		organizational_unit_distinguished_names!: [...string]
 		certificate_based_auth_properties?: matchN(1, [#certificate_based_auth_properties, list.MaxItems(1) & [...#certificate_based_auth_properties]])
-		service_account_credentials?: matchN(1, [#service_account_credentials, list.MaxItems(1) & [_, ...] & [...#service_account_credentials]])
+		service_account_credentials!: matchN(1, [#service_account_credentials, list.MaxItems(1) & [_, ...] & [...#service_account_credentials]])
 	})
 
 	#certificate_based_auth_properties: close({

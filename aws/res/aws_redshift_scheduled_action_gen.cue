@@ -20,7 +20,7 @@ import "list"
 		name!:       string
 		schedule!:   string
 		start_time?: string
-		target_action?: matchN(1, [#target_action, list.MaxItems(1) & [_, ...] & [...#target_action]])
+		target_action!: matchN(1, [#target_action, list.MaxItems(1) & [_, ...] & [...#target_action]])
 	})
 
 	#target_action: close({

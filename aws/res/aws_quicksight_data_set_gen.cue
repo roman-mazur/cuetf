@@ -59,7 +59,7 @@ import "list"
 
 	#logical_table_map: close({
 		data_transforms?: matchN(1, [_#defs."/$defs/logical_table_map/$defs/data_transforms", list.MaxItems(2048) & [..._#defs."/$defs/logical_table_map/$defs/data_transforms"]])
-		source?: matchN(1, [_#defs."/$defs/logical_table_map/$defs/source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/logical_table_map/$defs/source"]])
+		source!: matchN(1, [_#defs."/$defs/logical_table_map/$defs/source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/logical_table_map/$defs/source"]])
 		alias!:                string
 		logical_table_map_id!: string
 	})
@@ -77,7 +77,7 @@ import "list"
 	})
 
 	#refresh_properties: close({
-		refresh_configuration?: matchN(1, [_#defs."/$defs/refresh_properties/$defs/refresh_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/refresh_properties/$defs/refresh_configuration"]])
+		refresh_configuration!: matchN(1, [_#defs."/$defs/refresh_properties/$defs/refresh_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/refresh_properties/$defs/refresh_configuration"]])
 	})
 
 	#row_level_permission_data_set: close({
@@ -89,7 +89,7 @@ import "list"
 	})
 
 	#row_level_permission_tag_configuration: close({
-		tag_rules?: matchN(1, [_#defs."/$defs/row_level_permission_tag_configuration/$defs/tag_rules", list.MaxItems(50) & [_, ...] & [..._#defs."/$defs/row_level_permission_tag_configuration/$defs/tag_rules"]])
+		tag_rules!: matchN(1, [_#defs."/$defs/row_level_permission_tag_configuration/$defs/tag_rules", list.MaxItems(50) & [_, ...] & [..._#defs."/$defs/row_level_permission_tag_configuration/$defs/tag_rules"]])
 		status?: string
 	})
 
@@ -116,7 +116,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/logical_table_map/$defs/data_transforms/$defs/create_columns_operation": close({
-		columns?: matchN(1, [_#defs."/$defs/logical_table_map/$defs/data_transforms/$defs/create_columns_operation/$defs/columns", list.MaxItems(128) & [_, ...] & [..._#defs."/$defs/logical_table_map/$defs/data_transforms/$defs/create_columns_operation/$defs/columns"]])
+		columns!: matchN(1, [_#defs."/$defs/logical_table_map/$defs/data_transforms/$defs/create_columns_operation/$defs/columns", list.MaxItems(128) & [_, ...] & [..._#defs."/$defs/logical_table_map/$defs/data_transforms/$defs/create_columns_operation/$defs/columns"]])
 	})
 
 	_#defs: "/$defs/logical_table_map/$defs/data_transforms/$defs/create_columns_operation/$defs/columns": close({
@@ -139,7 +139,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/logical_table_map/$defs/data_transforms/$defs/tag_column_operation": close({
-		tags?: matchN(1, [_#defs."/$defs/logical_table_map/$defs/data_transforms/$defs/tag_column_operation/$defs/tags", list.MaxItems(16) & [_, ...] & [..._#defs."/$defs/logical_table_map/$defs/data_transforms/$defs/tag_column_operation/$defs/tags"]])
+		tags!: matchN(1, [_#defs."/$defs/logical_table_map/$defs/data_transforms/$defs/tag_column_operation/$defs/tags", list.MaxItems(16) & [_, ...] & [..._#defs."/$defs/logical_table_map/$defs/data_transforms/$defs/tag_column_operation/$defs/tags"]])
 		column_name!: string
 	})
 
@@ -193,7 +193,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/physical_table_map/$defs/relational_table": close({
-		input_columns?: matchN(1, [_#defs."/$defs/physical_table_map/$defs/relational_table/$defs/input_columns", list.MaxItems(2048) & [_, ...] & [..._#defs."/$defs/physical_table_map/$defs/relational_table/$defs/input_columns"]])
+		input_columns!: matchN(1, [_#defs."/$defs/physical_table_map/$defs/relational_table/$defs/input_columns", list.MaxItems(2048) & [_, ...] & [..._#defs."/$defs/physical_table_map/$defs/relational_table/$defs/input_columns"]])
 		catalog?:         string
 		data_source_arn!: string
 		name!:            string
@@ -206,8 +206,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/physical_table_map/$defs/s3_source": close({
-		input_columns?: matchN(1, [_#defs."/$defs/physical_table_map/$defs/s3_source/$defs/input_columns", list.MaxItems(2048) & [_, ...] & [..._#defs."/$defs/physical_table_map/$defs/s3_source/$defs/input_columns"]])
-		upload_settings?: matchN(1, [_#defs."/$defs/physical_table_map/$defs/s3_source/$defs/upload_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/physical_table_map/$defs/s3_source/$defs/upload_settings"]])
+		input_columns!: matchN(1, [_#defs."/$defs/physical_table_map/$defs/s3_source/$defs/input_columns", list.MaxItems(2048) & [_, ...] & [..._#defs."/$defs/physical_table_map/$defs/s3_source/$defs/input_columns"]])
+		upload_settings!: matchN(1, [_#defs."/$defs/physical_table_map/$defs/s3_source/$defs/upload_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/physical_table_map/$defs/s3_source/$defs/upload_settings"]])
 		data_source_arn!: string
 	})
 
@@ -225,11 +225,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/refresh_properties/$defs/refresh_configuration": close({
-		incremental_refresh?: matchN(1, [_#defs."/$defs/refresh_properties/$defs/refresh_configuration/$defs/incremental_refresh", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/refresh_properties/$defs/refresh_configuration/$defs/incremental_refresh"]])
+		incremental_refresh!: matchN(1, [_#defs."/$defs/refresh_properties/$defs/refresh_configuration/$defs/incremental_refresh", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/refresh_properties/$defs/refresh_configuration/$defs/incremental_refresh"]])
 	})
 
 	_#defs: "/$defs/refresh_properties/$defs/refresh_configuration/$defs/incremental_refresh": close({
-		lookback_window?: matchN(1, [_#defs."/$defs/refresh_properties/$defs/refresh_configuration/$defs/incremental_refresh/$defs/lookback_window", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/refresh_properties/$defs/refresh_configuration/$defs/incremental_refresh/$defs/lookback_window"]])
+		lookback_window!: matchN(1, [_#defs."/$defs/refresh_properties/$defs/refresh_configuration/$defs/incremental_refresh/$defs/lookback_window", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/refresh_properties/$defs/refresh_configuration/$defs/incremental_refresh/$defs/lookback_window"]])
 	})
 
 	_#defs: "/$defs/refresh_properties/$defs/refresh_configuration/$defs/incremental_refresh/$defs/lookback_window": close({

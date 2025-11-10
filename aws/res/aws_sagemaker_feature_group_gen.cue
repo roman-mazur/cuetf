@@ -10,7 +10,7 @@ import "list"
 		description?:             string
 		event_time_feature_name!: string
 		feature_group_name!:      string
-		feature_definition?: matchN(1, [#feature_definition, list.MaxItems(2500) & [_, ...] & [...#feature_definition]])
+		feature_definition!: matchN(1, [#feature_definition, list.MaxItems(2500) & [_, ...] & [...#feature_definition]])
 		id?: string
 
 		// Region where this resource will be
@@ -36,7 +36,7 @@ import "list"
 
 	#offline_store_config: close({
 		data_catalog_config?: matchN(1, [_#defs."/$defs/offline_store_config/$defs/data_catalog_config", list.MaxItems(1) & [..._#defs."/$defs/offline_store_config/$defs/data_catalog_config"]])
-		s3_storage_config?: matchN(1, [_#defs."/$defs/offline_store_config/$defs/s3_storage_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/offline_store_config/$defs/s3_storage_config"]])
+		s3_storage_config!: matchN(1, [_#defs."/$defs/offline_store_config/$defs/s3_storage_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/offline_store_config/$defs/s3_storage_config"]])
 		disable_glue_table_creation?: bool
 		table_format?:                string
 	})

@@ -46,8 +46,8 @@ import "list"
 		origin_public_dns?: string
 		cache_behavior?: matchN(1, [#cache_behavior, [...#cache_behavior]])
 		cache_behavior_settings?: matchN(1, [#cache_behavior_settings, list.MaxItems(1) & [...#cache_behavior_settings]])
-		default_cache_behavior?: matchN(1, [#default_cache_behavior, list.MaxItems(1) & [_, ...] & [...#default_cache_behavior]])
-		origin?: matchN(1, [#origin, list.MaxItems(1) & [_, ...] & [...#origin]])
+		default_cache_behavior!: matchN(1, [#default_cache_behavior, list.MaxItems(1) & [_, ...] & [...#default_cache_behavior]])
+		origin!: matchN(1, [#origin, list.MaxItems(1) & [_, ...] & [...#origin]])
 		timeouts?: #timeouts
 
 		// Region where this resource will be

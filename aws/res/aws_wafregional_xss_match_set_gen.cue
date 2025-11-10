@@ -18,7 +18,7 @@ import "list"
 	})
 
 	#xss_match_tuple: close({
-		field_to_match?: matchN(1, [_#defs."/$defs/xss_match_tuple/$defs/field_to_match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/xss_match_tuple/$defs/field_to_match"]])
+		field_to_match!: matchN(1, [_#defs."/$defs/xss_match_tuple/$defs/field_to_match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/xss_match_tuple/$defs/field_to_match"]])
 		text_transformation!: string
 	})
 

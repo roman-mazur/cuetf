@@ -23,7 +23,7 @@ import "list"
 		rule_id?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		source?: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
 	})
 
 	#evaluation_mode: close({

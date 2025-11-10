@@ -17,7 +17,7 @@ import "list"
 		log_group_name!: string
 		name!:           string
 		pattern!:        string
-		metric_transformation?: matchN(1, [#metric_transformation, list.MaxItems(1) & [_, ...] & [...#metric_transformation]])
+		metric_transformation!: matchN(1, [#metric_transformation, list.MaxItems(1) & [_, ...] & [...#metric_transformation]])
 	})
 
 	#metric_transformation: close({

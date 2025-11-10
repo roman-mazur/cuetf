@@ -24,7 +24,7 @@ import "list"
 	})
 
 	#logging_filter: close({
-		filter?: matchN(1, [_#defs."/$defs/logging_filter/$defs/filter", [_, ...] & [..._#defs."/$defs/logging_filter/$defs/filter"]])
+		filter!: matchN(1, [_#defs."/$defs/logging_filter/$defs/filter", [_, ...] & [..._#defs."/$defs/logging_filter/$defs/filter"]])
 		default_behavior!: string
 	})
 
@@ -36,7 +36,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/logging_filter/$defs/filter": close({
-		condition?: matchN(1, [_#defs."/$defs/logging_filter/$defs/filter/$defs/condition", [_, ...] & [..._#defs."/$defs/logging_filter/$defs/filter/$defs/condition"]])
+		condition!: matchN(1, [_#defs."/$defs/logging_filter/$defs/filter/$defs/condition", [_, ...] & [..._#defs."/$defs/logging_filter/$defs/filter/$defs/condition"]])
 		behavior!:    string
 		requirement!: string
 	})

@@ -18,7 +18,7 @@ import "list"
 		region?: string
 		action?: matchN(1, [#action, list.MaxItems(1) & [...#action]])
 		id?: string
-		incident_template?: matchN(1, [#incident_template, list.MaxItems(1) & [_, ...] & [...#incident_template]])
+		incident_template!: matchN(1, [#incident_template, list.MaxItems(1) & [_, ...] & [...#incident_template]])
 		name!: string
 		tags?: [string]: string
 		integration?: matchN(1, [#integration, list.MaxItems(1) & [...#integration]])

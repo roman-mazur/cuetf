@@ -15,7 +15,7 @@ import "list"
 		status?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		rule_config?: matchN(1, [#rule_config, list.MaxItems(1) & [_, ...] & [...#rule_config]])
+		rule_config!: matchN(1, [#rule_config, list.MaxItems(1) & [_, ...] & [...#rule_config]])
 		target_controls?: [...string]
 		wait_period_ms!: number
 	})

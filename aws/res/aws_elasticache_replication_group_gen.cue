@@ -37,7 +37,7 @@ import "list"
 		multi_az_enabled?: bool
 		network_type?:     string
 		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, list.MaxItems(2) & [...#log_delivery_configuration]])
-		timeouts?:               #timeouts
+		node_group_configuration?: matchN(1, [#node_group_configuration, [...#node_group_configuration]])
 		node_type?:              string
 		notification_topic_arn?: string
 		num_cache_clusters?:     number
@@ -61,6 +61,7 @@ import "list"
 		transit_encryption_enabled?: bool
 		transit_encryption_mode?:    string
 		user_group_ids?: [...string]
+		timeouts?: #timeouts
 	})
 
 	#log_delivery_configuration: close({
@@ -68,6 +69,16 @@ import "list"
 		destination_type!: string
 		log_format!:       string
 		log_type!:         string
+	})
+
+	#node_group_configuration: close({
+		node_group_id?:             string
+		primary_availability_zone?: string
+		primary_outpost_arn?:       string
+		replica_availability_zones?: [...string]
+		replica_count?: number
+		replica_outpost_arns?: [...string]
+		slots?: string
 	})
 
 	#timeouts: close({

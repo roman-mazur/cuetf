@@ -63,7 +63,7 @@ import "list"
 
 	#task_report_config: close({
 		report_overrides?: matchN(1, [_#defs."/$defs/task_report_config/$defs/report_overrides", list.MaxItems(1) & [..._#defs."/$defs/task_report_config/$defs/report_overrides"]])
-		s3_destination?: matchN(1, [_#defs."/$defs/task_report_config/$defs/s3_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/task_report_config/$defs/s3_destination"]])
+		s3_destination!: matchN(1, [_#defs."/$defs/task_report_config/$defs/s3_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/task_report_config/$defs/s3_destination"]])
 		output_type?:          string
 		report_level?:         string
 		s3_object_versioning?: string

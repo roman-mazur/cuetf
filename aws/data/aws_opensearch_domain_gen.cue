@@ -1,7 +1,5 @@
 package data
 
-import "list"
-
 #aws_opensearch_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opensearch_domain")
@@ -72,7 +70,6 @@ import "list"
 		domain_endpoint_v2_hosted_zone_id?: string
 		domain_id?:                         string
 		domain_name!:                       string
-		off_peak_window_options?: matchN(1, [#off_peak_window_options, list.MaxItems(1) & [...#off_peak_window_options]])
 		ebs_options?: [...close({
 			ebs_enabled?: bool
 			iops?:        number
@@ -84,10 +81,16 @@ import "list"
 			enabled?:    bool
 			kms_key_id?: string
 		})]
-		endpoint?:        string
-		endpoint_v2?:     string
-		engine_version?:  string
-		id?:              string
+		endpoint?:       string
+		endpoint_v2?:    string
+		engine_version?: string
+		id?:             string
+		identity_center_options?: [...close({
+			enabled_api_access?:           bool
+			identity_center_instance_arn?: string
+			roles_key?:                    string
+			subject_key?:                  string
+		})]
 		ip_address_type?: string
 		log_publishing_options?: [...close({
 			cloudwatch_log_group_arn?: string
@@ -96,6 +99,15 @@ import "list"
 		})]
 		node_to_node_encryption?: [...close({
 			enabled?: bool
+		})]
+		off_peak_window_options?: [...close({
+			enabled?: bool
+			off_peak_window?: [...close({
+				window_start_time?: [...close({
+					hours?:   number
+					minutes?: number
+				})]
+			})]
 		})]
 		processing?: bool
 		snapshot_options?: [...close({
@@ -110,16 +122,6 @@ import "list"
 			security_group_ids?: [...string]
 			subnet_ids?: [...string]
 			vpc_id?: string
-		})]
-	})
-
-	#off_peak_window_options: close({
-		enabled?: bool
-		off_peak_window?: [...close({
-			window_start_time?: [...close({
-				hours?:   number
-				minutes?: number
-			})]
 		})]
 	})
 }

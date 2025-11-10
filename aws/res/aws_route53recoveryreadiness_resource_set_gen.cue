@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_route53recoveryreadiness_resource_set")
 	close({
-		resources?: matchN(1, [#resources, [_, ...] & [...#resources]])
+		resources!: matchN(1, [#resources, [_, ...] & [...#resources]])
 		arn?:               string
 		id?:                string
 		resource_set_name!: string

@@ -19,24 +19,25 @@ import "list"
 		dashboard_endpoint_v2?:             string
 		domain_endpoint_v2_hosted_zone_id?: string
 		domain_id?:                         string
+		domain_name!:                       string
+		endpoint?:                          string
 		advanced_security_options?: matchN(1, [#advanced_security_options, list.MaxItems(1) & [...#advanced_security_options]])
-		domain_name!:    string
-		endpoint?:       string
-		endpoint_v2?:    string
+		endpoint_v2?: string
+		aiml_options?: matchN(1, [#aiml_options, list.MaxItems(1) & [...#aiml_options]])
 		engine_version?: string
 		id?:             string
-		aiml_options?: matchN(1, [#aiml_options, list.MaxItems(1) & [...#aiml_options]])
-		ip_address_type?: string
 		auto_tune_options?: matchN(1, [#auto_tune_options, list.MaxItems(1) & [...#auto_tune_options]])
+		ip_address_type?: string
 		cluster_config?: matchN(1, [#cluster_config, list.MaxItems(1) & [...#cluster_config]])
 		cognito_options?: matchN(1, [#cognito_options, list.MaxItems(1) & [...#cognito_options]])
 		domain_endpoint_options?: matchN(1, [#domain_endpoint_options, list.MaxItems(1) & [...#domain_endpoint_options]])
 		ebs_options?: matchN(1, [#ebs_options, list.MaxItems(1) & [...#ebs_options]])
 		encrypt_at_rest?: matchN(1, [#encrypt_at_rest, list.MaxItems(1) & [...#encrypt_at_rest]])
+		identity_center_options?: matchN(1, [#identity_center_options, list.MaxItems(1) & [...#identity_center_options]])
 		log_publishing_options?: matchN(1, [#log_publishing_options, [...#log_publishing_options]])
-		node_to_node_encryption?: matchN(1, [#node_to_node_encryption, list.MaxItems(1) & [...#node_to_node_encryption]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		node_to_node_encryption?: matchN(1, [#node_to_node_encryption, list.MaxItems(1) & [...#node_to_node_encryption]])
 		off_peak_window_options?: matchN(1, [#off_peak_window_options, list.MaxItems(1) & [...#off_peak_window_options]])
 		snapshot_options?: matchN(1, [#snapshot_options, list.MaxItems(1) & [...#snapshot_options]])
 		software_update_options?: matchN(1, [#software_update_options, list.MaxItems(1) & [...#software_update_options]])
@@ -107,6 +108,13 @@ import "list"
 		kms_key_id?: string
 	})
 
+	#identity_center_options: close({
+		enabled_api_access?:           bool
+		identity_center_instance_arn?: string
+		roles_key?:                    string
+		subject_key?:                  string
+	})
+
 	#log_publishing_options: close({
 		cloudwatch_log_group_arn!: string
 		enabled?:                  bool
@@ -158,7 +166,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/auto_tune_options/$defs/maintenance_schedule": close({
-		duration?: matchN(1, [_#defs."/$defs/auto_tune_options/$defs/maintenance_schedule/$defs/duration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auto_tune_options/$defs/maintenance_schedule/$defs/duration"]])
+		duration!: matchN(1, [_#defs."/$defs/auto_tune_options/$defs/maintenance_schedule/$defs/duration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auto_tune_options/$defs/maintenance_schedule/$defs/duration"]])
 		cron_expression_for_recurrence!: string
 		start_at!:                       string
 	})

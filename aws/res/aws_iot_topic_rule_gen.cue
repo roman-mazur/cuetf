@@ -190,7 +190,7 @@ import "list"
 	})
 
 	#timestream: close({
-		dimension?: matchN(1, [_#defs."/$defs/timestream/$defs/dimension", [_, ...] & [..._#defs."/$defs/timestream/$defs/dimension"]])
+		dimension!: matchN(1, [_#defs."/$defs/timestream/$defs/dimension", [_, ...] & [..._#defs."/$defs/timestream/$defs/dimension"]])
 		timestamp?: matchN(1, [_#defs."/$defs/timestream/$defs/timestamp", list.MaxItems(1) & [..._#defs."/$defs/timestream/$defs/timestamp"]])
 		database_name!: string
 		role_arn!:      string
@@ -340,7 +340,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/error_action/$defs/timestream": close({
-		dimension?: matchN(1, [_#defs."/$defs/error_action/$defs/timestream/$defs/dimension", [_, ...] & [..._#defs."/$defs/error_action/$defs/timestream/$defs/dimension"]])
+		dimension!: matchN(1, [_#defs."/$defs/error_action/$defs/timestream/$defs/dimension", [_, ...] & [..._#defs."/$defs/error_action/$defs/timestream/$defs/dimension"]])
 		timestamp?: matchN(1, [_#defs."/$defs/error_action/$defs/timestream/$defs/timestamp", list.MaxItems(1) & [..._#defs."/$defs/error_action/$defs/timestream/$defs/timestamp"]])
 		database_name!: string
 		role_arn!:      string

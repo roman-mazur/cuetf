@@ -98,7 +98,7 @@ import "list"
 
 	#mixed_instances_policy: close({
 		instances_distribution?: matchN(1, [_#defs."/$defs/mixed_instances_policy/$defs/instances_distribution", list.MaxItems(1) & [..._#defs."/$defs/mixed_instances_policy/$defs/instances_distribution"]])
-		launch_template?: matchN(1, [_#defs."/$defs/mixed_instances_policy/$defs/launch_template", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/mixed_instances_policy/$defs/launch_template"]])
+		launch_template!: matchN(1, [_#defs."/$defs/mixed_instances_policy/$defs/launch_template", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/mixed_instances_policy/$defs/launch_template"]])
 	})
 
 	#tag: close({
@@ -156,7 +156,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/mixed_instances_policy/$defs/launch_template": close({
-		launch_template_specification?: matchN(1, [_#defs."/$defs/mixed_instances_policy/$defs/launch_template/$defs/launch_template_specification", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/mixed_instances_policy/$defs/launch_template/$defs/launch_template_specification"]])
+		launch_template_specification!: matchN(1, [_#defs."/$defs/mixed_instances_policy/$defs/launch_template/$defs/launch_template_specification", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/mixed_instances_policy/$defs/launch_template/$defs/launch_template_specification"]])
 		override?: matchN(1, [_#defs."/$defs/mixed_instances_policy/$defs/launch_template/$defs/override", [..._#defs."/$defs/mixed_instances_policy/$defs/launch_template/$defs/override"]])
 	})
 

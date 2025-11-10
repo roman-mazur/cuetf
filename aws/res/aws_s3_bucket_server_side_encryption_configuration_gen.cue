@@ -15,7 +15,7 @@ import "list"
 		region?:                string
 		expected_bucket_owner?: string
 		id?:                    string
-		rule?: matchN(1, [#rule, [_, ...] & [...#rule]])
+		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
 	})
 
 	#rule: close({

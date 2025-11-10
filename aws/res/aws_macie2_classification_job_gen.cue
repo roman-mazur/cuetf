@@ -21,7 +21,7 @@ import "list"
 		job_id?:     string
 		job_status?: string
 		job_type!:   string
-		s3_job_definition?: matchN(1, [#s3_job_definition, list.MaxItems(1) & [_, ...] & [...#s3_job_definition]])
+		s3_job_definition!: matchN(1, [#s3_job_definition, list.MaxItems(1) & [_, ...] & [...#s3_job_definition]])
 		name?: string
 		schedule_frequency?: matchN(1, [#schedule_frequency, list.MaxItems(1) & [...#schedule_frequency]])
 		name_prefix?:         string

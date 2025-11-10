@@ -13,9 +13,9 @@ import "list"
 		arn?:                string
 		budget_name!:        string
 		execution_role_arn!: string
-		action_threshold?: matchN(1, [#action_threshold, list.MaxItems(1) & [_, ...] & [...#action_threshold]])
-		definition?: matchN(1, [#definition, list.MaxItems(1) & [_, ...] & [...#definition]])
-		subscriber?: matchN(1, [#subscriber, list.MaxItems(11) & [_, ...] & [...#subscriber]])
+		action_threshold!: matchN(1, [#action_threshold, list.MaxItems(1) & [_, ...] & [...#action_threshold]])
+		definition!: matchN(1, [#definition, list.MaxItems(1) & [_, ...] & [...#definition]])
+		subscriber!: matchN(1, [#subscriber, list.MaxItems(11) & [_, ...] & [...#subscriber]])
 		id?:                string
 		notification_type!: string
 		status?:            string

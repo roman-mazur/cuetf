@@ -34,7 +34,7 @@ import "list"
 
 	#kernel_gateway_image_config: close({
 		file_system_config?: matchN(1, [_#defs."/$defs/kernel_gateway_image_config/$defs/file_system_config", list.MaxItems(1) & [..._#defs."/$defs/kernel_gateway_image_config/$defs/file_system_config"]])
-		kernel_spec?: matchN(1, [_#defs."/$defs/kernel_gateway_image_config/$defs/kernel_spec", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/kernel_gateway_image_config/$defs/kernel_spec"]])
+		kernel_spec!: matchN(1, [_#defs."/$defs/kernel_gateway_image_config/$defs/kernel_spec", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/kernel_gateway_image_config/$defs/kernel_spec"]])
 	})
 
 	_#defs: "/$defs/code_editor_app_image_config/$defs/container_config": close({

@@ -25,16 +25,16 @@ import "list"
 	})
 
 	#storage_class_analysis: close({
-		data_export?: matchN(1, [_#defs."/$defs/storage_class_analysis/$defs/data_export", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_class_analysis/$defs/data_export"]])
+		data_export!: matchN(1, [_#defs."/$defs/storage_class_analysis/$defs/data_export", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_class_analysis/$defs/data_export"]])
 	})
 
 	_#defs: "/$defs/storage_class_analysis/$defs/data_export": close({
-		destination?: matchN(1, [_#defs."/$defs/storage_class_analysis/$defs/data_export/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_class_analysis/$defs/data_export/$defs/destination"]])
+		destination!: matchN(1, [_#defs."/$defs/storage_class_analysis/$defs/data_export/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_class_analysis/$defs/data_export/$defs/destination"]])
 		output_schema_version?: string
 	})
 
 	_#defs: "/$defs/storage_class_analysis/$defs/data_export/$defs/destination": close({
-		s3_bucket_destination?: matchN(1, [_#defs."/$defs/storage_class_analysis/$defs/data_export/$defs/destination/$defs/s3_bucket_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_class_analysis/$defs/data_export/$defs/destination/$defs/s3_bucket_destination"]])
+		s3_bucket_destination!: matchN(1, [_#defs."/$defs/storage_class_analysis/$defs/data_export/$defs/destination/$defs/s3_bucket_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_class_analysis/$defs/data_export/$defs/destination/$defs/s3_bucket_destination"]])
 	})
 
 	_#defs: "/$defs/storage_class_analysis/$defs/data_export/$defs/destination/$defs/s3_bucket_destination": close({

@@ -17,10 +17,10 @@ import "list"
 		region?: string
 		id?:     string
 		name!:   string
-		event_bus?: matchN(1, [#event_bus, list.MaxItems(2) & [_, _, ...] & [...#event_bus]])
+		event_bus!: matchN(1, [#event_bus, list.MaxItems(2) & [_, _, ...] & [...#event_bus]])
 		role_arn?: string
 		replication_config?: matchN(1, [#replication_config, list.MaxItems(1) & [...#replication_config]])
-		routing_config?: matchN(1, [#routing_config, list.MaxItems(1) & [_, ...] & [...#routing_config]])
+		routing_config!: matchN(1, [#routing_config, list.MaxItems(1) & [_, ...] & [...#routing_config]])
 	})
 
 	#event_bus: close({
@@ -32,12 +32,12 @@ import "list"
 	})
 
 	#routing_config: close({
-		failover_config?: matchN(1, [_#defs."/$defs/routing_config/$defs/failover_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/routing_config/$defs/failover_config"]])
+		failover_config!: matchN(1, [_#defs."/$defs/routing_config/$defs/failover_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/routing_config/$defs/failover_config"]])
 	})
 
 	_#defs: "/$defs/routing_config/$defs/failover_config": close({
-		primary?: matchN(1, [_#defs."/$defs/routing_config/$defs/failover_config/$defs/primary", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/routing_config/$defs/failover_config/$defs/primary"]])
-		secondary?: matchN(1, [_#defs."/$defs/routing_config/$defs/failover_config/$defs/secondary", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/routing_config/$defs/failover_config/$defs/secondary"]])
+		primary!: matchN(1, [_#defs."/$defs/routing_config/$defs/failover_config/$defs/primary", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/routing_config/$defs/failover_config/$defs/primary"]])
+		secondary!: matchN(1, [_#defs."/$defs/routing_config/$defs/failover_config/$defs/secondary", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/routing_config/$defs/failover_config/$defs/secondary"]])
 	})
 
 	_#defs: "/$defs/routing_config/$defs/failover_config/$defs/primary": close({

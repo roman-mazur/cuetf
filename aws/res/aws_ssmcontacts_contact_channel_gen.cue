@@ -18,7 +18,7 @@ import "list"
 		id?:         string
 		name!:       string
 		type!:       string
-		delivery_address?: matchN(1, [#delivery_address, list.MaxItems(1) & [_, ...] & [...#delivery_address]])
+		delivery_address!: matchN(1, [#delivery_address, list.MaxItems(1) & [_, ...] & [...#delivery_address]])
 	})
 
 	#delivery_address: close({

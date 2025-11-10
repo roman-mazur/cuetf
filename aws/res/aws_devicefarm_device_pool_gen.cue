@@ -16,7 +16,7 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:      string
 		project_arn!: string
-		rule?: matchN(1, [#rule, [_, ...] & [...#rule]])
+		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type?: string

@@ -99,7 +99,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/source_parameters/$defs/activemq_broker_parameters": close({
-		credentials?: matchN(1, [_#defs."/$defs/source_parameters/$defs/activemq_broker_parameters/$defs/credentials", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/source_parameters/$defs/activemq_broker_parameters/$defs/credentials"]])
+		credentials!: matchN(1, [_#defs."/$defs/source_parameters/$defs/activemq_broker_parameters/$defs/credentials", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/source_parameters/$defs/activemq_broker_parameters/$defs/credentials"]])
 		batch_size?:                         number
 		maximum_batching_window_in_seconds?: number
 		queue_name!:                         string
@@ -163,7 +163,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/source_parameters/$defs/rabbitmq_broker_parameters": close({
-		credentials?: matchN(1, [_#defs."/$defs/source_parameters/$defs/rabbitmq_broker_parameters/$defs/credentials", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/source_parameters/$defs/rabbitmq_broker_parameters/$defs/credentials"]])
+		credentials!: matchN(1, [_#defs."/$defs/source_parameters/$defs/rabbitmq_broker_parameters/$defs/credentials", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/source_parameters/$defs/rabbitmq_broker_parameters/$defs/credentials"]])
 		batch_size?:                         number
 		maximum_batching_window_in_seconds?: number
 		queue_name!:                         string

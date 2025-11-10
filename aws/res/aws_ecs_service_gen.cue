@@ -124,7 +124,7 @@ import "list"
 	})
 
 	#volume_configuration: close({
-		managed_ebs_volume?: matchN(1, [_#defs."/$defs/volume_configuration/$defs/managed_ebs_volume", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/volume_configuration/$defs/managed_ebs_volume"]])
+		managed_ebs_volume!: matchN(1, [_#defs."/$defs/volume_configuration/$defs/managed_ebs_volume", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/volume_configuration/$defs/managed_ebs_volume"]])
 		name!: string
 	})
 
@@ -179,7 +179,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/service_connect_configuration/$defs/service/$defs/client_alias/$defs/test_traffic_rules/$defs/header": close({
-		value?: matchN(1, [_#defs."/$defs/service_connect_configuration/$defs/service/$defs/client_alias/$defs/test_traffic_rules/$defs/header/$defs/value", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/service_connect_configuration/$defs/service/$defs/client_alias/$defs/test_traffic_rules/$defs/header/$defs/value"]])
+		value!: matchN(1, [_#defs."/$defs/service_connect_configuration/$defs/service/$defs/client_alias/$defs/test_traffic_rules/$defs/header/$defs/value", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/service_connect_configuration/$defs/service/$defs/client_alias/$defs/test_traffic_rules/$defs/header/$defs/value"]])
 		name!: string
 	})
 
@@ -193,7 +193,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/service_connect_configuration/$defs/service/$defs/tls": close({
-		issuer_cert_authority?: matchN(1, [_#defs."/$defs/service_connect_configuration/$defs/service/$defs/tls/$defs/issuer_cert_authority", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/service_connect_configuration/$defs/service/$defs/tls/$defs/issuer_cert_authority"]])
+		issuer_cert_authority!: matchN(1, [_#defs."/$defs/service_connect_configuration/$defs/service/$defs/tls/$defs/issuer_cert_authority", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/service_connect_configuration/$defs/service/$defs/tls/$defs/issuer_cert_authority"]])
 		kms_key?:  string
 		role_arn?: string
 	})

@@ -17,7 +17,7 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		name?:   string
-		finding_criteria?: matchN(1, [#finding_criteria, list.MaxItems(1) & [_, ...] & [...#finding_criteria]])
+		finding_criteria!: matchN(1, [#finding_criteria, list.MaxItems(1) & [_, ...] & [...#finding_criteria]])
 		name_prefix?: string
 		timeouts?:    #timeouts
 		position?:    number

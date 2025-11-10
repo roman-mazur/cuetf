@@ -20,7 +20,7 @@ import "list"
 		name!:        string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		distribution?: matchN(1, [#distribution, [_, ...] & [...#distribution]])
+		distribution!: matchN(1, [#distribution, [_, ...] & [...#distribution]])
 	})
 
 	#distribution: close({
@@ -51,7 +51,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/distribution/$defs/container_distribution_configuration": close({
-		target_repository?: matchN(1, [_#defs."/$defs/distribution/$defs/container_distribution_configuration/$defs/target_repository", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/distribution/$defs/container_distribution_configuration/$defs/target_repository"]])
+		target_repository!: matchN(1, [_#defs."/$defs/distribution/$defs/container_distribution_configuration/$defs/target_repository", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/distribution/$defs/container_distribution_configuration/$defs/target_repository"]])
 		container_tags?: [...string]
 		description?: string
 	})

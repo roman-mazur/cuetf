@@ -15,7 +15,7 @@ import "list"
 		end_time?: string
 		id?:       string
 		name!:     string
-		scalable_target_action?: matchN(1, [#scalable_target_action, list.MaxItems(1) & [_, ...] & [...#scalable_target_action]])
+		scalable_target_action!: matchN(1, [#scalable_target_action, list.MaxItems(1) & [_, ...] & [...#scalable_target_action]])
 		resource_id!:        string
 		scalable_dimension!: string
 		schedule!:           string

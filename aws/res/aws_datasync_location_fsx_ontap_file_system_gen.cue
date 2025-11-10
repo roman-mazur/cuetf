@@ -15,7 +15,7 @@ import "list"
 		creation_time?:      string
 		fsx_filesystem_arn?: string
 		id?:                 string
-		protocol?: matchN(1, [#protocol, list.MaxItems(1) & [_, ...] & [...#protocol]])
+		protocol!: matchN(1, [#protocol, list.MaxItems(1) & [_, ...] & [...#protocol]])
 		security_group_arns!: [...string]
 		storage_virtual_machine_arn!: string
 		subdirectory?:                string
@@ -30,7 +30,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/protocol/$defs/nfs": close({
-		mount_options?: matchN(1, [_#defs."/$defs/protocol/$defs/nfs/$defs/mount_options", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/protocol/$defs/nfs/$defs/mount_options"]])
+		mount_options!: matchN(1, [_#defs."/$defs/protocol/$defs/nfs/$defs/mount_options", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/protocol/$defs/nfs/$defs/mount_options"]])
 	})
 
 	_#defs: "/$defs/protocol/$defs/nfs/$defs/mount_options": close({
@@ -38,7 +38,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/protocol/$defs/smb": close({
-		mount_options?: matchN(1, [_#defs."/$defs/protocol/$defs/smb/$defs/mount_options", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/protocol/$defs/smb/$defs/mount_options"]])
+		mount_options!: matchN(1, [_#defs."/$defs/protocol/$defs/smb/$defs/mount_options", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/protocol/$defs/smb/$defs/mount_options"]])
 		domain?:   string
 		password!: string
 		user!:     string

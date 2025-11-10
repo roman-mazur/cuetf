@@ -23,7 +23,7 @@ import "list"
 		lock_configuration?: matchN(1, [#lock_configuration, list.MaxItems(1) & [...#lock_configuration]])
 		tags?: [string]: string
 		resource_tags?: matchN(1, [#resource_tags, list.MaxItems(50) & [...#resource_tags]])
-		retention_period?: matchN(1, [#retention_period, list.MaxItems(1) & [_, ...] & [...#retention_period]])
+		retention_period!: matchN(1, [#retention_period, list.MaxItems(1) & [_, ...] & [...#retention_period]])
 		timeouts?: #timeouts
 		tags_all?: [string]: string
 	})
@@ -34,7 +34,7 @@ import "list"
 	})
 
 	#lock_configuration: close({
-		unlock_delay?: matchN(1, [_#defs."/$defs/lock_configuration/$defs/unlock_delay", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/lock_configuration/$defs/unlock_delay"]])
+		unlock_delay!: matchN(1, [_#defs."/$defs/lock_configuration/$defs/unlock_delay", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/lock_configuration/$defs/unlock_delay"]])
 	})
 
 	#resource_tags: close({

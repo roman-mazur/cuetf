@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_imagebuilder_container_recipe")
 	close({
 		arn?: string
-		component?: matchN(1, [#component, [_, ...] & [...#component]])
+		component!: matchN(1, [#component, [_, ...] & [...#component]])
 		container_type!:           string
 		date_created?:             string
 		description?:              string
@@ -26,7 +26,7 @@ import "list"
 		instance_configuration?: matchN(1, [#instance_configuration, list.MaxItems(1) & [...#instance_configuration]])
 		owner?:        string
 		parent_image!: string
-		target_repository?: matchN(1, [#target_repository, list.MaxItems(1) & [_, ...] & [...#target_repository]])
+		target_repository!: matchN(1, [#target_repository, list.MaxItems(1) & [_, ...] & [...#target_repository]])
 		platform?:          string
 		platform_override?: string
 		tags?: [string]:     string

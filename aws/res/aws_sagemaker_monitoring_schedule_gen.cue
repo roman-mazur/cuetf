@@ -17,7 +17,7 @@ import "list"
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		monitoring_schedule_config?: matchN(1, [#monitoring_schedule_config, list.MaxItems(1) & [_, ...] & [...#monitoring_schedule_config]])
+		monitoring_schedule_config!: matchN(1, [#monitoring_schedule_config, list.MaxItems(1) & [_, ...] & [...#monitoring_schedule_config]])
 	})
 
 	#monitoring_schedule_config: close({

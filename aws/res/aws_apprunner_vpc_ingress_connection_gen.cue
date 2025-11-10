@@ -20,7 +20,7 @@ import "list"
 		status?:      string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		ingress_vpc_configuration?: matchN(1, [#ingress_vpc_configuration, list.MaxItems(1) & [_, ...] & [...#ingress_vpc_configuration]])
+		ingress_vpc_configuration!: matchN(1, [#ingress_vpc_configuration, list.MaxItems(1) & [_, ...] & [...#ingress_vpc_configuration]])
 	})
 
 	#ingress_vpc_configuration: close({

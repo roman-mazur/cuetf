@@ -21,7 +21,7 @@ import "list"
 	})
 
 	#rule: close({
-		default_retention?: matchN(1, [_#defs."/$defs/rule/$defs/default_retention", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/default_retention"]])
+		default_retention!: matchN(1, [_#defs."/$defs/rule/$defs/default_retention", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/default_retention"]])
 	})
 
 	_#defs: "/$defs/rule/$defs/default_retention": close({

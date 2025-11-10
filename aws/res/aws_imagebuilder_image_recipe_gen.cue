@@ -22,7 +22,7 @@ import "list"
 		region?:       string
 		parent_image!: string
 		platform?:     string
-		component?: matchN(1, [#component, [_, ...] & [...#component]])
+		component!: matchN(1, [#component, [_, ...] & [...#component]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		user_data_base64?:  string

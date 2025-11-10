@@ -22,7 +22,7 @@ import "list"
 	})
 
 	#target_grant: close({
-		grantee?: matchN(1, [_#defs."/$defs/target_grant/$defs/grantee", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/target_grant/$defs/grantee"]])
+		grantee!: matchN(1, [_#defs."/$defs/target_grant/$defs/grantee", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/target_grant/$defs/grantee"]])
 		permission!: string
 	})
 

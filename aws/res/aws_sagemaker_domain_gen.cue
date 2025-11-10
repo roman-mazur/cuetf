@@ -22,7 +22,7 @@ import "list"
 		kms_key_id?:                            string
 		security_group_id_for_domain_boundary?: string
 		default_space_settings?: matchN(1, [#default_space_settings, list.MaxItems(1) & [...#default_space_settings]])
-		default_user_settings?: matchN(1, [#default_user_settings, list.MaxItems(1) & [_, ...] & [...#default_user_settings]])
+		default_user_settings!: matchN(1, [#default_user_settings, list.MaxItems(1) & [_, ...] & [...#default_user_settings]])
 		single_sign_on_application_arn?:                 string
 		single_sign_on_managed_application_instance_id?: string
 		subnet_ids!: [...string]

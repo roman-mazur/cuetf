@@ -18,7 +18,7 @@ import "list"
 		region?: string
 		tags?: [string]: string
 		authentication_configuration?: matchN(1, [#authentication_configuration, list.MaxItems(1) & [...#authentication_configuration]])
-		filter?: matchN(1, [#filter, list.MaxItems(5) & [_, ...] & [...#filter]])
+		filter!: matchN(1, [#filter, list.MaxItems(5) & [_, ...] & [...#filter]])
 		tags_all?: [string]: string
 		target_action!:   string
 		target_pipeline!: string

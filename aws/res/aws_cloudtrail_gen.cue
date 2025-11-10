@@ -36,7 +36,7 @@ import "list"
 	})
 
 	#advanced_event_selector: close({
-		field_selector?: matchN(1, [_#defs."/$defs/advanced_event_selector/$defs/field_selector", [_, ...] & [..._#defs."/$defs/advanced_event_selector/$defs/field_selector"]])
+		field_selector!: matchN(1, [_#defs."/$defs/advanced_event_selector/$defs/field_selector", [_, ...] & [..._#defs."/$defs/advanced_event_selector/$defs/field_selector"]])
 		name?: string
 	})
 

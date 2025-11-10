@@ -7,25 +7,25 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_networkmanager_core_network_policy_document")
 	close({
 		attachment_policies?: matchN(1, [#attachment_policies, [...#attachment_policies]])
-		core_network_configuration?: matchN(1, [#core_network_configuration, [_, ...] & [...#core_network_configuration]])
+		core_network_configuration!: matchN(1, [#core_network_configuration, [_, ...] & [...#core_network_configuration]])
 		id?: string
 		network_function_groups?: matchN(1, [#network_function_groups, [...#network_function_groups]])
 		json?: string
 		segment_actions?: matchN(1, [#segment_actions, [...#segment_actions]])
-		segments?: matchN(1, [#segments, [_, ...] & [...#segments]])
+		segments!: matchN(1, [#segments, [_, ...] & [...#segments]])
 		version?: string
 	})
 
 	#attachment_policies: close({
-		action?: matchN(1, [_#defs."/$defs/attachment_policies/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/attachment_policies/$defs/action"]])
-		conditions?: matchN(1, [_#defs."/$defs/attachment_policies/$defs/conditions", [_, ...] & [..._#defs."/$defs/attachment_policies/$defs/conditions"]])
+		action!: matchN(1, [_#defs."/$defs/attachment_policies/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/attachment_policies/$defs/action"]])
+		conditions!: matchN(1, [_#defs."/$defs/attachment_policies/$defs/conditions", [_, ...] & [..._#defs."/$defs/attachment_policies/$defs/conditions"]])
 		condition_logic?: string
 		description?:     string
 		rule_number!:     number
 	})
 
 	#core_network_configuration: close({
-		edge_locations?: matchN(1, [_#defs."/$defs/core_network_configuration/$defs/edge_locations", [_, ...] & [..._#defs."/$defs/core_network_configuration/$defs/edge_locations"]])
+		edge_locations!: matchN(1, [_#defs."/$defs/core_network_configuration/$defs/edge_locations", [_, ...] & [..._#defs."/$defs/core_network_configuration/$defs/edge_locations"]])
 		asn_ranges!: [...string]
 		dns_support?: bool
 		inside_cidr_blocks?: [...string]

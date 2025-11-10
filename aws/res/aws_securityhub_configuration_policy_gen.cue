@@ -16,7 +16,7 @@ import "list"
 		description?: string
 		id?:          string
 		name!:        string
-		configuration_policy?: matchN(1, [#configuration_policy, list.MaxItems(1) & [_, ...] & [...#configuration_policy]])
+		configuration_policy!: matchN(1, [#configuration_policy, list.MaxItems(1) & [_, ...] & [...#configuration_policy]])
 	})
 
 	#configuration_policy: close({
@@ -32,7 +32,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter": close({
-		parameter?: matchN(1, [_#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter", [_, ...] & [..._#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter"]])
+		parameter!: matchN(1, [_#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter", [_, ...] & [..._#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter"]])
 		security_control_id!: string
 	})
 

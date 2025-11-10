@@ -17,7 +17,7 @@ import "list"
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		ui_template?: matchN(1, [#ui_template, list.MaxItems(1) & [_, ...] & [...#ui_template]])
+		ui_template!: matchN(1, [#ui_template, list.MaxItems(1) & [_, ...] & [...#ui_template]])
 	})
 
 	#ui_template: close({
