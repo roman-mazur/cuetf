@@ -178,6 +178,8 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_certificate_manager_certificate_map": res.#google_certificate_manager_certificate_map
 	_#res: "\(#googlePrefix)_certificate_manager_dns_authorization": res.#google_certificate_manager_dns_authorization
 	_#res: "\(#googlePrefix)_certificate_manager_trust_config": res.#google_certificate_manager_trust_config
+	_#res: "\(#googlePrefix)_ces_app": res.#google_ces_app
+	_#res: "\(#googlePrefix)_ces_toolset": res.#google_ces_toolset
 	_#res: "\(#googlePrefix)_chronicle_data_access_label": res.#google_chronicle_data_access_label
 	_#res: "\(#googlePrefix)_chronicle_data_access_scope": res.#google_chronicle_data_access_scope
 	_#res: "\(#googlePrefix)_chronicle_reference_list": res.#google_chronicle_reference_list
@@ -551,6 +553,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_discovery_engine_assistant": res.#google_discovery_engine_assistant
 	_#res: "\(#googlePrefix)_discovery_engine_chat_engine": res.#google_discovery_engine_chat_engine
 	_#res: "\(#googlePrefix)_discovery_engine_cmek_config": res.#google_discovery_engine_cmek_config
+	_#res: "\(#googlePrefix)_discovery_engine_control": res.#google_discovery_engine_control
 	_#res: "\(#googlePrefix)_discovery_engine_data_connector": res.#google_discovery_engine_data_connector
 	_#res: "\(#googlePrefix)_discovery_engine_data_store": res.#google_discovery_engine_data_store
 	_#res: "\(#googlePrefix)_discovery_engine_license_config": res.#google_discovery_engine_license_config
@@ -833,6 +836,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_netapp_backup": res.#google_netapp_backup
 	_#res: "\(#googlePrefix)_netapp_backup_policy": res.#google_netapp_backup_policy
 	_#res: "\(#googlePrefix)_netapp_backup_vault": res.#google_netapp_backup_vault
+	_#res: "\(#googlePrefix)_netapp_host_group": res.#google_netapp_host_group
 	_#res: "\(#googlePrefix)_netapp_kmsconfig": res.#google_netapp_kmsconfig
 	_#res: "\(#googlePrefix)_netapp_storage_pool": res.#google_netapp_storage_pool
 	_#res: "\(#googlePrefix)_netapp_volume": res.#google_netapp_volume
@@ -847,6 +851,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_network_connectivity_service_connection_policy": res.#google_network_connectivity_service_connection_policy
 	_#res: "\(#googlePrefix)_network_connectivity_spoke": res.#google_network_connectivity_spoke
 	_#res: "\(#googlePrefix)_network_management_connectivity_test": res.#google_network_management_connectivity_test
+	_#res: "\(#googlePrefix)_network_management_organization_vpc_flow_logs_config": res.#google_network_management_organization_vpc_flow_logs_config
 	_#res: "\(#googlePrefix)_network_management_vpc_flow_logs_config": res.#google_network_management_vpc_flow_logs_config
 	_#res: "\(#googlePrefix)_network_security_address_group": res.#google_network_security_address_group
 	_#res: "\(#googlePrefix)_network_security_address_group_iam_binding": res.#google_network_security_address_group_iam_binding
@@ -883,6 +888,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_network_services_lb_route_extension": res.#google_network_services_lb_route_extension
 	_#res: "\(#googlePrefix)_network_services_lb_traffic_extension": res.#google_network_services_lb_traffic_extension
 	_#res: "\(#googlePrefix)_network_services_mesh": res.#google_network_services_mesh
+	_#res: "\(#googlePrefix)_network_services_multicast_domain": res.#google_network_services_multicast_domain
 	_#res: "\(#googlePrefix)_network_services_service_binding": res.#google_network_services_service_binding
 	_#res: "\(#googlePrefix)_network_services_tcp_route": res.#google_network_services_tcp_route
 	_#res: "\(#googlePrefix)_network_services_tls_route": res.#google_network_services_tls_route

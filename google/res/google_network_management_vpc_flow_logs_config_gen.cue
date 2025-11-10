@@ -74,12 +74,17 @@ package res
 		// logs. Can only be specified if \"metadata\" was set to
 		// CUSTOM_METADATA.
 		metadata_fields?: [...string]
-		timeouts?: #timeouts
 
 		// Identifier. Unique name of the configuration using the form:
 		// 'projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}'
-		name?:    string
-		project?: string
+		name?: string
+
+		// Traffic will be logged from VMs, VPN tunnels and Interconnect
+		// Attachments within the network. Format:
+		// projects/{project_id}/global/networks/{name}
+		network?:  string
+		timeouts?: #timeouts
+		project?:  string
 
 		// Optional. The state of the VPC Flow Log configuration. Default
 		// value
@@ -87,6 +92,10 @@ package res
 		// enabled.
 		// Possible values: STATE_UNSPECIFIED ENABLED DISABLED
 		state?: string
+
+		// Traffic will be logged from VMs within the subnetwork. Format:
+		// projects/{project_id}/regions/{region}/subnetworks/{name}
+		subnet?: string
 
 		// Describes the state of the configured target resource for
 		// diagnostic

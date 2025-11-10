@@ -326,6 +326,9 @@ package data
 			})]
 			cluster_ipv4_cidr_block?:      string
 			cluster_secondary_range_name?: string
+			network_tier_config?: [...close({
+				network_tier?: string
+			})]
 			pod_cidr_overprovision_config?: [...close({
 				disabled?: bool
 			})]

@@ -25,6 +25,13 @@ package data
 			port_specification?: string
 		})]
 
+		// A nested object resource.
+		grpc_tls_health_check?: [...close({
+			grpc_service_name?:  string
+			port?:               number
+			port_specification?: string
+		})]
+
 		// A so-far unhealthy instance will be marked healthy after this
 		// many
 		// consecutive successes. The default value is 2.
@@ -81,8 +88,9 @@ package data
 		// characters must be a dash, lowercase letter, or digit, except
 		// the
 		// last character, which cannot be a dash.
-		name!:    string
-		project?: string
+		name!:      string
+		project?:   string
+		self_link?: string
 
 		// The list of cloud regions from which health checks are
 		// performed. If
@@ -109,7 +117,6 @@ package data
 		// managed
 		// instance group auto-healing.
 		source_regions?: [...string]
-		self_link?: string
 
 		// A nested object resource.
 		ssl_health_check?: [...close({

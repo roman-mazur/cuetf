@@ -97,12 +97,12 @@ package res
 		// VPC network name with format:
 		// 'projects/{{project}}/global/networks/{{network}}'
 		network!: string
+		project?: string
 
 		// QoS (Quality of Service) type of the storage pool.
 		// Possible values are: AUTO, MANUAL. Possible values:
 		// ["QOS_TYPE_UNSPECIFIED", "AUTO", "MANUAL"]
 		qos_type?: string
-		project?:  string
 
 		// Specifies the replica zone for regional Flex pools. 'zone' and
 		// 'replica_zone' values can be swapped to initiate a
@@ -126,6 +126,13 @@ package res
 		// Optional. Custom Performance Total Throughput of the pool (in
 		// MiB/s).
 		total_throughput_mibps?: string
+
+		// Type of the storage pool.
+		// This field is used to control whether the pool supports FILE
+		// based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+		// If not specified during creation, it defaults to FILE. Possible
+		// values: ["STORAGE_POOL_TYPE_UNSPECIFIED", "FILE", "UNIFIED"]
+		type?: string
 
 		// Size allocated to volumes in the storage pool (in GiB).
 		volume_capacity_gib?: string

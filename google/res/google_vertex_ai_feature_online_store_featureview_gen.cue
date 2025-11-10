@@ -71,6 +71,10 @@ import "list"
 	})
 
 	#sync_config: close({
+		// If true, syncs the FeatureView in a continuous manner to Online
+		// Store.
+		continuous?: bool
+
 		// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch
 		// scheduled runs.
 		// To explicitly set a timezone to the cron tab, apply a prefix in

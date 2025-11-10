@@ -235,6 +235,7 @@ package data
 			containers?: [...close({
 				args?: [...string]
 				command?: [...string]
+				depends_on?: [...string]
 				env?: [...close({
 					name?:  string
 					value?: string

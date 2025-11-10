@@ -15,24 +15,41 @@ package res
 		// encrypt/decrypt their event data. It must match the pattern
 		// 'projects/*/locations/*/keyRings/*/cryptoKeys/*'.
 		crypto_key_name?: string
-		id?:              string
+
+		// All of labels (key/value pairs) present on the resource in GCP,
+		// including the labels configured through Terraform, other
+		// clients and services.
+		effective_labels?: [string]: string
+
+		// User-defined labels for the channel.
+		//
+		// **Note**: This field is non-authoritative, and will only manage
+		// the labels present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the
+		// labels present on the resource.
+		labels?: [string]: string
+		id?: string
 
 		// The location for the resource
 		location!: string
 
 		// The resource name of the channel. Must be unique within the
 		// location on the project.
-		name!:    string
-		project?: string
+		name!: string
 
 		// The name of the Pub/Sub topic created and managed by Eventarc
 		// system as a transport for the event delivery. Format:
 		// 'projects/{project}/topics/{topic_id}'.
 		pubsub_topic?: string
+		project?:      string
 
 		// The state of a Channel.
 		state?:    string
 		timeouts?: #timeouts
+
+		// The combination of labels configured directly on the resource
+		// and default labels configured on the provider.
+		terraform_labels?: [string]: string
 
 		// The name of the event provider (e.g. Eventarc SaaS partner)
 		// associated with the channel. This provider will be granted

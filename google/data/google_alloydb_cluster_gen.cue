@@ -140,7 +140,8 @@ package data
 		etag?: string
 		id?:   string
 
-		// Initial user to setup during cluster creation.
+		// Initial user to setup during cluster creation. This must be set
+		// for all new Clusters.
 		initial_user?: [...close({
 			password?: string
 			user?:     string

@@ -380,18 +380,21 @@ import "list"
 		// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 		command?: [...string]
 
+		// Names of the containers that must start before this container.
+		depends_on?: [...string]
+		env?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/env", [..._#defs."/$defs/template/$defs/containers/$defs/env"]])
+
 		// URL of the Container image in Google Container Registry or
 		// Google Artifact Registry. More info:
 		// https://kubernetes.io/docs/concepts/containers/images
 		image!: string
-
-		// Name of the container specified as a DNS_LABEL.
-		name?: string
-		env?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/env", [..._#defs."/$defs/template/$defs/containers/$defs/env"]])
 		liveness_probe?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/liveness_probe", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/liveness_probe"]])
 		resources?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/resources", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/resources"]])
 		startup_probe?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/startup_probe", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/startup_probe"]])
 		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/containers/$defs/volume_mounts"]])
+
+		// Name of the container specified as a DNS_LABEL.
+		name?: string
 
 		// Container's working directory. If not specified, the container
 		// runtime's default will be used, which might be configured in
