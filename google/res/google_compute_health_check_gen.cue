@@ -10,7 +10,6 @@ import "list"
 		// value is 5
 		// seconds.
 		check_interval_sec?: number
-		grpc_health_check?: matchN(1, [#grpc_health_check, list.MaxItems(1) & [...#grpc_health_check]])
 
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
@@ -37,9 +36,10 @@ import "list"
 		// characters must be a dash, lowercase letter, or digit, except
 		// the
 		// last character, which cannot be a dash.
-		name!:      string
-		id?:        string
-		project?:   string
+		name!:    string
+		id?:      string
+		project?: string
+		grpc_health_check?: matchN(1, [#grpc_health_check, list.MaxItems(1) & [...#grpc_health_check]])
 		self_link?: string
 
 		// The list of cloud regions from which health checks are
@@ -67,6 +67,7 @@ import "list"
 		// managed
 		// instance group auto-healing.
 		source_regions?: [...string]
+		grpc_tls_health_check?: matchN(1, [#grpc_tls_health_check, list.MaxItems(1) & [...#grpc_tls_health_check]])
 		http2_health_check?: matchN(1, [#http2_health_check, list.MaxItems(1) & [...#http2_health_check]])
 		http_health_check?: matchN(1, [#http_health_check, list.MaxItems(1) & [...#http_health_check]])
 		https_health_check?: matchN(1, [#https_health_check, list.MaxItems(1) & [...#https_health_check]])
@@ -133,6 +134,46 @@ import "list"
 		// in 'port' and
 		// 'portName' fields. Possible values: ["USE_FIXED_PORT",
 		// "USE_NAMED_PORT", "USE_SERVING_PORT"]
+		port_specification?: string
+	})
+
+	#grpc_tls_health_check: close({
+		// The gRPC service name for the health check.
+		// The value of grpcServiceName has the following meanings by
+		// convention:
+		// - Empty serviceName means the overall status of all services at
+		// the backend.
+		// - Non-empty serviceName means the health of that gRPC service,
+		// as defined by the owner of the service.
+		// The grpcServiceName can only be ASCII.
+		grpc_service_name?: string
+
+		// The port number for the health check request.
+		// Must be specified if port_specification is USE_FIXED_PORT.
+		// Valid values are 1 through 65535.
+		port?: number
+
+		// Specifies how port is selected for health checking, can be one
+		// of the
+		// following values:
+		//
+		// * 'USE_FIXED_PORT': The port number in 'port' is used for
+		// health checking.
+		//
+		// * 'USE_NAMED_PORT': Not supported for GRPC with TLS health
+		// checking.
+		//
+		// * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port
+		// specified for each
+		// network endpoint is used for health checking. For other
+		// backends, the
+		// port or named port specified in the Backend Service is used for
+		// health
+		// checking.
+		//
+		// If not specified, gRPC with TLS health check follows behavior
+		// specified in the 'port' field. Possible values:
+		// ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 		port_specification?: string
 	})
 

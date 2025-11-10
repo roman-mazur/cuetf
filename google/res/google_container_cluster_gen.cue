@@ -453,12 +453,13 @@ import "list"
 		services_secondary_range_name?: string
 		additional_ip_ranges_config?: matchN(1, [_#defs."/$defs/ip_allocation_policy/$defs/additional_ip_ranges_config", [..._#defs."/$defs/ip_allocation_policy/$defs/additional_ip_ranges_config"]])
 		additional_pod_ranges_config?: matchN(1, [_#defs."/$defs/ip_allocation_policy/$defs/additional_pod_ranges_config", list.MaxItems(1) & [..._#defs."/$defs/ip_allocation_policy/$defs/additional_pod_ranges_config"]])
+		auto_ipam_config?: matchN(1, [_#defs."/$defs/ip_allocation_policy/$defs/auto_ipam_config", list.MaxItems(1) & [..._#defs."/$defs/ip_allocation_policy/$defs/auto_ipam_config"]])
+		network_tier_config?: matchN(1, [_#defs."/$defs/ip_allocation_policy/$defs/network_tier_config", list.MaxItems(1) & [..._#defs."/$defs/ip_allocation_policy/$defs/network_tier_config"]])
+		pod_cidr_overprovision_config?: matchN(1, [_#defs."/$defs/ip_allocation_policy/$defs/pod_cidr_overprovision_config", list.MaxItems(1) & [..._#defs."/$defs/ip_allocation_policy/$defs/pod_cidr_overprovision_config"]])
 
 		// The IP Stack type of the cluster. Choose between IPV4 and
 		// IPV4_IPV6. Default type is IPV4 Only if not set
 		stack_type?: string
-		auto_ipam_config?: matchN(1, [_#defs."/$defs/ip_allocation_policy/$defs/auto_ipam_config", list.MaxItems(1) & [..._#defs."/$defs/ip_allocation_policy/$defs/auto_ipam_config"]])
-		pod_cidr_overprovision_config?: matchN(1, [_#defs."/$defs/ip_allocation_policy/$defs/pod_cidr_overprovision_config", list.MaxItems(1) & [..._#defs."/$defs/ip_allocation_policy/$defs/pod_cidr_overprovision_config"]])
 	})
 
 	#logging_config: close({
@@ -1128,6 +1129,11 @@ import "list"
 	_#defs: "/$defs/ip_allocation_policy/$defs/auto_ipam_config": close({
 		// The flag that enables Auto IPAM on this cluster.
 		enabled!: bool
+	})
+
+	_#defs: "/$defs/ip_allocation_policy/$defs/network_tier_config": close({
+		// Network tier configuration.
+		network_tier!: string
 	})
 
 	_#defs: "/$defs/ip_allocation_policy/$defs/pod_cidr_overprovision_config": close({

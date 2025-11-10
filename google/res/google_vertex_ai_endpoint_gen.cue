@@ -178,6 +178,8 @@ import "list"
 	})
 
 	#private_service_connect_config: close({
+		psc_automation_configs?: matchN(1, [_#defs."/$defs/private_service_connect_config/$defs/psc_automation_configs", [..._#defs."/$defs/private_service_connect_config/$defs/psc_automation_configs"]])
+
 		// Required. If true, expose the IndexEndpoint via private service
 		// connect.
 		enable_private_service_connect!: bool
@@ -202,5 +204,28 @@ import "list"
 		// 'bq://projectId.bqDatasetId' or
 		// 'bq://projectId.bqDatasetId.bqTableId'.
 		output_uri?: string
+	})
+
+	_#defs: "/$defs/private_service_connect_config/$defs/psc_automation_configs": close({
+		// Error message if the PSC service automation failed.
+		error_message?: string
+
+		// Forwarding rule created by the PSC service automation.
+		forwarding_rule?: string
+
+		// IP address rule created by the PSC service automation.
+		ip_address?: string
+
+		// The full name of the Google Compute Engine
+		// [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
+		// [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get):
+		// projects/{project}/global/networks/{network}.
+		network!: string
+
+		// Project id used to create forwarding rule.
+		project_id!: string
+
+		// The state of the PSC service automation.
+		state?: string
 	})
 }
