@@ -12,7 +12,7 @@ import "list"
 		last_updated_date?: string
 		mesh_name!:         string
 		mesh_owner?:        string
-		spec?: matchN(1, [#spec, list.MaxItems(1) & [_, ...] & [...#spec]])
+		spec!: matchN(1, [#spec, list.MaxItems(1) & [_, ...] & [...#spec]])
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -35,14 +35,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/grpc_route": close({
-		action?: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/action"]])
+		action!: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/action"]])
 		match?: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/match", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/match"]])
 		retry_policy?: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/retry_policy", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/retry_policy"]])
 		timeout?: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/timeout", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/timeout"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/grpc_route/$defs/action": close({
-		weighted_target?: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/action/$defs/weighted_target", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/action/$defs/weighted_target"]])
+		weighted_target!: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/action/$defs/weighted_target", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/action/$defs/weighted_target"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/grpc_route/$defs/action/$defs/weighted_target": close({
@@ -79,7 +79,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/grpc_route/$defs/retry_policy": close({
-		per_retry_timeout?: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/retry_policy/$defs/per_retry_timeout", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/retry_policy/$defs/per_retry_timeout"]])
+		per_retry_timeout!: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/retry_policy/$defs/per_retry_timeout", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/retry_policy/$defs/per_retry_timeout"]])
 		grpc_retry_events?: [...string]
 		http_retry_events?: [...string]
 		max_retries!: number
@@ -107,14 +107,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/http2_route": close({
-		action?: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http2_route/$defs/action"]])
-		match?: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http2_route/$defs/match"]])
+		action!: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http2_route/$defs/action"]])
+		match!: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http2_route/$defs/match"]])
 		retry_policy?: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/retry_policy", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/http2_route/$defs/retry_policy"]])
 		timeout?: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/timeout", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/http2_route/$defs/timeout"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/http2_route/$defs/action": close({
-		weighted_target?: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/action/$defs/weighted_target", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/spec/$defs/http2_route/$defs/action/$defs/weighted_target"]])
+		weighted_target!: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/action/$defs/weighted_target", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/spec/$defs/http2_route/$defs/action/$defs/weighted_target"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/http2_route/$defs/action/$defs/weighted_target": close({
@@ -167,7 +167,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/http2_route/$defs/retry_policy": close({
-		per_retry_timeout?: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/retry_policy/$defs/per_retry_timeout", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http2_route/$defs/retry_policy/$defs/per_retry_timeout"]])
+		per_retry_timeout!: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/retry_policy/$defs/per_retry_timeout", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http2_route/$defs/retry_policy/$defs/per_retry_timeout"]])
 		http_retry_events?: [...string]
 		max_retries!: number
 		tcp_retry_events?: [...string]
@@ -194,14 +194,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/http_route": close({
-		action?: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http_route/$defs/action"]])
-		match?: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http_route/$defs/match"]])
+		action!: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http_route/$defs/action"]])
+		match!: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http_route/$defs/match"]])
 		retry_policy?: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/retry_policy", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/http_route/$defs/retry_policy"]])
 		timeout?: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/timeout", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/http_route/$defs/timeout"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/http_route/$defs/action": close({
-		weighted_target?: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/action/$defs/weighted_target", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/spec/$defs/http_route/$defs/action/$defs/weighted_target"]])
+		weighted_target!: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/action/$defs/weighted_target", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/spec/$defs/http_route/$defs/action/$defs/weighted_target"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/http_route/$defs/action/$defs/weighted_target": close({
@@ -254,7 +254,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/http_route/$defs/retry_policy": close({
-		per_retry_timeout?: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/retry_policy/$defs/per_retry_timeout", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http_route/$defs/retry_policy/$defs/per_retry_timeout"]])
+		per_retry_timeout!: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/retry_policy/$defs/per_retry_timeout", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http_route/$defs/retry_policy/$defs/per_retry_timeout"]])
 		http_retry_events?: [...string]
 		max_retries!: number
 		tcp_retry_events?: [...string]
@@ -281,13 +281,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/tcp_route": close({
-		action?: matchN(1, [_#defs."/$defs/spec/$defs/tcp_route/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/tcp_route/$defs/action"]])
+		action!: matchN(1, [_#defs."/$defs/spec/$defs/tcp_route/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/tcp_route/$defs/action"]])
 		match?: matchN(1, [_#defs."/$defs/spec/$defs/tcp_route/$defs/match", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/tcp_route/$defs/match"]])
 		timeout?: matchN(1, [_#defs."/$defs/spec/$defs/tcp_route/$defs/timeout", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/tcp_route/$defs/timeout"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/tcp_route/$defs/action": close({
-		weighted_target?: matchN(1, [_#defs."/$defs/spec/$defs/tcp_route/$defs/action/$defs/weighted_target", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/spec/$defs/tcp_route/$defs/action/$defs/weighted_target"]])
+		weighted_target!: matchN(1, [_#defs."/$defs/spec/$defs/tcp_route/$defs/action/$defs/weighted_target", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/spec/$defs/tcp_route/$defs/action/$defs/weighted_target"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/tcp_route/$defs/action/$defs/weighted_target": close({

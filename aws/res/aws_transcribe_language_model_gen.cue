@@ -19,7 +19,7 @@ import "list"
 		model_name!:    string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		input_data_config?: matchN(1, [#input_data_config, list.MaxItems(1) & [_, ...] & [...#input_data_config]])
+		input_data_config!: matchN(1, [#input_data_config, list.MaxItems(1) & [_, ...] & [...#input_data_config]])
 		timeouts?: #timeouts
 	})
 

@@ -21,17 +21,17 @@ import "list"
 		max_size!: number
 		min_size!: number
 		auto_scaling_policy?: matchN(1, [#auto_scaling_policy, list.MaxItems(1) & [...#auto_scaling_policy]])
-		instance_definition?: matchN(1, [#instance_definition, list.MaxItems(20) & [_, _, ...] & [...#instance_definition]])
+		instance_definition!: matchN(1, [#instance_definition, list.MaxItems(20) & [_, _, ...] & [...#instance_definition]])
 		role_arn!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		vpc_subnets?: [...string]
-		launch_template?: matchN(1, [#launch_template, list.MaxItems(1) & [_, ...] & [...#launch_template]])
+		launch_template!: matchN(1, [#launch_template, list.MaxItems(1) & [_, ...] & [...#launch_template]])
 		timeouts?: #timeouts
 	})
 
 	#auto_scaling_policy: close({
-		target_tracking_configuration?: matchN(1, [_#defs."/$defs/auto_scaling_policy/$defs/target_tracking_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auto_scaling_policy/$defs/target_tracking_configuration"]])
+		target_tracking_configuration!: matchN(1, [_#defs."/$defs/auto_scaling_policy/$defs/target_tracking_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auto_scaling_policy/$defs/target_tracking_configuration"]])
 		estimated_instance_warmup?: number
 	})
 

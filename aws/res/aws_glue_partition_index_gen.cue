@@ -16,7 +16,7 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:     string
 		table_name!: string
-		partition_index?: matchN(1, [#partition_index, list.MaxItems(1) & [_, ...] & [...#partition_index]])
+		partition_index!: matchN(1, [#partition_index, list.MaxItems(1) & [_, ...] & [...#partition_index]])
 		timeouts?: #timeouts
 	})
 

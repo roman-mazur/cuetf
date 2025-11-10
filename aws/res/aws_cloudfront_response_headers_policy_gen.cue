@@ -19,9 +19,9 @@ import "list"
 	})
 
 	#cors_config: close({
-		access_control_allow_headers?: matchN(1, [_#defs."/$defs/cors_config/$defs/access_control_allow_headers", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/cors_config/$defs/access_control_allow_headers"]])
-		access_control_allow_methods?: matchN(1, [_#defs."/$defs/cors_config/$defs/access_control_allow_methods", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/cors_config/$defs/access_control_allow_methods"]])
-		access_control_allow_origins?: matchN(1, [_#defs."/$defs/cors_config/$defs/access_control_allow_origins", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/cors_config/$defs/access_control_allow_origins"]])
+		access_control_allow_headers!: matchN(1, [_#defs."/$defs/cors_config/$defs/access_control_allow_headers", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/cors_config/$defs/access_control_allow_headers"]])
+		access_control_allow_methods!: matchN(1, [_#defs."/$defs/cors_config/$defs/access_control_allow_methods", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/cors_config/$defs/access_control_allow_methods"]])
+		access_control_allow_origins!: matchN(1, [_#defs."/$defs/cors_config/$defs/access_control_allow_origins", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/cors_config/$defs/access_control_allow_origins"]])
 		access_control_expose_headers?: matchN(1, [_#defs."/$defs/cors_config/$defs/access_control_expose_headers", list.MaxItems(1) & [..._#defs."/$defs/cors_config/$defs/access_control_expose_headers"]])
 		access_control_allow_credentials!: bool
 		access_control_max_age_sec?:       number

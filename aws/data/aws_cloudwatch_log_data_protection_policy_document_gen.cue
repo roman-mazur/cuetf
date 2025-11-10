@@ -12,7 +12,7 @@ import "list"
 		json?:        string
 		name!:        string
 		version?:     string
-		statement?: matchN(1, [#statement, list.MaxItems(2) & [_, _, ...] & [...#statement]])
+		statement!: matchN(1, [#statement, list.MaxItems(2) & [_, _, ...] & [...#statement]])
 	})
 
 	#configuration: close({
@@ -20,7 +20,7 @@ import "list"
 	})
 
 	#statement: close({
-		operation?: matchN(1, [_#defs."/$defs/statement/$defs/operation", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/statement/$defs/operation"]])
+		operation!: matchN(1, [_#defs."/$defs/statement/$defs/operation", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/statement/$defs/operation"]])
 		data_identifiers!: [...string]
 		sid?: string
 	})
@@ -36,7 +36,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/statement/$defs/operation/$defs/audit": close({
-		findings_destination?: matchN(1, [_#defs."/$defs/statement/$defs/operation/$defs/audit/$defs/findings_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/statement/$defs/operation/$defs/audit/$defs/findings_destination"]])
+		findings_destination!: matchN(1, [_#defs."/$defs/statement/$defs/operation/$defs/audit/$defs/findings_destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/statement/$defs/operation/$defs/audit/$defs/findings_destination"]])
 	})
 
 	_#defs: "/$defs/statement/$defs/operation/$defs/audit/$defs/findings_destination": close({
@@ -58,7 +58,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/statement/$defs/operation/$defs/deidentify": close({
-		mask_config?: matchN(1, [_#defs."/$defs/statement/$defs/operation/$defs/deidentify/$defs/mask_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/statement/$defs/operation/$defs/deidentify/$defs/mask_config"]])
+		mask_config!: matchN(1, [_#defs."/$defs/statement/$defs/operation/$defs/deidentify/$defs/mask_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/statement/$defs/operation/$defs/deidentify/$defs/mask_config"]])
 	})
 
 	_#defs: "/$defs/statement/$defs/operation/$defs/deidentify/$defs/mask_config": close({})

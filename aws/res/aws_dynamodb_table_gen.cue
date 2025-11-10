@@ -64,7 +64,7 @@ import "list"
 
 	#import_table: close({
 		input_format_options?: matchN(1, [_#defs."/$defs/import_table/$defs/input_format_options", list.MaxItems(1) & [..._#defs."/$defs/import_table/$defs/input_format_options"]])
-		s3_bucket_source?: matchN(1, [_#defs."/$defs/import_table/$defs/s3_bucket_source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/import_table/$defs/s3_bucket_source"]])
+		s3_bucket_source!: matchN(1, [_#defs."/$defs/import_table/$defs/s3_bucket_source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/import_table/$defs/s3_bucket_source"]])
 		input_compression_type?: string
 		input_format!:           string
 	})

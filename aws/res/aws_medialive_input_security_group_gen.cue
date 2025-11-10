@@ -16,7 +16,7 @@ package res
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		timeouts?: #timeouts
-		whitelist_rules?: matchN(1, [#whitelist_rules, [_, ...] & [...#whitelist_rules]])
+		whitelist_rules!: matchN(1, [#whitelist_rules, [_, ...] & [...#whitelist_rules]])
 	})
 
 	#timeouts: close({

@@ -16,7 +16,7 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		domain_name_configuration?: matchN(1, [#domain_name_configuration, list.MaxItems(1) & [_, ...] & [...#domain_name_configuration]])
+		domain_name_configuration!: matchN(1, [#domain_name_configuration, list.MaxItems(1) & [_, ...] & [...#domain_name_configuration]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		mutual_tls_authentication?: matchN(1, [#mutual_tls_authentication, list.MaxItems(1) & [...#mutual_tls_authentication]])

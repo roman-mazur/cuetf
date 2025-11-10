@@ -21,7 +21,7 @@ import "list"
 		kerberos_keytab_base64?:    string
 		kerberos_krb5_conf?:        string
 		kerberos_krb5_conf_base64?: string
-		name_node?: matchN(1, [#name_node, [_, ...] & [...#name_node]])
+		name_node!: matchN(1, [#name_node, [_, ...] & [...#name_node]])
 		qop_configuration?: matchN(1, [#qop_configuration, list.MaxItems(1) & [...#qop_configuration]])
 		kerberos_principal?:   string
 		kms_key_provider_uri?: string

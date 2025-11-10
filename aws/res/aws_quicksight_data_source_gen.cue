@@ -19,7 +19,7 @@ import "list"
 		region?: string
 		name!:   string
 		tags?: [string]: string
-		parameters?: matchN(1, [#parameters, list.MaxItems(1) & [_, ...] & [...#parameters]])
+		parameters!: matchN(1, [#parameters, list.MaxItems(1) & [_, ...] & [...#parameters]])
 		tags_all?: [string]: string
 		permission?: matchN(1, [#permission, list.MaxItems(64) & [...#permission]])
 		ssl_properties?: matchN(1, [#ssl_properties, list.MaxItems(1) & [...#ssl_properties]])
@@ -152,7 +152,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/parameters/$defs/s3": close({
-		manifest_file_location?: matchN(1, [_#defs."/$defs/parameters/$defs/s3/$defs/manifest_file_location", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/parameters/$defs/s3/$defs/manifest_file_location"]])
+		manifest_file_location!: matchN(1, [_#defs."/$defs/parameters/$defs/s3/$defs/manifest_file_location", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/parameters/$defs/s3/$defs/manifest_file_location"]])
 		role_arn?: string
 	})
 

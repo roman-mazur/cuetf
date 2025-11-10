@@ -20,7 +20,7 @@ import "list"
 		region?:       string
 		fleet_type?:   string
 		iam_role_arn?: string
-		compute_capacity?: matchN(1, [#compute_capacity, list.MaxItems(1) & [_, ...] & [...#compute_capacity]])
+		compute_capacity!: matchN(1, [#compute_capacity, list.MaxItems(1) & [_, ...] & [...#compute_capacity]])
 		id?:                                 string
 		idle_disconnect_timeout_in_seconds?: number
 		image_arn?:                          string

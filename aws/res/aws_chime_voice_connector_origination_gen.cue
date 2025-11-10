@@ -15,7 +15,7 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:             string
 		voice_connector_id!: string
-		route?: matchN(1, [#route, list.MaxItems(20) & [_, ...] & [...#route]])
+		route!: matchN(1, [#route, list.MaxItems(20) & [_, ...] & [...#route]])
 	})
 
 	#route: close({

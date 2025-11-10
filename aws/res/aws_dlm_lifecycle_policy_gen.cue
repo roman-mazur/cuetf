@@ -19,7 +19,7 @@ import "list"
 		state?:              string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		policy_details?: matchN(1, [#policy_details, list.MaxItems(1) & [_, ...] & [...#policy_details]])
+		policy_details!: matchN(1, [#policy_details, list.MaxItems(1) & [_, ...] & [...#policy_details]])
 	})
 
 	#policy_details: close({
@@ -41,12 +41,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/policy_details/$defs/action": close({
-		cross_region_copy?: matchN(1, [_#defs."/$defs/policy_details/$defs/action/$defs/cross_region_copy", list.MaxItems(3) & [_, ...] & [..._#defs."/$defs/policy_details/$defs/action/$defs/cross_region_copy"]])
+		cross_region_copy!: matchN(1, [_#defs."/$defs/policy_details/$defs/action/$defs/cross_region_copy", list.MaxItems(3) & [_, ...] & [..._#defs."/$defs/policy_details/$defs/action/$defs/cross_region_copy"]])
 		name!: string
 	})
 
 	_#defs: "/$defs/policy_details/$defs/action/$defs/cross_region_copy": close({
-		encryption_configuration?: matchN(1, [_#defs."/$defs/policy_details/$defs/action/$defs/cross_region_copy/$defs/encryption_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_details/$defs/action/$defs/cross_region_copy/$defs/encryption_configuration"]])
+		encryption_configuration!: matchN(1, [_#defs."/$defs/policy_details/$defs/action/$defs/cross_region_copy/$defs/encryption_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_details/$defs/action/$defs/cross_region_copy/$defs/encryption_configuration"]])
 		retain_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/action/$defs/cross_region_copy/$defs/retain_rule", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/action/$defs/cross_region_copy/$defs/retain_rule"]])
 		target!: string
 	})
@@ -62,7 +62,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/policy_details/$defs/event_source": close({
-		parameters?: matchN(1, [_#defs."/$defs/policy_details/$defs/event_source/$defs/parameters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_details/$defs/event_source/$defs/parameters"]])
+		parameters!: matchN(1, [_#defs."/$defs/policy_details/$defs/event_source/$defs/parameters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_details/$defs/event_source/$defs/parameters"]])
 		type!: string
 	})
 
@@ -85,7 +85,7 @@ import "list"
 
 	_#defs: "/$defs/policy_details/$defs/schedule": close({
 		archive_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/archive_rule", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/archive_rule"]])
-		create_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/create_rule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/create_rule"]])
+		create_rule!: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/create_rule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/create_rule"]])
 		copy_tags?: bool
 		name!:      string
 		tags_to_add?: [string]:   string
@@ -93,16 +93,16 @@ import "list"
 		cross_region_copy_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/cross_region_copy_rule", list.MaxItems(3) & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/cross_region_copy_rule"]])
 		deprecate_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/deprecate_rule", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/deprecate_rule"]])
 		fast_restore_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/fast_restore_rule", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/fast_restore_rule"]])
-		retain_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/retain_rule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/retain_rule"]])
+		retain_rule!: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/retain_rule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/retain_rule"]])
 		share_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/share_rule", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/share_rule"]])
 	})
 
 	_#defs: "/$defs/policy_details/$defs/schedule/$defs/archive_rule": close({
-		archive_retain_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/archive_rule/$defs/archive_retain_rule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/archive_rule/$defs/archive_retain_rule"]])
+		archive_retain_rule!: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/archive_rule/$defs/archive_retain_rule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/archive_rule/$defs/archive_retain_rule"]])
 	})
 
 	_#defs: "/$defs/policy_details/$defs/schedule/$defs/archive_rule/$defs/archive_retain_rule": close({
-		retention_archive_tier?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/archive_rule/$defs/archive_retain_rule/$defs/retention_archive_tier", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/archive_rule/$defs/archive_retain_rule/$defs/retention_archive_tier"]])
+		retention_archive_tier!: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/archive_rule/$defs/archive_retain_rule/$defs/retention_archive_tier", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/archive_rule/$defs/archive_retain_rule/$defs/retention_archive_tier"]])
 	})
 
 	_#defs: "/$defs/policy_details/$defs/schedule/$defs/archive_rule/$defs/archive_retain_rule/$defs/retention_archive_tier": close({

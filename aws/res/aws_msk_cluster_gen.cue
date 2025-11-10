@@ -27,7 +27,7 @@ import "list"
 		cluster_uuid?:                                  string
 		current_version?:                               string
 		enhanced_monitoring?:                           string
-		broker_node_group_info?: matchN(1, [#broker_node_group_info, list.MaxItems(1) & [_, ...] & [...#broker_node_group_info]])
+		broker_node_group_info!: matchN(1, [#broker_node_group_info, list.MaxItems(1) & [_, ...] & [...#broker_node_group_info]])
 		client_authentication?: matchN(1, [#client_authentication, list.MaxItems(1) & [...#client_authentication]])
 		id?: string
 		configuration_info?: matchN(1, [#configuration_info, list.MaxItems(1) & [...#configuration_info]])
@@ -70,11 +70,11 @@ import "list"
 	})
 
 	#logging_info: close({
-		broker_logs?: matchN(1, [_#defs."/$defs/logging_info/$defs/broker_logs", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/logging_info/$defs/broker_logs"]])
+		broker_logs!: matchN(1, [_#defs."/$defs/logging_info/$defs/broker_logs", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/logging_info/$defs/broker_logs"]])
 	})
 
 	#open_monitoring: close({
-		prometheus?: matchN(1, [_#defs."/$defs/open_monitoring/$defs/prometheus", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/open_monitoring/$defs/prometheus"]])
+		prometheus!: matchN(1, [_#defs."/$defs/open_monitoring/$defs/prometheus", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/open_monitoring/$defs/prometheus"]])
 	})
 
 	#timeouts: close({

@@ -19,7 +19,7 @@ import "list"
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		user_name!: string
-		authentication_mode?: matchN(1, [#authentication_mode, list.MaxItems(1) & [_, ...] & [...#authentication_mode]])
+		authentication_mode!: matchN(1, [#authentication_mode, list.MaxItems(1) & [_, ...] & [...#authentication_mode]])
 	})
 
 	#authentication_mode: close({

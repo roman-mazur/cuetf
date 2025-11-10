@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_waf_web_acl")
 	close({
-		default_action?: matchN(1, [#default_action, list.MaxItems(1) & [_, ...] & [...#default_action]])
+		default_action!: matchN(1, [#default_action, list.MaxItems(1) & [_, ...] & [...#default_action]])
 		arn?:         string
 		id?:          string
 		metric_name!: string
@@ -35,7 +35,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/logging_configuration/$defs/redacted_fields": close({
-		field_to_match?: matchN(1, [_#defs."/$defs/logging_configuration/$defs/redacted_fields/$defs/field_to_match", [_, ...] & [..._#defs."/$defs/logging_configuration/$defs/redacted_fields/$defs/field_to_match"]])
+		field_to_match!: matchN(1, [_#defs."/$defs/logging_configuration/$defs/redacted_fields/$defs/field_to_match", [_, ...] & [..._#defs."/$defs/logging_configuration/$defs/redacted_fields/$defs/field_to_match"]])
 	})
 
 	_#defs: "/$defs/logging_configuration/$defs/redacted_fields/$defs/field_to_match": close({

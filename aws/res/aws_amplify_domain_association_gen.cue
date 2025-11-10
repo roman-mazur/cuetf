@@ -20,7 +20,7 @@ import "list"
 		id?:                                  string
 		wait_for_verification?:               bool
 		certificate_settings?: matchN(1, [#certificate_settings, list.MaxItems(1) & [...#certificate_settings]])
-		sub_domain?: matchN(1, [#sub_domain, [_, ...] & [...#sub_domain]])
+		sub_domain!: matchN(1, [#sub_domain, [_, ...] & [...#sub_domain]])
 	})
 
 	#certificate_settings: close({

@@ -26,7 +26,7 @@ import "list"
 		parent_intent_signature?: string
 		sample_utterances?: [...string]
 		follow_up_prompt?: matchN(1, [#follow_up_prompt, list.MaxItems(1) & [...#follow_up_prompt]])
-		fulfillment_activity?: matchN(1, [#fulfillment_activity, list.MaxItems(1) & [_, ...] & [...#fulfillment_activity]])
+		fulfillment_activity!: matchN(1, [#fulfillment_activity, list.MaxItems(1) & [_, ...] & [...#fulfillment_activity]])
 		rejection_statement?: matchN(1, [#rejection_statement, list.MaxItems(1) & [...#rejection_statement]])
 		version?: string
 		slot?: matchN(1, [#slot, list.MaxItems(100) & [...#slot]])
@@ -34,12 +34,12 @@ import "list"
 	})
 
 	#conclusion_statement: close({
-		message?: matchN(1, [_#defs."/$defs/conclusion_statement/$defs/message", list.MaxItems(15) & [_, ...] & [..._#defs."/$defs/conclusion_statement/$defs/message"]])
+		message!: matchN(1, [_#defs."/$defs/conclusion_statement/$defs/message", list.MaxItems(15) & [_, ...] & [..._#defs."/$defs/conclusion_statement/$defs/message"]])
 		response_card?: string
 	})
 
 	#confirmation_prompt: close({
-		message?: matchN(1, [_#defs."/$defs/confirmation_prompt/$defs/message", list.MaxItems(15) & [_, ...] & [..._#defs."/$defs/confirmation_prompt/$defs/message"]])
+		message!: matchN(1, [_#defs."/$defs/confirmation_prompt/$defs/message", list.MaxItems(15) & [_, ...] & [..._#defs."/$defs/confirmation_prompt/$defs/message"]])
 		max_attempts!:  number
 		response_card?: string
 	})
@@ -50,8 +50,8 @@ import "list"
 	})
 
 	#follow_up_prompt: close({
-		prompt?: matchN(1, [_#defs."/$defs/follow_up_prompt/$defs/prompt", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/follow_up_prompt/$defs/prompt"]])
-		rejection_statement?: matchN(1, [_#defs."/$defs/follow_up_prompt/$defs/rejection_statement", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/follow_up_prompt/$defs/rejection_statement"]])
+		prompt!: matchN(1, [_#defs."/$defs/follow_up_prompt/$defs/prompt", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/follow_up_prompt/$defs/prompt"]])
+		rejection_statement!: matchN(1, [_#defs."/$defs/follow_up_prompt/$defs/rejection_statement", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/follow_up_prompt/$defs/rejection_statement"]])
 	})
 
 	#fulfillment_activity: close({
@@ -60,7 +60,7 @@ import "list"
 	})
 
 	#rejection_statement: close({
-		message?: matchN(1, [_#defs."/$defs/rejection_statement/$defs/message", list.MaxItems(15) & [_, ...] & [..._#defs."/$defs/rejection_statement/$defs/message"]])
+		message!: matchN(1, [_#defs."/$defs/rejection_statement/$defs/message", list.MaxItems(15) & [_, ...] & [..._#defs."/$defs/rejection_statement/$defs/message"]])
 		response_card?: string
 	})
 
@@ -95,7 +95,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/follow_up_prompt/$defs/prompt": close({
-		message?: matchN(1, [_#defs."/$defs/follow_up_prompt/$defs/prompt/$defs/message", list.MaxItems(15) & [_, ...] & [..._#defs."/$defs/follow_up_prompt/$defs/prompt/$defs/message"]])
+		message!: matchN(1, [_#defs."/$defs/follow_up_prompt/$defs/prompt/$defs/message", list.MaxItems(15) & [_, ...] & [..._#defs."/$defs/follow_up_prompt/$defs/prompt/$defs/message"]])
 		max_attempts!:  number
 		response_card?: string
 	})
@@ -107,7 +107,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/follow_up_prompt/$defs/rejection_statement": close({
-		message?: matchN(1, [_#defs."/$defs/follow_up_prompt/$defs/rejection_statement/$defs/message", list.MaxItems(15) & [_, ...] & [..._#defs."/$defs/follow_up_prompt/$defs/rejection_statement/$defs/message"]])
+		message!: matchN(1, [_#defs."/$defs/follow_up_prompt/$defs/rejection_statement/$defs/message", list.MaxItems(15) & [_, ...] & [..._#defs."/$defs/follow_up_prompt/$defs/rejection_statement/$defs/message"]])
 		response_card?: string
 	})
 
@@ -129,7 +129,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/slot/$defs/value_elicitation_prompt": close({
-		message?: matchN(1, [_#defs."/$defs/slot/$defs/value_elicitation_prompt/$defs/message", list.MaxItems(15) & [_, ...] & [..._#defs."/$defs/slot/$defs/value_elicitation_prompt/$defs/message"]])
+		message!: matchN(1, [_#defs."/$defs/slot/$defs/value_elicitation_prompt/$defs/message", list.MaxItems(15) & [_, ...] & [..._#defs."/$defs/slot/$defs/value_elicitation_prompt/$defs/message"]])
 		max_attempts!:  number
 		response_card?: string
 	})

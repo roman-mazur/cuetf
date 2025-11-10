@@ -12,7 +12,7 @@ import "list"
 		last_updated_date?: string
 		mesh_name!:         string
 		mesh_owner?:        string
-		spec?: matchN(1, [#spec, list.MaxItems(1) & [_, ...] & [...#spec]])
+		spec!: matchN(1, [#spec, list.MaxItems(1) & [_, ...] & [...#spec]])
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -34,16 +34,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/grpc_route": close({
-		action?: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/action"]])
-		match?: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/match"]])
+		action!: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/action"]])
+		match!: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/match"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/grpc_route/$defs/action": close({
-		target?: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/action/$defs/target", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/action/$defs/target"]])
+		target!: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/action/$defs/target", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/action/$defs/target"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/grpc_route/$defs/action/$defs/target": close({
-		virtual_service?: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/action/$defs/target/$defs/virtual_service", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/action/$defs/target/$defs/virtual_service"]])
+		virtual_service!: matchN(1, [_#defs."/$defs/spec/$defs/grpc_route/$defs/action/$defs/target/$defs/virtual_service", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/grpc_route/$defs/action/$defs/target/$defs/virtual_service"]])
 		port?: number
 	})
 
@@ -57,13 +57,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/http2_route": close({
-		action?: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http2_route/$defs/action"]])
-		match?: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http2_route/$defs/match"]])
+		action!: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http2_route/$defs/action"]])
+		match!: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http2_route/$defs/match"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/http2_route/$defs/action": close({
 		rewrite?: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/action/$defs/rewrite", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/http2_route/$defs/action/$defs/rewrite"]])
-		target?: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/action/$defs/target", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http2_route/$defs/action/$defs/target"]])
+		target!: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/action/$defs/target", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http2_route/$defs/action/$defs/target"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/http2_route/$defs/action/$defs/rewrite": close({
@@ -86,7 +86,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/http2_route/$defs/action/$defs/target": close({
-		virtual_service?: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/action/$defs/target/$defs/virtual_service", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http2_route/$defs/action/$defs/target/$defs/virtual_service"]])
+		virtual_service!: matchN(1, [_#defs."/$defs/spec/$defs/http2_route/$defs/action/$defs/target/$defs/virtual_service", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http2_route/$defs/action/$defs/target/$defs/virtual_service"]])
 		port?: number
 	})
 
@@ -142,13 +142,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/http_route": close({
-		action?: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http_route/$defs/action"]])
-		match?: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http_route/$defs/match"]])
+		action!: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http_route/$defs/action"]])
+		match!: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http_route/$defs/match"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/http_route/$defs/action": close({
 		rewrite?: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/action/$defs/rewrite", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/http_route/$defs/action/$defs/rewrite"]])
-		target?: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/action/$defs/target", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http_route/$defs/action/$defs/target"]])
+		target!: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/action/$defs/target", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http_route/$defs/action/$defs/target"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/http_route/$defs/action/$defs/rewrite": close({
@@ -171,7 +171,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/http_route/$defs/action/$defs/target": close({
-		virtual_service?: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/action/$defs/target/$defs/virtual_service", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http_route/$defs/action/$defs/target/$defs/virtual_service"]])
+		virtual_service!: matchN(1, [_#defs."/$defs/spec/$defs/http_route/$defs/action/$defs/target/$defs/virtual_service", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/http_route/$defs/action/$defs/target/$defs/virtual_service"]])
 		port?: number
 	})
 

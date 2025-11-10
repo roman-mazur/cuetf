@@ -17,7 +17,7 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		id?:     string
-		enumeration_value?: matchN(1, [#enumeration_value, list.MaxItems(10000) & [_, ...] & [...#enumeration_value]])
+		enumeration_value!: matchN(1, [#enumeration_value, list.MaxItems(10000) & [_, ...] & [...#enumeration_value]])
 		last_updated_date?:        string
 		timeouts?:                 #timeouts
 		name!:                     string

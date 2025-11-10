@@ -17,7 +17,7 @@ import "list"
 		rotation_enabled?:    bool
 		rotation_lambda_arn?: string
 		secret_id!:           string
-		rotation_rules?: matchN(1, [#rotation_rules, list.MaxItems(1) & [_, ...] & [...#rotation_rules]])
+		rotation_rules!: matchN(1, [#rotation_rules, list.MaxItems(1) & [_, ...] & [...#rotation_rules]])
 	})
 
 	#rotation_rules: close({

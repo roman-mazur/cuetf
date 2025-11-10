@@ -12,7 +12,7 @@ import "list"
 		file_system_access_role_arn?: string
 		id?:                          string
 		in_transit_encryption?:       string
-		ec2_config?: matchN(1, [#ec2_config, list.MaxItems(1) & [_, ...] & [...#ec2_config]])
+		ec2_config!: matchN(1, [#ec2_config, list.MaxItems(1) & [_, ...] & [...#ec2_config]])
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

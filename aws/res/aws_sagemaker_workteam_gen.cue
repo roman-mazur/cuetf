@@ -15,7 +15,7 @@ import "list"
 		region?:      string
 		description!: string
 		id?:          string
-		member_definition?: matchN(1, [#member_definition, list.MaxItems(10) & [_, ...] & [...#member_definition]])
+		member_definition!: matchN(1, [#member_definition, list.MaxItems(10) & [_, ...] & [...#member_definition]])
 		subdomain?: string
 		notification_configuration?: matchN(1, [#notification_configuration, list.MaxItems(1) & [...#notification_configuration]])
 		tags?: [string]:     string

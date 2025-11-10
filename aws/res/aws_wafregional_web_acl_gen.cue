@@ -16,7 +16,7 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		default_action?: matchN(1, [#default_action, list.MaxItems(1) & [_, ...] & [...#default_action]])
+		default_action!: matchN(1, [#default_action, list.MaxItems(1) & [_, ...] & [...#default_action]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [...#logging_configuration]])
@@ -41,7 +41,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/logging_configuration/$defs/redacted_fields": close({
-		field_to_match?: matchN(1, [_#defs."/$defs/logging_configuration/$defs/redacted_fields/$defs/field_to_match", [_, ...] & [..._#defs."/$defs/logging_configuration/$defs/redacted_fields/$defs/field_to_match"]])
+		field_to_match!: matchN(1, [_#defs."/$defs/logging_configuration/$defs/redacted_fields/$defs/field_to_match", [_, ...] & [..._#defs."/$defs/logging_configuration/$defs/redacted_fields/$defs/field_to_match"]])
 	})
 
 	_#defs: "/$defs/logging_configuration/$defs/redacted_fields/$defs/field_to_match": close({

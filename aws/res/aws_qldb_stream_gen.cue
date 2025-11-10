@@ -17,7 +17,7 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		kinesis_configuration?: matchN(1, [#kinesis_configuration, list.MaxItems(1) & [_, ...] & [...#kinesis_configuration]])
+		kinesis_configuration!: matchN(1, [#kinesis_configuration, list.MaxItems(1) & [_, ...] & [...#kinesis_configuration]])
 		role_arn!:    string
 		timeouts?:    #timeouts
 		stream_name!: string

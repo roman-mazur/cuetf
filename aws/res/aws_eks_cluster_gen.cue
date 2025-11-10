@@ -45,7 +45,7 @@ import "list"
 		timeouts?: #timeouts
 		upgrade_policy?: matchN(1, [#upgrade_policy, list.MaxItems(1) & [...#upgrade_policy]])
 		version?: string
-		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [_, ...] & [...#vpc_config]])
+		vpc_config!: matchN(1, [#vpc_config, list.MaxItems(1) & [_, ...] & [...#vpc_config]])
 		zonal_shift_config?: matchN(1, [#zonal_shift_config, list.MaxItems(1) & [...#zonal_shift_config]])
 	})
 
@@ -61,7 +61,7 @@ import "list"
 	})
 
 	#encryption_config: close({
-		provider?: matchN(1, [_#defs."/$defs/encryption_config/$defs/provider", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encryption_config/$defs/provider"]])
+		provider!: matchN(1, [_#defs."/$defs/encryption_config/$defs/provider", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encryption_config/$defs/provider"]])
 		resources!: [...string]
 	})
 
@@ -79,7 +79,7 @@ import "list"
 	})
 
 	#remote_network_config: close({
-		remote_node_networks?: matchN(1, [_#defs."/$defs/remote_network_config/$defs/remote_node_networks", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/remote_network_config/$defs/remote_node_networks"]])
+		remote_node_networks!: matchN(1, [_#defs."/$defs/remote_network_config/$defs/remote_node_networks", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/remote_network_config/$defs/remote_node_networks"]])
 		remote_pod_networks?: matchN(1, [_#defs."/$defs/remote_network_config/$defs/remote_pod_networks", list.MaxItems(1) & [..._#defs."/$defs/remote_network_config/$defs/remote_pod_networks"]])
 	})
 

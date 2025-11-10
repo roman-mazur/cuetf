@@ -16,7 +16,7 @@ import "list"
 		expected_bucket_owner?: string
 		id?:                    string
 		mfa?:                   string
-		versioning_configuration?: matchN(1, [#versioning_configuration, list.MaxItems(1) & [_, ...] & [...#versioning_configuration]])
+		versioning_configuration!: matchN(1, [#versioning_configuration, list.MaxItems(1) & [_, ...] & [...#versioning_configuration]])
 	})
 
 	#versioning_configuration: close({

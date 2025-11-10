@@ -20,8 +20,8 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		input_record_tables?: matchN(1, [#input_record_tables, [_, ...] & [...#input_record_tables]])
-		parameters?: matchN(1, [#parameters, list.MaxItems(1) & [_, ...] & [...#parameters]])
+		input_record_tables!: matchN(1, [#input_record_tables, [_, ...] & [...#input_record_tables]])
+		parameters!: matchN(1, [#parameters, list.MaxItems(1) & [_, ...] & [...#parameters]])
 		number_of_workers?: number
 		role_arn!:          string
 		schema?: [...close({
@@ -42,7 +42,7 @@ import "list"
 	})
 
 	#parameters: close({
-		find_matches_parameters?: matchN(1, [_#defs."/$defs/parameters/$defs/find_matches_parameters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/parameters/$defs/find_matches_parameters"]])
+		find_matches_parameters!: matchN(1, [_#defs."/$defs/parameters/$defs/find_matches_parameters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/parameters/$defs/find_matches_parameters"]])
 		transform_type!: string
 	})
 

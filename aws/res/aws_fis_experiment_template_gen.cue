@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_fis_experiment_template")
 	close({
-		action?: matchN(1, [#action, [_, ...] & [...#action]])
+		action!: matchN(1, [#action, [_, ...] & [...#action]])
 		experiment_options?: matchN(1, [#experiment_options, list.MaxItems(1) & [...#experiment_options]])
 		description!: string
 		id?:          string
@@ -19,7 +19,7 @@ import "list"
 		experiment_report_configuration?: matchN(1, [#experiment_report_configuration, list.MaxItems(1) & [...#experiment_report_configuration]])
 		role_arn!: string
 		log_configuration?: matchN(1, [#log_configuration, list.MaxItems(1) & [...#log_configuration]])
-		stop_condition?: matchN(1, [#stop_condition, [_, ...] & [...#stop_condition]])
+		stop_condition!: matchN(1, [#stop_condition, [_, ...] & [...#stop_condition]])
 		target?: matchN(1, [#target, [...#target]])
 		tags?: [string]:     string
 		tags_all?: [string]: string

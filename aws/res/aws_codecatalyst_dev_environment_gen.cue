@@ -17,9 +17,9 @@ import "list"
 		region?:        string
 		instance_type!: string
 		project_name!:  string
-		ides?: matchN(1, [#ides, list.MaxItems(1) & [_, ...] & [...#ides]])
+		ides!: matchN(1, [#ides, list.MaxItems(1) & [_, ...] & [...#ides]])
 		space_name!: string
-		persistent_storage?: matchN(1, [#persistent_storage, list.MaxItems(1) & [_, ...] & [...#persistent_storage]])
+		persistent_storage!: matchN(1, [#persistent_storage, list.MaxItems(1) & [_, ...] & [...#persistent_storage]])
 		repositories?: matchN(1, [#repositories, list.MaxItems(100) & [...#repositories]])
 		timeouts?: #timeouts
 	})

@@ -23,7 +23,7 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:  string
 		project!: string
-		groups?: matchN(1, [#groups, list.MaxItems(5) & [_, ...] & [...#groups]])
+		groups!: matchN(1, [#groups, list.MaxItems(5) & [_, ...] & [...#groups]])
 		randomization_salt?: string
 		metric_monitors?: matchN(1, [#metric_monitors, list.MaxItems(3) & [...#metric_monitors]])
 		status?:        string
@@ -43,11 +43,11 @@ import "list"
 	})
 
 	#metric_monitors: close({
-		metric_definition?: matchN(1, [_#defs."/$defs/metric_monitors/$defs/metric_definition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/metric_monitors/$defs/metric_definition"]])
+		metric_definition!: matchN(1, [_#defs."/$defs/metric_monitors/$defs/metric_definition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/metric_monitors/$defs/metric_definition"]])
 	})
 
 	#scheduled_splits_config: close({
-		steps?: matchN(1, [_#defs."/$defs/scheduled_splits_config/$defs/steps", list.MaxItems(6) & [_, ...] & [..._#defs."/$defs/scheduled_splits_config/$defs/steps"]])
+		steps!: matchN(1, [_#defs."/$defs/scheduled_splits_config/$defs/steps", list.MaxItems(6) & [_, ...] & [..._#defs."/$defs/scheduled_splits_config/$defs/steps"]])
 	})
 
 	#timeouts: close({

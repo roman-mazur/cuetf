@@ -15,7 +15,7 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:          string
 		repository_name!: string
-		trigger?: matchN(1, [#trigger, list.MaxItems(10) & [_, ...] & [...#trigger]])
+		trigger!: matchN(1, [#trigger, list.MaxItems(10) & [_, ...] & [...#trigger]])
 	})
 
 	#trigger: close({

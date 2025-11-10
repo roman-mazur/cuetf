@@ -18,11 +18,11 @@ import "list"
 	})
 
 	#replication_configuration: close({
-		rule?: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rule", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/replication_configuration/$defs/rule"]])
+		rule!: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rule", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/replication_configuration/$defs/rule"]])
 	})
 
 	_#defs: "/$defs/replication_configuration/$defs/rule": close({
-		destination?: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rule/$defs/destination", list.MaxItems(25) & [_, ...] & [..._#defs."/$defs/replication_configuration/$defs/rule/$defs/destination"]])
+		destination!: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rule/$defs/destination", list.MaxItems(25) & [_, ...] & [..._#defs."/$defs/replication_configuration/$defs/rule/$defs/destination"]])
 		repository_filter?: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rule/$defs/repository_filter", list.MaxItems(100) & [..._#defs."/$defs/replication_configuration/$defs/rule/$defs/repository_filter"]])
 	})
 

@@ -14,11 +14,11 @@ package res
 		region?:        string
 		status?:        string
 		status_reason?: string
-		attribute?: matchN(1, [#attribute, [_, ...] & [...#attribute]])
+		attribute!: matchN(1, [#attribute, [_, ...] & [...#attribute]])
 	})
 
 	#attribute: close({
-		value?: matchN(1, [_#defs."/$defs/attribute/$defs/value", [_, ...] & [..._#defs."/$defs/attribute/$defs/value"]])
+		value!: matchN(1, [_#defs."/$defs/attribute/$defs/value", [_, ...] & [..._#defs."/$defs/attribute/$defs/value"]])
 		key!: string
 	})
 

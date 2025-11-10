@@ -17,7 +17,7 @@ import "list"
 		language_code!:        string
 		model_kms_key_id?:     string
 		name!:                 string
-		input_data_config?: matchN(1, [#input_data_config, list.MaxItems(1) & [_, ...] & [...#input_data_config]])
+		input_data_config!: matchN(1, [#input_data_config, list.MaxItems(1) & [_, ...] & [...#input_data_config]])
 		timeouts?: #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
@@ -32,7 +32,7 @@ import "list"
 		augmented_manifests?: matchN(1, [_#defs."/$defs/input_data_config/$defs/augmented_manifests", [..._#defs."/$defs/input_data_config/$defs/augmented_manifests"]])
 		documents?: matchN(1, [_#defs."/$defs/input_data_config/$defs/documents", list.MaxItems(1) & [..._#defs."/$defs/input_data_config/$defs/documents"]])
 		entity_list?: matchN(1, [_#defs."/$defs/input_data_config/$defs/entity_list", list.MaxItems(1) & [..._#defs."/$defs/input_data_config/$defs/entity_list"]])
-		entity_types?: matchN(1, [_#defs."/$defs/input_data_config/$defs/entity_types", list.MaxItems(25) & [_, ...] & [..._#defs."/$defs/input_data_config/$defs/entity_types"]])
+		entity_types!: matchN(1, [_#defs."/$defs/input_data_config/$defs/entity_types", list.MaxItems(25) & [_, ...] & [..._#defs."/$defs/input_data_config/$defs/entity_types"]])
 		data_format?: string
 	})
 

@@ -18,7 +18,7 @@ import "list"
 	})
 
 	#byte_match_tuples: close({
-		field_to_match?: matchN(1, [_#defs."/$defs/byte_match_tuples/$defs/field_to_match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/byte_match_tuples/$defs/field_to_match"]])
+		field_to_match!: matchN(1, [_#defs."/$defs/byte_match_tuples/$defs/field_to_match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/byte_match_tuples/$defs/field_to_match"]])
 		positional_constraint!: string
 		target_string?:         string
 		text_transformation!:   string

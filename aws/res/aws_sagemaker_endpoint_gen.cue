@@ -36,7 +36,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/deployment_config/$defs/blue_green_update_policy": close({
-		traffic_routing_configuration?: matchN(1, [_#defs."/$defs/deployment_config/$defs/blue_green_update_policy/$defs/traffic_routing_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deployment_config/$defs/blue_green_update_policy/$defs/traffic_routing_configuration"]])
+		traffic_routing_configuration!: matchN(1, [_#defs."/$defs/deployment_config/$defs/blue_green_update_policy/$defs/traffic_routing_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deployment_config/$defs/blue_green_update_policy/$defs/traffic_routing_configuration"]])
 		maximum_execution_timeout_in_seconds?: number
 		termination_wait_in_seconds?:          number
 	})
@@ -59,7 +59,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/deployment_config/$defs/rolling_update_policy": close({
-		maximum_batch_size?: matchN(1, [_#defs."/$defs/deployment_config/$defs/rolling_update_policy/$defs/maximum_batch_size", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deployment_config/$defs/rolling_update_policy/$defs/maximum_batch_size"]])
+		maximum_batch_size!: matchN(1, [_#defs."/$defs/deployment_config/$defs/rolling_update_policy/$defs/maximum_batch_size", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deployment_config/$defs/rolling_update_policy/$defs/maximum_batch_size"]])
 		rollback_maximum_batch_size?: matchN(1, [_#defs."/$defs/deployment_config/$defs/rolling_update_policy/$defs/rollback_maximum_batch_size", list.MaxItems(1) & [..._#defs."/$defs/deployment_config/$defs/rolling_update_policy/$defs/rollback_maximum_batch_size"]])
 		maximum_execution_timeout_in_seconds?: number
 		wait_interval_in_seconds!:             number

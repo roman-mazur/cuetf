@@ -18,7 +18,7 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:         string
 		iot_role_alias?: string
-		output_config?: matchN(1, [#output_config, list.MaxItems(1) & [_, ...] & [...#output_config]])
+		output_config!: matchN(1, [#output_config, list.MaxItems(1) & [_, ...] & [...#output_config]])
 		role_arn!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

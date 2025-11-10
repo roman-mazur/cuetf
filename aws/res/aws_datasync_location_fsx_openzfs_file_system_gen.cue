@@ -17,7 +17,7 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		security_group_arns!: [...string]
-		protocol?: matchN(1, [#protocol, list.MaxItems(1) & [_, ...] & [...#protocol]])
+		protocol!: matchN(1, [#protocol, list.MaxItems(1) & [_, ...] & [...#protocol]])
 		subdirectory?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
@@ -25,11 +25,11 @@ import "list"
 	})
 
 	#protocol: close({
-		nfs?: matchN(1, [_#defs."/$defs/protocol/$defs/nfs", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/protocol/$defs/nfs"]])
+		nfs!: matchN(1, [_#defs."/$defs/protocol/$defs/nfs", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/protocol/$defs/nfs"]])
 	})
 
 	_#defs: "/$defs/protocol/$defs/nfs": close({
-		mount_options?: matchN(1, [_#defs."/$defs/protocol/$defs/nfs/$defs/mount_options", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/protocol/$defs/nfs/$defs/mount_options"]])
+		mount_options!: matchN(1, [_#defs."/$defs/protocol/$defs/nfs/$defs/mount_options", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/protocol/$defs/nfs/$defs/mount_options"]])
 	})
 
 	_#defs: "/$defs/protocol/$defs/nfs/$defs/mount_options": close({

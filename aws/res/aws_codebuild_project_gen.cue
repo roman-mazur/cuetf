@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codebuild_project")
 	close({
 		arn?: string
-		artifacts?: matchN(1, [#artifacts, list.MaxItems(1) & [_, ...] & [...#artifacts]])
+		artifacts!: matchN(1, [#artifacts, list.MaxItems(1) & [_, ...] & [...#artifacts]])
 
 		// Maximum number of additional automatic retries after a failed
 		// build. The default value is 0.
@@ -31,7 +31,7 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		environment?: matchN(1, [#environment, list.MaxItems(1) & [_, ...] & [...#environment]])
+		environment!: matchN(1, [#environment, list.MaxItems(1) & [_, ...] & [...#environment]])
 		resource_access_role?: string
 		service_role!:         string
 		source_version?:       string
@@ -42,7 +42,7 @@ import "list"
 		secondary_source_version?: matchN(1, [#secondary_source_version, list.MaxItems(12) & [...#secondary_source_version]])
 		tags_all?: [string]: string
 		secondary_sources?: matchN(1, [#secondary_sources, list.MaxItems(12) & [...#secondary_sources]])
-		source?: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
 		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
 	})
 

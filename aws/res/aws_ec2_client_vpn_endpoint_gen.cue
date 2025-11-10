@@ -19,7 +19,7 @@ import "list"
 		dns_name?:                      string
 		dns_servers?: [...string]
 		endpoint_ip_address_type?: string
-		authentication_options?: matchN(1, [#authentication_options, list.MaxItems(2) & [_, ...] & [...#authentication_options]])
+		authentication_options!: matchN(1, [#authentication_options, list.MaxItems(2) & [_, ...] & [...#authentication_options]])
 		id?: string
 		security_group_ids?: [...string]
 		self_service_portal?:     string
@@ -34,7 +34,7 @@ import "list"
 		traffic_ip_address_type?: string
 		transport_protocol?:      string
 		client_route_enforcement_options?: matchN(1, [#client_route_enforcement_options, list.MaxItems(1) & [...#client_route_enforcement_options]])
-		connection_log_options?: matchN(1, [#connection_log_options, list.MaxItems(1) & [_, ...] & [...#connection_log_options]])
+		connection_log_options!: matchN(1, [#connection_log_options, list.MaxItems(1) & [_, ...] & [...#connection_log_options]])
 		vpc_id?:   string
 		vpn_port?: number
 	})

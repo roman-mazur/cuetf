@@ -16,7 +16,7 @@ import "list"
 		group_by_attribute!: string
 		id?:                 string
 		name!:               string
-		filters?: matchN(1, [#filters, list.MaxItems(1) & [_, ...] & [...#filters]])
+		filters!: matchN(1, [#filters, list.MaxItems(1) & [_, ...] & [...#filters]])
 	})
 
 	#filters: close({

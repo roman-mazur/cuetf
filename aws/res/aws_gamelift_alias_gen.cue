@@ -18,7 +18,7 @@ import "list"
 		name!:   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		routing_strategy?: matchN(1, [#routing_strategy, list.MaxItems(1) & [_, ...] & [...#routing_strategy]])
+		routing_strategy!: matchN(1, [#routing_strategy, list.MaxItems(1) & [_, ...] & [...#routing_strategy]])
 	})
 
 	#routing_strategy: close({

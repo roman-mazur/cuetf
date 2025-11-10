@@ -34,7 +34,7 @@ import "list"
 	})
 
 	#eks_properties: close({
-		pod_properties?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/eks_properties/$defs/pod_properties"]])
+		pod_properties!: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/eks_properties/$defs/pod_properties"]])
 	})
 
 	#retry_strategy: close({
@@ -48,7 +48,7 @@ import "list"
 
 	_#defs: "/$defs/eks_properties/$defs/pod_properties": close({
 		dns_policy?: string
-		containers?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers"]])
+		containers!: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers"]])
 		host_network?:            bool
 		service_account_name?:    string
 		share_process_namespace?: bool

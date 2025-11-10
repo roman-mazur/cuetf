@@ -17,7 +17,7 @@ import "list"
 		region?:        string
 		trigger_type!:  string
 		trigger_value!: string
-		target_applications?: matchN(1, [#target_applications, list.MaxItems(25) & [_, ...] & [...#target_applications]])
+		target_applications!: matchN(1, [#target_applications, list.MaxItems(25) & [_, ...] & [...#target_applications]])
 	})
 
 	#target_applications: close({

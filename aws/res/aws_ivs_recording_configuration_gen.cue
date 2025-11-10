@@ -11,7 +11,7 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		destination_configuration?: matchN(1, [#destination_configuration, list.MaxItems(1) & [_, ...] & [...#destination_configuration]])
+		destination_configuration!: matchN(1, [#destination_configuration, list.MaxItems(1) & [_, ...] & [...#destination_configuration]])
 		arn?:  string
 		id?:   string
 		name?: string
@@ -24,7 +24,7 @@ import "list"
 	})
 
 	#destination_configuration: close({
-		s3?: matchN(1, [_#defs."/$defs/destination_configuration/$defs/s3", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination_configuration/$defs/s3"]])
+		s3!: matchN(1, [_#defs."/$defs/destination_configuration/$defs/s3", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination_configuration/$defs/s3"]])
 	})
 
 	#thumbnail_configuration: close({

@@ -15,7 +15,7 @@ import "list"
 		region?:                 string
 		event_destination_name!: string
 		id?:                     string
-		event_destination?: matchN(1, [#event_destination, list.MaxItems(1) & [_, ...] & [...#event_destination]])
+		event_destination!: matchN(1, [#event_destination, list.MaxItems(1) & [_, ...] & [...#event_destination]])
 	})
 
 	#event_destination: close({
@@ -29,7 +29,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/event_destination/$defs/cloud_watch_destination": close({
-		dimension_configuration?: matchN(1, [_#defs."/$defs/event_destination/$defs/cloud_watch_destination/$defs/dimension_configuration", [_, ...] & [..._#defs."/$defs/event_destination/$defs/cloud_watch_destination/$defs/dimension_configuration"]])
+		dimension_configuration!: matchN(1, [_#defs."/$defs/event_destination/$defs/cloud_watch_destination/$defs/dimension_configuration", [_, ...] & [..._#defs."/$defs/event_destination/$defs/cloud_watch_destination/$defs/dimension_configuration"]])
 	})
 
 	_#defs: "/$defs/event_destination/$defs/cloud_watch_destination/$defs/dimension_configuration": close({

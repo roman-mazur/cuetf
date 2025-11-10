@@ -17,23 +17,23 @@ import "list"
 		arn?:    string
 		id?:     string
 		name!:   string
-		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [_, ...] & [...#configuration]])
+		configuration!: matchN(1, [#configuration, list.MaxItems(1) & [_, ...] & [...#configuration]])
 	})
 
 	#configuration: close({
-		transformation_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/transformation_configuration", [_, ...] & [..._#defs."/$defs/configuration/$defs/transformation_configuration"]])
+		transformation_configuration!: matchN(1, [_#defs."/$defs/configuration/$defs/transformation_configuration", [_, ...] & [..._#defs."/$defs/configuration/$defs/transformation_configuration"]])
 		allowed_features?: [...string]
 		cloud_watch_metrics_enabled?: bool
 		supporting_access_point!:     string
 	})
 
 	_#defs: "/$defs/configuration/$defs/transformation_configuration": close({
-		content_transformation?: matchN(1, [_#defs."/$defs/configuration/$defs/transformation_configuration/$defs/content_transformation", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/configuration/$defs/transformation_configuration/$defs/content_transformation"]])
+		content_transformation!: matchN(1, [_#defs."/$defs/configuration/$defs/transformation_configuration/$defs/content_transformation", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/configuration/$defs/transformation_configuration/$defs/content_transformation"]])
 		actions!: [...string]
 	})
 
 	_#defs: "/$defs/configuration/$defs/transformation_configuration/$defs/content_transformation": close({
-		aws_lambda?: matchN(1, [_#defs."/$defs/configuration/$defs/transformation_configuration/$defs/content_transformation/$defs/aws_lambda", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/configuration/$defs/transformation_configuration/$defs/content_transformation/$defs/aws_lambda"]])
+		aws_lambda!: matchN(1, [_#defs."/$defs/configuration/$defs/transformation_configuration/$defs/content_transformation/$defs/aws_lambda", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/configuration/$defs/transformation_configuration/$defs/content_transformation/$defs/aws_lambda"]])
 	})
 
 	_#defs: "/$defs/configuration/$defs/transformation_configuration/$defs/content_transformation/$defs/aws_lambda": close({

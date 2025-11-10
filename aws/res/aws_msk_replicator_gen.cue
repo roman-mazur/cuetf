@@ -16,8 +16,8 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		kafka_cluster?: matchN(1, [#kafka_cluster, list.MaxItems(2) & [_, _, ...] & [...#kafka_cluster]])
-		replication_info_list?: matchN(1, [#replication_info_list, list.MaxItems(1) & [_, ...] & [...#replication_info_list]])
+		kafka_cluster!: matchN(1, [#kafka_cluster, list.MaxItems(2) & [_, _, ...] & [...#kafka_cluster]])
+		replication_info_list!: matchN(1, [#replication_info_list, list.MaxItems(1) & [_, ...] & [...#replication_info_list]])
 		replicator_name!:            string
 		service_execution_role_arn!: string
 		tags?: [string]: string
@@ -26,18 +26,18 @@ import "list"
 	})
 
 	#kafka_cluster: close({
-		amazon_msk_cluster?: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/amazon_msk_cluster", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/kafka_cluster/$defs/amazon_msk_cluster"]])
-		vpc_config?: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/vpc_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/kafka_cluster/$defs/vpc_config"]])
+		amazon_msk_cluster!: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/amazon_msk_cluster", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/kafka_cluster/$defs/amazon_msk_cluster"]])
+		vpc_config!: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/vpc_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/kafka_cluster/$defs/vpc_config"]])
 	})
 
 	#replication_info_list: close({
-		consumer_group_replication?: matchN(1, [_#defs."/$defs/replication_info_list/$defs/consumer_group_replication", [_, ...] & [..._#defs."/$defs/replication_info_list/$defs/consumer_group_replication"]])
+		consumer_group_replication!: matchN(1, [_#defs."/$defs/replication_info_list/$defs/consumer_group_replication", [_, ...] & [..._#defs."/$defs/replication_info_list/$defs/consumer_group_replication"]])
 		source_kafka_cluster_alias?: string
 		source_kafka_cluster_arn!:   string
 		target_compression_type!:    string
 		target_kafka_cluster_alias?: string
 		target_kafka_cluster_arn!:   string
-		topic_replication?: matchN(1, [_#defs."/$defs/replication_info_list/$defs/topic_replication", [_, ...] & [..._#defs."/$defs/replication_info_list/$defs/topic_replication"]])
+		topic_replication!: matchN(1, [_#defs."/$defs/replication_info_list/$defs/topic_replication", [_, ...] & [..._#defs."/$defs/replication_info_list/$defs/topic_replication"]])
 	})
 
 	#timeouts: close({

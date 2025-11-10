@@ -16,7 +16,7 @@ import "list"
 		region?:        string
 		instance_id!:   string
 		resource_type!: string
-		storage_config?: matchN(1, [#storage_config, list.MaxItems(1) & [_, ...] & [...#storage_config]])
+		storage_config!: matchN(1, [#storage_config, list.MaxItems(1) & [_, ...] & [...#storage_config]])
 	})
 
 	#storage_config: close({
@@ -36,7 +36,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/storage_config/$defs/kinesis_video_stream_config": close({
-		encryption_config?: matchN(1, [_#defs."/$defs/storage_config/$defs/kinesis_video_stream_config/$defs/encryption_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_config/$defs/kinesis_video_stream_config/$defs/encryption_config"]])
+		encryption_config!: matchN(1, [_#defs."/$defs/storage_config/$defs/kinesis_video_stream_config/$defs/encryption_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_config/$defs/kinesis_video_stream_config/$defs/encryption_config"]])
 		prefix!:                 string
 		retention_period_hours!: number
 	})

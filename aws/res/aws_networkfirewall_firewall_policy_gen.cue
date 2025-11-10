@@ -19,7 +19,7 @@ import "list"
 		tags_all?: [string]: string
 		update_token?: string
 		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
-		firewall_policy?: matchN(1, [#firewall_policy, list.MaxItems(1) & [_, ...] & [...#firewall_policy]])
+		firewall_policy!: matchN(1, [#firewall_policy, list.MaxItems(1) & [_, ...] & [...#firewall_policy]])
 	})
 
 	#encryption_configuration: close({
@@ -44,7 +44,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/firewall_policy/$defs/policy_variables/$defs/rule_variables": close({
-		ip_set?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/policy_variables/$defs/rule_variables/$defs/ip_set", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/firewall_policy/$defs/policy_variables/$defs/rule_variables/$defs/ip_set"]])
+		ip_set!: matchN(1, [_#defs."/$defs/firewall_policy/$defs/policy_variables/$defs/rule_variables/$defs/ip_set", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/firewall_policy/$defs/policy_variables/$defs/rule_variables/$defs/ip_set"]])
 		key!: string
 	})
 
@@ -74,16 +74,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/firewall_policy/$defs/stateless_custom_action": close({
-		action_definition?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/stateless_custom_action/$defs/action_definition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/firewall_policy/$defs/stateless_custom_action/$defs/action_definition"]])
+		action_definition!: matchN(1, [_#defs."/$defs/firewall_policy/$defs/stateless_custom_action/$defs/action_definition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/firewall_policy/$defs/stateless_custom_action/$defs/action_definition"]])
 		action_name!: string
 	})
 
 	_#defs: "/$defs/firewall_policy/$defs/stateless_custom_action/$defs/action_definition": close({
-		publish_metric_action?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/stateless_custom_action/$defs/action_definition/$defs/publish_metric_action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/firewall_policy/$defs/stateless_custom_action/$defs/action_definition/$defs/publish_metric_action"]])
+		publish_metric_action!: matchN(1, [_#defs."/$defs/firewall_policy/$defs/stateless_custom_action/$defs/action_definition/$defs/publish_metric_action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/firewall_policy/$defs/stateless_custom_action/$defs/action_definition/$defs/publish_metric_action"]])
 	})
 
 	_#defs: "/$defs/firewall_policy/$defs/stateless_custom_action/$defs/action_definition/$defs/publish_metric_action": close({
-		dimension?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/stateless_custom_action/$defs/action_definition/$defs/publish_metric_action/$defs/dimension", [_, ...] & [..._#defs."/$defs/firewall_policy/$defs/stateless_custom_action/$defs/action_definition/$defs/publish_metric_action/$defs/dimension"]])
+		dimension!: matchN(1, [_#defs."/$defs/firewall_policy/$defs/stateless_custom_action/$defs/action_definition/$defs/publish_metric_action/$defs/dimension", [_, ...] & [..._#defs."/$defs/firewall_policy/$defs/stateless_custom_action/$defs/action_definition/$defs/publish_metric_action/$defs/dimension"]])
 	})
 
 	_#defs: "/$defs/firewall_policy/$defs/stateless_custom_action/$defs/action_definition/$defs/publish_metric_action/$defs/dimension": close({

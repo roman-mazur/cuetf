@@ -39,7 +39,7 @@ import "list"
 		type!: string
 		tickerplant_log_configuration?: matchN(1, [#tickerplant_log_configuration, [...#tickerplant_log_configuration]])
 		timeouts?: #timeouts
-		vpc_configuration?: matchN(1, [#vpc_configuration, list.MaxItems(1) & [_, ...] & [...#vpc_configuration]])
+		vpc_configuration!: matchN(1, [#vpc_configuration, list.MaxItems(1) & [_, ...] & [...#vpc_configuration]])
 	})
 
 	#auto_scaling_configuration: close({

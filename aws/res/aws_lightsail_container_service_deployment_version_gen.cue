@@ -17,7 +17,7 @@ import "list"
 		service_name!: string
 		state?:        string
 		version?:      number
-		container?: matchN(1, [#container, list.MaxItems(53) & [_, ...] & [...#container]])
+		container!: matchN(1, [#container, list.MaxItems(53) & [_, ...] & [...#container]])
 		public_endpoint?: matchN(1, [#public_endpoint, list.MaxItems(1) & [...#public_endpoint]])
 		timeouts?: #timeouts
 	})
@@ -31,7 +31,7 @@ import "list"
 	})
 
 	#public_endpoint: close({
-		health_check?: matchN(1, [_#defs."/$defs/public_endpoint/$defs/health_check", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/public_endpoint/$defs/health_check"]])
+		health_check!: matchN(1, [_#defs."/$defs/public_endpoint/$defs/health_check", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/public_endpoint/$defs/health_check"]])
 		container_name!: string
 		container_port!: number
 	})

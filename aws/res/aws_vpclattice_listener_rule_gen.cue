@@ -17,8 +17,8 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		action?: matchN(1, [#action, list.MaxItems(1) & [_, ...] & [...#action]])
-		match?: matchN(1, [#match, list.MaxItems(1) & [_, ...] & [...#match]])
+		action!: matchN(1, [#action, list.MaxItems(1) & [_, ...] & [...#action]])
+		match!: matchN(1, [#match, list.MaxItems(1) & [_, ...] & [...#match]])
 		rule_id?:            string
 		service_identifier!: string
 		tags?: [string]:     string
@@ -32,7 +32,7 @@ import "list"
 	})
 
 	#match: close({
-		http_match?: matchN(1, [_#defs."/$defs/match/$defs/http_match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/match/$defs/http_match"]])
+		http_match!: matchN(1, [_#defs."/$defs/match/$defs/http_match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/match/$defs/http_match"]])
 	})
 
 	#timeouts: close({
@@ -46,7 +46,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/action/$defs/forward": close({
-		target_groups?: matchN(1, [_#defs."/$defs/action/$defs/forward/$defs/target_groups", [_, ...] & [..._#defs."/$defs/action/$defs/forward/$defs/target_groups"]])
+		target_groups!: matchN(1, [_#defs."/$defs/action/$defs/forward/$defs/target_groups", [_, ...] & [..._#defs."/$defs/action/$defs/forward/$defs/target_groups"]])
 	})
 
 	_#defs: "/$defs/action/$defs/forward/$defs/target_groups": close({
@@ -61,7 +61,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/match/$defs/http_match/$defs/header_matches": close({
-		match?: matchN(1, [_#defs."/$defs/match/$defs/http_match/$defs/header_matches/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/match/$defs/http_match/$defs/header_matches/$defs/match"]])
+		match!: matchN(1, [_#defs."/$defs/match/$defs/http_match/$defs/header_matches/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/match/$defs/http_match/$defs/header_matches/$defs/match"]])
 		case_sensitive?: bool
 		name!:           string
 	})
@@ -73,7 +73,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/match/$defs/http_match/$defs/path_match": close({
-		match?: matchN(1, [_#defs."/$defs/match/$defs/http_match/$defs/path_match/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/match/$defs/http_match/$defs/path_match/$defs/match"]])
+		match!: matchN(1, [_#defs."/$defs/match/$defs/http_match/$defs/path_match/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/match/$defs/http_match/$defs/path_match/$defs/match"]])
 		case_sensitive?: bool
 	})
 

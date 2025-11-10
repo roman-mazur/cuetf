@@ -27,7 +27,7 @@ import "list"
 	})
 
 	#dns_config: close({
-		dns_records?: matchN(1, [_#defs."/$defs/dns_config/$defs/dns_records", [_, ...] & [..._#defs."/$defs/dns_config/$defs/dns_records"]])
+		dns_records!: matchN(1, [_#defs."/$defs/dns_config/$defs/dns_records", [_, ...] & [..._#defs."/$defs/dns_config/$defs/dns_records"]])
 		namespace_id!:   string
 		routing_policy?: string
 	})

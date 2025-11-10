@@ -20,7 +20,7 @@ import "list"
 		schedule?:          string
 		start_on_creation?: bool
 		state?:             string
-		actions?: matchN(1, [#actions, [_, ...] & [...#actions]])
+		actions!: matchN(1, [#actions, [_, ...] & [...#actions]])
 		event_batching_condition?: matchN(1, [#event_batching_condition, [...#event_batching_condition]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
@@ -45,7 +45,7 @@ import "list"
 	})
 
 	#predicate: close({
-		conditions?: matchN(1, [_#defs."/$defs/predicate/$defs/conditions", [_, ...] & [..._#defs."/$defs/predicate/$defs/conditions"]])
+		conditions!: matchN(1, [_#defs."/$defs/predicate/$defs/conditions", [_, ...] & [..._#defs."/$defs/predicate/$defs/conditions"]])
 		logical?: string
 	})
 

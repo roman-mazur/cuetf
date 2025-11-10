@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_globalaccelerator_custom_routing_endpoint_group")
 	close({
-		destination_configuration?: matchN(1, [#destination_configuration, [_, ...] & [...#destination_configuration]])
+		destination_configuration!: matchN(1, [#destination_configuration, [_, ...] & [...#destination_configuration]])
 		arn?:                   string
 		endpoint_group_region?: string
 		id?:                    string

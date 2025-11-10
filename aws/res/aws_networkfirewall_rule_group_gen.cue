@@ -34,7 +34,7 @@ import "list"
 	#rule_group: close({
 		reference_sets?: matchN(1, [_#defs."/$defs/rule_group/$defs/reference_sets", list.MaxItems(1) & [..._#defs."/$defs/rule_group/$defs/reference_sets"]])
 		rule_variables?: matchN(1, [_#defs."/$defs/rule_group/$defs/rule_variables", list.MaxItems(1) & [..._#defs."/$defs/rule_group/$defs/rule_variables"]])
-		rules_source?: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source"]])
+		rules_source!: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source"]])
 		stateful_rule_options?: matchN(1, [_#defs."/$defs/rule_group/$defs/stateful_rule_options", list.MaxItems(1) & [..._#defs."/$defs/rule_group/$defs/stateful_rule_options"]])
 	})
 
@@ -43,7 +43,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/rule_group/$defs/reference_sets/$defs/ip_set_references": close({
-		ip_set_reference?: matchN(1, [_#defs."/$defs/rule_group/$defs/reference_sets/$defs/ip_set_references/$defs/ip_set_reference", [_, ...] & [..._#defs."/$defs/rule_group/$defs/reference_sets/$defs/ip_set_references/$defs/ip_set_reference"]])
+		ip_set_reference!: matchN(1, [_#defs."/$defs/rule_group/$defs/reference_sets/$defs/ip_set_references/$defs/ip_set_reference", [_, ...] & [..._#defs."/$defs/rule_group/$defs/reference_sets/$defs/ip_set_references/$defs/ip_set_reference"]])
 		key!: string
 	})
 
@@ -57,7 +57,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/rule_group/$defs/rule_variables/$defs/ip_sets": close({
-		ip_set?: matchN(1, [_#defs."/$defs/rule_group/$defs/rule_variables/$defs/ip_sets/$defs/ip_set", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_group/$defs/rule_variables/$defs/ip_sets/$defs/ip_set"]])
+		ip_set!: matchN(1, [_#defs."/$defs/rule_group/$defs/rule_variables/$defs/ip_sets/$defs/ip_set", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_group/$defs/rule_variables/$defs/ip_sets/$defs/ip_set"]])
 		key!: string
 	})
 
@@ -66,7 +66,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/rule_group/$defs/rule_variables/$defs/port_sets": close({
-		port_set?: matchN(1, [_#defs."/$defs/rule_group/$defs/rule_variables/$defs/port_sets/$defs/port_set", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_group/$defs/rule_variables/$defs/port_sets/$defs/port_set"]])
+		port_set!: matchN(1, [_#defs."/$defs/rule_group/$defs/rule_variables/$defs/port_sets/$defs/port_set", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_group/$defs/rule_variables/$defs/port_sets/$defs/port_set"]])
 		key!: string
 	})
 
@@ -88,8 +88,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/rule_group/$defs/rules_source/$defs/stateful_rule": close({
-		header?: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateful_rule/$defs/header", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateful_rule/$defs/header"]])
-		rule_option?: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateful_rule/$defs/rule_option", [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateful_rule/$defs/rule_option"]])
+		header!: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateful_rule/$defs/header", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateful_rule/$defs/header"]])
+		rule_option!: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateful_rule/$defs/rule_option", [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateful_rule/$defs/rule_option"]])
 		action!: string
 	})
 
@@ -109,20 +109,20 @@ import "list"
 
 	_#defs: "/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions": close({
 		custom_action?: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action", [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action"]])
-		stateless_rule?: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/stateless_rule", [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/stateless_rule"]])
+		stateless_rule!: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/stateless_rule", [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/stateless_rule"]])
 	})
 
 	_#defs: "/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action": close({
-		action_definition?: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action/$defs/action_definition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action/$defs/action_definition"]])
+		action_definition!: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action/$defs/action_definition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action/$defs/action_definition"]])
 		action_name!: string
 	})
 
 	_#defs: "/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action/$defs/action_definition": close({
-		publish_metric_action?: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action/$defs/action_definition/$defs/publish_metric_action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action/$defs/action_definition/$defs/publish_metric_action"]])
+		publish_metric_action!: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action/$defs/action_definition/$defs/publish_metric_action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action/$defs/action_definition/$defs/publish_metric_action"]])
 	})
 
 	_#defs: "/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action/$defs/action_definition/$defs/publish_metric_action": close({
-		dimension?: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action/$defs/action_definition/$defs/publish_metric_action/$defs/dimension", [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action/$defs/action_definition/$defs/publish_metric_action/$defs/dimension"]])
+		dimension!: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action/$defs/action_definition/$defs/publish_metric_action/$defs/dimension", [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action/$defs/action_definition/$defs/publish_metric_action/$defs/dimension"]])
 	})
 
 	_#defs: "/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/custom_action/$defs/action_definition/$defs/publish_metric_action/$defs/dimension": close({
@@ -130,12 +130,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/stateless_rule": close({
-		rule_definition?: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/stateless_rule/$defs/rule_definition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/stateless_rule/$defs/rule_definition"]])
+		rule_definition!: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/stateless_rule/$defs/rule_definition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/stateless_rule/$defs/rule_definition"]])
 		priority!: number
 	})
 
 	_#defs: "/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/stateless_rule/$defs/rule_definition": close({
-		match_attributes?: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/stateless_rule/$defs/rule_definition/$defs/match_attributes", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/stateless_rule/$defs/rule_definition/$defs/match_attributes"]])
+		match_attributes!: matchN(1, [_#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/stateless_rule/$defs/rule_definition/$defs/match_attributes", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_group/$defs/rules_source/$defs/stateless_rules_and_custom_actions/$defs/stateless_rule/$defs/rule_definition/$defs/match_attributes"]])
 		actions!: [...string]
 	})
 

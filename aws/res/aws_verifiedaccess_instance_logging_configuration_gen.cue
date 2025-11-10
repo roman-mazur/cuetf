@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_verifiedaccess_instance_logging_configuration")
 	close({
-		access_logs?: matchN(1, [#access_logs, list.MaxItems(1) & [_, ...] & [...#access_logs]])
+		access_logs!: matchN(1, [#access_logs, list.MaxItems(1) & [_, ...] & [...#access_logs]])
 		id?: string
 
 		// Region where this resource will be

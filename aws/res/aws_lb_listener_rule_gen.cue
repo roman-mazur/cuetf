@@ -16,10 +16,10 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		action?: matchN(1, [#action, [_, ...] & [...#action]])
+		action!: matchN(1, [#action, [_, ...] & [...#action]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		condition?: matchN(1, [#condition, [_, ...] & [...#condition]])
+		condition!: matchN(1, [#condition, [_, ...] & [...#condition]])
 		transform?: matchN(1, [#transform, list.MaxItems(2) & [...#transform]])
 	})
 
@@ -82,7 +82,7 @@ import "list"
 
 	_#defs: "/$defs/action/$defs/forward": close({
 		stickiness?: matchN(1, [_#defs."/$defs/action/$defs/forward/$defs/stickiness", list.MaxItems(1) & [..._#defs."/$defs/action/$defs/forward/$defs/stickiness"]])
-		target_group?: matchN(1, [_#defs."/$defs/action/$defs/forward/$defs/target_group", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/action/$defs/forward/$defs/target_group"]])
+		target_group!: matchN(1, [_#defs."/$defs/action/$defs/forward/$defs/target_group", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/action/$defs/forward/$defs/target_group"]])
 	})
 
 	_#defs: "/$defs/action/$defs/forward/$defs/stickiness": close({

@@ -20,14 +20,14 @@ import "list"
 		data_capture_config?: matchN(1, [#data_capture_config, list.MaxItems(1) & [...#data_capture_config]])
 		name_prefix?: string
 		tags?: [string]: string
-		production_variants?: matchN(1, [#production_variants, list.MaxItems(10) & [_, ...] & [...#production_variants]])
+		production_variants!: matchN(1, [#production_variants, list.MaxItems(10) & [_, ...] & [...#production_variants]])
 		shadow_production_variants?: matchN(1, [#shadow_production_variants, list.MaxItems(10) & [...#shadow_production_variants]])
 		tags_all?: [string]: string
 	})
 
 	#async_inference_config: close({
 		client_config?: matchN(1, [_#defs."/$defs/async_inference_config/$defs/client_config", list.MaxItems(1) & [..._#defs."/$defs/async_inference_config/$defs/client_config"]])
-		output_config?: matchN(1, [_#defs."/$defs/async_inference_config/$defs/output_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/async_inference_config/$defs/output_config"]])
+		output_config!: matchN(1, [_#defs."/$defs/async_inference_config/$defs/output_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/async_inference_config/$defs/output_config"]])
 	})
 
 	#data_capture_config: close({
@@ -36,7 +36,7 @@ import "list"
 		enable_capture?:              bool
 		initial_sampling_percentage!: number
 		kms_key_id?:                  string
-		capture_options?: matchN(1, [_#defs."/$defs/data_capture_config/$defs/capture_options", list.MaxItems(2) & [_, ...] & [..._#defs."/$defs/data_capture_config/$defs/capture_options"]])
+		capture_options!: matchN(1, [_#defs."/$defs/data_capture_config/$defs/capture_options", list.MaxItems(2) & [_, ...] & [..._#defs."/$defs/data_capture_config/$defs/capture_options"]])
 	})
 
 	#production_variants: close({

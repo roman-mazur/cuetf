@@ -19,7 +19,7 @@ import "list"
 		replication_type!:              string
 		resource_identifier?:           string
 		source_endpoint_arn!:           string
-		compute_config?: matchN(1, [#compute_config, list.MaxItems(1) & [_, ...] & [...#compute_config]])
+		compute_config!: matchN(1, [#compute_config, list.MaxItems(1) & [_, ...] & [...#compute_config]])
 		timeouts?:              #timeouts
 		start_replication?:     bool
 		supplemental_settings?: string

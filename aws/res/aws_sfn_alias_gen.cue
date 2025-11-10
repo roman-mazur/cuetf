@@ -15,7 +15,7 @@ package res
 		description?:   string
 		id?:            string
 		name!:          string
-		routing_configuration?: matchN(1, [#routing_configuration, [_, ...] & [...#routing_configuration]])
+		routing_configuration!: matchN(1, [#routing_configuration, [_, ...] & [...#routing_configuration]])
 		timeouts?: #timeouts
 	})
 

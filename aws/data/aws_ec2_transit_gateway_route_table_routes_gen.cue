@@ -19,7 +19,7 @@ package data
 			type?:                                        string
 		})]
 		transit_gateway_route_table_id!: string
-		filter?: matchN(1, [#filter, [_, ...] & [...#filter]])
+		filter!: matchN(1, [#filter, [_, ...] & [...#filter]])
 	})
 
 	#filter: close({

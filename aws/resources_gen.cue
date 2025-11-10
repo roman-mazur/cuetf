@@ -501,6 +501,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_ebs_snapshot": res.#aws_ebs_snapshot
 	_#res: "\(#awsPrefix)_ebs_snapshot_import": res.#aws_ebs_snapshot_import
 	_#res: "\(#awsPrefix)_ebs_volume": res.#aws_ebs_volume
+	_#res: "\(#awsPrefix)_ec2_allowed_images_settings": res.#aws_ec2_allowed_images_settings
 	_#res: "\(#awsPrefix)_ec2_availability_zone_group": res.#aws_ec2_availability_zone_group
 	_#res: "\(#awsPrefix)_ec2_capacity_block_reservation": res.#aws_ec2_capacity_block_reservation
 	_#res: "\(#awsPrefix)_ec2_capacity_reservation": res.#aws_ec2_capacity_reservation
@@ -631,6 +632,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_finspace_kx_user": res.#aws_finspace_kx_user
 	_#res: "\(#awsPrefix)_finspace_kx_volume": res.#aws_finspace_kx_volume
 	_#res: "\(#awsPrefix)_fis_experiment_template": res.#aws_fis_experiment_template
+	_#res: "\(#awsPrefix)_fis_target_account_configuration": res.#aws_fis_target_account_configuration
 	_#res: "\(#awsPrefix)_flow_log": res.#aws_flow_log
 	_#res: "\(#awsPrefix)_fms_admin_account": res.#aws_fms_admin_account
 	_#res: "\(#awsPrefix)_fms_policy": res.#aws_fms_policy
@@ -760,6 +762,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_internet_gateway_attachment": res.#aws_internet_gateway_attachment
 	_#res: "\(#awsPrefix)_internet_gateway": res.#aws_internet_gateway
 	_#res: "\(#awsPrefix)_internetmonitor_monitor": res.#aws_internetmonitor_monitor
+	_#res: "\(#awsPrefix)_invoicing_invoice_unit": res.#aws_invoicing_invoice_unit
 	_#res: "\(#awsPrefix)_iot_authorizer": res.#aws_iot_authorizer
 	_#res: "\(#awsPrefix)_iot_billing_group": res.#aws_iot_billing_group
 	_#res: "\(#awsPrefix)_iot_ca_certificate": res.#aws_iot_ca_certificate

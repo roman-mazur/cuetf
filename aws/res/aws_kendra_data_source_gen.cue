@@ -82,7 +82,7 @@ import "list"
 		url_exclusion_patterns?: [...string]
 		url_inclusion_patterns?: [...string]
 		proxy_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/web_crawler_configuration/$defs/proxy_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/web_crawler_configuration/$defs/proxy_configuration"]])
-		urls?: matchN(1, [_#defs."/$defs/configuration/$defs/web_crawler_configuration/$defs/urls", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/configuration/$defs/web_crawler_configuration/$defs/urls"]])
+		urls!: matchN(1, [_#defs."/$defs/configuration/$defs/web_crawler_configuration/$defs/urls", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/configuration/$defs/web_crawler_configuration/$defs/urls"]])
 	})
 
 	_#defs: "/$defs/configuration/$defs/web_crawler_configuration/$defs/authentication_configuration": close({

@@ -18,7 +18,7 @@ import "list"
 		region?:                      string
 		certificate_chain?:           string
 		certificate_signing_request!: string
-		validity?: matchN(1, [#validity, list.MaxItems(1) & [_, ...] & [...#validity]])
+		validity!: matchN(1, [#validity, list.MaxItems(1) & [_, ...] & [...#validity]])
 		id?:                string
 		signing_algorithm!: string
 		template_arn?:      string

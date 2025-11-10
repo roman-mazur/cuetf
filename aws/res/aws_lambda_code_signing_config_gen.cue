@@ -19,7 +19,7 @@ import "list"
 		last_modified?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		allowed_publishers?: matchN(1, [#allowed_publishers, list.MaxItems(1) & [_, ...] & [...#allowed_publishers]])
+		allowed_publishers!: matchN(1, [#allowed_publishers, list.MaxItems(1) & [_, ...] & [...#allowed_publishers]])
 		policies?: matchN(1, [#policies, list.MaxItems(1) & [...#policies]])
 	})
 

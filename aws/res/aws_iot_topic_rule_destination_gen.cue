@@ -16,7 +16,7 @@ import "list"
 		enabled?:  bool
 		id?:       string
 		timeouts?: #timeouts
-		vpc_configuration?: matchN(1, [#vpc_configuration, list.MaxItems(1) & [_, ...] & [...#vpc_configuration]])
+		vpc_configuration!: matchN(1, [#vpc_configuration, list.MaxItems(1) & [_, ...] & [...#vpc_configuration]])
 	})
 
 	#timeouts: close({

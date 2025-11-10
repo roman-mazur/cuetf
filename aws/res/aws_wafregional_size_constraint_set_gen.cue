@@ -19,7 +19,7 @@ import "list"
 	})
 
 	#size_constraints: close({
-		field_to_match?: matchN(1, [_#defs."/$defs/size_constraints/$defs/field_to_match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/size_constraints/$defs/field_to_match"]])
+		field_to_match!: matchN(1, [_#defs."/$defs/size_constraints/$defs/field_to_match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/size_constraints/$defs/field_to_match"]])
 		comparison_operator!: string
 		size!:                number
 		text_transformation!: string

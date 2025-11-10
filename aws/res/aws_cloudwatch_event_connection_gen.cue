@@ -19,7 +19,7 @@ import "list"
 		kms_key_identifier?: string
 		name!:               string
 		secret_arn?:         string
-		auth_parameters?: matchN(1, [#auth_parameters, list.MaxItems(1) & [_, ...] & [...#auth_parameters]])
+		auth_parameters!: matchN(1, [#auth_parameters, list.MaxItems(1) & [_, ...] & [...#auth_parameters]])
 		invocation_connectivity_parameters?: matchN(1, [#invocation_connectivity_parameters, list.MaxItems(1) & [...#invocation_connectivity_parameters]])
 	})
 
@@ -31,7 +31,7 @@ import "list"
 	})
 
 	#invocation_connectivity_parameters: close({
-		resource_parameters?: matchN(1, [_#defs."/$defs/invocation_connectivity_parameters/$defs/resource_parameters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/invocation_connectivity_parameters/$defs/resource_parameters"]])
+		resource_parameters!: matchN(1, [_#defs."/$defs/invocation_connectivity_parameters/$defs/resource_parameters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/invocation_connectivity_parameters/$defs/resource_parameters"]])
 	})
 
 	_#defs: "/$defs/auth_parameters/$defs/api_key": close({
@@ -70,7 +70,7 @@ import "list"
 
 	_#defs: "/$defs/auth_parameters/$defs/oauth": close({
 		client_parameters?: matchN(1, [_#defs."/$defs/auth_parameters/$defs/oauth/$defs/client_parameters", list.MaxItems(1) & [..._#defs."/$defs/auth_parameters/$defs/oauth/$defs/client_parameters"]])
-		oauth_http_parameters?: matchN(1, [_#defs."/$defs/auth_parameters/$defs/oauth/$defs/oauth_http_parameters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_parameters/$defs/oauth/$defs/oauth_http_parameters"]])
+		oauth_http_parameters!: matchN(1, [_#defs."/$defs/auth_parameters/$defs/oauth/$defs/oauth_http_parameters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_parameters/$defs/oauth/$defs/oauth_http_parameters"]])
 		authorization_endpoint!: string
 		http_method!:            string
 	})

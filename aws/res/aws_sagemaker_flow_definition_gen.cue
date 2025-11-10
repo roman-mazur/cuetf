@@ -19,9 +19,9 @@ import "list"
 		tags?: [string]: string
 		human_loop_activation_config?: matchN(1, [#human_loop_activation_config, list.MaxItems(1) & [...#human_loop_activation_config]])
 		tags_all?: [string]: string
-		human_loop_config?: matchN(1, [#human_loop_config, list.MaxItems(1) & [_, ...] & [...#human_loop_config]])
+		human_loop_config!: matchN(1, [#human_loop_config, list.MaxItems(1) & [_, ...] & [...#human_loop_config]])
 		human_loop_request_source?: matchN(1, [#human_loop_request_source, list.MaxItems(1) & [...#human_loop_request_source]])
-		output_config?: matchN(1, [#output_config, list.MaxItems(1) & [_, ...] & [...#output_config]])
+		output_config!: matchN(1, [#output_config, list.MaxItems(1) & [_, ...] & [...#output_config]])
 	})
 
 	#human_loop_activation_config: close({

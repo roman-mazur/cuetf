@@ -19,7 +19,7 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		phone_config?: matchN(1, [#phone_config, list.MaxItems(1) & [_, ...] & [...#phone_config]])
+		phone_config!: matchN(1, [#phone_config, list.MaxItems(1) & [_, ...] & [...#phone_config]])
 		password?:           string
 		routing_profile_id!: string
 		security_profile_ids!: [...string]

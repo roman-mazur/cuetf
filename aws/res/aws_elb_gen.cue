@@ -34,7 +34,7 @@ import "list"
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		zone_id?: string
-		listener?: matchN(1, [#listener, [_, ...] & [...#listener]])
+		listener!: matchN(1, [#listener, [_, ...] & [...#listener]])
 		timeouts?: #timeouts
 	})
 

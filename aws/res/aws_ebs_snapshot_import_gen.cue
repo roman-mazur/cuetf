@@ -22,7 +22,7 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		client_data?: matchN(1, [#client_data, list.MaxItems(1) & [...#client_data]])
-		disk_container?: matchN(1, [#disk_container, list.MaxItems(1) & [_, ...] & [...#disk_container]])
+		disk_container!: matchN(1, [#disk_container, list.MaxItems(1) & [_, ...] & [...#disk_container]])
 		permanent_restore?: bool
 		role_name?:         string
 		storage_tier?:      string

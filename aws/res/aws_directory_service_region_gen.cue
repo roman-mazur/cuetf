@@ -18,7 +18,7 @@ import "list"
 		region?:      string
 		region_name!: string
 		tags?: [string]: string
-		vpc_settings?: matchN(1, [#vpc_settings, list.MaxItems(1) & [_, ...] & [...#vpc_settings]])
+		vpc_settings!: matchN(1, [#vpc_settings, list.MaxItems(1) & [_, ...] & [...#vpc_settings]])
 		tags_all?: [string]: string
 	})
 

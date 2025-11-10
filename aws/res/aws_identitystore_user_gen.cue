@@ -24,7 +24,7 @@ import "list"
 		region?:             string
 		preferred_language?: string
 		emails?: matchN(1, [#emails, list.MaxItems(1) & [...#emails]])
-		name?: matchN(1, [#name, list.MaxItems(1) & [_, ...] & [...#name]])
+		name!: matchN(1, [#name, list.MaxItems(1) & [_, ...] & [...#name]])
 		profile_url?: string
 		timezone?:    string
 		title?:       string

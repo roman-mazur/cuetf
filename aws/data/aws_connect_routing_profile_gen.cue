@@ -18,6 +18,9 @@ package data
 		media_concurrencies?: [...close({
 			channel?:     string
 			concurrency?: number
+			cross_channel_behavior?: [...close({
+				behavior_type?: string
+			})]
 		})]
 		name?: string
 		queue_configs?: [...close({

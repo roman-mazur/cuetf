@@ -20,7 +20,7 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		tags?: [string]: string
-		input_data_config?: matchN(1, [#input_data_config, list.MaxItems(1) & [_, ...] & [...#input_data_config]])
+		input_data_config!: matchN(1, [#input_data_config, list.MaxItems(1) & [_, ...] & [...#input_data_config]])
 		output_data_config?: matchN(1, [#output_data_config, list.MaxItems(1) & [...#output_data_config]])
 		tags_all?: [string]: string
 		version_name?:        string

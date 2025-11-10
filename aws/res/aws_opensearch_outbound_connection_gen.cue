@@ -18,8 +18,8 @@ import "list"
 		connection_mode?:   string
 		connection_status?: string
 		id?:                string
-		local_domain_info?: matchN(1, [#local_domain_info, list.MaxItems(1) & [_, ...] & [...#local_domain_info]])
-		remote_domain_info?: matchN(1, [#remote_domain_info, list.MaxItems(1) & [_, ...] & [...#remote_domain_info]])
+		local_domain_info!: matchN(1, [#local_domain_info, list.MaxItems(1) & [_, ...] & [...#local_domain_info]])
+		remote_domain_info!: matchN(1, [#remote_domain_info, list.MaxItems(1) & [_, ...] & [...#remote_domain_info]])
 		timeouts?: #timeouts
 	})
 

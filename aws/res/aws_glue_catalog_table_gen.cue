@@ -32,7 +32,7 @@ import "list"
 	})
 
 	#open_table_format_input: close({
-		iceberg_input?: matchN(1, [_#defs."/$defs/open_table_format_input/$defs/iceberg_input", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/open_table_format_input/$defs/iceberg_input"]])
+		iceberg_input!: matchN(1, [_#defs."/$defs/open_table_format_input/$defs/iceberg_input", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/open_table_format_input/$defs/iceberg_input"]])
 	})
 
 	#partition_index: close({

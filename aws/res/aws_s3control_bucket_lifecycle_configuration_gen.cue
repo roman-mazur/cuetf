@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_s3control_bucket_lifecycle_configuration")
 	close({
-		rule?: matchN(1, [#rule, [_, ...] & [...#rule]])
+		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
 		bucket!: string
 		id?:     string
 

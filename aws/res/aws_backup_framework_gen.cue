@@ -17,7 +17,7 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		control?: matchN(1, [#control, [_, ...] & [...#control]])
+		control!: matchN(1, [#control, [_, ...] & [...#control]])
 		name!:     string
 		timeouts?: #timeouts
 		status?:   string

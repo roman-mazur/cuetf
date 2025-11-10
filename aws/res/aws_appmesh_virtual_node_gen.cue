@@ -17,7 +17,7 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		spec?: matchN(1, [#spec, list.MaxItems(1) & [_, ...] & [...#spec]])
+		spec!: matchN(1, [#spec, list.MaxItems(1) & [_, ...] & [...#spec]])
 		mesh_owner?:     string
 		name!:           string
 		resource_owner?: string
@@ -34,7 +34,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/backend": close({
-		virtual_service?: matchN(1, [_#defs."/$defs/spec/$defs/backend/$defs/virtual_service", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/backend/$defs/virtual_service"]])
+		virtual_service!: matchN(1, [_#defs."/$defs/spec/$defs/backend/$defs/virtual_service", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/backend/$defs/virtual_service"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/backend/$defs/virtual_service": close({
@@ -48,7 +48,7 @@ import "list"
 
 	_#defs: "/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls": close({
 		certificate?: matchN(1, [_#defs."/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/certificate", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/certificate"]])
-		validation?: matchN(1, [_#defs."/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation"]])
+		validation!: matchN(1, [_#defs."/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation"]])
 		enforce?: bool
 		ports?: [...number]
 	})
@@ -69,11 +69,11 @@ import "list"
 
 	_#defs: "/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation": close({
 		subject_alternative_names?: matchN(1, [_#defs."/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation/$defs/subject_alternative_names", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation/$defs/subject_alternative_names"]])
-		trust?: matchN(1, [_#defs."/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation/$defs/trust", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation/$defs/trust"]])
+		trust!: matchN(1, [_#defs."/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation/$defs/trust", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation/$defs/trust"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation/$defs/subject_alternative_names": close({
-		match?: matchN(1, [_#defs."/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation/$defs/subject_alternative_names/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation/$defs/subject_alternative_names/$defs/match"]])
+		match!: matchN(1, [_#defs."/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation/$defs/subject_alternative_names/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation/$defs/subject_alternative_names/$defs/match"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/backend/$defs/virtual_service/$defs/client_policy/$defs/tls/$defs/validation/$defs/subject_alternative_names/$defs/match": close({
@@ -108,7 +108,7 @@ import "list"
 
 	_#defs: "/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls": close({
 		certificate?: matchN(1, [_#defs."/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/certificate", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/certificate"]])
-		validation?: matchN(1, [_#defs."/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation"]])
+		validation!: matchN(1, [_#defs."/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation"]])
 		enforce?: bool
 		ports?: [...number]
 	})
@@ -129,11 +129,11 @@ import "list"
 
 	_#defs: "/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation": close({
 		subject_alternative_names?: matchN(1, [_#defs."/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation/$defs/subject_alternative_names", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation/$defs/subject_alternative_names"]])
-		trust?: matchN(1, [_#defs."/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation/$defs/trust", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation/$defs/trust"]])
+		trust!: matchN(1, [_#defs."/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation/$defs/trust", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation/$defs/trust"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation/$defs/subject_alternative_names": close({
-		match?: matchN(1, [_#defs."/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation/$defs/subject_alternative_names/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation/$defs/subject_alternative_names/$defs/match"]])
+		match!: matchN(1, [_#defs."/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation/$defs/subject_alternative_names/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation/$defs/subject_alternative_names/$defs/match"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/backend_defaults/$defs/client_policy/$defs/tls/$defs/validation/$defs/subject_alternative_names/$defs/match": close({
@@ -162,7 +162,7 @@ import "list"
 		connection_pool?: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/connection_pool", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/listener/$defs/connection_pool"]])
 		health_check?: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/health_check", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/listener/$defs/health_check"]])
 		outlier_detection?: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/outlier_detection", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/listener/$defs/outlier_detection"]])
-		port_mapping?: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/port_mapping", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/listener/$defs/port_mapping"]])
+		port_mapping!: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/port_mapping", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/listener/$defs/port_mapping"]])
 		timeout?: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/timeout", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/listener/$defs/timeout"]])
 		tls?: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/tls", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/listener/$defs/tls"]])
 	})
@@ -202,8 +202,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/listener/$defs/outlier_detection": close({
-		base_ejection_duration?: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/outlier_detection/$defs/base_ejection_duration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/listener/$defs/outlier_detection/$defs/base_ejection_duration"]])
-		interval?: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/outlier_detection/$defs/interval", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/listener/$defs/outlier_detection/$defs/interval"]])
+		base_ejection_duration!: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/outlier_detection/$defs/base_ejection_duration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/listener/$defs/outlier_detection/$defs/base_ejection_duration"]])
+		interval!: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/outlier_detection/$defs/interval", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/listener/$defs/outlier_detection/$defs/interval"]])
 		max_ejection_percent!: number
 		max_server_errors!:    number
 	})
@@ -285,7 +285,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/listener/$defs/tls": close({
-		certificate?: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/tls/$defs/certificate", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/listener/$defs/tls/$defs/certificate"]])
+		certificate!: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/tls/$defs/certificate", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/listener/$defs/tls/$defs/certificate"]])
 		validation?: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/tls/$defs/validation", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/listener/$defs/tls/$defs/validation"]])
 		mode!: string
 	})
@@ -311,11 +311,11 @@ import "list"
 
 	_#defs: "/$defs/spec/$defs/listener/$defs/tls/$defs/validation": close({
 		subject_alternative_names?: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/tls/$defs/validation/$defs/subject_alternative_names", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/listener/$defs/tls/$defs/validation/$defs/subject_alternative_names"]])
-		trust?: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/tls/$defs/validation/$defs/trust", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/listener/$defs/tls/$defs/validation/$defs/trust"]])
+		trust!: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/tls/$defs/validation/$defs/trust", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/listener/$defs/tls/$defs/validation/$defs/trust"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/listener/$defs/tls/$defs/validation/$defs/subject_alternative_names": close({
-		match?: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/tls/$defs/validation/$defs/subject_alternative_names/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/listener/$defs/tls/$defs/validation/$defs/subject_alternative_names/$defs/match"]])
+		match!: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/tls/$defs/validation/$defs/subject_alternative_names/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/listener/$defs/tls/$defs/validation/$defs/subject_alternative_names/$defs/match"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/listener/$defs/tls/$defs/validation/$defs/subject_alternative_names/$defs/match": close({

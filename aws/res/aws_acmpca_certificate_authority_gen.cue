@@ -21,7 +21,7 @@ import "list"
 		region?:     string
 		not_after?:  string
 		not_before?: string
-		certificate_authority_configuration?: matchN(1, [#certificate_authority_configuration, list.MaxItems(1) & [_, ...] & [...#certificate_authority_configuration]])
+		certificate_authority_configuration!: matchN(1, [#certificate_authority_configuration, list.MaxItems(1) & [_, ...] & [...#certificate_authority_configuration]])
 		permanent_deletion_time_in_days?: number
 		revocation_configuration?: matchN(1, [#revocation_configuration, list.MaxItems(1) & [...#revocation_configuration]])
 		serial?: string
@@ -33,7 +33,7 @@ import "list"
 	})
 
 	#certificate_authority_configuration: close({
-		subject?: matchN(1, [_#defs."/$defs/certificate_authority_configuration/$defs/subject", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/certificate_authority_configuration/$defs/subject"]])
+		subject!: matchN(1, [_#defs."/$defs/certificate_authority_configuration/$defs/subject", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/certificate_authority_configuration/$defs/subject"]])
 		key_algorithm!:     string
 		signing_algorithm!: string
 	})

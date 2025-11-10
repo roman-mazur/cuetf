@@ -16,7 +16,7 @@ import "list"
 		arn?:               string
 		device_fleet_name!: string
 		id?:                string
-		device?: matchN(1, [#device, list.MaxItems(1) & [_, ...] & [...#device]])
+		device!: matchN(1, [#device, list.MaxItems(1) & [_, ...] & [...#device]])
 	})
 
 	#device: close({

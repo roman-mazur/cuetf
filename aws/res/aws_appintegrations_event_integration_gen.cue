@@ -19,7 +19,7 @@ import "list"
 		name!:   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		event_filter?: matchN(1, [#event_filter, list.MaxItems(1) & [_, ...] & [...#event_filter]])
+		event_filter!: matchN(1, [#event_filter, list.MaxItems(1) & [_, ...] & [...#event_filter]])
 	})
 
 	#event_filter: close({

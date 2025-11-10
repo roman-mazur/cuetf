@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_chimesdkvoice_voice_profile_domain")
 	close({
 		arn?: string
-		server_side_encryption_configuration?: matchN(1, [#server_side_encryption_configuration, list.MaxItems(1) & [_, ...] & [...#server_side_encryption_configuration]])
+		server_side_encryption_configuration!: matchN(1, [#server_side_encryption_configuration, list.MaxItems(1) & [_, ...] & [...#server_side_encryption_configuration]])
 		description?: string
 		id?:          string
 

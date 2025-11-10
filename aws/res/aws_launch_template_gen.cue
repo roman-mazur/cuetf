@@ -113,11 +113,11 @@ import "list"
 		spot_max_price_percentage_over_lowest_price?:      number
 		baseline_ebs_bandwidth_mbps?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/baseline_ebs_bandwidth_mbps", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/baseline_ebs_bandwidth_mbps"]])
 		memory_gib_per_vcpu?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/memory_gib_per_vcpu", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/memory_gib_per_vcpu"]])
-		memory_mib?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/memory_mib", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/instance_requirements/$defs/memory_mib"]])
+		memory_mib!: matchN(1, [_#defs."/$defs/instance_requirements/$defs/memory_mib", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/instance_requirements/$defs/memory_mib"]])
 		network_bandwidth_gbps?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/network_bandwidth_gbps", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/network_bandwidth_gbps"]])
 		network_interface_count?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/network_interface_count", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/network_interface_count"]])
 		total_local_storage_gb?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/total_local_storage_gb", list.MaxItems(1) & [..._#defs."/$defs/instance_requirements/$defs/total_local_storage_gb"]])
-		vcpu_count?: matchN(1, [_#defs."/$defs/instance_requirements/$defs/vcpu_count", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/instance_requirements/$defs/vcpu_count"]])
+		vcpu_count!: matchN(1, [_#defs."/$defs/instance_requirements/$defs/vcpu_count", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/instance_requirements/$defs/vcpu_count"]])
 	})
 
 	#license_specification: close({

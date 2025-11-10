@@ -13,7 +13,7 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:    string
 		rule_name!: string
-		filter?: matchN(1, [#filter, [_, ...] & [...#filter]])
+		filter!: matchN(1, [#filter, [_, ...] & [...#filter]])
 	})
 
 	#filter: close({

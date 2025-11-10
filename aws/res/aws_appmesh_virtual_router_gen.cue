@@ -17,7 +17,7 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		spec?: matchN(1, [#spec, list.MaxItems(1) & [_, ...] & [...#spec]])
+		spec!: matchN(1, [#spec, list.MaxItems(1) & [_, ...] & [...#spec]])
 		mesh_owner?:     string
 		name!:           string
 		resource_owner?: string
@@ -30,7 +30,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/listener": close({
-		port_mapping?: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/port_mapping", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/listener/$defs/port_mapping"]])
+		port_mapping!: matchN(1, [_#defs."/$defs/spec/$defs/listener/$defs/port_mapping", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/listener/$defs/port_mapping"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/listener/$defs/port_mapping": close({

@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lakeformation_resource_lf_tags")
 	close({
 		database?: matchN(1, [#database, list.MaxItems(1) & [...#database]])
-		lf_tag?: matchN(1, [#lf_tag, [_, ...] & [...#lf_tag]])
+		lf_tag!: matchN(1, [#lf_tag, [_, ...] & [...#lf_tag]])
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

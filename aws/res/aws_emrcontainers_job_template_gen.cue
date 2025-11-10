@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_emrcontainers_job_template")
 	close({
 		arn?: string
-		job_template_data?: matchN(1, [#job_template_data, list.MaxItems(1) & [_, ...] & [...#job_template_data]])
+		job_template_data!: matchN(1, [#job_template_data, list.MaxItems(1) & [_, ...] & [...#job_template_data]])
 		id?:          string
 		kms_key_arn?: string
 
@@ -24,7 +24,7 @@ import "list"
 
 	#job_template_data: close({
 		configuration_overrides?: matchN(1, [_#defs."/$defs/job_template_data/$defs/configuration_overrides", list.MaxItems(1) & [..._#defs."/$defs/job_template_data/$defs/configuration_overrides"]])
-		job_driver?: matchN(1, [_#defs."/$defs/job_template_data/$defs/job_driver", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/job_template_data/$defs/job_driver"]])
+		job_driver!: matchN(1, [_#defs."/$defs/job_template_data/$defs/job_driver", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/job_template_data/$defs/job_driver"]])
 		execution_role_arn!: string
 		job_tags?: [string]: string
 		release_label!: string

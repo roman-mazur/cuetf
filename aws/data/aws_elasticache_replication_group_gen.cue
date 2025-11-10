@@ -10,7 +10,13 @@ package data
 		cluster_mode?:                   string
 		configuration_endpoint_address?: string
 		description?:                    string
-		id?:                             string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		id?:     string
 		log_delivery_configuration?: [...close({
 			destination?:      string
 			destination_type?: string
@@ -19,13 +25,16 @@ package data
 		})]
 		member_clusters?: [...string]
 		multi_az_enabled?: bool
-		node_type?:        string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                   string
+		node_group_configuration?: [...close({
+			node_group_id?:             string
+			primary_availability_zone?: string
+			primary_outpost_arn?:       string
+			replica_availability_zones?: [...string]
+			replica_count?: number
+			replica_outpost_arns?: [...string]
+			slots?: string
+		})]
+		node_type?:                string
 		num_cache_clusters?:       number
 		num_node_groups?:          number
 		port?:                     number

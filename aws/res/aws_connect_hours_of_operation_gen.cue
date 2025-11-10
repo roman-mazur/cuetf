@@ -18,15 +18,15 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		name!:   string
-		config?: matchN(1, [#config, [_, ...] & [...#config]])
+		config!: matchN(1, [#config, [_, ...] & [...#config]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		time_zone!: string
 	})
 
 	#config: close({
-		end_time?: matchN(1, [_#defs."/$defs/config/$defs/end_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/end_time"]])
-		start_time?: matchN(1, [_#defs."/$defs/config/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/start_time"]])
+		end_time!: matchN(1, [_#defs."/$defs/config/$defs/end_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/end_time"]])
+		start_time!: matchN(1, [_#defs."/$defs/config/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/start_time"]])
 		day!: string
 	})
 

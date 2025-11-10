@@ -19,8 +19,8 @@ import "list"
 		id?:     string
 		name!:   string
 		tags?: [string]: string
-		report_delivery_channel?: matchN(1, [#report_delivery_channel, list.MaxItems(1) & [_, ...] & [...#report_delivery_channel]])
-		report_setting?: matchN(1, [#report_setting, list.MaxItems(1) & [_, ...] & [...#report_setting]])
+		report_delivery_channel!: matchN(1, [#report_delivery_channel, list.MaxItems(1) & [_, ...] & [...#report_delivery_channel]])
+		report_setting!: matchN(1, [#report_setting, list.MaxItems(1) & [_, ...] & [...#report_setting]])
 		tags_all?: [string]: string
 	})
 

@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_eks_access_policy_association")
 	close({
 		associated_at?: string
-		access_scope?: matchN(1, [#access_scope, list.MaxItems(1) & [_, ...] & [...#access_scope]])
+		access_scope!: matchN(1, [#access_scope, list.MaxItems(1) & [_, ...] & [...#access_scope]])
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

@@ -68,7 +68,7 @@ import "list"
 	})
 
 	#launch_template_config: close({
-		launch_template_specification?: matchN(1, [_#defs."/$defs/launch_template_config/$defs/launch_template_specification", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/launch_template_config/$defs/launch_template_specification"]])
+		launch_template_specification!: matchN(1, [_#defs."/$defs/launch_template_config/$defs/launch_template_specification", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/launch_template_config/$defs/launch_template_specification"]])
 		overrides?: matchN(1, [_#defs."/$defs/launch_template_config/$defs/overrides", [..._#defs."/$defs/launch_template_config/$defs/overrides"]])
 	})
 

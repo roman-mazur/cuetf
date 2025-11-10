@@ -30,7 +30,7 @@ import "list"
 		routing_http_response_access_control_allow_credentials_header_value?:   string
 		routing_http_response_access_control_allow_headers_header_value?:       string
 		routing_http_response_access_control_allow_methods_header_value?:       string
-		default_action?: matchN(1, [#default_action, [_, ...] & [...#default_action]])
+		default_action!: matchN(1, [#default_action, [_, ...] & [...#default_action]])
 		routing_http_response_access_control_allow_origin_header_value?:   string
 		routing_http_response_access_control_expose_headers_header_value?: string
 		routing_http_response_access_control_max_age_header_value?:        string
@@ -103,7 +103,7 @@ import "list"
 
 	_#defs: "/$defs/default_action/$defs/forward": close({
 		stickiness?: matchN(1, [_#defs."/$defs/default_action/$defs/forward/$defs/stickiness", list.MaxItems(1) & [..._#defs."/$defs/default_action/$defs/forward/$defs/stickiness"]])
-		target_group?: matchN(1, [_#defs."/$defs/default_action/$defs/forward/$defs/target_group", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/default_action/$defs/forward/$defs/target_group"]])
+		target_group!: matchN(1, [_#defs."/$defs/default_action/$defs/forward/$defs/target_group", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/default_action/$defs/forward/$defs/target_group"]])
 	})
 
 	_#defs: "/$defs/default_action/$defs/forward/$defs/stickiness": close({

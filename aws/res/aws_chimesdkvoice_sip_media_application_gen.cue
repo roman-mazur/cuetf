@@ -18,7 +18,7 @@ import "list"
 		name!:   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		endpoints?: matchN(1, [#endpoints, list.MaxItems(1) & [_, ...] & [...#endpoints]])
+		endpoints!: matchN(1, [#endpoints, list.MaxItems(1) & [_, ...] & [...#endpoints]])
 	})
 
 	#endpoints: close({

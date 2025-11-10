@@ -30,7 +30,7 @@ import "list"
 	})
 
 	#predictive_scaling_configuration: close({
-		metric_specification?: matchN(1, [_#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification"]])
+		metric_specification!: matchN(1, [_#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification"]])
 		max_capacity_breach_behavior?: string
 		max_capacity_buffer?:          string
 		mode?:                         string
@@ -61,7 +61,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_capacity_metric_specification": close({
-		metric_data_queries?: matchN(1, [_#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_capacity_metric_specification/$defs/metric_data_queries", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_capacity_metric_specification/$defs/metric_data_queries"]])
+		metric_data_queries!: matchN(1, [_#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_capacity_metric_specification/$defs/metric_data_queries", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_capacity_metric_specification/$defs/metric_data_queries"]])
 	})
 
 	_#defs: "/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_capacity_metric_specification/$defs/metric_data_queries": close({
@@ -73,7 +73,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_capacity_metric_specification/$defs/metric_data_queries/$defs/metric_stat": close({
-		metric?: matchN(1, [_#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_capacity_metric_specification/$defs/metric_data_queries/$defs/metric_stat/$defs/metric", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_capacity_metric_specification/$defs/metric_data_queries/$defs/metric_stat/$defs/metric"]])
+		metric!: matchN(1, [_#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_capacity_metric_specification/$defs/metric_data_queries/$defs/metric_stat/$defs/metric", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_capacity_metric_specification/$defs/metric_data_queries/$defs/metric_stat/$defs/metric"]])
 		stat!: string
 		unit?: string
 	})
@@ -90,7 +90,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_load_metric_specification": close({
-		metric_data_queries?: matchN(1, [_#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_load_metric_specification/$defs/metric_data_queries", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_load_metric_specification/$defs/metric_data_queries"]])
+		metric_data_queries!: matchN(1, [_#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_load_metric_specification/$defs/metric_data_queries", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_load_metric_specification/$defs/metric_data_queries"]])
 	})
 
 	_#defs: "/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_load_metric_specification/$defs/metric_data_queries": close({
@@ -102,7 +102,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_load_metric_specification/$defs/metric_data_queries/$defs/metric_stat": close({
-		metric?: matchN(1, [_#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_load_metric_specification/$defs/metric_data_queries/$defs/metric_stat/$defs/metric", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_load_metric_specification/$defs/metric_data_queries/$defs/metric_stat/$defs/metric"]])
+		metric!: matchN(1, [_#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_load_metric_specification/$defs/metric_data_queries/$defs/metric_stat/$defs/metric", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_load_metric_specification/$defs/metric_data_queries/$defs/metric_stat/$defs/metric"]])
 		stat!: string
 		unit?: string
 	})
@@ -119,7 +119,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_scaling_metric_specification": close({
-		metric_data_queries?: matchN(1, [_#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_scaling_metric_specification/$defs/metric_data_queries", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_scaling_metric_specification/$defs/metric_data_queries"]])
+		metric_data_queries!: matchN(1, [_#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_scaling_metric_specification/$defs/metric_data_queries", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_scaling_metric_specification/$defs/metric_data_queries"]])
 	})
 
 	_#defs: "/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_scaling_metric_specification/$defs/metric_data_queries": close({
@@ -131,7 +131,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_scaling_metric_specification/$defs/metric_data_queries/$defs/metric_stat": close({
-		metric?: matchN(1, [_#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_scaling_metric_specification/$defs/metric_data_queries/$defs/metric_stat/$defs/metric", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_scaling_metric_specification/$defs/metric_data_queries/$defs/metric_stat/$defs/metric"]])
+		metric!: matchN(1, [_#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_scaling_metric_specification/$defs/metric_data_queries/$defs/metric_stat/$defs/metric", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/predictive_scaling_configuration/$defs/metric_specification/$defs/customized_scaling_metric_specification/$defs/metric_data_queries/$defs/metric_stat/$defs/metric"]])
 		stat!: string
 		unit?: string
 	})
@@ -186,7 +186,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/target_tracking_configuration/$defs/customized_metric_specification/$defs/metrics/$defs/metric_stat": close({
-		metric?: matchN(1, [_#defs."/$defs/target_tracking_configuration/$defs/customized_metric_specification/$defs/metrics/$defs/metric_stat/$defs/metric", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/target_tracking_configuration/$defs/customized_metric_specification/$defs/metrics/$defs/metric_stat/$defs/metric"]])
+		metric!: matchN(1, [_#defs."/$defs/target_tracking_configuration/$defs/customized_metric_specification/$defs/metrics/$defs/metric_stat/$defs/metric", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/target_tracking_configuration/$defs/customized_metric_specification/$defs/metrics/$defs/metric_stat/$defs/metric"]])
 		period?: number
 		stat!:   string
 		unit?:   string

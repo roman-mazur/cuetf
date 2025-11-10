@@ -16,12 +16,12 @@ package res
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		version?: number
-		action_point?: matchN(1, [#action_point, [_, ...] & [...#action_point]])
+		action_point!: matchN(1, [#action_point, [_, ...] & [...#action_point]])
 		parameter?: matchN(1, [#parameter, [...#parameter]])
 	})
 
 	#action_point: close({
-		action?: matchN(1, [_#defs."/$defs/action_point/$defs/action", [_, ...] & [..._#defs."/$defs/action_point/$defs/action"]])
+		action!: matchN(1, [_#defs."/$defs/action_point/$defs/action", [_, ...] & [..._#defs."/$defs/action_point/$defs/action"]])
 		point!: string
 	})
 

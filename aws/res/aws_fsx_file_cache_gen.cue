@@ -49,7 +49,7 @@ import "list"
 	})
 
 	#lustre_configuration: close({
-		metadata_configuration?: matchN(1, [_#defs."/$defs/lustre_configuration/$defs/metadata_configuration", list.MaxItems(8) & [_, ...] & [..._#defs."/$defs/lustre_configuration/$defs/metadata_configuration"]])
+		metadata_configuration!: matchN(1, [_#defs."/$defs/lustre_configuration/$defs/metadata_configuration", list.MaxItems(8) & [_, ...] & [..._#defs."/$defs/lustre_configuration/$defs/metadata_configuration"]])
 		deployment_type!: string
 		log_configuration?: [...close({
 			destination?: string

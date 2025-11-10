@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudfront_field_level_encryption_config")
 	close({
-		content_type_profile_config?: matchN(1, [#content_type_profile_config, list.MaxItems(1) & [_, ...] & [...#content_type_profile_config]])
+		content_type_profile_config!: matchN(1, [#content_type_profile_config, list.MaxItems(1) & [_, ...] & [...#content_type_profile_config]])
 		arn?:              string
 		caller_reference?: string
 		comment?:          string
 		etag?:             string
 		id?:               string
-		query_arg_profile_config?: matchN(1, [#query_arg_profile_config, list.MaxItems(1) & [_, ...] & [...#query_arg_profile_config]])
+		query_arg_profile_config!: matchN(1, [#query_arg_profile_config, list.MaxItems(1) & [_, ...] & [...#query_arg_profile_config]])
 	})
 
 	#content_type_profile_config: close({
-		content_type_profiles?: matchN(1, [_#defs."/$defs/content_type_profile_config/$defs/content_type_profiles", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/content_type_profile_config/$defs/content_type_profiles"]])
+		content_type_profiles!: matchN(1, [_#defs."/$defs/content_type_profile_config/$defs/content_type_profiles", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/content_type_profile_config/$defs/content_type_profiles"]])
 		forward_when_content_type_is_unknown!: bool
 	})
 
@@ -26,7 +26,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/content_type_profile_config/$defs/content_type_profiles": close({
-		items?: matchN(1, [_#defs."/$defs/content_type_profile_config/$defs/content_type_profiles/$defs/items", [_, ...] & [..._#defs."/$defs/content_type_profile_config/$defs/content_type_profiles/$defs/items"]])
+		items!: matchN(1, [_#defs."/$defs/content_type_profile_config/$defs/content_type_profiles/$defs/items", [_, ...] & [..._#defs."/$defs/content_type_profile_config/$defs/content_type_profiles/$defs/items"]])
 	})
 
 	_#defs: "/$defs/content_type_profile_config/$defs/content_type_profiles/$defs/items": close({

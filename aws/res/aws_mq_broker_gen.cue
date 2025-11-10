@@ -41,7 +41,7 @@ import "list"
 		tags?: [string]: string
 		maintenance_window_start_time?: matchN(1, [#maintenance_window_start_time, list.MaxItems(1) & [...#maintenance_window_start_time]])
 		timeouts?: #timeouts
-		user?: matchN(1, [#user, [_, ...] & [...#user]])
+		user!: matchN(1, [#user, [_, ...] & [...#user]])
 		tags_all?: [string]: string
 	})
 

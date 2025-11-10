@@ -29,7 +29,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/datasources/$defs/kubernetes": close({
-		audit_logs?: matchN(1, [_#defs."/$defs/datasources/$defs/kubernetes/$defs/audit_logs", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/datasources/$defs/kubernetes/$defs/audit_logs"]])
+		audit_logs!: matchN(1, [_#defs."/$defs/datasources/$defs/kubernetes/$defs/audit_logs", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/datasources/$defs/kubernetes/$defs/audit_logs"]])
 	})
 
 	_#defs: "/$defs/datasources/$defs/kubernetes/$defs/audit_logs": close({
@@ -37,11 +37,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/datasources/$defs/malware_protection": close({
-		scan_ec2_instance_with_findings?: matchN(1, [_#defs."/$defs/datasources/$defs/malware_protection/$defs/scan_ec2_instance_with_findings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/datasources/$defs/malware_protection/$defs/scan_ec2_instance_with_findings"]])
+		scan_ec2_instance_with_findings!: matchN(1, [_#defs."/$defs/datasources/$defs/malware_protection/$defs/scan_ec2_instance_with_findings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/datasources/$defs/malware_protection/$defs/scan_ec2_instance_with_findings"]])
 	})
 
 	_#defs: "/$defs/datasources/$defs/malware_protection/$defs/scan_ec2_instance_with_findings": close({
-		ebs_volumes?: matchN(1, [_#defs."/$defs/datasources/$defs/malware_protection/$defs/scan_ec2_instance_with_findings/$defs/ebs_volumes", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/datasources/$defs/malware_protection/$defs/scan_ec2_instance_with_findings/$defs/ebs_volumes"]])
+		ebs_volumes!: matchN(1, [_#defs."/$defs/datasources/$defs/malware_protection/$defs/scan_ec2_instance_with_findings/$defs/ebs_volumes", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/datasources/$defs/malware_protection/$defs/scan_ec2_instance_with_findings/$defs/ebs_volumes"]])
 	})
 
 	_#defs: "/$defs/datasources/$defs/malware_protection/$defs/scan_ec2_instance_with_findings/$defs/ebs_volumes": close({

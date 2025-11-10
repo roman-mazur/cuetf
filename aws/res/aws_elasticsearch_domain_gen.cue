@@ -125,7 +125,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/auto_tune_options/$defs/maintenance_schedule": close({
-		duration?: matchN(1, [_#defs."/$defs/auto_tune_options/$defs/maintenance_schedule/$defs/duration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auto_tune_options/$defs/maintenance_schedule/$defs/duration"]])
+		duration!: matchN(1, [_#defs."/$defs/auto_tune_options/$defs/maintenance_schedule/$defs/duration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auto_tune_options/$defs/maintenance_schedule/$defs/duration"]])
 		cron_expression_for_recurrence!: string
 		start_at!:                       string
 	})

@@ -32,7 +32,7 @@ import "list"
 	})
 
 	#approval_rule: close({
-		patch_filter?: matchN(1, [_#defs."/$defs/approval_rule/$defs/patch_filter", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/approval_rule/$defs/patch_filter"]])
+		patch_filter!: matchN(1, [_#defs."/$defs/approval_rule/$defs/patch_filter", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/approval_rule/$defs/patch_filter"]])
 		approve_after_days?:  number
 		approve_until_date?:  string
 		compliance_level?:    string

@@ -32,7 +32,7 @@ import "list"
 	})
 
 	#application_configuration: close({
-		application_code_configuration?: matchN(1, [_#defs."/$defs/application_configuration/$defs/application_code_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/application_code_configuration"]])
+		application_code_configuration!: matchN(1, [_#defs."/$defs/application_configuration/$defs/application_code_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/application_code_configuration"]])
 		application_snapshot_configuration?: matchN(1, [_#defs."/$defs/application_configuration/$defs/application_snapshot_configuration", list.MaxItems(1) & [..._#defs."/$defs/application_configuration/$defs/application_snapshot_configuration"]])
 		environment_properties?: matchN(1, [_#defs."/$defs/application_configuration/$defs/environment_properties", list.MaxItems(1) & [..._#defs."/$defs/application_configuration/$defs/environment_properties"]])
 		flink_application_configuration?: matchN(1, [_#defs."/$defs/application_configuration/$defs/flink_application_configuration", list.MaxItems(1) & [..._#defs."/$defs/application_configuration/$defs/flink_application_configuration"]])
@@ -73,7 +73,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/application_configuration/$defs/environment_properties": close({
-		property_group?: matchN(1, [_#defs."/$defs/application_configuration/$defs/environment_properties/$defs/property_group", list.MaxItems(50) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/environment_properties/$defs/property_group"]])
+		property_group!: matchN(1, [_#defs."/$defs/application_configuration/$defs/environment_properties/$defs/property_group", list.MaxItems(50) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/environment_properties/$defs/property_group"]])
 	})
 
 	_#defs: "/$defs/application_configuration/$defs/environment_properties/$defs/property_group": close({
@@ -133,7 +133,7 @@ import "list"
 		in_app_stream_names?: [...string]
 		input_id?:    string
 		name_prefix!: string
-		input_schema?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema"]])
+		input_schema!: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema"]])
 		input_starting_position_configuration?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_starting_position_configuration", [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_starting_position_configuration"]])
 		kinesis_firehose_input?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/kinesis_firehose_input", list.MaxItems(1) & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/kinesis_firehose_input"]])
 		kinesis_streams_input?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/kinesis_streams_input", list.MaxItems(1) & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/kinesis_streams_input"]])
@@ -144,7 +144,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_processing_configuration": close({
-		input_lambda_processor?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_processing_configuration/$defs/input_lambda_processor", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_processing_configuration/$defs/input_lambda_processor"]])
+		input_lambda_processor!: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_processing_configuration/$defs/input_lambda_processor", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_processing_configuration/$defs/input_lambda_processor"]])
 	})
 
 	_#defs: "/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_processing_configuration/$defs/input_lambda_processor": close({
@@ -152,8 +152,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema": close({
-		record_column?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema/$defs/record_column", list.MaxItems(1000) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema/$defs/record_column"]])
-		record_format?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema/$defs/record_format", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema/$defs/record_format"]])
+		record_column!: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema/$defs/record_column", list.MaxItems(1000) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema/$defs/record_column"]])
+		record_format!: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema/$defs/record_format", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema/$defs/record_format"]])
 		record_encoding?: string
 	})
 
@@ -164,7 +164,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema/$defs/record_format": close({
-		mapping_parameters?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema/$defs/record_format/$defs/mapping_parameters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema/$defs/record_format/$defs/mapping_parameters"]])
+		mapping_parameters!: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema/$defs/record_format/$defs/mapping_parameters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema/$defs/record_format/$defs/mapping_parameters"]])
 		record_format_type!: string
 	})
 
@@ -195,7 +195,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/application_configuration/$defs/sql_application_configuration/$defs/output": close({
-		destination_schema?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/output/$defs/destination_schema", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/output/$defs/destination_schema"]])
+		destination_schema!: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/output/$defs/destination_schema", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/output/$defs/destination_schema"]])
 		kinesis_firehose_output?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/output/$defs/kinesis_firehose_output", list.MaxItems(1) & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/output/$defs/kinesis_firehose_output"]])
 		kinesis_streams_output?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/output/$defs/kinesis_streams_output", list.MaxItems(1) & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/output/$defs/kinesis_streams_output"]])
 		lambda_output?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/output/$defs/lambda_output", list.MaxItems(1) & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/output/$defs/lambda_output"]])
@@ -220,15 +220,15 @@ import "list"
 	})
 
 	_#defs: "/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source": close({
-		reference_schema?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema"]])
-		s3_reference_data_source?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/s3_reference_data_source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/s3_reference_data_source"]])
+		reference_schema!: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema"]])
+		s3_reference_data_source!: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/s3_reference_data_source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/s3_reference_data_source"]])
 		reference_id?: string
 		table_name!:   string
 	})
 
 	_#defs: "/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema": close({
-		record_column?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema/$defs/record_column", list.MaxItems(1000) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema/$defs/record_column"]])
-		record_format?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema/$defs/record_format", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema/$defs/record_format"]])
+		record_column!: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema/$defs/record_column", list.MaxItems(1000) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema/$defs/record_column"]])
+		record_format!: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema/$defs/record_format", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema/$defs/record_format"]])
 		record_encoding?: string
 	})
 
@@ -239,7 +239,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema/$defs/record_format": close({
-		mapping_parameters?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema/$defs/record_format/$defs/mapping_parameters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema/$defs/record_format/$defs/mapping_parameters"]])
+		mapping_parameters!: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema/$defs/record_format/$defs/mapping_parameters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/reference_data_source/$defs/reference_schema/$defs/record_format/$defs/mapping_parameters"]])
 		record_format_type!: string
 	})
 

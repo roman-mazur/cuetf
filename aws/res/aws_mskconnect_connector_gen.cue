@@ -20,14 +20,14 @@ import "list"
 		region?:                     string
 		service_execution_role_arn!: string
 		tags?: [string]: string
-		capacity?: matchN(1, [#capacity, list.MaxItems(1) & [_, ...] & [...#capacity]])
-		kafka_cluster?: matchN(1, [#kafka_cluster, list.MaxItems(1) & [_, ...] & [...#kafka_cluster]])
+		capacity!: matchN(1, [#capacity, list.MaxItems(1) & [_, ...] & [...#capacity]])
+		kafka_cluster!: matchN(1, [#kafka_cluster, list.MaxItems(1) & [_, ...] & [...#kafka_cluster]])
 		tags_all?: [string]: string
 		version?: string
-		kafka_cluster_client_authentication?: matchN(1, [#kafka_cluster_client_authentication, list.MaxItems(1) & [_, ...] & [...#kafka_cluster_client_authentication]])
-		kafka_cluster_encryption_in_transit?: matchN(1, [#kafka_cluster_encryption_in_transit, list.MaxItems(1) & [_, ...] & [...#kafka_cluster_encryption_in_transit]])
+		kafka_cluster_client_authentication!: matchN(1, [#kafka_cluster_client_authentication, list.MaxItems(1) & [_, ...] & [...#kafka_cluster_client_authentication]])
+		kafka_cluster_encryption_in_transit!: matchN(1, [#kafka_cluster_encryption_in_transit, list.MaxItems(1) & [_, ...] & [...#kafka_cluster_encryption_in_transit]])
 		log_delivery?: matchN(1, [#log_delivery, list.MaxItems(1) & [...#log_delivery]])
-		plugin?: matchN(1, [#plugin, [_, ...] & [...#plugin]])
+		plugin!: matchN(1, [#plugin, [_, ...] & [...#plugin]])
 		timeouts?: #timeouts
 		worker_configuration?: matchN(1, [#worker_configuration, list.MaxItems(1) & [...#worker_configuration]])
 	})
@@ -38,7 +38,7 @@ import "list"
 	})
 
 	#kafka_cluster: close({
-		apache_kafka_cluster?: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/apache_kafka_cluster", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/kafka_cluster/$defs/apache_kafka_cluster"]])
+		apache_kafka_cluster!: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/apache_kafka_cluster", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/kafka_cluster/$defs/apache_kafka_cluster"]])
 	})
 
 	#kafka_cluster_client_authentication: close({
@@ -50,11 +50,11 @@ import "list"
 	})
 
 	#log_delivery: close({
-		worker_log_delivery?: matchN(1, [_#defs."/$defs/log_delivery/$defs/worker_log_delivery", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/log_delivery/$defs/worker_log_delivery"]])
+		worker_log_delivery!: matchN(1, [_#defs."/$defs/log_delivery/$defs/worker_log_delivery", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/log_delivery/$defs/worker_log_delivery"]])
 	})
 
 	#plugin: close({
-		custom_plugin?: matchN(1, [_#defs."/$defs/plugin/$defs/custom_plugin", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/plugin/$defs/custom_plugin"]])
+		custom_plugin!: matchN(1, [_#defs."/$defs/plugin/$defs/custom_plugin", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/plugin/$defs/custom_plugin"]])
 	})
 
 	#timeouts: close({
@@ -90,7 +90,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/kafka_cluster/$defs/apache_kafka_cluster": close({
-		vpc?: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/apache_kafka_cluster/$defs/vpc", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/kafka_cluster/$defs/apache_kafka_cluster/$defs/vpc"]])
+		vpc!: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/apache_kafka_cluster/$defs/vpc", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/kafka_cluster/$defs/apache_kafka_cluster/$defs/vpc"]])
 		bootstrap_servers!: string
 	})
 

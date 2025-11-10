@@ -19,7 +19,7 @@ import "list"
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type!: string
-		export_config?: matchN(1, [#export_config, list.MaxItems(1) & [_, ...] & [...#export_config]])
+		export_config!: matchN(1, [#export_config, list.MaxItems(1) & [_, ...] & [...#export_config]])
 	})
 
 	#export_config: close({

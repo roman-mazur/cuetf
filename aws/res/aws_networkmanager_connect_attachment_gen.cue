@@ -14,7 +14,7 @@ import "list"
 		core_network_id!:               string
 		edge_location!:                 string
 		id?:                            string
-		options?: matchN(1, [#options, list.MaxItems(1) & [_, ...] & [...#options]])
+		options!: matchN(1, [#options, list.MaxItems(1) & [_, ...] & [...#options]])
 		owner_account_id?: string
 		resource_arn?:     string
 		segment_name?:     string

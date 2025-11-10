@@ -18,7 +18,7 @@ import "list"
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		on_exception_steps?: matchN(1, [#on_exception_steps, list.MaxItems(8) & [...#on_exception_steps]])
-		steps?: matchN(1, [#steps, list.MaxItems(8) & [_, ...] & [...#steps]])
+		steps!: matchN(1, [#steps, list.MaxItems(8) & [_, ...] & [...#steps]])
 	})
 
 	#on_exception_steps: close({

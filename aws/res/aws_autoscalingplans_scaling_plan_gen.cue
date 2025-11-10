@@ -15,8 +15,8 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:               string
 		scaling_plan_version?: number
-		application_source?: matchN(1, [#application_source, list.MaxItems(1) & [_, ...] & [...#application_source]])
-		scaling_instruction?: matchN(1, [#scaling_instruction, [_, ...] & [...#scaling_instruction]])
+		application_source!: matchN(1, [#application_source, list.MaxItems(1) & [_, ...] & [...#application_source]])
+		scaling_instruction!: matchN(1, [#scaling_instruction, [_, ...] & [...#scaling_instruction]])
 	})
 
 	#application_source: close({
@@ -37,7 +37,7 @@ import "list"
 		scaling_policy_update_behavior?:         string
 		scheduled_action_buffer_time?:           number
 		predefined_load_metric_specification?: matchN(1, [_#defs."/$defs/scaling_instruction/$defs/predefined_load_metric_specification", list.MaxItems(1) & [..._#defs."/$defs/scaling_instruction/$defs/predefined_load_metric_specification"]])
-		target_tracking_configuration?: matchN(1, [_#defs."/$defs/scaling_instruction/$defs/target_tracking_configuration", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/scaling_instruction/$defs/target_tracking_configuration"]])
+		target_tracking_configuration!: matchN(1, [_#defs."/$defs/scaling_instruction/$defs/target_tracking_configuration", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/scaling_instruction/$defs/target_tracking_configuration"]])
 		service_namespace!: string
 	})
 

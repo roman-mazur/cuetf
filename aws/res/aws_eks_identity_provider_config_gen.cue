@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_eks_identity_provider_config")
 	close({
 		arn?: string
-		oidc?: matchN(1, [#oidc, list.MaxItems(1) & [_, ...] & [...#oidc]])
+		oidc!: matchN(1, [#oidc, list.MaxItems(1) & [_, ...] & [...#oidc]])
 		cluster_name!: string
 		id?:           string
 

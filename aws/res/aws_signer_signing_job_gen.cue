@@ -21,8 +21,8 @@ import "list"
 		job_owner?:                  string
 		platform_display_name?:      string
 		platform_id?:                string
-		destination?: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
-		source?: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
 		profile_name!:    string
 		profile_version?: string
 		requested_by?:    string
@@ -43,11 +43,11 @@ import "list"
 	})
 
 	#destination: close({
-		s3?: matchN(1, [_#defs."/$defs/destination/$defs/s3", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination/$defs/s3"]])
+		s3!: matchN(1, [_#defs."/$defs/destination/$defs/s3", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination/$defs/s3"]])
 	})
 
 	#source: close({
-		s3?: matchN(1, [_#defs."/$defs/source/$defs/s3", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/source/$defs/s3"]])
+		s3!: matchN(1, [_#defs."/$defs/source/$defs/s3", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/source/$defs/s3"]])
 	})
 
 	_#defs: "/$defs/destination/$defs/s3": close({

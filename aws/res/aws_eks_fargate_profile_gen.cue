@@ -15,7 +15,7 @@ package res
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		selector?: matchN(1, [#selector, [_, ...] & [...#selector]])
+		selector!: matchN(1, [#selector, [_, ...] & [...#selector]])
 		status?:   string
 		timeouts?: #timeouts
 		subnet_ids?: [...string]

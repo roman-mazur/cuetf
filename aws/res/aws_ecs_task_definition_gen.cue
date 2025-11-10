@@ -89,7 +89,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/volume/$defs/fsx_windows_file_server_volume_configuration": close({
-		authorization_config?: matchN(1, [_#defs."/$defs/volume/$defs/fsx_windows_file_server_volume_configuration/$defs/authorization_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/volume/$defs/fsx_windows_file_server_volume_configuration/$defs/authorization_config"]])
+		authorization_config!: matchN(1, [_#defs."/$defs/volume/$defs/fsx_windows_file_server_volume_configuration/$defs/authorization_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/volume/$defs/fsx_windows_file_server_volume_configuration/$defs/authorization_config"]])
 		file_system_id!: string
 		root_directory!: string
 	})

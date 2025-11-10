@@ -10,7 +10,7 @@ import "list"
 		default_value?:   string
 		effective_end?:   string
 		effective_start?: string
-		rule?: matchN(1, [#rule, [_, ...] & [...#rule]])
+		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
 		id?:           string
 		name!:         string
 		rule_version!: string

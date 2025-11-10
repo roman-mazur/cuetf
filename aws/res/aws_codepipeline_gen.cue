@@ -10,7 +10,7 @@ import "list"
 		execution_mode?: string
 		id?:             string
 		name!:           string
-		artifact_store?: matchN(1, [#artifact_store, [_, ...] & [...#artifact_store]])
+		artifact_store!: matchN(1, [#artifact_store, [_, ...] & [...#artifact_store]])
 		pipeline_type?: string
 
 		// Region where this resource will be
@@ -18,7 +18,7 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		stage?: matchN(1, [#stage, [_, _, ...] & [...#stage]])
+		stage!: matchN(1, [#stage, [_, _, ...] & [...#stage]])
 		role_arn!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
@@ -65,7 +65,7 @@ import "list"
 	})
 
 	#stage: close({
-		action?: matchN(1, [_#defs."/$defs/stage/$defs/action", [_, ...] & [..._#defs."/$defs/stage/$defs/action"]])
+		action!: matchN(1, [_#defs."/$defs/stage/$defs/action", [_, ...] & [..._#defs."/$defs/stage/$defs/action"]])
 		before_entry?: matchN(1, [_#defs."/$defs/stage/$defs/before_entry", list.MaxItems(1) & [..._#defs."/$defs/stage/$defs/before_entry"]])
 		on_failure?: matchN(1, [_#defs."/$defs/stage/$defs/on_failure", list.MaxItems(1) & [..._#defs."/$defs/stage/$defs/on_failure"]])
 		on_success?: matchN(1, [_#defs."/$defs/stage/$defs/on_success", list.MaxItems(1) & [..._#defs."/$defs/stage/$defs/on_success"]])
@@ -73,7 +73,7 @@ import "list"
 	})
 
 	#trigger: close({
-		git_configuration?: matchN(1, [_#defs."/$defs/trigger/$defs/git_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/trigger/$defs/git_configuration"]])
+		git_configuration!: matchN(1, [_#defs."/$defs/trigger/$defs/git_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/trigger/$defs/git_configuration"]])
 		provider_type!: string
 	})
 
@@ -105,16 +105,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/stage/$defs/before_entry": close({
-		condition?: matchN(1, [_#defs."/$defs/stage/$defs/before_entry/$defs/condition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/stage/$defs/before_entry/$defs/condition"]])
+		condition!: matchN(1, [_#defs."/$defs/stage/$defs/before_entry/$defs/condition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/stage/$defs/before_entry/$defs/condition"]])
 	})
 
 	_#defs: "/$defs/stage/$defs/before_entry/$defs/condition": close({
-		rule?: matchN(1, [_#defs."/$defs/stage/$defs/before_entry/$defs/condition/$defs/rule", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/stage/$defs/before_entry/$defs/condition/$defs/rule"]])
+		rule!: matchN(1, [_#defs."/$defs/stage/$defs/before_entry/$defs/condition/$defs/rule", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/stage/$defs/before_entry/$defs/condition/$defs/rule"]])
 		result?: string
 	})
 
 	_#defs: "/$defs/stage/$defs/before_entry/$defs/condition/$defs/rule": close({
-		rule_type_id?: matchN(1, [_#defs."/$defs/stage/$defs/before_entry/$defs/condition/$defs/rule/$defs/rule_type_id", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/stage/$defs/before_entry/$defs/condition/$defs/rule/$defs/rule_type_id"]])
+		rule_type_id!: matchN(1, [_#defs."/$defs/stage/$defs/before_entry/$defs/condition/$defs/rule/$defs/rule_type_id", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/stage/$defs/before_entry/$defs/condition/$defs/rule/$defs/rule_type_id"]])
 		commands?: [...string]
 		configuration?: [string]: string
 		input_artifacts?: [...string]
@@ -138,12 +138,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/stage/$defs/on_failure/$defs/condition": close({
-		rule?: matchN(1, [_#defs."/$defs/stage/$defs/on_failure/$defs/condition/$defs/rule", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/stage/$defs/on_failure/$defs/condition/$defs/rule"]])
+		rule!: matchN(1, [_#defs."/$defs/stage/$defs/on_failure/$defs/condition/$defs/rule", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/stage/$defs/on_failure/$defs/condition/$defs/rule"]])
 		result?: string
 	})
 
 	_#defs: "/$defs/stage/$defs/on_failure/$defs/condition/$defs/rule": close({
-		rule_type_id?: matchN(1, [_#defs."/$defs/stage/$defs/on_failure/$defs/condition/$defs/rule/$defs/rule_type_id", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/stage/$defs/on_failure/$defs/condition/$defs/rule/$defs/rule_type_id"]])
+		rule_type_id!: matchN(1, [_#defs."/$defs/stage/$defs/on_failure/$defs/condition/$defs/rule/$defs/rule_type_id", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/stage/$defs/on_failure/$defs/condition/$defs/rule/$defs/rule_type_id"]])
 		commands?: [...string]
 		configuration?: [string]: string
 		input_artifacts?: [...string]
@@ -165,16 +165,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/stage/$defs/on_success": close({
-		condition?: matchN(1, [_#defs."/$defs/stage/$defs/on_success/$defs/condition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/stage/$defs/on_success/$defs/condition"]])
+		condition!: matchN(1, [_#defs."/$defs/stage/$defs/on_success/$defs/condition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/stage/$defs/on_success/$defs/condition"]])
 	})
 
 	_#defs: "/$defs/stage/$defs/on_success/$defs/condition": close({
-		rule?: matchN(1, [_#defs."/$defs/stage/$defs/on_success/$defs/condition/$defs/rule", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/stage/$defs/on_success/$defs/condition/$defs/rule"]])
+		rule!: matchN(1, [_#defs."/$defs/stage/$defs/on_success/$defs/condition/$defs/rule", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/stage/$defs/on_success/$defs/condition/$defs/rule"]])
 		result?: string
 	})
 
 	_#defs: "/$defs/stage/$defs/on_success/$defs/condition/$defs/rule": close({
-		rule_type_id?: matchN(1, [_#defs."/$defs/stage/$defs/on_success/$defs/condition/$defs/rule/$defs/rule_type_id", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/stage/$defs/on_success/$defs/condition/$defs/rule/$defs/rule_type_id"]])
+		rule_type_id!: matchN(1, [_#defs."/$defs/stage/$defs/on_success/$defs/condition/$defs/rule/$defs/rule_type_id", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/stage/$defs/on_success/$defs/condition/$defs/rule/$defs/rule_type_id"]])
 		commands?: [...string]
 		configuration?: [string]: string
 		input_artifacts?: [...string]

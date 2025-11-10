@@ -15,7 +15,7 @@ import "list"
 		region?:             string
 		instance_arn!:       string
 		permission_set_arn!: string
-		customer_managed_policy_reference?: matchN(1, [#customer_managed_policy_reference, list.MaxItems(1) & [_, ...] & [...#customer_managed_policy_reference]])
+		customer_managed_policy_reference!: matchN(1, [#customer_managed_policy_reference, list.MaxItems(1) & [_, ...] & [...#customer_managed_policy_reference]])
 		timeouts?: #timeouts
 	})
 

@@ -12,7 +12,7 @@ import "list"
 		tag_key?:       string
 		tags?: [...string]
 		sort_by?: matchN(1, [#sort_by, [...#sort_by]])
-		time_period?: matchN(1, [#time_period, list.MaxItems(1) & [_, ...] & [...#time_period]])
+		time_period!: matchN(1, [#time_period, list.MaxItems(1) & [_, ...] & [...#time_period]])
 	})
 
 	#filter: close({
