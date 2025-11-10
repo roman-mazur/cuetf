@@ -46,7 +46,7 @@ import "list"
 	})
 
 	#encryption_settings: close({
-		disk_encryption_key?: matchN(1, [_#defs."/$defs/encryption_settings/$defs/disk_encryption_key", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encryption_settings/$defs/disk_encryption_key"]])
+		disk_encryption_key!: matchN(1, [_#defs."/$defs/encryption_settings/$defs/disk_encryption_key", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encryption_settings/$defs/disk_encryption_key"]])
 		key_encryption_key?: matchN(1, [_#defs."/$defs/encryption_settings/$defs/key_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/encryption_settings/$defs/key_encryption_key"]])
 	})
 

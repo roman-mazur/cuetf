@@ -23,7 +23,7 @@ import "list"
 	})
 
 	#delegation: close({
-		service_delegation?: matchN(1, [_#defs."/$defs/delegation/$defs/service_delegation", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/delegation/$defs/service_delegation"]])
+		service_delegation!: matchN(1, [_#defs."/$defs/delegation/$defs/service_delegation", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/delegation/$defs/service_delegation"]])
 		name!: string
 	})
 

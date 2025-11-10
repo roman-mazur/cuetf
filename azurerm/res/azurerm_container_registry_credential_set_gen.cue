@@ -12,8 +12,8 @@ import "list"
 		name!:         string
 		id?:           string
 		login_server!: string
-		authentication_credentials?: matchN(1, [#authentication_credentials, list.MaxItems(1) & [_, ...] & [...#authentication_credentials]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		authentication_credentials!: matchN(1, [#authentication_credentials, list.MaxItems(1) & [_, ...] & [...#authentication_credentials]])
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
 		timeouts?: #timeouts
 	})
 

@@ -62,7 +62,7 @@ import "list"
 		tags?: [string]: string
 		network_rule_set?: matchN(1, [#network_rule_set, [...#network_rule_set]])
 		type?: string
-		sku?: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
 		timeouts?: #timeouts
 	})
 

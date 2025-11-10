@@ -21,7 +21,7 @@ import "list"
 		network_subnet_cidr!:         string
 		nsxt_certificate_thumbprint?: string
 		nsxt_manager_endpoint?:       string
-		management_cluster?: matchN(1, [#management_cluster, list.MaxItems(1) & [_, ...] & [...#management_cluster]])
+		management_cluster!: matchN(1, [#management_cluster, list.MaxItems(1) & [_, ...] & [...#management_cluster]])
 		nsxt_password?:            string
 		provisioning_subnet_cidr?: string
 		resource_group_name!:      string

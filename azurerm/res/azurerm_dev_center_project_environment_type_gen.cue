@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_dev_center_project_environment_type")
 	close({
 		creator_role_assignment_roles?: [...string]
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
 		deployment_target_id!:  string
 		dev_center_project_id!: string
 		id?:                    string

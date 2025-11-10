@@ -33,7 +33,7 @@ import "list"
 		security_profile?: matchN(1, [#security_profile, list.MaxItems(1) & [...#security_profile]])
 		vm_size!: string
 		start_task?: matchN(1, [#start_task, list.MaxItems(1) & [...#start_task]])
-		storage_image_reference?: matchN(1, [#storage_image_reference, list.MaxItems(1) & [_, ...] & [...#storage_image_reference]])
+		storage_image_reference!: matchN(1, [#storage_image_reference, list.MaxItems(1) & [_, ...] & [...#storage_image_reference]])
 		task_scheduling_policy?: matchN(1, [#task_scheduling_policy, [...#task_scheduling_policy]])
 		timeouts?: #timeouts
 		user_accounts?: matchN(1, [#user_accounts, [...#user_accounts]])
@@ -132,7 +132,7 @@ import "list"
 		task_retry_maximum?: number
 		wait_for_success?:   bool
 		resource_file?: matchN(1, [_#defs."/$defs/start_task/$defs/resource_file", [..._#defs."/$defs/start_task/$defs/resource_file"]])
-		user_identity?: matchN(1, [_#defs."/$defs/start_task/$defs/user_identity", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/start_task/$defs/user_identity"]])
+		user_identity!: matchN(1, [_#defs."/$defs/start_task/$defs/user_identity", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/start_task/$defs/user_identity"]])
 	})
 
 	#storage_image_reference: close({

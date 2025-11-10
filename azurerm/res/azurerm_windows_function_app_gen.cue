@@ -79,7 +79,7 @@ import "list"
 		backup?: matchN(1, [#backup, list.MaxItems(1) & [...#backup]])
 		connection_string?: matchN(1, [#connection_string, [...#connection_string]])
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		site_config?: matchN(1, [#site_config, list.MaxItems(1) & [_, ...] & [...#site_config]])
+		site_config!: matchN(1, [#site_config, list.MaxItems(1) & [_, ...] & [...#site_config]])
 		sticky_settings?: matchN(1, [#sticky_settings, list.MaxItems(1) & [...#sticky_settings]])
 		storage_account?: matchN(1, [#storage_account, [...#storage_account]])
 
@@ -203,7 +203,7 @@ import "list"
 		facebook_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/facebook_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/facebook_v2"]])
 		github_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/github_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/github_v2"]])
 		google_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/google_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/google_v2"]])
-		login?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/login", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_settings_v2/$defs/login"]])
+		login!: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/login", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_settings_v2/$defs/login"]])
 		microsoft_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/microsoft_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/microsoft_v2"]])
 
 		// Should the authentication flow be used for all requests.
@@ -227,7 +227,7 @@ import "list"
 	#backup: close({
 		// Should this backup job be enabled?
 		enabled?: bool
-		schedule?: matchN(1, [_#defs."/$defs/backup/$defs/schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/backup/$defs/schedule"]])
+		schedule!: matchN(1, [_#defs."/$defs/backup/$defs/schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/backup/$defs/schedule"]])
 
 		// The name which should be used for this Backup.
 		name!: string

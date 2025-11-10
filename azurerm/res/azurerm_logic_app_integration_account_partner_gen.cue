@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_logic_app_integration_account_partner")
 	close({
-		business_identity?: matchN(1, [#business_identity, [_, ...] & [...#business_identity]])
+		business_identity!: matchN(1, [#business_identity, [_, ...] & [...#business_identity]])
 		id?:                       string
 		integration_account_name!: string
 		metadata?:                 string

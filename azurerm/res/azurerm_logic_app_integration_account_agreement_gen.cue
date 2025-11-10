@@ -13,9 +13,9 @@ import "list"
 		id?:                       string
 		integration_account_name!: string
 		metadata?: [string]: string
-		guest_identity?: matchN(1, [#guest_identity, list.MaxItems(1) & [_, ...] & [...#guest_identity]])
+		guest_identity!: matchN(1, [#guest_identity, list.MaxItems(1) & [_, ...] & [...#guest_identity]])
 		name!: string
-		host_identity?: matchN(1, [#host_identity, list.MaxItems(1) & [_, ...] & [...#host_identity]])
+		host_identity!: matchN(1, [#host_identity, list.MaxItems(1) & [_, ...] & [...#host_identity]])
 		timeouts?:            #timeouts
 		resource_group_name!: string
 	})

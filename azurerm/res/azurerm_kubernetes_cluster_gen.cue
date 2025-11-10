@@ -67,7 +67,7 @@ import "list"
 		azure_active_directory_role_based_access_control?: matchN(1, [#azure_active_directory_role_based_access_control, list.MaxItems(1) & [...#azure_active_directory_role_based_access_control]])
 		bootstrap_profile?: matchN(1, [#bootstrap_profile, list.MaxItems(1) & [...#bootstrap_profile]])
 		confidential_computing?: matchN(1, [#confidential_computing, list.MaxItems(1) & [...#confidential_computing]])
-		default_node_pool?: matchN(1, [#default_node_pool, list.MaxItems(1) & [_, ...] & [...#default_node_pool]])
+		default_node_pool!: matchN(1, [#default_node_pool, list.MaxItems(1) & [_, ...] & [...#default_node_pool]])
 		http_proxy_config?: matchN(1, [#http_proxy_config, list.MaxItems(1) & [...#http_proxy_config]])
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		ingress_application_gateway?: matchN(1, [#ingress_application_gateway, list.MaxItems(1) & [...#ingress_application_gateway]])
@@ -235,7 +235,7 @@ import "list"
 	})
 
 	#linux_profile: close({
-		ssh_key?: matchN(1, [_#defs."/$defs/linux_profile/$defs/ssh_key", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/linux_profile/$defs/ssh_key"]])
+		ssh_key!: matchN(1, [_#defs."/$defs/linux_profile/$defs/ssh_key", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/linux_profile/$defs/ssh_key"]])
 		admin_username!: string
 	})
 

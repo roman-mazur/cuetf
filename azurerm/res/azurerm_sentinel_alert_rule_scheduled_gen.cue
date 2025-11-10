@@ -42,7 +42,7 @@ import "list"
 	})
 
 	#entity_mapping: close({
-		field_mapping?: matchN(1, [_#defs."/$defs/entity_mapping/$defs/field_mapping", list.MaxItems(3) & [_, ...] & [..._#defs."/$defs/entity_mapping/$defs/field_mapping"]])
+		field_mapping!: matchN(1, [_#defs."/$defs/entity_mapping/$defs/field_mapping", list.MaxItems(3) & [_, ...] & [..._#defs."/$defs/entity_mapping/$defs/field_mapping"]])
 		entity_type!: string
 	})
 
@@ -51,7 +51,7 @@ import "list"
 	})
 
 	#incident: close({
-		grouping?: matchN(1, [_#defs."/$defs/incident/$defs/grouping", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/incident/$defs/grouping"]])
+		grouping!: matchN(1, [_#defs."/$defs/incident/$defs/grouping", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/incident/$defs/grouping"]])
 		create_incident_enabled!: bool
 	})
 

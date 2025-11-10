@@ -12,7 +12,7 @@ import "list"
 		name!:                 string
 		network_watcher_name!: string
 		resource_group_name!:  string
-		retention_policy?: matchN(1, [#retention_policy, list.MaxItems(1) & [_, ...] & [...#retention_policy]])
+		retention_policy!: matchN(1, [#retention_policy, list.MaxItems(1) & [_, ...] & [...#retention_policy]])
 		storage_account_id!: string
 		timeouts?:           #timeouts
 		traffic_analytics?: matchN(1, [#traffic_analytics, list.MaxItems(1) & [...#traffic_analytics]])

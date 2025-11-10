@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_network_manager")
 	close({
-		scope?: matchN(1, [#scope, list.MaxItems(1) & [_, ...] & [...#scope]])
+		scope!: matchN(1, [#scope, list.MaxItems(1) & [_, ...] & [...#scope]])
 		cross_tenant_scopes?: [...close({
 			management_groups?: [...string]
 			subscriptions?: [...string]

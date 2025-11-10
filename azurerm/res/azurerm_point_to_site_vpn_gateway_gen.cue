@@ -13,7 +13,7 @@ import "list"
 		resource_group_name!:                 string
 		routing_preference_internet_enabled?: bool
 		scale_unit!:                          number
-		connection_configuration?: matchN(1, [#connection_configuration, [_, ...] & [...#connection_configuration]])
+		connection_configuration!: matchN(1, [#connection_configuration, [_, ...] & [...#connection_configuration]])
 		tags?: [string]: string
 		timeouts?:                    #timeouts
 		virtual_hub_id!:              string
@@ -22,7 +22,7 @@ import "list"
 
 	#connection_configuration: close({
 		route?: matchN(1, [_#defs."/$defs/connection_configuration/$defs/route", list.MaxItems(1) & [..._#defs."/$defs/connection_configuration/$defs/route"]])
-		vpn_client_address_pool?: matchN(1, [_#defs."/$defs/connection_configuration/$defs/vpn_client_address_pool", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/connection_configuration/$defs/vpn_client_address_pool"]])
+		vpn_client_address_pool!: matchN(1, [_#defs."/$defs/connection_configuration/$defs/vpn_client_address_pool", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/connection_configuration/$defs/vpn_client_address_pool"]])
 		internet_security_enabled?: bool
 		name!:                      string
 	})

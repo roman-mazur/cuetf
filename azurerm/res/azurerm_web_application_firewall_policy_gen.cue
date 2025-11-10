@@ -14,13 +14,13 @@ import "list"
 		resource_group_name!: string
 		custom_rules?: matchN(1, [#custom_rules, [...#custom_rules]])
 		tags?: [string]: string
-		managed_rules?: matchN(1, [#managed_rules, list.MaxItems(1) & [_, ...] & [...#managed_rules]])
+		managed_rules!: matchN(1, [#managed_rules, list.MaxItems(1) & [_, ...] & [...#managed_rules]])
 		policy_settings?: matchN(1, [#policy_settings, list.MaxItems(1) & [...#policy_settings]])
 		timeouts?: #timeouts
 	})
 
 	#custom_rules: close({
-		match_conditions?: matchN(1, [_#defs."/$defs/custom_rules/$defs/match_conditions", [_, ...] & [..._#defs."/$defs/custom_rules/$defs/match_conditions"]])
+		match_conditions!: matchN(1, [_#defs."/$defs/custom_rules/$defs/match_conditions", [_, ...] & [..._#defs."/$defs/custom_rules/$defs/match_conditions"]])
 		action!:               string
 		enabled?:              bool
 		group_rate_limit_by?:  string
@@ -33,7 +33,7 @@ import "list"
 
 	#managed_rules: close({
 		exclusion?: matchN(1, [_#defs."/$defs/managed_rules/$defs/exclusion", [..._#defs."/$defs/managed_rules/$defs/exclusion"]])
-		managed_rule_set?: matchN(1, [_#defs."/$defs/managed_rules/$defs/managed_rule_set", [_, ...] & [..._#defs."/$defs/managed_rules/$defs/managed_rule_set"]])
+		managed_rule_set!: matchN(1, [_#defs."/$defs/managed_rules/$defs/managed_rule_set", [_, ...] & [..._#defs."/$defs/managed_rules/$defs/managed_rule_set"]])
 	})
 
 	#policy_settings: close({
@@ -57,7 +57,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/custom_rules/$defs/match_conditions": close({
-		match_variables?: matchN(1, [_#defs."/$defs/custom_rules/$defs/match_conditions/$defs/match_variables", [_, ...] & [..._#defs."/$defs/custom_rules/$defs/match_conditions/$defs/match_variables"]])
+		match_variables!: matchN(1, [_#defs."/$defs/custom_rules/$defs/match_conditions/$defs/match_variables", [_, ...] & [..._#defs."/$defs/custom_rules/$defs/match_conditions/$defs/match_variables"]])
 		match_values?: [...string]
 		negation_condition?: bool
 		operator!:           string

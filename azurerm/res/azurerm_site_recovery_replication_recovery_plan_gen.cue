@@ -12,9 +12,9 @@ import "list"
 		recovery_vault_id!:         string
 		source_recovery_fabric_id!: string
 		target_recovery_fabric_id!: string
-		boot_recovery_group?: matchN(1, [#boot_recovery_group, [_, ...] & [...#boot_recovery_group]])
-		failover_recovery_group?: matchN(1, [#failover_recovery_group, list.MaxItems(1) & [_, ...] & [...#failover_recovery_group]])
-		shutdown_recovery_group?: matchN(1, [#shutdown_recovery_group, list.MaxItems(1) & [_, ...] & [...#shutdown_recovery_group]])
+		boot_recovery_group!: matchN(1, [#boot_recovery_group, [_, ...] & [...#boot_recovery_group]])
+		failover_recovery_group!: matchN(1, [#failover_recovery_group, list.MaxItems(1) & [_, ...] & [...#failover_recovery_group]])
+		shutdown_recovery_group!: matchN(1, [#shutdown_recovery_group, list.MaxItems(1) & [_, ...] & [...#shutdown_recovery_group]])
 		timeouts?: #timeouts
 	})
 

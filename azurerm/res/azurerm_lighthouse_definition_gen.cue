@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_lighthouse_definition")
 	close({
-		authorization?: matchN(1, [#authorization, [_, ...] & [...#authorization]])
+		authorization!: matchN(1, [#authorization, [_, ...] & [...#authorization]])
 		description?:              string
 		id?:                       string
 		lighthouse_definition_id?: string

@@ -21,8 +21,8 @@ import "list"
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		resource_group_name!:    string
 		single_placement_group?: bool
-		network_profile?: matchN(1, [#network_profile, [_, ...] & [...#network_profile]])
-		os_profile?: matchN(1, [#os_profile, list.MaxItems(1) & [_, ...] & [...#os_profile]])
+		network_profile!: matchN(1, [#network_profile, [_, ...] & [...#network_profile]])
+		os_profile!: matchN(1, [#os_profile, list.MaxItems(1) & [_, ...] & [...#os_profile]])
 		tags?: [string]: string
 		os_profile_linux_config?: matchN(1, [#os_profile_linux_config, list.MaxItems(1) & [...#os_profile_linux_config]])
 		os_profile_secrets?: matchN(1, [#os_profile_secrets, [...#os_profile_secrets]])
@@ -31,10 +31,10 @@ import "list"
 		rolling_upgrade_policy?: matchN(1, [#rolling_upgrade_policy, list.MaxItems(1) & [...#rolling_upgrade_policy]])
 		upgrade_policy_mode!: string
 		zones?: [...string]
-		sku?: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
 		storage_profile_data_disk?: matchN(1, [#storage_profile_data_disk, [...#storage_profile_data_disk]])
 		storage_profile_image_reference?: matchN(1, [#storage_profile_image_reference, list.MaxItems(1) & [...#storage_profile_image_reference]])
-		storage_profile_os_disk?: matchN(1, [#storage_profile_os_disk, list.MaxItems(1) & [_, ...] & [...#storage_profile_os_disk]])
+		storage_profile_os_disk!: matchN(1, [#storage_profile_os_disk, list.MaxItems(1) & [_, ...] & [...#storage_profile_os_disk]])
 		timeouts?: #timeouts
 	})
 
@@ -68,7 +68,7 @@ import "list"
 		name!:                      string
 		network_security_group_id?: string
 		primary!:                   bool
-		ip_configuration?: matchN(1, [_#defs."/$defs/network_profile/$defs/ip_configuration", [_, ...] & [..._#defs."/$defs/network_profile/$defs/ip_configuration"]])
+		ip_configuration!: matchN(1, [_#defs."/$defs/network_profile/$defs/ip_configuration", [_, ...] & [..._#defs."/$defs/network_profile/$defs/ip_configuration"]])
 	})
 
 	#os_profile: close({

@@ -28,17 +28,18 @@ package data
 				drain_timeout_sec?: number
 				enabled?:           bool
 			})]
-			cookie_based_affinity?:               string
-			host_name?:                           string
-			id?:                                  string
-			name?:                                string
-			path?:                                string
-			pick_host_name_from_backend_address?: bool
-			port?:                                number
-			probe_id?:                            string
-			probe_name?:                          string
-			protocol?:                            string
-			request_timeout?:                     number
+			cookie_based_affinity?:                string
+			dedicated_backend_connection_enabled?: bool
+			host_name?:                            string
+			id?:                                   string
+			name?:                                 string
+			path?:                                 string
+			pick_host_name_from_backend_address?:  bool
+			port?:                                 number
+			probe_id?:                             string
+			probe_name?:                           string
+			protocol?:                             string
+			request_timeout?:                      number
 			trusted_root_certificate_names?: [...string]
 		})]
 		custom_error_configuration?: [...close({

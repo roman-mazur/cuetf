@@ -13,7 +13,7 @@ import "list"
 		name!:                string
 		os_type!:             string
 		resource_group_name!: string
-		identifier?: matchN(1, [#identifier, list.MaxItems(1) & [_, ...] & [...#identifier]])
+		identifier!: matchN(1, [#identifier, list.MaxItems(1) & [_, ...] & [...#identifier]])
 		storage_path_id?: string
 		timeouts?:        #timeouts
 		tags?: [string]: string

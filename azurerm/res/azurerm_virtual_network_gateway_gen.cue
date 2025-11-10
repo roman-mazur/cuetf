@@ -23,7 +23,7 @@ import "list"
 		resource_group_name!:         string
 		custom_route?: matchN(1, [#custom_route, list.MaxItems(1) & [...#custom_route]])
 		sku!: string
-		ip_configuration?: matchN(1, [#ip_configuration, list.MaxItems(3) & [_, ...] & [...#ip_configuration]])
+		ip_configuration!: matchN(1, [#ip_configuration, list.MaxItems(3) & [_, ...] & [...#ip_configuration]])
 		tags?: [string]: string
 		type!:                        string
 		virtual_wan_traffic_enabled?: bool
@@ -51,7 +51,7 @@ import "list"
 	})
 
 	#policy_group: close({
-		policy_member?: matchN(1, [_#defs."/$defs/policy_group/$defs/policy_member", [_, ...] & [..._#defs."/$defs/policy_group/$defs/policy_member"]])
+		policy_member!: matchN(1, [_#defs."/$defs/policy_group/$defs/policy_member", [_, ...] & [..._#defs."/$defs/policy_group/$defs/policy_member"]])
 		is_default?: bool
 		name!:       string
 		priority?:   number

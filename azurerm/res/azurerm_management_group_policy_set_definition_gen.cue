@@ -13,7 +13,7 @@ package res
 		name!:        string
 		parameters?:  string
 		policy_type!: string
-		policy_definition_reference?: matchN(1, [#policy_definition_reference, [_, ...] & [...#policy_definition_reference]])
+		policy_definition_reference!: matchN(1, [#policy_definition_reference, [_, ...] & [...#policy_definition_reference]])
 		timeouts?: #timeouts
 	})
 

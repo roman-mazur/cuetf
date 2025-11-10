@@ -14,7 +14,7 @@ import "list"
 		id?:                       string
 		location!:                 string
 		name!:                     string
-		sku?: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
 		peering_location?:                    string
 		rate_limiting_enabled?:               bool
 		resource_group_name!:                 string

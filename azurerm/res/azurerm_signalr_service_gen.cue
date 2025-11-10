@@ -28,7 +28,7 @@ import "list"
 		server_port?:                              number
 		serverless_connection_timeout_in_seconds?: number
 		live_trace?: matchN(1, [#live_trace, list.MaxItems(1) & [...#live_trace]])
-		sku?: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
 		service_mode?: string
 		tags?: [string]: string
 		timeouts?: #timeouts

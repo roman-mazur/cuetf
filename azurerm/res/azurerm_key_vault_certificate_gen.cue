@@ -38,10 +38,10 @@ import "list"
 	})
 
 	#certificate_policy: close({
-		issuer_parameters?: matchN(1, [_#defs."/$defs/certificate_policy/$defs/issuer_parameters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/certificate_policy/$defs/issuer_parameters"]])
-		key_properties?: matchN(1, [_#defs."/$defs/certificate_policy/$defs/key_properties", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/certificate_policy/$defs/key_properties"]])
+		issuer_parameters!: matchN(1, [_#defs."/$defs/certificate_policy/$defs/issuer_parameters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/certificate_policy/$defs/issuer_parameters"]])
+		key_properties!: matchN(1, [_#defs."/$defs/certificate_policy/$defs/key_properties", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/certificate_policy/$defs/key_properties"]])
 		lifetime_action?: matchN(1, [_#defs."/$defs/certificate_policy/$defs/lifetime_action", [..._#defs."/$defs/certificate_policy/$defs/lifetime_action"]])
-		secret_properties?: matchN(1, [_#defs."/$defs/certificate_policy/$defs/secret_properties", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/certificate_policy/$defs/secret_properties"]])
+		secret_properties!: matchN(1, [_#defs."/$defs/certificate_policy/$defs/secret_properties", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/certificate_policy/$defs/secret_properties"]])
 		x509_certificate_properties?: matchN(1, [_#defs."/$defs/certificate_policy/$defs/x509_certificate_properties", list.MaxItems(1) & [..._#defs."/$defs/certificate_policy/$defs/x509_certificate_properties"]])
 	})
 
@@ -65,8 +65,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/certificate_policy/$defs/lifetime_action": close({
-		action?: matchN(1, [_#defs."/$defs/certificate_policy/$defs/lifetime_action/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/certificate_policy/$defs/lifetime_action/$defs/action"]])
-		trigger?: matchN(1, [_#defs."/$defs/certificate_policy/$defs/lifetime_action/$defs/trigger", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/certificate_policy/$defs/lifetime_action/$defs/trigger"]])
+		action!: matchN(1, [_#defs."/$defs/certificate_policy/$defs/lifetime_action/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/certificate_policy/$defs/lifetime_action/$defs/action"]])
+		trigger!: matchN(1, [_#defs."/$defs/certificate_policy/$defs/lifetime_action/$defs/trigger", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/certificate_policy/$defs/lifetime_action/$defs/trigger"]])
 	})
 
 	_#defs: "/$defs/certificate_policy/$defs/lifetime_action/$defs/action": close({

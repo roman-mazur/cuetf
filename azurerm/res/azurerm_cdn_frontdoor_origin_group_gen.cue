@@ -12,7 +12,7 @@ import "list"
 		name!:                                                      string
 		restore_traffic_time_to_healed_or_new_endpoint_in_minutes?: number
 		session_affinity_enabled?:                                  bool
-		load_balancing?: matchN(1, [#load_balancing, list.MaxItems(1) & [_, ...] & [...#load_balancing]])
+		load_balancing!: matchN(1, [#load_balancing, list.MaxItems(1) & [_, ...] & [...#load_balancing]])
 		timeouts?: #timeouts
 	})
 

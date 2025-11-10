@@ -12,9 +12,9 @@ import "list"
 		exclude_from_latest?:    bool
 		gallery_application_id!: string
 		id?:                     string
-		manage_action?: matchN(1, [#manage_action, list.MaxItems(1) & [_, ...] & [...#manage_action]])
-		source?: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
-		target_region?: matchN(1, [#target_region, [_, ...] & [...#target_region]])
+		manage_action!: matchN(1, [#manage_action, list.MaxItems(1) & [_, ...] & [...#manage_action]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		target_region!: matchN(1, [#target_region, [_, ...] & [...#target_region]])
 		location!:     string
 		name!:         string
 		package_file?: string

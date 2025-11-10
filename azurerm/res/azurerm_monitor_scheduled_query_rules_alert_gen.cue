@@ -15,10 +15,10 @@ import "list"
 		id?:                      string
 		location!:                string
 		name!:                    string
-		action?: matchN(1, [#action, list.MaxItems(1) & [_, ...] & [...#action]])
+		action!: matchN(1, [#action, list.MaxItems(1) & [_, ...] & [...#action]])
 		timeouts?: #timeouts
 		query!:    string
-		trigger?: matchN(1, [#trigger, list.MaxItems(1) & [_, ...] & [...#trigger]])
+		trigger!: matchN(1, [#trigger, list.MaxItems(1) & [_, ...] & [...#trigger]])
 		query_type?:          string
 		resource_group_name!: string
 		severity?:            number

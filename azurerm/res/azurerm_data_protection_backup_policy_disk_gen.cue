@@ -17,7 +17,7 @@ import "list"
 	})
 
 	#retention_rule: close({
-		criteria?: matchN(1, [_#defs."/$defs/retention_rule/$defs/criteria", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/retention_rule/$defs/criteria"]])
+		criteria!: matchN(1, [_#defs."/$defs/retention_rule/$defs/criteria", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/retention_rule/$defs/criteria"]])
 		duration!: string
 		name!:     string
 		priority!: number

@@ -23,7 +23,7 @@ import "list"
 		registry?: matchN(1, [#registry, [...#registry]])
 		schedule_trigger_config?: matchN(1, [#schedule_trigger_config, list.MaxItems(1) & [...#schedule_trigger_config]])
 		secret?: matchN(1, [#secret, [...#secret]])
-		template?: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
+		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
 		timeouts?: #timeouts
 	})
 
@@ -83,7 +83,7 @@ import "list"
 	})
 
 	#template: close({
-		container?: matchN(1, [_#defs."/$defs/template/$defs/container", [_, ...] & [..._#defs."/$defs/template/$defs/container"]])
+		container!: matchN(1, [_#defs."/$defs/template/$defs/container", [_, ...] & [..._#defs."/$defs/template/$defs/container"]])
 		init_container?: matchN(1, [_#defs."/$defs/template/$defs/init_container", [..._#defs."/$defs/template/$defs/init_container"]])
 		volume?: matchN(1, [_#defs."/$defs/template/$defs/volume", [..._#defs."/$defs/template/$defs/volume"]])
 	})

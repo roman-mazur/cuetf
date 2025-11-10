@@ -8,12 +8,12 @@ package res
 		enabled?:     bool
 		id?:          string
 		location!:    string
-		action?: matchN(1, [#action, [_, ...] & [...#action]])
+		action!: matchN(1, [#action, [_, ...] & [...#action]])
 		name!:                string
 		resource_group_name!: string
 		scopes!: [...string]
 		tags?: [string]: string
-		source?: matchN(1, [#source, [_, ...] & [...#source]])
+		source!: matchN(1, [#source, [_, ...] & [...#source]])
 		timeouts?: #timeouts
 	})
 
@@ -37,7 +37,7 @@ package res
 	})
 
 	_#defs: "/$defs/source/$defs/rule_set": close({
-		rule?: matchN(1, [_#defs."/$defs/source/$defs/rule_set/$defs/rule", [_, ...] & [..._#defs."/$defs/source/$defs/rule_set/$defs/rule"]])
+		rule!: matchN(1, [_#defs."/$defs/source/$defs/rule_set/$defs/rule", [_, ...] & [..._#defs."/$defs/source/$defs/rule_set/$defs/rule"]])
 	})
 
 	_#defs: "/$defs/source/$defs/rule_set/$defs/rule": close({

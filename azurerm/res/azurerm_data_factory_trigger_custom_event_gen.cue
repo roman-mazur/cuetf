@@ -10,7 +10,7 @@ package res
 		data_factory_id!:    string
 		description?:        string
 		eventgrid_topic_id!: string
-		pipeline?: matchN(1, [#pipeline, [_, ...] & [...#pipeline]])
+		pipeline!: matchN(1, [#pipeline, [_, ...] & [...#pipeline]])
 		events!: [...string]
 		id?:                  string
 		timeouts?:            #timeouts

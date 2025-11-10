@@ -12,7 +12,7 @@ import "list"
 		property_columns?: [...string]
 		queue_name!:          string
 		resource_group_name!: string
-		serialization?: matchN(1, [#serialization, list.MaxItems(1) & [_, ...] & [...#serialization]])
+		serialization!: matchN(1, [#serialization, list.MaxItems(1) & [_, ...] & [...#serialization]])
 		servicebus_namespace!:      string
 		shared_access_policy_key?:  string
 		timeouts?:                  #timeouts

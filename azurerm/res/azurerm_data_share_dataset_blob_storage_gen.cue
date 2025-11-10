@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_data_share_dataset_blob_storage")
 	close({
-		storage_account?: matchN(1, [#storage_account, list.MaxItems(1) & [_, ...] & [...#storage_account]])
+		storage_account!: matchN(1, [#storage_account, list.MaxItems(1) & [_, ...] & [...#storage_account]])
 		container_name!: string
 		data_share_id!:  string
 		display_name?:   string

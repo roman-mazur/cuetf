@@ -15,21 +15,21 @@ package res
 	})
 
 	#application_rule_collection: close({
-		rule?: matchN(1, [_#defs."/$defs/application_rule_collection/$defs/rule", [_, ...] & [..._#defs."/$defs/application_rule_collection/$defs/rule"]])
+		rule!: matchN(1, [_#defs."/$defs/application_rule_collection/$defs/rule", [_, ...] & [..._#defs."/$defs/application_rule_collection/$defs/rule"]])
 		action!:   string
 		name!:     string
 		priority!: number
 	})
 
 	#nat_rule_collection: close({
-		rule?: matchN(1, [_#defs."/$defs/nat_rule_collection/$defs/rule", [_, ...] & [..._#defs."/$defs/nat_rule_collection/$defs/rule"]])
+		rule!: matchN(1, [_#defs."/$defs/nat_rule_collection/$defs/rule", [_, ...] & [..._#defs."/$defs/nat_rule_collection/$defs/rule"]])
 		action!:   string
 		name!:     string
 		priority!: number
 	})
 
 	#network_rule_collection: close({
-		rule?: matchN(1, [_#defs."/$defs/network_rule_collection/$defs/rule", [_, ...] & [..._#defs."/$defs/network_rule_collection/$defs/rule"]])
+		rule!: matchN(1, [_#defs."/$defs/network_rule_collection/$defs/rule", [_, ...] & [..._#defs."/$defs/network_rule_collection/$defs/rule"]])
 		action!:   string
 		name!:     string
 		priority!: number

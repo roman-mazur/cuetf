@@ -27,7 +27,7 @@ import "list"
 		output_blob_managed_identity?: matchN(1, [#output_blob_managed_identity, list.MaxItems(1) & [...#output_blob_managed_identity]])
 		parameter?: matchN(1, [#parameter, [...#parameter]])
 		protected_parameter?: matchN(1, [#protected_parameter, [...#protected_parameter]])
-		source?: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
 		timeouts?:           #timeouts
 		virtual_machine_id!: string
 	})

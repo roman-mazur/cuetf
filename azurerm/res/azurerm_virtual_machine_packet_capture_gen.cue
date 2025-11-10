@@ -14,7 +14,7 @@ import "list"
 		name!:                                string
 		network_watcher_id!:                  string
 		virtual_machine_id!:                  string
-		storage_location?: matchN(1, [#storage_location, list.MaxItems(1) & [_, ...] & [...#storage_location]])
+		storage_location!: matchN(1, [#storage_location, list.MaxItems(1) & [_, ...] & [...#storage_location]])
 		timeouts?: #timeouts
 	})
 

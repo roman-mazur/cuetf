@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_hpc_cache_access_policy")
 	close({
-		access_rule?: matchN(1, [#access_rule, list.MaxItems(3) & [_, ...] & [...#access_rule]])
+		access_rule!: matchN(1, [#access_rule, list.MaxItems(3) & [_, ...] & [...#access_rule]])
 		timeouts?:     #timeouts
 		hpc_cache_id!: string
 		id?:           string

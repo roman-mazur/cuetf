@@ -17,7 +17,7 @@ import "list"
 		resource_group_name!:                   string
 		sap_fqdn!:                              string
 		sap_product!:                           string
-		three_tier_configuration?: matchN(1, [#three_tier_configuration, list.MaxItems(1) & [_, ...] & [...#three_tier_configuration]])
+		three_tier_configuration!: matchN(1, [#three_tier_configuration, list.MaxItems(1) & [_, ...] & [...#three_tier_configuration]])
 		timeouts?: #timeouts
 		tags?: [string]: string
 	})
@@ -28,10 +28,10 @@ import "list"
 	})
 
 	#three_tier_configuration: close({
-		application_server_configuration?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/application_server_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/application_server_configuration"]])
-		central_server_configuration?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/central_server_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/central_server_configuration"]])
+		application_server_configuration!: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/application_server_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/application_server_configuration"]])
+		central_server_configuration!: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/central_server_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/central_server_configuration"]])
 		app_resource_group_name!: string
-		database_server_configuration?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/database_server_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/database_server_configuration"]])
+		database_server_configuration!: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/database_server_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/database_server_configuration"]])
 		high_availability_type?: string
 		resource_names?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/resource_names", list.MaxItems(1) & [..._#defs."/$defs/three_tier_configuration/$defs/resource_names"]])
 		transport_create_and_mount?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/transport_create_and_mount", list.MaxItems(1) & [..._#defs."/$defs/three_tier_configuration/$defs/transport_create_and_mount"]])
@@ -46,14 +46,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/three_tier_configuration/$defs/application_server_configuration": close({
-		virtual_machine_configuration?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/application_server_configuration/$defs/virtual_machine_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/application_server_configuration/$defs/virtual_machine_configuration"]])
+		virtual_machine_configuration!: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/application_server_configuration/$defs/virtual_machine_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/application_server_configuration/$defs/virtual_machine_configuration"]])
 		instance_count!: number
 		subnet_id!:      string
 	})
 
 	_#defs: "/$defs/three_tier_configuration/$defs/application_server_configuration/$defs/virtual_machine_configuration": close({
-		image?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/application_server_configuration/$defs/virtual_machine_configuration/$defs/image", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/application_server_configuration/$defs/virtual_machine_configuration/$defs/image"]])
-		os_profile?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/application_server_configuration/$defs/virtual_machine_configuration/$defs/os_profile", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/application_server_configuration/$defs/virtual_machine_configuration/$defs/os_profile"]])
+		image!: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/application_server_configuration/$defs/virtual_machine_configuration/$defs/image", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/application_server_configuration/$defs/virtual_machine_configuration/$defs/image"]])
+		os_profile!: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/application_server_configuration/$defs/virtual_machine_configuration/$defs/os_profile", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/application_server_configuration/$defs/virtual_machine_configuration/$defs/os_profile"]])
 		virtual_machine_size!: string
 	})
 
@@ -71,14 +71,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/three_tier_configuration/$defs/central_server_configuration": close({
-		virtual_machine_configuration?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/central_server_configuration/$defs/virtual_machine_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/central_server_configuration/$defs/virtual_machine_configuration"]])
+		virtual_machine_configuration!: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/central_server_configuration/$defs/virtual_machine_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/central_server_configuration/$defs/virtual_machine_configuration"]])
 		instance_count!: number
 		subnet_id!:      string
 	})
 
 	_#defs: "/$defs/three_tier_configuration/$defs/central_server_configuration/$defs/virtual_machine_configuration": close({
-		image?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/central_server_configuration/$defs/virtual_machine_configuration/$defs/image", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/central_server_configuration/$defs/virtual_machine_configuration/$defs/image"]])
-		os_profile?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/central_server_configuration/$defs/virtual_machine_configuration/$defs/os_profile", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/central_server_configuration/$defs/virtual_machine_configuration/$defs/os_profile"]])
+		image!: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/central_server_configuration/$defs/virtual_machine_configuration/$defs/image", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/central_server_configuration/$defs/virtual_machine_configuration/$defs/image"]])
+		os_profile!: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/central_server_configuration/$defs/virtual_machine_configuration/$defs/os_profile", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/central_server_configuration/$defs/virtual_machine_configuration/$defs/os_profile"]])
 		virtual_machine_size!: string
 	})
 
@@ -97,7 +97,7 @@ import "list"
 
 	_#defs: "/$defs/three_tier_configuration/$defs/database_server_configuration": close({
 		disk_volume_configuration?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/database_server_configuration/$defs/disk_volume_configuration", [..._#defs."/$defs/three_tier_configuration/$defs/database_server_configuration/$defs/disk_volume_configuration"]])
-		virtual_machine_configuration?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/database_server_configuration/$defs/virtual_machine_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/database_server_configuration/$defs/virtual_machine_configuration"]])
+		virtual_machine_configuration!: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/database_server_configuration/$defs/virtual_machine_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/database_server_configuration/$defs/virtual_machine_configuration"]])
 		database_type?:  string
 		instance_count!: number
 		subnet_id!:      string
@@ -111,8 +111,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/three_tier_configuration/$defs/database_server_configuration/$defs/virtual_machine_configuration": close({
-		image?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/database_server_configuration/$defs/virtual_machine_configuration/$defs/image", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/database_server_configuration/$defs/virtual_machine_configuration/$defs/image"]])
-		os_profile?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/database_server_configuration/$defs/virtual_machine_configuration/$defs/os_profile", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/database_server_configuration/$defs/virtual_machine_configuration/$defs/os_profile"]])
+		image!: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/database_server_configuration/$defs/virtual_machine_configuration/$defs/image", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/database_server_configuration/$defs/virtual_machine_configuration/$defs/image"]])
+		os_profile!: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/database_server_configuration/$defs/virtual_machine_configuration/$defs/os_profile", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/database_server_configuration/$defs/virtual_machine_configuration/$defs/os_profile"]])
 		virtual_machine_size!: string
 	})
 

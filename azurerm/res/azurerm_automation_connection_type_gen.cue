@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_automation_connection_type")
 	close({
-		field?: matchN(1, [#field, [_, ...] & [...#field]])
+		field!: matchN(1, [#field, [_, ...] & [...#field]])
 		automation_account_name!: string
 		id?:                      string
 		is_global?:               bool

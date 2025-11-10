@@ -13,7 +13,7 @@ import "list"
 		infrastructure?:               string
 		kubernetes_version?:           string
 		location!:                     string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
 		name!:                string
 		offering?:            string
 		timeouts?:            #timeouts

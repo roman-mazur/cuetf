@@ -12,7 +12,7 @@ import "list"
 		current_version?: string
 		extension_type!:  string
 		id?:              string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
 		name!:              string
 		release_namespace?: string
 		timeouts?:          #timeouts

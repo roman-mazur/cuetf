@@ -54,7 +54,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/indexing_policy/$defs/composite_index": close({
-		index?: matchN(1, [_#defs."/$defs/indexing_policy/$defs/composite_index/$defs/index", [_, ...] & [..._#defs."/$defs/indexing_policy/$defs/composite_index/$defs/index"]])
+		index!: matchN(1, [_#defs."/$defs/indexing_policy/$defs/composite_index/$defs/index", [_, ...] & [..._#defs."/$defs/indexing_policy/$defs/composite_index/$defs/index"]])
 	})
 
 	_#defs: "/$defs/indexing_policy/$defs/composite_index/$defs/index": close({

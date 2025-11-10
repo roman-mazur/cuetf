@@ -10,7 +10,7 @@ import "list"
 		data_source_id!: string
 		description?:    string
 		enabled?:        bool
-		criteria?: matchN(1, [#criteria, list.MaxItems(1) & [_, ...] & [...#criteria]])
+		criteria!: matchN(1, [#criteria, list.MaxItems(1) & [_, ...] & [...#criteria]])
 		id?:                  string
 		location!:            string
 		name!:                string
@@ -20,7 +20,7 @@ import "list"
 	})
 
 	#criteria: close({
-		dimension?: matchN(1, [_#defs."/$defs/criteria/$defs/dimension", [_, ...] & [..._#defs."/$defs/criteria/$defs/dimension"]])
+		dimension!: matchN(1, [_#defs."/$defs/criteria/$defs/dimension", [_, ...] & [..._#defs."/$defs/criteria/$defs/dimension"]])
 		metric_name!: string
 	})
 

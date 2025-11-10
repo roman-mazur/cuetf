@@ -15,7 +15,7 @@ import "list"
 	})
 
 	#privilege: close({
-		resource?: matchN(1, [_#defs."/$defs/privilege/$defs/resource", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/privilege/$defs/resource"]])
+		resource!: matchN(1, [_#defs."/$defs/privilege/$defs/resource", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/privilege/$defs/resource"]])
 		actions!: [...string]
 	})
 

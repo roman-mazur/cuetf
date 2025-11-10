@@ -24,8 +24,8 @@ import "list"
 		protocol_ports?: [...string]
 		rulestack_id!: string
 		tags?: [string]: string
-		destination?: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
-		source?: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
 		timeouts?: #timeouts
 	})
 

@@ -14,7 +14,7 @@ import "list"
 		id?:                                               string
 		location!:                                         string
 		managed_event_hub_enabled?:                        bool
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
 		managed_resource_group_name?: string
 		managed_resources?: [...close({
 			event_hub_namespace_id?: string

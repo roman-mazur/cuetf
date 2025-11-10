@@ -14,7 +14,7 @@ import "list"
 		routing?: matchN(1, [#routing, list.MaxItems(1) & [...#routing]])
 		timeouts?: #timeouts
 		traffic_selector_policy?: matchN(1, [#traffic_selector_policy, [...#traffic_selector_policy]])
-		vpn_link?: matchN(1, [#vpn_link, [_, ...] & [...#vpn_link]])
+		vpn_link!: matchN(1, [#vpn_link, [_, ...] & [...#vpn_link]])
 	})
 
 	#routing: close({

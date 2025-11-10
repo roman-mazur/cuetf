@@ -38,7 +38,7 @@ import "list"
 	})
 
 	#log_scrubbing: close({
-		scrubbing_rule?: matchN(1, [_#defs."/$defs/log_scrubbing/$defs/scrubbing_rule", list.MaxItems(100) & [_, ...] & [..._#defs."/$defs/log_scrubbing/$defs/scrubbing_rule"]])
+		scrubbing_rule!: matchN(1, [_#defs."/$defs/log_scrubbing/$defs/scrubbing_rule", list.MaxItems(100) & [_, ...] & [..._#defs."/$defs/log_scrubbing/$defs/scrubbing_rule"]])
 		enabled?: bool
 	})
 

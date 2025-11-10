@@ -20,7 +20,7 @@ import "list"
 		entity_mapping?: matchN(1, [#entity_mapping, list.MaxItems(5) & [...#entity_mapping]])
 		severity!:             string
 		suppression_duration?: string
-		event_grouping?: matchN(1, [#event_grouping, list.MaxItems(1) & [_, ...] & [...#event_grouping]])
+		event_grouping!: matchN(1, [#event_grouping, list.MaxItems(1) & [_, ...] & [...#event_grouping]])
 		suppression_enabled?: bool
 		incident?: matchN(1, [#incident, list.MaxItems(1) & [...#incident]])
 		tactics?: [...string]
@@ -38,7 +38,7 @@ import "list"
 	})
 
 	#entity_mapping: close({
-		field_mapping?: matchN(1, [_#defs."/$defs/entity_mapping/$defs/field_mapping", list.MaxItems(3) & [_, ...] & [..._#defs."/$defs/entity_mapping/$defs/field_mapping"]])
+		field_mapping!: matchN(1, [_#defs."/$defs/entity_mapping/$defs/field_mapping", list.MaxItems(3) & [_, ...] & [..._#defs."/$defs/entity_mapping/$defs/field_mapping"]])
 		entity_type!: string
 	})
 
@@ -47,7 +47,7 @@ import "list"
 	})
 
 	#incident: close({
-		grouping?: matchN(1, [_#defs."/$defs/incident/$defs/grouping", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/incident/$defs/grouping"]])
+		grouping!: matchN(1, [_#defs."/$defs/incident/$defs/grouping", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/incident/$defs/grouping"]])
 		create_incident_enabled!: bool
 	})
 

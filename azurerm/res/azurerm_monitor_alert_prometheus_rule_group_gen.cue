@@ -13,7 +13,7 @@ import "list"
 		location!:            string
 		name!:                string
 		resource_group_name!: string
-		rule?: matchN(1, [#rule, [_, ...] & [...#rule]])
+		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
 		rule_group_enabled?: bool
 		timeouts?:           #timeouts
 		scopes!: [...string]

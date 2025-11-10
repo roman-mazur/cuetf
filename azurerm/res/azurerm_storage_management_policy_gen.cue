@@ -13,8 +13,8 @@ import "list"
 	})
 
 	#rule: close({
-		actions?: matchN(1, [_#defs."/$defs/rule/$defs/actions", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/actions"]])
-		filters?: matchN(1, [_#defs."/$defs/rule/$defs/filters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/filters"]])
+		actions!: matchN(1, [_#defs."/$defs/rule/$defs/actions", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/actions"]])
+		filters!: matchN(1, [_#defs."/$defs/rule/$defs/filters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/filters"]])
 		enabled!: bool
 		name!:    string
 	})

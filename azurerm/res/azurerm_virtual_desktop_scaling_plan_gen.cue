@@ -13,7 +13,7 @@ package res
 		resource_group_name!: string
 		host_pool?: matchN(1, [#host_pool, [...#host_pool]])
 		tags?: [string]: string
-		schedule?: matchN(1, [#schedule, [_, ...] & [...#schedule]])
+		schedule!: matchN(1, [#schedule, [_, ...] & [...#schedule]])
 		timeouts?:  #timeouts
 		time_zone!: string
 	})

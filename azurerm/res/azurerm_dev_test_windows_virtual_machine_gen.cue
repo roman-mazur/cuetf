@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_dev_test_windows_virtual_machine")
 	close({
 		allow_claim?: bool
-		gallery_image_reference?: matchN(1, [#gallery_image_reference, list.MaxItems(1) & [_, ...] & [...#gallery_image_reference]])
+		gallery_image_reference!: matchN(1, [#gallery_image_reference, list.MaxItems(1) & [_, ...] & [...#gallery_image_reference]])
 		disallow_public_ip_address?: bool
 		fqdn?:                       string
 		id?:                         string

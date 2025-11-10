@@ -11,8 +11,8 @@ import "list"
 		location!:            string
 		name!:                string
 		resource_group_name!: string
-		selectors?: matchN(1, [#selectors, [_, ...] & [...#selectors]])
-		steps?: matchN(1, [#steps, [_, ...] & [...#steps]])
+		selectors!: matchN(1, [#selectors, [_, ...] & [...#selectors]])
+		steps!: matchN(1, [#steps, [_, ...] & [...#steps]])
 		timeouts?: #timeouts
 	})
 
@@ -29,7 +29,7 @@ import "list"
 	})
 
 	#steps: close({
-		branch?: matchN(1, [_#defs."/$defs/steps/$defs/branch", [_, ...] & [..._#defs."/$defs/steps/$defs/branch"]])
+		branch!: matchN(1, [_#defs."/$defs/steps/$defs/branch", [_, ...] & [..._#defs."/$defs/steps/$defs/branch"]])
 		name!: string
 	})
 
@@ -41,7 +41,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/steps/$defs/branch": close({
-		actions?: matchN(1, [_#defs."/$defs/steps/$defs/branch/$defs/actions", [_, ...] & [..._#defs."/$defs/steps/$defs/branch/$defs/actions"]])
+		actions!: matchN(1, [_#defs."/$defs/steps/$defs/branch/$defs/actions", [_, ...] & [..._#defs."/$defs/steps/$defs/branch/$defs/actions"]])
 		name!: string
 	})
 

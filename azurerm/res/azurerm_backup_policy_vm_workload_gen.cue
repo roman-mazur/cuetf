@@ -7,17 +7,17 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_backup_policy_vm_workload")
 	close({
 		id?: string
-		protection_policy?: matchN(1, [#protection_policy, [_, ...] & [...#protection_policy]])
+		protection_policy!: matchN(1, [#protection_policy, [_, ...] & [...#protection_policy]])
 		name!:                string
 		recovery_vault_name!: string
 		resource_group_name!: string
 		workload_type!:       string
-		settings?: matchN(1, [#settings, list.MaxItems(1) & [_, ...] & [...#settings]])
+		settings!: matchN(1, [#settings, list.MaxItems(1) & [_, ...] & [...#settings]])
 		timeouts?: #timeouts
 	})
 
 	#protection_policy: close({
-		backup?: matchN(1, [_#defs."/$defs/protection_policy/$defs/backup", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/protection_policy/$defs/backup"]])
+		backup!: matchN(1, [_#defs."/$defs/protection_policy/$defs/backup", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/protection_policy/$defs/backup"]])
 		retention_daily?: matchN(1, [_#defs."/$defs/protection_policy/$defs/retention_daily", list.MaxItems(1) & [..._#defs."/$defs/protection_policy/$defs/retention_daily"]])
 		retention_monthly?: matchN(1, [_#defs."/$defs/protection_policy/$defs/retention_monthly", list.MaxItems(1) & [..._#defs."/$defs/protection_policy/$defs/retention_monthly"]])
 		retention_weekly?: matchN(1, [_#defs."/$defs/protection_policy/$defs/retention_weekly", list.MaxItems(1) & [..._#defs."/$defs/protection_policy/$defs/retention_weekly"]])

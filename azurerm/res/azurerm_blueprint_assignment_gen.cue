@@ -14,7 +14,7 @@ import "list"
 		lock_exclude_actions?: [...string]
 		lock_exclude_principals?: [...string]
 		lock_mode?: string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
 		name!:                   string
 		parameter_values?:       string
 		resource_groups?:        string

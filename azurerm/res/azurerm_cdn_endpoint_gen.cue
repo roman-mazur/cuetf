@@ -23,7 +23,7 @@ import "list"
 		geo_filter?: matchN(1, [#geo_filter, [...#geo_filter]])
 		querystring_caching_behaviour?: string
 		global_delivery_rule?: matchN(1, [#global_delivery_rule, list.MaxItems(1) & [...#global_delivery_rule]])
-		origin?: matchN(1, [#origin, [_, ...] & [...#origin]])
+		origin!: matchN(1, [#origin, [_, ...] & [...#origin]])
 		timeouts?:            #timeouts
 		resource_group_name!: string
 		tags?: [string]: string

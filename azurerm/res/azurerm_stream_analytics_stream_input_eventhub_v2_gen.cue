@@ -13,7 +13,7 @@ import "list"
 		name!:                         string
 		partition_key?:                string
 		servicebus_namespace!:         string
-		serialization?: matchN(1, [#serialization, list.MaxItems(1) & [_, ...] & [...#serialization]])
+		serialization!: matchN(1, [#serialization, list.MaxItems(1) & [_, ...] & [...#serialization]])
 		shared_access_policy_key?:  string
 		timeouts?:                  #timeouts
 		shared_access_policy_name?: string

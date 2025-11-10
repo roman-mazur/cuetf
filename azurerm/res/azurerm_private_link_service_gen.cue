@@ -12,7 +12,7 @@ import "list"
 		enable_proxy_protocol?:  bool
 		fqdns?: [...string]
 		id?: string
-		nat_ip_configuration?: matchN(1, [#nat_ip_configuration, list.MaxItems(8) & [_, ...] & [...#nat_ip_configuration]])
+		nat_ip_configuration!: matchN(1, [#nat_ip_configuration, list.MaxItems(8) & [_, ...] & [...#nat_ip_configuration]])
 		load_balancer_frontend_ip_configuration_ids?: [...string]
 		timeouts?:            #timeouts
 		location!:            string

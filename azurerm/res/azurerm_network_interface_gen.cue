@@ -14,7 +14,7 @@ package res
 		internal_dns_name_label?:     string
 		internal_domain_name_suffix?: string
 		ip_forwarding_enabled?:       bool
-		ip_configuration?: matchN(1, [#ip_configuration, [_, ...] & [...#ip_configuration]])
+		ip_configuration!: matchN(1, [#ip_configuration, [_, ...] & [...#ip_configuration]])
 		location!:           string
 		mac_address?:        string
 		name!:               string

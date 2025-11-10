@@ -19,7 +19,7 @@ import "list"
 		name!:                                 string
 		primary_access_key?:                   string
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		sku?: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
 		primary_connection_string?:   string
 		public_network_access?:       string
 		public_port?:                 number

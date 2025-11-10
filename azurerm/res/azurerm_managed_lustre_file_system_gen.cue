@@ -18,7 +18,7 @@ import "list"
 		tags?: [string]: string
 		hsm_setting?: matchN(1, [#hsm_setting, list.MaxItems(1) & [...#hsm_setting]])
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [_, ...] & [...#maintenance_window]])
+		maintenance_window!: matchN(1, [#maintenance_window, list.MaxItems(1) & [_, ...] & [...#maintenance_window]])
 		root_squash?: matchN(1, [#root_squash, list.MaxItems(1) & [...#root_squash]])
 		timeouts?: #timeouts
 		zones!: [...string]

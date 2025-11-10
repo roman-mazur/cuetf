@@ -15,7 +15,7 @@ import "list"
 		scope?:                             string
 		bucket?: matchN(1, [#bucket, list.MaxItems(1) & [...#bucket]])
 		git_repository?: matchN(1, [#git_repository, list.MaxItems(1) & [...#git_repository]])
-		kustomizations?: matchN(1, [#kustomizations, [_, ...] & [...#kustomizations]])
+		kustomizations!: matchN(1, [#kustomizations, [_, ...] & [...#kustomizations]])
 		timeouts?: #timeouts
 	})
 

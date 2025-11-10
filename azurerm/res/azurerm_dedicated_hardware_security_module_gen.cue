@@ -15,7 +15,7 @@ import "list"
 		stamp_id?: string
 		tags?: [string]: string
 		zones?: [...string]
-		network_profile?: matchN(1, [#network_profile, list.MaxItems(1) & [_, ...] & [...#network_profile]])
+		network_profile!: matchN(1, [#network_profile, list.MaxItems(1) & [_, ...] & [...#network_profile]])
 		timeouts?: #timeouts
 	})
 

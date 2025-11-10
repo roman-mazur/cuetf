@@ -17,7 +17,7 @@ import "list"
 		location!:                       string
 		name!:                           string
 		resource_group_name!:            string
-		local_diagnostics_access?: matchN(1, [#local_diagnostics_access, list.MaxItems(1) & [_, ...] & [...#local_diagnostics_access]])
+		local_diagnostics_access!: matchN(1, [#local_diagnostics_access, list.MaxItems(1) & [_, ...] & [...#local_diagnostics_access]])
 		site_ids!: [...string]
 		sku!:              string
 		software_version?: string

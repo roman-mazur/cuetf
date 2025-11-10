@@ -10,12 +10,12 @@ import "list"
 		file_format?: string
 		id?:          string
 		name!:        string
-		export_data_options?: matchN(1, [#export_data_options, list.MaxItems(1) & [_, ...] & [...#export_data_options]])
+		export_data_options!: matchN(1, [#export_data_options, list.MaxItems(1) & [_, ...] & [...#export_data_options]])
 		recurrence_period_end_date!:   string
 		recurrence_period_start_date!: string
 		recurrence_type!:              string
 		resource_group_id!:            string
-		export_data_storage_location?: matchN(1, [#export_data_storage_location, list.MaxItems(1) & [_, ...] & [...#export_data_storage_location]])
+		export_data_storage_location!: matchN(1, [#export_data_storage_location, list.MaxItems(1) & [_, ...] & [...#export_data_storage_location]])
 		timeouts?: #timeouts
 	})
 

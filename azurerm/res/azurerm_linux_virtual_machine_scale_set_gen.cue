@@ -50,8 +50,8 @@ import "list"
 		extension?: matchN(1, [#extension, [...#extension]])
 		gallery_application?: matchN(1, [#gallery_application, list.MaxItems(100) & [...#gallery_application]])
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		network_interface?: matchN(1, [#network_interface, [_, ...] & [...#network_interface]])
-		os_disk?: matchN(1, [#os_disk, list.MaxItems(1) & [_, ...] & [...#os_disk]])
+		network_interface!: matchN(1, [#network_interface, [_, ...] & [...#network_interface]])
+		os_disk!: matchN(1, [#os_disk, list.MaxItems(1) & [_, ...] & [...#os_disk]])
 		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
 		rolling_upgrade_policy?: matchN(1, [#rolling_upgrade_policy, list.MaxItems(1) & [...#rolling_upgrade_policy]])
 		vtpm_enabled?: bool
@@ -131,7 +131,7 @@ import "list"
 	})
 
 	#network_interface: close({
-		ip_configuration?: matchN(1, [_#defs."/$defs/network_interface/$defs/ip_configuration", [_, ...] & [..._#defs."/$defs/network_interface/$defs/ip_configuration"]])
+		ip_configuration!: matchN(1, [_#defs."/$defs/network_interface/$defs/ip_configuration", [_, ...] & [..._#defs."/$defs/network_interface/$defs/ip_configuration"]])
 		auxiliary_mode?: string
 		auxiliary_sku?:  string
 		dns_servers?: [...string]
@@ -175,7 +175,7 @@ import "list"
 	})
 
 	#secret: close({
-		certificate?: matchN(1, [_#defs."/$defs/secret/$defs/certificate", [_, ...] & [..._#defs."/$defs/secret/$defs/certificate"]])
+		certificate!: matchN(1, [_#defs."/$defs/secret/$defs/certificate", [_, ...] & [..._#defs."/$defs/secret/$defs/certificate"]])
 		key_vault_id!: string
 	})
 

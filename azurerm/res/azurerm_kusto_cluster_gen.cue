@@ -22,7 +22,7 @@ import "list"
 		optimized_auto_scale?: matchN(1, [#optimized_auto_scale, list.MaxItems(1) & [...#optimized_auto_scale]])
 		public_ip_type?:                string
 		public_network_access_enabled?: bool
-		sku?: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
 		purge_enabled?:               bool
 		resource_group_name!:         string
 		streaming_ingestion_enabled?: bool

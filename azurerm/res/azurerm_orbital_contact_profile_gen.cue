@@ -11,7 +11,7 @@ package res
 		minimum_elevation_degrees?:         number
 		minimum_variable_contact_duration!: string
 		name!:                              string
-		links?: matchN(1, [#links, [_, ...] & [...#links]])
+		links!: matchN(1, [#links, [_, ...] & [...#links]])
 		network_configuration_subnet_id!: string
 		timeouts?:                        #timeouts
 		resource_group_name!:             string
@@ -19,7 +19,7 @@ package res
 	})
 
 	#links: close({
-		channels?: matchN(1, [_#defs."/$defs/links/$defs/channels", [_, ...] & [..._#defs."/$defs/links/$defs/channels"]])
+		channels!: matchN(1, [_#defs."/$defs/links/$defs/channels", [_, ...] & [..._#defs."/$defs/links/$defs/channels"]])
 		direction!:    string
 		name!:         string
 		polarization!: string
@@ -33,7 +33,7 @@ package res
 	})
 
 	_#defs: "/$defs/links/$defs/channels": close({
-		end_point?: matchN(1, [_#defs."/$defs/links/$defs/channels/$defs/end_point", [_, ...] & [..._#defs."/$defs/links/$defs/channels/$defs/end_point"]])
+		end_point!: matchN(1, [_#defs."/$defs/links/$defs/channels/$defs/end_point", [_, ...] & [..._#defs."/$defs/links/$defs/channels/$defs/end_point"]])
 		bandwidth_mhz!:              number
 		center_frequency_mhz!:       number
 		demodulation_configuration?: string

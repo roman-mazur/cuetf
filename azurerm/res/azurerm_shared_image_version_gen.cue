@@ -12,7 +12,7 @@ package res
 		id?:                                       string
 		image_name!:                               string
 		location!:                                 string
-		target_region?: matchN(1, [#target_region, [_, ...] & [...#target_region]])
+		target_region!: matchN(1, [#target_region, [_, ...] & [...#target_region]])
 		managed_image_id?:    string
 		name!:                string
 		os_disk_snapshot_id?: string

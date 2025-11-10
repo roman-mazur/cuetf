@@ -13,7 +13,7 @@ import "list"
 		id?:                     string
 		name!:                   string
 		throughput?:             number
-		schema?: matchN(1, [#schema, list.MaxItems(1) & [_, ...] & [...#schema]])
+		schema!: matchN(1, [#schema, list.MaxItems(1) & [_, ...] & [...#schema]])
 		timeouts?: #timeouts
 	})
 
@@ -23,8 +23,8 @@ import "list"
 
 	#schema: close({
 		cluster_key?: matchN(1, [_#defs."/$defs/schema/$defs/cluster_key", [..._#defs."/$defs/schema/$defs/cluster_key"]])
-		column?: matchN(1, [_#defs."/$defs/schema/$defs/column", [_, ...] & [..._#defs."/$defs/schema/$defs/column"]])
-		partition_key?: matchN(1, [_#defs."/$defs/schema/$defs/partition_key", [_, ...] & [..._#defs."/$defs/schema/$defs/partition_key"]])
+		column!: matchN(1, [_#defs."/$defs/schema/$defs/column", [_, ...] & [..._#defs."/$defs/schema/$defs/column"]])
+		partition_key!: matchN(1, [_#defs."/$defs/schema/$defs/partition_key", [_, ...] & [..._#defs."/$defs/schema/$defs/partition_key"]])
 	})
 
 	#timeouts: close({

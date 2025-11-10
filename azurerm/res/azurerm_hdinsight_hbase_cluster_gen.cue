@@ -11,7 +11,7 @@ import "list"
 		id?:              string
 		location!:        string
 		name!:            string
-		component_version?: matchN(1, [#component_version, list.MaxItems(1) & [_, ...] & [...#component_version]])
+		component_version!: matchN(1, [#component_version, list.MaxItems(1) & [_, ...] & [...#component_version]])
 		resource_group_name!: string
 		ssh_endpoint?:        string
 		tags?: [string]: string
@@ -20,12 +20,12 @@ import "list"
 		compute_isolation?: matchN(1, [#compute_isolation, list.MaxItems(1) & [...#compute_isolation]])
 		disk_encryption?: matchN(1, [#disk_encryption, [...#disk_encryption]])
 		extension?: matchN(1, [#extension, list.MaxItems(1) & [...#extension]])
-		gateway?: matchN(1, [#gateway, list.MaxItems(1) & [_, ...] & [...#gateway]])
+		gateway!: matchN(1, [#gateway, list.MaxItems(1) & [_, ...] & [...#gateway]])
 		metastores?: matchN(1, [#metastores, list.MaxItems(1) & [...#metastores]])
 		monitor?: matchN(1, [#monitor, list.MaxItems(1) & [...#monitor]])
 		network?: matchN(1, [#network, list.MaxItems(1) & [...#network]])
 		private_link_configuration?: matchN(1, [#private_link_configuration, list.MaxItems(1) & [...#private_link_configuration]])
-		roles?: matchN(1, [#roles, list.MaxItems(1) & [_, ...] & [...#roles]])
+		roles!: matchN(1, [#roles, list.MaxItems(1) & [_, ...] & [...#roles]])
 		security_profile?: matchN(1, [#security_profile, list.MaxItems(1) & [...#security_profile]])
 		storage_account?: matchN(1, [#storage_account, [...#storage_account]])
 		storage_account_gen2?: matchN(1, [#storage_account_gen2, list.MaxItems(1) & [...#storage_account_gen2]])
@@ -75,15 +75,15 @@ import "list"
 	})
 
 	#private_link_configuration: close({
-		ip_configuration?: matchN(1, [_#defs."/$defs/private_link_configuration/$defs/ip_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/private_link_configuration/$defs/ip_configuration"]])
+		ip_configuration!: matchN(1, [_#defs."/$defs/private_link_configuration/$defs/ip_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/private_link_configuration/$defs/ip_configuration"]])
 		group_id!: string
 		name!:     string
 	})
 
 	#roles: close({
-		head_node?: matchN(1, [_#defs."/$defs/roles/$defs/head_node", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/roles/$defs/head_node"]])
-		worker_node?: matchN(1, [_#defs."/$defs/roles/$defs/worker_node", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/roles/$defs/worker_node"]])
-		zookeeper_node?: matchN(1, [_#defs."/$defs/roles/$defs/zookeeper_node", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/roles/$defs/zookeeper_node"]])
+		head_node!: matchN(1, [_#defs."/$defs/roles/$defs/head_node", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/roles/$defs/head_node"]])
+		worker_node!: matchN(1, [_#defs."/$defs/roles/$defs/worker_node", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/roles/$defs/worker_node"]])
+		zookeeper_node!: matchN(1, [_#defs."/$defs/roles/$defs/zookeeper_node", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/roles/$defs/zookeeper_node"]])
 	})
 
 	#security_profile: close({
@@ -179,7 +179,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/roles/$defs/worker_node/$defs/autoscale/$defs/recurrence": close({
-		schedule?: matchN(1, [_#defs."/$defs/roles/$defs/worker_node/$defs/autoscale/$defs/recurrence/$defs/schedule", [_, ...] & [..._#defs."/$defs/roles/$defs/worker_node/$defs/autoscale/$defs/recurrence/$defs/schedule"]])
+		schedule!: matchN(1, [_#defs."/$defs/roles/$defs/worker_node/$defs/autoscale/$defs/recurrence/$defs/schedule", [_, ...] & [..._#defs."/$defs/roles/$defs/worker_node/$defs/autoscale/$defs/recurrence/$defs/schedule"]])
 		timezone!: string
 	})
 

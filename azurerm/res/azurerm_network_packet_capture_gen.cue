@@ -15,7 +15,7 @@ import "list"
 		network_watcher_name!: string
 		resource_group_name!:  string
 		target_resource_id!:   string
-		storage_location?: matchN(1, [#storage_location, list.MaxItems(1) & [_, ...] & [...#storage_location]])
+		storage_location!: matchN(1, [#storage_location, list.MaxItems(1) & [_, ...] & [...#storage_location]])
 		timeouts?: #timeouts
 	})
 

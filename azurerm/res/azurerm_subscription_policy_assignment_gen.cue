@@ -42,7 +42,7 @@ import "list"
 	})
 
 	#resource_selectors: close({
-		selectors?: matchN(1, [_#defs."/$defs/resource_selectors/$defs/selectors", [_, ...] & [..._#defs."/$defs/resource_selectors/$defs/selectors"]])
+		selectors!: matchN(1, [_#defs."/$defs/resource_selectors/$defs/selectors", [_, ...] & [..._#defs."/$defs/resource_selectors/$defs/selectors"]])
 		name?: string
 	})
 
