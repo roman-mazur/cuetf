@@ -13,7 +13,7 @@ import "list"
 		name!:                 string
 		resource_group_name!:  string
 		tags?: [string]: string
-		sku?: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
 		total_iops?:               number
 		total_mbps?:               number
 		timeouts?:                 #timeouts

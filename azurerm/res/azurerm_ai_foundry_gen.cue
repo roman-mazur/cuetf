@@ -17,7 +17,7 @@ import "list"
 		location!:                     string
 		name!:                         string
 		encryption?: matchN(1, [#encryption, list.MaxItems(1) & [...#encryption]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
 		managed_network?: matchN(1, [#managed_network, list.MaxItems(1) & [...#managed_network]])
 		primary_user_assigned_identity?: string
 		public_network_access?:          string

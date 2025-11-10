@@ -10,7 +10,7 @@ package res
 		blob_path_begins_with?: string
 		blob_path_ends_with?:   string
 		data_factory_id!:       string
-		pipeline?: matchN(1, [#pipeline, [_, ...] & [...#pipeline]])
+		pipeline!: matchN(1, [#pipeline, [_, ...] & [...#pipeline]])
 		description?: string
 		timeouts?:    #timeouts
 		events!: [...string]

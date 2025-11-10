@@ -10,7 +10,7 @@ import "list"
 		eventhub_consumer_group_name!: string
 		id?:                           string
 		iothub_namespace!:             string
-		serialization?: matchN(1, [#serialization, list.MaxItems(1) & [_, ...] & [...#serialization]])
+		serialization!: matchN(1, [#serialization, list.MaxItems(1) & [_, ...] & [...#serialization]])
 		name!:                      string
 		resource_group_name!:       string
 		shared_access_policy_key!:  string

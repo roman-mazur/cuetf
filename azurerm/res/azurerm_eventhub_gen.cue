@@ -19,7 +19,7 @@ import "list"
 	})
 
 	#capture_description: close({
-		destination?: matchN(1, [_#defs."/$defs/capture_description/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/capture_description/$defs/destination"]])
+		destination!: matchN(1, [_#defs."/$defs/capture_description/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/capture_description/$defs/destination"]])
 		enabled!:             bool
 		encoding!:            string
 		interval_in_seconds?: number

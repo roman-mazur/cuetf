@@ -19,7 +19,7 @@ import "list"
 		location!:                          string
 		mute_actions_after_alert_duration?: string
 		name!:                              string
-		criteria?: matchN(1, [#criteria, [_, ...] & [...#criteria]])
+		criteria!: matchN(1, [#criteria, [_, ...] & [...#criteria]])
 		query_time_range_override?: string
 		resource_group_name!:       string
 		scopes!: [...string]

@@ -13,7 +13,7 @@ import "list"
 		location!:                          string
 		name!:                              string
 		resource_group_name!:               string
-		high_capacity_database_storage?: matchN(1, [#high_capacity_database_storage, list.MaxItems(1) & [_, ...] & [...#high_capacity_database_storage]])
+		high_capacity_database_storage!: matchN(1, [#high_capacity_database_storage, list.MaxItems(1) & [_, ...] & [...#high_capacity_database_storage]])
 		tags?: [string]: string
 		timeouts?:  #timeouts
 		time_zone?: string

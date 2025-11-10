@@ -13,9 +13,9 @@ import "list"
 		profile_status?:      string
 		resource_group_name!: string
 		tags?: [string]: string
-		dns_config?: matchN(1, [#dns_config, list.MaxItems(1) & [_, ...] & [...#dns_config]])
+		dns_config!: matchN(1, [#dns_config, list.MaxItems(1) & [_, ...] & [...#dns_config]])
 		traffic_routing_method!: string
-		monitor_config?: matchN(1, [#monitor_config, list.MaxItems(1) & [_, ...] & [...#monitor_config]])
+		monitor_config!: matchN(1, [#monitor_config, list.MaxItems(1) & [_, ...] & [...#monitor_config]])
 		timeouts?:             #timeouts
 		traffic_view_enabled?: bool
 	})

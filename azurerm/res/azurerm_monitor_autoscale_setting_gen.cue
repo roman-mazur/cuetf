@@ -15,7 +15,7 @@ import "list"
 		notification?: matchN(1, [#notification, list.MaxItems(1) & [...#notification]])
 		target_resource_id!: string
 		predictive?: matchN(1, [#predictive, list.MaxItems(1) & [...#predictive]])
-		profile?: matchN(1, [#profile, list.MaxItems(20) & [_, ...] & [...#profile]])
+		profile!: matchN(1, [#profile, list.MaxItems(20) & [_, ...] & [...#profile]])
 		timeouts?: #timeouts
 	})
 
@@ -30,7 +30,7 @@ import "list"
 	})
 
 	#profile: close({
-		capacity?: matchN(1, [_#defs."/$defs/profile/$defs/capacity", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/profile/$defs/capacity"]])
+		capacity!: matchN(1, [_#defs."/$defs/profile/$defs/capacity", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/profile/$defs/capacity"]])
 		fixed_date?: matchN(1, [_#defs."/$defs/profile/$defs/fixed_date", list.MaxItems(1) & [..._#defs."/$defs/profile/$defs/fixed_date"]])
 		recurrence?: matchN(1, [_#defs."/$defs/profile/$defs/recurrence", list.MaxItems(1) & [..._#defs."/$defs/profile/$defs/recurrence"]])
 		rule?: matchN(1, [_#defs."/$defs/profile/$defs/rule", list.MaxItems(10) & [..._#defs."/$defs/profile/$defs/rule"]])
@@ -75,8 +75,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/profile/$defs/rule": close({
-		metric_trigger?: matchN(1, [_#defs."/$defs/profile/$defs/rule/$defs/metric_trigger", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/profile/$defs/rule/$defs/metric_trigger"]])
-		scale_action?: matchN(1, [_#defs."/$defs/profile/$defs/rule/$defs/scale_action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/profile/$defs/rule/$defs/scale_action"]])
+		metric_trigger!: matchN(1, [_#defs."/$defs/profile/$defs/rule/$defs/metric_trigger", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/profile/$defs/rule/$defs/metric_trigger"]])
+		scale_action!: matchN(1, [_#defs."/$defs/profile/$defs/rule/$defs/scale_action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/profile/$defs/rule/$defs/scale_action"]])
 	})
 
 	_#defs: "/$defs/profile/$defs/rule/$defs/metric_trigger": close({

@@ -23,7 +23,7 @@ import "list"
 		tags?: [string]: string
 		upgrade_wave?: string
 		username?:     string
-		lb_rule?: matchN(1, [#lb_rule, [_, ...] & [...#lb_rule]])
+		lb_rule!: matchN(1, [#lb_rule, [_, ...] & [...#lb_rule]])
 		node_type?: matchN(1, [#node_type, [...#node_type]])
 		timeouts?: #timeouts
 	})
@@ -88,7 +88,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_type/$defs/vm_secrets": close({
-		certificates?: matchN(1, [_#defs."/$defs/node_type/$defs/vm_secrets/$defs/certificates", [_, ...] & [..._#defs."/$defs/node_type/$defs/vm_secrets/$defs/certificates"]])
+		certificates!: matchN(1, [_#defs."/$defs/node_type/$defs/vm_secrets/$defs/certificates", [_, ...] & [..._#defs."/$defs/node_type/$defs/vm_secrets/$defs/certificates"]])
 		vault_id!: string
 	})
 

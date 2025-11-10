@@ -22,7 +22,7 @@ import "list"
 		primary_user_assigned_identity?: string
 		feature_store?: matchN(1, [#feature_store, list.MaxItems(1) & [...#feature_store]])
 		public_network_access_enabled?: bool
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
 		resource_group_name!:             string
 		service_side_encryption_enabled?: bool
 		sku_name?:                        string

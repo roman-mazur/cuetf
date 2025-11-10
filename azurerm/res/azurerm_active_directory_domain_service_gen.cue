@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_active_directory_domain_service")
 	close({
 		deployment_id?: string
-		initial_replica_set?: matchN(1, [#initial_replica_set, list.MaxItems(1) & [_, ...] & [...#initial_replica_set]])
+		initial_replica_set!: matchN(1, [#initial_replica_set, list.MaxItems(1) & [_, ...] & [...#initial_replica_set]])
 		domain_configuration_type?: string
 		domain_name!:               string
 		filtered_sync_enabled?:     bool

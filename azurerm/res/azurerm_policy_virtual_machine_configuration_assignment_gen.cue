@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_policy_virtual_machine_configuration_assignment")
 	close({
-		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [_, ...] & [...#configuration]])
+		configuration!: matchN(1, [#configuration, list.MaxItems(1) & [_, ...] & [...#configuration]])
 		id?:                 string
 		location!:           string
 		name!:               string

@@ -13,7 +13,7 @@ import "list"
 		sql_virtual_machine_group_id!: string
 		load_balancer_configuration?: matchN(1, [#load_balancer_configuration, list.MaxItems(1) & [...#load_balancer_configuration]])
 		multi_subnet_ip_configuration?: matchN(1, [#multi_subnet_ip_configuration, [...#multi_subnet_ip_configuration]])
-		replica?: matchN(1, [#replica, [_, ...] & [...#replica]])
+		replica!: matchN(1, [#replica, [_, ...] & [...#replica]])
 		timeouts?: #timeouts
 	})
 

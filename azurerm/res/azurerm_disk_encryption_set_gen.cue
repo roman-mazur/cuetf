@@ -12,7 +12,7 @@ import "list"
 		id?:                        string
 		key_vault_key_id?:          string
 		key_vault_key_url?:         string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
 		location!:            string
 		managed_hsm_key_id?:  string
 		timeouts?:            #timeouts

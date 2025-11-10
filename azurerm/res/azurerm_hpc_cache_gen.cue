@@ -29,7 +29,7 @@ import "list"
 	})
 
 	#default_access_policy: close({
-		access_rule?: matchN(1, [_#defs."/$defs/default_access_policy/$defs/access_rule", list.MaxItems(3) & [_, ...] & [..._#defs."/$defs/default_access_policy/$defs/access_rule"]])
+		access_rule!: matchN(1, [_#defs."/$defs/default_access_policy/$defs/access_rule", list.MaxItems(3) & [_, ...] & [..._#defs."/$defs/default_access_policy/$defs/access_rule"]])
 	})
 
 	#directory_active_directory: close({

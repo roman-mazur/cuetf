@@ -14,7 +14,7 @@ import "list"
 		name!:                          string
 		node_public_ip_enabled?:        bool
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		scale_settings?: matchN(1, [#scale_settings, list.MaxItems(1) & [_, ...] & [...#scale_settings]])
+		scale_settings!: matchN(1, [#scale_settings, list.MaxItems(1) & [_, ...] & [...#scale_settings]])
 		ssh?: matchN(1, [#ssh, list.MaxItems(1) & [...#ssh]])
 		ssh_public_access_enabled?: bool
 		subnet_resource_id?:        string

@@ -53,7 +53,7 @@ import "list"
 		virtual_machine_scale_set_id?: string
 		gallery_application?: matchN(1, [#gallery_application, list.MaxItems(100) & [...#gallery_application]])
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		os_disk?: matchN(1, [#os_disk, list.MaxItems(1) & [_, ...] & [...#os_disk]])
+		os_disk!: matchN(1, [#os_disk, list.MaxItems(1) & [_, ...] & [...#os_disk]])
 		os_image_notification?: matchN(1, [#os_image_notification, list.MaxItems(1) & [...#os_image_notification]])
 		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
 		secret?: matchN(1, [#secret, [...#secret]])
@@ -118,7 +118,7 @@ import "list"
 	})
 
 	#secret: close({
-		certificate?: matchN(1, [_#defs."/$defs/secret/$defs/certificate", [_, ...] & [..._#defs."/$defs/secret/$defs/certificate"]])
+		certificate!: matchN(1, [_#defs."/$defs/secret/$defs/certificate", [_, ...] & [..._#defs."/$defs/secret/$defs/certificate"]])
 		key_vault_id!: string
 	})
 

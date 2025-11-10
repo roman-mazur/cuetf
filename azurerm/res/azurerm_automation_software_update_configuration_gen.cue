@@ -16,7 +16,7 @@ import "list"
 		non_azure_computer_names?: [...string]
 		post_task?: matchN(1, [#post_task, list.MaxItems(1) & [...#post_task]])
 		pre_task?: matchN(1, [#pre_task, list.MaxItems(1) & [...#pre_task]])
-		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [_, ...] & [...#schedule]])
+		schedule!: matchN(1, [#schedule, list.MaxItems(1) & [_, ...] & [...#schedule]])
 		target?: matchN(1, [#target, list.MaxItems(1) & [...#target]])
 		timeouts?: #timeouts
 		virtual_machine_ids?: [...string]

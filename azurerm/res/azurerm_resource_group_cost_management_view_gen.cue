@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_resource_group_cost_management_view")
 	close({
 		accumulated!: bool
-		dataset?: matchN(1, [#dataset, list.MaxItems(1) & [_, ...] & [...#dataset]])
+		dataset!: matchN(1, [#dataset, list.MaxItems(1) & [_, ...] & [...#dataset]])
 		chart_type!:   string
 		display_name!: string
 		id?:           string
@@ -21,7 +21,7 @@ import "list"
 	})
 
 	#dataset: close({
-		aggregation?: matchN(1, [_#defs."/$defs/dataset/$defs/aggregation", [_, ...] & [..._#defs."/$defs/dataset/$defs/aggregation"]])
+		aggregation!: matchN(1, [_#defs."/$defs/dataset/$defs/aggregation", [_, ...] & [..._#defs."/$defs/dataset/$defs/aggregation"]])
 		grouping?: matchN(1, [_#defs."/$defs/dataset/$defs/grouping", [..._#defs."/$defs/dataset/$defs/grouping"]])
 		sorting?: matchN(1, [_#defs."/$defs/dataset/$defs/sorting", [..._#defs."/$defs/dataset/$defs/sorting"]])
 		granularity!: string

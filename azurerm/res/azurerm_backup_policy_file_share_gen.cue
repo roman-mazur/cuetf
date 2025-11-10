@@ -6,8 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_backup_policy_file_share")
 	close({
-		backup?: matchN(1, [#backup, list.MaxItems(1) & [_, ...] & [...#backup]])
-		retention_daily?: matchN(1, [#retention_daily, list.MaxItems(1) & [_, ...] & [...#retention_daily]])
+		backup!: matchN(1, [#backup, list.MaxItems(1) & [_, ...] & [...#backup]])
+		retention_daily!: matchN(1, [#retention_daily, list.MaxItems(1) & [_, ...] & [...#retention_daily]])
 		id?: string
 		retention_monthly?: matchN(1, [#retention_monthly, list.MaxItems(1) & [...#retention_monthly]])
 		name!:                string

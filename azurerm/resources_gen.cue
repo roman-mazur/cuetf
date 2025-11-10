@@ -63,6 +63,7 @@ import "github.com/roman-mazur/cuetf/azurerm/res"
 	_#res: "\(#azurermPrefix)_api_management_subscription": res.#azurerm_api_management_subscription
 	_#res: "\(#azurermPrefix)_api_management_tag": res.#azurerm_api_management_tag
 	_#res: "\(#azurermPrefix)_api_management_user": res.#azurerm_api_management_user
+	_#res: "\(#azurermPrefix)_api_management_workspace_api_version_set": res.#azurerm_api_management_workspace_api_version_set
 	_#res: "\(#azurermPrefix)_api_management_workspace": res.#azurerm_api_management_workspace
 	_#res: "\(#azurermPrefix)_api_management_workspace_policy_fragment": res.#azurerm_api_management_workspace_policy_fragment
 	_#res: "\(#azurermPrefix)_api_management_workspace_policy": res.#azurerm_api_management_workspace_policy

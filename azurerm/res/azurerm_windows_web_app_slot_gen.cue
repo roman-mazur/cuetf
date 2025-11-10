@@ -13,10 +13,9 @@ import "list"
 		client_certificate_exclusion_paths?: string
 		client_affinity_enabled?:            bool
 		client_certificate_enabled?:         bool
+		client_certificate_mode?:            string
+		custom_domain_verification_id?:      string
 		auth_settings?: matchN(1, [#auth_settings, list.MaxItems(1) & [...#auth_settings]])
-		client_certificate_mode?:       string
-		custom_domain_verification_id?: string
-		auth_settings_v2?: matchN(1, [#auth_settings_v2, list.MaxItems(1) & [...#auth_settings_v2]])
 		default_hostname?:                         string
 		enabled?:                                  bool
 		ftp_publish_basic_authentication_enabled?: bool
@@ -25,32 +24,34 @@ import "list"
 		id?:                                       string
 		key_vault_reference_identity_id?:          string
 		kind?:                                     string
-		backup?: matchN(1, [#backup, list.MaxItems(1) & [...#backup]])
-		name!: string
+		name!:                                     string
 		outbound_ip_address_list?: [...string]
 		outbound_ip_addresses?: string
 		possible_outbound_ip_address_list?: [...string]
-		connection_string?: matchN(1, [#connection_string, [...#connection_string]])
+		auth_settings_v2?: matchN(1, [#auth_settings_v2, list.MaxItems(1) & [...#auth_settings_v2]])
 		possible_outbound_ip_addresses?: string
 		public_network_access_enabled?:  bool
 		service_plan_id?:                string
+		backup?: matchN(1, [#backup, list.MaxItems(1) & [...#backup]])
 		site_credential?: [...close({
 			name?:     string
 			password?: string
 		})]
 		tags?: [string]: string
+		virtual_network_backup_restore_enabled?: bool
+		virtual_network_image_pull_enabled?:     bool
 
 		// The local path and filename of the Zip packaged application to
 		// deploy to this Windows Web App. **Note:** Using this value
 		// requires `WEBSITE_RUN_FROM_PACKAGE=1` on the App in
 		// `app_settings`.
-		zip_deploy_file?:                        string
-		virtual_network_backup_restore_enabled?: bool
+		zip_deploy_file?:           string
+		virtual_network_subnet_id?: string
+		connection_string?: matchN(1, [#connection_string, [...#connection_string]])
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		logs?: matchN(1, [#logs, list.MaxItems(1) & [...#logs]])
-		site_config?: matchN(1, [#site_config, list.MaxItems(1) & [_, ...] & [...#site_config]])
-		virtual_network_subnet_id?:                      string
 		webdeploy_publish_basic_authentication_enabled?: bool
+		logs?: matchN(1, [#logs, list.MaxItems(1) & [...#logs]])
+		site_config!: matchN(1, [#site_config, list.MaxItems(1) & [_, ...] & [...#site_config]])
 		storage_account?: matchN(1, [#storage_account, [...#storage_account]])
 		timeouts?: #timeouts
 	})
@@ -146,7 +147,7 @@ import "list"
 		facebook_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/facebook_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/facebook_v2"]])
 		github_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/github_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/github_v2"]])
 		google_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/google_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/google_v2"]])
-		login?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/login", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_settings_v2/$defs/login"]])
+		login!: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/login", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_settings_v2/$defs/login"]])
 		microsoft_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/microsoft_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/microsoft_v2"]])
 
 		// Should the authentication flow be used for all requests.
@@ -170,7 +171,7 @@ import "list"
 	#backup: close({
 		// Should this backup job be enabled?
 		enabled?: bool
-		schedule?: matchN(1, [_#defs."/$defs/backup/$defs/schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/backup/$defs/schedule"]])
+		schedule!: matchN(1, [_#defs."/$defs/backup/$defs/schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/backup/$defs/schedule"]])
 
 		// The name which should be used for this Backup.
 		name!: string
@@ -678,8 +679,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/site_config/$defs/auto_heal_setting": close({
-		action?: matchN(1, [_#defs."/$defs/site_config/$defs/auto_heal_setting/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/site_config/$defs/auto_heal_setting/$defs/action"]])
-		trigger?: matchN(1, [_#defs."/$defs/site_config/$defs/auto_heal_setting/$defs/trigger", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/site_config/$defs/auto_heal_setting/$defs/trigger"]])
+		action!: matchN(1, [_#defs."/$defs/site_config/$defs/auto_heal_setting/$defs/action", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/site_config/$defs/auto_heal_setting/$defs/action"]])
+		trigger!: matchN(1, [_#defs."/$defs/site_config/$defs/auto_heal_setting/$defs/trigger", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/site_config/$defs/auto_heal_setting/$defs/trigger"]])
 	})
 
 	_#defs: "/$defs/site_config/$defs/auto_heal_setting/$defs/action": close({

@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_spring_cloud_connection")
 	close({
-		authentication?: matchN(1, [#authentication, list.MaxItems(1) & [_, ...] & [...#authentication]])
+		authentication!: matchN(1, [#authentication, list.MaxItems(1) & [_, ...] & [...#authentication]])
 		client_type?:        string
 		id?:                 string
 		name!:               string

@@ -116,7 +116,7 @@ import "list"
 	})
 
 	#sign_up: close({
-		terms_of_service?: matchN(1, [_#defs."/$defs/sign_up/$defs/terms_of_service", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/sign_up/$defs/terms_of_service"]])
+		terms_of_service!: matchN(1, [_#defs."/$defs/sign_up/$defs/terms_of_service", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/sign_up/$defs/terms_of_service"]])
 		enabled!: bool
 	})
 

@@ -15,7 +15,7 @@ import "list"
 		destination_nat?: matchN(1, [#destination_nat, [...#destination_nat]])
 		tags?: [string]: string
 		dns_settings?: matchN(1, [#dns_settings, list.MaxItems(1) & [...#dns_settings]])
-		network_profile?: matchN(1, [#network_profile, list.MaxItems(1) & [_, ...] & [...#network_profile]])
+		network_profile!: matchN(1, [#network_profile, list.MaxItems(1) & [_, ...] & [...#network_profile]])
 		timeouts?: #timeouts
 	})
 

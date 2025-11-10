@@ -13,7 +13,7 @@ import "list"
 		content_encoding?:    string
 		content_language?:    string
 		content_type?:        string
-		permissions?: matchN(1, [#permissions, list.MaxItems(1) & [_, ...] & [...#permissions]])
+		permissions!: matchN(1, [#permissions, list.MaxItems(1) & [_, ...] & [...#permissions]])
 		expiry!:     string
 		https_only?: bool
 		timeouts?:   #timeouts

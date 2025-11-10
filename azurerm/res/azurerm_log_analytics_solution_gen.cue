@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_log_analytics_solution")
 	close({
-		plan?: matchN(1, [#plan, list.MaxItems(1) & [_, ...] & [...#plan]])
+		plan!: matchN(1, [#plan, list.MaxItems(1) & [_, ...] & [...#plan]])
 		id?:                  string
 		location!:            string
 		resource_group_name!: string

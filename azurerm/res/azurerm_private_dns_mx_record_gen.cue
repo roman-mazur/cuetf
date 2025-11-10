@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_private_dns_mx_record")
 	close({
-		record?: matchN(1, [#record, [_, ...] & [...#record]])
+		record!: matchN(1, [#record, [_, ...] & [...#record]])
 		fqdn?:                string
 		id?:                  string
 		name?:                string

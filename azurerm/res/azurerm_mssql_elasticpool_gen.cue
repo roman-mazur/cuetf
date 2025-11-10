@@ -13,8 +13,8 @@ import "list"
 		maintenance_configuration_name?: string
 		max_size_bytes?:                 number
 		max_size_gb?:                    number
-		per_database_settings?: matchN(1, [#per_database_settings, list.MaxItems(1) & [_, ...] & [...#per_database_settings]])
-		sku?: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		per_database_settings!: matchN(1, [#per_database_settings, list.MaxItems(1) & [_, ...] & [...#per_database_settings]])
+		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
 		name!:                string
 		timeouts?:            #timeouts
 		resource_group_name!: string

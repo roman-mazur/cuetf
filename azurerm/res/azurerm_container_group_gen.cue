@@ -18,7 +18,7 @@ import "list"
 		ip_address_type?:                     string
 		key_vault_key_id?:                    string
 		key_vault_user_assigned_identity_id?: string
-		container?: matchN(1, [#container, [_, ...] & [...#container]])
+		container!: matchN(1, [#container, [_, ...] & [...#container]])
 		diagnostics?: matchN(1, [#diagnostics, list.MaxItems(1) & [...#diagnostics]])
 		location!: string
 		dns_config?: matchN(1, [#dns_config, list.MaxItems(1) & [...#dns_config]])
@@ -55,7 +55,7 @@ import "list"
 	})
 
 	#diagnostics: close({
-		log_analytics?: matchN(1, [_#defs."/$defs/diagnostics/$defs/log_analytics", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/diagnostics/$defs/log_analytics"]])
+		log_analytics!: matchN(1, [_#defs."/$defs/diagnostics/$defs/log_analytics", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/diagnostics/$defs/log_analytics"]])
 	})
 
 	#dns_config: close({

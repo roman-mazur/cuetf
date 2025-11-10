@@ -7,12 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_network_function_collector_policy")
 	close({
 		id?: string
-		ipfx_emission?: matchN(1, [#ipfx_emission, list.MaxItems(1) & [_, ...] & [...#ipfx_emission]])
+		ipfx_emission!: matchN(1, [#ipfx_emission, list.MaxItems(1) & [_, ...] & [...#ipfx_emission]])
 		location!: string
 		name!:     string
 		tags?: [string]: string
 		traffic_collector_id!: string
-		ipfx_ingestion?: matchN(1, [#ipfx_ingestion, list.MaxItems(1) & [_, ...] & [...#ipfx_ingestion]])
+		ipfx_ingestion!: matchN(1, [#ipfx_ingestion, list.MaxItems(1) & [_, ...] & [...#ipfx_ingestion]])
 		timeouts?: #timeouts
 	})
 

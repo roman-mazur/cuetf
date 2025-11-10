@@ -50,7 +50,7 @@ import "list"
 		secure_boot_enabled?: bool
 		size!:                string
 		source_image_id?:     string
-		os_disk?: matchN(1, [#os_disk, list.MaxItems(1) & [_, ...] & [...#os_disk]])
+		os_disk!: matchN(1, [#os_disk, list.MaxItems(1) & [_, ...] & [...#os_disk]])
 		tags?: [string]: string
 		timezone?:           string
 		user_data?:          string
@@ -121,7 +121,7 @@ import "list"
 	})
 
 	#secret: close({
-		certificate?: matchN(1, [_#defs."/$defs/secret/$defs/certificate", [_, ...] & [..._#defs."/$defs/secret/$defs/certificate"]])
+		certificate!: matchN(1, [_#defs."/$defs/secret/$defs/certificate", [_, ...] & [..._#defs."/$defs/secret/$defs/certificate"]])
 		key_vault_id!: string
 	})
 

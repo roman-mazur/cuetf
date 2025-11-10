@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_bot_channel_directline")
 	close({
-		site?: matchN(1, [#site, [_, ...] & [...#site]])
+		site!: matchN(1, [#site, [_, ...] & [...#site]])
 		bot_name!:            string
 		id?:                  string
 		location!:            string

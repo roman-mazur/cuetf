@@ -14,7 +14,7 @@ import "list"
 		sql_image_offer!:     string
 		sql_image_sku!:       string
 		tags?: [string]: string
-		wsfc_domain_profile?: matchN(1, [#wsfc_domain_profile, list.MaxItems(1) & [_, ...] & [...#wsfc_domain_profile]])
+		wsfc_domain_profile!: matchN(1, [#wsfc_domain_profile, list.MaxItems(1) & [_, ...] & [...#wsfc_domain_profile]])
 	})
 
 	#timeouts: close({

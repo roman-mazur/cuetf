@@ -21,22 +21,22 @@ import "list"
 		frontend_endpoints?: [string]: string
 		header_frontdoor_id?: string
 		id?:                  string
-		backend_pool?: matchN(1, [#backend_pool, [_, ...] & [...#backend_pool]])
+		backend_pool!: matchN(1, [#backend_pool, [_, ...] & [...#backend_pool]])
 		load_balancer_enabled?: bool
 		name!:                  string
-		backend_pool_health_probe?: matchN(1, [#backend_pool_health_probe, list.MaxItems(5000) & [_, ...] & [...#backend_pool_health_probe]])
+		backend_pool_health_probe!: matchN(1, [#backend_pool_health_probe, list.MaxItems(5000) & [_, ...] & [...#backend_pool_health_probe]])
 		resource_group_name!: string
 		routing_rules?: [string]: string
 		tags?: [string]:          string
-		backend_pool_load_balancing?: matchN(1, [#backend_pool_load_balancing, list.MaxItems(5000) & [_, ...] & [...#backend_pool_load_balancing]])
+		backend_pool_load_balancing!: matchN(1, [#backend_pool_load_balancing, list.MaxItems(5000) & [_, ...] & [...#backend_pool_load_balancing]])
 		backend_pool_settings?: matchN(1, [#backend_pool_settings, [...#backend_pool_settings]])
-		frontend_endpoint?: matchN(1, [#frontend_endpoint, list.MaxItems(500) & [_, ...] & [...#frontend_endpoint]])
-		routing_rule?: matchN(1, [#routing_rule, list.MaxItems(500) & [_, ...] & [...#routing_rule]])
+		frontend_endpoint!: matchN(1, [#frontend_endpoint, list.MaxItems(500) & [_, ...] & [...#frontend_endpoint]])
+		routing_rule!: matchN(1, [#routing_rule, list.MaxItems(500) & [_, ...] & [...#routing_rule]])
 		timeouts?: #timeouts
 	})
 
 	#backend_pool: close({
-		backend?: matchN(1, [_#defs."/$defs/backend_pool/$defs/backend", list.MaxItems(500) & [_, ...] & [..._#defs."/$defs/backend_pool/$defs/backend"]])
+		backend!: matchN(1, [_#defs."/$defs/backend_pool/$defs/backend", list.MaxItems(500) & [_, ...] & [..._#defs."/$defs/backend_pool/$defs/backend"]])
 		health_probe_name!:   string
 		id?:                  string
 		load_balancing_name!: string

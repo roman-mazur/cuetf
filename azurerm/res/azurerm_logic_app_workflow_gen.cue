@@ -63,7 +63,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/access_control/$defs/trigger/$defs/open_authentication_policy": close({
-		claim?: matchN(1, [_#defs."/$defs/access_control/$defs/trigger/$defs/open_authentication_policy/$defs/claim", [_, ...] & [..._#defs."/$defs/access_control/$defs/trigger/$defs/open_authentication_policy/$defs/claim"]])
+		claim!: matchN(1, [_#defs."/$defs/access_control/$defs/trigger/$defs/open_authentication_policy/$defs/claim", [_, ...] & [..._#defs."/$defs/access_control/$defs/trigger/$defs/open_authentication_policy/$defs/claim"]])
 		name!: string
 	})
 

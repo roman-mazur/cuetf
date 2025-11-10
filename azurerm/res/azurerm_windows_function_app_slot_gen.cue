@@ -90,7 +90,7 @@ import "list"
 		// `["52.23.25.3", "52.143.43.12","52.143.43.17"]`.
 		possible_outbound_ip_addresses?: string
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		site_config?: matchN(1, [#site_config, list.MaxItems(1) & [_, ...] & [...#site_config]])
+		site_config!: matchN(1, [#site_config, list.MaxItems(1) & [_, ...] & [...#site_config]])
 		storage_account?: matchN(1, [#storage_account, [...#storage_account]])
 		public_network_access_enabled?: bool
 		service_plan_id?:               string
@@ -217,7 +217,7 @@ import "list"
 		facebook_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/facebook_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/facebook_v2"]])
 		github_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/github_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/github_v2"]])
 		google_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/google_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/google_v2"]])
-		login?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/login", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_settings_v2/$defs/login"]])
+		login!: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/login", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_settings_v2/$defs/login"]])
 		microsoft_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/microsoft_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/microsoft_v2"]])
 
 		// Should the authentication flow be used for all requests.
@@ -241,7 +241,7 @@ import "list"
 	#backup: close({
 		// Should this backup job be enabled?
 		enabled?: bool
-		schedule?: matchN(1, [_#defs."/$defs/backup/$defs/schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/backup/$defs/schedule"]])
+		schedule!: matchN(1, [_#defs."/$defs/backup/$defs/schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/backup/$defs/schedule"]])
 
 		// The name which should be used for this Backup.
 		name!: string

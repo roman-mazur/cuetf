@@ -34,7 +34,7 @@ import "list"
 		registry?: matchN(1, [#registry, [...#registry]])
 		secret?: matchN(1, [#secret, [...#secret]])
 		tags?: [string]: string
-		template?: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
+		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
 		timeouts?:              #timeouts
 		workload_profile_name?: string
 	})
@@ -88,7 +88,7 @@ import "list"
 		target_port!: number
 		cors?: matchN(1, [_#defs."/$defs/ingress/$defs/cors", list.MaxItems(1) & [..._#defs."/$defs/ingress/$defs/cors"]])
 		ip_security_restriction?: matchN(1, [_#defs."/$defs/ingress/$defs/ip_security_restriction", [..._#defs."/$defs/ingress/$defs/ip_security_restriction"]])
-		traffic_weight?: matchN(1, [_#defs."/$defs/ingress/$defs/traffic_weight", [_, ...] & [..._#defs."/$defs/ingress/$defs/traffic_weight"]])
+		traffic_weight!: matchN(1, [_#defs."/$defs/ingress/$defs/traffic_weight", [_, ...] & [..._#defs."/$defs/ingress/$defs/traffic_weight"]])
 
 		// The transport method for the Ingress. Possible values include
 		// `auto`, `http`, and `http2`, `tcp`. Defaults to `auto`
@@ -142,7 +142,7 @@ import "list"
 		// signal before the process if forcibly killed.
 		termination_grace_period_seconds?: number
 		azure_queue_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/azure_queue_scale_rule", [..._#defs."/$defs/template/$defs/azure_queue_scale_rule"]])
-		container?: matchN(1, [_#defs."/$defs/template/$defs/container", [_, ...] & [..._#defs."/$defs/template/$defs/container"]])
+		container!: matchN(1, [_#defs."/$defs/template/$defs/container", [_, ...] & [..._#defs."/$defs/template/$defs/container"]])
 		custom_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/custom_scale_rule", [..._#defs."/$defs/template/$defs/custom_scale_rule"]])
 		http_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/http_scale_rule", [..._#defs."/$defs/template/$defs/http_scale_rule"]])
 		init_container?: matchN(1, [_#defs."/$defs/template/$defs/init_container", [..._#defs."/$defs/template/$defs/init_container"]])
@@ -201,7 +201,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/azure_queue_scale_rule": close({
-		authentication?: matchN(1, [_#defs."/$defs/template/$defs/azure_queue_scale_rule/$defs/authentication", [_, ...] & [..._#defs."/$defs/template/$defs/azure_queue_scale_rule/$defs/authentication"]])
+		authentication!: matchN(1, [_#defs."/$defs/template/$defs/azure_queue_scale_rule/$defs/authentication", [_, ...] & [..._#defs."/$defs/template/$defs/azure_queue_scale_rule/$defs/authentication"]])
 		name!:         string
 		queue_length!: number
 		queue_name!:   string

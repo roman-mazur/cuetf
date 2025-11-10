@@ -12,7 +12,7 @@ import "list"
 		name!:                string
 		partition_key?:       string
 		property_columns?: [...string]
-		serialization?: matchN(1, [#serialization, list.MaxItems(1) & [_, ...] & [...#serialization]])
+		serialization!: matchN(1, [#serialization, list.MaxItems(1) & [_, ...] & [...#serialization]])
 		resource_group_name!:       string
 		servicebus_namespace!:      string
 		timeouts?:                  #timeouts

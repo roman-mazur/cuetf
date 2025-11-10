@@ -20,7 +20,7 @@ import "list"
 	})
 
 	#permission_scope: close({
-		permissions?: matchN(1, [_#defs."/$defs/permission_scope/$defs/permissions", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/permission_scope/$defs/permissions"]])
+		permissions!: matchN(1, [_#defs."/$defs/permission_scope/$defs/permissions", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/permission_scope/$defs/permissions"]])
 		resource_name!: string
 		service!:       string
 	})

@@ -17,7 +17,7 @@ import "list"
 		resource_group_name!:                   string
 		sap_fqdn!:                              string
 		sap_product!:                           string
-		single_server_configuration?: matchN(1, [#single_server_configuration, list.MaxItems(1) & [_, ...] & [...#single_server_configuration]])
+		single_server_configuration!: matchN(1, [#single_server_configuration, list.MaxItems(1) & [_, ...] & [...#single_server_configuration]])
 		timeouts?: #timeouts
 		tags?: [string]: string
 	})
@@ -33,7 +33,7 @@ import "list"
 		database_type?:           string
 		secondary_ip_enabled?:    bool
 		subnet_id!:               string
-		virtual_machine_configuration?: matchN(1, [_#defs."/$defs/single_server_configuration/$defs/virtual_machine_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/single_server_configuration/$defs/virtual_machine_configuration"]])
+		virtual_machine_configuration!: matchN(1, [_#defs."/$defs/single_server_configuration/$defs/virtual_machine_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/single_server_configuration/$defs/virtual_machine_configuration"]])
 		virtual_machine_resource_names?: matchN(1, [_#defs."/$defs/single_server_configuration/$defs/virtual_machine_resource_names", list.MaxItems(1) & [..._#defs."/$defs/single_server_configuration/$defs/virtual_machine_resource_names"]])
 	})
 
@@ -52,8 +52,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/single_server_configuration/$defs/virtual_machine_configuration": close({
-		image?: matchN(1, [_#defs."/$defs/single_server_configuration/$defs/virtual_machine_configuration/$defs/image", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/single_server_configuration/$defs/virtual_machine_configuration/$defs/image"]])
-		os_profile?: matchN(1, [_#defs."/$defs/single_server_configuration/$defs/virtual_machine_configuration/$defs/os_profile", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/single_server_configuration/$defs/virtual_machine_configuration/$defs/os_profile"]])
+		image!: matchN(1, [_#defs."/$defs/single_server_configuration/$defs/virtual_machine_configuration/$defs/image", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/single_server_configuration/$defs/virtual_machine_configuration/$defs/image"]])
+		os_profile!: matchN(1, [_#defs."/$defs/single_server_configuration/$defs/virtual_machine_configuration/$defs/os_profile", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/single_server_configuration/$defs/virtual_machine_configuration/$defs/os_profile"]])
 		virtual_machine_size!: string
 	})
 

@@ -12,7 +12,7 @@ package res
 		emergency_dial_strings?: [...string]
 		id?:       string
 		location!: string
-		service_location?: matchN(1, [#service_location, [_, ...] & [...#service_location]])
+		service_location!: matchN(1, [#service_location, [_, ...] & [...#service_location]])
 		microsoft_teams_voicemail_pilot_number?: string
 		name!:                                   string
 		on_prem_mcp_enabled?:                    bool

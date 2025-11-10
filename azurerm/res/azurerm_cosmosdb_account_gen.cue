@@ -38,7 +38,7 @@ import "list"
 		primary_mongodb_connection_string?:          string
 		primary_readonly_key?:                       string
 		primary_readonly_mongodb_connection_string?: string
-		consistency_policy?: matchN(1, [#consistency_policy, list.MaxItems(1) & [_, ...] & [...#consistency_policy]])
+		consistency_policy!: matchN(1, [#consistency_policy, list.MaxItems(1) & [_, ...] & [...#consistency_policy]])
 		primary_readonly_sql_connection_string?: string
 		primary_sql_connection_string?:          string
 		public_network_access_enabled?:          bool
@@ -51,7 +51,7 @@ import "list"
 		secondary_readonly_sql_connection_string?:     string
 		secondary_sql_connection_string?:              string
 		cors_rule?: matchN(1, [#cors_rule, list.MaxItems(1) & [...#cors_rule]])
-		geo_location?: matchN(1, [#geo_location, [_, ...] & [...#geo_location]])
+		geo_location!: matchN(1, [#geo_location, [_, ...] & [...#geo_location]])
 		tags?: [string]: string
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		write_endpoints?: [...string]

@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_network_manager_connectivity_configuration")
 	close({
 		connectivity_topology!: string
-		applies_to_group?: matchN(1, [#applies_to_group, [_, ...] & [...#applies_to_group]])
+		applies_to_group!: matchN(1, [#applies_to_group, [_, ...] & [...#applies_to_group]])
 		delete_existing_peering_enabled?: bool
 		description?:                     string
 		global_mesh_enabled?:             bool

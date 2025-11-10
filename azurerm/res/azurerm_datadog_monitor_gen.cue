@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_datadog_monitor")
 	close({
 		id?: string
-		datadog_organization?: matchN(1, [#datadog_organization, list.MaxItems(1) & [_, ...] & [...#datadog_organization]])
+		datadog_organization!: matchN(1, [#datadog_organization, list.MaxItems(1) & [_, ...] & [...#datadog_organization]])
 		location!:                        string
 		marketplace_subscription_status?: string
 		monitoring_enabled?:              bool
@@ -17,7 +17,7 @@ import "list"
 		resource_group_name!: string
 		sku_name!:            string
 		tags?: [string]: string
-		user?: matchN(1, [#user, list.MaxItems(1) & [_, ...] & [...#user]])
+		user!: matchN(1, [#user, list.MaxItems(1) & [_, ...] & [...#user]])
 	})
 
 	#datadog_organization: close({

@@ -30,7 +30,7 @@ import "list"
 		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
 		storage_data_disk?: matchN(1, [#storage_data_disk, [...#storage_data_disk]])
 		storage_image_reference?: matchN(1, [#storage_image_reference, list.MaxItems(1) & [...#storage_image_reference]])
-		storage_os_disk?: matchN(1, [#storage_os_disk, list.MaxItems(1) & [_, ...] & [...#storage_os_disk]])
+		storage_os_disk!: matchN(1, [#storage_os_disk, list.MaxItems(1) & [_, ...] & [...#storage_os_disk]])
 		timeouts?: #timeouts
 	})
 

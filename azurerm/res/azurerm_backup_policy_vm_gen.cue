@@ -11,7 +11,7 @@ import "list"
 		name!:                           string
 		policy_type?:                    string
 		recovery_vault_name!:            string
-		backup?: matchN(1, [#backup, list.MaxItems(1) & [_, ...] & [...#backup]])
+		backup!: matchN(1, [#backup, list.MaxItems(1) & [_, ...] & [...#backup]])
 		resource_group_name!: string
 		instant_restore_resource_group?: matchN(1, [#instant_restore_resource_group, list.MaxItems(1) & [...#instant_restore_resource_group]])
 		retention_daily?: matchN(1, [#retention_daily, list.MaxItems(1) & [...#retention_daily]])
@@ -63,7 +63,7 @@ import "list"
 	})
 
 	#tiering_policy: close({
-		archived_restore_point?: matchN(1, [_#defs."/$defs/tiering_policy/$defs/archived_restore_point", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/tiering_policy/$defs/archived_restore_point"]])
+		archived_restore_point!: matchN(1, [_#defs."/$defs/tiering_policy/$defs/archived_restore_point", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/tiering_policy/$defs/archived_restore_point"]])
 	})
 
 	#timeouts: close({

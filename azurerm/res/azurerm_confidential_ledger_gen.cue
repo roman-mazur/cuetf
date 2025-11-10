@@ -8,7 +8,7 @@ package res
 		identity_service_endpoint?: string
 		ledger_endpoint?:           string
 		ledger_type!:               string
-		azuread_based_service_principal?: matchN(1, [#azuread_based_service_principal, [_, ...] & [...#azuread_based_service_principal]])
+		azuread_based_service_principal!: matchN(1, [#azuread_based_service_principal, [_, ...] & [...#azuread_based_service_principal]])
 		location!:            string
 		name!:                string
 		resource_group_name!: string

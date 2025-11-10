@@ -13,7 +13,7 @@ import "list"
 		location!:                     string
 		maximum_elastic_worker_count?: number
 		maximum_number_of_workers?:    number
-		sku?: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
 		name!:                string
 		per_site_scaling?:    bool
 		timeouts?:            #timeouts

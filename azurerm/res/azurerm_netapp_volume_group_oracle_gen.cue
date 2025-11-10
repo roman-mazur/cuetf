@@ -14,7 +14,7 @@ import "list"
 		location!:               string
 		name!:                   string
 		resource_group_name!:    string
-		volume?: matchN(1, [#volume, list.MaxItems(12) & [_, _, ...] & [...#volume]])
+		volume!: matchN(1, [#volume, list.MaxItems(12) & [_, _, ...] & [...#volume]])
 	})
 
 	#timeouts: close({
@@ -45,7 +45,7 @@ import "list"
 		throughput_in_mibps!: number
 		volume_path!:         string
 		volume_spec_name!:    string
-		export_policy_rule?: matchN(1, [_#defs."/$defs/volume/$defs/export_policy_rule", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/volume/$defs/export_policy_rule"]])
+		export_policy_rule!: matchN(1, [_#defs."/$defs/volume/$defs/export_policy_rule", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/volume/$defs/export_policy_rule"]])
 		zone?: string
 	})
 

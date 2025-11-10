@@ -13,7 +13,7 @@ import "list"
 		folder_path!:           string
 		id?:                    string
 		name!:                  string
-		security?: matchN(1, [#security, list.MaxItems(1) & [_, ...] & [...#security]])
+		security!: matchN(1, [#security, list.MaxItems(1) & [_, ...] & [...#security]])
 		publish_runbook_enabled?: bool
 		timeouts?:                #timeouts
 		repository_url!:          string

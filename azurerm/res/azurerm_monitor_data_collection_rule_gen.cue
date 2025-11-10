@@ -10,13 +10,13 @@ import "list"
 		description?:                 string
 		id?:                          string
 		immutable_id?:                string
-		data_flow?: matchN(1, [#data_flow, [_, ...] & [...#data_flow]])
+		data_flow!: matchN(1, [#data_flow, [_, ...] & [...#data_flow]])
 		kind?:                string
 		location!:            string
 		name!:                string
 		resource_group_name!: string
 		data_sources?: matchN(1, [#data_sources, list.MaxItems(1) & [...#data_sources]])
-		destinations?: matchN(1, [#destinations, list.MaxItems(1) & [_, ...] & [...#destinations]])
+		destinations!: matchN(1, [#destinations, list.MaxItems(1) & [_, ...] & [...#destinations]])
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		stream_declaration?: matchN(1, [#stream_declaration, [...#stream_declaration]])
 		tags?: [string]: string
@@ -63,7 +63,7 @@ import "list"
 	})
 
 	#stream_declaration: close({
-		column?: matchN(1, [_#defs."/$defs/stream_declaration/$defs/column", [_, ...] & [..._#defs."/$defs/stream_declaration/$defs/column"]])
+		column!: matchN(1, [_#defs."/$defs/stream_declaration/$defs/column", [_, ...] & [..._#defs."/$defs/stream_declaration/$defs/column"]])
 		stream_name!: string
 	})
 
@@ -75,7 +75,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/data_sources/$defs/data_import": close({
-		event_hub_data_source?: matchN(1, [_#defs."/$defs/data_sources/$defs/data_import/$defs/event_hub_data_source", [_, ...] & [..._#defs."/$defs/data_sources/$defs/data_import/$defs/event_hub_data_source"]])
+		event_hub_data_source!: matchN(1, [_#defs."/$defs/data_sources/$defs/data_import/$defs/event_hub_data_source", [_, ...] & [..._#defs."/$defs/data_sources/$defs/data_import/$defs/event_hub_data_source"]])
 	})
 
 	_#defs: "/$defs/data_sources/$defs/data_import/$defs/event_hub_data_source": close({
@@ -107,7 +107,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/data_sources/$defs/log_file/$defs/settings": close({
-		text?: matchN(1, [_#defs."/$defs/data_sources/$defs/log_file/$defs/settings/$defs/text", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/data_sources/$defs/log_file/$defs/settings/$defs/text"]])
+		text!: matchN(1, [_#defs."/$defs/data_sources/$defs/log_file/$defs/settings/$defs/text", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/data_sources/$defs/log_file/$defs/settings/$defs/text"]])
 	})
 
 	_#defs: "/$defs/data_sources/$defs/log_file/$defs/settings/$defs/text": close({

@@ -10,7 +10,7 @@ import "list"
 		architecture?:                        string
 		confidential_vm_enabled?:             bool
 		confidential_vm_supported?:           bool
-		identifier?: matchN(1, [#identifier, list.MaxItems(1) & [_, ...] & [...#identifier]])
+		identifier!: matchN(1, [#identifier, list.MaxItems(1) & [_, ...] & [...#identifier]])
 		description?:                       string
 		disk_controller_type_nvme_enabled?: bool
 		disk_types_not_allowed?: [...string]

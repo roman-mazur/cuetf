@@ -14,14 +14,14 @@ import "list"
 		resource_group_name!:      string
 		tags?: [string]: string
 		environment_properties?: matchN(1, [#environment_properties, [...#environment_properties]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
-		plan?: matchN(1, [#plan, list.MaxItems(1) & [_, ...] & [...#plan]])
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		plan!: matchN(1, [#plan, list.MaxItems(1) & [_, ...] & [...#plan]])
 		timeouts?: #timeouts
-		user?: matchN(1, [#user, list.MaxItems(1) & [_, ...] & [...#user]])
+		user!: matchN(1, [#user, list.MaxItems(1) & [_, ...] & [...#user]])
 	})
 
 	#environment_properties: close({
-		environment_info?: matchN(1, [_#defs."/$defs/environment_properties/$defs/environment_info", [_, ...] & [..._#defs."/$defs/environment_properties/$defs/environment_info"]])
+		environment_info!: matchN(1, [_#defs."/$defs/environment_properties/$defs/environment_info", [_, ...] & [..._#defs."/$defs/environment_properties/$defs/environment_info"]])
 	})
 
 	#identity: close({

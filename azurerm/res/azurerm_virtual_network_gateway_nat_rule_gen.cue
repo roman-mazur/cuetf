@@ -5,14 +5,14 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_virtual_network_gateway_nat_rule")
 	close({
 		id?: string
-		external_mapping?: matchN(1, [#external_mapping, [_, ...] & [...#external_mapping]])
+		external_mapping!: matchN(1, [#external_mapping, [_, ...] & [...#external_mapping]])
 		ip_configuration_id?:        string
 		mode?:                       string
 		name!:                       string
 		resource_group_name!:        string
 		type?:                       string
 		virtual_network_gateway_id!: string
-		internal_mapping?: matchN(1, [#internal_mapping, [_, ...] & [...#internal_mapping]])
+		internal_mapping!: matchN(1, [#internal_mapping, [_, ...] & [...#internal_mapping]])
 		timeouts?: #timeouts
 	})
 

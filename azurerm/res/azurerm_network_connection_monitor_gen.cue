@@ -12,10 +12,10 @@ import "list"
 		network_watcher_id!: string
 		notes?:              string
 		output_workspace_resource_ids?: [...string]
-		endpoint?: matchN(1, [#endpoint, [_, ...] & [...#endpoint]])
+		endpoint!: matchN(1, [#endpoint, [_, ...] & [...#endpoint]])
 		tags?: [string]: string
-		test_configuration?: matchN(1, [#test_configuration, [_, ...] & [...#test_configuration]])
-		test_group?: matchN(1, [#test_group, [_, ...] & [...#test_group]])
+		test_configuration!: matchN(1, [#test_configuration, [_, ...] & [...#test_configuration]])
+		test_group!: matchN(1, [#test_group, [_, ...] & [...#test_group]])
 		timeouts?: #timeouts
 	})
 

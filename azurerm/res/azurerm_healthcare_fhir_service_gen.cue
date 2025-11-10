@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_healthcare_fhir_service")
 	close({
 		access_policy_object_ids?: [...string]
-		authentication?: matchN(1, [#authentication, list.MaxItems(1) & [_, ...] & [...#authentication]])
+		authentication!: matchN(1, [#authentication, list.MaxItems(1) & [_, ...] & [...#authentication]])
 		configuration_export_storage_account_name?: string
 		container_registry_login_server_url?: [...string]
 		id?:                            string

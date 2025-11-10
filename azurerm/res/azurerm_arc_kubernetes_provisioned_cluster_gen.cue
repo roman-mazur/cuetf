@@ -15,7 +15,7 @@ import "list"
 		kubernetes_version?:             string
 		location!:                       string
 		azure_active_directory?: matchN(1, [#azure_active_directory, list.MaxItems(1) & [...#azure_active_directory]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
 		name!:                string
 		offering?:            string
 		timeouts?:            #timeouts

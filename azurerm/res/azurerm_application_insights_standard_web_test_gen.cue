@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_application_insights_standard_web_test")
 	close({
 		application_insights_id!: string
-		request?: matchN(1, [#request, list.MaxItems(1) & [_, ...] & [...#request]])
+		request!: matchN(1, [#request, list.MaxItems(1) & [_, ...] & [...#request]])
 		description?: string
 		enabled?:     bool
 		frequency?:   number

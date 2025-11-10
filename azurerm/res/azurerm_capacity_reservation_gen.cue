@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_capacity_reservation")
 	close({
-		sku?: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
 		capacity_reservation_group_id!: string
 		id?:                            string
 		name!:                          string

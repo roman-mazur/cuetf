@@ -14,7 +14,7 @@ import "list"
 		id?:                       string
 		name!:                     string
 		validation_token?:         string
-		tls?: matchN(1, [#tls, list.MaxItems(1) & [_, ...] & [...#tls]])
+		tls!: matchN(1, [#tls, list.MaxItems(1) & [_, ...] & [...#tls]])
 	})
 
 	#timeouts: close({

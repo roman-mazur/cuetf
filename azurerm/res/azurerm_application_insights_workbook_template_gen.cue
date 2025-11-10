@@ -8,7 +8,7 @@ package res
 		id?:        string
 		localized?: string
 		location!:  string
-		galleries?: matchN(1, [#galleries, [_, ...] & [...#galleries]])
+		galleries!: matchN(1, [#galleries, [_, ...] & [...#galleries]])
 		name!:                string
 		priority?:            number
 		resource_group_name!: string

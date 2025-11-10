@@ -95,7 +95,7 @@ import "list"
 	})
 
 	#network_interface: close({
-		ip_configuration?: matchN(1, [_#defs."/$defs/network_interface/$defs/ip_configuration", [_, ...] & [..._#defs."/$defs/network_interface/$defs/ip_configuration"]])
+		ip_configuration!: matchN(1, [_#defs."/$defs/network_interface/$defs/ip_configuration", [_, ...] & [..._#defs."/$defs/network_interface/$defs/ip_configuration"]])
 		auxiliary_mode?: string
 		auxiliary_sku?:  string
 		dns_servers?: [...string]
@@ -220,7 +220,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/os_profile/$defs/linux_configuration/$defs/secret": close({
-		certificate?: matchN(1, [_#defs."/$defs/os_profile/$defs/linux_configuration/$defs/secret/$defs/certificate", [_, ...] & [..._#defs."/$defs/os_profile/$defs/linux_configuration/$defs/secret/$defs/certificate"]])
+		certificate!: matchN(1, [_#defs."/$defs/os_profile/$defs/linux_configuration/$defs/secret/$defs/certificate", [_, ...] & [..._#defs."/$defs/os_profile/$defs/linux_configuration/$defs/secret/$defs/certificate"]])
 		key_vault_id!: string
 	})
 
@@ -249,7 +249,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/os_profile/$defs/windows_configuration/$defs/secret": close({
-		certificate?: matchN(1, [_#defs."/$defs/os_profile/$defs/windows_configuration/$defs/secret/$defs/certificate", [_, ...] & [..._#defs."/$defs/os_profile/$defs/windows_configuration/$defs/secret/$defs/certificate"]])
+		certificate!: matchN(1, [_#defs."/$defs/os_profile/$defs/windows_configuration/$defs/secret/$defs/certificate", [_, ...] & [..._#defs."/$defs/os_profile/$defs/windows_configuration/$defs/secret/$defs/certificate"]])
 		key_vault_id!: string
 	})
 

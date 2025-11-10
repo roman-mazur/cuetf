@@ -12,7 +12,7 @@ import "list"
 		name!:                string
 		path_pattern!:        string
 		resource_group_name!: string
-		serialization?: matchN(1, [#serialization, list.MaxItems(1) & [_, ...] & [...#serialization]])
+		serialization!: matchN(1, [#serialization, list.MaxItems(1) & [_, ...] & [...#serialization]])
 		storage_account_key?:       string
 		storage_account_name!:      string
 		timeouts?:                  #timeouts

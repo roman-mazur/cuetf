@@ -15,7 +15,7 @@ import "list"
 		status?: string
 		tags?: [string]: string
 		hourly_recurrence?: matchN(1, [#hourly_recurrence, list.MaxItems(1) & [...#hourly_recurrence]])
-		notification_settings?: matchN(1, [#notification_settings, list.MaxItems(1) & [_, ...] & [...#notification_settings]])
+		notification_settings!: matchN(1, [#notification_settings, list.MaxItems(1) & [_, ...] & [...#notification_settings]])
 		task_type!: string
 		timeouts?:  #timeouts
 		weekly_recurrence?: matchN(1, [#weekly_recurrence, list.MaxItems(1) & [...#weekly_recurrence]])

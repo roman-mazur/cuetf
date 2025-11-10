@@ -19,7 +19,7 @@ import "list"
 	})
 
 	#encryption: close({
-		identity?: matchN(1, [_#defs."/$defs/encryption/$defs/identity", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encryption/$defs/identity"]])
+		identity!: matchN(1, [_#defs."/$defs/encryption/$defs/identity", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encryption/$defs/identity"]])
 		key_url!: string
 	})
 

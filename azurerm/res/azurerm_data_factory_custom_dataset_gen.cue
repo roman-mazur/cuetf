@@ -12,7 +12,7 @@ import "list"
 		description?:     string
 		folder?:          string
 		id?:              string
-		linked_service?: matchN(1, [#linked_service, list.MaxItems(1) & [_, ...] & [...#linked_service]])
+		linked_service!: matchN(1, [#linked_service, list.MaxItems(1) & [_, ...] & [...#linked_service]])
 		name!: string
 		parameters?: [string]: string
 		timeouts?:             #timeouts

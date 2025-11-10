@@ -18,8 +18,8 @@ import "list"
 	})
 
 	#retention_rule: close({
-		criteria?: matchN(1, [_#defs."/$defs/retention_rule/$defs/criteria", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/retention_rule/$defs/criteria"]])
-		life_cycle?: matchN(1, [_#defs."/$defs/retention_rule/$defs/life_cycle", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/retention_rule/$defs/life_cycle"]])
+		criteria!: matchN(1, [_#defs."/$defs/retention_rule/$defs/criteria", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/retention_rule/$defs/criteria"]])
+		life_cycle!: matchN(1, [_#defs."/$defs/retention_rule/$defs/life_cycle", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/retention_rule/$defs/life_cycle"]])
 		name!:     string
 		priority!: number
 	})

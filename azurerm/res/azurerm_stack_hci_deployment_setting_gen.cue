@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_stack_hci_deployment_setting")
 	close({
-		scale_unit?: matchN(1, [#scale_unit, [_, ...] & [...#scale_unit]])
+		scale_unit!: matchN(1, [#scale_unit, [_, ...] & [...#scale_unit]])
 		arc_resource_ids!: [...string]
 		id?:                   string
 		stack_hci_cluster_id!: string
@@ -28,16 +28,16 @@ import "list"
 		name_prefix!:                               string
 		secrets_location!:                          string
 		side_channel_mitigation_enabled?:           bool
-		cluster?: matchN(1, [_#defs."/$defs/scale_unit/$defs/cluster", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/scale_unit/$defs/cluster"]])
+		cluster!: matchN(1, [_#defs."/$defs/scale_unit/$defs/cluster", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/scale_unit/$defs/cluster"]])
 		smb_cluster_encryption_enabled?: bool
 		smb_signing_enabled?:            bool
 		streaming_data_client_enabled?:  bool
-		host_network?: matchN(1, [_#defs."/$defs/scale_unit/$defs/host_network", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/scale_unit/$defs/host_network"]])
+		host_network!: matchN(1, [_#defs."/$defs/scale_unit/$defs/host_network", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/scale_unit/$defs/host_network"]])
 		wdac_enabled?: bool
-		infrastructure_network?: matchN(1, [_#defs."/$defs/scale_unit/$defs/infrastructure_network", [_, ...] & [..._#defs."/$defs/scale_unit/$defs/infrastructure_network"]])
-		optional_service?: matchN(1, [_#defs."/$defs/scale_unit/$defs/optional_service", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/scale_unit/$defs/optional_service"]])
-		physical_node?: matchN(1, [_#defs."/$defs/scale_unit/$defs/physical_node", [_, ...] & [..._#defs."/$defs/scale_unit/$defs/physical_node"]])
-		storage?: matchN(1, [_#defs."/$defs/scale_unit/$defs/storage", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/scale_unit/$defs/storage"]])
+		infrastructure_network!: matchN(1, [_#defs."/$defs/scale_unit/$defs/infrastructure_network", [_, ...] & [..._#defs."/$defs/scale_unit/$defs/infrastructure_network"]])
+		optional_service!: matchN(1, [_#defs."/$defs/scale_unit/$defs/optional_service", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/scale_unit/$defs/optional_service"]])
+		physical_node!: matchN(1, [_#defs."/$defs/scale_unit/$defs/physical_node", [_, ...] & [..._#defs."/$defs/scale_unit/$defs/physical_node"]])
+		storage!: matchN(1, [_#defs."/$defs/scale_unit/$defs/storage", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/scale_unit/$defs/storage"]])
 	})
 
 	#timeouts: close({
@@ -55,8 +55,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/scale_unit/$defs/host_network": close({
-		intent?: matchN(1, [_#defs."/$defs/scale_unit/$defs/host_network/$defs/intent", [_, ...] & [..._#defs."/$defs/scale_unit/$defs/host_network/$defs/intent"]])
-		storage_network?: matchN(1, [_#defs."/$defs/scale_unit/$defs/host_network/$defs/storage_network", [_, ...] & [..._#defs."/$defs/scale_unit/$defs/host_network/$defs/storage_network"]])
+		intent!: matchN(1, [_#defs."/$defs/scale_unit/$defs/host_network/$defs/intent", [_, ...] & [..._#defs."/$defs/scale_unit/$defs/host_network/$defs/intent"]])
+		storage_network!: matchN(1, [_#defs."/$defs/scale_unit/$defs/host_network/$defs/storage_network", [_, ...] & [..._#defs."/$defs/scale_unit/$defs/host_network/$defs/storage_network"]])
 		storage_auto_ip_enabled?:                 bool
 		storage_connectivity_switchless_enabled?: bool
 	})
@@ -97,7 +97,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/scale_unit/$defs/infrastructure_network": close({
-		ip_pool?: matchN(1, [_#defs."/$defs/scale_unit/$defs/infrastructure_network/$defs/ip_pool", [_, ...] & [..._#defs."/$defs/scale_unit/$defs/infrastructure_network/$defs/ip_pool"]])
+		ip_pool!: matchN(1, [_#defs."/$defs/scale_unit/$defs/infrastructure_network/$defs/ip_pool", [_, ...] & [..._#defs."/$defs/scale_unit/$defs/infrastructure_network/$defs/ip_pool"]])
 		dhcp_enabled?: bool
 		dns_server!: [...string]
 		gateway!:     string

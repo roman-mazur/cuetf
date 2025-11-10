@@ -6,14 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_video_indexer_account")
 	close({
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
 		id?:                    string
 		location!:              string
 		name!:                  string
 		public_network_access?: string
 		resource_group_name!:   string
 		tags?: [string]: string
-		storage?: matchN(1, [#storage, list.MaxItems(1) & [_, ...] & [...#storage]])
+		storage!: matchN(1, [#storage, list.MaxItems(1) & [_, ...] & [...#storage]])
 		timeouts?: #timeouts
 	})
 

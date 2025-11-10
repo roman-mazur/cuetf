@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_logic_app_integration_account_batch_configuration")
 	close({
-		release_criteria?: matchN(1, [#release_criteria, list.MaxItems(1) & [_, ...] & [...#release_criteria]])
+		release_criteria!: matchN(1, [#release_criteria, list.MaxItems(1) & [_, ...] & [...#release_criteria]])
 		batch_group_name!:         string
 		id?:                       string
 		integration_account_name!: string

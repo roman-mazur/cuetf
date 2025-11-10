@@ -11,7 +11,7 @@ import "list"
 		id?:                 string
 		scoped_resource_id!: string
 		system_center_virtual_machine_manager_availability_set_ids?: [...string]
-		infrastructure?: matchN(1, [#infrastructure, list.MaxItems(1) & [_, ...] & [...#infrastructure]])
+		infrastructure!: matchN(1, [#infrastructure, list.MaxItems(1) & [_, ...] & [...#infrastructure]])
 		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
 		operating_system?: matchN(1, [#operating_system, list.MaxItems(1) & [...#operating_system]])
 		storage_disk?: matchN(1, [#storage_disk, [...#storage_disk]])

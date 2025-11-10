@@ -6,7 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_maintenance_assignment_dynamic_scope")
 	close({
-		filter?: matchN(1, [#filter, list.MaxItems(1) & [_, ...] & [...#filter]])
+		filter!: matchN(1, [#filter, list.MaxItems(1) & [_, ...] & [...#filter]])
 		timeouts?:                     #timeouts
 		id?:                           string
 		maintenance_configuration_id!: string

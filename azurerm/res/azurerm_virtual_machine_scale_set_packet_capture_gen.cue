@@ -15,7 +15,7 @@ import "list"
 		filter?: matchN(1, [#filter, [...#filter]])
 		virtual_machine_scale_set_id!: string
 		machine_scope?: matchN(1, [#machine_scope, list.MaxItems(1) & [...#machine_scope]])
-		storage_location?: matchN(1, [#storage_location, list.MaxItems(1) & [_, ...] & [...#storage_location]])
+		storage_location!: matchN(1, [#storage_location, list.MaxItems(1) & [_, ...] & [...#storage_location]])
 		timeouts?: #timeouts
 	})
 

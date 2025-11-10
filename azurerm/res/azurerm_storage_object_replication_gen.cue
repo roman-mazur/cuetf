@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_storage_object_replication")
 	close({
-		rules?: matchN(1, [#rules, [_, ...] & [...#rules]])
+		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
 		destination_object_replication_id?: string
 		destination_storage_account_id!:    string
 		id?:                                string

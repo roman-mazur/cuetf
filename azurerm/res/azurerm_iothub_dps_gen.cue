@@ -18,7 +18,7 @@ import "list"
 		resource_group_name!: string
 		linked_hub?: matchN(1, [#linked_hub, [...#linked_hub]])
 		service_operations_host_name?: string
-		sku?: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
 		timeouts?: #timeouts
 		tags?: [string]: string
 	})

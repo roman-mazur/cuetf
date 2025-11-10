@@ -58,7 +58,7 @@ import "list"
 	})
 
 	#backup: close({
-		schedule?: matchN(1, [_#defs."/$defs/backup/$defs/schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/backup/$defs/schedule"]])
+		schedule!: matchN(1, [_#defs."/$defs/backup/$defs/schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/backup/$defs/schedule"]])
 		enabled?:             bool
 		name!:                string
 		storage_account_url!: string

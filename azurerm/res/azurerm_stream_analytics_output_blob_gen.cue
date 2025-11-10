@@ -14,7 +14,7 @@ import "list"
 		id?:                  string
 		name!:                string
 		path_pattern!:        string
-		serialization?: matchN(1, [#serialization, list.MaxItems(1) & [_, ...] & [...#serialization]])
+		serialization!: matchN(1, [#serialization, list.MaxItems(1) & [_, ...] & [...#serialization]])
 		resource_group_name!:       string
 		storage_account_key?:       string
 		storage_account_name!:      string

@@ -88,7 +88,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/activation_rules/$defs/approval_stage": close({
-		primary_approver?: matchN(1, [_#defs."/$defs/activation_rules/$defs/approval_stage/$defs/primary_approver", [_, ...] & [..._#defs."/$defs/activation_rules/$defs/approval_stage/$defs/primary_approver"]])
+		primary_approver!: matchN(1, [_#defs."/$defs/activation_rules/$defs/approval_stage/$defs/primary_approver", [_, ...] & [..._#defs."/$defs/activation_rules/$defs/approval_stage/$defs/primary_approver"]])
 	})
 
 	_#defs: "/$defs/activation_rules/$defs/approval_stage/$defs/primary_approver": close({

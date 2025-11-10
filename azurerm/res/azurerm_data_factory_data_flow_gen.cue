@@ -7,11 +7,11 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_data_factory_data_flow")
 	close({
 		annotations?: [...string]
-		sink?: matchN(1, [#sink, [_, ...] & [...#sink]])
+		sink!: matchN(1, [#sink, [_, ...] & [...#sink]])
 		data_factory_id!: string
 		description?:     string
 		folder?:          string
-		source?: matchN(1, [#source, [_, ...] & [...#source]])
+		source!: matchN(1, [#source, [_, ...] & [...#source]])
 		id?:       string
 		timeouts?: #timeouts
 		name!:     string

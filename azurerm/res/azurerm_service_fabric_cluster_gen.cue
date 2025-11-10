@@ -27,7 +27,7 @@ import "list"
 		client_certificate_thumbprint?: matchN(1, [#client_certificate_thumbprint, [...#client_certificate_thumbprint]])
 		diagnostics_config?: matchN(1, [#diagnostics_config, list.MaxItems(1) & [...#diagnostics_config]])
 		fabric_settings?: matchN(1, [#fabric_settings, [...#fabric_settings]])
-		node_type?: matchN(1, [#node_type, [_, ...] & [...#node_type]])
+		node_type!: matchN(1, [#node_type, [_, ...] & [...#node_type]])
 		reverse_proxy_certificate?: matchN(1, [#reverse_proxy_certificate, list.MaxItems(1) & [...#reverse_proxy_certificate]])
 		reverse_proxy_certificate_common_names?: matchN(1, [#reverse_proxy_certificate_common_names, list.MaxItems(1) & [...#reverse_proxy_certificate_common_names]])
 		timeouts?: #timeouts
@@ -47,7 +47,7 @@ import "list"
 	})
 
 	#certificate_common_names: close({
-		common_names?: matchN(1, [_#defs."/$defs/certificate_common_names/$defs/common_names", [_, ...] & [..._#defs."/$defs/certificate_common_names/$defs/common_names"]])
+		common_names!: matchN(1, [_#defs."/$defs/certificate_common_names/$defs/common_names", [_, ...] & [..._#defs."/$defs/certificate_common_names/$defs/common_names"]])
 		x509_store_name!: string
 	})
 
@@ -98,7 +98,7 @@ import "list"
 	})
 
 	#reverse_proxy_certificate_common_names: close({
-		common_names?: matchN(1, [_#defs."/$defs/reverse_proxy_certificate_common_names/$defs/common_names", [_, ...] & [..._#defs."/$defs/reverse_proxy_certificate_common_names/$defs/common_names"]])
+		common_names!: matchN(1, [_#defs."/$defs/reverse_proxy_certificate_common_names/$defs/common_names", [_, ...] & [..._#defs."/$defs/reverse_proxy_certificate_common_names/$defs/common_names"]])
 		x509_store_name!: string
 	})
 

@@ -12,7 +12,7 @@ import "list"
 		frequency!:     string
 		id?:            string
 		name!:          string
-		action_group?: matchN(1, [#action_group, list.MaxItems(1) & [_, ...] & [...#action_group]])
+		action_group!: matchN(1, [#action_group, list.MaxItems(1) & [_, ...] & [...#action_group]])
 		resource_group_name!: string
 		scope_resource_ids!: [...string]
 		timeouts?: #timeouts

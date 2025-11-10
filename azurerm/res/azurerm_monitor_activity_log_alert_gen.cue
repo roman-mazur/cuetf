@@ -15,7 +15,7 @@ import "list"
 		resource_group_name!: string
 		scopes!: [...string]
 		tags?: [string]: string
-		criteria?: matchN(1, [#criteria, list.MaxItems(1) & [_, ...] & [...#criteria]])
+		criteria!: matchN(1, [#criteria, list.MaxItems(1) & [_, ...] & [...#criteria]])
 		timeouts?: #timeouts
 	})
 

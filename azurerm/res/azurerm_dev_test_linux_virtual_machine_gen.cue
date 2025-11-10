@@ -16,7 +16,7 @@ import "list"
 		location!:                   string
 		name!:                       string
 		notes?:                      string
-		gallery_image_reference?: matchN(1, [#gallery_image_reference, list.MaxItems(1) & [_, ...] & [...#gallery_image_reference]])
+		gallery_image_reference!: matchN(1, [#gallery_image_reference, list.MaxItems(1) & [_, ...] & [...#gallery_image_reference]])
 		inbound_nat_rule?: matchN(1, [#inbound_nat_rule, [...#inbound_nat_rule]])
 		password?:            string
 		resource_group_name!: string

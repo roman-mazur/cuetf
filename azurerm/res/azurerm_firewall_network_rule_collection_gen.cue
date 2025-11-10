@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_firewall_network_rule_collection")
 	close({
-		rule?: matchN(1, [#rule, [_, ...] & [...#rule]])
+		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
 		action!:              string
 		azure_firewall_name!: string
 		id?:                  string

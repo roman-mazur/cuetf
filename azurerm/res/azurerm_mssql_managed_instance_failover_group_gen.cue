@@ -10,7 +10,7 @@ import "list"
 		location!:            string
 		managed_instance_id!: string
 		name!:                string
-		read_write_endpoint_failover_policy?: matchN(1, [#read_write_endpoint_failover_policy, list.MaxItems(1) & [_, ...] & [...#read_write_endpoint_failover_policy]])
+		read_write_endpoint_failover_policy!: matchN(1, [#read_write_endpoint_failover_policy, list.MaxItems(1) & [_, ...] & [...#read_write_endpoint_failover_policy]])
 		partner_managed_instance_id!: string
 		partner_region?: [...close({
 			location?: string

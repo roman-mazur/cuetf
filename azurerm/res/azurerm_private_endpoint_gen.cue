@@ -20,7 +20,7 @@ import "list"
 		})]
 		ip_configuration?: matchN(1, [#ip_configuration, [...#ip_configuration]])
 		private_dns_zone_group?: matchN(1, [#private_dns_zone_group, list.MaxItems(1) & [...#private_dns_zone_group]])
-		private_service_connection?: matchN(1, [#private_service_connection, list.MaxItems(1) & [_, ...] & [...#private_service_connection]])
+		private_service_connection!: matchN(1, [#private_service_connection, list.MaxItems(1) & [_, ...] & [...#private_service_connection]])
 		private_dns_zone_configs?: [...close({
 			id?:                  string
 			name?:                string

@@ -15,7 +15,7 @@ import "list"
 		end_time?:        string
 		frequency!:       string
 		id?:              string
-		pipeline?: matchN(1, [#pipeline, list.MaxItems(1) & [_, ...] & [...#pipeline]])
+		pipeline!: matchN(1, [#pipeline, list.MaxItems(1) & [_, ...] & [...#pipeline]])
 		interval!:        number
 		max_concurrency?: number
 		name!:            string

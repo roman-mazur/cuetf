@@ -13,13 +13,13 @@ import "list"
 		location!:                string
 		name!:                    string
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		plan?: matchN(1, [#plan, list.MaxItems(1) & [_, ...] & [...#plan]])
+		plan!: matchN(1, [#plan, list.MaxItems(1) & [_, ...] & [...#plan]])
 		timeouts?:            #timeouts
 		org_creation_source?: string
 		organization_id?:     string
 		resource_group_name!: string
 		user_id?:             string
-		user?: matchN(1, [#user, list.MaxItems(1) & [_, ...] & [...#user]])
+		user!: matchN(1, [#user, list.MaxItems(1) & [_, ...] & [...#user]])
 	})
 
 	#identity: close({
