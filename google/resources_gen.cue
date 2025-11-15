@@ -179,6 +179,8 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_certificate_manager_dns_authorization": res.#google_certificate_manager_dns_authorization
 	_#res: "\(#googlePrefix)_certificate_manager_trust_config": res.#google_certificate_manager_trust_config
 	_#res: "\(#googlePrefix)_ces_app": res.#google_ces_app
+	_#res: "\(#googlePrefix)_ces_deployment": res.#google_ces_deployment
+	_#res: "\(#googlePrefix)_ces_example": res.#google_ces_example
 	_#res: "\(#googlePrefix)_ces_toolset": res.#google_ces_toolset
 	_#res: "\(#googlePrefix)_chronicle_data_access_label": res.#google_chronicle_data_access_label
 	_#res: "\(#googlePrefix)_chronicle_data_access_scope": res.#google_chronicle_data_access_scope
@@ -562,6 +564,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_discovery_engine_search_engine": res.#google_discovery_engine_search_engine
 	_#res: "\(#googlePrefix)_discovery_engine_sitemap": res.#google_discovery_engine_sitemap
 	_#res: "\(#googlePrefix)_discovery_engine_target_site": res.#google_discovery_engine_target_site
+	_#res: "\(#googlePrefix)_discovery_engine_user_store": res.#google_discovery_engine_user_store
 	_#res: "\(#googlePrefix)_dns_managed_zone": res.#google_dns_managed_zone
 	_#res: "\(#googlePrefix)_dns_managed_zone_iam_binding": res.#google_dns_managed_zone_iam_binding
 	_#res: "\(#googlePrefix)_dns_managed_zone_iam_member": res.#google_dns_managed_zone_iam_member

@@ -22,7 +22,18 @@ import "list"
 
 		// An optional description of this resource.
 		description?: string
-		id?:          string
+
+		// The unique identifier for the resource. This identifier is
+		// defined by the server.
+		id?: string
+
+		// Type of the resource. Always compute#reservations for
+		// reservations.
+		kind?: string
+
+		// Full or partial URL to parent commitments. This field displays
+		// for reservations that are tied to multiple commitments.
+		linked_commitments?: [...string]
 
 		// Name of the resource. Provided by the client when the resource
 		// is
@@ -35,9 +46,54 @@ import "list"
 		// characters must be a dash, lowercase letter, or digit, except
 		// the last
 		// character, which cannot be a dash.
-		name!:    string
+		name!: string
+
+		// The number of reservation blocks associated with this
+		// reservation.
+		reservation_block_count?: number
+
+		// Status information for Reservation resource.
+		resource_status?: [...close({
+			health_info?: [...close({
+				degraded_block_count?: number
+				health_status?:        string
+				healthy_block_count?:  number
+			})]
+			reservation_block_count?: number
+			reservation_maintenance?: [...close({
+				instance_maintenance_ongoing_count?:       number
+				instance_maintenance_pending_count?:       number
+				maintenance_ongoing_count?:                number
+				maintenance_pending_count?:                number
+				scheduling_type?:                          string
+				subblock_infra_maintenance_ongoing_count?: number
+				subblock_infra_maintenance_pending_count?: number
+				upcoming_group_maintenance?: [...close({
+					can_reschedule?:           bool
+					latest_window_start_time?: string
+					maintenance_on_shutdown?:  bool
+					maintenance_reasons?: [...string]
+					maintenance_status?: string
+					type?:               string
+					window_end_time?:    string
+					window_start_time?:  string
+				})]
+			})]
+			specific_sku_allocation?: [...close({
+				source_instance_template_id?: string
+				utilizations?: [string]: string
+			})]
+		})]
 		project?: string
 		delete_after_duration?: matchN(1, [#delete_after_duration, list.MaxItems(1) & [...#delete_after_duration]])
+		reservation_sharing_policy?: matchN(1, [#reservation_sharing_policy, list.MaxItems(1) & [...#reservation_sharing_policy]])
+		share_settings?: matchN(1, [#share_settings, list.MaxItems(1) & [...#share_settings]])
+		specific_reservation!: matchN(1, [#specific_reservation, list.MaxItems(1) & [_, ...] & [...#specific_reservation]])
+		timeouts?: #timeouts
+
+		// Reserved for future use.
+		satisfies_pzs?: bool
+		self_link?:     string
 
 		// When set to true, only VMs that target this reservation by name
 		// can
@@ -45,11 +101,6 @@ import "list"
 		// with
 		// affinity for any reservation. Defaults to false.
 		specific_reservation_required?: bool
-		reservation_sharing_policy?: matchN(1, [#reservation_sharing_policy, list.MaxItems(1) & [...#reservation_sharing_policy]])
-		share_settings?: matchN(1, [#share_settings, list.MaxItems(1) & [...#share_settings]])
-		specific_reservation!: matchN(1, [#specific_reservation, list.MaxItems(1) & [_, ...] & [...#specific_reservation]])
-		timeouts?:  #timeouts
-		self_link?: string
 
 		// The status of the reservation.
 		status?: string
@@ -81,12 +132,15 @@ import "list"
 	})
 
 	#specific_reservation: close({
+		// Indicates how many instances are actually usable currently.
+		assured_count?: number
+
 		// The number of resources that are allocated.
 		count!: number
-		instance_properties?: matchN(1, [_#defs."/$defs/specific_reservation/$defs/instance_properties", list.MaxItems(1) & [..._#defs."/$defs/specific_reservation/$defs/instance_properties"]])
 
 		// How many instances are in use.
 		in_use_count?: number
+		instance_properties?: matchN(1, [_#defs."/$defs/specific_reservation/$defs/instance_properties", list.MaxItems(1) & [..._#defs."/$defs/specific_reservation/$defs/instance_properties"]])
 
 		// Specifies the instance template to create the reservation. If
 		// you use this field, you must exclude the
@@ -109,11 +163,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/specific_reservation/$defs/instance_properties": close({
-		guest_accelerators?: matchN(1, [_#defs."/$defs/specific_reservation/$defs/instance_properties/$defs/guest_accelerators", [..._#defs."/$defs/specific_reservation/$defs/instance_properties/$defs/guest_accelerators"]])
-		local_ssds?: matchN(1, [_#defs."/$defs/specific_reservation/$defs/instance_properties/$defs/local_ssds", [..._#defs."/$defs/specific_reservation/$defs/instance_properties/$defs/local_ssds"]])
+		// An opaque location hint used to place the allocation close to
+		// other resources. This field is for use by internal tools that
+		// use the public API.
+		location_hint?: string
 
 		// The name of the machine type to reserve.
 		machine_type!: string
+		guest_accelerators?: matchN(1, [_#defs."/$defs/specific_reservation/$defs/instance_properties/$defs/guest_accelerators", [..._#defs."/$defs/specific_reservation/$defs/instance_properties/$defs/guest_accelerators"]])
 
 		// The minimum CPU platform for the reservation. For example,
 		// '"Intel Skylake"'. See
@@ -121,6 +178,7 @@ import "list"
 		// reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
 		// for information on available CPU platforms.
 		min_cpu_platform?: string
+		local_ssds?: matchN(1, [_#defs."/$defs/specific_reservation/$defs/instance_properties/$defs/local_ssds", [..._#defs."/$defs/specific_reservation/$defs/instance_properties/$defs/local_ssds"]])
 	})
 
 	_#defs: "/$defs/specific_reservation/$defs/instance_properties/$defs/guest_accelerators": close({

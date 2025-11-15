@@ -8,11 +8,26 @@ package res
 		description?: string
 
 		// The IPv4 address to be used for reverse DNS verification.
-		dns_verification_ip!: string
+		dns_verification_ip?: string
+		id?:                  string
 
 		// The address range, in CIDR format, represented by this public
 		// advertised prefix.
 		ip_cidr_range!: string
+
+		// The internet access type for IPv6 Public Advertised Prefixes.
+		// It can be
+		// set to one of following:
+		// * EXTERNAL: Default access type. The prefix will be announced
+		// to the
+		// internet. All children PDPs will have access type as EXTERNAL.
+		// * INTERNAL: The prefix won’t be announced to the internet.
+		// Prefix will
+		// be used privately within Google Cloud. All children PDPs will
+		// have
+		// access type as INTERNAL. Possible values: ["EXTERNAL",
+		// "INTERNAL"]
+		ipv6_access_type?: string
 
 		// Name of the resource. The name must be 1-63 characters long,
 		// and
@@ -26,7 +41,6 @@ package res
 		// digit,
 		// except the last character, which cannot be a dash.
 		name!: string
-		id?:   string
 
 		// Specifies how child public delegated prefix will be scoped.
 		// pdpScope
@@ -37,8 +51,8 @@ package res
 		// provisioning
 		// will take ~4 weeks. Possible values: ["GLOBAL", "REGIONAL"]
 		pdp_scope?: string
-		timeouts?:  #timeouts
 		project?:   string
+		timeouts?:  #timeouts
 		self_link?: string
 
 		// Output Only. The shared secret to be used for reverse DNS

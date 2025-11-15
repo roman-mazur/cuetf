@@ -31,6 +31,7 @@ package res
 		// By default,
 		// GKE clients are not supported.
 		gke_support_enabled?: bool
+		id?:                  string
 
 		// The name of the Managed Lustre instance.
 		//
@@ -47,7 +48,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -57,10 +57,10 @@ package res
 		// Mount point of the instance in the format
 		// 'IP_ADDRESS@tcp:/FILESYSTEM'.
 		mount_point?: string
-		timeouts?:    #timeouts
 
 		// Identifier. The name of the instance.
-		name?: string
+		name?:     string
+		timeouts?: #timeouts
 
 		// The full name of the VPC network to which the instance is
 		// connected.
@@ -71,7 +71,10 @@ package res
 		// The throughput of the instance in MB/s/TiB.
 		// Valid values are 125, 250, 500, 1000.
 		per_unit_storage_throughput!: string
-		project?:                     string
+
+		// The placement policy name for the instance in the format of
+		// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+		placement_policy?: string
 
 		// The state of the instance.
 		// Possible values:
@@ -82,7 +85,8 @@ package res
 		// UPGRADING
 		// REPAIRING
 		// STOPPED
-		state?: string
+		state?:   string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

@@ -28,6 +28,18 @@ package data
 		// An optional description of this resource.
 		description?: string
 
+		// The unique identifier for the resource. This identifier is
+		// defined by the server.
+		id?: string
+
+		// Type of the resource. Always compute#reservations for
+		// reservations.
+		kind?: string
+
+		// Full or partial URL to parent commitments. This field displays
+		// for reservations that are tied to multiple commitments.
+		linked_commitments?: [...string]
+
 		// Name of the resource. Provided by the client when the resource
 		// is
 		// created. The name must be 1-63 characters long, and comply with
@@ -40,15 +52,54 @@ package data
 		// the last
 		// character, which cannot be a dash.
 		name!:    string
-		id?:      string
 		project?: string
+
+		// The number of reservation blocks associated with this
+		// reservation.
+		reservation_block_count?: number
 
 		// Sharing policy for reservations with Google Cloud managed
 		// services.
 		reservation_sharing_policy?: [...close({
 			service_share_type?: string
 		})]
-		self_link?: string
+
+		// Status information for Reservation resource.
+		resource_status?: [...close({
+			health_info?: [...close({
+				degraded_block_count?: number
+				health_status?:        string
+				healthy_block_count?:  number
+			})]
+			reservation_block_count?: number
+			reservation_maintenance?: [...close({
+				instance_maintenance_ongoing_count?:       number
+				instance_maintenance_pending_count?:       number
+				maintenance_ongoing_count?:                number
+				maintenance_pending_count?:                number
+				scheduling_type?:                          string
+				subblock_infra_maintenance_ongoing_count?: number
+				subblock_infra_maintenance_pending_count?: number
+				upcoming_group_maintenance?: [...close({
+					can_reschedule?:           bool
+					latest_window_start_time?: string
+					maintenance_on_shutdown?:  bool
+					maintenance_reasons?: [...string]
+					maintenance_status?: string
+					type?:               string
+					window_end_time?:    string
+					window_start_time?:  string
+				})]
+			})]
+			specific_sku_allocation?: [...close({
+				source_instance_template_id?: string
+				utilizations?: [string]: string
+			})]
+		})]
+
+		// Reserved for future use.
+		satisfies_pzs?: bool
+		self_link?:     string
 
 		// The share setting for reservations.
 		share_settings?: [...close({
@@ -61,8 +112,9 @@ package data
 
 		// Reservation for instances with specific machine shapes.
 		specific_reservation?: [...close({
-			count?:        number
-			in_use_count?: number
+			assured_count?: number
+			count?:         number
+			in_use_count?:  number
 			instance_properties?: [...close({
 				guest_accelerators?: [...close({
 					accelerator_count?: number
@@ -72,6 +124,7 @@ package data
 					disk_size_gb?: number
 					interface?:    string
 				})]
+				location_hint?:    string
 				machine_type?:     string
 				min_cpu_platform?: string
 			})]

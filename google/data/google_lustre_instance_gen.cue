@@ -70,7 +70,11 @@ package data
 		// The throughput of the instance in MB/s/TiB.
 		// Valid values are 125, 250, 500, 1000.
 		per_unit_storage_throughput?: string
-		project?:                     string
+
+		// The placement policy name for the instance in the format of
+		// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+		placement_policy?: string
+		project?:          string
 
 		// The state of the instance.
 		// Possible values:
