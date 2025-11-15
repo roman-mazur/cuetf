@@ -12,6 +12,9 @@ import "list"
 		// Enable `insecure` mode for testing purposes
 		insecure?: bool
 
+		// Number of items per page for paginationDefaults to 100
+		max_per_page?: number
+
 		// Number of times to retry a request after receiving an error
 		// status codeDefaults to 3
 		max_retries?: number

@@ -72,22 +72,26 @@ import "list"
 
 		// Prevent merge commits from being pushed to matching branches.
 		required_linear_history?: bool
+		commit_author_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_author_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_author_email_pattern"]])
+		commit_message_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_message_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_message_pattern"]])
+		committer_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/committer_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/committer_email_pattern"]])
+		file_extension_restriction?: matchN(1, [_#defs."/$defs/rules/$defs/file_extension_restriction", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/file_extension_restriction"]])
+		file_path_restriction?: matchN(1, [_#defs."/$defs/rules/$defs/file_path_restriction", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/file_path_restriction"]])
+		max_file_path_length?: matchN(1, [_#defs."/$defs/rules/$defs/max_file_path_length", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/max_file_path_length"]])
+		max_file_size?: matchN(1, [_#defs."/$defs/rules/$defs/max_file_size", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/max_file_size"]])
 
 		// Commits pushed to matching branches must have verified
 		// signatures.
 		required_signatures?: bool
-		commit_author_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_author_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_author_email_pattern"]])
-		commit_message_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_message_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_message_pattern"]])
-		committer_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/committer_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/committer_email_pattern"]])
 		pull_request?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/pull_request"]])
 		required_code_scanning?: matchN(1, [_#defs."/$defs/rules/$defs/required_code_scanning", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_code_scanning"]])
 		required_status_checks?: matchN(1, [_#defs."/$defs/rules/$defs/required_status_checks", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_status_checks"]])
 		required_workflows?: matchN(1, [_#defs."/$defs/rules/$defs/required_workflows", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_workflows"]])
+		tag_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/tag_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/tag_name_pattern"]])
 
 		// Only allow users with bypass permission to update matching
 		// refs.
 		update?: bool
-		tag_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/tag_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/tag_name_pattern"]])
 	})
 
 	_#defs: "/$defs/conditions/$defs/ref_name": close({
@@ -174,6 +178,28 @@ import "list"
 
 		// The pattern to match with.
 		pattern!: string
+	})
+
+	_#defs: "/$defs/rules/$defs/file_extension_restriction": close({
+		// The file extensions that are restricted from being pushed to
+		// the commit graph.
+		restricted_file_extensions!: [...string]
+	})
+
+	_#defs: "/$defs/rules/$defs/file_path_restriction": close({
+		// The file paths that are restricted from being pushed to the
+		// commit graph.
+		restricted_file_paths!: [...string]
+	})
+
+	_#defs: "/$defs/rules/$defs/max_file_path_length": close({
+		// The maximum allowed length of a file path.
+		max_file_path_length!: number
+	})
+
+	_#defs: "/$defs/rules/$defs/max_file_size": close({
+		// The maximum allowed size of a file in bytes.
+		max_file_size!: number
 	})
 
 	_#defs: "/$defs/rules/$defs/pull_request": close({

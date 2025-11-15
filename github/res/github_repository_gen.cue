@@ -41,6 +41,9 @@ import "list"
 		description?: string
 		etag?:        string
 
+		// Set to 'true' to fork an existing repository.
+		fork?: bool
+
 		// A string of the form 'orgname/reponame'.
 		full_name?: string
 
@@ -86,13 +89,13 @@ import "list"
 		// via HTTPS.
 		http_clone_url?: string
 		id?:             string
+		pages?: matchN(1, [#pages, list.MaxItems(1) & [...#pages]])
+		security_and_analysis?: matchN(1, [#security_and_analysis, list.MaxItems(1) & [...#security_and_analysis]])
 
 		// Set to true to not call the vulnerability alerts endpoint so
 		// the resource can also be used without admin permissions during
 		// read.
 		ignore_vulnerability_alerts_during_read?: bool
-		pages?: matchN(1, [#pages, list.MaxItems(1) & [...#pages]])
-		security_and_analysis?: matchN(1, [#security_and_analysis, list.MaxItems(1) & [...#security_and_analysis]])
 
 		// Set to 'true' to tell GitHub that this is a template
 		// repository.
@@ -114,12 +117,18 @@ import "list"
 		name!: string
 
 		// GraphQL global node id for use with v4 API.
-		node_id?:          string
-		primary_language?: string
+		node_id?: string
 
 		// GitHub ID for the repository.
-		repo_id?: number
+		repo_id?:          number
+		primary_language?: string
+
+		// The owner of the source repository to fork from.
+		source_owner?: string
 		template?: matchN(1, [#template, list.MaxItems(1) & [...#template]])
+
+		// The name of the source repository to fork from.
+		source_repo?: string
 
 		// Can be 'PR_BODY', 'COMMIT_MESSAGES', or 'BLANK' for a default
 		// squash merge commit message.
