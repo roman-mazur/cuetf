@@ -20,7 +20,15 @@ package res
 		// strings (string_value) or numbers (number_value) but not both.
 		// Example -- key1 = {string_value = value1}, key2 =
 		// {number_value = 42}
-		global_data_tags?: _
+		global_data_tags?: [string]: close({
+			// Number value for the field. If this is set, string_value must
+			// not be defined.
+			number_value?: number
+
+			// String value for the field. If this is set, number_value must
+			// not be defined.
+			string_value?: string
+		})
 
 		// The ID of this resource.
 		id?: string
