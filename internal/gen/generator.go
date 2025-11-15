@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"slices"
+	"strconv"
 	"strings"
 	"sync"
 	"text/template"
@@ -85,7 +86,7 @@ func (g *Generator) generateDefs(cfg *Config, data providerSchema, providerPath 
 	var wg sync.WaitGroup
 
 	wg.Go(func() {
-		processSchema(cfg, g.lg.LogPart(clog.PartProvider), "provider", data.Provider, providerPath, "1/1")
+		processSchema(cfg, g.lg.LogPart(clog.PartProvider), "provider", data.Provider, providerPath, "1")
 		if cfg.Version != "" {
 			providerName := filepath.Base(providerPath)
 			createFile(
@@ -112,9 +113,10 @@ func (g *Generator) generateDefs(cfg *Config, data providerSchema, providerPath 
 func generateMapDefs(cfg *Config, logf clog.Logf, data map[string]*schemaData, dir string) {
 	keys := slices.Collect(maps.Keys(data))
 	slices.Sort(keys)
+	logf("defs count for %s: %d", dir, len(data))
 	for i, name := range keys {
 		schema := data[name]
-		processSchema(cfg, logf, name, schema, dir, fmt.Sprintf("%d/%d", i+1, len(data)))
+		processSchema(cfg, logf, name, schema, dir, strconv.Itoa(i+1))
 	}
 }
 
