@@ -18,6 +18,12 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					description_kind: "plain"
 					optional:         true
 				}
+				max_per_page: {
+					type:             "number"
+					description:      "Number of items per page for paginationDefaults to 100"
+					description_kind: "plain"
+					optional:         true
+				}
 				max_retries: {
 					type:             "number"
 					description:      "Number of times to retry a request after receiving an error status codeDefaults to 3"
@@ -842,6 +848,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						type:             "string"
 						description:      "An etag representing the Branch object."
 						description_kind: "plain"
+						optional:         true
 						computed:         true
 					}
 					id: {
@@ -898,6 +905,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					etag: {
 						type:             "string"
 						description_kind: "plain"
+						optional:         true
 						computed:         true
 					}
 					id: {
@@ -1941,6 +1949,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					etag: {
 						type:             "string"
 						description_kind: "plain"
+						optional:         true
 						computed:         true
 					}
 					id: {
@@ -2700,6 +2709,62 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 											}
 										}
 										description:      "Parameters to be used for the committer_email_pattern rule."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								file_extension_restriction: {
+									nesting_mode: "list"
+									block: {
+										attributes: restricted_file_extensions: {
+											type: ["set", "string"]
+											description:      "The file extensions that are restricted from being pushed to the commit graph."
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "Prevent pushes based on file extensions."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								file_path_restriction: {
+									nesting_mode: "list"
+									block: {
+										attributes: restricted_file_paths: {
+											type: ["list", "string"]
+											description:      "The file paths that are restricted from being pushed to the commit graph."
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "Prevent commits that include changes in specified file paths from being pushed to the commit graph."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								max_file_path_length: {
+									nesting_mode: "list"
+									block: {
+										attributes: max_file_path_length: {
+											type:             "number"
+											description:      "The maximum allowed length of a file path."
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "Prevent pushes based on file path length."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								max_file_size: {
+									nesting_mode: "list"
+									block: {
+										attributes: max_file_size: {
+											type:             "number"
+											description:      "The maximum allowed size of a file in bytes."
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "Prevent pushes based on file size."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -3470,7 +3535,14 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					etag: {
 						type:             "string"
 						description_kind: "plain"
+						optional:         true
 						computed:         true
+					}
+					fork: {
+						type:             "bool"
+						description:      "Set to 'true' to fork an existing repository."
+						description_kind: "plain"
+						optional:         true
 					}
 					full_name: {
 						type:             "string"
@@ -3603,6 +3675,18 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description:      "GitHub ID for the repository."
 						description_kind: "plain"
 						computed:         true
+					}
+					source_owner: {
+						type:             "string"
+						description:      "The owner of the source repository to fork from."
+						description_kind: "plain"
+						optional:         true
+					}
+					source_repo: {
+						type:             "string"
+						description:      "The name of the source repository to fork from."
+						description_kind: "plain"
+						optional:         true
 					}
 					squash_merge_commit_message: {
 						type:             "string"
@@ -4096,6 +4180,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						type:             "string"
 						description:      "An etag representing the Branch object."
 						description_kind: "plain"
+						optional:         true
 						computed:         true
 					}
 					id: {
@@ -4417,6 +4502,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					etag: {
 						type:             "string"
 						description_kind: "plain"
+						optional:         true
 						computed:         true
 					}
 					id: {
@@ -4880,6 +4966,20 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 									}
 									max_items: 1
 								}
+								max_file_path_length: {
+									nesting_mode: "list"
+									block: {
+										attributes: max_file_path_length: {
+											type:             "number"
+											description:      "The maximum allowed length of a file path."
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "Prevent pushes based on file path length."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 								max_file_size: {
 									nesting_mode: "list"
 									block: {
@@ -5164,6 +5264,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					etag: {
 						type:             "string"
 						description_kind: "plain"
+						optional:         true
 						computed:         true
 					}
 					events: {
@@ -5638,8 +5739,74 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 				description_kind: "plain"
 			}
 		}
+		github_workflow_repository_permissions: {
+			version: 0
+			block: {
+				attributes: {
+					can_approve_pull_request_reviews: {
+						type:             "bool"
+						description:      "Whether GitHub Actions can approve pull requests. Enabling this can be a security risk."
+						description_kind: "plain"
+						optional:         true
+					}
+					default_workflow_permissions: {
+						type:             "string"
+						description:      "The default workflow permissions granted to the GITHUB_TOKEN when running workflows."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					repository: {
+						type:             "string"
+						description:      "The GitHub repository."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 	}
 	data_source_schemas: {
+		github_actions_environment_public_key: {
+			version: 0
+			block: {
+				attributes: {
+					environment: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					key: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					key_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					repository: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		github_actions_environment_secrets: {
 			version: 0
 			block: {

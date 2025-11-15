@@ -4,6 +4,7 @@ import "github.com/roman-mazur/cuetf/github/data"
 
 #Terraform: {
 	#githubPrefix: string
+	_#ds: "\(#githubPrefix)_actions_environment_public_key": data.#github_actions_environment_public_key
 	_#ds: "\(#githubPrefix)_actions_environment_secrets": data.#github_actions_environment_secrets
 	_#ds: "\(#githubPrefix)_actions_environment_variables": data.#github_actions_environment_variables
 	_#ds: "\(#githubPrefix)_actions_organization_oidc_subject_claim_customization_template": data.#github_actions_organization_oidc_subject_claim_customization_template

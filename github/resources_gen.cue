@@ -82,5 +82,6 @@ import "github.com/roman-mazur/cuetf/github/res"
 	_#res: "\(#githubPrefix)_user_gpg_key": res.#github_user_gpg_key
 	_#res: "\(#githubPrefix)_user_invitation_accepter": res.#github_user_invitation_accepter
 	_#res: "\(#githubPrefix)_user_ssh_key": res.#github_user_ssh_key
+	_#res: "\(#githubPrefix)_workflow_repository_permissions": res.#github_workflow_repository_permissions
 
 }

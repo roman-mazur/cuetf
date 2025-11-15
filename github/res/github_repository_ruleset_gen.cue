@@ -63,32 +63,33 @@ import "list"
 		// Only allow users with bypass permissions to delete matching
 		// refs.
 		deletion?: bool
-		commit_author_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_author_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_author_email_pattern"]])
 
 		// Prevent users with push access from force pushing to branches.
 		non_fast_forward?: bool
 
 		// Prevent merge commits from being pushed to matching branches.
 		required_linear_history?: bool
+
+		// Commits pushed to matching branches must have verified
+		// signatures.
+		required_signatures?: bool
+		commit_author_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_author_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_author_email_pattern"]])
 		commit_message_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_message_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_message_pattern"]])
 		committer_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/committer_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/committer_email_pattern"]])
 		file_extension_restriction?: matchN(1, [_#defs."/$defs/rules/$defs/file_extension_restriction", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/file_extension_restriction"]])
 		file_path_restriction?: matchN(1, [_#defs."/$defs/rules/$defs/file_path_restriction", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/file_path_restriction"]])
+		max_file_path_length?: matchN(1, [_#defs."/$defs/rules/$defs/max_file_path_length", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/max_file_path_length"]])
 		max_file_size?: matchN(1, [_#defs."/$defs/rules/$defs/max_file_size", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/max_file_size"]])
 		merge_queue?: matchN(1, [_#defs."/$defs/rules/$defs/merge_queue", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/merge_queue"]])
 		pull_request?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/pull_request"]])
 		required_code_scanning?: matchN(1, [_#defs."/$defs/rules/$defs/required_code_scanning", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_code_scanning"]])
 
-		// Commits pushed to matching branches must have verified
-		// signatures.
-		required_signatures?: bool
-		required_deployments?: matchN(1, [_#defs."/$defs/rules/$defs/required_deployments", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_deployments"]])
-		required_status_checks?: matchN(1, [_#defs."/$defs/rules/$defs/required_status_checks", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_status_checks"]])
-		tag_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/tag_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/tag_name_pattern"]])
-
 		// Only allow users with bypass permission to update matching
 		// refs.
 		update?: bool
+		required_deployments?: matchN(1, [_#defs."/$defs/rules/$defs/required_deployments", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_deployments"]])
+		required_status_checks?: matchN(1, [_#defs."/$defs/rules/$defs/required_status_checks", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_status_checks"]])
+		tag_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/tag_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/tag_name_pattern"]])
 
 		// Branch can pull changes from its upstream repository. This is
 		// only applicable to forked repositories. Requires `update` to
@@ -177,6 +178,11 @@ import "list"
 		// The file paths that are restricted from being pushed to the
 		// commit graph.
 		restricted_file_paths!: [...string]
+	})
+
+	_#defs: "/$defs/rules/$defs/max_file_path_length": close({
+		// The maximum allowed length of a file path.
+		max_file_path_length!: number
 	})
 
 	_#defs: "/$defs/rules/$defs/max_file_size": close({
