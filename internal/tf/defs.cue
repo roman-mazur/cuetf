@@ -61,7 +61,7 @@ _attrTypeOptions: {type: #attr.#type} | {
 }
 
 nestable: {
-	nesting_mode: "set" | "list" | "single"
+	nesting_mode: "set" | "list" | "single" | "map"
 	max_items?:   uint
 	min_items?:   uint
 }

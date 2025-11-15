@@ -102,6 +102,11 @@ import (
 				#def
 			}
 
+			if #nest.nesting_mode == "map" {
+				type:                 "object"
+				additionalProperties: #def
+			}
+
 			if #nest.nesting_mode == "list" || #nest.nesting_mode == "set" {
 				"oneOf": [
 					#def,

@@ -126,3 +126,33 @@ debug: blocks: awsExtract: input: {
 		}
 	}
 }
+
+debug: blocks: nestingMap: {
+	input: attributes: {
+		examples: {
+			nested_type: {
+				nesting_mode: "map"
+				attributes: {
+					key1: {
+						type: "string"
+						required: true
+					}
+					key2: {
+						type: "number"
+						optional: true
+					}
+				}
+			}
+		}
+	}
+	output: properties: examples: {
+		type: "object"
+		additionalProperties: {
+			type: "object"
+			properties: close({
+				key1!: _
+				key2?: _
+			})
+		}
+	}
+}

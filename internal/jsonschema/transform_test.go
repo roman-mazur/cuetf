@@ -58,6 +58,7 @@ func TestProviders(t *testing.T) {
 				"elasticstack_elasticsearch_info",
 				"elasticstack_elasticsearch_index",
 				"elasticstack_kibana_data_view",
+				"elasticstack_fleet_agent_policy",
 			},
 		},
 		{
