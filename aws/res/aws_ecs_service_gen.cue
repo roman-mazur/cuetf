@@ -70,7 +70,9 @@ import "list"
 	})
 
 	#deployment_configuration: close({
+		canary_configuration?: matchN(1, [_#defs."/$defs/deployment_configuration/$defs/canary_configuration", list.MaxItems(1) & [..._#defs."/$defs/deployment_configuration/$defs/canary_configuration"]])
 		lifecycle_hook?: matchN(1, [_#defs."/$defs/deployment_configuration/$defs/lifecycle_hook", [..._#defs."/$defs/deployment_configuration/$defs/lifecycle_hook"]])
+		linear_configuration?: matchN(1, [_#defs."/$defs/deployment_configuration/$defs/linear_configuration", list.MaxItems(1) & [..._#defs."/$defs/deployment_configuration/$defs/linear_configuration"]])
 		bake_time_in_minutes?: string
 		strategy?:             string
 	})
@@ -134,11 +136,21 @@ import "list"
 		target_group_arn!: string
 	})
 
+	_#defs: "/$defs/deployment_configuration/$defs/canary_configuration": close({
+		canary_bake_time_in_minutes?: string
+		canary_percent?:              number
+	})
+
 	_#defs: "/$defs/deployment_configuration/$defs/lifecycle_hook": close({
 		hook_details?:    string
 		hook_target_arn!: string
 		lifecycle_stages!: [...string]
 		role_arn!: string
+	})
+
+	_#defs: "/$defs/deployment_configuration/$defs/linear_configuration": close({
+		step_bake_time_in_minutes?: string
+		step_percent?:              number
 	})
 
 	_#defs: "/$defs/load_balancer/$defs/advanced_configuration": close({

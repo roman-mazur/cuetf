@@ -6,21 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_sagemaker_endpoint_configuration")
 	close({
-		arn?: string
-		async_inference_config?: matchN(1, [#async_inference_config, list.MaxItems(1) & [...#async_inference_config]])
-		id?:          string
-		kms_key_arn?: string
+		arn?:                string
+		execution_role_arn?: string
+		id?:                 string
+		kms_key_arn?:        string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		name?:   string
-		data_capture_config?: matchN(1, [#data_capture_config, list.MaxItems(1) & [...#data_capture_config]])
+		async_inference_config?: matchN(1, [#async_inference_config, list.MaxItems(1) & [...#async_inference_config]])
+		name?:        string
 		name_prefix?: string
-		tags?: [string]: string
+		data_capture_config?: matchN(1, [#data_capture_config, list.MaxItems(1) & [...#data_capture_config]])
 		production_variants!: matchN(1, [#production_variants, list.MaxItems(10) & [_, ...] & [...#production_variants]])
+		tags?: [string]: string
 		shadow_production_variants?: matchN(1, [#shadow_production_variants, list.MaxItems(10) & [...#shadow_production_variants]])
 		tags_all?: [string]: string
 	})
@@ -49,7 +50,7 @@ import "list"
 		instance_type?:                                     string
 		model_data_download_timeout_in_seconds?:            number
 		core_dump_config?: matchN(1, [_#defs."/$defs/production_variants/$defs/core_dump_config", list.MaxItems(1) & [..._#defs."/$defs/production_variants/$defs/core_dump_config"]])
-		model_name!: string
+		model_name?: string
 		managed_instance_scaling?: matchN(1, [_#defs."/$defs/production_variants/$defs/managed_instance_scaling", list.MaxItems(1) & [..._#defs."/$defs/production_variants/$defs/managed_instance_scaling"]])
 		variant_name?: string
 		routing_config?: matchN(1, [_#defs."/$defs/production_variants/$defs/routing_config", [..._#defs."/$defs/production_variants/$defs/routing_config"]])
@@ -67,7 +68,7 @@ import "list"
 		instance_type?:                                     string
 		model_data_download_timeout_in_seconds?:            number
 		core_dump_config?: matchN(1, [_#defs."/$defs/shadow_production_variants/$defs/core_dump_config", list.MaxItems(1) & [..._#defs."/$defs/shadow_production_variants/$defs/core_dump_config"]])
-		model_name!: string
+		model_name?: string
 		managed_instance_scaling?: matchN(1, [_#defs."/$defs/shadow_production_variants/$defs/managed_instance_scaling", list.MaxItems(1) & [..._#defs."/$defs/shadow_production_variants/$defs/managed_instance_scaling"]])
 		variant_name?: string
 		routing_config?: matchN(1, [_#defs."/$defs/shadow_production_variants/$defs/routing_config", [..._#defs."/$defs/shadow_production_variants/$defs/routing_config"]])

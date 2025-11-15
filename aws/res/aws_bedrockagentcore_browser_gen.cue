@@ -23,7 +23,7 @@ package res
 	})
 
 	#network_configuration: close({
-		network_mode_config?: matchN(1, [_#defs."/$defs/network_configuration/$defs/network_mode_config", [..._#defs."/$defs/network_configuration/$defs/network_mode_config"]])
+		vpc_config?: matchN(1, [_#defs."/$defs/network_configuration/$defs/vpc_config", [..._#defs."/$defs/network_configuration/$defs/vpc_config"]])
 		network_mode!: string
 	})
 
@@ -49,7 +49,7 @@ package res
 		delete?: string
 	})
 
-	_#defs: "/$defs/network_configuration/$defs/network_mode_config": close({
+	_#defs: "/$defs/network_configuration/$defs/vpc_config": close({
 		security_groups!: [...string]
 		subnets!: [...string]
 	})

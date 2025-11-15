@@ -965,6 +965,8 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_networkfirewall_rule_group": res.#aws_networkfirewall_rule_group
 	_#res: "\(#awsPrefix)_networkfirewall_tls_inspection_configuration": res.#aws_networkfirewall_tls_inspection_configuration
 	_#res: "\(#awsPrefix)_networkfirewall_vpc_endpoint_association": res.#aws_networkfirewall_vpc_endpoint_association
+	_#res: "\(#awsPrefix)_networkflowmonitor_monitor": res.#aws_networkflowmonitor_monitor
+	_#res: "\(#awsPrefix)_networkflowmonitor_scope": res.#aws_networkflowmonitor_scope
 	_#res: "\(#awsPrefix)_networkmanager_attachment_accepter": res.#aws_networkmanager_attachment_accepter
 	_#res: "\(#awsPrefix)_networkmanager_connect_attachment": res.#aws_networkmanager_connect_attachment
 	_#res: "\(#awsPrefix)_networkmanager_connect_peer": res.#aws_networkmanager_connect_peer
@@ -994,6 +996,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_oam_link": res.#aws_oam_link
 	_#res: "\(#awsPrefix)_oam_sink": res.#aws_oam_sink
 	_#res: "\(#awsPrefix)_oam_sink_policy": res.#aws_oam_sink_policy
+	_#res: "\(#awsPrefix)_observabilityadmin_centralization_rule_for_organization": res.#aws_observabilityadmin_centralization_rule_for_organization
 	_#res: "\(#awsPrefix)_odb_cloud_autonomous_vm_cluster": res.#aws_odb_cloud_autonomous_vm_cluster
 	_#res: "\(#awsPrefix)_odb_cloud_exadata_infrastructure": res.#aws_odb_cloud_exadata_infrastructure
 	_#res: "\(#awsPrefix)_odb_cloud_vm_cluster": res.#aws_odb_cloud_vm_cluster
