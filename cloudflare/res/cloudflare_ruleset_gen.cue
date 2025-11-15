@@ -320,7 +320,17 @@ package res
 				increment?: number
 
 				// A map of headers to rewrite.
-				headers?: _
+				headers?: [string]: close({
+					// An expression that evaluates to a value for the header.
+					expression?: string
+
+					// The operation to perform on the header.
+					// Available values: "add", "set", "remove".
+					operation!: string
+
+					// A static value for the header.
+					value?: string
+				})
 
 				// Whether to enable Mirage.
 				mirage?: bool
@@ -973,7 +983,17 @@ package res
 				increment?: number
 
 				// A map of headers to rewrite.
-				headers?: _
+				headers?: [string]: close({
+					// An expression that evaluates to a value for the header.
+					expression?: string
+
+					// The operation to perform on the header.
+					// Available values: "add", "set", "remove".
+					operation!: string
+
+					// A static value for the header.
+					value?: string
+				})
 
 				// Whether to enable Mirage.
 				mirage?: bool

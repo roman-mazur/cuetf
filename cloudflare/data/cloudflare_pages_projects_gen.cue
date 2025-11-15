@@ -63,7 +63,13 @@ package data
 			environment?: string
 
 			// Environment variables used for builds and Pages Functions.
-			env_vars?: _
+			env_vars?: [string]: close({
+				// Available values: "plain_text", "secret_text".
+				type?: string
+
+				// Environment variable value.
+				value?: string
+			})
 
 			// Id of the deployment.
 			id?: string
@@ -237,7 +243,13 @@ package data
 			environment?: string
 
 			// Environment variables used for builds and Pages Functions.
-			env_vars?: _
+			env_vars?: [string]: close({
+				// Available values: "plain_text", "secret_text".
+				type?: string
+
+				// Environment variable value.
+				value?: string
+			})
 
 			// Id of the deployment.
 			id?: string

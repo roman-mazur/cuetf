@@ -5,6 +5,11 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_risk_behavior")
 	close({
 		account_id!: string
-		behaviors!:  _
+		behaviors!: [string]: close({
+			enabled!: bool
+
+			// Available values: "low", "medium", "high".
+			risk_level!: string
+		})
 	})
 }

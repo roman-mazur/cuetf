@@ -87,7 +87,13 @@ package res
 			environment?: string
 
 			// Environment variables used for builds and Pages Functions.
-			env_vars?: _
+			env_vars?: [string]: close({
+				// Available values: "plain_text", "secret_text".
+				type?: string
+
+				// Environment variable value.
+				value?: string
+			})
 
 			// Id of the deployment.
 			id?: string
@@ -222,17 +228,22 @@ package res
 			// Configs for preview deploys.
 			preview?: close({
 				// Constellation bindings used for Pages Functions.
-				ai_bindings?: _
+				ai_bindings?: [string]: close({
+					project_id?: string
+				})
 
 				// Whether to always use the latest compatibility date for Pages
 				// Functions.
 				always_use_latest_compatibility_date?: bool
 
 				// Analytics Engine bindings used for Pages Functions.
-				analytics_engine_datasets?: _
+				analytics_engine_datasets?: [string]: close({
+					// Name of the dataset.
+					dataset?: string
+				})
 
 				// Browser bindings used for Pages Functions.
-				browsers?: _
+				browsers?: [string]: close({})
 
 				// The major version of the build image to use for Pages
 				// Functions.
@@ -245,19 +256,36 @@ package res
 				compatibility_flags?: [...string]
 
 				// D1 databases used for Pages Functions.
-				d1_databases?: _
+				d1_databases?: [string]: close({
+					// UUID of the D1 database.
+					id?: string
+				})
 
 				// Durable Object namespaces used for Pages Functions.
-				durable_object_namespaces?: _
+				durable_object_namespaces?: [string]: close({
+					// ID of the Durable Object namespace.
+					namespace_id?: string
+				})
 
 				// Environment variables used for builds and Pages Functions.
-				env_vars?: _
+				env_vars?: [string]: close({
+					// Available values: "plain_text", "secret_text".
+					type!: string
+
+					// Environment variable value.
+					value!: string
+				})
 
 				// Hyperdrive bindings used for Pages Functions.
-				hyperdrive_bindings?: _
+				hyperdrive_bindings?: [string]: close({
+					id?: string
+				})
 
 				// KV namespaces used for Pages Functions.
-				kv_namespaces?: _
+				kv_namespaces?: [string]: close({
+					// ID of the KV namespace.
+					namespace_id?: string
+				})
 
 				// Whether to fail open when the deployment config cannot be
 				// applied.
@@ -270,7 +298,9 @@ package res
 				})
 
 				// mTLS bindings used for Pages Functions.
-				mtls_certificates?: _
+				mtls_certificates?: [string]: close({
+					certificate_id?: string
+				})
 
 				// Placement setting used for Pages Functions.
 				placement?: close({
@@ -279,35 +309,60 @@ package res
 				})
 
 				// Queue Producer bindings used for Pages Functions.
-				queue_producers?: _
+				queue_producers?: [string]: close({
+					// Name of the Queue.
+					name?: string
+				})
 
 				// R2 buckets used for Pages Functions.
-				r2_buckets?: _
+				r2_buckets?: [string]: close({
+					// Jurisdiction of the R2 bucket.
+					jurisdiction?: string
+
+					// Name of the R2 bucket.
+					name?: string
+				})
 
 				// Hash of the Wrangler configuration used for the deployment.
 				wrangler_config_hash?: string
 
 				// Services used for Pages Functions.
-				services?: _
+				services?: [string]: close({
+					// The entrypoint to bind to.
+					entrypoint?: string
+
+					// The Service environment.
+					environment?: string
+
+					// The Service name.
+					service?: string
+				})
 
 				// Vectorize bindings used for Pages Functions.
-				vectorize_bindings?: _
+				vectorize_bindings?: [string]: close({
+					index_name?: string
+				})
 			})
 
 			// Configs for production deploys.
 			production?: close({
 				// Constellation bindings used for Pages Functions.
-				ai_bindings?: _
+				ai_bindings?: [string]: close({
+					project_id?: string
+				})
 
 				// Whether to always use the latest compatibility date for Pages
 				// Functions.
 				always_use_latest_compatibility_date?: bool
 
 				// Analytics Engine bindings used for Pages Functions.
-				analytics_engine_datasets?: _
+				analytics_engine_datasets?: [string]: close({
+					// Name of the dataset.
+					dataset?: string
+				})
 
 				// Browser bindings used for Pages Functions.
-				browsers?: _
+				browsers?: [string]: close({})
 
 				// The major version of the build image to use for Pages
 				// Functions.
@@ -320,19 +375,36 @@ package res
 				compatibility_flags?: [...string]
 
 				// D1 databases used for Pages Functions.
-				d1_databases?: _
+				d1_databases?: [string]: close({
+					// UUID of the D1 database.
+					id?: string
+				})
 
 				// Durable Object namespaces used for Pages Functions.
-				durable_object_namespaces?: _
+				durable_object_namespaces?: [string]: close({
+					// ID of the Durable Object namespace.
+					namespace_id?: string
+				})
 
 				// Environment variables used for builds and Pages Functions.
-				env_vars?: _
+				env_vars?: [string]: close({
+					// Available values: "plain_text", "secret_text".
+					type!: string
+
+					// Environment variable value.
+					value!: string
+				})
 
 				// Hyperdrive bindings used for Pages Functions.
-				hyperdrive_bindings?: _
+				hyperdrive_bindings?: [string]: close({
+					id?: string
+				})
 
 				// KV namespaces used for Pages Functions.
-				kv_namespaces?: _
+				kv_namespaces?: [string]: close({
+					// ID of the KV namespace.
+					namespace_id?: string
+				})
 
 				// Whether to fail open when the deployment config cannot be
 				// applied.
@@ -345,7 +417,9 @@ package res
 				})
 
 				// mTLS bindings used for Pages Functions.
-				mtls_certificates?: _
+				mtls_certificates?: [string]: close({
+					certificate_id?: string
+				})
 
 				// Placement setting used for Pages Functions.
 				placement?: close({
@@ -354,19 +428,39 @@ package res
 				})
 
 				// Queue Producer bindings used for Pages Functions.
-				queue_producers?: _
+				queue_producers?: [string]: close({
+					// Name of the Queue.
+					name?: string
+				})
 
 				// R2 buckets used for Pages Functions.
-				r2_buckets?: _
+				r2_buckets?: [string]: close({
+					// Jurisdiction of the R2 bucket.
+					jurisdiction?: string
+
+					// Name of the R2 bucket.
+					name?: string
+				})
 
 				// Hash of the Wrangler configuration used for the deployment.
 				wrangler_config_hash?: string
 
 				// Services used for Pages Functions.
-				services?: _
+				services?: [string]: close({
+					// The entrypoint to bind to.
+					entrypoint?: string
+
+					// The Service environment.
+					environment?: string
+
+					// The Service name.
+					service?: string
+				})
 
 				// Vectorize bindings used for Pages Functions.
-				vectorize_bindings?: _
+				vectorize_bindings?: [string]: close({
+					index_name?: string
+				})
 			})
 		})
 
@@ -429,7 +523,13 @@ package res
 			environment?: string
 
 			// Environment variables used for builds and Pages Functions.
-			env_vars?: _
+			env_vars?: [string]: close({
+				// Available values: "plain_text", "secret_text".
+				type?: string
+
+				// Environment variable value.
+				value?: string
+			})
 
 			// Id of the deployment.
 			id?: string
