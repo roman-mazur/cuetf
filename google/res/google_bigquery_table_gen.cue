@@ -199,6 +199,7 @@ import "list"
 		// Let BigQuery try to autodetect the schema and format of the
 		// table.
 		autodetect!: bool
+		avro_options?: matchN(1, [_#defs."/$defs/external_data_configuration/$defs/avro_options", list.MaxItems(1) & [..._#defs."/$defs/external_data_configuration/$defs/avro_options"]])
 
 		// The compression type of the data source. Valid values are
 		// "NONE" or "GZIP".
@@ -210,6 +211,10 @@ import "list"
 		// "<project>.<location>.<connection_id>" or
 		// "projects/<project>/locations/<location>/connections/<connection_id>".
 		connection_id?: string
+
+		// The data types that could be used as a target type when
+		// converting decimal values.
+		decimal_target_types?: [...string]
 
 		// Specifies how source URIs are interpreted for constructing the
 		// file set to load. By default source URIs are expanded against
@@ -239,19 +244,18 @@ import "list"
 		// Metadata Cache Mode for the table. Set this to enable caching
 		// of metadata from external data source.
 		metadata_cache_mode?: string
-
-		// Object Metadata is used to create Object Tables. Object Tables
-		// contain a listing of objects (with their metadata) found at
-		// the sourceUris. If ObjectMetadata is set, sourceFormat should
-		// be omitted.
-		object_metadata?: string
-		avro_options?: matchN(1, [_#defs."/$defs/external_data_configuration/$defs/avro_options", list.MaxItems(1) & [..._#defs."/$defs/external_data_configuration/$defs/avro_options"]])
 		bigtable_options?: matchN(1, [_#defs."/$defs/external_data_configuration/$defs/bigtable_options", list.MaxItems(1) & [..._#defs."/$defs/external_data_configuration/$defs/bigtable_options"]])
 		csv_options?: matchN(1, [_#defs."/$defs/external_data_configuration/$defs/csv_options", list.MaxItems(1) & [..._#defs."/$defs/external_data_configuration/$defs/csv_options"]])
 		google_sheets_options?: matchN(1, [_#defs."/$defs/external_data_configuration/$defs/google_sheets_options", list.MaxItems(1) & [..._#defs."/$defs/external_data_configuration/$defs/google_sheets_options"]])
 		hive_partitioning_options?: matchN(1, [_#defs."/$defs/external_data_configuration/$defs/hive_partitioning_options", list.MaxItems(1) & [..._#defs."/$defs/external_data_configuration/$defs/hive_partitioning_options"]])
 		json_options?: matchN(1, [_#defs."/$defs/external_data_configuration/$defs/json_options", list.MaxItems(1) & [..._#defs."/$defs/external_data_configuration/$defs/json_options"]])
 		parquet_options?: matchN(1, [_#defs."/$defs/external_data_configuration/$defs/parquet_options", list.MaxItems(1) & [..._#defs."/$defs/external_data_configuration/$defs/parquet_options"]])
+
+		// Object Metadata is used to create Object Tables. Object Tables
+		// contain a listing of objects (with their metadata) found at
+		// the sourceUris. If ObjectMetadata is set, sourceFormat should
+		// be omitted.
+		object_metadata?: string
 
 		// When creating an external table, the user can provide a
 		// reference file with the table schema. This is enabled for the

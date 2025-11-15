@@ -238,6 +238,11 @@ import "list"
 		// neither is specified, this defaults to the "default" network.
 		network?: string
 
+		// A map of resource manager tags to add to all instances. Keys
+		// must be in the format tagKeys/{tag_key_id} and values in the
+		// format tagValues/{tag_value_id}.
+		resource_manager_tags?: [string]: string
+
 		// The service account to be used by the Node VMs. If not
 		// specified, the "default" service account is used.
 		service_account?: string
@@ -246,14 +251,14 @@ import "list"
 		// node VMs under the service_account specified. These can be
 		// either FQDNs, or scope aliases.
 		service_account_scopes?: [...string]
-		confidential_instance_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/confidential_instance_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/confidential_instance_config"]])
-		node_group_affinity?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/node_group_affinity", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/node_group_affinity"]])
-		reservation_affinity?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/reservation_affinity", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/reservation_affinity"]])
-		shielded_instance_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/shielded_instance_config"]])
 
 		// The name or self_link of the Google Compute Engine subnetwork
 		// the cluster will be part of. Conflicts with network.
 		subnetwork?: string
+		confidential_instance_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/confidential_instance_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/confidential_instance_config"]])
+		node_group_affinity?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/node_group_affinity", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/node_group_affinity"]])
+		reservation_affinity?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/reservation_affinity", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/reservation_affinity"]])
+		shielded_instance_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/shielded_instance_config"]])
 
 		// The list of instance tags applied to instances in the cluster.
 		// Tags are used to identify valid sources or targets for network

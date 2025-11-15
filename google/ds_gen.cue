@@ -29,6 +29,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_artifact_registry_package": data.#google_artifact_registry_package
 	_#ds: "\(#googlePrefix)_artifact_registry_packages": data.#google_artifact_registry_packages
 	_#ds: "\(#googlePrefix)_artifact_registry_python_package": data.#google_artifact_registry_python_package
+	_#ds: "\(#googlePrefix)_artifact_registry_python_packages": data.#google_artifact_registry_python_packages
 	_#ds: "\(#googlePrefix)_artifact_registry_repositories": data.#google_artifact_registry_repositories
 	_#ds: "\(#googlePrefix)_artifact_registry_repository": data.#google_artifact_registry_repository
 	_#ds: "\(#googlePrefix)_artifact_registry_repository_iam_policy": data.#google_artifact_registry_repository_iam_policy
@@ -77,6 +78,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_cloud_identity_group_memberships": data.#google_cloud_identity_group_memberships
 	_#ds: "\(#googlePrefix)_cloud_identity_group_transitive_memberships": data.#google_cloud_identity_group_transitive_memberships
 	_#ds: "\(#googlePrefix)_cloud_identity_groups": data.#google_cloud_identity_groups
+	_#ds: "\(#googlePrefix)_cloud_identity_policy": data.#google_cloud_identity_policy
 	_#ds: "\(#googlePrefix)_cloud_quotas_quota_info": data.#google_cloud_quotas_quota_info
 	_#ds: "\(#googlePrefix)_cloud_quotas_quota_infos": data.#google_cloud_quotas_quota_infos
 	_#ds: "\(#googlePrefix)_cloud_run_locations": data.#google_cloud_run_locations
@@ -148,7 +150,9 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_compute_region_ssl_certificate": data.#google_compute_region_ssl_certificate
 	_#ds: "\(#googlePrefix)_compute_region_ssl_policy": data.#google_compute_region_ssl_policy
 	_#ds: "\(#googlePrefix)_compute_regions": data.#google_compute_regions
+	_#ds: "\(#googlePrefix)_compute_reservation_block": data.#google_compute_reservation_block
 	_#ds: "\(#googlePrefix)_compute_reservation": data.#google_compute_reservation
+	_#ds: "\(#googlePrefix)_compute_reservation_sub_block": data.#google_compute_reservation_sub_block
 	_#ds: "\(#googlePrefix)_compute_resource_policy": data.#google_compute_resource_policy
 	_#ds: "\(#googlePrefix)_compute_router": data.#google_compute_router
 	_#ds: "\(#googlePrefix)_compute_router_nat": data.#google_compute_router_nat

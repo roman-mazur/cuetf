@@ -110,6 +110,7 @@ package data
 				quote?:                 string
 				skip_leading_rows?:     number
 			})]
+			decimal_target_types?: [...string]
 			file_set_spec_type?: string
 			google_sheets_options?: [...close({
 				range?:             string

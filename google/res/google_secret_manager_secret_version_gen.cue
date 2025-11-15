@@ -28,18 +28,23 @@ package res
 		// If set to 'true', the secret data is expected to be
 		// base64-encoded string and would be sent as is.
 		is_secret_data_base64?: bool
-		id?:                    string
 
 		// The resource name of the SecretVersion. Format:
 		// 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
 		name?: string
+		id?:   string
+
+		// The ID of the project in which the resource belongs. If it is
+		// not provided,
+		// the provider project is used
+		project?: string
 
 		// Secret Manager secret resource
-		secret!:   string
-		timeouts?: #timeouts
+		secret!: string
 
 		// The secret data. Must be no larger than 64KiB.
 		secret_data?: string
+		timeouts?:    #timeouts
 
 		// The secret data. Must be no larger than 64KiB. For more info
 		// see [updating write-only

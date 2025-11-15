@@ -9,6 +9,7 @@ import "list"
 		// Reports the resource name of the Active Directory policy being
 		// used. Inherited from storage pool.
 		active_directory?: string
+		backup_config?: matchN(1, [#backup_config, list.MaxItems(1) & [...#backup_config]])
 
 		// Capacity of the volume (in GiB).
 		capacity_gib!: string
@@ -52,6 +53,7 @@ import "list"
 		// export policy rules control kerberos security modes (krb5,
 		// krb5i, krb5p).
 		kerberos_enabled?: bool
+		id?:               string
 
 		// Reports the CMEK policy resurce name being used for volume
 		// encryption. Inherited from storage pool.
@@ -70,7 +72,6 @@ import "list"
 		// Optional. Flag indicating if the volume will be a large
 		// capacity volume or a regular volume.
 		large_capacity?: bool
-		id?:             string
 
 		// Flag indicating if the volume is NFS LDAP enabled or not.
 		// Inherited from storage pool.
@@ -108,8 +109,8 @@ import "list"
 		// '['SMB', 'NFSV3']' and '['SMB', 'NFSV4']'. Possible values:
 		// ["NFSV3", "NFSV4", "SMB", "ISCSI"]
 		protocols!: [...string]
-		backup_config?: matchN(1, [#backup_config, list.MaxItems(1) & [...#backup_config]])
 		block_devices?: matchN(1, [#block_devices, [...#block_devices]])
+		cache_parameters?: matchN(1, [#cache_parameters, list.MaxItems(1) & [...#cache_parameters]])
 		export_policy?: matchN(1, [#export_policy, list.MaxItems(1) & [...#export_policy]])
 		hybrid_replication_parameters?: matchN(1, [#hybrid_replication_parameters, list.MaxItems(1) & [...#hybrid_replication_parameters]])
 		restore_parameters?: matchN(1, [#restore_parameters, list.MaxItems(1) & [...#restore_parameters]])
@@ -242,6 +243,45 @@ import "list"
 		size_gib?: number
 	})
 
+	#cache_parameters: close({
+		// State of the cache volume indicating the peering status.
+		cache_state?: string
+
+		// Copy-paste-able commands to be used on user's ONTAP to accept
+		// peering requests.
+		command?: string
+
+		// Optional. Field indicating whether cache volume as global file
+		// lock enabled.
+		enable_global_file_lock?: bool
+
+		// Temporary passphrase generated to accept cluster peering
+		// command.
+		passphrase?: string
+
+		// Required. Name of the origin volume's ONTAP cluster.
+		peer_cluster_name?: string
+
+		// Required. List of IC LIF addresses of the origin volume's ONTAP
+		// cluster.
+		peer_ip_addresses?: [...string]
+
+		// Required. Name of the origin volume's SVM.
+		peer_svm_name?: string
+		cache_config?: matchN(1, [_#defs."/$defs/cache_parameters/$defs/cache_config", list.MaxItems(1) & [..._#defs."/$defs/cache_parameters/$defs/cache_config"]])
+
+		// Required. Name of the origin volume for the cache volume.
+		peer_volume_name?: string
+
+		// Optional. Expiration time for the peering command to be
+		// executed on user's ONTAP. A timestamp in RFC3339 UTC "Zulu"
+		// format. Examples: "2023-06-22T09:13:01.617Z".
+		peering_command_expiry_time?: string
+
+		// Detailed description of the current cache state.
+		state_details?: string
+	})
+
 	#export_policy: close({
 		rules!: matchN(1, [_#defs."/$defs/export_policy/$defs/rules", [_, ...] & [..._#defs."/$defs/export_policy/$defs/rules"]])
 	})
@@ -344,6 +384,12 @@ import "list"
 		update?: string
 	})
 
+	_#defs: "/$defs/cache_parameters/$defs/cache_config": close({
+		// Optional. Flag indicating whether a CIFS change notification is
+		// enabled for the FlexCache volume.
+		cifs_change_notify_enabled?: bool
+	})
+
 	_#defs: "/$defs/export_policy/$defs/rules": close({
 		// Defines the access type for clients matching the
 		// 'allowedClients' specification. Possible values: ["READ_ONLY",
@@ -355,13 +401,14 @@ import "list"
 		allowed_clients?: string
 
 		// An integer representing the anonymous user ID. Range is 0 to
-		// 4294967295. Required when 'squash_mode' is 'ROOT_SQUASH' or
-		// 'ALL_SQUASH'.
+		// 4294967295. Required when 'squash_mode' is 'ALL_SQUASH'.
 		anon_uid?: number
 
 		// If enabled, the root user (UID = 0) of the specified clients
 		// doesn't get mapped to nobody (UID = 65534). This is also known
 		// as no_root_squash.
+		// It's overwritten by the squash_mode parameter. Use either
+		// squash_mode or has_root_access.
 		has_root_access?: string
 
 		// If enabled (true) the rule defines a read only access for
@@ -412,8 +459,12 @@ import "list"
 		// SquashMode defines how remote user privileges are restricted
 		// when accessing an NFS export. It controls how the user
 		// identities (like root) are mapped to anonymous users to limit
-		// access and enforce security. Possible values:
-		// ["NO_ROOT_SQUASH", "ROOT_SQUASH", "ALL_SQUASH"]
+		// access and enforce security.
+		// It overwrites the has_root_access parameter. Use either
+		// squash_mode or has_root_access. For ALL_SQUASH, access_type
+		// needs to be set to READ_WRITE. Possible values:
+		// ["SQUASH_MODE_UNSPECIFIED", "NO_ROOT_SQUASH", "ROOT_SQUASH",
+		// "ALL_SQUASH"]
 		squash_mode?: string
 	})
 
