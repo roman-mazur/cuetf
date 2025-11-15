@@ -45,11 +45,11 @@ import "list"
 	})
 
 	#user: close({
-		country!:      string
+		country?:      string
 		email!:        string
 		first_name!:   string
 		last_name!:    string
-		phone_number!: string
+		phone_number?: string
 	})
 
 	_#defs: "/$defs/environment_properties/$defs/environment_info": close({

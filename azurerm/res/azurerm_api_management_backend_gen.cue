@@ -10,16 +10,24 @@ import "list"
 		description?:         string
 		id?:                  string
 		name!:                string
+		circuit_breaker_rule?: matchN(1, [#circuit_breaker_rule, list.MaxItems(1) & [...#circuit_breaker_rule]])
 		protocol!:            string
-		credentials?: matchN(1, [#credentials, list.MaxItems(1) & [...#credentials]])
 		resource_group_name!: string
 		resource_id?:         string
+		title?:               string
+		credentials?: matchN(1, [#credentials, list.MaxItems(1) & [...#credentials]])
 		proxy?: matchN(1, [#proxy, list.MaxItems(1) & [...#proxy]])
 		service_fabric_cluster?: matchN(1, [#service_fabric_cluster, list.MaxItems(1) & [...#service_fabric_cluster]])
-		title?:    string
 		timeouts?: #timeouts
+		url!:      string
 		tls?: matchN(1, [#tls, list.MaxItems(1) & [...#tls]])
-		url!: string
+	})
+
+	#circuit_breaker_rule: close({
+		failure_condition!: matchN(1, [_#defs."/$defs/circuit_breaker_rule/$defs/failure_condition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/circuit_breaker_rule/$defs/failure_condition"]])
+		accept_retry_after_enabled?: bool
+		name!:                       string
+		trip_duration!:              string
 	})
 
 	#credentials: close({
@@ -54,6 +62,19 @@ import "list"
 	#tls: close({
 		validate_certificate_chain?: bool
 		validate_certificate_name?:  bool
+	})
+
+	_#defs: "/$defs/circuit_breaker_rule/$defs/failure_condition": close({
+		status_code_range?: matchN(1, [_#defs."/$defs/circuit_breaker_rule/$defs/failure_condition/$defs/status_code_range", list.MaxItems(10) & [..._#defs."/$defs/circuit_breaker_rule/$defs/failure_condition/$defs/status_code_range"]])
+		count?: number
+		error_reasons?: [...string]
+		interval_duration!: string
+		percentage?:        number
+	})
+
+	_#defs: "/$defs/circuit_breaker_rule/$defs/failure_condition/$defs/status_code_range": close({
+		max!: number
+		min!: number
 	})
 
 	_#defs: "/$defs/credentials/$defs/authorization": close({

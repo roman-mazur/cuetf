@@ -15,14 +15,14 @@ import "list"
 	})
 
 	#log_rule: close({
-		filtering_tag!: matchN(1, [_#defs."/$defs/log_rule/$defs/filtering_tag", [_, ...] & [..._#defs."/$defs/log_rule/$defs/filtering_tag"]])
+		filtering_tag?: matchN(1, [_#defs."/$defs/log_rule/$defs/filtering_tag", [..._#defs."/$defs/log_rule/$defs/filtering_tag"]])
 		send_activity_logs_enabled?:               bool
 		send_azure_active_directory_logs_enabled?: bool
 		send_subscription_logs_enabled?:           bool
 	})
 
 	#metric_rule: close({
-		filtering_tag!: matchN(1, [_#defs."/$defs/metric_rule/$defs/filtering_tag", [_, ...] & [..._#defs."/$defs/metric_rule/$defs/filtering_tag"]])
+		filtering_tag?: matchN(1, [_#defs."/$defs/metric_rule/$defs/filtering_tag", [..._#defs."/$defs/metric_rule/$defs/filtering_tag"]])
 		sending_metrics_enabled?: bool
 	})
 
