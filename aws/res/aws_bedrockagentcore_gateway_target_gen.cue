@@ -69,6 +69,7 @@ package res
 
 	_#defs: "/$defs/target_configuration/$defs/mcp": close({
 		lambda?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda"]])
+		mcp_server?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/mcp_server", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/mcp_server"]])
 		open_api_schema?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/open_api_schema", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/open_api_schema"]])
 		smithy_model?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/smithy_model", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/smithy_model"]])
 	})
@@ -235,6 +236,10 @@ package res
 	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/s3": close({
 		bucket_owner_account_id?: string
 		uri?:                     string
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/mcp_server": close({
+		endpoint!: string
 	})
 
 	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/open_api_schema": close({

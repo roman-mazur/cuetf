@@ -20,6 +20,6 @@ package res
 	})
 
 	#delivery_destination_configuration: close({
-		destination_resource_arn!: string
+		destination_resource_arn?: string
 	})
 }
