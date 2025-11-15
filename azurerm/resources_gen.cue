@@ -64,6 +64,7 @@ import "github.com/roman-mazur/cuetf/azurerm/res"
 	_#res: "\(#azurermPrefix)_api_management_tag": res.#azurerm_api_management_tag
 	_#res: "\(#azurermPrefix)_api_management_user": res.#azurerm_api_management_user
 	_#res: "\(#azurermPrefix)_api_management_workspace_api_version_set": res.#azurerm_api_management_workspace_api_version_set
+	_#res: "\(#azurermPrefix)_api_management_workspace_certificate": res.#azurerm_api_management_workspace_certificate
 	_#res: "\(#azurermPrefix)_api_management_workspace": res.#azurerm_api_management_workspace
 	_#res: "\(#azurermPrefix)_api_management_workspace_policy_fragment": res.#azurerm_api_management_workspace_policy_fragment
 	_#res: "\(#azurermPrefix)_api_management_workspace_policy": res.#azurerm_api_management_workspace_policy
@@ -604,6 +605,7 @@ import "github.com/roman-mazur/cuetf/azurerm/res"
 	_#res: "\(#azurermPrefix)_mobile_network_sim_policy": res.#azurerm_mobile_network_sim_policy
 	_#res: "\(#azurermPrefix)_mobile_network_site": res.#azurerm_mobile_network_site
 	_#res: "\(#azurermPrefix)_mobile_network_slice": res.#azurerm_mobile_network_slice
+	_#res: "\(#azurermPrefix)_mongo_cluster_firewall_rule": res.#azurerm_mongo_cluster_firewall_rule
 	_#res: "\(#azurermPrefix)_mongo_cluster": res.#azurerm_mongo_cluster
 	_#res: "\(#azurermPrefix)_monitor_aad_diagnostic_setting": res.#azurerm_monitor_aad_diagnostic_setting
 	_#res: "\(#azurermPrefix)_monitor_action_group": res.#azurerm_monitor_action_group

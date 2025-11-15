@@ -33,11 +33,12 @@ package data
 			tenant_id?:    string
 			type?:         string
 		})]
-		location?:            string
-		name!:                string
-		resource_group_name!: string
-		timeouts?:            #timeouts
-		sku_name?:            string
+		location?:              string
+		name!:                  string
+		timeouts?:              #timeouts
+		public_network_access?: string
+		resource_group_name!:   string
+		sku_name?:              string
 		tags?: [string]: string
 	})
 

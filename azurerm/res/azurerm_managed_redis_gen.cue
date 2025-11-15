@@ -7,17 +7,18 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_managed_redis")
 	close({
 		high_availability_enabled?: bool
+		hostname?:                  string
+		id?:                        string
+		location!:                  string
+		name!:                      string
 		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])
-		hostname?: string
-		id?:       string
-		location!: string
+		public_network_access?: string
 		default_database?: matchN(1, [#default_database, list.MaxItems(1) & [...#default_database]])
-		name!: string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		resource_group_name!: string
 		sku_name!:            string
-		tags?: [string]: string
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		timeouts?: #timeouts
+		tags?: [string]: string
 	})
 
 	#customer_managed_key: close({

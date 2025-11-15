@@ -26,7 +26,9 @@ package data
 			upgrade_settings?: [...close({
 				drain_timeout_in_minutes?:      number
 				max_surge?:                     string
+				max_unavailable?:               string
 				node_soak_duration_in_minutes?: number
+				undrainable_node_behavior?:     string
 			})]
 			vm_size?:        string
 			vnet_subnet_id?: string
