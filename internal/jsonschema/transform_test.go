@@ -1,16 +1,24 @@
 package jsonschema
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"testing"
 
+	"cuelang.org/go/cue"
+	"cuelang.org/go/cue/cuecontext"
+	"cuelang.org/go/cue/load"
+	"rmazur.io/cuetf/internal/gen"
 	. "rmazur.io/cuetf/internal/testtools"
 )
+
+//go:generate bash ./testdata/sample/gen.sh
 
 func TestProviders(t *testing.T) {
 	for _, tc := range []struct {
@@ -91,9 +99,21 @@ func runGen(t *testing.T, provider string, names []string) string {
 	initTestModule(t, dst, provider)
 
 	filter := fmt.Sprintf("^(%s)$", strings.Join(names, "|"))
-	cmd := exec.Command("go", "run", "../../cmd/gen", "-v", "-f", filter,
-		filepath.Join("../..", provider, "internal/schema/schema.json"), dst)
-	RunCommand(t, cmd)
+	g := gen.NewGenerator(t.Logf)
+	err := g.Generate(&gen.Config{
+		SchemaPath:        filepath.Join("../..", provider, "internal/schema/schema.json"),
+		OutputPath:        dst,
+		Version:           "0.0.1",
+		GenerateDefs:      true,
+		GenerateMappings:  true,
+		GenerateInterface: true,
+		IncludeFilter:     regexp.MustCompile(filter),
+		LogTime:           true,
+		Verbose:           true,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
 	return dst
 }
 
@@ -129,4 +149,20 @@ func initTestModule(t *testing.T, workDir string, provider string) {
 	RunCommand(t, exec.Command("mkdir", providerDir))
 	RunCommand(t, exec.Command("cp", filepath.Join("../..", provider, "terraform_gen.cue"), providerDir))
 	RunCommand(t, exec.Command("cp", filepath.Join("../..", provider, "version_gen.cue"), providerDir))
+}
+
+func TestSample(t *testing.T) {
+	ctx := cuecontext.New()
+	instns := load.Instances([]string{"./testdata/sample"}, nil)
+	t.Log("instances count:", len(instns))
+	v := ctx.BuildInstance(instns[0])
+	if err := v.Err(); err != nil {
+		t.Fatal(err)
+	}
+	schema := v.LookupPath(cue.MakePath(cue.Str("jsonSchema")))
+	if schema.Err() != nil {
+		t.Error(schema.Err())
+	}
+	data, _ := json.Marshal(schema)
+	t.Log("size:", len(data))
 }
