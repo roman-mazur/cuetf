@@ -4,11 +4,13 @@ go 1.25
 
 tool cuelang.org/go/cmd/cue
 
-require github.com/hashicorp/hcl/v2 v2.24.0
+require (
+	cuelang.org/go v0.15.1
+	github.com/hashicorp/hcl/v2 v2.24.0
+)
 
 require (
 	cuelabs.dev/go/oci/ociregistry v0.0.0-20250722084951-074d06050084 // indirect
-	cuelang.org/go v0.15.0 // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/cockroachdb/apd/v3 v3.2.1 // indirect
