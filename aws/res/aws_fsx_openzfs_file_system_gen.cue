@@ -18,37 +18,43 @@ import "list"
 		endpoint_ip_address?:       string
 		endpoint_ip_address_range?: string
 		final_backup_tags?: [string]: string
-		id?:         string
-		kms_key_id?: string
+		disk_iops_configuration?: matchN(1, [#disk_iops_configuration, list.MaxItems(1) & [...#disk_iops_configuration]])
+		id?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:     string
+		kms_key_id?: string
 		network_interface_ids?: [...string]
-		owner_id?: string
-		disk_iops_configuration?: matchN(1, [#disk_iops_configuration, list.MaxItems(1) & [...#disk_iops_configuration]])
+		owner_id?:            string
 		preferred_subnet_id?: string
 		root_volume_id?:      string
 		route_table_ids?: [...string]
 		security_group_ids?: [...string]
 		skip_final_backup?: bool
 		storage_capacity?:  number
-		root_volume_configuration?: matchN(1, [#root_volume_configuration, list.MaxItems(1) & [...#root_volume_configuration]])
-		storage_type?: string
+		storage_type?:      string
 		subnet_ids!: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		throughput_capacity!:           number
-		vpc_id?:                        string
-		weekly_maintenance_start_time?: string
+		throughput_capacity!: number
+		vpc_id?:              string
+		read_cache_configuration?: matchN(1, [#read_cache_configuration, list.MaxItems(1) & [...#read_cache_configuration]])
+		root_volume_configuration?: matchN(1, [#root_volume_configuration, list.MaxItems(1) & [...#root_volume_configuration]])
 		timeouts?:                      #timeouts
+		weekly_maintenance_start_time?: string
 	})
 
 	#disk_iops_configuration: close({
 		iops?: number
 		mode?: string
+	})
+
+	#read_cache_configuration: close({
+		size?:        number
+		sizing_mode?: string
 	})
 
 	#root_volume_configuration: close({

@@ -194,6 +194,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_bedrockagentcore_oauth2_credential_provider": res.#aws_bedrockagentcore_oauth2_credential_provider
 	_#res: "\(#awsPrefix)_bedrockagentcore_token_vault_cmk": res.#aws_bedrockagentcore_token_vault_cmk
 	_#res: "\(#awsPrefix)_bedrockagentcore_workload_identity": res.#aws_bedrockagentcore_workload_identity
+	_#res: "\(#awsPrefix)_billing_view": res.#aws_billing_view
 	_#res: "\(#awsPrefix)_budgets_budget_action": res.#aws_budgets_budget_action
 	_#res: "\(#awsPrefix)_budgets_budget": res.#aws_budgets_budget
 	_#res: "\(#awsPrefix)_ce_anomaly_monitor": res.#aws_ce_anomaly_monitor
@@ -1495,6 +1496,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_vpc_security_group_vpc_association": res.#aws_vpc_security_group_vpc_association
 	_#res: "\(#awsPrefix)_vpclattice_access_log_subscription": res.#aws_vpclattice_access_log_subscription
 	_#res: "\(#awsPrefix)_vpclattice_auth_policy": res.#aws_vpclattice_auth_policy
+	_#res: "\(#awsPrefix)_vpclattice_domain_verification": res.#aws_vpclattice_domain_verification
 	_#res: "\(#awsPrefix)_vpclattice_listener": res.#aws_vpclattice_listener
 	_#res: "\(#awsPrefix)_vpclattice_listener_rule": res.#aws_vpclattice_listener_rule
 	_#res: "\(#awsPrefix)_vpclattice_resource_configuration": res.#aws_vpclattice_resource_configuration

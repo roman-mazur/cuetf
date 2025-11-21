@@ -10,9 +10,10 @@ import "list"
 		bootstrap_brokers?:                   string
 		bootstrap_brokers_public_sasl_iam?:   string
 		bootstrap_brokers_public_sasl_scram?: string
-		bootstrap_brokers_public_tls?:        string
-		bootstrap_brokers_sasl_iam?:          string
-		bootstrap_brokers_sasl_scram?:        string
+		broker_node_group_info!: matchN(1, [#broker_node_group_info, list.MaxItems(1) & [_, ...] & [...#broker_node_group_info]])
+		bootstrap_brokers_public_tls?: string
+		bootstrap_brokers_sasl_iam?:   string
+		bootstrap_brokers_sasl_scram?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -27,21 +28,21 @@ import "list"
 		cluster_uuid?:                                  string
 		current_version?:                               string
 		enhanced_monitoring?:                           string
-		broker_node_group_info!: matchN(1, [#broker_node_group_info, list.MaxItems(1) & [_, ...] & [...#broker_node_group_info]])
 		client_authentication?: matchN(1, [#client_authentication, list.MaxItems(1) & [...#client_authentication]])
-		id?: string
-		configuration_info?: matchN(1, [#configuration_info, list.MaxItems(1) & [...#configuration_info]])
+		id?:                     string
 		kafka_version!:          string
 		number_of_broker_nodes!: number
 		storage_mode?:           string
-		tags?: [string]:     string
-		tags_all?: [string]: string
+		configuration_info?: matchN(1, [#configuration_info, list.MaxItems(1) & [...#configuration_info]])
+		tags?: [string]: string
 		encryption_info?: matchN(1, [#encryption_info, list.MaxItems(1) & [...#encryption_info]])
+		tags_all?: [string]: string
 		logging_info?: matchN(1, [#logging_info, list.MaxItems(1) & [...#logging_info]])
 		open_monitoring?: matchN(1, [#open_monitoring, list.MaxItems(1) & [...#open_monitoring]])
 		zookeeper_connect_string?:     string
 		zookeeper_connect_string_tls?: string
-		timeouts?:                     #timeouts
+		rebalancing?: matchN(1, [#rebalancing, list.MaxItems(1) & [...#rebalancing]])
+		timeouts?: #timeouts
 	})
 
 	#broker_node_group_info: close({
@@ -75,6 +76,10 @@ import "list"
 
 	#open_monitoring: close({
 		prometheus!: matchN(1, [_#defs."/$defs/open_monitoring/$defs/prometheus", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/open_monitoring/$defs/prometheus"]])
+	})
+
+	#rebalancing: close({
+		status!: string
 	})
 
 	#timeouts: close({

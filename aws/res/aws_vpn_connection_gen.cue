@@ -53,18 +53,17 @@ import "list"
 		tunnel1_phase1_lifetime_seconds?: number
 		tunnel1_phase2_dh_group_numbers?: [...number]
 		tunnel1_phase2_encryption_algorithms?: [...string]
-		tunnel1_log_options?: matchN(1, [#tunnel1_log_options, list.MaxItems(1) & [...#tunnel1_log_options]])
 		tunnel1_phase2_integrity_algorithms?: [...string]
-		tunnel2_log_options?: matchN(1, [#tunnel2_log_options, list.MaxItems(1) & [...#tunnel2_log_options]])
-		tunnel1_phase2_lifetime_seconds?:         number
-		tunnel1_preshared_key?:                   string
-		tunnel1_rekey_fuzz_percentage?:           number
-		tunnel1_rekey_margin_time_seconds?:       number
-		tunnel1_replay_window_size?:              number
-		tunnel1_startup_action?:                  string
-		tunnel1_vgw_inside_address?:              string
-		tunnel2_address?:                         string
-		tunnel2_bgp_asn?:                         string
+		tunnel1_phase2_lifetime_seconds?:   number
+		tunnel1_preshared_key?:             string
+		tunnel1_rekey_fuzz_percentage?:     number
+		tunnel1_rekey_margin_time_seconds?: number
+		tunnel1_replay_window_size?:        number
+		tunnel1_startup_action?:            string
+		tunnel1_vgw_inside_address?:        string
+		tunnel2_address?:                   string
+		tunnel2_bgp_asn?:                   string
+		tunnel1_log_options?: matchN(1, [#tunnel1_log_options, list.MaxItems(1) & [...#tunnel1_log_options]])
 		tunnel2_bgp_holdtime?:                    number
 		tunnel2_cgw_inside_address?:              string
 		tunnel2_dpd_timeout_action?:              string
@@ -87,8 +86,10 @@ import "list"
 		tunnel2_replay_window_size?:        number
 		tunnel2_startup_action?:            string
 		tunnel2_vgw_inside_address?:        string
+		tunnel_bandwidth?:                  string
 		tunnel_inside_ip_version?:          string
-		type!:                              string
+		tunnel2_log_options?: matchN(1, [#tunnel2_log_options, list.MaxItems(1) & [...#tunnel2_log_options]])
+		type!: string
 		vgw_telemetry?: [...close({
 			accepted_route_count?: number
 			certificate_arn?:      string

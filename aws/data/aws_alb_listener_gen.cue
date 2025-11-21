@@ -46,6 +46,15 @@ package data
 					weight?: number
 				})]
 			})]
+			jwt_validation?: [...close({
+				additional_claim?: [...close({
+					format?: string
+					name?:   string
+					values?: [...string]
+				})]
+				issuer?:        string
+				jwks_endpoint?: string
+			})]
 			order?: number
 			redirect?: [...close({
 				host?:        string
