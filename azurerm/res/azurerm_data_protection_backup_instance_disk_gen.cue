@@ -10,6 +10,7 @@ package res
 		id?:                           string
 		location!:                     string
 		name!:                         string
+		protection_state?:             string
 		snapshot_resource_group_name!: string
 		snapshot_subscription_id?:     string
 		vault_id!:                     string

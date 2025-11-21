@@ -127,27 +127,34 @@ import "list"
 	})
 
 	#template: close({
+		// The number of seconds to wait before scaling down the number of
+		// instances again.
+		cooldown_period_in_seconds?: number
+
 		// The maximum number of replicas for this container.
 		max_replicas?: number
 
 		// The minimum number of replicas for this container.
 		min_replicas?: number
+		azure_queue_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/azure_queue_scale_rule", [..._#defs."/$defs/template/$defs/azure_queue_scale_rule"]])
+
+		// The interval in seconds used for polling KEDA.
+		polling_interval_in_seconds?: number
+		container!: matchN(1, [_#defs."/$defs/template/$defs/container", [_, ...] & [..._#defs."/$defs/template/$defs/container"]])
+		custom_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/custom_scale_rule", [..._#defs."/$defs/template/$defs/custom_scale_rule"]])
+		http_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/http_scale_rule", [..._#defs."/$defs/template/$defs/http_scale_rule"]])
+		init_container?: matchN(1, [_#defs."/$defs/template/$defs/init_container", [..._#defs."/$defs/template/$defs/init_container"]])
 
 		// The suffix for the revision. This value must be unique for the
 		// lifetime of the Resource. If omitted the service will use a
 		// hash function to create one.
 		revision_suffix?: string
+		tcp_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/tcp_scale_rule", [..._#defs."/$defs/template/$defs/tcp_scale_rule"]])
+		volume?: matchN(1, [_#defs."/$defs/template/$defs/volume", [..._#defs."/$defs/template/$defs/volume"]])
 
 		// The time in seconds after the container is sent the termination
 		// signal before the process if forcibly killed.
 		termination_grace_period_seconds?: number
-		azure_queue_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/azure_queue_scale_rule", [..._#defs."/$defs/template/$defs/azure_queue_scale_rule"]])
-		container!: matchN(1, [_#defs."/$defs/template/$defs/container", [_, ...] & [..._#defs."/$defs/template/$defs/container"]])
-		custom_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/custom_scale_rule", [..._#defs."/$defs/template/$defs/custom_scale_rule"]])
-		http_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/http_scale_rule", [..._#defs."/$defs/template/$defs/http_scale_rule"]])
-		init_container?: matchN(1, [_#defs."/$defs/template/$defs/init_container", [..._#defs."/$defs/template/$defs/init_container"]])
-		tcp_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/tcp_scale_rule", [..._#defs."/$defs/template/$defs/tcp_scale_rule"]])
-		volume?: matchN(1, [_#defs."/$defs/template/$defs/volume", [..._#defs."/$defs/template/$defs/volume"]])
 	})
 
 	#timeouts: close({

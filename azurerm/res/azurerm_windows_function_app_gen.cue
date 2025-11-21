@@ -772,7 +772,7 @@ import "list"
 
 	_#defs: "/$defs/site_config/$defs/application_stack": close({
 		// The version of .Net. Possible values are `v3.0`, `v4.0`,
-		// `v6.0`, `v7.0`, `v8.0` and `v9.0`
+		// `v6.0`, `v7.0`, `v8.0`, `v9.0` and `v10.0`
 		dotnet_version?: string
 
 		// The version of Java to use. Possible values are `1.8`, `11`,

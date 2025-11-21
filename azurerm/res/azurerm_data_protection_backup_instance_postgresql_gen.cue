@@ -11,6 +11,7 @@ package res
 		id?:                                      string
 		location!:                                string
 		name!:                                    string
+		protection_state?:                        string
 		vault_id!:                                string
 	})
 

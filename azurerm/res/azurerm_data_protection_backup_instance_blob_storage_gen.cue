@@ -9,6 +9,7 @@ package res
 		id?:               string
 		location!:         string
 		name!:             string
+		protection_state?: string
 		storage_account_container_names?: [...string]
 		storage_account_id!: string
 		vault_id!:           string
