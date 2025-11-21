@@ -52,12 +52,15 @@ package res
 				// "single-page-application".
 				not_found_handling?: string
 
-				// Contains a list path rules to control routing to either the
+				// When a boolean true, requests will always invoke the Worker
+				// script. Otherwise, attempt to serve an asset matching the
+				// request, falling back to the Worker script. When a list of
+				// strings, contains path rules to control routing to either the
 				// Worker or assets. Glob (*) and negative (!) rules are
 				// supported. Rules must start with either '/' or '!/'. At least
 				// one non-negative rule must be provided, and negative rules
 				// have higher precedence than non-negative rules.
-				run_worker_first?: [...string]
+				run_worker_first?: _
 			})
 		})
 
@@ -489,8 +492,11 @@ package res
 		// included as modules named `_headers` and `_redirects` with
 		// content type `text/plain`.
 		modules?: matchN(1, [close({
+			// The base64-encoded module content.
+			content_base64?: string
+
 			// The file path of the module content.
-			content_file!: string
+			content_file?: string
 
 			// The SHA-256 hash of the module content.
 			content_sha256?: string
@@ -501,8 +507,11 @@ package res
 			// The name of the module.
 			name!: string
 		}), [...close({
+			// The base64-encoded module content.
+			content_base64?: string
+
 			// The file path of the module content.
-			content_file!: string
+			content_file?: string
 
 			// The SHA-256 hash of the module content.
 			content_sha256?: string

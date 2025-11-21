@@ -25,7 +25,7 @@ package data
 		})
 
 		// API UUID.
-		integration_id?: string
+		integration_id!: string
 
 		// The interval between each posture check with the third-party
 		// API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g.

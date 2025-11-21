@@ -13,7 +13,7 @@ package data
 		associated_hostnames?: [...string]
 
 		// UUID.
-		certificate_id?: string
+		certificate_id!: string
 
 		// The MD5 fingerprint of the certificate.
 		fingerprint?: string

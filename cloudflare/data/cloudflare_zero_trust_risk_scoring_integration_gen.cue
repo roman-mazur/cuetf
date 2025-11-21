@@ -25,7 +25,7 @@ package data
 		// with a secondary asset and recalled using that ID.
 		reference_id?:   string
 		id?:             string
-		integration_id?: string
+		integration_id!: string
 
 		// The base URL for the tenant. E.g. "https://tenant.okta.com".
 		tenant_url?: string

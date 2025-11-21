@@ -58,6 +58,9 @@ package data
 		// Flag for DNSSEC record.
 		flags?: number
 
+		// Identifier.
+		id?: string
+
 		// Code for key tag.
 		key_tag?: number
 

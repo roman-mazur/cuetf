@@ -22,9 +22,6 @@ package data
 		// Defines the message creation time.
 		created?: string
 
-		// Message ID.
-		id?: number
-
 		// Whether the message is a follow-on request.
 		is_follow_on_request?: bool
 

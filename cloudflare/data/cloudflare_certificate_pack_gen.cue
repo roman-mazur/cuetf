@@ -8,6 +8,9 @@ package data
 		certificate_pack_id!: string
 
 		// Identifier.
+		id?: string
+
+		// Identifier.
 		zone_id!: string
 	})
 }

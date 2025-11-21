@@ -123,7 +123,7 @@ package data
 		producers_total_count?: number
 
 		// A Resource identifier.
-		queue_id?:   string
+		queue_id!:   string
 		queue_name?: string
 	})
 }

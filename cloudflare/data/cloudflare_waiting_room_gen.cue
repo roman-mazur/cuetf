@@ -409,7 +409,7 @@ package data
 		// Available values: "off", "invisible",
 		// "visible_non_interactive", "visible_managed".
 		turnstile_mode?:  string
-		waiting_room_id?: string
+		waiting_room_id!: string
 
 		// Identifier.
 		zone_id!: string

@@ -40,81 +40,41 @@ package res
 		// processing.
 		not_before?: string
 
-		// List of access policies assigned to the token.
+		// Set of access policies assigned to the token.
 		policies!: matchN(1, [close({
 			// A set of permission groups that are specified to the policy.
 			permission_groups!: matchN(1, [close({
-				// Attributes associated to the permission group.
-				meta?: close({
-					key?:   string
-					value?: string
-				})
-
 				// Identifier of the permission group.
 				id!: string
-
-				// Name of the permission group.
-				name?: string
 			}), [...close({
-				// Attributes associated to the permission group.
-				meta?: close({
-					key?:   string
-					value?: string
-				})
-
 				// Identifier of the permission group.
 				id!: string
-
-				// Name of the permission group.
-				name?: string
 			})]])
 
 			// Allow or deny operations against the resources.
 			// Available values: "allow", "deny".
 			effect!: string
 
-			// Policy identifier.
-			id?: string
-
-			// A list of resource names that the policy applies to.
-			resources!: [string]: string
+			// A json object representing the resources that are specified to
+			// the policy.
+			resources!: string
 		}), [...close({
 			// A set of permission groups that are specified to the policy.
 			permission_groups!: matchN(1, [close({
-				// Attributes associated to the permission group.
-				meta?: close({
-					key?:   string
-					value?: string
-				})
-
 				// Identifier of the permission group.
 				id!: string
-
-				// Name of the permission group.
-				name?: string
 			}), [...close({
-				// Attributes associated to the permission group.
-				meta?: close({
-					key?:   string
-					value?: string
-				})
-
 				// Identifier of the permission group.
 				id!: string
-
-				// Name of the permission group.
-				name?: string
 			})]])
 
 			// Allow or deny operations against the resources.
 			// Available values: "allow", "deny".
 			effect!: string
 
-			// Policy identifier.
-			id?: string
-
-			// A list of resource names that the policy applies to.
-			resources!: [string]: string
+			// A json object representing the resources that are specified to
+			// the policy.
+			resources!: string
 		})]])
 
 		// Status of the token.

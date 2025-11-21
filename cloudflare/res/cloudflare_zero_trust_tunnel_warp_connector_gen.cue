@@ -10,13 +10,6 @@ package res
 		// Cloudflare account ID
 		account_tag?: string
 
-		// Indicates if this is a locally or remotely configured tunnel.
-		// If `local`, manage the tunnel using a YAML file on the origin
-		// machine. If `cloudflare`, manage the tunnel on the Zero Trust
-		// dashboard.
-		// Available values: "local", "cloudflare".
-		config_src?: string
-
 		// Timestamp of when the tunnel established at least one
 		// connection to Cloudflare's edge. If `null`, the tunnel is
 		// inactive.

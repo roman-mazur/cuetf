@@ -15,7 +15,7 @@ package data
 		})
 
 		// App identifier.
-		app_id!: string
+		app_id?: string
 
 		// Enables Argo Smart Routing for this application.
 		// Notes: Only available for TCP applications with traffic_type
@@ -58,20 +58,6 @@ package data
 		// addresses for load balancing.
 		origin_direct?: [...string]
 
-		// The name and type of DNS record for the Spectrum application.
-		origin_dns?: close({
-			// The name of the DNS record associated with the origin.
-			name?: string
-
-			// The TTL of our resolution of your DNS record in seconds.
-			ttl?: number
-
-			// The type of DNS record associated with the origin. "" is used
-			// to specify a combination of A/AAAA records.
-			// Available values: "", "A", "AAAA", "SRV".
-			type?: string
-		})
-
 		// The destination port at the origin. Only specified in
 		// conjunction with origin_dns. May use an integer to specify a
 		// single origin port, for example `1000`, or a string to specify
@@ -86,6 +72,20 @@ package data
 		// for example `"tcp/1000-2000"`.
 		protocol?: string
 
+		// The name and type of DNS record for the Spectrum application.
+		origin_dns?: close({
+			// The name of the DNS record associated with the origin.
+			name?: string
+
+			// The TTL of our resolution of your DNS record in seconds.
+			ttl?: number
+
+			// The type of DNS record associated with the origin. "" is used
+			// to specify a combination of A/AAAA records.
+			// Available values: "", "A", "AAAA", "SRV".
+			type?: string
+		})
+
 		// Enables Proxy Protocol to the origin. Refer to [Enable Proxy
 		// protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/)
 		// for implementation details on PROXY Protocol V1, PROXY
@@ -96,6 +96,16 @@ package data
 		// The type of TLS termination associated with the application.
 		// Available values: "off", "flexible", "full", "strict".
 		tls?: string
+		filter?: close({
+			// Sets the direction by which results are ordered.
+			// Available values: "asc", "desc".
+			direction?: string
+
+			// Application field by which results are ordered.
+			// Available values: "protocol", "app_id", "created_on",
+			// "modified_on", "dns".
+			order?: string
+		})
 
 		// Determines how data travels from the edge to your origin. When
 		// set to "direct", Spectrum will send traffic directly to your

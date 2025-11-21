@@ -6,6 +6,7 @@ package data
 	close({
 		// Account identifier tag.
 		account_id!: string
+		id?:         string
 		variant?: close({
 			id?: string
 

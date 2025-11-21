@@ -50,7 +50,7 @@ package data
 		// Available values: "weekly", "monthly", "quarterly", "yearly".
 		frequency?: string
 
-		// Subscription identifier tag.
+		// Identifier
 		id?: string
 
 		// The price of the subscription that will be billed, in US

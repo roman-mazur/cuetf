@@ -13,6 +13,9 @@ package data
 		// Creation timestamp.
 		creation_date?: string
 
+		// Name of the bucket.
+		id?: string
+
 		// Jurisdiction where objects in this bucket are guaranteed to be
 		// stored.
 		// Available values: "default", "eu", "fedramp".

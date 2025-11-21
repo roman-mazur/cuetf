@@ -6,14 +6,6 @@ package data
 	close({
 		// Identifier.
 		account_id!: string
-		created_at?: string
-
-		// Indicates if this is a locally or remotely configured tunnel.
-		// If `local`, manage the tunnel using a YAML file on the origin
-		// machine. If `cloudflare`, manage the tunnel's configuration on
-		// the Zero Trust dashboard.
-		// Available values: "local", "cloudflare".
-		source?: string
 
 		// The tunnel configuration and ingress rules.
 		config?: close({
@@ -78,6 +70,9 @@ package data
 					// Timeout after which an idle keepalive connection can be
 					// discarded.
 					keep_alive_timeout?: number
+
+					// Auto configure the Hostname on the origin server certificate.
+					match_sn_ito_host?: bool
 
 					// Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback
 					// if your local network has misconfigured one of the protocols.
@@ -166,6 +161,9 @@ package data
 					// discarded.
 					keep_alive_timeout?: number
 
+					// Auto configure the Hostname on the origin server certificate.
+					match_sn_ito_host?: bool
+
 					// Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback
 					// if your local network has misconfigured one of the protocols.
 					no_happy_eyeballs?: bool
@@ -242,6 +240,9 @@ package data
 				// discarded.
 				keep_alive_timeout?: number
 
+				// Auto configure the Hostname on the origin server certificate.
+				match_sn_ito_host?: bool
+
 				// Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback
 				// if your local network has misconfigured one of the protocols.
 				no_happy_eyeballs?: bool
@@ -271,15 +272,18 @@ package data
 			})
 		})
 
+		// Indicates if this is a locally or remotely configured tunnel.
+		// If `local`, manage the tunnel using a YAML file on the origin
+		// machine. If `cloudflare`, manage the tunnel's configuration on
+		// the Zero Trust dashboard.
+		// Available values: "local", "cloudflare".
+		source?:     string
+		created_at?: string
+
 		// UUID of the tunnel.
 		tunnel_id!: string
 
 		// The version of the Tunnel Configuration.
 		version?: number
-
-		// Enable private network access from WARP users to private
-		// network routes. This is enabled if the tunnel has an assigned
-		// route.
-		warp_routing_enabled?: bool
 	})
 }

@@ -40,6 +40,6 @@ package data
 		url?: string
 
 		// The unique identifier of a webhook
-		webhook_id?: string
+		webhook_id!: string
 	})
 }

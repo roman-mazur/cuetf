@@ -16,7 +16,7 @@ package data
 		id?: string
 
 		// Specify the identifier of the hostname.
-		identifier?: string
+		identifier!: string
 
 		// Specify the hostname that points to the target gateway via
 		// CNAME.

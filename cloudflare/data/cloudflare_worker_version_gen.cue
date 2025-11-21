@@ -524,7 +524,7 @@ package data
 
 		// Identifier for the version, which can be ID or the literal
 		// "latest" to operate on the most recently created version.
-		version_id?: string
+		version_id!: string
 
 		// Identifier for the Worker, which can be ID or name.
 		worker_id!: string

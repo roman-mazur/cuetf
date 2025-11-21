@@ -7,8 +7,7 @@ package data
 		// Whether the setting is editable.
 		editable?: bool
 
-		// The identifier of the caching setting.
-		// Available values: "tc_regional".
+		// Identifier.
 		id?: string
 
 		// Last time this setting was modified.

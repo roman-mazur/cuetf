@@ -22,7 +22,7 @@ package data
 		kind?: string
 
 		// The unique ID of the list.
-		list_id?: string
+		list_id!: string
 
 		// The RFC 3339 timestamp of when the list was last modified.
 		modified_on?: string

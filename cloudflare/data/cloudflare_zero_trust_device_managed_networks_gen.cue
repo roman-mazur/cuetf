@@ -27,7 +27,7 @@ package data
 		name?: string
 
 		// API UUID.
-		network_id?: string
+		network_id!: string
 
 		// The type of device managed network.
 		// Available values: "tls".

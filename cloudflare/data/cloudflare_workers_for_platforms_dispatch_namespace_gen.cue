@@ -14,7 +14,7 @@ package data
 		created_on?: string
 
 		// Name of the Workers for Platforms dispatch namespace.
-		dispatch_namespace?: string
+		dispatch_namespace!: string
 
 		// Name of the Workers for Platforms dispatch namespace.
 		id?: string

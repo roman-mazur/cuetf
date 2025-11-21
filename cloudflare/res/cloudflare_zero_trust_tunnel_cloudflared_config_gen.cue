@@ -75,6 +75,9 @@ package res
 					// discarded.
 					keep_alive_timeout?: number
 
+					// Auto configure the Hostname on the origin server certificate.
+					match_sn_ito_host?: bool
+
 					// Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback
 					// if your local network has misconfigured one of the protocols.
 					no_happy_eyeballs?: bool
@@ -162,6 +165,9 @@ package res
 					// discarded.
 					keep_alive_timeout?: number
 
+					// Auto configure the Hostname on the origin server certificate.
+					match_sn_ito_host?: bool
+
 					// Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback
 					// if your local network has misconfigured one of the protocols.
 					no_happy_eyeballs?: bool
@@ -238,6 +244,9 @@ package res
 				// discarded.
 				keep_alive_timeout?: number
 
+				// Auto configure the Hostname on the origin server certificate.
+				match_sn_ito_host?: bool
+
 				// Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback
 				// if your local network has misconfigured one of the protocols.
 				no_happy_eyeballs?: bool
@@ -279,10 +288,5 @@ package res
 
 		// The version of the Tunnel Configuration.
 		version?: number
-
-		// Enable private network access from WARP users to private
-		// network routes. This is enabled if the tunnel has an assigned
-		// route.
-		warp_routing_enabled?: bool
 	})
 }

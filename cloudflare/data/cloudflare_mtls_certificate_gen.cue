@@ -23,7 +23,7 @@ package data
 		issuer?: string
 
 		// Identifier.
-		mtls_certificate_id?: string
+		mtls_certificate_id!: string
 
 		// Optional unique name for the certificate. Only used for human
 		// readability.

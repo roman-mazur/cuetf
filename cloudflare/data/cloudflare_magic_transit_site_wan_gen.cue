@@ -40,6 +40,6 @@ package data
 		vlan_tag?: number
 
 		// Identifier
-		wan_id?: string
+		wan_id!: string
 	})
 }

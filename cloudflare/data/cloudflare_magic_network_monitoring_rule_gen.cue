@@ -44,7 +44,7 @@ package data
 		prefixes?: [...string]
 
 		// The id of the rule. Must be unique.
-		rule_id?: string
+		rule_id!: string
 
 		// MNM rule type.
 		// Available values: "threshold", "zscore", "advanced_ddos".

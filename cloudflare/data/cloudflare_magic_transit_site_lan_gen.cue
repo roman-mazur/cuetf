@@ -76,7 +76,7 @@ package data
 		})
 
 		// Identifier
-		lan_id?: string
+		lan_id!: string
 		name?:   string
 
 		// Identifier

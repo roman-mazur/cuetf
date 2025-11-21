@@ -4,6 +4,9 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_api_shield_schema_validation_settings")
 	close({
+		// Identifier.
+		id?: string
+
 		// The default mitigation action used when there is no mitigation
 		// action defined on the operation
 		//

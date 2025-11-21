@@ -6,6 +6,12 @@ package data
 	close({
 		// Identifier
 		account_id!: string
+
+		// Identifier
+		gre_tunnel_id!: string
+
+		// Identifier
+		id?: string
 		gre_tunnel?: close({
 			// True if automatic stateful return routing should be enabled for
 			// a tunnel, false otherwise.
@@ -143,8 +149,5 @@ package data
 			// Time To Live (TTL) in number of hops of the GRE tunnel.
 			ttl?: number
 		})
-
-		// Identifier
-		gre_tunnel_id!: string
 	})
 }

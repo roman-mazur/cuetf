@@ -7,7 +7,7 @@ package data
 		// Specifies if the setting is editable.
 		editable?: bool
 
-		// Specifies the identifier of the Argo Smart Routing setting.
+		// Specifies the zone associated with the API call.
 		id?: string
 
 		// Specifies the time when the setting was last modified.

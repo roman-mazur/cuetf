@@ -64,7 +64,7 @@ package data
 		failure_reason?: string
 
 		// Identifier
-		healthcheck_id?: string
+		healthcheck_id!: string
 
 		// Identifier
 		id?: string

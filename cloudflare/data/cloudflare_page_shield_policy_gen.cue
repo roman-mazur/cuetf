@@ -22,7 +22,7 @@ package data
 		id?: string
 
 		// Identifier
-		policy_id?: string
+		policy_id!: string
 
 		// The policy which will be applied
 		value?: string

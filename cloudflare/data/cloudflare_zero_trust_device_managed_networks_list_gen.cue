@@ -25,6 +25,9 @@ package data
 				tls_sockaddr?: string
 			})
 
+			// API UUID.
+			id?: string
+
 			// The name of the device managed network. This name must be
 			// unique.
 			name?: string
@@ -49,6 +52,9 @@ package data
 				// will use to detect the presence of a TLS host.
 				tls_sockaddr?: string
 			})
+
+			// API UUID.
+			id?: string
 
 			// The name of the device managed network. This name must be
 			// unique.

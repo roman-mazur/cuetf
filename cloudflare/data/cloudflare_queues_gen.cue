@@ -13,6 +13,9 @@ package data
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			consumers_total_count?: number
+			created_on?:            string
+			id?:                    string
+			modified_on?:           string
 			consumers?: matchN(1, [close({
 				// A Resource identifier.
 				consumer_id?: string
@@ -96,8 +99,6 @@ package data
 				// Available values: "worker", "http_pull".
 				type?: string
 			})]])
-			created_on?:  string
-			modified_on?: string
 			producers?: matchN(1, [close({
 				bucket_name?: string
 				script?:      string
@@ -128,6 +129,9 @@ package data
 			})
 		}), [...close({
 			consumers_total_count?: number
+			created_on?:            string
+			id?:                    string
+			modified_on?:           string
 			consumers?: matchN(1, [close({
 				// A Resource identifier.
 				consumer_id?: string
@@ -211,8 +215,6 @@ package data
 				// Available values: "worker", "http_pull".
 				type?: string
 			})]])
-			created_on?:  string
-			modified_on?: string
 			producers?: matchN(1, [close({
 				bucket_name?: string
 				script?:      string

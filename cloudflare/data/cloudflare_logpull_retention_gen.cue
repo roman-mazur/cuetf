@@ -8,6 +8,9 @@ package data
 		flag?: bool
 
 		// Identifier.
+		id?: string
+
+		// Identifier.
 		zone_id!: string
 	})
 }

@@ -18,6 +18,9 @@ package data
 			// When the script was created.
 			created_on?: string
 
+			// Name of the Workers for Platforms dispatch namespace.
+			id?: string
+
 			// Identifier.
 			modified_by?: string
 
@@ -47,6 +50,9 @@ package data
 
 			// When the script was created.
 			created_on?: string
+
+			// Name of the Workers for Platforms dispatch namespace.
+			id?: string
 
 			// Identifier.
 			modified_by?: string

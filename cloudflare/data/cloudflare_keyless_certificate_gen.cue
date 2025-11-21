@@ -26,7 +26,7 @@ package data
 		id?: string
 
 		// Identifier.
-		keyless_certificate_id?: string
+		keyless_certificate_id!: string
 
 		// When the Keyless SSL was last modified.
 		modified_on?: string

@@ -110,9 +110,9 @@ package res
 			// Version of OS Distribution (linux only).
 			os_distro_revision?: string
 
-			// Additional version data. For Mac or iOS, the Product Version
-			// Extra. For Linux, the distribution name and version. (Mac,
-			// iOS, and Linux only).
+			// Additional operating system version details. For Windows, the
+			// UBR (Update Build Revision). For Mac or iOS, the Product
+			// Version Extra. For Linux, the distribution name and version.
 			os_version_extra?: string
 
 			// Overall.

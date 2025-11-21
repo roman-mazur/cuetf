@@ -240,6 +240,6 @@ package data
 		name?: string
 
 		// The unique identifier of a notification policy
-		policy_id?: string
+		policy_id!: string
 	})
 }

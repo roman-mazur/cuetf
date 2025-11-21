@@ -33,14 +33,14 @@ package data
 			// RFC3986-compliant host.
 			host?: string
 
+			// UUID.
+			id?: string
+
 			// The HTTP method used to access the endpoint.
 			// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT",
 			// "DELETE", "CONNECT", "PATCH", "TRACE".
 			method?:       string
 			last_updated?: string
-
-			// UUID.
-			operation_id?: string
 			features?: close({
 				// API Routing settings on endpoint.
 				api_routing?: close({
@@ -149,6 +149,9 @@ package data
 					suggested_threshold?: number
 				})
 			})
+
+			// UUID.
+			operation_id?: string
 		}), [...close({
 			// The endpoint which can contain path parameter templates in
 			// curly braces, each will be replaced from left to right with
@@ -160,14 +163,14 @@ package data
 			// RFC3986-compliant host.
 			host?: string
 
+			// UUID.
+			id?: string
+
 			// The HTTP method used to access the endpoint.
 			// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT",
 			// "DELETE", "CONNECT", "PATCH", "TRACE".
 			method?:       string
 			last_updated?: string
-
-			// UUID.
-			operation_id?: string
 			features?: close({
 				// API Routing settings on endpoint.
 				api_routing?: close({
@@ -276,6 +279,9 @@ package data
 					suggested_threshold?: number
 				})
 			})
+
+			// UUID.
+			operation_id?: string
 		})]])
 
 		// Max items to fetch, default: 1000

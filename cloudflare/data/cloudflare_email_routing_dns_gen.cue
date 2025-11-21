@@ -20,14 +20,14 @@ package data
 			})
 		})]])
 
+		// Identifier.
+		id?: string
+
 		// Domain of your zone.
 		subdomain?: string
 
 		// Whether the API call was successful.
 		success?: bool
-
-		// Identifier.
-		zone_id!: string
 		messages?: matchN(1, [close({
 			code?:              number
 			documentation_url?: string
@@ -156,6 +156,9 @@ package data
 				type?: string
 			})]])
 		})
+
+		// Identifier.
+		zone_id!: string
 		result_info?: close({
 			// Total number of results for the requested service.
 			count?: number

@@ -8,7 +8,7 @@ package data
 		account_id!: string
 
 		// Identifier
-		acl_id?: string
+		acl_id!: string
 
 		// Description for the ACL.
 		description?: string

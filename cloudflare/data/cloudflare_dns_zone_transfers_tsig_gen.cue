@@ -15,6 +15,6 @@ package data
 
 		// TSIG secret.
 		secret?:  string
-		tsig_id?: string
+		tsig_id!: string
 	})
 }

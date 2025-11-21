@@ -2245,7 +2245,8 @@ package res
 		// The application type.
 		// Available values: "self_hosted", "saas", "ssh", "vnc",
 		// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
-		// "infrastructure", "rdp", "mcp", "mcp_portal".
+		// "infrastructure", "rdp", "mcp", "mcp_portal",
+		// "proxy_endpoint".
 		type?: string
 
 		// The Zone ID to use for this endpoint. Mutually exclusive with

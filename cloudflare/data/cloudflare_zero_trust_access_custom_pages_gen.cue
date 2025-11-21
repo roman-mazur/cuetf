@@ -12,6 +12,9 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
+			// UUID.
+			id?: string
+
 			// Custom page name.
 			name?: string
 
@@ -22,6 +25,9 @@ package data
 			// UUID.
 			uid?: string
 		}), [...close({
+			// UUID.
+			id?: string
+
 			// Custom page name.
 			name?: string
 

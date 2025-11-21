@@ -418,7 +418,7 @@ package data
 		read_only?: bool
 
 		// Identify the API resource with a UUID.
-		rule_id?: string
+		rule_id!: string
 
 		// Defines the schedule for activating DNS policies. Settable only
 		// for `dns` and `dns_resolver` rules.
