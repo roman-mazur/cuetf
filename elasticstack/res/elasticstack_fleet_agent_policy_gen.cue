@@ -61,6 +61,11 @@ package res
 		// the Terraform state.
 		skip_destroy?: bool
 
+		// The Kibana space IDs that this agent policy should be available
+		// in. When not specified, defaults to ["default"]. Note: The
+		// order of space IDs does not matter as this is a set.
+		space_ids?: [...string]
+
 		// Set to true to enable agentless data collection.
 		supports_agentless?: bool
 

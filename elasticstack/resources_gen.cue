@@ -15,6 +15,10 @@ import "github.com/roman-mazur/cuetf/elasticstack/res"
 	_#res: "\(#elasticstackPrefix)_elasticsearch_index_template": res.#elasticstack_elasticsearch_index_template
 	_#res: "\(#elasticstackPrefix)_elasticsearch_ingest_pipeline": res.#elasticstack_elasticsearch_ingest_pipeline
 	_#res: "\(#elasticstackPrefix)_elasticsearch_logstash_pipeline": res.#elasticstack_elasticsearch_logstash_pipeline
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_anomaly_detection_job": res.#elasticstack_elasticsearch_ml_anomaly_detection_job
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_datafeed": res.#elasticstack_elasticsearch_ml_datafeed
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_datafeed_state": res.#elasticstack_elasticsearch_ml_datafeed_state
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_job_state": res.#elasticstack_elasticsearch_ml_job_state
 	_#res: "\(#elasticstackPrefix)_elasticsearch_script": res.#elasticstack_elasticsearch_script
 	_#res: "\(#elasticstackPrefix)_elasticsearch_security_api_key": res.#elasticstack_elasticsearch_security_api_key
 	_#res: "\(#elasticstackPrefix)_elasticsearch_security_role": res.#elasticstack_elasticsearch_security_role

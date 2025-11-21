@@ -7,6 +7,13 @@ package res
 		// Fingerprint of the Elasticsearch CA certificate.
 		ca_sha256?: string
 
+		// Fingerprint of trusted CA.
+		ca_trusted_fingerprint?: string
+
+		// Advanced YAML configuration. YAML settings here will be added
+		// to the output section of each agent policy.
+		config_yaml?: string
+
 		// Kafka-specific configuration.
 		kafka?: close({
 			// Authentication type for Kafka output.
@@ -94,8 +101,17 @@ package res
 			version?: string
 		})
 
-		// Fingerprint of trusted CA.
-		ca_trusted_fingerprint?: string
+		// Make this output the default for agent integrations.
+		default_integrations?: bool
+
+		// Make this output the default for agent monitoring.
+		default_monitoring?: bool
+
+		// A list of hosts.
+		hosts!: [...string]
+
+		// The ID of this resource.
+		id?: string
 
 		// SSL configuration.
 		ssl?: close({
@@ -109,27 +125,17 @@ package res
 			key!: string
 		})
 
-		// Advanced YAML configuration. YAML settings here will be added
-		// to the output section of each agent policy.
-		config_yaml?: string
-
-		// Make this output the default for agent integrations.
-		default_integrations?: bool
-
-		// Make this output the default for agent monitoring.
-		default_monitoring?: bool
-
-		// A list of hosts.
-		hosts?: [...string]
-
-		// The ID of this resource.
-		id?: string
-
 		// The name of the output.
 		name!: string
 
 		// Unique identifier of the output.
 		output_id?: string
+
+		// The Kibana space IDs where this output is available. When set,
+		// the output will be created and managed within the specified
+		// space. Note: The order of space IDs does not matter as this is
+		// a set.
+		space_ids?: [...string]
 
 		// The output type.
 		type!: string

@@ -18,6 +18,12 @@ package res
 		// integration package from the Terraform state.
 		skip_destroy?: bool
 
+		// The Kibana space IDs where this integration package should be
+		// installed. When set, the package will be installed and managed
+		// within the specified space. Note: The order of space IDs does
+		// not matter as this is a set.
+		space_ids?: [...string]
+
 		// The integration package version.
 		version!: string
 	})

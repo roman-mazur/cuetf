@@ -3225,6 +3225,1112 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description_kind: "markdown"
 			}
 		}
+		elasticstack_elasticsearch_ml_anomaly_detection_job: {
+			version: 0
+			block: {
+				attributes: {
+					allow_lazy_open: {
+						type:             "bool"
+						description:      "Advanced configuration option. Specifies whether this job can open when there is insufficient machine learning node capacity for it to be immediately assigned to a node."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					analysis_config: {
+						nested_type: {
+							attributes: {
+								bucket_span: {
+									type:             "string"
+									description:      "The size of the interval that the analysis is aggregated into, typically between 15m and 1h. If the anomaly detector is expecting to see data at near real-time frequency, then the bucket_span should be set to a value around 10 times the time between ingested documents. For example, if data comes every second, bucket_span should be 10s; if data comes every 5 minutes, bucket_span should be 50m. For sparse or batch data, use larger bucket_span values."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								categorization_field_name: {
+									type:             "string"
+									description:      "For categorization jobs only. The name of the field to categorize."
+									description_kind: "markdown"
+									optional:         true
+								}
+								categorization_filters: {
+									type: ["list", "string"]
+									description:      "For categorization jobs only. An array of regular expressions. A categorization message is matched against each regex in the order they are listed in the array."
+									description_kind: "markdown"
+									optional:         true
+								}
+								detectors: {
+									nested_type: {
+										attributes: {
+											by_field_name: {
+												type:             "string"
+												description:      "The field used to split the data. In particular, this property is used for analyzing the splits with respect to their own history. It is used for finding unusual values in the context of the split."
+												description_kind: "markdown"
+												optional:         true
+											}
+											custom_rules: {
+												nested_type: {
+													attributes: {
+														actions: {
+															type: ["list", "string"]
+															description:      "The set of actions to be triggered when the rule applies. If more than one action is specified the effects of all actions are combined."
+															description_kind: "markdown"
+															optional:         true
+														}
+														conditions: {
+															nested_type: {
+																attributes: {
+																	applies_to: {
+																		type:             "string"
+																		description:      "Specifies the result property to which the condition applies."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	operator: {
+																		type:             "string"
+																		description:      "Specifies the condition operator."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	value: {
+																		type:             "number"
+																		description:      "The value that is compared against the applies_to field using the operator."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "list"
+															}
+															description:      "An array of numeric conditions when the rule applies."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "list"
+												}
+												description:      "Custom rules enable you to customize the way detectors operate."
+												description_kind: "markdown"
+												optional:         true
+											}
+											detector_description: {
+												type:             "string"
+												description:      "A description of the detector."
+												description_kind: "markdown"
+												optional:         true
+											}
+											exclude_frequent: {
+												type:             "string"
+												description:      "Contains one of the following values: all, none, by, or over."
+												description_kind: "markdown"
+												optional:         true
+											}
+											field_name: {
+												type:             "string"
+												description:      "The field that the detector function analyzes. Some functions require a field. Functions that don't require a field are count, rare, and freq_rare."
+												description_kind: "markdown"
+												optional:         true
+											}
+											function: {
+												type:             "string"
+												description:      "The analysis function that is used. For example, count, rare, mean, min, max, sum."
+												description_kind: "markdown"
+												required:         true
+											}
+											over_field_name: {
+												type:             "string"
+												description:      "The field used to split the data. In particular, this property is used for analyzing the splits with respect to the history of all splits. It is used for finding unusual values in the population of all splits."
+												description_kind: "markdown"
+												optional:         true
+											}
+											partition_field_name: {
+												type:             "string"
+												description:      "The field used to segment the analysis. When you use this property, you have completely independent baselines for each value of this field."
+												description_kind: "markdown"
+												optional:         true
+											}
+											use_null: {
+												type:             "bool"
+												description:      "Defines whether a new series is used as the null series when there is no value for the by or partition fields."
+												description_kind: "markdown"
+												optional:         true
+												computed:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description:      "Detector configuration objects. Detectors identify the anomaly detection functions and the fields on which they operate."
+									description_kind: "markdown"
+									required:         true
+								}
+								influencers: {
+									type: ["list", "string"]
+									description:      "A comma separated list of influencer field names. Typically these can be the by, over, or partition fields that are used in the detector configuration."
+									description_kind: "markdown"
+									optional:         true
+								}
+								latency: {
+									type:             "string"
+									description:      "The size of the window in which to expect data that is out of time order. If you specify a non-zero value, it must be greater than or equal to one second."
+									description_kind: "markdown"
+									optional:         true
+								}
+								model_prune_window: {
+									type:             "string"
+									description:      "Advanced configuration option. The time interval (in days) between pruning the model."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								multivariate_by_fields: {
+									type:             "bool"
+									description:      "This functionality is reserved for internal use. It is not supported for use in customer environments and is not subject to the support SLA of official GA features."
+									description_kind: "markdown"
+									optional:         true
+								}
+								per_partition_categorization: {
+									nested_type: {
+										attributes: {
+											enabled: {
+												type:             "bool"
+												description:      "To enable this setting, you must also set the partition_field_name property to the same value in every detector that uses the keyword mlcategory. Otherwise, job creation fails."
+												description_kind: "markdown"
+												optional:         true
+												computed:         true
+											}
+											stop_on_warn: {
+												type:             "bool"
+												description:      "This setting can be set to true only if per-partition categorization is enabled."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Settings related to how categorization interacts with partition fields."
+									description_kind: "markdown"
+									optional:         true
+								}
+								summary_count_field_name: {
+									type:             "string"
+									description:      "If this property is specified, the data that is fed to the job is expected to be pre-summarized."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Specifies how to analyze the data. After you create a job, you cannot change the analysis configuration; all the properties are informational."
+						description_kind: "markdown"
+						required:         true
+					}
+					analysis_limits: {
+						nested_type: {
+							attributes: {
+								categorization_examples_limit: {
+									type:             "number"
+									description:      "The maximum number of examples stored per category in memory and in the results data store."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								model_memory_limit: {
+									type:             "string"
+									description:      "The approximate maximum amount of memory resources that are required for analytical processing."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Limits can be applied for the resources required to hold the mathematical models in memory."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					background_persist_interval: {
+						type:             "string"
+						description:      "Advanced configuration option. The time between each periodic persistence of the model."
+						description_kind: "markdown"
+						optional:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The time the job was created."
+						description_kind: "markdown"
+						computed:         true
+					}
+					custom_settings: {
+						type:             "string"
+						description:      "Advanced configuration option. Contains custom meta data about the job. For example, it can contain custom URL information."
+						description_kind: "markdown"
+						optional:         true
+					}
+					daily_model_snapshot_retention_after_days: {
+						type:             "number"
+						description:      "Advanced configuration option, which affects the automatic removal of old model snapshots for this job."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					data_description: {
+						nested_type: {
+							attributes: {
+								time_field: {
+									type:             "string"
+									description:      "The name of the field that contains the timestamp."
+									description_kind: "markdown"
+									optional:         true
+								}
+								time_format: {
+									type:             "string"
+									description:      "The time format, which can be epoch, epoch_ms, or a custom pattern."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Defines the format of the input data when you send data to the job by using the post data API."
+						description_kind: "markdown"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description:      "A description of the job."
+						description_kind: "markdown"
+						optional:         true
+					}
+					groups: {
+						type: ["set", "string"]
+						description:      "A set of job groups. A job can belong to no groups or many."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource"
+						description_kind: "markdown"
+						computed:         true
+					}
+					job_id: {
+						type:             "string"
+						description:      "The identifier for the anomaly detection job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters."
+						description_kind: "markdown"
+						required:         true
+					}
+					job_type: {
+						type:             "string"
+						description:      "Reserved for future use, currently set to anomaly_detector."
+						description_kind: "markdown"
+						computed:         true
+					}
+					job_version: {
+						type:             "string"
+						description:      "The version of Elasticsearch when the job was created."
+						description_kind: "markdown"
+						computed:         true
+					}
+					model_plot_config: {
+						nested_type: {
+							attributes: {
+								annotations_enabled: {
+									type:             "bool"
+									description:      "If true, enables calculation and storage of the model change annotations for each entity that is being analyzed."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								enabled: {
+									type:             "bool"
+									description:      "If true, enables calculation and storage of the model bounds for each entity that is being analyzed."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								terms: {
+									type:             "string"
+									description:      "Limits data collection to this comma separated list of partition or by field values. If terms are not specified or it is an empty string, no filtering is applied."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "This advanced configuration option stores model information along with the results. It provides a more detailed view into anomaly detection."
+						description_kind: "markdown"
+						optional:         true
+					}
+					model_snapshot_id: {
+						type:             "string"
+						description:      "A numerical character string that uniquely identifies the model snapshot."
+						description_kind: "markdown"
+						computed:         true
+					}
+					model_snapshot_retention_days: {
+						type:             "number"
+						description:      "Advanced configuration option, which affects the automatic removal of old model snapshots for this job."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					renormalization_window_days: {
+						type:             "number"
+						description:      "Advanced configuration option. The period over which adjustments to the score are applied, as new data is seen."
+						description_kind: "markdown"
+						optional:         true
+					}
+					results_index_name: {
+						type:             "string"
+						description:      "A text string that affects the name of the machine learning results index."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					results_retention_days: {
+						type:             "number"
+						description:      "Advanced configuration option. The period of time (in days) that results are retained."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block. "
+						description_kind: "markdown"
+						deprecated:       true
+					}
+				}
+				description:      "Creates and manages Machine Learning anomaly detection jobs. See the [ML Job API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html) for more details."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_elasticsearch_ml_datafeed: {
+			version: 0
+			block: {
+				attributes: {
+					aggregations: {
+						type:             "string"
+						description:      "If set, the datafeed performs aggregation searches. Support for aggregations is limited and should be used only with low cardinality data. This should be a JSON object representing the aggregations to be performed."
+						description_kind: "markdown"
+						optional:         true
+					}
+					chunking_config: {
+						nested_type: {
+							attributes: {
+								mode: {
+									type:             "string"
+									description:      "The chunking mode. Can be `auto`, `manual`, or `off`. In `auto` mode, the chunk size is dynamically calculated. In `manual` mode, chunking is applied according to the specified `time_span`. In `off` mode, no chunking is applied."
+									description_kind: "markdown"
+									required:         true
+								}
+								time_span: {
+									type:             "string"
+									description:      "The time span for each chunk. Only applicable and required when mode is `manual`. Must be a valid duration."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Datafeeds might search over long time periods, for several months or years. This search is split into time chunks in order to ensure the load on Elasticsearch is managed. Chunking configuration controls how the size of these time chunks are calculated; it is an advanced configuration option."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					datafeed_id: {
+						type:             "string"
+						description:      "A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters."
+						description_kind: "markdown"
+						required:         true
+					}
+					delayed_data_check_config: {
+						nested_type: {
+							attributes: {
+								check_window: {
+									type:             "string"
+									description:      "The window of time that is searched for late data. This window of time ends with the latest finalized bucket. It defaults to null, which causes an appropriate `check_window` to be calculated when the real-time datafeed runs."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								enabled: {
+									type:             "bool"
+									description:      "Specifies whether the datafeed periodically checks for delayed data."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Specifies whether the datafeed checks for missing data and the size of the window. The datafeed can optionally search over indices that have already been read in an effort to determine whether any data has subsequently been added to the index. If missing data is found, it is a good indication that the `query_delay` is set too low and the data is being indexed after the datafeed has passed that moment in time. This check runs only on real-time datafeeds."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					frequency: {
+						type:             "string"
+						description:      "The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource"
+						description_kind: "markdown"
+						computed:         true
+					}
+					indices: {
+						type: ["list", "string"]
+						description:      "An array of index names. Wildcards are supported. If any of the indices are in remote clusters, the machine learning nodes must have the `remote_cluster_client` role."
+						description_kind: "markdown"
+						required:         true
+					}
+					indices_options: {
+						nested_type: {
+							attributes: {
+								allow_no_indices: {
+									type:             "bool"
+									description:      "If true, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the `_all` string or when no indices are specified."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								expand_wildcards: {
+									type: ["list", "string"]
+									description:      "Type of index that wildcard patterns can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. Supports comma-separated values."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								ignore_throttled: {
+									type:             "bool"
+									description:      "If true, concrete, expanded, or aliased indices are ignored when frozen. This setting is deprecated."
+									description_kind: "markdown"
+									deprecated:       true
+									optional:         true
+									computed:         true
+								}
+								ignore_unavailable: {
+									type:             "bool"
+									description:      "If true, unavailable indices (missing or closed) are ignored."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Specifies index expansion options that are used during search."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					job_id: {
+						type:             "string"
+						description:      "Identifier for the anomaly detection job. The job must exist before creating the datafeed."
+						description_kind: "markdown"
+						required:         true
+					}
+					max_empty_searches: {
+						type:             "number"
+						description:      "If a real-time datafeed has never seen any data (including during any initial training period), it automatically stops and closes the associated job after this many real-time searches return no documents. In other words, it stops after `frequency` times `max_empty_searches` of real-time operation. If not set, a datafeed with no end time that sees no data remains started until it is explicitly stopped."
+						description_kind: "markdown"
+						optional:         true
+					}
+					query: {
+						type:             "string"
+						description:      "The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch. By default uses `{\"match_all\": {\"boost\": 1}}`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					query_delay: {
+						type:             "string"
+						description:      "The number of seconds behind real time that data is queried. For example, if data from 10:04 a.m. might not be searchable in Elasticsearch until 10:06 a.m., set this property to 120 seconds. The default value is randomly selected between `60s` and `120s`. This randomness improves the query performance when there are multiple jobs running on the same node."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					runtime_mappings: {
+						type:             "string"
+						description:      "Specifies runtime fields for the datafeed search. This should be a JSON object representing the runtime field mappings."
+						description_kind: "markdown"
+						optional:         true
+					}
+					script_fields: {
+						type:             "string"
+						description:      "Specifies scripts that evaluate custom expressions and returns script fields to the datafeed. The detector configuration objects in a job can contain functions that use these script fields. This should be a JSON object representing the script fields."
+						description_kind: "markdown"
+						optional:         true
+					}
+					scroll_size: {
+						type:             "number"
+						description:      "The size parameter that is used in Elasticsearch searches when the datafeed does not use aggregations. The maximum value is the value of `index.max_result_window`, which is 10,000 by default."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block. "
+						description_kind: "markdown"
+						deprecated:       true
+					}
+				}
+				description:      "Creates and manages Machine Learning datafeeds. Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job. Each anomaly detection job can have only one associated datafeed. See the [ML Datafeed API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html) for more details."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_elasticsearch_ml_datafeed_state: {
+			version: 0
+			block: {
+				attributes: {
+					datafeed_id: {
+						type:             "string"
+						description:      "Identifier for the ML datafeed."
+						description_kind: "markdown"
+						required:         true
+					}
+					datafeed_timeout: {
+						type:             "string"
+						description:      "Timeout for the operation. Examples: `30s`, `5m`, `1h`. Default is `30s`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					end: {
+						type:             "string"
+						description:      "The time that the datafeed should end collecting data. When not specified, the datafeed continues in real-time. This property must be specified in RFC 3339 format."
+						description_kind: "markdown"
+						optional:         true
+					}
+					force: {
+						type:             "bool"
+						description:      "When stopping a datafeed, use to forcefully stop it."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource"
+						description_kind: "markdown"
+						computed:         true
+					}
+					start: {
+						type:             "string"
+						description:      "The time that the datafeed should start collecting data. When not specified, the datafeed starts in real-time. This property must be specified in RFC 3339 format."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					state: {
+						type:             "string"
+						description:      "The desired state for the ML datafeed. Valid values are `started` and `stopped`."
+						description_kind: "markdown"
+						required:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block. "
+						description_kind: "markdown"
+						deprecated:       true
+					}
+				}
+				description: """
+					Manages the state of an existing Elasticsearch ML datafeed by starting or stopping it. This resource does not create or configure a datafeed, but instead manages the operational state of an existing datafeed.
+
+					Note: Starting a non-realtime datafeed (i.e with an absolute end time) will result in the datafeed automatically stopping once all available data has been processed. By default, Terraform will restart the datafeed from the configured start time and reprocess all data again. It's recommended to ignore changes to the `state` attribute via the [resource lifecycle](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#ignore-changes) for non-realtime datafeeds.  
+					"""
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_elasticsearch_ml_job_state: {
+			version: 0
+			block: {
+				attributes: {
+					force: {
+						type:             "bool"
+						description:      "When closing a job, use to forcefully close it. This method is quicker but can miss important clean up tasks."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource"
+						description_kind: "markdown"
+						computed:         true
+					}
+					job_id: {
+						type:             "string"
+						description:      "Identifier for the anomaly detection job."
+						description_kind: "markdown"
+						required:         true
+					}
+					job_timeout: {
+						type:             "string"
+						description:      "Timeout for the operation. Examples: `30s`, `5m`, `1h`. Default is `30s`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					state: {
+						type:             "string"
+						description:      "The desired state for the ML job. Valid values are `opened` and `closed`."
+						description_kind: "markdown"
+						required:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block. "
+						description_kind: "markdown"
+						deprecated:       true
+					}
+				}
+				description: """
+					# ML Job State Resource
+
+					Manages the state of an Elasticsearch Machine Learning (ML) job, allowing you to open or close ML jobs.
+
+					This resource uses the following Elasticsearch APIs:
+					- [Open ML Job API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html)
+					- [Close ML Job API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-close-job.html)
+					- [Get ML Job Stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html)
+
+					## Important Notes
+
+					- This resource manages the **state** of an existing ML job, not the job configuration itself.
+					- The ML job must already exist before using this resource.
+					- Opening a job allows it to receive and process data.
+					- Closing a job stops data processing and frees up resources.
+					- Jobs can be opened and closed multiple times throughout their lifecycle.
+					"""
+				description_kind: "markdown"
+			}
+		}
 		elasticstack_elasticsearch_script: {
 			version: 0
 			block: {
@@ -5528,6 +6634,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						optional:         true
 					}
+					space_ids: {
+						type: ["set", "string"]
+						description:      "The Kibana space IDs that this agent policy should be available in. When not specified, defaults to [\"default\"]. Note: The order of space IDs does not matter as this is a set."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					supports_agentless: {
 						type:             "bool"
 						description:      "Set to true to enable agentless data collection."
@@ -5579,6 +6692,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "Set to true if you do not wish the integration package to be uninstalled at destroy time, and instead just remove the integration package from the Terraform state."
 						description_kind: "plain"
 						optional:         true
+					}
+					space_ids: {
+						type: ["set", "string"]
+						description:      "The Kibana space IDs where this integration package should be installed. When set, the package will be installed and managed within the specified space. Note: The order of space IDs does not matter as this is a set."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
 					}
 					version: {
 						type:             "string"
@@ -5663,9 +6783,22 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						required:         true
 					}
+					output_id: {
+						type:             "string"
+						description:      "The ID of the output to send data to. When not specified, the default output of the agent policy will be used."
+						description_kind: "plain"
+						optional:         true
+					}
 					policy_id: {
 						type:             "string"
 						description:      "Unique identifier of the integration policy."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					space_ids: {
+						type: ["set", "string"]
+						description:      "The Kibana space IDs where this integration policy is available. When set, must match the space_ids of the referenced agent policy. If not set, will be inherited from the agent policy. Note: The order of space IDs does not matter as this is a set."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -5774,7 +6907,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						type: ["list", "string"]
 						description:      "A list of hosts."
 						description_kind: "plain"
-						optional:         true
+						required:         true
 					}
 					id: {
 						type:             "string"
@@ -5982,6 +7115,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					space_ids: {
+						type: ["set", "string"]
+						description:      "The Kibana space IDs where this output is available. When set, the output will be created and managed within the specified space. Note: The order of space IDs does not matter as this is a set."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					ssl: {
 						nested_type: {
 							attributes: {
@@ -6056,6 +7196,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "The name of the Fleet server host."
 						description_kind: "plain"
 						required:         true
+					}
+					space_ids: {
+						type: ["set", "string"]
+						description:      "The Kibana space IDs where this server host is available. When set, the server host will be created and managed within the specified space. Note: The order of space IDs does not matter as this is a set."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
 					}
 				}
 				description:      "Creates a new Fleet Server Host."
@@ -6607,6 +7754,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												}
 												description_kind: "plain"
 												optional:         true
+												computed:         true
 											}
 										}
 										nesting_mode: "map"
@@ -13903,6 +15051,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						optional:         true
 					}
+					space_id: {
+						type:             "string"
+						description:      "The Kibana space ID to query enrollment tokens from. When the agent policy is space-scoped, this must be set to match the policy's space. If not specified, queries the default space."
+						description_kind: "plain"
+						optional:         true
+					}
 					tokens: {
 						nested_type: {
 							attributes: {
@@ -14006,7 +15160,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			}
 		}
 		elasticstack_kibana_action_connector: {
-			version: 1
+			version: 0
 			block: {
 				attributes: {
 					config: {
