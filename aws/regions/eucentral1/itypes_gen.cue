@@ -22449,7 +22449,7 @@ InstanceTypes: [{
                 SizeInMiB: 5722
             }
         }]
-        TotalGpuMemoryInMiB: 0
+        TotalGpuMemoryInMiB: 5722
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22547,7 +22547,7 @@ InstanceTypes: [{
                 SizeInMiB: 11444
             }
         }]
-        TotalGpuMemoryInMiB: 0
+        TotalGpuMemoryInMiB: 11444
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22645,7 +22645,7 @@ InstanceTypes: [{
                 SizeInMiB: 2861
             }
         }]
-        TotalGpuMemoryInMiB: 0
+        TotalGpuMemoryInMiB: 2861
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22743,7 +22743,7 @@ InstanceTypes: [{
                 SizeInMiB: 2861
             }
         }]
-        TotalGpuMemoryInMiB: 0
+        TotalGpuMemoryInMiB: 2861
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23040,7 +23040,7 @@ InstanceTypes: [{
                 SizeInMiB: 11444
             }
         }]
-        TotalGpuMemoryInMiB: 0
+        TotalGpuMemoryInMiB: 11444
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]

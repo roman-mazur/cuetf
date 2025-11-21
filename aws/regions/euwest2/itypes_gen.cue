@@ -37062,6 +37062,125 @@ InstanceTypes: [{
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
 }, {
+    InstanceType:      "p4d.24xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["capacity-block", "on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.0
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          96
+        DefaultCores:          48
+        DefaultThreadsPerCore: 2
+        ValidCores: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 1179648
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 8000
+        Disks: [{
+            SizeInGB: 1000
+            Count:    8
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  19000
+            BaselineThroughputInMBps: 2375.0
+            BaselineIops:             80000
+            MaximumBandwidthInMbps:   19000
+            MaximumThroughputInMBps:  2375.0
+            MaximumIops:              80000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 28
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "4x 100 Gigabit"
+        MaximumNetworkInterfaces: 60
+        MaximumNetworkCards:      4
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "100 Gigabit"
+            MaximumNetworkInterfaces:         15
+            BaselineBandwidthInGbps:          100.0
+            PeakBandwidthInGbps:              100.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 1
+            NetworkPerformance:               "100 Gigabit"
+            MaximumNetworkInterfaces:         15
+            BaselineBandwidthInGbps:          100.0
+            PeakBandwidthInGbps:              100.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 2
+            NetworkPerformance:               "100 Gigabit"
+            MaximumNetworkInterfaces:         15
+            BaselineBandwidthInGbps:          100.0
+            PeakBandwidthInGbps:              100.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 3
+            NetworkPerformance:               "100 Gigabit"
+            MaximumNetworkInterfaces:         15
+            BaselineBandwidthInGbps:          100.0
+            PeakBandwidthInGbps:              100.0
+            DefaultEnaQueueCountPerInterface: 32
+        }]
+        Ipv4AddressesPerInterface: 50
+        Ipv6AddressesPerInterface: 50
+        Ipv6Supported:             true
+        EnaSupport:                "required"
+        EfaSupported:              true
+        EfaInfo: {
+            MaximumEfaInterfaces: 4
+        }
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+    }
+    GpuInfo: {
+        Gpus: [{
+            Name:         "A100"
+            Manufacturer: "NVIDIA"
+            Count:        8
+            MemoryInfo: {
+                SizeInMiB: 40960
+            }
+        }]
+        TotalGpuMemoryInMiB: 327680
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["legacy-bios"]
+    NitroEnclavesSupport:   "supported"
+    NitroTpmSupport:        "unsupported"
+    PhcSupport:             "unsupported"
+    RebootMigrationSupport: "unsupported"
+}, {
     InstanceType:      "p5.48xlarge"
     CurrentGeneration: true
     FreeTierEligible:  false
