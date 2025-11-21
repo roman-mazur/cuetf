@@ -24,6 +24,7 @@ package data
 		authenticate_oidc?: matchN(1, [_#defs."/$defs/action/$defs/authenticate_oidc", [..._#defs."/$defs/action/$defs/authenticate_oidc"]])
 		fixed_response?: matchN(1, [_#defs."/$defs/action/$defs/fixed_response", [..._#defs."/$defs/action/$defs/fixed_response"]])
 		forward?: matchN(1, [_#defs."/$defs/action/$defs/forward", [..._#defs."/$defs/action/$defs/forward"]])
+		jwt_validation?: matchN(1, [_#defs."/$defs/action/$defs/jwt_validation", [..._#defs."/$defs/action/$defs/jwt_validation"]])
 		redirect?: matchN(1, [_#defs."/$defs/action/$defs/redirect", [..._#defs."/$defs/action/$defs/redirect"]])
 		order?: number
 		type?:  string
@@ -87,6 +88,18 @@ package data
 	_#defs: "/$defs/action/$defs/forward/$defs/target_group": close({
 		arn?:    string
 		weight?: number
+	})
+
+	_#defs: "/$defs/action/$defs/jwt_validation": close({
+		additional_claim?: matchN(1, [_#defs."/$defs/action/$defs/jwt_validation/$defs/additional_claim", [..._#defs."/$defs/action/$defs/jwt_validation/$defs/additional_claim"]])
+		issuer?:        string
+		jwks_endpoint?: string
+	})
+
+	_#defs: "/$defs/action/$defs/jwt_validation/$defs/additional_claim": close({
+		format?: string
+		name?:   string
+		values?: [...string]
 	})
 
 	_#defs: "/$defs/action/$defs/redirect": close({

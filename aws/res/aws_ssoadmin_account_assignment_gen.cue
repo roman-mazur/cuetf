@@ -16,7 +16,7 @@ package res
 		principal_id!:   string
 		principal_type!: string
 		target_id!:      string
-		target_type?:    string
+		target_type!:    string
 		timeouts?:       #timeouts
 	})
 

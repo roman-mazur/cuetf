@@ -122,10 +122,11 @@ package res
 	})
 
 	_#defs: "/$defs/storage_configuration/$defs/rds_configuration/$defs/field_mapping": close({
-		metadata_field!:    string
-		primary_key_field!: string
-		text_field!:        string
-		vector_field!:      string
+		custom_metadata_field?: string
+		metadata_field!:        string
+		primary_key_field!:     string
+		text_field!:            string
+		vector_field!:          string
 	})
 
 	_#defs: "/$defs/storage_configuration/$defs/redis_enterprise_cloud_configuration": close({

@@ -20,6 +20,7 @@ import "list"
 
 	#rule: close({
 		apply_server_side_encryption_by_default?: matchN(1, [_#defs."/$defs/rule/$defs/apply_server_side_encryption_by_default", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/apply_server_side_encryption_by_default"]])
+		blocked_encryption_types?: [...string]
 		bucket_key_enabled?: bool
 	})
 

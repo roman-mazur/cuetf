@@ -7,13 +7,13 @@ package aws
 		// The access key for API operations. You can retrieve this
 		// from the 'Security & Credentials' section of the AWS console.
 		access_key?: string
-		allowed_account_ids?: [...string]
 
 		// File containing custom root and intermediate certificates. Can
 		// also be configured using the `AWS_CA_BUNDLE` environment
 		// variable. (Setting `ca_bundle` in the shared config file is
 		// not supported.)
 		custom_ca_bundle?: string
+		allowed_account_ids?: [...string]
 
 		// Address of the EC2 metadata service endpoint to use. Can also
 		// be configured using the `AWS_EC2_METADATA_SERVICE_ENDPOINT`
@@ -24,7 +24,6 @@ package aws
 		// are `IPv4` and `IPv6`. Can also be configured using the
 		// `AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE` environment variable.
 		ec2_metadata_service_endpoint_mode?: string
-		forbidden_account_ids?: [...string]
 
 		// URL of a proxy to use for HTTP requests when accessing the AWS
 		// API. Can also be set using the `HTTP_PROXY` or `http_proxy`
@@ -35,6 +34,7 @@ package aws
 		// API. Can also be set using the `HTTPS_PROXY` or `https_proxy`
 		// environment variables.
 		https_proxy?: string
+		forbidden_account_ids?: [...string]
 
 		// Explicitly allow the provider to perform "insecure" SSL
 		// requests. If omitted, default value is `false`
@@ -87,15 +87,15 @@ package aws
 		// List of paths to shared config files. If not set, defaults to
 		// [~/.aws/config].
 		shared_config_files?: [...string]
+
+		// List of paths to shared credentials files. If not set, defaults
+		// to [~/.aws/credentials].
+		shared_credentials_files?: [...string]
 		assume_role?: matchN(1, [#assume_role, [...#assume_role]])
 		assume_role_with_web_identity?: matchN(1, [#assume_role_with_web_identity, [...#assume_role_with_web_identity]])
 		default_tags?: matchN(1, [#default_tags, [...#default_tags]])
 		endpoints?: matchN(1, [#endpoints, [...#endpoints]])
 		ignore_tags?: matchN(1, [#ignore_tags, [...#ignore_tags]])
-
-		// List of paths to shared credentials files. If not set, defaults
-		// to [~/.aws/credentials].
-		shared_credentials_files?: [...string]
 
 		// Skip the credentials validation via STS API. Used for AWS API
 		// implementations that do not have STS available/implemented.
@@ -118,6 +118,15 @@ package aws
 		// The region where AWS STS operations will take place. Examples
 		// are us-east-1 and us-west-2.
 		sts_region?: string
+
+		// The severity with which to enforce organizational tagging
+		// policies on resources managed by this provider instance. At
+		// this time this only includes compliance with required tag keys
+		// by resource type. Valid values are "error", "warning", and
+		// "disabled". When unset or "disabled", tag policy compliance
+		// will not be enforced by the provider. Can also be configured
+		// with the TF_AWS_TAG_POLICY_COMPLIANCE environment variable.
+		tag_policy_compliance?: string
 
 		// session token. A session token is only required if you are
 		// using temporary security credentials.

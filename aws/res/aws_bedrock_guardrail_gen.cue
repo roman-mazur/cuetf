@@ -87,7 +87,13 @@ package res
 	})
 
 	_#defs: "/$defs/content_policy_config/$defs/filters_config": close({
-		input_strength!:  string
+		input_action?:  string
+		input_enabled?: bool
+		input_modalities?: [...string]
+		input_strength!: string
+		output_action?:  string
+		output_enabled?: bool
+		output_modalities?: [...string]
 		output_strength!: string
 		type!:            string
 	})

@@ -26,12 +26,13 @@ import "list"
 	#action: close({
 		authenticate_cognito?: matchN(1, [_#defs."/$defs/action/$defs/authenticate_cognito", list.MaxItems(1) & [..._#defs."/$defs/action/$defs/authenticate_cognito"]])
 		authenticate_oidc?: matchN(1, [_#defs."/$defs/action/$defs/authenticate_oidc", list.MaxItems(1) & [..._#defs."/$defs/action/$defs/authenticate_oidc"]])
-		order?: number
-		fixed_response?: matchN(1, [_#defs."/$defs/action/$defs/fixed_response", list.MaxItems(1) & [..._#defs."/$defs/action/$defs/fixed_response"]])
+		order?:            number
 		target_group_arn?: string
+		type!:             string
+		fixed_response?: matchN(1, [_#defs."/$defs/action/$defs/fixed_response", list.MaxItems(1) & [..._#defs."/$defs/action/$defs/fixed_response"]])
 		forward?: matchN(1, [_#defs."/$defs/action/$defs/forward", list.MaxItems(1) & [..._#defs."/$defs/action/$defs/forward"]])
+		jwt_validation?: matchN(1, [_#defs."/$defs/action/$defs/jwt_validation", list.MaxItems(1) & [..._#defs."/$defs/action/$defs/jwt_validation"]])
 		redirect?: matchN(1, [_#defs."/$defs/action/$defs/redirect", list.MaxItems(1) & [..._#defs."/$defs/action/$defs/redirect"]])
-		type!: string
 	})
 
 	#condition: close({
@@ -93,6 +94,18 @@ import "list"
 	_#defs: "/$defs/action/$defs/forward/$defs/target_group": close({
 		arn!:    string
 		weight?: number
+	})
+
+	_#defs: "/$defs/action/$defs/jwt_validation": close({
+		additional_claim?: matchN(1, [_#defs."/$defs/action/$defs/jwt_validation/$defs/additional_claim", list.MaxItems(10) & [..._#defs."/$defs/action/$defs/jwt_validation/$defs/additional_claim"]])
+		issuer!:        string
+		jwks_endpoint!: string
+	})
+
+	_#defs: "/$defs/action/$defs/jwt_validation/$defs/additional_claim": close({
+		format!: string
+		name!:   string
+		values!: [...string]
 	})
 
 	_#defs: "/$defs/action/$defs/redirect": close({

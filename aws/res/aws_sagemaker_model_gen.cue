@@ -27,13 +27,14 @@ import "list"
 
 	#container: close({
 		container_hostname?: string
-		image_config?: matchN(1, [_#defs."/$defs/container/$defs/image_config", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/image_config"]])
 		environment?: [string]: string
 		image?:                        string
 		inference_specification_name?: string
 		mode?:                         string
 		model_data_url?:               string
-		model_package_name?:           string
+		additional_model_data_source?: matchN(1, [_#defs."/$defs/container/$defs/additional_model_data_source", [..._#defs."/$defs/container/$defs/additional_model_data_source"]])
+		model_package_name?: string
+		image_config?: matchN(1, [_#defs."/$defs/container/$defs/image_config", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/image_config"]])
 		model_data_source?: matchN(1, [_#defs."/$defs/container/$defs/model_data_source", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/model_data_source"]])
 		multi_model_config?: matchN(1, [_#defs."/$defs/container/$defs/multi_model_config", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/multi_model_config"]])
 	})
@@ -44,13 +45,14 @@ import "list"
 
 	#primary_container: close({
 		container_hostname?: string
-		image_config?: matchN(1, [_#defs."/$defs/primary_container/$defs/image_config", list.MaxItems(1) & [..._#defs."/$defs/primary_container/$defs/image_config"]])
 		environment?: [string]: string
 		image?:                        string
 		inference_specification_name?: string
 		mode?:                         string
 		model_data_url?:               string
-		model_package_name?:           string
+		additional_model_data_source?: matchN(1, [_#defs."/$defs/primary_container/$defs/additional_model_data_source", [..._#defs."/$defs/primary_container/$defs/additional_model_data_source"]])
+		model_package_name?: string
+		image_config?: matchN(1, [_#defs."/$defs/primary_container/$defs/image_config", list.MaxItems(1) & [..._#defs."/$defs/primary_container/$defs/image_config"]])
 		model_data_source?: matchN(1, [_#defs."/$defs/primary_container/$defs/model_data_source", list.MaxItems(1) & [..._#defs."/$defs/primary_container/$defs/model_data_source"]])
 		multi_model_config?: matchN(1, [_#defs."/$defs/primary_container/$defs/multi_model_config", list.MaxItems(1) & [..._#defs."/$defs/primary_container/$defs/multi_model_config"]])
 	})
@@ -58,6 +60,22 @@ import "list"
 	#vpc_config: close({
 		security_group_ids!: [...string]
 		subnets!: [...string]
+	})
+
+	_#defs: "/$defs/container/$defs/additional_model_data_source": close({
+		s3_data_source!: matchN(1, [_#defs."/$defs/container/$defs/additional_model_data_source/$defs/s3_data_source", [_, ...] & [..._#defs."/$defs/container/$defs/additional_model_data_source/$defs/s3_data_source"]])
+		channel_name!: string
+	})
+
+	_#defs: "/$defs/container/$defs/additional_model_data_source/$defs/s3_data_source": close({
+		model_access_config?: matchN(1, [_#defs."/$defs/container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/model_access_config", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/model_access_config"]])
+		compression_type!: string
+		s3_data_type!:     string
+		s3_uri!:           string
+	})
+
+	_#defs: "/$defs/container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/model_access_config": close({
+		accept_eula!: bool
 	})
 
 	_#defs: "/$defs/container/$defs/image_config": close({
@@ -86,6 +104,22 @@ import "list"
 
 	_#defs: "/$defs/container/$defs/multi_model_config": close({
 		model_cache_setting?: string
+	})
+
+	_#defs: "/$defs/primary_container/$defs/additional_model_data_source": close({
+		s3_data_source!: matchN(1, [_#defs."/$defs/primary_container/$defs/additional_model_data_source/$defs/s3_data_source", [_, ...] & [..._#defs."/$defs/primary_container/$defs/additional_model_data_source/$defs/s3_data_source"]])
+		channel_name!: string
+	})
+
+	_#defs: "/$defs/primary_container/$defs/additional_model_data_source/$defs/s3_data_source": close({
+		model_access_config?: matchN(1, [_#defs."/$defs/primary_container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/model_access_config", list.MaxItems(1) & [..._#defs."/$defs/primary_container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/model_access_config"]])
+		compression_type!: string
+		s3_data_type!:     string
+		s3_uri!:           string
+	})
+
+	_#defs: "/$defs/primary_container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/model_access_config": close({
+		accept_eula!: bool
 	})
 
 	_#defs: "/$defs/primary_container/$defs/image_config": close({

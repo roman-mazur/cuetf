@@ -5,14 +5,15 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_backup_logically_air_gapped_vault")
 	close({
 		arn?:                string
+		encryption_key_arn?: string
 		id?:                 string
-		max_retention_days!: number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:             string
+		max_retention_days!: number
 		min_retention_days!: number
 		name!:               string
 		tags?: [string]:     string

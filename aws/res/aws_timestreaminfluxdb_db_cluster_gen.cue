@@ -6,15 +6,22 @@ package res
 	close({
 		// The amount of storage to allocate for your DB storage type in
 		// GiB (gibibytes).
-		allocated_storage!: number
+		// This field is forbidden for InfluxDB V3 clusters (when using an
+		// InfluxDB V3 db parameter group).
+		allocated_storage?: number
 
-		// The name of the initial InfluxDB bucket. All InfluxDB data is
+		// Name of the initial InfluxDB bucket. All InfluxDB data is
 		// stored in a bucket.
 		// A bucket combines the concept of a database and a retention
 		// period (the duration of time
 		// that each data point persists). A bucket belongs to an
-		// organization.
-		bucket!: string
+		// organization. Along with organization,
+		// username, and password, this argument will be stored in the
+		// secret referred to by the
+		// influx_auth_parameters_secret_arn attribute. This field is
+		// forbidden for InfluxDB V3 clusters
+		// (when using an InfluxDB V3 db parameter group).
+		bucket?: string
 
 		// The Timestream for InfluxDB DB instance type to run InfluxDB
 		// on.
@@ -36,12 +43,17 @@ package res
 		// Influx IO Included 16000 IOPS.
 		db_storage_type?: string
 
-		// Specifies the type of cluster to create.
+		// Specifies the type of cluster to create. This field is
+		// forbidden for InfluxDB V3 clusters
+		// (when using an InfluxDB V3 db parameter group).
 		deployment_type?: string
 
 		// The endpoint used to connect to InfluxDB. The default InfluxDB
 		// port is 8086.
 		endpoint?: string
+
+		// The database engine type of the DB cluster.
+		engine_type?: string
 
 		// Specifies the behavior of failure recovery when the primary
 		// node of the cluster
@@ -50,13 +62,13 @@ package res
 
 		// The Amazon Resource Name (ARN) of the AWS Secrets Manager
 		// secret containing the
-		// initial InfluxDB authorization parameters. The secret value is
-		// a JSON formatted
-		// key-value pair holding InfluxDB authorization values:
+		// initial InfluxDB authorization parameters. For InfluxDB V2
+		// clusters, the secret value is a JSON
+		// formatted key-value pair holding InfluxDB authorization values:
 		// organization, bucket,
-		// username, and password.
+		// username, and password. For InfluxDB V3 clusters, the secret
+		// contains the InfluxDB admin token.
 		influx_auth_parameters_secret_arn?: string
-		id?:                                string
 
 		// The name that uniquely identifies the DB cluster when
 		// interacting with the
@@ -66,6 +78,7 @@ package res
 		// unique per customer
 		// and per region.
 		name!: string
+		id?:   string
 
 		// Specifies whether the networkType of the Timestream for
 		// InfluxDB cluster is
@@ -74,25 +87,35 @@ package res
 		// over both IPv4 and IPv6 protocols.
 		network_type?: string
 
-		// The name of the initial organization for the initial admin user
-		// in InfluxDB. An
+		// Name of the initial organization for the initial admin user in
+		// InfluxDB. An
 		// InfluxDB organization is a workspace for a group of users.
-		organization!: string
+		// Along with bucket, username,
+		// and password, this argument will be stored in the secret
+		// referred to by the
+		// influx_auth_parameters_secret_arn attribute. This field is
+		// forbidden for InfluxDB V3 clusters
+		// (when using an InfluxDB V3 db parameter group).
+		organization?: string
 
-		// The password of the initial admin user created in InfluxDB.
-		// This password will
+		// Password of the initial admin user created in InfluxDB. This
+		// password will
 		// allow you to access the InfluxDB UI to perform various
 		// administrative tasks and
-		// also use the InfluxDB CLI to create an operator token. These
-		// attributes will be
-		// stored in a Secret created in AWS SecretManager in your
-		// account.
-		password!: string
+		// also use the InfluxDB CLI to create an operator token. Along
+		// with bucket, username,
+		// and organization, this argument will be stored in the secret
+		// referred to by the
+		// influx_auth_parameters_secret_arn attribute. This field is
+		// forbidden for InfluxDB V3 clusters
+		// (when using an InfluxDB V3 db parameter group) as the AWS API
+		// rejects it.
+		password?: string
+		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, [...#log_delivery_configuration]])
+		timeouts?: #timeouts
 
 		// The port number on which InfluxDB accepts connections.
 		port?: number
-		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, [...#log_delivery_configuration]])
-		timeouts?: #timeouts
 
 		// Configures the Timestream for InfluxDB cluster with a public IP
 		// to facilitate access.
@@ -111,18 +134,19 @@ package res
 		tags?: [string]:     string
 		tags_all?: [string]: string
 
-		// The username of the initial admin user created in InfluxDB.
-		// Must start with a letter and can't end with a hyphen or contain
-		// two
-		// consecutive hyphens. For example, my-user1. This username will
-		// allow
+		// Username of the initial admin user created in InfluxDB. Must
+		// start with a letter
+		// and can't end with a hyphen or contain two consecutive hyphens.
+		// This username will allow
 		// you to access the InfluxDB UI to perform various administrative
-		// tasks
-		// and also use the InfluxDB CLI to create an operator token.
-		// These
-		// attributes will be stored in a Secret created in Amazon Secrets
-		// Manager in your account.
-		username!: string
+		// tasks and also use the
+		// InfluxDB CLI to create an operator token. Along with bucket,
+		// organization, and password,
+		// this argument will be stored in the secret referred to by the
+		// influx_auth_parameters_secret_arn
+		// attribute. This field is forbidden for InfluxDB V3 clusters
+		// (when using an InfluxDB V3 db parameter group).
+		username?: string
 
 		// A list of VPC security group IDs to associate with the
 		// Timestream for InfluxDB cluster.

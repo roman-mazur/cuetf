@@ -35,6 +35,7 @@ package res
 	})
 
 	#agent_runtime_artifact: close({
+		code_configuration?: matchN(1, [_#defs."/$defs/agent_runtime_artifact/$defs/code_configuration", [..._#defs."/$defs/agent_runtime_artifact/$defs/code_configuration"]])
 		container_configuration?: matchN(1, [_#defs."/$defs/agent_runtime_artifact/$defs/container_configuration", [..._#defs."/$defs/agent_runtime_artifact/$defs/container_configuration"]])
 	})
 
@@ -76,6 +77,22 @@ package res
 		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
 		// time units are "s" (seconds), "m" (minutes), "h" (hours).
 		update?: string
+	})
+
+	_#defs: "/$defs/agent_runtime_artifact/$defs/code_configuration": close({
+		code?: matchN(1, [_#defs."/$defs/agent_runtime_artifact/$defs/code_configuration/$defs/code", [..._#defs."/$defs/agent_runtime_artifact/$defs/code_configuration/$defs/code"]])
+		entry_point!: [...string]
+		runtime!: string
+	})
+
+	_#defs: "/$defs/agent_runtime_artifact/$defs/code_configuration/$defs/code": close({
+		s3?: matchN(1, [_#defs."/$defs/agent_runtime_artifact/$defs/code_configuration/$defs/code/$defs/s3", [..._#defs."/$defs/agent_runtime_artifact/$defs/code_configuration/$defs/code/$defs/s3"]])
+	})
+
+	_#defs: "/$defs/agent_runtime_artifact/$defs/code_configuration/$defs/code/$defs/s3": close({
+		bucket!:     string
+		prefix!:     string
+		version_id?: string
 	})
 
 	_#defs: "/$defs/agent_runtime_artifact/$defs/container_configuration": close({
