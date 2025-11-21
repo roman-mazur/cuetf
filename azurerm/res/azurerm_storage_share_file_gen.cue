@@ -11,11 +11,11 @@ package res
 		content_type?:        string
 		id?:                  string
 		metadata?: [string]: string
-		name!:             string
-		path?:             string
-		timeouts?:         #timeouts
-		source?:           string
-		storage_share_id!: string
+		name!:              string
+		path?:              string
+		timeouts?:          #timeouts
+		source?:            string
+		storage_share_url?: string
 	})
 
 	#timeouts: close({

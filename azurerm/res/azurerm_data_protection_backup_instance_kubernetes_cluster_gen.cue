@@ -12,6 +12,7 @@ import "list"
 		kubernetes_cluster_id!:        string
 		location!:                     string
 		name!:                         string
+		protection_state?:             string
 		snapshot_resource_group_name!: string
 		vault_id!:                     string
 		timeouts?:                     #timeouts

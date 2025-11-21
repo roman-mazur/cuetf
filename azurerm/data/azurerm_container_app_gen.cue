@@ -154,6 +154,7 @@ package data
 					sub_path?: string
 				})]
 			})]
+			cooldown_period_in_seconds?: number
 			custom_scale_rule?: [...close({
 				authentication?: [...close({
 					secret_name?:       string
@@ -190,9 +191,10 @@ package data
 					sub_path?: string
 				})]
 			})]
-			max_replicas?:    number
-			min_replicas?:    number
-			revision_suffix?: string
+			max_replicas?:                number
+			min_replicas?:                number
+			polling_interval_in_seconds?: number
+			revision_suffix?:             string
 			tcp_scale_rule?: [...close({
 				authentication?: [...close({
 					secret_name?:       string

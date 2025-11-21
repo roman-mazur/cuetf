@@ -27,15 +27,18 @@ import "list"
 	})
 
 	#default_database: close({
+		access_keys_authentication_enabled?:            bool
+		client_protocol?:                               string
+		clustering_policy?:                             string
+		eviction_policy?:                               string
+		geo_replication_group_name?:                    string
+		id?:                                            string
+		persistence_append_only_file_backup_frequency?: string
+		persistence_redis_database_backup_frequency?:   string
+		port?:                                          number
 		module?: matchN(1, [_#defs."/$defs/default_database/$defs/module", list.MaxItems(4) & [..._#defs."/$defs/default_database/$defs/module"]])
-		access_keys_authentication_enabled?: bool
-		client_protocol?:                    string
-		clustering_policy?:                  string
-		eviction_policy?:                    string
-		geo_replication_group_name?:         string
-		port?:                               number
-		primary_access_key?:                 string
-		secondary_access_key?:               string
+		primary_access_key?:   string
+		secondary_access_key?: string
 	})
 
 	#identity: close({

@@ -15,14 +15,17 @@ package data
 			eviction_policy?:                    string
 			geo_replication_group_name?:         string
 			geo_replication_linked_database_ids?: [...string]
+			id?: string
 			module?: [...close({
 				args?:    string
 				name?:    string
 				version?: string
 			})]
-			port?:                 number
-			primary_access_key?:   string
-			secondary_access_key?: string
+			persistence_append_only_file_backup_frequency?: string
+			persistence_redis_database_backup_frequency?:   string
+			port?:                                          number
+			primary_access_key?:                            string
+			secondary_access_key?:                          string
 		})]
 		high_availability_enabled?: bool
 		hostname?:                  string
