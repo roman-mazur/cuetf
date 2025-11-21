@@ -144,7 +144,7 @@ package data
 
 		// The name of the device settings profile.
 		name?:      string
-		policy_id?: string
+		policy_id!: string
 
 		// The precedence of the policy. Lower values indicate higher
 		// precedence. Policies will be evaluated in ascending order of

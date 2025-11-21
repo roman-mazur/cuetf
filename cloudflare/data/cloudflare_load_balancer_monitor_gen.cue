@@ -65,7 +65,7 @@ package data
 		// only define the port when using a non-standard port (HTTP:
 		// default 80, HTTPS: default 443).
 		port?:       number
-		monitor_id?: string
+		monitor_id!: string
 
 		// Assign this monitor to emulate the specified zone while
 		// probing. This parameter is only valid for HTTP and HTTPS

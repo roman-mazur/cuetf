@@ -20,7 +20,7 @@ package data
 		// Routing rule status.
 		enabled?: bool
 
-		// Routing rule identifier.
+		// Identifier.
 		id?: string
 
 		// Routing rule name.

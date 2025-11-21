@@ -106,7 +106,7 @@ package data
 		// clouded (true).
 		proxied?:          bool
 		id?:               string
-		load_balancer_id?: string
+		load_balancer_id!: string
 		modified_on?:      string
 
 		// A mapping of region codes to a list of pool IDs (ordered by

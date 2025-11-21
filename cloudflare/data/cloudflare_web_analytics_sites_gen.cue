@@ -15,10 +15,9 @@ package data
 			// If enabled, the JavaScript snippet is automatically injected
 			// for orange-clouded sites.
 			auto_install?: bool
-			created?:      string
 
 			// The Web Analytics site identifier.
-			site_tag?: string
+			id?: string
 
 			// A list of rules.
 			rules?: matchN(1, [close({
@@ -60,12 +59,10 @@ package data
 				paths?: [...string]
 				priority?: number
 			})]])
+			created?: string
 
-			// The Web Analytics site token.
-			site_token?: string
-
-			// Encoded JavaScript snippet.
-			snippet?: string
+			// The Web Analytics site identifier.
+			site_tag?: string
 			ruleset?: close({
 				// Whether the ruleset is enabled.
 				enabled?: bool
@@ -77,14 +74,19 @@ package data
 				// The zone identifier.
 				zone_tag?: string
 			})
+
+			// The Web Analytics site token.
+			site_token?: string
+
+			// Encoded JavaScript snippet.
+			snippet?: string
 		}), [...close({
 			// If enabled, the JavaScript snippet is automatically injected
 			// for orange-clouded sites.
 			auto_install?: bool
-			created?:      string
 
 			// The Web Analytics site identifier.
-			site_tag?: string
+			id?: string
 
 			// A list of rules.
 			rules?: matchN(1, [close({
@@ -126,12 +128,10 @@ package data
 				paths?: [...string]
 				priority?: number
 			})]])
+			created?: string
 
-			// The Web Analytics site token.
-			site_token?: string
-
-			// Encoded JavaScript snippet.
-			snippet?: string
+			// The Web Analytics site identifier.
+			site_tag?: string
 			ruleset?: close({
 				// Whether the ruleset is enabled.
 				enabled?: bool
@@ -143,6 +143,12 @@ package data
 				// The zone identifier.
 				zone_tag?: string
 			})
+
+			// The Web Analytics site token.
+			site_token?: string
+
+			// Encoded JavaScript snippet.
+			snippet?: string
 		})]])
 
 		// The property used to sort the list of results.

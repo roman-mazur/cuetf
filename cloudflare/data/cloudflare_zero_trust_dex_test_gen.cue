@@ -23,7 +23,7 @@ package data
 		description?: string
 
 		// The unique identifier for the test.
-		dex_test_id?: string
+		dex_test_id!: string
 
 		// Determines whether or not the test is active.
 		enabled?: bool

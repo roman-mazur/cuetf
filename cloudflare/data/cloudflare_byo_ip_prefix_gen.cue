@@ -15,8 +15,12 @@ package data
 		asn?: number
 
 		// IP Prefix in Classless Inter-Domain Routing format.
-		cidr?:       string
-		created_at?: string
+		cidr?: string
+
+		// Whether Cloudflare is allowed to generate the LOA document on
+		// behalf of the prefix owner.
+		delegate_loa_creation?: bool
+		created_at?:            string
 
 		// Description of the prefix.
 		description?: string
@@ -24,11 +28,23 @@ package data
 		// Identifier of an IP Prefix.
 		id?: string
 
+		// State of one kind of validation for an IP prefix.
+		irr_validation_state?: string
+
 		// Identifier for the uploaded LOA document.
 		loa_document_id?: string
-		modified_at?:     string
+
+		// State of one kind of validation for an IP prefix.
+		ownership_validation_state?: string
+
+		// Token provided to demonstrate ownership of the prefix.
+		ownership_validation_token?: string
+		modified_at?:                string
 
 		// Identifier of an IP Prefix.
-		prefix_id?: string
+		prefix_id!: string
+
+		// State of one kind of validation for an IP prefix.
+		rpki_validation_state?: string
 	})
 }

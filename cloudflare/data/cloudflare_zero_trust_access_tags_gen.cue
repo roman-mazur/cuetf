@@ -13,8 +13,14 @@ package data
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// The name of the tag
+			id?: string
+
+			// The name of the tag
 			name?: string
 		}), [...close({
+			// The name of the tag
+			id?: string
+
 			// The name of the tag
 			name?: string
 		})]])

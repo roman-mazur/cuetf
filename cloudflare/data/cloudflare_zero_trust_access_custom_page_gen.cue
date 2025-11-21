@@ -11,7 +11,7 @@ package data
 		custom_html?: string
 
 		// UUID.
-		custom_page_id?: string
+		custom_page_id!: string
 
 		// UUID.
 		id?: string

@@ -19,9 +19,6 @@ package data
 		// Asset file type.
 		file_type?: string
 
-		// Asset ID.
-		id?: number
-
 		// Asset name.
 		name?: string
 

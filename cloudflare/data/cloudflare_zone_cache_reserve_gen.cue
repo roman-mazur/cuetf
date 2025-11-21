@@ -7,8 +7,7 @@ package data
 		// Whether the setting is editable.
 		editable?: bool
 
-		// The identifier of the caching setting.
-		// Available values: "cache_reserve".
+		// Identifier.
 		id?: string
 
 		// Last time this setting was modified.

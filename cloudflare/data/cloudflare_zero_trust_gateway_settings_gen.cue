@@ -6,6 +6,7 @@ package data
 	close({
 		account_id!: string
 		created_at?: string
+		id?:         string
 
 		// Specify account settings.
 		settings?: close({

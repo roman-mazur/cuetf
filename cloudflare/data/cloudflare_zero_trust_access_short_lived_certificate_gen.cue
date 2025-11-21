@@ -15,7 +15,7 @@ package data
 		// associated with the CA.
 		aud?: string
 
-		// The ID of the CA.
+		// UUID.
 		id?: string
 
 		// The public key to add to your SSH server configuration.

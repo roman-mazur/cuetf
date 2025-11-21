@@ -7,7 +7,7 @@ package res
 		// How often should a secondary zone auto refresh regardless of
 		// DNS NOTIFY.
 		// Not applicable for primary zones.
-		auto_refresh_seconds!: number
+		auto_refresh_seconds?: number
 
 		// The time for a specific event.
 		checked_time?: string

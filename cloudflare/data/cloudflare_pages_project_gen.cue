@@ -464,7 +464,7 @@ package data
 		// Version of the framework the project is using.
 		framework_version?: string
 
-		// ID of the project.
+		// Name of the project.
 		id?: string
 
 		// Name of the project.

@@ -200,6 +200,6 @@ package data
 		})]])
 
 		// Identifier for the Worker, which can be ID or name.
-		worker_id?: string
+		worker_id!: string
 	})
 }

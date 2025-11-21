@@ -10,7 +10,7 @@ package data
 		// State of the zone settings for Email Routing.
 		enabled?: bool
 
-		// Email Routing settings identifier.
+		// Identifier.
 		id?: string
 
 		// The date and time the settings have been modified.

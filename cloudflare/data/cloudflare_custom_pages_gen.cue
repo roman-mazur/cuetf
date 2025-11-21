@@ -15,13 +15,19 @@ package data
 		// "basic_challenge", "country_challenge", "ip_block",
 		// "managed_challenge", "ratelimit_block", "under_attack",
 		// "waf_block".
-		identifier!: string
-		id?:         string
+		id?: string
+
+		// Error Page Types
+		// Available values: "1000_errors", "500_errors",
+		// "basic_challenge", "country_challenge", "ip_block",
+		// "managed_challenge", "ratelimit_block", "under_attack",
+		// "waf_block".
+		identifier!:  string
+		modified_on?: string
 
 		// The custom page state.
 		// Available values: "default", "customized".
 		state?:          string
-		modified_on?:    string
 		preview_target?: string
 		required_tokens?: [...string]
 

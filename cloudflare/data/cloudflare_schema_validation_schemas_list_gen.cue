@@ -6,10 +6,14 @@ package data
 	close({
 		// The items returned by the data source
 		result?: matchN(1, [close({
+			created_at?: string
+
+			// A unique identifier of this schema
+			id?: string
+
 			// The kind of the schema
 			// Available values: "openapi_v3".
-			kind?:       string
-			created_at?: string
+			kind?: string
 
 			// A human-readable name for the schema
 			name?: string
@@ -24,10 +28,14 @@ package data
 			// An indicator if this schema is enabled
 			validation_enabled?: bool
 		}), [...close({
+			created_at?: string
+
+			// A unique identifier of this schema
+			id?: string
+
 			// The kind of the schema
 			// Available values: "openapi_v3".
-			kind?:       string
-			created_at?: string
+			kind?: string
 
 			// A human-readable name for the schema
 			name?: string

@@ -32,6 +32,9 @@ package data
 			ephemeral_id?: bool
 			domains?: [...string]
 
+			// Widget item identifier tag.
+			id?: string
+
 			// Widget Mode
 			// Available values: "non-interactive", "invisible", "managed".
 			mode?: string
@@ -75,6 +78,9 @@ package data
 			// Return the Ephemeral ID in /siteverify (ENT only).
 			ephemeral_id?: bool
 			domains?: [...string]
+
+			// Widget item identifier tag.
+			id?: string
 
 			// Widget Mode
 			// Available values: "non-interactive", "invisible", "managed".

@@ -13,7 +13,7 @@ package data
 		// primary zones. CIDRs are limited to a maximum of /24 for IPv4
 		// and /64 for IPv6 respectively.
 		ip_range?: string
-		acl_id?:   string
+		acl_id!:   string
 
 		// The name of the acl.
 		name?: string

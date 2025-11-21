@@ -37,7 +37,7 @@ package data
 		})
 
 		// Define configurations using a unique string identifier.
-		hyperdrive_id?: string
+		hyperdrive_id!: string
 
 		// Define configurations using a unique string identifier.
 		id?: string

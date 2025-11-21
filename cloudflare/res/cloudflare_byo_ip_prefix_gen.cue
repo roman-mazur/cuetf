@@ -18,14 +18,30 @@ package res
 		cidr!:       string
 		created_at?: string
 
+		// Whether Cloudflare is allowed to generate the LOA document on
+		// behalf of the prefix owner.
+		delegate_loa_creation?: bool
+
 		// Description of the prefix.
 		description?: string
 
 		// Identifier of an IP Prefix.
 		id?: string
 
+		// State of one kind of validation for an IP prefix.
+		irr_validation_state?: string
+
 		// Identifier for the uploaded LOA document.
-		loa_document_id!: string
+		loa_document_id?: string
 		modified_at?:     string
+
+		// State of one kind of validation for an IP prefix.
+		ownership_validation_state?: string
+
+		// Token provided to demonstrate ownership of the prefix.
+		ownership_validation_token?: string
+
+		// State of one kind of validation for an IP prefix.
+		rpki_validation_state?: string
 	})
 }

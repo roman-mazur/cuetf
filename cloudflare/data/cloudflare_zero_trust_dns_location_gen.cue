@@ -101,7 +101,7 @@ package data
 		// Show the backup destination IPv4 address from the pair
 		// identified dns_destination_ips_id. This field read-only.
 		ipv4_destination_backup?: string
-		location_id?:             string
+		location_id!:             string
 
 		// Specify the location name.
 		name?: string

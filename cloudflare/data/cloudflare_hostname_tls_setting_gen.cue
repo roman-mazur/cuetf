@@ -13,6 +13,10 @@ package data
 
 		// The TLS Setting name.
 		// Available values: "ciphers", "min_tls_version", "http2".
+		id?: string
+
+		// The TLS Setting name.
+		// Available values: "ciphers", "min_tls_version", "http2".
 		setting_id!: string
 
 		// Deployment status for the given tls setting.

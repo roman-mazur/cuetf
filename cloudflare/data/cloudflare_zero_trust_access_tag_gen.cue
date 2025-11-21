@@ -14,6 +14,6 @@ package data
 		name?: string
 
 		// The name of the tag
-		tag_name?: string
+		tag_name!: string
 	})
 }

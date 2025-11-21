@@ -8,7 +8,7 @@ package data
 		account_id!: string
 
 		// A Resource identifier.
-		consumer_id!: string
+		consumer_id?: string
 		created_on?:  string
 		settings?: close({
 			// The maximum number of messages to include in a batch.

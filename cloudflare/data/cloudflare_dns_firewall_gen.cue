@@ -11,7 +11,7 @@ package data
 		deprecate_any_requests?: bool
 
 		// Identifier.
-		dns_firewall_id?: string
+		dns_firewall_id!: string
 
 		// Attack mitigation settings
 		attack_mitigation?: close({

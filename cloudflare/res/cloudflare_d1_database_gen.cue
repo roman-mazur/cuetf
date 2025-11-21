@@ -27,6 +27,12 @@ package res
 			mode!: string
 		})
 
+		// Specify the location to restrict the D1 database to run and
+		// store data. If this option is present, the location hint is
+		// ignored.
+		// Available values: "eu", "fedramp".
+		jurisdiction?: string
+
 		// D1 database name.
 		name!:       string
 		num_tables?: number

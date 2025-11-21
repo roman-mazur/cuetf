@@ -31,7 +31,7 @@ package data
 		created_on?: string
 
 		// Name of the domain.
-		domain_name?: string
+		domain_name!: string
 		domain_id?:   string
 
 		// Name of the domain.

@@ -34,6 +34,7 @@ import "github.com/roman-mazur/cuetf/cloudflare/res"
 	_#res: "\(#cloudflarePrefix)_cloudforce_one_request": res.#cloudflare_cloudforce_one_request
 	_#res: "\(#cloudflarePrefix)_cloudforce_one_request_message": res.#cloudflare_cloudforce_one_request_message
 	_#res: "\(#cloudflarePrefix)_cloudforce_one_request_priority": res.#cloudflare_cloudforce_one_request_priority
+	_#res: "\(#cloudflarePrefix)_connectivity_directory_service": res.#cloudflare_connectivity_directory_service
 	_#res: "\(#cloudflarePrefix)_content_scanning_expression": res.#cloudflare_content_scanning_expression
 	_#res: "\(#cloudflarePrefix)_content_scanning": res.#cloudflare_content_scanning
 	_#res: "\(#cloudflarePrefix)_custom_hostname_fallback_origin": res.#cloudflare_custom_hostname_fallback_origin
@@ -118,6 +119,7 @@ import "github.com/roman-mazur/cuetf/cloudflare/res"
 	_#res: "\(#cloudflarePrefix)_snippet_rules": res.#cloudflare_snippet_rules
 	_#res: "\(#cloudflarePrefix)_snippets": res.#cloudflare_snippets
 	_#res: "\(#cloudflarePrefix)_spectrum_application": res.#cloudflare_spectrum_application
+	_#res: "\(#cloudflarePrefix)_sso_connector": res.#cloudflare_sso_connector
 	_#res: "\(#cloudflarePrefix)_stream_audio_track": res.#cloudflare_stream_audio_track
 	_#res: "\(#cloudflarePrefix)_stream_caption_language": res.#cloudflare_stream_caption_language
 	_#res: "\(#cloudflarePrefix)_stream_download": res.#cloudflare_stream_download
@@ -127,8 +129,11 @@ import "github.com/roman-mazur/cuetf/cloudflare/res"
 	_#res: "\(#cloudflarePrefix)_stream_watermark": res.#cloudflare_stream_watermark
 	_#res: "\(#cloudflarePrefix)_stream_webhook": res.#cloudflare_stream_webhook
 	_#res: "\(#cloudflarePrefix)_tiered_cache": res.#cloudflare_tiered_cache
+	_#res: "\(#cloudflarePrefix)_token_validation_config": res.#cloudflare_token_validation_config
+	_#res: "\(#cloudflarePrefix)_token_validation_rules": res.#cloudflare_token_validation_rules
 	_#res: "\(#cloudflarePrefix)_total_tls": res.#cloudflare_total_tls
 	_#res: "\(#cloudflarePrefix)_turnstile_widget": res.#cloudflare_turnstile_widget
+	_#res: "\(#cloudflarePrefix)_universal_ssl_setting": res.#cloudflare_universal_ssl_setting
 	_#res: "\(#cloudflarePrefix)_url_normalization_settings": res.#cloudflare_url_normalization_settings
 	_#res: "\(#cloudflarePrefix)_user_agent_blocking_rule": res.#cloudflare_user_agent_blocking_rule
 	_#res: "\(#cloudflarePrefix)_user": res.#cloudflare_user
@@ -151,6 +156,8 @@ import "github.com/roman-mazur/cuetf/cloudflare/res"
 	_#res: "\(#cloudflarePrefix)_workers_script": res.#cloudflare_workers_script
 	_#res: "\(#cloudflarePrefix)_workers_script_subdomain": res.#cloudflare_workers_script_subdomain
 	_#res: "\(#cloudflarePrefix)_workflow": res.#cloudflare_workflow
+	_#res: "\(#cloudflarePrefix)_zero_trust_access_ai_controls_mcp_portal": res.#cloudflare_zero_trust_access_ai_controls_mcp_portal
+	_#res: "\(#cloudflarePrefix)_zero_trust_access_ai_controls_mcp_server": res.#cloudflare_zero_trust_access_ai_controls_mcp_server
 	_#res: "\(#cloudflarePrefix)_zero_trust_access_application": res.#cloudflare_zero_trust_access_application
 	_#res: "\(#cloudflarePrefix)_zero_trust_access_custom_page": res.#cloudflare_zero_trust_access_custom_page
 	_#res: "\(#cloudflarePrefix)_zero_trust_access_group": res.#cloudflare_zero_trust_access_group

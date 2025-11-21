@@ -11,6 +11,9 @@ package data
 		// a fallback origin.
 		errors?: [...string]
 
+		// Identifier.
+		id?: string
+
 		// Your origin hostname that requests to your custom hostnames
 		// will be sent to.
 		origin?: string

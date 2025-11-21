@@ -17,6 +17,11 @@ package data
 			// `*.example.com`
 			hostname?: string
 
+			// DNS hostname to be regionalized, must be a subdomain of the
+			// zone. Wildcards are supported for one level, e.g
+			// `*.example.com`
+			id?: string
+
 			// Identifying key for the region
 			region_key?: string
 
@@ -30,6 +35,11 @@ package data
 			// zone. Wildcards are supported for one level, e.g
 			// `*.example.com`
 			hostname?: string
+
+			// DNS hostname to be regionalized, must be a subdomain of the
+			// zone. Wildcards are supported for one level, e.g
+			// `*.example.com`
+			id?: string
 
 			// Identifying key for the region
 			region_key?: string

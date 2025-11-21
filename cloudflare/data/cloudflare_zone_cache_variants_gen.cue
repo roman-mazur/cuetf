@@ -54,8 +54,7 @@ package data
 			webp?: [...string]
 		})
 
-		// The identifier of the caching setting.
-		// Available values: "variants".
+		// Identifier.
 		id?: string
 
 		// Last time this setting was modified.

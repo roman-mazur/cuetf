@@ -6,6 +6,9 @@ package data
 	close({
 		// Identifier.
 		account_id!: string
+
+		// Name of the script, used in URLs and route configuration.
+		id?: string
 		schedules?: matchN(1, [close({
 			created_on?:  string
 			cron?:        string

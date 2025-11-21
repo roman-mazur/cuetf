@@ -10,6 +10,9 @@ package data
 		// The number of days until the next key rotation.
 		days_until_next_rotation?: number
 
+		// Identifier.
+		id?: string
+
 		// The number of days between key rotations.
 		key_rotation_interval_days?: number
 

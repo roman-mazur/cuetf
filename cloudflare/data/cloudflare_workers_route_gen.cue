@@ -12,7 +12,7 @@ package data
 		pattern?: string
 
 		// Identifier.
-		route_id?: string
+		route_id!: string
 
 		// Name of the script to run if the route matches.
 		script?: string

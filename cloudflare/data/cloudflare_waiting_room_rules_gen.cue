@@ -15,17 +15,15 @@ package data
 		enabled?: bool
 
 		// Criteria defining when there is a match for the current rule.
-		expression?: string
-
-		// The ID of the rule.
+		expression?:   string
 		id?:           string
 		last_updated?: string
 
 		// The version of the rule.
-		version?: string
+		version?:         string
+		waiting_room_id!: string
 
 		// Identifier.
-		zone_id!:         string
-		waiting_room_id!: string
+		zone_id!: string
 	})
 }

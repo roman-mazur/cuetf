@@ -11,9 +11,6 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// Additional details about the test.
-			description?: string
-
 			// The configuration object which contains the details for the
 			// WARP client to conduct the test.
 			data?: close({
@@ -27,18 +24,20 @@ package data
 				method?: string
 			})
 
+			// Additional details about the test.
+			description?: string
+
 			// Determines whether or not the test is active.
 			enabled?: bool
+
+			// The unique identifier for the test.
+			id?: string
 
 			// How often the test will run.
 			interval?: string
 
 			// The name of the DEX test. Must be unique.
-			name?:     string
-			targeted?: bool
-
-			// The unique identifier for the test.
-			test_id?: string
+			name?: string
 
 			// DEX rules targeted by this test
 			target_policies?: matchN(1, [close({
@@ -60,10 +59,11 @@ package data
 				// The name of the DEX rule
 				name?: string
 			})]])
+
+			// The unique identifier for the test.
+			test_id?:  string
+			targeted?: bool
 		}), [...close({
-			// Additional details about the test.
-			description?: string
-
 			// The configuration object which contains the details for the
 			// WARP client to conduct the test.
 			data?: close({
@@ -77,18 +77,20 @@ package data
 				method?: string
 			})
 
+			// Additional details about the test.
+			description?: string
+
 			// Determines whether or not the test is active.
 			enabled?: bool
+
+			// The unique identifier for the test.
+			id?: string
 
 			// How often the test will run.
 			interval?: string
 
 			// The name of the DEX test. Must be unique.
-			name?:     string
-			targeted?: bool
-
-			// The unique identifier for the test.
-			test_id?: string
+			name?: string
 
 			// DEX rules targeted by this test
 			target_policies?: matchN(1, [close({
@@ -110,6 +112,10 @@ package data
 				// The name of the DEX rule
 				name?: string
 			})]])
+
+			// The unique identifier for the test.
+			test_id?:  string
+			targeted?: bool
 		})]])
 	})
 }

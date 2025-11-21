@@ -20,7 +20,7 @@ package data
 
 		// The name of the peer.
 		name?:    string
-		peer_id?: string
+		peer_id!: string
 
 		// DNS port of primary or secondary nameserver, depending on what
 		// zone this peer is linked to.

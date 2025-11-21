@@ -21,7 +21,7 @@ package data
 
 		// An ISO 8601 timestamp that marks the end of the event.
 		event_end_time?: string
-		event_id?:       string
+		event_id!:       string
 
 		// An ISO 8601 timestamp that marks the start of the event. At
 		// this time, queued users will be processed with the event's

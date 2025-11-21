@@ -95,17 +95,6 @@ package data
 			exclude_office_ips?: bool
 			gateway_unique_id?:  string
 
-			// The amount of time in minutes a user is allowed access to their
-			// LAN. A value of 0 will allow LAN access until the next WARP
-			// reconnection, such as a reboot or a laptop waking from sleep.
-			// Note that this field is omitted from the response if null or
-			// unset.
-			lan_allow_minutes?: number
-
-			// The size of the subnet for the local access network. Note that
-			// this field is omitted from the response if null or unset.
-			lan_allow_subnet_size?: number
-
 			// List of routes included in the WARP client's tunnel.
 			include?: matchN(1, [close({
 				// The address in CIDR format to include in the tunnel. If
@@ -132,13 +121,14 @@ package data
 				// `address` must not be present.
 				host?: string
 			})]])
+			id?: string
 
-			// The wirefilter expression to match devices. Available values:
-			// "identity.email", "identity.groups.id",
-			// "identity.groups.name", "identity.groups.email",
-			// "identity.service_token_uuid", "identity.saml_attributes",
-			// "network", "os.name", "os.version".
-			match?: string
+			// The amount of time in minutes a user is allowed access to their
+			// LAN. A value of 0 will allow LAN access until the next WARP
+			// reconnection, such as a reboot or a laptop waking from sleep.
+			// Note that this field is omitted from the response if null or
+			// unset.
+			lan_allow_minutes?: number
 			service_mode_v2?: close({
 				// The mode to run the WARP client under.
 				mode?: string
@@ -146,6 +136,17 @@ package data
 				// The port number when used with proxy mode.
 				port?: number
 			})
+
+			// The size of the subnet for the local access network. Note that
+			// this field is omitted from the response if null or unset.
+			lan_allow_subnet_size?: number
+
+			// The wirefilter expression to match devices. Available values:
+			// "identity.email", "identity.groups.id",
+			// "identity.groups.name", "identity.groups.email",
+			// "identity.service_token_uuid", "identity.saml_attributes",
+			// "network", "os.name", "os.version".
+			match?: string
 
 			// The name of the device settings profile.
 			name?:      string
@@ -271,17 +272,6 @@ package data
 			exclude_office_ips?: bool
 			gateway_unique_id?:  string
 
-			// The amount of time in minutes a user is allowed access to their
-			// LAN. A value of 0 will allow LAN access until the next WARP
-			// reconnection, such as a reboot or a laptop waking from sleep.
-			// Note that this field is omitted from the response if null or
-			// unset.
-			lan_allow_minutes?: number
-
-			// The size of the subnet for the local access network. Note that
-			// this field is omitted from the response if null or unset.
-			lan_allow_subnet_size?: number
-
 			// List of routes included in the WARP client's tunnel.
 			include?: matchN(1, [close({
 				// The address in CIDR format to include in the tunnel. If
@@ -308,13 +298,14 @@ package data
 				// `address` must not be present.
 				host?: string
 			})]])
+			id?: string
 
-			// The wirefilter expression to match devices. Available values:
-			// "identity.email", "identity.groups.id",
-			// "identity.groups.name", "identity.groups.email",
-			// "identity.service_token_uuid", "identity.saml_attributes",
-			// "network", "os.name", "os.version".
-			match?: string
+			// The amount of time in minutes a user is allowed access to their
+			// LAN. A value of 0 will allow LAN access until the next WARP
+			// reconnection, such as a reboot or a laptop waking from sleep.
+			// Note that this field is omitted from the response if null or
+			// unset.
+			lan_allow_minutes?: number
 			service_mode_v2?: close({
 				// The mode to run the WARP client under.
 				mode?: string
@@ -322,6 +313,17 @@ package data
 				// The port number when used with proxy mode.
 				port?: number
 			})
+
+			// The size of the subnet for the local access network. Note that
+			// this field is omitted from the response if null or unset.
+			lan_allow_subnet_size?: number
+
+			// The wirefilter expression to match devices. Available values:
+			// "identity.email", "identity.groups.id",
+			// "identity.groups.name", "identity.groups.email",
+			// "identity.service_token_uuid", "identity.saml_attributes",
+			// "network", "os.name", "os.version".
+			match?: string
 
 			// The name of the device settings profile.
 			name?:      string

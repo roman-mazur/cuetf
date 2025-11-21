@@ -18,7 +18,7 @@ package data
 		certificate?: string
 
 		// Identify the certificate with a UUID.
-		certificate_id?: string
+		certificate_id!: string
 		created_at?:     string
 
 		// Provide the SHA256 fingerprint of the certificate (read-only).

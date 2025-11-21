@@ -21,7 +21,7 @@ package data
 			available?: bool
 		})
 		enabled?:  bool
-		entry_id?: string
+		entry_id!: string
 		id?:       string
 		name?:     string
 		pattern?: close({

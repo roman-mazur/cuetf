@@ -12,6 +12,7 @@ package data
 
 		// A list of IP addresses to handle domain resolution.
 		dns_server?: [...string]
+		id?: string
 
 		// The domain suffix to match when resolving locally.
 		suffix?: string

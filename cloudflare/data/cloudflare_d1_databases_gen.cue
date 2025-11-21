@@ -16,6 +16,9 @@ package data
 			// string.
 			created_at?: string
 
+			// D1 database identifier (UUID).
+			id?: string
+
 			// D1 database name.
 			name?: string
 
@@ -26,6 +29,9 @@ package data
 			// Specifies the timestamp the resource was created as an ISO8601
 			// string.
 			created_at?: string
+
+			// D1 database identifier (UUID).
+			id?: string
 
 			// D1 database name.
 			name?: string

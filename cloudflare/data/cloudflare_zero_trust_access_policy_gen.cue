@@ -579,7 +579,7 @@ package data
 		name?: string
 
 		// The UUID of the policy
-		policy_id?: string
+		policy_id!: string
 
 		// A custom message that will appear on the purpose justification
 		// screen.

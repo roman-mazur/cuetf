@@ -7,7 +7,7 @@ package data
 		// Account identifier
 		account_id!:                      string
 		activated?:                       bool
-		connector_id?:                    string
+		connector_id!:                    string
 		id?:                              string
 		interrupt_window_duration_hours?: number
 		interrupt_window_hour_of_day?:    number

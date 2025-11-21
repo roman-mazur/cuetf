@@ -11,6 +11,9 @@ package res
 		// subdomain.
 		enabled!: bool
 
+		// Identifier for the resource.
+		id?: string
+
 		// Whether the Worker's Preview URLs should be available on the
 		// workers.dev subdomain.
 		previews_enabled?: bool

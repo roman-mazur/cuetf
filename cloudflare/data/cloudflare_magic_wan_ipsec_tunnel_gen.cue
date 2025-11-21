@@ -6,6 +6,9 @@ package data
 	close({
 		// Identifier
 		account_id!: string
+
+		// Identifier
+		id?: string
 		ipsec_tunnel?: close({
 			// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in
 			// the ESP tunnel (Phase 2).

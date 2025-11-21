@@ -14,6 +14,9 @@ package data
 		// zone.
 		enabled?: bool
 
+		// Identifier.
+		id?: string
+
 		// The validity period in days for the certificates ordered via
 		// Total TLS.
 		// Available values: 90.

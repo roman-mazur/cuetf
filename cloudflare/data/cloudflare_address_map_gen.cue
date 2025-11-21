@@ -8,7 +8,7 @@ package data
 		account_id!: string
 
 		// Identifier of an Address Map.
-		address_map_id?: string
+		address_map_id!: string
 
 		// If set to false, then the Address Map cannot be deleted via
 		// API. This is true for Cloudflare-managed maps.

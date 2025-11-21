@@ -129,7 +129,7 @@ package data
 		})
 
 		// Defines the unique identifier of the rate limit.
-		rate_limit_id?: string
+		rate_limit_id!: string
 
 		// The threshold that will trigger the configured mitigation
 		// action. Configure this value along with the `period` property
