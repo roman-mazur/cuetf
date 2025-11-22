@@ -255,7 +255,10 @@ func processSchema(cfg *Config, logf clog.Logf, name string, s *schemaData, dir 
 		panic(err)
 	}
 
-	createFile(filepath.Join(dir, name+"-transform.cue"), fmt.Sprintf(transformCode, name))
+	createFile(
+		filepath.Join(dir, name+"-transform.cue"),
+		fmt.Sprintf(transformCode, path.Join(filepath.Base(dir), name)),
+	)
 
 	pkgName := filepath.Base(dir)
 
