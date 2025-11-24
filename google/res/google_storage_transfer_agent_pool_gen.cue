@@ -4,7 +4,7 @@ import "list"
 
 #google_storage_transfer_agent_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_storage_transfer_agent_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_transfer_agent_pool")
 	close({
 		// Specifies the client-specified AgentPool description.
 		display_name?: string

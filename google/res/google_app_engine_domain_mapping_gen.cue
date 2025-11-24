@@ -4,7 +4,7 @@ import "list"
 
 #google_app_engine_domain_mapping: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_app_engine_domain_mapping")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_app_engine_domain_mapping")
 	close({
 		// Relative name of the domain serving the application. Example:
 		// example.com.

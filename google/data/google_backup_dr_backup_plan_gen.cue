@@ -2,7 +2,7 @@ package data
 
 #google_backup_dr_backup_plan: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_backup_dr_backup_plan")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_backup_dr_backup_plan")
 	close({
 		// The ID of the backup plan
 		backup_plan_id!: string

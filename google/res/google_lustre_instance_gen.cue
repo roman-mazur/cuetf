@@ -2,7 +2,7 @@ package res
 
 #google_lustre_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_lustre_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_lustre_instance")
 	close({
 		// The storage capacity of the instance in gibibytes (GiB).
 		// Allowed values

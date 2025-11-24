@@ -2,7 +2,7 @@ package data
 
 #google_backup_dr_data_source: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_backup_dr_data_source")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_backup_dr_data_source")
 	close({
 		// Details of how the resource is configured for backup.
 		backup_config_info?: [...close({

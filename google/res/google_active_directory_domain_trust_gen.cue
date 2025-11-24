@@ -2,7 +2,7 @@ package res
 
 #google_active_directory_domain_trust: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_active_directory_domain_trust")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_active_directory_domain_trust")
 	close({
 		// The fully qualified domain name. e.g.
 		// mydomain.myorganization.com, with the restrictions

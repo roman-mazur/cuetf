@@ -2,7 +2,7 @@ package res
 
 #google_data_catalog_policy_tag: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_data_catalog_policy_tag")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_catalog_policy_tag")
 	close({
 		// Resource names of child policy tags of this policy tag.
 		child_policy_tags?: [...string]

@@ -2,7 +2,7 @@ package res
 
 #google_netapp_backup: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_netapp_backup")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_backup")
 	close({
 		// Region in which backup is stored.
 		backup_region?: string

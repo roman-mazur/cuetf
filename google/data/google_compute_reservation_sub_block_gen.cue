@@ -2,7 +2,7 @@ package data
 
 #google_compute_reservation_sub_block: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_reservation_sub_block")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_reservation_sub_block")
 	close({
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string

@@ -2,7 +2,7 @@ package res
 
 #google_document_ai_processor: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_document_ai_processor")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_document_ai_processor")
 	close({
 		// The display name. Must be unique.
 		display_name!: string

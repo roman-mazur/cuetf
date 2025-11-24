@@ -4,7 +4,7 @@ import "list"
 
 #google_compute_region_instance_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_region_instance_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_instance_template")
 	close({
 		// Whether to allow sending and receiving of packets with
 		// non-matching source or destination IPs. This defaults to

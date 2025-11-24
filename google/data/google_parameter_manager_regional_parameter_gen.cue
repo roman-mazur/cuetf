@@ -2,7 +2,7 @@ package data
 
 #google_parameter_manager_regional_parameter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_parameter_manager_regional_parameter")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_parameter_manager_regional_parameter")
 	close({
 		// The time at which the regional Parameter was created.
 		create_time?: string

@@ -2,7 +2,7 @@ package res
 
 #google_firestore_document: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_firestore_document")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firestore_document")
 	close({
 		// The collection ID, relative to database. For example: chatrooms
 		// or chatrooms/my-document/private-messages.

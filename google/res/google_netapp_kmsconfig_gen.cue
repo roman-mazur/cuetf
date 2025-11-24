@@ -2,7 +2,7 @@ package res
 
 #google_netapp_kmsconfig: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_netapp_kmsconfig")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_kmsconfig")
 	close({
 		// Resource name of the KMS key to use. Only regional keys are
 		// supported. Format:

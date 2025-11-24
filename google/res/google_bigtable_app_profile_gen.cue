@@ -4,7 +4,7 @@ import "list"
 
 #google_bigtable_app_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_bigtable_app_profile")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigtable_app_profile")
 	close({
 		// The unique name of the app profile in the form
 		// '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.

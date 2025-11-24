@@ -4,7 +4,7 @@ import "list"
 
 #google_bigquery_analytics_hub_listing: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_bigquery_analytics_hub_listing")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_analytics_hub_listing")
 	close({
 		// If true, the listing is only available to get the resource
 		// metadata. Listing is non subscribable.

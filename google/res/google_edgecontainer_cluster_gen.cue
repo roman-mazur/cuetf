@@ -4,7 +4,7 @@ import "list"
 
 #google_edgecontainer_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_edgecontainer_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_edgecontainer_cluster")
 	close({
 		// The PEM-encoded public certificate of the cluster's CA.
 		cluster_ca_certificate?: string

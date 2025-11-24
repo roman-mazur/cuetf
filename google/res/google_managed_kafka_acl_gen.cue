@@ -2,7 +2,7 @@ package res
 
 #google_managed_kafka_acl: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_managed_kafka_acl")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_managed_kafka_acl")
 	close({
 		// The ID to use for the acl, which will become the final
 		// component of the acl's name. The structure of 'aclId' defines

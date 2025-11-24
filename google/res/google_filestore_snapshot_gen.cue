@@ -2,7 +2,7 @@ package res
 
 #google_filestore_snapshot: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_filestore_snapshot")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_filestore_snapshot")
 	close({
 		// The time when the snapshot was created in RFC3339 text format.
 		create_time?: string

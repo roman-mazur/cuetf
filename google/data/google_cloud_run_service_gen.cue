@@ -2,7 +2,7 @@ package data
 
 #google_cloud_run_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloud_run_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_cloud_run_service")
 	close({
 		// If set to 'true', the revision name (template.metadata.name)
 		// will be omitted and
@@ -145,6 +145,20 @@ package data
 						container_port?: number
 						name?:           string
 						protocol?:       string
+					})]
+					readiness_probe?: [...close({
+						failure_threshold?: number
+						grpc?: [...close({
+							port?:    number
+							service?: string
+						})]
+						http_get?: [...close({
+							path?: string
+							port?: number
+						})]
+						period_seconds?:    number
+						success_threshold?: number
+						timeout_seconds?:   number
 					})]
 					resources?: [...close({
 						limits?: [string]:   string

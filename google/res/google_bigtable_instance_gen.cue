@@ -4,7 +4,7 @@ import "list"
 
 #google_bigtable_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_bigtable_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigtable_instance")
 	close({
 		// When the field is set to true or unset in Terraform state, a
 		// terraform apply or terraform destroy that would delete the

@@ -4,7 +4,7 @@ import "list"
 
 #google_firestore_index: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_firestore_index")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firestore_index")
 	close({
 		// The API scope at which a query is run. Default value: "ANY_API"
 		// Possible values: ["ANY_API", "DATASTORE_MODE_API",

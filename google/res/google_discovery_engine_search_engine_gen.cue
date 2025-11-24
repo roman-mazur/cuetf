@@ -4,7 +4,7 @@ import "list"
 
 #google_discovery_engine_search_engine: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_discovery_engine_search_engine")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_search_engine")
 	close({
 		// This is the application type this engine resource represents.
 		// The supported values: 'APP_TYPE_UNSPECIFIED',

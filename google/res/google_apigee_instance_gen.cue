@@ -4,7 +4,7 @@ import "list"
 
 #google_apigee_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_instance")
 	close({
 		// Optional. Customer accept list represents the list of projects
 		// (id/number) on customer

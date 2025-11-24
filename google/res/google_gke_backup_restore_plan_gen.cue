@@ -4,7 +4,7 @@ import "list"
 
 #google_gke_backup_restore_plan: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_gke_backup_restore_plan")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_backup_restore_plan")
 	close({
 		// A reference to the BackupPlan from which Backups may be used
 		// as the source for Restores created via this RestorePlan.

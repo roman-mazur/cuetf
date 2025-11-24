@@ -4,7 +4,7 @@ import "list"
 
 #google_workbench_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_workbench_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_workbench_instance")
 	close({
 		// An RFC3339 timestamp in UTC time. This in the format of
 		// yyyy-MM-ddTHH:mm:ss.SSSZ.

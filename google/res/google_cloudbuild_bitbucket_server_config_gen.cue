@@ -4,7 +4,7 @@ import "list"
 
 #google_cloudbuild_bitbucket_server_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloudbuild_bitbucket_server_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloudbuild_bitbucket_server_config")
 	close({
 		// Immutable. API Key that will be attached to webhook. Once this
 		// field has been set, it cannot be changed.

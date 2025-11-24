@@ -4,7 +4,7 @@ import "list"
 
 #google_cloud_asset_project_feed: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloud_asset_project_feed")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_asset_project_feed")
 	close({
 		// A list of the full names of the assets to receive updates. You
 		// must specify either or both of

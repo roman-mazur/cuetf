@@ -2,7 +2,7 @@ package res
 
 #google_network_connectivity_regional_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_connectivity_regional_endpoint")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_regional_endpoint")
 	close({
 		// The access type of this regional endpoint. This field is
 		// reflected in the PSC Forwarding Rule configuration to enable

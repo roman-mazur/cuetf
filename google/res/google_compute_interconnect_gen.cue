@@ -4,7 +4,7 @@ import "list"
 
 #google_compute_interconnect: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_interconnect")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_interconnect")
 	close({
 		// Administrative status of the interconnect. When this is set to
 		// true, the Interconnect is

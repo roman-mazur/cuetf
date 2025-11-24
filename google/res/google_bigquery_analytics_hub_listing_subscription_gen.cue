@@ -4,7 +4,7 @@ import "list"
 
 #google_bigquery_analytics_hub_listing_subscription: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_bigquery_analytics_hub_listing_subscription")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_analytics_hub_listing_subscription")
 	close({
 		// Commercial info metadata for this subscription. This is set if
 		// this is a commercial subscription i.e. if this subscription

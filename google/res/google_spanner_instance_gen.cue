@@ -4,7 +4,7 @@ import "list"
 
 #google_spanner_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_spanner_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_spanner_instance")
 	close({
 		// The name of the instance's configuration (similar but not
 		// quite the same as a region) which defines the geographic

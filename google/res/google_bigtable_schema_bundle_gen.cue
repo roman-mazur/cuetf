@@ -4,7 +4,7 @@ import "list"
 
 #google_bigtable_schema_bundle: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_bigtable_schema_bundle")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigtable_schema_bundle")
 	close({
 		// If true, allow backwards incompatible changes.
 		ignore_warnings?: bool

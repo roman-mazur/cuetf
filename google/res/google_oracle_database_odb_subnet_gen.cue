@@ -2,7 +2,7 @@ package res
 
 #google_oracle_database_odb_subnet: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_oracle_database_odb_subnet")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_oracle_database_odb_subnet")
 	close({
 		// The CIDR range of the subnet.
 		cidr_range!: string

@@ -2,7 +2,7 @@ package res
 
 #google_cloudbuildv2_repository: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloudbuildv2_repository")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloudbuildv2_repository")
 	close({
 		// Allows clients to store small amounts of arbitrary data.
 		//

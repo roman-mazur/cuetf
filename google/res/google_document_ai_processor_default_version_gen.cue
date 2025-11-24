@@ -2,7 +2,7 @@ package res
 
 #google_document_ai_processor_default_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_document_ai_processor_default_version")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_document_ai_processor_default_version")
 	close({
 		timeouts?: #timeouts
 		id?:       string

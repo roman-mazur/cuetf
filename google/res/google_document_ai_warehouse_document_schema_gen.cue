@@ -4,7 +4,7 @@ import "list"
 
 #google_document_ai_warehouse_document_schema: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_document_ai_warehouse_document_schema")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_document_ai_warehouse_document_schema")
 	close({
 		// Name of the schema given by the user.
 		display_name!: string

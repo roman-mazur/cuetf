@@ -4,7 +4,7 @@ import "list"
 
 #google_iam_workforce_pool_provider_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_iam_workforce_pool_provider_key")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_workforce_pool_provider_key")
 	close({
 		// The time after which the key will be permanently deleted and
 		// cannot be recovered.

@@ -2,7 +2,7 @@ package res
 
 #google_firestore_user_creds: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_firestore_user_creds")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firestore_user_creds")
 	close({
 		// The timestamp at which these user creds were created.
 		create_time?: string

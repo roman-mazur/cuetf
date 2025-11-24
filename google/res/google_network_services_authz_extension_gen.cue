@@ -2,7 +2,7 @@ package res
 
 #google_network_services_authz_extension: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_services_authz_extension")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_authz_extension")
 	close({
 		// The :authority header in the gRPC request sent from Envoy to
 		// the extension service.

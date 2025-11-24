@@ -4,8 +4,11 @@ import "list"
 
 #google_compute_reservation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_reservation")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_reservation")
 	close({
+		// List of all reservation block names in the parent reservation.
+		block_names?: [...string]
+
 		// Full or partial URL to a parent commitment. This field displays
 		// for
 		// reservations that are tied to a commitment.
@@ -46,11 +49,17 @@ import "list"
 		// characters must be a dash, lowercase letter, or digit, except
 		// the last
 		// character, which cannot be a dash.
-		name!: string
+		name!:    string
+		project?: string
 
 		// The number of reservation blocks associated with this
 		// reservation.
 		reservation_block_count?: number
+		delete_after_duration?: matchN(1, [#delete_after_duration, list.MaxItems(1) & [...#delete_after_duration]])
+		reservation_sharing_policy?: matchN(1, [#reservation_sharing_policy, list.MaxItems(1) & [...#reservation_sharing_policy]])
+		share_settings?: matchN(1, [#share_settings, list.MaxItems(1) & [...#share_settings]])
+		specific_reservation!: matchN(1, [#specific_reservation, list.MaxItems(1) & [_, ...] & [...#specific_reservation]])
+		timeouts?: #timeouts
 
 		// Status information for Reservation resource.
 		resource_status?: [...close({
@@ -84,12 +93,6 @@ import "list"
 				utilizations?: [string]: string
 			})]
 		})]
-		project?: string
-		delete_after_duration?: matchN(1, [#delete_after_duration, list.MaxItems(1) & [...#delete_after_duration]])
-		reservation_sharing_policy?: matchN(1, [#reservation_sharing_policy, list.MaxItems(1) & [...#reservation_sharing_policy]])
-		share_settings?: matchN(1, [#share_settings, list.MaxItems(1) & [...#share_settings]])
-		specific_reservation!: matchN(1, [#specific_reservation, list.MaxItems(1) & [_, ...] & [...#specific_reservation]])
-		timeouts?: #timeouts
 
 		// Reserved for future use.
 		satisfies_pzs?: bool

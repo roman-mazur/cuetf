@@ -4,7 +4,7 @@ import "list"
 
 #google_colab_runtime: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_colab_runtime")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_colab_runtime")
 	close({
 		// Triggers an upgrade anytime the runtime is started if it is
 		// upgradable.

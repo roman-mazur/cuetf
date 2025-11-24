@@ -4,7 +4,7 @@ import "list"
 
 #google_notebooks_environment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_notebooks_environment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_notebooks_environment")
 	close({
 		// Instance creation time
 		create_time?: string

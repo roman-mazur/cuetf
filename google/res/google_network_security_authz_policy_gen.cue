@@ -4,7 +4,7 @@ import "list"
 
 #google_network_security_authz_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_security_authz_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_authz_policy")
 	close({
 		// When the action is CUSTOM, customProvider must be specified.
 		// When the action is ALLOW, only requests matching the policy

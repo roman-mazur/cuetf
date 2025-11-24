@@ -4,7 +4,7 @@ import "list"
 
 #google_beyondcorp_security_gateway_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_beyondcorp_security_gateway_application")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_beyondcorp_security_gateway_application")
 	close({
 		// User-settable Application resource ID.
 		// * Must start with a letter.

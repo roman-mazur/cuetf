@@ -2,7 +2,7 @@ package res
 
 #google_secret_manager_regional_secret_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_secret_manager_regional_secret_version")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_secret_manager_regional_secret_version")
 	close({
 		// The time at which the regional secret version was created.
 		create_time?: string

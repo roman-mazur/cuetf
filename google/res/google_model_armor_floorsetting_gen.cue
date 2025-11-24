@@ -4,7 +4,7 @@ import "list"
 
 #google_model_armor_floorsetting: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_model_armor_floorsetting")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_model_armor_floorsetting")
 	close({
 		// [Output only] Create timestamp
 		create_time?: string

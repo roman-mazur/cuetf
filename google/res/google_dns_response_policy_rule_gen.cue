@@ -4,7 +4,7 @@ import "list"
 
 #google_dns_response_policy_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dns_response_policy_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dns_response_policy_rule")
 	close({
 		// The DNS name (wildcard or exact) to apply this rule to. Must be
 		// unique within the Response Policy Rule.

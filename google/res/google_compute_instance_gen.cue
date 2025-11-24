@@ -4,7 +4,7 @@ import "list"
 
 #google_compute_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_instance")
 	close({
 		// If true, allows Terraform to stop the instance to update its
 		// properties. If you try to update a property that requires

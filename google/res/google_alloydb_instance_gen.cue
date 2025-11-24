@@ -4,7 +4,7 @@ import "list"
 
 #google_alloydb_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_alloydb_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_alloydb_instance")
 	close({
 		// 'Specifies whether an instance needs to spin up. Once the
 		// instance is

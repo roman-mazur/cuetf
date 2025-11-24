@@ -4,7 +4,7 @@ import "list"
 
 #google_managed_kafka_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_managed_kafka_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_managed_kafka_cluster")
 	close({
 		// The ID to use for the cluster, which will become the final
 		// component of the cluster's name. The ID must be 1-63
@@ -32,26 +32,27 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// ID of the location of the Kafka resource. See
 		// https://cloud.google.com/managed-kafka/docs/locations for a
 		// list of supported locations.
 		location!: string
+		id?:       string
 
 		// The name of the cluster. Structured like:
 		// 'projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID'.
 		name?: string
+		broker_capacity_config?: matchN(1, [#broker_capacity_config, list.MaxItems(1) & [...#broker_capacity_config]])
 		capacity_config!: matchN(1, [#capacity_config, list.MaxItems(1) & [_, ...] & [...#capacity_config]])
 		gcp_config!: matchN(1, [#gcp_config, list.MaxItems(1) & [_, ...] & [...#gcp_config]])
 		rebalance_config?: matchN(1, [#rebalance_config, list.MaxItems(1) & [...#rebalance_config]])
-		project?:  string
 		timeouts?: #timeouts
+		project?:  string
+		tls_config?: matchN(1, [#tls_config, list.MaxItems(1) & [...#tls_config]])
 
 		// The current state of the cluster. Possible values:
 		// 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'DELETING'.
 		state?: string
-		tls_config?: matchN(1, [#tls_config, list.MaxItems(1) & [...#tls_config]])
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -59,6 +60,12 @@ import "list"
 
 		// The time when the cluster was last updated.
 		update_time?: string
+	})
+
+	#broker_capacity_config: close({
+		// The disk to provision for each broker in Gigabytes. Minimum:
+		// 100 GB.
+		disk_size_gb?: string
 	})
 
 	#capacity_config: close({

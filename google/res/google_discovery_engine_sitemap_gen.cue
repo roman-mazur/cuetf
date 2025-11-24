@@ -2,7 +2,7 @@ package res
 
 #google_discovery_engine_sitemap: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_discovery_engine_sitemap")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_sitemap")
 	close({
 		// Timestamp when the sitemap was created.
 		create_time?: string

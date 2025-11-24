@@ -2,7 +2,7 @@ package res
 
 #google_iam_oauth_client_credential: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_iam_oauth_client_credential")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_oauth_client_credential")
 	close({
 		// The system-generated OAuth client secret.
 		//

@@ -4,7 +4,7 @@ import "list"
 
 #google_network_connectivity_spoke: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_connectivity_spoke")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_spoke")
 	close({
 		// Output only. The time the spoke was created.
 		create_time?: string

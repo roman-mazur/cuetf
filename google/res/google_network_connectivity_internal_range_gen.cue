@@ -4,7 +4,7 @@ import "list"
 
 #google_network_connectivity_internal_range: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_connectivity_internal_range")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_internal_range")
 	close({
 		// An optional description of this resource.
 		description?: string

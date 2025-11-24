@@ -4,7 +4,7 @@ import "list"
 
 #google_eventarc_message_bus: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_eventarc_message_bus")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_eventarc_message_bus")
 	close({
 		// Optional. Resource annotations.
 		//

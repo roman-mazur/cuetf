@@ -2,7 +2,7 @@ package res
 
 #google_tags_tag_value: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_tags_tag_value")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_tags_tag_value")
 	close({
 		// Output only. Creation time.
 		//

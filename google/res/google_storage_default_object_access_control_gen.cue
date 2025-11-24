@@ -2,7 +2,7 @@ package res
 
 #google_storage_default_object_access_control: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_storage_default_object_access_control")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_default_object_access_control")
 	close({
 		// The name of the bucket.
 		bucket!: string

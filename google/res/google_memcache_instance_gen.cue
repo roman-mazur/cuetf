@@ -4,7 +4,7 @@ import "list"
 
 #google_memcache_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_memcache_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_memcache_instance")
 	close({
 		// The full name of the GCE network to connect the instance to. If
 		// not provided,

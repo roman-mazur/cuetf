@@ -2,7 +2,7 @@ package res
 
 #google_scc_project_scc_big_query_export: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_scc_project_scc_big_query_export")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_project_scc_big_query_export")
 	close({
 		// This must be unique within the organization.
 		big_query_export_id!: string

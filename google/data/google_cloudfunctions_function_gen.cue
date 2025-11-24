@@ -2,7 +2,7 @@ package data
 
 #google_cloudfunctions_function: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloudfunctions_function")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_cloudfunctions_function")
 	close({
 		// Security patches are applied automatically to the runtime
 		// without requiring the function to be redeployed.

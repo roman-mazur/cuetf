@@ -4,7 +4,7 @@ import "list"
 
 #google_iam_organizations_policy_binding: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_iam_organizations_policy_binding")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_organizations_policy_binding")
 	close({
 		// Optional. User defined annotations. See
 		// https://google.aip.dev/148#annotations for more details such

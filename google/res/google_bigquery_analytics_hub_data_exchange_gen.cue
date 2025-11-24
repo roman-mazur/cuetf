@@ -4,7 +4,7 @@ import "list"
 
 #google_bigquery_analytics_hub_data_exchange: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_bigquery_analytics_hub_data_exchange")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_analytics_hub_data_exchange")
 	close({
 		// The ID of the data exchange. Must contain only Unicode letters,
 		// numbers (0-9), underscores (_). Should not use characters that

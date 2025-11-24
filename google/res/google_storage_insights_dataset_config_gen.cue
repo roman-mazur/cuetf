@@ -4,7 +4,7 @@ import "list"
 
 #google_storage_insights_dataset_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_storage_insights_dataset_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_insights_dataset_config")
 	close({
 		// The UTC time at which the DatasetConfig was created. This is
 		// auto-populated.

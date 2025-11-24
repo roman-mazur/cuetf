@@ -2,7 +2,7 @@ package data
 
 #google_cloud_identity_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloud_identity_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_cloud_identity_policy")
 	close({
 		// The customer that the policy belongs to.
 		customer?: string

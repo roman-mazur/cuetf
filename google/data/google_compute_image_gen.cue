@@ -2,7 +2,7 @@ package data
 
 #google_compute_image: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_image")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_image")
 	close({
 		archive_size_bytes?:          number
 		creation_timestamp?:          string

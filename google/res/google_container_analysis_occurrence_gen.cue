@@ -4,7 +4,7 @@ import "list"
 
 #google_container_analysis_occurrence: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_container_analysis_occurrence")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_analysis_occurrence")
 	close({
 		// The time when the repository was created.
 		create_time?: string

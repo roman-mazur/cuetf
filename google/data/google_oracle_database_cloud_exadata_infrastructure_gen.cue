@@ -2,7 +2,7 @@ package data
 
 #google_oracle_database_cloud_exadata_infrastructure: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_oracle_database_cloud_exadata_infrastructure")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_oracle_database_cloud_exadata_infrastructure")
 	close({
 		// The ID of the Exadata Infrastructure to create. This value is
 		// restricted

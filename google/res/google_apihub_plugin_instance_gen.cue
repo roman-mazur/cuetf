@@ -4,7 +4,7 @@ import "list"
 
 #google_apihub_plugin_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apihub_plugin_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apihub_plugin_instance")
 	close({
 		// Timestamp indicating when the plugin instance was created.
 		create_time?: string

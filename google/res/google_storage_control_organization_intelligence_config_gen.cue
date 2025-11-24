@@ -4,7 +4,7 @@ import "list"
 
 #google_storage_control_organization_intelligence_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_storage_control_organization_intelligence_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_control_organization_intelligence_config")
 	close({
 		// Edition configuration of the Storage Intelligence resource.
 		// Valid values are INHERIT, DISABLED, TRIAL and STANDARD.

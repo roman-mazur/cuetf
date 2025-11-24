@@ -4,7 +4,7 @@ import "list"
 
 #google_compute_managed_ssl_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_managed_ssl_certificate")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_managed_ssl_certificate")
 	close({
 		// The unique identifier for the resource.
 		certificate_id?: number

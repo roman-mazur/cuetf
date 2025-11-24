@@ -4,7 +4,7 @@ import "list"
 
 #google_dataproc_gdc_application_environment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dataproc_gdc_application_environment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_gdc_application_environment")
 	close({
 		// The annotations to associate with this application environment.
 		// Annotations may be used to store client information, but are

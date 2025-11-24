@@ -2,7 +2,7 @@ package res
 
 #google_alloydb_user: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_alloydb_user")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_alloydb_user")
 	close({
 		// Identifies the alloydb cluster. Must be in the format
 		// 'projects/{project}/locations/{location}/clusters/{cluster_id}'

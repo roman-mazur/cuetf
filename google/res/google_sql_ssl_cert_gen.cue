@@ -2,7 +2,7 @@ package res
 
 #google_sql_ssl_cert: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_sql_ssl_cert")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_sql_ssl_cert")
 	close({
 		// The actual certificate data for this client certificate.
 		cert?: string

@@ -4,7 +4,7 @@ import "list"
 
 #google_blockchain_node_engine_blockchain_nodes: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_blockchain_node_engine_blockchain_nodes")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_blockchain_node_engine_blockchain_nodes")
 	close({
 		// ID of the requesting object.
 		blockchain_node_id!: string

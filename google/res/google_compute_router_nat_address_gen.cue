@@ -2,7 +2,7 @@ package res
 
 #google_compute_router_nat_address: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_router_nat_address")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_router_nat_address")
 	close({
 		// A list of URLs of the IP resources to be drained. These IPs
 		// must be

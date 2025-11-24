@@ -2,7 +2,7 @@ package res
 
 #google_apphub_service_project_attachment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apphub_service_project_attachment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apphub_service_project_attachment")
 	close({
 		// Output only. Create time.
 		create_time?: string

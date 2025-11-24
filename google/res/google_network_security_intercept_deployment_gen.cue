@@ -2,7 +2,7 @@ package res
 
 #google_network_security_intercept_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_security_intercept_deployment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_intercept_deployment")
 	close({
 		// The timestamp when the resource was created.
 		// See https://google.aip.dev/148#timestamps.

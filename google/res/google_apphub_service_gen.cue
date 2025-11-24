@@ -4,7 +4,7 @@ import "list"
 
 #google_apphub_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apphub_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apphub_service")
 	close({
 		// Part of 'parent'. Full resource name of a parent Application.
 		// Example:
@@ -43,9 +43,22 @@ import "list"
 		// Properties of an underlying cloud resource that can comprise a
 		// Service.
 		service_properties?: [...close({
+			extended_metadata?: [...close({
+				key?: string
+				value?: [...close({
+					extended_metadata_schema?: string
+					metadata_struct?:          string
+				})]
+			})]
+			functional_type?: [...close({
+				type?: string
+			})]
 			gcp_project?: string
 			location?:    string
-			zone?:        string
+			registration_type?: [...close({
+				type?: string
+			})]
+			zone?: string
 		})]
 
 		// Reference to an underlying networking resource that can

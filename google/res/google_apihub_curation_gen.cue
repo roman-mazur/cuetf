@@ -4,7 +4,7 @@ import "list"
 
 #google_apihub_curation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apihub_curation")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apihub_curation")
 	close({
 		// The time at which the curation was created.
 		create_time?: string

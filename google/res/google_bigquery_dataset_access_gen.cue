@@ -4,7 +4,7 @@ import "list"
 
 #google_bigquery_dataset_access: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_bigquery_dataset_access")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_dataset_access")
 	close({
 		// If true, represents that that the iam_member in the config was
 		// translated to a different member type by the API, and is

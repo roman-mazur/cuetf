@@ -4,7 +4,7 @@ import "list"
 
 #google_cloudfunctions2_function: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloudfunctions2_function")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloudfunctions2_function")
 	close({
 		// User-provided description of a function.
 		description?: string

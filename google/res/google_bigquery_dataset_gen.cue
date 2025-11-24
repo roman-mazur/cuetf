@@ -4,7 +4,7 @@ import "list"
 
 #google_bigquery_dataset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_bigquery_dataset")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_dataset")
 	close({
 		// The time when this dataset was created, in milliseconds since
 		// the

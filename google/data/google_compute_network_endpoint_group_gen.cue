@@ -2,7 +2,7 @@ package data
 
 #google_compute_network_endpoint_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_network_endpoint_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_network_endpoint_group")
 	close({
 		// The default port used if the port number is not specified in
 		// the

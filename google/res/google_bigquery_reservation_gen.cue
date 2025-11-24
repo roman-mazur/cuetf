@@ -4,7 +4,7 @@ import "list"
 
 #google_bigquery_reservation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_bigquery_reservation")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_reservation")
 	close({
 		// Maximum number of queries that are allowed to run concurrently
 		// in this reservation. This is a soft limit due to asynchronous

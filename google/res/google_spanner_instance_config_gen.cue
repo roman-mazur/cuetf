@@ -2,7 +2,7 @@ package res
 
 #google_spanner_instance_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_spanner_instance_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_spanner_instance_config")
 	close({
 		// Base configuration name, e.g. nam3, based on which this
 		// configuration is created.

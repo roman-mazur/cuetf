@@ -2,7 +2,7 @@ package res
 
 #google_gemini_gemini_gcp_enablement_setting_binding: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_gemini_gemini_gcp_enablement_setting_binding")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gemini_gemini_gcp_enablement_setting_binding")
 	close({
 		// Create time stamp.
 		create_time?: string

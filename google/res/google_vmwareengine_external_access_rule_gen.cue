@@ -2,7 +2,7 @@ package res
 
 #google_vmwareengine_external_access_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_vmwareengine_external_access_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vmwareengine_external_access_rule")
 	close({
 		// The action that the external access rule performs. Possible
 		// values: ["ALLOW", "DENY"]

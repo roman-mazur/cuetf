@@ -4,7 +4,7 @@ import "list"
 
 #google_firebase_app_hosting_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_firebase_app_hosting_domain")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_hosting_domain")
 	close({
 		// The ID of the Backend that this Domain is associated with
 		backend!: string

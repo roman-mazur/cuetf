@@ -4,7 +4,7 @@ import "list"
 
 #google_gkeonprem_bare_metal_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_gkeonprem_bare_metal_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gkeonprem_bare_metal_cluster")
 	close({
 		// The Admin Cluster this Bare Metal User Cluster belongs to.
 		// This is the full resource name of the Admin Cluster's hub
