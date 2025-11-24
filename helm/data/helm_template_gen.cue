@@ -2,7 +2,7 @@ package data
 
 #helm_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/helm_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/helm_template")
 	close({
 		// Kubernetes api versions used for Capabilities.APIVersions.
 		api_versions?: [...string]
