@@ -4,7 +4,7 @@ import "list"
 
 #google_beyondcorp_app_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_beyondcorp_app_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_beyondcorp_app_connection")
 	close({
 		// List of AppConnectors that are authorised to be associated with
 		// this AppConnection

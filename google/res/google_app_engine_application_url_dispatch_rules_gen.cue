@@ -2,7 +2,7 @@ package res
 
 #google_app_engine_application_url_dispatch_rules: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_app_engine_application_url_dispatch_rules")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_app_engine_application_url_dispatch_rules")
 	close({
 		dispatch_rules!: matchN(1, [#dispatch_rules, [_, ...] & [...#dispatch_rules]])
 		timeouts?: #timeouts

@@ -2,7 +2,7 @@ package res
 
 #google_certificate_manager_dns_authorization: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_certificate_manager_dns_authorization")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_certificate_manager_dns_authorization")
 	close({
 		// A human-readable description of the resource.
 		description?: string

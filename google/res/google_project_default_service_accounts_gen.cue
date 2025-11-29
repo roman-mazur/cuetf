@@ -2,7 +2,7 @@ package res
 
 #google_project_default_service_accounts: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_project_default_service_accounts")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_project_default_service_accounts")
 	close({
 		// The action to be performed in the default service accounts.
 		// Valid values are: DEPRIVILEGE, DELETE, DISABLE.

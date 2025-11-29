@@ -4,7 +4,7 @@ import "list"
 
 #google_apigee_keystores_aliases_self_signed_cert: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_keystores_aliases_self_signed_cert")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_keystores_aliases_self_signed_cert")
 	close({
 		// Alias for the key/certificate pair. Values must match the
 		// regular expression [\w\s-.]{1,255}.

@@ -2,7 +2,7 @@ package data
 
 #google_container_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_container_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_container_cluster")
 	close({
 		// The configuration for addons supported by GKE.
 		addons_config?: [...close({
@@ -372,7 +372,8 @@ package data
 				end_time?:       string
 				exclusion_name?: string
 				exclusion_options?: [...close({
-					scope?: string
+					end_time_behavior?: string
+					scope?:             string
 				})]
 				start_time?: string
 			})]
@@ -506,6 +507,9 @@ package data
 							secret_uri?: string
 						})]
 					})]
+					enabled?: bool
+				})]
+				writable_cgroups?: [...close({
 					enabled?: bool
 				})]
 			})]
@@ -741,6 +745,9 @@ package data
 						})]
 						enabled?: bool
 					})]
+					writable_cgroups?: [...close({
+						enabled?: bool
+					})]
 				})]
 				disk_size_gb?: number
 				disk_type?:    string
@@ -944,6 +951,9 @@ package data
 								secret_uri?: string
 							})]
 						})]
+						enabled?: bool
+					})]
+					writable_cgroups?: [...close({
 						enabled?: bool
 					})]
 				})]

@@ -4,7 +4,7 @@ import "list"
 
 #google_monitoring_slo: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_monitoring_slo")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_slo")
 	close({
 		// A calendar period, semantically "since the start of the current
 		// <calendarPeriod>". Possible values: ["DAY", "WEEK",

@@ -2,7 +2,7 @@ package res
 
 #google_endpoints_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_endpoints_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_endpoints_service")
 	close({
 		// A list of API objects.
 		apis?: [...close({

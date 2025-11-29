@@ -4,7 +4,7 @@ import "list"
 
 #google_access_context_manager_service_perimeter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_access_context_manager_service_perimeter")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_access_context_manager_service_perimeter")
 	close({
 		// Time the AccessPolicy was created in UTC.
 		create_time?: string

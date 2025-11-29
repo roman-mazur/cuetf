@@ -4,7 +4,7 @@ import "list"
 
 #google_gke_hub_feature: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_gke_hub_feature")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_hub_feature")
 	close({
 		// Output only. When the Feature resource was created.
 		create_time?: string

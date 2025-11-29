@@ -2,7 +2,7 @@ package res
 
 #google_compute_target_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_target_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_target_instance")
 	close({
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string

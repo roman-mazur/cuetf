@@ -4,7 +4,7 @@ import "list"
 
 #google_apigee_organization: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_organization")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_organization")
 	close({
 		// Primary GCP region for analytics data storage. For valid
 		// values, see [Create an Apigee

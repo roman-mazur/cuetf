@@ -2,7 +2,7 @@ package res
 
 #google_sql_database: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_sql_database")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_sql_database")
 	close({
 		// The charset value. See MySQL's
 		// [Supported Character Sets and

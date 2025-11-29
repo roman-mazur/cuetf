@@ -4,7 +4,7 @@ import "list"
 
 #google_kms_crypto_key_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_kms_crypto_key_version")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_kms_crypto_key_version")
 	close({
 		// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion
 		// supports.

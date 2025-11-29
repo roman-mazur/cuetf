@@ -4,7 +4,7 @@ import "list"
 
 #google_org_policy_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_org_policy_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_org_policy_policy")
 	close({
 		// Optional. An opaque tag indicating the current state of the
 		// policy, used for concurrency control. This 'etag' is computed

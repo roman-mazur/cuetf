@@ -2,7 +2,7 @@ package res
 
 #google_netapp_backup_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_netapp_backup_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_backup_policy")
 	close({
 		// The total number of volumes assigned by this backup policy.
 		assigned_volume_count?: number

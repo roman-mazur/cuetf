@@ -2,7 +2,7 @@ package data
 
 #google_compute_security_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_security_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_security_policy")
 	close({
 		// Adaptive Protection Config of this security policy.
 		adaptive_protection_config?: [...close({

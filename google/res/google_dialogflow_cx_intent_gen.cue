@@ -2,7 +2,7 @@ package res
 
 #google_dialogflow_cx_intent: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dialogflow_cx_intent")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_intent")
 	close({
 		// Human readable description for better understanding an intent
 		// like its scope, content, result etc. Maximum character limit:

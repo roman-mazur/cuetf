@@ -4,7 +4,7 @@ import "list"
 
 #google_apphub_workload: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apphub_workload")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apphub_workload")
 	close({
 		// Part of 'parent'. Full resource name of a parent Application.
 		// Example:
@@ -54,6 +54,16 @@ import "list"
 		// Properties of an underlying compute resource represented by the
 		// Workload.
 		workload_properties?: [...close({
+			extended_metadata?: [...close({
+				key?: string
+				value?: [...close({
+					extended_metadata_schema?: string
+					metadata_struct?:          string
+				})]
+			})]
+			functional_type?: [...close({
+				type?: string
+			})]
 			gcp_project?: string
 			location?:    string
 			zone?:        string

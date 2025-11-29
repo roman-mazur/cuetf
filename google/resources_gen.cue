@@ -178,9 +178,12 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_certificate_manager_certificate_map": res.#google_certificate_manager_certificate_map
 	_#res: "\(#googlePrefix)_certificate_manager_dns_authorization": res.#google_certificate_manager_dns_authorization
 	_#res: "\(#googlePrefix)_certificate_manager_trust_config": res.#google_certificate_manager_trust_config
+	_#res: "\(#googlePrefix)_ces_agent": res.#google_ces_agent
 	_#res: "\(#googlePrefix)_ces_app": res.#google_ces_app
 	_#res: "\(#googlePrefix)_ces_deployment": res.#google_ces_deployment
 	_#res: "\(#googlePrefix)_ces_example": res.#google_ces_example
+	_#res: "\(#googlePrefix)_ces_guardrail": res.#google_ces_guardrail
+	_#res: "\(#googlePrefix)_ces_tool": res.#google_ces_tool
 	_#res: "\(#googlePrefix)_ces_toolset": res.#google_ces_toolset
 	_#res: "\(#googlePrefix)_chronicle_data_access_label": res.#google_chronicle_data_access_label
 	_#res: "\(#googlePrefix)_chronicle_data_access_scope": res.#google_chronicle_data_access_scope
@@ -214,6 +217,9 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_cloud_run_v2_worker_pool_iam_member": res.#google_cloud_run_v2_worker_pool_iam_member
 	_#res: "\(#googlePrefix)_cloud_run_v2_worker_pool_iam_policy": res.#google_cloud_run_v2_worker_pool_iam_policy
 	_#res: "\(#googlePrefix)_cloud_scheduler_job": res.#google_cloud_scheduler_job
+	_#res: "\(#googlePrefix)_cloud_security_compliance_cloud_control": res.#google_cloud_security_compliance_cloud_control
+	_#res: "\(#googlePrefix)_cloud_security_compliance_framework_deployment": res.#google_cloud_security_compliance_framework_deployment
+	_#res: "\(#googlePrefix)_cloud_security_compliance_framework": res.#google_cloud_security_compliance_framework
 	_#res: "\(#googlePrefix)_cloud_tasks_queue": res.#google_cloud_tasks_queue
 	_#res: "\(#googlePrefix)_cloud_tasks_queue_iam_binding": res.#google_cloud_tasks_queue_iam_binding
 	_#res: "\(#googlePrefix)_cloud_tasks_queue_iam_member": res.#google_cloud_tasks_queue_iam_member
@@ -562,6 +568,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_discovery_engine_recommendation_engine": res.#google_discovery_engine_recommendation_engine
 	_#res: "\(#googlePrefix)_discovery_engine_schema": res.#google_discovery_engine_schema
 	_#res: "\(#googlePrefix)_discovery_engine_search_engine": res.#google_discovery_engine_search_engine
+	_#res: "\(#googlePrefix)_discovery_engine_serving_config": res.#google_discovery_engine_serving_config
 	_#res: "\(#googlePrefix)_discovery_engine_sitemap": res.#google_discovery_engine_sitemap
 	_#res: "\(#googlePrefix)_discovery_engine_target_site": res.#google_discovery_engine_target_site
 	_#res: "\(#googlePrefix)_discovery_engine_user_store": res.#google_discovery_engine_user_store
@@ -909,6 +916,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_oracle_database_cloud_exadata_infrastructure": res.#google_oracle_database_cloud_exadata_infrastructure
 	_#res: "\(#googlePrefix)_oracle_database_cloud_vm_cluster": res.#google_oracle_database_cloud_vm_cluster
 	_#res: "\(#googlePrefix)_oracle_database_db_system": res.#google_oracle_database_db_system
+	_#res: "\(#googlePrefix)_oracle_database_exascale_db_storage_vault": res.#google_oracle_database_exascale_db_storage_vault
 	_#res: "\(#googlePrefix)_oracle_database_odb_network": res.#google_oracle_database_odb_network
 	_#res: "\(#googlePrefix)_oracle_database_odb_subnet": res.#google_oracle_database_odb_subnet
 	_#res: "\(#googlePrefix)_org_policy_custom_constraint": res.#google_org_policy_custom_constraint

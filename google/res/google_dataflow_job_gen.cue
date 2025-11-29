@@ -2,7 +2,7 @@ package res
 
 #google_dataflow_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dataflow_job")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataflow_job")
 	close({
 		// List of experiments that should be used by the job. An example
 		// value is ["enable_stackdriver_agent_metrics"].

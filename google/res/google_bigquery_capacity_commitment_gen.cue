@@ -2,7 +2,7 @@ package res
 
 #google_bigquery_capacity_commitment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_bigquery_capacity_commitment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_capacity_commitment")
 	close({
 		// The optional capacity commitment ID. Capacity commitment name
 		// will be generated automatically if this field is

@@ -2,7 +2,7 @@ package data
 
 #google_cloud_identity_groups: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloud_identity_groups")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_cloud_identity_groups")
 	close({
 		// List of Cloud Identity groups.
 		groups?: [...close({

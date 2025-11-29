@@ -4,7 +4,7 @@ import "list"
 
 #google_eventarc_trigger: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_eventarc_trigger")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_eventarc_trigger")
 	close({
 		// Optional. The name of the channel associated with the trigger
 		// in

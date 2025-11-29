@@ -4,7 +4,7 @@ import "list"
 
 #google_network_services_endpoint_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_services_endpoint_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_endpoint_policy")
 	close({
 		// This field specifies the URL of AuthorizationPolicy resource
 		// that applies authorization policies to the inbound traffic at

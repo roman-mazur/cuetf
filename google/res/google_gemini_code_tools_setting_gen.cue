@@ -2,7 +2,7 @@ package res
 
 #google_gemini_code_tools_setting: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_gemini_code_tools_setting")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gemini_code_tools_setting")
 	close({
 		// Id of the Code Tools Setting.
 		code_tools_setting_id!: string

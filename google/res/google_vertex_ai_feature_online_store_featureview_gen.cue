@@ -4,7 +4,7 @@ import "list"
 
 #google_vertex_ai_feature_online_store_featureview: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_vertex_ai_feature_online_store_featureview")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_feature_online_store_featureview")
 	close({
 		// The timestamp of when the featureOnlinestore was created in
 		// RFC3339 UTC "Zulu" format, with nanosecond resolution and up

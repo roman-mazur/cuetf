@@ -2,7 +2,7 @@ package res
 
 #google_parallelstore_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_parallelstore_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_parallelstore_instance")
 	close({
 		// Output only. List of access_points.
 		// Contains a list of IPv4 addresses used for client side

@@ -4,7 +4,7 @@ import "list"
 
 #google_dialogflow_fulfillment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dialogflow_fulfillment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_fulfillment")
 	close({
 		// The human-readable name of the fulfillment, unique within the
 		// agent.

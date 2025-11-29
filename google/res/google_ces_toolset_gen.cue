@@ -4,7 +4,7 @@ import "list"
 
 #google_ces_toolset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_ces_toolset")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_toolset")
 	close({
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -89,6 +89,7 @@ import "list"
 
 	_#defs: "/$defs/open_api_toolset/$defs/api_authentication": close({
 		api_key_config?: matchN(1, [_#defs."/$defs/open_api_toolset/$defs/api_authentication/$defs/api_key_config", list.MaxItems(1) & [..._#defs."/$defs/open_api_toolset/$defs/api_authentication/$defs/api_key_config"]])
+		bearer_token_config?: matchN(1, [_#defs."/$defs/open_api_toolset/$defs/api_authentication/$defs/bearer_token_config", list.MaxItems(1) & [..._#defs."/$defs/open_api_toolset/$defs/api_authentication/$defs/bearer_token_config"]])
 		oauth_config?: matchN(1, [_#defs."/$defs/open_api_toolset/$defs/api_authentication/$defs/oauth_config", list.MaxItems(1) & [..._#defs."/$defs/open_api_toolset/$defs/api_authentication/$defs/oauth_config"]])
 		service_account_auth_config?: matchN(1, [_#defs."/$defs/open_api_toolset/$defs/api_authentication/$defs/service_account_auth_config", list.MaxItems(1) & [..._#defs."/$defs/open_api_toolset/$defs/api_authentication/$defs/service_account_auth_config"]])
 		service_agent_id_token_auth_config?: matchN(1, [_#defs."/$defs/open_api_toolset/$defs/api_authentication/$defs/service_agent_id_token_auth_config", list.MaxItems(1) & [..._#defs."/$defs/open_api_toolset/$defs/api_authentication/$defs/service_agent_id_token_auth_config"]])
@@ -116,6 +117,10 @@ import "list"
 		// HEADER
 		// QUERY_STRING
 		request_location!: string
+	})
+
+	_#defs: "/$defs/open_api_toolset/$defs/api_authentication/$defs/bearer_token_config": close({
+		token?: string
 	})
 
 	_#defs: "/$defs/open_api_toolset/$defs/api_authentication/$defs/oauth_config": close({

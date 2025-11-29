@@ -4,7 +4,7 @@ import "list"
 
 #google_securityposture_posture: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_securityposture_posture")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_securityposture_posture")
 	close({
 		// Time the Posture was created in UTC.
 		create_time?: string

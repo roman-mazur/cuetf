@@ -2,7 +2,7 @@ package res
 
 #google_org_policy_custom_constraint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_org_policy_custom_constraint")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_org_policy_custom_constraint")
 	close({
 		// The action to take if the condition is met. Possible values:
 		// ["ALLOW", "DENY"]

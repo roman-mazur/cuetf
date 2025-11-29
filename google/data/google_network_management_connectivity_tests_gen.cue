@@ -2,7 +2,7 @@ package data
 
 #google_network_management_connectivity_tests: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_management_connectivity_tests")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_network_management_connectivity_tests")
 	close({
 		connectivity_tests?: [...close({
 			bypass_firewall_checks?: bool

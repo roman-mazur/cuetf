@@ -2,7 +2,7 @@ package res
 
 #google_compute_attached_disk: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_attached_disk")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_attached_disk")
 	close({
 		// Specifies a unique device name of your choice that is reflected
 		// into the /dev/disk/by-id/google-* tree of a Linux operating

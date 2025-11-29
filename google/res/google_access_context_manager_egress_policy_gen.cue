@@ -2,7 +2,7 @@ package res
 
 #google_access_context_manager_egress_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_access_context_manager_egress_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_access_context_manager_egress_policy")
 	close({
 		// The name of the Access Policy this resource belongs to.
 		access_policy_id?: string

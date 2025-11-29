@@ -2,7 +2,7 @@ package res
 
 #google_iap_client: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_iap_client")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iap_client")
 	close({
 		// Identifier of the brand to which this client
 		// is attached to. The format is

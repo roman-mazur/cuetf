@@ -2,7 +2,7 @@ package res
 
 #google_firebase_app_check_play_integrity_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_firebase_app_check_play_integrity_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_check_play_integrity_config")
 	close({
 		// The ID of an
 		// [Android

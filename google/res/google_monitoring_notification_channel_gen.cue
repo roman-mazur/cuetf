@@ -4,7 +4,7 @@ import "list"
 
 #google_monitoring_notification_channel: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_monitoring_notification_channel")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_notification_channel")
 	close({
 		// An optional human-readable description of this notification
 		// channel. This description may provide additional details,

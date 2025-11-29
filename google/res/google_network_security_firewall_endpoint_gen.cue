@@ -1,8 +1,10 @@
 package res
 
+import "list"
+
 #google_network_security_firewall_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_security_firewall_endpoint")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_firewall_endpoint")
 	close({
 		// List of networks that are associated with this endpoint in the
 		// local zone.
@@ -33,18 +35,17 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location (zone) of the firewall endpoint.
 		location!: string
 
 		// The name of the firewall endpoint resource.
 		name!: string
+		id?:   string
 
 		// The name of the parent this firewall endpoint belongs to.
 		// Format: organizations/{organization_id}.
-		parent!:   string
-		timeouts?: #timeouts
+		parent!: string
 
 		// Whether reconciling is in progress, recommended per
 		// https://google.aip.dev/128.
@@ -52,6 +53,8 @@ package res
 
 		// Server-defined URL of this resource.
 		self_link?: string
+		endpoint_settings?: matchN(1, [#endpoint_settings, list.MaxItems(1) & [...#endpoint_settings]])
+		timeouts?: #timeouts
 
 		// The current state of the endpoint.
 		state?: string
@@ -62,6 +65,12 @@ package res
 
 		// Time the firewall endpoint was updated in UTC.
 		update_time?: string
+	})
+
+	#endpoint_settings: close({
+		// Indicates whether Jumbo Frames are enabled for the firewall
+		// endpoint.
+		jumbo_frames_enabled?: bool
 	})
 
 	#timeouts: close({

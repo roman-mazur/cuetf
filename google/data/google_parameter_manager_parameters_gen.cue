@@ -2,7 +2,7 @@ package data
 
 #google_parameter_manager_parameters: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_parameter_manager_parameters")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_parameter_manager_parameters")
 	close({
 		// Filter string, adhering to the rules in List-operation
 		// filtering. List only parameters matching the filter.

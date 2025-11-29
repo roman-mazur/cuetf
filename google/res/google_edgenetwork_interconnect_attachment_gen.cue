@@ -2,7 +2,7 @@ package res
 
 #google_edgenetwork_interconnect_attachment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_edgenetwork_interconnect_attachment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_edgenetwork_interconnect_attachment")
 	close({
 		// The time when the resource was created.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond

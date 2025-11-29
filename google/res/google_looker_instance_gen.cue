@@ -4,7 +4,7 @@ import "list"
 
 #google_looker_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_looker_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_looker_instance")
 	close({
 		// Network name in the consumer project in the format of:
 		// projects/{project}/global/networks/{network}

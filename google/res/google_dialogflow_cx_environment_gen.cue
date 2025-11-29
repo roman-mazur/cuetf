@@ -2,7 +2,7 @@ package res
 
 #google_dialogflow_cx_environment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dialogflow_cx_environment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_environment")
 	close({
 		// The human-readable description of the environment. The maximum
 		// length is 500 characters. If exceeded, the request is

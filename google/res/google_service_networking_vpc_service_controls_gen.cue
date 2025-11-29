@@ -2,7 +2,7 @@ package res
 
 #google_service_networking_vpc_service_controls: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_service_networking_vpc_service_controls")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_service_networking_vpc_service_controls")
 	close({
 		// Desired VPC Service Controls state service producer VPC
 		// network, as

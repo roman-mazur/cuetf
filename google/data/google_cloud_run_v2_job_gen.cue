@@ -2,7 +2,7 @@ package data
 
 #google_cloud_run_v2_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloud_run_v2_job")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_cloud_run_v2_job")
 	close({
 		// Unstructured key value map that may be set by external tools to
 		// store and arbitrary metadata. They are not queryable and

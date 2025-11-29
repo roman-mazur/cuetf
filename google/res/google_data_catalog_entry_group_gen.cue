@@ -2,7 +2,7 @@ package res
 
 #google_data_catalog_entry_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_data_catalog_entry_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_catalog_entry_group")
 	close({
 		// Entry group description, which can consist of several sentences
 		// or paragraphs that describe entry group contents.

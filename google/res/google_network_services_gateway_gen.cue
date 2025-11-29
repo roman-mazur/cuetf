@@ -2,7 +2,7 @@ package res
 
 #google_network_services_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_services_gateway")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_gateway")
 	close({
 		// Zero or one IPv4 or IPv6 address on which the Gateway will
 		// receive the traffic.

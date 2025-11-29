@@ -4,7 +4,7 @@ import "list"
 
 #google_storage_batch_operations_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_storage_batch_operations_job")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_batch_operations_job")
 	close({
 		// The time that the job was completed.
 		complete_time?: string

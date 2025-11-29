@@ -2,7 +2,7 @@ package res
 
 #google_project_usage_export_bucket: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_project_usage_export_bucket")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_project_usage_export_bucket")
 	close({
 		// The bucket to store reports in.
 		bucket_name!: string

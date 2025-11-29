@@ -2,7 +2,7 @@ package res
 
 #google_chronicle_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_chronicle_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_rule")
 	close({
 		// Output only. The run frequencies that are allowed for the rule.
 		// Populated in BASIC view and FULL view.

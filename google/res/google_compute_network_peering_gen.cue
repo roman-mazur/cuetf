@@ -2,7 +2,7 @@ package res
 
 #google_compute_network_peering: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_network_peering")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_network_peering")
 	close({
 		// Whether to export the custom routes to the peer network.
 		// Defaults to false.

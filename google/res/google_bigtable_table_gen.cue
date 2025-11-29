@@ -4,7 +4,7 @@ import "list"
 
 #google_bigtable_table: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_bigtable_table")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigtable_table")
 	close({
 		// Duration to retain change stream data for the table. Set to 0
 		// to disable. Must be between 1 and 7 days.

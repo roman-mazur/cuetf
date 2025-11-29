@@ -4,7 +4,7 @@ import "list"
 
 #google_cloud_quotas_quota_preference: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloud_quotas_quota_preference")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_quotas_quota_preference")
 	close({
 		// An email address that can be used for quota related
 		// communication between the Google Cloud and the user in case

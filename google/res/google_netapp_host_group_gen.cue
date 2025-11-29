@@ -2,7 +2,7 @@ package res
 
 #google_netapp_host_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_netapp_host_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_host_group")
 	close({
 		// Create time of the host group. A timestamp in RFC3339 UTC
 		// "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".

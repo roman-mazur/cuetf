@@ -2,7 +2,7 @@ package res
 
 #google_monitoring_monitored_project: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_monitoring_monitored_project")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_monitored_project")
 	close({
 		// Output only. The time when this 'MonitoredProject' was created.
 		create_time?: string

@@ -4,7 +4,7 @@ import "list"
 
 #google_gkeonprem_bare_metal_admin_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_gkeonprem_bare_metal_admin_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gkeonprem_bare_metal_admin_cluster")
 	close({
 		// Annotations on the Bare Metal Admin Cluster.
 		// This field has the same restrictions as Kubernetes annotations.
@@ -160,6 +160,7 @@ import "list"
 	})
 
 	#load_balancer: close({
+		bgp_lb_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/bgp_lb_config", list.MaxItems(1) & [..._#defs."/$defs/load_balancer/$defs/bgp_lb_config"]])
 		manual_lb_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/manual_lb_config", list.MaxItems(1) & [..._#defs."/$defs/load_balancer/$defs/manual_lb_config"]])
 		port_config!: matchN(1, [_#defs."/$defs/load_balancer/$defs/port_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load_balancer/$defs/port_config"]])
 		vip_config!: matchN(1, [_#defs."/$defs/load_balancer/$defs/vip_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load_balancer/$defs/vip_config"]])
@@ -178,6 +179,10 @@ import "list"
 
 	#network_config: close({
 		island_mode_cidr?: matchN(1, [_#defs."/$defs/network_config/$defs/island_mode_cidr", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/island_mode_cidr"]])
+		multiple_network_interfaces_config?: matchN(1, [_#defs."/$defs/network_config/$defs/multiple_network_interfaces_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/multiple_network_interfaces_config"]])
+
+		// Enables the use of advanced Anthos networking features.
+		advanced_networking?: bool
 	})
 
 	#node_access_config: close({
@@ -294,6 +299,79 @@ import "list"
 		value?: string
 	})
 
+	_#defs: "/$defs/load_balancer/$defs/bgp_lb_config": close({
+		address_pools?: matchN(1, [_#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/address_pools", [..._#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/address_pools"]])
+		bgp_peer_configs?: matchN(1, [_#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/bgp_peer_configs", [..._#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/bgp_peer_configs"]])
+		load_balancer_node_pool_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config", list.MaxItems(1) & [..._#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config"]])
+
+		// BGP autonomous system number (ASN) of the cluster.
+		asn?: number
+	})
+
+	_#defs: "/$defs/load_balancer/$defs/bgp_lb_config/$defs/address_pools": close({
+		// The addresses that are part of this pool.
+		addresses?: [...string]
+
+		// This avoids buggy consumer devices mistakenly
+		// dropping IPv4 traffic for those special IP addresses.
+		avoid_buggy_ips?: bool
+
+		// If true, prevent IP addresses from being automatically
+		// assigned.
+		manual_assign?: bool
+		pool?:          string
+	})
+
+	_#defs: "/$defs/load_balancer/$defs/bgp_lb_config/$defs/bgp_peer_configs": close({
+		asn?: number
+
+		// The IP address of the control plane node that
+		// connects to the external peer.
+		control_plane_nodes?: [...string]
+		ip_address?: string
+	})
+
+	_#defs: "/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config": close({
+		node_pool_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config/$defs/node_pool_config", list.MaxItems(1) & [..._#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config/$defs/node_pool_config"]])
+	})
+
+	_#defs: "/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config/$defs/node_pool_config": close({
+		kubelet_config?: matchN(1, [_#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config/$defs/node_pool_config/$defs/kubelet_config", list.MaxItems(1) & [..._#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config/$defs/node_pool_config/$defs/kubelet_config"]])
+		node_configs?: matchN(1, [_#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config/$defs/node_pool_config/$defs/node_configs", [..._#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config/$defs/node_pool_config/$defs/node_configs"]])
+		taints?: matchN(1, [_#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config/$defs/node_pool_config/$defs/taints", [..._#defs."/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config/$defs/node_pool_config/$defs/taints"]])
+
+		// The labels assigned to nodes of this node pool.
+		// An object containing a list of key/value pairs.
+		// Example:
+		// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+		labels?: [string]: string
+
+		// The available Operating Systems to be run in a Node.
+		operating_system?: string
+	})
+
+	_#defs: "/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config/$defs/node_pool_config/$defs/kubelet_config": close({
+		registry_burst?:                 number
+		registry_pull_qps?:              number
+		serialize_image_pulls_disabled?: bool
+	})
+
+	_#defs: "/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config/$defs/node_pool_config/$defs/node_configs": close({
+		// The labels assigned to nodes of this node pool.
+		// An object containing a list of key/value pairs.
+		// Example:
+		// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+		labels?: [string]: string
+		node_ip?: string
+	})
+
+	_#defs: "/$defs/load_balancer/$defs/bgp_lb_config/$defs/load_balancer_node_pool_config/$defs/node_pool_config/$defs/taints": close({
+		// Available taint effects.
+		effect?: string
+		key?:    string
+		value?:  string
+	})
+
 	_#defs: "/$defs/load_balancer/$defs/manual_lb_config": close({
 		// Whether manual load balancing is enabled.
 		enabled!: bool
@@ -321,6 +399,12 @@ import "list"
 		// address from these ranges. This field cannot be changed after
 		// creation.
 		service_address_cidr_blocks!: [...string]
+	})
+
+	_#defs: "/$defs/network_config/$defs/multiple_network_interfaces_config": close({
+		// When set network_config.advanced_networking is automatically
+		// set to true.
+		enabled?: bool
 	})
 
 	_#defs: "/$defs/security_config/$defs/authorization": close({

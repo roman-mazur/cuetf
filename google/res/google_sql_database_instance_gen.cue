@@ -4,7 +4,7 @@ import "list"
 
 #google_sql_database_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_sql_database_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_sql_database_instance")
 	close({
 		// Available Maintenance versions.
 		available_maintenance_versions?: [...string]

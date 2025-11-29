@@ -4,7 +4,7 @@ import "list"
 
 #google_identity_platform_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_identity_platform_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_identity_platform_config")
 	close({
 		// List of domains authorized for OAuth redirects.
 		authorized_domains?: [...string]

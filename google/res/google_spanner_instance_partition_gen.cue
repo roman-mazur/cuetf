@@ -2,7 +2,7 @@ package res
 
 #google_spanner_instance_partition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_spanner_instance_partition")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_spanner_instance_partition")
 	close({
 		// The name of the instance partition's configuration (similar to
 		// a region) which

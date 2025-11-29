@@ -2,7 +2,7 @@ package data
 
 #google_kms_crypto_keys: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_kms_crypto_keys")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_kms_crypto_keys")
 	close({
 		// The filter argument is used to add a filter query parameter
 		// that limits which keys are retrieved by the data source:

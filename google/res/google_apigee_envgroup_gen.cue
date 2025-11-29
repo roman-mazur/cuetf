@@ -2,7 +2,7 @@ package res
 
 #google_apigee_envgroup: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_envgroup")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_envgroup")
 	close({
 		// Hostnames of the environment group.
 		hostnames?: [...string]

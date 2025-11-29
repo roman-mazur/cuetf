@@ -4,7 +4,7 @@ import "list"
 
 #google_memorystore_instance_desired_user_created_endpoints: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_memorystore_instance_desired_user_created_endpoints")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_memorystore_instance_desired_user_created_endpoints")
 	close({
 		id?: string
 

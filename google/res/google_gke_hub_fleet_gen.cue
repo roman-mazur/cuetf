@@ -4,7 +4,7 @@ import "list"
 
 #google_gke_hub_fleet: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_gke_hub_fleet")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_hub_fleet")
 	close({
 		// The time the fleet was created, in RFC3339 text format.
 		create_time?: string

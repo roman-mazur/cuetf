@@ -4,7 +4,7 @@ import "list"
 
 #google_integrations_auth_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_integrations_auth_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_integrations_auth_config")
 	close({
 		// Certificate id for client certificate.
 		certificate_id?: string

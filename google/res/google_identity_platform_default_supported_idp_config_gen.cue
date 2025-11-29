@@ -2,7 +2,7 @@ package res
 
 #google_identity_platform_default_supported_idp_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_identity_platform_default_supported_idp_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_identity_platform_default_supported_idp_config")
 	close({
 		// OAuth client ID
 		client_id!: string

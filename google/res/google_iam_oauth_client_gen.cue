@@ -2,7 +2,7 @@ package res
 
 #google_iam_oauth_client: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_iam_oauth_client")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_oauth_client")
 	close({
 		// Required. The list of OAuth grant types is allowed for the
 		// OauthClient.

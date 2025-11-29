@@ -2,7 +2,7 @@ package res
 
 #google_backup_dr_service_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_backup_dr_service_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_backup_dr_service_config")
 	close({
 		id?: string
 

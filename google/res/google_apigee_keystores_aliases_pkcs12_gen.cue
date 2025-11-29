@@ -2,7 +2,7 @@ package res
 
 #google_apigee_keystores_aliases_pkcs12: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_keystores_aliases_pkcs12")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_keystores_aliases_pkcs12")
 	close({
 		// Alias Name
 		alias!: string

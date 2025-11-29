@@ -2,7 +2,7 @@ package res
 
 #google_dataplex_entry_link: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dataplex_entry_link")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_entry_link")
 	close({
 		// The time when the Entry Link was created.
 		create_time?: string

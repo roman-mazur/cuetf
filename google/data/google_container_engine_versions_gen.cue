@@ -2,7 +2,7 @@ package data
 
 #google_container_engine_versions: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_container_engine_versions")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_container_engine_versions")
 	close({
 		default_cluster_version?: string
 		id?:                      string

@@ -2,7 +2,7 @@ package res
 
 #google_dataplex_glossary_term: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dataplex_glossary_term")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_glossary_term")
 	close({
 		// The time at which the GlossaryTerm was created.
 		create_time?: string

@@ -2,7 +2,7 @@ package res
 
 #google_integration_connectors_managed_zone: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_integration_connectors_managed_zone")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_integration_connectors_managed_zone")
 	close({
 		// Time the Namespace was created in UTC.
 		create_time?: string

@@ -4,7 +4,7 @@ import "list"
 
 #google_cloud_run_v2_worker_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloud_run_v2_worker_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_run_v2_worker_pool")
 	close({
 		// Unstructured key value map that may be set by external tools to
 		// store and arbitrary metadata. They are not queryable and

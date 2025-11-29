@@ -2,7 +2,7 @@ package res
 
 #google_compute_service_attachment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_service_attachment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_service_attachment")
 	close({
 		// An array of the consumer forwarding rules connected to this
 		// service

@@ -4,7 +4,7 @@ import "list"
 
 #google_os_config_os_policy_assignment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_os_config_os_policy_assignment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_os_config_os_policy_assignment")
 	close({
 		// Output only. Indicates that this revision has been successfully
 		// rolled out in this zone and new VMs will be assigned OS

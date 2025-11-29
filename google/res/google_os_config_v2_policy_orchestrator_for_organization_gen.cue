@@ -4,7 +4,7 @@ import "list"
 
 #google_os_config_v2_policy_orchestrator_for_organization: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_os_config_v2_policy_orchestrator_for_organization")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_os_config_v2_policy_orchestrator_for_organization")
 	close({
 		// Required. Action to be done by the orchestrator in
 		// 'projects/{project_id}/zones/{zone_id}' locations defined by

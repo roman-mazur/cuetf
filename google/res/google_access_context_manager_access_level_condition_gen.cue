@@ -4,7 +4,7 @@ import "list"
 
 #google_access_context_manager_access_level_condition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_access_context_manager_access_level_condition")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_access_context_manager_access_level_condition")
 	close({
 		// The name of the Access Level to add this condition to.
 		access_level!: string

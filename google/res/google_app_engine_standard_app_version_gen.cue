@@ -4,7 +4,7 @@ import "list"
 
 #google_app_engine_standard_app_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_app_engine_standard_app_version")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_app_engine_standard_app_version")
 	close({
 		// Allows App Engine second generation runtimes to access the
 		// legacy bundled services.

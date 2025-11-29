@@ -2,7 +2,7 @@ package res
 
 #google_storage_anywhere_cache: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_storage_anywhere_cache")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_anywhere_cache")
 	close({
 		// The cache admission policy dictates whether a block should be
 		// inserted upon a cache miss. Default value:

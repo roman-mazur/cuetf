@@ -2,7 +2,7 @@ package res
 
 #google_securityposture_posture_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_securityposture_posture_deployment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_securityposture_posture_deployment")
 	close({
 		// Time the posture deployment was created in UTC.
 		create_time?: string

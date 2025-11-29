@@ -4,7 +4,7 @@ import "list"
 
 #google_app_engine_flexible_app_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_app_engine_flexible_app_version")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_app_engine_flexible_app_version")
 	close({
 		// Metadata settings that are supplied to this version to enable
 		// beta runtime features.

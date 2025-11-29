@@ -2,7 +2,7 @@ package res
 
 #google_resource_manager_lien: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_resource_manager_lien")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_resource_manager_lien")
 	close({
 		// Time of creation
 		create_time?: string

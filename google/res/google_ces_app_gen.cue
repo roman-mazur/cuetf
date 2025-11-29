@@ -4,7 +4,7 @@ import "list"
 
 #google_ces_app: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_ces_app")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_app")
 	close({
 		// The ID to use for the app, which will become the final
 		// component of
@@ -41,8 +41,14 @@ import "list"
 		// Format:
 		// 'projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}'
 		guardrails?: [...string]
-		audio_processing_config?: matchN(1, [#audio_processing_config, list.MaxItems(1) & [...#audio_processing_config]])
 		id?: string
+
+		// Resource ID segment making up resource 'name'. It identifies
+		// the resource within its parent collection as described in
+		// https://google.aip.dev/122.
+		location!: string
+		audio_processing_config?: matchN(1, [#audio_processing_config, list.MaxItems(1) & [...#audio_processing_config]])
+		client_certificate_settings?: matchN(1, [#client_certificate_settings, list.MaxItems(1) & [...#client_certificate_settings]])
 		data_store_settings?: matchN(1, [#data_store_settings, list.MaxItems(1) & [...#data_store_settings]])
 		default_channel_profile?: matchN(1, [#default_channel_profile, list.MaxItems(1) & [...#default_channel_profile]])
 		evaluation_metrics_thresholds?: matchN(1, [#evaluation_metrics_thresholds, list.MaxItems(1) & [...#evaluation_metrics_thresholds]])
@@ -51,17 +57,12 @@ import "list"
 		model_settings?: matchN(1, [#model_settings, list.MaxItems(1) & [...#model_settings]])
 		time_zone_settings?: matchN(1, [#time_zone_settings, list.MaxItems(1) & [...#time_zone_settings]])
 		timeouts?: #timeouts
-		variable_declarations?: matchN(1, [#variable_declarations, [...#variable_declarations]])
-
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
-		location!: string
 
 		// Metadata about the app. This field can be used to store
 		// additional
 		// information relevant to the app's details or intended usages.
 		metadata?: [string]: string
+		variable_declarations?: matchN(1, [#variable_declarations, [...#variable_declarations]])
 
 		// Identifier. The unique identifier of the app.
 		// Format: 'projects/{project}/locations/{location}/apps/{app}'
@@ -88,6 +89,21 @@ import "list"
 		// not prompt
 		// the user for reengagement.
 		inactivity_timeout?: string
+	})
+
+	#client_certificate_settings: close({
+		// The passphrase to decrypt the private key.
+		// Should be left unset if the private key is not encrypted.
+		passphrase?: string
+
+		// The name of the SecretManager secret version resource
+		// storing the private key encoded in PEM format.
+		// Format: projects/{project}/secrets/{secret}/versions/{version}
+		private_key!: string
+
+		// The TLS certificate encoded in PEM format.
+		// This string must include the begin header and end footer lines.
+		tls_certificate!: string
 	})
 
 	#data_store_settings: close({

@@ -2,7 +2,7 @@ package data
 
 #google_oracle_database_db_servers: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_oracle_database_db_servers")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_oracle_database_db_servers")
 	close({
 		// exadata
 		cloud_exadata_infrastructure!: string

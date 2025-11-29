@@ -2,7 +2,7 @@ package res
 
 #google_scc_v2_organization_source: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_scc_v2_organization_source")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_v2_organization_source")
 	close({
 		// The description of the source (max of 1024 characters).
 		description?: string

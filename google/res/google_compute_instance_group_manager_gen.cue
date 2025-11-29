@@ -4,7 +4,7 @@ import "list"
 
 #google_compute_instance_group_manager: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_instance_group_manager")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_instance_group_manager")
 	close({
 		// The base instance name to use for instances in this group. The
 		// value must be a valid RFC1035 name. Supported characters are

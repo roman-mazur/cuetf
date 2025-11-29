@@ -2,7 +2,7 @@ package res
 
 #google_eventarc_channel: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_eventarc_channel")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_eventarc_channel")
 	close({
 		// The activation token for the channel. The token must be used by
 		// the provider to register the channel for publishing.

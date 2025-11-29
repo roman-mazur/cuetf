@@ -2,7 +2,7 @@ package res
 
 #google_network_services_service_binding: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_services_service_binding")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_service_binding")
 	close({
 		// Time the ServiceBinding was created in UTC.
 		create_time?: string

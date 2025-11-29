@@ -2,7 +2,7 @@ package res
 
 #google_compute_storage_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_storage_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_storage_pool")
 	close({
 		// Provisioning type of the byte capacity of the pool. Possible
 		// values: ["STANDARD", "ADVANCED"]

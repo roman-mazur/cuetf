@@ -4,7 +4,7 @@ import "list"
 
 #google_container_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_container_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_cluster")
 	close({
 		// Enable NET_ADMIN for this cluster.
 		allow_net_admin?: bool
@@ -1147,12 +1147,15 @@ import "list"
 
 	_#defs: "/$defs/maintenance_policy/$defs/maintenance_exclusion": close({
 		exclusion_options?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion/$defs/exclusion_options", list.MaxItems(1) & [..._#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion/$defs/exclusion_options"]])
-		end_time!:       string
+		end_time?:       string
 		exclusion_name!: string
 		start_time!:     string
 	})
 
 	_#defs: "/$defs/maintenance_policy/$defs/maintenance_exclusion/$defs/exclusion_options": close({
+		// The behavior of the exclusion end time.
+		end_time_behavior?: string
+
 		// The scope of automatic upgrades to restrict in the exclusion
 		// window.
 		scope!: string
@@ -1243,6 +1246,7 @@ import "list"
 
 	_#defs: "/$defs/node_config/$defs/containerd_config": close({
 		private_registry_access_config?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config"]])
+		writable_cgroups?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/writable_cgroups", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/writable_cgroups"]])
 	})
 
 	_#defs: "/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config": close({
@@ -1265,6 +1269,11 @@ import "list"
 		// format
 		// 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
 		secret_uri!: string
+	})
+
+	_#defs: "/$defs/node_config/$defs/containerd_config/$defs/writable_cgroups": close({
+		// Whether writable cgroups are enabled.
+		enabled!: bool
 	})
 
 	_#defs: "/$defs/node_config/$defs/ephemeral_storage_local_ssd_config": close({
@@ -1851,6 +1860,7 @@ import "list"
 
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/containerd_config": close({
 		private_registry_access_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config"]])
+		writable_cgroups?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/writable_cgroups", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/writable_cgroups"]])
 	})
 
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config": close({
@@ -1873,6 +1883,11 @@ import "list"
 		// format
 		// 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
 		secret_uri!: string
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/writable_cgroups": close({
+		// Whether writable cgroups are enabled.
+		enabled!: bool
 	})
 
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/ephemeral_storage_local_ssd_config": close({
@@ -2286,6 +2301,7 @@ import "list"
 
 	_#defs: "/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config": close({
 		private_registry_access_config?: matchN(1, [_#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/private_registry_access_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/private_registry_access_config"]])
+		writable_cgroups?: matchN(1, [_#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/writable_cgroups", list.MaxItems(1) & [..._#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/writable_cgroups"]])
 	})
 
 	_#defs: "/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/private_registry_access_config": close({
@@ -2308,6 +2324,11 @@ import "list"
 		// format
 		// 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
 		secret_uri!: string
+	})
+
+	_#defs: "/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/writable_cgroups": close({
+		// Whether writable cgroups are enabled.
+		enabled!: bool
 	})
 
 	_#defs: "/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/gcfs_config": close({

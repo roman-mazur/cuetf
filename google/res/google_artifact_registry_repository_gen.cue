@@ -4,7 +4,7 @@ import "list"
 
 #google_artifact_registry_repository: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_artifact_registry_repository")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_artifact_registry_repository")
 	close({
 		// If true, the cleanup pipeline is prevented from deleting
 		// versions in this

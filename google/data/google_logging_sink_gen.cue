@@ -2,7 +2,7 @@ package data
 
 #google_logging_sink: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_logging_sink")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_logging_sink")
 	close({
 		// Options that affect sinks exporting data to BigQuery.
 		bigquery_options?: [...close({

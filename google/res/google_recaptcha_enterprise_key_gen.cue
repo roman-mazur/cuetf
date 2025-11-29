@@ -4,7 +4,7 @@ import "list"
 
 #google_recaptcha_enterprise_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_recaptcha_enterprise_key")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_recaptcha_enterprise_key")
 	close({
 		// The timestamp corresponding to the creation of this Key.
 		create_time?: string

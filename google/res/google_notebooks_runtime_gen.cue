@@ -4,7 +4,7 @@ import "list"
 
 #google_notebooks_runtime: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_notebooks_runtime")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_notebooks_runtime")
 	close({
 		// All of labels (key/value pairs) present on the resource in GCP,
 		// including the labels configured through Terraform, other

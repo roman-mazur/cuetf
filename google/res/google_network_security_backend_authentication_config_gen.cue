@@ -2,7 +2,7 @@ package res
 
 #google_network_security_backend_authentication_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_security_backend_authentication_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_backend_authentication_config")
 	close({
 		// Reference to a Certificate resource from the
 		// certificatemanager.googleapis.com namespace.

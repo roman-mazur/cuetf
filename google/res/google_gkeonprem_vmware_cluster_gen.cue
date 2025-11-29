@@ -4,7 +4,7 @@ import "list"
 
 #google_gkeonprem_vmware_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_gkeonprem_vmware_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gkeonprem_vmware_cluster")
 	close({
 		// The admin cluster this VMware User Cluster belongs to.
 		// This is the full resource name of the admin cluster's hub

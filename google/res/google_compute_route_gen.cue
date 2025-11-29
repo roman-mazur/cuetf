@@ -4,7 +4,7 @@ import "list"
 
 #google_compute_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_route")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_route")
 	close({
 		as_paths?: [...close({
 			as_lists?: [...number]

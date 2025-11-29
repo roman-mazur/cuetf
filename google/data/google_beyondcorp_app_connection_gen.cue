@@ -2,7 +2,7 @@ package data
 
 #google_beyondcorp_app_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_beyondcorp_app_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_beyondcorp_app_connection")
 	close({
 		// Address of the remote application endpoint for the BeyondCorp
 		// AppConnection.

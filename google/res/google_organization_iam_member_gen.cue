@@ -4,7 +4,7 @@ import "list"
 
 #google_organization_iam_member: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_organization_iam_member")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_organization_iam_member")
 	close({
 		etag?: string
 		id?:   string

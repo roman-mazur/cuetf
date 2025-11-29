@@ -2,7 +2,7 @@ package data
 
 #google_monitoring_cluster_istio_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_monitoring_cluster_istio_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_monitoring_cluster_istio_service")
 	close({
 		// The name of the Kubernetes cluster in which this Istio service
 		// is defined.

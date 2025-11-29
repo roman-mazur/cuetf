@@ -2,7 +2,7 @@ package res
 
 #google_logging_log_scope: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_logging_log_scope")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_log_scope")
 	close({
 		// Output only. The creation timestamp of the log scopes.
 		create_time?: string

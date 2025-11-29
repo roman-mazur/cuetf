@@ -4,7 +4,7 @@ import "list"
 
 #google_dialogflow_cx_agent: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dialogflow_cx_agent")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_agent")
 	close({
 		// The URI of the agent's avatar. Avatars are used throughout the
 		// Dialogflow console and in the self-hosted Web Demo

@@ -2,7 +2,7 @@ package data
 
 #google_pubsub_topic: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_pubsub_topic")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_pubsub_topic")
 	close({
 		// All of labels (key/value pairs) present on the resource in GCP,
 		// including the labels configured through Terraform, other

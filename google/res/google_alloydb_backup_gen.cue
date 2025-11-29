@@ -4,7 +4,7 @@ import "list"
 
 #google_alloydb_backup: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_alloydb_backup")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_alloydb_backup")
 	close({
 		// Annotations to allow client tools to store small amount of
 		// arbitrary data. This is distinct from labels.

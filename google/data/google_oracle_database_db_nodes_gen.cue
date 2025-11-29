@@ -2,7 +2,7 @@ package data
 
 #google_oracle_database_db_nodes: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_oracle_database_db_nodes")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_oracle_database_db_nodes")
 	close({
 		// vmcluster
 		cloud_vm_cluster!: string

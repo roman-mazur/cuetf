@@ -2,7 +2,7 @@ package res
 
 #google_storage_hmac_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_storage_hmac_key")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_hmac_key")
 	close({
 		// The access ID of the HMAC Key.
 		access_id?: string

@@ -4,7 +4,7 @@ import "list"
 
 #google_dataproc_gdc_service_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dataproc_gdc_service_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_gdc_service_instance")
 	close({
 		// The timestamp when the resource was created.
 		create_time?: string

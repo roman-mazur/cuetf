@@ -4,7 +4,7 @@ import "list"
 
 #google_monitoring_uptime_check_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_monitoring_uptime_check_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_uptime_check_config")
 	close({
 		// The checker type to use for the check. If the monitored
 		// resource type is 'servicedirectory_service', 'checker_type'

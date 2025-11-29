@@ -4,7 +4,7 @@ import "list"
 
 #google_network_services_tls_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_services_tls_route")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_tls_route")
 	close({
 		// Time the TlsRoute was created in UTC.
 		create_time?: string

@@ -2,7 +2,7 @@ package data
 
 #google_privateca_certificate_authority: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_privateca_certificate_authority")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_privateca_certificate_authority")
 	close({
 		// URLs for accessing content published by this CA, such as the CA
 		// certificate and CRLs.

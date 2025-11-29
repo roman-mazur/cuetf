@@ -2,7 +2,7 @@ package res
 
 #google_oracle_database_odb_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_oracle_database_odb_network")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_oracle_database_odb_network")
 	close({
 		// The date and time that the OdbNetwork was created.
 		create_time?: string

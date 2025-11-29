@@ -2,7 +2,7 @@ package res
 
 #google_gke_hub_membership_binding: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_gke_hub_membership_binding")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_hub_membership_binding")
 	close({
 		// Time the MembershipBinding was created in UTC.
 		create_time?: string

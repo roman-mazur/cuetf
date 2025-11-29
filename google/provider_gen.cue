@@ -2,7 +2,7 @@ package google
 
 #provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google/provider")
 	close({
 		access_approval_custom_endpoint?:            string
 		access_context_manager_custom_endpoint?:     string
@@ -46,6 +46,7 @@ package google
 		cloud_run_custom_endpoint?:                  string
 		cloud_run_v2_custom_endpoint?:               string
 		cloud_scheduler_custom_endpoint?:            string
+		cloud_security_compliance_custom_endpoint?:  string
 		cloud_tasks_custom_endpoint?:                string
 		cloudbuildv2_custom_endpoint?:               string
 		clouddeploy_custom_endpoint?:                string
@@ -94,10 +95,9 @@ package google
 		firestore_custom_endpoint?:             string
 		gemini_custom_endpoint?:                string
 		gke_backup_custom_endpoint?:            string
-		gke_hub2_custom_endpoint?:              string
 		batching?: matchN(1, [#batching, [...#batching]])
-		gke_hub_custom_endpoint?: string
-		external_credentials?: matchN(1, [#external_credentials, [...#external_credentials]])
+		gke_hub2_custom_endpoint?:           string
+		gke_hub_custom_endpoint?:            string
 		gkeonprem_custom_endpoint?:          string
 		healthcare_custom_endpoint?:         string
 		iam2_custom_endpoint?:               string
@@ -155,20 +155,21 @@ package google
 		resource_manager_custom_endpoint?:           string
 		resource_manager_v3_custom_endpoint?:        string
 		scopes?: [...string]
-		secret_manager_custom_endpoint?:                string
-		secret_manager_regional_custom_endpoint?:       string
-		secure_source_manager_custom_endpoint?:         string
-		security_center_custom_endpoint?:               string
-		security_center_management_custom_endpoint?:    string
-		security_center_v2_custom_endpoint?:            string
-		securityposture_custom_endpoint?:               string
-		service_management_custom_endpoint?:            string
-		service_networking_custom_endpoint?:            string
-		service_usage_custom_endpoint?:                 string
-		site_verification_custom_endpoint?:             string
-		source_repo_custom_endpoint?:                   string
-		spanner_custom_endpoint?:                       string
-		sql_custom_endpoint?:                           string
+		secret_manager_custom_endpoint?:             string
+		secret_manager_regional_custom_endpoint?:    string
+		secure_source_manager_custom_endpoint?:      string
+		security_center_custom_endpoint?:            string
+		security_center_management_custom_endpoint?: string
+		security_center_v2_custom_endpoint?:         string
+		securityposture_custom_endpoint?:            string
+		service_management_custom_endpoint?:         string
+		service_networking_custom_endpoint?:         string
+		service_usage_custom_endpoint?:              string
+		site_verification_custom_endpoint?:          string
+		source_repo_custom_endpoint?:                string
+		spanner_custom_endpoint?:                    string
+		sql_custom_endpoint?:                        string
+		external_credentials?: matchN(1, [#external_credentials, [...#external_credentials]])
 		storage_batch_operations_custom_endpoint?:      string
 		storage_control_custom_endpoint?:               string
 		storage_custom_endpoint?:                       string

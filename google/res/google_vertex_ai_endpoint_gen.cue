@@ -4,7 +4,7 @@ import "list"
 
 #google_vertex_ai_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_vertex_ai_endpoint")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_endpoint")
 	close({
 		// Output only. Timestamp when this Endpoint was created.
 		create_time?: string

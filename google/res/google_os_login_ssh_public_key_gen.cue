@@ -2,7 +2,7 @@ package res
 
 #google_os_login_ssh_public_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_os_login_ssh_public_key")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_os_login_ssh_public_key")
 	close({
 		// An expiration time in microseconds since epoch.
 		expiration_time_usec?: string

@@ -4,7 +4,7 @@ import "list"
 
 #google_assured_workloads_workload: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_assured_workloads_workload")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_assured_workloads_workload")
 	close({
 		// Optional. Input only. The billing account used for the
 		// resources which are direct children of workload. This billing

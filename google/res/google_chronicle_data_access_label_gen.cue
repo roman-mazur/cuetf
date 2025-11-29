@@ -2,7 +2,7 @@ package res
 
 #google_chronicle_data_access_label: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_chronicle_data_access_label")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_data_access_label")
 	close({
 		// Output only. The user who created the data access label.
 		author?: string

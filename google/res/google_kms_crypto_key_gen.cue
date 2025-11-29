@@ -4,7 +4,7 @@ import "list"
 
 #google_kms_crypto_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_kms_crypto_key")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_kms_crypto_key")
 	close({
 		// The resource name of the backend environment associated with
 		// all CryptoKeyVersions within this CryptoKey.

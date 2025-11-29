@@ -2,7 +2,7 @@ package res
 
 #google_service_networking_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_service_networking_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_service_networking_connection")
 	close({
 		// When set to ABANDON, terraform will abandon management of the
 		// resource instead of deleting it. Prevents terraform apply

@@ -4,7 +4,7 @@ import "list"
 
 #google_firebaserules_ruleset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_firebaserules_ruleset")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebaserules_ruleset")
 	close({
 		// Output only. Time the `Ruleset` was created.
 		create_time?: string

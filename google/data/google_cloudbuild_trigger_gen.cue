@@ -2,7 +2,7 @@ package data
 
 #google_cloudbuild_trigger: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloudbuild_trigger")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_cloudbuild_trigger")
 	close({
 		// Configuration for manual approval to start a build invocation
 		// of this BuildTrigger.

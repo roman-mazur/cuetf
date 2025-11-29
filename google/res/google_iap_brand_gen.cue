@@ -2,7 +2,7 @@ package res
 
 #google_iap_brand: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_iap_brand")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iap_brand")
 	close({
 		// Application name displayed on OAuth consent screen.
 		application_title!: string

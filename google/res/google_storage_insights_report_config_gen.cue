@@ -4,7 +4,7 @@ import "list"
 
 #google_storage_insights_report_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_storage_insights_report_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_insights_report_config")
 	close({
 		// The editable display name of the inventory report
 		// configuration. Has a limit of 256 characters. Can be empty.

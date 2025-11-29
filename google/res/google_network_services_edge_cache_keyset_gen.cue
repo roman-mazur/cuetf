@@ -4,7 +4,7 @@ import "list"
 
 #google_network_services_edge_cache_keyset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_services_edge_cache_keyset")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_edge_cache_keyset")
 	close({
 		// A human-readable description of the resource.
 		description?: string

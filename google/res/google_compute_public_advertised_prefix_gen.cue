@@ -2,7 +2,7 @@ package res
 
 #google_compute_public_advertised_prefix: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_public_advertised_prefix")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_public_advertised_prefix")
 	close({
 		// An optional description of this resource.
 		description?: string

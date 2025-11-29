@@ -2,7 +2,7 @@ package res
 
 #google_migration_center_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_migration_center_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_migration_center_group")
 	close({
 		// Output only. The timestamp when the group was created.
 		create_time?: string

@@ -2,7 +2,7 @@ package data
 
 #google_cloud_quotas_quota_infos: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloud_quotas_quota_infos")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_cloud_quotas_quota_infos")
 	close({
 		id?:     string
 		parent!: string

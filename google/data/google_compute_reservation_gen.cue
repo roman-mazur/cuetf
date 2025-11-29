@@ -2,8 +2,11 @@ package data
 
 #google_compute_reservation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_reservation")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_reservation")
 	close({
+		// List of all reservation block names in the parent reservation.
+		block_names?: [...string]
+
 		// Full or partial URL to a parent commitment. This field displays
 		// for
 		// reservations that are tied to a commitment.
@@ -51,12 +54,12 @@ package data
 		// characters must be a dash, lowercase letter, or digit, except
 		// the last
 		// character, which cannot be a dash.
-		name!:    string
-		project?: string
+		name!: string
 
 		// The number of reservation blocks associated with this
 		// reservation.
 		reservation_block_count?: number
+		project?:                 string
 
 		// Sharing policy for reservations with Google Cloud managed
 		// services.

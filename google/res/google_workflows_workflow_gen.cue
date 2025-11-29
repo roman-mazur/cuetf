@@ -2,7 +2,7 @@ package res
 
 #google_workflows_workflow: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_workflows_workflow")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_workflows_workflow")
 	close({
 		// Describes the level of platform logging to apply to calls and
 		// call responses during

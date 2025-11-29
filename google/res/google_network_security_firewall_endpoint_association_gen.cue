@@ -2,7 +2,7 @@ package res
 
 #google_network_security_firewall_endpoint_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_security_firewall_endpoint_association")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_firewall_endpoint_association")
 	close({
 		// Time the firewall endpoint was created in UTC.
 		create_time?: string

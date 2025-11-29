@@ -2,7 +2,7 @@ package res
 
 #google_compute_global_address: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_global_address")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_global_address")
 	close({
 		// The IP address or beginning of the address range represented by
 		// this

@@ -2,7 +2,7 @@ package res
 
 #google_compute_instance_group_membership: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_instance_group_membership")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_instance_group_membership")
 	close({
 		id?: string
 

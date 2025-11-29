@@ -4,7 +4,7 @@ import "list"
 
 #google_migration_center_preference_set: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_migration_center_preference_set")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_migration_center_preference_set")
 	close({
 		// Output only. The timestamp when the preference set was created.
 		create_time?: string

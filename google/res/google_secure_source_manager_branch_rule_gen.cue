@@ -2,7 +2,7 @@ package res
 
 #google_secure_source_manager_branch_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_secure_source_manager_branch_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_secure_source_manager_branch_rule")
 	close({
 		// Determines if allow stale reviews or approvals before merging
 		// to the branch.

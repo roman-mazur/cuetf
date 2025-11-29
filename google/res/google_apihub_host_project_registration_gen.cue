@@ -2,7 +2,7 @@ package res
 
 #google_apihub_host_project_registration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apihub_host_project_registration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apihub_host_project_registration")
 	close({
 		// Output only. The time at which the host project registration
 		// was created.

@@ -4,7 +4,7 @@ import "list"
 
 #google_compute_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_network")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_network")
 	close({
 		// When set to 'true', the network is created in "auto subnet
 		// mode" and

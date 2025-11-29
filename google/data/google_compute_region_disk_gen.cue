@@ -2,7 +2,7 @@ package data
 
 #google_compute_region_disk: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_region_disk")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_region_disk")
 	close({
 		// The access mode of the disk.
 		// For example:

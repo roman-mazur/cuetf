@@ -4,7 +4,7 @@ import "list"
 
 #google_cloud_run_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloud_run_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_run_service")
 	close({
 		// If set to 'true', the revision name (template.metadata.name)
 		// will be omitted and
@@ -382,6 +382,7 @@ import "list"
 		env_from?: matchN(1, [_#defs."/$defs/template/$defs/spec/$defs/containers/$defs/env_from", [..._#defs."/$defs/template/$defs/spec/$defs/containers/$defs/env_from"]])
 		liveness_probe?: matchN(1, [_#defs."/$defs/template/$defs/spec/$defs/containers/$defs/liveness_probe", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/spec/$defs/containers/$defs/liveness_probe"]])
 		ports?: matchN(1, [_#defs."/$defs/template/$defs/spec/$defs/containers/$defs/ports", [..._#defs."/$defs/template/$defs/spec/$defs/containers/$defs/ports"]])
+		readiness_probe?: matchN(1, [_#defs."/$defs/template/$defs/spec/$defs/containers/$defs/readiness_probe", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/spec/$defs/containers/$defs/readiness_probe"]])
 		resources?: matchN(1, [_#defs."/$defs/template/$defs/spec/$defs/containers/$defs/resources", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/spec/$defs/containers/$defs/resources"]])
 		startup_probe?: matchN(1, [_#defs."/$defs/template/$defs/spec/$defs/containers/$defs/startup_probe", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/spec/$defs/containers/$defs/startup_probe"]])
 		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/spec/$defs/containers/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/spec/$defs/containers/$defs/volume_mounts"]])
@@ -527,6 +528,55 @@ import "list"
 
 		// Protocol for port. Must be "TCP". Defaults to "TCP".
 		protocol?: string
+	})
+
+	_#defs: "/$defs/template/$defs/spec/$defs/containers/$defs/readiness_probe": close({
+		// Minimum consecutive failures for the probe to be considered
+		// failed after
+		// having succeeded. Defaults to 3.
+		failure_threshold?: number
+
+		// How often (in seconds) to perform the probe.
+		// Default to 10 seconds.
+		period_seconds?: number
+
+		// Minimum consecutive successes for the probe to be considered
+		// successful after having failed.
+		// Defaults to 2.
+		success_threshold?: number
+
+		// Number of seconds after which the probe times out.
+		// Defaults to 1 second. Must be smaller than period_seconds.
+		timeout_seconds?: number
+		grpc?: matchN(1, [_#defs."/$defs/template/$defs/spec/$defs/containers/$defs/readiness_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/spec/$defs/containers/$defs/readiness_probe/$defs/grpc"]])
+		http_get?: matchN(1, [_#defs."/$defs/template/$defs/spec/$defs/containers/$defs/readiness_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/spec/$defs/containers/$defs/readiness_probe/$defs/http_get"]])
+	})
+
+	_#defs: "/$defs/template/$defs/spec/$defs/containers/$defs/readiness_probe/$defs/grpc": close({
+		// Port number to access on the container. Number must be in the
+		// range 1 to 65535.
+		// If not specified, defaults to the same value as
+		// container.ports[0].containerPort.
+		port?: number
+
+		// The name of the service to place in the gRPC HealthCheckRequest
+		// (see
+		// https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+		// If this is not specified, the default behavior is defined by
+		// gRPC.
+		service?: string
+	})
+
+	_#defs: "/$defs/template/$defs/spec/$defs/containers/$defs/readiness_probe/$defs/http_get": close({
+		// Path to access on the HTTP server. If set, it should not be
+		// empty string.
+		path?: string
+
+		// Port number to access on the container. Number must be in the
+		// range 1 to 65535.
+		// If not specified, defaults to the same value as
+		// container.ports[0].containerPort.
+		port?: number
 	})
 
 	_#defs: "/$defs/template/$defs/spec/$defs/containers/$defs/resources": close({

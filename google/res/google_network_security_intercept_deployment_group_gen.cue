@@ -2,7 +2,7 @@ package res
 
 #google_network_security_intercept_deployment_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_security_intercept_deployment_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_intercept_deployment_group")
 	close({
 		// The list of endpoint groups that are connected to this
 		// resource.

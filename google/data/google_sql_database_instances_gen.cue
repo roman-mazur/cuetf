@@ -2,7 +2,7 @@ package data
 
 #google_sql_database_instances: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_sql_database_instances")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_sql_database_instances")
 	close({
 		// To filter out the database instances which are of the specified
 		// database version.

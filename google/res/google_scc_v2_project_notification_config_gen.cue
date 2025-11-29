@@ -4,7 +4,7 @@ import "list"
 
 #google_scc_v2_project_notification_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_scc_v2_project_notification_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_v2_project_notification_config")
 	close({
 		// This must be unique within the project.
 		config_id!: string

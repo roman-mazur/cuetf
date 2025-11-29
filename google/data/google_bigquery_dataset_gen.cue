@@ -2,7 +2,7 @@ package data
 
 #google_bigquery_dataset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_bigquery_dataset")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_bigquery_dataset")
 	close({
 		// An array of objects that define dataset access for one or more
 		// entities.

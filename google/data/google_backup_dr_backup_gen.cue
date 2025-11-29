@@ -2,7 +2,7 @@ package data
 
 #google_backup_dr_backup: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_backup_dr_backup")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_backup_dr_backup")
 	close({
 		backup_vault_id!: string
 

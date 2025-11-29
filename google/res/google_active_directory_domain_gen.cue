@@ -2,7 +2,7 @@ package res
 
 #google_active_directory_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_active_directory_domain")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_active_directory_domain")
 	close({
 		// The name of delegated administrator account used to perform
 		// Active Directory operations.

@@ -4,7 +4,7 @@ import "list"
 
 #google_iam_workforce_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_iam_workforce_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_workforce_pool")
 	close({
 		// A user-specified description of the pool. Cannot exceed 256
 		// characters.

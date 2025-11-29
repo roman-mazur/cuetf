@@ -4,7 +4,7 @@ import "list"
 
 #google_notebooks_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_notebooks_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_notebooks_instance")
 	close({
 		// The size of the boot disk in GB attached to this instance,
 		// up to a maximum of 64000 GB (64 TB). The minimum recommended

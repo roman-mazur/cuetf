@@ -2,7 +2,7 @@ package data
 
 #google_service_account_jwt: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_service_account_jwt")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_service_account_jwt")
 	close({
 		delegates?: [...string]
 

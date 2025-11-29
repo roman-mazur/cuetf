@@ -4,7 +4,7 @@ import "list"
 
 #google_network_services_grpc_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_services_grpc_route")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_grpc_route")
 	close({
 		// Time the GrpcRoute was created in UTC.
 		create_time?: string

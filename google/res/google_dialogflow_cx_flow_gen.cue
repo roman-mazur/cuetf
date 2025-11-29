@@ -4,7 +4,7 @@ import "list"
 
 #google_dialogflow_cx_flow: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dialogflow_cx_flow")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_flow")
 	close({
 		// The description of the flow. The maximum length is 500
 		// characters. If exceeded, the request is rejected.

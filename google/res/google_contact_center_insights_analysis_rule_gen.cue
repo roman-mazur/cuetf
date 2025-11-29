@@ -4,7 +4,7 @@ import "list"
 
 #google_contact_center_insights_analysis_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_contact_center_insights_analysis_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_contact_center_insights_analysis_rule")
 	close({
 		// If true, apply this rule to conversations. Otherwise, this rule
 		// is

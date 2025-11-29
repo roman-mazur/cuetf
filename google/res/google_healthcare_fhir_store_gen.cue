@@ -4,7 +4,7 @@ import "list"
 
 #google_healthcare_fhir_store: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_healthcare_fhir_store")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_healthcare_fhir_store")
 	close({
 		// Enable parsing of references within complex FHIR data types
 		// such as Extensions. If this value is set to ENABLED, then

@@ -4,7 +4,7 @@ import "list"
 
 #google_app_engine_service_network_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_app_engine_service_network_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_app_engine_service_network_settings")
 	close({
 		network_settings!: matchN(1, [#network_settings, list.MaxItems(1) & [_, ...] & [...#network_settings]])
 		timeouts?: #timeouts

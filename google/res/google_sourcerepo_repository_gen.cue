@@ -2,7 +2,7 @@ package res
 
 #google_sourcerepo_repository: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_sourcerepo_repository")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_sourcerepo_repository")
 	close({
 		// If set to true, skip repository creation if a repository with
 		// the same name already exists.

@@ -4,7 +4,7 @@ import "list"
 
 #google_cloudfunctions_function: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloudfunctions_function")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloudfunctions_function")
 	close({
 		// Memory (in MB), available to the function. Default value is
 		// 256. Possible values include 128, 256, 512, 1024, etc.

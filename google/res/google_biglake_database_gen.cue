@@ -4,7 +4,7 @@ import "list"
 
 #google_biglake_database: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_biglake_database")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_biglake_database")
 	close({
 		// The parent catalog.
 		catalog!: string

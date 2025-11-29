@@ -2,7 +2,7 @@ package res
 
 #google_discovery_engine_user_store: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_discovery_engine_user_store")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_user_store")
 	close({
 		// The resource name of the default license config assigned to
 		// users created in

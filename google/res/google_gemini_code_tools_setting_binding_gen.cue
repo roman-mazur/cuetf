@@ -2,7 +2,7 @@ package res
 
 #google_gemini_code_tools_setting_binding: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_gemini_code_tools_setting_binding")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gemini_code_tools_setting_binding")
 	close({
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in

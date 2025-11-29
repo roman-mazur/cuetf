@@ -2,7 +2,7 @@ package data
 
 #google_bigquery_datasets: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_bigquery_datasets")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_bigquery_datasets")
 	close({
 		datasets?: [...close({
 			dataset_id?:    string

@@ -2,7 +2,7 @@ package data
 
 #google_redis_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_redis_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_redis_instance")
 	close({
 		// Only applicable to STANDARD_HA tier which protects the instance
 		// against zonal failures by provisioning it across two zones.

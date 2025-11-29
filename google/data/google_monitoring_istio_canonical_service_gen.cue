@@ -2,7 +2,7 @@ package data
 
 #google_monitoring_istio_canonical_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_monitoring_istio_canonical_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_monitoring_istio_canonical_service")
 	close({
 		// The name of the canonical service underlying this service..
 		// Corresponds to the destination_service_name metric label in

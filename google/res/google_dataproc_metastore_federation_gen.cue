@@ -2,7 +2,7 @@ package res
 
 #google_dataproc_metastore_federation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dataproc_metastore_federation")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_metastore_federation")
 	close({
 		// Output only. The time when the metastore federation was
 		// created.

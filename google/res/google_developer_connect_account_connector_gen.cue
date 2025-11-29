@@ -4,7 +4,7 @@ import "list"
 
 #google_developer_connect_account_connector: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_developer_connect_account_connector")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_developer_connect_account_connector")
 	close({
 		// Required. The ID to use for the AccountConnector, which will
 		// become the final

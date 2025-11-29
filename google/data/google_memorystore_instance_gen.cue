@@ -2,7 +2,7 @@ package data
 
 #google_memorystore_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_memorystore_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_memorystore_instance")
 	close({
 		// Optional. Immutable. Authorization mode of the instance.
 		// Possible values:

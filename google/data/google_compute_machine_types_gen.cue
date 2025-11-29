@@ -2,7 +2,7 @@ package data
 
 #google_compute_machine_types: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_machine_types")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_machine_types")
 	close({
 		// The list of machine types
 		machine_types?: [...close({

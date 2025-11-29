@@ -2,7 +2,7 @@ package res
 
 #google_netapp_active_directory: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_netapp_active_directory")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_active_directory")
 	close({
 		// Domain user accounts to be added to the local Administrators
 		// group of the SMB service. Comma-separated list of domain users

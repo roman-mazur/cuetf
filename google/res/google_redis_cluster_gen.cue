@@ -4,7 +4,7 @@ import "list"
 
 #google_redis_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_redis_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_redis_cluster")
 	close({
 		// Optional. The authorization mode of the Redis cluster. If not
 		// provided, auth feature is disabled for the cluster. Default

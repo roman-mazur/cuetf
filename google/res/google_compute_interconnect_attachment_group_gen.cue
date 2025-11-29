@@ -4,7 +4,7 @@ import "list"
 
 #google_compute_interconnect_attachment_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_interconnect_attachment_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_interconnect_attachment_group")
 	close({
 		// The redundancy this group is configured to support. The way a
 		// user queries what SLA their Attachment gets is by looking at

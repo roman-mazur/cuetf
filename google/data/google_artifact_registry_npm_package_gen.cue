@@ -2,7 +2,7 @@ package data
 
 #google_artifact_registry_npm_package: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_artifact_registry_npm_package")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_artifact_registry_npm_package")
 	close({
 		// The time the package was created.
 		create_time?: string

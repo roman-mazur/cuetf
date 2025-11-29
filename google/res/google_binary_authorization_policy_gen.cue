@@ -4,7 +4,7 @@ import "list"
 
 #google_binary_authorization_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_binary_authorization_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_binary_authorization_policy")
 	close({
 		// A descriptive comment.
 		description?: string

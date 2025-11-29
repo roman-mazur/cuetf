@@ -2,7 +2,7 @@ package res
 
 #google_scc_v2_folder_mute_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_scc_v2_folder_mute_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_v2_folder_mute_config")
 	close({
 		// The time at which the mute config was created. This field is
 		// set by

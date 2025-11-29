@@ -4,7 +4,7 @@ import "list"
 
 #google_secret_manager_regional_secret: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_secret_manager_regional_secret")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_secret_manager_regional_secret")
 	close({
 		// Custom metadata about the regional secret.
 		//

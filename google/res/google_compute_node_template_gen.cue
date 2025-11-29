@@ -4,7 +4,7 @@ import "list"
 
 #google_compute_node_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_node_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_node_template")
 	close({
 		// CPU overcommit. Default value: "NONE" Possible values:
 		// ["ENABLED", "NONE"]

@@ -4,7 +4,7 @@ import "list"
 
 #google_dataplex_asset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dataplex_asset")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_asset")
 	close({
 		// Output only. The time when the asset was created.
 		create_time?: string

@@ -4,7 +4,7 @@ import "list"
 
 #google_compute_interconnect_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_interconnect_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_interconnect_group")
 	close({
 		// The status of the group as configured. This has the same
 		// structure as the operational field reported by the

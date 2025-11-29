@@ -2,7 +2,7 @@ package res
 
 #google_gke_hub_namespace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_gke_hub_namespace")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_hub_namespace")
 	close({
 		// Time the Namespace was created in UTC.
 		create_time?: string

@@ -4,7 +4,7 @@ import "list"
 
 #google_apphub_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apphub_application")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apphub_application")
 	close({
 		// Required. The Application identifier.
 		application_id!: string

@@ -2,7 +2,7 @@ package res
 
 #google_filestore_backup: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_filestore_backup")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_filestore_backup")
 	close({
 		// The amount of bytes needed to allocate a full copy of the
 		// snapshot content.

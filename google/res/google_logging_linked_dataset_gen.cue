@@ -2,7 +2,7 @@ package res
 
 #google_logging_linked_dataset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_logging_linked_dataset")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_linked_dataset")
 	close({
 		// The bucket to which the linked dataset is attached.
 		bucket!: string

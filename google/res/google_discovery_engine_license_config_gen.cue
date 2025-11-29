@@ -4,7 +4,7 @@ import "list"
 
 #google_discovery_engine_license_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_discovery_engine_license_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_license_config")
 	close({
 		// Whether the license config should be auto renewed when it
 		// reaches the end date.

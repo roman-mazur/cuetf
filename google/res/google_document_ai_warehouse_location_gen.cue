@@ -2,7 +2,7 @@ package res
 
 #google_document_ai_warehouse_location: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_document_ai_warehouse_location")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_document_ai_warehouse_location")
 	close({
 		// The access control mode for accessing the customer data.
 		// Possible values:

@@ -4,7 +4,7 @@ import "list"
 
 #google_data_catalog_tag_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_data_catalog_tag_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_catalog_tag_template")
 	close({
 		// The display name for this template.
 		display_name?: string

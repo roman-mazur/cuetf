@@ -4,7 +4,7 @@ import "list"
 
 #google_access_context_manager_access_level: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_access_context_manager_access_level")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_access_context_manager_access_level")
 	close({
 		// Description of the AccessLevel and its use. Does not affect
 		// behavior.

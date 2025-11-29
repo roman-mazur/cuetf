@@ -4,7 +4,7 @@ import "list"
 
 #google_scc_project_custom_module: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_scc_project_custom_module")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_project_custom_module")
 	close({
 		// If empty, indicates that the custom module was created in the
 		// organization,folder,

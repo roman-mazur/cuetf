@@ -2,7 +2,7 @@ package res
 
 #google_bigquery_row_access_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_bigquery_row_access_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_row_access_policy")
 	close({
 		// The time when this row access policy was created, in
 		// milliseconds since

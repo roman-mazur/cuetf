@@ -4,7 +4,7 @@ import "list"
 
 #google_vpc_access_connector: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_vpc_access_connector")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vpc_access_connector")
 	close({
 		// List of projects using the connector.
 		connected_projects?: [...string]

@@ -2,7 +2,7 @@ package res
 
 #google_network_security_tls_inspection_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_security_tls_inspection_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_tls_inspection_policy")
 	close({
 		// A CA pool resource used to issue interception certificates.
 		ca_pool!: string

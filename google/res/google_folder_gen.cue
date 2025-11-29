@@ -2,7 +2,7 @@ package res
 
 #google_folder: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_folder")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_folder")
 	close({
 		// A list of capabilities that are configured for this folder.
 		configured_capabilities?: [...string]

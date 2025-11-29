@@ -4,7 +4,7 @@ import "list"
 
 #google_privateca_certificate_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_privateca_certificate_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_privateca_certificate_template")
 	close({
 		// Output only. The time at which this CertificateTemplate was
 		// created.

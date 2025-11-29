@@ -4,7 +4,7 @@ import "list"
 
 #google_compute_firewall: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_firewall")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_firewall")
 	close({
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string

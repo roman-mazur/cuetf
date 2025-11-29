@@ -2,7 +2,7 @@ package data
 
 #google_compute_instance_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_instance_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_instance_template")
 	close({
 		// Controls for advanced machine-related behavior features.
 		advanced_machine_features?: [...close({

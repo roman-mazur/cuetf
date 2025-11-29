@@ -4,7 +4,7 @@ import "list"
 
 #google_firestore_backup_schedule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_firestore_backup_schedule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firestore_backup_schedule")
 	close({
 		// The Firestore database id. Defaults to '"(default)"'.
 		database?: string

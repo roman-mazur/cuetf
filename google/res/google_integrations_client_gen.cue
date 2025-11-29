@@ -4,7 +4,7 @@ import "list"
 
 #google_integrations_client: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_integrations_client")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_integrations_client")
 	close({
 		// Indicates if sample integrations should be created along with
 		// provisioning.

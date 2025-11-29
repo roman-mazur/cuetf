@@ -2,7 +2,7 @@ package res
 
 #google_container_azure_client: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_container_azure_client")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_azure_client")
 	close({
 		// The Azure Active Directory Application ID.
 		application_id!: string

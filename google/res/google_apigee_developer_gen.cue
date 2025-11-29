@@ -2,7 +2,7 @@ package res
 
 #google_apigee_developer: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_developer")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_developer")
 	close({
 		// Time at which the developer was created in milliseconds since
 		// epoch.

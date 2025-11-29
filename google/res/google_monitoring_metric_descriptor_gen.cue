@@ -4,7 +4,7 @@ import "list"
 
 #google_monitoring_metric_descriptor: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_monitoring_metric_descriptor")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_metric_descriptor")
 	close({
 		// A detailed description of the metric, which can be used in
 		// documentation.

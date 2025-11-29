@@ -2,7 +2,7 @@ package data
 
 #google_compute_snapshot: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_snapshot")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_snapshot")
 	close({
 		// Creates the new snapshot in the snapshot chain labeled with the
 		// specified name. The chain name must be 1-63 characters long and

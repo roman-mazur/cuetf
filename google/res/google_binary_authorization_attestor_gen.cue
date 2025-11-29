@@ -4,7 +4,7 @@ import "list"
 
 #google_binary_authorization_attestor: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_binary_authorization_attestor")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_binary_authorization_attestor")
 	close({
 		// A descriptive comment. This field may be updated. The field may
 		// be

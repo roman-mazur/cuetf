@@ -2,7 +2,7 @@ package res
 
 #google_compute_address: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_address")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_address")
 	close({
 		// The static external IP address represented by this resource.
 		// The IP address must be inside the specified subnetwork,

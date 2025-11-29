@@ -2,7 +2,7 @@ package res
 
 #google_project_access_approval_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_project_access_approval_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_project_access_approval_settings")
 	close({
 		// The asymmetric crypto key version to use for signing approval
 		// requests.

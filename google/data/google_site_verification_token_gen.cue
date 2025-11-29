@@ -2,7 +2,7 @@ package data
 
 #google_site_verification_token: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_site_verification_token")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_site_verification_token")
 	close({
 		id?: string
 

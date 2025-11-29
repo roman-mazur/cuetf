@@ -4,7 +4,7 @@ import "list"
 
 #google_container_node_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_container_node_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_node_pool")
 	close({
 		// The cluster to create the node pool for. Cluster must be
 		// present in location provided for zonal clusters.
@@ -388,6 +388,7 @@ import "list"
 
 	_#defs: "/$defs/node_config/$defs/containerd_config": close({
 		private_registry_access_config?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config"]])
+		writable_cgroups?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/writable_cgroups", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/writable_cgroups"]])
 	})
 
 	_#defs: "/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config": close({
@@ -410,6 +411,11 @@ import "list"
 		// format
 		// 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
 		secret_uri!: string
+	})
+
+	_#defs: "/$defs/node_config/$defs/containerd_config/$defs/writable_cgroups": close({
+		// Whether writable cgroups are enabled.
+		enabled!: bool
 	})
 
 	_#defs: "/$defs/node_config/$defs/ephemeral_storage_local_ssd_config": close({

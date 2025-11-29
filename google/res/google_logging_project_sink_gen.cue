@@ -4,7 +4,7 @@ import "list"
 
 #google_logging_project_sink: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_logging_project_sink")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_project_sink")
 	close({
 		// A service account provided by the caller that will be used to
 		// write the log entries. The format must be

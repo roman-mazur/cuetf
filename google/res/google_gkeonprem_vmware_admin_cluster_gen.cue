@@ -4,7 +4,7 @@ import "list"
 
 #google_gkeonprem_vmware_admin_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_gkeonprem_vmware_admin_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gkeonprem_vmware_admin_cluster")
 	close({
 		// Annotations on the VMware Admin Cluster.
 		// This field has the same restrictions as Kubernetes annotations.

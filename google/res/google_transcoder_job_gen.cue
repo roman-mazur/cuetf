@@ -4,7 +4,7 @@ import "list"
 
 #google_transcoder_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_transcoder_job")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_transcoder_job")
 	close({
 		// The time the job was created.
 		create_time?: string

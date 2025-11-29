@@ -2,7 +2,7 @@ package data
 
 #google_kms_key_handle: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_kms_key_handle")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_kms_key_handle")
 	close({
 		// A reference to a Cloud KMS CryptoKey that can be used for CMEK
 		// in the requested

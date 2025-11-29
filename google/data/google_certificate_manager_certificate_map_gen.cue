@@ -2,7 +2,7 @@ package data
 
 #google_certificate_manager_certificate_map: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_certificate_manager_certificate_map")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_certificate_manager_certificate_map")
 	close({
 		// Creation timestamp of a Certificate Map. Timestamp is in
 		// RFC3339 UTC "Zulu" format,

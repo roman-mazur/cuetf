@@ -4,7 +4,7 @@ import "list"
 
 #google_ces_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_ces_deployment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_deployment")
 	close({
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in

@@ -4,7 +4,7 @@ import "list"
 
 #google_data_fusion_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_data_fusion_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_fusion_instance")
 	close({
 		// Endpoint on which the REST APIs is accessible.
 		api_endpoint?: string

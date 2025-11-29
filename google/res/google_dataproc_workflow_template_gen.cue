@@ -4,7 +4,7 @@ import "list"
 
 #google_dataproc_workflow_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dataproc_workflow_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_workflow_template")
 	close({
 		// Output only. The time template was created.
 		create_time?: string

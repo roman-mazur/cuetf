@@ -2,7 +2,7 @@ package res
 
 #google_compute_target_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_target_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_target_pool")
 	close({
 		// URL to the backup target pool. Must also set failover_ratio.
 		backup_pool?: string

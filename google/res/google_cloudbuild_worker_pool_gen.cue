@@ -4,7 +4,7 @@ import "list"
 
 #google_cloudbuild_worker_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloudbuild_worker_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloudbuild_worker_pool")
 	close({
 		// User specified annotations. See
 		// https://google.aip.dev/128#annotations for more details such

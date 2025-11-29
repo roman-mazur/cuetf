@@ -4,7 +4,7 @@ import "list"
 
 #google_beyondcorp_app_connector: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_beyondcorp_app_connector")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_beyondcorp_app_connector")
 	close({
 		// An arbitrary user-provided name for the AppConnector.
 		display_name?: string

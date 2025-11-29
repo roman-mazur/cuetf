@@ -2,7 +2,7 @@ package res
 
 #google_essential_contacts_contact: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_essential_contacts_contact")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_essential_contacts_contact")
 	close({
 		// The email address to send notifications to. This does not need
 		// to be a Google account.

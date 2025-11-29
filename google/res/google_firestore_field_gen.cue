@@ -4,7 +4,7 @@ import "list"
 
 #google_firestore_field: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_firestore_field")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firestore_field")
 	close({
 		// The id of the collection group to configure.
 		collection!: string

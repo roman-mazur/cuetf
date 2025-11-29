@@ -2,7 +2,7 @@ package res
 
 #google_gemini_code_repository_index: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_gemini_code_repository_index")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gemini_code_repository_index")
 	close({
 		// Required. Id of the Code Repository Index.
 		code_repository_index_id!: string

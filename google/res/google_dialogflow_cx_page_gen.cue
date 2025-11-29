@@ -4,7 +4,7 @@ import "list"
 
 #google_dialogflow_cx_page: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dialogflow_cx_page")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_page")
 	close({
 		// The human-readable name of the page, unique within the agent.
 		display_name!: string

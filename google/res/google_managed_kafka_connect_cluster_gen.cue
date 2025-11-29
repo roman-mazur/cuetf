@@ -4,7 +4,7 @@ import "list"
 
 #google_managed_kafka_connect_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_managed_kafka_connect_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_managed_kafka_connect_cluster")
 	close({
 		// The ID to use for the Connect Cluster, which will become the
 		// final component of the connect cluster's name. This value is

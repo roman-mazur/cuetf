@@ -2,7 +2,7 @@ package data
 
 #google_storage_control_project_intelligence_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_storage_control_project_intelligence_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_storage_control_project_intelligence_config")
 	close({
 		// Edition configuration of the Storage Intelligence resource.
 		// Valid values are INHERIT, TRIAL, DISABLED and STANDARD.

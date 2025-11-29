@@ -2,7 +2,7 @@ package res
 
 #google_parameter_manager_parameter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_parameter_manager_parameter")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_parameter_manager_parameter")
 	close({
 		// The time at which the Parameter was created.
 		create_time?: string

@@ -2,7 +2,7 @@ package res
 
 #google_netapp_volume_snapshot: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_netapp_volume_snapshot")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_volume_snapshot")
 	close({
 		// Description for the snapshot.
 		description?: string

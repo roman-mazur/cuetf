@@ -2,7 +2,7 @@ package res
 
 #google_apigee_api_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_api_deployment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_api_deployment")
 	close({
 		// The Apigee Environment associated with the Apigee API
 		// deployment.

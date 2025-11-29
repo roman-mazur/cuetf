@@ -4,7 +4,7 @@ import "list"
 
 #google_chronicle_data_access_scope: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_chronicle_data_access_scope")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_data_access_scope")
 	close({
 		// Optional. Whether or not the scope allows all labels, allow_all
 		// and

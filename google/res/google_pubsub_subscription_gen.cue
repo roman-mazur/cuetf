@@ -4,7 +4,7 @@ import "list"
 
 #google_pubsub_subscription: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_pubsub_subscription")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_pubsub_subscription")
 	close({
 		// This value is the maximum time after a subscriber receives a
 		// message

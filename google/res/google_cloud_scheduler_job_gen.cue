@@ -4,7 +4,7 @@ import "list"
 
 #google_cloud_scheduler_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloud_scheduler_job")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_scheduler_job")
 	close({
 		// The deadline for job attempts. If the request handler does not
 		// respond by this deadline then the request is

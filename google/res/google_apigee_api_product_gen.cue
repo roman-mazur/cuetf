@@ -4,7 +4,7 @@ import "list"
 
 #google_apigee_api_product: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_api_product")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_api_product")
 	close({
 		// Comma-separated list of API resources to be bundled in the API
 		// product. By default, the resource paths are mapped from the

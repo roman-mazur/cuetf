@@ -4,7 +4,7 @@ import "list"
 
 #google_dataplex_lake: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dataplex_lake")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_lake")
 	close({
 		// Output only. Aggregated status of the underlying assets of the
 		// lake.

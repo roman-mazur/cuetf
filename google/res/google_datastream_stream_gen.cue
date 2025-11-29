@@ -4,7 +4,7 @@ import "list"
 
 #google_datastream_stream: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_datastream_stream")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_datastream_stream")
 	close({
 		// Create the stream without validating it.
 		create_without_validation?: bool

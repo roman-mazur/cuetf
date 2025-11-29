@@ -2,7 +2,7 @@ package res
 
 #google_certificate_manager_trust_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_certificate_manager_trust_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_certificate_manager_trust_config")
 	close({
 		// The creation timestamp of a TrustConfig.
 		//

@@ -4,7 +4,7 @@ import "list"
 
 #google_cloudbuild_trigger: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloudbuild_trigger")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloudbuild_trigger")
 	close({
 		// Time when the trigger was created.
 		create_time?: string

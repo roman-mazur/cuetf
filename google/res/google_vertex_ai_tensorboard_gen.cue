@@ -4,7 +4,7 @@ import "list"
 
 #google_vertex_ai_tensorboard: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_vertex_ai_tensorboard")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_tensorboard")
 	close({
 		// Consumer project Cloud Storage path prefix used to store blob
 		// data, which can either be a bucket or directory. Does not end

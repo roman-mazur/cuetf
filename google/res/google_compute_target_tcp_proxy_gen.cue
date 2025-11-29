@@ -2,7 +2,7 @@ package res
 
 #google_compute_target_tcp_proxy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_target_tcp_proxy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_target_tcp_proxy")
 	close({
 		// A reference to the BackendService resource.
 		backend_service!: string

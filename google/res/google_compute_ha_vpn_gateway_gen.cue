@@ -2,7 +2,7 @@ package res
 
 #google_compute_ha_vpn_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_ha_vpn_gateway")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_ha_vpn_gateway")
 	close({
 		// An optional description of this resource.
 		description?: string

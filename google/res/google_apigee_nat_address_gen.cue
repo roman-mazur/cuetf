@@ -2,7 +2,7 @@ package res
 
 #google_apigee_nat_address: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_nat_address")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_nat_address")
 	close({
 		// Flag that specifies whether the reserved NAT address should be
 		// activate.

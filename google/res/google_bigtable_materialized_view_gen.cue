@@ -2,7 +2,7 @@ package res
 
 #google_bigtable_materialized_view: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_bigtable_materialized_view")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigtable_materialized_view")
 	close({
 		// Set to true to make the MaterializedView protected against
 		// deletion.

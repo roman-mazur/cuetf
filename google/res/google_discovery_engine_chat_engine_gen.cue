@@ -4,7 +4,7 @@ import "list"
 
 #google_discovery_engine_chat_engine: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_discovery_engine_chat_engine")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_chat_engine")
 	close({
 		// Additional information of the Chat Engine.
 		chat_engine_metadata?: [...close({
