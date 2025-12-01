@@ -4,7 +4,7 @@ import "list"
 
 #aws_backup_plan: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_backup_plan")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_backup_plan")
 	close({
 		arn?: string
 		advanced_backup_setting?: matchN(1, [#advanced_backup_setting, [...#advanced_backup_setting]])

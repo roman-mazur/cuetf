@@ -2,7 +2,7 @@ package res
 
 #aws_default_network_acl: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_default_network_acl")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_default_network_acl")
 	close({
 		arn?:                    string
 		default_network_acl_id!: string

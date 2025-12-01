@@ -4,7 +4,7 @@ import "list"
 
 #aws_emrserverless_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_emrserverless_application")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_emrserverless_application")
 	close({
 		architecture?: string
 		auto_start_configuration?: matchN(1, [#auto_start_configuration, list.MaxItems(1) & [...#auto_start_configuration]])

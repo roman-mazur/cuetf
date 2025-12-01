@@ -2,7 +2,7 @@ package data
 
 #aws_odb_db_node: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_odb_db_node")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_odb_db_node")
 	close({
 		// Additional information about the planned maintenance.
 		additional_details?: string

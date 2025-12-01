@@ -2,7 +2,7 @@ package res
 
 #aws_amplify_branch: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_amplify_branch")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_amplify_branch")
 	close({
 		app_id!: string
 		arn?:    string

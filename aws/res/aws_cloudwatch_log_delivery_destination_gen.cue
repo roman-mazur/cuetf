@@ -2,7 +2,7 @@ package res
 
 #aws_cloudwatch_log_delivery_destination: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudwatch_log_delivery_destination")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudwatch_log_delivery_destination")
 	close({
 		arn?:                       string
 		delivery_destination_type?: string

@@ -2,7 +2,7 @@ package res
 
 #aws_bedrockagent_knowledge_base: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrockagent_knowledge_base")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagent_knowledge_base")
 	close({
 		arn?:         string
 		created_at?:  string

@@ -2,7 +2,7 @@ package data
 
 #aws_cloudwatch_event_buses: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudwatch_event_buses")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_cloudwatch_event_buses")
 	close({
 		event_buses?: [...close({
 			arn?:                string

@@ -2,7 +2,7 @@ package res
 
 #aws_redshiftserverless_namespace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_redshiftserverless_namespace")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_redshiftserverless_namespace")
 	close({
 		admin_password_secret_arn?:        string
 		admin_password_secret_kms_key_id?: string

@@ -4,7 +4,7 @@ import "list"
 
 #aws_sagemaker_endpoint_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_sagemaker_endpoint_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_endpoint_configuration")
 	close({
 		arn?:                string
 		execution_role_arn?: string

@@ -4,7 +4,7 @@ import "list"
 
 #aws_fsx_file_cache: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_fsx_file_cache")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_fsx_file_cache")
 	close({
 		arn?:                                       string
 		copy_tags_to_data_repository_associations?: bool

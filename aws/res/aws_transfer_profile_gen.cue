@@ -2,7 +2,7 @@ package res
 
 #aws_transfer_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_transfer_profile")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_transfer_profile")
 	close({
 		arn?:    string
 		as2_id!: string

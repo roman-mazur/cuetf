@@ -2,7 +2,7 @@ package res
 
 #aws_lakeformation_opt_in: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lakeformation_opt_in")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lakeformation_opt_in")
 	close({
 		last_modified?: string
 		condition?: matchN(1, [#condition, [...#condition]])

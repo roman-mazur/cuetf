@@ -4,7 +4,7 @@ import "list"
 
 #aws_ce_cost_category: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ce_cost_category")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ce_cost_category")
 	close({
 		arn?:             string
 		default_value?:   string

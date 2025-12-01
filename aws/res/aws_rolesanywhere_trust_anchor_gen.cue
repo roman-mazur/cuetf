@@ -4,7 +4,7 @@ import "list"
 
 #aws_rolesanywhere_trust_anchor: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_rolesanywhere_trust_anchor")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_rolesanywhere_trust_anchor")
 	close({
 		notification_settings?: matchN(1, [#notification_settings, list.MaxItems(50) & [...#notification_settings]])
 		arn?:     string

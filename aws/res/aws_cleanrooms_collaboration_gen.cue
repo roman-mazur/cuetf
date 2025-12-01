@@ -4,7 +4,7 @@ import "list"
 
 #aws_cleanrooms_collaboration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cleanrooms_collaboration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cleanrooms_collaboration")
 	close({
 		analytics_engine?:     string
 		arn?:                  string

@@ -2,7 +2,7 @@ package data
 
 #aws_vpn_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpn_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_vpn_connection")
 	close({
 		category?:                       string
 		core_network_arn?:               string
@@ -17,12 +17,12 @@ package data
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		filter?: matchN(1, [#filter, [...#filter]])
 		routes?: [...close({
 			destination_cidr_block?: string
 			source?:                 string
 			state?:                  string
 		})]
+		filter?: matchN(1, [#filter, [...#filter]])
 		state?: string
 		tags?: [string]: string
 		transit_gateway_id?: string
@@ -34,8 +34,9 @@ package data
 			status?:               string
 			status_message?:       string
 		})]
-		vpn_connection_id?: string
-		vpn_gateway_id?:    string
+		vpn_concentrator_id?: string
+		vpn_connection_id?:   string
+		vpn_gateway_id?:      string
 	})
 
 	#filter: close({

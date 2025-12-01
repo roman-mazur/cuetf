@@ -4,7 +4,7 @@ import "list"
 
 #aws_emr_instance_fleet: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_emr_instance_fleet")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_emr_instance_fleet")
 	close({
 		cluster_id!: string
 		id?:         string

@@ -4,7 +4,7 @@ import "list"
 
 #aws_fsx_ontap_storage_virtual_machine: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_fsx_ontap_storage_virtual_machine")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_fsx_ontap_storage_virtual_machine")
 	close({
 		arn?: string
 

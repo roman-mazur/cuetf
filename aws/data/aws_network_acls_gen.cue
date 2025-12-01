@@ -2,7 +2,7 @@ package data
 
 #aws_network_acls: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_network_acls")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_network_acls")
 	close({
 		id?: string
 		ids?: [...string]

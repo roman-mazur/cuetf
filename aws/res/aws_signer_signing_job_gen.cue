@@ -4,7 +4,7 @@ import "list"
 
 #aws_signer_signing_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_signer_signing_job")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_signer_signing_job")
 	close({
 		completed_at?: string
 

@@ -2,7 +2,7 @@ package res
 
 #aws_dx_private_virtual_interface: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dx_private_virtual_interface")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dx_private_virtual_interface")
 	close({
 		address_family!:  string
 		amazon_address?:  string

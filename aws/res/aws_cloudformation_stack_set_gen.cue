@@ -4,7 +4,7 @@ import "list"
 
 #aws_cloudformation_stack_set: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudformation_stack_set")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudformation_stack_set")
 	close({
 		administration_role_arn?: string
 		arn?:                     string

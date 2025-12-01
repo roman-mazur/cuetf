@@ -4,7 +4,7 @@ import "list"
 
 #aws_sagemaker_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_sagemaker_domain")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_domain")
 	close({
 		app_network_access_type?: string
 

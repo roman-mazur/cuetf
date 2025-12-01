@@ -2,7 +2,7 @@ package res
 
 #aws_bedrockagentcore_token_vault_cmk: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrockagentcore_token_vault_cmk")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_token_vault_cmk")
 	close({
 		kms_configuration?: matchN(1, [#kms_configuration, [...#kms_configuration]])
 

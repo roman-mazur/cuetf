@@ -4,7 +4,7 @@ import "list"
 
 #aws_lambda_function: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lambda_function")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lambda_function")
 	close({
 		architectures?: [...string]
 		arn?:                     string
@@ -17,8 +17,9 @@ import "list"
 		id?:                      string
 		image_uri?:               string
 		invoke_arn?:              string
-		kms_key_arn?:             string
-		last_modified?:           string
+		dead_letter_config?: matchN(1, [#dead_letter_config, list.MaxItems(1) & [...#dead_letter_config]])
+		kms_key_arn?:   string
+		last_modified?: string
 		layers?: [...string]
 		memory_size?:          number
 		package_type?:         string
@@ -32,12 +33,14 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                             string
 		replace_security_groups_on_destroy?: bool
+		environment?: matchN(1, [#environment, list.MaxItems(1) & [...#environment]])
 		replacement_security_group_ids?: [...string]
 		reserved_concurrent_executions?: number
 		role!:                           string
 		runtime?:                        string
-		dead_letter_config?: matchN(1, [#dead_letter_config, list.MaxItems(1) & [...#dead_letter_config]])
-		s3_bucket?:                   string
+		ephemeral_storage?: matchN(1, [#ephemeral_storage, list.MaxItems(1) & [...#ephemeral_storage]])
+		s3_bucket?: string
+		file_system_config?: matchN(1, [#file_system_config, list.MaxItems(1) & [...#file_system_config]])
 		s3_key?:                      string
 		s3_object_version?:           string
 		signing_job_arn?:             string
@@ -46,15 +49,13 @@ import "list"
 		source_code_hash?:            string
 		source_code_size?:            number
 		source_kms_key_arn?:          string
-		environment?: matchN(1, [#environment, list.MaxItems(1) & [...#environment]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		timeout?: number
-		ephemeral_storage?: matchN(1, [#ephemeral_storage, list.MaxItems(1) & [...#ephemeral_storage]])
-		file_system_config?: matchN(1, [#file_system_config, list.MaxItems(1) & [...#file_system_config]])
 		image_config?: matchN(1, [#image_config, list.MaxItems(1) & [...#image_config]])
 		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
 		snap_start?: matchN(1, [#snap_start, list.MaxItems(1) & [...#snap_start]])
+		tenancy_config?: matchN(1, [#tenancy_config, list.MaxItems(1) & [...#tenancy_config]])
+		timeout?:  number
 		version?:  string
 		timeouts?: #timeouts
 		tracing_config?: matchN(1, [#tracing_config, list.MaxItems(1) & [...#tracing_config]])
@@ -94,6 +95,10 @@ import "list"
 	#snap_start: close({
 		apply_on!:            string
 		optimization_status?: string
+	})
+
+	#tenancy_config: close({
+		tenant_isolation_mode!: string
 	})
 
 	#timeouts: close({

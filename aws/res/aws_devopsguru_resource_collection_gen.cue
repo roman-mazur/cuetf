@@ -2,7 +2,7 @@ package res
 
 #aws_devopsguru_resource_collection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_devopsguru_resource_collection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_devopsguru_resource_collection")
 	close({
 		cloudformation?: matchN(1, [#cloudformation, [...#cloudformation]])
 		tags?: matchN(1, [#tags, [...#tags]])

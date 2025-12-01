@@ -4,7 +4,7 @@ import "list"
 
 #aws_emrcontainers_job_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_emrcontainers_job_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_emrcontainers_job_template")
 	close({
 		arn?: string
 		job_template_data!: matchN(1, [#job_template_data, list.MaxItems(1) & [_, ...] & [...#job_template_data]])

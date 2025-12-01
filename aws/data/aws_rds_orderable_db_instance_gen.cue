@@ -2,7 +2,7 @@ package data
 
 #aws_rds_orderable_db_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_rds_orderable_db_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_rds_orderable_db_instance")
 	close({
 		availability_zone_group?: string
 		availability_zones?: [...string]

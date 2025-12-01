@@ -2,7 +2,7 @@ package data
 
 #aws_globalaccelerator_accelerator: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_globalaccelerator_accelerator")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_globalaccelerator_accelerator")
 	close({
 		arn?: string
 		attributes?: [...close({

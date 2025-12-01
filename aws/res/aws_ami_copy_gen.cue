@@ -2,7 +2,7 @@ package res
 
 #aws_ami_copy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ami_copy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ami_copy")
 	close({
 		architecture?:            string
 		arn?:                     string

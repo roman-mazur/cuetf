@@ -2,7 +2,7 @@ package res
 
 #aws_auditmanager_assessment_delegation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_auditmanager_assessment_delegation")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_auditmanager_assessment_delegation")
 	close({
 		assessment_id!:  string
 		comment?:        string

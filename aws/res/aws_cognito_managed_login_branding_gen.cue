@@ -2,7 +2,7 @@ package res
 
 #aws_cognito_managed_login_branding: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cognito_managed_login_branding")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cognito_managed_login_branding")
 	close({
 		client_id!:                 string
 		managed_login_branding_id?: string

@@ -4,7 +4,7 @@ import "list"
 
 #aws_flow_log: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_flow_log")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_flow_log")
 	close({
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

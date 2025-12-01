@@ -2,7 +2,7 @@ package res
 
 #aws_workspacesweb_user_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_workspacesweb_user_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_workspacesweb_user_settings")
 	close({
 		additional_encryption_context?: [string]: string
 		cookie_synchronization_configuration?: matchN(1, [#cookie_synchronization_configuration, [...#cookie_synchronization_configuration]])

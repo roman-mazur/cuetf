@@ -4,7 +4,7 @@ import "list"
 
 #aws_cloudfront_cache_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudfront_cache_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_cache_policy")
 	close({
 		parameters_in_cache_key_and_forwarded_to_origin!: matchN(1, [#parameters_in_cache_key_and_forwarded_to_origin, list.MaxItems(1) & [_, ...] & [...#parameters_in_cache_key_and_forwarded_to_origin]])
 		arn?:         string

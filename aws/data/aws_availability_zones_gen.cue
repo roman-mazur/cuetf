@@ -2,7 +2,7 @@ package data
 
 #aws_availability_zones: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_availability_zones")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_availability_zones")
 	close({
 		all_availability_zones?: bool
 		exclude_names?: [...string]

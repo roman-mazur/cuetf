@@ -2,7 +2,7 @@ package data
 
 #aws_devopsguru_resource_collection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_devopsguru_resource_collection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_devopsguru_resource_collection")
 	close({
 		cloudformation?: [...close({
 			stack_names?: [...string]

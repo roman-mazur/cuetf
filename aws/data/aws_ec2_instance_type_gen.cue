@@ -2,7 +2,7 @@ package data
 
 #aws_ec2_instance_type: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_instance_type")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ec2_instance_type")
 	close({
 		auto_recovery_supported?: bool
 		bandwidth_weightings?: [...string]

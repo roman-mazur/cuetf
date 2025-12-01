@@ -2,7 +2,7 @@ package res
 
 #aws_appsync_channel_namespace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appsync_channel_namespace")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_appsync_channel_namespace")
 	close({
 		api_id!:                string
 		channel_namespace_arn?: string

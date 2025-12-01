@@ -2,7 +2,7 @@ package res
 
 #aws_securitylake_data_lake: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_securitylake_data_lake")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_securitylake_data_lake")
 	close({
 		arn?: string
 		configuration?: matchN(1, [#configuration, [...#configuration]])

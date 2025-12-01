@@ -2,7 +2,7 @@ package res
 
 #aws_emr_instance_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_emr_instance_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_emr_instance_group")
 	close({
 		autoscaling_policy?:  string
 		bid_price?:           string

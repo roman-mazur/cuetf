@@ -2,7 +2,7 @@ package res
 
 #aws_fsx_backup: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_fsx_backup")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_fsx_backup")
 	close({
 		arn?:            string
 		file_system_id?: string

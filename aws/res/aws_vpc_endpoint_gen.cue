@@ -4,7 +4,7 @@ import "list"
 
 #aws_vpc_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc_endpoint")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_endpoint")
 	close({
 		arn?:         string
 		auto_accept?: bool
