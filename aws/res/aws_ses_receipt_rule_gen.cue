@@ -2,7 +2,7 @@ package res
 
 #aws_ses_receipt_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ses_receipt_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ses_receipt_rule")
 	close({
 		after?:   string
 		arn?:     string

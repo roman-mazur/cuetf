@@ -2,7 +2,7 @@ package data
 
 #aws_workspaces_directory: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_workspaces_directory")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_workspaces_directory")
 	close({
 		active_directory_config?: [...close({
 			domain_name?:                string

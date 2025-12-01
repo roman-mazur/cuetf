@@ -2,7 +2,7 @@ package res
 
 #aws_ec2_allowed_images_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_allowed_images_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ec2_allowed_images_settings")
 	close({
 		image_criterion?: matchN(1, [#image_criterion, [...#image_criterion]])
 

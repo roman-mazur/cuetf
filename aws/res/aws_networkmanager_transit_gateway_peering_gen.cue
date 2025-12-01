@@ -2,7 +2,7 @@ package res
 
 #aws_networkmanager_transit_gateway_peering: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_networkmanager_transit_gateway_peering")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_networkmanager_transit_gateway_peering")
 	close({
 		arn?:              string
 		core_network_arn?: string

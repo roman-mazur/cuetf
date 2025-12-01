@@ -4,7 +4,7 @@ import "list"
 
 #aws_mskconnect_connector: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_mskconnect_connector")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_mskconnect_connector")
 	close({
 		arn?: string
 		connector_configuration!: [string]: string

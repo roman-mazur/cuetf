@@ -4,7 +4,7 @@ import "list"
 
 #aws_waf_size_constraint_set: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_waf_size_constraint_set")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_waf_size_constraint_set")
 	close({
 		size_constraints?: matchN(1, [#size_constraints, [...#size_constraints]])
 		arn?:  string

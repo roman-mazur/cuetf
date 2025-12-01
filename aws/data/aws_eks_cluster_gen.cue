@@ -2,7 +2,7 @@ package data
 
 #aws_eks_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_eks_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_eks_cluster")
 	close({
 		access_config?: [...close({
 			authentication_mode?:                         string
@@ -18,22 +18,25 @@ package data
 			node_pools?: [...string]
 			node_role_arn?: string
 		})]
+		control_plane_scaling_config?: [...close({
+			tier?: string
+		})]
 		created_at?:          string
 		deletion_protection?: bool
 		enabled_cluster_log_types?: [...string]
 		endpoint?: string
 		id?:       string
-		identity?: [...close({
-			oidc?: [...close({
-				issuer?: string
-			})]
-		})]
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		identity?: [...close({
+			oidc?: [...close({
+				issuer?: string
+			})]
+		})]
 		kubernetes_network_config?: [...close({
 			elastic_load_balancing?: [...close({
 				enabled?: bool

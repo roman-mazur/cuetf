@@ -566,6 +566,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_ecs_capacity_provider": res.#aws_ecs_capacity_provider
 	_#res: "\(#awsPrefix)_ecs_cluster_capacity_providers": res.#aws_ecs_cluster_capacity_providers
 	_#res: "\(#awsPrefix)_ecs_cluster": res.#aws_ecs_cluster
+	_#res: "\(#awsPrefix)_ecs_express_gateway_service": res.#aws_ecs_express_gateway_service
 	_#res: "\(#awsPrefix)_ecs_service": res.#aws_ecs_service
 	_#res: "\(#awsPrefix)_ecs_tag": res.#aws_ecs_tag
 	_#res: "\(#awsPrefix)_ecs_task_definition": res.#aws_ecs_task_definition
@@ -1190,6 +1191,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_rum_metrics_destination": res.#aws_rum_metrics_destination
 	_#res: "\(#awsPrefix)_s3_access_point": res.#aws_s3_access_point
 	_#res: "\(#awsPrefix)_s3_account_public_access_block": res.#aws_s3_account_public_access_block
+	_#res: "\(#awsPrefix)_s3_bucket_abac": res.#aws_s3_bucket_abac
 	_#res: "\(#awsPrefix)_s3_bucket_accelerate_configuration": res.#aws_s3_bucket_accelerate_configuration
 	_#res: "\(#awsPrefix)_s3_bucket_acl": res.#aws_s3_bucket_acl
 	_#res: "\(#awsPrefix)_s3_bucket_analytics_configuration": res.#aws_s3_bucket_analytics_configuration
@@ -1459,6 +1461,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_vpc_block_public_access_options": res.#aws_vpc_block_public_access_options
 	_#res: "\(#awsPrefix)_vpc_dhcp_options_association": res.#aws_vpc_dhcp_options_association
 	_#res: "\(#awsPrefix)_vpc_dhcp_options": res.#aws_vpc_dhcp_options
+	_#res: "\(#awsPrefix)_vpc_encryption_control": res.#aws_vpc_encryption_control
 	_#res: "\(#awsPrefix)_vpc_endpoint_connection_accepter": res.#aws_vpc_endpoint_connection_accepter
 	_#res: "\(#awsPrefix)_vpc_endpoint_connection_notification": res.#aws_vpc_endpoint_connection_notification
 	_#res: "\(#awsPrefix)_vpc_endpoint": res.#aws_vpc_endpoint
@@ -1509,6 +1512,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_vpclattice_service_network_vpc_association": res.#aws_vpclattice_service_network_vpc_association
 	_#res: "\(#awsPrefix)_vpclattice_target_group_attachment": res.#aws_vpclattice_target_group_attachment
 	_#res: "\(#awsPrefix)_vpclattice_target_group": res.#aws_vpclattice_target_group
+	_#res: "\(#awsPrefix)_vpn_concentrator": res.#aws_vpn_concentrator
 	_#res: "\(#awsPrefix)_vpn_connection": res.#aws_vpn_connection
 	_#res: "\(#awsPrefix)_vpn_connection_route": res.#aws_vpn_connection_route
 	_#res: "\(#awsPrefix)_vpn_gateway_attachment": res.#aws_vpn_gateway_attachment

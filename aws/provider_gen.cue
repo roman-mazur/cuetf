@@ -2,7 +2,7 @@ package aws
 
 #provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws/provider")
 	close({
 		// The access key for API operations. You can retrieve this
 		// from the 'Security & Credentials' section of the AWS console.
@@ -749,9 +749,6 @@ package aws
 		logs?: string
 
 		// Use this to override the default service endpoint URL
-		lookoutmetrics?: string
-
-		// Use this to override the default service endpoint URL
 		m2?: string
 
 		// Use this to override the default service endpoint URL
@@ -795,6 +792,9 @@ package aws
 
 		// Use this to override the default service endpoint URL
 		mwaa?: string
+
+		// Use this to override the default service endpoint URL
+		mwaaserverless?: string
 
 		// Use this to override the default service endpoint URL
 		neptune?: string
@@ -897,6 +897,12 @@ package aws
 
 		// Use this to override the default service endpoint URL
 		rds?: string
+
+		// Use this to override the default service endpoint URL
+		rdsdata?: string
+
+		// Use this to override the default service endpoint URL
+		rdsdataservice?: string
 
 		// Use this to override the default service endpoint URL
 		recyclebin?: string

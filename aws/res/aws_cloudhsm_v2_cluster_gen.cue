@@ -2,7 +2,7 @@ package res
 
 #aws_cloudhsm_v2_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudhsm_v2_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudhsm_v2_cluster")
 	close({
 		cluster_certificates?: [...close({
 			aws_hardware_certificate?:          string

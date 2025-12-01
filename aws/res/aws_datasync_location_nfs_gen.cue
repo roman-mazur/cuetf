@@ -4,7 +4,7 @@ import "list"
 
 #aws_datasync_location_nfs: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_datasync_location_nfs")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_datasync_location_nfs")
 	close({
 		arn?: string
 		id?:  string

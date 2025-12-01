@@ -2,7 +2,7 @@ package data
 
 #aws_ec2_transit_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_transit_gateway")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ec2_transit_gateway")
 	close({
 		amazon_side_asn?: number
 		filter?: matchN(1, [#filter, [...#filter]])

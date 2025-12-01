@@ -2,7 +2,7 @@ package res
 
 #aws_grafana_workspace_saml_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_grafana_workspace_saml_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_grafana_workspace_saml_configuration")
 	close({
 		admin_role_values?: [...string]
 		allowed_organizations?: [...string]

@@ -4,7 +4,7 @@ import "list"
 
 #aws_emr_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_emr_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_emr_cluster")
 	close({
 		additional_info?: string
 		applications?: [...string]

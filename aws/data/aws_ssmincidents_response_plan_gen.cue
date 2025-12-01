@@ -2,7 +2,7 @@ package data
 
 #aws_ssmincidents_response_plan: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ssmincidents_response_plan")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ssmincidents_response_plan")
 	close({
 		action?: [...close({
 			ssm_automation?: [...close({

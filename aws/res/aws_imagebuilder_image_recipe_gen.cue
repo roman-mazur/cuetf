@@ -4,7 +4,7 @@ import "list"
 
 #aws_imagebuilder_image_recipe: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_imagebuilder_image_recipe")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_imagebuilder_image_recipe")
 	close({
 		ami_tags?: [string]: string
 		arn?:          string

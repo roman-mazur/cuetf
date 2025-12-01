@@ -4,7 +4,7 @@ import "list"
 
 #aws_db_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_db_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_db_instance")
 	close({
 		address?: string
 		blue_green_update?: matchN(1, [#blue_green_update, list.MaxItems(1) & [...#blue_green_update]])

@@ -2,7 +2,7 @@ package res
 
 #aws_lakeformation_data_cells_filter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lakeformation_data_cells_filter")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lakeformation_data_cells_filter")
 	close({
 		table_data?: matchN(1, [#table_data, [...#table_data]])
 		timeouts?: #timeouts

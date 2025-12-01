@@ -2,7 +2,7 @@ package data
 
 #aws_odb_db_nodes: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_odb_db_nodes")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_odb_db_nodes")
 	close({
 		// Id of the cloud VM cluster. The unique identifier of the VM
 		// cluster.

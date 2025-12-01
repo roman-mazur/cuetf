@@ -4,7 +4,7 @@ import "list"
 
 #aws_efs_replication_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_efs_replication_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_efs_replication_configuration")
 	close({
 		creation_time?: string
 		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])

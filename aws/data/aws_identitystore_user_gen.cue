@@ -4,7 +4,7 @@ import "list"
 
 #aws_identitystore_user: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_identitystore_user")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_identitystore_user")
 	close({
 		addresses?: [...close({
 			country?:        string

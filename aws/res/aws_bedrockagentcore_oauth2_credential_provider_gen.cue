@@ -2,7 +2,7 @@ package res
 
 #aws_bedrockagentcore_oauth2_credential_provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrockagentcore_oauth2_credential_provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_oauth2_credential_provider")
 	close({
 		client_secret_arn?: [...close({
 			secret_arn?: string

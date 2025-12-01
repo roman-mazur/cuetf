@@ -2,7 +2,7 @@ package res
 
 #aws_vpc_block_public_access_options: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc_block_public_access_options")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_block_public_access_options")
 	close({
 		aws_account_id?: string
 

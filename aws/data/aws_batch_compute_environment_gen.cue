@@ -2,7 +2,7 @@ package data
 
 #aws_batch_compute_environment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_batch_compute_environment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_batch_compute_environment")
 	close({
 		arn?: string
 

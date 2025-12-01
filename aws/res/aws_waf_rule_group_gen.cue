@@ -4,7 +4,7 @@ import "list"
 
 #aws_waf_rule_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_waf_rule_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_waf_rule_group")
 	close({
 		activated_rule?: matchN(1, [#activated_rule, [...#activated_rule]])
 		arn?:         string

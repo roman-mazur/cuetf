@@ -4,7 +4,7 @@ import "list"
 
 #aws_kinesis_firehose_delivery_stream: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_kinesis_firehose_delivery_stream")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_kinesis_firehose_delivery_stream")
 	close({
 		elasticsearch_configuration?: matchN(1, [#elasticsearch_configuration, list.MaxItems(1) & [...#elasticsearch_configuration]])
 		arn?:            string

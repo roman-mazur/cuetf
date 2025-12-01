@@ -4,7 +4,7 @@ import "list"
 
 #aws_lex_intent: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lex_intent")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lex_intent")
 	close({
 		arn?:            string
 		checksum?:       string

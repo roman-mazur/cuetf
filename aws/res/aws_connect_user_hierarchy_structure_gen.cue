@@ -4,7 +4,7 @@ import "list"
 
 #aws_connect_user_hierarchy_structure: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_connect_user_hierarchy_structure")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_connect_user_hierarchy_structure")
 	close({
 		hierarchy_structure!: matchN(1, [#hierarchy_structure, list.MaxItems(1) & [_, ...] & [...#hierarchy_structure]])
 		id?:          string

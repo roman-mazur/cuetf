@@ -2,7 +2,7 @@ package res
 
 #aws_vpc_route_server_propagation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc_route_server_propagation")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_route_server_propagation")
 	close({
 		timeouts?: #timeouts
 

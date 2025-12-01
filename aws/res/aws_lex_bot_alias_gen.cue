@@ -4,7 +4,7 @@ import "list"
 
 #aws_lex_bot_alias: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lex_bot_alias")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lex_bot_alias")
 	close({
 		arn?:      string
 		bot_name!: string

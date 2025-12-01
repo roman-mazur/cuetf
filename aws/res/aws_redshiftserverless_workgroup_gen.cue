@@ -4,7 +4,7 @@ import "list"
 
 #aws_redshiftserverless_workgroup: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_redshiftserverless_workgroup")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_redshiftserverless_workgroup")
 	close({
 		arn?:           string
 		base_capacity?: number

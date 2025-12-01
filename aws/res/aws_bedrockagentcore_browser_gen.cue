@@ -2,7 +2,7 @@ package res
 
 #aws_bedrockagentcore_browser: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrockagentcore_browser")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_browser")
 	close({
 		browser_arn?: string
 		network_configuration?: matchN(1, [#network_configuration, [...#network_configuration]])

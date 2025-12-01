@@ -2,7 +2,7 @@ package res
 
 #aws_networkmanager_transit_gateway_route_table_attachment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_networkmanager_transit_gateway_route_table_attachment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_networkmanager_transit_gateway_route_table_attachment")
 	close({
 		arn?:                           string
 		attachment_policy_rule_number?: number

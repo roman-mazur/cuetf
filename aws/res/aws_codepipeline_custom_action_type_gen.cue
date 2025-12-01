@@ -4,7 +4,7 @@ import "list"
 
 #aws_codepipeline_custom_action_type: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codepipeline_custom_action_type")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_codepipeline_custom_action_type")
 	close({
 		arn?:           string
 		category!:      string

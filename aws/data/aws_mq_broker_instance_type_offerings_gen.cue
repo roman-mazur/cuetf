@@ -2,7 +2,7 @@ package data
 
 #aws_mq_broker_instance_type_offerings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_mq_broker_instance_type_offerings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_mq_broker_instance_type_offerings")
 	close({
 		broker_instance_options?: [...close({
 			availability_zones?: [...close({

@@ -2,7 +2,7 @@ package res
 
 #aws_cloudfront_continuous_deployment_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudfront_continuous_deployment_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_continuous_deployment_policy")
 	close({
 		staging_distribution_dns_names?: matchN(1, [#staging_distribution_dns_names, [...#staging_distribution_dns_names]])
 		arn?:                string

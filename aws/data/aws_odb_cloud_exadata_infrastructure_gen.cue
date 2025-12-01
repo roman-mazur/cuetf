@@ -2,7 +2,7 @@ package data
 
 #aws_odb_cloud_exadata_infrastructure: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_odb_cloud_exadata_infrastructure")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_odb_cloud_exadata_infrastructure")
 	close({
 		// The number of storage servers requested for the Exadata
 		// infrastructure.

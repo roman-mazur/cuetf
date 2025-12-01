@@ -4,7 +4,7 @@ import "list"
 
 #aws_kinesis_analytics_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_kinesis_analytics_application")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_kinesis_analytics_application")
 	close({
 		arn?:                   string
 		code?:                  string

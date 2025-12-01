@@ -4,7 +4,7 @@ import "list"
 
 #aws_cloudfront_field_level_encryption_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudfront_field_level_encryption_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_field_level_encryption_config")
 	close({
 		content_type_profile_config!: matchN(1, [#content_type_profile_config, list.MaxItems(1) & [_, ...] & [...#content_type_profile_config]])
 		arn?:              string

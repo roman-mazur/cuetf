@@ -4,7 +4,7 @@ import "list"
 
 #aws_api_gateway_integration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_api_gateway_integration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_api_gateway_integration")
 	close({
 		cache_key_parameters?: [...string]
 		cache_namespace?:         string

@@ -4,7 +4,7 @@ import "list"
 
 #aws_launch_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_launch_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_launch_template")
 	close({
 		arn?: string
 		block_device_mappings?: matchN(1, [#block_device_mappings, [...#block_device_mappings]])

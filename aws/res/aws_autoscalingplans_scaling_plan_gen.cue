@@ -4,7 +4,7 @@ import "list"
 
 #aws_autoscalingplans_scaling_plan: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_autoscalingplans_scaling_plan")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_autoscalingplans_scaling_plan")
 	close({
 		id?:   string
 		name!: string

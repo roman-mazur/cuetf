@@ -2,7 +2,7 @@ package res
 
 #aws_cloud9_environment_ec2: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloud9_environment_ec2")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloud9_environment_ec2")
 	close({
 		arn?:                         string
 		automatic_stop_time_minutes?: number

@@ -4,7 +4,7 @@ import "list"
 
 #aws_mq_broker: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_mq_broker")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_mq_broker")
 	close({
 		apply_immediately?:                   bool
 		arn?:                                 string

@@ -4,7 +4,7 @@ import "list"
 
 #aws_ecr_replication_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ecr_replication_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ecr_replication_configuration")
 	close({
 		replication_configuration?: matchN(1, [#replication_configuration, list.MaxItems(1) & [...#replication_configuration]])
 		id?: string

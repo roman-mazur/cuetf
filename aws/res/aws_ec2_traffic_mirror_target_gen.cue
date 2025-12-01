@@ -2,7 +2,7 @@ package res
 
 #aws_ec2_traffic_mirror_target: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_traffic_mirror_target")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ec2_traffic_mirror_target")
 	close({
 		arn?:                               string
 		description?:                       string

@@ -2,7 +2,7 @@ package res
 
 #aws_macie2_organization_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_macie2_organization_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_macie2_organization_configuration")
 	close({
 		// Whether to enable Amazon Macie automatically for accounts that
 		// are added to the organization in AWS Organizations

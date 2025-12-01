@@ -2,7 +2,7 @@ package data
 
 #aws_lambda_function: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lambda_function")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_lambda_function")
 	close({
 		architectures?: [...string]
 		arn?:                     string
@@ -27,13 +27,13 @@ package data
 		id?:            string
 		image_uri?:     string
 		invoke_arn?:    string
+		kms_key_arn?:   string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:        string
-		kms_key_arn?:   string
 		last_modified?: string
 		layers?: [...string]
 		logging_config?: [...close({
@@ -54,6 +54,9 @@ package data
 		source_code_size?:               number
 		source_kms_key_arn?:             string
 		tags?: [string]: string
+		tenancy_config?: [...close({
+			tenant_isolation_mode?: string
+		})]
 		timeout?: number
 		tracing_config?: [...close({
 			mode?: string

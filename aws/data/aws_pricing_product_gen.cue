@@ -2,7 +2,7 @@ package data
 
 #aws_pricing_product: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_pricing_product")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_pricing_product")
 	close({
 		filters!: matchN(1, [#filters, [_, ...] & [...#filters]])
 		id?:           string

@@ -2,7 +2,7 @@ package res
 
 #aws_quicksight_ingestion: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_quicksight_ingestion")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_quicksight_ingestion")
 	close({
 		arn?: string
 

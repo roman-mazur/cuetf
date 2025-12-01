@@ -2,7 +2,7 @@ package res
 
 #aws_bedrockagentcore_code_interpreter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrockagentcore_code_interpreter")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_code_interpreter")
 	close({
 		code_interpreter_arn?: string
 		code_interpreter_id?:  string

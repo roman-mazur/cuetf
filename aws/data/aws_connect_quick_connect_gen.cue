@@ -2,7 +2,7 @@ package data
 
 #aws_connect_quick_connect: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_connect_quick_connect")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_connect_quick_connect")
 	close({
 		arn?:         string
 		description?: string

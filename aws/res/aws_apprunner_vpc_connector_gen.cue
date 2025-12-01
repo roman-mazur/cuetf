@@ -2,7 +2,7 @@ package res
 
 #aws_apprunner_vpc_connector: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_apprunner_vpc_connector")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_apprunner_vpc_connector")
 	close({
 		arn?: string
 		id?:  string

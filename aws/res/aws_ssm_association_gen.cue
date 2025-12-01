@@ -4,7 +4,7 @@ import "list"
 
 #aws_ssm_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ssm_association")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ssm_association")
 	close({
 		apply_only_at_cron_interval?:      bool
 		arn?:                              string
