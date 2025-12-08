@@ -6,8 +6,10 @@ import (
 	"io"
 	"os"
 	"os/exec"
+	"path"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 	"testing"
 
@@ -78,10 +80,19 @@ func TestProviders(t *testing.T) {
 			},
 		},
 	} {
-		t.Run(tc.name, func(t *testing.T) {
-			t.Parallel()
-			testProvider(t, tc.name, tc.examples)
-		})
+		runTestCase := func(name string) {
+			t.Run(name, func(t *testing.T) {
+				t.Parallel()
+				testProvider(t, tc.name, tc.examples)
+			})
+		}
+		runTestCase(path.Join(tc.name, "main"))
+
+		if os.Getenv("CATCH_RACES") != "" {
+			for i := range 30 {
+				runTestCase(path.Join(tc.name, "catch", strconv.Itoa(i)))
+			}
+		}
 	}
 }
 
@@ -147,8 +158,6 @@ func initTestModule(t *testing.T, workDir string, provider string) {
 	RunCommand(t, exec.Command("cp", "-r", "..", filepath.Join(workDir, "internal")))
 	providerDir := filepath.Join(workDir, provider)
 	RunCommand(t, exec.Command("mkdir", providerDir))
-	RunCommand(t, exec.Command("cp", filepath.Join("../..", provider, "terraform_gen.cue"), providerDir))
-	RunCommand(t, exec.Command("cp", filepath.Join("../..", provider, "version_gen.cue"), providerDir))
 }
 
 func TestSample(t *testing.T) {

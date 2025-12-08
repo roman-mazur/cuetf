@@ -164,13 +164,16 @@ import "github.com/roman-mazur/cuetf/internal/tfjson"
 `
 
 	var code bytes.Buffer
-	template.Must(template.New("terraform").Parse(tpl)).Execute(&code, struct {
+	err := template.Must(template.New("terraform").Parse(tpl)).Execute(&code, struct {
 		PackageName string
 		Source      string
 	}{
 		PackageName: pkgName,
 		Source:      strings.TrimPrefix(providerUri, "registry.terraform.io/"),
 	})
+	if err != nil {
+		panic(err)
+	}
 
 	createFile(
 		filepath.Join(providerPath, "terraform_gen.cue"),
@@ -255,14 +258,15 @@ func processSchema(cfg *Config, logf clog.Logf, name string, s *schemaData, dir 
 		panic(err)
 	}
 
+	pkgName := filepath.Base(dir)
+	tmpPkgName := "tmp_" + pkgName + "_" + name
+
 	createFile(
 		filepath.Join(dir, name+"-transform.cue"),
-		fmt.Sprintf(transformCode, path.Join(filepath.Base(dir), name)),
+		fmt.Sprintf(transformCode, tmpPkgName, path.Join(filepath.Base(dir), name)),
 	)
 
-	pkgName := filepath.Base(dir)
-
-	transformCmd := exec.Command("bash", "-c", fmt.Sprintf(exportCode, pkgName, name))
+	transformCmd := exec.Command("bash", "-c", fmt.Sprintf(exportCode, tmpPkgName, pkgName, name))
 	transformCmd.Dir = dir
 	output, err := transformCmd.CombinedOutput()
 	if err != nil {
@@ -310,7 +314,7 @@ type schemaData struct {
 
 type blockData map[string]any
 
-const transformCode = `package tmp
+const transformCode = `package %s
 
 import "github.com/roman-mazur/cuetf/internal/jsonschema"
 
@@ -321,20 +325,23 @@ jsonSchema: jsonschema.#SchemaTransform & {#block: input, #name: %q}
 // importing it into CUE (as a CUE definition).
 // The export/import operations are done in an isolated folder/package not to interfere with other definitions.
 const exportCode = `
+tmp_pkg_name=%q
 pkg_name=%q
 def_name=%q
 
-[ -d ./tmp ] && rm -rf ./tmp
-mkdir -p ./tmp 2>/dev/null
+tmp_dir="./tmp/$def_name"
 
-mv *.json ./tmp
-mv *-transform.cue ./tmp
+[ -d "$tmp_dir" ] && rm -rf "$tmp_dir"
+mkdir -p "$tmp_dir" 2>/dev/null
 
-mkdir ./tmp/$pkg_name
+mv "$def_name"-input.json "$tmp_dir"
+mv "$def_name"-transform.cue "$tmp_dir"
 
-(cd ./tmp && cue import -p tmp -f && cue export -e jsonSchema > jsonschema.json) && \
-	cue import -p $pkg_name -f -l "#${def_name}:" -o ./tmp/${pkg_name}/${def_name}_gen.cue jsonschema: ./tmp/jsonschema.json && \
-	mv ./tmp/${pkg_name}/${def_name}_gen.cue .
+mkdir "$tmp_dir/$pkg_name"
 
-rm -rf ./tmp 
+(cd "$tmp_dir" && cue import -p "$tmp_pkg_name" -f && cue export -e jsonSchema > jsonschema.json) && \
+	(cd "$tmp_dir" && cue import -p "$pkg_name" -f -l "#${def_name}:" -o "${pkg_name}/${def_name}_gen.cue" jsonschema: jsonschema.json) && \
+	mv ${tmp_dir}/${pkg_name}/${def_name}_gen.cue .
+
+rm -rf "$tmp_dir"
 `
