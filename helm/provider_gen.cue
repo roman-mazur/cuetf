@@ -2,7 +2,7 @@ package helm
 
 #provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/helm/provider")
 	close({
 		// Helm burst limit. Increase this if you have a cluster with many
 		// CRDs

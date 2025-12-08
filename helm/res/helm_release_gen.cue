@@ -2,7 +2,7 @@ package res
 
 #helm_release: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/helm_release")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/helm_release")
 	close({
 		// If set, installation process purges chart on fail. The wait
 		// flag will be set automatically if atomic is used
