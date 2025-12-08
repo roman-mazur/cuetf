@@ -2,7 +2,7 @@ package data
 
 #cloudflare_bot_management: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_bot_management")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_bot_management")
 	close({
 		// Enable rule to block AI Scrapers and Crawlers. Please note the
 		// value `only_on_ad_pages` is currently not available for

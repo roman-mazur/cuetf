@@ -2,7 +2,7 @@ package data
 
 #cloudflare_load_balancer: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_load_balancer")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_load_balancer")
 	close({
 		// Controls features that modify the routing of requests to pools
 		// and origins in response to dynamic conditions, such as during

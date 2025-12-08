@@ -2,7 +2,7 @@ package data
 
 #cloudflare_zone_lockdowns: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zone_lockdowns")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zone_lockdowns")
 	close({
 		// The timestamp of when the rule was created.
 		created_on?: string

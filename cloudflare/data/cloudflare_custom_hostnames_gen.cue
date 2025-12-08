@@ -2,7 +2,7 @@ package data
 
 #cloudflare_custom_hostnames: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_custom_hostnames")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_custom_hostnames")
 	close({
 		// Direction to order hostnames.
 		// Available values: "asc", "desc".

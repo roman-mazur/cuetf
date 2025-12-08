@@ -2,7 +2,7 @@ package res
 
 #cloudflare_calls_turn_app: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_calls_turn_app")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_calls_turn_app")
 	close({
 		// The account identifier tag.
 		account_id!: string

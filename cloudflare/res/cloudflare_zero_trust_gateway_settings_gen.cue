@@ -2,7 +2,7 @@ package res
 
 #cloudflare_zero_trust_gateway_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_gateway_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_gateway_settings")
 	close({
 		account_id!: string
 		created_at?: string

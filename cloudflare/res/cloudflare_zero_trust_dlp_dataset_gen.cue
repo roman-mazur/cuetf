@@ -2,7 +2,7 @@ package res
 
 #cloudflare_zero_trust_dlp_dataset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_dlp_dataset")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_dlp_dataset")
 	close({
 		account_id!: string
 
@@ -61,7 +61,7 @@ package res
 		status?:    string
 		num_cells?: number
 
-		// When the dataset was last updated.
+		// Stores when the dataset was last updated.
 		//
 		// This includes name or description changes as well as uploads.
 		updated_at?: string
@@ -115,7 +115,7 @@ package res
 			name?:             string
 			num_cells?:        number
 
-			// When the dataset was last updated.
+			// Stores when the dataset was last updated.
 			//
 			// This includes name or description changes as well as uploads.
 			updated_at?: string

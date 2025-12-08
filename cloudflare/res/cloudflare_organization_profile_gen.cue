@@ -2,7 +2,7 @@ package res
 
 #cloudflare_organization_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_organization_profile")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_organization_profile")
 	close({
 		business_address!:  string
 		business_email!:    string

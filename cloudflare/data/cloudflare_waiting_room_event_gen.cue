@@ -2,7 +2,7 @@ package data
 
 #cloudflare_waiting_room_event: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_waiting_room_event")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_waiting_room_event")
 	close({
 		created_on?: string
 

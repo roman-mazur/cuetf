@@ -2,7 +2,7 @@ package data
 
 #cloudflare_token_validation_rules_list: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_token_validation_rules_list")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_token_validation_rules_list")
 	close({
 		// Action to take on requests that match operations included in
 		// `selector` and fail `expression`.

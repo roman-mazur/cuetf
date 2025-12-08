@@ -2,7 +2,7 @@ package data
 
 #cloudflare_web_analytics_site: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_web_analytics_site")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_web_analytics_site")
 	close({
 		filter?: close({
 			// The property used to sort the list of results.

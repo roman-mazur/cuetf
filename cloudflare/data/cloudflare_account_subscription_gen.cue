@@ -2,7 +2,7 @@ package data
 
 #cloudflare_account_subscription: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_account_subscription")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_account_subscription")
 	close({
 		// Identifier
 		account_id!: string
@@ -29,7 +29,7 @@ package data
 			// The ID of the rate plan.
 			// Available values: "free", "lite", "pro", "pro_plus",
 			// "business", "enterprise", "partners_free", "partners_pro",
-			// "partners_business", "partners_enterprise".
+			// "partners_business", "partners_ent".
 			id?: string
 
 			// Whether a rate plan is enterprise-based (or newly adopted term

@@ -2,7 +2,7 @@ package res
 
 #cloudflare_account_dns_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_account_dns_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_account_dns_settings")
 	close({
 		// Identifier.
 		account_id!: string

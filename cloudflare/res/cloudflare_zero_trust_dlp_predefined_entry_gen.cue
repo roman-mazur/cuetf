@@ -2,7 +2,7 @@ package res
 
 #cloudflare_zero_trust_dlp_predefined_entry: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_dlp_predefined_entry")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_dlp_predefined_entry")
 	close({
 		account_id!: string
 
@@ -20,23 +20,31 @@ package res
 			// not an AI remote service.
 			available?: bool
 		})
-		enabled!:  bool
-		entry_id!: string
-		id?:       string
+		enabled!: bool
 
-		// This field is not actually used as the owning profile for a
-		// predefined entry is already set
-		// to a predefined profile
+		// This field is not used as the owning profile.
+		// For predefined entries it is already set to a predefined
+		// profile.
 		profile_id?: string
-		name?:       string
+		entry_id!:   string
+		id?:         string
 		pattern?: close({
 			regex?: string
 		})
-		secret?: bool
 
 		// Available values: "custom", "predefined", "integration",
 		// "exact_data", "document_fingerprint", "word_list".
 		type?: string
+		name?: string
+		profiles?: matchN(1, [close({
+			id?:   string
+			name?: string
+		}), [...close({
+			id?:   string
+			name?: string
+		})]])
+		secret?:     bool
+		updated_at?: string
 		variant?: close({
 			description?: string
 
@@ -46,7 +54,6 @@ package res
 			// Available values: "PromptTopic".
 			type?: string
 		})
-		updated_at?: string
-		word_list?:  string
+		word_list?: string
 	})
 }

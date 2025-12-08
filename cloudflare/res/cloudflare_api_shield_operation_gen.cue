@@ -2,7 +2,7 @@ package res
 
 #cloudflare_api_shield_operation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_api_shield_operation")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_api_shield_operation")
 	close({
 		// The endpoint which can contain path parameter templates in
 		// curly braces, each will be replaced from left to right with

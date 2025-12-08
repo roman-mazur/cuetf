@@ -2,7 +2,7 @@ package data
 
 #cloudflare_user_agent_blocking_rules: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_user_agent_blocking_rules")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_user_agent_blocking_rules")
 	close({
 		// The items returned by the data source
 		result?: matchN(1, [close({

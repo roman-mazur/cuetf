@@ -2,7 +2,7 @@ package data
 
 #cloudflare_custom_hostname: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_custom_hostname")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_custom_hostname")
 	close({
 		// This is the time the hostname was created.
 		created_at?: string

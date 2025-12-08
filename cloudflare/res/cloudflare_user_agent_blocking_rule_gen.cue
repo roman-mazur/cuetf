@@ -2,7 +2,7 @@ package res
 
 #cloudflare_user_agent_blocking_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_user_agent_blocking_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_user_agent_blocking_rule")
 	close({
 		// An informative summary of the rule. This value is sanitized and
 		// any tags will be removed.

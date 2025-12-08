@@ -2,7 +2,7 @@ package data
 
 #cloudflare_custom_pages_list: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_custom_pages_list")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_custom_pages_list")
 	close({
 		// The items returned by the data source
 		result?: matchN(1, [close({

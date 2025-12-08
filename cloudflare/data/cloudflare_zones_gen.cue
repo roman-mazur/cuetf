@@ -2,7 +2,7 @@ package data
 
 #cloudflare_zones: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zones")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zones")
 	close({
 		// Direction to order zones.
 		// Available values: "asc", "desc".

@@ -2,7 +2,7 @@ package data
 
 #cloudflare_page_shield_scripts: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_page_shield_scripts")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_page_shield_scripts")
 	close({
 		added_at?: string
 

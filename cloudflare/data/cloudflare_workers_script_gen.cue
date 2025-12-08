@@ -2,7 +2,7 @@ package data
 
 #cloudflare_workers_script: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_workers_script")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_workers_script")
 	close({
 		// Identifier.
 		account_id!: string

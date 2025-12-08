@@ -2,7 +2,7 @@ package data
 
 #cloudflare_list_items: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_list_items")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_list_items")
 	close({
 		// The Account ID for this resource.
 		account_id!: string

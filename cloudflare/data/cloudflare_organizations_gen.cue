@@ -2,7 +2,7 @@ package data
 
 #cloudflare_organizations: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_organizations")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_organizations")
 	close({
 		// Only return organizations with the specified IDs (ex.
 		// id=foo&id=bar). Send multiple elements

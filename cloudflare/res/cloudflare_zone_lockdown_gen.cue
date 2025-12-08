@@ -2,7 +2,7 @@ package res
 
 #cloudflare_zone_lockdown: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zone_lockdown")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zone_lockdown")
 	close({
 		// A list of IP addresses or CIDR ranges that will be allowed to
 		// access the URLs specified in the Zone Lockdown rule. You can

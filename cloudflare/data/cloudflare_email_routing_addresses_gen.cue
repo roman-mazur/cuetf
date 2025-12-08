@@ -2,7 +2,7 @@ package data
 
 #cloudflare_email_routing_addresses: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_email_routing_addresses")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_email_routing_addresses")
 	close({
 		// Identifier.
 		account_id!: string

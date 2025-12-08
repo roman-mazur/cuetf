@@ -2,7 +2,7 @@ package data
 
 #cloudflare_zero_trust_tunnel_cloudflared_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_tunnel_cloudflared_route")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_tunnel_cloudflared_route")
 	close({
 		// Cloudflare account ID
 		account_id!: string
@@ -41,9 +41,6 @@ package data
 
 			// If set, only list routes that contain this IP range.
 			network_superset?: string
-
-			// UUID of the route.
-			route_id?: string
 
 			// The types of tunnels to filter by, separated by commas.
 			tun_types?: [...string]

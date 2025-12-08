@@ -2,7 +2,7 @@ package res
 
 #cloudflare_pages_project: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_pages_project")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_pages_project")
 	close({
 		// Configs for the project build process.
 		build_config?: close({
@@ -25,14 +25,8 @@ package res
 			web_analytics_token?: string
 		})
 
-		// Identifier
+		// Identifier.
 		account_id!: string
-
-		// When the project was created.
-		created_on?: string
-
-		// A list of associated custom domains for the project.
-		domains?: [...string]
 
 		// Most recent production deployment of the project.
 		canonical_deployment?: close({
@@ -47,7 +41,7 @@ package res
 				// Command used to build project.
 				build_command?: string
 
-				// Output directory of the build.
+				// Assets output directory of the build.
 				destination_dir?: string
 
 				// Directory to run the command.
@@ -70,6 +64,9 @@ package res
 					// Where the trigger happened.
 					branch?: string
 
+					// Whether the deployment trigger commit was dirty.
+					commit_dirty?: bool
+
 					// Hash of the deployment trigger commit.
 					commit_hash?: string
 
@@ -78,13 +75,9 @@ package res
 				})
 
 				// What caused the deployment.
-				// Available values: "push", "ad_hoc".
+				// Available values: "github:push", "ad_hoc", "deploy_hook".
 				type?: string
 			})
-
-			// Type of deploy.
-			// Available values: "preview", "production".
-			environment?: string
 
 			// Environment variables used for builds and Pages Functions.
 			env_vars?: [string]: close({
@@ -94,6 +87,10 @@ package res
 				// Environment variable value.
 				value?: string
 			})
+
+			// Type of deploy.
+			// Available values: "preview", "production".
+			environment?: string
 
 			// Id of the deployment.
 			id?: string
@@ -125,10 +122,21 @@ package res
 
 			// Id of the project.
 			project_id?: string
+
+			// Name of the project.
+			project_name?: string
+
+			// Short Id (8 character) of the deployment.
+			short_id?: string
+
+			// Configs for the project source control.
 			source?: close({
 				config?: close({
 					// The owner of the repository.
 					owner?: string
+
+					// The owner ID of the repository.
+					owner_id?: string
 
 					// A list of paths that should be excluded from triggering a
 					// preview deployment. Wildcard syntax (`*`) is supported.
@@ -163,6 +171,9 @@ package res
 					// production branch.
 					production_deployments_enabled?: bool
 
+					// The ID of the repository.
+					repo_id?: string
+
 					// The name of the repository.
 					repo_name?: string
 				})
@@ -171,12 +182,6 @@ package res
 				// Available values: "github", "gitlab".
 				type?: string
 			})
-
-			// Name of the project.
-			project_name?: string
-
-			// Short Id (8 character) of the deployment.
-			short_id?: string
 
 			// List of past stages.
 			stages?: matchN(1, [close({
@@ -215,13 +220,13 @@ package res
 
 			// The live URL to view this deployment.
 			url?: string
+
+			// Whether the deployment uses functions.
+			uses_functions?: bool
 		})
 
-		// Framework the project is using.
-		framework?: string
-
-		// Version of the framework the project is using.
-		framework_version?: string
+		// When the project was created.
+		created_on?: string
 
 		// Configs for deployments in a project.
 		deployment_configs?: close({
@@ -229,7 +234,7 @@ package res
 			preview?: close({
 				// Constellation bindings used for Pages Functions.
 				ai_bindings?: [string]: close({
-					project_id?: string
+					project_id!: string
 				})
 
 				// Whether to always use the latest compatibility date for Pages
@@ -239,7 +244,7 @@ package res
 				// Analytics Engine bindings used for Pages Functions.
 				analytics_engine_datasets?: [string]: close({
 					// Name of the dataset.
-					dataset?: string
+					dataset!: string
 				})
 
 				// Browser bindings used for Pages Functions.
@@ -258,13 +263,13 @@ package res
 				// D1 databases used for Pages Functions.
 				d1_databases?: [string]: close({
 					// UUID of the D1 database.
-					id?: string
+					id!: string
 				})
 
 				// Durable Object namespaces used for Pages Functions.
 				durable_object_namespaces?: [string]: close({
 					// ID of the Durable Object namespace.
-					namespace_id?: string
+					namespace_id!: string
 				})
 
 				// Environment variables used for builds and Pages Functions.
@@ -278,13 +283,13 @@ package res
 
 				// Hyperdrive bindings used for Pages Functions.
 				hyperdrive_bindings?: [string]: close({
-					id?: string
+					id!: string
 				})
 
 				// KV namespaces used for Pages Functions.
 				kv_namespaces?: [string]: close({
 					// ID of the KV namespace.
-					namespace_id?: string
+					namespace_id!: string
 				})
 
 				// Whether to fail open when the deployment config cannot be
@@ -294,12 +299,12 @@ package res
 				// Limits for Pages Functions.
 				limits?: close({
 					// CPU time limit in milliseconds.
-					cpu_ms?: number
+					cpu_ms!: number
 				})
 
 				// mTLS bindings used for Pages Functions.
 				mtls_certificates?: [string]: close({
-					certificate_id?: string
+					certificate_id!: string
 				})
 
 				// Placement setting used for Pages Functions.
@@ -311,7 +316,7 @@ package res
 				// Queue Producer bindings used for Pages Functions.
 				queue_producers?: [string]: close({
 					// Name of the Queue.
-					name?: string
+					name!: string
 				})
 
 				// R2 buckets used for Pages Functions.
@@ -320,7 +325,7 @@ package res
 					jurisdiction?: string
 
 					// Name of the R2 bucket.
-					name?: string
+					name!: string
 				})
 
 				// Hash of the Wrangler configuration used for the deployment.
@@ -335,12 +340,12 @@ package res
 					environment?: string
 
 					// The Service name.
-					service?: string
+					service!: string
 				})
 
 				// Vectorize bindings used for Pages Functions.
 				vectorize_bindings?: [string]: close({
-					index_name?: string
+					index_name!: string
 				})
 			})
 
@@ -348,7 +353,7 @@ package res
 			production?: close({
 				// Constellation bindings used for Pages Functions.
 				ai_bindings?: [string]: close({
-					project_id?: string
+					project_id!: string
 				})
 
 				// Whether to always use the latest compatibility date for Pages
@@ -358,7 +363,7 @@ package res
 				// Analytics Engine bindings used for Pages Functions.
 				analytics_engine_datasets?: [string]: close({
 					// Name of the dataset.
-					dataset?: string
+					dataset!: string
 				})
 
 				// Browser bindings used for Pages Functions.
@@ -377,13 +382,13 @@ package res
 				// D1 databases used for Pages Functions.
 				d1_databases?: [string]: close({
 					// UUID of the D1 database.
-					id?: string
+					id!: string
 				})
 
 				// Durable Object namespaces used for Pages Functions.
 				durable_object_namespaces?: [string]: close({
 					// ID of the Durable Object namespace.
-					namespace_id?: string
+					namespace_id!: string
 				})
 
 				// Environment variables used for builds and Pages Functions.
@@ -397,13 +402,13 @@ package res
 
 				// Hyperdrive bindings used for Pages Functions.
 				hyperdrive_bindings?: [string]: close({
-					id?: string
+					id!: string
 				})
 
 				// KV namespaces used for Pages Functions.
 				kv_namespaces?: [string]: close({
 					// ID of the KV namespace.
-					namespace_id?: string
+					namespace_id!: string
 				})
 
 				// Whether to fail open when the deployment config cannot be
@@ -413,12 +418,12 @@ package res
 				// Limits for Pages Functions.
 				limits?: close({
 					// CPU time limit in milliseconds.
-					cpu_ms?: number
+					cpu_ms!: number
 				})
 
 				// mTLS bindings used for Pages Functions.
 				mtls_certificates?: [string]: close({
-					certificate_id?: string
+					certificate_id!: string
 				})
 
 				// Placement setting used for Pages Functions.
@@ -430,7 +435,7 @@ package res
 				// Queue Producer bindings used for Pages Functions.
 				queue_producers?: [string]: close({
 					// Name of the Queue.
-					name?: string
+					name!: string
 				})
 
 				// R2 buckets used for Pages Functions.
@@ -439,7 +444,7 @@ package res
 					jurisdiction?: string
 
 					// Name of the R2 bucket.
-					name?: string
+					name!: string
 				})
 
 				// Hash of the Wrangler configuration used for the deployment.
@@ -454,21 +459,27 @@ package res
 					environment?: string
 
 					// The Service name.
-					service?: string
+					service!: string
 				})
 
 				// Vectorize bindings used for Pages Functions.
 				vectorize_bindings?: [string]: close({
-					index_name?: string
+					index_name!: string
 				})
 			})
 		})
 
-		// Name of the project.
-		id?: string
+		// A list of associated custom domains for the project.
+		domains?: [...string]
+
+		// Framework the project is using.
+		framework?: string
+
+		// Version of the framework the project is using.
+		framework_version?: string
 
 		// Name of the project.
-		name!: string
+		id?: string
 
 		// Most recent deployment of the project.
 		latest_deployment?: close({
@@ -483,7 +494,7 @@ package res
 				// Command used to build project.
 				build_command?: string
 
-				// Output directory of the build.
+				// Assets output directory of the build.
 				destination_dir?: string
 
 				// Directory to run the command.
@@ -506,6 +517,9 @@ package res
 					// Where the trigger happened.
 					branch?: string
 
+					// Whether the deployment trigger commit was dirty.
+					commit_dirty?: bool
+
 					// Hash of the deployment trigger commit.
 					commit_hash?: string
 
@@ -514,13 +528,9 @@ package res
 				})
 
 				// What caused the deployment.
-				// Available values: "push", "ad_hoc".
+				// Available values: "github:push", "ad_hoc", "deploy_hook".
 				type?: string
 			})
-
-			// Type of deploy.
-			// Available values: "preview", "production".
-			environment?: string
 
 			// Environment variables used for builds and Pages Functions.
 			env_vars?: [string]: close({
@@ -530,6 +540,10 @@ package res
 				// Environment variable value.
 				value?: string
 			})
+
+			// Type of deploy.
+			// Available values: "preview", "production".
+			environment?: string
 
 			// Id of the deployment.
 			id?: string
@@ -561,10 +575,21 @@ package res
 
 			// Id of the project.
 			project_id?: string
+
+			// Name of the project.
+			project_name?: string
+
+			// Short Id (8 character) of the deployment.
+			short_id?: string
+
+			// Configs for the project source control.
 			source?: close({
 				config?: close({
 					// The owner of the repository.
 					owner?: string
+
+					// The owner ID of the repository.
+					owner_id?: string
 
 					// A list of paths that should be excluded from triggering a
 					// preview deployment. Wildcard syntax (`*`) is supported.
@@ -599,6 +624,9 @@ package res
 					// production branch.
 					production_deployments_enabled?: bool
 
+					// The ID of the repository.
+					repo_id?: string
+
 					// The name of the repository.
 					repo_name?: string
 				})
@@ -607,12 +635,6 @@ package res
 				// Available values: "github", "gitlab".
 				type?: string
 			})
-
-			// Name of the project.
-			project_name?: string
-
-			// Short Id (8 character) of the deployment.
-			short_id?: string
 
 			// List of past stages.
 			stages?: matchN(1, [close({
@@ -651,7 +673,13 @@ package res
 
 			// The live URL to view this deployment.
 			url?: string
+
+			// Whether the deployment uses functions.
+			uses_functions?: bool
 		})
+
+		// Name of the project.
+		name!: string
 
 		// Name of the preview script.
 		preview_script_name?: string
@@ -662,10 +690,15 @@ package res
 
 		// Name of the production script.
 		production_script_name?: string
+
+		// Configs for the project source control.
 		source?: close({
-			config?: close({
+			config!: close({
 				// The owner of the repository.
 				owner?: string
+
+				// The owner ID of the repository.
+				owner_id?: string
 
 				// A list of paths that should be excluded from triggering a
 				// preview deployment. Wildcard syntax (`*`) is supported.
@@ -700,13 +733,16 @@ package res
 				// production branch.
 				production_deployments_enabled?: bool
 
+				// The ID of the repository.
+				repo_id?: string
+
 				// The name of the repository.
 				repo_name?: string
 			})
 
 			// The source control management provider.
 			// Available values: "github", "gitlab".
-			type?: string
+			type!: string
 		})
 
 		// The Cloudflare subdomain associated with the project.

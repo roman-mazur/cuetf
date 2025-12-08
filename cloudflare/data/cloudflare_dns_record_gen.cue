@@ -2,7 +2,7 @@ package data
 
 #cloudflare_dns_record: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_dns_record")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_dns_record")
 	close({
 		// Comments or notes about the DNS record. This field has no
 		// effect on DNS responses.

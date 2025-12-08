@@ -2,7 +2,7 @@ package res
 
 #cloudflare_regional_hostname: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_regional_hostname")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_regional_hostname")
 	close({
 		// When the regional hostname was created
 		created_on?: string

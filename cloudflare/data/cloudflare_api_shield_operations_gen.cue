@@ -2,7 +2,7 @@ package data
 
 #cloudflare_api_shield_operations: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_api_shield_operations")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_api_shield_operations")
 	close({
 		// Direction to order results.
 		// Available values: "asc", "desc".

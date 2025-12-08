@@ -2,7 +2,7 @@ package res
 
 #cloudflare_email_security_trusted_domains: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_email_security_trusted_domains")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_email_security_trusted_domains")
 	close({
 		// Account Identifier
 		account_id!: string

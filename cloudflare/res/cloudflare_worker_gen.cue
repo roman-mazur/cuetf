@@ -2,7 +2,7 @@ package res
 
 #cloudflare_worker: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_worker")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_worker")
 	close({
 		// Observability settings for the Worker.
 		observability?: close({

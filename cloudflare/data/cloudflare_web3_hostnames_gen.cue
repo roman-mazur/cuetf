@@ -2,7 +2,7 @@ package data
 
 #cloudflare_web3_hostnames: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_web3_hostnames")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_web3_hostnames")
 	close({
 		// Max items to fetch, default: 1000
 		max_items?: number

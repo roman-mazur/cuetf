@@ -2,7 +2,7 @@ package data
 
 #cloudflare_email_routing_dns: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_email_routing_dns")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_email_routing_dns")
 	close({
 		errors?: matchN(1, [close({
 			code?:              number
@@ -161,7 +161,7 @@ package data
 		zone_id!: string
 		result_info?: close({
 			// Total number of results for the requested service.
-			count?: number
+			email_routing_dns_count?: number
 
 			// Current page within paginated list of results.
 			page?: number

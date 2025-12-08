@@ -2,7 +2,7 @@ package res
 
 #cloudflare_magic_network_monitoring_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_magic_network_monitoring_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_magic_network_monitoring_rule")
 	close({
 		// Toggle on if you would like Cloudflare to automatically
 		// advertise the IP Prefixes within the rule via Magic Transit

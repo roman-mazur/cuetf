@@ -2,7 +2,7 @@ package data
 
 #cloudflare_zero_trust_device_posture_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_device_posture_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_device_posture_rule")
 	close({
 		// The description of the device posture rule.
 		description?: string
@@ -157,6 +157,9 @@ package data
 			// documentation.
 			total_score?: number
 
+			// Number of days that the antivirus should be updated within.
+			update_window_days?: number
+
 			// Version of OS.
 			version?: string
 
@@ -197,7 +200,7 @@ package data
 		// Available values: "file", "application", "tanium", "gateway",
 		// "warp", "disk_encryption", "serial_number", "sentinelone",
 		// "carbonblack", "firewall", "os_version", "domain_joined",
-		// "client_certificate", "client_certificate_v2",
+		// "client_certificate", "client_certificate_v2", "antivirus",
 		// "unique_client_id", "kolide", "tanium_s2s", "crowdstrike_s2s",
 		// "intune", "workspace_one", "sentinelone_s2s", "custom_s2s".
 		type?: string

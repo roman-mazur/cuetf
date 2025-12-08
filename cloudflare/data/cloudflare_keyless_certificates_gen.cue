@@ -2,7 +2,7 @@ package data
 
 #cloudflare_keyless_certificates: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_keyless_certificates")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_keyless_certificates")
 	close({
 		// Max items to fetch, default: 1000
 		max_items?: number

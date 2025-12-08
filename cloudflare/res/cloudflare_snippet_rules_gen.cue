@@ -2,7 +2,7 @@ package res
 
 #cloudflare_snippet_rules: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_snippet_rules")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_snippet_rules")
 	close({
 		// A list of snippet rules.
 		rules!: matchN(1, [close({

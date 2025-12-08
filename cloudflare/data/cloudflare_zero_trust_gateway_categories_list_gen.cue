@@ -2,7 +2,7 @@ package data
 
 #cloudflare_zero_trust_gateway_categories_list: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_gateway_categories_list")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_gateway_categories_list")
 	close({
 		// Provide the identifier string.
 		account_id!: string

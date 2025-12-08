@@ -2,7 +2,7 @@ package data
 
 #cloudflare_logpush_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_logpush_job")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_logpush_job")
 	close({
 		// The Account ID to use for this endpoint. Mutually exclusive
 		// with the Zone ID.

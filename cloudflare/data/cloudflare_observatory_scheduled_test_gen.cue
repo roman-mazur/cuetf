@@ -2,7 +2,7 @@ package data
 
 #cloudflare_observatory_scheduled_test: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_observatory_scheduled_test")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_observatory_scheduled_test")
 	close({
 		// The frequency of the test.
 		// Available values: "DAILY", "WEEKLY".

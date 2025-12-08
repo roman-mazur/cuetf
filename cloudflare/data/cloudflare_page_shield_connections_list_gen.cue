@@ -2,7 +2,7 @@ package data
 
 #cloudflare_page_shield_connections_list: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_page_shield_connections_list")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_page_shield_connections_list")
 	close({
 		// The direction used to sort returned connections.
 		// Available values: "asc", "desc".

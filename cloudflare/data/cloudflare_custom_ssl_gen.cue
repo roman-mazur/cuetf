@@ -2,7 +2,7 @@ package data
 
 #cloudflare_custom_ssl: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_custom_ssl")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_custom_ssl")
 	close({
 		// A ubiquitous bundle has the highest probability of being
 		// verified everywhere, even by clients using outdated or unusual

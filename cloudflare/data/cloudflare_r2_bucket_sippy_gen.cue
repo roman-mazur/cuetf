@@ -2,7 +2,7 @@ package data
 
 #cloudflare_r2_bucket_sippy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_r2_bucket_sippy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_r2_bucket_sippy")
 	close({
 		// Account ID.
 		account_id!: string
@@ -22,7 +22,7 @@ package data
 			bucket?: string
 
 			// Available values: "r2".
-			provider?: string
+			r2_bucket_sippy_provider?: string
 		})
 
 		// State of Sippy for this bucket.
@@ -30,11 +30,14 @@ package data
 
 		// Details about the configured source bucket.
 		source?: close({
-			// Name of the bucket on the provider.
+			// Name of the bucket on the provider (AWS, GCS only).
 			bucket?: string
 
-			// Available values: "aws", "gcs".
-			provider?: string
+			// S3-compatible URL (Generic S3-compatible providers only).
+			bucket_url?: string
+
+			// Available values: "aws", "gcs", "s3".
+			r2_bucket_sippy_provider?: string
 
 			// Region where the bucket resides (AWS only).
 			region?: string

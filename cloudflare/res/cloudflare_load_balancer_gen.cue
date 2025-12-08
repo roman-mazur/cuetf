@@ -2,7 +2,7 @@ package res
 
 #cloudflare_load_balancer: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_load_balancer")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_load_balancer")
 	close({
 		// A mapping of country codes to a list of pool IDs (ordered by
 		// their failover priority) for the given country. Any country

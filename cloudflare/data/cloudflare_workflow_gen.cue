@@ -2,7 +2,7 @@ package data
 
 #cloudflare_workflow: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_workflow")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_workflow")
 	close({
 		filter?: close({
 			// Allows filtering workflows` name.

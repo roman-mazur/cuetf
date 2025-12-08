@@ -2,7 +2,7 @@ package data
 
 #cloudflare_api_token: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_api_token")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_api_token")
 	close({
 		// The expiration time on or after which the JWT MUST NOT be
 		// accepted for processing.

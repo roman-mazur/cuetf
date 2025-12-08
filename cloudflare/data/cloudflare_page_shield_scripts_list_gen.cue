@@ -2,7 +2,7 @@ package data
 
 #cloudflare_page_shield_scripts_list: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_page_shield_scripts_list")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_page_shield_scripts_list")
 	close({
 		// The direction used to sort returned scripts.
 		// Available values: "asc", "desc".

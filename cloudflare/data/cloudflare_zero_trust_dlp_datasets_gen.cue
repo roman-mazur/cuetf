@@ -2,7 +2,7 @@ package data
 
 #cloudflare_zero_trust_dlp_datasets: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_dlp_datasets")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_dlp_datasets")
 	close({
 		account_id!: string
 
@@ -57,7 +57,7 @@ package data
 			name?:             string
 			num_cells?:        number
 
-			// When the dataset was last updated.
+			// Stores when the dataset was last updated.
 			//
 			// This includes name or description changes as well as uploads.
 			updated_at?: string
@@ -109,7 +109,7 @@ package data
 			name?:             string
 			num_cells?:        number
 
-			// When the dataset was last updated.
+			// Stores when the dataset was last updated.
 			//
 			// This includes name or description changes as well as uploads.
 			updated_at?: string

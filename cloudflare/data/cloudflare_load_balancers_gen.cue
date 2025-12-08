@@ -2,7 +2,7 @@ package data
 
 #cloudflare_load_balancers: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_load_balancers")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_load_balancers")
 	close({
 		// Max items to fetch, default: 1000
 		max_items?: number
