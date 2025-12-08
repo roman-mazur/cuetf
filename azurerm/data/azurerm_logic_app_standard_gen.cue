@@ -2,7 +2,7 @@ package data
 
 #azurerm_logic_app_standard: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_logic_app_standard")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_logic_app_standard")
 	close({
 		app_service_plan_id?: string
 		app_settings?: [string]: string

@@ -2,7 +2,7 @@ package data
 
 #azurerm_route_table: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_route_table")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_route_table")
 	close({
 		timeouts?:                      #timeouts
 		bgp_route_propagation_enabled?: bool

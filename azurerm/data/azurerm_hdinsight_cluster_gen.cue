@@ -2,7 +2,7 @@ package data
 
 #azurerm_hdinsight_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_hdinsight_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_hdinsight_cluster")
 	close({
 		cluster_id?:      string
 		cluster_version?: string

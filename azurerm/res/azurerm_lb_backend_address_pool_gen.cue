@@ -2,7 +2,7 @@ package res
 
 #azurerm_lb_backend_address_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_lb_backend_address_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_lb_backend_address_pool")
 	close({
 		backend_ip_configurations?: [...string]
 		id?: string

@@ -2,7 +2,7 @@ package data
 
 #azurerm_key_vault_managed_hardware_security_module: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_key_vault_managed_hardware_security_module")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_key_vault_managed_hardware_security_module")
 	close({
 		admin_object_ids?: [...string]
 		hsm_uri?:                    string

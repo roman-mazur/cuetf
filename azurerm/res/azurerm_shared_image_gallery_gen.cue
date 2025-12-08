@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_shared_image_gallery: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_shared_image_gallery")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_shared_image_gallery")
 	close({
 		sharing?: matchN(1, [#sharing, list.MaxItems(1) & [...#sharing]])
 		description?:         string

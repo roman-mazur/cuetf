@@ -2,7 +2,7 @@ package res
 
 #azurerm_kusto_cluster_customer_managed_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_kusto_cluster_customer_managed_key")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kusto_cluster_customer_managed_key")
 	close({
 		timeouts?:           #timeouts
 		cluster_id!:         string

@@ -2,7 +2,7 @@ package res
 
 #azurerm_mobile_network_site: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_mobile_network_site")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mobile_network_site")
 	close({
 		timeouts?:          #timeouts
 		id?:                string

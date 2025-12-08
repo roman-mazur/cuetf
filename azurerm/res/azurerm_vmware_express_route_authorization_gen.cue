@@ -2,7 +2,7 @@ package res
 
 #azurerm_vmware_express_route_authorization: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_vmware_express_route_authorization")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_vmware_express_route_authorization")
 	close({
 		timeouts?:                        #timeouts
 		express_route_authorization_id?:  string

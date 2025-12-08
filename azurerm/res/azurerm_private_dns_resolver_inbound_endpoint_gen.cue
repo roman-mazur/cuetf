@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_private_dns_resolver_inbound_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_private_dns_resolver_inbound_endpoint")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_private_dns_resolver_inbound_endpoint")
 	close({
 		ip_configurations!: matchN(1, [#ip_configurations, list.MaxItems(1) & [_, ...] & [...#ip_configurations]])
 		id?:                      string

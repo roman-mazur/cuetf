@@ -2,7 +2,7 @@ package data
 
 #azurerm_servicebus_namespace_disaster_recovery_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_servicebus_namespace_disaster_recovery_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_servicebus_namespace_disaster_recovery_config")
 	close({
 		timeouts?:                          #timeouts
 		alias_authorization_rule_id?:       string

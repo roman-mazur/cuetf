@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_eventhub_namespace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_eventhub_namespace")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_eventhub_namespace")
 	close({
 		auto_inflate_enabled?: bool
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])

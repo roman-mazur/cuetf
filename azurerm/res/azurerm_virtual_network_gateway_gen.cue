@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_virtual_network_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_virtual_network_gateway")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_network_gateway")
 	close({
 		active_active?:                         bool
 		bgp_route_translation_for_nat_enabled?: bool

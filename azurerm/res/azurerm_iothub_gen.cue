@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_iothub: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_iothub")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_iothub")
 	close({
 		endpoint?: [...close({
 			authentication_type?:        string

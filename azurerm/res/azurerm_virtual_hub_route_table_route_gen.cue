@@ -2,7 +2,7 @@ package res
 
 #azurerm_virtual_hub_route_table_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_virtual_hub_route_table_route")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_hub_route_table_route")
 	close({
 		timeouts?: #timeouts
 		destinations!: [...string]

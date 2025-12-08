@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_active_directory_domain_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_active_directory_domain_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_active_directory_domain_service")
 	close({
 		deployment_id?: string
 		initial_replica_set!: matchN(1, [#initial_replica_set, list.MaxItems(1) & [_, ...] & [...#initial_replica_set]])

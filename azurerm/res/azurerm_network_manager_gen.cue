@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_network_manager: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_network_manager")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_network_manager")
 	close({
 		scope!: matchN(1, [#scope, list.MaxItems(1) & [_, ...] & [...#scope]])
 		cross_tenant_scopes?: [...close({

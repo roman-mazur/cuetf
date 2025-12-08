@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_kubernetes_flux_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_kubernetes_flux_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kubernetes_flux_configuration")
 	close({
 		cluster_id!: string
 		blob_storage?: matchN(1, [#blob_storage, list.MaxItems(1) & [...#blob_storage]])

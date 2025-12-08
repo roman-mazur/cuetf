@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_automation_runbook: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_automation_runbook")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_automation_runbook")
 	close({
 		automation_account_name!: string
 		draft?: matchN(1, [#draft, list.MaxItems(1) & [...#draft]])

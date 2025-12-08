@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_mssql_virtual_machine_availability_group_listener: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_mssql_virtual_machine_availability_group_listener")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_virtual_machine_availability_group_listener")
 	close({
 		availability_group_name?:      string
 		id?:                           string

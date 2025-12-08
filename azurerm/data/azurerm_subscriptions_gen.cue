@@ -2,7 +2,7 @@ package data
 
 #azurerm_subscriptions: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_subscriptions")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_subscriptions")
 	close({
 		timeouts?:              #timeouts
 		display_name_contains?: string

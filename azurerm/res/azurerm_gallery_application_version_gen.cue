@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_gallery_application_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_gallery_application_version")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_gallery_application_version")
 	close({
 		config_file?:            string
 		enable_health_check?:    bool

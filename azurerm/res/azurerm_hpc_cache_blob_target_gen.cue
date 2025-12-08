@@ -2,7 +2,7 @@ package res
 
 #azurerm_hpc_cache_blob_target: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_hpc_cache_blob_target")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_hpc_cache_blob_target")
 	close({
 		timeouts?:             #timeouts
 		access_policy_name?:   string

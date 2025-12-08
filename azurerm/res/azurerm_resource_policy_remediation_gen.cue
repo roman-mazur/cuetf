@@ -2,7 +2,7 @@ package res
 
 #azurerm_resource_policy_remediation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_resource_policy_remediation")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_resource_policy_remediation")
 	close({
 		failure_percentage?: number
 		id?:                 string

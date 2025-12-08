@@ -2,7 +2,7 @@ package res
 
 #azurerm_virtual_desktop_application_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_virtual_desktop_application_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_desktop_application_group")
 	close({
 		default_desktop_display_name?: string
 		description?:                  string

@@ -2,7 +2,7 @@ package res
 
 #azurerm_arc_machine_extension: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_arc_machine_extension")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_arc_machine_extension")
 	close({
 		arc_machine_id!:            string
 		automatic_upgrade_enabled?: bool

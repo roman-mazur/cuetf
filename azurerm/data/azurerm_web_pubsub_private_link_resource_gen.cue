@@ -2,7 +2,7 @@ package data
 
 #azurerm_web_pubsub_private_link_resource: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_web_pubsub_private_link_resource")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_web_pubsub_private_link_resource")
 	close({
 		timeouts?: #timeouts
 		id?:       string

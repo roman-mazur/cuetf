@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_kubernetes_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_kubernetes_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kubernetes_cluster")
 	close({
 		ai_toolchain_operator_enabled?: bool
 		automatic_upgrade_channel?:     string

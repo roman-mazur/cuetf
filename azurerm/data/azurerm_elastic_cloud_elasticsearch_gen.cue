@@ -2,7 +2,7 @@ package data
 
 #azurerm_elastic_cloud_elasticsearch: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_elastic_cloud_elasticsearch")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_elastic_cloud_elasticsearch")
 	close({
 		elastic_cloud_deployment_id?:   string
 		elastic_cloud_email_address?:   string

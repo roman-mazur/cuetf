@@ -2,7 +2,7 @@ package res
 
 #azurerm_redis_firewall_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_redis_firewall_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_redis_firewall_rule")
 	close({
 		timeouts?:            #timeouts
 		end_ip!:              string

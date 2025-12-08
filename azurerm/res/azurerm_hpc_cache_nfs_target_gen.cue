@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_hpc_cache_nfs_target: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_hpc_cache_nfs_target")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_hpc_cache_nfs_target")
 	close({
 		namespace_junction!: matchN(1, [#namespace_junction, list.MaxItems(10) & [_, ...] & [...#namespace_junction]])
 		cache_name!:                    string

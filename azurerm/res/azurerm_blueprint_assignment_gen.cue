@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_blueprint_assignment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_blueprint_assignment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_blueprint_assignment")
 	close({
 		blueprint_name?: string
 		description?:    string

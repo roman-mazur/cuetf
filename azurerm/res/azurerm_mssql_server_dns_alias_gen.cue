@@ -2,7 +2,7 @@ package res
 
 #azurerm_mssql_server_dns_alias: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_mssql_server_dns_alias")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_server_dns_alias")
 	close({
 		timeouts?:        #timeouts
 		dns_record?:      string

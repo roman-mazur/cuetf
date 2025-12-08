@@ -2,7 +2,7 @@ package res
 
 #azurerm_kusto_iothub_data_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_kusto_iothub_data_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kusto_iothub_data_connection")
 	close({
 		cluster_name!:          string
 		consumer_group!:        string

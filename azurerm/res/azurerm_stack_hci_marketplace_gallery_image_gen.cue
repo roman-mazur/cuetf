@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_stack_hci_marketplace_gallery_image: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_stack_hci_marketplace_gallery_image")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_stack_hci_marketplace_gallery_image")
 	close({
 		custom_location_id!:  string
 		hyperv_generation!:   string

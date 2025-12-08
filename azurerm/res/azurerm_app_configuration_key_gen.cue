@@ -2,7 +2,7 @@ package res
 
 #azurerm_app_configuration_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_app_configuration_key")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_app_configuration_key")
 	close({
 		configuration_store_id!: string
 		content_type?:           string

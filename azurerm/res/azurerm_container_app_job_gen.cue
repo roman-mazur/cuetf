@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_container_app_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_container_app_job")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_app_job")
 	close({
 		container_app_environment_id!: string
 		event_stream_endpoint?:        string

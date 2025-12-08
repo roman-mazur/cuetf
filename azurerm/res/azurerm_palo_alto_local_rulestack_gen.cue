@@ -2,7 +2,7 @@ package res
 
 #azurerm_palo_alto_local_rulestack: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_palo_alto_local_rulestack")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_palo_alto_local_rulestack")
 	close({
 		anti_spyware_profile?:  string
 		anti_virus_profile?:    string

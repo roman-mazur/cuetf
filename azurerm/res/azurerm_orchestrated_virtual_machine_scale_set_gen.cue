@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_orchestrated_virtual_machine_scale_set: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_orchestrated_virtual_machine_scale_set")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_orchestrated_virtual_machine_scale_set")
 	close({
 		capacity_reservation_group_id?: string
 		encryption_at_host_enabled?:    bool

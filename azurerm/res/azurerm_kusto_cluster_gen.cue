@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_kusto_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_kusto_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kusto_cluster")
 	close({
 		allowed_fqdns?: [...string]
 		allowed_ip_ranges?: [...string]

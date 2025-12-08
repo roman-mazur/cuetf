@@ -2,7 +2,7 @@ package azurerm
 
 #provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm/provider")
 	close({
 		// The Azure DevOps Pipeline Service Connection ID.
 		ado_pipeline_service_connection_id?: string

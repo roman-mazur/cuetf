@@ -2,7 +2,7 @@ package data
 
 #azurerm_netapp_account_encryption: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_netapp_account_encryption")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_netapp_account_encryption")
 	close({
 		cross_tenant_key_vault_resource_id?: string
 		encryption_key?:                     string

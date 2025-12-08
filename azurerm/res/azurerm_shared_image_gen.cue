@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_shared_image: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_shared_image")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_shared_image")
 	close({
 		accelerated_network_support_enabled?: bool
 		architecture?:                        string

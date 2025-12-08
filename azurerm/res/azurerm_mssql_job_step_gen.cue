@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_mssql_job_step: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_mssql_job_step")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_job_step")
 	close({
 		id?:                             string
 		initial_retry_interval_seconds?: number

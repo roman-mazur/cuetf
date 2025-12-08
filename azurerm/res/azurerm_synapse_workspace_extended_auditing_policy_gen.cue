@@ -2,7 +2,7 @@ package res
 
 #azurerm_synapse_workspace_extended_auditing_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_synapse_workspace_extended_auditing_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_synapse_workspace_extended_auditing_policy")
 	close({
 		timeouts?:                                #timeouts
 		id?:                                      string

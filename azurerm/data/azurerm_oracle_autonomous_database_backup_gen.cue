@@ -2,7 +2,7 @@ package data
 
 #azurerm_oracle_autonomous_database_backup: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_oracle_autonomous_database_backup")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_oracle_autonomous_database_backup")
 	close({
 		automatic?:                       bool
 		autonomous_database_backup_ocid?: string

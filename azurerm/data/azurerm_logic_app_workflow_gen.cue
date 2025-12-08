@@ -2,7 +2,7 @@ package data
 
 #azurerm_logic_app_workflow: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_logic_app_workflow")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_logic_app_workflow")
 	close({
 		access_endpoint?: string
 		connector_endpoint_ip_addresses?: [...string]

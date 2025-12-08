@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_logic_app_integration_account_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_logic_app_integration_account_certificate")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_logic_app_integration_account_certificate")
 	close({
 		key_vault_key?: matchN(1, [#key_vault_key, list.MaxItems(1) & [...#key_vault_key]])
 		id?:                       string

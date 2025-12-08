@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_data_protection_backup_policy_postgresql_flexible_server: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_data_protection_backup_policy_postgresql_flexible_server")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_protection_backup_policy_postgresql_flexible_server")
 	close({
 		backup_repeating_time_intervals!: [...string]
 		default_retention_rule!: matchN(1, [#default_retention_rule, list.MaxItems(1) & [_, ...] & [...#default_retention_rule]])

@@ -2,7 +2,7 @@ package res
 
 #azurerm_application_insights: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_application_insights")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_application_insights")
 	close({
 		app_id?:                                string
 		application_type!:                      string

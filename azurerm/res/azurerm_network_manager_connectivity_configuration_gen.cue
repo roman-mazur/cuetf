@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_network_manager_connectivity_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_network_manager_connectivity_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_network_manager_connectivity_configuration")
 	close({
 		connectivity_topology!: string
 		applies_to_group!: matchN(1, [#applies_to_group, [_, ...] & [...#applies_to_group]])

@@ -2,7 +2,7 @@ package res
 
 #azurerm_firewall_application_rule_collection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_firewall_application_rule_collection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_firewall_application_rule_collection")
 	close({
 		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
 		action!:              string

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_hdinsight_interactive_query_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_hdinsight_interactive_query_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_hdinsight_interactive_query_cluster")
 	close({
 		component_version!: matchN(1, [#component_version, list.MaxItems(1) & [_, ...] & [...#component_version]])
 		cluster_version!:               string

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_virtual_machine_scale_set: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_virtual_machine_scale_set")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_machine_scale_set")
 	close({
 		automatic_os_upgrade?: bool
 		eviction_policy?:      string

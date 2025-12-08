@@ -2,7 +2,7 @@ package res
 
 #azurerm_storage_mover_job_definition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_storage_mover_job_definition")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_storage_mover_job_definition")
 	close({
 		agent_name?:               string
 		copy_mode!:                string

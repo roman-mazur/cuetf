@@ -2,7 +2,7 @@ package res
 
 #azurerm_lb_outbound_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_lb_outbound_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_lb_outbound_rule")
 	close({
 		frontend_ip_configuration?: matchN(1, [#frontend_ip_configuration, [...#frontend_ip_configuration]])
 		allocated_outbound_ports?: number

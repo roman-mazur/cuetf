@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_dashboard_grafana: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_dashboard_grafana")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_dashboard_grafana")
 	close({
 		api_key_enabled?:                        bool
 		auto_generated_domain_name_label_scope?: string

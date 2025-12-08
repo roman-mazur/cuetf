@@ -2,7 +2,7 @@ package res
 
 #azurerm_lb: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_lb")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_lb")
 	close({
 		edge_zone?:          string
 		id?:                 string

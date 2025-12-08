@@ -2,7 +2,7 @@ package data
 
 #azurerm_express_route_circuit_peering: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_express_route_circuit_peering")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_express_route_circuit_peering")
 	close({
 		azure_asn?:                     number
 		express_route_circuit_name!:    string

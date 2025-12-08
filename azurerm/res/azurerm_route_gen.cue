@@ -2,7 +2,7 @@ package res
 
 #azurerm_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_route")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_route")
 	close({
 		timeouts?:               #timeouts
 		address_prefix!:         string

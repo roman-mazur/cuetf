@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_kubernetes_fleet_update_run: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_kubernetes_fleet_update_run")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kubernetes_fleet_update_run")
 	close({
 		managed_cluster_update!: matchN(1, [#managed_cluster_update, list.MaxItems(1) & [_, ...] & [...#managed_cluster_update]])
 		fleet_update_strategy_id?:    string

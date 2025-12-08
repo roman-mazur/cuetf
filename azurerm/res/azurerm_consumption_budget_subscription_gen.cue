@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_consumption_budget_subscription: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_consumption_budget_subscription")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_consumption_budget_subscription")
 	close({
 		filter?: matchN(1, [#filter, list.MaxItems(1) & [...#filter]])
 		amount!:          number

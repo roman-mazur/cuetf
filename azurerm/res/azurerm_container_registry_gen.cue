@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_container_registry: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_container_registry")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_registry")
 	close({
 		admin_enabled?:          bool
 		admin_password?:         string

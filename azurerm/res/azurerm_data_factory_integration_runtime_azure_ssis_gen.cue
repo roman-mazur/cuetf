@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_data_factory_integration_runtime_azure_ssis: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_data_factory_integration_runtime_azure_ssis")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_integration_runtime_azure_ssis")
 	close({
 		credential_name?:                  string
 		data_factory_id!:                  string

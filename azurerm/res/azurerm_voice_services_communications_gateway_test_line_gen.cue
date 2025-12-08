@@ -2,7 +2,7 @@ package res
 
 #azurerm_voice_services_communications_gateway_test_line: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_voice_services_communications_gateway_test_line")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_voice_services_communications_gateway_test_line")
 	close({
 		timeouts?:     #timeouts
 		id?:           string

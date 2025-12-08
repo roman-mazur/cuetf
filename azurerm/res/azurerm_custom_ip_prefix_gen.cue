@@ -2,7 +2,7 @@ package res
 
 #azurerm_custom_ip_prefix: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_custom_ip_prefix")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_custom_ip_prefix")
 	close({
 		cidr!:                          string
 		commissioning_enabled?:         bool

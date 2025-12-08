@@ -2,7 +2,7 @@ package data
 
 #azurerm_notification_hub: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_notification_hub")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_notification_hub")
 	close({
 		timeouts?: #timeouts
 		apns_credential?: [...close({

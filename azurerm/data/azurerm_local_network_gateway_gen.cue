@@ -2,7 +2,7 @@ package data
 
 #azurerm_local_network_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_local_network_gateway")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_local_network_gateway")
 	close({
 		timeouts?: #timeouts
 		address_space?: [...string]

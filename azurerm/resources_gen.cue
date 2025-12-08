@@ -193,6 +193,7 @@ import "github.com/roman-mazur/cuetf/azurerm/res"
 	_#res: "\(#azurermPrefix)_chaos_studio_target": res.#azurerm_chaos_studio_target
 	_#res: "\(#azurermPrefix)_cognitive_account_customer_managed_key": res.#azurerm_cognitive_account_customer_managed_key
 	_#res: "\(#azurermPrefix)_cognitive_account": res.#azurerm_cognitive_account
+	_#res: "\(#azurermPrefix)_cognitive_account_project": res.#azurerm_cognitive_account_project
 	_#res: "\(#azurermPrefix)_cognitive_account_rai_blocklist": res.#azurerm_cognitive_account_rai_blocklist
 	_#res: "\(#azurermPrefix)_cognitive_account_rai_policy": res.#azurerm_cognitive_account_rai_policy
 	_#res: "\(#azurermPrefix)_cognitive_deployment": res.#azurerm_cognitive_deployment
@@ -542,6 +543,7 @@ import "github.com/roman-mazur/cuetf/azurerm/res"
 	_#res: "\(#azurermPrefix)_log_analytics_solution": res.#azurerm_log_analytics_solution
 	_#res: "\(#azurermPrefix)_log_analytics_storage_insights": res.#azurerm_log_analytics_storage_insights
 	_#res: "\(#azurermPrefix)_log_analytics_workspace": res.#azurerm_log_analytics_workspace
+	_#res: "\(#azurermPrefix)_log_analytics_workspace_table_custom_log": res.#azurerm_log_analytics_workspace_table_custom_log
 	_#res: "\(#azurermPrefix)_log_analytics_workspace_table": res.#azurerm_log_analytics_workspace_table
 	_#res: "\(#azurermPrefix)_logic_app_action_custom": res.#azurerm_logic_app_action_custom
 	_#res: "\(#azurermPrefix)_logic_app_action_http": res.#azurerm_logic_app_action_http
@@ -607,6 +609,7 @@ import "github.com/roman-mazur/cuetf/azurerm/res"
 	_#res: "\(#azurermPrefix)_mobile_network_slice": res.#azurerm_mobile_network_slice
 	_#res: "\(#azurermPrefix)_mongo_cluster_firewall_rule": res.#azurerm_mongo_cluster_firewall_rule
 	_#res: "\(#azurermPrefix)_mongo_cluster": res.#azurerm_mongo_cluster
+	_#res: "\(#azurermPrefix)_mongo_cluster_user": res.#azurerm_mongo_cluster_user
 	_#res: "\(#azurermPrefix)_monitor_aad_diagnostic_setting": res.#azurerm_monitor_aad_diagnostic_setting
 	_#res: "\(#azurermPrefix)_monitor_action_group": res.#azurerm_monitor_action_group
 	_#res: "\(#azurermPrefix)_monitor_activity_log_alert": res.#azurerm_monitor_activity_log_alert
@@ -741,8 +744,10 @@ import "github.com/roman-mazur/cuetf/azurerm/res"
 	_#res: "\(#azurermPrefix)_palo_alto_local_rulestack_rule": res.#azurerm_palo_alto_local_rulestack_rule
 	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_hub_local_rulestack": res.#azurerm_palo_alto_next_generation_firewall_virtual_hub_local_rulestack
 	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_hub_panorama": res.#azurerm_palo_alto_next_generation_firewall_virtual_hub_panorama
+	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_hub_strata_cloud_manager": res.#azurerm_palo_alto_next_generation_firewall_virtual_hub_strata_cloud_manager
 	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_network_local_rulestack": res.#azurerm_palo_alto_next_generation_firewall_virtual_network_local_rulestack
 	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_network_panorama": res.#azurerm_palo_alto_next_generation_firewall_virtual_network_panorama
+	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_network_strata_cloud_manager": res.#azurerm_palo_alto_next_generation_firewall_virtual_network_strata_cloud_manager
 	_#res: "\(#azurermPrefix)_palo_alto_virtual_network_appliance": res.#azurerm_palo_alto_virtual_network_appliance
 	_#res: "\(#azurermPrefix)_pim_active_role_assignment": res.#azurerm_pim_active_role_assignment
 	_#res: "\(#azurermPrefix)_pim_eligible_role_assignment": res.#azurerm_pim_eligible_role_assignment

@@ -2,7 +2,7 @@ package res
 
 #azurerm_app_service_public_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_app_service_public_certificate")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_app_service_public_certificate")
 	close({
 		timeouts?:             #timeouts
 		app_service_name!:     string

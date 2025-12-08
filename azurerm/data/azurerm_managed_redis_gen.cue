@@ -2,7 +2,7 @@ package data
 
 #azurerm_managed_redis: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_managed_redis")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_managed_redis")
 	close({
 		customer_managed_key?: [...close({
 			key_vault_key_id?:          string

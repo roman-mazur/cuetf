@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_windows_web_app_slot: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_windows_web_app_slot")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_windows_web_app_slot")
 	close({
 		app_service_id!: string
 		app_settings?: [string]: string

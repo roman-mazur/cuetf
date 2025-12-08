@@ -2,7 +2,7 @@ package data
 
 #azurerm_key_vault_managed_hardware_security_module_role_definition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_key_vault_managed_hardware_security_module_role_definition")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_key_vault_managed_hardware_security_module_role_definition")
 	close({
 		timeouts?: #timeouts
 		assignable_scopes?: [...string]

@@ -2,7 +2,7 @@ package data
 
 #azurerm_spring_cloud_app: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_spring_cloud_app")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_spring_cloud_app")
 	close({
 		fqdn?:       string
 		https_only?: bool

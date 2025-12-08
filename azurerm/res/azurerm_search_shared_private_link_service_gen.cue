@@ -2,7 +2,7 @@ package res
 
 #azurerm_search_shared_private_link_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_search_shared_private_link_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_search_shared_private_link_service")
 	close({
 		timeouts?:           #timeouts
 		id?:                 string

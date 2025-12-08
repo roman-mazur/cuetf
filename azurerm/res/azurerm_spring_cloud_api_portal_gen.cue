@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_spring_cloud_api_portal: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_spring_cloud_api_portal")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_api_portal")
 	close({
 		api_try_out_enabled?: bool
 		gateway_ids?: [...string]

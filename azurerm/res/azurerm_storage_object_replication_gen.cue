@@ -2,7 +2,7 @@ package res
 
 #azurerm_storage_object_replication: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_storage_object_replication")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_storage_object_replication")
 	close({
 		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
 		destination_object_replication_id?: string

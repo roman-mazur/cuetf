@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_purview_account: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_purview_account")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_purview_account")
 	close({
 		atlas_kafka_endpoint_primary_connection_string?:   string
 		atlas_kafka_endpoint_secondary_connection_string?: string

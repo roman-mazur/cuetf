@@ -2,7 +2,7 @@ package res
 
 #azurerm_chaos_studio_target: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_chaos_studio_target")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_chaos_studio_target")
 	close({
 		timeouts?:           #timeouts
 		id?:                 string

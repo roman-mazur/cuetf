@@ -2,7 +2,7 @@ package res
 
 #azurerm_stream_analytics_job_schedule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_stream_analytics_job_schedule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_stream_analytics_job_schedule")
 	close({
 		timeouts?:                #timeouts
 		id?:                      string

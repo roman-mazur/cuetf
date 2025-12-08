@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_iot_security_device_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_iot_security_device_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_iot_security_device_group")
 	close({
 		allow_rule?: matchN(1, [#allow_rule, list.MaxItems(1) & [...#allow_rule]])
 		range_rule?: matchN(1, [#range_rule, [...#range_rule]])

@@ -2,7 +2,7 @@ package res
 
 #azurerm_lb_nat_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_lb_nat_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_lb_nat_rule")
 	close({
 		backend_address_pool_id?:        string
 		backend_ip_configuration_id?:    string

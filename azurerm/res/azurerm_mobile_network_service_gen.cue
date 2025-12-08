@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_mobile_network_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_mobile_network_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mobile_network_service")
 	close({
 		pcc_rule!: matchN(1, [#pcc_rule, [_, ...] & [...#pcc_rule]])
 		id?:                 string

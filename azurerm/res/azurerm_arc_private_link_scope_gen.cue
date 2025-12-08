@@ -2,7 +2,7 @@ package res
 
 #azurerm_arc_private_link_scope: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_arc_private_link_scope")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_arc_private_link_scope")
 	close({
 		timeouts?:                      #timeouts
 		id?:                            string

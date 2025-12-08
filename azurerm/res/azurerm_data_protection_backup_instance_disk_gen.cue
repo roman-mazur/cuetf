@@ -2,7 +2,7 @@ package res
 
 #azurerm_data_protection_backup_instance_disk: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_data_protection_backup_instance_disk")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_protection_backup_instance_disk")
 	close({
 		timeouts?:                     #timeouts
 		backup_policy_id!:             string

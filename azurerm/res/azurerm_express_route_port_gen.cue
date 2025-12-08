@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_express_route_port: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_express_route_port")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_express_route_port")
 	close({
 		bandwidth_in_gbps!: number
 		billing_type?:      string

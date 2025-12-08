@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_dev_center_project: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_dev_center_project")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dev_center_project")
 	close({
 		description?:    string
 		dev_center_id!:  string

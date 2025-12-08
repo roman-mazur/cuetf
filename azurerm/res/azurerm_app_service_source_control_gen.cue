@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_app_service_source_control: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_app_service_source_control")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_app_service_source_control")
 	close({
 		// The ID of the Windows or Linux Web App.
 		app_id!: string

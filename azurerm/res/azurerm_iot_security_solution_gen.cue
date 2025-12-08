@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_iot_security_solution: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_iot_security_solution")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_iot_security_solution")
 	close({
 		disabled_data_sources?: [...string]
 		display_name!: string

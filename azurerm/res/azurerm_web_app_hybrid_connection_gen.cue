@@ -2,7 +2,7 @@ package res
 
 #azurerm_web_app_hybrid_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_web_app_hybrid_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_web_app_hybrid_connection")
 	close({
 		// The hostname of the endpoint.
 		hostname!: string

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_automation_module: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_automation_module")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_automation_module")
 	close({
 		module_link!: matchN(1, [#module_link, list.MaxItems(1) & [_, ...] & [...#module_link]])
 		automation_account_name!: string

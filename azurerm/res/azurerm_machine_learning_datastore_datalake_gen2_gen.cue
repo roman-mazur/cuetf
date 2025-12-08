@@ -2,7 +2,7 @@ package res
 
 #azurerm_machine_learning_datastore_datalake_gen2: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_machine_learning_datastore_datalake_gen2")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_machine_learning_datastore_datalake_gen2")
 	close({
 		authority_url?:         string
 		client_id?:             string

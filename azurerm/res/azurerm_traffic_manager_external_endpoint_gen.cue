@@ -2,7 +2,7 @@ package res
 
 #azurerm_traffic_manager_external_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_traffic_manager_external_endpoint")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_traffic_manager_external_endpoint")
 	close({
 		always_serve_enabled?: bool
 		enabled?:              bool

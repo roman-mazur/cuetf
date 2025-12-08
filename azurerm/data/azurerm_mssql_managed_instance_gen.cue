@@ -2,7 +2,7 @@ package data
 
 #azurerm_mssql_managed_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_mssql_managed_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_mssql_managed_instance")
 	close({
 		administrator_login?:     string
 		collation?:               string

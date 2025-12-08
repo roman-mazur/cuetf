@@ -2,7 +2,7 @@ package res
 
 #azurerm_attestation_provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_attestation_provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_attestation_provider")
 	close({
 		attestation_uri?:                 string
 		id?:                              string

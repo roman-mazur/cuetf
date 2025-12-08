@@ -2,7 +2,7 @@ package res
 
 #azurerm_active_directory_domain_service_trust: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_active_directory_domain_service_trust")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_active_directory_domain_service_trust")
 	close({
 		timeouts?:          #timeouts
 		domain_service_id!: string

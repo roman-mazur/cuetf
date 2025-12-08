@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_storage_account_blob_container_sas: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_storage_account_blob_container_sas")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_storage_account_blob_container_sas")
 	close({
 		cache_control?:       string
 		connection_string!:   string

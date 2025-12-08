@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_storage_account_queue_properties: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_storage_account_queue_properties")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_storage_account_queue_properties")
 	close({
 		cors_rule?: matchN(1, [#cors_rule, list.MaxItems(5) & [...#cors_rule]])
 		hour_metrics?: matchN(1, [#hour_metrics, list.MaxItems(1) & [...#hour_metrics]])

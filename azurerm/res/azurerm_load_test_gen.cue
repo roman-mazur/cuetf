@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_load_test: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_load_test")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_load_test")
 	close({
 		data_plane_uri?: string
 		encryption?: matchN(1, [#encryption, list.MaxItems(1) & [...#encryption]])

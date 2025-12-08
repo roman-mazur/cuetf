@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_healthcare_medtech_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_healthcare_medtech_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_healthcare_medtech_service")
 	close({
 		device_mapping_json!:          string
 		eventhub_consumer_group_name!: string

@@ -2,7 +2,7 @@ package res
 
 #azurerm_container_connected_registry: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_container_connected_registry")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_connected_registry")
 	close({
 		audit_log_enabled?: bool
 		client_token_ids?: [...string]

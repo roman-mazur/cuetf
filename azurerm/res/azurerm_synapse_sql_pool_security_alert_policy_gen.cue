@@ -2,7 +2,7 @@ package res
 
 #azurerm_synapse_sql_pool_security_alert_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_synapse_sql_pool_security_alert_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_synapse_sql_pool_security_alert_policy")
 	close({
 		timeouts?: #timeouts
 		disabled_alerts?: [...string]

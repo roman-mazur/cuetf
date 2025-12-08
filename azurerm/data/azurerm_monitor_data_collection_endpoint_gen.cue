@@ -2,7 +2,7 @@ package data
 
 #azurerm_monitor_data_collection_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_monitor_data_collection_endpoint")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_monitor_data_collection_endpoint")
 	close({
 		configuration_access_endpoint?: string
 		description?:                   string

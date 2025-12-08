@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_data_protection_backup_policy_disk: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_data_protection_backup_policy_disk")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_protection_backup_policy_disk")
 	close({
 		retention_rule?: matchN(1, [#retention_rule, [...#retention_rule]])
 		backup_repeating_time_intervals!: [...string]

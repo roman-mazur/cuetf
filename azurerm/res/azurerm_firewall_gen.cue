@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_firewall: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_firewall")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_firewall")
 	close({
 		dns_proxy_enabled?: bool
 		dns_servers?: [...string]

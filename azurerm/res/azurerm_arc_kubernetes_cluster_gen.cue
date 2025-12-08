@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_arc_kubernetes_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_arc_kubernetes_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_arc_kubernetes_cluster")
 	close({
 		agent_public_key_certificate!: string
 		agent_version?:                string

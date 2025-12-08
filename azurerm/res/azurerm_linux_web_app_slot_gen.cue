@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_linux_web_app_slot: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_linux_web_app_slot")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_linux_web_app_slot")
 	close({
 		app_metadata?: [string]: string
 		app_service_id!: string

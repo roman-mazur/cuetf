@@ -2,7 +2,7 @@ package res
 
 #azurerm_bot_service_azure_bot: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_bot_service_azure_bot")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_bot_service_azure_bot")
 	close({
 		cmk_key_vault_key_url?:                 string
 		developer_app_insights_api_key?:        string

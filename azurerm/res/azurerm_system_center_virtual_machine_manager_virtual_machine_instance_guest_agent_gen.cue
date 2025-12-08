@@ -2,7 +2,7 @@ package res
 
 #azurerm_system_center_virtual_machine_manager_virtual_machine_instance_guest_agent: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_system_center_virtual_machine_manager_virtual_machine_instance_guest_agent")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_system_center_virtual_machine_manager_virtual_machine_instance_guest_agent")
 	close({
 		timeouts?:            #timeouts
 		id?:                  string

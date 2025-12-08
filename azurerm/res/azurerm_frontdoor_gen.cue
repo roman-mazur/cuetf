@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_frontdoor: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_frontdoor")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_frontdoor")
 	close({
 		backend_pool_health_probes?: [string]:           string
 		backend_pool_load_balancing_settings?: [string]: string

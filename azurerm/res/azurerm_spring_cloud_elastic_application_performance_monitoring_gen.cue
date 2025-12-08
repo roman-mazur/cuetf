@@ -2,7 +2,7 @@ package res
 
 #azurerm_spring_cloud_elastic_application_performance_monitoring: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_spring_cloud_elastic_application_performance_monitoring")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_elastic_application_performance_monitoring")
 	close({
 		timeouts?: #timeouts
 		application_packages!: [...string]

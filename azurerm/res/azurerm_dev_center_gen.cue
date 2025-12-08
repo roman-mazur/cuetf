@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_dev_center: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_dev_center")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dev_center")
 	close({
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		dev_center_uri?:                    string

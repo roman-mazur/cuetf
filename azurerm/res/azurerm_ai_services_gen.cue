@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_ai_services: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_ai_services")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_ai_services")
 	close({
 		custom_subdomain_name?: string
 		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])

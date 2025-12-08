@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_container_registry_task: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_container_registry_task")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_registry_task")
 	close({
 		agent_pool_name?: string
 		agent_setting?: matchN(1, [#agent_setting, list.MaxItems(1) & [...#agent_setting]])

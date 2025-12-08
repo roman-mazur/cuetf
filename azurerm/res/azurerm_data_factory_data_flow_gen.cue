@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_data_factory_data_flow: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_data_factory_data_flow")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_data_flow")
 	close({
 		annotations?: [...string]
 		sink!: matchN(1, [#sink, [_, ...] & [...#sink]])

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_dns_zone: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_dns_zone")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dns_zone")
 	close({
 		soa_record?: matchN(1, [#soa_record, list.MaxItems(1) & [...#soa_record]])
 		id?:                        string

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_monitor_data_collection_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_monitor_data_collection_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_monitor_data_collection_rule")
 	close({
 		data_collection_endpoint_id?: string
 		description?:                 string

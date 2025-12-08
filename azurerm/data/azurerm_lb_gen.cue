@@ -2,7 +2,7 @@ package data
 
 #azurerm_lb: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_lb")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_lb")
 	close({
 		timeouts?: #timeouts
 		frontend_ip_configuration?: [...close({

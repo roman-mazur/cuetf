@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_dev_center_catalog: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_dev_center_catalog")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dev_center_catalog")
 	close({
 		catalog_adogit?: matchN(1, [#catalog_adogit, list.MaxItems(1) & [...#catalog_adogit]])
 		dev_center_id!:       string

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_automation_source_control: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_automation_source_control")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_automation_source_control")
 	close({
 		automatic_sync?:        bool
 		automation_account_id!: string

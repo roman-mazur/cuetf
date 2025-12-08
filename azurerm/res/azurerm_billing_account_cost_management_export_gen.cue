@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_billing_account_cost_management_export: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_billing_account_cost_management_export")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_billing_account_cost_management_export")
 	close({
 		active?:             bool
 		billing_account_id!: string

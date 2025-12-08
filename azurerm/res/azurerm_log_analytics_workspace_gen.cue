@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_log_analytics_workspace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_log_analytics_workspace")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_log_analytics_workspace")
 	close({
 		allow_resource_only_permissions?:         bool
 		cmk_for_query_forced?:                    bool

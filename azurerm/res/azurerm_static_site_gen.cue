@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_static_site: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_static_site")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_static_site")
 	close({
 		api_key?: string
 		app_settings?: [string]: string

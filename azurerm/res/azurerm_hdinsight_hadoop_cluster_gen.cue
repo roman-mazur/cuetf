@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_hdinsight_hadoop_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_hdinsight_hadoop_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_hdinsight_hadoop_cluster")
 	close({
 		cluster_version!: string
 		https_endpoint?:  string

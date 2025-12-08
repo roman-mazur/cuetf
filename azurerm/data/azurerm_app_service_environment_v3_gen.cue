@@ -2,7 +2,7 @@ package data
 
 #azurerm_app_service_environment_v3: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_app_service_environment_v3")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_app_service_environment_v3")
 	close({
 		allow_new_private_endpoint_connections?: bool
 		cluster_setting?: [...close({

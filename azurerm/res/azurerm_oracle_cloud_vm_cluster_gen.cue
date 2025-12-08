@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_oracle_cloud_vm_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_oracle_cloud_vm_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_oracle_cloud_vm_cluster")
 	close({
 		backup_subnet_cidr?:              string
 		cloud_exadata_infrastructure_id!: string

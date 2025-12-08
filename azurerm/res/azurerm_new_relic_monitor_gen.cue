@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_new_relic_monitor: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_new_relic_monitor")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_new_relic_monitor")
 	close({
 		account_creation_source?: string
 		account_id?:              string

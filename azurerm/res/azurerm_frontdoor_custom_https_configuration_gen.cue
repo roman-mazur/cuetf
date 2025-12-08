@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_frontdoor_custom_https_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_frontdoor_custom_https_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_frontdoor_custom_https_configuration")
 	close({
 		custom_https_configuration?: matchN(1, [#custom_https_configuration, list.MaxItems(1) & [...#custom_https_configuration]])
 		timeouts?:                          #timeouts

@@ -2,7 +2,7 @@ package res
 
 #azurerm_stream_analytics_output_cosmosdb: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_stream_analytics_output_cosmosdb")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_stream_analytics_output_cosmosdb")
 	close({
 		timeouts?:                 #timeouts
 		authentication_mode?:      string

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_elastic_san: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_elastic_san")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_elastic_san")
 	close({
 		base_size_in_tib!:     number
 		extended_size_in_tib?: number

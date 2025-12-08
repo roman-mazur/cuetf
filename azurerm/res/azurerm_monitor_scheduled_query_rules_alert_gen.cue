@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_monitor_scheduled_query_rules_alert: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_monitor_scheduled_query_rules_alert")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_monitor_scheduled_query_rules_alert")
 	close({
 		authorized_resource_ids?: [...string]
 		auto_mitigation_enabled?: bool

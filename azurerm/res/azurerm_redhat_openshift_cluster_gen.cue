@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_redhat_openshift_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_redhat_openshift_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_redhat_openshift_cluster")
 	close({
 		api_server_profile!: matchN(1, [#api_server_profile, list.MaxItems(1) & [_, ...] & [...#api_server_profile]])
 		cluster_profile!: matchN(1, [#cluster_profile, list.MaxItems(1) & [_, ...] & [...#cluster_profile]])

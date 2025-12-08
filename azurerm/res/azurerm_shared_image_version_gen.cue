@@ -2,7 +2,7 @@ package res
 
 #azurerm_shared_image_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_shared_image_version")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_shared_image_version")
 	close({
 		blob_uri?:                                 string
 		deletion_of_replicated_locations_enabled?: bool

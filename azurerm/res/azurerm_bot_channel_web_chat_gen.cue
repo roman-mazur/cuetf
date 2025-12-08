@@ -2,7 +2,7 @@ package res
 
 #azurerm_bot_channel_web_chat: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_bot_channel_web_chat")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_bot_channel_web_chat")
 	close({
 		site?: matchN(1, [#site, [...#site]])
 		bot_name!:            string

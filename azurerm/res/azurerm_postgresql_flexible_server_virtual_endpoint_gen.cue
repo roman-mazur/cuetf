@@ -2,7 +2,7 @@ package res
 
 #azurerm_postgresql_flexible_server_virtual_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_postgresql_flexible_server_virtual_endpoint")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_postgresql_flexible_server_virtual_endpoint")
 	close({
 		id?: string
 

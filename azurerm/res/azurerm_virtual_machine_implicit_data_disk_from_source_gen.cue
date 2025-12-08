@@ -2,7 +2,7 @@ package res
 
 #azurerm_virtual_machine_implicit_data_disk_from_source: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_virtual_machine_implicit_data_disk_from_source")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_machine_implicit_data_disk_from_source")
 	close({
 		timeouts?:                  #timeouts
 		caching?:                   string

@@ -2,7 +2,7 @@ package data
 
 #azurerm_virtual_desktop_host_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_virtual_desktop_host_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_virtual_desktop_host_pool")
 	close({
 		custom_rdp_properties?:            string
 		description?:                      string

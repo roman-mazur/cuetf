@@ -2,7 +2,7 @@ package data
 
 #azurerm_mobile_network_packet_core_control_plane: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_mobile_network_packet_core_control_plane")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_mobile_network_packet_core_control_plane")
 	close({
 		control_plane_access_ipv4_address?: string
 		control_plane_access_ipv4_gateway?: string

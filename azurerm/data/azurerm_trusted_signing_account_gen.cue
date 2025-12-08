@@ -2,7 +2,7 @@ package data
 
 #azurerm_trusted_signing_account: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_trusted_signing_account")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_trusted_signing_account")
 	close({
 		timeouts?:            #timeouts
 		account_uri?:         string

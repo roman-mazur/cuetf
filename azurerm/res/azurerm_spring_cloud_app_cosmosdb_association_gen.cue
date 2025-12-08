@@ -2,7 +2,7 @@ package res
 
 #azurerm_spring_cloud_app_cosmosdb_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_spring_cloud_app_cosmosdb_association")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_app_cosmosdb_association")
 	close({
 		api_type!:                         string
 		cosmosdb_access_key!:              string

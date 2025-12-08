@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_cdn_frontdoor_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_cdn_frontdoor_route")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cdn_frontdoor_route")
 	close({
 		cdn_frontdoor_custom_domain_ids?: [...string]
 		cdn_frontdoor_endpoint_id!:     string

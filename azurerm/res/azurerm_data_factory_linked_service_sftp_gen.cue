@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_data_factory_linked_service_sftp: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_data_factory_linked_service_sftp")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_linked_service_sftp")
 	close({
 		additional_properties?: [string]: string
 		annotations?: [...string]

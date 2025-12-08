@@ -2,7 +2,7 @@ package res
 
 #azurerm_mssql_server_extended_auditing_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_mssql_server_extended_auditing_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_server_extended_auditing_policy")
 	close({
 		audit_actions_and_groups?: [...string]
 		enabled?:                                 bool

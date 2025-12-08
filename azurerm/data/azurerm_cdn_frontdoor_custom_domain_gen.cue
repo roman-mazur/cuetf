@@ -2,7 +2,7 @@ package data
 
 #azurerm_cdn_frontdoor_custom_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_cdn_frontdoor_custom_domain")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_cdn_frontdoor_custom_domain")
 	close({
 		cdn_frontdoor_profile_id?: string
 		dns_zone_id?:              string

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_kubernetes_cluster_node_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_kubernetes_cluster_node_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kubernetes_cluster_node_pool")
 	close({
 		auto_scaling_enabled?:          bool
 		capacity_reservation_group_id?: string

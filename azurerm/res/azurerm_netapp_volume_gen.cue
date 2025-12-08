@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_netapp_volume: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_netapp_volume")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_netapp_volume")
 	close({
 		// While auto splitting the short term clone volume, if the parent
 		// pool does not have enough space to accommodate the volume

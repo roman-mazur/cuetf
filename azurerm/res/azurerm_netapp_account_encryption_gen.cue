@@ -2,7 +2,7 @@ package res
 
 #azurerm_netapp_account_encryption: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_netapp_account_encryption")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_netapp_account_encryption")
 	close({
 		// The full resource ID of the cross-tenant key vault. Required
 		// when using federated_client_id for cross-tenant scenarios.

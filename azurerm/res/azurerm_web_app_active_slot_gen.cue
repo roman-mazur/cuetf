@@ -2,7 +2,7 @@ package res
 
 #azurerm_web_app_active_slot: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_web_app_active_slot")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_web_app_active_slot")
 	close({
 		// The timestamp of the last successful swap with `Production`
 		last_successful_swap?: string

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_dev_test_virtual_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_dev_test_virtual_network")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dev_test_virtual_network")
 	close({
 		subnet?: matchN(1, [#subnet, list.MaxItems(1) & [...#subnet]])
 		description?:         string

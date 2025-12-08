@@ -2,7 +2,7 @@ package data
 
 #azurerm_api_management_api_version_set: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_api_management_api_version_set")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_api_management_api_version_set")
 	close({
 		timeouts?:            #timeouts
 		api_management_name!: string

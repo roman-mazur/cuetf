@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_web_pubsub_hub: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_web_pubsub_hub")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_web_pubsub_hub")
 	close({
 		event_handler?: matchN(1, [#event_handler, [...#event_handler]])
 		anonymous_connections_enabled?: bool

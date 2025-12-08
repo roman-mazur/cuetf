@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_iothub_dps: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_iothub_dps")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_iothub_dps")
 	close({
 		allocation_policy?:             string
 		data_residency_enabled?:        bool

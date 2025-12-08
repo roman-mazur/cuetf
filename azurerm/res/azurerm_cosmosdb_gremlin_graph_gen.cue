@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_cosmosdb_gremlin_graph: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_cosmosdb_gremlin_graph")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cosmosdb_gremlin_graph")
 	close({
 		account_name!:           string
 		analytical_storage_ttl?: number
