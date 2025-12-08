@@ -4,7 +4,7 @@ import "list"
 
 #google_database_migration_service_migration_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_database_migration_service_migration_job")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_database_migration_service_migration_job")
 	close({
 		// Output only. The timestamp when the resource was created. A
 		// timestamp in RFC3339 UTC 'Zulu' format, accurate to

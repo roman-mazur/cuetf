@@ -2,7 +2,7 @@ package data
 
 #google_composer_user_workloads_config_map: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_composer_user_workloads_config_map")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_composer_user_workloads_config_map")
 	close({
 		// The "data" field of Kubernetes ConfigMap, organized in
 		// key-value pairs.

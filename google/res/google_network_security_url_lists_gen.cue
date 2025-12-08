@@ -2,7 +2,7 @@ package res
 
 #google_network_security_url_lists: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_security_url_lists")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_url_lists")
 	close({
 		// Output only. Time when the security policy was created.
 		// A timestamp in RFC3339 UTC 'Zulu' format, with nanosecond

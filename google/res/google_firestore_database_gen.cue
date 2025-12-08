@@ -4,7 +4,7 @@ import "list"
 
 #google_firestore_database: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_firestore_database")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firestore_database")
 	close({
 		// The App Engine integration mode to use for this database.
 		// Possible values: ["ENABLED", "DISABLED"]

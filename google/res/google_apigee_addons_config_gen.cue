@@ -4,7 +4,7 @@ import "list"
 
 #google_apigee_addons_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_addons_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_addons_config")
 	close({
 		addons_config?: matchN(1, [#addons_config, list.MaxItems(1) & [...#addons_config]])
 		timeouts?: #timeouts

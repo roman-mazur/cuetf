@@ -2,7 +2,7 @@ package res
 
 #google_apigee_flowhook: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_flowhook")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_flowhook")
 	close({
 		// Flag that specifies whether execution should continue if the
 		// flow hook throws an exception. Set to true to continue

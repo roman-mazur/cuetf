@@ -4,7 +4,7 @@ import "list"
 
 #google_model_armor_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_model_armor_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_model_armor_template")
 	close({
 		// Create time stamp
 		create_time?: string

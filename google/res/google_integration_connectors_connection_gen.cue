@@ -4,7 +4,7 @@ import "list"
 
 #google_integration_connectors_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_integration_connectors_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_integration_connectors_connection")
 	close({
 		// Connection revision. This field is only updated when the
 		// connection is created or updated by User.

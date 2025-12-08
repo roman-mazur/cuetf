@@ -4,7 +4,7 @@ import "list"
 
 #google_clouddeploy_automation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_clouddeploy_automation")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_clouddeploy_automation")
 	close({
 		// Optional. User annotations. These attributes can only be set
 		// and used by the user, and not by Cloud Deploy. Annotations

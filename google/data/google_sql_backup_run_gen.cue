@@ -2,7 +2,7 @@ package data
 
 #google_sql_backup_run: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_sql_backup_run")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_sql_backup_run")
 	close({
 		// The identifier for this backup run. Unique only for a specific
 		// Cloud SQL instance. If left empty and multiple backups exist

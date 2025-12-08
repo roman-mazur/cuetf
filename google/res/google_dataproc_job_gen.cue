@@ -4,7 +4,7 @@ import "list"
 
 #google_dataproc_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dataproc_job")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_job")
 	close({
 		// Output-only. If present, the location of miscellaneous control
 		// files which may be used as part of job setup and handling. If

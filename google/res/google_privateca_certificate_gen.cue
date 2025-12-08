@@ -4,7 +4,7 @@ import "list"
 
 #google_privateca_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_privateca_certificate")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_privateca_certificate")
 	close({
 		// The Certificate Authority ID that should issue the certificate.
 		// For example, to issue a Certificate from

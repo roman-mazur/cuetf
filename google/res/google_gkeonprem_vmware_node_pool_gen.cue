@@ -4,7 +4,7 @@ import "list"
 
 #google_gkeonprem_vmware_node_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_gkeonprem_vmware_node_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gkeonprem_vmware_node_pool")
 	close({
 		// Annotations on the node Pool.
 		// This field has the same restrictions as Kubernetes annotations.

@@ -2,7 +2,7 @@ package res
 
 #google_apigee_env_references: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_env_references")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_env_references")
 	close({
 		// Optional. A human-readable description of this reference.
 		description?: string

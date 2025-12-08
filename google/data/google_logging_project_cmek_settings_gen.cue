@@ -2,7 +2,7 @@ package data
 
 #google_logging_project_cmek_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_logging_project_cmek_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_logging_project_cmek_settings")
 	close({
 		// The resource name for the configured Cloud KMS key.
 		// KMS key name format:

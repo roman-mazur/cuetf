@@ -4,7 +4,7 @@ import "list"
 
 #google_healthcare_dataset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_healthcare_dataset")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_healthcare_dataset")
 	close({
 		// The location for the Dataset.
 		location!: string

@@ -4,7 +4,7 @@ import "list"
 
 #google_network_management_connectivity_test: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_management_connectivity_test")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_management_connectivity_test")
 	close({
 		// Whether the analysis should skip firewall checking. Default
 		// value is false.

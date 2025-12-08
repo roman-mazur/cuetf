@@ -2,7 +2,7 @@ package res
 
 #google_logging_project_exclusion: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_logging_project_exclusion")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_project_exclusion")
 	close({
 		// A human-readable description.
 		description?: string

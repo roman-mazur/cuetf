@@ -4,7 +4,7 @@ import "list"
 
 #google_database_migration_service_private_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_database_migration_service_private_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_database_migration_service_private_connection")
 	close({
 		// If set to true, will skip validations.
 		create_without_validation?: bool

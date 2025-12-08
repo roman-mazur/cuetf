@@ -4,7 +4,7 @@ import "list"
 
 #google_access_context_manager_gcp_user_access_binding: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_access_context_manager_gcp_user_access_binding")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_access_context_manager_gcp_user_access_binding")
 	close({
 		// Optional. Access level that a user must have to be granted
 		// access. Only one access level is supported, not multiple. This

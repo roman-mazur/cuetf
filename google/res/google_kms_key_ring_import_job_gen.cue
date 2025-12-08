@@ -2,7 +2,7 @@ package res
 
 #google_kms_key_ring_import_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_kms_key_ring_import_job")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_kms_key_ring_import_job")
 	close({
 		// Statement that was generated and signed by the key creator (for
 		// example, an HSM) at key creation time.

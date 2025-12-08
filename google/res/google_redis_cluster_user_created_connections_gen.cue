@@ -4,7 +4,7 @@ import "list"
 
 #google_redis_cluster_user_created_connections: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_redis_cluster_user_created_connections")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_redis_cluster_user_created_connections")
 	close({
 		id?: string
 

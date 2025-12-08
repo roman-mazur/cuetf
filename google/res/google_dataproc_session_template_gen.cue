@@ -4,7 +4,7 @@ import "list"
 
 #google_dataproc_session_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dataproc_session_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_session_template")
 	close({
 		// The time when the session template was created.
 		create_time?: string

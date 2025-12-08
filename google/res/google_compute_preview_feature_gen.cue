@@ -4,7 +4,7 @@ import "list"
 
 #google_compute_preview_feature: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_preview_feature")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_preview_feature")
 	close({
 		// The activation status of the preview feature. Possible values:
 		// ["ENABLED", "ACTIVATION_STATE_UNSPECIFIED"]

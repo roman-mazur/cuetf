@@ -4,7 +4,7 @@ import "list"
 
 #google_dataproc_batch: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dataproc_batch")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_batch")
 	close({
 		// The ID to use for the batch, which will become the final
 		// component of the batch's resource name.

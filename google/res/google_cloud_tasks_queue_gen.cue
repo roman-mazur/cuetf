@@ -4,7 +4,7 @@ import "list"
 
 #google_cloud_tasks_queue: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloud_tasks_queue")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_tasks_queue")
 	close({
 		// The desired state of the queue. Use this to pause and resume
 		// the queue.

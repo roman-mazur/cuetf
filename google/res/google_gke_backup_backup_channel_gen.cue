@@ -2,7 +2,7 @@ package res
 
 #google_gke_backup_backup_channel: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_gke_backup_backup_channel")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_backup_backup_channel")
 	close({
 		// User specified descriptive string for this BackupChannel.
 		description?: string

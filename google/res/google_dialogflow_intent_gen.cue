@@ -2,7 +2,7 @@ package res
 
 #google_dialogflow_intent: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dialogflow_intent")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_intent")
 	close({
 		// The name of the action associated with the intent.
 		// Note: The action name must not contain whitespaces.

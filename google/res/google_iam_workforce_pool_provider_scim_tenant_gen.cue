@@ -2,7 +2,7 @@ package res
 
 #google_iam_workforce_pool_provider_scim_tenant: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_iam_workforce_pool_provider_scim_tenant")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_workforce_pool_provider_scim_tenant")
 	close({
 		// Represents the base URI as defined in [RFC 7644, Section
 		// 1.3](https://datatracker.ietf.org/doc/html/rfc7644#section-1.3).

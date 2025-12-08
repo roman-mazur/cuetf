@@ -4,7 +4,7 @@ import "list"
 
 #google_sql_user: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_sql_user")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_sql_user")
 	close({
 		// The deletion policy for the user. Setting ABANDON allows the
 		// resource

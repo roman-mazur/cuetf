@@ -4,7 +4,7 @@ import "list"
 
 #google_ml_engine_model: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_ml_engine_model")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ml_engine_model")
 	close({
 		// The description specified for the model when it was created.
 		description?: string

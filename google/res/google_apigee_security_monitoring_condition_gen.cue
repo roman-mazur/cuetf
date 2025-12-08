@@ -4,7 +4,7 @@ import "list"
 
 #google_apigee_security_monitoring_condition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_security_monitoring_condition")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_security_monitoring_condition")
 	close({
 		// Resource ID of the security monitoring condition.
 		condition_id!: string

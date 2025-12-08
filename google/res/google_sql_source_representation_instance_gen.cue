@@ -2,7 +2,7 @@ package res
 
 #google_sql_source_representation_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_sql_source_representation_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_sql_source_representation_instance")
 	close({
 		// The CA certificate on the external server. Include only if
 		// SSL/TLS is used on the external server.

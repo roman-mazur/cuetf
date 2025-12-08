@@ -2,7 +2,7 @@ package res
 
 #google_compute_interconnect_attachment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_interconnect_attachment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_interconnect_attachment")
 	close({
 		// Whether the VLAN attachment is enabled or disabled. When using
 		// PARTNER type this will Pre-Activate the interconnect attachment

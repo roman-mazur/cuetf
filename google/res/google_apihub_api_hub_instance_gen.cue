@@ -4,7 +4,7 @@ import "list"
 
 #google_apihub_api_hub_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apihub_api_hub_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apihub_api_hub_instance")
 	close({
 		// Optional. Identifier to assign to the Api Hub instance. Must be
 		// unique within

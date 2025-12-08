@@ -2,7 +2,7 @@ package data
 
 #google_compute_router_status: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_router_status")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_router_status")
 	close({
 		// Best routes for this router's network.
 		best_routes?: [...close({

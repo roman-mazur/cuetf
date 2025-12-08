@@ -4,7 +4,7 @@ import "list"
 
 #google_compute_resize_request: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_resize_request")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_resize_request")
 	close({
 		// The creation timestamp for this resize request in RFC3339 text
 		// format.

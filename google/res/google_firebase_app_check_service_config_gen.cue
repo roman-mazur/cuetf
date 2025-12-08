@@ -2,7 +2,7 @@ package res
 
 #google_firebase_app_check_service_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_firebase_app_check_service_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_check_service_config")
 	close({
 		// The App Check enforcement mode for a service supported by App
 		// Check. Valid values are

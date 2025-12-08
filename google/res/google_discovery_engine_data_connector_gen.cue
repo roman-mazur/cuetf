@@ -2,7 +2,7 @@ package res
 
 #google_discovery_engine_data_connector: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_discovery_engine_data_connector")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_data_connector")
 	close({
 		// State of the action connector. This reflects whether the action
 		// connector

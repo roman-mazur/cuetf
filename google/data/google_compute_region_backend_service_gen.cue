@@ -2,7 +2,7 @@ package data
 
 #google_compute_region_backend_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_region_backend_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_region_backend_service")
 	close({
 		// Lifetime of cookies in seconds if session_affinity is
 		// GENERATED_COOKIE. If set to 0, the cookie is non-persistent and
@@ -412,5 +412,16 @@ package data
 		// The full range of timeout values allowed goes from 1 through
 		// 2,147,483,647 seconds.
 		timeout_sec?: number
+
+		// Configuration for Backend Authenticated TLS and mTLS. May only
+		// be specified when the backend protocol is SSL, HTTPS or HTTP2.
+		tls_settings?: [...close({
+			authentication_config?: string
+			sni?:                   string
+			subject_alt_names?: [...close({
+				dns_name?:                    string
+				uniform_resource_identifier?: string
+			})]
+		})]
 	})
 }

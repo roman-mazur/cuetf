@@ -4,7 +4,7 @@ import "list"
 
 #google_dataplex_datascan: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dataplex_datascan")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_datascan")
 	close({
 		// The time when the scan was created.
 		create_time?: string
@@ -100,9 +100,10 @@ import "list"
 	#data_documentation_spec: close({})
 
 	#data_profile_spec: close({
+		// If set, the latest DataScan job result will be published to
+		// Dataplex Catalog.
+		catalog_publishing_enabled?: bool
 		exclude_fields?: matchN(1, [_#defs."/$defs/data_profile_spec/$defs/exclude_fields", list.MaxItems(1) & [..._#defs."/$defs/data_profile_spec/$defs/exclude_fields"]])
-		include_fields?: matchN(1, [_#defs."/$defs/data_profile_spec/$defs/include_fields", list.MaxItems(1) & [..._#defs."/$defs/data_profile_spec/$defs/include_fields"]])
-		post_scan_actions?: matchN(1, [_#defs."/$defs/data_profile_spec/$defs/post_scan_actions", list.MaxItems(1) & [..._#defs."/$defs/data_profile_spec/$defs/post_scan_actions"]])
 
 		// A filter applied to all rows in a single DataScan job. The
 		// filter needs to be a valid SQL expression for a WHERE clause
@@ -117,6 +118,8 @@ import "list"
 		// Sampling is not applied if 'sampling_percent' is not specified,
 		// 0 or 100.
 		sampling_percent?: number
+		include_fields?: matchN(1, [_#defs."/$defs/data_profile_spec/$defs/include_fields", list.MaxItems(1) & [..._#defs."/$defs/data_profile_spec/$defs/include_fields"]])
+		post_scan_actions?: matchN(1, [_#defs."/$defs/data_profile_spec/$defs/post_scan_actions", list.MaxItems(1) & [..._#defs."/$defs/data_profile_spec/$defs/post_scan_actions"]])
 	})
 
 	#data_quality_spec: close({

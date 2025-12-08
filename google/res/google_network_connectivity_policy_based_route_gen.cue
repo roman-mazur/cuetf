@@ -4,7 +4,7 @@ import "list"
 
 #google_network_connectivity_policy_based_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_connectivity_policy_based_route")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_policy_based_route")
 	close({
 		// Time when the policy-based route was created.
 		create_time?: string

@@ -4,7 +4,7 @@ import "list"
 
 #google_firebase_app_hosting_traffic: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_firebase_app_hosting_traffic")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_hosting_traffic")
 	close({
 		// Id of the backend that this Traffic config applies to
 		backend!: string

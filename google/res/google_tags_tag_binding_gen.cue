@@ -2,7 +2,7 @@ package res
 
 #google_tags_tag_binding: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_tags_tag_binding")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_tags_tag_binding")
 	close({
 		// The generated id for the TagBinding. This is a string of the
 		// form: 'tagBindings/{full-resource-name}/{tag-value-name}'

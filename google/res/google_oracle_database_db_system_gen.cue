@@ -4,7 +4,7 @@ import "list"
 
 #google_oracle_database_db_system: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_oracle_database_db_system")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_oracle_database_db_system")
 	close({
 		// The date and time that the DbSystem was created.
 		create_time?: string

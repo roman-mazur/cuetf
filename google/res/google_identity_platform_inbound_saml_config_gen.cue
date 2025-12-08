@@ -4,7 +4,7 @@ import "list"
 
 #google_identity_platform_inbound_saml_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_identity_platform_inbound_saml_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_identity_platform_inbound_saml_config")
 	close({
 		// Human friendly display name.
 		display_name!: string

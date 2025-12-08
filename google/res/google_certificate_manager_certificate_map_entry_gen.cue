@@ -2,7 +2,7 @@ package res
 
 #google_certificate_manager_certificate_map_entry: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_certificate_manager_certificate_map_entry")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_certificate_manager_certificate_map_entry")
 	close({
 		// A set of Certificates defines for the given hostname.
 		// There can be defined up to fifteen certificates in each

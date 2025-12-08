@@ -4,7 +4,7 @@ import "list"
 
 #google_developer_connect_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_developer_connect_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_developer_connect_connection")
 	close({
 		// Optional. Allows clients to store small amounts of arbitrary
 		// data.

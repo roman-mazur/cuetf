@@ -2,7 +2,7 @@ package res
 
 #google_vmwareengine_network_peering: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_vmwareengine_network_peering")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vmwareengine_network_peering")
 	close({
 		// Creation time of this resource.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond

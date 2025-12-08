@@ -2,7 +2,7 @@ package res
 
 #google_contact_center_insights_view: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_contact_center_insights_view")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_contact_center_insights_view")
 	close({
 		// Output only. The time at which this view was created.
 		create_time?: string

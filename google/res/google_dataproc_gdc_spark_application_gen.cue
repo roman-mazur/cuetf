@@ -4,7 +4,7 @@ import "list"
 
 #google_dataproc_gdc_spark_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dataproc_gdc_spark_application")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_gdc_spark_application")
 	close({
 		// The annotations to associate with this application. Annotations
 		// may be used to store client information, but are not used by

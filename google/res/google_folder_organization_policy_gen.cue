@@ -4,7 +4,7 @@ import "list"
 
 #google_folder_organization_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_folder_organization_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_folder_organization_policy")
 	close({
 		// The name of the Constraint the Policy is configuring, for
 		// example, serviceuser.services.

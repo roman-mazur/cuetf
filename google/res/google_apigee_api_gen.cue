@@ -2,7 +2,7 @@ package res
 
 #google_apigee_api: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_api")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_api")
 	close({
 		// Path to the config zip bundle
 		config_bundle!: string

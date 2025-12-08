@@ -2,7 +2,7 @@ package res
 
 #google_firebase_app_check_debug_token: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_firebase_app_check_debug_token")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_check_debug_token")
 	close({
 		// The ID of a
 		// [Web

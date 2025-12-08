@@ -2,7 +2,7 @@ package res
 
 #google_apigee_developer_app: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_developer_app")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_developer_app")
 	close({
 		// List of API products associated with the developer app.
 		api_products?: [...string]

@@ -4,7 +4,7 @@ import "list"
 
 #google_chronicle_watchlist: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_chronicle_watchlist")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_watchlist")
 	close({
 		// Output only. Time the watchlist was created.
 		create_time?: string

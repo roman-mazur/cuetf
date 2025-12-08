@@ -4,7 +4,7 @@ import "list"
 
 #google_managed_kafka_connector: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_managed_kafka_connector")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_managed_kafka_connector")
 	close({
 		// Connector config as keys/values. The keys of the map are
 		// connector property names, for example: 'connector.class',

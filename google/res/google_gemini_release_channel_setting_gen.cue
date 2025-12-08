@@ -2,7 +2,7 @@ package res
 
 #google_gemini_release_channel_setting: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_gemini_release_channel_setting")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gemini_release_channel_setting")
 	close({
 		// Create time stamp.
 		create_time?: string

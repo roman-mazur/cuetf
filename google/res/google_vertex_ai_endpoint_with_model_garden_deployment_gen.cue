@@ -4,7 +4,7 @@ import "list"
 
 #google_vertex_ai_endpoint_with_model_garden_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_vertex_ai_endpoint_with_model_garden_deployment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_endpoint_with_model_garden_deployment")
 	close({
 		// Output only. The display name assigned to the model deployed to
 		// the endpoint.

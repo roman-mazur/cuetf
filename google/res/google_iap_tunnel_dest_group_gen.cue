@@ -2,7 +2,7 @@ package res
 
 #google_iap_tunnel_dest_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_iap_tunnel_dest_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iap_tunnel_dest_group")
 	close({
 		// List of CIDRs that this group applies to.
 		cidrs?: [...string]

@@ -2,7 +2,7 @@ package res
 
 #google_network_management_organization_vpc_flow_logs_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_management_organization_vpc_flow_logs_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_management_organization_vpc_flow_logs_config")
 	close({
 		// Optional. The aggregation interval for the logs. Default value
 		// is

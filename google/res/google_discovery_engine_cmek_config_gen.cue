@@ -2,7 +2,7 @@ package res
 
 #google_discovery_engine_cmek_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_discovery_engine_cmek_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_cmek_config")
 	close({
 		// The unique id of the cmek config.
 		cmek_config_id?: string

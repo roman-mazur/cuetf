@@ -4,7 +4,7 @@ import "list"
 
 #google_app_engine_service_split_traffic: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_app_engine_service_split_traffic")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_app_engine_service_split_traffic")
 	close({
 		id?: string
 

@@ -4,7 +4,7 @@ import "list"
 
 #google_dataplex_task: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dataplex_task")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_task")
 	close({
 		// The time when the task was created.
 		create_time?: string

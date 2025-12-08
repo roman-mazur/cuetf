@@ -2,7 +2,7 @@ package res
 
 #google_dialogflow_cx_entity_type: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dialogflow_cx_entity_type")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_entity_type")
 	close({
 		// Represents kinds of entities.
 		// * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for

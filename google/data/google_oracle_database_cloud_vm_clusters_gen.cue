@@ -2,7 +2,7 @@ package data
 
 #google_oracle_database_cloud_vm_clusters: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_oracle_database_cloud_vm_clusters")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_oracle_database_cloud_vm_clusters")
 	close({
 		cloud_vm_clusters?: [...close({
 			backup_odb_subnet?:   string

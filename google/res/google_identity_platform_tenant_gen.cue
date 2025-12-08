@@ -4,7 +4,7 @@ import "list"
 
 #google_identity_platform_tenant: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_identity_platform_tenant")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_identity_platform_tenant")
 	close({
 		// Whether to allow email/password user authentication.
 		allow_password_signup?: bool

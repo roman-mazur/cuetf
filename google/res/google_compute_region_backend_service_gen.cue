@@ -4,7 +4,7 @@ import "list"
 
 #google_compute_region_backend_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_region_backend_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_backend_service")
 	close({
 		// Lifetime of cookies in seconds if session_affinity is
 		// GENERATED_COOKIE. If set to 0, the cookie is non-persistent and
@@ -15,6 +15,7 @@ import "list"
 		// When the load balancing scheme is INTERNAL, this field is not
 		// used.
 		affinity_cookie_ttl_sec?: number
+		backend?: matchN(1, [#backend, [...#backend]])
 
 		// Time for which instance will be drained (not accept new
 		// connections, but still work to finish started).
@@ -47,6 +48,7 @@ import "list"
 		// or serverless NEG as a backend.
 		health_checks?: [...string]
 		id?: string
+		cdn_policy?: matchN(1, [#cdn_policy, list.MaxItems(1) & [...#cdn_policy]])
 
 		// Specifies preference of traffic to the backend (from the proxy
 		// and from the client for proxyless gRPC). Possible values:
@@ -164,6 +166,18 @@ import "list"
 		// the last
 		// character, which cannot be a dash.
 		name!: string
+		circuit_breakers?: matchN(1, [#circuit_breakers, list.MaxItems(1) & [...#circuit_breakers]])
+		consistent_hash?: matchN(1, [#consistent_hash, list.MaxItems(1) & [...#consistent_hash]])
+		custom_metrics?: matchN(1, [#custom_metrics, [...#custom_metrics]])
+		failover_policy?: matchN(1, [#failover_policy, list.MaxItems(1) & [...#failover_policy]])
+		ha_policy?: matchN(1, [#ha_policy, list.MaxItems(1) & [...#ha_policy]])
+		iap?: matchN(1, [#iap, list.MaxItems(1) & [...#iap]])
+		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
+		outlier_detection?: matchN(1, [#outlier_detection, list.MaxItems(1) & [...#outlier_detection]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
+		strong_session_affinity_cookie?: matchN(1, [#strong_session_affinity_cookie, list.MaxItems(1) & [...#strong_session_affinity_cookie]])
+		timeouts?: #timeouts
+		tls_settings?: matchN(1, [#tls_settings, list.MaxItems(1) & [...#tls_settings]])
 
 		// The URL of the network to which this backend service belongs.
 		// This field must be set for Internal Passthrough Network Load
@@ -175,18 +189,6 @@ import "list"
 		// to EXTERNAL and haPolicy fastIpMove is enabled.
 		// Changes to this field force recreation of the resource.
 		network?: string
-		backend?: matchN(1, [#backend, [...#backend]])
-		cdn_policy?: matchN(1, [#cdn_policy, list.MaxItems(1) & [...#cdn_policy]])
-		circuit_breakers?: matchN(1, [#circuit_breakers, list.MaxItems(1) & [...#circuit_breakers]])
-		consistent_hash?: matchN(1, [#consistent_hash, list.MaxItems(1) & [...#consistent_hash]])
-		custom_metrics?: matchN(1, [#custom_metrics, [...#custom_metrics]])
-		failover_policy?: matchN(1, [#failover_policy, list.MaxItems(1) & [...#failover_policy]])
-		ha_policy?: matchN(1, [#ha_policy, list.MaxItems(1) & [...#ha_policy]])
-		iap?: matchN(1, [#iap, list.MaxItems(1) & [...#iap]])
-		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		outlier_detection?: matchN(1, [#outlier_detection, list.MaxItems(1) & [...#outlier_detection]])
-		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
-		strong_session_affinity_cookie?: matchN(1, [#strong_session_affinity_cookie, list.MaxItems(1) & [...#strong_session_affinity_cookie]])
 
 		// A named port on a backend instance group representing the port
 		// for
@@ -202,7 +204,6 @@ import "list"
 		// Must be omitted when the loadBalancingScheme is INTERNAL
 		// (Internal TCP/UDP Load Balancing).
 		port_name?: string
-		timeouts?:  #timeouts
 		project?:   string
 
 		// The protocol this BackendService uses to communicate with
@@ -694,6 +695,27 @@ import "list"
 		update?: string
 	})
 
+	#tls_settings: close({
+		subject_alt_names?: matchN(1, [_#defs."/$defs/tls_settings/$defs/subject_alt_names", [..._#defs."/$defs/tls_settings/$defs/subject_alt_names"]])
+
+		// Reference to the BackendAuthenticationConfig resource from the
+		// networksecurity.googleapis.com namespace.
+		// Can be used in authenticating TLS connections to the backend,
+		// as specified by the authenticationMode field.
+		// Can only be specified if authenticationMode is not NONE.
+		authentication_config?: string
+
+		// Server Name Indication - see RFC3546 section 3.1. If set, the
+		// load balancer sends this string as the SNI hostname in the
+		// TLS connection to the backend, and requires that this string
+		// match a Subject Alternative Name (SAN) in the backend's
+		// server certificate. With a Regional Internet NEG backend, if
+		// the SNI is specified here, the load balancer uses it
+		// regardless of whether the Regional Internet NEG is specified
+		// with FQDN or IP address and port.
+		sni?: string
+	})
+
 	_#defs: "/$defs/backend/$defs/custom_metrics": close({
 		// If true, the metric data is collected and reported to Cloud
 		// Monitoring, but is not used for load balancing.
@@ -845,5 +867,13 @@ import "list"
 		// Span of time at a resolution of a second.
 		// Must be from 0 to 315,576,000,000 inclusive.
 		seconds!: number
+	})
+
+	_#defs: "/$defs/tls_settings/$defs/subject_alt_names": close({
+		// The SAN specified as a DNS Name.
+		dns_name?: string
+
+		// The SAN specified as a URI.
+		uniform_resource_identifier?: string
 	})
 }

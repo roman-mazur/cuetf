@@ -4,7 +4,7 @@ import "list"
 
 #google_eventarc_pipeline: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_eventarc_pipeline")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_eventarc_pipeline")
 	close({
 		// User-defined annotations. See
 		// https://google.aip.dev/128#annotations.

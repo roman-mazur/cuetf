@@ -2,7 +2,7 @@ package data
 
 #google_compute_health_check: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_health_check")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_health_check")
 	close({
 		// How often (in seconds) to send a health check. The default
 		// value is 5

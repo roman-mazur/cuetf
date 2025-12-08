@@ -4,7 +4,7 @@ import "list"
 
 #google_container_aws_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_container_aws_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_aws_cluster")
 	close({
 		// Optional. Annotations on the cluster. This field has the same
 		// restrictions as Kubernetes annotations. The total size of all

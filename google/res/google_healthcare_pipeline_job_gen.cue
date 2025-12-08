@@ -4,7 +4,7 @@ import "list"
 
 #google_healthcare_pipeline_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_healthcare_pipeline_job")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_healthcare_pipeline_job")
 	close({
 		// Healthcare Dataset under which the Pipeline Job is to run
 		dataset!: string

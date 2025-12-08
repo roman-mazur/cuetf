@@ -4,7 +4,7 @@ import "list"
 
 #google_logging_billing_account_sink: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_logging_billing_account_sink")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_billing_account_sink")
 	close({
 		// The billing account exported to the sink.
 		billing_account!: string

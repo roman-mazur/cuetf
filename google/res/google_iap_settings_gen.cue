@@ -4,7 +4,7 @@ import "list"
 
 #google_iap_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_iap_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iap_settings")
 	close({
 		access_settings?: matchN(1, [#access_settings, list.MaxItems(1) & [...#access_settings]])
 		application_settings?: matchN(1, [#application_settings, list.MaxItems(1) & [...#application_settings]])

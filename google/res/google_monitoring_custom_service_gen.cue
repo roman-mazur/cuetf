@@ -4,7 +4,7 @@ import "list"
 
 #google_monitoring_custom_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_monitoring_custom_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_custom_service")
 	close({
 		// Name used for UI elements listing this Service.
 		display_name?: string

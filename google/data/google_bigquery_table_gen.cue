@@ -2,7 +2,7 @@ package data
 
 #google_bigquery_table: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_bigquery_table")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_bigquery_table")
 	close({
 		// Specifies the configuration of a BigLake managed table.
 		biglake_configuration?: [...close({

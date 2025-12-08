@@ -4,7 +4,7 @@ import "list"
 
 #google_iam_workload_identity_pool_provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_iam_workload_identity_pool_provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_workload_identity_pool_provider")
 	close({
 		// [A Common Expression
 		// Language](https://opensource.google/projects/cel) expression,

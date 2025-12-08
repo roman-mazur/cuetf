@@ -4,7 +4,7 @@ import "list"
 
 #google_logging_folder_sink: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_logging_folder_sink")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_folder_sink")
 	close({
 		// A description of this sink. The maximum length of the
 		// description is 8000 characters.

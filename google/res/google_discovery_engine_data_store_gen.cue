@@ -4,7 +4,7 @@ import "list"
 
 #google_discovery_engine_data_store: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_discovery_engine_data_store")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_data_store")
 	close({
 		// The content config of the data store. Possible values:
 		// ["NO_CONTENT", "CONTENT_REQUIRED", "PUBLIC_WEBSITE"]

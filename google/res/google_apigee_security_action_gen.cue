@@ -4,7 +4,7 @@ import "list"
 
 #google_apigee_security_action: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_security_action")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_security_action")
 	close({
 		// If unset, this would apply to all proxies in the environment.
 		// If set, this action is enforced only if at least one proxy in

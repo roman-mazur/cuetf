@@ -4,7 +4,7 @@ import "list"
 
 #google_firebase_app_hosting_build: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_firebase_app_hosting_build")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_hosting_build")
 	close({
 		// Unstructured key value map that may be set by external tools to
 		// store and arbitrary metadata. They are not queryable and should

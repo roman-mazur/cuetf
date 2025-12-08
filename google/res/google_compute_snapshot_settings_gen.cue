@@ -4,7 +4,7 @@ import "list"
 
 #google_compute_snapshot_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_compute_snapshot_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_snapshot_settings")
 	close({
 		storage_location!: matchN(1, [#storage_location, list.MaxItems(1) & [_, ...] & [...#storage_location]])
 		timeouts?: #timeouts

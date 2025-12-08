@@ -4,7 +4,7 @@ import "list"
 
 #google_data_loss_prevention_discovery_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_data_loss_prevention_discovery_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_loss_prevention_discovery_config")
 	close({
 		// Output only. The creation timestamp of a DiscoveryConfig.
 		create_time?: string

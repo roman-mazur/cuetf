@@ -4,7 +4,7 @@ import "list"
 
 #google_dataproc_metastore_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dataproc_metastore_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_metastore_service")
 	close({
 		// A Cloud Storage URI (starting with gs://) that specifies where
 		// artifacts related to the metastore service are stored.

@@ -2,7 +2,7 @@ package res
 
 #google_apigee_environment_addons_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_environment_addons_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_environment_addons_config")
 	close({
 		timeouts?: #timeouts
 

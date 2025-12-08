@@ -4,7 +4,7 @@ import "list"
 
 #google_cloud_identity_group_membership: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_cloud_identity_group_membership")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_identity_group_membership")
 	close({
 		// If set to true, skip group member creation if a membership with
 		// the same name already exists. Defaults to false.

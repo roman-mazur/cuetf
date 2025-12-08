@@ -2,7 +2,7 @@ package data
 
 #google_vmwareengine_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_vmwareengine_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_vmwareengine_cluster")
 	close({
 		// Configuration of the autoscaling applied to this cluster
 		autoscaling_settings?: [...close({

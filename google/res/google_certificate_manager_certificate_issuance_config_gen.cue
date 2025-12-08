@@ -4,7 +4,7 @@ import "list"
 
 #google_certificate_manager_certificate_issuance_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_certificate_manager_certificate_issuance_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_certificate_manager_certificate_issuance_config")
 	close({
 		// The creation timestamp of a CertificateIssuanceConfig.
 		// Timestamp is in RFC3339 UTC "Zulu" format,

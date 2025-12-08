@@ -4,7 +4,7 @@ import "list"
 
 #google_deployment_manager_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_deployment_manager_deployment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_deployment_manager_deployment")
 	close({
 		// Set the policy to use for creating new resources. Only used on
 		// create and update. Valid values are 'CREATE_OR_ACQUIRE'

@@ -2,7 +2,7 @@ package res
 
 #google_apigee_app_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_apigee_app_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_app_group")
 	close({
 		// Internal identifier that cannot be edited
 		app_group_id?: string

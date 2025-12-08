@@ -4,7 +4,7 @@ import "list"
 
 #google_logging_organization_bucket_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_logging_organization_bucket_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_organization_bucket_config")
 	close({
 		// The name of the logging bucket. Logging automatically creates
 		// two log buckets: _Required and _Default.

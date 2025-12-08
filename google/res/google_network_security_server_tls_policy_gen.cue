@@ -4,7 +4,7 @@ import "list"
 
 #google_network_security_server_tls_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_network_security_server_tls_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_server_tls_policy")
 	close({
 		// This field applies only for Traffic Director policies. It is
 		// must be set to false for external HTTPS load balancer

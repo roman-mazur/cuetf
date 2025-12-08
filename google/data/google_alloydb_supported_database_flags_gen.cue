@@ -2,7 +2,7 @@ package data
 
 #google_alloydb_supported_database_flags: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_alloydb_supported_database_flags")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_alloydb_supported_database_flags")
 	close({
 		id?: string
 

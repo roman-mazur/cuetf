@@ -4,7 +4,7 @@ import "list"
 
 #google_database_migration_service_connection_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_database_migration_service_connection_profile")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_database_migration_service_connection_profile")
 	close({
 		// The ID of the connection profile.
 		connection_profile_id!: string

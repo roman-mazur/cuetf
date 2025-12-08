@@ -4,7 +4,7 @@ import "list"
 
 #google_discovery_engine_acl_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_discovery_engine_acl_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_acl_config")
 	close({
 		id?: string
 

@@ -4,7 +4,7 @@ import "list"
 
 #google_secure_source_manager_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_secure_source_manager_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_secure_source_manager_instance")
 	close({
 		// Time the Instance was created in UTC.
 		create_time?: string

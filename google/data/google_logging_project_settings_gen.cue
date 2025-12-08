@@ -2,7 +2,7 @@ package data
 
 #google_logging_project_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_logging_project_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_logging_project_settings")
 	close({
 		// If set to true, the _Default sink in newly created projects and
 		// folders will created in a disabled state. This can be used to

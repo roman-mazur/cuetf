@@ -4,7 +4,7 @@ import "list"
 
 #google_dialogflow_cx_security_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_dialogflow_cx_security_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_security_settings")
 	close({
 		// [DLP](https://cloud.google.com/dlp/docs) deidentify template
 		// name. Use this template to define de-identification

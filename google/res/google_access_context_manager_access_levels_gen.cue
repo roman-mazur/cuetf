@@ -4,7 +4,7 @@ import "list"
 
 #google_access_context_manager_access_levels: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_access_context_manager_access_levels")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_access_context_manager_access_levels")
 	close({
 		access_levels?: matchN(1, [#access_levels, [...#access_levels]])
 		timeouts?: #timeouts

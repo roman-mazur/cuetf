@@ -4,7 +4,7 @@ import "list"
 
 #google_monitoring_alert_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_monitoring_alert_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_alert_policy")
 	close({
 		// How to combine the results of multiple conditions to
 		// determine if an incident should be opened. Possible values:

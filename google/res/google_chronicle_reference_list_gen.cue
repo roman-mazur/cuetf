@@ -4,7 +4,7 @@ import "list"
 
 #google_chronicle_reference_list: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google_chronicle_reference_list")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_reference_list")
 	close({
 		// Required. A user-provided description of the reference list.
 		description!: string
