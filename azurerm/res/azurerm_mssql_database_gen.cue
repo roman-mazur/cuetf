@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_mssql_database: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_mssql_database")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_database")
 	close({
 		auto_pause_delay_in_minutes?:    number
 		collation?:                      string

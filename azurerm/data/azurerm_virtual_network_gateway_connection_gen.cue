@@ -2,7 +2,7 @@ package data
 
 #azurerm_virtual_network_gateway_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_virtual_network_gateway_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_virtual_network_gateway_connection")
 	close({
 		authorization_key?:            string
 		connection_protocol?:          string

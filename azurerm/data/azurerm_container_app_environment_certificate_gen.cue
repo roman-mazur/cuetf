@@ -2,7 +2,7 @@ package data
 
 #azurerm_container_app_environment_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_container_app_environment_certificate")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_container_app_environment_certificate")
 	close({
 		// The Container App Managed Environment ID to configure this
 		// Certificate on.

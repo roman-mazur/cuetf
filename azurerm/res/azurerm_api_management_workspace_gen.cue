@@ -2,7 +2,7 @@ package res
 
 #azurerm_api_management_workspace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_api_management_workspace")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_api_management_workspace")
 	close({
 		timeouts?:          #timeouts
 		api_management_id!: string

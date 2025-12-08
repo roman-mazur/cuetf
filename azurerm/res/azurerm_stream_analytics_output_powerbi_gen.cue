@@ -2,7 +2,7 @@ package res
 
 #azurerm_stream_analytics_output_powerbi: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_stream_analytics_output_powerbi")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_stream_analytics_output_powerbi")
 	close({
 		timeouts?:                  #timeouts
 		dataset!:                   string

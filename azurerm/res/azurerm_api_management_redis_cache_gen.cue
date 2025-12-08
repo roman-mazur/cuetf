@@ -2,7 +2,7 @@ package res
 
 #azurerm_api_management_redis_cache: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_api_management_redis_cache")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_api_management_redis_cache")
 	close({
 		timeouts?:          #timeouts
 		api_management_id!: string

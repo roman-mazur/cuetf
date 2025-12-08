@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_machine_learning_workspace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_machine_learning_workspace")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_machine_learning_workspace")
 	close({
 		application_insights_id!:  string
 		container_registry_id?:    string

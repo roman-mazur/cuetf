@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_resource_deployment_script_azure_power_shell: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_resource_deployment_script_azure_power_shell")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_resource_deployment_script_azure_power_shell")
 	close({
 		cleanup_preference?:  string
 		command_line?:        string

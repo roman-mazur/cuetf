@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_spring_cloud_dev_tool_portal: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_spring_cloud_dev_tool_portal")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_dev_tool_portal")
 	close({
 		sso?: matchN(1, [#sso, list.MaxItems(1) & [...#sso]])
 		application_accelerator_enabled?: bool

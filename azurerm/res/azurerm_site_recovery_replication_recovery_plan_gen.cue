@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_site_recovery_replication_recovery_plan: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_site_recovery_replication_recovery_plan")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_site_recovery_replication_recovery_plan")
 	close({
 		azure_to_azure_settings?: matchN(1, [#azure_to_azure_settings, list.MaxItems(1) & [...#azure_to_azure_settings]])
 		id?:                        string

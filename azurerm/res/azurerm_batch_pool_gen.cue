@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_batch_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_batch_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_batch_pool")
 	close({
 		account_name!:             string
 		display_name?:             string

@@ -2,7 +2,7 @@ package data
 
 #azurerm_key_vault_certificate_issuer: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_key_vault_certificate_issuer")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_key_vault_certificate_issuer")
 	close({
 		timeouts?:   #timeouts
 		account_id?: string

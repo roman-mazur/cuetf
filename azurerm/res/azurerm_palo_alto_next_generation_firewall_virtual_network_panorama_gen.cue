@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_palo_alto_next_generation_firewall_virtual_network_panorama: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_palo_alto_next_generation_firewall_virtual_network_panorama")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_palo_alto_next_generation_firewall_virtual_network_panorama")
 	close({
 		id?:                   string
 		location!:             string

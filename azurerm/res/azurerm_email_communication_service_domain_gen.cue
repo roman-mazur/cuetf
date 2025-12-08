@@ -2,7 +2,7 @@ package res
 
 #azurerm_email_communication_service_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_email_communication_service_domain")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_email_communication_service_domain")
 	close({
 		timeouts?:                #timeouts
 		domain_management!:       string

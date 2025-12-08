@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_key_vault: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_key_vault")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_key_vault")
 	close({
 		access_policy?: [...close({
 			application_id?: string

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_key_vault_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_key_vault_key")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_key_vault_key")
 	close({
 		curve?: string
 		rotation_policy?: matchN(1, [#rotation_policy, list.MaxItems(1) & [...#rotation_policy]])

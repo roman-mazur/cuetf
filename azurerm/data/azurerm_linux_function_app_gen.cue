@@ -2,7 +2,7 @@ package data
 
 #azurerm_linux_function_app: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_linux_function_app")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_linux_function_app")
 	close({
 		app_settings?: [string]: string
 		auth_settings?: [...close({

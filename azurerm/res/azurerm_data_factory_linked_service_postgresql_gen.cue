@@ -2,7 +2,7 @@ package res
 
 #azurerm_data_factory_linked_service_postgresql: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_data_factory_linked_service_postgresql")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_linked_service_postgresql")
 	close({
 		timeouts?: #timeouts
 		additional_properties?: [string]: string

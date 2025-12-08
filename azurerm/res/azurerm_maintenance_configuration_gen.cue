@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_maintenance_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_maintenance_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_maintenance_configuration")
 	close({
 		id?:                       string
 		in_guest_user_patch_mode?: string

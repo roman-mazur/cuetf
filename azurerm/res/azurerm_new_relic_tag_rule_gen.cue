@@ -2,7 +2,7 @@ package res
 
 #azurerm_new_relic_tag_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_new_relic_tag_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_new_relic_tag_rule")
 	close({
 		log_tag_filter?: matchN(1, [#log_tag_filter, [...#log_tag_filter]])
 		activity_log_enabled?:               bool

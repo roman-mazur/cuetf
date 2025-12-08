@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_windows_function_app: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_windows_function_app")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_windows_function_app")
 	close({
 		// A map of key-value pairs for [App
 		// Settings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings)

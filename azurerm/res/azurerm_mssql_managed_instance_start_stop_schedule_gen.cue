@@ -2,7 +2,7 @@ package res
 
 #azurerm_mssql_managed_instance_start_stop_schedule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_mssql_managed_instance_start_stop_schedule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_managed_instance_start_stop_schedule")
 	close({
 		schedule!: matchN(1, [#schedule, [_, ...] & [...#schedule]])
 		description?:         string

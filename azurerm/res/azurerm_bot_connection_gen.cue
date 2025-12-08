@@ -2,7 +2,7 @@ package res
 
 #azurerm_bot_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_bot_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_bot_connection")
 	close({
 		bot_name!:      string
 		client_id!:     string

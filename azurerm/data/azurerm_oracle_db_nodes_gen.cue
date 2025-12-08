@@ -2,7 +2,7 @@ package data
 
 #azurerm_oracle_db_nodes: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_oracle_db_nodes")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_oracle_db_nodes")
 	close({
 		timeouts?:            #timeouts
 		cloud_vm_cluster_id!: string

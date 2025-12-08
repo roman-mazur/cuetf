@@ -2,7 +2,7 @@ package res
 
 #azurerm_backup_protected_vm: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_backup_protected_vm")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_backup_protected_vm")
 	close({
 		timeouts?:         #timeouts
 		backup_policy_id?: string

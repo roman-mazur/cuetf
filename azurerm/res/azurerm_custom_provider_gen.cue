@@ -2,7 +2,7 @@ package res
 
 #azurerm_custom_provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_custom_provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_custom_provider")
 	close({
 		id?:                  string
 		location!:            string

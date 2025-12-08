@@ -2,7 +2,7 @@ package res
 
 #azurerm_firewall_policy_rule_collection_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_firewall_policy_rule_collection_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_firewall_policy_rule_collection_group")
 	close({
 		application_rule_collection?: matchN(1, [#application_rule_collection, [...#application_rule_collection]])
 		firewall_policy_id!: string

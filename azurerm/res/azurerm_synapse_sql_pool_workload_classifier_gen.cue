@@ -2,7 +2,7 @@ package res
 
 #azurerm_synapse_sql_pool_workload_classifier: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_synapse_sql_pool_workload_classifier")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_synapse_sql_pool_workload_classifier")
 	close({
 		timeouts?:          #timeouts
 		context?:           string

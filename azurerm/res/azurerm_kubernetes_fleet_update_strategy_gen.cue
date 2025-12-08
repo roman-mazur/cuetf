@@ -2,7 +2,7 @@ package res
 
 #azurerm_kubernetes_fleet_update_strategy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_kubernetes_fleet_update_strategy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kubernetes_fleet_update_strategy")
 	close({
 		stage!: matchN(1, [#stage, [_, ...] & [...#stage]])
 		timeouts?:                    #timeouts

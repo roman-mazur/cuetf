@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_iothub_device_update_account: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_iothub_device_update_account")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_iothub_device_update_account")
 	close({
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		host_name?:                     string

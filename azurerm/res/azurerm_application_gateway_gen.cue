@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_application_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_application_gateway")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_application_gateway")
 	close({
 		authentication_certificate?: matchN(1, [#authentication_certificate, [...#authentication_certificate]])
 		autoscale_configuration?: matchN(1, [#autoscale_configuration, list.MaxItems(1) & [...#autoscale_configuration]])

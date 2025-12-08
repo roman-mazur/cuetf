@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_palo_alto_next_generation_firewall_virtual_hub_local_rulestack: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_palo_alto_next_generation_firewall_virtual_hub_local_rulestack")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_palo_alto_next_generation_firewall_virtual_hub_local_rulestack")
 	close({
 		id?:                   string
 		marketplace_offer_id?: string

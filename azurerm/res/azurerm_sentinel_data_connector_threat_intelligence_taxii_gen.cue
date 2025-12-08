@@ -2,7 +2,7 @@ package res
 
 #azurerm_sentinel_data_connector_threat_intelligence_taxii: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_sentinel_data_connector_threat_intelligence_taxii")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_sentinel_data_connector_threat_intelligence_taxii")
 	close({
 		api_root_url!:               string
 		collection_id!:              string

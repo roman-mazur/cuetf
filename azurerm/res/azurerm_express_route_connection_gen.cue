@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_express_route_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_express_route_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_express_route_connection")
 	close({
 		routing?: matchN(1, [#routing, list.MaxItems(1) & [...#routing]])
 		authorization_key?:                    string

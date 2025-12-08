@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_frontdoor_rules_engine: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_frontdoor_rules_engine")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_frontdoor_rules_engine")
 	close({
 		rule?: matchN(1, [#rule, list.MaxItems(100) & [...#rule]])
 		enabled?:             bool

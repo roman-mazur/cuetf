@@ -2,7 +2,7 @@ package data
 
 #azurerm_data_factory: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_data_factory")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_data_factory")
 	close({
 		timeouts?: #timeouts
 		github_configuration?: [...close({

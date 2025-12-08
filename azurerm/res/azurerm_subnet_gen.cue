@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_subnet: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_subnet")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_subnet")
 	close({
 		address_prefixes?: [...string]
 		default_outbound_access_enabled?: bool

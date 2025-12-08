@@ -2,7 +2,7 @@ package res
 
 #azurerm_iothub_endpoint_eventhub: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_iothub_endpoint_eventhub")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_iothub_endpoint_eventhub")
 	close({
 		authentication_type?: string
 		connection_string?:   string

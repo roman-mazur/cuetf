@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_application_insights_workbook: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_application_insights_workbook")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_application_insights_workbook")
 	close({
 		category?:     string
 		data_json!:    string

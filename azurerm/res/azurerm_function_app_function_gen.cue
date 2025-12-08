@@ -2,7 +2,7 @@ package res
 
 #azurerm_function_app_function: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_function_app_function")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_function_app_function")
 	close({
 		// The config for this Function in JSON format.
 		config_json!: string

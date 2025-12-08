@@ -2,7 +2,7 @@ package res
 
 #azurerm_mssql_managed_instance_transparent_data_encryption: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_mssql_managed_instance_transparent_data_encryption")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_managed_instance_transparent_data_encryption")
 	close({
 		timeouts?:              #timeouts
 		auto_rotation_enabled?: bool

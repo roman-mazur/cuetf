@@ -2,7 +2,7 @@ package data
 
 #azurerm_nginx_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_nginx_deployment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_nginx_deployment")
 	close({
 		auto_scale_profile?: [...close({
 			max_capacity?: number

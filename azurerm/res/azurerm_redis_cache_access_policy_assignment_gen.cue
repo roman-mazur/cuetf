@@ -2,7 +2,7 @@ package res
 
 #azurerm_redis_cache_access_policy_assignment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_redis_cache_access_policy_assignment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_redis_cache_access_policy_assignment")
 	close({
 		timeouts?:           #timeouts
 		access_policy_name!: string

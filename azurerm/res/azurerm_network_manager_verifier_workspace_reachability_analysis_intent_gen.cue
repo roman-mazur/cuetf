@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_network_manager_verifier_workspace_reachability_analysis_intent: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_network_manager_verifier_workspace_reachability_analysis_intent")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_network_manager_verifier_workspace_reachability_analysis_intent")
 	close({
 		ip_traffic!: matchN(1, [#ip_traffic, list.MaxItems(1) & [_, ...] & [...#ip_traffic]])
 		description?:             string

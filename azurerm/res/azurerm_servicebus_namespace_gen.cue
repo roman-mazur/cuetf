@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_servicebus_namespace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_servicebus_namespace")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_servicebus_namespace")
 	close({
 		capacity?:                            number
 		default_primary_connection_string?:   string

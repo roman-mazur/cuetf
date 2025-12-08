@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_nginx_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_nginx_deployment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_nginx_deployment")
 	close({
 		automatic_upgrade_channel?: string
 		capacity?:                  number

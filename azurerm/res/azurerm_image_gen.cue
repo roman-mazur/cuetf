@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_image: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_image")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_image")
 	close({
 		hyper_v_generation?: string
 		id?:                 string

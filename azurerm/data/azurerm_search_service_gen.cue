@@ -2,7 +2,7 @@ package data
 
 #azurerm_search_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_search_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_search_service")
 	close({
 		customer_managed_key_encryption_compliance_status?: string
 		id?:                                                string

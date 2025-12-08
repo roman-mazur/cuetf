@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_dev_test_schedule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_dev_test_schedule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dev_test_schedule")
 	close({
 		id?:                  string
 		lab_name!:            string

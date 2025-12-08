@@ -2,7 +2,7 @@ package res
 
 #azurerm_route_server: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_route_server")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_route_server")
 	close({
 		branch_to_branch_traffic_enabled?: bool
 		hub_routing_preference?:           string

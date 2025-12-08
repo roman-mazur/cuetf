@@ -2,7 +2,7 @@ package data
 
 #azurerm_container_app_environment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_container_app_environment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_container_app_environment")
 	close({
 		// The ID of the Custom Domain Verification for this Container App
 		// Environment.

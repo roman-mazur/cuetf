@@ -2,7 +2,7 @@ package res
 
 #azurerm_automation_watcher: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_automation_watcher")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_automation_watcher")
 	close({
 		automation_account_id!:          string
 		description?:                    string

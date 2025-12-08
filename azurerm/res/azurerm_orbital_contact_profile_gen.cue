@@ -2,7 +2,7 @@ package res
 
 #azurerm_orbital_contact_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_orbital_contact_profile")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_orbital_contact_profile")
 	close({
 		auto_tracking!:                     string
 		event_hub_uri?:                     string

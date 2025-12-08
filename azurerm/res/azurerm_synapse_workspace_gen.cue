@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_synapse_workspace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_synapse_workspace")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_synapse_workspace")
 	close({
 		azuread_authentication_only?: bool
 		compute_subnet_id?:           string

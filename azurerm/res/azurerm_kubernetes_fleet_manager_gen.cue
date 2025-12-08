@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_kubernetes_fleet_manager: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_kubernetes_fleet_manager")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kubernetes_fleet_manager")
 	close({
 		hub_profile?: matchN(1, [#hub_profile, list.MaxItems(1) & [...#hub_profile]])
 		id?:                  string

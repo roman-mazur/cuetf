@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_stack_hci_deployment_setting: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_stack_hci_deployment_setting")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_stack_hci_deployment_setting")
 	close({
 		scale_unit!: matchN(1, [#scale_unit, [_, ...] & [...#scale_unit]])
 		arc_resource_ids!: [...string]

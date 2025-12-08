@@ -2,7 +2,7 @@ package res
 
 #azurerm_virtual_wan: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_virtual_wan")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_wan")
 	close({
 		timeouts?:                          #timeouts
 		allow_branch_to_branch_traffic?:    bool

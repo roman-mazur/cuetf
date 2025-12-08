@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_sentinel_alert_rule_nrt: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_sentinel_alert_rule_nrt")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_sentinel_alert_rule_nrt")
 	close({
 		alert_rule_template_guid?:    string
 		alert_rule_template_version?: string

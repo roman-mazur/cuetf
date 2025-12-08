@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_data_protection_backup_instance_kubernetes_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_data_protection_backup_instance_kubernetes_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_protection_backup_instance_kubernetes_cluster")
 	close({
 		backup_datasource_parameters?: matchN(1, [#backup_datasource_parameters, list.MaxItems(1) & [...#backup_datasource_parameters]])
 		backup_policy_id!:             string

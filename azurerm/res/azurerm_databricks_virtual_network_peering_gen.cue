@@ -2,7 +2,7 @@ package res
 
 #azurerm_databricks_virtual_network_peering: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_databricks_virtual_network_peering")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_databricks_virtual_network_peering")
 	close({
 		address_space_prefixes?: [...string]
 		allow_forwarded_traffic?:      bool

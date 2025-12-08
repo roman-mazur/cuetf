@@ -2,7 +2,7 @@ package res
 
 #azurerm_virtual_network_gateway_nat_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_virtual_network_gateway_nat_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_network_gateway_nat_rule")
 	close({
 		id?: string
 		external_mapping!: matchN(1, [#external_mapping, [_, ...] & [...#external_mapping]])

@@ -2,7 +2,7 @@ package res
 
 #azurerm_container_app_environment_dapr_component: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_container_app_environment_dapr_component")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_app_environment_dapr_component")
 	close({
 		// The Dapr Component Type. For example `state.azure.blobstorage`.
 		component_type!: string

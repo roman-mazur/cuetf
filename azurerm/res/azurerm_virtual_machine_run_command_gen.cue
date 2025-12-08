@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_virtual_machine_run_command: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_virtual_machine_run_command")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_machine_run_command")
 	close({
 		error_blob_uri?: string
 		id?:             string

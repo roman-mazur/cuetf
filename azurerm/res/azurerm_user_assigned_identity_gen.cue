@@ -2,7 +2,7 @@ package res
 
 #azurerm_user_assigned_identity: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_user_assigned_identity")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_user_assigned_identity")
 	close({
 		timeouts?:            #timeouts
 		client_id?:           string

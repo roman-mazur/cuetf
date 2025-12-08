@@ -2,7 +2,7 @@ package data
 
 #azurerm_dev_test_lab: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_dev_test_lab")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_dev_test_lab")
 	close({
 		artifacts_storage_account_id?:         string
 		default_premium_storage_account_id?:   string

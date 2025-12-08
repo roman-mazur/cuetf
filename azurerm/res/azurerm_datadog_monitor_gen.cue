@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_datadog_monitor: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_datadog_monitor")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_datadog_monitor")
 	close({
 		id?: string
 		datadog_organization!: matchN(1, [#datadog_organization, list.MaxItems(1) & [_, ...] & [...#datadog_organization]])

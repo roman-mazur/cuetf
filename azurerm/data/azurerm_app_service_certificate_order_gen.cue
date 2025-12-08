@@ -2,7 +2,7 @@ package data
 
 #azurerm_app_service_certificate_order: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_app_service_certificate_order")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_app_service_certificate_order")
 	close({
 		app_service_certificate_not_renewable_reasons?: [...string]
 		auto_renew?: bool

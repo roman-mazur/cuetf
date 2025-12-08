@@ -2,7 +2,7 @@ package res
 
 #azurerm_stack_hci_virtual_hard_disk: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_stack_hci_virtual_hard_disk")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_stack_hci_virtual_hard_disk")
 	close({
 		block_size_in_bytes?:      number
 		custom_location_id!:       string

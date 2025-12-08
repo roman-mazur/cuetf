@@ -2,7 +2,7 @@ package data
 
 #azurerm_vpn_server_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_vpn_server_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_vpn_server_configuration")
 	close({
 		azure_active_directory_authentication?: [...close({
 			audience?: string

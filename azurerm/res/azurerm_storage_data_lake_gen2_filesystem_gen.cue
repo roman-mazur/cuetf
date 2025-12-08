@@ -2,7 +2,7 @@ package res
 
 #azurerm_storage_data_lake_gen2_filesystem: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_storage_data_lake_gen2_filesystem")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_storage_data_lake_gen2_filesystem")
 	close({
 		ace?: matchN(1, [#ace, [...#ace]])
 		default_encryption_scope?: string

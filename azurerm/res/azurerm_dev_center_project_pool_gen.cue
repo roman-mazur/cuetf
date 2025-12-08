@@ -2,7 +2,7 @@ package res
 
 #azurerm_dev_center_project_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_dev_center_project_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dev_center_project_pool")
 	close({
 		dev_box_definition_name!:          string
 		dev_center_attached_network_name!: string

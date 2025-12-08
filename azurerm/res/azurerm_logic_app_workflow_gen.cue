@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_logic_app_workflow: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_logic_app_workflow")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_logic_app_workflow")
 	close({
 		access_endpoint?: string
 		access_control?: matchN(1, [#access_control, list.MaxItems(1) & [...#access_control]])

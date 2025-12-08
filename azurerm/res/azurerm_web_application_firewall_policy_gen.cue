@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_web_application_firewall_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_web_application_firewall_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_web_application_firewall_policy")
 	close({
 		http_listener_ids?: [...string]
 		id?:       string

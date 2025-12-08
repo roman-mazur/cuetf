@@ -2,7 +2,7 @@ package data
 
 #azurerm_iothub_shared_access_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_iothub_shared_access_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_iothub_shared_access_policy")
 	close({
 		timeouts?:                    #timeouts
 		id?:                          string

@@ -2,7 +2,7 @@ package data
 
 #azurerm_function_app_host_keys: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_function_app_host_keys")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_function_app_host_keys")
 	close({
 		blobs_extension_key?:             string
 		default_function_key?:            string

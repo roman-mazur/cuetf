@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_hpc_cache: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_hpc_cache")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_hpc_cache")
 	close({
 		automatically_rotate_key_to_latest_enabled?: bool
 		cache_size_in_gb!:                           number

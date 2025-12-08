@@ -2,7 +2,7 @@ package res
 
 #azurerm_role_definition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_role_definition")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_role_definition")
 	close({
 		permissions?: matchN(1, [#permissions, [...#permissions]])
 		assignable_scopes?: [...string]

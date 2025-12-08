@@ -2,7 +2,7 @@ package res
 
 #azurerm_container_registry_webhook: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_container_registry_webhook")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_registry_webhook")
 	close({
 		actions!: [...string]
 		custom_headers?: [string]: string

@@ -2,7 +2,7 @@ package data
 
 #azurerm_static_web_app: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_static_web_app")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_static_web_app")
 	close({
 		api_key?: string
 		app_settings?: [string]: string

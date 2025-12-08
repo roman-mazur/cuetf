@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_data_factory_trigger_tumbling_window: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_data_factory_trigger_tumbling_window")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_trigger_tumbling_window")
 	close({
 		activated?: bool
 		additional_properties?: [string]: string

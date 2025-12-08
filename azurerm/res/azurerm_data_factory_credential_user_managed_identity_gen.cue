@@ -2,7 +2,7 @@ package res
 
 #azurerm_data_factory_credential_user_managed_identity: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_data_factory_credential_user_managed_identity")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_credential_user_managed_identity")
 	close({
 		// (Optional) List of string annotations.
 		annotations?: [...string]

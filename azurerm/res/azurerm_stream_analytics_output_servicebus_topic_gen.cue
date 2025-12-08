@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_stream_analytics_output_servicebus_topic: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_stream_analytics_output_servicebus_topic")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_stream_analytics_output_servicebus_topic")
 	close({
 		authentication_mode?: string
 		id?:                  string

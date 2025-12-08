@@ -2,7 +2,7 @@ package res
 
 #azurerm_aadb2c_directory: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_aadb2c_directory")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_aadb2c_directory")
 	close({
 		// The type of billing for the B2C tenant. Possible values
 		// include: `MAU` or `Auths`.

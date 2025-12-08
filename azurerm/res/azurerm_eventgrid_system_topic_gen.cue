@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_eventgrid_system_topic: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_eventgrid_system_topic")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_eventgrid_system_topic")
 	close({
 		id?:                     string
 		location!:               string

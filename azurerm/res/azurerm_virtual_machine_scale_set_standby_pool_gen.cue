@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_virtual_machine_scale_set_standby_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_virtual_machine_scale_set_standby_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_machine_scale_set_standby_pool")
 	close({
 		elasticity_profile!: matchN(1, [#elasticity_profile, list.MaxItems(1) & [_, ...] & [...#elasticity_profile]])
 		attached_virtual_machine_scale_set_id!: string

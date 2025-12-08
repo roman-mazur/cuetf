@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_data_factory: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_data_factory")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory")
 	close({
 		customer_managed_key_id?:          string
 		customer_managed_key_identity_id?: string

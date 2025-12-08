@@ -2,7 +2,7 @@ package res
 
 #azurerm_container_app_environment_custom_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_container_app_environment_custom_domain")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_app_environment_custom_domain")
 	close({
 		// The Custom Domain Certificate Private Key as a base64 encoded
 		// PFX or PEM.

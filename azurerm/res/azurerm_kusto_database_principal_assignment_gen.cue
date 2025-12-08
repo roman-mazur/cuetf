@@ -2,7 +2,7 @@ package res
 
 #azurerm_kusto_database_principal_assignment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_kusto_database_principal_assignment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kusto_database_principal_assignment")
 	close({
 		cluster_name!:        string
 		database_name!:       string

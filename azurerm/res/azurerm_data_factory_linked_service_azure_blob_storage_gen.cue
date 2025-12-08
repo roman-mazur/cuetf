@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_data_factory_linked_service_azure_blob_storage: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_data_factory_linked_service_azure_blob_storage")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_linked_service_azure_blob_storage")
 	close({
 		additional_properties?: [string]: string
 		key_vault_sas_token?: matchN(1, [#key_vault_sas_token, list.MaxItems(1) & [...#key_vault_sas_token]])

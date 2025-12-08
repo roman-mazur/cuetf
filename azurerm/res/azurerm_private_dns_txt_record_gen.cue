@@ -2,7 +2,7 @@ package res
 
 #azurerm_private_dns_txt_record: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_private_dns_txt_record")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_private_dns_txt_record")
 	close({
 		record!: matchN(1, [#record, [_, ...] & [...#record]])
 		fqdn?:                string

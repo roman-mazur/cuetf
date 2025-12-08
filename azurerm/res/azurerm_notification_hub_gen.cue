@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_notification_hub: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_notification_hub")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_notification_hub")
 	close({
 		apns_credential?: matchN(1, [#apns_credential, list.MaxItems(1) & [...#apns_credential]])
 		id?:                  string

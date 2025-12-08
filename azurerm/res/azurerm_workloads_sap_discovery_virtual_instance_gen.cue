@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_workloads_sap_discovery_virtual_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_workloads_sap_discovery_virtual_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_workloads_sap_discovery_virtual_instance")
 	close({
 		central_server_virtual_machine_id!:     string
 		environment!:                           string

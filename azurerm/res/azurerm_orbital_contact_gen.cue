@@ -2,7 +2,7 @@ package res
 
 #azurerm_orbital_contact: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_orbital_contact")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_orbital_contact")
 	close({
 		timeouts?:               #timeouts
 		contact_profile_id!:     string

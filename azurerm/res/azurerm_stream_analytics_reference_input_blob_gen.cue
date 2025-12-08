@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_stream_analytics_reference_input_blob: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_stream_analytics_reference_input_blob")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_stream_analytics_reference_input_blob")
 	close({
 		authentication_mode?: string
 		date_format!:         string

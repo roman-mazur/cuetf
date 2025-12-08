@@ -2,7 +2,7 @@ package res
 
 #azurerm_datadog_monitor_tag_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_datadog_monitor_tag_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_datadog_monitor_tag_rule")
 	close({
 		log?: matchN(1, [#log, [...#log]])
 		metric?: matchN(1, [#metric, [...#metric]])

@@ -2,7 +2,7 @@ package data
 
 #azurerm_oracle_db_system_shapes: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_oracle_db_system_shapes")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_oracle_db_system_shapes")
 	close({
 		db_system_shapes?: [...close({
 			are_server_types_supported?:               bool

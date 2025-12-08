@@ -2,7 +2,7 @@ package res
 
 #azurerm_private_dns_resolver_forwarding_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_private_dns_resolver_forwarding_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_private_dns_resolver_forwarding_rule")
 	close({
 		target_dns_servers!: matchN(1, [#target_dns_servers, [_, ...] & [...#target_dns_servers]])
 		dns_forwarding_ruleset_id!: string

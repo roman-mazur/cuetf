@@ -2,7 +2,7 @@ package data
 
 #azurerm_blueprint_published_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_blueprint_published_version")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_blueprint_published_version")
 	close({
 		blueprint_name!: string
 		description?:    string

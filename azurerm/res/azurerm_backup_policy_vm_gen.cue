@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_backup_policy_vm: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_backup_policy_vm")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_backup_policy_vm")
 	close({
 		id?:                             string
 		instant_restore_retention_days?: number

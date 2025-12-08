@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_cosmosdb_cassandra_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_cosmosdb_cassandra_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cosmosdb_cassandra_cluster")
 	close({
 		authentication_method?: string
 		client_certificate_pems?: [...string]

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_api_management_diagnostic: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_api_management_diagnostic")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_api_management_diagnostic")
 	close({
 		always_log_errors?: bool
 		backend_request?: matchN(1, [#backend_request, list.MaxItems(1) & [...#backend_request]])

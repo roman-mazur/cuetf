@@ -2,7 +2,7 @@ package data
 
 #azurerm_netapp_volume_group_sap_hana: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_netapp_volume_group_sap_hana")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_netapp_volume_group_sap_hana")
 	close({
 		timeouts?:               #timeouts
 		account_name!:           string

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_search_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_search_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_search_service")
 	close({
 		allowed_ips?: [...string]
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])

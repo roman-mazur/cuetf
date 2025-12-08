@@ -2,7 +2,7 @@ package res
 
 #azurerm_cognitive_account_rai_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_cognitive_account_rai_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cognitive_account_rai_policy")
 	close({
 		content_filter!: matchN(1, [#content_filter, [_, ...] & [...#content_filter]])
 		base_policy_name!:     string

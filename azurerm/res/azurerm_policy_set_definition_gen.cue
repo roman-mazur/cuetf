@@ -2,7 +2,7 @@ package res
 
 #azurerm_policy_set_definition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_policy_set_definition")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_policy_set_definition")
 	close({
 		description?: string
 		policy_definition_group?: matchN(1, [#policy_definition_group, [...#policy_definition_group]])

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_dynatrace_tag_rules: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_dynatrace_tag_rules")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dynatrace_tag_rules")
 	close({
 		log_rule?: matchN(1, [#log_rule, list.MaxItems(1) & [...#log_rule]])
 		metric_rule?: matchN(1, [#metric_rule, list.MaxItems(1) & [...#metric_rule]])

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_automanage_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_automanage_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_automanage_configuration")
 	close({
 		automation_account_enabled?:  bool
 		boot_diagnostics_enabled?:    bool

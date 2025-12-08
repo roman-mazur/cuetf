@@ -2,7 +2,7 @@ package res
 
 #azurerm_oracle_autonomous_database_clone_from_backup: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_oracle_autonomous_database_clone_from_backup")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_oracle_autonomous_database_clone_from_backup")
 	close({
 		admin_password!: string
 		allowed_ip_addresses?: [...string]

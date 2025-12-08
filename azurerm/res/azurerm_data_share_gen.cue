@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_data_share: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_data_share")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_share")
 	close({
 		snapshot_schedule?: matchN(1, [#snapshot_schedule, list.MaxItems(1) & [...#snapshot_schedule]])
 		account_id!:  string

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_api_management_logger: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_api_management_logger")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_api_management_logger")
 	close({
 		api_management_name!: string
 		application_insights?: matchN(1, [#application_insights, list.MaxItems(1) & [...#application_insights]])

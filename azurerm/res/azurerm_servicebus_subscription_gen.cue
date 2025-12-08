@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_servicebus_subscription: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_servicebus_subscription")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_servicebus_subscription")
 	close({
 		auto_delete_on_idle?:                       string
 		batched_operations_enabled?:                bool

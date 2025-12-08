@@ -2,7 +2,7 @@ package data
 
 #azurerm_dev_test_virtual_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_dev_test_virtual_network")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_dev_test_virtual_network")
 	close({
 		timeouts?: #timeouts
 		allowed_subnets?: [...close({

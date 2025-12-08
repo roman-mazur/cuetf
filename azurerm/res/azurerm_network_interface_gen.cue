@@ -2,7 +2,7 @@ package res
 
 #azurerm_network_interface: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_network_interface")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_network_interface")
 	close({
 		accelerated_networking_enabled?: bool
 		applied_dns_servers?: [...string]

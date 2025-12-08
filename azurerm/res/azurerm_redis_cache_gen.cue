@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_redis_cache: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_redis_cache")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_redis_cache")
 	close({
 		access_keys_authentication_enabled?: bool
 		capacity!:                           number

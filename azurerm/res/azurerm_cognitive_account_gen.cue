@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_cognitive_account: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_cognitive_account")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cognitive_account")
 	close({
 		custom_question_answering_search_service_id?:  string
 		custom_question_answering_search_service_key?: string

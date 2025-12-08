@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_ai_foundry: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_ai_foundry")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_ai_foundry")
 	close({
 		application_insights_id?:      string
 		container_registry_id?:        string

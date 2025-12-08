@@ -2,7 +2,7 @@ package res
 
 #azurerm_advisor_suppression: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_advisor_suppression")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_advisor_suppression")
 	close({
 		timeouts?:          #timeouts
 		id?:                string

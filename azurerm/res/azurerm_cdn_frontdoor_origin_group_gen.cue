@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_cdn_frontdoor_origin_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_cdn_frontdoor_origin_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cdn_frontdoor_origin_group")
 	close({
 		cdn_frontdoor_profile_id!: string
 		health_probe?: matchN(1, [#health_probe, list.MaxItems(1) & [...#health_probe]])

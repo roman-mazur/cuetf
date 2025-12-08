@@ -2,7 +2,7 @@ package res
 
 #azurerm_virtual_machine_gallery_application_assignment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_virtual_machine_gallery_application_assignment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_machine_gallery_application_assignment")
 	close({
 		timeouts?:                       #timeouts
 		configuration_blob_uri?:         string

@@ -2,7 +2,7 @@ package data
 
 #azurerm_cosmosdb_restorable_database_accounts: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_cosmosdb_restorable_database_accounts")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_cosmosdb_restorable_database_accounts")
 	close({
 		timeouts?: #timeouts
 		accounts?: [...close({

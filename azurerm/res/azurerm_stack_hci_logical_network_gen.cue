@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_stack_hci_logical_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_stack_hci_logical_network")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_stack_hci_logical_network")
 	close({
 		subnet!: matchN(1, [#subnet, list.MaxItems(1) & [_, ...] & [...#subnet]])
 		custom_location_id!: string

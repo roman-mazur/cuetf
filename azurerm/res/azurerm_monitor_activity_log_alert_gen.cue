@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_monitor_activity_log_alert: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_monitor_activity_log_alert")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_monitor_activity_log_alert")
 	close({
 		description?: string
 		enabled?:     bool

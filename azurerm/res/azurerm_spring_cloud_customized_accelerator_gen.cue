@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_spring_cloud_customized_accelerator: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_spring_cloud_customized_accelerator")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_customized_accelerator")
 	close({
 		git_repository!: matchN(1, [#git_repository, list.MaxItems(1) & [_, ...] & [...#git_repository]])
 		accelerator_tags?: [...string]

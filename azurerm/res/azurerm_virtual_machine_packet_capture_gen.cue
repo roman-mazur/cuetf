@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_virtual_machine_packet_capture: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_virtual_machine_packet_capture")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_machine_packet_capture")
 	close({
 		id?: string
 		filter?: matchN(1, [#filter, [...#filter]])

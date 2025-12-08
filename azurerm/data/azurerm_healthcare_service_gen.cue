@@ -2,7 +2,7 @@ package data
 
 #azurerm_healthcare_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_healthcare_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_healthcare_service")
 	close({
 		access_policy_object_ids?: [...string]
 		authentication_configuration?: [...close({

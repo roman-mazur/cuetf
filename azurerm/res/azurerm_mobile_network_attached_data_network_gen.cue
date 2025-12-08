@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_mobile_network_attached_data_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_mobile_network_attached_data_network")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mobile_network_attached_data_network")
 	close({
 		dns_addresses!: [...string]
 		id?:                                       string

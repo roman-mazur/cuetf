@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_cdn_frontdoor_secret: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_cdn_frontdoor_secret")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cdn_frontdoor_secret")
 	close({
 		secret!: matchN(1, [#secret, list.MaxItems(1) & [_, ...] & [...#secret]])
 		cdn_frontdoor_profile_id!:   string

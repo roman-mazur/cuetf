@@ -2,7 +2,7 @@ package res
 
 #azurerm_lb_backend_address_pool_address: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_lb_backend_address_pool_address")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_lb_backend_address_pool_address")
 	close({
 		// For global load balancer, user needs to specify the
 		// `backend_address_ip_configuration_id` of the added regional

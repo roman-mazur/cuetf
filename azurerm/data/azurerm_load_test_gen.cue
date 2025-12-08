@@ -2,7 +2,7 @@ package data
 
 #azurerm_load_test: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_load_test")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_load_test")
 	close({
 		timeouts?:       #timeouts
 		data_plane_uri?: string

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_servicebus_subscription_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_servicebus_subscription_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_servicebus_subscription_rule")
 	close({
 		correlation_filter?: matchN(1, [#correlation_filter, list.MaxItems(1) & [...#correlation_filter]])
 		action?:                         string

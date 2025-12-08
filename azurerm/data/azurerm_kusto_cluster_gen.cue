@@ -2,7 +2,7 @@ package data
 
 #azurerm_kusto_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_kusto_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_kusto_cluster")
 	close({
 		timeouts?:           #timeouts
 		data_ingestion_uri?: string

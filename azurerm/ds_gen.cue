@@ -17,6 +17,7 @@ import "github.com/roman-mazur/cuetf/azurerm/data"
 	_#ds: "\(#azurermPrefix)_api_management_product": data.#azurerm_api_management_product
 	_#ds: "\(#azurermPrefix)_api_management_subscription": data.#azurerm_api_management_subscription
 	_#ds: "\(#azurermPrefix)_api_management_user": data.#azurerm_api_management_user
+	_#ds: "\(#azurermPrefix)_api_management_workspace": data.#azurerm_api_management_workspace
 	_#ds: "\(#azurermPrefix)_app_configuration": data.#azurerm_app_configuration
 	_#ds: "\(#azurermPrefix)_app_configuration_key": data.#azurerm_app_configuration_key
 	_#ds: "\(#azurermPrefix)_app_configuration_keys": data.#azurerm_app_configuration_keys

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_recovery_services_vault: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_recovery_services_vault")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_recovery_services_vault")
 	close({
 		classic_vmware_replication_enabled?: bool
 		cross_region_restore_enabled?:       bool

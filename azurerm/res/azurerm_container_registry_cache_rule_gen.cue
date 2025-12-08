@@ -2,7 +2,7 @@ package res
 
 #azurerm_container_registry_cache_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_container_registry_cache_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_registry_cache_rule")
 	close({
 		// The ARM resource ID of the credential store which is associated
 		// with the cache rule.

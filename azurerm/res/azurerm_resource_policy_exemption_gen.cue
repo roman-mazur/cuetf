@@ -2,7 +2,7 @@ package res
 
 #azurerm_resource_policy_exemption: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_resource_policy_exemption")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_resource_policy_exemption")
 	close({
 		description?:          string
 		display_name?:         string

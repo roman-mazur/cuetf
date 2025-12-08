@@ -2,7 +2,7 @@ package data
 
 #azurerm_network_manager_ipam_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_network_manager_ipam_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_network_manager_ipam_pool")
 	close({
 		timeouts?: #timeouts
 		address_prefixes?: [...string]

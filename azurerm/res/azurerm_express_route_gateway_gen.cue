@@ -2,7 +2,7 @@ package res
 
 #azurerm_express_route_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_express_route_gateway")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_express_route_gateway")
 	close({
 		timeouts?:                      #timeouts
 		allow_non_virtual_wan_traffic?: bool

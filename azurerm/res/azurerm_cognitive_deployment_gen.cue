@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_cognitive_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_cognitive_deployment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cognitive_deployment")
 	close({
 		model!: matchN(1, [#model, list.MaxItems(1) & [_, ...] & [...#model]])
 		cognitive_account_id!:       string

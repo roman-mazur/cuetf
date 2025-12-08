@@ -2,7 +2,7 @@ package data
 
 #azurerm_policy_assignment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_policy_assignment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_policy_assignment")
 	close({
 		description?:  string
 		display_name?: string

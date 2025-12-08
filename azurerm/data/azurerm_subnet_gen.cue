@@ -2,7 +2,7 @@ package data
 
 #azurerm_subnet: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_subnet")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_subnet")
 	close({
 		address_prefix?: string
 		address_prefixes?: [...string]

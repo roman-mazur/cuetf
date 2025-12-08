@@ -2,7 +2,7 @@ package data
 
 #azurerm_elastic_san_volume_snapshot: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_elastic_san_volume_snapshot")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_elastic_san_volume_snapshot")
 	close({
 		timeouts?:                  #timeouts
 		id?:                        string

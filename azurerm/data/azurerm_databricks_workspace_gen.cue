@@ -2,7 +2,7 @@ package data
 
 #azurerm_databricks_workspace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_databricks_workspace")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_databricks_workspace")
 	close({
 		custom_parameters?: [...close({
 			machine_learning_workspace_id?: string

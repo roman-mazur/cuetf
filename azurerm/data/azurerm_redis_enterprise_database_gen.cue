@@ -2,7 +2,7 @@ package data
 
 #azurerm_redis_enterprise_database: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_redis_enterprise_database")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_redis_enterprise_database")
 	close({
 		timeouts?:                       #timeouts
 		cluster_id!:                     string

@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_monitor_alert_processing_rule_suppression: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_monitor_alert_processing_rule_suppression")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_monitor_alert_processing_rule_suppression")
 	close({
 		description?: string
 		condition?: matchN(1, [#condition, list.MaxItems(1) & [...#condition]])

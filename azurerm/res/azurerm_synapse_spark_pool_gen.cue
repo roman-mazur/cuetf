@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_synapse_spark_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_synapse_spark_pool")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_synapse_spark_pool")
 	close({
 		cache_size?:                          number
 		compute_isolation_enabled?:           bool

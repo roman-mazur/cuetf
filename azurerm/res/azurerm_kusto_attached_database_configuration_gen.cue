@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_kusto_attached_database_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_kusto_attached_database_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kusto_attached_database_configuration")
 	close({
 		attached_database_names?: [...string]
 		cluster_id?:    string

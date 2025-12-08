@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_frontdoor_firewall_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_frontdoor_firewall_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_frontdoor_firewall_policy")
 	close({
 		custom_block_response_body?:        string
 		custom_block_response_status_code?: number

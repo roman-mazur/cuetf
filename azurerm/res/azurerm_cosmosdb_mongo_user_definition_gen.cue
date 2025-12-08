@@ -2,7 +2,7 @@ package res
 
 #azurerm_cosmosdb_mongo_user_definition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_cosmosdb_mongo_user_definition")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cosmosdb_mongo_user_definition")
 	close({
 		timeouts?:                 #timeouts
 		cosmos_mongo_database_id!: string

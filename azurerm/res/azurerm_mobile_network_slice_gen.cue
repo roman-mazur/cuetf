@@ -4,7 +4,7 @@ import "list"
 
 #azurerm_mobile_network_slice: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm_mobile_network_slice")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mobile_network_slice")
 	close({
 		single_network_slice_selection_assistance_information?: matchN(1, [#single_network_slice_selection_assistance_information, list.MaxItems(1) & [...#single_network_slice_selection_assistance_information]])
 		description?:          string
