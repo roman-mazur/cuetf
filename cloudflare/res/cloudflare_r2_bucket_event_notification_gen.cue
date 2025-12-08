@@ -2,7 +2,7 @@ package res
 
 #cloudflare_r2_bucket_event_notification: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_r2_bucket_event_notification")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_r2_bucket_event_notification")
 	close({
 		// Account ID.
 		account_id!: string

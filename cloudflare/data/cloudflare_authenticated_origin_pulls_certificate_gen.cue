@@ -2,7 +2,7 @@ package data
 
 #cloudflare_authenticated_origin_pulls_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_authenticated_origin_pulls_certificate")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_authenticated_origin_pulls_certificate")
 	close({
 		// The zone's leaf certificate.
 		certificate?: string

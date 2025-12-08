@@ -2,7 +2,7 @@ package data
 
 #cloudflare_spectrum_applications: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_spectrum_applications")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_spectrum_applications")
 	close({
 		// Sets the direction by which results are ordered.
 		// Available values: "asc", "desc".

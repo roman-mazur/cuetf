@@ -2,7 +2,7 @@ package data
 
 #cloudflare_dns_zone_transfers_peer: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_dns_zone_transfers_peer")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_dns_zone_transfers_peer")
 	close({
 		// IPv4/IPv6 address of primary or secondary nameserver, depending
 		// on what zone this peer is linked to. For primary zones this IP

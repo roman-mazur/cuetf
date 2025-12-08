@@ -2,7 +2,7 @@ package data
 
 #cloudflare_token_validation_configs: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_token_validation_configs")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_token_validation_configs")
 	close({
 		// Max items to fetch, default: 1000
 		max_items?: number

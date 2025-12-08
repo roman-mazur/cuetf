@@ -2,7 +2,7 @@ package res
 
 #cloudflare_email_routing_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_email_routing_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_email_routing_rule")
 	close({
 		// List actions patterns.
 		actions!: matchN(1, [close({

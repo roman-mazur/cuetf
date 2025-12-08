@@ -2,7 +2,7 @@ package res
 
 #cloudflare_r2_bucket_sippy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_r2_bucket_sippy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_r2_bucket_sippy")
 	close({
 		// Account ID.
 		account_id!: string
@@ -50,11 +50,14 @@ package res
 			// Name of the AWS S3 bucket.
 			bucket?: string
 
+			// URL to the S3-compatible API of the bucket.
+			bucket_url?: string
+
 			// Client email of an IAM credential (ideally scoped to a single
 			// GCS bucket).
 			client_email?: string
 
-			// Available values: "aws", "gcs".
+			// Available values: "aws", "gcs", "s3".
 			cloud_provider?: string
 
 			// Private Key of an IAM credential (ideally scoped to a single

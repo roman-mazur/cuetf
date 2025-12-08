@@ -2,7 +2,7 @@ package data
 
 #cloudflare_access_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_access_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_access_rule")
 	close({
 		// The Account ID to use for this endpoint. Mutually exclusive
 		// with the Zone ID.

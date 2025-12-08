@@ -2,9 +2,9 @@ package data
 
 #cloudflare_pages_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_pages_domain")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_pages_domain")
 	close({
-		// Identifier
+		// Identifier.
 		account_id!: string
 
 		// Available values: "google", "lets_encrypt".
@@ -30,16 +30,18 @@ package data
 		})
 		created_on?: string
 
-		// Name of the domain.
+		// The domain name.
 		domain_name!: string
 		domain_id?:   string
 
-		// Name of the domain.
+		// The domain name.
 		id?: string
+
+		// The domain name.
+		name?: string
 
 		// Name of the project.
 		project_name!: string
-		name?:         string
 
 		// Available values: "initializing", "pending", "active",
 		// "deactivated", "blocked", "error".

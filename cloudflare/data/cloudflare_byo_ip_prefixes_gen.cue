@@ -2,7 +2,7 @@ package data
 
 #cloudflare_byo_ip_prefixes: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_byo_ip_prefixes")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_byo_ip_prefixes")
 	close({
 		// Identifier of a Cloudflare account.
 		account_id!: string

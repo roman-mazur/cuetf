@@ -2,7 +2,7 @@ package data
 
 #cloudflare_filters: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_filters")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_filters")
 	close({
 		// A case-insensitive string to find in the description.
 		description?: string

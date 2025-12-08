@@ -2,7 +2,7 @@ package data
 
 #cloudflare_r2_bucket_cors: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_r2_bucket_cors")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_r2_bucket_cors")
 	close({
 		// Account ID.
 		account_id!: string

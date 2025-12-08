@@ -2,7 +2,7 @@ package data
 
 #cloudflare_worker_versions: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_worker_versions")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_worker_versions")
 	close({
 		// The items returned by the data source
 		result?: matchN(1, [close({

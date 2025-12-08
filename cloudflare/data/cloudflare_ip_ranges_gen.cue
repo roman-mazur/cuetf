@@ -2,7 +2,7 @@ package data
 
 #cloudflare_ip_ranges: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_ip_ranges")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_ip_ranges")
 	close({
 		// A digest of the IP data. Useful for determining if the data has
 		// changed.

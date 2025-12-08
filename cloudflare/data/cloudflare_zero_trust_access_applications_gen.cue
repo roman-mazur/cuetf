@@ -2,7 +2,7 @@ package data
 
 #cloudflare_zero_trust_access_applications: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_access_applications")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_access_applications")
 	close({
 		// The Account ID to use for this endpoint. Mutually exclusive
 		// with the Zone ID.

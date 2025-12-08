@@ -2,7 +2,7 @@ package data
 
 #cloudflare_zero_trust_dlp_predefined_entry: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_dlp_predefined_entry")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_dlp_predefined_entry")
 	close({
 		account_id!: string
 
@@ -23,17 +23,25 @@ package data
 		enabled?:  bool
 		entry_id!: string
 		id?:       string
-		name?:     string
 		pattern?: close({
 			regex?: string
 		})
+		name?:       string
 		profile_id?: string
-		secret?:     bool
+		profiles?: matchN(1, [close({
+			id?:   string
+			name?: string
+		}), [...close({
+			id?:   string
+			name?: string
+		})]])
+		secret?: bool
 
 		// Available values: "custom", "predefined", "integration",
 		// "exact_data", "document_fingerprint", "word_list".
 		type?:       string
 		updated_at?: string
+		word_list?:  string
 		variant?: close({
 			description?: string
 
@@ -43,6 +51,5 @@ package data
 			// Available values: "PromptTopic".
 			type?: string
 		})
-		word_list?: string
 	})
 }

@@ -2,7 +2,7 @@ package data
 
 #cloudflare_universal_ssl_setting: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_universal_ssl_setting")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_universal_ssl_setting")
 	close({
 		// Disabling Universal SSL removes any currently active Universal
 		// SSL certificates for your zone from the edge and prevents any

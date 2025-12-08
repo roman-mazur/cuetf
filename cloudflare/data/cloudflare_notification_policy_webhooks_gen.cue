@@ -2,7 +2,7 @@ package data
 
 #cloudflare_notification_policy_webhooks: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_notification_policy_webhooks")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_notification_policy_webhooks")
 	close({
 		// The account id
 		account_id!: string

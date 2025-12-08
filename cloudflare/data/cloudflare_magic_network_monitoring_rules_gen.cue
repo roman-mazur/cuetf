@@ -2,7 +2,7 @@ package data
 
 #cloudflare_magic_network_monitoring_rules: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_magic_network_monitoring_rules")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_magic_network_monitoring_rules")
 	close({
 		account_id!: string
 

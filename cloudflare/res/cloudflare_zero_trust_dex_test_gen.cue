@@ -2,7 +2,7 @@ package res
 
 #cloudflare_zero_trust_dex_test: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_dex_test")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_dex_test")
 	close({
 		// The configuration object which contains the details for the
 		// WARP client to conduct the test.

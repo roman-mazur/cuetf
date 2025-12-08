@@ -2,7 +2,7 @@ package data
 
 #cloudflare_hyperdrive_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_hyperdrive_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_hyperdrive_config")
 	close({
 		caching?: close({
 			// Set to true to disable caching of SQL responses. Default is

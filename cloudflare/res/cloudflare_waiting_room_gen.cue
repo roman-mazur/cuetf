@@ -2,7 +2,7 @@ package res
 
 #cloudflare_waiting_room: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_waiting_room")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_waiting_room")
 	close({
 		// Appends a '_' + a custom suffix to the end of Cloudflare
 		// Waiting Room's cookie name(__cf_waitingroom). If

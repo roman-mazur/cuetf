@@ -2,7 +2,7 @@ package res
 
 #cloudflare_healthcheck: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_healthcheck")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_healthcheck")
 	close({
 		// The hostname or IP address of the origin server to run health
 		// checks on.

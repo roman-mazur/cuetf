@@ -2,7 +2,7 @@ package data
 
 #cloudflare_logpush_jobs: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_logpush_jobs")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_logpush_jobs")
 	close({
 		// The items returned by the data source
 		result?: matchN(1, [close({

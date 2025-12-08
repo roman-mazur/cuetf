@@ -2,7 +2,7 @@ package data
 
 #cloudflare_web_analytics_sites: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_web_analytics_sites")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_web_analytics_sites")
 	close({
 		// Identifier.
 		account_id!: string

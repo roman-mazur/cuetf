@@ -2,7 +2,7 @@ package cloudflare
 
 #provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare/provider")
 	close({
 		// The API key for operations. Alternatively, can be configured
 		// using the `CLOUDFLARE_API_KEY` environment variable. API keys

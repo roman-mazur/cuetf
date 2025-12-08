@@ -2,7 +2,7 @@ package res
 
 #cloudflare_workers_for_platforms_dispatch_namespace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_workers_for_platforms_dispatch_namespace")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_workers_for_platforms_dispatch_namespace")
 	close({
 		// Identifier.
 		account_id!: string

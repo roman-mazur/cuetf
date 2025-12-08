@@ -2,9 +2,9 @@ package data
 
 #cloudflare_pages_domains: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_pages_domains")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_pages_domains")
 	close({
-		// Identifier
+		// Identifier.
 		account_id!: string
 
 		// Max items to fetch, default: 1000
@@ -15,6 +15,7 @@ package data
 			// Available values: "google", "lets_encrypt".
 			certificate_authority?: string
 			created_on?:            string
+			domain_id?:             string
 			validation_data?: close({
 				error_message?: string
 
@@ -35,17 +36,19 @@ package data
 				status?: string
 			})
 
+			// The domain name.
+			name?: string
+			id?:   string
+
 			// Available values: "initializing", "pending", "active",
 			// "deactivated", "blocked", "error".
-			status?:    string
-			domain_id?: string
-			id?:        string
-			name?:      string
-			zone_tag?:  string
+			status?:   string
+			zone_tag?: string
 		}), [...close({
 			// Available values: "google", "lets_encrypt".
 			certificate_authority?: string
 			created_on?:            string
+			domain_id?:             string
 			validation_data?: close({
 				error_message?: string
 
@@ -66,13 +69,14 @@ package data
 				status?: string
 			})
 
+			// The domain name.
+			name?: string
+			id?:   string
+
 			// Available values: "initializing", "pending", "active",
 			// "deactivated", "blocked", "error".
-			status?:    string
-			domain_id?: string
-			id?:        string
-			name?:      string
-			zone_tag?:  string
+			status?:   string
+			zone_tag?: string
 		})]])
 
 		// Name of the project.

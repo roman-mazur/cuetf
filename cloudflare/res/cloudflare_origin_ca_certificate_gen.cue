@@ -2,20 +2,20 @@ package res
 
 #cloudflare_origin_ca_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_origin_ca_certificate")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_origin_ca_certificate")
 	close({
 		// The Origin CA certificate. Will be newline-encoded.
 		certificate?: string
 
 		// The Certificate Signing Request (CSR). Must be newline-encoded.
-		csr?: string
+		csr!: string
 
 		// When the certificate will expire.
 		expires_on?: string
 
 		// Array of hostnames or wildcard names (e.g., *.example.com)
 		// bound to the certificate.
-		hostnames?: [...string]
+		hostnames!: [...string]
 
 		// Identifier.
 		id?: string
@@ -25,7 +25,7 @@ package res
 		// SSL servers).
 		// Available values: "origin-rsa", "origin-ecc",
 		// "keyless-certificate".
-		request_type?: string
+		request_type!: string
 
 		// The number of days for which the certificate should be valid.
 		// Available values: 7, 30, 90, 365, 730, 1095, 5475.

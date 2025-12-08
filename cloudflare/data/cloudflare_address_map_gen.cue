@@ -2,7 +2,7 @@ package data
 
 #cloudflare_address_map: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_address_map")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_address_map")
 	close({
 		// Identifier of a Cloudflare account.
 		account_id!: string

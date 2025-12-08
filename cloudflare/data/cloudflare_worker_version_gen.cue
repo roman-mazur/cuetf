@@ -2,7 +2,7 @@ package data
 
 #cloudflare_worker_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_worker_version")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_worker_version")
 	close({
 		// Metadata about the version.
 		annotations?: close({

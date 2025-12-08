@@ -2,7 +2,7 @@ package data
 
 #cloudflare_custom_hostname_fallback_origin: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_custom_hostname_fallback_origin")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_custom_hostname_fallback_origin")
 	close({
 		// This is the time the fallback origin was created.
 		created_at?: string

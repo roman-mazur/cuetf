@@ -2,9 +2,9 @@ package data
 
 #cloudflare_pages_project: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_pages_project")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_pages_project")
 	close({
-		// Identifier
+		// Identifier.
 		account_id!: string
 
 		// Configs for the project build process.
@@ -15,7 +15,7 @@ package data
 			// Command used to build project.
 			build_command?: string
 
-			// Output directory of the build.
+			// Assets output directory of the build.
 			destination_dir?: string
 
 			// Directory to run the command.
@@ -31,9 +31,6 @@ package data
 		// When the project was created.
 		created_on?: string
 
-		// A list of associated custom domains for the project.
-		domains?: [...string]
-
 		// Most recent production deployment of the project.
 		canonical_deployment?: close({
 			// A list of alias URLs pointing to this deployment.
@@ -47,7 +44,7 @@ package data
 				// Command used to build project.
 				build_command?: string
 
-				// Output directory of the build.
+				// Assets output directory of the build.
 				destination_dir?: string
 
 				// Directory to run the command.
@@ -70,6 +67,9 @@ package data
 					// Where the trigger happened.
 					branch?: string
 
+					// Whether the deployment trigger commit was dirty.
+					commit_dirty?: bool
+
 					// Hash of the deployment trigger commit.
 					commit_hash?: string
 
@@ -78,13 +78,9 @@ package data
 				})
 
 				// What caused the deployment.
-				// Available values: "push", "ad_hoc".
+				// Available values: "github:push", "ad_hoc", "deploy_hook".
 				type?: string
 			})
-
-			// Type of deploy.
-			// Available values: "preview", "production".
-			environment?: string
 
 			// Environment variables used for builds and Pages Functions.
 			env_vars?: [string]: close({
@@ -94,6 +90,10 @@ package data
 				// Environment variable value.
 				value?: string
 			})
+
+			// Type of deploy.
+			// Available values: "preview", "production".
+			environment?: string
 
 			// Id of the deployment.
 			id?: string
@@ -125,10 +125,21 @@ package data
 
 			// Id of the project.
 			project_id?: string
+
+			// Name of the project.
+			project_name?: string
+
+			// Short Id (8 character) of the deployment.
+			short_id?: string
+
+			// Configs for the project source control.
 			source?: close({
 				config?: close({
 					// The owner of the repository.
 					owner?: string
+
+					// The owner ID of the repository.
+					owner_id?: string
 
 					// A list of paths that should be excluded from triggering a
 					// preview deployment. Wildcard syntax (`*`) is supported.
@@ -163,6 +174,9 @@ package data
 					// production branch.
 					production_deployments_enabled?: bool
 
+					// The ID of the repository.
+					repo_id?: string
+
 					// The name of the repository.
 					repo_name?: string
 				})
@@ -171,12 +185,6 @@ package data
 				// Available values: "github", "gitlab".
 				type?: string
 			})
-
-			// Name of the project.
-			project_name?: string
-
-			// Short Id (8 character) of the deployment.
-			short_id?: string
 
 			// List of past stages.
 			stages?: matchN(1, [close({
@@ -215,7 +223,13 @@ package data
 
 			// The live URL to view this deployment.
 			url?: string
+
+			// Whether the deployment uses functions.
+			uses_functions?: bool
 		})
+
+		// A list of associated custom domains for the project.
+		domains?: [...string]
 
 		// Configs for deployments in a project.
 		deployment_configs?: close({
@@ -470,13 +484,6 @@ package data
 		// Name of the project.
 		name?: string
 
-		// Name of the preview script.
-		preview_script_name?: string
-
-		// Production branch of the project. Used to identify production
-		// deployments.
-		production_branch?: string
-
 		// Most recent deployment of the project.
 		latest_deployment?: close({
 			// A list of alias URLs pointing to this deployment.
@@ -490,7 +497,7 @@ package data
 				// Command used to build project.
 				build_command?: string
 
-				// Output directory of the build.
+				// Assets output directory of the build.
 				destination_dir?: string
 
 				// Directory to run the command.
@@ -513,6 +520,9 @@ package data
 					// Where the trigger happened.
 					branch?: string
 
+					// Whether the deployment trigger commit was dirty.
+					commit_dirty?: bool
+
 					// Hash of the deployment trigger commit.
 					commit_hash?: string
 
@@ -521,13 +531,9 @@ package data
 				})
 
 				// What caused the deployment.
-				// Available values: "push", "ad_hoc".
+				// Available values: "github:push", "ad_hoc", "deploy_hook".
 				type?: string
 			})
-
-			// Type of deploy.
-			// Available values: "preview", "production".
-			environment?: string
 
 			// Environment variables used for builds and Pages Functions.
 			env_vars?: [string]: close({
@@ -537,6 +543,10 @@ package data
 				// Environment variable value.
 				value?: string
 			})
+
+			// Type of deploy.
+			// Available values: "preview", "production".
+			environment?: string
 
 			// Id of the deployment.
 			id?: string
@@ -568,10 +578,21 @@ package data
 
 			// Id of the project.
 			project_id?: string
+
+			// Name of the project.
+			project_name?: string
+
+			// Short Id (8 character) of the deployment.
+			short_id?: string
+
+			// Configs for the project source control.
 			source?: close({
 				config?: close({
 					// The owner of the repository.
 					owner?: string
+
+					// The owner ID of the repository.
+					owner_id?: string
 
 					// A list of paths that should be excluded from triggering a
 					// preview deployment. Wildcard syntax (`*`) is supported.
@@ -606,6 +627,9 @@ package data
 					// production branch.
 					production_deployments_enabled?: bool
 
+					// The ID of the repository.
+					repo_id?: string
+
 					// The name of the repository.
 					repo_name?: string
 				})
@@ -614,12 +638,6 @@ package data
 				// Available values: "github", "gitlab".
 				type?: string
 			})
-
-			// Name of the project.
-			project_name?: string
-
-			// Short Id (8 character) of the deployment.
-			short_id?: string
 
 			// List of past stages.
 			stages?: matchN(1, [close({
@@ -658,11 +676,22 @@ package data
 
 			// The live URL to view this deployment.
 			url?: string
+
+			// Whether the deployment uses functions.
+			uses_functions?: bool
 		})
+
+		// Name of the preview script.
+		preview_script_name?: string
+
+		// Configs for the project source control.
 		source?: close({
 			config?: close({
 				// The owner of the repository.
 				owner?: string
+
+				// The owner ID of the repository.
+				owner_id?: string
 
 				// A list of paths that should be excluded from triggering a
 				// preview deployment. Wildcard syntax (`*`) is supported.
@@ -697,6 +726,9 @@ package data
 				// production branch.
 				production_deployments_enabled?: bool
 
+				// The ID of the repository.
+				repo_id?: string
+
 				// The name of the repository.
 				repo_name?: string
 			})
@@ -705,6 +737,10 @@ package data
 			// Available values: "github", "gitlab".
 			type?: string
 		})
+
+		// Production branch of the project. Used to identify production
+		// deployments.
+		production_branch?: string
 
 		// Name of the production script.
 		production_script_name?: string

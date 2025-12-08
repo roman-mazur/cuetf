@@ -2,7 +2,7 @@ package res
 
 #cloudflare_zone_dnssec: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zone_dnssec")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zone_dnssec")
 	close({
 		// Algorithm key code.
 		algorithm?: string

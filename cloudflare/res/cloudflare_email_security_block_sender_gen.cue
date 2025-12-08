@@ -2,7 +2,7 @@ package res
 
 #cloudflare_email_security_block_sender: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_email_security_block_sender")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_email_security_block_sender")
 	close({
 		// Account Identifier
 		account_id!: string

@@ -2,7 +2,7 @@ package res
 
 #cloudflare_dns_zone_transfers_outgoing: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_dns_zone_transfers_outgoing")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_dns_zone_transfers_outgoing")
 	close({
 		// The time for a specific event.
 		checked_time?: string

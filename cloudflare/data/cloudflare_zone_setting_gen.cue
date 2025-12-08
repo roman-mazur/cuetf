@@ -2,7 +2,7 @@ package data
 
 #cloudflare_zone_setting: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zone_setting")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zone_setting")
 	close({
 		// Whether or not this setting can be modified for this zone
 		// (based on your Cloudflare plan level).

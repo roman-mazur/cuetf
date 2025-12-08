@@ -2,7 +2,7 @@ package data
 
 #cloudflare_zero_trust_access_ai_controls_mcp_servers: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_access_ai_controls_mcp_servers")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_access_ai_controls_mcp_servers")
 	close({
 		// The items returned by the data source
 		result?: matchN(1, [close({

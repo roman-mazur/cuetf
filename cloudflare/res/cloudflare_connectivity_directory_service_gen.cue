@@ -2,7 +2,7 @@ package res
 
 #cloudflare_connectivity_directory_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_connectivity_directory_service")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_connectivity_directory_service")
 	close({
 		// Account identifier
 		account_id!: string

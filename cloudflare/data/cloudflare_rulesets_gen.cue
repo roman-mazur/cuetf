@@ -2,7 +2,7 @@ package data
 
 #cloudflare_rulesets: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_rulesets")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_rulesets")
 	close({
 		// A list of rulesets. The returned information will not include
 		// the rules in each ruleset.

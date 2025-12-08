@@ -2,7 +2,7 @@ package data
 
 #cloudflare_cloudforce_one_request_asset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_cloudforce_one_request_asset")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_cloudforce_one_request_asset")
 	close({
 		// Identifier.
 		account_id!: string
@@ -18,6 +18,9 @@ package data
 
 		// Asset file type.
 		file_type?: string
+
+		// UUID.
+		id?: string
 
 		// Asset name.
 		name?: string

@@ -2,7 +2,7 @@ package res
 
 #cloudflare_email_routing_catch_all: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_email_routing_catch_all")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_email_routing_catch_all")
 	close({
 		// List actions for the catch-all routing rule.
 		actions!: matchN(1, [close({

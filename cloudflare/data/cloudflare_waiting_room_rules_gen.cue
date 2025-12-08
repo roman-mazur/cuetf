@@ -2,7 +2,7 @@ package data
 
 #cloudflare_waiting_room_rules: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_waiting_room_rules")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_waiting_room_rules")
 	close({
 		// The action to take when the expression matches.
 		// Available values: "bypass_waiting_room".

@@ -2,7 +2,7 @@ package data
 
 #cloudflare_connectivity_directory_services: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_connectivity_directory_services")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_connectivity_directory_services")
 	close({
 		// The items returned by the data source
 		result?: matchN(1, [close({

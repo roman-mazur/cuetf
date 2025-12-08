@@ -2,7 +2,7 @@ package res
 
 #cloudflare_token_validation_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_token_validation_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_token_validation_config")
 	close({
 		created_at?: string
 		credentials!: close({

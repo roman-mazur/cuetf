@@ -2,13 +2,10 @@ package res
 
 #cloudflare_workers_custom_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_workers_custom_domain")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_workers_custom_domain")
 	close({
 		// Identifer of the account.
 		account_id!: string
-
-		// Worker environment associated with the zone and hostname.
-		environment!: string
 
 		// Hostname of the Worker Domain.
 		hostname!: string

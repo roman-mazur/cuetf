@@ -2,7 +2,7 @@ package res
 
 #cloudflare_zero_trust_access_identity_provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_access_identity_provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_access_identity_provider")
 	close({
 		// The Account ID to use for this endpoint. Mutually exclusive
 		// with the Zone ID.

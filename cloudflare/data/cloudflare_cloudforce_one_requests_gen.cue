@@ -2,7 +2,7 @@ package data
 
 #cloudflare_cloudforce_one_requests: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_cloudforce_one_requests")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_cloudforce_one_requests")
 	close({
 		// Identifier.
 		account_id!: string

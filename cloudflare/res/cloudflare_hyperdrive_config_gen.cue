@@ -2,7 +2,7 @@ package res
 
 #cloudflare_hyperdrive_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_hyperdrive_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_hyperdrive_config")
 	close({
 		// Define configurations using a unique string identifier.
 		account_id!: string

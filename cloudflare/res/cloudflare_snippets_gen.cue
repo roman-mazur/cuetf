@@ -2,7 +2,7 @@ package res
 
 #cloudflare_snippets: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_snippets")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_snippets")
 	close({
 		// The timestamp of when the snippet was created.
 		created_on?: string

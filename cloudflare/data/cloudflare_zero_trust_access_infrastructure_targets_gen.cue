@@ -2,7 +2,7 @@ package data
 
 #cloudflare_zero_trust_access_infrastructure_targets: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_zero_trust_access_infrastructure_targets")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_access_infrastructure_targets")
 	close({
 		// Account identifier
 		account_id!: string

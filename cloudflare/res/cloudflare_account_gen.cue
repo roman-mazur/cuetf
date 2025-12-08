@@ -2,7 +2,7 @@ package res
 
 #cloudflare_account: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_account")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_account")
 	close({
 		// Timestamp for the creation of the account
 		created_on?: string

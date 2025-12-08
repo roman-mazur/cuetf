@@ -2,7 +2,7 @@ package data
 
 #cloudflare_hostname_tls_setting: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_hostname_tls_setting")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_hostname_tls_setting")
 	close({
 		// This is the time the tls setting was originally created for
 		// this hostname.

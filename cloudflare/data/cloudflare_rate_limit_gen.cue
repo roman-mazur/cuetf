@@ -2,7 +2,7 @@ package data
 
 #cloudflare_rate_limit: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/cloudflare_rate_limit")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_rate_limit")
 	close({
 		// The action to perform when the threshold of matched traffic
 		// within the configured period is exceeded.
