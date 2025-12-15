@@ -2,7 +2,7 @@ package res
 
 #aws_odb_cloud_vm_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_odb_cloud_vm_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_odb_cloud_vm_cluster")
 	close({
 		// The unique identifier of the Exadata infrastructure for this VM
 		// cluster. Changing this will create a new resource.

@@ -2,7 +2,7 @@ package data
 
 #aws_lambda_layer_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lambda_layer_version")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_lambda_layer_version")
 	close({
 		arn?:                     string
 		code_sha256?:             string

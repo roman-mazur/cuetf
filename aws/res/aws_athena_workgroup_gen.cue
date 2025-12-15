@@ -4,7 +4,7 @@ import "list"
 
 #aws_athena_workgroup: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_athena_workgroup")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_athena_workgroup")
 	close({
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -23,13 +23,14 @@ import "list"
 	})
 
 	#configuration: close({
-		bytes_scanned_cutoff_per_query?: number
-		engine_version?: matchN(1, [_#defs."/$defs/configuration/$defs/engine_version", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/engine_version"]])
+		bytes_scanned_cutoff_per_query?:     number
 		enforce_workgroup_configuration?:    bool
 		execution_role?:                     string
 		publish_cloudwatch_metrics_enabled?: bool
 		requester_pays_enabled?:             bool
+		engine_version?: matchN(1, [_#defs."/$defs/configuration/$defs/engine_version", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/engine_version"]])
 		identity_center_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/identity_center_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/identity_center_configuration"]])
+		managed_query_results_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/managed_query_results_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/managed_query_results_configuration"]])
 		result_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/result_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/result_configuration"]])
 	})
 
@@ -41,6 +42,15 @@ import "list"
 	_#defs: "/$defs/configuration/$defs/identity_center_configuration": close({
 		enable_identity_center?:       bool
 		identity_center_instance_arn?: string
+	})
+
+	_#defs: "/$defs/configuration/$defs/managed_query_results_configuration": close({
+		encryption_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/managed_query_results_configuration/$defs/encryption_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/managed_query_results_configuration/$defs/encryption_configuration"]])
+		enabled?: bool
+	})
+
+	_#defs: "/$defs/configuration/$defs/managed_query_results_configuration/$defs/encryption_configuration": close({
+		kms_key?: string
 	})
 
 	_#defs: "/$defs/configuration/$defs/result_configuration": close({

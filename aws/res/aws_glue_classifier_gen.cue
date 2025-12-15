@@ -4,7 +4,7 @@ import "list"
 
 #aws_glue_classifier: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_classifier")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_glue_classifier")
 	close({
 		csv_classifier?: matchN(1, [#csv_classifier, list.MaxItems(1) & [...#csv_classifier]])
 		id?: string

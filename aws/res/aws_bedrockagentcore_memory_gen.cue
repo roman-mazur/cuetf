@@ -2,7 +2,7 @@ package res
 
 #aws_bedrockagentcore_memory: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrockagentcore_memory")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_memory")
 	close({
 		arn?:                   string
 		description?:           string

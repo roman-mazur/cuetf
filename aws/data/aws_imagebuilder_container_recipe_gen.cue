@@ -2,7 +2,7 @@ package data
 
 #aws_imagebuilder_container_recipe: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_imagebuilder_container_recipe")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_imagebuilder_container_recipe")
 	close({
 		arn!: string
 		component?: [...close({

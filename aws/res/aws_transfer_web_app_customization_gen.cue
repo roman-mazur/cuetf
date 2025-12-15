@@ -2,7 +2,7 @@ package res
 
 #aws_transfer_web_app_customization: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_transfer_web_app_customization")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_transfer_web_app_customization")
 	close({
 		favicon_file?: string
 		logo_file?:    string

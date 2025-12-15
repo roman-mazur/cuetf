@@ -2,7 +2,7 @@ package data
 
 #aws_grafana_workspace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_grafana_workspace")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_grafana_workspace")
 	close({
 		account_access_type?: string
 		arn?:                 string

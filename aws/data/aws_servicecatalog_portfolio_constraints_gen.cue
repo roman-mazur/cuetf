@@ -2,7 +2,7 @@ package data
 
 #aws_servicecatalog_portfolio_constraints: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_servicecatalog_portfolio_constraints")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_servicecatalog_portfolio_constraints")
 	close({
 		accept_language?: string
 

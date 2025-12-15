@@ -2,7 +2,7 @@ package data
 
 #aws_alb: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_alb")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_alb")
 	close({
 		access_logs?: [...close({
 			bucket?:  string
@@ -31,16 +31,21 @@ package data
 		enable_cross_zone_load_balancing?:                             bool
 		enable_deletion_protection?:                                   bool
 		enable_http2?:                                                 bool
+		timeouts?:                                                     #timeouts
 		enable_tls_version_and_cipher_suite_headers?:                  bool
 		enable_waf_fail_open?:                                         bool
 		enable_xff_client_port?:                                       bool
 		enable_zonal_shift?:                                           bool
-		timeouts?:                                                     #timeouts
 		enforce_security_group_inbound_rules_on_private_link_traffic?: string
-		id?:                                                           string
-		idle_timeout?:                                                 number
-		internal?:                                                     bool
-		ip_address_type?:                                              string
+		health_check_logs?: [...close({
+			bucket?:  string
+			enabled?: bool
+			prefix?:  string
+		})]
+		id?:              string
+		idle_timeout?:    number
+		internal?:        bool
+		ip_address_type?: string
 		ipam_pools?: [...close({
 			ipv4_ipam_pool_id?: string
 		})]

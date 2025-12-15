@@ -2,7 +2,7 @@ package data
 
 #aws_servicecatalog_launch_paths: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_servicecatalog_launch_paths")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_servicecatalog_launch_paths")
 	close({
 		accept_language?: string
 		id?:              string

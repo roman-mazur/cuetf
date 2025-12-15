@@ -4,7 +4,7 @@ import "list"
 
 #aws_lightsail_distribution: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lightsail_distribution")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lightsail_distribution")
 	close({
 		// The alternate domain names of the distribution.
 		alternative_domain_names?: [...string]

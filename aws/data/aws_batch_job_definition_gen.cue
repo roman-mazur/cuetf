@@ -2,7 +2,7 @@ package data
 
 #aws_batch_job_definition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_batch_job_definition")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_batch_job_definition")
 	close({
 		arn?: string
 

@@ -2,7 +2,7 @@ package data
 
 #aws_backup_plan: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_backup_plan")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_backup_plan")
 	close({
 		arn?:     string
 		id?:      string
@@ -31,11 +31,21 @@ package data
 				opt_in_to_archive_for_supported_resources?: bool
 			})]
 			recovery_point_tags?: [string]: string
-			rule_name?:                    string
-			schedule?:                     string
-			schedule_expression_timezone?: string
-			start_window?:                 number
-			target_vault_name?:            string
+			rule_name?: string
+			scan_action?: [...close({
+				malware_scanner?: string
+				scan_mode?:       string
+			})]
+			schedule?:                                     string
+			schedule_expression_timezone?:                 string
+			start_window?:                                 number
+			target_logically_air_gapped_backup_vault_arn?: string
+			target_vault_name?:                            string
+		})]
+		scan_setting?: [...close({
+			malware_scanner?: string
+			resource_types?: [...string]
+			scanner_role_arn?: string
 		})]
 		tags?: [string]: string
 		version?: string

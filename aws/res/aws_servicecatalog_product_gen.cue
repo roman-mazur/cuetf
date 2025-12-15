@@ -4,7 +4,7 @@ import "list"
 
 #aws_servicecatalog_product: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_servicecatalog_product")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_servicecatalog_product")
 	close({
 		accept_language?: string
 		provisioning_artifact_parameters!: matchN(1, [#provisioning_artifact_parameters, list.MaxItems(1) & [_, ...] & [...#provisioning_artifact_parameters]])

@@ -2,7 +2,7 @@ package res
 
 #aws_dsql_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dsql_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dsql_cluster")
 	close({
 		arn?:                         string
 		deletion_protection_enabled?: bool

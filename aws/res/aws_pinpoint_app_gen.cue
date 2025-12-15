@@ -4,7 +4,7 @@ import "list"
 
 #aws_pinpoint_app: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_pinpoint_app")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_pinpoint_app")
 	close({
 		application_id?: string
 		campaign_hook?: matchN(1, [#campaign_hook, list.MaxItems(1) & [...#campaign_hook]])

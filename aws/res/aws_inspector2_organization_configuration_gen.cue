@@ -4,7 +4,7 @@ import "list"
 
 #aws_inspector2_organization_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_inspector2_organization_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_inspector2_organization_configuration")
 	close({
 		auto_enable!: matchN(1, [#auto_enable, list.MaxItems(1) & [_, ...] & [...#auto_enable]])
 		timeouts?:                  #timeouts

@@ -2,7 +2,7 @@ package data
 
 #aws_kendra_faq: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_kendra_faq")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_kendra_faq")
 	close({
 		arn?:           string
 		created_at?:    string

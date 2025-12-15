@@ -2,7 +2,7 @@ package res
 
 #aws_servicecatalog_provisioning_artifact: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_servicecatalog_provisioning_artifact")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_servicecatalog_provisioning_artifact")
 	close({
 		accept_language?:             string
 		active?:                      bool

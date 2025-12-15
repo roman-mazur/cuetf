@@ -4,7 +4,7 @@ import "list"
 
 #aws_secretsmanager_secret_rotation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_secretsmanager_secret_rotation")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_secretsmanager_secret_rotation")
 	close({
 		id?: string
 

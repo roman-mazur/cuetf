@@ -2,7 +2,7 @@ package res
 
 #aws_bedrockagent_flow: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrockagent_flow")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagent_flow")
 	close({
 		arn?: string
 		definition?: matchN(1, [#definition, [...#definition]])

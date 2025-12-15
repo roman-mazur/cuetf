@@ -4,7 +4,7 @@ import "list"
 
 #aws_glue_data_quality_ruleset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_data_quality_ruleset")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_glue_data_quality_ruleset")
 	close({
 		arn?:              string
 		created_on?:       string

@@ -4,7 +4,7 @@ import "list"
 
 #aws_evidently_project: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_evidently_project")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_evidently_project")
 	close({
 		active_experiment_count?: number
 		data_delivery?: matchN(1, [#data_delivery, list.MaxItems(1) & [...#data_delivery]])

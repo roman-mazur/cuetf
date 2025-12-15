@@ -4,7 +4,7 @@ import "list"
 
 #aws_fis_experiment_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_fis_experiment_template")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_fis_experiment_template")
 	close({
 		action!: matchN(1, [#action, [_, ...] & [...#action]])
 		experiment_options?: matchN(1, [#experiment_options, list.MaxItems(1) & [...#experiment_options]])

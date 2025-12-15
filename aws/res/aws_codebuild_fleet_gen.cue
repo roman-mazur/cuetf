@@ -4,7 +4,7 @@ import "list"
 
 #aws_codebuild_fleet: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codebuild_fleet")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_codebuild_fleet")
 	close({
 		arn?:              string
 		base_capacity!:    number

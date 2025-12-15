@@ -2,7 +2,7 @@ package res
 
 #aws_route53domains_delegation_signer_record: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_route53domains_delegation_signer_record")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_route53domains_delegation_signer_record")
 	close({
 		signing_attributes?: matchN(1, [#signing_attributes, [...#signing_attributes]])
 		timeouts?:      #timeouts

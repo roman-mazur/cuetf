@@ -2,7 +2,7 @@ package data
 
 #aws_licensemanager_received_license: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_licensemanager_received_license")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_licensemanager_received_license")
 	close({
 		beneficiary?: string
 		consumption_configuration?: [...close({

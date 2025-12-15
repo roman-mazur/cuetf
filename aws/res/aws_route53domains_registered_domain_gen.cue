@@ -4,7 +4,7 @@ import "list"
 
 #aws_route53domains_registered_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_route53domains_registered_domain")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_route53domains_registered_domain")
 	close({
 		abuse_contact_email?: string
 		abuse_contact_phone?: string

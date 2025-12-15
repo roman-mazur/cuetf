@@ -4,7 +4,7 @@ import "list"
 
 #aws_rum_app_monitor: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_rum_app_monitor")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_rum_app_monitor")
 	close({
 		app_monitor_id?: string
 		arn?:            string

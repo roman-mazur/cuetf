@@ -4,7 +4,7 @@ import "list"
 
 #aws_macie2_classification_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_macie2_classification_job")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_macie2_classification_job")
 	close({
 		created_at?: string
 		custom_data_identifier_ids?: [...string]

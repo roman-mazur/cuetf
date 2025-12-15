@@ -2,7 +2,7 @@ package res
 
 #aws_dataexchange_revision_assets: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_dataexchange_revision_assets")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dataexchange_revision_assets")
 	close({
 		arn?:         string
 		comment?:     string

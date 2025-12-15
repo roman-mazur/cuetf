@@ -4,10 +4,9 @@ import "list"
 
 #aws_db_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_db_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_db_instance")
 	close({
-		address?: string
-		blue_green_update?: matchN(1, [#blue_green_update, list.MaxItems(1) & [...#blue_green_update]])
+		address?:                     string
 		allocated_storage?:           number
 		allow_major_version_upgrade?: bool
 		apply_immediately?:           bool
@@ -24,14 +23,14 @@ import "list"
 		customer_owned_ip_enabled?:   bool
 		database_insights_mode?:      string
 		db_name?:                     string
+		db_subnet_group_name?:        string
+		dedicated_log_volume?:        bool
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                   string
-		db_subnet_group_name?:     string
-		dedicated_log_volume?:     bool
 		delete_automated_backups?: bool
 		deletion_protection?:      bool
 		domain?:                   string
@@ -56,33 +55,35 @@ import "list"
 		iops?:                                number
 		kms_key_id?:                          string
 		latest_restorable_time?:              string
-		license_model?:                       string
+		blue_green_update?: matchN(1, [#blue_green_update, list.MaxItems(1) & [...#blue_green_update]])
+		license_model?: string
 		listener_endpoint?: [...close({
 			address?:        string
 			hosted_zone_id?: string
 			port?:           number
 		})]
-		maintenance_window?: string
 		restore_to_point_in_time?: matchN(1, [#restore_to_point_in_time, list.MaxItems(1) & [...#restore_to_point_in_time]])
+		maintenance_window?:          string
 		manage_master_user_password?: bool
 		master_user_secret?: [...close({
 			kms_key_id?:    string
 			secret_arn?:    string
 			secret_status?: string
 		})]
-		master_user_secret_kms_key_id?:         string
-		max_allocated_storage?:                 number
-		monitoring_interval?:                   number
-		monitoring_role_arn?:                   string
-		multi_az?:                              bool
-		nchar_character_set_name?:              string
-		network_type?:                          string
-		option_group_name?:                     string
-		parameter_group_name?:                  string
-		password?:                              string
-		password_wo?:                           string
-		password_wo_version?:                   number
-		performance_insights_enabled?:          bool
+		master_user_secret_kms_key_id?: string
+		max_allocated_storage?:         number
+		monitoring_interval?:           number
+		monitoring_role_arn?:           string
+		multi_az?:                      bool
+		nchar_character_set_name?:      string
+		network_type?:                  string
+		option_group_name?:             string
+		parameter_group_name?:          string
+		password?:                      string
+		password_wo?:                   string
+		password_wo_version?:           number
+		performance_insights_enabled?:  bool
+		s3_import?: matchN(1, [#s3_import, list.MaxItems(1) & [...#s3_import]])
 		performance_insights_kms_key_id?:       string
 		performance_insights_retention_period?: number
 		port?:                                  number
@@ -96,15 +97,15 @@ import "list"
 		status?:              string
 		storage_encrypted?:   bool
 		storage_throughput?:  number
+		timeouts?:            #timeouts
 		storage_type?:        string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		timezone?:               string
+		upgrade_rollout_order?:  string
 		upgrade_storage_config?: bool
-		s3_import?: matchN(1, [#s3_import, list.MaxItems(1) & [...#s3_import]])
-		username?: string
+		username?:               string
 		vpc_security_group_ids?: [...string]
-		timeouts?: #timeouts
 	})
 
 	#blue_green_update: close({

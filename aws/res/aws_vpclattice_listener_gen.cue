@@ -4,7 +4,7 @@ import "list"
 
 #aws_vpclattice_listener: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpclattice_listener")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpclattice_listener")
 	close({
 		arn?: string
 		default_action!: matchN(1, [#default_action, list.MaxItems(1) & [_, ...] & [...#default_action]])

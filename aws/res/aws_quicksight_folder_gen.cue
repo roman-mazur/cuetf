@@ -4,7 +4,7 @@ import "list"
 
 #aws_quicksight_folder: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_quicksight_folder")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_quicksight_folder")
 	close({
 		arn?: string
 		permissions?: matchN(1, [#permissions, list.MaxItems(64) & [...#permissions]])

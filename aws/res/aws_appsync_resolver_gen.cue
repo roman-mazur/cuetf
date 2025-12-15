@@ -4,7 +4,7 @@ import "list"
 
 #aws_appsync_resolver: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appsync_resolver")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_appsync_resolver")
 	close({
 		api_id!: string
 		caching_config?: matchN(1, [#caching_config, list.MaxItems(1) & [...#caching_config]])

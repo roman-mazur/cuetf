@@ -2,7 +2,7 @@ package res
 
 #aws_route53_health_check: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_route53_health_check")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_route53_health_check")
 	close({
 		arn?:                    string
 		child_health_threshold?: number

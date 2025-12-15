@@ -2,7 +2,7 @@ package res
 
 #aws_cleanrooms_membership: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cleanrooms_membership")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cleanrooms_membership")
 	close({
 		arn?: string
 		default_result_configuration?: matchN(1, [#default_result_configuration, [...#default_result_configuration]])

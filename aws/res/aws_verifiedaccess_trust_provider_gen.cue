@@ -4,7 +4,7 @@ import "list"
 
 #aws_verifiedaccess_trust_provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_verifiedaccess_trust_provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_verifiedaccess_trust_provider")
 	close({
 		description?:                string
 		device_trust_provider_type?: string

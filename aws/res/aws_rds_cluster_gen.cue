@@ -4,13 +4,15 @@ import "list"
 
 #aws_rds_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_rds_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_rds_cluster")
 	close({
 		allocated_storage?:           number
 		allow_major_version_upgrade?: bool
-		apply_immediately?:           bool
-		arn?:                         string
+		restore_to_point_in_time?: matchN(1, [#restore_to_point_in_time, list.MaxItems(1) & [...#restore_to_point_in_time]])
+		apply_immediately?: bool
+		arn?:               string
 		availability_zones?: [...string]
+		s3_import?: matchN(1, [#s3_import, list.MaxItems(1) & [...#s3_import]])
 		backtrack_window?:          number
 		backup_retention_period?:   number
 		ca_certificate_identifier?: string
@@ -35,31 +37,26 @@ import "list"
 		db_subnet_group_name?:             string
 		db_system_id?:                     string
 		delete_automated_backups?:         bool
-		restore_to_point_in_time?: matchN(1, [#restore_to_point_in_time, list.MaxItems(1) & [...#restore_to_point_in_time]])
-		deletion_protection?:            bool
-		domain?:                         string
-		domain_iam_role_name?:           string
-		enable_global_write_forwarding?: bool
-		enable_http_endpoint?:           bool
-		s3_import?: matchN(1, [#s3_import, list.MaxItems(1) & [...#s3_import]])
-		enable_local_write_forwarding?: bool
+		deletion_protection?:              bool
+		domain?:                           string
+		domain_iam_role_name?:             string
+		enable_global_write_forwarding?:   bool
+		enable_http_endpoint?:             bool
+		enable_local_write_forwarding?:    bool
 		enabled_cloudwatch_logs_exports?: [...string]
-		endpoint?:                 string
-		engine!:                   string
-		engine_lifecycle_support?: string
-		engine_mode?:              string
-		engine_version?:           string
-		scaling_configuration?: matchN(1, [#scaling_configuration, list.MaxItems(1) & [...#scaling_configuration]])
+		endpoint?:                            string
+		engine!:                              string
+		engine_lifecycle_support?:            string
+		engine_mode?:                         string
+		engine_version?:                      string
 		engine_version_actual?:               string
 		final_snapshot_identifier?:           string
 		global_cluster_identifier?:           string
 		hosted_zone_id?:                      string
 		iam_database_authentication_enabled?: bool
-		serverlessv2_scaling_configuration?: matchN(1, [#serverlessv2_scaling_configuration, list.MaxItems(1) & [...#serverlessv2_scaling_configuration]])
 		iam_roles?: [...string]
 		id?:                          string
 		iops?:                        number
-		timeouts?:                    #timeouts
 		kms_key_id?:                  string
 		manage_master_user_password?: bool
 		master_password?:             string
@@ -88,8 +85,12 @@ import "list"
 		source_region?:                         string
 		storage_encrypted?:                     bool
 		storage_type?:                          string
+		scaling_configuration?: matchN(1, [#scaling_configuration, list.MaxItems(1) & [...#scaling_configuration]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		serverlessv2_scaling_configuration?: matchN(1, [#serverlessv2_scaling_configuration, list.MaxItems(1) & [...#serverlessv2_scaling_configuration]])
+		timeouts?:              #timeouts
+		upgrade_rollout_order?: string
 		vpc_security_group_ids?: [...string]
 	})
 

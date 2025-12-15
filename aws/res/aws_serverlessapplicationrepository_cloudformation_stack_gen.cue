@@ -2,10 +2,10 @@ package res
 
 #aws_serverlessapplicationrepository_cloudformation_stack: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_serverlessapplicationrepository_cloudformation_stack")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_serverlessapplicationrepository_cloudformation_stack")
 	close({
 		application_id!: string
-		capabilities!: [...string] | _#expression
+		capabilities!: [...string]
 		id?:   string
 		name!: string
 		outputs?: [string]: string
@@ -28,7 +28,3 @@ package res
 		update?: string
 	})
 }
-
-// TODO: generalize this manual fix.
-// All values can be also terraform expressions.
-_#expression: =~#"\$\{.+\}"#

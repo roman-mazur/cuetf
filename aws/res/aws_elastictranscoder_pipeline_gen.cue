@@ -4,7 +4,7 @@ import "list"
 
 #aws_elastictranscoder_pipeline: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_elastictranscoder_pipeline")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_elastictranscoder_pipeline")
 	close({
 		arn?:             string
 		aws_kms_key_arn?: string

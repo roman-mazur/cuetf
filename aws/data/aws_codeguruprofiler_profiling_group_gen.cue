@@ -2,7 +2,7 @@ package data
 
 #aws_codeguruprofiler_profiling_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codeguruprofiler_profiling_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_codeguruprofiler_profiling_group")
 	close({
 		agent_orchestration_config?: [...close({
 			profiling_enabled?: bool

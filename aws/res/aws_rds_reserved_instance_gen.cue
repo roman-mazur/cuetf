@@ -2,7 +2,7 @@ package res
 
 #aws_rds_reserved_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_rds_reserved_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_rds_reserved_instance")
 	close({
 		arn?:               string
 		currency_code?:     string

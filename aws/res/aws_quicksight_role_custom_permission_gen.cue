@@ -2,7 +2,7 @@ package res
 
 #aws_quicksight_role_custom_permission: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_quicksight_role_custom_permission")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_quicksight_role_custom_permission")
 	close({
 		aws_account_id?:          string
 		custom_permissions_name!: string

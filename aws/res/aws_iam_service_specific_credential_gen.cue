@@ -2,7 +2,7 @@ package res
 
 #aws_iam_service_specific_credential: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_iam_service_specific_credential")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_iam_service_specific_credential")
 	close({
 		create_date?:                    string
 		credential_age_days?:            number

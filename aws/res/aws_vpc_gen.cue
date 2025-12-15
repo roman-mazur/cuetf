@@ -2,7 +2,7 @@ package res
 
 #aws_vpc: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc")
 	close({
 		arn?:                              string
 		assign_generated_ipv6_cidr_block?: bool

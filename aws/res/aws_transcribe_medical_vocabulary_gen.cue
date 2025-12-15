@@ -2,7 +2,7 @@ package res
 
 #aws_transcribe_medical_vocabulary: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_transcribe_medical_vocabulary")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_transcribe_medical_vocabulary")
 	close({
 		arn?:           string
 		download_uri?:  string

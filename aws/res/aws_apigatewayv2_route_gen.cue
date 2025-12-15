@@ -2,7 +2,7 @@ package res
 
 #aws_apigatewayv2_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_apigatewayv2_route")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_apigatewayv2_route")
 	close({
 		api_id!:           string
 		api_key_required?: bool

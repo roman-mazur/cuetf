@@ -4,7 +4,7 @@ import "list"
 
 #aws_waf_sql_injection_match_set: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_waf_sql_injection_match_set")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_waf_sql_injection_match_set")
 	close({
 		sql_injection_match_tuples?: matchN(1, [#sql_injection_match_tuples, [...#sql_injection_match_tuples]])
 		arn?:  string

@@ -2,7 +2,7 @@ package data
 
 #aws_vpc_peering_connections: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc_peering_connections")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_vpc_peering_connections")
 	close({
 		id?: string
 		ids?: [...string]

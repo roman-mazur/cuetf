@@ -2,7 +2,7 @@ package res
 
 #aws_connect_security_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_connect_security_profile")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_connect_security_profile")
 	close({
 		arn?:         string
 		description?: string

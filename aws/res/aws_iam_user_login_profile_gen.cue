@@ -2,7 +2,7 @@ package res
 
 #aws_iam_user_login_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_iam_user_login_profile")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_iam_user_login_profile")
 	close({
 		encrypted_password?:      string
 		id?:                      string
