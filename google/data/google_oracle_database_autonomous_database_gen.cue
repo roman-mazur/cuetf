@@ -134,6 +134,7 @@ package data
 				ords_uri?:                             string
 				sql_dev_web_uri?:                      string
 			})]
+			cpu_core_count?: number
 			customer_contacts?: [...close({
 				email?: string
 			})]
@@ -194,11 +195,13 @@ package data
 					seconds?: number
 				})]
 			})]
+			secret_id?:             string
 			sql_web_developer_url?: string
 			state?:                 string
 			supported_clone_regions?: [...string]
 			total_auto_backup_storage_size_gbs?: number
 			used_data_storage_size_tbs?:         number
+			vault_id?:                           string
 		})]
 
 		// The combination of labels configured directly on the resource

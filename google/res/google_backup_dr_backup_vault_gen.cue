@@ -1,5 +1,7 @@
 package res
 
+import "list"
+
 #google_backup_dr_backup_vault: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_backup_dr_backup_vault")
@@ -81,13 +83,14 @@ package res
 		// retention set by the backup vault.
 		force_update?: bool
 		id?:           string
+		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
+		timeouts?: #timeouts
 
 		// If set, the following restrictions against deletion of the
 		// backup vault instance can be overridden:
 		// * deletion of a backup vault instance that is being referenced
 		// by an active backup plan.
 		ignore_backup_plan_references?: bool
-		timeouts?:                      #timeouts
 
 		// If set, the following restrictions against deletion of the
 		// backup vault instance can be overridden:
@@ -139,6 +142,13 @@ package res
 
 		// Output only. The time when the instance was updated.
 		update_time?: string
+	})
+
+	#encryption_config: close({
+		// The Resource name of the Cloud KMS key to be used to encrypt
+		// new backups. The key must be in the same location as the
+		// backup vault. The key must be a Cloud KMS CryptoKey.
+		kms_key_name?: string
 	})
 
 	#timeouts: close({

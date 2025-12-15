@@ -61,6 +61,9 @@ import "list"
 					key_name?:               string
 					request_location?:       string
 				})]
+				bearer_token_config?: [...close({
+					token?: string
+				})]
 				oauth_config?: [...close({
 					client_id?:             string
 					client_secret_version?: string
@@ -133,6 +136,14 @@ import "list"
 	})
 
 	#google_search_tool: close({
+		// Content will be fetched directly from these URLs for context
+		// and grounding.
+		// More details:
+		// https://cloud.google.com/vertex-ai/generative-ai/docs/url-context.
+		// Example: "https://example.com/path.html". A maximum of 20 URLs
+		// are allowed.
+		context_urls?: [...string]
+
 		// Description of the tool's purpose.
 		description?: string
 
@@ -143,6 +154,15 @@ import "list"
 
 		// The name of the tool.
 		name!: string
+
+		// Specifies domain names to guide the search.
+		// The model will be instructed to prioritize these domains
+		// when formulating queries for google search.
+		// This is a best-effort hint and these domains may or may
+		// not be exclusively reflected in the final search results.
+		// Example: "example.com", "another.site".
+		// A maximum of 20 domains can be specified.
+		preferred_domains?: [...string]
 	})
 
 	#python_function: close({
@@ -170,20 +190,19 @@ import "list"
 	})
 
 	_#defs: "/$defs/client_function/$defs/parameters": close({
-		// Optional. Defines the schema for additional properties allowed
-		// in an object.
+		// Defines the schema for additional properties allowed in an
+		// object.
 		// The value must be a valid JSON string representing the Schema
 		// object.
 		// (Note: OpenAPI also allows a boolean, this definition expects a
 		// Schema JSON).
 		additional_properties?: string
 
-		// Optional. The instance value should be valid against at least
-		// one of the schemas in this list.
+		// The instance value should be valid against at least one of the
+		// schemas in this list.
 		any_of?: string
 
-		// Optional. Default value of the data. Represents a dynamically
-		// typed value
+		// Default value of the data. Represents a dynamically typed value
 		// which can be either null, a number, a string, a boolean, a
 		// struct,
 		// or a list of values. The provided default value must be
@@ -211,10 +230,22 @@ import "list"
 		// Schema of the elements of Type.ARRAY.
 		items?: string
 
+		// Maximum number of the elements for Type.ARRAY. (int64 format)
+		max_items?: number
+
+		// Maximum value for Type.INTEGER and Type.NUMBER.
+		maximum?: number
+
+		// Minimum number of the elements for Type.ARRAY. (int64 format)
+		min_items?: number
+
+		// Minimum value for Type.INTEGER and Type.NUMBER.
+		minimum?: number
+
 		// Indicates if the value may be null.
 		nullable?: bool
 
-		// Optional. Schemas of initial elements of Type.ARRAY.
+		// Schemas of initial elements of Type.ARRAY.
 		prefix_items?: string
 
 		// Properties of Type.OBJECT.
@@ -245,6 +276,9 @@ import "list"
 
 		// Required properties of Type.OBJECT.
 		required?: [...string]
+
+		// The title of the schema.
+		title?: string
 
 		// The type of the data.
 		// Possible values:
@@ -262,20 +296,19 @@ import "list"
 	})
 
 	_#defs: "/$defs/client_function/$defs/response": close({
-		// Optional. Defines the schema for additional properties allowed
-		// in an object.
+		// Defines the schema for additional properties allowed in an
+		// object.
 		// The value must be a valid JSON string representing the Schema
 		// object.
 		// (Note: OpenAPI also allows a boolean, this definition expects a
 		// Schema JSON).
 		additional_properties?: string
 
-		// Optional. The instance value should be valid against at least
-		// one of the schemas in this list.
+		// The instance value should be valid against at least one of the
+		// schemas in this list.
 		any_of?: string
 
-		// Optional. Default value of the data. Represents a dynamically
-		// typed value
+		// Default value of the data. Represents a dynamically typed value
 		// which can be either null, a number, a string, a boolean, a
 		// struct,
 		// or a list of values. The provided default value must be
@@ -303,10 +336,22 @@ import "list"
 		// Schema of the elements of Type.ARRAY.
 		items?: string
 
+		// Maximum number of the elements for Type.ARRAY. (int64 format)
+		max_items?: number
+
+		// Maximum value for Type.INTEGER and Type.NUMBER.
+		maximum?: number
+
+		// Minimum number of the elements for Type.ARRAY. (int64 format)
+		min_items?: number
+
+		// Minimum value for Type.INTEGER and Type.NUMBER.
+		minimum?: number
+
 		// Indicates if the value may be null.
 		nullable?: bool
 
-		// Optional. Schemas of initial elements of Type.ARRAY.
+		// Schemas of initial elements of Type.ARRAY.
 		prefix_items?: string
 
 		// Properties of Type.OBJECT.
@@ -337,6 +382,9 @@ import "list"
 
 		// Required properties of Type.OBJECT.
 		required?: [...string]
+
+		// The title of the schema.
+		title?: string
 
 		// The type of the data.
 		// Possible values:

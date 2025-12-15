@@ -195,6 +195,9 @@ import "list"
 			sql_dev_web_uri?:                      string
 		})]
 
+		// The number of CPU cores to be made available to the database.
+		cpu_core_count?: number
+
 		// The current state of the Data Safe registration for the
 		// Autonomous Database.
 		// Possible values:
@@ -299,10 +302,10 @@ import "list"
 
 		// The date and time when maintenance will begin.
 		maintenance_begin_time?: string
-		customer_contacts?: matchN(1, [_#defs."/$defs/properties/$defs/customer_contacts", [..._#defs."/$defs/properties/$defs/customer_contacts"]])
 
 		// The date and time when maintenance will end.
 		maintenance_end_time?: string
+		customer_contacts?: matchN(1, [_#defs."/$defs/properties/$defs/customer_contacts", [..._#defs."/$defs/properties/$defs/customer_contacts"]])
 
 		// The maintenance schedule of the Autonomous Database.
 		// Possible values:
@@ -420,6 +423,9 @@ import "list"
 			})]
 		})]
 
+		// The ID of the Oracle Cloud Infrastructure vault secret.
+		secret_id?: string
+
 		// The SQL Web Developer URL for the Autonomous Database.
 		sql_web_developer_url?: string
 
@@ -460,6 +466,9 @@ import "list"
 
 		// The storage space used by Autonomous Database, in gigabytes.
 		used_data_storage_size_tbs?: number
+
+		// The ID of the Oracle Cloud Infrastructure vault.
+		vault_id?: string
 	})
 
 	#timeouts: close({

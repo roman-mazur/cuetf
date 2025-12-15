@@ -54,7 +54,10 @@ import "list"
 				type?: string
 			})]
 			gcp_project?: string
-			location?:    string
+			identity?: [...close({
+				principal?: string
+			})]
+			location?: string
 			registration_type?: [...close({
 				type?: string
 			})]

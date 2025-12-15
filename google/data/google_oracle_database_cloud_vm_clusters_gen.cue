@@ -59,7 +59,8 @@ package data
 				storage_size_gb?: number
 				system_version?:  string
 				time_zone?: [...close({
-					id?: string
+					id?:      string
+					version?: string
 				})]
 			})]
 			terraform_labels?: [string]: string

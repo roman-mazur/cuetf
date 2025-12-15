@@ -147,13 +147,38 @@ import "list"
 	_#defs: "/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value": close({
 		// Represents a boolean value.
 		bool_value?: bool
+
+		// Represents a double value.
+		number_value?: number
+		oneof_value?: matchN(1, [_#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value", list.MaxItems(1) & [..._#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value"]])
+
+		// Represents a string value.
+		string_value?: string
 		string_list_value?: matchN(1, [_#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/string_list_value"]])
+	})
+
+	_#defs: "/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value": close({
+		parameter_value?: matchN(1, [_#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value", list.MaxItems(1) & [..._#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value"]])
+
+		// The name of the parameter.
+		name?: string
+	})
+
+	_#defs: "/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value": close({
+		// Represents a boolean value.
+		bool_value?: bool
+		string_list_value?: matchN(1, [_#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value"]])
 
 		// Represents a double value.
 		number_value?: number
 
 		// Represents a string value.
 		string_value?: string
+	})
+
+	_#defs: "/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value": close({
+		// The strings in the list.
+		values!: [...string]
 	})
 
 	_#defs: "/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/string_list_value": close({

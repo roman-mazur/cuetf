@@ -106,14 +106,12 @@ import "list"
 		// Shared secret used to set the secure session between the Cloud
 		// VPN
 		// gateway and the peer VPN gateway.
-		// Note: This property is write-only and will not be read from the
-		// API. For more info see [updating write-only
-		// attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
 		shared_secret_wo?: string
 
-		// Triggers update of shared_secret_wo write-only. For more info
-		// see [updating write-only
-		// attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+		// Triggers update of 'shared_secret_wo' write-only. Increment
+		// this value when an update to 'shared_secret_wo' is needed. For
+		// more info see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 		shared_secret_wo_version?: string
 
 		// URL of the Target VPN gateway with which this VPN tunnel is

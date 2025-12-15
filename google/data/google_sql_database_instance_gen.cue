@@ -52,7 +52,6 @@ package data
 			dns_scope?:       string
 			name?:            string
 		})]
-		encryption_key_name?: string
 
 		// The description of final backup if instance enable create final
 		// backup during instance deletion.
@@ -61,18 +60,13 @@ package data
 		// The first IPv4 address of any type assigned. This is to support
 		// accessing the first address in the list in a terraform output
 		// when the resource is configured with a count.
-		first_ip_address?: string
-		id?:               string
+		first_ip_address?:    string
+		encryption_key_name?: string
 
 		// The type of the instance. See
 		// https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType
 		// for supported values.
 		instance_type?: string
-		ip_address?: [...close({
-			ip_address?:     string
-			time_to_retire?: string
-			type?:           string
-		})]
 
 		// Maintenance version.
 		maintenance_version?: string
@@ -81,6 +75,12 @@ package data
 		// replication setup. Note, this requires the master to have
 		// binary_log_enabled set, as well as existing backups.
 		master_instance_name?: string
+		id?:                   string
+		ip_address?: [...close({
+			ip_address?:     string
+			time_to_retire?: string
+			type?:           string
+		})]
 
 		// The name of the instance. If the name is left blank, Terraform
 		// will randomly generate one when the instance is first created.
@@ -162,11 +162,22 @@ package data
 
 		// Initial root password. Required for MS SQL Server.
 		root_password?: string
+
+		// Initial root password. Required for MS SQL Server.
+		// Note: This property is write-only and will not be read from the
+		// API. For more info see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		root_password_wo?: string
 		restore_backup_context?: [...close({
 			backup_run_id?: number
 			instance_id?:   string
 			project?:       string
 		})]
+
+		// Triggers update of root_password_wo write-only. For more info
+		// see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		root_password_wo_version?: string
 
 		// The URI of the created resource.
 		self_link?: string
