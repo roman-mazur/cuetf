@@ -4,7 +4,7 @@ import "list"
 
 #elasticstack_elasticsearch_snapshot_repository: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_snapshot_repository")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_snapshot_repository")
 	close({
 		azure?: matchN(1, [#azure, list.MaxItems(1) & [...#azure]])
 

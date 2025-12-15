@@ -2,7 +2,7 @@ package res
 
 #elasticstack_elasticsearch_data_stream_lifecycle: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_data_stream_lifecycle")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_data_stream_lifecycle")
 	close({
 		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 

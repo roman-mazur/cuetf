@@ -2,7 +2,7 @@ package data
 
 #elasticstack_elasticsearch_indices: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_indices")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_indices")
 	close({
 		// Generated ID for the indices.
 		id?: string

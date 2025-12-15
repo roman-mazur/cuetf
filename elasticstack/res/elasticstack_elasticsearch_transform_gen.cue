@@ -4,7 +4,7 @@ import "list"
 
 #elasticstack_elasticsearch_transform: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_transform")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_transform")
 	close({
 		// Specifies whether the transform checkpoint ranges should be
 		// optimized for performance.

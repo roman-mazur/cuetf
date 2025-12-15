@@ -2,7 +2,7 @@ package res
 
 #elasticstack_kibana_synthetics_parameter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_kibana_synthetics_parameter")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_synthetics_parameter")
 	close({
 		// A description of the parameter.
 		description?: string

@@ -2,7 +2,7 @@ package res
 
 #elasticstack_elasticsearch_ml_datafeed_state: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_ml_datafeed_state")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_ml_datafeed_state")
 	close({
 		// Identifier for the ML datafeed.
 		datafeed_id!: string

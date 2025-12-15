@@ -4,7 +4,7 @@ import "list"
 
 #elasticstack_kibana_alerting_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_kibana_alerting_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_alerting_rule")
 	close({
 		// A number that indicates how many consecutive runs need to meet
 		// the rule conditions for an alert to occur.

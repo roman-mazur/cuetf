@@ -4,7 +4,7 @@ import "list"
 
 #elasticstack_elasticsearch_security_user: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_security_user")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_security_user")
 	close({
 		// The email of the user.
 		email?: string

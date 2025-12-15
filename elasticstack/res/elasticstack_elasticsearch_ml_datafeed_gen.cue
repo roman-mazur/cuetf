@@ -2,7 +2,7 @@ package res
 
 #elasticstack_elasticsearch_ml_datafeed: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_ml_datafeed")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_ml_datafeed")
 	close({
 		// If set, the datafeed performs aggregation searches. Support for
 		// aggregations is limited and should be used only with low
