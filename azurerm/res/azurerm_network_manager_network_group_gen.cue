@@ -7,6 +7,7 @@ package res
 		timeouts?:           #timeouts
 		description?:        string
 		id?:                 string
+		member_type?:        string
 		name!:               string
 		network_manager_id!: string
 	})
