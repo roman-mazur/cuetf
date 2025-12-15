@@ -4,7 +4,7 @@ import "list"
 
 #github_enterprise_actions_permissions: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_enterprise_actions_permissions")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_enterprise_actions_permissions")
 	close({
 		// The permissions policy that controls the actions that are
 		// allowed to run. Can be one of: 'all', 'local_only', or

@@ -2,7 +2,7 @@ package res
 
 #github_actions_environment_secret: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_actions_environment_secret")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_actions_environment_secret")
 	close({
 		// Date of 'actions_environment_secret' creation.
 		created_at?: string
