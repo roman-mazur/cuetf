@@ -2,7 +2,7 @@ package res
 
 #aws_prometheus_query_logging_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_prometheus_query_logging_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_prometheus_query_logging_configuration")
 	close({
 		destination?: matchN(1, [#destination, [...#destination]])
 		timeouts?: #timeouts

@@ -2,7 +2,7 @@ package res
 
 #aws_datazone_environment_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_datazone_environment_profile")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_datazone_environment_profile")
 	close({
 		aws_account_id?:     string
 		aws_account_region!: string

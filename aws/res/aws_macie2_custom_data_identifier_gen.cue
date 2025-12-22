@@ -2,7 +2,7 @@ package res
 
 #aws_macie2_custom_data_identifier: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_macie2_custom_data_identifier")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_macie2_custom_data_identifier")
 	close({
 		arn?:         string
 		created_at?:  string

@@ -2,7 +2,7 @@ package data
 
 #aws_transfer_connector: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_transfer_connector")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_transfer_connector")
 	close({
 		access_role?: string
 		arn?:         string
@@ -16,6 +16,12 @@ package data
 			message_subject?:       string
 			partner_profile_id?:    string
 			singing_algorithm?:     string
+		})]
+		egress_config?: [...close({
+			vpc_lattice?: [...close({
+				port_number?:                number
+				resource_configuration_arn?: string
+			})]
 		})]
 		id!:           string
 		logging_role?: string

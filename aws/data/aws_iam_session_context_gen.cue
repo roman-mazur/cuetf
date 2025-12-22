@@ -2,7 +2,7 @@ package data
 
 #aws_iam_session_context: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_iam_session_context")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_iam_session_context")
 	close({
 		arn!:          string
 		id?:           string

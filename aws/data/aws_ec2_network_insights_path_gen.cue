@@ -2,7 +2,7 @@ package data
 
 #aws_ec2_network_insights_path: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ec2_network_insights_path")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ec2_network_insights_path")
 	close({
 		arn?:              string
 		destination?:      string

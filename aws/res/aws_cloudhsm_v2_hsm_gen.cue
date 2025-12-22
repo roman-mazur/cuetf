@@ -2,7 +2,7 @@ package res
 
 #aws_cloudhsm_v2_hsm: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudhsm_v2_hsm")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudhsm_v2_hsm")
 	close({
 		availability_zone?: string
 		cluster_id!:        string

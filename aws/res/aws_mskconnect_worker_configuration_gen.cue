@@ -2,7 +2,7 @@ package res
 
 #aws_mskconnect_worker_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_mskconnect_worker_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_mskconnect_worker_configuration")
 	close({
 		arn?:         string
 		description?: string

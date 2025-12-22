@@ -4,7 +4,7 @@ import "list"
 
 #aws_lakeformation_resource_lf_tags: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lakeformation_resource_lf_tags")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lakeformation_resource_lf_tags")
 	close({
 		database?: matchN(1, [#database, list.MaxItems(1) & [...#database]])
 		lf_tag!: matchN(1, [#lf_tag, [_, ...] & [...#lf_tag]])

@@ -2,7 +2,7 @@ package res
 
 #aws_datazone_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_datazone_domain")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_datazone_domain")
 	close({
 		arn?: string
 		single_sign_on?: matchN(1, [#single_sign_on, [...#single_sign_on]])

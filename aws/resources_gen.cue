@@ -279,6 +279,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_cloudwatch_log_resource_policy": res.#aws_cloudwatch_log_resource_policy
 	_#res: "\(#awsPrefix)_cloudwatch_log_stream": res.#aws_cloudwatch_log_stream
 	_#res: "\(#awsPrefix)_cloudwatch_log_subscription_filter": res.#aws_cloudwatch_log_subscription_filter
+	_#res: "\(#awsPrefix)_cloudwatch_log_transformer": res.#aws_cloudwatch_log_transformer
 	_#res: "\(#awsPrefix)_cloudwatch_metric_alarm": res.#aws_cloudwatch_metric_alarm
 	_#res: "\(#awsPrefix)_cloudwatch_metric_stream": res.#aws_cloudwatch_metric_stream
 	_#res: "\(#awsPrefix)_cloudwatch_query_definition": res.#aws_cloudwatch_query_definition
@@ -566,6 +567,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_ecs_capacity_provider": res.#aws_ecs_capacity_provider
 	_#res: "\(#awsPrefix)_ecs_cluster_capacity_providers": res.#aws_ecs_cluster_capacity_providers
 	_#res: "\(#awsPrefix)_ecs_cluster": res.#aws_ecs_cluster
+	_#res: "\(#awsPrefix)_ecs_express_gateway_service": res.#aws_ecs_express_gateway_service
 	_#res: "\(#awsPrefix)_ecs_service": res.#aws_ecs_service
 	_#res: "\(#awsPrefix)_ecs_tag": res.#aws_ecs_tag
 	_#res: "\(#awsPrefix)_ecs_task_definition": res.#aws_ecs_task_definition
@@ -583,6 +585,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_eks_access_entry": res.#aws_eks_access_entry
 	_#res: "\(#awsPrefix)_eks_access_policy_association": res.#aws_eks_access_policy_association
 	_#res: "\(#awsPrefix)_eks_addon": res.#aws_eks_addon
+	_#res: "\(#awsPrefix)_eks_capability": res.#aws_eks_capability
 	_#res: "\(#awsPrefix)_eks_cluster": res.#aws_eks_cluster
 	_#res: "\(#awsPrefix)_eks_fargate_profile": res.#aws_eks_fargate_profile
 	_#res: "\(#awsPrefix)_eks_identity_provider_config": res.#aws_eks_identity_provider_config
@@ -717,6 +720,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_iam_instance_profile": res.#aws_iam_instance_profile
 	_#res: "\(#awsPrefix)_iam_openid_connect_provider": res.#aws_iam_openid_connect_provider
 	_#res: "\(#awsPrefix)_iam_organizations_features": res.#aws_iam_organizations_features
+	_#res: "\(#awsPrefix)_iam_outbound_web_identity_federation": res.#aws_iam_outbound_web_identity_federation
 	_#res: "\(#awsPrefix)_iam_policy_attachment": res.#aws_iam_policy_attachment
 	_#res: "\(#awsPrefix)_iam_policy": res.#aws_iam_policy
 	_#res: "\(#awsPrefix)_iam_role": res.#aws_iam_role
@@ -825,6 +829,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_lakeformation_resource_lf_tag": res.#aws_lakeformation_resource_lf_tag
 	_#res: "\(#awsPrefix)_lakeformation_resource_lf_tags": res.#aws_lakeformation_resource_lf_tags
 	_#res: "\(#awsPrefix)_lambda_alias": res.#aws_lambda_alias
+	_#res: "\(#awsPrefix)_lambda_capacity_provider": res.#aws_lambda_capacity_provider
 	_#res: "\(#awsPrefix)_lambda_code_signing_config": res.#aws_lambda_code_signing_config
 	_#res: "\(#awsPrefix)_lambda_event_source_mapping": res.#aws_lambda_event_source_mapping
 	_#res: "\(#awsPrefix)_lambda_function_event_invoke_config": res.#aws_lambda_function_event_invoke_config
@@ -1190,6 +1195,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_rum_metrics_destination": res.#aws_rum_metrics_destination
 	_#res: "\(#awsPrefix)_s3_access_point": res.#aws_s3_access_point
 	_#res: "\(#awsPrefix)_s3_account_public_access_block": res.#aws_s3_account_public_access_block
+	_#res: "\(#awsPrefix)_s3_bucket_abac": res.#aws_s3_bucket_abac
 	_#res: "\(#awsPrefix)_s3_bucket_accelerate_configuration": res.#aws_s3_bucket_accelerate_configuration
 	_#res: "\(#awsPrefix)_s3_bucket_acl": res.#aws_s3_bucket_acl
 	_#res: "\(#awsPrefix)_s3_bucket_analytics_configuration": res.#aws_s3_bucket_analytics_configuration
@@ -1233,8 +1239,13 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_s3tables_namespace": res.#aws_s3tables_namespace
 	_#res: "\(#awsPrefix)_s3tables_table_bucket": res.#aws_s3tables_table_bucket
 	_#res: "\(#awsPrefix)_s3tables_table_bucket_policy": res.#aws_s3tables_table_bucket_policy
+	_#res: "\(#awsPrefix)_s3tables_table_bucket_replication": res.#aws_s3tables_table_bucket_replication
 	_#res: "\(#awsPrefix)_s3tables_table": res.#aws_s3tables_table
 	_#res: "\(#awsPrefix)_s3tables_table_policy": res.#aws_s3tables_table_policy
+	_#res: "\(#awsPrefix)_s3tables_table_replication": res.#aws_s3tables_table_replication
+	_#res: "\(#awsPrefix)_s3vectors_index": res.#aws_s3vectors_index
+	_#res: "\(#awsPrefix)_s3vectors_vector_bucket": res.#aws_s3vectors_vector_bucket
+	_#res: "\(#awsPrefix)_s3vectors_vector_bucket_policy": res.#aws_s3vectors_vector_bucket_policy
 	_#res: "\(#awsPrefix)_sagemaker_app": res.#aws_sagemaker_app
 	_#res: "\(#awsPrefix)_sagemaker_app_image_config": res.#aws_sagemaker_app_image_config
 	_#res: "\(#awsPrefix)_sagemaker_code_repository": res.#aws_sagemaker_code_repository
@@ -1459,6 +1470,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_vpc_block_public_access_options": res.#aws_vpc_block_public_access_options
 	_#res: "\(#awsPrefix)_vpc_dhcp_options_association": res.#aws_vpc_dhcp_options_association
 	_#res: "\(#awsPrefix)_vpc_dhcp_options": res.#aws_vpc_dhcp_options
+	_#res: "\(#awsPrefix)_vpc_encryption_control": res.#aws_vpc_encryption_control
 	_#res: "\(#awsPrefix)_vpc_endpoint_connection_accepter": res.#aws_vpc_endpoint_connection_accepter
 	_#res: "\(#awsPrefix)_vpc_endpoint_connection_notification": res.#aws_vpc_endpoint_connection_notification
 	_#res: "\(#awsPrefix)_vpc_endpoint": res.#aws_vpc_endpoint
@@ -1509,6 +1521,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_vpclattice_service_network_vpc_association": res.#aws_vpclattice_service_network_vpc_association
 	_#res: "\(#awsPrefix)_vpclattice_target_group_attachment": res.#aws_vpclattice_target_group_attachment
 	_#res: "\(#awsPrefix)_vpclattice_target_group": res.#aws_vpclattice_target_group
+	_#res: "\(#awsPrefix)_vpn_concentrator": res.#aws_vpn_concentrator
 	_#res: "\(#awsPrefix)_vpn_connection": res.#aws_vpn_connection
 	_#res: "\(#awsPrefix)_vpn_connection_route": res.#aws_vpn_connection_route
 	_#res: "\(#awsPrefix)_vpn_gateway_attachment": res.#aws_vpn_gateway_attachment

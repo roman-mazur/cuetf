@@ -2,7 +2,7 @@ package data
 
 #aws_memorydb_snapshot: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_memorydb_snapshot")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_memorydb_snapshot")
 	close({
 		arn?: string
 		cluster_configuration?: [...close({

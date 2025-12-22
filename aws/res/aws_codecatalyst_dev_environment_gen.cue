@@ -4,7 +4,7 @@ import "list"
 
 #aws_codecatalyst_dev_environment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codecatalyst_dev_environment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_codecatalyst_dev_environment")
 	close({
 		alias?:                      string
 		id?:                         string

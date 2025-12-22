@@ -2,7 +2,7 @@ package res
 
 #aws_iam_role: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_iam_role")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_iam_role")
 	close({
 		arn?:                   string
 		assume_role_policy!:    string

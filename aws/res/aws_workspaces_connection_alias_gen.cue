@@ -2,7 +2,7 @@ package res
 
 #aws_workspaces_connection_alias: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_workspaces_connection_alias")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_workspaces_connection_alias")
 	close({
 		// The connection string specified for the connection alias. The
 		// connection string must be in the form of a fully qualified

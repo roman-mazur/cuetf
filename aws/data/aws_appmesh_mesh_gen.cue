@@ -2,7 +2,7 @@ package data
 
 #aws_appmesh_mesh: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appmesh_mesh")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_appmesh_mesh")
 	close({
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

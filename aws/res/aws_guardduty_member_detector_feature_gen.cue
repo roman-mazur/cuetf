@@ -2,7 +2,7 @@ package res
 
 #aws_guardduty_member_detector_feature: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_guardduty_member_detector_feature")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_guardduty_member_detector_feature")
 	close({
 		account_id!:  string
 		detector_id!: string

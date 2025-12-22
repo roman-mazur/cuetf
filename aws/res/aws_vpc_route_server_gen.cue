@@ -2,7 +2,7 @@ package res
 
 #aws_vpc_route_server: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc_route_server")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_route_server")
 	close({
 		amazon_side_asn!:         number
 		arn?:                     string

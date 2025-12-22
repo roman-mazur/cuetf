@@ -2,7 +2,7 @@ package data
 
 #aws_emrcontainers_virtual_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_emrcontainers_virtual_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_emrcontainers_virtual_cluster")
 	close({
 		arn?: string
 		container_provider?: [...close({

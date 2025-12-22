@@ -2,7 +2,7 @@ package data
 
 #aws_odb_cloud_exadata_infrastructures: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_odb_cloud_exadata_infrastructures")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_odb_cloud_exadata_infrastructures")
 	close({
 		// List of Cloud Exadata Infrastructures. Returns basic
 		// information about the Cloud Exadata Infrastructures.

@@ -4,7 +4,7 @@ import "list"
 
 #aws_storagegateway_nfs_file_share: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_storagegateway_nfs_file_share")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_storagegateway_nfs_file_share")
 	close({
 		arn?:                   string
 		audit_destination_arn?: string

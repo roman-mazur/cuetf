@@ -2,7 +2,7 @@ package res
 
 #aws_bcmdataexports_export: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bcmdataexports_export")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bcmdataexports_export")
 	close({
 		export?: matchN(1, [#export, [...#export]])
 		timeouts?: #timeouts

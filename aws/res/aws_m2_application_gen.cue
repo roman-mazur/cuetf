@@ -2,7 +2,7 @@ package res
 
 #aws_m2_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_m2_application")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_m2_application")
 	close({
 		application_id?:  string
 		arn?:             string

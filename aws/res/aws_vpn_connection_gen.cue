@@ -4,7 +4,7 @@ import "list"
 
 #aws_vpn_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpn_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpn_connection")
 	close({
 		arn?:                            string
 		core_network_arn?:               string
@@ -54,16 +54,17 @@ import "list"
 		tunnel1_phase2_dh_group_numbers?: [...number]
 		tunnel1_phase2_encryption_algorithms?: [...string]
 		tunnel1_phase2_integrity_algorithms?: [...string]
-		tunnel1_phase2_lifetime_seconds?:   number
-		tunnel1_preshared_key?:             string
-		tunnel1_rekey_fuzz_percentage?:     number
-		tunnel1_rekey_margin_time_seconds?: number
-		tunnel1_replay_window_size?:        number
-		tunnel1_startup_action?:            string
-		tunnel1_vgw_inside_address?:        string
-		tunnel2_address?:                   string
-		tunnel2_bgp_asn?:                   string
 		tunnel1_log_options?: matchN(1, [#tunnel1_log_options, list.MaxItems(1) & [...#tunnel1_log_options]])
+		tunnel2_log_options?: matchN(1, [#tunnel2_log_options, list.MaxItems(1) & [...#tunnel2_log_options]])
+		tunnel1_phase2_lifetime_seconds?:         number
+		tunnel1_preshared_key?:                   string
+		tunnel1_rekey_fuzz_percentage?:           number
+		tunnel1_rekey_margin_time_seconds?:       number
+		tunnel1_replay_window_size?:              number
+		tunnel1_startup_action?:                  string
+		tunnel1_vgw_inside_address?:              string
+		tunnel2_address?:                         string
+		tunnel2_bgp_asn?:                         string
 		tunnel2_bgp_holdtime?:                    number
 		tunnel2_cgw_inside_address?:              string
 		tunnel2_dpd_timeout_action?:              string
@@ -88,8 +89,7 @@ import "list"
 		tunnel2_vgw_inside_address?:        string
 		tunnel_bandwidth?:                  string
 		tunnel_inside_ip_version?:          string
-		tunnel2_log_options?: matchN(1, [#tunnel2_log_options, list.MaxItems(1) & [...#tunnel2_log_options]])
-		type!: string
+		type!:                              string
 		vgw_telemetry?: [...close({
 			accepted_route_count?: number
 			certificate_arn?:      string
@@ -98,7 +98,8 @@ import "list"
 			status?:               string
 			status_message?:       string
 		})]
-		vpn_gateway_id?: string
+		vpn_concentrator_id?: string
+		vpn_gateway_id?:      string
 	})
 
 	#tunnel1_log_options: close({
@@ -110,14 +111,20 @@ import "list"
 	})
 
 	_#defs: "/$defs/tunnel1_log_options/$defs/cloudwatch_log_options": close({
-		log_enabled?:       bool
-		log_group_arn?:     string
-		log_output_format?: string
+		bgp_log_enabled?:       bool
+		bgp_log_group_arn?:     string
+		bgp_log_output_format?: string
+		log_enabled?:           bool
+		log_group_arn?:         string
+		log_output_format?:     string
 	})
 
 	_#defs: "/$defs/tunnel2_log_options/$defs/cloudwatch_log_options": close({
-		log_enabled?:       bool
-		log_group_arn?:     string
-		log_output_format?: string
+		bgp_log_enabled?:       bool
+		bgp_log_group_arn?:     string
+		bgp_log_output_format?: string
+		log_enabled?:           bool
+		log_group_arn?:         string
+		log_output_format?:     string
 	})
 }

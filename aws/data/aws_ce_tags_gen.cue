@@ -4,7 +4,7 @@ import "list"
 
 #aws_ce_tags: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ce_tags")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ce_tags")
 	close({
 		filter?: matchN(1, [#filter, list.MaxItems(1) & [...#filter]])
 		id?:            string

@@ -2,7 +2,7 @@ package res
 
 #aws_lb_ssl_negotiation_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lb_ssl_negotiation_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lb_ssl_negotiation_policy")
 	close({
 		id?:      string
 		lb_port!: number

@@ -2,7 +2,7 @@ package res
 
 #aws_vpc_ipam: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc_ipam")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_ipam")
 	close({
 		arn?: string
 		operating_regions!: matchN(1, [#operating_regions, [_, ...] & [...#operating_regions]])

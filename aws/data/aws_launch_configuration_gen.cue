@@ -2,7 +2,7 @@ package data
 
 #aws_launch_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_launch_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_launch_configuration")
 	close({
 		arn?:                         string
 		associate_public_ip_address?: bool

@@ -2,13 +2,8 @@ package data
 
 #aws_eks_node_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_eks_node_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_eks_node_group")
 	close({
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:        string
 		ami_type?:      string
 		arn?:           string
 		capacity_type?: string
@@ -24,6 +19,12 @@ package data
 		})]
 		node_group_name!: string
 		node_role_arn?:   string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:          string
 		release_version?: string
 		remote_access?: [...close({
 			ec2_ssh_key?: string
@@ -47,6 +48,11 @@ package data
 			effect?: string
 			key?:    string
 			value?:  string
+		})]
+		update_config?: [...close({
+			max_unavailable?:            number
+			max_unavailable_percentage?: number
+			update_strategy?:            string
 		})]
 		version?: string
 	})

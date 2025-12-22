@@ -4,7 +4,7 @@ import "list"
 
 #aws_datasync_location_azure_blob: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_datasync_location_azure_blob")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_datasync_location_azure_blob")
 	close({
 		access_tier?: string
 		agent_arns!: [...string]

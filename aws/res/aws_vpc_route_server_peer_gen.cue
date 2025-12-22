@@ -2,7 +2,7 @@ package res
 
 #aws_vpc_route_server_peer: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc_route_server_peer")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_route_server_peer")
 	close({
 		arn?:                  string
 		endpoint_eni_address?: string

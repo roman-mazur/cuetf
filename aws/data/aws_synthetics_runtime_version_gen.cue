@@ -2,7 +2,7 @@ package data
 
 #aws_synthetics_runtime_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_synthetics_runtime_version")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_synthetics_runtime_version")
 	close({
 		deprecation_date?: string
 		description?:      string

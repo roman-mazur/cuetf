@@ -2,7 +2,7 @@ package data
 
 #aws_mq_broker_engine_types: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_mq_broker_engine_types")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_mq_broker_engine_types")
 	close({
 		broker_engine_types?: [...close({
 			engine_type?: string

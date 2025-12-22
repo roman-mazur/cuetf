@@ -4,7 +4,7 @@ import "list"
 
 #aws_resourcegroupstaggingapi_resources: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_resourcegroupstaggingapi_resources")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_resourcegroupstaggingapi_resources")
 	close({
 		exclude_compliant_resources?: bool
 		id?:                          string

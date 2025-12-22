@@ -2,7 +2,7 @@ package res
 
 #aws_ssmquicksetup_configuration_manager: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ssmquicksetup_configuration_manager")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ssmquicksetup_configuration_manager")
 	close({
 		description?: string
 		configuration_definition?: matchN(1, [#configuration_definition, [...#configuration_definition]])

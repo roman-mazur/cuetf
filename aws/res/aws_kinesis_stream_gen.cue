@@ -4,7 +4,7 @@ import "list"
 
 #aws_kinesis_stream: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_kinesis_stream")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_kinesis_stream")
 	close({
 		arn?: string
 		stream_mode_details?: matchN(1, [#stream_mode_details, list.MaxItems(1) & [...#stream_mode_details]])

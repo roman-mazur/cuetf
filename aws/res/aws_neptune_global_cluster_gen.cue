@@ -2,7 +2,7 @@ package res
 
 #aws_neptune_global_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_neptune_global_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_neptune_global_cluster")
 	close({
 		arn?:                       string
 		deletion_protection?:       bool

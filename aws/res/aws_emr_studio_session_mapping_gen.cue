@@ -2,7 +2,7 @@ package res
 
 #aws_emr_studio_session_mapping: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_emr_studio_session_mapping")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_emr_studio_session_mapping")
 	close({
 		id?:            string
 		identity_id?:   string
