@@ -78,8 +78,10 @@ package data
 				instance_id?:   string
 				project?:       string
 			})]
-			root_password?: string
-			self_link?:     string
+			root_password?:            string
+			root_password_wo?:         string
+			root_password_wo_version?: string
+			self_link?:                string
 			server_ca_cert?: [...close({
 				cert?:             string
 				common_name?:      string

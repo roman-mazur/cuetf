@@ -40,6 +40,16 @@ package data
 		// "application/octet-stream" or "text/plain; charset=utf-8".
 		content_type?: string
 
+		// Contexts attached to an object, in key-value pairs.
+		contexts?: [...close({
+			custom?: [...close({
+				create_time?: string
+				key?:         string
+				update_time?: string
+				value?:       string
+			})]
+		})]
+
 		// Base 64 CRC32 hash of the uploaded data.
 		crc32c?: string
 

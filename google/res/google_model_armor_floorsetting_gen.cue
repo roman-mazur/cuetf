@@ -15,6 +15,7 @@ import "list"
 		// List of integrated services for which the floor setting is
 		// applicable.
 		integrated_services?: [...string]
+		id?: string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -23,7 +24,10 @@ import "list"
 
 		// Identifier. The resource name.
 		name?: string
-		id?:   string
+		ai_platform_floor_setting?: matchN(1, [#ai_platform_floor_setting, list.MaxItems(1) & [...#ai_platform_floor_setting]])
+		filter_config!: matchN(1, [#filter_config, list.MaxItems(1) & [_, ...] & [...#filter_config]])
+		floor_setting_metadata?: matchN(1, [#floor_setting_metadata, list.MaxItems(1) & [...#floor_setting_metadata]])
+		google_mcp_server_floor_setting?: matchN(1, [#google_mcp_server_floor_setting, list.MaxItems(1) & [...#google_mcp_server_floor_setting]])
 
 		// Will be any one of these:
 		//
@@ -31,13 +35,10 @@ import "list"
 		// * 'folders/{folder}'
 		// * 'organizations/{organizationId}'
 		parent!: string
-		ai_platform_floor_setting?: matchN(1, [#ai_platform_floor_setting, list.MaxItems(1) & [...#ai_platform_floor_setting]])
-		filter_config!: matchN(1, [#filter_config, list.MaxItems(1) & [_, ...] & [...#filter_config]])
-		floor_setting_metadata?: matchN(1, [#floor_setting_metadata, list.MaxItems(1) & [...#floor_setting_metadata]])
-		timeouts?: #timeouts
 
 		// [Output only] Update timestamp
 		update_time?: string
+		timeouts?:    #timeouts
 	})
 
 	#ai_platform_floor_setting: close({
@@ -64,6 +65,21 @@ import "list"
 
 	#floor_setting_metadata: close({
 		multi_language_detection?: matchN(1, [_#defs."/$defs/floor_setting_metadata/$defs/multi_language_detection", list.MaxItems(1) & [..._#defs."/$defs/floor_setting_metadata/$defs/multi_language_detection"]])
+	})
+
+	#google_mcp_server_floor_setting: close({
+		// If true, log Model Armor filter results to Cloud Logging.
+		enable_cloud_logging?: bool
+
+		// If true, Model Armor filters will be run in inspect and block
+		// mode.
+		// Requests that trip Model Armor filters will be blocked.
+		inspect_and_block?: bool
+
+		// If true, Model Armor filters will be run in inspect only mode.
+		// No action
+		// will be taken on the request.
+		inspect_only?: bool
 	})
 
 	#timeouts: close({

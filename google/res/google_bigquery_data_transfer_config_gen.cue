@@ -148,7 +148,7 @@ import "list"
 		// The version of the sensitive params - used to trigger updates
 		// of the write-only params. For more info see [updating
 		// write-only
-		// attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 		secret_access_key_wo_version?: number
 	})
 

@@ -12,7 +12,9 @@ import "list"
 		// project than the consumer
 		// project that is hosting the Looker Instance.
 		consumer_network?: string
-		admin_settings?: matchN(1, [#admin_settings, list.MaxItems(1) & [...#admin_settings]])
+
+		// Whether controlled egress is enabled on the Looker instance.
+		controlled_egress_enabled?: bool
 
 		// The time the instance was created in RFC3339 UTC "Zulu" format,
 		// accurate to nanoseconds.
@@ -37,10 +39,10 @@ import "list"
 
 		// Gemini enablement for Looker (Google Cloud Core).
 		gemini_enabled?: bool
-		id?:             string
 
 		// Private Ingress IP (IPv4).
 		ingress_private_ip?: string
+		id?:                 string
 
 		// Public Ingress IP (IPv4).
 		ingress_public_ip?: string
@@ -55,8 +57,16 @@ import "list"
 		// The ID of the instance or a fully qualified identifier for the
 		// instance.
 		name!: string
+		admin_settings?: matchN(1, [#admin_settings, list.MaxItems(1) & [...#admin_settings]])
+		controlled_egress_config?: matchN(1, [#controlled_egress_config, list.MaxItems(1) & [...#controlled_egress_config]])
 		custom_domain?: matchN(1, [#custom_domain, list.MaxItems(1) & [...#custom_domain]])
 		deny_maintenance_period?: matchN(1, [#deny_maintenance_period, list.MaxItems(1) & [...#deny_maintenance_period]])
+		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
+		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
+		oauth_config!: matchN(1, [#oauth_config, list.MaxItems(1) & [_, ...] & [...#oauth_config]])
+		psc_config?: matchN(1, [#psc_config, list.MaxItems(1) & [...#psc_config]])
+		timeouts?: #timeouts
+		user_metadata?: matchN(1, [#user_metadata, list.MaxItems(1) & [...#user_metadata]])
 
 		// Platform editions for a Looker instance. Each edition maps to a
 		// set of instance features, like its size. Must be one of these
@@ -89,12 +99,6 @@ import "list"
 		// "LOOKER_CORE_TRIAL_STANDARD", "LOOKER_CORE_TRIAL_ENTERPRISE",
 		// "LOOKER_CORE_TRIAL_EMBED"]
 		platform_edition?: string
-		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
-		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
-		oauth_config!: matchN(1, [#oauth_config, list.MaxItems(1) & [_, ...] & [...#oauth_config]])
-		psc_config?: matchN(1, [#psc_config, list.MaxItems(1) & [...#psc_config]])
-		timeouts?: #timeouts
-		user_metadata?: matchN(1, [#user_metadata, list.MaxItems(1) & [...#user_metadata]])
 
 		// Whether private IP is enabled on the Looker instance.
 		private_ip_enabled?: bool
@@ -132,6 +136,16 @@ import "list"
 		// and not an amendment to the
 		// existing list of allowed email domains.
 		allowed_email_domains?: [...string]
+	})
+
+	#controlled_egress_config: close({
+		// List of fully qualified domain names to be added to the
+		// allowlist for
+		// outbound traffic.
+		egress_fqdns?: [...string]
+
+		// Whether the Looker Marketplace is enabled.
+		marketplace_enabled?: bool
 	})
 
 	#custom_domain: close({

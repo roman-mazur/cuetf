@@ -41,6 +41,9 @@ package res
 		// * Must end with a number or a letter.
 		instance_id!: string
 
+		// The KMS key id to use for encryption of the Lustre instance.
+		kms_key?: string
+
 		// Labels as key value pairs.
 		//
 		// **Note**: This field is non-authoritative, and will only manage
@@ -77,16 +80,14 @@ package res
 		placement_policy?: string
 
 		// The state of the instance.
-		// Possible values:
-		// STATE_UNSPECIFIED
-		// ACTIVE
-		// CREATING
-		// DELETING
-		// UPGRADING
-		// REPAIRING
-		// STOPPED
+		// Please see
+		// https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state
+		// for values
 		state?:   string
 		project?: string
+
+		// The reason why the instance is in a certain state.
+		state_reason?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

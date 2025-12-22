@@ -30,12 +30,12 @@ package data
 		// clients and services.
 		effective_labels?: [string]: string
 		filter?: string
-		id?:     string
 
 		// The fingerprint used for optimistic locking of this resource.
 		// Used
 		// internally during updates.
 		label_fingerprint?: string
+		id?:                string
 
 		// Labels to apply to this Snapshot.
 		//
@@ -53,7 +53,6 @@ package data
 		// the
 		// snapshot using a customer-supplied encryption key.
 		licenses?: [...string]
-		most_recent?: bool
 
 		// Name of the resource; provided by the client when the resource
 		// is
@@ -94,11 +93,16 @@ package data
 			rsa_encrypted_key?:       string
 			sha256?:                  string
 		})]
-		project?:   string
-		self_link?: string
+		most_recent?: bool
 
 		// The unique identifier for the resource.
 		snapshot_id?: number
+		project?:     string
+
+		// Indicates the type of the snapshot. Possible values:
+		// ["ARCHIVE", "STANDARD"]
+		snapshot_type?: string
+		self_link?:     string
 
 		// A reference to the disk used to create this snapshot.
 		source_disk?: string

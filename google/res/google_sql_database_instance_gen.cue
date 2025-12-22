@@ -58,10 +58,15 @@ import "list"
 		// https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType
 		// for supported values.
 		instance_type?: string
+		id?:            string
 
 		// Maintenance version.
 		maintenance_version?: string
-		id?:                  string
+		ip_address?: [...close({
+			ip_address?:     string
+			time_to_retire?: string
+			type?:           string
+		})]
 
 		// The name of the instance that will act as the master in the
 		// replication setup. Note, this requires the master to have
@@ -73,11 +78,6 @@ import "list"
 		// This is done because after a name is used, it cannot be reused
 		// for up to one week.
 		name?: string
-		ip_address?: [...close({
-			ip_address?:     string
-			time_to_retire?: string
-			type?:           string
-		})]
 
 		// For a read pool instance, the number of nodes in the read pool.
 		// For read pools with auto scaling enabled, this field is read
@@ -125,6 +125,17 @@ import "list"
 
 		// Initial root password. Required for MS SQL Server.
 		root_password?: string
+
+		// Initial root password. Required for MS SQL Server.
+		// Note: This property is write-only and will not be read from the
+		// API. For more info see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		root_password_wo?: string
+
+		// Triggers update of root_password_wo write-only. For more info
+		// see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		root_password_wo_version?: string
 
 		// The URI of the created resource.
 		self_link?: string

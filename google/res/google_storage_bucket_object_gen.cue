@@ -39,7 +39,6 @@ import "list"
 		// resource to be abandoned rather than deleted when removed from
 		// your Terraform configuration.
 		deletion_policy?: string
-		detect_md5hash?:  string
 
 		// Whether an object is under event-based hold. Event-based hold
 		// is a way to retain objects until an event occurs, which is
@@ -53,7 +52,8 @@ import "list"
 
 		// The content generation of this object. Used for object
 		// versioning and soft delete.
-		generation?: number
+		generation?:     number
+		detect_md5hash?: string
 
 		// Resource name of the Cloud KMS key that will be used to encrypt
 		// the object. Overrides the object metadata's kmsKeyName value,
@@ -66,6 +66,7 @@ import "list"
 
 		// Hex value of md5hash
 		md5hexhash?: string
+		contexts?: matchN(1, [#contexts, list.MaxItems(1) & [...#contexts]])
 		customer_encryption?: matchN(1, [#customer_encryption, list.MaxItems(1) & [...#customer_encryption]])
 		retention?: matchN(1, [#retention, list.MaxItems(1) & [...#retention]])
 		timeouts?: #timeouts
@@ -108,6 +109,10 @@ import "list"
 		temporary_hold?: bool
 	})
 
+	#contexts: close({
+		custom!: matchN(1, [_#defs."/$defs/contexts/$defs/custom", [_, ...] & [..._#defs."/$defs/contexts/$defs/custom"]])
+	})
+
 	#customer_encryption: close({
 		// The encryption algorithm. Default: AES256
 		encryption_algorithm?: string
@@ -130,5 +135,23 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/contexts/$defs/custom": close({
+		// The time when context was first added to the storage#object in
+		// RFC 3339 format.
+		create_time?: string
+
+		// An individual object context. Context keys and their
+		// corresponding values must start with an alphanumeric
+		// character.
+		key!: string
+
+		// The time when context was last updated in RFC 3339 format.
+		update_time?: string
+
+		// The value associated with this context. This field holds the
+		// primary information for the given context key.
+		value!: string
 	})
 }

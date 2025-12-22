@@ -220,7 +220,7 @@ import "list"
 
 	#initial_user: close({
 		// The initial password for the user.
-		password!: string
+		password?: string
 
 		// The database username.
 		user?: string

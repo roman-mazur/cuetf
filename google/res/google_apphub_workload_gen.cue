@@ -65,8 +65,11 @@ import "list"
 				type?: string
 			})]
 			gcp_project?: string
-			location?:    string
-			zone?:        string
+			identity?: [...close({
+				principal?: string
+			})]
+			location?: string
+			zone?:     string
 		})]
 
 		// Reference of an underlying compute resource represented by the

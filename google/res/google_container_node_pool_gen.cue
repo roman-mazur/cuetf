@@ -646,10 +646,11 @@ import "list"
 
 		// The Linux kernel transparent hugepage defrag setting.
 		transparent_hugepage_defrag?: string
-		hugepages_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config"]])
 
 		// The Linux kernel transparent hugepage setting.
 		transparent_hugepage_enabled?: string
+		hugepages_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config"]])
+		node_kernel_module_loading?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading"]])
 	})
 
 	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config": close({
@@ -658,6 +659,11 @@ import "list"
 
 		// Amount of 2M hugepages.
 		hugepage_size_2m?: number
+	})
+
+	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading": close({
+		// The policy for kernel module loading.
+		policy?: string
 	})
 
 	_#defs: "/$defs/node_config/$defs/local_nvme_ssd_block_config": close({

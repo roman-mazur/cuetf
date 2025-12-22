@@ -30,6 +30,16 @@ package data
 		// "application/octet-stream" or "text/plain; charset=utf-8".
 		content_type?: string
 
+		// Contexts attached to an object, in key-value pairs.
+		contexts?: [...close({
+			custom?: [...close({
+				create_time?: string
+				key?:         string
+				update_time?: string
+				value?:       string
+			})]
+		})]
+
 		// Base 64 CRC32 hash of the uploaded data.
 		crc32c?: string
 
@@ -43,6 +53,7 @@ package data
 		// resource to be abandoned rather than deleted when removed from
 		// your Terraform configuration.
 		deletion_policy?: string
+		detect_md5hash?:  string
 
 		// Whether an object is under event-based hold. Event-based hold
 		// is a way to retain objects until an event occurs, which is
@@ -50,7 +61,6 @@ package data
 		// false). After being released (set to false), such objects will
 		// be subject to bucket-level retention (if any).
 		event_based_hold?: bool
-		detect_md5hash?:   string
 
 		// Flag to set empty Content-Type.
 		force_empty_content_type?: bool
@@ -63,10 +73,10 @@ package data
 		// the object. Overrides the object metadata's kmsKeyName value,
 		// if any.
 		kms_key_name?: string
-		id?:           string
 
 		// Base 64 MD5 hash of the uploaded data.
 		md5hash?: string
+		id?:      string
 
 		// Hex value of md5hash
 		md5hexhash?: string

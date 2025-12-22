@@ -24,21 +24,28 @@ import "list"
 		// The location for the resource:
 		// https://cloud.google.com/colab/docs/locations
 		location!: string
-		dataform_repository_source?: matchN(1, [#dataform_repository_source, list.MaxItems(1) & [...#dataform_repository_source]])
 
 		// User specified ID for the Notebook Execution Job
 		notebook_execution_job_id?: string
-		direct_notebook_source?: matchN(1, [#direct_notebook_source, list.MaxItems(1) & [...#direct_notebook_source]])
-		gcs_notebook_source?: matchN(1, [#gcs_notebook_source, list.MaxItems(1) & [...#gcs_notebook_source]])
-		timeouts?: #timeouts
 
 		// The NotebookRuntimeTemplate to source compute configuration
 		// from.
 		notebook_runtime_template_resource_name?: string
-		project?:                                 string
+		custom_environment_spec?: matchN(1, [#custom_environment_spec, list.MaxItems(1) & [...#custom_environment_spec]])
+		dataform_repository_source?: matchN(1, [#dataform_repository_source, list.MaxItems(1) & [...#dataform_repository_source]])
+		direct_notebook_source?: matchN(1, [#direct_notebook_source, list.MaxItems(1) & [...#direct_notebook_source]])
+		gcs_notebook_source?: matchN(1, [#gcs_notebook_source, list.MaxItems(1) & [...#gcs_notebook_source]])
+		timeouts?: #timeouts
+		project?:  string
 
 		// The service account to run the execution as.
 		service_account?: string
+	})
+
+	#custom_environment_spec: close({
+		machine_spec?: matchN(1, [_#defs."/$defs/custom_environment_spec/$defs/machine_spec", list.MaxItems(1) & [..._#defs."/$defs/custom_environment_spec/$defs/machine_spec"]])
+		network_spec?: matchN(1, [_#defs."/$defs/custom_environment_spec/$defs/network_spec", list.MaxItems(1) & [..._#defs."/$defs/custom_environment_spec/$defs/network_spec"]])
+		persistent_disk_spec?: matchN(1, [_#defs."/$defs/custom_environment_spec/$defs/persistent_disk_spec", list.MaxItems(1) & [..._#defs."/$defs/custom_environment_spec/$defs/persistent_disk_spec"]])
 	})
 
 	#dataform_repository_source: close({
@@ -68,5 +75,38 @@ import "list"
 	#timeouts: close({
 		create?: string
 		delete?: string
+	})
+
+	_#defs: "/$defs/custom_environment_spec/$defs/machine_spec": close({
+		// The number of accelerators used by the runtime.
+		accelerator_count?: number
+
+		// The type of hardware accelerator used by the runtime. If
+		// specified, acceleratorCount must also be specified.
+		accelerator_type?: string
+
+		// The Compute Engine machine type selected for the runtime.
+		machine_type?: string
+	})
+
+	_#defs: "/$defs/custom_environment_spec/$defs/network_spec": close({
+		// Enable public internet access for the runtime.
+		enable_internet_access?: bool
+
+		// The name of the VPC that this runtime is in.
+		network?: string
+
+		// The name of the subnetwork that this runtime is in.
+		subnetwork?: string
+	})
+
+	_#defs: "/$defs/custom_environment_spec/$defs/persistent_disk_spec": close({
+		// The disk size of the runtime in GB. If specified, the diskType
+		// must also be specified. The minimum size is 10GB and the
+		// maximum is 65536GB.
+		disk_size_gb?: string
+
+		// The type of the persistent disk.
+		disk_type?: string
 	})
 }

@@ -237,5 +237,8 @@ import "list"
 	_#defs: "/$defs/properties/$defs/time_zone": close({
 		// IANA Time Zone Database time zone, e.g. "America/New_York".
 		id?: string
+
+		// IANA Time Zone Database version number, e.g. "2019a".
+		version?: string
 	})
 }

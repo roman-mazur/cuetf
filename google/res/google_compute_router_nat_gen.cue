@@ -34,7 +34,7 @@ import "list"
 
 		// Enable endpoint independent mapping.
 		// For more information see the [official
-		// documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+		// documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
 		enable_endpoint_independent_mapping?: bool
 
 		// Specifies the endpoint Types supported by the NAT Gateway.

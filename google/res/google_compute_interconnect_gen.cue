@@ -71,11 +71,11 @@ import "list"
 		// with Google or otherwise to debug
 		// backend connectivity issues.
 		google_reference_id?: string
+		id?:                  string
 
 		// A list of the URLs of all InterconnectAttachments configured to
 		// use this Interconnect.
 		interconnect_attachments?: [...string]
-		id?: string
 
 		// URLs of InterconnectGroups that include this Interconnect.
 		// Order is arbitrary and items are unique.
@@ -130,6 +130,7 @@ import "list"
 		// Specifies the location inside Google's Networks.
 		location!: string
 		macsec?: matchN(1, [#macsec, list.MaxItems(1) & [...#macsec]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 		timeouts?: #timeouts
 
 		// Enable or disable MACsec on this Interconnect connection.
@@ -178,10 +179,10 @@ import "list"
 		// when prompted by Google NOC.
 		// This can be used only for ping tests.
 		peer_ip_address?: string
+		project?:         string
 
 		// Number of links actually provisioned in this interconnect.
 		provisioned_link_count?: number
-		project?:                string
 
 		// Indicates that this is a Cross-Cloud Interconnect. This field
 		// specifies the location outside
@@ -239,6 +240,15 @@ import "list"
 		// that drops all traffic
 		// if the MKA session cannot be established with your router.
 		fail_open?: bool
+	})
+
+	#params: close({
+		// Resource manager tags to be bound to the interconnect. Tag keys
+		// and values have the
+		// same definition as resource manager tags. Keys must be in the
+		// format tagKeys/{tag_key_id},
+		// and values are in the format tagValues/456.
+		resource_manager_tags?: [string]: string
 	})
 
 	#timeouts: close({

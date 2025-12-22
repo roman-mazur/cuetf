@@ -31,6 +31,12 @@ import "list"
 		// BPS algorithm. Possible values: ["DEFAULT", "ADD_COST_TO_MED"]
 		bgp_inter_region_cost?: string
 
+		// If set to 'true', the 'bgp_always_compare_med' field will be
+		// cleared.
+		// If set to 'false' (the default), 'bgp_always_compare_med' will
+		// be set to the value specified in the configuration.
+		delete_bgp_always_compare_med?: bool
+
 		// If set to 'true', default routes ('0.0.0.0/0') will be deleted
 		// immediately after network creation. Defaults to 'false'.
 		delete_default_routes_on_create?: bool

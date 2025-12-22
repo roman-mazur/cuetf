@@ -54,6 +54,7 @@ import "list"
 		// The name of the location of the instance. This can be a region
 		// for ENTERPRISE tier instances.
 		location?: string
+		directory_services?: matchN(1, [#directory_services, list.MaxItems(1) & [...#directory_services]])
 		file_shares!: matchN(1, [#file_shares, list.MaxItems(1) & [_, ...] & [...#file_shares]])
 		initial_replication?: matchN(1, [#initial_replication, list.MaxItems(1) & [...#initial_replication]])
 		networks!: matchN(1, [#networks, [_, ...] & [...#networks]])
@@ -91,6 +92,10 @@ import "list"
 		// Possible values include: STANDARD, PREMIUM, BASIC_HDD,
 		// BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 		tier!: string
+	})
+
+	#directory_services: close({
+		ldap?: matchN(1, [_#defs."/$defs/directory_services/$defs/ldap", list.MaxItems(1) & [..._#defs."/$defs/directory_services/$defs/ldap"]])
 	})
 
 	#file_shares: close({
@@ -151,6 +156,38 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/directory_services/$defs/ldap": close({
+		// The LDAP domain name in the format of 'my-domain.com'.
+		domain!: string
+
+		// The groups Organizational Unit (OU) is optional. This parameter
+		// is a hint
+		// to allow faster lookup in the LDAP namespace. In case that this
+		// parameter
+		// is not provided, Filestore instance will query the whole LDAP
+		// namespace.
+		groups_ou?: string
+
+		// The servers names are used for specifying the LDAP servers
+		// names.
+		// The LDAP servers names can come with two formats:
+		// 1. DNS name, for example: 'ldap.example1.com',
+		// 'ldap.example2.com'.
+		// 2. IP address, for example: '10.0.0.1', '10.0.0.2', '10.0.0.3'.
+		// All servers names must be in the same format: either all DNS
+		// names or all
+		// IP addresses.
+		servers!: [...string]
+
+		// The users Organizational Unit (OU) is optional. This parameter
+		// is a hint
+		// to allow faster lookup in the LDAP namespace. In case that this
+		// parameter
+		// is not provided, Filestore instance will query the whole LDAP
+		// namespace.
+		users_ou?: string
 	})
 
 	_#defs: "/$defs/file_shares/$defs/nfs_export_options": close({

@@ -140,8 +140,10 @@ package data
 		etag?: string
 		id?:   string
 
-		// Initial user to setup during cluster creation. This must be set
-		// for all new Clusters.
+		// Initial user to setup during cluster creation. If unset for new
+		// Clusters, a postgres role with null password is created. You
+		// will need to create additional users or set the password in
+		// order to log in.
 		initial_user?: [...close({
 			password?: string
 			user?:     string

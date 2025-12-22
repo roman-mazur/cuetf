@@ -11,6 +11,7 @@ import "list"
 		// the app's resource name. If not provided, a unique ID will be
 		// automatically assigned for the app.
 		app_id!: string
+		audio_processing_config?: matchN(1, [#audio_processing_config, list.MaxItems(1) & [...#audio_processing_config]])
 
 		// Timestamp when the app was created.
 		create_time?: string
@@ -47,9 +48,13 @@ import "list"
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		location!: string
-		audio_processing_config?: matchN(1, [#audio_processing_config, list.MaxItems(1) & [...#audio_processing_config]])
 		client_certificate_settings?: matchN(1, [#client_certificate_settings, list.MaxItems(1) & [...#client_certificate_settings]])
 		data_store_settings?: matchN(1, [#data_store_settings, list.MaxItems(1) & [...#data_store_settings]])
+
+		// Metadata about the app. This field can be used to store
+		// additional
+		// information relevant to the app's details or intended usages.
+		metadata?: [string]: string
 		default_channel_profile?: matchN(1, [#default_channel_profile, list.MaxItems(1) & [...#default_channel_profile]])
 		evaluation_metrics_thresholds?: matchN(1, [#evaluation_metrics_thresholds, list.MaxItems(1) & [...#evaluation_metrics_thresholds]])
 		language_settings?: matchN(1, [#language_settings, list.MaxItems(1) & [...#language_settings]])
@@ -58,24 +63,22 @@ import "list"
 		time_zone_settings?: matchN(1, [#time_zone_settings, list.MaxItems(1) & [...#time_zone_settings]])
 		timeouts?: #timeouts
 
-		// Metadata about the app. This field can be used to store
-		// additional
-		// information relevant to the app's details or intended usages.
-		metadata?: [string]: string
-		variable_declarations?: matchN(1, [#variable_declarations, [...#variable_declarations]])
-
 		// Identifier. The unique identifier of the app.
 		// Format: 'projects/{project}/locations/{location}/apps/{app}'
-		name?:    string
-		project?: string
+		name?: string
+
+		// Whether the app is pinned in the app list.
+		pinned?: bool
 
 		// The root agent is the entry point of the app.
 		// Format:
 		// 'projects/{project}/locations/{location}/apps/{app}/agents/{agent}'
 		root_agent?: string
+		project?:    string
 
 		// Timestamp when the app was last updated.
 		update_time?: string
+		variable_declarations?: matchN(1, [#variable_declarations, [...#variable_declarations]])
 	})
 
 	#audio_processing_config: close({
@@ -484,6 +487,9 @@ import "list"
 
 		// Required properties of Type.OBJECT.
 		required?: [...string]
+
+		// The title of the schema.
+		title?: string
 
 		// The type of the data.
 		// Possible values:

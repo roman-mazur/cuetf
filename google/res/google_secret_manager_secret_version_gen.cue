@@ -48,12 +48,12 @@ package res
 
 		// The secret data. Must be no larger than 64KiB. For more info
 		// see [updating write-only
-		// attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 		secret_data_wo?: string
 
 		// Triggers update of secret data write-only. For more info see
 		// [updating write-only
-		// attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 		secret_data_wo_version?: number
 
 		// The version of the Secret.

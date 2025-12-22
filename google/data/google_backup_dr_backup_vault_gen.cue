@@ -68,6 +68,11 @@ package data
 		// Optional. Time after which the BackupVault resource is locked.
 		effective_time?: string
 
+		// Encryption configuration for the backup vault.
+		encryption_config?: [...close({
+			kms_key_name?: string
+		})]
+
 		// Optional. Server specified ETag for the backup vault resource
 		// to prevent simultaneous updates from overwiting each other.
 		etag?: string

@@ -346,6 +346,8 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_service_account_jwt": data.#google_service_account_jwt
 	_#ds: "\(#googlePrefix)_service_account_key": data.#google_service_account_key
 	_#ds: "\(#googlePrefix)_service_accounts": data.#google_service_accounts
+	_#ds: "\(#googlePrefix)_service_directory_namespace_iam_policy": data.#google_service_directory_namespace_iam_policy
+	_#ds: "\(#googlePrefix)_service_directory_service_iam_policy": data.#google_service_directory_service_iam_policy
 	_#ds: "\(#googlePrefix)_service_networking_peered_dns_domain": data.#google_service_networking_peered_dns_domain
 	_#ds: "\(#googlePrefix)_site_verification_token": data.#google_site_verification_token
 	_#ds: "\(#googlePrefix)_sourcerepo_repository": data.#google_sourcerepo_repository

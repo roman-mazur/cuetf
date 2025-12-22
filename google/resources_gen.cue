@@ -180,6 +180,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_certificate_manager_trust_config": res.#google_certificate_manager_trust_config
 	_#res: "\(#googlePrefix)_ces_agent": res.#google_ces_agent
 	_#res: "\(#googlePrefix)_ces_app": res.#google_ces_app
+	_#res: "\(#googlePrefix)_ces_app_version": res.#google_ces_app_version
 	_#res: "\(#googlePrefix)_ces_deployment": res.#google_ces_deployment
 	_#res: "\(#googlePrefix)_ces_example": res.#google_ces_example
 	_#res: "\(#googlePrefix)_ces_guardrail": res.#google_ces_guardrail
@@ -333,6 +334,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_compute_network_peering_routes_config": res.#google_compute_network_peering_routes_config
 	_#res: "\(#googlePrefix)_compute_node_group": res.#google_compute_node_group
 	_#res: "\(#googlePrefix)_compute_node_template": res.#google_compute_node_template
+	_#res: "\(#googlePrefix)_compute_organization_security_policy": res.#google_compute_organization_security_policy
 	_#res: "\(#googlePrefix)_compute_packet_mirroring": res.#google_compute_packet_mirroring
 	_#res: "\(#googlePrefix)_compute_per_instance_config": res.#google_compute_per_instance_config
 	_#res: "\(#googlePrefix)_compute_preview_feature": res.#google_compute_preview_feature
@@ -556,7 +558,9 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_dialogflow_encryption_spec": res.#google_dialogflow_encryption_spec
 	_#res: "\(#googlePrefix)_dialogflow_entity_type": res.#google_dialogflow_entity_type
 	_#res: "\(#googlePrefix)_dialogflow_fulfillment": res.#google_dialogflow_fulfillment
+	_#res: "\(#googlePrefix)_dialogflow_generator": res.#google_dialogflow_generator
 	_#res: "\(#googlePrefix)_dialogflow_intent": res.#google_dialogflow_intent
+	_#res: "\(#googlePrefix)_dialogflow_version": res.#google_dialogflow_version
 	_#res: "\(#googlePrefix)_discovery_engine_acl_config": res.#google_discovery_engine_acl_config
 	_#res: "\(#googlePrefix)_discovery_engine_assistant": res.#google_discovery_engine_assistant
 	_#res: "\(#googlePrefix)_discovery_engine_chat_engine": res.#google_discovery_engine_chat_engine
@@ -572,6 +576,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_discovery_engine_sitemap": res.#google_discovery_engine_sitemap
 	_#res: "\(#googlePrefix)_discovery_engine_target_site": res.#google_discovery_engine_target_site
 	_#res: "\(#googlePrefix)_discovery_engine_user_store": res.#google_discovery_engine_user_store
+	_#res: "\(#googlePrefix)_discovery_engine_widget_config": res.#google_discovery_engine_widget_config
 	_#res: "\(#googlePrefix)_dns_managed_zone": res.#google_dns_managed_zone
 	_#res: "\(#googlePrefix)_dns_managed_zone_iam_binding": res.#google_dns_managed_zone_iam_binding
 	_#res: "\(#googlePrefix)_dns_managed_zone_iam_member": res.#google_dns_managed_zone_iam_member
@@ -721,6 +726,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_iam_workforce_pool_provider": res.#google_iam_workforce_pool_provider
 	_#res: "\(#googlePrefix)_iam_workforce_pool_provider_key": res.#google_iam_workforce_pool_provider_key
 	_#res: "\(#googlePrefix)_iam_workforce_pool_provider_scim_tenant": res.#google_iam_workforce_pool_provider_scim_tenant
+	_#res: "\(#googlePrefix)_iam_workforce_pool_provider_scim_token": res.#google_iam_workforce_pool_provider_scim_token
 	_#res: "\(#googlePrefix)_iam_workload_identity_pool": res.#google_iam_workload_identity_pool
 	_#res: "\(#googlePrefix)_iam_workload_identity_pool_provider": res.#google_iam_workload_identity_pool_provider
 	_#res: "\(#googlePrefix)_iap_app_engine_service_iam_binding": res.#google_iap_app_engine_service_iam_binding
@@ -895,10 +901,17 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_network_services_gateway": res.#google_network_services_gateway
 	_#res: "\(#googlePrefix)_network_services_grpc_route": res.#google_network_services_grpc_route
 	_#res: "\(#googlePrefix)_network_services_http_route": res.#google_network_services_http_route
+	_#res: "\(#googlePrefix)_network_services_lb_edge_extension": res.#google_network_services_lb_edge_extension
 	_#res: "\(#googlePrefix)_network_services_lb_route_extension": res.#google_network_services_lb_route_extension
 	_#res: "\(#googlePrefix)_network_services_lb_traffic_extension": res.#google_network_services_lb_traffic_extension
 	_#res: "\(#googlePrefix)_network_services_mesh": res.#google_network_services_mesh
+	_#res: "\(#googlePrefix)_network_services_multicast_consumer_association": res.#google_network_services_multicast_consumer_association
+	_#res: "\(#googlePrefix)_network_services_multicast_domain_activation": res.#google_network_services_multicast_domain_activation
 	_#res: "\(#googlePrefix)_network_services_multicast_domain": res.#google_network_services_multicast_domain
+	_#res: "\(#googlePrefix)_network_services_multicast_domain_group": res.#google_network_services_multicast_domain_group
+	_#res: "\(#googlePrefix)_network_services_multicast_group_range_activation": res.#google_network_services_multicast_group_range_activation
+	_#res: "\(#googlePrefix)_network_services_multicast_group_range": res.#google_network_services_multicast_group_range
+	_#res: "\(#googlePrefix)_network_services_multicast_producer_association": res.#google_network_services_multicast_producer_association
 	_#res: "\(#googlePrefix)_network_services_service_binding": res.#google_network_services_service_binding
 	_#res: "\(#googlePrefix)_network_services_tcp_route": res.#google_network_services_tcp_route
 	_#res: "\(#googlePrefix)_network_services_tls_route": res.#google_network_services_tls_route
@@ -1044,6 +1057,15 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_service_account_iam_member": res.#google_service_account_iam_member
 	_#res: "\(#googlePrefix)_service_account_iam_policy": res.#google_service_account_iam_policy
 	_#res: "\(#googlePrefix)_service_account_key": res.#google_service_account_key
+	_#res: "\(#googlePrefix)_service_directory_endpoint": res.#google_service_directory_endpoint
+	_#res: "\(#googlePrefix)_service_directory_namespace": res.#google_service_directory_namespace
+	_#res: "\(#googlePrefix)_service_directory_namespace_iam_binding": res.#google_service_directory_namespace_iam_binding
+	_#res: "\(#googlePrefix)_service_directory_namespace_iam_member": res.#google_service_directory_namespace_iam_member
+	_#res: "\(#googlePrefix)_service_directory_namespace_iam_policy": res.#google_service_directory_namespace_iam_policy
+	_#res: "\(#googlePrefix)_service_directory_service": res.#google_service_directory_service
+	_#res: "\(#googlePrefix)_service_directory_service_iam_binding": res.#google_service_directory_service_iam_binding
+	_#res: "\(#googlePrefix)_service_directory_service_iam_member": res.#google_service_directory_service_iam_member
+	_#res: "\(#googlePrefix)_service_directory_service_iam_policy": res.#google_service_directory_service_iam_policy
 	_#res: "\(#googlePrefix)_service_networking_connection": res.#google_service_networking_connection
 	_#res: "\(#googlePrefix)_service_networking_peered_dns_domain": res.#google_service_networking_peered_dns_domain
 	_#res: "\(#googlePrefix)_service_networking_vpc_service_controls": res.#google_service_networking_vpc_service_controls

@@ -606,6 +606,9 @@ package data
 					hugepage_size_1g?: number
 					hugepage_size_2m?: number
 				})]
+				node_kernel_module_loading?: [...close({
+					policy?: string
+				})]
 				sysctls?: [string]: string
 				transparent_hugepage_defrag?:  string
 				transparent_hugepage_enabled?: string
@@ -842,6 +845,9 @@ package data
 						hugepage_size_1g?: number
 						hugepage_size_2m?: number
 					})]
+					node_kernel_module_loading?: [...close({
+						policy?: string
+					})]
 					sysctls?: [string]: string
 					transparent_hugepage_defrag?:  string
 					transparent_hugepage_enabled?: string
@@ -930,6 +936,9 @@ package data
 		node_pool_auto_config?: [...close({
 			linux_node_config?: [...close({
 				cgroup_mode?: string
+				node_kernel_module_loading?: [...close({
+					policy?: string
+				})]
 			})]
 			network_tags?: [...close({
 				tags?: [...string]
