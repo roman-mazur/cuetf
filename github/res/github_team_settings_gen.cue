@@ -4,7 +4,7 @@ import "list"
 
 #github_team_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_team_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_team_settings")
 	close({
 		// The GitHub team id or the GitHub team slug.
 		team_id!: string

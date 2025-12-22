@@ -2,7 +2,7 @@ package res
 
 #github_workflow_repository_permissions: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_workflow_repository_permissions")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_workflow_repository_permissions")
 	close({
 		// Whether GitHub Actions can approve pull requests. Enabling this
 		// can be a security risk.

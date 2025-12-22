@@ -6,6 +6,7 @@ import "github.com/roman-mazur/cuetf/github/res"
 	#githubPrefix: string
 	_#res: "\(#githubPrefix)_actions_environment_secret": res.#github_actions_environment_secret
 	_#res: "\(#githubPrefix)_actions_environment_variable": res.#github_actions_environment_variable
+	_#res: "\(#githubPrefix)_actions_hosted_runner": res.#github_actions_hosted_runner
 	_#res: "\(#githubPrefix)_actions_organization_oidc_subject_claim_customization_template": res.#github_actions_organization_oidc_subject_claim_customization_template
 	_#res: "\(#githubPrefix)_actions_organization_permissions": res.#github_actions_organization_permissions
 	_#res: "\(#githubPrefix)_actions_organization_secret": res.#github_actions_organization_secret
@@ -34,7 +35,9 @@ import "github.com/roman-mazur/cuetf/github/res"
 	_#res: "\(#githubPrefix)_emu_group_mapping": res.#github_emu_group_mapping
 	_#res: "\(#githubPrefix)_enterprise_actions_permissions": res.#github_enterprise_actions_permissions
 	_#res: "\(#githubPrefix)_enterprise_actions_runner_group": res.#github_enterprise_actions_runner_group
+	_#res: "\(#githubPrefix)_enterprise_actions_workflow_permissions": res.#github_enterprise_actions_workflow_permissions
 	_#res: "\(#githubPrefix)_enterprise_organization": res.#github_enterprise_organization
+	_#res: "\(#githubPrefix)_enterprise_security_analysis_settings": res.#github_enterprise_security_analysis_settings
 	_#res: "\(#githubPrefix)_issue": res.#github_issue
 	_#res: "\(#githubPrefix)_issue_label": res.#github_issue_label
 	_#res: "\(#githubPrefix)_issue_labels": res.#github_issue_labels

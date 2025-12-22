@@ -2,7 +2,7 @@ package res
 
 #github_actions_organization_variable: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_actions_organization_variable")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_actions_organization_variable")
 	close({
 		// Date of 'actions_variable' creation.
 		created_at?: string

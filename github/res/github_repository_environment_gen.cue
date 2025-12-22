@@ -4,7 +4,7 @@ import "list"
 
 #github_repository_environment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_repository_environment")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_repository_environment")
 	close({
 		// Can Admins bypass deployment protections
 		can_admins_bypass?: bool

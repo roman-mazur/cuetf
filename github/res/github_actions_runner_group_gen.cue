@@ -2,7 +2,7 @@ package res
 
 #github_actions_runner_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_actions_runner_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_actions_runner_group")
 	close({
 		// Whether public repositories can be added to the runner group.
 		allows_public_repositories?: bool

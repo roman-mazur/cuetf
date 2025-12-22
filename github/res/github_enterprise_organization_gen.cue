@@ -2,7 +2,7 @@ package res
 
 #github_enterprise_organization: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_enterprise_organization")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_enterprise_organization")
 	close({
 		// List of organization owner usernames.
 		admin_logins!: [...string]

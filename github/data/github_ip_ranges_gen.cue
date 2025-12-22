@@ -2,7 +2,7 @@ package data
 
 #github_ip_ranges: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_ip_ranges")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/github_ip_ranges")
 	close({
 		actions?: [...string]
 		actions_ipv4?: [...string]

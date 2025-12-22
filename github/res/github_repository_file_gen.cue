@@ -2,7 +2,7 @@ package res
 
 #github_repository_file: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_repository_file")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_repository_file")
 	close({
 		// Automatically create the branch if it could not be found.
 		// Subsequent reads if the branch is deleted will occur from

@@ -4,7 +4,7 @@ import "list"
 
 #github_repository_ruleset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_repository_ruleset")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_repository_ruleset")
 	close({
 		// Possible values for Enforcement are `disabled`, `active`,
 		// `evaluate`. Note: `evaluate` is currently only supported for
@@ -18,8 +18,8 @@ import "list"
 		node_id?: string
 		etag?:    string
 
-		// Name of the repository to apply rulset to.
-		repository?: string
+		// Name of the repository to apply ruleset to.
+		repository!: string
 		id?:         string
 		bypass_actors?: matchN(1, [#bypass_actors, [...#bypass_actors]])
 		conditions?: matchN(1, [#conditions, list.MaxItems(1) & [...#conditions]])
@@ -186,7 +186,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/max_file_size": close({
-		// The maximum allowed size of a file in bytes.
+		// The maximum allowed size of a file in megabytes (MB). Valid
+		// range is 1-100 MB.
 		max_file_size!: number
 	})
 

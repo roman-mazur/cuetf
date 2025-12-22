@@ -2,7 +2,7 @@ package res
 
 #github_repository_collaborators: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_repository_collaborators")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_repository_collaborators")
 	close({
 		id?: string
 		ignore_team?: matchN(1, [#ignore_team, [...#ignore_team]])

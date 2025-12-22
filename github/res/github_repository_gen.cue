@@ -4,7 +4,7 @@ import "list"
 
 #github_repository: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_repository")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_repository")
 	close({
 		// Set to 'true' to allow auto-merging pull requests on the
 		// repository.
@@ -42,7 +42,7 @@ import "list"
 		etag?:        string
 
 		// Set to 'true' to fork an existing repository.
-		fork?: bool
+		fork?: string
 
 		// A string of the form 'orgname/reponame'.
 		full_name?: string
@@ -191,7 +191,10 @@ import "list"
 
 	#security_and_analysis: close({
 		advanced_security?: matchN(1, [_#defs."/$defs/security_and_analysis/$defs/advanced_security", list.MaxItems(1) & [..._#defs."/$defs/security_and_analysis/$defs/advanced_security"]])
+		code_security?: matchN(1, [_#defs."/$defs/security_and_analysis/$defs/code_security", list.MaxItems(1) & [..._#defs."/$defs/security_and_analysis/$defs/code_security"]])
 		secret_scanning?: matchN(1, [_#defs."/$defs/security_and_analysis/$defs/secret_scanning", list.MaxItems(1) & [..._#defs."/$defs/security_and_analysis/$defs/secret_scanning"]])
+		secret_scanning_ai_detection?: matchN(1, [_#defs."/$defs/security_and_analysis/$defs/secret_scanning_ai_detection", list.MaxItems(1) & [..._#defs."/$defs/security_and_analysis/$defs/secret_scanning_ai_detection"]])
+		secret_scanning_non_provider_patterns?: matchN(1, [_#defs."/$defs/security_and_analysis/$defs/secret_scanning_non_provider_patterns", list.MaxItems(1) & [..._#defs."/$defs/security_and_analysis/$defs/secret_scanning_non_provider_patterns"]])
 		secret_scanning_push_protection?: matchN(1, [_#defs."/$defs/security_and_analysis/$defs/secret_scanning_push_protection", list.MaxItems(1) & [..._#defs."/$defs/security_and_analysis/$defs/secret_scanning_push_protection"]])
 	})
 
@@ -221,25 +224,59 @@ import "list"
 
 	_#defs: "/$defs/security_and_analysis/$defs/advanced_security": close({
 		// Set to 'enabled' to enable advanced security features on the
-		// repository. Can be 'enabled' or 'disabled'.
+		// repository. Can be 'enabled' or 'disabled', This value being
+		// present when split licensing is enabled will error out.
+		status!: string
+	})
+
+	_#defs: "/$defs/security_and_analysis/$defs/code_security": close({
+		// Set to 'enabled' to enable code security on the repository. Can
+		// be 'enabled' or 'disabled'. If set to 'enabled', the
+		// repository's visibility must be 'public',
+		// 'security_and_analysis[0].advanced_security[0].status' must
+		// also be set to 'enabled', or your Organization must have split
+		// licensing for Advanced security.
 		status!: string
 	})
 
 	_#defs: "/$defs/security_and_analysis/$defs/secret_scanning": close({
 		// Set to 'enabled' to enable secret scanning on the repository.
 		// Can be 'enabled' or 'disabled'. If set to 'enabled', the
-		// repository's visibility must be 'public' or
+		// repository's visibility must be 'public',
 		// 'security_and_analysis[0].advanced_security[0].status' must
-		// also be set to 'enabled'.
+		// also be set to 'enabled', or your Organization must have split
+		// licensing for Advanced security.
+		status!: string
+	})
+
+	_#defs: "/$defs/security_and_analysis/$defs/secret_scanning_ai_detection": close({
+		// Set to 'enabled' to enable secret scanning AI detection on the
+		// repository. Can be 'enabled' or 'disabled'. If set to
+		// 'enabled', the repository's visibility must be 'public',
+		// 'security_and_analysis[0].advanced_security[0].status' must
+		// also be set to 'enabled', or your Organization must have split
+		// licensing for Advanced security.
+		status!: string
+	})
+
+	_#defs: "/$defs/security_and_analysis/$defs/secret_scanning_non_provider_patterns": close({
+		// Set to 'enabled' to enable secret scanning non-provider
+		// patterns on the repository. Can be 'enabled' or 'disabled'. If
+		// set to 'enabled', the repository's visibility must be
+		// 'public',
+		// 'security_and_analysis[0].advanced_security[0].status' must
+		// also be set to 'enabled', or your Organization must have split
+		// licensing for Advanced security.
 		status!: string
 	})
 
 	_#defs: "/$defs/security_and_analysis/$defs/secret_scanning_push_protection": close({
 		// Set to 'enabled' to enable secret scanning push protection on
 		// the repository. Can be 'enabled' or 'disabled'. If set to
-		// 'enabled', the repository's visibility must be 'public' or
+		// 'enabled', the repository's visibility must be 'public',
 		// 'security_and_analysis[0].advanced_security[0].status' must
-		// also be set to 'enabled'.
+		// also be set to 'enabled', or your Organization must have split
+		// licensing for Advanced security.
 		status!: string
 	})
 }

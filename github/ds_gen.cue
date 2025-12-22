@@ -60,6 +60,7 @@ import "github.com/roman-mazur/cuetf/github/data"
 	_#ds: "\(#githubPrefix)_repository_custom_properties": data.#github_repository_custom_properties
 	_#ds: "\(#githubPrefix)_repository_deploy_keys": data.#github_repository_deploy_keys
 	_#ds: "\(#githubPrefix)_repository_deployment_branch_policies": data.#github_repository_deployment_branch_policies
+	_#ds: "\(#githubPrefix)_repository_environment_deployment_policies": data.#github_repository_environment_deployment_policies
 	_#ds: "\(#githubPrefix)_repository_environments": data.#github_repository_environments
 	_#ds: "\(#githubPrefix)_repository_file": data.#github_repository_file
 	_#ds: "\(#githubPrefix)_repository": data.#github_repository

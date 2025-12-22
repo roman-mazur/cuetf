@@ -4,7 +4,7 @@ import "list"
 
 #provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github/provider")
 	close({
 		// The GitHub Base API URL
 		base_url?: string
