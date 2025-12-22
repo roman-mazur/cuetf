@@ -4,7 +4,7 @@ import "list"
 
 #provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack/provider")
 	close({
 		elasticsearch?: matchN(1, [#elasticsearch, list.MaxItems(1) & [...#elasticsearch]])
 		fleet?: matchN(1, [#fleet, list.MaxItems(1) & [...#fleet]])

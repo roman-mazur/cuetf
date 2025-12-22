@@ -2,7 +2,7 @@ package data
 
 #elasticstack_elasticsearch_ingest_processor_date_index_name: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_ingest_processor_date_index_name")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_ingest_processor_date_index_name")
 	close({
 		// An array of the expected date formats for parsing dates /
 		// timestamps in the document being preprocessed.

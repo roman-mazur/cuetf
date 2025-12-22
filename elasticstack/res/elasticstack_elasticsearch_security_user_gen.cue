@@ -1,10 +1,8 @@
 package res
 
-import "list"
-
 #elasticstack_elasticsearch_security_user: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_security_user")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_security_user")
 	close({
 		// The email of the user.
 		email?: string
@@ -22,24 +20,39 @@ import "list"
 		// Arbitrary metadata that you want to associate with the user.
 		metadata?: string
 
-		// The user’s password. Passwords must be at least 6 characters
-		// long.
+		// The user's password. Passwords must be at least 6 characters
+		// long. Note: Consider using `password_wo` for better security
+		// with ephemeral resources.
 		password?: string
 
-		// A hash of the user’s password. This must be produced using the
+		// A hash of the user's password. This must be produced using the
 		// same hashing algorithm as has been configured for password
-		// storage (see
-		// https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings).
+		// storage (see the [security settings
+		// documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings)).
 		password_hash?: string
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
 
-		// A set of roles the user has. The roles determine the user’s
-		// access permissions. Default is [].
+		// Write-only password attribute for use with ephemeral resources.
+		// Passwords must be at least 6 characters long. This attribute
+		// is designed for use with ephemeral resources like
+		// `vault_kv_secret_v2` to prevent secrets from being stored in
+		// the Terraform state. Must be used with `password_wo_version`.
+		password_wo?: string
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+
+		// Version identifier for the write-only password. This field is
+		// used to trigger updates when the password changes. Required
+		// when `password_wo` is set. Typically, you would use a hash of
+		// the password or a version identifier from your secret
+		// management system.
+		password_wo_version?: string
+
+		// A set of roles the user has. The roles determine the user's
+		// access permissions.
 		roles!: [...string]
 
-		// An identifier for the user see the [security API put user
+		// An identifier for the user (see the [security API put user
 		// documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html#security-api-put-user-path-params)
-		// for more details.
+		// for more details).
 		username!: string
 	})
 

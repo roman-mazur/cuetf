@@ -2,7 +2,7 @@ package data
 
 #elasticstack_elasticsearch_ingest_processor_json: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_ingest_processor_json")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_ingest_processor_json")
 	close({
 		// Flag that forces the parsed JSON to be added at the top level
 		// of the document. `target_field` must not be set when this

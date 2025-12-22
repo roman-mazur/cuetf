@@ -2,7 +2,7 @@ package res
 
 #elasticstack_fleet_agent_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_fleet_agent_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_fleet_agent_policy")
 	close({
 		// The identifier for the data output.
 		data_output_id?: string
@@ -15,6 +15,15 @@ package res
 
 		// The identifier for the Fleet server host.
 		fleet_server_host_id?: string
+
+		// Determines the format of the host.name field in events. Can be
+		// 'hostname' (short hostname, e.g., 'myhost') or 'fqdn' (fully
+		// qualified domain name, e.g., 'myhost.example.com'). Defaults
+		// to 'hostname'.
+		host_name_format?: string
+
+		// The ID of this resource.
+		id?: string
 
 		// User-defined data tags to apply to all inputs. Values can be
 		// strings (string_value) or numbers (number_value) but not both.
@@ -29,9 +38,6 @@ package res
 			// not be defined.
 			string_value?: string
 		})
-
-		// The ID of this resource.
-		id?: string
 
 		// The inactivity timeout for the agent policy. If an agent does
 		// not report within this time period, it will be considered
@@ -55,6 +61,11 @@ package res
 
 		// Unique identifier of the agent policy.
 		policy_id?: string
+
+		// Map of agent versions to target percentages for automatic
+		// upgrade. The key is the target version and the value is the
+		// percentage of agents to upgrade to that version.
+		required_versions?: [string]: number
 
 		// Set to true if you do not wish the agent policy to be deleted
 		// at destroy time, and instead just remove the agent policy from

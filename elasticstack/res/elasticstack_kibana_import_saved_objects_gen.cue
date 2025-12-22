@@ -2,7 +2,7 @@ package res
 
 #elasticstack_kibana_import_saved_objects: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_kibana_import_saved_objects")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_import_saved_objects")
 	close({
 		errors?: [...close({
 			error?: close({

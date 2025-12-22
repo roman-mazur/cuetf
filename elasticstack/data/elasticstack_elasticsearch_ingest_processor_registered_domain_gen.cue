@@ -2,7 +2,7 @@ package data
 
 #elasticstack_elasticsearch_ingest_processor_registered_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_ingest_processor_registered_domain")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_ingest_processor_registered_domain")
 	close({
 		// Description of the processor.
 		description?: string

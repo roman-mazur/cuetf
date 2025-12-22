@@ -2,13 +2,68 @@ package res
 
 #elasticstack_elasticsearch_index: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_index")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_index")
 	close({
 		// A JSON string describing the analyzers applied to the index.
 		analysis_analyzer?: string
 
 		// A JSON string describing the char_filters applied to the index.
 		analysis_char_filter?: string
+
+		// Aliases for the index.
+		alias?: matchN(1, [close({
+			// Query used to limit documents the alias can access.
+			filter?: string
+
+			// Value used to route indexing operations to a specific shard. If
+			// specified, this overwrites the `routing` value for indexing
+			// operations.
+			index_routing?: string
+
+			// If true, the alias is hidden.
+			is_hidden?: bool
+
+			// If true, the index is the write index for the alias.
+			is_write_index?: bool
+
+			// Index alias name.
+			name!: string
+
+			// Value used to route indexing and search operations to a
+			// specific shard.
+			routing?: string
+
+			// Value used to route search operations to a specific shard. If
+			// specified, this overwrites the routing value for search
+			// operations.
+			search_routing?: string
+		}), [...close({
+			// Query used to limit documents the alias can access.
+			filter?: string
+
+			// Value used to route indexing operations to a specific shard. If
+			// specified, this overwrites the `routing` value for indexing
+			// operations.
+			index_routing?: string
+
+			// If true, the alias is hidden.
+			is_hidden?: bool
+
+			// If true, the index is the write index for the alias.
+			is_write_index?: bool
+
+			// Index alias name.
+			name!: string
+
+			// Value used to route indexing and search operations to a
+			// specific shard.
+			routing?: string
+
+			// Value used to route search operations to a specific shard. If
+			// specified, this overwrites the routing value for search
+			// operations.
+			search_routing?: string
+		})]])
 
 		// A JSON string describing the filters applied to the index.
 		analysis_filter?: string
@@ -117,6 +172,10 @@ package res
 		// types.
 		mapping_coerce?: bool
 
+		// The maximum number of fields in an index. Field type parameters
+		// count towards this limit. The default value is 1000.
+		mapping_total_fields_limit?: number
+
 		// Mapping for fields in the index.
 		// If specified, this mapping can include: field names, [field
 		// data
@@ -155,7 +214,6 @@ package res
 
 		// The maximum length of regex that can be used in Regexp Query.
 		max_regex_length?: number
-		alias?: matchN(1, [#alias, [...#alias]])
 		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 		settings?: matchN(1, [#settings, [...#settings]])
 
@@ -282,34 +340,6 @@ package res
 		// (number_of_replicas+1). Default: `1`, the primary shard. This
 		// value is ignored when running against Serverless projects.
 		wait_for_active_shards?: string
-	})
-
-	#alias: close({
-		// Query used to limit documents the alias can access.
-		filter?: string
-
-		// Value used to route indexing operations to a specific shard. If
-		// specified, this overwrites the `routing` value for indexing
-		// operations.
-		index_routing?: string
-
-		// If true, the alias is hidden.
-		is_hidden?: bool
-
-		// If true, the index is the write index for the alias.
-		is_write_index?: bool
-
-		// Index alias name.
-		name!: string
-
-		// Value used to route indexing and search operations to a
-		// specific shard.
-		routing?: string
-
-		// Value used to route search operations to a specific shard. If
-		// specified, this overwrites the routing value for search
-		// operations.
-		search_routing?: string
 	})
 
 	#elasticsearch_connection: close({

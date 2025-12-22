@@ -2,7 +2,7 @@ package res
 
 #elasticstack_elasticsearch_watch: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_watch")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_watch")
 	close({
 		// The list of actions that will be run if the condition matches.
 		actions?: string

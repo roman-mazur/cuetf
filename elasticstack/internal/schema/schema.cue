@@ -1162,6 +1162,64 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			version: 0
 			block: {
 				attributes: {
+					alias: {
+						nested_type: {
+							attributes: {
+								filter: {
+									type:             "string"
+									description:      "Query used to limit documents the alias can access."
+									description_kind: "plain"
+									optional:         true
+								}
+								index_routing: {
+									type:             "string"
+									description:      "Value used to route indexing operations to a specific shard. If specified, this overwrites the `routing` value for indexing operations."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								is_hidden: {
+									type:             "bool"
+									description:      "If true, the alias is hidden."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								is_write_index: {
+									type:             "bool"
+									description:      "If true, the index is the write index for the alias."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Index alias name."
+									description_kind: "plain"
+									required:         true
+								}
+								routing: {
+									type:             "string"
+									description:      "Value used to route indexing and search operations to a specific shard."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								search_routing: {
+									type:             "string"
+									description:      "Value used to route search operations to a specific shard. If specified, this overwrites the routing value for search operations."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "set"
+						}
+						description:      "Aliases for the index."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					analysis_analyzer: {
 						type:             "string"
 						description:      "A JSON string describing the analyzers applied to the index."
@@ -1322,6 +1380,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					mapping_coerce: {
 						type:             "bool"
 						description:      "Set index level coercion setting that is applied to all mapping types."
+						description_kind: "plain"
+						optional:         true
+					}
+					mapping_total_fields_limit: {
+						type:             "number"
+						description:      "The maximum number of fields in an index. Field type parameters count towards this limit. The default value is 1000."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -1566,62 +1630,6 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 				}
 				block_types: {
-					alias: {
-						nesting_mode: "set"
-						block: {
-							attributes: {
-								filter: {
-									type:             "string"
-									description:      "Query used to limit documents the alias can access."
-									description_kind: "plain"
-									optional:         true
-								}
-								index_routing: {
-									type:             "string"
-									description:      "Value used to route indexing operations to a specific shard. If specified, this overwrites the `routing` value for indexing operations."
-									description_kind: "plain"
-									optional:         true
-									computed:         true
-								}
-								is_hidden: {
-									type:             "bool"
-									description:      "If true, the alias is hidden."
-									description_kind: "plain"
-									optional:         true
-									computed:         true
-								}
-								is_write_index: {
-									type:             "bool"
-									description:      "If true, the index is the write index for the alias."
-									description_kind: "plain"
-									optional:         true
-									computed:         true
-								}
-								name: {
-									type:             "string"
-									description:      "Index alias name."
-									description_kind: "plain"
-									required:         true
-								}
-								routing: {
-									type:             "string"
-									description:      "Value used to route indexing and search operations to a specific shard."
-									description_kind: "plain"
-									optional:         true
-									computed:         true
-								}
-								search_routing: {
-									type:             "string"
-									description:      "Value used to route search operations to a specific shard. If specified, this overwrites the routing value for search operations."
-									description_kind: "plain"
-									optional:         true
-									computed:         true
-								}
-							}
-							description:      "Aliases for the index."
-							description_kind: "plain"
-						}
-					}
 					elasticsearch_connection: {
 						nesting_mode: "list"
 						block: {
@@ -1757,6 +1765,121 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 				}
 				description:      "Creates Elasticsearch indices. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html"
+				description_kind: "plain"
+			}
+		}
+		elasticstack_elasticsearch_index_alias: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description:      "Generated ID of the alias resource."
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The alias name."
+						description_kind: "plain"
+						required:         true
+					}
+					read_indices: {
+						nested_type: {
+							attributes: {
+								filter: {
+									type:             "string"
+									description:      "Query used to limit documents the alias can access."
+									description_kind: "plain"
+									optional:         true
+								}
+								index_routing: {
+									type:             "string"
+									description:      "Value used to route indexing operations to a specific shard."
+									description_kind: "plain"
+									optional:         true
+								}
+								is_hidden: {
+									type:             "bool"
+									description:      "If true, the alias is hidden."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Name of the read index."
+									description_kind: "plain"
+									required:         true
+								}
+								routing: {
+									type:             "string"
+									description:      "Value used to route indexing and search operations to a specific shard."
+									description_kind: "plain"
+									optional:         true
+								}
+								search_routing: {
+									type:             "string"
+									description:      "Value used to route search operations to a specific shard."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "set"
+						}
+						description:      "Set of read indices for the alias."
+						description_kind: "plain"
+						optional:         true
+					}
+					write_index: {
+						nested_type: {
+							attributes: {
+								filter: {
+									type:             "string"
+									description:      "Query used to limit documents the alias can access."
+									description_kind: "plain"
+									optional:         true
+								}
+								index_routing: {
+									type:             "string"
+									description:      "Value used to route indexing operations to a specific shard."
+									description_kind: "plain"
+									optional:         true
+								}
+								is_hidden: {
+									type:             "bool"
+									description:      "If true, the alias is hidden."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Name of the write index."
+									description_kind: "plain"
+									required:         true
+								}
+								routing: {
+									type:             "string"
+									description:      "Value used to route indexing and search operations to a specific shard."
+									description_kind: "plain"
+									optional:         true
+								}
+								search_routing: {
+									type:             "string"
+									description:      "Value used to route search operations to a specific shard."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "The write index for the alias. Only one write index is allowed per alias."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description:      "Manages an Elasticsearch alias. See the [alias documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html) for more details."
 				description_kind: "plain"
 			}
 		}
@@ -4711,7 +4834,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			}
 		}
 		elasticstack_elasticsearch_security_role: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					cluster: {
@@ -4882,11 +5005,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 							}
-							description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+							description:      "Elasticsearch connection configuration block. "
 							description_kind: "markdown"
 							deprecated:       true
 						}
-						max_items: 1
 					}
 					indices: {
 						nesting_mode: "set"
@@ -4897,6 +5019,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description:      "Include matching restricted indices in names parameter. Usage is strongly discouraged as it can grant unrestricted operations on critical data, make the entire system unstable or leak sensitive information."
 									description_kind: "markdown"
 									optional:         true
+									computed:         true
 								}
 								names: {
 									type: ["set", "string"]
@@ -4918,7 +5041,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 							}
 							block_types: field_security: {
-								nesting_mode: "list"
+								nesting_mode: "single"
 								block: {
 									attributes: {
 										except: {
@@ -4926,6 +5049,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											description:      "List of the fields to which the grants will not be applied."
 											description_kind: "markdown"
 											optional:         true
+											computed:         true
 										}
 										grant: {
 											type: ["set", "string"]
@@ -4937,7 +5061,6 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description:      "The document fields that the owners of the role have read access to."
 									description_kind: "markdown"
 								}
-								max_items: 1
 							}
 							description:      "A list of indices permissions entries."
 							description_kind: "markdown"
@@ -4973,7 +5096,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 							}
 							block_types: field_security: {
-								nesting_mode: "list"
+								nesting_mode: "single"
 								block: {
 									attributes: {
 										except: {
@@ -4981,6 +5104,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											description:      "List of the fields to which the grants will not be applied."
 											description_kind: "markdown"
 											optional:         true
+											computed:         true
 										}
 										grant: {
 											type: ["set", "string"]
@@ -4992,14 +5116,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description:      "The document fields that the owners of the role have read access to."
 									description_kind: "markdown"
 								}
-								max_items: 1
 							}
 							description:      "A list of remote indices permissions entries. Remote indices are effective for remote clusters configured with the API key based model. They have no effect for remote clusters configured with the certificate based model."
 							description_kind: "markdown"
 						}
 					}
 				}
-				description:      "Adds and updates roles in the native realm. See the [security API put role documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html) for more details."
+				description:      "Adds and updates roles in the native realm. See the [role API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -5314,18 +5437,21 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "The email of the user."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					enabled: {
 						type:             "bool"
 						description:      "Specifies whether the user is enabled. The default value is true."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					full_name: {
 						type:             "string"
 						description:      "The full name of the user."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					id: {
 						type:             "string"
@@ -5342,27 +5468,41 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					password: {
 						type:             "string"
-						description:      "The user’s password. Passwords must be at least 6 characters long."
+						description:      "The user's password. Passwords must be at least 6 characters long. Note: Consider using `password_wo` for better security with ephemeral resources."
 						description_kind: "markdown"
 						optional:         true
 						sensitive:        true
 					}
 					password_hash: {
 						type:             "string"
-						description:      "A hash of the user’s password. This must be produced using the same hashing algorithm as has been configured for password storage (see https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings)."
+						description:      "A hash of the user's password. This must be produced using the same hashing algorithm as has been configured for password storage (see the [security settings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings))."
 						description_kind: "markdown"
 						optional:         true
 						sensitive:        true
 					}
+					password_wo: {
+						type:             "string"
+						description:      "Write-only password attribute for use with ephemeral resources. Passwords must be at least 6 characters long. This attribute is designed for use with ephemeral resources like `vault_kv_secret_v2` to prevent secrets from being stored in the Terraform state. Must be used with `password_wo_version`."
+						description_kind: "markdown"
+						optional:         true
+						sensitive:        true
+						write_only:       true
+					}
+					password_wo_version: {
+						type:             "string"
+						description:      "Version identifier for the write-only password. This field is used to trigger updates when the password changes. Required when `password_wo` is set. Typically, you would use a hash of the password or a version identifier from your secret management system."
+						description_kind: "markdown"
+						optional:         true
+					}
 					roles: {
 						type: ["set", "string"]
-						description:      "A set of roles the user has. The roles determine the user’s access permissions. Default is []."
+						description:      "A set of roles the user has. The roles determine the user's access permissions."
 						description_kind: "markdown"
 						required:         true
 					}
 					username: {
 						type:             "string"
-						description:      "An identifier for the user see the [security API put user documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html#security-api-put-user-path-params) for more details."
+						description:      "An identifier for the user (see the [security API put user documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html#security-api-put-user-path-params) for more details)."
 						description_kind: "markdown"
 						required:         true
 					}
@@ -5463,13 +5603,15 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+						description:      "Elasticsearch connection configuration block. "
 						description_kind: "markdown"
 						deprecated:       true
 					}
-					max_items: 1
 				}
-				description:      "Adds and updates users in the native realm. These users are commonly referred to as native users. See the [security user API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html) for more details."
+				description: """
+					Adds and updates users in the native realm. These users are commonly referred to as native users. See the [Elasticsearch security user API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -6576,6 +6718,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					host_name_format: {
+						type:             "string"
+						description:      "Determines the format of the host.name field in events. Can be 'hostname' (short hostname, e.g., 'myhost') or 'fqdn' (fully qualified domain name, e.g., 'myhost.example.com'). Defaults to 'hostname'."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					id: {
 						type:             "string"
 						description:      "The ID of this resource."
@@ -6624,6 +6773,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					policy_id: {
 						type:             "string"
 						description:      "Unique identifier of the agent policy."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					required_versions: {
+						type: ["map", "number"]
+						description:      "Map of agent versions to target percentages for automatic upgrade. The key is the target version and the value is the percentage of agents to upgrade to that version."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -7855,6 +8011,47 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description_kind: "markdown"
 			}
 		}
+		elasticstack_kibana_default_data_view: {
+			version: 0
+			block: {
+				attributes: {
+					data_view_id: {
+						type:             "string"
+						description:      "The data view identifier to set as default. NOTE: The API does not validate whether it is a valid identifier. Leave this unset (or explicitly `null`) to unset the default data view."
+						description_kind: "markdown"
+						optional:         true
+					}
+					force: {
+						type:             "bool"
+						description:      "Update an existing default data view identifier. If set to false and a default data view already exists, the operation will fail."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					skip_delete: {
+						type:             "bool"
+						description:      "If set to true, the default data view will not be unset when the resource is destroyed. The existing default data view will remain unchanged."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "The Kibana space ID to set the default data view in. Defaults to `default`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				description:      "Manages the default Kibana data view. See the [Kibana Data Views API documentation](https://www.elastic.co/docs/api/doc/kibana/v8/operation/operation-setdefaultdatailviewdefault) for more information."
+				description_kind: "markdown"
+			}
+		}
 		elasticstack_kibana_import_saved_objects: {
 			version: 0
 			block: {
@@ -7932,6 +8129,64 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 				}
 				description:      "Create sets of Kibana saved objects from a file created by the export API. See https://www.elastic.co/guide/en/kibana/current/saved-objects-api-import.html"
+				description_kind: "plain"
+			}
+		}
+		elasticstack_kibana_install_prebuilt_rules: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description:      "The ID of this resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					rules_installed: {
+						type:             "number"
+						description:      "Number of prebuilt rules that are installed."
+						description_kind: "plain"
+						computed:         true
+					}
+					rules_not_installed: {
+						type:             "number"
+						description:      "Number of prebuilt rules that are not installed."
+						description_kind: "plain"
+						computed:         true
+					}
+					rules_not_updated: {
+						type:             "number"
+						description:      "Number of prebuilt rules that have updates available."
+						description_kind: "plain"
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					timelines_installed: {
+						type:             "number"
+						description:      "Number of prebuilt timelines that are installed."
+						description_kind: "plain"
+						computed:         true
+					}
+					timelines_not_installed: {
+						type:             "number"
+						description:      "Number of prebuilt timelines that are not installed."
+						description_kind: "plain"
+						computed:         true
+					}
+					timelines_not_updated: {
+						type:             "number"
+						description:      "Number of prebuilt timelines that have updates available."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description:      "Manages Elastic prebuilt detection rules. This resource installs and updates Elastic prebuilt rules and timelines. See https://www.elastic.co/guide/en/security/current/prebuilt-rules.html"
 				description_kind: "plain"
 			}
 		}
@@ -8983,6 +9238,613 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 				}
 				description:      "Creates or updates a Kibana security detection rule. See the [rules API documentation](https://www.elastic.co/guide/en/security/current/rules-api-create.html) for more details."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_security_exception_item: {
+			version: 0
+			block: {
+				attributes: {
+					comments: {
+						nested_type: {
+							attributes: {
+								comment: {
+									type:             "string"
+									description:      "The comment text."
+									description_kind: "markdown"
+									required:         true
+								}
+								id: {
+									type:             "string"
+									description:      "The unique identifier of the comment (auto-generated by Kibana)."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Array of comments about the exception item."
+						description_kind: "markdown"
+						optional:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The timestamp of when the exception item was created."
+						description_kind: "markdown"
+						computed:         true
+					}
+					created_by: {
+						type:             "string"
+						description:      "The user who created the exception item."
+						description_kind: "markdown"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Describes the exception item."
+						description_kind: "markdown"
+						required:         true
+					}
+					entries: {
+						nested_type: {
+							attributes: {
+								entries: {
+									nested_type: {
+										attributes: {
+											field: {
+												type:             "string"
+												description:      "The field name."
+												description_kind: "markdown"
+												required:         true
+											}
+											operator: {
+												type:             "string"
+												description:      "The operator to use. Valid values: `included`, `excluded`."
+												description_kind: "markdown"
+												required:         true
+											}
+											type: {
+												type:             "string"
+												description:      "The type of nested entry. Valid values: `match`, `match_any`, `exists`."
+												description_kind: "markdown"
+												required:         true
+											}
+											value: {
+												type:             "string"
+												description:      "The value to match (for `match` type)."
+												description_kind: "markdown"
+												optional:         true
+											}
+											values: {
+												type: ["list", "string"]
+												description:      "Array of values to match (for `match_any` type)."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description:      "Nested entries (for `nested` type). Only `match`, `match_any`, and `exists` entry types are allowed as nested entries."
+									description_kind: "markdown"
+									optional:         true
+								}
+								field: {
+									type:             "string"
+									description:      "The field name. Required for all entry types."
+									description_kind: "markdown"
+									required:         true
+								}
+								list: {
+									nested_type: {
+										attributes: {
+											id: {
+												type:             "string"
+												description:      "The value list ID."
+												description_kind: "markdown"
+												required:         true
+											}
+											type: {
+												type:             "string"
+												description:      "The value list type (e.g., `keyword`, `ip`, `ip_range`)."
+												description_kind: "markdown"
+												required:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Value list reference (for `list` type)."
+									description_kind: "markdown"
+									optional:         true
+								}
+								operator: {
+									type:             "string"
+									description:      "The operator to use. Valid values: `included`, `excluded`. Note: The operator field is not supported for nested entry types and will be ignored if specified."
+									description_kind: "markdown"
+									optional:         true
+								}
+								type: {
+									type:             "string"
+									description:      "The type of entry. Valid values: `match`, `match_any`, `list`, `exists`, `nested`, `wildcard`."
+									description_kind: "markdown"
+									required:         true
+								}
+								value: {
+									type:             "string"
+									description:      "The value to match (for `match` and `wildcard` types)."
+									description_kind: "markdown"
+									optional:         true
+								}
+								values: {
+									type: ["list", "string"]
+									description:      "Array of values to match (for `match_any` type)."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "The exception item entries. This defines the conditions under which the exception applies."
+						description_kind: "markdown"
+						required:         true
+					}
+					expire_time: {
+						type:             "string"
+						description:      "The exception item's expiration date in RFC3339 format. This field is only available for regular exception items, not endpoint exceptions."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The unique identifier of the exception item (auto-generated by Kibana)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					item_id: {
+						type:             "string"
+						description:      "The exception item's human readable string identifier."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					list_id: {
+						type:             "string"
+						description:      "The exception list's identifier that this item belongs to."
+						description_kind: "markdown"
+						required:         true
+					}
+					meta: {
+						type:             "string"
+						description:      "Placeholder for metadata about the exception item as JSON string."
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the exception item."
+						description_kind: "markdown"
+						required:         true
+					}
+					namespace_type: {
+						type:             "string"
+						description:      "Determines whether the exception item is available in all Kibana spaces or just the space in which it is created. Can be `single` (default) or `agnostic`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					os_types: {
+						type: ["set", "string"]
+						description:      "Array of OS types for which the exceptions apply. Valid values: `linux`, `macos`, `windows`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					tags: {
+						type: ["set", "string"]
+						description:      "String array containing words and phrases to help categorize exception items."
+						description_kind: "markdown"
+						optional:         true
+					}
+					tie_breaker_id: {
+						type:             "string"
+						description:      "Field used in search to ensure all items are sorted and returned correctly."
+						description_kind: "markdown"
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The type of exception item. Must be `simple`."
+						description_kind: "markdown"
+						required:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The timestamp of when the exception item was last updated."
+						description_kind: "markdown"
+						computed:         true
+					}
+					updated_by: {
+						type:             "string"
+						description:      "The user who last updated the exception item."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Manages a Kibana Exception Item. Exception items define the specific query conditions used to prevent rules from generating alerts.
+
+					See the [Kibana Exceptions API documentation](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-exceptions-api) for more details.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_security_exception_list: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "The timestamp of when the exception list was created."
+						description_kind: "markdown"
+						computed:         true
+					}
+					created_by: {
+						type:             "string"
+						description:      "The user who created the exception list."
+						description_kind: "markdown"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Describes the exception list."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The unique identifier of the exception list (auto-generated by Kibana)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					immutable: {
+						type:             "bool"
+						description:      "Whether the exception list is immutable."
+						description_kind: "markdown"
+						computed:         true
+					}
+					list_id: {
+						type:             "string"
+						description:      "The exception list's human readable string identifier."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					meta: {
+						type:             "string"
+						description:      "Placeholder for metadata about the list container as JSON string."
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the exception list."
+						description_kind: "markdown"
+						required:         true
+					}
+					namespace_type: {
+						type:             "string"
+						description:      "Determines whether the exception list is available in all Kibana spaces or just the space in which it is created. Can be `single` (default) or `agnostic`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					os_types: {
+						type: ["set", "string"]
+						description:      "Array of OS types for which the exceptions apply. Valid values: `linux`, `macos`, `windows`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					tags: {
+						type: ["set", "string"]
+						description:      "String array containing words and phrases to help categorize exception containers."
+						description_kind: "markdown"
+						optional:         true
+					}
+					tie_breaker_id: {
+						type:             "string"
+						description:      "Field used in search to ensure all containers are sorted and returned correctly."
+						description_kind: "markdown"
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The type of exception list. Can be one of: `detection`, `endpoint`, `endpoint_trusted_apps`, `endpoint_events`, `endpoint_host_isolation_exceptions`, `endpoint_blocklists`."
+						description_kind: "markdown"
+						required:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The timestamp of when the exception list was last updated."
+						description_kind: "markdown"
+						computed:         true
+					}
+					updated_by: {
+						type:             "string"
+						description:      "The user who last updated the exception list."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Manages a Kibana Exception List. Exception lists are containers for exception items used to prevent security rules from generating alerts.
+
+					See the [Kibana Exceptions API documentation](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-exceptions-api) for more details.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_security_list: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "The timestamp of when the list was created."
+						description_kind: "markdown"
+						computed:         true
+					}
+					created_by: {
+						type:             "string"
+						description:      "The user who created the list."
+						description_kind: "markdown"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Describes the security list."
+						description_kind: "markdown"
+						required:         true
+					}
+					deserializer: {
+						type:             "string"
+						description:      "Determines how retrieved list item values are presented. By default, list items are presented using Handlebars expressions based on the type."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The unique identifier of the security list (auto-generated by Kibana if not specified)."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					immutable: {
+						type:             "bool"
+						description:      "Whether the list is immutable."
+						description_kind: "markdown"
+						computed:         true
+					}
+					list_id: {
+						type:             "string"
+						description:      "The value list's human-readable identifier."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					meta: {
+						type:             "string"
+						description:      "Placeholder for metadata about the value list as JSON string."
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the security list."
+						description_kind: "markdown"
+						required:         true
+					}
+					serializer: {
+						type:             "string"
+						description:      "Determines how uploaded list item values are parsed. By default, list items are parsed using named regex groups based on the type."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					tie_breaker_id: {
+						type:             "string"
+						description:      "Field used in search to ensure all containers are sorted and returned correctly."
+						description_kind: "markdown"
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description:      "Specifies the Elasticsearch data type of values the list contains. Valid values include: `binary`, `boolean`, `byte`, `date`, `date_nanos`, `date_range`, `double`, `double_range`, `float`, `float_range`, `geo_point`, `geo_shape`, `half_float`, `integer`, `integer_range`, `ip`, `ip_range`, `keyword`, `long`, `long_range`, `shape`, `short`, `text`."
+						description_kind: "markdown"
+						required:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The timestamp of when the list was last updated."
+						description_kind: "markdown"
+						computed:         true
+					}
+					updated_by: {
+						type:             "string"
+						description:      "The user who last updated the list."
+						description_kind: "markdown"
+						computed:         true
+					}
+					version: {
+						type:             "number"
+						description:      "The document version number."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					version_id: {
+						type:             "string"
+						description:      "The version id, normally returned by the API when the document is retrieved. Use it to ensure updates are done against the latest version."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Manages Kibana security lists (also known as value lists). Security lists are used by exception items to define sets of values for matching or excluding in security rules.
+
+					Relevant Kibana docs can be found [here](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-lists-api).
+
+					## Notes
+
+					- Security lists define the type of data they can contain via the `type` attribute
+					- Once created, the `type` of a list cannot be changed
+					- Lists can be referenced by exception items to create more sophisticated matching rules
+					- The `list_id` is auto-generated if not provided
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_security_list_data_streams: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description:      "The unique identifier for the data streams in the format `{space_id}`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					list_index: {
+						type:             "bool"
+						description:      "Indicates whether the `.lists` data stream exists."
+						description_kind: "markdown"
+						computed:         true
+					}
+					list_item_index: {
+						type:             "bool"
+						description:      "Indicates whether the `.items` data stream exists."
+						description_kind: "markdown"
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				description: """
+					Creates `.lists` and `.items` data streams in the relevant Kibana space. These data streams are required before you can start using security lists and exceptions that reference value lists.
+
+					Before you can start working with exceptions that use value lists, you must create the `.lists` and `.items` data streams for the relevant Kibana space. Once these data streams are created, your role needs privileges to manage rules.
+					"""
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_security_list_item: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "The timestamp of when the list item was created."
+						description_kind: "markdown"
+						computed:         true
+					}
+					created_by: {
+						type:             "string"
+						description:      "The user who created the list item."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier for the resource (format: `<space_id>/<list_item_id>`)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					list_id: {
+						type:             "string"
+						description:      "The value list's identifier that this item belongs to."
+						description_kind: "markdown"
+						required:         true
+					}
+					list_item_id: {
+						type:             "string"
+						description:      "The value list item's identifier (auto-generated by Kibana if not specified)."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					meta: {
+						type:             "string"
+						description:      "Placeholder for metadata about the value list item as JSON string."
+						description_kind: "markdown"
+						optional:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The timestamp of when the list item was last updated."
+						description_kind: "markdown"
+						computed:         true
+					}
+					updated_by: {
+						type:             "string"
+						description:      "The user who last updated the list item."
+						description_kind: "markdown"
+						computed:         true
+					}
+					value: {
+						type:             "string"
+						description:      "The value used to evaluate exceptions. The value's data type must match the list's type."
+						description_kind: "markdown"
+						required:         true
+					}
+					version_id: {
+						type:             "string"
+						description:      "The version id, normally returned by the API when the document is retrieved. Used to ensure updates are done against the latest version."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Manages items within Kibana security value lists. Value lists are containers for values that can be used within exception lists to define conditions. This resource allows you to add, update, and remove individual values (items) in those lists.
+
+					Value list items are used to store data values that match the type of their parent security list (e.g., IP addresses, keywords, etc.). These items can then be referenced in exception list entries to define exception conditions.
+
+					Kibana docs can be found [here](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-lists-api)
+					"""
 				description_kind: "markdown"
 			}
 		}

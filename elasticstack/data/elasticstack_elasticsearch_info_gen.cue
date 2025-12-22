@@ -2,7 +2,7 @@ package data
 
 #elasticstack_elasticsearch_info: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_info")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_info")
 	close({
 		// Name of the cluster, based on the Cluster name setting setting.
 		cluster_name?: string

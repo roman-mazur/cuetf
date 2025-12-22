@@ -2,7 +2,7 @@ package res
 
 #elasticstack_kibana_maintenance_window: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_kibana_maintenance_window")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_maintenance_window")
 	close({
 		// A set schedule over which the maintenance window applies.
 		custom_schedule!: close({

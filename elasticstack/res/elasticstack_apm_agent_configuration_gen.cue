@@ -2,7 +2,7 @@ package res
 
 #elasticstack_apm_agent_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_apm_agent_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_apm_agent_configuration")
 	close({
 		// The agent name is used by the UI to determine which settings to
 		// display.

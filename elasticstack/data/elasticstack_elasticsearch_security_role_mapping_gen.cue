@@ -2,7 +2,7 @@ package data
 
 #elasticstack_elasticsearch_security_role_mapping: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_security_role_mapping")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_security_role_mapping")
 	close({
 		// Mappings that have `enabled` set to `false` are ignored when
 		// role mapping is performed.

@@ -2,7 +2,7 @@ package res
 
 #elasticstack_elasticsearch_script: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_script")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_script")
 	close({
 		// Context in which the script or search template should run.
 		context?: string

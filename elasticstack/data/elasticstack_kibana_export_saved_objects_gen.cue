@@ -2,7 +2,7 @@ package data
 
 #elasticstack_kibana_export_saved_objects: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_kibana_export_saved_objects")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_kibana_export_saved_objects")
 	close({
 		// Do not add export details. Defaults to true.
 		exclude_export_details?: bool

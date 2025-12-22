@@ -2,7 +2,7 @@ package res
 
 #elasticstack_elasticsearch_ml_anomaly_detection_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_ml_anomaly_detection_job")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_ml_anomaly_detection_job")
 	close({
 		// Advanced configuration option. Specifies whether this job can
 		// open when there is insufficient machine learning node capacity

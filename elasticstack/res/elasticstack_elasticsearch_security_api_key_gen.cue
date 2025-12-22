@@ -2,7 +2,7 @@ package res
 
 #elasticstack_elasticsearch_security_api_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_security_api_key")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_security_api_key")
 	close({
 		// Access configuration for cross-cluster API keys. Only
 		// applicable when type is 'cross_cluster'.

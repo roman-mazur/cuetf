@@ -10,6 +10,7 @@ import "github.com/roman-mazur/cuetf/elasticstack/res"
 	_#res: "\(#elasticstackPrefix)_elasticsearch_data_stream": res.#elasticstack_elasticsearch_data_stream
 	_#res: "\(#elasticstackPrefix)_elasticsearch_data_stream_lifecycle": res.#elasticstack_elasticsearch_data_stream_lifecycle
 	_#res: "\(#elasticstackPrefix)_elasticsearch_enrich_policy": res.#elasticstack_elasticsearch_enrich_policy
+	_#res: "\(#elasticstackPrefix)_elasticsearch_index_alias": res.#elasticstack_elasticsearch_index_alias
 	_#res: "\(#elasticstackPrefix)_elasticsearch_index": res.#elasticstack_elasticsearch_index
 	_#res: "\(#elasticstackPrefix)_elasticsearch_index_lifecycle": res.#elasticstack_elasticsearch_index_lifecycle
 	_#res: "\(#elasticstackPrefix)_elasticsearch_index_template": res.#elasticstack_elasticsearch_index_template
@@ -37,9 +38,16 @@ import "github.com/roman-mazur/cuetf/elasticstack/res"
 	_#res: "\(#elasticstackPrefix)_kibana_action_connector": res.#elasticstack_kibana_action_connector
 	_#res: "\(#elasticstackPrefix)_kibana_alerting_rule": res.#elasticstack_kibana_alerting_rule
 	_#res: "\(#elasticstackPrefix)_kibana_data_view": res.#elasticstack_kibana_data_view
+	_#res: "\(#elasticstackPrefix)_kibana_default_data_view": res.#elasticstack_kibana_default_data_view
 	_#res: "\(#elasticstackPrefix)_kibana_import_saved_objects": res.#elasticstack_kibana_import_saved_objects
+	_#res: "\(#elasticstackPrefix)_kibana_install_prebuilt_rules": res.#elasticstack_kibana_install_prebuilt_rules
 	_#res: "\(#elasticstackPrefix)_kibana_maintenance_window": res.#elasticstack_kibana_maintenance_window
 	_#res: "\(#elasticstackPrefix)_kibana_security_detection_rule": res.#elasticstack_kibana_security_detection_rule
+	_#res: "\(#elasticstackPrefix)_kibana_security_exception_item": res.#elasticstack_kibana_security_exception_item
+	_#res: "\(#elasticstackPrefix)_kibana_security_exception_list": res.#elasticstack_kibana_security_exception_list
+	_#res: "\(#elasticstackPrefix)_kibana_security_list_data_streams": res.#elasticstack_kibana_security_list_data_streams
+	_#res: "\(#elasticstackPrefix)_kibana_security_list": res.#elasticstack_kibana_security_list
+	_#res: "\(#elasticstackPrefix)_kibana_security_list_item": res.#elasticstack_kibana_security_list_item
 	_#res: "\(#elasticstackPrefix)_kibana_security_role": res.#elasticstack_kibana_security_role
 	_#res: "\(#elasticstackPrefix)_kibana_slo": res.#elasticstack_kibana_slo
 	_#res: "\(#elasticstackPrefix)_kibana_space": res.#elasticstack_kibana_space

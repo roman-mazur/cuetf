@@ -2,7 +2,7 @@ package data
 
 #elasticstack_fleet_enrollment_tokens: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_fleet_enrollment_tokens")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_fleet_enrollment_tokens")
 	close({
 		// The ID of this resource.
 		id?: string
