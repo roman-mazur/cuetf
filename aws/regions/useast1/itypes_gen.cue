@@ -59795,7 +59795,7 @@ InstanceTypes: [{
             MaximumEfaInterfaces: 1
         }
         EncryptionInTransitSupported: true
-        EnaSrdSupported:              false
+        EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
     }
     GpuInfo: {
