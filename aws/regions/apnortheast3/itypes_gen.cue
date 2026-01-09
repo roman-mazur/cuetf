@@ -19090,7 +19090,8 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        Manufacturer:             "Intel"
+        SupportedFeatures: ["nested-virtualization"]
+        Manufacturer: "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          64
@@ -19245,7 +19246,8 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        Manufacturer:             "Intel"
+        SupportedFeatures: ["nested-virtualization"]
+        Manufacturer: "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          16
@@ -20105,7 +20107,8 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        Manufacturer:             "Intel"
+        SupportedFeatures: ["nested-virtualization"]
+        Manufacturer: "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          2
@@ -27517,7 +27520,8 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        Manufacturer:             "Intel"
+        SupportedFeatures: ["nested-virtualization"]
+        Manufacturer: "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          2
@@ -27739,7 +27743,8 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        Manufacturer:             "Intel"
+        SupportedFeatures: ["nested-virtualization"]
+        Manufacturer: "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          4
