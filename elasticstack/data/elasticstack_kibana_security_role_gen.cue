@@ -2,7 +2,7 @@ package data
 
 #elasticstack_kibana_security_role: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_kibana_security_role")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_kibana_security_role")
 	close({
 		// Description for the role
 		description?: string

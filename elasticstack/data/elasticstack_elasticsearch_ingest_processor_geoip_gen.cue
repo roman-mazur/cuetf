@@ -2,7 +2,7 @@ package data
 
 #elasticstack_elasticsearch_ingest_processor_geoip: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_ingest_processor_geoip")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_ingest_processor_geoip")
 	close({
 		// The database filename referring to a database the module ships
 		// with (GeoLite2-City.mmdb, GeoLite2-Country.mmdb, or

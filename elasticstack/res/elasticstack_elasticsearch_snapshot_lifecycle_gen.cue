@@ -4,7 +4,7 @@ import "list"
 
 #elasticstack_elasticsearch_snapshot_lifecycle: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_snapshot_lifecycle")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_snapshot_lifecycle")
 	close({
 		// Determines how wildcard patterns in the `indices` parameter
 		// match data streams and indices. Supports comma-separated

@@ -2,7 +2,7 @@ package res
 
 #elasticstack_elasticsearch_ml_job_state: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_ml_job_state")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_ml_job_state")
 	close({
 		// When closing a job, use to forcefully close it. This method is
 		// quicker but can miss important clean up tasks.

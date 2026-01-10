@@ -2,7 +2,7 @@ package res
 
 #elasticstack_kibana_action_connector: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_kibana_action_connector")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_action_connector")
 	close({
 		// The configuration for the connector. Configuration properties
 		// vary depending on the connector type.

@@ -4,7 +4,7 @@ import "list"
 
 #elasticstack_elasticsearch_data_stream: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_elasticsearch_data_stream")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_data_stream")
 	close({
 		// Current generation for the data stream.
 		generation?: number

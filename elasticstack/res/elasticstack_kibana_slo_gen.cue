@@ -4,7 +4,7 @@ import "list"
 
 #elasticstack_kibana_slo: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_kibana_slo")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_slo")
 	close({
 		// An `occurrences` budgeting method uses the number of good and
 		// total events during the time window. A `timeslices` budgeting

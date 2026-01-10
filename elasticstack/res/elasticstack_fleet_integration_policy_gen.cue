@@ -2,7 +2,7 @@ package res
 
 #elasticstack_fleet_integration_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack_fleet_integration_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_fleet_integration_policy")
 	close({
 		// ID of the agent policy.
 		agent_policy_id?: string
