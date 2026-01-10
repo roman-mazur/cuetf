@@ -221,6 +221,144 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 				description_kind: "plain"
 			}
 		}
+		github_actions_hosted_runner: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description:      "The hosted runner ID."
+						description_kind: "plain"
+						computed:         true
+					}
+					image_gen: {
+						type:             "bool"
+						description:      "Whether this runner should be used to generate custom images. Cannot be changed after creation."
+						description_kind: "plain"
+						optional:         true
+					}
+					image_version: {
+						type:             "string"
+						description:      "The version of the runner image to deploy. This is relevant only for runners using custom images."
+						description_kind: "plain"
+						optional:         true
+					}
+					last_active_on: {
+						type:             "string"
+						description:      "Timestamp when the runner was last active."
+						description_kind: "plain"
+						computed:         true
+					}
+					machine_size_details: {
+						type: ["list", ["object", {
+							cpu_cores:  "number"
+							id:         "string"
+							memory_gb:  "number"
+							storage_gb: "number"
+						}]]
+						description:      "Detailed machine size specifications."
+						description_kind: "plain"
+						computed:         true
+					}
+					maximum_runners: {
+						type:             "number"
+						description:      "Maximum number of runners to scale up to."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the hosted runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
+						description_kind: "plain"
+						required:         true
+					}
+					platform: {
+						type:             "string"
+						description:      "Platform of the runner."
+						description_kind: "plain"
+						computed:         true
+					}
+					public_ip_enabled: {
+						type:             "bool"
+						description:      "Whether to enable static public IP."
+						description_kind: "plain"
+						optional:         true
+					}
+					public_ips: {
+						type: ["list", ["object", {
+							enabled: "bool"
+							length:  "number"
+							prefix:  "string"
+						}]]
+						description:      "List of public IP ranges assigned to this runner."
+						description_kind: "plain"
+						computed:         true
+					}
+					runner_group_id: {
+						type:             "number"
+						description:      "The runner group ID."
+						description_kind: "plain"
+						required:         true
+					}
+					size: {
+						type:             "string"
+						description:      "Machine size (e.g., '4-core', '8-core'). Can be updated to scale the runner."
+						description_kind: "plain"
+						required:         true
+					}
+					status: {
+						type:             "string"
+						description:      "Current status of the runner."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					image: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								id: {
+									type:             "string"
+									description:      "The image ID."
+									description_kind: "plain"
+									required:         true
+								}
+								size_gb: {
+									type:             "number"
+									description:      "The size of the image in GB."
+									description_kind: "plain"
+									computed:         true
+								}
+								source: {
+									type:             "string"
+									description:      "The image source (github, partner, or custom)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "Image configuration for the hosted runner. Cannot be changed after creation."
+							description_kind: "plain"
+						}
+						min_items: 1
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		github_actions_organization_oidc_subject_claim_customization_template: {
 			version: 0
 			block: {
@@ -1807,6 +1945,39 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 				description_kind: "plain"
 			}
 		}
+		github_enterprise_actions_workflow_permissions: {
+			version: 0
+			block: {
+				attributes: {
+					can_approve_pull_request_reviews: {
+						type:             "bool"
+						description:      "Whether GitHub Actions can approve pull request reviews."
+						description_kind: "plain"
+						optional:         true
+					}
+					default_workflow_permissions: {
+						type:             "string"
+						description:      "The default workflow permissions granted to the GITHUB_TOKEN when running workflows. Can be 'read' or 'write'."
+						description_kind: "plain"
+						optional:         true
+					}
+					enterprise_slug: {
+						type:             "string"
+						description:      "The slug of the enterprise."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				description:      "GitHub Enterprise Actions Workflow Permissions management."
+				description_kind: "plain"
+			}
+		}
 		github_enterprise_organization: {
 			version: 0
 			block: {
@@ -1860,6 +2031,57 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						required:         true
 					}
 				}
+				description_kind: "plain"
+			}
+		}
+		github_enterprise_security_analysis_settings: {
+			version: 0
+			block: {
+				attributes: {
+					advanced_security_enabled_for_new_repositories: {
+						type:             "bool"
+						description:      "Whether GitHub Advanced Security is automatically enabled for new repositories."
+						description_kind: "plain"
+						optional:         true
+					}
+					enterprise_slug: {
+						type:             "string"
+						description:      "The slug of the enterprise."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					secret_scanning_enabled_for_new_repositories: {
+						type:             "bool"
+						description:      "Whether secret scanning is automatically enabled for new repositories."
+						description_kind: "plain"
+						optional:         true
+					}
+					secret_scanning_push_protection_custom_link: {
+						type:             "string"
+						description:      "Custom URL for secret scanning push protection bypass instructions."
+						description_kind: "plain"
+						optional:         true
+					}
+					secret_scanning_push_protection_enabled_for_new_repositories: {
+						type:             "bool"
+						description:      "Whether secret scanning push protection is automatically enabled for new repositories."
+						description_kind: "plain"
+						optional:         true
+					}
+					secret_scanning_validity_checks_enabled: {
+						type:             "bool"
+						description:      "Whether secret scanning validity checks are enabled."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description:      "GitHub Enterprise Security Analysis Settings management."
 				description_kind: "plain"
 			}
 		}
@@ -2144,6 +2366,13 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description_kind: "plain"
 						optional:         true
 					}
+					values_editable_by: {
+						type:             "string"
+						description:      "Who can edit the values of the custom property. Can be one of 'org_actors' or 'org_and_repo_actors'. If not specified, the default is 'org_actors' (only organization owners can edit values)"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 				}
 				description_kind: "plain"
 			}
@@ -2276,10 +2505,9 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 				attributes: {
 					base_role: {
 						type:             "string"
-						description:      "The base role for the organization role."
+						description:      "The system role from which this role inherits permissions."
 						description_kind: "plain"
 						optional:         true
-						computed:         true
 					}
 					description: {
 						type:             "string"
@@ -2367,6 +2595,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		github_organization_role_user: {
@@ -2760,7 +2989,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 									block: {
 										attributes: max_file_size: {
 											type:             "number"
-											description:      "The maximum allowed size of a file in bytes."
+											description:      "The maximum allowed size of a file in megabytes (MB). Valid range is 1-100 MB."
 											description_kind: "plain"
 											required:         true
 										}
@@ -2994,6 +3223,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		github_organization_settings: {
@@ -3539,10 +3769,11 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						computed:         true
 					}
 					fork: {
-						type:             "bool"
+						type:             "string"
 						description:      "Set to 'true' to fork an existing repository."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					full_name: {
 						type:             "string"
@@ -3681,12 +3912,14 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description:      "The owner of the source repository to fork from."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					source_repo: {
 						type:             "string"
 						description:      "The name of the source repository to fork from."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					squash_merge_commit_message: {
 						type:             "string"
@@ -3817,11 +4050,25 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 									block: {
 										attributes: status: {
 											type:             "string"
-											description:      "Set to 'enabled' to enable advanced security features on the repository. Can be 'enabled' or 'disabled'."
+											description:      "Set to 'enabled' to enable advanced security features on the repository. Can be 'enabled' or 'disabled', This value being present when split licensing is enabled will error out."
 											description_kind: "plain"
 											required:         true
 										}
 										description:      "The advanced security configuration for the repository. If a repository's visibility is 'public', advanced security is always enabled and cannot be changed, so this setting cannot be supplied."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								code_security: {
+									nesting_mode: "list"
+									block: {
+										attributes: status: {
+											type:             "string"
+											description:      "Set to 'enabled' to enable code security on the repository. Can be 'enabled' or 'disabled'. If set to 'enabled', the repository's visibility must be 'public', 'security_and_analysis[0].advanced_security[0].status' must also be set to 'enabled', or your Organization must have split licensing for Advanced security."
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "The code security configuration for the repository."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -3831,11 +4078,39 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 									block: {
 										attributes: status: {
 											type:             "string"
-											description:      "Set to 'enabled' to enable secret scanning on the repository. Can be 'enabled' or 'disabled'. If set to 'enabled', the repository's visibility must be 'public' or 'security_and_analysis[0].advanced_security[0].status' must also be set to 'enabled'."
+											description:      "Set to 'enabled' to enable secret scanning on the repository. Can be 'enabled' or 'disabled'. If set to 'enabled', the repository's visibility must be 'public', 'security_and_analysis[0].advanced_security[0].status' must also be set to 'enabled', or your Organization must have split licensing for Advanced security."
 											description_kind: "plain"
 											required:         true
 										}
 										description:      "The secret scanning configuration for the repository."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								secret_scanning_ai_detection: {
+									nesting_mode: "list"
+									block: {
+										attributes: status: {
+											type:             "string"
+											description:      "Set to 'enabled' to enable secret scanning AI detection on the repository. Can be 'enabled' or 'disabled'. If set to 'enabled', the repository's visibility must be 'public', 'security_and_analysis[0].advanced_security[0].status' must also be set to 'enabled', or your Organization must have split licensing for Advanced security."
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "The secret scanning AI detection configuration for this repository."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								secret_scanning_non_provider_patterns: {
+									nesting_mode: "list"
+									block: {
+										attributes: status: {
+											type:             "string"
+											description:      "Set to 'enabled' to enable secret scanning non-provider patterns on the repository. Can be 'enabled' or 'disabled'. If set to 'enabled', the repository's visibility must be 'public', 'security_and_analysis[0].advanced_security[0].status' must also be set to 'enabled', or your Organization must have split licensing for Advanced security."
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "The secret scanning non-provider patterns configuration for this repository."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -3845,7 +4120,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 									block: {
 										attributes: status: {
 											type:             "string"
-											description:      "Set to 'enabled' to enable secret scanning push protection on the repository. Can be 'enabled' or 'disabled'. If set to 'enabled', the repository's visibility must be 'public' or 'security_and_analysis[0].advanced_security[0].status' must also be set to 'enabled'."
+											description:      "Set to 'enabled' to enable secret scanning push protection on the repository. Can be 'enabled' or 'disabled'. If set to 'enabled', the repository's visibility must be 'public', 'security_and_analysis[0].advanced_security[0].status' must also be set to 'enabled', or your Organization must have split licensing for Advanced security."
 											description_kind: "plain"
 											required:         true
 										}
@@ -4203,6 +4478,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		github_repository_environment: {
@@ -4319,7 +4595,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 					repository: {
 						type:             "string"
-						description:      "The name of the repository. The name is not case sensitive."
+						description:      "The name of the GitHub repository."
 						description_kind: "plain"
 						required:         true
 					}
@@ -4679,9 +4955,9 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 					repository: {
 						type:             "string"
-						description:      "Name of the repository to apply rulset to."
+						description:      "Name of the repository to apply ruleset to."
 						description_kind: "plain"
-						optional:         true
+						required:         true
 					}
 					ruleset_id: {
 						type:             "number"
@@ -4985,7 +5261,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 									block: {
 										attributes: max_file_size: {
 											type:             "number"
-											description:      "The maximum allowed size of a file in bytes."
+											description:      "The maximum allowed size of a file in megabytes (MB). Valid range is 1-100 MB."
 											description_kind: "plain"
 											required:         true
 										}
@@ -7117,6 +7393,12 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description_kind: "plain"
 						optional:         true
 					}
+					values_editable_by: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 				}
 				description_kind: "plain"
 			}
@@ -7440,6 +7722,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		github_organization_team_sync_groups: {
@@ -8141,6 +8424,41 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					repository: {
 						type:             "string"
 						description:      "The GitHub repository name."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+				deprecated:       true
+			}
+		}
+		github_repository_environment_deployment_policies: {
+			version: 0
+			block: {
+				attributes: {
+					environment: {
+						type:             "string"
+						description:      "The name of the environment."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					policies: {
+						type: ["list", ["object", {
+							pattern: "string"
+							type:    "string"
+						}]]
+						description_kind: "plain"
+						computed:         true
+					}
+					repository: {
+						type:             "string"
+						description:      "The name of the GitHub repository."
 						description_kind: "plain"
 						required:         true
 					}

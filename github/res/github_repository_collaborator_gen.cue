@@ -2,7 +2,7 @@ package res
 
 #github_repository_collaborator: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_repository_collaborator")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_repository_collaborator")
 	close({
 		// ID of the invitation to be used in
 		// 'github_user_invitation_accepter'

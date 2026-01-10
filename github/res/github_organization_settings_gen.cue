@@ -2,7 +2,7 @@ package res
 
 #github_organization_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_organization_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_organization_settings")
 	close({
 		// Whether or not advanced security is enabled for new
 		// repositories.

@@ -2,7 +2,7 @@ package res
 
 #github_team: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_team")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_team")
 	close({
 		// Adds a default maintainer to the team. Adds the creating user
 		// to the team when 'true'.

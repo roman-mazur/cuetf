@@ -2,9 +2,9 @@ package res
 
 #github_organization_role: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_organization_role")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_organization_role")
 	close({
-		// The base role for the organization role.
+		// The system role from which this role inherits permissions.
 		base_role?: string
 
 		// The description of the organization role.

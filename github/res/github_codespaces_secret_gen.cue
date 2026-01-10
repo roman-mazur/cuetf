@@ -2,7 +2,7 @@ package res
 
 #github_codespaces_secret: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_codespaces_secret")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_codespaces_secret")
 	close({
 		// Date of 'codespaces_secret' creation.
 		created_at?: string

@@ -4,7 +4,7 @@ import "list"
 
 #github_organization_ruleset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_organization_ruleset")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_organization_ruleset")
 	close({
 		// Possible values for Enforcement are `disabled`, `active`,
 		// `evaluate`. Note: `evaluate` is currently only supported for
@@ -198,7 +198,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/max_file_size": close({
-		// The maximum allowed size of a file in bytes.
+		// The maximum allowed size of a file in megabytes (MB). Valid
+		// range is 1-100 MB.
 		max_file_size!: number
 	})
 

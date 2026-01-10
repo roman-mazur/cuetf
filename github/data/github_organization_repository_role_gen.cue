@@ -2,7 +2,7 @@ package data
 
 #github_organization_repository_role: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github_organization_repository_role")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/github_organization_repository_role")
 	close({
 		// The system role from which this role inherits permissions.
 		base_role?: string
