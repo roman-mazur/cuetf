@@ -8,8 +8,9 @@ package res
 		// service
 		// attachment.
 		connected_endpoints?: [...close({
-			consumer_network?:            string
-			endpoint?:                    string
+			consumer_network?: string
+			endpoint?:         string
+			nat_ips?: [...string]
 			propagated_connection_count?: number
 			psc_connection_id?:           string
 			status?:                      string
@@ -86,14 +87,14 @@ package res
 		// To explicitly send a zero value, set
 		// 'send_propagated_connection_limit_if_zero = true'.
 		propagated_connection_limit?: number
-		consumer_accept_lists?: matchN(1, [#consumer_accept_lists, [...#consumer_accept_lists]])
-		timeouts?: #timeouts
 
 		// An 128-bit global unique ID of the PSC service attachment.
 		psc_service_attachment_id?: [...close({
 			high?: string
 			low?:  string
 		})]
+		consumer_accept_lists?: matchN(1, [#consumer_accept_lists, [...#consumer_accept_lists]])
+		timeouts?: #timeouts
 
 		// This flag determines whether a consumer accept/reject list
 		// change can reconcile the statuses of existing ACCEPTED or
@@ -119,6 +120,9 @@ package res
 		// zero.
 		// Defaults to false.
 		send_propagated_connection_limit_if_zero?: bool
+
+		// If true, show NAT IPs of all connected endpoints.
+		show_nat_ips?: bool
 
 		// The URL of a service serving the endpoint identified by this
 		// service attachment.

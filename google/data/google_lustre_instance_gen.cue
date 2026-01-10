@@ -31,7 +31,6 @@ package data
 		// By default,
 		// GKE clients are not supported.
 		gke_support_enabled?: bool
-		id?:                  string
 
 		// The name of the Managed Lustre instance.
 		//
@@ -40,6 +39,10 @@ package data
 		// * Must be between 1-63 characters.
 		// * Must end with a number or a letter.
 		instance_id!: string
+		id?:          string
+
+		// The KMS key id to use for encryption of the Lustre instance.
+		kms_key?: string
 
 		// Labels as key value pairs.
 		//
@@ -77,15 +80,13 @@ package data
 		project?:          string
 
 		// The state of the instance.
-		// Possible values:
-		// STATE_UNSPECIFIED
-		// ACTIVE
-		// CREATING
-		// DELETING
-		// UPGRADING
-		// REPAIRING
-		// STOPPED
+		// Please see
+		// https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state
+		// for values
 		state?: string
+
+		// The reason why the instance is in a certain state.
+		state_reason?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

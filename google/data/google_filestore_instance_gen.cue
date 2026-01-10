@@ -16,6 +16,17 @@ package data
 		// A description of the instance.
 		description?: string
 
+		// Directory Services configuration.
+		// Should only be set if protocol is "NFS_V4_1".
+		directory_services?: [...close({
+			ldap?: [...close({
+				domain?:    string
+				groups_ou?: string
+				servers?: [...string]
+				users_ou?: string
+			})]
+		})]
+
 		// All of labels (key/value pairs) present on the resource in GCP,
 		// including the labels configured through Terraform, other
 		// clients and services.
@@ -106,7 +117,6 @@ package data
 				max_iops_per_tb?: number
 			})]
 		})]
-		project?: string
 
 		// Either NFSv3, for using NFS version 3 as file sharing protocol,
 		// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
@@ -126,6 +136,7 @@ package data
 		// will trigger recreation. To apply tags to an existing
 		// resource, see the 'google_tags_tag_value' resource.
 		tags?: [string]: string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
