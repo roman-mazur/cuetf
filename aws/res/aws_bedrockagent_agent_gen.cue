@@ -2,7 +2,7 @@ package res
 
 #aws_bedrockagent_agent: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrockagent_agent")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagent_agent")
 	close({
 		agent_arn?:               string
 		agent_collaboration?:     string
@@ -29,6 +29,9 @@ package res
 		instruction?:                 string
 		memory_configuration?: [...close({
 			enabled_memory_types?: [...string]
+			session_summary_configuration?: [...close({
+				max_recent_sessions?: number
+			})]
 			storage_days?: number
 		})]
 		prepare_agent?: bool

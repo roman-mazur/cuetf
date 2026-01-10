@@ -2,7 +2,7 @@ package res
 
 #aws_computeoptimizer_recommendation_preferences: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_computeoptimizer_recommendation_preferences")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_computeoptimizer_recommendation_preferences")
 	close({
 		enhanced_infrastructure_metrics?: string
 		id?:                              string

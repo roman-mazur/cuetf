@@ -4,7 +4,7 @@ import "list"
 
 #aws_glue_partition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_partition")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_glue_partition")
 	close({
 		catalog_id?:    string
 		creation_time?: string

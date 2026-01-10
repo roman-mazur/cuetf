@@ -2,7 +2,7 @@ package data
 
 #aws_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_route")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_route")
 	close({
 		carrier_gateway_id?:          string
 		core_network_arn?:            string

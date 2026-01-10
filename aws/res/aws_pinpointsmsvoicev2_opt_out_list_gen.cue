@@ -2,7 +2,7 @@ package res
 
 #aws_pinpointsmsvoicev2_opt_out_list: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_pinpointsmsvoicev2_opt_out_list")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_pinpointsmsvoicev2_opt_out_list")
 	close({
 		arn?:  string
 		id?:   string

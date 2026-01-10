@@ -2,7 +2,7 @@ package res
 
 #aws_networkmanager_core_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_networkmanager_core_network")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_networkmanager_core_network")
 	close({
 		arn?:                  string
 		base_policy_document?: string

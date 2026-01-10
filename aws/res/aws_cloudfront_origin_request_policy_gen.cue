@@ -4,7 +4,7 @@ import "list"
 
 #aws_cloudfront_origin_request_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudfront_origin_request_policy")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_origin_request_policy")
 	close({
 		arn?: string
 		cookies_config!: matchN(1, [#cookies_config, list.MaxItems(1) & [_, ...] & [...#cookies_config]])

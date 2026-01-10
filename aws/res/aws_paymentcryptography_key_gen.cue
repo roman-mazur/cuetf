@@ -2,7 +2,7 @@ package res
 
 #aws_paymentcryptography_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_paymentcryptography_key")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_paymentcryptography_key")
 	close({
 		arn?:                     string
 		deletion_window_in_days?: number

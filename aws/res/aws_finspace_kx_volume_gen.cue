@@ -2,7 +2,7 @@ package res
 
 #aws_finspace_kx_volume: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_finspace_kx_volume")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_finspace_kx_volume")
 	close({
 		arn?: string
 		attached_clusters?: [...close({

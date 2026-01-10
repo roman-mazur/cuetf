@@ -2,7 +2,7 @@ package data
 
 #aws_opensearchserverless_security_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opensearchserverless_security_config")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_opensearchserverless_security_config")
 	close({
 		// The version of the security configuration.
 		config_version?: string

@@ -2,7 +2,7 @@ package res
 
 #aws_servicecatalog_constraint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_servicecatalog_constraint")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_servicecatalog_constraint")
 	close({
 		accept_language?: string
 		description?:     string

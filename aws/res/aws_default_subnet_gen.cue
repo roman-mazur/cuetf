@@ -2,7 +2,7 @@ package res
 
 #aws_default_subnet: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_default_subnet")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_default_subnet")
 	close({
 		arn?:                             string
 		assign_ipv6_address_on_creation?: bool

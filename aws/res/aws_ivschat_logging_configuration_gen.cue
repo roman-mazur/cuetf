@@ -4,7 +4,7 @@ import "list"
 
 #aws_ivschat_logging_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ivschat_logging_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ivschat_logging_configuration")
 	close({
 		arn?: string
 		destination_configuration?: matchN(1, [#destination_configuration, list.MaxItems(1) & [...#destination_configuration]])

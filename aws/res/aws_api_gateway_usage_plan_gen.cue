@@ -4,7 +4,7 @@ import "list"
 
 #aws_api_gateway_usage_plan: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_api_gateway_usage_plan")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_api_gateway_usage_plan")
 	close({
 		arn?: string
 		api_stages?: matchN(1, [#api_stages, [...#api_stages]])

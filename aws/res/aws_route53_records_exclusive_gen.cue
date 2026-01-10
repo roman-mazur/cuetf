@@ -2,7 +2,7 @@ package res
 
 #aws_route53_records_exclusive: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_route53_records_exclusive")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_route53_records_exclusive")
 	close({
 		resource_record_set?: matchN(1, [#resource_record_set, [...#resource_record_set]])
 		timeouts?: #timeouts

@@ -2,7 +2,7 @@ package data
 
 #aws_eks_addon_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_eks_addon_version")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_eks_addon_version")
 	close({
 		addon_name!: string
 		id?:         string

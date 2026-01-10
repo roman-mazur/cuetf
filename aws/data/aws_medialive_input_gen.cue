@@ -2,7 +2,7 @@ package data
 
 #aws_medialive_input: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_medialive_input")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_medialive_input")
 	close({
 		arn?: string
 		attached_channels?: [...string]

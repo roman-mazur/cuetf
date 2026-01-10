@@ -2,7 +2,7 @@ package res
 
 #aws_storagegateway_stored_iscsi_volume: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_storagegateway_stored_iscsi_volume")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_storagegateway_stored_iscsi_volume")
 	close({
 		arn?:                    string
 		chap_enabled?:           bool

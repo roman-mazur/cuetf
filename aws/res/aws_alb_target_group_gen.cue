@@ -4,7 +4,7 @@ import "list"
 
 #aws_alb_target_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_alb_target_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_alb_target_group")
 	close({
 		arn?:                                string
 		arn_suffix?:                         string
@@ -13,33 +13,34 @@ import "list"
 		id?:                                 string
 		ip_address_type?:                    string
 		lambda_multi_value_headers_enabled?: bool
+		load_balancer_arns?: [...string]
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		load_balancer_arns?: [...string]
+		region?:                            string
 		load_balancing_algorithm_type?:     string
 		load_balancing_anomaly_mitigation?: string
 		load_balancing_cross_zone_enabled?: string
 		name?:                              string
 		name_prefix?:                       string
+		port?:                              number
+		preserve_client_ip?:                string
 		health_check?: matchN(1, [#health_check, list.MaxItems(1) & [...#health_check]])
-		port?:               number
-		preserve_client_ip?: string
-		protocol?:           string
-		protocol_version?:   string
-		proxy_protocol_v2?:  bool
 		stickiness?: matchN(1, [#stickiness, list.MaxItems(1) & [...#stickiness]])
-		slow_start?: number
+		protocol?: string
+		target_failover?: matchN(1, [#target_failover, [...#target_failover]])
+		protocol_version?:  string
+		proxy_protocol_v2?: bool
+		slow_start?:        number
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		target_type?: string
-		target_failover?: matchN(1, [#target_failover, [...#target_failover]])
+		target_control_port?: number
 		target_group_health?: matchN(1, [#target_group_health, list.MaxItems(1) & [...#target_group_health]])
 		target_health_state?: matchN(1, [#target_health_state, [...#target_health_state]])
-		vpc_id?: string
+		target_type?: string
+		vpc_id?:      string
 	})
 
 	#health_check: close({

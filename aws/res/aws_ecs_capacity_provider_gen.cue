@@ -4,7 +4,7 @@ import "list"
 
 #aws_ecs_capacity_provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ecs_capacity_provider")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ecs_capacity_provider")
 	close({
 		arn?: string
 		auto_scaling_group_provider?: matchN(1, [#auto_scaling_group_provider, list.MaxItems(1) & [...#auto_scaling_group_provider]])
@@ -30,6 +30,7 @@ import "list"
 	})
 
 	#managed_instances_provider: close({
+		infrastructure_optimization?: matchN(1, [_#defs."/$defs/managed_instances_provider/$defs/infrastructure_optimization", list.MaxItems(1) & [..._#defs."/$defs/managed_instances_provider/$defs/infrastructure_optimization"]])
 		instance_launch_template!: matchN(1, [_#defs."/$defs/managed_instances_provider/$defs/instance_launch_template", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/managed_instances_provider/$defs/instance_launch_template"]])
 		infrastructure_role_arn!: string
 		propagate_tags?:          string
@@ -41,6 +42,10 @@ import "list"
 		minimum_scaling_step_size?: number
 		status?:                    string
 		target_capacity?:           number
+	})
+
+	_#defs: "/$defs/managed_instances_provider/$defs/infrastructure_optimization": close({
+		scale_in_after?: number
 	})
 
 	_#defs: "/$defs/managed_instances_provider/$defs/instance_launch_template": close({

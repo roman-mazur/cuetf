@@ -2,7 +2,7 @@ package data
 
 #aws_devopsguru_notification_channel: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_devopsguru_notification_channel")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_devopsguru_notification_channel")
 	close({
 		filters?: matchN(1, [#filters, [...#filters]])
 		sns?: matchN(1, [#sns, [...#sns]])

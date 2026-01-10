@@ -4,7 +4,7 @@ import "list"
 
 #aws_transcribe_language_model: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_transcribe_language_model")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_transcribe_language_model")
 	close({
 		arn?:             string
 		base_model_name!: string

@@ -4,7 +4,7 @@ import "list"
 
 #aws_connect_user: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_connect_user")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_connect_user")
 	close({
 		arn?: string
 		identity_info?: matchN(1, [#identity_info, list.MaxItems(1) & [...#identity_info]])

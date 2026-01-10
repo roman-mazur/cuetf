@@ -2,7 +2,7 @@ package res
 
 #aws_ram_resource_share_accepter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ram_resource_share_accepter")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ram_resource_share_accepter")
 	close({
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

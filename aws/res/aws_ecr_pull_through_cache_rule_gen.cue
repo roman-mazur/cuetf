@@ -2,7 +2,7 @@ package res
 
 #aws_ecr_pull_through_cache_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ecr_pull_through_cache_rule")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ecr_pull_through_cache_rule")
 	close({
 		credential_arn?:        string
 		custom_role_arn?:       string

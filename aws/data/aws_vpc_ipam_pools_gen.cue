@@ -2,7 +2,7 @@ package data
 
 #aws_vpc_ipam_pools: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc_ipam_pools")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_vpc_ipam_pools")
 	close({
 		filter?: matchN(1, [#filter, [...#filter]])
 		id?: string

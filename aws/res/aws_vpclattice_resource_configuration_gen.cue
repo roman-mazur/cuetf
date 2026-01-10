@@ -2,7 +2,7 @@ package res
 
 #aws_vpclattice_resource_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpclattice_resource_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpclattice_resource_configuration")
 	close({
 		allow_association_to_shareable_service_network?: bool
 		arn?:                                            string
