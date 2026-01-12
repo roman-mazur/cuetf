@@ -3961,7 +3961,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 					vulnerability_alerts: {
 						type:             "bool"
-						description:      "Set to 'true' to enable security alerts for vulnerable dependencies. Enabling requires alerts to be enabled on the owner level. (Note for importing: GitHub enables the alerts on public repos but disables them on private repos by default). Note that vulnerability alerts have not been successfully tested on any GitHub Enterprise instance and may be unavailable in those settings."
+						description:      "Set to 'true' to enable security alerts for vulnerable dependencies. Enabling requires alerts to be enabled on the owner level. (Note for importing: GitHub enables the alerts on all repos by default). Note that vulnerability alerts have not been successfully tested on any GitHub Enterprise instance and may be unavailable in those settings."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -7922,6 +7922,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 					owner: {
 						type:             "string"
+						description:      "Owner of the repository."
 						description_kind: "plain"
 						required:         true
 					}
@@ -7937,21 +7938,25 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 					release_id: {
 						type:             "number"
+						description:      "ID of the release to retrieve. Must be specified when `retrieve_by` = `id`."
 						description_kind: "plain"
 						optional:         true
 					}
 					release_tag: {
 						type:             "string"
+						description:      "ID of the release to retrieve. Must be specified when `retrieve_by` = `tag`."
 						description_kind: "plain"
 						optional:         true
 					}
 					repository: {
 						type:             "string"
+						description:      "Name of the repository to retrieve the release from."
 						description_kind: "plain"
 						required:         true
 					}
 					retrieve_by: {
 						type:             "string"
+						description:      "Describes how to fetch the release. Valid values are `id`, `tag`, `latest`."
 						description_kind: "plain"
 						required:         true
 					}
@@ -7981,6 +7986,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						computed:         true
 					}
 				}
+				description:      "Use this data source to retrieve information about a GitHub release in a specific repository."
 				description_kind: "plain"
 			}
 		}

@@ -158,10 +158,9 @@ import "list"
 		// Set to 'true' to enable security alerts for vulnerable
 		// dependencies. Enabling requires alerts to be enabled on the
 		// owner level. (Note for importing: GitHub enables the alerts on
-		// public repos but disables them on private repos by default).
-		// Note that vulnerability alerts have not been successfully
-		// tested on any GitHub Enterprise instance and may be
-		// unavailable in those settings.
+		// all repos by default). Note that vulnerability alerts have not
+		// been successfully tested on any GitHub Enterprise instance and
+		// may be unavailable in those settings.
 		vulnerability_alerts?: bool
 
 		// Require contributors to sign off on web-based commits. Defaults
