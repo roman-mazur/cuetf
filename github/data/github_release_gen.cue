@@ -16,19 +16,32 @@ package data
 			updated_at?:           string
 			url?:                  string
 		})]
-		assets_url?:       string
-		body?:             string
-		created_at?:       string
-		draft?:            bool
-		html_url?:         string
-		id?:               string
-		name?:             string
-		owner!:            string
-		prerelease?:       bool
-		published_at?:     string
-		release_id?:       number
-		release_tag?:      string
-		repository!:       string
+		assets_url?: string
+		body?:       string
+		created_at?: string
+		draft?:      bool
+		html_url?:   string
+		id?:         string
+
+		// Owner of the repository.
+		owner!: string
+		name?:  string
+
+		// ID of the release to retrieve. Must be specified when
+		// `retrieve_by` = `id`.
+		release_id?: number
+
+		// ID of the release to retrieve. Must be specified when
+		// `retrieve_by` = `tag`.
+		release_tag?:  string
+		prerelease?:   bool
+		published_at?: string
+
+		// Name of the repository to retrieve the release from.
+		repository!: string
+
+		// Describes how to fetch the release. Valid values are `id`,
+		// `tag`, `latest`.
 		retrieve_by!:      string
 		tarball_url?:      string
 		target_commitish?: string
