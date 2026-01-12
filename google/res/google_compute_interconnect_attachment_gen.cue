@@ -24,6 +24,26 @@ package res
 		// "BPS_100G"]
 		bandwidth?: string
 
+		// Single IPv4 address + prefix length to be configured on the
+		// cloud router interface for this
+		// interconnect attachment. Example: 203.0.113.1/29
+		candidate_cloud_router_ip_address?: string
+
+		// Single IPv6 address + prefix length to be configured on the
+		// cloud router interface for this
+		// interconnect attachment. Example: 2001:db8::1/125
+		candidate_cloud_router_ipv6_address?: string
+
+		// Single IPv4 address + prefix length to be configured on the
+		// customer router interface for this
+		// interconnect attachment. Example: 203.0.113.2/29
+		candidate_customer_router_ip_address?: string
+
+		// Single IPv6 address + prefix length to be configured on the
+		// customer router interface for this
+		// interconnect attachment. Example: 2001:db8::2/125
+		candidate_customer_router_ipv6_address?: string
+
 		// Up to 16 candidate prefixes that can be used to restrict the
 		// allocation
 		// of cloudRouterIpAddress and customerRouterIpAddress for this
@@ -154,6 +174,7 @@ package res
 		// to update or change labels,
 		// otherwise the request will fail with error 412 conditionNotMet.
 		label_fingerprint?: string
+		timeouts?:          #timeouts
 
 		// Labels for this resource. These can only be added or modified
 		// by the setLabels
@@ -171,8 +192,7 @@ package res
 		// through this interconnect attachment.
 		// Valid values are 1440, 1460, 1500, and 8896. If not specified,
 		// the value will default to 1440.
-		mtu?:      string
-		timeouts?: #timeouts
+		mtu?: string
 
 		// Name of the resource. Provided by the client when the resource
 		// is created. The

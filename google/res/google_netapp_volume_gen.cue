@@ -288,15 +288,20 @@ import "list"
 
 	#hybrid_replication_parameters: close({
 		// Optional. Name of source cluster location associated with the
-		// Hybrid replication. This is a free-form field for the display
-		// purpose only.
+		// replication. This is a free-form field
+		// for display purposes only.
 		cluster_location?: string
 
 		// Optional. Description of the replication.
 		description?: string
 
-		// Optional. Type of the volume's hybrid replication. Possible
-		// values: ["MIGRATION", "CONTINUOUS_REPLICATION",
+		// Optional. Type of the hybrid replication. Use 'MIGRATION' to
+		// create a volume migration
+		// and 'ONPREM_REPLICATION' to create an external replication.
+		// Other values are read-only. 'REVERSE_ONPREM_REPLICATION' is
+		// used to represent an external
+		// replication which got reversed. Default is 'MIGRATION'.
+		// Possible values: ["MIGRATION", "CONTINUOUS_REPLICATION",
 		// "ONPREM_REPLICATION", "REVERSE_ONPREM_REPLICATION"]
 		hybrid_replication_type?: string
 
@@ -306,22 +311,24 @@ import "list"
 		// "name": "wrench", "mass": "1.3kg", "count": "3" }.
 		labels?: [string]: string
 
-		// Optional. Constituent volume count for large volume.
+		// Optional. If the source is a FlexGroup volume, this field needs
+		// to match the number of constituents in the FlexGroup.
 		large_volume_constituent_count?: number
 
-		// Required. Name of the user's local source cluster to be peered
-		// with the destination cluster.
+		// Required. Name of the ONTAP source cluster to be peered with
+		// NetApp Volumes.
 		peer_cluster_name?: string
 
-		// Required. List of node ip addresses to be peered with.
+		// Required. List of all intercluster LIF IP addresses of the
+		// ONTAP source cluster.
 		peer_ip_addresses?: [...string]
 
-		// Required. Name of the user's local source vserver svm to be
-		// peered with the destination vserver svm.
+		// Required. Name of the ONTAP source vserver SVM to be peered
+		// with NetApp Volumes.
 		peer_svm_name?: string
 
-		// Required. Name of the user's local source volume to be peered
-		// with the destination volume.
+		// Required. Name of the ONTAP source volume to be replicated to
+		// NetApp Volumes destination volume.
 		peer_volume_name?: string
 
 		// Required. Desired name for the replication of this volume.

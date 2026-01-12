@@ -22,6 +22,7 @@ import "list"
 		// If set to true, any FeatureViews and Features for this
 		// FeatureOnlineStore will also be deleted.
 		force_destroy?: bool
+		id?:            string
 
 		// The labels with user-defined metadata to organize your feature
 		// online stores.
@@ -31,18 +32,18 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The resource name of the Feature Online Store. This value may
 		// be up to 60 characters, and valid characters are [a-z0-9_].
 		// The first character cannot be a number.
-		name!: string
+		name!:    string
+		project?: string
 
 		// The region of feature online store. eg us-central1
-		region?:  string
-		project?: string
+		region?: string
 		bigtable?: matchN(1, [#bigtable, list.MaxItems(1) & [...#bigtable]])
 		dedicated_serving_endpoint?: matchN(1, [#dedicated_serving_endpoint, list.MaxItems(1) & [...#dedicated_serving_endpoint]])
+		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
 		optimized?: matchN(1, [#optimized, list.MaxItems(1) & [...#optimized]])
 		timeouts?: #timeouts
 
@@ -63,6 +64,13 @@ import "list"
 
 	#bigtable: close({
 		auto_scaling!: matchN(1, [_#defs."/$defs/bigtable/$defs/auto_scaling", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bigtable/$defs/auto_scaling"]])
+
+		// Optional. If true, enable direct access to the Bigtable
+		// instance.
+		enable_direct_bigtable_access?: bool
+
+		// The zone where the Bigtable instance will be created.
+		zone?: string
 	})
 
 	#dedicated_serving_endpoint: close({
@@ -75,6 +83,15 @@ import "list"
 		// private service connect is enabled and after FeatureViewSync
 		// is created.
 		service_attachment?: string
+	})
+
+	#encryption_spec: close({
+		// The Cloud KMS resource identifier of the customer managed
+		// encryption key used to protect a resource. Has the form:
+		// projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
+		// The key needs to be in the same region as where the compute
+		// resource is created.
+		kms_key_name!: string
 	})
 
 	#optimized: close({})

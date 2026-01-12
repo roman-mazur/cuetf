@@ -5,13 +5,14 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_addresses")
 	close({
 		addresses?: [...close({
-			address?:      string
-			address_type?: string
-			description?:  string
-			name?:         string
-			region?:       string
-			self_link?:    string
-			status?:       string
+			address?:       string
+			address_type?:  string
+			description?:   string
+			name?:          string
+			prefix_length?: number
+			region?:        string
+			self_link?:     string
+			status?:        string
 		})]
 
 		// Filter sets the optional parameter "filter": A filter

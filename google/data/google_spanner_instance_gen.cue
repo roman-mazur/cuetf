@@ -35,6 +35,7 @@ package data
 			autoscaling_targets?: [...close({
 				high_priority_cpu_utilization_percent?: number
 				storage_utilization_percent?:           number
+				total_cpu_utilization_percent?:         number
 			})]
 		})]
 

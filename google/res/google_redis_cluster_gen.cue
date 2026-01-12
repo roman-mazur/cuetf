@@ -12,7 +12,6 @@ import "list"
 		// ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
 		// "AUTH_MODE_DISABLED"]
 		authorization_mode?: string
-		automated_backup_config?: matchN(1, [#automated_backup_config, list.MaxItems(1) & [...#automated_backup_config]])
 
 		// This field is used to determine the available maintenance
 		// versions for the self service update.
@@ -49,13 +48,26 @@ import "list"
 			})]
 		})]
 
+		// All of labels (key/value pairs) present on the resource in GCP,
+		// including the labels configured through Terraform, other
+		// clients and services.
+		effective_labels?: [string]: string
+
 		// This field represents the actual maintenance version of the
 		// cluster.
 		effective_maintenance_version?: string
+		id?:                            string
 
 		// The KMS key used to encrypt the at-rest data of the cluster.
 		kms_key?: string
-		id?:      string
+
+		// Resource labels to represent user provided metadata.
+		//
+		// **Note**: This field is non-authoritative, and will only manage
+		// the labels present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the
+		// labels present on the resource.
+		labels?: [string]: string
 
 		// Upcoming maintenance schedule.
 		maintenance_schedule?: [...close({
@@ -107,7 +119,7 @@ import "list"
 			project_id?:        string
 			psc_connection_id?: string
 		})]
-		project?: string
+		automated_backup_config?: matchN(1, [#automated_backup_config, list.MaxItems(1) & [...#automated_backup_config]])
 		cross_cluster_replication_config?: matchN(1, [#cross_cluster_replication_config, list.MaxItems(1) & [...#cross_cluster_replication_config]])
 		gcs_source?: matchN(1, [#gcs_source, list.MaxItems(1) & [...#gcs_source]])
 		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
@@ -115,6 +127,7 @@ import "list"
 		persistence_config?: matchN(1, [#persistence_config, list.MaxItems(1) & [...#persistence_config]])
 		psc_configs?: matchN(1, [#psc_configs, [...#psc_configs]])
 		timeouts?: #timeouts
+		project?:  string
 
 		// Service attachment details to configure Psc connections.
 		psc_service_attachments?: [...close({
@@ -154,6 +167,10 @@ import "list"
 				target_shard_count?:   number
 			})]
 		})]
+
+		// The combination of labels configured directly on the resource
+		// and default labels configured on the provider.
+		terraform_labels?: [string]: string
 
 		// Optional. The in-transit encryption for the Redis cluster.
 		// If not provided, encryption is disabled for the cluster.

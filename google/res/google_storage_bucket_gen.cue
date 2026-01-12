@@ -20,11 +20,16 @@ import "list"
 		// length of time.
 		enable_object_retention?: bool
 
-		// When deleting a bucket, this boolean option will delete all
-		// contained objects, or anywhereCaches (if any). If you try to
-		// delete a bucket that contains objects or anywhereCaches,
-		// Terraform will fail that run, deleting anywhereCaches may take
-		// 80 minutes to complete.
+		// When true, before deleting a bucket, delete all objects within
+		// the bucket, or Anywhere Caches caching data for that bucket.
+		// Otherwise, buckets with objects/caches will fail. Anywhere
+		// Cache requires additional permissions to interact with and
+		// will be ignored when those are not present, attempting to
+		// delete anyways. This may result in the objects in the bucket
+		// getting destroyed but not the bucket itself if there is a
+		// cache in use with the bucket. Force deletion may take a long
+		// time to delete buckets with lots of objects or with any
+		// Anywhere Caches (80m+).
 		force_destroy?: bool
 
 		// A set of key/value label pairs to assign to the bucket.

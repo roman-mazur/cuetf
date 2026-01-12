@@ -60,6 +60,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_apigee_nat_address": res.#google_apigee_nat_address
 	_#res: "\(#googlePrefix)_apigee_organization": res.#google_apigee_organization
 	_#res: "\(#googlePrefix)_apigee_security_action": res.#google_apigee_security_action
+	_#res: "\(#googlePrefix)_apigee_security_feedback": res.#google_apigee_security_feedback
 	_#res: "\(#googlePrefix)_apigee_security_monitoring_condition": res.#google_apigee_security_monitoring_condition
 	_#res: "\(#googlePrefix)_apigee_security_profile_v2": res.#google_apigee_security_profile_v2
 	_#res: "\(#googlePrefix)_apigee_sharedflow_deployment": res.#google_apigee_sharedflow_deployment
@@ -81,6 +82,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_app_engine_service_split_traffic": res.#google_app_engine_service_split_traffic
 	_#res: "\(#googlePrefix)_app_engine_standard_app_version": res.#google_app_engine_standard_app_version
 	_#res: "\(#googlePrefix)_apphub_application": res.#google_apphub_application
+	_#res: "\(#googlePrefix)_apphub_boundary": res.#google_apphub_boundary
 	_#res: "\(#googlePrefix)_apphub_service": res.#google_apphub_service
 	_#res: "\(#googlePrefix)_apphub_service_project_attachment": res.#google_apphub_service_project_attachment
 	_#res: "\(#googlePrefix)_apphub_workload": res.#google_apphub_workload
@@ -107,6 +109,10 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_beyondcorp_security_gateway_iam_policy": res.#google_beyondcorp_security_gateway_iam_policy
 	_#res: "\(#googlePrefix)_biglake_catalog": res.#google_biglake_catalog
 	_#res: "\(#googlePrefix)_biglake_database": res.#google_biglake_database
+	_#res: "\(#googlePrefix)_biglake_iceberg_catalog": res.#google_biglake_iceberg_catalog
+	_#res: "\(#googlePrefix)_biglake_iceberg_catalog_iam_binding": res.#google_biglake_iceberg_catalog_iam_binding
+	_#res: "\(#googlePrefix)_biglake_iceberg_catalog_iam_member": res.#google_biglake_iceberg_catalog_iam_member
+	_#res: "\(#googlePrefix)_biglake_iceberg_catalog_iam_policy": res.#google_biglake_iceberg_catalog_iam_policy
 	_#res: "\(#googlePrefix)_biglake_table": res.#google_biglake_table
 	_#res: "\(#googlePrefix)_bigquery_analytics_hub_data_exchange": res.#google_bigquery_analytics_hub_data_exchange
 	_#res: "\(#googlePrefix)_bigquery_analytics_hub_data_exchange_iam_binding": res.#google_bigquery_analytics_hub_data_exchange_iam_binding
@@ -273,6 +279,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_compute_backend_bucket_signed_url_key": res.#google_compute_backend_bucket_signed_url_key
 	_#res: "\(#googlePrefix)_compute_backend_service": res.#google_compute_backend_service
 	_#res: "\(#googlePrefix)_compute_backend_service_signed_url_key": res.#google_compute_backend_service_signed_url_key
+	_#res: "\(#googlePrefix)_compute_cross_site_network": res.#google_compute_cross_site_network
 	_#res: "\(#googlePrefix)_compute_disk_async_replication": res.#google_compute_disk_async_replication
 	_#res: "\(#googlePrefix)_compute_disk": res.#google_compute_disk
 	_#res: "\(#googlePrefix)_compute_disk_iam_binding": res.#google_compute_disk_iam_binding
@@ -334,6 +341,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_compute_network_peering_routes_config": res.#google_compute_network_peering_routes_config
 	_#res: "\(#googlePrefix)_compute_node_group": res.#google_compute_node_group
 	_#res: "\(#googlePrefix)_compute_node_template": res.#google_compute_node_template
+	_#res: "\(#googlePrefix)_compute_organization_security_policy_association": res.#google_compute_organization_security_policy_association
 	_#res: "\(#googlePrefix)_compute_organization_security_policy": res.#google_compute_organization_security_policy
 	_#res: "\(#googlePrefix)_compute_packet_mirroring": res.#google_compute_packet_mirroring
 	_#res: "\(#googlePrefix)_compute_per_instance_config": res.#google_compute_per_instance_config
@@ -411,6 +419,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_compute_url_map": res.#google_compute_url_map
 	_#res: "\(#googlePrefix)_compute_vpn_gateway": res.#google_compute_vpn_gateway
 	_#res: "\(#googlePrefix)_compute_vpn_tunnel": res.#google_compute_vpn_tunnel
+	_#res: "\(#googlePrefix)_compute_wire_group": res.#google_compute_wire_group
 	_#res: "\(#googlePrefix)_contact_center_insights_analysis_rule": res.#google_contact_center_insights_analysis_rule
 	_#res: "\(#googlePrefix)_contact_center_insights_view": res.#google_contact_center_insights_view
 	_#res: "\(#googlePrefix)_container_analysis_note": res.#google_container_analysis_note
@@ -859,9 +868,11 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_netapp_volume_quota_rule": res.#google_netapp_volume_quota_rule
 	_#res: "\(#googlePrefix)_netapp_volume_replication": res.#google_netapp_volume_replication
 	_#res: "\(#googlePrefix)_netapp_volume_snapshot": res.#google_netapp_volume_snapshot
+	_#res: "\(#googlePrefix)_network_connectivity_destination": res.#google_network_connectivity_destination
 	_#res: "\(#googlePrefix)_network_connectivity_group": res.#google_network_connectivity_group
 	_#res: "\(#googlePrefix)_network_connectivity_hub": res.#google_network_connectivity_hub
 	_#res: "\(#googlePrefix)_network_connectivity_internal_range": res.#google_network_connectivity_internal_range
+	_#res: "\(#googlePrefix)_network_connectivity_multicloud_data_transfer_config": res.#google_network_connectivity_multicloud_data_transfer_config
 	_#res: "\(#googlePrefix)_network_connectivity_policy_based_route": res.#google_network_connectivity_policy_based_route
 	_#res: "\(#googlePrefix)_network_connectivity_regional_endpoint": res.#google_network_connectivity_regional_endpoint
 	_#res: "\(#googlePrefix)_network_connectivity_service_connection_policy": res.#google_network_connectivity_service_connection_policy
@@ -876,6 +887,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_network_security_authz_policy": res.#google_network_security_authz_policy
 	_#res: "\(#googlePrefix)_network_security_backend_authentication_config": res.#google_network_security_backend_authentication_config
 	_#res: "\(#googlePrefix)_network_security_client_tls_policy": res.#google_network_security_client_tls_policy
+	_#res: "\(#googlePrefix)_network_security_dns_threat_detector": res.#google_network_security_dns_threat_detector
 	_#res: "\(#googlePrefix)_network_security_firewall_endpoint_association": res.#google_network_security_firewall_endpoint_association
 	_#res: "\(#googlePrefix)_network_security_firewall_endpoint": res.#google_network_security_firewall_endpoint
 	_#res: "\(#googlePrefix)_network_security_gateway_security_policy": res.#google_network_security_gateway_security_policy
@@ -909,6 +921,8 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_network_services_multicast_domain_activation": res.#google_network_services_multicast_domain_activation
 	_#res: "\(#googlePrefix)_network_services_multicast_domain": res.#google_network_services_multicast_domain
 	_#res: "\(#googlePrefix)_network_services_multicast_domain_group": res.#google_network_services_multicast_domain_group
+	_#res: "\(#googlePrefix)_network_services_multicast_group_consumer_activation": res.#google_network_services_multicast_group_consumer_activation
+	_#res: "\(#googlePrefix)_network_services_multicast_group_producer_activation": res.#google_network_services_multicast_group_producer_activation
 	_#res: "\(#googlePrefix)_network_services_multicast_group_range_activation": res.#google_network_services_multicast_group_range_activation
 	_#res: "\(#googlePrefix)_network_services_multicast_group_range": res.#google_network_services_multicast_group_range
 	_#res: "\(#googlePrefix)_network_services_multicast_producer_association": res.#google_network_services_multicast_producer_association

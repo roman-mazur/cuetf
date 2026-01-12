@@ -129,13 +129,12 @@ import "list"
 		// this connection is to be provisioned.
 		// Specifies the location inside Google's Networks.
 		location!: string
-		macsec?: matchN(1, [#macsec, list.MaxItems(1) & [...#macsec]])
-		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
-		timeouts?: #timeouts
 
 		// Enable or disable MACsec on this Interconnect connection.
 		// MACsec enablement fails if the MACsec object is not specified.
 		macsec_enabled?: bool
+		macsec?: matchN(1, [#macsec, list.MaxItems(1) & [...#macsec]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 
 		// Name of the resource. Provided by the client when the resource
 		// is created. The name must be
@@ -179,10 +178,11 @@ import "list"
 		// when prompted by Google NOC.
 		// This can be used only for ping tests.
 		peer_ip_address?: string
-		project?:         string
 
 		// Number of links actually provisioned in this interconnect.
 		provisioned_link_count?: number
+		timeouts?:               #timeouts
+		project?:                string
 
 		// Indicates that this is a Cross-Cloud Interconnect. This field
 		// specifies the location outside
@@ -225,6 +225,11 @@ import "list"
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+
+		// A list of the URLs of all CrossSiteNetwork WireGroups
+		// configured to use this Interconnect. The Interconnect cannot
+		// be deleted if this list is non-empty.
+		wire_groups?: [...string]
 	})
 
 	#macsec: close({

@@ -109,6 +109,7 @@ import "list"
 
 	#software_config: close({
 		env?: matchN(1, [_#defs."/$defs/software_config/$defs/env", [..._#defs."/$defs/software_config/$defs/env"]])
+		post_startup_script_config?: matchN(1, [_#defs."/$defs/software_config/$defs/post_startup_script_config", list.MaxItems(1) & [..._#defs."/$defs/software_config/$defs/post_startup_script_config"]])
 	})
 
 	#timeouts: close({
@@ -129,5 +130,19 @@ import "list"
 		// $$(VAR_NAME). Escaped references will never be expanded,
 		// regardless of whether the variable exists or not.
 		value?: string
+	})
+
+	_#defs: "/$defs/software_config/$defs/post_startup_script_config": close({
+		// Post startup script to run after runtime is started.
+		post_startup_script?: string
+
+		// Post startup script behavior that defines download and
+		// execution behavior. Possible values: ["RUN_ONCE",
+		// "RUN_EVERY_START", "DOWNLOAD_AND_RUN_EVERY_START"]
+		post_startup_script_behavior?: string
+
+		// Post startup script url to download. Example:
+		// https://bucket/script.sh.
+		post_startup_script_url?: string
 	})
 }

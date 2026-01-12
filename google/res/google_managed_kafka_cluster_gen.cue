@@ -63,9 +63,9 @@ import "list"
 	})
 
 	#broker_capacity_config: close({
-		// The disk to provision for each broker in Gigabytes. Minimum:
-		// 100 GB.
-		disk_size_gb?: string
+		// The disk to provision for each broker in Gibibytes. Minimum:
+		// 100 GiB.
+		disk_size_gib?: string
 	})
 
 	#capacity_config: close({

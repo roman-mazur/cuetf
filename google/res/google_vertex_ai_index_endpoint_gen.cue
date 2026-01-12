@@ -86,6 +86,8 @@ import "list"
 	})
 
 	#private_service_connect_config: close({
+		psc_automation_configs?: matchN(1, [_#defs."/$defs/private_service_connect_config/$defs/psc_automation_configs", [..._#defs."/$defs/private_service_connect_config/$defs/psc_automation_configs"]])
+
 		// If set to true, the IndexEndpoint is created without private
 		// service access.
 		enable_private_service_connect!: bool
@@ -99,5 +101,16 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/private_service_connect_config/$defs/psc_automation_configs": close({
+		// The full name of the Google Compute Engine
+		// [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
+		// [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get):
+		// projects/{project}/global/networks/{network}.
+		network!: string
+
+		// Project id used to create forwarding rule.
+		project_id!: string
 	})
 }

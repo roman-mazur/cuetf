@@ -81,16 +81,16 @@ import "list"
 		// Recommended value: 2 * cpu + 1. Defaults to 9.
 		container_concurrency?: number
 
-		// Optional. The minimum number of application instances that will
-		// be
-		// kept running at all times. Defaults to 1. Range: [0, 10].
-		max_instances?: number
-
 		// Optional. The maximum number of application instances that can
 		// be
 		// launched to handle increased traffic. Defaults to 100.
 		// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
 		// range is [1, 100].
+		max_instances?: number
+
+		// Optional. The minimum number of application instances that will
+		// be
+		// kept running at all times. Defaults to 1. Range: [0, 10].
 		min_instances?: number
 
 		// Optional. Resource limits for each container.

@@ -1,5 +1,7 @@
 package res
 
+import "list"
+
 #google_lustre_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_lustre_instance")
@@ -31,7 +33,6 @@ package res
 		// By default,
 		// GKE clients are not supported.
 		gke_support_enabled?: bool
-		id?:                  string
 
 		// The name of the Managed Lustre instance.
 		//
@@ -40,6 +41,7 @@ package res
 		// * Must be between 1-63 characters.
 		// * Must end with a number or a letter.
 		instance_id!: string
+		id?:          string
 
 		// The KMS key id to use for encryption of the Lustre instance.
 		kms_key?: string
@@ -62,7 +64,8 @@ package res
 		mount_point?: string
 
 		// Identifier. The name of the instance.
-		name?:     string
+		name?: string
+		access_rules_options?: matchN(1, [#access_rules_options, list.MaxItems(1) & [...#access_rules_options]])
 		timeouts?: #timeouts
 
 		// The full name of the VPC network to which the instance is
@@ -78,13 +81,13 @@ package res
 		// The placement policy name for the instance in the format of
 		// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
 		placement_policy?: string
+		project?:          string
 
 		// The state of the instance.
 		// Please see
 		// https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state
 		// for values
-		state?:   string
-		project?: string
+		state?: string
 
 		// The reason why the instance is in a certain state.
 		state_reason?: string
@@ -97,9 +100,39 @@ package res
 		update_time?: string
 	})
 
+	#access_rules_options: close({
+		// The GID to map the root user to when root squashing is enabled
+		// (e.g., 65534 for nobody).
+		default_squash_gid?: number
+		access_rules?: matchN(1, [_#defs."/$defs/access_rules_options/$defs/access_rules", [..._#defs."/$defs/access_rules_options/$defs/access_rules"]])
+
+		// Set to "ROOT_SQUASH" to enable root squashing by default.
+		// Other values include "NO_SQUASH". Possible values:
+		// ["ROOT_SQUASH", "NO_SQUASH"]
+		default_squash_mode!: string
+
+		// The UID to map the root user to when root squashing is enabled
+		// (e.g., 65534 for nobody).
+		default_squash_uid?: number
+	})
+
 	#timeouts: close({
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/access_rules_options/$defs/access_rules": close({
+		// An array of IP address strings or CIDR ranges that this rule
+		// applies to.
+		ip_address_ranges!: [...string]
+
+		// A unique identifier for the access rule.
+		name!: string
+
+		// The squash mode for this specific rule. Currently, only
+		// "NO_SQUASH"
+		// is supported for exceptions. Possible values: ["NO_SQUASH"]
+		squash_mode!: string
 	})
 }

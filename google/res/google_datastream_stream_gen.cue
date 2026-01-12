@@ -45,16 +45,17 @@ import "list"
 		location!: string
 
 		// The stream's name.
-		name?: string
+		name?:    string
+		project?: string
 		backfill_all?: matchN(1, [#backfill_all, list.MaxItems(1) & [...#backfill_all]])
 		backfill_none?: matchN(1, [#backfill_none, list.MaxItems(1) & [...#backfill_none]])
 		destination_config!: matchN(1, [#destination_config, list.MaxItems(1) & [_, ...] & [...#destination_config]])
+		rule_sets?: matchN(1, [#rule_sets, [...#rule_sets]])
 		source_config!: matchN(1, [#source_config, list.MaxItems(1) & [_, ...] & [...#source_config]])
 		timeouts?: #timeouts
 
 		// The state of the stream.
-		state?:   string
-		project?: string
+		state?: string
 
 		// The stream identifier.
 		stream_id!: string
@@ -82,6 +83,11 @@ import "list"
 		// Destination connection profile resource. Format:
 		// projects/{project}/locations/{location}/connectionProfiles/{name}
 		destination_connection_profile!: string
+	})
+
+	#rule_sets: close({
+		customization_rules!: matchN(1, [_#defs."/$defs/rule_sets/$defs/customization_rules", [_, ...] & [..._#defs."/$defs/rule_sets/$defs/customization_rules"]])
+		object_filter!: matchN(1, [_#defs."/$defs/rule_sets/$defs/object_filter", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule_sets/$defs/object_filter"]])
 	})
 
 	#source_config: close({
@@ -428,6 +434,120 @@ import "list"
 		// The schema file format along JSON data files. Possible values:
 		// ["NO_SCHEMA_FILE", "AVRO_SCHEMA_FILE"]
 		schema_file_format?: string
+	})
+
+	_#defs: "/$defs/rule_sets/$defs/customization_rules": close({
+		bigquery_clustering?: matchN(1, [_#defs."/$defs/rule_sets/$defs/customization_rules/$defs/bigquery_clustering", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/customization_rules/$defs/bigquery_clustering"]])
+		bigquery_partitioning?: matchN(1, [_#defs."/$defs/rule_sets/$defs/customization_rules/$defs/bigquery_partitioning", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/customization_rules/$defs/bigquery_partitioning"]])
+	})
+
+	_#defs: "/$defs/rule_sets/$defs/customization_rules/$defs/bigquery_clustering": close({
+		// Column names to set as clustering columns.
+		columns!: [...string]
+	})
+
+	_#defs: "/$defs/rule_sets/$defs/customization_rules/$defs/bigquery_partitioning": close({
+		ingestion_time_partition?: matchN(1, [_#defs."/$defs/rule_sets/$defs/customization_rules/$defs/bigquery_partitioning/$defs/ingestion_time_partition", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/customization_rules/$defs/bigquery_partitioning/$defs/ingestion_time_partition"]])
+		integer_range_partition?: matchN(1, [_#defs."/$defs/rule_sets/$defs/customization_rules/$defs/bigquery_partitioning/$defs/integer_range_partition", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/customization_rules/$defs/bigquery_partitioning/$defs/integer_range_partition"]])
+		time_unit_partition?: matchN(1, [_#defs."/$defs/rule_sets/$defs/customization_rules/$defs/bigquery_partitioning/$defs/time_unit_partition", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/customization_rules/$defs/bigquery_partitioning/$defs/time_unit_partition"]])
+
+		// If true, queries over the table require a partition filter.
+		require_partition_filter?: bool
+	})
+
+	_#defs: "/$defs/rule_sets/$defs/customization_rules/$defs/bigquery_partitioning/$defs/ingestion_time_partition": close({
+		// Partition granularity. Possible values:
+		// ["PARTITIONING_TIME_GRANULARITY_UNSPECIFIED",
+		// "PARTITIONING_TIME_GRANULARITY_HOUR",
+		// "PARTITIONING_TIME_GRANULARITY_DAY",
+		// "PARTITIONING_TIME_GRANULARITY_MONTH",
+		// "PARTITIONING_TIME_GRANULARITY_YEAR"]
+		partitioning_time_granularity?: string
+	})
+
+	_#defs: "/$defs/rule_sets/$defs/customization_rules/$defs/bigquery_partitioning/$defs/integer_range_partition": close({
+		// The partitioning column.
+		column!: string
+
+		// The ending value for range partitioning (exclusive).
+		end!: number
+
+		// The interval of each range within the partition.
+		interval!: number
+
+		// The starting value for range partitioning (inclusive).
+		start!: number
+	})
+
+	_#defs: "/$defs/rule_sets/$defs/customization_rules/$defs/bigquery_partitioning/$defs/time_unit_partition": close({
+		// The partitioning column.
+		column!: string
+
+		// Partition granularity. Possible values:
+		// ["PARTITIONING_TIME_GRANULARITY_UNSPECIFIED",
+		// "PARTITIONING_TIME_GRANULARITY_HOUR",
+		// "PARTITIONING_TIME_GRANULARITY_DAY",
+		// "PARTITIONING_TIME_GRANULARITY_MONTH",
+		// "PARTITIONING_TIME_GRANULARITY_YEAR"]
+		partitioning_time_granularity?: string
+	})
+
+	_#defs: "/$defs/rule_sets/$defs/object_filter": close({
+		source_object_identifier?: matchN(1, [_#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier"]])
+	})
+
+	_#defs: "/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier": close({
+		mongodb_identifier?: matchN(1, [_#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/mongodb_identifier", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/mongodb_identifier"]])
+		mysql_identifier?: matchN(1, [_#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/mysql_identifier", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/mysql_identifier"]])
+		oracle_identifier?: matchN(1, [_#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/oracle_identifier", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/oracle_identifier"]])
+		postgresql_identifier?: matchN(1, [_#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/postgresql_identifier", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/postgresql_identifier"]])
+		salesforce_identifier?: matchN(1, [_#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/salesforce_identifier", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/salesforce_identifier"]])
+		sql_server_identifier?: matchN(1, [_#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/sql_server_identifier", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/sql_server_identifier"]])
+	})
+
+	_#defs: "/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/mongodb_identifier": close({
+		// The MongoDB collection name.
+		collection!: string
+
+		// The MongoDB database name.
+		database!: string
+	})
+
+	_#defs: "/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/mysql_identifier": close({
+		// The database name.
+		database!: string
+
+		// The table name.
+		table!: string
+	})
+
+	_#defs: "/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/oracle_identifier": close({
+		// The schema name.
+		schema!: string
+
+		// The table name.
+		table!: string
+	})
+
+	_#defs: "/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/postgresql_identifier": close({
+		// The schema name.
+		schema!: string
+
+		// The table name.
+		table!: string
+	})
+
+	_#defs: "/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/salesforce_identifier": close({
+		// The Salesforce object name.
+		object_name!: string
+	})
+
+	_#defs: "/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/sql_server_identifier": close({
+		// The schema name.
+		schema!: string
+
+		// The table name.
+		table!: string
 	})
 
 	_#defs: "/$defs/source_config/$defs/mongodb_source_config": close({

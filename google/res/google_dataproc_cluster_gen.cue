@@ -327,6 +327,11 @@ import "list"
 		// "2014-10-02T15:01:23.045123456Z".
 		auto_delete_time?: string
 
+		// The time when cluster will be auto-stopped. A timestamp in
+		// RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
+		// "2014-10-02T15:01:23.045123456Z".
+		auto_stop_time?: string
+
 		// The duration to keep the cluster alive while idling (no jobs
 		// running). After this TTL, the cluster will be deleted. Valid
 		// range: [10m, 14d].
@@ -335,6 +340,11 @@ import "list"
 		// Time when the cluster became idle (most recent job finished)
 		// and became eligible for deletion due to idleness.
 		idle_start_time?: string
+
+		// The duration to keep the cluster started while idling (no jobs
+		// running). After this TTL, the cluster will be stopped. Valid
+		// range: [10m, 14d].
+		idle_stop_ttl?: string
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/master_config": close({

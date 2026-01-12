@@ -22,7 +22,6 @@ import "list"
 		// 'NEVER'.' Possible values: ["ACTIVATION_POLICY_UNSPECIFIED",
 		// "ALWAYS", "NEVER"]
 		activation_policy?: string
-		client_connection_config?: matchN(1, [#client_connection_config, list.MaxItems(1) & [...#client_connection_config]])
 
 		// Annotations to allow client tools to store small amount of
 		// arbitrary data. This is distinct from labels.
@@ -83,6 +82,7 @@ import "list"
 		// for a ZONAL instance, instance is created in a random zone
 		// with available capacity.
 		gce_zone?: string
+		id?:       string
 
 		// The ID of the alloydb instance.
 		instance_id!: string
@@ -111,7 +111,13 @@ import "list"
 		// The IP address for the Instance. This is the connection
 		// endpoint for an end-user application.
 		ip_address?: string
-		id?:         string
+		client_connection_config?: matchN(1, [#client_connection_config, list.MaxItems(1) & [...#client_connection_config]])
+		connection_pool_config?: matchN(1, [#connection_pool_config, list.MaxItems(1) & [...#connection_pool_config]])
+		machine_config?: matchN(1, [#machine_config, list.MaxItems(1) & [...#machine_config]])
+		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
+		psc_instance_config?: matchN(1, [#psc_instance_config, list.MaxItems(1) & [...#psc_instance_config]])
+		query_insights_config?: matchN(1, [#query_insights_config, list.MaxItems(1) & [...#query_insights_config]])
+		read_pool_config?: matchN(1, [#read_pool_config, list.MaxItems(1) & [...#read_pool_config]])
 
 		// User-defined labels for the alloydb instance.
 		//
@@ -120,12 +126,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		machine_config?: matchN(1, [#machine_config, list.MaxItems(1) & [...#machine_config]])
-		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
-		psc_instance_config?: matchN(1, [#psc_instance_config, list.MaxItems(1) & [...#psc_instance_config]])
-		query_insights_config?: matchN(1, [#query_insights_config, list.MaxItems(1) & [...#query_insights_config]])
-		read_pool_config?: matchN(1, [#read_pool_config, list.MaxItems(1) & [...#read_pool_config]])
-		timeouts?: #timeouts
 
 		// The name of the instance resource.
 		name?: string
@@ -136,6 +136,7 @@ import "list"
 		// addresses are used
 		// for outbound connections.
 		outbound_public_ip_addresses?: [...string]
+		timeouts?: #timeouts
 
 		// The public IP addresses for the Instance. This is available
 		// ONLY when
@@ -171,6 +172,29 @@ import "list"
 		// Configuration to enforce connectors only (ex: AuthProxy)
 		// connections to the database.
 		require_connectors?: bool
+	})
+
+	#connection_pool_config: close({
+		// Whether to enabled Managed Connection Pool.
+		enabled!: bool
+
+		// Flags for configuring managed connection pooling when it is
+		// enabled.
+		// These flags will only be set if
+		// 'connection_pool_config.enabled' is
+		// true.
+		// Please see
+		// https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+		// for a comprehensive list of flags that can be set. To specify
+		// the flags
+		// in Terraform, please remove the "connection-pooling-" prefix
+		// and use
+		// underscores instead of dashes in the name. For example,
+		// "connection-pooling-pool-mode" would be "pool_mode".
+		flags?: [string]: string
+
+		// The number of running poolers per instance.
+		pooler_count?: number
 	})
 
 	#machine_config: close({
