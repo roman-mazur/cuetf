@@ -12,6 +12,9 @@ package res
 		// Cannot be set to false if secret is true
 		case_sensitive?: bool
 		created_at?:     string
+		enabled!:        bool
+		entry_id!:       string
+		id?:             string
 		confidence?: close({
 			// Indicates whether this entry has AI remote service validation.
 			ai_context_available?: bool
@@ -20,22 +23,9 @@ package res
 			// not an AI remote service.
 			available?: bool
 		})
-		enabled!: bool
-
-		// This field is not used as the owning profile.
-		// For predefined entries it is already set to a predefined
-		// profile.
-		profile_id?: string
-		entry_id!:   string
-		id?:         string
 		pattern?: close({
 			regex?: string
 		})
-
-		// Available values: "custom", "predefined", "integration",
-		// "exact_data", "document_fingerprint", "word_list".
-		type?: string
-		name?: string
 		profiles?: matchN(1, [close({
 			id?:   string
 			name?: string
@@ -43,8 +33,16 @@ package res
 			id?:   string
 			name?: string
 		})]])
-		secret?:     bool
-		updated_at?: string
+
+		// This field is not used as the owning profile.
+		// For predefined entries it is already set to a predefined
+		// profile.
+		profile_id?: string
+
+		// Available values: "custom", "predefined", "integration",
+		// "exact_data", "document_fingerprint", "word_list".
+		type?: string
+		name?: string
 		variant?: close({
 			description?: string
 
@@ -54,6 +52,12 @@ package res
 			// Available values: "PromptTopic".
 			type?: string
 		})
-		word_list?: string
+		secret?: bool
+
+		// Available values: "empty", "uploading", "pending",
+		// "processing", "failed", "complete".
+		upload_status?: string
+		updated_at?:    string
+		word_list?:     string
 	})
 }

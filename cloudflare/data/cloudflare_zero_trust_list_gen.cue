@@ -42,12 +42,14 @@ package data
 		name?: string
 		filter?: close({
 			// Specify the list type.
-			// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+			// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP",
+			// "CATEGORY", "LOCATION", "DEVICE".
 			type?: string
 		})
 
 		// Specify the list type.
-		// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+		// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP",
+		// "CATEGORY", "LOCATION", "DEVICE".
 		type?:       string
 		updated_at?: string
 	})

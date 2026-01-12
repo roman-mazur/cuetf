@@ -523,6 +523,9 @@ package res
 			name!: string
 		})]])
 
+		// The integer version number, starting from one.
+		"number"?: number
+
 		// Placement settings for the version.
 		placement?: close({
 			// Placement mode for the version.
@@ -530,11 +533,12 @@ package res
 			mode?: string
 		})
 
-		// The integer version number, starting from one.
-		"number"?: number
-
 		// The client used to create the version.
 		source?: string
+
+		// Time in milliseconds spent on [Worker
+		// startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+		startup_time_ms?: number
 
 		// Identifier for the Worker, which can be ID or name.
 		worker_id!: string

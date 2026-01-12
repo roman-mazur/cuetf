@@ -4,6 +4,9 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_worker_version")
 	close({
+		// Identifier.
+		account_id!: string
+
 		// Metadata about the version.
 		annotations?: close({
 			// Human-readable message about the version.
@@ -16,18 +19,10 @@ package data
 			workers_triggered_by?: string
 		})
 
-		// Identifier.
-		account_id!: string
-
 		// Date indicating targeted support in the Workers runtime.
 		// Backwards incompatible fixes to the runtime following this
 		// date will not affect this Worker.
 		compatibility_date?: string
-
-		// Flags that enable or disable certain features in the Workers
-		// runtime. Used to enable upcoming features or opt in or out of
-		// specific changes not included in a `compatibility_date`.
-		compatibility_flags?: [...string]
 
 		// Configuration for assets within a Worker.
 		//
@@ -65,8 +60,10 @@ package data
 			jwt?: string
 		})
 
-		// When the version was created.
-		created_on?: string
+		// Flags that enable or disable certain features in the Workers
+		// runtime. Used to enable upcoming features or opt in or out of
+		// specific changes not included in a `compatibility_date`.
+		compatibility_flags?: [...string]
 
 		// List of bindings attached to a Worker. You can find more about
 		// bindings on our docs:
@@ -347,15 +344,12 @@ package data
 			workflow_name?: string
 		})]])
 
+		// When the version was created.
+		created_on?: string
+
 		// Identifier for the version, which can be ID or the literal
 		// "latest" to operate on the most recently created version.
 		id?: string
-
-		// Resource limits enforced at runtime.
-		limits?: close({
-			// CPU time limit in milliseconds.
-			cpu_ms?: number
-		})
 
 		// Whether to include the `modules` property of the version in the
 		// response, which contains code and sourcemap content and may
@@ -363,9 +357,18 @@ package data
 		// Available values: "modules".
 		include?: string
 
+		// Resource limits enforced at runtime.
+		limits?: close({
+			// CPU time limit in milliseconds.
+			cpu_ms?: number
+		})
+
 		// The name of the main module in the `modules` array (e.g. the
 		// name of the module that exports a `fetch` handler).
 		main_module?: string
+
+		// The integer version number, starting from one.
+		"number"?: number
 
 		// Migrations for Durable Objects associated with the version.
 		// Migrations are applied when the version is deployed.
@@ -516,11 +519,12 @@ package data
 			mode?: string
 		})
 
-		// The integer version number, starting from one.
-		"number"?: number
-
 		// The client used to create the version.
 		source?: string
+
+		// Time in milliseconds spent on [Worker
+		// startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+		startup_time_ms?: number
 
 		// Identifier for the version, which can be ID or the literal
 		// "latest" to operate on the most recently created version.
