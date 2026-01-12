@@ -132,6 +132,7 @@ import "github.com/roman-mazur/cuetf/azurerm/res"
 	_#res: "\(#azurermPrefix)_automation_powershell72_module": res.#azurerm_automation_powershell72_module
 	_#res: "\(#azurermPrefix)_automation_python3_package": res.#azurerm_automation_python3_package
 	_#res: "\(#azurermPrefix)_automation_runbook": res.#azurerm_automation_runbook
+	_#res: "\(#azurermPrefix)_automation_runtime_environment": res.#azurerm_automation_runtime_environment
 	_#res: "\(#azurermPrefix)_automation_schedule": res.#azurerm_automation_schedule
 	_#res: "\(#azurermPrefix)_automation_software_update_configuration": res.#azurerm_automation_software_update_configuration
 	_#res: "\(#azurermPrefix)_automation_source_control": res.#azurerm_automation_source_control
