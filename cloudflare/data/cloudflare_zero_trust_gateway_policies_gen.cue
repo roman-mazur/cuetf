@@ -84,11 +84,6 @@ package data
 					command_logging?: bool
 				})
 
-				// Set to enable MSP children to bypass this rule. Only parent MSP
-				// accounts can set this. this rule. Settable for all types of
-				// rules.
-				allow_child_bypass?: bool
-
 				// Configure browser isolation behavior. Settable only for `http`
 				// rules with the action set to `isolate`.
 				biso_admin_controls?: close({
@@ -154,6 +149,11 @@ package data
 					version?: string
 				})
 
+				// Set to enable MSP children to bypass this rule. Only parent MSP
+				// accounts can set this. this rule. Settable for all types of
+				// rules.
+				allow_child_bypass?: bool
+
 				// Configure custom block page settings. If missing or null, use
 				// the account settings. Settable only for `http` rules with the
 				// action set to `block`.
@@ -176,10 +176,6 @@ package data
 					// Enable session enforcement.
 					enforce?: bool
 				})
-
-				// Enable the custom block page. Settable only for `dns` rules
-				// with action `block`.
-				block_page_enabled?: bool
 
 				// Configure custom resolvers to route queries that match the
 				// resolver policy. Unused with 'resolve_dns_through_cloudflare'
@@ -252,10 +248,9 @@ package data
 					})]])
 				})
 
-				// Explain why the rule blocks the request. The custom block page
-				// shows this text (if enabled). Settable only for `dns`, `l4`,
-				// and `http` rules when the action set to `block`.
-				block_reason?: string
+				// Enable the custom block page. Settable only for `dns` rules
+				// with action `block`.
+				block_page_enabled?: bool
 
 				// Configure how Gateway Proxy traffic egresses. You can enable
 				// this setting for rules with Egress actions and filters, or
@@ -274,20 +269,21 @@ package data
 					ipv6?: string
 				})
 
+				// Explain why the rule blocks the request. The custom block page
+				// shows this text (if enabled). Settable only for `dns`, `l4`,
+				// and `http` rules when the action set to `block`.
+				block_reason?: string
+
 				// Set to enable MSP accounts to bypass their parent's rules. Only
 				// MSP child accounts can set this. Settable for all types of
 				// rules.
 				bypass_parent_rule?: bool
 
-				// Send matching traffic to the supplied destination IP address
-				// and port. Settable only for `l4` rules with the action set to
-				// `l4_override`.
-				l4override?: close({
-					// Defines the IPv4 or IPv6 address.
-					ip?: string
-
-					// Defines a port number to use for TCP/UDP overrides.
-					port?: number
+				// Configure whether a copy of the HTTP request will be sent to
+				// storage when the rule matches.
+				forensic_copy?: close({
+					// Enable sending the copy to storage.
+					enabled?: bool
 				})
 
 				// Ignore category matches at CNAME domains in a response. When
@@ -310,6 +306,17 @@ package data
 				// Settable only for `dns` and `dns_resolver` rules.
 				ip_indicator_feeds?: bool
 
+				// Send matching traffic to the supplied destination IP address
+				// and port. Settable only for `l4` rules with the action set to
+				// `l4_override`.
+				l4override?: close({
+					// Defines the IPv4 or IPv6 address.
+					ip?: string
+
+					// Defines a port number to use for TCP/UDP overrides.
+					port?: number
+				})
+
 				// Configure a notification to display on the user's device when
 				// this rule matched. Settable for all types of rules with the
 				// action set to `block`.
@@ -329,16 +336,21 @@ package data
 					support_url?: string
 				})
 
+				// Defines a hostname for override, for the matching DNS queries.
+				// Settable only for `dns` rules with the action set to
+				// `override`.
+				override_host?: string
+
 				// Configure DLP payload logging. Settable only for `http` rules.
 				payload_log?: close({
 					// Enable DLP payload logging for this rule.
 					enabled?: bool
 				})
 
-				// Defines a hostname for override, for the matching DNS queries.
-				// Settable only for `dns` rules with the action set to
+				// Defines a an IP or set of IPs for overriding matched DNS
+				// queries. Settable only for `dns` rules with the action set to
 				// `override`.
-				override_host?: string
+				override_ips?: [...string]
 
 				// Configure settings that apply to quarantine rules. Settable
 				// only for `http` rules.
@@ -346,11 +358,6 @@ package data
 					// Specify the types of files to sandbox.
 					file_types?: [...string]
 				})
-
-				// Defines a an IP or set of IPs for overriding matched DNS
-				// queries. Settable only for `dns` rules with the action set to
-				// `override`.
-				override_ips?: [...string]
 
 				// Enable to send queries that match the policy to Cloudflare's
 				// default 1.1.1.1 DNS resolver. Cannot set when 'dns_resolvers'
@@ -579,11 +586,6 @@ package data
 					command_logging?: bool
 				})
 
-				// Set to enable MSP children to bypass this rule. Only parent MSP
-				// accounts can set this. this rule. Settable for all types of
-				// rules.
-				allow_child_bypass?: bool
-
 				// Configure browser isolation behavior. Settable only for `http`
 				// rules with the action set to `isolate`.
 				biso_admin_controls?: close({
@@ -649,6 +651,11 @@ package data
 					version?: string
 				})
 
+				// Set to enable MSP children to bypass this rule. Only parent MSP
+				// accounts can set this. this rule. Settable for all types of
+				// rules.
+				allow_child_bypass?: bool
+
 				// Configure custom block page settings. If missing or null, use
 				// the account settings. Settable only for `http` rules with the
 				// action set to `block`.
@@ -671,10 +678,6 @@ package data
 					// Enable session enforcement.
 					enforce?: bool
 				})
-
-				// Enable the custom block page. Settable only for `dns` rules
-				// with action `block`.
-				block_page_enabled?: bool
 
 				// Configure custom resolvers to route queries that match the
 				// resolver policy. Unused with 'resolve_dns_through_cloudflare'
@@ -747,10 +750,9 @@ package data
 					})]])
 				})
 
-				// Explain why the rule blocks the request. The custom block page
-				// shows this text (if enabled). Settable only for `dns`, `l4`,
-				// and `http` rules when the action set to `block`.
-				block_reason?: string
+				// Enable the custom block page. Settable only for `dns` rules
+				// with action `block`.
+				block_page_enabled?: bool
 
 				// Configure how Gateway Proxy traffic egresses. You can enable
 				// this setting for rules with Egress actions and filters, or
@@ -769,20 +771,21 @@ package data
 					ipv6?: string
 				})
 
+				// Explain why the rule blocks the request. The custom block page
+				// shows this text (if enabled). Settable only for `dns`, `l4`,
+				// and `http` rules when the action set to `block`.
+				block_reason?: string
+
 				// Set to enable MSP accounts to bypass their parent's rules. Only
 				// MSP child accounts can set this. Settable for all types of
 				// rules.
 				bypass_parent_rule?: bool
 
-				// Send matching traffic to the supplied destination IP address
-				// and port. Settable only for `l4` rules with the action set to
-				// `l4_override`.
-				l4override?: close({
-					// Defines the IPv4 or IPv6 address.
-					ip?: string
-
-					// Defines a port number to use for TCP/UDP overrides.
-					port?: number
+				// Configure whether a copy of the HTTP request will be sent to
+				// storage when the rule matches.
+				forensic_copy?: close({
+					// Enable sending the copy to storage.
+					enabled?: bool
 				})
 
 				// Ignore category matches at CNAME domains in a response. When
@@ -805,6 +808,17 @@ package data
 				// Settable only for `dns` and `dns_resolver` rules.
 				ip_indicator_feeds?: bool
 
+				// Send matching traffic to the supplied destination IP address
+				// and port. Settable only for `l4` rules with the action set to
+				// `l4_override`.
+				l4override?: close({
+					// Defines the IPv4 or IPv6 address.
+					ip?: string
+
+					// Defines a port number to use for TCP/UDP overrides.
+					port?: number
+				})
+
 				// Configure a notification to display on the user's device when
 				// this rule matched. Settable for all types of rules with the
 				// action set to `block`.
@@ -824,16 +838,21 @@ package data
 					support_url?: string
 				})
 
+				// Defines a hostname for override, for the matching DNS queries.
+				// Settable only for `dns` rules with the action set to
+				// `override`.
+				override_host?: string
+
 				// Configure DLP payload logging. Settable only for `http` rules.
 				payload_log?: close({
 					// Enable DLP payload logging for this rule.
 					enabled?: bool
 				})
 
-				// Defines a hostname for override, for the matching DNS queries.
-				// Settable only for `dns` rules with the action set to
+				// Defines a an IP or set of IPs for overriding matched DNS
+				// queries. Settable only for `dns` rules with the action set to
 				// `override`.
-				override_host?: string
+				override_ips?: [...string]
 
 				// Configure settings that apply to quarantine rules. Settable
 				// only for `http` rules.
@@ -841,11 +860,6 @@ package data
 					// Specify the types of files to sandbox.
 					file_types?: [...string]
 				})
-
-				// Defines a an IP or set of IPs for overriding matched DNS
-				// queries. Settable only for `dns` rules with the action set to
-				// `override`.
-				override_ips?: [...string]
 
 				// Enable to send queries that match the policy to Cloudflare's
 				// default 1.1.1.1 DNS resolver. Cannot set when 'dns_resolvers'

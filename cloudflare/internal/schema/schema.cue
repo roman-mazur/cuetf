@@ -1384,6 +1384,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		cloudflare_api_shield_schema: {
@@ -1526,6 +1527,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		cloudflare_api_shield_schema_validation_settings: {
@@ -2568,10 +2570,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						optional:         true
 					}
 					hosts: {
-						type: ["list", "string"]
+						type: ["set", "string"]
 						description:      "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty."
 						description_kind: "plain"
-						required:         true
+						optional:         true
+						computed:         true
 					}
 					id: {
 						type:             "string"
@@ -19235,6 +19238,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
+					startup_time_ms: {
+						type:             "number"
+						description:      "Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time)."
+						description_kind: "plain"
+						computed:         true
+					}
 					usage_model: {
 						type: "string"
 						description: """
@@ -27630,6 +27639,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
+					upload_status: {
+						type:             "string"
+						description:      "Available values: \"empty\", \"uploading\", \"pending\", \"processing\", \"failed\", \"complete\"."
+						description_kind: "plain"
+						computed:         true
+					}
 					variant: {
 						nested_type: {
 							attributes: {
@@ -28254,6 +28269,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
+					upload_status: {
+						type:             "string"
+						description:      "Available values: \"empty\", \"uploading\", \"pending\", \"processing\", \"failed\", \"complete\"."
+						description_kind: "plain"
+						computed:         true
+					}
 					variant: {
 						nested_type: {
 							attributes: {
@@ -28420,6 +28441,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
+					upload_status: {
+						type:             "string"
+						description:      "Available values: \"empty\", \"uploading\", \"pending\", \"processing\", \"failed\", \"complete\"."
+						description_kind: "plain"
+						computed:         true
+					}
 					variant: {
 						nested_type: {
 							attributes: {
@@ -28583,6 +28610,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					updated_at: {
 						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					upload_status: {
+						type:             "string"
+						description:      "Available values: \"empty\", \"uploading\", \"pending\", \"processing\", \"failed\", \"complete\"."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -29553,6 +29586,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									optional:         true
 								}
+								forensic_copy: {
+									nested_type: {
+										attributes: enabled: {
+											type:             "bool"
+											description:      "Enable sending the copy to storage."
+											description_kind: "plain"
+											optional:         true
+										}
+										nesting_mode: "single"
+									}
+									description:      "Configure whether a copy of the HTTP request will be sent to storage when the rule matches."
+									description_kind: "plain"
+									optional:         true
+								}
 								ignore_cname_category_matches: {
 									type:             "bool"
 									description:      "Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules."
@@ -30432,7 +30479,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type: "string"
 						description: """
 									Specify the list type.
-									Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+									Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 									"""
 						description_kind: "plain"
 						required:         true
@@ -36792,6 +36839,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		cloudflare_api_shield_operations: {
@@ -37249,6 +37297,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		cloudflare_api_shield_schema_validation_settings: {
@@ -37378,6 +37427,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		cloudflare_api_token: {
@@ -38976,7 +39026,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						optional:         true
 					}
 					hosts: {
-						type: ["list", "string"]
+						type: ["set", "string"]
 						description:      "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty."
 						description_kind: "plain"
 						computed:         true
@@ -39212,7 +39262,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									computed:         true
 								}
 								hosts: {
-									type: ["list", "string"]
+									type: ["set", "string"]
 									description:      "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty."
 									description_kind: "plain"
 									computed:         true
@@ -47108,6 +47158,44 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					enabled: {
 						type:             "bool"
 						description:      "Determines whether or not Leaked Credential Checks are enabled."
+						description_kind: "plain"
+						computed:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "Defines an identifier."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		cloudflare_leaked_credential_check_rule: {
+			version: 0
+			block: {
+				attributes: {
+					detection_id: {
+						type:             "string"
+						description:      "Defines the unique ID for this custom detection."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Defines the unique ID for this custom detection."
+						description_kind: "plain"
+						computed:         true
+					}
+					password: {
+						type:             "string"
+						description:      "Defines ehe ruleset expression to use in matching the password in a request."
+						description_kind: "plain"
+						computed:         true
+					}
+					username: {
+						type:             "string"
+						description:      "Defines the ruleset expression to use in matching the username in a request."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -69062,6 +69150,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
+					startup_time_ms: {
+						type:             "number"
+						description:      "Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time)."
+						description_kind: "plain"
+						computed:         true
+					}
 					usage_model: {
 						type: "string"
 						description: """
@@ -69707,6 +69801,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								source: {
 									type:             "string"
 									description:      "The client used to create the version."
+									description_kind: "plain"
+									computed:         true
+								}
+								startup_time_ms: {
+									type:             "number"
+									description:      "Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time)."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -86214,6 +86314,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									computed:         true
 								}
+								upload_status: {
+									type:             "string"
+									description:      "Available values: \"empty\", \"uploading\", \"pending\", \"processing\", \"failed\", \"complete\"."
+									description_kind: "plain"
+									computed:         true
+								}
 								variant: {
 									nested_type: {
 										attributes: {
@@ -86379,6 +86485,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					updated_at: {
 						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					upload_status: {
+						type:             "string"
+						description:      "Available values: \"empty\", \"uploading\", \"pending\", \"processing\", \"failed\", \"complete\"."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -87044,6 +87156,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									computed:         true
 								}
+								upload_status: {
+									type:             "string"
+									description:      "Available values: \"empty\", \"uploading\", \"pending\", \"processing\", \"failed\", \"complete\"."
+									description_kind: "plain"
+									computed:         true
+								}
 								variant: {
 									nested_type: {
 										attributes: {
@@ -87212,6 +87330,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
+					upload_status: {
+						type:             "string"
+						description:      "Available values: \"empty\", \"uploading\", \"pending\", \"processing\", \"failed\", \"complete\"."
+						description_kind: "plain"
+						computed:         true
+					}
 					variant: {
 						nested_type: {
 							attributes: {
@@ -87355,6 +87479,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								updated_at: {
 									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								upload_status: {
+									type:             "string"
+									description:      "Available values: \"empty\", \"uploading\", \"pending\", \"processing\", \"failed\", \"complete\"."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -87526,6 +87656,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
+					upload_status: {
+						type:             "string"
+						description:      "Available values: \"empty\", \"uploading\", \"pending\", \"processing\", \"failed\", \"complete\"."
+						description_kind: "plain"
+						computed:         true
+					}
 					variant: {
 						nested_type: {
 							attributes: {
@@ -87669,6 +87805,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								updated_at: {
 									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								upload_status: {
+									type:             "string"
+									description:      "Available values: \"empty\", \"uploading\", \"pending\", \"processing\", \"failed\", \"complete\"."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -87837,6 +87979,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					updated_at: {
 						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					upload_status: {
+						type:             "string"
+						description:      "Available values: \"empty\", \"uploading\", \"pending\", \"processing\", \"failed\", \"complete\"."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -89388,6 +89536,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												description_kind: "plain"
 												computed:         true
 											}
+											forensic_copy: {
+												nested_type: {
+													attributes: enabled: {
+														type:             "bool"
+														description:      "Enable sending the copy to storage."
+														description_kind: "plain"
+														computed:         true
+													}
+													nesting_mode: "single"
+												}
+												description:      "Configure whether a copy of the HTTP request will be sent to storage when the rule matches."
+												description_kind: "plain"
+												computed:         true
+											}
 											ignore_cname_category_matches: {
 												type:             "bool"
 												description:      "Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules."
@@ -90107,6 +90269,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										nesting_mode: "single"
 									}
 									description:      "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules."
+									description_kind: "plain"
+									computed:         true
+								}
+								forensic_copy: {
+									nested_type: {
+										attributes: enabled: {
+											type:             "bool"
+											description:      "Enable sending the copy to storage."
+											description_kind: "plain"
+											computed:         true
+										}
+										nesting_mode: "single"
+									}
+									description:      "Configure whether a copy of the HTTP request will be sent to storage when the rule matches."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -91003,7 +91179,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								type: "string"
 								description: """
 												Specify the list type.
-												Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+												Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 												"""
 								description_kind: "plain"
 								optional:         true
@@ -91068,7 +91244,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type: "string"
 						description: """
 									Specify the list type.
-									Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+									Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -91160,7 +91336,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									type: "string"
 									description: """
 												Specify the list type.
-												Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+												Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 												"""
 									description_kind: "plain"
 									computed:         true
@@ -91181,7 +91357,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type: "string"
 						description: """
 									Specify the list type.
-									Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+									Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
 									"""
 						description_kind: "plain"
 						optional:         true

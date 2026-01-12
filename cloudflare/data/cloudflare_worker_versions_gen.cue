@@ -18,6 +18,16 @@ package data
 				workers_triggered_by?: string
 			})
 
+			// Date indicating targeted support in the Workers runtime.
+			// Backwards incompatible fixes to the runtime following this
+			// date will not affect this Worker.
+			compatibility_date?: string
+
+			// Flags that enable or disable certain features in the Workers
+			// runtime. Used to enable upcoming features or opt in or out of
+			// specific changes not included in a `compatibility_date`.
+			compatibility_flags?: [...string]
+
 			// Configuration for assets within a Worker.
 			//
 			// [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers)
@@ -53,6 +63,9 @@ package data
 				// registered manifest.
 				jwt?: string
 			})
+
+			// When the version was created.
+			created_on?: string
 
 			// List of bindings attached to a Worker. You can find more about
 			// bindings on our docs:
@@ -333,19 +346,6 @@ package data
 				workflow_name?: string
 			})]])
 
-			// Date indicating targeted support in the Workers runtime.
-			// Backwards incompatible fixes to the runtime following this
-			// date will not affect this Worker.
-			compatibility_date?: string
-
-			// Flags that enable or disable certain features in the Workers
-			// runtime. Used to enable upcoming features or opt in or out of
-			// specific changes not included in a `compatibility_date`.
-			compatibility_flags?: [...string]
-
-			// When the version was created.
-			created_on?: string
-
 			// Version identifier.
 			id?: string
 
@@ -513,6 +513,10 @@ package data
 
 			// The client used to create the version.
 			source?: string
+
+			// Time in milliseconds spent on [Worker
+			// startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+			startup_time_ms?: number
 		}), [...close({
 			// Metadata about the version.
 			annotations?: close({
@@ -526,6 +530,16 @@ package data
 				workers_triggered_by?: string
 			})
 
+			// Date indicating targeted support in the Workers runtime.
+			// Backwards incompatible fixes to the runtime following this
+			// date will not affect this Worker.
+			compatibility_date?: string
+
+			// Flags that enable or disable certain features in the Workers
+			// runtime. Used to enable upcoming features or opt in or out of
+			// specific changes not included in a `compatibility_date`.
+			compatibility_flags?: [...string]
+
 			// Configuration for assets within a Worker.
 			//
 			// [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers)
@@ -561,6 +575,9 @@ package data
 				// registered manifest.
 				jwt?: string
 			})
+
+			// When the version was created.
+			created_on?: string
 
 			// List of bindings attached to a Worker. You can find more about
 			// bindings on our docs:
@@ -841,19 +858,6 @@ package data
 				workflow_name?: string
 			})]])
 
-			// Date indicating targeted support in the Workers runtime.
-			// Backwards incompatible fixes to the runtime following this
-			// date will not affect this Worker.
-			compatibility_date?: string
-
-			// Flags that enable or disable certain features in the Workers
-			// runtime. Used to enable upcoming features or opt in or out of
-			// specific changes not included in a `compatibility_date`.
-			compatibility_flags?: [...string]
-
-			// When the version was created.
-			created_on?: string
-
 			// Version identifier.
 			id?: string
 
@@ -1021,6 +1025,10 @@ package data
 
 			// The client used to create the version.
 			source?: string
+
+			// Time in milliseconds spent on [Worker
+			// startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+			startup_time_ms?: number
 		})]])
 
 		// Identifier.

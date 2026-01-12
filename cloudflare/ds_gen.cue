@@ -112,6 +112,7 @@ import "github.com/roman-mazur/cuetf/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_keyless_certificate": data.#cloudflare_keyless_certificate
 	_#ds: "\(#cloudflarePrefix)_keyless_certificates": data.#cloudflare_keyless_certificates
 	_#ds: "\(#cloudflarePrefix)_leaked_credential_check": data.#cloudflare_leaked_credential_check
+	_#ds: "\(#cloudflarePrefix)_leaked_credential_check_rule": data.#cloudflare_leaked_credential_check_rule
 	_#ds: "\(#cloudflarePrefix)_leaked_credential_check_rules": data.#cloudflare_leaked_credential_check_rules
 	_#ds: "\(#cloudflarePrefix)_list": data.#cloudflare_list
 	_#ds: "\(#cloudflarePrefix)_list_item": data.#cloudflare_list_item

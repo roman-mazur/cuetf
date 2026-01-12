@@ -12,22 +12,10 @@ package res
 			// not an AI remote service.
 			available?: bool
 		})
-		account_id!: string
-
-		// Only applies to custom word lists.
-		// Determines if the words should be matched in a case-sensitive
-		// manner
-		// Cannot be set to false if secret is true
-		case_sensitive?: bool
-		created_at?:     string
-		enabled!:        bool
-
-		// Available values: "custom", "predefined", "integration".
-		type?: string
 		pattern!: close({
 			regex!: string
 		})
-		id?: string
+		account_id!: string
 		profiles?: matchN(1, [close({
 			id?:   string
 			name?: string
@@ -35,11 +23,26 @@ package res
 			id?:   string
 			name?: string
 		})]])
-		name!:       string
-		profile_id?: string
-		secret?:     bool
-		updated_at?: string
-		word_list?:  string
+
+		// Only applies to custom word lists.
+		// Determines if the words should be matched in a case-sensitive
+		// manner
+		// Cannot be set to false if secret is true
+		case_sensitive?: bool
+
+		// Available values: "custom", "predefined", "integration".
+		type?:       string
+		created_at?: string
+
+		// Available values: "empty", "uploading", "pending",
+		// "processing", "failed", "complete".
+		upload_status?: string
+		enabled!:       bool
+		id?:            string
+		name!:          string
+		profile_id?:    string
+		secret?:        bool
+		updated_at?:    string
 		variant?: close({
 			description?: string
 
@@ -49,5 +52,6 @@ package res
 			// Available values: "PromptTopic".
 			type?: string
 		})
+		word_list?: string
 	})
 }
