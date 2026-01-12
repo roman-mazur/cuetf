@@ -25,17 +25,22 @@ package res
 		// exceed 32 characters.
 		display_name?: string
 
+		// Deletes the SCIM tenant immediately. This operation cannot be
+		// undone.
+		hard_delete?: bool
+
 		// The location for the resource.
 		location!: string
+		id?:       string
 
 		// Identifier. The resource name of the scim tenant.
 		// Format:
 		// 'locations/{location}/workforcePools/{workforce_pool}/providers/{workforce_pool_provider}/scimTenants/{scim_tenant_id}
 		name?: string
-		id?:   string
 
 		// The ID of the provider.
 		provider_id!: string
+		timeouts?:    #timeouts
 
 		// The timestamp that represents the time when the SCIM tenant is
 		// purged.
@@ -45,7 +50,6 @@ package res
 		// component of the resource name. This value must be 4-32
 		// characters, and may contain the characters [a-z0-9-].
 		scim_tenant_id!: string
-		timeouts?:       #timeouts
 
 		// Service Agent created by SCIM Tenant API. SCIM tokens created
 		// under

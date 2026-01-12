@@ -421,6 +421,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/settings/$defs/backup_configuration": close({
+		// Backup tier that manages the backups for the instance.
+		backup_tier?: string
+
 		// True if binary logging is enabled. If
 		// settings.backup_configuration.enabled is false, this must be
 		// as well. Can only be used with MySQL.
@@ -437,12 +440,12 @@ import "list"
 
 		// HH:MM format time indicating when backup configuration starts.
 		start_time?: string
+		backup_retention_settings?: matchN(1, [_#defs."/$defs/settings/$defs/backup_configuration/$defs/backup_retention_settings", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/backup_configuration/$defs/backup_retention_settings"]])
 
 		// The number of days of transaction logs we retain for point in
 		// time restore, from 1-7. (For PostgreSQL Enterprise Plus
 		// instances, from 1 to 35.)
 		transaction_log_retention_days?: number
-		backup_retention_settings?: matchN(1, [_#defs."/$defs/settings/$defs/backup_configuration/$defs/backup_retention_settings", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/backup_configuration/$defs/backup_retention_settings"]])
 	})
 
 	_#defs: "/$defs/settings/$defs/backup_configuration/$defs/backup_retention_settings": close({

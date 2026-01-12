@@ -61,6 +61,13 @@ package data
 		// to.'alloydb_cluster_id'
 		cluster_id!: string
 
+		// Configuration for Managed Connection Pool.
+		connection_pool_config?: [...close({
+			enabled?: bool
+			flags?: [string]: string
+			pooler_count?: number
+		})]
+
 		// Time the Instance was created in UTC.
 		create_time?: string
 

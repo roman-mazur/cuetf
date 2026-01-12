@@ -39,10 +39,10 @@ import "list"
 
 		// Gemini enablement for Looker (Google Cloud Core).
 		gemini_enabled?: bool
+		id?:             string
 
 		// Private Ingress IP (IPv4).
 		ingress_private_ip?: string
-		id?:                 string
 
 		// Public Ingress IP (IPv4).
 		ingress_public_ip?: string
@@ -64,9 +64,9 @@ import "list"
 		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
 		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
 		oauth_config!: matchN(1, [#oauth_config, list.MaxItems(1) & [_, ...] & [...#oauth_config]])
+		periodic_export_config?: matchN(1, [#periodic_export_config, list.MaxItems(1) & [...#periodic_export_config]])
 		psc_config?: matchN(1, [#psc_config, list.MaxItems(1) & [...#psc_config]])
 		timeouts?: #timeouts
-		user_metadata?: matchN(1, [#user_metadata, list.MaxItems(1) & [...#user_metadata]])
 
 		// Platform editions for a Looker instance. Each edition maps to a
 		// set of instance features, like its size. Must be one of these
@@ -102,11 +102,12 @@ import "list"
 
 		// Whether private IP is enabled on the Looker instance.
 		private_ip_enabled?: bool
-		project?:            string
+		user_metadata?: matchN(1, [#user_metadata, list.MaxItems(1) & [...#user_metadata]])
 
 		// Whether Public Service Connect (PSC) is enabled on the Looker
 		// instance
 		psc_enabled?: bool
+		project?:     string
 
 		// Whether public IP is enabled on the Looker instance.
 		public_ip_enabled?: bool
@@ -198,6 +199,19 @@ import "list"
 		client_secret!: string
 	})
 
+	#periodic_export_config: close({
+		start_time!: matchN(1, [_#defs."/$defs/periodic_export_config/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/periodic_export_config/$defs/start_time"]])
+
+		// Cloud Storage bucket URI for periodic export.
+		// Format: gs://{bucket_name}
+		gcs_uri!: string
+
+		// Name of the CMEK key in KMS.
+		// Format:
+		// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}
+		kms_key!: string
+	})
+
 	#psc_config: close({
 		service_attachments?: matchN(1, [_#defs."/$defs/psc_config/$defs/service_attachments", [..._#defs."/$defs/psc_config/$defs/service_attachments"]])
 
@@ -280,6 +294,21 @@ import "list"
 	})
 
 	_#defs: "/$defs/maintenance_window/$defs/start_time": close({
+		// Hours of day in 24 hour format. Should be from 0 to 23.
+		hours?: number
+
+		// Minutes of hour of day. Must be from 0 to 59.
+		minutes?: number
+
+		// Fractions of seconds in nanoseconds. Must be from 0 to
+		// 999,999,999.
+		nanos?: number
+
+		// Seconds of minutes of the time. Must normally be from 0 to 59.
+		seconds?: number
+	})
+
+	_#defs: "/$defs/periodic_export_config/$defs/start_time": close({
 		// Hours of day in 24 hour format. Should be from 0 to 23.
 		hours?: number
 

@@ -34,6 +34,7 @@ import "list"
 		// MIME format that is expected from the CloudEvent data field.
 		// This is set to 'application/json' if the value is not defined.
 		event_data_content_type?: string
+		id?:                      string
 
 		// Optional. User labels attached to the triggers that can be used
 		// to group resources.
@@ -46,15 +47,16 @@ import "list"
 
 		// The location for the resource
 		location!: string
-		id?:       string
 
 		// Required. The resource name of the trigger. Must be unique
 		// within the location on the project.
 		name!: string
 		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
 		matching_criteria!: matchN(1, [#matching_criteria, [_, ...] & [...#matching_criteria]])
+		retry_policy?: matchN(1, [#retry_policy, list.MaxItems(1) & [...#retry_policy]])
 		timeouts?: #timeouts
 		transport?: matchN(1, [#transport, list.MaxItems(1) & [...#transport]])
+		project?: string
 
 		// Optional. The IAM service account email associated with the
 		// trigger. The service account represents the identity of the
@@ -71,7 +73,6 @@ import "list"
 		// account should also have 'roles/eventarc.eventReceiver' IAM
 		// role.
 		service_account?: string
-		project?:         string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -122,6 +123,13 @@ import "list"
 		// https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud
 		// for available values.
 		value!: string
+	})
+
+	#retry_policy: close({
+		// The maximum number of delivery attempts for any message. The
+		// only valid
+		// value is 1.
+		max_attempts?: number
 	})
 
 	#timeouts: close({

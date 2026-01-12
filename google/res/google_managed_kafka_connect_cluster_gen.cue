@@ -88,12 +88,6 @@ import "list"
 	})
 
 	_#defs: "/$defs/gcp_config/$defs/access_config/$defs/network_configs": close({
-		// Additional subnets may be specified. They may be in another
-		// region, but must be in the same VPC network. The Connect
-		// workers can communicate with network endpoints in either the
-		// primary or additional subnets.
-		additional_subnets?: [...string]
-
 		// Additional DNS domain names from the subnet's network to be
 		// made visible to the Connect Cluster. When using MirrorMaker2,
 		// it's necessary to add the bootstrap address's dns domain name

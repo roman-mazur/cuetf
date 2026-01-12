@@ -42,7 +42,7 @@ package res
 
 		// The resource name of the multicast domain activation that is in
 		// the
-		// same zone as this multicast producer association.
+		// same zone as this multicast consumer association.
 		// Use the following format:
 		// // 'projects/*/locations/*/multicastDomainActivations/*'.
 		multicast_domain_activation!: string

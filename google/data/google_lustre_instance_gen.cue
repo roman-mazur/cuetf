@@ -4,6 +4,21 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_lustre_instance")
 	close({
+		// Access control rules for the Lustre instance. Configures
+		// default root
+		// squashing behavior and specific access rules based on IP
+		// addresses.
+		access_rules_options?: [...close({
+			access_rules?: [...close({
+				ip_address_ranges?: [...string]
+				name?:        string
+				squash_mode?: string
+			})]
+			default_squash_gid?:  number
+			default_squash_mode?: string
+			default_squash_uid?:  number
+		})]
+
 		// The storage capacity of the instance in gibibytes (GiB).
 		// Allowed values
 		// are from '18000' to '954000', in increments of 9000.
@@ -39,10 +54,10 @@ package data
 		// * Must be between 1-63 characters.
 		// * Must end with a number or a letter.
 		instance_id!: string
-		id?:          string
 
 		// The KMS key id to use for encryption of the Lustre instance.
 		kms_key?: string
+		id?:      string
 
 		// Labels as key value pairs.
 		//
@@ -77,7 +92,6 @@ package data
 		// The placement policy name for the instance in the format of
 		// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
 		placement_policy?: string
-		project?:          string
 
 		// The state of the instance.
 		// Please see
@@ -87,6 +101,7 @@ package data
 
 		// The reason why the instance is in a certain state.
 		state_reason?: string
+		project?:      string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

@@ -4,8 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_multicast_domain_group")
 	close({
-		// [Output only] The timestamp when the multicast domain group was
-		// created.
+		// The timestamp when the multicast domain group was created.
 		create_time?: string
 
 		// An optional text description of the multicast domain group.
@@ -38,7 +37,7 @@ package res
 		// exceed 48 characters.
 		multicast_domain_group_id!: string
 
-		// [Output only] Multicast domains associated with the group.
+		// Multicast domains associated with the group.
 		// There can be at most 2 multicast domains in a group.
 		multicast_domains?: [...string]
 
@@ -58,8 +57,7 @@ package res
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// [Output only] The Google-generated UUID for the resource. This
-		// value is
+		// The Google-generated UUID for the resource. This value is
 		// unique across all multicast domain group resources. If a domain
 		// is deleted
 		// and another with the same name is created, the new domain is
@@ -67,8 +65,7 @@ package res
 		// different unique_id.
 		unique_id?: string
 
-		// [Output only] The timestamp when the multicast domain group was
-		// most
+		// The timestamp when the multicast domain group was most
 		// recently updated.
 		update_time?: string
 	})

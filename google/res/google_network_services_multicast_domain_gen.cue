@@ -11,8 +11,7 @@ import "list"
 		// 'projects/{project}/locations/global/networks/{network}'.
 		admin_network!: string
 
-		// [Output only] The timestamp when the multicast domain was
-		// created.
+		// The timestamp when the multicast domain was created.
 		create_time?: string
 
 		// An optional text description of the multicast domain.
@@ -22,7 +21,6 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
-		id?: string
 
 		// Labels as key-value pairs.
 		//
@@ -31,6 +29,7 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
+		id?: string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -57,14 +56,18 @@ import "list"
 		name?: string
 		connection_config!: matchN(1, [#connection_config, list.MaxItems(1) & [_, ...] & [...#connection_config]])
 		timeouts?: #timeouts
+		project?:  string
+
+		// The multicast resource's state.
+		state?: [...close({
+			state?: string
+		})]
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?: string
 
-		// [Output only] The Google-generated UUID for the resource. This
-		// value is
+		// The Google-generated UUID for the resource. This value is
 		// unique across all multicast domain resources. If a domain is
 		// deleted and
 		// another with the same name is created, the new domain is
@@ -72,8 +75,7 @@ import "list"
 		// different unique_id.
 		unique_id?: string
 
-		// [Output only] The timestamp when the multicast domain was most
-		// recently
+		// The timestamp when the multicast domain was most recently
 		// updated.
 		update_time?: string
 	})

@@ -152,8 +152,9 @@ package data
 		replica_names?: [...string]
 
 		// A primary instance and disaster recovery replica pair.
-		// Applicable to MySQL and PostgreSQL. This field can be set only
-		// after both the primary and replica are created.
+		// Applicable to MySQL and PostgreSQL. This field can be set if
+		// the primary has psa_write_endpoint set or both the primary and
+		// replica are created.
 		replication_cluster?: [...close({
 			dr_replica?:               bool
 			failover_dr_replica_name?: string
@@ -208,6 +209,7 @@ package data
 					retained_backups?: number
 					retention_unit?:   string
 				})]
+				backup_tier?:                    string
 				binary_log_enabled?:             bool
 				enabled?:                        bool
 				location?:                       string

@@ -36,6 +36,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_artifact_registry_tag": data.#google_artifact_registry_tag
 	_#ds: "\(#googlePrefix)_artifact_registry_tags": data.#google_artifact_registry_tags
 	_#ds: "\(#googlePrefix)_artifact_registry_version": data.#google_artifact_registry_version
+	_#ds: "\(#googlePrefix)_artifact_registry_versions": data.#google_artifact_registry_versions
 	_#ds: "\(#googlePrefix)_backup_dr_backup": data.#google_backup_dr_backup
 	_#ds: "\(#googlePrefix)_backup_dr_backup_plan_association": data.#google_backup_dr_backup_plan_association
 	_#ds: "\(#googlePrefix)_backup_dr_backup_plan_associations": data.#google_backup_dr_backup_plan_associations
@@ -51,6 +52,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_beyondcorp_security_gateway_application_iam_policy": data.#google_beyondcorp_security_gateway_application_iam_policy
 	_#ds: "\(#googlePrefix)_beyondcorp_security_gateway": data.#google_beyondcorp_security_gateway
 	_#ds: "\(#googlePrefix)_beyondcorp_security_gateway_iam_policy": data.#google_beyondcorp_security_gateway_iam_policy
+	_#ds: "\(#googlePrefix)_biglake_iceberg_catalog_iam_policy": data.#google_biglake_iceberg_catalog_iam_policy
 	_#ds: "\(#googlePrefix)_bigquery_analytics_hub_data_exchange_iam_policy": data.#google_bigquery_analytics_hub_data_exchange_iam_policy
 	_#ds: "\(#googlePrefix)_bigquery_analytics_hub_listing_iam_policy": data.#google_bigquery_analytics_hub_listing_iam_policy
 	_#ds: "\(#googlePrefix)_bigquery_connection_iam_policy": data.#google_bigquery_connection_iam_policy
@@ -78,6 +80,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_cloud_identity_group_memberships": data.#google_cloud_identity_group_memberships
 	_#ds: "\(#googlePrefix)_cloud_identity_group_transitive_memberships": data.#google_cloud_identity_group_transitive_memberships
 	_#ds: "\(#googlePrefix)_cloud_identity_groups": data.#google_cloud_identity_groups
+	_#ds: "\(#googlePrefix)_cloud_identity_policies": data.#google_cloud_identity_policies
 	_#ds: "\(#googlePrefix)_cloud_identity_policy": data.#google_cloud_identity_policy
 	_#ds: "\(#googlePrefix)_cloud_quotas_quota_info": data.#google_cloud_quotas_quota_info
 	_#ds: "\(#googlePrefix)_cloud_quotas_quota_infos": data.#google_cloud_quotas_quota_infos
@@ -147,6 +150,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_compute_region_instance_group_manager": data.#google_compute_region_instance_group_manager
 	_#ds: "\(#googlePrefix)_compute_region_instance_template": data.#google_compute_region_instance_template
 	_#ds: "\(#googlePrefix)_compute_region_network_endpoint_group": data.#google_compute_region_network_endpoint_group
+	_#ds: "\(#googlePrefix)_compute_region_security_policy": data.#google_compute_region_security_policy
 	_#ds: "\(#googlePrefix)_compute_region_ssl_certificate": data.#google_compute_region_ssl_certificate
 	_#ds: "\(#googlePrefix)_compute_region_ssl_policy": data.#google_compute_region_ssl_policy
 	_#ds: "\(#googlePrefix)_compute_regions": data.#google_compute_regions
@@ -162,6 +166,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_compute_snapshot_iam_policy": data.#google_compute_snapshot_iam_policy
 	_#ds: "\(#googlePrefix)_compute_ssl_certificate": data.#google_compute_ssl_certificate
 	_#ds: "\(#googlePrefix)_compute_ssl_policy": data.#google_compute_ssl_policy
+	_#ds: "\(#googlePrefix)_compute_storage_pool": data.#google_compute_storage_pool
 	_#ds: "\(#googlePrefix)_compute_storage_pool_iam_policy": data.#google_compute_storage_pool_iam_policy
 	_#ds: "\(#googlePrefix)_compute_storage_pool_types": data.#google_compute_storage_pool_types
 	_#ds: "\(#googlePrefix)_compute_subnetwork": data.#google_compute_subnetwork

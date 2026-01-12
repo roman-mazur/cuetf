@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_cmek_config")
 	close({
 		// The unique id of the cmek config.
-		cmek_config_id?: string
+		cmek_config_id!: string
 
 		// The default CmekConfig for the Customer.
 		is_default?: bool

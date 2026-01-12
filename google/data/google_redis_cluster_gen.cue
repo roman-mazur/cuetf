@@ -80,6 +80,11 @@ package data
 			})]
 		})]
 
+		// All of labels (key/value pairs) present on the resource in GCP,
+		// including the labels configured through Terraform, other
+		// clients and services.
+		effective_labels?: [string]: string
+
 		// This field represents the actual maintenance version of the
 		// cluster.
 		effective_maintenance_version?: string
@@ -92,7 +97,15 @@ package data
 
 		// The KMS key used to encrypt the at-rest data of the cluster.
 		kms_key?: string
-		id?:      string
+
+		// Resource labels to represent user provided metadata.
+		//
+		// **Note**: This field is non-authoritative, and will only manage
+		// the labels present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the
+		// labels present on the resource.
+		labels?: [string]: string
+		id?: string
 
 		// Maintenance policy for a cluster
 		maintenance_policy?: [...close({
@@ -176,6 +189,7 @@ package data
 		psc_configs?: [...close({
 			network?: string
 		})]
+		project?: string
 
 		// Output only. PSC connections for discovery of the cluster
 		// topology and accessing the cluster.
@@ -199,7 +213,6 @@ package data
 		// supported parameters:
 		// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
 		redis_configs?: [string]: string
-		project?: string
 
 		// The name of the region of the Redis cluster.
 		region?: string
@@ -225,6 +238,10 @@ package data
 				target_shard_count?:   number
 			})]
 		})]
+
+		// The combination of labels configured directly on the resource
+		// and default labels configured on the provider.
+		terraform_labels?: [string]: string
 
 		// Optional. The in-transit encryption for the Redis cluster.
 		// If not provided, encryption is disabled for the cluster.

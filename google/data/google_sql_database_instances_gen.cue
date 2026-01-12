@@ -104,6 +104,7 @@ package data
 						retained_backups?: number
 						retention_unit?:   string
 					})]
+					backup_tier?:                    string
 					binary_log_enabled?:             bool
 					enabled?:                        bool
 					location?:                       string
