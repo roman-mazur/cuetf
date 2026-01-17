@@ -5,6 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/github_repository")
 	close({
 		allow_auto_merge?:       bool
+		allow_forking?:          bool
 		allow_merge_commit?:     bool
 		allow_rebase_merge?:     bool
 		allow_squash_merge?:     bool
@@ -17,7 +18,6 @@ package data
 		full_name?:              string
 		git_clone_url?:          string
 		has_discussions?:        bool
-		has_downloads?:          bool
 		has_issues?:             bool
 		has_projects?:           bool
 		has_wiki?:               bool

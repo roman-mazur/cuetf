@@ -76,6 +76,7 @@ import "list"
 		commit_author_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_author_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_author_email_pattern"]])
 		commit_message_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_message_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_message_pattern"]])
 		committer_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/committer_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/committer_email_pattern"]])
+		copilot_code_review?: matchN(1, [_#defs."/$defs/rules/$defs/copilot_code_review", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/copilot_code_review"]])
 		file_extension_restriction?: matchN(1, [_#defs."/$defs/rules/$defs/file_extension_restriction", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/file_extension_restriction"]])
 		file_path_restriction?: matchN(1, [_#defs."/$defs/rules/$defs/file_path_restriction", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/file_path_restriction"]])
 		max_file_path_length?: matchN(1, [_#defs."/$defs/rules/$defs/max_file_path_length", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/max_file_path_length"]])
@@ -83,13 +84,13 @@ import "list"
 		merge_queue?: matchN(1, [_#defs."/$defs/rules/$defs/merge_queue", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/merge_queue"]])
 		pull_request?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/pull_request"]])
 		required_code_scanning?: matchN(1, [_#defs."/$defs/rules/$defs/required_code_scanning", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_code_scanning"]])
+		required_deployments?: matchN(1, [_#defs."/$defs/rules/$defs/required_deployments", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_deployments"]])
+		required_status_checks?: matchN(1, [_#defs."/$defs/rules/$defs/required_status_checks", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_status_checks"]])
+		tag_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/tag_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/tag_name_pattern"]])
 
 		// Only allow users with bypass permission to update matching
 		// refs.
 		update?: bool
-		required_deployments?: matchN(1, [_#defs."/$defs/rules/$defs/required_deployments", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_deployments"]])
-		required_status_checks?: matchN(1, [_#defs."/$defs/rules/$defs/required_status_checks", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_status_checks"]])
-		tag_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/tag_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/tag_name_pattern"]])
 
 		// Branch can pull changes from its upstream repository. This is
 		// only applicable to forked repositories. Requires `update` to
@@ -169,6 +170,16 @@ import "list"
 		pattern!: string
 	})
 
+	_#defs: "/$defs/rules/$defs/copilot_code_review": close({
+		// Copilot automatically reviews draft pull requests before they
+		// are marked as ready for review. Defaults to `false`.
+		review_draft_pull_requests?: bool
+
+		// Copilot automatically reviews each new push to the pull
+		// request. Defaults to `false`.
+		review_on_push?: bool
+	})
+
 	_#defs: "/$defs/rules/$defs/file_extension_restriction": close({
 		// A list of file extensions.
 		restricted_file_extensions!: [...string]
@@ -231,6 +242,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/pull_request": close({
+		// Array of allowed merge methods. Allowed values include `merge`,
+		// `squash`, and `rebase`. At least one option must be enabled.
+		allowed_merge_methods?: [...string]
+
 		// New, reviewable commits pushed will dismiss previous pull
 		// request review approvals. Defaults to `false`.
 		dismiss_stale_reviews_on_push?: bool

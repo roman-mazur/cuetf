@@ -72,17 +72,18 @@ import "list"
 
 		// Prevent merge commits from being pushed to matching branches.
 		required_linear_history?: bool
-		commit_author_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_author_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_author_email_pattern"]])
-		commit_message_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_message_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_message_pattern"]])
-		committer_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/committer_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/committer_email_pattern"]])
-		file_extension_restriction?: matchN(1, [_#defs."/$defs/rules/$defs/file_extension_restriction", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/file_extension_restriction"]])
-		file_path_restriction?: matchN(1, [_#defs."/$defs/rules/$defs/file_path_restriction", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/file_path_restriction"]])
-		max_file_path_length?: matchN(1, [_#defs."/$defs/rules/$defs/max_file_path_length", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/max_file_path_length"]])
-		max_file_size?: matchN(1, [_#defs."/$defs/rules/$defs/max_file_size", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/max_file_size"]])
 
 		// Commits pushed to matching branches must have verified
 		// signatures.
 		required_signatures?: bool
+		commit_author_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_author_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_author_email_pattern"]])
+		commit_message_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_message_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_message_pattern"]])
+		committer_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/committer_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/committer_email_pattern"]])
+		copilot_code_review?: matchN(1, [_#defs."/$defs/rules/$defs/copilot_code_review", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/copilot_code_review"]])
+		file_extension_restriction?: matchN(1, [_#defs."/$defs/rules/$defs/file_extension_restriction", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/file_extension_restriction"]])
+		file_path_restriction?: matchN(1, [_#defs."/$defs/rules/$defs/file_path_restriction", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/file_path_restriction"]])
+		max_file_path_length?: matchN(1, [_#defs."/$defs/rules/$defs/max_file_path_length", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/max_file_path_length"]])
+		max_file_size?: matchN(1, [_#defs."/$defs/rules/$defs/max_file_size", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/max_file_size"]])
 		pull_request?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/pull_request"]])
 		required_code_scanning?: matchN(1, [_#defs."/$defs/rules/$defs/required_code_scanning", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_code_scanning"]])
 		required_status_checks?: matchN(1, [_#defs."/$defs/rules/$defs/required_status_checks", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_status_checks"]])
@@ -180,6 +181,16 @@ import "list"
 		pattern!: string
 	})
 
+	_#defs: "/$defs/rules/$defs/copilot_code_review": close({
+		// Copilot automatically reviews draft pull requests before they
+		// are marked as ready for review. Defaults to `false`.
+		review_draft_pull_requests?: bool
+
+		// Copilot automatically reviews each new push to the pull
+		// request. Defaults to `false`.
+		review_on_push?: bool
+	})
+
 	_#defs: "/$defs/rules/$defs/file_extension_restriction": close({
 		// The file extensions that are restricted from being pushed to
 		// the commit graph.
@@ -204,6 +215,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/pull_request": close({
+		// Array of allowed merge methods. Allowed values include `merge`,
+		// `squash`, and `rebase`. At least one option must be enabled.
+		allowed_merge_methods?: [...string]
+
 		// New, reviewable commits pushed will dismiss previous pull
 		// request review approvals. Defaults to `false`.
 		dismiss_stale_reviews_on_push?: bool
