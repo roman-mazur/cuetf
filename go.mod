@@ -5,7 +5,7 @@ go 1.25
 tool cuelang.org/go/cmd/cue
 
 require (
-	cuelang.org/go v0.15.1
+	cuelang.org/go v0.15.3
 	github.com/hashicorp/hcl/v2 v2.24.0
 )
 
