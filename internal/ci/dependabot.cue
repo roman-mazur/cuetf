@@ -1,5 +1,7 @@
 package ci
 
+import "strings"
+
 (#dbot): updates: [
 	{
 		"package-ecosystem": "terraform"
@@ -45,11 +47,11 @@ workflows: regenerate: {
 workflows: (#dbot): {
 	on: pull_request: {
 		branches: ["main"]
-		types: ["opened", "reopened"]
+		types: ["opened", "reopened", "labeled"]
 	}
 
 	jobs: "tf-provider-label": {
-		"if": "github.event.pull_request.user.login == '\(#dbot)[bot]' && contains(github.event.labels, 'terraform')"
+		"if": "${{ github.event.pull_request.user.login == '\(#dbot)[bot]' && \({#matchLabels, #labels: ["dependencies", "terraform"]}) }}"
 		steps: [
 			{
 				id:   "metadata"
@@ -69,4 +71,12 @@ workflows: (#dbot): {
 			},
 		]
 	}
+}
+
+#matchLabels: {
+	#labels: [...string]
+	#statements: [
+		for _, lbl in #labels { "contains(github.event.labels, '\(lbl)')" }
+	]
+	strings.Join(#statements, " && ")
 }
