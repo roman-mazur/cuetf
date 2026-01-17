@@ -7,6 +7,12 @@ package ci
 		schedule: interval: "weekly"
 		"open-pull-requests-limit": 5
 	},
+	{
+		"package-ecosystem": "gomod"
+		directories: ["."]
+		schedule: interval: "monthly"
+		"open-pull-requests-limit": 3
+	},
 ]
 
 workflows: regenerate: {
@@ -42,8 +48,8 @@ workflows: (#dbot): {
 		types: ["opened", "reopened"]
 	}
 
-	jobs: (#dbot): {
-		"if": "github.event.pull_request.user.login == '\(#dbot)[bot]'"
+	jobs: "tf-provider-label": {
+		"if": "github.event.pull_request.user.login == '\(#dbot)[bot]' && contains(github.event.labels, 'terraform')"
 		steps: [
 			{
 				id:   "metadata"

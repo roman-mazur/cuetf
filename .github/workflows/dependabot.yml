@@ -7,8 +7,8 @@ name: dependabot
       - opened
       - reopened
 jobs:
-  dependabot:
-    if: github.event.pull_request.user.login == 'dependabot[bot]'
+  tf-provider-label:
+    if: github.event.pull_request.user.login == 'dependabot[bot]' && contains(github.event.labels, 'terraform')
     runs-on: ubuntu-latest
     steps:
       - id: metadata

@@ -6,3 +6,9 @@ updates:
     package-ecosystem: terraform
     schedule:
       interval: weekly
+  - directories:
+      - .
+    open-pull-requests-limit: 3
+    package-ecosystem: gomod
+    schedule:
+      interval: monthly
