@@ -98,6 +98,19 @@ import "list"
 		// indicating the header name.
 		forward_headers?: [...string]
 
+		// The metadata provided here is included as part of the
+		// 'metadata_context' (of type 'google.protobuf.Struct')
+		// in the 'ProcessingRequest' message sent to the extension
+		// server.
+		// The metadata is available under the namespace
+		// 'com.google.lb_route_extension.<resource_name>.<chain_name>.<extension_name>'.
+		// The following variables are supported in the metadata:
+		// '{forwarding_rule_id}' - substituted with the forwarding
+		// rule's fully qualified resource name.
+		// This field must not be set for plugin extensions. Setting it
+		// results in a validation error.
+		metadata?: [string]: string
+
 		// The name for this extension. The name is logged as part of the
 		// HTTP request logs.
 		// The name must conform with RFC-1034, is restricted to
@@ -107,6 +120,36 @@ import "list"
 		// and the last a letter or a number.
 		name!: string
 
+		// When set to 'TRUE', enables 'observability_mode' on the
+		// 'ext_proc' filter.
+		// This makes 'ext_proc' calls asynchronous. Envoy doesn't check
+		// for the response from 'ext_proc' calls.
+		// For more information about the filter, see:
+		// https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+		// This field is helpful when you want to try out the extension in
+		// async log-only mode.
+		// Supported by regional 'LbTrafficExtension' and
+		// 'LbRouteExtension' resources.
+		// Only 'STREAMED' (default) body processing mode is supported.
+		observability_mode?: bool
+
+		// Configures the send mode for request body processing.
+		// The field can only be set if 'supported_events' includes
+		// 'REQUEST_BODY'.
+		// If 'supported_events' includes 'REQUEST_BODY', but
+		// 'request_body_send_mode' is unset, the default value
+		// 'STREAMED' is used.
+		// When this field is set to 'FULL_DUPLEX_STREAMED',
+		// 'supported_events' must include both 'REQUEST_BODY' and
+		// 'REQUEST_TRAILERS'.
+		// This field can be set only when the 'service' field of the
+		// extension points to a 'BackendService'.
+		// Only 'FULL_DUPLEX_STREAMED' mode is supported for
+		// 'LbRouteExtension' resources. Possible values:
+		// ["BODY_SEND_MODE_UNSPECIFIED", "BODY_SEND_MODE_STREAMED",
+		// "BODY_SEND_MODE_FULL_DUPLEX_STREAMED"]
+		request_body_send_mode?: string
+
 		// The reference to the service that runs the extension.
 		//
 		// * To configure a callout extension, service must be a
@@ -114,6 +157,14 @@ import "list"
 		// * To configure a plugin extension, service must be a reference
 		// to a WasmPlugin resource.
 		service!: string
+
+		// A set of events during request or response processing for which
+		// this extension is called.
+		// This field is optional for the LbRouteExtension resource. If
+		// unspecified, 'REQUEST_HEADERS' event is assumed as supported.
+		// Possible values: 'REQUEST_HEADERS', 'REQUEST_BODY',
+		// 'REQUEST_TRAILERS'.
+		supported_events?: [...string]
 
 		// Specifies the timeout for each individual message on the
 		// stream. The timeout must be between 10-1000 milliseconds.

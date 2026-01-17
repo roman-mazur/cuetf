@@ -44,7 +44,6 @@ package data
 		// The description allows for additional details about
 		// 'BackupPlan' and its use cases to be provided.
 		description?: string
-		id?:          string
 
 		// The location for the backup plan
 		location!: string
@@ -54,6 +53,11 @@ package data
 		// equal to minimum enforced log retention duration of the backup
 		// vault.
 		log_retention_days?: number
+		id?:                 string
+
+		// The maximum number of days for which an on-demand backup taken
+		// with custom retention can be retained.
+		max_custom_on_demand_retention_days?: number
 
 		// The name of backup plan resource created
 		name?:    string

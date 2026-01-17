@@ -161,6 +161,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_compute_router": data.#google_compute_router
 	_#ds: "\(#googlePrefix)_compute_router_nat": data.#google_compute_router_nat
 	_#ds: "\(#googlePrefix)_compute_router_status": data.#google_compute_router_status
+	_#ds: "\(#googlePrefix)_compute_routers": data.#google_compute_routers
 	_#ds: "\(#googlePrefix)_compute_security_policy": data.#google_compute_security_policy
 	_#ds: "\(#googlePrefix)_compute_snapshot": data.#google_compute_snapshot
 	_#ds: "\(#googlePrefix)_compute_snapshot_iam_policy": data.#google_compute_snapshot_iam_policy

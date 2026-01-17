@@ -14,8 +14,8 @@ import "list"
 		description?: string
 		id?:          string
 
-		// Location ID of the parent organization. Only global is
-		// supported at the moment.
+		// Location ID for the parent project. Defaults to 'global' if
+		// location is not provided.
 		location?: string
 
 		// The resource name of this notification config, in the format

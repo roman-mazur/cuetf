@@ -161,6 +161,7 @@ import "list"
 
 		// Username for the PostgreSQL connection.
 		username!: string
+		ssl_config?: matchN(1, [_#defs."/$defs/postgresql_profile/$defs/ssl_config", list.MaxItems(1) & [..._#defs."/$defs/postgresql_profile/$defs/ssl_config"]])
 	})
 
 	#private_connectivity: close({
@@ -268,5 +269,37 @@ import "list"
 
 		// Indicates whether the clientKey field is set.
 		client_key_set?: bool
+	})
+
+	_#defs: "/$defs/postgresql_profile/$defs/ssl_config": close({
+		server_and_client_verification?: matchN(1, [_#defs."/$defs/postgresql_profile/$defs/ssl_config/$defs/server_and_client_verification", list.MaxItems(1) & [..._#defs."/$defs/postgresql_profile/$defs/ssl_config/$defs/server_and_client_verification"]])
+		server_verification?: matchN(1, [_#defs."/$defs/postgresql_profile/$defs/ssl_config/$defs/server_verification", list.MaxItems(1) & [..._#defs."/$defs/postgresql_profile/$defs/ssl_config/$defs/server_verification"]])
+	})
+
+	_#defs: "/$defs/postgresql_profile/$defs/ssl_config/$defs/server_and_client_verification": close({
+		// PEM-encoded server root CA certificate.
+		ca_certificate!: string
+
+		// PEM-encoded certificate used by the source database to
+		// authenticate the
+		// client identity (i.e., the Datastream's identity). This
+		// certificate is
+		// signed by either a root certificate trusted by the server or
+		// one or more
+		// intermediate certificates (which is stored with the leaf
+		// certificate) to
+		// link to this certificate to the trusted root certificate.
+		client_certificate!: string
+
+		// PEM-encoded private key associated with the client certificate.
+		// This value will be used during the SSL/TLS handshake, allowing
+		// the PostgreSQL server to authenticate the client's identity,
+		// i.e. identity of the stream.
+		client_key!: string
+	})
+
+	_#defs: "/$defs/postgresql_profile/$defs/ssl_config/$defs/server_verification": close({
+		// PEM-encoded server root CA certificate.
+		ca_certificate!: string
 	})
 }

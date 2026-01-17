@@ -1246,6 +1246,7 @@ import "list"
 
 	_#defs: "/$defs/node_config/$defs/containerd_config": close({
 		private_registry_access_config?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config"]])
+		registry_hosts?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts", [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts"]])
 		writable_cgroups?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/writable_cgroups", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/writable_cgroups"]])
 	})
 
@@ -1269,6 +1270,62 @@ import "list"
 		// format
 		// 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
 		secret_uri!: string
+	})
+
+	_#defs: "/$defs/node_config/$defs/containerd_config/$defs/registry_hosts": close({
+		hosts?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts", [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts"]])
+
+		// Defines the host name of the registry server.
+		server!: string
+	})
+
+	_#defs: "/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts": close({
+		// Represent the capabilities of the registry host, specifying
+		// what operations a host is capable of performing.
+		capabilities?: [...string]
+
+		// Specifies the maximum duration allowed for a connection attempt
+		// to complete.
+		dial_timeout?: string
+
+		// Configures the registry host/mirror.
+		host!: string
+		ca?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/ca", [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/ca"]])
+		client?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client", [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client"]])
+
+		// Indicate the host's API root endpoint is defined in the URL
+		// path rather than by the API specification.
+		override_path?: bool
+		header?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/header", [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/header"]])
+	})
+
+	_#defs: "/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/ca": close({
+		// URI for the Secret Manager secret that hosts the certificate.
+		gcp_secret_manager_secret_uri?: string
+	})
+
+	_#defs: "/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client": close({
+		cert!: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/cert", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/cert"]])
+		key?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/key", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/key"]])
+	})
+
+	_#defs: "/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/cert": close({
+		// URI for the Secret Manager secret that hosts the client
+		// certificate.
+		gcp_secret_manager_secret_uri?: string
+	})
+
+	_#defs: "/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/key": close({
+		// URI for the Secret Manager secret that hosts the private key.
+		gcp_secret_manager_secret_uri?: string
+	})
+
+	_#defs: "/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/header": close({
+		// Configures the header key.
+		key!: string
+
+		// Configures the header value.
+		value!: [...string]
 	})
 
 	_#defs: "/$defs/node_config/$defs/containerd_config/$defs/writable_cgroups": close({
@@ -1866,6 +1923,7 @@ import "list"
 
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/containerd_config": close({
 		private_registry_access_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/private_registry_access_config"]])
+		registry_hosts?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts", [..._#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts"]])
 		writable_cgroups?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/writable_cgroups", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/writable_cgroups"]])
 	})
 
@@ -1889,6 +1947,62 @@ import "list"
 		// format
 		// 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
 		secret_uri!: string
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts": close({
+		hosts?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts", [..._#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts"]])
+
+		// Defines the host name of the registry server.
+		server!: string
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts": close({
+		// Represent the capabilities of the registry host, specifying
+		// what operations a host is capable of performing.
+		capabilities?: [...string]
+
+		// Specifies the maximum duration allowed for a connection attempt
+		// to complete.
+		dial_timeout?: string
+
+		// Configures the registry host/mirror.
+		host!: string
+		ca?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/ca", [..._#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/ca"]])
+		client?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client", [..._#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client"]])
+
+		// Indicate the host's API root endpoint is defined in the URL
+		// path rather than by the API specification.
+		override_path?: bool
+		header?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/header", [..._#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/header"]])
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/ca": close({
+		// URI for the Secret Manager secret that hosts the certificate.
+		gcp_secret_manager_secret_uri?: string
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client": close({
+		cert!: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/cert", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/cert"]])
+		key?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/key", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/key"]])
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/cert": close({
+		// URI for the Secret Manager secret that hosts the client
+		// certificate.
+		gcp_secret_manager_secret_uri?: string
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/key": close({
+		// URI for the Secret Manager secret that hosts the private key.
+		gcp_secret_manager_secret_uri?: string
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/header": close({
+		// Configures the header key.
+		key!: string
+
+		// Configures the header value.
+		value!: [...string]
 	})
 
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/containerd_config/$defs/writable_cgroups": close({
@@ -2320,6 +2434,7 @@ import "list"
 
 	_#defs: "/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config": close({
 		private_registry_access_config?: matchN(1, [_#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/private_registry_access_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/private_registry_access_config"]])
+		registry_hosts?: matchN(1, [_#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts", [..._#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts"]])
 		writable_cgroups?: matchN(1, [_#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/writable_cgroups", list.MaxItems(1) & [..._#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/writable_cgroups"]])
 	})
 
@@ -2343,6 +2458,62 @@ import "list"
 		// format
 		// 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
 		secret_uri!: string
+	})
+
+	_#defs: "/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts": close({
+		hosts?: matchN(1, [_#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts", [..._#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts"]])
+
+		// Defines the host name of the registry server.
+		server!: string
+	})
+
+	_#defs: "/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts": close({
+		// Represent the capabilities of the registry host, specifying
+		// what operations a host is capable of performing.
+		capabilities?: [...string]
+
+		// Specifies the maximum duration allowed for a connection attempt
+		// to complete.
+		dial_timeout?: string
+
+		// Configures the registry host/mirror.
+		host!: string
+		ca?: matchN(1, [_#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/ca", [..._#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/ca"]])
+		client?: matchN(1, [_#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client", [..._#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client"]])
+
+		// Indicate the host's API root endpoint is defined in the URL
+		// path rather than by the API specification.
+		override_path?: bool
+		header?: matchN(1, [_#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/header", [..._#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/header"]])
+	})
+
+	_#defs: "/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/ca": close({
+		// URI for the Secret Manager secret that hosts the certificate.
+		gcp_secret_manager_secret_uri?: string
+	})
+
+	_#defs: "/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client": close({
+		cert!: matchN(1, [_#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/cert", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/cert"]])
+		key?: matchN(1, [_#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/key", list.MaxItems(1) & [..._#defs."/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/key"]])
+	})
+
+	_#defs: "/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/cert": close({
+		// URI for the Secret Manager secret that hosts the client
+		// certificate.
+		gcp_secret_manager_secret_uri?: string
+	})
+
+	_#defs: "/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client/$defs/key": close({
+		// URI for the Secret Manager secret that hosts the private key.
+		gcp_secret_manager_secret_uri?: string
+	})
+
+	_#defs: "/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/header": close({
+		// Configures the header key.
+		key!: string
+
+		// Configures the header value.
+		value!: [...string]
 	})
 
 	_#defs: "/$defs/node_pool_defaults/$defs/node_config_defaults/$defs/containerd_config/$defs/writable_cgroups": close({

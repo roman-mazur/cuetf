@@ -34,11 +34,15 @@ import "list"
 		// vault.
 		log_retention_days?: number
 
+		// The maximum number of days for which an on-demand backup taken
+		// with custom retention can be retained.
+		max_custom_on_demand_retention_days?: number
+		backup_rules!: matchN(1, [#backup_rules, [_, ...] & [...#backup_rules]])
+		timeouts?: #timeouts
+
 		// The name of backup plan resource created
 		name?:    string
 		project?: string
-		backup_rules!: matchN(1, [#backup_rules, [_, ...] & [...#backup_rules]])
-		timeouts?: #timeouts
 
 		// The resource type to which the 'BackupPlan' will be applied.
 		// Examples include, "compute.googleapis.com/Instance",
