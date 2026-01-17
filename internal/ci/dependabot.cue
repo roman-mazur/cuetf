@@ -51,7 +51,8 @@ workflows: (#dbot): {
 	}
 
 	jobs: "tf-provider-label": {
-		"if": "${{ github.event.pull_request.user.login == '\(#dbot)[bot]' && \({#matchLabels, #labels: ["dependencies", "terraform"]}) }}"
+		#depLabels: ["dependencies", "terraform"]
+		"if": "${{ github.event.pull_request.user.login == '\(#dbot)[bot]' && \({#matchLabels, #labels: #depLabels}) }}"
 		steps: [
 			{
 				id:   "metadata"
@@ -76,7 +77,7 @@ workflows: (#dbot): {
 #matchLabels: {
 	#labels: [...string]
 	#statements: [
-		for _, lbl in #labels { "contains(github.event.labels, '\(lbl)')" }
+		for _, lbl in #labels { "contains(github.event.pull_request.labels, '\(lbl)')" }
 	]
 	strings.Join(#statements, " && ")
 }

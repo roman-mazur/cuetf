@@ -9,7 +9,7 @@ name: dependabot
       - labeled
 jobs:
   tf-provider-label:
-    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' && contains(github.event.labels, 'dependencies') && contains(github.event.labels, 'terraform') }}
+    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' && contains(github.event.pull_request.labels, 'dependencies') && contains(github.event.pull_request.labels, 'terraform') }}
     runs-on: ubuntu-latest
     steps:
       - id: metadata
