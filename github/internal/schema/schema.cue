@@ -615,6 +615,43 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 				description_kind: "plain"
 			}
 		}
+		github_actions_organization_workflow_permissions: {
+			version: 0
+			block: {
+				attributes: {
+					can_approve_pull_request_reviews: {
+						type:             "bool"
+						description:      "Whether GitHub Actions can approve pull request reviews in any repository in the organization."
+						description_kind: "plain"
+						optional:         true
+					}
+					default_workflow_permissions: {
+						type:             "string"
+						description:      "The default workflow permissions granted to the GITHUB_TOKEN when running workflows in any repository in the organization. Can be 'read' or 'write'."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					organization_slug: {
+						type:             "string"
+						description:      "The slug of the Organization."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description: """
+					This resource allows you to manage GitHub Actions workflow permissions for a GitHub Organization account. This controls the default permissions granted to the GITHUB_TOKEN when running workflows and whether GitHub Actions can approve pull request reviews.
+
+					You must have organization admin access to use this resource.
+					"""
+				description_kind: "plain"
+			}
+		}
 		github_actions_repository_access_level: {
 			version: 0
 			block: {
@@ -2942,6 +2979,28 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 									}
 									max_items: 1
 								}
+								copilot_code_review: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											review_draft_pull_requests: {
+												type:             "bool"
+												description:      "Copilot automatically reviews draft pull requests before they are marked as ready for review. Defaults to `false`."
+												description_kind: "plain"
+												optional:         true
+											}
+											review_on_push: {
+												type:             "bool"
+												description:      "Copilot automatically reviews each new push to the pull request. Defaults to `false`."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Automatically request Copilot code review for new pull requests if the author has access to Copilot code review and their premium requests quota has not reached the limit."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 								file_extension_restriction: {
 									nesting_mode: "list"
 									block: {
@@ -3002,6 +3061,12 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 									nesting_mode: "list"
 									block: {
 										attributes: {
+											allowed_merge_methods: {
+												type: ["list", "string"]
+												description:      "Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled."
+												description_kind: "plain"
+												optional:         true
+											}
 											dismiss_stale_reviews_on_push: {
 												type:             "bool"
 												description:      "New, reviewable commits pushed will dismiss previous pull request review approvals. Defaults to `false`."
@@ -3700,6 +3765,13 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description_kind: "plain"
 						optional:         true
 					}
+					allow_forking: {
+						type:             "bool"
+						description:      "Set to 'true' to allow private forking on the repository; this is only relevant if the repository is owned by an organization and is private or internal."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					allow_merge_commit: {
 						type:             "bool"
 						description:      "Set to 'false' to disable merge commits on the repository."
@@ -3803,6 +3875,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						type:             "bool"
 						description:      "Set to 'true' to enable the (deprecated) downloads features on the repository."
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					has_issues: {
@@ -5214,6 +5287,28 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 									}
 									max_items: 1
 								}
+								copilot_code_review: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											review_draft_pull_requests: {
+												type:             "bool"
+												description:      "Copilot automatically reviews draft pull requests before they are marked as ready for review. Defaults to `false`."
+												description_kind: "plain"
+												optional:         true
+											}
+											review_on_push: {
+												type:             "bool"
+												description:      "Copilot automatically reviews each new push to the pull request. Defaults to `false`."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Automatically request Copilot code review for new pull requests if the author has access to Copilot code review and their premium requests quota has not reached the limit."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 								file_extension_restriction: {
 									nesting_mode: "list"
 									block: {
@@ -5326,6 +5421,12 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 									nesting_mode: "list"
 									block: {
 										attributes: {
+											allowed_merge_methods: {
+												type: ["list", "string"]
+												description:      "Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled."
+												description_kind: "plain"
+												optional:         true
+											}
 											dismiss_stale_reviews_on_push: {
 												type:             "bool"
 												description:      "New, reviewable commits pushed will dismiss previous pull request review approvals. Defaults to `false`."
@@ -5615,6 +5716,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						type:             "bool"
 						description:      "Adds a default maintainer to the team. Adds the creating user to the team when 'true'."
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					description: {
@@ -5656,6 +5758,12 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description:      "The Node ID of the created team."
 						description_kind: "plain"
 						computed:         true
+					}
+					notification_setting: {
+						type:             "string"
+						description:      "The notification setting for the team. Must be one of 'notifications_enabled' or 'notifications_disabled'."
+						description_kind: "plain"
+						optional:         true
 					}
 					parent_team_id: {
 						type:             "string"
@@ -7010,16 +7118,19 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					dependabot: {
 						type: ["list", "string"]
 						description_kind: "plain"
+						deprecated:       true
 						computed:         true
 					}
 					dependabot_ipv4: {
 						type: ["list", "string"]
 						description_kind: "plain"
+						deprecated:       true
 						computed:         true
 					}
 					dependabot_ipv6: {
 						type: ["list", "string"]
 						description_kind: "plain"
+						deprecated:       true
 						computed:         true
 					}
 					git: {
@@ -7119,6 +7230,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						computed:         true
 					}
 				}
+				description:      "Get the GitHub IP ranges used by various GitHub services."
 				description_kind: "plain"
 			}
 		}
@@ -8048,6 +8160,11 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description_kind: "plain"
 						computed:         true
 					}
+					allow_forking: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
 					allow_merge_commit: {
 						type:             "bool"
 						description_kind: "plain"
@@ -8112,6 +8229,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					has_downloads: {
 						type:             "bool"
 						description_kind: "plain"
+						deprecated:       true
 						computed:         true
 					}
 					has_issues: {
@@ -8957,9 +9075,15 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description_kind: "plain"
 						computed:         true
 					}
+					notification_setting: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
 					permission: {
 						type:             "string"
 						description_kind: "plain"
+						deprecated:       true
 						computed:         true
 					}
 					privacy: {
@@ -8985,6 +9109,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					results_per_page: {
 						type:             "number"
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					slug: {

@@ -10,6 +10,11 @@ import "list"
 		// repository.
 		allow_auto_merge?: bool
 
+		// Set to 'true' to allow private forking on the repository; this
+		// is only relevant if the repository is owned by an organization
+		// and is private or internal.
+		allow_forking?: bool
+
 		// Set to 'false' to disable merge commits on the repository.
 		allow_merge_commit?: bool
 
@@ -58,10 +63,6 @@ import "list"
 		// Set to 'true' to enable GitHub Discussions on the repository.
 		// Defaults to 'false'.
 		has_discussions?: bool
-
-		// Set to 'true' to enable the (deprecated) downloads features on
-		// the repository.
-		has_downloads?: bool
 
 		// Set to 'true' to enable the GitHub Issues features on the
 		// repository

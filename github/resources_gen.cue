@@ -13,6 +13,7 @@ import "github.com/roman-mazur/cuetf/github/res"
 	_#res: "\(#githubPrefix)_actions_organization_secret_repositories": res.#github_actions_organization_secret_repositories
 	_#res: "\(#githubPrefix)_actions_organization_secret_repository": res.#github_actions_organization_secret_repository
 	_#res: "\(#githubPrefix)_actions_organization_variable": res.#github_actions_organization_variable
+	_#res: "\(#githubPrefix)_actions_organization_workflow_permissions": res.#github_actions_organization_workflow_permissions
 	_#res: "\(#githubPrefix)_actions_repository_access_level": res.#github_actions_repository_access_level
 	_#res: "\(#githubPrefix)_actions_repository_oidc_subject_claim_customization_template": res.#github_actions_repository_oidc_subject_claim_customization_template
 	_#res: "\(#githubPrefix)_actions_repository_permissions": res.#github_actions_repository_permissions

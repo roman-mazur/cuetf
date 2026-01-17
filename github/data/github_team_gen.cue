@@ -7,18 +7,17 @@ package data
 		description?: string
 		id?:          string
 		members?: [...string]
-		membership_type?: string
-		name?:            string
-		node_id?:         string
-		permission?:      string
-		privacy?:         string
+		membership_type?:      string
+		name?:                 string
+		node_id?:              string
+		notification_setting?: string
+		privacy?:              string
 		repositories_detailed?: [...close({
 			repo_id?:   number
 			repo_name?: string
 			role_name?: string
 		})]
-		results_per_page?: number
-		slug!:             string
-		summary_only?:     bool
+		slug!:         string
+		summary_only?: bool
 	})
 }
