@@ -2,7 +2,7 @@ package euwest3
 
 InstanceTypes: [{
     InstanceType:      "c5.12xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -79,7 +79,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.18xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -156,7 +156,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.24xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -233,7 +233,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.2xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -310,7 +310,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.4xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -387,7 +387,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.9xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -464,7 +464,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.large"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -541,7 +541,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.metal"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -612,7 +612,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -8412,8 +8412,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          48
@@ -8646,8 +8645,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          16
@@ -8802,8 +8800,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          2
@@ -8880,8 +8877,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          4
@@ -9114,8 +9110,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          96
@@ -9270,8 +9265,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          192
@@ -9730,8 +9724,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          4
@@ -17469,7 +17462,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "m5.12xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -17546,7 +17539,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.16xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -17623,7 +17616,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.24xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -17700,7 +17693,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.2xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -17777,7 +17770,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.4xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -17854,7 +17847,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.8xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -17931,7 +17924,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.large"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -18008,7 +18001,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.metal"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -18079,7 +18072,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -24906,8 +24899,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          64
@@ -25218,8 +25210,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          2
@@ -25296,8 +25287,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          4
@@ -25374,8 +25364,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          48
@@ -25686,8 +25675,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          192
@@ -25767,8 +25755,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          16
@@ -27592,7 +27579,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.12xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -27669,7 +27656,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.16xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -27746,7 +27733,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.24xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -27823,7 +27810,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.2xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -27900,7 +27887,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.4xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -27977,7 +27964,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.8xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -28054,7 +28041,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.large"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -28131,7 +28118,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.metal"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -28202,7 +28189,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -34794,8 +34781,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          48
@@ -34950,8 +34936,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          96
@@ -35028,8 +35013,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          8
@@ -35106,8 +35090,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          192
@@ -35187,8 +35170,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          16
@@ -35265,8 +35247,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          32

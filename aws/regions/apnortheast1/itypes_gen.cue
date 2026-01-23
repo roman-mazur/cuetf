@@ -75924,7 +75924,7 @@ InstanceTypes: [{
         SupportedVersions: ["2.0"]
     }
     PhcSupport:             "supported"
-    RebootMigrationSupport: "supported"
+    RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "x8aedz.24xlarge"
     CurrentGeneration: true
@@ -76017,7 +76017,7 @@ InstanceTypes: [{
         SupportedVersions: ["2.0"]
     }
     PhcSupport:             "supported"
-    RebootMigrationSupport: "supported"
+    RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "x8aedz.3xlarge"
     CurrentGeneration: true
@@ -76107,7 +76107,7 @@ InstanceTypes: [{
         SupportedVersions: ["2.0"]
     }
     PhcSupport:             "supported"
-    RebootMigrationSupport: "supported"
+    RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "x8aedz.6xlarge"
     CurrentGeneration: true
@@ -76197,7 +76197,7 @@ InstanceTypes: [{
         SupportedVersions: ["2.0"]
     }
     PhcSupport:             "supported"
-    RebootMigrationSupport: "supported"
+    RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "x8aedz.large"
     CurrentGeneration: true
@@ -76287,7 +76287,7 @@ InstanceTypes: [{
         SupportedVersions: ["2.0"]
     }
     PhcSupport:             "supported"
-    RebootMigrationSupport: "supported"
+    RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "x8aedz.metal-12xl"
     CurrentGeneration: true
@@ -76371,7 +76371,7 @@ InstanceTypes: [{
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
-    RebootMigrationSupport: "supported"
+    RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "x8aedz.metal-24xl"
     CurrentGeneration: true
@@ -76458,7 +76458,7 @@ InstanceTypes: [{
     NitroEnclavesSupport:   "unsupported"
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
-    RebootMigrationSupport: "supported"
+    RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "x8aedz.xlarge"
     CurrentGeneration: true
@@ -76548,7 +76548,7 @@ InstanceTypes: [{
         SupportedVersions: ["2.0"]
     }
     PhcSupport:             "supported"
-    RebootMigrationSupport: "supported"
+    RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "z1d.12xlarge"
     CurrentGeneration: true
