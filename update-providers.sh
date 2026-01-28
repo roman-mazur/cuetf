@@ -7,7 +7,7 @@ mkdir -p out 2>/dev/null
 function terraUpdate() {
   mkdir -p schema 2>/dev/null
 
-  terraform init
+  terraform init -upgrade
   terraform providers schema -json > schema/schema.json
   cue import -f -p schema schema/schema.json -o schema/schema.cue
   (cd schema && cue vet) || (echo "New schema is not compliant with current transforms" && exit 1)
