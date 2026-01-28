@@ -17,6 +17,7 @@ package res
 		name!:                      string
 		resource_group_name!:       string
 		timeouts?:                  #timeouts
+		retrieval_start_date?:      string
 		shared_access_policy_name!: string
 		table_name?:                string
 	})
@@ -25,5 +26,6 @@ package res
 		create?: string
 		delete?: string
 		read?:   string
+		update?: string
 	})
 }

@@ -146,7 +146,6 @@ import "list"
 
 	#customer_managed_key: close({
 		key_vault_key_id?:          string
-		managed_hsm_key_id?:        string
 		user_assigned_identity_id!: string
 	})
 

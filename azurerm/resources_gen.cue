@@ -712,6 +712,10 @@ import "github.com/roman-mazur/cuetf/azurerm/res"
 	_#res: "\(#azurermPrefix)_network_packet_capture": res.#azurerm_network_packet_capture
 	_#res: "\(#azurermPrefix)_network_profile": res.#azurerm_network_profile
 	_#res: "\(#azurermPrefix)_network_security_group": res.#azurerm_network_security_group
+	_#res: "\(#azurermPrefix)_network_security_perimeter_access_rule": res.#azurerm_network_security_perimeter_access_rule
+	_#res: "\(#azurermPrefix)_network_security_perimeter_association": res.#azurerm_network_security_perimeter_association
+	_#res: "\(#azurermPrefix)_network_security_perimeter": res.#azurerm_network_security_perimeter
+	_#res: "\(#azurermPrefix)_network_security_perimeter_profile": res.#azurerm_network_security_perimeter_profile
 	_#res: "\(#azurermPrefix)_network_security_rule": res.#azurerm_network_security_rule
 	_#res: "\(#azurermPrefix)_network_watcher_flow_log": res.#azurerm_network_watcher_flow_log
 	_#res: "\(#azurermPrefix)_network_watcher": res.#azurerm_network_watcher
