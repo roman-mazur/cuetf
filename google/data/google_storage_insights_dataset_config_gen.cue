@@ -4,6 +4,11 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_storage_insights_dataset_config")
 	close({
+		// Number of days of activity data that must be retained. If not
+		// specified, retentionPeriodDays will be used. Set to 0 to turn
+		// off the activity data.
+		activity_data_retention_period_days?: number
+
 		// The UTC time at which the DatasetConfig was created. This is
 		// auto-populated.
 		create_time?: string
@@ -38,6 +43,7 @@ package data
 			name?: string
 			type?: string
 		})]
+		id?: string
 
 		// Defines the options for including cloud storage buckets for the
 		// DatasetConfig.
@@ -47,7 +53,6 @@ package data
 				bucket_prefix_regex?: string
 			})]
 		})]
-		id?: string
 
 		// Defines the options for including cloud storage locations for
 		// the DatasetConfig.
@@ -95,13 +100,13 @@ package data
 
 		// Number of days of history that must be retained.
 		retention_period_days?: number
+		project?:               string
 
 		// Defines the options for providing source folders for the
 		// DatasetConfig.
 		source_folders?: [...close({
 			folder_numbers?: [...string]
 		})]
-		project?: string
 
 		// Defines the options for providing source projects for the
 		// DatasetConfig.

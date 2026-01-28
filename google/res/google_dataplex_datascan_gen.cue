@@ -419,10 +419,19 @@ import "list"
 
 	_#defs: "/$defs/execution_spec/$defs/trigger": close({
 		on_demand?: matchN(1, [_#defs."/$defs/execution_spec/$defs/trigger/$defs/on_demand", list.MaxItems(1) & [..._#defs."/$defs/execution_spec/$defs/trigger/$defs/on_demand"]])
+		one_time?: matchN(1, [_#defs."/$defs/execution_spec/$defs/trigger/$defs/one_time", list.MaxItems(1) & [..._#defs."/$defs/execution_spec/$defs/trigger/$defs/one_time"]])
 		schedule?: matchN(1, [_#defs."/$defs/execution_spec/$defs/trigger/$defs/schedule", list.MaxItems(1) & [..._#defs."/$defs/execution_spec/$defs/trigger/$defs/schedule"]])
 	})
 
 	_#defs: "/$defs/execution_spec/$defs/trigger/$defs/on_demand": close({})
+
+	_#defs: "/$defs/execution_spec/$defs/trigger/$defs/one_time": close({
+		// Time to live for the DataScan and its results after the
+		// one-time run completes. Accepts a string with a unit suffix
+		// 's' (e.g., '7200s'). Default is 24 hours. Ranges between 0 and
+		// 31536000 seconds (1 year).
+		ttl_after_scan_completion?: string
+	})
 
 	_#defs: "/$defs/execution_spec/$defs/trigger/$defs/schedule": close({
 		// Cron schedule for running scans periodically. This field is

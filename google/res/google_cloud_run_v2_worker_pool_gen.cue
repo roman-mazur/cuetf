@@ -25,6 +25,7 @@ import "list"
 		// Please refer to the field 'effective_annotations' for all of
 		// the annotations present on the resource.
 		annotations?: [string]: string
+		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
 
 		// Arbitrary identifier for the API client.
 		client?: string
@@ -53,14 +54,6 @@ import "list"
 
 		// Email address of the authenticated creator.
 		creator?: string
-
-		// One or more custom audiences that you want this worker pool to
-		// support. Specify each custom audience as the full URL in a
-		// string. The custom audiences are encoded in the token and used
-		// to authenticate requests.
-		// For more information, see
-		// https://cloud.google.com/run/docs/configuring/custom-audiences.
-		custom_audiences?: [...string]
 
 		// The deletion time.
 		delete_time?: string
@@ -107,6 +100,7 @@ import "list"
 		// is an int64 value. As with most Google APIs, its JSON
 		// representation will be a string instead of an integer.
 		generation?: string
+		id?:         string
 
 		// Detailed status information for corresponding instance splits.
 		// See comments in reconciling for additional information on
@@ -116,7 +110,6 @@ import "list"
 			revision?: string
 			type?:     string
 		})]
-		id?: string
 
 		// Unstructured key value map that can be used to organize and
 		// categorize objects. User-provided labels are shared with
@@ -138,7 +131,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
 		instance_splits?: matchN(1, [#instance_splits, [...#instance_splits]])
 		scaling?: matchN(1, [#scaling, list.MaxItems(1) & [...#scaling]])
 		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])

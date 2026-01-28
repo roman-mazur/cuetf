@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_insights_dataset_config")
 	close({
+		// Number of days of activity data that must be retained. If not
+		// specified, retentionPeriodDays will be used. Set to 0 to turn
+		// off the activity data.
+		activity_data_retention_period_days?: number
+		exclude_cloud_storage_buckets?: matchN(1, [#exclude_cloud_storage_buckets, list.MaxItems(1) & [...#exclude_cloud_storage_buckets]])
+
 		// The UTC time at which the DatasetConfig was created. This is
 		// auto-populated.
 		create_time?: string
@@ -44,18 +50,11 @@ import "list"
 
 		// The location of the DatasetConfig.
 		location!: string
+		exclude_cloud_storage_locations?: matchN(1, [#exclude_cloud_storage_locations, list.MaxItems(1) & [...#exclude_cloud_storage_locations]])
 
 		// The full canonical resource name of the DatasetConfig (e.g.,
 		// projects/P/locations/L/datasetConfigs/ID).
 		name?: string
-
-		// Organization resource ID that the source projects should belong
-		// to.
-		// Projects that do not belong to the provided organization are
-		// not considered when creating the dataset.
-		organization_number?: string
-		exclude_cloud_storage_buckets?: matchN(1, [#exclude_cloud_storage_buckets, list.MaxItems(1) & [...#exclude_cloud_storage_buckets]])
-		exclude_cloud_storage_locations?: matchN(1, [#exclude_cloud_storage_locations, list.MaxItems(1) & [...#exclude_cloud_storage_locations]])
 		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
 		include_cloud_storage_buckets?: matchN(1, [#include_cloud_storage_buckets, list.MaxItems(1) & [...#include_cloud_storage_buckets]])
 		include_cloud_storage_locations?: matchN(1, [#include_cloud_storage_locations, list.MaxItems(1) & [...#include_cloud_storage_locations]])
@@ -63,16 +62,22 @@ import "list"
 		source_projects?: matchN(1, [#source_projects, list.MaxItems(1) & [...#source_projects]])
 		timeouts?: #timeouts
 
+		// Organization resource ID that the source projects should belong
+		// to.
+		// Projects that do not belong to the provided organization are
+		// not considered when creating the dataset.
+		organization_number?: string
+
 		// Defines the options for providing a source organization for the
 		// DatasetConfig.
 		organization_scope?: bool
+		project?:            string
 
 		// Number of days of history that must be retained.
 		retention_period_days!: number
 
 		// System generated unique identifier for the resource.
-		uid?:     string
-		project?: string
+		uid?: string
 
 		// The UTC time at which the DatasetConfig was updated. This is
 		// auto-populated.

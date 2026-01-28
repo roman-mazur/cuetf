@@ -509,6 +509,30 @@ package data
 					})]
 					enabled?: bool
 				})]
+				registry_hosts?: [...close({
+					hosts?: [...close({
+						ca?: [...close({
+							gcp_secret_manager_secret_uri?: string
+						})]
+						capabilities?: [...string]
+						client?: [...close({
+							cert?: [...close({
+								gcp_secret_manager_secret_uri?: string
+							})]
+							key?: [...close({
+								gcp_secret_manager_secret_uri?: string
+							})]
+						})]
+						dial_timeout?: string
+						header?: [...close({
+							key?: string
+							value?: [...string]
+						})]
+						host?:          string
+						override_path?: bool
+					})]
+					server?: string
+				})]
 				writable_cgroups?: [...close({
 					enabled?: bool
 				})]
@@ -748,6 +772,30 @@ package data
 						})]
 						enabled?: bool
 					})]
+					registry_hosts?: [...close({
+						hosts?: [...close({
+							ca?: [...close({
+								gcp_secret_manager_secret_uri?: string
+							})]
+							capabilities?: [...string]
+							client?: [...close({
+								cert?: [...close({
+									gcp_secret_manager_secret_uri?: string
+								})]
+								key?: [...close({
+									gcp_secret_manager_secret_uri?: string
+								})]
+							})]
+							dial_timeout?: string
+							header?: [...close({
+								key?: string
+								value?: [...string]
+							})]
+							host?:          string
+							override_path?: bool
+						})]
+						server?: string
+					})]
 					writable_cgroups?: [...close({
 						enabled?: bool
 					})]
@@ -961,6 +1009,30 @@ package data
 							})]
 						})]
 						enabled?: bool
+					})]
+					registry_hosts?: [...close({
+						hosts?: [...close({
+							ca?: [...close({
+								gcp_secret_manager_secret_uri?: string
+							})]
+							capabilities?: [...string]
+							client?: [...close({
+								cert?: [...close({
+									gcp_secret_manager_secret_uri?: string
+								})]
+								key?: [...close({
+									gcp_secret_manager_secret_uri?: string
+								})]
+							})]
+							dial_timeout?: string
+							header?: [...close({
+								key?: string
+								value?: [...string]
+							})]
+							host?:          string
+							override_path?: bool
+						})]
+						server?: string
 					})]
 					writable_cgroups?: [...close({
 						enabled?: bool
