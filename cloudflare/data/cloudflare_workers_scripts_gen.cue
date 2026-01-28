@@ -81,7 +81,15 @@ package data
 
 			// Configuration for [Smart
 			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+			// Specify either mode for Smart Placement, or one of
+			// region/hostname/host for targeted placement.
 			placement?: close({
+				// TCP host and port for targeted placement.
+				host?: string
+
+				// HTTP hostname for targeted placement.
+				hostname?: string
+
 				// The last time the script was analyzed for [Smart
 				// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 				last_analyzed_at?: string
@@ -90,6 +98,10 @@ package data
 				// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 				// Available values: "smart".
 				mode?: string
+
+				// Cloud region for targeted placement in format
+				// 'provider:region'.
+				region?: string
 
 				// Status of [Smart
 				// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -244,7 +256,15 @@ package data
 
 			// Configuration for [Smart
 			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+			// Specify either mode for Smart Placement, or one of
+			// region/hostname/host for targeted placement.
 			placement?: close({
+				// TCP host and port for targeted placement.
+				host?: string
+
+				// HTTP hostname for targeted placement.
+				hostname?: string
+
 				// The last time the script was analyzed for [Smart
 				// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 				last_analyzed_at?: string
@@ -253,6 +273,10 @@ package data
 				// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 				// Available values: "smart".
 				mode?: string
+
+				// Cloud region for targeted placement in format
+				// 'provider:region'.
+				region?: string
 
 				// Status of [Smart
 				// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).

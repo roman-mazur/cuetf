@@ -449,7 +449,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_account_member: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -519,10 +519,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						computed:         true
 					}
 					roles: {
-						type: ["list", "string"]
-						description:      "Array of roles associated with this member."
+						type: ["set", "string"]
+						description:      "Set of roles associated with this member."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -667,7 +668,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								sets: {
 									type: ["list", "string"]
-									description:      "The list of sets this rate plan applies to."
+									description:      "The list of sets this rate plan applies to. Returns array of strings."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -677,6 +678,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "The rate plan applied to the subscription."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					state: {
 						type: "string"
@@ -932,7 +934,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							attributes: {
 								name: {
 									type:             "string"
-									description:      "The name of the characteristic field, i.e., the header or cookie name."
+									description:      "The name of the characteristic field, i.e., the header or cookie name. When using type \"jwt\", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` is the ID of the token configuration used in validating the JWT, and `json_path` is a RFC 9535 JSONPath expression."
 									description_kind: "plain"
 									required:         true
 								}
@@ -964,6 +966,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						required:         true
 					}
 				}
+				description:      "Manages API Shield configuration properties for a zone, specifically auth ID characteristics."
 				description_kind: "plain"
 			}
 		}
@@ -3607,7 +3610,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type: "string"
 						description: """
 									Error Page Types
-									Available values: "1000_errors", "500_errors", "basic_challenge", "country_challenge", "ip_block", "managed_challenge", "ratelimit_block", "under_attack", "waf_block".
+									Available values: "1000_errors", "500_errors", "basic_challenge", "country_challenge", "ip_block", "managed_challenge", "ratelimit_block", "under_attack", "waf_block", "waf_challenge".
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -3616,7 +3619,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type: "string"
 						description: """
 									Error Page Types
-									Available values: "1000_errors", "500_errors", "basic_challenge", "country_challenge", "ip_block", "managed_challenge", "ratelimit_block", "under_attack", "waf_block".
+									Available values: "1000_errors", "500_errors", "basic_challenge", "country_challenge", "ip_block", "managed_challenge", "ratelimit_block", "under_attack", "waf_block", "waf_challenge".
 									"""
 						description_kind: "plain"
 						required:         true
@@ -6083,13 +6086,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								max_age: {
 									type:             "number"
-									description:      "Specify the maximum duration items should persist in the cache. Not returned if set to the default (60)."
+									description:      "Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified."
 									description_kind: "plain"
 									optional:         true
 								}
 								stale_while_revalidate: {
 									type:             "number"
-									description:      "Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15)."
+									description:      "Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -6146,6 +6149,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					name: {
 						type:             "string"
+						description:      "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API."
 						description_kind: "plain"
 						required:         true
 					}
@@ -6186,7 +6190,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								port: {
 									type:             "number"
-									description:      "Defines the port (default: 5432 for Postgres) of your origin database."
+									description:      "Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -8922,6 +8926,108 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						required:         true
 					}
+					automatic_return_routing: {
+						type:             "bool"
+						description:      "True if automatic stateful return routing should be enabled for a tunnel, false otherwise."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					bgp: {
+						nested_type: {
+							attributes: {
+								customer_asn: {
+									type:             "number"
+									description:      "ASN used on the customer end of the BGP session"
+									description_kind: "plain"
+									required:         true
+								}
+								extra_prefixes: {
+									type: ["list", "string"]
+									description:      "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								md5_key: {
+									type: "string"
+									description: """
+												MD5 key to use for session authentication.
+
+												Note that *this is not a security measure*. MD5 is not a valid security mechanism, and the
+												key is not treated as a secret value. This is *only* supported for preventing
+												misconfiguration, not for defending against malicious attacks.
+
+												The MD5 key, if set, must be of non-zero length and consist only of the following types of
+												character:
+
+												* ASCII alphanumerics: `[a-zA-Z0-9]`
+												* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`
+
+												In other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),
+												quotation mark (`"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed
+												(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of
+												these disallowed characters will be rejected.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+					bgp_status: {
+						nested_type: {
+							attributes: {
+								bgp_state: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								cf_speaker_ip: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								cf_speaker_port: {
+									type:             "number"
+									description_kind: "plain"
+									computed:         true
+								}
+								customer_speaker_ip: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								customer_speaker_port: {
+									type:             "number"
+									description_kind: "plain"
+									computed:         true
+								}
+								state: {
+									type:             "string"
+									description:      "Available values: \"BGP_DOWN\", \"BGP_UP\", \"BGP_ESTABLISHING\"."
+									description_kind: "plain"
+									computed:         true
+								}
+								tcp_established: {
+									type:             "bool"
+									description_kind: "plain"
+									computed:         true
+								}
+								updated_at: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						computed:         true
+					}
 					cloudflare_gre_endpoint: {
 						type:             "string"
 						description:      "The IP address assigned to the Cloudflare side of the GRE tunnel."
@@ -9080,6 +9186,108 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
+					automatic_return_routing: {
+						type:             "bool"
+						description:      "True if automatic stateful return routing should be enabled for a tunnel, false otherwise."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					bgp: {
+						nested_type: {
+							attributes: {
+								customer_asn: {
+									type:             "number"
+									description:      "ASN used on the customer end of the BGP session"
+									description_kind: "plain"
+									required:         true
+								}
+								extra_prefixes: {
+									type: ["list", "string"]
+									description:      "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								md5_key: {
+									type: "string"
+									description: """
+												MD5 key to use for session authentication.
+
+												Note that *this is not a security measure*. MD5 is not a valid security mechanism, and the
+												key is not treated as a secret value. This is *only* supported for preventing
+												misconfiguration, not for defending against malicious attacks.
+
+												The MD5 key, if set, must be of non-zero length and consist only of the following types of
+												character:
+
+												* ASCII alphanumerics: `[a-zA-Z0-9]`
+												* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`
+
+												In other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),
+												quotation mark (`"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed
+												(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of
+												these disallowed characters will be rejected.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+					bgp_status: {
+						nested_type: {
+							attributes: {
+								bgp_state: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								cf_speaker_ip: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								cf_speaker_port: {
+									type:             "number"
+									description_kind: "plain"
+									computed:         true
+								}
+								customer_speaker_ip: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								customer_speaker_port: {
+									type:             "number"
+									description_kind: "plain"
+									computed:         true
+								}
+								state: {
+									type:             "string"
+									description:      "Available values: \"BGP_DOWN\", \"BGP_UP\", \"BGP_ESTABLISHING\"."
+									description_kind: "plain"
+									computed:         true
+								}
+								tcp_established: {
+									type:             "bool"
+									description_kind: "plain"
+									computed:         true
+								}
+								updated_at: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						computed:         true
+					}
 					cloudflare_endpoint: {
 						type:             "string"
 						description:      "The IP address assigned to the Cloudflare side of the IPsec tunnel."
@@ -9091,6 +9299,28 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "The date and time the tunnel was created."
 						description_kind: "plain"
 						computed:         true
+					}
+					custom_remote_identities: {
+						nested_type: {
+							attributes: fqdn_id: {
+								type: "string"
+								description: """
+												A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The
+												generated IKE IDs can still be used even if this custom value is specified.
+
+												Must be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.
+
+												This custom ID does not need to be unique. Two IPsec tunnels may have the same custom 
+												fqdn_id. However, if another IPsec tunnel has the same value then the two tunnels 
+												cannot have the same cloudflare_endpoint.
+												"""
+								description_kind: "plain"
+								optional:         true
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
 					}
 					customer_endpoint: {
 						type:             "string"
@@ -13001,7 +13231,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type: "string"
 						description: """
 									Location of the bucket.
-									Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+									Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".  Note: `location` is only honored the first time a bucket with a given name is created. If you delete and recreate a bucket with the same name, the original bucket location will be used. It is also a best-effort, not a guarantee, of bucket location.
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -14891,6 +15121,15 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												description_kind: "plain"
 												optional:         true
 											}
+											request_body_buffering: {
+												type: "string"
+												description: """
+															The request body buffering mode to configure.
+															Available values: "none", "standard", "full".
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
 											request_fields: {
 												nested_type: {
 													attributes: name: {
@@ -14936,6 +15175,15 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 													nesting_mode: "single"
 												}
 												description:      "The response to show when the block is applied."
+												description_kind: "plain"
+												optional:         true
+											}
+											response_body_buffering: {
+												type: "string"
+												description: """
+															The response body buffering mode to configure.
+															Available values: "none", "standard".
+															"""
 												description_kind: "plain"
 												optional:         true
 											}
@@ -19004,6 +19252,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						optional:         true
 					}
+					main_script_base64: {
+						type:             "string"
+						description:      "The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax."
+						description_kind: "plain"
+						computed:         true
+					}
 					migrations: {
 						nested_type: {
 							attributes: {
@@ -20365,6 +20619,18 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					placement: {
 						nested_type: {
 							attributes: {
+								host: {
+									type:             "string"
+									description:      "TCP host and port for targeted placement."
+									description_kind: "plain"
+									computed:         true
+								}
+								hostname: {
+									type:             "string"
+									description:      "HTTP hostname for targeted placement."
+									description_kind: "plain"
+									computed:         true
+								}
 								last_analyzed_at: {
 									type:             "string"
 									description:      "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
@@ -20380,6 +20646,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									optional:         true
 								}
+								region: {
+									type:             "string"
+									description:      "Cloud region for targeted placement in format 'provider:region'."
+									description_kind: "plain"
+									computed:         true
+								}
 								status: {
 									type: "string"
 									description: """
@@ -20392,7 +20664,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							}
 							nesting_mode: "single"
 						}
-						description:      "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+						description:      "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -26369,7 +26641,8 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type:             "number"
 						description:      "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field."
 						description_kind: "plain"
-						required:         true
+						optional:         true
+						computed:         true
 					}
 					register_interface_ip_with_dns: {
 						type:             "bool"
@@ -26595,6 +26868,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					exclude_office_ips: {
 						type:             "bool"
@@ -26667,6 +26941,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					lan_allow_minutes: {
 						type:             "number"
@@ -26980,7 +27255,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "The description of the device posture rule."
 						description_kind: "plain"
 						optional:         true
-						computed:         true
 					}
 					expiration: {
 						type:             "string"
@@ -32524,7 +32798,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Subscription identifier tag."
+						description:      "Identifier"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -32579,7 +32853,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								sets: {
 									type: ["list", "string"]
-									description:      "The list of sets this rate plan applies to."
+									description:      "The list of sets this rate plan applies to. Returns array of strings."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -32589,6 +32863,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "The rate plan applied to the subscription."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					state: {
 						type: "string"
@@ -32601,7 +32876,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					zone_id: {
 						type:             "string"
-						description:      "Subscription identifier tag."
+						description:      "Identifier"
 						description_kind: "plain"
 						required:         true
 					}
@@ -35465,7 +35740,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								sets: {
 									type: ["list", "string"]
-									description:      "The list of sets this rate plan applies to."
+									description:      "The list of sets this rate plan applies to. Returns array of strings."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -41264,7 +41539,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type: "string"
 						description: """
 									Error Page Types
-									Available values: "1000_errors", "500_errors", "basic_challenge", "country_challenge", "ip_block", "managed_challenge", "ratelimit_block", "under_attack", "waf_block".
+									Available values: "1000_errors", "500_errors", "basic_challenge", "country_challenge", "ip_block", "managed_challenge", "ratelimit_block", "under_attack", "waf_block", "waf_challenge".
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -41273,7 +41548,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type: "string"
 						description: """
 									Error Page Types
-									Available values: "1000_errors", "500_errors", "basic_challenge", "country_challenge", "ip_block", "managed_challenge", "ratelimit_block", "under_attack", "waf_block".
+									Available values: "1000_errors", "500_errors", "basic_challenge", "country_challenge", "ip_block", "managed_challenge", "ratelimit_block", "under_attack", "waf_block", "waf_challenge".
 									"""
 						description_kind: "plain"
 						required:         true
@@ -46355,13 +46630,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								max_age: {
 									type:             "number"
-									description:      "Specify the maximum duration items should persist in the cache. Not returned if set to the default (60)."
+									description:      "Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified."
 									description_kind: "plain"
 									computed:         true
 								}
 								stale_while_revalidate: {
 									type:             "number"
-									description:      "Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15)."
+									description:      "Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -46424,6 +46699,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					name: {
 						type:             "string"
+						description:      "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -46464,7 +46740,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								port: {
 									type:             "number"
-									description:      "Defines the port (default: 5432 for Postgres) of your origin database."
+									description:      "Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -46529,13 +46805,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											max_age: {
 												type:             "number"
-												description:      "Specify the maximum duration items should persist in the cache. Not returned if set to the default (60)."
+												description:      "Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified."
 												description_kind: "plain"
 												computed:         true
 											}
 											stale_while_revalidate: {
 												type:             "number"
-												description:      "Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15)."
+												description:      "Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified."
 												description_kind: "plain"
 												computed:         true
 											}
@@ -46592,6 +46868,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								name: {
 									type:             "string"
+									description:      "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -46632,7 +46909,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											port: {
 												type:             "number"
-												description:      "Defines the port (default: 5432 for Postgres) of your origin database."
+												description:      "Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified."
 												description_kind: "plain"
 												computed:         true
 											}
@@ -62429,6 +62706,15 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												description_kind: "plain"
 												computed:         true
 											}
+											request_body_buffering: {
+												type: "string"
+												description: """
+															The request body buffering mode to configure.
+															Available values: "none", "standard", "full".
+															"""
+												description_kind: "plain"
+												computed:         true
+											}
 											request_fields: {
 												nested_type: {
 													attributes: name: {
@@ -62474,6 +62760,15 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 													nesting_mode: "single"
 												}
 												description:      "The response to show when the block is applied."
+												description_kind: "plain"
+												computed:         true
+											}
+											response_body_buffering: {
+												type: "string"
+												description: """
+															The response body buffering mode to configure.
+															Available values: "none", "standard".
+															"""
 												description_kind: "plain"
 												computed:         true
 											}
@@ -68928,6 +69223,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
+					main_script_base64: {
+						type:             "string"
+						description:      "The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules)."
+						description_kind: "plain"
+						computed:         true
+					}
 					migrations: {
 						nested_type: {
 							attributes: {
@@ -69579,6 +69880,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								main_module: {
 									type:             "string"
 									description:      "The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler)."
+									description_kind: "plain"
+									computed:         true
+								}
+								main_script_base64: {
+									type:             "string"
+									description:      "The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules)."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -71147,6 +71454,18 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								placement: {
 									nested_type: {
 										attributes: {
+											host: {
+												type:             "string"
+												description:      "TCP host and port for targeted placement."
+												description_kind: "plain"
+												computed:         true
+											}
+											hostname: {
+												type:             "string"
+												description:      "HTTP hostname for targeted placement."
+												description_kind: "plain"
+												computed:         true
+											}
 											last_analyzed_at: {
 												type:             "string"
 												description:      "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
@@ -71162,6 +71481,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												description_kind: "plain"
 												computed:         true
 											}
+											region: {
+												type:             "string"
+												description:      "Cloud region for targeted placement in format 'provider:region'."
+												description_kind: "plain"
+												computed:         true
+											}
 											status: {
 												type: "string"
 												description: """
@@ -71174,7 +71499,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement)."
+									description:      "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -94877,14 +95202,14 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type: "string"
 						description: """
 									How often the subscription is renewed automatically.
-									Available values: "weekly", "monthly", "quarterly", "yearly".
+									Available values: "weekly", "monthly", "quarterly", "yearly", "not-applicable".
 									"""
 						description_kind: "plain"
 						computed:         true
 					}
 					id: {
 						type:             "string"
-						description:      "Subscription identifier tag."
+						description:      "Identifier"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -94938,7 +95263,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								sets: {
 									type: ["list", "string"]
-									description:      "The list of sets this rate plan applies to."
+									description:      "The list of sets this rate plan applies to. Returns array of strings."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -94960,7 +95285,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					zone_id: {
 						type:             "string"
-						description:      "Subscription identifier tag."
+						description:      "Identifier"
 						description_kind: "plain"
 						required:         true
 					}

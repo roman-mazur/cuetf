@@ -42,7 +42,8 @@ package data
 			// The scope that this rate plan applies to.
 			scope?: string
 
-			// The list of sets this rate plan applies to.
+			// The list of sets this rate plan applies to. Returns array of
+			// strings.
 			sets?: [...string]
 		})
 

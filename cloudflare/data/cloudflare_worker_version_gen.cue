@@ -24,6 +24,11 @@ package data
 		// date will not affect this Worker.
 		compatibility_date?: string
 
+		// Flags that enable or disable certain features in the Workers
+		// runtime. Used to enable upcoming features or opt in or out of
+		// specific changes not included in a `compatibility_date`.
+		compatibility_flags?: [...string]
+
 		// Configuration for assets within a Worker.
 		//
 		// [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers)
@@ -60,10 +65,8 @@ package data
 			jwt?: string
 		})
 
-		// Flags that enable or disable certain features in the Workers
-		// runtime. Used to enable upcoming features or opt in or out of
-		// specific changes not included in a `compatibility_date`.
-		compatibility_flags?: [...string]
+		// When the version was created.
+		created_on?: string
 
 		// List of bindings attached to a Worker. You can find more about
 		// bindings on our docs:
@@ -344,9 +347,6 @@ package data
 			workflow_name?: string
 		})]])
 
-		// When the version was created.
-		created_on?: string
-
 		// Identifier for the version, which can be ID or the literal
 		// "latest" to operate on the most recently created version.
 		id?: string
@@ -357,15 +357,19 @@ package data
 		// Available values: "modules".
 		include?: string
 
+		// The name of the main module in the `modules` array (e.g. the
+		// name of the module that exports a `fetch` handler).
+		main_module?: string
+
 		// Resource limits enforced at runtime.
 		limits?: close({
 			// CPU time limit in milliseconds.
 			cpu_ms?: number
 		})
 
-		// The name of the main module in the `modules` array (e.g. the
-		// name of the module that exports a `fetch` handler).
-		main_module?: string
+		// The base64-encoded main script content. This is only returned
+		// for service worker syntax workers (not ES modules).
+		main_script_base64?: string
 
 		// The integer version number, starting from one.
 		"number"?: number

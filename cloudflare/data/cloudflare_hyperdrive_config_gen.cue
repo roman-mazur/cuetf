@@ -4,25 +4,27 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_hyperdrive_config")
 	close({
-		caching?: close({
-			// Set to true to disable caching of SQL responses. Default is
-			// false.
-			disabled?: bool
-
-			// Specify the maximum duration items should persist in the cache.
-			// Not returned if set to the default (60).
-			max_age?: number
-
-			// Specify the number of seconds the cache may serve a stale
-			// response. Omitted if set to the default (15).
-			stale_while_revalidate?: number
-		})
-
 		// Define configurations using a unique string identifier.
 		account_id!: string
 
 		// Defines the creation time of the Hyperdrive configuration.
 		created_on?: string
+		caching?: close({
+			// Set to true to disable caching of SQL responses. Default is
+			// false.
+			disabled?: bool
+
+			// Specify the maximum duration (in seconds) items should persist
+			// in the cache. Defaults to 60 seconds if not specified.
+			max_age?: number
+
+			// Specify the number of seconds the cache may serve a stale
+			// response. Defaults to 15 seconds if not specified.
+			stale_while_revalidate?: number
+		})
+
+		// Define configurations using a unique string identifier.
+		hyperdrive_id!: string
 		mtls?: close({
 			// Define CA certificate ID obtained after uploading CA cert.
 			ca_certificate_id?: string
@@ -37,14 +39,14 @@ package data
 		})
 
 		// Define configurations using a unique string identifier.
-		hyperdrive_id!: string
-
-		// Define configurations using a unique string identifier.
 		id?: string
 
 		// Defines the last modified time of the Hyperdrive configuration.
 		modified_on?: string
-		name?:        string
+
+		// The name of the Hyperdrive configuration. Used to identify the
+		// configuration in the Cloudflare dashboard and API.
+		name?: string
 
 		// The (soft) maximum number of connections the Hyperdrive is
 		// allowed to make to the origin database.
@@ -69,8 +71,8 @@ package data
 			// never returns this write-only value.
 			password?: string
 
-			// Defines the port (default: 5432 for Postgres) of your origin
-			// database.
+			// Defines the port of your origin database. Defaults to 5432 for
+			// PostgreSQL or 3306 for MySQL if not specified.
 			port?: number
 
 			// Specifies the URL scheme used to connect to your origin
