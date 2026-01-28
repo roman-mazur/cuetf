@@ -52,7 +52,7 @@ workflows: (#dbot): {
 
 	jobs: "tf-provider-label": {
 		#depLabels: ["dependencies", "terraform"]
-		"if": "${{ github.event.pull_request.user.login == '\(#dbot)[bot]' && \({#matchLabels, #labels: #depLabels}) }}"
+		"if": "${{ github.event.pull_request.user.login == '\(#dbot)[bot]' }}"
 		steps: [
 			{
 				id:   "metadata"
