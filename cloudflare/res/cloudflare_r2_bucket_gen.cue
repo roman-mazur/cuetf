@@ -20,6 +20,10 @@ package res
 
 		// Location of the bucket.
 		// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
+		// Note: `location` is only honored the first time a bucket with
+		// a given name is created. If you delete and recreate a bucket
+		// with the same name, the original bucket location will be used.
+		// It is also a best-effort, not a guarantee, of bucket location.
 		location?: string
 
 		// Name of the bucket.

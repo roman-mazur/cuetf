@@ -7,6 +7,16 @@ package res
 		// Identifier.
 		account_id!: string
 
+		// Date indicating targeted support in the Workers runtime.
+		// Backwards incompatible fixes to the runtime following this
+		// date will not affect this Worker.
+		compatibility_date?: string
+
+		// Flags that enable or disable certain features in the Workers
+		// runtime. Used to enable upcoming features or opt in or out of
+		// specific changes not included in a `compatibility_date`.
+		compatibility_flags?: [...string]
+
 		// Metadata about the version.
 		annotations?: close({
 			// Human-readable message about the version.
@@ -18,6 +28,9 @@ package res
 			// Operation that triggered the creation of the version.
 			workers_triggered_by?: string
 		})
+
+		// When the version was created.
+		created_on?: string
 
 		// Configuration for assets within a Worker.
 		//
@@ -63,6 +76,9 @@ package res
 				run_worker_first?: _
 			})
 		})
+
+		// Version identifier.
+		id?: string
 
 		// List of bindings attached to a Worker. You can find more about
 		// bindings on our docs:
@@ -343,21 +359,9 @@ package res
 			workflow_name?: string
 		})]])
 
-		// Date indicating targeted support in the Workers runtime.
-		// Backwards incompatible fixes to the runtime following this
-		// date will not affect this Worker.
-		compatibility_date?: string
-
-		// Flags that enable or disable certain features in the Workers
-		// runtime. Used to enable upcoming features or opt in or out of
-		// specific changes not included in a `compatibility_date`.
-		compatibility_flags?: [...string]
-
-		// When the version was created.
-		created_on?: string
-
-		// Version identifier.
-		id?: string
+		// The name of the main module in the `modules` array (e.g. the
+		// name of the module that exports a `fetch` handler).
+		main_module?: string
 
 		// Resource limits enforced at runtime.
 		limits?: close({
@@ -365,9 +369,11 @@ package res
 			cpu_ms!: number
 		})
 
-		// The name of the main module in the `modules` array (e.g. the
-		// name of the module that exports a `fetch` handler).
-		main_module?: string
+		// The base64-encoded main script content. This is only returned
+		// for service worker syntax workers (not ES modules). Used when
+		// importing existing workers that use the older service worker
+		// syntax.
+		main_script_base64?: string
 
 		// Migrations for Durable Objects associated with the version.
 		// Migrations are applied when the version is deployed.
@@ -523,15 +529,15 @@ package res
 			name!: string
 		})]])
 
-		// The integer version number, starting from one.
-		"number"?: number
-
 		// Placement settings for the version.
 		placement?: close({
 			// Placement mode for the version.
 			// Available values: "smart".
 			mode?: string
 		})
+
+		// The integer version number, starting from one.
+		"number"?: number
 
 		// The client used to create the version.
 		source?: string

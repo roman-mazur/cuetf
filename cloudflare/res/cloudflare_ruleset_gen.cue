@@ -35,9 +35,6 @@ package res
 				// A list of additional ports that caching should be enabled on.
 				additional_cacheable_ports?: [...number]
 
-				// The name of a custom asset to serve as the response.
-				asset_name?: string
-
 				// Custom order for compression algorithms.
 				algorithms?: matchN(1, [close({
 					// Name of the compression algorithm to enable.
@@ -50,6 +47,9 @@ package res
 					// "zstd".
 					name?: string
 				})]])
+
+				// The name of a custom asset to serve as the response.
+				asset_name?: string
 
 				// Which file extensions to minify automatically.
 				autominify?: close({
@@ -69,11 +69,6 @@ package res
 				// Whether to enable Browser Integrity Check (BIC).
 				bic?: bool
 
-				// Whether the request's response from the origin is eligible for
-				// caching. Caching itself will still depend on the cache control
-				// header and your other caching configurations.
-				cache?: bool
-
 				// How long client browsers should cache the response. Cloudflare
 				// cache purge will not purge content cached on client browsers,
 				// so high browser TTLs may lead to stale content.
@@ -88,13 +83,10 @@ package res
 					mode!: string
 				})
 
-				// The response content.
-				content?: string
-
-				// The content type header to set with the error response.
-				// Available values: "application/json", "text/html",
-				// "text/plain", "text/xml".
-				content_type?: string
+				// Whether the request's response from the origin is eligible for
+				// caching. Caching itself will still depend on the cache control
+				// header and your other caching configurations.
+				cache?: bool
 
 				// Which components of the request are included in or excluded
 				// from the cache key Cloudflare uses to store the response in
@@ -189,9 +181,6 @@ package res
 					ignore_query_strings_order?: bool
 				})
 
-				// Whether to disable Cloudflare Apps.
-				disable_apps?: bool
-
 				// Settings to determine whether the request's response from
 				// origin is eligible for Cache Reserve (requires a Cache Reserve
 				// add-on plan).
@@ -205,14 +194,16 @@ package res
 					minimum_file_size?: number
 				})
 
-				// Whether to disable Real User Monitoring (RUM).
-				disable_rum?: bool
+				// The response content.
+				content?: string
 
-				// Whether to disable Zaraz.
-				disable_zaraz?: bool
+				// The content type header to set with the error response.
+				// Available values: "application/json", "text/html",
+				// "text/plain", "text/xml".
+				content_type?: string
 
-				// Whether to enable Email Obfuscation.
-				email_obfuscation?: bool
+				// Whether to disable Cloudflare Apps.
+				disable_apps?: bool
 
 				// The cookie fields to log.
 				cookie_fields?: matchN(1, [close({
@@ -223,11 +214,14 @@ package res
 					name!: string
 				})]])
 
-				// Whether to enable Cloudflare Fonts.
-				fonts?: bool
+				// Whether to disable Real User Monitoring (RUM).
+				disable_rum?: bool
 
-				// A value to rewrite the HTTP host header to.
-				host_header?: string
+				// Whether to disable Zaraz.
+				disable_zaraz?: bool
+
+				// Whether to enable Email Obfuscation.
+				email_obfuscation?: bool
 
 				// How long the Cloudflare edge network should cache the response.
 				edge_ttl?: close({
@@ -281,8 +275,8 @@ package res
 					})]])
 				})
 
-				// Whether to enable Hotlink Protection.
-				hotlink_protection?: bool
+				// Whether to enable Cloudflare Fonts.
+				fonts?: bool
 
 				// A redirect based on a bulk list lookup.
 				from_list?: close({
@@ -293,8 +287,8 @@ package res
 					name!: string
 				})
 
-				// The ID of the ruleset to execute.
-				id?: string
+				// A value to rewrite the HTTP host header to.
+				host_header?: string
 
 				// A redirect based on the request properties.
 				from_value?: close({
@@ -315,9 +309,8 @@ package res
 					})
 				})
 
-				// A delta to change the score by, which can be either positive or
-				// negative.
-				increment?: number
+				// Whether to enable Hotlink Protection.
+				hotlink_protection?: bool
 
 				// A map of headers to rewrite.
 				headers?: [string]: close({
@@ -331,6 +324,13 @@ package res
 					// A static value for the header.
 					value?: string
 				})
+
+				// The ID of the ruleset to execute.
+				id?: string
+
+				// A delta to change the score by, which can be either positive or
+				// negative.
+				increment?: number
 
 				// Whether to enable Mirage.
 				mirage?: bool
@@ -347,10 +347,6 @@ package res
 				// Whether Cloudflare will aim to strictly adhere to RFC 7234.
 				origin_cache_control?: bool
 
-				// Whether to generate Cloudflare error pages for issues from the
-				// origin server.
-				origin_error_page_passthru?: bool
-
 				// An origin to route to.
 				origin?: close({
 					// A resolved host to route to.
@@ -359,6 +355,10 @@ package res
 					// A destination port to route to.
 					port?: number
 				})
+
+				// Whether to generate Cloudflare error pages for issues from the
+				// origin server.
+				origin_error_page_passthru?: bool
 
 				// A list of phases to skip the execution of. This option is
 				// incompatible with the rulesets option.
@@ -496,6 +496,10 @@ package res
 					preserve_duplicates?: bool
 				})]])
 
+				// The request body buffering mode to configure.
+				// Available values: "none", "standard", "full".
+				request_body_buffering?: string
+
 				// The raw request fields to log.
 				request_fields?: matchN(1, [close({
 					// The name of the header.
@@ -510,8 +514,9 @@ package res
 				// weak ETag headers.
 				respect_strong_etags?: bool
 
-				// Whether to enable Rocket Loader.
-				rocket_loader?: bool
+				// The response body buffering mode to configure.
+				// Available values: "none", "standard".
+				response_body_buffering?: string
 
 				// The response to show when the block is applied.
 				response?: close({
@@ -524,6 +529,9 @@ package res
 					// The status code to return.
 					status_code!: number
 				})
+
+				// Whether to enable Rocket Loader.
+				rocket_loader?: bool
 
 				// The transformed response fields to log.
 				response_fields?: matchN(1, [close({
@@ -566,19 +574,14 @@ package res
 					disable_stale_while_updating?: bool
 				})
 
-				// Whether to enable Server-Side Excludes.
-				server_side_excludes?: bool
-
 				// A Server Name Indication (SNI) override.
 				sni?: close({
 					// A value to override the SNI to.
 					value!: string
 				})
 
-				// The SSL level to configure.
-				// Available values: "off", "flexible", "full", "strict",
-				// "origin_pull".
-				ssl?: string
+				// Whether to enable Server-Side Excludes.
+				server_side_excludes?: bool
 
 				// The transformed request fields to log.
 				transformed_request_fields?: matchN(1, [close({
@@ -589,8 +592,16 @@ package res
 					name!: string
 				})]])
 
+				// The SSL level to configure.
+				// Available values: "off", "flexible", "full", "strict",
+				// "origin_pull".
+				ssl?: string
+
 				// The status code to use for the error.
 				status_code?: number
+
+				// Whether to enable Signed Exchanges (SXG).
+				sxg?: bool
 
 				// A URI rewrite.
 				uri?: close({
@@ -614,9 +625,6 @@ package res
 						value?: string
 					})
 				})
-
-				// Whether to enable Signed Exchanges (SXG).
-				sxg?: bool
 			})
 
 			// An informative description of the rule.
@@ -698,9 +706,6 @@ package res
 				// A list of additional ports that caching should be enabled on.
 				additional_cacheable_ports?: [...number]
 
-				// The name of a custom asset to serve as the response.
-				asset_name?: string
-
 				// Custom order for compression algorithms.
 				algorithms?: matchN(1, [close({
 					// Name of the compression algorithm to enable.
@@ -713,6 +718,9 @@ package res
 					// "zstd".
 					name?: string
 				})]])
+
+				// The name of a custom asset to serve as the response.
+				asset_name?: string
 
 				// Which file extensions to minify automatically.
 				autominify?: close({
@@ -732,11 +740,6 @@ package res
 				// Whether to enable Browser Integrity Check (BIC).
 				bic?: bool
 
-				// Whether the request's response from the origin is eligible for
-				// caching. Caching itself will still depend on the cache control
-				// header and your other caching configurations.
-				cache?: bool
-
 				// How long client browsers should cache the response. Cloudflare
 				// cache purge will not purge content cached on client browsers,
 				// so high browser TTLs may lead to stale content.
@@ -751,13 +754,10 @@ package res
 					mode!: string
 				})
 
-				// The response content.
-				content?: string
-
-				// The content type header to set with the error response.
-				// Available values: "application/json", "text/html",
-				// "text/plain", "text/xml".
-				content_type?: string
+				// Whether the request's response from the origin is eligible for
+				// caching. Caching itself will still depend on the cache control
+				// header and your other caching configurations.
+				cache?: bool
 
 				// Which components of the request are included in or excluded
 				// from the cache key Cloudflare uses to store the response in
@@ -852,9 +852,6 @@ package res
 					ignore_query_strings_order?: bool
 				})
 
-				// Whether to disable Cloudflare Apps.
-				disable_apps?: bool
-
 				// Settings to determine whether the request's response from
 				// origin is eligible for Cache Reserve (requires a Cache Reserve
 				// add-on plan).
@@ -868,14 +865,16 @@ package res
 					minimum_file_size?: number
 				})
 
-				// Whether to disable Real User Monitoring (RUM).
-				disable_rum?: bool
+				// The response content.
+				content?: string
 
-				// Whether to disable Zaraz.
-				disable_zaraz?: bool
+				// The content type header to set with the error response.
+				// Available values: "application/json", "text/html",
+				// "text/plain", "text/xml".
+				content_type?: string
 
-				// Whether to enable Email Obfuscation.
-				email_obfuscation?: bool
+				// Whether to disable Cloudflare Apps.
+				disable_apps?: bool
 
 				// The cookie fields to log.
 				cookie_fields?: matchN(1, [close({
@@ -886,11 +885,14 @@ package res
 					name!: string
 				})]])
 
-				// Whether to enable Cloudflare Fonts.
-				fonts?: bool
+				// Whether to disable Real User Monitoring (RUM).
+				disable_rum?: bool
 
-				// A value to rewrite the HTTP host header to.
-				host_header?: string
+				// Whether to disable Zaraz.
+				disable_zaraz?: bool
+
+				// Whether to enable Email Obfuscation.
+				email_obfuscation?: bool
 
 				// How long the Cloudflare edge network should cache the response.
 				edge_ttl?: close({
@@ -944,8 +946,8 @@ package res
 					})]])
 				})
 
-				// Whether to enable Hotlink Protection.
-				hotlink_protection?: bool
+				// Whether to enable Cloudflare Fonts.
+				fonts?: bool
 
 				// A redirect based on a bulk list lookup.
 				from_list?: close({
@@ -956,8 +958,8 @@ package res
 					name!: string
 				})
 
-				// The ID of the ruleset to execute.
-				id?: string
+				// A value to rewrite the HTTP host header to.
+				host_header?: string
 
 				// A redirect based on the request properties.
 				from_value?: close({
@@ -978,9 +980,8 @@ package res
 					})
 				})
 
-				// A delta to change the score by, which can be either positive or
-				// negative.
-				increment?: number
+				// Whether to enable Hotlink Protection.
+				hotlink_protection?: bool
 
 				// A map of headers to rewrite.
 				headers?: [string]: close({
@@ -994,6 +995,13 @@ package res
 					// A static value for the header.
 					value?: string
 				})
+
+				// The ID of the ruleset to execute.
+				id?: string
+
+				// A delta to change the score by, which can be either positive or
+				// negative.
+				increment?: number
 
 				// Whether to enable Mirage.
 				mirage?: bool
@@ -1010,10 +1018,6 @@ package res
 				// Whether Cloudflare will aim to strictly adhere to RFC 7234.
 				origin_cache_control?: bool
 
-				// Whether to generate Cloudflare error pages for issues from the
-				// origin server.
-				origin_error_page_passthru?: bool
-
 				// An origin to route to.
 				origin?: close({
 					// A resolved host to route to.
@@ -1022,6 +1026,10 @@ package res
 					// A destination port to route to.
 					port?: number
 				})
+
+				// Whether to generate Cloudflare error pages for issues from the
+				// origin server.
+				origin_error_page_passthru?: bool
 
 				// A list of phases to skip the execution of. This option is
 				// incompatible with the rulesets option.
@@ -1159,6 +1167,10 @@ package res
 					preserve_duplicates?: bool
 				})]])
 
+				// The request body buffering mode to configure.
+				// Available values: "none", "standard", "full".
+				request_body_buffering?: string
+
 				// The raw request fields to log.
 				request_fields?: matchN(1, [close({
 					// The name of the header.
@@ -1173,8 +1185,9 @@ package res
 				// weak ETag headers.
 				respect_strong_etags?: bool
 
-				// Whether to enable Rocket Loader.
-				rocket_loader?: bool
+				// The response body buffering mode to configure.
+				// Available values: "none", "standard".
+				response_body_buffering?: string
 
 				// The response to show when the block is applied.
 				response?: close({
@@ -1187,6 +1200,9 @@ package res
 					// The status code to return.
 					status_code!: number
 				})
+
+				// Whether to enable Rocket Loader.
+				rocket_loader?: bool
 
 				// The transformed response fields to log.
 				response_fields?: matchN(1, [close({
@@ -1229,19 +1245,14 @@ package res
 					disable_stale_while_updating?: bool
 				})
 
-				// Whether to enable Server-Side Excludes.
-				server_side_excludes?: bool
-
 				// A Server Name Indication (SNI) override.
 				sni?: close({
 					// A value to override the SNI to.
 					value!: string
 				})
 
-				// The SSL level to configure.
-				// Available values: "off", "flexible", "full", "strict",
-				// "origin_pull".
-				ssl?: string
+				// Whether to enable Server-Side Excludes.
+				server_side_excludes?: bool
 
 				// The transformed request fields to log.
 				transformed_request_fields?: matchN(1, [close({
@@ -1252,8 +1263,16 @@ package res
 					name!: string
 				})]])
 
+				// The SSL level to configure.
+				// Available values: "off", "flexible", "full", "strict",
+				// "origin_pull".
+				ssl?: string
+
 				// The status code to use for the error.
 				status_code?: number
+
+				// Whether to enable Signed Exchanges (SXG).
+				sxg?: bool
 
 				// A URI rewrite.
 				uri?: close({
@@ -1277,9 +1296,6 @@ package res
 						value?: string
 					})
 				})
-
-				// Whether to enable Signed Exchanges (SXG).
-				sxg?: bool
 			})
 
 			// An informative description of the rule.

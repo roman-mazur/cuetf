@@ -7,6 +7,10 @@ package res
 		// Identifier
 		account_id!: string
 
+		// True if automatic stateful return routing should be enabled for
+		// a tunnel, false otherwise.
+		automatic_return_routing?: bool
+
 		// The IP address assigned to the Cloudflare side of the GRE
 		// tunnel.
 		cloudflare_gre_endpoint!: string
@@ -19,29 +23,54 @@ package res
 
 		// An optional description of the GRE tunnel.
 		description?: string
+		bgp?: close({
+			// ASN used on the customer end of the BGP session
+			customer_asn!: number
+
+			// Prefixes in this list will be advertised to the customer
+			// device, in addition to the routes in the Magic routing table.
+			extra_prefixes?: [...string]
+
+			// MD5 key to use for session authentication.
+			//
+			// Note that *this is not a security measure*. MD5 is not a valid
+			// security mechanism, and the
+			// key is not treated as a secret value. This is *only* supported
+			// for preventing
+			// misconfiguration, not for defending against malicious attacks.
+			//
+			// The MD5 key, if set, must be of non-zero length and consist
+			// only of the following types of
+			// character:
+			//
+			// * ASCII alphanumerics: `[a-zA-Z0-9]`
+			// * Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`=
+			// \|`
+			//
+			// In other words, MD5 keys may contain any printable ASCII
+			// character aside from newline (0x0A),
+			// quotation mark (`"`), vertical tab (0x0B), carriage return
+			// (0x0D), tab (0x09), form feed
+			// (0x0C), and the question mark (`?`). Requests specifying an MD5
+			// key with one or more of
+			// these disallowed characters will be rejected.
+			md5_key?: string
+		})
 
 		// Identifier
 		id?: string
+		bgp_status?: close({
+			bgp_state?:       string
+			cf_speaker_ip?:   string
+			cf_speaker_port?: number
 
-		// A 31-bit prefix (/31 in CIDR notation) supporting two hosts,
-		// one for each side of the tunnel. Select the subnet from the
-		// following private IP space: 10.0.0.0–10.255.255.255,
-		// 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-		interface_address!: string
-
-		// A 127 bit IPV6 prefix from within the virtual_subnet6 prefix
-		// space with the address being the first IP of the subnet and
-		// not same as the address of virtual_subnet6. Eg if
-		// virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 ,
-		// interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
-		interface_address6?: string
-
-		// The date and time the tunnel was last modified.
-		modified_on?: string
-
-		// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
-		// The minimum value is 576.
-		mtu?: number
+			// Available values: "BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING".
+			state?:                 string
+			customer_speaker_ip?:   string
+			customer_speaker_port?: number
+			tcp_established?:       bool
+			updated_at?:            string
+		})
 		health_check?: close({
 			// The destination address in a request type health check. After
 			// the healthcheck is decapsulated at the customer end of the
@@ -85,6 +114,26 @@ package res
 			// Available values: "reply", "request".
 			type?: string
 		})
+
+		// A 31-bit prefix (/31 in CIDR notation) supporting two hosts,
+		// one for each side of the tunnel. Select the subnet from the
+		// following private IP space: 10.0.0.0–10.255.255.255,
+		// 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+		interface_address!: string
+
+		// A 127 bit IPV6 prefix from within the virtual_subnet6 prefix
+		// space with the address being the first IP of the subnet and
+		// not same as the address of virtual_subnet6. Eg if
+		// virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 ,
+		// interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+		interface_address6?: string
+
+		// The date and time the tunnel was last modified.
+		modified_on?: string
+
+		// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+		// The minimum value is 576.
+		mtu?: number
 
 		// The name of the tunnel. The name cannot contain spaces or
 		// special characters, must be 15 characters or less, and cannot

@@ -60,7 +60,7 @@ package res
 			})]])
 		})]])
 
-		// Array of roles associated with this member.
+		// Set of roles associated with this member.
 		roles?: [...string]
 
 		// Details of the user associated to the membership.

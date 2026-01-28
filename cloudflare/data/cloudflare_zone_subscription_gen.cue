@@ -16,10 +16,11 @@ package data
 		current_period_start?: string
 
 		// How often the subscription is renewed automatically.
-		// Available values: "weekly", "monthly", "quarterly", "yearly".
+		// Available values: "weekly", "monthly", "quarterly", "yearly",
+		// "not-applicable".
 		frequency?: string
 
-		// Subscription identifier tag.
+		// Identifier
 		id?: string
 
 		// The rate plan applied to the subscription.
@@ -46,7 +47,8 @@ package data
 			// The scope that this rate plan applies to.
 			scope?: string
 
-			// The list of sets this rate plan applies to.
+			// The list of sets this rate plan applies to. Returns array of
+			// strings.
 			sets?: [...string]
 		})
 
@@ -59,7 +61,7 @@ package data
 		// "AwaitingPayment", "Cancelled", "Failed", "Expired".
 		state?: string
 
-		// Subscription identifier tag.
+		// Identifier
 		zone_id!: string
 	})
 }

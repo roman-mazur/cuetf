@@ -21,7 +21,7 @@ package res
 		// will return "not-applicable".
 		frequency?: string
 
-		// Subscription identifier tag.
+		// Identifier
 		id?: string
 
 		// The rate plan applied to the subscription.
@@ -48,7 +48,8 @@ package res
 			// The scope that this rate plan applies to.
 			scope?: string
 
-			// The list of sets this rate plan applies to.
+			// The list of sets this rate plan applies to. Returns array of
+			// strings.
 			sets?: [...string]
 		})
 
@@ -61,7 +62,7 @@ package res
 		// "AwaitingPayment", "Cancelled", "Failed", "Expired".
 		state?: string
 
-		// Subscription identifier tag.
+		// Identifier
 		zone_id!: string
 	})
 }

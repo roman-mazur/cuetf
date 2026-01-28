@@ -151,7 +151,7 @@ package res
 		// The precedence of the policy. Lower values indicate higher
 		// precedence. Policies will be evaluated in ascending order of
 		// this field.
-		precedence!: number
+		precedence?: number
 
 		// Determines if the operating system will register WARP's local
 		// interface IP with your on-premises DNS server.
