@@ -4,7 +4,7 @@ import "list"
 
 #aws_lightsail_container_service_deployment_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lightsail_container_service_deployment_version")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lightsail_container_service_deployment_version")
 	close({
 		created_at?: string
 		id?:         string

@@ -2,7 +2,7 @@ package res
 
 #aws_cloudwatch_log_anomaly_detector: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudwatch_log_anomaly_detector")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudwatch_log_anomaly_detector")
 	close({
 		anomaly_visibility_time?: number
 		arn?:                     string

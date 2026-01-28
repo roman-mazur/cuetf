@@ -2,7 +2,7 @@ package res
 
 #aws_odb_network_peering_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_odb_network_peering_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_odb_network_peering_connection")
 	close({
 		arn?: string
 
@@ -21,7 +21,7 @@ package res
 		// initiates the peering connection. A sample ID is
 		// odbpcx-abcdefgh12345678. Changing this will force terraform to
 		// create new resource.
-		odb_network_id!: string
+		odb_network_id?: string
 
 		// Type of the odb peering connection.
 		odb_peering_connection_type?: string

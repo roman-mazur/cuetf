@@ -4,7 +4,7 @@ import "list"
 
 #aws_apigatewayv2_domain_name: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_apigatewayv2_domain_name")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_apigatewayv2_domain_name")
 	close({
 		api_mapping_selection_expression?: string
 		arn?:                              string

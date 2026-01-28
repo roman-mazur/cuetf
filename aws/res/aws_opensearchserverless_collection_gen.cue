@@ -2,7 +2,7 @@ package res
 
 #aws_opensearchserverless_collection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opensearchserverless_collection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_opensearchserverless_collection")
 	close({
 		// Collection-specific endpoint used to submit index, search, and
 		// data upload requests to an OpenSearch Serverless collection.

@@ -2,7 +2,7 @@ package res
 
 #aws_securityhub_standards_control: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_securityhub_standards_control")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_securityhub_standards_control")
 	close({
 		control_id?:                string
 		control_status!:            string

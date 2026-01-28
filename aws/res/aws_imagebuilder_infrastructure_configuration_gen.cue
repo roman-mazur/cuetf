@@ -4,7 +4,7 @@ import "list"
 
 #aws_imagebuilder_infrastructure_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_imagebuilder_infrastructure_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_imagebuilder_infrastructure_configuration")
 	close({
 		arn?:                   string
 		date_created?:          string

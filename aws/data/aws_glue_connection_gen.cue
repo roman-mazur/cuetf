@@ -2,7 +2,7 @@ package data
 
 #aws_glue_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_glue_connection")
 	close({
 		arn?: string
 		athena_properties?: [string]: string

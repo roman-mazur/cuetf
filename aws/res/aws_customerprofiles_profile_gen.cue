@@ -4,7 +4,7 @@ import "list"
 
 #aws_customerprofiles_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_customerprofiles_profile")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_customerprofiles_profile")
 	close({
 		account_number?:         string
 		additional_information?: string

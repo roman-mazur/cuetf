@@ -2,7 +2,7 @@ package data
 
 #aws_odb_networks: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_odb_networks")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_odb_networks")
 	close({
 		// List of odb networks returns basic information about odb
 		// networks.

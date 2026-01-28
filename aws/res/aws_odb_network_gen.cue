@@ -2,7 +2,7 @@ package res
 
 #aws_odb_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_odb_network")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_odb_network")
 	close({
 		// The name of the Availability Zone (AZ) where the odb network is
 		// located. Changing this will force terraform to create new

@@ -2,7 +2,7 @@ package res
 
 #aws_bedrockagent_agent_action_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrockagent_agent_action_group")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagent_agent_action_group")
 	close({
 		action_group_id?: string
 		action_group_executor?: matchN(1, [#action_group_executor, [...#action_group_executor]])

@@ -4,7 +4,7 @@ import "list"
 
 #aws_glue_data_catalog_encryption_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_glue_data_catalog_encryption_settings")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_glue_data_catalog_encryption_settings")
 	close({
 		data_catalog_encryption_settings!: matchN(1, [#data_catalog_encryption_settings, list.MaxItems(1) & [_, ...] & [...#data_catalog_encryption_settings]])
 		catalog_id?: string

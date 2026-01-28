@@ -4,7 +4,7 @@ import "list"
 
 #aws_opensearch_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opensearch_domain")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_opensearch_domain")
 	close({
 		access_policies?: string
 		advanced_options?: [string]: string

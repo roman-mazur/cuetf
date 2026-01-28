@@ -4,7 +4,7 @@ import "list"
 
 #aws_devicefarm_test_grid_project: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_devicefarm_test_grid_project")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_devicefarm_test_grid_project")
 	close({
 		arn?:         string
 		description?: string

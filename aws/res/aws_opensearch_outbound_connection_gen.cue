@@ -4,7 +4,7 @@ import "list"
 
 #aws_opensearch_outbound_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opensearch_outbound_connection")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_opensearch_outbound_connection")
 	close({
 		accept_connection?: bool
 		connection_properties?: matchN(1, [#connection_properties, list.MaxItems(1) & [...#connection_properties]])

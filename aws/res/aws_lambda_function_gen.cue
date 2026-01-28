@@ -4,7 +4,7 @@ import "list"
 
 #aws_lambda_function: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_lambda_function")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lambda_function")
 	close({
 		architectures?: [...string]
 		arn?:                     string
@@ -23,8 +23,10 @@ import "list"
 		memory_size?:          number
 		package_type?:         string
 		publish?:              bool
+		publish_to?:           string
 		qualified_arn?:        string
 		qualified_invoke_arn?: string
+		capacity_provider_config?: matchN(1, [#capacity_provider_config, list.MaxItems(1) & [...#capacity_provider_config]])
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -35,8 +37,9 @@ import "list"
 		replacement_security_group_ids?: [...string]
 		reserved_concurrent_executions?: number
 		role!:                           string
-		runtime?:                        string
 		dead_letter_config?: matchN(1, [#dead_letter_config, list.MaxItems(1) & [...#dead_letter_config]])
+		durable_config?: matchN(1, [#durable_config, list.MaxItems(1) & [...#durable_config]])
+		runtime?:                     string
 		s3_bucket?:                   string
 		s3_key?:                      string
 		s3_object_version?:           string
@@ -46,23 +49,33 @@ import "list"
 		source_code_hash?:            string
 		source_code_size?:            number
 		source_kms_key_arn?:          string
-		environment?: matchN(1, [#environment, list.MaxItems(1) & [...#environment]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		timeout?: number
+		environment?: matchN(1, [#environment, list.MaxItems(1) & [...#environment]])
 		ephemeral_storage?: matchN(1, [#ephemeral_storage, list.MaxItems(1) & [...#ephemeral_storage]])
 		file_system_config?: matchN(1, [#file_system_config, list.MaxItems(1) & [...#file_system_config]])
 		image_config?: matchN(1, [#image_config, list.MaxItems(1) & [...#image_config]])
 		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
 		snap_start?: matchN(1, [#snap_start, list.MaxItems(1) & [...#snap_start]])
-		version?:  string
+		version?: string
+		tenancy_config?: matchN(1, [#tenancy_config, list.MaxItems(1) & [...#tenancy_config]])
 		timeouts?: #timeouts
 		tracing_config?: matchN(1, [#tracing_config, list.MaxItems(1) & [...#tracing_config]])
 		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
 	})
 
+	#capacity_provider_config: close({
+		lambda_managed_instances_capacity_provider_config!: matchN(1, [_#defs."/$defs/capacity_provider_config/$defs/lambda_managed_instances_capacity_provider_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/capacity_provider_config/$defs/lambda_managed_instances_capacity_provider_config"]])
+	})
+
 	#dead_letter_config: close({
 		target_arn!: string
+	})
+
+	#durable_config: close({
+		execution_timeout!: number
+		retention_period?:  number
 	})
 
 	#environment: close({
@@ -96,6 +109,10 @@ import "list"
 		optimization_status?: string
 	})
 
+	#tenancy_config: close({
+		tenant_isolation_mode!: string
+	})
+
 	#timeouts: close({
 		create?: string
 		delete?: string
@@ -111,5 +128,11 @@ import "list"
 		security_group_ids!: [...string]
 		subnet_ids!: [...string]
 		vpc_id?: string
+	})
+
+	_#defs: "/$defs/capacity_provider_config/$defs/lambda_managed_instances_capacity_provider_config": close({
+		capacity_provider_arn!:                     string
+		execution_environment_memory_gib_per_vcpu?: number
+		per_execution_environment_max_concurrency?: number
 	})
 }

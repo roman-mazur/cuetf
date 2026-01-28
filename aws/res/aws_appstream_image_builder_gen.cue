@@ -4,7 +4,7 @@ import "list"
 
 #aws_appstream_image_builder: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_appstream_image_builder")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_appstream_image_builder")
 	close({
 		appstream_agent_version?: string
 		arn?:                     string

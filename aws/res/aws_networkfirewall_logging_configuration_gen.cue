@@ -4,7 +4,7 @@ import "list"
 
 #aws_networkfirewall_logging_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_networkfirewall_logging_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_networkfirewall_logging_configuration")
 	close({
 		enable_monitoring_dashboard?: bool
 

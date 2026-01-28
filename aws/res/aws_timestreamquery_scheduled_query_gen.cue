@@ -2,7 +2,7 @@ package res
 
 #aws_timestreamquery_scheduled_query: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_timestreamquery_scheduled_query")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_timestreamquery_scheduled_query")
 	close({
 		arn?:                string
 		creation_time?:      string

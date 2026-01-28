@@ -2,7 +2,7 @@ package data
 
 #aws_quicksight_theme: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_quicksight_theme")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_quicksight_theme")
 	close({
 		arn?:            string
 		aws_account_id?: string

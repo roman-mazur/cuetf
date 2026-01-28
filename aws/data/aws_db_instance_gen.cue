@@ -2,15 +2,9 @@ package data
 
 #aws_db_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_db_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_db_instance")
 	close({
-		address?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                     string
+		address?:                    string
 		allocated_storage?:          number
 		auto_minor_version_upgrade?: bool
 		availability_zone?:          string
@@ -21,8 +15,14 @@ package data
 		db_instance_arn?:            string
 		db_instance_class?:          string
 		db_instance_identifier?:     string
-		db_instance_port?:           number
-		db_name?:                    string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:           string
+		db_instance_port?: number
+		db_name?:          string
 		db_parameter_groups?: [...string]
 		db_subnet_group?: string
 		enabled_cloudwatch_logs_exports?: [...string]
@@ -56,7 +56,8 @@ package data
 		storage_throughput?:           number
 		storage_type?:                 string
 		tags?: [string]: string
-		timezone?: string
+		timezone?:              string
+		upgrade_rollout_order?: string
 		vpc_security_groups?: [...string]
 	})
 }

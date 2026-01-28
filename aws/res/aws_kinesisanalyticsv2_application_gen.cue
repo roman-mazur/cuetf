@@ -4,7 +4,7 @@ import "list"
 
 #aws_kinesisanalyticsv2_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_kinesisanalyticsv2_application")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_kinesisanalyticsv2_application")
 	close({
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -33,6 +33,7 @@ import "list"
 
 	#application_configuration: close({
 		application_code_configuration!: matchN(1, [_#defs."/$defs/application_configuration/$defs/application_code_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/application_code_configuration"]])
+		application_encryption_configuration?: matchN(1, [_#defs."/$defs/application_configuration/$defs/application_encryption_configuration", list.MaxItems(1) & [..._#defs."/$defs/application_configuration/$defs/application_encryption_configuration"]])
 		application_snapshot_configuration?: matchN(1, [_#defs."/$defs/application_configuration/$defs/application_snapshot_configuration", list.MaxItems(1) & [..._#defs."/$defs/application_configuration/$defs/application_snapshot_configuration"]])
 		environment_properties?: matchN(1, [_#defs."/$defs/application_configuration/$defs/environment_properties", list.MaxItems(1) & [..._#defs."/$defs/application_configuration/$defs/environment_properties"]])
 		flink_application_configuration?: matchN(1, [_#defs."/$defs/application_configuration/$defs/flink_application_configuration", list.MaxItems(1) & [..._#defs."/$defs/application_configuration/$defs/flink_application_configuration"]])
@@ -66,6 +67,11 @@ import "list"
 		bucket_arn!:     string
 		file_key!:       string
 		object_version?: string
+	})
+
+	_#defs: "/$defs/application_configuration/$defs/application_encryption_configuration": close({
+		key_id?:   string
+		key_type!: string
 	})
 
 	_#defs: "/$defs/application_configuration/$defs/application_snapshot_configuration": close({

@@ -2,7 +2,7 @@ package data
 
 #aws_cloudfront_distribution: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_cloudfront_distribution")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_cloudfront_distribution")
 	close({
 		aliases?: [...string]
 		anycast_ip_list_id?:             string

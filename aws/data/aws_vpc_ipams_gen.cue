@@ -2,7 +2,7 @@ package data
 
 #aws_vpc_ipams: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_vpc_ipams")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_vpc_ipams")
 	close({
 		filter?: matchN(1, [#filter, [...#filter]])
 		ipam_ids?: [...string]

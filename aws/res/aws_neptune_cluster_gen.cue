@@ -4,7 +4,7 @@ import "list"
 
 #aws_neptune_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_neptune_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_neptune_cluster")
 	close({
 		allow_major_version_upgrade?: bool
 		apply_immediately?:           bool

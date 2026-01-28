@@ -2,7 +2,7 @@ package res
 
 #aws_chatbot_slack_channel_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_chatbot_slack_channel_configuration")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_chatbot_slack_channel_configuration")
 	close({
 		chat_configuration_arn?: string
 		configuration_name!:     string

@@ -4,7 +4,7 @@ import "list"
 
 #aws_eks_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_eks_cluster")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_eks_cluster")
 	close({
 		arn?: string
 		access_config?: matchN(1, [#access_config, list.MaxItems(1) & [...#access_config]])
@@ -17,6 +17,7 @@ import "list"
 		deletion_protection?: bool
 		compute_config?: matchN(1, [#compute_config, list.MaxItems(1) & [...#compute_config]])
 		enabled_cluster_log_types?: [...string]
+		control_plane_scaling_config?: matchN(1, [#control_plane_scaling_config, list.MaxItems(1) & [...#control_plane_scaling_config]])
 		endpoint?:             string
 		force_update_version?: bool
 		id?:                   string
@@ -27,13 +28,13 @@ import "list"
 		})]
 		name!:             string
 		platform_version?: string
-		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
+		region?: string
+		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
 		role_arn!: string
 		status?:   string
 		tags?: [string]:     string
@@ -43,8 +44,8 @@ import "list"
 		remote_network_config?: matchN(1, [#remote_network_config, list.MaxItems(1) & [...#remote_network_config]])
 		storage_config?: matchN(1, [#storage_config, list.MaxItems(1) & [...#storage_config]])
 		timeouts?: #timeouts
+		version?:  string
 		upgrade_policy?: matchN(1, [#upgrade_policy, list.MaxItems(1) & [...#upgrade_policy]])
-		version?: string
 		vpc_config!: matchN(1, [#vpc_config, list.MaxItems(1) & [_, ...] & [...#vpc_config]])
 		zonal_shift_config?: matchN(1, [#zonal_shift_config, list.MaxItems(1) & [...#zonal_shift_config]])
 	})
@@ -58,6 +59,10 @@ import "list"
 		enabled?: bool
 		node_pools?: [...string]
 		node_role_arn?: string
+	})
+
+	#control_plane_scaling_config: close({
+		tier?: string
 	})
 
 	#encryption_config: close({

@@ -2,7 +2,7 @@ package res
 
 #aws_codecommit_repository: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codecommit_repository")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_codecommit_repository")
 	close({
 		arn?:            string
 		clone_url_http?: string

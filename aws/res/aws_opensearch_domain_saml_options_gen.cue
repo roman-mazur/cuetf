@@ -4,7 +4,7 @@ import "list"
 
 #aws_opensearch_domain_saml_options: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_opensearch_domain_saml_options")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_opensearch_domain_saml_options")
 	close({
 		saml_options?: matchN(1, [#saml_options, list.MaxItems(1) & [...#saml_options]])
 		timeouts?:    #timeouts

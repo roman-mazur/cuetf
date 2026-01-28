@@ -2,7 +2,7 @@ package res
 
 #aws_eks_addon: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_eks_addon")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_eks_addon")
 	close({
 		addon_name!: string
 		pod_identity_association?: matchN(1, [#pod_identity_association, [...#pod_identity_association]])

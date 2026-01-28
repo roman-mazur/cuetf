@@ -4,7 +4,7 @@ import "list"
 
 #aws_spot_fleet_request: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_spot_fleet_request")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_spot_fleet_request")
 	close({
 		allocation_strategy?:                string
 		client_token?:                       string

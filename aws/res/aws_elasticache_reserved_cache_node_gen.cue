@@ -2,7 +2,7 @@ package res
 
 #aws_elasticache_reserved_cache_node: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_elasticache_reserved_cache_node")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_elasticache_reserved_cache_node")
 	close({
 		arn?:                 string
 		cache_node_count?:    number

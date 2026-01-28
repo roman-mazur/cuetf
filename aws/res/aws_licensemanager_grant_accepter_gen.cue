@@ -2,7 +2,7 @@ package res
 
 #aws_licensemanager_grant_accepter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_licensemanager_grant_accepter")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_licensemanager_grant_accepter")
 	close({
 		// Allowed operations for the grant.
 		allowed_operations?: [...string]

@@ -2,7 +2,7 @@ package res
 
 #aws_bedrockagentcore_workload_identity: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrockagentcore_workload_identity")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_workload_identity")
 	close({
 		allowed_resource_oauth2_return_urls?: [...string]
 		name!: string

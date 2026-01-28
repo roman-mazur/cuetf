@@ -2,7 +2,7 @@ package res
 
 #aws_finspace_kx_dataview: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_finspace_kx_dataview")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_finspace_kx_dataview")
 	close({
 		arn?: string
 		segment_configurations?: matchN(1, [#segment_configurations, [...#segment_configurations]])

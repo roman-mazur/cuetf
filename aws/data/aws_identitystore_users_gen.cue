@@ -2,7 +2,7 @@ package data
 
 #aws_identitystore_users: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_identitystore_users")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_identitystore_users")
 	close({
 		identity_store_id!: string
 

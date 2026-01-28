@@ -4,7 +4,7 @@ import "list"
 
 #aws_budgets_budget_action: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_budgets_budget_action")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_budgets_budget_action")
 	close({
 		account_id?:         string
 		action_id?:          string

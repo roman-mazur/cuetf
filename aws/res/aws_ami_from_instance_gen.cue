@@ -2,7 +2,7 @@ package res
 
 #aws_ami_from_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_ami_from_instance")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ami_from_instance")
 	close({
 		architecture?:     string
 		arn?:              string

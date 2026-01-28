@@ -4,7 +4,7 @@ import "list"
 
 #aws_codebuild_project: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_codebuild_project")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_codebuild_project")
 	close({
 		arn?: string
 		artifacts!: matchN(1, [#artifacts, list.MaxItems(1) & [_, ...] & [...#artifacts]])

@@ -2,7 +2,7 @@ package res
 
 #aws_bedrock_guardrail: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_bedrock_guardrail")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrock_guardrail")
 	close({
 		blocked_input_messaging!:   string
 		blocked_outputs_messaging!: string

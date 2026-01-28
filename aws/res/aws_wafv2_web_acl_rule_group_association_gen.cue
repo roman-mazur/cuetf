@@ -2,7 +2,7 @@ package res
 
 #aws_wafv2_web_acl_rule_group_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws_wafv2_web_acl_rule_group_association")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_wafv2_web_acl_rule_group_association")
 	close({
 		// Override action for the rule group. Valid values are 'none' and
 		// 'count'. Defaults to 'none'.
