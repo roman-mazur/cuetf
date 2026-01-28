@@ -789,7 +789,7 @@ import "list"
 		java_version?: string
 
 		// The version of Node to use. Possible values include `12`, `14`,
-		// `16`, `18`, `20` and `22`
+		// `16`, `18`, `20`, `22` and `24`
 		node_version?: string
 
 		// The version of PowerShell Core to use. Possibles values are

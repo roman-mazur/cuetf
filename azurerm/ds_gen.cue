@@ -255,6 +255,8 @@ import "github.com/roman-mazur/cuetf/azurerm/data"
 	_#ds: "\(#azurermPrefix)_network_manager_ipam_pool": data.#azurerm_network_manager_ipam_pool
 	_#ds: "\(#azurermPrefix)_network_manager_network_group": data.#azurerm_network_manager_network_group
 	_#ds: "\(#azurermPrefix)_network_security_group": data.#azurerm_network_security_group
+	_#ds: "\(#azurermPrefix)_network_security_perimeter": data.#azurerm_network_security_perimeter
+	_#ds: "\(#azurermPrefix)_network_security_perimeter_profile": data.#azurerm_network_security_perimeter_profile
 	_#ds: "\(#azurermPrefix)_network_service_tags": data.#azurerm_network_service_tags
 	_#ds: "\(#azurermPrefix)_network_watcher": data.#azurerm_network_watcher
 	_#ds: "\(#azurermPrefix)_nginx_api_key": data.#azurerm_nginx_api_key

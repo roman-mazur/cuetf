@@ -8,15 +8,17 @@ import "list"
 	close({
 		backup!: matchN(1, [#backup, list.MaxItems(1) & [_, ...] & [...#backup]])
 		retention_daily!: matchN(1, [#retention_daily, list.MaxItems(1) & [_, ...] & [...#retention_daily]])
-		id?: string
-		retention_monthly?: matchN(1, [#retention_monthly, list.MaxItems(1) & [...#retention_monthly]])
+		backup_tier?:         string
+		id?:                  string
 		name!:                string
 		recovery_vault_name!: string
-		resource_group_name!: string
-		timezone?:            string
+		retention_monthly?: matchN(1, [#retention_monthly, list.MaxItems(1) & [...#retention_monthly]])
 		retention_weekly?: matchN(1, [#retention_weekly, list.MaxItems(1) & [...#retention_weekly]])
 		retention_yearly?: matchN(1, [#retention_yearly, list.MaxItems(1) & [...#retention_yearly]])
-		timeouts?: #timeouts
+		resource_group_name!:        string
+		timeouts?:                   #timeouts
+		snapshot_retention_in_days?: number
+		timezone?:                   string
 	})
 
 	#backup: close({

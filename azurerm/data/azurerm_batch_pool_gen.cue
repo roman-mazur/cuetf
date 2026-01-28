@@ -9,12 +9,6 @@ package data
 			evaluation_interval?: string
 			formula?:             string
 		})]
-		certificate?: [...close({
-			id?:             string
-			store_location?: string
-			store_name?:     string
-			visibility?: [...string]
-		})]
 		container_configuration?: [...close({
 			container_image_names?: [...string]
 			container_registries?: [...close({
@@ -111,7 +105,6 @@ package data
 		})]
 		os_disk_placement?:   string
 		resource_group_name!: string
-		timeouts?:            #timeouts
 		start_task?: [...close({
 			command_line?: string
 			common_environment_properties?: [string]: string
@@ -145,6 +138,7 @@ package data
 			})]
 			wait_for_success?: bool
 		})]
+		timeouts?: #timeouts
 		storage_image_reference?: [...close({
 			id?:        string
 			offer?:     string
