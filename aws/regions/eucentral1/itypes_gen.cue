@@ -7502,14 +7502,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "18.75 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          18.75
-            PeakBandwidthInGbps:              18.75
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "18.75 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 4
+            BaselineBandwidthInGbps:             18.75
+            PeakBandwidthInGbps:                 18.75
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -7581,14 +7582,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "25 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          25.0
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "25 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 1
+            BaselineBandwidthInGbps:             25.0
+            PeakBandwidthInGbps:                 25.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -7660,14 +7662,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "37.5 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          37.5
-            PeakBandwidthInGbps:              37.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "37.5 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 9
+            BaselineBandwidthInGbps:             37.5
+            PeakBandwidthInGbps:                 37.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -7739,14 +7742,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          3.125
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.125
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -7818,14 +7822,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "50 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          50.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "50 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 9
+            BaselineBandwidthInGbps:             50.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -7900,14 +7905,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          6.25
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             6.25
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -7979,14 +7985,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "12.5 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          12.5
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "12.5 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 2
+            BaselineBandwidthInGbps:             12.5
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -8058,14 +8065,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          0.781
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             0.781
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -8212,14 +8220,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          1.562
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             1.562
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -8301,14 +8310,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "18.75 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          18.75
-            PeakBandwidthInGbps:              18.75
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "18.75 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 4
+            BaselineBandwidthInGbps:             18.75
+            PeakBandwidthInGbps:                 18.75
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -8390,14 +8400,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "25 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          25.0
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "25 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 1
+            BaselineBandwidthInGbps:             25.0
+            PeakBandwidthInGbps:                 25.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -8479,14 +8490,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "37.5 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          37.5
-            PeakBandwidthInGbps:              37.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "37.5 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 9
+            BaselineBandwidthInGbps:             37.5
+            PeakBandwidthInGbps:                 37.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -8568,14 +8580,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          3.125
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.125
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -8657,14 +8670,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "50 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          50.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "50 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 9
+            BaselineBandwidthInGbps:             50.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -8749,14 +8763,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          6.25
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             6.25
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -8838,14 +8853,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "12.5 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          12.5
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "12.5 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 2
+            BaselineBandwidthInGbps:             12.5
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -8927,14 +8943,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          0.781
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             0.781
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -9101,14 +9118,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          1.562
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             1.562
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -9180,14 +9198,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "75 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          75.0
-            PeakBandwidthInGbps:              75.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "75 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 4
+            BaselineBandwidthInGbps:             75.0
+            PeakBandwidthInGbps:                 75.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -9259,14 +9278,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             240
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "100 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 1
+            BaselineBandwidthInGbps:             100.0
+            PeakBandwidthInGbps:                 100.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                240
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -9338,14 +9358,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "150 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          150.0
-            PeakBandwidthInGbps:              150.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             480
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "150 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 9
+            BaselineBandwidthInGbps:             150.0
+            PeakBandwidthInGbps:                 150.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                480
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -9417,14 +9438,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 40 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          12.5
-            PeakBandwidthInGbps:              40.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 40 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             12.5
+            PeakBandwidthInGbps:                 40.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -9496,23 +9518,25 @@ InstanceTypes: [{
         MaximumNetworkCards:      2
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 170 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          200.0
-            PeakBandwidthInGbps:              200.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             256
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 170 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 4
+            BaselineBandwidthInGbps:             200.0
+            PeakBandwidthInGbps:                 200.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                256
+            MaximumEnaQueueCountPerInterface:    32
         }, {
-            NetworkCardIndex:                 1
-            NetworkPerformance:               "Up to 170 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          200.0
-            PeakBandwidthInGbps:              200.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             256
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    1
+            NetworkPerformance:                  "Up to 170 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 4
+            BaselineBandwidthInGbps:             200.0
+            PeakBandwidthInGbps:                 200.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                256
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -9587,14 +9611,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 50 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          25.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 50 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             25.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -9666,14 +9691,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "50 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          50.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "50 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 2
+            BaselineBandwidthInGbps:             50.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -9745,14 +9771,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 25 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          3.125
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 25 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.125
+            PeakBandwidthInGbps:                 25.0
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -9905,14 +9932,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 30 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          6.25
-            PeakBandwidthInGbps:              30.0
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 30 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             6.25
+            PeakBandwidthInGbps:                 30.0
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -12344,8 +12372,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          48
@@ -12422,8 +12449,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          64
@@ -12500,8 +12526,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          8
@@ -12578,8 +12603,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          16
@@ -12656,8 +12680,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          32
@@ -12734,8 +12757,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          2
@@ -12812,8 +12834,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          4
@@ -12890,8 +12911,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          48
@@ -12968,8 +12988,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          64
@@ -13046,8 +13065,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          96
@@ -13124,8 +13142,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          8
@@ -13202,8 +13219,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          192
@@ -13283,8 +13299,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          16
@@ -13361,8 +13376,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          32
@@ -13439,8 +13453,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          2
@@ -13662,8 +13675,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          4
@@ -15762,14 +15774,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "150 Gigabit"
-            MaximumNetworkInterfaces:         12
-            BaselineBandwidthInGbps:          150.0
-            PeakBandwidthInGbps:              150.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             192
-            MaximumEnaQueueCountPerInterface: 64
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "150 Gigabit"
+            MaximumNetworkInterfaces:            12
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             150.0
+            PeakBandwidthInGbps:                 150.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                192
+            MaximumEnaQueueCountPerInterface:    64
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -15841,14 +15854,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "200 Gigabit"
-            MaximumNetworkInterfaces:         16
-            BaselineBandwidthInGbps:          200.0
-            PeakBandwidthInGbps:              200.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             256
-            MaximumEnaQueueCountPerInterface: 64
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "200 Gigabit"
+            MaximumNetworkInterfaces:            16
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             200.0
+            PeakBandwidthInGbps:                 200.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                256
+            MaximumEnaQueueCountPerInterface:    64
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -15923,14 +15937,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "300 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          300.0
-            PeakBandwidthInGbps:              300.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             384
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "300 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             300.0
+            PeakBandwidthInGbps:                 300.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                384
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -16005,14 +16020,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 50 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          25.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 50 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             25.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -16084,23 +16100,25 @@ InstanceTypes: [{
         MaximumNetworkCards:      2
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "300 Gigabit"
-            MaximumNetworkInterfaces:         12
-            BaselineBandwidthInGbps:          300.0
-            PeakBandwidthInGbps:              300.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             384
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "300 Gigabit"
+            MaximumNetworkInterfaces:            12
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             300.0
+            PeakBandwidthInGbps:                 300.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                384
+            MaximumEnaQueueCountPerInterface:    128
         }, {
-            NetworkCardIndex:                 1
-            NetworkPerformance:               "300 Gigabit"
-            MaximumNetworkInterfaces:         12
-            BaselineBandwidthInGbps:          300.0
-            PeakBandwidthInGbps:              300.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             384
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    1
+            NetworkPerformance:                  "300 Gigabit"
+            MaximumNetworkInterfaces:            12
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             300.0
+            PeakBandwidthInGbps:                 300.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                384
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -16175,14 +16193,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "50 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          50.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "50 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             50.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -16254,14 +16273,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
-            MaximumNetworkInterfaces:         10
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "100 Gigabit"
+            MaximumNetworkInterfaces:            10
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             100.0
+            PeakBandwidthInGbps:                 100.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -16333,14 +16353,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 30 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          6.25
-            PeakBandwidthInGbps:              30.0
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 30 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             6.25
+            PeakBandwidthInGbps:                 30.0
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -16410,14 +16431,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 25 Gigabit"
-            MaximumNetworkInterfaces:         2
-            BaselineBandwidthInGbps:          3.125
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 1
-            MaximumEnaQueueCount:             2
-            MaximumEnaQueueCountPerInterface: 1
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 25 Gigabit"
+            MaximumNetworkInterfaces:            2
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.125
+            PeakBandwidthInGbps:                 25.0
+            DefaultEnaQueueCountPerInterface:    1
+            MaximumEnaQueueCount:                2
+            MaximumEnaQueueCountPerInterface:    1
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -16489,14 +16511,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 40 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          12.5
-            PeakBandwidthInGbps:              40.0
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 40 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             12.5
+            PeakBandwidthInGbps:                 40.0
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -16569,14 +16592,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 22.5 Gigabit"
-            MaximumNetworkInterfaces:         12
-            BaselineBandwidthInGbps:          11.25
-            PeakBandwidthInGbps:              22.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             96
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 22.5 Gigabit"
+            MaximumNetworkInterfaces:            12
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             11.25
+            PeakBandwidthInGbps:                 22.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                96
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -16650,14 +16674,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 30 Gigabit"
-            MaximumNetworkInterfaces:         16
-            BaselineBandwidthInGbps:          15.0
-            PeakBandwidthInGbps:              30.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 30 Gigabit"
+            MaximumNetworkInterfaces:            16
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             15.0
+            PeakBandwidthInGbps:                 30.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -16731,14 +16756,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 15 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          1.875
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             1.875
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -16812,14 +16838,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 15 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          3.75
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.75
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -16893,14 +16920,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 15 Gigabit"
-            MaximumNetworkInterfaces:         10
-            BaselineBandwidthInGbps:          7.5
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:            10
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             7.5
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -16974,14 +17002,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          0.468
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 1
-            MaximumEnaQueueCount:             3
-            MaximumEnaQueueCountPerInterface: 1
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             0.468
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    1
+            MaximumEnaQueueCount:                3
+            MaximumEnaQueueCountPerInterface:    1
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -17055,14 +17084,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          0.937
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             8
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             0.937
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                8
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -17136,14 +17166,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "22.5 Gigabit"
-            MaximumNetworkInterfaces:         12
-            BaselineBandwidthInGbps:          22.5
-            PeakBandwidthInGbps:              22.5
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             192
-            MaximumEnaQueueCountPerInterface: 64
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "22.5 Gigabit"
+            MaximumNetworkInterfaces:            12
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             22.5
+            PeakBandwidthInGbps:                 22.5
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                192
+            MaximumEnaQueueCountPerInterface:    64
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -17217,14 +17248,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "30 Gigabit"
-            MaximumNetworkInterfaces:         16
-            BaselineBandwidthInGbps:          30.0
-            PeakBandwidthInGbps:              30.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             256
-            MaximumEnaQueueCountPerInterface: 64
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "30 Gigabit"
+            MaximumNetworkInterfaces:            16
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             30.0
+            PeakBandwidthInGbps:                 30.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                256
+            MaximumEnaQueueCountPerInterface:    64
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -17298,14 +17330,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "40 Gigabit"
-            MaximumNetworkInterfaces:         16
-            BaselineBandwidthInGbps:          40.0
-            PeakBandwidthInGbps:              40.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             384
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "40 Gigabit"
+            MaximumNetworkInterfaces:            16
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             40.0
+            PeakBandwidthInGbps:                 40.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                384
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -17379,14 +17412,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 15 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          3.75
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.75
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -17460,14 +17494,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "50 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          50.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             512
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "50 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             50.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                512
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -17541,14 +17576,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "75 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          75.0
-            PeakBandwidthInGbps:              75.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             768
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "75 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             75.0
+            PeakBandwidthInGbps:                 75.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                768
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -17625,14 +17661,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 15 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          7.5
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             7.5
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -17706,14 +17743,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "15 Gigabit"
-            MaximumNetworkInterfaces:         10
-            BaselineBandwidthInGbps:          15.0
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "15 Gigabit"
+            MaximumNetworkInterfaces:            10
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             15.0
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -17787,14 +17825,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             1536
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "100 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             100.0
+            PeakBandwidthInGbps:                 100.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                1536
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -17871,14 +17910,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          0.937
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             0.937
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -17948,14 +17988,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "75 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          75.0
-            PeakBandwidthInGbps:              75.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             768
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "75 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             75.0
+            PeakBandwidthInGbps:                 75.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                768
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -18025,14 +18066,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             1536
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "100 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             100.0
+            PeakBandwidthInGbps:                 100.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                1536
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -18106,14 +18148,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          1.875
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             1.875
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -19993,9 +20036,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "Radeon Pro V520"
-            Manufacturer: "AMD"
-            Count:        4
+            Name:             "Radeon Pro V520"
+            Manufacturer:     "AMD"
+            Count:            4
+            LogicalGpuCount:  4
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -20088,9 +20134,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "Radeon Pro V520"
-            Manufacturer: "AMD"
-            Count:        1
+            Name:             "Radeon Pro V520"
+            Manufacturer:     "AMD"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -20183,9 +20232,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "Radeon Pro V520"
-            Manufacturer: "AMD"
-            Count:        1
+            Name:             "Radeon Pro V520"
+            Manufacturer:     "AMD"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -20278,9 +20330,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "Radeon Pro V520"
-            Manufacturer: "AMD"
-            Count:        2
+            Name:             "Radeon Pro V520"
+            Manufacturer:     "AMD"
+            Count:            2
+            LogicalGpuCount:  2
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -20373,9 +20428,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "Radeon Pro V520"
-            Manufacturer: "AMD"
-            Count:        1
+            Name:             "Radeon Pro V520"
+            Manufacturer:     "AMD"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -20471,9 +20529,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "T4"
-            Manufacturer: "NVIDIA"
-            Count:        4
+            Name:             "T4"
+            Manufacturer:     "NVIDIA"
+            Count:            4
+            LogicalGpuCount:  4
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20572,9 +20633,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "T4"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "T4"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20670,9 +20734,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "T4"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "T4"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20768,9 +20835,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "T4"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "T4"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20869,9 +20939,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "T4"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "T4"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20967,9 +21040,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "T4"
-            Manufacturer: "NVIDIA"
-            Count:        8
+            Name:             "T4"
+            Manufacturer:     "NVIDIA"
+            Count:            8
+            LogicalGpuCount:  8
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -21062,9 +21138,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "T4"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "T4"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -21161,9 +21240,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "A10G"
-            Manufacturer: "NVIDIA"
-            Count:        4
+            Name:             "A10G"
+            Manufacturer:     "NVIDIA"
+            Count:            4
+            LogicalGpuCount:  4
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21260,9 +21342,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "A10G"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "A10G"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21359,9 +21444,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "A10G"
-            Manufacturer: "NVIDIA"
-            Count:        4
+            Name:             "A10G"
+            Manufacturer:     "NVIDIA"
+            Count:            4
+            LogicalGpuCount:  4
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21455,9 +21543,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "A10G"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "A10G"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21554,9 +21645,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "A10G"
-            Manufacturer: "NVIDIA"
-            Count:        8
+            Name:             "A10G"
+            Manufacturer:     "NVIDIA"
+            Count:            8
+            LogicalGpuCount:  8
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21650,9 +21744,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "A10G"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "A10G"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21749,9 +21846,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "A10G"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "A10G"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21845,9 +21945,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "A10G"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "A10G"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21933,9 +22036,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "T4g"
-            Manufacturer: "NVIDIA"
-            Count:        2
+            Name:             "T4g"
+            Manufacturer:     "NVIDIA"
+            Count:            2
+            LogicalGpuCount:  2
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -22018,9 +22124,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "T4g"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "T4g"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -22103,9 +22212,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "T4g"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "T4g"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -22188,9 +22300,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "T4g"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "T4g"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -22270,9 +22385,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "T4g"
-            Manufacturer: "NVIDIA"
-            Count:        2
+            Name:             "T4g"
+            Manufacturer:     "NVIDIA"
+            Count:            2
+            LogicalGpuCount:  2
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -22355,9 +22473,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "T4g"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "T4g"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -22453,9 +22574,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L4"
-            Manufacturer: "NVIDIA"
-            Count:        4
+            Name:             "L4"
+            Manufacturer:     "NVIDIA"
+            Count:            4
+            LogicalGpuCount:  4
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22554,9 +22678,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L4"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "L4"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22655,9 +22782,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L4"
-            Manufacturer: "NVIDIA"
-            Count:        4
+            Name:             "L4"
+            Manufacturer:     "NVIDIA"
+            Count:            4
+            LogicalGpuCount:  4
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22753,9 +22883,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L4"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "L4"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22854,9 +22987,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L4"
-            Manufacturer: "NVIDIA"
-            Count:        8
+            Name:             "L4"
+            Manufacturer:     "NVIDIA"
+            Count:            8
+            LogicalGpuCount:  8
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22952,9 +23088,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L4"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "L4"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -23053,9 +23192,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L4"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "L4"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -23151,9 +23293,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L4"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "L4"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -23252,9 +23397,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L40S"
-            Manufacturer: "NVIDIA"
-            Count:        4
+            Name:             "L40S"
+            Manufacturer:     "NVIDIA"
+            Count:            4
+            LogicalGpuCount:  4
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -23353,9 +23501,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L40S"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "L40S"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -23461,9 +23612,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L40S"
-            Manufacturer: "NVIDIA"
-            Count:        4
+            Name:             "L40S"
+            Manufacturer:     "NVIDIA"
+            Count:            4
+            LogicalGpuCount:  4
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -23559,9 +23713,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L40S"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "L40S"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -23681,9 +23838,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L40S"
-            Manufacturer: "NVIDIA"
-            Count:        8
+            Name:             "L40S"
+            Manufacturer:     "NVIDIA"
+            Count:            8
+            LogicalGpuCount:  8
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -23779,9 +23939,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L40S"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "L40S"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -23880,9 +24043,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L40S"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "L40S"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -23978,9 +24144,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L40S"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "L40S"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -24076,9 +24245,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L4"
-            Manufacturer: "NVIDIA"
-            Count:        0
+            Name:             "L4"
+            Manufacturer:     "NVIDIA"
+            Count:            0
+            LogicalGpuCount:  1
+            GpuPartitionSize: 0.25
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 5722
             }
@@ -24174,9 +24346,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L4"
-            Manufacturer: "NVIDIA"
-            Count:        0
+            Name:             "L4"
+            Manufacturer:     "NVIDIA"
+            Count:            0
+            LogicalGpuCount:  1
+            GpuPartitionSize: 0.5
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 11444
             }
@@ -24272,9 +24447,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L4"
-            Manufacturer: "NVIDIA"
-            Count:        0
+            Name:             "L4"
+            Manufacturer:     "NVIDIA"
+            Count:            0
+            LogicalGpuCount:  1
+            GpuPartitionSize: 0.125
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 2861
             }
@@ -24370,9 +24548,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L4"
-            Manufacturer: "NVIDIA"
-            Count:        0
+            Name:             "L4"
+            Manufacturer:     "NVIDIA"
+            Count:            0
+            LogicalGpuCount:  1
+            GpuPartitionSize: 0.125
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 2861
             }
@@ -24468,9 +24649,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L4"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "L4"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -24569,9 +24753,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L4"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "L4"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -24667,9 +24854,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "L4"
-            Manufacturer: "NVIDIA"
-            Count:        0
+            Name:             "L4"
+            Manufacturer:     "NVIDIA"
+            Count:            0
+            LogicalGpuCount:  1
+            GpuPartitionSize: 0.5
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 11444
             }
@@ -29830,14 +30020,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 75 Gigabit"
-            MaximumNetworkInterfaces:         12
-            BaselineBandwidthInGbps:          45.0
-            PeakBandwidthInGbps:              75.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             192
-            MaximumEnaQueueCountPerInterface: 64
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 75 Gigabit"
+            MaximumNetworkInterfaces:            12
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             45.0
+            PeakBandwidthInGbps:                 75.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                192
+            MaximumEnaQueueCountPerInterface:    64
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -29919,14 +30110,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 112.5 Gigabit"
-            MaximumNetworkInterfaces:         16
-            BaselineBandwidthInGbps:          67.5
-            PeakBandwidthInGbps:              112.5
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             288
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 112.5 Gigabit"
+            MaximumNetworkInterfaces:            16
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             67.5
+            PeakBandwidthInGbps:                 112.5
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                288
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -30008,14 +30200,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 150 Gigabit"
-            MaximumNetworkInterfaces:         16
-            BaselineBandwidthInGbps:          90.0
-            PeakBandwidthInGbps:              150.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             384
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 150 Gigabit"
+            MaximumNetworkInterfaces:            16
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             90.0
+            PeakBandwidthInGbps:                 150.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                384
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -30097,14 +30290,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 25 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          8.4
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 25 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             8.4
+            PeakBandwidthInGbps:                 25.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -30186,14 +30380,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 25 Gigabit"
-            MaximumNetworkInterfaces:         6
-            BaselineBandwidthInGbps:          12.5
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             48
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 25 Gigabit"
+            MaximumNetworkInterfaces:            6
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             12.5
+            PeakBandwidthInGbps:                 25.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                48
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -30275,14 +30470,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 300 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          180.0
-            PeakBandwidthInGbps:              300.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             768
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 300 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             180.0
+            PeakBandwidthInGbps:                 300.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                768
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -30367,14 +30563,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 37.5 Gigabit"
-            MaximumNetworkInterfaces:         10
-            BaselineBandwidthInGbps:          22.5
-            PeakBandwidthInGbps:              37.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             96
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 37.5 Gigabit"
+            MaximumNetworkInterfaces:            10
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             22.5
+            PeakBandwidthInGbps:                 37.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                96
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -30456,14 +30653,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 25 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          2.1
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 25 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             2.1
+            PeakBandwidthInGbps:                 25.0
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -30714,14 +30912,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 25 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          4.2
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 25 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             4.2
+            PeakBandwidthInGbps:                 25.0
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -40506,14 +40705,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "18.75 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          18.75
-            PeakBandwidthInGbps:              18.75
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "18.75 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 4
+            BaselineBandwidthInGbps:             18.75
+            PeakBandwidthInGbps:                 18.75
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -40585,14 +40785,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "25 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          25.0
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "25 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 1
+            BaselineBandwidthInGbps:             25.0
+            PeakBandwidthInGbps:                 25.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -40664,14 +40865,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "37.5 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          37.5
-            PeakBandwidthInGbps:              37.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "37.5 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 9
+            BaselineBandwidthInGbps:             37.5
+            PeakBandwidthInGbps:                 37.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -40743,14 +40945,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          3.125
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.125
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -40822,14 +41025,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "50 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          50.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "50 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 9
+            BaselineBandwidthInGbps:             50.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -40904,14 +41108,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          6.25
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             6.25
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -40983,14 +41188,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "12.5 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          12.5
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "12.5 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 2
+            BaselineBandwidthInGbps:             12.5
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -41062,14 +41268,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          0.781
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             0.781
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -41216,14 +41423,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          1.562
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             1.562
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -41305,14 +41513,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "18.75 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          18.75
-            PeakBandwidthInGbps:              18.75
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "18.75 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 4
+            BaselineBandwidthInGbps:             18.75
+            PeakBandwidthInGbps:                 18.75
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -41394,14 +41603,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "25 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          25.0
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "25 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 1
+            BaselineBandwidthInGbps:             25.0
+            PeakBandwidthInGbps:                 25.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -41483,14 +41693,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "37.5 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          37.5
-            PeakBandwidthInGbps:              37.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "37.5 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 9
+            BaselineBandwidthInGbps:             37.5
+            PeakBandwidthInGbps:                 37.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -41572,14 +41783,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          3.125
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.125
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -41661,14 +41873,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "50 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          50.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "50 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 9
+            BaselineBandwidthInGbps:             50.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -41753,14 +41966,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          6.25
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             6.25
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -41842,14 +42056,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "12.5 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          12.5
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "12.5 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 2
+            BaselineBandwidthInGbps:             12.5
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -41931,14 +42146,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          0.781
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             0.781
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -42105,14 +42321,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          1.562
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             1.562
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -42194,14 +42411,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "75 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          75.0
-            PeakBandwidthInGbps:              75.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "75 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             75.0
+            PeakBandwidthInGbps:                 75.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -42283,14 +42501,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             240
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "100 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             100.0
+            PeakBandwidthInGbps:                 100.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                240
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -42372,14 +42591,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "150 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          150.0
-            PeakBandwidthInGbps:              150.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             480
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "150 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             150.0
+            PeakBandwidthInGbps:                 150.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                480
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -42461,14 +42681,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 40 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          12.5
-            PeakBandwidthInGbps:              40.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 40 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             12.5
+            PeakBandwidthInGbps:                 40.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -42550,23 +42771,25 @@ InstanceTypes: [{
         MaximumNetworkCards:      2
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 170 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          200.0
-            PeakBandwidthInGbps:              200.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             256
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 170 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             200.0
+            PeakBandwidthInGbps:                 200.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                256
+            MaximumEnaQueueCountPerInterface:    32
         }, {
-            NetworkCardIndex:                 1
-            NetworkPerformance:               "Up to 170 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          200.0
-            PeakBandwidthInGbps:              200.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             256
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    1
+            NetworkPerformance:                  "Up to 170 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             200.0
+            PeakBandwidthInGbps:                 200.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                256
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -42651,14 +42874,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 50 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          25.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 50 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             25.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -42740,14 +42964,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "50 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          50.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "50 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             50.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -42829,14 +43054,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 25 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          3.125
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 25 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.125
+            PeakBandwidthInGbps:                 25.0
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -43009,14 +43235,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 30 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          6.25
-            PeakBandwidthInGbps:              30.0
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 30 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             6.25
+            PeakBandwidthInGbps:                 30.0
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -43088,14 +43315,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "75 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          75.0
-            PeakBandwidthInGbps:              75.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "75 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 4
+            BaselineBandwidthInGbps:             75.0
+            PeakBandwidthInGbps:                 75.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -43167,14 +43395,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             240
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "100 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 1
+            BaselineBandwidthInGbps:             100.0
+            PeakBandwidthInGbps:                 100.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                240
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -43246,14 +43475,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "150 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          150.0
-            PeakBandwidthInGbps:              150.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             480
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "150 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 9
+            BaselineBandwidthInGbps:             150.0
+            PeakBandwidthInGbps:                 150.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                480
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -43325,14 +43555,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 40 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          12.5
-            PeakBandwidthInGbps:              40.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 40 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             12.5
+            PeakBandwidthInGbps:                 40.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -43404,23 +43635,25 @@ InstanceTypes: [{
         MaximumNetworkCards:      2
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 170 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          200.0
-            PeakBandwidthInGbps:              200.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             256
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 170 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 4
+            BaselineBandwidthInGbps:             200.0
+            PeakBandwidthInGbps:                 200.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                256
+            MaximumEnaQueueCountPerInterface:    32
         }, {
-            NetworkCardIndex:                 1
-            NetworkPerformance:               "Up to 170 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          200.0
-            PeakBandwidthInGbps:              200.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             256
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    1
+            NetworkPerformance:                  "Up to 170 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 4
+            BaselineBandwidthInGbps:             200.0
+            PeakBandwidthInGbps:                 200.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                256
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -43495,14 +43728,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 50 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          25.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 50 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             25.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -43574,14 +43808,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "50 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          50.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "50 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 2
+            BaselineBandwidthInGbps:             50.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -43653,14 +43888,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 25 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          3.125
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 25 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.125
+            PeakBandwidthInGbps:                 25.0
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -43813,14 +44049,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 30 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          6.25
-            PeakBandwidthInGbps:              30.0
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 30 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             6.25
+            PeakBandwidthInGbps:                 30.0
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -46252,8 +46489,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          48
@@ -46330,8 +46566,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          64
@@ -46408,8 +46643,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          8
@@ -46486,8 +46720,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          16
@@ -46564,8 +46797,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          32
@@ -46642,8 +46874,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          2
@@ -46720,8 +46951,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          4
@@ -46798,8 +47028,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          48
@@ -46876,8 +47105,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          64
@@ -46954,8 +47182,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          96
@@ -47032,8 +47259,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          8
@@ -47110,8 +47336,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          192
@@ -47191,8 +47416,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          16
@@ -47269,8 +47493,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          32
@@ -47347,8 +47570,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          2
@@ -47570,8 +47792,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          4
@@ -49671,14 +49892,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "22.5 Gigabit"
-            MaximumNetworkInterfaces:         12
-            BaselineBandwidthInGbps:          22.5
-            PeakBandwidthInGbps:              22.5
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             192
-            MaximumEnaQueueCountPerInterface: 64
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "22.5 Gigabit"
+            MaximumNetworkInterfaces:            12
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             22.5
+            PeakBandwidthInGbps:                 22.5
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                192
+            MaximumEnaQueueCountPerInterface:    64
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -49752,14 +49974,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "30 Gigabit"
-            MaximumNetworkInterfaces:         16
-            BaselineBandwidthInGbps:          30.0
-            PeakBandwidthInGbps:              30.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             256
-            MaximumEnaQueueCountPerInterface: 64
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "30 Gigabit"
+            MaximumNetworkInterfaces:            16
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             30.0
+            PeakBandwidthInGbps:                 30.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                256
+            MaximumEnaQueueCountPerInterface:    64
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -49833,14 +50056,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "40 Gigabit"
-            MaximumNetworkInterfaces:         16
-            BaselineBandwidthInGbps:          40.0
-            PeakBandwidthInGbps:              40.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             384
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "40 Gigabit"
+            MaximumNetworkInterfaces:            16
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             40.0
+            PeakBandwidthInGbps:                 40.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                384
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -49914,14 +50138,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 15 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          3.75
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.75
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -49995,14 +50220,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "50 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          50.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             512
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "50 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             50.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                512
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -50076,14 +50302,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "75 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          75.0
-            PeakBandwidthInGbps:              75.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             768
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "75 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             75.0
+            PeakBandwidthInGbps:                 75.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                768
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -50160,14 +50387,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 15 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          7.5
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             7.5
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -50241,14 +50469,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "15 Gigabit"
-            MaximumNetworkInterfaces:         10
-            BaselineBandwidthInGbps:          15.0
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "15 Gigabit"
+            MaximumNetworkInterfaces:            10
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             15.0
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -50322,14 +50551,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             1536
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "100 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             100.0
+            PeakBandwidthInGbps:                 100.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                1536
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -50406,14 +50636,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          0.937
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             0.937
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -50483,14 +50714,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "75 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          75.0
-            PeakBandwidthInGbps:              75.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             768
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "75 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             75.0
+            PeakBandwidthInGbps:                 75.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                768
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -50560,14 +50792,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             1536
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "100 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             100.0
+            PeakBandwidthInGbps:                 100.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                1536
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -50641,14 +50874,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          1.875
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             1.875
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -50961,9 +51195,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "V100"
-            Manufacturer: "NVIDIA"
-            Count:        8
+            Name:             "V100"
+            Manufacturer:     "NVIDIA"
+            Count:            8
+            LogicalGpuCount:  8
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -51045,9 +51282,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "V100"
-            Manufacturer: "NVIDIA"
-            Count:        1
+            Name:             "V100"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -51129,9 +51369,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "V100"
-            Manufacturer: "NVIDIA"
-            Count:        4
+            Name:             "V100"
+            Manufacturer:     "NVIDIA"
+            Count:            4
+            LogicalGpuCount:  4
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -51248,9 +51491,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "A100"
-            Manufacturer: "NVIDIA"
-            Count:        8
+            Name:             "A100"
+            Manufacturer:     "NVIDIA"
+            Count:            8
+            LogicalGpuCount:  8
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 40960
             }
@@ -51367,9 +51613,12 @@ InstanceTypes: [{
     }
     GpuInfo: {
         Gpus: [{
-            Name:         "A100"
-            Manufacturer: "NVIDIA"
-            Count:        8
+            Name:             "A100"
+            Manufacturer:     "NVIDIA"
+            Count:            8
+            LogicalGpuCount:  8
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 81920
             }
@@ -59532,14 +59781,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "18.75 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          18.75
-            PeakBandwidthInGbps:              18.75
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "18.75 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 4
+            BaselineBandwidthInGbps:             18.75
+            PeakBandwidthInGbps:                 18.75
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -59611,14 +59861,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "25 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          25.0
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "25 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 1
+            BaselineBandwidthInGbps:             25.0
+            PeakBandwidthInGbps:                 25.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -59690,14 +59941,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "37.5 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          37.5
-            PeakBandwidthInGbps:              37.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "37.5 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 9
+            BaselineBandwidthInGbps:             37.5
+            PeakBandwidthInGbps:                 37.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -59769,14 +60021,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          3.125
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.125
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -59848,14 +60101,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "50 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          50.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "50 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 9
+            BaselineBandwidthInGbps:             50.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -59930,14 +60184,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          6.25
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             6.25
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -60009,14 +60264,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "12.5 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          12.5
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "12.5 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 2
+            BaselineBandwidthInGbps:             12.5
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -60088,14 +60344,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          0.781
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             0.781
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -60242,14 +60499,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          1.562
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             1.562
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -60331,14 +60589,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "18.75 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          18.75
-            PeakBandwidthInGbps:              18.75
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "18.75 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 4
+            BaselineBandwidthInGbps:             18.75
+            PeakBandwidthInGbps:                 18.75
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -60420,14 +60679,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "25 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          25.0
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "25 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 1
+            BaselineBandwidthInGbps:             25.0
+            PeakBandwidthInGbps:                 25.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -60509,14 +60769,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "37.5 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          37.5
-            PeakBandwidthInGbps:              37.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "37.5 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 9
+            BaselineBandwidthInGbps:             37.5
+            PeakBandwidthInGbps:                 37.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -60598,14 +60859,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          3.125
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.125
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -60687,14 +60949,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "50 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          50.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             120
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "50 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 9
+            BaselineBandwidthInGbps:             50.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                120
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -60779,14 +61042,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          6.25
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             6.25
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -60868,14 +61132,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "12.5 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          12.5
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "12.5 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 2
+            BaselineBandwidthInGbps:             12.5
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -60957,14 +61222,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          0.781
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             0.781
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -61131,14 +61397,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          1.562
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             1.562
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -61220,14 +61487,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "75 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          75.0
-            PeakBandwidthInGbps:              75.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "75 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             75.0
+            PeakBandwidthInGbps:                 75.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -61309,14 +61577,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             240
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "100 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             100.0
+            PeakBandwidthInGbps:                 100.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                240
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -61398,14 +61667,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "150 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          150.0
-            PeakBandwidthInGbps:              150.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             480
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "150 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             150.0
+            PeakBandwidthInGbps:                 150.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                480
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -61487,14 +61757,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 40 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          12.5
-            PeakBandwidthInGbps:              40.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 40 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             12.5
+            PeakBandwidthInGbps:                 40.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -61576,23 +61847,25 @@ InstanceTypes: [{
         MaximumNetworkCards:      2
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 170 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          200.0
-            PeakBandwidthInGbps:              200.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             256
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 170 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             200.0
+            PeakBandwidthInGbps:                 200.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                256
+            MaximumEnaQueueCountPerInterface:    32
         }, {
-            NetworkCardIndex:                 1
-            NetworkPerformance:               "Up to 170 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          200.0
-            PeakBandwidthInGbps:              200.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             256
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    1
+            NetworkPerformance:                  "Up to 170 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             200.0
+            PeakBandwidthInGbps:                 200.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                256
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -61677,14 +61950,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 50 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          25.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 50 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             25.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -61766,14 +62040,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "50 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          50.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "50 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             50.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -61855,14 +62130,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 25 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          3.125
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 25 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.125
+            PeakBandwidthInGbps:                 25.0
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -62035,14 +62311,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 30 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          6.25
-            PeakBandwidthInGbps:              30.0
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 30 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             6.25
+            PeakBandwidthInGbps:                 30.0
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -62114,14 +62391,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "75 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          75.0
-            PeakBandwidthInGbps:              75.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "75 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 12
+            BaselineBandwidthInGbps:             75.0
+            PeakBandwidthInGbps:                 75.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -62193,14 +62471,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             240
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "100 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 1
+            BaselineBandwidthInGbps:             100.0
+            PeakBandwidthInGbps:                 100.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                240
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -62272,14 +62551,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "150 Gigabit"
-            MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          150.0
-            PeakBandwidthInGbps:              150.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             480
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "150 Gigabit"
+            MaximumNetworkInterfaces:            15
+            AdditionalFlexibleNetworkInterfaces: 9
+            BaselineBandwidthInGbps:             150.0
+            PeakBandwidthInGbps:                 150.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                480
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -62351,14 +62631,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 40 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          12.5
-            PeakBandwidthInGbps:              40.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 40 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             12.5
+            PeakBandwidthInGbps:                 40.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -62430,23 +62711,25 @@ InstanceTypes: [{
         MaximumNetworkCards:      2
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 170 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          200.0
-            PeakBandwidthInGbps:              200.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             256
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 170 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 4
+            BaselineBandwidthInGbps:             200.0
+            PeakBandwidthInGbps:                 200.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                256
+            MaximumEnaQueueCountPerInterface:    32
         }, {
-            NetworkCardIndex:                 1
-            NetworkPerformance:               "Up to 170 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          200.0
-            PeakBandwidthInGbps:              200.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             256
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    1
+            NetworkPerformance:                  "Up to 170 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 4
+            BaselineBandwidthInGbps:             200.0
+            PeakBandwidthInGbps:                 200.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                256
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -62521,14 +62804,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 50 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          25.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 50 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             25.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -62600,14 +62884,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "50 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          50.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "50 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 2
+            BaselineBandwidthInGbps:             50.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -62679,14 +62964,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 25 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          3.125
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 25 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.125
+            PeakBandwidthInGbps:                 25.0
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -62839,14 +63125,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 30 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          6.25
-            PeakBandwidthInGbps:              30.0
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 30 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             6.25
+            PeakBandwidthInGbps:                 30.0
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -65278,8 +65565,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          48
@@ -65356,8 +65642,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          64
@@ -65434,8 +65719,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          96
@@ -65512,8 +65796,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          8
@@ -65590,8 +65873,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          192
@@ -65671,8 +65953,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          16
@@ -65749,8 +66030,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          32
@@ -65827,8 +66107,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          2
@@ -66050,8 +66329,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          4
@@ -66879,6 +67157,819 @@ InstanceTypes: [{
         SupportedVersions: ["2.0"]
     }
     PhcSupport:             "unsupported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8a.12xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 4.5
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          48
+        DefaultCores:          48
+        DefaultThreadsPerCore: 1
+        ValidCores: [1, 2, 3, 4, 5, 6, 12, 18, 24, 30, 36, 42, 48]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 393216
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  15000
+            BaselineThroughputInMBps: 1875.0
+            BaselineIops:             60000
+            MaximumBandwidthInMbps:   15000
+            MaximumThroughputInMBps:  1875.0
+            MaximumIops:              60000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "22.5 Gigabit"
+        MaximumNetworkInterfaces: 12
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "22.5 Gigabit"
+            MaximumNetworkInterfaces:            12
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             22.5
+            PeakBandwidthInGbps:                 22.5
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                192
+            MaximumEnaQueueCountPerInterface:    64
+        }]
+        Ipv4AddressesPerInterface:    64
+        Ipv6AddressesPerInterface:    64
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8a.16xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 4.5
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          64
+        DefaultCores:          64
+        DefaultThreadsPerCore: 1
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8, 16, 24, 32, 40, 48, 56, 64]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 524288
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  20000
+            BaselineThroughputInMBps: 2500.0
+            BaselineIops:             80000
+            MaximumBandwidthInMbps:   20000
+            MaximumThroughputInMBps:  2500.0
+            MaximumIops:              80000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 48
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "30 Gigabit"
+        MaximumNetworkInterfaces: 16
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "30 Gigabit"
+            MaximumNetworkInterfaces:            16
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             30.0
+            PeakBandwidthInGbps:                 30.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                256
+            MaximumEnaQueueCountPerInterface:    64
+        }]
+        Ipv4AddressesPerInterface:    64
+        Ipv6AddressesPerInterface:    64
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8a.24xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 4.5
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          96
+        DefaultCores:          96
+        DefaultThreadsPerCore: 1
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60, 72, 84, 96]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 786432
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  30000
+            BaselineThroughputInMBps: 3750.0
+            BaselineIops:             120000
+            MaximumBandwidthInMbps:   30000
+            MaximumThroughputInMBps:  3750.0
+            MaximumIops:              120000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "40 Gigabit"
+        MaximumNetworkInterfaces: 16
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "40 Gigabit"
+            MaximumNetworkInterfaces:            16
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             40.0
+            PeakBandwidthInGbps:                 40.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                384
+            MaximumEnaQueueCountPerInterface:    128
+        }]
+        Ipv4AddressesPerInterface:    64
+        Ipv6AddressesPerInterface:    64
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8a.2xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 4.5
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          8
+        DefaultCores:          8
+        DefaultThreadsPerCore: 1
+        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 65536
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  2500
+            BaselineThroughputInMBps: 312.5
+            BaselineIops:             12000
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 15 Gigabit"
+        MaximumNetworkInterfaces: 4
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.75
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
+        }]
+        Ipv4AddressesPerInterface:    40
+        Ipv6AddressesPerInterface:    40
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8a.48xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 4.5
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          192
+        DefaultCores:          192
+        DefaultThreadsPerCore: 1
+        ValidCores: [4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 48, 72, 96, 120, 144, 168, 192]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 1572864
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  60000
+            BaselineThroughputInMBps: 7500.0
+            BaselineIops:             240000
+            MaximumBandwidthInMbps:   60000
+            MaximumThroughputInMBps:  7500.0
+            MaximumIops:              240000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "75 Gigabit"
+        MaximumNetworkInterfaces: 24
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "75 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             75.0
+            PeakBandwidthInGbps:                 75.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                768
+            MaximumEnaQueueCountPerInterface:    128
+        }]
+        Ipv4AddressesPerInterface: 64
+        Ipv6AddressesPerInterface: 64
+        Ipv6Supported:             true
+        EnaSupport:                "required"
+        EfaSupported:              true
+        EfaInfo: {
+            MaximumEfaInterfaces: 1
+        }
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8a.4xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 4.5
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          16
+        DefaultCores:          16
+        DefaultThreadsPerCore: 1
+        ValidCores: [1, 2, 4, 6, 8, 10, 12, 14, 16]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 131072
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  5000
+            BaselineThroughputInMBps: 625.0
+            BaselineIops:             20000
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 15 Gigabit"
+        MaximumNetworkInterfaces: 8
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             7.5
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
+        }]
+        Ipv4AddressesPerInterface:    40
+        Ipv6AddressesPerInterface:    40
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8a.8xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 4.5
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          32
+        DefaultCores:          32
+        DefaultThreadsPerCore: 1
+        ValidCores: [1, 2, 3, 4, 8, 12, 16, 20, 24, 28, 32]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 262144
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  10000
+            BaselineThroughputInMBps: 1250.0
+            BaselineIops:             40000
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "15 Gigabit"
+        MaximumNetworkInterfaces: 10
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "15 Gigabit"
+            MaximumNetworkInterfaces:            10
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             15.0
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
+        }]
+        Ipv4AddressesPerInterface:    40
+        Ipv6AddressesPerInterface:    40
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8a.large"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 4.5
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          2
+        DefaultCores:          2
+        DefaultThreadsPerCore: 1
+        ValidCores: [1, 2]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 16384
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  650
+            BaselineThroughputInMBps: 81.25
+            BaselineIops:             3600
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 12.5 Gigabit"
+        MaximumNetworkInterfaces: 3
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             0.937
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
+        }]
+        Ipv4AddressesPerInterface:    20
+        Ipv6AddressesPerInterface:    20
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8a.medium"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 4.5
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          1
+        DefaultCores:          1
+        DefaultThreadsPerCore: 1
+        ValidCores: [1]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 8192
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  325
+            BaselineThroughputInMBps: 40.625
+            BaselineIops:             2500
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 12.5 Gigabit"
+        MaximumNetworkInterfaces: 2
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            2
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             0.52
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    1
+            MaximumEnaQueueCount:                3
+            MaximumEnaQueueCountPerInterface:    1
+        }]
+        Ipv4AddressesPerInterface:    4
+        Ipv6AddressesPerInterface:    4
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "r8a.xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 4.5
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          4
+        DefaultCores:          4
+        DefaultThreadsPerCore: 1
+        ValidCores: [1, 2, 3, 4]
+        ValidThreadsPerCore: [1]
+    }
+    MemoryInfo: {
+        SizeInMiB: 32768
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  1250
+            BaselineThroughputInMBps: 156.25
+            BaselineIops:             6000
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              40000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 12.5 Gigabit"
+        MaximumNetworkInterfaces: 4
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             1.875
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
+        }]
+        Ipv4AddressesPerInterface:    20
+        Ipv6AddressesPerInterface:    20
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
+        FlexibleEnaQueuesSupport: "supported"
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r8g.12xlarge"
@@ -68915,14 +70006,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 22.5 Gigabit"
-            MaximumNetworkInterfaces:         12
-            BaselineBandwidthInGbps:          11.25
-            PeakBandwidthInGbps:              22.5
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             96
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 22.5 Gigabit"
+            MaximumNetworkInterfaces:            12
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             11.25
+            PeakBandwidthInGbps:                 22.5
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                96
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -68996,14 +70088,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 30 Gigabit"
-            MaximumNetworkInterfaces:         16
-            BaselineBandwidthInGbps:          15.0
-            PeakBandwidthInGbps:              30.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 30 Gigabit"
+            MaximumNetworkInterfaces:            16
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             15.0
+            PeakBandwidthInGbps:                 30.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -69077,14 +70170,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 15 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          1.875
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             1.875
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -69158,14 +70252,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 15 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          3.75
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.75
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -69239,14 +70334,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 15 Gigabit"
-            MaximumNetworkInterfaces:         10
-            BaselineBandwidthInGbps:          7.5
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:            10
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             7.5
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -69320,14 +70416,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          0.468
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 1
-            MaximumEnaQueueCount:             3
-            MaximumEnaQueueCountPerInterface: 1
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             0.468
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    1
+            MaximumEnaQueueCount:                3
+            MaximumEnaQueueCountPerInterface:    1
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -69401,14 +70498,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          0.937
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             8
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             0.937
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                8
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -69482,14 +70580,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "22.5 Gigabit"
-            MaximumNetworkInterfaces:         12
-            BaselineBandwidthInGbps:          22.5
-            PeakBandwidthInGbps:              22.5
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             192
-            MaximumEnaQueueCountPerInterface: 64
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "22.5 Gigabit"
+            MaximumNetworkInterfaces:            12
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             22.5
+            PeakBandwidthInGbps:                 22.5
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                192
+            MaximumEnaQueueCountPerInterface:    64
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -69563,14 +70662,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "30 Gigabit"
-            MaximumNetworkInterfaces:         16
-            BaselineBandwidthInGbps:          30.0
-            PeakBandwidthInGbps:              30.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             256
-            MaximumEnaQueueCountPerInterface: 64
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "30 Gigabit"
+            MaximumNetworkInterfaces:            16
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             30.0
+            PeakBandwidthInGbps:                 30.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                256
+            MaximumEnaQueueCountPerInterface:    64
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -69644,14 +70744,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "40 Gigabit"
-            MaximumNetworkInterfaces:         16
-            BaselineBandwidthInGbps:          40.0
-            PeakBandwidthInGbps:              40.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             384
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "40 Gigabit"
+            MaximumNetworkInterfaces:            16
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             40.0
+            PeakBandwidthInGbps:                 40.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                384
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -69725,14 +70826,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 15 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          3.75
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.75
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -69806,14 +70908,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "50 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          50.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             512
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "50 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             50.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                512
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -69887,14 +70990,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "75 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          75.0
-            PeakBandwidthInGbps:              75.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             768
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "75 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             75.0
+            PeakBandwidthInGbps:                 75.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                768
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -69971,14 +71075,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 15 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          7.5
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             7.5
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -70052,14 +71157,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "15 Gigabit"
-            MaximumNetworkInterfaces:         10
-            BaselineBandwidthInGbps:          15.0
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "15 Gigabit"
+            MaximumNetworkInterfaces:            10
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             15.0
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -70133,14 +71239,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             1536
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "100 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             100.0
+            PeakBandwidthInGbps:                 100.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                1536
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -70217,14 +71324,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          0.937
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             0.937
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -70294,14 +71402,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "75 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          75.0
-            PeakBandwidthInGbps:              75.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             768
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "75 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             75.0
+            PeakBandwidthInGbps:                 75.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                768
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -70371,14 +71480,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             1536
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "100 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             100.0
+            PeakBandwidthInGbps:                 100.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                1536
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -70452,14 +71562,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          1.875
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             1.875
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -75849,8 +76960,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          48
@@ -75884,14 +76994,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "22.5 Gigabit"
-            MaximumNetworkInterfaces:         12
-            BaselineBandwidthInGbps:          22.5
-            PeakBandwidthInGbps:              22.5
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             192
-            MaximumEnaQueueCountPerInterface: 64
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "22.5 Gigabit"
+            MaximumNetworkInterfaces:            12
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             22.5
+            PeakBandwidthInGbps:                 22.5
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                192
+            MaximumEnaQueueCountPerInterface:    64
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -75930,8 +77041,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          64
@@ -75965,14 +77075,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "30 Gigabit"
-            MaximumNetworkInterfaces:         16
-            BaselineBandwidthInGbps:          30.0
-            PeakBandwidthInGbps:              30.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             256
-            MaximumEnaQueueCountPerInterface: 64
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "30 Gigabit"
+            MaximumNetworkInterfaces:            16
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             30.0
+            PeakBandwidthInGbps:                 30.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                256
+            MaximumEnaQueueCountPerInterface:    64
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -76011,8 +77122,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          96
@@ -76046,14 +77156,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "40 Gigabit"
-            MaximumNetworkInterfaces:         16
-            BaselineBandwidthInGbps:          40.0
-            PeakBandwidthInGbps:              40.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             384
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "40 Gigabit"
+            MaximumNetworkInterfaces:            16
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             40.0
+            PeakBandwidthInGbps:                 40.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                384
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -76092,8 +77203,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          8
@@ -76127,14 +77237,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 15 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          3.75
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             32
-            MaximumEnaQueueCountPerInterface: 8
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             3.75
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                32
+            MaximumEnaQueueCountPerInterface:    8
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -76173,8 +77284,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          128
@@ -76208,14 +77318,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "50 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          50.0
-            PeakBandwidthInGbps:              50.0
-            DefaultEnaQueueCountPerInterface: 16
-            MaximumEnaQueueCount:             512
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "50 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             50.0
+            PeakBandwidthInGbps:                 50.0
+            DefaultEnaQueueCountPerInterface:    16
+            MaximumEnaQueueCount:                512
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -76254,8 +77365,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          192
@@ -76289,14 +77399,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "75 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          75.0
-            PeakBandwidthInGbps:              75.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             768
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "75 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             75.0
+            PeakBandwidthInGbps:                 75.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                768
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -76338,8 +77449,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          16
@@ -76373,14 +77483,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 15 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          7.5
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             64
-            MaximumEnaQueueCountPerInterface: 16
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 15 Gigabit"
+            MaximumNetworkInterfaces:            8
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             7.5
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                64
+            MaximumEnaQueueCountPerInterface:    16
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -76419,8 +77530,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          256
@@ -76454,14 +77564,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "80 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          80.0
-            PeakBandwidthInGbps:              80.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             1024
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "80 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             80.0
+            PeakBandwidthInGbps:                 80.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                1024
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -76503,8 +77614,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          32
@@ -76538,14 +77648,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "15 Gigabit"
-            MaximumNetworkInterfaces:         10
-            BaselineBandwidthInGbps:          15.0
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 8
-            MaximumEnaQueueCount:             128
-            MaximumEnaQueueCountPerInterface: 32
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "15 Gigabit"
+            MaximumNetworkInterfaces:            10
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             15.0
+            PeakBandwidthInGbps:                 15.0
+            DefaultEnaQueueCountPerInterface:    8
+            MaximumEnaQueueCount:                128
+            MaximumEnaQueueCountPerInterface:    32
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -76584,8 +77695,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          384
@@ -76619,14 +77729,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             1536
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "100 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             100.0
+            PeakBandwidthInGbps:                 100.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                1536
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -76668,8 +77779,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          2
@@ -76703,14 +77813,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          0.937
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 2
-            MaximumEnaQueueCount:             6
-            MaximumEnaQueueCountPerInterface: 2
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            3
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             0.937
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    2
+            MaximumEnaQueueCount:                6
+            MaximumEnaQueueCountPerInterface:    2
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -76780,14 +77891,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "75 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          75.0
-            PeakBandwidthInGbps:              75.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             768
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "75 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             75.0
+            PeakBandwidthInGbps:                 75.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                768
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -76857,14 +77969,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
-            MaximumNetworkInterfaces:         24
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
-            DefaultEnaQueueCountPerInterface: 32
-            MaximumEnaQueueCount:             1536
-            MaximumEnaQueueCountPerInterface: 128
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "100 Gigabit"
+            MaximumNetworkInterfaces:            24
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             100.0
+            PeakBandwidthInGbps:                 100.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                1536
+            MaximumEnaQueueCountPerInterface:    128
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -76903,8 +78016,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
-        Manufacturer: "Intel"
+        Manufacturer:             "Intel"
     }
     VCpuInfo: {
         DefaultVCpus:          4
@@ -76938,14 +78050,15 @@ InstanceTypes: [{
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 12.5 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          1.875
-            PeakBandwidthInGbps:              12.5
-            DefaultEnaQueueCountPerInterface: 4
-            MaximumEnaQueueCount:             16
-            MaximumEnaQueueCountPerInterface: 4
+            NetworkCardIndex:                    0
+            NetworkPerformance:                  "Up to 12.5 Gigabit"
+            MaximumNetworkInterfaces:            4
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             1.875
+            PeakBandwidthInGbps:                 12.5
+            DefaultEnaQueueCountPerInterface:    4
+            MaximumEnaQueueCount:                16
+            MaximumEnaQueueCountPerInterface:    4
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
