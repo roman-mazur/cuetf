@@ -11,15 +11,16 @@ package res
 		database_name!:         string
 		database_routing_type?: string
 		event_system_properties?: [...string]
-		eventhub_id!:         string
-		id?:                  string
-		identity_id?:         string
-		location!:            string
-		mapping_rule_name?:   string
-		timeouts?:            #timeouts
-		name!:                string
-		resource_group_name!: string
-		table_name?:          string
+		eventhub_id!:          string
+		id?:                   string
+		timeouts?:             #timeouts
+		identity_id?:          string
+		location!:             string
+		mapping_rule_name?:    string
+		name!:                 string
+		resource_group_name!:  string
+		retrieval_start_date?: string
+		table_name?:           string
 	})
 
 	#timeouts: close({
