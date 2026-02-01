@@ -17,13 +17,14 @@ package res
 		pipeline_arn?:                string
 		pipeline_configuration_body!: string
 		pipeline_name!:               string
+		pipeline_role_arn?:           string
 		buffer_options?: matchN(1, [#buffer_options, [...#buffer_options]])
+		tags?: [string]:     string
+		tags_all?: [string]: string
 		encryption_at_rest_options?: matchN(1, [#encryption_at_rest_options, [...#encryption_at_rest_options]])
-		tags?: [string]: string
 		log_publishing_options?: matchN(1, [#log_publishing_options, [...#log_publishing_options]])
 		timeouts?: #timeouts
 		vpc_options?: matchN(1, [#vpc_options, [...#vpc_options]])
-		tags_all?: [string]: string
 	})
 
 	#buffer_options: close({

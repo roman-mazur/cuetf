@@ -6,9 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_imagebuilder_image")
 	close({
-		arn?:                  string
-		container_recipe_arn?: string
-		image_scanning_configuration?: matchN(1, [#image_scanning_configuration, list.MaxItems(1) & [...#image_scanning_configuration]])
+		arn?:                             string
+		container_recipe_arn?:            string
 		date_created?:                    string
 		distribution_configuration_arn?:  string
 		enhanced_image_metadata_enabled?: bool
@@ -24,7 +23,6 @@ import "list"
 		infrastructure_configuration_arn!: string
 		name?:                             string
 		os_version?:                       string
-		image_tests_configuration?: matchN(1, [#image_tests_configuration, list.MaxItems(1) & [...#image_tests_configuration]])
 		output_resources?: [...close({
 			amis?: [...close({
 				account_id?:  string
@@ -38,10 +36,13 @@ import "list"
 				region?: string
 			})]
 		})]
+		image_scanning_configuration?: matchN(1, [#image_scanning_configuration, list.MaxItems(1) & [...#image_scanning_configuration]])
 		platform?: string
-		tags?: [string]:     string
+		tags?: [string]: string
+		image_tests_configuration?: matchN(1, [#image_tests_configuration, list.MaxItems(1) & [...#image_tests_configuration]])
 		tags_all?: [string]: string
-		version?:  string
+		version?: string
+		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [...#logging_configuration]])
 		timeouts?: #timeouts
 		workflow?: matchN(1, [#workflow, [...#workflow]])
 	})
@@ -54,6 +55,10 @@ import "list"
 	#image_tests_configuration: close({
 		image_tests_enabled?: bool
 		timeout_minutes?:     number
+	})
+
+	#logging_configuration: close({
+		log_group_name!: string
 	})
 
 	#timeouts: close({

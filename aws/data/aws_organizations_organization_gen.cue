@@ -33,6 +33,7 @@ package data
 			state?:            string
 			status?:           string
 		})]
+		return_organization_only?: bool
 		roots?: [...close({
 			arn?:  string
 			id?:   string

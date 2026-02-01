@@ -1,5 +1,7 @@
 package res
 
+import "list"
+
 #aws_vpclattice_service_network_vpc_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpclattice_service_network_vpc_association")
@@ -12,13 +14,20 @@ package res
 		arn?:        string
 		created_by?: string
 		id?:         string
+		dns_options?: matchN(1, [#dns_options, list.MaxItems(1) & [...#dns_options]])
+		private_dns_enabled?: bool
 		security_group_ids?: [...string]
 		service_network_identifier!: string
-		timeouts?:                   #timeouts
 		status?:                     string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		timeouts?:       #timeouts
 		vpc_identifier!: string
+	})
+
+	#dns_options: close({
+		private_dns_preference?: string
+		private_dns_specified_domains?: [...string]
 	})
 
 	#timeouts: close({

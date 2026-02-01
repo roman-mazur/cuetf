@@ -13,22 +13,24 @@ package data
 			secret_arn?:                string
 			username?:                  string
 		})]
-		debug_logging?:       bool
-		default_auth_scheme?: string
-		endpoint?:            string
-		engine_family?:       string
-		id?:                  string
+		debug_logging?:         bool
+		default_auth_scheme?:   string
+		endpoint?:              string
+		endpoint_network_type?: string
+		engine_family?:         string
+		id?:                    string
+		idle_client_timeout?:   number
+		name!:                  string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:              string
-		idle_client_timeout?: number
-		name!:                string
-		require_tls?:         bool
-		role_arn?:            string
-		vpc_id?:              string
+		region?:                         string
+		require_tls?:                    bool
+		role_arn?:                       string
+		target_connection_network_type?: string
+		vpc_id?:                         string
 		vpc_security_group_ids?: [...string]
 		vpc_subnet_ids?: [...string]
 	})

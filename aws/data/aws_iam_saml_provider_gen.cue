@@ -9,6 +9,7 @@ package data
 		id?:                     string
 		name?:                   string
 		saml_metadata_document?: string
+		saml_provider_uuid?:     string
 		tags?: [string]: string
 		valid_until?: string
 	})

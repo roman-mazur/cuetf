@@ -7,13 +7,14 @@ package aws
 		// The access key for API operations. You can retrieve this
 		// from the 'Security & Credentials' section of the AWS console.
 		access_key?: string
+		assume_role?: matchN(1, [#assume_role, [...#assume_role]])
+		allowed_account_ids?: [...string]
 
 		// File containing custom root and intermediate certificates. Can
 		// also be configured using the `AWS_CA_BUNDLE` environment
 		// variable. (Setting `ca_bundle` in the shared config file is
 		// not supported.)
 		custom_ca_bundle?: string
-		allowed_account_ids?: [...string]
 
 		// Address of the EC2 metadata service endpoint to use. Can also
 		// be configured using the `AWS_EC2_METADATA_SERVICE_ENDPOINT`
@@ -24,6 +25,7 @@ package aws
 		// are `IPv4` and `IPv6`. Can also be configured using the
 		// `AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE` environment variable.
 		ec2_metadata_service_endpoint_mode?: string
+		forbidden_account_ids?: [...string]
 
 		// URL of a proxy to use for HTTP requests when accessing the AWS
 		// API. Can also be set using the `HTTP_PROXY` or `http_proxy`
@@ -34,7 +36,6 @@ package aws
 		// API. Can also be set using the `HTTPS_PROXY` or `https_proxy`
 		// environment variables.
 		https_proxy?: string
-		forbidden_account_ids?: [...string]
 
 		// Explicitly allow the provider to perform "insecure" SSL
 		// requests. If omitted, default value is `false`
@@ -91,7 +92,6 @@ package aws
 		// List of paths to shared credentials files. If not set, defaults
 		// to [~/.aws/credentials].
 		shared_credentials_files?: [...string]
-		assume_role?: matchN(1, [#assume_role, [...#assume_role]])
 		assume_role_with_web_identity?: matchN(1, [#assume_role_with_web_identity, [...#assume_role_with_web_identity]])
 		default_tags?: matchN(1, [#default_tags, [...#default_tags]])
 		endpoints?: matchN(1, [#endpoints, [...#endpoints]])
@@ -140,6 +140,10 @@ package aws
 
 		// Resolve an endpoint with FIPS capability
 		use_fips_endpoint?: bool
+
+		// Product details to append to the User-Agent string sent in all
+		// AWS API calls.
+		user_agent?: [...string]
 	})
 
 	#assume_role: close({
@@ -788,6 +792,9 @@ package aws
 		mgn?: string
 
 		// Use this to override the default service endpoint URL
+		mpa?: string
+
+		// Use this to override the default service endpoint URL
 		mq?: string
 
 		// Use this to override the default service endpoint URL
@@ -984,6 +991,9 @@ package aws
 
 		// Use this to override the default service endpoint URL
 		sagemaker?: string
+
+		// Use this to override the default service endpoint URL
+		savingsplans?: string
 
 		// Use this to override the default service endpoint URL
 		scheduler?: string

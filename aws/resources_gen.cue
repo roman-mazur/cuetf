@@ -67,6 +67,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_apigatewayv2_model": res.#aws_apigatewayv2_model
 	_#res: "\(#awsPrefix)_apigatewayv2_route": res.#aws_apigatewayv2_route
 	_#res: "\(#awsPrefix)_apigatewayv2_route_response": res.#aws_apigatewayv2_route_response
+	_#res: "\(#awsPrefix)_apigatewayv2_routing_rule": res.#aws_apigatewayv2_routing_rule
 	_#res: "\(#awsPrefix)_apigatewayv2_stage": res.#aws_apigatewayv2_stage
 	_#res: "\(#awsPrefix)_apigatewayv2_vpc_link": res.#aws_apigatewayv2_vpc_link
 	_#res: "\(#awsPrefix)_app_cookie_stickiness_policy": res.#aws_app_cookie_stickiness_policy
@@ -126,6 +127,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_appsync_resolver": res.#aws_appsync_resolver
 	_#res: "\(#awsPrefix)_appsync_source_api_association": res.#aws_appsync_source_api_association
 	_#res: "\(#awsPrefix)_appsync_type": res.#aws_appsync_type
+	_#res: "\(#awsPrefix)_arcregionswitch_plan": res.#aws_arcregionswitch_plan
 	_#res: "\(#awsPrefix)_athena_capacity_reservation": res.#aws_athena_capacity_reservation
 	_#res: "\(#awsPrefix)_athena_data_catalog": res.#aws_athena_data_catalog
 	_#res: "\(#awsPrefix)_athena_database": res.#aws_athena_database
@@ -226,21 +228,27 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_cloudformation_stack_set": res.#aws_cloudformation_stack_set
 	_#res: "\(#awsPrefix)_cloudformation_stack_set_instance": res.#aws_cloudformation_stack_set_instance
 	_#res: "\(#awsPrefix)_cloudformation_type": res.#aws_cloudformation_type
+	_#res: "\(#awsPrefix)_cloudfront_anycast_ip_list": res.#aws_cloudfront_anycast_ip_list
 	_#res: "\(#awsPrefix)_cloudfront_cache_policy": res.#aws_cloudfront_cache_policy
+	_#res: "\(#awsPrefix)_cloudfront_connection_function": res.#aws_cloudfront_connection_function
+	_#res: "\(#awsPrefix)_cloudfront_connection_group": res.#aws_cloudfront_connection_group
 	_#res: "\(#awsPrefix)_cloudfront_continuous_deployment_policy": res.#aws_cloudfront_continuous_deployment_policy
 	_#res: "\(#awsPrefix)_cloudfront_distribution": res.#aws_cloudfront_distribution
+	_#res: "\(#awsPrefix)_cloudfront_distribution_tenant": res.#aws_cloudfront_distribution_tenant
 	_#res: "\(#awsPrefix)_cloudfront_field_level_encryption_config": res.#aws_cloudfront_field_level_encryption_config
 	_#res: "\(#awsPrefix)_cloudfront_field_level_encryption_profile": res.#aws_cloudfront_field_level_encryption_profile
 	_#res: "\(#awsPrefix)_cloudfront_function": res.#aws_cloudfront_function
 	_#res: "\(#awsPrefix)_cloudfront_key_group": res.#aws_cloudfront_key_group
 	_#res: "\(#awsPrefix)_cloudfront_key_value_store": res.#aws_cloudfront_key_value_store
 	_#res: "\(#awsPrefix)_cloudfront_monitoring_subscription": res.#aws_cloudfront_monitoring_subscription
+	_#res: "\(#awsPrefix)_cloudfront_multitenant_distribution": res.#aws_cloudfront_multitenant_distribution
 	_#res: "\(#awsPrefix)_cloudfront_origin_access_control": res.#aws_cloudfront_origin_access_control
 	_#res: "\(#awsPrefix)_cloudfront_origin_access_identity": res.#aws_cloudfront_origin_access_identity
 	_#res: "\(#awsPrefix)_cloudfront_origin_request_policy": res.#aws_cloudfront_origin_request_policy
 	_#res: "\(#awsPrefix)_cloudfront_public_key": res.#aws_cloudfront_public_key
 	_#res: "\(#awsPrefix)_cloudfront_realtime_log_config": res.#aws_cloudfront_realtime_log_config
 	_#res: "\(#awsPrefix)_cloudfront_response_headers_policy": res.#aws_cloudfront_response_headers_policy
+	_#res: "\(#awsPrefix)_cloudfront_trust_store": res.#aws_cloudfront_trust_store
 	_#res: "\(#awsPrefix)_cloudfront_vpc_origin": res.#aws_cloudfront_vpc_origin
 	_#res: "\(#awsPrefix)_cloudfrontkeyvaluestore_key": res.#aws_cloudfrontkeyvaluestore_key
 	_#res: "\(#awsPrefix)_cloudfrontkeyvaluestore_keys_exclusive": res.#aws_cloudfrontkeyvaluestore_keys_exclusive
@@ -487,6 +495,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_dx_public_virtual_interface": res.#aws_dx_public_virtual_interface
 	_#res: "\(#awsPrefix)_dx_transit_virtual_interface": res.#aws_dx_transit_virtual_interface
 	_#res: "\(#awsPrefix)_dynamodb_contributor_insights": res.#aws_dynamodb_contributor_insights
+	_#res: "\(#awsPrefix)_dynamodb_global_secondary_index": res.#aws_dynamodb_global_secondary_index
 	_#res: "\(#awsPrefix)_dynamodb_global_table": res.#aws_dynamodb_global_table
 	_#res: "\(#awsPrefix)_dynamodb_kinesis_streaming_destination": res.#aws_dynamodb_kinesis_streaming_destination
 	_#res: "\(#awsPrefix)_dynamodb_resource_policy": res.#aws_dynamodb_resource_policy
@@ -555,6 +564,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_ecr_account_setting": res.#aws_ecr_account_setting
 	_#res: "\(#awsPrefix)_ecr_lifecycle_policy": res.#aws_ecr_lifecycle_policy
 	_#res: "\(#awsPrefix)_ecr_pull_through_cache_rule": res.#aws_ecr_pull_through_cache_rule
+	_#res: "\(#awsPrefix)_ecr_pull_time_update_exclusion": res.#aws_ecr_pull_time_update_exclusion
 	_#res: "\(#awsPrefix)_ecr_registry_policy": res.#aws_ecr_registry_policy
 	_#res: "\(#awsPrefix)_ecr_registry_scanning_configuration": res.#aws_ecr_registry_scanning_configuration
 	_#res: "\(#awsPrefix)_ecr_replication_configuration": res.#aws_ecr_replication_configuration
@@ -996,8 +1006,12 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_networkmonitor_probe": res.#aws_networkmonitor_probe
 	_#res: "\(#awsPrefix)_notifications_channel_association": res.#aws_notifications_channel_association
 	_#res: "\(#awsPrefix)_notifications_event_rule": res.#aws_notifications_event_rule
+	_#res: "\(#awsPrefix)_notifications_managed_notification_account_contact_association": res.#aws_notifications_managed_notification_account_contact_association
+	_#res: "\(#awsPrefix)_notifications_managed_notification_additional_channel_association": res.#aws_notifications_managed_notification_additional_channel_association
 	_#res: "\(#awsPrefix)_notifications_notification_configuration": res.#aws_notifications_notification_configuration
 	_#res: "\(#awsPrefix)_notifications_notification_hub": res.#aws_notifications_notification_hub
+	_#res: "\(#awsPrefix)_notifications_organizational_unit_association": res.#aws_notifications_organizational_unit_association
+	_#res: "\(#awsPrefix)_notifications_organizations_access": res.#aws_notifications_organizations_access
 	_#res: "\(#awsPrefix)_notificationscontacts_email_contact": res.#aws_notificationscontacts_email_contact
 	_#res: "\(#awsPrefix)_oam_link": res.#aws_oam_link
 	_#res: "\(#awsPrefix)_oam_sink": res.#aws_oam_sink
@@ -1008,6 +1022,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_odb_cloud_vm_cluster": res.#aws_odb_cloud_vm_cluster
 	_#res: "\(#awsPrefix)_odb_network": res.#aws_odb_network
 	_#res: "\(#awsPrefix)_odb_network_peering_connection": res.#aws_odb_network_peering_connection
+	_#res: "\(#awsPrefix)_opensearch_application": res.#aws_opensearch_application
 	_#res: "\(#awsPrefix)_opensearch_authorize_vpc_endpoint_access": res.#aws_opensearch_authorize_vpc_endpoint_access
 	_#res: "\(#awsPrefix)_opensearch_domain": res.#aws_opensearch_domain
 	_#res: "\(#awsPrefix)_opensearch_domain_policy": res.#aws_opensearch_domain_policy
@@ -1030,6 +1045,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_organizations_policy_attachment": res.#aws_organizations_policy_attachment
 	_#res: "\(#awsPrefix)_organizations_policy": res.#aws_organizations_policy
 	_#res: "\(#awsPrefix)_organizations_resource_policy": res.#aws_organizations_resource_policy
+	_#res: "\(#awsPrefix)_organizations_tag": res.#aws_organizations_tag
 	_#res: "\(#awsPrefix)_osis_pipeline": res.#aws_osis_pipeline
 	_#res: "\(#awsPrefix)_paymentcryptography_key_alias": res.#aws_paymentcryptography_key_alias
 	_#res: "\(#awsPrefix)_paymentcryptography_key": res.#aws_paymentcryptography_key
@@ -1086,9 +1102,11 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_quicksight_user_custom_permission": res.#aws_quicksight_user_custom_permission
 	_#res: "\(#awsPrefix)_quicksight_user": res.#aws_quicksight_user
 	_#res: "\(#awsPrefix)_quicksight_vpc_connection": res.#aws_quicksight_vpc_connection
+	_#res: "\(#awsPrefix)_ram_permission": res.#aws_ram_permission
 	_#res: "\(#awsPrefix)_ram_principal_association": res.#aws_ram_principal_association
 	_#res: "\(#awsPrefix)_ram_resource_association": res.#aws_ram_resource_association
 	_#res: "\(#awsPrefix)_ram_resource_share_accepter": res.#aws_ram_resource_share_accepter
+	_#res: "\(#awsPrefix)_ram_resource_share_associations_exclusive": res.#aws_ram_resource_share_associations_exclusive
 	_#res: "\(#awsPrefix)_ram_resource_share": res.#aws_ram_resource_share
 	_#res: "\(#awsPrefix)_ram_sharing_with_organization": res.#aws_ram_sharing_with_organization
 	_#res: "\(#awsPrefix)_rbin_rule": res.#aws_rbin_rule
@@ -1118,6 +1136,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_redshift_event_subscription": res.#aws_redshift_event_subscription
 	_#res: "\(#awsPrefix)_redshift_hsm_client_certificate": res.#aws_redshift_hsm_client_certificate
 	_#res: "\(#awsPrefix)_redshift_hsm_configuration": res.#aws_redshift_hsm_configuration
+	_#res: "\(#awsPrefix)_redshift_idc_application": res.#aws_redshift_idc_application
 	_#res: "\(#awsPrefix)_redshift_integration": res.#aws_redshift_integration
 	_#res: "\(#awsPrefix)_redshift_logging": res.#aws_redshift_logging
 	_#res: "\(#awsPrefix)_redshift_parameter_group": res.#aws_redshift_parameter_group
@@ -1261,7 +1280,10 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_sagemaker_human_task_ui": res.#aws_sagemaker_human_task_ui
 	_#res: "\(#awsPrefix)_sagemaker_image": res.#aws_sagemaker_image
 	_#res: "\(#awsPrefix)_sagemaker_image_version": res.#aws_sagemaker_image_version
+	_#res: "\(#awsPrefix)_sagemaker_labeling_job": res.#aws_sagemaker_labeling_job
 	_#res: "\(#awsPrefix)_sagemaker_mlflow_tracking_server": res.#aws_sagemaker_mlflow_tracking_server
+	_#res: "\(#awsPrefix)_sagemaker_model_card_export_job": res.#aws_sagemaker_model_card_export_job
+	_#res: "\(#awsPrefix)_sagemaker_model_card": res.#aws_sagemaker_model_card
 	_#res: "\(#awsPrefix)_sagemaker_model": res.#aws_sagemaker_model
 	_#res: "\(#awsPrefix)_sagemaker_model_package_group": res.#aws_sagemaker_model_package_group
 	_#res: "\(#awsPrefix)_sagemaker_model_package_group_policy": res.#aws_sagemaker_model_package_group_policy
@@ -1276,6 +1298,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_sagemaker_user_profile": res.#aws_sagemaker_user_profile
 	_#res: "\(#awsPrefix)_sagemaker_workforce": res.#aws_sagemaker_workforce
 	_#res: "\(#awsPrefix)_sagemaker_workteam": res.#aws_sagemaker_workteam
+	_#res: "\(#awsPrefix)_savingsplans_savings_plan": res.#aws_savingsplans_savings_plan
 	_#res: "\(#awsPrefix)_scheduler_schedule": res.#aws_scheduler_schedule
 	_#res: "\(#awsPrefix)_scheduler_schedule_group": res.#aws_scheduler_schedule_group
 	_#res: "\(#awsPrefix)_schemas_discoverer": res.#aws_schemas_discoverer
@@ -1286,6 +1309,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_secretsmanager_secret_policy": res.#aws_secretsmanager_secret_policy
 	_#res: "\(#awsPrefix)_secretsmanager_secret_rotation": res.#aws_secretsmanager_secret_rotation
 	_#res: "\(#awsPrefix)_secretsmanager_secret_version": res.#aws_secretsmanager_secret_version
+	_#res: "\(#awsPrefix)_secretsmanager_tag": res.#aws_secretsmanager_tag
 	_#res: "\(#awsPrefix)_security_group": res.#aws_security_group
 	_#res: "\(#awsPrefix)_security_group_rule": res.#aws_security_group_rule
 	_#res: "\(#awsPrefix)_securityhub_account": res.#aws_securityhub_account
@@ -1358,6 +1382,8 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_sesv2_email_identity": res.#aws_sesv2_email_identity
 	_#res: "\(#awsPrefix)_sesv2_email_identity_mail_from_attributes": res.#aws_sesv2_email_identity_mail_from_attributes
 	_#res: "\(#awsPrefix)_sesv2_email_identity_policy": res.#aws_sesv2_email_identity_policy
+	_#res: "\(#awsPrefix)_sesv2_tenant": res.#aws_sesv2_tenant
+	_#res: "\(#awsPrefix)_sesv2_tenant_resource_association": res.#aws_sesv2_tenant_resource_association
 	_#res: "\(#awsPrefix)_sfn_activity": res.#aws_sfn_activity
 	_#res: "\(#awsPrefix)_sfn_alias": res.#aws_sfn_alias
 	_#res: "\(#awsPrefix)_sfn_state_machine": res.#aws_sfn_state_machine
@@ -1413,6 +1439,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_ssoadmin_customer_managed_policy_attachment": res.#aws_ssoadmin_customer_managed_policy_attachment
 	_#res: "\(#awsPrefix)_ssoadmin_instance_access_control_attributes": res.#aws_ssoadmin_instance_access_control_attributes
 	_#res: "\(#awsPrefix)_ssoadmin_managed_policy_attachment": res.#aws_ssoadmin_managed_policy_attachment
+	_#res: "\(#awsPrefix)_ssoadmin_managed_policy_attachments_exclusive": res.#aws_ssoadmin_managed_policy_attachments_exclusive
 	_#res: "\(#awsPrefix)_ssoadmin_permission_set": res.#aws_ssoadmin_permission_set
 	_#res: "\(#awsPrefix)_ssoadmin_permission_set_inline_policy": res.#aws_ssoadmin_permission_set_inline_policy
 	_#res: "\(#awsPrefix)_ssoadmin_permissions_boundary_attachment": res.#aws_ssoadmin_permissions_boundary_attachment
@@ -1505,6 +1532,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_vpc_route_server_vpc_association": res.#aws_vpc_route_server_vpc_association
 	_#res: "\(#awsPrefix)_vpc_security_group_egress_rule": res.#aws_vpc_security_group_egress_rule
 	_#res: "\(#awsPrefix)_vpc_security_group_ingress_rule": res.#aws_vpc_security_group_ingress_rule
+	_#res: "\(#awsPrefix)_vpc_security_group_rules_exclusive": res.#aws_vpc_security_group_rules_exclusive
 	_#res: "\(#awsPrefix)_vpc_security_group_vpc_association": res.#aws_vpc_security_group_vpc_association
 	_#res: "\(#awsPrefix)_vpclattice_access_log_subscription": res.#aws_vpclattice_access_log_subscription
 	_#res: "\(#awsPrefix)_vpclattice_auth_policy": res.#aws_vpclattice_auth_policy

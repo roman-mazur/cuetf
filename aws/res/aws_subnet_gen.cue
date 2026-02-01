@@ -21,10 +21,14 @@ package res
 		enable_resource_name_dns_a_record_on_launch?:    bool
 		enable_resource_name_dns_aaaa_record_on_launch?: bool
 		id?:                                             string
+		ipv4_ipam_pool_id?:                              string
+		ipv4_netmask_length?:                            number
 		timeouts?:                                       #timeouts
 		ipv6_cidr_block?:                                string
 		ipv6_cidr_block_association_id?:                 string
+		ipv6_ipam_pool_id?:                              string
 		ipv6_native?:                                    bool
+		ipv6_netmask_length?:                            number
 		map_customer_owned_ip_on_launch?:                bool
 		map_public_ip_on_launch?:                        bool
 		outpost_arn?:                                    string

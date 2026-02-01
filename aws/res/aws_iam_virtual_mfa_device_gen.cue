@@ -10,6 +10,7 @@ package res
 		id?:                  string
 		path?:                string
 		qr_code_png?:         string
+		serial_number?:       string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		user_name?:               string

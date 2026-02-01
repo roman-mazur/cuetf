@@ -16,13 +16,15 @@ package data
 	})
 
 	_#defs: "/$defs/rule/$defs/action": close({
-		type!: string
+		target_storage_class?: string
+		type!:                 string
 	})
 
 	_#defs: "/$defs/rule/$defs/selection": close({
-		count_number!: number
-		count_type!:   string
-		count_unit?:   string
+		count_number!:  number
+		count_type!:    string
+		count_unit?:    string
+		storage_class?: string
 		tag_pattern_list?: [...string]
 		tag_prefix_list?: [...string]
 		tag_status!: string

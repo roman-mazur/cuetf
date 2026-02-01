@@ -10,6 +10,8 @@ package res
 		id?:               string
 		name!:             string
 		owner_account_id?: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 	})
 
 	#timeouts: close({

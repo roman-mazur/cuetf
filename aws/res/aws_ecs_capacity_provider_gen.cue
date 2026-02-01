@@ -52,6 +52,7 @@ import "list"
 		instance_requirements?: matchN(1, [_#defs."/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/instance_requirements", list.MaxItems(1) & [..._#defs."/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/instance_requirements"]])
 		network_configuration!: matchN(1, [_#defs."/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/network_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/network_configuration"]])
 		storage_configuration?: matchN(1, [_#defs."/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/storage_configuration", list.MaxItems(1) & [..._#defs."/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/storage_configuration"]])
+		capacity_option_type?:     string
 		ec2_instance_profile_arn!: string
 		monitoring?:               string
 	})

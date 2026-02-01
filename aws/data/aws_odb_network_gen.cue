@@ -33,6 +33,12 @@ package data
 
 		// The managed services configuration for the ODB network.
 		managed_services?: [...close({
+			kms_access?: [...close({
+				domain_name?: string
+				ipv4_addresses?: [...string]
+				kms_policy_document?: string
+				status?:              string
+			})]
 			managed_s3_backup_access?: [...close({
 				ipv4_addresses?: [...string]
 				status?: string
@@ -49,6 +55,12 @@ package data
 			service_network_endpoint?: [...close({
 				vpc_endpoint_id?:   string
 				vpc_endpoint_type?: string
+			})]
+			sts_access?: [...close({
+				domain_name?: string
+				ipv4_addresses?: [...string]
+				status?:              string
+				sts_policy_document?: string
 			})]
 			zero_tl_access?: [...close({
 				cidr?:   string

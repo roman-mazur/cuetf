@@ -35,6 +35,8 @@ import "list"
 		greater_than_or_equal?: string
 		less_than?:             string
 		less_than_or_equal?:    string
+		matches?: [...string]
 		not_equals?: [...string]
+		not_matches?: [...string]
 	})
 }

@@ -22,12 +22,14 @@ import "list"
 		in_progress_validation_batches?:  number
 		is_ipv6_enabled?:                 bool
 		last_modified_time?:              string
+		logging_v1_enabled?:              bool
+		connection_function_association?: matchN(1, [#connection_function_association, list.MaxItems(1) & [...#connection_function_association]])
+		price_class?: string
 		custom_error_response?: matchN(1, [#custom_error_response, [...#custom_error_response]])
-		logging_v1_enabled?: bool
-		price_class?:        string
-		retain_on_delete?:   bool
-		staging?:            bool
-		status?:             string
+		retain_on_delete?: bool
+		default_cache_behavior!: matchN(1, [#default_cache_behavior, list.MaxItems(1) & [_, ...] & [...#default_cache_behavior]])
+		staging?: bool
+		status?:  string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		trusted_key_groups?: [...close({
@@ -46,13 +48,17 @@ import "list"
 		})]
 		wait_for_deployment?: bool
 		web_acl_id?:          string
-		default_cache_behavior!: matchN(1, [#default_cache_behavior, list.MaxItems(1) & [_, ...] & [...#default_cache_behavior]])
 		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
 		ordered_cache_behavior?: matchN(1, [#ordered_cache_behavior, [...#ordered_cache_behavior]])
 		origin!: matchN(1, [#origin, [_, ...] & [...#origin]])
 		origin_group?: matchN(1, [#origin_group, [...#origin_group]])
 		restrictions!: matchN(1, [#restrictions, list.MaxItems(1) & [_, ...] & [...#restrictions]])
 		viewer_certificate!: matchN(1, [#viewer_certificate, list.MaxItems(1) & [_, ...] & [...#viewer_certificate]])
+		viewer_mtls_config?: matchN(1, [#viewer_mtls_config, list.MaxItems(1) & [...#viewer_mtls_config]])
+	})
+
+	#connection_function_association: close({
+		id!: string
 	})
 
 	#custom_error_response: close({
@@ -148,6 +154,11 @@ import "list"
 		ssl_support_method?:             string
 	})
 
+	#viewer_mtls_config: close({
+		trust_store_config?: matchN(1, [_#defs."/$defs/viewer_mtls_config/$defs/trust_store_config", list.MaxItems(1) & [..._#defs."/$defs/viewer_mtls_config/$defs/trust_store_config"]])
+		mode?: string
+	})
+
 	_#defs: "/$defs/default_cache_behavior/$defs/forwarded_values": close({
 		cookies!: matchN(1, [_#defs."/$defs/default_cache_behavior/$defs/forwarded_values/$defs/cookies", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/default_cache_behavior/$defs/forwarded_values/$defs/cookies"]])
 		headers?: [...string]
@@ -229,6 +240,7 @@ import "list"
 	_#defs: "/$defs/origin/$defs/vpc_origin_config": close({
 		origin_keepalive_timeout?: number
 		origin_read_timeout?:      number
+		owner_account_id?:         string
 		vpc_origin_id!:            string
 	})
 
@@ -243,5 +255,11 @@ import "list"
 	_#defs: "/$defs/restrictions/$defs/geo_restriction": close({
 		locations?: [...string]
 		restriction_type!: string
+	})
+
+	_#defs: "/$defs/viewer_mtls_config/$defs/trust_store_config": close({
+		advertise_trust_store_ca_names?: bool
+		ignore_certificate_expiry?:      bool
+		trust_store_id!:                 string
 	})
 }

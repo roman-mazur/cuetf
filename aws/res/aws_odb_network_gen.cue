@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_odb_network")
 	close({
+		arn?: string
+
 		// The name of the Availability Zone (AZ) where the odb network is
 		// located. Changing this will force terraform to create new
 		// resource
@@ -27,7 +29,6 @@ package res
 		// - 224.0.0.0 - 239.255.255.255
 		// - 240.0.0.0 - 255.255.255.255
 		backup_subnet_cidr!: string
-		arn?:                string
 
 		// The CIDR notation for the network resource. Changing this will
 		// force terraform to create new resource.
@@ -61,9 +62,24 @@ package res
 		// The user-friendly name for the odb network. Changing this will
 		// force terraform to create a new resource.
 		display_name!: string
+		id?:           string
+
+		// Specifies the configuration for Amazon KMS access from the ODB
+		// network.
+		kms_access?: string
+
+		// Specifies the endpoint policy for Amazon KMS access from the
+		// ODB network.
+		kms_policy_document?: string
 
 		// The managed services configuration for the ODB network.
 		managed_services?: [...close({
+			kms_access?: [...close({
+				domain_name?: string
+				ipv4_addresses?: [...string]
+				kms_policy_document?: string
+				status?:              string
+			})]
 			managed_s3_backup_access?: [...close({
 				ipv4_addresses?: [...string]
 				status?: string
@@ -81,6 +97,12 @@ package res
 				vpc_endpoint_id?:   string
 				vpc_endpoint_type?: string
 			})]
+			sts_access?: [...close({
+				domain_name?: string
+				ipv4_addresses?: [...string]
+				status?:              string
+				sts_policy_document?: string
+			})]
 			zero_etl_access?: [...close({
 				cidr?:   string
 				status?: string
@@ -93,7 +115,6 @@ package res
 			domain_name?:         string
 			oci_dns_listener_ip?: string
 		})]
-		id?: string
 
 		// The unique identifier of the OCI network anchor for the ODB
 		// network.
@@ -108,10 +129,10 @@ package res
 		// The unique identifier Oracle Cloud ID (OCID) of the OCI VCN for
 		// the ODB network.
 		oci_vcn_id?: string
-		timeouts?:   #timeouts
 
 		// The URL of the OCI VCN for the ODB network.
 		oci_vcn_url?: string
+		timeouts?:    #timeouts
 
 		// The list of CIDR ranges from the peered VPC that are allowed
 		// access to the ODB network. Please refer odb network peering
@@ -142,12 +163,20 @@ package res
 		// Additional information about the current status of the ODB
 		// network.
 		status_reason?: string
-		tags?: [string]: string
+
+		// Specifies the configuration for Amazon STS access from the ODB
+		// network.
+		sts_access?: string
+
+		// Specifies the endpoint policy for Amazon STS access from the
+		// ODB network.
+		sts_policy_document?: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 
 		// Specifies the configuration for Zero-ETL access from the ODB
 		// network.
 		zero_etl_access!: string
-		tags_all?: [string]: string
 	})
 
 	#timeouts: close({

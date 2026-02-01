@@ -4,18 +4,19 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_docdb_cluster_instance")
 	close({
-		apply_immediately?:          bool
-		arn?:                        string
-		auto_minor_version_upgrade?: bool
-		availability_zone?:          string
-		ca_cert_identifier?:         string
-		cluster_identifier!:         string
+		apply_immediately?:            bool
+		arn?:                          string
+		auto_minor_version_upgrade?:   bool
+		availability_zone?:            string
+		ca_cert_identifier?:           string
+		certificate_rotation_restart?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                          string
+		cluster_identifier!:              string
 		copy_tags_to_snapshot?:           bool
 		db_subnet_group_name?:            string
 		dbi_resource_id?:                 string

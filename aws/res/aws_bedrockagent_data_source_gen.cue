@@ -242,13 +242,19 @@ package res
 	})
 
 	_#defs: "/$defs/vector_ingestion_configuration/$defs/parsing_configuration": close({
+		bedrock_data_automation_configuration?: matchN(1, [_#defs."/$defs/vector_ingestion_configuration/$defs/parsing_configuration/$defs/bedrock_data_automation_configuration", [..._#defs."/$defs/vector_ingestion_configuration/$defs/parsing_configuration/$defs/bedrock_data_automation_configuration"]])
 		bedrock_foundation_model_configuration?: matchN(1, [_#defs."/$defs/vector_ingestion_configuration/$defs/parsing_configuration/$defs/bedrock_foundation_model_configuration", [..._#defs."/$defs/vector_ingestion_configuration/$defs/parsing_configuration/$defs/bedrock_foundation_model_configuration"]])
 		parsing_strategy!: string
 	})
 
+	_#defs: "/$defs/vector_ingestion_configuration/$defs/parsing_configuration/$defs/bedrock_data_automation_configuration": close({
+		parsing_modality?: string
+	})
+
 	_#defs: "/$defs/vector_ingestion_configuration/$defs/parsing_configuration/$defs/bedrock_foundation_model_configuration": close({
 		parsing_prompt?: matchN(1, [_#defs."/$defs/vector_ingestion_configuration/$defs/parsing_configuration/$defs/bedrock_foundation_model_configuration/$defs/parsing_prompt", [..._#defs."/$defs/vector_ingestion_configuration/$defs/parsing_configuration/$defs/bedrock_foundation_model_configuration/$defs/parsing_prompt"]])
-		model_arn!: string
+		model_arn!:        string
+		parsing_modality?: string
 	})
 
 	_#defs: "/$defs/vector_ingestion_configuration/$defs/parsing_configuration/$defs/bedrock_foundation_model_configuration/$defs/parsing_prompt": close({

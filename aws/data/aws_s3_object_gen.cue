@@ -6,18 +6,19 @@ package data
 	close({
 		arn?:                string
 		body?:               string
+		body_base64?:        string
 		bucket!:             string
 		bucket_key_enabled?: bool
 		cache_control?:      string
 		checksum_crc32?:     string
 		checksum_crc32c?:    string
-		checksum_crc64nvme?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:              string
+		checksum_crc64nvme?:  string
 		checksum_mode?:       string
 		checksum_sha1?:       string
 		checksum_sha256?:     string
@@ -26,6 +27,7 @@ package data
 		content_language?:    string
 		content_length?:      number
 		content_type?:        string
+		download_body?:       string
 		etag?:                string
 		expiration?:          string
 		expires?:             string

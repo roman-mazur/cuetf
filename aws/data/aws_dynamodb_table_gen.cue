@@ -15,7 +15,11 @@ import "list"
 		deletion_protection_enabled?: bool
 		global_secondary_index?: [...close({
 			hash_key?: string
-			name?:     string
+			key_schema?: [...close({
+				attribute_name?: string
+				key_type?:       string
+			})]
+			name?: string
 			non_key_attributes?: [...string]
 			on_demand_throughput?: [...close({
 				max_read_request_units?:  number

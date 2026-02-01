@@ -47,6 +47,8 @@ import "list"
 	#dns_options: close({
 		dns_record_ip_type?:                             string
 		private_dns_only_for_inbound_resolver_endpoint?: bool
+		private_dns_preference?:                         string
+		private_dns_specified_domains?: [...string]
 	})
 
 	#subnet_configuration: close({

@@ -74,8 +74,9 @@ import "list"
 	})
 
 	#provisioned_poller_config: close({
-		maximum_pollers?: number
-		minimum_pollers?: number
+		maximum_pollers?:   number
+		minimum_pollers?:   number
+		poller_group_name?: string
 	})
 
 	#scaling_config: close({

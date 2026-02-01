@@ -23,15 +23,22 @@ import "list"
 	})
 
 	#configuration: close({
-		bytes_scanned_cutoff_per_query?:     number
-		enforce_workgroup_configuration?:    bool
-		execution_role?:                     string
-		publish_cloudwatch_metrics_enabled?: bool
-		requester_pays_enabled?:             bool
+		bytes_scanned_cutoff_per_query?:          number
+		enable_minimum_encryption_configuration?: bool
+		enforce_workgroup_configuration?:         bool
+		execution_role?:                          string
+		publish_cloudwatch_metrics_enabled?:      bool
+		requester_pays_enabled?:                  bool
+		customer_content_encryption_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/customer_content_encryption_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/customer_content_encryption_configuration"]])
 		engine_version?: matchN(1, [_#defs."/$defs/configuration/$defs/engine_version", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/engine_version"]])
 		identity_center_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/identity_center_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/identity_center_configuration"]])
 		managed_query_results_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/managed_query_results_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/managed_query_results_configuration"]])
+		monitoring_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/monitoring_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/monitoring_configuration"]])
 		result_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/result_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/result_configuration"]])
+	})
+
+	_#defs: "/$defs/configuration/$defs/customer_content_encryption_configuration": close({
+		kms_key?: string
 	})
 
 	_#defs: "/$defs/configuration/$defs/engine_version": close({
@@ -51,6 +58,35 @@ import "list"
 
 	_#defs: "/$defs/configuration/$defs/managed_query_results_configuration/$defs/encryption_configuration": close({
 		kms_key?: string
+	})
+
+	_#defs: "/$defs/configuration/$defs/monitoring_configuration": close({
+		cloud_watch_logging_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/monitoring_configuration/$defs/cloud_watch_logging_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/monitoring_configuration/$defs/cloud_watch_logging_configuration"]])
+		managed_logging_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/monitoring_configuration/$defs/managed_logging_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/monitoring_configuration/$defs/managed_logging_configuration"]])
+		s3_logging_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/monitoring_configuration/$defs/s3_logging_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/monitoring_configuration/$defs/s3_logging_configuration"]])
+	})
+
+	_#defs: "/$defs/configuration/$defs/monitoring_configuration/$defs/cloud_watch_logging_configuration": close({
+		log_type?: matchN(1, [_#defs."/$defs/configuration/$defs/monitoring_configuration/$defs/cloud_watch_logging_configuration/$defs/log_type", [..._#defs."/$defs/configuration/$defs/monitoring_configuration/$defs/cloud_watch_logging_configuration/$defs/log_type"]])
+		enabled!:                bool
+		log_group?:              string
+		log_stream_name_prefix?: string
+	})
+
+	_#defs: "/$defs/configuration/$defs/monitoring_configuration/$defs/cloud_watch_logging_configuration/$defs/log_type": close({
+		key!: string
+		values!: [...string]
+	})
+
+	_#defs: "/$defs/configuration/$defs/monitoring_configuration/$defs/managed_logging_configuration": close({
+		enabled!: bool
+		kms_key?: string
+	})
+
+	_#defs: "/$defs/configuration/$defs/monitoring_configuration/$defs/s3_logging_configuration": close({
+		enabled!:      bool
+		kms_key?:      string
+		log_location?: string
 	})
 
 	_#defs: "/$defs/configuration/$defs/result_configuration": close({

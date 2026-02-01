@@ -12,7 +12,7 @@ import "list"
 				core_network_address?: string
 				core_network_asn?:     number
 				peer_address?:         string
-				peer_asn?:             number
+				peer_asn?:             string
 			})]
 			core_network_address?: string
 			inside_cidr_blocks?: [...string]
@@ -37,7 +37,7 @@ import "list"
 	})
 
 	#bgp_options: close({
-		peer_asn?: number
+		peer_asn?: string
 	})
 
 	#timeouts: close({
