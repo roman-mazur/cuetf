@@ -6,12 +6,13 @@ package data
 	close({
 		id?: string
 		keys?: [...close({
-			create_time?:     string
-			description?:     string
-			name?:            string
-			namespaced_name?: string
-			parent?:          string
-			purpose?:         string
+			allowed_values_regex?: string
+			create_time?:          string
+			description?:          string
+			name?:                 string
+			namespaced_name?:      string
+			parent?:               string
+			purpose?:              string
 			purpose_data?: [string]: string
 			short_name?:  string
 			update_time?: string

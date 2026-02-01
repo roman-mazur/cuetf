@@ -12,7 +12,12 @@ package res
 
 		// An optional description of this resource.
 		description?: string
-		id?:          string
+
+		// Whether this PublicDelegatedPrefix supports enhanced IPv4
+		// allocations.
+		// Applicable for IPv4 PDPs only.
+		enable_enhanced_ipv4_allocation?: bool
+		id?:                              string
 
 		// The IP address range, in CIDR format, represented by this
 		// public delegated prefix.
@@ -60,24 +65,25 @@ package res
 		// The URL of parent prefix. Either PublicAdvertisedPrefix or
 		// PublicDelegatedPrefix.
 		parent_prefix!: string
-		timeouts?:      #timeouts
 		project?:       string
 
 		// List of sub public delegated fixes for BYO IP functionality.
 		// Each item in this array represents a sub prefix that can be
 		// used to create addresses or further allocations.
 		public_delegated_sub_prefixs?: [...close({
-			allocatable_prefix_length?: number
-			delegatee_project?:         string
-			description?:               string
-			ip_cidr_range?:             string
-			ipv6_access_type?:          string
-			is_address?:                bool
-			mode?:                      string
-			name?:                      string
-			region?:                    string
-			status?:                    string
+			allocatable_prefix_length?:       number
+			delegatee_project?:               string
+			description?:                     string
+			enable_enhanced_ipv4_allocation?: bool
+			ip_cidr_range?:                   string
+			ipv6_access_type?:                string
+			is_address?:                      bool
+			mode?:                            string
+			name?:                            string
+			region?:                          string
+			status?:                          string
 		})]
+		timeouts?: #timeouts
 
 		// A region where the prefix will reside.
 		region!:    string

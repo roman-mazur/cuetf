@@ -32,8 +32,9 @@ package data
 			json_custom_config?: [...close({
 				content_types?: [...string]
 			})]
-			json_parsing?: string
-			log_level?:    string
+			json_parsing?:                 string
+			log_level?:                    string
+			request_body_inspection_size?: string
 			user_ip_request_headers?: [...string]
 		})]
 

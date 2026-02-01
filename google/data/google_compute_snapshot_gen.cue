@@ -30,12 +30,12 @@ package data
 		// clients and services.
 		effective_labels?: [string]: string
 		filter?: string
+		id?:     string
 
 		// The fingerprint used for optimistic locking of this resource.
 		// Used
 		// internally during updates.
 		label_fingerprint?: string
-		id?:                string
 
 		// Labels to apply to this Snapshot.
 		//
@@ -94,15 +94,15 @@ package data
 			sha256?:                  string
 		})]
 		most_recent?: bool
+		project?:     string
 
 		// The unique identifier for the resource.
 		snapshot_id?: number
-		project?:     string
+		self_link?:   string
 
 		// Indicates the type of the snapshot. Possible values:
 		// ["ARCHIVE", "STANDARD"]
 		snapshot_type?: string
-		self_link?:     string
 
 		// A reference to the disk used to create this snapshot.
 		source_disk?: string
@@ -118,6 +118,10 @@ package data
 			raw_key?:                 string
 			rsa_encrypted_key?:       string
 		})]
+
+		// A reference to the instant snapshot used to create this
+		// snapshot.
+		source_instant_snapshot?: string
 
 		// A size of the storage used by the snapshot. As snapshots share
 		// storage, this number is expected to change with snapshot

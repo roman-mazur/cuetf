@@ -11,7 +11,8 @@ package data
 			create_time?:            string
 			database?:               string
 			deletion_protection?:    bool
-			display_name?:           string
+			disaster_recovery_supported_locations?: [...string]
+			display_name?: string
 			effective_labels?: [string]: string
 			entitlement_id?: string
 			labels?: [string]: string
@@ -20,7 +21,8 @@ package data
 			network?:     string
 			odb_network?: string
 			odb_subnet?:  string
-			project?:     string
+			peer_autonomous_databases?: [...string]
+			project?: string
 			properties?: [...close({
 				actual_used_data_storage_size_tb?: number
 				allocated_storage_size_tb?:        number
@@ -134,6 +136,10 @@ package data
 				total_auto_backup_storage_size_gbs?: number
 				used_data_storage_size_tbs?:         number
 				vault_id?:                           string
+			})]
+			source_config?: [...close({
+				automatic_backups_replication_enabled?: bool
+				autonomous_database?:                   string
 			})]
 			terraform_labels?: [string]: string
 		})]

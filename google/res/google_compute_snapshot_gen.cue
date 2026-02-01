@@ -36,6 +36,7 @@ import "list"
 		// Used
 		// internally during updates.
 		label_fingerprint?: string
+		id?:                string
 
 		// Labels to apply to this Snapshot.
 		//
@@ -44,7 +45,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// A list of public visible licenses that apply to this snapshot.
 		// This
@@ -66,12 +66,12 @@ import "list"
 		// characters must be a dash, lowercase letter, or digit, except
 		// the last
 		// character, which cannot be a dash.
-		name!:      string
-		project?:   string
-		self_link?: string
+		name!:    string
+		project?: string
 
 		// The unique identifier for the resource.
 		snapshot_id?: number
+		self_link?:   string
 		snapshot_encryption_key?: matchN(1, [#snapshot_encryption_key, list.MaxItems(1) & [...#snapshot_encryption_key]])
 		source_disk_encryption_key?: matchN(1, [#source_disk_encryption_key, list.MaxItems(1) & [...#source_disk_encryption_key]])
 		timeouts?: #timeouts
@@ -81,7 +81,11 @@ import "list"
 		snapshot_type?: string
 
 		// A reference to the disk used to create this snapshot.
-		source_disk!: string
+		source_disk?: string
+
+		// A reference to the instant snapshot used to create this
+		// snapshot.
+		source_instant_snapshot?: string
 
 		// A size of the storage used by the snapshot. As snapshots share
 		// storage, this number is expected to change with snapshot

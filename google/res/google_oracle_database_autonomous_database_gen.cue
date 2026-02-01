@@ -28,13 +28,17 @@ import "list"
 		// unique in
 		// the project. The name must begin with a letter and can
 		// contain a maximum of 30 alphanumeric characters.
-		database!: string
+		database?: string
 
 		// Whether or not to allow Terraform to destroy the instance.
 		// Unless this field is set to false in Terraform state, a
 		// terraform destroy or terraform apply that would delete the
 		// instance will fail.
 		deletion_protection?: bool
+
+		// List of supported GCP region to clone the Autonomous Database
+		// for disaster recovery.
+		disaster_recovery_supported_locations?: [...string]
 
 		// The display name for the Autonomous Database. The name does not
 		// have to
@@ -59,13 +63,14 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		properties!: matchN(1, [#properties, list.MaxItems(1) & [_, ...] & [...#properties]])
-		timeouts?: #timeouts
 
 		// Resource ID segment making up resource 'name'. See
 		// documentation for resource type
 		// 'oracledatabase.googleapis.com/AutonomousDatabaseBackup'.
 		location!: string
+		properties?: matchN(1, [#properties, list.MaxItems(1) & [...#properties]])
+		source_config?: matchN(1, [#source_config, list.MaxItems(1) & [...#source_config]])
+		timeouts?: #timeouts
 
 		// Identifier. The name of the Autonomous Database resource in the
 		// following format:
@@ -90,7 +95,11 @@ import "list"
 		// IP allocation. Format:
 		// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
 		odb_subnet?: string
-		project?:    string
+
+		// The peer Autonomous Database names of the given Autonomous
+		// Database.
+		peer_autonomous_databases?: [...string]
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -469,6 +478,16 @@ import "list"
 
 		// The ID of the Oracle Cloud Infrastructure vault.
 		vault_id?: string
+	})
+
+	#source_config: close({
+		// This field specifies if the replication of automatic backups is
+		// enabled when creating a Data Guard.
+		automatic_backups_replication_enabled?: bool
+
+		// The name of the primary Autonomous Database that is used to
+		// create a Peer Autonomous Database from a source.
+		autonomous_database?: string
 	})
 
 	#timeouts: close({

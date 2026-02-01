@@ -109,6 +109,7 @@ package data
 				field_delimiter?:       string
 				quote?:                 string
 				skip_leading_rows?:     number
+				source_column_match?:   string
 			})]
 			decimal_target_types?: [...string]
 			file_set_spec_type?: string

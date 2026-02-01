@@ -1,5 +1,7 @@
 package res
 
+import "list"
+
 #google_compute_interconnect_attachment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_interconnect_attachment")
@@ -174,7 +176,8 @@ package res
 		// to update or change labels,
 		// otherwise the request will fail with error 412 conditionNotMet.
 		label_fingerprint?: string
-		timeouts?:          #timeouts
+		l2_forwarding?: matchN(1, [#l2_forwarding, list.MaxItems(1) & [...#l2_forwarding]])
+		timeouts?: #timeouts
 
 		// Labels for this resource. These can only be added or modified
 		// by the setLabels
@@ -241,7 +244,7 @@ package res
 		// automatically connect the Interconnect to the network & region
 		// within which the
 		// Cloud Router is configured.
-		router!:    string
+		router?:    string
 		self_link?: string
 
 		// The stack type for this interconnect attachment to identify
@@ -278,7 +281,7 @@ package res
 		// The type of InterconnectAttachment you wish to create. Defaults
 		// to
 		// DEDICATED. Possible values: ["DEDICATED", "PARTNER",
-		// "PARTNER_PROVIDER"]
+		// "PARTNER_PROVIDER", "L2_DEDICATED"]
 		type?: string
 
 		// The IEEE 802.1Q VLAN tag for this attachment, in the range
@@ -287,9 +290,47 @@ package res
 		vlan_tag8021q?: number
 	})
 
+	#l2_forwarding: close({
+		// The default appliance IP address.
+		default_appliance_ip_address?: string
+
+		// URL of the network to which this attachment belongs.
+		network?: string
+		appliance_mappings?: matchN(1, [_#defs."/$defs/l2_forwarding/$defs/appliance_mappings", [..._#defs."/$defs/l2_forwarding/$defs/appliance_mappings"]])
+
+		// The tunnel endpoint IP address.
+		tunnel_endpoint_ip_address?: string
+		geneve_header?: matchN(1, [_#defs."/$defs/l2_forwarding/$defs/geneve_header", list.MaxItems(1) & [..._#defs."/$defs/l2_forwarding/$defs/geneve_header"]])
+	})
+
 	#timeouts: close({
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/l2_forwarding/$defs/appliance_mappings": close({
+		// The appliance IP address.
+		appliance_ip_address?: string
+		inner_vlan_to_appliance_mappings?: matchN(1, [_#defs."/$defs/l2_forwarding/$defs/appliance_mappings/$defs/inner_vlan_to_appliance_mappings", [..._#defs."/$defs/l2_forwarding/$defs/appliance_mappings/$defs/inner_vlan_to_appliance_mappings"]])
+
+		// The name of this appliance mapping rule.
+		name?: string
+
+		// The VLAN tag.
+		vlan_id?: string
+	})
+
+	_#defs: "/$defs/l2_forwarding/$defs/appliance_mappings/$defs/inner_vlan_to_appliance_mappings": close({
+		// The inner appliance IP address.
+		inner_appliance_ip_address?: string
+
+		// List of inner VLAN tags.
+		inner_vlan_tags?: [...string]
+	})
+
+	_#defs: "/$defs/l2_forwarding/$defs/geneve_header": close({
+		// VNI is a 24-bit unique virtual network identifier.
+		vni?: number
 	})
 }

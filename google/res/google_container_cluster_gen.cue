@@ -683,6 +683,7 @@ import "list"
 		management?: matchN(1, [_#defs."/$defs/node_pool/$defs/management", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/management"]])
 		network_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/network_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/network_config"]])
 		node_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config"]])
+		node_drain_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_drain_config", [..._#defs."/$defs/node_pool/$defs/node_drain_config"]])
 		placement_policy?: matchN(1, [_#defs."/$defs/node_pool/$defs/placement_policy", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/placement_policy"]])
 		queued_provisioning?: matchN(1, [_#defs."/$defs/node_pool/$defs/queued_provisioning", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/queued_provisioning"]])
 		upgrade_settings?: matchN(1, [_#defs."/$defs/node_pool/$defs/upgrade_settings", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/upgrade_settings"]])
@@ -2333,6 +2334,12 @@ import "list"
 		// Mode is the configuration for how to expose metadata to
 		// workloads running on the node.
 		mode!: string
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_drain_config": close({
+		// Whether to respect PodDisruptionBudget policy during node pool
+		// deletion.
+		respect_pdb_during_node_pool_deletion?: bool
 	})
 
 	_#defs: "/$defs/node_pool/$defs/placement_policy": close({

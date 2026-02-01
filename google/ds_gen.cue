@@ -392,6 +392,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_tags_tag_values": data.#google_tags_tag_values
 	_#ds: "\(#googlePrefix)_vertex_ai_index": data.#google_vertex_ai_index
 	_#ds: "\(#googlePrefix)_vmwareengine_cluster": data.#google_vmwareengine_cluster
+	_#ds: "\(#googlePrefix)_vmwareengine_datastore": data.#google_vmwareengine_datastore
 	_#ds: "\(#googlePrefix)_vmwareengine_external_access_rule": data.#google_vmwareengine_external_access_rule
 	_#ds: "\(#googlePrefix)_vmwareengine_external_address": data.#google_vmwareengine_external_address
 	_#ds: "\(#googlePrefix)_vmwareengine_network": data.#google_vmwareengine_network

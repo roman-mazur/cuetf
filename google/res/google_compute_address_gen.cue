@@ -26,11 +26,25 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
-		id?: string
+
+		// Reference to the source of external IPv4 addresses, like a
+		// PublicDelegatedPrefix(PDP) for BYOIP.
+		// The PDP must support enhanced IPv4 allocations.
+		// Use one of the following formats to specify a PDP when
+		// reserving an external IPv4 address using BYOIP.
+		// Full resource URL, as in:
+		// *
+		// 'https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}'
+		// Partial URL, as in:
+		// *
+		// 'projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}'
+		// * 'regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}'
+		ip_collection?: string
 
 		// The IP Version that will be used by this address. The default
 		// value is 'IPV4'. Possible values: ["IPV4", "IPV6"]
 		ip_version?: string
+		id?:         string
 
 		// The endpoint type of this address, which should be VM or NETLB.
 		// This is
@@ -119,8 +133,7 @@ package res
 
 		// The Region in which the created address should reside.
 		// If it is not provided, the provider region is used.
-		region?:    string
-		self_link?: string
+		region?: string
 
 		// The URL of the subnetwork in which to reserve the address. If
 		// an IP
@@ -129,6 +142,7 @@ package res
 		// This field can only be used with INTERNAL type with
 		// GCE_ENDPOINT/DNS_RESOLVER purposes.
 		subnetwork?: string
+		self_link?:  string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

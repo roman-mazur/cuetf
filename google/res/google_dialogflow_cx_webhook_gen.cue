@@ -97,8 +97,6 @@ import "list"
 		// Format:
 		// 'projects/{project}/secrets/{secret}/versions/{version}'
 		secret_version_for_username_password?: string
-		oauth_config?: matchN(1, [_#defs."/$defs/generic_web_service/$defs/oauth_config", list.MaxItems(1) & [..._#defs."/$defs/generic_web_service/$defs/oauth_config"]])
-		secret_versions_for_request_headers?: matchN(1, [_#defs."/$defs/generic_web_service/$defs/secret_versions_for_request_headers", [..._#defs."/$defs/generic_web_service/$defs/secret_versions_for_request_headers"]])
 
 		// Indicate the auth token type generated from the [Diglogflow
 		// service
@@ -106,6 +104,9 @@ import "list"
 		// The generated token is sent in the Authorization header.
 		// Possible values: ["NONE", "ID_TOKEN", "ACCESS_TOKEN"]
 		service_agent_auth?: string
+		oauth_config?: matchN(1, [_#defs."/$defs/generic_web_service/$defs/oauth_config", list.MaxItems(1) & [..._#defs."/$defs/generic_web_service/$defs/oauth_config"]])
+		secret_versions_for_request_headers?: matchN(1, [_#defs."/$defs/generic_web_service/$defs/secret_versions_for_request_headers", [..._#defs."/$defs/generic_web_service/$defs/secret_versions_for_request_headers"]])
+		service_account_auth_config?: matchN(1, [_#defs."/$defs/generic_web_service/$defs/service_account_auth_config", list.MaxItems(1) & [..._#defs."/$defs/generic_web_service/$defs/service_account_auth_config"]])
 
 		// The webhook URI for receiving POST requests. It must use https
 		// protocol.
@@ -166,6 +167,22 @@ import "list"
 		secret_version!: string
 	})
 
+	_#defs: "/$defs/generic_web_service/$defs/service_account_auth_config": close({
+		// The email address of the service account used to authenticate
+		// the webhook call.
+		// Dialogflow uses this service account to exchange an access
+		// token and the access
+		// token is then sent in the **Authorization** header of the
+		// webhook request.
+		//
+		// The service account must have the
+		// **roles/iam.serviceAccountTokenCreator** role
+		// granted to the
+		// [Dialogflow service
+		// agent](https://cloud.google.com/iam/docs/service-agents?_gl=1*1jsujvh*_ga*NjYxMzU3OTg2LjE3Njc3MzQ4NjM.*_ga_WH2QY8WWF5*czE3Njc3MzQ2MjgkbzIkZzEkdDE3Njc3MzQ3NzQkajYwJGwwJGgw#dialogflow-service-agent).
+		service_account!: string
+	})
+
 	_#defs: "/$defs/service_directory/$defs/generic_web_service": close({
 		// Specifies a list of allowed custom CA certificates (in DER
 		// format) for
@@ -212,8 +229,6 @@ import "list"
 		// Format:
 		// 'projects/{project}/secrets/{secret}/versions/{version}'
 		secret_version_for_username_password?: string
-		oauth_config?: matchN(1, [_#defs."/$defs/service_directory/$defs/generic_web_service/$defs/oauth_config", list.MaxItems(1) & [..._#defs."/$defs/service_directory/$defs/generic_web_service/$defs/oauth_config"]])
-		secret_versions_for_request_headers?: matchN(1, [_#defs."/$defs/service_directory/$defs/generic_web_service/$defs/secret_versions_for_request_headers", [..._#defs."/$defs/service_directory/$defs/generic_web_service/$defs/secret_versions_for_request_headers"]])
 
 		// Indicate the auth token type generated from the [Diglogflow
 		// service
@@ -221,6 +236,9 @@ import "list"
 		// The generated token is sent in the Authorization header.
 		// Possible values: ["NONE", "ID_TOKEN", "ACCESS_TOKEN"]
 		service_agent_auth?: string
+		oauth_config?: matchN(1, [_#defs."/$defs/service_directory/$defs/generic_web_service/$defs/oauth_config", list.MaxItems(1) & [..._#defs."/$defs/service_directory/$defs/generic_web_service/$defs/oauth_config"]])
+		secret_versions_for_request_headers?: matchN(1, [_#defs."/$defs/service_directory/$defs/generic_web_service/$defs/secret_versions_for_request_headers", [..._#defs."/$defs/service_directory/$defs/generic_web_service/$defs/secret_versions_for_request_headers"]])
+		service_account_auth_config?: matchN(1, [_#defs."/$defs/service_directory/$defs/generic_web_service/$defs/service_account_auth_config", list.MaxItems(1) & [..._#defs."/$defs/service_directory/$defs/generic_web_service/$defs/service_account_auth_config"]])
 
 		// The webhook URI for receiving POST requests. It must use https
 		// protocol.
@@ -266,5 +284,21 @@ import "list"
 		// Format:
 		// 'projects/{project}/secrets/{secret}/versions/{version}'
 		secret_version!: string
+	})
+
+	_#defs: "/$defs/service_directory/$defs/generic_web_service/$defs/service_account_auth_config": close({
+		// The email address of the service account used to authenticate
+		// the webhook call.
+		// Dialogflow uses this service account to exchange an access
+		// token and the access
+		// token is then sent in the **Authorization** header of the
+		// webhook request.
+		//
+		// The service account must have the
+		// **roles/iam.serviceAccountTokenCreator** role
+		// granted to the
+		// [Dialogflow service
+		// agent](https://cloud.google.com/iam/docs/service-agents?_gl=1*1jsujvh*_ga*NjYxMzU3OTg2LjE3Njc3MzQ4NjM.*_ga_WH2QY8WWF5*czE3Njc3MzQ2MjgkbzIkZzEkdDE3Njc3MzQ3NzQkajYwJGwwJGgw#dialogflow-service-agent).
+		service_account!: string
 	})
 }

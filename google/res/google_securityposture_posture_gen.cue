@@ -151,7 +151,7 @@ import "list"
 		// A CEL condition that refers to a supported service resource,
 		// for example 'resource.management.autoUpgrade == false'. For
 		// details about CEL usage, see [Common Expression
-		// Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+		// Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
 		condition!: string
 
 		// A human-friendly description of the constraint to display as an
@@ -165,7 +165,7 @@ import "list"
 		// Can be 'CREATE', 'UPDATE', or both. Not all Google Cloud
 		// services support both methods. To see supported methods for
 		// each service, find the service in [Supported
-		// services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
+		// services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
 		method_types!: [...string]
 
 		// Immutable. The name of the custom constraint. This is unique
