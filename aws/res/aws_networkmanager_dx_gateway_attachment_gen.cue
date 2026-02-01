@@ -11,11 +11,12 @@ package res
 		core_network_id!:               string
 		direct_connect_gateway_arn!:    string
 		edge_locations!: [...string]
-		id?:               string
-		timeouts?:         #timeouts
-		owner_account_id?: string
-		segment_name?:     string
-		state?:            string
+		id?:                   string
+		owner_account_id?:     string
+		routing_policy_label?: string
+		segment_name?:         string
+		state?:                string
+		timeouts?:             #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

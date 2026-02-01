@@ -16,23 +16,24 @@ import "list"
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                         string
-		date_updated?:                   string
-		description?:                    string
-		distribution_configuration_arn?: string
-		image_scanning_configuration?: matchN(1, [#image_scanning_configuration, list.MaxItems(1) & [...#image_scanning_configuration]])
+		region?:                          string
+		date_updated?:                    string
+		description?:                     string
+		distribution_configuration_arn?:  string
 		enhanced_image_metadata_enabled?: bool
 		execution_role?:                  string
+		id?:                              string
+		image_scanning_configuration?: matchN(1, [#image_scanning_configuration, list.MaxItems(1) & [...#image_scanning_configuration]])
+		image_recipe_arn?:                 string
+		infrastructure_configuration_arn!: string
 		image_tests_configuration?: matchN(1, [#image_tests_configuration, list.MaxItems(1) & [...#image_tests_configuration]])
-		id?:               string
-		image_recipe_arn?: string
+		name!: string
+		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [...#logging_configuration]])
+		platform?: string
+		status?:   string
+		tags?: [string]: string
 		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [...#schedule]])
 		workflow?: matchN(1, [#workflow, [...#workflow]])
-		infrastructure_configuration_arn!: string
-		name!:                             string
-		platform?:                         string
-		status?:                           string
-		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 
@@ -44,6 +45,11 @@ import "list"
 	#image_tests_configuration: close({
 		image_tests_enabled?: bool
 		timeout_minutes?:     number
+	})
+
+	#logging_configuration: close({
+		image_log_group_name?:    string
+		pipeline_log_group_name?: string
 	})
 
 	#schedule: close({

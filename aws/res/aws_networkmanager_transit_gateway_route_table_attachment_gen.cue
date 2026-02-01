@@ -13,10 +13,11 @@ package res
 		id?:                            string
 		owner_account_id?:              string
 		peering_id!:                    string
+		timeouts?:                      #timeouts
 		resource_arn?:                  string
+		routing_policy_label?:          string
 		segment_name?:                  string
 		state?:                         string
-		timeouts?:                      #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		transit_gateway_route_table_arn!: string

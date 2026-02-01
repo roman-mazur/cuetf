@@ -8,6 +8,7 @@ package res
 		id?:                     string
 		name!:                   string
 		saml_metadata_document!: string
+		saml_provider_uuid?:     string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		valid_until?: string

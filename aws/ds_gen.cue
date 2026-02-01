@@ -42,6 +42,8 @@ import "github.com/roman-mazur/cuetf/aws/data"
 	_#ds: "\(#awsPrefix)_appmesh_virtual_service": data.#aws_appmesh_virtual_service
 	_#ds: "\(#awsPrefix)_apprunner_hosted_zone_id": data.#aws_apprunner_hosted_zone_id
 	_#ds: "\(#awsPrefix)_appstream_image": data.#aws_appstream_image
+	_#ds: "\(#awsPrefix)_arcregionswitch_plan": data.#aws_arcregionswitch_plan
+	_#ds: "\(#awsPrefix)_arcregionswitch_route53_health_checks": data.#aws_arcregionswitch_route53_health_checks
 	_#ds: "\(#awsPrefix)_arn": data.#aws_arn
 	_#ds: "\(#awsPrefix)_athena_named_query": data.#aws_athena_named_query
 	_#ds: "\(#awsPrefix)_auditmanager_control": data.#aws_auditmanager_control
@@ -79,7 +81,9 @@ import "github.com/roman-mazur/cuetf/aws/data"
 	_#ds: "\(#awsPrefix)_cloudformation_stack": data.#aws_cloudformation_stack
 	_#ds: "\(#awsPrefix)_cloudformation_type": data.#aws_cloudformation_type
 	_#ds: "\(#awsPrefix)_cloudfront_cache_policy": data.#aws_cloudfront_cache_policy
+	_#ds: "\(#awsPrefix)_cloudfront_connection_group": data.#aws_cloudfront_connection_group
 	_#ds: "\(#awsPrefix)_cloudfront_distribution": data.#aws_cloudfront_distribution
+	_#ds: "\(#awsPrefix)_cloudfront_distribution_tenant": data.#aws_cloudfront_distribution_tenant
 	_#ds: "\(#awsPrefix)_cloudfront_function": data.#aws_cloudfront_function
 	_#ds: "\(#awsPrefix)_cloudfront_log_delivery_canonical_user_id": data.#aws_cloudfront_log_delivery_canonical_user_id
 	_#ds: "\(#awsPrefix)_cloudfront_origin_access_control": data.#aws_cloudfront_origin_access_control
@@ -434,8 +438,10 @@ import "github.com/roman-mazur/cuetf/aws/data"
 	_#ds: "\(#awsPrefix)_opensearchserverless_security_config": data.#aws_opensearchserverless_security_config
 	_#ds: "\(#awsPrefix)_opensearchserverless_security_policy": data.#aws_opensearchserverless_security_policy
 	_#ds: "\(#awsPrefix)_opensearchserverless_vpc_endpoint": data.#aws_opensearchserverless_vpc_endpoint
+	_#ds: "\(#awsPrefix)_organizations_account": data.#aws_organizations_account
 	_#ds: "\(#awsPrefix)_organizations_delegated_administrators": data.#aws_organizations_delegated_administrators
 	_#ds: "\(#awsPrefix)_organizations_delegated_services": data.#aws_organizations_delegated_services
+	_#ds: "\(#awsPrefix)_organizations_entity_path": data.#aws_organizations_entity_path
 	_#ds: "\(#awsPrefix)_organizations_organization": data.#aws_organizations_organization
 	_#ds: "\(#awsPrefix)_organizations_organizational_unit_child_accounts": data.#aws_organizations_organizational_unit_child_accounts
 	_#ds: "\(#awsPrefix)_organizations_organizational_unit_descendant_accounts": data.#aws_organizations_organizational_unit_descendant_accounts
@@ -488,6 +494,7 @@ import "github.com/roman-mazur/cuetf/aws/data"
 	_#ds: "\(#awsPrefix)_region": data.#aws_region
 	_#ds: "\(#awsPrefix)_regions": data.#aws_regions
 	_#ds: "\(#awsPrefix)_resourceexplorer2_search": data.#aws_resourceexplorer2_search
+	_#ds: "\(#awsPrefix)_resourcegroupstaggingapi_required_tags": data.#aws_resourcegroupstaggingapi_required_tags
 	_#ds: "\(#awsPrefix)_resourcegroupstaggingapi_resources": data.#aws_resourcegroupstaggingapi_resources
 	_#ds: "\(#awsPrefix)_route53_delegation_set": data.#aws_route53_delegation_set
 	_#ds: "\(#awsPrefix)_route53_records": data.#aws_route53_records
@@ -511,13 +518,18 @@ import "github.com/roman-mazur/cuetf/aws/data"
 	_#ds: "\(#awsPrefix)_s3_account_public_access_block": data.#aws_s3_account_public_access_block
 	_#ds: "\(#awsPrefix)_s3_bucket": data.#aws_s3_bucket
 	_#ds: "\(#awsPrefix)_s3_bucket_object": data.#aws_s3_bucket_object
+	_#ds: "\(#awsPrefix)_s3_bucket_object_lock_configuration": data.#aws_s3_bucket_object_lock_configuration
 	_#ds: "\(#awsPrefix)_s3_bucket_objects": data.#aws_s3_bucket_objects
 	_#ds: "\(#awsPrefix)_s3_bucket_policy": data.#aws_s3_bucket_policy
+	_#ds: "\(#awsPrefix)_s3_bucket_replication_configuration": data.#aws_s3_bucket_replication_configuration
 	_#ds: "\(#awsPrefix)_s3_directory_buckets": data.#aws_s3_directory_buckets
 	_#ds: "\(#awsPrefix)_s3_object": data.#aws_s3_object
 	_#ds: "\(#awsPrefix)_s3_objects": data.#aws_s3_objects
+	_#ds: "\(#awsPrefix)_s3control_access_points": data.#aws_s3control_access_points
 	_#ds: "\(#awsPrefix)_s3control_multi_region_access_point": data.#aws_s3control_multi_region_access_point
+	_#ds: "\(#awsPrefix)_s3control_multi_region_access_points": data.#aws_s3control_multi_region_access_points
 	_#ds: "\(#awsPrefix)_sagemaker_prebuilt_ecr_image": data.#aws_sagemaker_prebuilt_ecr_image
+	_#ds: "\(#awsPrefix)_savingsplans_savings_plan": data.#aws_savingsplans_savings_plan
 	_#ds: "\(#awsPrefix)_secretsmanager_random_password": data.#aws_secretsmanager_random_password
 	_#ds: "\(#awsPrefix)_secretsmanager_secret": data.#aws_secretsmanager_secret
 	_#ds: "\(#awsPrefix)_secretsmanager_secret_rotation": data.#aws_secretsmanager_secret_rotation
@@ -627,6 +639,7 @@ import "github.com/roman-mazur/cuetf/aws/data"
 	_#ds: "\(#awsPrefix)_wafregional_subscribed_rule_group": data.#aws_wafregional_subscribed_rule_group
 	_#ds: "\(#awsPrefix)_wafregional_web_acl": data.#aws_wafregional_web_acl
 	_#ds: "\(#awsPrefix)_wafv2_ip_set": data.#aws_wafv2_ip_set
+	_#ds: "\(#awsPrefix)_wafv2_managed_rule_group": data.#aws_wafv2_managed_rule_group
 	_#ds: "\(#awsPrefix)_wafv2_regex_pattern_set": data.#aws_wafv2_regex_pattern_set
 	_#ds: "\(#awsPrefix)_wafv2_rule_group": data.#aws_wafv2_rule_group
 	_#ds: "\(#awsPrefix)_wafv2_web_acl": data.#aws_wafv2_web_acl

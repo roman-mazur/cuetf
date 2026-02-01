@@ -6,36 +6,36 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_launch_template")
 	close({
-		arn?: string
+		arn?:              string
+		default_version?:  number
+		description?:      string
+		disable_api_stop?: bool
 		block_device_mappings?: matchN(1, [#block_device_mappings, [...#block_device_mappings]])
-		default_version?:         number
-		description?:             string
-		disable_api_stop?:        bool
 		disable_api_termination?: bool
 		ebs_optimized?:           string
 		id?:                      string
+		image_id?:                string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                               string
-		image_id?:                             string
 		instance_initiated_shutdown_behavior?: string
 		instance_type?:                        string
 		kernel_id?:                            string
-		key_name?:                             string
-		latest_version?:                       number
-		name?:                                 string
-		name_prefix?:                          string
 		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
-		ram_disk_id?: string
+		key_name?:       string
+		latest_version?: number
+		name?:           string
+		name_prefix?:    string
+		ram_disk_id?:    string
 		security_group_names?: [...string]
-		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		update_default_version?: bool
 		user_data?:              string
+		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
 		credit_specification?: matchN(1, [#credit_specification, list.MaxItems(1) & [...#credit_specification]])
 		enclave_options?: matchN(1, [#enclave_options, list.MaxItems(1) & [...#enclave_options]])
 		hibernation_options?: matchN(1, [#hibernation_options, list.MaxItems(1) & [...#hibernation_options]])
@@ -48,6 +48,7 @@ import "list"
 		metadata_options?: matchN(1, [#metadata_options, list.MaxItems(1) & [...#metadata_options]])
 		monitoring?: matchN(1, [#monitoring, list.MaxItems(1) & [...#monitoring]])
 		network_interfaces?: matchN(1, [#network_interfaces, [...#network_interfaces]])
+		network_performance_options?: matchN(1, [#network_performance_options, list.MaxItems(1) & [...#network_performance_options]])
 		placement?: matchN(1, [#placement, list.MaxItems(1) & [...#placement]])
 		private_dns_name_options?: matchN(1, [#private_dns_name_options, list.MaxItems(1) & [...#private_dns_name_options]])
 		tag_specifications?: matchN(1, [#tag_specifications, [...#tag_specifications]])
@@ -163,6 +164,10 @@ import "list"
 		private_ip_address?:   string
 		security_groups?: [...string]
 		subnet_id?: string
+	})
+
+	#network_performance_options: close({
+		bandwidth_weighting?: string
 	})
 
 	#placement: close({

@@ -15,10 +15,11 @@ import "list"
 		id?:                            string
 		owner_account_id?:              string
 		options?: matchN(1, [#options, list.MaxItems(1) & [...#options]])
-		resource_arn?: string
-		segment_name?: string
-		state?:        string
-		timeouts?:     #timeouts
+		resource_arn?:         string
+		routing_policy_label?: string
+		segment_name?:         string
+		timeouts?:             #timeouts
+		state?:                string
 		subnet_arns!: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string

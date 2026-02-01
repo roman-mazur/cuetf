@@ -9,7 +9,8 @@ package res
 			domain_name?:    string
 			hosted_zone_id?: string
 		})]
-		id?: string
+		id?:                  string
+		private_dns_enabled?: bool
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

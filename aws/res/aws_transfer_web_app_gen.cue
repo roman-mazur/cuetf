@@ -19,11 +19,23 @@ package res
 		web_app_units?: [...close({
 			provisioned?: number
 		})]
+		endpoint_details?: matchN(1, [#endpoint_details, [...#endpoint_details]])
 		identity_provider_details?: matchN(1, [#identity_provider_details, [...#identity_provider_details]])
+	})
+
+	#endpoint_details: close({
+		vpc?: matchN(1, [_#defs."/$defs/endpoint_details/$defs/vpc", [..._#defs."/$defs/endpoint_details/$defs/vpc"]])
 	})
 
 	#identity_provider_details: close({
 		identity_center_config?: matchN(1, [_#defs."/$defs/identity_provider_details/$defs/identity_center_config", [..._#defs."/$defs/identity_provider_details/$defs/identity_center_config"]])
+	})
+
+	_#defs: "/$defs/endpoint_details/$defs/vpc": close({
+		security_group_ids?: [...string]
+		subnet_ids!: [...string]
+		vpc_endpoint_id?: string
+		vpc_id!:          string
 	})
 
 	_#defs: "/$defs/identity_provider_details/$defs/identity_center_config": close({

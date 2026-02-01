@@ -81,6 +81,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/security_context": close({
+		allow_privilege_escalation?: bool
 		privileged?:                 bool
 		read_only_root_file_system?: bool
 		run_as_group?:               number
@@ -121,6 +122,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/security_context": close({
+		allow_privilege_escalation?: bool
 		privileged?:                 bool
 		read_only_root_file_system?: bool
 		run_as_group?:               number

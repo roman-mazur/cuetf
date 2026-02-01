@@ -58,11 +58,12 @@ import "list"
 
 	#self_managed_active_directory: close({
 		dns_ips!: [...string]
+		domain_join_service_account_secret?:     string
 		domain_name!:                            string
 		file_system_administrators_group?:       string
 		organizational_unit_distinguished_name?: string
-		password!:                               string
-		username!:                               string
+		password?:                               string
+		username?:                               string
 	})
 
 	#timeouts: close({

@@ -13,6 +13,7 @@ package res
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:           string
+		quic_server_id?:   string
 		target_group_arn!: string
 		target_id!:        string
 	})

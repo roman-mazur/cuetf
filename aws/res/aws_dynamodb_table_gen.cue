@@ -52,14 +52,13 @@ import "list"
 	})
 
 	#global_secondary_index: close({
-		on_demand_throughput?: matchN(1, [_#defs."/$defs/global_secondary_index/$defs/on_demand_throughput", list.MaxItems(1) & [..._#defs."/$defs/global_secondary_index/$defs/on_demand_throughput"]])
-		hash_key!: string
-		name!:     string
+		name!: string
+		key_schema?: matchN(1, [_#defs."/$defs/global_secondary_index/$defs/key_schema", [..._#defs."/$defs/global_secondary_index/$defs/key_schema"]])
 		non_key_attributes?: [...string]
 		projection_type!: string
-		range_key?:       string
 		read_capacity?:   number
 		write_capacity?:  number
+		on_demand_throughput?: matchN(1, [_#defs."/$defs/global_secondary_index/$defs/on_demand_throughput", list.MaxItems(1) & [..._#defs."/$defs/global_secondary_index/$defs/on_demand_throughput"]])
 		warm_throughput?: matchN(1, [_#defs."/$defs/global_secondary_index/$defs/warm_throughput", list.MaxItems(1) & [..._#defs."/$defs/global_secondary_index/$defs/warm_throughput"]])
 	})
 
@@ -122,6 +121,11 @@ import "list"
 	#warm_throughput: close({
 		read_units_per_second?:  number
 		write_units_per_second?: number
+	})
+
+	_#defs: "/$defs/global_secondary_index/$defs/key_schema": close({
+		attribute_name!: string
+		key_type!:       string
 	})
 
 	_#defs: "/$defs/global_secondary_index/$defs/on_demand_throughput": close({

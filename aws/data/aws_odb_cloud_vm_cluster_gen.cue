@@ -6,6 +6,9 @@ package data
 	close({
 		arn?: string
 
+		// The ARN of the Cloud Exadata Infrastructure.
+		cloud_exadata_infrastructure_arn?: string
+
 		// The ID of the Cloud Exadata Infrastructure.
 		cloud_exadata_infrastructure_id?: string
 
@@ -114,6 +117,9 @@ package data
 
 		// The OCID of the VM cluster.
 		ocid?: string
+
+		// The ARN of the ODB network.
+		odb_network_arn?: string
 
 		// The ID of the ODB network.
 		odb_network_id?: string

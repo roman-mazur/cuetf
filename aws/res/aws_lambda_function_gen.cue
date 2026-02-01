@@ -20,13 +20,13 @@ import "list"
 		kms_key_arn?:             string
 		last_modified?:           string
 		layers?: [...string]
-		memory_size?:          number
-		package_type?:         string
-		publish?:              bool
+		memory_size?:  number
+		package_type?: string
+		publish?:      bool
+		capacity_provider_config?: matchN(1, [#capacity_provider_config, list.MaxItems(1) & [...#capacity_provider_config]])
 		publish_to?:           string
 		qualified_arn?:        string
 		qualified_invoke_arn?: string
-		capacity_provider_config?: matchN(1, [#capacity_provider_config, list.MaxItems(1) & [...#capacity_provider_config]])
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -34,24 +34,25 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                             string
 		replace_security_groups_on_destroy?: bool
+		dead_letter_config?: matchN(1, [#dead_letter_config, list.MaxItems(1) & [...#dead_letter_config]])
 		replacement_security_group_ids?: [...string]
 		reserved_concurrent_executions?: number
+		response_streaming_invoke_arn?:  string
 		role!:                           string
-		dead_letter_config?: matchN(1, [#dead_letter_config, list.MaxItems(1) & [...#dead_letter_config]])
-		durable_config?: matchN(1, [#durable_config, list.MaxItems(1) & [...#durable_config]])
-		runtime?:                     string
-		s3_bucket?:                   string
-		s3_key?:                      string
-		s3_object_version?:           string
-		signing_job_arn?:             string
-		signing_profile_version_arn?: string
-		skip_destroy?:                bool
-		source_code_hash?:            string
-		source_code_size?:            number
-		source_kms_key_arn?:          string
+		runtime?:                        string
+		s3_bucket?:                      string
+		s3_key?:                         string
+		s3_object_version?:              string
+		signing_job_arn?:                string
+		signing_profile_version_arn?:    string
+		skip_destroy?:                   bool
+		source_code_hash?:               string
+		source_code_size?:               number
+		source_kms_key_arn?:             string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		timeout?: number
+		durable_config?: matchN(1, [#durable_config, list.MaxItems(1) & [...#durable_config]])
 		environment?: matchN(1, [#environment, list.MaxItems(1) & [...#environment]])
 		ephemeral_storage?: matchN(1, [#ephemeral_storage, list.MaxItems(1) & [...#ephemeral_storage]])
 		file_system_config?: matchN(1, [#file_system_config, list.MaxItems(1) & [...#file_system_config]])

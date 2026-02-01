@@ -13,10 +13,11 @@ package res
 		id?:                            string
 		owner_account_id?:              string
 		resource_arn?:                  string
+		routing_policy_label?:          string
 		segment_name?:                  string
 		state?:                         string
-		tags?: [string]: string
-		timeouts?: #timeouts
+		timeouts?:                      #timeouts
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		vpn_connection_arn!: string
 	})

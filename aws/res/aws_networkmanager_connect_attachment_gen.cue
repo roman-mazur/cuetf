@@ -15,11 +15,12 @@ import "list"
 		edge_location!:                 string
 		id?:                            string
 		options!: matchN(1, [#options, list.MaxItems(1) & [_, ...] & [...#options]])
-		owner_account_id?: string
-		resource_arn?:     string
-		segment_name?:     string
-		timeouts?:         #timeouts
-		state?:            string
+		owner_account_id?:     string
+		resource_arn?:         string
+		routing_policy_label?: string
+		timeouts?:             #timeouts
+		segment_name?:         string
+		state?:                string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		transport_attachment_id!: string

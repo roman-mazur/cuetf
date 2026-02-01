@@ -30,6 +30,7 @@ package data
 						requests?: [string]: string
 					})]
 					security_context?: [...close({
+						allow_privilege_escalation?: bool
 						privileged?:                 bool
 						read_only_root_file_system?: bool
 						run_as_group?:               number
@@ -62,6 +63,7 @@ package data
 						requests?: [string]: string
 					})]
 					security_context?: [...close({
+						allow_privilege_escalation?: bool
 						privileged?:                 bool
 						read_only_root_file_system?: bool
 						run_as_group?:               number

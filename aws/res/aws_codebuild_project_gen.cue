@@ -67,7 +67,8 @@ import "list"
 	})
 
 	#cache: close({
-		location?: string
+		cache_namespace?: string
+		location?:        string
 		modes?: [...string]
 		type?: string
 	})

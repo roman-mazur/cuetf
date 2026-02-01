@@ -1,5 +1,7 @@
 package res
 
+import "list"
+
 #aws_vpc_ipam_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_ipam_pool")
@@ -15,12 +17,13 @@ package res
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                string
-		auto_import?:           bool
-		aws_service?:           string
-		cascade?:               bool
-		description?:           string
-		id?:                    string
+		region?:      string
+		auto_import?: bool
+		aws_service?: string
+		cascade?:     bool
+		description?: string
+		id?:          string
+		source_resource?: matchN(1, [#source_resource, list.MaxItems(1) & [...#source_resource]])
 		timeouts?:              #timeouts
 		ipam_scope_id!:         string
 		ipam_scope_type?:       string
@@ -32,6 +35,13 @@ package res
 		state?:                 string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+	})
+
+	#source_resource: close({
+		resource_id!:     string
+		resource_owner!:  string
+		resource_region!: string
+		resource_type!:   string
 	})
 
 	#timeouts: close({
