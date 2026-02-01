@@ -321,6 +321,11 @@ import "list"
 	})
 
 	#network_interface: close({
+		// Indicates whether igmp query is enabled on the network
+		// interface or not. If enabled, also indicates the version of
+		// IGMP supported.
+		igmp_query?: string
+
 		// The prefix length of the primary internal IPv6 range.
 		internal_ipv6_prefix_length?: number
 
@@ -348,13 +353,13 @@ import "list"
 
 		// The private IP address assigned to the instance.
 		network_ip?: string
+		access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/access_config", [..._#defs."/$defs/network_interface/$defs/access_config"]])
+		alias_ip_range?: matchN(1, [_#defs."/$defs/network_interface/$defs/alias_ip_range", [..._#defs."/$defs/network_interface/$defs/alias_ip_range"]])
+		ipv6_access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/ipv6_access_config", [..._#defs."/$defs/network_interface/$defs/ipv6_access_config"]])
 
 		// The type of vNIC to be used on this interface. Possible
 		// values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
 		nic_type?: string
-		access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/access_config", [..._#defs."/$defs/network_interface/$defs/access_config"]])
-		alias_ip_range?: matchN(1, [_#defs."/$defs/network_interface/$defs/alias_ip_range", [..._#defs."/$defs/network_interface/$defs/alias_ip_range"]])
-		ipv6_access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/ipv6_access_config", [..._#defs."/$defs/network_interface/$defs/ipv6_access_config"]])
 
 		// The networking queue count that's specified by users for the
 		// network interface. Both Rx and Tx queues will be set to this

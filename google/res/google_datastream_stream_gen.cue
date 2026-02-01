@@ -71,6 +71,7 @@ import "list"
 		oracle_excluded_objects?: matchN(1, [_#defs."/$defs/backfill_all/$defs/oracle_excluded_objects", list.MaxItems(1) & [..._#defs."/$defs/backfill_all/$defs/oracle_excluded_objects"]])
 		postgresql_excluded_objects?: matchN(1, [_#defs."/$defs/backfill_all/$defs/postgresql_excluded_objects", list.MaxItems(1) & [..._#defs."/$defs/backfill_all/$defs/postgresql_excluded_objects"]])
 		salesforce_excluded_objects?: matchN(1, [_#defs."/$defs/backfill_all/$defs/salesforce_excluded_objects", list.MaxItems(1) & [..._#defs."/$defs/backfill_all/$defs/salesforce_excluded_objects"]])
+		spanner_excluded_objects?: matchN(1, [_#defs."/$defs/backfill_all/$defs/spanner_excluded_objects", list.MaxItems(1) & [..._#defs."/$defs/backfill_all/$defs/spanner_excluded_objects"]])
 		sql_server_excluded_objects?: matchN(1, [_#defs."/$defs/backfill_all/$defs/sql_server_excluded_objects", list.MaxItems(1) & [..._#defs."/$defs/backfill_all/$defs/sql_server_excluded_objects"]])
 	})
 
@@ -96,6 +97,7 @@ import "list"
 		oracle_source_config?: matchN(1, [_#defs."/$defs/source_config/$defs/oracle_source_config", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/oracle_source_config"]])
 		postgresql_source_config?: matchN(1, [_#defs."/$defs/source_config/$defs/postgresql_source_config", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/postgresql_source_config"]])
 		salesforce_source_config?: matchN(1, [_#defs."/$defs/source_config/$defs/salesforce_source_config", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/salesforce_source_config"]])
+		spanner_source_config?: matchN(1, [_#defs."/$defs/source_config/$defs/spanner_source_config", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/spanner_source_config"]])
 		sql_server_source_config?: matchN(1, [_#defs."/$defs/source_config/$defs/sql_server_source_config", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/sql_server_source_config"]])
 
 		// Source connection profile resource. Format:
@@ -282,6 +284,39 @@ import "list"
 	_#defs: "/$defs/backfill_all/$defs/salesforce_excluded_objects/$defs/objects/$defs/fields": close({
 		// Field name.
 		name?: string
+	})
+
+	_#defs: "/$defs/backfill_all/$defs/spanner_excluded_objects": close({
+		schemas!: matchN(1, [_#defs."/$defs/backfill_all/$defs/spanner_excluded_objects/$defs/schemas", [_, ...] & [..._#defs."/$defs/backfill_all/$defs/spanner_excluded_objects/$defs/schemas"]])
+	})
+
+	_#defs: "/$defs/backfill_all/$defs/spanner_excluded_objects/$defs/schemas": close({
+		tables?: matchN(1, [_#defs."/$defs/backfill_all/$defs/spanner_excluded_objects/$defs/schemas/$defs/tables", [..._#defs."/$defs/backfill_all/$defs/spanner_excluded_objects/$defs/schemas/$defs/tables"]])
+
+		// Schema name.
+		schema!: string
+	})
+
+	_#defs: "/$defs/backfill_all/$defs/spanner_excluded_objects/$defs/schemas/$defs/tables": close({
+		columns?: matchN(1, [_#defs."/$defs/backfill_all/$defs/spanner_excluded_objects/$defs/schemas/$defs/tables/$defs/columns", [..._#defs."/$defs/backfill_all/$defs/spanner_excluded_objects/$defs/schemas/$defs/tables/$defs/columns"]])
+
+		// Table name.
+		table!: string
+	})
+
+	_#defs: "/$defs/backfill_all/$defs/spanner_excluded_objects/$defs/schemas/$defs/tables/$defs/columns": close({
+		// Column name.
+		column!: string
+
+		// The Spanner data type. Full data types list can be found here:
+		// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+		data_type?: string
+
+		// Whether the column is a primary key.
+		is_primary_key?: bool
+
+		// The ordinal position of the column in the table.
+		ordinal_position?: number
 	})
 
 	_#defs: "/$defs/backfill_all/$defs/sql_server_excluded_objects": close({
@@ -502,6 +537,7 @@ import "list"
 		oracle_identifier?: matchN(1, [_#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/oracle_identifier", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/oracle_identifier"]])
 		postgresql_identifier?: matchN(1, [_#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/postgresql_identifier", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/postgresql_identifier"]])
 		salesforce_identifier?: matchN(1, [_#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/salesforce_identifier", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/salesforce_identifier"]])
+		spanner_identifier?: matchN(1, [_#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/spanner_identifier", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/spanner_identifier"]])
 		sql_server_identifier?: matchN(1, [_#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/sql_server_identifier", list.MaxItems(1) & [..._#defs."/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/sql_server_identifier"]])
 	})
 
@@ -540,6 +576,14 @@ import "list"
 	_#defs: "/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/salesforce_identifier": close({
 		// The Salesforce object name.
 		object_name!: string
+	})
+
+	_#defs: "/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/spanner_identifier": close({
+		// The schema name.
+		schema?: string
+
+		// The table name.
+		table!: string
 	})
 
 	_#defs: "/$defs/rule_sets/$defs/object_filter/$defs/source_object_identifier/$defs/sql_server_identifier": close({
@@ -981,6 +1025,95 @@ import "list"
 	_#defs: "/$defs/source_config/$defs/salesforce_source_config/$defs/include_objects/$defs/objects/$defs/fields": close({
 		// Field name.
 		name?: string
+	})
+
+	_#defs: "/$defs/source_config/$defs/spanner_source_config": close({
+		// Whether to use DataBoost for backfill queries.
+		backfill_data_boost_enabled?: bool
+
+		// The Spanner change stream name to use.
+		change_stream_name?: string
+
+		// The FGAC role to use for Spanner queries.
+		fgac_role?: string
+		exclude_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/spanner_source_config/$defs/exclude_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/spanner_source_config/$defs/exclude_objects"]])
+
+		// Max concurrent backfill tasks.
+		max_concurrent_backfill_tasks?: number
+		include_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/spanner_source_config/$defs/include_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/spanner_source_config/$defs/include_objects"]])
+
+		// Max concurrent CDC tasks.
+		max_concurrent_cdc_tasks?: number
+
+		// The RPC priority to use for Spanner queries. Possible values:
+		// ["LOW", "MEDIUM", "HIGH"]
+		spanner_rpc_priority?: string
+	})
+
+	_#defs: "/$defs/source_config/$defs/spanner_source_config/$defs/exclude_objects": close({
+		schemas!: matchN(1, [_#defs."/$defs/source_config/$defs/spanner_source_config/$defs/exclude_objects/$defs/schemas", [_, ...] & [..._#defs."/$defs/source_config/$defs/spanner_source_config/$defs/exclude_objects/$defs/schemas"]])
+	})
+
+	_#defs: "/$defs/source_config/$defs/spanner_source_config/$defs/exclude_objects/$defs/schemas": close({
+		tables?: matchN(1, [_#defs."/$defs/source_config/$defs/spanner_source_config/$defs/exclude_objects/$defs/schemas/$defs/tables", [..._#defs."/$defs/source_config/$defs/spanner_source_config/$defs/exclude_objects/$defs/schemas/$defs/tables"]])
+
+		// Schema name.
+		schema!: string
+	})
+
+	_#defs: "/$defs/source_config/$defs/spanner_source_config/$defs/exclude_objects/$defs/schemas/$defs/tables": close({
+		columns?: matchN(1, [_#defs."/$defs/source_config/$defs/spanner_source_config/$defs/exclude_objects/$defs/schemas/$defs/tables/$defs/columns", [..._#defs."/$defs/source_config/$defs/spanner_source_config/$defs/exclude_objects/$defs/schemas/$defs/tables/$defs/columns"]])
+
+		// Table name.
+		table!: string
+	})
+
+	_#defs: "/$defs/source_config/$defs/spanner_source_config/$defs/exclude_objects/$defs/schemas/$defs/tables/$defs/columns": close({
+		// Column name.
+		column?: string
+
+		// The Spanner data type. Full data types list can be found here:
+		// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+		data_type?: string
+
+		// Whether the column is a primary key.
+		is_primary_key?: bool
+
+		// The ordinal position of the column in the table.
+		ordinal_position?: number
+	})
+
+	_#defs: "/$defs/source_config/$defs/spanner_source_config/$defs/include_objects": close({
+		schemas!: matchN(1, [_#defs."/$defs/source_config/$defs/spanner_source_config/$defs/include_objects/$defs/schemas", [_, ...] & [..._#defs."/$defs/source_config/$defs/spanner_source_config/$defs/include_objects/$defs/schemas"]])
+	})
+
+	_#defs: "/$defs/source_config/$defs/spanner_source_config/$defs/include_objects/$defs/schemas": close({
+		tables?: matchN(1, [_#defs."/$defs/source_config/$defs/spanner_source_config/$defs/include_objects/$defs/schemas/$defs/tables", [..._#defs."/$defs/source_config/$defs/spanner_source_config/$defs/include_objects/$defs/schemas/$defs/tables"]])
+
+		// Schema name.
+		schema!: string
+	})
+
+	_#defs: "/$defs/source_config/$defs/spanner_source_config/$defs/include_objects/$defs/schemas/$defs/tables": close({
+		columns?: matchN(1, [_#defs."/$defs/source_config/$defs/spanner_source_config/$defs/include_objects/$defs/schemas/$defs/tables/$defs/columns", [..._#defs."/$defs/source_config/$defs/spanner_source_config/$defs/include_objects/$defs/schemas/$defs/tables/$defs/columns"]])
+
+		// Table name.
+		table!: string
+	})
+
+	_#defs: "/$defs/source_config/$defs/spanner_source_config/$defs/include_objects/$defs/schemas/$defs/tables/$defs/columns": close({
+		// Column name.
+		column?: string
+
+		// The Spanner data type. Full data types list can be found here:
+		// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+		data_type?: string
+
+		// Whether or not the column is a primary key.
+		is_primary_key?: bool
+
+		// The ordinal position of the column in the table.
+		ordinal_position?: number
 	})
 
 	_#defs: "/$defs/source_config/$defs/sql_server_source_config": close({

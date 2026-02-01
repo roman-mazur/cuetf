@@ -414,8 +414,8 @@ import "list"
 		// If enabled, the root user (UID = 0) of the specified clients
 		// doesn't get mapped to nobody (UID = 65534). This is also known
 		// as no_root_squash.
-		// It's overwritten by the squash_mode parameter. Use either
-		// squash_mode or has_root_access.
+		// Use either squash_mode or has_root_access, but never both at
+		// the same time. These parameters are mutually exclusive.
 		has_root_access?: string
 
 		// If enabled (true) the rule defines a read only access for
@@ -467,11 +467,10 @@ import "list"
 		// when accessing an NFS export. It controls how the user
 		// identities (like root) are mapped to anonymous users to limit
 		// access and enforce security.
-		// It overwrites the has_root_access parameter. Use either
-		// squash_mode or has_root_access. For ALL_SQUASH, access_type
-		// needs to be set to READ_WRITE. Possible values:
-		// ["SQUASH_MODE_UNSPECIFIED", "NO_ROOT_SQUASH", "ROOT_SQUASH",
-		// "ALL_SQUASH"]
+		// Use either squash_mode or has_root_access, but never both at
+		// the same time. These parameters are mutually exclusive.
+		// Possible values: ["SQUASH_MODE_UNSPECIFIED", "NO_ROOT_SQUASH",
+		// "ROOT_SQUASH", "ALL_SQUASH"]
 		squash_mode?: string
 	})
 

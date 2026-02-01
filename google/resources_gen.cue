@@ -562,6 +562,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_dialogflow_cx_security_settings": res.#google_dialogflow_cx_security_settings
 	_#res: "\(#googlePrefix)_dialogflow_cx_test_case": res.#google_dialogflow_cx_test_case
 	_#res: "\(#googlePrefix)_dialogflow_cx_tool": res.#google_dialogflow_cx_tool
+	_#res: "\(#googlePrefix)_dialogflow_cx_tool_version": res.#google_dialogflow_cx_tool_version
 	_#res: "\(#googlePrefix)_dialogflow_cx_version": res.#google_dialogflow_cx_version
 	_#res: "\(#googlePrefix)_dialogflow_cx_webhook": res.#google_dialogflow_cx_webhook
 	_#res: "\(#googlePrefix)_dialogflow_encryption_spec": res.#google_dialogflow_encryption_spec
@@ -1163,6 +1164,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_vertex_ai_reasoning_engine": res.#google_vertex_ai_reasoning_engine
 	_#res: "\(#googlePrefix)_vertex_ai_tensorboard": res.#google_vertex_ai_tensorboard
 	_#res: "\(#googlePrefix)_vmwareengine_cluster": res.#google_vmwareengine_cluster
+	_#res: "\(#googlePrefix)_vmwareengine_datastore": res.#google_vmwareengine_datastore
 	_#res: "\(#googlePrefix)_vmwareengine_external_access_rule": res.#google_vmwareengine_external_access_rule
 	_#res: "\(#googlePrefix)_vmwareengine_external_address": res.#google_vmwareengine_external_address
 	_#res: "\(#googlePrefix)_vmwareengine_network": res.#google_vmwareengine_network

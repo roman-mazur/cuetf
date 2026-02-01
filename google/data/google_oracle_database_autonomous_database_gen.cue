@@ -34,6 +34,10 @@ package data
 		// instance will fail.
 		deletion_protection?: bool
 
+		// List of supported GCP region to clone the Autonomous Database
+		// for disaster recovery.
+		disaster_recovery_supported_locations?: [...string]
+
 		// The display name for the Autonomous Database. The name does not
 		// have to
 		// be unique within your project.
@@ -86,7 +90,11 @@ package data
 		// IP allocation. Format:
 		// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
 		odb_subnet?: string
-		project?:    string
+
+		// The peer Autonomous Database names of the given Autonomous
+		// Database.
+		peer_autonomous_databases?: [...string]
+		project?: string
 
 		// The properties of an Autonomous Database.
 		properties?: [...close({
@@ -202,6 +210,13 @@ package data
 			total_auto_backup_storage_size_gbs?: number
 			used_data_storage_size_tbs?:         number
 			vault_id?:                           string
+		})]
+
+		// The source Autonomous Database configuration for the standby
+		// Autonomous Database.
+		source_config?: [...close({
+			automatic_backups_replication_enabled?: bool
+			autonomous_database?:                   string
 		})]
 
 		// The combination of labels configured directly on the resource

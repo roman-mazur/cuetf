@@ -9,7 +9,8 @@ import "list"
 		// The cluster to create the node pool for. Cluster must be
 		// present in location provided for zonal clusters.
 		cluster!: string
-		id?:      string
+		autoscaling?: matchN(1, [#autoscaling, list.MaxItems(1) & [...#autoscaling]])
+		id?: string
 
 		// The initial number of nodes for the pool. In regional or
 		// multi-zonal clusters, this is the number of nodes per zone.
@@ -22,6 +23,7 @@ import "list"
 
 		// The location (region or zone) of the cluster.
 		location?: string
+		management?: matchN(1, [#management, list.MaxItems(1) & [...#management]])
 
 		// List of instance group URLs which have been assigned to this
 		// node pool.
@@ -36,14 +38,13 @@ import "list"
 		// The name of the node pool. If left blank, Terraform will
 		// auto-generate a unique name.
 		name?: string
-		autoscaling?: matchN(1, [#autoscaling, list.MaxItems(1) & [...#autoscaling]])
 
 		// Creates a unique name for the node pool beginning with the
 		// specified prefix. Conflicts with name.
 		name_prefix?: string
-		management?: matchN(1, [#management, list.MaxItems(1) & [...#management]])
 		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
 		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
+		node_drain_config?: matchN(1, [#node_drain_config, [...#node_drain_config]])
 		placement_policy?: matchN(1, [#placement_policy, list.MaxItems(1) & [...#placement_policy]])
 		queued_provisioning?: matchN(1, [#queued_provisioning, list.MaxItems(1) & [...#queued_provisioning]])
 		timeouts?: #timeouts
@@ -264,6 +265,12 @@ import "list"
 
 		// The list of instance tags applied to all nodes.
 		tags?: [...string]
+	})
+
+	#node_drain_config: close({
+		// Whether to respect PodDisruptionBudget policy during node pool
+		// deletion.
+		respect_pdb_during_node_pool_deletion?: bool
 	})
 
 	#placement_policy: close({

@@ -953,6 +953,9 @@ package data
 				})]
 			})]
 			node_count?: number
+			node_drain_config?: [...close({
+				respect_pdb_during_node_pool_deletion?: bool
+			})]
 			node_locations?: [...string]
 			placement_policy?: [...close({
 				policy_name?:  string

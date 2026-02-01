@@ -525,6 +525,13 @@ import "list"
 		// The number of rows at the top of a CSV file that BigQuery will
 		// skip when reading the data.
 		skip_leading_rows?: number
+
+		// Specifies how source columns are matched to the table schema.
+		// Valid values are POSITION (columns matched by position,
+		// assuming same ordering) or NAME (columns matched by name,
+		// reads header row and reorders columns to align with schema
+		// field names).
+		source_column_match?: string
 	})
 
 	_#defs: "/$defs/external_data_configuration/$defs/google_sheets_options": close({

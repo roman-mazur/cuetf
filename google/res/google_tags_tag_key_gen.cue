@@ -4,6 +4,11 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_tags_tag_key")
 	close({
+		// Regular expression constraint for dynamic tag values, follows
+		// RE2 syntax. If present, it implicitly allows dynamic values
+		// (constrained by the regex).
+		allowed_values_regex?: string
+
 		// Output only. Creation time.
 		//
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -33,8 +38,7 @@ package res
 		// of a specific policy engine, and will involve that policy
 		// engine in management operations involving this Tag. Possible
 		// values: ["GCE_FIREWALL", "DATA_GOVERNANCE"]
-		purpose?:  string
-		timeouts?: #timeouts
+		purpose?: string
 
 		// Optional. Purpose data cannot be changed once set.
 		//
@@ -43,6 +47,7 @@ package res
 		// data in the following format: 'network =
 		// "<project-name>/<vpc-name>"'.
 		purpose_data?: [string]: string
+		timeouts?: #timeouts
 
 		// Input only. The user friendly name for a TagKey. The short name
 		// should be unique for TagKeys within the same tag namespace.

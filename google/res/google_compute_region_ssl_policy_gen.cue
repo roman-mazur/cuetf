@@ -35,9 +35,10 @@ package res
 
 		// The minimum version of SSL protocol that can be used by the
 		// clients
-		// to establish a connection with the load balancer. Default
-		// value: "TLS_1_0" Possible values: ["TLS_1_0", "TLS_1_1",
-		// "TLS_1_2"]
+		// to establish a connection with the load balancer. When set to
+		// 'TLS_1_3', the profile field must be set to 'RESTRICTED'.
+		// Default value: "TLS_1_0" Possible values: ["TLS_1_0",
+		// "TLS_1_1", "TLS_1_2", "TLS_1_3"]
 		min_tls_version?: string
 
 		// Name of the resource. Provided by the client when the resource
@@ -64,8 +65,11 @@ package res
 		// documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
 		// for information on what cipher suites each profile provides. If
 		// 'CUSTOM' is used, the 'custom_features' attribute **must be
-		// set**. Default value: "COMPATIBLE" Possible values:
-		// ["COMPATIBLE", "MODERN", "RESTRICTED", "CUSTOM"]
+		// set**.
+		// If set to 'FIPS_202205', 'minTlsVersion' must also be set to
+		// 'TLS_1_2'. Default value: "COMPATIBLE" Possible values:
+		// ["COMPATIBLE", "MODERN", "RESTRICTED", "CUSTOM",
+		// "FIPS_202205"]
 		profile?:  string
 		project?:  string
 		timeouts?: #timeouts

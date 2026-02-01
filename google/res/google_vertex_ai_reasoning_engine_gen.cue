@@ -92,6 +92,8 @@ import "list"
 		// be
 		// kept running at all times. Defaults to 1. Range: [0, 10].
 		min_instances?: number
+		env?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/env", [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/env"]])
+		psc_interface_config?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/psc_interface_config", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/psc_interface_config"]])
 
 		// Optional. Resource limits for each container.
 		// Only 'cpu' and 'memory' keys are supported.
@@ -108,7 +110,6 @@ import "list"
 		// For more information, go to
 		// https://cloud.google.com/run/docs/configuring/memory-limits.
 		resource_limits?: [string]: string
-		env?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/env", [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/env"]])
 		secret_env?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/secret_env", [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/secret_env"]])
 	})
 
@@ -126,6 +127,34 @@ import "list"
 		// be expanded, regardless of whether the variable exists
 		// or not.
 		value!: string
+	})
+
+	_#defs: "/$defs/spec/$defs/deployment_spec/$defs/psc_interface_config": close({
+		dns_peering_configs?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/psc_interface_config/$defs/dns_peering_configs", [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/psc_interface_config/$defs/dns_peering_configs"]])
+
+		// Optional. The name of the Compute Engine network attachment
+		// to attach to the resource within the region and user project.
+		// To specify this field, you must have already created a network
+		// attachment.
+		// This field is only used for resources using PSC-Interface.
+		network_attachment?: string
+	})
+
+	_#defs: "/$defs/spec/$defs/deployment_spec/$defs/psc_interface_config/$defs/dns_peering_configs": close({
+		// Required. The DNS name suffix of the zone being peered
+		// to, e.g., "my-internal-domain.corp.".
+		// Must end with a dot.
+		domain!: string
+
+		// Required. The VPC network name in the targetProject
+		// where the DNS zone specified by 'domain' is visible.
+		target_network!: string
+
+		// Required. The project id hosting the Cloud DNS managed
+		// zone that contains the 'domain'.
+		// The Vertex AI service Agent requires the dns.peer role
+		// on this project.
+		target_project!: string
 	})
 
 	_#defs: "/$defs/spec/$defs/deployment_spec/$defs/secret_env": close({

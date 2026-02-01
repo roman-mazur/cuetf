@@ -278,6 +278,11 @@ import "list"
 	})
 
 	#network_interface: close({
+		// Indicates whether igmp query is enabled on the network
+		// interface or not. If enabled, also indicates the version of
+		// IGMP supported.
+		igmp_query?: string
+
 		// The prefix length of the primary internal IPv6 range.
 		internal_ipv6_prefix_length?: number
 
@@ -306,19 +311,19 @@ import "list"
 		// The type of vNIC to be used on this interface. Possible
 		// values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
 		nic_type?: string
+		access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/access_config", [..._#defs."/$defs/network_interface/$defs/access_config"]])
+		alias_ip_range?: matchN(1, [_#defs."/$defs/network_interface/$defs/alias_ip_range", [..._#defs."/$defs/network_interface/$defs/alias_ip_range"]])
+		ipv6_access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/ipv6_access_config", [..._#defs."/$defs/network_interface/$defs/ipv6_access_config"]])
 
 		// The networking queue count that's specified by users for the
 		// network interface. Both Rx and Tx queues will be set to this
 		// number. It will be empty if not specified.
 		queue_count?: number
-		access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/access_config", [..._#defs."/$defs/network_interface/$defs/access_config"]])
-		alias_ip_range?: matchN(1, [_#defs."/$defs/network_interface/$defs/alias_ip_range", [..._#defs."/$defs/network_interface/$defs/alias_ip_range"]])
 
 		// The stack type for this network interface to identify whether
 		// the IPv6 feature is enabled or not. If not specified,
 		// IPV4_ONLY will be used.
 		stack_type?: string
-		ipv6_access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/ipv6_access_config", [..._#defs."/$defs/network_interface/$defs/ipv6_access_config"]])
 
 		// The name of the subnetwork to attach this interface to. The
 		// subnetwork must exist in the same region this instance will be

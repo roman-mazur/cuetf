@@ -70,10 +70,15 @@ import "list"
 		// JSON body parsing. Supported values include: "DISABLED",
 		// "STANDARD".
 		json_parsing?: string
-		json_custom_config?: matchN(1, [_#defs."/$defs/advanced_options_config/$defs/json_custom_config", list.MaxItems(1) & [..._#defs."/$defs/advanced_options_config/$defs/json_custom_config"]])
 
 		// Logging level. Supported values include: "NORMAL", "VERBOSE".
 		log_level?: string
+
+		// The maximum request size chosen by the customer with Waf
+		// enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and
+		// "64KB". Values are case insensitive.
+		request_body_inspection_size?: string
+		json_custom_config?: matchN(1, [_#defs."/$defs/advanced_options_config/$defs/json_custom_config", list.MaxItems(1) & [..._#defs."/$defs/advanced_options_config/$defs/json_custom_config"]])
 
 		// An optional list of case-insensitive request header names to
 		// use for resolving the callers client IP address.
