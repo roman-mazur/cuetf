@@ -1361,7 +1361,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.12xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -1438,7 +1438,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.18xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -1515,7 +1515,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.24xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -1592,7 +1592,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.2xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -1669,7 +1669,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.4xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -1746,7 +1746,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.9xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -1823,7 +1823,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.large"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -1900,7 +1900,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.metal"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -1971,7 +1971,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "c5.xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -17665,7 +17665,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -18176,7 +18176,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -18453,7 +18453,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -18629,7 +18629,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -18714,7 +18714,7 @@ InstanceTypes: [{
             Count:            2
             LogicalGpuCount:  2
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -27740,7 +27740,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.12xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -27817,7 +27817,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.16xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -27894,7 +27894,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.24xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -27971,7 +27971,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.2xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -28048,7 +28048,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.4xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -28125,7 +28125,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.8xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -28202,7 +28202,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.large"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -28279,7 +28279,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.metal"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -28350,7 +28350,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "m5.xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -44506,7 +44506,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.12xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -44583,7 +44583,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.16xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -44660,7 +44660,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.24xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -44737,7 +44737,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.2xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -44814,7 +44814,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.4xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -44891,7 +44891,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.8xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -44968,7 +44968,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.large"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -45045,7 +45045,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.metal"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -45116,7 +45116,7 @@ InstanceTypes: [{
     RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "r5.xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
