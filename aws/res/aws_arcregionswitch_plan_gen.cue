@@ -4,26 +4,20 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_arcregionswitch_plan")
 	close({
-		arn?: string
+		arn?:               string
+		description?:       string
+		execution_role!:    string
+		name!:              string
+		primary_region?:    string
+		recovery_approach!: string
 		associated_alarms?: matchN(1, [#associated_alarms, [...#associated_alarms]])
-		description?:    string
-		execution_role!: string
-		name!:           string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                          string
-		primary_region?:                  string
-		recovery_approach!:               string
-		recovery_time_objective_minutes?: number
-		timeouts?:                        #timeouts
+		timeouts?: #timeouts
 		triggers?: matchN(1, [#triggers, [...#triggers]])
+		recovery_time_objective_minutes?: number
 		regions!: [...string]
-		workflow?: matchN(1, [#workflow, [...#workflow]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		workflow?: matchN(1, [#workflow, [...#workflow]])
 	})
 
 	#associated_alarms: close({

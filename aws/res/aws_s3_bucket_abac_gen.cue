@@ -5,8 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_s3_bucket_abac")
 	close({
 		abac_status?: matchN(1, [#abac_status, [...#abac_status]])
-		bucket!:                string
-		expected_bucket_owner?: string
+		bucket!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
