@@ -13,7 +13,6 @@ import "list"
 		// allowed if
 		// admin clusters are modeled as their own resources.
 		admin_cluster_membership!: string
-		anti_affinity_groups?: matchN(1, [#anti_affinity_groups, list.MaxItems(1) & [...#anti_affinity_groups]])
 
 		// Annotations on the VMware User Cluster.
 		// This field has the same restrictions as Kubernetes annotations.
@@ -95,10 +94,14 @@ import "list"
 		// admin
 		// cluster controller logs.
 		local_name?: string
-		authorization?: matchN(1, [#authorization, list.MaxItems(1) & [...#authorization]])
 
 		// The location of the resource.
 		location!: string
+
+		// The VMware cluster name.
+		name!: string
+		anti_affinity_groups?: matchN(1, [#anti_affinity_groups, list.MaxItems(1) & [...#anti_affinity_groups]])
+		authorization?: matchN(1, [#authorization, list.MaxItems(1) & [...#authorization]])
 		auto_repair_config?: matchN(1, [#auto_repair_config, list.MaxItems(1) & [...#auto_repair_config]])
 		control_plane_node!: matchN(1, [#control_plane_node, list.MaxItems(1) & [_, ...] & [...#control_plane_node]])
 		dataplane_v2?: matchN(1, [#dataplane_v2, list.MaxItems(1) & [...#dataplane_v2]])
@@ -109,9 +112,6 @@ import "list"
 		upgrade_policy?: matchN(1, [#upgrade_policy, list.MaxItems(1) & [...#upgrade_policy]])
 		vcenter?: matchN(1, [#vcenter, list.MaxItems(1) & [...#vcenter]])
 
-		// The VMware cluster name.
-		name!: string
-
 		// The Anthos clusters on the VMware version for your user
 		// cluster.
 		on_prem_version!: string
@@ -120,6 +120,18 @@ import "list"
 		// If set, there are currently changes in flight to the VMware
 		// User Cluster.
 		reconciling?: bool
+
+		// A list of validations to skip during preflight checks. Possible
+		// values: ["VALIDATION_SKIP_UNSPECIFIED", "ALL", "WORKSTATION",
+		// "CONFIG", "DOCKER", "INFRA", "LOAD_BALANCER", "VIPS",
+		// "NODE_IPS", "DNS", "TOD", "NET_CONFIG", "STORAGE_DRIVER",
+		// "PROXY", "INTERNET", "GCP", "GKEHUB", "RESERVED_IPS",
+		// "STACKDRIVER", "NODEPOOL_AUTOSCALING", "OS_IMAGES",
+		// "CLUSTER_VERSION", "CLUSTER_HEALTH", "WINDOWS",
+		// "HSM_SECRET_ENCRYPTION", "BACKUP_ADMIN", "CONNECTIVITY",
+		// "CLUSTER_SECRETS_CONFIG", "CSI_WORKLOAD", "VSPHERE_VERSION",
+		// "MIGRATION"]
+		skip_validations?: [...string]
 
 		// The current state of this cluster.
 		state?: string

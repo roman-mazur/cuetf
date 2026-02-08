@@ -5,8 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_iam_workload_identity_pool_provider")
 	close({
 		// [A Common Expression
-		// Language](https://opensource.google/projects/cel) expression,
-		// in
+		// Language](https://github.com/google/cel-spec) expression, in
 		// plain text, to restrict what otherwise valid authentication
 		// credentials issued by the
 		// provider should not be accepted.
@@ -73,7 +72,7 @@ package data
 		// 'principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}'
 		//
 		// Each value must be a [Common Expression
-		// Language](https://opensource.google/projects/cel)
+		// Language](https://github.com/google/cel-spec)
 		// function that maps an identity provider credential to the
 		// normalized attribute specified
 		// by the corresponding map key.

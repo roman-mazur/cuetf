@@ -833,6 +833,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_logging_project_bucket_config": res.#google_logging_project_bucket_config
 	_#res: "\(#googlePrefix)_logging_project_exclusion": res.#google_logging_project_exclusion
 	_#res: "\(#googlePrefix)_logging_project_sink": res.#google_logging_project_sink
+	_#res: "\(#googlePrefix)_logging_saved_query": res.#google_logging_saved_query
 	_#res: "\(#googlePrefix)_looker_instance": res.#google_looker_instance
 	_#res: "\(#googlePrefix)_lustre_instance": res.#google_lustre_instance
 	_#res: "\(#googlePrefix)_managed_kafka_acl": res.#google_managed_kafka_acl

@@ -34,15 +34,18 @@ import "list"
 
 		// A server defined name for this index. Format:
 		// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
-		name?: string
-		fields!: matchN(1, [#fields, [_, ...] & [...#fields]])
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// The scope at which a query is run. Default value: "COLLECTION"
 		// Possible values: ["COLLECTION", "COLLECTION_GROUP",
 		// "COLLECTION_RECURSIVE"]
 		query_scope?: string
+		fields!: matchN(1, [#fields, [_, ...] & [...#fields]])
+		timeouts?: #timeouts
+
+		// Whether to skip waiting for the index to be created.
+		skip_wait?: bool
 
 		// Whether it is an unique index. Unique index ensures all values
 		// for the indexed field(s) are unique across documents.
@@ -69,6 +72,7 @@ import "list"
 	#timeouts: close({
 		create?: string
 		delete?: string
+		update?: string
 	})
 
 	_#defs: "/$defs/fields/$defs/vector_config": close({

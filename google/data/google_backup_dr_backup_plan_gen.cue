@@ -66,7 +66,9 @@ package data
 		// The resource type to which the 'BackupPlan' will be applied.
 		// Examples include, "compute.googleapis.com/Instance",
 		// "compute.googleapis.com/Disk",
-		// "sqladmin.googleapis.com/Instance" and
+		// "sqladmin.googleapis.com/Instance",
+		// "alloydb.googleapis.com/Cluster",
+		// "file.googleapis.com/Instance" and
 		// "storage.googleapis.com/Bucket".
 		resource_type?: string
 
