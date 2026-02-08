@@ -53,6 +53,7 @@ import "github.com/roman-mazur/cuetf/github/data"
 	_#ds: "\(#githubPrefix)_organization_teams": data.#github_organization_teams
 	_#ds: "\(#githubPrefix)_organization_webhooks": data.#github_organization_webhooks
 	_#ds: "\(#githubPrefix)_ref": data.#github_ref
+	_#ds: "\(#githubPrefix)_release_asset": data.#github_release_asset
 	_#ds: "\(#githubPrefix)_release": data.#github_release
 	_#ds: "\(#githubPrefix)_repositories": data.#github_repositories
 	_#ds: "\(#githubPrefix)_repository_autolink_references": data.#github_repository_autolink_references

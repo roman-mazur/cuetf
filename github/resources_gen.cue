@@ -13,6 +13,8 @@ import "github.com/roman-mazur/cuetf/github/res"
 	_#res: "\(#githubPrefix)_actions_organization_secret_repositories": res.#github_actions_organization_secret_repositories
 	_#res: "\(#githubPrefix)_actions_organization_secret_repository": res.#github_actions_organization_secret_repository
 	_#res: "\(#githubPrefix)_actions_organization_variable": res.#github_actions_organization_variable
+	_#res: "\(#githubPrefix)_actions_organization_variable_repositories": res.#github_actions_organization_variable_repositories
+	_#res: "\(#githubPrefix)_actions_organization_variable_repository": res.#github_actions_organization_variable_repository
 	_#res: "\(#githubPrefix)_actions_organization_workflow_permissions": res.#github_actions_organization_workflow_permissions
 	_#res: "\(#githubPrefix)_actions_repository_access_level": res.#github_actions_repository_access_level
 	_#res: "\(#githubPrefix)_actions_repository_oidc_subject_claim_customization_template": res.#github_actions_repository_oidc_subject_claim_customization_template
@@ -32,6 +34,7 @@ import "github.com/roman-mazur/cuetf/github/res"
 	_#res: "\(#githubPrefix)_codespaces_user_secret": res.#github_codespaces_user_secret
 	_#res: "\(#githubPrefix)_dependabot_organization_secret": res.#github_dependabot_organization_secret
 	_#res: "\(#githubPrefix)_dependabot_organization_secret_repositories": res.#github_dependabot_organization_secret_repositories
+	_#res: "\(#githubPrefix)_dependabot_organization_secret_repository": res.#github_dependabot_organization_secret_repository
 	_#res: "\(#githubPrefix)_dependabot_secret": res.#github_dependabot_secret
 	_#res: "\(#githubPrefix)_emu_group_mapping": res.#github_emu_group_mapping
 	_#res: "\(#githubPrefix)_enterprise_actions_permissions": res.#github_enterprise_actions_permissions

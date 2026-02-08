@@ -114,7 +114,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 	}
 	resource_schemas: {
 		github_actions_environment_secret: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					created_at: {
@@ -128,7 +128,6 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description:      "Encrypted value of the secret using the GitHub public key in Base64 format."
 						description_kind: "plain"
 						optional:         true
-						sensitive:        true
 					}
 					environment: {
 						type:             "string"
@@ -142,6 +141,13 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						optional:         true
 						computed:         true
 					}
+					key_id: {
+						type:             "string"
+						description:      "ID of the public key used to encrypt the secret."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					plaintext_value: {
 						type:             "string"
 						description:      "Plaintext value of the secret to be encrypted."
@@ -149,11 +155,23 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						optional:         true
 						sensitive:        true
 					}
+					remote_updated_at: {
+						type:             "string"
+						description:      "Date of remote 'actions_environment_secret' update."
+						description_kind: "plain"
+						computed:         true
+					}
 					repository: {
 						type:             "string"
 						description:      "Name of the repository."
 						description_kind: "plain"
 						required:         true
+					}
+					repository_id: {
+						type:             "number"
+						description:      "ID of the repository."
+						description_kind: "plain"
+						computed:         true
 					}
 					secret_name: {
 						type:             "string"
@@ -172,7 +190,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 			}
 		}
 		github_actions_environment_variable: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					created_at: {
@@ -198,6 +216,12 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description:      "Name of the repository."
 						description_kind: "plain"
 						required:         true
+					}
+					repository_id: {
+						type:             "number"
+						description:      "ID of the repository."
+						description_kind: "plain"
+						computed:         true
 					}
 					updated_at: {
 						type:             "string"
@@ -401,6 +425,13 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						optional:         true
 						computed:         true
 					}
+					sha_pinning_required: {
+						type:             "bool"
+						description:      "Whether pinning to a specific SHA is required for all actions and reusable workflows in an organization."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 				}
 				block_types: {
 					allowed_actions_config: {
@@ -455,14 +486,14 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 				attributes: {
 					created_at: {
 						type:             "string"
-						description:      "Date of 'actions_secret' creation."
+						description:      "Date of secret creation."
 						description_kind: "plain"
 						computed:         true
 					}
 					destroy_on_drift: {
 						type:             "bool"
-						description:      "Boolean indicating whether to recreate the secret if it's modified outside of Terraform. When `true` (default), Terraform will delete and recreate the secret if it detects external changes. When `false`, Terraform will acknowledge external changes but not recreate the secret."
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					encrypted_value: {
@@ -478,12 +509,25 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						optional:         true
 						computed:         true
 					}
+					key_id: {
+						type:             "string"
+						description:      "ID of the public key used to encrypt the secret."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					plaintext_value: {
 						type:             "string"
 						description:      "Plaintext value of the secret to be encrypted."
 						description_kind: "plain"
 						optional:         true
 						sensitive:        true
+					}
+					remote_updated_at: {
+						type:             "string"
+						description:      "Date of secret update at the remote."
+						description_kind: "plain"
+						computed:         true
 					}
 					secret_name: {
 						type:             "string"
@@ -493,19 +537,20 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 					selected_repository_ids: {
 						type: ["set", "number"]
-						description:      "An array of repository ids that can access the organization secret."
+						description:      "An array of repository IDs that can access the organization secret."
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					updated_at: {
 						type:             "string"
-						description:      "Date of 'actions_secret' update."
+						description:      "Date of secret update."
 						description_kind: "plain"
 						computed:         true
 					}
 					visibility: {
 						type:             "string"
-						description:      "Configures the access that repositories have to the organization secret. Must be one of 'all', 'private', or 'selected'. 'selected_repository_ids' is required if set to 'selected'."
+						description:      "Configures the access that repositories have to the organization secret. Must be one of 'all', 'private', or 'selected'."
 						description_kind: "plain"
 						required:         true
 					}
@@ -608,6 +653,58 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					visibility: {
 						type:             "string"
 						description:      "Configures the access that repositories have to the organization variable. Must be one of 'all', 'private', or 'selected'. 'selected_repository_ids' is required if set to 'selected'."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		github_actions_organization_variable_repositories: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					selected_repository_ids: {
+						type: ["set", "number"]
+						description:      "An array of repository ids that can access the organization variable."
+						description_kind: "plain"
+						required:         true
+					}
+					variable_name: {
+						type:             "string"
+						description:      "Name of the existing variable."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		github_actions_organization_variable_repository: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					repository_id: {
+						type:             "number"
+						description:      "The repository ID that can access the organization variable."
+						description_kind: "plain"
+						required:         true
+					}
+					variable_name: {
+						type:             "string"
+						description:      "Name of the existing variable."
 						description_kind: "plain"
 						required:         true
 					}
@@ -738,6 +835,13 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description_kind: "plain"
 						required:         true
 					}
+					sha_pinning_required: {
+						type:             "bool"
+						description:      "Whether pinning to a specific SHA is required for all actions and reusable workflows in a repository."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 				}
 				block_types: allowed_actions_config: {
 					nesting_mode: "list"
@@ -851,19 +955,19 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 			}
 		}
 		github_actions_secret: {
-			version: 1
+			version: 2
 			block: {
 				attributes: {
 					created_at: {
 						type:             "string"
-						description:      "Date of 'actions_secret' creation."
+						description:      "Date of secret creation."
 						description_kind: "plain"
 						computed:         true
 					}
 					destroy_on_drift: {
 						type:             "bool"
-						description:      "Boolean indicating whether to recreate the secret if it's modified outside of Terraform. When `true` (default), Terraform will delete and recreate the secret if it detects external changes. When `false`, Terraform will acknowledge external changes but not recreate the secret."
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					encrypted_value: {
@@ -879,6 +983,13 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						optional:         true
 						computed:         true
 					}
+					key_id: {
+						type:             "string"
+						description:      "ID of the public key used to encrypt the secret."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					plaintext_value: {
 						type:             "string"
 						description:      "Plaintext value of the secret to be encrypted."
@@ -886,11 +997,23 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						optional:         true
 						sensitive:        true
 					}
+					remote_updated_at: {
+						type:             "string"
+						description:      "Date of secret update at the remote."
+						description_kind: "plain"
+						computed:         true
+					}
 					repository: {
 						type:             "string"
 						description:      "Name of the repository."
 						description_kind: "plain"
 						required:         true
+					}
+					repository_id: {
+						type:             "number"
+						description:      "ID of the repository."
+						description_kind: "plain"
+						computed:         true
 					}
 					secret_name: {
 						type:             "string"
@@ -900,7 +1023,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 					updated_at: {
 						type:             "string"
-						description:      "Date of 'actions_secret' update."
+						description:      "Date of secret update."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -909,7 +1032,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 			}
 		}
 		github_actions_variable: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					created_at: {
@@ -929,6 +1052,12 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description:      "Name of the repository."
 						description_kind: "plain"
 						required:         true
+					}
+					repository_id: {
+						type:             "number"
+						description:      "ID of the repository."
+						description_kind: "plain"
+						computed:         true
 					}
 					updated_at: {
 						type:             "string"
@@ -1682,12 +1811,25 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						optional:         true
 						computed:         true
 					}
+					key_id: {
+						type:             "string"
+						description:      "ID of the public key used to encrypt the secret."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					plaintext_value: {
 						type:             "string"
 						description:      "Plaintext value of the secret to be encrypted."
 						description_kind: "plain"
 						optional:         true
 						sensitive:        true
+					}
+					remote_updated_at: {
+						type:             "string"
+						description:      "Date of secret update at the remote."
+						description_kind: "plain"
+						computed:         true
 					}
 					secret_name: {
 						type:             "string"
@@ -1699,6 +1841,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						type: ["set", "number"]
 						description:      "An array of repository ids that can access the organization secret."
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					updated_at: {
@@ -1743,13 +1886,39 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 				description_kind: "plain"
 			}
 		}
-		github_dependabot_secret: {
+		github_dependabot_organization_secret_repository: {
 			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					repository_id: {
+						type:             "number"
+						description:      "The repository ID that can access the organization secret."
+						description_kind: "plain"
+						required:         true
+					}
+					secret_name: {
+						type:             "string"
+						description:      "Name of the existing secret."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		github_dependabot_secret: {
+			version: 1
 			block: {
 				attributes: {
 					created_at: {
 						type:             "string"
-						description:      "Date of 'dependabot_secret' creation."
+						description:      "Date of secret creation."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -1766,6 +1935,13 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						optional:         true
 						computed:         true
 					}
+					key_id: {
+						type:             "string"
+						description:      "ID of the public key used to encrypt the secret."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					plaintext_value: {
 						type:             "string"
 						description:      "Plaintext value of the secret to be encrypted."
@@ -1773,11 +1949,23 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						optional:         true
 						sensitive:        true
 					}
+					remote_updated_at: {
+						type:             "string"
+						description:      "Date of secret update at the remote."
+						description_kind: "plain"
+						computed:         true
+					}
 					repository: {
 						type:             "string"
 						description:      "Name of the repository."
 						description_kind: "plain"
 						required:         true
+					}
+					repository_id: {
+						type:             "number"
+						description:      "ID of the repository."
+						description_kind: "plain"
+						computed:         true
 					}
 					secret_name: {
 						type:             "string"
@@ -1787,7 +1975,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 					updated_at: {
 						type:             "string"
-						description:      "Date of 'dependabot_secret' update."
+						description:      "Date of secret update."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -1796,7 +1984,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 			}
 		}
 		github_emu_group_mapping: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					etag: {
@@ -1810,10 +1998,22 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description_kind: "plain"
 						required:         true
 					}
+					group_name: {
+						type:             "string"
+						description:      "Name of the external group."
+						description_kind: "plain"
+						computed:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					team_id: {
+						type:             "string"
+						description:      "ID of the GitHub team."
+						description_kind: "plain"
 						computed:         true
 					}
 					team_slug: {
@@ -1823,6 +2023,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						required:         true
 					}
 				}
+				description:      "Manages the mapping of an external group to a GitHub team."
 				description_kind: "plain"
 			}
 		}
@@ -2668,12 +2869,13 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 				attributes: {
 					enforcement: {
 						type:             "string"
-						description:      "Possible values for Enforcement are `disabled`, `active`, `evaluate`. Note: `evaluate` is currently only supported for owners of type `organization`."
+						description:      "The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Possible values are `disabled`, `active`, and `evaluate`. Note: `evaluate` is only available for Enterprise plans."
 						description_kind: "plain"
 						required:         true
 					}
 					etag: {
 						type:             "string"
+						description:      "An etag representing the ruleset for caching purposes."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -2703,7 +2905,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 					target: {
 						type:             "string"
-						description:      "Possible values are `branch`, `tag` and `push`. Note: The `push` target is in beta and is subject to change."
+						description:      "The target of the ruleset. Possible values are branch, tag and push."
 						description_kind: "plain"
 						required:         true
 					}
@@ -2721,7 +2923,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 								}
 								actor_type: {
 									type:             "string"
-									description:      "The type of actor that can bypass a ruleset. See https://docs.github.com/en/rest/orgs/rules for more information"
+									description:      "The type of actor that can bypass a ruleset. Can be one of: `Integration`, `OrganizationAdmin`, `RepositoryRole`, `Team`, or `DeployKey`."
 									description_kind: "plain"
 									required:         true
 								}
@@ -2763,9 +2965,9 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 												required:         true
 											}
 										}
+										description:      "Targets refs that match the specified patterns. Required for `branch` and `tag` targets."
 										description_kind: "plain"
 									}
-									min_items: 1
 									max_items: 1
 								}
 								repository_name: {
@@ -2791,12 +2993,13 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 												optional:         true
 											}
 										}
+										description:      "Targets repositories that match the specified name patterns."
 										description_kind: "plain"
 									}
 									max_items: 1
 								}
 							}
-							description:      "Parameters for an organization ruleset condition. `ref_name` is required alongside one of `repository_name` or `repository_id`."
+							description:      "Parameters for an organization ruleset condition. `ref_name` is required for `branch` and `tag` targets, but must not be set for `push` targets. One of `repository_name` or `repository_id` is always required."
 							description_kind: "plain"
 						}
 						max_items: 1
@@ -2819,7 +3022,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 								}
 								non_fast_forward: {
 									type:             "bool"
-									description:      "Prevent users with push access from force pushing to branches."
+									description:      "Prevent users with push access from force pushing to refs."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -3066,6 +3269,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 												description:      "Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled."
 												description_kind: "plain"
 												optional:         true
+												computed:         true
 											}
 											dismiss_stale_reviews_on_push: {
 												type:             "bool"
@@ -3096,6 +3300,50 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 												description:      "All conversations on code must be resolved before a pull request can be merged. Defaults to `false`."
 												description_kind: "plain"
 												optional:         true
+											}
+										}
+										block_types: required_reviewers: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													file_patterns: {
+														type: ["list", "string"]
+														description:      "File patterns (fnmatch syntax) that this reviewer must approve."
+														description_kind: "plain"
+														required:         true
+													}
+													minimum_approvals: {
+														type:             "number"
+														description:      "Minimum number of approvals required from this reviewer. Set to 0 to make approval optional."
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												block_types: reviewer: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															id: {
+																type:             "number"
+																description:      "The ID of the reviewer that must review."
+																description_kind: "plain"
+																required:         true
+															}
+															type: {
+																type:             "string"
+																description:      "The type of reviewer. Currently only `Team` is supported."
+																description_kind: "plain"
+																required:         true
+															}
+														}
+														description:      "The reviewer that must review matching files."
+														description_kind: "plain"
+													}
+													min_items: 1
+													max_items: 1
+												}
+												description:      "Require specific reviewers to approve pull requests targeting matching branches. Note: This feature is in beta and subject to change."
+												description_kind: "plain"
 											}
 										}
 										description:      "Require all commits be made to a non-target branch and submitted via a pull request before they can be merged."
@@ -3922,8 +4170,8 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 					ignore_vulnerability_alerts_during_read: {
 						type:             "bool"
-						description:      "Set to true to not call the vulnerability alerts endpoint so the resource can also be used without admin permissions during read."
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					is_template: {
@@ -4779,6 +5027,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						computed:         true
 					}
 				}
+				description:      "This resource allows you to create and manage files within a GitHub repository."
 				description_kind: "plain"
 			}
 		}
@@ -5040,7 +5289,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 					target: {
 						type:             "string"
-						description:      "Possible values are `branch`, `push` and `tag`."
+						description:      "Possible values are branch, push and tag"
 						description_kind: "plain"
 						required:         true
 					}
@@ -5426,6 +5675,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 												description:      "Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled."
 												description_kind: "plain"
 												optional:         true
+												computed:         true
 											}
 											dismiss_stale_reviews_on_push: {
 												type:             "bool"
@@ -5456,6 +5706,50 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 												description:      "All conversations on code must be resolved before a pull request can be merged. Defaults to `false`."
 												description_kind: "plain"
 												optional:         true
+											}
+										}
+										block_types: required_reviewers: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													file_patterns: {
+														type: ["list", "string"]
+														description:      "File patterns (fnmatch syntax) that this reviewer must approve."
+														description_kind: "plain"
+														required:         true
+													}
+													minimum_approvals: {
+														type:             "number"
+														description:      "Minimum number of approvals required from this reviewer. Set to 0 to make approval optional."
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												block_types: reviewer: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															id: {
+																type:             "number"
+																description:      "The ID of the reviewer that must review."
+																description_kind: "plain"
+																required:         true
+															}
+															type: {
+																type:             "string"
+																description:      "The type of reviewer. Currently only `Team` is supported."
+																description_kind: "plain"
+																required:         true
+															}
+														}
+														description:      "The reviewer that must review matching files."
+														description_kind: "plain"
+													}
+													min_items: 1
+													max_items: 1
+												}
+												description:      "Require specific reviewers to approve pull requests targeting matching branches. Note: This feature is in beta and subject to change."
+												description_kind: "plain"
 											}
 										}
 										description:      "Require all commits be made to a non-target branch and submitted via a pull request before they can be merged."
@@ -8099,6 +8393,105 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 					}
 				}
 				description:      "Use this data source to retrieve information about a GitHub release in a specific repository."
+				description_kind: "plain"
+			}
+		}
+		github_release_asset: {
+			version: 0
+			block: {
+				attributes: {
+					asset_id: {
+						type:             "number"
+						description:      "ID of the release asset to retrieve"
+						description_kind: "plain"
+						required:         true
+					}
+					browser_download_url: {
+						type:             "string"
+						description:      "Browser URL from which the release asset can be downloaded"
+						description_kind: "plain"
+						computed:         true
+					}
+					content_type: {
+						type:             "string"
+						description:      "MIME type of the asset"
+						description_kind: "plain"
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "Date the asset was created"
+						description_kind: "plain"
+						computed:         true
+					}
+					download_file_contents: {
+						type:             "bool"
+						description:      "Whether to download the asset file content into the `file_contents` attribute"
+						description_kind: "plain"
+						optional:         true
+					}
+					file_contents: {
+						type:             "string"
+						description:      "The base64-encoded release asset file contents (requires `download_file_contents` to be `true`)"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					label: {
+						type:             "string"
+						description:      "Label for the asset"
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "File name of the asset"
+						description_kind: "plain"
+						computed:         true
+					}
+					node_id: {
+						type:             "string"
+						description:      "Node ID of the asset"
+						description_kind: "plain"
+						computed:         true
+					}
+					owner: {
+						type:             "string"
+						description:      "Owner of the repository"
+						description_kind: "plain"
+						required:         true
+					}
+					repository: {
+						type:             "string"
+						description:      "Name of the repository to retrieve the release asset from"
+						description_kind: "plain"
+						required:         true
+					}
+					size: {
+						type:             "number"
+						description:      "Asset size in bytes"
+						description_kind: "plain"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "Date the asset was updated"
+						description_kind: "plain"
+						computed:         true
+					}
+					url: {
+						type:             "string"
+						description:      "URL of the asset"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description:      "Retrieve information about a GitHub release asset."
 				description_kind: "plain"
 			}
 		}

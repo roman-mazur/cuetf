@@ -92,11 +92,7 @@ import "list"
 		id?:             string
 		pages?: matchN(1, [#pages, list.MaxItems(1) & [...#pages]])
 		security_and_analysis?: matchN(1, [#security_and_analysis, list.MaxItems(1) & [...#security_and_analysis]])
-
-		// Set to true to not call the vulnerability alerts endpoint so
-		// the resource can also be used without admin permissions during
-		// read.
-		ignore_vulnerability_alerts_during_read?: bool
+		template?: matchN(1, [#template, list.MaxItems(1) & [...#template]])
 
 		// Set to 'true' to tell GitHub that this is a template
 		// repository.
@@ -118,15 +114,14 @@ import "list"
 		name!: string
 
 		// GraphQL global node id for use with v4 API.
-		node_id?: string
+		node_id?:          string
+		primary_language?: string
 
 		// GitHub ID for the repository.
-		repo_id?:          number
-		primary_language?: string
+		repo_id?: number
 
 		// The owner of the source repository to fork from.
 		source_owner?: string
-		template?: matchN(1, [#template, list.MaxItems(1) & [...#template]])
 
 		// The name of the source repository to fork from.
 		source_repo?: string

@@ -11,16 +11,18 @@ package res
 		// Base64 format.
 		encrypted_value?: string
 
+		// ID of the public key used to encrypt the secret.
+		key_id?: string
+
 		// Plaintext value of the secret to be encrypted.
 		plaintext_value?: string
 
+		// Date of secret update at the remote.
+		remote_updated_at?: string
+		id?:                string
+
 		// Name of the secret.
 		secret_name!: string
-
-		// An array of repository ids that can access the organization
-		// secret.
-		selected_repository_ids?: [...number]
-		id?: string
 
 		// Date of 'dependabot_secret' update.
 		updated_at?: string

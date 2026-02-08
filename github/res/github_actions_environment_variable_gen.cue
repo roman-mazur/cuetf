@@ -12,10 +12,13 @@ package res
 
 		// Name of the repository.
 		repository!: string
-		id?:         string
+
+		// ID of the repository.
+		repository_id?: number
 
 		// Date of 'actions_variable' update.
 		updated_at?: string
+		id?:         string
 
 		// Value of the variable.
 		value!: string
