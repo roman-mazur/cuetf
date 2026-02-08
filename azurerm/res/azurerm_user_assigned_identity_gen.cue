@@ -7,6 +7,7 @@ package res
 		timeouts?:            #timeouts
 		client_id?:           string
 		id?:                  string
+		isolation_scope?:     string
 		location!:            string
 		name!:                string
 		principal_id?:        string

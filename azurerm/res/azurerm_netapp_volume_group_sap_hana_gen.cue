@@ -25,15 +25,18 @@ import "list"
 	})
 
 	#volume: close({
-		capacity_pool_id!: string
-		data_protection_replication?: matchN(1, [_#defs."/$defs/volume/$defs/data_protection_replication", list.MaxItems(1) & [..._#defs."/$defs/volume/$defs/data_protection_replication"]])
-		id?: string
+		capacity_pool_id!:              string
+		encryption_key_source?:         string
+		id?:                            string
+		key_vault_private_endpoint_id?: string
 		mount_ip_addresses?: [...string]
-		name!: string
+		name!:             string
+		network_features?: string
 		protocols!: [...string]
 		proximity_placement_group_id?: string
 		security_style!:               string
 		service_level!:                string
+		data_protection_replication?: matchN(1, [_#defs."/$defs/volume/$defs/data_protection_replication", list.MaxItems(1) & [..._#defs."/$defs/volume/$defs/data_protection_replication"]])
 		data_protection_snapshot_policy?: matchN(1, [_#defs."/$defs/volume/$defs/data_protection_snapshot_policy", list.MaxItems(1) & [..._#defs."/$defs/volume/$defs/data_protection_snapshot_policy"]])
 		snapshot_directory_visible!: bool
 		storage_quota_in_gb!:        number
@@ -43,6 +46,7 @@ import "list"
 		volume_path!:         string
 		volume_spec_name!:    string
 		export_policy_rule!: matchN(1, [_#defs."/$defs/volume/$defs/export_policy_rule", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/volume/$defs/export_policy_rule"]])
+		zone?: string
 	})
 
 	_#defs: "/$defs/volume/$defs/data_protection_replication": close({

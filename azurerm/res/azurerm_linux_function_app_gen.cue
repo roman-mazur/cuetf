@@ -796,8 +796,8 @@ import "list"
 		// `7`, `7.2`, and `7.4`
 		powershell_core_version?: string
 
-		// The version of Python to use. Possible values include `3.13`,
-		// `3.12`, `3.11`, `3.10`, `3.9`, `3.8`, and `3.7`.
+		// The version of Python to use. Possible values include `3.14`,
+		// `3.13`, `3.12`, `3.11`, `3.10`, `3.9`, `3.8`, and `3.7`.
 		python_version?: string
 		docker?: matchN(1, [_#defs."/$defs/site_config/$defs/application_stack/$defs/docker", [..._#defs."/$defs/site_config/$defs/application_stack/$defs/docker"]])
 		use_custom_runtime?: bool
