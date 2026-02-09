@@ -49,6 +49,11 @@ package data
 			backup_name?: string
 		})]
 
+		// Cluster created from a BackupDR backup.
+		backupdr_backup_source?: [...close({
+			backup?: string
+		})]
+
 		// The ID of the alloydb cluster.
 		cluster_id!: string
 
@@ -138,7 +143,6 @@ package data
 
 		// For Resource freshness validation (https://google.aip.dev/154)
 		etag?: string
-		id?:   string
 
 		// Initial user to setup during cluster creation. If unset for new
 		// Clusters, a postgres role with null password is created. You
@@ -148,6 +152,7 @@ package data
 			password?: string
 			user?:     string
 		})]
+		id?: string
 
 		// User-defined labels for the alloydb cluster.
 		//
@@ -207,15 +212,34 @@ package data
 		reconciling?: bool
 
 		// The source when restoring from a backup. Conflicts with
-		// 'restore_continuous_backup_source', both can't be set
-		// together.
+		// 'restore_continuous_backup_source',
+		// 'restore_backupdr_backup_source' and
+		// 'restore_backupdr_pitr_source', they can't be set together.
 		restore_backup_source?: [...close({
 			backup_name?: string
 		})]
 
-		// The source when restoring via point in time recovery (PITR).
-		// Conflicts with 'restore_backup_source', both can't be set
+		// The source when restoring from a backup. Conflicts with
+		// 'restore_continuous_backup_source', 'restore_backup_source'
+		// and 'restore_backupdr_pitr_source', they can't be set
 		// together.
+		restore_backupdr_backup_source?: [...close({
+			backup?: string
+		})]
+
+		// The BackupDR source used for point in time recovery. Conflicts
+		// with 'restore_backupdr_backup_source',
+		// 'restore_continuous_backup_source' and
+		// 'restore_backupdr_backup_source', they can't be set togeter.
+		restore_backupdr_pitr_source?: [...close({
+			data_source?:   string
+			point_in_time?: string
+		})]
+
+		// The source when restoring via point in time recovery (PITR).
+		// Conflicts with 'restore_backup_source',
+		// 'restore_backupdr_backup_source' and
+		// 'restore_backupdr_pitr_source', they can't be set together.
 		restore_continuous_backup_source?: [...close({
 			cluster?:       string
 			point_in_time?: string

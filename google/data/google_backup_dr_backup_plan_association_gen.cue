@@ -12,6 +12,8 @@ package data
 		// - A Backup Plan configured for 'compute.googleapis.com/Disk'
 		// can be used to protect both standard Disks and Regional Disks
 		// resources.
+		// - A Backup Plan configured for 'file.googleapis.com/Instance'
+		// can only protect Filestore instances.
 		backup_plan?: string
 
 		// The id of backupplan association
@@ -24,25 +26,22 @@ package data
 		// location for backups taken
 		data_source?: string
 
-		// The point in time when the last successful backup was captured
-		// from the source
-		last_successful_backup_consistency_time?: string
-		id?:                                      string
-
 		// The location for the backupplan association
 		location!: string
+		id?:       string
 
 		// The name of backup plan association resource created
-		name?: string
+		name?:    string
+		project?: string
 
 		// The resource for which BPA needs to be created
 		resource?: string
-		project?:  string
 
 		// The resource type of workload on which backupplan is applied.
 		// Examples include, "compute.googleapis.com/Instance",
-		// "compute.googleapis.com/Disk", and
-		// "compute.googleapis.com/RegionDisk"
+		// "compute.googleapis.com/Disk",
+		// "compute.googleapis.com/RegionDisk", and
+		// "file.googleapis.com/Instance"
 		resource_type?: string
 
 		// Message for rules config info
@@ -51,8 +50,9 @@ package data
 				code?:    number
 				message?: string
 			})]
-			last_backup_state?: string
-			rule_id?:           string
+			last_backup_state?:                       string
+			last_successful_backup_consistency_time?: string
+			rule_id?:                                 string
 		})]
 
 		// The time when the instance was updated.

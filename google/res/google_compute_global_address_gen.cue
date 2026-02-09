@@ -87,8 +87,8 @@ package res
 		// * VPC_PEERING - for peer networks
 		//
 		// * PRIVATE_SERVICE_CONNECT - for
-		// ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)
-		// only) Private Service Connect networks
+		// ([Beta](../guides/provider_versions.html.markdown)) only)
+		// Private Service Connect networks
 		purpose?:   string
 		self_link?: string
 

@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_sql_user")
 	close({
+		// A list of database roles to be assigned to the user. This
+		// option is only available for MySQL and PostgreSQL instances.
+		database_roles?: [...string]
+
 		// The deletion policy for the user. Setting ABANDON allows the
 		// resource
 		// to be abandoned rather than deleted. This is useful for
@@ -18,7 +22,10 @@ import "list"
 		// instances. Can be an IP address. Changing this forces a new
 		// resource to be created.
 		host?: string
-		id?:   string
+
+		// The email address for MySQL IAM database users.
+		iam_email?: string
+		id?:        string
 
 		// The name of the Cloud SQL instance. Changing this forces a new
 		// resource to be created.
@@ -37,24 +44,24 @@ import "list"
 		// instances this is a Required field, unless type is set to
 		// either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
 		password_wo?: string
+		password_policy?: matchN(1, [#password_policy, list.MaxItems(1) & [...#password_policy]])
+		timeouts?: #timeouts
 
 		// The version of the password_wo.
 		password_wo_version?: number
-		password_policy?: matchN(1, [#password_policy, list.MaxItems(1) & [...#password_policy]])
-		timeouts?: #timeouts
 
 		// The ID of the project in which the resource belongs. If it is
 		// not provided, the provider project is used.
 		project?: string
+		sql_server_user_details?: [...close({
+			disabled?: bool
+			server_roles?: [...string]
+		})]
 
 		// The user type. It determines the method to authenticate the
 		// user during login.
 		// The default is the database's built-in user type.
 		type?: string
-		sql_server_user_details?: [...close({
-			disabled?: bool
-			server_roles?: [...string]
-		})]
 	})
 
 	#password_policy: close({

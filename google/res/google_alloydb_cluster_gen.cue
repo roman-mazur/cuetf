@@ -18,10 +18,16 @@ import "list"
 		// Please refer to the field 'effective_annotations' for all of
 		// the annotations present on the resource.
 		annotations?: [string]: string
+		automated_backup_policy?: matchN(1, [#automated_backup_policy, list.MaxItems(1) & [...#automated_backup_policy]])
 
 		// Cluster created from backup.
 		backup_source?: [...close({
 			backup_name?: string
+		})]
+
+		// Cluster created from a BackupDR backup.
+		backupdr_backup_source?: [...close({
+			backup?: string
 		})]
 
 		// The ID of the alloydb cluster.
@@ -102,10 +108,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-
-		// The location where the alloydb cluster should reside.
-		location!: string
-		automated_backup_policy?: matchN(1, [#automated_backup_policy, list.MaxItems(1) & [...#automated_backup_policy]])
 		continuous_backup_config?: matchN(1, [#continuous_backup_config, list.MaxItems(1) & [...#continuous_backup_config]])
 		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
 		initial_user?: matchN(1, [#initial_user, list.MaxItems(1) & [...#initial_user]])
@@ -113,9 +115,14 @@ import "list"
 		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
 		psc_config?: matchN(1, [#psc_config, list.MaxItems(1) & [...#psc_config]])
 		restore_backup_source?: matchN(1, [#restore_backup_source, list.MaxItems(1) & [...#restore_backup_source]])
+		restore_backupdr_backup_source?: matchN(1, [#restore_backupdr_backup_source, list.MaxItems(1) & [...#restore_backupdr_backup_source]])
+		restore_backupdr_pitr_source?: matchN(1, [#restore_backupdr_pitr_source, list.MaxItems(1) & [...#restore_backupdr_pitr_source]])
 		restore_continuous_backup_source?: matchN(1, [#restore_continuous_backup_source, list.MaxItems(1) & [...#restore_continuous_backup_source]])
 		secondary_config?: matchN(1, [#secondary_config, list.MaxItems(1) & [...#secondary_config]])
 		timeouts?: #timeouts
+
+		// The location where the alloydb cluster should reside.
+		location!: string
 
 		// Cluster created via DMS migration.
 		migration_source?: [...close({
@@ -263,6 +270,24 @@ import "list"
 	#restore_backup_source: close({
 		// The name of the backup that this cluster is restored from.
 		backup_name!: string
+	})
+
+	#restore_backupdr_backup_source: close({
+		// The name of the BackupDR backup that this cluster is restored
+		// from. It must be of the format
+		// "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]/backups/[BACKUP_ID]"
+		backup!: string
+	})
+
+	#restore_backupdr_pitr_source: close({
+		// The name of the BackupDR data source that this cluster is
+		// restore from. It must be of the format
+		// "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]"
+		data_source!: string
+
+		// The point in time that this cluster is restored to, in RFC 3339
+		// format.
+		point_in_time!: string
 	})
 
 	#restore_continuous_backup_source: close({

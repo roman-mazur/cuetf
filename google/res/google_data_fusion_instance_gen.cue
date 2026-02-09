@@ -64,6 +64,9 @@ import "list"
 		// P4 service account for the customer project.
 		p4_service_account?: string
 
+		// Current patch revision of the Data Fusion.
+		patch_revision?: string
+
 		// Specifies whether the Data Fusion instance should be private.
 		// If set to
 		// true, all Data Fusion nodes will have private IP addresses and

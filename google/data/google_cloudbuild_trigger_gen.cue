@@ -185,9 +185,6 @@ package data
 
 		// Describes the configuration of a trigger that creates a build
 		// whenever a GitHub event is received.
-		//
-		// One of 'trigger_template', 'github', 'pubsub_config' or
-		// 'webhook_config' must be provided.
 		github?: [...close({
 			enterprise_config_resource_name?: string
 			name?:                            string
@@ -258,9 +255,6 @@ package data
 		// PubsubConfig describes the configuration of a trigger that
 		// creates
 		// a build whenever a Pub/Sub message is published.
-		//
-		// One of 'trigger_template', 'github', 'pubsub_config'
-		// 'webhook_config' or 'source_to_build' must be provided.
 		pubsub_config?: [...close({
 			service_account_email?: string
 			state?:                 string
@@ -305,9 +299,6 @@ package data
 		// commit caused the event.
 		// This field is currently only used by Webhook, Pub/Sub, Manual,
 		// and Cron triggers.
-		//
-		// One of 'trigger_template', 'github', 'pubsub_config'
-		// 'webhook_config' or 'source_to_build' must be provided.
 		source_to_build?: [...close({
 			bitbucket_server_config?:  string
 			github_enterprise_config?: string
@@ -333,9 +324,6 @@ package data
 		// regular
 		// expressions. Any branch or tag change that matches that regular
 		// expression will trigger a build.
-		//
-		// One of 'trigger_template', 'github', 'pubsub_config',
-		// 'webhook_config' or 'source_to_build' must be provided.
 		trigger_template?: [...close({
 			branch_name?:  string
 			commit_sha?:   string
@@ -349,9 +337,6 @@ package data
 		// WebhookConfig describes the configuration of a trigger that
 		// creates
 		// a build whenever a webhook is sent to a trigger's webhook URL.
-		//
-		// One of 'trigger_template', 'github', 'pubsub_config'
-		// 'webhook_config' or 'source_to_build' must be provided.
 		webhook_config?: [...close({
 			secret?: string
 			state?:  string
