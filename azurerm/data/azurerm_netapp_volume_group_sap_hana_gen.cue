@@ -23,6 +23,7 @@ package data
 			data_protection_snapshot_policy?: [...close({
 				snapshot_policy_id?: string
 			})]
+			encryption_key_source?: string
 			export_policy_rule?: [...close({
 				allowed_clients?:     string
 				nfsv3_enabled?:       bool
@@ -32,9 +33,11 @@ package data
 				unix_read_only?:      bool
 				unix_read_write?:     bool
 			})]
-			id?: string
+			id?:                            string
+			key_vault_private_endpoint_id?: string
 			mount_ip_addresses?: [...string]
-			name?: string
+			name?:             string
+			network_features?: string
 			protocols?: [...string]
 			proximity_placement_group_id?: string
 			security_style?:               string
@@ -46,6 +49,7 @@ package data
 			throughput_in_mibps?: number
 			volume_path?:         string
 			volume_spec_name?:    string
+			zone?:                string
 		})]
 	})
 

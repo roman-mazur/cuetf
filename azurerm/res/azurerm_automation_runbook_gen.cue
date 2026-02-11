@@ -7,10 +7,9 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_automation_runbook")
 	close({
 		automation_account_name!: string
-		draft?: matchN(1, [#draft, list.MaxItems(1) & [...#draft]])
-		content?:     string
-		description?: string
-		id?:          string
+		content?:                 string
+		description?:             string
+		id?:                      string
 		job_schedule?: [...close({
 			job_schedule_id?: string
 			parameters?: [string]: string
@@ -19,14 +18,16 @@ import "list"
 		})]
 		location!:                 string
 		log_activity_trace_level?: number
+		log_progress!:             bool
+		draft?: matchN(1, [#draft, list.MaxItems(1) & [...#draft]])
 		publish_content_link?: matchN(1, [#publish_content_link, list.MaxItems(1) & [...#publish_content_link]])
-		log_progress!:        bool
-		log_verbose!:         bool
-		name!:                string
-		resource_group_name!: string
-		runbook_type!:        string
+		log_verbose!:              bool
+		name!:                     string
+		timeouts?:                 #timeouts
+		resource_group_name!:      string
+		runbook_type!:             string
+		runtime_environment_name?: string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#draft: close({
