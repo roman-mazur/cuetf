@@ -4,11 +4,10 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_odb_cloud_autonomous_vm_cluster")
 	close({
-		arn?: string
-
 		// The percentage of data storage currently in use for Autonomous
 		// Databases in the Autonomous VM cluster.
 		autonomous_data_storage_percentage?: number
+		arn?:                                string
 
 		// The data storage size allocated for Autonomous Databases in the
 		// Autonomous VM cluster, in TB.
@@ -25,6 +24,10 @@ package data
 		// The number of CPU cores available for allocation to Autonomous
 		// Databases.
 		available_cpus?: number
+
+		// Cloud exadata infrastructure arn associated with this cloud
+		// autonomous VM cluster.
+		cloud_exadata_infrastructure_arn?: string
 
 		// Cloud exadata infrastructure id associated with this cloud
 		// autonomous VM cluster.
@@ -131,6 +134,10 @@ package data
 		// The Oracle Cloud Identifier (OCID) of the Autonomous VM
 		// cluster.
 		ocid?: string
+
+		// The arn of the ODB network associated with this Autonomous VM
+		// cluster.
+		odb_network_arn?: string
 
 		// The unique identifier of the ODB network associated with this
 		// Autonomous VM cluster.

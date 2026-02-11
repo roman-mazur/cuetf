@@ -4,11 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_odb_cloud_autonomous_vm_cluster")
 	close({
-		arn?: string
-
 		// The progress of the current operation on the Autonomous VM
 		// cluster, as a percentage.
 		autonomous_data_storage_percentage?: number
+		arn?:                                string
 
 		// The data storage size allocated for Autonomous Databases in the
 		// Autonomous VM cluster, in TB. Changing this will force
@@ -27,9 +26,13 @@ package res
 		// Databases
 		available_cpus?: number
 
+		// The unique identifier of the Exadata infrastructure for this VM
+		// cluster. Changing this will create a new resource.
+		cloud_exadata_infrastructure_arn?: string
+
 		// Exadata infrastructure id. Changing this will force terraform
 		// to create new resource.
-		cloud_exadata_infrastructure_id!: string
+		cloud_exadata_infrastructure_id?: string
 
 		// The compute model of the Autonomous VM cluster: ECPU or OCPU.
 		compute_model?: string
@@ -107,12 +110,12 @@ package res
 		// The number of Autonomous CDBs that can't be provisioned because
 		// of resource constraints.
 		non_provisionable_autonomous_container_databases?: number
-		maintenance_window?: matchN(1, [#maintenance_window, [...#maintenance_window]])
-		timeouts?: #timeouts
 
 		// The name of the OCI resource anchor associated with this
 		// Autonomous VM cluster.
 		oci_resource_anchor_name?: string
+		maintenance_window?: matchN(1, [#maintenance_window, [...#maintenance_window]])
+		timeouts?: #timeouts
 
 		// The URL for accessing the OCI console page for this Autonomous
 		// VM cluster.
@@ -122,10 +125,15 @@ package res
 		// cluster.
 		ocid?: string
 
+		// The unique identifier of the ODB network for the VM cluster.
+		// This member is required. Changing this will create a new
+		// resource.
+		odb_network_arn?: string
+
 		// The unique identifier of the ODB network associated with this
 		// Autonomous VM Cluster. Changing this will force terraform to
 		// create new resource.
-		odb_network_id!: string
+		odb_network_id?: string
 
 		// The local node storage allocated to the Autonomous VM cluster,
 		// in gigabytes (GB)

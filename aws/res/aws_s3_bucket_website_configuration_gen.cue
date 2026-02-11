@@ -6,9 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_s3_bucket_website_configuration")
 	close({
-		bucket!:                string
-		expected_bucket_owner?: string
-		id?:                    string
+		bucket!: string
+		error_document?: matchN(1, [#error_document, list.MaxItems(1) & [...#error_document]])
+		id?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -17,9 +17,8 @@ import "list"
 		region?:         string
 		routing_rules?:  string
 		website_domain?: string
-		error_document?: matchN(1, [#error_document, list.MaxItems(1) & [...#error_document]])
-		website_endpoint?: string
 		index_document?: matchN(1, [#index_document, list.MaxItems(1) & [...#index_document]])
+		website_endpoint?: string
 		redirect_all_requests_to?: matchN(1, [#redirect_all_requests_to, list.MaxItems(1) & [...#redirect_all_requests_to]])
 		routing_rule?: matchN(1, [#routing_rule, [...#routing_rule]])
 	})

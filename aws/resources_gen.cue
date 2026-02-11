@@ -1437,6 +1437,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_ssoadmin_application_assignment": res.#aws_ssoadmin_application_assignment
 	_#res: "\(#awsPrefix)_ssoadmin_application": res.#aws_ssoadmin_application
 	_#res: "\(#awsPrefix)_ssoadmin_customer_managed_policy_attachment": res.#aws_ssoadmin_customer_managed_policy_attachment
+	_#res: "\(#awsPrefix)_ssoadmin_customer_managed_policy_attachments_exclusive": res.#aws_ssoadmin_customer_managed_policy_attachments_exclusive
 	_#res: "\(#awsPrefix)_ssoadmin_instance_access_control_attributes": res.#aws_ssoadmin_instance_access_control_attributes
 	_#res: "\(#awsPrefix)_ssoadmin_managed_policy_attachment": res.#aws_ssoadmin_managed_policy_attachment
 	_#res: "\(#awsPrefix)_ssoadmin_managed_policy_attachments_exclusive": res.#aws_ssoadmin_managed_policy_attachments_exclusive

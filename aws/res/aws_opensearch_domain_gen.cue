@@ -55,6 +55,7 @@ import "list"
 	#aiml_options: close({
 		natural_language_query_generation_options?: matchN(1, [_#defs."/$defs/aiml_options/$defs/natural_language_query_generation_options", list.MaxItems(1) & [..._#defs."/$defs/aiml_options/$defs/natural_language_query_generation_options"]])
 		s3_vectors_engine?: matchN(1, [_#defs."/$defs/aiml_options/$defs/s3_vectors_engine", list.MaxItems(1) & [..._#defs."/$defs/aiml_options/$defs/s3_vectors_engine"]])
+		serverless_vector_acceleration?: matchN(1, [_#defs."/$defs/aiml_options/$defs/serverless_vector_acceleration", list.MaxItems(1) & [..._#defs."/$defs/aiml_options/$defs/serverless_vector_acceleration"]])
 	})
 
 	#auto_tune_options: close({
@@ -162,6 +163,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/aiml_options/$defs/s3_vectors_engine": close({
+		enabled?: bool
+	})
+
+	_#defs: "/$defs/aiml_options/$defs/serverless_vector_acceleration": close({
 		enabled?: bool
 	})
 

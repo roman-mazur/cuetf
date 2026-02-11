@@ -5,6 +5,7 @@ import "github.com/roman-mazur/cuetf/aws/data"
 #Terraform: {
 	#awsPrefix: string
 	_#ds: "\(#awsPrefix)_account_primary_contact": data.#aws_account_primary_contact
+	_#ds: "\(#awsPrefix)_account_regions": data.#aws_account_regions
 	_#ds: "\(#awsPrefix)_acm_certificate": data.#aws_acm_certificate
 	_#ds: "\(#awsPrefix)_acmpca_certificate_authority": data.#aws_acmpca_certificate_authority
 	_#ds: "\(#awsPrefix)_acmpca_certificate": data.#aws_acmpca_certificate
