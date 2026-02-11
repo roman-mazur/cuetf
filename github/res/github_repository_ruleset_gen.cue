@@ -28,7 +28,7 @@ import "list"
 		// GitHub ID for the ruleset.
 		ruleset_id?: number
 
-		// Possible values are `branch`, `push` and `tag`.
+		// Possible values are branch, push and tag
 		target!: string
 	})
 
@@ -266,6 +266,26 @@ import "list"
 		// All conversations on code must be resolved before a pull
 		// request can be merged. Defaults to `false`.
 		required_review_thread_resolution?: bool
+		required_reviewers?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers", [..._#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers"]])
+	})
+
+	_#defs: "/$defs/rules/$defs/pull_request/$defs/required_reviewers": close({
+		reviewer!: matchN(1, [_#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers/$defs/reviewer", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers/$defs/reviewer"]])
+
+		// File patterns (fnmatch syntax) that this reviewer must approve.
+		file_patterns!: [...string]
+
+		// Minimum number of approvals required from this reviewer. Set to
+		// 0 to make approval optional.
+		minimum_approvals!: number
+	})
+
+	_#defs: "/$defs/rules/$defs/pull_request/$defs/required_reviewers/$defs/reviewer": close({
+		// The ID of the reviewer that must review.
+		id!: number
+
+		// The type of reviewer. Currently only `Team` is supported.
+		type!: string
 	})
 
 	_#defs: "/$defs/rules/$defs/required_code_scanning": close({

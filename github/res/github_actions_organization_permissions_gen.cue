@@ -10,14 +10,18 @@ import "list"
 		// allowed to run. Can be one of: 'all', 'local_only', or
 		// 'selected'.
 		allowed_actions?: string
-		allowed_actions_config?: matchN(1, [#allowed_actions_config, list.MaxItems(1) & [...#allowed_actions_config]])
-		enabled_repositories_config?: matchN(1, [#enabled_repositories_config, list.MaxItems(1) & [...#enabled_repositories_config]])
 
 		// The policy that controls the repositories in the organization
 		// that are allowed to run GitHub Actions. Can be one of: 'all',
 		// 'none', or 'selected'.
 		enabled_repositories!: string
+
+		// Whether pinning to a specific SHA is required for all actions
+		// and reusable workflows in an organization.
+		sha_pinning_required?: bool
 		id?:                   string
+		allowed_actions_config?: matchN(1, [#allowed_actions_config, list.MaxItems(1) & [...#allowed_actions_config]])
+		enabled_repositories_config?: matchN(1, [#enabled_repositories_config, list.MaxItems(1) & [...#enabled_repositories_config]])
 	})
 
 	#allowed_actions_config: close({

@@ -13,11 +13,15 @@ import "list"
 
 		// Should GitHub actions be enabled on this repository.
 		enabled?: bool
-		id?:      string
-		allowed_actions_config?: matchN(1, [#allowed_actions_config, list.MaxItems(1) & [...#allowed_actions_config]])
 
 		// The GitHub repository.
 		repository!: string
+		id?:         string
+		allowed_actions_config?: matchN(1, [#allowed_actions_config, list.MaxItems(1) & [...#allowed_actions_config]])
+
+		// Whether pinning to a specific SHA is required for all actions
+		// and reusable workflows in a repository.
+		sha_pinning_required?: bool
 	})
 
 	#allowed_actions_config: close({

@@ -14,12 +14,21 @@ package res
 		// Name of the environment.
 		environment!: string
 
+		// ID of the public key used to encrypt the secret.
+		key_id?: string
+		id?:     string
+
 		// Plaintext value of the secret to be encrypted.
 		plaintext_value?: string
 
+		// Date of remote 'actions_environment_secret' update.
+		remote_updated_at?: string
+
 		// Name of the repository.
 		repository!: string
-		id?:         string
+
+		// ID of the repository.
+		repository_id?: number
 
 		// Name of the secret.
 		secret_name!: string

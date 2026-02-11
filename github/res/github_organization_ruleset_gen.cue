@@ -6,28 +6,31 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_organization_ruleset")
 	close({
-		// Possible values for Enforcement are `disabled`, `active`,
-		// `evaluate`. Note: `evaluate` is currently only supported for
-		// owners of type `organization`.
+		// The enforcement level of the ruleset. `evaluate` allows admins
+		// to test rules before enforcing them. Possible values are
+		// `disabled`, `active`, and `evaluate`. Note: `evaluate` is only
+		// available for Enterprise plans.
 		enforcement!: string
+
+		// An etag representing the ruleset for caching purposes.
+		etag?: string
 
 		// The name of the ruleset.
 		name!: string
-		etag?: string
+		id?:   string
 
 		// GraphQL global node id for use with v4 API.
 		node_id?: string
-		id?:      string
+		bypass_actors?: matchN(1, [#bypass_actors, [...#bypass_actors]])
 
 		// GitHub ID for the ruleset.
 		ruleset_id?: number
-
-		// Possible values are `branch`, `tag` and `push`. Note: The
-		// `push` target is in beta and is subject to change.
-		target!: string
-		bypass_actors?: matchN(1, [#bypass_actors, [...#bypass_actors]])
 		conditions?: matchN(1, [#conditions, list.MaxItems(1) & [...#conditions]])
 		rules!: matchN(1, [#rules, list.MaxItems(1) & [_, ...] & [...#rules]])
+
+		// The target of the ruleset. Possible values are branch, tag and
+		// push.
+		target!: string
 	})
 
 	#bypass_actors: close({
@@ -37,9 +40,9 @@ import "list"
 		// this should be omitted.
 		actor_id?: number
 
-		// The type of actor that can bypass a ruleset. See
-		// https://docs.github.com/en/rest/orgs/rules for more
-		// information
+		// The type of actor that can bypass a ruleset. Can be one of:
+		// `Integration`, `OrganizationAdmin`, `RepositoryRole`, `Team`,
+		// or `DeployKey`.
 		actor_type!: string
 
 		// When the specified actor can bypass the ruleset. pull_request
@@ -49,7 +52,7 @@ import "list"
 	})
 
 	#conditions: close({
-		ref_name!: matchN(1, [_#defs."/$defs/conditions/$defs/ref_name", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/conditions/$defs/ref_name"]])
+		ref_name?: matchN(1, [_#defs."/$defs/conditions/$defs/ref_name", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/ref_name"]])
 		repository_name?: matchN(1, [_#defs."/$defs/conditions/$defs/repository_name", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/repository_name"]])
 
 		// The repository IDs that the ruleset applies to. One of these
@@ -67,7 +70,7 @@ import "list"
 		// refs.
 		deletion?: bool
 
-		// Prevent users with push access from force pushing to branches.
+		// Prevent users with push access from force pushing to refs.
 		non_fast_forward?: bool
 
 		// Prevent merge commits from being pushed to matching branches.
@@ -239,6 +242,26 @@ import "list"
 		// All conversations on code must be resolved before a pull
 		// request can be merged. Defaults to `false`.
 		required_review_thread_resolution?: bool
+		required_reviewers?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers", [..._#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers"]])
+	})
+
+	_#defs: "/$defs/rules/$defs/pull_request/$defs/required_reviewers": close({
+		reviewer!: matchN(1, [_#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers/$defs/reviewer", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers/$defs/reviewer"]])
+
+		// File patterns (fnmatch syntax) that this reviewer must approve.
+		file_patterns!: [...string]
+
+		// Minimum number of approvals required from this reviewer. Set to
+		// 0 to make approval optional.
+		minimum_approvals!: number
+	})
+
+	_#defs: "/$defs/rules/$defs/pull_request/$defs/required_reviewers/$defs/reviewer": close({
+		// The ID of the reviewer that must review.
+		id!: number
+
+		// The type of reviewer. Currently only `Team` is supported.
+		type!: string
 	})
 
 	_#defs: "/$defs/rules/$defs/required_code_scanning": close({
