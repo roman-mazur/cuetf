@@ -43,3 +43,8 @@ jobs:
           git add "logs/$provider-log.txt"
           git commit -m "$provider: regenerate on dep update"
           git push origin HEAD:"$branch"
+
+          echo "Setting the PR to merge after all checks"
+          gh pr merge --auto --merge "${{ github.event.pull_request.html_url }}"
+        env:
+          GH_TOKEN: ${{ secrets.DEPENDABOT_GITHUB }}

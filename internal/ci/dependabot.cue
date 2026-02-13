@@ -1,7 +1,5 @@
 package ci
 
-import "strings"
-
 (#dbot): updates: [
 	{
 		"package-ecosystem": "terraform"
@@ -28,6 +26,7 @@ workflows: regenerate: {
 		permissions: contents: "write"
 
 		#useGit: true
+		#scriptEnv: GH_TOKEN: "${{ secrets.DEPENDABOT_GITHUB }}"
 		#script: """
 			\(_scriptPrepareForGitPush)
 
@@ -40,6 +39,9 @@ workflows: regenerate: {
 			git add "logs/$provider-log.txt"
 			git commit -m "$provider: regenerate on dep update"
 			git push origin HEAD:"$branch"
+
+			echo "Setting the PR to merge after all checks"
+			gh pr merge --auto --merge "${{ github.event.pull_request.html_url }}"
 			"""
 	}
 }
@@ -72,12 +74,4 @@ workflows: (#dbot): {
 			},
 		]
 	}
-}
-
-#matchLabels: {
-	#labels: [...string]
-	#statements: [
-		for _, lbl in #labels { "contains(github.event.pull_request.labels, '\(lbl)')" }
-	]
-	strings.Join(#statements, " && ")
 }

@@ -17,7 +17,8 @@ workflows: [N=string]: githubactions.#Workflow & {
 		"runs-on": "ubuntu-latest"
 
 		#script?: string
-		#useGit:  bool | *false
+		#scriptEnv?: [string]: string
+		#useGit: bool | *false
 
 		if #script != _|_ {
 			steps: [
@@ -40,7 +41,13 @@ workflows: [N=string]: githubactions.#Workflow & {
 
 				{name: "Set up CUE", run: "go install cuelang.org/go/cmd/cue"},
 
-				{name: "Execute", run: #script},
+				{
+					name: "Execute"
+					run:  #script
+					if #scriptEnv != _|_ {
+						env: #scriptEnv
+					}
+				},
 			]
 		}
 	}
