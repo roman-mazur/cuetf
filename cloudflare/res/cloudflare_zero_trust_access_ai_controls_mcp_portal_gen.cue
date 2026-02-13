@@ -6,6 +6,12 @@ package res
 	close({
 		account_id!: string
 		created_at?: string
+
+		// portal id
+		id!:          string
+		created_by?:  string
+		description?: string
+		hostname!:    string
 		servers?: matchN(1, [close({
 			default_disabled?: bool
 			updated_prompts?: matchN(1, [close({
@@ -55,14 +61,12 @@ package res
 			server_id!: string
 			on_behalf?: bool
 		})]])
-		created_by?:  string
-		description?: string
-		hostname!:    string
 
-		// portal id
-		id!:          string
-		modified_at?: string
-		modified_by?: string
-		name!:        string
+		// Route outbound MCP traffic through Zero Trust Secure Web
+		// Gateway
+		secure_web_gateway?: bool
+		modified_at?:        string
+		modified_by?:        string
+		name!:               string
 	})
 }

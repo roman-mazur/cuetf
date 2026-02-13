@@ -108,6 +108,20 @@ package data
 			sitekey?: string
 		})]])
 
+		// Filter widgets by field using case-insensitive substring
+		// matching.
+		// Format: `field:value`
+		//
+		// Supported fields:
+		// - `name` - Filter by widget name (e.g.,
+		// `filter=name:login-form`)
+		// - `sitekey` - Filter by sitekey (e.g., `filter=sitekey:0x4AAA`)
+		//
+		// Returns 400 Bad Request if the field is unsupported or format
+		// is invalid.
+		// An empty filter value returns all results.
+		filter?: string
+
 		// Max items to fetch, default: 1000
 		max_items?: number
 

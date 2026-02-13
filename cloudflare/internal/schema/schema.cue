@@ -164,7 +164,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_account: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					created_on: {
@@ -239,7 +239,9 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type:             "string"
 						description:      "Available values: \"standard\", \"enterprise\"."
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
+						computed:         true
 					}
 					unit: {
 						nested_type: {
@@ -248,12 +250,14 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								description:      "Tenant unit ID"
 								description_kind: "plain"
 								optional:         true
+								computed:         true
 							}
 							nesting_mode: "single"
 						}
 						description:      "information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -835,7 +839,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_address_map: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -925,8 +929,542 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				description_kind: "plain"
 			}
 		}
-		cloudflare_api_shield: {
+		cloudflare_ai_search_instance: {
 			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					account_tag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					ai_gateway_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					aisearch_model: {
+						type:             "string"
+						description:      "Available values: \"@cf/meta/llama-3.3-70b-instruct-fp8-fast\", \"@cf/meta/llama-3.1-8b-instruct-fast\", \"@cf/meta/llama-3.1-8b-instruct-fp8\", \"@cf/meta/llama-4-scout-17b-16e-instruct\", \"@cf/qwen/qwen3-30b-a3b-fp8\", \"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b\", \"@cf/moonshotai/kimi-k2-instruct\", \"anthropic/claude-3-7-sonnet\", \"anthropic/claude-sonnet-4\", \"anthropic/claude-opus-4\", \"anthropic/claude-3-5-haiku\", \"cerebras/qwen-3-235b-a22b-instruct\", \"cerebras/qwen-3-235b-a22b-thinking\", \"cerebras/llama-3.3-70b\", \"cerebras/llama-4-maverick-17b-128e-instruct\", \"cerebras/llama-4-scout-17b-16e-instruct\", \"cerebras/gpt-oss-120b\", \"google-ai-studio/gemini-2.5-flash\", \"google-ai-studio/gemini-2.5-pro\", \"grok/grok-4\", \"groq/llama-3.3-70b-versatile\", \"groq/llama-3.1-8b-instant\", \"openai/gpt-5\", \"openai/gpt-5-mini\", \"openai/gpt-5-nano\", \"\"."
+						description_kind: "plain"
+						optional:         true
+					}
+					cache: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					cache_threshold: {
+						type:             "string"
+						description:      "Available values: \"super_strict_match\", \"close_enough\", \"flexible_friend\", \"anything_goes\"."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					chunk: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					chunk_overlap: {
+						type:             "number"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					chunk_size: {
+						type:             "number"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					created_by: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					custom_metadata: {
+						nested_type: {
+							attributes: {
+								data_type: {
+									type:             "string"
+									description:      "Available values: \"text\", \"number\", \"boolean\"."
+									description_kind: "plain"
+									required:         true
+								}
+								field_name: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+					embedding_model: {
+						type:             "string"
+						description:      "Available values: \"@cf/qwen/qwen3-embedding-0.6b\", \"@cf/baai/bge-m3\", \"@cf/baai/bge-large-en-v1.5\", \"@cf/google/embeddinggemma-300m\", \"google-ai-studio/gemini-embedding-001\", \"openai/text-embedding-3-small\", \"openai/text-embedding-3-large\", \"\"."
+						description_kind: "plain"
+						optional:         true
+					}
+					enable: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					engine_version: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					hybrid_search_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Use your AI Search ID."
+						description_kind: "plain"
+						required:         true
+					}
+					internal_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					last_activity: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					max_num_results: {
+						type:             "number"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					metadata: {
+						nested_type: {
+							attributes: {
+								created_from_aisearch_wizard: {
+									type:             "bool"
+									description_kind: "plain"
+									optional:         true
+								}
+								worker_domain: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+					modified_at: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					modified_by: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					paused: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					public_endpoint_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					public_endpoint_params: {
+						nested_type: {
+							attributes: {
+								authorized_hosts: {
+									type: ["list", "string"]
+									description_kind: "plain"
+									optional:         true
+								}
+								chat_completions_endpoint: {
+									nested_type: {
+										attributes: disabled: {
+											type:             "bool"
+											description:      "Disable chat completions endpoint for this public endpoint"
+											description_kind: "plain"
+											optional:         true
+											computed:         true
+										}
+										nesting_mode: "single"
+									}
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								enabled: {
+									type:             "bool"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								mcp: {
+									nested_type: {
+										attributes: disabled: {
+											type:             "bool"
+											description:      "Disable MCP endpoint for this public endpoint"
+											description_kind: "plain"
+											optional:         true
+											computed:         true
+										}
+										nesting_mode: "single"
+									}
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								rate_limit: {
+									nested_type: {
+										attributes: {
+											period_ms: {
+												type:             "number"
+												description_kind: "plain"
+												optional:         true
+											}
+											requests: {
+												type:             "number"
+												description_kind: "plain"
+												optional:         true
+											}
+											technique: {
+												type:             "string"
+												description:      "Available values: \"fixed\", \"sliding\"."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description_kind: "plain"
+									optional:         true
+								}
+								search_endpoint: {
+									nested_type: {
+										attributes: disabled: {
+											type:             "bool"
+											description:      "Disable search endpoint for this public endpoint"
+											description_kind: "plain"
+											optional:         true
+											computed:         true
+										}
+										nesting_mode: "single"
+									}
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					reranking: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					reranking_model: {
+						type:             "string"
+						description:      "Available values: \"@cf/baai/bge-reranker-base\", \"\"."
+						description_kind: "plain"
+						optional:         true
+					}
+					rewrite_model: {
+						type:             "string"
+						description:      "Available values: \"@cf/meta/llama-3.3-70b-instruct-fp8-fast\", \"@cf/meta/llama-3.1-8b-instruct-fast\", \"@cf/meta/llama-3.1-8b-instruct-fp8\", \"@cf/meta/llama-4-scout-17b-16e-instruct\", \"@cf/qwen/qwen3-30b-a3b-fp8\", \"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b\", \"@cf/moonshotai/kimi-k2-instruct\", \"anthropic/claude-3-7-sonnet\", \"anthropic/claude-sonnet-4\", \"anthropic/claude-opus-4\", \"anthropic/claude-3-5-haiku\", \"cerebras/qwen-3-235b-a22b-instruct\", \"cerebras/qwen-3-235b-a22b-thinking\", \"cerebras/llama-3.3-70b\", \"cerebras/llama-4-maverick-17b-128e-instruct\", \"cerebras/llama-4-scout-17b-16e-instruct\", \"cerebras/gpt-oss-120b\", \"google-ai-studio/gemini-2.5-flash\", \"google-ai-studio/gemini-2.5-pro\", \"grok/grok-4\", \"groq/llama-3.3-70b-versatile\", \"groq/llama-3.1-8b-instant\", \"openai/gpt-5\", \"openai/gpt-5-mini\", \"openai/gpt-5-nano\", \"\"."
+						description_kind: "plain"
+						optional:         true
+					}
+					rewrite_query: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					score_threshold: {
+						type:             "number"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					source: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					source_params: {
+						nested_type: {
+							attributes: {
+								exclude_items: {
+									type: ["list", "string"]
+									description:      "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)"
+									description_kind: "plain"
+									optional:         true
+								}
+								include_items: {
+									type: ["list", "string"]
+									description:      "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)"
+									description_kind: "plain"
+									optional:         true
+								}
+								prefix: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								r2_jurisdiction: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								web_crawler: {
+									nested_type: {
+										attributes: {
+											parse_options: {
+												nested_type: {
+													attributes: {
+														include_headers: {
+															type: ["map", "string"]
+															description_kind: "plain"
+															optional:         true
+														}
+														include_images: {
+															type:             "bool"
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														specific_sitemaps: {
+															type: ["list", "string"]
+															description:      "List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'."
+															description_kind: "plain"
+															optional:         true
+														}
+														use_browser_rendering: {
+															type:             "bool"
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description_kind: "plain"
+												optional:         true
+											}
+											parse_type: {
+												type:             "string"
+												description:      "Available values: \"sitemap\", \"feed-rss\"."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											store_options: {
+												nested_type: {
+													attributes: {
+														r2_jurisdiction: {
+															type:             "string"
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														storage_id: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														storage_type: {
+															type:             "string"
+															description:      "Available values: \"r2\"."
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					summarization: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					summarization_model: {
+						type:             "string"
+						description:      "Available values: \"@cf/meta/llama-3.3-70b-instruct-fp8-fast\", \"@cf/meta/llama-3.1-8b-instruct-fast\", \"@cf/meta/llama-3.1-8b-instruct-fp8\", \"@cf/meta/llama-4-scout-17b-16e-instruct\", \"@cf/qwen/qwen3-30b-a3b-fp8\", \"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b\", \"@cf/moonshotai/kimi-k2-instruct\", \"anthropic/claude-3-7-sonnet\", \"anthropic/claude-sonnet-4\", \"anthropic/claude-opus-4\", \"anthropic/claude-3-5-haiku\", \"cerebras/qwen-3-235b-a22b-instruct\", \"cerebras/qwen-3-235b-a22b-thinking\", \"cerebras/llama-3.3-70b\", \"cerebras/llama-4-maverick-17b-128e-instruct\", \"cerebras/llama-4-scout-17b-16e-instruct\", \"cerebras/gpt-oss-120b\", \"google-ai-studio/gemini-2.5-flash\", \"google-ai-studio/gemini-2.5-pro\", \"grok/grok-4\", \"groq/llama-3.3-70b-versatile\", \"groq/llama-3.1-8b-instant\", \"openai/gpt-5\", \"openai/gpt-5-mini\", \"openai/gpt-5-nano\", \"\"."
+						description_kind: "plain"
+						optional:         true
+					}
+					system_prompt_aisearch: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					system_prompt_index_summarization: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					system_prompt_rewrite_query: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					token_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					type: {
+						type:             "string"
+						description:      "Available values: \"r2\", \"web-crawler\"."
+						description_kind: "plain"
+						required:         true
+					}
+					vectorize_active_namespace: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					vectorize_name: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		cloudflare_ai_search_token: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					account_tag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					cf_api_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					cf_api_key: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					created_at: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					created_by: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					legacy: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					modified_at: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					modified_by: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					synced_at: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		cloudflare_api_shield: {
+			version: 1
 			block: {
 				attributes: {
 					auth_id_characteristics: {
@@ -1719,7 +2257,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_argo_smart_routing: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					editable: {
@@ -1760,7 +2298,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_argo_tiered_caching: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					editable: {
@@ -1801,7 +2339,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_authenticated_origin_pulls: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					cert_id: {
@@ -1886,11 +2424,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type:             "string"
 						description:      "The hostname on the origin for which the client certificate uploaded will be used."
 						description_kind: "plain"
-						optional:         true
+						computed:         true
 					}
 					id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "The hostname on the origin for which the client certificate uploaded will be used."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -1945,7 +2483,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_authenticated_origin_pulls_certificate: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					certificate: {
@@ -2022,6 +2560,78 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				description_kind: "plain"
 			}
 		}
+		cloudflare_authenticated_origin_pulls_hostname_certificate: {
+			version: 0
+			block: {
+				attributes: {
+					certificate: {
+						type:             "string"
+						description:      "The hostname certificate."
+						description_kind: "plain"
+						required:         true
+					}
+					expires_on: {
+						type:             "string"
+						description:      "The date when the certificate expires."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Identifier."
+						description_kind: "plain"
+						computed:         true
+					}
+					issuer: {
+						type:             "string"
+						description:      "The certificate authority that issued the certificate."
+						description_kind: "plain"
+						computed:         true
+					}
+					private_key: {
+						type:             "string"
+						description:      "The hostname certificate's private key."
+						description_kind: "plain"
+						required:         true
+						sensitive:        true
+					}
+					serial_number: {
+						type:             "string"
+						description:      "The serial number on the uploaded certificate."
+						description_kind: "plain"
+						computed:         true
+					}
+					signature: {
+						type:             "string"
+						description:      "The type of hash used for the certificate."
+						description_kind: "plain"
+						computed:         true
+					}
+					status: {
+						type: "string"
+						description: """
+									Status of the certificate or the association.
+									Available values: "initializing", "pending_deployment", "pending_deletion", "active", "deleted", "deployment_timed_out", "deletion_timed_out".
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					uploaded_on: {
+						type:             "string"
+						description:      "The time when the certificate was uploaded."
+						description_kind: "plain"
+						computed:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "Identifier."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		cloudflare_authenticated_origin_pulls_settings: {
 			version: 0
 			block: {
@@ -2031,6 +2641,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "Indicates whether zone-level authenticated origin pulls is enabled."
 						description_kind: "plain"
 						required:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Identifier."
+						description_kind: "plain"
+						computed:         true
 					}
 					zone_id: {
 						type:             "string"
@@ -2241,7 +2857,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_byo_ip_prefix: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -2464,7 +3080,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_certificate_pack: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					certificate_authority: {
@@ -3268,7 +3884,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_custom_hostname: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					created_at: {
@@ -3534,7 +4150,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_custom_hostname_fallback_origin: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					created_at: {
@@ -3587,7 +4203,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_custom_pages: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -4714,7 +5330,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_email_routing_address: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -4765,7 +5381,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_email_routing_catch_all: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					actions: {
@@ -5164,7 +5780,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_email_routing_rule: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					actions: {
@@ -5269,7 +5885,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_email_routing_settings: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					created: {
@@ -5563,7 +6179,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_filter: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					body: {
@@ -5647,7 +6263,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_firewall_rule: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					action: {
@@ -5789,7 +6405,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_healthcheck: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					address: {
@@ -6590,7 +7206,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_list: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -6750,7 +7366,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_list_item: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -7475,7 +8091,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_load_balancer_monitor: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -7615,7 +8231,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_load_balancer_pool: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -7920,7 +8536,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_logpull_retention: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					flag: {
@@ -7946,7 +8562,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_logpush_job: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -8173,7 +8789,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_logpush_ownership_challenge: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -8668,6 +9284,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						required:         true
 					}
+					bond_id: {
+						type:             "number"
+						description_kind: "plain"
+						optional:         true
+					}
 					ha_link: {
 						type:             "bool"
 						description:      "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link."
@@ -8701,7 +9322,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					physport: {
 						type:             "number"
 						description_kind: "plain"
-						required:         true
+						optional:         true
 					}
 					routed_subnets: {
 						nested_type: {
@@ -9551,7 +10172,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_managed_transforms: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					id: {
@@ -9615,7 +10236,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_mtls_certificate: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -9632,7 +10253,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					certificates: {
 						type:             "string"
-						description:      "The uploaded root CA certificate."
+						description:      "The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the private_key first in the chain."
 						description_kind: "plain"
 						required:         true
 					}
@@ -9696,7 +10317,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_notification_policy: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -10077,7 +10698,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_notification_policy_webhooks: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -10668,7 +11289,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_origin_ca_certificate: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					certificate: {
@@ -10725,7 +11346,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_page_rule: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					actions: {
@@ -11146,7 +11767,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_pages_domain: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -11261,7 +11882,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_pages_project: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -11322,6 +11943,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "Configs for the project build process."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					canonical_deployment: {
 						nested_type: {
@@ -11966,6 +12588,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 															description:      "The Service environment."
 															description_kind: "plain"
 															optional:         true
+															computed:         true
 														}
 														service: {
 															type:             "string"
@@ -12257,6 +12880,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 															description:      "The Service environment."
 															description_kind: "plain"
 															optional:         true
+															computed:         true
 														}
 														service: {
 															type:             "string"
@@ -12903,7 +13527,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_queue: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -13196,7 +13820,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_r2_bucket: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -13934,7 +14558,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_rate_limit: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					action: {
@@ -14262,7 +14886,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_ruleset: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -15835,7 +16459,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_spectrum_application: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					argo_smart_routing: {
@@ -16936,7 +17560,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_tiered_cache: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					editable: {
@@ -17238,7 +17862,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_total_tls: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					certificate_authority: {
@@ -17282,7 +17906,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_turnstile_widget: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -17436,7 +18060,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_url_normalization_settings: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					id: {
@@ -17602,7 +18226,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_user_agent_blocking_rule: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					configuration: {
@@ -17668,7 +18292,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_waiting_room: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					additional_routes: {
@@ -18021,7 +18645,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_waiting_room_event: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					created_on: {
@@ -18154,7 +18778,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_waiting_room_rules: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					id: {
@@ -18217,7 +18841,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_waiting_room_settings: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					id: {
@@ -18248,7 +18872,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_web3_hostname: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					created_on: {
@@ -19159,6 +19783,28 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									optional:         true
 								}
+								simple: {
+									nested_type: {
+										attributes: {
+											limit: {
+												type:             "number"
+												description:      "The limit (requests per period)."
+												description_kind: "plain"
+												required:         true
+											}
+											period: {
+												type:             "number"
+												description:      "The period in seconds."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "The rate limit configuration."
+									description_kind: "plain"
+									optional:         true
+								}
 								store_id: {
 									type:             "string"
 									description:      "ID of the store containing the secret."
@@ -19176,7 +19822,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									type: "string"
 									description: """
 												The kind of resource that the binding provides.
-												Available values: "ai", "analytics_engine", "assets", "browser", "d1", "data_blob", "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit", "images", "json", "kv_namespace", "mtls_certificate", "plain_text", "pipelines", "queue", "r2_bucket", "secret_text", "send_email", "service", "text_blob", "vectorize", "version_metadata", "secrets_store_secret", "secret_key", "workflow", "wasm_module".
+												Available values: "ai", "analytics_engine", "assets", "browser", "d1", "data_blob", "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit", "images", "json", "kv_namespace", "mtls_certificate", "plain_text", "pipelines", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email", "service", "text_blob", "vectorize", "version_metadata", "secrets_store_secret", "secret_key", "workflow", "wasm_module".
 												"""
 									description_kind: "plain"
 									required:         true
@@ -19471,18 +20117,66 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					placement: {
 						nested_type: {
-							attributes: mode: {
-								type: "string"
-								description: """
-												Placement mode for the version.
-												Available values: "smart".
+							attributes: {
+								host: {
+									type:             "string"
+									description:      "TCP host and port for targeted placement."
+									description_kind: "plain"
+									optional:         true
+								}
+								hostname: {
+									type:             "string"
+									description:      "HTTP hostname for targeted placement."
+									description_kind: "plain"
+									optional:         true
+								}
+								mode: {
+									type: "string"
+									description: """
+												Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+												Available values: "smart", "targeted".
 												"""
-								description_kind: "plain"
-								optional:         true
+									description_kind: "plain"
+									optional:         true
+								}
+								region: {
+									type:             "string"
+									description:      "Cloud region for targeted placement in format 'provider:region'."
+									description_kind: "plain"
+									optional:         true
+								}
+								target: {
+									nested_type: {
+										attributes: {
+											host: {
+												type:             "string"
+												description:      "TCP host:port for targeted placement."
+												description_kind: "plain"
+												optional:         true
+											}
+											hostname: {
+												type:             "string"
+												description:      "HTTP hostname for targeted placement."
+												description_kind: "plain"
+												optional:         true
+											}
+											region: {
+												type:             "string"
+												description:      "Cloud region in format 'provider:region'."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description:      "Array of placement targets (currently limited to single target)."
+									description_kind: "plain"
+									optional:         true
+								}
 							}
 							nesting_mode: "single"
 						}
-						description:      "Placement settings for the version."
+						description:      "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -19520,7 +20214,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_workers_cron_trigger: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -19570,7 +20264,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_workers_custom_domain: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -19782,7 +20476,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_workers_kv: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -19826,7 +20520,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_workers_kv_namespace: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -19858,7 +20552,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_workers_route: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					id: {
@@ -20185,6 +20879,28 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								service: {
 									type:             "string"
 									description:      "Name of Worker to bind to."
+									description_kind: "plain"
+									optional:         true
+								}
+								simple: {
+									nested_type: {
+										attributes: {
+											limit: {
+												type:             "number"
+												description:      "The rate limit value."
+												description_kind: "plain"
+												required:         true
+											}
+											period: {
+												type:             "number"
+												description:      "The rate limit period in seconds."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "A simple rate limit."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -20641,7 +21357,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									type: "string"
 									description: """
 												Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-												Available values: "smart".
+												Available values: "smart", "targeted".
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -20661,12 +21377,54 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									computed:         true
 								}
+								target: {
+									nested_type: {
+										attributes: {
+											host: {
+												type:             "string"
+												description:      "TCP host:port for targeted placement."
+												description_kind: "plain"
+												computed:         true
+											}
+											hostname: {
+												type:             "string"
+												description:      "HTTP hostname for targeted placement."
+												description_kind: "plain"
+												computed:         true
+											}
+											region: {
+												type:             "string"
+												description:      "Cloud region in format 'provider:region'."
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description:      "Array of placement targets (currently limited to single target)."
+									description_kind: "plain"
+									computed:         true
+								}
 							}
 							nesting_mode: "single"
 						}
-						description:      "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement."
+						description:      "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					placement_mode: {
+						type:             "string"
+						description:      "Available values: \"smart\", \"targeted\"."
+						description_kind: "plain"
+						deprecated:       true
+						computed:         true
+					}
+					placement_status: {
+						type:             "string"
+						description:      "Available values: \"SUCCESS\", \"UNSUPPORTED_APPLICATION\", \"INSUFFICIENT_INVOCATIONS\"."
+						description_kind: "plain"
+						deprecated:       true
 						computed:         true
 					}
 					script_name: {
@@ -20929,6 +21687,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						required:         true
 					}
+					secure_web_gateway: {
+						type:             "bool"
+						description:      "Route outbound MCP traffic through Zero Trust Secure Web Gateway"
+						description_kind: "plain"
+						optional:         true
+					}
 					servers: {
 						nested_type: {
 							attributes: {
@@ -21060,6 +21824,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						required:         true
 					}
+					last_successful_sync: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
 					last_synced: {
 						type:             "string"
 						description_kind: "plain"
@@ -21100,7 +21869,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_access_application: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -23279,7 +24048,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_access_group: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -24481,7 +25250,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_access_identity_provider: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -24873,7 +25642,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_access_key_configuration: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -24911,7 +25680,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_access_mtls_certificate: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -25032,7 +25801,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_access_policy: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -26291,7 +27060,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_access_service_token: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -26361,7 +27130,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_access_short_lived_certificate: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -26431,7 +27200,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_device_custom_profile: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -26485,6 +27254,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "A description of the policy."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					disable_auto_fallback: {
 						type:             "bool"
@@ -26729,7 +27499,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_device_custom_profile_local_domain_fallback: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -26779,7 +27549,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_device_default_profile: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -27016,7 +27786,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_device_default_profile_certificates: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					enabled: {
@@ -27035,7 +27805,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_device_default_profile_local_domain_fallback: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -27080,7 +27850,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_device_managed_networks: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -27142,7 +27912,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_device_posture_integration: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -27242,7 +28012,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_device_posture_rule: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -27682,7 +28452,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_dex_test: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -27955,7 +28725,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_dlp_custom_profile: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -29014,7 +29784,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_dns_location: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -29337,7 +30107,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_gateway_logging: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -29443,7 +30213,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_gateway_policy: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -30185,7 +30955,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_gateway_proxy_endpoint: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -30241,7 +31011,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_gateway_settings: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -30689,7 +31459,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_list: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -30824,7 +31594,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_organization: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -30871,6 +31641,18 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							}
 							nesting_mode: "single"
 						}
+						description_kind: "plain"
+						optional:         true
+					}
+					deny_unmatched_requests: {
+						type:             "bool"
+						description:      "Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array."
+						description_kind: "plain"
+						optional:         true
+					}
+					deny_unmatched_requests_exempted_zone_names: {
+						type: ["list", "string"]
+						description:      "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -30937,6 +31719,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "A description of the reason why the UI read only field is being toggled."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					user_seat_expiration_inactive_time: {
 						type:             "string"
@@ -31058,7 +31841,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_tunnel_cloudflared: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -31221,7 +32004,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_tunnel_cloudflared_config: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -31549,7 +32332,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_tunnel_cloudflared_route: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -31607,7 +32390,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zero_trust_tunnel_cloudflared_virtual_network: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account_id: {
@@ -31812,7 +32595,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zone: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					account: {
@@ -32191,7 +32974,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zone_cache_variants: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					editable: {
@@ -32443,7 +33226,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zone_dnssec: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					algorithm: {
@@ -32622,7 +33405,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zone_lockdown: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					configurations: {
@@ -32704,7 +33487,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_zone_setting: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					editable: {
@@ -33420,6 +34203,33 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									"""
 						description_kind: "plain"
 						optional:         true
+					}
+					permission_groups: {
+						nested_type: {
+							attributes: {
+								id: {
+									type:             "string"
+									description:      "Public ID."
+									description_kind: "plain"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Permission Group Name"
+									description_kind: "plain"
+									computed:         true
+								}
+								scopes: {
+									type: ["list", "string"]
+									description:      "Resources to which the Permission Group is scoped"
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description_kind: "plain"
+						computed:         true
 					}
 					scope: {
 						type: "string"
@@ -36454,6 +37264,1082 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				description_kind: "plain"
 			}
 		}
+		cloudflare_ai_search_instance: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					account_tag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					ai_gateway_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					aisearch_model: {
+						type:             "string"
+						description:      "Available values: \"@cf/meta/llama-3.3-70b-instruct-fp8-fast\", \"@cf/meta/llama-3.1-8b-instruct-fast\", \"@cf/meta/llama-3.1-8b-instruct-fp8\", \"@cf/meta/llama-4-scout-17b-16e-instruct\", \"@cf/qwen/qwen3-30b-a3b-fp8\", \"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b\", \"@cf/moonshotai/kimi-k2-instruct\", \"anthropic/claude-3-7-sonnet\", \"anthropic/claude-sonnet-4\", \"anthropic/claude-opus-4\", \"anthropic/claude-3-5-haiku\", \"cerebras/qwen-3-235b-a22b-instruct\", \"cerebras/qwen-3-235b-a22b-thinking\", \"cerebras/llama-3.3-70b\", \"cerebras/llama-4-maverick-17b-128e-instruct\", \"cerebras/llama-4-scout-17b-16e-instruct\", \"cerebras/gpt-oss-120b\", \"google-ai-studio/gemini-2.5-flash\", \"google-ai-studio/gemini-2.5-pro\", \"grok/grok-4\", \"groq/llama-3.3-70b-versatile\", \"groq/llama-3.1-8b-instant\", \"openai/gpt-5\", \"openai/gpt-5-mini\", \"openai/gpt-5-nano\", \"\"."
+						description_kind: "plain"
+						computed:         true
+					}
+					cache: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					cache_threshold: {
+						type:             "string"
+						description:      "Available values: \"super_strict_match\", \"close_enough\", \"flexible_friend\", \"anything_goes\"."
+						description_kind: "plain"
+						computed:         true
+					}
+					chunk: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					chunk_overlap: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					chunk_size: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					created_by: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					custom_metadata: {
+						nested_type: {
+							attributes: {
+								data_type: {
+									type:             "string"
+									description:      "Available values: \"text\", \"number\", \"boolean\"."
+									description_kind: "plain"
+									computed:         true
+								}
+								field_name: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description_kind: "plain"
+						computed:         true
+					}
+					embedding_model: {
+						type:             "string"
+						description:      "Available values: \"@cf/qwen/qwen3-embedding-0.6b\", \"@cf/baai/bge-m3\", \"@cf/baai/bge-large-en-v1.5\", \"@cf/google/embeddinggemma-300m\", \"google-ai-studio/gemini-embedding-001\", \"openai/text-embedding-3-small\", \"openai/text-embedding-3-large\", \"\"."
+						description_kind: "plain"
+						computed:         true
+					}
+					enable: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					engine_version: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					filter: {
+						nested_type: {
+							attributes: search: {
+								type:             "string"
+								description:      "Search by id"
+								description_kind: "plain"
+								optional:         true
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+					hybrid_search_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Use your AI Search ID."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					internal_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					last_activity: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					max_num_results: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					metadata: {
+						nested_type: {
+							attributes: {
+								created_from_aisearch_wizard: {
+									type:             "bool"
+									description_kind: "plain"
+									computed:         true
+								}
+								worker_domain: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						computed:         true
+					}
+					modified_at: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					modified_by: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					paused: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					public_endpoint_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					public_endpoint_params: {
+						nested_type: {
+							attributes: {
+								authorized_hosts: {
+									type: ["list", "string"]
+									description_kind: "plain"
+									computed:         true
+								}
+								chat_completions_endpoint: {
+									nested_type: {
+										attributes: disabled: {
+											type:             "bool"
+											description:      "Disable chat completions endpoint for this public endpoint"
+											description_kind: "plain"
+											computed:         true
+										}
+										nesting_mode: "single"
+									}
+									description_kind: "plain"
+									computed:         true
+								}
+								enabled: {
+									type:             "bool"
+									description_kind: "plain"
+									computed:         true
+								}
+								mcp: {
+									nested_type: {
+										attributes: disabled: {
+											type:             "bool"
+											description:      "Disable MCP endpoint for this public endpoint"
+											description_kind: "plain"
+											computed:         true
+										}
+										nesting_mode: "single"
+									}
+									description_kind: "plain"
+									computed:         true
+								}
+								rate_limit: {
+									nested_type: {
+										attributes: {
+											period_ms: {
+												type:             "number"
+												description_kind: "plain"
+												computed:         true
+											}
+											requests: {
+												type:             "number"
+												description_kind: "plain"
+												computed:         true
+											}
+											technique: {
+												type:             "string"
+												description:      "Available values: \"fixed\", \"sliding\"."
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description_kind: "plain"
+									computed:         true
+								}
+								search_endpoint: {
+									nested_type: {
+										attributes: disabled: {
+											type:             "bool"
+											description:      "Disable search endpoint for this public endpoint"
+											description_kind: "plain"
+											computed:         true
+										}
+										nesting_mode: "single"
+									}
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						computed:         true
+					}
+					reranking: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					reranking_model: {
+						type:             "string"
+						description:      "Available values: \"@cf/baai/bge-reranker-base\", \"\"."
+						description_kind: "plain"
+						computed:         true
+					}
+					rewrite_model: {
+						type:             "string"
+						description:      "Available values: \"@cf/meta/llama-3.3-70b-instruct-fp8-fast\", \"@cf/meta/llama-3.1-8b-instruct-fast\", \"@cf/meta/llama-3.1-8b-instruct-fp8\", \"@cf/meta/llama-4-scout-17b-16e-instruct\", \"@cf/qwen/qwen3-30b-a3b-fp8\", \"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b\", \"@cf/moonshotai/kimi-k2-instruct\", \"anthropic/claude-3-7-sonnet\", \"anthropic/claude-sonnet-4\", \"anthropic/claude-opus-4\", \"anthropic/claude-3-5-haiku\", \"cerebras/qwen-3-235b-a22b-instruct\", \"cerebras/qwen-3-235b-a22b-thinking\", \"cerebras/llama-3.3-70b\", \"cerebras/llama-4-maverick-17b-128e-instruct\", \"cerebras/llama-4-scout-17b-16e-instruct\", \"cerebras/gpt-oss-120b\", \"google-ai-studio/gemini-2.5-flash\", \"google-ai-studio/gemini-2.5-pro\", \"grok/grok-4\", \"groq/llama-3.3-70b-versatile\", \"groq/llama-3.1-8b-instant\", \"openai/gpt-5\", \"openai/gpt-5-mini\", \"openai/gpt-5-nano\", \"\"."
+						description_kind: "plain"
+						computed:         true
+					}
+					rewrite_query: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					score_threshold: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					source: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					source_params: {
+						nested_type: {
+							attributes: {
+								exclude_items: {
+									type: ["list", "string"]
+									description:      "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)"
+									description_kind: "plain"
+									computed:         true
+								}
+								include_items: {
+									type: ["list", "string"]
+									description:      "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)"
+									description_kind: "plain"
+									computed:         true
+								}
+								prefix: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								r2_jurisdiction: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								web_crawler: {
+									nested_type: {
+										attributes: {
+											parse_options: {
+												nested_type: {
+													attributes: {
+														include_headers: {
+															type: ["map", "string"]
+															description_kind: "plain"
+															computed:         true
+														}
+														include_images: {
+															type:             "bool"
+															description_kind: "plain"
+															computed:         true
+														}
+														specific_sitemaps: {
+															type: ["list", "string"]
+															description:      "List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'."
+															description_kind: "plain"
+															computed:         true
+														}
+														use_browser_rendering: {
+															type:             "bool"
+															description_kind: "plain"
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description_kind: "plain"
+												computed:         true
+											}
+											parse_type: {
+												type:             "string"
+												description:      "Available values: \"sitemap\", \"feed-rss\"."
+												description_kind: "plain"
+												computed:         true
+											}
+											store_options: {
+												nested_type: {
+													attributes: {
+														r2_jurisdiction: {
+															type:             "string"
+															description_kind: "plain"
+															computed:         true
+														}
+														storage_id: {
+															type:             "string"
+															description_kind: "plain"
+															computed:         true
+														}
+														storage_type: {
+															type:             "string"
+															description:      "Available values: \"r2\"."
+															description_kind: "plain"
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					summarization: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					summarization_model: {
+						type:             "string"
+						description:      "Available values: \"@cf/meta/llama-3.3-70b-instruct-fp8-fast\", \"@cf/meta/llama-3.1-8b-instruct-fast\", \"@cf/meta/llama-3.1-8b-instruct-fp8\", \"@cf/meta/llama-4-scout-17b-16e-instruct\", \"@cf/qwen/qwen3-30b-a3b-fp8\", \"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b\", \"@cf/moonshotai/kimi-k2-instruct\", \"anthropic/claude-3-7-sonnet\", \"anthropic/claude-sonnet-4\", \"anthropic/claude-opus-4\", \"anthropic/claude-3-5-haiku\", \"cerebras/qwen-3-235b-a22b-instruct\", \"cerebras/qwen-3-235b-a22b-thinking\", \"cerebras/llama-3.3-70b\", \"cerebras/llama-4-maverick-17b-128e-instruct\", \"cerebras/llama-4-scout-17b-16e-instruct\", \"cerebras/gpt-oss-120b\", \"google-ai-studio/gemini-2.5-flash\", \"google-ai-studio/gemini-2.5-pro\", \"grok/grok-4\", \"groq/llama-3.3-70b-versatile\", \"groq/llama-3.1-8b-instant\", \"openai/gpt-5\", \"openai/gpt-5-mini\", \"openai/gpt-5-nano\", \"\"."
+						description_kind: "plain"
+						computed:         true
+					}
+					system_prompt_aisearch: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					system_prompt_index_summarization: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					system_prompt_rewrite_query: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					token_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description:      "Available values: \"r2\", \"web-crawler\"."
+						description_kind: "plain"
+						computed:         true
+					}
+					vectorize_active_namespace: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					vectorize_name: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		cloudflare_ai_search_instances: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					max_items: {
+						type:             "number"
+						description:      "Max items to fetch, default: 1000"
+						description_kind: "plain"
+						optional:         true
+					}
+					result: {
+						nested_type: {
+							attributes: {
+								account_id: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								account_tag: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								ai_gateway_id: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								aisearch_model: {
+									type:             "string"
+									description:      "Available values: \"@cf/meta/llama-3.3-70b-instruct-fp8-fast\", \"@cf/meta/llama-3.1-8b-instruct-fast\", \"@cf/meta/llama-3.1-8b-instruct-fp8\", \"@cf/meta/llama-4-scout-17b-16e-instruct\", \"@cf/qwen/qwen3-30b-a3b-fp8\", \"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b\", \"@cf/moonshotai/kimi-k2-instruct\", \"anthropic/claude-3-7-sonnet\", \"anthropic/claude-sonnet-4\", \"anthropic/claude-opus-4\", \"anthropic/claude-3-5-haiku\", \"cerebras/qwen-3-235b-a22b-instruct\", \"cerebras/qwen-3-235b-a22b-thinking\", \"cerebras/llama-3.3-70b\", \"cerebras/llama-4-maverick-17b-128e-instruct\", \"cerebras/llama-4-scout-17b-16e-instruct\", \"cerebras/gpt-oss-120b\", \"google-ai-studio/gemini-2.5-flash\", \"google-ai-studio/gemini-2.5-pro\", \"grok/grok-4\", \"groq/llama-3.3-70b-versatile\", \"groq/llama-3.1-8b-instant\", \"openai/gpt-5\", \"openai/gpt-5-mini\", \"openai/gpt-5-nano\", \"\"."
+									description_kind: "plain"
+									computed:         true
+								}
+								cache: {
+									type:             "bool"
+									description_kind: "plain"
+									computed:         true
+								}
+								cache_threshold: {
+									type:             "string"
+									description:      "Available values: \"super_strict_match\", \"close_enough\", \"flexible_friend\", \"anything_goes\"."
+									description_kind: "plain"
+									computed:         true
+								}
+								chunk: {
+									type:             "bool"
+									description_kind: "plain"
+									computed:         true
+								}
+								chunk_overlap: {
+									type:             "number"
+									description_kind: "plain"
+									computed:         true
+								}
+								chunk_size: {
+									type:             "number"
+									description_kind: "plain"
+									computed:         true
+								}
+								created_at: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								created_by: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								custom_metadata: {
+									nested_type: {
+										attributes: {
+											data_type: {
+												type:             "string"
+												description:      "Available values: \"text\", \"number\", \"boolean\"."
+												description_kind: "plain"
+												computed:         true
+											}
+											field_name: {
+												type:             "string"
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description_kind: "plain"
+									computed:         true
+								}
+								embedding_model: {
+									type:             "string"
+									description:      "Available values: \"@cf/qwen/qwen3-embedding-0.6b\", \"@cf/baai/bge-m3\", \"@cf/baai/bge-large-en-v1.5\", \"@cf/google/embeddinggemma-300m\", \"google-ai-studio/gemini-embedding-001\", \"openai/text-embedding-3-small\", \"openai/text-embedding-3-large\", \"\"."
+									description_kind: "plain"
+									computed:         true
+								}
+								enable: {
+									type:             "bool"
+									description_kind: "plain"
+									computed:         true
+								}
+								engine_version: {
+									type:             "number"
+									description_kind: "plain"
+									computed:         true
+								}
+								hybrid_search_enabled: {
+									type:             "bool"
+									description_kind: "plain"
+									computed:         true
+								}
+								id: {
+									type:             "string"
+									description:      "Use your AI Search ID."
+									description_kind: "plain"
+									computed:         true
+								}
+								internal_id: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								last_activity: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								max_num_results: {
+									type:             "number"
+									description_kind: "plain"
+									computed:         true
+								}
+								metadata: {
+									nested_type: {
+										attributes: {
+											created_from_aisearch_wizard: {
+												type:             "bool"
+												description_kind: "plain"
+												computed:         true
+											}
+											worker_domain: {
+												type:             "string"
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description_kind: "plain"
+									computed:         true
+								}
+								modified_at: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								modified_by: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								paused: {
+									type:             "bool"
+									description_kind: "plain"
+									computed:         true
+								}
+								public_endpoint_id: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								public_endpoint_params: {
+									nested_type: {
+										attributes: {
+											authorized_hosts: {
+												type: ["list", "string"]
+												description_kind: "plain"
+												computed:         true
+											}
+											chat_completions_endpoint: {
+												nested_type: {
+													attributes: disabled: {
+														type:             "bool"
+														description:      "Disable chat completions endpoint for this public endpoint"
+														description_kind: "plain"
+														computed:         true
+													}
+													nesting_mode: "single"
+												}
+												description_kind: "plain"
+												computed:         true
+											}
+											enabled: {
+												type:             "bool"
+												description_kind: "plain"
+												computed:         true
+											}
+											mcp: {
+												nested_type: {
+													attributes: disabled: {
+														type:             "bool"
+														description:      "Disable MCP endpoint for this public endpoint"
+														description_kind: "plain"
+														computed:         true
+													}
+													nesting_mode: "single"
+												}
+												description_kind: "plain"
+												computed:         true
+											}
+											rate_limit: {
+												nested_type: {
+													attributes: {
+														period_ms: {
+															type:             "number"
+															description_kind: "plain"
+															computed:         true
+														}
+														requests: {
+															type:             "number"
+															description_kind: "plain"
+															computed:         true
+														}
+														technique: {
+															type:             "string"
+															description:      "Available values: \"fixed\", \"sliding\"."
+															description_kind: "plain"
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description_kind: "plain"
+												computed:         true
+											}
+											search_endpoint: {
+												nested_type: {
+													attributes: disabled: {
+														type:             "bool"
+														description:      "Disable search endpoint for this public endpoint"
+														description_kind: "plain"
+														computed:         true
+													}
+													nesting_mode: "single"
+												}
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description_kind: "plain"
+									computed:         true
+								}
+								reranking: {
+									type:             "bool"
+									description_kind: "plain"
+									computed:         true
+								}
+								reranking_model: {
+									type:             "string"
+									description:      "Available values: \"@cf/baai/bge-reranker-base\", \"\"."
+									description_kind: "plain"
+									computed:         true
+								}
+								rewrite_model: {
+									type:             "string"
+									description:      "Available values: \"@cf/meta/llama-3.3-70b-instruct-fp8-fast\", \"@cf/meta/llama-3.1-8b-instruct-fast\", \"@cf/meta/llama-3.1-8b-instruct-fp8\", \"@cf/meta/llama-4-scout-17b-16e-instruct\", \"@cf/qwen/qwen3-30b-a3b-fp8\", \"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b\", \"@cf/moonshotai/kimi-k2-instruct\", \"anthropic/claude-3-7-sonnet\", \"anthropic/claude-sonnet-4\", \"anthropic/claude-opus-4\", \"anthropic/claude-3-5-haiku\", \"cerebras/qwen-3-235b-a22b-instruct\", \"cerebras/qwen-3-235b-a22b-thinking\", \"cerebras/llama-3.3-70b\", \"cerebras/llama-4-maverick-17b-128e-instruct\", \"cerebras/llama-4-scout-17b-16e-instruct\", \"cerebras/gpt-oss-120b\", \"google-ai-studio/gemini-2.5-flash\", \"google-ai-studio/gemini-2.5-pro\", \"grok/grok-4\", \"groq/llama-3.3-70b-versatile\", \"groq/llama-3.1-8b-instant\", \"openai/gpt-5\", \"openai/gpt-5-mini\", \"openai/gpt-5-nano\", \"\"."
+									description_kind: "plain"
+									computed:         true
+								}
+								rewrite_query: {
+									type:             "bool"
+									description_kind: "plain"
+									computed:         true
+								}
+								score_threshold: {
+									type:             "number"
+									description_kind: "plain"
+									computed:         true
+								}
+								source: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								source_params: {
+									nested_type: {
+										attributes: {
+											exclude_items: {
+												type: ["list", "string"]
+												description:      "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)"
+												description_kind: "plain"
+												computed:         true
+											}
+											include_items: {
+												type: ["list", "string"]
+												description:      "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)"
+												description_kind: "plain"
+												computed:         true
+											}
+											prefix: {
+												type:             "string"
+												description_kind: "plain"
+												computed:         true
+											}
+											r2_jurisdiction: {
+												type:             "string"
+												description_kind: "plain"
+												computed:         true
+											}
+											web_crawler: {
+												nested_type: {
+													attributes: {
+														parse_options: {
+															nested_type: {
+																attributes: {
+																	include_headers: {
+																		type: ["map", "string"]
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	include_images: {
+																		type:             "bool"
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	specific_sitemaps: {
+																		type: ["list", "string"]
+																		description:      "List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	use_browser_rendering: {
+																		type:             "bool"
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description_kind: "plain"
+															computed:         true
+														}
+														parse_type: {
+															type:             "string"
+															description:      "Available values: \"sitemap\", \"feed-rss\"."
+															description_kind: "plain"
+															computed:         true
+														}
+														store_options: {
+															nested_type: {
+																attributes: {
+																	r2_jurisdiction: {
+																		type:             "string"
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	storage_id: {
+																		type:             "string"
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	storage_type: {
+																		type:             "string"
+																		description:      "Available values: \"r2\"."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description_kind: "plain"
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description_kind: "plain"
+									computed:         true
+								}
+								status: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								summarization: {
+									type:             "bool"
+									description_kind: "plain"
+									computed:         true
+								}
+								summarization_model: {
+									type:             "string"
+									description:      "Available values: \"@cf/meta/llama-3.3-70b-instruct-fp8-fast\", \"@cf/meta/llama-3.1-8b-instruct-fast\", \"@cf/meta/llama-3.1-8b-instruct-fp8\", \"@cf/meta/llama-4-scout-17b-16e-instruct\", \"@cf/qwen/qwen3-30b-a3b-fp8\", \"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b\", \"@cf/moonshotai/kimi-k2-instruct\", \"anthropic/claude-3-7-sonnet\", \"anthropic/claude-sonnet-4\", \"anthropic/claude-opus-4\", \"anthropic/claude-3-5-haiku\", \"cerebras/qwen-3-235b-a22b-instruct\", \"cerebras/qwen-3-235b-a22b-thinking\", \"cerebras/llama-3.3-70b\", \"cerebras/llama-4-maverick-17b-128e-instruct\", \"cerebras/llama-4-scout-17b-16e-instruct\", \"cerebras/gpt-oss-120b\", \"google-ai-studio/gemini-2.5-flash\", \"google-ai-studio/gemini-2.5-pro\", \"grok/grok-4\", \"groq/llama-3.3-70b-versatile\", \"groq/llama-3.1-8b-instant\", \"openai/gpt-5\", \"openai/gpt-5-mini\", \"openai/gpt-5-nano\", \"\"."
+									description_kind: "plain"
+									computed:         true
+								}
+								system_prompt_aisearch: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								system_prompt_index_summarization: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								system_prompt_rewrite_query: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								token_id: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								type: {
+									type:             "string"
+									description:      "Available values: \"r2\", \"web-crawler\"."
+									description_kind: "plain"
+									computed:         true
+								}
+								vectorize_active_namespace: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								vectorize_name: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "The items returned by the data source"
+						description_kind: "plain"
+						computed:         true
+					}
+					search: {
+						type:             "string"
+						description:      "Search by id"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		cloudflare_ai_search_token: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					account_tag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					cf_api_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					cf_api_key: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					created_by: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					legacy: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					modified_at: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					modified_by: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					synced_at: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		cloudflare_ai_search_tokens: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					max_items: {
+						type:             "number"
+						description:      "Max items to fetch, default: 1000"
+						description_kind: "plain"
+						optional:         true
+					}
+					result: {
+						nested_type: {
+							attributes: {
+								account_id: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								account_tag: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								cf_api_id: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								cf_api_key: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								created_at: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								created_by: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								enabled: {
+									type:             "bool"
+									description_kind: "plain"
+									computed:         true
+								}
+								id: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								legacy: {
+									type:             "bool"
+									description_kind: "plain"
+									computed:         true
+								}
+								modified_at: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								modified_by: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								synced_at: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "The items returned by the data source"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		cloudflare_api_shield: {
 			version: 0
 			block: {
@@ -38486,6 +40372,210 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				description_kind: "plain"
 			}
 		}
+		cloudflare_authenticated_origin_pulls_hostname_certificate: {
+			version: 0
+			block: {
+				attributes: {
+					certificate: {
+						type:             "string"
+						description:      "The hostname certificate."
+						description_kind: "plain"
+						computed:         true
+					}
+					certificate_id: {
+						type:             "string"
+						description:      "Identifier."
+						description_kind: "plain"
+						required:         true
+					}
+					expires_on: {
+						type:             "string"
+						description:      "The date when the certificate expires."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Identifier."
+						description_kind: "plain"
+						computed:         true
+					}
+					issuer: {
+						type:             "string"
+						description:      "The certificate authority that issued the certificate."
+						description_kind: "plain"
+						computed:         true
+					}
+					serial_number: {
+						type:             "string"
+						description:      "The serial number on the uploaded certificate."
+						description_kind: "plain"
+						computed:         true
+					}
+					signature: {
+						type:             "string"
+						description:      "The type of hash used for the certificate."
+						description_kind: "plain"
+						computed:         true
+					}
+					status: {
+						type: "string"
+						description: """
+									Status of the certificate or the association.
+									Available values: "initializing", "pending_deployment", "pending_deletion", "active", "deleted", "deployment_timed_out", "deletion_timed_out".
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					uploaded_on: {
+						type:             "string"
+						description:      "The time when the certificate was uploaded."
+						description_kind: "plain"
+						computed:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "Identifier."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		cloudflare_authenticated_origin_pulls_hostname_certificates: {
+			version: 0
+			block: {
+				attributes: {
+					max_items: {
+						type:             "number"
+						description:      "Max items to fetch, default: 1000"
+						description_kind: "plain"
+						optional:         true
+					}
+					result: {
+						nested_type: {
+							attributes: {
+								cert_id: {
+									type:             "string"
+									description:      "Identifier."
+									description_kind: "plain"
+									computed:         true
+								}
+								cert_status: {
+									type: "string"
+									description: """
+												Status of the certificate or the association.
+												Available values: "initializing", "pending_deployment", "pending_deletion", "active", "deleted", "deployment_timed_out", "deletion_timed_out".
+												"""
+									description_kind: "plain"
+									computed:         true
+								}
+								cert_updated_at: {
+									type:             "string"
+									description:      "The time when the certificate was updated."
+									description_kind: "plain"
+									computed:         true
+								}
+								cert_uploaded_on: {
+									type:             "string"
+									description:      "The time when the certificate was uploaded."
+									description_kind: "plain"
+									computed:         true
+								}
+								certificate: {
+									type:             "string"
+									description:      "The hostname certificate."
+									description_kind: "plain"
+									computed:         true
+								}
+								created_at: {
+									type:             "string"
+									description:      "The time when the certificate was created."
+									description_kind: "plain"
+									computed:         true
+								}
+								enabled: {
+									type:             "bool"
+									description:      "Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association."
+									description_kind: "plain"
+									computed:         true
+								}
+								expires_on: {
+									type:             "string"
+									description:      "The date when the certificate expires."
+									description_kind: "plain"
+									computed:         true
+								}
+								hostname: {
+									type:             "string"
+									description:      "The hostname on the origin for which the client certificate uploaded will be used."
+									description_kind: "plain"
+									computed:         true
+								}
+								id: {
+									type:             "string"
+									description:      "Identifier."
+									description_kind: "plain"
+									computed:         true
+								}
+								issuer: {
+									type:             "string"
+									description:      "The certificate authority that issued the certificate."
+									description_kind: "plain"
+									computed:         true
+								}
+								private_key: {
+									type:             "string"
+									description:      "The hostname certificate's private key."
+									description_kind: "plain"
+									computed:         true
+									sensitive:        true
+								}
+								serial_number: {
+									type:             "string"
+									description:      "The serial number on the uploaded certificate."
+									description_kind: "plain"
+									computed:         true
+								}
+								signature: {
+									type:             "string"
+									description:      "The type of hash used for the certificate."
+									description_kind: "plain"
+									computed:         true
+								}
+								status: {
+									type: "string"
+									description: """
+												Status of the certificate or the association.
+												Available values: "initializing", "pending_deployment", "pending_deletion", "active", "deleted", "deployment_timed_out", "deletion_timed_out".
+												"""
+									description_kind: "plain"
+									computed:         true
+								}
+								updated_at: {
+									type:             "string"
+									description:      "The time when the certificate was updated."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "The items returned by the data source"
+						description_kind: "plain"
+						computed:         true
+					}
+					zone_id: {
+						type:             "string"
+						description:      "Identifier."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		cloudflare_authenticated_origin_pulls_settings: {
 			version: 0
 			block: {
@@ -38493,6 +40583,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					enabled: {
 						type:             "bool"
 						description:      "Indicates whether zone-level authenticated origin pulls is enabled."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Identifier."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -51608,6 +53704,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						required:         true
 					}
+					bond_id: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
 					ha_link: {
 						type:             "bool"
 						description:      "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link."
@@ -51797,6 +53898,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					result: {
 						nested_type: {
 							attributes: {
+								bond_id: {
+									type:             "number"
+									description_kind: "plain"
+									computed:         true
+								}
 								ha_link: {
 									type:             "bool"
 									description:      "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link."
@@ -52677,8 +54783,8 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 
 															Must be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.
 
-															This custom ID does not need to be unique. Two IPsec tunnels may have the same custom 
-															fqdn_id. However, if another IPsec tunnel has the same value then the two tunnels 
+															This custom ID does not need to be unique. Two IPsec tunnels may have the same custom
+															fqdn_id. However, if another IPsec tunnel has the same value then the two tunnels
 															cannot have the same cloudflare_endpoint.
 															"""
 											description_kind: "plain"
@@ -66368,6 +68474,22 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									optional:         true
 								}
+								filter: {
+									type: "string"
+									description: """
+												Filter widgets by field using case-insensitive substring matching.
+												Format: `field:value`
+
+												Supported fields:
+												- `name` - Filter by widget name (e.g., `filter=name:login-form`)
+												- `sitekey` - Filter by sitekey (e.g., `filter=sitekey:0x4AAA`)
+
+												Returns 400 Bad Request if the field is unsupported or format is invalid.
+												An empty filter value returns all results.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
 								order: {
 									type: "string"
 									description: """
@@ -66462,6 +68584,22 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description: """
 									Direction to order widgets.
 									Available values: "asc", "desc".
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					filter: {
+						type: "string"
+						description: """
+									Filter widgets by field using case-insensitive substring matching.
+									Format: `field:value`
+
+									Supported fields:
+									- `name` - Filter by widget name (e.g., `filter=name:login-form`)
+									- `sitekey` - Filter by sitekey (e.g., `filter=sitekey:0x4AAA`)
+
+									Returns 400 Bad Request if the field is unsupported or format is invalid.
+									An empty filter value returns all results.
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -69123,6 +71261,28 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									computed:         true
 								}
+								simple: {
+									nested_type: {
+										attributes: {
+											limit: {
+												type:             "number"
+												description:      "The limit (requests per period)."
+												description_kind: "plain"
+												computed:         true
+											}
+											period: {
+												type:             "number"
+												description:      "The period in seconds."
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "The rate limit configuration."
+									description_kind: "plain"
+									computed:         true
+								}
 								store_id: {
 									type:             "string"
 									description:      "ID of the store containing the secret."
@@ -69140,7 +71300,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									type: "string"
 									description: """
 												The kind of resource that the binding provides.
-												Available values: "ai", "analytics_engine", "assets", "browser", "d1", "data_blob", "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit", "images", "json", "kv_namespace", "mtls_certificate", "plain_text", "pipelines", "queue", "r2_bucket", "secret_text", "send_email", "service", "text_blob", "vectorize", "version_metadata", "secrets_store_secret", "secret_key", "workflow", "wasm_module".
+												Available values: "ai", "analytics_engine", "assets", "browser", "d1", "data_blob", "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit", "images", "json", "kv_namespace", "mtls_certificate", "plain_text", "pipelines", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email", "service", "text_blob", "vectorize", "version_metadata", "secrets_store_secret", "secret_key", "workflow", "wasm_module".
 												"""
 									description_kind: "plain"
 									computed:         true
@@ -69430,18 +71590,66 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					placement: {
 						nested_type: {
-							attributes: mode: {
-								type: "string"
-								description: """
-												Placement mode for the version.
-												Available values: "smart".
+							attributes: {
+								host: {
+									type:             "string"
+									description:      "TCP host and port for targeted placement."
+									description_kind: "plain"
+									computed:         true
+								}
+								hostname: {
+									type:             "string"
+									description:      "HTTP hostname for targeted placement."
+									description_kind: "plain"
+									computed:         true
+								}
+								mode: {
+									type: "string"
+									description: """
+												Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+												Available values: "smart", "targeted".
 												"""
-								description_kind: "plain"
-								computed:         true
+									description_kind: "plain"
+									computed:         true
+								}
+								region: {
+									type:             "string"
+									description:      "Cloud region for targeted placement in format 'provider:region'."
+									description_kind: "plain"
+									computed:         true
+								}
+								target: {
+									nested_type: {
+										attributes: {
+											host: {
+												type:             "string"
+												description:      "TCP host:port for targeted placement."
+												description_kind: "plain"
+												computed:         true
+											}
+											hostname: {
+												type:             "string"
+												description:      "HTTP hostname for targeted placement."
+												description_kind: "plain"
+												computed:         true
+											}
+											region: {
+												type:             "string"
+												description:      "Cloud region in format 'provider:region'."
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description:      "Array of placement targets (currently limited to single target)."
+									description_kind: "plain"
+									computed:         true
+								}
 							}
 							nesting_mode: "single"
 						}
-						description:      "Placement settings for the version."
+						description:      "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -69792,6 +72000,28 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												description_kind: "plain"
 												computed:         true
 											}
+											simple: {
+												nested_type: {
+													attributes: {
+														limit: {
+															type:             "number"
+															description:      "The limit (requests per period)."
+															description_kind: "plain"
+															computed:         true
+														}
+														period: {
+															type:             "number"
+															description:      "The period in seconds."
+															description_kind: "plain"
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "The rate limit configuration."
+												description_kind: "plain"
+												computed:         true
+											}
 											store_id: {
 												type:             "string"
 												description:      "ID of the store containing the secret."
@@ -69809,7 +72039,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												type: "string"
 												description: """
 															The kind of resource that the binding provides.
-															Available values: "ai", "analytics_engine", "assets", "browser", "d1", "data_blob", "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit", "images", "json", "kv_namespace", "mtls_certificate", "plain_text", "pipelines", "queue", "r2_bucket", "secret_text", "send_email", "service", "text_blob", "vectorize", "version_metadata", "secrets_store_secret", "secret_key", "workflow", "wasm_module".
+															Available values: "ai", "analytics_engine", "assets", "browser", "d1", "data_blob", "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit", "images", "json", "kv_namespace", "mtls_certificate", "plain_text", "pipelines", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email", "service", "text_blob", "vectorize", "version_metadata", "secrets_store_secret", "secret_key", "workflow", "wasm_module".
 															"""
 												description_kind: "plain"
 												computed:         true
@@ -70090,18 +72320,66 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								placement: {
 									nested_type: {
-										attributes: mode: {
-											type: "string"
-											description: """
-															Placement mode for the version.
-															Available values: "smart".
+										attributes: {
+											host: {
+												type:             "string"
+												description:      "TCP host and port for targeted placement."
+												description_kind: "plain"
+												computed:         true
+											}
+											hostname: {
+												type:             "string"
+												description:      "HTTP hostname for targeted placement."
+												description_kind: "plain"
+												computed:         true
+											}
+											mode: {
+												type: "string"
+												description: """
+															Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+															Available values: "smart", "targeted".
 															"""
-											description_kind: "plain"
-											computed:         true
+												description_kind: "plain"
+												computed:         true
+											}
+											region: {
+												type:             "string"
+												description:      "Cloud region for targeted placement in format 'provider:region'."
+												description_kind: "plain"
+												computed:         true
+											}
+											target: {
+												nested_type: {
+													attributes: {
+														host: {
+															type:             "string"
+															description:      "TCP host:port for targeted placement."
+															description_kind: "plain"
+															computed:         true
+														}
+														hostname: {
+															type:             "string"
+															description:      "HTTP hostname for targeted placement."
+															description_kind: "plain"
+															computed:         true
+														}
+														region: {
+															type:             "string"
+															description:      "Cloud region in format 'provider:region'."
+															description_kind: "plain"
+															computed:         true
+														}
+													}
+													nesting_mode: "list"
+												}
+												description:      "Array of placement targets (currently limited to single target)."
+												description_kind: "plain"
+												computed:         true
+											}
 										}
 										nesting_mode: "single"
 									}
-									description:      "Placement settings for the version."
+									description:      "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -70984,6 +73262,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						required:         true
 					}
+					value: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
 				}
 				description_kind: "plain"
 			}
@@ -71234,6 +73517,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
+					script: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
 					script_name: {
 						type:             "string"
 						description:      "Name of the script, used in URLs and route configuration."
@@ -71476,7 +73764,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												type: "string"
 												description: """
 															Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-															Available values: "smart".
+															Available values: "smart", "targeted".
 															"""
 												description_kind: "plain"
 												computed:         true
@@ -71496,16 +73784,44 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												description_kind: "plain"
 												computed:         true
 											}
+											target: {
+												nested_type: {
+													attributes: {
+														host: {
+															type:             "string"
+															description:      "TCP host:port for targeted placement."
+															description_kind: "plain"
+															computed:         true
+														}
+														hostname: {
+															type:             "string"
+															description:      "HTTP hostname for targeted placement."
+															description_kind: "plain"
+															computed:         true
+														}
+														region: {
+															type:             "string"
+															description:      "Cloud region in format 'provider:region'."
+															description_kind: "plain"
+															computed:         true
+														}
+													}
+													nesting_mode: "list"
+												}
+												description:      "Array of placement targets (currently limited to single target)."
+												description_kind: "plain"
+												computed:         true
+											}
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement."
+									description:      "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host."
 									description_kind: "plain"
 									computed:         true
 								}
 								placement_mode: {
 									type:             "string"
-									description:      "Available values: \"smart\"."
+									description:      "Available values: \"smart\", \"targeted\"."
 									description_kind: "plain"
 									deprecated:       true
 									computed:         true
@@ -71909,6 +74225,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
+					secure_web_gateway: {
+						type:             "bool"
+						description:      "Route outbound MCP traffic through Zero Trust Secure Web Gateway"
+						description_kind: "plain"
+						computed:         true
+					}
 					servers: {
 						nested_type: {
 							attributes: {
@@ -71951,6 +74273,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								id: {
 									type:             "string"
 									description:      "server id"
+									description_kind: "plain"
+									computed:         true
+								}
+								last_successful_sync: {
+									type:             "string"
 									description_kind: "plain"
 									computed:         true
 								}
@@ -72073,6 +74400,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									computed:         true
 								}
+								secure_web_gateway: {
+									type:             "bool"
+									description:      "Route outbound MCP traffic through Zero Trust Secure Web Gateway"
+									description_kind: "plain"
+									computed:         true
+								}
 							}
 							nesting_mode: "list"
 						}
@@ -72148,6 +74481,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "server id"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					last_successful_sync: {
+						type:             "string"
+						description_kind: "plain"
 						computed:         true
 					}
 					last_synced: {
@@ -72241,6 +74579,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								id: {
 									type:             "string"
 									description:      "server id"
+									description_kind: "plain"
+									computed:         true
+								}
+								last_successful_sync: {
+									type:             "string"
 									description_kind: "plain"
 									computed:         true
 								}
@@ -86303,14 +88646,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									computed:         true
 								}
 								kind: {
-									type:             "string"
-									description:      "The type of test."
+									type: "string"
+									description: """
+												The type of test.
+												Available values: "http", "traceroute".
+												"""
 									description_kind: "plain"
 									computed:         true
 								}
 								method: {
-									type:             "string"
-									description:      "The HTTP request method type."
+									type: "string"
+									description: """
+												The HTTP request method type.
+												Available values: "GET".
+												"""
 									description_kind: "plain"
 									computed:         true
 								}
@@ -86331,13 +88680,37 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type:             "string"
 						description:      "The unique identifier for the test."
 						description_kind: "plain"
-						required:         true
+						optional:         true
 					}
 					enabled: {
 						type:             "bool"
 						description:      "Determines whether or not the test is active."
 						description_kind: "plain"
 						computed:         true
+					}
+					filter: {
+						nested_type: {
+							attributes: {
+								kind: {
+									type: "string"
+									description: """
+												Filter by test type
+												Available values: "http", "traceroute".
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								test_name: {
+									type:             "string"
+									description:      "Filter by test name"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
 					}
 					id: {
 						type:             "string"
@@ -86368,7 +88741,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								id: {
 									type:             "string"
-									description:      "The id of the DEX rule"
+									description:      "API Resource UUID tag."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -86410,6 +88783,15 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						required:         true
 					}
+					kind: {
+						type: "string"
+						description: """
+									Filter by test type
+									Available values: "http", "traceroute".
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					max_items: {
 						type:             "number"
 						description:      "Max items to fetch, default: 1000"
@@ -86429,14 +88811,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												computed:         true
 											}
 											kind: {
-												type:             "string"
-												description:      "The type of test."
+												type: "string"
+												description: """
+															The type of test.
+															Available values: "http", "traceroute".
+															"""
 												description_kind: "plain"
 												computed:         true
 											}
 											method: {
-												type:             "string"
-												description:      "The HTTP request method type."
+												type: "string"
+												description: """
+															The HTTP request method type.
+															Available values: "GET".
+															"""
 												description_kind: "plain"
 												computed:         true
 											}
@@ -86488,7 +88876,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											id: {
 												type:             "string"
-												description:      "The id of the DEX rule"
+												description:      "API Resource UUID tag."
 												description_kind: "plain"
 												computed:         true
 											}
@@ -86523,6 +88911,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "The items returned by the data source"
 						description_kind: "plain"
 						computed:         true
+					}
+					test_name: {
+						type:             "string"
+						description:      "Filter by test name"
+						description_kind: "plain"
+						optional:         true
 					}
 				}
 				description_kind: "plain"
@@ -88374,6 +90768,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					enabled_entries: {
 						type: ["list", "string"]
+						description:      "Entries to enable for this predefined profile. Any entries not provided will be disabled."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -88507,6 +90902,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							}
 							nesting_mode: "list"
 						}
+						description:      "This field has been deprecated for `enabled_entries`."
 						description_kind: "plain"
 						deprecated:       true
 						computed:         true
@@ -91957,6 +94353,18 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
+					deny_unmatched_requests: {
+						type:             "bool"
+						description:      "Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array."
+						description_kind: "plain"
+						computed:         true
+					}
+					deny_unmatched_requests_exempted_zone_names: {
+						type: ["list", "string"]
+						description:      "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request."
+						description_kind: "plain"
+						computed:         true
+					}
 					is_ui_read_only: {
 						type:             "bool"
 						description:      "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled."
@@ -93061,6 +95469,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel."
 						description_kind: "plain"
 						computed:         true
+						sensitive:        true
 					}
 					tunnel_id: {
 						type:             "string"
@@ -93706,9 +96115,10 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					token: {
 						type:             "string"
-						description:      "The Warp Connector Token is used as a mechanism to authenticate the operation of a tunnel."
+						description:      "The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel."
 						description_kind: "plain"
 						computed:         true
+						sensitive:        true
 					}
 					tunnel_id: {
 						type:             "string"

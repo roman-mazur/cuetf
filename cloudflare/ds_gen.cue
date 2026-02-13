@@ -24,6 +24,10 @@ import "github.com/roman-mazur/cuetf/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_accounts": data.#cloudflare_accounts
 	_#ds: "\(#cloudflarePrefix)_address_map": data.#cloudflare_address_map
 	_#ds: "\(#cloudflarePrefix)_address_maps": data.#cloudflare_address_maps
+	_#ds: "\(#cloudflarePrefix)_ai_search_instance": data.#cloudflare_ai_search_instance
+	_#ds: "\(#cloudflarePrefix)_ai_search_instances": data.#cloudflare_ai_search_instances
+	_#ds: "\(#cloudflarePrefix)_ai_search_token": data.#cloudflare_ai_search_token
+	_#ds: "\(#cloudflarePrefix)_ai_search_tokens": data.#cloudflare_ai_search_tokens
 	_#ds: "\(#cloudflarePrefix)_api_shield_discovery_operations": data.#cloudflare_api_shield_discovery_operations
 	_#ds: "\(#cloudflarePrefix)_api_shield": data.#cloudflare_api_shield
 	_#ds: "\(#cloudflarePrefix)_api_shield_operation": data.#cloudflare_api_shield_operation
@@ -40,6 +44,8 @@ import "github.com/roman-mazur/cuetf/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_authenticated_origin_pulls_certificate": data.#cloudflare_authenticated_origin_pulls_certificate
 	_#ds: "\(#cloudflarePrefix)_authenticated_origin_pulls_certificates": data.#cloudflare_authenticated_origin_pulls_certificates
 	_#ds: "\(#cloudflarePrefix)_authenticated_origin_pulls": data.#cloudflare_authenticated_origin_pulls
+	_#ds: "\(#cloudflarePrefix)_authenticated_origin_pulls_hostname_certificate": data.#cloudflare_authenticated_origin_pulls_hostname_certificate
+	_#ds: "\(#cloudflarePrefix)_authenticated_origin_pulls_hostname_certificates": data.#cloudflare_authenticated_origin_pulls_hostname_certificates
 	_#ds: "\(#cloudflarePrefix)_authenticated_origin_pulls_settings": data.#cloudflare_authenticated_origin_pulls_settings
 	_#ds: "\(#cloudflarePrefix)_bot_management": data.#cloudflare_bot_management
 	_#ds: "\(#cloudflarePrefix)_botnet_feed_config_asn": data.#cloudflare_botnet_feed_config_asn

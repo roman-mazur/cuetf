@@ -10,7 +10,9 @@ package res
 		// Indicates whether the certificate is a CA or leaf certificate.
 		ca!: bool
 
-		// The uploaded root CA certificate.
+		// The uploaded root CA certificate or certificate chain.
+		// Certificates must be provided in PEM format with the
+		// certificate matching the private_key first in the chain.
 		certificates!: string
 
 		// When the certificate expires.

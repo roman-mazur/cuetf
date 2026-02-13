@@ -109,6 +109,22 @@ package res
 			// Destination address for the email.
 			destination_address?: string
 
+			// Outbound worker.
+			outbound?: close({
+				// Pass information from the Dispatch Worker to the Outbound
+				// Worker through the parameters.
+				params?: [...string]
+
+				// Outbound worker.
+				worker?: close({
+					// Environment of the outbound worker.
+					environment?: string
+
+					// Name of the outbound worker.
+					service?: string
+				})
+			})
+
 			// The environment of the script_name to bind to.
 			environment?: string
 
@@ -136,26 +152,19 @@ package res
 			// "pkcs8", or "spki".
 			key_base64?: string
 
-			// Outbound worker.
-			outbound?: close({
-				// Pass information from the Dispatch Worker to the Outbound
-				// Worker through the parameters.
-				params?: [...string]
-
-				// Outbound worker.
-				worker?: close({
-					// Environment of the outbound worker.
-					environment?: string
-
-					// Name of the outbound worker.
-					service?: string
-				})
-			})
-
 			// Key data in [JSON Web
 			// Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key)
 			// format. Required if `format` is "jwk".
 			key_jwk?: string
+
+			// The rate limit configuration.
+			simple?: close({
+				// The limit (requests per period).
+				limit!: number
+
+				// The period in seconds.
+				period!: number
+			})
 
 			// A JavaScript variable name for the binding.
 			name!: string
@@ -202,7 +211,7 @@ package res
 			// "browser", "d1", "data_blob", "dispatch_namespace",
 			// "durable_object_namespace", "hyperdrive", "inherit", "images",
 			// "json", "kv_namespace", "mtls_certificate", "plain_text",
-			// "pipelines", "queue", "r2_bucket", "secret_text",
+			// "pipelines", "queue", "ratelimit", "r2_bucket", "secret_text",
 			// "send_email", "service", "text_blob", "vectorize",
 			// "version_metadata", "secrets_store_secret", "secret_key",
 			// "workflow", "wasm_module".
@@ -246,6 +255,22 @@ package res
 			// Destination address for the email.
 			destination_address?: string
 
+			// Outbound worker.
+			outbound?: close({
+				// Pass information from the Dispatch Worker to the Outbound
+				// Worker through the parameters.
+				params?: [...string]
+
+				// Outbound worker.
+				worker?: close({
+					// Environment of the outbound worker.
+					environment?: string
+
+					// Name of the outbound worker.
+					service?: string
+				})
+			})
+
 			// The environment of the script_name to bind to.
 			environment?: string
 
@@ -273,26 +298,19 @@ package res
 			// "pkcs8", or "spki".
 			key_base64?: string
 
-			// Outbound worker.
-			outbound?: close({
-				// Pass information from the Dispatch Worker to the Outbound
-				// Worker through the parameters.
-				params?: [...string]
-
-				// Outbound worker.
-				worker?: close({
-					// Environment of the outbound worker.
-					environment?: string
-
-					// Name of the outbound worker.
-					service?: string
-				})
-			})
-
 			// Key data in [JSON Web
 			// Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key)
 			// format. Required if `format` is "jwk".
 			key_jwk?: string
+
+			// The rate limit configuration.
+			simple?: close({
+				// The limit (requests per period).
+				limit!: number
+
+				// The period in seconds.
+				period!: number
+			})
 
 			// A JavaScript variable name for the binding.
 			name!: string
@@ -339,7 +357,7 @@ package res
 			// "browser", "d1", "data_blob", "dispatch_namespace",
 			// "durable_object_namespace", "hyperdrive", "inherit", "images",
 			// "json", "kv_namespace", "mtls_certificate", "plain_text",
-			// "pipelines", "queue", "r2_bucket", "secret_text",
+			// "pipelines", "queue", "ratelimit", "r2_bucket", "secret_text",
 			// "send_email", "service", "text_blob", "vectorize",
 			// "version_metadata", "secrets_store_secret", "secret_key",
 			// "workflow", "wasm_module".
@@ -529,11 +547,47 @@ package res
 			name!: string
 		})]])
 
-		// Placement settings for the version.
+		// Configuration for [Smart
+		// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+		// Specify mode='smart' for Smart Placement, or one of
+		// region/hostname/host.
 		placement?: close({
-			// Placement mode for the version.
-			// Available values: "smart".
+			// TCP host and port for targeted placement.
+			host?: string
+
+			// HTTP hostname for targeted placement.
+			hostname?: string
+
+			// Enables [Smart
+			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+			// Available values: "smart", "targeted".
 			mode?: string
+
+			// Array of placement targets (currently limited to single
+			// target).
+			target?: matchN(1, [close({
+				// TCP host:port for targeted placement.
+				host?: string
+
+				// HTTP hostname for targeted placement.
+				hostname?: string
+
+				// Cloud region in format 'provider:region'.
+				region?: string
+			}), [...close({
+				// TCP host:port for targeted placement.
+				host?: string
+
+				// HTTP hostname for targeted placement.
+				hostname?: string
+
+				// Cloud region in format 'provider:region'.
+				region?: string
+			})]])
+
+			// Cloud region for targeted placement in format
+			// 'provider:region'.
+			region?: string
 		})
 
 		// The integer version number, starting from one.

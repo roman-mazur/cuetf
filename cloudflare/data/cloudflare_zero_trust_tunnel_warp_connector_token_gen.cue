@@ -7,8 +7,8 @@ package data
 		// Cloudflare account ID
 		account_id!: string
 
-		// The Warp Connector Token is used as a mechanism to authenticate
-		// the operation of a tunnel.
+		// The Tunnel Token is used as a mechanism to authenticate the
+		// operation of a tunnel.
 		token?: string
 
 		// UUID of the tunnel.

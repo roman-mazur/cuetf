@@ -19,5 +19,6 @@ package data
 
 		// Namespace identifier tag.
 		namespace_id!: string
+		value?:        string
 	})
 }

@@ -4,8 +4,6 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_dex_test")
 	close({
-		account_id!: string
-
 		// The configuration object which contains the details for the
 		// WARP client to conduct the test.
 		data?: close({
@@ -13,17 +11,28 @@ package data
 			host?: string
 
 			// The type of test.
+			// Available values: "http", "traceroute".
 			kind?: string
 
 			// The HTTP request method type.
+			// Available values: "GET".
 			method?: string
 		})
 
 		// Additional details about the test.
 		description?: string
+		account_id!:  string
 
 		// The unique identifier for the test.
-		dex_test_id!: string
+		dex_test_id?: string
+		filter?: close({
+			// Filter by test type
+			// Available values: "http", "traceroute".
+			kind?: string
+
+			// Filter by test name
+			test_name?: string
+		})
 
 		// Determines whether or not the test is active.
 		enabled?: bool
@@ -34,15 +43,12 @@ package data
 		// How often the test will run.
 		interval?: string
 
-		// The name of the DEX test. Must be unique.
-		name?: string
-
 		// DEX rules targeted by this test
 		target_policies?: matchN(1, [close({
 			// Whether the DEX rule is the account default
 			default?: bool
 
-			// The id of the DEX rule
+			// API Resource UUID tag.
 			id?: string
 
 			// The name of the DEX rule
@@ -51,12 +57,15 @@ package data
 			// Whether the DEX rule is the account default
 			default?: bool
 
-			// The id of the DEX rule
+			// API Resource UUID tag.
 			id?: string
 
 			// The name of the DEX rule
 			name?: string
 		})]])
+
+		// The name of the DEX test. Must be unique.
+		name?:     string
 		targeted?: bool
 
 		// The unique identifier for the test.

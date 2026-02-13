@@ -36,7 +36,8 @@ package res
 		// uploaded will be used.
 		hostname?: string
 
-		// Identifier.
+		// The hostname on the origin for which the client certificate
+		// uploaded will be used.
 		id?: string
 
 		// The certificate authority that issued the certificate.

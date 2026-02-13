@@ -8,14 +8,17 @@ package data
 		ai_context_enabled?:  bool
 		allowed_match_count?: number
 
-		// The name of the predefined profile.
-		name?:                 string
-		confidence_threshold?: string
+		// Entries to enable for this predefined profile. Any entries not
+		// provided will be disabled.
 		enabled_entries?: [...string]
+		confidence_threshold?: string
+
+		// The name of the predefined profile.
+		name?: string
+		id?:   string
 
 		// Whether this profile can be accessed by anyone.
 		open_access?: bool
-		id?:          string
 		ocr_enabled?: bool
 		profile_id!:  string
 	})
