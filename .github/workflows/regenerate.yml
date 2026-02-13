@@ -33,7 +33,7 @@ jobs:
           git config user.email "cuetf-bot@rmazur.io"
           branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
           git checkout "origin/$branch"
-
+          if [ -z "$GH_TOKEN" ]; then echo "GH_TOKEN not defined"; fi
           export label="${{ github.event.label.name }}"
           export provider=${label#"provider:"}
           echo "Regenerating for $provider"
@@ -45,6 +45,7 @@ jobs:
           git push origin HEAD:"$branch"
 
           echo "Setting the PR to merge after all checks"
+          if [ -z "$GH_TOKEN" ]; then echo "GH_TOKEN not defined"; fi
           gh pr merge --auto --merge "${{ github.event.pull_request.html_url }}"
         env:
           GH_TOKEN: ${{ secrets.DEPENDABOT_GITHUB }}
