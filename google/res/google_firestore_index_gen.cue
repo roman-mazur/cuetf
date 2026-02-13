@@ -17,6 +17,16 @@ import "list"
 		// The Firestore database id. Defaults to '"(default)"'.
 		database?: string
 
+		// Deletion behavior for this index.
+		// If the deletion policy is 'PREVENT', the index cannot be
+		// deleted and a terraform destroy will fail.
+		// If the deletion policy is 'DELETE', the index will both be
+		// removed from Terraform state and deleted from Google Cloud
+		// upon destruction.
+		// The default value is 'DELETE'. Default value: "DELETE" Possible
+		// values: ["DELETE", "PREVENT"]
+		deletion_policy?: string
+
 		// The density configuration for this index. Possible values:
 		// ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
 		density?: string
@@ -34,15 +44,15 @@ import "list"
 
 		// A server defined name for this index. Format:
 		// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
-		name?:    string
+		name?: string
+		fields!: matchN(1, [#fields, [_, ...] & [...#fields]])
 		project?: string
 
 		// The scope at which a query is run. Default value: "COLLECTION"
 		// Possible values: ["COLLECTION", "COLLECTION_GROUP",
 		// "COLLECTION_RECURSIVE"]
 		query_scope?: string
-		fields!: matchN(1, [#fields, [_, ...] & [...#fields]])
-		timeouts?: #timeouts
+		timeouts?:    #timeouts
 
 		// Whether to skip waiting for the index to be created.
 		skip_wait?: bool

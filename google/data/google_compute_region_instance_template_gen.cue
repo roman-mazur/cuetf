@@ -161,12 +161,15 @@ package data
 			ipv6_address?:       string
 			name?:               string
 			network?:            string
+			network_attachment?: string
 			network_ip?:         string
 			nic_type?:           string
+			parent_nic_name?:    string
 			queue_count?:        number
 			stack_type?:         string
 			subnetwork?:         string
 			subnetwork_project?: string
+			vlan?:               number
 		})]
 
 		// Configures network performance settings for the instance. If

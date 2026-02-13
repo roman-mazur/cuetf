@@ -39,7 +39,8 @@ import "list"
 		// A policy can be associated with a network only if the network
 		// has the matching policyType in its network profile.
 		// Different policy types may support some of the Firewall Rules
-		// features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY"]
+		// features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY",
+		// "RDMA_FALCON_POLICY", "ULL_POLICY"]
 		policy_type?: string
 
 		// A list of firewall policy pre-defined rules.

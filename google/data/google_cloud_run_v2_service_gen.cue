@@ -295,6 +295,20 @@ package data
 					container_port?: number
 					name?:           string
 				})]
+				readiness_probe?: [...close({
+					failure_threshold?: number
+					grpc?: [...close({
+						port?:    number
+						service?: string
+					})]
+					http_get?: [...close({
+						path?: string
+						port?: number
+					})]
+					period_seconds?:    number
+					success_threshold?: number
+					timeout_seconds?:   number
+				})]
 				resources?: [...close({
 					cpu_idle?: bool
 					limits?: [string]: string
