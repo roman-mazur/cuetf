@@ -10,28 +10,29 @@ import "list"
 		aws_account_id?: string
 		data_set_id!:    string
 		id?:             string
+		import_mode!:    string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		import_mode!: string
-		name!:        string
+		region?: string
+		name!:   string
 		output_columns?: [...close({
 			description?: string
 			name?:        string
 			type?:        string
 		})]
-		tags?: [string]: string
 		column_groups?: matchN(1, [#column_groups, list.MaxItems(8) & [...#column_groups]])
 		column_level_permission_rules?: matchN(1, [#column_level_permission_rules, [...#column_level_permission_rules]])
-		tags_all?: [string]: string
 		data_set_usage_configuration?: matchN(1, [#data_set_usage_configuration, list.MaxItems(1) & [...#data_set_usage_configuration]])
+		tags?: [string]:     string
+		tags_all?: [string]: string
 		field_folders?: matchN(1, [#field_folders, list.MaxItems(1000) & [...#field_folders]])
 		logical_table_map?: matchN(1, [#logical_table_map, list.MaxItems(64) & [...#logical_table_map]])
 		permissions?: matchN(1, [#permissions, list.MaxItems(64) & [...#permissions]])
 		physical_table_map?: matchN(1, [#physical_table_map, list.MaxItems(32) & [...#physical_table_map]])
+		use_as?: string
 		refresh_properties?: matchN(1, [#refresh_properties, list.MaxItems(1) & [...#refresh_properties]])
 		row_level_permission_data_set?: matchN(1, [#row_level_permission_data_set, list.MaxItems(1) & [...#row_level_permission_data_set]])
 		row_level_permission_tag_configuration?: matchN(1, [#row_level_permission_tag_configuration, list.MaxItems(1) & [...#row_level_permission_tag_configuration]])
