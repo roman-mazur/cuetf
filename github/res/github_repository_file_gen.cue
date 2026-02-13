@@ -4,20 +4,6 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_repository_file")
 	close({
-		// Automatically create the branch if it could not be found.
-		// Subsequent reads if the branch is deleted will occur from
-		// 'autocreate_branch_source_branch'
-		autocreate_branch?: bool
-
-		// The branch name to start from, if 'autocreate_branch' is set.
-		// Defaults to 'main'.
-		autocreate_branch_source_branch?: string
-
-		// The commit hash to start from, if 'autocreate_branch' is set.
-		// Defaults to the tip of 'autocreate_branch_source_branch'. If
-		// provided, 'autocreate_branch_source_branch' is ignored.
-		autocreate_branch_source_sha?: string
-
 		// The branch name, defaults to the repository's default branch
 		branch?: string
 
@@ -43,16 +29,19 @@ package res
 
 		// The file path to manage
 		file!: string
+		id?:   string
 
 		// Enable overwriting existing files, defaults to "false"
 		overwrite_on_create?: bool
-		id?:                  string
 
 		// The name of the commit/branch/tag
 		ref?: string
 
 		// The repository name
 		repository!: string
+
+		// The repository ID
+		repository_id?: number
 
 		// The blob SHA of the file
 		sha?: string
