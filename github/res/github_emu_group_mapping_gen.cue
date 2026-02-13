@@ -12,7 +12,7 @@ package res
 		group_name?: string
 
 		// ID of the GitHub team.
-		team_id?: string
+		team_id?: number
 		id?:      string
 
 		// Slug of the GitHub team.

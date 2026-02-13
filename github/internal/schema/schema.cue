@@ -2011,7 +2011,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						computed:         true
 					}
 					team_id: {
-						type:             "string"
+						type:             "number"
 						description:      "ID of the GitHub team."
 						description_kind: "plain"
 						computed:         true
@@ -4931,25 +4931,28 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 			}
 		}
 		github_repository_file: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					autocreate_branch: {
 						type:             "bool"
 						description:      "Automatically create the branch if it could not be found. Subsequent reads if the branch is deleted will occur from 'autocreate_branch_source_branch'"
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					autocreate_branch_source_branch: {
 						type:             "string"
 						description:      "The branch name to start from, if 'autocreate_branch' is set. Defaults to 'main'."
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					autocreate_branch_source_sha: {
 						type:             "string"
 						description:      "The commit hash to start from, if 'autocreate_branch' is set. Defaults to the tip of 'autocreate_branch_source_branch'. If provided, 'autocreate_branch_source_branch' is ignored."
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 						computed:         true
 					}
@@ -4958,6 +4961,7 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description:      "The branch name, defaults to the repository's default branch"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					commit_author: {
 						type:             "string"
@@ -5019,6 +5023,12 @@ provider_schemas: "registry.terraform.io/integrations/github": {
 						description:      "The repository name"
 						description_kind: "plain"
 						required:         true
+					}
+					repository_id: {
+						type:             "number"
+						description:      "The repository ID"
+						description_kind: "plain"
+						computed:         true
 					}
 					sha: {
 						type:             "string"
