@@ -6,17 +6,15 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_spot_instance_request")
 	close({
-		ami?: string
-		arn?: string
-		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
-		associate_public_ip_address?: bool
-		availability_zone?:           string
-		disable_api_stop?:            bool
-		disable_api_termination?:     bool
-		ebs_optimized?:               bool
-		enable_primary_ipv6?:         bool
-		force_destroy?:               bool
-		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
+		ami?:                                  string
+		arn?:                                  string
+		associate_public_ip_address?:          bool
+		availability_zone?:                    string
+		disable_api_stop?:                     bool
+		disable_api_termination?:              bool
+		ebs_optimized?:                        bool
+		enable_primary_ipv6?:                  bool
+		force_destroy?:                        bool
 		get_password_data?:                    bool
 		hibernation?:                          bool
 		host_id?:                              string
@@ -47,13 +45,12 @@ import "list"
 			delete_on_termination?: bool
 			network_interface_id?:  string
 		})]
-		credit_specification?: matchN(1, [#credit_specification, list.MaxItems(1) & [...#credit_specification]])
 		primary_network_interface_id?: string
-		private_dns?:                  string
-		private_ip?:                   string
-		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
-		public_dns?: string
-		public_ip?:  string
+		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
+		private_dns?: string
+		private_ip?:  string
+		public_dns?:  string
+		public_ip?:   string
 		secondary_private_ips?: [...string]
 		security_groups?: [...string]
 		source_dest_check?:  bool
@@ -72,16 +69,20 @@ import "list"
 		valid_from?:                  string
 		valid_until?:                 string
 		volume_tags?: [string]: string
+		vpc_security_group_ids?: [...string]
+		wait_for_fulfillment?: bool
+		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
+		credit_specification?: matchN(1, [#credit_specification, list.MaxItems(1) & [...#credit_specification]])
+		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
 		enclave_options?: matchN(1, [#enclave_options, list.MaxItems(1) & [...#enclave_options]])
 		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
 		launch_template?: matchN(1, [#launch_template, list.MaxItems(1) & [...#launch_template]])
 		maintenance_options?: matchN(1, [#maintenance_options, list.MaxItems(1) & [...#maintenance_options]])
 		metadata_options?: matchN(1, [#metadata_options, list.MaxItems(1) & [...#metadata_options]])
-		vpc_security_group_ids?: [...string]
 		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
-		wait_for_fulfillment?: bool
 		private_dns_name_options?: matchN(1, [#private_dns_name_options, list.MaxItems(1) & [...#private_dns_name_options]])
 		root_block_device?: matchN(1, [#root_block_device, list.MaxItems(1) & [...#root_block_device]])
+		secondary_network_interface?: matchN(1, [#secondary_network_interface, [...#secondary_network_interface]])
 		timeouts?: #timeouts
 	})
 
@@ -168,6 +169,21 @@ import "list"
 		volume_id?:   string
 		volume_size?: number
 		volume_type?: string
+	})
+
+	#secondary_network_interface: close({
+		delete_on_termination?:    bool
+		device_index?:             number
+		interface_type?:           string
+		mac_address?:              string
+		network_card_index!:       number
+		private_ip_address_count?: number
+		private_ip_addresses?: [...string]
+		secondary_interface_id?: string
+		secondary_network_id?:   string
+		secondary_subnet_id!:    string
+		source_dest_check?:      bool
+		status?:                 string
 	})
 
 	#timeouts: close({

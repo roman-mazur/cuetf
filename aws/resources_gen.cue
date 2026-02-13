@@ -534,6 +534,8 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_ec2_managed_prefix_list": res.#aws_ec2_managed_prefix_list
 	_#res: "\(#awsPrefix)_ec2_network_insights_analysis": res.#aws_ec2_network_insights_analysis
 	_#res: "\(#awsPrefix)_ec2_network_insights_path": res.#aws_ec2_network_insights_path
+	_#res: "\(#awsPrefix)_ec2_secondary_network": res.#aws_ec2_secondary_network
+	_#res: "\(#awsPrefix)_ec2_secondary_subnet": res.#aws_ec2_secondary_subnet
 	_#res: "\(#awsPrefix)_ec2_serial_console_access": res.#aws_ec2_serial_console_access
 	_#res: "\(#awsPrefix)_ec2_subnet_cidr_reservation": res.#aws_ec2_subnet_cidr_reservation
 	_#res: "\(#awsPrefix)_ec2_tag": res.#aws_ec2_tag

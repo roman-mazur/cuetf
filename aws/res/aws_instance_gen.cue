@@ -16,11 +16,12 @@ import "list"
 		enable_primary_ipv6?:         bool
 		force_destroy?:               bool
 		get_password_data?:           bool
-		hibernation?:                 bool
-		host_id?:                     string
-		host_resource_group_arn?:     string
-		iam_instance_profile?:        string
-		id?:                          string
+		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
+		hibernation?:             bool
+		host_id?:                 string
+		host_resource_group_arn?: string
+		iam_instance_profile?:    string
+		id?:                      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -33,13 +34,13 @@ import "list"
 		instance_type?:                        string
 		ipv6_address_count?:                   number
 		ipv6_addresses?: [...string]
-		key_name?:           string
-		monitoring?:         bool
-		outpost_arn?:        string
-		password_data?:      string
-		placement_group?:    string
-		placement_group_id?: string
-		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
+		key_name?:    string
+		monitoring?:  bool
+		outpost_arn?: string
+		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
+		password_data?:                string
+		placement_group?:              string
+		placement_group_id?:           string
 		placement_partition_number?:   number
 		primary_network_interface_id?: string
 		private_dns?:                  string
@@ -50,8 +51,7 @@ import "list"
 		security_groups?: [...string]
 		source_dest_check?:        bool
 		spot_instance_request_id?: string
-		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
-		subnet_id?: string
+		subnet_id?:                string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		tenancy?:                     string
@@ -67,11 +67,12 @@ import "list"
 		launch_template?: matchN(1, [#launch_template, list.MaxItems(1) & [...#launch_template]])
 		maintenance_options?: matchN(1, [#maintenance_options, list.MaxItems(1) & [...#maintenance_options]])
 		metadata_options?: matchN(1, [#metadata_options, list.MaxItems(1) & [...#metadata_options]])
-		vpc_security_group_ids?: [...string]
 		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
+		vpc_security_group_ids?: [...string]
 		primary_network_interface?: matchN(1, [#primary_network_interface, list.MaxItems(1) & [...#primary_network_interface]])
 		private_dns_name_options?: matchN(1, [#private_dns_name_options, list.MaxItems(1) & [...#private_dns_name_options]])
 		root_block_device?: matchN(1, [#root_block_device, list.MaxItems(1) & [...#root_block_device]])
+		secondary_network_interface?: matchN(1, [#secondary_network_interface, [...#secondary_network_interface]])
 		timeouts?: #timeouts
 	})
 
@@ -168,6 +169,21 @@ import "list"
 		volume_id?:   string
 		volume_size?: number
 		volume_type?: string
+	})
+
+	#secondary_network_interface: close({
+		delete_on_termination?:    bool
+		device_index?:             number
+		interface_type?:           string
+		mac_address?:              string
+		network_card_index!:       number
+		private_ip_address_count?: number
+		private_ip_addresses?: [...string]
+		secondary_interface_id?: string
+		secondary_network_id?:   string
+		secondary_subnet_id!:    string
+		source_dest_check?:      bool
+		status?:                 string
 	})
 
 	#timeouts: close({
