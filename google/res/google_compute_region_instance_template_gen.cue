@@ -304,6 +304,11 @@ import "list"
 		// networks and subnetwork for custom subnetted networks.
 		network?: string
 
+		// The URL of the network attachment that this interface should
+		// connect to in the following format:
+		// projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+		network_attachment?: string
+
 		// The private IP address to assign to the instance. If empty, the
 		// address will be automatically assigned.
 		network_ip?: string
@@ -311,6 +316,10 @@ import "list"
 		// The type of vNIC to be used on this interface. Possible
 		// values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
 		nic_type?: string
+
+		// Name of the parent network interface of a dynamic network
+		// interface.
+		parent_nic_name?: string
 		access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/access_config", [..._#defs."/$defs/network_interface/$defs/access_config"]])
 		alias_ip_range?: matchN(1, [_#defs."/$defs/network_interface/$defs/alias_ip_range", [..._#defs."/$defs/network_interface/$defs/alias_ip_range"]])
 		ipv6_access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/ipv6_access_config", [..._#defs."/$defs/network_interface/$defs/ipv6_access_config"]])
@@ -333,6 +342,10 @@ import "list"
 		// The ID of the project in which the subnetwork belongs. If it is
 		// not provided, the provider project is used.
 		subnetwork_project?: string
+
+		// VLAN tag of a dynamic network interface, must be an integer in
+		// the range from 2 to 255 inclusively.
+		vlan?: number
 	})
 
 	#network_performance_config: close({

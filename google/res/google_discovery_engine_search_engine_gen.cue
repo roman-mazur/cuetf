@@ -41,6 +41,10 @@ import "list"
 		// engine. Default value: "GENERIC" Possible values: ["GENERIC",
 		// "MEDIA", "HEALTHCARE_FHIR"]
 		industry_vertical?: string
+		common_config?: matchN(1, [#common_config, list.MaxItems(1) & [...#common_config]])
+		knowledge_graph_config?: matchN(1, [#knowledge_graph_config, list.MaxItems(1) & [...#knowledge_graph_config]])
+		search_engine_config!: matchN(1, [#search_engine_config, list.MaxItems(1) & [_, ...] & [...#search_engine_config]])
+		timeouts?: #timeouts
 
 		// The KMS key to be used to protect this Engine at creation time.
 		//
@@ -53,9 +57,6 @@ import "list"
 		// protected by the KMS key, as indicated in the cmek_config
 		// field.
 		kms_key_name?: string
-		common_config?: matchN(1, [#common_config, list.MaxItems(1) & [...#common_config]])
-		search_engine_config!: matchN(1, [#search_engine_config, list.MaxItems(1) & [_, ...] & [...#search_engine_config]])
-		timeouts?: #timeouts
 
 		// Location.
 		location!: string
@@ -80,6 +81,18 @@ import "list"
 		company_name?: string
 	})
 
+	#knowledge_graph_config: close({
+		// Specify entity types to support.
+		cloud_knowledge_graph_types?: [...string]
+		feature_config?: matchN(1, [_#defs."/$defs/knowledge_graph_config/$defs/feature_config", list.MaxItems(1) & [..._#defs."/$defs/knowledge_graph_config/$defs/feature_config"]])
+
+		// Whether to enable the Cloud Knowledge Graph for the engine.
+		enable_cloud_knowledge_graph?: bool
+
+		// Whether to enable the Private Knowledge Graph for the engine.
+		enable_private_knowledge_graph?: bool
+	})
+
 	#search_engine_config: close({
 		// The add-on that this search engine enables. Possible values:
 		// ["SEARCH_ADD_ON_LLM"]
@@ -96,5 +109,20 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/knowledge_graph_config/$defs/feature_config": close({
+		// Whether to disable the private KG auto complete for the engine.
+		disable_private_kg_auto_complete?: bool
+
+		// Whether to disable the private KG enrichment for the engine.
+		disable_private_kg_enrichment?: bool
+
+		// Whether to disable the private KG for query UI chips.
+		disable_private_kg_query_ui_chips?: bool
+
+		// Whether to disable the private KG query understanding for the
+		// engine.
+		disable_private_kg_query_understanding?: bool
 	})
 }

@@ -18,8 +18,9 @@ import "list"
 		// Output only. The timestamp at which this database was created.
 		create_time?: string
 
-		// The database edition. Possible values: ["STANDARD",
-		// "ENTERPRISE"]
+		// The database edition. When set to 'ENTERPRISE', then type must
+		// be set to
+		// 'FIRESTORE_NATIVE'. Possible values: ["STANDARD", "ENTERPRISE"]
 		database_edition?: string
 
 		// State of delete protection for the database.
@@ -65,7 +66,12 @@ import "list"
 		// client has an
 		// up-to-date value before proceeding.
 		etag?: string
-		id?:   string
+
+		// The Firestore API data access mode to use for this database.
+		// Can only be
+		// specified for 'ENTERPRISE' edition databases. Possible values:
+		// ["DATA_ACCESS_MODE_ENABLED", "DATA_ACCESS_MODE_DISABLED"]
+		firestore_data_access_mode?: string
 
 		// Output only. The keyPrefix for this database.
 		// This keyPrefix is used, in combination with the project id
@@ -75,10 +81,20 @@ import "list"
 		// This value may be empty in which case the appid to use for
 		// URL-encoded keys is the project_id (eg: foo instead of v~foo).
 		key_prefix?: string
+		id?:         string
 
 		// The location of the database. Available locations are listed at
 		// https://cloud.google.com/firestore/docs/locations.
 		location_id!: string
+
+		// The MongoDB compatible API data access mode to use for this
+		// database. Can
+		// only be specified for 'ENTERPRISE' edition databases. Possible
+		// values: ["DATA_ACCESS_MODE_ENABLED",
+		// "DATA_ACCESS_MODE_DISABLED"]
+		mongodb_compatible_data_access_mode?: string
+		cmek_config?: matchN(1, [#cmek_config, list.MaxItems(1) & [...#cmek_config]])
+		timeouts?: #timeouts
 
 		// The ID to use for the database, which will become the final
 		// component of the database's resource name. This value should be
@@ -89,8 +105,6 @@ import "list"
 		// UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
 		// "(default)" database id is also valid.
 		name!: string
-		cmek_config?: matchN(1, [#cmek_config, list.MaxItems(1) & [...#cmek_config]])
-		timeouts?: #timeouts
 
 		// Whether to enable the PITR feature on this database.
 		// If 'POINT_IN_TIME_RECOVERY_ENABLED' is selected, reads are
@@ -108,6 +122,13 @@ import "list"
 		// "POINT_IN_TIME_RECOVERY_DISABLED"]
 		point_in_time_recovery_enablement?: string
 		project?:                           string
+
+		// The Realtime Updates mode to use for this database. Can only be
+		// specified
+		// for 'ENTERPRISE' edition databases. Possible values:
+		// ["REALTIME_UPDATES_MODE_ENABLED",
+		// "REALTIME_UPDATES_MODE_DISABLED"]
+		realtime_updates_mode?: string
 
 		// Input only. A map of resource manager tags. Resource manager
 		// tag keys

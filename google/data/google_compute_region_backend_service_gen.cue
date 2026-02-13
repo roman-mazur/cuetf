@@ -317,6 +317,15 @@ package data
 		// Changes to this field force recreation of the resource.
 		network?: string
 
+		// Configures traffic steering properties of internal passthrough
+		// Network Load Balancers.
+		network_pass_through_lb_traffic_policy?: [...close({
+			zonal_affinity?: [...close({
+				spillover?:       string
+				spillover_ratio?: number
+			})]
+		})]
+
 		// Settings controlling eviction of unhealthy hosts from the load
 		// balancing pool.
 		// This field is applicable only when the 'load_balancing_scheme'

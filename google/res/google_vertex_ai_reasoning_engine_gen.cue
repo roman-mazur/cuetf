@@ -194,8 +194,27 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/source_code_spec": close({
+		developer_connect_source?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec/$defs/developer_connect_source", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec/$defs/developer_connect_source"]])
 		inline_source?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec/$defs/inline_source", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec/$defs/inline_source"]])
 		python_spec?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec/$defs/python_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec/$defs/python_spec"]])
+	})
+
+	_#defs: "/$defs/spec/$defs/source_code_spec/$defs/developer_connect_source": close({
+		config!: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec/$defs/developer_connect_source/$defs/config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/spec/$defs/source_code_spec/$defs/developer_connect_source/$defs/config"]])
+	})
+
+	_#defs: "/$defs/spec/$defs/source_code_spec/$defs/developer_connect_source/$defs/config": close({
+		// Directory, relative to the source root, in which to run the
+		// build.
+		dir!: string
+
+		// The Developer Connect Git repository link, formatted as
+		// projects/*/locations/*/connections/*/gitRepositoryLink/*.
+		git_repository_link!: string
+
+		// The revision to fetch from the Git repository such as a branch,
+		// a tag, a commit SHA, or any Git ref.
+		revision!: string
 	})
 
 	_#defs: "/$defs/spec/$defs/source_code_spec/$defs/inline_source": close({

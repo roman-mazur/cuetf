@@ -67,9 +67,15 @@ package data
 		// to a different credential configuration in the config will
 		// require an apply to update state.
 		sensitive_labels?: [...close({
-			auth_token?:  string
-			password?:    string
-			service_key?: string
+			auth_token?:             string
+			auth_token_wo?:          string
+			auth_token_wo_version?:  string
+			password?:               string
+			password_wo?:            string
+			password_wo_version?:    string
+			service_key?:            string
+			service_key_wo?:         string
+			service_key_wo_version?: string
 		})]
 
 		// The type of the notification channel. This field matches the

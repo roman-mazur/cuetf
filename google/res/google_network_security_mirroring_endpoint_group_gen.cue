@@ -47,13 +47,20 @@ package res
 		// The cloud location of the endpoint group, currently restricted
 		// to 'global'.
 		location!: string
-		id?:       string
 
 		// The deployment group that this DIRECT endpoint group is
 		// connected to, for example:
 		// 'projects/123456789/locations/global/mirroringDeploymentGroups/my-dg'.
 		// See https://google.aip.dev/124.
 		mirroring_deployment_group?: string
+
+		// A list of the deployment groups that this BROKER endpoint group
+		// is
+		// connected to, for example:
+		// 'projects/123456789/locations/global/mirroringDeploymentGroups/my-dg'.
+		// See https://google.aip.dev/124.
+		mirroring_deployment_groups?: [...string]
+		id?: string
 
 		// The ID to use for the endpoint group, which will become the
 		// final component
@@ -90,6 +97,13 @@ package res
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+
+		// The type of the endpoint group.
+		// If left unspecified, defaults to DIRECT.
+		// Possible values:
+		// DIRECT
+		// BROKER
+		type?: string
 
 		// The timestamp when the resource was most recently updated.
 		// See https://google.aip.dev/148#timestamps.

@@ -95,6 +95,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_backup_dr_backup_plan": res.#google_backup_dr_backup_plan
 	_#res: "\(#googlePrefix)_backup_dr_backup_vault": res.#google_backup_dr_backup_vault
 	_#res: "\(#googlePrefix)_backup_dr_management_server": res.#google_backup_dr_management_server
+	_#res: "\(#googlePrefix)_backup_dr_restore_workload": res.#google_backup_dr_restore_workload
 	_#res: "\(#googlePrefix)_backup_dr_service_config": res.#google_backup_dr_service_config
 	_#res: "\(#googlePrefix)_beyondcorp_app_connection": res.#google_beyondcorp_app_connection
 	_#res: "\(#googlePrefix)_beyondcorp_app_connector": res.#google_beyondcorp_app_connector
@@ -900,6 +901,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_network_security_intercept_endpoint_group": res.#google_network_security_intercept_endpoint_group
 	_#res: "\(#googlePrefix)_network_security_mirroring_deployment": res.#google_network_security_mirroring_deployment
 	_#res: "\(#googlePrefix)_network_security_mirroring_deployment_group": res.#google_network_security_mirroring_deployment_group
+	_#res: "\(#googlePrefix)_network_security_mirroring_endpoint": res.#google_network_security_mirroring_endpoint
 	_#res: "\(#googlePrefix)_network_security_mirroring_endpoint_group_association": res.#google_network_security_mirroring_endpoint_group_association
 	_#res: "\(#googlePrefix)_network_security_mirroring_endpoint_group": res.#google_network_security_mirroring_endpoint_group
 	_#res: "\(#googlePrefix)_network_security_security_profile": res.#google_network_security_security_profile

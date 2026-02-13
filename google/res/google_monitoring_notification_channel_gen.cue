@@ -98,13 +98,43 @@ import "list"
 		// types that support this field include: slack
 		auth_token?: string
 
+		// An authorization token for a notification channel. Channel
+		// types that support this field include: slack
+		auth_token_wo?: string
+
+		// Triggers update of 'auth_token_wo' write-only. Increment this
+		// value when an update to 'auth_token_wo' is needed. For more
+		// info see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		auth_token_wo_version?: string
+
 		// An password for a notification channel. Channel types that
 		// support this field include: webhook_basicauth
 		password?: string
 
+		// An password for a notification channel. Channel types that
+		// support this field include: webhook_basicauth
+		password_wo?: string
+
+		// Triggers update of 'password_wo' write-only. Increment this
+		// value when an update to 'password_wo' is needed. For more info
+		// see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		password_wo_version?: string
+
 		// An servicekey token for a notification channel. Channel types
 		// that support this field include: pagerduty
 		service_key?: string
+
+		// An servicekey token for a notification channel. Channel types
+		// that support this field include: pagerduty
+		service_key_wo?: string
+
+		// Triggers update of 'service_key_wo' write-only. Increment this
+		// value when an update to 'service_key_wo' is needed. For more
+		// info see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		service_key_wo_version?: string
 	})
 
 	#timeouts: close({

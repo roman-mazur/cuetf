@@ -15,7 +15,6 @@ import "list"
 		// When the load balancing scheme is INTERNAL, this field is not
 		// used.
 		affinity_cookie_ttl_sec?: number
-		backend?: matchN(1, [#backend, [...#backend]])
 
 		// Time for which instance will be drained (not accept new
 		// connections, but still work to finish started).
@@ -47,13 +46,12 @@ import "list"
 		// uses an internet
 		// or serverless NEG as a backend.
 		health_checks?: [...string]
-		id?: string
-		cdn_policy?: matchN(1, [#cdn_policy, list.MaxItems(1) & [...#cdn_policy]])
 
 		// Specifies preference of traffic to the backend (from the proxy
 		// and from the client for proxyless gRPC). Possible values:
 		// ["IPV4_ONLY", "PREFER_IPV6", "IPV6_ONLY"]
 		ip_address_selection_policy?: string
+		id?:                          string
 
 		// Indicates what kind of load balancing this regional backend
 		// service
@@ -166,18 +164,6 @@ import "list"
 		// the last
 		// character, which cannot be a dash.
 		name!: string
-		circuit_breakers?: matchN(1, [#circuit_breakers, list.MaxItems(1) & [...#circuit_breakers]])
-		consistent_hash?: matchN(1, [#consistent_hash, list.MaxItems(1) & [...#consistent_hash]])
-		custom_metrics?: matchN(1, [#custom_metrics, [...#custom_metrics]])
-		failover_policy?: matchN(1, [#failover_policy, list.MaxItems(1) & [...#failover_policy]])
-		ha_policy?: matchN(1, [#ha_policy, list.MaxItems(1) & [...#ha_policy]])
-		iap?: matchN(1, [#iap, list.MaxItems(1) & [...#iap]])
-		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		outlier_detection?: matchN(1, [#outlier_detection, list.MaxItems(1) & [...#outlier_detection]])
-		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
-		strong_session_affinity_cookie?: matchN(1, [#strong_session_affinity_cookie, list.MaxItems(1) & [...#strong_session_affinity_cookie]])
-		timeouts?: #timeouts
-		tls_settings?: matchN(1, [#tls_settings, list.MaxItems(1) & [...#tls_settings]])
 
 		// The URL of the network to which this backend service belongs.
 		// This field must be set for Internal Passthrough Network Load
@@ -189,6 +175,21 @@ import "list"
 		// to EXTERNAL and haPolicy fastIpMove is enabled.
 		// Changes to this field force recreation of the resource.
 		network?: string
+		backend?: matchN(1, [#backend, [...#backend]])
+		cdn_policy?: matchN(1, [#cdn_policy, list.MaxItems(1) & [...#cdn_policy]])
+		circuit_breakers?: matchN(1, [#circuit_breakers, list.MaxItems(1) & [...#circuit_breakers]])
+		consistent_hash?: matchN(1, [#consistent_hash, list.MaxItems(1) & [...#consistent_hash]])
+		custom_metrics?: matchN(1, [#custom_metrics, [...#custom_metrics]])
+		failover_policy?: matchN(1, [#failover_policy, list.MaxItems(1) & [...#failover_policy]])
+		ha_policy?: matchN(1, [#ha_policy, list.MaxItems(1) & [...#ha_policy]])
+		iap?: matchN(1, [#iap, list.MaxItems(1) & [...#iap]])
+		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
+		network_pass_through_lb_traffic_policy?: matchN(1, [#network_pass_through_lb_traffic_policy, list.MaxItems(1) & [...#network_pass_through_lb_traffic_policy]])
+		outlier_detection?: matchN(1, [#outlier_detection, list.MaxItems(1) & [...#outlier_detection]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
+		strong_session_affinity_cookie?: matchN(1, [#strong_session_affinity_cookie, list.MaxItems(1) & [...#strong_session_affinity_cookie]])
+		timeouts?: #timeouts
+		tls_settings?: matchN(1, [#tls_settings, list.MaxItems(1) & [...#tls_settings]])
 
 		// A named port on a backend instance group representing the port
 		// for
@@ -592,6 +593,10 @@ import "list"
 		sample_rate?: number
 	})
 
+	#network_pass_through_lb_traffic_policy: close({
+		zonal_affinity?: matchN(1, [_#defs."/$defs/network_pass_through_lb_traffic_policy/$defs/zonal_affinity", list.MaxItems(1) & [..._#defs."/$defs/network_pass_through_lb_traffic_policy/$defs/zonal_affinity"]])
+	})
+
 	#outlier_detection: close({
 		// Number of errors before a host is ejected from the connection
 		// pool. When the
@@ -827,6 +832,26 @@ import "list"
 		// already be attached to the NEG specified in the
 		// haPolicy.leader.backendGroup.
 		instance?: string
+	})
+
+	_#defs: "/$defs/network_pass_through_lb_traffic_policy/$defs/zonal_affinity": close({
+		// This field indicates whether zonal affinity is enabled or not.
+		// Default value: "ZONAL_AFFINITY_DISABLED" Possible values:
+		// ["ZONAL_AFFINITY_DISABLED", "ZONAL_AFFINITY_SPILL_CROSS_ZONE",
+		// "ZONAL_AFFINITY_STAY_WITHIN_ZONE"]
+		spillover?: string
+
+		// The value of the field must be in [0, 1]. When the ratio of the
+		// count of healthy backend endpoints in a zone
+		// to the count of backend endpoints in that same zone is equal to
+		// or above this threshold, the load balancer
+		// distributes new connections to all healthy endpoints in the
+		// local zone only. When the ratio of the count
+		// of healthy backend endpoints in a zone to the count of backend
+		// endpoints in that same zone is below this
+		// threshold, the load balancer distributes all new connections to
+		// all healthy endpoints across all zones.
+		spillover_ratio?: number
 	})
 
 	_#defs: "/$defs/outlier_detection/$defs/base_ejection_time": close({
