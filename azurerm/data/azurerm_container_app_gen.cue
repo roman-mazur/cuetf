@@ -4,10 +4,11 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_container_app")
 	close({
+		container_app_environment_id?: string
+
 		// The ID of the Custom Domain Verification for this Container
 		// App.
 		custom_domain_verification_id?: string
-		container_app_environment_id?:  string
 		dapr?: [...close({
 			app_id?:       string
 			app_port?:     number
@@ -63,8 +64,8 @@ package data
 		location?:               string
 		max_inactive_revisions?: number
 		name!:                   string
-		timeouts?:               #timeouts
 		outbound_ip_addresses?: [...string]
+		read_secrets?: bool
 		registry?: [...close({
 			identity?:             string
 			password_secret_name?: string
@@ -212,6 +213,7 @@ package data
 			})]
 		})]
 		workload_profile_name?: string
+		timeouts?:              #timeouts
 	})
 
 	#timeouts: close({

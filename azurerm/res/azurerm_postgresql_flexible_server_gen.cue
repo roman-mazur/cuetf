@@ -10,6 +10,7 @@ import "list"
 		administrator_password?:            string
 		administrator_password_wo?:         string
 		administrator_password_wo_version?: number
+		authentication?: matchN(1, [#authentication, list.MaxItems(1) & [...#authentication]])
 		auto_grow_enabled?:                 bool
 		backup_retention_days?:             number
 		create_mode?:                       string
@@ -22,27 +23,32 @@ import "list"
 		point_in_time_restore_time_in_utc?: string
 		private_dns_zone_id?:               string
 		public_network_access_enabled?:     bool
-		authentication?: matchN(1, [#authentication, list.MaxItems(1) & [...#authentication]])
-		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])
-		replication_role?: string
-		high_availability?: matchN(1, [#high_availability, list.MaxItems(1) & [...#high_availability]])
+		cluster?: matchN(1, [#cluster, list.MaxItems(1) & [...#cluster]])
+		replication_role?:    string
 		resource_group_name!: string
 		sku_name?:            string
 		source_server_id?:    string
 		storage_mb?:          number
-		storage_tier?:        string
+		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])
+		storage_tier?: string
+		high_availability?: matchN(1, [#high_availability, list.MaxItems(1) & [...#high_availability]])
 		tags?: [string]: string
+		version?: string
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		zone?: string
 		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
 		timeouts?: #timeouts
-		version?:  string
-		zone?:     string
 	})
 
 	#authentication: close({
 		active_directory_auth_enabled?: bool
 		password_auth_enabled?:         bool
 		tenant_id?:                     string
+	})
+
+	#cluster: close({
+		default_database_name?: string
+		size!:                  number
 	})
 
 	#customer_managed_key: close({
