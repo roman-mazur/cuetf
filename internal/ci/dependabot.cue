@@ -26,10 +26,9 @@ workflows: regenerate: {
 		permissions: contents: "write"
 
 		#useGit: true
-		#scriptEnv: GH_TOKEN: "${{ secrets.DEPENDABOT_GITHUB }}"
+		#scriptEnv: GH_TOKEN: "${{ secrets.GENERATOR_TOKEN }}"
 		#script: """
 			\(_scriptPrepareForGitPush)
-			if [ -z "$GH_TOKEN" ]; then echo "GH_TOKEN not defined"; fi
 			export label="${{ github.event.label.name }}"
 			export provider=${label#"provider:"}
 			echo "Regenerating for $provider"
@@ -41,7 +40,6 @@ workflows: regenerate: {
 			git push origin HEAD:"$branch"
 
 			echo "Setting the PR to merge after all checks"
-			if [ -z "$GH_TOKEN" ]; then echo "GH_TOKEN not defined"; fi
 			gh pr merge --auto --merge "${{ github.event.pull_request.html_url }}"
 			"""
 	}
