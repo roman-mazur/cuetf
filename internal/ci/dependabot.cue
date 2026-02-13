@@ -47,7 +47,7 @@ workflows: regenerate: {
 workflows: (#dbot): {
 	on: pull_request: {
 		branches: ["main"]
-		types: ["opened", "reopened", "labeled"]
+		types: ["opened", "reopened"]
 	}
 
 	jobs: "tf-provider-label": {
