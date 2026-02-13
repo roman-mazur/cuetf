@@ -66,6 +66,7 @@ import "github.com/roman-mazur/cuetf/azurerm/res"
 	_#res: "\(#azurermPrefix)_api_management_workspace_api_version_set": res.#azurerm_api_management_workspace_api_version_set
 	_#res: "\(#azurermPrefix)_api_management_workspace_certificate": res.#azurerm_api_management_workspace_certificate
 	_#res: "\(#azurermPrefix)_api_management_workspace": res.#azurerm_api_management_workspace
+	_#res: "\(#azurermPrefix)_api_management_workspace_named_value": res.#azurerm_api_management_workspace_named_value
 	_#res: "\(#azurermPrefix)_api_management_workspace_policy_fragment": res.#azurerm_api_management_workspace_policy_fragment
 	_#res: "\(#azurermPrefix)_api_management_workspace_policy": res.#azurerm_api_management_workspace_policy
 	_#res: "\(#azurermPrefix)_app_configuration_feature": res.#azurerm_app_configuration_feature
@@ -296,6 +297,7 @@ import "github.com/roman-mazur/cuetf/azurerm/res"
 	_#res: "\(#azurermPrefix)_data_factory_linked_service_postgresql": res.#azurerm_data_factory_linked_service_postgresql
 	_#res: "\(#azurermPrefix)_data_factory_linked_service_sftp": res.#azurerm_data_factory_linked_service_sftp
 	_#res: "\(#azurermPrefix)_data_factory_linked_service_snowflake": res.#azurerm_data_factory_linked_service_snowflake
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_sql_managed_instance": res.#azurerm_data_factory_linked_service_sql_managed_instance
 	_#res: "\(#azurermPrefix)_data_factory_linked_service_sql_server": res.#azurerm_data_factory_linked_service_sql_server
 	_#res: "\(#azurermPrefix)_data_factory_linked_service_synapse": res.#azurerm_data_factory_linked_service_synapse
 	_#res: "\(#azurermPrefix)_data_factory_linked_service_web": res.#azurerm_data_factory_linked_service_web
@@ -583,6 +585,7 @@ import "github.com/roman-mazur/cuetf/azurerm/res"
 	_#res: "\(#azurermPrefix)_managed_disk": res.#azurerm_managed_disk
 	_#res: "\(#azurermPrefix)_managed_disk_sas_token": res.#azurerm_managed_disk_sas_token
 	_#res: "\(#azurermPrefix)_managed_lustre_file_system": res.#azurerm_managed_lustre_file_system
+	_#res: "\(#azurermPrefix)_managed_redis_access_policy_assignment": res.#azurerm_managed_redis_access_policy_assignment
 	_#res: "\(#azurermPrefix)_managed_redis": res.#azurerm_managed_redis
 	_#res: "\(#azurermPrefix)_managed_redis_geo_replication": res.#azurerm_managed_redis_geo_replication
 	_#res: "\(#azurermPrefix)_management_group": res.#azurerm_management_group

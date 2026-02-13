@@ -63,6 +63,7 @@ import "github.com/roman-mazur/cuetf/azurerm/data"
 	_#ds: "\(#azurermPrefix)_cdn_profile": data.#azurerm_cdn_profile
 	_#ds: "\(#azurermPrefix)_client_config": data.#azurerm_client_config
 	_#ds: "\(#azurermPrefix)_cognitive_account": data.#azurerm_cognitive_account
+	_#ds: "\(#azurermPrefix)_cognitive_account_project": data.#azurerm_cognitive_account_project
 	_#ds: "\(#azurermPrefix)_communication_service": data.#azurerm_communication_service
 	_#ds: "\(#azurermPrefix)_confidential_ledger": data.#azurerm_confidential_ledger
 	_#ds: "\(#azurermPrefix)_consumption_budget_resource_group": data.#azurerm_consumption_budget_resource_group
@@ -206,6 +207,7 @@ import "github.com/roman-mazur/cuetf/azurerm/data"
 	_#ds: "\(#azurermPrefix)_managed_application_definition": data.#azurerm_managed_application_definition
 	_#ds: "\(#azurermPrefix)_managed_disk": data.#azurerm_managed_disk
 	_#ds: "\(#azurermPrefix)_managed_disks": data.#azurerm_managed_disks
+	_#ds: "\(#azurermPrefix)_managed_redis_access_policy_assignment": data.#azurerm_managed_redis_access_policy_assignment
 	_#ds: "\(#azurermPrefix)_managed_redis": data.#azurerm_managed_redis
 	_#ds: "\(#azurermPrefix)_management_group": data.#azurerm_management_group
 	_#ds: "\(#azurermPrefix)_management_group_template_deployment": data.#azurerm_management_group_template_deployment
@@ -273,6 +275,7 @@ import "github.com/roman-mazur/cuetf/azurerm/data"
 	_#ds: "\(#azurermPrefix)_oracle_autonomous_database_clone_from_database": data.#azurerm_oracle_autonomous_database_clone_from_database
 	_#ds: "\(#azurermPrefix)_oracle_autonomous_database": data.#azurerm_oracle_autonomous_database
 	_#ds: "\(#azurermPrefix)_oracle_cloud_vm_cluster": data.#azurerm_oracle_cloud_vm_cluster
+	_#ds: "\(#azurermPrefix)_oracle_database_system_versions": data.#azurerm_oracle_database_system_versions
 	_#ds: "\(#azurermPrefix)_oracle_db_nodes": data.#azurerm_oracle_db_nodes
 	_#ds: "\(#azurermPrefix)_oracle_db_servers": data.#azurerm_oracle_db_servers
 	_#ds: "\(#azurermPrefix)_oracle_db_system_shapes": data.#azurerm_oracle_db_system_shapes
