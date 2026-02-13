@@ -87,6 +87,22 @@ package res
 			// Destination address for the email.
 			destination_address?: string
 
+			// Outbound worker.
+			outbound?: close({
+				// Pass information from the Dispatch Worker to the Outbound
+				// Worker through the parameters.
+				params?: [...string]
+
+				// Outbound worker.
+				worker?: close({
+					// Environment of the outbound worker.
+					environment?: string
+
+					// Name of the outbound worker.
+					service?: string
+				})
+			})
+
 			// The environment of the script_name to bind to.
 			environment?: string
 
@@ -114,26 +130,19 @@ package res
 			// "pkcs8", or "spki".
 			key_base64?: string
 
-			// Outbound worker.
-			outbound?: close({
-				// Pass information from the Dispatch Worker to the Outbound
-				// Worker through the parameters.
-				params?: [...string]
-
-				// Outbound worker.
-				worker?: close({
-					// Environment of the outbound worker.
-					environment?: string
-
-					// Name of the outbound worker.
-					service?: string
-				})
-			})
-
 			// Key data in [JSON Web
 			// Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key)
 			// format. Required if `format` is "jwk".
 			key_jwk?: string
+
+			// A simple rate limit.
+			simple?: close({
+				// The rate limit value.
+				limit!: number
+
+				// The rate limit period in seconds.
+				period!: number
+			})
 
 			// A JavaScript variable name for the binding.
 			name!: string
@@ -224,6 +233,22 @@ package res
 			// Destination address for the email.
 			destination_address?: string
 
+			// Outbound worker.
+			outbound?: close({
+				// Pass information from the Dispatch Worker to the Outbound
+				// Worker through the parameters.
+				params?: [...string]
+
+				// Outbound worker.
+				worker?: close({
+					// Environment of the outbound worker.
+					environment?: string
+
+					// Name of the outbound worker.
+					service?: string
+				})
+			})
+
 			// The environment of the script_name to bind to.
 			environment?: string
 
@@ -251,26 +276,19 @@ package res
 			// "pkcs8", or "spki".
 			key_base64?: string
 
-			// Outbound worker.
-			outbound?: close({
-				// Pass information from the Dispatch Worker to the Outbound
-				// Worker through the parameters.
-				params?: [...string]
-
-				// Outbound worker.
-				worker?: close({
-					// Environment of the outbound worker.
-					environment?: string
-
-					// Name of the outbound worker.
-					service?: string
-				})
-			})
-
 			// Key data in [JSON Web
 			// Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key)
 			// format. Required if `format` is "jwk".
 			key_jwk?: string
+
+			// A simple rate limit.
+			simple?: close({
+				// The rate limit value.
+				limit!: number
+
+				// The rate limit period in seconds.
+				period!: number
+			})
 
 			// A JavaScript variable name for the binding.
 			name!: string
@@ -553,8 +571,8 @@ package res
 
 		// Configuration for [Smart
 		// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-		// Specify either mode for Smart Placement, or one of
-		// region/hostname/host for targeted placement.
+		// Specify mode='smart' for Smart Placement, or one of
+		// region/hostname/host.
 		placement?: close({
 			// TCP host and port for targeted placement.
 			host?: string
@@ -562,13 +580,35 @@ package res
 			// HTTP hostname for targeted placement.
 			hostname?: string
 
+			// Array of placement targets (currently limited to single
+			// target).
+			target?: matchN(1, [close({
+				// TCP host:port for targeted placement.
+				host?: string
+
+				// HTTP hostname for targeted placement.
+				hostname?: string
+
+				// Cloud region in format 'provider:region'.
+				region?: string
+			}), [...close({
+				// TCP host:port for targeted placement.
+				host?: string
+
+				// HTTP hostname for targeted placement.
+				hostname?: string
+
+				// Cloud region in format 'provider:region'.
+				region?: string
+			})]])
+
 			// The last time the script was analyzed for [Smart
 			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 			last_analyzed_at?: string
 
 			// Enables [Smart
 			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-			// Available values: "smart".
+			// Available values: "smart", "targeted".
 			mode?: string
 
 			// Cloud region for targeted placement in format

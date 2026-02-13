@@ -6,16 +6,17 @@ package data
 	close({
 		// Identifier.
 		account_id!: string
-
-		// Name of the script, used in URLs and route configuration.
-		id?: string
-
-		// Name of the script, used in URLs and route configuration.
-		script_name?: string
 		filter?: close({
 			// Filter scripts by tags. Format: comma-separated list of
 			// tag:allowed pairs where allowed is 'yes' or 'no'.
 			tags?: string
 		})
+
+		// Name of the script, used in URLs and route configuration.
+		id?:     string
+		script?: string
+
+		// Name of the script, used in URLs and route configuration.
+		script_name?: string
 	})
 }

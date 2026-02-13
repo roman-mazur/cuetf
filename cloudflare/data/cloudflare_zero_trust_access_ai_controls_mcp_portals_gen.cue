@@ -6,27 +6,35 @@ package data
 	close({
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			created_at?:  string
+			created_at?: string
+
+			// portal id
+			id?:          string
 			created_by?:  string
 			description?: string
 			hostname?:    string
 
-			// portal id
-			id?:          string
-			modified_at?: string
-			modified_by?: string
-			name?:        string
+			// Route outbound MCP traffic through Zero Trust Secure Web
+			// Gateway
+			secure_web_gateway?: bool
+			modified_at?:        string
+			modified_by?:        string
+			name?:               string
 		}), [...close({
-			created_at?:  string
+			created_at?: string
+
+			// portal id
+			id?:          string
 			created_by?:  string
 			description?: string
 			hostname?:    string
 
-			// portal id
-			id?:          string
-			modified_at?: string
-			modified_by?: string
-			name?:        string
+			// Route outbound MCP traffic through Zero Trust Secure Web
+			// Gateway
+			secure_web_gateway?: bool
+			modified_at?:        string
+			modified_by?:        string
+			name?:               string
 		})]])
 
 		// Max items to fetch, default: 1000

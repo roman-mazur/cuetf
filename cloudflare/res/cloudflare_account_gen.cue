@@ -7,9 +7,6 @@ package res
 		// Timestamp for the creation of the account
 		created_on?: string
 
-		// Identifier
-		id?: string
-
 		// Parent container details
 		managed_by?: close({
 			// ID of the parent Organization, if one exists
@@ -19,8 +16,8 @@ package res
 			parent_org_name?: string
 		})
 
-		// Account name
-		name!: string
+		// Identifier
+		id?: string
 
 		// Account settings
 		settings?: close({
@@ -32,8 +29,8 @@ package res
 			enforce_twofactor?: bool
 		})
 
-		// Available values: "standard", "enterprise".
-		type?: string
+		// Account name
+		name!: string
 
 		// information related to the tenant unit, and optionally, an id
 		// of the unit to create the account on. see

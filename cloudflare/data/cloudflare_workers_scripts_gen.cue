@@ -81,8 +81,8 @@ package data
 
 			// Configuration for [Smart
 			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-			// Specify either mode for Smart Placement, or one of
-			// region/hostname/host for targeted placement.
+			// Specify mode='smart' for Smart Placement, or one of
+			// region/hostname/host.
 			placement?: close({
 				// TCP host and port for targeted placement.
 				host?: string
@@ -90,13 +90,35 @@ package data
 				// HTTP hostname for targeted placement.
 				hostname?: string
 
+				// Array of placement targets (currently limited to single
+				// target).
+				target?: matchN(1, [close({
+					// TCP host:port for targeted placement.
+					host?: string
+
+					// HTTP hostname for targeted placement.
+					hostname?: string
+
+					// Cloud region in format 'provider:region'.
+					region?: string
+				}), [...close({
+					// TCP host:port for targeted placement.
+					host?: string
+
+					// HTTP hostname for targeted placement.
+					hostname?: string
+
+					// Cloud region in format 'provider:region'.
+					region?: string
+				})]])
+
 				// The last time the script was analyzed for [Smart
 				// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 				last_analyzed_at?: string
 
 				// Enables [Smart
 				// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-				// Available values: "smart".
+				// Available values: "smart", "targeted".
 				mode?: string
 
 				// Cloud region for targeted placement in format
@@ -256,8 +278,8 @@ package data
 
 			// Configuration for [Smart
 			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-			// Specify either mode for Smart Placement, or one of
-			// region/hostname/host for targeted placement.
+			// Specify mode='smart' for Smart Placement, or one of
+			// region/hostname/host.
 			placement?: close({
 				// TCP host and port for targeted placement.
 				host?: string
@@ -265,13 +287,35 @@ package data
 				// HTTP hostname for targeted placement.
 				hostname?: string
 
+				// Array of placement targets (currently limited to single
+				// target).
+				target?: matchN(1, [close({
+					// TCP host:port for targeted placement.
+					host?: string
+
+					// HTTP hostname for targeted placement.
+					hostname?: string
+
+					// Cloud region in format 'provider:region'.
+					region?: string
+				}), [...close({
+					// TCP host:port for targeted placement.
+					host?: string
+
+					// HTTP hostname for targeted placement.
+					hostname?: string
+
+					// Cloud region in format 'provider:region'.
+					region?: string
+				})]])
+
 				// The last time the script was analyzed for [Smart
 				// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 				last_analyzed_at?: string
 
 				// Enables [Smart
 				// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-				// Available values: "smart".
+				// Available values: "smart", "targeted".
 				mode?: string
 
 				// Cloud region for targeted placement in format

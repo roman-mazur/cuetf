@@ -15,11 +15,12 @@ package data
 			hostname?:    string
 
 			// server id
-			id?:          string
-			last_synced?: string
-			modified_at?: string
-			modified_by?: string
-			name?:        string
+			id?:                   string
+			last_successful_sync?: string
+			last_synced?:          string
+			modified_at?:          string
+			modified_by?:          string
+			name?:                 string
 			prompts?: [...{
 				[string]: string
 			}]
@@ -37,11 +38,12 @@ package data
 			hostname?:    string
 
 			// server id
-			id?:          string
-			last_synced?: string
-			modified_at?: string
-			modified_by?: string
-			name?:        string
+			id?:                   string
+			last_successful_sync?: string
+			last_synced?:          string
+			modified_at?:          string
+			modified_by?:          string
+			name?:                 string
 			prompts?: [...{
 				[string]: string
 			}]

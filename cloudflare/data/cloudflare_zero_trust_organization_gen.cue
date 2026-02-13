@@ -20,6 +20,22 @@ package data
 		// step during login.
 		auto_redirect_to_identity?: bool
 
+		// Determines whether to deny all requests to Cloudflare-protected
+		// resources that lack an associated Access application. If
+		// enabled, you must explicitly configure an Access application
+		// and policy to allow traffic to your Cloudflare-protected
+		// resources. For domains you want to be public across all
+		// subdomains, add the domain to the
+		// `deny_unmatched_requests_exempted_zone_names` array.
+		deny_unmatched_requests?: bool
+
+		// Contains zone names to exempt from the
+		// `deny_unmatched_requests` feature. Requests to a subdomain in
+		// an exempted zone will block unauthenticated traffic by default
+		// if there is a configured Access application and policy that
+		// matches the request.
+		deny_unmatched_requests_exempted_zone_names?: [...string]
+
 		// Lock all settings as Read-Only in the Dashboard, regardless of
 		// user permission. Updates may only be made via the API or
 		// Terraform for this account when enabled.
@@ -32,14 +48,6 @@ package data
 		// valid. Must be in the format `300ms` or `2h45m`. Valid time
 		// units are: ns, us (or µs), ms, s, m, h.
 		session_duration?: string
-		custom_pages?: close({
-			// The uid of the custom page to use when a user is denied access
-			// after failing a non-identity rule.
-			forbidden?: string
-
-			// The uid of the custom page to use when a user is denied access.
-			identity_denied?: string
-		})
 
 		// A description of the reason why the UI read only field is being
 		// toggled.
@@ -57,6 +65,14 @@ package data
 		// valid. Must be in the format `30m` or `2h45m`. Valid time
 		// units are: m, h.
 		warp_auth_session_duration?: string
+		custom_pages?: close({
+			// The uid of the custom page to use when a user is denied access
+			// after failing a non-identity rule.
+			forbidden?: string
+
+			// The uid of the custom page to use when a user is denied access.
+			identity_denied?: string
+		})
 		login_design?: close({
 			// The background color on your login page.
 			background_color?: string

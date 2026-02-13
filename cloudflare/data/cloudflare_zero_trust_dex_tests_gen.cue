@@ -4,6 +4,9 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_dex_tests")
 	close({
+		// Filter by test type
+		// Available values: "http", "traceroute".
+		kind?:       string
 		account_id!: string
 
 		// Max items to fetch, default: 1000
@@ -18,9 +21,11 @@ package data
 				host?: string
 
 				// The type of test.
+				// Available values: "http", "traceroute".
 				kind?: string
 
 				// The HTTP request method type.
+				// Available values: "GET".
 				method?: string
 			})
 
@@ -44,7 +49,7 @@ package data
 				// Whether the DEX rule is the account default
 				default?: bool
 
-				// The id of the DEX rule
+				// API Resource UUID tag.
 				id?: string
 
 				// The name of the DEX rule
@@ -53,7 +58,7 @@ package data
 				// Whether the DEX rule is the account default
 				default?: bool
 
-				// The id of the DEX rule
+				// API Resource UUID tag.
 				id?: string
 
 				// The name of the DEX rule
@@ -71,9 +76,11 @@ package data
 				host?: string
 
 				// The type of test.
+				// Available values: "http", "traceroute".
 				kind?: string
 
 				// The HTTP request method type.
+				// Available values: "GET".
 				method?: string
 			})
 
@@ -97,7 +104,7 @@ package data
 				// Whether the DEX rule is the account default
 				default?: bool
 
-				// The id of the DEX rule
+				// API Resource UUID tag.
 				id?: string
 
 				// The name of the DEX rule
@@ -106,7 +113,7 @@ package data
 				// Whether the DEX rule is the account default
 				default?: bool
 
-				// The id of the DEX rule
+				// API Resource UUID tag.
 				id?: string
 
 				// The name of the DEX rule
@@ -117,5 +124,8 @@ package data
 			test_id?:  string
 			targeted?: bool
 		})]])
+
+		// Filter by test name
+		test_name?: string
 	})
 }

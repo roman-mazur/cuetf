@@ -9,6 +9,9 @@ package data
 		enabled?: bool
 
 		// Identifier.
+		id?: string
+
+		// Identifier.
 		zone_id!: string
 	})
 }

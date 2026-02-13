@@ -6,13 +6,15 @@ package data
 	close({
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// mark true to use this LAN for HA probing. only works for site
-			// with HA turned on. only one LAN can be set as the ha_link.
-			ha_link?: bool
+			bond_id?: number
 			nat?: close({
 				// A valid CIDR notation representing an IP range.
 				static_prefix?: string
 			})
+
+			// mark true to use this LAN for HA probing. only works for site
+			// with HA turned on. only one LAN can be set as the ha_link.
+			ha_link?: bool
 
 			// Identifier
 			id?: string
@@ -42,7 +44,6 @@ package data
 
 			// Identifier
 			site_id?: string
-			name?:    string
 
 			// If the site is not configured in high availability mode, this
 			// configuration is optional (if omitted, use DHCP). However, if
@@ -77,18 +78,21 @@ package data
 				// A valid CIDR notation representing an IP range.
 				virtual_address?: string
 			})
+			name?:     string
 			physport?: number
 
 			// VLAN ID. Use zero for untagged.
 			vlan_tag?: number
 		}), [...close({
-			// mark true to use this LAN for HA probing. only works for site
-			// with HA turned on. only one LAN can be set as the ha_link.
-			ha_link?: bool
+			bond_id?: number
 			nat?: close({
 				// A valid CIDR notation representing an IP range.
 				static_prefix?: string
 			})
+
+			// mark true to use this LAN for HA probing. only works for site
+			// with HA turned on. only one LAN can be set as the ha_link.
+			ha_link?: bool
 
 			// Identifier
 			id?: string
@@ -118,7 +122,6 @@ package data
 
 			// Identifier
 			site_id?: string
-			name?:    string
 
 			// If the site is not configured in high availability mode, this
 			// configuration is optional (if omitted, use DHCP). However, if
@@ -153,6 +156,7 @@ package data
 				// A valid CIDR notation representing an IP range.
 				virtual_address?: string
 			})
+			name?:     string
 			physport?: number
 
 			// VLAN ID. Use zero for untagged.
