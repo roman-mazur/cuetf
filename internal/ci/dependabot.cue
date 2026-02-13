@@ -40,6 +40,7 @@ workflows: regenerate: {
 			git push origin HEAD:"$branch"
 
 			echo "Setting the PR to merge after all checks"
+			sleep 10
 			gh pr merge --auto --merge "${{ github.event.pull_request.html_url }}"
 			"""
 	}
