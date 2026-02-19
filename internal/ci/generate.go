@@ -13,3 +13,6 @@ package ci
 
 // Metadata.
 //go:generate cue export -e workflows.metadata --out=yaml -f -o ../../.github/workflows/metadata.yml
+
+// Automatic release.
+//go:generate cue export -e workflows.autorelease --out=yaml -f -o ../../.github/workflows/autorelease.yml
