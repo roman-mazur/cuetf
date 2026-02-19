@@ -29,3 +29,10 @@ terraform plan
 ```
 
 See the [examples directory](examples) too.
+
+### Versioning
+
+This repo is updated automatically by dependabot when new updates to the Terraform providers are detected.
+CUE module releases happen monthly, with versions following the pattern `<major>.YYMM.0`.
+For example, the release that happened in February 2026 is represented 
+with the version `v0.2602.0` published to the CUE Central Registry.
