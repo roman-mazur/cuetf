@@ -61,7 +61,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -136,7 +135,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -211,7 +209,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -286,7 +283,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -361,7 +357,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -436,7 +431,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -514,7 +508,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -592,7 +585,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -670,7 +662,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -748,7 +739,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -826,7 +816,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -904,7 +893,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -979,7 +967,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1054,7 +1041,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1142,7 +1128,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1230,7 +1215,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1318,7 +1302,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1406,7 +1389,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1494,7 +1476,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1582,7 +1563,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1670,7 +1650,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1755,7 +1734,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1840,7 +1818,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1921,7 +1898,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1999,7 +1975,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2077,7 +2052,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2158,7 +2132,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2236,7 +2209,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2314,7 +2286,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2389,7 +2360,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2467,7 +2437,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2545,7 +2514,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2623,7 +2591,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2701,7 +2668,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2779,7 +2745,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2857,7 +2822,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2933,7 +2897,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3008,7 +2971,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3083,7 +3045,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3171,7 +3132,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3259,7 +3219,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3347,7 +3306,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3435,7 +3393,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3523,7 +3480,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3611,7 +3567,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3697,7 +3652,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3782,7 +3736,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3867,7 +3820,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3945,7 +3897,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4026,7 +3977,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4104,7 +4054,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4182,7 +4131,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4260,7 +4208,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4338,7 +4285,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4416,7 +4362,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4494,7 +4439,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4575,7 +4519,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4656,7 +4599,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4737,7 +4679,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4818,7 +4759,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4902,7 +4842,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4983,7 +4922,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5064,7 +5002,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5145,7 +5082,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5224,7 +5160,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5302,7 +5237,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5375,16 +5309,14 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5457,16 +5389,14 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                240
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5539,16 +5469,14 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                480
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5621,16 +5549,14 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5721,11 +5647,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 2
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5798,16 +5722,14 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5880,16 +5802,14 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5962,16 +5882,14 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6053,11 +5971,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 2
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6127,16 +6043,14 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6206,16 +6120,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6293,11 +6205,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6367,16 +6277,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6446,16 +6354,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6525,16 +6431,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6604,16 +6508,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6681,16 +6583,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
         }]
-        Ipv4AddressesPerInterface:          4
-        Ipv6AddressesPerInterface:          4
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    4
+        Ipv6AddressesPerInterface:    4
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6765,11 +6665,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6836,16 +6734,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6925,16 +6821,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7022,11 +6916,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7106,16 +6998,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7195,16 +7085,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7284,16 +7172,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7373,16 +7259,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7460,16 +7344,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
         }]
-        Ipv4AddressesPerInterface:          4
-        Ipv6AddressesPerInterface:          4
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    4
+        Ipv6AddressesPerInterface:    4
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7554,11 +7436,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7635,16 +7515,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7714,16 +7592,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7793,16 +7669,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7872,16 +7746,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7951,16 +7823,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -8038,11 +7908,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -8112,16 +7980,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -8191,16 +8057,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -8270,16 +8134,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -8346,16 +8208,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -8427,11 +8287,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -8498,16 +8356,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -8585,9 +8441,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -8665,9 +8519,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -8748,9 +8600,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -8828,9 +8678,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -8911,9 +8759,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -8991,9 +8837,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -9071,9 +8915,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -9151,9 +8993,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -9229,9 +9069,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -9309,9 +9147,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -9386,9 +9222,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -9463,9 +9297,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -9553,7 +9385,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -9638,7 +9469,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -9723,7 +9553,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -9808,7 +9637,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -9896,7 +9724,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     GpuInfo: {
         Gpus: [{
@@ -9905,7 +9732,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -10001,7 +9828,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     GpuInfo: {
         Gpus: [{
@@ -10010,7 +9836,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -10103,7 +9929,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     GpuInfo: {
         Gpus: [{
@@ -10112,7 +9937,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -10205,7 +10030,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     GpuInfo: {
         Gpus: [{
@@ -10214,7 +10038,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -10310,7 +10134,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     GpuInfo: {
         Gpus: [{
@@ -10319,7 +10142,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -10412,7 +10235,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     GpuInfo: {
         Gpus: [{
@@ -10511,7 +10333,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     GpuInfo: {
         Gpus: [{
@@ -10613,7 +10434,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -10698,7 +10518,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -10783,7 +10602,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -10868,7 +10686,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -10953,7 +10770,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -11038,7 +10854,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -11126,7 +10941,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -11217,7 +11031,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -11305,7 +11118,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -11393,7 +11205,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -11481,7 +11292,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -11569,7 +11379,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -11657,7 +11466,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -11742,7 +11550,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -11830,7 +11637,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -11918,7 +11724,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -12006,7 +11811,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -12094,7 +11898,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -12185,7 +11988,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -12273,7 +12075,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -12361,7 +12162,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -12449,7 +12249,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -12537,7 +12336,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -12622,7 +12420,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -12698,20 +12495,18 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 28.12 Gigabit"
             MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          22.5
+            BaselineBandwidthInGbps:          28.125
             PeakBandwidthInGbps:              28.125
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -12787,20 +12582,18 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 37.5 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          30.0
+            BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -12876,7 +12669,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 56.25 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          45.0
+            BaselineBandwidthInGbps:          56.25
             PeakBandwidthInGbps:              56.25
             DefaultEnaQueueCountPerInterface: 8
         }]
@@ -12888,11 +12681,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -12972,16 +12763,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -13057,7 +12846,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 100 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          90.0
+            BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
         }]
@@ -13069,11 +12858,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -13153,16 +12940,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -13238,20 +13023,18 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 25 Gigabit"
             MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          15.0
+            BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -13331,16 +13114,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -13413,20 +13194,18 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 56.25 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          45.0
+            BaselineBandwidthInGbps:          56.25
             PeakBandwidthInGbps:              56.25
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -13496,7 +13275,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 100 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          90.0
+            BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
         }]
@@ -13508,11 +13287,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -13589,16 +13366,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -13674,20 +13449,18 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 28.12 Gigabit"
             MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          22.5
+            BaselineBandwidthInGbps:          28.125
             PeakBandwidthInGbps:              28.125
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -13763,20 +13536,18 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 37.5 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          30.0
+            BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -13852,20 +13623,18 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 56.25 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          45.0
+            BaselineBandwidthInGbps:          56.25
             PeakBandwidthInGbps:              56.25
             DefaultEnaQueueCountPerInterface: 16
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -13945,16 +13714,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -14030,7 +13797,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 100 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          90.0
+            BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
         }]
@@ -14042,11 +13809,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -14126,16 +13891,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -14211,20 +13974,18 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 25 Gigabit"
             MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          15.0
+            BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -14304,16 +14065,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -14386,20 +14145,18 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 56.25 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          45.0
+            BaselineBandwidthInGbps:          56.25
             PeakBandwidthInGbps:              56.25
             DefaultEnaQueueCountPerInterface: 32
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -14476,16 +14233,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -14563,7 +14318,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -14638,7 +14392,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -14713,7 +14466,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -14788,7 +14540,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -14863,7 +14614,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -14938,7 +14688,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -15016,7 +14765,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -15094,7 +14842,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -15172,7 +14919,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -15250,7 +14996,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -15328,7 +15073,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -15406,7 +15150,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -15481,7 +15224,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -15556,7 +15298,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -15644,7 +15385,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -15732,7 +15472,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -15820,7 +15559,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -15908,7 +15646,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -15996,7 +15733,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16084,7 +15820,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16172,7 +15907,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16257,7 +15991,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16342,7 +16075,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16420,7 +16152,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16498,7 +16229,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16576,7 +16306,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16654,7 +16383,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16732,7 +16460,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16810,7 +16537,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16886,7 +16612,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16961,7 +16686,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -17036,7 +16760,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -17124,7 +16847,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -17212,7 +16934,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -17300,7 +17021,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -17388,7 +17108,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -17476,7 +17195,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -17564,7 +17282,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -17650,7 +17367,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -17735,7 +17451,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -17820,7 +17535,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -17901,7 +17615,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -17982,7 +17695,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -18063,7 +17775,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -18144,7 +17855,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -18228,7 +17938,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -18309,7 +18018,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -18390,7 +18098,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -18471,7 +18178,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -18550,7 +18256,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -18628,7 +18333,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -18698,16 +18402,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -18785,11 +18487,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -18859,16 +18559,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -18938,16 +18636,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -19017,16 +18713,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -19096,16 +18790,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -19173,16 +18865,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
         }]
-        Ipv4AddressesPerInterface:          4
-        Ipv6AddressesPerInterface:          4
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    4
+        Ipv6AddressesPerInterface:    4
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -19257,11 +18947,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -19328,16 +19016,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -19407,16 +19093,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -19486,16 +19170,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -19565,16 +19247,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -19644,16 +19324,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -19723,16 +19401,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -19802,16 +19478,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -19881,16 +19555,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -19960,16 +19632,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -20039,16 +19709,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -20118,16 +19786,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -20197,16 +19863,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -20284,11 +19948,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -20358,16 +20020,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -20437,16 +20097,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -20516,16 +20174,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -20592,16 +20248,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -20673,11 +20327,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -20744,16 +20396,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -20831,9 +20481,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -20911,9 +20559,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -20994,9 +20640,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21074,9 +20718,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21157,9 +20799,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21237,9 +20877,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21317,9 +20955,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21397,9 +21033,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21475,9 +21109,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21555,9 +21187,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21632,9 +21262,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21709,9 +21337,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21789,7 +21415,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21864,7 +21489,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21939,7 +21563,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22014,7 +21637,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22089,7 +21711,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22164,7 +21785,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22239,7 +21859,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22317,7 +21936,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22395,7 +22013,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22473,7 +22090,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22551,7 +22167,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22629,7 +22244,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22707,7 +22321,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22782,7 +22395,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22857,7 +22469,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22945,7 +22556,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23033,7 +22643,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23121,7 +22730,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23209,7 +22817,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23297,7 +22904,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23385,7 +22991,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23473,7 +23078,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23558,7 +23162,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23643,7 +23246,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23721,7 +23323,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23799,7 +23400,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23877,7 +23477,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23955,7 +23554,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -24033,7 +23631,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -24111,7 +23708,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -24187,7 +23783,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -24262,7 +23857,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -24337,7 +23931,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -24425,7 +24018,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -24513,7 +24105,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -24601,7 +24192,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -24689,7 +24279,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -24777,7 +24366,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -24865,7 +24453,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -24951,7 +24538,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -25036,7 +24622,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -25121,7 +24706,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -25202,7 +24786,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -25283,7 +24866,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -25364,7 +24946,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -25445,7 +25026,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -25529,7 +25109,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -25610,7 +25189,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -25691,7 +25269,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -25772,7 +25349,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -25851,7 +25427,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -25929,7 +25504,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -25999,16 +25573,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26086,11 +25658,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26160,16 +25730,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26239,16 +25807,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26318,16 +25884,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26397,16 +25961,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26474,16 +26036,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
         }]
-        Ipv4AddressesPerInterface:          4
-        Ipv6AddressesPerInterface:          4
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    4
+        Ipv6AddressesPerInterface:    4
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26558,11 +26118,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26629,16 +26187,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26718,16 +26274,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26815,11 +26369,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26899,16 +26451,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26988,16 +26538,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27077,16 +26625,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27166,16 +26712,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27253,16 +26797,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
         }]
-        Ipv4AddressesPerInterface:          4
-        Ipv6AddressesPerInterface:          4
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    4
+        Ipv6AddressesPerInterface:    4
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27347,11 +26889,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27428,16 +26968,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27507,16 +27045,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27586,16 +27122,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27665,16 +27199,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27744,16 +27276,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27831,11 +27361,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27905,16 +27433,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27984,16 +27510,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28063,16 +27587,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28139,16 +27661,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28220,11 +27740,9 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28291,16 +27809,14 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28378,9 +27894,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28458,9 +27972,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28541,9 +28053,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28621,9 +28131,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28704,9 +28212,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28784,9 +28290,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28864,9 +28368,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28944,9 +28446,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29022,9 +28522,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29102,9 +28600,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29179,9 +28675,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29256,9 +28750,7 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
-        SecondaryNetworkSupported:          false
-        Ipv4AddressesPerSecondaryInterface: 0
+        FlexibleEnaQueuesSupport: "unsupported"
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29326,7 +28818,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -29391,7 +28882,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -29456,7 +28946,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -29521,7 +29010,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -29586,7 +29074,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -29651,7 +29138,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -29716,7 +29202,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -29791,7 +29276,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -29869,7 +29353,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -29947,7 +29430,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -30025,7 +29507,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -30103,7 +29584,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -30181,7 +29661,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -30259,7 +29738,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -30337,7 +29815,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -30415,7 +29892,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -30493,7 +29969,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -30571,7 +30046,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -30649,7 +30123,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -30727,7 +30200,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -30805,7 +30277,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -30883,7 +30354,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -30958,7 +30428,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31043,7 +30512,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31128,7 +30596,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31213,7 +30680,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31298,7 +30764,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31383,7 +30848,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31468,7 +30932,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31553,7 +31016,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31638,7 +31100,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31723,7 +31184,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31811,7 +31271,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31902,7 +31361,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31990,7 +31448,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32075,7 +31532,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32163,7 +31619,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32251,7 +31706,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32342,7 +31796,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32430,7 +31883,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32518,7 +31970,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32606,7 +32057,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32691,7 +32141,6 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
