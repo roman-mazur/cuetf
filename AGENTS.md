@@ -56,3 +56,5 @@ To manually trigger a refresh of a provider's CUE definitions:
   * Run `go generate ./internal/ci` to regenerate the YAML workflow files.
 * No Manual Edits to Generated Files: Any changes to files in `res/` or `data/` will be overwritten. Fix the generator in the root `internal/` folder instead.
 * Consistency: Always run `cue fmt ./...` after any manual schema generation.
+* Todo Hygiene: When completing an item from `internal/agent-todo.md`, remove it from the file as part of the same change.
+* Commit Messages: Use a lowercase prefix that maps to the primary directory changed, e.g. `internal/ci:`, `agents:`, `aws:`.
