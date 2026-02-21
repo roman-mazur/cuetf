@@ -6,9 +6,12 @@ This repository manages the generation of CUE schemas for Terraform providers. I
 
 * **`internal/jsonschema/`**: Contains the core implementation for the conversion and generation logic. This is the "engine" of the project.
 * **`internal/ci/`**: Contains CUE files that define GitHub Actions logic. These files generate the actual `.github/workflows/` files.
+* **`internal/analysis/`**: Contains scripts and Go generate directives for provider analysis (e.g. AWS region data). Output is stored in `internal/analysis/out/`.
 * **`[provider]/internal/`**: The workspace for a specific provider's schema extraction.
     * **`corpus.tf`**: Contains the Terraform code that imports the provider. Create this to add a new provider or edit to bump a version manually.
     * **`schema/`**: Contains raw Terraform JSON schemas. **DO NOT ANALYZE** (Too large).
+* **`[provider]/doc.cue`**: User-facing documentation with an example of importing the provider's definitions.
+* **`[provider]/exclude`**: Optional file listing resource name patterns to exclude from generation.
 * **`[provider]/res/` & `[provider]/data/`**: Auto-generated CUE definitions for Resources and Data Sources. **DO NOT ANALYZE** (Too many files).
 
 ---
@@ -50,6 +53,6 @@ To manually trigger a refresh of a provider's CUE definitions:
 
 ## 📝 Development Rules
 * CUE-Driven CI: Do not edit .github/workflows/ directly. Modify the CUE files in internal/ci/ instead.
-  * Use `go generate` to obtain the actual YAML files for GitHub.
+  * Run `go generate ./internal/ci` to regenerate the YAML workflow files.
 * No Manual Edits to Generated Files: Any changes to files in `res/` or `data/` will be overwritten. Fix the generator in the root `internal/` folder instead.
 * Consistency: Always run `cue fmt ./...` after any manual schema generation.
