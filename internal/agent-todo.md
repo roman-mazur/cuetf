@@ -19,7 +19,6 @@ Items identified during codebase review that are worth addressing.
 
 ## `internal/ci/`
 
-- **No drift check for generated YAML**: If someone modifies CUE files in `internal/ci/` but forgets to run `go generate ./internal/ci`, the committed `.github/workflows/` YAML silently drifts. A CI job that re-generates and diffs would catch this.
 - **`analysis.cue` cadence**: The analysis workflow is `workflow_dispatch`-only with no documented intended cadence. A comment in the CUE file or in AGENTS.md would clarify when it should be run.
 
 ---
