@@ -10,14 +10,6 @@ Items identified during codebase review that are worth addressing.
 
 ---
 
-## `update-providers.sh`
-
-- **Hardcoded provider list**: The script hardcodes the 7 known providers. Adding a new provider requires editing the script. Consider auto-discovering providers by scanning for directories containing `internal/corpus.tf`.
-- **No incremental runs**: Every invocation regenerates all providers, even if only one `corpus.tf` changed. This makes CI slower than necessary.
-- **Silent grep failures**: `set -e` does not catch all failure modes. Some `grep`-based log checks may pass silently even when generation errors occurred.
-
----
-
 ## `internal/gen/generator.go`
 
 - **Embedded shell script**: The multi-step CUE transformation pipeline (`exportCode` constant) is a raw bash script embedded in a Go string. This is hard to test, debug, and maintain. Extracting it to a `.sh` file or rewriting it using Go APIs would improve reliability.

@@ -37,9 +37,8 @@ function process() {
   wait $defs_pid
   echo "DONE: $provider"
 
-  errors_cnt=$(grep -c ERROR < "logs/$provider-log.txt" || exit 0)
-  if [ "$errors_cnt" != "0" ]; then
-    echo "Update generated $errors_cnt errors"
+  if grep -q ERROR "logs/$provider-log.txt"; then
+    echo "Update generated $(grep -c ERROR "logs/$provider-log.txt") errors"
     exit 1
   fi
 }
@@ -47,13 +46,13 @@ function process() {
 input_provider=$1
 
 if [ -z "$input_provider" ]; then
-  process aws
-  process azurerm
-  process cloudflare
-  process elasticstack
-  process github
-  process google
-  process helm
+  for corpus in */internal/corpus.tf; do
+    provider="${corpus%%/*}"
+    case "$provider" in
+      aws|google|azurerm) echo "Skipping $provider (too large for automated runs)" ;;
+      *) process "$provider" ;;
+    esac
+  done
 else
   process "$input_provider"
 fi
