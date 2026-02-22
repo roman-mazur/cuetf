@@ -986,6 +986,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_networkflowmonitor_monitor": res.#aws_networkflowmonitor_monitor
 	_#res: "\(#awsPrefix)_networkflowmonitor_scope": res.#aws_networkflowmonitor_scope
 	_#res: "\(#awsPrefix)_networkmanager_attachment_accepter": res.#aws_networkmanager_attachment_accepter
+	_#res: "\(#awsPrefix)_networkmanager_attachment_routing_policy_label": res.#aws_networkmanager_attachment_routing_policy_label
 	_#res: "\(#awsPrefix)_networkmanager_connect_attachment": res.#aws_networkmanager_connect_attachment
 	_#res: "\(#awsPrefix)_networkmanager_connect_peer": res.#aws_networkmanager_connect_peer
 	_#res: "\(#awsPrefix)_networkmanager_connection": res.#aws_networkmanager_connection

@@ -70,6 +70,7 @@ import "list"
 	#domain_settings: close({
 		docker_settings?: matchN(1, [_#defs."/$defs/domain_settings/$defs/docker_settings", list.MaxItems(1) & [..._#defs."/$defs/domain_settings/$defs/docker_settings"]])
 		r_studio_server_pro_domain_settings?: matchN(1, [_#defs."/$defs/domain_settings/$defs/r_studio_server_pro_domain_settings", list.MaxItems(1) & [..._#defs."/$defs/domain_settings/$defs/r_studio_server_pro_domain_settings"]])
+		trusted_identity_propagation_settings?: matchN(1, [_#defs."/$defs/domain_settings/$defs/trusted_identity_propagation_settings", list.MaxItems(1) & [..._#defs."/$defs/domain_settings/$defs/trusted_identity_propagation_settings"]])
 		execution_role_identity_config?: string
 		security_group_ids?: [...string]
 	})
@@ -436,5 +437,9 @@ import "list"
 		sagemaker_image_arn?:           string
 		sagemaker_image_version_alias?: string
 		sagemaker_image_version_arn?:   string
+	})
+
+	_#defs: "/$defs/domain_settings/$defs/trusted_identity_propagation_settings": close({
+		status!: string
 	})
 }

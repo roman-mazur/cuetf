@@ -11,23 +11,24 @@ package res
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:             string
-		creation_date_time?: string
-		description?:        string
-		closing_setting?: matchN(1, [#closing_setting, [...#closing_setting]])
+		region?:                 string
+		creation_date_time?:     string
+		description?:            string
 		id?:                     string
 		intent_id?:              string
 		last_updated_date_time?: string
 		locale_id!:              string
-		name!:                   string
-		confirmation_setting?: matchN(1, [#confirmation_setting, [...#confirmation_setting]])
+		closing_setting?: matchN(1, [#closing_setting, [...#closing_setting]])
+		name!:                    string
 		parent_intent_signature?: string
+		confirmation_setting?: matchN(1, [#confirmation_setting, [...#confirmation_setting]])
 		dialog_code_hook?: matchN(1, [#dialog_code_hook, [...#dialog_code_hook]])
 		fulfillment_code_hook?: matchN(1, [#fulfillment_code_hook, [...#fulfillment_code_hook]])
 		initial_response_setting?: matchN(1, [#initial_response_setting, [...#initial_response_setting]])
 		input_context?: matchN(1, [#input_context, [...#input_context]])
 		kendra_configuration?: matchN(1, [#kendra_configuration, [...#kendra_configuration]])
 		output_context?: matchN(1, [#output_context, [...#output_context]])
+		qna_intent_configuration?: matchN(1, [#qna_intent_configuration, [...#qna_intent_configuration]])
 		sample_utterance?: matchN(1, [#sample_utterance, [...#sample_utterance]])
 		slot_priority?: matchN(1, [#slot_priority, [...#slot_priority]])
 		timeouts?: #timeouts
@@ -88,6 +89,11 @@ package res
 		name!:                    string
 		time_to_live_in_seconds!: number
 		turns_to_live!:           number
+	})
+
+	#qna_intent_configuration: close({
+		bedrock_model_configuration?: matchN(1, [_#defs."/$defs/qna_intent_configuration/$defs/bedrock_model_configuration", [..._#defs."/$defs/qna_intent_configuration/$defs/bedrock_model_configuration"]])
+		data_source_configuration?: matchN(1, [_#defs."/$defs/qna_intent_configuration/$defs/data_source_configuration", [..._#defs."/$defs/qna_intent_configuration/$defs/data_source_configuration"]])
 	})
 
 	#sample_utterance: close({
@@ -4904,5 +4910,53 @@ package res
 
 	_#defs: "/$defs/initial_response_setting/$defs/next_step/$defs/intent/$defs/slot/$defs/value": close({
 		interpreted_value?: string
+	})
+
+	_#defs: "/$defs/qna_intent_configuration/$defs/bedrock_model_configuration": close({
+		guardrail?: matchN(1, [_#defs."/$defs/qna_intent_configuration/$defs/bedrock_model_configuration/$defs/guardrail", [..._#defs."/$defs/qna_intent_configuration/$defs/bedrock_model_configuration/$defs/guardrail"]])
+		custom_prompt?: string
+		model_arn!:     string
+		trace_status?:  string
+	})
+
+	_#defs: "/$defs/qna_intent_configuration/$defs/bedrock_model_configuration/$defs/guardrail": close({
+		identifier!: string
+		version!:    string
+	})
+
+	_#defs: "/$defs/qna_intent_configuration/$defs/data_source_configuration": close({
+		bedrock_knowledge_store_configuration?: matchN(1, [_#defs."/$defs/qna_intent_configuration/$defs/data_source_configuration/$defs/bedrock_knowledge_store_configuration", [..._#defs."/$defs/qna_intent_configuration/$defs/data_source_configuration/$defs/bedrock_knowledge_store_configuration"]])
+		kendra_configuration?: matchN(1, [_#defs."/$defs/qna_intent_configuration/$defs/data_source_configuration/$defs/kendra_configuration", [..._#defs."/$defs/qna_intent_configuration/$defs/data_source_configuration/$defs/kendra_configuration"]])
+		opensearch_configuration?: matchN(1, [_#defs."/$defs/qna_intent_configuration/$defs/data_source_configuration/$defs/opensearch_configuration", [..._#defs."/$defs/qna_intent_configuration/$defs/data_source_configuration/$defs/opensearch_configuration"]])
+	})
+
+	_#defs: "/$defs/qna_intent_configuration/$defs/data_source_configuration/$defs/bedrock_knowledge_store_configuration": close({
+		exact_response_fields?: matchN(1, [_#defs."/$defs/qna_intent_configuration/$defs/data_source_configuration/$defs/bedrock_knowledge_store_configuration/$defs/exact_response_fields", [..._#defs."/$defs/qna_intent_configuration/$defs/data_source_configuration/$defs/bedrock_knowledge_store_configuration/$defs/exact_response_fields"]])
+		bedrock_knowledge_base_arn!: string
+		exact_response?:             bool
+	})
+
+	_#defs: "/$defs/qna_intent_configuration/$defs/data_source_configuration/$defs/bedrock_knowledge_store_configuration/$defs/exact_response_fields": close({
+		answer_field?: string
+	})
+
+	_#defs: "/$defs/qna_intent_configuration/$defs/data_source_configuration/$defs/kendra_configuration": close({
+		exact_response?:              bool
+		kendra_index!:                string
+		query_filter_string?:         string
+		query_filter_string_enabled?: bool
+	})
+
+	_#defs: "/$defs/qna_intent_configuration/$defs/data_source_configuration/$defs/opensearch_configuration": close({
+		exact_response_fields?: matchN(1, [_#defs."/$defs/qna_intent_configuration/$defs/data_source_configuration/$defs/opensearch_configuration/$defs/exact_response_fields", [..._#defs."/$defs/qna_intent_configuration/$defs/data_source_configuration/$defs/opensearch_configuration/$defs/exact_response_fields"]])
+		domain_endpoint!: string
+		exact_response?:  bool
+		include_fields?: [...string]
+		index_name!: string
+	})
+
+	_#defs: "/$defs/qna_intent_configuration/$defs/data_source_configuration/$defs/opensearch_configuration/$defs/exact_response_fields": close({
+		answer_field!:   string
+		question_field!: string
 	})
 }
