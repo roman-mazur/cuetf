@@ -276,6 +276,7 @@ import "list"
 		network_policy_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/network_policy_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/network_policy_config"]])
 		parallelstore_csi_driver_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/parallelstore_csi_driver_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/parallelstore_csi_driver_config"]])
 		ray_operator_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/ray_operator_config", list.MaxItems(3) & [..._#defs."/$defs/addons_config/$defs/ray_operator_config"]])
+		slice_controller_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/slice_controller_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/slice_controller_config"]])
 		stateful_ha_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/stateful_ha_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/stateful_ha_config"]])
 	})
 
@@ -973,6 +974,10 @@ import "list"
 		enabled!: bool
 	})
 
+	_#defs: "/$defs/addons_config/$defs/slice_controller_config": close({
+		enabled!: bool
+	})
+
 	_#defs: "/$defs/addons_config/$defs/stateful_ha_config": close({
 		enabled!: bool
 	})
@@ -1115,6 +1120,10 @@ import "list"
 		// List of secondary ranges names within this subnetwork that can
 		// be used for pod IPs.
 		pod_ipv4_range_names?: [...string]
+
+		// Status of the subnetwork, If in draining status, subnet will
+		// not be selected for new node pools.
+		status?: string
 
 		// Name of the subnetwork. This can be the full path of the
 		// subnetwork or just the name.

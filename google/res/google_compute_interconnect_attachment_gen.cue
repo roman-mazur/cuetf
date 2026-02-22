@@ -177,6 +177,7 @@ import "list"
 		// otherwise the request will fail with error 412 conditionNotMet.
 		label_fingerprint?: string
 		l2_forwarding?: matchN(1, [#l2_forwarding, list.MaxItems(1) & [...#l2_forwarding]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 		timeouts?: #timeouts
 
 		// Labels for this resource. These can only be added or modified
@@ -301,6 +302,15 @@ import "list"
 		// The tunnel endpoint IP address.
 		tunnel_endpoint_ip_address?: string
 		geneve_header?: matchN(1, [_#defs."/$defs/l2_forwarding/$defs/geneve_header", list.MaxItems(1) & [..._#defs."/$defs/l2_forwarding/$defs/geneve_header"]])
+	})
+
+	#params: close({
+		// Resource manager tags to be bound to the interconnect
+		// attachment. Tag keys and values have the
+		// same definition as resource manager tags. Keys must be in the
+		// format tagKeys/{tag_key_id},
+		// and values are in the format tagValues/456.
+		resource_manager_tags?: [string]: string
 	})
 
 	#timeouts: close({

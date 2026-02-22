@@ -85,7 +85,7 @@ package data
 
 		// The DataSource resource instance state.
 		state?:   string
-		project!: string
+		project?: string
 
 		// The number of bytes (metadata and data) stored in this
 		// datasource.

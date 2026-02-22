@@ -19,7 +19,7 @@ import "list"
 		// The name of the App Hub Application.
 		// Format:
 		// projects/{project}/locations/{location}/applications/{application}
-		app_hub_application!: string
+		app_hub_application?: string
 
 		// [Output only] Create timestamp
 		create_time?: string
@@ -46,10 +46,10 @@ import "list"
 			})]
 			message?: string
 		})]
+		id?: string
 
 		// ID of the requesting InsightsConfig.
 		insights_config_id!: string
-		id?:                 string
 
 		// Set of labels associated with an InsightsConfig.
 		//
@@ -67,8 +67,10 @@ import "list"
 		// Identifier. The name of the InsightsConfig.
 		// Format:
 		// projects/{project}/locations/{location}/insightsConfigs/{insightsConfig}
-		name?: string
+		name?:    string
+		project?: string
 		artifact_configs?: matchN(1, [#artifact_configs, [...#artifact_configs]])
+		target_projects?: matchN(1, [#target_projects, list.MaxItems(1) & [...#target_projects]])
 		timeouts?: #timeouts
 
 		// Reconciling (https://google.aip.dev/128#reconciliation).
@@ -80,7 +82,6 @@ import "list"
 		// or
 		// system actions like failover or maintenance.
 		reconciling?: bool
-		project?:     string
 
 		// The runtime configurations where the application is deployed.
 		runtime_configs?: [...close({
@@ -123,6 +124,11 @@ import "list"
 		// lineage of
 		// artifacts.
 		uri?: string
+	})
+
+	#target_projects: close({
+		// The project IDs. Format {project}.
+		project_ids?: [...string]
 	})
 
 	#timeouts: close({

@@ -17,7 +17,6 @@ import "list"
 		// There can only be one management cluster in a private cloud and
 		// it has to be the first one.
 		management?: bool
-		id?:         string
 
 		// The ID of the Cluster.
 		name!: string
@@ -29,6 +28,7 @@ import "list"
 		// For example:
 		// projects/my-project/locations/us-west1-a/privateClouds/my-cloud
 		parent!: string
+		id?:     string
 
 		// State of the Cluster.
 		state?: string
@@ -36,6 +36,7 @@ import "list"
 		// System-generated unique identifier for the resource.
 		uid?: string
 		autoscaling_settings?: matchN(1, [#autoscaling_settings, list.MaxItems(1) & [...#autoscaling_settings]])
+		datastore_mount_config?: matchN(1, [#datastore_mount_config, [...#datastore_mount_config]])
 		node_type_configs?: matchN(1, [#node_type_configs, [...#node_type_configs]])
 		timeouts?: #timeouts
 
@@ -67,6 +68,50 @@ import "list"
 		// Mandatory for successful addition of autoscaling settings in
 		// cluster.
 		min_cluster_node_count?: number
+	})
+
+	#datastore_mount_config: close({
+		// Optional. NFS is accessed by hosts in either read or read_write
+		// mode
+		// Default value used will be READ_WRITE
+		// Possible values:
+		// READ_ONLY
+		// READ_WRITE
+		access_mode?: string
+
+		// The resource name of the datastore to unmount.
+		// The datastore requested to be mounted should be in same
+		// region/zone as the
+		// cluster.
+		// Resource names are schemeless URIs that follow the conventions
+		// in
+		// https://cloud.google.com/apis/design/resource_names.
+		// For example:
+		// 'projects/my-project/locations/us-central1/datastores/my-datastore'
+		datastore!: string
+
+		// File share name.
+		file_share?: string
+
+		// Optional. If set to true, the colocation requirement will be
+		// ignored.
+		// If set to false, the colocation requirement will be enforced.
+		// Colocation requirement is the requirement that the cluster must
+		// be in the
+		// same region/zone of datastore.
+		ignore_colocation?: bool
+
+		// Optional. The NFS protocol supported by the NFS volume.
+		// Default value used will be NFS_V3
+		// Possible values:
+		// NFS_V3
+		nfs_version?: string
+
+		// Server IP addresses of the NFS volume.
+		// For NFS 3, you can only provide a single
+		// server IP address or DNS names.
+		servers?: [...string]
+		datastore_network!: matchN(1, [_#defs."/$defs/datastore_mount_config/$defs/datastore_network", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/datastore_mount_config/$defs/datastore_network"]])
 	})
 
 	#node_type_configs: close({
@@ -126,5 +171,34 @@ import "list"
 
 		// The utilization triggering the scale-out operation in percent.
 		scale_out!: number
+	})
+
+	_#defs: "/$defs/datastore_mount_config/$defs/datastore_network": close({
+		// Optional. The number of connections of the NFS volume.
+		// Supported from vsphere 8.0u1. Possible values are 1-4.
+		// Default value is 4.
+		connection_count?: number
+
+		// Optional. The Maximal Transmission Unit (MTU) of the datastore.
+		// MTU value can range from 1330-9000. If not set, system sets
+		// default MTU size to 1500.
+		mtu?: number
+
+		// The resource name of the network peering, used to access the
+		// file share by clients on private cloud. Resource names are
+		// schemeless
+		// URIs that follow the conventions in
+		// https://cloud.google.com/apis/design/resource_names.
+		// e.g.
+		// projects/my-project/locations/us-central1/networkPeerings/my-network-peering
+		network_peering?: string
+
+		// The resource name of the subnet
+		// Resource names are schemeless URIs that follow the conventions
+		// in
+		// https://cloud.google.com/apis/design/resource_names.
+		// e.g.
+		// projects/my-project/locations/us-central1/subnets/my-subnet
+		subnet!: string
 	})
 }

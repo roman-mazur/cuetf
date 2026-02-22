@@ -44,7 +44,16 @@ package data
 
 		// The write-only private key in PEM format.
 		private_key?: string
-		project?:     string
+
+		// The write-only private key in PEM format.
+		private_key_wo?: string
+
+		// Triggers update of 'private_key_wo' write-only. Increment this
+		// value when an update to 'private_key_wo' is needed. For more
+		// info see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		private_key_wo_version?: string
+		project?:                string
 
 		// The Region in which the created regional ssl certificate should
 		// reside.

@@ -52,12 +52,28 @@ import "list"
 		location!: string
 
 		// Identifier. Name of the AuthzPolicy resource.
-		name!:    string
-		project?: string
+		name!: string
 		custom_provider?: matchN(1, [#custom_provider, list.MaxItems(1) & [...#custom_provider]])
 		http_rules?: matchN(1, [#http_rules, [...#http_rules]])
 		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
 		timeouts?: #timeouts
+
+		// Defines the type of authorization being performed.
+		// 'REQUEST_AUTHZ' applies to request authorization. CUSTOM
+		// authorization policies with Authz extensions will be allowed
+		// with ext_authz or ext_proc protocols. Extensions are
+		// invoked only once when the request headers arrive.
+		// 'CONTENT_AUTHZ' applies to content security, sanitization,
+		// etc.
+		// Only CUSTOM action is allowed in this policy profile.
+		// AuthzExtensions in the custom provider must support ext_proc
+		// protocol and be capable of receiving all ext_proc events
+		// (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
+		// RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with
+		// FULL_DUPLEX_STREAMED body send mode. Possible values:
+		// ["REQUEST_AUTHZ", "CONTENT_AUTHZ"]
+		policy_profile?: string
+		project?:        string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -84,15 +100,18 @@ import "list"
 	})
 
 	#target: close({
-		// All gateways and forwarding rules referenced by this policy and
-		// extensions must share the same load balancing scheme.
+		// Required when targeting forwarding rules and secure web proxy.
+		// Must not be specified when targeting Agent
+		// Gateway. All resources referenced by this policy and extensions
+		// must share the same load balancing scheme.
 		// For more information, refer to [Backend services
 		// overview](https://cloud.google.com/load-balancing/docs/backend-service).
 		// Possible values: ["INTERNAL_MANAGED", "EXTERNAL_MANAGED",
 		// "INTERNAL_SELF_MANAGED"]
-		load_balancing_scheme!: string
+		load_balancing_scheme?: string
 
-		// A list of references to the Forwarding Rules on which this
+		// A list of references to the Forwarding Rules or Secure Web
+		// Proxy Gateways or Agent Gateways on which this
 		// policy will be applied.
 		resources?: [...string]
 	})
@@ -441,6 +460,7 @@ import "list"
 	_#defs: "/$defs/http_rules/$defs/to/$defs/operations": close({
 		header_set?: matchN(1, [_#defs."/$defs/http_rules/$defs/to/$defs/operations/$defs/header_set", list.MaxItems(1) & [..._#defs."/$defs/http_rules/$defs/to/$defs/operations/$defs/header_set"]])
 		hosts?: matchN(1, [_#defs."/$defs/http_rules/$defs/to/$defs/operations/$defs/hosts", [..._#defs."/$defs/http_rules/$defs/to/$defs/operations/$defs/hosts"]])
+		mcp?: matchN(1, [_#defs."/$defs/http_rules/$defs/to/$defs/operations/$defs/mcp", list.MaxItems(1) & [..._#defs."/$defs/http_rules/$defs/to/$defs/operations/$defs/mcp"]])
 		paths?: matchN(1, [_#defs."/$defs/http_rules/$defs/to/$defs/operations/$defs/paths", [..._#defs."/$defs/http_rules/$defs/to/$defs/operations/$defs/paths"]])
 
 		// A list of HTTP methods to match against. Each entry must be a
@@ -518,6 +538,48 @@ import "list"
 		// empty prefix is not allowed, please use regex instead.
 		// Examples:
 		// * abc matches the value xyz.abc
+		suffix?: string
+	})
+
+	_#defs: "/$defs/http_rules/$defs/to/$defs/operations/$defs/mcp": close({
+		methods?: matchN(1, [_#defs."/$defs/http_rules/$defs/to/$defs/operations/$defs/mcp/$defs/methods", [..._#defs."/$defs/http_rules/$defs/to/$defs/operations/$defs/mcp/$defs/methods"]])
+
+		// If specified, matches on the MCP protocol’s non-access specific
+		// methods namely: * initialize/ * completion/ * logging/ *
+		// notifications/ * ping Default value:
+		// "SKIP_BASE_PROTOCOL_METHODS" Possible values:
+		// ["SKIP_BASE_PROTOCOL_METHODS", "MATCH_BASE_PROTOCOL_METHODS"]
+		base_protocol_methods_option?: string
+	})
+
+	_#defs: "/$defs/http_rules/$defs/to/$defs/operations/$defs/mcp/$defs/methods": close({
+		params?: matchN(1, [_#defs."/$defs/http_rules/$defs/to/$defs/operations/$defs/mcp/$defs/methods/$defs/params", [..._#defs."/$defs/http_rules/$defs/to/$defs/operations/$defs/mcp/$defs/methods/$defs/params"]])
+
+		// The MCP method to match against. Allowed values are as follows:
+		// 1) “tools”, “prompts”, “resources” - these will match against
+		// all sub methods under the respective methods.
+		// 2) “prompts/list”, “tools/list”, “resources/list”,
+		// “resources/templates/list”
+		// 3) “prompts/get”, “tools/call”, “resources/subscribe”,
+		// “resources/unsubscribe”, “resources/read”
+		// Params cannot be specified for categories 1) and 2).
+		name!: string
+	})
+
+	_#defs: "/$defs/http_rules/$defs/to/$defs/operations/$defs/mcp/$defs/methods/$defs/params": close({
+		// A substring match on the MCP method parameter name.
+		contains?: string
+
+		// An exact match on the MCP method parameter name.
+		exact?: string
+
+		// Specifies that the string match should be case insensitive.
+		ignore_case?: bool
+
+		// A prefix match on the MCP method parameter name.
+		prefix?: string
+
+		// A suffix match on the MCP method parameter name.
 		suffix?: string
 	})
 

@@ -35,6 +35,29 @@ package data
 		// and "2014-10-02T15:01:23.045123456Z".
 		create_time?: string
 
+		// Optional. Configuration to mount a datastore.
+		// Mount can be done along with cluster create or during cluster
+		// update
+		// Since service subnet is not configured with ip range on mgmt
+		// cluster creation, mount on management cluster is done as
+		// update only
+		// for unmount remove 'datastore_mount_config' config from the
+		// update of cluster resource
+		datastore_mount_config?: [...close({
+			access_mode?: string
+			datastore?:   string
+			datastore_network?: [...close({
+				connection_count?: number
+				mtu?:              number
+				network_peering?:  string
+				subnet?:           string
+			})]
+			file_share?:        string
+			ignore_colocation?: bool
+			nfs_version?:       string
+			servers?: [...string]
+		})]
+
 		// True if the cluster is a management cluster; false otherwise.
 		// There can only be one management cluster in a private cloud and
 		// it has to be the first one.

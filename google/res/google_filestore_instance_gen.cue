@@ -18,6 +18,12 @@ import "list"
 		// A description of the instance.
 		description?: string
 
+		// The desired_replica_state field controls the state of a
+		// replica. Terraform will attempt to make the actual state of
+		// the replica match the desired state. Default value: "READY"
+		// Possible values: ["PAUSED", "READY"]
+		desired_replica_state?: string
+
 		// All of labels (key/value pairs) present on the resource in GCP,
 		// including the labels configured through Terraform, other
 		// clients and services.
@@ -37,10 +43,10 @@ import "list"
 		// Server-specified ETag for the instance resource to prevent
 		// simultaneous updates from overwriting each other.
 		etag?: string
-		id?:   string
 
 		// KMS key name used for data encryption.
 		kms_key_name?: string
+		id?:           string
 
 		// Resource labels to represent user-provided metadata.
 		//
@@ -50,10 +56,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-
-		// The name of the location of the instance. This can be a region
-		// for ENTERPRISE tier instances.
-		location?: string
 		directory_services?: matchN(1, [#directory_services, list.MaxItems(1) & [...#directory_services]])
 		file_shares!: matchN(1, [#file_shares, list.MaxItems(1) & [_, ...] & [...#file_shares]])
 		initial_replication?: matchN(1, [#initial_replication, list.MaxItems(1) & [...#initial_replication]])
@@ -61,9 +63,12 @@ import "list"
 		performance_config?: matchN(1, [#performance_config, list.MaxItems(1) & [...#performance_config]])
 		timeouts?: #timeouts
 
+		// The name of the location of the instance. This can be a region
+		// for ENTERPRISE tier instances.
+		location?: string
+
 		// The resource name of the instance.
-		name!:    string
-		project?: string
+		name!: string
 
 		// Either NFSv3, for using NFS version 3 as file sharing protocol,
 		// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
@@ -72,6 +77,7 @@ import "list"
 		// The default is NFSv3. Default value: "NFS_V3" Possible values:
 		// ["NFS_V3", "NFS_V4_1"]
 		protocol?: string
+		project?:  string
 
 		// A map of resource manager tags. Resource manager tag keys
 		// and values have the same definition as resource manager

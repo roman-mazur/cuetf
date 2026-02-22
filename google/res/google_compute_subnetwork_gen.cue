@@ -6,6 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_subnetwork")
 	close({
+		// Typically packets destined to IPs within the subnetwork range
+		// that do not match
+		// existing resources are dropped and prevented from leaving the
+		// VPC.
+		// Setting this field to true will allow these packets to match
+		// dynamic routes injected
+		// via BGP even if their destinations match existing subnet
+		// ranges.
+		allow_subnet_cidr_routes_overlap?: bool
+
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
@@ -101,13 +111,14 @@ import "list"
 		// addresses can
 		// access Google APIs and services by using Private Google Access.
 		private_ip_google_access?: bool
+		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
+		secondary_ip_range?: matchN(1, [#secondary_ip_range, [...#secondary_ip_range]])
+		timeouts?: #timeouts
 
 		// The private IPv6 google access type for the VMs in this subnet.
 		private_ipv6_google_access?: string
 		project?:                    string
-		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
-		secondary_ip_range?: matchN(1, [#secondary_ip_range, [...#secondary_ip_range]])
 
 		// The purpose of the resource. This field can be either
 		// 'PRIVATE', 'REGIONAL_MANAGED_PROXY', 'GLOBAL_MANAGED_PROXY',
@@ -151,7 +162,6 @@ import "list"
 		// 'ACTIVE' or is currently draining. Possible values: ["ACTIVE",
 		// "BACKUP"]
 		role?:      string
-		timeouts?:  #timeouts
 		self_link?: string
 
 		// Controls the removal behavior of secondary_ip_range.
