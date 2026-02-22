@@ -94,6 +94,7 @@ import "list"
 		docs_to_investigate?: string
 		extract_doc_id?:      string
 		nesting_level?:       string
+		use_update_lookup?:   bool
 	})
 
 	#mysql_settings: close({
@@ -110,7 +111,43 @@ import "list"
 	})
 
 	#oracle_settings: close({
-		authentication_method?: string
+		access_alternate_directly?:          bool
+		add_supplemental_logging?:           bool
+		additional_archived_log_dest_id?:    number
+		allow_selected_nested_tables?:       bool
+		archived_log_dest_id?:               number
+		archived_logs_only?:                 bool
+		asm_password?:                       string
+		asm_server?:                         string
+		asm_user?:                           string
+		authentication_method?:              string
+		char_length_semantics?:              string
+		convert_timestamp_with_zone_to_utc?: bool
+		direct_path_no_log?:                 bool
+		direct_path_parallel_load?:          bool
+		enable_homogenous_tablespace?:       bool
+		extra_archived_log_dest_ids?: [...number]
+		fail_task_on_lob_truncation?:                   bool
+		number_datatype_scale?:                         number
+		open_transaction_window?:                       number
+		oracle_path_prefix?:                            string
+		parallel_asm_read_threads?:                     number
+		read_ahead_blocks?:                             number
+		read_table_space_name?:                         bool
+		replace_path_prefix?:                           bool
+		retry_interval?:                                number
+		secrets_manager_oracle_asm_access_role_arn?:    string
+		secrets_manager_oracle_asm_secret_id?:          string
+		security_db_encryption?:                        string
+		security_db_encryption_name?:                   string
+		spatial_data_option_to_geo_json_function_name?: string
+		standby_delay_time?:                            number
+		trim_space_in_char?:                            bool
+		use_alternate_folder_for_online?:               bool
+		use_bfile?:                                     bool
+		use_direct_path_full_load?:                     bool
+		use_logminer_reader?:                           bool
+		use_path_prefix?:                               string
 	})
 
 	#postgres_settings: close({

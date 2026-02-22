@@ -21,6 +21,7 @@ package data
 		revocation_configuration?: [...close({
 			crl_configuration?: [...close({
 				custom_cname?:       string
+				custom_path?:        string
 				enabled?:            bool
 				expiration_in_days?: number
 				s3_bucket_name?:     string

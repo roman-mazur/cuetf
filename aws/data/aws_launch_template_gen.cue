@@ -29,22 +29,23 @@ package data
 			})]
 		})]
 		cpu_options?: [...close({
-			amd_sev_snp?:      string
-			core_count?:       number
-			threads_per_core?: number
+			amd_sev_snp?:           string
+			core_count?:            number
+			nested_virtualization?: string
+			threads_per_core?:      number
 		})]
 		credit_specification?: [...close({
 			cpu_credits?: string
 		})]
-		default_version?: number
-		description?:     string
+		default_version?:  number
+		description?:      string
+		disable_api_stop?: bool
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                  string
-		disable_api_stop?:        bool
 		disable_api_termination?: bool
 		ebs_optimized?:           string
 		enclave_options?: [...close({
@@ -123,14 +124,15 @@ package data
 				min?: number
 			})]
 		})]
-		instance_type?:  string
-		kernel_id?:      string
+		instance_type?: string
+		kernel_id?:     string
+		filter?: matchN(1, [#filter, [...#filter]])
 		key_name?:       string
 		latest_version?: number
 		license_specification?: [...close({
 			license_configuration_arn?: string
 		})]
-		filter?: matchN(1, [#filter, [...#filter]])
+		timeouts?: #timeouts
 		maintenance_options?: [...close({
 			auto_recovery?: string
 		})]
@@ -172,6 +174,9 @@ package data
 			security_groups?: [...string]
 			subnet_id?: string
 		})]
+		network_performance_options?: [...close({
+			bandwidth_weighting?: string
+		})]
 		placement?: [...close({
 			affinity?:                string
 			availability_zone?:       string
@@ -189,6 +194,15 @@ package data
 			hostname_type?:                        string
 		})]
 		ram_disk_id?: string
+		secondary_interfaces?: [...close({
+			delete_on_termination?:    bool
+			device_index?:             number
+			interface_type?:           string
+			network_card_index?:       number
+			private_ip_address_count?: number
+			private_ip_addresses?: [...string]
+			secondary_subnet_id?: string
+		})]
 		security_group_names?: [...string]
 		tag_specifications?: [...close({
 			resource_type?: string
@@ -197,7 +211,6 @@ package data
 		tags?: [string]: string
 		user_data?: string
 		vpc_security_group_ids?: [...string]
-		timeouts?: #timeouts
 	})
 
 	#filter: close({

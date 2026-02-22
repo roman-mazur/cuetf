@@ -65,6 +65,7 @@ import "list"
 
 	_#defs: "/$defs/revocation_configuration/$defs/crl_configuration": close({
 		custom_cname?:       string
+		custom_path?:        string
 		enabled?:            bool
 		expiration_in_days?: number
 		s3_bucket_name?:     string

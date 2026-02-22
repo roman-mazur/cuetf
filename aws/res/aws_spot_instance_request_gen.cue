@@ -92,9 +92,10 @@ import "list"
 	})
 
 	#cpu_options: close({
-		amd_sev_snp?:      string
-		core_count?:       number
-		threads_per_core?: number
+		amd_sev_snp?:           string
+		core_count?:            number
+		nested_virtualization?: string
+		threads_per_core?:      number
 	})
 
 	#credit_specification: close({

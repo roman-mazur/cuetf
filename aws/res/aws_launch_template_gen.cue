@@ -6,11 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_launch_template")
 	close({
-		arn?:              string
-		default_version?:  number
-		description?:      string
-		disable_api_stop?: bool
-		block_device_mappings?: matchN(1, [#block_device_mappings, [...#block_device_mappings]])
+		arn?:                     string
+		default_version?:         number
+		description?:             string
+		disable_api_stop?:        bool
 		disable_api_termination?: bool
 		ebs_optimized?:           string
 		id?:                      string
@@ -24,17 +23,19 @@ import "list"
 		instance_initiated_shutdown_behavior?: string
 		instance_type?:                        string
 		kernel_id?:                            string
-		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
-		key_name?:       string
-		latest_version?: number
-		name?:           string
-		name_prefix?:    string
-		ram_disk_id?:    string
+		key_name?:                             string
+		latest_version?:                       number
+		name?:                                 string
+		name_prefix?:                          string
+		ram_disk_id?:                          string
+		block_device_mappings?: matchN(1, [#block_device_mappings, [...#block_device_mappings]])
 		security_group_names?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		update_default_version?: bool
 		user_data?:              string
+		vpc_security_group_ids?: [...string]
+		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
 		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
 		credit_specification?: matchN(1, [#credit_specification, list.MaxItems(1) & [...#credit_specification]])
 		enclave_options?: matchN(1, [#enclave_options, list.MaxItems(1) & [...#enclave_options]])
@@ -44,13 +45,13 @@ import "list"
 		instance_requirements?: matchN(1, [#instance_requirements, list.MaxItems(1) & [...#instance_requirements]])
 		license_specification?: matchN(1, [#license_specification, [...#license_specification]])
 		maintenance_options?: matchN(1, [#maintenance_options, list.MaxItems(1) & [...#maintenance_options]])
-		vpc_security_group_ids?: [...string]
 		metadata_options?: matchN(1, [#metadata_options, list.MaxItems(1) & [...#metadata_options]])
 		monitoring?: matchN(1, [#monitoring, list.MaxItems(1) & [...#monitoring]])
 		network_interfaces?: matchN(1, [#network_interfaces, [...#network_interfaces]])
 		network_performance_options?: matchN(1, [#network_performance_options, list.MaxItems(1) & [...#network_performance_options]])
 		placement?: matchN(1, [#placement, list.MaxItems(1) & [...#placement]])
 		private_dns_name_options?: matchN(1, [#private_dns_name_options, list.MaxItems(1) & [...#private_dns_name_options]])
+		secondary_interfaces?: matchN(1, [#secondary_interfaces, [...#secondary_interfaces]])
 		tag_specifications?: matchN(1, [#tag_specifications, [...#tag_specifications]])
 	})
 
@@ -67,9 +68,10 @@ import "list"
 	})
 
 	#cpu_options: close({
-		amd_sev_snp?:      string
-		core_count?:       number
-		threads_per_core?: number
+		amd_sev_snp?:           string
+		core_count?:            number
+		nested_virtualization?: string
+		threads_per_core?:      number
 	})
 
 	#credit_specification: close({
@@ -186,6 +188,16 @@ import "list"
 		enable_resource_name_dns_a_record?:    bool
 		enable_resource_name_dns_aaaa_record?: bool
 		hostname_type?:                        string
+	})
+
+	#secondary_interfaces: close({
+		delete_on_termination?:    bool
+		device_index?:             number
+		interface_type?:           string
+		network_card_index?:       number
+		private_ip_address_count?: number
+		private_ip_addresses?: [...string]
+		secondary_subnet_id?: string
 	})
 
 	#tag_specifications: close({
