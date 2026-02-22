@@ -16,10 +16,10 @@ import "list"
 		instance_pool?: matchN(1, [#instance_pool, list.MaxItems(1) & [...#instance_pool]])
 		key_vault_password?: matchN(1, [#key_vault_password, list.MaxItems(1) & [...#key_vault_password]])
 		new_cluster_config?: matchN(1, [#new_cluster_config, list.MaxItems(1) & [...#new_cluster_config]])
-		id?:                         string
-		integration_runtime_name?:   string
-		msi_work_space_resource_id?: string
-		name!:                       string
+		id?:                       string
+		integration_runtime_name?: string
+		msi_workspace_id?:         string
+		name!:                     string
 		parameters?: [string]: string
 		timeouts?: #timeouts
 	})
