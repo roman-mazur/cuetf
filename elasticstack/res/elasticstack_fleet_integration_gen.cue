@@ -10,19 +10,33 @@ package res
 		// The ID of this resource.
 		id?: string
 
+		// Set to true to ignore constraint errors during package
+		// installation.
+		ignore_constraints?: bool
+
+		// Set to true to ignore mapping update errors during package
+		// installation.
+		ignore_mapping_update_errors?: bool
+
 		// The integration package name.
 		name!: string
+
+		// Set to true to allow installation of prerelease (beta, non-GA)
+		// packages.
+		prerelease?: bool
+
+		// Set to true to skip data stream rollover during package
+		// installation.
+		skip_data_stream_rollover?: bool
 
 		// Set to true if you do not wish the integration package to be
 		// uninstalled at destroy time, and instead just remove the
 		// integration package from the Terraform state.
 		skip_destroy?: bool
 
-		// The Kibana space IDs where this integration package should be
-		// installed. When set, the package will be installed and managed
-		// within the specified space. Note: The order of space IDs does
-		// not matter as this is a set.
-		space_ids?: [...string]
+		// The Kibana space ID where this integration package should be
+		// installed.
+		space_id?: string
 
 		// The integration package version.
 		version!: string

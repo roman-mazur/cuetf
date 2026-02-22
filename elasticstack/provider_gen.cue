@@ -63,6 +63,9 @@ import "list"
 		// API Key to use for authentication to Fleet.
 		api_key?: string
 
+		// Bearer Token to use for authentication to Fleet.
+		bearer_token?: string
+
 		// A list of paths to CA certificates to validate the certificate
 		// presented by the Fleet server.
 		ca_certs?: [...string]
@@ -84,6 +87,9 @@ import "list"
 	#kibana: close({
 		// API Key to use for authentication to Kibana
 		api_key?: string
+
+		// Bearer Token to use for authentication to Kibana
+		bearer_token?: string
 
 		// A list of paths to CA certificates to validate the certificate
 		// presented by the Kibana server.

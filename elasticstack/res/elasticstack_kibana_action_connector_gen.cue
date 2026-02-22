@@ -6,6 +6,15 @@ package res
 	close({
 		// The configuration for the connector. Configuration properties
 		// vary depending on the connector type.
+		//
+		// The provider injects the '__tf_provider_context' property into
+		// this JSON object. In most cases this field will be ignored
+		// when computing the difference between the current and desired
+		// state. In some cases however, this property may be shown in
+		// the Terraform plan. Any changes to the '__tf_provider_context'
+		// property can be safely ignored. This property is used
+		// internally by the provider, and you should not set this
+		// property within your Terraform configuration.
 		config?: string
 
 		// A UUID v1 or v4 to use instead of a randomly generated ID.
@@ -43,6 +52,9 @@ package res
 	#kibana_connection: close({
 		// API Key to use for authentication to Kibana
 		api_key?: string
+
+		// Bearer Token to use for authentication to Kibana
+		bearer_token?: string
 
 		// A list of paths to CA certificates to validate the certificate
 		// presented by the Kibana server.

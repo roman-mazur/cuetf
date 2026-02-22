@@ -1,7 +1,5 @@
 package res
 
-import "list"
-
 #elasticstack_kibana_alerting_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_alerting_rule")
@@ -16,6 +14,9 @@ import "list"
 		// Indicates if you want to run the rule on an interval basis.
 		enabled?: bool
 
+		// Generated ID for the alerting rule.
+		id?: string
+
 		// The check interval, which specifies how frequently the rule
 		// conditions are checked. The interval must be specified in
 		// seconds, minutes, hours or days.
@@ -26,7 +27,6 @@ import "list"
 
 		// Status of the last execution of this rule.
 		last_execution_status?: string
-		id?:                    string
 
 		// The name of the rule. While this name does not have to be
 		// unique, a distinctive name can help you identify a rule.
@@ -91,16 +91,16 @@ import "list"
 		group?: string
 
 		// The identifier for the connector saved object.
-		id!: string
-		alerts_filter?: matchN(1, [_#defs."/$defs/actions/$defs/alerts_filter", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/alerts_filter"]])
+		id!:            string
+		alerts_filter?: _#defs."/$defs/actions/$defs/alerts_filter"
 
 		// The parameters for the action, which are sent to the connector.
-		params!: string
-		frequency?: matchN(1, [_#defs."/$defs/actions/$defs/frequency", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/frequency"]])
+		params!:    string
+		frequency?: _#defs."/$defs/actions/$defs/frequency"
 	})
 
 	_#defs: "/$defs/actions/$defs/alerts_filter": close({
-		timeframe?: matchN(1, [_#defs."/$defs/actions/$defs/alerts_filter/$defs/timeframe", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/alerts_filter/$defs/timeframe"]])
+		timeframe?: _#defs."/$defs/actions/$defs/alerts_filter/$defs/timeframe"
 
 		// Defines a query filter that determines whether the action runs.
 		// Written in Kibana Query Language (KQL).
@@ -112,20 +112,20 @@ import "list"
 		// represented as an array of numbers. For example, 1 represents
 		// Monday. An empty array is equivalent to specifying all the
 		// days of the week.
-		days!: [...number]
+		days?: [...number]
 
 		// Defines the range of time in a day that the action can run. The
 		// end of the time frame in 24-hour notation (hh:mm).
-		hours_end!: string
+		hours_end?: string
 
 		// Defines the range of time in a day that the action can run. The
 		// start of the time frame in 24-hour notation (hh:mm).
-		hours_start!: string
+		hours_start?: string
 
 		// The ISO time zone for the hours values. Values such as UTC and
 		// UTC+1 also work but lack built-in daylight savings time
 		// support and are not recommended.
-		timezone!: string
+		timezone?: string
 	})
 
 	_#defs: "/$defs/actions/$defs/frequency": close({
@@ -135,22 +135,16 @@ import "list"
 		// becomes active and at each check interval while the rule
 		// conditions are met; `onThrottleInterval`: Actions run when the
 		// alert becomes active and at the interval specified in the
-		// throttle property while the rule conditions are met. NOTE:
-		// This is a rule level property; if you update the rule in
-		// Kibana, it is automatically changed to use action-specific
-		// `notify_when` values.
-		notify_when!: string
+		// throttle property while the rule conditions are met.
+		notify_when?: string
 
 		// Indicates whether the action is a summary.
-		summary!: bool
+		summary?: bool
 
 		// Defines how often an alert generates repeated actions. This
 		// custom action interval must be specified in seconds, minutes,
 		// hours, or days. For example, 10m or 1h. This property is
 		// applicable only if `notify_when` is `onThrottleInterval`.
-		// NOTE: This is a rule level property; if you update the rule in
-		// Kibana, it is automatically changed to use action-specific
-		// `throttle` values.
 		throttle?: string
 	})
 }
