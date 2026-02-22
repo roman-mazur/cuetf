@@ -25,12 +25,44 @@ package res
 		// The name of the integration package.
 		integration_name!: string
 
+		// Integration inputs mapped by input ID.
+		inputs?: [string]: close({
+			// Input defaults.
+			defaults?: close({
+				// Stream-level defaults mapped by stream ID.
+				streams?: [string]: close({
+					// Default enabled state for the stream.
+					enabled?: bool
+
+					// Stream-level variable defaults as JSON.
+					vars?: string
+				})
+
+				// Input-level variable defaults as JSON.
+				vars?: string
+			})
+
+			// Enable the input.
+			enabled?: bool
+
+			// Input streams mapped by stream ID.
+			streams?: [string]: close({
+				// Enable the stream.
+				enabled?: bool
+
+				// Stream-level variables as JSON.
+				vars?: string
+			})
+
+			// Input-level variables as JSON.
+			vars?: string
+		})
+
 		// The version of the integration package.
 		integration_version!: string
 
 		// The name of the integration policy.
 		name!: string
-		input?: matchN(1, [#input, [...#input]])
 
 		// The namespace of the integration policy.
 		namespace!: string
@@ -49,21 +81,17 @@ package res
 		// as this is a set.
 		space_ids?: [...string]
 
-		// Integration-level variables as JSON.
-		vars_json?: string
-	})
-
-	#input: close({
-		// Enable the input.
-		enabled?: bool
-
-		// The identifier of the input.
-		input_id!: string
-
-		// Input streams as JSON.
-		streams_json?: string
-
-		// Input variables as JSON.
+		// Integration-level variables as JSON. Variables vary depending
+		// on the integration package.
+		//
+		// The provider injects the '__tf_provider_context' property into
+		// this JSON object. In most cases this field will be ignored
+		// when computing the difference between the current and desired
+		// state. In some cases however, this property may be shown in
+		// the Terraform plan. Any changes to the '__tf_provider_context'
+		// property can be safely ignored. This property is used
+		// internally by the provider, and you should not set this
+		// property within your Terraform configuration.
 		vars_json?: string
 	})
 }

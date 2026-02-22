@@ -118,6 +118,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Fleet."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							ca_certs: {
 								type: ["list", "string"]
 								description:      "A list of paths to CA certificates to validate the certificate presented by the Fleet server."
@@ -163,6 +170,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							api_key: {
 								type:             "string"
 								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -6671,6 +6685,212 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			version: 0
 			block: {
 				attributes: {
+					advanced_monitoring_options: {
+						nested_type: {
+							attributes: {
+								diagnostics: {
+									nested_type: {
+										attributes: {
+											file_uploader: {
+												nested_type: {
+													attributes: {
+														backoff_duration: {
+															type:             "string"
+															description:      "Maximum backoff duration between retry attempts (e.g., '1m', '30s')."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														init_duration: {
+															type:             "string"
+															description:      "Initial duration before the first retry attempt (e.g., '1s', '500ms')."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														max_retries: {
+															type:             "number"
+															description:      "Maximum number of retry attempts for file uploads."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Diagnostic file upload retry configuration."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											rate_limits: {
+												nested_type: {
+													attributes: {
+														burst: {
+															type:             "number"
+															description:      "Rate limiting burst count for diagnostics requests."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														interval: {
+															type:             "string"
+															description:      "Rate limiting interval for diagnostics requests (e.g., '1m', '30s')."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Rate limiting configuration for diagnostics requests from Fleet."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Diagnostic settings for rate limiting and file upload behavior."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								http_monitoring_endpoint: {
+									nested_type: {
+										attributes: {
+											buffer_enabled: {
+												type:             "bool"
+												description:      "Enable monitoring buffer for the HTTP endpoint."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											enabled: {
+												type:             "bool"
+												description:      "Enable the HTTP monitoring endpoint. When enabled, exposes a /liveness endpoint for health checks."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											host: {
+												type:             "string"
+												description:      "Host for the HTTP monitoring endpoint."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											port: {
+												type:             "number"
+												description:      "Port for the HTTP monitoring endpoint."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											pprof_enabled: {
+												type:             "bool"
+												description:      "Enable /debug/pprof/* profiling endpoints. Warning: enabling this may pose a security risk if the monitoring endpoint is accessible over a network."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "HTTP monitoring endpoint configuration for agent health checks and liveness probes."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Advanced monitoring options for the agent policy. Includes HTTP monitoring endpoint configuration and diagnostic settings."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					advanced_settings: {
+						nested_type: {
+							attributes: {
+								download_target_directory: {
+									type:             "string"
+									description:      "Target directory for downloading agent updates."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								download_timeout: {
+									type:             "string"
+									description:      "Timeout for downloading agent updates (e.g., '2h', '30m')."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								go_max_procs: {
+									type:             "number"
+									description:      "Maximum number of CPUs that the agent can use (GOMAXPROCS). Set to 0 to use all available CPUs."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								logging_files_interval: {
+									type:             "string"
+									description:      "Interval for log file rotation (e.g., '30s', '1m', '1h')."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								logging_files_keepfiles: {
+									type:             "number"
+									description:      "Number of rotated log files to keep."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								logging_files_rotateeverybytes: {
+									type:             "number"
+									description:      "Rotate log files when they reach this size in bytes."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								logging_level: {
+									type:             "string"
+									description:      "Logging level for the agent. Valid values: debug, info, warning, error."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								logging_metrics_period: {
+									type:             "string"
+									description:      "Period for logging agent metrics (e.g., '30s', '1m')."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								logging_to_files: {
+									type:             "bool"
+									description:      "Enable logging to files."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								monitoring_runtime_experimental: {
+									type:             "string"
+									description:      "Experimental runtime monitoring mode. Valid values: '' (empty string to disable), 'process', 'otel'."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Advanced agent settings for logging, resource limits, and downloads. These settings configure the behavior of Elastic Agents enrolled in this policy."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					data_output_id: {
 						type:             "string"
 						description:      "The identifier for the data output."
@@ -6822,7 +7042,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			}
 		}
 		elasticstack_fleet_integration: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					force: {
@@ -6837,11 +7057,35 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						computed:         true
 					}
+					ignore_constraints: {
+						type:             "bool"
+						description:      "Set to true to ignore constraint errors during package installation."
+						description_kind: "plain"
+						optional:         true
+					}
+					ignore_mapping_update_errors: {
+						type:             "bool"
+						description:      "Set to true to ignore mapping update errors during package installation."
+						description_kind: "plain"
+						optional:         true
+					}
 					name: {
 						type:             "string"
 						description:      "The integration package name."
 						description_kind: "plain"
 						required:         true
+					}
+					prerelease: {
+						type:             "bool"
+						description:      "Set to true to allow installation of prerelease (beta, non-GA) packages."
+						description_kind: "plain"
+						optional:         true
+					}
+					skip_data_stream_rollover: {
+						type:             "bool"
+						description:      "Set to true to skip data stream rollover during package installation."
+						description_kind: "plain"
+						optional:         true
 					}
 					skip_destroy: {
 						type:             "bool"
@@ -6849,9 +7093,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						optional:         true
 					}
-					space_ids: {
-						type: ["set", "string"]
-						description:      "The Kibana space IDs where this integration package should be installed. When set, the package will be installed and managed within the specified space. Note: The order of space IDs does not matter as this is a set."
+					space_id: {
+						type:             "string"
+						description:      "The Kibana space ID where this integration package should be installed."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -6875,7 +7119,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			}
 		}
 		elasticstack_fleet_integration_policy: {
-			version: 1
+			version: 2
 			block: {
 				attributes: {
 					agent_policy_id: {
@@ -6913,6 +7157,93 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						type:             "string"
 						description:      "The ID of this resource."
 						description_kind: "plain"
+						computed:         true
+					}
+					inputs: {
+						nested_type: {
+							attributes: {
+								defaults: {
+									nested_type: {
+										attributes: {
+											streams: {
+												nested_type: {
+													attributes: {
+														enabled: {
+															type:             "bool"
+															description:      "Default enabled state for the stream."
+															description_kind: "plain"
+															computed:         true
+														}
+														vars: {
+															type:             "string"
+															description:      "Stream-level variable defaults as JSON."
+															description_kind: "plain"
+															computed:         true
+														}
+													}
+													nesting_mode: "map"
+												}
+												description:      "Stream-level defaults mapped by stream ID."
+												description_kind: "plain"
+												computed:         true
+											}
+											vars: {
+												type:             "string"
+												description:      "Input-level variable defaults as JSON."
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Input defaults."
+									description_kind: "plain"
+									computed:         true
+								}
+								enabled: {
+									type:             "bool"
+									description:      "Enable the input."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								streams: {
+									nested_type: {
+										attributes: {
+											enabled: {
+												type:             "bool"
+												description:      "Enable the stream."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											vars: {
+												type:             "string"
+												description:      "Stream-level variables as JSON."
+												description_kind: "plain"
+												optional:         true
+												sensitive:        true
+											}
+										}
+										nesting_mode: "map"
+									}
+									description:      "Input streams mapped by stream ID."
+									description_kind: "plain"
+									optional:         true
+								}
+								vars: {
+									type:             "string"
+									description:      "Input-level variables as JSON."
+									description_kind: "plain"
+									optional:         true
+									sensitive:        true
+								}
+							}
+							nesting_mode: "map"
+						}
+						description:      "Integration inputs mapped by input ID."
+						description_kind: "plain"
+						optional:         true
 						computed:         true
 					}
 					integration_name: {
@@ -6960,58 +7291,20 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 					vars_json: {
-						type:             "string"
-						description:      "Integration-level variables as JSON."
+						type: "string"
+						description: """
+									Integration-level variables as JSON. Variables vary depending on the integration package.
+
+									The provider injects the '__tf_provider_context' property into this JSON object. In most cases this field will be ignored when computing the difference between the current and desired state. In some cases however, this property may be shown in the Terraform plan. Any changes to the '__tf_provider_context' property can be safely ignored. This property is used internally by the provider, and you should not set this property within your Terraform configuration.
+									"""
 						description_kind: "plain"
 						optional:         true
 						computed:         true
 						sensitive:        true
 					}
 				}
-				block_types: input: {
-					nesting_mode: "list"
-					block: {
-						attributes: {
-							enabled: {
-								type:             "bool"
-								description:      "Enable the input."
-								description_kind: "plain"
-								optional:         true
-								computed:         true
-							}
-							input_id: {
-								type:             "string"
-								description:      "The identifier of the input."
-								description_kind: "plain"
-								required:         true
-							}
-							streams_json: {
-								type:             "string"
-								description:      "Input streams as JSON."
-								description_kind: "plain"
-								optional:         true
-								computed:         true
-								sensitive:        true
-							}
-							vars_json: {
-								type:             "string"
-								description:      "Input variables as JSON."
-								description_kind: "plain"
-								optional:         true
-								computed:         true
-								sensitive:        true
-							}
-						}
-						description:      "Integration inputs."
-						description_kind: "plain"
-					}
-				}
 				description: """
 					Creates or updates a Fleet Integration Policy.
-
-					It is highly recommended that all inputs and streams are provided in the
-					Terraform plan, even if some are disabled. Otherwise, differences may appear
-					between what is in the plan versus what is returned by the Fleet API.
 
 					The [Kibana Fleet UI](https://www.elastic.co/guide/en/fleet/current/add-integration-to-policy.html)
 					can be used as a reference for what data needs to be provided. Instead of saving
@@ -7370,8 +7663,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			block: {
 				attributes: {
 					config: {
-						type:             "string"
-						description:      "The configuration for the connector. Configuration properties vary depending on the connector type."
+						type: "string"
+						description: """
+									The configuration for the connector. Configuration properties vary depending on the connector type.
+
+									The provider injects the '__tf_provider_context' property into this JSON object. In most cases this field will be ignored when computing the difference between the current and desired state. In some cases however, this property may be shown in the Terraform plan. Any changes to the '__tf_provider_context' property can be safely ignored. This property is used internally by the provider, and you should not set this property within your Terraform configuration.
+									"""
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -7445,6 +7742,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							ca_certs: {
 								type: ["list", "string"]
 								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
@@ -7487,104 +7791,108 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			}
 		}
 		elasticstack_kibana_alerting_rule: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					alert_delay: {
 						type:             "number"
 						description:      "A number that indicates how many consecutive runs need to meet the rule conditions for an alert to occur."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					consumer: {
 						type:             "string"
 						description:      "The name of the application or feature that owns the rule."
-						description_kind: "markdown"
+						description_kind: "plain"
 						required:         true
 					}
 					enabled: {
 						type:             "bool"
 						description:      "Indicates if you want to run the rule on an interval basis."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					id: {
 						type:             "string"
-						description_kind: "plain"
-						optional:         true
+						description:      "Generated ID for the alerting rule."
+						description_kind: "markdown"
 						computed:         true
 					}
 					interval: {
 						type:             "string"
 						description:      "The check interval, which specifies how frequently the rule conditions are checked. The interval must be specified in seconds, minutes, hours or days."
-						description_kind: "markdown"
+						description_kind: "plain"
 						required:         true
 					}
 					last_execution_date: {
 						type:             "string"
 						description:      "Date of the last execution of this rule."
-						description_kind: "markdown"
+						description_kind: "plain"
 						computed:         true
 					}
 					last_execution_status: {
 						type:             "string"
 						description:      "Status of the last execution of this rule."
-						description_kind: "markdown"
+						description_kind: "plain"
 						computed:         true
 					}
 					name: {
 						type:             "string"
 						description:      "The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule."
-						description_kind: "markdown"
+						description_kind: "plain"
 						required:         true
 					}
 					notify_when: {
 						type:             "string"
 						description:      "Required until v8.6.0. Deprecated in v8.13.0. Use the `notify_when` property in the action `frequency` object instead. Defines how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: This is a rule level property; if you update the rule in Kibana, it is automatically changed to use action-specific `notify_when` values."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					params: {
 						type:             "string"
 						description:      "The rule parameters, which differ for each rule type."
-						description_kind: "markdown"
+						description_kind: "plain"
 						required:         true
 					}
 					rule_id: {
 						type:             "string"
 						description:      "The identifier for the rule. Until Kibana version 8.17.0 this should be a UUID v1 or v4, for later versions any format can be used. If it is omitted, an ID is randomly generated."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
 						computed:         true
 					}
 					rule_type_id: {
 						type:             "string"
 						description:      "The ID of the rule type that you want to call when the rule is scheduled to run. For more information about the valid values, list the rule types using [Get rule types API](https://www.elastic.co/guide/en/kibana/master/list-rule-types-api.html) or refer to the [Rule types documentation](https://www.elastic.co/guide/en/kibana/master/rule-types.html)."
-						description_kind: "markdown"
+						description_kind: "plain"
 						required:         true
 					}
 					scheduled_task_id: {
 						type:             "string"
 						description:      "ID of the scheduled task that will execute the alert."
-						description_kind: "markdown"
+						description_kind: "plain"
 						computed:         true
 					}
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					tags: {
-						type: ["list", "string"]
+						type: ["set", "string"]
 						description:      "A list of tag names that are applied to the rule."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
 					}
 					throttle: {
 						type:             "string"
 						description:      "Deprecated in 8.13.0. Defines how often an alert generates repeated actions. This custom action interval must be specified in seconds, minutes, hours, or days. For example, 10m or 1h. This property is applicable only if `notify_when` is `onThrottleInterval`. NOTE: This is a rule level property; if you update the rule in Kibana, it is automatically changed to use action-specific `throttle` values."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
 					}
 				}
@@ -7595,102 +7903,102 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							group: {
 								type:             "string"
 								description:      "The group name, which affects when the action runs (for example, when the threshold is met or when the alert is recovered). Each rule type has a list of valid action group names."
-								description_kind: "markdown"
+								description_kind: "plain"
 								optional:         true
+								computed:         true
 							}
 							id: {
 								type:             "string"
 								description:      "The identifier for the connector saved object."
-								description_kind: "markdown"
+								description_kind: "plain"
 								required:         true
 							}
 							params: {
 								type:             "string"
 								description:      "The parameters for the action, which are sent to the connector."
-								description_kind: "markdown"
+								description_kind: "plain"
 								required:         true
 							}
 						}
 						block_types: {
 							alerts_filter: {
-								nesting_mode: "list"
+								nesting_mode: "single"
 								block: {
 									attributes: kql: {
 										type:             "string"
 										description:      "Defines a query filter that determines whether the action runs. Written in Kibana Query Language (KQL)."
-										description_kind: "markdown"
+										description_kind: "plain"
 										optional:         true
 									}
 									block_types: timeframe: {
-										nesting_mode: "list"
+										nesting_mode: "single"
 										block: {
 											attributes: {
 												days: {
 													type: ["list", "number"]
 													description:      "Defines the days of the week that the action can run, represented as an array of numbers. For example, 1 represents Monday. An empty array is equivalent to specifying all the days of the week."
-													description_kind: "markdown"
-													required:         true
+													description_kind: "plain"
+													optional:         true
 												}
 												hours_end: {
 													type:             "string"
 													description:      "Defines the range of time in a day that the action can run. The end of the time frame in 24-hour notation (hh:mm)."
-													description_kind: "markdown"
-													required:         true
+													description_kind: "plain"
+													optional:         true
 												}
 												hours_start: {
 													type:             "string"
 													description:      "Defines the range of time in a day that the action can run. The start of the time frame in 24-hour notation (hh:mm)."
-													description_kind: "markdown"
-													required:         true
+													description_kind: "plain"
+													optional:         true
 												}
 												timezone: {
 													type:             "string"
 													description:      "The ISO time zone for the hours values. Values such as UTC and UTC+1 also work but lack built-in daylight savings time support and are not recommended."
-													description_kind: "markdown"
-													required:         true
+													description_kind: "plain"
+													optional:         true
 												}
 											}
 											description:      "Defines a period that limits whether the action runs."
-											description_kind: "markdown"
+											description_kind: "plain"
 										}
-										max_items: 1
 									}
 									description:      "Conditions that affect whether the action runs. If you specify multiple conditions, all conditions must be met for the action to run. For example, if an alert occurs within the specified time frame and matches the query, the action runs."
-									description_kind: "markdown"
+									description_kind: "plain"
 								}
-								max_items: 1
 							}
 							frequency: {
-								nesting_mode: "list"
+								nesting_mode: "single"
 								block: {
 									attributes: {
 										notify_when: {
 											type:             "string"
-											description:      "Defines how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: This is a rule level property; if you update the rule in Kibana, it is automatically changed to use action-specific `notify_when` values."
-											description_kind: "markdown"
-											required:         true
+											description:      "Defines how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met."
+											description_kind: "plain"
+											optional:         true
+											computed:         true
 										}
 										summary: {
 											type:             "bool"
 											description:      "Indicates whether the action is a summary."
-											description_kind: "markdown"
-											required:         true
+											description_kind: "plain"
+											optional:         true
+											computed:         true
 										}
 										throttle: {
 											type:             "string"
-											description:      "Defines how often an alert generates repeated actions. This custom action interval must be specified in seconds, minutes, hours, or days. For example, 10m or 1h. This property is applicable only if `notify_when` is `onThrottleInterval`. NOTE: This is a rule level property; if you update the rule in Kibana, it is automatically changed to use action-specific `throttle` values."
-											description_kind: "markdown"
+											description:      "Defines how often an alert generates repeated actions. This custom action interval must be specified in seconds, minutes, hours, or days. For example, 10m or 1h. This property is applicable only if `notify_when` is `onThrottleInterval`."
+											description_kind: "plain"
 											optional:         true
 										}
 									}
 									description:      "The properties that affect how often actions are generated. If the rule type supports setting summary to true, the action can be a summary of alerts at the specified notification interval. Otherwise, an action runs for each alert at the specified notification interval. NOTE: You cannot specify these parameters when `notify_when` or `throttle` are defined at the rule level."
-									description_kind: "markdown"
+									description_kind: "plain"
 								}
-								max_items: 1
 							}
 						}
 						description:      "An action that runs under defined conditions."
-						description_kind: "markdown"
+						description_kind: "plain"
 					}
 				}
 				description: """
@@ -7701,6 +8009,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					```
 					Could not create API key - Unsupported scheme "ApiKey" for granting API Key
 					```
+
 					"""
 				description_kind: "markdown"
 			}
@@ -10063,57 +10372,58 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			}
 		}
 		elasticstack_kibana_slo: {
-			version: 1
+			version: 2
 			block: {
 				attributes: {
 					budgeting_method: {
 						type:             "string"
 						description:      "An `occurrences` budgeting method uses the number of good and total events during the time window. A `timeslices` budgeting method uses the number of good slices and total slices during the time window. A slice is an arbitrary time window (smaller than the overall SLO time window) that is either considered good or bad, calculated from the timeslice threshold and the ratio of good over total events that happened during the slice window. A budgeting method is required and must be either occurrences or timeslices."
-						description_kind: "markdown"
+						description_kind: "plain"
 						required:         true
 					}
 					description: {
 						type:             "string"
 						description:      "A description for the SLO."
-						description_kind: "markdown"
+						description_kind: "plain"
 						required:         true
 					}
 					group_by: {
 						type: ["list", "string"]
 						description:      "Optional group by fields to use to generate an SLO per distinct value."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
 						computed:         true
 					}
 					id: {
 						type:             "string"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
-						optional:         true
 						computed:         true
 					}
 					name: {
 						type:             "string"
 						description:      "The name of the SLO."
-						description_kind: "markdown"
+						description_kind: "plain"
 						required:         true
 					}
 					slo_id: {
 						type:             "string"
 						description:      "An ID (8 to 48 characters) that contains only letters, numbers, hyphens, and underscores. If omitted, a UUIDv1 will be generated server-side."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
 						computed:         true
 					}
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags for the SLO."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
 					}
 				}
@@ -10155,7 +10465,6 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							description_kind: "plain"
 						}
-						max_items: 1
 					}
 					apm_latency_indicator: {
 						nesting_mode: "list"
@@ -10199,7 +10508,6 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							description_kind: "plain"
 						}
-						max_items: 1
 					}
 					histogram_custom_indicator: {
 						nesting_mode: "list"
@@ -10208,7 +10516,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								data_view_id: {
 									type:             "string"
 									description:      "Optional data view id to use for this indicator."
-									description_kind: "markdown"
+									description_kind: "plain"
 									optional:         true
 								}
 								filter: {
@@ -10225,6 +10533,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									type:             "string"
 									description_kind: "plain"
 									optional:         true
+									computed:         true
 								}
 							}
 							block_types: {
@@ -10260,8 +10569,6 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										description_kind: "plain"
 									}
-									min_items: 1
-									max_items: 1
 								}
 								total: {
 									nesting_mode: "list"
@@ -10295,13 +10602,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										description_kind: "plain"
 									}
-									min_items: 1
-									max_items: 1
 								}
 							}
 							description_kind: "plain"
 						}
-						max_items: 1
 					}
 					kql_custom_indicator: {
 						nesting_mode: "list"
@@ -10310,7 +10614,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								data_view_id: {
 									type:             "string"
 									description:      "Optional data view id to use for this indicator."
-									description_kind: "markdown"
+									description_kind: "plain"
 									optional:         true
 								}
 								filter: {
@@ -10322,6 +10626,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									type:             "string"
 									description_kind: "plain"
 									optional:         true
+									computed:         true
 								}
 								index: {
 									type:             "string"
@@ -10332,16 +10637,17 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									type:             "string"
 									description_kind: "plain"
 									optional:         true
+									computed:         true
 								}
 								total: {
 									type:             "string"
 									description_kind: "plain"
 									optional:         true
+									computed:         true
 								}
 							}
 							description_kind: "plain"
 						}
-						max_items: 1
 					}
 					metric_custom_indicator: {
 						nesting_mode: "list"
@@ -10350,7 +10656,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								data_view_id: {
 									type:             "string"
 									description:      "Optional data view id to use for this indicator."
-									description_kind: "markdown"
+									description_kind: "plain"
 									optional:         true
 								}
 								filter: {
@@ -10367,6 +10673,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									type:             "string"
 									description_kind: "plain"
 									optional:         true
+									computed:         true
 								}
 							}
 							block_types: {
@@ -10405,12 +10712,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												}
 												description_kind: "plain"
 											}
-											min_items: 1
 										}
 										description_kind: "plain"
 									}
-									min_items: 1
-									max_items: 1
 								}
 								total: {
 									nesting_mode: "list"
@@ -10447,17 +10751,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												}
 												description_kind: "plain"
 											}
-											min_items: 1
 										}
 										description_kind: "plain"
 									}
-									min_items: 1
-									max_items: 1
 								}
 							}
 							description_kind: "plain"
 						}
-						max_items: 1
 					}
 					objective: {
 						nesting_mode: "list"
@@ -10480,13 +10780,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 							}
 							description:      "The target objective is the value the SLO needs to meet during the time window. If a timeslices budgeting method is used, we also need to define the timesliceTarget which can be different than the overall SLO target."
-							description_kind: "markdown"
+							description_kind: "plain"
 						}
-						min_items: 1
-						max_items: 1
 					}
 					settings: {
-						nesting_mode: "list"
+						nesting_mode: "single"
 						block: {
 							attributes: {
 								frequency: {
@@ -10498,8 +10796,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								prevent_initial_backfill: {
 									type:             "bool"
 									description:      "Prevents the underlying ES transform from attempting to backfill data on start, which can sometimes be resource-intensive or time-consuming and unnecessary"
-									description_kind: "markdown"
+									description_kind: "plain"
 									optional:         true
+									computed:         true
 								}
 								sync_delay: {
 									type:             "string"
@@ -10509,9 +10808,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 							}
 							description:      "The default settings should be sufficient for most users, but if needed, these properties can be overwritten."
-							description_kind: "markdown"
+							description_kind: "plain"
 						}
-						max_items: 1
 					}
 					time_window: {
 						nesting_mode: "list"
@@ -10529,10 +10827,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 							}
 							description:      "Currently support `calendarAligned` and `rolling` time windows. Any duration greater than 1 day can be used: days, weeks, months, quarters, years. Rolling time window requires a duration, e.g. `1w` for one week, and type: `rolling`. SLOs defined with such time window, will only consider the SLI data from the last duration period as a moving window. Calendar aligned time window requires a duration, limited to `1M` for monthly or `1w` for weekly, and type: `calendarAligned`."
-							description_kind: "markdown"
+							description_kind: "plain"
 						}
-						min_items: 1
-						max_items: 1
 					}
 					timeslice_metric_indicator: {
 						nesting_mode: "list"
@@ -10541,7 +10837,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								data_view_id: {
 									type:             "string"
 									description:      "Optional data view id to use for this indicator."
-									description_kind: "markdown"
+									description_kind: "plain"
 									optional:         true
 								}
 								filter: {
@@ -10587,50 +10883,51 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												aggregation: {
 													type:             "string"
 													description:      "The aggregation type for this metric. One of: sum, avg, min, max, value_count, percentile, doc_count. Determines which other fields are required:"
-													description_kind: "markdown"
+													description_kind: "plain"
 													required:         true
 												}
 												field: {
 													type:             "string"
 													description:      "Field to aggregate. Required for aggregations: sum, avg, min, max, value_count, percentile. Must NOT be set for doc_count."
-													description_kind: "markdown"
+													description_kind: "plain"
 													optional:         true
 												}
 												filter: {
 													type:             "string"
 													description:      "Optional KQL filter for this metric. Supported for all aggregations except doc_count."
-													description_kind: "markdown"
+													description_kind: "plain"
 													optional:         true
 												}
 												name: {
 													type:             "string"
 													description:      "The unique name for this metric. Used as a variable in the equation field."
-													description_kind: "markdown"
+													description_kind: "plain"
 													required:         true
 												}
 												percentile: {
 													type:             "number"
 													description:      "Percentile value (e.g., 99). Required if aggregation is 'percentile'. Must NOT be set for other aggregations."
-													description_kind: "markdown"
+													description_kind: "plain"
 													optional:         true
 												}
 											}
 											description_kind: "plain"
 										}
-										min_items: 1
 									}
 									description_kind: "plain"
 								}
-								min_items: 1
-								max_items: 1
 							}
 							description:      "Defines a timeslice metric indicator for SLO."
-							description_kind: "markdown"
+							description_kind: "plain"
 						}
-						max_items: 1
 					}
 				}
-				description:      "Creates or updates a Kibana SLO. See the [Kibana SLO docs](https://www.elastic.co/guide/en/observability/current/slo.html) and [dev docs](https://github.com/elastic/kibana/blob/main/x-pack/plugins/observability/dev_docs/slo.md) for more information."
+				description: """
+					Creates or updates a Kibana SLO.
+
+					See the Kibana [SLO docs](https://www.elastic.co/guide/en/observability/current/slo.html).
+
+					"""
 				description_kind: "markdown"
 			}
 		}
