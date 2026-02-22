@@ -16,6 +16,12 @@ package data
 		// A description of the instance.
 		description?: string
 
+		// The desired_replica_state field controls the state of a
+		// replica. Terraform will attempt to make the actual state of
+		// the replica match the desired state. Default value: "READY"
+		// Possible values: ["PAUSED", "READY"]
+		desired_replica_state?: string
+
 		// Directory Services configuration.
 		// Should only be set if protocol is "NFS_V4_1".
 		directory_services?: [...close({
@@ -62,6 +68,7 @@ package data
 			})]
 			source_backup?: string
 		})]
+		id?: string
 
 		// Replication configuration, once set, this cannot be updated.
 		// Additionally this should be specified on the replica instance
@@ -72,7 +79,6 @@ package data
 			})]
 			role?: string
 		})]
-		id?: string
 
 		// KMS key name used for data encryption.
 		kms_key_name?: string
@@ -117,6 +123,7 @@ package data
 				max_iops_per_tb?: number
 			})]
 		})]
+		project?: string
 
 		// Either NFSv3, for using NFS version 3 as file sharing protocol,
 		// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
@@ -136,7 +143,6 @@ package data
 		// will trigger recreation. To apply tags to an existing
 		// resource, see the 'google_tags_tag_value' resource.
 		tags?: [string]: string
-		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

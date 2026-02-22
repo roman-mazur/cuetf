@@ -9,6 +9,8 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_access_approval_project_service_account": data.#google_access_approval_project_service_account
 	_#ds: "\(#googlePrefix)_access_context_manager_access_policy": data.#google_access_context_manager_access_policy
 	_#ds: "\(#googlePrefix)_access_context_manager_access_policy_iam_policy": data.#google_access_context_manager_access_policy_iam_policy
+	_#ds: "\(#googlePrefix)_access_context_manager_supported_service": data.#google_access_context_manager_supported_service
+	_#ds: "\(#googlePrefix)_access_context_manager_supported_services": data.#google_access_context_manager_supported_services
 	_#ds: "\(#googlePrefix)_active_folder": data.#google_active_folder
 	_#ds: "\(#googlePrefix)_alloydb_cluster": data.#google_alloydb_cluster
 	_#ds: "\(#googlePrefix)_alloydb_instance": data.#google_alloydb_instance
@@ -45,6 +47,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_backup_dr_data_source": data.#google_backup_dr_data_source
 	_#ds: "\(#googlePrefix)_backup_dr_data_source_reference": data.#google_backup_dr_data_source_reference
 	_#ds: "\(#googlePrefix)_backup_dr_data_source_references": data.#google_backup_dr_data_source_references
+	_#ds: "\(#googlePrefix)_backup_dr_data_sources": data.#google_backup_dr_data_sources
 	_#ds: "\(#googlePrefix)_backup_dr_management_server": data.#google_backup_dr_management_server
 	_#ds: "\(#googlePrefix)_beyondcorp_app_connection": data.#google_beyondcorp_app_connection
 	_#ds: "\(#googlePrefix)_beyondcorp_app_connector": data.#google_beyondcorp_app_connector
@@ -53,6 +56,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_beyondcorp_security_gateway": data.#google_beyondcorp_security_gateway
 	_#ds: "\(#googlePrefix)_beyondcorp_security_gateway_iam_policy": data.#google_beyondcorp_security_gateway_iam_policy
 	_#ds: "\(#googlePrefix)_biglake_iceberg_catalog_iam_policy": data.#google_biglake_iceberg_catalog_iam_policy
+	_#ds: "\(#googlePrefix)_biglake_iceberg_namespace_iam_policy": data.#google_biglake_iceberg_namespace_iam_policy
 	_#ds: "\(#googlePrefix)_bigquery_analytics_hub_data_exchange_iam_policy": data.#google_bigquery_analytics_hub_data_exchange_iam_policy
 	_#ds: "\(#googlePrefix)_bigquery_analytics_hub_listing_iam_policy": data.#google_bigquery_analytics_hub_listing_iam_policy
 	_#ds: "\(#googlePrefix)_bigquery_connection_iam_policy": data.#google_bigquery_connection_iam_policy
@@ -268,6 +272,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_kms_key_ring": data.#google_kms_key_ring
 	_#ds: "\(#googlePrefix)_kms_key_ring_iam_policy": data.#google_kms_key_ring_iam_policy
 	_#ds: "\(#googlePrefix)_kms_key_rings": data.#google_kms_key_rings
+	_#ds: "\(#googlePrefix)_kms_secret_asymmetric": data.#google_kms_secret_asymmetric
 	_#ds: "\(#googlePrefix)_kms_secret_ciphertext": data.#google_kms_secret_ciphertext
 	_#ds: "\(#googlePrefix)_kms_secret": data.#google_kms_secret
 	_#ds: "\(#googlePrefix)_logging_folder_settings": data.#google_logging_folder_settings
@@ -373,6 +378,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_storage_bucket": data.#google_storage_bucket
 	_#ds: "\(#googlePrefix)_storage_bucket_iam_policy": data.#google_storage_bucket_iam_policy
 	_#ds: "\(#googlePrefix)_storage_bucket_object_content": data.#google_storage_bucket_object_content
+	_#ds: "\(#googlePrefix)_storage_bucket_object_contents": data.#google_storage_bucket_object_contents
 	_#ds: "\(#googlePrefix)_storage_bucket_object": data.#google_storage_bucket_object
 	_#ds: "\(#googlePrefix)_storage_bucket_objects": data.#google_storage_bucket_objects
 	_#ds: "\(#googlePrefix)_storage_buckets": data.#google_storage_buckets

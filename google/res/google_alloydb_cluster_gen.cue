@@ -229,6 +229,15 @@ import "list"
 		// The initial password for the user.
 		password?: string
 
+		// The initial password for the user.
+		password_wo?: string
+
+		// Triggers update of 'password_wo' write-only. Increment this
+		// value when an update to 'password_wo' is needed. For more info
+		// see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		password_wo_version?: string
+
 		// The database username.
 		user?: string
 	})

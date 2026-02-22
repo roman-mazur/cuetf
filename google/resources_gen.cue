@@ -114,6 +114,10 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_biglake_iceberg_catalog_iam_binding": res.#google_biglake_iceberg_catalog_iam_binding
 	_#res: "\(#googlePrefix)_biglake_iceberg_catalog_iam_member": res.#google_biglake_iceberg_catalog_iam_member
 	_#res: "\(#googlePrefix)_biglake_iceberg_catalog_iam_policy": res.#google_biglake_iceberg_catalog_iam_policy
+	_#res: "\(#googlePrefix)_biglake_iceberg_namespace": res.#google_biglake_iceberg_namespace
+	_#res: "\(#googlePrefix)_biglake_iceberg_namespace_iam_binding": res.#google_biglake_iceberg_namespace_iam_binding
+	_#res: "\(#googlePrefix)_biglake_iceberg_namespace_iam_member": res.#google_biglake_iceberg_namespace_iam_member
+	_#res: "\(#googlePrefix)_biglake_iceberg_namespace_iam_policy": res.#google_biglake_iceberg_namespace_iam_policy
 	_#res: "\(#googlePrefix)_biglake_table": res.#google_biglake_table
 	_#res: "\(#googlePrefix)_bigquery_analytics_hub_data_exchange": res.#google_bigquery_analytics_hub_data_exchange
 	_#res: "\(#googlePrefix)_bigquery_analytics_hub_data_exchange_iam_binding": res.#google_bigquery_analytics_hub_data_exchange_iam_binding
@@ -947,6 +951,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_oracle_database_cloud_exadata_infrastructure": res.#google_oracle_database_cloud_exadata_infrastructure
 	_#res: "\(#googlePrefix)_oracle_database_cloud_vm_cluster": res.#google_oracle_database_cloud_vm_cluster
 	_#res: "\(#googlePrefix)_oracle_database_db_system": res.#google_oracle_database_db_system
+	_#res: "\(#googlePrefix)_oracle_database_exadb_vm_cluster": res.#google_oracle_database_exadb_vm_cluster
 	_#res: "\(#googlePrefix)_oracle_database_exascale_db_storage_vault": res.#google_oracle_database_exascale_db_storage_vault
 	_#res: "\(#googlePrefix)_oracle_database_odb_network": res.#google_oracle_database_odb_network
 	_#res: "\(#googlePrefix)_oracle_database_odb_subnet": res.#google_oracle_database_odb_subnet

@@ -56,12 +56,13 @@ import "list"
 		name?: string
 		connection_config!: matchN(1, [#connection_config, list.MaxItems(1) & [_, ...] & [...#connection_config]])
 		timeouts?: #timeouts
-		project?:  string
+		ull_multicast_domain?: matchN(1, [#ull_multicast_domain, list.MaxItems(1) & [...#ull_multicast_domain]])
 
 		// The multicast resource's state.
 		state?: [...close({
 			state?: string
 		})]
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -99,5 +100,10 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	#ull_multicast_domain: close({
+		// The preconfigured Ultra-Low-Latency domain name.
+		preconfigured_ull_domain?: string
 	})
 }

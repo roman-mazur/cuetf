@@ -8,6 +8,12 @@ import "list"
 	close({
 		// A human-readable description of the rule.
 		description?: string
+
+		// Indicates whether or not this packet mirroring takes effect. If
+		// set to FALSE, this packet mirroring
+		// policy will not be enforced on the network. The default is
+		// TRUE. Possible values: ["TRUE", "FALSE"]
+		enable?: string
 		collector_ilb!: matchN(1, [#collector_ilb, list.MaxItems(1) & [_, ...] & [...#collector_ilb]])
 
 		// The name of the packet mirroring rule
@@ -21,12 +27,12 @@ import "list"
 		filter?: matchN(1, [#filter, list.MaxItems(1) & [...#filter]])
 		mirrored_resources!: matchN(1, [#mirrored_resources, list.MaxItems(1) & [_, ...] & [...#mirrored_resources]])
 		network!: matchN(1, [#network, list.MaxItems(1) & [_, ...] & [...#network]])
+		project?:  string
+		timeouts?: #timeouts
 
 		// The Region in which the created address should reside.
 		// If it is not provided, the provider region is used.
-		region?:   string
-		project?:  string
-		timeouts?: #timeouts
+		region?: string
 	})
 
 	#collector_ilb: close({

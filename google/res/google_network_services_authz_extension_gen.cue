@@ -47,12 +47,14 @@ package res
 		// labels present on the resource.
 		labels?: [string]: string
 
-		// All backend services and forwarding rules referenced by this
-		// extension must share the same load balancing scheme.
-		// For more information, refer to [Backend services
+		// Required when the service points to a backend service. All
+		// backend services and forwarding rules referenced by
+		// this extension must share the same load balancing scheme. For
+		// more information, refer to
+		// [Backend services
 		// overview](https://cloud.google.com/load-balancing/docs/backend-service).
 		// Possible values: ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
-		load_balancing_scheme!: string
+		load_balancing_scheme?: string
 
 		// The location of the resource.
 		location!: string
@@ -73,14 +75,18 @@ package res
 		name!:     string
 		timeouts?: #timeouts
 
-		// The reference to the service that runs the extension.
-		// To configure a callout extension, service must be a
-		// fully-qualified reference to a [backend
-		// service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices)
-		// in the format:
-		// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}
+		// The service that runs the extension.
+		// The following values and formats are accepted:
+		// * 'iap.googleapis.com' when the policyProfile is set to
+		// REQUEST_AUTHZ
+		// * 'modelarmor.{{region}}.rep.googleapis.com' when the
+		// policyProfile is set to CONTENT_AUTHZ
+		// * A fully qualified domain name that can be resolved by the
+		// dataplane
+		// * Backend service resource URI of the form
+		// 'https://www.googleapis.com/compute/v1/projects/{{project}}/regions/{{region}}/backendServices/{{name}}'
 		// or
-		// https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
+		// 'https://www.googleapis.com/compute/v1/projects/{{project}}/global/backendServices/{{name}}}}'
 		service!: string
 
 		// The combination of labels configured directly on the resource
@@ -95,9 +101,13 @@ package res
 		// The timestamp when the resource was updated.
 		update_time?: string
 
-		// Specifies the communication protocol used by the callout
-		// extension
-		// to communicate with its backend service.
+		// The format of communication supported by the callout extension.
+		// Applicable only when the policyProfile is REQUEST_AUTHZ.
+		// This field is supported only for regional AuthzExtension
+		// resources. If not specified, the default value
+		// EXT_PROC_GRPC is used. Global AuthzExtension resources use the
+		// EXT_PROC_GRPC wire format.
+		//
 		// Supported values:
 		// - WIRE_FORMAT_UNSPECIFIED:
 		// No wire format is explicitly specified. The backend

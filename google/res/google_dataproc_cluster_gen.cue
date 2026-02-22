@@ -363,12 +363,13 @@ import "list"
 		// If not specified, GCP will default to a predetermined computed
 		// value for each zone.
 		min_cpu_platform?: string
-		accelerators?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config/$defs/accelerators", [..._#defs."/$defs/cluster_config/$defs/master_config/$defs/accelerators"]])
-		disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/master_config/$defs/disk_config"]])
 
 		// Specifies the number of master nodes to create. If not
 		// specified, GCP will default to a predetermined computed value.
 		num_instances?: number
+		accelerators?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config/$defs/accelerators", [..._#defs."/$defs/cluster_config/$defs/master_config/$defs/accelerators"]])
+		disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/master_config/$defs/disk_config"]])
+		instance_flexibility_policy?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy"]])
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/master_config/$defs/accelerators": close({
@@ -402,6 +403,28 @@ import "list"
 		// The amount of local SSD disks that will be attached to each
 		// master cluster node. Defaults to 0.
 		num_local_ssds?: number
+	})
+
+	_#defs: "/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy": close({
+		instance_selection_list?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list", [..._#defs."/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list"]])
+
+		// A list of instance selection results in the group.
+		instance_selection_results?: [...close({
+			machine_type?: string
+			vm_count?:     number
+		})]
+	})
+
+	_#defs: "/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list": close({
+		// Full machine-type names, e.g. "n1-standard-16".
+		machine_types?: [...string]
+
+		// Preference of this instance selection. Lower number means
+		// higher preference. Dataproc will first try to create a VM
+		// based on the machine-type with priority rank and fallback to
+		// next rank based on availability. Machine types and instance
+		// selections with the same priority have the same preference.
+		rank?: number
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/metastore_config": close({
@@ -590,13 +613,14 @@ import "list"
 		// The name of a Google Compute Engine machine type to create for
 		// the master/worker
 		machine_type?: string
-		accelerators?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config/$defs/accelerators", [..._#defs."/$defs/cluster_config/$defs/worker_config/$defs/accelerators"]])
 
 		// The name of a minimum generation of CPU family for the
 		// master/worker. If not specified, GCP will default to a
 		// predetermined computed value for each zone.
 		min_cpu_platform?: string
+		accelerators?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config/$defs/accelerators", [..._#defs."/$defs/cluster_config/$defs/worker_config/$defs/accelerators"]])
 		disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/worker_config/$defs/disk_config"]])
+		instance_flexibility_policy?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy"]])
 
 		// The minimum number of primary worker instances to create.
 		min_num_instances?: number
@@ -637,6 +661,28 @@ import "list"
 		// The amount of local SSD disks that will be attached to each
 		// master cluster node. Defaults to 0.
 		num_local_ssds?: number
+	})
+
+	_#defs: "/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy": close({
+		instance_selection_list?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list", [..._#defs."/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list"]])
+
+		// A list of instance selection results in the group.
+		instance_selection_results?: [...close({
+			machine_type?: string
+			vm_count?:     number
+		})]
+	})
+
+	_#defs: "/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list": close({
+		// Full machine-type names, e.g. "n1-standard-16".
+		machine_types?: [...string]
+
+		// Preference of this instance selection. Lower number means
+		// higher preference. Dataproc will first try to create a VM
+		// based on the machine-type with priority rank and fallback to
+		// next rank based on availability. Machine types and instance
+		// selections with the same priority have the same preference.
+		rank?: number
 	})
 
 	_#defs: "/$defs/virtual_cluster_config/$defs/auxiliary_services_config": close({

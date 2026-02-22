@@ -149,8 +149,10 @@ package data
 		// will need to create additional users or set the password in
 		// order to log in.
 		initial_user?: [...close({
-			password?: string
-			user?:     string
+			password?:            string
+			password_wo?:         string
+			password_wo_version?: string
+			user?:                string
 		})]
 		id?: string
 

@@ -53,6 +53,9 @@ package data
 					enabled?: bool
 				})]
 			})]
+			slice_controller_config?: [...close({
+				enabled?: bool
+			})]
 			stateful_ha_config?: [...close({
 				enabled?: bool
 			})]
@@ -316,6 +319,7 @@ package data
 		ip_allocation_policy?: [...close({
 			additional_ip_ranges_config?: [...close({
 				pod_ipv4_range_names?: [...string]
+				status?:     string
 				subnetwork?: string
 			})]
 			additional_pod_ranges_config?: [...close({
