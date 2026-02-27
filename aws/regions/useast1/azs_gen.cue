@@ -10,7 +10,13 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "us-east-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "US East (N. Virginia) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United States of America"
+	}]
+	SubGeography: [{
+		Name: "Virginia"
+	}]
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -21,7 +27,13 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "us-east-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "US East (N. Virginia) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United States of America"
+	}]
+	SubGeography: [{
+		Name: "Virginia"
+	}]
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -32,7 +44,13 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "us-east-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "US East (N. Virginia) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United States of America"
+	}]
+	SubGeography: [{
+		Name: "Virginia"
+	}]
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -43,7 +61,13 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "us-east-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "US East (N. Virginia) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United States of America"
+	}]
+	SubGeography: [{
+		Name: "Virginia"
+	}]
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -54,7 +78,13 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "us-east-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "US East (N. Virginia) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United States of America"
+	}]
+	SubGeography: [{
+		Name: "Virginia"
+	}]
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -65,5 +95,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "us-east-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "US East (N. Virginia) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United States of America"
+	}]
+	SubGeography: [{
+		Name: "Virginia"
+	}]
+	State: "available"
 }]

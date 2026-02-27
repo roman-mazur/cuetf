@@ -10,7 +10,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "ap-southeast-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Asia Pacific (Singapore) 1"
-	State:              "available"
+	Geography: [{
+		Name: "Singapore"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -21,7 +25,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "ap-southeast-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Asia Pacific (Singapore) 1"
-	State:              "available"
+	Geography: [{
+		Name: "Singapore"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -32,5 +40,9 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "ap-southeast-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Asia Pacific (Singapore) 1"
-	State:              "available"
+	Geography: [{
+		Name: "Singapore"
+	}]
+	SubGeography: []
+	State: "available"
 }]

@@ -10,7 +10,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "ap-south-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Asia Pacific (Mumbai) 1"
-	State:              "available"
+	Geography: [{
+		Name: "India"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -21,7 +25,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "ap-south-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Asia Pacific (Mumbai) 1"
-	State:              "available"
+	Geography: [{
+		Name: "India"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -32,5 +40,9 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "ap-south-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Asia Pacific (Mumbai) 1"
-	State:              "available"
+	Geography: [{
+		Name: "India"
+	}]
+	SubGeography: []
+	State: "available"
 }]

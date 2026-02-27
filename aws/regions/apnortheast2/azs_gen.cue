@@ -10,7 +10,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "ap-northeast-2"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Asia Pacific (Seoul) 1"
-	State:              "available"
+	Geography: [{
+		Name: "South Korea"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -21,7 +25,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "ap-northeast-2"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Asia Pacific (Seoul) 1"
-	State:              "available"
+	Geography: [{
+		Name: "South Korea"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -32,7 +40,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "ap-northeast-2"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Asia Pacific (Seoul) 1"
-	State:              "available"
+	Geography: [{
+		Name: "South Korea"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -43,5 +55,9 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "ap-northeast-2"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Asia Pacific (Seoul) 1"
-	State:              "available"
+	Geography: [{
+		Name: "South Korea"
+	}]
+	SubGeography: []
+	State: "available"
 }]

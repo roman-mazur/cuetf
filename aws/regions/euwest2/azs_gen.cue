@@ -10,7 +10,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "eu-west-2"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Europe (London) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United Kingdom"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -21,7 +25,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "eu-west-2"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Europe (London) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United Kingdom"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -32,5 +40,9 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "eu-west-2"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Europe (London) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United Kingdom"
+	}]
+	SubGeography: []
+	State: "available"
 }]

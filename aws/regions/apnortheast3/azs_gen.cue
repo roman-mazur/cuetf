@@ -10,7 +10,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "ap-northeast-3"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Asia Pacific (Osaka) 1"
-	State:              "available"
+	Geography: [{
+		Name: "Japan"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -21,7 +25,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "ap-northeast-3"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Asia Pacific (Osaka) 1"
-	State:              "available"
+	Geography: [{
+		Name: "Japan"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -32,5 +40,9 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "ap-northeast-3"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Asia Pacific (Osaka) 1"
-	State:              "available"
+	Geography: [{
+		Name: "Japan"
+	}]
+	SubGeography: []
+	State: "available"
 }]

@@ -10,7 +10,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "eu-north-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Europe (Stockholm) 1"
-	State:              "available"
+	Geography: [{
+		Name: "Sweden"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -21,7 +25,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "eu-north-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Europe (Stockholm) 1"
-	State:              "available"
+	Geography: [{
+		Name: "Sweden"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -32,5 +40,9 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "eu-north-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Europe (Stockholm) 1"
-	State:              "available"
+	Geography: [{
+		Name: "Sweden"
+	}]
+	SubGeography: []
+	State: "available"
 }]

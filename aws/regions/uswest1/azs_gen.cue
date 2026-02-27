@@ -10,7 +10,13 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "us-west-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "US West (N. California) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United States of America"
+	}]
+	SubGeography: [{
+		Name: "California"
+	}]
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -21,5 +27,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "us-west-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "US West (N. California) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United States of America"
+	}]
+	SubGeography: [{
+		Name: "California"
+	}]
+	State: "available"
 }]

@@ -10,7 +10,13 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "us-west-2"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "US West (Oregon) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United States of America"
+	}]
+	SubGeography: [{
+		Name: "Oregon"
+	}]
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -21,7 +27,13 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "us-west-2"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "US West (Oregon) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United States of America"
+	}]
+	SubGeography: [{
+		Name: "Oregon"
+	}]
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -32,7 +44,13 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "us-west-2"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "US West (Oregon) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United States of America"
+	}]
+	SubGeography: [{
+		Name: "Oregon"
+	}]
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -43,5 +61,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "us-west-2"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "US West (Oregon) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United States of America"
+	}]
+	SubGeography: [{
+		Name: "Oregon"
+	}]
+	State: "available"
 }]

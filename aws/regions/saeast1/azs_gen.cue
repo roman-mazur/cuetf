@@ -10,7 +10,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "sa-east-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "South America (Sao Paulo) 1"
-	State:              "available"
+	Geography: [{
+		Name: "Brazil"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -21,7 +25,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "sa-east-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "South America (Sao Paulo) 1"
-	State:              "available"
+	Geography: [{
+		Name: "Brazil"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -32,5 +40,9 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "sa-east-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "South America (Sao Paulo) 1"
-	State:              "available"
+	Geography: [{
+		Name: "Brazil"
+	}]
+	SubGeography: []
+	State: "available"
 }]

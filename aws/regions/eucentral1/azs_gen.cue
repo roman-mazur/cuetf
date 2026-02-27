@@ -10,7 +10,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "eu-central-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Europe (Frankfurt) 1"
-	State:              "available"
+	Geography: [{
+		Name: "Germany"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -21,7 +25,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "eu-central-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Europe (Frankfurt) 1"
-	State:              "available"
+	Geography: [{
+		Name: "Germany"
+	}]
+	SubGeography: []
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -32,5 +40,9 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "eu-central-1"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "Europe (Frankfurt) 1"
-	State:              "available"
+	Geography: [{
+		Name: "Germany"
+	}]
+	SubGeography: []
+	State: "available"
 }]

@@ -10,7 +10,13 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "us-east-2"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "US East (Ohio) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United States of America"
+	}]
+	SubGeography: [{
+		Name: "Ohio"
+	}]
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -21,7 +27,13 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "us-east-2"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "US East (Ohio) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United States of America"
+	}]
+	SubGeography: [{
+		Name: "Ohio"
+	}]
+	State: "available"
 }, {
 	OptInStatus: "opt-in-not-required"
 	Messages: []
@@ -32,5 +44,11 @@ AvailabilityZones: [{
 	NetworkBorderGroup: "us-east-2"
 	ZoneType:           "availability-zone"
 	GroupLongName:      "US East (Ohio) 1"
-	State:              "available"
+	Geography: [{
+		Name: "United States of America"
+	}]
+	SubGeography: [{
+		Name: "Ohio"
+	}]
+	State: "available"
 }]
