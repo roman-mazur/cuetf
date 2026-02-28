@@ -6,8 +6,6 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"io"
-	"io/fs"
 	"log"
 	"os"
 	"os/exec"
@@ -15,15 +13,18 @@ import (
 	"regexp"
 	"strings"
 
-	embedassets "rmazur.io/cuetf/internal"
 	"rmazur.io/cuetf/internal/gen"
+)
+
+const (
+	cuetfModulePath = "github.com/roman-mazur/cuetf"
+	cueModuleFile   = "cue.mod/module.cue"
 )
 
 type options struct {
 	filter   string
 	exclude  string
 	verbose  bool
-	logTime  bool
 	defs     bool
 	mappings bool
 	iface    bool
@@ -44,55 +45,27 @@ func Run(dir string, args []string) error {
 	if err != nil {
 		return err
 	}
-	if !opts.logTime {
-		log.SetFlags(0)
-	}
 
 	repoRoot, err := findRepoRootWithCUE(dir)
 	if err != nil {
 		return err
 	}
-
-	if err := installInternalDeps(repoRoot); err != nil {
+	if err := InstallInternalDeps(repoRoot, cuetfModulePath); err != nil {
 		return err
 	}
 
-	providerName := opts.name
-	if providerName == "" {
-		providerName = filepath.Base(opts.source)
-	}
-	if providerName == "." || providerName == "/" || providerName == "" {
-		return errors.New("cannot detect provider name from source, pass -name explicitly")
-	}
-
-	schemaPath, err := buildProviderSchema(opts.source, providerName, opts.version)
+	providerName, err := opts.providerName()
 	if err != nil {
 		return err
 	}
-	defer func() { _ = os.RemoveAll(filepath.Dir(schemaPath)) }()
-
-	outRoot := filepath.Join(repoRoot, "cue.mod", "pkg", filepath.FromSlash(moduleName))
-	cfg := &gen.Config{
-		SchemaPath:      schemaPath,
-		OutputPath:      outRoot,
-		Version:         opts.version,
-		Verbose:         opts.verbose,
-		LogTime:         opts.logTime,
-		WriteModuleFile: true,
-
-		GenerateDefs:      opts.defs,
-		GenerateMappings:  opts.mappings,
-		GenerateInterface: opts.iface,
+	schemaPath, cleanup, err := buildProviderSchema(opts.source, providerName, opts.version)
+	if err != nil {
+		return err
 	}
-	if opts.filter != "" {
-		cfg.IncludeFilter = regexp.MustCompile(opts.filter)
-	}
-	if opts.exclude != "" {
-		cfg.ExcludeFilter = regexp.MustCompile(opts.exclude)
-	}
+	defer cleanup()
 
 	g := gen.NewGenerator(log.Printf)
-	return g.Generate(cfg)
+	return g.Generate(opts.toGenConfig(repoRoot, schemaPath))
 }
 
 func parseArgs(args []string) (options, error) {
@@ -102,7 +75,6 @@ func parseArgs(args []string) (options, error) {
 	flagSet.StringVar(&opt.filter, "f", "", "Definition name filter (regexp, what to include)")
 	flagSet.StringVar(&opt.exclude, "e", "", "Exclusion name filter (regexp, what to exclude)")
 	flagSet.BoolVar(&opt.verbose, "v", false, "Verbose mode")
-	flagSet.BoolVar(&opt.logTime, "t", false, "Log time")
 	flagSet.BoolVar(&opt.defs, "defs", true, "Whether to regenerate all the defs")
 	flagSet.BoolVar(&opt.mappings, "mappings", true, "Whether to regenerate the mappings")
 	flagSet.BoolVar(&opt.iface, "iface", true, "Whether to generate the user-exposed interface")
@@ -111,46 +83,72 @@ func parseArgs(args []string) (options, error) {
 	if err := flagSet.Parse(args); err != nil {
 		return options{}, err
 	}
+
 	opt.source = flagSet.Arg(0)
 	if opt.source == "" {
-		return options{}, errors.New("provider source is not specified (expected: embed [flags] <provider-source> [version])")
+		return options{}, errors.New("provider source is not specified (expected: embed [flags] <provider-source> <version>)")
 	}
 	opt.version = flagSet.Arg(1)
+	if opt.version == "" {
+		return options{}, errors.New("provider version is not specified (expected: embed [flags] <provider-source> <version>)")
+	}
 	return opt, nil
 }
 
-func buildProviderSchema(source, providerName, version string) (string, error) {
+func (o options) providerName() (string, error) {
+	if o.name != "" {
+		return o.name, nil
+	}
+	provider := filepath.Base(o.source)
+	if provider == "." || provider == "/" || provider == "" {
+		return "", errors.New("cannot detect provider name from source, pass -name explicitly")
+	}
+	return provider, nil
+}
+
+func (o options) toGenConfig(repoRoot string, schemaPath string) *gen.Config {
+	cfg := &gen.Config{
+		SchemaPath:      schemaPath,
+		OutputPath:      filepath.Join(repoRoot, "cue.mod", "pkg", filepath.FromSlash(cuetfModulePath)),
+		Version:         o.version,
+		Verbose:         o.verbose,
+		LogTime:         true,
+		WriteModuleFile: true,
+
+		GenerateDefs:      o.defs,
+		GenerateMappings:  o.mappings,
+		GenerateInterface: o.iface,
+	}
+	if o.filter != "" {
+		cfg.IncludeFilter = regexp.MustCompile(o.filter)
+	}
+	if o.exclude != "" {
+		cfg.ExcludeFilter = regexp.MustCompile(o.exclude)
+	}
+	return cfg
+}
+
+func buildProviderSchema(source, providerName, version string) (schemaPath string, cleanup func(), err error) {
 	tmpDir, err := os.MkdirTemp("", "cuetf-embed-*")
 	if err != nil {
-		return "", fmt.Errorf("cannot create temp dir: %w", err)
+		return "", nil, fmt.Errorf("cannot create temp dir: %w", err)
 	}
+	cleanup = func() { _ = os.RemoveAll(tmpDir) }
 
-	versionAttr := ""
-	if version != "" {
-		versionAttr = fmt.Sprintf("\n      version = %q", version)
+	if err := writeCorpusTF(tmpDir, source, providerName, version); err != nil {
+		cleanup()
+		return "", nil, err
 	}
-
-	corpus := fmt.Sprintf(`terraform {
-  required_providers {
-    %s = {
-      source  = %q%s
-    }
-  }
-}
-`, providerName, source, versionAttr)
-
-	if err := os.WriteFile(filepath.Join(tmpDir, "corpus.tf"), []byte(corpus), 0666); err != nil {
-		return "", fmt.Errorf("cannot write corpus.tf: %w", err)
-	}
-
 	if err := runCommand(tmpDir, "terraform", "init", "-upgrade"); err != nil {
-		return "", err
+		cleanup()
+		return "", nil, err
 	}
 
-	schemaPath := filepath.Join(tmpDir, "schema.json")
+	schemaPath = filepath.Join(tmpDir, "schema.json")
 	out, err := os.Create(schemaPath)
 	if err != nil {
-		return "", fmt.Errorf("cannot create schema output: %w", err)
+		cleanup()
+		return "", nil, fmt.Errorf("cannot create schema output: %w", err)
 	}
 	defer func() { _ = out.Close() }()
 
@@ -159,10 +157,28 @@ func buildProviderSchema(source, providerName, version string) (string, error) {
 	cmd.Stderr = os.Stderr
 	cmd.Stdout = out
 	if err := cmd.Run(); err != nil {
-		return "", fmt.Errorf("terraform providers schema failed: %w", err)
+		cleanup()
+		return "", nil, fmt.Errorf("terraform providers schema failed: %w", err)
 	}
 
-	return schemaPath, nil
+	return schemaPath, cleanup, nil
+}
+
+func writeCorpusTF(dir, source, providerName, version string) error {
+	corpus := fmt.Sprintf(`terraform {
+  required_providers {
+    %s = {
+      source  = %q
+      version = %q
+    }
+  }
+}
+`, providerName, source, version)
+
+	if err := os.WriteFile(filepath.Join(dir, "corpus.tf"), []byte(corpus), 0666); err != nil {
+		return fmt.Errorf("cannot write corpus.tf: %w", err)
+	}
+	return nil
 }
 
 func runCommand(dir string, name string, args ...string) error {
@@ -183,7 +199,7 @@ func findRepoRootWithCUE(start string) (string, error) {
 	}
 
 	for {
-		modFile := filepath.Join(dir, "cue.mod", "module.cue")
+		modFile := filepath.Join(dir, cueModuleFile)
 		if st, err := os.Stat(modFile); err == nil && !st.IsDir() {
 			return dir, nil
 		}
@@ -193,57 +209,4 @@ func findRepoRootWithCUE(start string) (string, error) {
 		}
 		dir = next
 	}
-}
-
-const moduleName = "github.com/roman-mazur/cuetf"
-
-func installInternalDeps(repoRoot string) error {
-	moduleRoot := filepath.Join(repoRoot, "cue.mod", "pkg", filepath.FromSlash(moduleName))
-	dstBase := filepath.Join(moduleRoot, "internal")
-	if err := copyCueDir(embedassets.InternalCUE, ".", dstBase); err != nil {
-		return err
-	}
-	return nil
-}
-
-func copyCueDir(srcFS fs.FS, srcDir, dst string) error {
-	return fs.WalkDir(srcFS, srcDir, func(path string, d fs.DirEntry, err error) error {
-		if err != nil {
-			return err
-		}
-		if d.IsDir() {
-			return nil
-		}
-		if filepath.Ext(path) != ".cue" {
-			return nil
-		}
-		rel, err := filepath.Rel(srcDir, path)
-		if err != nil {
-			return err
-		}
-		dstPath := filepath.Join(dst, rel)
-		if err := os.MkdirAll(filepath.Dir(dstPath), 0777); err != nil {
-			return err
-		}
-		return copyFileFromFS(srcFS, path, dstPath)
-	})
-}
-
-func copyFileFromFS(srcFS fs.FS, src, dst string) error {
-	in, err := srcFS.Open(src)
-	if err != nil {
-		return err
-	}
-	defer func() { _ = in.Close() }()
-
-	out, err := os.Create(dst)
-	if err != nil {
-		return err
-	}
-
-	if _, err := io.Copy(out, in); err != nil {
-		_ = out.Close()
-		return err
-	}
-	return out.Close()
 }

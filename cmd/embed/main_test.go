@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"os/exec"
 	"path"
 	"path/filepath"
 	"strings"
@@ -11,6 +12,9 @@ import (
 )
 
 func TestRun(t *testing.T) {
+	if _, err := exec.LookPath("terraform"); err != nil {
+		t.Skipf("terraform binary is unavailable in this environment: %v", err)
+	}
 	if _, err := net.LookupHost("registry.terraform.io"); err != nil {
 		t.Skipf("terraform registry DNS is unavailable in this environment: %v", err)
 	}
