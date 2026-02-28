@@ -786,7 +786,7 @@ import "list"
 		dotnet_version?: string
 
 		// The version of Java to use. Possible values are `1.8`, `11`,
-		// `17`, and `21`
+		// `17`, `21` and `25`
 		java_version?: string
 
 		// The version of Node to use. Possible values include `~12`,

@@ -8,11 +8,11 @@ import "list"
 	close({
 		routing?: matchN(1, [#routing, list.MaxItems(1) & [...#routing]])
 		authorization_key?:                    string
-		enable_internet_security?:             bool
 		express_route_circuit_peering_id!:     string
 		express_route_gateway_bypass_enabled?: bool
 		express_route_gateway_id!:             string
 		id?:                                   string
+		internet_security_enabled?:            bool
 		name!:                                 string
 		routing_weight?:                       number
 		timeouts?:                             #timeouts

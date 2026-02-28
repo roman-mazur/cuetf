@@ -8,10 +8,10 @@ import "list"
 	close({
 		authentication_certificate?: matchN(1, [#authentication_certificate, [...#authentication_certificate]])
 		autoscale_configuration?: matchN(1, [#autoscale_configuration, list.MaxItems(1) & [...#autoscale_configuration]])
-		enable_http2?:                      bool
 		fips_enabled?:                      bool
 		firewall_policy_id?:                string
 		force_firewall_policy_association?: bool
+		http2_enabled?:                     bool
 		id?:                                string
 		location!:                          string
 		name!:                              string
@@ -229,7 +229,7 @@ import "list"
 		id?:   string
 		name!: string
 		trusted_client_certificate_names?: [...string]
-		verify_client_cert_issuer_dn?:         bool
+		verify_client_certificate_issuer_dn?:  bool
 		verify_client_certificate_revocation?: string
 	})
 

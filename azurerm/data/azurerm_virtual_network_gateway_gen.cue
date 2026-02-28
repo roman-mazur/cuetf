@@ -5,6 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_virtual_network_gateway")
 	close({
 		active_active?: bool
+		bgp_enabled?:   bool
 		bgp_settings?: [...close({
 			asn?:             number
 			peer_weight?:     number
@@ -14,7 +15,6 @@ package data
 			address_prefixes?: [...string]
 		})]
 		default_local_network_gateway_id?: string
-		enable_bgp?:                       bool
 		generation?:                       string
 		id?:                               string
 		ip_configuration?: [...close({
