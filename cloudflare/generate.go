@@ -1,3 +1,3 @@
 package aws
 
-//go:generate go run ../cmd/gen --defs=false ./internal/schema/schema.json ..
+//go:generate go run ../internal/cmd/gen --defs=false ./internal/schema/schema.json ..
