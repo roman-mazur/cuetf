@@ -24,9 +24,11 @@ package data
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                 string
 		id?:                     string
+		ip_discovery?:           string
 		kms_key_arn?:            string
 		maintenance_window?:     string
 		name!:                   string
+		network_type?:           string
 		node_type?:              string
 		num_replicas_per_shard?: number
 		num_shards?:             number

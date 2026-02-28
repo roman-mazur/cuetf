@@ -12,9 +12,10 @@ package res
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		credential_provider_configuration?: matchN(1, [#credential_provider_configuration, [...#credential_provider_configuration]])
+		region?:    string
 		target_id?: string
+		credential_provider_configuration?: matchN(1, [#credential_provider_configuration, [...#credential_provider_configuration]])
+		metadata_configuration?: matchN(1, [#metadata_configuration, [...#metadata_configuration]])
 		target_configuration?: matchN(1, [#target_configuration, [...#target_configuration]])
 		timeouts?: #timeouts
 	})
@@ -23,6 +24,20 @@ package res
 		api_key?: matchN(1, [_#defs."/$defs/credential_provider_configuration/$defs/api_key", [..._#defs."/$defs/credential_provider_configuration/$defs/api_key"]])
 		gateway_iam_role?: matchN(1, [_#defs."/$defs/credential_provider_configuration/$defs/gateway_iam_role", [..._#defs."/$defs/credential_provider_configuration/$defs/gateway_iam_role"]])
 		oauth?: matchN(1, [_#defs."/$defs/credential_provider_configuration/$defs/oauth", [..._#defs."/$defs/credential_provider_configuration/$defs/oauth"]])
+	})
+
+	#metadata_configuration: close({
+		// A list of URL query parameters that are allowed to be
+		// propagated from incoming gateway URL to the target.
+		allowed_query_parameters?: [...string]
+
+		// A list of HTTP headers that are allowed to be propagated from
+		// incoming client requests to the target.
+		allowed_request_headers?: [...string]
+
+		// A list of HTTP headers that are allowed to be propagated from
+		// the target response back to the client.
+		allowed_response_headers?: [...string]
 	})
 
 	#target_configuration: close({
@@ -62,7 +77,15 @@ package res
 	_#defs: "/$defs/credential_provider_configuration/$defs/gateway_iam_role": close({})
 
 	_#defs: "/$defs/credential_provider_configuration/$defs/oauth": close({
+		// The URL where the end user's browser is redirected after
+		// obtaining the authorization code. Required when grant_type is
+		// AUTHORIZATION_CODE.
+		default_return_url?: string
 		custom_parameters?: [string]: string
+
+		// The OAuth grant type. Valid values are AUTHORIZATION_CODE and
+		// CLIENT_CREDENTIALS.
+		grant_type?:   string
 		provider_arn!: string
 		scopes!: [...string]
 	})

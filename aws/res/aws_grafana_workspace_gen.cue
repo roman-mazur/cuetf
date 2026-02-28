@@ -20,10 +20,11 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:          string
 		grafana_version?: string
-		id?:              string
-		name?:            string
 		network_access_control?: matchN(1, [#network_access_control, list.MaxItems(1) & [...#network_access_control]])
-		timeouts?: #timeouts
+		id?:         string
+		kms_key_id?: string
+		name?:       string
+		timeouts?:   #timeouts
 		notification_destinations?: [...string]
 		organization_role_name?: string
 		organizational_units?: [...string]
@@ -31,9 +32,9 @@ import "list"
 		role_arn?:                  string
 		saml_configuration_status?: string
 		stack_set_name?:            string
-		tags?: [string]:     string
-		tags_all?: [string]: string
+		tags?: [string]: string
 		vpc_configuration?: matchN(1, [#vpc_configuration, list.MaxItems(1) & [...#vpc_configuration]])
+		tags_all?: [string]: string
 	})
 
 	#network_access_control: close({

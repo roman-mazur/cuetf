@@ -19,6 +19,7 @@ package data
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:            string
 		id?:                string
+		kms_key_id?:        string
 		last_updated_date?: string
 		name?:              string
 		notification_destinations?: [...string]

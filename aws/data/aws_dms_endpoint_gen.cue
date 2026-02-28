@@ -65,6 +65,7 @@ package data
 			docs_to_investigate?: string
 			extract_doc_id?:      string
 			nesting_level?:       string
+			use_update_lookup?:   bool
 		})]
 		mysql_settings?: [...close({
 			after_connect_script?:              string

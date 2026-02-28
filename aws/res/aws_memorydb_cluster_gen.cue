@@ -18,18 +18,20 @@ package res
 		engine_version?:       string
 		final_snapshot_name?:  string
 		id?:                   string
+		ip_discovery?:         string
 		kms_key_arn?:          string
-		maintenance_window?:   string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                    string
+		maintenance_window?:        string
 		multi_region_cluster_name?: string
 		name?:                      string
 		name_prefix?:               string
 		timeouts?:                  #timeouts
+		network_type?:              string
 		node_type!:                 string
 		num_replicas_per_shard?:    number
 		num_shards?:                number

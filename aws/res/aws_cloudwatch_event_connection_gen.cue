@@ -26,6 +26,7 @@ import "list"
 	#auth_parameters: close({
 		api_key?: matchN(1, [_#defs."/$defs/auth_parameters/$defs/api_key", list.MaxItems(1) & [..._#defs."/$defs/auth_parameters/$defs/api_key"]])
 		basic?: matchN(1, [_#defs."/$defs/auth_parameters/$defs/basic", list.MaxItems(1) & [..._#defs."/$defs/auth_parameters/$defs/basic"]])
+		connectivity_parameters?: matchN(1, [_#defs."/$defs/auth_parameters/$defs/connectivity_parameters", list.MaxItems(1) & [..._#defs."/$defs/auth_parameters/$defs/connectivity_parameters"]])
 		invocation_http_parameters?: matchN(1, [_#defs."/$defs/auth_parameters/$defs/invocation_http_parameters", list.MaxItems(1) & [..._#defs."/$defs/auth_parameters/$defs/invocation_http_parameters"]])
 		oauth?: matchN(1, [_#defs."/$defs/auth_parameters/$defs/oauth", list.MaxItems(1) & [..._#defs."/$defs/auth_parameters/$defs/oauth"]])
 	})
@@ -42,6 +43,15 @@ import "list"
 	_#defs: "/$defs/auth_parameters/$defs/basic": close({
 		password!: string
 		username!: string
+	})
+
+	_#defs: "/$defs/auth_parameters/$defs/connectivity_parameters": close({
+		resource_parameters!: matchN(1, [_#defs."/$defs/auth_parameters/$defs/connectivity_parameters/$defs/resource_parameters", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_parameters/$defs/connectivity_parameters/$defs/resource_parameters"]])
+	})
+
+	_#defs: "/$defs/auth_parameters/$defs/connectivity_parameters/$defs/resource_parameters": close({
+		resource_association_arn?:   string
+		resource_configuration_arn!: string
 	})
 
 	_#defs: "/$defs/auth_parameters/$defs/invocation_http_parameters": close({

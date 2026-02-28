@@ -998,6 +998,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_networkmanager_global_network": res.#aws_networkmanager_global_network
 	_#res: "\(#awsPrefix)_networkmanager_link_association": res.#aws_networkmanager_link_association
 	_#res: "\(#awsPrefix)_networkmanager_link": res.#aws_networkmanager_link
+	_#res: "\(#awsPrefix)_networkmanager_prefix_list_association": res.#aws_networkmanager_prefix_list_association
 	_#res: "\(#awsPrefix)_networkmanager_site": res.#aws_networkmanager_site
 	_#res: "\(#awsPrefix)_networkmanager_site_to_site_vpn_attachment": res.#aws_networkmanager_site_to_site_vpn_attachment
 	_#res: "\(#awsPrefix)_networkmanager_transit_gateway_connect_peer_association": res.#aws_networkmanager_transit_gateway_connect_peer_association
