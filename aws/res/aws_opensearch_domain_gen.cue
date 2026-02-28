@@ -46,6 +46,7 @@ import "list"
 	})
 
 	#advanced_security_options: close({
+		jwt_options?: matchN(1, [_#defs."/$defs/advanced_security_options/$defs/jwt_options", list.MaxItems(1) & [..._#defs."/$defs/advanced_security_options/$defs/jwt_options"]])
 		master_user_options?: matchN(1, [_#defs."/$defs/advanced_security_options/$defs/master_user_options", list.MaxItems(1) & [..._#defs."/$defs/advanced_security_options/$defs/master_user_options"]])
 		anonymous_auth_enabled?:         bool
 		enabled!:                        bool
@@ -150,6 +151,13 @@ import "list"
 		security_group_ids?: [...string]
 		subnet_ids?: [...string]
 		vpc_id?: string
+	})
+
+	_#defs: "/$defs/advanced_security_options/$defs/jwt_options": close({
+		enabled?:     bool
+		public_key?:  string
+		roles_key?:   string
+		subject_key?: string
 	})
 
 	_#defs: "/$defs/advanced_security_options/$defs/master_user_options": close({

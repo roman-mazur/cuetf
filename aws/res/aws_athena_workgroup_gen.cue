@@ -23,17 +23,18 @@ import "list"
 	})
 
 	#configuration: close({
+		customer_content_encryption_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/customer_content_encryption_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/customer_content_encryption_configuration"]])
 		bytes_scanned_cutoff_per_query?:          number
 		enable_minimum_encryption_configuration?: bool
 		enforce_workgroup_configuration?:         bool
 		execution_role?:                          string
 		publish_cloudwatch_metrics_enabled?:      bool
 		requester_pays_enabled?:                  bool
-		customer_content_encryption_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/customer_content_encryption_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/customer_content_encryption_configuration"]])
 		engine_version?: matchN(1, [_#defs."/$defs/configuration/$defs/engine_version", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/engine_version"]])
 		identity_center_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/identity_center_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/identity_center_configuration"]])
 		managed_query_results_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/managed_query_results_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/managed_query_results_configuration"]])
 		monitoring_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/monitoring_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/monitoring_configuration"]])
+		query_results_s3_access_grants_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/query_results_s3_access_grants_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/query_results_s3_access_grants_configuration"]])
 		result_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/result_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/result_configuration"]])
 	})
 
@@ -87,6 +88,12 @@ import "list"
 		enabled!:      bool
 		kms_key?:      string
 		log_location?: string
+	})
+
+	_#defs: "/$defs/configuration/$defs/query_results_s3_access_grants_configuration": close({
+		authentication_type!:      string
+		create_user_level_prefix?: bool
+		enable_s3_access_grants!:  bool
 	})
 
 	_#defs: "/$defs/configuration/$defs/result_configuration": close({

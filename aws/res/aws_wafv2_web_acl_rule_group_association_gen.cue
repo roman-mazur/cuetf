@@ -20,25 +20,27 @@ package res
 		// Name of the rule to create in the Web ACL that references the
 		// rule group.
 		rule_name!: string
+		managed_rule_group?: matchN(1, [#managed_rule_group, [...#managed_rule_group]])
+		rule_group_reference?: matchN(1, [#rule_group_reference, [...#rule_group_reference]])
 
 		// ARN of the Web ACL to associate the Rule Group with.
 		web_acl_arn!: string
-		managed_rule_group?: matchN(1, [#managed_rule_group, [...#managed_rule_group]])
-		rule_group_reference?: matchN(1, [#rule_group_reference, [...#rule_group_reference]])
-		timeouts?: #timeouts
+		timeouts?:    #timeouts
+		visibility_config?: matchN(1, [#visibility_config, [...#visibility_config]])
 	})
 
 	#managed_rule_group: close({
 		// Name of the managed rule group.
 		name!: string
-		rule_action_override?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/rule_action_override", [..._#defs."/$defs/managed_rule_group/$defs/rule_action_override"]])
 
 		// Name of the managed rule group vendor.
 		vendor_name!: string
+		managed_rule_group_configs?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs"]])
 
 		// Version of the managed rule group. Omit this to use the default
 		// version.
 		version?: string
+		rule_action_override?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/rule_action_override", [..._#defs."/$defs/managed_rule_group/$defs/rule_action_override"]])
 	})
 
 	#rule_group_reference: close({
@@ -69,6 +71,227 @@ package res
 		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
 		// time units are "s" (seconds), "m" (minutes), "h" (hours).
 		update?: string
+	})
+
+	#visibility_config: close({
+		// Indicates whether the rule is available for use in the metrics
+		// for the web ACL.
+		cloudwatch_metrics_enabled!: bool
+
+		// A name for the metrics for this rule.
+		metric_name!: string
+
+		// Indicates whether to store a sampling of the web requests that
+		// match the rule.
+		sampled_requests_enabled!: bool
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs": close({
+		aws_managed_rules_acfp_rule_set?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set"]])
+		aws_managed_rules_anti_ddos_rule_set?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_anti_ddos_rule_set", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_anti_ddos_rule_set"]])
+		aws_managed_rules_atp_rule_set?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set"]])
+		aws_managed_rules_bot_control_rule_set?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_bot_control_rule_set", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_bot_control_rule_set"]])
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set": close({
+		request_inspection?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection"]])
+		response_inspection?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection"]])
+
+		// Path to the account creation endpoint on the protected website
+		creation_path!:          string
+		enable_regex_in_path?:   bool
+		registration_page_path!: string
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection": close({
+		address_fields?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection/$defs/address_fields", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection/$defs/address_fields"]])
+		email_field?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection/$defs/email_field", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection/$defs/email_field"]])
+		password_field?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection/$defs/password_field", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection/$defs/password_field"]])
+		phone_number_fields?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection/$defs/phone_number_fields", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection/$defs/phone_number_fields"]])
+		username_field?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection/$defs/username_field", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection/$defs/username_field"]])
+
+		// Payload type for inspection, either JSON or FORM_ENCODED.
+		payload_type!: string
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection/$defs/address_fields": close({
+		// Identifiers of the address fields
+		identifiers!: [...string]
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection/$defs/email_field": close({
+		// Identifier of the email field
+		identifier!: string
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection/$defs/password_field": close({
+		// Identifier of the password field
+		identifier!: string
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection/$defs/phone_number_fields": close({
+		// Identifiers of the phone number fields
+		identifiers!: [...string]
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/request_inspection/$defs/username_field": close({
+		// Identifier of the username field
+		identifier!: string
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection": close({
+		body_contains?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection/$defs/body_contains", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection/$defs/body_contains"]])
+		header?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection/$defs/header", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection/$defs/header"]])
+		json?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection/$defs/json", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection/$defs/json"]])
+		status_code?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection/$defs/status_code", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection/$defs/status_code"]])
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection/$defs/body_contains": close({
+		// Strings that indicate a failed login or account creation
+		// attempt
+		failure_strings!: [...string]
+
+		// Strings that indicate a successful login or account creation
+		// attempt
+		success_strings!: [...string]
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection/$defs/header": close({
+		// Strings that indicate a failed login or account creation
+		// attempt
+		failure_values!: [...string]
+
+		// Name of the HTTP header to inspect
+		name!: string
+
+		// Strings that indicate a successful login or account creation
+		// attempt
+		success_values!: [...string]
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection/$defs/json": close({
+		// Strings that indicate a failed login or account creation
+		// attempt
+		failure_values!: [...string]
+
+		// Identifier of the JSON field to inspect
+		identifier!: string
+
+		// Strings that indicate a successful login or account creation
+		// attempt
+		success_values!: [...string]
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection/$defs/status_code": close({
+		// Status codes that indicate a failed login or account creation
+		// attempt
+		failure_codes!: [...number]
+
+		// Status codes that indicate a successful login or account
+		// creation attempt
+		success_codes!: [...number]
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_anti_ddos_rule_set": close({
+		client_side_action_config?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_anti_ddos_rule_set/$defs/client_side_action_config", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_anti_ddos_rule_set/$defs/client_side_action_config"]])
+		sensitivity_to_block?: string
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_anti_ddos_rule_set/$defs/client_side_action_config": close({
+		challenge?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_anti_ddos_rule_set/$defs/client_side_action_config/$defs/challenge", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_anti_ddos_rule_set/$defs/client_side_action_config/$defs/challenge"]])
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_anti_ddos_rule_set/$defs/client_side_action_config/$defs/challenge": close({
+		exempt_uri_regular_expression?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_anti_ddos_rule_set/$defs/client_side_action_config/$defs/challenge/$defs/exempt_uri_regular_expression", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_anti_ddos_rule_set/$defs/client_side_action_config/$defs/challenge/$defs/exempt_uri_regular_expression"]])
+		sensitivity?:     string
+		usage_of_action!: string
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_anti_ddos_rule_set/$defs/client_side_action_config/$defs/challenge/$defs/exempt_uri_regular_expression": close({
+		regex_string?: string
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set": close({
+		request_inspection?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/request_inspection", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/request_inspection"]])
+		response_inspection?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection"]])
+		enable_regex_in_path?: bool
+		login_path!:           string
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/request_inspection": close({
+		password_field?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/request_inspection/$defs/password_field", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/request_inspection/$defs/password_field"]])
+		username_field?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/request_inspection/$defs/username_field", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/request_inspection/$defs/username_field"]])
+
+		// Payload type for inspection, either JSON or FORM_ENCODED.
+		payload_type!: string
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/request_inspection/$defs/password_field": close({
+		// Identifier of the password field
+		identifier!: string
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/request_inspection/$defs/username_field": close({
+		// Identifier of the username field
+		identifier!: string
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection": close({
+		body_contains?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection/$defs/body_contains", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection/$defs/body_contains"]])
+		header?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection/$defs/header", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection/$defs/header"]])
+		json?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection/$defs/json", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection/$defs/json"]])
+		status_code?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection/$defs/status_code", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection/$defs/status_code"]])
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection/$defs/body_contains": close({
+		// Strings that indicate a failed login or account creation
+		// attempt
+		failure_strings!: [...string]
+
+		// Strings that indicate a successful login or account creation
+		// attempt
+		success_strings!: [...string]
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection/$defs/header": close({
+		// Strings that indicate a failed login or account creation
+		// attempt
+		failure_values!: [...string]
+
+		// Name of the HTTP header to inspect
+		name!: string
+
+		// Strings that indicate a successful login or account creation
+		// attempt
+		success_values!: [...string]
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection/$defs/json": close({
+		// Strings that indicate a failed login or account creation
+		// attempt
+		failure_values!: [...string]
+
+		// Identifier of the JSON field to inspect
+		identifier!: string
+
+		// Strings that indicate a successful login or account creation
+		// attempt
+		success_values!: [...string]
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection/$defs/status_code": close({
+		// Status codes that indicate a failed login or account creation
+		// attempt
+		failure_codes!: [...number]
+
+		// Status codes that indicate a successful login or account
+		// creation attempt
+		success_codes!: [...number]
+	})
+
+	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_bot_control_rule_set": close({
+		enable_machine_learning?: bool
+		inspection_level!:        string
 	})
 
 	_#defs: "/$defs/managed_rule_group/$defs/rule_action_override": close({

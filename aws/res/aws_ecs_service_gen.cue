@@ -106,6 +106,7 @@ import "list"
 	})
 
 	#service_connect_configuration: close({
+		access_log_configuration?: matchN(1, [_#defs."/$defs/service_connect_configuration/$defs/access_log_configuration", list.MaxItems(1) & [..._#defs."/$defs/service_connect_configuration/$defs/access_log_configuration"]])
 		log_configuration?: matchN(1, [_#defs."/$defs/service_connect_configuration/$defs/log_configuration", list.MaxItems(1) & [..._#defs."/$defs/service_connect_configuration/$defs/log_configuration"]])
 		service?: matchN(1, [_#defs."/$defs/service_connect_configuration/$defs/service", [..._#defs."/$defs/service_connect_configuration/$defs/service"]])
 		enabled!:   bool
@@ -158,6 +159,11 @@ import "list"
 		production_listener_rule!:   string
 		role_arn!:                   string
 		test_listener_rule?:         string
+	})
+
+	_#defs: "/$defs/service_connect_configuration/$defs/access_log_configuration": close({
+		format!:                   string
+		include_query_parameters?: string
 	})
 
 	_#defs: "/$defs/service_connect_configuration/$defs/log_configuration": close({
