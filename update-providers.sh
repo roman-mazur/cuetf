@@ -28,7 +28,7 @@ function process() {
   if [ -n "$exclude" ]; then
     exclude="-e $exclude"
   fi
-  go run ./cmd/gen $exclude --version="$version" "$provider/internal/schema/schema.json" . 2> logs/"$provider-log.txt" &
+  go run ./internal/cmd/gen $exclude --version="$version" "$provider/internal/schema/schema.json" . 2> logs/"$provider-log.txt" &
   defs_pid=$!
 
   (cd "$provider" && ([ -f import.sh ] && ./import.sh || exit 0))
