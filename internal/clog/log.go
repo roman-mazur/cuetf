@@ -8,7 +8,7 @@ import (
 )
 
 // Logf is function type that matches fmt.Printf, log.Printf, and testing.T.Logf.
-type Logf func(format string, args ...interface{})
+type Logf func(format string, args ...any)
 
 // Part represents one of the logs sections.
 // Its number represent the order of appearance of this part in the logs.
@@ -42,7 +42,7 @@ func New(out Logf) *Logger {
 
 func (l *Logger) LogPart(part Part) Logf {
 	p := &l.parts[part]
-	return func(format string, args ...interface{}) {
+	return func(format string, args ...any) {
 		p.Lock()
 		if p.active {
 			l.out(format, args...)
