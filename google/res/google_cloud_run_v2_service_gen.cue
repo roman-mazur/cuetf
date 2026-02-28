@@ -110,6 +110,9 @@ import "list"
 		// representation will be a string instead of an integer.
 		generation?: string
 
+		// Used to enable/disable IAP for the cloud-run service.
+		iap_enabled?: bool
+
 		// Provides the ingress settings for this Service. On output,
 		// returns the currently observed ingress settings, or
 		// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible

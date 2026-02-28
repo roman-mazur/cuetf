@@ -358,6 +358,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_compute_public_advertised_prefix": res.#google_compute_public_advertised_prefix
 	_#res: "\(#googlePrefix)_compute_public_delegated_prefix": res.#google_compute_public_delegated_prefix
 	_#res: "\(#googlePrefix)_compute_region_autoscaler": res.#google_compute_region_autoscaler
+	_#res: "\(#googlePrefix)_compute_region_backend_bucket": res.#google_compute_region_backend_bucket
 	_#res: "\(#googlePrefix)_compute_region_backend_service": res.#google_compute_region_backend_service
 	_#res: "\(#googlePrefix)_compute_region_commitment": res.#google_compute_region_commitment
 	_#res: "\(#googlePrefix)_compute_region_disk": res.#google_compute_region_disk
@@ -726,6 +727,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_healthcare_hl7_v2_store_iam_policy": res.#google_healthcare_hl7_v2_store_iam_policy
 	_#res: "\(#googlePrefix)_healthcare_pipeline_job": res.#google_healthcare_pipeline_job
 	_#res: "\(#googlePrefix)_healthcare_workspace": res.#google_healthcare_workspace
+	_#res: "\(#googlePrefix)_hypercomputecluster_cluster": res.#google_hypercomputecluster_cluster
 	_#res: "\(#googlePrefix)_iam_access_boundary_policy": res.#google_iam_access_boundary_policy
 	_#res: "\(#googlePrefix)_iam_deny_policy": res.#google_iam_deny_policy
 	_#res: "\(#googlePrefix)_iam_folders_policy_binding": res.#google_iam_folders_policy_binding

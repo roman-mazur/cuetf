@@ -397,6 +397,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_tags_tag_value_iam_policy": data.#google_tags_tag_value_iam_policy
 	_#ds: "\(#googlePrefix)_tags_tag_values": data.#google_tags_tag_values
 	_#ds: "\(#googlePrefix)_vertex_ai_index": data.#google_vertex_ai_index
+	_#ds: "\(#googlePrefix)_vmwareengine_announcements": data.#google_vmwareengine_announcements
 	_#ds: "\(#googlePrefix)_vmwareengine_cluster": data.#google_vmwareengine_cluster
 	_#ds: "\(#googlePrefix)_vmwareengine_datastore": data.#google_vmwareengine_datastore
 	_#ds: "\(#googlePrefix)_vmwareengine_external_access_rule": data.#google_vmwareengine_external_access_rule
@@ -407,6 +408,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_vmwareengine_nsx_credentials": data.#google_vmwareengine_nsx_credentials
 	_#ds: "\(#googlePrefix)_vmwareengine_private_cloud": data.#google_vmwareengine_private_cloud
 	_#ds: "\(#googlePrefix)_vmwareengine_subnet": data.#google_vmwareengine_subnet
+	_#ds: "\(#googlePrefix)_vmwareengine_upgrades": data.#google_vmwareengine_upgrades
 	_#ds: "\(#googlePrefix)_vmwareengine_vcenter_credentials": data.#google_vmwareengine_vcenter_credentials
 	_#ds: "\(#googlePrefix)_vpc_access_connector": data.#google_vpc_access_connector
 	_#ds: "\(#googlePrefix)_workbench_instance_iam_policy": data.#google_workbench_instance_iam_policy

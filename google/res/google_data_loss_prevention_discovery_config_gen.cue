@@ -513,6 +513,7 @@ import "list"
 
 	_#defs: "/$defs/targets/$defs/cloud_storage_target/$defs/filter/$defs/collection": close({
 		include_regexes?: matchN(1, [_#defs."/$defs/targets/$defs/cloud_storage_target/$defs/filter/$defs/collection/$defs/include_regexes", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/cloud_storage_target/$defs/filter/$defs/collection/$defs/include_regexes"]])
+		include_tags?: matchN(1, [_#defs."/$defs/targets/$defs/cloud_storage_target/$defs/filter/$defs/collection/$defs/include_tags", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/cloud_storage_target/$defs/filter/$defs/collection/$defs/include_tags"]])
 	})
 
 	_#defs: "/$defs/targets/$defs/cloud_storage_target/$defs/filter/$defs/collection/$defs/include_regexes": close({
@@ -531,6 +532,25 @@ import "list"
 
 		// For organizations, if unset, will match all projects.
 		project_id_regex?: string
+	})
+
+	_#defs: "/$defs/targets/$defs/cloud_storage_target/$defs/filter/$defs/collection/$defs/include_tags": close({
+		tag_filters?: matchN(1, [_#defs."/$defs/targets/$defs/cloud_storage_target/$defs/filter/$defs/collection/$defs/include_tags/$defs/tag_filters", [..._#defs."/$defs/targets/$defs/cloud_storage_target/$defs/filter/$defs/collection/$defs/include_tags/$defs/tag_filters"]])
+	})
+
+	_#defs: "/$defs/targets/$defs/cloud_storage_target/$defs/filter/$defs/collection/$defs/include_tags/$defs/tag_filters": close({
+		// The namespaced name for the tag key. Must be in the format
+		// '{parent_id}/{tag_key_short_name}', for example,
+		// "123456/sensitive" for
+		// an organization parent, or "my-project/sensitive" for a project
+		// parent.
+		namespaced_tag_key?: string
+
+		// The namespaced name for the tag value. Must be in the format
+		// '{parent_id}/{tag_key_short_name}/{short_name}', for example,
+		// "123456/environment/prod" for an organization parent, or
+		// "my-project/environment/prod" for a project parent.
+		namespaced_tag_value?: string
 	})
 
 	_#defs: "/$defs/targets/$defs/cloud_storage_target/$defs/filter/$defs/others": close({})

@@ -128,6 +128,9 @@ package data
 		// representation will be a string instead of an integer.
 		generation?: string
 
+		// Used to enable/disable IAP for the cloud-run service.
+		iap_enabled?: bool
+
 		// Provides the ingress settings for this Service. On output,
 		// returns the currently observed ingress settings, or
 		// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible
@@ -236,7 +239,6 @@ package data
 		// Additional information on the failure can be found in
 		// terminalCondition and conditions.
 		reconciling?: bool
-		project?:     string
 
 		// Scaling settings that apply to the whole service
 		scaling?: [...close({
@@ -245,6 +247,7 @@ package data
 			min_instance_count?:    number
 			scaling_mode?:          string
 		})]
+		project?: string
 
 		// The template used to create revisions for this Service.
 		template?: [...close({

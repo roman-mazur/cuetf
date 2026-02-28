@@ -98,19 +98,19 @@ package google
 		gke_backup_custom_endpoint?:            string
 		gke_hub2_custom_endpoint?:              string
 		batching?: matchN(1, [#batching, [...#batching]])
-		gke_hub_custom_endpoint?: string
-		external_credentials?: matchN(1, [#external_credentials, [...#external_credentials]])
-		gkeonprem_custom_endpoint?:          string
-		healthcare_custom_endpoint?:         string
-		iam2_custom_endpoint?:               string
-		iam3_custom_endpoint?:               string
-		iam_beta_custom_endpoint?:           string
-		iam_credentials_custom_endpoint?:    string
-		iam_custom_endpoint?:                string
-		iam_workforce_pool_custom_endpoint?: string
-		iap_custom_endpoint?:                string
-		identity_platform_custom_endpoint?:  string
-		impersonate_service_account?:        string
+		gke_hub_custom_endpoint?:             string
+		gkeonprem_custom_endpoint?:           string
+		healthcare_custom_endpoint?:          string
+		hypercomputecluster_custom_endpoint?: string
+		iam2_custom_endpoint?:                string
+		iam3_custom_endpoint?:                string
+		iam_beta_custom_endpoint?:            string
+		iam_credentials_custom_endpoint?:     string
+		iam_custom_endpoint?:                 string
+		iam_workforce_pool_custom_endpoint?:  string
+		iap_custom_endpoint?:                 string
+		identity_platform_custom_endpoint?:   string
+		impersonate_service_account?:         string
 		impersonate_service_account_delegates?: [...string]
 		integration_connectors_custom_endpoint?:     string
 		integrations_custom_endpoint?:               string
@@ -158,15 +158,16 @@ package google
 		resource_manager_custom_endpoint?:           string
 		resource_manager_v3_custom_endpoint?:        string
 		scopes?: [...string]
-		secret_manager_custom_endpoint?:                string
-		secret_manager_regional_custom_endpoint?:       string
-		secure_source_manager_custom_endpoint?:         string
-		security_center_custom_endpoint?:               string
-		security_center_management_custom_endpoint?:    string
-		security_center_v2_custom_endpoint?:            string
-		securityposture_custom_endpoint?:               string
-		service_directory_custom_endpoint?:             string
-		service_management_custom_endpoint?:            string
+		secret_manager_custom_endpoint?:             string
+		secret_manager_regional_custom_endpoint?:    string
+		secure_source_manager_custom_endpoint?:      string
+		security_center_custom_endpoint?:            string
+		security_center_management_custom_endpoint?: string
+		security_center_v2_custom_endpoint?:         string
+		securityposture_custom_endpoint?:            string
+		service_directory_custom_endpoint?:          string
+		service_management_custom_endpoint?:         string
+		external_credentials?: matchN(1, [#external_credentials, [...#external_credentials]])
 		service_networking_custom_endpoint?:            string
 		service_usage_custom_endpoint?:                 string
 		site_verification_custom_endpoint?:             string

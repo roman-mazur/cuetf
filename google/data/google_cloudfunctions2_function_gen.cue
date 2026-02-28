@@ -97,6 +97,12 @@ package data
 			available_cpu?:                  string
 			available_memory?:               string
 			binary_authorization_policy?:    string
+			direct_vpc_egress?:              string
+			direct_vpc_network_interface?: [...close({
+				network?:    string
+				subnetwork?: string
+				tags?: [...string]
+			})]
 			environment_variables?: [string]: string
 			gcf_uri?:                          string
 			ingress_settings?:                 string
