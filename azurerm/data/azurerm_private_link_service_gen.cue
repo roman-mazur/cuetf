@@ -6,8 +6,7 @@ package data
 	close({
 		alias?: string
 		auto_approval_subscription_ids?: [...string]
-		enable_proxy_protocol?: bool
-		id?:                    string
+		id?: string
 		load_balancer_frontend_ip_configuration_ids?: [...string]
 		location?: string
 		name!:     string
@@ -18,8 +17,9 @@ package data
 			private_ip_address_version?: string
 			subnet_id?:                  string
 		})]
-		resource_group_name!: string
-		timeouts?:            #timeouts
+		proxy_protocol_enabled?: bool
+		resource_group_name!:    string
+		timeouts?:               #timeouts
 		tags?: [string]: string
 		visibility_subscription_ids?: [...string]
 	})

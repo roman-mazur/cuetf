@@ -7,11 +7,11 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_network_gateway_connection")
 	close({
 		authorization_key?:   string
+		bgp_enabled?:         bool
 		connection_mode?:     string
 		connection_protocol?: string
 		dpd_timeout_seconds?: number
 		egress_nat_rule_ids?: [...string]
-		enable_bgp?:               bool
 		express_route_circuit_id?: string
 		custom_bgp_addresses?: matchN(1, [#custom_bgp_addresses, list.MaxItems(1) & [...#custom_bgp_addresses]])
 		express_route_gateway_bypass?: bool
