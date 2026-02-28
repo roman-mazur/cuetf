@@ -1,14 +1,16 @@
 // Command monthly-release performs the following actions:
 // - checks if the HEAD of the git repo is different from the latest tag,
-// - tags the HEAD using the current month (in a form of <major>.YYMM.0),
+// - tags the HEAD using the current month (in a form of <major>.YYMM.<patch>),
 // - published the cue module with this new version.
 package main
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"os"
 	"os/exec"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -33,6 +35,16 @@ func main() {
 
 	// 2. Generate and Create the tag locally
 	newTag := GenerateVersion(latestTag, time.Now())
+	for {
+		exists, err := TagExists(newTag)
+		if err != nil {
+			log.Fatalf("❌ Failed to check git tag %s: %v", newTag, err)
+		}
+		if !exists {
+			break
+		}
+		newTag = IncrementPatch(newTag)
+	}
 	fmt.Printf("🚀 Tagging HEAD with %s...\n", newTag)
 	if err := CreateTag(newTag); err != nil {
 		log.Fatalf("❌ Failed to create git tag %s: %v", newTag, err)
@@ -55,15 +67,47 @@ func main() {
 
 func GenerateVersion(latestTag string, now time.Time) string {
 	major := "v0"
+	month := now.Format("0601")
 	if latestTag != "" {
-		major = strings.Split(latestTag, ".")[0]
+		parts := strings.Split(latestTag, ".")
+		major = parts[0]
+		if len(parts) >= 3 && parts[1] == month {
+			patch, err := strconv.Atoi(parts[2])
+			if err == nil {
+				return fmt.Sprintf("%s.%s.%d", major, month, patch+1)
+			}
+		}
 	}
-	return fmt.Sprintf("%s.%s.0", major, now.Format("0601"))
+	return fmt.Sprintf("%s.%s.0", major, month)
+}
+
+func IncrementPatch(tag string) string {
+	parts := strings.Split(tag, ".")
+	if len(parts) != 3 {
+		return tag
+	}
+	patch, err := strconv.Atoi(parts[2])
+	if err != nil {
+		return tag
+	}
+	return fmt.Sprintf("%s.%s.%d", parts[0], parts[1], patch+1)
 }
 
 func CreateTag(tag string) error {
 	_, err := runCmd("git", "tag", tag)
 	return err
+}
+
+func TagExists(tag string) (bool, error) {
+	cmd := exec.Command("git", "rev-parse", "-q", "--verify", "refs/tags/"+tag)
+	if err := cmd.Run(); err != nil {
+		var exitError *exec.ExitError
+		if errors.As(err, &exitError) {
+			return false, nil
+		}
+		return false, err
+	}
+	return true, nil
 }
 
 // PushTag pushes a specific tag to the 'origin' remote.
