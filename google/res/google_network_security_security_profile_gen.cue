@@ -75,6 +75,15 @@ import "list"
 	})
 
 	#custom_mirroring_profile: close({
+		// The target downstream Mirroring Deployment Groups.
+		// This field is used for Packet Broker mirroring endpoint groups
+		// to specify
+		// the deployment groups that the packet should be mirrored to by
+		// the broker.
+		// Format:
+		// projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
+		mirroring_deployment_groups?: [...string]
+
 		// The target Mirroring Endpoint Group.
 		// When a mirroring rule with this security profile attached
 		// matches a packet,
@@ -83,6 +92,13 @@ import "list"
 		// Format:
 		// projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
 		mirroring_endpoint_group!: string
+
+		// The type of the mirroring endpoint group this profile is
+		// attached to.
+		// Possible values:
+		// DIRECT
+		// BROKER
+		mirroring_endpoint_group_type?: string
 	})
 
 	#threat_prevention_profile: close({

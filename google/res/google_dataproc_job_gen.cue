@@ -25,6 +25,8 @@ import "list"
 		// Setting this to true, and calling destroy, will ensure that
 		// the job is first cancelled before issuing the delete.
 		force_delete?: bool
+		id?:           string
+		hadoop_config?: matchN(1, [#hadoop_config, list.MaxItems(1) & [...#hadoop_config]])
 
 		// Optional. The labels to associate with this job.
 		//
@@ -33,13 +35,11 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The project in which the cluster can be found and jobs
 		// subsequently run against. If it is not provided, the provider
 		// project is used.
 		project?: string
-		hadoop_config?: matchN(1, [#hadoop_config, list.MaxItems(1) & [...#hadoop_config]])
 		hive_config?: matchN(1, [#hive_config, list.MaxItems(1) & [...#hive_config]])
 		pig_config?: matchN(1, [#pig_config, list.MaxItems(1) & [...#pig_config]])
 		placement!: matchN(1, [#placement, list.MaxItems(1) & [_, ...] & [...#placement]])
@@ -49,12 +49,12 @@ import "list"
 		scheduling?: matchN(1, [#scheduling, list.MaxItems(1) & [...#scheduling]])
 		spark_config?: matchN(1, [#spark_config, list.MaxItems(1) & [...#spark_config]])
 		sparksql_config?: matchN(1, [#sparksql_config, list.MaxItems(1) & [...#sparksql_config]])
-		timeouts?: #timeouts
 
 		// The Cloud Dataproc region. This essentially determines which
 		// clusters are available for this job to be submitted to. If not
 		// specified, defaults to global.
-		region?: string
+		region?:   string
+		timeouts?: #timeouts
 
 		// The status of the job.
 		status?: [...close({
@@ -67,6 +67,12 @@ import "list"
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+
+		// If set to true, Terraform will wait for the job to reach a
+		// terminal state (DONE, ERROR, CANCELLED, ATTEMPT_FAILURE).
+		// Otherwise, Terraform will consider the job 'created' once it
+		// is in the RUNNING state.
+		wait_for_completion?: bool
 	})
 
 	#hadoop_config: close({

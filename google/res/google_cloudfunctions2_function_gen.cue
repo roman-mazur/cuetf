@@ -159,6 +159,11 @@ import "list"
 		// the Cloud Run service.
 		binary_authorization_policy?: string
 
+		// Egress settings for direct VPC. If not provided, it defaults to
+		// VPC_EGRESS_PRIVATE_RANGES_ONLY. Possible values:
+		// ["VPC_EGRESS_ALL_TRAFFIC", "VPC_EGRESS_PRIVATE_RANGES_ONLY"]
+		direct_vpc_egress?: string
+
 		// Environment variables that shall be available during function
 		// execution.
 		environment_variables?: [string]: string
@@ -185,6 +190,7 @@ import "list"
 		// coexist at a
 		// given time.
 		min_instance_count?: number
+		direct_vpc_network_interface?: matchN(1, [_#defs."/$defs/service_config/$defs/direct_vpc_network_interface", [..._#defs."/$defs/service_config/$defs/direct_vpc_network_interface"]])
 		secret_environment_variables?: matchN(1, [_#defs."/$defs/service_config/$defs/secret_environment_variables", [..._#defs."/$defs/service_config/$defs/secret_environment_variables"]])
 		secret_volumes?: matchN(1, [_#defs."/$defs/service_config/$defs/secret_volumes", [..._#defs."/$defs/service_config/$defs/secret_volumes"]])
 
@@ -296,6 +302,25 @@ import "list"
 		// If the operator field is set as 'match-path-pattern', this
 		// value can be a path pattern instead of an exact value.
 		value!: string
+	})
+
+	_#defs: "/$defs/service_config/$defs/direct_vpc_network_interface": close({
+		// The name of the VPC network to which the function will be
+		// connected. Specify either a VPC network or a subnet, or both.
+		// If you specify only a network, the subnet uses the same name
+		// as the network.
+		network?: string
+
+		// The name of the VPC subnetwork that the Cloud Function resource
+		// will get IPs from. Specify either a VPC network or a subnet,
+		// or both. If both network and subnetwork are specified, the
+		// given VPC subnetwork must belong to the given VPC network. If
+		// subnetwork is not specified, the subnetwork with the same name
+		// with the network will be used.
+		subnetwork?: string
+
+		// Network tags applied to this Cloud Function resource.
+		tags?: [...string]
 	})
 
 	_#defs: "/$defs/service_config/$defs/secret_environment_variables": close({

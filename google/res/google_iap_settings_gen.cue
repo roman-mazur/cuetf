@@ -103,6 +103,17 @@ import "list"
 	})
 
 	_#defs: "/$defs/access_settings/$defs/oauth_settings": close({
+		// OAuth 2.0 client ID used in the OAuth flow to generate an
+		// access token. If this field is set, you can skip obtaining the
+		// OAuth credentials in this.
+		client_id?: string
+
+		// OAuth secret paired with client ID.
+		client_secret?: string
+
+		// OAuth secret sha256 paired with client ID.
+		client_secret_sha256?: string
+
 		// Domain hint to send as hd=? parameter in OAuth request flow.
 		// Enables redirect to primary IDP by skipping Google's login
 		// screen.

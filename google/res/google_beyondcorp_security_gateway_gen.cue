@@ -24,18 +24,19 @@ import "list"
 		id?: string
 
 		// Identifier. Name of the resource.
-		name?: string
-		hubs?: matchN(1, [#hubs, [...#hubs]])
+		name?:    string
 		project?: string
-		proxy_protocol_config?: matchN(1, [#proxy_protocol_config, list.MaxItems(1) & [...#proxy_protocol_config]])
-		service_discovery?: matchN(1, [#service_discovery, list.MaxItems(1) & [...#service_discovery]])
-		timeouts?: #timeouts
 
 		// Optional. User-settable SecurityGateway resource ID.
 		// * Must start with a letter.
 		// * Must contain between 4-63 characters from '/a-z-/'.
 		// * Must end with a number or letter.
 		security_gateway_id!: string
+		hubs?: matchN(1, [#hubs, [...#hubs]])
+		logging?: matchN(1, [#logging, list.MaxItems(1) & [...#logging]])
+		proxy_protocol_config?: matchN(1, [#proxy_protocol_config, list.MaxItems(1) & [...#proxy_protocol_config]])
+		service_discovery?: matchN(1, [#service_discovery, list.MaxItems(1) & [...#service_discovery]])
+		timeouts?: #timeouts
 
 		// Output only. The operational state of the SecurityGateway.
 		// Possible values:
@@ -56,6 +57,8 @@ import "list"
 		internet_gateway?: matchN(1, [_#defs."/$defs/hubs/$defs/internet_gateway", list.MaxItems(1) & [..._#defs."/$defs/hubs/$defs/internet_gateway"]])
 		region!: string
 	})
+
+	#logging: close({})
 
 	#proxy_protocol_config: close({
 		// The configuration for the proxy.

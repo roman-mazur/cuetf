@@ -22,6 +22,10 @@ import "list"
 		// with at most one data store.
 		data_store_ids!: [...string]
 
+		// Whether to disable analytics for searches performed on this
+		// engine.
+		disable_analytics?: bool
+
 		// Required. The display name of the engine. Should be human
 		// readable. UTF-8 encoded string with limit of 1024 characters.
 		display_name!: string
