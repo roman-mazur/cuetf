@@ -22,9 +22,10 @@ import (
 )
 
 type Config struct {
-	SchemaPath string
-	OutputPath string
-	Version    string
+	SchemaPath      string
+	OutputPath      string
+	Version         string
+	WriteModuleFile bool
 
 	GenerateDefs      bool
 	GenerateMappings  bool
@@ -41,6 +42,8 @@ type Generator struct {
 	lg *clog.Logger
 }
 
+const modulePath = "github.com/roman-mazur/cuetf"
+
 func NewGenerator(logf clog.Logf) *Generator {
 	return &Generator{lg: clog.New(logf)}
 }
@@ -53,19 +56,32 @@ func (g *Generator) Generate(cfg *Config) error {
 
 	for provider, data := range fullData.ProviderSchemas {
 		shortName := path.Base(provider)
-		providerPath := filepath.Join(cfg.OutputPath, shortName)
+		providerPathName := shortName
+		providerPath := filepath.Join(cfg.OutputPath, filepath.FromSlash(providerPathName))
+
+		if cfg.WriteModuleFile {
+			writeModuleFile(cfg.OutputPath)
+		}
 
 		if cfg.GenerateDefs {
-			g.generateDefs(cfg, data, providerPath)
+			g.generateDefs(cfg, data, providerPath, modulePath)
 		}
 		if cfg.GenerateMappings {
-			generateMappings(providerPath, shortName)
+			generateMappings(providerPath, shortName, modulePath)
 		}
 		if cfg.GenerateInterface {
-			generateInterface(providerPath, provider, shortName)
+			generateInterface(providerPath, provider, shortName, modulePath)
 		}
 	}
 	return nil
+}
+
+func writeModuleFile(providerPath string) {
+	_ = os.MkdirAll(filepath.Join(providerPath, "cue.mod"), 0777)
+	createFile(
+		filepath.Join(providerPath, "cue.mod", "module.cue"),
+		fmt.Sprintf("module: %q\nlanguage: version: \"v0.9.0\"\n", modulePath),
+	)
 }
 
 func parseTerraformData(p string, d *terraformData) error {
@@ -82,11 +98,11 @@ func parseTerraformData(p string, d *terraformData) error {
 	return nil
 }
 
-func (g *Generator) generateDefs(cfg *Config, data providerSchema, providerPath string) {
+func (g *Generator) generateDefs(cfg *Config, data providerSchema, providerPath string, modulePath string) {
 	var wg sync.WaitGroup
 
 	wg.Go(func() {
-		processSchema(cfg, g.lg.LogPart(clog.PartProvider), "provider", data.Provider, providerPath, "1")
+		processSchema(cfg, g.lg.LogPart(clog.PartProvider), "provider", data.Provider, providerPath, "1", modulePath)
 		if cfg.Version != "" {
 			providerName := filepath.Base(providerPath)
 			createFile(
@@ -98,45 +114,45 @@ func (g *Generator) generateDefs(cfg *Config, data providerSchema, providerPath 
 	})
 
 	wg.Go(func() {
-		generateMapDefs(cfg, g.lg.LogPart(clog.PartResources), data.Resources, filepath.Join(providerPath, "res"))
+		generateMapDefs(cfg, g.lg.LogPart(clog.PartResources), data.Resources, filepath.Join(providerPath, "res"), modulePath)
 		g.lg.Finish(clog.PartResources)
 	})
 
 	wg.Go(func() {
-		generateMapDefs(cfg, g.lg.LogPart(clog.PartDataSources), data.DataSources, filepath.Join(providerPath, "data"))
+		generateMapDefs(cfg, g.lg.LogPart(clog.PartDataSources), data.DataSources, filepath.Join(providerPath, "data"), modulePath)
 		g.lg.Finish(clog.PartDataSources)
 	})
 
 	wg.Wait()
 }
 
-func generateMapDefs(cfg *Config, logf clog.Logf, data map[string]*schemaData, dir string) {
+func generateMapDefs(cfg *Config, logf clog.Logf, data map[string]*schemaData, dir string, modulePath string) {
 	keys := slices.Collect(maps.Keys(data))
 	slices.Sort(keys)
 	logf("defs count for %s: %d", dir, len(data))
 	for i, name := range keys {
 		schema := data[name]
-		processSchema(cfg, logf, name, schema, dir, strconv.Itoa(i+1))
+		processSchema(cfg, logf, name, schema, dir, strconv.Itoa(i+1), modulePath)
 	}
 }
 
-func generateMappings(providerPath string, pkgName string) {
+func generateMappings(providerPath string, pkgName string, modulePath string) {
 	createFile(
 		filepath.Join(providerPath, "resources_gen.cue"),
-		wrapWithMappingHeader(pkgName, "res",
+		wrapWithMappingHeader(modulePath, pkgName, "res",
 			mapping("_#res", "res", pkgName, listDefs(filepath.Join(providerPath, "res")))),
 	)
 	createFile(
 		filepath.Join(providerPath, "ds_gen.cue"),
-		wrapWithMappingHeader(pkgName, "data",
+		wrapWithMappingHeader(modulePath, pkgName, "data",
 			mapping("_#ds", "data", pkgName, listDefs(filepath.Join(providerPath, "data")))),
 	)
 }
 
-func generateInterface(providerPath string, providerUri string, pkgName string) {
+func generateInterface(providerPath string, providerUri string, pkgName string, modulePath string) {
 	const tpl = `package {{.PackageName}}
 
-import "github.com/roman-mazur/cuetf/internal/tfjson"
+import "{{.ModulePath}}/internal/tfjson"
 
 #Terraform: tfjson.#Schema & {
 	#{{.PackageName}}Prefix:       string | *{{.PackageName | printf "%q"}}
@@ -166,9 +182,11 @@ import "github.com/roman-mazur/cuetf/internal/tfjson"
 	var code bytes.Buffer
 	err := template.Must(template.New("terraform").Parse(tpl)).Execute(&code, struct {
 		PackageName string
+		ModulePath  string
 		Source      string
 	}{
 		PackageName: pkgName,
+		ModulePath:  modulePath,
 		Source:      strings.TrimPrefix(providerUri, "registry.terraform.io/"),
 	})
 	if err != nil {
@@ -181,17 +199,17 @@ import "github.com/roman-mazur/cuetf/internal/tfjson"
 	)
 }
 
-func wrapWithMappingHeader(pkgName, typ, content string) string {
+func wrapWithMappingHeader(modulePath, pkgName, typ, content string) string {
 	const code = `package %s
 
-import "github.com/roman-mazur/cuetf/%s/%s"
+import "%s/%s/%s"
 
 #Terraform: {
 	#%sPrefix: string
 %s
 }
 `
-	return fmt.Sprintf(code, pkgName, pkgName, typ, pkgName, content)
+	return fmt.Sprintf(code, pkgName, modulePath, pkgName, typ, pkgName, content)
 }
 
 func mapping(prefix string, typ string, provider string, defs []string) string {
@@ -232,7 +250,7 @@ func ShouldProcess(cfg *Config, name string) bool {
 	return true
 }
 
-func processSchema(cfg *Config, logf clog.Logf, name string, s *schemaData, dir string, logPrefix string) {
+func processSchema(cfg *Config, logf clog.Logf, name string, s *schemaData, dir string, logPrefix string, modulePath string) {
 	if !ShouldProcess(cfg, name) {
 		return
 	}
@@ -263,7 +281,7 @@ func processSchema(cfg *Config, logf clog.Logf, name string, s *schemaData, dir 
 
 	createFile(
 		filepath.Join(dir, name+"-transform.cue"),
-		fmt.Sprintf(transformCode, tmpPkgName, path.Join(filepath.Base(dir), name)),
+		fmt.Sprintf(transformCode, tmpPkgName, modulePath, path.Join(filepath.Base(dir), name)),
 	)
 
 	transformCmd := exec.Command("bash", "-c", fmt.Sprintf(exportCode, tmpPkgName, pkgName, name))
@@ -316,7 +334,7 @@ type blockData map[string]any
 
 const transformCode = `package %s
 
-import "github.com/roman-mazur/cuetf/internal/jsonschema"
+import "%s/internal/jsonschema"
 
 jsonSchema: jsonschema.#SchemaTransform & {#block: input, #name: %q}
 `
