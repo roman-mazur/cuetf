@@ -1,0 +1,146 @@
+package res
+
+import "list"
+
+#scaleway_lb_backend: {
+	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_lb_backend")
+	close({
+		health_check_http?: matchN(1, [#health_check_http, list.MaxItems(1) & [...#health_check_http]])
+		health_check_https?: matchN(1, [#health_check_https, list.MaxItems(1) & [...#health_check_https]])
+		health_check_tcp?: matchN(1, [#health_check_tcp, list.MaxItems(1) & [...#health_check_tcp]])
+		timeouts?: #timeouts
+
+		// Scaleway S3 bucket website to be served in case all backend
+		// servers are down
+		//
+		// **NOTE** : Only the host part of the Scaleway S3 bucket website
+		// is expected.
+		// E.g. 'failover-website.s3-website.fr-par.scw.cloud' if your
+		// bucket website URL is
+		// 'https://failover-website.s3-website.fr-par.scw.cloud/'.
+		failover_host?: string
+
+		// User sessions will be forwarded to this port of backend servers
+		forward_port!: number
+
+		// Load balancing algorithm
+		forward_port_algorithm?: string
+
+		// Backend protocol
+		forward_protocol!: string
+
+		// Interval between two HC requests
+		health_check_delay?: string
+
+		// Number of allowed failed HC requests before the backend server
+		// is marked down
+		health_check_max_retries?: number
+
+		// Port the HC requests will be send to. Default to `forward_port`
+		health_check_port?: number
+
+		// Defines whether proxy protocol should be activated for the
+		// health check
+		health_check_send_proxy?: bool
+
+		// Timeout before we consider a HC request failed
+		health_check_timeout?: string
+
+		// Time to wait between two consecutive health checks when a
+		// backend server is in a transient state (going UP or DOWN)
+		health_check_transient_delay?: string
+		id?:                           string
+
+		// Specifies whether the Load Balancer should check the backend
+		// server’s certificate before initiating a connection
+		ignore_ssl_server_verify?: bool
+
+		// The load-balancer ID
+		lb_id!: string
+
+		// Maximum number of connections allowed per backend server
+		max_connections?: number
+
+		// Number of retries when a backend server connection failed
+		max_retries?: number
+
+		// The name of the backend
+		name?: string
+
+		// Modify what occurs when a backend server is marked down
+		on_marked_down_action?: string
+
+		// Type of PROXY protocol to enable
+		proxy_protocol?: string
+
+		// Whether to use another backend server on each attempt
+		redispatch_attempt_count?: number
+
+		// Backend server IP addresses list (IPv4 or IPv6)
+		server_ips?: [...string]
+
+		// Enables SSL between load balancer and backend servers
+		ssl_bridging?: bool
+
+		// The type of sticky sessions
+		sticky_sessions?: string
+
+		// Cookie name for sticky sessions
+		sticky_sessions_cookie_name?: string
+
+		// Maximum initial server connection establishment time
+		timeout_connect?: string
+
+		// Maximum time (in seconds) for a request to be left pending in
+		// queue when `max_connections` is reached
+		timeout_queue?: string
+
+		// Maximum server connection inactivity time
+		timeout_server?: string
+
+		// Maximum tunnel inactivity time
+		timeout_tunnel?: string
+	})
+
+	#health_check_http: close({
+		// The expected HTTP status code
+		code?: number
+
+		// The HTTP host header to use for HC requests
+		host_header?: string
+
+		// The HTTP method to use for HC requests
+		method?: string
+
+		// The HTTP endpoint URL to call for HC requests
+		uri!: string
+	})
+
+	#health_check_https: close({
+		// The expected HTTP status code
+		code?: number
+
+		// The HTTP host header to use for HC requests
+		host_header?: string
+
+		// The HTTP method to use for HC requests
+		method?: string
+
+		// The SNI to use for HC requests over SSL
+		sni?: string
+
+		// The HTTPS endpoint URL to call for HC requests
+		uri!: string
+	})
+
+	#health_check_tcp: close({})
+
+	#timeouts: close({
+		create?:  string
+		default?: string
+		delete?:  string
+		read?:    string
+		update?:  string
+	})
+}
