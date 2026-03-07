@@ -6,20 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_globalaccelerator_custom_routing_accelerator")
 	close({
+		attributes?: matchN(1, [#attributes, list.MaxItems(1) & [...#attributes]])
+		timeouts?:        #timeouts
 		arn?:             string
 		dns_name?:        string
 		enabled?:         bool
 		hosted_zone_id?:  string
 		id?:              string
 		ip_address_type?: string
-		attributes?: matchN(1, [#attributes, list.MaxItems(1) & [...#attributes]])
 		ip_addresses?: [...string]
 		ip_sets?: [...close({
 			ip_addresses?: [...string]
 			ip_family?: string
 		})]
-		timeouts?: #timeouts
-		name!:     string
+		name!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

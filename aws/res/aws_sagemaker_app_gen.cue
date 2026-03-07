@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_app")
 	close({
+		resource_spec?: matchN(1, [#resource_spec, list.MaxItems(1) & [...#resource_spec]])
 		app_name!:  string
 		app_type!:  string
 		arn?:       string
@@ -18,7 +19,6 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:     string
 		space_name?: string
-		resource_spec?: matchN(1, [#resource_spec, list.MaxItems(1) & [...#resource_spec]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		user_profile_name?: string

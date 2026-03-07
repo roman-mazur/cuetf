@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_securitylake_subscriber_notification")
 	close({
+		configuration?: matchN(1, [#configuration, [...#configuration]])
 		id?: string
 
 		// Region where this resource will be
@@ -13,7 +14,6 @@ package res
 		region?:              string
 		subscriber_endpoint?: string
 		subscriber_id!:       string
-		configuration?: matchN(1, [#configuration, [...#configuration]])
 	})
 
 	#configuration: close({

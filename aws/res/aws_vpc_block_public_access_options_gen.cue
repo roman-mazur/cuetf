@@ -4,17 +4,17 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_block_public_access_options")
 	close({
-		aws_account_id?: string
+		timeouts?:                    #timeouts
+		aws_account_id?:              string
+		aws_region?:                  string
+		id?:                          string
+		internet_gateway_block_mode!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                      string
-		aws_region?:                  string
-		id?:                          string
-		internet_gateway_block_mode!: string
-		timeouts?:                    #timeouts
+		region?: string
 	})
 
 	#timeouts: close({

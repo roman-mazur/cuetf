@@ -6,30 +6,32 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_batch_compute_environment")
 	close({
-		arn?: string
+		compute_resources?: matchN(1, [#compute_resources, list.MaxItems(1) & [...#compute_resources]])
+		eks_configuration?: matchN(1, [#eks_configuration, list.MaxItems(1) & [...#eks_configuration]])
+		update_policy?: matchN(1, [#update_policy, list.MaxItems(1) & [...#update_policy]])
+		arn?:             string
+		ecs_cluster_arn?: string
+		id?:              string
+		name?:            string
+		name_prefix?:     string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:          string
-		ecs_cluster_arn?: string
-		id?:              string
-		name?:            string
-		name_prefix?:     string
-		service_role?:    string
-		state?:           string
-		compute_resources?: matchN(1, [#compute_resources, list.MaxItems(1) & [...#compute_resources]])
+		region?:        string
+		service_role?:  string
+		state?:         string
 		status?:        string
 		status_reason?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type!: string
-		eks_configuration?: matchN(1, [#eks_configuration, list.MaxItems(1) & [...#eks_configuration]])
-		update_policy?: matchN(1, [#update_policy, list.MaxItems(1) & [...#update_policy]])
 	})
 
 	#compute_resources: close({
+		ec2_configuration?: matchN(1, [_#defs."/$defs/compute_resources/$defs/ec2_configuration", list.MaxItems(2) & [..._#defs."/$defs/compute_resources/$defs/ec2_configuration"]])
+		launch_template?: matchN(1, [_#defs."/$defs/compute_resources/$defs/launch_template", list.MaxItems(1) & [..._#defs."/$defs/compute_resources/$defs/launch_template"]])
 		allocation_strategy?: string
 		bid_percentage?:      number
 		desired_vcpus?:       number
@@ -37,12 +39,10 @@ import "list"
 		image_id?:            string
 		instance_role?:       string
 		instance_type?: [...string]
-		max_vcpus!: number
-		ec2_configuration?: matchN(1, [_#defs."/$defs/compute_resources/$defs/ec2_configuration", list.MaxItems(2) & [..._#defs."/$defs/compute_resources/$defs/ec2_configuration"]])
+		max_vcpus!:       number
 		min_vcpus?:       number
 		placement_group?: string
 		security_group_ids?: [...string]
-		launch_template?: matchN(1, [_#defs."/$defs/compute_resources/$defs/launch_template", list.MaxItems(1) & [..._#defs."/$defs/compute_resources/$defs/launch_template"]])
 		spot_iam_fleet_role?: string
 		subnets!: [...string]
 		tags?: [string]: string

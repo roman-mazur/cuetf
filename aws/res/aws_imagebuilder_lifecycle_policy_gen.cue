@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_imagebuilder_lifecycle_policy")
 	close({
+		policy_detail?: matchN(1, [#policy_detail, [...#policy_detail]])
+		resource_selection?: matchN(1, [#resource_selection, [...#resource_selection]])
 		arn?:            string
 		description?:    string
 		execution_role!: string
@@ -14,11 +16,9 @@ package res
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		policy_detail?: matchN(1, [#policy_detail, [...#policy_detail]])
+		region?:        string
 		resource_type!: string
-		resource_selection?: matchN(1, [#resource_selection, [...#resource_selection]])
-		status?: string
+		status?:        string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

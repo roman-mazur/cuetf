@@ -6,8 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_efs_replication_configuration")
 	close({
-		creation_time?: string
 		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
+		timeouts?:                        #timeouts
+		creation_time?:                   string
 		id?:                              string
 		original_source_file_system_arn?: string
 
@@ -18,7 +19,6 @@ import "list"
 		region?:                    string
 		source_file_system_arn?:    string
 		source_file_system_id!:     string
-		timeouts?:                  #timeouts
 		source_file_system_region?: string
 	})
 

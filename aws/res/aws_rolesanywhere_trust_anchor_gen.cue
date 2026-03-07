@@ -7,13 +7,13 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_rolesanywhere_trust_anchor")
 	close({
 		notification_settings?: matchN(1, [#notification_settings, list.MaxItems(50) & [...#notification_settings]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
 		arn?:     string
 		enabled?: bool
 		id?:      string
 		name!:    string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
 	})
 
 	#notification_settings: close({

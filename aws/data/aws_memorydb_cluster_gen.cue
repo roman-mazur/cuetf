@@ -11,18 +11,12 @@ package data
 			address?: string
 			port?:    number
 		})]
-		data_tiering?:         bool
-		description?:          string
-		engine?:               string
-		engine_patch_version?: string
-		engine_version?:       string
-		final_snapshot_name?:  string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                 string
+		data_tiering?:           bool
+		description?:            string
+		engine?:                 string
+		engine_patch_version?:   string
+		engine_version?:         string
+		final_snapshot_name?:    string
 		id?:                     string
 		ip_discovery?:           string
 		kms_key_arn?:            string
@@ -34,6 +28,12 @@ package data
 		num_shards?:             number
 		parameter_group_name?:   string
 		port?:                   number
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		security_group_ids?: [...string]
 		shards?: [...close({
 			name?: string

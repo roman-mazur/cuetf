@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_route53domains_registered_domain")
 	close({
+		admin_contact?: matchN(1, [#admin_contact, list.MaxItems(1) & [...#admin_contact]])
+		billing_contact?: matchN(1, [#billing_contact, list.MaxItems(1) & [...#billing_contact]])
+		name_server?: matchN(1, [#name_server, list.MaxItems(6) & [...#name_server]])
+		registrant_contact?: matchN(1, [#registrant_contact, list.MaxItems(1) & [...#registrant_contact]])
+		tech_contact?: matchN(1, [#tech_contact, list.MaxItems(1) & [...#tech_contact]])
+		timeouts?:            #timeouts
 		abuse_contact_email?: string
 		abuse_contact_phone?: string
 		admin_privacy?:       bool
@@ -15,23 +21,17 @@ import "list"
 		domain_name!:         string
 		expiration_date?:     string
 		id?:                  string
-		admin_contact?: matchN(1, [#admin_contact, list.MaxItems(1) & [...#admin_contact]])
-		registrant_privacy?: bool
-		registrar_name?:     string
-		registrar_url?:      string
-		billing_contact?: matchN(1, [#billing_contact, list.MaxItems(1) & [...#billing_contact]])
-		reseller?: string
+		registrant_privacy?:  bool
+		registrar_name?:      string
+		registrar_url?:       string
+		reseller?:            string
 		status_list?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		tech_privacy?:  bool
 		transfer_lock?: bool
 		updated_date?:  string
-		name_server?: matchN(1, [#name_server, list.MaxItems(6) & [...#name_server]])
-		registrant_contact?: matchN(1, [#registrant_contact, list.MaxItems(1) & [...#registrant_contact]])
-		tech_contact?: matchN(1, [#tech_contact, list.MaxItems(1) & [...#tech_contact]])
-		timeouts?:     #timeouts
-		whois_server?: string
+		whois_server?:  string
 	})
 
 	#admin_contact: close({

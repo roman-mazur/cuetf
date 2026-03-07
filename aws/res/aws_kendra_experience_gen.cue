@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_kendra_experience")
 	close({
+		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
+		timeouts?:    #timeouts
 		arn?:         string
 		description?: string
 		endpoints?: [...close({
@@ -13,17 +15,15 @@ import "list"
 			endpoint_type?: string
 		})]
 		experience_id?: string
+		id?:            string
+		index_id!:      string
+		name!:          string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		id?:     string
-		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
-		index_id!: string
-		timeouts?: #timeouts
-		name!:     string
+		region?:   string
 		role_arn!: string
 		status?:   string
 	})

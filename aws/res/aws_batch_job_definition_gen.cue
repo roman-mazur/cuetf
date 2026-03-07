@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_batch_job_definition")
 	close({
+		eks_properties?: matchN(1, [#eks_properties, list.MaxItems(1) & [...#eks_properties]])
+		retry_strategy?: matchN(1, [#retry_strategy, list.MaxItems(1) & [...#retry_strategy]])
+		timeout?: matchN(1, [#timeout, list.MaxItems(1) & [...#timeout]])
 		arn?:                        string
 		arn_prefix?:                 string
 		container_properties?:       string
@@ -13,24 +16,21 @@ import "list"
 		ecs_properties?:             string
 		id?:                         string
 		name!:                       string
+		node_properties?:            string
+		parameters?: [string]: string
+		platform_capabilities?: [...string]
+		propagate_tags?: bool
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:          string
-		node_properties?: string
-		parameters?: [string]: string
-		platform_capabilities?: [...string]
-		eks_properties?: matchN(1, [#eks_properties, list.MaxItems(1) & [...#eks_properties]])
-		propagate_tags?:      bool
+		region?:              string
 		revision?:            number
 		scheduling_priority?: number
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type!: string
-		retry_strategy?: matchN(1, [#retry_strategy, list.MaxItems(1) & [...#retry_strategy]])
-		timeout?: matchN(1, [#timeout, list.MaxItems(1) & [...#timeout]])
 	})
 
 	#eks_properties: close({
@@ -47,27 +47,27 @@ import "list"
 	})
 
 	_#defs: "/$defs/eks_properties/$defs/pod_properties": close({
-		dns_policy?: string
 		containers!: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers", list.MaxItems(10) & [_, ...] & [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers"]])
-		host_network?:            bool
-		service_account_name?:    string
-		share_process_namespace?: bool
 		image_pull_secret?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/image_pull_secret", [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/image_pull_secret"]])
 		init_containers?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers", list.MaxItems(10) & [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers"]])
 		metadata?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/metadata", list.MaxItems(1) & [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/metadata"]])
 		volumes?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/volumes", [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/volumes"]])
+		dns_policy?:              string
+		host_network?:            bool
+		service_account_name?:    string
+		share_process_namespace?: bool
 	})
 
 	_#defs: "/$defs/eks_properties/$defs/pod_properties/$defs/containers": close({
+		env?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/env", [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/env"]])
+		resources?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/resources", list.MaxItems(1) & [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/resources"]])
+		security_context?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/security_context", list.MaxItems(1) & [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/security_context"]])
+		volume_mounts?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/volume_mounts", [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/volume_mounts"]])
 		args?: [...string]
 		command?: [...string]
 		image!:             string
 		image_pull_policy?: string
 		name?:              string
-		env?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/env", [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/env"]])
-		resources?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/resources", list.MaxItems(1) & [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/resources"]])
-		security_context?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/security_context", list.MaxItems(1) & [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/security_context"]])
-		volume_mounts?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/volume_mounts", [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/volume_mounts"]])
 	})
 
 	_#defs: "/$defs/eks_properties/$defs/pod_properties/$defs/containers/$defs/env": close({
@@ -100,15 +100,15 @@ import "list"
 	})
 
 	_#defs: "/$defs/eks_properties/$defs/pod_properties/$defs/init_containers": close({
+		env?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/env", [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/env"]])
+		resources?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/resources", list.MaxItems(1) & [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/resources"]])
+		security_context?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/security_context", list.MaxItems(1) & [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/security_context"]])
+		volume_mounts?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/volume_mounts", [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/volume_mounts"]])
 		args?: [...string]
 		command?: [...string]
 		image!:             string
 		image_pull_policy?: string
 		name?:              string
-		env?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/env", [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/env"]])
-		resources?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/resources", list.MaxItems(1) & [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/resources"]])
-		security_context?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/security_context", list.MaxItems(1) & [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/security_context"]])
-		volume_mounts?: matchN(1, [_#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/volume_mounts", [..._#defs."/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/volume_mounts"]])
 	})
 
 	_#defs: "/$defs/eks_properties/$defs/pod_properties/$defs/init_containers/$defs/env": close({

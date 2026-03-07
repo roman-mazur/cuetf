@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_encryption_control")
 	close({
+		timeouts?:                               #timeouts
 		egress_only_internet_gateway_exclusion?: string
 		elastic_file_system_exclusion?:          string
 		id?:                                     string
@@ -51,7 +52,6 @@ package res
 				state_message?: string
 			})
 		})
-		timeouts?:      #timeouts
 		state?:         string
 		state_message?: string
 		tags?: [string]:     string

@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_odb_cloud_exadata_infrastructure")
 	close({
+		maintenance_window?: matchN(1, [#maintenance_window, [...#maintenance_window]])
+		timeouts?: #timeouts
+
 		// The number of storage servers requested for the Exadata
 		// infrastructure
 		activated_storage_count?: number
@@ -11,12 +14,12 @@ package res
 		// The number of storage servers requested for the Exadata
 		// infrastructure
 		additional_storage_count?: number
+		arn?:                      string
 
 		// The name of the Availability Zone (AZ) where the Exadata
 		// infrastructure is located. Changing this will force terraform
 		// to create new resource
 		availability_zone?: string
-		arn?:               string
 
 		// The AZ ID of the AZ where the Exadata infrastructure is
 		// located. Changing this will force terraform to create new
@@ -102,8 +105,6 @@ package res
 		// The amount of memory, in gigabytes (GB), that's allocated on
 		// the Exadata infrastructure
 		memory_size_in_gbs?: number
-		maintenance_window?: matchN(1, [#maintenance_window, [...#maintenance_window]])
-		timeouts?: #timeouts
 
 		// The monthly software version of the database servers in the
 		// Exadata infrastructure
@@ -160,12 +161,12 @@ package res
 		// The software version of the storage servers on the Exadata
 		// infrastructure.
 		storage_server_version?: string
-		tags?: [string]: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 
 		// The total amount of storage, in gigabytes (GB), on the Exadata
 		// infrastructure.
 		total_storage_size_in_gbs?: number
-		tags_all?: [string]: string
 	})
 
 	#maintenance_window: close({

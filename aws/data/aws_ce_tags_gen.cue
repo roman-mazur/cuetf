@@ -7,12 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ce_tags")
 	close({
 		filter?: matchN(1, [#filter, list.MaxItems(1) & [...#filter]])
+		sort_by?: matchN(1, [#sort_by, [...#sort_by]])
+		time_period!: matchN(1, [#time_period, list.MaxItems(1) & [_, ...] & [...#time_period]])
 		id?:            string
 		search_string?: string
 		tag_key?:       string
 		tags?: [...string]
-		sort_by?: matchN(1, [#sort_by, [...#sort_by]])
-		time_period!: matchN(1, [#time_period, list.MaxItems(1) & [_, ...] & [...#time_period]])
 	})
 
 	#filter: close({

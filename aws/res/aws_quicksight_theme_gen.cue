@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_quicksight_theme")
 	close({
+		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
+		permissions?: matchN(1, [#permissions, list.MaxItems(64) & [...#permissions]])
+		timeouts?:          #timeouts
 		arn?:               string
 		aws_account_id?:    string
 		base_theme_id!:     string
@@ -19,15 +22,12 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
 		status?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		permissions?: matchN(1, [#permissions, list.MaxItems(64) & [...#permissions]])
 		theme_id!:            string
 		version_description?: string
 		version_number?:      number
-		timeouts?:            #timeouts
 	})
 
 	#configuration: close({

@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_acm_certificate_validation")
 	close({
+		timeouts?:        #timeouts
 		certificate_arn!: string
 		id?:              string
 
@@ -13,7 +14,6 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		validation_record_fqdns?: [...string]
-		timeouts?: #timeouts
 	})
 
 	#timeouts: close({

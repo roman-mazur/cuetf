@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_internetmonitor_monitor")
 	close({
+		health_events_config?: matchN(1, [#health_events_config, list.MaxItems(1) & [...#health_events_config]])
+		internet_measurements_log_delivery?: matchN(1, [#internet_measurements_log_delivery, list.MaxItems(1) & [...#internet_measurements_log_delivery]])
 		arn?:                          string
 		id?:                           string
 		max_city_networks_to_monitor?: number
@@ -17,8 +19,6 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		resources?: [...string]
-		health_events_config?: matchN(1, [#health_events_config, list.MaxItems(1) & [...#health_events_config]])
-		internet_measurements_log_delivery?: matchN(1, [#internet_measurements_log_delivery, list.MaxItems(1) & [...#internet_measurements_log_delivery]])
 		status?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_appsync_channel_namespace")
 	close({
+		handler_configs?: matchN(1, [#handler_configs, [...#handler_configs]])
+		publish_auth_mode?: matchN(1, [#publish_auth_mode, [...#publish_auth_mode]])
+		subscribe_auth_mode?: matchN(1, [#subscribe_auth_mode, [...#subscribe_auth_mode]])
 		api_id!:                string
 		channel_namespace_arn?: string
 		code_handlers?:         string
@@ -14,11 +17,8 @@ package res
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		handler_configs?: matchN(1, [#handler_configs, [...#handler_configs]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		publish_auth_mode?: matchN(1, [#publish_auth_mode, [...#publish_auth_mode]])
-		subscribe_auth_mode?: matchN(1, [#subscribe_auth_mode, [...#subscribe_auth_mode]])
 	})
 
 	#handler_configs: close({

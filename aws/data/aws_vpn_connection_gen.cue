@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_vpn_connection")
 	close({
+		filter?: matchN(1, [#filter, [...#filter]])
 		category?:                       string
 		core_network_arn?:               string
 		core_network_attachment_arn?:    string
@@ -22,7 +23,6 @@ package data
 			source?:                 string
 			state?:                  string
 		})]
-		filter?: matchN(1, [#filter, [...#filter]])
 		state?: string
 		tags?: [string]: string
 		transit_gateway_id?: string

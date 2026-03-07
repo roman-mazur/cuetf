@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_evidently_launch")
 	close({
+		groups!: matchN(1, [#groups, list.MaxItems(5) & [_, ...] & [...#groups]])
+		metric_monitors?: matchN(1, [#metric_monitors, list.MaxItems(3) & [...#metric_monitors]])
+		scheduled_splits_config?: matchN(1, [#scheduled_splits_config, list.MaxItems(1) & [...#scheduled_splits_config]])
+		timeouts?:     #timeouts
 		arn?:          string
 		created_time?: string
 		description?:  string
@@ -13,26 +17,22 @@ import "list"
 			ended_time?:   string
 			started_time?: string
 		})]
-		id?:                string
-		last_updated_time?: string
-		name!:              string
+		id?:                 string
+		last_updated_time?:  string
+		name!:               string
+		project!:            string
+		randomization_salt?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:  string
-		project!: string
-		groups!: matchN(1, [#groups, list.MaxItems(5) & [_, ...] & [...#groups]])
-		randomization_salt?: string
-		metric_monitors?: matchN(1, [#metric_monitors, list.MaxItems(3) & [...#metric_monitors]])
+		region?:        string
 		status?:        string
 		status_reason?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type?: string
-		scheduled_splits_config?: matchN(1, [#scheduled_splits_config, list.MaxItems(1) & [...#scheduled_splits_config]])
-		timeouts?: #timeouts
 	})
 
 	#groups: close({

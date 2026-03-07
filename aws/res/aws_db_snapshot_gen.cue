@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_db_snapshot")
 	close({
+		timeouts?:               #timeouts
 		allocated_storage?:      number
 		availability_zone?:      string
 		db_instance_identifier!: string
@@ -15,16 +16,15 @@ package res
 		id?:                     string
 		iops?:                   number
 		kms_key_id?:             string
+		license_model?:          string
+		option_group_name?:      string
+		port?:                   number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:            string
-		timeouts?:          #timeouts
-		license_model?:     string
-		option_group_name?: string
-		port?:              number
+		region?: string
 		shared_accounts?: [...string]
 		snapshot_type?:                 string
 		source_db_snapshot_identifier?: string

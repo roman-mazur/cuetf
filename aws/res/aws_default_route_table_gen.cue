@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_default_route_table")
 	close({
+		timeouts?:               #timeouts
 		arn?:                    string
 		default_route_table_id!: string
 		id?:                     string
@@ -29,7 +30,6 @@ package res
 			vpc_endpoint_id?:            string
 			vpc_peering_connection_id?:  string
 		})]
-		timeouts?: #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		vpc_id?: string

@@ -6,8 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dms_replication_config")
 	close({
-		arn?: string
-		id?:  string
+		compute_config!: matchN(1, [#compute_config, list.MaxItems(1) & [_, ...] & [...#compute_config]])
+		timeouts?: #timeouts
+		arn?:      string
+		id?:       string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -19,11 +21,9 @@ import "list"
 		replication_type!:              string
 		resource_identifier?:           string
 		source_endpoint_arn!:           string
-		compute_config!: matchN(1, [#compute_config, list.MaxItems(1) & [_, ...] & [...#compute_config]])
-		timeouts?:              #timeouts
-		start_replication?:     bool
-		supplemental_settings?: string
-		table_mappings!:        string
+		start_replication?:             bool
+		supplemental_settings?:         string
+		table_mappings!:                string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		target_endpoint_arn!: string

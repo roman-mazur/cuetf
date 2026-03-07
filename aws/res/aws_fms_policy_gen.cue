@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_fms_policy")
 	close({
+		exclude_map?: matchN(1, [#exclude_map, list.MaxItems(1) & [...#exclude_map]])
+		include_map?: matchN(1, [#include_map, list.MaxItems(1) & [...#include_map]])
+		security_service_policy_data!: matchN(1, [#security_service_policy_data, list.MaxItems(1) & [_, ...] & [...#security_service_policy_data]])
 		arn?:                                string
 		delete_all_policy_resources?:        bool
 		delete_unused_fm_managed_resources?: bool
@@ -21,7 +24,6 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:              string
 		remediation_enabled?: bool
-		exclude_map?: matchN(1, [#exclude_map, list.MaxItems(1) & [...#exclude_map]])
 		resource_set_ids?: [...string]
 		resource_tag_logical_operator?: string
 		resource_tags?: [string]: string
@@ -29,8 +31,6 @@ import "list"
 		resource_type_list?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		include_map?: matchN(1, [#include_map, list.MaxItems(1) & [...#include_map]])
-		security_service_policy_data!: matchN(1, [#security_service_policy_data, list.MaxItems(1) & [_, ...] & [...#security_service_policy_data]])
 	})
 
 	#exclude_map: close({
@@ -68,12 +68,12 @@ import "list"
 
 	_#defs: "/$defs/security_service_policy_data/$defs/policy_option/$defs/network_acl_common_policy/$defs/network_acl_entry_set/$defs/first_entry": close({
 		icmp_type_code?: matchN(1, [_#defs."/$defs/security_service_policy_data/$defs/policy_option/$defs/network_acl_common_policy/$defs/network_acl_entry_set/$defs/first_entry/$defs/icmp_type_code", [..._#defs."/$defs/security_service_policy_data/$defs/policy_option/$defs/network_acl_common_policy/$defs/network_acl_entry_set/$defs/first_entry/$defs/icmp_type_code"]])
+		port_range?: matchN(1, [_#defs."/$defs/security_service_policy_data/$defs/policy_option/$defs/network_acl_common_policy/$defs/network_acl_entry_set/$defs/first_entry/$defs/port_range", [..._#defs."/$defs/security_service_policy_data/$defs/policy_option/$defs/network_acl_common_policy/$defs/network_acl_entry_set/$defs/first_entry/$defs/port_range"]])
 		cidr_block?:      string
 		egress!:          bool
 		ipv6_cidr_block?: string
 		protocol!:        string
 		rule_action!:     string
-		port_range?: matchN(1, [_#defs."/$defs/security_service_policy_data/$defs/policy_option/$defs/network_acl_common_policy/$defs/network_acl_entry_set/$defs/first_entry/$defs/port_range", [..._#defs."/$defs/security_service_policy_data/$defs/policy_option/$defs/network_acl_common_policy/$defs/network_acl_entry_set/$defs/first_entry/$defs/port_range"]])
 	})
 
 	_#defs: "/$defs/security_service_policy_data/$defs/policy_option/$defs/network_acl_common_policy/$defs/network_acl_entry_set/$defs/first_entry/$defs/icmp_type_code": close({
@@ -88,12 +88,12 @@ import "list"
 
 	_#defs: "/$defs/security_service_policy_data/$defs/policy_option/$defs/network_acl_common_policy/$defs/network_acl_entry_set/$defs/last_entry": close({
 		icmp_type_code?: matchN(1, [_#defs."/$defs/security_service_policy_data/$defs/policy_option/$defs/network_acl_common_policy/$defs/network_acl_entry_set/$defs/last_entry/$defs/icmp_type_code", [..._#defs."/$defs/security_service_policy_data/$defs/policy_option/$defs/network_acl_common_policy/$defs/network_acl_entry_set/$defs/last_entry/$defs/icmp_type_code"]])
+		port_range?: matchN(1, [_#defs."/$defs/security_service_policy_data/$defs/policy_option/$defs/network_acl_common_policy/$defs/network_acl_entry_set/$defs/last_entry/$defs/port_range", [..._#defs."/$defs/security_service_policy_data/$defs/policy_option/$defs/network_acl_common_policy/$defs/network_acl_entry_set/$defs/last_entry/$defs/port_range"]])
 		cidr_block?:      string
 		egress!:          bool
 		ipv6_cidr_block?: string
 		protocol!:        string
 		rule_action!:     string
-		port_range?: matchN(1, [_#defs."/$defs/security_service_policy_data/$defs/policy_option/$defs/network_acl_common_policy/$defs/network_acl_entry_set/$defs/last_entry/$defs/port_range", [..._#defs."/$defs/security_service_policy_data/$defs/policy_option/$defs/network_acl_common_policy/$defs/network_acl_entry_set/$defs/last_entry/$defs/port_range"]])
 	})
 
 	_#defs: "/$defs/security_service_policy_data/$defs/policy_option/$defs/network_acl_common_policy/$defs/network_acl_entry_set/$defs/last_entry/$defs/icmp_type_code": close({

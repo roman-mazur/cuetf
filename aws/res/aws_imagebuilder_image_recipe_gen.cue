@@ -6,29 +6,29 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_imagebuilder_image_recipe")
 	close({
+		block_device_mapping?: matchN(1, [#block_device_mapping, [...#block_device_mapping]])
+		component!: matchN(1, [#component, [_, ...] & [...#component]])
+		systems_manager_agent?: matchN(1, [#systems_manager_agent, list.MaxItems(1) & [...#systems_manager_agent]])
 		ami_tags?: [string]: string
 		arn?:          string
 		date_created?: string
 		description?:  string
 		id?:           string
-		block_device_mapping?: matchN(1, [#block_device_mapping, [...#block_device_mapping]])
-		name!:  string
-		owner?: string
+		name!:         string
+		owner?:        string
+		parent_image!: string
+		platform?:     string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:       string
-		parent_image!: string
-		platform?:     string
-		component!: matchN(1, [#component, [_, ...] & [...#component]])
+		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		user_data_base64?:  string
 		version!:           string
 		working_directory?: string
-		systems_manager_agent?: matchN(1, [#systems_manager_agent, list.MaxItems(1) & [...#systems_manager_agent]])
 	})
 
 	#block_device_mapping: close({

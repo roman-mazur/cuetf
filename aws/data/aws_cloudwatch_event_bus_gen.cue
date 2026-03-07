@@ -5,12 +5,6 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_cloudwatch_event_bus")
 	close({
 		arn?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		dead_letter_config?: [...close({
 			arn?: string
 		})]
@@ -22,5 +16,11 @@ package data
 			level?:          string
 		})]
 		name!: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 	})
 }

@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_rds_export_task")
 	close({
+		timeouts?: #timeouts
 		export_only?: [...string]
 		export_task_identifier!: string
 		failure_cause?:          string
@@ -18,7 +19,6 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:          string
 		s3_bucket_name!:  string
-		timeouts?:        #timeouts
 		s3_prefix?:       string
 		snapshot_time?:   string
 		source_arn!:      string

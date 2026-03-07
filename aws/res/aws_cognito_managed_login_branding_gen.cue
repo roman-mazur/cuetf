@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cognito_managed_login_branding")
 	close({
+		asset?: matchN(1, [#asset, [...#asset]])
 		client_id!:                 string
 		managed_login_branding_id?: string
 
@@ -16,7 +17,6 @@ package res
 		settings_all?:                string
 		use_cognito_provided_values?: bool
 		user_pool_id!:                string
-		asset?: matchN(1, [#asset, [...#asset]])
 	})
 
 	#asset: close({

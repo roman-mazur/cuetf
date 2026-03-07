@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_glue_script")
 	close({
+		dag_edge!: matchN(1, [#dag_edge, [_, ...] & [...#dag_edge]])
+		dag_node!: matchN(1, [#dag_node, [_, ...] & [...#dag_node]])
 		id?:            string
 		language?:      string
 		python_script?: string
@@ -14,8 +16,6 @@ package data
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:     string
 		scala_code?: string
-		dag_edge!: matchN(1, [#dag_edge, [_, ...] & [...#dag_edge]])
-		dag_node!: matchN(1, [#dag_node, [_, ...] & [...#dag_node]])
 	})
 
 	#dag_edge: close({

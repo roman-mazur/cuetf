@@ -6,9 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_chimesdkmediapipelines_media_insights_pipeline_configuration")
 	close({
-		arn?:  string
-		id?:   string
-		name!: string
+		elements!: matchN(1, [#elements, [_, ...] & [...#elements]])
+		real_time_alert_configuration?: matchN(1, [#real_time_alert_configuration, list.MaxItems(1) & [...#real_time_alert_configuration]])
+		timeouts?: #timeouts
+		arn?:      string
+		id?:       string
+		name!:     string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -16,11 +19,8 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                   string
 		resource_access_role_arn!: string
-		elements!: matchN(1, [#elements, [_, ...] & [...#elements]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		real_time_alert_configuration?: matchN(1, [#real_time_alert_configuration, list.MaxItems(1) & [...#real_time_alert_configuration]])
-		timeouts?: #timeouts
 	})
 
 	#elements: close({
@@ -47,6 +47,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/elements/$defs/amazon_transcribe_call_analytics_processor_configuration": close({
+		post_call_analytics_settings?: matchN(1, [_#defs."/$defs/elements/$defs/amazon_transcribe_call_analytics_processor_configuration/$defs/post_call_analytics_settings", list.MaxItems(1) & [..._#defs."/$defs/elements/$defs/amazon_transcribe_call_analytics_processor_configuration/$defs/post_call_analytics_settings"]])
 		call_analytics_stream_categories?: [...string]
 		content_identification_type?:          string
 		content_redaction_type?:               string
@@ -55,11 +56,10 @@ import "list"
 		language_code!:                        string
 		language_model_name?:                  string
 		partial_results_stability?:            string
-		post_call_analytics_settings?: matchN(1, [_#defs."/$defs/elements/$defs/amazon_transcribe_call_analytics_processor_configuration/$defs/post_call_analytics_settings", list.MaxItems(1) & [..._#defs."/$defs/elements/$defs/amazon_transcribe_call_analytics_processor_configuration/$defs/post_call_analytics_settings"]])
-		pii_entity_types?:         string
-		vocabulary_filter_method?: string
-		vocabulary_filter_name?:   string
-		vocabulary_name?:          string
+		pii_entity_types?:                     string
+		vocabulary_filter_method?:             string
+		vocabulary_filter_name?:               string
+		vocabulary_name?:                      string
 	})
 
 	_#defs: "/$defs/elements/$defs/amazon_transcribe_call_analytics_processor_configuration/$defs/post_call_analytics_settings": close({

@@ -6,31 +6,31 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lightsail_container_service")
 	close({
-		arn?:               string
-		availability_zone?: string
-		created_at?:        string
-		id?:                string
-		is_disabled?:       bool
-		name!:              string
-		power!:             string
-		power_id?:          string
+		private_registry_access?: matchN(1, [#private_registry_access, list.MaxItems(1) & [...#private_registry_access]])
+		public_domain_names?: matchN(1, [#public_domain_names, list.MaxItems(1) & [...#public_domain_names]])
+		timeouts?:            #timeouts
+		arn?:                 string
+		availability_zone?:   string
+		created_at?:          string
+		id?:                  string
+		is_disabled?:         bool
+		name!:                string
+		power!:               string
+		power_id?:            string
+		principal_arn?:       string
+		private_domain_name?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:              string
-		principal_arn?:       string
-		private_domain_name?: string
-		private_registry_access?: matchN(1, [#private_registry_access, list.MaxItems(1) & [...#private_registry_access]])
+		region?:        string
 		resource_type?: string
 		scale!:         number
 		state?:         string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		url?: string
-		public_domain_names?: matchN(1, [#public_domain_names, list.MaxItems(1) & [...#public_domain_names]])
-		timeouts?: #timeouts
 	})
 
 	#private_registry_access: close({

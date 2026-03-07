@@ -4,9 +4,13 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_timestreaminfluxdb_db_instance")
 	close({
+		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, [...#log_delivery_configuration]])
+		timeouts?: #timeouts
+
 		// The amount of storage to allocate for your DB storage type in
 		// GiB (gibibytes).
 		allocated_storage!: number
+		arn?:               string
 
 		// The Availability Zone in which the DB instance resides.
 		availability_zone?: string
@@ -22,7 +26,6 @@ package res
 		// The Timestream for InfluxDB DB instance type to run InfluxDB
 		// on.
 		db_instance_type!: string
-		arn?:              string
 
 		// The id of the DB parameter group assigned to your DB instance.
 		db_parameter_group_identifier?: string
@@ -44,6 +47,7 @@ package res
 		// The endpoint used to connect to InfluxDB. The default InfluxDB
 		// port is 8086.
 		endpoint?: string
+		id?:       string
 
 		// The Amazon Resource Name (ARN) of the AWS Secrets Manager
 		// secret containing the
@@ -53,7 +57,6 @@ package res
 		// organization, bucket,
 		// username, and password.
 		influx_auth_parameters_secret_arn?: string
-		id?:                                string
 
 		// The name that uniquely identifies the DB instance when
 		// interacting with the
@@ -88,8 +91,6 @@ package res
 
 		// The port number on which InfluxDB accepts connections.
 		port?: number
-		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, [...#log_delivery_configuration]])
-		timeouts?: #timeouts
 
 		// Configures the DB instance with a public IP to facilitate
 		// access.

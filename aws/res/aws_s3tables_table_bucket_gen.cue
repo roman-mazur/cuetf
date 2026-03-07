@@ -10,12 +10,6 @@ package res
 			kms_key_arn?:   string
 			sse_algorithm?: string
 		})
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:        string
 		force_destroy?: bool
 		maintenance_configuration?: close({
 			iceberg_unreferenced_file_removal?: close({
@@ -28,6 +22,12 @@ package res
 		})
 		name!:             string
 		owner_account_id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

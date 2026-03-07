@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_pinpoint_email_template")
 	close({
+		email_template?: matchN(1, [#email_template, [...#email_template]])
 		arn?: string
 
 		// Region where this resource will be
@@ -14,7 +15,6 @@ package res
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		template_name!: string
-		email_template?: matchN(1, [#email_template, [...#email_template]])
 	})
 
 	#email_template: close({

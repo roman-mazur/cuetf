@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagent_knowledge_base")
 	close({
+		knowledge_base_configuration?: matchN(1, [#knowledge_base_configuration, [...#knowledge_base_configuration]])
+		storage_configuration?: matchN(1, [#storage_configuration, [...#storage_configuration]])
+		timeouts?:    #timeouts
 		arn?:         string
 		created_at?:  string
 		description?: string
@@ -15,13 +18,10 @@ package res
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		knowledge_base_configuration?: matchN(1, [#knowledge_base_configuration, [...#knowledge_base_configuration]])
+		region?:   string
 		role_arn!: string
-		storage_configuration?: matchN(1, [#storage_configuration, [...#storage_configuration]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		timeouts?:   #timeouts
 		updated_at?: string
 	})
 

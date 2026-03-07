@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_chime_voice_connector_origination")
 	close({
+		route!: matchN(1, [#route, list.MaxItems(20) & [_, ...] & [...#route]])
 		disabled?: bool
 		id?:       string
 
@@ -15,7 +16,6 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:             string
 		voice_connector_id!: string
-		route!: matchN(1, [#route, list.MaxItems(20) & [_, ...] & [...#route]])
 	})
 
 	#route: close({

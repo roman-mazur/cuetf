@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_comprehend_document_classifier")
 	close({
+		input_data_config!: matchN(1, [#input_data_config, list.MaxItems(1) & [_, ...] & [...#input_data_config]])
+		output_data_config?: matchN(1, [#output_data_config, list.MaxItems(1) & [...#output_data_config]])
+		timeouts?: #timeouts
+		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
 		arn?:                  string
 		data_access_role_arn!: string
 		id?:                   string
@@ -19,15 +23,11 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		tags?: [string]: string
-		input_data_config!: matchN(1, [#input_data_config, list.MaxItems(1) & [_, ...] & [...#input_data_config]])
-		output_data_config?: matchN(1, [#output_data_config, list.MaxItems(1) & [...#output_data_config]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		version_name?:        string
 		version_name_prefix?: string
 		volume_kms_key_id?:   string
-		timeouts?:            #timeouts
-		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
 	})
 
 	#input_data_config: close({

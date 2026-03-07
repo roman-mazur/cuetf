@@ -25,12 +25,12 @@ import "list"
 
 	#thing_indexing_configuration: close({
 		custom_field?: matchN(1, [_#defs."/$defs/thing_indexing_configuration/$defs/custom_field", [..._#defs."/$defs/thing_indexing_configuration/$defs/custom_field"]])
+		filter?: matchN(1, [_#defs."/$defs/thing_indexing_configuration/$defs/filter", list.MaxItems(1) & [..._#defs."/$defs/thing_indexing_configuration/$defs/filter"]])
+		managed_field?: matchN(1, [_#defs."/$defs/thing_indexing_configuration/$defs/managed_field", [..._#defs."/$defs/thing_indexing_configuration/$defs/managed_field"]])
 		device_defender_indexing_mode?:    string
 		named_shadow_indexing_mode?:       string
 		thing_connectivity_indexing_mode?: string
 		thing_indexing_mode!:              string
-		filter?: matchN(1, [_#defs."/$defs/thing_indexing_configuration/$defs/filter", list.MaxItems(1) & [..._#defs."/$defs/thing_indexing_configuration/$defs/filter"]])
-		managed_field?: matchN(1, [_#defs."/$defs/thing_indexing_configuration/$defs/managed_field", [..._#defs."/$defs/thing_indexing_configuration/$defs/managed_field"]])
 	})
 
 	_#defs: "/$defs/thing_group_indexing_configuration/$defs/custom_field": close({

@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_volume_attachment")
 	close({
+		timeouts?:     #timeouts
 		device_name!:  string
 		force_detach?: bool
 		id?:           string
@@ -17,7 +18,6 @@ package res
 		skip_destroy?:                   bool
 		stop_instance_before_detaching?: bool
 		volume_id!:                      string
-		timeouts?:                       #timeouts
 	})
 
 	#timeouts: close({

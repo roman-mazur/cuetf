@@ -23,12 +23,6 @@ package data
 			device_name?:  string
 			virtual_name?: string
 		})]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:               string
 		iam_instance_profile?: string
 		id?:                   string
 		image_id?:             string
@@ -41,6 +35,12 @@ package data
 		})]
 		name!:              string
 		placement_tenancy?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		root_block_device?: [...close({
 			delete_on_termination?: bool
 			encrypted?:             bool

@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_invoicing_invoice_unit")
 	close({
 		rule?: matchN(1, [#rule, [...#rule]])
+		timeouts?:         #timeouts
 		arn?:              string
 		description?:      string
 		invoice_receiver!: string
@@ -13,7 +14,6 @@ package res
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		tax_inheritance_disabled?: bool
-		timeouts?:                 #timeouts
 	})
 
 	#rule: close({

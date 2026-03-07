@@ -4,7 +4,9 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_vpc_endpoint")
 	close({
-		arn?: string
+		filter?: matchN(1, [#filter, [...#filter]])
+		timeouts?: #timeouts
+		arn?:      string
 		cidr_blocks?: [...string]
 		dns_entry?: [...close({
 			dns_name?:       string
@@ -28,9 +30,7 @@ package data
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?:          #timeouts
+		region?:            string
 		requester_managed?: bool
 		route_table_ids?: [...string]
 		security_group_ids?: [...string]

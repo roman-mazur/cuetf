@@ -5,12 +5,12 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_continuous_deployment_policy")
 	close({
 		staging_distribution_dns_names?: matchN(1, [#staging_distribution_dns_names, [...#staging_distribution_dns_names]])
+		traffic_config?: matchN(1, [#traffic_config, [...#traffic_config]])
 		arn?:                string
 		enabled!:            bool
 		etag?:               string
 		id?:                 string
 		last_modified_time?: string
-		traffic_config?: matchN(1, [#traffic_config, [...#traffic_config]])
 	})
 
 	#staging_distribution_dns_names: close({

@@ -8,6 +8,11 @@ import "list"
 	close({
 		action!: matchN(1, [#action, [_, ...] & [...#action]])
 		experiment_options?: matchN(1, [#experiment_options, list.MaxItems(1) & [...#experiment_options]])
+		experiment_report_configuration?: matchN(1, [#experiment_report_configuration, list.MaxItems(1) & [...#experiment_report_configuration]])
+		log_configuration?: matchN(1, [#log_configuration, list.MaxItems(1) & [...#log_configuration]])
+		stop_condition!: matchN(1, [#stop_condition, [_, ...] & [...#stop_condition]])
+		target?: matchN(1, [#target, [...#target]])
+		timeouts?:    #timeouts
 		description!: string
 		id?:          string
 
@@ -15,24 +20,19 @@ import "list"
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		experiment_report_configuration?: matchN(1, [#experiment_report_configuration, list.MaxItems(1) & [...#experiment_report_configuration]])
+		region?:   string
 		role_arn!: string
-		log_configuration?: matchN(1, [#log_configuration, list.MaxItems(1) & [...#log_configuration]])
-		stop_condition!: matchN(1, [#stop_condition, [_, ...] & [...#stop_condition]])
-		target?: matchN(1, [#target, [...#target]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#action: close({
 		parameter?: matchN(1, [_#defs."/$defs/action/$defs/parameter", [..._#defs."/$defs/action/$defs/parameter"]])
+		target?: matchN(1, [_#defs."/$defs/action/$defs/target", list.MaxItems(1) & [..._#defs."/$defs/action/$defs/target"]])
 		action_id!:   string
 		description?: string
 		name!:        string
 		start_after?: [...string]
-		target?: matchN(1, [_#defs."/$defs/action/$defs/target", list.MaxItems(1) & [..._#defs."/$defs/action/$defs/target"]])
 	})
 
 	#experiment_options: close({
@@ -60,12 +60,12 @@ import "list"
 
 	#target: close({
 		filter?: matchN(1, [_#defs."/$defs/target/$defs/filter", [..._#defs."/$defs/target/$defs/filter"]])
+		resource_tag?: matchN(1, [_#defs."/$defs/target/$defs/resource_tag", list.MaxItems(50) & [..._#defs."/$defs/target/$defs/resource_tag"]])
 		name!: string
 		parameters?: [string]: string
 		resource_arns?: [...string]
 		resource_type!:  string
 		selection_mode!: string
-		resource_tag?: matchN(1, [_#defs."/$defs/target/$defs/resource_tag", list.MaxItems(50) & [..._#defs."/$defs/target/$defs/resource_tag"]])
 	})
 
 	#timeouts: close({

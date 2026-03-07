@@ -13,10 +13,10 @@ package res
 
 		// Home Region of the grant.
 		home_region?: string
+		id?:          string
 
 		// License ARN.
 		license_arn!: string
-		id?:          string
 
 		// Name of the grant.
 		name!: string

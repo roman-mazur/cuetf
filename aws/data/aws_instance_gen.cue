@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_instance")
 	close({
+		filter?: matchN(1, [#filter, [...#filter]])
+		timeouts?:                    #timeouts
 		ami?:                         string
 		arn?:                         string
 		associate_public_ip_address?: bool
@@ -35,13 +37,7 @@ package data
 			no_device?:    bool
 			virtual_name?: string
 		})]
-		get_password_data?: bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                  string
+		get_password_data?:       bool
 		get_user_data?:           bool
 		host_id?:                 string
 		host_resource_group_arn?: string
@@ -54,8 +50,6 @@ package data
 		ipv6_addresses?: [...string]
 		key_name?:    string
 		launch_time?: string
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?: #timeouts
 		maintenance_options?: [...close({
 			auto_recovery?: string
 		})]
@@ -82,6 +76,12 @@ package data
 		private_ip?: string
 		public_dns?: string
 		public_ip?:  string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		root_block_device?: [...close({
 			delete_on_termination?: bool
 			device_name?:           string

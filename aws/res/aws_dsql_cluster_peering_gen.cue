@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dsql_cluster_peering")
 	close({
+		timeouts?: #timeouts
 		clusters!: [...string]
 		identifier!: string
 
@@ -13,7 +14,6 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:         string
 		witness_region!: string
-		timeouts?:       #timeouts
 	})
 
 	#timeouts: close({

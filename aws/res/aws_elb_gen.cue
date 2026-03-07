@@ -6,7 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_elb")
 	close({
-		arn?: string
+		access_logs?: matchN(1, [#access_logs, list.MaxItems(1) & [...#access_logs]])
+		health_check?: matchN(1, [#health_check, list.MaxItems(1) & [...#health_check]])
+		listener!: matchN(1, [#listener, [_, ...] & [...#listener]])
+		timeouts?: #timeouts
+		arn?:      string
 		availability_zones?: [...string]
 		connection_draining?:         bool
 		connection_draining_timeout?: number
@@ -15,12 +19,10 @@ import "list"
 		dns_name?:                    string
 		id?:                          string
 		idle_timeout?:                number
-		access_logs?: matchN(1, [#access_logs, list.MaxItems(1) & [...#access_logs]])
 		instances?: [...string]
 		internal?:    bool
 		name?:        string
 		name_prefix?: string
-		health_check?: matchN(1, [#health_check, list.MaxItems(1) & [...#health_check]])
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -34,8 +36,6 @@ import "list"
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		zone_id?: string
-		listener!: matchN(1, [#listener, [_, ...] & [...#listener]])
-		timeouts?: #timeouts
 	})
 
 	#access_logs: close({

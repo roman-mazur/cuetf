@@ -4,20 +4,20 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagent_prompt")
 	close({
+		variant?: matchN(1, [#variant, [...#variant]])
 		arn?:                         string
 		created_at?:                  string
 		customer_encryption_key_arn?: string
 		default_variant?:             string
 		description?:                 string
 		id?:                          string
-		variant?: matchN(1, [#variant, [...#variant]])
+		name!:                        string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		name!:   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		updated_at?: string
@@ -26,13 +26,13 @@ package res
 
 	#variant: close({
 		gen_ai_resource?: matchN(1, [_#defs."/$defs/variant/$defs/gen_ai_resource", [..._#defs."/$defs/variant/$defs/gen_ai_resource"]])
+		inference_configuration?: matchN(1, [_#defs."/$defs/variant/$defs/inference_configuration", [..._#defs."/$defs/variant/$defs/inference_configuration"]])
+		metadata?: matchN(1, [_#defs."/$defs/variant/$defs/metadata", [..._#defs."/$defs/variant/$defs/metadata"]])
+		template_configuration?: matchN(1, [_#defs."/$defs/variant/$defs/template_configuration", [..._#defs."/$defs/variant/$defs/template_configuration"]])
 		additional_model_request_fields?: string
 		model_id?:                        string
 		name!:                            string
 		template_type!:                   string
-		inference_configuration?: matchN(1, [_#defs."/$defs/variant/$defs/inference_configuration", [..._#defs."/$defs/variant/$defs/inference_configuration"]])
-		metadata?: matchN(1, [_#defs."/$defs/variant/$defs/metadata", [..._#defs."/$defs/variant/$defs/metadata"]])
-		template_configuration?: matchN(1, [_#defs."/$defs/variant/$defs/template_configuration", [..._#defs."/$defs/variant/$defs/template_configuration"]])
 	})
 
 	_#defs: "/$defs/variant/$defs/gen_ai_resource": close({

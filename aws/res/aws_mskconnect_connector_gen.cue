@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_mskconnect_connector")
 	close({
+		capacity!: matchN(1, [#capacity, list.MaxItems(1) & [_, ...] & [...#capacity]])
+		kafka_cluster!: matchN(1, [#kafka_cluster, list.MaxItems(1) & [_, ...] & [...#kafka_cluster]])
+		kafka_cluster_client_authentication!: matchN(1, [#kafka_cluster_client_authentication, list.MaxItems(1) & [_, ...] & [...#kafka_cluster_client_authentication]])
+		kafka_cluster_encryption_in_transit!: matchN(1, [#kafka_cluster_encryption_in_transit, list.MaxItems(1) & [_, ...] & [...#kafka_cluster_encryption_in_transit]])
+		log_delivery?: matchN(1, [#log_delivery, list.MaxItems(1) & [...#log_delivery]])
+		plugin!: matchN(1, [#plugin, [_, ...] & [...#plugin]])
+		timeouts?: #timeouts
+		worker_configuration?: matchN(1, [#worker_configuration, list.MaxItems(1) & [...#worker_configuration]])
 		arn?: string
 		connector_configuration!: [string]: string
 		description?:          string
@@ -19,17 +27,9 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                     string
 		service_execution_role_arn!: string
-		tags?: [string]: string
-		capacity!: matchN(1, [#capacity, list.MaxItems(1) & [_, ...] & [...#capacity]])
-		kafka_cluster!: matchN(1, [#kafka_cluster, list.MaxItems(1) & [_, ...] & [...#kafka_cluster]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		version?: string
-		kafka_cluster_client_authentication!: matchN(1, [#kafka_cluster_client_authentication, list.MaxItems(1) & [_, ...] & [...#kafka_cluster_client_authentication]])
-		kafka_cluster_encryption_in_transit!: matchN(1, [#kafka_cluster_encryption_in_transit, list.MaxItems(1) & [_, ...] & [...#kafka_cluster_encryption_in_transit]])
-		log_delivery?: matchN(1, [#log_delivery, list.MaxItems(1) & [...#log_delivery]])
-		plugin!: matchN(1, [#plugin, [_, ...] & [...#plugin]])
-		timeouts?: #timeouts
-		worker_configuration?: matchN(1, [#worker_configuration, list.MaxItems(1) & [...#worker_configuration]])
 	})
 
 	#capacity: close({

@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudwatch_metric_alarm")
 	close({
+		metric_query?: matchN(1, [#metric_query, [...#metric_query]])
 		actions_enabled?: bool
 		alarm_actions?: [...string]
 		alarm_description?:   string
@@ -15,21 +16,20 @@ import "list"
 		datapoints_to_alarm?: number
 		dimensions?: [string]: string
 		evaluate_low_sample_count_percentiles?: string
+		evaluation_periods!:                    number
+		extended_statistic?:                    string
+		id?:                                    string
+		insufficient_data_actions?: [...string]
+		metric_name?: string
+		namespace?:   string
+		ok_actions?: [...string]
+		period?: number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:             string
-		evaluation_periods!: number
-		extended_statistic?: string
-		id?:                 string
-		metric_query?: matchN(1, [#metric_query, [...#metric_query]])
-		insufficient_data_actions?: [...string]
-		metric_name?: string
-		namespace?:   string
-		ok_actions?: [...string]
-		period?:    number
+		region?:    string
 		statistic?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

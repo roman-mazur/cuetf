@@ -6,39 +6,43 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_emr_cluster")
 	close({
+		auto_termination_policy?: matchN(1, [#auto_termination_policy, list.MaxItems(1) & [...#auto_termination_policy]])
+		bootstrap_action?: matchN(1, [#bootstrap_action, [...#bootstrap_action]])
+		core_instance_fleet?: matchN(1, [#core_instance_fleet, list.MaxItems(1) & [...#core_instance_fleet]])
+		core_instance_group?: matchN(1, [#core_instance_group, list.MaxItems(1) & [...#core_instance_group]])
+		ec2_attributes?: matchN(1, [#ec2_attributes, list.MaxItems(1) & [...#ec2_attributes]])
+		kerberos_attributes?: matchN(1, [#kerberos_attributes, list.MaxItems(1) & [...#kerberos_attributes]])
+		master_instance_fleet?: matchN(1, [#master_instance_fleet, list.MaxItems(1) & [...#master_instance_fleet]])
+		master_instance_group?: matchN(1, [#master_instance_group, list.MaxItems(1) & [...#master_instance_group]])
 		additional_info?: string
 		applications?: [...string]
-		arn?:                 string
-		autoscaling_role?:    string
-		cluster_state?:       string
-		configurations?:      string
-		configurations_json?: string
-		custom_ami_id?:       string
-		auto_termination_policy?: matchN(1, [#auto_termination_policy, list.MaxItems(1) & [...#auto_termination_policy]])
+		arn?:                               string
+		autoscaling_role?:                  string
+		cluster_state?:                     string
+		configurations?:                    string
+		configurations_json?:               string
+		custom_ami_id?:                     string
 		ebs_root_volume_size?:              number
 		id?:                                string
 		keep_job_flow_alive_when_no_steps?: bool
 		list_steps_states?: [...string]
 		log_encryption_kms_key_id?: string
+		log_uri?:                   string
+		master_public_dns?:         string
+		name!:                      string
+		os_release_label?:          string
+		placement_group_config?: [...close({
+			instance_role?:      string
+			placement_strategy?: string
+		})]
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:            string
-		log_uri?:           string
-		master_public_dns?: string
-		name!:              string
-		bootstrap_action?: matchN(1, [#bootstrap_action, [...#bootstrap_action]])
-		os_release_label?: string
-		placement_group_config?: [...close({
-			instance_role?:      string
-			placement_strategy?: string
-		})]
-		core_instance_fleet?: matchN(1, [#core_instance_fleet, list.MaxItems(1) & [...#core_instance_fleet]])
-		release_label!:       string
-		scale_down_behavior?: string
-		core_instance_group?: matchN(1, [#core_instance_group, list.MaxItems(1) & [...#core_instance_group]])
+		region?:                 string
+		release_label!:          string
+		scale_down_behavior?:    string
 		security_configuration?: string
 		service_role!:           string
 		step?: [...close({
@@ -54,13 +58,9 @@ import "list"
 		step_concurrency_level?: number
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		termination_protection?: bool
-		ec2_attributes?: matchN(1, [#ec2_attributes, list.MaxItems(1) & [...#ec2_attributes]])
+		termination_protection?:     bool
 		unhealthy_node_replacement?: bool
-		kerberos_attributes?: matchN(1, [#kerberos_attributes, list.MaxItems(1) & [...#kerberos_attributes]])
-		visible_to_all_users?: bool
-		master_instance_fleet?: matchN(1, [#master_instance_fleet, list.MaxItems(1) & [...#master_instance_fleet]])
-		master_instance_group?: matchN(1, [#master_instance_group, list.MaxItems(1) & [...#master_instance_group]])
+		visible_to_all_users?:       bool
 	})
 
 	#auto_termination_policy: close({
@@ -75,13 +75,13 @@ import "list"
 
 	#core_instance_fleet: close({
 		instance_type_configs?: matchN(1, [_#defs."/$defs/core_instance_fleet/$defs/instance_type_configs", [..._#defs."/$defs/core_instance_fleet/$defs/instance_type_configs"]])
+		launch_specifications?: matchN(1, [_#defs."/$defs/core_instance_fleet/$defs/launch_specifications", list.MaxItems(1) & [..._#defs."/$defs/core_instance_fleet/$defs/launch_specifications"]])
 		id?:                             string
 		name?:                           string
 		provisioned_on_demand_capacity?: number
 		provisioned_spot_capacity?:      number
 		target_on_demand_capacity?:      number
 		target_spot_capacity?:           number
-		launch_specifications?: matchN(1, [_#defs."/$defs/core_instance_fleet/$defs/launch_specifications", list.MaxItems(1) & [..._#defs."/$defs/core_instance_fleet/$defs/launch_specifications"]])
 	})
 
 	#core_instance_group: close({
@@ -116,13 +116,13 @@ import "list"
 
 	#master_instance_fleet: close({
 		instance_type_configs?: matchN(1, [_#defs."/$defs/master_instance_fleet/$defs/instance_type_configs", [..._#defs."/$defs/master_instance_fleet/$defs/instance_type_configs"]])
+		launch_specifications?: matchN(1, [_#defs."/$defs/master_instance_fleet/$defs/launch_specifications", list.MaxItems(1) & [..._#defs."/$defs/master_instance_fleet/$defs/launch_specifications"]])
 		id?:                             string
 		name?:                           string
 		provisioned_on_demand_capacity?: number
 		provisioned_spot_capacity?:      number
 		target_on_demand_capacity?:      number
 		target_spot_capacity?:           number
-		launch_specifications?: matchN(1, [_#defs."/$defs/master_instance_fleet/$defs/launch_specifications", list.MaxItems(1) & [..._#defs."/$defs/master_instance_fleet/$defs/launch_specifications"]])
 	})
 
 	#master_instance_group: close({
@@ -136,11 +136,11 @@ import "list"
 
 	_#defs: "/$defs/core_instance_fleet/$defs/instance_type_configs": close({
 		configurations?: matchN(1, [_#defs."/$defs/core_instance_fleet/$defs/instance_type_configs/$defs/configurations", [..._#defs."/$defs/core_instance_fleet/$defs/instance_type_configs/$defs/configurations"]])
+		ebs_config?: matchN(1, [_#defs."/$defs/core_instance_fleet/$defs/instance_type_configs/$defs/ebs_config", [..._#defs."/$defs/core_instance_fleet/$defs/instance_type_configs/$defs/ebs_config"]])
 		bid_price?:                                  string
 		bid_price_as_percentage_of_on_demand_price?: number
 		instance_type!:                              string
 		weighted_capacity?:                          number
-		ebs_config?: matchN(1, [_#defs."/$defs/core_instance_fleet/$defs/instance_type_configs/$defs/ebs_config", [..._#defs."/$defs/core_instance_fleet/$defs/instance_type_configs/$defs/ebs_config"]])
 	})
 
 	_#defs: "/$defs/core_instance_fleet/$defs/instance_type_configs/$defs/configurations": close({
@@ -181,11 +181,11 @@ import "list"
 
 	_#defs: "/$defs/master_instance_fleet/$defs/instance_type_configs": close({
 		configurations?: matchN(1, [_#defs."/$defs/master_instance_fleet/$defs/instance_type_configs/$defs/configurations", [..._#defs."/$defs/master_instance_fleet/$defs/instance_type_configs/$defs/configurations"]])
+		ebs_config?: matchN(1, [_#defs."/$defs/master_instance_fleet/$defs/instance_type_configs/$defs/ebs_config", [..._#defs."/$defs/master_instance_fleet/$defs/instance_type_configs/$defs/ebs_config"]])
 		bid_price?:                                  string
 		bid_price_as_percentage_of_on_demand_price?: number
 		instance_type!:                              string
 		weighted_capacity?:                          number
-		ebs_config?: matchN(1, [_#defs."/$defs/master_instance_fleet/$defs/instance_type_configs/$defs/ebs_config", [..._#defs."/$defs/master_instance_fleet/$defs/instance_type_configs/$defs/ebs_config"]])
 	})
 
 	_#defs: "/$defs/master_instance_fleet/$defs/instance_type_configs/$defs/configurations": close({

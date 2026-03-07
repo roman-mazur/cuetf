@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_route53profiles_association")
 	close({
+		timeouts?:   #timeouts
 		arn?:        string
 		id?:         string
 		name!:       string
@@ -15,7 +16,6 @@ package res
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:         string
-		timeouts?:       #timeouts
 		resource_id!:    string
 		status?:         string
 		status_message?: string

@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_redshift_integration")
 	close({
+		timeouts?: #timeouts
 		additional_encryption_context?: [string]: string
 		arn?:              string
 		description?:      string
@@ -16,7 +17,6 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:     string
 		source_arn!: string
-		timeouts?:   #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		target_arn!: string

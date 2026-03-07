@@ -9,15 +9,9 @@ package data
 		authentication_providers?: [...string]
 		created_date?: string
 		data_sources?: [...string]
-		description?:     string
-		endpoint?:        string
-		grafana_version?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:            string
+		description?:       string
+		endpoint?:          string
+		grafana_version?:   string
 		id?:                string
 		kms_key_id?:        string
 		last_updated_date?: string
@@ -25,7 +19,13 @@ package data
 		notification_destinations?: [...string]
 		organization_role_name?: string
 		organizational_units?: [...string]
-		permission_type?:           string
+		permission_type?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                    string
 		role_arn?:                  string
 		saml_configuration_status?: string
 		stack_set_name?:            string

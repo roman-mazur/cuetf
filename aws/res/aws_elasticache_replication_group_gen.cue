@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_elasticache_replication_group")
 	close({
+		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, list.MaxItems(2) & [...#log_delivery_configuration]])
+		node_group_configuration?: matchN(1, [#node_group_configuration, [...#node_group_configuration]])
+		timeouts?:                       #timeouts
 		apply_immediately?:              bool
 		arn?:                            string
 		at_rest_encryption_enabled?:     string
@@ -22,22 +25,14 @@ import "list"
 		engine_version?:                 string
 		engine_version_actual?:          string
 		final_snapshot_identifier?:      string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                      string
-		global_replication_group_id?: string
-		id?:                          string
-		ip_discovery?:                string
-		kms_key_id?:                  string
-		maintenance_window?:          string
+		global_replication_group_id?:    string
+		id?:                             string
+		ip_discovery?:                   string
+		kms_key_id?:                     string
+		maintenance_window?:             string
 		member_clusters?: [...string]
-		multi_az_enabled?: bool
-		network_type?:     string
-		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, list.MaxItems(2) & [...#log_delivery_configuration]])
-		node_group_configuration?: matchN(1, [#node_group_configuration, [...#node_group_configuration]])
+		multi_az_enabled?:       bool
+		network_type?:           string
 		node_type?:              string
 		notification_topic_arn?: string
 		num_cache_clusters?:     number
@@ -47,8 +42,14 @@ import "list"
 		preferred_cache_cluster_azs?: [...string]
 		primary_endpoint_address?: string
 		reader_endpoint_address?:  string
-		replicas_per_node_group?:  number
-		replication_group_id!:     string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                  string
+		replicas_per_node_group?: number
+		replication_group_id!:    string
 		security_group_ids?: [...string]
 		security_group_names?: [...string]
 		snapshot_arns?: [...string]
@@ -61,7 +62,6 @@ import "list"
 		transit_encryption_enabled?: bool
 		transit_encryption_mode?:    string
 		user_group_ids?: [...string]
-		timeouts?: #timeouts
 	})
 
 	#log_delivery_configuration: close({

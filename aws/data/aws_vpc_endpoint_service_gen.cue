@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_vpc_endpoint_service")
 	close({
+		filter?: matchN(1, [#filter, [...#filter]])
+		timeouts?:            #timeouts
 		acceptance_required?: bool
 		arn?:                 string
 		availability_zones?: [...string]
@@ -13,13 +15,11 @@ package data
 		owner?:                 string
 		private_dns_name?:      string
 		private_dns_names?: [...string]
-		service?: string
-		filter?: matchN(1, [#filter, [...#filter]])
+		service?:        string
 		service_id?:     string
 		service_name?:   string
 		service_region?: string
 		service_regions?: [...string]
-		timeouts?:     #timeouts
 		service_type?: string
 		supported_ip_address_types?: [...string]
 		tags?: [string]: string

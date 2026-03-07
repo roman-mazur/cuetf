@@ -6,34 +6,34 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_s3_bucket")
 	close({
-		arn?:                string
-		bucket?:             string
-		bucket_domain_name?: string
-		bucket_prefix?:      string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                      string
+		cors_rule?: matchN(1, [#cors_rule, [...#cors_rule]])
+		grant?: matchN(1, [#grant, [...#grant]])
+		lifecycle_rule?: matchN(1, [#lifecycle_rule, [...#lifecycle_rule]])
+		logging?: matchN(1, [#logging, list.MaxItems(1) & [...#logging]])
+		object_lock_configuration?: matchN(1, [#object_lock_configuration, list.MaxItems(1) & [...#object_lock_configuration]])
+		replication_configuration?: matchN(1, [#replication_configuration, list.MaxItems(1) & [...#replication_configuration]])
+		server_side_encryption_configuration?: matchN(1, [#server_side_encryption_configuration, list.MaxItems(1) & [...#server_side_encryption_configuration]])
+		timeouts?: #timeouts
+		versioning?: matchN(1, [#versioning, list.MaxItems(1) & [...#versioning]])
+		website?: matchN(1, [#website, list.MaxItems(1) & [...#website]])
+		arn?:                         string
+		bucket?:                      string
+		bucket_domain_name?:          string
+		bucket_prefix?:               string
 		bucket_region?:               string
 		bucket_regional_domain_name?: string
 		force_destroy?:               bool
 		hosted_zone_id?:              string
 		id?:                          string
-		cors_rule?: matchN(1, [#cors_rule, [...#cors_rule]])
-		object_lock_enabled?: bool
-		grant?: matchN(1, [#grant, [...#grant]])
-		lifecycle_rule?: matchN(1, [#lifecycle_rule, [...#lifecycle_rule]])
-		tags?: [string]: string
-		logging?: matchN(1, [#logging, list.MaxItems(1) & [...#logging]])
-		object_lock_configuration?: matchN(1, [#object_lock_configuration, list.MaxItems(1) & [...#object_lock_configuration]])
-		replication_configuration?: matchN(1, [#replication_configuration, list.MaxItems(1) & [...#replication_configuration]])
+		object_lock_enabled?:         bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		tags?: [string]:     string
 		tags_all?: [string]: string
-		server_side_encryption_configuration?: matchN(1, [#server_side_encryption_configuration, list.MaxItems(1) & [...#server_side_encryption_configuration]])
-		timeouts?: #timeouts
-		versioning?: matchN(1, [#versioning, list.MaxItems(1) & [...#versioning]])
-		website?: matchN(1, [#website, list.MaxItems(1) & [...#website]])
 	})
 
 	#cors_rule: close({
@@ -52,15 +52,15 @@ import "list"
 	})
 
 	#lifecycle_rule: close({
+		expiration?: matchN(1, [_#defs."/$defs/lifecycle_rule/$defs/expiration", list.MaxItems(1) & [..._#defs."/$defs/lifecycle_rule/$defs/expiration"]])
+		noncurrent_version_expiration?: matchN(1, [_#defs."/$defs/lifecycle_rule/$defs/noncurrent_version_expiration", list.MaxItems(1) & [..._#defs."/$defs/lifecycle_rule/$defs/noncurrent_version_expiration"]])
+		noncurrent_version_transition?: matchN(1, [_#defs."/$defs/lifecycle_rule/$defs/noncurrent_version_transition", [..._#defs."/$defs/lifecycle_rule/$defs/noncurrent_version_transition"]])
+		transition?: matchN(1, [_#defs."/$defs/lifecycle_rule/$defs/transition", [..._#defs."/$defs/lifecycle_rule/$defs/transition"]])
 		abort_incomplete_multipart_upload_days?: number
 		enabled!:                                bool
 		id?:                                     string
 		prefix?:                                 string
 		tags?: [string]: string
-		expiration?: matchN(1, [_#defs."/$defs/lifecycle_rule/$defs/expiration", list.MaxItems(1) & [..._#defs."/$defs/lifecycle_rule/$defs/expiration"]])
-		noncurrent_version_expiration?: matchN(1, [_#defs."/$defs/lifecycle_rule/$defs/noncurrent_version_expiration", list.MaxItems(1) & [..._#defs."/$defs/lifecycle_rule/$defs/noncurrent_version_expiration"]])
-		noncurrent_version_transition?: matchN(1, [_#defs."/$defs/lifecycle_rule/$defs/noncurrent_version_transition", [..._#defs."/$defs/lifecycle_rule/$defs/noncurrent_version_transition"]])
-		transition?: matchN(1, [_#defs."/$defs/lifecycle_rule/$defs/transition", [..._#defs."/$defs/lifecycle_rule/$defs/transition"]])
 	})
 
 	#logging: close({
@@ -132,24 +132,24 @@ import "list"
 	})
 
 	_#defs: "/$defs/replication_configuration/$defs/rules": close({
-		delete_marker_replication_status?: string
 		destination!: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rules/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/replication_configuration/$defs/rules/$defs/destination"]])
-		id?:       string
-		prefix?:   string
-		priority?: number
-		status!:   string
 		filter?: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rules/$defs/filter", list.MaxItems(1) & [..._#defs."/$defs/replication_configuration/$defs/rules/$defs/filter"]])
 		source_selection_criteria?: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rules/$defs/source_selection_criteria", list.MaxItems(1) & [..._#defs."/$defs/replication_configuration/$defs/rules/$defs/source_selection_criteria"]])
+		delete_marker_replication_status?: string
+		id?:                               string
+		prefix?:                           string
+		priority?:                         number
+		status!:                           string
 	})
 
 	_#defs: "/$defs/replication_configuration/$defs/rules/$defs/destination": close({
 		access_control_translation?: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rules/$defs/destination/$defs/access_control_translation", list.MaxItems(1) & [..._#defs."/$defs/replication_configuration/$defs/rules/$defs/destination/$defs/access_control_translation"]])
+		metrics?: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rules/$defs/destination/$defs/metrics", list.MaxItems(1) & [..._#defs."/$defs/replication_configuration/$defs/rules/$defs/destination/$defs/metrics"]])
+		replication_time?: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rules/$defs/destination/$defs/replication_time", list.MaxItems(1) & [..._#defs."/$defs/replication_configuration/$defs/rules/$defs/destination/$defs/replication_time"]])
 		account_id?:         string
 		bucket!:             string
 		replica_kms_key_id?: string
 		storage_class?:      string
-		metrics?: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rules/$defs/destination/$defs/metrics", list.MaxItems(1) & [..._#defs."/$defs/replication_configuration/$defs/rules/$defs/destination/$defs/metrics"]])
-		replication_time?: matchN(1, [_#defs."/$defs/replication_configuration/$defs/rules/$defs/destination/$defs/replication_time", list.MaxItems(1) & [..._#defs."/$defs/replication_configuration/$defs/rules/$defs/destination/$defs/replication_time"]])
 	})
 
 	_#defs: "/$defs/replication_configuration/$defs/rules/$defs/destination/$defs/access_control_translation": close({

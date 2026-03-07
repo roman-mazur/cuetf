@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_alb_listener")
 	close({
+		timeouts?:        #timeouts
 		alpn_policy?:     string
 		arn?:             string
 		certificate_arn?: string
@@ -67,14 +68,7 @@ package data
 			target_group_arn?: string
 			type?:             string
 		})]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:            string
 		id?:                string
-		timeouts?:          #timeouts
 		load_balancer_arn?: string
 		mutual_authentication?: [...close({
 			advertise_trust_store_ca_names?:   string
@@ -82,8 +76,14 @@ package data
 			mode?:                             string
 			trust_store_arn?:                  string
 		})]
-		port?:       number
-		protocol?:   string
+		port?:     number
+		protocol?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:     string
 		ssl_policy?: string
 		tags?: [string]: string
 	})

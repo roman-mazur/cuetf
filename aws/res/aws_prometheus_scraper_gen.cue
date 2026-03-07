@@ -4,22 +4,22 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_prometheus_scraper")
 	close({
-		alias?: string
 		destination?: matchN(1, [#destination, [...#destination]])
-		arn?: string
-		id?:  string
+		role_configuration?: matchN(1, [#role_configuration, [...#role_configuration]])
+		source?: matchN(1, [#source, [...#source]])
+		timeouts?: #timeouts
+		alias?:    string
+		arn?:      string
+		id?:       string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
-		role_arn?: string
-		role_configuration?: matchN(1, [#role_configuration, [...#role_configuration]])
+		region?:               string
+		role_arn?:             string
 		scrape_configuration!: string
-		tags?: [string]: string
-		source?: matchN(1, [#source, [...#source]])
-		timeouts?: #timeouts
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 

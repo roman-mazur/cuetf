@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ce_cost_category")
 	close({
+		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
+		split_charge_rule?: matchN(1, [#split_charge_rule, [...#split_charge_rule]])
 		arn?:             string
 		default_value?:   string
 		effective_end?:   string
 		effective_start?: string
-		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
-		id?:           string
-		name!:         string
-		rule_version!: string
+		id?:              string
+		name!:            string
+		rule_version!:    string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		split_charge_rule?: matchN(1, [#split_charge_rule, [...#split_charge_rule]])
 	})
 
 	#rule: close({

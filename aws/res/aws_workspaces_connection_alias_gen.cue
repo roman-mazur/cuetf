@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_workspaces_connection_alias")
 	close({
+		timeouts?: #timeouts
+
 		// The connection string specified for the connection alias. The
 		// connection string must be in the form of a fully qualified
 		// domain name (FQDN), such as www.example.com.
@@ -18,8 +20,7 @@ package res
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
-		timeouts?: #timeouts
+		region?: string
 
 		// The current state of the connection alias.
 		state?: string

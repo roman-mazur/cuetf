@@ -9,6 +9,7 @@ package data
 
 		// Description of the security policy.
 		description?: string
+		id?:          string
 
 		// The date the security policy was last modified.
 		last_modified_date?: string
@@ -18,7 +19,6 @@ package data
 
 		// The JSON policy document without any whitespaces.
 		policy?: string
-		id?:     string
 
 		// Version of the policy.
 		policy_version?: string

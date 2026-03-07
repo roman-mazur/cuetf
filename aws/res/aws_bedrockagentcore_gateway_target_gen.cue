@@ -4,6 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_gateway_target")
 	close({
+		credential_provider_configuration?: matchN(1, [#credential_provider_configuration, [...#credential_provider_configuration]])
+		metadata_configuration?: matchN(1, [#metadata_configuration, [...#metadata_configuration]])
+		target_configuration?: matchN(1, [#target_configuration, [...#target_configuration]])
+		timeouts?:           #timeouts
 		description?:        string
 		gateway_identifier!: string
 		name!:               string
@@ -14,10 +18,6 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:    string
 		target_id?: string
-		credential_provider_configuration?: matchN(1, [#credential_provider_configuration, [...#credential_provider_configuration]])
-		metadata_configuration?: matchN(1, [#metadata_configuration, [...#metadata_configuration]])
-		target_configuration?: matchN(1, [#target_configuration, [...#target_configuration]])
-		timeouts?: #timeouts
 	})
 
 	#credential_provider_configuration: close({
@@ -77,11 +77,12 @@ package res
 	_#defs: "/$defs/credential_provider_configuration/$defs/gateway_iam_role": close({})
 
 	_#defs: "/$defs/credential_provider_configuration/$defs/oauth": close({
+		custom_parameters?: [string]: string
+
 		// The URL where the end user's browser is redirected after
 		// obtaining the authorization code. Required when grant_type is
 		// AUTHORIZATION_CODE.
 		default_return_url?: string
-		custom_parameters?: [string]: string
 
 		// The OAuth grant type. Valid values are AUTHORIZATION_CODE and
 		// CLIENT_CREDENTIALS.
@@ -146,11 +147,11 @@ package res
 
 	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/inline_payload/$defs/input_schema/$defs/property": close({
 		items?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/inline_payload/$defs/input_schema/$defs/property/$defs/items", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/inline_payload/$defs/input_schema/$defs/property/$defs/items"]])
+		property?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/inline_payload/$defs/input_schema/$defs/property/$defs/property", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/inline_payload/$defs/input_schema/$defs/property/$defs/property"]])
 		description?: string
 		name!:        string
 		required?:    bool
 		type!:        string
-		property?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/inline_payload/$defs/input_schema/$defs/property/$defs/property", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/inline_payload/$defs/input_schema/$defs/property/$defs/property"]])
 	})
 
 	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/inline_payload/$defs/input_schema/$defs/property/$defs/items": close({
@@ -217,11 +218,11 @@ package res
 
 	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/inline_payload/$defs/output_schema/$defs/property": close({
 		items?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/inline_payload/$defs/output_schema/$defs/property/$defs/items", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/inline_payload/$defs/output_schema/$defs/property/$defs/items"]])
+		property?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/inline_payload/$defs/output_schema/$defs/property/$defs/property", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/inline_payload/$defs/output_schema/$defs/property/$defs/property"]])
 		description?: string
 		name!:        string
 		required?:    bool
 		type!:        string
-		property?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/inline_payload/$defs/output_schema/$defs/property/$defs/property", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/inline_payload/$defs/output_schema/$defs/property/$defs/property"]])
 	})
 
 	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/lambda/$defs/tool_schema/$defs/inline_payload/$defs/output_schema/$defs/property/$defs/items": close({

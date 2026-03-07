@@ -4,16 +4,10 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_kms_key")
 	close({
-		arn?:                  string
-		aws_account_id?:       string
-		cloud_hsm_cluster_id?: string
-		creation_date?:        string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                   string
+		arn?:                      string
+		aws_account_id?:           string
+		cloud_hsm_cluster_id?:     string
+		creation_date?:            string
 		custom_key_store_id?:      string
 		customer_master_key_spec?: string
 		deletion_date?:            string
@@ -41,7 +35,13 @@ package data
 		})]
 		origin?:                          string
 		pending_deletion_window_in_days?: number
-		valid_to?:                        string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:   string
+		valid_to?: string
 		xks_key_configuration?: [...close({
 			id?: string
 		})]

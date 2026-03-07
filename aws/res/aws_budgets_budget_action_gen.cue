@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_budgets_budget_action")
 	close({
+		action_threshold!: matchN(1, [#action_threshold, list.MaxItems(1) & [_, ...] & [...#action_threshold]])
+		definition!: matchN(1, [#definition, list.MaxItems(1) & [_, ...] & [...#definition]])
+		subscriber!: matchN(1, [#subscriber, list.MaxItems(11) & [_, ...] & [...#subscriber]])
+		timeouts?:           #timeouts
 		account_id?:         string
 		action_id?:          string
 		action_type!:        string
@@ -13,15 +17,11 @@ import "list"
 		arn?:                string
 		budget_name!:        string
 		execution_role_arn!: string
-		action_threshold!: matchN(1, [#action_threshold, list.MaxItems(1) & [_, ...] & [...#action_threshold]])
-		definition!: matchN(1, [#definition, list.MaxItems(1) & [_, ...] & [...#definition]])
-		subscriber!: matchN(1, [#subscriber, list.MaxItems(11) & [_, ...] & [...#subscriber]])
-		id?:                string
-		notification_type!: string
-		status?:            string
+		id?:                 string
+		notification_type!:  string
+		status?:             string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#action_threshold: close({

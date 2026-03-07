@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_opensearchserverless_collection")
 	close({
+		arn?: string
+
 		// Collection-specific endpoint used to submit index, search, and
 		// data upload requests to an OpenSearch Serverless collection.
 		collection_endpoint?: string
@@ -14,7 +16,6 @@ package data
 		// Collection-specific endpoint used to access OpenSearch
 		// Dashboards.
 		dashboard_endpoint?: string
-		arn?:                string
 
 		// Description of the collection.
 		description?: string

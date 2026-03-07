@@ -4,24 +4,24 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_workspacesweb_user_settings")
 	close({
-		additional_encryption_context?: [string]: string
 		cookie_synchronization_configuration?: matchN(1, [#cookie_synchronization_configuration, [...#cookie_synchronization_configuration]])
+		toolbar_configuration?: matchN(1, [#toolbar_configuration, [...#toolbar_configuration]])
+		additional_encryption_context?: [string]: string
 		associated_portal_arns?: [...string]
-		copy_allowed!:         string
-		customer_managed_key?: string
-		deep_link_allowed?:    string
+		copy_allowed!:                       string
+		customer_managed_key?:               string
+		deep_link_allowed?:                  string
+		disconnect_timeout_in_minutes?:      number
+		download_allowed!:                   string
+		idle_disconnect_timeout_in_minutes?: number
+		paste_allowed!:                      string
+		print_allowed!:                      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                        string
-		disconnect_timeout_in_minutes?: number
-		download_allowed!:              string
-		toolbar_configuration?: matchN(1, [#toolbar_configuration, [...#toolbar_configuration]])
-		idle_disconnect_timeout_in_minutes?: number
-		paste_allowed!:                      string
-		print_allowed!:                      string
+		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		upload_allowed!:    string

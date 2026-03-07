@@ -6,25 +6,25 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_quicksight_data_source")
 	close({
+		credentials?: matchN(1, [#credentials, list.MaxItems(1) & [...#credentials]])
+		parameters!: matchN(1, [#parameters, list.MaxItems(1) & [_, ...] & [...#parameters]])
+		permission?: matchN(1, [#permission, list.MaxItems(64) & [...#permission]])
+		ssl_properties?: matchN(1, [#ssl_properties, list.MaxItems(1) & [...#ssl_properties]])
+		vpc_connection_properties?: matchN(1, [#vpc_connection_properties, list.MaxItems(1) & [...#vpc_connection_properties]])
 		arn?:            string
 		aws_account_id?: string
 		data_source_id!: string
 		id?:             string
-		credentials?: matchN(1, [#credentials, list.MaxItems(1) & [...#credentials]])
+		name!:           string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		name!:   string
-		tags?: [string]: string
-		parameters!: matchN(1, [#parameters, list.MaxItems(1) & [_, ...] & [...#parameters]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
-		permission?: matchN(1, [#permission, list.MaxItems(64) & [...#permission]])
-		ssl_properties?: matchN(1, [#ssl_properties, list.MaxItems(1) & [...#ssl_properties]])
 		type!: string
-		vpc_connection_properties?: matchN(1, [#vpc_connection_properties, list.MaxItems(1) & [...#vpc_connection_properties]])
 	})
 
 	#credentials: close({

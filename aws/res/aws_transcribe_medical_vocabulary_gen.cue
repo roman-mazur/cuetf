@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_transcribe_medical_vocabulary")
 	close({
+		timeouts?:      #timeouts
 		arn?:           string
 		download_uri?:  string
 		id?:            string
@@ -18,7 +19,6 @@ package res
 		tags_all?: [string]: string
 		vocabulary_file_uri!: string
 		vocabulary_name!:     string
-		timeouts?:            #timeouts
 	})
 
 	#timeouts: close({

@@ -4,19 +4,19 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_model_card")
 	close({
-		content!: string
 		security_config?: matchN(1, [#security_config, [...#security_config]])
-		model_card_arn?:  string
-		model_card_name!: string
+		timeouts?:          #timeouts
+		content!:           string
+		model_card_arn?:    string
+		model_card_name!:   string
+		model_card_status!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:            string
-		model_card_status!: string
-		tags?: [string]: string
-		timeouts?: #timeouts
+		region?: string
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 

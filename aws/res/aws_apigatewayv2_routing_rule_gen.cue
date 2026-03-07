@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_apigatewayv2_routing_rule")
 	close({
+		action?: matchN(1, [#action, [...#action]])
+		condition?: matchN(1, [#condition, [...#condition]])
 		domain_name!: string
 		priority!:    number
 
@@ -14,8 +16,6 @@ package res
 		region?:           string
 		routing_rule_arn?: string
 		routing_rule_id?:  string
-		action?: matchN(1, [#action, [...#action]])
-		condition?: matchN(1, [#condition, [...#condition]])
 	})
 
 	#action: close({

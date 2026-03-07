@@ -1021,6 +1021,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_oam_sink": res.#aws_oam_sink
 	_#res: "\(#awsPrefix)_oam_sink_policy": res.#aws_oam_sink_policy
 	_#res: "\(#awsPrefix)_observabilityadmin_centralization_rule_for_organization": res.#aws_observabilityadmin_centralization_rule_for_organization
+	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_pipeline": res.#aws_observabilityadmin_telemetry_pipeline
 	_#res: "\(#awsPrefix)_odb_cloud_autonomous_vm_cluster": res.#aws_odb_cloud_autonomous_vm_cluster
 	_#res: "\(#awsPrefix)_odb_cloud_exadata_infrastructure": res.#aws_odb_cloud_exadata_infrastructure
 	_#res: "\(#awsPrefix)_odb_cloud_vm_cluster": res.#aws_odb_cloud_vm_cluster
@@ -1285,6 +1286,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_sagemaker_image": res.#aws_sagemaker_image
 	_#res: "\(#awsPrefix)_sagemaker_image_version": res.#aws_sagemaker_image_version
 	_#res: "\(#awsPrefix)_sagemaker_labeling_job": res.#aws_sagemaker_labeling_job
+	_#res: "\(#awsPrefix)_sagemaker_mlflow_app": res.#aws_sagemaker_mlflow_app
 	_#res: "\(#awsPrefix)_sagemaker_mlflow_tracking_server": res.#aws_sagemaker_mlflow_tracking_server
 	_#res: "\(#awsPrefix)_sagemaker_model_card_export_job": res.#aws_sagemaker_model_card_export_job
 	_#res: "\(#awsPrefix)_sagemaker_model_card": res.#aws_sagemaker_model_card

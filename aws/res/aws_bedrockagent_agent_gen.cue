@@ -4,17 +4,12 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagent_agent")
 	close({
-		agent_arn?:               string
-		agent_collaboration?:     string
-		agent_id?:                string
-		agent_name!:              string
-		agent_resource_role_arn!: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                      string
+		timeouts?:                    #timeouts
+		agent_arn?:                   string
+		agent_collaboration?:         string
+		agent_id?:                    string
+		agent_name!:                  string
+		agent_resource_role_arn!:     string
 		agent_version?:               string
 		customer_encryption_key_arn?: string
 		description?:                 string
@@ -23,7 +18,6 @@ package res
 			guardrail_identifier?: string
 			guardrail_version?:    string
 		})]
-		timeouts?:                    #timeouts
 		id?:                          string
 		idle_session_ttl_in_seconds?: number
 		instruction?:                 string
@@ -53,6 +47,12 @@ package res
 				prompt_type?:          string
 			})]
 		})]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                     string
 		skip_resource_in_use_check?: bool
 		tags?: [string]:     string
 		tags_all?: [string]: string

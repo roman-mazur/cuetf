@@ -7,13 +7,13 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_route53recoveryreadiness_resource_set")
 	close({
 		resources!: matchN(1, [#resources, [_, ...] & [...#resources]])
+		timeouts?:          #timeouts
 		arn?:               string
 		id?:                string
 		resource_set_name!: string
 		resource_set_type!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#resources: close({

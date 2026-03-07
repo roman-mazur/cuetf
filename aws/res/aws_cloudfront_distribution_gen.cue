@@ -6,6 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_distribution")
 	close({
+		connection_function_association?: matchN(1, [#connection_function_association, list.MaxItems(1) & [...#connection_function_association]])
+		custom_error_response?: matchN(1, [#custom_error_response, [...#custom_error_response]])
+		default_cache_behavior!: matchN(1, [#default_cache_behavior, list.MaxItems(1) & [_, ...] & [...#default_cache_behavior]])
+		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
+		ordered_cache_behavior?: matchN(1, [#ordered_cache_behavior, [...#ordered_cache_behavior]])
+		origin!: matchN(1, [#origin, [_, ...] & [...#origin]])
+		origin_group?: matchN(1, [#origin_group, [...#origin_group]])
+		restrictions!: matchN(1, [#restrictions, list.MaxItems(1) & [_, ...] & [...#restrictions]])
+		viewer_certificate!: matchN(1, [#viewer_certificate, list.MaxItems(1) & [_, ...] & [...#viewer_certificate]])
+		viewer_mtls_config?: matchN(1, [#viewer_mtls_config, list.MaxItems(1) & [...#viewer_mtls_config]])
 		aliases?: [...string]
 		anycast_ip_list_id?:              string
 		arn?:                             string
@@ -23,13 +33,10 @@ import "list"
 		is_ipv6_enabled?:                 bool
 		last_modified_time?:              string
 		logging_v1_enabled?:              bool
-		connection_function_association?: matchN(1, [#connection_function_association, list.MaxItems(1) & [...#connection_function_association]])
-		price_class?: string
-		custom_error_response?: matchN(1, [#custom_error_response, [...#custom_error_response]])
-		retain_on_delete?: bool
-		default_cache_behavior!: matchN(1, [#default_cache_behavior, list.MaxItems(1) & [_, ...] & [...#default_cache_behavior]])
-		staging?: bool
-		status?:  string
+		price_class?:                     string
+		retain_on_delete?:                bool
+		staging?:                         bool
+		status?:                          string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		trusted_key_groups?: [...close({
@@ -48,13 +55,6 @@ import "list"
 		})]
 		wait_for_deployment?: bool
 		web_acl_id?:          string
-		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
-		ordered_cache_behavior?: matchN(1, [#ordered_cache_behavior, [...#ordered_cache_behavior]])
-		origin!: matchN(1, [#origin, [_, ...] & [...#origin]])
-		origin_group?: matchN(1, [#origin_group, [...#origin_group]])
-		restrictions!: matchN(1, [#restrictions, list.MaxItems(1) & [_, ...] & [...#restrictions]])
-		viewer_certificate!: matchN(1, [#viewer_certificate, list.MaxItems(1) & [_, ...] & [...#viewer_certificate]])
-		viewer_mtls_config?: matchN(1, [#viewer_mtls_config, list.MaxItems(1) & [...#viewer_mtls_config]])
 	})
 
 	#connection_function_association: close({
@@ -69,26 +69,26 @@ import "list"
 	})
 
 	#default_cache_behavior: close({
-		allowed_methods!: [...string]
-		cache_policy_id?: string
-		cached_methods!: [...string]
-		compress?:                  bool
-		default_ttl?:               number
-		field_level_encryption_id?: string
-		max_ttl?:                   number
-		min_ttl?:                   number
-		origin_request_policy_id?:  string
-		realtime_log_config_arn?:   string
 		forwarded_values?: matchN(1, [_#defs."/$defs/default_cache_behavior/$defs/forwarded_values", list.MaxItems(1) & [..._#defs."/$defs/default_cache_behavior/$defs/forwarded_values"]])
 		function_association?: matchN(1, [_#defs."/$defs/default_cache_behavior/$defs/function_association", list.MaxItems(2) & [..._#defs."/$defs/default_cache_behavior/$defs/function_association"]])
 		grpc_config?: matchN(1, [_#defs."/$defs/default_cache_behavior/$defs/grpc_config", list.MaxItems(1) & [..._#defs."/$defs/default_cache_behavior/$defs/grpc_config"]])
+		lambda_function_association?: matchN(1, [_#defs."/$defs/default_cache_behavior/$defs/lambda_function_association", list.MaxItems(4) & [..._#defs."/$defs/default_cache_behavior/$defs/lambda_function_association"]])
+		allowed_methods!: [...string]
+		cache_policy_id?: string
+		cached_methods!: [...string]
+		compress?:                   bool
+		default_ttl?:                number
+		field_level_encryption_id?:  string
+		max_ttl?:                    number
+		min_ttl?:                    number
+		origin_request_policy_id?:   string
+		realtime_log_config_arn?:    string
 		response_headers_policy_id?: string
 		smooth_streaming?:           bool
 		target_origin_id!:           string
 		trusted_key_groups?: [...string]
 		trusted_signers?: [...string]
 		viewer_protocol_policy!: string
-		lambda_function_association?: matchN(1, [_#defs."/$defs/default_cache_behavior/$defs/lambda_function_association", list.MaxItems(4) & [..._#defs."/$defs/default_cache_behavior/$defs/lambda_function_association"]])
 	})
 
 	#logging_config: close({
@@ -98,30 +98,35 @@ import "list"
 	})
 
 	#ordered_cache_behavior: close({
+		forwarded_values?: matchN(1, [_#defs."/$defs/ordered_cache_behavior/$defs/forwarded_values", list.MaxItems(1) & [..._#defs."/$defs/ordered_cache_behavior/$defs/forwarded_values"]])
+		function_association?: matchN(1, [_#defs."/$defs/ordered_cache_behavior/$defs/function_association", list.MaxItems(2) & [..._#defs."/$defs/ordered_cache_behavior/$defs/function_association"]])
+		grpc_config?: matchN(1, [_#defs."/$defs/ordered_cache_behavior/$defs/grpc_config", list.MaxItems(1) & [..._#defs."/$defs/ordered_cache_behavior/$defs/grpc_config"]])
+		lambda_function_association?: matchN(1, [_#defs."/$defs/ordered_cache_behavior/$defs/lambda_function_association", list.MaxItems(4) & [..._#defs."/$defs/ordered_cache_behavior/$defs/lambda_function_association"]])
 		allowed_methods!: [...string]
 		cache_policy_id?: string
 		cached_methods!: [...string]
-		compress?:                  bool
-		default_ttl?:               number
-		field_level_encryption_id?: string
-		max_ttl?:                   number
-		min_ttl?:                   number
-		origin_request_policy_id?:  string
-		path_pattern!:              string
-		realtime_log_config_arn?:   string
-		forwarded_values?: matchN(1, [_#defs."/$defs/ordered_cache_behavior/$defs/forwarded_values", list.MaxItems(1) & [..._#defs."/$defs/ordered_cache_behavior/$defs/forwarded_values"]])
+		compress?:                   bool
+		default_ttl?:                number
+		field_level_encryption_id?:  string
+		max_ttl?:                    number
+		min_ttl?:                    number
+		origin_request_policy_id?:   string
+		path_pattern!:               string
+		realtime_log_config_arn?:    string
 		response_headers_policy_id?: string
 		smooth_streaming?:           bool
 		target_origin_id!:           string
 		trusted_key_groups?: [...string]
 		trusted_signers?: [...string]
 		viewer_protocol_policy!: string
-		function_association?: matchN(1, [_#defs."/$defs/ordered_cache_behavior/$defs/function_association", list.MaxItems(2) & [..._#defs."/$defs/ordered_cache_behavior/$defs/function_association"]])
-		grpc_config?: matchN(1, [_#defs."/$defs/ordered_cache_behavior/$defs/grpc_config", list.MaxItems(1) & [..._#defs."/$defs/ordered_cache_behavior/$defs/grpc_config"]])
-		lambda_function_association?: matchN(1, [_#defs."/$defs/ordered_cache_behavior/$defs/lambda_function_association", list.MaxItems(4) & [..._#defs."/$defs/ordered_cache_behavior/$defs/lambda_function_association"]])
 	})
 
 	#origin: close({
+		custom_header?: matchN(1, [_#defs."/$defs/origin/$defs/custom_header", [..._#defs."/$defs/origin/$defs/custom_header"]])
+		custom_origin_config?: matchN(1, [_#defs."/$defs/origin/$defs/custom_origin_config", list.MaxItems(1) & [..._#defs."/$defs/origin/$defs/custom_origin_config"]])
+		origin_shield?: matchN(1, [_#defs."/$defs/origin/$defs/origin_shield", list.MaxItems(1) & [..._#defs."/$defs/origin/$defs/origin_shield"]])
+		s3_origin_config?: matchN(1, [_#defs."/$defs/origin/$defs/s3_origin_config", list.MaxItems(1) & [..._#defs."/$defs/origin/$defs/s3_origin_config"]])
+		vpc_origin_config?: matchN(1, [_#defs."/$defs/origin/$defs/vpc_origin_config", list.MaxItems(1) & [..._#defs."/$defs/origin/$defs/vpc_origin_config"]])
 		connection_attempts?:         number
 		connection_timeout?:          number
 		domain_name!:                 string
@@ -129,11 +134,6 @@ import "list"
 		origin_id!:                   string
 		origin_path?:                 string
 		response_completion_timeout?: number
-		custom_header?: matchN(1, [_#defs."/$defs/origin/$defs/custom_header", [..._#defs."/$defs/origin/$defs/custom_header"]])
-		custom_origin_config?: matchN(1, [_#defs."/$defs/origin/$defs/custom_origin_config", list.MaxItems(1) & [..._#defs."/$defs/origin/$defs/custom_origin_config"]])
-		origin_shield?: matchN(1, [_#defs."/$defs/origin/$defs/origin_shield", list.MaxItems(1) & [..._#defs."/$defs/origin/$defs/origin_shield"]])
-		s3_origin_config?: matchN(1, [_#defs."/$defs/origin/$defs/s3_origin_config", list.MaxItems(1) & [..._#defs."/$defs/origin/$defs/s3_origin_config"]])
-		vpc_origin_config?: matchN(1, [_#defs."/$defs/origin/$defs/vpc_origin_config", list.MaxItems(1) & [..._#defs."/$defs/origin/$defs/vpc_origin_config"]])
 	})
 
 	#origin_group: close({

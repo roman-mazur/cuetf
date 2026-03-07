@@ -6,35 +6,35 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lex_bot")
 	close({
-		arn?:            string
-		checksum?:       string
-		child_directed!: bool
-		create_version?: bool
-		created_date?:   string
+		abort_statement!: matchN(1, [#abort_statement, list.MaxItems(1) & [_, ...] & [...#abort_statement]])
+		clarification_prompt?: matchN(1, [#clarification_prompt, list.MaxItems(1) & [...#clarification_prompt]])
+		intent!: matchN(1, [#intent, list.MaxItems(250) & [_, ...] & [...#intent]])
+		timeouts?:                        #timeouts
+		arn?:                             string
+		checksum?:                        string
+		child_directed!:                  bool
+		create_version?:                  bool
+		created_date?:                    string
+		description?:                     string
+		detect_sentiment?:                bool
+		enable_model_improvements?:       bool
+		failure_reason?:                  string
+		id?:                              string
+		idle_session_ttl_in_seconds?:     number
+		last_updated_date?:               string
+		locale?:                          string
+		name!:                            string
+		nlu_intent_confidence_threshold?: number
+		process_behavior?:                string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                    string
-		description?:               string
-		detect_sentiment?:          bool
-		enable_model_improvements?: bool
-		abort_statement!: matchN(1, [#abort_statement, list.MaxItems(1) & [_, ...] & [...#abort_statement]])
-		clarification_prompt?: matchN(1, [#clarification_prompt, list.MaxItems(1) & [...#clarification_prompt]])
-		failure_reason?:              string
-		id?:                          string
-		idle_session_ttl_in_seconds?: number
-		last_updated_date?:           string
-		intent!: matchN(1, [#intent, list.MaxItems(250) & [_, ...] & [...#intent]])
-		locale?:                          string
-		name!:                            string
-		nlu_intent_confidence_threshold?: number
-		process_behavior?:                string
-		status?:                          string
-		timeouts?:                        #timeouts
-		version?:                         string
-		voice_id?:                        string
+		region?:   string
+		status?:   string
+		version?:  string
+		voice_id?: string
 	})
 
 	#abort_statement: close({

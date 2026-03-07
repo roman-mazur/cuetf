@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_security_group_vpc_association")
 	close({
+		timeouts?: #timeouts
+
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
@@ -12,7 +14,6 @@ package res
 		security_group_id!: string
 		state?:             string
 		vpc_id!:            string
-		timeouts?:          #timeouts
 	})
 
 	#timeouts: close({

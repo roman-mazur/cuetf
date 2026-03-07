@@ -4,28 +4,28 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_datazone_form_type")
 	close({
+		model?: matchN(1, [#model, [...#model]])
+		timeouts?:          #timeouts
 		created_at?:        string
 		created_by?:        string
 		description?:       string
 		domain_identifier!: string
+		imports?: [...close({
+			name?:     string
+			revision?: string
+		})]
+		name!:                      string
+		origin_domain_id?:          string
+		origin_project_id?:         string
+		owning_project_identifier!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		imports?: [...close({
-			name?:     string
-			revision?: string
-		})]
-		name!: string
-		model?: matchN(1, [#model, [...#model]])
-		timeouts?:                  #timeouts
-		origin_domain_id?:          string
-		origin_project_id?:         string
-		owning_project_identifier!: string
-		revision?:                  string
-		status?:                    string
+		region?:   string
+		revision?: string
+		status?:   string
 	})
 
 	#model: close({

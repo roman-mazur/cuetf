@@ -4,18 +4,18 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_athena_prepared_statement")
 	close({
-		description?: string
-		id?:          string
+		timeouts?:        #timeouts
+		description?:     string
+		id?:              string
+		name!:            string
+		query_statement!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:          string
-		name!:            string
-		query_statement!: string
-		workgroup!:       string
-		timeouts?:        #timeouts
+		region?:    string
+		workgroup!: string
 	})
 
 	#timeouts: close({

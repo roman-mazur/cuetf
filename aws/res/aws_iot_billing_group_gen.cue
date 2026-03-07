@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_iot_billing_group")
 	close({
+		properties?: matchN(1, [#properties, [...#properties]])
 		arn?: string
 		id?:  string
 		metadata?: [...close({
@@ -19,7 +20,6 @@ package res
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		version?: number
-		properties?: matchN(1, [#properties, [...#properties]])
 	})
 
 	#properties: close({

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ecs_cluster")
 	close({
+		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
+		service_connect_defaults?: matchN(1, [#service_connect_defaults, list.MaxItems(1) & [...#service_connect_defaults]])
+		setting?: matchN(1, [#setting, [...#setting]])
 		arn?:  string
 		id?:   string
 		name!: string
@@ -17,9 +20,6 @@ import "list"
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
-		service_connect_defaults?: matchN(1, [#service_connect_defaults, list.MaxItems(1) & [...#service_connect_defaults]])
-		setting?: matchN(1, [#setting, [...#setting]])
 	})
 
 	#configuration: close({

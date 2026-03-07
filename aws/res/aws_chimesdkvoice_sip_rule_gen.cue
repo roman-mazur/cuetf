@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_chimesdkvoice_sip_rule")
 	close({
+		target_applications!: matchN(1, [#target_applications, list.MaxItems(25) & [_, ...] & [...#target_applications]])
 		disabled?: bool
 		id?:       string
 		name!:     string
@@ -17,7 +18,6 @@ import "list"
 		region?:        string
 		trigger_type!:  string
 		trigger_value!: string
-		target_applications!: matchN(1, [#target_applications, list.MaxItems(25) & [_, ...] & [...#target_applications]])
 	})
 
 	#target_applications: close({

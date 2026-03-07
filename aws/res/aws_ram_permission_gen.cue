@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ram_permission")
 	close({
+		timeouts?:        #timeouts
 		arn?:             string
 		default_version?: bool
 		name!:            string
@@ -15,7 +16,6 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:        string
 		resource_type!: string
-		timeouts?:      #timeouts
 		status?:        string
 		tags?: [string]:     string
 		tags_all?: [string]: string

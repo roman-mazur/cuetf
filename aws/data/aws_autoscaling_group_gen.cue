@@ -23,12 +23,6 @@ package data
 			name?:    string
 			version?: string
 		})]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		load_balancers?: [...string]
 		max_instance_lifetime?: number
 		max_size?:              number
@@ -116,8 +110,14 @@ package data
 		new_instances_protected_from_scale_in?: bool
 		placement_group?:                       string
 		predicted_capacity?:                    number
-		service_linked_role_arn?:               string
-		status?:                                string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                  string
+		service_linked_role_arn?: string
+		status?:                  string
 		suspended_processes?: [...string]
 		tag?: [...close({
 			key?:                 string

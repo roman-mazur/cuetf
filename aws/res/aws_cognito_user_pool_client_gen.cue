@@ -4,19 +4,15 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cognito_user_pool_client")
 	close({
+		analytics_configuration?: matchN(1, [#analytics_configuration, [...#analytics_configuration]])
+		refresh_token_rotation?: matchN(1, [#refresh_token_rotation, [...#refresh_token_rotation]])
+		token_validity_units?: matchN(1, [#token_validity_units, [...#token_validity_units]])
 		access_token_validity?: number
 		allowed_oauth_flows?: [...string]
 		allowed_oauth_flows_user_pool_client?: bool
 		allowed_oauth_scopes?: [...string]
 		auth_session_validity?: number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		callback_urls?: [...string]
-		analytics_configuration?: matchN(1, [#analytics_configuration, [...#analytics_configuration]])
 		client_secret?:                                 string
 		default_redirect_uri?:                          string
 		enable_propagate_additional_user_context_data?: bool
@@ -30,11 +26,15 @@ package res
 		prevent_user_existence_errors?: string
 		read_attributes?: [...string]
 		refresh_token_validity?: number
-		refresh_token_rotation?: matchN(1, [#refresh_token_rotation, [...#refresh_token_rotation]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		supported_identity_providers?: [...string]
 		user_pool_id!: string
 		write_attributes?: [...string]
-		token_validity_units?: matchN(1, [#token_validity_units, [...#token_validity_units]])
 	})
 
 	#analytics_configuration: close({

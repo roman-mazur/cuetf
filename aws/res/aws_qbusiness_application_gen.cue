@@ -4,7 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_qbusiness_application")
 	close({
-		arn?: string
+		attachments_configuration?: matchN(1, [#attachments_configuration, [...#attachments_configuration]])
+		encryption_configuration?: matchN(1, [#encryption_configuration, [...#encryption_configuration]])
+		timeouts?: #timeouts
+		arn?:      string
 
 		// A description of the Amazon Q application.
 		description?: string
@@ -21,15 +24,12 @@ package res
 		// ARN of the IAM Identity Center instance you are either creating
 		// for—or connecting to—your Amazon Q Business application
 		identity_center_instance_arn!: string
-		attachments_configuration?: matchN(1, [#attachments_configuration, [...#attachments_configuration]])
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		encryption_configuration?: matchN(1, [#encryption_configuration, [...#encryption_configuration]])
-		timeouts?: #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

@@ -15,14 +15,8 @@ package data
 		db_instance_arn?:            string
 		db_instance_class?:          string
 		db_instance_identifier?:     string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:           string
-		db_instance_port?: number
-		db_name?:          string
+		db_instance_port?:           number
+		db_name?:                    string
 		db_parameter_groups?: [...string]
 		db_subnet_group?: string
 		enabled_cloudwatch_logs_exports?: [...string]
@@ -50,11 +44,17 @@ package data
 		preferred_backup_window?:      string
 		preferred_maintenance_window?: string
 		publicly_accessible?:          bool
-		replicate_source_db?:          string
-		resource_id?:                  string
-		storage_encrypted?:            bool
-		storage_throughput?:           number
-		storage_type?:                 string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:              string
+		replicate_source_db?: string
+		resource_id?:         string
+		storage_encrypted?:   bool
+		storage_throughput?:  number
+		storage_type?:        string
 		tags?: [string]: string
 		timezone?:              string
 		upgrade_rollout_order?: string

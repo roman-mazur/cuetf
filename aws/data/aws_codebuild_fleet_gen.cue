@@ -13,21 +13,21 @@ package data
 			memory?:        number
 			vcpu?:          number
 		})]
-		compute_type?:     string
-		created?:          string
-		environment_type?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:             string
+		compute_type?:       string
+		created?:            string
+		environment_type?:   string
 		fleet_service_role?: string
 		id?:                 string
 		image_id?:           string
 		last_modified?:      string
 		name!:               string
 		overflow_behavior?:  string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		scaling_configuration?: [...close({
 			desired_capacity?: number
 			max_capacity?:     number

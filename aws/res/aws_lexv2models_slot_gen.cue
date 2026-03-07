@@ -4,25 +4,25 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lexv2models_slot")
 	close({
+		multiple_values_setting?: matchN(1, [#multiple_values_setting, [...#multiple_values_setting]])
+		obfuscation_setting?: matchN(1, [#obfuscation_setting, [...#obfuscation_setting]])
+		sub_slot_setting?: matchN(1, [#sub_slot_setting, [...#sub_slot_setting]])
+		timeouts?: #timeouts
+		value_elicitation_setting?: matchN(1, [#value_elicitation_setting, [...#value_elicitation_setting]])
 		bot_id!:      string
 		bot_version!: string
 		description?: string
 		id?:          string
+		intent_id!:   string
+		locale_id!:   string
+		name!:        string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:    string
-		intent_id!: string
-		locale_id!: string
-		name!:      string
-		multiple_values_setting?: matchN(1, [#multiple_values_setting, [...#multiple_values_setting]])
-		obfuscation_setting?: matchN(1, [#obfuscation_setting, [...#obfuscation_setting]])
-		slot_id?: string
-		sub_slot_setting?: matchN(1, [#sub_slot_setting, [...#sub_slot_setting]])
-		timeouts?: #timeouts
-		value_elicitation_setting?: matchN(1, [#value_elicitation_setting, [...#value_elicitation_setting]])
+		region?:       string
+		slot_id?:      string
 		slot_type_id?: string
 	})
 

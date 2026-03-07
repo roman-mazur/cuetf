@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ssoadmin_instance_access_control_attributes")
 	close({
+		attribute!: matchN(1, [#attribute, [_, ...] & [...#attribute]])
 		id?:           string
 		instance_arn!: string
 
@@ -14,7 +15,6 @@ package res
 		region?:        string
 		status?:        string
 		status_reason?: string
-		attribute!: matchN(1, [#attribute, [_, ...] & [...#attribute]])
 	})
 
 	#attribute: close({

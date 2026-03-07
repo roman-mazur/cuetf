@@ -4,8 +4,12 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_distribution_tenant")
 	close({
-		arn?: string
 		customizations?: matchN(1, [#customizations, [...#customizations]])
+		domain?: matchN(1, [#domain, [...#domain]])
+		managed_certificate_request?: matchN(1, [#managed_certificate_request, [...#managed_certificate_request]])
+		parameter?: matchN(1, [#parameter, [...#parameter]])
+		timeouts?:            #timeouts
+		arn?:                 string
 		connection_group_id?: string
 		distribution_id!:     string
 		enabled?:             bool
@@ -13,11 +17,7 @@ package res
 		id?:                  string
 		name!:                string
 		status?:              string
-		domain?: matchN(1, [#domain, [...#domain]])
-		managed_certificate_request?: matchN(1, [#managed_certificate_request, [...#managed_certificate_request]])
-		tags?: [string]: string
-		parameter?: matchN(1, [#parameter, [...#parameter]])
-		timeouts?: #timeouts
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		wait_for_deployment?: bool
 	})

@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ec2_instance_type")
 	close({
+		timeouts?:                #timeouts
 		auto_recovery_supported?: bool
 		bandwidth_weightings?: [...string]
 		bare_metal?: bool
@@ -21,20 +22,14 @@ package data
 		ebs_performance_baseline_bandwidth?:  number
 		ebs_performance_baseline_iops?:       number
 		ebs_performance_baseline_throughput?: number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                             string
-		ebs_performance_maximum_bandwidth?:  number
-		ebs_performance_maximum_iops?:       number
-		ebs_performance_maximum_throughput?: number
-		efa_maximum_interfaces?:             number
-		efa_supported?:                      bool
-		ena_srd_supported?:                  bool
-		ena_support?:                        string
-		encryption_in_transit_supported?:    bool
+		ebs_performance_maximum_bandwidth?:   number
+		ebs_performance_maximum_iops?:        number
+		ebs_performance_maximum_throughput?:  number
+		efa_maximum_interfaces?:              number
+		efa_supported?:                       bool
+		ena_srd_supported?:                   bool
+		ena_support?:                         string
+		encryption_in_transit_supported?:     bool
 		fpgas?: [...close({
 			count?:        number
 			manufacturer?: string
@@ -62,7 +57,6 @@ package data
 			size?:  number
 			type?:  string
 		})]
-		timeouts?:                             #timeouts
 		instance_storage_supported?:           bool
 		instance_type!:                        string
 		ipv6_supported?:                       bool
@@ -96,6 +90,12 @@ package data
 		nitro_tpm_support?:      string
 		nitro_tpm_supported_versions?: [...string]
 		phc_support?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		supported_architectures?: [...string]
 		supported_cpu_features?: [...string]
 		supported_placement_strategies?: [...string]

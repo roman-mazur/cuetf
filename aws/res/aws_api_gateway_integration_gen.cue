@@ -6,13 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_api_gateway_integration")
 	close({
-		cache_key_parameters?: [...string]
-		cache_namespace?:  string
-		connection_id?:    string
-		connection_type?:  string
-		content_handling?: string
-		credentials?:      string
 		tls_config?: matchN(1, [#tls_config, list.MaxItems(1) & [...#tls_config]])
+		cache_key_parameters?: [...string]
+		cache_namespace?:         string
+		connection_id?:           string
+		connection_type?:         string
+		content_handling?:        string
+		credentials?:             string
 		http_method!:             string
 		id?:                      string
 		integration_http_method?: string

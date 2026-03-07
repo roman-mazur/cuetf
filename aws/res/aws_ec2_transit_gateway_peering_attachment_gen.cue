@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ec2_transit_gateway_peering_attachment")
 	close({
+		options?: matchN(1, [#options, list.MaxItems(1) & [...#options]])
 		arn?:                     string
 		id?:                      string
 		peer_account_id?:         string
@@ -18,7 +19,6 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		state?:  string
-		options?: matchN(1, [#options, list.MaxItems(1) & [...#options]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		transit_gateway_id!: string

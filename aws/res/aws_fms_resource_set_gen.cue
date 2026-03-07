@@ -4,8 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_fms_resource_set")
 	close({
-		arn?: string
-		id?:  string
+		resource_set?: matchN(1, [#resource_set, [...#resource_set]])
+		timeouts?: #timeouts
+		arn?:      string
+		id?:       string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -14,8 +16,6 @@ package res
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		resource_set?: matchN(1, [#resource_set, [...#resource_set]])
-		timeouts?: #timeouts
 	})
 
 	#resource_set: close({

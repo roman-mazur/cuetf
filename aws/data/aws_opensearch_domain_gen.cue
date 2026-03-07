@@ -51,12 +51,6 @@ package data
 			})]
 			zone_awareness_enabled?: bool
 		})]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		cognito_options?: [...close({
 			enabled?:          bool
 			identity_pool_id?: string
@@ -110,6 +104,12 @@ package data
 			})]
 		})]
 		processing?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		snapshot_options?: [...close({
 			automated_snapshot_start_hour?: number
 		})]

@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_networkflowmonitor_monitor")
 	close({
+		local_resource?: matchN(1, [#local_resource, [...#local_resource]])
+		remote_resource?: matchN(1, [#remote_resource, [...#remote_resource]])
+		timeouts?:     #timeouts
 		monitor_arn?:  string
 		monitor_name!: string
 
@@ -15,9 +18,6 @@ package res
 		scope_arn!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		local_resource?: matchN(1, [#local_resource, [...#local_resource]])
-		remote_resource?: matchN(1, [#remote_resource, [...#remote_resource]])
-		timeouts?: #timeouts
 	})
 
 	#local_resource: close({

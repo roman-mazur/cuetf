@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_neptunegraph_graph")
 	close({
+		timeouts?: #timeouts
+		vector_search_configuration?: matchN(1, [#vector_search_configuration, [...#vector_search_configuration]])
 		arn?: string
 
 		// A value that indicates whether the graph has deletion
@@ -25,11 +27,11 @@ package res
 		// Allows user to specify name prefix and have remainder of name
 		// automatically generated.
 		graph_name_prefix?: string
+		id?:                string
 
 		// Specifies a KMS key to use to encrypt data in the new graph.
 		// Value must be ARN of KMS Key.
 		kms_key_identifier?: string
-		id?:                 string
 
 		// The provisioned memory-optimized Neptune Capacity Units
 		// (m-NCUs) to use for the graph.
@@ -56,8 +58,6 @@ package res
 		// The number of replicas in other AZs. Value must be between 0
 		// and 2.
 		replica_count?: number
-		timeouts?:      #timeouts
-		vector_search_configuration?: matchN(1, [#vector_search_configuration, [...#vector_search_configuration]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

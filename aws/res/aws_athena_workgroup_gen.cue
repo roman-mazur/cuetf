@@ -6,36 +6,37 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_athena_workgroup")
 	close({
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:        string
+		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
 		arn?:           string
 		description?:   string
 		force_destroy?: bool
 		id?:            string
 		name!:          string
-		state?:         string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		state?:  string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
 	})
 
 	#configuration: close({
 		customer_content_encryption_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/customer_content_encryption_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/customer_content_encryption_configuration"]])
-		bytes_scanned_cutoff_per_query?:          number
-		enable_minimum_encryption_configuration?: bool
-		enforce_workgroup_configuration?:         bool
-		execution_role?:                          string
-		publish_cloudwatch_metrics_enabled?:      bool
-		requester_pays_enabled?:                  bool
 		engine_version?: matchN(1, [_#defs."/$defs/configuration/$defs/engine_version", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/engine_version"]])
 		identity_center_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/identity_center_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/identity_center_configuration"]])
 		managed_query_results_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/managed_query_results_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/managed_query_results_configuration"]])
 		monitoring_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/monitoring_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/monitoring_configuration"]])
 		query_results_s3_access_grants_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/query_results_s3_access_grants_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/query_results_s3_access_grants_configuration"]])
 		result_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/result_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/result_configuration"]])
+		bytes_scanned_cutoff_per_query?:          number
+		enable_minimum_encryption_configuration?: bool
+		enforce_workgroup_configuration?:         bool
+		execution_role?:                          string
+		publish_cloudwatch_metrics_enabled?:      bool
+		requester_pays_enabled?:                  bool
 	})
 
 	_#defs: "/$defs/configuration/$defs/customer_content_encryption_configuration": close({

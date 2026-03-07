@@ -4,25 +4,25 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lexv2models_slot_type")
 	close({
-		bot_id!:      string
-		bot_version!: string
-		description?: string
+		composite_slot_type_setting?: matchN(1, [#composite_slot_type_setting, [...#composite_slot_type_setting]])
+		external_source_setting?: matchN(1, [#external_source_setting, [...#external_source_setting]])
+		slot_type_values?: matchN(1, [#slot_type_values, [...#slot_type_values]])
+		timeouts?: #timeouts
+		value_selection_setting?: matchN(1, [#value_selection_setting, [...#value_selection_setting]])
+		bot_id!:                     string
+		bot_version!:                string
+		description?:                string
+		id?:                         string
+		locale_id!:                  string
+		name!:                       string
+		parent_slot_type_signature?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		composite_slot_type_setting?: matchN(1, [#composite_slot_type_setting, [...#composite_slot_type_setting]])
-		id?:                         string
-		locale_id!:                  string
-		name!:                       string
-		parent_slot_type_signature?: string
-		external_source_setting?: matchN(1, [#external_source_setting, [...#external_source_setting]])
-		slot_type_values?: matchN(1, [#slot_type_values, [...#slot_type_values]])
-		timeouts?:     #timeouts
+		region?:       string
 		slot_type_id?: string
-		value_selection_setting?: matchN(1, [#value_selection_setting, [...#value_selection_setting]])
 	})
 
 	#composite_slot_type_setting: close({

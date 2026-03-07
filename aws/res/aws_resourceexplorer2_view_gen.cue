@@ -4,8 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_resourceexplorer2_view")
 	close({
-		arn?: string
 		filters?: matchN(1, [#filters, [...#filters]])
+		included_property?: matchN(1, [#included_property, [...#included_property]])
+		arn?:          string
 		default_view?: bool
 		name!:         string
 
@@ -15,8 +16,7 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		scope?:  string
-		tags?: [string]: string
-		included_property?: matchN(1, [#included_property, [...#included_property]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 

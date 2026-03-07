@@ -6,15 +6,15 @@ package res
 	close({
 		engine_native_audit_fields_included?: bool
 		id?:                                  string
+		kinesis_stream_name?:                 string
+		kms_key_id!:                          string
+		mode!:                                string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:              string
-		kinesis_stream_name?: string
-		kms_key_id!:          string
-		mode!:                string
-		resource_arn!:        string
+		region?:       string
+		resource_arn!: string
 	})
 }

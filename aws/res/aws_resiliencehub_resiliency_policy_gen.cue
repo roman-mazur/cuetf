@@ -4,7 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_resiliencehub_resiliency_policy")
 	close({
-		arn?: string
+		policy?: matchN(1, [#policy, [...#policy]])
+		timeouts?: #timeouts
+		arn?:      string
 
 		// Specifies a high-level geographical location constraint for
 		// where resilience policy data can be stored.
@@ -24,14 +26,12 @@ package res
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 
 		// The tier for the resiliency policy, ranging from the highest
 		// severity (MissionCritical) to lowest (NonCritical).
 		tier!: string
-		policy?: matchN(1, [#policy, [...#policy]])
-		timeouts?: #timeouts
-		tags?: [string]:     string
-		tags_all?: [string]: string
 	})
 
 	#policy: close({

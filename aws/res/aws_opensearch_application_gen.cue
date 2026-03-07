@@ -4,22 +4,22 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_opensearch_application")
 	close({
-		arn?: string
 		app_config?: matchN(1, [#app_config, [...#app_config]])
-		endpoint?: string
-		id?:       string
+		data_source?: matchN(1, [#data_source, [...#data_source]])
+		iam_identity_center_options?: matchN(1, [#iam_identity_center_options, [...#iam_identity_center_options]])
+		timeouts?:    #timeouts
+		arn?:         string
+		endpoint?:    string
+		id?:          string
+		kms_key_arn?: string
+		name!:        string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		kms_key_arn?: string
-		data_source?: matchN(1, [#data_source, [...#data_source]])
-		name!: string
-		tags?: [string]: string
-		iam_identity_center_options?: matchN(1, [#iam_identity_center_options, [...#iam_identity_center_options]])
-		timeouts?: #timeouts
+		region?: string
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 

@@ -6,23 +6,23 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_scheduler_schedule")
 	close({
+		flexible_time_window!: matchN(1, [#flexible_time_window, list.MaxItems(1) & [_, ...] & [...#flexible_time_window]])
+		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
 		action_after_completion?: string
 		arn?:                     string
 		description?:             string
 		end_date?:                string
 		group_name?:              string
 		id?:                      string
+		kms_key_arn?:             string
+		name?:                    string
+		name_prefix?:             string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		kms_key_arn?: string
-		flexible_time_window!: matchN(1, [#flexible_time_window, list.MaxItems(1) & [_, ...] & [...#flexible_time_window]])
-		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
-		name?:                         string
-		name_prefix?:                  string
+		region?:                       string
 		schedule_expression!:          string
 		schedule_expression_timezone?: string
 		start_date?:                   string
@@ -37,14 +37,14 @@ import "list"
 	#target: close({
 		dead_letter_config?: matchN(1, [_#defs."/$defs/target/$defs/dead_letter_config", list.MaxItems(1) & [..._#defs."/$defs/target/$defs/dead_letter_config"]])
 		ecs_parameters?: matchN(1, [_#defs."/$defs/target/$defs/ecs_parameters", list.MaxItems(1) & [..._#defs."/$defs/target/$defs/ecs_parameters"]])
-		arn!:      string
-		input?:    string
-		role_arn!: string
 		eventbridge_parameters?: matchN(1, [_#defs."/$defs/target/$defs/eventbridge_parameters", list.MaxItems(1) & [..._#defs."/$defs/target/$defs/eventbridge_parameters"]])
 		kinesis_parameters?: matchN(1, [_#defs."/$defs/target/$defs/kinesis_parameters", list.MaxItems(1) & [..._#defs."/$defs/target/$defs/kinesis_parameters"]])
 		retry_policy?: matchN(1, [_#defs."/$defs/target/$defs/retry_policy", list.MaxItems(1) & [..._#defs."/$defs/target/$defs/retry_policy"]])
 		sagemaker_pipeline_parameters?: matchN(1, [_#defs."/$defs/target/$defs/sagemaker_pipeline_parameters", list.MaxItems(1) & [..._#defs."/$defs/target/$defs/sagemaker_pipeline_parameters"]])
 		sqs_parameters?: matchN(1, [_#defs."/$defs/target/$defs/sqs_parameters", list.MaxItems(1) & [..._#defs."/$defs/target/$defs/sqs_parameters"]])
+		arn!:      string
+		input?:    string
+		role_arn!: string
 	})
 
 	_#defs: "/$defs/target/$defs/dead_letter_config": close({
@@ -52,20 +52,20 @@ import "list"
 	})
 
 	_#defs: "/$defs/target/$defs/ecs_parameters": close({
+		capacity_provider_strategy?: matchN(1, [_#defs."/$defs/target/$defs/ecs_parameters/$defs/capacity_provider_strategy", list.MaxItems(6) & [..._#defs."/$defs/target/$defs/ecs_parameters/$defs/capacity_provider_strategy"]])
+		network_configuration?: matchN(1, [_#defs."/$defs/target/$defs/ecs_parameters/$defs/network_configuration", list.MaxItems(1) & [..._#defs."/$defs/target/$defs/ecs_parameters/$defs/network_configuration"]])
+		placement_constraints?: matchN(1, [_#defs."/$defs/target/$defs/ecs_parameters/$defs/placement_constraints", list.MaxItems(10) & [..._#defs."/$defs/target/$defs/ecs_parameters/$defs/placement_constraints"]])
+		placement_strategy?: matchN(1, [_#defs."/$defs/target/$defs/ecs_parameters/$defs/placement_strategy", list.MaxItems(5) & [..._#defs."/$defs/target/$defs/ecs_parameters/$defs/placement_strategy"]])
 		enable_ecs_managed_tags?: bool
 		enable_execute_command?:  bool
 		group?:                   string
 		launch_type?:             string
 		platform_version?:        string
 		propagate_tags?:          string
-		capacity_provider_strategy?: matchN(1, [_#defs."/$defs/target/$defs/ecs_parameters/$defs/capacity_provider_strategy", list.MaxItems(6) & [..._#defs."/$defs/target/$defs/ecs_parameters/$defs/capacity_provider_strategy"]])
-		network_configuration?: matchN(1, [_#defs."/$defs/target/$defs/ecs_parameters/$defs/network_configuration", list.MaxItems(1) & [..._#defs."/$defs/target/$defs/ecs_parameters/$defs/network_configuration"]])
-		placement_constraints?: matchN(1, [_#defs."/$defs/target/$defs/ecs_parameters/$defs/placement_constraints", list.MaxItems(10) & [..._#defs."/$defs/target/$defs/ecs_parameters/$defs/placement_constraints"]])
-		reference_id?: string
+		reference_id?:            string
 		tags?: [string]: string
 		task_count?:          number
 		task_definition_arn!: string
-		placement_strategy?: matchN(1, [_#defs."/$defs/target/$defs/ecs_parameters/$defs/placement_strategy", list.MaxItems(5) & [..._#defs."/$defs/target/$defs/ecs_parameters/$defs/placement_strategy"]])
 	})
 
 	_#defs: "/$defs/target/$defs/ecs_parameters/$defs/capacity_provider_strategy": close({

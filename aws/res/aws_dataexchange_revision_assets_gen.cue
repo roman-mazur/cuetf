@@ -4,35 +4,35 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dataexchange_revision_assets")
 	close({
-		arn?:         string
-		comment?:     string
-		created_at?:  string
-		data_set_id!: string
 		asset?: matchN(1, [#asset, [...#asset]])
-		finalized?: bool
+		timeouts?:      #timeouts
+		arn?:           string
+		comment?:       string
+		created_at?:    string
+		data_set_id!:   string
+		finalized?:     bool
+		force_destroy?: bool
+		id?:            string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:        string
-		force_destroy?: bool
-		id?:            string
+		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		timeouts?:   #timeouts
 		updated_at?: string
 	})
 
 	#asset: close({
-		arn?: string
 		create_s3_data_access_from_s3_bucket?: matchN(1, [_#defs."/$defs/asset/$defs/create_s3_data_access_from_s3_bucket", [..._#defs."/$defs/asset/$defs/create_s3_data_access_from_s3_bucket"]])
+		import_assets_from_s3?: matchN(1, [_#defs."/$defs/asset/$defs/import_assets_from_s3", [..._#defs."/$defs/asset/$defs/import_assets_from_s3"]])
+		import_assets_from_signed_url?: matchN(1, [_#defs."/$defs/asset/$defs/import_assets_from_signed_url", [..._#defs."/$defs/asset/$defs/import_assets_from_signed_url"]])
+		arn?:        string
 		created_at?: string
 		id?:         string
 		name?:       string
 		updated_at?: string
-		import_assets_from_s3?: matchN(1, [_#defs."/$defs/asset/$defs/import_assets_from_s3", [..._#defs."/$defs/asset/$defs/import_assets_from_s3"]])
-		import_assets_from_signed_url?: matchN(1, [_#defs."/$defs/asset/$defs/import_assets_from_signed_url", [..._#defs."/$defs/asset/$defs/import_assets_from_signed_url"]])
 	})
 
 	#timeouts: close({

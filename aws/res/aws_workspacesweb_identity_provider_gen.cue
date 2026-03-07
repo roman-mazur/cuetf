@@ -7,14 +7,14 @@ package res
 		identity_provider_arn?: string
 		identity_provider_details!: [string]: string
 		identity_provider_name!: string
+		identity_provider_type!: string
+		portal_arn!:             string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                 string
-		identity_provider_type!: string
-		portal_arn!:             string
+		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

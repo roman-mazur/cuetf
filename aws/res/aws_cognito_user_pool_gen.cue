@@ -6,34 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cognito_user_pool")
 	close({
-		alias_attributes?: [...string]
-		arn?: string
-		auto_verified_attributes?: [...string]
-		creation_date?:              string
-		custom_domain?:              string
-		deletion_protection?:        string
-		domain?:                     string
-		email_verification_message?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                     string
-		email_verification_subject?: string
-		endpoint?:                   string
-		estimated_number_of_users?:  number
-		id?:                         string
-		last_modified_date?:         string
-		mfa_configuration?:          string
-		name!:                       string
-		sms_authentication_message?: string
 		account_recovery_setting?: matchN(1, [#account_recovery_setting, list.MaxItems(1) & [...#account_recovery_setting]])
-		sms_verification_message?: string
-		tags?: [string]:     string
-		tags_all?: [string]: string
-		user_pool_tier?: string
-		username_attributes?: [...string]
 		admin_create_user_config?: matchN(1, [#admin_create_user_config, list.MaxItems(1) & [...#admin_create_user_config]])
 		device_configuration?: matchN(1, [#device_configuration, list.MaxItems(1) & [...#device_configuration]])
 		email_configuration?: matchN(1, [#email_configuration, list.MaxItems(1) & [...#email_configuration]])
@@ -49,6 +22,33 @@ import "list"
 		username_configuration?: matchN(1, [#username_configuration, list.MaxItems(1) & [...#username_configuration]])
 		verification_message_template?: matchN(1, [#verification_message_template, list.MaxItems(1) & [...#verification_message_template]])
 		web_authn_configuration?: matchN(1, [#web_authn_configuration, list.MaxItems(1) & [...#web_authn_configuration]])
+		alias_attributes?: [...string]
+		arn?: string
+		auto_verified_attributes?: [...string]
+		creation_date?:              string
+		custom_domain?:              string
+		deletion_protection?:        string
+		domain?:                     string
+		email_verification_message?: string
+		email_verification_subject?: string
+		endpoint?:                   string
+		estimated_number_of_users?:  number
+		id?:                         string
+		last_modified_date?:         string
+		mfa_configuration?:          string
+		name!:                       string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                     string
+		sms_authentication_message?: string
+		sms_verification_message?:   string
+		tags?: [string]:     string
+		tags_all?: [string]: string
+		user_pool_tier?: string
+		username_attributes?: [...string]
 	})
 
 	#account_recovery_setting: close({
@@ -79,19 +79,19 @@ import "list"
 	})
 
 	#lambda_config: close({
-		create_auth_challenge?: string
-		custom_message?:        string
-		define_auth_challenge?: string
-		kms_key_id?:            string
 		custom_email_sender?: matchN(1, [_#defs."/$defs/lambda_config/$defs/custom_email_sender", list.MaxItems(1) & [..._#defs."/$defs/lambda_config/$defs/custom_email_sender"]])
-		post_authentication?:  string
-		post_confirmation?:    string
-		pre_authentication?:   string
-		pre_sign_up?:          string
-		pre_token_generation?: string
-		user_migration?:       string
 		custom_sms_sender?: matchN(1, [_#defs."/$defs/lambda_config/$defs/custom_sms_sender", list.MaxItems(1) & [..._#defs."/$defs/lambda_config/$defs/custom_sms_sender"]])
 		pre_token_generation_config?: matchN(1, [_#defs."/$defs/lambda_config/$defs/pre_token_generation_config", list.MaxItems(1) & [..._#defs."/$defs/lambda_config/$defs/pre_token_generation_config"]])
+		create_auth_challenge?:          string
+		custom_message?:                 string
+		define_auth_challenge?:          string
+		kms_key_id?:                     string
+		post_authentication?:            string
+		post_confirmation?:              string
+		pre_authentication?:             string
+		pre_sign_up?:                    string
+		pre_token_generation?:           string
+		user_migration?:                 string
 		verify_auth_challenge_response?: string
 	})
 
@@ -107,12 +107,12 @@ import "list"
 
 	#schema: close({
 		number_attribute_constraints?: matchN(1, [_#defs."/$defs/schema/$defs/number_attribute_constraints", list.MaxItems(1) & [..._#defs."/$defs/schema/$defs/number_attribute_constraints"]])
+		string_attribute_constraints?: matchN(1, [_#defs."/$defs/schema/$defs/string_attribute_constraints", list.MaxItems(1) & [..._#defs."/$defs/schema/$defs/string_attribute_constraints"]])
 		attribute_data_type!:      string
 		developer_only_attribute?: bool
 		mutable?:                  bool
 		name!:                     string
 		required?:                 bool
-		string_attribute_constraints?: matchN(1, [_#defs."/$defs/schema/$defs/string_attribute_constraints", list.MaxItems(1) & [..._#defs."/$defs/schema/$defs/string_attribute_constraints"]])
 	})
 
 	#sign_in_policy: close({

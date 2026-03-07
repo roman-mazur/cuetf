@@ -6,30 +6,30 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_acmpca_certificate_authority")
 	close({
-		arn?:                           string
-		certificate?:                   string
-		certificate_chain?:             string
-		certificate_signing_request?:   string
-		enabled?:                       bool
-		id?:                            string
-		key_storage_security_standard?: string
+		certificate_authority_configuration!: matchN(1, [#certificate_authority_configuration, list.MaxItems(1) & [_, ...] & [...#certificate_authority_configuration]])
+		revocation_configuration?: matchN(1, [#revocation_configuration, list.MaxItems(1) & [...#revocation_configuration]])
+		timeouts?:                        #timeouts
+		arn?:                             string
+		certificate?:                     string
+		certificate_chain?:               string
+		certificate_signing_request?:     string
+		enabled?:                         bool
+		id?:                              string
+		key_storage_security_standard?:   string
+		not_after?:                       string
+		not_before?:                      string
+		permanent_deletion_time_in_days?: number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:     string
-		not_after?:  string
-		not_before?: string
-		certificate_authority_configuration!: matchN(1, [#certificate_authority_configuration, list.MaxItems(1) & [_, ...] & [...#certificate_authority_configuration]])
-		permanent_deletion_time_in_days?: number
-		revocation_configuration?: matchN(1, [#revocation_configuration, list.MaxItems(1) & [...#revocation_configuration]])
+		region?: string
 		serial?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type?:       string
 		usage_mode?: string
-		timeouts?:   #timeouts
 	})
 
 	#certificate_authority_configuration: close({

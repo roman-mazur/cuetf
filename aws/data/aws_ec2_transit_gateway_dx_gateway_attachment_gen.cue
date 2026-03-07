@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ec2_transit_gateway_dx_gateway_attachment")
 	close({
+		filter?: matchN(1, [#filter, [...#filter]])
+		timeouts?:      #timeouts
 		arn?:           string
 		dx_gateway_id?: string
 		id?:            string
@@ -15,8 +17,6 @@ package data
 		region?: string
 		tags?: [string]: string
 		transit_gateway_id?: string
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?: #timeouts
 	})
 
 	#filter: close({

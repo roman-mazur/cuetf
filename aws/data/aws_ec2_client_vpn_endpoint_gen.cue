@@ -4,7 +4,9 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ec2_client_vpn_endpoint")
 	close({
-		arn?: string
+		filter?: matchN(1, [#filter, [...#filter]])
+		timeouts?: #timeouts
+		arn?:      string
 		authentication_options?: [...close({
 			active_directory_id?:            string
 			root_certificate_chain_arn?:     string
@@ -31,17 +33,16 @@ package data
 			enabled?:               bool
 		})]
 		description?: string
-		filter?: matchN(1, [#filter, [...#filter]])
-		dns_name?: string
+		dns_name?:    string
 		dns_servers?: [...string]
+		endpoint_ip_address_type?: string
+		id?:                       string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                   string
-		endpoint_ip_address_type?: string
-		id?:                       string
+		region?: string
 		security_group_ids?: [...string]
 		self_service_portal?:     string
 		self_service_portal_url?: string
@@ -51,7 +52,6 @@ package data
 		tags?: [string]: string
 		traffic_ip_address_type?: string
 		transport_protocol?:      string
-		timeouts?:                #timeouts
 		vpc_id?:                  string
 		vpn_port?:                number
 	})

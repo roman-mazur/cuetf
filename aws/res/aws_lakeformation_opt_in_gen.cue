@@ -4,10 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lakeformation_opt_in")
 	close({
-		last_modified?: string
 		condition?: matchN(1, [#condition, [...#condition]])
 		principal?: matchN(1, [#principal, [...#principal]])
 		resource_data?: matchN(1, [#resource_data, [...#resource_data]])
+		last_modified?:   string
 		last_updated_by?: string
 
 		// Region where this resource will be

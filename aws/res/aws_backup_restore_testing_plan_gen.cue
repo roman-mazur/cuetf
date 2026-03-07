@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_backup_restore_testing_plan")
 	close({
+		recovery_point_selection?: matchN(1, [#recovery_point_selection, [...#recovery_point_selection]])
 		arn?:  string
 		name!: string
 
@@ -17,7 +18,6 @@ package res
 		start_window_hours?:           number
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		recovery_point_selection?: matchN(1, [#recovery_point_selection, [...#recovery_point_selection]])
 	})
 
 	#recovery_point_selection: close({

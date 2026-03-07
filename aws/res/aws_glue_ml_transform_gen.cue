@@ -6,24 +6,24 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_glue_ml_transform")
 	close({
-		arn?:          string
-		description?:  string
-		glue_version?: string
-		id?:           string
-		label_count?:  number
-		max_capacity?: number
-		max_retries?:  number
-		name!:         string
+		input_record_tables!: matchN(1, [#input_record_tables, [_, ...] & [...#input_record_tables]])
+		parameters!: matchN(1, [#parameters, list.MaxItems(1) & [_, ...] & [...#parameters]])
+		arn?:               string
+		description?:       string
+		glue_version?:      string
+		id?:                string
+		label_count?:       number
+		max_capacity?:      number
+		max_retries?:       number
+		name!:              string
+		number_of_workers?: number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		input_record_tables!: matchN(1, [#input_record_tables, [_, ...] & [...#input_record_tables]])
-		parameters!: matchN(1, [#parameters, list.MaxItems(1) & [_, ...] & [...#parameters]])
-		number_of_workers?: number
-		role_arn!:          string
+		region?:   string
+		role_arn!: string
 		schema?: [...close({
 			data_type?: string
 			name?:      string

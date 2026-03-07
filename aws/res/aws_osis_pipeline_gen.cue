@@ -4,27 +4,27 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_osis_pipeline")
 	close({
+		buffer_options?: matchN(1, [#buffer_options, [...#buffer_options]])
+		encryption_at_rest_options?: matchN(1, [#encryption_at_rest_options, [...#encryption_at_rest_options]])
+		log_publishing_options?: matchN(1, [#log_publishing_options, [...#log_publishing_options]])
+		timeouts?: #timeouts
+		vpc_options?: matchN(1, [#vpc_options, [...#vpc_options]])
 		id?: string
 		ingest_endpoint_urls?: [...string]
-		max_units!: number
-		min_units!: number
+		max_units!:                   number
+		min_units!:                   number
+		pipeline_arn?:                string
+		pipeline_configuration_body!: string
+		pipeline_name!:               string
+		pipeline_role_arn?:           string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                      string
-		pipeline_arn?:                string
-		pipeline_configuration_body!: string
-		pipeline_name!:               string
-		pipeline_role_arn?:           string
-		buffer_options?: matchN(1, [#buffer_options, [...#buffer_options]])
+		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		encryption_at_rest_options?: matchN(1, [#encryption_at_rest_options, [...#encryption_at_rest_options]])
-		log_publishing_options?: matchN(1, [#log_publishing_options, [...#log_publishing_options]])
-		timeouts?: #timeouts
-		vpc_options?: matchN(1, [#vpc_options, [...#vpc_options]])
 	})
 
 	#buffer_options: close({

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_transfer_web_app")
 	close({
+		endpoint_details?: matchN(1, [#endpoint_details, [...#endpoint_details]])
+		identity_provider_details?: matchN(1, [#identity_provider_details, [...#identity_provider_details]])
 		access_endpoint?: string
 		arn?:             string
 
@@ -19,8 +21,6 @@ package res
 		web_app_units?: [...close({
 			provisioned?: number
 		})]
-		endpoint_details?: matchN(1, [#endpoint_details, [...#endpoint_details]])
-		identity_provider_details?: matchN(1, [#identity_provider_details, [...#identity_provider_details]])
 	})
 
 	#endpoint_details: close({

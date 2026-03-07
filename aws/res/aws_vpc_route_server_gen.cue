@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_route_server")
 	close({
+		timeouts?:                #timeouts
 		amazon_side_asn!:         number
 		arn?:                     string
 		persist_routes?:          string
@@ -15,7 +16,6 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                    string
 		route_server_id?:           string
-		timeouts?:                  #timeouts
 		sns_notifications_enabled?: bool
 		sns_topic_arn?:             string
 		tags?: [string]:     string

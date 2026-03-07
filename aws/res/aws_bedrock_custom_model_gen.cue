@@ -4,29 +4,29 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrock_custom_model")
 	close({
+		output_data_config?: matchN(1, [#output_data_config, [...#output_data_config]])
+		timeouts?: #timeouts
+		training_data_config?: matchN(1, [#training_data_config, [...#training_data_config]])
+		validation_data_config?: matchN(1, [#validation_data_config, [...#validation_data_config]])
+		vpc_config?: matchN(1, [#vpc_config, [...#vpc_config]])
 		base_model_identifier!:   string
 		custom_model_arn?:        string
 		custom_model_kms_key_id?: string
 		custom_model_name!:       string
 		customization_type?:      string
 		hyperparameters!: [string]: string
-		job_arn?: string
+		job_arn?:    string
+		job_name!:   string
+		job_status?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:     string
-		job_name!:   string
-		job_status?: string
-		output_data_config?: matchN(1, [#output_data_config, [...#output_data_config]])
-		timeouts?: #timeouts
+		region?:   string
 		role_arn!: string
-		training_data_config?: matchN(1, [#training_data_config, [...#training_data_config]])
-		tags?: [string]: string
-		validation_data_config?: matchN(1, [#validation_data_config, [...#validation_data_config]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
-		vpc_config?: matchN(1, [#vpc_config, [...#vpc_config]])
 		training_metrics?: [...close({
 			training_loss?: number
 		})]

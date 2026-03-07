@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_kinesis_analytics_application")
 	close({
+		cloudwatch_logging_options?: matchN(1, [#cloudwatch_logging_options, list.MaxItems(1) & [...#cloudwatch_logging_options]])
+		inputs?: matchN(1, [#inputs, list.MaxItems(1) & [...#inputs]])
+		outputs?: matchN(1, [#outputs, list.MaxItems(3) & [...#outputs]])
+		reference_data_sources?: matchN(1, [#reference_data_sources, list.MaxItems(1) & [...#reference_data_sources]])
 		arn?:                   string
 		code?:                  string
 		create_timestamp?:      string
@@ -20,14 +24,10 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:            string
 		start_application?: bool
-		cloudwatch_logging_options?: matchN(1, [#cloudwatch_logging_options, list.MaxItems(1) & [...#cloudwatch_logging_options]])
-		inputs?: matchN(1, [#inputs, list.MaxItems(1) & [...#inputs]])
-		status?: string
+		status?:            string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		version?: number
-		outputs?: matchN(1, [#outputs, list.MaxItems(3) & [...#outputs]])
-		reference_data_sources?: matchN(1, [#reference_data_sources, list.MaxItems(1) & [...#reference_data_sources]])
 	})
 
 	#cloudwatch_logging_options: close({
@@ -39,13 +39,13 @@ import "list"
 	#inputs: close({
 		kinesis_firehose?: matchN(1, [_#defs."/$defs/inputs/$defs/kinesis_firehose", list.MaxItems(1) & [..._#defs."/$defs/inputs/$defs/kinesis_firehose"]])
 		kinesis_stream?: matchN(1, [_#defs."/$defs/inputs/$defs/kinesis_stream", list.MaxItems(1) & [..._#defs."/$defs/inputs/$defs/kinesis_stream"]])
-		id?:          string
-		name_prefix!: string
-		stream_names?: [...string]
 		parallelism?: matchN(1, [_#defs."/$defs/inputs/$defs/parallelism", list.MaxItems(1) & [..._#defs."/$defs/inputs/$defs/parallelism"]])
 		processing_configuration?: matchN(1, [_#defs."/$defs/inputs/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/inputs/$defs/processing_configuration"]])
 		schema!: matchN(1, [_#defs."/$defs/inputs/$defs/schema", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inputs/$defs/schema"]])
 		starting_position_configuration?: matchN(1, [_#defs."/$defs/inputs/$defs/starting_position_configuration", [..._#defs."/$defs/inputs/$defs/starting_position_configuration"]])
+		id?:          string
+		name_prefix!: string
+		stream_names?: [...string]
 	})
 
 	#outputs: close({

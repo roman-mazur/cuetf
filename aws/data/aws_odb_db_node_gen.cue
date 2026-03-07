@@ -6,6 +6,7 @@ package data
 	close({
 		// Additional information about the planned maintenance.
 		additional_details?: string
+		arn?:                string
 
 		// The Oracle Cloud ID (OCID) of the backup IP address that's
 		// associated with the DB node.
@@ -15,8 +16,8 @@ package data
 		backup_vnic2_id?: string
 
 		// The OCID of the backup VNIC.
-		backup_vnic_id?: string
-		arn?:            string
+		backup_vnic_id?:      string
+		cloud_vm_cluster_id!: string
 
 		// Number of CPU cores enabled on the DB node.
 		cpu_core_count?: number
@@ -31,7 +32,6 @@ package data
 		// The amount of local node storage, in gigabytes (GBs), allocated
 		// on the DB node.
 		db_storage_size_in_gbs?: number
-		cloud_vm_cluster_id!:    string
 
 		// The OCID of the DB system.
 		db_system_id?: string
@@ -48,6 +48,7 @@ package data
 
 		// The host name for the DB node.
 		hostname?: string
+		id!:       string
 
 		// The type of database node maintenance. Either
 		// VMDB_REBOOT_MIGRATION or EXADBXS_REBOOT_MIGRATION.
@@ -55,7 +56,6 @@ package data
 
 		// The allocated memory in GBs on the DB node.
 		memory_size_in_gbs?: number
-		id!:                 string
 
 		// The name of the OCI resource anchor for the DB node.
 		oci_resource_anchor_name?: string

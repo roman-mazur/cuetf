@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ecs_express_gateway_service")
 	close({
+		primary_container?: matchN(1, [#primary_container, [...#primary_container]])
+		timeouts?:                #timeouts
 		cluster?:                 string
 		cpu?:                     string
 		current_deployment?:      string
@@ -15,18 +17,16 @@ package res
 			endpoint?:    string
 		})]
 		memory?: string
+		network_configuration?: [...close({
+			security_groups?: [...string]
+			subnets?: [...string]
+		})]
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		network_configuration?: [...close({
-			security_groups?: [...string]
-			subnets?: [...string]
-		})]
-		primary_container?: matchN(1, [#primary_container, [...#primary_container]])
-		timeouts?: #timeouts
 		scaling_target?: [...close({
 			auto_scaling_metric?:       string
 			auto_scaling_target_value?: number
@@ -44,6 +44,8 @@ package res
 
 	#primary_container: close({
 		environment?: matchN(1, [_#defs."/$defs/primary_container/$defs/environment", [..._#defs."/$defs/primary_container/$defs/environment"]])
+		repository_credentials?: matchN(1, [_#defs."/$defs/primary_container/$defs/repository_credentials", [..._#defs."/$defs/primary_container/$defs/repository_credentials"]])
+		secret?: matchN(1, [_#defs."/$defs/primary_container/$defs/secret", [..._#defs."/$defs/primary_container/$defs/secret"]])
 		aws_logs_configuration?: [...close({
 			log_group?:         string
 			log_stream_prefix?: string
@@ -51,8 +53,6 @@ package res
 		command?: [...string]
 		container_port?: number
 		image!:          string
-		repository_credentials?: matchN(1, [_#defs."/$defs/primary_container/$defs/repository_credentials", [..._#defs."/$defs/primary_container/$defs/repository_credentials"]])
-		secret?: matchN(1, [_#defs."/$defs/primary_container/$defs/secret", [..._#defs."/$defs/primary_container/$defs/secret"]])
 	})
 
 	#timeouts: close({

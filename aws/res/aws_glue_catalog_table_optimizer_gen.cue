@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_glue_catalog_table_optimizer")
 	close({
+		configuration?: matchN(1, [#configuration, [...#configuration]])
 		catalog_id!:    string
 		database_name!: string
 
@@ -14,7 +15,6 @@ package res
 		region?:     string
 		table_name!: string
 		type!:       string
-		configuration?: matchN(1, [#configuration, [...#configuration]])
 	})
 
 	#configuration: close({

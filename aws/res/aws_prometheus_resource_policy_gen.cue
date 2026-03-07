@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_prometheus_resource_policy")
 	close({
+		timeouts?:        #timeouts
 		policy_document!: string
 
 		// Region where this resource will be
@@ -13,7 +14,6 @@ package res
 		region?:       string
 		revision_id?:  string
 		workspace_id!: string
-		timeouts?:     #timeouts
 	})
 
 	#timeouts: close({

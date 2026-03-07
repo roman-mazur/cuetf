@@ -4,10 +4,12 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_opensearchserverless_collection")
 	close({
+		timeouts?: #timeouts
+		arn?:      string
+
 		// Collection-specific endpoint used to submit index, search, and
 		// data upload requests to an OpenSearch Serverless collection.
 		collection_endpoint?: string
-		arn?:                 string
 
 		// Collection-specific endpoint used to access OpenSearch
 		// Dashboards.
@@ -34,7 +36,6 @@ package res
 		// collection. One of `ENABLED` or `DISABLED`. Defaults to
 		// `ENABLED`.
 		standby_replicas?: string
-		timeouts?:         #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 

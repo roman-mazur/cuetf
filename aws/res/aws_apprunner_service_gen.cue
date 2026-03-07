@@ -6,8 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_apprunner_service")
 	close({
-		arn?: string
 		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
+		health_check_configuration?: matchN(1, [#health_check_configuration, list.MaxItems(1) & [...#health_check_configuration]])
+		instance_configuration?: matchN(1, [#instance_configuration, list.MaxItems(1) & [...#instance_configuration]])
+		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
+		observability_configuration?: matchN(1, [#observability_configuration, list.MaxItems(1) & [...#observability_configuration]])
+		source_configuration!: matchN(1, [#source_configuration, list.MaxItems(1) & [_, ...] & [...#source_configuration]])
+		arn?:                            string
 		auto_scaling_configuration_arn?: string
 		id?:                             string
 
@@ -19,12 +24,7 @@ import "list"
 		service_id?:   string
 		service_name!: string
 		service_url?:  string
-		health_check_configuration?: matchN(1, [#health_check_configuration, list.MaxItems(1) & [...#health_check_configuration]])
-		instance_configuration?: matchN(1, [#instance_configuration, list.MaxItems(1) & [...#instance_configuration]])
-		status?: string
-		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
-		observability_configuration?: matchN(1, [#observability_configuration, list.MaxItems(1) & [...#observability_configuration]])
-		source_configuration!: matchN(1, [#source_configuration, list.MaxItems(1) & [_, ...] & [...#source_configuration]])
+		status?:       string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

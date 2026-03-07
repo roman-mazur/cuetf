@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_iam_principal_policy_simulation")
 	close({
+		context?: matchN(1, [#context, [...#context]])
+
 		// One or more names of actions, like "iam:CreateUser", that
 		// should be included in the simulation.
 		action_names!: [...string]
@@ -39,7 +41,6 @@ package data
 		// simulator assumes "*" which represents general access across
 		// all resources.
 		resource_arns?: [...string]
-		context?: matchN(1, [#context, [...#context]])
 
 		// Specifies the type of simulation to run. Some API operations
 		// need a particular resource handling option in order to produce

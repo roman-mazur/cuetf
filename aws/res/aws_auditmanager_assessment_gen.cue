@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_auditmanager_assessment")
 	close({
+		assessment_reports_destination?: matchN(1, [#assessment_reports_destination, [...#assessment_reports_destination]])
+		roles?: matchN(1, [#roles, [...#roles]])
+		scope?: matchN(1, [#scope, [...#scope]])
 		arn?:          string
 		description?:  string
 		framework_id!: string
@@ -15,8 +18,6 @@ package res
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		assessment_reports_destination?: matchN(1, [#assessment_reports_destination, [...#assessment_reports_destination]])
-		roles?: matchN(1, [#roles, [...#roles]])
 		roles_all?: [...close({
 			role_arn?:  string
 			role_type?: string
@@ -24,7 +25,6 @@ package res
 		status?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		scope?: matchN(1, [#scope, [...#scope]])
 	})
 
 	#assessment_reports_destination: close({

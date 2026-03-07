@@ -10,6 +10,7 @@ package data
 		// Description of the policy. Typically used to store information
 		// about the permissions defined in the policy.
 		description?: string
+		id?:          string
 
 		// The date the lifecycle policy was last modified.
 		last_modified_date?: string
@@ -19,7 +20,6 @@ package data
 
 		// JSON policy document to use as the content for the new policy.
 		policy?: string
-		id?:     string
 
 		// Version of the policy.
 		policy_version?: string

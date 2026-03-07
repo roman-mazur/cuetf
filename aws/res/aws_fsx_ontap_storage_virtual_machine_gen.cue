@@ -6,13 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_fsx_ontap_storage_virtual_machine")
 	close({
-		arn?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		active_directory_configuration?: matchN(1, [#active_directory_configuration, list.MaxItems(1) & [...#active_directory_configuration]])
+		timeouts?: #timeouts
+		arn?:      string
 		endpoints?: [...close({
 			iscsi?: [...close({
 				dns_name?: string
@@ -34,8 +30,12 @@ import "list"
 		file_system_id!: string
 		id?:             string
 		name!:           string
-		active_directory_configuration?: matchN(1, [#active_directory_configuration, list.MaxItems(1) & [...#active_directory_configuration]])
-		timeouts?:                   #timeouts
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                     string
 		root_volume_security_style?: string
 		subtype?:                    string
 		svm_admin_password?:         string

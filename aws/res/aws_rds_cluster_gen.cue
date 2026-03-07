@@ -6,25 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_rds_cluster")
 	close({
+		restore_to_point_in_time?: matchN(1, [#restore_to_point_in_time, list.MaxItems(1) & [...#restore_to_point_in_time]])
+		s3_import?: matchN(1, [#s3_import, list.MaxItems(1) & [...#s3_import]])
+		scaling_configuration?: matchN(1, [#scaling_configuration, list.MaxItems(1) & [...#scaling_configuration]])
+		serverlessv2_scaling_configuration?: matchN(1, [#serverlessv2_scaling_configuration, list.MaxItems(1) & [...#serverlessv2_scaling_configuration]])
+		timeouts?:                    #timeouts
 		allocated_storage?:           number
 		allow_major_version_upgrade?: bool
-		restore_to_point_in_time?: matchN(1, [#restore_to_point_in_time, list.MaxItems(1) & [...#restore_to_point_in_time]])
-		apply_immediately?: bool
-		arn?:               string
+		apply_immediately?:           bool
+		arn?:                         string
 		availability_zones?: [...string]
-		s3_import?: matchN(1, [#s3_import, list.MaxItems(1) & [...#s3_import]])
 		backtrack_window?:          number
 		backup_retention_period?:   number
 		ca_certificate_identifier?: string
 		ca_certificate_valid_till?: string
 		cluster_identifier?:        string
 		cluster_identifier_prefix?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		cluster_members?: [...string]
 		cluster_resource_id?:              string
 		cluster_scalability_type?:         string
@@ -79,17 +76,20 @@ import "list"
 		preferred_backup_window?:               string
 		preferred_maintenance_window?:          string
 		reader_endpoint?:                       string
-		replication_source_identifier?:         string
-		skip_final_snapshot?:                   bool
-		snapshot_identifier?:                   string
-		source_region?:                         string
-		storage_encrypted?:                     bool
-		storage_type?:                          string
-		scaling_configuration?: matchN(1, [#scaling_configuration, list.MaxItems(1) & [...#scaling_configuration]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                        string
+		replication_source_identifier?: string
+		skip_final_snapshot?:           bool
+		snapshot_identifier?:           string
+		source_region?:                 string
+		storage_encrypted?:             bool
+		storage_type?:                  string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		serverlessv2_scaling_configuration?: matchN(1, [#serverlessv2_scaling_configuration, list.MaxItems(1) & [...#serverlessv2_scaling_configuration]])
-		timeouts?:              #timeouts
 		upgrade_rollout_order?: string
 		vpc_security_group_ids?: [...string]
 	})

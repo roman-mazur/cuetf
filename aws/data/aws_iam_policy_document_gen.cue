@@ -16,14 +16,14 @@ package data
 
 	#statement: close({
 		condition?: matchN(1, [_#defs."/$defs/statement/$defs/condition", [..._#defs."/$defs/statement/$defs/condition"]])
+		not_principals?: matchN(1, [_#defs."/$defs/statement/$defs/not_principals", [..._#defs."/$defs/statement/$defs/not_principals"]])
+		principals?: matchN(1, [_#defs."/$defs/statement/$defs/principals", [..._#defs."/$defs/statement/$defs/principals"]])
 		actions?: [...string]
 		effect?: string
 		not_actions?: [...string]
 		not_resources?: [...string]
 		resources?: [...string]
 		sid?: string
-		not_principals?: matchN(1, [_#defs."/$defs/statement/$defs/not_principals", [..._#defs."/$defs/statement/$defs/not_principals"]])
-		principals?: matchN(1, [_#defs."/$defs/statement/$defs/principals", [..._#defs."/$defs/statement/$defs/principals"]])
 	})
 
 	_#defs: "/$defs/statement/$defs/condition": close({

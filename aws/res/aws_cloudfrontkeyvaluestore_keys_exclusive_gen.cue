@@ -4,9 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfrontkeyvaluestore_keys_exclusive")
 	close({
+		resource_key_value_pair?: matchN(1, [#resource_key_value_pair, [...#resource_key_value_pair]])
+
 		// The Amazon Resource Name (ARN) of the Key Value Store.
 		key_value_store_arn!: string
-		resource_key_value_pair?: matchN(1, [#resource_key_value_pair, [...#resource_key_value_pair]])
 
 		// Maximum resource key values pairs that you wills update in a
 		// single API request. AWS has a default quota of 50 keys or a 3

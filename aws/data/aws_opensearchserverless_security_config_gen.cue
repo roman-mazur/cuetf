@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_opensearchserverless_security_config")
 	close({
+		saml_options?: matchN(1, [#saml_options, [...#saml_options]])
+
 		// The version of the security configuration.
 		config_version?: string
 
@@ -24,7 +26,6 @@ package data
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		saml_options?: matchN(1, [#saml_options, [...#saml_options]])
 
 		// The type of security configuration.
 		type?: string

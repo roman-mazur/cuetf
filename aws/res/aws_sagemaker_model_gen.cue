@@ -6,37 +6,37 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_model")
 	close({
-		arn?: string
 		container?: matchN(1, [#container, [...#container]])
+		inference_execution_config?: matchN(1, [#inference_execution_config, list.MaxItems(1) & [...#inference_execution_config]])
+		primary_container?: matchN(1, [#primary_container, list.MaxItems(1) & [...#primary_container]])
+		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
+		arn?:                      string
 		enable_network_isolation?: bool
 		execution_role_arn!:       string
+		id?:                       string
+		name?:                     string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		id?:     string
-		inference_execution_config?: matchN(1, [#inference_execution_config, list.MaxItems(1) & [...#inference_execution_config]])
-		name?: string
-		tags?: [string]: string
-		primary_container?: matchN(1, [#primary_container, list.MaxItems(1) & [...#primary_container]])
-		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 
 	#container: close({
+		additional_model_data_source?: matchN(1, [_#defs."/$defs/container/$defs/additional_model_data_source", [..._#defs."/$defs/container/$defs/additional_model_data_source"]])
+		image_config?: matchN(1, [_#defs."/$defs/container/$defs/image_config", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/image_config"]])
+		model_data_source?: matchN(1, [_#defs."/$defs/container/$defs/model_data_source", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/model_data_source"]])
+		multi_model_config?: matchN(1, [_#defs."/$defs/container/$defs/multi_model_config", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/multi_model_config"]])
 		container_hostname?: string
 		environment?: [string]: string
 		image?:                        string
 		inference_specification_name?: string
 		mode?:                         string
 		model_data_url?:               string
-		additional_model_data_source?: matchN(1, [_#defs."/$defs/container/$defs/additional_model_data_source", [..._#defs."/$defs/container/$defs/additional_model_data_source"]])
-		model_package_name?: string
-		image_config?: matchN(1, [_#defs."/$defs/container/$defs/image_config", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/image_config"]])
-		model_data_source?: matchN(1, [_#defs."/$defs/container/$defs/model_data_source", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/model_data_source"]])
-		multi_model_config?: matchN(1, [_#defs."/$defs/container/$defs/multi_model_config", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/multi_model_config"]])
+		model_package_name?:           string
 	})
 
 	#inference_execution_config: close({
@@ -44,17 +44,17 @@ import "list"
 	})
 
 	#primary_container: close({
+		additional_model_data_source?: matchN(1, [_#defs."/$defs/primary_container/$defs/additional_model_data_source", [..._#defs."/$defs/primary_container/$defs/additional_model_data_source"]])
+		image_config?: matchN(1, [_#defs."/$defs/primary_container/$defs/image_config", list.MaxItems(1) & [..._#defs."/$defs/primary_container/$defs/image_config"]])
+		model_data_source?: matchN(1, [_#defs."/$defs/primary_container/$defs/model_data_source", list.MaxItems(1) & [..._#defs."/$defs/primary_container/$defs/model_data_source"]])
+		multi_model_config?: matchN(1, [_#defs."/$defs/primary_container/$defs/multi_model_config", list.MaxItems(1) & [..._#defs."/$defs/primary_container/$defs/multi_model_config"]])
 		container_hostname?: string
 		environment?: [string]: string
 		image?:                        string
 		inference_specification_name?: string
 		mode?:                         string
 		model_data_url?:               string
-		additional_model_data_source?: matchN(1, [_#defs."/$defs/primary_container/$defs/additional_model_data_source", [..._#defs."/$defs/primary_container/$defs/additional_model_data_source"]])
-		model_package_name?: string
-		image_config?: matchN(1, [_#defs."/$defs/primary_container/$defs/image_config", list.MaxItems(1) & [..._#defs."/$defs/primary_container/$defs/image_config"]])
-		model_data_source?: matchN(1, [_#defs."/$defs/primary_container/$defs/model_data_source", list.MaxItems(1) & [..._#defs."/$defs/primary_container/$defs/model_data_source"]])
-		multi_model_config?: matchN(1, [_#defs."/$defs/primary_container/$defs/multi_model_config", list.MaxItems(1) & [..._#defs."/$defs/primary_container/$defs/multi_model_config"]])
+		model_package_name?:           string
 	})
 
 	#vpc_config: close({

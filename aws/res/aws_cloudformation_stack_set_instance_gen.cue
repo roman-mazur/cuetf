@@ -6,10 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudformation_stack_set_instance")
 	close({
+		deployment_targets?: matchN(1, [#deployment_targets, list.MaxItems(1) & [...#deployment_targets]])
+		operation_preferences?: matchN(1, [#operation_preferences, list.MaxItems(1) & [...#operation_preferences]])
+		timeouts?:               #timeouts
 		account_id?:             string
 		call_as?:                string
 		id?:                     string
 		organizational_unit_id?: string
+		parameter_overrides?: [string]: string
+		retain_stack?: bool
+		stack_id?:     string
 
 		// List of stack instances created from an organizational unit
 		// deployment target. This will only be populated when
@@ -19,14 +25,8 @@ import "list"
 			organizational_unit_id?: string
 			stack_id?:               string
 		})]
-		parameter_overrides?: [string]: string
-		deployment_targets?: matchN(1, [#deployment_targets, list.MaxItems(1) & [...#deployment_targets]])
-		operation_preferences?: matchN(1, [#operation_preferences, list.MaxItems(1) & [...#operation_preferences]])
-		retain_stack?:              bool
-		stack_id?:                  string
 		stack_set_instance_region?: string
 		stack_set_name!:            string
-		timeouts?:                  #timeouts
 	})
 
 	#deployment_targets: close({

@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_trust_store")
 	close({
 		ca_certificates_bundle_source?: matchN(1, [#ca_certificates_bundle_source, [...#ca_certificates_bundle_source]])
+		timeouts?:                  #timeouts
 		arn?:                       string
 		etag?:                      string
 		id?:                        string
@@ -12,7 +13,6 @@ package res
 		number_of_ca_certificates?: number
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#ca_certificates_bundle_source: close({

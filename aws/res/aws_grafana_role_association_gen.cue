@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_grafana_role_association")
 	close({
+		timeouts?: #timeouts
 		group_ids?: [...string]
 		id?: string
 
@@ -15,7 +16,6 @@ package res
 		role!:   string
 		user_ids?: [...string]
 		workspace_id!: string
-		timeouts?:     #timeouts
 	})
 
 	#timeouts: close({

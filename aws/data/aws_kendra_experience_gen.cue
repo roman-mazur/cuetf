@@ -21,19 +21,19 @@ package data
 			endpoint?:      string
 			endpoint_type?: string
 		})]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:        string
 		error_message?: string
 		experience_id!: string
 		id?:            string
 		index_id!:      string
 		name?:          string
-		role_arn?:      string
-		status?:        string
-		updated_at?:    string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:     string
+		role_arn?:   string
+		status?:     string
+		updated_at?: string
 	})
 }

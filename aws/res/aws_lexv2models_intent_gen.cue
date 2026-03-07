@@ -4,23 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lexv2models_intent")
 	close({
-		bot_id!:      string
-		bot_version!: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                 string
-		creation_date_time?:     string
-		description?:            string
-		id?:                     string
-		intent_id?:              string
-		last_updated_date_time?: string
-		locale_id!:              string
 		closing_setting?: matchN(1, [#closing_setting, [...#closing_setting]])
-		name!:                    string
-		parent_intent_signature?: string
 		confirmation_setting?: matchN(1, [#confirmation_setting, [...#confirmation_setting]])
 		dialog_code_hook?: matchN(1, [#dialog_code_hook, [...#dialog_code_hook]])
 		fulfillment_code_hook?: matchN(1, [#fulfillment_code_hook, [...#fulfillment_code_hook]])
@@ -31,7 +15,23 @@ package res
 		qna_intent_configuration?: matchN(1, [#qna_intent_configuration, [...#qna_intent_configuration]])
 		sample_utterance?: matchN(1, [#sample_utterance, [...#sample_utterance]])
 		slot_priority?: matchN(1, [#slot_priority, [...#slot_priority]])
-		timeouts?: #timeouts
+		timeouts?:                #timeouts
+		bot_id!:                  string
+		bot_version!:             string
+		creation_date_time?:      string
+		description?:             string
+		id?:                      string
+		intent_id?:               string
+		last_updated_date_time?:  string
+		locale_id!:               string
+		name!:                    string
+		parent_intent_signature?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 	})
 
 	#closing_setting: close({
@@ -44,7 +44,6 @@ package res
 	#confirmation_setting: close({
 		code_hook?: matchN(1, [_#defs."/$defs/confirmation_setting/$defs/code_hook", [..._#defs."/$defs/confirmation_setting/$defs/code_hook"]])
 		confirmation_conditional?: matchN(1, [_#defs."/$defs/confirmation_setting/$defs/confirmation_conditional", [..._#defs."/$defs/confirmation_setting/$defs/confirmation_conditional"]])
-		active?: bool
 		confirmation_next_step?: matchN(1, [_#defs."/$defs/confirmation_setting/$defs/confirmation_next_step", [..._#defs."/$defs/confirmation_setting/$defs/confirmation_next_step"]])
 		confirmation_response?: matchN(1, [_#defs."/$defs/confirmation_setting/$defs/confirmation_response", [..._#defs."/$defs/confirmation_setting/$defs/confirmation_response"]])
 		declination_conditional?: matchN(1, [_#defs."/$defs/confirmation_setting/$defs/declination_conditional", [..._#defs."/$defs/confirmation_setting/$defs/declination_conditional"]])
@@ -55,6 +54,7 @@ package res
 		failure_next_step?: matchN(1, [_#defs."/$defs/confirmation_setting/$defs/failure_next_step", [..._#defs."/$defs/confirmation_setting/$defs/failure_next_step"]])
 		failure_response?: matchN(1, [_#defs."/$defs/confirmation_setting/$defs/failure_response", [..._#defs."/$defs/confirmation_setting/$defs/failure_response"]])
 		prompt_specification?: matchN(1, [_#defs."/$defs/confirmation_setting/$defs/prompt_specification", [..._#defs."/$defs/confirmation_setting/$defs/prompt_specification"]])
+		active?: bool
 	})
 
 	#dialog_code_hook: close({

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_transfer_user")
 	close({
+		home_directory_mappings?: matchN(1, [#home_directory_mappings, [...#home_directory_mappings]])
+		posix_profile?: matchN(1, [#posix_profile, list.MaxItems(1) & [...#posix_profile]])
+		timeouts?:            #timeouts
 		arn?:                 string
 		home_directory?:      string
 		home_directory_type?: string
@@ -16,14 +19,11 @@ import "list"
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		role!:   string
-		home_directory_mappings?: matchN(1, [#home_directory_mappings, [...#home_directory_mappings]])
+		region?:    string
+		role!:      string
 		server_id!: string
-		posix_profile?: matchN(1, [#posix_profile, list.MaxItems(1) & [...#posix_profile]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		timeouts?:  #timeouts
 		user_name!: string
 	})
 

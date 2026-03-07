@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_appfabric_ingestion_destination")
 	close({
+		destination_configuration?: matchN(1, [#destination_configuration, [...#destination_configuration]])
+		processing_configuration?: matchN(1, [#processing_configuration, [...#processing_configuration]])
+		timeouts?:       #timeouts
 		app_bundle_arn!: string
 		arn?:            string
 		id?:             string
@@ -14,11 +17,8 @@ package res
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		destination_configuration?: matchN(1, [#destination_configuration, [...#destination_configuration]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		processing_configuration?: matchN(1, [#processing_configuration, [...#processing_configuration]])
-		timeouts?: #timeouts
 	})
 
 	#destination_configuration: close({

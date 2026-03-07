@@ -6,24 +6,24 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_appsync_function")
 	close({
-		api_id!: string
 		runtime?: matchN(1, [#runtime, list.MaxItems(1) & [...#runtime]])
-		arn?:  string
-		code?: string
+		sync_config?: matchN(1, [#sync_config, list.MaxItems(1) & [...#sync_config]])
+		api_id!:           string
+		arn?:              string
+		code?:             string
+		data_source!:      string
+		description?:      string
+		function_id?:      string
+		function_version?: string
+		id?:               string
+		max_batch_size?:   number
+		name!:             string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		data_source!: string
-		description?: string
-		function_id?: string
-		sync_config?: matchN(1, [#sync_config, list.MaxItems(1) & [...#sync_config]])
-		function_version?:          string
-		id?:                        string
-		max_batch_size?:            number
-		name!:                      string
+		region?:                    string
 		request_mapping_template?:  string
 		response_mapping_template?: string
 	})

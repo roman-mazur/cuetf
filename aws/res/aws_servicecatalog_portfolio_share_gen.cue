@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_servicecatalog_portfolio_share")
 	close({
+		timeouts?:        #timeouts
 		accept_language?: string
 		accepted?:        bool
 		id?:              string
@@ -16,7 +17,6 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:              string
 		share_principals?:    bool
-		timeouts?:            #timeouts
 		share_tag_options?:   bool
 		type!:                string
 		wait_for_acceptance?: bool

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_codegurureviewer_repository_association")
 	close({
+		kms_key_details?: matchN(1, [#kms_key_details, list.MaxItems(1) & [...#kms_key_details]])
+		repository!: matchN(1, [#repository, list.MaxItems(1) & [_, ...] & [...#repository]])
+		timeouts?:       #timeouts
 		arn?:            string
 		association_id?: string
 		connection_arn?: string
@@ -19,7 +22,6 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		kms_key_details?: matchN(1, [#kms_key_details, list.MaxItems(1) & [...#kms_key_details]])
 		s3_repository_details?: [...close({
 			bucket_name?: string
 			code_artifacts?: [...close({
@@ -31,8 +33,6 @@ import "list"
 		state_reason?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		repository!: matchN(1, [#repository, list.MaxItems(1) & [_, ...] & [...#repository]])
-		timeouts?: #timeouts
 	})
 
 	#kms_key_details: close({

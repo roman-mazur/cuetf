@@ -15,12 +15,6 @@ package data
 		})]
 		instance_profile_name?: string
 		instance_types?: [...string]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
 		key_pair?: string
 		logging?: [...close({
 			s3_logs?: [...close({
@@ -35,6 +29,12 @@ package data
 			host_resource_group_arn?: string
 			tenancy?:                 string
 		})]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		resource_tags?: [string]: string
 		security_group_ids?: [...string]
 		sns_topic_arn?: string

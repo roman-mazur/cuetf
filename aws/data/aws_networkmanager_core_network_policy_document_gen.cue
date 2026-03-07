@@ -8,14 +8,14 @@ import "list"
 	close({
 		attachment_policies?: matchN(1, [#attachment_policies, [...#attachment_policies]])
 		attachment_routing_policy_rules?: matchN(1, [#attachment_routing_policy_rules, [...#attachment_routing_policy_rules]])
-		id?:      string
-		json?:    string
-		version?: string
 		core_network_configuration!: matchN(1, [#core_network_configuration, [_, ...] & [...#core_network_configuration]])
 		network_function_groups?: matchN(1, [#network_function_groups, [...#network_function_groups]])
 		routing_policies?: matchN(1, [#routing_policies, [...#routing_policies]])
 		segment_actions?: matchN(1, [#segment_actions, [...#segment_actions]])
 		segments!: matchN(1, [#segments, [_, ...] & [...#segments]])
+		id?:      string
+		json?:    string
+		version?: string
 	})
 
 	#attachment_policies: close({
@@ -58,6 +58,9 @@ import "list"
 	})
 
 	#segment_actions: close({
+		edge_location_association?: matchN(1, [_#defs."/$defs/segment_actions/$defs/edge_location_association", list.MaxItems(1) & [..._#defs."/$defs/segment_actions/$defs/edge_location_association"]])
+		via?: matchN(1, [_#defs."/$defs/segment_actions/$defs/via", list.MaxItems(1) & [..._#defs."/$defs/segment_actions/$defs/via"]])
+		when_sent_to?: matchN(1, [_#defs."/$defs/segment_actions/$defs/when_sent_to", list.MaxItems(1) & [..._#defs."/$defs/segment_actions/$defs/when_sent_to"]])
 		action!:      string
 		description?: string
 		destination_cidr_blocks?: [...string]
@@ -65,10 +68,7 @@ import "list"
 		mode?: string
 		routing_policy_names?: [...string]
 		segment!: string
-		edge_location_association?: matchN(1, [_#defs."/$defs/segment_actions/$defs/edge_location_association", list.MaxItems(1) & [..._#defs."/$defs/segment_actions/$defs/edge_location_association"]])
 		share_with?: [...string]
-		via?: matchN(1, [_#defs."/$defs/segment_actions/$defs/via", list.MaxItems(1) & [..._#defs."/$defs/segment_actions/$defs/via"]])
-		when_sent_to?: matchN(1, [_#defs."/$defs/segment_actions/$defs/when_sent_to", list.MaxItems(1) & [..._#defs."/$defs/segment_actions/$defs/when_sent_to"]])
 		share_with_except?: [...string]
 	})
 

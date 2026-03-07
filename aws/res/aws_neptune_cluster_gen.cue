@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_neptune_cluster")
 	close({
+		serverless_v2_scaling_configuration?: matchN(1, [#serverless_v2_scaling_configuration, list.MaxItems(1) & [...#serverless_v2_scaling_configuration]])
+		timeouts?:                    #timeouts
 		allow_major_version_upgrade?: bool
 		apply_immediately?:           bool
 		arn?:                         string
@@ -16,13 +18,7 @@ import "list"
 		cluster_members?: [...string]
 		cluster_resource_id?:   string
 		copy_tags_to_snapshot?: bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:              string
-		deletion_protection?: bool
+		deletion_protection?:   bool
 		enable_cloudwatch_logs_exports?: [...string]
 		endpoint?:                            string
 		engine?:                              string
@@ -31,8 +27,6 @@ import "list"
 		global_cluster_identifier?:           string
 		hosted_zone_id?:                      string
 		iam_database_authentication_enabled?: bool
-		serverless_v2_scaling_configuration?: matchN(1, [#serverless_v2_scaling_configuration, list.MaxItems(1) & [...#serverless_v2_scaling_configuration]])
-		timeouts?: #timeouts
 		iam_roles?: [...string]
 		id?:                                    string
 		kms_key_arn?:                           string
@@ -43,11 +37,17 @@ import "list"
 		preferred_backup_window?:               string
 		preferred_maintenance_window?:          string
 		reader_endpoint?:                       string
-		replication_source_identifier?:         string
-		skip_final_snapshot?:                   bool
-		snapshot_identifier?:                   string
-		storage_encrypted?:                     bool
-		storage_type?:                          string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                        string
+		replication_source_identifier?: string
+		skip_final_snapshot?:           bool
+		snapshot_identifier?:           string
+		storage_encrypted?:             bool
+		storage_type?:                  string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		vpc_security_group_ids?: [...string]

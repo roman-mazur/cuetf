@@ -17,15 +17,15 @@ package data
 				vpc_id?: string
 			})]
 		})]
+		account_id?:       string
+		bucket?:           string
+		data_source_id?:   string
+		data_source_type?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:           string
-		account_id?:       string
-		bucket?:           string
-		data_source_id?:   string
-		data_source_type?: string
+		region?: string
 	})
 }

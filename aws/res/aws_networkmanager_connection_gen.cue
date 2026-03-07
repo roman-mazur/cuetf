@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_networkmanager_connection")
 	close({
+		timeouts?:            #timeouts
 		arn?:                 string
 		connected_device_id!: string
 		connected_link_id?:   string
@@ -11,7 +12,6 @@ package res
 		device_id!:           string
 		global_network_id!:   string
 		id?:                  string
-		timeouts?:            #timeouts
 		link_id?:             string
 		tags?: [string]:     string
 		tags_all?: [string]: string

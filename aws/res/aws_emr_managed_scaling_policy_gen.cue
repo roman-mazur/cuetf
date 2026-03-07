@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_emr_managed_scaling_policy")
 	close({
+		compute_limits!: matchN(1, [#compute_limits, [_, ...] & [...#compute_limits]])
 		cluster_id!: string
 		id?:         string
 
@@ -14,7 +15,6 @@ package res
 		region?:                        string
 		scaling_strategy?:              string
 		utilization_performance_index?: number
-		compute_limits!: matchN(1, [#compute_limits, [_, ...] & [...#compute_limits]])
 	})
 
 	#compute_limits: close({

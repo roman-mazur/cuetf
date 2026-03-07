@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ce_anomaly_subscription")
 	close({
 		subscriber!: matchN(1, [#subscriber, [_, ...] & [...#subscriber]])
+		threshold_expression?: matchN(1, [#threshold_expression, list.MaxItems(1) & [...#threshold_expression]])
 		account_id?: string
 		arn?:        string
 		frequency!:  string
@@ -15,7 +16,6 @@ import "list"
 		name!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		threshold_expression?: matchN(1, [#threshold_expression, list.MaxItems(1) & [...#threshold_expression]])
 	})
 
 	#subscriber: close({

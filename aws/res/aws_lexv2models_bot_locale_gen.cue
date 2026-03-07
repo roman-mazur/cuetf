@@ -4,21 +4,21 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lexv2models_bot_locale")
 	close({
-		bot_id!: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                           string
+		timeouts?: #timeouts
+		voice_settings?: matchN(1, [#voice_settings, [...#voice_settings]])
+		bot_id!:                           string
 		bot_version!:                      string
 		description?:                      string
 		id?:                               string
 		locale_id!:                        string
 		n_lu_intent_confidence_threshold!: number
 		name?:                             string
-		timeouts?:                         #timeouts
-		voice_settings?: matchN(1, [#voice_settings, [...#voice_settings]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 	})
 
 	#timeouts: close({

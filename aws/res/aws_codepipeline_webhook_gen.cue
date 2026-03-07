@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_codepipeline_webhook")
 	close({
+		authentication_configuration?: matchN(1, [#authentication_configuration, list.MaxItems(1) & [...#authentication_configuration]])
+		filter!: matchN(1, [#filter, list.MaxItems(5) & [_, ...] & [...#filter]])
 		arn?:            string
 		authentication!: string
 		id?:             string
@@ -16,9 +18,7 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		tags?: [string]: string
-		authentication_configuration?: matchN(1, [#authentication_configuration, list.MaxItems(1) & [...#authentication_configuration]])
-		filter!: matchN(1, [#filter, list.MaxItems(5) & [_, ...] & [...#filter]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		target_action!:   string
 		target_pipeline!: string

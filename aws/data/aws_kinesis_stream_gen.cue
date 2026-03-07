@@ -11,14 +11,14 @@ package data
 		id?:                     string
 		kms_key_id?:             string
 		max_record_size_in_kib?: number
+		name!:                   string
+		open_shards?: [...string]
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		name!:   string
-		open_shards?: [...string]
+		region?:           string
 		retention_period?: number
 		shard_level_metrics?: [...string]
 		status?: string

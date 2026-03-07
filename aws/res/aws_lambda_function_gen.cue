@@ -6,6 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lambda_function")
 	close({
+		capacity_provider_config?: matchN(1, [#capacity_provider_config, list.MaxItems(1) & [...#capacity_provider_config]])
+		dead_letter_config?: matchN(1, [#dead_letter_config, list.MaxItems(1) & [...#dead_letter_config]])
+		durable_config?: matchN(1, [#durable_config, list.MaxItems(1) & [...#durable_config]])
+		environment?: matchN(1, [#environment, list.MaxItems(1) & [...#environment]])
+		ephemeral_storage?: matchN(1, [#ephemeral_storage, list.MaxItems(1) & [...#ephemeral_storage]])
+		file_system_config?: matchN(1, [#file_system_config, list.MaxItems(1) & [...#file_system_config]])
+		image_config?: matchN(1, [#image_config, list.MaxItems(1) & [...#image_config]])
+		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
+		snap_start?: matchN(1, [#snap_start, list.MaxItems(1) & [...#snap_start]])
+		tenancy_config?: matchN(1, [#tenancy_config, list.MaxItems(1) & [...#tenancy_config]])
+		timeouts?: #timeouts
+		tracing_config?: matchN(1, [#tracing_config, list.MaxItems(1) & [...#tracing_config]])
+		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
 		architectures?: [...string]
 		arn?:                     string
 		code_sha256?:             string
@@ -20,10 +33,9 @@ import "list"
 		kms_key_arn?:             string
 		last_modified?:           string
 		layers?: [...string]
-		memory_size?:  number
-		package_type?: string
-		publish?:      bool
-		capacity_provider_config?: matchN(1, [#capacity_provider_config, list.MaxItems(1) & [...#capacity_provider_config]])
+		memory_size?:          number
+		package_type?:         string
+		publish?:              bool
 		publish_to?:           string
 		qualified_arn?:        string
 		qualified_invoke_arn?: string
@@ -34,7 +46,6 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                             string
 		replace_security_groups_on_destroy?: bool
-		dead_letter_config?: matchN(1, [#dead_letter_config, list.MaxItems(1) & [...#dead_letter_config]])
 		replacement_security_group_ids?: [...string]
 		reserved_concurrent_executions?: number
 		response_streaming_invoke_arn?:  string
@@ -52,18 +63,7 @@ import "list"
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		timeout?: number
-		durable_config?: matchN(1, [#durable_config, list.MaxItems(1) & [...#durable_config]])
-		environment?: matchN(1, [#environment, list.MaxItems(1) & [...#environment]])
-		ephemeral_storage?: matchN(1, [#ephemeral_storage, list.MaxItems(1) & [...#ephemeral_storage]])
-		file_system_config?: matchN(1, [#file_system_config, list.MaxItems(1) & [...#file_system_config]])
-		image_config?: matchN(1, [#image_config, list.MaxItems(1) & [...#image_config]])
-		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
-		snap_start?: matchN(1, [#snap_start, list.MaxItems(1) & [...#snap_start]])
 		version?: string
-		tenancy_config?: matchN(1, [#tenancy_config, list.MaxItems(1) & [...#tenancy_config]])
-		timeouts?: #timeouts
-		tracing_config?: matchN(1, [#tracing_config, list.MaxItems(1) & [...#tracing_config]])
-		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
 	})
 
 	#capacity_provider_config: close({

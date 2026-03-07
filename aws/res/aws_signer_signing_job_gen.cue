@@ -6,13 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_signer_signing_job")
 	close({
-		completed_at?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                     string
+		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		completed_at?:               string
 		created_at?:                 string
 		id?:                         string
 		ignore_signing_job_failure?: bool
@@ -21,11 +17,15 @@ import "list"
 		job_owner?:                  string
 		platform_display_name?:      string
 		platform_id?:                string
-		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
-		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
-		profile_name!:    string
-		profile_version?: string
-		requested_by?:    string
+		profile_name!:               string
+		profile_version?:            string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:       string
+		requested_by?: string
 		revocation_record?: [...close({
 			reason?:     string
 			revoked_at?: string

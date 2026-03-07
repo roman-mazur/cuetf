@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_inspector2_member_association")
 	close({
+		timeouts?:                   #timeouts
 		account_id!:                 string
 		delegated_admin_account_id?: string
 		id?:                         string
@@ -15,7 +16,6 @@ package res
 		region?:              string
 		relationship_status?: string
 		updated_at?:          string
-		timeouts?:            #timeouts
 	})
 
 	#timeouts: close({

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_peering_connection_accepter")
 	close({
+		accepter?: matchN(1, [#accepter, list.MaxItems(1) & [...#accepter]])
+		requester?: matchN(1, [#requester, list.MaxItems(1) & [...#requester]])
+		timeouts?:      #timeouts
 		accept_status?: string
 		auto_accept?:   bool
 		id?:            string
@@ -18,12 +21,9 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		accepter?: matchN(1, [#accepter, list.MaxItems(1) & [...#accepter]])
-		tags?: [string]: string
-		requester?: matchN(1, [#requester, list.MaxItems(1) & [...#requester]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		vpc_id?:                    string
-		timeouts?:                  #timeouts
 		vpc_peering_connection_id!: string
 	})
 

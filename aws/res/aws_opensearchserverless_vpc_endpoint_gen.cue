@@ -4,7 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_opensearchserverless_vpc_endpoint")
 	close({
-		id?: string
+		timeouts?: #timeouts
+		id?:       string
 
 		// Name of the interface endpoint.
 		name!: string
@@ -25,8 +26,7 @@ package res
 		subnet_ids!: [...string]
 
 		// ID of the VPC from which you'll access OpenSearch Serverless.
-		vpc_id!:   string
-		timeouts?: #timeouts
+		vpc_id!: string
 	})
 
 	#timeouts: close({

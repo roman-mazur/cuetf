@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_securityhub_organization_configuration")
 	close({
-		auto_enable!: bool
+		organization_configuration?: matchN(1, [#organization_configuration, list.MaxItems(1) & [...#organization_configuration]])
+		timeouts?:              #timeouts
+		auto_enable!:           bool
+		auto_enable_standards?: string
+		id?:                    string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                string
-		auto_enable_standards?: string
-		id?:                    string
-		organization_configuration?: matchN(1, [#organization_configuration, list.MaxItems(1) & [...#organization_configuration]])
-		timeouts?: #timeouts
+		region?: string
 	})
 
 	#organization_configuration: close({

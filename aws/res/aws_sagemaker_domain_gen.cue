@@ -6,33 +6,33 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_domain")
 	close({
-		app_network_access_type?: string
+		default_space_settings?: matchN(1, [#default_space_settings, list.MaxItems(1) & [...#default_space_settings]])
+		default_user_settings!: matchN(1, [#default_user_settings, list.MaxItems(1) & [_, ...] & [...#default_user_settings]])
+		domain_settings?: matchN(1, [#domain_settings, list.MaxItems(1) & [...#domain_settings]])
+		retention_policy?: matchN(1, [#retention_policy, list.MaxItems(1) & [...#retention_policy]])
+		app_network_access_type?:       string
+		app_security_group_management?: string
+		arn?:                           string
+		auth_mode!:                     string
+		domain_name!:                   string
+		home_efs_file_system_id?:       string
+		id?:                            string
+		kms_key_id?:                    string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                                string
-		app_security_group_management?:         string
-		arn?:                                   string
-		auth_mode!:                             string
-		domain_name!:                           string
-		home_efs_file_system_id?:               string
-		id?:                                    string
-		kms_key_id?:                            string
-		security_group_id_for_domain_boundary?: string
-		default_space_settings?: matchN(1, [#default_space_settings, list.MaxItems(1) & [...#default_space_settings]])
-		default_user_settings!: matchN(1, [#default_user_settings, list.MaxItems(1) & [_, ...] & [...#default_user_settings]])
+		region?:                                         string
+		security_group_id_for_domain_boundary?:          string
 		single_sign_on_application_arn?:                 string
 		single_sign_on_managed_application_instance_id?: string
 		subnet_ids!: [...string]
 		tag_propagation?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		url?: string
-		domain_settings?: matchN(1, [#domain_settings, list.MaxItems(1) & [...#domain_settings]])
+		url?:    string
 		vpc_id!: string
-		retention_policy?: matchN(1, [#retention_policy, list.MaxItems(1) & [...#retention_policy]])
 	})
 
 	#default_space_settings: close({
@@ -49,22 +49,22 @@ import "list"
 	#default_user_settings: close({
 		canvas_app_settings?: matchN(1, [_#defs."/$defs/default_user_settings/$defs/canvas_app_settings", list.MaxItems(1) & [..._#defs."/$defs/default_user_settings/$defs/canvas_app_settings"]])
 		code_editor_app_settings?: matchN(1, [_#defs."/$defs/default_user_settings/$defs/code_editor_app_settings", list.MaxItems(1) & [..._#defs."/$defs/default_user_settings/$defs/code_editor_app_settings"]])
-		auto_mount_home_efs?: string
-		default_landing_uri?: string
-		execution_role!:      string
 		custom_file_system_config?: matchN(1, [_#defs."/$defs/default_user_settings/$defs/custom_file_system_config", [..._#defs."/$defs/default_user_settings/$defs/custom_file_system_config"]])
-		security_groups?: [...string]
 		custom_posix_user_config?: matchN(1, [_#defs."/$defs/default_user_settings/$defs/custom_posix_user_config", list.MaxItems(1) & [..._#defs."/$defs/default_user_settings/$defs/custom_posix_user_config"]])
 		jupyter_lab_app_settings?: matchN(1, [_#defs."/$defs/default_user_settings/$defs/jupyter_lab_app_settings", list.MaxItems(1) & [..._#defs."/$defs/default_user_settings/$defs/jupyter_lab_app_settings"]])
 		jupyter_server_app_settings?: matchN(1, [_#defs."/$defs/default_user_settings/$defs/jupyter_server_app_settings", list.MaxItems(1) & [..._#defs."/$defs/default_user_settings/$defs/jupyter_server_app_settings"]])
 		kernel_gateway_app_settings?: matchN(1, [_#defs."/$defs/default_user_settings/$defs/kernel_gateway_app_settings", list.MaxItems(1) & [..._#defs."/$defs/default_user_settings/$defs/kernel_gateway_app_settings"]])
 		r_session_app_settings?: matchN(1, [_#defs."/$defs/default_user_settings/$defs/r_session_app_settings", list.MaxItems(1) & [..._#defs."/$defs/default_user_settings/$defs/r_session_app_settings"]])
 		r_studio_server_pro_app_settings?: matchN(1, [_#defs."/$defs/default_user_settings/$defs/r_studio_server_pro_app_settings", list.MaxItems(1) & [..._#defs."/$defs/default_user_settings/$defs/r_studio_server_pro_app_settings"]])
-		studio_web_portal?: string
 		sharing_settings?: matchN(1, [_#defs."/$defs/default_user_settings/$defs/sharing_settings", list.MaxItems(1) & [..._#defs."/$defs/default_user_settings/$defs/sharing_settings"]])
 		space_storage_settings?: matchN(1, [_#defs."/$defs/default_user_settings/$defs/space_storage_settings", list.MaxItems(1) & [..._#defs."/$defs/default_user_settings/$defs/space_storage_settings"]])
 		studio_web_portal_settings?: matchN(1, [_#defs."/$defs/default_user_settings/$defs/studio_web_portal_settings", list.MaxItems(1) & [..._#defs."/$defs/default_user_settings/$defs/studio_web_portal_settings"]])
 		tensor_board_app_settings?: matchN(1, [_#defs."/$defs/default_user_settings/$defs/tensor_board_app_settings", list.MaxItems(1) & [..._#defs."/$defs/default_user_settings/$defs/tensor_board_app_settings"]])
+		auto_mount_home_efs?: string
+		default_landing_uri?: string
+		execution_role!:      string
+		security_groups?: [...string]
+		studio_web_portal?: string
 	})
 
 	#domain_settings: close({

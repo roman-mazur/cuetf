@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_networkfirewall_vpc_endpoint_association")
 	close({
+		subnet_mapping?: matchN(1, [#subnet_mapping, [...#subnet_mapping]])
+		timeouts?:     #timeouts
 		description?:  string
 		firewall_arn!: string
 
@@ -27,9 +29,7 @@ package res
 				availability_zone?: string
 			})]
 		})]
-		subnet_mapping?: matchN(1, [#subnet_mapping, [...#subnet_mapping]])
-		timeouts?: #timeouts
-		vpc_id!:   string
+		vpc_id!: string
 	})
 
 	#subnet_mapping: close({

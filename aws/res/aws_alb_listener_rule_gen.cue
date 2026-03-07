@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_alb_listener_rule")
 	close({
+		action!: matchN(1, [#action, [_, ...] & [...#action]])
+		condition!: matchN(1, [#condition, [_, ...] & [...#condition]])
+		transform?: matchN(1, [#transform, list.MaxItems(2) & [...#transform]])
 		arn?:          string
 		id?:           string
 		listener_arn!: string
@@ -16,23 +19,20 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		action!: matchN(1, [#action, [_, ...] & [...#action]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		condition!: matchN(1, [#condition, [_, ...] & [...#condition]])
-		transform?: matchN(1, [#transform, list.MaxItems(2) & [...#transform]])
 	})
 
 	#action: close({
 		authenticate_cognito?: matchN(1, [_#defs."/$defs/action/$defs/authenticate_cognito", list.MaxItems(1) & [..._#defs."/$defs/action/$defs/authenticate_cognito"]])
 		authenticate_oidc?: matchN(1, [_#defs."/$defs/action/$defs/authenticate_oidc", list.MaxItems(1) & [..._#defs."/$defs/action/$defs/authenticate_oidc"]])
-		order?:            number
-		target_group_arn?: string
-		type!:             string
 		fixed_response?: matchN(1, [_#defs."/$defs/action/$defs/fixed_response", list.MaxItems(1) & [..._#defs."/$defs/action/$defs/fixed_response"]])
 		forward?: matchN(1, [_#defs."/$defs/action/$defs/forward", list.MaxItems(1) & [..._#defs."/$defs/action/$defs/forward"]])
 		jwt_validation?: matchN(1, [_#defs."/$defs/action/$defs/jwt_validation", list.MaxItems(1) & [..._#defs."/$defs/action/$defs/jwt_validation"]])
 		redirect?: matchN(1, [_#defs."/$defs/action/$defs/redirect", list.MaxItems(1) & [..._#defs."/$defs/action/$defs/redirect"]])
+		order?:            number
+		target_group_arn?: string
+		type!:             string
 	})
 
 	#condition: close({

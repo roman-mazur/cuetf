@@ -4,22 +4,16 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_datazone_environment")
 	close({
-		account_identifier?: string
-		account_region?:     string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:               string
+		timeouts?: #timeouts
+		user_parameters?: matchN(1, [#user_parameters, [...#user_parameters]])
+		account_identifier?:   string
+		account_region?:       string
 		blueprint_identifier?: string
 		created_at?:           string
 		created_by?:           string
 		description?:          string
 		domain_identifier!:    string
 		glossary_terms?: [...string]
-		timeouts?: #timeouts
-		user_parameters?: matchN(1, [#user_parameters, [...#user_parameters]])
 		id?: string
 		last_deployment?: [...close({
 			deployment_id?:     string
@@ -42,6 +36,12 @@ package res
 			type?:     string
 			value?:    string
 		})]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 	})
 
 	#timeouts: close({

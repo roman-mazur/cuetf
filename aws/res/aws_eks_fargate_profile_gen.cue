@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_eks_fargate_profile")
 	close({
+		selector!: matchN(1, [#selector, [_, ...] & [...#selector]])
+		timeouts?:               #timeouts
 		arn?:                    string
 		cluster_name!:           string
 		fargate_profile_name!:   string
@@ -15,9 +17,7 @@ package res
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		selector!: matchN(1, [#selector, [_, ...] & [...#selector]])
-		status?:   string
-		timeouts?: #timeouts
+		status?: string
 		subnet_ids?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string

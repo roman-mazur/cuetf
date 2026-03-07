@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ec2_transit_gateway_peering_attachment")
 	close({
+		filter?: matchN(1, [#filter, [...#filter]])
+		timeouts?:                #timeouts
 		arn?:                     string
 		id?:                      string
 		peer_account_id?:         string
@@ -17,8 +19,6 @@ package data
 		region?: string
 		state?:  string
 		tags?: [string]: string
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?:           #timeouts
 		transit_gateway_id?: string
 	})
 

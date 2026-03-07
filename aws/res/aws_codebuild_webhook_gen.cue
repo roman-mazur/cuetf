@@ -6,23 +6,23 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_codebuild_webhook")
 	close({
+		filter_group?: matchN(1, [#filter_group, [...#filter_group]])
+		pull_request_build_policy?: matchN(1, [#pull_request_build_policy, list.MaxItems(1) & [...#pull_request_build_policy]])
+		scope_configuration?: matchN(1, [#scope_configuration, list.MaxItems(1) & [...#scope_configuration]])
 		branch_filter?:   string
 		build_type?:      string
 		id?:              string
 		manual_creation?: bool
+		payload_url?:     string
+		project_name!:    string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		filter_group?: matchN(1, [#filter_group, [...#filter_group]])
-		payload_url?: string
-		pull_request_build_policy?: matchN(1, [#pull_request_build_policy, list.MaxItems(1) & [...#pull_request_build_policy]])
-		project_name!: string
-		secret?:       string
-		scope_configuration?: matchN(1, [#scope_configuration, list.MaxItems(1) & [...#scope_configuration]])
-		url?: string
+		secret?: string
+		url?:    string
 	})
 
 	#filter_group: close({

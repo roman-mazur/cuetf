@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpclattice_service_network_service_association")
 	close({
+		timeouts?:           #timeouts
 		arn?:                string
 		created_by?:         string
 		custom_domain_name?: string
@@ -18,7 +19,6 @@ package res
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                     string
-		timeouts?:                   #timeouts
 		service_identifier!:         string
 		service_network_identifier!: string
 		status?:                     string

@@ -4,7 +4,9 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ec2_local_gateway_virtual_interface_groups")
 	close({
-		id?: string
+		filter?: matchN(1, [#filter, [...#filter]])
+		timeouts?: #timeouts
+		id?:       string
 		ids?: [...string]
 		local_gateway_virtual_interface_ids?: [...string]
 
@@ -14,8 +16,6 @@ package data
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		tags?: [string]: string
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?: #timeouts
 	})
 
 	#filter: close({

@@ -4,8 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_route53_resolver_rule_association")
 	close({
-		id?:   string
-		name?: string
+		timeouts?: #timeouts
+		id?:       string
+		name?:     string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -14,7 +15,6 @@ package res
 		region?:           string
 		resolver_rule_id!: string
 		vpc_id!:           string
-		timeouts?:         #timeouts
 	})
 
 	#timeouts: close({

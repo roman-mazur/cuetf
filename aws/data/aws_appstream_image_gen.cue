@@ -28,12 +28,6 @@ package data
 		arn?:                     string
 		base_image_arn?:          string
 		created_time?:            string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                  string
 		description?:             string
 		display_name?:            string
 		image_builder_name?:      string
@@ -47,7 +41,13 @@ package data
 		name_regex?:                      string
 		platform?:                        string
 		public_base_image_released_date?: string
-		state?:                           string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		state?:  string
 		state_change_reason?: [...close({
 			code?:    string
 			message?: string

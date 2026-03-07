@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_eks_node_group")
 	close({
+		launch_template?: matchN(1, [#launch_template, list.MaxItems(1) & [...#launch_template]])
+		node_repair_config?: matchN(1, [#node_repair_config, list.MaxItems(1) & [...#node_repair_config]])
+		remote_access?: matchN(1, [#remote_access, list.MaxItems(1) & [...#remote_access]])
+		scaling_config!: matchN(1, [#scaling_config, list.MaxItems(1) & [_, ...] & [...#scaling_config]])
+		taint?: matchN(1, [#taint, list.MaxItems(50) & [...#taint]])
+		timeouts?: #timeouts
+		update_config?: matchN(1, [#update_config, list.MaxItems(1) & [...#update_config]])
 		ami_type?:             string
 		arn?:                  string
 		capacity_type?:        string
@@ -14,19 +21,16 @@ import "list"
 		force_update_version?: bool
 		id?:                   string
 		instance_types?: [...string]
-		launch_template?: matchN(1, [#launch_template, list.MaxItems(1) & [...#launch_template]])
+		labels?: [string]: string
+		node_group_name?:        string
+		node_group_name_prefix?: string
+		node_role_arn!:          string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		labels?: [string]: string
-		node_group_name?:        string
-		node_group_name_prefix?: string
-		node_role_arn!:          string
-		node_repair_config?: matchN(1, [#node_repair_config, list.MaxItems(1) & [...#node_repair_config]])
-		remote_access?: matchN(1, [#remote_access, list.MaxItems(1) & [...#remote_access]])
+		region?:          string
 		release_version?: string
 		resources?: [...close({
 			autoscaling_groups?: [...close({
@@ -36,13 +40,9 @@ import "list"
 		})]
 		status?: string
 		subnet_ids!: [...string]
-		tags?: [string]: string
-		scaling_config!: matchN(1, [#scaling_config, list.MaxItems(1) & [_, ...] & [...#scaling_config]])
-		taint?: matchN(1, [#taint, list.MaxItems(50) & [...#taint]])
-		timeouts?: #timeouts
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		version?: string
-		update_config?: matchN(1, [#update_config, list.MaxItems(1) & [...#update_config]])
 	})
 
 	#launch_template: close({

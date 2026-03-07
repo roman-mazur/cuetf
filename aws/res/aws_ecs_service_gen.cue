@@ -6,37 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ecs_service")
 	close({
-		arn?:                           string
-		availability_zone_rebalancing?: string
-		cluster?:                       string
-		deployment_maximum_percent?:    number
 		alarms?: matchN(1, [#alarms, list.MaxItems(1) & [...#alarms]])
-		deployment_minimum_healthy_percent?: number
-		desired_count?:                      number
-		enable_ecs_managed_tags?:            bool
-		enable_execute_command?:             bool
-		force_delete?:                       bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                            string
-		force_new_deployment?:              bool
-		health_check_grace_period_seconds?: number
 		capacity_provider_strategy?: matchN(1, [#capacity_provider_strategy, [...#capacity_provider_strategy]])
-		iam_role?:            string
-		id?:                  string
-		launch_type?:         string
-		name!:                string
-		platform_version?:    string
-		propagate_tags?:      string
-		scheduling_strategy?: string
-		sigint_rollback?:     bool
-		tags?: [string]:     string
-		tags_all?: [string]: string
-		task_definition?: string
-		triggers?: [string]: string
 		deployment_circuit_breaker?: matchN(1, [#deployment_circuit_breaker, list.MaxItems(1) & [...#deployment_circuit_breaker]])
 		deployment_configuration?: matchN(1, [#deployment_configuration, list.MaxItems(1) & [...#deployment_configuration]])
 		deployment_controller?: matchN(1, [#deployment_controller, list.MaxItems(1) & [...#deployment_controller]])
@@ -44,12 +15,41 @@ import "list"
 		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
 		ordered_placement_strategy?: matchN(1, [#ordered_placement_strategy, list.MaxItems(5) & [...#ordered_placement_strategy]])
 		placement_constraints?: matchN(1, [#placement_constraints, list.MaxItems(10) & [...#placement_constraints]])
-		wait_for_steady_state?: bool
 		service_connect_configuration?: matchN(1, [#service_connect_configuration, list.MaxItems(1) & [...#service_connect_configuration]])
 		service_registries?: matchN(1, [#service_registries, list.MaxItems(1) & [...#service_registries]])
 		timeouts?: #timeouts
 		volume_configuration?: matchN(1, [#volume_configuration, list.MaxItems(1) & [...#volume_configuration]])
 		vpc_lattice_configurations?: matchN(1, [#vpc_lattice_configurations, [...#vpc_lattice_configurations]])
+		arn?:                                string
+		availability_zone_rebalancing?:      string
+		cluster?:                            string
+		deployment_maximum_percent?:         number
+		deployment_minimum_healthy_percent?: number
+		desired_count?:                      number
+		enable_ecs_managed_tags?:            bool
+		enable_execute_command?:             bool
+		force_delete?:                       bool
+		force_new_deployment?:               bool
+		health_check_grace_period_seconds?:  number
+		iam_role?:                           string
+		id?:                                 string
+		launch_type?:                        string
+		name!:                               string
+		platform_version?:                   string
+		propagate_tags?:                     string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:              string
+		scheduling_strategy?: string
+		sigint_rollback?:     bool
+		tags?: [string]:     string
+		tags_all?: [string]: string
+		task_definition?: string
+		triggers?: [string]: string
+		wait_for_steady_state?: bool
 	})
 
 	#alarms: close({
@@ -221,14 +221,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/volume_configuration/$defs/managed_ebs_volume": close({
-		encrypted?:        bool
-		file_system_type?: string
-		iops?:             number
-		kms_key_id?:       string
-		role_arn!:         string
-		size_in_gb?:       number
-		snapshot_id?:      string
 		tag_specifications?: matchN(1, [_#defs."/$defs/volume_configuration/$defs/managed_ebs_volume/$defs/tag_specifications", [..._#defs."/$defs/volume_configuration/$defs/managed_ebs_volume/$defs/tag_specifications"]])
+		encrypted?:                  bool
+		file_system_type?:           string
+		iops?:                       number
+		kms_key_id?:                 string
+		role_arn!:                   string
+		size_in_gb?:                 number
+		snapshot_id?:                string
 		throughput?:                 number
 		volume_initialization_rate?: number
 		volume_type?:                string

@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_workspacesweb_trust_store")
 	close({
+		certificate?: matchN(1, [#certificate, [...#certificate]])
 		associated_portal_arns?: [...string]
 
 		// Region where this resource will be
@@ -14,7 +15,6 @@ package res
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		trust_store_arn?: string
-		certificate?: matchN(1, [#certificate, [...#certificate]])
 	})
 
 	#certificate: close({

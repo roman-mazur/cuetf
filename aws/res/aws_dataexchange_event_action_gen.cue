@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dataexchange_event_action")
 	close({
+		action?: matchN(1, [#action, [...#action]])
+		event?: matchN(1, [#event, [...#event]])
 		arn?:        string
 		created_at?: string
 		id?:         string
@@ -14,8 +16,6 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:     string
 		updated_at?: string
-		action?: matchN(1, [#action, [...#action]])
-		event?: matchN(1, [#event, [...#event]])
 	})
 
 	#action: close({

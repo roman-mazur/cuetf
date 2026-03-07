@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_msk_replicator")
 	close({
+		kafka_cluster!: matchN(1, [#kafka_cluster, list.MaxItems(2) & [_, _, ...] & [...#kafka_cluster]])
+		replication_info_list!: matchN(1, [#replication_info_list, list.MaxItems(1) & [_, ...] & [...#replication_info_list]])
+		timeouts?:        #timeouts
 		arn?:             string
 		current_version?: string
 		description?:     string
@@ -15,13 +18,10 @@ import "list"
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		kafka_cluster!: matchN(1, [#kafka_cluster, list.MaxItems(2) & [_, _, ...] & [...#kafka_cluster]])
-		replication_info_list!: matchN(1, [#replication_info_list, list.MaxItems(1) & [_, ...] & [...#replication_info_list]])
+		region?:                     string
 		replicator_name!:            string
 		service_execution_role_arn!: string
-		tags?: [string]: string
-		timeouts?: #timeouts
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 
@@ -32,12 +32,12 @@ import "list"
 
 	#replication_info_list: close({
 		consumer_group_replication!: matchN(1, [_#defs."/$defs/replication_info_list/$defs/consumer_group_replication", [_, ...] & [..._#defs."/$defs/replication_info_list/$defs/consumer_group_replication"]])
+		topic_replication!: matchN(1, [_#defs."/$defs/replication_info_list/$defs/topic_replication", [_, ...] & [..._#defs."/$defs/replication_info_list/$defs/topic_replication"]])
 		source_kafka_cluster_alias?: string
 		source_kafka_cluster_arn!:   string
 		target_compression_type!:    string
 		target_kafka_cluster_alias?: string
 		target_kafka_cluster_arn!:   string
-		topic_replication!: matchN(1, [_#defs."/$defs/replication_info_list/$defs/topic_replication", [_, ...] & [..._#defs."/$defs/replication_info_list/$defs/topic_replication"]])
 	})
 
 	#timeouts: close({
@@ -64,12 +64,12 @@ import "list"
 
 	_#defs: "/$defs/replication_info_list/$defs/topic_replication": close({
 		starting_position?: matchN(1, [_#defs."/$defs/replication_info_list/$defs/topic_replication/$defs/starting_position", list.MaxItems(1) & [..._#defs."/$defs/replication_info_list/$defs/topic_replication/$defs/starting_position"]])
+		topic_name_configuration?: matchN(1, [_#defs."/$defs/replication_info_list/$defs/topic_replication/$defs/topic_name_configuration", list.MaxItems(1) & [..._#defs."/$defs/replication_info_list/$defs/topic_replication/$defs/topic_name_configuration"]])
 		copy_access_control_lists_for_topics?: bool
 		copy_topic_configurations?:            bool
 		detect_and_copy_new_topics?:           bool
 		topics_to_exclude?: [...string]
 		topics_to_replicate!: [...string]
-		topic_name_configuration?: matchN(1, [_#defs."/$defs/replication_info_list/$defs/topic_replication/$defs/topic_name_configuration", list.MaxItems(1) & [..._#defs."/$defs/replication_info_list/$defs/topic_replication/$defs/topic_name_configuration"]])
 	})
 
 	_#defs: "/$defs/replication_info_list/$defs/topic_replication/$defs/starting_position": close({

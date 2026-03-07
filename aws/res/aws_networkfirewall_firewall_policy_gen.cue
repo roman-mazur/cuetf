@@ -6,20 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_networkfirewall_firewall_policy")
 	close({
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
+		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
+		firewall_policy!: matchN(1, [#firewall_policy, list.MaxItems(1) & [_, ...] & [...#firewall_policy]])
 		arn?:         string
 		description?: string
 		id?:          string
 		name!:        string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		update_token?: string
-		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
-		firewall_policy!: matchN(1, [#firewall_policy, list.MaxItems(1) & [_, ...] & [...#firewall_policy]])
 	})
 
 	#encryption_configuration: close({
@@ -28,15 +29,15 @@ import "list"
 	})
 
 	#firewall_policy: close({
-		stateful_default_actions?: [...string]
 		policy_variables?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/policy_variables", list.MaxItems(1) & [..._#defs."/$defs/firewall_policy/$defs/policy_variables"]])
-		stateless_default_actions!: [...string]
-		stateless_fragment_default_actions!: [...string]
-		tls_inspection_configuration_arn?: string
 		stateful_engine_options?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/stateful_engine_options", list.MaxItems(1) & [..._#defs."/$defs/firewall_policy/$defs/stateful_engine_options"]])
 		stateful_rule_group_reference?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/stateful_rule_group_reference", [..._#defs."/$defs/firewall_policy/$defs/stateful_rule_group_reference"]])
 		stateless_custom_action?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/stateless_custom_action", [..._#defs."/$defs/firewall_policy/$defs/stateless_custom_action"]])
 		stateless_rule_group_reference?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/stateless_rule_group_reference", [..._#defs."/$defs/firewall_policy/$defs/stateless_rule_group_reference"]])
+		stateful_default_actions?: [...string]
+		stateless_default_actions!: [...string]
+		stateless_fragment_default_actions!: [...string]
+		tls_inspection_configuration_arn?: string
 	})
 
 	_#defs: "/$defs/firewall_policy/$defs/policy_variables": close({

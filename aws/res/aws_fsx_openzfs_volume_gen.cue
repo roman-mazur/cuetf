@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_fsx_openzfs_volume")
 	close({
+		nfs_exports?: matchN(1, [#nfs_exports, list.MaxItems(1) & [...#nfs_exports]])
+		origin_snapshot?: matchN(1, [#origin_snapshot, list.MaxItems(1) & [...#origin_snapshot]])
+		timeouts?: #timeouts
+		user_and_group_quotas?: matchN(1, [#user_and_group_quotas, [...#user_and_group_quotas]])
 		arn?:                    string
 		copy_tags_to_snapshots?: bool
 		data_compression_type?:  string
@@ -13,23 +17,19 @@ import "list"
 		id?:               string
 		name!:             string
 		parent_volume_id!: string
+		read_only?:        bool
+		record_size_kib?:  number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:    string
-		read_only?: bool
-		nfs_exports?: matchN(1, [#nfs_exports, list.MaxItems(1) & [...#nfs_exports]])
-		record_size_kib?: number
-		origin_snapshot?: matchN(1, [#origin_snapshot, list.MaxItems(1) & [...#origin_snapshot]])
+		region?:                           string
 		storage_capacity_quota_gib?:       number
 		storage_capacity_reservation_gib?: number
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		volume_type?: string
-		timeouts?:    #timeouts
-		user_and_group_quotas?: matchN(1, [#user_and_group_quotas, [...#user_and_group_quotas]])
 	})
 
 	#nfs_exports: close({

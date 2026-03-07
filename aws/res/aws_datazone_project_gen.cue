@@ -4,26 +4,26 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_datazone_project")
 	close({
-		created_at?:  string
-		created_by?:  string
-		description?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:            string
+		timeouts?:          #timeouts
+		created_at?:        string
+		created_by?:        string
+		description?:       string
 		domain_identifier!: string
 		failure_reasons?: [...close({
 			code?:    string
 			message?: string
 		})]
-		timeouts?: #timeouts
 		glossary_terms?: [...string]
-		id?:                  string
-		last_updated_at?:     string
-		name!:                string
-		project_status?:      string
+		id?:              string
+		last_updated_at?: string
+		name!:            string
+		project_status?:  string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:              string
 		skip_deletion_check?: bool
 	})
 

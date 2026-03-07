@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_memorydb_multi_region_cluster")
 	close({
+		timeouts?:                          #timeouts
 		arn?:                               string
 		description?:                       string
 		engine?:                            string
@@ -11,16 +12,15 @@ package res
 		multi_region_cluster_name?:         string
 		multi_region_cluster_name_suffix!:  string
 		multi_region_parameter_group_name?: string
+		node_type!:                         string
+		num_shards?:                        number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:     string
-		timeouts?:   #timeouts
-		node_type!:  string
-		num_shards?: number
-		status?:     string
+		region?: string
+		status?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		tls_enabled?:     bool

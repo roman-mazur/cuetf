@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_networkmanager_attachment_accepter")
 	close({
+		timeouts?:                      #timeouts
 		attachment_id!:                 string
 		attachment_policy_rule_number?: number
 		attachment_type!:               string
@@ -12,7 +13,6 @@ package res
 		edge_location?:                 string
 		edge_locations?: [...string]
 		id?:               string
-		timeouts?:         #timeouts
 		owner_account_id?: string
 		resource_arn?:     string
 		segment_name?:     string

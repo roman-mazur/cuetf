@@ -4,23 +4,23 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_config_organization_custom_policy_rule")
 	close({
-		arn?: string
+		timeouts?: #timeouts
+		arn?:      string
 		debug_log_delivery_accounts?: [...string]
 		description?: string
 		excluded_accounts?: [...string]
 		id?:                          string
 		input_parameters?:            string
 		maximum_execution_frequency?: string
+		name!:                        string
+		policy_runtime!:              string
+		policy_text!:                 string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:            string
-		timeouts?:          #timeouts
-		name!:              string
-		policy_runtime!:    string
-		policy_text!:       string
 		resource_id_scope?: string
 		resource_types_scope?: [...string]
 		tag_key_scope?:   string

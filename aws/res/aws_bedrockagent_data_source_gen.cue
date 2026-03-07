@@ -4,22 +4,22 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagent_data_source")
 	close({
+		data_source_configuration?: matchN(1, [#data_source_configuration, [...#data_source_configuration]])
+		server_side_encryption_configuration?: matchN(1, [#server_side_encryption_configuration, [...#server_side_encryption_configuration]])
+		timeouts?: #timeouts
+		vector_ingestion_configuration?: matchN(1, [#vector_ingestion_configuration, [...#vector_ingestion_configuration]])
 		data_deletion_policy?: string
 		data_source_id?:       string
+		description?:          string
+		id?:                   string
+		knowledge_base_id!:    string
+		name!:                 string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:            string
-		description?:       string
-		id?:                string
-		knowledge_base_id!: string
-		name!:              string
-		data_source_configuration?: matchN(1, [#data_source_configuration, [...#data_source_configuration]])
-		server_side_encryption_configuration?: matchN(1, [#server_side_encryption_configuration, [...#server_side_encryption_configuration]])
-		timeouts?: #timeouts
-		vector_ingestion_configuration?: matchN(1, [#vector_ingestion_configuration, [...#vector_ingestion_configuration]])
+		region?: string
 	})
 
 	#data_source_configuration: close({

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_servicecatalog_provisioned_product")
 	close({
+		provisioning_parameters?: matchN(1, [#provisioning_parameters, [...#provisioning_parameters]])
+		stack_set_provisioning_preferences?: matchN(1, [#stack_set_provisioning_preferences, list.MaxItems(1) & [...#stack_set_provisioning_preferences]])
+		timeouts?:        #timeouts
 		accept_language?: string
 		arn?:             string
 		cloudwatch_dashboard_names?: [...string]
@@ -23,27 +26,24 @@ import "list"
 			key?:         string
 			value?:       string
 		})]
-		path_id?: string
-		provisioning_parameters?: matchN(1, [#provisioning_parameters, [...#provisioning_parameters]])
-		stack_set_provisioning_preferences?: matchN(1, [#stack_set_provisioning_preferences, list.MaxItems(1) & [...#stack_set_provisioning_preferences]])
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                     string
+		path_id?:                    string
 		path_name?:                  string
 		product_id?:                 string
 		product_name?:               string
 		provisioning_artifact_id?:   string
 		provisioning_artifact_name?: string
-		retain_physical_resources?:  bool
-		status?:                     string
-		status_message?:             string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                    string
+		retain_physical_resources?: bool
+		status?:                    string
+		status_message?:            string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		type?:     string
-		timeouts?: #timeouts
+		type?: string
 	})
 
 	#provisioning_parameters: close({

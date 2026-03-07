@@ -6,21 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_athena_database")
 	close({
+		acl_configuration?: matchN(1, [#acl_configuration, list.MaxItems(1) & [...#acl_configuration]])
+		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
 		bucket?:                string
 		comment?:               string
 		expected_bucket_owner?: string
+		force_destroy?:         bool
+		id?:                    string
+		name!:                  string
+		properties?: [string]: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:        string
-		force_destroy?: bool
-		id?:            string
-		name!:          string
-		properties?: [string]: string
-		acl_configuration?: matchN(1, [#acl_configuration, list.MaxItems(1) & [...#acl_configuration]])
-		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
+		region?:    string
 		workgroup?: string
 	})
 

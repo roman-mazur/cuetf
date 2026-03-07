@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ecs_task_definition")
 	close({
+		ephemeral_storage?: matchN(1, [#ephemeral_storage, list.MaxItems(1) & [...#ephemeral_storage]])
+		placement_constraints?: matchN(1, [#placement_constraints, list.MaxItems(10) & [...#placement_constraints]])
+		proxy_configuration?: matchN(1, [#proxy_configuration, list.MaxItems(1) & [...#proxy_configuration]])
+		runtime_platform?: matchN(1, [#runtime_platform, list.MaxItems(1) & [...#runtime_platform]])
+		volume?: matchN(1, [#volume, [...#volume]])
 		arn?:                    string
 		arn_without_revision?:   string
 		container_definitions!:  string
@@ -15,11 +20,9 @@ import "list"
 		family!:                 string
 		id?:                     string
 		ipc_mode?:               string
-		ephemeral_storage?: matchN(1, [#ephemeral_storage, list.MaxItems(1) & [...#ephemeral_storage]])
-		memory?:       string
-		network_mode?: string
-		pid_mode?:     string
-		placement_constraints?: matchN(1, [#placement_constraints, list.MaxItems(10) & [...#placement_constraints]])
+		memory?:                 string
+		network_mode?:           string
+		pid_mode?:               string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -33,9 +36,6 @@ import "list"
 		tags_all?: [string]: string
 		task_role_arn?: string
 		track_latest?:  bool
-		proxy_configuration?: matchN(1, [#proxy_configuration, list.MaxItems(1) & [...#proxy_configuration]])
-		runtime_platform?: matchN(1, [#runtime_platform, list.MaxItems(1) & [...#runtime_platform]])
-		volume?: matchN(1, [#volume, [...#volume]])
 	})
 
 	#ephemeral_storage: close({

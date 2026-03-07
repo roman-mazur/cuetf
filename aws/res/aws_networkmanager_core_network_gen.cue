@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_networkmanager_core_network")
 	close({
+		timeouts?:             #timeouts
 		arn?:                  string
 		base_policy_document?: string
 		base_policy_regions?: [...string]
@@ -16,7 +17,6 @@ package res
 			inside_cidr_blocks?: [...string]
 		})]
 		global_network_id!: string
-		timeouts?:          #timeouts
 		id?:                string
 		segments?: [...close({
 			edge_locations?: [...string]

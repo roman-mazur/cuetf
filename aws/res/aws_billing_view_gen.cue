@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_billing_view")
 	close({
+		data_filter_expression?: matchN(1, [#data_filter_expression, [...#data_filter_expression]])
+		timeouts?:           #timeouts
 		arn?:                string
 		billing_view_type?:  string
 		created_at?:         string
@@ -12,11 +14,9 @@ package res
 		name!:               string
 		owner_account_id?:   string
 		source_account_id?:  string
-		data_filter_expression?: matchN(1, [#data_filter_expression, [...#data_filter_expression]])
-		source_view_count?: number
+		source_view_count?:  number
 		source_views?: [...string]
-		tags?: [string]: string
-		timeouts?: #timeouts
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		updated_at?:                      string
 		view_definition_last_updated_at?: string

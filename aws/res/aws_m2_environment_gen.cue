@@ -4,29 +4,29 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_m2_environment")
 	close({
-		apply_changes_during_maintenance_window?: bool
 		high_availability_config?: matchN(1, [#high_availability_config, [...#high_availability_config]])
-		arn?:            string
-		description?:    string
-		engine_type!:    string
-		engine_version?: string
+		storage_configuration?: matchN(1, [#storage_configuration, [...#storage_configuration]])
+		timeouts?:                                #timeouts
+		apply_changes_during_maintenance_window?: bool
+		arn?:                                     string
+		description?:                             string
+		engine_type!:                             string
+		engine_version?:                          string
+		environment_id?:                          string
+		force_update?:                            bool
+		id?:                                      string
+		instance_type!:                           string
+		kms_key_id?:                              string
+		load_balancer_arn?:                       string
+		name!:                                    string
+		preferred_maintenance_window?:            string
+		publicly_accessible?:                     bool
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:         string
-		environment_id?: string
-		force_update?:   bool
-		id?:             string
-		instance_type!:  string
-		kms_key_id?:     string
-		storage_configuration?: matchN(1, [#storage_configuration, [...#storage_configuration]])
-		load_balancer_arn?:            string
-		name!:                         string
-		timeouts?:                     #timeouts
-		preferred_maintenance_window?: string
-		publicly_accessible?:          bool
+		region?: string
 		security_group_ids?: [...string]
 		subnet_ids?: [...string]
 		tags?: [string]:     string
