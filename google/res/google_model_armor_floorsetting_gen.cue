@@ -6,16 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_model_armor_floorsetting")
 	close({
+		ai_platform_floor_setting?: matchN(1, [#ai_platform_floor_setting, list.MaxItems(1) & [...#ai_platform_floor_setting]])
+		filter_config!: matchN(1, [#filter_config, list.MaxItems(1) & [_, ...] & [...#filter_config]])
+		floor_setting_metadata?: matchN(1, [#floor_setting_metadata, list.MaxItems(1) & [...#floor_setting_metadata]])
+		google_mcp_server_floor_setting?: matchN(1, [#google_mcp_server_floor_setting, list.MaxItems(1) & [...#google_mcp_server_floor_setting]])
+		timeouts?: #timeouts
+
 		// [Output only] Create timestamp
 		create_time?: string
 
 		// Floor Settings enforcement status.
 		enable_floor_setting_enforcement?: bool
+		id?:                               string
 
 		// List of integrated services for which the floor setting is
 		// applicable.
 		integrated_services?: [...string]
-		id?: string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -24,10 +30,6 @@ import "list"
 
 		// Identifier. The resource name.
 		name?: string
-		ai_platform_floor_setting?: matchN(1, [#ai_platform_floor_setting, list.MaxItems(1) & [...#ai_platform_floor_setting]])
-		filter_config!: matchN(1, [#filter_config, list.MaxItems(1) & [_, ...] & [...#filter_config]])
-		floor_setting_metadata?: matchN(1, [#floor_setting_metadata, list.MaxItems(1) & [...#floor_setting_metadata]])
-		google_mcp_server_floor_setting?: matchN(1, [#google_mcp_server_floor_setting, list.MaxItems(1) & [...#google_mcp_server_floor_setting]])
 
 		// Will be any one of these:
 		//
@@ -38,7 +40,6 @@ import "list"
 
 		// [Output only] Update timestamp
 		update_time?: string
-		timeouts?:    #timeouts
 	})
 
 	#ai_platform_floor_setting: close({

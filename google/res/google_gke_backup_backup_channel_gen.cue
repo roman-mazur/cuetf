@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_backup_backup_channel")
 	close({
+		timeouts?: #timeouts
+
 		// User specified descriptive string for this BackupChannel.
 		description?: string
 
@@ -51,9 +53,8 @@ package res
 		location!: string
 
 		// The full name of the BackupChannel Resource.
-		name!:     string
-		timeouts?: #timeouts
-		project?:  string
+		name!:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

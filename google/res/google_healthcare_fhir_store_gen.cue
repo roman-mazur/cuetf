@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_healthcare_fhir_store")
 	close({
+		notification_config?: matchN(1, [#notification_config, list.MaxItems(1) & [...#notification_config]])
+		notification_configs?: matchN(1, [#notification_configs, [...#notification_configs]])
+		stream_configs?: matchN(1, [#stream_configs, [...#stream_configs]])
+		timeouts?: #timeouts
+		validation_config?: matchN(1, [#validation_config, list.MaxItems(1) & [...#validation_config]])
+
 		// Enable parsing of references within complex FHIR data types
 		// such as Extensions. If this value is set to ENABLED, then
 		// features like referential integrity and Bundle reference
@@ -96,6 +102,7 @@ import "list"
 		// recorded in Cloud audit logs and Cloud Pub/Sub
 		// notifications.
 		enable_update_create?: bool
+		id?:                   string
 
 		// User-supplied key-value pairs used to organize FHIR stores.
 		//
@@ -120,12 +127,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		notification_config?: matchN(1, [#notification_config, list.MaxItems(1) & [...#notification_config]])
-		notification_configs?: matchN(1, [#notification_configs, [...#notification_configs]])
-		stream_configs?: matchN(1, [#stream_configs, [...#stream_configs]])
-		timeouts?: #timeouts
-		validation_config?: matchN(1, [#validation_config, list.MaxItems(1) & [...#validation_config]])
-		id?: string
 
 		// The resource name for the FhirStore.
 		//

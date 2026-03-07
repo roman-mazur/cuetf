@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_row_access_policy")
 	close({
+		timeouts?: #timeouts
+
 		// The time when this row access policy was created, in
 		// milliseconds since
 		// the epoch.
@@ -76,7 +78,6 @@ package res
 		// maximum
 		// length is 256 characters.
 		policy_id!: string
-		timeouts?:  #timeouts
 		project?:   string
 
 		// The ID of the table containing this row access policy.

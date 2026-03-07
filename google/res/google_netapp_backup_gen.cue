@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_backup")
 	close({
+		timeouts?: #timeouts
+
 		// Region in which backup is stored.
 		backup_region?: string
 
@@ -29,6 +31,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Labels as key value pairs. Example: '{ "owner": "Bob",
 		// "department": "finance", "purpose": "testing" }'.
@@ -39,7 +42,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Location of the backup.
 		location!: string
@@ -56,7 +58,6 @@ package res
 		// Format:
 		// 'projects/{{projectId}}/locations/{{location}}/volumes/{{volumename}}/snapshots/{{snapshotname}}''
 		source_snapshot?: string
-		timeouts?:        #timeouts
 
 		// ID of volumes this backup belongs to. Format:
 		// 'projects/{{projects_id}}/locations/{{location}}/volumes/{{name}}''

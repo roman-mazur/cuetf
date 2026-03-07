@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_service_connection_policy")
 	close({
+		psc_config?: matchN(1, [#psc_config, list.MaxItems(1) & [...#psc_config]])
+		timeouts?: #timeouts
+
 		// The timestamp when the resource was created.
 		create_time?: string
 
@@ -21,10 +24,10 @@ import "list"
 		// and delete requests to ensure the client has an up-to-date
 		// value before proceeding.
 		etag?: string
+		id?:   string
 
 		// The type of underlying resources used to create the connection.
 		infrastructure?: string
-		id?:             string
 
 		// User-defined labels.
 		//
@@ -47,9 +50,7 @@ import "list"
 		// The resource path of the consumer network. Example: -
 		// projects/{projectNumOrId}/global/networks/{resourceId}.
 		network!: string
-		psc_config?: matchN(1, [#psc_config, list.MaxItems(1) & [...#psc_config]])
-		timeouts?: #timeouts
-		project?:  string
+		project?: string
 
 		// Information about each Private Service Connect connection.
 		psc_connections?: [...close({
@@ -78,8 +79,11 @@ import "list"
 		// ServiceConnectionPolicy is for. The service class identifier
 		// is a unique, symbolic representation of a ServiceClass.
 		// It is provided by the Service Producer. Google services have a
-		// prefix of gcp. For example, gcp-cloud-sql. 3rd party services
-		// do not. For example, test-service-a3dfcx.
+		// prefix of gcp. For example, google-cloud-sql. 3rd party
+		// services do not. For example, test-service-a3dfcx.
+		//
+		// For a list of supported services, see [Supported
+		// Services](https://docs.cloud.google.com/vpc/docs/about-service-connectivity-automation#supported-services).
 		service_class!: string
 
 		// The combination of labels configured directly on the resource

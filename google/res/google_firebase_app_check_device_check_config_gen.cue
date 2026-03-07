@@ -4,15 +4,17 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_check_device_check_config")
 	close({
+		timeouts?: #timeouts
+
 		// The ID of an
 		// [Apple
 		// App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
 		app_id!: string
+		id?:     string
 
 		// The key identifier of a private key enabled with DeviceCheck,
 		// created in your Apple Developer account.
 		key_id!: string
-		id?:     string
 
 		// The relative resource name of the DeviceCheck configuration
 		// object
@@ -28,7 +30,6 @@ package res
 		// whether it was previously set.
 		private_key_set?: bool
 		project?:         string
-		timeouts?:        #timeouts
 
 		// Specifies the duration for which App Check tokens exchanged
 		// from DeviceCheck artifacts will be valid.

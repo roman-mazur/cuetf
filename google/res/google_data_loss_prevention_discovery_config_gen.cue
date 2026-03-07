@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_loss_prevention_discovery_config")
 	close({
+		actions?: matchN(1, [#actions, [...#actions]])
+		org_config?: matchN(1, [#org_config, list.MaxItems(1) & [...#org_config]])
+		other_cloud_starting_location?: matchN(1, [#other_cloud_starting_location, list.MaxItems(1) & [...#other_cloud_starting_location]])
+		targets?: matchN(1, [#targets, [...#targets]])
+		timeouts?: #timeouts
+
 		// Output only. The creation timestamp of a DiscoveryConfig.
 		create_time?: string
 
@@ -38,15 +44,10 @@ import "list"
 
 		// Location to create the discovery config in.
 		location!: string
-		actions?: matchN(1, [#actions, [...#actions]])
 
 		// Unique resource name for the DiscoveryConfig, assigned by the
 		// service when the DiscoveryConfig is created.
 		name?: string
-		org_config?: matchN(1, [#org_config, list.MaxItems(1) & [...#org_config]])
-		other_cloud_starting_location?: matchN(1, [#other_cloud_starting_location, list.MaxItems(1) & [...#other_cloud_starting_location]])
-		targets?: matchN(1, [#targets, [...#targets]])
-		timeouts?: #timeouts
 
 		// The parent of the discovery config in any of the following
 		// formats:
@@ -116,10 +117,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/actions/$defs/pub_sub_notification": close({
+		pubsub_condition?: matchN(1, [_#defs."/$defs/actions/$defs/pub_sub_notification/$defs/pubsub_condition", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/pub_sub_notification/$defs/pubsub_condition"]])
+
 		// How much data to include in the pub/sub message. Possible
 		// values: ["TABLE_PROFILE", "RESOURCE_NAME"]
 		detail_of_message?: string
-		pubsub_condition?: matchN(1, [_#defs."/$defs/actions/$defs/pub_sub_notification/$defs/pubsub_condition", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/pub_sub_notification/$defs/pubsub_condition"]])
 
 		// The type of event that triggers a Pub/Sub. At most one
 		// PubSubNotification per EventType is permitted. Possible

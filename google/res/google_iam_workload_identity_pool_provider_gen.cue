@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_workload_identity_pool_provider")
 	close({
+		aws?: matchN(1, [#aws, list.MaxItems(1) & [...#aws]])
+		oidc?: matchN(1, [#oidc, list.MaxItems(1) & [...#oidc]])
+		saml?: matchN(1, [#saml, list.MaxItems(1) & [...#saml]])
+		timeouts?: #timeouts
+		x509?: matchN(1, [#x509, list.MaxItems(1) & [...#x509]])
+
 		// [A Common Expression
 		// Language](https://github.com/google/cel-spec) expression, in
 		// plain text, to restrict what otherwise valid authentication
@@ -131,12 +137,8 @@ import "list"
 
 		// The resource name of the provider as
 		// 'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}'.
-		name?: string
-		aws?: matchN(1, [#aws, list.MaxItems(1) & [...#aws]])
-		oidc?: matchN(1, [#oidc, list.MaxItems(1) & [...#oidc]])
-		saml?: matchN(1, [#saml, list.MaxItems(1) & [...#saml]])
-		project?:  string
-		timeouts?: #timeouts
+		name?:    string
+		project?: string
 
 		// The state of the provider.
 		// * STATE_UNSPECIFIED: State unspecified.
@@ -150,7 +152,6 @@ import "list"
 		// of a soft-deleted provider
 		// until it is permanently deleted.
 		state?: string
-		x509?: matchN(1, [#x509, list.MaxItems(1) & [...#x509]])
 
 		// The ID used for the pool, which is the final component of the
 		// pool resource name. This

@@ -4,13 +4,15 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_workforce_pool_provider_scim_token")
 	close({
+		timeouts?: #timeouts
+
 		// A user-specified display name for the scim token. Cannot exceed
 		// 32 characters.
 		display_name?: string
+		id?:           string
 
 		// The location for the resource.
 		location!: string
-		id?:       string
 
 		// Identifier. The resource name of the scim token.
 		// Format:
@@ -32,7 +34,6 @@ package res
 		// The token string provided to the IdP for authentication and
 		// will be set only during creation.
 		security_token?: string
-		timeouts?:       #timeouts
 
 		// The current state of the scim token.
 		// * ACTIVE: The token is active and may be used to provision

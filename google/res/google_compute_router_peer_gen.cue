@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_router_peer")
 	close({
+		advertised_ip_ranges?: matchN(1, [#advertised_ip_ranges, [...#advertised_ip_ranges]])
+		bfd?: matchN(1, [#bfd, list.MaxItems(1) & [...#bfd]])
+		custom_learned_ip_ranges?: matchN(1, [#custom_learned_ip_ranges, [...#custom_learned_ip_ranges]])
+		md5_authentication_key?: matchN(1, [#md5_authentication_key, list.MaxItems(1) & [...#md5_authentication_key]])
+		timeouts?: #timeouts
+
 		// User-specified flag to indicate which mode to use for
 		// advertisement.
 		// Valid values of this enum field are: 'DEFAULT', 'CUSTOM'
@@ -67,6 +73,7 @@ import "list"
 		// The name must correspond to an existing policy that has
 		// ROUTE_POLICY_TYPE_EXPORT type.
 		export_policies?: [...string]
+		id?: string
 
 		// routers.list of import policies applied to this peer, in the
 		// order they must be evaluated.
@@ -76,7 +83,6 @@ import "list"
 
 		// Name of the interface the BGP peer is associated with.
 		interface!: string
-		id?:        string
 
 		// IP address of the interface inside Google Cloud Platform.
 		// Only IPv4 is supported.
@@ -100,11 +106,6 @@ import "list"
 
 		// An internal boolean field for provider use.
 		is_custom_learned_priority_set?: bool
-		advertised_ip_ranges?: matchN(1, [#advertised_ip_ranges, [...#advertised_ip_ranges]])
-		bfd?: matchN(1, [#bfd, list.MaxItems(1) & [...#bfd]])
-		custom_learned_ip_ranges?: matchN(1, [#custom_learned_ip_ranges, [...#custom_learned_ip_ranges]])
-		md5_authentication_key?: matchN(1, [#md5_authentication_key, list.MaxItems(1) & [...#md5_authentication_key]])
-		timeouts?: #timeouts
 
 		// The resource that configures and manages this BGP peer.
 		//

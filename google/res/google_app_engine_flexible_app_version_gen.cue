@@ -6,6 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_app_engine_flexible_app_version")
 	close({
+		api_config?: matchN(1, [#api_config, list.MaxItems(1) & [...#api_config]])
+		automatic_scaling?: matchN(1, [#automatic_scaling, list.MaxItems(1) & [...#automatic_scaling]])
+		deployment?: matchN(1, [#deployment, list.MaxItems(1) & [...#deployment]])
+		endpoints_api_service?: matchN(1, [#endpoints_api_service, list.MaxItems(1) & [...#endpoints_api_service]])
+		entrypoint?: matchN(1, [#entrypoint, list.MaxItems(1) & [...#entrypoint]])
+		flexible_runtime_settings?: matchN(1, [#flexible_runtime_settings, list.MaxItems(1) & [...#flexible_runtime_settings]])
+		handlers?: matchN(1, [#handlers, [...#handlers]])
+		liveness_check!: matchN(1, [#liveness_check, list.MaxItems(1) & [_, ...] & [...#liveness_check]])
+		manual_scaling?: matchN(1, [#manual_scaling, list.MaxItems(1) & [...#manual_scaling]])
+		network?: matchN(1, [#network, list.MaxItems(1) & [...#network]])
+		readiness_check!: matchN(1, [#readiness_check, list.MaxItems(1) & [_, ...] & [...#readiness_check]])
+		resources?: matchN(1, [#resources, list.MaxItems(1) & [...#resources]])
+		timeouts?: #timeouts
+		vpc_access_connector?: matchN(1, [#vpc_access_connector, list.MaxItems(1) & [...#vpc_access_connector]])
+
 		// Metadata settings that are supplied to this version to enable
 		// beta runtime features.
 		beta_settings?: [string]: string
@@ -24,6 +39,7 @@ import "list"
 		// are not returned in the API request, Terraform will not detect
 		// any changes made outside of the Terraform config.
 		env_variables?: [string]: string
+		id?: string
 
 		// A list of the types of messages that this application is able
 		// to receive. Possible values: ["INBOUND_SERVICE_MAIL",
@@ -33,7 +49,6 @@ import "list"
 		// "INBOUND_SERVICE_XMPP_PRESENCE",
 		// "INBOUND_SERVICE_CHANNEL_PRESENCE", "INBOUND_SERVICE_WARMUP"]
 		inbound_services?: [...string]
-		api_config?: matchN(1, [#api_config, list.MaxItems(1) & [...#api_config]])
 
 		// Instance class that is used to run this version. Valid values
 		// are
@@ -44,7 +59,6 @@ import "list"
 
 		// Full path to the Version resource in the API. Example, "v1".
 		name?: string
-		id?:   string
 
 		// Files that match this pattern will not be built into this
 		// version. Only applicable for Go runtimes.
@@ -52,21 +66,10 @@ import "list"
 
 		// If set to 'true', the application version will not be deleted.
 		noop_on_destroy?: bool
+		project?:         string
 
 		// Desired runtime. Example python27.
 		runtime!: string
-		project?: string
-		automatic_scaling?: matchN(1, [#automatic_scaling, list.MaxItems(1) & [...#automatic_scaling]])
-		deployment?: matchN(1, [#deployment, list.MaxItems(1) & [...#deployment]])
-		endpoints_api_service?: matchN(1, [#endpoints_api_service, list.MaxItems(1) & [...#endpoints_api_service]])
-		entrypoint?: matchN(1, [#entrypoint, list.MaxItems(1) & [...#entrypoint]])
-		flexible_runtime_settings?: matchN(1, [#flexible_runtime_settings, list.MaxItems(1) & [...#flexible_runtime_settings]])
-		handlers?: matchN(1, [#handlers, [...#handlers]])
-		liveness_check!: matchN(1, [#liveness_check, list.MaxItems(1) & [_, ...] & [...#liveness_check]])
-		manual_scaling?: matchN(1, [#manual_scaling, list.MaxItems(1) & [...#manual_scaling]])
-		network?: matchN(1, [#network, list.MaxItems(1) & [...#network]])
-		readiness_check!: matchN(1, [#readiness_check, list.MaxItems(1) & [_, ...] & [...#readiness_check]])
-		resources?: matchN(1, [#resources, list.MaxItems(1) & [...#resources]])
 
 		// The version of the API in the given runtime environment.
 		// Please see the app.yaml reference for valid values at
@@ -78,8 +81,6 @@ import "list"
 		// The channel of the runtime to use. Only available for some
 		// runtimes.
 		runtime_channel?: string
-		timeouts?:        #timeouts
-		vpc_access_connector?: matchN(1, [#vpc_access_connector, list.MaxItems(1) & [...#vpc_access_connector]])
 
 		// The path or name of the app's main executable.
 		runtime_main_executable_path?: string
@@ -132,6 +133,11 @@ import "list"
 	})
 
 	#automatic_scaling: close({
+		cpu_utilization!: matchN(1, [_#defs."/$defs/automatic_scaling/$defs/cpu_utilization", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/automatic_scaling/$defs/cpu_utilization"]])
+		disk_utilization?: matchN(1, [_#defs."/$defs/automatic_scaling/$defs/disk_utilization", list.MaxItems(1) & [..._#defs."/$defs/automatic_scaling/$defs/disk_utilization"]])
+		network_utilization?: matchN(1, [_#defs."/$defs/automatic_scaling/$defs/network_utilization", list.MaxItems(1) & [..._#defs."/$defs/automatic_scaling/$defs/network_utilization"]])
+		request_utilization?: matchN(1, [_#defs."/$defs/automatic_scaling/$defs/request_utilization", list.MaxItems(1) & [..._#defs."/$defs/automatic_scaling/$defs/request_utilization"]])
+
 		// The time period that the Autoscaler should wait before it
 		// starts collecting information from a new instance.
 		// This prevents the autoscaler from collecting information when
@@ -157,10 +163,6 @@ import "list"
 		// Maximum number of instances that should be started to handle
 		// requests for this version. Default: 20
 		max_total_instances?: number
-		cpu_utilization!: matchN(1, [_#defs."/$defs/automatic_scaling/$defs/cpu_utilization", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/automatic_scaling/$defs/cpu_utilization"]])
-		disk_utilization?: matchN(1, [_#defs."/$defs/automatic_scaling/$defs/disk_utilization", list.MaxItems(1) & [..._#defs."/$defs/automatic_scaling/$defs/disk_utilization"]])
-		network_utilization?: matchN(1, [_#defs."/$defs/automatic_scaling/$defs/network_utilization", list.MaxItems(1) & [..._#defs."/$defs/automatic_scaling/$defs/network_utilization"]])
-		request_utilization?: matchN(1, [_#defs."/$defs/automatic_scaling/$defs/request_utilization", list.MaxItems(1) & [..._#defs."/$defs/automatic_scaling/$defs/request_utilization"]])
 
 		// Minimum number of idle instances that should be maintained for
 		// this version. Only applicable for the default version of a
@@ -231,6 +233,9 @@ import "list"
 	})
 
 	#handlers: close({
+		script?: matchN(1, [_#defs."/$defs/handlers/$defs/script", list.MaxItems(1) & [..._#defs."/$defs/handlers/$defs/script"]])
+		static_files?: matchN(1, [_#defs."/$defs/handlers/$defs/static_files", list.MaxItems(1) & [..._#defs."/$defs/handlers/$defs/static_files"]])
+
 		// Actions to take when the user is not logged in. Possible
 		// values: ["AUTH_FAIL_ACTION_REDIRECT",
 		// "AUTH_FAIL_ACTION_UNAUTHORIZED"]
@@ -252,8 +257,6 @@ import "list"
 		// ["SECURE_DEFAULT", "SECURE_NEVER", "SECURE_OPTIONAL",
 		// "SECURE_ALWAYS"]
 		security_level?: string
-		script?: matchN(1, [_#defs."/$defs/handlers/$defs/script", list.MaxItems(1) & [..._#defs."/$defs/handlers/$defs/script"]])
-		static_files?: matchN(1, [_#defs."/$defs/handlers/$defs/static_files", list.MaxItems(1) & [..._#defs."/$defs/handlers/$defs/static_files"]])
 
 		// URL prefix. Uses regular expression syntax, which means regexp
 		// special characters must be escaped, but should not contain
@@ -368,9 +371,10 @@ import "list"
 	})
 
 	#resources: close({
+		volumes?: matchN(1, [_#defs."/$defs/resources/$defs/volumes", [..._#defs."/$defs/resources/$defs/volumes"]])
+
 		// Number of CPU cores needed.
 		cpu?: number
-		volumes?: matchN(1, [_#defs."/$defs/resources/$defs/volumes", [..._#defs."/$defs/resources/$defs/volumes"]])
 
 		// Disk size (GB) needed.
 		disk_gb?: number

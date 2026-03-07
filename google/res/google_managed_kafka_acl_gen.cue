@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_managed_kafka_acl")
 	close({
+		acl_entries!: matchN(1, [#acl_entries, [_, ...] & [...#acl_entries]])
+		timeouts?: #timeouts
+
 		// The ID to use for the acl, which will become the final
 		// component of the acl's name. The structure of 'aclId' defines
 		// the Resource Pattern (resource_type, resource_name,
@@ -54,9 +57,7 @@ package res
 		// The acl pattern type derived from the name. One of: LITERAL,
 		// PREFIXED.
 		pattern_type?: string
-		acl_entries!: matchN(1, [#acl_entries, [_, ...] & [...#acl_entries]])
-		timeouts?: #timeouts
-		project?:  string
+		project?:      string
 
 		// The acl resource name derived from the name. For cluster
 		// resource_type, this is always "kafka-cluster". Can be the

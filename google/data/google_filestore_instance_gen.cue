@@ -66,7 +66,8 @@ package data
 				network?:     string
 				squash_mode?: string
 			})]
-			source_backup?: string
+			source_backup?:          string
+			source_backupdr_backup?: string
 		})]
 		id?: string
 

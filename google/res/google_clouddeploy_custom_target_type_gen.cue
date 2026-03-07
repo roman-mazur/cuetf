@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_clouddeploy_custom_target_type")
 	close({
+		custom_actions?: matchN(1, [#custom_actions, list.MaxItems(1) & [...#custom_actions]])
+		timeouts?: #timeouts
+
 		// User annotations. These attributes can only be set and used by
 		// the user, and not by Cloud Deploy. See
 		// https://google.aip.dev/128#annotations for more details such
@@ -62,8 +65,6 @@ import "list"
 
 		// The location of the source.
 		location!: string
-		custom_actions?: matchN(1, [#custom_actions, list.MaxItems(1) & [...#custom_actions]])
-		timeouts?: #timeouts
 
 		// Name of the 'CustomTargetType'.
 		name!:    string

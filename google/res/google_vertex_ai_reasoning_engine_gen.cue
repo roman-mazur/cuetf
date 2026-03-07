@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_reasoning_engine")
 	close({
+		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
+		spec?: matchN(1, [#spec, list.MaxItems(1) & [...#spec]])
+		timeouts?: #timeouts
+
 		// The timestamp of when the Index was created in RFC3339 UTC
 		// "Zulu" format,
 		// with nanosecond resolution and up to nine fractional digits.
@@ -17,14 +21,11 @@ import "list"
 		// The display name of the ReasoningEngine.
 		display_name!: string
 		id?:           string
-		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
 
 		// The generated name of the ReasoningEngine, in the format
 		// projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
-		name?: string
-		spec?: matchN(1, [#spec, list.MaxItems(1) & [...#spec]])
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// The region of the reasoning engine. eg us-central1
 		region?: string
@@ -48,9 +49,12 @@ import "list"
 	})
 
 	#spec: close({
+		deployment_spec?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/deployment_spec"]])
+		package_spec?: matchN(1, [_#defs."/$defs/spec/$defs/package_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/package_spec"]])
+		source_code_spec?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec"]])
+
 		// Optional. The OSS agent framework used to develop the agent.
 		agent_framework?: string
-		deployment_spec?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/deployment_spec"]])
 
 		// Optional. Declarations for object class methods in OpenAPI
 		// specification format.
@@ -66,8 +70,6 @@ import "list"
 		// service
 		// Agent in the project will be used.
 		service_account?: string
-		package_spec?: matchN(1, [_#defs."/$defs/spec/$defs/package_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/package_spec"]])
-		source_code_spec?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec"]])
 	})
 
 	#timeouts: close({
@@ -77,6 +79,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/deployment_spec": close({
+		env?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/env", [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/env"]])
+		psc_interface_config?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/psc_interface_config", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/psc_interface_config"]])
+		secret_env?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/secret_env", [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/secret_env"]])
+
 		// Optional. Concurrency for each container and agent server.
 		// Recommended value: 2 * cpu + 1. Defaults to 9.
 		container_concurrency?: number
@@ -92,8 +98,6 @@ import "list"
 		// be
 		// kept running at all times. Defaults to 1. Range: [0, 10].
 		min_instances?: number
-		env?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/env", [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/env"]])
-		psc_interface_config?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/psc_interface_config", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/psc_interface_config"]])
 
 		// Optional. Resource limits for each container.
 		// Only 'cpu' and 'memory' keys are supported.
@@ -110,7 +114,6 @@ import "list"
 		// For more information, go to
 		// https://cloud.google.com/run/docs/configuring/memory-limits.
 		resource_limits?: [string]: string
-		secret_env?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/secret_env", [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/secret_env"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/deployment_spec/$defs/env": close({

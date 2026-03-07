@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_deployment")
 	close({
+		channel_profile!: matchN(1, [#channel_profile, list.MaxItems(1) & [_, ...] & [...#channel_profile]])
+		timeouts?: #timeouts
+
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
@@ -34,8 +37,6 @@ import "list"
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		location!: string
-		channel_profile!: matchN(1, [#channel_profile, list.MaxItems(1) & [_, ...] & [...#channel_profile]])
-		timeouts?: #timeouts
 
 		// Identifier. The resource name of the deployment.
 		// Format:
@@ -48,6 +49,9 @@ import "list"
 	})
 
 	#channel_profile: close({
+		persona_property?: matchN(1, [_#defs."/$defs/channel_profile/$defs/persona_property", list.MaxItems(1) & [..._#defs."/$defs/channel_profile/$defs/persona_property"]])
+		web_widget_config?: matchN(1, [_#defs."/$defs/channel_profile/$defs/web_widget_config", list.MaxItems(1) & [..._#defs."/$defs/channel_profile/$defs/web_widget_config"]])
+
 		// The type of the channel profile.
 		// Possible values:
 		// UNKNOWN
@@ -71,8 +75,6 @@ import "list"
 
 		// The unique identifier of the channel profile.
 		profile_id?: string
-		persona_property?: matchN(1, [_#defs."/$defs/channel_profile/$defs/persona_property", list.MaxItems(1) & [..._#defs."/$defs/channel_profile/$defs/persona_property"]])
-		web_widget_config?: matchN(1, [_#defs."/$defs/channel_profile/$defs/web_widget_config", list.MaxItems(1) & [..._#defs."/$defs/channel_profile/$defs/web_widget_config"]])
 	})
 
 	#timeouts: close({

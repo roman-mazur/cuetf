@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_snapshot")
 	close({
+		snapshot_encryption_key?: matchN(1, [#snapshot_encryption_key, list.MaxItems(1) & [...#snapshot_encryption_key]])
+		source_disk_encryption_key?: matchN(1, [#source_disk_encryption_key, list.MaxItems(1) & [...#source_disk_encryption_key]])
+		timeouts?: #timeouts
+
 		// Creates the new snapshot in the snapshot chain labeled with the
 		// specified name. The chain name must be 1-63 characters long and
 		// comply with RFC1035. This is an uncommon option only for
@@ -31,12 +35,12 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// The fingerprint used for optimistic locking of this resource.
 		// Used
 		// internally during updates.
 		label_fingerprint?: string
-		id?:                string
 
 		// Labels to apply to this Snapshot.
 		//
@@ -66,15 +70,12 @@ import "list"
 		// characters must be a dash, lowercase letter, or digit, except
 		// the last
 		// character, which cannot be a dash.
-		name!:    string
-		project?: string
+		name!:      string
+		project?:   string
+		self_link?: string
 
 		// The unique identifier for the resource.
 		snapshot_id?: number
-		self_link?:   string
-		snapshot_encryption_key?: matchN(1, [#snapshot_encryption_key, list.MaxItems(1) & [...#snapshot_encryption_key]])
-		source_disk_encryption_key?: matchN(1, [#source_disk_encryption_key, list.MaxItems(1) & [...#source_disk_encryption_key]])
-		timeouts?: #timeouts
 
 		// Indicates the type of the snapshot. Possible values:
 		// ["ARCHIVE", "STANDARD"]

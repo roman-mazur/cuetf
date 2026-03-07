@@ -6,6 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_bucket")
 	close({
+		autoclass?: matchN(1, [#autoclass, list.MaxItems(1) & [...#autoclass]])
+		cors?: matchN(1, [#cors, [...#cors]])
+		custom_placement_config?: matchN(1, [#custom_placement_config, list.MaxItems(1) & [...#custom_placement_config]])
+		encryption?: matchN(1, [#encryption, list.MaxItems(1) & [...#encryption]])
+		hierarchical_namespace?: matchN(1, [#hierarchical_namespace, list.MaxItems(1) & [...#hierarchical_namespace]])
+		ip_filter?: matchN(1, [#ip_filter, list.MaxItems(1) & [...#ip_filter]])
+		lifecycle_rule?: matchN(1, [#lifecycle_rule, list.MaxItems(100) & [...#lifecycle_rule]])
+		logging?: matchN(1, [#logging, list.MaxItems(1) & [...#logging]])
+		retention_policy?: matchN(1, [#retention_policy, list.MaxItems(1) & [...#retention_policy]])
+		soft_delete_policy?: matchN(1, [#soft_delete_policy, list.MaxItems(1) & [...#soft_delete_policy]])
+		timeouts?: #timeouts
+		versioning?: matchN(1, [#versioning, list.MaxItems(1) & [...#versioning]])
+		website?: matchN(1, [#website, list.MaxItems(1) & [...#website]])
+
 		// Whether or not to automatically apply an eventBasedHold to new
 		// objects added to the bucket.
 		default_event_based_hold?: bool
@@ -31,6 +45,7 @@ import "list"
 		// time to delete buckets with lots of objects or with any
 		// Anywhere Caches (80m+).
 		force_destroy?: bool
+		id?:            string
 
 		// A set of key/value label pairs to assign to the bucket.
 		labels?: [string]: string
@@ -40,7 +55,6 @@ import "list"
 
 		// The name of the bucket.
 		name!: string
-		id?:   string
 
 		// The ID of the project in which the resource belongs. If it is
 		// not provided, the provider project is used.
@@ -55,10 +69,6 @@ import "list"
 
 		// Enables Requester Pays on a storage bucket.
 		requester_pays?: bool
-		autoclass?: matchN(1, [#autoclass, list.MaxItems(1) & [...#autoclass]])
-		cors?: matchN(1, [#cors, [...#cors]])
-		custom_placement_config?: matchN(1, [#custom_placement_config, list.MaxItems(1) & [...#custom_placement_config]])
-		encryption?: matchN(1, [#encryption, list.MaxItems(1) & [...#encryption]])
 
 		// Specifies the RPO setting of bucket. If set 'ASYNC_TURBO', The
 		// Turbo Replication will be enabled for the dual-region bucket.
@@ -66,18 +76,9 @@ import "list"
 		// Replication is only for buckets in dual-regions.See the docs
 		// for more details.
 		rpo?: string
-		hierarchical_namespace?: matchN(1, [#hierarchical_namespace, list.MaxItems(1) & [...#hierarchical_namespace]])
-		ip_filter?: matchN(1, [#ip_filter, list.MaxItems(1) & [...#ip_filter]])
-		lifecycle_rule?: matchN(1, [#lifecycle_rule, list.MaxItems(100) & [...#lifecycle_rule]])
-		logging?: matchN(1, [#logging, list.MaxItems(1) & [...#logging]])
-		retention_policy?: matchN(1, [#retention_policy, list.MaxItems(1) & [...#retention_policy]])
-		soft_delete_policy?: matchN(1, [#soft_delete_policy, list.MaxItems(1) & [...#soft_delete_policy]])
-		timeouts?: #timeouts
-		versioning?: matchN(1, [#versioning, list.MaxItems(1) & [...#versioning]])
 
 		// The URI of the created resource.
 		self_link?: string
-		website?: matchN(1, [#website, list.MaxItems(1) & [...#website]])
 
 		// The Storage Class of the new bucket. Supported values include:
 		// STANDARD, MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE,
@@ -158,6 +159,9 @@ import "list"
 	})
 
 	#ip_filter: close({
+		public_network_source?: matchN(1, [_#defs."/$defs/ip_filter/$defs/public_network_source", list.MaxItems(1) & [..._#defs."/$defs/ip_filter/$defs/public_network_source"]])
+		vpc_network_sources?: matchN(1, [_#defs."/$defs/ip_filter/$defs/vpc_network_sources", [..._#defs."/$defs/ip_filter/$defs/vpc_network_sources"]])
+
 		// Whether to allow all service agents to access the bucket
 		// regardless of the IP filter configuration.
 		allow_all_service_agent_access?: bool
@@ -165,12 +169,10 @@ import "list"
 		// Whether to allow cross-org VPCs in the bucket's IP filter
 		// configuration.
 		allow_cross_org_vpcs?: bool
-		public_network_source?: matchN(1, [_#defs."/$defs/ip_filter/$defs/public_network_source", list.MaxItems(1) & [..._#defs."/$defs/ip_filter/$defs/public_network_source"]])
 
 		// The mode of the IP filter. Valid values are 'Enabled' and
 		// 'Disabled'.
 		mode!: string
-		vpc_network_sources?: matchN(1, [_#defs."/$defs/ip_filter/$defs/vpc_network_sources", [..._#defs."/$defs/ip_filter/$defs/vpc_network_sources"]])
 	})
 
 	#lifecycle_rule: close({

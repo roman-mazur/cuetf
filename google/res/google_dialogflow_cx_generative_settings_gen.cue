@@ -6,11 +6,15 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_generative_settings")
 	close({
-		id?: string
+		fallback_settings?: matchN(1, [#fallback_settings, list.MaxItems(1) & [...#fallback_settings]])
+		generative_safety_settings?: matchN(1, [#generative_safety_settings, list.MaxItems(1) & [...#generative_safety_settings]])
+		knowledge_connector_settings?: matchN(1, [#knowledge_connector_settings, list.MaxItems(1) & [...#knowledge_connector_settings]])
+		llm_model_settings?: matchN(1, [#llm_model_settings, list.MaxItems(1) & [...#llm_model_settings]])
+		timeouts?: #timeouts
+		id?:       string
 
 		// Language for this settings.
 		language_code!: string
-		fallback_settings?: matchN(1, [#fallback_settings, list.MaxItems(1) & [...#fallback_settings]])
 
 		// The unique identifier of the generativeSettings.
 		// Format:
@@ -21,10 +25,6 @@ import "list"
 		// Format: projects/<Project ID>/locations/<Location
 		// ID>/agents/<Agent ID>.
 		parent?: string
-		generative_safety_settings?: matchN(1, [#generative_safety_settings, list.MaxItems(1) & [...#generative_safety_settings]])
-		knowledge_connector_settings?: matchN(1, [#knowledge_connector_settings, list.MaxItems(1) & [...#knowledge_connector_settings]])
-		llm_model_settings?: matchN(1, [#llm_model_settings, list.MaxItems(1) & [...#llm_model_settings]])
-		timeouts?: #timeouts
 	})
 
 	#fallback_settings: close({

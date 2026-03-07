@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_org_policy_policy")
 	close({
+		dry_run_spec?: matchN(1, [#dry_run_spec, list.MaxItems(1) & [...#dry_run_spec]])
+		spec?: matchN(1, [#spec, list.MaxItems(1) & [...#spec]])
+		timeouts?: #timeouts
+
 		// Optional. An opaque tag indicating the current state of the
 		// policy, used for concurrency control. This 'etag' is computed
 		// by the server based on the value of other fields, and may be
@@ -29,12 +33,11 @@ import "list"
 
 		// The parent of the resource.
 		parent!: string
-		dry_run_spec?: matchN(1, [#dry_run_spec, list.MaxItems(1) & [...#dry_run_spec]])
-		spec?: matchN(1, [#spec, list.MaxItems(1) & [...#spec]])
-		timeouts?: #timeouts
 	})
 
 	#dry_run_spec: close({
+		rules?: matchN(1, [_#defs."/$defs/dry_run_spec/$defs/rules", [..._#defs."/$defs/dry_run_spec/$defs/rules"]])
+
 		// An opaque tag indicating the current version of the policy,
 		// used for concurrency control. This field is ignored if used in
 		// a 'CreatePolicy' request. When the policy' is returned from
@@ -60,7 +63,6 @@ import "list"
 		// for either list or boolean constraints. If set, 'rules' must
 		// be empty and 'inherit_from_parent' must be set to false.
 		reset?: bool
-		rules?: matchN(1, [_#defs."/$defs/dry_run_spec/$defs/rules", [..._#defs."/$defs/dry_run_spec/$defs/rules"]])
 
 		// Output only. The time stamp this was previously updated. This
 		// represents the last time a call to 'CreatePolicy' or
@@ -69,6 +71,8 @@ import "list"
 	})
 
 	#spec: close({
+		rules?: matchN(1, [_#defs."/$defs/spec/$defs/rules", [..._#defs."/$defs/spec/$defs/rules"]])
+
 		// An opaque tag indicating the current version of the 'Policy',
 		// used for concurrency control. This field is ignored if used in
 		// a 'CreatePolicy' request. When the 'Policy' is returned from
@@ -95,7 +99,6 @@ import "list"
 		// 'rules' must be empty and 'inherit_from_parent' must be set to
 		// false.
 		reset?: bool
-		rules?: matchN(1, [_#defs."/$defs/spec/$defs/rules", [..._#defs."/$defs/spec/$defs/rules"]])
 
 		// Output only. The time stamp this was previously updated. This
 		// represents the last time a call to 'CreatePolicy' or
@@ -110,6 +113,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/dry_run_spec/$defs/rules": close({
+		condition?: matchN(1, [_#defs."/$defs/dry_run_spec/$defs/rules/$defs/condition", list.MaxItems(1) & [..._#defs."/$defs/dry_run_spec/$defs/rules/$defs/condition"]])
+		values?: matchN(1, [_#defs."/$defs/dry_run_spec/$defs/rules/$defs/values", list.MaxItems(1) & [..._#defs."/$defs/dry_run_spec/$defs/rules/$defs/values"]])
+
 		// Setting this to '"TRUE"' means that all values are allowed.
 		// This field can be set only in Policies for list constraints.
 		allow_all?: string
@@ -130,8 +136,6 @@ import "list"
 		// { \"allowedLocations\" : [\"us-east1\", \"us-west1\"],
 		// \"allowAll\" : true }
 		parameters?: string
-		condition?: matchN(1, [_#defs."/$defs/dry_run_spec/$defs/rules/$defs/condition", list.MaxItems(1) & [..._#defs."/$defs/dry_run_spec/$defs/rules/$defs/condition"]])
-		values?: matchN(1, [_#defs."/$defs/dry_run_spec/$defs/rules/$defs/values", list.MaxItems(1) & [..._#defs."/$defs/dry_run_spec/$defs/rules/$defs/values"]])
 	})
 
 	_#defs: "/$defs/dry_run_spec/$defs/rules/$defs/condition": close({
@@ -163,6 +167,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/rules": close({
+		condition?: matchN(1, [_#defs."/$defs/spec/$defs/rules/$defs/condition", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/rules/$defs/condition"]])
+		values?: matchN(1, [_#defs."/$defs/spec/$defs/rules/$defs/values", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/rules/$defs/values"]])
+
 		// Setting this to '"TRUE"' means that all values are allowed.
 		// This field can be set only in Policies for list constraints.
 		allow_all?: string
@@ -183,8 +190,6 @@ import "list"
 		// { \"allowedLocations\" : [\"us-east1\", \"us-west1\"],
 		// \"allowAll\" : true }
 		parameters?: string
-		condition?: matchN(1, [_#defs."/$defs/spec/$defs/rules/$defs/condition", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/rules/$defs/condition"]])
-		values?: matchN(1, [_#defs."/$defs/spec/$defs/rules/$defs/values", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/rules/$defs/values"]])
 	})
 
 	_#defs: "/$defs/spec/$defs/rules/$defs/condition": close({

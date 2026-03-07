@@ -6,10 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_app_engine_standard_app_version")
 	close({
+		automatic_scaling?: matchN(1, [#automatic_scaling, list.MaxItems(1) & [...#automatic_scaling]])
+		basic_scaling?: matchN(1, [#basic_scaling, list.MaxItems(1) & [...#basic_scaling]])
+		deployment!: matchN(1, [#deployment, list.MaxItems(1) & [_, ...] & [...#deployment]])
+		entrypoint!: matchN(1, [#entrypoint, list.MaxItems(1) & [_, ...] & [...#entrypoint]])
+		handlers?: matchN(1, [#handlers, [...#handlers]])
+		libraries?: matchN(1, [#libraries, [...#libraries]])
+		manual_scaling?: matchN(1, [#manual_scaling, list.MaxItems(1) & [...#manual_scaling]])
+		timeouts?: #timeouts
+		vpc_access_connector?: matchN(1, [#vpc_access_connector, list.MaxItems(1) & [...#vpc_access_connector]])
+
 		// Allows App Engine second generation runtimes to access the
 		// legacy bundled services.
 		app_engine_apis?: bool
-		automatic_scaling?: matchN(1, [#automatic_scaling, list.MaxItems(1) & [...#automatic_scaling]])
 
 		// If set to 'true', the service will be deleted if it is the last
 		// version.
@@ -17,6 +26,7 @@ import "list"
 
 		// Environment variables available to the application.
 		env_variables?: [string]: string
+		id?: string
 
 		// A list of the types of messages that this application is able
 		// to receive. Possible values: ["INBOUND_SERVICE_MAIL",
@@ -38,22 +48,13 @@ import "list"
 
 		// Full path to the Version resource in the API. Example, "v1".
 		name?: string
-		id?:   string
 
 		// If set to 'true', the application version will not be deleted.
 		noop_on_destroy?: bool
+		project?:         string
 
 		// Desired runtime. Example python27.
 		runtime!: string
-		project?: string
-		basic_scaling?: matchN(1, [#basic_scaling, list.MaxItems(1) & [...#basic_scaling]])
-		deployment!: matchN(1, [#deployment, list.MaxItems(1) & [_, ...] & [...#deployment]])
-		entrypoint!: matchN(1, [#entrypoint, list.MaxItems(1) & [_, ...] & [...#entrypoint]])
-		handlers?: matchN(1, [#handlers, [...#handlers]])
-		libraries?: matchN(1, [#libraries, [...#libraries]])
-		manual_scaling?: matchN(1, [#manual_scaling, list.MaxItems(1) & [...#manual_scaling]])
-		timeouts?: #timeouts
-		vpc_access_connector?: matchN(1, [#vpc_access_connector, list.MaxItems(1) & [...#vpc_access_connector]])
 
 		// The version of the API in the given runtime environment.
 		// Please see the app.yaml reference for valid values at
@@ -83,6 +84,8 @@ import "list"
 	})
 
 	#automatic_scaling: close({
+		standard_scheduler_settings?: matchN(1, [_#defs."/$defs/automatic_scaling/$defs/standard_scheduler_settings", list.MaxItems(1) & [..._#defs."/$defs/automatic_scaling/$defs/standard_scheduler_settings"]])
+
 		// Number of concurrent requests an automatic scaling instance can
 		// accept before the scheduler spawns a new instance.
 		//
@@ -103,7 +106,6 @@ import "list"
 		// this version. Only applicable for the default version of a
 		// service.
 		min_idle_instances?: number
-		standard_scheduler_settings?: matchN(1, [_#defs."/$defs/automatic_scaling/$defs/standard_scheduler_settings", list.MaxItems(1) & [..._#defs."/$defs/automatic_scaling/$defs/standard_scheduler_settings"]])
 
 		// Minimum amount of time a request should wait in the pending
 		// queue before starting a new instance to handle it.
@@ -136,6 +138,9 @@ import "list"
 	})
 
 	#handlers: close({
+		script?: matchN(1, [_#defs."/$defs/handlers/$defs/script", list.MaxItems(1) & [..._#defs."/$defs/handlers/$defs/script"]])
+		static_files?: matchN(1, [_#defs."/$defs/handlers/$defs/static_files", list.MaxItems(1) & [..._#defs."/$defs/handlers/$defs/static_files"]])
+
 		// Actions to take when the user is not logged in. Possible
 		// values: ["AUTH_FAIL_ACTION_REDIRECT",
 		// "AUTH_FAIL_ACTION_UNAUTHORIZED"]
@@ -157,8 +162,6 @@ import "list"
 		// ["SECURE_DEFAULT", "SECURE_NEVER", "SECURE_OPTIONAL",
 		// "SECURE_ALWAYS"]
 		security_level?: string
-		script?: matchN(1, [_#defs."/$defs/handlers/$defs/script", list.MaxItems(1) & [..._#defs."/$defs/handlers/$defs/script"]])
-		static_files?: matchN(1, [_#defs."/$defs/handlers/$defs/static_files", list.MaxItems(1) & [..._#defs."/$defs/handlers/$defs/static_files"]])
 
 		// URL prefix. Uses regular expression syntax, which means regexp
 		// special characters must be escaped, but should not contain

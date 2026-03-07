@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_secure_source_manager_instance")
 	close({
+		private_config?: matchN(1, [#private_config, list.MaxItems(1) & [...#private_config]])
+		timeouts?: #timeouts
+		workforce_identity_federation_config?: matchN(1, [#workforce_identity_federation_config, list.MaxItems(1) & [...#workforce_identity_federation_config]])
+
 		// Time the Instance was created in UTC.
 		create_time?: string
 
@@ -34,10 +38,10 @@ import "list"
 			git_ssh?:  string
 			html?:     string
 		})]
+		id?: string
 
 		// The name for the Instance.
 		instance_id!: string
-		id?:          string
 
 		// Customer-managed encryption key name, in the format
 		// projects/*/locations/*/keyRings/*/cryptoKeys/*.
@@ -56,14 +60,11 @@ import "list"
 		location!: string
 
 		// The resource name for the Instance.
-		name?: string
-		private_config?: matchN(1, [#private_config, list.MaxItems(1) & [...#private_config]])
-		timeouts?: #timeouts
-		workforce_identity_federation_config?: matchN(1, [#workforce_identity_federation_config, list.MaxItems(1) & [...#workforce_identity_federation_config]])
+		name?:    string
+		project?: string
 
 		// The current state of the Instance.
-		state?:   string
-		project?: string
+		state?: string
 
 		// Provides information about the current instance state.
 		state_note?: string

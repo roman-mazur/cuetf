@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_organization_security_policy")
 	close({
+		timeouts?: #timeouts
+
 		// A textual description for the organization security policy.
 		description?: string
 
@@ -42,8 +44,7 @@ package res
 		// 'google_compute_firewall_policy' instead." Possible values:
 		// ["FIREWALL", "CLOUD_ARMOR", "CLOUD_ARMOR_EDGE",
 		// "CLOUD_ARMOR_INTERNAL_SERVICE", "CLOUD_ARMOR_NETWORK"]
-		type?:     string
-		timeouts?: #timeouts
+		type?: string
 	})
 
 	#timeouts: close({

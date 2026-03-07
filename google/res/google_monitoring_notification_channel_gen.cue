@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_notification_channel")
 	close({
+		sensitive_labels?: matchN(1, [#sensitive_labels, list.MaxItems(1) & [...#sensitive_labels]])
+		timeouts?: #timeouts
+
 		// An optional human-readable description of this notification
 		// channel. This description may provide additional details,
 		// beyond the display name, for the channel. This may not exceed
@@ -62,8 +65,6 @@ import "list"
 		// to get the list of valid values such as "email", "slack",
 		// etc...
 		type!: string
-		sensitive_labels?: matchN(1, [#sensitive_labels, list.MaxItems(1) & [...#sensitive_labels]])
-		timeouts?: #timeouts
 
 		// User-supplied key/value data that does not need to conform to
 		// the corresponding NotificationChannelDescriptor's schema,

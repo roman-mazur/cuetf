@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gemini_code_repository_index")
 	close({
+		timeouts?: #timeouts
+
 		// Required. Id of the Code Repository Index.
 		code_repository_index_id!: string
 
@@ -39,14 +41,13 @@ package res
 		location!: string
 
 		// Immutable. Identifier. Name of Code Repository Index.
-		name?:     string
-		timeouts?: #timeouts
+		name?:    string
+		project?: string
 
 		// Output only. Code Repository Index instance State.
 		// Possible values are: 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE',
 		// 'DELETING', 'SUSPENDED'.
-		state?:   string
-		project?: string
+		state?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

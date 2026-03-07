@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_v2_folder_mute_config")
 	close({
+		timeouts?: #timeouts
+
 		// The time at which the mute config was created. This field is
 		// set by
 		// the server and will be ignored if provided on config creation.
@@ -25,6 +27,7 @@ package res
 		// The folder whose Cloud Security Command Center the Mute
 		// Config lives in.
 		folder!: string
+		id?:     string
 
 		// location Id is provided by folder. If not provided, Use global
 		// as default.
@@ -38,14 +41,12 @@ package res
 		// Unique identifier provided by the client within the parent
 		// scope.
 		mute_config_id!: string
-		id?:             string
 
 		// Name of the mute config. Its format is
 		// organizations/{organization}/locations/global/muteConfigs/{configId},
 		// folders/{folder}/locations/global/muteConfigs/{configId},
 		// or projects/{project}/locations/global/muteConfigs/{configId}
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// The type of the mute config.
 		type!: string

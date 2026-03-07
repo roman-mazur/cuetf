@@ -6,24 +6,6 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_conversation_profile")
 	close({
-		// Required. Human readable name for this profile. Max length 1024
-		// bytes.
-		display_name!: string
-
-		// Language code for the conversation profile. This should be a
-		// BCP-47 language tag.
-		language_code?: string
-		id?:            string
-
-		// desc
-		location!: string
-
-		// name
-		name?: string
-
-		// Name of the CX SecuritySettings reference for the agent.
-		security_settings?: string
-		project?:           string
 		automated_agent_config?: matchN(1, [#automated_agent_config, list.MaxItems(1) & [...#automated_agent_config]])
 		human_agent_assistant_config?: matchN(1, [#human_agent_assistant_config, list.MaxItems(1) & [...#human_agent_assistant_config]])
 		human_agent_handoff_config?: matchN(1, [#human_agent_handoff_config, list.MaxItems(1) & [...#human_agent_handoff_config]])
@@ -34,6 +16,25 @@ import "list"
 		stt_config?: matchN(1, [#stt_config, list.MaxItems(1) & [...#stt_config]])
 		timeouts?: #timeouts
 		tts_config?: matchN(1, [#tts_config, list.MaxItems(1) & [...#tts_config]])
+
+		// Required. Human readable name for this profile. Max length 1024
+		// bytes.
+		display_name!: string
+		id?:           string
+
+		// Language code for the conversation profile. This should be a
+		// BCP-47 language tag.
+		language_code?: string
+
+		// desc
+		location!: string
+
+		// name
+		name?:    string
+		project?: string
+
+		// Name of the CX SecuritySettings reference for the agent.
+		security_settings?: string
 
 		// The time zone of this conversational profile.
 		time_zone?: string
@@ -145,6 +146,8 @@ import "list"
 	})
 
 	#tts_config: close({
+		voice?: matchN(1, [_#defs."/$defs/tts_config/$defs/voice", list.MaxItems(1) & [..._#defs."/$defs/tts_config/$defs/voice"]])
+
 		// An identifier which selects 'audio effects' profiles that are
 		// applied on (post synthesized) text to speech. Effects are
 		// applied on top of each other in the order they are given.
@@ -157,7 +160,6 @@ import "list"
 
 		// Speaking rate/speed, in the range [0.25, 4.0].
 		speaking_rate?: number
-		voice?: matchN(1, [_#defs."/$defs/tts_config/$defs/voice", list.MaxItems(1) & [..._#defs."/$defs/tts_config/$defs/voice"]])
 
 		// Volume gain (in dB) of the normal native volume supported by
 		// the specific voice.
@@ -165,6 +167,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config": close({
+		feature_configs?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs", [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs"]])
+
 		// When disableHighLatencyFeaturesSyncDelivery is true and using
 		// the AnalyzeContent API, we will not deliver the responses from
 		// high latency features in the API response. The
@@ -173,7 +177,6 @@ import "list"
 		// to receive the responses from high latency features in
 		// Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
 		disable_high_latency_features_sync_delivery?: bool
-		feature_configs?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs", [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs"]])
 
 		// List of various generator resource names used in the
 		// conversation profile.
@@ -194,6 +197,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs": close({
+		conversation_model_config?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/conversation_model_config", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/conversation_model_config"]])
+		conversation_process_config?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/conversation_process_config", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/conversation_process_config"]])
+		query_config?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config"]])
+		suggestion_feature?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/suggestion_feature", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/suggestion_feature"]])
+		suggestion_trigger_settings?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/suggestion_trigger_settings", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/suggestion_trigger_settings"]])
+
 		// Disable the logging of search queries sent by human agents. It
 		// can prevent those queries from being stored at answer records.
 		// This feature is only supported for types: KNOWLEDGE_SEARCH.
@@ -213,11 +222,6 @@ import "list"
 		// Enable query suggestion only.
 		// This feature is only supported for types: KNOWLEDGE_ASSIST
 		enable_query_suggestion_only?: bool
-		conversation_model_config?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/conversation_model_config", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/conversation_model_config"]])
-		conversation_process_config?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/conversation_process_config", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/conversation_process_config"]])
-		query_config?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config"]])
-		suggestion_feature?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/suggestion_feature", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/suggestion_feature"]])
-		suggestion_trigger_settings?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/suggestion_trigger_settings", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/suggestion_trigger_settings"]])
 
 		// Enable query suggestion even if we can't find its answer. By
 		// default, queries are suggested only if we find its answer.
@@ -244,19 +248,19 @@ import "list"
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config": close({
 		context_filter_settings?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/context_filter_settings", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/context_filter_settings"]])
+		dialogflow_query_source?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source"]])
+		document_query_source?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/document_query_source", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/document_query_source"]])
+		knowledge_base_query_source?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/knowledge_base_query_source", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/knowledge_base_query_source"]])
+		sections?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/sections", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/sections"]])
 
 		// Confidence threshold of query result.
 		// This feature is only supported for types: ARTICLE_SUGGESTION,
 		// FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH,
 		// KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
 		confidence_threshold?: number
-		dialogflow_query_source?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source"]])
 
 		// Maximum number of results to return.
 		max_results?: number
-		document_query_source?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/document_query_source", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/document_query_source"]])
-		knowledge_base_query_source?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/knowledge_base_query_source", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/knowledge_base_query_source"]])
-		sections?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/sections", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/sections"]])
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/context_filter_settings": close({
@@ -328,6 +332,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config": close({
+		feature_configs?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs", [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs"]])
+
 		// When disableHighLatencyFeaturesSyncDelivery is true and using
 		// the AnalyzeContent API, we will not deliver the responses from
 		// high latency features in the API response. The
@@ -336,7 +342,6 @@ import "list"
 		// to receive the responses from high latency features in
 		// Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
 		disable_high_latency_features_sync_delivery?: bool
-		feature_configs?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs", [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs"]])
 
 		// List of various generator resource names used in the
 		// conversation profile.
@@ -357,6 +362,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs": close({
+		conversation_model_config?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/conversation_model_config", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/conversation_model_config"]])
+		conversation_process_config?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/conversation_process_config", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/conversation_process_config"]])
+		query_config?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/query_config", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/query_config"]])
+		suggestion_feature?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/suggestion_feature", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/suggestion_feature"]])
+		suggestion_trigger_settings?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/suggestion_trigger_settings", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/suggestion_trigger_settings"]])
+
 		// Disable the logging of search queries sent by human agents. It
 		// can prevent those queries from being stored at answer records.
 		// This feature is only supported for types: KNOWLEDGE_SEARCH.
@@ -376,11 +387,6 @@ import "list"
 		// Enable query suggestion only.
 		// This feature is only supported for types: KNOWLEDGE_ASSIST
 		enable_query_suggestion_only?: bool
-		conversation_model_config?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/conversation_model_config", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/conversation_model_config"]])
-		conversation_process_config?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/conversation_process_config", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/conversation_process_config"]])
-		query_config?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/query_config", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/query_config"]])
-		suggestion_feature?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/suggestion_feature", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/suggestion_feature"]])
-		suggestion_trigger_settings?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/suggestion_trigger_settings", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/suggestion_trigger_settings"]])
 
 		// Enable query suggestion even if we can't find its answer. By
 		// default, queries are suggested only if we find its answer.

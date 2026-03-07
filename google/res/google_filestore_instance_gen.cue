@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_filestore_instance")
 	close({
+		directory_services?: matchN(1, [#directory_services, list.MaxItems(1) & [...#directory_services]])
+		file_shares!: matchN(1, [#file_shares, list.MaxItems(1) & [_, ...] & [...#file_shares]])
+		initial_replication?: matchN(1, [#initial_replication, list.MaxItems(1) & [...#initial_replication]])
+		networks!: matchN(1, [#networks, [_, ...] & [...#networks]])
+		performance_config?: matchN(1, [#performance_config, list.MaxItems(1) & [...#performance_config]])
+		timeouts?: #timeouts
+
 		// Creation timestamp in RFC3339 text format.
 		create_time?: string
 
@@ -43,10 +50,10 @@ import "list"
 		// Server-specified ETag for the instance resource to prevent
 		// simultaneous updates from overwriting each other.
 		etag?: string
+		id?:   string
 
 		// KMS key name used for data encryption.
 		kms_key_name?: string
-		id?:           string
 
 		// Resource labels to represent user-provided metadata.
 		//
@@ -56,19 +63,14 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		directory_services?: matchN(1, [#directory_services, list.MaxItems(1) & [...#directory_services]])
-		file_shares!: matchN(1, [#file_shares, list.MaxItems(1) & [_, ...] & [...#file_shares]])
-		initial_replication?: matchN(1, [#initial_replication, list.MaxItems(1) & [...#initial_replication]])
-		networks!: matchN(1, [#networks, [_, ...] & [...#networks]])
-		performance_config?: matchN(1, [#performance_config, list.MaxItems(1) & [...#performance_config]])
-		timeouts?: #timeouts
 
 		// The name of the location of the instance. This can be a region
 		// for ENTERPRISE tier instances.
 		location?: string
 
 		// The resource name of the instance.
-		name!: string
+		name!:    string
+		project?: string
 
 		// Either NFSv3, for using NFS version 3 as file sharing protocol,
 		// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
@@ -77,7 +79,6 @@ import "list"
 		// The default is NFSv3. Default value: "NFS_V3" Possible values:
 		// ["NFS_V3", "NFS_V4_1"]
 		protocol?: string
-		project?:  string
 
 		// A map of resource manager tags. Resource manager tag keys
 		// and values have the same definition as resource manager
@@ -105,10 +106,11 @@ import "list"
 	})
 
 	#file_shares: close({
+		nfs_export_options?: matchN(1, [_#defs."/$defs/file_shares/$defs/nfs_export_options", list.MaxItems(10) & [..._#defs."/$defs/file_shares/$defs/nfs_export_options"]])
+
 		// File share capacity in GiB. This must be at least 1024 GiB
 		// for the standard tier, or 2560 GiB for the premium tier.
 		capacity_gb!: number
-		nfs_export_options?: matchN(1, [_#defs."/$defs/file_shares/$defs/nfs_export_options", list.MaxItems(10) & [..._#defs."/$defs/file_shares/$defs/nfs_export_options"]])
 
 		// The name of the fileshare (16 characters or less)
 		name!: string
@@ -117,6 +119,11 @@ import "list"
 		// projects/{projectId}/locations/{locationId}/backups/{backupId},
 		// that this file share has been restored from.
 		source_backup?: string
+
+		// The resource name of the BackupDR backup, in the format
+		// 'projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}',
+		// that this file share has been restored from.
+		source_backupdr_backup?: string
 	})
 
 	#initial_replication: close({
@@ -128,6 +135,8 @@ import "list"
 	})
 
 	#networks: close({
+		psc_config?: matchN(1, [_#defs."/$defs/networks/$defs/psc_config", list.MaxItems(1) & [..._#defs."/$defs/networks/$defs/psc_config"]])
+
 		// The network connect mode of the Filestore instance.
 		// If not provided, the connect mode defaults to
 		// DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible
@@ -146,7 +155,6 @@ import "list"
 		// The name of the GCE VPC network to which the
 		// instance is connected.
 		network!: string
-		psc_config?: matchN(1, [_#defs."/$defs/networks/$defs/psc_config", list.MaxItems(1) & [..._#defs."/$defs/networks/$defs/psc_config"]])
 
 		// A /29 CIDR block that identifies the range of IP
 		// addresses reserved for this instance.

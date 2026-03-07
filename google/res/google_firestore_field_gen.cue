@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firestore_field")
 	close({
+		index_config?: matchN(1, [#index_config, list.MaxItems(1) & [...#index_config]])
+		timeouts?: #timeouts
+		ttl_config?: matchN(1, [#ttl_config, list.MaxItems(1) & [...#ttl_config]])
+
 		// The id of the collection group to configure.
 		collection!: string
 
@@ -15,14 +19,11 @@ import "list"
 		// The id of the field to configure.
 		field!: string
 		id?:    string
-		index_config?: matchN(1, [#index_config, list.MaxItems(1) & [...#index_config]])
 
 		// The name of this field. Format:
 		// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/fields/{{field}}'
-		name?:     string
-		project?:  string
-		timeouts?: #timeouts
-		ttl_config?: matchN(1, [#ttl_config, list.MaxItems(1) & [...#ttl_config]])
+		name?:    string
+		project?: string
 	})
 
 	#index_config: close({

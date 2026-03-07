@@ -87,10 +87,10 @@ package data
 				message?: string
 			})]
 		})]
+		id?: string
 
 		// Name of the router to query.
 		name!: string
-		id?:   string
 
 		// URI of the network to which this router belongs.
 		network?: string

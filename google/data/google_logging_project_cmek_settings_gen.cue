@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_logging_project_cmek_settings")
 	close({
+		id?: string
+
 		// The resource name for the configured Cloud KMS key.
 		// KMS key name format:
 		// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
@@ -21,7 +23,6 @@ package data
 		// Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage)
 		// for more information.
 		kms_key_name?: string
-		id?:           string
 
 		// The CryptoKeyVersion resource name for the configured Cloud KMS
 		// key.

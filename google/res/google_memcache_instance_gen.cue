@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_memcache_instance")
 	close({
+		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
+		memcache_parameters?: matchN(1, [#memcache_parameters, list.MaxItems(1) & [...#memcache_parameters]])
+		node_config!: matchN(1, [#node_config, list.MaxItems(1) & [_, ...] & [...#node_config]])
+		timeouts?: #timeouts
+
 		// The full name of the GCE network to connect the instance to. If
 		// not provided,
 		// 'default' will be used.
@@ -76,10 +81,6 @@ import "list"
 		// version. Default value: "MEMCACHE_1_5" Possible values:
 		// ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
 		memcache_version?: string
-		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
-		memcache_parameters?: matchN(1, [#memcache_parameters, list.MaxItems(1) & [...#memcache_parameters]])
-		node_config!: matchN(1, [#node_config, list.MaxItems(1) & [_, ...] & [...#node_config]])
-		timeouts?: #timeouts
 
 		// The resource name of the instance.
 		name!: string
@@ -109,11 +110,12 @@ import "list"
 	})
 
 	#maintenance_policy: close({
+		weekly_maintenance_window!: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window", [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window"]])
+
 		// Output only. The time when the policy was created.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine fractional digits
 		create_time?: string
-		weekly_maintenance_window!: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window", [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window"]])
 
 		// Optional. Description of what this policy is for.
 		// Create/Update methods return INVALID_ARGUMENT if the

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_endpoint_attachment")
 	close({
+		timeouts?: #timeouts
+
 		// State of the endpoint attachment connection to the service
 		// attachment.
 		connection_state?: string
@@ -29,7 +31,6 @@ package res
 
 		// Format: projects/*/regions/*/serviceAttachments/*
 		service_attachment!: string
-		timeouts?:           #timeouts
 	})
 
 	#timeouts: close({

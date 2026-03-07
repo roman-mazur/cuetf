@@ -4,19 +4,21 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_service_directory_endpoint")
 	close({
+		timeouts?: #timeouts
+
 		// IPv4 or IPv6 address of the endpoint.
 		address?: string
 
 		// The Resource ID must be 1-63 characters long, including digits,
 		// lowercase letters or the hyphen character.
 		endpoint_id!: string
+		id?:          string
 
 		// Metadata for the endpoint. This data can be consumed
 		// by service clients. The entire metadata dictionary may contain
 		// up to 512 characters, spread across all key-value pairs.
 		// Metadata that goes beyond any these limits will be rejected.
 		metadata?: [string]: string
-		id?: string
 
 		// The resource name for the endpoint in the format
 		// 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
@@ -31,8 +33,7 @@ package res
 		port?: number
 
 		// The resource name of the service that this endpoint provides.
-		service!:  string
-		timeouts?: #timeouts
+		service!: string
 	})
 
 	#timeouts: close({

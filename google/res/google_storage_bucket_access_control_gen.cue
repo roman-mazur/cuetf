@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_bucket_access_control")
 	close({
+		timeouts?: #timeouts
+
 		// The name of the bucket.
 		bucket!: string
 
@@ -29,9 +31,8 @@ package res
 		// group-example@googlegroups.com.
 		// To refer to all members of the Google Apps for Business domain
 		// example.com, the entity would be domain-example.com.
-		entity!:   string
-		id?:       string
-		timeouts?: #timeouts
+		entity!: string
+		id?:     string
 
 		// The access permission for the entity. Possible values:
 		// ["OWNER", "READER", "WRITER"]

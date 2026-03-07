@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_feature_group")
 	close({
+		big_query?: matchN(1, [#big_query, list.MaxItems(1) & [...#big_query]])
+		timeouts?: #timeouts
+
 		// The timestamp of when the FeatureGroup was created in RFC3339
 		// UTC "Zulu" format, with nanosecond resolution and up to nine
 		// fractional digits.
@@ -38,8 +41,6 @@ import "list"
 
 		// The region of feature group. eg us-central1
 		region?: string
-		big_query?: matchN(1, [#big_query, list.MaxItems(1) & [...#big_query]])
-		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

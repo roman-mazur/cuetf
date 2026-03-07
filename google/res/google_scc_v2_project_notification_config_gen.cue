@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_v2_project_notification_config")
 	close({
+		streaming_config!: matchN(1, [#streaming_config, list.MaxItems(1) & [_, ...] & [...#streaming_config]])
+		timeouts?: #timeouts
+
 		// This must be unique within the project.
 		config_id!: string
 
@@ -22,7 +25,6 @@ import "list"
 		// 'projects/{{projectId}}/locations/{{location}}/notificationConfigs/{{config_id}}'.
 		name?:    string
 		project?: string
-		streaming_config!: matchN(1, [#streaming_config, list.MaxItems(1) & [_, ...] & [...#streaming_config]])
 
 		// The Pub/Sub topic to send notifications to. Its format is
 		// "projects/[project_id]/topics/[topic]".
@@ -32,7 +34,6 @@ import "list"
 		// permission to
 		// publish to the Pub/Sub topic.
 		service_account?: string
-		timeouts?:        #timeouts
 	})
 
 	#streaming_config: close({

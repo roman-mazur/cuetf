@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_network_firewall_policy")
 	close({
+		timeouts?: #timeouts
+
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
@@ -14,6 +16,7 @@ package res
 		// Fingerprint of the resource. This field is used internally
 		// during updates of this resource.
 		fingerprint?: string
+		id?:          string
 
 		// User-provided name of the Network firewall policy. The name
 		// should be unique in the project in which the firewall policy
@@ -25,7 +28,6 @@ package res
 		// be a dash, lowercase letter, or digit, except the last
 		// character, which cannot be a dash.
 		name!: string
-		id?:   string
 
 		// The unique identifier for the resource. This identifier is
 		// defined by the server.
@@ -38,12 +40,11 @@ package res
 		// Different policy types may support some of the Firewall Rules
 		// features. Possible values: ["VPC_POLICY"]
 		policy_type?: string
+		project?:     string
 
 		// Total count of all firewall policy rule tuples. A firewall
 		// policy can not exceed a set number of tuples.
 		rule_tuple_count?: number
-		timeouts?:         #timeouts
-		project?:          string
 
 		// Server-defined URL for the resource.
 		self_link?: string

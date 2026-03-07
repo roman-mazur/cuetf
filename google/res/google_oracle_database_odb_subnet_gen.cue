@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_oracle_database_odb_subnet")
 	close({
+		timeouts?: #timeouts
+
 		// The CIDR range of the subnet.
 		cidr_range!: string
 
@@ -47,7 +49,6 @@ package res
 		// end with
 		// a letter or a number.
 		odb_subnet_id!: string
-		timeouts?:      #timeouts
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in

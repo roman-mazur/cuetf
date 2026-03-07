@@ -9,10 +9,10 @@ package res
 
 		// Configure this ACL to be the default ACL.
 		default_acl?: string
+		id?:          string
 
 		// The canned GCS ACL to apply. Must be set if role_entity is not.
 		predefined_acl?: string
-		id?:             string
 
 		// List of role/entity pairs in the form ROLE:entity. See GCS
 		// Bucket ACL documentation for more details. Must be set if

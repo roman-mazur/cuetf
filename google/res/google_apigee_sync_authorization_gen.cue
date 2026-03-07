@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_sync_authorization")
 	close({
+		timeouts?: #timeouts
+
 		// Entity tag (ETag) used for optimistic concurrency control as a
 		// way to help prevent simultaneous updates from overwriting each
 		// other.
@@ -27,7 +29,6 @@ package res
 		// role. See also [Create service
 		// accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
 		identities!: [...string]
-		timeouts?: #timeouts
 
 		// Name of the Apigee organization.
 		name!: string

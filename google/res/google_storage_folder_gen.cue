@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_folder")
 	close({
+		timeouts?: #timeouts
+
 		// The name of the bucket that contains the folder.
 		bucket!: string
 
@@ -23,7 +25,6 @@ package res
 		// 'example@#/', 'a-b/d-f/'.
 		name!:      string
 		self_link?: string
-		timeouts?:  #timeouts
 
 		// The timestamp at which this folder was most recently updated.
 		update_time?: string

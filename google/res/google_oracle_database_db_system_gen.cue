@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_oracle_database_db_system")
 	close({
+		properties?: matchN(1, [#properties, list.MaxItems(1) & [...#properties]])
+		timeouts?: #timeouts
+
 		// The date and time that the DbSystem was created.
 		create_time?: string
 
@@ -60,8 +63,6 @@ import "list"
 		// format:
 		// projects/{project}/locations/{region}/dbSystems/{db_system}
 		name?: string
-		properties?: matchN(1, [#properties, list.MaxItems(1) & [...#properties]])
-		timeouts?: #timeouts
 
 		// HTTPS link to OCI resources exposed to Customer via UI
 		// Interface.
@@ -87,6 +88,11 @@ import "list"
 	})
 
 	#properties: close({
+		data_collection_options?: matchN(1, [_#defs."/$defs/properties/$defs/data_collection_options", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/data_collection_options"]])
+		db_home?: matchN(1, [_#defs."/$defs/properties/$defs/db_home", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/db_home"]])
+		db_system_options?: matchN(1, [_#defs."/$defs/properties/$defs/db_system_options", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/db_system_options"]])
+		time_zone?: matchN(1, [_#defs."/$defs/properties/$defs/time_zone", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/time_zone"]])
+
 		// The number of CPU cores to enable for the DbSystem.
 		compute_count!: number
 
@@ -141,10 +147,6 @@ import "list"
 
 		// The memory size in GB.
 		memory_size_gb?: number
-		data_collection_options?: matchN(1, [_#defs."/$defs/properties/$defs/data_collection_options", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/data_collection_options"]])
-		db_home?: matchN(1, [_#defs."/$defs/properties/$defs/db_home", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/db_home"]])
-		db_system_options?: matchN(1, [_#defs."/$defs/properties/$defs/db_system_options", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/db_system_options"]])
-		time_zone?: matchN(1, [_#defs."/$defs/properties/$defs/time_zone", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/time_zone"]])
 
 		// The number of nodes in the DbSystem.
 		node_count?: number
@@ -180,11 +182,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/properties/$defs/db_home": close({
+		database!: matchN(1, [_#defs."/$defs/properties/$defs/db_home/$defs/database", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/properties/$defs/db_home/$defs/database"]])
+
 		// A valid Oracle Database version. For a list of supported
 		// versions, use the
 		// ListDbVersions operation.
 		db_version!: string
-		database!: matchN(1, [_#defs."/$defs/properties/$defs/db_home/$defs/database", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/properties/$defs/db_home/$defs/database"]])
 
 		// The display name for the Database Home. The name does not have
 		// to
@@ -196,6 +199,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/properties/$defs/db_home/$defs/database": close({
+		properties?: matchN(1, [_#defs."/$defs/properties/$defs/db_home/$defs/database/$defs/properties", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/db_home/$defs/database/$defs/properties"]])
+
 		// The password for the default ADMIN user.
 		admin_password!: string
 
@@ -228,7 +233,6 @@ import "list"
 		// format:
 		// projects/{project}/locations/{region}/databases/{database}
 		name?: string
-		properties?: matchN(1, [_#defs."/$defs/properties/$defs/db_home/$defs/database/$defs/properties", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/db_home/$defs/database/$defs/properties"]])
 
 		// The national character set for the database. The default is
 		// AL16UTF16.
@@ -295,6 +299,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/properties/$defs/db_home/$defs/database/$defs/properties/$defs/db_backup_config": close({
+		backup_destination_details?: matchN(1, [_#defs."/$defs/properties/$defs/db_home/$defs/database/$defs/properties/$defs/db_backup_config/$defs/backup_destination_details", [..._#defs."/$defs/properties/$defs/db_home/$defs/database/$defs/properties/$defs/db_backup_config/$defs/backup_destination_details"]])
+
 		// If set to true, enables automatic backups on the database.
 		auto_backup_enabled?: bool
 
@@ -358,7 +364,6 @@ import "list"
 		// in time to
 		// which a database can be restored. Min: 1, Max: 60.
 		retention_period_days?: number
-		backup_destination_details?: matchN(1, [_#defs."/$defs/properties/$defs/db_home/$defs/database/$defs/properties/$defs/db_backup_config/$defs/backup_destination_details", [..._#defs."/$defs/properties/$defs/db_home/$defs/database/$defs/properties/$defs/db_backup_config/$defs/backup_destination_details"]])
 	})
 
 	_#defs: "/$defs/properties/$defs/db_home/$defs/database/$defs/properties/$defs/db_backup_config/$defs/backup_destination_details": close({

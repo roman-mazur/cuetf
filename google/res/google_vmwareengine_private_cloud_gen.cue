@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vmwareengine_private_cloud")
 	close({
+		management_cluster!: matchN(1, [#management_cluster, list.MaxItems(1) & [_, ...] & [...#management_cluster]])
+		network_config!: matchN(1, [#network_config, list.MaxItems(1) & [_, ...] & [...#network_config]])
+		timeouts?: #timeouts
+
 		// Creation time of this resource.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine fractional digits.
@@ -66,9 +70,6 @@ import "list"
 		// It can be used both alone and together with
 		// deletion_delay_hours.
 		send_deletion_delay_hours_if_zero?: bool
-		management_cluster!: matchN(1, [#management_cluster, list.MaxItems(1) & [_, ...] & [...#management_cluster]])
-		network_config!: matchN(1, [#network_config, list.MaxItems(1) & [_, ...] & [...#network_config]])
-		timeouts?: #timeouts
 
 		// State of the resource. New values may be added to this enum
 		// when appropriate.
@@ -153,6 +154,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/management_cluster/$defs/autoscaling_settings": close({
+		autoscaling_policies!: matchN(1, [_#defs."/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies", [_, ...] & [..._#defs."/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies"]])
+
 		// The minimum duration between consecutive autoscale operations.
 		// It starts once addition or removal of nodes is fully completed.
 		// Minimum cool down period is 30m.
@@ -161,7 +164,6 @@ import "list"
 		// Mandatory for successful addition of autoscaling settings in
 		// cluster.
 		cool_down_period?: string
-		autoscaling_policies!: matchN(1, [_#defs."/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies", [_, ...] & [..._#defs."/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies"]])
 
 		// Maximum number of nodes of any type in a cluster.
 		// Mandatory for successful addition of autoscaling settings in
@@ -175,18 +177,18 @@ import "list"
 	})
 
 	_#defs: "/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies": close({
+		consumed_memory_thresholds?: matchN(1, [_#defs."/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies/$defs/consumed_memory_thresholds", list.MaxItems(1) & [..._#defs."/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies/$defs/consumed_memory_thresholds"]])
+		cpu_thresholds?: matchN(1, [_#defs."/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies/$defs/cpu_thresholds", list.MaxItems(1) & [..._#defs."/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies/$defs/cpu_thresholds"]])
+		storage_thresholds?: matchN(1, [_#defs."/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies/$defs/storage_thresholds", list.MaxItems(1) & [..._#defs."/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies/$defs/storage_thresholds"]])
 		autoscale_policy_id!: string
 
 		// The canonical identifier of the node type to add or remove.
 		node_type_id!: string
-		consumed_memory_thresholds?: matchN(1, [_#defs."/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies/$defs/consumed_memory_thresholds", list.MaxItems(1) & [..._#defs."/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies/$defs/consumed_memory_thresholds"]])
 
 		// Number of nodes to add to a cluster during a scale-out
 		// operation.
 		// Must be divisible by 2 for stretched clusters.
 		scale_out_size!: number
-		cpu_thresholds?: matchN(1, [_#defs."/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies/$defs/cpu_thresholds", list.MaxItems(1) & [..._#defs."/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies/$defs/cpu_thresholds"]])
-		storage_thresholds?: matchN(1, [_#defs."/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies/$defs/storage_thresholds", list.MaxItems(1) & [..._#defs."/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies/$defs/storage_thresholds"]])
 	})
 
 	_#defs: "/$defs/management_cluster/$defs/autoscaling_settings/$defs/autoscaling_policies/$defs/consumed_memory_thresholds": close({

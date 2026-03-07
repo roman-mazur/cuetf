@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_uptime_check_config")
 	close({
+		content_matchers?: matchN(1, [#content_matchers, [...#content_matchers]])
+		http_check?: matchN(1, [#http_check, list.MaxItems(1) & [...#http_check]])
+		monitored_resource?: matchN(1, [#monitored_resource, list.MaxItems(1) & [...#monitored_resource]])
+		resource_group?: matchN(1, [#resource_group, list.MaxItems(1) & [...#resource_group]])
+		synthetic_monitor?: matchN(1, [#synthetic_monitor, list.MaxItems(1) & [...#synthetic_monitor]])
+		tcp_check?: matchN(1, [#tcp_check, list.MaxItems(1) & [...#tcp_check]])
+		timeouts?: #timeouts
+
 		// The checker type to use for the check. If the monitored
 		// resource type is 'servicedirectory_service', 'checker_type'
 		// must be set to 'VPC_CHECKERS'. Possible values:
@@ -17,11 +25,11 @@ import "list"
 		// in order to make it easier to identify; however, uniqueness is
 		// not enforced.
 		display_name!: string
+		id?:           string
 
 		// Specifies whether to log the results of failed probes to Cloud
 		// Logging.
 		log_check_failures?: bool
-		id?:                 string
 
 		// A unique resource name for this UptimeCheckConfig. The format
 		// is
@@ -32,7 +40,8 @@ import "list"
 		// Currently, the only supported values are 60s (1 minute), 300s
 		// (5 minutes), 600s (10 minutes), and 900s (15 minutes).
 		// Optional, defaults to 300s.
-		period?: string
+		period?:  string
+		project?: string
 
 		// The list of regions from which the check will be run. Some
 		// regions contain one location, and others contain more than
@@ -47,17 +56,9 @@ import "list"
 		// formats](
 		// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
 		timeout!: string
-		project?: string
-		content_matchers?: matchN(1, [#content_matchers, [...#content_matchers]])
-		http_check?: matchN(1, [#http_check, list.MaxItems(1) & [...#http_check]])
-		monitored_resource?: matchN(1, [#monitored_resource, list.MaxItems(1) & [...#monitored_resource]])
-		resource_group?: matchN(1, [#resource_group, list.MaxItems(1) & [...#resource_group]])
-		synthetic_monitor?: matchN(1, [#synthetic_monitor, list.MaxItems(1) & [...#synthetic_monitor]])
-		tcp_check?: matchN(1, [#tcp_check, list.MaxItems(1) & [...#tcp_check]])
 
 		// The id of the uptime check
 		uptime_check_id?: string
-		timeouts?:        #timeouts
 
 		// User-supplied key/value data to be used for organizing and
 		// identifying the 'UptimeCheckConfig' objects. The field can
@@ -84,6 +85,11 @@ import "list"
 	})
 
 	#http_check: close({
+		accepted_response_status_codes?: matchN(1, [_#defs."/$defs/http_check/$defs/accepted_response_status_codes", [..._#defs."/$defs/http_check/$defs/accepted_response_status_codes"]])
+		auth_info?: matchN(1, [_#defs."/$defs/http_check/$defs/auth_info", list.MaxItems(1) & [..._#defs."/$defs/http_check/$defs/auth_info"]])
+		ping_config?: matchN(1, [_#defs."/$defs/http_check/$defs/ping_config", list.MaxItems(1) & [..._#defs."/$defs/http_check/$defs/ping_config"]])
+		service_agent_authentication?: matchN(1, [_#defs."/$defs/http_check/$defs/service_agent_authentication", list.MaxItems(1) & [..._#defs."/$defs/http_check/$defs/service_agent_authentication"]])
+
 		// The request body associated with the HTTP POST request. If
 		// 'content_type' is 'URL_ENCODED', the body passed in must be
 		// URL-encoded. Users can provide a 'Content-Length' header via
@@ -146,10 +152,6 @@ import "list"
 		// Default value: "GET" Possible values: ["METHOD_UNSPECIFIED",
 		// "GET", "POST"]
 		request_method?: string
-		accepted_response_status_codes?: matchN(1, [_#defs."/$defs/http_check/$defs/accepted_response_status_codes", [..._#defs."/$defs/http_check/$defs/accepted_response_status_codes"]])
-		auth_info?: matchN(1, [_#defs."/$defs/http_check/$defs/auth_info", list.MaxItems(1) & [..._#defs."/$defs/http_check/$defs/auth_info"]])
-		ping_config?: matchN(1, [_#defs."/$defs/http_check/$defs/ping_config", list.MaxItems(1) & [..._#defs."/$defs/http_check/$defs/ping_config"]])
-		service_agent_authentication?: matchN(1, [_#defs."/$defs/http_check/$defs/service_agent_authentication", list.MaxItems(1) & [..._#defs."/$defs/http_check/$defs/service_agent_authentication"]])
 
 		// If true, use HTTPS instead of HTTP to run the check.
 		use_ssl?: bool

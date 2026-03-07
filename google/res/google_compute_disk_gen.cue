@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_disk")
 	close({
+		async_primary_disk?: matchN(1, [#async_primary_disk, list.MaxItems(1) & [...#async_primary_disk]])
+		disk_encryption_key?: matchN(1, [#disk_encryption_key, list.MaxItems(1) & [...#disk_encryption_key]])
+		guest_os_features?: matchN(1, [#guest_os_features, [...#guest_os_features]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
+		source_image_encryption_key?: matchN(1, [#source_image_encryption_key, list.MaxItems(1) & [...#source_image_encryption_key]])
+		source_snapshot_encryption_key?: matchN(1, [#source_snapshot_encryption_key, list.MaxItems(1) & [...#source_snapshot_encryption_key]])
+		timeouts?: #timeouts
+
 		// The access mode of the disk.
 		// For example:
 		// * READ_WRITE_SINGLE: The default AccessMode, means the disk can
@@ -135,14 +143,7 @@ import "list"
 		// your hyperdisk more frequently, you'll need to manually delete
 		// and recreate it
 		provisioned_throughput?: number
-		async_primary_disk?: matchN(1, [#async_primary_disk, list.MaxItems(1) & [...#async_primary_disk]])
-		disk_encryption_key?: matchN(1, [#disk_encryption_key, list.MaxItems(1) & [...#disk_encryption_key]])
-		guest_os_features?: matchN(1, [#guest_os_features, [...#guest_os_features]])
-		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
-		source_image_encryption_key?: matchN(1, [#source_image_encryption_key, list.MaxItems(1) & [...#source_image_encryption_key]])
-		source_snapshot_encryption_key?: matchN(1, [#source_snapshot_encryption_key, list.MaxItems(1) & [...#source_snapshot_encryption_key]])
-		timeouts?:  #timeouts
-		self_link?: string
+		self_link?:              string
 
 		// Size of the persistent disk, specified in GB. You can specify
 		// this

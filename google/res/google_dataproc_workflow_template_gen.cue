@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_workflow_template")
 	close({
+		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
+		jobs!: matchN(1, [#jobs, [_, ...] & [...#jobs]])
+		parameters?: matchN(1, [#parameters, [...#parameters]])
+		placement!: matchN(1, [#placement, list.MaxItems(1) & [_, ...] & [...#placement]])
+		timeouts?: #timeouts
+
 		// Output only. The time template was created.
 		create_time?: string
 
@@ -56,11 +62,6 @@ import "list"
 		// name of the template has the following format:
 		// `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
 		name!: string
-		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
-		jobs!: matchN(1, [#jobs, [_, ...] & [...#jobs]])
-		parameters?: matchN(1, [#parameters, [...#parameters]])
-		placement!: matchN(1, [#placement, list.MaxItems(1) & [_, ...] & [...#placement]])
-		timeouts?: #timeouts
 
 		// The project for the resource
 		project?: string
@@ -79,6 +80,16 @@ import "list"
 	})
 
 	#jobs: close({
+		hadoop_job?: matchN(1, [_#defs."/$defs/jobs/$defs/hadoop_job", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/hadoop_job"]])
+		hive_job?: matchN(1, [_#defs."/$defs/jobs/$defs/hive_job", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/hive_job"]])
+		pig_job?: matchN(1, [_#defs."/$defs/jobs/$defs/pig_job", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/pig_job"]])
+		presto_job?: matchN(1, [_#defs."/$defs/jobs/$defs/presto_job", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/presto_job"]])
+		pyspark_job?: matchN(1, [_#defs."/$defs/jobs/$defs/pyspark_job", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/pyspark_job"]])
+		scheduling?: matchN(1, [_#defs."/$defs/jobs/$defs/scheduling", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/scheduling"]])
+		spark_job?: matchN(1, [_#defs."/$defs/jobs/$defs/spark_job", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/spark_job"]])
+		spark_r_job?: matchN(1, [_#defs."/$defs/jobs/$defs/spark_r_job", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/spark_r_job"]])
+		spark_sql_job?: matchN(1, [_#defs."/$defs/jobs/$defs/spark_sql_job", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/spark_sql_job"]])
+
 		// Optional. The labels to associate with this job. Label keys
 		// must be between 1 and 63 characters long, and must conform to
 		// the following regular expression: p{Ll}p{Lo}{0,62} Label
@@ -87,7 +98,6 @@ import "list"
 		// [p{Ll}p{Lo}p{N}_-]{0,63} No more than 32 labels can be
 		// associated with a given job.
 		labels?: [string]: string
-		hadoop_job?: matchN(1, [_#defs."/$defs/jobs/$defs/hadoop_job", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/hadoop_job"]])
 
 		// Optional. The optional list of prerequisite job step_ids. If
 		// not specified, the job will start at the beginning of
@@ -102,21 +112,14 @@ import "list"
 		// (_), and hyphens (-). Cannot begin or end with underscore or
 		// hyphen. Must consist of between 3 and 50 characters.
 		step_id!: string
-		hive_job?: matchN(1, [_#defs."/$defs/jobs/$defs/hive_job", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/hive_job"]])
-		pig_job?: matchN(1, [_#defs."/$defs/jobs/$defs/pig_job", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/pig_job"]])
-		presto_job?: matchN(1, [_#defs."/$defs/jobs/$defs/presto_job", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/presto_job"]])
-		pyspark_job?: matchN(1, [_#defs."/$defs/jobs/$defs/pyspark_job", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/pyspark_job"]])
-		scheduling?: matchN(1, [_#defs."/$defs/jobs/$defs/scheduling", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/scheduling"]])
-		spark_job?: matchN(1, [_#defs."/$defs/jobs/$defs/spark_job", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/spark_job"]])
-		spark_r_job?: matchN(1, [_#defs."/$defs/jobs/$defs/spark_r_job", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/spark_r_job"]])
-		spark_sql_job?: matchN(1, [_#defs."/$defs/jobs/$defs/spark_sql_job", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/spark_sql_job"]])
 	})
 
 	#parameters: close({
+		validation?: matchN(1, [_#defs."/$defs/parameters/$defs/validation", list.MaxItems(1) & [..._#defs."/$defs/parameters/$defs/validation"]])
+
 		// Optional. Brief description of the parameter. Must not exceed
 		// 1024 characters.
 		description?: string
-		validation?: matchN(1, [_#defs."/$defs/parameters/$defs/validation", list.MaxItems(1) & [..._#defs."/$defs/parameters/$defs/validation"]])
 
 		// Required. Paths to all fields that the parameter replaces. A
 		// field is allowed to appear in at most one parameter's list of
@@ -174,6 +177,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/jobs/$defs/hadoop_job": close({
+		logging_config?: matchN(1, [_#defs."/$defs/jobs/$defs/hadoop_job/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/hadoop_job/$defs/logging_config"]])
+
 		// Optional. HCFS URIs of archives to be extracted in the working
 		// directory of Hadoop drivers and tasks. Supported file types:
 		// .jar, .tar, .tar.gz, .tgz, or .zip.
@@ -205,7 +210,6 @@ import "list"
 		// 'hdfs:/tmp/test-samples/custom-wordcount.jar'
 		// 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
 		main_jar_file_uri?: string
-		logging_config?: matchN(1, [_#defs."/$defs/jobs/$defs/hadoop_job/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/hadoop_job/$defs/logging_config"]])
 
 		// Optional. A mapping of property names to values, used to
 		// configure Hadoop. Properties that conflict with values set by
@@ -222,6 +226,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/jobs/$defs/hive_job": close({
+		query_list?: matchN(1, [_#defs."/$defs/jobs/$defs/hive_job/$defs/query_list", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/hive_job/$defs/query_list"]])
+
 		// Optional. Whether to continue executing queries if a query
 		// fails. The default value is `false`. Setting to `true` can be
 		// useful when executing independent parallel queries.
@@ -241,7 +247,6 @@ import "list"
 
 		// The HCFS URI of the script that contains Hive queries.
 		query_file_uri?: string
-		query_list?: matchN(1, [_#defs."/$defs/jobs/$defs/hive_job/$defs/query_list", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/hive_job/$defs/query_list"]])
 
 		// Optional. Mapping of query variable names to values (equivalent
 		// to the Hive command: `SET name="value";`).
@@ -259,6 +264,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/jobs/$defs/pig_job": close({
+		logging_config?: matchN(1, [_#defs."/$defs/jobs/$defs/pig_job/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/pig_job/$defs/logging_config"]])
+		query_list?: matchN(1, [_#defs."/$defs/jobs/$defs/pig_job/$defs/query_list", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/pig_job/$defs/query_list"]])
+
 		// Optional. Whether to continue executing queries if a query
 		// fails. The default value is `false`. Setting to `true` can be
 		// useful when executing independent parallel queries.
@@ -278,8 +286,6 @@ import "list"
 
 		// The HCFS URI of the script that contains the Pig queries.
 		query_file_uri?: string
-		logging_config?: matchN(1, [_#defs."/$defs/jobs/$defs/pig_job/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/pig_job/$defs/logging_config"]])
-		query_list?: matchN(1, [_#defs."/$defs/jobs/$defs/pig_job/$defs/query_list", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/pig_job/$defs/query_list"]])
 
 		// Optional. Mapping of query variable names to values (equivalent
 		// to the Pig command: `name=[value]`).
@@ -304,6 +310,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/jobs/$defs/presto_job": close({
+		logging_config?: matchN(1, [_#defs."/$defs/jobs/$defs/presto_job/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/presto_job/$defs/logging_config"]])
+		query_list?: matchN(1, [_#defs."/$defs/jobs/$defs/presto_job/$defs/query_list", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/presto_job/$defs/query_list"]])
+
 		// Optional. Presto client tags to attach to this query
 		client_tags?: [...string]
 
@@ -321,8 +330,6 @@ import "list"
 		// properties](https://prestodb.io/docs/current/sql/set-session.html)
 		// Equivalent to using the --session flag in the Presto CLI
 		properties?: [string]: string
-		logging_config?: matchN(1, [_#defs."/$defs/jobs/$defs/presto_job/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/presto_job/$defs/logging_config"]])
-		query_list?: matchN(1, [_#defs."/$defs/jobs/$defs/presto_job/$defs/query_list", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/presto_job/$defs/query_list"]])
 
 		// The HCFS URI of the script that contains SQL queries.
 		query_file_uri?: string
@@ -346,6 +353,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/jobs/$defs/pyspark_job": close({
+		logging_config?: matchN(1, [_#defs."/$defs/jobs/$defs/pyspark_job/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/pyspark_job/$defs/logging_config"]])
+
 		// Optional. HCFS URIs of archives to be extracted into the
 		// working directory of each executor. Supported file types:
 		// .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -375,7 +384,6 @@ import "list"
 		// set in /etc/spark/conf/spark-defaults.conf and classes in user
 		// code.
 		properties?: [string]: string
-		logging_config?: matchN(1, [_#defs."/$defs/jobs/$defs/pyspark_job/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/pyspark_job/$defs/logging_config"]])
 
 		// Optional. HCFS file URIs of Python files to pass to the PySpark
 		// framework. Supported file types: .py, .egg, and .zip.
@@ -404,6 +412,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/jobs/$defs/spark_job": close({
+		logging_config?: matchN(1, [_#defs."/$defs/jobs/$defs/spark_job/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/spark_job/$defs/logging_config"]])
+
 		// Optional. HCFS URIs of archives to be extracted into the
 		// working directory of each executor. Supported file types:
 		// .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -430,7 +440,6 @@ import "list"
 
 		// The HCFS URI of the jar file that contains the main class.
 		main_jar_file_uri?: string
-		logging_config?: matchN(1, [_#defs."/$defs/jobs/$defs/spark_job/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/spark_job/$defs/logging_config"]])
 
 		// Optional. A mapping of property names to values, used to
 		// configure Spark. Properties that conflict with values set by
@@ -448,6 +457,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/jobs/$defs/spark_r_job": close({
+		logging_config?: matchN(1, [_#defs."/$defs/jobs/$defs/spark_r_job/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/spark_r_job/$defs/logging_config"]])
+
 		// Optional. HCFS URIs of archives to be extracted into the
 		// working directory of each executor. Supported file types:
 		// .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -466,7 +477,6 @@ import "list"
 		// Required. The HCFS URI of the main R file to use as the driver.
 		// Must be a .R file.
 		main_r_file_uri!: string
-		logging_config?: matchN(1, [_#defs."/$defs/jobs/$defs/spark_r_job/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/spark_r_job/$defs/logging_config"]])
 
 		// Optional. A mapping of property names to values, used to
 		// configure SparkR. Properties that conflict with values set by
@@ -484,6 +494,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/jobs/$defs/spark_sql_job": close({
+		logging_config?: matchN(1, [_#defs."/$defs/jobs/$defs/spark_sql_job/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/spark_sql_job/$defs/logging_config"]])
+		query_list?: matchN(1, [_#defs."/$defs/jobs/$defs/spark_sql_job/$defs/query_list", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/spark_sql_job/$defs/query_list"]])
+
 		// Optional. HCFS URIs of jar files to be added to the Spark
 		// CLASSPATH.
 		jar_file_uris?: [...string]
@@ -499,8 +512,6 @@ import "list"
 		// Optional. Mapping of query variable names to values (equivalent
 		// to the Spark SQL command: SET `name="value";`).
 		script_variables?: [string]: string
-		logging_config?: matchN(1, [_#defs."/$defs/jobs/$defs/spark_sql_job/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/spark_sql_job/$defs/logging_config"]])
-		query_list?: matchN(1, [_#defs."/$defs/jobs/$defs/spark_sql_job/$defs/query_list", list.MaxItems(1) & [..._#defs."/$defs/jobs/$defs/spark_sql_job/$defs/query_list"]])
 	})
 
 	_#defs: "/$defs/jobs/$defs/spark_sql_job/$defs/logging_config": close({
@@ -572,6 +583,15 @@ import "list"
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config": close({
 		autoscaling_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/autoscaling_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/autoscaling_config"]])
 		encryption_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/encryption_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/encryption_config"]])
+		endpoint_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/endpoint_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/endpoint_config"]])
+		gce_cluster_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config"]])
+		initialization_actions?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/initialization_actions", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/initialization_actions"]])
+		lifecycle_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/lifecycle_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/lifecycle_config"]])
+		master_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config"]])
+		secondary_worker_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config"]])
+		security_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/security_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/security_config"]])
+		software_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/software_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/software_config"]])
+		worker_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config"]])
 
 		// Optional. A Cloud Storage bucket used to stage job
 		// dependencies, config files, and job driver console output. If
@@ -596,15 +616,6 @@ import "list"
 		// specify a bucket. **This field requires a Cloud Storage bucket
 		// name, not a URI to a Cloud Storage bucket.**
 		temp_bucket?: string
-		endpoint_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/endpoint_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/endpoint_config"]])
-		gce_cluster_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config"]])
-		initialization_actions?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/initialization_actions", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/initialization_actions"]])
-		lifecycle_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/lifecycle_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/lifecycle_config"]])
-		master_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config"]])
-		secondary_worker_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config"]])
-		security_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/security_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/security_config"]])
-		software_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/software_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/software_config"]])
-		worker_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config"]])
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/autoscaling_config": close({
@@ -636,6 +647,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config": close({
+		node_group_affinity?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/node_group_affinity", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/node_group_affinity"]])
+		reservation_affinity?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/reservation_affinity", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/reservation_affinity"]])
+		shielded_instance_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/shielded_instance_config"]])
+
 		// Optional. If true, all instances in the cluster will only have
 		// internal IP addresses. By default, clusters are not restricted
 		// to internal IP addresses, and will have ephemeral external IP
@@ -698,9 +713,6 @@ import "list"
 		// * `projects/[project_id]/regions/us-east1/subnetworks/sub0` *
 		// `sub0`
 		subnetwork?: string
-		node_group_affinity?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/node_group_affinity", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/node_group_affinity"]])
-		reservation_affinity?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/reservation_affinity", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/reservation_affinity"]])
-		shielded_instance_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/shielded_instance_config"]])
 
 		// The Compute Engine tags to add to all instances (see [Tagging
 		// instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
@@ -807,6 +819,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config": close({
+		accelerators?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/accelerators", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/accelerators"]])
+		disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/disk_config"]])
+
 		// Optional. The Compute Engine image resource used for cluster
 		// instances. The URI can represent an image or image family.
 		// Image examples: *
@@ -855,8 +870,6 @@ import "list"
 		// Group. See [Dataproc -> Minimum CPU
 		// Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 		min_cpu_platform?: string
-		accelerators?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/accelerators", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/accelerators"]])
-		disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/disk_config"]])
 
 		// Optional. The number of VM instances in the instance group. For
 		// [HA
@@ -918,6 +931,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config": close({
+		accelerators?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/accelerators", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/accelerators"]])
+		disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/disk_config"]])
+
 		// Optional. The Compute Engine image resource used for cluster
 		// instances. The URI can represent an image or image family.
 		// Image examples: *
@@ -966,8 +982,6 @@ import "list"
 		// Group. See [Dataproc -> Minimum CPU
 		// Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 		min_cpu_platform?: string
-		accelerators?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/accelerators", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/accelerators"]])
-		disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/disk_config"]])
 
 		// Optional. The number of VM instances in the instance group. For
 		// [HA
@@ -1134,6 +1148,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config": close({
+		accelerators?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/accelerators", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/accelerators"]])
+		disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/disk_config"]])
+
 		// Optional. The Compute Engine image resource used for cluster
 		// instances. The URI can represent an image or image family.
 		// Image examples: *
@@ -1182,8 +1199,6 @@ import "list"
 		// Group. See [Dataproc -> Minimum CPU
 		// Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 		min_cpu_platform?: string
-		accelerators?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/accelerators", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/accelerators"]])
-		disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/disk_config"]])
 
 		// Optional. The number of VM instances in the instance group. For
 		// [HA

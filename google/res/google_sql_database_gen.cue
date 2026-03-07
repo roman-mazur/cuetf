@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_sql_database")
 	close({
+		timeouts?: #timeouts
+
 		// The charset value. See MySQL's
 		// [Supported Character Sets and
 		// Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
@@ -42,7 +44,6 @@ package res
 		// The name of the database in the Cloud SQL instance.
 		// This does not include the project ID or instance name.
 		name!:      string
-		timeouts?:  #timeouts
 		project?:   string
 		self_link?: string
 	})

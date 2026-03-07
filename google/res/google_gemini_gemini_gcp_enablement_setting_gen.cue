@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gemini_gemini_gcp_enablement_setting")
 	close({
+		timeouts?: #timeouts
+
 		// Create time stamp.
 		create_time?: string
 
@@ -34,9 +36,8 @@ package res
 
 		// Identifier. Name of the resource.
 		// Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{geminiGcpEnablementSetting}
-		name?:     string
-		project?:  string
-		timeouts?: #timeouts
+		name?:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

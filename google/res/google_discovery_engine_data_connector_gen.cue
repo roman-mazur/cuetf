@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_data_connector")
 	close({
+		entities?: matchN(1, [#entities, [...#entities]])
+		timeouts?: #timeouts
+
 		// State of the action connector. This reflects whether the action
 		// connector
 		// is initializing, active or has encountered errors. The possible
@@ -73,6 +76,7 @@ package res
 			code?:    number
 			message?: string
 		})]
+		id?: string
 
 		// The refresh interval specifically for incremental data syncs.
 		// If unset,
@@ -88,7 +92,6 @@ package res
 		// Indicates whether incremental syncs are paused for this
 		// connector.
 		incremental_sync_disabled?: bool
-		id?:                        string
 
 		// Params needed to access the source in the format of json
 		// string.
@@ -119,8 +122,6 @@ package res
 		// be
 		// triggered.
 		latest_pause_time?: string
-		entities?: matchN(1, [#entities, [...#entities]])
-		timeouts?: #timeouts
 
 		// The geographic location where the data store should reside. The
 		// value can

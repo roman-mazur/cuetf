@@ -6,19 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_loss_prevention_stored_info_type")
 	close({
+		dictionary?: matchN(1, [#dictionary, list.MaxItems(1) & [...#dictionary]])
+		large_custom_dictionary?: matchN(1, [#large_custom_dictionary, list.MaxItems(1) & [...#large_custom_dictionary]])
+		regex?: matchN(1, [#regex, list.MaxItems(1) & [...#regex]])
+		timeouts?: #timeouts
+
 		// A description of the info type.
 		description?: string
-		dictionary?: matchN(1, [#dictionary, list.MaxItems(1) & [...#dictionary]])
 
 		// User set display name of the info type.
 		display_name?: string
 		id?:           string
-		large_custom_dictionary?: matchN(1, [#large_custom_dictionary, list.MaxItems(1) & [...#large_custom_dictionary]])
 
 		// The resource name of the info type. Set by the server.
 		name?: string
-		regex?: matchN(1, [#regex, list.MaxItems(1) & [...#regex]])
-		timeouts?: #timeouts
 
 		// The parent of the info type in any of the following formats:
 		//

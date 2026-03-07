@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloudfunctions_function")
 	close({
+		automatic_update_policy?: matchN(1, [#automatic_update_policy, list.MaxItems(1) & [...#automatic_update_policy]])
+		event_trigger?: matchN(1, [#event_trigger, list.MaxItems(1) & [...#event_trigger]])
+		on_deploy_update_policy?: matchN(1, [#on_deploy_update_policy, list.MaxItems(1) & [...#on_deploy_update_policy]])
+		secret_environment_variables?: matchN(1, [#secret_environment_variables, [...#secret_environment_variables]])
+		secret_volumes?: matchN(1, [#secret_volumes, [...#secret_volumes]])
+		source_repository?: matchN(1, [#source_repository, list.MaxItems(1) & [...#source_repository]])
+		timeouts?: #timeouts
+
 		// Memory (in MB), available to the function. Default value is
 		// 256. Possible values include 128, 256, 512, 1024, etc.
 		available_memory_mb?: number
@@ -56,6 +64,7 @@ import "list"
 		// URL which triggers function execution. Returned only if
 		// trigger_http is used.
 		https_trigger_url?: string
+		id?:                string
 
 		// String value that controls what traffic can reach the function.
 		// Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes
@@ -75,7 +84,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The limit on the maximum number of function instances that may
 		// coexist at a given time.
@@ -88,12 +96,6 @@ import "list"
 		// A user-defined name of the function. Function names must be
 		// unique globally.
 		name!: string
-		automatic_update_policy?: matchN(1, [#automatic_update_policy, list.MaxItems(1) & [...#automatic_update_policy]])
-		event_trigger?: matchN(1, [#event_trigger, list.MaxItems(1) & [...#event_trigger]])
-		on_deploy_update_policy?: matchN(1, [#on_deploy_update_policy, list.MaxItems(1) & [...#on_deploy_update_policy]])
-		secret_environment_variables?: matchN(1, [#secret_environment_variables, [...#secret_environment_variables]])
-		secret_volumes?: matchN(1, [#secret_volumes, [...#secret_volumes]])
-		source_repository?: matchN(1, [#source_repository, list.MaxItems(1) & [...#source_repository]])
 
 		// Project of the function. If it is not provided, the provider
 		// project is used.
@@ -117,7 +119,6 @@ import "list"
 
 		// The source archive object (file) in archive bucket.
 		source_archive_object?: string
-		timeouts?:              #timeouts
 
 		// Describes the current stage of a deployment.
 		status?: string
@@ -200,6 +201,8 @@ import "list"
 	})
 
 	#secret_volumes: close({
+		versions?: matchN(1, [_#defs."/$defs/secret_volumes/$defs/versions", [..._#defs."/$defs/secret_volumes/$defs/versions"]])
+
 		// The path within the container to mount the secret volume. For
 		// example, setting the mount_path as "/etc/secrets" would mount
 		// the secret value files under the "/etc/secrets" directory.
@@ -208,7 +211,6 @@ import "list"
 		// paths: "/etc/secrets" Restricted mount paths: "/cloudsql",
 		// "/dev/log", "/pod", "/proc", "/var/log".
 		mount_path!: string
-		versions?: matchN(1, [_#defs."/$defs/secret_volumes/$defs/versions", [..._#defs."/$defs/secret_volumes/$defs/versions"]])
 
 		// Project identifier (due to a known limitation, only project
 		// number is supported by this field) of the project that

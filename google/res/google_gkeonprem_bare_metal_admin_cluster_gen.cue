@@ -6,6 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gkeonprem_bare_metal_admin_cluster")
 	close({
+		cluster_operations?: matchN(1, [#cluster_operations, list.MaxItems(1) & [...#cluster_operations]])
+		control_plane?: matchN(1, [#control_plane, list.MaxItems(1) & [...#control_plane]])
+		load_balancer?: matchN(1, [#load_balancer, list.MaxItems(1) & [...#load_balancer]])
+		maintenance_config?: matchN(1, [#maintenance_config, list.MaxItems(1) & [...#maintenance_config]])
+		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
+		node_access_config?: matchN(1, [#node_access_config, list.MaxItems(1) & [...#node_access_config]])
+		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
+		proxy?: matchN(1, [#proxy, list.MaxItems(1) & [...#proxy]])
+		security_config?: matchN(1, [#security_config, list.MaxItems(1) & [...#security_config]])
+		storage?: matchN(1, [#storage, list.MaxItems(1) & [...#storage]])
+		timeouts?: #timeouts
+
 		// Annotations on the Bare Metal Admin Cluster.
 		// This field has the same restrictions as Kubernetes annotations.
 		// The total size of all keys and values combined is limited to
@@ -92,19 +104,8 @@ import "list"
 		location!: string
 
 		// The bare metal admin cluster name.
-		name!: string
-		cluster_operations?: matchN(1, [#cluster_operations, list.MaxItems(1) & [...#cluster_operations]])
-		control_plane?: matchN(1, [#control_plane, list.MaxItems(1) & [...#control_plane]])
+		name!:    string
 		project?: string
-		load_balancer?: matchN(1, [#load_balancer, list.MaxItems(1) & [...#load_balancer]])
-		maintenance_config?: matchN(1, [#maintenance_config, list.MaxItems(1) & [...#maintenance_config]])
-		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
-		node_access_config?: matchN(1, [#node_access_config, list.MaxItems(1) & [...#node_access_config]])
-		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
-		proxy?: matchN(1, [#proxy, list.MaxItems(1) & [...#proxy]])
-		security_config?: matchN(1, [#security_config, list.MaxItems(1) & [...#security_config]])
-		storage?: matchN(1, [#storage, list.MaxItems(1) & [...#storage]])
-		timeouts?: #timeouts
 
 		// If set, there are currently changes in flight to the Bare Metal
 		// Admin Cluster.

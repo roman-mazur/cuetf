@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_asset_project_feed")
 	close({
+		condition?: matchN(1, [#condition, list.MaxItems(1) & [...#condition]])
+		feed_output_config!: matchN(1, [#feed_output_config, list.MaxItems(1) & [_, ...] & [...#feed_output_config]])
+		timeouts?: #timeouts
+
 		// A list of the full names of the assets to receive updates. You
 		// must specify either or both of
 		// assetNames and assetTypes. Only asset updates matching
@@ -41,14 +45,11 @@ import "list"
 		// ["CONTENT_TYPE_UNSPECIFIED", "RESOURCE", "IAM_POLICY",
 		// "ORG_POLICY", "OS_INVENTORY", "ACCESS_POLICY"]
 		content_type?: string
-		condition?: matchN(1, [#condition, list.MaxItems(1) & [...#condition]])
 
 		// This is the client-assigned asset feed identifier and it needs
 		// to be unique under a specific parent.
 		feed_id!: string
 		id?:      string
-		feed_output_config!: matchN(1, [#feed_output_config, list.MaxItems(1) & [_, ...] & [...#feed_output_config]])
-		timeouts?: #timeouts
 
 		// The format will be
 		// projects/{projectNumber}/feeds/{client-assigned_feed_identifier}.

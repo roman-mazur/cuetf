@@ -6,6 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_instance_group_manager")
 	close({
+		all_instances_config?: matchN(1, [#all_instances_config, list.MaxItems(1) & [...#all_instances_config]])
+		auto_healing_policies?: matchN(1, [#auto_healing_policies, list.MaxItems(1) & [...#auto_healing_policies]])
+		instance_flexibility_policy?: matchN(1, [#instance_flexibility_policy, list.MaxItems(1) & [...#instance_flexibility_policy]])
+		instance_lifecycle_policy?: matchN(1, [#instance_lifecycle_policy, list.MaxItems(1) & [...#instance_lifecycle_policy]])
+		named_port?: matchN(1, [#named_port, [...#named_port]])
+		standby_policy?: matchN(1, [#standby_policy, list.MaxItems(1) & [...#standby_policy]])
+		stateful_disk?: matchN(1, [#stateful_disk, [...#stateful_disk]])
+		stateful_external_ip?: matchN(1, [#stateful_external_ip, [...#stateful_external_ip]])
+		stateful_internal_ip?: matchN(1, [#stateful_internal_ip, [...#stateful_internal_ip]])
+		timeouts?: #timeouts
+		update_policy?: matchN(1, [#update_policy, list.MaxItems(1) & [...#update_policy]])
+		version!: matchN(1, [#version, [_, ...] & [...#version]])
+
 		// The base instance name to use for instances in this group. The
 		// value must be a valid RFC1035 name. Supported characters are
 		// lowercase letters, numbers, and hyphens (-). Instances are
@@ -60,20 +73,9 @@ import "list"
 
 		// The region where the managed instance group resides.
 		region?: string
-		all_instances_config?: matchN(1, [#all_instances_config, list.MaxItems(1) & [...#all_instances_config]])
-		auto_healing_policies?: matchN(1, [#auto_healing_policies, list.MaxItems(1) & [...#auto_healing_policies]])
-		instance_flexibility_policy?: matchN(1, [#instance_flexibility_policy, list.MaxItems(1) & [...#instance_flexibility_policy]])
-		instance_lifecycle_policy?: matchN(1, [#instance_lifecycle_policy, list.MaxItems(1) & [...#instance_lifecycle_policy]])
-		named_port?: matchN(1, [#named_port, [...#named_port]])
-		standby_policy?: matchN(1, [#standby_policy, list.MaxItems(1) & [...#standby_policy]])
-		stateful_disk?: matchN(1, [#stateful_disk, [...#stateful_disk]])
 
 		// The URL of the created resource.
 		self_link?: string
-		stateful_external_ip?: matchN(1, [#stateful_external_ip, [...#stateful_external_ip]])
-		stateful_internal_ip?: matchN(1, [#stateful_internal_ip, [...#stateful_internal_ip]])
-		timeouts?: #timeouts
-		update_policy?: matchN(1, [#update_policy, list.MaxItems(1) & [...#update_policy]])
 
 		// The status of this managed instance group.
 		status?: [...close({
@@ -92,7 +94,6 @@ import "list"
 				is_reached?: bool
 			})]
 		})]
-		version!: matchN(1, [#version, [_, ...] & [...#version]])
 
 		// The full URL of all target pools to which new instances in the
 		// group are added. Updating the target pools attribute does not

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_v2_folder_scc_big_query_export")
 	close({
+		timeouts?: #timeouts
+
 		// This must be unique within the organization. It must consist of
 		// only lowercase letters,
 		// numbers, and hyphens, must start with a letter, must end with
@@ -69,7 +71,6 @@ package res
 		// The BigQuery export configuration is stored in this location.
 		// If not provided, Use global as default.
 		location?: string
-		timeouts?: #timeouts
 
 		// Email address of the user who last edited the BigQuery export.
 		// This field is set by the server and will be ignored if provided

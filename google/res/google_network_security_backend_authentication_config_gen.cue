@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_backend_authentication_config")
 	close({
+		timeouts?: #timeouts
+
 		// Reference to a Certificate resource from the
 		// certificatemanager.googleapis.com namespace.
 		// Used by a BackendService to negotiate mTLS when the backend
@@ -22,6 +24,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Set of label tags associated with the
 		// BackendAuthenticationConfig resource.
@@ -31,20 +34,18 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location of the backend authentication config.
 		// The default value is 'global'.
 		location?: string
 
 		// Name of the BackendAuthenticationConfig resource.
-		name!: string
+		name!:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		timeouts?: #timeouts
-		project?:  string
 
 		// Reference to a TrustConfig resource from the
 		// certificatemanager.googleapis.com namespace.

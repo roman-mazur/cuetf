@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_os_config_v2_policy_orchestrator_for_organization")
 	close({
+		orchestrated_resource!: matchN(1, [#orchestrated_resource, list.MaxItems(1) & [_, ...] & [...#orchestrated_resource]])
+		orchestration_scope?: matchN(1, [#orchestration_scope, list.MaxItems(1) & [...#orchestration_scope]])
+		timeouts?: #timeouts
+
 		// Required. Action to be done by the orchestrator in
 		// 'projects/{project_id}/zones/{zone_id}' locations defined by
 		// the
@@ -34,6 +38,7 @@ import "list"
 		// the
 		// client has an up-to-date value before proceeding.
 		etag?: string
+		id?:   string
 
 		// Optional. Labels as key value pairs
 		//
@@ -42,7 +47,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Immutable. Identifier. In form of
 		// *
@@ -108,9 +112,6 @@ import "list"
 		// * Must end with a number or a letter.
 		// * Must be unique within the parent.
 		policy_orchestrator_id!: string
-		orchestrated_resource!: matchN(1, [#orchestrated_resource, list.MaxItems(1) & [_, ...] & [...#orchestrated_resource]])
-		orchestration_scope?: matchN(1, [#orchestration_scope, list.MaxItems(1) & [...#orchestration_scope]])
-		timeouts?: #timeouts
 
 		// Output only. Set to true, if the there are ongoing changes
 		// being applied by the
@@ -174,6 +175,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload": close({
+		instance_filter!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/instance_filter", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/instance_filter"]])
+		os_policies!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies", [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies"]])
+		rollout!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/rollout", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/rollout"]])
+
 		// Output only. Indicates that this revision has been successfully
 		// rolled out in this zone
 		// and new VMs will be assigned OS policies from this revision.
@@ -212,9 +217,6 @@ import "list"
 
 		// Output only. The timestamp that the revision was created.
 		revision_create_time?: string
-		instance_filter!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/instance_filter", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/instance_filter"]])
-		os_policies!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies", [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies"]])
-		rollout!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/rollout", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/rollout"]])
 
 		// Output only. The assignment revision ID
 		// A new revision is committed whenever a rollout is triggered for
@@ -276,6 +278,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies": close({
+		resource_groups!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups", [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups"]])
+
 		// This flag determines the OS policy compliance status when none
 		// of the
 		// resource groups within the policy are applicable for a VM. Set
@@ -298,7 +302,6 @@ import "list"
 		// * Must end with a number or a letter.
 		// * Must be unique within the assignment.
 		id!: string
-		resource_groups!: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups", [_, ...] & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups"]])
 
 		// Required. Policy mode
 		// Possible values:
@@ -351,6 +354,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/enforce": close({
+		file?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/enforce/$defs/file", list.MaxItems(1) & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/enforce/$defs/file"]])
+
 		// Optional arguments to pass to the source during execution.
 		args?: [...string]
 
@@ -371,7 +376,6 @@ import "list"
 		// limited to
 		// 500K bytes.
 		output_file_path?: string
-		file?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/enforce/$defs/file", list.MaxItems(1) & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/enforce/$defs/file"]])
 
 		// An inline script.
 		// The size of the script is limited to 32KiB.
@@ -416,6 +420,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate": close({
+		file?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate/$defs/file", list.MaxItems(1) & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate/$defs/file"]])
+
 		// Optional arguments to pass to the source during execution.
 		args?: [...string]
 
@@ -436,7 +442,6 @@ import "list"
 		// limited to
 		// 500K bytes.
 		output_file_path?: string
-		file?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate/$defs/file", list.MaxItems(1) & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate/$defs/file"]])
 
 		// An inline script.
 		// The size of the script is limited to 32KiB.
@@ -481,6 +486,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/file": close({
+		file?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/file/$defs/file", list.MaxItems(1) & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/file/$defs/file"]])
+
 		// A a file with this content.
 		// The size of the content is limited to 32KiB.
 		content?: string
@@ -507,7 +514,6 @@ import "list"
 		// read and write: 6
 		// read only: 4
 		permissions?: string
-		file?: matchN(1, [_#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/file/$defs/file", list.MaxItems(1) & [..._#defs."/$defs/orchestrated_resource/$defs/os_policy_assignment_v1_payload/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/file/$defs/file"]])
 
 		// Required. Desired state of the file.
 		// Possible values:

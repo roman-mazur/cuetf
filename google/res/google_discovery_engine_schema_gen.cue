@@ -4,8 +4,11 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_schema")
 	close({
+		timeouts?: #timeouts
+
 		// The unique id of the data store.
 		data_store_id!: string
+		id?:            string
 
 		// The JSON representation of the schema.
 		json_schema?: string
@@ -14,7 +17,6 @@ package res
 		// value can
 		// only be one of "global", "us" and "eu".
 		location!: string
-		id?:       string
 
 		// The unique full resource name of the schema. Values are of the
 		// format
@@ -22,9 +24,8 @@ package res
 		// This field must be a UTF-8 encoded string with a length limit
 		// of 1024
 		// characters.
-		name?:     string
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// The unique id of the schema.
 		schema_id!: string

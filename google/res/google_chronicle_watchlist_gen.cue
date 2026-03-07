@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_watchlist")
 	close({
+		entity_population_mechanism!: matchN(1, [#entity_population_mechanism, list.MaxItems(1) & [_, ...] & [...#entity_population_mechanism]])
+		timeouts?: #timeouts
+		watchlist_user_preferences?: matchN(1, [#watchlist_user_preferences, list.MaxItems(1) & [...#watchlist_user_preferences]])
+
 		// Output only. Time the watchlist was created.
 		create_time?: string
 
@@ -44,10 +48,7 @@ import "list"
 		// parameters.
 		// Format:
 		// projects/{project}/locations/{location}/instances/{instance}/watchlists/{watchlist}
-		name?: string
-		entity_population_mechanism!: matchN(1, [#entity_population_mechanism, list.MaxItems(1) & [_, ...] & [...#entity_population_mechanism]])
-		timeouts?: #timeouts
-		watchlist_user_preferences?: matchN(1, [#watchlist_user_preferences, list.MaxItems(1) & [...#watchlist_user_preferences]])
+		name?:    string
 		project?: string
 
 		// Output only. Time the watchlist was last updated.

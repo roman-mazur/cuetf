@@ -24,10 +24,10 @@ package data
 		// The IP address of the gateway of this subnet. Must fall within
 		// the IP prefix defined above.
 		gateway_ip?: string
+		id?:         string
 
 		// The IP address range of the subnet in CIDR format.
 		ip_cidr_range?: string
-		id?:            string
 
 		// The ID of the subnet. For userDefined subnets, this name should
 		// be in the format of "service-n",

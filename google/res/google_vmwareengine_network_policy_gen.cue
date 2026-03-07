@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vmwareengine_network_policy")
 	close({
+		external_ip?: matchN(1, [#external_ip, list.MaxItems(1) & [...#external_ip]])
+		internet_access?: matchN(1, [#internet_access, list.MaxItems(1) & [...#internet_access]])
+		timeouts?: #timeouts
+
 		// Creation time of this resource.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and
@@ -23,6 +27,7 @@ import "list"
 		// prefixes either in the consumer VPC network or in use by the
 		// private clouds attached to that VPC network.
 		edge_services_cidr!: string
+		id?:                 string
 
 		// The resource name of the location (region) to create the new
 		// network policy in.
@@ -32,8 +37,8 @@ import "list"
 		location!: string
 
 		// The ID of the Network Policy.
-		name!: string
-		id?:   string
+		name!:    string
+		project?: string
 
 		// System-generated unique identifier for the resource.
 		uid?: string
@@ -51,10 +56,6 @@ import "list"
 		// where {project}
 		// can either be a project number or a project ID.
 		vmware_engine_network!: string
-		external_ip?: matchN(1, [#external_ip, list.MaxItems(1) & [...#external_ip]])
-		internet_access?: matchN(1, [#internet_access, list.MaxItems(1) & [...#internet_access]])
-		timeouts?: #timeouts
-		project?:  string
 
 		// The canonical name of the VMware Engine network in the form:
 		// projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}

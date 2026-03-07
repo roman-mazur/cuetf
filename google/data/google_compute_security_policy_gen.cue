@@ -49,6 +49,7 @@ package data
 
 		// Fingerprint of this resource.
 		fingerprint?: string
+		id?:          string
 
 		// The unique fingerprint of the labels.
 		label_fingerprint?: string
@@ -68,7 +69,6 @@ package data
 		// The project in which the resource belongs. If it is not
 		// provided, the provider project is used.
 		project?: string
-		id?:      string
 
 		// reCAPTCHA configuration options to be applied for the security
 		// policy.

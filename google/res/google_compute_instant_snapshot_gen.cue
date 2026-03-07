@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_instant_snapshot")
 	close({
+		timeouts?: #timeouts
+
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
@@ -17,12 +19,12 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// The fingerprint used for optimistic locking of this resource.
 		// Used
 		// internally during updates.
 		label_fingerprint?: string
-		id?:                string
 
 		// Labels to apply to this InstantSnapshot.
 		//
@@ -56,7 +58,6 @@ package res
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		timeouts?: #timeouts
 
 		// A reference to the zone where the disk is located.
 		zone?: string

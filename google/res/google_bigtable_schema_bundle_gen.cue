@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigtable_schema_bundle")
 	close({
+		proto_schema!: matchN(1, [#proto_schema, list.MaxItems(1) & [_, ...] & [...#proto_schema]])
+		timeouts?: #timeouts
+
 		// etag is used for optimistic concurrency control as a way to
 		// help prevent simultaneous
 		// updates of a schema bundle from overwriting each other. This
@@ -14,10 +17,10 @@ import "list"
 		// before proceeding. The server returns
 		// an ABORTED error on a mismatched etag.
 		etag?: string
+		id?:   string
 
 		// If true, allow backwards incompatible changes.
 		ignore_warnings?: bool
-		id?:              string
 
 		// The name of the instance to create the schema bundle within.
 		instance?: string
@@ -27,15 +30,13 @@ import "list"
 		// 'projects/<project>/instances/<instance>/tables/<table>/schemaBundles/<schemaBundleId>'.
 		name?:    string
 		project?: string
-		proto_schema!: matchN(1, [#proto_schema, list.MaxItems(1) & [_, ...] & [...#proto_schema]])
 
 		// The unique name of the schema bundle in the form
 		// '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
 		schema_bundle_id!: string
 
 		// The name of the table to create the schema bundle within.
-		table?:    string
-		timeouts?: #timeouts
+		table?: string
 	})
 
 	#proto_schema: close({

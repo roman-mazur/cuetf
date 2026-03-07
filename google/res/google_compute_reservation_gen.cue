@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_reservation")
 	close({
+		delete_after_duration?: matchN(1, [#delete_after_duration, list.MaxItems(1) & [...#delete_after_duration]])
+		reservation_sharing_policy?: matchN(1, [#reservation_sharing_policy, list.MaxItems(1) & [...#reservation_sharing_policy]])
+		share_settings?: matchN(1, [#share_settings, list.MaxItems(1) & [...#share_settings]])
+		specific_reservation!: matchN(1, [#specific_reservation, list.MaxItems(1) & [_, ...] & [...#specific_reservation]])
+		timeouts?: #timeouts
+
 		// List of all reservation block names in the parent reservation.
 		block_names?: [...string]
 
@@ -55,11 +61,6 @@ import "list"
 		// The number of reservation blocks associated with this
 		// reservation.
 		reservation_block_count?: number
-		delete_after_duration?: matchN(1, [#delete_after_duration, list.MaxItems(1) & [...#delete_after_duration]])
-		reservation_sharing_policy?: matchN(1, [#reservation_sharing_policy, list.MaxItems(1) & [...#reservation_sharing_policy]])
-		share_settings?: matchN(1, [#share_settings, list.MaxItems(1) & [...#share_settings]])
-		specific_reservation!: matchN(1, [#specific_reservation, list.MaxItems(1) & [_, ...] & [...#specific_reservation]])
-		timeouts?: #timeouts
 
 		// Status information for Reservation resource.
 		resource_status?: [...close({
@@ -135,6 +136,8 @@ import "list"
 	})
 
 	#specific_reservation: close({
+		instance_properties?: matchN(1, [_#defs."/$defs/specific_reservation/$defs/instance_properties", list.MaxItems(1) & [..._#defs."/$defs/specific_reservation/$defs/instance_properties"]])
+
 		// Indicates how many instances are actually usable currently.
 		assured_count?: number
 
@@ -143,7 +146,6 @@ import "list"
 
 		// How many instances are in use.
 		in_use_count?: number
-		instance_properties?: matchN(1, [_#defs."/$defs/specific_reservation/$defs/instance_properties", list.MaxItems(1) & [..._#defs."/$defs/specific_reservation/$defs/instance_properties"]])
 
 		// Specifies the instance template to create the reservation. If
 		// you use this field, you must exclude the
@@ -166,6 +168,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/specific_reservation/$defs/instance_properties": close({
+		guest_accelerators?: matchN(1, [_#defs."/$defs/specific_reservation/$defs/instance_properties/$defs/guest_accelerators", [..._#defs."/$defs/specific_reservation/$defs/instance_properties/$defs/guest_accelerators"]])
+		local_ssds?: matchN(1, [_#defs."/$defs/specific_reservation/$defs/instance_properties/$defs/local_ssds", [..._#defs."/$defs/specific_reservation/$defs/instance_properties/$defs/local_ssds"]])
+
 		// An opaque location hint used to place the allocation close to
 		// other resources. This field is for use by internal tools that
 		// use the public API.
@@ -173,7 +178,6 @@ import "list"
 
 		// The name of the machine type to reserve.
 		machine_type!: string
-		guest_accelerators?: matchN(1, [_#defs."/$defs/specific_reservation/$defs/instance_properties/$defs/guest_accelerators", [..._#defs."/$defs/specific_reservation/$defs/instance_properties/$defs/guest_accelerators"]])
 
 		// The minimum CPU platform for the reservation. For example,
 		// '"Intel Skylake"'. See
@@ -181,7 +185,6 @@ import "list"
 		// reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
 		// for information on available CPU platforms.
 		min_cpu_platform?: string
-		local_ssds?: matchN(1, [_#defs."/$defs/specific_reservation/$defs/instance_properties/$defs/local_ssds", [..._#defs."/$defs/specific_reservation/$defs/instance_properties/$defs/local_ssds"]])
 	})
 
 	_#defs: "/$defs/specific_reservation/$defs/instance_properties/$defs/guest_accelerators": close({

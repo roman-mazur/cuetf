@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_api_product")
 	close({
+		attributes?: matchN(1, [#attributes, [...#attributes]])
+		graphql_operation_group?: matchN(1, [#graphql_operation_group, list.MaxItems(1) & [...#graphql_operation_group]])
+		grpc_operation_group?: matchN(1, [#grpc_operation_group, list.MaxItems(1) & [...#grpc_operation_group]])
+		operation_group?: matchN(1, [#operation_group, list.MaxItems(1) & [...#operation_group]])
+		timeouts?: #timeouts
+
 		// Comma-separated list of API resources to be bundled in the API
 		// product. By default, the resource paths are mapped from the
 		// proxy.pathsuffix variable.
@@ -42,11 +48,11 @@ import "list"
 		// preventing developers from accessing those resources through
 		// API proxies deployed in another environment.
 		environments?: [...string]
+		id?: string
 
 		// Response only. Modified time of this environment as
 		// milliseconds since epoch.
 		last_modified_at?: string
-		id?:               string
 
 		// Internal name of the API product.
 		name!: string
@@ -69,11 +75,6 @@ import "list"
 		// quotaTimeUnit of hours means 50 requests are allowed every 12
 		// hours.
 		quota?: string
-		attributes?: matchN(1, [#attributes, [...#attributes]])
-		graphql_operation_group?: matchN(1, [#graphql_operation_group, list.MaxItems(1) & [...#graphql_operation_group]])
-		grpc_operation_group?: matchN(1, [#grpc_operation_group, list.MaxItems(1) & [...#grpc_operation_group]])
-		operation_group?: matchN(1, [#operation_group, list.MaxItems(1) & [...#operation_group]])
-		timeouts?: #timeouts
 
 		// Scope of the quota decides how the quota counter gets applied
 		// and evaluate for quota violation. If the Scope is set as
@@ -200,6 +201,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/grpc_operation_group/$defs/operation_configs": close({
+		attributes?: matchN(1, [_#defs."/$defs/grpc_operation_group/$defs/operation_configs/$defs/attributes", [..._#defs."/$defs/grpc_operation_group/$defs/operation_configs/$defs/attributes"]])
+		quota?: matchN(1, [_#defs."/$defs/grpc_operation_group/$defs/operation_configs/$defs/quota", list.MaxItems(1) & [..._#defs."/$defs/grpc_operation_group/$defs/operation_configs/$defs/quota"]])
+
 		// Required. Name of the API proxy with which the gRPC operation
 		// and quota are associated.
 		api_source?: string
@@ -219,12 +223,10 @@ import "list"
 		// GraphQLOperation. Specifying more than one will cause the
 		// operation to fail.
 		methods?: [...string]
-		attributes?: matchN(1, [_#defs."/$defs/grpc_operation_group/$defs/operation_configs/$defs/attributes", [..._#defs."/$defs/grpc_operation_group/$defs/operation_configs/$defs/attributes"]])
 
 		// Required. gRPC Service name associated to be associated with
 		// the API proxy, on which quota rules can be applied upon.
 		service?: string
-		quota?: matchN(1, [_#defs."/$defs/grpc_operation_group/$defs/operation_configs/$defs/quota", list.MaxItems(1) & [..._#defs."/$defs/grpc_operation_group/$defs/operation_configs/$defs/quota"]])
 	})
 
 	_#defs: "/$defs/grpc_operation_group/$defs/operation_configs/$defs/attributes": close({

@@ -9,11 +9,11 @@ package data
 		// Service Controls or are core infrastructure services required
 		// for the functioning of Google Cloud.
 		available_on_restricted_vip?: bool
+		id?:                          string
 
 		// True if the service is supported with some limitations. Check
 		// documentation for details.
 		known_limitations?: bool
-		id?:                string
 
 		// The name of the service to get information about. The names
 		// must be in the same format as used in defining a service

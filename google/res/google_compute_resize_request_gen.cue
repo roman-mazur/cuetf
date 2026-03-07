@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_resize_request")
 	close({
+		requested_run_duration?: matchN(1, [#requested_run_duration, list.MaxItems(1) & [...#requested_run_duration]])
+		timeouts?: #timeouts
+
 		// The creation timestamp for this resize request in RFC3339 text
 		// format.
 		creation_timestamp?: string
@@ -20,15 +23,15 @@ import "list"
 
 		// The name of this resize request. The name must be 1-63
 		// characters long, and comply with RFC1035.
-		name!: string
+		name!:    string
+		project?: string
 
 		// The number of instances to be created by this resize request.
 		// The group's target size will be increased by this number.
 		resize_by!: number
 
 		// Current state of the request.
-		state?:   string
-		project?: string
+		state?: string
 
 		// Status of the request.
 		status?: [...close({
@@ -99,8 +102,6 @@ import "list"
 				})]
 			})]
 		})]
-		requested_run_duration?: matchN(1, [#requested_run_duration, list.MaxItems(1) & [...#requested_run_duration]])
-		timeouts?: #timeouts
 
 		// The reference of the compute zone scoping this request. If it
 		// is not provided, the provider zone is used.

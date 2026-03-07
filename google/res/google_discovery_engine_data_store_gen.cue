@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_data_store")
 	close({
+		advanced_site_search_config?: matchN(1, [#advanced_site_search_config, list.MaxItems(1) & [...#advanced_site_search_config]])
+		document_processing_config?: matchN(1, [#document_processing_config, list.MaxItems(1) & [...#document_processing_config]])
+		timeouts?: #timeouts
+
 		// The content config of the data store. Possible values:
 		// ["NO_CONTENT", "CONTENT_REQUIRED", "PUBLIC_WEBSITE"]
 		content_config!: string
@@ -52,9 +56,6 @@ import "list"
 		// value can
 		// only be one of "global", "us" and "eu".
 		location!: string
-		advanced_site_search_config?: matchN(1, [#advanced_site_search_config, list.MaxItems(1) & [...#advanced_site_search_config]])
-		document_processing_config?: matchN(1, [#document_processing_config, list.MaxItems(1) & [...#document_processing_config]])
-		timeouts?: #timeouts
 
 		// The unique full resource name of the data store. Values are of
 		// the format

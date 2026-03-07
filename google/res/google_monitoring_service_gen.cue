@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_service")
 	close({
+		basic_service?: matchN(1, [#basic_service, list.MaxItems(1) & [...#basic_service]])
+		timeouts?: #timeouts
+
 		// Name used for UI elements listing this Service.
 		display_name?: string
 		id?:           string
@@ -14,13 +17,11 @@ import "list"
 		// projects/[PROJECT_ID]/services/[SERVICE_ID].
 		name?:    string
 		project?: string
-		basic_service?: matchN(1, [#basic_service, list.MaxItems(1) & [...#basic_service]])
 
 		// An optional service ID to use. If not given, the server will
 		// generate a
 		// service ID.
 		service_id!: string
-		timeouts?:   #timeouts
 
 		// Configuration for how to query telemetry on a Service.
 		telemetry?: [...close({

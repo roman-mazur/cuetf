@@ -4,15 +4,16 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_project_iam_audit_config")
 	close({
+		audit_log_config!: matchN(1, [#audit_log_config, [_, ...] & [...#audit_log_config]])
+
 		// The etag of iam policy
-		etag?: string
+		etag?:    string
+		id?:      string
+		project!: string
 
 		// Service which will be enabled for audit logging. The special
 		// value allServices covers all services.
 		service!: string
-		id?:      string
-		project!: string
-		audit_log_config!: matchN(1, [#audit_log_config, [_, ...] & [...#audit_log_config]])
 	})
 
 	#audit_log_config: close({

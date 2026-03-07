@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iap_client")
 	close({
+		timeouts?: #timeouts
+
 		// Identifier of the brand to which this client
 		// is attached to. The format is
 		// 'projects/{project_number}/brands/{brand_id}'.
@@ -14,7 +16,6 @@ package res
 
 		// Human-friendly name given to the OAuth client.
 		display_name!: string
-		timeouts?:     #timeouts
 		id?:           string
 
 		// Output only. Client secret of the OAuth client.

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_catalog_tag_template")
 	close({
+		fields!: matchN(1, [#fields, [_, ...] & [...#fields]])
+		timeouts?: #timeouts
+
 		// The display name for this template.
 		display_name?: string
 
@@ -13,14 +16,12 @@ import "list"
 		// template. Must be set to true in order to delete the tag
 		// template.
 		force_delete?: bool
+		id?:           string
 
 		// The resource name of the tag template in URL format. Example:
 		// projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
-		name?: string
-		id?:   string
-		fields!: matchN(1, [#fields, [_, ...] & [...#fields]])
-		project?:  string
-		timeouts?: #timeouts
+		name?:    string
+		project?: string
 
 		// Template location region.
 		region?: string
@@ -30,21 +31,22 @@ import "list"
 	})
 
 	#fields: close({
+		type!: matchN(1, [_#defs."/$defs/fields/$defs/type", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/fields/$defs/type"]])
+
 		// A description for this field.
 		description?: string
 
 		// The display name for this field.
 		display_name?: string
+		field_id!:     string
 
 		// Whether this is a required field. Defaults to false.
 		is_required?: bool
-		field_id!:    string
 
 		// The resource name of the tag template field in URL format.
 		// Example:
 		// projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
 		name?: string
-		type!: matchN(1, [_#defs."/$defs/fields/$defs/type", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/fields/$defs/type"]])
 
 		// The order of this field with respect to other fields in this
 		// tag template.

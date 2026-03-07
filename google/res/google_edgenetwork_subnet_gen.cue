@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_edgenetwork_subnet")
 	close({
+		timeouts?: #timeouts
+
 		// The time when the subnet was created.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine
@@ -19,11 +21,11 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// The ranges of ipv4 addresses that are owned by this subnetwork,
 		// in CIDR format.
 		ipv4_cidr?: [...string]
-		id?: string
 
 		// The ranges of ipv6 addresses that are owned by this subnetwork,
 		// in CIDR format.
@@ -50,11 +52,10 @@ package res
 		// Must be of the form:
 		// 'projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}'
 		network!: string
+		project?: string
 
 		// Current stage of the resource to the device by config push.
-		state?:    string
-		timeouts?: #timeouts
-		project?:  string
+		state?: string
 
 		// A unique ID that identifies this subnet.
 		subnet_id!: string

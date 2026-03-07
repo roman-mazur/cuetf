@@ -33,10 +33,10 @@ package data
 
 		// The fingerprint of the instance group manager.
 		fingerprint?: string
+		id?:          string
 
 		// The full URL of the instance group created by the manager.
 		instance_group?: string
-		id?:             string
 
 		// The unique identifier number for the resource. This identifier
 		// is defined by the server.
@@ -68,6 +68,7 @@ package data
 			name?: string
 			port?: number
 		})]
+		operation?: string
 
 		// The ID of the project in which the resource belongs. If it is
 		// not provided, the provider project is used.
@@ -93,7 +94,6 @@ package data
 			delete_rule?: string
 			device_name?: string
 		})]
-		operation?: string
 
 		// External IPs considered stateful by the instance group.
 		stateful_external_ip?: [...close({

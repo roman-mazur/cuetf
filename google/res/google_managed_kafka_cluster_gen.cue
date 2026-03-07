@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_managed_kafka_cluster")
 	close({
+		broker_capacity_config?: matchN(1, [#broker_capacity_config, list.MaxItems(1) & [...#broker_capacity_config]])
+		capacity_config!: matchN(1, [#capacity_config, list.MaxItems(1) & [_, ...] & [...#capacity_config]])
+		gcp_config!: matchN(1, [#gcp_config, list.MaxItems(1) & [_, ...] & [...#gcp_config]])
+		rebalance_config?: matchN(1, [#rebalance_config, list.MaxItems(1) & [...#rebalance_config]])
+		timeouts?: #timeouts
+		tls_config?: matchN(1, [#tls_config, list.MaxItems(1) & [...#tls_config]])
+
 		// The ID to use for the cluster, which will become the final
 		// component of the cluster's name. The ID must be 1-63
 		// characters long, and match the regular expression
@@ -20,6 +27,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// List of label KEY=VALUE pairs to add. Keys must start with a
 		// lowercase character and contain only hyphens (-), underscores
@@ -37,18 +45,11 @@ import "list"
 		// https://cloud.google.com/managed-kafka/docs/locations for a
 		// list of supported locations.
 		location!: string
-		id?:       string
 
 		// The name of the cluster. Structured like:
 		// 'projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID'.
-		name?: string
-		broker_capacity_config?: matchN(1, [#broker_capacity_config, list.MaxItems(1) & [...#broker_capacity_config]])
-		capacity_config!: matchN(1, [#capacity_config, list.MaxItems(1) & [_, ...] & [...#capacity_config]])
-		gcp_config!: matchN(1, [#gcp_config, list.MaxItems(1) & [_, ...] & [...#gcp_config]])
-		rebalance_config?: matchN(1, [#rebalance_config, list.MaxItems(1) & [...#rebalance_config]])
-		timeouts?: #timeouts
-		project?:  string
-		tls_config?: matchN(1, [#tls_config, list.MaxItems(1) & [...#tls_config]])
+		name?:    string
+		project?: string
 
 		// The current state of the cluster. Possible values:
 		// 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'DELETING'.

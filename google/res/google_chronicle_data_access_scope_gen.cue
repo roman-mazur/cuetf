@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_data_access_scope")
 	close({
+		allowed_data_access_labels?: matchN(1, [#allowed_data_access_labels, [...#allowed_data_access_labels]])
+		denied_data_access_labels?: matchN(1, [#denied_data_access_labels, [...#denied_data_access_labels]])
+		timeouts?: #timeouts
+
 		// Optional. Whether or not the scope allows all labels, allow_all
 		// and
 		// allowed_data_access_labels are mutually exclusive and one of
@@ -51,8 +55,6 @@ import "list"
 
 		// Output only. The user who last updated the data access scope.
 		last_editor?: string
-		allowed_data_access_labels?: matchN(1, [#allowed_data_access_labels, [...#allowed_data_access_labels]])
-		denied_data_access_labels?: matchN(1, [#denied_data_access_labels, [...#denied_data_access_labels]])
 
 		// The location of the resource. This is the geographical region
 		// where the Chronicle instance resides, such as "us" or
@@ -64,9 +66,8 @@ import "list"
 		// parameters.
 		// Format:
 		// projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{data_access_scope_id}
-		name?:     string
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// Output only. The time at which the data access scope was last
 		// updated.
@@ -74,6 +75,8 @@ import "list"
 	})
 
 	#allowed_data_access_labels: close({
+		ingestion_label?: matchN(1, [_#defs."/$defs/allowed_data_access_labels/$defs/ingestion_label", list.MaxItems(1) & [..._#defs."/$defs/allowed_data_access_labels/$defs/ingestion_label"]])
+
 		// The asset namespace configured in the forwarder
 		// of the customer's events.
 		asset_namespace?: string
@@ -87,13 +90,14 @@ import "list"
 		// The asset namespace will match the namespace itself.
 		// The ingestion key value pair will match the key of the tuple.
 		display_name?: string
-		ingestion_label?: matchN(1, [_#defs."/$defs/allowed_data_access_labels/$defs/ingestion_label", list.MaxItems(1) & [..._#defs."/$defs/allowed_data_access_labels/$defs/ingestion_label"]])
 
 		// The name of the log type.
 		log_type?: string
 	})
 
 	#denied_data_access_labels: close({
+		ingestion_label?: matchN(1, [_#defs."/$defs/denied_data_access_labels/$defs/ingestion_label", list.MaxItems(1) & [..._#defs."/$defs/denied_data_access_labels/$defs/ingestion_label"]])
+
 		// The asset namespace configured in the forwarder
 		// of the customer's events.
 		asset_namespace?: string
@@ -107,7 +111,6 @@ import "list"
 		// The asset namespace will match the namespace itself.
 		// The ingestion key value pair will match the key of the tuple.
 		display_name?: string
-		ingestion_label?: matchN(1, [_#defs."/$defs/denied_data_access_labels/$defs/ingestion_label", list.MaxItems(1) & [..._#defs."/$defs/denied_data_access_labels/$defs/ingestion_label"]])
 
 		// The name of the log type.
 		log_type?: string

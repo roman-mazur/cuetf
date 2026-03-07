@@ -6,6 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_instance_template")
 	close({
+		advanced_machine_features?: matchN(1, [#advanced_machine_features, list.MaxItems(1) & [...#advanced_machine_features]])
+		confidential_instance_config?: matchN(1, [#confidential_instance_config, list.MaxItems(1) & [...#confidential_instance_config]])
+		disk!: matchN(1, [#disk, [_, ...] & [...#disk]])
+		guest_accelerator?: matchN(1, [#guest_accelerator, [...#guest_accelerator]])
+		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
+		network_performance_config?: matchN(1, [#network_performance_config, list.MaxItems(1) & [...#network_performance_config]])
+		reservation_affinity?: matchN(1, [#reservation_affinity, list.MaxItems(1) & [...#reservation_affinity]])
+		scheduling?: matchN(1, [#scheduling, list.MaxItems(1) & [...#scheduling]])
+		service_account?: matchN(1, [#service_account, list.MaxItems(1) & [...#service_account]])
+		shielded_instance_config?: matchN(1, [#shielded_instance_config, list.MaxItems(1) & [...#shielded_instance_config]])
+		timeouts?: #timeouts
+
 		// Whether to allow sending and receiving of packets with
 		// non-matching source or destination IPs. This defaults to
 		// false.
@@ -66,20 +78,10 @@ import "list"
 		// The name of the instance template. If you leave this blank,
 		// Terraform will auto-generate a unique name.
 		name?: string
-		advanced_machine_features?: matchN(1, [#advanced_machine_features, list.MaxItems(1) & [...#advanced_machine_features]])
-		confidential_instance_config?: matchN(1, [#confidential_instance_config, list.MaxItems(1) & [...#confidential_instance_config]])
-		disk!: matchN(1, [#disk, [_, ...] & [...#disk]])
-		guest_accelerator?: matchN(1, [#guest_accelerator, [...#guest_accelerator]])
-		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
-		network_performance_config?: matchN(1, [#network_performance_config, list.MaxItems(1) & [...#network_performance_config]])
 
 		// Creates a unique name beginning with the specified prefix.
 		// Conflicts with name.
 		name_prefix?: string
-		reservation_affinity?: matchN(1, [#reservation_affinity, list.MaxItems(1) & [...#reservation_affinity]])
-		scheduling?: matchN(1, [#scheduling, list.MaxItems(1) & [...#scheduling]])
-		service_account?: matchN(1, [#service_account, list.MaxItems(1) & [...#service_account]])
-		shielded_instance_config?: matchN(1, [#shielded_instance_config, list.MaxItems(1) & [...#shielded_instance_config]])
 
 		// The ID of the template in numeric format.
 		numeric_id?: string
@@ -90,8 +92,7 @@ import "list"
 
 		// The region in which the instance template is located. If it is
 		// not provided, the provider region is used.
-		region?:   string
-		timeouts?: #timeouts
+		region?: string
 
 		// A map of resource manager tags.
 		// Resource manager tag keys and values have the same definition
@@ -164,6 +165,10 @@ import "list"
 	})
 
 	#disk: close({
+		disk_encryption_key?: matchN(1, [_#defs."/$defs/disk/$defs/disk_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/disk/$defs/disk_encryption_key"]])
+		source_image_encryption_key?: matchN(1, [_#defs."/$defs/disk/$defs/source_image_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/disk/$defs/source_image_encryption_key"]])
+		source_snapshot_encryption_key?: matchN(1, [_#defs."/$defs/disk/$defs/source_snapshot_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/disk/$defs/source_snapshot_encryption_key"]])
+
 		// The architecture of the image. Allowed values are ARM64 or
 		// X86_64.
 		architecture?: string
@@ -217,9 +222,6 @@ import "list"
 		// documentation](https://cloud.google.com/compute/docs/disks/hyperdisks)
 		// depending on the selected disk_type.
 		provisioned_iops?: number
-		disk_encryption_key?: matchN(1, [_#defs."/$defs/disk/$defs/disk_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/disk/$defs/disk_encryption_key"]])
-		source_image_encryption_key?: matchN(1, [_#defs."/$defs/disk/$defs/source_image_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/disk/$defs/source_image_encryption_key"]])
-		source_snapshot_encryption_key?: matchN(1, [_#defs."/$defs/disk/$defs/source_snapshot_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/disk/$defs/source_snapshot_encryption_key"]])
 
 		// Indicates how much throughput to provision for the disk, in
 		// MB/s. This sets the amount of data that can be read or written
@@ -278,6 +280,10 @@ import "list"
 	})
 
 	#network_interface: close({
+		access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/access_config", [..._#defs."/$defs/network_interface/$defs/access_config"]])
+		alias_ip_range?: matchN(1, [_#defs."/$defs/network_interface/$defs/alias_ip_range", [..._#defs."/$defs/network_interface/$defs/alias_ip_range"]])
+		ipv6_access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/ipv6_access_config", [..._#defs."/$defs/network_interface/$defs/ipv6_access_config"]])
+
 		// Indicates whether igmp query is enabled on the network
 		// interface or not. If enabled, also indicates the version of
 		// IGMP supported.
@@ -320,9 +326,6 @@ import "list"
 		// Name of the parent network interface of a dynamic network
 		// interface.
 		parent_nic_name?: string
-		access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/access_config", [..._#defs."/$defs/network_interface/$defs/access_config"]])
-		alias_ip_range?: matchN(1, [_#defs."/$defs/network_interface/$defs/alias_ip_range", [..._#defs."/$defs/network_interface/$defs/alias_ip_range"]])
-		ipv6_access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/ipv6_access_config", [..._#defs."/$defs/network_interface/$defs/ipv6_access_config"]])
 
 		// The networking queue count that's specified by users for the
 		// network interface. Both Rx and Tx queues will be set to this
@@ -363,6 +366,11 @@ import "list"
 	})
 
 	#scheduling: close({
+		local_ssd_recovery_timeout?: matchN(1, [_#defs."/$defs/scheduling/$defs/local_ssd_recovery_timeout", [..._#defs."/$defs/scheduling/$defs/local_ssd_recovery_timeout"]])
+		max_run_duration?: matchN(1, [_#defs."/$defs/scheduling/$defs/max_run_duration", list.MaxItems(1) & [..._#defs."/$defs/scheduling/$defs/max_run_duration"]])
+		node_affinities?: matchN(1, [_#defs."/$defs/scheduling/$defs/node_affinities", [..._#defs."/$defs/scheduling/$defs/node_affinities"]])
+		on_instance_stop_action?: matchN(1, [_#defs."/$defs/scheduling/$defs/on_instance_stop_action", list.MaxItems(1) & [..._#defs."/$defs/scheduling/$defs/on_instance_stop_action"]])
+
 		// Specifies whether the instance should be automatically
 		// restarted if it is terminated by Compute Engine (not
 		// terminated by a user). This defaults to true.
@@ -380,10 +388,6 @@ import "list"
 
 		// Defines the maintenance behavior for this instance.
 		on_host_maintenance?: string
-		local_ssd_recovery_timeout?: matchN(1, [_#defs."/$defs/scheduling/$defs/local_ssd_recovery_timeout", [..._#defs."/$defs/scheduling/$defs/local_ssd_recovery_timeout"]])
-		max_run_duration?: matchN(1, [_#defs."/$defs/scheduling/$defs/max_run_duration", list.MaxItems(1) & [..._#defs."/$defs/scheduling/$defs/max_run_duration"]])
-		node_affinities?: matchN(1, [_#defs."/$defs/scheduling/$defs/node_affinities", [..._#defs."/$defs/scheduling/$defs/node_affinities"]])
-		on_instance_stop_action?: matchN(1, [_#defs."/$defs/scheduling/$defs/on_instance_stop_action", list.MaxItems(1) & [..._#defs."/$defs/scheduling/$defs/on_instance_stop_action"]])
 
 		// Allows instance to be preempted. This defaults to false.
 		preemptible?: bool

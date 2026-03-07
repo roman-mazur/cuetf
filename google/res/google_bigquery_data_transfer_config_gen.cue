@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_data_transfer_config")
 	close({
+		email_preferences?: matchN(1, [#email_preferences, list.MaxItems(1) & [...#email_preferences]])
+		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
+		schedule_options?: matchN(1, [#schedule_options, list.MaxItems(1) & [...#schedule_options]])
+		sensitive_params?: matchN(1, [#sensitive_params, list.MaxItems(1) & [...#sensitive_params]])
+		timeouts?: #timeouts
+
 		// The number of days to look back to automatically refresh the
 		// data.
 		// For example, if dataRefreshWindowDays = 10, then every day
@@ -49,11 +55,6 @@ import "list"
 		// runs
 		// associated with this transfer config finish.
 		notification_pubsub_topic?: string
-		email_preferences?: matchN(1, [#email_preferences, list.MaxItems(1) & [...#email_preferences]])
-		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
-		schedule_options?: matchN(1, [#schedule_options, list.MaxItems(1) & [...#schedule_options]])
-		sensitive_params?: matchN(1, [#sensitive_params, list.MaxItems(1) & [...#sensitive_params]])
-		timeouts?: #timeouts
 
 		// Parameters specific to each data source. For more information
 		// see the bq tab in the 'Setting up a data transfer'

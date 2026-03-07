@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_database_migration_service_connection_profile")
 	close({
+		alloydb?: matchN(1, [#alloydb, list.MaxItems(1) & [...#alloydb]])
+		cloudsql?: matchN(1, [#cloudsql, list.MaxItems(1) & [...#cloudsql]])
+		mysql?: matchN(1, [#mysql, list.MaxItems(1) & [...#mysql]])
+		oracle?: matchN(1, [#oracle, list.MaxItems(1) & [...#oracle]])
+		postgresql?: matchN(1, [#postgresql, list.MaxItems(1) & [...#postgresql]])
+		timeouts?: #timeouts
+
 		// The ID of the connection profile.
 		connection_profile_id!: string
 
@@ -50,14 +57,8 @@ import "list"
 
 		// The name of this connection profile resource in the form of
 		// projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
-		name?: string
-		alloydb?: matchN(1, [#alloydb, list.MaxItems(1) & [...#alloydb]])
-		cloudsql?: matchN(1, [#cloudsql, list.MaxItems(1) & [...#cloudsql]])
-		mysql?: matchN(1, [#mysql, list.MaxItems(1) & [...#mysql]])
-		oracle?: matchN(1, [#oracle, list.MaxItems(1) & [...#oracle]])
-		postgresql?: matchN(1, [#postgresql, list.MaxItems(1) & [...#postgresql]])
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// The current connection profile state.
 		state?: string
@@ -76,10 +77,11 @@ import "list"
 	})
 
 	#cloudsql: close({
+		settings?: matchN(1, [_#defs."/$defs/cloudsql/$defs/settings", list.MaxItems(1) & [..._#defs."/$defs/cloudsql/$defs/settings"]])
+
 		// Output only. The Cloud SQL instance ID that this connection
 		// profile is associated with.
 		cloud_sql_id?: string
-		settings?: matchN(1, [_#defs."/$defs/cloudsql/$defs/settings", list.MaxItems(1) & [..._#defs."/$defs/cloudsql/$defs/settings"]])
 
 		// Output only. The Cloud SQL database instance's private IP.
 		private_ip?: string
@@ -89,6 +91,8 @@ import "list"
 	})
 
 	#mysql: close({
+		ssl?: matchN(1, [_#defs."/$defs/mysql/$defs/ssl", list.MaxItems(1) & [..._#defs."/$defs/mysql/$defs/ssl"]])
+
 		// If the source is a Cloud SQL database, use this field to
 		// provide the Cloud SQL instance ID of the source.
 		cloud_sql_id?: string
@@ -113,10 +117,14 @@ import "list"
 		// connect to the database. The value is encrypted when stored in
 		// Database Migration Service.
 		username?: string
-		ssl?: matchN(1, [_#defs."/$defs/mysql/$defs/ssl", list.MaxItems(1) & [..._#defs."/$defs/mysql/$defs/ssl"]])
 	})
 
 	#oracle: close({
+		forward_ssh_connectivity?: matchN(1, [_#defs."/$defs/oracle/$defs/forward_ssh_connectivity", list.MaxItems(1) & [..._#defs."/$defs/oracle/$defs/forward_ssh_connectivity"]])
+		private_connectivity?: matchN(1, [_#defs."/$defs/oracle/$defs/private_connectivity", list.MaxItems(1) & [..._#defs."/$defs/oracle/$defs/private_connectivity"]])
+		ssl?: matchN(1, [_#defs."/$defs/oracle/$defs/ssl", list.MaxItems(1) & [..._#defs."/$defs/oracle/$defs/ssl"]])
+		static_service_ip_connectivity?: matchN(1, [_#defs."/$defs/oracle/$defs/static_service_ip_connectivity", list.MaxItems(1) & [..._#defs."/$defs/oracle/$defs/static_service_ip_connectivity"]])
+
 		// Required. Database service for the Oracle connection.
 		database_service!: string
 
@@ -135,18 +143,16 @@ import "list"
 
 		// Required. The network port of the source Oracle database.
 		port!: number
-		forward_ssh_connectivity?: matchN(1, [_#defs."/$defs/oracle/$defs/forward_ssh_connectivity", list.MaxItems(1) & [..._#defs."/$defs/oracle/$defs/forward_ssh_connectivity"]])
-		private_connectivity?: matchN(1, [_#defs."/$defs/oracle/$defs/private_connectivity", list.MaxItems(1) & [..._#defs."/$defs/oracle/$defs/private_connectivity"]])
-		ssl?: matchN(1, [_#defs."/$defs/oracle/$defs/ssl", list.MaxItems(1) & [..._#defs."/$defs/oracle/$defs/ssl"]])
 
 		// Required. The username that Database Migration Service will use
 		// to connect to the database. The value is encrypted when stored
 		// in Database Migration Service.
 		username!: string
-		static_service_ip_connectivity?: matchN(1, [_#defs."/$defs/oracle/$defs/static_service_ip_connectivity", list.MaxItems(1) & [..._#defs."/$defs/oracle/$defs/static_service_ip_connectivity"]])
 	})
 
 	#postgresql: close({
+		ssl?: matchN(1, [_#defs."/$defs/postgresql/$defs/ssl", list.MaxItems(1) & [..._#defs."/$defs/postgresql/$defs/ssl"]])
+
 		// If the connected database is an AlloyDB instance, use this
 		// field to provide the AlloyDB cluster ID.
 		alloydb_cluster_id?: string
@@ -171,7 +177,6 @@ import "list"
 		// Output only. Indicates If this connection profile password is
 		// stored.
 		password_set?: bool
-		ssl?: matchN(1, [_#defs."/$defs/postgresql/$defs/ssl", list.MaxItems(1) & [..._#defs."/$defs/postgresql/$defs/ssl"]])
 
 		// The network port of the source MySQL database.
 		port?: number
@@ -218,6 +223,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/alloydb/$defs/settings/$defs/primary_instance_settings": close({
+		machine_config!: matchN(1, [_#defs."/$defs/alloydb/$defs/settings/$defs/primary_instance_settings/$defs/machine_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/alloydb/$defs/settings/$defs/primary_instance_settings/$defs/machine_config"]])
+
 		// Database flags to pass to AlloyDB when DMS is creating the
 		// AlloyDB cluster and instances. See the AlloyDB documentation
 		// for how these can be used.
@@ -228,7 +235,6 @@ import "list"
 
 		// Labels for the AlloyDB primary instance created by DMS.
 		labels?: [string]: string
-		machine_config!: matchN(1, [_#defs."/$defs/alloydb/$defs/settings/$defs/primary_instance_settings/$defs/machine_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/alloydb/$defs/settings/$defs/primary_instance_settings/$defs/machine_config"]])
 
 		// Output only. The private IP address for the Instance. This is
 		// the connection endpoint for an end-user application.
@@ -241,6 +247,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/cloudsql/$defs/settings": close({
+		ip_config?: matchN(1, [_#defs."/$defs/cloudsql/$defs/settings/$defs/ip_config", list.MaxItems(1) & [..._#defs."/$defs/cloudsql/$defs/settings/$defs/ip_config"]])
+
 		// The activation policy specifies when the instance is activated;
 		// it is applicable only when the instance state is 'RUNNABLE'.
 		// Possible values: ["ALWAYS", "NEVER"]
@@ -282,7 +290,6 @@ import "list"
 
 		// Input only. Initial root password.
 		root_password?: string
-		ip_config?: matchN(1, [_#defs."/$defs/cloudsql/$defs/settings/$defs/ip_config", list.MaxItems(1) & [..._#defs."/$defs/cloudsql/$defs/settings/$defs/ip_config"]])
 
 		// Output only. Indicates If this connection profile root password
 		// is stored.
@@ -315,9 +322,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/cloudsql/$defs/settings/$defs/ip_config": close({
+		authorized_networks?: matchN(1, [_#defs."/$defs/cloudsql/$defs/settings/$defs/ip_config/$defs/authorized_networks", [..._#defs."/$defs/cloudsql/$defs/settings/$defs/ip_config/$defs/authorized_networks"]])
+
 		// Whether the instance should be assigned an IPv4 address or not.
 		enable_ipv4?: bool
-		authorized_networks?: matchN(1, [_#defs."/$defs/cloudsql/$defs/settings/$defs/ip_config/$defs/authorized_networks", [..._#defs."/$defs/cloudsql/$defs/settings/$defs/ip_config/$defs/authorized_networks"]])
 
 		// The resource link for the VPC network from which the Cloud SQL
 		// instance is accessible for private IP. For example,

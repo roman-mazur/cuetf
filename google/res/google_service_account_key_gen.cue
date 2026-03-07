@@ -22,17 +22,18 @@ package res
 		// you normally get as a file when creating service account keys
 		// through the CLI or web console. This is only populated when
 		// creating a new key.
-		private_key?: string
+		private_key?:      string
+		private_key_type?: string
 
 		// The public key, base64 encoded
-		public_key?:       string
-		private_key_type?: string
+		public_key?: string
 
 		// A field that allows clients to upload their own public key. If
 		// set, use this public key data to create a service account key
 		// for given service account. Please note, the expected format
 		// for this field is a base64 encoded X509_PEM.
 		public_key_data?: string
+		public_key_type?: string
 
 		// The ID of the parent service account of the key. This can be a
 		// string in the format {ACCOUNT} or
@@ -41,7 +42,6 @@ package res
 		// account. If the {ACCOUNT} syntax is used, the project will be
 		// inferred from the provider's configuration.
 		service_account_id!: string
-		public_key_type?:    string
 
 		// The key can be used after this timestamp. A timestamp in
 		// RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:

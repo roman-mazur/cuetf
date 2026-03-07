@@ -6,6 +6,15 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_edgecontainer_cluster")
 	close({
+		authorization!: matchN(1, [#authorization, list.MaxItems(1) & [_, ...] & [...#authorization]])
+		control_plane?: matchN(1, [#control_plane, list.MaxItems(1) & [...#control_plane]])
+		control_plane_encryption?: matchN(1, [#control_plane_encryption, list.MaxItems(1) & [...#control_plane_encryption]])
+		fleet!: matchN(1, [#fleet, list.MaxItems(1) & [_, ...] & [...#fleet]])
+		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
+		networking!: matchN(1, [#networking, list.MaxItems(1) & [_, ...] & [...#networking]])
+		system_addons_config?: matchN(1, [#system_addons_config, list.MaxItems(1) & [...#system_addons_config]])
+		timeouts?: #timeouts
+
 		// The PEM-encoded public certificate of the cluster's CA.
 		cluster_ca_certificate?: string
 
@@ -32,6 +41,7 @@ import "list"
 
 		// Address pools for cluster data plane external load balancing.
 		external_load_balancer_ipv4_address_pools?: [...string]
+		id?: string
 
 		// User-defined labels for the edgecloud cluster.
 		//
@@ -43,7 +53,6 @@ import "list"
 
 		// The location of the resource.
 		location!: string
-		id?:       string
 
 		// All the maintenance events scheduled for the cluster, including
 		// the ones
@@ -69,22 +78,14 @@ import "list"
 		// can be empty
 		// if the cluster does not have any worker nodes.
 		node_version?: string
-		authorization!: matchN(1, [#authorization, list.MaxItems(1) & [_, ...] & [...#authorization]])
-		control_plane?: matchN(1, [#control_plane, list.MaxItems(1) & [...#control_plane]])
-		control_plane_encryption?: matchN(1, [#control_plane_encryption, list.MaxItems(1) & [...#control_plane_encryption]])
-		fleet!: matchN(1, [#fleet, list.MaxItems(1) & [_, ...] & [...#fleet]])
-		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
-		networking!: matchN(1, [#networking, list.MaxItems(1) & [_, ...] & [...#networking]])
-		system_addons_config?: matchN(1, [#system_addons_config, list.MaxItems(1) & [...#system_addons_config]])
-		timeouts?: #timeouts
 
 		// The port number of the Kubernetes API server.
-		port?: number
+		port?:    number
+		project?: string
 
 		// The release channel a cluster is subscribed to. Possible
 		// values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
 		release_channel?: string
-		project?:         string
 
 		// Indicates the status of the cluster.
 		status?: string

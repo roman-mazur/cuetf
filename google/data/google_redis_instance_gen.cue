@@ -84,6 +84,7 @@ package data
 		// clients
 		// to connect to the service.
 		host?: string
+		id?:   string
 
 		// Resource labels to represent user provided metadata.
 		//
@@ -103,7 +104,6 @@ package data
 		// must
 		// be different from [locationId].
 		location_id?: string
-		id?:          string
 
 		// Maintenance policy for an instance.
 		maintenance_policy?: [...close({

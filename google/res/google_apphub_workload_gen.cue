@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apphub_workload")
 	close({
+		attributes?: matchN(1, [#attributes, list.MaxItems(1) & [...#attributes]])
+		timeouts?: #timeouts
+
 		// Part of 'parent'. Full resource name of a parent Application.
 		// Example:
 		// projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
@@ -23,23 +26,21 @@ import "list"
 
 		// User-defined name for the Workload.
 		display_name?: string
+		id?:           string
 
 		// Part of 'parent'. Full resource name of a parent Application.
 		// Example:
 		// projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
 		location!: string
-		id?:       string
 
 		// Identifier. The resource name of the Workload.
 		// Format:"projects/{host-project-id}/locations/{location}/applications/{application-id}/workloads/{workload-id}"
-		name?: string
+		name?:    string
+		project?: string
 
 		// Output only. Workload state. Possible values: STATE_UNSPECIFIED
 		// CREATING ACTIVE DELETING DETACHED
-		state?:   string
-		project?: string
-		attributes?: matchN(1, [#attributes, list.MaxItems(1) & [...#attributes]])
-		timeouts?: #timeouts
+		state?: string
 
 		// Output only. A universally unique identifier (UUID) for the
 		// 'Workload' in the UUID4 format.

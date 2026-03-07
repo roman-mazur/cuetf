@@ -138,6 +138,7 @@ package data
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// User-defined labels for this environment. The labels map can
 		// contain no more than 64 entries. Entries of the labels map are
@@ -162,7 +163,6 @@ package data
 		// The ID of the project in which the resource belongs. If it is
 		// not provided, the provider project is used.
 		project?: string
-		id?:      string
 
 		// The location or Compute Engine region for the environment.
 		region?: string

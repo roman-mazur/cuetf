@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_v2_organization_source")
 	close({
+		timeouts?: #timeouts
+
 		// The description of the source (max of 1024 characters).
 		description?: string
 
@@ -17,12 +19,11 @@ package res
 		// hyphens,
 		// and underscores, and can be no longer than 32 characters.
 		display_name!: string
+		id?:           string
 
 		// The resource name of this source, in the format
 		// 'organizations/{{organization}}/sources/{{source}}'.
-		name?:     string
-		id?:       string
-		timeouts?: #timeouts
+		name?: string
 
 		// The organization whose Cloud Security Command Center the Source
 		// lives in.

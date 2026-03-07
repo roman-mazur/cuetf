@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apphub_boundary")
 	close({
+		timeouts?: #timeouts
+
 		// Create time.
 		create_time?: string
 
@@ -12,19 +14,18 @@ package res
 		// boundary.
 		// Format: 'projects/{project-number}'
 		crm_node?: string
+		id?:       string
 
 		// The location for the Boundary resource. Must be global.
 		location!: string
 
 		// Identifier. The resource name of the boundary.
 		// Format: "projects/{project}/locations/{{location}}/boundary"
-		name?: string
-		id?:   string
+		name?:    string
+		project?: string
 
 		// Boundary type.
-		type?:     string
-		project?:  string
-		timeouts?: #timeouts
+		type?: string
 
 		// Update time.
 		update_time?: string

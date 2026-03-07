@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firestore_index")
 	close({
+		fields!: matchN(1, [#fields, [_, ...] & [...#fields]])
+		timeouts?: #timeouts
+
 		// The API scope at which a query is run. Default value: "ANY_API"
 		// Possible values: ["ANY_API", "DATASTORE_MODE_API",
 		// "MONGODB_COMPATIBLE_API"]
@@ -44,15 +47,13 @@ import "list"
 
 		// A server defined name for this index. Format:
 		// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
-		name?: string
-		fields!: matchN(1, [#fields, [_, ...] & [...#fields]])
+		name?:    string
 		project?: string
 
 		// The scope at which a query is run. Default value: "COLLECTION"
 		// Possible values: ["COLLECTION", "COLLECTION_GROUP",
 		// "COLLECTION_RECURSIVE"]
 		query_scope?: string
-		timeouts?:    #timeouts
 
 		// Whether to skip waiting for the index to be created.
 		skip_wait?: bool
@@ -63,11 +64,12 @@ import "list"
 	})
 
 	#fields: close({
+		vector_config?: matchN(1, [_#defs."/$defs/fields/$defs/vector_config", list.MaxItems(1) & [..._#defs."/$defs/fields/$defs/vector_config"]])
+
 		// Indicates that this field supports operations on arrayValues.
 		// Only one of 'order', 'arrayConfig', and
 		// 'vectorConfig' can be specified. Possible values: ["CONTAINS"]
 		array_config?: string
-		vector_config?: matchN(1, [_#defs."/$defs/fields/$defs/vector_config", list.MaxItems(1) & [..._#defs."/$defs/fields/$defs/vector_config"]])
 
 		// Name of the field.
 		field_path?: string

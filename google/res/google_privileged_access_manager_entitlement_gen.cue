@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_privileged_access_manager_entitlement")
 	close({
+		additional_notification_targets?: matchN(1, [#additional_notification_targets, list.MaxItems(1) & [...#additional_notification_targets]])
+		approval_workflow?: matchN(1, [#approval_workflow, list.MaxItems(1) & [...#approval_workflow]])
+		eligible_users!: matchN(1, [#eligible_users, [_, ...] & [...#eligible_users]])
+		privileged_access!: matchN(1, [#privileged_access, list.MaxItems(1) & [_, ...] & [...#privileged_access]])
+		requester_justification_config!: matchN(1, [#requester_justification_config, list.MaxItems(1) & [_, ...] & [...#requester_justification_config]])
+		timeouts?: #timeouts
+
 		// Output only. Create time stamp. A timestamp in RFC3339 UTC
 		// "Zulu" format, with nanosecond resolution and up to nine
 		// fractional digits.
@@ -24,10 +31,10 @@ import "list"
 
 		// For Resource freshness validation (https://google.aip.dev/154)
 		etag?: string
+		id?:   string
 
 		// The region of the Entitlement resource.
 		location!: string
-		id?:       string
 
 		// The maximum amount of time for which access would be granted
 		// for a request.
@@ -50,12 +57,6 @@ import "list"
 		// Format: projects/{project-id|project-number} or
 		// organizations/{organization-number} or folders/{folder-number}
 		parent!: string
-		additional_notification_targets?: matchN(1, [#additional_notification_targets, list.MaxItems(1) & [...#additional_notification_targets]])
-		approval_workflow?: matchN(1, [#approval_workflow, list.MaxItems(1) & [...#approval_workflow]])
-		eligible_users!: matchN(1, [#eligible_users, [_, ...] & [...#eligible_users]])
-		privileged_access!: matchN(1, [#privileged_access, list.MaxItems(1) & [_, ...] & [...#privileged_access]])
-		requester_justification_config!: matchN(1, [#requester_justification_config, list.MaxItems(1) & [_, ...] & [...#requester_justification_config]])
-		timeouts?: #timeouts
 
 		// Output only. The current state of the Entitlement.
 		state?: string

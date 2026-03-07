@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_assured_workloads_workload")
 	close({
+		kms_settings?: matchN(1, [#kms_settings, list.MaxItems(1) & [...#kms_settings]])
+		partner_permissions?: matchN(1, [#partner_permissions, list.MaxItems(1) & [...#partner_permissions]])
+		resource_settings?: matchN(1, [#resource_settings, [...#resource_settings]])
+		timeouts?: #timeouts
+		workload_options?: matchN(1, [#workload_options, list.MaxItems(1) & [...#workload_options]])
+
 		// Optional. Input only. The billing account used for the
 		// resources which are direct children of workload. This billing
 		// account is initially associated with the resources created as
@@ -15,7 +21,6 @@ import "list"
 		// `billingAccounts/{billing_account_id}`. For example,
 		// `billingAccounts/012345-567890-ABCDEF`.
 		billing_account?: string
-		kms_settings?: matchN(1, [#kms_settings, list.MaxItems(1) & [...#kms_settings]])
 
 		// Required. Immutable. Compliance Regime associated with this
 		// workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4,
@@ -69,12 +74,12 @@ import "list"
 		// workload. Currently meant to be used by Europe/Canada
 		// customers.
 		enable_sovereign_controls?: bool
+		id?:                        string
 
 		// Output only. Represents the KAJ enrollment state of the given
 		// workload. Possible values: KAJ_ENROLLMENT_STATE_UNSPECIFIED,
 		// KAJ_ENROLLMENT_STATE_PENDING, KAJ_ENROLLMENT_STATE_COMPLETE
 		kaj_enrollment_state?: string
-		id?:                   string
 
 		// Optional. Labels applied to the workload.
 		//
@@ -89,10 +94,6 @@ import "list"
 
 		// Output only. The resource name of the workload.
 		name?: string
-		partner_permissions?: matchN(1, [#partner_permissions, list.MaxItems(1) & [...#partner_permissions]])
-		resource_settings?: matchN(1, [#resource_settings, [...#resource_settings]])
-		timeouts?: #timeouts
-		workload_options?: matchN(1, [#workload_options, list.MaxItems(1) & [...#workload_options]])
 
 		// The organization for the resource
 		organization!: string

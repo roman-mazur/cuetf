@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firestore_document")
 	close({
+		timeouts?: #timeouts
+
 		// The collection ID, relative to database. For example: chatrooms
 		// or chatrooms/my-document/private-messages.
 		collection!: string
@@ -26,8 +28,7 @@ package res
 
 		// A server defined name for this document. Format:
 		// 'projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}'
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// A relative path to the collection this document exists within
 		path?:    string

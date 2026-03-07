@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigtable_authorized_view")
 	close({
+		subset_view?: matchN(1, [#subset_view, list.MaxItems(1) & [...#subset_view]])
+		timeouts?: #timeouts
+
 		// A field to make the authorized view protected against data loss
 		// i.e. when set to PROTECTED, deleting the authorized view, the
 		// table containing the authorized view, and the instance
@@ -16,11 +19,11 @@ import "list"
 		// backend, and should not be confused with Terraform-side
 		// deletion protection.
 		deletion_protection?: string
+		id?:                  string
 
 		// The name of the Bigtable instance in which the authorized view
 		// belongs.
 		instance_name!: string
-		id?:            string
 
 		// The name of the authorized view. Must be 1-50 characters and
 		// must only contain hyphens, underscores, periods, letters and
@@ -30,12 +33,10 @@ import "list"
 		// The ID of the project in which the resource belongs. If it is
 		// not provided, the provider project is used.
 		project?: string
-		subset_view?: matchN(1, [#subset_view, list.MaxItems(1) & [...#subset_view]])
 
 		// The name of the Bigtable table in which the authorized view
 		// belongs.
 		table_name!: string
-		timeouts?:   #timeouts
 	})
 
 	#subset_view: close({

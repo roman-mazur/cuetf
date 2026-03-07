@@ -4,22 +4,24 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_network_peering")
 	close({
+		timeouts?: #timeouts
+
 		// Whether to export the custom routes to the peer network.
 		// Defaults to false.
-		export_custom_routes?: bool
+		export_custom_routes?:                bool
+		export_subnet_routes_with_public_ip?: bool
+		id?:                                  string
 
 		// Whether to export the custom routes from the peer network.
 		// Defaults to false.
 		import_custom_routes?:                bool
-		export_subnet_routes_with_public_ip?: bool
+		import_subnet_routes_with_public_ip?: bool
 
 		// Name of the peering.
 		name!: string
-		id?:   string
 
 		// The primary network of the peering.
-		network!:                             string
-		import_subnet_routes_with_public_ip?: bool
+		network!: string
 
 		// The peer network in the peering. The peer network may belong to
 		// a different project.
@@ -33,8 +35,7 @@ package res
 		// State for the peering, either ACTIVE or INACTIVE. The peering
 		// is ACTIVE when there's a matching configuration in the peer
 		// network.
-		state?:    string
-		timeouts?: #timeouts
+		state?: string
 
 		// Details about the current state of the peering.
 		state_details?: string

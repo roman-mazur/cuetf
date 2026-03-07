@@ -63,6 +63,7 @@ package data
 		hierarchical_namespace?: [...close({
 			enabled?: bool
 		})]
+		id?: string
 
 		// The bucket IP filtering configuration.
 		ip_filter?: [...close({
@@ -114,7 +115,6 @@ package data
 			log_bucket?:        string
 			log_object_prefix?: string
 		})]
-		id?: string
 
 		// The name of the bucket.
 		name!: string

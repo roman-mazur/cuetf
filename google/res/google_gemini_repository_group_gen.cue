@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gemini_repository_group")
 	close({
+		repositories!: matchN(1, [#repositories, [_, ...] & [...#repositories]])
+		timeouts?: #timeouts
+
 		// Required. Id of the Code Repository Index.
 		code_repository_index!: string
 
@@ -14,6 +17,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Optional. Labels as key value pairs.
 		//
@@ -22,7 +26,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location of the Code Repository Index, for example
 		// 'us-central1'.
@@ -34,8 +37,6 @@ package res
 
 		// Required. Id of the Repository Group.
 		repository_group_id!: string
-		repositories!: matchN(1, [#repositories, [_, ...] & [...#repositories]])
-		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

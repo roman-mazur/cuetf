@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_notebooks_environment")
 	close({
+		container_image?: matchN(1, [#container_image, list.MaxItems(1) & [...#container_image]])
+		timeouts?: #timeouts
+		vm_image?: matchN(1, [#vm_image, list.MaxItems(1) & [...#vm_image]])
+
 		// Instance creation time
 		create_time?: string
 
@@ -15,12 +19,9 @@ import "list"
 		// Display name of this environment for the UI.
 		display_name?: string
 		id?:           string
-		container_image?: matchN(1, [#container_image, list.MaxItems(1) & [...#container_image]])
 
 		// A reference to the zone where the machine resides.
 		location!: string
-		timeouts?: #timeouts
-		vm_image?: matchN(1, [#vm_image, list.MaxItems(1) & [...#vm_image]])
 
 		// The name specified for the Environment instance.
 		// Format:

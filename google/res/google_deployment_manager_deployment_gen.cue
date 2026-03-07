@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_deployment_manager_deployment")
 	close({
+		labels?: matchN(1, [#labels, [...#labels]])
+		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
+		timeouts?: #timeouts
+
 		// Set the policy to use for creating new resources. Only used on
 		// create and update. Valid values are 'CREATE_OR_ACQUIRE'
 		// (default) or
@@ -56,10 +60,7 @@ import "list"
 		// updated
 		// to true or if other fields are updated while preview is true.
 		preview?: bool
-		labels?: matchN(1, [#labels, [...#labels]])
-		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
-		timeouts?: #timeouts
-		project?:  string
+		project?: string
 
 		// Output only. Server defined URL for the resource.
 		self_link?: string

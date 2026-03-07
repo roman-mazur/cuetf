@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_project_sink")
 	close({
+		bigquery_options?: matchN(1, [#bigquery_options, list.MaxItems(1) & [...#bigquery_options]])
+		exclusions?: matchN(1, [#exclusions, [...#exclusions]])
+
 		// A service account provided by the caller that will be used to
 		// write the log entries. The format must be
 		// serviceAccount:some@email. This field can only be specified if
@@ -35,6 +38,7 @@ import "list"
 		// The filter to apply when exporting logs. Only log entries that
 		// match the filter are exported.
 		filter?: string
+		id?:     string
 
 		// The name of the logging sink.
 		name!: string
@@ -42,9 +46,6 @@ import "list"
 		// The ID of the project to create the sink in. If omitted, the
 		// project associated with the provider is used.
 		project?: string
-		id?:      string
-		bigquery_options?: matchN(1, [#bigquery_options, list.MaxItems(1) & [...#bigquery_options]])
-		exclusions?: matchN(1, [#exclusions, [...#exclusions]])
 
 		// Whether or not to create a unique identity associated with this
 		// sink. If false (the legacy behavior), then the writer_identity

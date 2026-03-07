@@ -44,6 +44,7 @@ package data
 		// Timeout (in seconds) for ICMP connections. Defaults to 30s if
 		// not set.
 		icmp_idle_timeout_sec?: number
+		id?:                    string
 
 		// Self-links of NAT IPs to be used as initial value for creation
 		// alongside a RouterNatAddress resource.
@@ -61,7 +62,6 @@ package data
 		// This field can only be set when enableDynamicPortAllocation is
 		// enabled.
 		max_ports_per_vm?: number
-		id?:               string
 
 		// Minimum number of ports allocated to a VM from this NAT.
 		// Defaults to 64 for static port allocation and 32 dynamic port

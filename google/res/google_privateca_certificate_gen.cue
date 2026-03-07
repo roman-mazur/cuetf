@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_privateca_certificate")
 	close({
+		config?: matchN(1, [#config, list.MaxItems(1) & [...#config]])
+		timeouts?: #timeouts
+
 		// The Certificate Authority ID that should issue the certificate.
 		// For example, to issue a Certificate from
 		// a Certificate Authority with resource name
@@ -170,8 +173,6 @@ import "list"
 
 		// Output only. The pem-encoded, signed X.509 certificate.
 		pem_certificate?: string
-		config?: matchN(1, [#config, list.MaxItems(1) & [...#config]])
-		timeouts?: #timeouts
 
 		// The chain that may be used to verify the X.509 certificate.
 		// Expected to be in issuer-to-root order according to RFC 5246.
@@ -182,7 +183,8 @@ import "list"
 		pem_csr?: string
 
 		// The name of the CaPool this Certificate belongs to.
-		pool!: string
+		pool!:    string
+		project?: string
 
 		// Output only. Details regarding the revocation of this
 		// Certificate. This Certificate is
@@ -191,7 +193,6 @@ import "list"
 			revocation_state?: string
 			revocation_time?:  string
 		})]
-		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

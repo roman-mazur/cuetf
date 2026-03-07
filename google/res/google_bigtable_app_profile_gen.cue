@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigtable_app_profile")
 	close({
+		data_boost_isolation_read_only?: matchN(1, [#data_boost_isolation_read_only, list.MaxItems(1) & [...#data_boost_isolation_read_only]])
+		single_cluster_routing?: matchN(1, [#single_cluster_routing, list.MaxItems(1) & [...#single_cluster_routing]])
+		standard_isolation?: matchN(1, [#standard_isolation, list.MaxItems(1) & [...#standard_isolation]])
+		timeouts?: #timeouts
+
 		// The unique name of the app profile in the form
 		// '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
 		app_profile_id!: string
@@ -25,7 +30,6 @@ import "list"
 		// will be tried in order of distance. If left empty, all
 		// clusters are eligible.
 		multi_cluster_routing_cluster_ids?: [...string]
-		data_boost_isolation_read_only?: matchN(1, [#data_boost_isolation_read_only, list.MaxItems(1) & [...#data_boost_isolation_read_only]])
 
 		// If true, read/write requests are routed to the nearest cluster
 		// in the instance, and will fail over to the nearest cluster
@@ -35,9 +39,6 @@ import "list"
 		// sacrifices read-your-writes
 		// consistency to improve availability.
 		multi_cluster_routing_use_any?: bool
-		single_cluster_routing?: matchN(1, [#single_cluster_routing, list.MaxItems(1) & [...#single_cluster_routing]])
-		standard_isolation?: matchN(1, [#standard_isolation, list.MaxItems(1) & [...#standard_isolation]])
-		timeouts?: #timeouts
 
 		// The unique name of the requested app profile. Values are of the
 		// form

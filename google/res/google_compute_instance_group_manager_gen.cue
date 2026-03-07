@@ -6,13 +6,25 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_instance_group_manager")
 	close({
+		all_instances_config?: matchN(1, [#all_instances_config, list.MaxItems(1) & [...#all_instances_config]])
+		auto_healing_policies?: matchN(1, [#auto_healing_policies, list.MaxItems(1) & [...#auto_healing_policies]])
+		instance_lifecycle_policy?: matchN(1, [#instance_lifecycle_policy, list.MaxItems(1) & [...#instance_lifecycle_policy]])
+		named_port?: matchN(1, [#named_port, [...#named_port]])
+		resource_policies?: matchN(1, [#resource_policies, list.MaxItems(1) & [...#resource_policies]])
+		standby_policy?: matchN(1, [#standby_policy, list.MaxItems(1) & [...#standby_policy]])
+		stateful_disk?: matchN(1, [#stateful_disk, [...#stateful_disk]])
+		stateful_external_ip?: matchN(1, [#stateful_external_ip, [...#stateful_external_ip]])
+		stateful_internal_ip?: matchN(1, [#stateful_internal_ip, [...#stateful_internal_ip]])
+		timeouts?: #timeouts
+		update_policy?: matchN(1, [#update_policy, list.MaxItems(1) & [...#update_policy]])
+		version!: matchN(1, [#version, [_, ...] & [...#version]])
+
 		// The base instance name to use for instances in this group. The
 		// value must be a valid RFC1035 name. Supported characters are
 		// lowercase letters, numbers, and hyphens (-). Instances are
 		// named by appending a hyphen and a random four-character string
 		// to the base instance name.
 		base_instance_name!: string
-		all_instances_config?: matchN(1, [#all_instances_config, list.MaxItems(1) & [...#all_instances_config]])
 
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
@@ -22,6 +34,7 @@ import "list"
 
 		// The fingerprint of the instance group manager.
 		fingerprint?: string
+		id?:          string
 
 		// The full URL of the instance group created by the manager.
 		instance_group?: string
@@ -39,12 +52,12 @@ import "list"
 		// enabled, maxResults and pageToken query parameters are
 		// respected.
 		list_managed_instances_results?: string
-		id?:                             string
 
 		// The name of the instance group manager. Must be 1-63 characters
 		// long and comply with RFC1035. Supported characters include
 		// lowercase letters, numbers, and hyphens.
-		name!: string
+		name!:      string
+		operation?: string
 
 		// The ID of the project in which the resource belongs. If it is
 		// not provided, the provider project is used.
@@ -70,23 +83,11 @@ import "list"
 				is_reached?: bool
 			})]
 		})]
-		operation?: string
-		auto_healing_policies?: matchN(1, [#auto_healing_policies, list.MaxItems(1) & [...#auto_healing_policies]])
-		instance_lifecycle_policy?: matchN(1, [#instance_lifecycle_policy, list.MaxItems(1) & [...#instance_lifecycle_policy]])
 
 		// The full URL of all target pools to which new instances in the
 		// group are added. Updating the target pools attribute does not
 		// affect existing instances.
 		target_pools?: [...string]
-		named_port?: matchN(1, [#named_port, [...#named_port]])
-		resource_policies?: matchN(1, [#resource_policies, list.MaxItems(1) & [...#resource_policies]])
-		standby_policy?: matchN(1, [#standby_policy, list.MaxItems(1) & [...#standby_policy]])
-		stateful_disk?: matchN(1, [#stateful_disk, [...#stateful_disk]])
-		stateful_external_ip?: matchN(1, [#stateful_external_ip, [...#stateful_external_ip]])
-		stateful_internal_ip?: matchN(1, [#stateful_internal_ip, [...#stateful_internal_ip]])
-		timeouts?: #timeouts
-		update_policy?: matchN(1, [#update_policy, list.MaxItems(1) & [...#update_policy]])
-		version!: matchN(1, [#version, [_, ...] & [...#version]])
 
 		// The target number of running instances for this managed
 		// instance group. This value should always be explicitly set

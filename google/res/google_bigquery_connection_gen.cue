@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_connection")
 	close({
+		aws?: matchN(1, [#aws, list.MaxItems(1) & [...#aws]])
+		azure?: matchN(1, [#azure, list.MaxItems(1) & [...#azure]])
+		cloud_resource?: matchN(1, [#cloud_resource, list.MaxItems(1) & [...#cloud_resource]])
+		cloud_spanner?: matchN(1, [#cloud_spanner, list.MaxItems(1) & [...#cloud_spanner]])
+		cloud_sql?: matchN(1, [#cloud_sql, list.MaxItems(1) & [...#cloud_sql]])
+		spark?: matchN(1, [#spark, list.MaxItems(1) & [...#spark]])
+		timeouts?: #timeouts
+
 		// Optional connection id that should be assigned to the created
 		// connection.
 		connection_id?: string
@@ -25,11 +33,6 @@ import "list"
 		// Example:
 		// projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
 		kms_key_name?: string
-		aws?: matchN(1, [#aws, list.MaxItems(1) & [...#aws]])
-		azure?: matchN(1, [#azure, list.MaxItems(1) & [...#azure]])
-		cloud_resource?: matchN(1, [#cloud_resource, list.MaxItems(1) & [...#cloud_resource]])
-		cloud_spanner?: matchN(1, [#cloud_spanner, list.MaxItems(1) & [...#cloud_spanner]])
-		cloud_sql?: matchN(1, [#cloud_sql, list.MaxItems(1) & [...#cloud_sql]])
 
 		// The geographic location where the connection should reside.
 		// Cloud SQL instance must be in the same location as the
@@ -41,8 +44,6 @@ import "list"
 		// AWS allowed regions are aws-us-east-1
 		// Azure allowed regions are azure-eastus2
 		location?: string
-		spark?: matchN(1, [#spark, list.MaxItems(1) & [...#spark]])
-		timeouts?: #timeouts
 
 		// The resource name of the connection in the form of:
 		// "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
@@ -118,6 +119,8 @@ import "list"
 	})
 
 	#cloud_sql: close({
+		credential!: matchN(1, [_#defs."/$defs/cloud_sql/$defs/credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/cloud_sql/$defs/credential"]])
+
 		// Database name.
 		database!: string
 
@@ -129,7 +132,6 @@ import "list"
 		// being used for connecting to the CloudSQL instance specified
 		// in this connection.
 		service_account_id?: string
-		credential!: matchN(1, [_#defs."/$defs/cloud_sql/$defs/credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/cloud_sql/$defs/credential"]])
 
 		// Type of the Cloud SQL database. Possible values:
 		// ["DATABASE_TYPE_UNSPECIFIED", "POSTGRES", "MYSQL"]

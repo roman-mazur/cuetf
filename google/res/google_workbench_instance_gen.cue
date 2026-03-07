@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_workbench_instance")
 	close({
+		gce_setup?: matchN(1, [#gce_setup, list.MaxItems(1) & [...#gce_setup]])
+		timeouts?: #timeouts
+
 		// An RFC3339 timestamp in UTC time. This in the format of
 		// yyyy-MM-ddTHH:mm:ss.SSSZ.
 		// The milliseconds portion (".SSS") is optional.
@@ -73,8 +76,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		gce_setup?: matchN(1, [#gce_setup, list.MaxItems(1) & [...#gce_setup]])
-		timeouts?: #timeouts
 
 		// Part of 'parent'. See documentation of 'projectsId'.
 		location!: string
@@ -115,6 +116,17 @@ import "list"
 	})
 
 	#gce_setup: close({
+		accelerator_configs?: matchN(1, [_#defs."/$defs/gce_setup/$defs/accelerator_configs", [..._#defs."/$defs/gce_setup/$defs/accelerator_configs"]])
+		boot_disk?: matchN(1, [_#defs."/$defs/gce_setup/$defs/boot_disk", list.MaxItems(1) & [..._#defs."/$defs/gce_setup/$defs/boot_disk"]])
+		confidential_instance_config?: matchN(1, [_#defs."/$defs/gce_setup/$defs/confidential_instance_config", list.MaxItems(1) & [..._#defs."/$defs/gce_setup/$defs/confidential_instance_config"]])
+		container_image?: matchN(1, [_#defs."/$defs/gce_setup/$defs/container_image", list.MaxItems(1) & [..._#defs."/$defs/gce_setup/$defs/container_image"]])
+		data_disks?: matchN(1, [_#defs."/$defs/gce_setup/$defs/data_disks", list.MaxItems(1) & [..._#defs."/$defs/gce_setup/$defs/data_disks"]])
+		network_interfaces?: matchN(1, [_#defs."/$defs/gce_setup/$defs/network_interfaces", [..._#defs."/$defs/gce_setup/$defs/network_interfaces"]])
+		reservation_affinity?: matchN(1, [_#defs."/$defs/gce_setup/$defs/reservation_affinity", list.MaxItems(1) & [..._#defs."/$defs/gce_setup/$defs/reservation_affinity"]])
+		service_accounts?: matchN(1, [_#defs."/$defs/gce_setup/$defs/service_accounts", [..._#defs."/$defs/gce_setup/$defs/service_accounts"]])
+		shielded_instance_config?: matchN(1, [_#defs."/$defs/gce_setup/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/gce_setup/$defs/shielded_instance_config"]])
+		vm_image?: matchN(1, [_#defs."/$defs/gce_setup/$defs/vm_image", list.MaxItems(1) & [..._#defs."/$defs/gce_setup/$defs/vm_image"]])
+
 		// Optional. If true, no external IP will be assigned to this VM
 		// instance.
 		disable_public_ip?: bool
@@ -127,24 +139,14 @@ import "list"
 		// Optional. The machine type of the VM instance.
 		// https://cloud.google.com/compute/docs/machine-resource
 		machine_type?: string
-		accelerator_configs?: matchN(1, [_#defs."/$defs/gce_setup/$defs/accelerator_configs", [..._#defs."/$defs/gce_setup/$defs/accelerator_configs"]])
 
 		// Optional. Custom metadata to apply to this instance.
 		metadata?: [string]: string
-		boot_disk?: matchN(1, [_#defs."/$defs/gce_setup/$defs/boot_disk", list.MaxItems(1) & [..._#defs."/$defs/gce_setup/$defs/boot_disk"]])
-		confidential_instance_config?: matchN(1, [_#defs."/$defs/gce_setup/$defs/confidential_instance_config", list.MaxItems(1) & [..._#defs."/$defs/gce_setup/$defs/confidential_instance_config"]])
-		container_image?: matchN(1, [_#defs."/$defs/gce_setup/$defs/container_image", list.MaxItems(1) & [..._#defs."/$defs/gce_setup/$defs/container_image"]])
-		data_disks?: matchN(1, [_#defs."/$defs/gce_setup/$defs/data_disks", list.MaxItems(1) & [..._#defs."/$defs/gce_setup/$defs/data_disks"]])
-		network_interfaces?: matchN(1, [_#defs."/$defs/gce_setup/$defs/network_interfaces", [..._#defs."/$defs/gce_setup/$defs/network_interfaces"]])
 
 		// Optional. The Compute Engine tags to add to instance (see
 		// [Tagging
 		// instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
 		tags?: [...string]
-		reservation_affinity?: matchN(1, [_#defs."/$defs/gce_setup/$defs/reservation_affinity", list.MaxItems(1) & [..._#defs."/$defs/gce_setup/$defs/reservation_affinity"]])
-		service_accounts?: matchN(1, [_#defs."/$defs/gce_setup/$defs/service_accounts", [..._#defs."/$defs/gce_setup/$defs/service_accounts"]])
-		shielded_instance_config?: matchN(1, [_#defs."/$defs/gce_setup/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/gce_setup/$defs/shielded_instance_config"]])
-		vm_image?: matchN(1, [_#defs."/$defs/gce_setup/$defs/vm_image", list.MaxItems(1) & [..._#defs."/$defs/gce_setup/$defs/vm_image"]])
 	})
 
 	#timeouts: close({
@@ -230,9 +232,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/gce_setup/$defs/network_interfaces": close({
+		access_configs?: matchN(1, [_#defs."/$defs/gce_setup/$defs/network_interfaces/$defs/access_configs", [..._#defs."/$defs/gce_setup/$defs/network_interfaces/$defs/access_configs"]])
+
 		// Optional. The name of the VPC that this VM instance is in.
 		network?: string
-		access_configs?: matchN(1, [_#defs."/$defs/gce_setup/$defs/network_interfaces/$defs/access_configs", [..._#defs."/$defs/gce_setup/$defs/network_interfaces/$defs/access_configs"]])
 
 		// Optional. The type of vNIC to be used on this interface. This
 		// may be gVNIC or VirtioNet. Possible values: ["VIRTIO_NET",

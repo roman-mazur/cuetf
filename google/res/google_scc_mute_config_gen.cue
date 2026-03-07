@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_mute_config")
 	close({
+		timeouts?: #timeouts
+
 		// The time at which the mute config was created. This field is
 		// set by
 		// the server and will be ignored if provided on config creation.
@@ -32,6 +34,7 @@ package res
 		// If a filter contains project = X but is created under the
 		// project = Y scope, it might not match any findings.
 		filter!: string
+		id?:     string
 
 		// Email address of the user who last edited the mute config. This
 		// field is set by the server and will be ignored if provided on
@@ -47,13 +50,11 @@ package res
 		// folders/{folder}/muteConfigs/{configId},
 		// or projects/{project}/muteConfigs/{configId}
 		name?: string
-		id?:   string
 
 		// Resource name of the new mute configs's parent. Its format is
 		// "organizations/[organization_id]", "folders/[folder_id]", or
 		// "projects/[project_id]".
-		parent!:   string
-		timeouts?: #timeouts
+		parent!: string
 
 		// The type of the mute config, which determines what type of mute
 		// state the config affects. Default value: "DYNAMIC" Possible

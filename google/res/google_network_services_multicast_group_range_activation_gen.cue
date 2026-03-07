@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_multicast_group_range_activation")
 	close({
+		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
+		timeouts?: #timeouts
+
 		// [Output only] The timestamp when the multicast group range
 		// activation was
 		// created.
@@ -19,6 +22,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// [Output only] The multicast group IP address range.
 		ip_cidr_range?: string
@@ -35,7 +39,6 @@ import "list"
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		location!: string
-		id?:       string
 
 		// The resource name of a multicast domain activation that is in
 		// the
@@ -67,15 +70,13 @@ import "list"
 		// activation.
 		// Use the following format:
 		// 'projects/*/locations/*/multicastGroupRangeActivations/*'.
-		name?: string
-		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		timeouts?: #timeouts
+		name?:    string
+		project?: string
 
 		// The multicast resource's state.
 		state?: [...close({
 			state?: string
 		})]
-		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

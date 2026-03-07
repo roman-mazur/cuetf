@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_session_template")
 	close({
+		environment_config?: matchN(1, [#environment_config, list.MaxItems(1) & [...#environment_config]])
+		jupyter_session?: matchN(1, [#jupyter_session, list.MaxItems(1) & [...#jupyter_session]])
+		runtime_config?: matchN(1, [#runtime_config, list.MaxItems(1) & [...#runtime_config]])
+		spark_connect_session?: matchN(1, [#spark_connect_session, list.MaxItems(1) & [...#spark_connect_session]])
+		timeouts?: #timeouts
+
 		// The time when the session template was created.
 		create_time?: string
 
@@ -16,6 +22,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// The labels to associate with this session template.
 		//
@@ -25,7 +32,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location in which the session template will be created in.
 		location?: string
@@ -33,17 +39,12 @@ import "list"
 		// The resource name of the session template in the following
 		// format:
 		// projects/{project}/locations/{location}/sessionTemplates/{template_id}
-		name!: string
-		environment_config?: matchN(1, [#environment_config, list.MaxItems(1) & [...#environment_config]])
-		jupyter_session?: matchN(1, [#jupyter_session, list.MaxItems(1) & [...#jupyter_session]])
-		runtime_config?: matchN(1, [#runtime_config, list.MaxItems(1) & [...#runtime_config]])
+		name!:    string
 		project?: string
-		spark_connect_session?: matchN(1, [#spark_connect_session, list.MaxItems(1) & [...#spark_connect_session]])
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		timeouts?: #timeouts
 
 		// The time when the session template was updated.
 		update_time?: string
@@ -95,6 +96,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/environment_config/$defs/execution_config": close({
+		authentication_config?: matchN(1, [_#defs."/$defs/environment_config/$defs/execution_config/$defs/authentication_config", list.MaxItems(1) & [..._#defs."/$defs/environment_config/$defs/execution_config/$defs/authentication_config"]])
+
 		// The duration to keep the session alive while it's idling.
 		// Exceeding this threshold causes the session to terminate.
 		// Minimum value is 10 minutes; maximum value is 14 day.
@@ -128,7 +131,6 @@ import "list"
 
 		// Subnetwork configuration for workload execution.
 		subnetwork_uri?: string
-		authentication_config?: matchN(1, [_#defs."/$defs/environment_config/$defs/execution_config/$defs/authentication_config", list.MaxItems(1) & [..._#defs."/$defs/environment_config/$defs/execution_config/$defs/authentication_config"]])
 
 		// The duration after which the workload will be terminated.
 		// When the workload exceeds this duration, it will be

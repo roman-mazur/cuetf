@@ -6,7 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_app_engine_service_split_traffic")
 	close({
-		id?: string
+		split!: matchN(1, [#split, list.MaxItems(1) & [_, ...] & [...#split]])
+		timeouts?: #timeouts
+		id?:       string
 
 		// If set to true traffic will be migrated to this version.
 		migrate_traffic?: bool
@@ -14,8 +16,6 @@ import "list"
 
 		// The name of the service these settings apply to.
 		service!: string
-		split!: matchN(1, [#split, list.MaxItems(1) & [_, ...] & [...#split]])
-		timeouts?: #timeouts
 	})
 
 	#split: close({

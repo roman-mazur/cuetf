@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_beyondcorp_security_gateway")
 	close({
+		hubs?: matchN(1, [#hubs, [...#hubs]])
+		logging?: matchN(1, [#logging, list.MaxItems(1) & [...#logging]])
+		proxy_protocol_config?: matchN(1, [#proxy_protocol_config, list.MaxItems(1) & [...#proxy_protocol_config]])
+		service_discovery?: matchN(1, [#service_discovery, list.MaxItems(1) & [...#service_discovery]])
+		timeouts?: #timeouts
+
 		// Output only. Timestamp when the resource was created.
 		create_time?: string
 
@@ -32,11 +38,6 @@ import "list"
 		// * Must contain between 4-63 characters from '/a-z-/'.
 		// * Must end with a number or letter.
 		security_gateway_id!: string
-		hubs?: matchN(1, [#hubs, [...#hubs]])
-		logging?: matchN(1, [#logging, list.MaxItems(1) & [...#logging]])
-		proxy_protocol_config?: matchN(1, [#proxy_protocol_config, list.MaxItems(1) & [...#proxy_protocol_config]])
-		service_discovery?: matchN(1, [#service_discovery, list.MaxItems(1) & [...#service_discovery]])
-		timeouts?: #timeouts
 
 		// Output only. The operational state of the SecurityGateway.
 		// Possible values:
@@ -61,6 +62,8 @@ import "list"
 	#logging: close({})
 
 	#proxy_protocol_config: close({
+		contextual_headers?: matchN(1, [_#defs."/$defs/proxy_protocol_config/$defs/contextual_headers", list.MaxItems(1) & [..._#defs."/$defs/proxy_protocol_config/$defs/contextual_headers"]])
+
 		// The configuration for the proxy.
 		allowed_client_headers?: [...string]
 
@@ -71,7 +74,6 @@ import "list"
 		// Gateway identity configuration. Possible values:
 		// ["RESOURCE_NAME"]
 		gateway_identity?: string
-		contextual_headers?: matchN(1, [_#defs."/$defs/proxy_protocol_config/$defs/contextual_headers", list.MaxItems(1) & [..._#defs."/$defs/proxy_protocol_config/$defs/contextual_headers"]])
 
 		// Custom resource specific headers along with the values.
 		// The names should conform to RFC 9110:

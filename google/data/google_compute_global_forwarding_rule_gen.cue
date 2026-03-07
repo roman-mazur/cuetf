@@ -63,6 +63,7 @@ package data
 		// The unique identifier number for the resource. This identifier
 		// is defined by the server.
 		forwarding_rule_id?: number
+		id?:                 string
 
 		// IP address for which this forwarding rule accepts traffic. When
 		// a client
@@ -124,7 +125,6 @@ package data
 		// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 		// Possible values: ["TCP", "UDP", "ESP", "AH", "SCTP", "ICMP"]
 		ip_protocol?: string
-		id?:          string
 
 		// The IP Version that will be used by this global forwarding
 		// rule. Possible values: ["IPV4", "IPV6"]
@@ -274,10 +274,10 @@ package data
 		//
 		// @pattern: \d+(?:-\d+)?
 		port_range?: string
+		project?:    string
 
 		// The PSC connection id of the PSC Forwarding Rule.
 		psc_connection_id?: string
-		project?:           string
 
 		// The PSC connection status of the PSC Forwarding Rule. Possible
 		// values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED',

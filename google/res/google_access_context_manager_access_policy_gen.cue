@@ -4,12 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_access_context_manager_access_policy")
 	close({
+		timeouts?: #timeouts
+
 		// Time the AccessPolicy was created in UTC.
 		create_time?: string
+		id?:          string
 
 		// Resource name of the AccessPolicy. Format: '{{policy_id}}'
 		name?: string
-		id?:   string
 
 		// The parent of this AccessPolicy in the Cloud Resource
 		// Hierarchy.
@@ -22,8 +24,7 @@ package res
 		scopes?: [...string]
 
 		// Human readable title. Does not affect behavior.
-		title!:    string
-		timeouts?: #timeouts
+		title!: string
 
 		// Time the AccessPolicy was updated in UTC.
 		update_time?: string

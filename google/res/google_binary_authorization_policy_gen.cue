@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_binary_authorization_policy")
 	close({
+		admission_whitelist_patterns?: matchN(1, [#admission_whitelist_patterns, [...#admission_whitelist_patterns]])
+		cluster_admission_rules?: matchN(1, [#cluster_admission_rules, [...#cluster_admission_rules]])
+		default_admission_rule!: matchN(1, [#default_admission_rule, list.MaxItems(1) & [_, ...] & [...#default_admission_rule]])
+		timeouts?: #timeouts
+
 		// A descriptive comment.
 		description?: string
 
@@ -17,11 +22,7 @@ import "list"
 		// Possible values: ["ENABLE", "DISABLE"]
 		global_policy_evaluation_mode?: string
 		id?:                            string
-		admission_whitelist_patterns?: matchN(1, [#admission_whitelist_patterns, [...#admission_whitelist_patterns]])
-		project?: string
-		cluster_admission_rules?: matchN(1, [#cluster_admission_rules, [...#cluster_admission_rules]])
-		default_admission_rule!: matchN(1, [#default_admission_rule, list.MaxItems(1) & [_, ...] & [...#default_admission_rule]])
-		timeouts?: #timeouts
+		project?:                       string
 	})
 
 	#admission_whitelist_patterns: close({

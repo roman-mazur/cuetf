@@ -4,6 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_intent")
 	close({
+		parameters?: matchN(1, [#parameters, [...#parameters]])
+		timeouts?: #timeouts
+		training_phrases?: matchN(1, [#training_phrases, [...#training_phrases]])
+
 		// Human readable description for better understanding an intent
 		// like its scope, content, result etc. Maximum character limit:
 		// 140 characters.
@@ -16,6 +20,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Marks this as the [Default Negative
 		// Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative)
@@ -30,7 +35,6 @@ package res
 		// 'is_default_negative_intent = true' because they will compete
 		// to control a single Default Negative Intent resource in GCP.
 		is_default_negative_intent?: bool
-		id?:                         string
 
 		// Marks this as the [Default Welcome
 		// Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome)
@@ -84,9 +88,6 @@ package res
 		// languages are supported. Note: languages must be enabled in
 		// the agent before they can be used.
 		language_code?: string
-		parameters?: matchN(1, [#parameters, [...#parameters]])
-		timeouts?: #timeouts
-		training_phrases?: matchN(1, [#training_phrases, [...#training_phrases]])
 
 		// The unique identifier of the intent.
 		// Format: projects/<Project ID>/locations/<Location

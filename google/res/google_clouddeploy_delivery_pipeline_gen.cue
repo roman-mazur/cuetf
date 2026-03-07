@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_clouddeploy_delivery_pipeline")
 	close({
+		serial_pipeline?: matchN(1, [#serial_pipeline, list.MaxItems(1) & [...#serial_pipeline]])
+		timeouts?: #timeouts
+
 		// User annotations. These attributes can only be set and used by
 		// the user, and not by Google Cloud Deploy. See
 		// https://google.aip.dev/128#annotations for more details such
@@ -56,6 +59,7 @@ import "list"
 		// other fields, and may be sent on update and delete requests to
 		// ensure the client has an up-to-date value before proceeding.
 		etag?: string
+		id?:   string
 
 		// Labels are attributes that can be set and used by both the user
 		// and by Google Cloud Deploy. Labels must meet the following
@@ -72,12 +76,9 @@ import "list"
 		// Please refer to the field `effective_labels` for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location for the resource
 		location!: string
-		serial_pipeline?: matchN(1, [#serial_pipeline, list.MaxItems(1) & [...#serial_pipeline]])
-		timeouts?: #timeouts
 
 		// Name of the `DeliveryPipeline`. Format is
 		// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
@@ -180,6 +181,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs": close({
+		postdeploy?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/postdeploy", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/postdeploy"]])
+		predeploy?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/predeploy", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/predeploy"]])
+
 		// Required. Percentage deployment for the phase.
 		percentage!: number
 
@@ -198,8 +202,6 @@ import "list"
 
 		// Whether to run verify tests after the deployment.
 		verify?: bool
-		postdeploy?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/postdeploy", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/postdeploy"]])
-		predeploy?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/predeploy", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/predeploy"]])
 	})
 
 	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/postdeploy": close({
@@ -245,6 +247,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/runtime_config/$defs/kubernetes/$defs/gateway_service_mesh": close({
+		route_destinations?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/runtime_config/$defs/kubernetes/$defs/gateway_service_mesh/$defs/route_destinations", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/runtime_config/$defs/kubernetes/$defs/gateway_service_mesh/$defs/route_destinations"]])
+
 		// Required. Name of the Kubernetes Deployment whose traffic is
 		// managed by the specified HTTPRoute and Service.
 		deployment!: string
@@ -270,7 +274,6 @@ import "list"
 		// deployment. If specified, must be between 15s and 3600s. If
 		// unspecified, there is no cutback time.
 		stable_cutback_duration?: string
-		route_destinations?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/runtime_config/$defs/kubernetes/$defs/gateway_service_mesh/$defs/route_destinations", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/runtime_config/$defs/kubernetes/$defs/gateway_service_mesh/$defs/route_destinations"]])
 	})
 
 	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/runtime_config/$defs/kubernetes/$defs/gateway_service_mesh/$defs/route_destinations": close({

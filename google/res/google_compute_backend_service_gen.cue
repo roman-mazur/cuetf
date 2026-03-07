@@ -6,6 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_backend_service")
 	close({
+		backend?: matchN(1, [#backend, [...#backend]])
+		cdn_policy?: matchN(1, [#cdn_policy, list.MaxItems(1) & [...#cdn_policy]])
+		circuit_breakers?: matchN(1, [#circuit_breakers, list.MaxItems(1) & [...#circuit_breakers]])
+		consistent_hash?: matchN(1, [#consistent_hash, list.MaxItems(1) & [...#consistent_hash]])
+		custom_metrics?: matchN(1, [#custom_metrics, [...#custom_metrics]])
+		iap?: matchN(1, [#iap, list.MaxItems(1) & [...#iap]])
+		locality_lb_policies?: matchN(1, [#locality_lb_policies, [...#locality_lb_policies]])
+		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
+		max_stream_duration?: matchN(1, [#max_stream_duration, list.MaxItems(1) & [...#max_stream_duration]])
+		outlier_detection?: matchN(1, [#outlier_detection, list.MaxItems(1) & [...#outlier_detection]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
+		security_settings?: matchN(1, [#security_settings, list.MaxItems(1) & [...#security_settings]])
+		strong_session_affinity_cookie?: matchN(1, [#strong_session_affinity_cookie, list.MaxItems(1) & [...#strong_session_affinity_cookie]])
+		timeouts?: #timeouts
+		tls_settings?: matchN(1, [#tls_settings, list.MaxItems(1) & [...#tls_settings]])
+
 		// Lifetime of cookies in seconds if session_affinity is
 		// GENERATED_COOKIE. If set to 0, the cookie is non-persistent and
 		// lasts
@@ -114,20 +130,6 @@ import "list"
 		// and from the client for proxyless gRPC). Possible values:
 		// ["IPV4_ONLY", "PREFER_IPV6", "IPV6_ONLY"]
 		ip_address_selection_policy?: string
-		backend?: matchN(1, [#backend, [...#backend]])
-		cdn_policy?: matchN(1, [#cdn_policy, list.MaxItems(1) & [...#cdn_policy]])
-		circuit_breakers?: matchN(1, [#circuit_breakers, list.MaxItems(1) & [...#circuit_breakers]])
-		consistent_hash?: matchN(1, [#consistent_hash, list.MaxItems(1) & [...#consistent_hash]])
-		custom_metrics?: matchN(1, [#custom_metrics, [...#custom_metrics]])
-		iap?: matchN(1, [#iap, list.MaxItems(1) & [...#iap]])
-		locality_lb_policies?: matchN(1, [#locality_lb_policies, [...#locality_lb_policies]])
-		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		max_stream_duration?: matchN(1, [#max_stream_duration, list.MaxItems(1) & [...#max_stream_duration]])
-		outlier_detection?: matchN(1, [#outlier_detection, list.MaxItems(1) & [...#outlier_detection]])
-		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
-		security_settings?: matchN(1, [#security_settings, list.MaxItems(1) & [...#security_settings]])
-		strong_session_affinity_cookie?: matchN(1, [#strong_session_affinity_cookie, list.MaxItems(1) & [...#strong_session_affinity_cookie]])
-		timeouts?: #timeouts
 
 		// Indicates whether the backend service will be used with
 		// internal or
@@ -141,7 +143,6 @@ import "list"
 		// "INTERNAL_SELF_MANAGED", "INTERNAL_MANAGED",
 		// "EXTERNAL_MANAGED"]
 		load_balancing_scheme?: string
-		tls_settings?: matchN(1, [#tls_settings, list.MaxItems(1) & [...#tls_settings]])
 
 		// The load balancing algorithm used within the scope of the
 		// locality.
@@ -293,6 +294,8 @@ import "list"
 	})
 
 	#backend: close({
+		custom_metrics?: matchN(1, [_#defs."/$defs/backend/$defs/custom_metrics", [..._#defs."/$defs/backend/$defs/custom_metrics"]])
+
 		// Specifies the balancing mode for this backend.
 		//
 		// For global HTTP(S) or TCP/SSL load balancing, the default is
@@ -375,7 +378,6 @@ import "list"
 		// of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
 		// group type, must be set.
 		max_rate?: number
-		custom_metrics?: matchN(1, [_#defs."/$defs/backend/$defs/custom_metrics", [..._#defs."/$defs/backend/$defs/custom_metrics"]])
 
 		// The max requests per second (RPS) that a single backend network
 		// endpoint can handle. This is used to calculate the capacity of
@@ -411,6 +413,10 @@ import "list"
 	})
 
 	#cdn_policy: close({
+		bypass_cache_on_request_headers?: matchN(1, [_#defs."/$defs/cdn_policy/$defs/bypass_cache_on_request_headers", [..._#defs."/$defs/cdn_policy/$defs/bypass_cache_on_request_headers"]])
+		cache_key_policy?: matchN(1, [_#defs."/$defs/cdn_policy/$defs/cache_key_policy", list.MaxItems(1) & [..._#defs."/$defs/cdn_policy/$defs/cache_key_policy"]])
+		negative_caching_policy?: matchN(1, [_#defs."/$defs/cdn_policy/$defs/negative_caching_policy", [..._#defs."/$defs/cdn_policy/$defs/negative_caching_policy"]])
+
 		// Specifies the cache setting for all responses from this
 		// backend.
 		// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL
@@ -440,9 +446,6 @@ import "list"
 		// fill requests into a small number of requests
 		// to the origin.
 		request_coalescing?: bool
-		bypass_cache_on_request_headers?: matchN(1, [_#defs."/$defs/cdn_policy/$defs/bypass_cache_on_request_headers", [..._#defs."/$defs/cdn_policy/$defs/bypass_cache_on_request_headers"]])
-		cache_key_policy?: matchN(1, [_#defs."/$defs/cdn_policy/$defs/cache_key_policy", list.MaxItems(1) & [..._#defs."/$defs/cdn_policy/$defs/cache_key_policy"]])
-		negative_caching_policy?: matchN(1, [_#defs."/$defs/cdn_policy/$defs/negative_caching_policy", [..._#defs."/$defs/cdn_policy/$defs/negative_caching_policy"]])
 
 		// Serve existing content from the cache (if available) when
 		// revalidating content with the origin, or when an error is
@@ -598,6 +601,9 @@ import "list"
 	})
 
 	#outlier_detection: close({
+		base_ejection_time?: matchN(1, [_#defs."/$defs/outlier_detection/$defs/base_ejection_time", list.MaxItems(1) & [..._#defs."/$defs/outlier_detection/$defs/base_ejection_time"]])
+		interval?: matchN(1, [_#defs."/$defs/outlier_detection/$defs/interval", list.MaxItems(1) & [..._#defs."/$defs/outlier_detection/$defs/interval"]])
+
 		// Number of errors before a host is ejected from the connection
 		// pool. When the
 		// backend host is accessed over HTTP, a 5xx return code qualifies
@@ -638,8 +644,6 @@ import "list"
 		// backend service
 		// that can be ejected. Defaults to 10%.
 		max_ejection_percent?: number
-		base_ejection_time?: matchN(1, [_#defs."/$defs/outlier_detection/$defs/base_ejection_time", list.MaxItems(1) & [..._#defs."/$defs/outlier_detection/$defs/base_ejection_time"]])
-		interval?: matchN(1, [_#defs."/$defs/outlier_detection/$defs/interval", list.MaxItems(1) & [..._#defs."/$defs/outlier_detection/$defs/interval"]])
 
 		// The number of hosts in a cluster that must have enough request
 		// volume to detect

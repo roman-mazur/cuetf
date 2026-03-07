@@ -126,11 +126,11 @@ package data
 		// friendly names of CPU platforms, such as Intel Haswell or
 		// Intel Skylake.
 		min_cpu_platform?: string
+		most_recent?:      bool
 
 		// The name of the instance template. If you leave this blank,
 		// Terraform will auto-generate a unique name.
-		name?:        string
-		most_recent?: bool
+		name?: string
 
 		// Creates a unique name beginning with the specified prefix.
 		// Conflicts with name. Max length is 54 characters. Prefixes

@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_feature_online_store_featureview")
 	close({
+		big_query_source?: matchN(1, [#big_query_source, list.MaxItems(1) & [...#big_query_source]])
+		feature_registry_source?: matchN(1, [#feature_registry_source, list.MaxItems(1) & [...#feature_registry_source]])
+		sync_config?: matchN(1, [#sync_config, list.MaxItems(1) & [...#sync_config]])
+		timeouts?: #timeouts
+
 		// The timestamp of when the featureOnlinestore was created in
 		// RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 		// to nine fractional digits.
@@ -18,6 +23,7 @@ import "list"
 
 		// The name of the FeatureOnlineStore to use for the featureview.
 		feature_online_store!: string
+		id?:                   string
 
 		// A set of key/value label pairs to assign to this FeatureView.
 		//
@@ -27,17 +33,12 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Name of the FeatureView. This value may be up to 60 characters,
 		// and valid characters are [a-z0-9_]. The first character cannot
 		// be a number.
-		name?: string
-		big_query_source?: matchN(1, [#big_query_source, list.MaxItems(1) & [...#big_query_source]])
+		name?:    string
 		project?: string
-		feature_registry_source?: matchN(1, [#feature_registry_source, list.MaxItems(1) & [...#feature_registry_source]])
-		sync_config?: matchN(1, [#sync_config, list.MaxItems(1) & [...#sync_config]])
-		timeouts?: #timeouts
 
 		// The region for the resource. It should be the same as the
 		// featureonlinestore region.

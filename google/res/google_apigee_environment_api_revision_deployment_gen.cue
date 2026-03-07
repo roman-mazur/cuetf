@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_environment_api_revision_deployment")
 	close({
+		timeouts?: #timeouts
+
 		// Apigee API proxy name.
 		api!: string
 
@@ -15,6 +17,7 @@ package res
 
 		// Apigee environment name.
 		environment!: string
+		id?:          string
 
 		// Apigee organization ID.
 		org_id!: string
@@ -25,11 +28,9 @@ package res
 
 		// API proxy revision number to deploy.
 		revision!: number
-		id?:       string
 
 		// If true, enables sequenced rollout for safe traffic switching.
 		sequenced_rollout?: bool
-		timeouts?:          #timeouts
 
 		// Optional service account the deployed proxy runs as.
 		service_account?: string

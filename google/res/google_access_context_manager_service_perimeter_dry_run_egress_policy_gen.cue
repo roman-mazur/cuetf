@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_access_context_manager_service_perimeter_dry_run_egress_policy")
 	close({
+		egress_from?: matchN(1, [#egress_from, list.MaxItems(1) & [...#egress_from]])
+		egress_to?: matchN(1, [#egress_to, list.MaxItems(1) & [...#egress_to]])
+		timeouts?: #timeouts
+
 		// The name of the Access Policy this resource belongs to.
 		access_policy_id?: string
 
@@ -20,16 +24,15 @@ import "list"
 
 		// The name of the Service Perimeter to add this resource to.
 		perimeter!: string
-		egress_from?: matchN(1, [#egress_from, list.MaxItems(1) & [...#egress_from]])
-		egress_to?: matchN(1, [#egress_to, list.MaxItems(1) & [...#egress_to]])
 
 		// Human readable title. Must be unique within the perimeter. Does
 		// not affect behavior.
-		title?:    string
-		timeouts?: #timeouts
+		title?: string
 	})
 
 	#egress_from: close({
+		sources?: matchN(1, [_#defs."/$defs/egress_from/$defs/sources", [..._#defs."/$defs/egress_from/$defs/sources"]])
+
 		// Identities can be an individual user, service account, Google
 		// group,
 		// or third-party identity. For third-party identity, only single
@@ -40,7 +43,6 @@ import "list"
 		// https://cloud.google.com/iam/docs/principal-identifiers#v1 are
 		// supported.
 		identities?: [...string]
-		sources?: matchN(1, [_#defs."/$defs/egress_from/$defs/sources", [..._#defs."/$defs/egress_from/$defs/sources"]])
 
 		// Specifies the type of identities that are allowed access to
 		// outside the
@@ -58,13 +60,14 @@ import "list"
 	})
 
 	#egress_to: close({
+		operations?: matchN(1, [_#defs."/$defs/egress_to/$defs/operations", [..._#defs."/$defs/egress_to/$defs/operations"]])
+
 		// A list of external resources that are allowed to be accessed. A
 		// request
 		// matches if it contains an external resource in this list
 		// (Example:
 		// s3://bucket/path). Currently '*' is not allowed.
 		external_resources?: [...string]
-		operations?: matchN(1, [_#defs."/$defs/egress_to/$defs/operations", [..._#defs."/$defs/egress_to/$defs/operations"]])
 
 		// A list of resources, currently only projects in the form
 		// 'projects/<projectnumber>', that match this to stanza. A

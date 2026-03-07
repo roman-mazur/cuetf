@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_recaptcha_enterprise_key")
 	close({
+		android_settings?: matchN(1, [#android_settings, list.MaxItems(1) & [...#android_settings]])
+		ios_settings?: matchN(1, [#ios_settings, list.MaxItems(1) & [...#ios_settings]])
+		testing_options?: matchN(1, [#testing_options, list.MaxItems(1) & [...#testing_options]])
+		timeouts?: #timeouts
+		waf_settings?: matchN(1, [#waf_settings, list.MaxItems(1) & [...#waf_settings]])
+		web_settings?: matchN(1, [#web_settings, list.MaxItems(1) & [...#web_settings]])
+
 		// The timestamp corresponding to the creation of this Key.
 		create_time?: string
 
@@ -26,19 +33,13 @@ import "list"
 		// Please refer to the field `effective_labels` for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		android_settings?: matchN(1, [#android_settings, list.MaxItems(1) & [...#android_settings]])
 
 		// The resource id for the Key, which is the same as the Site Key
 		// itself.
 		name?: string
-		ios_settings?: matchN(1, [#ios_settings, list.MaxItems(1) & [...#ios_settings]])
-		testing_options?: matchN(1, [#testing_options, list.MaxItems(1) & [...#testing_options]])
-		timeouts?: #timeouts
-		waf_settings?: matchN(1, [#waf_settings, list.MaxItems(1) & [...#waf_settings]])
 
 		// The project for the resource
 		project?: string
-		web_settings?: matchN(1, [#web_settings, list.MaxItems(1) & [...#web_settings]])
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

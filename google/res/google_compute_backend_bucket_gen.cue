@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_backend_bucket")
 	close({
+		cdn_policy?: matchN(1, [#cdn_policy, list.MaxItems(1) & [...#cdn_policy]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
+		timeouts?: #timeouts
+
 		// Cloud Storage bucket name.
 		bucket_name!: string
 
@@ -44,8 +48,6 @@ import "list"
 		// true) when loadBalancingScheme is set to INTERNAL_MANAGED.
 		// Possible values: ["INTERNAL_MANAGED"]
 		load_balancing_scheme?: string
-		cdn_policy?: matchN(1, [#cdn_policy, list.MaxItems(1) & [...#cdn_policy]])
-		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 
 		// Name of the resource. Provided by the client when the resource
 		// is
@@ -60,12 +62,15 @@ import "list"
 		// the
 		// last character, which cannot be a dash.
 		name!:      string
-		timeouts?:  #timeouts
 		project?:   string
 		self_link?: string
 	})
 
 	#cdn_policy: close({
+		bypass_cache_on_request_headers?: matchN(1, [_#defs."/$defs/cdn_policy/$defs/bypass_cache_on_request_headers", list.MaxItems(5) & [..._#defs."/$defs/cdn_policy/$defs/bypass_cache_on_request_headers"]])
+		cache_key_policy?: matchN(1, [_#defs."/$defs/cdn_policy/$defs/cache_key_policy", list.MaxItems(1) & [..._#defs."/$defs/cdn_policy/$defs/cache_key_policy"]])
+		negative_caching_policy?: matchN(1, [_#defs."/$defs/cdn_policy/$defs/negative_caching_policy", [..._#defs."/$defs/cdn_policy/$defs/negative_caching_policy"]])
+
 		// Specifies the cache setting for all responses from this
 		// backend.
 		// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL
@@ -100,9 +105,6 @@ import "list"
 		// If true then Cloud CDN will combine multiple concurrent cache
 		// fill requests into a small number of requests to the origin.
 		request_coalescing?: bool
-		bypass_cache_on_request_headers?: matchN(1, [_#defs."/$defs/cdn_policy/$defs/bypass_cache_on_request_headers", list.MaxItems(5) & [..._#defs."/$defs/cdn_policy/$defs/bypass_cache_on_request_headers"]])
-		cache_key_policy?: matchN(1, [_#defs."/$defs/cdn_policy/$defs/cache_key_policy", list.MaxItems(1) & [..._#defs."/$defs/cdn_policy/$defs/cache_key_policy"]])
-		negative_caching_policy?: matchN(1, [_#defs."/$defs/cdn_policy/$defs/negative_caching_policy", [..._#defs."/$defs/cdn_policy/$defs/negative_caching_policy"]])
 
 		// Serve existing content from the cache (if available) when
 		// revalidating content with the origin, or when an error is

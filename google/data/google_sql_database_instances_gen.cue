@@ -98,7 +98,8 @@ package data
 				advanced_machine_features?: [...close({
 					threads_per_core?: number
 				})]
-				availability_type?: string
+				auto_upgrade_enabled?: bool
+				availability_type?:    string
 				backup_configuration?: [...close({
 					backup_retention_settings?: [...close({
 						retained_backups?: number
@@ -121,6 +122,7 @@ package data
 					})]
 				})]
 				connector_enforcement?: string
+				data_api_access?:       string
 				data_cache_config?: [...close({
 					data_cache_enabled?: bool
 				})]
@@ -147,11 +149,12 @@ package data
 					retention_days?: number
 				})]
 				insights_config?: [...close({
-					query_insights_enabled?:  bool
-					query_plans_per_minute?:  number
-					query_string_length?:     number
-					record_application_tags?: bool
-					record_client_address?:   bool
+					enhanced_query_insights_enabled?: bool
+					query_insights_enabled?:          bool
+					query_plans_per_minute?:          number
+					query_string_length?:             number
+					record_application_tags?:         bool
+					record_client_address?:           bool
 				})]
 				ip_configuration?: [...close({
 					allocated_ip_range?: string

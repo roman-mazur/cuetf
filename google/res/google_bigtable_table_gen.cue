@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigtable_table")
 	close({
+		automated_backup_policy?: matchN(1, [#automated_backup_policy, list.MaxItems(1) & [...#automated_backup_policy]])
+		column_family?: matchN(1, [#column_family, [...#column_family]])
+		timeouts?: #timeouts
+
 		// Duration to retain change stream data for the table. Set to 0
 		// to disable. Must be between 1 and 7 days.
 		change_stream_retention?: string
@@ -16,10 +20,10 @@ import "list"
 		// prohibited. If not provided, currently deletion protection
 		// will be set to UNPROTECTED as it is the API default value.
 		deletion_protection?: string
+		id?:                  string
 
 		// The name of the Bigtable instance.
 		instance_name!: string
-		id?:            string
 
 		// The name of the table. Must be 1-50 characters and must only
 		// contain hyphens, underscores, periods, letters and numbers.
@@ -44,9 +48,6 @@ import "list"
 		// be set to "Iw==", which is the base64 encoding of the byte
 		// sequence "#".
 		row_key_schema?: string
-		automated_backup_policy?: matchN(1, [#automated_backup_policy, list.MaxItems(1) & [...#automated_backup_policy]])
-		column_family?: matchN(1, [#column_family, [...#column_family]])
-		timeouts?: #timeouts
 
 		// A list of predefined keys to split the table on. !> Warning:
 		// Modifying the split_keys of an existing table will cause

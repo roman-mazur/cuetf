@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_network_endpoint_group")
 	close({
+		timeouts?: #timeouts
+
 		// The default port used if the port number is not specified in
 		// the
 		// network endpoint.
@@ -58,7 +60,6 @@ package res
 		network_endpoint_type?: string
 		project?:               string
 		self_link?:             string
-		timeouts?:              #timeouts
 
 		// Number of network endpoints in the network endpoint group.
 		size?: number

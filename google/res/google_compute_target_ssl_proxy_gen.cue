@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_target_ssl_proxy")
 	close({
+		timeouts?: #timeouts
+
 		// A reference to the BackendService resource.
 		backend_service!: string
 
@@ -45,7 +47,6 @@ package res
 		// The unique identifier for the resource.
 		proxy_id?:  number
 		self_link?: string
-		timeouts?:  #timeouts
 
 		// A list of SslCertificate resources that are used to
 		// authenticate

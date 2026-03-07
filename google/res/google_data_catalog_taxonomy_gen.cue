@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_catalog_taxonomy")
 	close({
+		timeouts?: #timeouts
+
 		// A list of policy types that are activated for this taxonomy. If
 		// not set,
 		// defaults to an empty list. Possible values:
@@ -27,12 +29,11 @@ package res
 		// bytes
 		// long when encoded in UTF-8.
 		display_name!: string
-		timeouts?:     #timeouts
+		id?:           string
 
 		// Resource name of this taxonomy, whose format is:
 		// "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
 		name?:    string
-		id?:      string
 		project?: string
 
 		// Taxonomy location region.

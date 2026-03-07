@@ -231,6 +231,7 @@ package data
 				rdb_snapshot_start_time?: string
 			})]
 		})]
+		project?: string
 
 		// Configuration of a service attachment of the cluster, for
 		// creating PSC connections.
@@ -252,7 +253,6 @@ package data
 			psc_connection_status?: string
 			service_attachment?:    string
 		})]
-		project?: string
 
 		// Optional. Number of replica nodes per shard. If omitted the
 		// default is 0 replicas.

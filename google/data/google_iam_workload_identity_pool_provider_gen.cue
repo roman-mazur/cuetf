@@ -131,6 +131,7 @@ package data
 
 		// A display name for the provider. Cannot exceed 32 characters.
 		display_name?: string
+		id?:           string
 
 		// The resource name of the provider as
 		// 'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}'.
@@ -143,7 +144,6 @@ package data
 			issuer_uri?: string
 			jwks_json?:  string
 		})]
-		id?:      string
 		project?: string
 
 		// An SAML 2.0 identity provider. Not compatible with the property

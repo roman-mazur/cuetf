@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_artifact_registry_repository")
 	close({
+		cleanup_policies?: matchN(1, [#cleanup_policies, [...#cleanup_policies]])
+		docker_config?: matchN(1, [#docker_config, list.MaxItems(1) & [...#docker_config]])
+		maven_config?: matchN(1, [#maven_config, list.MaxItems(1) & [...#maven_config]])
+		remote_repository_config?: matchN(1, [#remote_repository_config, list.MaxItems(1) & [...#remote_repository_config]])
+		timeouts?: #timeouts
+		virtual_repository_config?: matchN(1, [#virtual_repository_config, list.MaxItems(1) & [...#virtual_repository_config]])
+		vulnerability_scanning_config?: matchN(1, [#vulnerability_scanning_config, list.MaxItems(1) & [...#vulnerability_scanning_config]])
+
 		// If true, the cleanup pipeline is prevented from deleting
 		// versions in this
 		// repository.
@@ -30,6 +38,7 @@ import "list"
 		// [alpha user
 		// group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
 		format!: string
+		id?:     string
 
 		// The Cloud KMS resource name of the customer managed encryption
 		// key that’s
@@ -71,18 +80,10 @@ import "list"
 		// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY",
 		// "REMOTE_REPOSITORY"]
 		mode?: string
-		id?:   string
 
 		// The name of the repository, for example:
 		// "repo1"
-		name?: string
-		cleanup_policies?: matchN(1, [#cleanup_policies, [...#cleanup_policies]])
-		docker_config?: matchN(1, [#docker_config, list.MaxItems(1) & [...#docker_config]])
-		maven_config?: matchN(1, [#maven_config, list.MaxItems(1) & [...#maven_config]])
-		remote_repository_config?: matchN(1, [#remote_repository_config, list.MaxItems(1) & [...#remote_repository_config]])
-		timeouts?: #timeouts
-		virtual_repository_config?: matchN(1, [#virtual_repository_config, list.MaxItems(1) & [...#virtual_repository_config]])
-		vulnerability_scanning_config?: matchN(1, [#vulnerability_scanning_config, list.MaxItems(1) & [...#vulnerability_scanning_config]])
+		name?:    string
 		project?: string
 
 		// The repository endpoint, for example:
@@ -131,6 +132,12 @@ import "list"
 	#remote_repository_config: close({
 		apt_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/apt_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/apt_repository"]])
 		common_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/common_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/common_repository"]])
+		docker_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/docker_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/docker_repository"]])
+		maven_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/maven_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/maven_repository"]])
+		npm_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/npm_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/npm_repository"]])
+		python_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/python_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/python_repository"]])
+		upstream_credentials?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/upstream_credentials", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/upstream_credentials"]])
+		yum_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/yum_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/yum_repository"]])
 
 		// The description of the remote source.
 		description?: string
@@ -139,12 +146,6 @@ import "list"
 		// credentials will
 		// not be validated.
 		disable_upstream_validation?: bool
-		docker_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/docker_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/docker_repository"]])
-		maven_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/maven_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/maven_repository"]])
-		npm_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/npm_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/npm_repository"]])
-		python_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/python_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/python_repository"]])
-		upstream_credentials?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/upstream_credentials", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/upstream_credentials"]])
-		yum_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/yum_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/yum_repository"]])
 	})
 
 	#timeouts: close({

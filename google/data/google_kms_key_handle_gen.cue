@@ -4,12 +4,13 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_kms_key_handle")
 	close({
+		id?: string
+
 		// A reference to a Cloud KMS CryptoKey that can be used for CMEK
 		// in the requested
 		// product/project/location, for example
 		// 'projects/1/locations/us-east1/keyRings/foo/cryptoKeys/bar-ffffff'
 		kms_key?: string
-		id?:      string
 
 		// The location for the KeyHandle.
 		// A full list of valid locations can be found by running 'gcloud

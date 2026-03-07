@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_control_organization_intelligence_config")
 	close({
+		filter?: matchN(1, [#filter, list.MaxItems(1) & [...#filter]])
+		timeouts?: #timeouts
+
 		// Edition configuration of the Storage Intelligence resource.
 		// Valid values are INHERIT, DISABLED, TRIAL and STANDARD.
 		edition_config?: string
@@ -20,7 +23,6 @@ import "list"
 		// Identifier of the GCP Organization. For GCP org, this field
 		// should be organization number.
 		name!: string
-		filter?: matchN(1, [#filter, list.MaxItems(1) & [...#filter]])
 
 		// The trial configuration of the Storage Intelligence resource.
 		trial_config?: [...close({
@@ -30,7 +32,6 @@ import "list"
 		// The time at which the Storage Intelligence Config resource is
 		// last updated.
 		update_time?: string
-		timeouts?:    #timeouts
 	})
 
 	#filter: close({

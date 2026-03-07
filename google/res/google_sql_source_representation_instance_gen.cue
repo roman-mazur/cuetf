@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_sql_source_representation_instance")
 	close({
+		timeouts?: #timeouts
+
 		// The CA certificate on the external server. Include only if
 		// SSL/TLS is used on the external server.
 		ca_certificate?: string
@@ -22,8 +24,9 @@ package res
 		// Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0,
 		// MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11,
 		// POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15,
-		// POSTGRES_16, POSTGRES_17. Database Version Policies includes
-		// an up-to-date reference of supported versions.
+		// POSTGRES_16, POSTGRES_17, POSTGRES_18. Database Version
+		// Policies includes an up-to-date reference of supported
+		// versions.
 		database_version!: string
 
 		// A file in the bucket that contains the data from the external
@@ -42,7 +45,6 @@ package res
 
 		// The password for the replication user account.
 		password?: string
-		timeouts?: #timeouts
 
 		// The externally accessible port for the source database server.
 		// Defaults to 3306.

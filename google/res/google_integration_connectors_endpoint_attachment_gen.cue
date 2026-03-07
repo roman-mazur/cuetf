@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_integration_connectors_endpoint_attachment")
 	close({
+		timeouts?: #timeouts
+
 		// Time the Namespace was created in UTC.
 		create_time?: string
 
@@ -35,12 +37,11 @@ package res
 		location!: string
 
 		// Name of Endpoint Attachment needs to be created.
-		name!:     string
-		timeouts?: #timeouts
+		name!:    string
+		project?: string
 
 		// The path of the service attachment.
 		service_attachment!: string
-		project?:            string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

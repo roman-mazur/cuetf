@@ -6,6 +6,15 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_pubsub_subscription")
 	close({
+		bigquery_config?: matchN(1, [#bigquery_config, list.MaxItems(1) & [...#bigquery_config]])
+		cloud_storage_config?: matchN(1, [#cloud_storage_config, list.MaxItems(1) & [...#cloud_storage_config]])
+		dead_letter_policy?: matchN(1, [#dead_letter_policy, list.MaxItems(1) & [...#dead_letter_policy]])
+		expiration_policy?: matchN(1, [#expiration_policy, list.MaxItems(1) & [...#expiration_policy]])
+		message_transforms?: matchN(1, [#message_transforms, [...#message_transforms]])
+		push_config?: matchN(1, [#push_config, list.MaxItems(1) & [...#push_config]])
+		retry_policy?: matchN(1, [#retry_policy, list.MaxItems(1) & [...#retry_policy]])
+		timeouts?: #timeouts
+
 		// This value is the maximum time after a subscriber receives a
 		// message
 		// before the subscriber should acknowledge the message. After
@@ -102,15 +111,8 @@ import "list"
 		message_retention_duration?: string
 
 		// Name of the subscription.
-		name!: string
-		bigquery_config?: matchN(1, [#bigquery_config, list.MaxItems(1) & [...#bigquery_config]])
-		cloud_storage_config?: matchN(1, [#cloud_storage_config, list.MaxItems(1) & [...#cloud_storage_config]])
-		dead_letter_policy?: matchN(1, [#dead_letter_policy, list.MaxItems(1) & [...#dead_letter_policy]])
-		expiration_policy?: matchN(1, [#expiration_policy, list.MaxItems(1) & [...#expiration_policy]])
-		message_transforms?: matchN(1, [#message_transforms, [...#message_transforms]])
-		push_config?: matchN(1, [#push_config, list.MaxItems(1) & [...#push_config]])
-		retry_policy?: matchN(1, [#retry_policy, list.MaxItems(1) & [...#retry_policy]])
-		timeouts?: #timeouts
+		name!:    string
+		project?: string
 
 		// Indicates whether to retain acknowledged messages. If 'true',
 		// then
@@ -119,7 +121,6 @@ import "list"
 		// they are acknowledged, until they fall out of the
 		// messageRetentionDuration window.
 		retain_acked_messages?: bool
-		project?:               string
 
 		// Input only. Resource manager tags to be bound to the
 		// subscription. Tag
@@ -195,6 +196,8 @@ import "list"
 	})
 
 	#cloud_storage_config: close({
+		avro_config?: matchN(1, [_#defs."/$defs/cloud_storage_config/$defs/avro_config", list.MaxItems(1) & [..._#defs."/$defs/cloud_storage_config/$defs/avro_config"]])
+
 		// User-provided name for the Cloud Storage bucket. The bucket
 		// must be created by the user. The bucket name must be without
 		// any prefix like "gs://".
@@ -228,7 +231,6 @@ import "list"
 		// The maximum messages that can be written to a Cloud Storage
 		// file before a new file is created. Min 1000 messages.
 		max_messages?: number
-		avro_config?: matchN(1, [_#defs."/$defs/cloud_storage_config/$defs/avro_config", list.MaxItems(1) & [..._#defs."/$defs/cloud_storage_config/$defs/avro_config"]])
 
 		// The service account to use to write to Cloud Storage. If not
 		// specified, the Pub/Sub

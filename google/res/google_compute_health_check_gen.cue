@@ -6,6 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_health_check")
 	close({
+		grpc_health_check?: matchN(1, [#grpc_health_check, list.MaxItems(1) & [...#grpc_health_check]])
+		grpc_tls_health_check?: matchN(1, [#grpc_tls_health_check, list.MaxItems(1) & [...#grpc_tls_health_check]])
+		http2_health_check?: matchN(1, [#http2_health_check, list.MaxItems(1) & [...#http2_health_check]])
+		http_health_check?: matchN(1, [#http_health_check, list.MaxItems(1) & [...#http_health_check]])
+		https_health_check?: matchN(1, [#https_health_check, list.MaxItems(1) & [...#https_health_check]])
+		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
+		ssl_health_check?: matchN(1, [#ssl_health_check, list.MaxItems(1) & [...#ssl_health_check]])
+		tcp_health_check?: matchN(1, [#tcp_health_check, list.MaxItems(1) & [...#tcp_health_check]])
+		timeouts?: #timeouts
+
 		// How often (in seconds) to send a health check. The default
 		// value is 5
 		// seconds.
@@ -23,6 +33,7 @@ import "list"
 		// many
 		// consecutive successes. The default value is 2.
 		healthy_threshold?: number
+		id?:                string
 
 		// Name of the resource. Provided by the client when the resource
 		// is
@@ -36,10 +47,8 @@ import "list"
 		// characters must be a dash, lowercase letter, or digit, except
 		// the
 		// last character, which cannot be a dash.
-		name!:    string
-		id?:      string
-		project?: string
-		grpc_health_check?: matchN(1, [#grpc_health_check, list.MaxItems(1) & [...#grpc_health_check]])
+		name!:      string
+		project?:   string
 		self_link?: string
 
 		// The list of cloud regions from which health checks are
@@ -67,14 +76,6 @@ import "list"
 		// managed
 		// instance group auto-healing.
 		source_regions?: [...string]
-		grpc_tls_health_check?: matchN(1, [#grpc_tls_health_check, list.MaxItems(1) & [...#grpc_tls_health_check]])
-		http2_health_check?: matchN(1, [#http2_health_check, list.MaxItems(1) & [...#http2_health_check]])
-		http_health_check?: matchN(1, [#http_health_check, list.MaxItems(1) & [...#http_health_check]])
-		https_health_check?: matchN(1, [#https_health_check, list.MaxItems(1) & [...#https_health_check]])
-		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		ssl_health_check?: matchN(1, [#ssl_health_check, list.MaxItems(1) & [...#ssl_health_check]])
-		tcp_health_check?: matchN(1, [#tcp_health_check, list.MaxItems(1) & [...#tcp_health_check]])
-		timeouts?: #timeouts
 
 		// How long (in seconds) to wait before claiming failure.
 		// The default value is 5 seconds. It is invalid for timeoutSec to

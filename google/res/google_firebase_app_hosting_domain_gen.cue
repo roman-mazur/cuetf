@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_hosting_domain")
 	close({
+		serve?: matchN(1, [#serve, list.MaxItems(1) & [...#serve]])
+		timeouts?: #timeouts
+
 		// The ID of the Backend that this Domain is associated with
 		backend!: string
 
@@ -78,8 +81,6 @@ import "list"
 		// 'projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}'
 		name?:    string
 		project?: string
-		serve?: matchN(1, [#serve, list.MaxItems(1) & [...#serve]])
-		timeouts?: #timeouts
 
 		// Time at which a soft-deleted domain will be purged, rendering
 		// in

@@ -20,10 +20,10 @@ package data
 		create_time?:    string
 		data_source_id!: string
 		id?:             string
+		location!:       string
 
 		// Name of resource
-		name?:     string
-		location!: string
-		project!:  string
+		name?:    string
+		project!: string
 	})
 }

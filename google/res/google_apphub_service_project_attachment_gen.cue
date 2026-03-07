@@ -4,13 +4,16 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apphub_service_project_attachment")
 	close({
+		timeouts?: #timeouts
+
 		// Output only. Create time.
 		create_time?: string
+		id?:          string
 
 		// "Identifier. The resource name of a ServiceProjectAttachment.
 		// Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\""
-		name?: string
-		id?:   string
+		name?:    string
+		project?: string
 
 		// "Immutable. Service project name in the format:
 		// \"projects/abc\"
@@ -27,9 +30,7 @@ package res
 		service_project_attachment_id!: string
 
 		// ServiceProjectAttachment state.
-		state?:    string
-		project?:  string
-		timeouts?: #timeouts
+		state?: string
 
 		// Output only. A globally unique identifier (in UUID4 format) for
 		// the 'ServiceProjectAttachment'.

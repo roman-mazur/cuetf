@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_datapolicy_data_policy")
 	close({
+		data_masking_policy?: matchN(1, [#data_masking_policy, list.MaxItems(1) & [...#data_masking_policy]])
+		timeouts?: #timeouts
+
 		// User-assigned (human readable) ID of the data policy that needs
 		// to be unique within a project. Used as {dataPolicyId} in part
 		// of the resource name.
@@ -18,12 +21,10 @@ import "list"
 
 		// The name of the location of the data policy.
 		location!: string
-		data_masking_policy?: matchN(1, [#data_masking_policy, list.MaxItems(1) & [...#data_masking_policy]])
 
 		// Resource name of this data policy, in the format of
 		// projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// Policy tag resource name, in the format of
 		// projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.

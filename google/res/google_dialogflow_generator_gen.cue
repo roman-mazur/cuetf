@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_generator")
 	close({
+		inference_parameter?: matchN(1, [#inference_parameter, list.MaxItems(1) & [...#inference_parameter]])
+		summarization_context!: matchN(1, [#summarization_context, list.MaxItems(1) & [_, ...] & [...#summarization_context]])
+		timeouts?: #timeouts
+
 		// Optional. Human readable description of the generator.
 		description?: string
 
@@ -18,11 +22,8 @@ import "list"
 		location!: string
 
 		// The resource name of the generator.
-		name?: string
-		inference_parameter?: matchN(1, [#inference_parameter, list.MaxItems(1) & [...#inference_parameter]])
-		summarization_context!: matchN(1, [#summarization_context, list.MaxItems(1) & [_, ...] & [...#summarization_context]])
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// Optional. The published Large Language Model name. * To use the
 		// latest model version, specify the model name without version

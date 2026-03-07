@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_securityposture_posture_deployment")
 	close({
+		timeouts?: #timeouts
+
 		// Time the posture deployment was created in UTC.
 		create_time?: string
 
@@ -34,13 +36,13 @@ package res
 		// message for posture deployment's
 		// CREATE/UPDATE/DELETE methods.
 		failure_message?: string
+		id?:              string
 
 		// The location of the resource, eg. global'.
 		location!: string
 
 		// Name of the posture deployment instance.
 		name?: string
-		id?:   string
 
 		// The parent of the resource, an organization. Format should be
 		// 'organizations/{organization_id}'.
@@ -48,7 +50,6 @@ package res
 
 		// ID of the posture deployment.
 		posture_deployment_id!: string
-		timeouts?:              #timeouts
 
 		// Relative name of the posture which needs to be deployed. It
 		// should be in the format:

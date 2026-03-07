@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_public_advertised_prefix")
 	close({
+		timeouts?: #timeouts
+
 		// An optional description of this resource.
 		description?: string
 
@@ -52,7 +54,6 @@ package res
 		// will take ~4 weeks. Possible values: ["GLOBAL", "REGIONAL"]
 		pdp_scope?: string
 		project?:   string
-		timeouts?:  #timeouts
 		self_link?: string
 
 		// Output Only. The shared secret to be used for reverse DNS

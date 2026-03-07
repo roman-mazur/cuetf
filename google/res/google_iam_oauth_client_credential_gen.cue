@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_oauth_client_credential")
 	close({
+		timeouts?: #timeouts
+
 		// The system-generated OAuth client secret.
 		//
 		// The client secret must be stored securely. If the client secret
@@ -43,7 +45,6 @@ package res
 		// and may contain the characters [a-z0-9-]. The prefix 'gcp-' is
 		// reserved for use by Google, and may not be specified.
 		oauth_client_credential_id!: string
-		timeouts?:                   #timeouts
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in

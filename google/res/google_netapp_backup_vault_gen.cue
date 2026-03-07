@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_backup_vault")
 	close({
+		backup_retention_policy?: matchN(1, [#backup_retention_policy, list.MaxItems(1) & [...#backup_retention_policy]])
+		timeouts?: #timeouts
+
 		// Region in which backup is stored.
 		backup_region?: string
 
@@ -45,10 +48,8 @@ import "list"
 
 		// The resource name of the backup vault. Needs to be unique per
 		// location.
-		name!: string
-		backup_retention_policy?: matchN(1, [#backup_retention_policy, list.MaxItems(1) & [...#backup_retention_policy]])
-		timeouts?: #timeouts
-		project?:  string
+		name!:    string
+		project?: string
 
 		// Name of the Backup vault created in source region.
 		source_backup_vault?: string

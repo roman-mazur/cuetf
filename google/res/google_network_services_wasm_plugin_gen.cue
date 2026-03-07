@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_wasm_plugin")
 	close({
+		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
+		timeouts?: #timeouts
+		versions!: matchN(1, [#versions, [_, ...] & [...#versions]])
+
 		// Output only. The timestamp when the resource was created.
 		create_time?: string
 
@@ -16,6 +20,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Optional. Set of labels associated with the WasmPlugin
 		// resource.
@@ -25,7 +30,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location of the traffic extension
 		location?: string
@@ -37,10 +41,7 @@ import "list"
 		main_version_id!: string
 
 		// Identifier. Name of the WasmPlugin resource.
-		name!: string
-		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		timeouts?: #timeouts
-		versions!: matchN(1, [#versions, [_, ...] & [...#versions]])
+		name!:    string
 		project?: string
 
 		// The combination of labels configured directly on the resource

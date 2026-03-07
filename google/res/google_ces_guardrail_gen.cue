@@ -6,11 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_guardrail")
 	close({
+		action?: matchN(1, [#action, list.MaxItems(1) & [...#action]])
+		code_callback?: matchN(1, [#code_callback, list.MaxItems(1) & [...#code_callback]])
+		content_filter?: matchN(1, [#content_filter, list.MaxItems(1) & [...#content_filter]])
+		llm_policy?: matchN(1, [#llm_policy, list.MaxItems(1) & [...#llm_policy]])
+		llm_prompt_security?: matchN(1, [#llm_prompt_security, list.MaxItems(1) & [...#llm_prompt_security]])
+		model_safety?: matchN(1, [#model_safety, list.MaxItems(1) & [...#model_safety]])
+		timeouts?: #timeouts
+
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		app!: string
-		action?: matchN(1, [#action, list.MaxItems(1) & [...#action]])
 
 		// Timestamp when the guardrail was created.
 		create_time?: string
@@ -38,17 +45,11 @@ import "list"
 		// automatically assigned for the guardrail.
 		guardrail_id!: string
 		id?:           string
-		code_callback?: matchN(1, [#code_callback, list.MaxItems(1) & [...#code_callback]])
-		content_filter?: matchN(1, [#content_filter, list.MaxItems(1) & [...#content_filter]])
-		llm_policy?: matchN(1, [#llm_policy, list.MaxItems(1) & [...#llm_policy]])
-		llm_prompt_security?: matchN(1, [#llm_prompt_security, list.MaxItems(1) & [...#llm_prompt_security]])
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		location!: string
-		model_safety?: matchN(1, [#model_safety, list.MaxItems(1) & [...#model_safety]])
-		timeouts?: #timeouts
 
 		// Identifier. The unique identifier of the guardrail.
 		// Format:
@@ -96,6 +97,8 @@ import "list"
 	})
 
 	#llm_policy: close({
+		model_settings?: matchN(1, [_#defs."/$defs/llm_policy/$defs/model_settings", list.MaxItems(1) & [..._#defs."/$defs/llm_policy/$defs/model_settings"]])
+
 		// By default, the LLM policy check is bypassed for short
 		// utterances.
 		// Enabling this setting applies the policy check to all
@@ -127,7 +130,6 @@ import "list"
 		// USER_QUERY_AND_AGENT_RESPONSE Possible values: ["USER_QUERY",
 		// "AGENT_RESPONSE", "USER_QUERY_AND_AGENT_RESPONSE"]
 		policy_scope!: string
-		model_settings?: matchN(1, [_#defs."/$defs/llm_policy/$defs/model_settings", list.MaxItems(1) & [..._#defs."/$defs/llm_policy/$defs/model_settings"]])
 
 		// Policy prompt.
 		prompt!: string
@@ -245,6 +247,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/llm_prompt_security/$defs/custom_policy": close({
+		model_settings?: matchN(1, [_#defs."/$defs/llm_prompt_security/$defs/custom_policy/$defs/model_settings", list.MaxItems(1) & [..._#defs."/$defs/llm_prompt_security/$defs/custom_policy/$defs/model_settings"]])
+
 		// By default, the LLM policy check is bypassed for short
 		// utterances.
 		// Enabling this setting applies the policy check to all
@@ -275,7 +279,6 @@ import "list"
 		// AGENT_RESPONSE
 		// USER_QUERY_AND_AGENT_RESPONSE
 		policy_scope!: string
-		model_settings?: matchN(1, [_#defs."/$defs/llm_prompt_security/$defs/custom_policy/$defs/model_settings", list.MaxItems(1) & [..._#defs."/$defs/llm_prompt_security/$defs/custom_policy/$defs/model_settings"]])
 
 		// Policy prompt.
 		prompt!: string

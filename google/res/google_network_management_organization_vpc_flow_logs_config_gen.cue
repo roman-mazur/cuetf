@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_management_organization_vpc_flow_logs_config")
 	close({
+		timeouts?: #timeouts
+
 		// Optional. The aggregation interval for the logs. Default value
 		// is
 		// INTERVAL_5_SEC. Possible values: INTERVAL_5_SEC INTERVAL_30_SEC
@@ -48,6 +50,7 @@ package res
 		// Flow Logs, use
 		// the state field instead. Default value is 1.0
 		flow_sampling?: number
+		id?:            string
 
 		// Optional. Resource labels to represent the user-provided
 		// metadata.
@@ -58,7 +61,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource
@@ -81,7 +83,6 @@ package res
 		// logs. Can only be specified if \"metadata\" was set to
 		// CUSTOM_METADATA.
 		metadata_fields?: [...string]
-		timeouts?: #timeouts
 
 		// Identifier. Unique name of the configuration using the form:
 		// 'organizations/{org_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}'

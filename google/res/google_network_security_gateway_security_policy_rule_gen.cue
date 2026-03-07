@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_gateway_security_policy_rule")
 	close({
+		timeouts?: #timeouts
+
 		// CEL expression for matching on L7/application level criteria.
 		application_matcher?: string
 
@@ -40,11 +42,10 @@ package res
 		// Priority of the rule. Lower number corresponds to higher
 		// precedence.
 		priority!: number
-		timeouts?: #timeouts
+		project?:  string
 
 		// Server-defined URL of this resource.
 		self_link?: string
-		project?:   string
 
 		// CEL expression for matching on session criteria.
 		session_matcher!: string

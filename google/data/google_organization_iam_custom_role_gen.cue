@@ -9,6 +9,7 @@ package data
 
 		// A human-readable description for the role.
 		description?: string
+		id?:          string
 
 		// The name of the role in the format
 		// organizations/{{org_id}}/roles/{{role_id}}. Like id, this
@@ -23,7 +24,6 @@ package data
 		// The names of the permissions this role grants when bound in an
 		// IAM policy. At least one permission must be specified.
 		permissions?: [...string]
-		id?: string
 
 		// The role id to use for this role.
 		role_id!: string

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_backend_service_signed_url_key")
 	close({
+		timeouts?: #timeouts
+
 		// The backend service this signed URL key belongs.
 		backend_service!: string
 		id?:              string
@@ -14,9 +16,8 @@ package res
 		key_value!: string
 
 		// Name of the signed URL key.
-		name!:     string
-		timeouts?: #timeouts
-		project?:  string
+		name!:    string
+		project?: string
 	})
 
 	#timeouts: close({

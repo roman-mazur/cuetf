@@ -14,6 +14,7 @@ package data
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Labels for this Membership binding.
 		//
@@ -23,7 +24,6 @@ package data
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Location of the membership
 		location!: string

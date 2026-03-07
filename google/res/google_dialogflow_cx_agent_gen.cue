@@ -6,11 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_agent")
 	close({
+		advanced_settings?: matchN(1, [#advanced_settings, list.MaxItems(1) & [...#advanced_settings]])
+		answer_feedback_settings?: matchN(1, [#answer_feedback_settings, list.MaxItems(1) & [...#answer_feedback_settings]])
+		client_certificate_settings?: matchN(1, [#client_certificate_settings, list.MaxItems(1) & [...#client_certificate_settings]])
+		gen_app_builder_settings?: matchN(1, [#gen_app_builder_settings, list.MaxItems(1) & [...#gen_app_builder_settings]])
+		git_integration_settings?: matchN(1, [#git_integration_settings, list.MaxItems(1) & [...#git_integration_settings]])
+		personalization_settings?: matchN(1, [#personalization_settings, list.MaxItems(1) & [...#personalization_settings]])
+		speech_to_text_settings?: matchN(1, [#speech_to_text_settings, list.MaxItems(1) & [...#speech_to_text_settings]])
+		text_to_speech_settings?: matchN(1, [#text_to_speech_settings, list.MaxItems(1) & [...#text_to_speech_settings]])
+		timeouts?: #timeouts
+
 		// The URI of the agent's avatar. Avatars are used throughout the
 		// Dialogflow console and in the self-hosted Web Demo
 		// integration.
 		avatar_uri?: string
-		advanced_settings?: matchN(1, [#advanced_settings, list.MaxItems(1) & [...#advanced_settings]])
 
 		// The default language of the agent as a language tag. [See
 		// Language
@@ -91,18 +100,10 @@ import "list"
 		// The unique identifier of the agent.
 		name?:    string
 		project?: string
-		answer_feedback_settings?: matchN(1, [#answer_feedback_settings, list.MaxItems(1) & [...#answer_feedback_settings]])
 
 		// A read only boolean field reflecting Zone Isolation status of
 		// the agent.
 		satisfies_pzi?: bool
-		client_certificate_settings?: matchN(1, [#client_certificate_settings, list.MaxItems(1) & [...#client_certificate_settings]])
-		gen_app_builder_settings?: matchN(1, [#gen_app_builder_settings, list.MaxItems(1) & [...#gen_app_builder_settings]])
-		git_integration_settings?: matchN(1, [#git_integration_settings, list.MaxItems(1) & [...#git_integration_settings]])
-		personalization_settings?: matchN(1, [#personalization_settings, list.MaxItems(1) & [...#personalization_settings]])
-		speech_to_text_settings?: matchN(1, [#speech_to_text_settings, list.MaxItems(1) & [...#speech_to_text_settings]])
-		text_to_speech_settings?: matchN(1, [#text_to_speech_settings, list.MaxItems(1) & [...#text_to_speech_settings]])
-		timeouts?: #timeouts
 
 		// A read only boolean field reflecting Zone Separation status of
 		// the agent.

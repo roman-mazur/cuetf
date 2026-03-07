@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_spoke")
 	close({
+		linked_interconnect_attachments?: matchN(1, [#linked_interconnect_attachments, list.MaxItems(1) & [...#linked_interconnect_attachments]])
+		linked_producer_vpc_network?: matchN(1, [#linked_producer_vpc_network, list.MaxItems(1) & [...#linked_producer_vpc_network]])
+		linked_router_appliance_instances?: matchN(1, [#linked_router_appliance_instances, list.MaxItems(1) & [...#linked_router_appliance_instances]])
+		linked_vpc_network?: matchN(1, [#linked_vpc_network, list.MaxItems(1) & [...#linked_vpc_network]])
+		linked_vpn_tunnels?: matchN(1, [#linked_vpn_tunnels, list.MaxItems(1) & [...#linked_vpn_tunnels]])
+		timeouts?: #timeouts
+
 		// Output only. The time the spoke was created.
 		create_time?: string
 
@@ -47,12 +54,6 @@ import "list"
 			message?:      string
 			user_details?: string
 		})]
-		linked_interconnect_attachments?: matchN(1, [#linked_interconnect_attachments, list.MaxItems(1) & [...#linked_interconnect_attachments]])
-		linked_producer_vpc_network?: matchN(1, [#linked_producer_vpc_network, list.MaxItems(1) & [...#linked_producer_vpc_network]])
-		linked_router_appliance_instances?: matchN(1, [#linked_router_appliance_instances, list.MaxItems(1) & [...#linked_router_appliance_instances]])
-		linked_vpc_network?: matchN(1, [#linked_vpc_network, list.MaxItems(1) & [...#linked_vpc_network]])
-		linked_vpn_tunnels?: matchN(1, [#linked_vpn_tunnels, list.MaxItems(1) & [...#linked_vpn_tunnels]])
-		timeouts?: #timeouts
 
 		// Output only. The current lifecycle state of this spoke.
 		state?: string

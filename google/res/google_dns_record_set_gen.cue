@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dns_record_set")
 	close({
+		routing_policy?: matchN(1, [#routing_policy, list.MaxItems(1) & [...#routing_policy]])
 		id?: string
 
 		// The name of the zone in which this record set will reside.
@@ -26,7 +27,6 @@ import "list"
 		// DKIM, add \"\" inside the Terraform configuration string (e.g.
 		// "first255characters\"\"morecharacters").
 		rrdatas?: [...string]
-		routing_policy?: matchN(1, [#routing_policy, list.MaxItems(1) & [...#routing_policy]])
 
 		// The time-to-live of this record set (seconds).
 		ttl?: number

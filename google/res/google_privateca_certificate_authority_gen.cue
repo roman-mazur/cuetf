@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_privateca_certificate_authority")
 	close({
+		config!: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
+		key_spec!: matchN(1, [#key_spec, list.MaxItems(1) & [_, ...] & [...#key_spec]])
+		subordinate_config?: matchN(1, [#subordinate_config, list.MaxItems(1) & [...#subordinate_config]])
+		timeouts?: #timeouts
+		user_defined_access_urls?: matchN(1, [#user_defined_access_urls, list.MaxItems(1) & [...#user_defined_access_urls]])
+
 		// URLs for accessing content published by this CA, such as the CA
 		// certificate and CRLs.
 		access_urls?: [...close({
@@ -54,13 +60,13 @@ import "list"
 		// specified, a managed bucket will be
 		// created.
 		gcs_bucket?: string
+		id?:         string
 
 		// This field allows the CA to be deleted even if the CA has
 		// active certs. Active certs include both unrevoked and
 		// unexpired certs.
 		// Use with care. Defaults to 'false'.
 		ignore_active_certificates_on_deletion?: bool
-		id?:                                     string
 
 		// Labels with user-defined metadata.
 		//
@@ -95,10 +101,6 @@ import "list"
 		// CSR. This is needed when activating the subordiante CA with a
 		// third party issuer.
 		pem_ca_certificate?: string
-		config!: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
-		key_spec!: matchN(1, [#key_spec, list.MaxItems(1) & [_, ...] & [...#key_spec]])
-		subordinate_config?: matchN(1, [#subordinate_config, list.MaxItems(1) & [...#subordinate_config]])
-		timeouts?: #timeouts
 
 		// This CertificateAuthority's certificate chain, including the
 		// current
@@ -112,7 +114,6 @@ import "list"
 		// The name of the CaPool this Certificate Authority belongs to.
 		pool!:    string
 		project?: string
-		user_defined_access_urls?: matchN(1, [#user_defined_access_urls, list.MaxItems(1) & [...#user_defined_access_urls]])
 
 		// If this flag is set, the Certificate Authority will be deleted
 		// as soon as

@@ -6,13 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_os_config_os_policy_assignment")
 	close({
+		instance_filter!: matchN(1, [#instance_filter, list.MaxItems(1) & [_, ...] & [...#instance_filter]])
+		os_policies!: matchN(1, [#os_policies, [_, ...] & [...#os_policies]])
+		rollout!: matchN(1, [#rollout, list.MaxItems(1) & [_, ...] & [...#rollout]])
+		timeouts?: #timeouts
+
 		// Output only. Indicates that this revision has been successfully
 		// rolled out in this zone and new VMs will be assigned OS
 		// policies from this revision.
 		// For a given OS policy assignment, there is only one revision
 		// with a value of 'true' for this field.
 		baseline?: bool
-		instance_filter!: matchN(1, [#instance_filter, list.MaxItems(1) & [_, ...] & [...#instance_filter]])
 
 		// Output only. Indicates that this revision deletes the OS policy
 		// assignment.
@@ -25,10 +29,10 @@ import "list"
 		// The etag for this OS policy assignment. If this is provided on
 		// update, it must match the server's etag.
 		etag?: string
+		id?:   string
 
 		// The location for the resource
 		location!: string
-		id?:       string
 
 		// Resource name.
 		name!: string
@@ -45,9 +49,6 @@ import "list"
 
 		// Output only. The timestamp that the revision was created.
 		revision_create_time?: string
-		os_policies!: matchN(1, [#os_policies, [_, ...] & [...#os_policies]])
-		rollout!: matchN(1, [#rollout, list.MaxItems(1) & [_, ...] & [...#rollout]])
-		timeouts?: #timeouts
 
 		// Output only. The assignment revision ID A new revision is
 		// committed whenever a rollout is triggered for a OS policy
@@ -77,6 +78,8 @@ import "list"
 	})
 
 	#os_policies: close({
+		resource_groups!: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups", [_, ...] & [..._#defs."/$defs/os_policies/$defs/resource_groups"]])
+
 		// This flag determines the OS policy compliance status when none
 		// of the resource groups within the policy are applicable for a
 		// VM. Set this value to 'true' if the policy needs to be
@@ -95,7 +98,6 @@ import "list"
 		// * Must end with a number or a letter.
 		// * Must be unique within the assignment.
 		id!: string
-		resource_groups!: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups", [_, ...] & [..._#defs."/$defs/os_policies/$defs/resource_groups"]])
 
 		// Policy mode Possible values: ["MODE_UNSPECIFIED", "VALIDATION",
 		// "ENFORCEMENT"]
@@ -184,6 +186,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/enforce": close({
+		file?: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/enforce/$defs/file", list.MaxItems(1) & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/enforce/$defs/file"]])
+
 		// Optional arguments to pass to the source during execution.
 		args?: [...string]
 
@@ -198,7 +202,6 @@ import "list"
 		// being non-compliant. Output file size is limited to 100K
 		// bytes.
 		output_file_path?: string
-		file?: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/enforce/$defs/file", list.MaxItems(1) & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/enforce/$defs/file"]])
 
 		// An inline script. The size of the script is limited to 1024
 		// characters.
@@ -240,6 +243,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate": close({
+		file?: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate/$defs/file", list.MaxItems(1) & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate/$defs/file"]])
+
 		// Optional arguments to pass to the source during execution.
 		args?: [...string]
 
@@ -254,7 +259,6 @@ import "list"
 		// being non-compliant. Output file size is limited to 100K
 		// bytes.
 		output_file_path?: string
-		file?: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate/$defs/file", list.MaxItems(1) & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/exec/$defs/validate/$defs/file"]])
 
 		// An inline script. The size of the script is limited to 1024
 		// characters.
@@ -297,6 +301,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/file": close({
+		file?: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/file/$defs/file", list.MaxItems(1) & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/file/$defs/file"]])
+
 		// A a file with this content. The size of the content is limited
 		// to 1024 characters.
 		content?: string
@@ -315,7 +321,6 @@ import "list"
 		// values: read, write, and execute: 7 read and execute: 5 read
 		// and write: 6 read only: 4
 		permissions?: string
-		file?: matchN(1, [_#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/file/$defs/file", list.MaxItems(1) & [..._#defs."/$defs/os_policies/$defs/resource_groups/$defs/resources/$defs/file/$defs/file"]])
 
 		// Desired state of the file. Possible values:
 		// ["DESIRED_STATE_UNSPECIFIED", "PRESENT", "ABSENT",

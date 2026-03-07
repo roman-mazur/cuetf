@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_internal_range")
 	close({
+		allocation_options?: matchN(1, [#allocation_options, list.MaxItems(1) & [...#allocation_options]])
+		migration?: matchN(1, [#migration, list.MaxItems(1) & [...#migration]])
+		timeouts?: #timeouts
+
 		// An optional description of this resource.
 		description?: string
 
@@ -19,6 +23,7 @@ import "list"
 		// mentioned in this list.
 		// Only IPv4 CIDR ranges are supported.
 		exclude_cidr_ranges?: [...string]
+		id?: string
 
 		// Immutable ranges cannot have their fields modified, except for
 		// labels and description.
@@ -30,7 +35,6 @@ import "list"
 		// NOTE: For IPv6 Ranges this field is compulsory, i.e. the
 		// address range must be specified explicitly.
 		ip_cidr_range?: string
-		id?:            string
 
 		// User-defined labels.
 		//
@@ -56,9 +60,6 @@ import "list"
 		// The type of peering set for this internal range. Possible
 		// values: ["FOR_SELF", "FOR_PEER", "NOT_SHARED"]
 		peering!: string
-		allocation_options?: matchN(1, [#allocation_options, list.MaxItems(1) & [...#allocation_options]])
-		migration?: matchN(1, [#migration, list.MaxItems(1) & [...#migration]])
-		timeouts?: #timeouts
 
 		// An alternate to ipCidrRange. Can be set when trying to create a
 		// reservation that automatically finds a free range of the given
@@ -71,6 +72,7 @@ import "list"
 		// this field only works as
 		// a redundant parameter.
 		prefix_length?: number
+		project?:       string
 
 		// Optional. Can be set to narrow down or pick a different address
 		// space while searching for a free range.
@@ -79,7 +81,6 @@ import "list"
 		// "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address
 		// spaces used in the VPC.
 		target_cidr_range?: [...string]
-		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

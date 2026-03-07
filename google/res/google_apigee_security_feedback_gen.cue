@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_security_feedback")
 	close({
+		feedback_contexts!: matchN(1, [#feedback_contexts, [_, ...] & [...#feedback_contexts]])
+		timeouts?: #timeouts
+
 		// Optional text the user can provide for additional, unstructured
 		// context.
 		comment?: string
@@ -20,6 +23,7 @@ package res
 		// The type of feedback being submitted. Possible values:
 		// ["EXCLUDED_DETECTION"]
 		feedback_type!: string
+		id?:            string
 
 		// Name of the security feedback resource,
 		// in the format
@@ -30,9 +34,6 @@ package res
 		// Feedback,
 		// in the format 'organizations/{{org_name}}'.
 		org_id!: string
-		id?:     string
-		feedback_contexts!: matchN(1, [#feedback_contexts, [_, ...] & [...#feedback_contexts]])
-		timeouts?: #timeouts
 
 		// The reason for the feedback. Possible values:
 		// ["INTERNAL_SYSTEM", "NON_RISK_CLIENT", "NAT",

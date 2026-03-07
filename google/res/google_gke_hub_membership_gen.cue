@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_hub_membership")
 	close({
+		authority?: matchN(1, [#authority, list.MaxItems(1) & [...#authority]])
+		endpoint?: matchN(1, [#endpoint, list.MaxItems(1) & [...#endpoint]])
+		timeouts?: #timeouts
+
 		// All of labels (key/value pairs) present on the resource in GCP,
 		// including the labels configured through Terraform, other
 		// clients and services.
@@ -27,9 +31,6 @@ import "list"
 
 		// The client-provided identifier of the membership.
 		membership_id!: string
-		authority?: matchN(1, [#authority, list.MaxItems(1) & [...#authority]])
-		endpoint?: matchN(1, [#endpoint, list.MaxItems(1) & [...#endpoint]])
-		timeouts?: #timeouts
 
 		// The unique identifier of the membership.
 		name?:    string

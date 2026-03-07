@@ -56,11 +56,11 @@ package data
 		// Broadwell")
 		// AND (scheduling.automaticRestart = true) """
 		filter?: string
+		id?:     string
 
 		// The google project in which addresses are listed. Defaults to
 		// provider's configuration if missing.
 		project?: string
-		id?:      string
 
 		// Region that should be considered to search addresses. All
 		// regions are considered if missing.

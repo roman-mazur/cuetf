@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vmwareengine_datastore")
 	close({
+		nfs_datastore!: matchN(1, [#nfs_datastore, list.MaxItems(1) & [_, ...] & [...#nfs_datastore]])
+		timeouts?: #timeouts
+
 		// Clusters to which the datastore is attached.
 		clusters?: [...string]
 
@@ -14,12 +17,12 @@ import "list"
 
 		// User-provided description for this datastore
 		description?: string
+		id?:          string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		location!: string
-		id?:       string
 
 		// The user-provided identifier of the datastore to be created.
 		// This identifier must be unique among each 'Datastore' within
@@ -34,7 +37,8 @@ import "list"
 		// * Complies with [RFC
 		// 1034](https://datatracker.ietf.org/doc/html/rfc1034)
 		// (section 3.5)
-		name!: string
+		name!:    string
+		project?: string
 
 		// The state of the Datastore.
 		// Possible values:
@@ -44,10 +48,7 @@ import "list"
 		// DELETING
 		// SOFT_DELETING
 		// SOFT_DELETED
-		state?:   string
-		project?: string
-		nfs_datastore!: matchN(1, [#nfs_datastore, list.MaxItems(1) & [_, ...] & [...#nfs_datastore]])
-		timeouts?: #timeouts
+		state?: string
 
 		// System-generated unique identifier for the resource.
 		uid?: string

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_parallelstore_instance")
 	close({
+		timeouts?: #timeouts
+
 		// Output only. List of access_points.
 		// Contains a list of IPv4 addresses used for client side
 		// configuration.
@@ -113,7 +115,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		timeouts?: #timeouts
 
 		// Part of 'parent'. See documentation of 'projectsId'.
 		location!: string

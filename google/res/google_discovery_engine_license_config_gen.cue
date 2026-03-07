@@ -6,16 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_license_config")
 	close({
+		end_date?: matchN(1, [#end_date, list.MaxItems(1) & [...#end_date]])
+		start_date!: matchN(1, [#start_date, list.MaxItems(1) & [_, ...] & [...#start_date]])
+		timeouts?: #timeouts
+
 		// Whether the license config should be auto renewed when it
 		// reaches the end date.
 		auto_renew?: bool
 
 		// Whether the license config is for free trial.
 		free_trial?: bool
+		id?:         string
 
 		// The unique id of the license config.
 		license_config_id!: string
-		id?:                string
 
 		// Number of licenses purchased.
 		license_count!: number
@@ -30,9 +34,6 @@ import "list"
 		// 'projects/{project}/locations/{location}/licenseConfigs/{license_config}'.
 		name?:    string
 		project?: string
-		end_date?: matchN(1, [#end_date, list.MaxItems(1) & [...#end_date]])
-		start_date!: matchN(1, [#start_date, list.MaxItems(1) & [_, ...] & [...#start_date]])
-		timeouts?: #timeouts
 
 		// Subscription term. Possible values:
 		// ["SUBSCRIPTION_TERM_UNSPECIFIED",

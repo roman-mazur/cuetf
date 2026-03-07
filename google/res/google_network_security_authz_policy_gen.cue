@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_authz_policy")
 	close({
+		custom_provider?: matchN(1, [#custom_provider, list.MaxItems(1) & [...#custom_provider]])
+		http_rules?: matchN(1, [#http_rules, [...#http_rules]])
+		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
+		timeouts?: #timeouts
+
 		// When the action is CUSTOM, customProvider must be specified.
 		// When the action is ALLOW, only requests matching the policy
 		// will be allowed.
@@ -53,10 +58,6 @@ import "list"
 
 		// Identifier. Name of the AuthzPolicy resource.
 		name!: string
-		custom_provider?: matchN(1, [#custom_provider, list.MaxItems(1) & [...#custom_provider]])
-		http_rules?: matchN(1, [#http_rules, [...#http_rules]])
-		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
-		timeouts?: #timeouts
 
 		// Defines the type of authorization being performed.
 		// 'REQUEST_AUTHZ' applies to request authorization. CUSTOM

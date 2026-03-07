@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_mesh")
 	close({
+		timeouts?: #timeouts
+
 		// Time the Mesh was created in UTC.
 		create_time?: string
 
@@ -15,6 +17,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Optional. If set to a valid TCP port (1-65535), instructs the
 		// SIDECAR proxy to listen on the
@@ -26,7 +29,6 @@ package res
 		// applicable only for sidecar proxy
 		// deployments.
 		interception_port?: number
-		id?:                string
 
 		// Set of label tags associated with the Mesh resource.
 		//
@@ -42,9 +44,8 @@ package res
 		location?: string
 
 		// Short name of the Mesh resource to be created.
-		name!:     string
-		project?:  string
-		timeouts?: #timeouts
+		name!:    string
+		project?: string
 
 		// Server-defined URL of this resource.
 		self_link?: string

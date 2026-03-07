@@ -6,16 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_preview_feature")
 	close({
+		rollout_operation?: matchN(1, [#rollout_operation, list.MaxItems(1) & [...#rollout_operation]])
+		timeouts?: #timeouts
+
 		// The activation status of the preview feature. Possible values:
 		// ["ENABLED", "ACTIVATION_STATE_UNSPECIFIED"]
 		activation_status!: string
+		id?:                string
 
 		// The name of the preview feature.
-		name!: string
-		id?:   string
-		rollout_operation?: matchN(1, [#rollout_operation, list.MaxItems(1) & [...#rollout_operation]])
-		timeouts?: #timeouts
-		project?:  string
+		name!:    string
+		project?: string
 	})
 
 	#rollout_operation: close({

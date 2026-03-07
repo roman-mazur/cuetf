@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_project_scc_big_query_export")
 	close({
+		timeouts?: #timeouts
+
 		// This must be unique within the organization.
 		big_query_export_id!: string
 
@@ -67,8 +69,7 @@ package res
 		// 'projects/{{project}}/bigQueryExports/{{big_query_export_id}}'.
 		// This field is provided in responses, and is ignored when
 		// provided in create requests.
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// The service account that needs permission to create table and
 		// upload data to the BigQuery dataset.

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_managed_kafka_topic")
 	close({
+		timeouts?: #timeouts
+
 		// The cluster name.
 		cluster!: string
 
@@ -12,12 +14,12 @@ package res
 		// name, for example: 'cleanup.policy=compact',
 		// 'compression.type=producer'.
 		configs?: [string]: string
+		id?: string
 
 		// ID of the location of the Kafka resource. See
 		// https://cloud.google.com/managed-kafka/docs/locations for a
 		// list of supported locations.
 		location!: string
-		id?:       string
 
 		// The name of the topic. The 'topic' segment is used when
 		// connecting directly to the cluster. Must be in the format
@@ -30,7 +32,6 @@ package res
 		// how messages are distributed.
 		partition_count?: number
 		project?:         string
-		timeouts?:        #timeouts
 
 		// The number of replicas of each partition. A replication factor
 		// of 3 is recommended for high availability.

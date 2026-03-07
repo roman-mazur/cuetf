@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_identity_platform_default_supported_idp_config")
 	close({
+		timeouts?: #timeouts
+
 		// OAuth client ID
 		client_id!: string
 
@@ -11,8 +13,8 @@ package res
 		client_secret!: string
 
 		// If this IDP allows the user to sign in
-		enabled?:  bool
-		timeouts?: #timeouts
+		enabled?: bool
+		id?:      string
 
 		// ID of the IDP. Possible values include:
 		//
@@ -36,7 +38,6 @@ package res
 		//
 		// * 'yahoo.com'
 		idp_id!: string
-		id?:     string
 
 		// The name of the DefaultSupportedIdpConfig resource
 		name?:    string

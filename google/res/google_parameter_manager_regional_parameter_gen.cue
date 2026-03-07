@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_parameter_manager_regional_parameter")
 	close({
+		timeouts?: #timeouts
+
 		// The time at which the regional Parameter was created.
 		create_time?: string
 
@@ -55,7 +57,6 @@ package res
 
 		// This must be unique within the project.
 		parameter_id!: string
-		timeouts?:     #timeouts
 
 		// An object containing a unique resource identity tied to the
 		// regional parameter.
@@ -63,11 +64,11 @@ package res
 			iam_policy_name_principal?: string
 			iam_policy_uid_principal?:  string
 		})]
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?: string
 
 		// The time at which the regional Parameter was updated.
 		update_time?: string

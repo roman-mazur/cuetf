@@ -4,7 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_router_interface")
 	close({
-		id?: string
+		timeouts?: #timeouts
+		id?:       string
 
 		// The name or resource link to the VLAN interconnect for this
 		// interface. Changing this forces a new interface to be created.
@@ -42,8 +43,7 @@ package res
 		// The region this interface's router sits in. If not specified,
 		// the project region will be used. Changing this forces a new
 		// interface to be created.
-		region?:   string
-		timeouts?: #timeouts
+		region?: string
 
 		// The name of the router this interface will be attached to.
 		// Changing this forces a new interface to be created.

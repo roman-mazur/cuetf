@@ -4,12 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_resource_manager_lien")
 	close({
+		timeouts?: #timeouts
+
 		// Time of creation
 		create_time?: string
+		id?:          string
 
 		// A system-generated unique identifier for this Lien.
 		name?: string
-		id?:   string
 
 		// A stable, user-visible/meaningful string identifying the origin
 		// of the Lien, intended to be inspected programmatically. Maximum
@@ -28,8 +30,7 @@ package res
 		// Concise user-visible strings indicating why an action cannot be
 		// performed
 		// on a resource. Maximum length of 200 characters.
-		reason!:   string
-		timeouts?: #timeouts
+		reason!: string
 
 		// The types of operations which should be blocked as a result of
 		// this Lien.

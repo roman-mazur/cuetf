@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_rule_deployment")
 	close({
+		timeouts?: #timeouts
+
 		// Whether detections resulting from this deployment should be
 		// considered
 		// alerts.
@@ -60,7 +62,6 @@ package res
 		// where the Chronicle instance resides, such as "us" or
 		// "europe-west2".
 		location!: string
-		timeouts?: #timeouts
 
 		// The resource name of the rule deployment.
 		// Note that RuleDeployment is a child of the overall Rule, not

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_spanner_instance_partition")
 	close({
+		timeouts?: #timeouts
+
 		// The name of the instance partition's configuration (similar to
 		// a region) which
 		// defines the geographic placement and replication of data in
@@ -40,7 +42,6 @@ package res
 		// Exactly one of either node_count or processing_units must be
 		// present.
 		processing_units?: number
-		timeouts?:         #timeouts
 		project?:          string
 
 		// The current instance partition state. Possible values are:

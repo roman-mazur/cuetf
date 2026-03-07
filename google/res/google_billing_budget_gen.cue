@@ -6,20 +6,23 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_billing_budget")
 	close({
+		all_updates_rule?: matchN(1, [#all_updates_rule, list.MaxItems(1) & [...#all_updates_rule]])
+		amount!: matchN(1, [#amount, list.MaxItems(1) & [_, ...] & [...#amount]])
+		budget_filter?: matchN(1, [#budget_filter, list.MaxItems(1) & [...#budget_filter]])
+		threshold_rules?: matchN(1, [#threshold_rules, [...#threshold_rules]])
+		timeouts?: #timeouts
+
 		// ID of the billing account to set a budget on.
 		billing_account!: string
 
 		// User data for display name in UI. Must be <= 60 chars.
 		display_name?: string
+		id?:           string
 
 		// Resource name of the budget. The resource name
 		// implies the scope of a budget. Values are of the form
 		// billingAccounts/{billingAccountId}/budgets/{budgetId}.
 		name?: string
-		id?:   string
-		all_updates_rule?: matchN(1, [#all_updates_rule, list.MaxItems(1) & [...#all_updates_rule]])
-		amount!: matchN(1, [#amount, list.MaxItems(1) & [_, ...] & [...#amount]])
-		budget_filter?: matchN(1, [#budget_filter, list.MaxItems(1) & [...#budget_filter]])
 
 		// The ownership scope of the budget. The ownership scope and
 		// users'
@@ -27,8 +30,6 @@ import "list"
 		// data. Possible values: ["OWNERSHIP_SCOPE_UNSPECIFIED",
 		// "ALL_USERS", "BILLING_ACCOUNT"]
 		ownership_scope?: string
-		threshold_rules?: matchN(1, [#threshold_rules, [...#threshold_rules]])
-		timeouts?: #timeouts
 	})
 
 	#all_updates_rule: close({
@@ -78,6 +79,8 @@ import "list"
 	})
 
 	#budget_filter: close({
+		custom_period?: matchN(1, [_#defs."/$defs/budget_filter/$defs/custom_period", list.MaxItems(1) & [..._#defs."/$defs/budget_filter/$defs/custom_period"]])
+
 		// A CalendarPeriod represents the abstract concept of a recurring
 		// time period that has a
 		// canonical start. Grammatically, "the start of the current
@@ -124,7 +127,6 @@ import "list"
 		// contains projects that are paid for by a different Cloud
 		// Billing account, the budget doesn't apply to those projects.
 		resource_ancestors?: [...string]
-		custom_period?: matchN(1, [_#defs."/$defs/budget_filter/$defs/custom_period", list.MaxItems(1) & [..._#defs."/$defs/budget_filter/$defs/custom_period"]])
 
 		// A set of services of the form services/{service_id},
 		// specifying that usage from only this set of services should be

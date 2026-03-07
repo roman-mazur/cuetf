@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_run_v2_service")
 	close({
+		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
+		build_config?: matchN(1, [#build_config, list.MaxItems(1) & [...#build_config]])
+		multi_region_settings?: matchN(1, [#multi_region_settings, list.MaxItems(1) & [...#multi_region_settings]])
+		scaling?: matchN(1, [#scaling, list.MaxItems(1) & [...#scaling]])
+		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
+		timeouts?: #timeouts
+		traffic?: matchN(1, [#traffic, [...#traffic]])
+
 		// Unstructured key value map that may be set by external tools to
 		// store and arbitrary metadata. They are not queryable and
 		// should be preserved when modifying objects.
@@ -112,6 +120,7 @@ import "list"
 
 		// Used to enable/disable IAP for the cloud-run service.
 		iap_enabled?: bool
+		id?:          string
 
 		// Provides the ingress settings for this Service. On output,
 		// returns the currently observed ingress settings, or
@@ -120,7 +129,6 @@ import "list"
 		// "INGRESS_TRAFFIC_INTERNAL_ONLY",
 		// "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
 		ingress?: string
-		id?:      string
 
 		// Disables IAM permission check for run.routes.invoke for callers
 		// of this service. For more information, visit
@@ -147,13 +155,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
-		build_config?: matchN(1, [#build_config, list.MaxItems(1) & [...#build_config]])
-		multi_region_settings?: matchN(1, [#multi_region_settings, list.MaxItems(1) & [...#multi_region_settings]])
-		scaling?: matchN(1, [#scaling, list.MaxItems(1) & [...#scaling]])
-		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
-		timeouts?: #timeouts
-		traffic?: matchN(1, [#traffic, [...#traffic]])
 
 		// Email address of the last authenticated modifier.
 		last_modifier?: string
@@ -358,6 +359,12 @@ import "list"
 	})
 
 	#template: close({
+		containers?: matchN(1, [_#defs."/$defs/template/$defs/containers", [..._#defs."/$defs/template/$defs/containers"]])
+		node_selector?: matchN(1, [_#defs."/$defs/template/$defs/node_selector", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/node_selector"]])
+		scaling?: matchN(1, [_#defs."/$defs/template/$defs/scaling", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/scaling"]])
+		volumes?: matchN(1, [_#defs."/$defs/template/$defs/volumes", [..._#defs."/$defs/template/$defs/volumes"]])
+		vpc_access?: matchN(1, [_#defs."/$defs/template/$defs/vpc_access", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/vpc_access"]])
+
 		// Unstructured key value map that may be set by external tools to
 		// store and arbitrary metadata. They are not queryable and
 		// should be preserved when modifying objects.
@@ -414,11 +421,6 @@ import "list"
 		// The unique name for the revision. If this field is omitted, it
 		// will be automatically generated based on the Service name.
 		revision?: string
-		containers?: matchN(1, [_#defs."/$defs/template/$defs/containers", [..._#defs."/$defs/template/$defs/containers"]])
-		node_selector?: matchN(1, [_#defs."/$defs/template/$defs/node_selector", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/node_selector"]])
-		scaling?: matchN(1, [_#defs."/$defs/template/$defs/scaling", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/scaling"]])
-		volumes?: matchN(1, [_#defs."/$defs/template/$defs/volumes", [..._#defs."/$defs/template/$defs/volumes"]])
-		vpc_access?: matchN(1, [_#defs."/$defs/template/$defs/vpc_access", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/vpc_access"]])
 
 		// Email address of the IAM service account associated with the
 		// revision of the service. The service account represents the
@@ -464,6 +466,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/containers": close({
+		env?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/env", [..._#defs."/$defs/template/$defs/containers/$defs/env"]])
+		liveness_probe?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/liveness_probe", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/liveness_probe"]])
+		ports?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/ports", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/ports"]])
+		readiness_probe?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/readiness_probe", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/readiness_probe"]])
+		resources?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/resources", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/resources"]])
+		startup_probe?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/startup_probe", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/startup_probe"]])
+		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/containers/$defs/volume_mounts"]])
+
 		// Arguments to the entrypoint. The docker image's CMD is used if
 		// this is not provided. Variable references are not supported in
 		// Cloud Run.
@@ -499,13 +509,6 @@ import "list"
 		// Google Artifact Registry. More info:
 		// https://kubernetes.io/docs/concepts/containers/images
 		image!: string
-		env?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/env", [..._#defs."/$defs/template/$defs/containers/$defs/env"]])
-		liveness_probe?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/liveness_probe", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/liveness_probe"]])
-		ports?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/ports", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/ports"]])
-		readiness_probe?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/readiness_probe", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/readiness_probe"]])
-		resources?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/resources", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/resources"]])
-		startup_probe?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/startup_probe", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/startup_probe"]])
-		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/containers/$defs/volume_mounts"]])
 
 		// Name of the container specified as a DNS_LABEL.
 		name?: string
@@ -546,6 +549,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/containers/$defs/liveness_probe": close({
+		grpc?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/grpc"]])
+		http_get?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get"]])
+		tcp_socket?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/tcp_socket"]])
+
 		// Minimum consecutive failures for the probe to be considered
 		// failed after having succeeded. Defaults to 3. Minimum value is
 		// 1.
@@ -563,15 +570,12 @@ import "list"
 		// is 3600. Maximum value for startup probe is 240. Must be
 		// greater or equal than timeoutSeconds
 		period_seconds?: number
-		grpc?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/grpc"]])
-		http_get?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get"]])
 
 		// Number of seconds after which the probe times out. Defaults to
 		// 1 second. Minimum value is 1. Maximum value is 3600. Must be
 		// smaller than periodSeconds. More info:
 		// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 		timeout_seconds?: number
-		tcp_socket?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/tcp_socket"]])
 	})
 
 	_#defs: "/$defs/template/$defs/containers/$defs/liveness_probe/$defs/grpc": close({
@@ -630,6 +634,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/containers/$defs/readiness_probe": close({
+		grpc?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/readiness_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/readiness_probe/$defs/grpc"]])
+		http_get?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/readiness_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/readiness_probe/$defs/http_get"]])
+
 		// Minimum consecutive failures for the probe to be considered
 		// failed after
 		// having succeeded. Defaults to 3.
@@ -647,8 +654,6 @@ import "list"
 		// Number of seconds after which the probe times out.
 		// Defaults to 1 second. Must be smaller than period_seconds.
 		timeout_seconds?: number
-		grpc?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/readiness_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/readiness_probe/$defs/grpc"]])
-		http_get?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/readiness_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/readiness_probe/$defs/http_get"]])
 	})
 
 	_#defs: "/$defs/template/$defs/containers/$defs/readiness_probe/$defs/grpc": close({
@@ -703,6 +708,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/containers/$defs/startup_probe": close({
+		grpc?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/grpc"]])
+		http_get?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get"]])
+		tcp_socket?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/tcp_socket"]])
+
 		// Minimum consecutive failures for the probe to be considered
 		// failed after having succeeded. Defaults to 3. Minimum value is
 		// 1.
@@ -720,15 +729,12 @@ import "list"
 		// is 3600. Maximum value for startup probe is 240. Must be
 		// greater or equal than timeoutSeconds
 		period_seconds?: number
-		grpc?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/grpc"]])
-		http_get?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get"]])
 
 		// Number of seconds after which the probe times out. Defaults to
 		// 1 second. Minimum value is 1. Maximum value is 3600. Must be
 		// smaller than periodSeconds. More info:
 		// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 		timeout_seconds?: number
-		tcp_socket?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/tcp_socket"]])
 	})
 
 	_#defs: "/$defs/template/$defs/containers/$defs/startup_probe/$defs/grpc": close({

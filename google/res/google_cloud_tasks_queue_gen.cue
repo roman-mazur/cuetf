@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_tasks_queue")
 	close({
+		app_engine_routing_override?: matchN(1, [#app_engine_routing_override, list.MaxItems(1) & [...#app_engine_routing_override]])
+		http_target?: matchN(1, [#http_target, list.MaxItems(1) & [...#http_target]])
+		rate_limits?: matchN(1, [#rate_limits, list.MaxItems(1) & [...#rate_limits]])
+		retry_config?: matchN(1, [#retry_config, list.MaxItems(1) & [...#retry_config]])
+		stackdriver_logging_config?: matchN(1, [#stackdriver_logging_config, list.MaxItems(1) & [...#stackdriver_logging_config]])
+		timeouts?: #timeouts
+
 		// The desired state of the queue. Use this to pause and resume
 		// the queue.
 		//
@@ -14,23 +21,17 @@ import "list"
 		// be added to the queue. Default value: "RUNNING" Possible
 		// values: ["RUNNING", "PAUSED"]
 		desired_state?: string
+		id?:            string
 
 		// The location of the queue
 		location!: string
-		id?:       string
-		app_engine_routing_override?: matchN(1, [#app_engine_routing_override, list.MaxItems(1) & [...#app_engine_routing_override]])
 
 		// The queue name.
-		name!: string
-		http_target?: matchN(1, [#http_target, list.MaxItems(1) & [...#http_target]])
+		name!:    string
 		project?: string
-		rate_limits?: matchN(1, [#rate_limits, list.MaxItems(1) & [...#rate_limits]])
-		retry_config?: matchN(1, [#retry_config, list.MaxItems(1) & [...#retry_config]])
-		stackdriver_logging_config?: matchN(1, [#stackdriver_logging_config, list.MaxItems(1) & [...#stackdriver_logging_config]])
 
 		// The current state of the queue.
-		state?:    string
-		timeouts?: #timeouts
+		state?: string
 	})
 
 	#app_engine_routing_override: close({
@@ -199,6 +200,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/http_target/$defs/uri_override": close({
+		path_override?: matchN(1, [_#defs."/$defs/http_target/$defs/uri_override/$defs/path_override", list.MaxItems(1) & [..._#defs."/$defs/http_target/$defs/uri_override/$defs/path_override"]])
+		query_override?: matchN(1, [_#defs."/$defs/http_target/$defs/uri_override/$defs/query_override", list.MaxItems(1) & [..._#defs."/$defs/http_target/$defs/uri_override/$defs/query_override"]])
+
 		// Host override.
 		//
 		// When specified, replaces the host part of the task URL.
@@ -230,8 +234,6 @@ import "list"
 		// specified, it defaults to ALWAYS. Possible values: ["ALWAYS",
 		// "IF_NOT_EXISTS"]
 		uri_override_enforce_mode?: string
-		path_override?: matchN(1, [_#defs."/$defs/http_target/$defs/uri_override/$defs/path_override", list.MaxItems(1) & [..._#defs."/$defs/http_target/$defs/uri_override/$defs/path_override"]])
-		query_override?: matchN(1, [_#defs."/$defs/http_target/$defs/uri_override/$defs/query_override", list.MaxItems(1) & [..._#defs."/$defs/http_target/$defs/uri_override/$defs/query_override"]])
 	})
 
 	_#defs: "/$defs/http_target/$defs/uri_override/$defs/path_override": close({

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_address_group")
 	close({
+		timeouts?: #timeouts
+
 		// Capacity of the Address Group.
 		capacity!: number
 
@@ -21,6 +23,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// List of items.
 		items?: [...string]
@@ -35,7 +38,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location of the gateway security policy.
 		// The default value is 'global'.
@@ -46,8 +48,7 @@ package res
 
 		// The name of the parent this address group belongs to. Format:
 		// organizations/{organization_id} or projects/{project_id}.
-		parent?:   string
-		timeouts?: #timeouts
+		parent?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

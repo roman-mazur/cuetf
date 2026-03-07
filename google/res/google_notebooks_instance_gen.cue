@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_notebooks_instance")
 	close({
+		accelerator_config?: matchN(1, [#accelerator_config, list.MaxItems(1) & [...#accelerator_config]])
+		container_image?: matchN(1, [#container_image, list.MaxItems(1) & [...#container_image]])
+		reservation_affinity?: matchN(1, [#reservation_affinity, list.MaxItems(1) & [...#reservation_affinity]])
+		shielded_instance_config?: matchN(1, [#shielded_instance_config, list.MaxItems(1) & [...#shielded_instance_config]])
+		timeouts?: #timeouts
+		vm_image?: matchN(1, [#vm_image, list.MaxItems(1) & [...#vm_image]])
+
 		// The size of the boot disk in GB attached to this instance,
 		// up to a maximum of 64000 GB (64 TB). The minimum recommended
 		// value is 100 GB.
@@ -103,12 +110,6 @@ import "list"
 		// The name of the VPC that this instance is in.
 		// Format: projects/{project_id}/global/networks/{network_id}
 		network?: string
-		accelerator_config?: matchN(1, [#accelerator_config, list.MaxItems(1) & [...#accelerator_config]])
-		container_image?: matchN(1, [#container_image, list.MaxItems(1) & [...#container_image]])
-		reservation_affinity?: matchN(1, [#reservation_affinity, list.MaxItems(1) & [...#reservation_affinity]])
-		shielded_instance_config?: matchN(1, [#shielded_instance_config, list.MaxItems(1) & [...#shielded_instance_config]])
-		timeouts?: #timeouts
-		vm_image?: matchN(1, [#vm_image, list.MaxItems(1) & [...#vm_image]])
 
 		// The type of vNIC driver. Possible values:
 		// ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
@@ -128,13 +129,13 @@ import "list"
 		// notebook instance fully boots up. The path must be a URL
 		// or Cloud Storage path (gs://path-to-file/file-name).
 		post_startup_script?: string
+		project?:             string
 
 		// The proxy endpoint that is used to access the Jupyter notebook.
 		// Only returned when the resource is in a 'PROVISIONED' state. If
 		// needed you can utilize 'terraform apply -refresh-only' to await
 		// the population of this value.
 		proxy_uri?: string
-		project?:   string
 
 		// The service account on this instance, giving access to other
 		// Google Cloud services. You can use any service account within

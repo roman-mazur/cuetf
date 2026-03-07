@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_transfer_job")
 	close({
+		event_stream?: matchN(1, [#event_stream, list.MaxItems(1) & [...#event_stream]])
+		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
+		notification_config?: matchN(1, [#notification_config, list.MaxItems(1) & [...#notification_config]])
+		replication_spec?: matchN(1, [#replication_spec, list.MaxItems(1) & [...#replication_spec]])
+		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [...#schedule]])
+		transfer_spec?: matchN(1, [#transfer_spec, list.MaxItems(1) & [...#transfer_spec]])
+
 		// When the Transfer Job was created.
 		creation_time?: string
 
@@ -21,16 +28,10 @@ import "list"
 
 		// The name of the Transfer Job.
 		name?: string
-		event_stream?: matchN(1, [#event_stream, list.MaxItems(1) & [...#event_stream]])
-		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
-		notification_config?: matchN(1, [#notification_config, list.MaxItems(1) & [...#notification_config]])
-		replication_spec?: matchN(1, [#replication_spec, list.MaxItems(1) & [...#replication_spec]])
-		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [...#schedule]])
 
 		// The project in which the resource belongs. If it is not
 		// provided, the provider project is used.
 		project?: string
-		transfer_spec?: matchN(1, [#transfer_spec, list.MaxItems(1) & [...#transfer_spec]])
 
 		// The user-managed service account to run the job. If this field
 		// is specified, the given service account is granted the
@@ -120,14 +121,6 @@ import "list"
 	#transfer_spec: close({
 		aws_s3_compatible_data_source?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/aws_s3_compatible_data_source", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/aws_s3_compatible_data_source"]])
 		aws_s3_data_source?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/aws_s3_data_source", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/aws_s3_data_source"]])
-
-		// Specifies the agent pool name associated with the posix data
-		// source. When unspecified, the default name is used.
-		sink_agent_pool_name?: string
-
-		// Specifies the agent pool name associated with the posix data
-		// source. When unspecified, the default name is used.
-		source_agent_pool_name?: string
 		azure_blob_storage_data_source?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/azure_blob_storage_data_source", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/azure_blob_storage_data_source"]])
 		gcs_data_sink?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/gcs_data_sink", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/gcs_data_sink"]])
 		gcs_data_source?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/gcs_data_source", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/gcs_data_source"]])
@@ -138,6 +131,14 @@ import "list"
 		posix_data_source?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/posix_data_source", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/posix_data_source"]])
 		transfer_manifest?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/transfer_manifest", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/transfer_manifest"]])
 		transfer_options?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/transfer_options", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/transfer_options"]])
+
+		// Specifies the agent pool name associated with the posix data
+		// source. When unspecified, the default name is used.
+		sink_agent_pool_name?: string
+
+		// Specifies the agent pool name associated with the posix data
+		// source. When unspecified, the default name is used.
+		source_agent_pool_name?: string
 	})
 
 	_#defs: "/$defs/replication_spec/$defs/gcs_data_sink": close({
@@ -201,6 +202,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/replication_spec/$defs/transfer_options": close({
+		metadata_options?: matchN(1, [_#defs."/$defs/replication_spec/$defs/transfer_options/$defs/metadata_options", list.MaxItems(1) & [..._#defs."/$defs/replication_spec/$defs/transfer_options/$defs/metadata_options"]])
+
 		// Whether objects should be deleted from the source after they
 		// are transferred to the sink. Note that this option and
 		// delete_objects_unique_in_sink are mutually exclusive.
@@ -215,7 +218,6 @@ import "list"
 		// Whether overwriting objects that already exist in the sink is
 		// allowed.
 		overwrite_objects_already_existing_in_sink?: bool
-		metadata_options?: matchN(1, [_#defs."/$defs/replication_spec/$defs/transfer_options/$defs/metadata_options", list.MaxItems(1) & [..._#defs."/$defs/replication_spec/$defs/transfer_options/$defs/metadata_options"]])
 
 		// When to overwrite objects that already exist in the sink. If
 		// not set, overwrite behavior is determined by
@@ -301,6 +303,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/transfer_spec/$defs/aws_s3_compatible_data_source": close({
+		s3_metadata?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/aws_s3_compatible_data_source/$defs/s3_metadata", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/aws_s3_compatible_data_source/$defs/s3_metadata"]])
+
 		// Name of the bucket.
 		bucket_name!: string
 
@@ -309,7 +313,6 @@ import "list"
 
 		// Specifies the path to transfer objects.
 		path?: string
-		s3_metadata?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/aws_s3_compatible_data_source/$defs/s3_metadata", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/aws_s3_compatible_data_source/$defs/s3_metadata"]])
 
 		// Specifies the region to sign requests with. This can be left
 		// blank if requests should be signed with an empty region.
@@ -339,6 +342,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/transfer_spec/$defs/aws_s3_data_source": close({
+		aws_access_key?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/aws_s3_data_source/$defs/aws_access_key", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/aws_s3_data_source/$defs/aws_access_key"]])
+
 		// S3 Bucket name.
 		bucket_name!: string
 
@@ -373,7 +378,6 @@ import "list"
 		// 'AssumeRoleWithWebIdentity' call for the provided role using
 		// the [GoogleServiceAccount][] for this project.
 		role_arn?: string
-		aws_access_key?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/aws_s3_data_source/$defs/aws_access_key", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/aws_s3_data_source/$defs/aws_access_key"]])
 	})
 
 	_#defs: "/$defs/transfer_spec/$defs/aws_s3_data_source/$defs/aws_access_key": close({
@@ -385,6 +389,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/transfer_spec/$defs/azure_blob_storage_data_source": close({
+		azure_credentials?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/azure_blob_storage_data_source/$defs/azure_credentials", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/azure_blob_storage_data_source/$defs/azure_credentials"]])
+		federated_identity_config?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/azure_blob_storage_data_source/$defs/federated_identity_config", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/azure_blob_storage_data_source/$defs/federated_identity_config"]])
+
 		// The container to transfer from the Azure Storage account.
 		container!: string
 
@@ -402,8 +409,6 @@ import "list"
 
 		// The name of the Azure Storage account.
 		storage_account!: string
-		azure_credentials?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/azure_blob_storage_data_source/$defs/azure_credentials", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/azure_blob_storage_data_source/$defs/azure_credentials"]])
-		federated_identity_config?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/azure_blob_storage_data_source/$defs/federated_identity_config", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/azure_blob_storage_data_source/$defs/federated_identity_config"]])
 	})
 
 	_#defs: "/$defs/transfer_spec/$defs/azure_blob_storage_data_source/$defs/azure_credentials": close({
@@ -509,6 +514,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/transfer_spec/$defs/transfer_options": close({
+		metadata_options?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/transfer_options/$defs/metadata_options", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/transfer_options/$defs/metadata_options"]])
+
 		// Whether objects should be deleted from the source after they
 		// are transferred to the sink. Note that this option and
 		// delete_objects_unique_in_sink are mutually exclusive.
@@ -523,7 +530,6 @@ import "list"
 		// Whether overwriting objects that already exist in the sink is
 		// allowed.
 		overwrite_objects_already_existing_in_sink?: bool
-		metadata_options?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/transfer_options/$defs/metadata_options", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/transfer_options/$defs/metadata_options"]])
 
 		// When to overwrite objects that already exist in the sink. If
 		// not set, overwrite behavior is determined by

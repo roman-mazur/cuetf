@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_hosting_traffic")
 	close({
+		rollout_policy?: matchN(1, [#rollout_policy, list.MaxItems(1) & [...#rollout_policy]])
+		target?: matchN(1, [#target, list.MaxItems(1) & [...#target]])
+		timeouts?: #timeouts
+
 		// Id of the backend that this Traffic config applies to
 		backend!: string
 
@@ -39,14 +43,11 @@ import "list"
 		// Format:
 		//
 		// 'projects/{project}/locations/{locationId}/backends/{backendId}/traffic'.
-		name?: string
-		rollout_policy?: matchN(1, [#rollout_policy, list.MaxItems(1) & [...#rollout_policy]])
-		target?: matchN(1, [#target, list.MaxItems(1) & [...#target]])
-		timeouts?: #timeouts
+		name?:    string
+		project?: string
 
 		// System-assigned, unique identifier.
-		uid?:     string
-		project?: string
+		uid?: string
 
 		// Time at which the backend was last updated.
 		update_time?: string

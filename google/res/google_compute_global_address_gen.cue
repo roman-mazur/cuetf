@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_global_address")
 	close({
+		timeouts?: #timeouts
+
 		// The IP address or beginning of the address range represented by
 		// this
 		// resource. This can be supplied as an input to reserve a
@@ -29,11 +31,11 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// The IP Version that will be used by this address. The default
 		// value is 'IPV4'. Possible values: ["IPV4", "IPV6"]
 		ip_version?: string
-		id?:         string
 
 		// The fingerprint used for optimistic locking of this resource.
 		// Used
@@ -61,8 +63,7 @@ package res
 		// characters must be a dash, lowercase letter, or digit, except
 		// the last
 		// character, which cannot be a dash.
-		name!:     string
-		timeouts?: #timeouts
+		name!: string
 
 		// The URL of the network in which to reserve the IP range. The IP
 		// range

@@ -54,12 +54,12 @@ package data
 		// characters must be a dash, lowercase letter, or digit, except
 		// the last
 		// character, which cannot be a dash.
-		name!: string
+		name!:    string
+		project?: string
 
 		// The number of reservation blocks associated with this
 		// reservation.
 		reservation_block_count?: number
-		project?:                 string
 
 		// Sharing policy for reservations with Google Cloud managed
 		// services.

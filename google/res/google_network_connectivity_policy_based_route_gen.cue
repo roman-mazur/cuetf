@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_policy_based_route")
 	close({
+		filter!: matchN(1, [#filter, list.MaxItems(1) & [_, ...] & [...#filter]])
+		interconnect_attachment?: matchN(1, [#interconnect_attachment, list.MaxItems(1) & [...#interconnect_attachment]])
+		timeouts?: #timeouts
+		virtual_machine?: matchN(1, [#virtual_machine, list.MaxItems(1) & [...#virtual_machine]])
+
 		// Time when the policy-based route was created.
 		create_time?: string
 
@@ -16,10 +21,10 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Type of this resource.
 		kind?: string
-		id?:   string
 
 		// User-defined labels.
 		//
@@ -44,10 +49,6 @@ import "list"
 		// Other routes that will be referenced to determine the next hop
 		// of the packet. Possible values: ["DEFAULT_ROUTING"]
 		next_hop_other_routes?: string
-		filter!: matchN(1, [#filter, list.MaxItems(1) & [_, ...] & [...#filter]])
-		interconnect_attachment?: matchN(1, [#interconnect_attachment, list.MaxItems(1) & [...#interconnect_attachment]])
-		timeouts?: #timeouts
-		virtual_machine?: matchN(1, [#virtual_machine, list.MaxItems(1) & [...#virtual_machine]])
 
 		// The priority of this policy-based route. Priority is used to
 		// break ties in cases where there are more than one matching
@@ -56,11 +57,11 @@ import "list"
 		// lowest-numbered priority value wins. The default value is
 		// 1000. The priority value must be from 1 to 65535, inclusive.
 		priority?: number
+		project?:  string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?: string
 
 		// Time when the policy-based route was created.
 		update_time?: string

@@ -29,10 +29,11 @@ package data
 		// Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0,
 		// MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11,
 		// POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15,
-		// POSTGRES_16, POSTGRES_17, SQLSERVER_2017_STANDARD,
-		// SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS,
-		// SQLSERVER_2017_WEB. Database Version Policies includes an
-		// up-to-date reference of supported versions.
+		// POSTGRES_16, POSTGRES_17, POSTGRES_18,
+		// SQLSERVER_2017_STANDARD, SQLSERVER_2017_ENTERPRISE,
+		// SQLSERVER_2017_EXPRESS, SQLSERVER_2017_WEB. Database Version
+		// Policies includes an up-to-date reference of supported
+		// versions.
 		database_version?: string
 
 		// Used to block Terraform from deleting a SQL Instance. Defaults
@@ -52,6 +53,7 @@ package data
 			dns_scope?:       string
 			name?:            string
 		})]
+		encryption_key_name?: string
 
 		// The description of final backup if instance enable create final
 		// backup during instance deletion.
@@ -60,13 +62,18 @@ package data
 		// The first IPv4 address of any type assigned. This is to support
 		// accessing the first address in the list in a terraform output
 		// when the resource is configured with a count.
-		first_ip_address?:    string
-		encryption_key_name?: string
+		first_ip_address?: string
+		id?:               string
 
 		// The type of the instance. See
 		// https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType
 		// for supported values.
 		instance_type?: string
+		ip_address?: [...close({
+			ip_address?:     string
+			time_to_retire?: string
+			type?:           string
+		})]
 
 		// Maintenance version.
 		maintenance_version?: string
@@ -75,12 +82,6 @@ package data
 		// replication setup. Note, this requires the master to have
 		// binary_log_enabled set, as well as existing backups.
 		master_instance_name?: string
-		id?:                   string
-		ip_address?: [...close({
-			ip_address?:     string
-			time_to_retire?: string
-			type?:           string
-		})]
 
 		// The name of the instance. If the name is left blank, Terraform
 		// will randomly generate one when the instance is first created.
@@ -160,6 +161,11 @@ package data
 			failover_dr_replica_name?: string
 			psa_write_endpoint?:       string
 		})]
+		restore_backup_context?: [...close({
+			backup_run_id?: number
+			instance_id?:   string
+			project?:       string
+		})]
 
 		// Initial root password. Required for MS SQL Server.
 		root_password?: string
@@ -169,11 +175,6 @@ package data
 		// API. For more info see [updating write-only
 		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 		root_password_wo?: string
-		restore_backup_context?: [...close({
-			backup_run_id?: number
-			instance_id?:   string
-			project?:       string
-		})]
 
 		// Triggers update of root_password_wo write-only. For more info
 		// see [updating write-only
@@ -182,9 +183,6 @@ package data
 
 		// The URI of the created resource.
 		self_link?: string
-
-		// The service account email address assigned to the instance.
-		service_account_email_address?: string
 		server_ca_cert?: [...close({
 			cert?:             string
 			common_name?:      string
@@ -192,6 +190,9 @@ package data
 			expiration_time?:  string
 			sha1_fingerprint?: string
 		})]
+
+		// The service account email address assigned to the instance.
+		service_account_email_address?: string
 
 		// The settings to use for the database. The configuration is
 		// detailed below.
@@ -203,7 +204,8 @@ package data
 			advanced_machine_features?: [...close({
 				threads_per_core?: number
 			})]
-			availability_type?: string
+			auto_upgrade_enabled?: bool
+			availability_type?:    string
 			backup_configuration?: [...close({
 				backup_retention_settings?: [...close({
 					retained_backups?: number
@@ -226,6 +228,7 @@ package data
 				})]
 			})]
 			connector_enforcement?: string
+			data_api_access?:       string
 			data_cache_config?: [...close({
 				data_cache_enabled?: bool
 			})]
@@ -252,11 +255,12 @@ package data
 				retention_days?: number
 			})]
 			insights_config?: [...close({
-				query_insights_enabled?:  bool
-				query_plans_per_minute?:  number
-				query_string_length?:     number
-				record_application_tags?: bool
-				record_client_address?:   bool
+				enhanced_query_insights_enabled?: bool
+				query_insights_enabled?:          bool
+				query_plans_per_minute?:          number
+				query_string_length?:             number
+				record_application_tags?:         bool
+				record_client_address?:           bool
 			})]
 			ip_configuration?: [...close({
 				allocated_ip_range?: string

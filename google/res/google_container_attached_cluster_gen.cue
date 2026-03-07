@@ -6,6 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_attached_cluster")
 	close({
+		authorization?: matchN(1, [#authorization, list.MaxItems(1) & [...#authorization]])
+		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
+		fleet!: matchN(1, [#fleet, list.MaxItems(1) & [_, ...] & [...#fleet]])
+		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
+		monitoring_config?: matchN(1, [#monitoring_config, list.MaxItems(1) & [...#monitoring_config]])
+		oidc_config!: matchN(1, [#oidc_config, list.MaxItems(1) & [_, ...] & [...#oidc_config]])
+		proxy_config?: matchN(1, [#proxy_config, list.MaxItems(1) & [...#proxy_config]])
+		security_posture_config?: matchN(1, [#security_posture_config, list.MaxItems(1) & [...#security_posture_config]])
+		timeouts?: #timeouts
+
 		// Optional. Annotations on the cluster. This field has the same
 		// restrictions as Kubernetes annotations. The total size of all
 		// keys and
@@ -24,7 +34,6 @@ import "list"
 		// Please refer to the field 'effective_annotations' for all of
 		// the annotations present on the resource.
 		annotations?: [string]: string
-		authorization?: matchN(1, [#authorization, list.MaxItems(1) & [...#authorization]])
 
 		// Output only. The region where this cluster runs.
 		//
@@ -70,14 +79,6 @@ import "list"
 
 		// The name of this resource.
 		name!: string
-		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
-		fleet!: matchN(1, [#fleet, list.MaxItems(1) & [_, ...] & [...#fleet]])
-		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
-		monitoring_config?: matchN(1, [#monitoring_config, list.MaxItems(1) & [...#monitoring_config]])
-		oidc_config!: matchN(1, [#oidc_config, list.MaxItems(1) & [_, ...] & [...#oidc_config]])
-		proxy_config?: matchN(1, [#proxy_config, list.MaxItems(1) & [...#proxy_config]])
-		security_posture_config?: matchN(1, [#security_posture_config, list.MaxItems(1) & [...#security_posture_config]])
-		timeouts?: #timeouts
 
 		// The platform version for the cluster (e.g. '1.23.0-gke.1').
 		platform_version!: string

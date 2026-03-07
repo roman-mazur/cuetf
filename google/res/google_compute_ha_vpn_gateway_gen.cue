@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_ha_vpn_gateway")
 	close({
+		timeouts?: #timeouts
+		vpn_interfaces?: matchN(1, [#vpn_interfaces, [...#vpn_interfaces]])
+
 		// An optional description of this resource.
 		description?: string
 
@@ -56,10 +59,8 @@ package res
 		name!: string
 
 		// The network this VPN gateway is accepting traffic for.
-		network!:  string
-		project?:  string
-		timeouts?: #timeouts
-		vpn_interfaces?: matchN(1, [#vpn_interfaces, [...#vpn_interfaces]])
+		network!: string
+		project?: string
 
 		// The region this gateway should sit in.
 		region?:    string

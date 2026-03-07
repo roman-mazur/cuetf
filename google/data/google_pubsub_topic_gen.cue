@@ -8,6 +8,7 @@ package data
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Settings for ingestion from a data source into this topic.
 		ingestion_data_source_settings?: [...close({
@@ -53,7 +54,6 @@ package data
 				severity?: string
 			})]
 		})]
-		id?: string
 
 		// The resource name of the Cloud KMS CryptoKey to be used to
 		// protect access

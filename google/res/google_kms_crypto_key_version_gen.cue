@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_kms_crypto_key_version")
 	close({
+		external_protection_level_options?: matchN(1, [#external_protection_level_options, list.MaxItems(1) & [...#external_protection_level_options]])
+		timeouts?: #timeouts
+
 		// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion
 		// supports.
 		algorithm?: string
@@ -40,8 +43,6 @@ import "list"
 
 		// The resource name for this CryptoKeyVersion.
 		name?: string
-		external_protection_level_options?: matchN(1, [#external_protection_level_options, list.MaxItems(1) & [...#external_protection_level_options]])
-		timeouts?: #timeouts
 
 		// The ProtectionLevel describing how crypto operations are
 		// performed with this CryptoKeyVersion.

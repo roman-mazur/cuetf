@@ -6,13 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_custom_service")
 	close({
+		telemetry?: matchN(1, [#telemetry, list.MaxItems(1) & [...#telemetry]])
+		timeouts?: #timeouts
+
 		// Name used for UI elements listing this Service.
 		display_name?: string
+		id?:           string
 
 		// The full resource name for this service. The syntax is:
 		// projects/[PROJECT_ID]/services/[SERVICE_ID].
-		name?: string
-		id?:   string
+		name?:    string
+		project?: string
 
 		// An optional service ID to use. If not given, the server will
 		// generate a
@@ -31,9 +35,6 @@ import "list"
 		// semantic value,
 		// the empty string may be supplied for the label value.
 		user_labels?: [string]: string
-		project?: string
-		telemetry?: matchN(1, [#telemetry, list.MaxItems(1) & [...#telemetry]])
-		timeouts?: #timeouts
 	})
 
 	#telemetry: close({

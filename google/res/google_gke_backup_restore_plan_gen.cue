@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_backup_restore_plan")
 	close({
+		restore_config!: matchN(1, [#restore_config, list.MaxItems(1) & [_, ...] & [...#restore_config]])
+		timeouts?: #timeouts
+
 		// A reference to the BackupPlan from which Backups may be used
 		// as the source for Restores created via this RestorePlan.
 		backup_plan!: string
@@ -40,8 +43,6 @@ import "list"
 		// The full name of the BackupPlan Resource.
 		name!:    string
 		project?: string
-		restore_config!: matchN(1, [#restore_config, list.MaxItems(1) & [_, ...] & [...#restore_config]])
-		timeouts?: #timeouts
 
 		// The State of the RestorePlan.
 		state?: string
@@ -59,6 +60,14 @@ import "list"
 	})
 
 	#restore_config: close({
+		cluster_resource_restore_scope?: matchN(1, [_#defs."/$defs/restore_config/$defs/cluster_resource_restore_scope", list.MaxItems(1) & [..._#defs."/$defs/restore_config/$defs/cluster_resource_restore_scope"]])
+		excluded_namespaces?: matchN(1, [_#defs."/$defs/restore_config/$defs/excluded_namespaces", list.MaxItems(1) & [..._#defs."/$defs/restore_config/$defs/excluded_namespaces"]])
+		restore_order?: matchN(1, [_#defs."/$defs/restore_config/$defs/restore_order", list.MaxItems(1) & [..._#defs."/$defs/restore_config/$defs/restore_order"]])
+		selected_applications?: matchN(1, [_#defs."/$defs/restore_config/$defs/selected_applications", list.MaxItems(1) & [..._#defs."/$defs/restore_config/$defs/selected_applications"]])
+		selected_namespaces?: matchN(1, [_#defs."/$defs/restore_config/$defs/selected_namespaces", list.MaxItems(1) & [..._#defs."/$defs/restore_config/$defs/selected_namespaces"]])
+		transformation_rules?: matchN(1, [_#defs."/$defs/restore_config/$defs/transformation_rules", [..._#defs."/$defs/restore_config/$defs/transformation_rules"]])
+		volume_data_restore_policy_bindings?: matchN(1, [_#defs."/$defs/restore_config/$defs/volume_data_restore_policy_bindings", [..._#defs."/$defs/restore_config/$defs/volume_data_restore_policy_bindings"]])
+
 		// If True, restore all namespaced resources in the Backup.
 		// Setting this field to False will result in an error.
 		all_namespaces?: bool
@@ -90,17 +99,10 @@ import "list"
 		// "MERGE_SKIP_ON_CONFLICT", "MERGE_REPLACE_VOLUME_ON_CONFLICT",
 		// "MERGE_REPLACE_ON_CONFLICT"]
 		namespaced_resource_restore_mode?: string
-		cluster_resource_restore_scope?: matchN(1, [_#defs."/$defs/restore_config/$defs/cluster_resource_restore_scope", list.MaxItems(1) & [..._#defs."/$defs/restore_config/$defs/cluster_resource_restore_scope"]])
 
 		// Do not restore any namespaced resources if set to "True".
 		// Specifying this field to "False" is not allowed.
 		no_namespaces?: bool
-		excluded_namespaces?: matchN(1, [_#defs."/$defs/restore_config/$defs/excluded_namespaces", list.MaxItems(1) & [..._#defs."/$defs/restore_config/$defs/excluded_namespaces"]])
-		restore_order?: matchN(1, [_#defs."/$defs/restore_config/$defs/restore_order", list.MaxItems(1) & [..._#defs."/$defs/restore_config/$defs/restore_order"]])
-		selected_applications?: matchN(1, [_#defs."/$defs/restore_config/$defs/selected_applications", list.MaxItems(1) & [..._#defs."/$defs/restore_config/$defs/selected_applications"]])
-		selected_namespaces?: matchN(1, [_#defs."/$defs/restore_config/$defs/selected_namespaces", list.MaxItems(1) & [..._#defs."/$defs/restore_config/$defs/selected_namespaces"]])
-		transformation_rules?: matchN(1, [_#defs."/$defs/restore_config/$defs/transformation_rules", [..._#defs."/$defs/restore_config/$defs/transformation_rules"]])
-		volume_data_restore_policy_bindings?: matchN(1, [_#defs."/$defs/restore_config/$defs/volume_data_restore_policy_bindings", [..._#defs."/$defs/restore_config/$defs/volume_data_restore_policy_bindings"]])
 
 		// Specifies the mechanism to be used to restore volume data.
 		// This should be set to a value other than

@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_developer_app")
 	close({
+		attributes?: matchN(1, [#attributes, [...#attributes]])
+		timeouts?: #timeouts
+
 		// List of API products associated with the developer app.
 		api_products?: [...string]
 
@@ -51,6 +54,7 @@ package res
 
 		// ID of the developer.
 		developer_id?: string
+		id?:           string
 
 		// Expiration time, in milliseconds, for the consumer key that is
 		// generated
@@ -59,9 +63,6 @@ package res
 		// the API key never expires. The expiration time can't be updated
 		// after it is set.
 		key_expires_in?: string
-		id?:             string
-		attributes?: matchN(1, [#attributes, [...#attributes]])
-		timeouts?: #timeouts
 
 		// Time at which the developer was last modified in milliseconds
 		// since epoch.

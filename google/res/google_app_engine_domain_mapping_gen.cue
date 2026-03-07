@@ -6,20 +6,24 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_app_engine_domain_mapping")
 	close({
+		ssl_settings?: matchN(1, [#ssl_settings, list.MaxItems(1) & [...#ssl_settings]])
+		timeouts?: #timeouts
+
 		// Relative name of the domain serving the application. Example:
 		// example.com.
 		domain_name!: string
+		id?:          string
 
 		// Full path to the DomainMapping resource in the API. Example:
 		// apps/myapp/domainMapping/example.com.
 		name?: string
-		id?:   string
 
 		// Whether the domain creation should override any existing
 		// mappings for this domain.
 		// By default, overrides are rejected. Default value: "STRICT"
 		// Possible values: ["STRICT", "OVERRIDE"]
 		override_strategy?: string
+		project?:           string
 
 		// The resource records required to configure this domain mapping.
 		// These records must be added to the domain's DNS
@@ -30,9 +34,6 @@ import "list"
 			rrdata?: string
 			type?:   string
 		})]
-		project?: string
-		ssl_settings?: matchN(1, [#ssl_settings, list.MaxItems(1) & [...#ssl_settings]])
-		timeouts?: #timeouts
 	})
 
 	#ssl_settings: close({

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_organization")
 	close({
+		properties?: matchN(1, [#properties, list.MaxItems(1) & [...#properties]])
+		timeouts?: #timeouts
+
 		// Primary GCP region for analytics data storage. For valid
 		// values, see [Create an Apigee
 		// organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
@@ -64,9 +67,7 @@ import "list"
 
 		// The display name of the Apigee organization.
 		display_name?: string
-		properties?: matchN(1, [#properties, list.MaxItems(1) & [...#properties]])
-		timeouts?: #timeouts
-		id?:       string
+		id?:           string
 
 		// Output only. Name of the Apigee organization.
 		name?: string

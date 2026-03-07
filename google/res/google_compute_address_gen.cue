@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_address")
 	close({
+		timeouts?: #timeouts
+
 		// The static external IP address represented by this resource.
 		// The IP address must be inside the specified subnetwork,
 		// if any. Set by the API if undefined.
@@ -26,6 +28,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Reference to the source of external IPv4 addresses, like a
 		// PublicDelegatedPrefix(PDP) for BYOIP.
@@ -44,7 +47,6 @@ package res
 		// The IP Version that will be used by this address. The default
 		// value is 'IPV4'. Possible values: ["IPV4", "IPV6"]
 		ip_version?: string
-		id?:         string
 
 		// The endpoint type of this address, which should be VM or NETLB.
 		// This is
@@ -96,10 +98,10 @@ package res
 		// Premium](https://cloud.google.com/network-tiers/docs/overview).
 		// Possible values: ["PREMIUM", "STANDARD"]
 		network_tier?: string
-		timeouts?:     #timeouts
 
 		// The prefix length if the resource represents an IP range.
 		prefix_length?: number
+		project?:       string
 
 		// The purpose of this resource, which can be one of the following
 		// values.
@@ -129,11 +131,11 @@ package res
 		//
 		// This should only be set when using an Internal address.
 		purpose?: string
-		project?: string
 
 		// The Region in which the created address should reside.
 		// If it is not provided, the provider region is used.
-		region?: string
+		region?:    string
+		self_link?: string
 
 		// The URL of the subnetwork in which to reserve the address. If
 		// an IP
@@ -142,7 +144,6 @@ package res
 		// This field can only be used with INTERNAL type with
 		// GCE_ENDPOINT/DNS_RESOLVER purposes.
 		subnetwork?: string
-		self_link?:  string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

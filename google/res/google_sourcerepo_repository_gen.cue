@@ -4,24 +4,25 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_sourcerepo_repository")
 	close({
+		pubsub_configs?: matchN(1, [#pubsub_configs, [...#pubsub_configs]])
+		timeouts?: #timeouts
+
 		// If set to true, skip repository creation if a repository with
 		// the same name already exists.
 		create_ignore_already_exists?: bool
+		id?:                           string
 
 		// Resource name of the repository, of the form '{{repo}}'.
 		// The repo name may contain slashes. eg, 'name/with/slash'
-		name!: string
-		id?:   string
+		name!:    string
+		project?: string
 
 		// The disk usage of the repo, in bytes.
 		size?: number
 
 		// URL to clone the repository from Google Cloud Source
 		// Repositories.
-		url?:     string
-		project?: string
-		pubsub_configs?: matchN(1, [#pubsub_configs, [...#pubsub_configs]])
-		timeouts?: #timeouts
+		url?: string
 	})
 
 	#pubsub_configs: close({

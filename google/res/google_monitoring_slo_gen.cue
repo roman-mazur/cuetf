@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_slo")
 	close({
+		basic_sli?: matchN(1, [#basic_sli, list.MaxItems(1) & [...#basic_sli]])
+		request_based_sli?: matchN(1, [#request_based_sli, list.MaxItems(1) & [...#request_based_sli]])
+		timeouts?: #timeouts
+		windows_based_sli?: matchN(1, [#windows_based_sli, list.MaxItems(1) & [...#windows_based_sli]])
+
 		// A calendar period, semantically "since the start of the current
 		// <calendarPeriod>". Possible values: ["DAY", "WEEK",
 		// "FORTNIGHT", "MONTH"]
@@ -18,20 +23,16 @@ import "list"
 		// objective
 		// to be met. 0 < goal <= 0.999
 		goal!: number
+		id?:   string
 
 		// The full resource name for this service. The syntax is:
 		// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
-		name?: string
-		id?:   string
+		name?:    string
+		project?: string
 
 		// A rolling time period, semantically "in the past X days".
 		// Must be between 1 to 30 days, inclusive.
 		rolling_period_days?: number
-		project?:             string
-		basic_sli?: matchN(1, [#basic_sli, list.MaxItems(1) & [...#basic_sli]])
-		request_based_sli?: matchN(1, [#request_based_sli, list.MaxItems(1) & [...#request_based_sli]])
-		timeouts?: #timeouts
-		windows_based_sli?: matchN(1, [#windows_based_sli, list.MaxItems(1) & [...#windows_based_sli]])
 
 		// ID of the service to which this SLO belongs.
 		service!: string
@@ -53,6 +54,9 @@ import "list"
 	})
 
 	#basic_sli: close({
+		availability?: matchN(1, [_#defs."/$defs/basic_sli/$defs/availability", list.MaxItems(1) & [..._#defs."/$defs/basic_sli/$defs/availability"]])
+		latency?: matchN(1, [_#defs."/$defs/basic_sli/$defs/latency", list.MaxItems(1) & [..._#defs."/$defs/basic_sli/$defs/latency"]])
+
 		// An optional set of locations to which this SLI is relevant.
 		// Telemetry from other locations will not be used to calculate
 		// performance for this SLI. If omitted, this SLI applies to all
@@ -68,7 +72,6 @@ import "list"
 		// breaking down by method, setting this field will result in an
 		// error.
 		method?: [...string]
-		availability?: matchN(1, [_#defs."/$defs/basic_sli/$defs/availability", list.MaxItems(1) & [..._#defs."/$defs/basic_sli/$defs/availability"]])
 
 		// The set of API versions to which this SLI is relevant.
 		// Telemetry from other API versions will not be used to
@@ -77,7 +80,6 @@ import "list"
 		// that don't support breaking down by version, setting this
 		// field will result in an error.
 		version?: [...string]
-		latency?: matchN(1, [_#defs."/$defs/basic_sli/$defs/latency", list.MaxItems(1) & [..._#defs."/$defs/basic_sli/$defs/latency"]])
 	})
 
 	#request_based_sli: close({
@@ -194,6 +196,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/basic_sli_performance": close({
+		availability?: matchN(1, [_#defs."/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/basic_sli_performance/$defs/availability", list.MaxItems(1) & [..._#defs."/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/basic_sli_performance/$defs/availability"]])
+		latency?: matchN(1, [_#defs."/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/basic_sli_performance/$defs/latency", list.MaxItems(1) & [..._#defs."/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/basic_sli_performance/$defs/latency"]])
+
 		// An optional set of locations to which this SLI is relevant.
 		// Telemetry from other locations will not be used to calculate
 		// performance for this SLI. If omitted, this SLI applies to all
@@ -209,7 +214,6 @@ import "list"
 		// breaking down by method, setting this field will result in an
 		// error.
 		method?: [...string]
-		availability?: matchN(1, [_#defs."/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/basic_sli_performance/$defs/availability", list.MaxItems(1) & [..._#defs."/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/basic_sli_performance/$defs/availability"]])
 
 		// The set of API versions to which this SLI is relevant.
 		// Telemetry from other API versions will not be used to
@@ -218,7 +222,6 @@ import "list"
 		// that don't support breaking down by version, setting this
 		// field will result in an error.
 		version?: [...string]
-		latency?: matchN(1, [_#defs."/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/basic_sli_performance/$defs/latency", list.MaxItems(1) & [..._#defs."/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/basic_sli_performance/$defs/latency"]])
 	})
 
 	_#defs: "/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/basic_sli_performance/$defs/availability": close({

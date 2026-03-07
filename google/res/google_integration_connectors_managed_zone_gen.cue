@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_integration_connectors_managed_zone")
 	close({
+		timeouts?: #timeouts
+
 		// Time the Namespace was created in UTC.
 		create_time?: string
 
@@ -17,6 +19,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Resource labels to represent user provided metadata.
 		//
@@ -26,7 +29,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Name of Managed Zone needs to be created.
 		name!:    string
@@ -34,7 +36,6 @@ package res
 
 		// The name of the Target Project.
 		target_project!: string
-		timeouts?:       #timeouts
 
 		// The name of the Target Project VPC Network.
 		target_vpc!: string

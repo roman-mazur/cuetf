@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_secret_manager_regional_secret")
 	close({
+		customer_managed_encryption?: matchN(1, [#customer_managed_encryption, list.MaxItems(1) & [...#customer_managed_encryption]])
+		rotation?: matchN(1, [#rotation, list.MaxItems(1) & [...#rotation]])
+		timeouts?: #timeouts
+		topics?: matchN(1, [#topics, [...#topics]])
+
 		// Custom metadata about the regional secret.
 		//
 		// Annotations are distinct from various forms of labels.
@@ -64,6 +69,7 @@ import "list"
 		// "2014-10-02T15:01:23.045123456Z". Only one of 'expire_time' or
 		// 'ttl' can be provided.
 		expire_time?: string
+		id?:          string
 
 		// The labels assigned to this regional secret.
 		//
@@ -91,16 +97,11 @@ import "list"
 
 		// The location of the regional secret. eg us-central1
 		location!: string
-		id?:       string
 
 		// The resource name of the regional secret. Format:
 		// 'projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}'
 		name?:    string
 		project?: string
-		customer_managed_encryption?: matchN(1, [#customer_managed_encryption, list.MaxItems(1) & [...#customer_managed_encryption]])
-		rotation?: matchN(1, [#rotation, list.MaxItems(1) & [...#rotation]])
-		timeouts?: #timeouts
-		topics?: matchN(1, [#topics, [...#topics]])
 
 		// This must be unique within the project.
 		secret_id!: string

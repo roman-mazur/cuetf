@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_certificate_manager_certificate_map_entry")
 	close({
+		timeouts?: #timeouts
+
 		// A set of Certificates defines for the given hostname.
 		// There can be defined up to fifteen certificates in each
 		// Certificate Map Entry.
@@ -50,8 +52,7 @@ package res
 
 		// A predefined matcher for particular cases, other than SNI
 		// selection
-		matcher?:  string
-		timeouts?: #timeouts
+		matcher?: string
 
 		// A user-defined name of the Certificate Map Entry. Certificate
 		// Map Entry

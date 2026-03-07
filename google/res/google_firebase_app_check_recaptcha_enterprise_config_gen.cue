@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_check_recaptcha_enterprise_config")
 	close({
+		timeouts?: #timeouts
+
 		// The ID of an
 		// [Web
 		// App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
@@ -23,7 +25,6 @@ package res
 		// reCAPTCHA v3), but rather your score-based reCAPTCHA
 		// Enterprise site key.
 		site_key!: string
-		timeouts?: #timeouts
 
 		// Specifies the duration for which App Check tokens exchanged
 		// from reCAPTCHA Enterprise artifacts will be valid.

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dns_response_policy_rule")
 	close({
+		local_data?: matchN(1, [#local_data, list.MaxItems(1) & [...#local_data]])
+		timeouts?: #timeouts
+
 		// The DNS name (wildcard or exact) to apply this rule to. Must be
 		// unique within the Response Policy Rule.
 		dns_name!: string
@@ -14,12 +17,10 @@ import "list"
 
 		// Identifies the response policy addressed by this request.
 		response_policy!: string
-		local_data?: matchN(1, [#local_data, list.MaxItems(1) & [...#local_data]])
 
 		// An identifier for this rule. Must be unique with the
 		// ResponsePolicy.
 		rule_name!: string
-		timeouts?:  #timeouts
 	})
 
 	#local_data: close({

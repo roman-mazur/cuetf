@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_entry_group")
 	close({
+		timeouts?: #timeouts
+
 		// The time when the EntryGroup was created.
 		create_time?: string
 
@@ -36,9 +38,8 @@ package res
 
 		// The relative resource name of the EntryGroup, of the form:
 		// projects/{project_number}/locations/{location_id}/entryGroups/{entry_group_id}
-		name?:     string
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_target_http_proxy")
 	close({
+		timeouts?: #timeouts
+
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
@@ -51,18 +53,17 @@ package res
 		// characters must be a dash, lowercase letter, or digit, except
 		// the last
 		// character, which cannot be a dash.
-		name!: string
+		name!:    string
+		project?: string
 
 		// This field only applies when the forwarding rule that
 		// references
 		// this target proxy has a loadBalancingScheme set to
 		// INTERNAL_SELF_MANAGED.
 		proxy_bind?: bool
-		project?:    string
 
 		// The unique identifier for the resource.
 		proxy_id?:  number
-		timeouts?:  #timeouts
 		self_link?: string
 
 		// A reference to the UrlMap resource that defines the mapping

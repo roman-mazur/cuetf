@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_target_server")
 	close({
+		s_sl_info?: matchN(1, [#s_sl_info, list.MaxItems(1) & [...#s_sl_info]])
+		timeouts?: #timeouts
+
 		// A human-readable description of this TargetServer.
 		description?: string
 
@@ -18,19 +21,17 @@ import "list"
 		// The host name this target connects to. Value must be a valid
 		// hostname as described by RFC-1123.
 		host!: string
+		id?:   string
 
 		// Enabling/disabling a TargetServer is useful when TargetServers
 		// are used in load balancing configurations, and one or more
 		// TargetServers need to taken out of rotation periodically.
 		// Defaults to true.
 		is_enabled?: bool
-		id?:         string
 
 		// The resource id of this reference. Values must match the
 		// regular expression [\w\s-.]+.
 		name!: string
-		s_sl_info?: matchN(1, [#s_sl_info, list.MaxItems(1) & [...#s_sl_info]])
-		timeouts?: #timeouts
 
 		// The port number this target connects to on the given host.
 		// Value must be between 1 and 65535, inclusive.
@@ -43,6 +44,8 @@ import "list"
 	})
 
 	#s_sl_info: close({
+		common_name?: matchN(1, [_#defs."/$defs/s_sl_info/$defs/common_name", list.MaxItems(1) & [..._#defs."/$defs/s_sl_info/$defs/common_name"]])
+
 		// The SSL/TLS cipher suites to be used. For programmable proxies,
 		// it must be one of the cipher suite names listed in:
 		// http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites.
@@ -79,7 +82,6 @@ import "list"
 		// Required if clientAuthEnabled is true. The resource ID of the
 		// keystore.
 		key_store?: string
-		common_name?: matchN(1, [_#defs."/$defs/s_sl_info/$defs/common_name", list.MaxItems(1) & [..._#defs."/$defs/s_sl_info/$defs/common_name"]])
 
 		// The TLS versioins to be used.
 		protocols?: [...string]

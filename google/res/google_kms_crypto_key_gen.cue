@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_kms_crypto_key")
 	close({
+		timeouts?: #timeouts
+		version_template?: matchN(1, [#version_template, list.MaxItems(1) & [...#version_template]])
+
 		// The resource name of the backend environment associated with
 		// all CryptoKeyVersions within this CryptoKey.
 		// The resource name is in the format
@@ -23,10 +26,10 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Whether this key may contain imported versions only.
 		import_only?: bool
-		id?:          string
 
 		// The KeyRing that this key belongs to.
 		// Format:
@@ -54,7 +57,6 @@ import "list"
 			name?:  string
 			state?: string
 		})]
-		timeouts?: #timeouts
 
 		// The immutable purpose of this CryptoKey. See the
 		// [purpose
@@ -72,7 +74,6 @@ import "list"
 		// letter 's' (seconds). It must be greater than a day (ie,
 		// 86400).
 		rotation_period?: string
-		version_template?: matchN(1, [#version_template, list.MaxItems(1) & [...#version_template]])
 
 		// If set to true, the request will create a CryptoKey without any
 		// CryptoKeyVersions.

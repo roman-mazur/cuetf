@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_colab_notebook_execution")
 	close({
+		custom_environment_spec?: matchN(1, [#custom_environment_spec, list.MaxItems(1) & [...#custom_environment_spec]])
+		dataform_repository_source?: matchN(1, [#dataform_repository_source, list.MaxItems(1) & [...#dataform_repository_source]])
+		direct_notebook_source?: matchN(1, [#direct_notebook_source, list.MaxItems(1) & [...#direct_notebook_source]])
+		gcs_notebook_source?: matchN(1, [#gcs_notebook_source, list.MaxItems(1) & [...#gcs_notebook_source]])
+		timeouts?: #timeouts
+
 		// Required. The display name of the Notebook Execution.
 		display_name!: string
 
@@ -31,12 +37,7 @@ import "list"
 		// The NotebookRuntimeTemplate to source compute configuration
 		// from.
 		notebook_runtime_template_resource_name?: string
-		custom_environment_spec?: matchN(1, [#custom_environment_spec, list.MaxItems(1) & [...#custom_environment_spec]])
-		dataform_repository_source?: matchN(1, [#dataform_repository_source, list.MaxItems(1) & [...#dataform_repository_source]])
-		direct_notebook_source?: matchN(1, [#direct_notebook_source, list.MaxItems(1) & [...#direct_notebook_source]])
-		gcs_notebook_source?: matchN(1, [#gcs_notebook_source, list.MaxItems(1) & [...#gcs_notebook_source]])
-		timeouts?: #timeouts
-		project?:  string
+		project?:                                 string
 
 		// The service account to run the execution as.
 		service_account?: string

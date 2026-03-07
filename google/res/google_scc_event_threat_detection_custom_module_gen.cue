@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_event_threat_detection_custom_module")
 	close({
+		timeouts?: #timeouts
+
 		// Config for the module. For the resident module, its config
 		// value is defined at this level.
 		// For the inherited module, its config value is inherited from
@@ -16,6 +18,7 @@ package res
 		// The state of enablement for the module at the given level of
 		// the hierarchy. Possible values: ["ENABLED", "DISABLED"]
 		enablement_state!: string
+		id?:               string
 
 		// The editor that last updated the custom module
 		last_editor?: string
@@ -29,9 +32,7 @@ package res
 		organization!: string
 
 		// Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
-		type!:     string
-		id?:       string
-		timeouts?: #timeouts
+		type!: string
 
 		// The time at which the custom module was last updated.
 		//

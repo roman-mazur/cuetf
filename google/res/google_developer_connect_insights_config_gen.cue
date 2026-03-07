@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_developer_connect_insights_config")
 	close({
+		artifact_configs?: matchN(1, [#artifact_configs, [...#artifact_configs]])
+		target_projects?: matchN(1, [#target_projects, list.MaxItems(1) & [...#target_projects]])
+		timeouts?: #timeouts
+
 		// User specified annotations. See
 		// https://google.aip.dev/148#annotations
 		// for more details such as format and size limitations.
@@ -69,9 +73,6 @@ import "list"
 		// projects/{project}/locations/{location}/insightsConfigs/{insightsConfig}
 		name?:    string
 		project?: string
-		artifact_configs?: matchN(1, [#artifact_configs, [...#artifact_configs]])
-		target_projects?: matchN(1, [#target_projects, list.MaxItems(1) & [...#target_projects]])
-		timeouts?: #timeouts
 
 		// Reconciling (https://google.aip.dev/128#reconciliation).
 		// Set to true if the current state of InsightsConfig does not

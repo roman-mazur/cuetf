@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_tags_tag_value")
 	close({
+		timeouts?: #timeouts
+
 		// Output only. Creation time.
 		//
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -14,10 +16,10 @@ package res
 		// User-assigned description of the TagValue. Must not exceed 256
 		// characters.
 		description?: string
+		id?:          string
 
 		// The generated numeric id for the TagValue.
 		name?: string
-		id?:   string
 
 		// Output only. Namespaced name of the TagValue. Will be in the
 		// format {parentNamespace}/{tagKeyShortName}/{shortName}.
@@ -42,7 +44,6 @@ package res
 		// resolution and up to nine fractional digits. Examples:
 		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		update_time?: string
-		timeouts?:    #timeouts
 	})
 
 	#timeouts: close({

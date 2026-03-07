@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_security_compliance_framework_deployment")
 	close({
+		cloud_control_metadata!: matchN(1, [#cloud_control_metadata, [_, ...] & [...#cloud_control_metadata]])
+		framework!: matchN(1, [#framework, list.MaxItems(1) & [_, ...] & [...#framework]])
+		target_resource_config!: matchN(1, [#target_resource_config, list.MaxItems(1) & [_, ...] & [...#target_resource_config]])
+		timeouts?: #timeouts
+
 		// The references to the cloud control deployments. It has all the
 		// CloudControlDeployments which are either directly added in the
 		// framework or
@@ -70,10 +75,6 @@ import "list"
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		location!: string
-		cloud_control_metadata!: matchN(1, [#cloud_control_metadata, [_, ...] & [...#cloud_control_metadata]])
-		framework!: matchN(1, [#framework, list.MaxItems(1) & [_, ...] & [...#framework]])
-		target_resource_config!: matchN(1, [#target_resource_config, list.MaxItems(1) & [_, ...] & [...#target_resource_config]])
-		timeouts?: #timeouts
 
 		// Identifier. FrameworkDeployment name in the following format:
 		// organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
@@ -145,16 +146,17 @@ import "list"
 	})
 
 	_#defs: "/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value": close({
+		oneof_value?: matchN(1, [_#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value", list.MaxItems(1) & [..._#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value"]])
+		string_list_value?: matchN(1, [_#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/string_list_value"]])
+
 		// Represents a boolean value.
 		bool_value?: bool
 
 		// Represents a double value.
 		number_value?: number
-		oneof_value?: matchN(1, [_#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value", list.MaxItems(1) & [..._#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value"]])
 
 		// Represents a string value.
 		string_value?: string
-		string_list_value?: matchN(1, [_#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/string_list_value"]])
 	})
 
 	_#defs: "/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value": close({
@@ -165,9 +167,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value": close({
+		string_list_value?: matchN(1, [_#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value"]])
+
 		// Represents a boolean value.
 		bool_value?: bool
-		string_list_value?: matchN(1, [_#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/cloud_control_metadata/$defs/cloud_control_details/$defs/parameters/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value"]])
 
 		// Represents a double value.
 		number_value?: number

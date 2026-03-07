@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_certificate_manager_dns_authorization")
 	close({
+		timeouts?: #timeouts
+
 		// A human-readable description of the resource.
 		description?: string
 
@@ -51,9 +53,8 @@ package res
 		// character must be a letter,
 		// and all following characters must be a dash, underscore, letter
 		// or digit.
-		name!:     string
-		timeouts?: #timeouts
-		project?:  string
+		name!:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

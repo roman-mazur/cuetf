@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_azure_cluster")
 	close({
+		authorization!: matchN(1, [#authorization, list.MaxItems(1) & [_, ...] & [...#authorization]])
+		azure_services_authentication?: matchN(1, [#azure_services_authentication, list.MaxItems(1) & [...#azure_services_authentication]])
+		control_plane!: matchN(1, [#control_plane, list.MaxItems(1) & [_, ...] & [...#control_plane]])
+		fleet!: matchN(1, [#fleet, list.MaxItems(1) & [_, ...] & [...#fleet]])
+		networking!: matchN(1, [#networking, list.MaxItems(1) & [_, ...] & [...#networking]])
+		timeouts?: #timeouts
+
 		// Optional. Annotations on the cluster. This field has the same
 		// restrictions as Kubernetes annotations. The total size of all
 		// keys and values combined is limited to 256k. Keys can have 2
@@ -56,6 +63,7 @@ import "list"
 		// delete requests to ensure the client has an up-to-date value
 		// before proceeding.
 		etag?: string
+		id?:   string
 
 		// The location for the resource
 		location!: string
@@ -65,17 +73,10 @@ import "list"
 
 		// The project for the resource
 		project?: string
-		id?:      string
 
 		// Output only. If set, there are currently changes in flight to
 		// the cluster.
 		reconciling?: bool
-		authorization!: matchN(1, [#authorization, list.MaxItems(1) & [_, ...] & [...#authorization]])
-		azure_services_authentication?: matchN(1, [#azure_services_authentication, list.MaxItems(1) & [...#azure_services_authentication]])
-		control_plane!: matchN(1, [#control_plane, list.MaxItems(1) & [_, ...] & [...#control_plane]])
-		fleet!: matchN(1, [#fleet, list.MaxItems(1) & [_, ...] & [...#fleet]])
-		networking!: matchN(1, [#networking, list.MaxItems(1) & [_, ...] & [...#networking]])
-		timeouts?: #timeouts
 
 		// The ARM ID of the resource group where the cluster resources
 		// are deployed. For example: `/subscriptions/*/resourceGroups/*`
@@ -116,6 +117,13 @@ import "list"
 	})
 
 	#control_plane: close({
+		database_encryption?: matchN(1, [_#defs."/$defs/control_plane/$defs/database_encryption", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/database_encryption"]])
+		main_volume?: matchN(1, [_#defs."/$defs/control_plane/$defs/main_volume", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/main_volume"]])
+		proxy_config?: matchN(1, [_#defs."/$defs/control_plane/$defs/proxy_config", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/proxy_config"]])
+		replica_placements?: matchN(1, [_#defs."/$defs/control_plane/$defs/replica_placements", [..._#defs."/$defs/control_plane/$defs/replica_placements"]])
+		root_volume?: matchN(1, [_#defs."/$defs/control_plane/$defs/root_volume", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/root_volume"]])
+		ssh_config!: matchN(1, [_#defs."/$defs/control_plane/$defs/ssh_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/ssh_config"]])
+
 		// The ARM ID of the subnet where the control plane VMs are
 		// deployed. Example:
 		// `/subscriptions//resourceGroups//providers/Microsoft.Network/virtualNetworks//subnets/default`.
@@ -129,18 +137,12 @@ import "list"
 		// `1.19.10-gke.1000`). You can list all supported versions on a
 		// given Google Cloud region by calling GetAzureServerConfig.
 		version!: string
-		database_encryption?: matchN(1, [_#defs."/$defs/control_plane/$defs/database_encryption", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/database_encryption"]])
-		main_volume?: matchN(1, [_#defs."/$defs/control_plane/$defs/main_volume", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/main_volume"]])
-		proxy_config?: matchN(1, [_#defs."/$defs/control_plane/$defs/proxy_config", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/proxy_config"]])
-		replica_placements?: matchN(1, [_#defs."/$defs/control_plane/$defs/replica_placements", [..._#defs."/$defs/control_plane/$defs/replica_placements"]])
 
 		// Optional. The Azure VM size name. Example: `Standard_DS2_v2`.
 		// For available VM sizes, see
 		// https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions.
 		// When unspecified, it defaults to `Standard_DS2_v2`.
 		vm_size?: string
-		root_volume?: matchN(1, [_#defs."/$defs/control_plane/$defs/root_volume", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/root_volume"]])
-		ssh_config!: matchN(1, [_#defs."/$defs/control_plane/$defs/ssh_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/ssh_config"]])
 	})
 
 	#fleet: close({

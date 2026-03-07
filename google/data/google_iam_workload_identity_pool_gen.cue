@@ -16,11 +16,11 @@ package data
 
 		// A display name for the pool. Cannot exceed 32 characters.
 		display_name?: string
+		id?:           string
 
 		// The resource name of the pool as
 		// 'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}'.
 		name?:    string
-		id?:      string
 		project?: string
 
 		// The state of the pool.

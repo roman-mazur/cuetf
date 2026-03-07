@@ -6,7 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_run_domain_mapping")
 	close({
-		id?: string
+		metadata?: matchN(1, [#metadata, list.MaxItems(1) & [...#metadata]])
+		spec!: matchN(1, [#spec, list.MaxItems(1) & [_, ...] & [...#spec]])
+		timeouts?: #timeouts
+		id?:       string
 
 		// The location of the cloud run instance. eg us-central1
 		location!: string
@@ -14,8 +17,8 @@ import "list"
 		// Name should be a
 		// [verified](https://support.google.com/webmasters/answer/9008080)
 		// domain
-		name!: string
-		metadata?: matchN(1, [#metadata, list.MaxItems(1) & [...#metadata]])
+		name!:    string
+		project?: string
 
 		// The current status of the DomainMapping.
 		status?: [...close({
@@ -33,9 +36,6 @@ import "list"
 				type?:   string
 			})]
 		})]
-		project?: string
-		spec!: matchN(1, [#spec, list.MaxItems(1) & [_, ...] & [...#spec]])
-		timeouts?: #timeouts
 	})
 
 	#metadata: close({

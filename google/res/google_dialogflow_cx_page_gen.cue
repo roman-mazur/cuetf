@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_page")
 	close({
+		advanced_settings?: matchN(1, [#advanced_settings, list.MaxItems(1) & [...#advanced_settings]])
+		entry_fulfillment?: matchN(1, [#entry_fulfillment, list.MaxItems(1) & [...#entry_fulfillment]])
+		event_handlers?: matchN(1, [#event_handlers, [...#event_handlers]])
+		form?: matchN(1, [#form, list.MaxItems(1) & [...#form]])
+		knowledge_connector_settings?: matchN(1, [#knowledge_connector_settings, list.MaxItems(1) & [...#knowledge_connector_settings]])
+		timeouts?: #timeouts
+		transition_routes?: matchN(1, [#transition_routes, [...#transition_routes]])
+
 		// The human-readable name of the page, unique within the agent.
 		display_name!: string
 		id?:           string
@@ -26,7 +34,6 @@ import "list"
 		// languages are supported. Note: languages must be enabled in
 		// the agent before they can be used.
 		language_code?: string
-		advanced_settings?: matchN(1, [#advanced_settings, list.MaxItems(1) & [...#advanced_settings]])
 
 		// The unique identifier of the page.
 		// Format: projects/<Project ID>/locations/<Location
@@ -37,12 +44,6 @@ import "list"
 		// Format: projects/<Project ID>/locations/<Location
 		// ID>/agents/<Agent ID>/flows/<Flow ID>.
 		parent?: string
-		entry_fulfillment?: matchN(1, [#entry_fulfillment, list.MaxItems(1) & [...#entry_fulfillment]])
-		event_handlers?: matchN(1, [#event_handlers, [...#event_handlers]])
-		form?: matchN(1, [#form, list.MaxItems(1) & [...#form]])
-		knowledge_connector_settings?: matchN(1, [#knowledge_connector_settings, list.MaxItems(1) & [...#knowledge_connector_settings]])
-		timeouts?: #timeouts
-		transition_routes?: matchN(1, [#transition_routes, [...#transition_routes]])
 
 		// Ordered list of TransitionRouteGroups associated with the page.
 		// Transition route groups must be unique within a page.
@@ -64,6 +65,10 @@ import "list"
 	})
 
 	#entry_fulfillment: close({
+		conditional_cases?: matchN(1, [_#defs."/$defs/entry_fulfillment/$defs/conditional_cases", [..._#defs."/$defs/entry_fulfillment/$defs/conditional_cases"]])
+		messages?: matchN(1, [_#defs."/$defs/entry_fulfillment/$defs/messages", [..._#defs."/$defs/entry_fulfillment/$defs/messages"]])
+		set_parameter_actions?: matchN(1, [_#defs."/$defs/entry_fulfillment/$defs/set_parameter_actions", [..._#defs."/$defs/entry_fulfillment/$defs/set_parameter_actions"]])
+
 		// Whether Dialogflow should return currently queued fulfillment
 		// response messages in streaming APIs. If a webhook is
 		// specified, it happens before Dialogflow invokes webhook.
@@ -73,7 +78,6 @@ import "list"
 		// 3 partial responses will be returned. You may only want to
 		// apply it to fulfillments that have slow webhooks.
 		return_partial_responses?: bool
-		conditional_cases?: matchN(1, [_#defs."/$defs/entry_fulfillment/$defs/conditional_cases", [..._#defs."/$defs/entry_fulfillment/$defs/conditional_cases"]])
 
 		// The tag used by the webhook to identify which fulfillment is
 		// being called. This field is required if webhook is specified.
@@ -83,11 +87,11 @@ import "list"
 		// ID>/locations/<Location ID>/agents/<Agent
 		// ID>/webhooks/<Webhook ID>.
 		webhook?: string
-		messages?: matchN(1, [_#defs."/$defs/entry_fulfillment/$defs/messages", [..._#defs."/$defs/entry_fulfillment/$defs/messages"]])
-		set_parameter_actions?: matchN(1, [_#defs."/$defs/entry_fulfillment/$defs/set_parameter_actions", [..._#defs."/$defs/entry_fulfillment/$defs/set_parameter_actions"]])
 	})
 
 	#event_handlers: close({
+		trigger_fulfillment?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment", list.MaxItems(1) & [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment"]])
+
 		// The name of the event to handle.
 		event?: string
 
@@ -98,7 +102,6 @@ import "list"
 		// Format: projects/<Project ID>/locations/<Location
 		// ID>/agents/<Agent ID>/flows/<Flow ID>.
 		target_flow?: string
-		trigger_fulfillment?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment", list.MaxItems(1) & [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment"]])
 
 		// The target page to transition to.
 		// Format: projects/<Project ID>/locations/<Location
@@ -111,6 +114,9 @@ import "list"
 	})
 
 	#knowledge_connector_settings: close({
+		data_store_connections?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/data_store_connections", [..._#defs."/$defs/knowledge_connector_settings/$defs/data_store_connections"]])
+		trigger_fulfillment?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment"]])
+
 		// Whether Knowledge Connector is enabled or not.
 		enabled?: bool
 
@@ -119,7 +125,6 @@ import "list"
 		// This field is part of a union field 'target': Only one of
 		// 'targetPage' or 'targetFlow' may be set.
 		target_flow?: string
-		data_store_connections?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/data_store_connections", [..._#defs."/$defs/knowledge_connector_settings/$defs/data_store_connections"]])
 
 		// The target page to transition to. Format:
 		// projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
@@ -128,7 +133,6 @@ import "list"
 		// This field is part of a union field 'target': Only one of
 		// 'targetPage' or 'targetFlow' may be set.
 		target_page?: string
-		trigger_fulfillment?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment"]])
 	})
 
 	#timeouts: close({
@@ -138,6 +142,8 @@ import "list"
 	})
 
 	#transition_routes: close({
+		trigger_fulfillment?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment", list.MaxItems(1) & [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment"]])
+
 		// The condition to evaluate against form parameters or session
 		// parameters.
 		// At least one of intent or condition must be specified. When
@@ -161,7 +167,6 @@ import "list"
 		// Format: projects/<Project ID>/locations/<Location
 		// ID>/agents/<Agent ID>/flows/<Flow ID>.
 		target_flow?: string
-		trigger_fulfillment?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment", list.MaxItems(1) & [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment"]])
 
 		// The target page to transition to.
 		// Format: projects/<Project ID>/locations/<Location
@@ -199,6 +204,10 @@ import "list"
 	_#defs: "/$defs/entry_fulfillment/$defs/messages": close({
 		conversation_success?: matchN(1, [_#defs."/$defs/entry_fulfillment/$defs/messages/$defs/conversation_success", list.MaxItems(1) & [..._#defs."/$defs/entry_fulfillment/$defs/messages/$defs/conversation_success"]])
 		live_agent_handoff?: matchN(1, [_#defs."/$defs/entry_fulfillment/$defs/messages/$defs/live_agent_handoff", list.MaxItems(1) & [..._#defs."/$defs/entry_fulfillment/$defs/messages/$defs/live_agent_handoff"]])
+		output_audio_text?: matchN(1, [_#defs."/$defs/entry_fulfillment/$defs/messages/$defs/output_audio_text", list.MaxItems(1) & [..._#defs."/$defs/entry_fulfillment/$defs/messages/$defs/output_audio_text"]])
+		play_audio?: matchN(1, [_#defs."/$defs/entry_fulfillment/$defs/messages/$defs/play_audio", list.MaxItems(1) & [..._#defs."/$defs/entry_fulfillment/$defs/messages/$defs/play_audio"]])
+		telephony_transfer_call?: matchN(1, [_#defs."/$defs/entry_fulfillment/$defs/messages/$defs/telephony_transfer_call", list.MaxItems(1) & [..._#defs."/$defs/entry_fulfillment/$defs/messages/$defs/telephony_transfer_call"]])
+		text?: matchN(1, [_#defs."/$defs/entry_fulfillment/$defs/messages/$defs/text", list.MaxItems(1) & [..._#defs."/$defs/entry_fulfillment/$defs/messages/$defs/text"]])
 
 		// The channel which the response is associated with. Clients can
 		// specify the channel via QueryParameters.channel, and only
@@ -207,10 +216,6 @@ import "list"
 
 		// A custom, platform-specific payload.
 		payload?: string
-		output_audio_text?: matchN(1, [_#defs."/$defs/entry_fulfillment/$defs/messages/$defs/output_audio_text", list.MaxItems(1) & [..._#defs."/$defs/entry_fulfillment/$defs/messages/$defs/output_audio_text"]])
-		play_audio?: matchN(1, [_#defs."/$defs/entry_fulfillment/$defs/messages/$defs/play_audio", list.MaxItems(1) & [..._#defs."/$defs/entry_fulfillment/$defs/messages/$defs/play_audio"]])
-		telephony_transfer_call?: matchN(1, [_#defs."/$defs/entry_fulfillment/$defs/messages/$defs/telephony_transfer_call", list.MaxItems(1) & [..._#defs."/$defs/entry_fulfillment/$defs/messages/$defs/telephony_transfer_call"]])
-		text?: matchN(1, [_#defs."/$defs/entry_fulfillment/$defs/messages/$defs/text", list.MaxItems(1) & [..._#defs."/$defs/entry_fulfillment/$defs/messages/$defs/text"]])
 	})
 
 	_#defs: "/$defs/entry_fulfillment/$defs/messages/$defs/conversation_success": close({
@@ -276,6 +281,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/event_handlers/$defs/trigger_fulfillment": close({
+		conditional_cases?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/conditional_cases", [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/conditional_cases"]])
+		messages?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages", [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages"]])
+		set_parameter_actions?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/set_parameter_actions", [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/set_parameter_actions"]])
+
 		// Whether Dialogflow should return currently queued fulfillment
 		// response messages in streaming APIs. If a webhook is
 		// specified, it happens before Dialogflow invokes webhook.
@@ -285,7 +294,6 @@ import "list"
 		// 3 partial responses will be returned. You may only want to
 		// apply it to fulfillments that have slow webhooks.
 		return_partial_responses?: bool
-		conditional_cases?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/conditional_cases", [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/conditional_cases"]])
 
 		// The tag used by the webhook to identify which fulfillment is
 		// being called. This field is required if webhook is specified.
@@ -295,8 +303,6 @@ import "list"
 		// ID>/locations/<Location ID>/agents/<Agent
 		// ID>/webhooks/<Webhook ID>.
 		webhook?: string
-		messages?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages", [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages"]])
-		set_parameter_actions?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/set_parameter_actions", [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/set_parameter_actions"]])
 	})
 
 	_#defs: "/$defs/event_handlers/$defs/trigger_fulfillment/$defs/conditional_cases": close({
@@ -312,6 +318,10 @@ import "list"
 	_#defs: "/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages": close({
 		conversation_success?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/conversation_success", list.MaxItems(1) & [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/conversation_success"]])
 		live_agent_handoff?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/live_agent_handoff", list.MaxItems(1) & [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/live_agent_handoff"]])
+		output_audio_text?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/output_audio_text", list.MaxItems(1) & [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/output_audio_text"]])
+		play_audio?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/play_audio", list.MaxItems(1) & [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/play_audio"]])
+		telephony_transfer_call?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/telephony_transfer_call", list.MaxItems(1) & [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/telephony_transfer_call"]])
+		text?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/text", list.MaxItems(1) & [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/text"]])
 
 		// The channel which the response is associated with. Clients can
 		// specify the channel via QueryParameters.channel, and only
@@ -320,10 +330,6 @@ import "list"
 
 		// A custom, platform-specific payload.
 		payload?: string
-		output_audio_text?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/output_audio_text", list.MaxItems(1) & [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/output_audio_text"]])
-		play_audio?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/play_audio", list.MaxItems(1) & [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/play_audio"]])
-		telephony_transfer_call?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/telephony_transfer_call", list.MaxItems(1) & [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/telephony_transfer_call"]])
-		text?: matchN(1, [_#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/text", list.MaxItems(1) & [..._#defs."/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/text"]])
 	})
 
 	_#defs: "/$defs/event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/conversation_success": close({
@@ -389,6 +395,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/form/$defs/parameters": close({
+		advanced_settings?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/advanced_settings", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/advanced_settings"]])
+		fill_behavior?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior"]])
+
 		// The default value of an optional parameter. If the parameter is
 		// required, the default value will be ignored.
 		default_value?: string
@@ -404,11 +413,9 @@ import "list"
 		// projects/<Project ID>/locations/<Location ID>/agents/<Agent
 		// ID>/entityTypes/<Entity Type ID> for developer entity types.
 		entity_type?: string
-		advanced_settings?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/advanced_settings", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/advanced_settings"]])
 
 		// Indicates whether the parameter represents a list of values.
 		is_list?: bool
-		fill_behavior?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior"]])
 
 		// Indicates whether the parameter content should be redacted in
 		// log.
@@ -453,6 +460,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment": close({
+		conditional_cases?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/conditional_cases", [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/conditional_cases"]])
+		messages?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages", [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages"]])
+		set_parameter_actions?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/set_parameter_actions", [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/set_parameter_actions"]])
+
 		// Whether Dialogflow should return currently queued fulfillment
 		// response messages in streaming APIs. If a webhook is
 		// specified, it happens before Dialogflow invokes webhook.
@@ -462,7 +473,6 @@ import "list"
 		// 3 partial responses will be returned. You may only want to
 		// apply it to fulfillments that have slow webhooks.
 		return_partial_responses?: bool
-		conditional_cases?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/conditional_cases", [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/conditional_cases"]])
 
 		// The tag used by the webhook to identify which fulfillment is
 		// being called. This field is required if webhook is specified.
@@ -472,8 +482,6 @@ import "list"
 		// ID>/locations/<Location ID>/agents/<Agent
 		// ID>/webhooks/<Webhook ID>.
 		webhook?: string
-		messages?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages", [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages"]])
-		set_parameter_actions?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/set_parameter_actions", [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/set_parameter_actions"]])
 	})
 
 	_#defs: "/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/conditional_cases": close({
@@ -489,6 +497,10 @@ import "list"
 	_#defs: "/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages": close({
 		conversation_success?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/conversation_success", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/conversation_success"]])
 		live_agent_handoff?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/live_agent_handoff", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/live_agent_handoff"]])
+		output_audio_text?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/output_audio_text", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/output_audio_text"]])
+		play_audio?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/play_audio", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/play_audio"]])
+		telephony_transfer_call?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/telephony_transfer_call", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/telephony_transfer_call"]])
+		text?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/text", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/text"]])
 
 		// The channel which the response is associated with. Clients can
 		// specify the channel via QueryParameters.channel, and only
@@ -497,10 +509,6 @@ import "list"
 
 		// A custom, platform-specific payload.
 		payload?: string
-		output_audio_text?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/output_audio_text", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/output_audio_text"]])
-		play_audio?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/play_audio", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/play_audio"]])
-		telephony_transfer_call?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/telephony_transfer_call", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/telephony_transfer_call"]])
-		text?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/text", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/text"]])
 	})
 
 	_#defs: "/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/initial_prompt_fulfillment/$defs/messages/$defs/conversation_success": close({
@@ -566,6 +574,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers": close({
+		trigger_fulfillment?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment"]])
+
 		// The name of the event to handle.
 		event?: string
 
@@ -576,7 +586,6 @@ import "list"
 		// Format: projects/<Project ID>/locations/<Location
 		// ID>/agents/<Agent ID>/flows/<Flow ID>.
 		target_flow?: string
-		trigger_fulfillment?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment"]])
 
 		// The target page to transition to.
 		// Format: projects/<Project ID>/locations/<Location
@@ -585,6 +594,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment": close({
+		conditional_cases?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/conditional_cases", [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/conditional_cases"]])
+		messages?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages", [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages"]])
+		set_parameter_actions?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/set_parameter_actions", [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/set_parameter_actions"]])
+
 		// Whether Dialogflow should return currently queued fulfillment
 		// response messages in streaming APIs. If a webhook is
 		// specified, it happens before Dialogflow invokes webhook.
@@ -594,7 +607,6 @@ import "list"
 		// 3 partial responses will be returned. You may only want to
 		// apply it to fulfillments that have slow webhooks.
 		return_partial_responses?: bool
-		conditional_cases?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/conditional_cases", [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/conditional_cases"]])
 
 		// The tag used by the webhook to identify which fulfillment is
 		// being called. This field is required if webhook is specified.
@@ -604,8 +616,6 @@ import "list"
 		// ID>/locations/<Location ID>/agents/<Agent
 		// ID>/webhooks/<Webhook ID>.
 		webhook?: string
-		messages?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages", [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages"]])
-		set_parameter_actions?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/set_parameter_actions", [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/set_parameter_actions"]])
 	})
 
 	_#defs: "/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/conditional_cases": close({
@@ -621,6 +631,10 @@ import "list"
 	_#defs: "/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages": close({
 		conversation_success?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/conversation_success", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/conversation_success"]])
 		live_agent_handoff?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/live_agent_handoff", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/live_agent_handoff"]])
+		output_audio_text?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/output_audio_text", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/output_audio_text"]])
+		play_audio?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/play_audio", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/play_audio"]])
+		telephony_transfer_call?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/telephony_transfer_call", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/telephony_transfer_call"]])
+		text?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/text", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/text"]])
 
 		// The channel which the response is associated with. Clients can
 		// specify the channel via QueryParameters.channel, and only
@@ -629,10 +643,6 @@ import "list"
 
 		// A custom, platform-specific payload.
 		payload?: string
-		output_audio_text?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/output_audio_text", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/output_audio_text"]])
-		play_audio?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/play_audio", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/play_audio"]])
-		telephony_transfer_call?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/telephony_transfer_call", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/telephony_transfer_call"]])
-		text?: matchN(1, [_#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/text", list.MaxItems(1) & [..._#defs."/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/text"]])
 	})
 
 	_#defs: "/$defs/form/$defs/parameters/$defs/fill_behavior/$defs/reprompt_event_handlers/$defs/trigger_fulfillment/$defs/messages/$defs/conversation_success": close({
@@ -723,6 +733,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/knowledge_connector_settings/$defs/trigger_fulfillment": close({
+		advanced_settings?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/advanced_settings", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/advanced_settings"]])
+		conditional_cases?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/conditional_cases", [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/conditional_cases"]])
+		messages?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages", [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages"]])
+		set_parameter_actions?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/set_parameter_actions", [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/set_parameter_actions"]])
+
 		// If the flag is true, the agent will utilize LLM to generate a
 		// text response. If LLM generation fails, the defined responses
 		// in the fulfillment will be respected. This flag is only useful
@@ -738,19 +753,15 @@ import "list"
 		// 3 partial responses will be returned. You may only want to
 		// apply it to fulfillments that have slow webhooks.
 		return_partial_responses?: bool
-		advanced_settings?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/advanced_settings", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/advanced_settings"]])
 
 		// The tag used by the webhook to identify which fulfillment is
 		// being called. This field is required if webhook is specified.
 		tag?: string
-		conditional_cases?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/conditional_cases", [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/conditional_cases"]])
 
 		// The webhook to call. Format: projects/<Project
 		// ID>/locations/<Location ID>/agents/<Agent
 		// ID>/webhooks/<Webhook ID>.
 		webhook?: string
-		messages?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages", [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages"]])
-		set_parameter_actions?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/set_parameter_actions", [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/set_parameter_actions"]])
 	})
 
 	_#defs: "/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/advanced_settings": close({
@@ -834,6 +845,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages": close({
+		conversation_success?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/conversation_success", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/conversation_success"]])
+		knowledge_info_card?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/knowledge_info_card", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/knowledge_info_card"]])
+		live_agent_handoff?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/live_agent_handoff", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/live_agent_handoff"]])
+		output_audio_text?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/output_audio_text", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/output_audio_text"]])
+		play_audio?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/play_audio", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/play_audio"]])
+		telephony_transfer_call?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/telephony_transfer_call", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/telephony_transfer_call"]])
+		text?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/text", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/text"]])
+
 		// The channel which the response is associated with. Clients can
 		// specify the channel via QueryParameters.channel, and only
 		// associated channel response will be returned.
@@ -876,13 +895,6 @@ import "list"
 		// 'mixedAudio', 'telephonyTransferCall', or 'knowledgeInfoCard'
 		// may be set.
 		payload?: string
-		conversation_success?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/conversation_success", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/conversation_success"]])
-		knowledge_info_card?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/knowledge_info_card", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/knowledge_info_card"]])
-		live_agent_handoff?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/live_agent_handoff", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/live_agent_handoff"]])
-		output_audio_text?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/output_audio_text", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/output_audio_text"]])
-		play_audio?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/play_audio", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/play_audio"]])
-		telephony_transfer_call?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/telephony_transfer_call", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/telephony_transfer_call"]])
-		text?: matchN(1, [_#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/text", list.MaxItems(1) & [..._#defs."/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/text"]])
 	})
 
 	_#defs: "/$defs/knowledge_connector_settings/$defs/trigger_fulfillment/$defs/messages/$defs/conversation_success": close({
@@ -957,6 +969,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/transition_routes/$defs/trigger_fulfillment": close({
+		conditional_cases?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/conditional_cases", [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/conditional_cases"]])
+		messages?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages", [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages"]])
+		set_parameter_actions?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/set_parameter_actions", [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/set_parameter_actions"]])
+
 		// Whether Dialogflow should return currently queued fulfillment
 		// response messages in streaming APIs. If a webhook is
 		// specified, it happens before Dialogflow invokes webhook.
@@ -966,7 +982,6 @@ import "list"
 		// 3 partial responses will be returned. You may only want to
 		// apply it to fulfillments that have slow webhooks.
 		return_partial_responses?: bool
-		conditional_cases?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/conditional_cases", [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/conditional_cases"]])
 
 		// The tag used by the webhook to identify which fulfillment is
 		// being called. This field is required if webhook is specified.
@@ -976,8 +991,6 @@ import "list"
 		// ID>/locations/<Location ID>/agents/<Agent
 		// ID>/webhooks/<Webhook ID>.
 		webhook?: string
-		messages?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages", [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages"]])
-		set_parameter_actions?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/set_parameter_actions", [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/set_parameter_actions"]])
 	})
 
 	_#defs: "/$defs/transition_routes/$defs/trigger_fulfillment/$defs/conditional_cases": close({
@@ -993,6 +1006,10 @@ import "list"
 	_#defs: "/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages": close({
 		conversation_success?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/conversation_success", list.MaxItems(1) & [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/conversation_success"]])
 		live_agent_handoff?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/live_agent_handoff", list.MaxItems(1) & [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/live_agent_handoff"]])
+		output_audio_text?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/output_audio_text", list.MaxItems(1) & [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/output_audio_text"]])
+		play_audio?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/play_audio", list.MaxItems(1) & [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/play_audio"]])
+		telephony_transfer_call?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/telephony_transfer_call", list.MaxItems(1) & [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/telephony_transfer_call"]])
+		text?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/text", list.MaxItems(1) & [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/text"]])
 
 		// The channel which the response is associated with. Clients can
 		// specify the channel via QueryParameters.channel, and only
@@ -1001,10 +1018,6 @@ import "list"
 
 		// A custom, platform-specific payload.
 		payload?: string
-		output_audio_text?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/output_audio_text", list.MaxItems(1) & [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/output_audio_text"]])
-		play_audio?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/play_audio", list.MaxItems(1) & [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/play_audio"]])
-		telephony_transfer_call?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/telephony_transfer_call", list.MaxItems(1) & [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/telephony_transfer_call"]])
-		text?: matchN(1, [_#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/text", list.MaxItems(1) & [..._#defs."/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/text"]])
 	})
 
 	_#defs: "/$defs/transition_routes/$defs/trigger_fulfillment/$defs/messages/$defs/conversation_success": close({

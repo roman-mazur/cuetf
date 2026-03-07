@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_http_health_check")
 	close({
+		timeouts?: #timeouts
+
 		// How often (in seconds) to send a health check. The default
 		// value is 5
 		// seconds.
@@ -46,20 +48,19 @@ package res
 
 		// The TCP port number for the HTTP health check request.
 		// The default value is 80.
-		port?: number
+		port?:    number
+		project?: string
 
 		// The request path of the HTTP health check request.
 		// The default value is /.
 		request_path?: string
-		timeouts?:     #timeouts
-		project?:      string
+		self_link?:    string
 
 		// How long (in seconds) to wait before claiming failure.
 		// The default value is 5 seconds. It is invalid for timeoutSec to
 		// have
 		// greater value than checkIntervalSec.
 		timeout_sec?: number
-		self_link?:   string
 
 		// A so-far healthy instance will be marked unhealthy after this
 		// many

@@ -6,12 +6,23 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_agent")
 	close({
+		after_agent_callbacks?: matchN(1, [#after_agent_callbacks, [...#after_agent_callbacks]])
+		after_model_callbacks?: matchN(1, [#after_model_callbacks, [...#after_model_callbacks]])
+		after_tool_callbacks?: matchN(1, [#after_tool_callbacks, [...#after_tool_callbacks]])
+		before_agent_callbacks?: matchN(1, [#before_agent_callbacks, [...#before_agent_callbacks]])
+		before_model_callbacks?: matchN(1, [#before_model_callbacks, [...#before_model_callbacks]])
+		before_tool_callbacks?: matchN(1, [#before_tool_callbacks, [...#before_tool_callbacks]])
+		llm_agent?: matchN(1, [#llm_agent, list.MaxItems(1) & [...#llm_agent]])
+		model_settings?: matchN(1, [#model_settings, list.MaxItems(1) & [...#model_settings]])
+		remote_dialogflow_agent?: matchN(1, [#remote_dialogflow_agent, list.MaxItems(1) & [...#remote_dialogflow_agent]])
+		timeouts?: #timeouts
+		toolsets?: matchN(1, [#toolsets, [...#toolsets]])
+
 		// The ID to use for the agent, which will become the final
 		// component of
 		// the agent's resource name. If not provided, a unique ID will be
 		// automatically assigned for the agent.
 		agent_id?: string
-		after_agent_callbacks?: matchN(1, [#after_agent_callbacks, [...#after_agent_callbacks]])
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -49,18 +60,9 @@ import "list"
 		// 'projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}'
 		guardrails?: [...string]
 		id?: string
-		after_model_callbacks?: matchN(1, [#after_model_callbacks, [...#after_model_callbacks]])
-		after_tool_callbacks?: matchN(1, [#after_tool_callbacks, [...#after_tool_callbacks]])
 
 		// Instructions for the LLM model to guide the agent's behavior.
 		instruction?: string
-		before_agent_callbacks?: matchN(1, [#before_agent_callbacks, [...#before_agent_callbacks]])
-		before_model_callbacks?: matchN(1, [#before_model_callbacks, [...#before_model_callbacks]])
-		before_tool_callbacks?: matchN(1, [#before_tool_callbacks, [...#before_tool_callbacks]])
-		llm_agent?: matchN(1, [#llm_agent, list.MaxItems(1) & [...#llm_agent]])
-		model_settings?: matchN(1, [#model_settings, list.MaxItems(1) & [...#model_settings]])
-		remote_dialogflow_agent?: matchN(1, [#remote_dialogflow_agent, list.MaxItems(1) & [...#remote_dialogflow_agent]])
-		timeouts?: #timeouts
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -70,17 +72,16 @@ import "list"
 		// Identifier. The unique identifier of the agent.
 		// Format:
 		// 'projects/{project}/locations/{location}/apps/{app}/agents/{agent}'
-		name?: string
+		name?:    string
+		project?: string
 
 		// List of available tools for the agent.
 		// Format:
 		// 'projects/{project}/locations/{location}/apps/{app}/tools/{tool}'
 		tools?: [...string]
-		project?: string
 
 		// Timestamp when the agent was last updated.
 		update_time?: string
-		toolsets?: matchN(1, [#toolsets, [...#toolsets]])
 	})
 
 	#after_agent_callbacks: close({

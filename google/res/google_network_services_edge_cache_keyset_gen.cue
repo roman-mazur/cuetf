@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_edge_cache_keyset")
 	close({
+		public_key?: matchN(1, [#public_key, list.MaxItems(3) & [...#public_key]])
+		timeouts?: #timeouts
+		validation_shared_keys?: matchN(1, [#validation_shared_keys, list.MaxItems(3) & [...#validation_shared_keys]])
+
 		// A human-readable description of the resource.
 		description?: string
 
@@ -32,13 +36,10 @@ import "list"
 		// or digit.
 		name!:    string
 		project?: string
-		public_key?: matchN(1, [#public_key, list.MaxItems(3) & [...#public_key]])
-		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		validation_shared_keys?: matchN(1, [#validation_shared_keys, list.MaxItems(3) & [...#validation_shared_keys]])
 	})
 
 	#public_key: close({

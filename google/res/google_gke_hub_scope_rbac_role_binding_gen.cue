@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_hub_scope_rbac_role_binding")
 	close({
+		role!: matchN(1, [#role, list.MaxItems(1) & [_, ...] & [...#role]])
+		timeouts?: #timeouts
+
 		// Time the RBAC Role Binding was created in UTC.
 		create_time?: string
 
@@ -22,6 +25,7 @@ import "list"
 		// is required). Updating one will unset the other automatically.
 		// group is the group, as seen by the kubernetes cluster.
 		group?: string
+		id?:    string
 
 		// Labels for this ScopeRBACRoleBinding.
 		//
@@ -31,14 +35,13 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The resource name for the RBAC Role Binding
-		name?: string
+		name?:    string
+		project?: string
 
 		// Id of the scope
 		scope_id!: string
-		project?:  string
 
 		// The client-provided identifier of the RBAC Role Binding.
 		scope_rbac_role_binding_id!: string
@@ -47,8 +50,6 @@ import "list"
 		state?: [...close({
 			code?: string
 		})]
-		role!: matchN(1, [#role, list.MaxItems(1) & [_, ...] & [...#role]])
-		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

@@ -6,6 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_backend_service")
 	close({
+		backend?: matchN(1, [#backend, [...#backend]])
+		cdn_policy?: matchN(1, [#cdn_policy, list.MaxItems(1) & [...#cdn_policy]])
+		circuit_breakers?: matchN(1, [#circuit_breakers, list.MaxItems(1) & [...#circuit_breakers]])
+		consistent_hash?: matchN(1, [#consistent_hash, list.MaxItems(1) & [...#consistent_hash]])
+		custom_metrics?: matchN(1, [#custom_metrics, [...#custom_metrics]])
+		failover_policy?: matchN(1, [#failover_policy, list.MaxItems(1) & [...#failover_policy]])
+		ha_policy?: matchN(1, [#ha_policy, list.MaxItems(1) & [...#ha_policy]])
+		iap?: matchN(1, [#iap, list.MaxItems(1) & [...#iap]])
+		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
+		network_pass_through_lb_traffic_policy?: matchN(1, [#network_pass_through_lb_traffic_policy, list.MaxItems(1) & [...#network_pass_through_lb_traffic_policy]])
+		outlier_detection?: matchN(1, [#outlier_detection, list.MaxItems(1) & [...#outlier_detection]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
+		strong_session_affinity_cookie?: matchN(1, [#strong_session_affinity_cookie, list.MaxItems(1) & [...#strong_session_affinity_cookie]])
+		timeouts?: #timeouts
+		tls_settings?: matchN(1, [#tls_settings, list.MaxItems(1) & [...#tls_settings]])
+
 		// Lifetime of cookies in seconds if session_affinity is
 		// GENERATED_COOKIE. If set to 0, the cookie is non-persistent and
 		// lasts
@@ -46,12 +62,12 @@ import "list"
 		// uses an internet
 		// or serverless NEG as a backend.
 		health_checks?: [...string]
+		id?: string
 
 		// Specifies preference of traffic to the backend (from the proxy
 		// and from the client for proxyless gRPC). Possible values:
 		// ["IPV4_ONLY", "PREFER_IPV6", "IPV6_ONLY"]
 		ip_address_selection_policy?: string
-		id?:                          string
 
 		// Indicates what kind of load balancing this regional backend
 		// service
@@ -175,21 +191,6 @@ import "list"
 		// to EXTERNAL and haPolicy fastIpMove is enabled.
 		// Changes to this field force recreation of the resource.
 		network?: string
-		backend?: matchN(1, [#backend, [...#backend]])
-		cdn_policy?: matchN(1, [#cdn_policy, list.MaxItems(1) & [...#cdn_policy]])
-		circuit_breakers?: matchN(1, [#circuit_breakers, list.MaxItems(1) & [...#circuit_breakers]])
-		consistent_hash?: matchN(1, [#consistent_hash, list.MaxItems(1) & [...#consistent_hash]])
-		custom_metrics?: matchN(1, [#custom_metrics, [...#custom_metrics]])
-		failover_policy?: matchN(1, [#failover_policy, list.MaxItems(1) & [...#failover_policy]])
-		ha_policy?: matchN(1, [#ha_policy, list.MaxItems(1) & [...#ha_policy]])
-		iap?: matchN(1, [#iap, list.MaxItems(1) & [...#iap]])
-		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		network_pass_through_lb_traffic_policy?: matchN(1, [#network_pass_through_lb_traffic_policy, list.MaxItems(1) & [...#network_pass_through_lb_traffic_policy]])
-		outlier_detection?: matchN(1, [#outlier_detection, list.MaxItems(1) & [...#outlier_detection]])
-		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
-		strong_session_affinity_cookie?: matchN(1, [#strong_session_affinity_cookie, list.MaxItems(1) & [...#strong_session_affinity_cookie]])
-		timeouts?: #timeouts
-		tls_settings?: matchN(1, [#tls_settings, list.MaxItems(1) & [...#tls_settings]])
 
 		// A named port on a backend instance group representing the port
 		// for
@@ -245,6 +246,8 @@ import "list"
 	})
 
 	#backend: close({
+		custom_metrics?: matchN(1, [_#defs."/$defs/backend/$defs/custom_metrics", [..._#defs."/$defs/backend/$defs/custom_metrics"]])
+
 		// Specifies the balancing mode for this backend.
 		//
 		// See the [Backend Services
@@ -331,7 +334,6 @@ import "list"
 		// For CONNECTION mode, either maxConnections or
 		// maxConnectionsPerInstance must be set.
 		max_connections_per_instance?: number
-		custom_metrics?: matchN(1, [_#defs."/$defs/backend/$defs/custom_metrics", [..._#defs."/$defs/backend/$defs/custom_metrics"]])
 
 		// The max requests per second (RPS) of the group. Cannot be set
 		// for INTERNAL backend services.
@@ -364,6 +366,9 @@ import "list"
 	})
 
 	#cdn_policy: close({
+		cache_key_policy?: matchN(1, [_#defs."/$defs/cdn_policy/$defs/cache_key_policy", list.MaxItems(1) & [..._#defs."/$defs/cdn_policy/$defs/cache_key_policy"]])
+		negative_caching_policy?: matchN(1, [_#defs."/$defs/cdn_policy/$defs/negative_caching_policy", [..._#defs."/$defs/cdn_policy/$defs/negative_caching_policy"]])
+
 		// Specifies the cache setting for all responses from this
 		// backend.
 		// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL
@@ -388,8 +393,6 @@ import "list"
 		// order to apply fine-grained caching for common errors or
 		// redirects.
 		negative_caching?: bool
-		cache_key_policy?: matchN(1, [_#defs."/$defs/cdn_policy/$defs/cache_key_policy", list.MaxItems(1) & [..._#defs."/$defs/cdn_policy/$defs/cache_key_policy"]])
-		negative_caching_policy?: matchN(1, [_#defs."/$defs/cdn_policy/$defs/negative_caching_policy", [..._#defs."/$defs/cdn_policy/$defs/negative_caching_policy"]])
 
 		// Serve existing content from the cache (if available) when
 		// revalidating content with the origin, or when an error is
@@ -598,6 +601,9 @@ import "list"
 	})
 
 	#outlier_detection: close({
+		base_ejection_time?: matchN(1, [_#defs."/$defs/outlier_detection/$defs/base_ejection_time", list.MaxItems(1) & [..._#defs."/$defs/outlier_detection/$defs/base_ejection_time"]])
+		interval?: matchN(1, [_#defs."/$defs/outlier_detection/$defs/interval", list.MaxItems(1) & [..._#defs."/$defs/outlier_detection/$defs/interval"]])
+
 		// Number of errors before a host is ejected from the connection
 		// pool. When the
 		// backend host is accessed over HTTP, a 5xx return code qualifies
@@ -638,8 +644,6 @@ import "list"
 		// backend service
 		// that can be ejected. Defaults to 10%.
 		max_ejection_percent?: number
-		base_ejection_time?: matchN(1, [_#defs."/$defs/outlier_detection/$defs/base_ejection_time", list.MaxItems(1) & [..._#defs."/$defs/outlier_detection/$defs/base_ejection_time"]])
-		interval?: matchN(1, [_#defs."/$defs/outlier_detection/$defs/interval", list.MaxItems(1) & [..._#defs."/$defs/outlier_detection/$defs/interval"]])
 
 		// The number of hosts in a cluster that must have enough request
 		// volume to detect

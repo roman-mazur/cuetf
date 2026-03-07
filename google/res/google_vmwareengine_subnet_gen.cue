@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vmwareengine_subnet")
 	close({
+		timeouts?: #timeouts
+
 		// Creation time of this resource.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and
@@ -24,10 +26,10 @@ package res
 		// The IP address of the gateway of this subnet. Must fall within
 		// the IP prefix defined above.
 		gateway_ip?: string
+		id?:         string
 
 		// The IP address range of the subnet in CIDR format.
 		ip_cidr_range!: string
-		id?:            string
 
 		// The ID of the subnet. For userDefined subnets, this name should
 		// be in the format of "service-n",
@@ -47,7 +49,6 @@ package res
 		// If false, the subnet cannot be modified through Google Cloud,
 		// only through NSX-T directly.
 		standard_config?: bool
-		timeouts?:        #timeouts
 
 		// State of the subnet.
 		state?: string

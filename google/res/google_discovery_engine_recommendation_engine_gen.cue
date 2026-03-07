@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_recommendation_engine")
 	close({
+		common_config?: matchN(1, [#common_config, list.MaxItems(1) & [...#common_config]])
+		media_recommendation_engine_config?: matchN(1, [#media_recommendation_engine_config, list.MaxItems(1) & [...#media_recommendation_engine_config]])
+		timeouts?: #timeouts
+
 		// Timestamp the Engine was created at.
 		create_time?: string
 
@@ -40,11 +44,8 @@ import "list"
 		// 'projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}'.
 		// This field must be a UTF-8 encoded string with a length limit
 		// of 1024 characters.
-		name?: string
-		common_config?: matchN(1, [#common_config, list.MaxItems(1) & [...#common_config]])
-		media_recommendation_engine_config?: matchN(1, [#media_recommendation_engine_config, list.MaxItems(1) & [...#media_recommendation_engine_config]])
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// Timestamp the Engine was last updated.
 		update_time?: string
@@ -58,6 +59,9 @@ import "list"
 	})
 
 	#media_recommendation_engine_config: close({
+		engine_features_config?: matchN(1, [_#defs."/$defs/media_recommendation_engine_config/$defs/engine_features_config", list.MaxItems(1) & [..._#defs."/$defs/media_recommendation_engine_config/$defs/engine_features_config"]])
+		optimization_objective_config?: matchN(1, [_#defs."/$defs/media_recommendation_engine_config/$defs/optimization_objective_config", list.MaxItems(1) & [..._#defs."/$defs/media_recommendation_engine_config/$defs/optimization_objective_config"]])
+
 		// The optimization objective. e.g., 'cvr'.
 		// This field together with MediaRecommendationEngineConfig.type
 		// describes
@@ -80,7 +84,6 @@ import "list"
 		// 'UpdateEngine' method is to keep the state the same as before.
 		// Possible values: ["PAUSED", "TRAINING"]
 		training_state?: string
-		engine_features_config?: matchN(1, [_#defs."/$defs/media_recommendation_engine_config/$defs/engine_features_config", list.MaxItems(1) & [..._#defs."/$defs/media_recommendation_engine_config/$defs/engine_features_config"]])
 
 		// The type of engine. e.g., 'recommended-for-you'.
 		// This field together with
@@ -91,7 +94,6 @@ import "list"
 		// 'others-you-may-like',
 		// 'more-like-this', 'most-popular-items'.
 		type?: string
-		optimization_objective_config?: matchN(1, [_#defs."/$defs/media_recommendation_engine_config/$defs/optimization_objective_config", list.MaxItems(1) & [..._#defs."/$defs/media_recommendation_engine_config/$defs/optimization_objective_config"]])
 	})
 
 	#timeouts: close({

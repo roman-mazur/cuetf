@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_multicast_producer_association")
 	close({
+		timeouts?: #timeouts
+
 		// [Output only] The timestamp when the multicast producer
 		// association was
 		// created.
@@ -17,6 +19,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Labels as key-value pairs
 		//
@@ -25,7 +28,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -56,14 +58,13 @@ package res
 		// The resource name of the multicast producer VPC network.
 		// Use following format:
 		// 'projects/{project}/locations/global/networks/{network}'.
-		network!:  string
-		timeouts?: #timeouts
+		network!: string
+		project?: string
 
 		// The multicast resource's state.
 		state?: [...close({
 			state?: string
 		})]
-		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

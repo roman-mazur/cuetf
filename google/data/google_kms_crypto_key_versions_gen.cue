@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_kms_crypto_key_versions")
 	close({
+		crypto_key!: string
+
 		// The filter argument is used to add a filter query parameter
 		// that limits which cryptoKeyVersions are retrieved by the data
 		// source: ?filter={{filter}}.
@@ -20,6 +22,11 @@ package data
 		// [See the documentation about using
 		// filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
 		filter?: string
+		id?:     string
+		public_key?: [...close({
+			algorithm?: string
+			pem?:       string
+		})]
 
 		// A list of all the retrieved cryptoKeyVersions from the provided
 		// crypto key
@@ -35,12 +42,6 @@ package data
 			})]
 			state?:   string
 			version?: number
-		})]
-		crypto_key!: string
-		id?:         string
-		public_key?: [...close({
-			algorithm?: string
-			pem?:       string
 		})]
 	})
 }

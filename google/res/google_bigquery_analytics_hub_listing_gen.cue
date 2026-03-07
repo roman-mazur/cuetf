@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_analytics_hub_listing")
 	close({
+		bigquery_dataset?: matchN(1, [#bigquery_dataset, list.MaxItems(1) & [...#bigquery_dataset]])
+		data_provider?: matchN(1, [#data_provider, list.MaxItems(1) & [...#data_provider]])
+		publisher?: matchN(1, [#publisher, list.MaxItems(1) & [...#publisher]])
+		pubsub_topic?: matchN(1, [#pubsub_topic, list.MaxItems(1) & [...#pubsub_topic]])
+		restricted_export_config?: matchN(1, [#restricted_export_config, list.MaxItems(1) & [...#restricted_export_config]])
+		timeouts?: #timeouts
+
 		// If true, the listing is only available to get the resource
 		// metadata. Listing is non subscribable.
 		allow_only_metadata_sharing?: bool
@@ -62,12 +69,6 @@ import "list"
 		// numbers (0-9), underscores (_). Should not use characters that
 		// require URL-escaping, or characters outside of ASCII, spaces.
 		listing_id!: string
-		bigquery_dataset?: matchN(1, [#bigquery_dataset, list.MaxItems(1) & [...#bigquery_dataset]])
-		data_provider?: matchN(1, [#data_provider, list.MaxItems(1) & [...#data_provider]])
-		publisher?: matchN(1, [#publisher, list.MaxItems(1) & [...#publisher]])
-		pubsub_topic?: matchN(1, [#pubsub_topic, list.MaxItems(1) & [...#pubsub_topic]])
-		restricted_export_config?: matchN(1, [#restricted_export_config, list.MaxItems(1) & [...#restricted_export_config]])
-		timeouts?: #timeouts
 
 		// The name of the location this data exchange listing.
 		location!: string

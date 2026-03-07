@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_batch")
 	close({
+		environment_config?: matchN(1, [#environment_config, list.MaxItems(1) & [...#environment_config]])
+		pyspark_batch?: matchN(1, [#pyspark_batch, list.MaxItems(1) & [...#pyspark_batch]])
+		runtime_config?: matchN(1, [#runtime_config, list.MaxItems(1) & [...#runtime_config]])
+		spark_batch?: matchN(1, [#spark_batch, list.MaxItems(1) & [...#spark_batch]])
+		spark_r_batch?: matchN(1, [#spark_r_batch, list.MaxItems(1) & [...#spark_r_batch]])
+		spark_sql_batch?: matchN(1, [#spark_sql_batch, list.MaxItems(1) & [...#spark_sql_batch]])
+		timeouts?: #timeouts
+
 		// The ID to use for the batch, which will become the final
 		// component of the batch's resource name.
 		// This value must be 4-63 characters. Valid characters are
@@ -41,6 +49,7 @@ import "list"
 
 		// The resource name of the operation associated with this batch.
 		operation?: string
+		project?:   string
 
 		// Runtime information about batch execution.
 		runtime_info?: [...close({
@@ -66,15 +75,7 @@ import "list"
 
 		// The state of the batch. For possible values, see the [API
 		// documentation](https://cloud.google.com/dataproc-serverless/docs/reference/rest/v1/projects.locations.batches#State).
-		state?:   string
-		project?: string
-		environment_config?: matchN(1, [#environment_config, list.MaxItems(1) & [...#environment_config]])
-		pyspark_batch?: matchN(1, [#pyspark_batch, list.MaxItems(1) & [...#pyspark_batch]])
-		runtime_config?: matchN(1, [#runtime_config, list.MaxItems(1) & [...#runtime_config]])
-		spark_batch?: matchN(1, [#spark_batch, list.MaxItems(1) & [...#spark_batch]])
-		spark_r_batch?: matchN(1, [#spark_r_batch, list.MaxItems(1) & [...#spark_r_batch]])
-		spark_sql_batch?: matchN(1, [#spark_sql_batch, list.MaxItems(1) & [...#spark_sql_batch]])
-		timeouts?: #timeouts
+		state?: string
 
 		// Historical state information for the batch.
 		state_history?: [...close({
@@ -136,6 +137,8 @@ import "list"
 	})
 
 	#runtime_config: close({
+		autotuning_config?: matchN(1, [_#defs."/$defs/runtime_config/$defs/autotuning_config", list.MaxItems(1) & [..._#defs."/$defs/runtime_config/$defs/autotuning_config"]])
+
 		// Optional. Cohort identifier. Identifies families of the
 		// workloads having the same shape, e.g. daily ETL jobs.
 		cohort?: string
@@ -152,7 +155,6 @@ import "list"
 		// A mapping of property names to values, which are used to
 		// configure workload execution.
 		properties?: [string]: string
-		autotuning_config?: matchN(1, [_#defs."/$defs/runtime_config/$defs/autotuning_config", list.MaxItems(1) & [..._#defs."/$defs/runtime_config/$defs/autotuning_config"]])
 
 		// Version of the batch runtime.
 		version?: string
@@ -228,6 +230,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/environment_config/$defs/execution_config": close({
+		authentication_config?: matchN(1, [_#defs."/$defs/environment_config/$defs/execution_config/$defs/authentication_config", list.MaxItems(1) & [..._#defs."/$defs/environment_config/$defs/execution_config/$defs/authentication_config"]])
+
 		// The Cloud KMS key to use for encryption.
 		kms_key?: string
 
@@ -254,7 +258,6 @@ import "list"
 
 		// Subnetwork configuration for workload execution.
 		subnetwork_uri?: string
-		authentication_config?: matchN(1, [_#defs."/$defs/environment_config/$defs/execution_config/$defs/authentication_config", list.MaxItems(1) & [..._#defs."/$defs/environment_config/$defs/execution_config/$defs/authentication_config"]])
 
 		// The duration after which the workload will be terminated.
 		// When the workload exceeds this duration, it will be

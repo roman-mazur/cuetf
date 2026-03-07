@@ -6,16 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_job")
 	close({
+		copy?: matchN(1, [#copy, list.MaxItems(1) & [...#copy]])
+		extract?: matchN(1, [#extract, list.MaxItems(1) & [...#extract]])
+		load?: matchN(1, [#load, list.MaxItems(1) & [...#load]])
+		query?: matchN(1, [#query, list.MaxItems(1) & [...#query]])
+		timeouts?: #timeouts
+
 		// All of labels (key/value pairs) present on the resource in GCP,
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// The ID of the job. The ID must contain only letters (a-z, A-Z),
 		// numbers (0-9), underscores (_), or dashes (-). The maximum
 		// length is 1,024 characters.
 		job_id!: string
-		id?:     string
 
 		// Job timeout in milliseconds. If this time limit is exceeded,
 		// BigQuery may attempt to terminate the job.
@@ -36,11 +42,7 @@ import "list"
 
 		// The geographic location of the job. The default value is US.
 		location?: string
-		copy?: matchN(1, [#copy, list.MaxItems(1) & [...#copy]])
-		extract?: matchN(1, [#extract, list.MaxItems(1) & [...#extract]])
-		load?: matchN(1, [#load, list.MaxItems(1) & [...#load]])
-		project?: string
-		query?: matchN(1, [#query, list.MaxItems(1) & [...#query]])
+		project?:  string
 
 		// The status of this job. Examine this value when polling an
 		// asynchronous job to see if the job is complete.
@@ -57,7 +59,6 @@ import "list"
 			})]
 			state?: string
 		})]
-		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -102,6 +103,9 @@ import "list"
 	})
 
 	#extract: close({
+		source_model?: matchN(1, [_#defs."/$defs/extract/$defs/source_model", list.MaxItems(1) & [..._#defs."/$defs/extract/$defs/source_model"]])
+		source_table?: matchN(1, [_#defs."/$defs/extract/$defs/source_table", list.MaxItems(1) & [..._#defs."/$defs/extract/$defs/source_table"]])
+
 		// The compression type to use for exported files. Possible values
 		// include GZIP, DEFLATE, SNAPPY, and NONE.
 		// The default value is NONE. DEFLATE and SNAPPY are only
@@ -119,13 +123,11 @@ import "list"
 		// A list of fully-qualified Google Cloud Storage URIs where the
 		// extracted table should be written.
 		destination_uris!: [...string]
-		source_model?: matchN(1, [_#defs."/$defs/extract/$defs/source_model", list.MaxItems(1) & [..._#defs."/$defs/extract/$defs/source_model"]])
 
 		// When extracting data in CSV format, this defines the delimiter
 		// to use between fields in the exported data.
 		// Default is ','
 		field_delimiter?: string
-		source_table?: matchN(1, [_#defs."/$defs/extract/$defs/source_table", list.MaxItems(1) & [..._#defs."/$defs/extract/$defs/source_table"]])
 
 		// Whether to print out a header row in the results. Default is
 		// true.
@@ -136,6 +138,11 @@ import "list"
 	})
 
 	#load: close({
+		destination_encryption_configuration?: matchN(1, [_#defs."/$defs/load/$defs/destination_encryption_configuration", list.MaxItems(1) & [..._#defs."/$defs/load/$defs/destination_encryption_configuration"]])
+		destination_table!: matchN(1, [_#defs."/$defs/load/$defs/destination_table", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load/$defs/destination_table"]])
+		parquet_options?: matchN(1, [_#defs."/$defs/load/$defs/parquet_options", list.MaxItems(1) & [..._#defs."/$defs/load/$defs/parquet_options"]])
+		time_partitioning?: matchN(1, [_#defs."/$defs/load/$defs/time_partitioning", list.MaxItems(1) & [..._#defs."/$defs/load/$defs/time_partitioning"]])
+
 		// Accept rows that are missing trailing optional columns. The
 		// missing values are treated as nulls.
 		// If false, records with missing trailing columns are treated as
@@ -233,10 +240,6 @@ import "list"
 		// If any named property isn't found in the Cloud Datastore
 		// backup, an invalid error is returned in the job result.
 		projection_fields?: [...string]
-		destination_encryption_configuration?: matchN(1, [_#defs."/$defs/load/$defs/destination_encryption_configuration", list.MaxItems(1) & [..._#defs."/$defs/load/$defs/destination_encryption_configuration"]])
-		destination_table!: matchN(1, [_#defs."/$defs/load/$defs/destination_table", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/load/$defs/destination_table"]])
-		parquet_options?: matchN(1, [_#defs."/$defs/load/$defs/parquet_options", list.MaxItems(1) & [..._#defs."/$defs/load/$defs/parquet_options"]])
-		time_partitioning?: matchN(1, [_#defs."/$defs/load/$defs/time_partitioning", list.MaxItems(1) & [..._#defs."/$defs/load/$defs/time_partitioning"]])
 
 		// The value that is used to quote data sections in a CSV file.
 		// BigQuery converts the string to ISO-8859-1 encoding,
@@ -323,6 +326,13 @@ import "list"
 	})
 
 	#query: close({
+		connection_properties?: matchN(1, [_#defs."/$defs/query/$defs/connection_properties", [..._#defs."/$defs/query/$defs/connection_properties"]])
+		default_dataset?: matchN(1, [_#defs."/$defs/query/$defs/default_dataset", list.MaxItems(1) & [..._#defs."/$defs/query/$defs/default_dataset"]])
+		destination_encryption_configuration?: matchN(1, [_#defs."/$defs/query/$defs/destination_encryption_configuration", list.MaxItems(1) & [..._#defs."/$defs/query/$defs/destination_encryption_configuration"]])
+		destination_table?: matchN(1, [_#defs."/$defs/query/$defs/destination_table", list.MaxItems(1) & [..._#defs."/$defs/query/$defs/destination_table"]])
+		script_options?: matchN(1, [_#defs."/$defs/query/$defs/script_options", list.MaxItems(1) & [..._#defs."/$defs/query/$defs/script_options"]])
+		user_defined_function_resources?: matchN(1, [_#defs."/$defs/query/$defs/user_defined_function_resources", [..._#defs."/$defs/query/$defs/user_defined_function_resources"]])
+
 		// If true and query uses legacy SQL dialect, allows the query to
 		// produce arbitrarily large result tables at a slight cost in
 		// performance.
@@ -393,12 +403,6 @@ import "list"
 		// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the
 		// original schema to nullable.
 		schema_update_options?: [...string]
-		connection_properties?: matchN(1, [_#defs."/$defs/query/$defs/connection_properties", [..._#defs."/$defs/query/$defs/connection_properties"]])
-		default_dataset?: matchN(1, [_#defs."/$defs/query/$defs/default_dataset", list.MaxItems(1) & [..._#defs."/$defs/query/$defs/default_dataset"]])
-		destination_encryption_configuration?: matchN(1, [_#defs."/$defs/query/$defs/destination_encryption_configuration", list.MaxItems(1) & [..._#defs."/$defs/query/$defs/destination_encryption_configuration"]])
-		destination_table?: matchN(1, [_#defs."/$defs/query/$defs/destination_table", list.MaxItems(1) & [..._#defs."/$defs/query/$defs/destination_table"]])
-		script_options?: matchN(1, [_#defs."/$defs/query/$defs/script_options", list.MaxItems(1) & [..._#defs."/$defs/query/$defs/script_options"]])
-		user_defined_function_resources?: matchN(1, [_#defs."/$defs/query/$defs/user_defined_function_resources", [..._#defs."/$defs/query/$defs/user_defined_function_resources"]])
 
 		// Specifies whether to use BigQuery's legacy SQL dialect for this
 		// query. The default value is true.

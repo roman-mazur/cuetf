@@ -132,13 +132,13 @@ package data
 		// specified, a managed bucket will be
 		// created.
 		gcs_bucket?: string
+		id?:         string
 
 		// This field allows the CA to be deleted even if the CA has
 		// active certs. Active certs include both unrevoked and
 		// unexpired certs.
 		// Use with care. Defaults to 'false'.
 		ignore_active_certificates_on_deletion?: bool
-		id?:                                     string
 
 		// Used when issuing certificates for this CertificateAuthority.
 		// If this CertificateAuthority
@@ -192,9 +192,11 @@ package data
 		// will only list the current
 		// CertificateAuthority's certificate.
 		pem_ca_certificates?: [...string]
+		pem_csr?: string
 
 		// The name of the CaPool this Certificate Authority belongs to.
-		pool?: string
+		pool?:    string
+		project?: string
 
 		// If this flag is set, the Certificate Authority will be deleted
 		// as soon as
@@ -204,7 +206,6 @@ package data
 		// CA.
 		// Use with care. Defaults to 'false'.
 		skip_grace_period?: bool
-		pem_csr?:           string
 
 		// The State for this CertificateAuthority.
 		state?: string
@@ -219,7 +220,6 @@ package data
 				pem_certificates?: [...string]
 			})]
 		})]
-		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

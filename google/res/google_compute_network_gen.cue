@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_network")
 	close({
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
+		timeouts?: #timeouts
+
 		// When set to 'true', the network is created in "auto subnet
 		// mode" and
 		// it will create a subnet for each region automatically across
@@ -78,8 +81,6 @@ import "list"
 		// routed to the Internet or other VPCs
 		// with varying MTUs.
 		mtu?: number
-		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
-		timeouts?: #timeouts
 
 		// Name of the resource. Provided by the client when the resource
 		// is

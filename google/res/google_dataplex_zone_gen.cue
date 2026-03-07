@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_zone")
 	close({
+		discovery_spec!: matchN(1, [#discovery_spec, list.MaxItems(1) & [_, ...] & [...#discovery_spec]])
+		resource_spec!: matchN(1, [#resource_spec, list.MaxItems(1) & [_, ...] & [...#resource_spec]])
+		timeouts?: #timeouts
+
 		// Output only. Aggregated status of the underlying assets of the
 		// zone.
 		asset_status?: [...close({
@@ -27,6 +31,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Optional. User defined labels for the zone.
 		//
@@ -35,7 +40,6 @@ import "list"
 		// Please refer to the field `effective_labels` for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The lake for the resource
 		lake!: string
@@ -48,8 +52,6 @@ import "list"
 
 		// The project for the resource
 		project?: string
-		discovery_spec!: matchN(1, [#discovery_spec, list.MaxItems(1) & [_, ...] & [...#discovery_spec]])
-		resource_spec!: matchN(1, [#resource_spec, list.MaxItems(1) & [_, ...] & [...#resource_spec]])
 
 		// Output only. Current state of the zone. Possible values:
 		// STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
@@ -61,8 +63,7 @@ import "list"
 
 		// Required. Immutable. The type of the zone. Possible values:
 		// TYPE_UNSPECIFIED, RAW, CURATED
-		type!:     string
-		timeouts?: #timeouts
+		type!: string
 
 		// Output only. System generated globally unique ID for the zone.
 		// This ID will be different if the zone is deleted and
@@ -74,6 +75,9 @@ import "list"
 	})
 
 	#discovery_spec: close({
+		csv_options?: matchN(1, [_#defs."/$defs/discovery_spec/$defs/csv_options", list.MaxItems(1) & [..._#defs."/$defs/discovery_spec/$defs/csv_options"]])
+		json_options?: matchN(1, [_#defs."/$defs/discovery_spec/$defs/json_options", list.MaxItems(1) & [..._#defs."/$defs/discovery_spec/$defs/json_options"]])
+
 		// Required. Whether discovery is enabled.
 		enabled!: bool
 
@@ -102,8 +106,6 @@ import "list"
 		// zone database. For example, "CRON_TZ=America/New_York 1 * * *
 		// *", or "TZ=America/New_York 1 * * * *".
 		schedule?: string
-		csv_options?: matchN(1, [_#defs."/$defs/discovery_spec/$defs/csv_options", list.MaxItems(1) & [..._#defs."/$defs/discovery_spec/$defs/csv_options"]])
-		json_options?: matchN(1, [_#defs."/$defs/discovery_spec/$defs/json_options", list.MaxItems(1) & [..._#defs."/$defs/discovery_spec/$defs/json_options"]])
 	})
 
 	#resource_spec: close({

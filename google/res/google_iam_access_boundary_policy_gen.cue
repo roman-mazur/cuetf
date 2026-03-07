@@ -6,17 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_access_boundary_policy")
 	close({
+		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
+		timeouts?: #timeouts
+
 		// The display name of the rule.
 		display_name?: string
 
 		// The hash of the resource. Used internally during updates.
 		etag?: string
-		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
+		id?:   string
 
 		// The name of the policy.
-		name!:     string
-		id?:       string
-		timeouts?: #timeouts
+		name!: string
 
 		// The attachment point is identified by its URL-encoded full
 		// resource name.

@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_project_access_approval_settings")
 	close({
+		enrolled_services!: matchN(1, [#enrolled_services, [_, ...] & [...#enrolled_services]])
+		timeouts?: #timeouts
+
 		// The asymmetric crypto key version to use for signing approval
 		// requests.
 		// Empty active_key_version indicates that a Google-managed key
@@ -20,6 +23,7 @@ package res
 		// is enrolled for Access Approval in one or more ancestors of
 		// the Project.
 		enrolled_ancestor?: bool
+		id?:                string
 
 		// If the field is true, that indicates that there is some
 		// configuration issue with the active_key_version
@@ -29,13 +33,10 @@ package res
 		// necessarily the effective key version at this level,
 		// as key versions are inherited top-down.
 		invalid_key_version?: bool
-		id?:                  string
 
 		// The resource name of the settings. Format is
 		// "projects/{project_id}/accessApprovalSettings"
 		name?: string
-		enrolled_services!: matchN(1, [#enrolled_services, [_, ...] & [...#enrolled_services]])
-		timeouts?: #timeouts
 
 		// A list of email addresses to which notifications relating to
 		// approval requests should be sent.

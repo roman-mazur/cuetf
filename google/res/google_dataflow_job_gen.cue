@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataflow_job")
 	close({
+		timeouts?: #timeouts
+
 		// List of experiments that should be used by the job. An example
 		// value is ["enable_stackdriver_agent_metrics"].
 		additional_experiments?: [...string]
@@ -15,6 +17,7 @@ package res
 
 		// Indicates if the job should use the streaming engine feature.
 		enable_streaming_engine?: bool
+		id?:                      string
 
 		// The configuration for VM IPs. Options are "WORKER_IP_PUBLIC" or
 		// "WORKER_IP_PRIVATE".
@@ -26,7 +29,6 @@ package res
 		// The name for the Cloud KMS key for the job. Key format is:
 		// projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
 		kms_key_name?: string
-		id?:           string
 
 		// User labels to be specified for the job. Keys and values should
 		// follow the restrictions specified in the labeling restrictions
@@ -62,8 +64,7 @@ package res
 		project?: string
 
 		// The region in which the created job should run.
-		region?:   string
-		timeouts?: #timeouts
+		region?: string
 
 		// The Service Account email used to create the job.
 		service_account_email?: string

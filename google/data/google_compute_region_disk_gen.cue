@@ -146,6 +146,7 @@ package data
 
 		// URLs of the zones where the disk should be replicated to.
 		replica_zones?: [...string]
+		self_link?: string
 
 		// Size of the persistent disk, specified in GB. You can specify
 		// this
@@ -159,8 +160,7 @@ package data
 		// the value of sizeGb must not be less than the size of the
 		// sourceImage
 		// or the size of the snapshot.
-		size?:      number
-		self_link?: string
+		size?: number
 
 		// The source snapshot used to create this disk. You can provide
 		// this as

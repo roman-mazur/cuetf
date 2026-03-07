@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_data_connect_service")
 	close({
+		timeouts?: #timeouts
+
 		// Optional. Stores small amounts of arbitrary data.
 		//
 		// **Note**: This field is non-authoritative, and will only manage
@@ -45,6 +47,7 @@ package res
 		// client has an up-to-date value before proceeding.
 		// [AIP-154](https://google.aip.dev/154)
 		etag?: string
+		id?:   string
 
 		// Optional. Labels as key value pairs.
 		//
@@ -53,7 +56,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The region in which the service resides, e.g. "us-central1" or
 		// "asia-east1".
@@ -70,8 +72,8 @@ package res
 		// correspond to any of the instance IDs of the underlying data
 		// source
 		// connections.
-		name?:     string
-		timeouts?: #timeouts
+		name?:    string
+		project?: string
 
 		// Output only. A field that if true, indicates that the system is
 		// working update the
@@ -86,7 +88,6 @@ package res
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?: string
 
 		// Output only. System-assigned, unique identifier.
 		uid?: string

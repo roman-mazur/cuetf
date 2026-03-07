@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_project_bucket_config")
 	close({
+		cmek_settings?: matchN(1, [#cmek_settings, list.MaxItems(1) & [...#cmek_settings]])
+		index_configs?: matchN(1, [#index_configs, list.MaxItems(20) & [...#index_configs]])
+
 		// The name of the logging bucket. Logging automatically creates
 		// two log buckets: _Required and _Default.
 		bucket_id!: string
@@ -16,10 +19,10 @@ import "list"
 		// Enable log analytics for the bucket. Cannot be disabled once
 		// enabled.
 		enable_analytics?: bool
+		id?:               string
 
 		// The bucket's lifecycle such as active or deleted.
 		lifecycle_state?: string
-		id?:              string
 
 		// The location of the bucket.
 		location!: string
@@ -34,8 +37,6 @@ import "list"
 
 		// The parent project that contains the logging bucket.
 		project!: string
-		cmek_settings?: matchN(1, [#cmek_settings, list.MaxItems(1) & [...#cmek_settings]])
-		index_configs?: matchN(1, [#index_configs, list.MaxItems(20) & [...#index_configs]])
 
 		// Logs will be retained by default for this amount of time, after
 		// which they will automatically be deleted. The minimum

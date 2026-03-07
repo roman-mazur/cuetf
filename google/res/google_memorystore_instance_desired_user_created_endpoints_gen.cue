@@ -6,7 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_memorystore_instance_desired_user_created_endpoints")
 	close({
-		id?: string
+		desired_user_created_endpoints?: matchN(1, [#desired_user_created_endpoints, [...#desired_user_created_endpoints]])
+		timeouts?: #timeouts
+		id?:       string
 
 		// The name of the Memorystore instance these endpoints should be
 		// added to.
@@ -16,8 +18,6 @@ import "list"
 		// The name of the region of the Memorystore instance these
 		// endpoints should be added to.
 		region!: string
-		desired_user_created_endpoints?: matchN(1, [#desired_user_created_endpoints, [...#desired_user_created_endpoints]])
-		timeouts?: #timeouts
 	})
 
 	#desired_user_created_endpoints: close({

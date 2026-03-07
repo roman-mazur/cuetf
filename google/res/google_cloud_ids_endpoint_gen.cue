@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_ids_endpoint")
 	close({
+		timeouts?: #timeouts
+
 		// Creation timestamp in RFC 3339 text format.
 		create_time?: string
 
@@ -29,9 +31,8 @@ package res
 		// This can either contain the VPC network name itself (like
 		// "src-net") or the full URL to the network (like
 		// "projects/{project_id}/global/networks/src-net").
-		network!:  string
-		project?:  string
-		timeouts?: #timeouts
+		network!: string
+		project?: string
 
 		// The minimum alert severity level that is reported by the
 		// endpoint. Possible values: ["INFORMATIONAL", "LOW", "MEDIUM",

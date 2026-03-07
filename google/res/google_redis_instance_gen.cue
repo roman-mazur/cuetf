@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_redis_instance")
 	close({
+		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
+		persistence_config?: matchN(1, [#persistence_config, list.MaxItems(1) & [...#persistence_config]])
+		timeouts?: #timeouts
+
 		// Only applicable to STANDARD_HA tier which protects the instance
 		// against zonal failures by provisioning it across two zones.
 		// If provided, it must be a different zone from the one provided
@@ -86,6 +90,7 @@ import "list"
 		// clients
 		// to connect to the service.
 		host?: string
+		id?:   string
 
 		// Resource labels to represent user provided metadata.
 		//
@@ -94,7 +99,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The zone where the instance will be provisioned. If not
 		// provided,
@@ -138,12 +142,10 @@ import "list"
 		// be
 		// checked before each import/export operation.
 		persistence_iam_identity?: string
-		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
-		persistence_config?: matchN(1, [#persistence_config, list.MaxItems(1) & [...#persistence_config]])
-		timeouts?: #timeouts
 
 		// The port number of the exposed Redis endpoint.
-		port?: number
+		port?:    number
+		project?: string
 
 		// Output only. Hostname or IP address of the exposed readonly
 		// Redis endpoint. Standard tier only.
@@ -170,7 +172,6 @@ import "list"
 		// can scale up and down the number of replicas. Possible values:
 		// ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
 		read_replicas_mode?: string
-		project?:            string
 
 		// Redis configuration parameters, according to
 		// http://redis.io/topics/config.
@@ -248,11 +249,12 @@ import "list"
 	})
 
 	#maintenance_policy: close({
+		weekly_maintenance_window?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window", [..._#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window"]])
+
 		// Output only. The time when the policy was created.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine fractional digits.
 		create_time?: string
-		weekly_maintenance_window?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window", [..._#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_window"]])
 
 		// Optional. Description of what this policy is for.
 		// Create/Update methods return INVALID_ARGUMENT if the

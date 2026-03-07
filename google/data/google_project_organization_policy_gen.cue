@@ -18,6 +18,7 @@ package data
 		// optimistic concurrency control as a way to help prevent
 		// simultaneous updates of a policy from overwriting each other.
 		etag?: string
+		id?:   string
 
 		// A policy that can define specific values that are allowed or
 		// denied for the given constraint. It can also be used to allow
@@ -37,7 +38,6 @@ package data
 
 		// The project ID.
 		project!: string
-		id?:      string
 
 		// A restore policy is a constraint to restore the default policy.
 		restore_policy?: [...close({

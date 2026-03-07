@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_access_context_manager_authorized_orgs_desc")
 	close({
+		timeouts?: #timeouts
+
 		// The type of entities that need to use the authorization
 		// relationship during
 		// evaluation, such as a device. Valid values are
@@ -48,6 +50,7 @@ package res
 
 		// Time the AuthorizedOrgsDesc was created in UTC.
 		create_time?: string
+		id?:          string
 
 		// Resource name for the 'AuthorizedOrgsDesc'. Format:
 		// 'accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}'.
@@ -62,8 +65,6 @@ package res
 		// Format: 'organizations/<org_number>'
 		// Example: 'organizations/123456'
 		orgs?: [...string]
-		id?:       string
-		timeouts?: #timeouts
 
 		// Required. Resource name for the access policy which owns this
 		// 'AuthorizedOrgsDesc'.

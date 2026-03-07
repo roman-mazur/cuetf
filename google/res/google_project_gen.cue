@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_project")
 	close({
+		timeouts?: #timeouts
+
 		// Create the 'default' network automatically. Default true. If
 		// set to false, the default network will be deleted. Note that,
 		// for quota purposes, you will still need to have 1 network slot
@@ -38,6 +40,7 @@ package res
 		// the specified folder. Changing this forces the project to be
 		// migrated to the newly specified folder.
 		folder_id?: string
+		id?:        string
 
 		// A set of key/value label pairs to assign to the project.
 		//
@@ -49,7 +52,6 @@ package res
 
 		// The display name of the project.
 		name!: string
-		id?:   string
 
 		// The numeric identifier of the project.
 		number?: string
@@ -60,8 +62,7 @@ package res
 		// specified then the project is created at the top level.
 		// Changing this forces the project to be migrated to the newly
 		// specified organization.
-		org_id?:   string
-		timeouts?: #timeouts
+		org_id?: string
 
 		// The project ID. Changing this forces a new project to be
 		// created.

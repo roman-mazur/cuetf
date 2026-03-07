@@ -6,7 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_site_verification_web_resource")
 	close({
-		id?: string
+		site!: matchN(1, [#site, list.MaxItems(1) & [_, ...] & [...#site]])
+		timeouts?: #timeouts
+		id?:       string
 
 		// The email addresses of all direct, verified owners of this
 		// exact property. Indirect owners —
@@ -22,8 +24,6 @@ import "list"
 
 		// The string used to identify this web resource.
 		web_resource_id?: string
-		site!: matchN(1, [#site, list.MaxItems(1) & [_, ...] & [...#site]])
-		timeouts?: #timeouts
 	})
 
 	#site: close({

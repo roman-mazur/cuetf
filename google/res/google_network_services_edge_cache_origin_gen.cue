@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_edge_cache_origin")
 	close({
+		aws_v4_authentication?: matchN(1, [#aws_v4_authentication, list.MaxItems(1) & [...#aws_v4_authentication]])
+		flex_shielding?: matchN(1, [#flex_shielding, list.MaxItems(1) & [...#flex_shielding]])
+		origin_override_action?: matchN(1, [#origin_override_action, list.MaxItems(1) & [...#origin_override_action]])
+		origin_redirect?: matchN(1, [#origin_redirect, list.MaxItems(1) & [...#origin_redirect]])
+		timeout?: matchN(1, [#timeout, list.MaxItems(1) & [...#timeout]])
+		timeouts?: #timeouts
+
 		// A human-readable description of the resource.
 		description?: string
 
@@ -23,6 +30,7 @@ import "list"
 		// across all origins.
 		// A reference to a Topic resource.
 		failover_origin?: string
+		id?:              string
 
 		// Set of label tags associated with the EdgeCache resource.
 		//
@@ -31,7 +39,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The maximum number of attempts to cache fill from this origin.
 		// Another attempt is made when a cache fill fails with one of
@@ -85,14 +92,8 @@ import "list"
 		// The port to connect to the origin on.
 		// Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80
 		// for HTTP.
-		port?: number
-		aws_v4_authentication?: matchN(1, [#aws_v4_authentication, list.MaxItems(1) & [...#aws_v4_authentication]])
-		flex_shielding?: matchN(1, [#flex_shielding, list.MaxItems(1) & [...#flex_shielding]])
-		origin_override_action?: matchN(1, [#origin_override_action, list.MaxItems(1) & [...#origin_override_action]])
-		origin_redirect?: matchN(1, [#origin_redirect, list.MaxItems(1) & [...#origin_redirect]])
-		timeout?: matchN(1, [#timeout, list.MaxItems(1) & [...#timeout]])
-		timeouts?: #timeouts
-		project?:  string
+		port?:    number
+		project?: string
 
 		// The protocol to use to connect to the configured origin.
 		// Defaults to HTTP2, and it is strongly recommended that users

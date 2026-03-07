@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_gdc_spark_application")
 	close({
+		pyspark_application_config?: matchN(1, [#pyspark_application_config, list.MaxItems(1) & [...#pyspark_application_config]])
+		spark_application_config?: matchN(1, [#spark_application_config, list.MaxItems(1) & [...#spark_application_config]])
+		spark_r_application_config?: matchN(1, [#spark_r_application_config, list.MaxItems(1) & [...#spark_r_application_config]])
+		spark_sql_application_config?: matchN(1, [#spark_sql_application_config, list.MaxItems(1) & [...#spark_sql_application_config]])
+		timeouts?: #timeouts
+
 		// The annotations to associate with this application. Annotations
 		// may be used to store client information, but are not used by
 		// the server.
@@ -42,6 +48,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// The labels to associate with this application. Labels may be
 		// used for filtering and billing tracking.
@@ -51,7 +58,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location of the spark application.
 		location!: string
@@ -72,15 +78,10 @@ import "list"
 		// the application Mainly useful for Pantheon and gcloud Not in
 		// scope for private GA
 		output_uri?: string
+		project?:    string
 
 		// application-specific properties.
 		properties?: [string]: string
-		pyspark_application_config?: matchN(1, [#pyspark_application_config, list.MaxItems(1) & [...#pyspark_application_config]])
-		spark_application_config?: matchN(1, [#spark_application_config, list.MaxItems(1) & [...#spark_application_config]])
-		spark_r_application_config?: matchN(1, [#spark_r_application_config, list.MaxItems(1) & [...#spark_r_application_config]])
-		spark_sql_application_config?: matchN(1, [#spark_sql_application_config, list.MaxItems(1) & [...#spark_sql_application_config]])
-		timeouts?: #timeouts
-		project?:  string
 
 		// Whether the application is currently reconciling. True if the
 		// current state of the resource does not match the intended
@@ -202,9 +203,10 @@ import "list"
 	})
 
 	#spark_sql_application_config: close({
+		query_list?: matchN(1, [_#defs."/$defs/spark_sql_application_config/$defs/query_list", list.MaxItems(1) & [..._#defs."/$defs/spark_sql_application_config/$defs/query_list"]])
+
 		// HCFS URIs of jar files to be added to the Spark CLASSPATH.
 		jar_file_uris?: [...string]
-		query_list?: matchN(1, [_#defs."/$defs/spark_sql_application_config/$defs/query_list", list.MaxItems(1) & [..._#defs."/$defs/spark_sql_application_config/$defs/query_list"]])
 
 		// The HCFS URI of the script that contains SQL queries.
 		query_file_uri?: string

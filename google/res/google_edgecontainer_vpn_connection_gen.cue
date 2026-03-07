@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_edgecontainer_vpn_connection")
 	close({
+		timeouts?: #timeouts
+		vpc_project?: matchN(1, [#vpc_project, list.MaxItems(1) & [...#vpc_project]])
+
 		// The canonical Cluster name to connect to. It is in the form of
 		// projects/{project}/locations/{location}/clusters/{cluster}.
 		cluster!: string
@@ -34,6 +37,7 @@ import "list"
 		// enabled, when creating VPN connection we will attempt to use 2
 		// ANG floating IPs.
 		enable_high_availability?: bool
+		id?:                       string
 
 		// Labels associated with this resource.
 		//
@@ -42,7 +46,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Google Cloud Platform location.
 		location!: string
@@ -55,9 +58,7 @@ import "list"
 		// one external IP maps to the GMEC Anthos cluster.
 		// This is empty if NAT is not used.
 		nat_gateway_ip?: string
-		timeouts?:       #timeouts
-		vpc_project?: matchN(1, [#vpc_project, list.MaxItems(1) & [...#vpc_project]])
-		project?: string
+		project?:        string
 
 		// The VPN connection Cloud Router name.
 		router?: string

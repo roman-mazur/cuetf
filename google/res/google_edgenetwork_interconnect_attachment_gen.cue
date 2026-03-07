@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_edgenetwork_interconnect_attachment")
 	close({
+		timeouts?: #timeouts
+
 		// The time when the resource was created.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine
@@ -19,11 +21,11 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// The ID of the underlying interconnect that this attachment's
 		// traffic will traverse through.
 		interconnect!: string
-		id?:           string
 
 		// A unique ID that identifies this interconnect attachment.
 		interconnect_attachment_id!: string
@@ -53,8 +55,8 @@ package res
 		// belongs.
 		// Must be of the form:
 		// 'projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}'
-		network!:  string
-		timeouts?: #timeouts
+		network!: string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -66,7 +68,6 @@ package res
 		// fractional digits. Examples: '2014-10-02T15:01:23Z' and
 		// '2014-10-02T15:01:23.045123456Z'.
 		update_time?: string
-		project?:     string
 
 		// VLAN ID provided by user. Must be site-wise unique.
 		vlan_id!: number

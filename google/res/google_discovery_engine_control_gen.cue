@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_control")
 	close({
+		boost_action?: matchN(1, [#boost_action, list.MaxItems(1) & [...#boost_action]])
+		conditions?: matchN(1, [#conditions, [...#conditions]])
+		filter_action?: matchN(1, [#filter_action, list.MaxItems(1) & [...#filter_action]])
+		promote_action?: matchN(1, [#promote_action, list.MaxItems(1) & [...#promote_action]])
+		redirect_action?: matchN(1, [#redirect_action, list.MaxItems(1) & [...#redirect_action]])
+		synonyms_action?: matchN(1, [#synonyms_action, list.MaxItems(1) & [...#synonyms_action]])
+		timeouts?: #timeouts
+
 		// The collection ID. Currently only accepts "default_collection".
 		collection_id?: string
 
@@ -32,15 +40,8 @@ import "list"
 		// This field must be a UTF-8 encoded string with a length limit
 		// of 1024
 		// characters.
-		name?: string
-		boost_action?: matchN(1, [#boost_action, list.MaxItems(1) & [...#boost_action]])
-		conditions?: matchN(1, [#conditions, [...#conditions]])
-		filter_action?: matchN(1, [#filter_action, list.MaxItems(1) & [...#filter_action]])
-		promote_action?: matchN(1, [#promote_action, list.MaxItems(1) & [...#promote_action]])
-		redirect_action?: matchN(1, [#redirect_action, list.MaxItems(1) & [...#redirect_action]])
-		synonyms_action?: matchN(1, [#synonyms_action, list.MaxItems(1) & [...#synonyms_action]])
-		project?:  string
-		timeouts?: #timeouts
+		name?:    string
+		project?: string
 
 		// The solution type that the control belongs to. Possible values:
 		// ["SOLUTION_TYPE_RECOMMENDATION", "SOLUTION_TYPE_SEARCH",
@@ -53,9 +54,10 @@ import "list"
 	})
 
 	#boost_action: close({
+		interpolation_boost_spec?: matchN(1, [_#defs."/$defs/boost_action/$defs/interpolation_boost_spec", list.MaxItems(1) & [..._#defs."/$defs/boost_action/$defs/interpolation_boost_spec"]])
+
 		// The data store to boost.
 		data_store!: string
-		interpolation_boost_spec?: matchN(1, [_#defs."/$defs/boost_action/$defs/interpolation_boost_spec", list.MaxItems(1) & [..._#defs."/$defs/boost_action/$defs/interpolation_boost_spec"]])
 
 		// The filter to apply to the search results.
 		filter!: string
@@ -108,10 +110,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/boost_action/$defs/interpolation_boost_spec": close({
+		control_point?: matchN(1, [_#defs."/$defs/boost_action/$defs/interpolation_boost_spec/$defs/control_point", list.MaxItems(1) & [..._#defs."/$defs/boost_action/$defs/interpolation_boost_spec/$defs/control_point"]])
+
 		// The attribute type to be used to determine the boost amount.
 		// Possible values: ["NUMERICAL", "FRESHNESS"]
 		attribute_type?: string
-		control_point?: matchN(1, [_#defs."/$defs/boost_action/$defs/interpolation_boost_spec/$defs/control_point", list.MaxItems(1) & [..._#defs."/$defs/boost_action/$defs/interpolation_boost_spec/$defs/control_point"]])
 
 		// The name of the field whose value will be used to determine the
 		// boost amount.

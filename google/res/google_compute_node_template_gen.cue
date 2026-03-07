@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_node_template")
 	close({
+		accelerators?: matchN(1, [#accelerators, [...#accelerators]])
+		disks?: matchN(1, [#disks, [...#disks]])
+		node_type_flexibility?: matchN(1, [#node_type_flexibility, list.MaxItems(1) & [...#node_type_flexibility]])
+		server_binding?: matchN(1, [#server_binding, list.MaxItems(1) & [...#server_binding]])
+		timeouts?: #timeouts
+
 		// CPU overcommit. Default value: "NONE" Possible values:
 		// ["ENABLED", "NONE"]
 		cpu_overcommit_type?: string
@@ -28,12 +34,7 @@ import "list"
 		// template.
 		// Only one of nodeTypeFlexibility and nodeType can be specified.
 		node_type?: string
-		accelerators?: matchN(1, [#accelerators, [...#accelerators]])
-		disks?: matchN(1, [#disks, [...#disks]])
-		node_type_flexibility?: matchN(1, [#node_type_flexibility, list.MaxItems(1) & [...#node_type_flexibility]])
-		server_binding?: matchN(1, [#server_binding, list.MaxItems(1) & [...#server_binding]])
-		project?:  string
-		timeouts?: #timeouts
+		project?:   string
 
 		// Region where nodes using the node template will be created.
 		// If it is not provided, the provider region is used.

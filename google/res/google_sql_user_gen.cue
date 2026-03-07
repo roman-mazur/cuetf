@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_sql_user")
 	close({
+		password_policy?: matchN(1, [#password_policy, list.MaxItems(1) & [...#password_policy]])
+		timeouts?: #timeouts
+
 		// A list of database roles to be assigned to the user. This
 		// option is only available for MySQL and PostgreSQL instances.
 		database_roles?: [...string]
@@ -44,8 +47,6 @@ import "list"
 		// instances this is a Required field, unless type is set to
 		// either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
 		password_wo?: string
-		password_policy?: matchN(1, [#password_policy, list.MaxItems(1) & [...#password_policy]])
-		timeouts?: #timeouts
 
 		// The version of the password_wo.
 		password_wo_version?: number

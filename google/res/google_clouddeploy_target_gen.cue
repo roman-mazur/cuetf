@@ -6,6 +6,15 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_clouddeploy_target")
 	close({
+		anthos_cluster?: matchN(1, [#anthos_cluster, list.MaxItems(1) & [...#anthos_cluster]])
+		associated_entities?: matchN(1, [#associated_entities, [...#associated_entities]])
+		custom_target?: matchN(1, [#custom_target, list.MaxItems(1) & [...#custom_target]])
+		execution_configs?: matchN(1, [#execution_configs, [...#execution_configs]])
+		gke?: matchN(1, [#gke, list.MaxItems(1) & [...#gke]])
+		multi_target?: matchN(1, [#multi_target, list.MaxItems(1) & [...#multi_target]])
+		run?: matchN(1, [#run, list.MaxItems(1) & [...#run]])
+		timeouts?: #timeouts
+
 		// Optional. User annotations. These attributes can only be set
 		// and used by the user, and not by Google Cloud Deploy. See
 		// https://google.aip.dev/128#annotations for more details such
@@ -66,14 +75,6 @@ import "list"
 		// Name of the `Target`. Format is
 		// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
 		name!: string
-		anthos_cluster?: matchN(1, [#anthos_cluster, list.MaxItems(1) & [...#anthos_cluster]])
-		associated_entities?: matchN(1, [#associated_entities, [...#associated_entities]])
-		custom_target?: matchN(1, [#custom_target, list.MaxItems(1) & [...#custom_target]])
-		execution_configs?: matchN(1, [#execution_configs, [...#execution_configs]])
-		gke?: matchN(1, [#gke, list.MaxItems(1) & [...#gke]])
-		multi_target?: matchN(1, [#multi_target, list.MaxItems(1) & [...#multi_target]])
-		run?: matchN(1, [#run, list.MaxItems(1) & [...#run]])
-		timeouts?: #timeouts
 
 		// The project for the resource
 		project?: string

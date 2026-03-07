@@ -87,6 +87,7 @@ package data
 		guest_os_features?: [...close({
 			type?: string
 		})]
+		id?: string
 
 		// The image from which to initialize this disk. This can be
 		// one of: the image's 'self_link',
@@ -105,7 +106,6 @@ package data
 		// family name 'centos-6'.
 		// These images can be referred by family name here.
 		image?: string
-		id?:    string
 
 		// The fingerprint used for optimistic locking of this resource.
 		// Used

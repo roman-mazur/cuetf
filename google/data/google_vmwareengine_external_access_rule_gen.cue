@@ -29,6 +29,7 @@ package data
 		// A list of destination ports to which the external access rule
 		// applies.
 		destination_ports?: [...string]
+		id?: string
 
 		// The IP protocol to which the external access rule applies.
 		ip_protocol?: string
@@ -46,7 +47,6 @@ package data
 		// External access rule priority, which determines the external
 		// access rule to use when multiple rules apply.
 		priority?: number
-		id?:       string
 
 		// If source ranges are specified, the external access rule
 		// applies only to

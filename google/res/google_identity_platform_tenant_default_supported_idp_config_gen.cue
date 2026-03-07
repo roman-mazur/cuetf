@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_identity_platform_tenant_default_supported_idp_config")
 	close({
+		timeouts?: #timeouts
+
 		// OAuth client ID
 		client_id!: string
 
@@ -38,9 +40,8 @@ package res
 		idp_id!: string
 
 		// The name of the default supported IDP config resource
-		name?:     string
-		project?:  string
-		timeouts?: #timeouts
+		name?:    string
+		project?: string
 
 		// The name of the tenant where this DefaultSupportedIdpConfig
 		// resource exists

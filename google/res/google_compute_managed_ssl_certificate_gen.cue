@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_managed_ssl_certificate")
 	close({
+		managed?: matchN(1, [#managed, list.MaxItems(1) & [...#managed]])
+		timeouts?: #timeouts
+
 		// The unique identifier for the resource.
 		certificate_id?: number
 
@@ -36,12 +39,10 @@ import "list"
 		name?:      string
 		project?:   string
 		self_link?: string
-		managed?: matchN(1, [#managed, list.MaxItems(1) & [...#managed]])
 
 		// Domains associated with the certificate via Subject Alternative
 		// Name.
 		subject_alternative_names?: [...string]
-		timeouts?: #timeouts
 
 		// Enum field whose value is always 'MANAGED' - used to signal to
 		// the API

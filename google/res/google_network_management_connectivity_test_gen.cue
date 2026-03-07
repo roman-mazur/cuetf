@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_management_connectivity_test")
 	close({
+		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		timeouts?: #timeouts
+
 		// Whether the analysis should skip firewall checking. Default
 		// value is false.
 		bypass_firewall_checks?: bool
@@ -18,6 +22,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Resource labels to represent user-provided metadata.
 		//
@@ -29,8 +34,8 @@ import "list"
 		labels?: [string]: string
 
 		// Unique name for the connectivity test.
-		name!: string
-		id?:   string
+		name!:    string
+		project?: string
 
 		// IP Protocol of the test. When not provided, "TCP" is assumed.
 		protocol?: string
@@ -44,10 +49,6 @@ import "list"
 		// source.
 		// Default value is false.
 		round_trip?: bool
-		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
-		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
-		timeouts?: #timeouts
-		project?:  string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -113,6 +114,10 @@ import "list"
 	})
 
 	#source: close({
+		app_engine_version?: matchN(1, [_#defs."/$defs/source/$defs/app_engine_version", list.MaxItems(1) & [..._#defs."/$defs/source/$defs/app_engine_version"]])
+		cloud_function?: matchN(1, [_#defs."/$defs/source/$defs/cloud_function", list.MaxItems(1) & [..._#defs."/$defs/source/$defs/cloud_function"]])
+		cloud_run_revision?: matchN(1, [_#defs."/$defs/source/$defs/cloud_run_revision", list.MaxItems(1) & [..._#defs."/$defs/source/$defs/cloud_run_revision"]])
+
 		// A Cloud SQL instance URI.
 		cloud_sql_instance?: string
 
@@ -133,9 +138,6 @@ import "list"
 		// Type of the network where the endpoint is located. Possible
 		// values: ["GCP_NETWORK", "NON_GCP_NETWORK"]
 		network_type?: string
-		app_engine_version?: matchN(1, [_#defs."/$defs/source/$defs/app_engine_version", list.MaxItems(1) & [..._#defs."/$defs/source/$defs/app_engine_version"]])
-		cloud_function?: matchN(1, [_#defs."/$defs/source/$defs/cloud_function", list.MaxItems(1) & [..._#defs."/$defs/source/$defs/cloud_function"]])
-		cloud_run_revision?: matchN(1, [_#defs."/$defs/source/$defs/cloud_run_revision", list.MaxItems(1) & [..._#defs."/$defs/source/$defs/cloud_run_revision"]])
 
 		// The IP protocol port of the endpoint. Only applicable when
 		// protocol is

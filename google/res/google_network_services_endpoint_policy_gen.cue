@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_endpoint_policy")
 	close({
+		endpoint_matcher!: matchN(1, [#endpoint_matcher, list.MaxItems(1) & [_, ...] & [...#endpoint_matcher]])
+		timeouts?: #timeouts
+		traffic_port_selector?: matchN(1, [#traffic_port_selector, list.MaxItems(1) & [...#traffic_port_selector]])
+
 		// This field specifies the URL of AuthorizationPolicy resource
 		// that applies authorization policies to the inbound traffic at
 		// the matched endpoints.
@@ -38,20 +42,17 @@ import "list"
 		labels?: [string]: string
 
 		// Name of the EndpointPolicy resource.
-		name!: string
+		name!:    string
+		project?: string
 
 		// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is
 		// used to determine the authentication policy to be applied to
 		// terminate the inbound traffic at the identified backends.
 		server_tls_policy?: string
-		endpoint_matcher!: matchN(1, [#endpoint_matcher, list.MaxItems(1) & [_, ...] & [...#endpoint_matcher]])
-		project?:  string
-		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		traffic_port_selector?: matchN(1, [#traffic_port_selector, list.MaxItems(1) & [...#traffic_port_selector]])
 
 		// The type of endpoint policy. This is primarily used to validate
 		// the configuration. Possible values: ["SIDECAR_PROXY",

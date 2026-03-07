@@ -6,10 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dns_policy")
 	close({
+		alternative_name_server_config?: matchN(1, [#alternative_name_server_config, list.MaxItems(1) & [...#alternative_name_server_config]])
+		dns64_config?: matchN(1, [#dns64_config, list.MaxItems(1) & [...#dns64_config]])
+		networks?: matchN(1, [#networks, [...#networks]])
+		timeouts?: #timeouts
+
 		// A textual description field. Defaults to 'Managed by
 		// Terraform'.
 		description?: string
-		alternative_name_server_config?: matchN(1, [#alternative_name_server_config, list.MaxItems(1) & [...#alternative_name_server_config]])
 
 		// Allows networks bound to this policy to receive DNS queries
 		// sent
@@ -24,9 +28,6 @@ import "list"
 		// Defaults to no logging if not set.
 		enable_logging?: bool
 		id?:             string
-		dns64_config?: matchN(1, [#dns64_config, list.MaxItems(1) & [...#dns64_config]])
-		networks?: matchN(1, [#networks, [...#networks]])
-		timeouts?: #timeouts
 
 		// User assigned name for this policy.
 		name!:    string

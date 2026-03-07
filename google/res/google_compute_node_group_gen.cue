@@ -6,17 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_node_group")
 	close({
+		autoscaling_policy?: matchN(1, [#autoscaling_policy, list.MaxItems(1) & [...#autoscaling_policy]])
+		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
+		share_settings?: matchN(1, [#share_settings, list.MaxItems(1) & [...#share_settings]])
+		timeouts?: #timeouts
+
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
 		// An optional textual description of the resource.
 		description?: string
+		id?:          string
 
 		// The initial number of nodes in the node group. One of
 		// 'initial_size' or 'autoscaling_policy' must be configured on
 		// resource creation.
 		initial_size?: number
-		id?:           string
 
 		// Specifies how to handle instances when a node in the group
 		// undergoes maintenance. Set to one of: DEFAULT,
@@ -31,10 +36,6 @@ import "list"
 		node_template!: string
 		project?:       string
 		self_link?:     string
-		autoscaling_policy?: matchN(1, [#autoscaling_policy, list.MaxItems(1) & [...#autoscaling_policy]])
-		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
-		share_settings?: matchN(1, [#share_settings, list.MaxItems(1) & [...#share_settings]])
-		timeouts?: #timeouts
 
 		// The total number of nodes in the node group.
 		size?: number

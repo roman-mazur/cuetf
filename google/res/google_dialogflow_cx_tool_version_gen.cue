@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_tool_version")
 	close({
+		timeouts?: #timeouts
+		tool!: matchN(1, [#tool, list.MaxItems(1) & [_, ...] & [...#tool]])
+
 		// Last time the tool version was created or modified.
 		// Uses RFC 3339, where generated output will always be
 		// Z-normalized and use 0, 3, 6 or 9 fractional digits.
@@ -22,8 +25,7 @@ import "list"
 		// The unique identifier of the tool version.
 		// Format:
 		// projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/tools/<ToolID>/versions/<VersionID>.
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// The tool to create a Version for.
 		// Format: projects/<Project ID>/locations/<Location
@@ -38,7 +40,6 @@ import "list"
 		// "2014-10-02T15:01:23.045123456Z" or
 		// "2014-10-02T15:01:23+05:30".
 		update_time?: string
-		tool!: matchN(1, [#tool, list.MaxItems(1) & [_, ...] & [...#tool]])
 	})
 
 	#timeouts: close({
@@ -47,6 +48,10 @@ import "list"
 	})
 
 	#tool: close({
+		data_store_spec?: matchN(1, [_#defs."/$defs/tool/$defs/data_store_spec", list.MaxItems(1) & [..._#defs."/$defs/tool/$defs/data_store_spec"]])
+		function_spec?: matchN(1, [_#defs."/$defs/tool/$defs/function_spec", list.MaxItems(1) & [..._#defs."/$defs/tool/$defs/function_spec"]])
+		open_api_spec?: matchN(1, [_#defs."/$defs/tool/$defs/open_api_spec", list.MaxItems(1) & [..._#defs."/$defs/tool/$defs/open_api_spec"]])
+
 		// High level description of the Tool and its usage.
 		description!: string
 
@@ -57,12 +62,9 @@ import "list"
 		// Format: projects/<Project ID>/locations/<Location
 		// ID>/agents/<Agent ID>/tools/<Tool ID>.
 		name?: string
-		data_store_spec?: matchN(1, [_#defs."/$defs/tool/$defs/data_store_spec", list.MaxItems(1) & [..._#defs."/$defs/tool/$defs/data_store_spec"]])
-		function_spec?: matchN(1, [_#defs."/$defs/tool/$defs/function_spec", list.MaxItems(1) & [..._#defs."/$defs/tool/$defs/function_spec"]])
 
 		// The tool type.
 		tool_type?: string
-		open_api_spec?: matchN(1, [_#defs."/$defs/tool/$defs/open_api_spec", list.MaxItems(1) & [..._#defs."/$defs/tool/$defs/open_api_spec"]])
 	})
 
 	_#defs: "/$defs/tool/$defs/data_store_spec": close({

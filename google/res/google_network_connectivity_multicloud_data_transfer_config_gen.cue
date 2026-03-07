@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_multicloud_data_transfer_config")
 	close({
+		services?: matchN(1, [#services, [...#services]])
+		timeouts?: #timeouts
+
 		// Time when the MulticloudDataTransferConfig resource was
 		// created.
 		create_time?: string
@@ -30,6 +33,7 @@ package res
 		// before
 		// proceeding.
 		etag?: string
+		id?:   string
 
 		// User-defined labels.
 		//
@@ -42,12 +46,10 @@ package res
 
 		// The location of the multicloud data transfer config.
 		location!: string
-		id?:       string
 
 		// The name of the MulticloudDataTransferConfig resource.
-		name!: string
-		services?: matchN(1, [#services, [...#services]])
-		timeouts?: #timeouts
+		name!:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -61,8 +63,7 @@ package res
 		// name is
 		// created, the new resource is assigned a different and unique
 		// ID.
-		uid?:     string
-		project?: string
+		uid?: string
 
 		// Time when the MulticloudDataTransferConfig resource was
 		// updated.

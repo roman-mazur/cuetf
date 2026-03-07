@@ -6,6 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_redis_cluster")
 	close({
+		automated_backup_config?: matchN(1, [#automated_backup_config, list.MaxItems(1) & [...#automated_backup_config]])
+		cross_cluster_replication_config?: matchN(1, [#cross_cluster_replication_config, list.MaxItems(1) & [...#cross_cluster_replication_config]])
+		gcs_source?: matchN(1, [#gcs_source, list.MaxItems(1) & [...#gcs_source]])
+		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
+		managed_backup_source?: matchN(1, [#managed_backup_source, list.MaxItems(1) & [...#managed_backup_source]])
+		persistence_config?: matchN(1, [#persistence_config, list.MaxItems(1) & [...#persistence_config]])
+		psc_configs?: matchN(1, [#psc_configs, [...#psc_configs]])
+		timeouts?: #timeouts
+		zone_distribution_config?: matchN(1, [#zone_distribution_config, list.MaxItems(1) & [...#zone_distribution_config]])
+
 		// Optional. The authorization mode of the Redis cluster. If not
 		// provided, auth feature is disabled for the cluster. Default
 		// value: "AUTH_MODE_DISABLED" Possible values:
@@ -109,6 +119,7 @@ import "list"
 		// Output only. Redis memory precise size in GB for the entire
 		// cluster.
 		precise_size_gb?: number
+		project?:         string
 
 		// Output only. PSC connections for discovery of the cluster
 		// topology and accessing the cluster.
@@ -119,15 +130,6 @@ import "list"
 			project_id?:        string
 			psc_connection_id?: string
 		})]
-		automated_backup_config?: matchN(1, [#automated_backup_config, list.MaxItems(1) & [...#automated_backup_config]])
-		cross_cluster_replication_config?: matchN(1, [#cross_cluster_replication_config, list.MaxItems(1) & [...#cross_cluster_replication_config]])
-		gcs_source?: matchN(1, [#gcs_source, list.MaxItems(1) & [...#gcs_source]])
-		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
-		managed_backup_source?: matchN(1, [#managed_backup_source, list.MaxItems(1) & [...#managed_backup_source]])
-		persistence_config?: matchN(1, [#persistence_config, list.MaxItems(1) & [...#persistence_config]])
-		psc_configs?: matchN(1, [#psc_configs, [...#psc_configs]])
-		timeouts?: #timeouts
-		project?:  string
 
 		// Service attachment details to configure Psc connections.
 		psc_service_attachments?: [...close({
@@ -144,7 +146,6 @@ import "list"
 
 		// The name of the region of the Redis cluster.
 		region?: string
-		zone_distribution_config?: matchN(1, [#zone_distribution_config, list.MaxItems(1) & [...#zone_distribution_config]])
 
 		// Optional. The number of replica nodes per shard.
 		replica_count?: number
@@ -197,6 +198,9 @@ import "list"
 	})
 
 	#cross_cluster_replication_config: close({
+		primary_cluster?: matchN(1, [_#defs."/$defs/cross_cluster_replication_config/$defs/primary_cluster", list.MaxItems(1) & [..._#defs."/$defs/cross_cluster_replication_config/$defs/primary_cluster"]])
+		secondary_clusters?: matchN(1, [_#defs."/$defs/cross_cluster_replication_config/$defs/secondary_clusters", [..._#defs."/$defs/cross_cluster_replication_config/$defs/secondary_clusters"]])
+
 		// The role of the cluster in cross cluster replication. Supported
 		// values are:
 		//
@@ -232,11 +236,9 @@ import "list"
 				uid?:     string
 			})]
 		})]
-		primary_cluster?: matchN(1, [_#defs."/$defs/cross_cluster_replication_config/$defs/primary_cluster", list.MaxItems(1) & [..._#defs."/$defs/cross_cluster_replication_config/$defs/primary_cluster"]])
 
 		// The last time cross cluster replication config was updated.
 		update_time?: string
-		secondary_clusters?: matchN(1, [_#defs."/$defs/cross_cluster_replication_config/$defs/secondary_clusters", [..._#defs."/$defs/cross_cluster_replication_config/$defs/secondary_clusters"]])
 	})
 
 	#gcs_source: close({

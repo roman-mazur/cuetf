@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_security_policy_rule")
 	close({
+		match?: matchN(1, [#match, list.MaxItems(1) & [...#match]])
+		network_match?: matchN(1, [#network_match, list.MaxItems(1) & [...#network_match]])
+		preconfigured_waf_config?: matchN(1, [#preconfigured_waf_config, list.MaxItems(1) & [...#preconfigured_waf_config]])
+		rate_limit_options?: matchN(1, [#rate_limit_options, list.MaxItems(1) & [...#rate_limit_options]])
+		timeouts?: #timeouts
+
 		// The Action to perform when the rule is matched. The following
 		// are the valid actions:
 		//
@@ -45,11 +51,6 @@ import "list"
 		// the highest priority and 2147483647 is the lowest priority.
 		priority!: number
 		project?:  string
-		match?: matchN(1, [#match, list.MaxItems(1) & [...#match]])
-		network_match?: matchN(1, [#network_match, list.MaxItems(1) & [...#network_match]])
-		preconfigured_waf_config?: matchN(1, [#preconfigured_waf_config, list.MaxItems(1) & [...#preconfigured_waf_config]])
-		rate_limit_options?: matchN(1, [#rate_limit_options, list.MaxItems(1) & [...#rate_limit_options]])
-		timeouts?: #timeouts
 
 		// The Region in which the created Region Security Policy rule
 		// should reside.
@@ -72,6 +73,8 @@ import "list"
 	})
 
 	#network_match: close({
+		user_defined_fields?: matchN(1, [_#defs."/$defs/network_match/$defs/user_defined_fields", [..._#defs."/$defs/network_match/$defs/user_defined_fields"]])
+
 		// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard
 		// text format.
 		dest_ip_ranges?: [...string]
@@ -99,7 +102,6 @@ import "list"
 		// 16-bit unsigned decimal number (e.g. "80") or range (e.g.
 		// "0-1023").
 		src_ports?: [...string]
-		user_defined_fields?: matchN(1, [_#defs."/$defs/network_match/$defs/user_defined_fields", [..._#defs."/$defs/network_match/$defs/user_defined_fields"]])
 
 		// Two-letter ISO 3166-1 alpha-2 country code associated with the
 		// source IP address.
@@ -111,6 +113,10 @@ import "list"
 	})
 
 	#rate_limit_options: close({
+		ban_threshold?: matchN(1, [_#defs."/$defs/rate_limit_options/$defs/ban_threshold", list.MaxItems(1) & [..._#defs."/$defs/rate_limit_options/$defs/ban_threshold"]])
+		enforce_on_key_configs?: matchN(1, [_#defs."/$defs/rate_limit_options/$defs/enforce_on_key_configs", [..._#defs."/$defs/rate_limit_options/$defs/enforce_on_key_configs"]])
+		rate_limit_threshold?: matchN(1, [_#defs."/$defs/rate_limit_options/$defs/rate_limit_threshold", list.MaxItems(1) & [..._#defs."/$defs/rate_limit_options/$defs/rate_limit_threshold"]])
+
 		// Can only be specified if the action for the rule is
 		// "rate_based_ban".
 		// If specified, determines the time (in seconds) the traffic will
@@ -181,9 +187,6 @@ import "list"
 		// Valid options are deny(STATUS), where valid values for STATUS
 		// are 403, 404, 429, and 502.
 		exceed_action?: string
-		ban_threshold?: matchN(1, [_#defs."/$defs/rate_limit_options/$defs/ban_threshold", list.MaxItems(1) & [..._#defs."/$defs/rate_limit_options/$defs/ban_threshold"]])
-		enforce_on_key_configs?: matchN(1, [_#defs."/$defs/rate_limit_options/$defs/enforce_on_key_configs", [..._#defs."/$defs/rate_limit_options/$defs/enforce_on_key_configs"]])
-		rate_limit_threshold?: matchN(1, [_#defs."/$defs/rate_limit_options/$defs/rate_limit_threshold", list.MaxItems(1) & [..._#defs."/$defs/rate_limit_options/$defs/rate_limit_threshold"]])
 	})
 
 	#timeouts: close({
@@ -217,15 +220,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/preconfigured_waf_config/$defs/exclusion": close({
+		request_cookie?: matchN(1, [_#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_cookie", [..._#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_cookie"]])
+		request_header?: matchN(1, [_#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_header", [..._#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_header"]])
+		request_query_param?: matchN(1, [_#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_query_param", [..._#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_query_param"]])
+		request_uri?: matchN(1, [_#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_uri", [..._#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_uri"]])
+
 		// A list of target rule IDs under the WAF rule set to apply the
 		// preconfigured WAF exclusion.
 		// If omitted, it refers to all the rule IDs under the WAF rule
 		// set.
 		target_rule_ids?: [...string]
-		request_cookie?: matchN(1, [_#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_cookie", [..._#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_cookie"]])
-		request_header?: matchN(1, [_#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_header", [..._#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_header"]])
-		request_query_param?: matchN(1, [_#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_query_param", [..._#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_query_param"]])
-		request_uri?: matchN(1, [_#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_uri", [..._#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_uri"]])
 
 		// Target WAF rule set to apply the preconfigured WAF exclusion.
 		target_rule_set!: string

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_service_binding")
 	close({
+		timeouts?: #timeouts
+
 		// Time the ServiceBinding was created in UTC.
 		create_time?: string
 
@@ -15,6 +17,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Set of label tags associated with the ServiceBinding resource.
 		//
@@ -25,14 +28,12 @@ package res
 		labels?: [string]: string
 
 		// Name of the ServiceBinding resource.
-		name!: string
-		id?:   string
+		name!:    string
+		project?: string
 
 		// The full Service Directory Service name of the format
 		// projects/*/locations/*/namespaces/*/services/*
-		service!:  string
-		project?:  string
-		timeouts?: #timeouts
+		service!: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_filestore_snapshot")
 	close({
+		timeouts?: #timeouts
+
 		// The time when the snapshot was created in RFC3339 text format.
 		create_time?: string
 
@@ -49,9 +51,8 @@ package res
 		// characters must be a dash, lowercase letter, or digit, except
 		// the last
 		// character, which cannot be a dash.
-		name!:     string
-		timeouts?: #timeouts
-		project?:  string
+		name!:    string
+		project?: string
 
 		// The snapshot state.
 		state?: string

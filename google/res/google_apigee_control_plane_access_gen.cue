@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_control_plane_access")
 	close({
+		timeouts?: #timeouts
+
 		// Array of service accounts authorized to publish analytics data
 		// to the control plane, each specified using the following
 		// format: 'serviceAccount:service-account-name'.
@@ -19,8 +21,7 @@ package res
 		id?: string
 
 		// Name of the Apigee organization.
-		name!:     string
-		timeouts?: #timeouts
+		name!: string
 
 		// Array of service accounts to grant access to control plane
 		// resources (for the Synchronizer component), each specified

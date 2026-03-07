@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_aspect_type")
 	close({
+		timeouts?: #timeouts
+
 		// The aspect type id of the aspect type.
 		aspect_type_id?: string
 
@@ -28,6 +30,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// User-defined labels for the AspectType.
 		//
@@ -40,11 +43,9 @@ package res
 
 		// The location where aspect type will be created in.
 		location?: string
-		id?:       string
 
 		// MetadataTemplate of the Aspect.
 		metadata_template?: string
-		timeouts?:          #timeouts
 
 		// The relative resource name of the AspectType, of the form:
 		// projects/{project_number}/locations/{location_id}/aspectTypes/{aspect_type_id}

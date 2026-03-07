@@ -130,6 +130,7 @@ package data
 
 		// Used to enable/disable IAP for the cloud-run service.
 		iap_enabled?: bool
+		id?:          string
 
 		// Provides the ingress settings for this Service. On output,
 		// returns the currently observed ingress settings, or
@@ -138,7 +139,6 @@ package data
 		// "INGRESS_TRAFFIC_INTERNAL_ONLY",
 		// "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
 		ingress?: string
-		id?:      string
 
 		// Disables IAM permission check for run.routes.invoke for callers
 		// of this service. For more information, visit
@@ -213,6 +213,7 @@ package data
 		// v1, this is an int64 value. As with most Google APIs, its JSON
 		// representation will be a string instead of an integer.
 		observed_generation?: string
+		project?:             string
 
 		// Returns true if the Service is currently being acted upon by
 		// the system to bring it into the desired state.
@@ -247,7 +248,6 @@ package data
 			min_instance_count?:    number
 			scaling_mode?:          string
 		})]
-		project?: string
 
 		// The template used to create revisions for this Service.
 		template?: [...close({

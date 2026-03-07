@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_gdc_service_instance")
 	close({
+		gdce_cluster?: matchN(1, [#gdce_cluster, list.MaxItems(1) & [...#gdce_cluster]])
+		spark_service_instance_config?: matchN(1, [#spark_service_instance_config, list.MaxItems(1) & [...#spark_service_instance_config]])
+		timeouts?: #timeouts
+
 		// The timestamp when the resource was created.
 		create_time?: string
 
@@ -23,6 +27,7 @@ import "list"
 		// be an automatically created per-resource P4SA that also
 		// automatically has Fleet Workload. Identity bindings applied.
 		effective_service_account?: string
+		id?:                        string
 
 		// The labels to associate with this service instance. Labels may
 		// be used for filtering and billing tracking.
@@ -32,13 +37,13 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Location of the resource.
 		location!: string
 
 		// Identifier. The name of the service instance.
-		name?: string
+		name?:    string
+		project?: string
 
 		// Whether the service instance is currently reconciling. True if
 		// the current state of the resource does not match the intended
@@ -58,13 +63,9 @@ import "list"
 		// * 'UPDATING'
 		// * 'FAILED'
 		requested_state?: string
-		project?:         string
 
 		// Requested service account to associate with ServiceInstance.
 		service_account?: string
-		gdce_cluster?: matchN(1, [#gdce_cluster, list.MaxItems(1) & [...#gdce_cluster]])
-		spark_service_instance_config?: matchN(1, [#spark_service_instance_config, list.MaxItems(1) & [...#spark_service_instance_config]])
-		timeouts?: #timeouts
 
 		// Id of the service instance.
 		service_instance_id!: string

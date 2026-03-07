@@ -6,10 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_privateca_ca_pool")
 	close({
+		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
+		issuance_policy?: matchN(1, [#issuance_policy, list.MaxItems(1) & [...#issuance_policy]])
+		publishing_options?: matchN(1, [#publishing_options, list.MaxItems(1) & [...#publishing_options]])
+		timeouts?: #timeouts
+
 		// All of labels (key/value pairs) present on the resource in GCP,
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Labels with user-defined metadata.
 		//
@@ -23,7 +29,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Location of the CaPool. A full list of valid locations can be
 		// found by
@@ -31,20 +36,16 @@ import "list"
 		location!: string
 
 		// The name for this CaPool.
-		name!: string
+		name!:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?: string
-		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
-		issuance_policy?: matchN(1, [#issuance_policy, list.MaxItems(1) & [...#issuance_policy]])
-		publishing_options?: matchN(1, [#publishing_options, list.MaxItems(1) & [...#publishing_options]])
 
 		// The Tier of this CaPool. Possible values: ["ENTERPRISE",
 		// "DEVOPS"]
-		tier!:     string
-		timeouts?: #timeouts
+		tier!: string
 	})
 
 	#encryption_spec: close({
@@ -54,6 +55,11 @@ import "list"
 	})
 
 	#issuance_policy: close({
+		allowed_issuance_modes?: matchN(1, [_#defs."/$defs/issuance_policy/$defs/allowed_issuance_modes", list.MaxItems(1) & [..._#defs."/$defs/issuance_policy/$defs/allowed_issuance_modes"]])
+		allowed_key_types?: matchN(1, [_#defs."/$defs/issuance_policy/$defs/allowed_key_types", [..._#defs."/$defs/issuance_policy/$defs/allowed_key_types"]])
+		baseline_values?: matchN(1, [_#defs."/$defs/issuance_policy/$defs/baseline_values", list.MaxItems(1) & [..._#defs."/$defs/issuance_policy/$defs/baseline_values"]])
+		identity_constraints?: matchN(1, [_#defs."/$defs/issuance_policy/$defs/identity_constraints", list.MaxItems(1) & [..._#defs."/$defs/issuance_policy/$defs/identity_constraints"]])
+
 		// The duration to backdate all certificates issued from this
 		// CaPool. If not set, the
 		// certificates will be issued with a not_before_time of the
@@ -65,10 +71,6 @@ import "list"
 		// requested lifetime. The backdate_duration must be less than or
 		// equal to 48 hours.
 		backdate_duration?: string
-		allowed_issuance_modes?: matchN(1, [_#defs."/$defs/issuance_policy/$defs/allowed_issuance_modes", list.MaxItems(1) & [..._#defs."/$defs/issuance_policy/$defs/allowed_issuance_modes"]])
-		allowed_key_types?: matchN(1, [_#defs."/$defs/issuance_policy/$defs/allowed_key_types", [..._#defs."/$defs/issuance_policy/$defs/allowed_key_types"]])
-		baseline_values?: matchN(1, [_#defs."/$defs/issuance_policy/$defs/baseline_values", list.MaxItems(1) & [..._#defs."/$defs/issuance_policy/$defs/baseline_values"]])
-		identity_constraints?: matchN(1, [_#defs."/$defs/issuance_policy/$defs/identity_constraints", list.MaxItems(1) & [..._#defs."/$defs/issuance_policy/$defs/identity_constraints"]])
 
 		// The maximum lifetime allowed for issued Certificates. Note that
 		// if the issuing CertificateAuthority

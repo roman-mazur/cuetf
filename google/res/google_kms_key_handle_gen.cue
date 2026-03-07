@@ -4,7 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_kms_key_handle")
 	close({
-		id?: string
+		timeouts?: #timeouts
+		id?:       string
 
 		// A reference to a Cloud KMS CryptoKey that can be used for CMEK
 		// in the requested
@@ -18,9 +19,8 @@ package res
 		location!: string
 
 		// The resource name for the KeyHandle.
-		name!:     string
-		timeouts?: #timeouts
-		project?:  string
+		name!:    string
+		project?: string
 
 		// Selector of the resource type where we want to protect
 		// resources.

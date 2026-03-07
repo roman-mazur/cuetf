@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_oracle_database_odb_network")
 	close({
+		timeouts?: #timeouts
+
 		// The date and time that the OdbNetwork was created.
 		create_time?: string
 
@@ -45,8 +47,7 @@ package res
 		// Identifier. The name of the OdbNetwork resource in the
 		// following format:
 		// projects/{project}/locations/{region}/odbNetworks/{odb_network}
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// The name of the VPC network in the following format:
 		// projects/{project}/global/networks/{network}

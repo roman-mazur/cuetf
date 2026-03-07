@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_healthcare_consent_store")
 	close({
+		timeouts?: #timeouts
+
 		// Identifies the dataset addressed by this request. Must be in
 		// the format
 		// 'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -59,7 +61,6 @@ package res
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#timeouts: close({

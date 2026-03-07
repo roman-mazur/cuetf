@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_log_view")
 	close({
+		timeouts?: #timeouts
+
 		// The bucket of the resource
 		bucket!: string
 
@@ -20,6 +22,7 @@ package res
 		// log id For example: SOURCE("projects/myproject") AND
 		// resource.type = "gce_instance" AND LOG_ID("stdout")
 		filter?: string
+		id?:     string
 
 		// The location of the resource. The supported locations are:
 		// global, us-central1, us-east1, us-west1, asia-east1,
@@ -28,9 +31,7 @@ package res
 
 		// The resource name of the view. For example:
 		// \'projects/my-project/locations/global/buckets/my-bucket/views/my-view\'
-		name!:     string
-		id?:       string
-		timeouts?: #timeouts
+		name!: string
 
 		// The parent of the resource.
 		parent?: string

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_api")
 	close({
+		timeouts?: #timeouts
+
 		// Path to the config zip bundle
 		config_bundle!: string
 
@@ -11,6 +13,7 @@ package res
 		// Terraform Hash function of their choice. A change in hash will
 		// trigger an update.
 		detect_md5hash?: string
+		id?:             string
 
 		// The id of the most recently created revision for this API
 		// proxy.
@@ -25,7 +28,6 @@ package res
 			last_modified_at?: string
 			sub_type?:         string
 		})]
-		id?: string
 
 		// Name of the API proxy. This field only accepts the following
 		// characters: A-Za-z0-9._-.
@@ -37,7 +39,6 @@ package res
 
 		// A list of revisions of this API proxy.
 		revision?: [...string]
-		timeouts?: #timeouts
 	})
 
 	#timeouts: close({

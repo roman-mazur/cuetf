@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigtable_gc_policy")
 	close({
+		max_age?: matchN(1, [#max_age, list.MaxItems(1) & [...#max_age]])
+		max_version?: matchN(1, [#max_version, [...#max_version]])
+		timeouts?: #timeouts
+
 		// The name of the column family.
 		column_family!: string
 
@@ -39,9 +43,6 @@ import "list"
 		// the future. If multiple policies are set, you should choose
 		// between UNION OR INTERSECTION.
 		mode?: string
-		max_age?: matchN(1, [#max_age, list.MaxItems(1) & [...#max_age]])
-		max_version?: matchN(1, [#max_version, [...#max_version]])
-		timeouts?: #timeouts
 
 		// The ID of the project in which the resource belongs. If it is
 		// not provided, the provider project is used.

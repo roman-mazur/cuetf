@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_intent")
 	close({
+		timeouts?: #timeouts
+
 		// The name of the action associated with the intent.
 		// Note: The action name must not contain whitespaces.
 		action?: string
@@ -53,8 +55,7 @@ package res
 
 		// The unique identifier of this intent.
 		// Format: projects/<Project ID>/agent/intents/<Intent ID>.
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// The unique identifier of the parent intent in the chain of
 		// followup intents.

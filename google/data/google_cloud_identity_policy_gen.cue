@@ -6,6 +6,7 @@ package data
 	close({
 		// The customer that the policy belongs to.
 		customer?: string
+		id?:       string
 
 		// The resource name of the policy to retrieve.
 		name!: string
@@ -18,7 +19,6 @@ package data
 			query?:      string
 			sort_order?: number
 		})]
-		id?: string
 
 		// The setting configured by this policy.
 		setting?: string

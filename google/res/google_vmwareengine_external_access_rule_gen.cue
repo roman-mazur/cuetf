@@ -4,6 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vmwareengine_external_access_rule")
 	close({
+		destination_ip_ranges!: matchN(1, [#destination_ip_ranges, [_, ...] & [...#destination_ip_ranges]])
+		source_ip_ranges!: matchN(1, [#source_ip_ranges, [_, ...] & [...#source_ip_ranges]])
+		timeouts?: #timeouts
+
 		// The action that the external access rule performs. Possible
 		// values: ["ALLOW", "DENY"]
 		action!: string
@@ -21,10 +25,10 @@ package res
 		// A list of destination ports to which the external access rule
 		// applies.
 		destination_ports!: [...string]
+		id?: string
 
 		// The IP protocol to which the external access rule applies.
 		ip_protocol!: string
-		id?:          string
 
 		// The ID of the external access rule.
 		name!: string
@@ -39,9 +43,6 @@ package res
 		// External access rule priority, which determines the external
 		// access rule to use when multiple rules apply.
 		priority!: number
-		destination_ip_ranges!: matchN(1, [#destination_ip_ranges, [_, ...] & [...#destination_ip_ranges]])
-		source_ip_ranges!: matchN(1, [#source_ip_ranges, [_, ...] & [...#source_ip_ranges]])
-		timeouts?: #timeouts
 
 		// A list of source ports to which the external access rule
 		// applies.

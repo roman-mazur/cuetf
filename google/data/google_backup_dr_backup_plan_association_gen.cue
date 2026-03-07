@@ -25,10 +25,10 @@ package data
 		// Resource name of data source which will be used as storage
 		// location for backups taken
 		data_source?: string
+		id?:          string
 
 		// The location for the backupplan association
 		location!: string
-		id?:       string
 
 		// The name of backup plan association resource created
 		name?:    string

@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_metric")
 	close({
+		bucket_options?: matchN(1, [#bucket_options, list.MaxItems(1) & [...#bucket_options]])
+		metric_descriptor?: matchN(1, [#metric_descriptor, list.MaxItems(1) & [...#metric_descriptor]])
+		timeouts?: #timeouts
+
 		// The resource name of the Log Bucket that owns the Log Metric.
 		// Only Log Buckets in projects
 		// are supported. The bucket has to be in the same project as the
@@ -36,9 +40,6 @@ import "list"
 		// of the extractor expression is
 		// the same as for the valueExtractor field.
 		label_extractors?: [string]: string
-		bucket_options?: matchN(1, [#bucket_options, list.MaxItems(1) & [...#bucket_options]])
-		metric_descriptor?: matchN(1, [#metric_descriptor, list.MaxItems(1) & [...#metric_descriptor]])
-		timeouts?: #timeouts
 
 		// The client-assigned metric identifier. Examples -
 		// "error_count", "nginx/requests".
@@ -49,7 +50,8 @@ import "list"
 		// character (/) denotes a hierarchy of name pieces, and it cannot
 		// be the first character
 		// of the name.
-		name!: string
+		name!:    string
+		project?: string
 
 		// A valueExtractor is required when using a distribution
 		// logs-based metric to extract the values to
@@ -66,7 +68,6 @@ import "list"
 		// error to specify a regex that does not include exactly one
 		// capture group.
 		value_extractor?: string
-		project?:         string
 	})
 
 	#bucket_options: close({
@@ -76,6 +77,8 @@ import "list"
 	})
 
 	#metric_descriptor: close({
+		labels?: matchN(1, [_#defs."/$defs/metric_descriptor/$defs/labels", [..._#defs."/$defs/metric_descriptor/$defs/labels"]])
+
 		// A concise name for the metric, which can be displayed in user
 		// interfaces. Use sentence case
 		// without an ending period, for example "Request count". This
@@ -99,7 +102,6 @@ import "list"
 		// [The Unified Code for Units of
 		// Measure](http://unitsofmeasure.org/ucum.html) standard
 		unit?: string
-		labels?: matchN(1, [_#defs."/$defs/metric_descriptor/$defs/labels", [..._#defs."/$defs/metric_descriptor/$defs/labels"]])
 
 		// Whether the measurement is an integer, a floating-point number,
 		// etc.

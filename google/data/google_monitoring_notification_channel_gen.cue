@@ -32,6 +32,7 @@ package data
 		// referenced by an existing alerting policy will fail to be
 		// deleted in a delete operation.
 		force_delete?: bool
+		id?:           string
 
 		// Configuration fields that define the channel and its behavior.
 		// The
@@ -45,7 +46,6 @@ package data
 		// the sensitive_labels block, but cannot be configured in both
 		// places.
 		labels?: [string]: string
-		id?: string
 
 		// The full REST resource name for this channel. The syntax is:
 		// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]

@@ -27,11 +27,11 @@ package data
 		})]
 
 		// Number of backups in the data source.
-		backup_count?: string
+		backup_count?:    string
+		backup_vault_id!: string
 
 		// The backup configuration state.
-		config_state?:    string
-		backup_vault_id!: string
+		config_state?: string
 
 		// The time when the instance was created.
 		create_time?: string
@@ -81,11 +81,11 @@ package data
 		// '{datasource}' cannot be changed after creation. It must be
 		// between 3-63 characters long and must be unique within the
 		// backup vault.
-		name?: string
+		name?:    string
+		project?: string
 
 		// The DataSource resource instance state.
-		state?:   string
-		project?: string
+		state?: string
 
 		// The number of bytes (metadata and data) stored in this
 		// datasource.

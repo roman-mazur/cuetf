@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_intercept_endpoint_group_association")
 	close({
+		timeouts?: #timeouts
+
 		// The timestamp when the resource was created.
 		// See https://google.aip.dev/148#timestamps.
 		create_time?: string
@@ -12,13 +14,13 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// The endpoint group that this association is connected to, for
 		// example:
 		// 'projects/123456789/locations/global/interceptEndpointGroups/my-eg'.
 		// See https://google.aip.dev/124.
 		intercept_endpoint_group!: string
-		id?:                       string
 
 		// The ID to use for the new association, which will become the
 		// final
@@ -57,9 +59,8 @@ package res
 		// The VPC network that is associated. for example:
 		// 'projects/123456789/global/networks/my-network'.
 		// See https://google.aip.dev/124.
-		network!:  string
-		timeouts?: #timeouts
-		project?:  string
+		network!: string
+		project?: string
 
 		// The current state of the resource does not match the user's
 		// intended state,

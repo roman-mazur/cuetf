@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_firewall_policy_association")
 	close({
+		timeouts?: #timeouts
+
 		// The target that the firewall policy is attached to.
 		attachment_target!: string
 
@@ -20,11 +22,10 @@ package res
 		// on your exisiting firewall policy so as to prevent a situation
 		// where your attachment target has no associated policy.
 		firewall_policy!: string
+		id?:              string
 
 		// The name for an association.
-		name!:     string
-		id?:       string
-		timeouts?: #timeouts
+		name!: string
 
 		// The short name of the firewall policy of the association.
 		short_name?: string

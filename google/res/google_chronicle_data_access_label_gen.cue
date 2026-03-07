@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_data_access_label")
 	close({
+		timeouts?: #timeouts
+
 		// Output only. The user who created the data access label.
 		author?: string
 
@@ -40,7 +42,6 @@ package res
 		// where the Chronicle instance resides, such as "us" or
 		// "europe-west2".
 		location!: string
-		timeouts?: #timeouts
 
 		// The unique resource name of the data access label. This unique
 		// identifier is generated using values provided for the URL

@@ -6,10 +6,10 @@ package data
 	close({
 		// The time, as a RFC 3339 string, this image was built.
 		build_time?: string
+		id?:         string
 
 		// The image name to fetch.
 		image_name!: string
-		id?:         string
 
 		// Calculated size of the image in bytes.
 		image_size_bytes?: string

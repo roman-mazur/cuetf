@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_privateca_certificate_template")
 	close({
+		identity_constraints?: matchN(1, [#identity_constraints, list.MaxItems(1) & [...#identity_constraints]])
+		passthrough_extensions?: matchN(1, [#passthrough_extensions, list.MaxItems(1) & [...#passthrough_extensions]])
+		predefined_values?: matchN(1, [#predefined_values, list.MaxItems(1) & [...#predefined_values]])
+		timeouts?: #timeouts
+
 		// Output only. The time at which this CertificateTemplate was
 		// created.
 		create_time?: string
@@ -42,12 +47,8 @@ import "list"
 
 		// The resource name for this CertificateTemplate in the format
 		// 'projects/*/locations/*/certificateTemplates/*'.
-		name!: string
-		identity_constraints?: matchN(1, [#identity_constraints, list.MaxItems(1) & [...#identity_constraints]])
-		passthrough_extensions?: matchN(1, [#passthrough_extensions, list.MaxItems(1) & [...#passthrough_extensions]])
-		predefined_values?: matchN(1, [#predefined_values, list.MaxItems(1) & [...#predefined_values]])
-		timeouts?: #timeouts
-		project?:  string
+		name!:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

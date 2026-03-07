@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_target_pool")
 	close({
+		timeouts?: #timeouts
+
 		// URL to the backup target pool. Must also set failover_ratio.
 		backup_pool?: string
 
@@ -17,6 +19,7 @@ package res
 		// List of zero or one health check name or self_link. Only legacy
 		// google_compute_http_health_check is supported.
 		health_checks?: [...string]
+		id?: string
 
 		// List of instances in the pool. They can be given as URLs, or in
 		// the form of "zone/name". Note that the instances need not
@@ -32,11 +35,9 @@ package res
 		// The ID of the project in which the resource belongs. If it is
 		// not provided, the provider project is used.
 		project?: string
-		id?:      string
 
 		// Where the target pool resides. Defaults to project region.
-		region?:   string
-		timeouts?: #timeouts
+		region?: string
 
 		// The URI of the created resource.
 		self_link?: string

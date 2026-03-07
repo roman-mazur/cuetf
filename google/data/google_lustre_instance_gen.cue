@@ -46,6 +46,7 @@ package data
 		// By default,
 		// GKE clients are not supported.
 		gke_support_enabled?: bool
+		id?:                  string
 
 		// The name of the Managed Lustre instance.
 		//
@@ -57,7 +58,6 @@ package data
 
 		// The KMS key id to use for encryption of the Lustre instance.
 		kms_key?: string
-		id?:      string
 
 		// Labels as key value pairs.
 		//
@@ -92,6 +92,7 @@ package data
 		// The placement policy name for the instance in the format of
 		// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
 		placement_policy?: string
+		project?:          string
 
 		// The state of the instance.
 		// Please see
@@ -101,7 +102,6 @@ package data
 
 		// The reason why the instance is in a certain state.
 		state_reason?: string
-		project?:      string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

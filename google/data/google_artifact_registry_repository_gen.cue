@@ -58,6 +58,7 @@ package data
 		// [alpha user
 		// group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
 		format?: string
+		id?:     string
 
 		// The Cloud KMS resource name of the customer managed encryption
 		// key that’s
@@ -82,7 +83,6 @@ package data
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The name of the repository's location. In addition to specific
 		// regions,

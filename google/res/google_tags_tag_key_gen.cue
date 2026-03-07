@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_tags_tag_key")
 	close({
+		timeouts?: #timeouts
+
 		// Regular expression constraint for dynamic tag values, follows
 		// RE2 syntax. If present, it implicitly allows dynamic values
 		// (constrained by the regex).
@@ -19,10 +21,10 @@ package res
 		// User-assigned description of the TagKey. Must not exceed 256
 		// characters.
 		description?: string
+		id?:          string
 
 		// The generated numeric id for the TagKey.
 		name?: string
-		id?:   string
 
 		// Output only. Namespaced name of the TagKey.
 		namespaced_name?: string
@@ -47,7 +49,6 @@ package res
 		// data in the following format: 'network =
 		// "<project-name>/<vpc-name>"'.
 		purpose_data?: [string]: string
-		timeouts?: #timeouts
 
 		// Input only. The user friendly name for a TagKey. The short name
 		// should be unique for TagKeys within the same tag namespace.

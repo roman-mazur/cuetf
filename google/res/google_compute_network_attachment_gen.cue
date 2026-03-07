@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_network_attachment")
 	close({
+		timeouts?: #timeouts
+
 		// An array of connections for all the producers connected to this
 		// network attachment.
 		connection_endpoints?: [...close({
@@ -68,8 +70,7 @@ package res
 		// attachment. The project can be specified using its id or
 		// number.
 		producer_reject_lists?: [...string]
-		timeouts?: #timeouts
-		project?:  string
+		project?: string
 
 		// URL of the region where the network attachment resides. This
 		// field applies only to the region resource. You must specify

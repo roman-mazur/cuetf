@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_gdc_application_environment")
 	close({
+		spark_application_environment_config?: matchN(1, [#spark_application_environment_config, list.MaxItems(1) & [...#spark_application_environment_config]])
+		timeouts?: #timeouts
+
 		// The annotations to associate with this application environment.
 		// Annotations may be used to store client information, but are
 		// not used by the server.
@@ -57,9 +60,7 @@ import "list"
 		// ApplicationEnvironment. This namespace must already exist in
 		// the cluster
 		namespace?: string
-		spark_application_environment_config?: matchN(1, [#spark_application_environment_config, list.MaxItems(1) & [...#spark_application_environment_config]])
-		timeouts?: #timeouts
-		project?:  string
+		project?:   string
 
 		// The id of the service instance to which this application
 		// environment belongs.

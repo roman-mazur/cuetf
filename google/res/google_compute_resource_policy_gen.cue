@@ -6,11 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_resource_policy")
 	close({
+		disk_consistency_group_policy?: matchN(1, [#disk_consistency_group_policy, list.MaxItems(1) & [...#disk_consistency_group_policy]])
+		group_placement_policy?: matchN(1, [#group_placement_policy, list.MaxItems(1) & [...#group_placement_policy]])
+		instance_schedule_policy?: matchN(1, [#instance_schedule_policy, list.MaxItems(1) & [...#instance_schedule_policy]])
+		snapshot_schedule_policy?: matchN(1, [#snapshot_schedule_policy, list.MaxItems(1) & [...#snapshot_schedule_policy]])
+		timeouts?: #timeouts
+		workload_policy?: matchN(1, [#workload_policy, list.MaxItems(1) & [...#workload_policy]])
+
 		// An optional description of this resource. Provide this property
 		// when you create the resource.
 		description?: string
-		disk_consistency_group_policy?: matchN(1, [#disk_consistency_group_policy, list.MaxItems(1) & [...#disk_consistency_group_policy]])
-		id?: string
+		id?:          string
 
 		// The name of the resource, provided by the client when initially
 		// creating
@@ -27,15 +33,10 @@ import "list"
 		// which cannot be a dash.
 		name!:    string
 		project?: string
-		group_placement_policy?: matchN(1, [#group_placement_policy, list.MaxItems(1) & [...#group_placement_policy]])
 
 		// Region where resource policy resides.
-		region?: string
-		instance_schedule_policy?: matchN(1, [#instance_schedule_policy, list.MaxItems(1) & [...#instance_schedule_policy]])
-		snapshot_schedule_policy?: matchN(1, [#snapshot_schedule_policy, list.MaxItems(1) & [...#snapshot_schedule_policy]])
+		region?:    string
 		self_link?: string
-		timeouts?:  #timeouts
-		workload_policy?: matchN(1, [#workload_policy, list.MaxItems(1) & [...#workload_policy]])
 	})
 
 	#disk_consistency_group_policy: close({
@@ -72,6 +73,9 @@ import "list"
 	})
 
 	#instance_schedule_policy: close({
+		vm_start_schedule?: matchN(1, [_#defs."/$defs/instance_schedule_policy/$defs/vm_start_schedule", list.MaxItems(1) & [..._#defs."/$defs/instance_schedule_policy/$defs/vm_start_schedule"]])
+		vm_stop_schedule?: matchN(1, [_#defs."/$defs/instance_schedule_policy/$defs/vm_stop_schedule", list.MaxItems(1) & [..._#defs."/$defs/instance_schedule_policy/$defs/vm_stop_schedule"]])
+
 		// The expiration time of the schedule. The timestamp is an
 		// RFC3339 string.
 		expiration_time?: string
@@ -79,13 +83,11 @@ import "list"
 		// The start time of the schedule. The timestamp is an RFC3339
 		// string.
 		start_time?: string
-		vm_start_schedule?: matchN(1, [_#defs."/$defs/instance_schedule_policy/$defs/vm_start_schedule", list.MaxItems(1) & [..._#defs."/$defs/instance_schedule_policy/$defs/vm_start_schedule"]])
 
 		// Specifies the time zone to be used in interpreting the
 		// schedule. The value of this field must be a time zone name
 		// from the tz database: http://en.wikipedia.org/wiki/Tz_database.
 		time_zone!: string
-		vm_stop_schedule?: matchN(1, [_#defs."/$defs/instance_schedule_policy/$defs/vm_stop_schedule", list.MaxItems(1) & [..._#defs."/$defs/instance_schedule_policy/$defs/vm_stop_schedule"]])
 	})
 
 	#snapshot_schedule_policy: close({

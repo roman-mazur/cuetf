@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_regional_endpoint")
 	close({
+		timeouts?: #timeouts
+
 		// The access type of this regional endpoint. This field is
 		// reflected in the PSC Forwarding Rule configuration to enable
 		// global access. Possible values: ["GLOBAL", "REGIONAL"]
@@ -36,6 +38,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// User-defined labels.
 		//
@@ -48,7 +51,6 @@ package res
 
 		// The location of the RegionalEndpoint.
 		location!: string
-		id?:       string
 
 		// The name of the RegionalEndpoint.
 		name!: string
@@ -56,18 +58,17 @@ package res
 		// The name of the VPC network for this private regional endpoint.
 		// Format: 'projects/{project}/global/networks/{network}'
 		network?: string
+		project?: string
 
 		// The resource reference of the PSC Forwarding Rule created on
 		// behalf of the customer. Format:
 		// '//compute.googleapis.com/projects/{project}/regions/{region}/forwardingRules/{forwarding_rule_name}'
 		psc_forwarding_rule?: string
-		timeouts?:            #timeouts
 
 		// The name of the subnetwork from which the IP address will be
 		// allocated. Format:
 		// 'projects/{project}/regions/{region}/subnetworks/{subnetwork}'
 		subnetwork?: string
-		project?:    string
 
 		// The service endpoint this private regional endpoint connects
 		// to. Format: '{apiname}.{region}.rep.googleapis.com' Example:

@@ -9,6 +9,7 @@ package data
 
 		// A human-readable description for the role.
 		description?: string
+		id?:          string
 
 		// The name of the role in the format
 		// projects/{{project}}/roles/{{role_id}}. Like id, this field
@@ -23,7 +24,6 @@ package data
 		// The project that the service account will be created in.
 		// Defaults to the provider project configuration.
 		project?: string
-		id?:      string
 
 		// The camel case role id to use for this role. Cannot contain -
 		// characters.

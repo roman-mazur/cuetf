@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_database_migration_service_migration_job")
 	close({
+		dump_flags?: matchN(1, [#dump_flags, list.MaxItems(1) & [...#dump_flags]])
+		performance_config?: matchN(1, [#performance_config, list.MaxItems(1) & [...#performance_config]])
+		reverse_ssh_connectivity?: matchN(1, [#reverse_ssh_connectivity, list.MaxItems(1) & [...#reverse_ssh_connectivity]])
+		static_ip_connectivity?: matchN(1, [#static_ip_connectivity, list.MaxItems(1) & [...#static_ip_connectivity]])
+		timeouts?: #timeouts
+		vpc_peering_connectivity?: matchN(1, [#vpc_peering_connectivity, list.MaxItems(1) & [...#vpc_peering_connectivity]])
+
 		// Output only. The timestamp when the resource was created. A
 		// timestamp in RFC3339 UTC 'Zulu' format, accurate to
 		// nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
@@ -42,6 +49,7 @@ import "list"
 			}]
 			message?: string
 		})]
+		id?: string
 
 		// The resource labels for migration job to use to annotate any
 		// related underlying resources such as Compute Engine VMs.
@@ -55,29 +63,22 @@ import "list"
 
 		// The location where the migration job should reside.
 		location?: string
-		id?:       string
 
 		// The ID of the migration job.
 		migration_job_id!: string
-		dump_flags?: matchN(1, [#dump_flags, list.MaxItems(1) & [...#dump_flags]])
-		performance_config?: matchN(1, [#performance_config, list.MaxItems(1) & [...#performance_config]])
-		reverse_ssh_connectivity?: matchN(1, [#reverse_ssh_connectivity, list.MaxItems(1) & [...#reverse_ssh_connectivity]])
-		static_ip_connectivity?: matchN(1, [#static_ip_connectivity, list.MaxItems(1) & [...#static_ip_connectivity]])
-		timeouts?: #timeouts
-		vpc_peering_connectivity?: matchN(1, [#vpc_peering_connectivity, list.MaxItems(1) & [...#vpc_peering_connectivity]])
 
 		// The name of this migration job resource in the form of
 		// projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 		name?: string
 
 		// The current migration job phase.
-		phase?: string
+		phase?:   string
+		project?: string
 
 		// The name of the source connection profile resource in the form
 		// of
 		// projects/{project}/locations/{location}/connectionProfiles/{sourceConnectionProfile}.
-		source!:  string
-		project?: string
+		source!: string
 
 		// The current migration job state.
 		state?: string

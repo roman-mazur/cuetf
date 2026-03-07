@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apphub_application")
 	close({
+		attributes?: matchN(1, [#attributes, list.MaxItems(1) & [...#attributes]])
+		scope!: matchN(1, [#scope, list.MaxItems(1) & [_, ...] & [...#scope]])
+		timeouts?: #timeouts
+
 		// Required. The Application identifier.
 		application_id!: string
 
@@ -17,14 +21,15 @@ import "list"
 
 		// Optional. User-defined name for the Application.
 		display_name?: string
+		id?:           string
 
 		// Part of 'parent'. See documentation of 'projectsId'.
 		location!: string
-		id?:       string
 
 		// Identifier. The resource name of an Application. Format:
 		// "projects/{host-project-id}/locations/{location}/applications/{application-id}"
-		name?: string
+		name?:    string
+		project?: string
 
 		// Output only. Application state.
 		// Possible values:
@@ -33,10 +38,6 @@ import "list"
 		// ACTIVE
 		// DELETING
 		state?: string
-		attributes?: matchN(1, [#attributes, list.MaxItems(1) & [...#attributes]])
-		scope!: matchN(1, [#scope, list.MaxItems(1) & [_, ...] & [...#scope]])
-		timeouts?: #timeouts
-		project?:  string
 
 		// Output only. A universally unique identifier (in UUID4 format)
 		// for the 'Application'.

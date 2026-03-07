@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_beyondcorp_app_connector")
 	close({
+		principal_info!: matchN(1, [#principal_info, list.MaxItems(1) & [_, ...] & [...#principal_info]])
+		timeouts?: #timeouts
+
 		// An arbitrary user-provided name for the AppConnector.
 		display_name?: string
 
@@ -33,8 +36,6 @@ import "list"
 
 		// Represents the different states of a AppConnector.
 		state?: string
-		principal_info!: matchN(1, [#principal_info, list.MaxItems(1) & [_, ...] & [...#principal_info]])
-		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

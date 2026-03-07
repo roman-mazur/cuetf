@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_secret_manager_secret_version")
 	close({
+		timeouts?: #timeouts
+
 		// The time at which the Secret was created.
 		create_time?: string
 
@@ -24,6 +26,7 @@ package res
 
 		// The current state of the SecretVersion.
 		enabled?: bool
+		id?:      string
 
 		// If set to 'true', the secret data is expected to be
 		// base64-encoded string and would be sent as is.
@@ -32,7 +35,6 @@ package res
 		// The resource name of the SecretVersion. Format:
 		// 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
 		name?: string
-		id?:   string
 
 		// The ID of the project in which the resource belongs. If it is
 		// not provided,
@@ -44,7 +46,6 @@ package res
 
 		// The secret data. Must be no larger than 64KiB.
 		secret_data?: string
-		timeouts?:    #timeouts
 
 		// The secret data. Must be no larger than 64KiB. For more info
 		// see [updating write-only

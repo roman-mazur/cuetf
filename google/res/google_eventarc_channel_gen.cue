@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_eventarc_channel")
 	close({
+		timeouts?: #timeouts
+
 		// The activation token for the channel. The token must be used by
 		// the provider to register the channel for publishing.
 		activation_token?: string
@@ -20,6 +22,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// User-defined labels for the channel.
 		//
@@ -28,24 +31,22 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location for the resource
 		location!: string
 
 		// The resource name of the channel. Must be unique within the
 		// location on the project.
-		name!: string
+		name!:    string
+		project?: string
 
 		// The name of the Pub/Sub topic created and managed by Eventarc
 		// system as a transport for the event delivery. Format:
 		// 'projects/{project}/topics/{topic_id}'.
 		pubsub_topic?: string
-		project?:      string
 
 		// The state of a Channel.
-		state?:    string
-		timeouts?: #timeouts
+		state?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_healthcare_hl7_v2_store")
 	close({
+		notification_config?: matchN(1, [#notification_config, list.MaxItems(1) & [...#notification_config]])
+		notification_configs?: matchN(1, [#notification_configs, [...#notification_configs]])
+		parser_config?: matchN(1, [#parser_config, list.MaxItems(1) & [...#parser_config]])
+		timeouts?: #timeouts
+
 		// Identifies the dataset addressed by this request. Must be in
 		// the format
 		// 'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -15,6 +20,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// User-supplied key-value pairs used to organize HL7v2 stores.
 		//
@@ -48,14 +54,9 @@ import "list"
 
 		// Determines whether duplicate messages are allowed.
 		reject_duplicate_message?: bool
-		id?:                       string
 
 		// The fully qualified name of this dataset
 		self_link?: string
-		notification_config?: matchN(1, [#notification_config, list.MaxItems(1) & [...#notification_config]])
-		notification_configs?: matchN(1, [#notification_configs, [...#notification_configs]])
-		parser_config?: matchN(1, [#parser_config, list.MaxItems(1) & [...#parser_config]])
-		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

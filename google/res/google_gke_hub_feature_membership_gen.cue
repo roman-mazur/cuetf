@@ -6,22 +6,23 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_hub_feature_membership")
 	close({
+		configmanagement?: matchN(1, [#configmanagement, list.MaxItems(1) & [...#configmanagement]])
+		mesh?: matchN(1, [#mesh, list.MaxItems(1) & [...#mesh]])
+		policycontroller?: matchN(1, [#policycontroller, list.MaxItems(1) & [...#policycontroller]])
+		timeouts?: #timeouts
+
 		// The name of the feature
 		feature!: string
-		configmanagement?: matchN(1, [#configmanagement, list.MaxItems(1) & [...#configmanagement]])
-		id?: string
+		id?:      string
 
 		// The location of the feature
 		location!: string
-		mesh?: matchN(1, [#mesh, list.MaxItems(1) & [...#mesh]])
 
 		// The name of the membership
 		membership!: string
 
 		// The location of the membership
 		membership_location?: string
-		policycontroller?: matchN(1, [#policycontroller, list.MaxItems(1) & [...#policycontroller]])
-		timeouts?: #timeouts
 
 		// The project of the feature
 		project?: string
@@ -64,6 +65,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/configmanagement/$defs/config_sync": close({
+		deployment_overrides?: matchN(1, [_#defs."/$defs/configmanagement/$defs/config_sync/$defs/deployment_overrides", [..._#defs."/$defs/configmanagement/$defs/config_sync/$defs/deployment_overrides"]])
+		git?: matchN(1, [_#defs."/$defs/configmanagement/$defs/config_sync/$defs/git", list.MaxItems(1) & [..._#defs."/$defs/configmanagement/$defs/config_sync/$defs/git"]])
+		oci?: matchN(1, [_#defs."/$defs/configmanagement/$defs/config_sync/$defs/oci", list.MaxItems(1) & [..._#defs."/$defs/configmanagement/$defs/config_sync/$defs/oci"]])
+
 		// Enables the installation of ConfigSync. If set to true,
 		// ConfigSync resources will be created and the other ConfigSync
 		// fields will be applied if exist. If set to false, all other
@@ -90,9 +95,6 @@ import "list"
 		// Set to true to stop syncing configs for a single cluster.
 		// Default: false.
 		stop_syncing?: bool
-		deployment_overrides?: matchN(1, [_#defs."/$defs/configmanagement/$defs/config_sync/$defs/deployment_overrides", [..._#defs."/$defs/configmanagement/$defs/config_sync/$defs/deployment_overrides"]])
-		git?: matchN(1, [_#defs."/$defs/configmanagement/$defs/config_sync/$defs/git", list.MaxItems(1) & [..._#defs."/$defs/configmanagement/$defs/config_sync/$defs/git"]])
-		oci?: matchN(1, [_#defs."/$defs/configmanagement/$defs/config_sync/$defs/oci", list.MaxItems(1) & [..._#defs."/$defs/configmanagement/$defs/config_sync/$defs/oci"]])
 	})
 
 	_#defs: "/$defs/configmanagement/$defs/config_sync/$defs/deployment_overrides": close({
@@ -192,6 +194,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/configmanagement/$defs/policy_controller": close({
+		monitoring?: matchN(1, [_#defs."/$defs/configmanagement/$defs/policy_controller/$defs/monitoring", list.MaxItems(1) & [..._#defs."/$defs/configmanagement/$defs/policy_controller/$defs/monitoring"]])
+
 		// Sets the interval for Policy Controller Audit Scans (in
 		// seconds). When set to 0, this disables audit functionality
 		// altogether.
@@ -217,7 +221,6 @@ import "list"
 		// Enables the ability to use Constraint Templates that reference
 		// to objects other than the object currently being evaluated.
 		referential_rules_enabled?: bool
-		monitoring?: matchN(1, [_#defs."/$defs/configmanagement/$defs/policy_controller/$defs/monitoring", list.MaxItems(1) & [..._#defs."/$defs/configmanagement/$defs/policy_controller/$defs/monitoring"]])
 
 		// Installs the default template library along with Policy
 		// Controller.
@@ -231,6 +234,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/policycontroller/$defs/policy_controller_hub_config": close({
+		deployment_configs?: matchN(1, [_#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs", [..._#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs"]])
+		monitoring?: matchN(1, [_#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/monitoring", list.MaxItems(1) & [..._#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/monitoring"]])
+		policy_content?: matchN(1, [_#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/policy_content", list.MaxItems(1) & [..._#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/policy_content"]])
+
 		// Sets the interval for Policy Controller Audit Scans (in
 		// seconds). When set to 0, this disables audit functionality
 		// altogether.
@@ -254,13 +261,10 @@ import "list"
 
 		// Logs all denies and dry run failures.
 		log_denies_enabled?: bool
-		deployment_configs?: matchN(1, [_#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs", [..._#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs"]])
-		monitoring?: matchN(1, [_#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/monitoring", list.MaxItems(1) & [..._#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/monitoring"]])
 
 		// Enables the ability to mutate resources using Policy
 		// Controller.
 		mutation_enabled?: bool
-		policy_content?: matchN(1, [_#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/policy_content", list.MaxItems(1) & [..._#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/policy_content"]])
 
 		// Enables the ability to use Constraint Templates that reference
 		// to objects other than the object currently being evaluated.
@@ -268,6 +272,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs": close({
+		container_resources?: matchN(1, [_#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs/$defs/container_resources", list.MaxItems(1) & [..._#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs/$defs/container_resources"]])
+		pod_tolerations?: matchN(1, [_#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs/$defs/pod_tolerations", [..._#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs/$defs/pod_tolerations"]])
+
 		// The name for the key in the map for which this object is mapped
 		// to in the API
 		component_name!: string
@@ -275,11 +282,9 @@ import "list"
 		// Pod affinity configuration. Possible values:
 		// AFFINITY_UNSPECIFIED, NO_AFFINITY, ANTI_AFFINITY
 		pod_affinity?: string
-		container_resources?: matchN(1, [_#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs/$defs/container_resources", list.MaxItems(1) & [..._#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs/$defs/container_resources"]])
 
 		// Pod replica count.
 		replica_count?: number
-		pod_tolerations?: matchN(1, [_#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs/$defs/pod_tolerations", [..._#defs."/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs/$defs/pod_tolerations"]])
 	})
 
 	_#defs: "/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs/$defs/container_resources": close({

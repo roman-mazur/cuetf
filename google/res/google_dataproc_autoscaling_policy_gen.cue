@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_autoscaling_policy")
 	close({
+		basic_algorithm?: matchN(1, [#basic_algorithm, list.MaxItems(1) & [...#basic_algorithm]])
+		secondary_worker_config?: matchN(1, [#secondary_worker_config, list.MaxItems(1) & [...#secondary_worker_config]])
+		timeouts?: #timeouts
+		worker_config?: matchN(1, [#worker_config, list.MaxItems(1) & [...#worker_config]])
 		id?: string
 
 		// The location where the autoscaling policy should reside.
@@ -21,11 +25,7 @@ import "list"
 		// Must consist of between
 		// 3 and 50 characters.
 		policy_id!: string
-		basic_algorithm?: matchN(1, [#basic_algorithm, list.MaxItems(1) & [...#basic_algorithm]])
-		secondary_worker_config?: matchN(1, [#secondary_worker_config, list.MaxItems(1) & [...#secondary_worker_config]])
-		project?:  string
-		timeouts?: #timeouts
-		worker_config?: matchN(1, [#worker_config, list.MaxItems(1) & [...#worker_config]])
+		project?:   string
 	})
 
 	#basic_algorithm: close({

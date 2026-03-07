@@ -143,6 +143,7 @@ package data
 
 		// For Resource freshness validation (https://google.aip.dev/154)
 		etag?: string
+		id?:   string
 
 		// Initial user to setup during cluster creation. If unset for new
 		// Clusters, a postgres role with null password is created. You
@@ -154,7 +155,6 @@ package data
 			password_wo_version?: string
 			user?:                string
 		})]
-		id?: string
 
 		// User-defined labels for the alloydb cluster.
 		//

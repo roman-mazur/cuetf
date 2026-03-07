@@ -6,7 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_acl_config")
 	close({
-		id?: string
+		idp_config?: matchN(1, [#idp_config, list.MaxItems(1) & [...#idp_config]])
+		timeouts?: #timeouts
+		id?:       string
 
 		// The geographic location where the data store should reside. The
 		// value can
@@ -16,10 +18,8 @@ import "list"
 		// The unique full resource name of the aclConfig. Values are of
 		// the format
 		// 'projects/{project}/locations/{location}/aclConfig'.
-		name?: string
-		idp_config?: matchN(1, [#idp_config, list.MaxItems(1) & [...#idp_config]])
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 	})
 
 	#idp_config: close({

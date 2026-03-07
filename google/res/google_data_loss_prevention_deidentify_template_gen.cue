@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_loss_prevention_deidentify_template")
 	close({
+		deidentify_config!: matchN(1, [#deidentify_config, list.MaxItems(1) & [_, ...] & [...#deidentify_config]])
+		timeouts?: #timeouts
+
 		// The creation timestamp of an deidentifyTemplate. Set by the
 		// server.
 		create_time?: string
@@ -15,10 +18,10 @@ import "list"
 
 		// User set display name of the template.
 		display_name?: string
+		id?:           string
 
 		// The resource name of the template. Set by the server.
 		name?: string
-		id?:   string
 
 		// The parent of the template in any of the following formats:
 		//
@@ -27,8 +30,6 @@ import "list"
 		// * 'organizations/{{organization_id}}'
 		// * 'organizations/{{organization_id}}/locations/{{location}}'
 		parent!: string
-		deidentify_config!: matchN(1, [#deidentify_config, list.MaxItems(1) & [_, ...] & [...#deidentify_config]])
-		timeouts?: #timeouts
 
 		// The template id can contain uppercase and lowercase letters,
 		// numbers, and hyphens;
@@ -134,9 +135,6 @@ import "list"
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation": close({
 		bucketing_config?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config"]])
 		character_mask_config?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config"]])
-
-		// Replace each matching finding with the name of the info type.
-		replace_with_info_type_config?: bool
 		crypto_deterministic_config?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config"]])
 		crypto_hash_config?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_hash_config", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_hash_config"]])
 		crypto_replace_ffx_fpe_config?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config"]])
@@ -146,6 +144,9 @@ import "list"
 		replace_config?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config"]])
 		replace_dictionary_config?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_dictionary_config", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_dictionary_config"]])
 		time_part_config?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/time_part_config", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/time_part_config"]])
+
+		// Replace each matching finding with the name of the info type.
+		replace_with_info_type_config?: bool
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config": close({
@@ -159,6 +160,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max": close({
+		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value"]])
+		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value"]])
+
 		// Represents a day of the week. Possible values: ["MONDAY",
 		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
 		// "SUNDAY"]
@@ -172,8 +176,6 @@ import "list"
 
 		// A string value.
 		string_value?: string
-		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value"]])
-		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value"]])
 
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine fractional digits. Examples:
@@ -215,6 +217,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min": close({
+		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value"]])
+		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value"]])
+
 		// Represents a day of the week. Possible values: ["MONDAY",
 		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
 		// "SUNDAY"]
@@ -228,8 +233,6 @@ import "list"
 
 		// A string value.
 		string_value?: string
-		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value"]])
-		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value"]])
 
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine fractional digits. Examples:
@@ -271,6 +274,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value": close({
+		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value"]])
+		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value"]])
+
 		// Represents a day of the week. Possible values: ["MONDAY",
 		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
 		// "SUNDAY"]
@@ -284,8 +290,6 @@ import "list"
 
 		// A string value.
 		string_value?: string
-		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value"]])
-		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value"]])
 
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine fractional digits. Examples:
@@ -327,6 +331,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config": close({
+		characters_to_ignore?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore", [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore"]])
+
 		// Character to use to mask the sensitive values—for example, *
 		// for an alphabetic string such as a name, or 0 for a numeric
 		// string
@@ -334,7 +340,6 @@ import "list"
 		// length of 1. If not supplied, this value defaults to * for
 		// strings, and 0 for digits.
 		masking_character?: string
-		characters_to_ignore?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore", [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore"]])
 
 		// Number of characters to mask. If not set, all matching chars
 		// will be masked. Skipped characters do not count towards this
@@ -466,11 +471,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config": close({
+		context?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/context", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/context"]])
+		crypto_key?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key"]])
+		surrogate_info_type?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type"]])
+
 		// Common alphabets. Possible values:
 		// ["FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED", "NUMERIC",
 		// "HEXADECIMAL", "UPPER_CASE_ALPHA_NUMERIC", "ALPHA_NUMERIC"]
 		common_alphabet?: string
-		context?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/context", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/context"]])
 
 		// This is supported by mapping these to the alphanumeric
 		// characters that the FFX mode natively supports. This happens
@@ -487,8 +495,6 @@ import "list"
 		// The native way to select the alphabet. Must be in the range
 		// \[2, 95\].
 		radix?: number
-		crypto_key?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key"]])
-		surrogate_info_type?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/context": close({
@@ -639,6 +645,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value": close({
+		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/date_value"]])
+		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/time_value"]])
+
 		// A boolean value.
 		boolean_value?: bool
 
@@ -649,11 +658,9 @@ import "list"
 
 		// A float value.
 		float_value?: number
-		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/date_value"]])
 
 		// An integer value.
 		integer_value?: number
-		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/time_value"]])
 
 		// A string value.
 		string_value?: string
@@ -760,6 +767,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value": close({
+		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/date_value"]])
+		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/time_value"]])
+
 		// A boolean value.
 		boolean_value?: bool
 
@@ -770,11 +780,9 @@ import "list"
 
 		// A float value.
 		float_value?: number
-		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/date_value"]])
 
 		// An integer value (int64 format)
 		integer_value?: string
-		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/time_value"]])
 
 		// A string value.
 		string_value?: string
@@ -875,6 +883,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max": close({
+		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value"]])
+		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value"]])
+
 		// Represents a day of the week. Possible values: ["MONDAY",
 		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
 		// "SUNDAY"]
@@ -888,8 +899,6 @@ import "list"
 
 		// A string value.
 		string_value?: string
-		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value"]])
-		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value"]])
 
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine fractional digits. Examples:
@@ -931,6 +940,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min": close({
+		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value"]])
+		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value"]])
+
 		// Represents a day of the week. Possible values: ["MONDAY",
 		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
 		// "SUNDAY"]
@@ -944,8 +956,6 @@ import "list"
 
 		// A string value.
 		string_value?: string
-		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value"]])
-		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value"]])
 
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine fractional digits. Examples:
@@ -987,6 +997,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value": close({
+		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value"]])
+		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value"]])
+
 		// Represents a day of the week. Possible values: ["MONDAY",
 		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
 		// "SUNDAY"]
@@ -1000,8 +1013,6 @@ import "list"
 
 		// A string value.
 		string_value?: string
-		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value"]])
-		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value"]])
 
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine fractional digits. Examples:
@@ -1043,6 +1054,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config": close({
+		characters_to_ignore?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore", [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore"]])
+
 		// Character to use to mask the sensitive values—for example, *
 		// for an alphabetic string such as a name, or 0 for a numeric
 		// string
@@ -1050,7 +1063,6 @@ import "list"
 		// length of 1. If not supplied, this value defaults to * for
 		// strings, and 0 for digits.
 		masking_character?: string
-		characters_to_ignore?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore", [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore"]])
 
 		// Number of characters to mask. If not set, all matching chars
 		// will be masked. Skipped characters do not count towards this
@@ -1197,11 +1209,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config": close({
+		context?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/context", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/context"]])
+		crypto_key!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key"]])
+		surrogate_info_type?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type"]])
+
 		// Common alphabets. Only one of this, 'custom_alphabet' or
 		// 'radix' must be specified. Possible values: ["NUMERIC",
 		// "HEXADECIMAL", "UPPER_CASE_ALPHA_NUMERIC", "ALPHA_NUMERIC"]
 		common_alphabet?: string
-		context?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/context", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/context"]])
 
 		// This is supported by mapping these to the alphanumeric
 		// characters that the FFX mode natively supports. This happens
@@ -1220,8 +1235,6 @@ import "list"
 		// \[2, 95\]. Only one of this, 'custom_alphabet' or
 		// 'common_alphabet' must be specified.
 		radix?: number
-		crypto_key!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key"]])
-		surrogate_info_type?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/context": close({
@@ -1377,6 +1390,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value": close({
+		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/date_value"]])
+		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/time_value"]])
+
 		// A boolean value.
 		boolean_value?: bool
 
@@ -1387,11 +1403,9 @@ import "list"
 
 		// A float value.
 		float_value?: number
-		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/date_value"]])
 
 		// An integer value (int64 format)
 		integer_value?: string
-		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/time_value"]])
 
 		// A string value.
 		string_value?: string
@@ -1481,6 +1495,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max": close({
+		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value"]])
+		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value"]])
+
 		// A boolean value.
 		boolean_value?: bool
 
@@ -1491,11 +1508,9 @@ import "list"
 
 		// A float value.
 		float_value?: number
-		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value"]])
 
 		// An integer value (int64 format)
 		integer_value?: string
-		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value"]])
 
 		// A string value.
 		string_value?: string
@@ -1540,6 +1555,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min": close({
+		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value"]])
+		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value"]])
+
 		// A boolean value.
 		boolean_value?: bool
 
@@ -1550,11 +1568,9 @@ import "list"
 
 		// A float value.
 		float_value?: number
-		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value"]])
 
 		// An integer value (int64 format)
 		integer_value?: string
-		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value"]])
 
 		// A string value.
 		string_value?: string
@@ -1599,6 +1615,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value": close({
+		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value"]])
+		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value"]])
+
 		// A boolean value.
 		boolean_value?: bool
 
@@ -1609,11 +1628,9 @@ import "list"
 
 		// A float value.
 		float_value?: number
-		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value"]])
 
 		// An integer value (int64 format)
 		integer_value?: string
-		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value"]])
 
 		// A string value.
 		string_value?: string
@@ -1658,6 +1675,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/character_mask_config": close({
+		characters_to_ignore?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore", [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore"]])
+
 		// Character to use to mask the sensitive values—for example, *
 		// for an alphabetic string such as a name, or 0 for a numeric
 		// string
@@ -1665,7 +1684,6 @@ import "list"
 		// length of 1. If not supplied, this value defaults to * for
 		// strings, and 0 for digits.
 		masking_character?: string
-		characters_to_ignore?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore", [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore"]])
 
 		// Number of characters to mask. If not set, all matching chars
 		// will be masked. Skipped characters do not count towards this
@@ -1810,11 +1828,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config": close({
+		context?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/context", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/context"]])
+		crypto_key?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key"]])
+		surrogate_info_type?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type"]])
+
 		// Common alphabets. Possible values:
 		// ["FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED", "NUMERIC",
 		// "HEXADECIMAL", "UPPER_CASE_ALPHA_NUMERIC", "ALPHA_NUMERIC"]
 		common_alphabet?: string
-		context?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/context", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/context"]])
 
 		// This is supported by mapping these to the alphanumeric
 		// characters that the FFX mode natively supports. This happens
@@ -1831,8 +1852,6 @@ import "list"
 		// The native way to select the alphabet. Must be in the range
 		// \[2, 95\].
 		radix?: number
-		crypto_key?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key"]])
-		surrogate_info_type?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type"]])
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/context": close({
@@ -1966,6 +1985,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound": close({
+		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound/$defs/date_value"]])
+		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound/$defs/time_value"]])
+
 		// A boolean value.
 		boolean_value?: bool
 
@@ -1976,11 +1998,9 @@ import "list"
 
 		// A float value.
 		float_value?: number
-		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound/$defs/date_value"]])
 
 		// An integer value (int64 format)
 		integer_value?: string
-		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound/$defs/time_value"]])
 
 		// A string value.
 		string_value?: string
@@ -2025,6 +2045,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound": close({
+		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound/$defs/date_value"]])
+		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound/$defs/time_value"]])
+
 		// A boolean value.
 		boolean_value?: bool
 
@@ -2035,11 +2058,9 @@ import "list"
 
 		// A float value.
 		float_value?: number
-		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound/$defs/date_value"]])
 
 		// An integer value (int64 format)
 		integer_value?: string
-		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound/$defs/time_value"]])
 
 		// A string value.
 		string_value?: string
@@ -2090,6 +2111,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value": close({
+		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/date_value"]])
+		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/time_value"]])
+
 		// A boolean value.
 		boolean_value?: bool
 
@@ -2100,11 +2124,9 @@ import "list"
 
 		// A float value.
 		float_value?: number
-		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/date_value"]])
 
 		// An integer value (int64 format)
 		integer_value?: string
-		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/time_value"]])
 
 		// A string value.
 		string_value?: string
@@ -2204,6 +2226,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value": close({
+		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/date_value"]])
+		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/time_value"]])
+
 		// A boolean value.
 		boolean_value?: bool
 
@@ -2214,11 +2239,9 @@ import "list"
 
 		// A float value.
 		float_value?: number
-		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/date_value"]])
 
 		// An integer value (int64 format)
 		integer_value?: string
-		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/time_value"]])
 
 		// A string value.
 		string_value?: string

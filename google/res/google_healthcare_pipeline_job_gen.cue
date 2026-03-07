@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_healthcare_pipeline_job")
 	close({
+		backfill_pipeline_job?: matchN(1, [#backfill_pipeline_job, list.MaxItems(1) & [...#backfill_pipeline_job]])
+		mapping_pipeline_job?: matchN(1, [#mapping_pipeline_job, list.MaxItems(1) & [...#mapping_pipeline_job]])
+		reconciliation_pipeline_job?: matchN(1, [#reconciliation_pipeline_job, list.MaxItems(1) & [...#reconciliation_pipeline_job]])
+		timeouts?: #timeouts
+
 		// Healthcare Dataset under which the Pipeline Job is to run
 		dataset!: string
 
@@ -16,6 +21,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// User-supplied key-value pairs used to organize Pipeline Jobs.
 		// Label keys must be between 1 and 63 characters long, have a
@@ -38,7 +44,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Location where the Pipeline Job is to run
 		location!: string
@@ -46,10 +51,6 @@ import "list"
 		// Specifies the name of the pipeline job. This field is
 		// user-assigned.
 		name!: string
-		backfill_pipeline_job?: matchN(1, [#backfill_pipeline_job, list.MaxItems(1) & [...#backfill_pipeline_job]])
-		mapping_pipeline_job?: matchN(1, [#mapping_pipeline_job, list.MaxItems(1) & [...#mapping_pipeline_job]])
-		reconciliation_pipeline_job?: matchN(1, [#reconciliation_pipeline_job, list.MaxItems(1) & [...#reconciliation_pipeline_job]])
-		timeouts?: #timeouts
 
 		// The fully qualified name of this dataset
 		self_link?: string

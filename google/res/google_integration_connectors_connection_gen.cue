@@ -6,10 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_integration_connectors_connection")
 	close({
+		auth_config?: matchN(1, [#auth_config, list.MaxItems(1) & [...#auth_config]])
+		config_variable?: matchN(1, [#config_variable, [...#config_variable]])
+		destination_config?: matchN(1, [#destination_config, [...#destination_config]])
+		eventing_config?: matchN(1, [#eventing_config, list.MaxItems(1) & [...#eventing_config]])
+		lock_config?: matchN(1, [#lock_config, list.MaxItems(1) & [...#lock_config]])
+		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
+		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
+		ssl_config?: matchN(1, [#ssl_config, list.MaxItems(1) & [...#ssl_config]])
+		timeouts?: #timeouts
+
 		// Connection revision. This field is only updated when the
 		// connection is created or updated by User.
 		connection_revision?: string
-		auth_config?: matchN(1, [#auth_config, list.MaxItems(1) & [...#auth_config]])
 
 		// connectorVersion of the Connector.
 		connector_version!: string
@@ -61,22 +70,14 @@ import "list"
 
 		// Location in which Connection needs to be created.
 		location!: string
-		config_variable?: matchN(1, [#config_variable, [...#config_variable]])
 
 		// Name of Connection needs to be created.
-		name!: string
-		destination_config?: matchN(1, [#destination_config, [...#destination_config]])
-		eventing_config?: matchN(1, [#eventing_config, list.MaxItems(1) & [...#eventing_config]])
-		lock_config?: matchN(1, [#lock_config, list.MaxItems(1) & [...#lock_config]])
-		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
-		ssl_config?: matchN(1, [#ssl_config, list.MaxItems(1) & [...#ssl_config]])
-		timeouts?: #timeouts
+		name!:    string
+		project?: string
 
 		// Service account needed for runtime plane to access Google Cloud
 		// resources.
 		service_account?: string
-		project?:         string
 
 		// The name of the Service Directory service name. Used for
 		// Private Harpoon to resolve the ILB address.
@@ -110,6 +111,10 @@ import "list"
 	#auth_config: close({
 		additional_variable?: matchN(1, [_#defs."/$defs/auth_config/$defs/additional_variable", [..._#defs."/$defs/auth_config/$defs/additional_variable"]])
 		oauth2_auth_code_flow?: matchN(1, [_#defs."/$defs/auth_config/$defs/oauth2_auth_code_flow", list.MaxItems(1) & [..._#defs."/$defs/auth_config/$defs/oauth2_auth_code_flow"]])
+		oauth2_client_credentials?: matchN(1, [_#defs."/$defs/auth_config/$defs/oauth2_client_credentials", list.MaxItems(1) & [..._#defs."/$defs/auth_config/$defs/oauth2_client_credentials"]])
+		oauth2_jwt_bearer?: matchN(1, [_#defs."/$defs/auth_config/$defs/oauth2_jwt_bearer", list.MaxItems(1) & [..._#defs."/$defs/auth_config/$defs/oauth2_jwt_bearer"]])
+		ssh_public_key?: matchN(1, [_#defs."/$defs/auth_config/$defs/ssh_public_key", list.MaxItems(1) & [..._#defs."/$defs/auth_config/$defs/ssh_public_key"]])
+		user_password?: matchN(1, [_#defs."/$defs/auth_config/$defs/user_password", list.MaxItems(1) & [..._#defs."/$defs/auth_config/$defs/user_password"]])
 
 		// The type of authentication configured.
 		auth_key?: string
@@ -119,13 +124,12 @@ import "list"
 		// "OAUTH2_JWT_BEARER", "OAUTH2_CLIENT_CREDENTIALS",
 		// "SSH_PUBLIC_KEY", "OAUTH2_AUTH_CODE_FLOW"]
 		auth_type!: string
-		oauth2_client_credentials?: matchN(1, [_#defs."/$defs/auth_config/$defs/oauth2_client_credentials", list.MaxItems(1) & [..._#defs."/$defs/auth_config/$defs/oauth2_client_credentials"]])
-		oauth2_jwt_bearer?: matchN(1, [_#defs."/$defs/auth_config/$defs/oauth2_jwt_bearer", list.MaxItems(1) & [..._#defs."/$defs/auth_config/$defs/oauth2_jwt_bearer"]])
-		ssh_public_key?: matchN(1, [_#defs."/$defs/auth_config/$defs/ssh_public_key", list.MaxItems(1) & [..._#defs."/$defs/auth_config/$defs/ssh_public_key"]])
-		user_password?: matchN(1, [_#defs."/$defs/auth_config/$defs/user_password", list.MaxItems(1) & [..._#defs."/$defs/auth_config/$defs/user_password"]])
 	})
 
 	#config_variable: close({
+		encryption_key_value?: matchN(1, [_#defs."/$defs/config_variable/$defs/encryption_key_value", list.MaxItems(1) & [..._#defs."/$defs/config_variable/$defs/encryption_key_value"]])
+		secret_value?: matchN(1, [_#defs."/$defs/config_variable/$defs/secret_value", list.MaxItems(1) & [..._#defs."/$defs/config_variable/$defs/secret_value"]])
+
 		// Boolean Value of configVariable
 		boolean_value?: bool
 
@@ -137,8 +141,6 @@ import "list"
 
 		// String Value of configVariabley
 		string_value?: string
-		encryption_key_value?: matchN(1, [_#defs."/$defs/config_variable/$defs/encryption_key_value", list.MaxItems(1) & [..._#defs."/$defs/config_variable/$defs/encryption_key_value"]])
-		secret_value?: matchN(1, [_#defs."/$defs/config_variable/$defs/secret_value", list.MaxItems(1) & [..._#defs."/$defs/config_variable/$defs/secret_value"]])
 	})
 
 	#destination_config: close({
@@ -185,6 +187,12 @@ import "list"
 	})
 
 	#ssl_config: close({
+		additional_variable?: matchN(1, [_#defs."/$defs/ssl_config/$defs/additional_variable", [..._#defs."/$defs/ssl_config/$defs/additional_variable"]])
+		client_certificate?: matchN(1, [_#defs."/$defs/ssl_config/$defs/client_certificate", list.MaxItems(1) & [..._#defs."/$defs/ssl_config/$defs/client_certificate"]])
+		client_private_key?: matchN(1, [_#defs."/$defs/ssl_config/$defs/client_private_key", list.MaxItems(1) & [..._#defs."/$defs/ssl_config/$defs/client_private_key"]])
+		client_private_key_pass?: matchN(1, [_#defs."/$defs/ssl_config/$defs/client_private_key_pass", list.MaxItems(1) & [..._#defs."/$defs/ssl_config/$defs/client_private_key_pass"]])
+		private_server_certificate?: matchN(1, [_#defs."/$defs/ssl_config/$defs/private_server_certificate", list.MaxItems(1) & [..._#defs."/$defs/ssl_config/$defs/private_server_certificate"]])
+
 		// Type of Client Cert (PEM/JKS/.. etc.) Possible values: ["PEM"]
 		client_cert_type?: string
 
@@ -198,11 +206,6 @@ import "list"
 		// Enum for controlling the SSL Type (TLS/MTLS) Possible values:
 		// ["TLS", "MTLS"]
 		type!: string
-		additional_variable?: matchN(1, [_#defs."/$defs/ssl_config/$defs/additional_variable", [..._#defs."/$defs/ssl_config/$defs/additional_variable"]])
-		client_certificate?: matchN(1, [_#defs."/$defs/ssl_config/$defs/client_certificate", list.MaxItems(1) & [..._#defs."/$defs/ssl_config/$defs/client_certificate"]])
-		client_private_key?: matchN(1, [_#defs."/$defs/ssl_config/$defs/client_private_key", list.MaxItems(1) & [..._#defs."/$defs/ssl_config/$defs/client_private_key"]])
-		client_private_key_pass?: matchN(1, [_#defs."/$defs/ssl_config/$defs/client_private_key_pass", list.MaxItems(1) & [..._#defs."/$defs/ssl_config/$defs/client_private_key_pass"]])
-		private_server_certificate?: matchN(1, [_#defs."/$defs/ssl_config/$defs/private_server_certificate", list.MaxItems(1) & [..._#defs."/$defs/ssl_config/$defs/private_server_certificate"]])
 
 		// Bool for enabling SSL
 		use_ssl?: bool
@@ -215,6 +218,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/auth_config/$defs/additional_variable": close({
+		encryption_key_value?: matchN(1, [_#defs."/$defs/auth_config/$defs/additional_variable/$defs/encryption_key_value", list.MaxItems(1) & [..._#defs."/$defs/auth_config/$defs/additional_variable/$defs/encryption_key_value"]])
+		secret_value?: matchN(1, [_#defs."/$defs/auth_config/$defs/additional_variable/$defs/secret_value", list.MaxItems(1) & [..._#defs."/$defs/auth_config/$defs/additional_variable/$defs/secret_value"]])
+
 		// Boolean Value of configVariable.
 		boolean_value?: bool
 
@@ -226,8 +232,6 @@ import "list"
 
 		// String Value of configVariabley.
 		string_value?: string
-		encryption_key_value?: matchN(1, [_#defs."/$defs/auth_config/$defs/additional_variable/$defs/encryption_key_value", list.MaxItems(1) & [..._#defs."/$defs/auth_config/$defs/additional_variable/$defs/encryption_key_value"]])
-		secret_value?: matchN(1, [_#defs."/$defs/auth_config/$defs/additional_variable/$defs/secret_value", list.MaxItems(1) & [..._#defs."/$defs/auth_config/$defs/additional_variable/$defs/secret_value"]])
 	})
 
 	_#defs: "/$defs/auth_config/$defs/additional_variable/$defs/encryption_key_value": close({
@@ -249,6 +253,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/auth_config/$defs/oauth2_auth_code_flow": close({
+		client_secret?: matchN(1, [_#defs."/$defs/auth_config/$defs/oauth2_auth_code_flow/$defs/client_secret", list.MaxItems(1) & [..._#defs."/$defs/auth_config/$defs/oauth2_auth_code_flow/$defs/client_secret"]])
+
 		// Auth URL for Authorization Code Flow.
 		auth_uri?: string
 
@@ -258,7 +264,6 @@ import "list"
 		// Whether to enable PKCE when the user performs the auth code
 		// flow.
 		enable_pkce?: bool
-		client_secret?: matchN(1, [_#defs."/$defs/auth_config/$defs/oauth2_auth_code_flow/$defs/client_secret", list.MaxItems(1) & [..._#defs."/$defs/auth_config/$defs/oauth2_auth_code_flow/$defs/client_secret"]])
 
 		// Scopes the connection will request when the user performs the
 		// auth code flow.
@@ -374,6 +379,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/eventing_config/$defs/additional_variable": close({
+		encryption_key_value?: matchN(1, [_#defs."/$defs/eventing_config/$defs/additional_variable/$defs/encryption_key_value", list.MaxItems(1) & [..._#defs."/$defs/eventing_config/$defs/additional_variable/$defs/encryption_key_value"]])
+		secret_value?: matchN(1, [_#defs."/$defs/eventing_config/$defs/additional_variable/$defs/secret_value", list.MaxItems(1) & [..._#defs."/$defs/eventing_config/$defs/additional_variable/$defs/secret_value"]])
+
 		// Boolean Value of configVariable.
 		boolean_value?: bool
 
@@ -385,8 +393,6 @@ import "list"
 
 		// String Value of configVariabley.
 		string_value?: string
-		encryption_key_value?: matchN(1, [_#defs."/$defs/eventing_config/$defs/additional_variable/$defs/encryption_key_value", list.MaxItems(1) & [..._#defs."/$defs/eventing_config/$defs/additional_variable/$defs/encryption_key_value"]])
-		secret_value?: matchN(1, [_#defs."/$defs/eventing_config/$defs/additional_variable/$defs/secret_value", list.MaxItems(1) & [..._#defs."/$defs/eventing_config/$defs/additional_variable/$defs/secret_value"]])
 	})
 
 	_#defs: "/$defs/eventing_config/$defs/additional_variable/$defs/encryption_key_value": close({
@@ -419,6 +425,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/eventing_config/$defs/auth_config/$defs/additional_variable": close({
+		encryption_key_value?: matchN(1, [_#defs."/$defs/eventing_config/$defs/auth_config/$defs/additional_variable/$defs/encryption_key_value", list.MaxItems(1) & [..._#defs."/$defs/eventing_config/$defs/auth_config/$defs/additional_variable/$defs/encryption_key_value"]])
+		secret_value?: matchN(1, [_#defs."/$defs/eventing_config/$defs/auth_config/$defs/additional_variable/$defs/secret_value", list.MaxItems(1) & [..._#defs."/$defs/eventing_config/$defs/auth_config/$defs/additional_variable/$defs/secret_value"]])
+
 		// Boolean Value of configVariable.
 		boolean_value?: bool
 
@@ -430,8 +439,6 @@ import "list"
 
 		// String Value of configVariabley.
 		string_value?: string
-		encryption_key_value?: matchN(1, [_#defs."/$defs/eventing_config/$defs/auth_config/$defs/additional_variable/$defs/encryption_key_value", list.MaxItems(1) & [..._#defs."/$defs/eventing_config/$defs/auth_config/$defs/additional_variable/$defs/encryption_key_value"]])
-		secret_value?: matchN(1, [_#defs."/$defs/eventing_config/$defs/auth_config/$defs/additional_variable/$defs/secret_value", list.MaxItems(1) & [..._#defs."/$defs/eventing_config/$defs/auth_config/$defs/additional_variable/$defs/secret_value"]])
 	})
 
 	_#defs: "/$defs/eventing_config/$defs/auth_config/$defs/additional_variable/$defs/encryption_key_value": close({
@@ -484,6 +491,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/ssl_config/$defs/additional_variable": close({
+		encryption_key_value?: matchN(1, [_#defs."/$defs/ssl_config/$defs/additional_variable/$defs/encryption_key_value", list.MaxItems(1) & [..._#defs."/$defs/ssl_config/$defs/additional_variable/$defs/encryption_key_value"]])
+		secret_value?: matchN(1, [_#defs."/$defs/ssl_config/$defs/additional_variable/$defs/secret_value", list.MaxItems(1) & [..._#defs."/$defs/ssl_config/$defs/additional_variable/$defs/secret_value"]])
+
 		// Boolean Value of configVariable.
 		boolean_value?: bool
 
@@ -495,8 +505,6 @@ import "list"
 
 		// String Value of configVariabley.
 		string_value?: string
-		encryption_key_value?: matchN(1, [_#defs."/$defs/ssl_config/$defs/additional_variable/$defs/encryption_key_value", list.MaxItems(1) & [..._#defs."/$defs/ssl_config/$defs/additional_variable/$defs/encryption_key_value"]])
-		secret_value?: matchN(1, [_#defs."/$defs/ssl_config/$defs/additional_variable/$defs/secret_value", list.MaxItems(1) & [..._#defs."/$defs/ssl_config/$defs/additional_variable/$defs/secret_value"]])
 	})
 
 	_#defs: "/$defs/ssl_config/$defs/additional_variable/$defs/encryption_key_value": close({

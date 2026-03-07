@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_organization_sink")
 	close({
+		bigquery_options?: matchN(1, [#bigquery_options, list.MaxItems(1) & [...#bigquery_options]])
+		exclusions?: matchN(1, [#exclusions, [...#exclusions]])
+
 		// A description of this sink. The maximum length of the
 		// description is 8000 characters.
 		description?: string
@@ -27,13 +30,13 @@ import "list"
 		// The filter to apply when exporting logs. Only log entries that
 		// match the filter are exported.
 		filter?: string
+		id?:     string
 
 		// Whether or not to include child folders or projects in the sink
 		// export. If true, logs associated with child projects are also
 		// exported; otherwise only logs relating to the provided
 		// organization are included.
 		include_children?: bool
-		id?:               string
 
 		// Whether or not to intercept logs from child projects. If true,
 		// matching logs will not match with sinks in child resources,
@@ -43,8 +46,6 @@ import "list"
 
 		// The name of the logging sink.
 		name!: string
-		bigquery_options?: matchN(1, [#bigquery_options, list.MaxItems(1) & [...#bigquery_options]])
-		exclusions?: matchN(1, [#exclusions, [...#exclusions]])
 
 		// The numeric ID of the organization to be exported to the sink.
 		org_id!: string

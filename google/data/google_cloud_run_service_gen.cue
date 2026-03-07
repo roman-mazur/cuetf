@@ -14,10 +14,10 @@ package data
 		// this field is set to false, the revision name will still
 		// autogenerate.)
 		autogenerate_revision_name?: bool
+		id?:                         string
 
 		// The location of the cloud run instance. eg us-central1
 		location!: string
-		id?:       string
 
 		// Metadata associated with this Service, including name,
 		// namespace, labels,

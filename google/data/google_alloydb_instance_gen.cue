@@ -99,6 +99,7 @@ package data
 		// for a ZONAL instance, instance is created in a random zone
 		// with available capacity.
 		gce_zone?: string
+		id?:       string
 
 		// The ID of the alloydb instance.
 		instance_id!: string
@@ -123,7 +124,6 @@ package data
 		// importing the deleted secondary instance by calling terraform
 		// import. Possible values: ["PRIMARY", "READ_POOL", "SECONDARY"]
 		instance_type?: string
-		id?:            string
 
 		// The IP address for the Instance. This is the connection
 		// endpoint for an end-user application.

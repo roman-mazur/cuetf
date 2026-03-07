@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_spanner_instance_config")
 	close({
+		replicas!: matchN(1, [#replicas, [_, ...] & [...#replicas]])
+		timeouts?: #timeouts
+
 		// Base configuration name, e.g. nam3, based on which this
 		// configuration is created.
 		// Only set for user managed configurations.
@@ -37,10 +40,8 @@ package res
 		// A unique identifier for the instance configuration. Values are
 		// of the
 		// form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
-		name?: string
-		replicas!: matchN(1, [#replicas, [_, ...] & [...#replicas]])
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

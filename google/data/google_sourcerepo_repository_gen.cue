@@ -7,11 +7,12 @@ package data
 		// If set to true, skip repository creation if a repository with
 		// the same name already exists.
 		create_ignore_already_exists?: bool
+		id?:                           string
 
 		// Resource name of the repository, of the form '{{repo}}'.
 		// The repo name may contain slashes. eg, 'name/with/slash'
-		name!: string
-		id?:   string
+		name!:    string
+		project?: string
 
 		// How this repository publishes a change in the repository
 		// through Cloud Pub/Sub.
@@ -21,7 +22,6 @@ package data
 			service_account_email?: string
 			topic?:                 string
 		})]
-		project?: string
 
 		// The disk usage of the repo, in bytes.
 		size?: number

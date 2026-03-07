@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_management_organization_event_threat_detection_custom_module")
 	close({
+		timeouts?: #timeouts
+
 		// Config for the module. For the resident module, its config
 		// value is defined at this level.
 		// For the inherited module, its config value is inherited from
@@ -16,10 +18,10 @@ package res
 		// The state of enablement for the module at the given level of
 		// the hierarchy. Possible values: ["ENABLED", "DISABLED"]
 		enablement_state?: string
+		id?:               string
 
 		// The editor that last updated the custom module
 		last_editor?: string
-		id?:          string
 
 		// Location ID of the parent organization. Only global is
 		// supported at the moment.
@@ -28,8 +30,7 @@ package res
 		// The resource name of the Event Threat Detection custom module.
 		// Its format is
 		// "organizations/{organization}/locations/{location}/eventThreatDetectionCustomModules/{eventThreatDetectionCustomModule}".
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// Numerical ID of the parent organization.
 		organization!: string

@@ -99,7 +99,8 @@ package data
 
 		// The resource name of the regional secret. Format:
 		// 'projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}'
-		name?: string
+		name?:    string
+		project?: string
 
 		// The rotation time and period for a regional secret. At
 		// 'next_rotation_time', Secret Manager
@@ -110,7 +111,6 @@ package data
 			next_rotation_time?: string
 			rotation_period?:    string
 		})]
-		project?: string
 
 		// This must be unique within the project.
 		secret_id!: string

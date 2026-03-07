@@ -6,16 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_healthcare_dataset")
 	close({
-		// The location for the Dataset.
-		location!: string
+		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
+		timeouts?: #timeouts
 		id?:       string
 
+		// The location for the Dataset.
+		location!: string
+
 		// The resource name for the Dataset.
-		name!: string
+		name!:    string
+		project?: string
 
 		// The fully qualified name of this dataset
 		self_link?: string
-		project?:   string
 
 		// The default timezone used by this dataset. Must be a either a
 		// valid IANA time zone name such as
@@ -23,8 +26,6 @@ import "list"
 		// used for parsing times in resources
 		// (e.g., HL7 messages) where no explicit timezone is specified.
 		time_zone?: string
-		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
-		timeouts?: #timeouts
 	})
 
 	#encryption_spec: close({

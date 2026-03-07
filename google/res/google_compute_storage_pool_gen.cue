@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_storage_pool")
 	close({
+		timeouts?: #timeouts
+
 		// Provisioning type of the byte capacity of the pool. Possible
 		// values: ["STANDARD", "ADVANCED"]
 		capacity_provisioning_type?: string
@@ -71,7 +73,6 @@ package res
 		// the size limits,
 		// see https://cloud.google.com/compute/docs/disks/storage-pools.
 		pool_provisioned_capacity_gb!: string
-		timeouts?:                     #timeouts
 
 		// Provisioned IOPS of the storage pool.
 		// Only relevant if the storage pool type is 'hyperdisk-balanced'.

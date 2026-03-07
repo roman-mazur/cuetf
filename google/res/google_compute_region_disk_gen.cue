@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_disk")
 	close({
+		async_primary_disk?: matchN(1, [#async_primary_disk, list.MaxItems(1) & [...#async_primary_disk]])
+		disk_encryption_key?: matchN(1, [#disk_encryption_key, list.MaxItems(1) & [...#disk_encryption_key]])
+		guest_os_features?: matchN(1, [#guest_os_features, [...#guest_os_features]])
+		source_snapshot_encryption_key?: matchN(1, [#source_snapshot_encryption_key, list.MaxItems(1) & [...#source_snapshot_encryption_key]])
+		timeouts?: #timeouts
+
 		// The access mode of the disk.
 		// For example:
 		// * READ_WRITE_SINGLE: The default AccessMode, means the disk can
@@ -92,6 +98,7 @@ import "list"
 		// list
 		// the supported values for the caller's project.
 		physical_block_size_bytes?: number
+		project?:                   string
 
 		// Indicates how many IOPS to provision for the disk. This sets
 		// the number of I/O operations per second
@@ -100,23 +107,19 @@ import "list"
 		// For more details, see the Extreme persistent disk
 		// [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
 		provisioned_iops?: number
-		project?:          string
 
 		// Indicates how much throughput to provision for the disk. This
 		// sets the number of throughput
 		// mb per second that the disk can handle. Values must be greater
 		// than or equal to 1.
 		provisioned_throughput?: number
-		async_primary_disk?: matchN(1, [#async_primary_disk, list.MaxItems(1) & [...#async_primary_disk]])
-		disk_encryption_key?: matchN(1, [#disk_encryption_key, list.MaxItems(1) & [...#disk_encryption_key]])
-		guest_os_features?: matchN(1, [#guest_os_features, [...#guest_os_features]])
-		source_snapshot_encryption_key?: matchN(1, [#source_snapshot_encryption_key, list.MaxItems(1) & [...#source_snapshot_encryption_key]])
 
 		// A reference to the region where the disk resides.
 		region?: string
 
 		// URLs of the zones where the disk should be replicated to.
 		replica_zones!: [...string]
+		self_link?: string
 
 		// Size of the persistent disk, specified in GB. You can specify
 		// this
@@ -143,8 +146,7 @@ import "list"
 		// * 'projects/project/global/snapshots/snapshot'
 		// * 'global/snapshots/snapshot'
 		// * 'snapshot'
-		snapshot?:  string
-		self_link?: string
+		snapshot?: string
 
 		// The source disk used to create this disk. You can provide this
 		// as a partial or full URL to the resource.
@@ -159,7 +161,6 @@ import "list"
 		// * zones/{zone}/disks/{disk}
 		// * regions/{region}/disks/{disk}
 		source_disk?: string
-		timeouts?:    #timeouts
 
 		// The ID value of the disk used to create this image. This value
 		// may

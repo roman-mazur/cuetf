@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_external_vpn_gateway")
 	close({
+		interface?: matchN(1, [#interface, [...#interface]])
+		timeouts?: #timeouts
+
 		// An optional description of this resource.
 		description?: string
 
@@ -45,9 +48,7 @@ package res
 		// Possible values: ["FOUR_IPS_REDUNDANCY",
 		// "SINGLE_IP_INTERNALLY_REDUNDANT", "TWO_IPS_REDUNDANCY"]
 		redundancy_type?: string
-		interface?: matchN(1, [#interface, [...#interface]])
-		timeouts?:  #timeouts
-		self_link?: string
+		self_link?:       string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

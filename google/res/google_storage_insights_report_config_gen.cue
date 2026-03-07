@@ -6,28 +6,29 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_insights_report_config")
 	close({
+		csv_options?: matchN(1, [#csv_options, list.MaxItems(1) & [...#csv_options]])
+		frequency_options?: matchN(1, [#frequency_options, list.MaxItems(1) & [...#frequency_options]])
+		object_metadata_report_options?: matchN(1, [#object_metadata_report_options, list.MaxItems(1) & [...#object_metadata_report_options]])
+		parquet_options?: matchN(1, [#parquet_options, list.MaxItems(1) & [...#parquet_options]])
+		timeouts?: #timeouts
+
 		// The editable display name of the inventory report
 		// configuration. Has a limit of 256 characters. Can be empty.
 		display_name?: string
-		csv_options?: matchN(1, [#csv_options, list.MaxItems(1) & [...#csv_options]])
 
 		// If set, all the inventory report details associated with this
 		// report configuration are deleted.
 		force_destroy?: bool
 		id?:            string
-		frequency_options?: matchN(1, [#frequency_options, list.MaxItems(1) & [...#frequency_options]])
 
 		// The location of the ReportConfig. The source and destination
 		// buckets specified in the ReportConfig
 		// must be in the same location.
 		location!: string
-		object_metadata_report_options?: matchN(1, [#object_metadata_report_options, list.MaxItems(1) & [...#object_metadata_report_options]])
-		parquet_options?: matchN(1, [#parquet_options, list.MaxItems(1) & [...#parquet_options]])
 
 		// The UUID of the inventory report configuration.
-		name?:     string
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 	})
 
 	#csv_options: close({

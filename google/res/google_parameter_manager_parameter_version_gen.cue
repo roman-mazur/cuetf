@@ -4,12 +4,15 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_parameter_manager_parameter_version")
 	close({
+		timeouts?: #timeouts
+
 		// The time at which the Parameter Version was created.
 		create_time?: string
 
 		// The current state of Parameter Version. This field is only
 		// applicable for updating Parameter Version.
 		disabled?: bool
+		id?:       string
 
 		// The resource name of the Cloud KMS CryptoKeyVersion used to
 		// decrypt parameter version payload. Format
@@ -22,7 +25,6 @@ package res
 
 		// Parameter Manager Parameter resource.
 		parameter!: string
-		id?:        string
 
 		// The Parameter data.
 		parameter_data!: string
@@ -33,7 +35,6 @@ package res
 
 		// The time at which the Parameter Version was updated.
 		update_time?: string
-		timeouts?:    #timeouts
 	})
 
 	#timeouts: close({

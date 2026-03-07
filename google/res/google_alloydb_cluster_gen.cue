@@ -6,6 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_alloydb_cluster")
 	close({
+		automated_backup_policy?: matchN(1, [#automated_backup_policy, list.MaxItems(1) & [...#automated_backup_policy]])
+		continuous_backup_config?: matchN(1, [#continuous_backup_config, list.MaxItems(1) & [...#continuous_backup_config]])
+		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
+		initial_user?: matchN(1, [#initial_user, list.MaxItems(1) & [...#initial_user]])
+		maintenance_update_policy?: matchN(1, [#maintenance_update_policy, list.MaxItems(1) & [...#maintenance_update_policy]])
+		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
+		psc_config?: matchN(1, [#psc_config, list.MaxItems(1) & [...#psc_config]])
+		restore_backup_source?: matchN(1, [#restore_backup_source, list.MaxItems(1) & [...#restore_backup_source]])
+		restore_backupdr_backup_source?: matchN(1, [#restore_backupdr_backup_source, list.MaxItems(1) & [...#restore_backupdr_backup_source]])
+		restore_backupdr_pitr_source?: matchN(1, [#restore_backupdr_pitr_source, list.MaxItems(1) & [...#restore_backupdr_pitr_source]])
+		restore_continuous_backup_source?: matchN(1, [#restore_continuous_backup_source, list.MaxItems(1) & [...#restore_continuous_backup_source]])
+		secondary_config?: matchN(1, [#secondary_config, list.MaxItems(1) & [...#secondary_config]])
+		timeouts?: #timeouts
+
 		// Annotations to allow client tools to store small amount of
 		// arbitrary data. This is distinct from labels.
 		// https://google.aip.dev/128
@@ -18,7 +32,6 @@ import "list"
 		// Please refer to the field 'effective_annotations' for all of
 		// the annotations present on the resource.
 		annotations?: [string]: string
-		automated_backup_policy?: matchN(1, [#automated_backup_policy, list.MaxItems(1) & [...#automated_backup_policy]])
 
 		// Cluster created from backup.
 		backup_source?: [...close({
@@ -108,18 +121,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		continuous_backup_config?: matchN(1, [#continuous_backup_config, list.MaxItems(1) & [...#continuous_backup_config]])
-		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
-		initial_user?: matchN(1, [#initial_user, list.MaxItems(1) & [...#initial_user]])
-		maintenance_update_policy?: matchN(1, [#maintenance_update_policy, list.MaxItems(1) & [...#maintenance_update_policy]])
-		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
-		psc_config?: matchN(1, [#psc_config, list.MaxItems(1) & [...#psc_config]])
-		restore_backup_source?: matchN(1, [#restore_backup_source, list.MaxItems(1) & [...#restore_backup_source]])
-		restore_backupdr_backup_source?: matchN(1, [#restore_backupdr_backup_source, list.MaxItems(1) & [...#restore_backupdr_backup_source]])
-		restore_backupdr_pitr_source?: matchN(1, [#restore_backupdr_pitr_source, list.MaxItems(1) & [...#restore_backupdr_pitr_source]])
-		restore_continuous_backup_source?: matchN(1, [#restore_continuous_backup_source, list.MaxItems(1) & [...#restore_continuous_backup_source]])
-		secondary_config?: matchN(1, [#secondary_config, list.MaxItems(1) & [...#secondary_config]])
-		timeouts?: #timeouts
 
 		// The location where the alloydb cluster should reside.
 		location!: string
@@ -175,6 +176,11 @@ import "list"
 	})
 
 	#automated_backup_policy: close({
+		encryption_config?: matchN(1, [_#defs."/$defs/automated_backup_policy/$defs/encryption_config", list.MaxItems(1) & [..._#defs."/$defs/automated_backup_policy/$defs/encryption_config"]])
+		quantity_based_retention?: matchN(1, [_#defs."/$defs/automated_backup_policy/$defs/quantity_based_retention", list.MaxItems(1) & [..._#defs."/$defs/automated_backup_policy/$defs/quantity_based_retention"]])
+		time_based_retention?: matchN(1, [_#defs."/$defs/automated_backup_policy/$defs/time_based_retention", list.MaxItems(1) & [..._#defs."/$defs/automated_backup_policy/$defs/time_based_retention"]])
+		weekly_schedule?: matchN(1, [_#defs."/$defs/automated_backup_policy/$defs/weekly_schedule", list.MaxItems(1) & [..._#defs."/$defs/automated_backup_policy/$defs/weekly_schedule"]])
+
 		// The length of the time window during which a backup can be
 		// taken. If a backup does not succeed within this time window,
 		// it will be canceled and considered failed.
@@ -189,18 +195,14 @@ import "list"
 
 		// Whether automated backups are enabled.
 		enabled?: bool
-		encryption_config?: matchN(1, [_#defs."/$defs/automated_backup_policy/$defs/encryption_config", list.MaxItems(1) & [..._#defs."/$defs/automated_backup_policy/$defs/encryption_config"]])
 
 		// Labels to apply to backups created using this configuration.
 		labels?: [string]: string
-		quantity_based_retention?: matchN(1, [_#defs."/$defs/automated_backup_policy/$defs/quantity_based_retention", list.MaxItems(1) & [..._#defs."/$defs/automated_backup_policy/$defs/quantity_based_retention"]])
 
 		// The location where the backup will be stored. Currently, the
 		// only supported option is to store the backup in the same
 		// region as the cluster.
 		location?: string
-		time_based_retention?: matchN(1, [_#defs."/$defs/automated_backup_policy/$defs/time_based_retention", list.MaxItems(1) & [..._#defs."/$defs/automated_backup_policy/$defs/time_based_retention"]])
-		weekly_schedule?: matchN(1, [_#defs."/$defs/automated_backup_policy/$defs/weekly_schedule", list.MaxItems(1) & [..._#defs."/$defs/automated_backup_policy/$defs/weekly_schedule"]])
 	})
 
 	#continuous_backup_config: close({

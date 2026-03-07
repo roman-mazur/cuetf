@@ -22,6 +22,7 @@ package data
 		// "HOST_TYPE_UNSPECIFIED" Possible values:
 		// ["HOST_TYPE_UNSPECIFIED", "GCP_REGIONAL_MIG"]
 		host_type?: string
+		id?:        string
 
 		// Resource labels to represent user provided metadata.
 		//
@@ -31,17 +32,16 @@ package data
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// ID of the AppGateway.
-		name!: string
+		name!:    string
+		project?: string
 
 		// The region of the AppGateway.
 		region?: string
 
 		// Represents the different states of a AppGateway.
-		state?:   string
-		project?: string
+		state?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

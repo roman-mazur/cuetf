@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_edgecontainer_node_pool")
 	close({
+		local_disk_encryption?: matchN(1, [#local_disk_encryption, list.MaxItems(1) & [...#local_disk_encryption]])
+		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
+		timeouts?: #timeouts
+
 		// The name of the target Distributed Cloud Edge Cluster.
 		cluster!: string
 
@@ -47,9 +51,6 @@ import "list"
 		// pool will be created. For example:
 		// 'us-central1-edge-customer-a'.
 		node_location!: string
-		local_disk_encryption?: matchN(1, [#local_disk_encryption, list.MaxItems(1) & [...#local_disk_encryption]])
-		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
-		timeouts?: #timeouts
 
 		// The lowest release version among all worker nodes.
 		node_version?: string

@@ -4,14 +4,18 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_check_recaptcha_v3_config")
 	close({
+		timeouts?: #timeouts
+
 		// The ID of an
 		// [Web
 		// App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
 		app_id!: string
+		id?:     string
 
 		// The relative resource name of the reCAPTCHA V3 configuration
 		// object
-		name?: string
+		name?:    string
+		project?: string
 
 		// The site secret used to identify your service for reCAPTCHA v3
 		// verification.
@@ -23,9 +27,6 @@ package res
 		// return the siteSecret field, this field is the only way to
 		// find out whether it was previously set.
 		site_secret_set?: bool
-		id?:              string
-		timeouts?:        #timeouts
-		project?:         string
 
 		// Specifies the duration for which App Check tokens exchanged
 		// from reCAPTCHA V3 artifacts will be valid.

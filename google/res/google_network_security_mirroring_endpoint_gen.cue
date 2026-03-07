@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_mirroring_endpoint")
 	close({
+		timeouts?: #timeouts
+
 		// The timestamp when the resource was created.
 		// See https://google.aip.dev/148#timestamps.
 		create_time?: string
@@ -16,6 +18,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Labels are key/value pairs that help to organize and filter
 		// resources.
@@ -25,7 +28,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The cloud location of the endpoint, e.g. 'us-central1-a' or
 		// 'asia-south1-b'.
@@ -43,9 +45,8 @@ package res
 		// The resource name of this endpoint, for example:
 		// 'projects/123456789/locations/us-central1-a/mirroringEndpoints/my-endpoint'.
 		// See https://google.aip.dev/122 for more details.
-		name?:     string
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// The current state of the resource does not match the user's
 		// intended state,

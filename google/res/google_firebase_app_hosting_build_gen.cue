@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_hosting_build")
 	close({
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		timeouts?: #timeouts
+
 		// Unstructured key value map that may be set by external tools to
 		// store and arbitrary metadata. They are not queryable and should
 		// be
@@ -81,8 +84,6 @@ import "list"
 		// resource.
 		etag?: string
 		id?:   string
-		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
-		timeouts?: #timeouts
 
 		// The Artifact Registry
 		// [container
@@ -110,7 +111,8 @@ import "list"
 		// Format:
 		//
 		// 'projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}'.
-		name?: string
+		name?:    string
+		project?: string
 
 		// The state of the build.
 		// Possible values:
@@ -119,8 +121,7 @@ import "list"
 		// DEPLOYING
 		// READY
 		// FAILED
-		state?:   string
-		project?: string
+		state?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

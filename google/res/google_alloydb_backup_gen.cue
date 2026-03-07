@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_alloydb_backup")
 	close({
+		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
+		timeouts?: #timeouts
+
 		// Annotations to allow client tools to store small amount of
 		// arbitrary data. This is distinct from labels.
 		// https://google.aip.dev/128
@@ -85,8 +88,6 @@ import "list"
 		// added to the backup's createTime.
 		expiry_time?: string
 		id?:          string
-		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
-		timeouts?: #timeouts
 
 		// User-defined labels for the alloydb backup. An object
 		// containing a list of "key": value pairs. Example: { "name":

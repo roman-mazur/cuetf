@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_lb_edge_extension")
 	close({
+		extension_chains!: matchN(1, [#extension_chains, [_, ...] & [...#extension_chains]])
+		timeouts?: #timeouts
+
 		// A human-readable description of the resource.
 		description?: string
 
@@ -37,8 +40,6 @@ import "list"
 
 		// The location of the edge extension
 		location!: string
-		extension_chains!: matchN(1, [#extension_chains, [_, ...] & [...#extension_chains]])
-		timeouts?: #timeouts
 
 		// Name of the LbEdgeExtension resource in the following format:
 		// projects/{project}/locations/{location}/lbEdgeExtensions/{lbEdgeExtensions}

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_retrohunt")
 	close({
+		process_interval!: matchN(1, [#process_interval, list.MaxItems(1) & [_, ...] & [...#process_interval]])
+		timeouts?: #timeouts
+
 		// Represents a time interval, encoded as a Timestamp start
 		// (inclusive) and a
 		// Timestamp end (exclusive).
@@ -19,11 +22,11 @@ import "list"
 			end_time?:   string
 			start_time?: string
 		})]
+		id?: string
 
 		// The unique identifier for the Chronicle instance, which is the
 		// same as the customer ID.
 		instance!: string
-		id?:       string
 
 		// The location of the resource. This is the geographical region
 		// where the Chronicle instance resides, such as "us" or
@@ -46,8 +49,6 @@ import "list"
 		// The retrohunt ID of the Retrohunt. A retrohunt is an execution
 		// of a Rule over a time range in the past.
 		retrohunt?: string
-		process_interval!: matchN(1, [#process_interval, list.MaxItems(1) & [_, ...] & [...#process_interval]])
-		timeouts?: #timeouts
 
 		// The Rule ID of the rule.
 		rule!: string

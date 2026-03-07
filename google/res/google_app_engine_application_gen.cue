@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_app_engine_application")
 	close({
+		feature_settings?: matchN(1, [#feature_settings, list.MaxItems(1) & [...#feature_settings]])
+		iap?: matchN(1, [#iap, list.MaxItems(1) & [...#iap]])
+		timeouts?: #timeouts
+
 		// Identifier of the app.
 		app_id?: string
 
@@ -14,11 +18,11 @@ import "list"
 		auth_domain?: string
 
 		// The GCS bucket code is being stored in for this app.
-		code_bucket?: string
+		code_bucket?:   string
+		database_type?: string
 
 		// The GCS bucket content is being stored in for this app.
 		default_bucket?: string
-		database_type?:  string
 
 		// The default hostname for this app.
 		default_hostname?: string
@@ -26,16 +30,13 @@ import "list"
 		// The GCR domain used for storing managed Docker images for this
 		// app.
 		gcr_domain?: string
+		id?:         string
 
 		// The location to serve the app from.
 		location_id!: string
-		id?:          string
 
 		// Unique name of the app.
 		name?: string
-		feature_settings?: matchN(1, [#feature_settings, list.MaxItems(1) & [...#feature_settings]])
-		iap?: matchN(1, [#iap, list.MaxItems(1) & [...#iap]])
-		timeouts?: #timeouts
 
 		// The project ID to create the application under.
 		project?: string

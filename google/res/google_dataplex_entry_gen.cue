@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_entry")
 	close({
+		aspects?: matchN(1, [#aspects, [...#aspects]])
+		entry_source?: matchN(1, [#entry_source, list.MaxItems(1) & [...#entry_source]])
+		timeouts?: #timeouts
+
 		// The time when the Entry was created in Dataplex.
 		create_time?: string
 
@@ -34,9 +38,6 @@ import "list"
 		// The relative resource name of the entry, in the format
 		// projects/{project_number}/locations/{locationId}/entryGroups/{entryGroupId}/entries/{entryId}.
 		name?: string
-		aspects?: matchN(1, [#aspects, [...#aspects]])
-		entry_source?: matchN(1, [#entry_source, list.MaxItems(1) & [...#entry_source]])
-		timeouts?: #timeouts
 
 		// The resource name of the parent entry, in the format
 		// projects/{project_number}/locations/{locationId}/entryGroups/{entryGroupId}/entries/{entryId}.
@@ -61,6 +62,8 @@ import "list"
 	})
 
 	#entry_source: close({
+		ancestors?: matchN(1, [_#defs."/$defs/entry_source/$defs/ancestors", [..._#defs."/$defs/entry_source/$defs/ancestors"]])
+
 		// The time when the resource was created in the source system.
 		create_time?: string
 
@@ -92,7 +95,6 @@ import "list"
 		// The name of the resource in the source system. Maximum length
 		// is 4,000 characters.
 		resource?: string
-		ancestors?: matchN(1, [_#defs."/$defs/entry_source/$defs/ancestors", [..._#defs."/$defs/entry_source/$defs/ancestors"]])
 
 		// The name of the source system. Maximum length is 64 characters.
 		system?: string

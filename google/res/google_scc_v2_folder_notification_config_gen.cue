@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_v2_folder_notification_config")
 	close({
+		streaming_config!: matchN(1, [#streaming_config, list.MaxItems(1) & [_, ...] & [...#streaming_config]])
+		timeouts?: #timeouts
+
 		// This must be unique within the organization.
 		config_id!: string
 
@@ -15,17 +18,15 @@ import "list"
 
 		// Numerical ID of the parent folder.
 		folder!: string
+		id?:     string
 
 		// Location ID of the parent organization. If not provided,
 		// 'global' will be used as the default location.
 		location?: string
-		id?:       string
 
 		// The resource name of this notification config, in the format
 		// 'folders/{{folder}}/locations/{{location}}/notificationConfigs/{{config_id}}'.
 		name?: string
-		streaming_config!: matchN(1, [#streaming_config, list.MaxItems(1) & [_, ...] & [...#streaming_config]])
-		timeouts?: #timeouts
 
 		// The Pub/Sub topic to send notifications to. Its format is
 		// "projects/[project_id]/topics/[topic]".

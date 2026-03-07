@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_volume_replication")
 	close({
+		destination_volume_parameters?: matchN(1, [#destination_volume_parameters, list.MaxItems(1) & [...#destination_volume_parameters]])
+		timeouts?: #timeouts
+
 		// Create time of the active directory. A timestamp in RFC3339 UTC
 		// "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 		create_time?: string
@@ -72,6 +75,7 @@ import "list"
 		hybrid_replication_user_commands?: [...close({
 			commands?: [...string]
 		})]
+		id?: string
 
 		// Labels as key value pairs. Example: '{ "owner": "Bob",
 		// "department": "finance", "purpose": "testing" }'
@@ -82,7 +86,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Name of region for this resource. The resource needs to be
 		// created in the region of the destination volume.
@@ -98,7 +101,8 @@ import "list"
 		mirror_state?: string
 
 		// The name of the replication. Needs to be unique per location.
-		name!: string
+		name!:    string
+		project?: string
 
 		// Set to false to stop/break the mirror. Stopping the mirror
 		// makes the destination volume read-write
@@ -108,13 +112,10 @@ import "list"
 		// done to the destination volume with the content of the source
 		// volume.
 		replication_enabled?: bool
-		destination_volume_parameters?: matchN(1, [#destination_volume_parameters, list.MaxItems(1) & [...#destination_volume_parameters]])
-		timeouts?: #timeouts
 
 		// Specifies the replication interval. Possible values:
 		// ["EVERY_10_MINUTES", "HOURLY", "DAILY"]
 		replication_schedule!: string
-		project?:              string
 
 		// Reverting a replication can swap source and destination volume
 		// roles. This field indicates if the 'location' hosts
@@ -165,6 +166,8 @@ import "list"
 	})
 
 	#destination_volume_parameters: close({
+		tiering_policy?: matchN(1, [_#defs."/$defs/destination_volume_parameters/$defs/tiering_policy", list.MaxItems(1) & [..._#defs."/$defs/destination_volume_parameters/$defs/tiering_policy"]])
+
 		// Description for the destination volume.
 		description?: string
 
@@ -176,7 +179,6 @@ import "list"
 		// with format:
 		// 'projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}'
 		storage_pool!: string
-		tiering_policy?: matchN(1, [_#defs."/$defs/destination_volume_parameters/$defs/tiering_policy", list.MaxItems(1) & [..._#defs."/$defs/destination_volume_parameters/$defs/tiering_policy"]])
 
 		// Name for the destination volume to be created. If not
 		// specified, the name of the source volume will be used.

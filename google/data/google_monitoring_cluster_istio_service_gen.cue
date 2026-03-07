@@ -12,23 +12,23 @@ package data
 
 		// Name used for UI elements listing this Service.
 		display_name?: string
+		id?:           string
 
 		// The location of the Kubernetes cluster in which this Istio
 		// service is defined.
 		// Corresponds to the location resource label in k8s_cluster
 		// resources.
 		location!: string
-		id?:       string
 
 		// The full resource name for this service. The syntax is:
 		// projects/[PROJECT_ID]/services/[SERVICE_ID].
-		name?: string
+		name?:    string
+		project?: string
 
 		// An optional service ID to use. If not given, the server will
 		// generate a
 		// service ID.
 		service_id?: string
-		project?:    string
 
 		// The name of the Istio service underlying this service.
 		// Corresponds to the destination_service_name metric label in

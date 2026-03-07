@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gemini_code_tools_setting")
 	close({
+		enabled_tool!: matchN(1, [#enabled_tool, [_, ...] & [...#enabled_tool]])
+		timeouts?: #timeouts
+
 		// Id of the Code Tools Setting.
 		code_tools_setting_id!: string
 
@@ -31,10 +34,8 @@ package res
 
 		// Identifier. Name of the resource.
 		// Format:projects/{project}/locations/{location}/codeToolsSettings/{codeToolsSetting}
-		name?: string
-		enabled_tool!: matchN(1, [#enabled_tool, [_, ...] & [...#enabled_tool]])
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -45,6 +46,8 @@ package res
 	})
 
 	#enabled_tool: close({
+		config?: matchN(1, [_#defs."/$defs/enabled_tool/$defs/config", [..._#defs."/$defs/enabled_tool/$defs/config"]])
+
 		// Link to the Dev Connect Account Connector that holds the user
 		// credentials.
 		// projects/{project}/locations/{location}/accountConnectors/{account_connector_id}
@@ -55,7 +58,6 @@ package res
 
 		// Link to the Tool
 		tool!: string
-		config?: matchN(1, [_#defs."/$defs/enabled_tool/$defs/config", [..._#defs."/$defs/enabled_tool/$defs/config"]])
 
 		// Overridden URI, if allowed by Tool.
 		uri_override?: string

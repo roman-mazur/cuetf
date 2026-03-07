@@ -13,6 +13,7 @@ package data
 
 		// The folder for which to retrieve settings.
 		folder!: string
+		id?:     string
 
 		// The resource name for the configured Cloud KMS key.
 		// KMS key name format:
@@ -49,7 +50,6 @@ package data
 		// service account as their writerIdentity if no custom service
 		// account is provided.
 		logging_service_account_id?: string
-		id?:                         string
 
 		// The resource name of the CMEK settings.
 		name?: string

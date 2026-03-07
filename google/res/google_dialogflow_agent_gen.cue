@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_agent")
 	close({
+		timeouts?: #timeouts
+
 		// API version displayed in Dialogflow console. If not specified,
 		// V2 API is assumed. Clients are free to query
 		// different service endpoints for different API versions.
@@ -55,7 +57,6 @@ package res
 		// Determines whether this agent should log conversation queries.
 		enable_logging?: bool
 		id?:             string
-		timeouts?:       #timeouts
 
 		// Determines how intents are detected from user queries.
 		// * MATCH_MODE_HYBRID: Best for agents with a small number of

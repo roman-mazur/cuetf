@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_server_tls_policy")
 	close({
+		mtls_policy?: matchN(1, [#mtls_policy, list.MaxItems(1) & [...#mtls_policy]])
+		server_certificate?: matchN(1, [#server_certificate, list.MaxItems(1) & [...#server_certificate]])
+		timeouts?: #timeouts
+
 		// This field applies only for Traffic Director policies. It is
 		// must be set to false for external HTTPS load balancer
 		// policies.
@@ -32,6 +36,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Set of label tags associated with the ServerTlsPolicy resource.
 		//
@@ -40,22 +45,18 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location of the server tls policy.
 		// The default value is 'global'.
 		location?: string
 
 		// Name of the ServerTlsPolicy resource.
-		name!: string
-		mtls_policy?: matchN(1, [#mtls_policy, list.MaxItems(1) & [...#mtls_policy]])
-		server_certificate?: matchN(1, [#server_certificate, list.MaxItems(1) & [...#server_certificate]])
-		timeouts?: #timeouts
+		name!:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?: string
 
 		// Time the ServerTlsPolicy was updated in UTC.
 		update_time?: string

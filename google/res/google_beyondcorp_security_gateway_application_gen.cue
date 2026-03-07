@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_beyondcorp_security_gateway_application")
 	close({
+		endpoint_matchers?: matchN(1, [#endpoint_matchers, [...#endpoint_matchers]])
+		timeouts?: #timeouts
+		upstreams?: matchN(1, [#upstreams, [...#upstreams]])
+
 		// User-settable Application resource ID.
 		// * Must start with a letter.
 		// * Must contain between 4-63 characters from '/a-z-/'.
@@ -24,13 +28,10 @@ import "list"
 		// Identifier. Name of the resource.
 		name?:    string
 		project?: string
-		endpoint_matchers?: matchN(1, [#endpoint_matchers, [...#endpoint_matchers]])
 
 		// Type of the external application. Possible values:
 		// ["PROXY_GATEWAY", "API_GATEWAY"]
-		schema?:   string
-		timeouts?: #timeouts
-		upstreams?: matchN(1, [#upstreams, [...#upstreams]])
+		schema?: string
 
 		// ID of the Security Gateway resource this belongs to.
 		security_gateway_id!: string
@@ -85,6 +86,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/upstreams/$defs/proxy_protocol": close({
+		contextual_headers?: matchN(1, [_#defs."/$defs/upstreams/$defs/proxy_protocol/$defs/contextual_headers", list.MaxItems(1) & [..._#defs."/$defs/upstreams/$defs/proxy_protocol/$defs/contextual_headers"]])
+
 		// The configuration for the proxy.
 		allowed_client_headers?: [...string]
 
@@ -95,7 +98,6 @@ import "list"
 		// Gateway identity configuration. Possible values:
 		// ["RESOURCE_NAME"]
 		gateway_identity?: string
-		contextual_headers?: matchN(1, [_#defs."/$defs/upstreams/$defs/proxy_protocol/$defs/contextual_headers", list.MaxItems(1) & [..._#defs."/$defs/upstreams/$defs/proxy_protocol/$defs/contextual_headers"]])
 
 		// Custom resource specific headers along with the values.
 		// The names should conform to RFC 9110:

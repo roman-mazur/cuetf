@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_lake")
 	close({
+		metastore?: matchN(1, [#metastore, list.MaxItems(1) & [...#metastore]])
+		timeouts?: #timeouts
+
 		// Output only. Aggregated status of the underlying assets of the
 		// lake.
 		asset_status?: [...close({
@@ -27,6 +30,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Optional. User-defined labels for the lake.
 		//
@@ -35,7 +39,6 @@ import "list"
 		// Please refer to the field `effective_labels` for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location for the resource
 		location!: string
@@ -50,8 +53,6 @@ import "list"
 
 		// The name of the lake.
 		name!: string
-		metastore?: matchN(1, [#metastore, list.MaxItems(1) & [...#metastore]])
-		timeouts?: #timeouts
 
 		// The project for the resource
 		project?: string

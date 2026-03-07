@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_playbook")
 	close({
+		instruction?: matchN(1, [#instruction, list.MaxItems(1) & [...#instruction]])
+		llm_model_settings?: matchN(1, [#llm_model_settings, list.MaxItems(1) & [...#llm_model_settings]])
+		timeouts?: #timeouts
+
 		// The timestamp of initial playbook creation.
 		//
 		// Uses RFC 3339, where generated output will always be
@@ -23,12 +27,12 @@ import "list"
 		// accomplish. A goal should be concise since it's visible to
 		// other playbooks that may reference this playbook.
 		goal!: string
+		id?:   string
 
 		// The unique identifier of the Playbook.
 		// Format: projects/<Project ID>/locations/<Location
 		// ID>/agents/<Agent ID>/playbooks/<Playbook ID>.
 		name?: string
-		id?:   string
 
 		// The agent to create a Playbook for.
 		// Format: projects/<Project ID>/locations/<Location
@@ -42,9 +46,6 @@ import "list"
 		// The resource name of flows referenced by the current playbook
 		// in the instructions.
 		referenced_flows?: [...string]
-		instruction?: matchN(1, [#instruction, list.MaxItems(1) & [...#instruction]])
-		llm_model_settings?: matchN(1, [#llm_model_settings, list.MaxItems(1) & [...#llm_model_settings]])
-		timeouts?: #timeouts
 
 		// The resource name of other playbooks referenced by the current
 		// playbook in the instructions.
