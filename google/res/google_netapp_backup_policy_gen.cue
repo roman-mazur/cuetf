@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_backup_policy")
 	close({
+		timeouts?: #timeouts
+
 		// The total number of volumes assigned by this backup policy.
 		assigned_volume_count?: number
 
@@ -46,14 +48,13 @@ package res
 		// Number of monthly backups to keep. Note that the sum of daily,
 		// weekly and monthly backups should be greater than 1.
 		monthly_backup_limit!: number
-		timeouts?:             #timeouts
 
 		// The name of the backup policy. Needs to be unique per location.
-		name!: string
+		name!:    string
+		project?: string
 
 		// The state of the backup policy.
-		state?:   string
-		project?: string
+		state?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

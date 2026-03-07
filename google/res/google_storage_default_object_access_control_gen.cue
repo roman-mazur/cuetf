@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_default_object_access_control")
 	close({
+		timeouts?: #timeouts
+
 		// The name of the bucket.
 		bucket!: string
 
@@ -31,7 +33,6 @@ package res
 		// The content generation of the object, if applied to an object.
 		generation?: number
 		id?:         string
-		timeouts?:   #timeouts
 
 		// The name of the object, if applied to an object.
 		object?: string

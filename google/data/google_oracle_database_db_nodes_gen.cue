@@ -19,10 +19,10 @@ package data
 				total_cpu_core_count?:    number
 			})]
 		})]
+		id?: string
 
 		// location
 		location!: string
-		id?:       string
 
 		// The ID of the project in which the dataset is located. If it is
 		// not provided, the provider project is used.

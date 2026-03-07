@@ -357,7 +357,8 @@ package data
 		// resides.
 		//
 		// This field is not applicable to global forwarding rules.
-		region?: string
+		region?:    string
+		self_link?: string
 
 		// Service Directory resources to register this forwarding rule
 		// with.
@@ -367,7 +368,6 @@ package data
 			namespace?: string
 			service?:   string
 		})]
-		self_link?: string
 
 		// An optional prefix to the service name for this Forwarding
 		// Rule.

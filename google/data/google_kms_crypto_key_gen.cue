@@ -21,10 +21,10 @@ package data
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Whether this key may contain imported versions only.
 		import_only?: bool
-		id?:          string
 
 		// The KeyRing that this key belongs to.
 		// Format:

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_hosting_default_domain")
 	close({
+		timeouts?: #timeouts
+
 		// The ID of the Backend that this Domain is associated with
 		backend!: string
 
@@ -28,9 +30,8 @@ package res
 
 		// Identifier. The resource name of the domain, e.g.
 		// 'projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}'
-		name?:     string
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// System-assigned, unique identifier.
 		uid?: string

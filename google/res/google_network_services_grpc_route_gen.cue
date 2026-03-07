@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_grpc_route")
 	close({
+		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
+		timeouts?: #timeouts
+
 		// Time the GrpcRoute was created in UTC.
 		create_time?: string
 
@@ -43,8 +46,6 @@ import "list"
 		// List of meshes this GrpcRoute is attached to, as one of the
 		// routing rules to route the requests served by the mesh.
 		meshes?: [...string]
-		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
-		timeouts?: #timeouts
 
 		// Name of the GrpcRoute resource.
 		name!:    string

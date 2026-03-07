@@ -17,11 +17,11 @@ package data
 			health_status?:            string
 			healthy_sub_block_count?:  number
 		})]
+		id?: string
 
 		// The number of instances that are currently in use on this
 		// reservation block.
 		in_use_count?: number
-		id?:           string
 
 		// Type of the resource. Always compute#reservationBlock for
 		// reservation blocks.

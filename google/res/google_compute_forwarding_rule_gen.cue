@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_forwarding_rule")
 	close({
+		service_directory_registrations?: matchN(1, [#service_directory_registrations, list.MaxItems(1) & [...#service_directory_registrations]])
+		timeouts?: #timeouts
+
 		// The 'ports', 'portRange', and 'allPorts' fields are mutually
 		// exclusive.
 		// Only packets addressed to ports in the specified range will be
@@ -250,8 +253,6 @@ import "list"
 		// traffic to Google
 		// APIs, a network must be provided.
 		network?: string
-		service_directory_registrations?: matchN(1, [#service_directory_registrations, list.MaxItems(1) & [...#service_directory_registrations]])
-		timeouts?: #timeouts
 
 		// This signifies the networking tier used for configuring
 		// this load balancer and can only take the following values:
@@ -361,7 +362,8 @@ import "list"
 		// resides.
 		//
 		// This field is not applicable to global forwarding rules.
-		region?: string
+		region?:    string
+		self_link?: string
 
 		// An optional prefix to the service name for this Forwarding
 		// Rule.
@@ -382,7 +384,6 @@ import "list"
 		//
 		// This field is only used for INTERNAL load balancing.
 		service_label?: string
-		self_link?:     string
 
 		// The internal fully qualified service name for this Forwarding
 		// Rule.

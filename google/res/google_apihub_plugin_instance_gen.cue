@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apihub_plugin_instance")
 	close({
+		actions?: matchN(1, [#actions, [...#actions]])
+		auth_config?: matchN(1, [#auth_config, list.MaxItems(1) & [...#auth_config]])
+		timeouts?: #timeouts
+
 		// Timestamp indicating when the plugin instance was created.
 		create_time?: string
 
@@ -56,10 +60,7 @@ import "list"
 		// This value should be 4-63 characters, and valid characters
 		// are /a-z[0-9]-_/.
 		plugin_instance_id!: string
-		actions?: matchN(1, [#actions, [...#actions]])
-		auth_config?: matchN(1, [#auth_config, list.MaxItems(1) & [...#auth_config]])
-		timeouts?: #timeouts
-		project?:  string
+		project?:            string
 
 		// The current state of the plugin instance (e.g., enabled,
 		// disabled,
@@ -79,6 +80,8 @@ import "list"
 	})
 
 	#actions: close({
+		curation_config?: matchN(1, [_#defs."/$defs/actions/$defs/curation_config", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/curation_config"]])
+
 		// This should map to one of the action id specified
 		// in actions_config in the plugin.
 		action_id!: string
@@ -103,7 +106,6 @@ import "list"
 		// provided, UTC will
 		// be used.
 		schedule_time_zone?: string
-		curation_config?: matchN(1, [_#defs."/$defs/actions/$defs/curation_config", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/curation_config"]])
 
 		// The current state of the plugin action in the plugin instance.
 		// Possible values:

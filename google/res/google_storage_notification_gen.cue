@@ -16,6 +16,7 @@ package res
 		// types. The valid types are: "OBJECT_FINALIZE",
 		// "OBJECT_METADATA_UPDATE", "OBJECT_DELETE", "OBJECT_ARCHIVE"
 		event_types?: [...string]
+		id?: string
 
 		// The ID of the created notification.
 		notification_id?: string
@@ -24,7 +25,6 @@ package res
 		// Cloud Storage will only send notifications for objects in this
 		// bucket whose names begin with the specified prefix.
 		object_name_prefix?: string
-		id?:                 string
 
 		// The desired content of the Payload. One of "JSON_API_V1" or
 		// "NONE".

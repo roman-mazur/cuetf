@@ -6,6 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_identity_platform_config")
 	close({
+		blocking_functions?: matchN(1, [#blocking_functions, list.MaxItems(1) & [...#blocking_functions]])
+		client?: matchN(1, [#client, list.MaxItems(1) & [...#client]])
+		mfa?: matchN(1, [#mfa, list.MaxItems(1) & [...#mfa]])
+		monitoring?: matchN(1, [#monitoring, list.MaxItems(1) & [...#monitoring]])
+		multi_tenant?: matchN(1, [#multi_tenant, list.MaxItems(1) & [...#multi_tenant]])
+		quota?: matchN(1, [#quota, list.MaxItems(1) & [...#quota]])
+		sign_in?: matchN(1, [#sign_in, list.MaxItems(1) & [...#sign_in]])
+		sms_region_config?: matchN(1, [#sms_region_config, list.MaxItems(1) & [...#sms_region_config]])
+		timeouts?: #timeouts
+
 		// List of domains authorized for OAuth redirects.
 		authorized_domains?: [...string]
 
@@ -13,19 +23,10 @@ import "list"
 		// 30 days
 		autodelete_anonymous_users?: bool
 		id?:                         string
-		blocking_functions?: matchN(1, [#blocking_functions, list.MaxItems(1) & [...#blocking_functions]])
 
 		// The name of the Config resource
-		name?: string
-		client?: matchN(1, [#client, list.MaxItems(1) & [...#client]])
-		mfa?: matchN(1, [#mfa, list.MaxItems(1) & [...#mfa]])
-		monitoring?: matchN(1, [#monitoring, list.MaxItems(1) & [...#monitoring]])
-		multi_tenant?: matchN(1, [#multi_tenant, list.MaxItems(1) & [...#multi_tenant]])
-		quota?: matchN(1, [#quota, list.MaxItems(1) & [...#quota]])
+		name?:    string
 		project?: string
-		sign_in?: matchN(1, [#sign_in, list.MaxItems(1) & [...#sign_in]])
-		sms_region_config?: matchN(1, [#sms_region_config, list.MaxItems(1) & [...#sms_region_config]])
-		timeouts?: #timeouts
 	})
 
 	#blocking_functions: close({

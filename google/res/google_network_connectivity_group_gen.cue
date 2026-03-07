@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_group")
 	close({
+		auto_accept?: matchN(1, [#auto_accept, list.MaxItems(1) & [...#auto_accept]])
+		timeouts?: #timeouts
+
 		// Output only. The time the hub was created.
 		create_time?: string
 
@@ -42,8 +45,6 @@ import "list"
 		// this group. They use the following form:
 		// 'projects/{projectNumber}/locations/global/hubs/{hubId}/routeTables/{route_table_id}'
 		route_table?: string
-		auto_accept?: matchN(1, [#auto_accept, list.MaxItems(1) & [...#auto_accept]])
-		timeouts?: #timeouts
 
 		// Output only. The current lifecycle state of this hub.
 		state?: string

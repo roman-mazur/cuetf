@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_scheduler_job")
 	close({
+		app_engine_http_target?: matchN(1, [#app_engine_http_target, list.MaxItems(1) & [...#app_engine_http_target]])
+		http_target?: matchN(1, [#http_target, list.MaxItems(1) & [...#http_target]])
+		pubsub_target?: matchN(1, [#pubsub_target, list.MaxItems(1) & [...#pubsub_target]])
+		retry_config?: matchN(1, [#retry_config, list.MaxItems(1) & [...#retry_config]])
+		timeouts?: #timeouts
+
 		// The deadline for job attempts. If the request handler does not
 		// respond by this deadline then the request is
 		// cancelled and the attempt is marked as a DEADLINE_EXCEEDED
@@ -24,27 +30,22 @@ import "list"
 		// A human-readable description for the job.
 		// This string must not contain more than 500 characters.
 		description?: string
+		id?:          string
 
 		// The name of the job.
 		name!: string
-		id?:   string
 
 		// Sets the job to a paused state. Jobs default to being enabled
 		// when this property is not set.
-		paused?: bool
+		paused?:  bool
+		project?: string
 
 		// Region where the scheduler job resides. If it is not provided,
 		// Terraform will use the provider default.
-		region?:  string
-		project?: string
+		region?: string
 
 		// Describes the schedule on which the job will be executed.
 		schedule?: string
-		app_engine_http_target?: matchN(1, [#app_engine_http_target, list.MaxItems(1) & [...#app_engine_http_target]])
-		http_target?: matchN(1, [#http_target, list.MaxItems(1) & [...#http_target]])
-		pubsub_target?: matchN(1, [#pubsub_target, list.MaxItems(1) & [...#pubsub_target]])
-		retry_config?: matchN(1, [#retry_config, list.MaxItems(1) & [...#retry_config]])
-		timeouts?: #timeouts
 
 		// State of the job.
 		state?: string
@@ -56,6 +57,8 @@ import "list"
 	})
 
 	#app_engine_http_target: close({
+		app_engine_routing?: matchN(1, [_#defs."/$defs/app_engine_http_target/$defs/app_engine_routing", list.MaxItems(1) & [..._#defs."/$defs/app_engine_http_target/$defs/app_engine_routing"]])
+
 		// HTTP request body.
 		// A request body is allowed only if the HTTP method is POST or
 		// PUT.
@@ -72,7 +75,6 @@ import "list"
 
 		// Which HTTP method to use for the request.
 		http_method?: string
-		app_engine_routing?: matchN(1, [_#defs."/$defs/app_engine_http_target/$defs/app_engine_routing", list.MaxItems(1) & [..._#defs."/$defs/app_engine_http_target/$defs/app_engine_routing"]])
 
 		// The relative URI.
 		// The relative URL must begin with "/" and must be a valid HTTP
@@ -87,6 +89,9 @@ import "list"
 	})
 
 	#http_target: close({
+		oauth_token?: matchN(1, [_#defs."/$defs/http_target/$defs/oauth_token", list.MaxItems(1) & [..._#defs."/$defs/http_target/$defs/oauth_token"]])
+		oidc_token?: matchN(1, [_#defs."/$defs/http_target/$defs/oidc_token", list.MaxItems(1) & [..._#defs."/$defs/http_target/$defs/oidc_token"]])
+
 		// HTTP request body.
 		// A request body is allowed only if the HTTP method is POST, PUT,
 		// or PATCH.
@@ -106,8 +111,6 @@ import "list"
 
 		// The full URI path that the request will be sent to.
 		uri!: string
-		oauth_token?: matchN(1, [_#defs."/$defs/http_target/$defs/oauth_token", list.MaxItems(1) & [..._#defs."/$defs/http_target/$defs/oauth_token"]])
-		oidc_token?: matchN(1, [_#defs."/$defs/http_target/$defs/oidc_token", list.MaxItems(1) & [..._#defs."/$defs/http_target/$defs/oidc_token"]])
 	})
 
 	#pubsub_target: close({

@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_environment")
 	close({
+		timeouts?: #timeouts
+		version_configs!: matchN(1, [#version_configs, [_, ...] & [...#version_configs]])
+
 		// The human-readable description of the environment. The maximum
 		// length is 500 characters. If exceeded, the request is
 		// rejected.
@@ -15,8 +18,7 @@ package res
 		id?:           string
 
 		// The name of the environment.
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// The Agent to create an Environment for.
 		// Format: projects/<Project ID>/locations/<Location
@@ -28,7 +30,6 @@ package res
 		// fractional digits. Examples: "2014-10-02T15:01:23Z" and
 		// "2014-10-02T15:01:23.045123456Z".
 		update_time?: string
-		version_configs!: matchN(1, [#version_configs, [_, ...] & [...#version_configs]])
 	})
 
 	#timeouts: close({

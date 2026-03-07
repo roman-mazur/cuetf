@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_group")
 	close({
+		timeouts?: #timeouts
+
 		// A user-assigned name for this group, used only for display
 		// purposes.
 		display_name!: string
@@ -17,7 +19,6 @@ package res
 		// cluster. The system can perform additional analysis on
 		// groups that are clusters.
 		is_cluster?: bool
-		timeouts?:   #timeouts
 
 		// A unique identifier for this group. The format is
 		// "projects/{project_id_or_number}/groups/{group_id}".

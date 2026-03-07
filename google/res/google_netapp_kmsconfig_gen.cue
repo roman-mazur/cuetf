@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_kmsconfig")
 	close({
+		timeouts?: #timeouts
+
 		// Resource name of the KMS key to use. Only regional keys are
 		// supported. Format:
 		// 'projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{key}}'.
@@ -40,9 +42,8 @@ package res
 		location!: string
 
 		// Name of the CMEK policy.
-		name!:     string
-		timeouts?: #timeouts
-		project?:  string
+		name!:    string
+		project?: string
 
 		// The Service account which needs to have access to the provided
 		// KMS key.

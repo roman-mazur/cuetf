@@ -17,6 +17,7 @@ package data
 		// The uniquely generated identifier for the resource. This
 		// identifier is defined by the server.
 		generated_id?: number
+		id?:           string
 
 		// Name of the resource; provided by the client when the resource
 		// is
@@ -30,7 +31,6 @@ package data
 		// the last
 		// character, which cannot be a dash.
 		name?: string
-		id?:   string
 
 		// The network to which all network endpoints in the NEG belong.
 		// Uses "default" project network if unspecified.

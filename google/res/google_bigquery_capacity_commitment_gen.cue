@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_capacity_commitment")
 	close({
+		timeouts?: #timeouts
+
 		// The optional capacity commitment ID. Capacity commitment name
 		// will be generated automatically if this field is
 		// empty. This field must only contain lower case alphanumeric
@@ -41,15 +43,14 @@ package res
 
 		// Capacity commitment plan. Valid values are at
 		// https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-		plan!:     string
-		timeouts?: #timeouts
+		plan!:    string
+		project?: string
 
 		// The plan this capacity commitment is converted to after
 		// commitmentEndTime passes. Once the plan is changed, committed
 		// period is extended according to commitment plan. Only
 		// applicable for some commitment plans.
 		renewal_plan?: string
-		project?:      string
 
 		// Number of slots in this commitment.
 		slot_count!: number

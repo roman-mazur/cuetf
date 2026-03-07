@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_cluster")
 	close({
+		cluster_config?: matchN(1, [#cluster_config, list.MaxItems(1) & [...#cluster_config]])
+		timeouts?: #timeouts
+		virtual_cluster_config?: matchN(1, [#virtual_cluster_config, list.MaxItems(1) & [...#virtual_cluster_config]])
+
 		// All of labels (key/value pairs) present on the resource in GCP,
 		// including the labels configured through Terraform, other
 		// clients and services.
@@ -15,6 +19,7 @@ import "list"
 		// you change the number of worker nodes directly through a
 		// terraform apply
 		graceful_decommission_timeout?: string
+		id?:                            string
 
 		// The list of the labels (key/value pairs) configured on the
 		// resource and to be applied to instances in the cluster.
@@ -24,7 +29,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The name of the cluster, unique within the project and zone.
 		name!: string
@@ -36,9 +40,6 @@ import "list"
 		// The region in which the cluster and associated nodes will be
 		// created in. Defaults to global.
 		region?: string
-		cluster_config?: matchN(1, [#cluster_config, list.MaxItems(1) & [...#cluster_config]])
-		timeouts?: #timeouts
-		virtual_cluster_config?: matchN(1, [#virtual_cluster_config, list.MaxItems(1) & [...#virtual_cluster_config]])
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -48,6 +49,18 @@ import "list"
 	#cluster_config: close({
 		autoscaling_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/autoscaling_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/autoscaling_config"]])
 		auxiliary_node_groups?: matchN(1, [_#defs."/$defs/cluster_config/$defs/auxiliary_node_groups", [..._#defs."/$defs/cluster_config/$defs/auxiliary_node_groups"]])
+		dataproc_metric_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/dataproc_metric_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/dataproc_metric_config"]])
+		encryption_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/encryption_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/encryption_config"]])
+		endpoint_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/endpoint_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/endpoint_config"]])
+		gce_cluster_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config"]])
+		initialization_action?: matchN(1, [_#defs."/$defs/cluster_config/$defs/initialization_action", [..._#defs."/$defs/cluster_config/$defs/initialization_action"]])
+		lifecycle_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/lifecycle_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/lifecycle_config"]])
+		master_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/master_config"]])
+		metastore_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/metastore_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/metastore_config"]])
+		preemptible_worker_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/preemptible_worker_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/preemptible_worker_config"]])
+		security_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/security_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/security_config"]])
+		software_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/software_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/software_config"]])
+		worker_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/worker_config"]])
 
 		// The name of the cloud storage bucket ultimately used to house
 		// the staging data for the cluster. If staging_bucket is
@@ -67,24 +80,12 @@ import "list"
 		// same region/zone also choosing to use the auto generation
 		// option.
 		staging_bucket?: string
-		dataproc_metric_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/dataproc_metric_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/dataproc_metric_config"]])
-		encryption_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/encryption_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/encryption_config"]])
-		endpoint_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/endpoint_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/endpoint_config"]])
-		gce_cluster_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config"]])
-		initialization_action?: matchN(1, [_#defs."/$defs/cluster_config/$defs/initialization_action", [..._#defs."/$defs/cluster_config/$defs/initialization_action"]])
-		lifecycle_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/lifecycle_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/lifecycle_config"]])
-		master_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/master_config"]])
-		metastore_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/metastore_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/metastore_config"]])
 
 		// The Cloud Storage temp bucket used to store ephemeral cluster
 		// and jobs data, such as Spark and MapReduce history files.
 		// Note: If you don't explicitly specify a temp_bucket then GCP
 		// will auto create / assign one for you.
 		temp_bucket?: string
-		preemptible_worker_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/preemptible_worker_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/preemptible_worker_config"]])
-		security_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/security_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/security_config"]])
-		software_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/software_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/software_config"]])
-		worker_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/worker_config"]])
 	})
 
 	#timeouts: close({
@@ -133,6 +134,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/auxiliary_node_groups/$defs/node_group/$defs/node_group_config": close({
+		accelerators?: matchN(1, [_#defs."/$defs/cluster_config/$defs/auxiliary_node_groups/$defs/node_group/$defs/node_group_config/$defs/accelerators", [..._#defs."/$defs/cluster_config/$defs/auxiliary_node_groups/$defs/node_group/$defs/node_group_config/$defs/accelerators"]])
+		disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/auxiliary_node_groups/$defs/node_group/$defs/node_group_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/auxiliary_node_groups/$defs/node_group/$defs/node_group_config/$defs/disk_config"]])
+
 		// List of auxiliary node group instance names which have been
 		// assigned to the cluster.
 		instance_names?: [...string]
@@ -149,8 +153,6 @@ import "list"
 		// Specifies the number of auxiliary nodes to create. If not
 		// specified, GCP will default to a predetermined computed value.
 		num_instances?: number
-		accelerators?: matchN(1, [_#defs."/$defs/cluster_config/$defs/auxiliary_node_groups/$defs/node_group/$defs/node_group_config/$defs/accelerators", [..._#defs."/$defs/cluster_config/$defs/auxiliary_node_groups/$defs/node_group/$defs/node_group_config/$defs/accelerators"]])
-		disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/auxiliary_node_groups/$defs/node_group/$defs/node_group_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/auxiliary_node_groups/$defs/node_group/$defs/node_group_config/$defs/disk_config"]])
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/auxiliary_node_groups/$defs/node_group/$defs/node_group_config/$defs/accelerators": close({
@@ -220,6 +222,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/gce_cluster_config": close({
+		confidential_instance_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/confidential_instance_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/confidential_instance_config"]])
+		node_group_affinity?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/node_group_affinity", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/node_group_affinity"]])
+		reservation_affinity?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/reservation_affinity", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/reservation_affinity"]])
+		shielded_instance_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/shielded_instance_config"]])
+
 		// By default, clusters are not restricted to internal IP
 		// addresses, and will have ephemeral external IP addresses
 		// assigned to each instance. If set to true, all instances in
@@ -255,10 +262,6 @@ import "list"
 		// The name or self_link of the Google Compute Engine subnetwork
 		// the cluster will be part of. Conflicts with network.
 		subnetwork?: string
-		confidential_instance_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/confidential_instance_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/confidential_instance_config"]])
-		node_group_affinity?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/node_group_affinity", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/node_group_affinity"]])
-		reservation_affinity?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/reservation_affinity", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/reservation_affinity"]])
-		shielded_instance_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/shielded_instance_config"]])
 
 		// The list of instance tags applied to instances in the cluster.
 		// Tags are used to identify valid sources or targets for network
@@ -348,6 +351,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/master_config": close({
+		accelerators?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config/$defs/accelerators", [..._#defs."/$defs/cluster_config/$defs/master_config/$defs/accelerators"]])
+		disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/master_config/$defs/disk_config"]])
+		instance_flexibility_policy?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy"]])
+
 		// The URI for the image to use for this master
 		image_uri?: string
 
@@ -367,9 +374,6 @@ import "list"
 		// Specifies the number of master nodes to create. If not
 		// specified, GCP will default to a predetermined computed value.
 		num_instances?: number
-		accelerators?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config/$defs/accelerators", [..._#defs."/$defs/cluster_config/$defs/master_config/$defs/accelerators"]])
-		disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/master_config/$defs/disk_config"]])
-		instance_flexibility_policy?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy"]])
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/master_config/$defs/accelerators": close({
@@ -433,6 +437,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/preemptible_worker_config": close({
+		disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/disk_config"]])
+		instance_flexibility_policy?: matchN(1, [_#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy"]])
+
 		// List of preemptible instance names which have been assigned to
 		// the cluster.
 		instance_names?: [...string]
@@ -440,12 +447,10 @@ import "list"
 		// Specifies the number of preemptible nodes to create. Defaults
 		// to 0.
 		num_instances?: number
-		disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/disk_config"]])
 
 		// Specifies the preemptibility of the secondary nodes. Defaults
 		// to PREEMPTIBLE.
 		preemptibility?: string
-		instance_flexibility_policy?: matchN(1, [_#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy"]])
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/preemptible_worker_config/$defs/disk_config": close({
@@ -603,6 +608,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/worker_config": close({
+		accelerators?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config/$defs/accelerators", [..._#defs."/$defs/cluster_config/$defs/worker_config/$defs/accelerators"]])
+		disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/worker_config/$defs/disk_config"]])
+		instance_flexibility_policy?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy"]])
+
 		// The URI for the image to use for this master/worker
 		image_uri?: string
 
@@ -618,9 +627,6 @@ import "list"
 		// master/worker. If not specified, GCP will default to a
 		// predetermined computed value for each zone.
 		min_cpu_platform?: string
-		accelerators?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config/$defs/accelerators", [..._#defs."/$defs/cluster_config/$defs/worker_config/$defs/accelerators"]])
-		disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/worker_config/$defs/disk_config"]])
-		instance_flexibility_policy?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy"]])
 
 		// The minimum number of primary worker instances to create.
 		min_num_instances?: number

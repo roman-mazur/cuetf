@@ -6,6 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_developer_connect_connection")
 	close({
+		bitbucket_cloud_config?: matchN(1, [#bitbucket_cloud_config, list.MaxItems(1) & [...#bitbucket_cloud_config]])
+		bitbucket_data_center_config?: matchN(1, [#bitbucket_data_center_config, list.MaxItems(1) & [...#bitbucket_data_center_config]])
+		crypto_key_config?: matchN(1, [#crypto_key_config, list.MaxItems(1) & [...#crypto_key_config]])
+		github_config?: matchN(1, [#github_config, list.MaxItems(1) & [...#github_config]])
+		github_enterprise_config?: matchN(1, [#github_enterprise_config, list.MaxItems(1) & [...#github_enterprise_config]])
+		gitlab_config?: matchN(1, [#gitlab_config, list.MaxItems(1) & [...#gitlab_config]])
+		gitlab_enterprise_config?: matchN(1, [#gitlab_enterprise_config, list.MaxItems(1) & [...#gitlab_enterprise_config]])
+		http_config?: matchN(1, [#http_config, list.MaxItems(1) & [...#http_config]])
+		timeouts?: #timeouts
+
 		// Optional. Allows clients to store small amounts of arbitrary
 		// data.
 		//
@@ -14,7 +24,6 @@ import "list"
 		// Please refer to the field 'effective_annotations' for all of
 		// the annotations present on the resource.
 		annotations?: [string]: string
-		bitbucket_cloud_config?: matchN(1, [#bitbucket_cloud_config, list.MaxItems(1) & [...#bitbucket_cloud_config]])
 
 		// Required. Id of the requesting object
 		// If auto-generating Id server-side, remove this field and
@@ -69,13 +78,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		bitbucket_data_center_config?: matchN(1, [#bitbucket_data_center_config, list.MaxItems(1) & [...#bitbucket_data_center_config]])
-		crypto_key_config?: matchN(1, [#crypto_key_config, list.MaxItems(1) & [...#crypto_key_config]])
-		github_config?: matchN(1, [#github_config, list.MaxItems(1) & [...#github_config]])
-		github_enterprise_config?: matchN(1, [#github_enterprise_config, list.MaxItems(1) & [...#github_enterprise_config]])
-		gitlab_config?: matchN(1, [#gitlab_config, list.MaxItems(1) & [...#gitlab_config]])
-		gitlab_enterprise_config?: matchN(1, [#gitlab_enterprise_config, list.MaxItems(1) & [...#gitlab_enterprise_config]])
-		timeouts?: #timeouts
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -84,13 +86,13 @@ import "list"
 
 		// Identifier. The resource name of the connection, in the format
 		// 'projects/{project}/locations/{location}/connections/{connection_id}'.
-		name?: string
+		name?:    string
+		project?: string
 
 		// Output only. Set to true when the connection is being set up or
 		// updated in the
 		// background.
 		reconciling?: bool
-		project?:     string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -121,6 +123,10 @@ import "list"
 	})
 
 	#bitbucket_data_center_config: close({
+		authorizer_credential!: matchN(1, [_#defs."/$defs/bitbucket_data_center_config/$defs/authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bitbucket_data_center_config/$defs/authorizer_credential"]])
+		read_authorizer_credential!: matchN(1, [_#defs."/$defs/bitbucket_data_center_config/$defs/read_authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bitbucket_data_center_config/$defs/read_authorizer_credential"]])
+		service_directory_config?: matchN(1, [_#defs."/$defs/bitbucket_data_center_config/$defs/service_directory_config", list.MaxItems(1) & [..._#defs."/$defs/bitbucket_data_center_config/$defs/service_directory_config"]])
+
 		// Required. The URI of the Bitbucket Data Center host this
 		// connection is for.
 		host_uri!: string
@@ -133,8 +139,6 @@ import "list"
 		// requests to Bitbucket Data
 		// Center.
 		ssl_ca_certificate?: string
-		authorizer_credential!: matchN(1, [_#defs."/$defs/bitbucket_data_center_config/$defs/authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bitbucket_data_center_config/$defs/authorizer_credential"]])
-		read_authorizer_credential!: matchN(1, [_#defs."/$defs/bitbucket_data_center_config/$defs/read_authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bitbucket_data_center_config/$defs/read_authorizer_credential"]])
 
 		// Required. Immutable. SecretManager resource containing the
 		// webhook secret used to verify webhook
@@ -142,7 +146,6 @@ import "list"
 		// used to
 		// validate webhooks.
 		webhook_secret_secret_version!: string
-		service_directory_config?: matchN(1, [_#defs."/$defs/bitbucket_data_center_config/$defs/service_directory_config", list.MaxItems(1) & [..._#defs."/$defs/bitbucket_data_center_config/$defs/service_directory_config"]])
 	})
 
 	#crypto_key_config: close({
@@ -154,9 +157,10 @@ import "list"
 	})
 
 	#github_config: close({
+		authorizer_credential?: matchN(1, [_#defs."/$defs/github_config/$defs/authorizer_credential", list.MaxItems(1) & [..._#defs."/$defs/github_config/$defs/authorizer_credential"]])
+
 		// Optional. GitHub App installation id.
 		app_installation_id?: string
-		authorizer_credential?: matchN(1, [_#defs."/$defs/github_config/$defs/authorizer_credential", list.MaxItems(1) & [..._#defs."/$defs/github_config/$defs/authorizer_credential"]])
 
 		// Required. Immutable. The GitHub Application that was installed
 		// to the GitHub user or
@@ -174,6 +178,8 @@ import "list"
 	})
 
 	#github_enterprise_config: close({
+		service_directory_config?: matchN(1, [_#defs."/$defs/github_enterprise_config/$defs/service_directory_config", list.MaxItems(1) & [..._#defs."/$defs/github_enterprise_config/$defs/service_directory_config"]])
+
 		// Optional. ID of the GitHub App created from the manifest.
 		app_id?: string
 
@@ -200,7 +206,6 @@ import "list"
 		// Output only. GitHub Enterprise version installed at the
 		// host_uri.
 		server_version?: string
-		service_directory_config?: matchN(1, [_#defs."/$defs/github_enterprise_config/$defs/service_directory_config", list.MaxItems(1) & [..._#defs."/$defs/github_enterprise_config/$defs/service_directory_config"]])
 
 		// Optional. SSL certificate to use for requests to GitHub
 		// Enterprise.
@@ -225,6 +230,10 @@ import "list"
 	})
 
 	#gitlab_enterprise_config: close({
+		authorizer_credential!: matchN(1, [_#defs."/$defs/gitlab_enterprise_config/$defs/authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gitlab_enterprise_config/$defs/authorizer_credential"]])
+		read_authorizer_credential!: matchN(1, [_#defs."/$defs/gitlab_enterprise_config/$defs/read_authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gitlab_enterprise_config/$defs/read_authorizer_credential"]])
+		service_directory_config?: matchN(1, [_#defs."/$defs/gitlab_enterprise_config/$defs/service_directory_config", list.MaxItems(1) & [..._#defs."/$defs/gitlab_enterprise_config/$defs/service_directory_config"]])
+
 		// Required. The URI of the GitLab Enterprise host this connection
 		// is for.
 		host_uri!: string
@@ -237,8 +246,6 @@ import "list"
 		// requests to GitLab
 		// Enterprise instance.
 		ssl_ca_certificate?: string
-		authorizer_credential!: matchN(1, [_#defs."/$defs/gitlab_enterprise_config/$defs/authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gitlab_enterprise_config/$defs/authorizer_credential"]])
-		read_authorizer_credential!: matchN(1, [_#defs."/$defs/gitlab_enterprise_config/$defs/read_authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gitlab_enterprise_config/$defs/read_authorizer_credential"]])
 
 		// Required. Immutable. SecretManager resource containing the
 		// webhook secret of a GitLab project,
@@ -246,7 +253,19 @@ import "list"
 		// validate
 		// webhooks.
 		webhook_secret_secret_version!: string
-		service_directory_config?: matchN(1, [_#defs."/$defs/gitlab_enterprise_config/$defs/service_directory_config", list.MaxItems(1) & [..._#defs."/$defs/gitlab_enterprise_config/$defs/service_directory_config"]])
+	})
+
+	#http_config: close({
+		basic_authentication?: matchN(1, [_#defs."/$defs/http_config/$defs/basic_authentication", list.MaxItems(1) & [..._#defs."/$defs/http_config/$defs/basic_authentication"]])
+		bearer_token_authentication?: matchN(1, [_#defs."/$defs/http_config/$defs/bearer_token_authentication", list.MaxItems(1) & [..._#defs."/$defs/http_config/$defs/bearer_token_authentication"]])
+		service_directory_config?: matchN(1, [_#defs."/$defs/http_config/$defs/service_directory_config", list.MaxItems(1) & [..._#defs."/$defs/http_config/$defs/service_directory_config"]])
+
+		// The service provider's https endpoint.
+		host_uri!: string
+
+		// The SSL certificate to use for requests to the HTTP service
+		// provider.
+		ssl_ca_certificate?: string
 	})
 
 	#timeouts: close({
@@ -369,6 +388,26 @@ import "list"
 
 	_#defs: "/$defs/gitlab_enterprise_config/$defs/service_directory_config": close({
 		// Required. The Service Directory service name.
+		// Format:
+		// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+		service!: string
+	})
+
+	_#defs: "/$defs/http_config/$defs/basic_authentication": close({
+		// The password SecretManager secret version to authenticate as.
+		password_secret_version?: string
+
+		// The username to authenticate as.
+		username!: string
+	})
+
+	_#defs: "/$defs/http_config/$defs/bearer_token_authentication": close({
+		// The token SecretManager secret version to authenticate as.
+		token_secret_version?: string
+	})
+
+	_#defs: "/$defs/http_config/$defs/service_directory_config": close({
+		// The Service Directory service name.
 		// Format:
 		// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 		service!: string

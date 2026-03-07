@@ -12,12 +12,12 @@ package data
 
 		// User-provided description for this datastore
 		description?: string
+		id?:          string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		location!: string
-		id?:       string
 
 		// The user-provided identifier of the datastore to be created.
 		// This identifier must be unique among each 'Datastore' within
@@ -46,6 +46,7 @@ package data
 				servers?: [...string]
 			})]
 		})]
+		project?: string
 
 		// The state of the Datastore.
 		// Possible values:
@@ -58,8 +59,7 @@ package data
 		state?: string
 
 		// System-generated unique identifier for the resource.
-		uid?:     string
-		project?: string
+		uid?: string
 
 		// Last update time of this resource.
 		update_time?: string

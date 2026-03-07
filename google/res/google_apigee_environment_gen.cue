@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_environment")
 	close({
+		client_ip_resolution_config?: matchN(1, [#client_ip_resolution_config, list.MaxItems(1) & [...#client_ip_resolution_config]])
+		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
+		properties?: matchN(1, [#properties, list.MaxItems(1) & [...#properties]])
+		timeouts?: #timeouts
+
 		// Optional. API Proxy type supported by the environment. The type
 		// can be set when creating
 		// the Environment and cannot be changed. Possible values:
@@ -40,10 +45,6 @@ import "list"
 
 		// The resource ID of the environment.
 		name!: string
-		client_ip_resolution_config?: matchN(1, [#client_ip_resolution_config, list.MaxItems(1) & [...#client_ip_resolution_config]])
-		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
-		properties?: matchN(1, [#properties, list.MaxItems(1) & [...#properties]])
-		timeouts?: #timeouts
 
 		// The Apigee Organization associated with the Apigee environment,
 		// in the format 'organizations/{{org_name}}'.

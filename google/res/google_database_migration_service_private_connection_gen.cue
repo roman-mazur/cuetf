@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_database_migration_service_private_connection")
 	close({
+		timeouts?: #timeouts
+		vpc_peering_config!: matchN(1, [#vpc_peering_config, list.MaxItems(1) & [_, ...] & [...#vpc_peering_config]])
+
 		// If set to true, will skip validations.
 		create_without_validation?: bool
 
@@ -36,13 +39,11 @@ import "list"
 		location!: string
 
 		// The resource's name.
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// The private connectivity identifier.
 		private_connection_id!: string
 		project?:               string
-		vpc_peering_config!: matchN(1, [#vpc_peering_config, list.MaxItems(1) & [_, ...] & [...#vpc_peering_config]])
 
 		// State of the PrivateConnection.
 		state?: string

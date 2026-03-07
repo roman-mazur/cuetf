@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_app_version")
 	close({
+		timeouts?: #timeouts
+
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
@@ -40,7 +42,6 @@ package res
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		location!: string
-		timeouts?: #timeouts
 
 		// Identifier. The unique identifier of the app version.
 		// Format:

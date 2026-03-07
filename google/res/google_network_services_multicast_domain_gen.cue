@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_multicast_domain")
 	close({
+		connection_config!: matchN(1, [#connection_config, list.MaxItems(1) & [_, ...] & [...#connection_config]])
+		timeouts?: #timeouts
+		ull_multicast_domain?: matchN(1, [#ull_multicast_domain, list.MaxItems(1) & [...#ull_multicast_domain]])
+
 		// The resource name of the multicast admin VPC network.
 		// Use the following format:
 		// 'projects/{project}/locations/global/networks/{network}'.
@@ -21,6 +25,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Labels as key-value pairs.
 		//
@@ -29,7 +34,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -53,16 +57,13 @@ import "list"
 		// Identifier. The resource name of the multicast domain.
 		// Use the following format:
 		// 'projects/*/locations/global/multicastDomains/*'
-		name?: string
-		connection_config!: matchN(1, [#connection_config, list.MaxItems(1) & [_, ...] & [...#connection_config]])
-		timeouts?: #timeouts
-		ull_multicast_domain?: matchN(1, [#ull_multicast_domain, list.MaxItems(1) & [...#ull_multicast_domain]])
+		name?:    string
+		project?: string
 
 		// The multicast resource's state.
 		state?: [...close({
 			state?: string
 		})]
-		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

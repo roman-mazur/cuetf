@@ -16,6 +16,9 @@ import "list"
 	})
 
 	#service_perimeters: close({
+		spec?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec", list.MaxItems(1) & [..._#defs."/$defs/service_perimeters/$defs/spec"]])
+		status?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status", list.MaxItems(1) & [..._#defs."/$defs/service_perimeters/$defs/status"]])
+
 		// Time the AccessPolicy was created in UTC.
 		create_time?: string
 
@@ -62,8 +65,6 @@ import "list"
 
 		// Human readable title. Must be unique within the Policy.
 		title!: string
-		spec?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec", list.MaxItems(1) & [..._#defs."/$defs/service_perimeters/$defs/spec"]])
-		status?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status", list.MaxItems(1) & [..._#defs."/$defs/service_perimeters/$defs/status"]])
 
 		// Time the AccessPolicy was updated in UTC.
 		update_time?: string
@@ -96,6 +97,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/spec": close({
+		egress_policies?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec/$defs/egress_policies", [..._#defs."/$defs/service_perimeters/$defs/spec/$defs/egress_policies"]])
+		ingress_policies?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec/$defs/ingress_policies", [..._#defs."/$defs/service_perimeters/$defs/spec/$defs/ingress_policies"]])
+		vpc_accessible_services?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec/$defs/vpc_accessible_services", list.MaxItems(1) & [..._#defs."/$defs/service_perimeters/$defs/spec/$defs/vpc_accessible_services"]])
+
 		// A list of AccessLevel resource names that allow resources
 		// within
 		// the ServicePerimeter to be accessed from the internet.
@@ -111,7 +116,6 @@ import "list"
 		// Format:
 		// accessPolicies/{policy_id}/accessLevels/{access_level_name}
 		access_levels?: [...string]
-		egress_policies?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec/$defs/egress_policies", [..._#defs."/$defs/service_perimeters/$defs/spec/$defs/egress_policies"]])
 
 		// A list of GCP resources that are inside of the service
 		// perimeter.
@@ -125,8 +129,6 @@ import "list"
 		// buckets inside the perimeter must meet the perimeter's access
 		// restrictions.
 		restricted_services?: [...string]
-		ingress_policies?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec/$defs/ingress_policies", [..._#defs."/$defs/service_perimeters/$defs/spec/$defs/ingress_policies"]])
-		vpc_accessible_services?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec/$defs/vpc_accessible_services", list.MaxItems(1) & [..._#defs."/$defs/service_perimeters/$defs/spec/$defs/vpc_accessible_services"]])
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/spec/$defs/egress_policies": close({
@@ -139,6 +141,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/spec/$defs/egress_policies/$defs/egress_from": close({
+		sources?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec/$defs/egress_policies/$defs/egress_from/$defs/sources", [..._#defs."/$defs/service_perimeters/$defs/spec/$defs/egress_policies/$defs/egress_from/$defs/sources"]])
+
 		// Identities can be an individual user, service account, Google
 		// group,
 		// or third-party identity. For third-party identity, only single
@@ -149,7 +153,6 @@ import "list"
 		// https://cloud.google.com/iam/docs/principal-identifiers#v1 are
 		// supported.
 		identities?: [...string]
-		sources?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec/$defs/egress_policies/$defs/egress_from/$defs/sources", [..._#defs."/$defs/service_perimeters/$defs/spec/$defs/egress_policies/$defs/egress_from/$defs/sources"]])
 
 		// Specifies the type of identities that are allowed access to
 		// outside the
@@ -189,13 +192,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/spec/$defs/egress_policies/$defs/egress_to": close({
+		operations?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec/$defs/egress_policies/$defs/egress_to/$defs/operations", [..._#defs."/$defs/service_perimeters/$defs/spec/$defs/egress_policies/$defs/egress_to/$defs/operations"]])
+
 		// A list of external resources that are allowed to be accessed. A
 		// request
 		// matches if it contains an external resource in this list
 		// (Example:
 		// s3://bucket/path). Currently '*' is not allowed.
 		external_resources?: [...string]
-		operations?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec/$defs/egress_policies/$defs/egress_to/$defs/operations", [..._#defs."/$defs/service_perimeters/$defs/spec/$defs/egress_policies/$defs/egress_to/$defs/operations"]])
 
 		// A list of resources, currently only projects in the form
 		// 'projects/<projectnumber>', that match this to stanza. A
@@ -356,6 +360,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/status": close({
+		egress_policies?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status/$defs/egress_policies", [..._#defs."/$defs/service_perimeters/$defs/status/$defs/egress_policies"]])
+		ingress_policies?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status/$defs/ingress_policies", [..._#defs."/$defs/service_perimeters/$defs/status/$defs/ingress_policies"]])
+		vpc_accessible_services?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status/$defs/vpc_accessible_services", list.MaxItems(1) & [..._#defs."/$defs/service_perimeters/$defs/status/$defs/vpc_accessible_services"]])
+
 		// A list of AccessLevel resource names that allow resources
 		// within
 		// the ServicePerimeter to be accessed from the internet.
@@ -371,7 +379,6 @@ import "list"
 		// Format:
 		// accessPolicies/{policy_id}/accessLevels/{access_level_name}
 		access_levels?: [...string]
-		egress_policies?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status/$defs/egress_policies", [..._#defs."/$defs/service_perimeters/$defs/status/$defs/egress_policies"]])
 
 		// A list of GCP resources that are inside of the service
 		// perimeter.
@@ -385,8 +392,6 @@ import "list"
 		// buckets inside the perimeter must meet the perimeter's access
 		// restrictions.
 		restricted_services?: [...string]
-		ingress_policies?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status/$defs/ingress_policies", [..._#defs."/$defs/service_perimeters/$defs/status/$defs/ingress_policies"]])
-		vpc_accessible_services?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status/$defs/vpc_accessible_services", list.MaxItems(1) & [..._#defs."/$defs/service_perimeters/$defs/status/$defs/vpc_accessible_services"]])
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/status/$defs/egress_policies": close({
@@ -399,13 +404,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/status/$defs/egress_policies/$defs/egress_from": close({
+		sources?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status/$defs/egress_policies/$defs/egress_from/$defs/sources", [..._#defs."/$defs/service_perimeters/$defs/status/$defs/egress_policies/$defs/egress_from/$defs/sources"]])
+
 		// A list of identities that are allowed access through this
 		// 'EgressPolicy'.
 		// Should be in the format of email address. The email address
 		// should
 		// represent individual user or service account only.
 		identities?: [...string]
-		sources?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status/$defs/egress_policies/$defs/egress_from/$defs/sources", [..._#defs."/$defs/service_perimeters/$defs/status/$defs/egress_policies/$defs/egress_from/$defs/sources"]])
 
 		// Specifies the type of identities that are allowed access to
 		// outside the
@@ -445,13 +451,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/status/$defs/egress_policies/$defs/egress_to": close({
+		operations?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status/$defs/egress_policies/$defs/egress_to/$defs/operations", [..._#defs."/$defs/service_perimeters/$defs/status/$defs/egress_policies/$defs/egress_to/$defs/operations"]])
+
 		// A list of external resources that are allowed to be accessed. A
 		// request
 		// matches if it contains an external resource in this list
 		// (Example:
 		// s3://bucket/path). Currently '*' is not allowed.
 		external_resources?: [...string]
-		operations?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status/$defs/egress_policies/$defs/egress_to/$defs/operations", [..._#defs."/$defs/service_perimeters/$defs/status/$defs/egress_policies/$defs/egress_to/$defs/operations"]])
 
 		// A list of resources, currently only projects in the form
 		// 'projects/<projectnumber>', that match this to stanza. A

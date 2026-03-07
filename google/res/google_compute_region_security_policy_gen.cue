@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_security_policy")
 	close({
+		advanced_options_config?: matchN(1, [#advanced_options_config, list.MaxItems(1) & [...#advanced_options_config]])
+		ddos_protection_config?: matchN(1, [#ddos_protection_config, list.MaxItems(1) & [...#ddos_protection_config]])
+		rules?: matchN(1, [#rules, [...#rules]])
+		timeouts?: #timeouts
+		user_defined_fields?: matchN(1, [#user_defined_fields, [...#user_defined_fields]])
+
 		// An optional description of this resource. Provide this property
 		// when you create the resource.
 		description?: string
@@ -14,6 +20,7 @@ import "list"
 		// during
 		// updates of this resource.
 		fingerprint?: string
+		id?:          string
 
 		// Name of the resource. Provided by the client when the resource
 		// is created. The name must be 1-63 characters long, and comply
@@ -24,25 +31,19 @@ import "list"
 		// following characters must be a dash, lowercase letter, or
 		// digit, except the last character, which cannot be a dash.
 		name!: string
-		id?:   string
 
 		// The unique identifier for the resource. This identifier is
 		// defined by the server.
 		policy_id?: string
+		project?:   string
 
 		// The Region in which the created Region Security Policy should
 		// reside.
 		// If it is not provided, the provider region is used.
-		region?:  string
-		project?: string
+		region?: string
 
 		// Server-defined URL for the resource.
 		self_link?: string
-		advanced_options_config?: matchN(1, [#advanced_options_config, list.MaxItems(1) & [...#advanced_options_config]])
-		ddos_protection_config?: matchN(1, [#ddos_protection_config, list.MaxItems(1) & [...#ddos_protection_config]])
-		rules?: matchN(1, [#rules, [...#rules]])
-		timeouts?: #timeouts
-		user_defined_fields?: matchN(1, [#user_defined_fields, [...#user_defined_fields]])
 
 		// Server-defined URL for this resource with the resource id.
 		self_link_with_policy_id?: string
@@ -69,11 +70,12 @@ import "list"
 	})
 
 	#advanced_options_config: close({
+		json_custom_config?: matchN(1, [_#defs."/$defs/advanced_options_config/$defs/json_custom_config", list.MaxItems(1) & [..._#defs."/$defs/advanced_options_config/$defs/json_custom_config"]])
+
 		// JSON body parsing. Supported values include: "DISABLED",
 		// "STANDARD", "STANDARD_WITH_GRAPHQL". Possible values:
 		// ["DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL"]
 		json_parsing?: string
-		json_custom_config?: matchN(1, [_#defs."/$defs/advanced_options_config/$defs/json_custom_config", list.MaxItems(1) & [..._#defs."/$defs/advanced_options_config/$defs/json_custom_config"]])
 
 		// Logging level. Supported values include: "NORMAL", "VERBOSE".
 		// Possible values: ["NORMAL", "VERBOSE"]
@@ -100,6 +102,11 @@ import "list"
 	})
 
 	#rules: close({
+		match?: matchN(1, [_#defs."/$defs/rules/$defs/match", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/match"]])
+		network_match?: matchN(1, [_#defs."/$defs/rules/$defs/network_match", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/network_match"]])
+		preconfigured_waf_config?: matchN(1, [_#defs."/$defs/rules/$defs/preconfigured_waf_config", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/preconfigured_waf_config"]])
+		rate_limit_options?: matchN(1, [_#defs."/$defs/rules/$defs/rate_limit_options", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/rate_limit_options"]])
+
 		// The Action to perform when the rule is matched. The following
 		// are the valid actions:
 		//
@@ -128,19 +135,15 @@ import "list"
 		// An optional description of this resource. Provide this property
 		// when you create the resource.
 		description?: string
-		match?: matchN(1, [_#defs."/$defs/rules/$defs/match", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/match"]])
 
 		// If set to true, the specified action is not enforced.
 		preview?: bool
-		network_match?: matchN(1, [_#defs."/$defs/rules/$defs/network_match", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/network_match"]])
 
 		// An integer indicating the priority of a rule in the list.
 		// The priority must be a positive value between 0 and 2147483647.
 		// Rules are evaluated from highest to lowest priority where 0 is
 		// the highest priority and 2147483647 is the lowest priority.
 		priority!: number
-		preconfigured_waf_config?: matchN(1, [_#defs."/$defs/rules/$defs/preconfigured_waf_config", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/preconfigured_waf_config"]])
-		rate_limit_options?: matchN(1, [_#defs."/$defs/rules/$defs/rate_limit_options", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/rate_limit_options"]])
 	})
 
 	#timeouts: close({
@@ -214,6 +217,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/network_match": close({
+		user_defined_fields?: matchN(1, [_#defs."/$defs/rules/$defs/network_match/$defs/user_defined_fields", [..._#defs."/$defs/rules/$defs/network_match/$defs/user_defined_fields"]])
+
 		// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard
 		// text format.
 		dest_ip_ranges?: [...string]
@@ -241,7 +246,6 @@ import "list"
 		// 16-bit unsigned decimal number (e.g. "80") or range (e.g.
 		// "0-1023").
 		src_ports?: [...string]
-		user_defined_fields?: matchN(1, [_#defs."/$defs/rules/$defs/network_match/$defs/user_defined_fields", [..._#defs."/$defs/rules/$defs/network_match/$defs/user_defined_fields"]])
 
 		// Two-letter ISO 3166-1 alpha-2 country code associated with the
 		// source IP address.
@@ -263,15 +267,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion": close({
+		request_cookie?: matchN(1, [_#defs."/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_cookie", [..._#defs."/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_cookie"]])
+		request_header?: matchN(1, [_#defs."/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_header", [..._#defs."/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_header"]])
+		request_query_param?: matchN(1, [_#defs."/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_query_param", [..._#defs."/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_query_param"]])
+		request_uri?: matchN(1, [_#defs."/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_uri", [..._#defs."/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_uri"]])
+
 		// A list of target rule IDs under the WAF rule set to apply the
 		// preconfigured WAF exclusion.
 		// If omitted, it refers to all the rule IDs under the WAF rule
 		// set.
 		target_rule_ids?: [...string]
-		request_cookie?: matchN(1, [_#defs."/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_cookie", [..._#defs."/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_cookie"]])
-		request_header?: matchN(1, [_#defs."/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_header", [..._#defs."/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_header"]])
-		request_query_param?: matchN(1, [_#defs."/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_query_param", [..._#defs."/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_query_param"]])
-		request_uri?: matchN(1, [_#defs."/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_uri", [..._#defs."/$defs/rules/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_uri"]])
 
 		// Target WAF rule set to apply the preconfigured WAF exclusion.
 		target_rule_set!: string
@@ -378,6 +383,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/rate_limit_options": close({
+		ban_threshold?: matchN(1, [_#defs."/$defs/rules/$defs/rate_limit_options/$defs/ban_threshold", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/rate_limit_options/$defs/ban_threshold"]])
+		enforce_on_key_configs?: matchN(1, [_#defs."/$defs/rules/$defs/rate_limit_options/$defs/enforce_on_key_configs", [..._#defs."/$defs/rules/$defs/rate_limit_options/$defs/enforce_on_key_configs"]])
+		rate_limit_threshold?: matchN(1, [_#defs."/$defs/rules/$defs/rate_limit_options/$defs/rate_limit_threshold", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/rate_limit_options/$defs/rate_limit_threshold"]])
+
 		// Can only be specified if the action for the rule is
 		// "rate_based_ban".
 		// If specified, determines the time (in seconds) the traffic will
@@ -448,9 +457,6 @@ import "list"
 		// Valid options are deny(STATUS), where valid values for STATUS
 		// are 403, 404, 429, and 502.
 		exceed_action?: string
-		ban_threshold?: matchN(1, [_#defs."/$defs/rules/$defs/rate_limit_options/$defs/ban_threshold", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/rate_limit_options/$defs/ban_threshold"]])
-		enforce_on_key_configs?: matchN(1, [_#defs."/$defs/rules/$defs/rate_limit_options/$defs/enforce_on_key_configs", [..._#defs."/$defs/rules/$defs/rate_limit_options/$defs/enforce_on_key_configs"]])
-		rate_limit_threshold?: matchN(1, [_#defs."/$defs/rules/$defs/rate_limit_options/$defs/rate_limit_threshold", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/rate_limit_options/$defs/rate_limit_threshold"]])
 	})
 
 	_#defs: "/$defs/rules/$defs/rate_limit_options/$defs/ban_threshold": close({

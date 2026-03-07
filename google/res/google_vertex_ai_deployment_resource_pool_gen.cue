@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_deployment_resource_pool")
 	close({
+		dedicated_resources?: matchN(1, [#dedicated_resources, list.MaxItems(1) & [...#dedicated_resources]])
+		timeouts?: #timeouts
+
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine fractional digits.
 		create_time?: string
@@ -16,11 +19,9 @@ import "list"
 		// '/^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$/'.
 		name!:    string
 		project?: string
-		dedicated_resources?: matchN(1, [#dedicated_resources, list.MaxItems(1) & [...#dedicated_resources]])
 
 		// The region of deployment resource pool. eg us-central1
-		region?:   string
-		timeouts?: #timeouts
+		region?: string
 	})
 
 	#dedicated_resources: close({

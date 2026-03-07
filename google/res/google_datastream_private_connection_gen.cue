@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_datastream_private_connection")
 	close({
+		psc_interface_config?: matchN(1, [#psc_interface_config, list.MaxItems(1) & [...#psc_interface_config]])
+		timeouts?: #timeouts
+		vpc_peering_config?: matchN(1, [#vpc_peering_config, list.MaxItems(1) & [...#vpc_peering_config]])
+
 		// If set to true, will skip validations.
 		create_without_validation?: bool
 
@@ -40,10 +44,7 @@ import "list"
 
 		// The private connectivity identifier.
 		private_connection_id!: string
-		psc_interface_config?: matchN(1, [#psc_interface_config, list.MaxItems(1) & [...#psc_interface_config]])
-		timeouts?: #timeouts
-		vpc_peering_config?: matchN(1, [#vpc_peering_config, list.MaxItems(1) & [...#vpc_peering_config]])
-		project?: string
+		project?:               string
 
 		// State of the PrivateConnection.
 		state?: string

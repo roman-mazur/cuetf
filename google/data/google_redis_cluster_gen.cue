@@ -94,6 +94,7 @@ package data
 		gcs_source?: [...close({
 			uris?: [...string]
 		})]
+		id?: string
 
 		// The KMS key used to encrypt the at-rest data of the cluster.
 		kms_key?: string
@@ -105,7 +106,6 @@ package data
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Maintenance policy for a cluster
 		maintenance_policy?: [...close({
@@ -180,6 +180,7 @@ package data
 		// Output only. Redis memory precise size in GB for the entire
 		// cluster.
 		precise_size_gb?: number
+		project?:         string
 
 		// Required. Each PscConfig configures the consumer network where
 		// two
@@ -189,7 +190,6 @@ package data
 		psc_configs?: [...close({
 			network?: string
 		})]
-		project?: string
 
 		// Output only. PSC connections for discovery of the cluster
 		// topology and accessing the cluster.

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_version")
 	close({
+		timeouts?: #timeouts
+
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine fractional digits. Examples:
 		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -40,8 +42,7 @@ package res
 		// * SUCCEEDED: Training has succeeded and this version is ready
 		// to serve.
 		// * FAILED: Version training failed.
-		state?:    string
-		timeouts?: #timeouts
+		state?: string
 	})
 
 	#timeouts: close({

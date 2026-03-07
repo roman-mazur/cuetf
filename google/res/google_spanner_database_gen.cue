@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_spanner_database")
 	close({
+		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
+		timeouts?: #timeouts
+
 		// The dialect of the Cloud Spanner Database.
 		// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
 		// Possible values: ["GOOGLE_STANDARD_SQL", "POSTGRESQL"]
@@ -73,8 +76,6 @@ import "list"
 		// '[a-z][-_a-z0-9]*[a-z0-9]'.
 		name!:    string
 		project?: string
-		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
-		timeouts?: #timeouts
 
 		// An explanation of the status of the database.
 		state?: string

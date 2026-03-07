@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_biglake_catalog")
 	close({
+		timeouts?: #timeouts
+
 		// Output only. The creation time of the catalog. A timestamp in
 		// RFC3339 UTC
 		// "Zulu" format, with nanosecond resolution and up to nine
@@ -33,9 +35,8 @@ package res
 
 		// The name of the Catalog. Format:
 		// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-		name!:     string
-		project?:  string
-		timeouts?: #timeouts
+		name!:    string
+		project?: string
 
 		// Output only. The last modification time of the catalog. A
 		// timestamp in

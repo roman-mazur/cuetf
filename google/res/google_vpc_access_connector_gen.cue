@@ -6,8 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vpc_access_connector")
 	close({
+		subnet?: matchN(1, [#subnet, list.MaxItems(1) & [...#subnet]])
+		timeouts?: #timeouts
+
 		// List of projects using the connector.
 		connected_projects?: [...string]
+		id?: string
 
 		// The range of internal addresses that follows RFC 4632 notation.
 		// Example: '10.132.0.0/28'.
@@ -23,7 +27,6 @@ import "list"
 		// alongside 'min_instances' if not using
 		// 'min_throughput'/'max_throughput'.
 		max_instances?: number
-		id?:            string
 
 		// Maximum throughput of the connector in Mbps, must be greater
 		// than 'min_throughput'. Default is 300. Refers to the expected
@@ -55,8 +58,6 @@ import "list"
 
 		// The name of the resource (Max 25 characters).
 		name!: string
-		subnet?: matchN(1, [#subnet, list.MaxItems(1) & [...#subnet]])
-		timeouts?: #timeouts
 
 		// Name or self_link of the VPC network. Required if
 		// 'ip_cidr_range' is set.

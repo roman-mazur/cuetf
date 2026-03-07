@@ -4,7 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_instance_group_membership")
 	close({
-		id?: string
+		timeouts?: #timeouts
+		id?:       string
 
 		// An instance being added to the InstanceGroup
 		instance!: string
@@ -15,8 +16,7 @@ package res
 		project?:        string
 
 		// A reference to the zone where the instance group resides.
-		zone?:     string
-		timeouts?: #timeouts
+		zone?: string
 	})
 
 	#timeouts: close({

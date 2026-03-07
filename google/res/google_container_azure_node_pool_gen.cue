@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_azure_node_pool")
 	close({
+		autoscaling!: matchN(1, [#autoscaling, list.MaxItems(1) & [_, ...] & [...#autoscaling]])
+		config!: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
+		management?: matchN(1, [#management, list.MaxItems(1) & [...#management]])
+		max_pods_constraint!: matchN(1, [#max_pods_constraint, list.MaxItems(1) & [_, ...] & [...#max_pods_constraint]])
+		timeouts?: #timeouts
+
 		// Optional. Annotations on the node pool. This field has the same
 		// restrictions as Kubernetes annotations. The total size of all
 		// keys and values combined is limited to 256k. Keys can have 2
@@ -20,7 +26,6 @@ import "list"
 		// Please refer to the field `effective_annotations` for all of
 		// the annotations present on the resource.
 		annotations?: [string]: string
-		autoscaling!: matchN(1, [#autoscaling, list.MaxItems(1) & [_, ...] & [...#autoscaling]])
 
 		// Optional. The Azure availability zone of the nodes in this
 		// nodepool. When unspecified, it defaults to `1`.
@@ -56,10 +61,6 @@ import "list"
 		// Output only. If set, there are currently pending changes to the
 		// node pool.
 		reconciling?: bool
-		config!: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
-		management?: matchN(1, [#management, list.MaxItems(1) & [...#management]])
-		max_pods_constraint!: matchN(1, [#max_pods_constraint, list.MaxItems(1) & [_, ...] & [...#max_pods_constraint]])
-		timeouts?: #timeouts
 
 		// Output only. The current state of the node pool. Possible
 		// values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
@@ -93,11 +94,14 @@ import "list"
 	})
 
 	#config: close({
+		proxy_config?: matchN(1, [_#defs."/$defs/config/$defs/proxy_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/proxy_config"]])
+		root_volume?: matchN(1, [_#defs."/$defs/config/$defs/root_volume", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/root_volume"]])
+		ssh_config!: matchN(1, [_#defs."/$defs/config/$defs/ssh_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/ssh_config"]])
+
 		// Optional. The initial labels assigned to nodes of this node
 		// pool. An object containing a list of "key": value pairs.
 		// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 		labels?: [string]: string
-		proxy_config?: matchN(1, [_#defs."/$defs/config/$defs/proxy_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/proxy_config"]])
 
 		// Optional. A set of tags to apply to all underlying Azure
 		// resources for this node pool. This currently only includes
@@ -111,8 +115,6 @@ import "list"
 		// See (/anthos/clusters/docs/azure/reference/supported-vms) for
 		// options. When unspecified, it defaults to `Standard_DS2_v2`.
 		vm_size?: string
-		root_volume?: matchN(1, [_#defs."/$defs/config/$defs/root_volume", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/root_volume"]])
-		ssh_config!: matchN(1, [_#defs."/$defs/config/$defs/ssh_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/ssh_config"]])
 	})
 
 	#management: close({

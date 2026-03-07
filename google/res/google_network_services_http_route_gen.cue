@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_http_route")
 	close({
+		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
+		timeouts?: #timeouts
+
 		// Time the HttpRoute was created in UTC.
 		create_time?: string
 
@@ -49,8 +52,6 @@ import "list"
 		// Name of the HttpRoute resource.
 		name!:    string
 		project?: string
-		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
-		timeouts?: #timeouts
 
 		// Server-defined URL of this resource.
 		self_link?: string
@@ -77,9 +78,6 @@ import "list"
 	_#defs: "/$defs/rules/$defs/action": close({
 		cors_policy?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/cors_policy", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/cors_policy"]])
 		destinations?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/destinations", [..._#defs."/$defs/rules/$defs/action/$defs/destinations"]])
-
-		// Specifies the timeout for selected route.
-		timeout?: string
 		fault_injection_policy?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/fault_injection_policy", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/fault_injection_policy"]])
 		redirect?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/redirect", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/redirect"]])
 		request_header_modifier?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/request_header_modifier", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/request_header_modifier"]])
@@ -87,6 +85,9 @@ import "list"
 		response_header_modifier?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/response_header_modifier", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/response_header_modifier"]])
 		retry_policy?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/retry_policy", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/retry_policy"]])
 		url_rewrite?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/url_rewrite", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/url_rewrite"]])
+
+		// Specifies the timeout for selected route.
+		timeout?: string
 	})
 
 	_#defs: "/$defs/rules/$defs/action/$defs/cors_policy": close({
@@ -274,6 +275,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/matches": close({
+		headers?: matchN(1, [_#defs."/$defs/rules/$defs/matches/$defs/headers", [..._#defs."/$defs/rules/$defs/matches/$defs/headers"]])
+		query_parameters?: matchN(1, [_#defs."/$defs/rules/$defs/matches/$defs/query_parameters", [..._#defs."/$defs/rules/$defs/matches/$defs/query_parameters"]])
+
 		// The HTTP request path value should exactly match this value.
 		full_path_match?: string
 
@@ -291,11 +295,11 @@ import "list"
 		// expression grammar, please see
 		// https://github.com/google/re2/wiki/Syntax
 		regex_match?: string
-		headers?: matchN(1, [_#defs."/$defs/rules/$defs/matches/$defs/headers", [..._#defs."/$defs/rules/$defs/matches/$defs/headers"]])
-		query_parameters?: matchN(1, [_#defs."/$defs/rules/$defs/matches/$defs/query_parameters", [..._#defs."/$defs/rules/$defs/matches/$defs/query_parameters"]])
 	})
 
 	_#defs: "/$defs/rules/$defs/matches/$defs/headers": close({
+		range_match?: matchN(1, [_#defs."/$defs/rules/$defs/matches/$defs/headers/$defs/range_match", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/matches/$defs/headers/$defs/range_match"]])
+
 		// The value of the header should match exactly the content of
 		// exactMatch.
 		exact_match?: string
@@ -318,7 +322,6 @@ import "list"
 		// The value of the header must match the regular expression
 		// specified in regexMatch.
 		regex_match?: string
-		range_match?: matchN(1, [_#defs."/$defs/rules/$defs/matches/$defs/headers/$defs/range_match", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/matches/$defs/headers/$defs/range_match"]])
 
 		// The value of the header must end with the contents of
 		// suffixMatch.

@@ -6,6 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gkeonprem_vmware_admin_cluster")
 	close({
+		addon_node?: matchN(1, [#addon_node, list.MaxItems(1) & [...#addon_node]])
+		anti_affinity_groups?: matchN(1, [#anti_affinity_groups, list.MaxItems(1) & [...#anti_affinity_groups]])
+		authorization?: matchN(1, [#authorization, list.MaxItems(1) & [...#authorization]])
+		auto_repair_config?: matchN(1, [#auto_repair_config, list.MaxItems(1) & [...#auto_repair_config]])
+		control_plane_node?: matchN(1, [#control_plane_node, list.MaxItems(1) & [...#control_plane_node]])
+		load_balancer?: matchN(1, [#load_balancer, list.MaxItems(1) & [...#load_balancer]])
+		network_config!: matchN(1, [#network_config, list.MaxItems(1) & [_, ...] & [...#network_config]])
+		platform_config?: matchN(1, [#platform_config, list.MaxItems(1) & [...#platform_config]])
+		private_registry_config?: matchN(1, [#private_registry_config, list.MaxItems(1) & [...#private_registry_config]])
+		proxy?: matchN(1, [#proxy, list.MaxItems(1) & [...#proxy]])
+		timeouts?: #timeouts
+		vcenter?: matchN(1, [#vcenter, list.MaxItems(1) & [...#vcenter]])
+
 		// Annotations on the VMware Admin Cluster.
 		// This field has the same restrictions as Kubernetes annotations.
 		// The total size of all keys and values combined is limited to
@@ -85,18 +98,6 @@ import "list"
 
 		// The location of the resource.
 		location!: string
-		addon_node?: matchN(1, [#addon_node, list.MaxItems(1) & [...#addon_node]])
-		anti_affinity_groups?: matchN(1, [#anti_affinity_groups, list.MaxItems(1) & [...#anti_affinity_groups]])
-		authorization?: matchN(1, [#authorization, list.MaxItems(1) & [...#authorization]])
-		auto_repair_config?: matchN(1, [#auto_repair_config, list.MaxItems(1) & [...#auto_repair_config]])
-		control_plane_node?: matchN(1, [#control_plane_node, list.MaxItems(1) & [...#control_plane_node]])
-		load_balancer?: matchN(1, [#load_balancer, list.MaxItems(1) & [...#load_balancer]])
-		network_config!: matchN(1, [#network_config, list.MaxItems(1) & [_, ...] & [...#network_config]])
-		platform_config?: matchN(1, [#platform_config, list.MaxItems(1) & [...#platform_config]])
-		private_registry_config?: matchN(1, [#private_registry_config, list.MaxItems(1) & [...#private_registry_config]])
-		proxy?: matchN(1, [#proxy, list.MaxItems(1) & [...#proxy]])
-		timeouts?: #timeouts
-		vcenter?: matchN(1, [#vcenter, list.MaxItems(1) & [...#vcenter]])
 
 		// The VMware admin cluster resource name.
 		name!: string
@@ -175,6 +176,11 @@ import "list"
 	})
 
 	#network_config: close({
+		dhcp_ip_config?: matchN(1, [_#defs."/$defs/network_config/$defs/dhcp_ip_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/dhcp_ip_config"]])
+		ha_control_plane_config?: matchN(1, [_#defs."/$defs/network_config/$defs/ha_control_plane_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/ha_control_plane_config"]])
+		host_config?: matchN(1, [_#defs."/$defs/network_config/$defs/host_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/host_config"]])
+		static_ip_config?: matchN(1, [_#defs."/$defs/network_config/$defs/static_ip_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/static_ip_config"]])
+
 		// All pods in the cluster are assigned an RFC1918 IPv4 address
 		// from these ranges.
 		// Only a single range is supported. This field cannot be changed
@@ -190,10 +196,6 @@ import "list"
 
 		// vcenter_network specifies vCenter network name.
 		vcenter_network?: string
-		dhcp_ip_config?: matchN(1, [_#defs."/$defs/network_config/$defs/dhcp_ip_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/dhcp_ip_config"]])
-		ha_control_plane_config?: matchN(1, [_#defs."/$defs/network_config/$defs/ha_control_plane_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/ha_control_plane_config"]])
-		host_config?: matchN(1, [_#defs."/$defs/network_config/$defs/host_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/host_config"]])
-		static_ip_config?: matchN(1, [_#defs."/$defs/network_config/$defs/static_ip_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/static_ip_config"]])
 	})
 
 	#platform_config: close({

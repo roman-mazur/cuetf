@@ -6,7 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_redis_cluster_user_created_connections")
 	close({
-		id?: string
+		cluster_endpoints?: matchN(1, [#cluster_endpoints, [...#cluster_endpoints]])
+		timeouts?: #timeouts
+		id?:       string
 
 		// The name of the Redis cluster these endpoints should be added
 		// to.
@@ -16,8 +18,6 @@ import "list"
 		// The name of the region of the Redis cluster these endpoints
 		// should be added to.
 		region!: string
-		cluster_endpoints?: matchN(1, [#cluster_endpoints, [...#cluster_endpoints]])
-		timeouts?: #timeouts
 	})
 
 	#cluster_endpoints: close({

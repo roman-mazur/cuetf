@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_clouddeploy_deploy_policy")
 	close({
+		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
+		selectors!: matchN(1, [#selectors, [_, ...] & [...#selectors]])
+		timeouts?: #timeouts
+
 		// User annotations. These attributes can only be set and used by
 		// the user, and not by Cloud Deploy. Annotations must meet the
 		// following constraints: * Annotations are key/value pairs. *
@@ -71,15 +75,12 @@ import "list"
 		location!: string
 
 		// Name of the 'DeployPolicy'.
-		name!: string
-		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
-		selectors!: matchN(1, [#selectors, [_, ...] & [...#selectors]])
-		timeouts?: #timeouts
+		name!:    string
+		project?: string
 
 		// When suspended, the policy will not prevent actions from
 		// occurring, even if the action violates the policy.
 		suspended?: bool
-		project?:   string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -108,12 +109,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/rollout_restriction": close({
+		time_windows?: matchN(1, [_#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows"]])
+
 		// Rollout actions to be restricted as part of the policy. If left
 		// empty, all actions will be restricted. Possible values:
 		// ["ADVANCE", "APPROVE", "CANCEL", "CREATE", "IGNORE_JOB",
 		// "RETRY_JOB", "ROLLBACK", "TERMINATE_JOBRUN"]
 		actions?: [...string]
-		time_windows?: matchN(1, [_#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/rollout_restriction/$defs/time_windows"]])
 
 		// ID of the rule. This id must be unique in the 'DeployPolicy'
 		// resource to which this rule belongs. The format is

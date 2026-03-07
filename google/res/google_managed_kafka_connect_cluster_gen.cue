@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_managed_kafka_connect_cluster")
 	close({
+		capacity_config!: matchN(1, [#capacity_config, list.MaxItems(1) & [_, ...] & [...#capacity_config]])
+		gcp_config!: matchN(1, [#gcp_config, list.MaxItems(1) & [_, ...] & [...#gcp_config]])
+		timeouts?: #timeouts
+
 		// The ID to use for the Connect Cluster, which will become the
 		// final component of the connect cluster's name. This value is
 		// structured like: 'my-connect-cluster-id'.
@@ -18,12 +22,12 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// The name of the Kafka cluster this Kafka Connect cluster is
 		// attached to. Structured like:
 		// 'projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID'.
 		kafka_cluster!: string
-		id?:            string
 
 		// List of label KEY=VALUE pairs to add. Keys must start with a
 		// lowercase character and contain only hyphens (-), underscores
@@ -44,11 +48,8 @@ import "list"
 
 		// The name of the connect cluster. Structured like:
 		// 'projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER_ID'.
-		name?: string
-		capacity_config!: matchN(1, [#capacity_config, list.MaxItems(1) & [_, ...] & [...#capacity_config]])
-		gcp_config!: matchN(1, [#gcp_config, list.MaxItems(1) & [_, ...] & [...#gcp_config]])
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// The current state of the connect cluster. Possible values:
 		// 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'DELETING'.

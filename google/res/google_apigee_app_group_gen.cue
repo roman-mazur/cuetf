@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_app_group")
 	close({
+		attributes?: matchN(1, [#attributes, [...#attributes]])
+		timeouts?: #timeouts
+
 		// Internal identifier that cannot be edited
 		app_group_id?: string
 
@@ -27,8 +30,6 @@ package res
 		// Name of the AppGroup. Characters you can use in the name are
 		// restricted to: A-Z0-9._-$ %.
 		name!: string
-		attributes?: matchN(1, [#attributes, [...#attributes]])
-		timeouts?: #timeouts
 
 		// The Apigee Organization associated with the Apigee app group,
 		// in the format 'organizations/{{org_name}}'.

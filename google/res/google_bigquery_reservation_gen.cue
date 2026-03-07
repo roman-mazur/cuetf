@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_reservation")
 	close({
+		autoscale?: matchN(1, [#autoscale, list.MaxItems(1) & [...#autoscale]])
+		timeouts?: #timeouts
+
 		// Maximum number of queries that are allowed to run concurrently
 		// in this reservation. This is a soft limit due to asynchronous
 		// nature of the system and various optimizations for small
@@ -16,6 +19,7 @@ import "list"
 		// The edition type. Valid values are STANDARD, ENTERPRISE,
 		// ENTERPRISE_PLUS
 		edition?: string
+		id?:      string
 
 		// If false, any query using this reservation will use idle slots
 		// from other reservations within
@@ -23,7 +27,6 @@ import "list"
 		// will execute with the slot
 		// capacity specified above at most.
 		ignore_idle_slots?: bool
-		id?:                string
 
 		// The geographic location where the transfer config should
 		// reside.
@@ -45,6 +48,7 @@ import "list"
 		// field is only set for
 		// reservations using the managed disaster recovery feature.
 		primary_location?: string
+		project?:          string
 
 		// The Disaster Recovery(DR) replication status of the
 		// reservation. This is only available for
@@ -65,9 +69,6 @@ import "list"
 			last_error_time?:       string
 			last_replication_time?: string
 		})]
-		autoscale?: matchN(1, [#autoscale, list.MaxItems(1) & [...#autoscale]])
-		project?:  string
-		timeouts?: #timeouts
 
 		// The current location of the reservation's secondary replica.
 		// This field is only set for

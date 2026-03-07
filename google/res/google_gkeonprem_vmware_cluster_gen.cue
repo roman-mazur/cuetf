@@ -6,6 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gkeonprem_vmware_cluster")
 	close({
+		anti_affinity_groups?: matchN(1, [#anti_affinity_groups, list.MaxItems(1) & [...#anti_affinity_groups]])
+		authorization?: matchN(1, [#authorization, list.MaxItems(1) & [...#authorization]])
+		auto_repair_config?: matchN(1, [#auto_repair_config, list.MaxItems(1) & [...#auto_repair_config]])
+		control_plane_node!: matchN(1, [#control_plane_node, list.MaxItems(1) & [_, ...] & [...#control_plane_node]])
+		dataplane_v2?: matchN(1, [#dataplane_v2, list.MaxItems(1) & [...#dataplane_v2]])
+		load_balancer?: matchN(1, [#load_balancer, list.MaxItems(1) & [...#load_balancer]])
+		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
+		storage?: matchN(1, [#storage, list.MaxItems(1) & [...#storage]])
+		timeouts?: #timeouts
+		upgrade_policy?: matchN(1, [#upgrade_policy, list.MaxItems(1) & [...#upgrade_policy]])
+		vcenter?: matchN(1, [#vcenter, list.MaxItems(1) & [...#vcenter]])
+
 		// The admin cluster this VMware User Cluster belongs to.
 		// This is the full resource name of the admin cluster's hub
 		// membership.
@@ -100,17 +112,6 @@ import "list"
 
 		// The VMware cluster name.
 		name!: string
-		anti_affinity_groups?: matchN(1, [#anti_affinity_groups, list.MaxItems(1) & [...#anti_affinity_groups]])
-		authorization?: matchN(1, [#authorization, list.MaxItems(1) & [...#authorization]])
-		auto_repair_config?: matchN(1, [#auto_repair_config, list.MaxItems(1) & [...#auto_repair_config]])
-		control_plane_node!: matchN(1, [#control_plane_node, list.MaxItems(1) & [_, ...] & [...#control_plane_node]])
-		dataplane_v2?: matchN(1, [#dataplane_v2, list.MaxItems(1) & [...#dataplane_v2]])
-		load_balancer?: matchN(1, [#load_balancer, list.MaxItems(1) & [...#load_balancer]])
-		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
-		storage?: matchN(1, [#storage, list.MaxItems(1) & [...#storage]])
-		timeouts?: #timeouts
-		upgrade_policy?: matchN(1, [#upgrade_policy, list.MaxItems(1) & [...#upgrade_policy]])
-		vcenter?: matchN(1, [#vcenter, list.MaxItems(1) & [...#vcenter]])
 
 		// The Anthos clusters on the VMware version for your user
 		// cluster.
@@ -192,6 +193,8 @@ import "list"
 	})
 
 	#control_plane_node: close({
+		auto_resize_config?: matchN(1, [_#defs."/$defs/control_plane_node/$defs/auto_resize_config", list.MaxItems(1) & [..._#defs."/$defs/control_plane_node/$defs/auto_resize_config"]])
+
 		// The number of CPUs for each admin cluster node that serve as
 		// control planes
 		// for this VMware User Cluster. (default: 4 CPUs)
@@ -206,7 +209,6 @@ import "list"
 		// The number of control plane nodes for this VMware User Cluster.
 		// (default: 1 replica).
 		replicas?: number
-		auto_resize_config?: matchN(1, [_#defs."/$defs/control_plane_node/$defs/auto_resize_config", list.MaxItems(1) & [..._#defs."/$defs/control_plane_node/$defs/auto_resize_config"]])
 
 		// Vsphere-specific config.
 		vsphere_config?: [...close({
@@ -235,6 +237,11 @@ import "list"
 	})
 
 	#network_config: close({
+		control_plane_v2_config?: matchN(1, [_#defs."/$defs/network_config/$defs/control_plane_v2_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/control_plane_v2_config"]])
+		dhcp_ip_config?: matchN(1, [_#defs."/$defs/network_config/$defs/dhcp_ip_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/dhcp_ip_config"]])
+		host_config?: matchN(1, [_#defs."/$defs/network_config/$defs/host_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/host_config"]])
+		static_ip_config?: matchN(1, [_#defs."/$defs/network_config/$defs/static_ip_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/static_ip_config"]])
+
 		// All pods in the cluster are assigned an RFC1918 IPv4 address
 		// from these ranges.
 		// Only a single range is supported. This field cannot be changed
@@ -251,10 +258,6 @@ import "list"
 		// vcenter_network specifies vCenter network name. Inherited from
 		// the admin cluster.
 		vcenter_network?: string
-		control_plane_v2_config?: matchN(1, [_#defs."/$defs/network_config/$defs/control_plane_v2_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/control_plane_v2_config"]])
-		dhcp_ip_config?: matchN(1, [_#defs."/$defs/network_config/$defs/dhcp_ip_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/dhcp_ip_config"]])
-		host_config?: matchN(1, [_#defs."/$defs/network_config/$defs/host_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/host_config"]])
-		static_ip_config?: matchN(1, [_#defs."/$defs/network_config/$defs/static_ip_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/static_ip_config"]])
 	})
 
 	#storage: close({

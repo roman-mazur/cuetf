@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_organizations_policy_binding")
 	close({
+		condition?: matchN(1, [#condition, list.MaxItems(1) & [...#condition]])
+		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
+		timeouts?: #timeouts
+
 		// Optional. User defined annotations. See
 		// https://google.aip.dev/148#annotations for more details such
 		// as format and size limitations
@@ -32,10 +36,10 @@ import "list"
 		// Optional. The etag for the policy binding. If this is provided
 		// on update, it must match the server's etag.
 		etag?: string
+		id?:   string
 
 		// The location of the Policy Binding
 		location!: string
-		id?:       string
 
 		// The name of the policy binding in the format
 		// '{binding_parent/locations/{location}/policyBindings/{policy_binding_id}'
@@ -51,9 +55,6 @@ import "list"
 
 		// The Policy Binding ID.
 		policy_binding_id!: string
-		condition?: matchN(1, [#condition, list.MaxItems(1) & [...#condition]])
-		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
-		timeouts?: #timeouts
 
 		// Immutable. The kind of the policy to attach in this binding.
 		// This

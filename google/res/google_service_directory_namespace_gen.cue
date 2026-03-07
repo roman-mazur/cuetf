@@ -4,10 +4,13 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_service_directory_namespace")
 	close({
+		timeouts?: #timeouts
+
 		// All of labels (key/value pairs) present on the resource in GCP,
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Resource labels associated with this Namespace. No more than 64
 		// user
@@ -21,7 +24,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location for the Namespace.
 		location!: string
@@ -34,7 +36,6 @@ package res
 		// lowercase letters or the hyphen character.
 		namespace_id!: string
 		project?:      string
-		timeouts?:     #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

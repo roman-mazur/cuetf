@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_metric_descriptor")
 	close({
+		labels?: matchN(1, [#labels, [...#labels]])
+		metadata?: matchN(1, [#metadata, list.MaxItems(1) & [...#metadata]])
+		timeouts?: #timeouts
+
 		// A detailed description of the metric, which can be used in
 		// documentation.
 		description?: string
@@ -14,6 +18,7 @@ import "list"
 		// interfaces. Use sentence case without an ending period, for
 		// example "Request count".
 		display_name?: string
+		id?:           string
 
 		// The launch stage of the metric definition. Possible values:
 		// ["LAUNCH_STAGE_UNSPECIFIED", "UNIMPLEMENTED", "PRELAUNCH",
@@ -25,7 +30,6 @@ import "list"
 		// might not be supported. Possible values:
 		// ["METRIC_KIND_UNSPECIFIED", "GAUGE", "DELTA", "CUMULATIVE"]
 		metric_kind!: string
-		id?:          string
 
 		// If present, then a time series, which is identified partially
 		// by a metric type and a MonitoredResourceDescriptor, that is
@@ -37,7 +41,8 @@ import "list"
 		monitored_resource_types?: [...string]
 
 		// The resource name of the metric descriptor.
-		name?: string
+		name?:    string
+		project?: string
 
 		// The metric type, including its DNS name prefix. The type is not
 		// URL-encoded. All service defined metrics must be prefixed with
@@ -85,10 +90,6 @@ import "list"
 		// More info can be found in the API documentation
 		// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
 		unit?: string
-		labels?: matchN(1, [#labels, [...#labels]])
-		metadata?: matchN(1, [#metadata, list.MaxItems(1) & [...#metadata]])
-		timeouts?: #timeouts
-		project?:  string
 
 		// Whether the measurement is an integer, a floating-point number,
 		// etc. Some combinations of metricKind and valueType might not

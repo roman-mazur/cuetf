@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_example")
 	close({
+		messages?: matchN(1, [#messages, [...#messages]])
+		timeouts?: #timeouts
+
 		// Resource ID segment making up resource 'name', defining the app
 		// the example belongs to. It identifies the resource within its
 		// parent collection as described in https://google.aip.dev/122.
@@ -52,8 +55,6 @@ import "list"
 		// its parent collection as described in
 		// https://google.aip.dev/122.
 		location!: string
-		messages?: matchN(1, [#messages, [...#messages]])
-		timeouts?: #timeouts
 
 		// Identifier. The unique identifier of the example.
 		// Format:
@@ -79,12 +80,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/messages/$defs/chunks": close({
-		// Text data.
-		text?: string
 		agent_transfer?: matchN(1, [_#defs."/$defs/messages/$defs/chunks/$defs/agent_transfer", list.MaxItems(1) & [..._#defs."/$defs/messages/$defs/chunks/$defs/agent_transfer"]])
 		image?: matchN(1, [_#defs."/$defs/messages/$defs/chunks/$defs/image", list.MaxItems(1) & [..._#defs."/$defs/messages/$defs/chunks/$defs/image"]])
 		tool_call?: matchN(1, [_#defs."/$defs/messages/$defs/chunks/$defs/tool_call", list.MaxItems(1) & [..._#defs."/$defs/messages/$defs/chunks/$defs/tool_call"]])
 		tool_response?: matchN(1, [_#defs."/$defs/messages/$defs/chunks/$defs/tool_response", list.MaxItems(1) & [..._#defs."/$defs/messages/$defs/chunks/$defs/tool_response"]])
+
+		// Text data.
+		text?: string
 
 		// A struct represents variables that were updated in the
 		// conversation,
@@ -117,6 +119,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/messages/$defs/chunks/$defs/tool_call": close({
+		toolset_tool?: matchN(1, [_#defs."/$defs/messages/$defs/chunks/$defs/tool_call/$defs/toolset_tool", list.MaxItems(1) & [..._#defs."/$defs/messages/$defs/chunks/$defs/tool_call/$defs/toolset_tool"]])
+
 		// The input parameters and values for the tool in JSON object
 		// format.
 		args?: string
@@ -129,7 +133,6 @@ import "list"
 		// return the execution result with the matching ID in
 		// ToolResponse.
 		id?: string
-		toolset_tool?: matchN(1, [_#defs."/$defs/messages/$defs/chunks/$defs/tool_call/$defs/toolset_tool", list.MaxItems(1) & [..._#defs."/$defs/messages/$defs/chunks/$defs/tool_call/$defs/toolset_tool"]])
 
 		// The name of the tool to execute.
 		// Format:
@@ -149,6 +152,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/messages/$defs/chunks/$defs/tool_response": close({
+		toolset_tool?: matchN(1, [_#defs."/$defs/messages/$defs/chunks/$defs/tool_response/$defs/toolset_tool", list.MaxItems(1) & [..._#defs."/$defs/messages/$defs/chunks/$defs/tool_response/$defs/toolset_tool"]])
+
 		// Display name of the tool.
 		display_name?: string
 
@@ -162,7 +167,6 @@ import "list"
 		// specified,
 		// then whole "response" is treated as tool execution result.
 		response!: string
-		toolset_tool?: matchN(1, [_#defs."/$defs/messages/$defs/chunks/$defs/tool_response/$defs/toolset_tool", list.MaxItems(1) & [..._#defs."/$defs/messages/$defs/chunks/$defs/tool_response/$defs/toolset_tool"]])
 
 		// The name of the tool to execute.
 		// Format:

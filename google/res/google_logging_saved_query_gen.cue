@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_saved_query")
 	close({
+		logging_query?: matchN(1, [#logging_query, list.MaxItems(1) & [...#logging_query]])
+		ops_analytics_query?: matchN(1, [#ops_analytics_query, list.MaxItems(1) & [...#ops_analytics_query]])
+		timeouts?: #timeouts
+
 		// Output only. The creation timestamp of the saved query.
 		create_time?: string
 
@@ -26,9 +30,6 @@ import "list"
 
 		// The parent of the resource.
 		parent!: string
-		logging_query?: matchN(1, [#logging_query, list.MaxItems(1) & [...#logging_query]])
-		ops_analytics_query?: matchN(1, [#ops_analytics_query, list.MaxItems(1) & [...#ops_analytics_query]])
-		timeouts?: #timeouts
 
 		// Output only. The last update timestamp of the saved query.
 		update_time?: string
@@ -39,12 +40,13 @@ import "list"
 	})
 
 	#logging_query: close({
+		summary_fields?: matchN(1, [_#defs."/$defs/logging_query/$defs/summary_fields", [..._#defs."/$defs/logging_query/$defs/summary_fields"]])
+
 		// An [advanced logs
 		// filter](https://cloud.google.com/logging/docs/view/advanced-filters)
 		// which
 		// is used to match log entries.
 		filter!: string
-		summary_fields?: matchN(1, [_#defs."/$defs/logging_query/$defs/summary_fields", [..._#defs."/$defs/logging_query/$defs/summary_fields"]])
 
 		// Characters will be counted from the end of the string.
 		summary_field_end?: number

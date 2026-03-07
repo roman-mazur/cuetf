@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_target_grpc_proxy")
 	close({
+		timeouts?: #timeouts
+
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
@@ -21,6 +23,7 @@ package res
 		// request to retrieve the TargetGrpcProxy. A base64-encoded
 		// string.
 		fingerprint?: string
+		id?:          string
 
 		// Name of the resource. Provided by the client when the resource
 		// is created. The name must be 1-63 characters long, and comply
@@ -33,13 +36,11 @@ package res
 		// digit,
 		// except the last character, which cannot be a dash.
 		name!:      string
-		id?:        string
 		project?:   string
 		self_link?: string
 
 		// Server-defined URL with id for the resource.
 		self_link_with_id?: string
-		timeouts?:          #timeouts
 
 		// URL to the UrlMap resource that defines the mapping from URL to
 		// the BackendService. The protocol field in the BackendService

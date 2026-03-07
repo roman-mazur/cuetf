@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_colab_schedule")
 	close({
+		create_notebook_execution_job_request!: matchN(1, [#create_notebook_execution_job_request, list.MaxItems(1) & [_, ...] & [...#create_notebook_execution_job_request]])
+		timeouts?: #timeouts
+
 		// Whether new scheduled runs can be queued when
 		// max_concurrent_runs limit is reached. If set to true, new runs
 		// will be queued instead of skipped. Default to false.
@@ -50,10 +53,8 @@ import "list"
 		max_run_count?: string
 
 		// The resource name of the Schedule
-		name?: string
-		create_notebook_execution_job_request!: matchN(1, [#create_notebook_execution_job_request, list.MaxItems(1) & [_, ...] & [...#create_notebook_execution_job_request]])
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// The timestamp after which the first run can be scheduled.
 		// Defaults to the schedule creation time. Must be in the RFC
@@ -75,6 +76,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/create_notebook_execution_job_request/$defs/notebook_execution_job": close({
+		dataform_repository_source?: matchN(1, [_#defs."/$defs/create_notebook_execution_job_request/$defs/notebook_execution_job/$defs/dataform_repository_source", list.MaxItems(1) & [..._#defs."/$defs/create_notebook_execution_job_request/$defs/notebook_execution_job/$defs/dataform_repository_source"]])
+		gcs_notebook_source?: matchN(1, [_#defs."/$defs/create_notebook_execution_job_request/$defs/notebook_execution_job/$defs/gcs_notebook_source", list.MaxItems(1) & [..._#defs."/$defs/create_notebook_execution_job_request/$defs/notebook_execution_job/$defs/gcs_notebook_source"]])
+
 		// Required. The display name of the Notebook Execution.
 		display_name!: string
 
@@ -85,12 +89,10 @@ import "list"
 
 		// The user email to run the execution as.
 		execution_user?: string
-		dataform_repository_source?: matchN(1, [_#defs."/$defs/create_notebook_execution_job_request/$defs/notebook_execution_job/$defs/dataform_repository_source", list.MaxItems(1) & [..._#defs."/$defs/create_notebook_execution_job_request/$defs/notebook_execution_job/$defs/dataform_repository_source"]])
 
 		// The Cloud Storage location to upload the result to.
 		// Format:'gs://bucket-name'
 		gcs_output_uri!: string
-		gcs_notebook_source?: matchN(1, [_#defs."/$defs/create_notebook_execution_job_request/$defs/notebook_execution_job/$defs/gcs_notebook_source", list.MaxItems(1) & [..._#defs."/$defs/create_notebook_execution_job_request/$defs/notebook_execution_job/$defs/gcs_notebook_source"]])
 
 		// The NotebookRuntimeTemplate to source compute configuration
 		// from.

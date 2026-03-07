@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vmwareengine_network")
 	close({
+		timeouts?: #timeouts
+
 		// Creation time of this resource.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine fractional digits.
@@ -33,8 +35,7 @@ package res
 
 		// VMware Engine network type. Possible values: ["LEGACY",
 		// "STANDARD"]
-		type!:     string
-		timeouts?: #timeouts
+		type!: string
 
 		// System-generated unique identifier for the resource.
 		uid?: string

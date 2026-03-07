@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_composer_user_workloads_config_map")
 	close({
+		timeouts?: #timeouts
+
 		// The "data" field of Kubernetes ConfigMap, organized in
 		// key-value pairs.
 		// For details see:
@@ -16,9 +18,8 @@ package res
 		id?:          string
 
 		// Name of the Kubernetes ConfigMap.
-		name!:     string
-		project?:  string
-		timeouts?: #timeouts
+		name!:    string
+		project?: string
 
 		// The location or Compute Engine region for the environment.
 		region?: string

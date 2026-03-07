@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_interconnect_attachment_group")
 	close({
+		attachments?: matchN(1, [#attachments, [...#attachments]])
+		intent!: matchN(1, [#intent, list.MaxItems(1) & [_, ...] & [...#intent]])
+		timeouts?: #timeouts
+
 		// The redundancy this group is configured to support. The way a
 		// user queries what SLA their Attachment gets is by looking at
 		// this field of
@@ -32,15 +36,12 @@ import "list"
 		// when you create the resource.
 		description?: string
 		id?:          string
-		attachments?: matchN(1, [#attachments, [...#attachments]])
 
 		// The URL of an InterconnectGroup that groups these Attachments'
 		// Interconnects. Customers do not need to set this unless
 		// directed by
 		// Google Support.
 		interconnect_group?: string
-		intent!: matchN(1, [#intent, list.MaxItems(1) & [_, ...] & [...#intent]])
-		timeouts?: #timeouts
 
 		// An analysis of the logical layout of Attachments in this
 		// group. Every Attachment in the group is shown once in this

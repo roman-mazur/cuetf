@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_url_map")
 	close({
+		default_route_action?: matchN(1, [#default_route_action, list.MaxItems(1) & [...#default_route_action]])
+		default_url_redirect?: matchN(1, [#default_url_redirect, list.MaxItems(1) & [...#default_url_redirect]])
+		header_action?: matchN(1, [#header_action, list.MaxItems(1) & [...#header_action]])
+		host_rule?: matchN(1, [#host_rule, [...#host_rule]])
+		path_matcher?: matchN(1, [#path_matcher, [...#path_matcher]])
+		test?: matchN(1, [#test, [...#test]])
+		timeouts?: #timeouts
+
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
@@ -50,15 +58,8 @@ import "list"
 		// characters must be a dash, lowercase letter, or digit, except
 		// the last
 		// character, which cannot be a dash.
-		name!: string
-		default_route_action?: matchN(1, [#default_route_action, list.MaxItems(1) & [...#default_route_action]])
+		name!:    string
 		project?: string
-		default_url_redirect?: matchN(1, [#default_url_redirect, list.MaxItems(1) & [...#default_url_redirect]])
-		header_action?: matchN(1, [#header_action, list.MaxItems(1) & [...#header_action]])
-		host_rule?: matchN(1, [#host_rule, [...#host_rule]])
-		path_matcher?: matchN(1, [#path_matcher, [...#path_matcher]])
-		test?: matchN(1, [#test, [...#test]])
-		timeouts?: #timeouts
 
 		// The Region in which the url map should reside.
 		// If it is not provided, the provider region is used.
@@ -177,6 +178,12 @@ import "list"
 	})
 
 	#path_matcher: close({
+		default_route_action?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action"]])
+		default_url_redirect?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_url_redirect", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_url_redirect"]])
+		header_action?: matchN(1, [_#defs."/$defs/path_matcher/$defs/header_action", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/header_action"]])
+		path_rule?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule", [..._#defs."/$defs/path_matcher/$defs/path_rule"]])
+		route_rules?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules", [..._#defs."/$defs/path_matcher/$defs/route_rules"]])
+
 		// A reference to a RegionBackendService resource. This will be
 		// used if
 		// none of the pathRules defined by this PathMatcher is matched by
@@ -188,11 +195,6 @@ import "list"
 
 		// The name to which this PathMatcher is referred by the HostRule.
 		name!: string
-		default_route_action?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action"]])
-		default_url_redirect?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_url_redirect", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_url_redirect"]])
-		header_action?: matchN(1, [_#defs."/$defs/path_matcher/$defs/header_action", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/header_action"]])
-		path_rule?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule", [..._#defs."/$defs/path_matcher/$defs/path_rule"]])
-		route_rules?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules", [..._#defs."/$defs/path_matcher/$defs/route_rules"]])
 	})
 
 	#test: close({
@@ -1241,6 +1243,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/route_rules": close({
+		header_action?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/header_action", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/header_action"]])
+		match_rules?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules", [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules"]])
+		route_action?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action"]])
+		url_redirect?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/url_redirect", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/url_redirect"]])
+
 		// For routeRules within a given pathMatcher, priority determines
 		// the order
 		// in which load balancer will interpret routeRules. RouteRules
@@ -1266,10 +1273,6 @@ import "list"
 		// 15 in the
 		// future without any impact on existing rules.
 		priority!: number
-		header_action?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/header_action", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/header_action"]])
-		match_rules?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules", [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules"]])
-		route_action?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action"]])
-		url_redirect?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/url_redirect", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/url_redirect"]])
 
 		// The region backend service resource to which traffic is
 		// directed if this rule is matched. If routeAction is
@@ -1332,6 +1335,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/match_rules": close({
+		header_matches?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/header_matches", [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/header_matches"]])
+		metadata_filters?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/metadata_filters", [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/metadata_filters"]])
+		query_parameter_matches?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/query_parameter_matches", [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/query_parameter_matches"]])
+
 		// For satisfying the matchRule condition, the path of the request
 		// must exactly
 		// match the value specified in fullPathMatch after removing any
@@ -1378,12 +1385,11 @@ import "list"
 		// prefixMatch,
 		// fullPathMatch or regexMatch must be specified.
 		regex_match?: string
-		header_matches?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/header_matches", [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/header_matches"]])
-		metadata_filters?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/metadata_filters", [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/metadata_filters"]])
-		query_parameter_matches?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/query_parameter_matches", [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/query_parameter_matches"]])
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/header_matches": close({
+		range_match?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/header_matches/$defs/range_match", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/header_matches/$defs/range_match"]])
+
 		// The value should exactly match contents of exactMatch. Only one
 		// of exactMatch,
 		// prefixMatch, suffixMatch, regexMatch, presentMatch or
@@ -1432,7 +1438,6 @@ import "list"
 		// presentMatch or
 		// rangeMatch must be set.
 		regex_match?: string
-		range_match?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/header_matches/$defs/range_match", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/match_rules/$defs/header_matches/$defs/range_match"]])
 
 		// The value of the header must end with the contents of
 		// suffixMatch. Only one of

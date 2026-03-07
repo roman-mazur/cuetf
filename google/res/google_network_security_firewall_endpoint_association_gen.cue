@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_firewall_endpoint_association")
 	close({
+		timeouts?: #timeouts
+
 		// Time the firewall endpoint was created in UTC.
 		create_time?: string
 
@@ -22,6 +24,7 @@ package res
 
 		// The URL of the firewall endpoint that is being associated.
 		firewall_endpoint!: string
+		id?:                string
 
 		// A map of key/value label pairs to assign to the resource.
 		//
@@ -37,7 +40,6 @@ package res
 
 		// The name of the firewall endpoint association resource.
 		name!: string
-		id?:   string
 
 		// The URL of the network that is being associated.
 		network!: string
@@ -45,8 +47,7 @@ package res
 		// The name of the parent this firewall endpoint association
 		// belongs to.
 		// Format: projects/{project_id}.
-		parent?:   string
-		timeouts?: #timeouts
+		parent?: string
 
 		// Whether reconciling is in progress, recommended per
 		// https://google.aip.dev/128.

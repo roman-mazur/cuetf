@@ -6,15 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firestore_backup_schedule")
 	close({
+		daily_recurrence?: matchN(1, [#daily_recurrence, list.MaxItems(1) & [...#daily_recurrence]])
+		timeouts?: #timeouts
+		weekly_recurrence?: matchN(1, [#weekly_recurrence, list.MaxItems(1) & [...#weekly_recurrence]])
+
 		// The Firestore database id. Defaults to '"(default)"'.
 		database?: string
+		id?:       string
 
 		// The unique backup schedule identifier across all locations and
 		// databases for the given project. Format:
 		// 'projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}'
-		name?: string
-		daily_recurrence?: matchN(1, [#daily_recurrence, list.MaxItems(1) & [...#daily_recurrence]])
-		id?: string
+		name?:    string
+		project?: string
 
 		// At what relative time in the future, compared to its creation
 		// time, the backup should be deleted, e.g. keep backups for 7
@@ -24,9 +28,6 @@ import "list"
 		//
 		// You can set this to a value up to 14 weeks.
 		retention!: string
-		project?:   string
-		timeouts?:  #timeouts
-		weekly_recurrence?: matchN(1, [#weekly_recurrence, list.MaxItems(1) & [...#weekly_recurrence]])
 	})
 
 	#daily_recurrence: close({})

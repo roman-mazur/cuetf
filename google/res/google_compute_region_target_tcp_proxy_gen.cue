@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_target_tcp_proxy")
 	close({
+		timeouts?: #timeouts
+
 		// A reference to the BackendService resource.
 		backend_service!: string
 
@@ -42,7 +44,6 @@ package res
 
 		// The unique identifier for the resource.
 		proxy_id?: number
-		timeouts?: #timeouts
 
 		// The Region in which the created target TCP proxy should reside.
 		// If it is not provided, the provider region is used.

@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_oracle_database_autonomous_database")
 	close({
+		properties?: matchN(1, [#properties, list.MaxItems(1) & [...#properties]])
+		source_config?: matchN(1, [#source_config, list.MaxItems(1) & [...#source_config]])
+		timeouts?: #timeouts
+
 		// The password for the default ADMIN user.
 		admin_password?: string
 
@@ -68,9 +72,6 @@ import "list"
 		// documentation for resource type
 		// 'oracledatabase.googleapis.com/AutonomousDatabaseBackup'.
 		location!: string
-		properties?: matchN(1, [#properties, list.MaxItems(1) & [...#properties]])
-		source_config?: matchN(1, [#source_config, list.MaxItems(1) & [...#source_config]])
-		timeouts?: #timeouts
 
 		// Identifier. The name of the Autonomous Database resource in the
 		// following format:
@@ -107,6 +108,8 @@ import "list"
 	})
 
 	#properties: close({
+		customer_contacts?: matchN(1, [_#defs."/$defs/properties/$defs/customer_contacts", [..._#defs."/$defs/properties/$defs/customer_contacts"]])
+
 		// The amount of storage currently being used for user and system
 		// data, in
 		// terabytes.
@@ -314,7 +317,6 @@ import "list"
 
 		// The date and time when maintenance will end.
 		maintenance_end_time?: string
-		customer_contacts?: matchN(1, [_#defs."/$defs/properties/$defs/customer_contacts", [..._#defs."/$defs/properties/$defs/customer_contacts"]])
 
 		// The maintenance schedule of the Autonomous Database.
 		// Possible values:

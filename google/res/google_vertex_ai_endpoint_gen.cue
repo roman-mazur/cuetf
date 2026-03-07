@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_endpoint")
 	close({
+		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
+		predict_request_response_logging_config?: matchN(1, [#predict_request_response_logging_config, list.MaxItems(1) & [...#predict_request_response_logging_config]])
+		private_service_connect_config?: matchN(1, [#private_service_connect_config, list.MaxItems(1) & [...#private_service_connect_config]])
+		timeouts?: #timeouts
+
 		// Output only. Timestamp when this Endpoint was created.
 		create_time?: string
 
@@ -103,10 +108,6 @@ import "list"
 		// CreateModelDeploymentMonitoringJob. Format:
 		// 'projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}'
 		model_deployment_monitoring_job?: string
-		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
-		predict_request_response_logging_config?: matchN(1, [#predict_request_response_logging_config, list.MaxItems(1) & [...#predict_request_response_logging_config]])
-		private_service_connect_config?: matchN(1, [#private_service_connect_config, list.MaxItems(1) & [...#private_service_connect_config]])
-		timeouts?: #timeouts
 
 		// The resource name of the Endpoint. The name must be numeric
 		// with no leading zeros and can be at most 10 digits.

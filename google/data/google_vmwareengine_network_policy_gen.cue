@@ -30,6 +30,7 @@ package data
 			enabled?: bool
 			state?:   string
 		})]
+		id?: string
 
 		// Network service that allows VMware workloads to access the
 		// internet.
@@ -37,7 +38,6 @@ package data
 			enabled?: bool
 			state?:   string
 		})]
-		id?: string
 
 		// The resource name of the location (region) to create the new
 		// network policy in.
@@ -47,11 +47,11 @@ package data
 		location!: string
 
 		// The ID of the Network Policy.
-		name!: string
+		name!:    string
+		project?: string
 
 		// System-generated unique identifier for the resource.
-		uid?:     string
-		project?: string
+		uid?: string
 
 		// Last updated time of this resource.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond

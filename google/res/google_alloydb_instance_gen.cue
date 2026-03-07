@@ -6,6 +6,15 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_alloydb_instance")
 	close({
+		client_connection_config?: matchN(1, [#client_connection_config, list.MaxItems(1) & [...#client_connection_config]])
+		connection_pool_config?: matchN(1, [#connection_pool_config, list.MaxItems(1) & [...#connection_pool_config]])
+		machine_config?: matchN(1, [#machine_config, list.MaxItems(1) & [...#machine_config]])
+		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
+		psc_instance_config?: matchN(1, [#psc_instance_config, list.MaxItems(1) & [...#psc_instance_config]])
+		query_insights_config?: matchN(1, [#query_insights_config, list.MaxItems(1) & [...#query_insights_config]])
+		read_pool_config?: matchN(1, [#read_pool_config, list.MaxItems(1) & [...#read_pool_config]])
+		timeouts?: #timeouts
+
 		// 'Specifies whether an instance needs to spin up. Once the
 		// instance is
 		// active, the activation policy can be updated to the 'NEVER' to
@@ -111,13 +120,6 @@ import "list"
 		// The IP address for the Instance. This is the connection
 		// endpoint for an end-user application.
 		ip_address?: string
-		client_connection_config?: matchN(1, [#client_connection_config, list.MaxItems(1) & [...#client_connection_config]])
-		connection_pool_config?: matchN(1, [#connection_pool_config, list.MaxItems(1) & [...#connection_pool_config]])
-		machine_config?: matchN(1, [#machine_config, list.MaxItems(1) & [...#machine_config]])
-		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
-		psc_instance_config?: matchN(1, [#psc_instance_config, list.MaxItems(1) & [...#psc_instance_config]])
-		query_insights_config?: matchN(1, [#query_insights_config, list.MaxItems(1) & [...#query_insights_config]])
-		read_pool_config?: matchN(1, [#read_pool_config, list.MaxItems(1) & [...#read_pool_config]])
 
 		// User-defined labels for the alloydb instance.
 		//
@@ -136,7 +138,6 @@ import "list"
 		// addresses are used
 		// for outbound connections.
 		outbound_public_ip_addresses?: [...string]
-		timeouts?: #timeouts
 
 		// The public IP addresses for the Instance. This is available
 		// ONLY when
@@ -208,6 +209,8 @@ import "list"
 	})
 
 	#network_config: close({
+		authorized_external_networks?: matchN(1, [_#defs."/$defs/network_config/$defs/authorized_external_networks", [..._#defs."/$defs/network_config/$defs/authorized_external_networks"]])
+
 		// Name of the allocated IP range for the private IP AlloyDB
 		// instance, for example: "google-managed-services-default".
 		// If set, the instance IPs will be created from this allocated
@@ -217,7 +220,6 @@ import "list"
 		// name must be 1-63 characters long and match the regular
 		// expression [a-z]([-a-z0-9]*[a-z0-9])?.
 		allocated_ip_range_override?: string
-		authorized_external_networks?: matchN(1, [_#defs."/$defs/network_config/$defs/authorized_external_networks", [..._#defs."/$defs/network_config/$defs/authorized_external_networks"]])
 
 		// Enabling outbound public ip for the instance.
 		enable_outbound_public_ip?: bool
@@ -231,6 +233,9 @@ import "list"
 	})
 
 	#psc_instance_config: close({
+		psc_auto_connections?: matchN(1, [_#defs."/$defs/psc_instance_config/$defs/psc_auto_connections", [..._#defs."/$defs/psc_instance_config/$defs/psc_auto_connections"]])
+		psc_interface_configs?: matchN(1, [_#defs."/$defs/psc_instance_config/$defs/psc_interface_configs", [..._#defs."/$defs/psc_instance_config/$defs/psc_interface_configs"]])
+
 		// List of consumer projects that are allowed to create PSC
 		// endpoints to service-attachments to this instance.
 		// These should be specified as project numbers only.
@@ -239,14 +244,12 @@ import "list"
 		// The DNS name of the instance for PSC connectivity.
 		// Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
 		psc_dns_name?: string
-		psc_auto_connections?: matchN(1, [_#defs."/$defs/psc_instance_config/$defs/psc_auto_connections", [..._#defs."/$defs/psc_instance_config/$defs/psc_auto_connections"]])
 
 		// The service attachment created when Private Service Connect
 		// (PSC) is enabled for the instance.
 		// The name of the resource will be in the format of
 		// 'projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>'
 		service_attachment_link?: string
-		psc_interface_configs?: matchN(1, [_#defs."/$defs/psc_instance_config/$defs/psc_interface_configs", [..._#defs."/$defs/psc_instance_config/$defs/psc_interface_configs"]])
 	})
 
 	#query_insights_config: close({

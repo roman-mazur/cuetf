@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_hub_membership_binding")
 	close({
+		timeouts?: #timeouts
+
 		// Time the MembershipBinding was created in UTC.
 		create_time?: string
 
@@ -14,6 +16,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Labels for this Membership binding.
 		//
@@ -23,7 +26,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Location of the membership
 		location!: string
@@ -35,13 +37,12 @@ package res
 		membership_id!: string
 
 		// The resource name for the membershipbinding itself
-		name?: string
+		name?:    string
+		project?: string
 
 		// A Workspace resource name in the format
 		// 'projects/*/locations/*/scopes/*'.
-		scope!:    string
-		timeouts?: #timeouts
-		project?:  string
+		scope!: string
 
 		// State of the membership binding resource.
 		state?: [...close({

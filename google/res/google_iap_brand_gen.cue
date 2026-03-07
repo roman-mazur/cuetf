@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iap_brand")
 	close({
+		timeouts?: #timeouts
+
 		// Application name displayed on OAuth consent screen.
 		application_title!: string
 		id?:                string
@@ -21,7 +23,6 @@ package res
 		// Whether the brand is only intended for usage inside the GSuite
 		// organization only.
 		org_internal_only?: bool
-		timeouts?:          #timeouts
 		project?:           string
 
 		// Support email displayed on the OAuth consent screen. Can be

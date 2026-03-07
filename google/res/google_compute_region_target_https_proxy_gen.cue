@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_target_https_proxy")
 	close({
+		timeouts?: #timeouts
+
 		// URLs to certificate manager certificate resources that are used
 		// to authenticate connections between users and the load
 		// balancer.
@@ -31,6 +33,7 @@ package res
 		// and the
 		// maximum allowed value is 600 seconds.
 		http_keep_alive_timeout_sec?: number
+		id?:                          string
 
 		// Name of the resource. Provided by the client when the resource
 		// is
@@ -43,12 +46,11 @@ package res
 		// characters must be a dash, lowercase letter, or digit, except
 		// the last
 		// character, which cannot be a dash.
-		name!: string
-		id?:   string
+		name!:    string
+		project?: string
 
 		// The unique identifier for the resource.
 		proxy_id?: number
-		project?:  string
 
 		// The Region in which the created target https proxy should
 		// reside.
@@ -90,7 +92,6 @@ package res
 		// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
 		// resource will not have any SSL policy configured.
 		ssl_policy?: string
-		timeouts?:   #timeouts
 
 		// A reference to the RegionUrlMap resource that defines the
 		// mapping from URL

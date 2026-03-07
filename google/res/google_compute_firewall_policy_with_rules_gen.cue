@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_firewall_policy_with_rules")
 	close({
+		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
+		timeouts?: #timeouts
+
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
@@ -68,8 +71,6 @@ import "list"
 		// Total count of all firewall policy rule tuples. A firewall
 		// policy can not exceed a set number of tuples.
 		rule_tuple_count?: number
-		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
-		timeouts?: #timeouts
 
 		// Server-defined URL for the resource.
 		self_link?: string
@@ -82,6 +83,9 @@ import "list"
 	})
 
 	#rule: close({
+		match!: matchN(1, [_#defs."/$defs/rule/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/match"]])
+		target_secure_tag?: matchN(1, [_#defs."/$defs/rule/$defs/target_secure_tag", [..._#defs."/$defs/rule/$defs/target_secure_tag"]])
+
 		// The Action to perform when the client connection triggers the
 		// rule. Can currently be either
 		// "allow", "deny", "apply_security_profile_group" or "goto_next".
@@ -126,8 +130,6 @@ import "list"
 		// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
 		// Must be specified if action is 'apply_security_profile_group'.
 		security_profile_group?: string
-		match!: matchN(1, [_#defs."/$defs/rule/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/match"]])
-		target_secure_tag?: matchN(1, [_#defs."/$defs/rule/$defs/target_secure_tag", [..._#defs."/$defs/rule/$defs/target_secure_tag"]])
 
 		// A list of network resource URLs to which this rule applies.
 		// This field allows you to control which network's VMs get
@@ -152,6 +154,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/rule/$defs/match": close({
+		layer4_config!: matchN(1, [_#defs."/$defs/rule/$defs/match/$defs/layer4_config", [_, ...] & [..._#defs."/$defs/rule/$defs/match/$defs/layer4_config"]])
+		src_secure_tag?: matchN(1, [_#defs."/$defs/rule/$defs/match/$defs/src_secure_tag", [..._#defs."/$defs/rule/$defs/match/$defs/src_secure_tag"]])
+
 		// Address groups which should be matched against the traffic
 		// destination.
 		// Maximum number of destination address groups is 10.
@@ -189,8 +194,6 @@ import "list"
 		// against
 		// traffic source. Maximum number of source fqdn allowed is 100.
 		src_fqdns?: [...string]
-		layer4_config!: matchN(1, [_#defs."/$defs/rule/$defs/match/$defs/layer4_config", [_, ...] & [..._#defs."/$defs/rule/$defs/match/$defs/layer4_config"]])
-		src_secure_tag?: matchN(1, [_#defs."/$defs/rule/$defs/match/$defs/src_secure_tag", [..._#defs."/$defs/rule/$defs/match/$defs/src_secure_tag"]])
 
 		// Source IP address range in CIDR format. Required for
 		// INGRESS rules.

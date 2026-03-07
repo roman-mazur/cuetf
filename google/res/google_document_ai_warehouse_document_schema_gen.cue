@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_document_ai_warehouse_document_schema")
 	close({
+		property_definitions!: matchN(1, [#property_definitions, [_, ...] & [...#property_definitions]])
+		timeouts?: #timeouts
+
 		// Name of the schema given by the user.
 		display_name!: string
 
@@ -15,20 +18,27 @@ import "list"
 
 		// The location of the resource.
 		location!: string
-		property_definitions!: matchN(1, [#property_definitions, [_, ...] & [...#property_definitions]])
 
 		// The resource name of the document schema.
 		name?: string
 
 		// The unique identifier of the project.
 		project_number!: string
-		timeouts?:       #timeouts
 	})
 
 	#property_definitions: close({
+		date_time_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/date_time_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/date_time_type_options"]])
+		enum_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/enum_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/enum_type_options"]])
+		float_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/float_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/float_type_options"]])
+		integer_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/integer_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/integer_type_options"]])
+		map_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/map_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/map_type_options"]])
+		property_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/property_type_options"]])
+		schema_sources?: matchN(1, [_#defs."/$defs/property_definitions/$defs/schema_sources", [..._#defs."/$defs/property_definitions/$defs/schema_sources"]])
+		text_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/text_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/text_type_options"]])
+		timestamp_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/timestamp_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/timestamp_type_options"]])
+
 		// The display-name for the property, used for front-end.
 		display_name?: string
-		date_time_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/date_time_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/date_time_type_options"]])
 
 		// Whether the property can be filtered. If this is a
 		// sub-property, all the parent properties must be marked
@@ -43,18 +53,10 @@ import "list"
 
 		// Whether the property is mandatory.
 		is_required?: bool
-		enum_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/enum_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/enum_type_options"]])
 
 		// Indicates that the property should be included in a global
 		// search.
 		is_searchable?: bool
-		float_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/float_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/float_type_options"]])
-		integer_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/integer_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/integer_type_options"]])
-		map_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/map_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/map_type_options"]])
-		property_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/property_type_options"]])
-		schema_sources?: matchN(1, [_#defs."/$defs/property_definitions/$defs/schema_sources", [..._#defs."/$defs/property_definitions/$defs/schema_sources"]])
-		text_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/text_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/text_type_options"]])
-		timestamp_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/timestamp_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/timestamp_type_options"]])
 
 		// The name of the metadata property.
 		name!: string
@@ -92,6 +94,15 @@ import "list"
 	})
 
 	_#defs: "/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions": close({
+		date_time_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/date_time_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/date_time_type_options"]])
+		enum_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/enum_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/enum_type_options"]])
+		float_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/float_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/float_type_options"]])
+		integer_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/integer_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/integer_type_options"]])
+		map_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/map_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/map_type_options"]])
+		schema_sources?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/schema_sources", [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/schema_sources"]])
+		text_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/text_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/text_type_options"]])
+		timestamp_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/timestamp_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/timestamp_type_options"]])
+
 		// The display-name for the property, used for front-end.
 		display_name?: string
 
@@ -112,14 +123,6 @@ import "list"
 		// Indicates that the property should be included in a global
 		// search.
 		is_searchable?: bool
-		date_time_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/date_time_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/date_time_type_options"]])
-		enum_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/enum_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/enum_type_options"]])
-		float_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/float_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/float_type_options"]])
-		integer_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/integer_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/integer_type_options"]])
-		map_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/map_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/map_type_options"]])
-		schema_sources?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/schema_sources", [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/schema_sources"]])
-		text_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/text_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/text_type_options"]])
-		timestamp_type_options?: matchN(1, [_#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/timestamp_type_options", list.MaxItems(1) & [..._#defs."/$defs/property_definitions/$defs/property_type_options/$defs/property_definitions/$defs/timestamp_type_options"]])
 
 		// The name of the metadata property.
 		name!: string

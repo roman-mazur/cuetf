@@ -6,21 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_tool")
 	close({
+		data_store_spec?: matchN(1, [#data_store_spec, list.MaxItems(1) & [...#data_store_spec]])
+		function_spec?: matchN(1, [#function_spec, list.MaxItems(1) & [...#function_spec]])
+		open_api_spec?: matchN(1, [#open_api_spec, list.MaxItems(1) & [...#open_api_spec]])
+		timeouts?: #timeouts
+
 		// High level description of the Tool and its usage.
 		description!: string
-		data_store_spec?: matchN(1, [#data_store_spec, list.MaxItems(1) & [...#data_store_spec]])
 
 		// The human-readable name of the tool, unique within the agent.
 		display_name!: string
 		id?:           string
-		function_spec?: matchN(1, [#function_spec, list.MaxItems(1) & [...#function_spec]])
 
 		// The unique identifier of the Tool.
 		// Format: projects/<Project ID>/locations/<Location
 		// ID>/agents/<Agent ID>/tools/<Tool ID>.
 		name?: string
-		open_api_spec?: matchN(1, [#open_api_spec, list.MaxItems(1) & [...#open_api_spec]])
-		timeouts?: #timeouts
 
 		// The agent to create a Tool for.
 		// Format: projects/<Project ID>/locations/<Location

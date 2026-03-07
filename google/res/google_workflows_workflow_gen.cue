@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_workflows_workflow")
 	close({
+		timeouts?: #timeouts
+
 		// Describes the level of platform logging to apply to calls and
 		// call responses during
 		// executions of this workflow. If both the workflow and the
@@ -67,16 +69,16 @@ package res
 		labels?: [string]: string
 
 		// Name of the Workflow.
-		name?: string
+		name?:        string
+		name_prefix?: string
+		project?:     string
 
 		// The region of the workflow.
-		region?:      string
-		name_prefix?: string
+		region?: string
 
 		// The revision of the workflow. A new one is generated if the
 		// service account or source contents is changed.
 		revision_id?: string
-		project?:     string
 
 		// Name of the service account associated with the latest workflow
 		// version. This service
@@ -93,7 +95,6 @@ package res
 		// Modifying this field for an existing workflow results in a new
 		// workflow revision.
 		service_account?: string
-		timeouts?:        #timeouts
 
 		// Workflow code to be executed. The size limit is 128KB.
 		source_contents?: string

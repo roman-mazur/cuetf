@@ -8,10 +8,10 @@ package data
 		// Cloud SQL instance. If left empty and multiple backups exist
 		// for the instance, most_recent must be set to true.
 		backup_id?: number
+		id?:        string
 
 		// Name of the database instance.
 		instance!: string
-		id?:       string
 
 		// Location of the backups.
 		location?: string

@@ -6,6 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_metastore_service")
 	close({
+		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
+		hive_metastore_config?: matchN(1, [#hive_metastore_config, list.MaxItems(1) & [...#hive_metastore_config]])
+		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
+		metadata_integration?: matchN(1, [#metadata_integration, list.MaxItems(1) & [...#metadata_integration]])
+		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
+		scaling_config?: matchN(1, [#scaling_config, list.MaxItems(1) & [...#scaling_config]])
+		scheduled_backup?: matchN(1, [#scheduled_backup, list.MaxItems(1) & [...#scheduled_backup]])
+		telemetry_config?: matchN(1, [#telemetry_config, list.MaxItems(1) & [...#telemetry_config]])
+		timeouts?: #timeouts
+
 		// A Cloud Storage URI (starting with gs://) that specifies where
 		// artifacts related to the metastore service are stored.
 		artifact_gcs_uri?: string
@@ -61,15 +71,6 @@ import "list"
 		// 'STABLE'. Default value: "STABLE" Possible values: ["CANARY",
 		// "STABLE"]
 		release_channel?: string
-		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
-		hive_metastore_config?: matchN(1, [#hive_metastore_config, list.MaxItems(1) & [...#hive_metastore_config]])
-		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
-		metadata_integration?: matchN(1, [#metadata_integration, list.MaxItems(1) & [...#metadata_integration]])
-		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
-		scaling_config?: matchN(1, [#scaling_config, list.MaxItems(1) & [...#scaling_config]])
-		scheduled_backup?: matchN(1, [#scheduled_backup, list.MaxItems(1) & [...#scheduled_backup]])
-		telemetry_config?: matchN(1, [#telemetry_config, list.MaxItems(1) & [...#telemetry_config]])
-		timeouts?: #timeouts
 
 		// The ID of the metastore service. The id must contain only
 		// letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -118,6 +119,9 @@ import "list"
 	})
 
 	#hive_metastore_config: close({
+		auxiliary_versions?: matchN(1, [_#defs."/$defs/hive_metastore_config/$defs/auxiliary_versions", [..._#defs."/$defs/hive_metastore_config/$defs/auxiliary_versions"]])
+		kerberos_config?: matchN(1, [_#defs."/$defs/hive_metastore_config/$defs/kerberos_config", list.MaxItems(1) & [..._#defs."/$defs/hive_metastore_config/$defs/kerberos_config"]])
+
 		// A mapping of Hive metastore configuration key-value pairs to
 		// apply to the Hive metastore (configured in hive-site.xml).
 		// The mappings override system defaults (some keys cannot be
@@ -128,11 +132,9 @@ import "list"
 		// unspecified, defaults to 'THRIFT'. Default value: "THRIFT"
 		// Possible values: ["THRIFT", "GRPC"]
 		endpoint_protocol?: string
-		auxiliary_versions?: matchN(1, [_#defs."/$defs/hive_metastore_config/$defs/auxiliary_versions", [..._#defs."/$defs/hive_metastore_config/$defs/auxiliary_versions"]])
 
 		// The Hive metastore schema version.
 		version!: string
-		kerberos_config?: matchN(1, [_#defs."/$defs/hive_metastore_config/$defs/kerberos_config", list.MaxItems(1) & [..._#defs."/$defs/hive_metastore_config/$defs/kerberos_config"]])
 	})
 
 	#maintenance_window: close({

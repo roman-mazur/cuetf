@@ -6,15 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_integrations_client")
 	close({
+		cloud_kms_config?: matchN(1, [#cloud_kms_config, list.MaxItems(1) & [...#cloud_kms_config]])
+		timeouts?: #timeouts
+
 		// Indicates if sample integrations should be created along with
 		// provisioning.
 		create_sample_integrations?: bool
+		id?:                         string
 
 		// Location in which client needs to be provisioned.
 		location!: string
-		id?:       string
-		cloud_kms_config?: matchN(1, [#cloud_kms_config, list.MaxItems(1) & [...#cloud_kms_config]])
-		timeouts?: #timeouts
 		project?:  string
 	})
 

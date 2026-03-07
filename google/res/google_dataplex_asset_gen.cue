@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_asset")
 	close({
+		discovery_spec!: matchN(1, [#discovery_spec, list.MaxItems(1) & [_, ...] & [...#discovery_spec]])
+		resource_spec!: matchN(1, [#resource_spec, list.MaxItems(1) & [_, ...] & [...#resource_spec]])
+		timeouts?: #timeouts
+
 		// Output only. The time when the asset was created.
 		create_time?: string
 
@@ -38,6 +42,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Optional. User defined labels for the asset.
 		//
@@ -52,13 +57,9 @@ import "list"
 
 		// The location for the resource
 		location!: string
-		id?:       string
 
 		// The name of the asset.
 		name!: string
-		discovery_spec!: matchN(1, [#discovery_spec, list.MaxItems(1) & [_, ...] & [...#discovery_spec]])
-		resource_spec!: matchN(1, [#resource_spec, list.MaxItems(1) & [_, ...] & [...#resource_spec]])
-		timeouts?: #timeouts
 
 		// The project for the resource
 		project?: string
@@ -96,6 +97,9 @@ import "list"
 	})
 
 	#discovery_spec: close({
+		csv_options?: matchN(1, [_#defs."/$defs/discovery_spec/$defs/csv_options", list.MaxItems(1) & [..._#defs."/$defs/discovery_spec/$defs/csv_options"]])
+		json_options?: matchN(1, [_#defs."/$defs/discovery_spec/$defs/json_options", list.MaxItems(1) & [..._#defs."/$defs/discovery_spec/$defs/json_options"]])
+
 		// Required. Whether discovery is enabled.
 		enabled!: bool
 
@@ -124,8 +128,6 @@ import "list"
 		// zone database. For example, "CRON_TZ=America/New_York 1 * * *
 		// *", or "TZ=America/New_York 1 * * * *".
 		schedule?: string
-		csv_options?: matchN(1, [_#defs."/$defs/discovery_spec/$defs/csv_options", list.MaxItems(1) & [..._#defs."/$defs/discovery_spec/$defs/csv_options"]])
-		json_options?: matchN(1, [_#defs."/$defs/discovery_spec/$defs/json_options", list.MaxItems(1) & [..._#defs."/$defs/discovery_spec/$defs/json_options"]])
 	})
 
 	#resource_spec: close({

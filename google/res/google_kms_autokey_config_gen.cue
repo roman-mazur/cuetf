@@ -4,14 +4,15 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_kms_autokey_config")
 	close({
+		timeouts?: #timeouts
+
 		// The etag of the AutokeyConfig for optimistic concurrency
 		// control.
 		etag?: string
 
 		// The folder for which to retrieve config.
-		folder!:   string
-		id?:       string
-		timeouts?: #timeouts
+		folder!: string
+		id?:     string
 
 		// The target key project for a given folder where KMS Autokey
 		// will provision a

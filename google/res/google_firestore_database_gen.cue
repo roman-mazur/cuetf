@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firestore_database")
 	close({
+		cmek_config?: matchN(1, [#cmek_config, list.MaxItems(1) & [...#cmek_config]])
+		timeouts?: #timeouts
+
 		// The App Engine integration mode to use for this database.
 		// Possible values: ["ENABLED", "DISABLED"]
 		app_engine_integration_mode?: string
@@ -72,6 +75,7 @@ import "list"
 		// specified for 'ENTERPRISE' edition databases. Possible values:
 		// ["DATA_ACCESS_MODE_ENABLED", "DATA_ACCESS_MODE_DISABLED"]
 		firestore_data_access_mode?: string
+		id?:                         string
 
 		// Output only. The keyPrefix for this database.
 		// This keyPrefix is used, in combination with the project id
@@ -81,7 +85,6 @@ import "list"
 		// This value may be empty in which case the appid to use for
 		// URL-encoded keys is the project_id (eg: foo instead of v~foo).
 		key_prefix?: string
-		id?:         string
 
 		// The location of the database. Available locations are listed at
 		// https://cloud.google.com/firestore/docs/locations.
@@ -93,8 +96,6 @@ import "list"
 		// values: ["DATA_ACCESS_MODE_ENABLED",
 		// "DATA_ACCESS_MODE_DISABLED"]
 		mongodb_compatible_data_access_mode?: string
-		cmek_config?: matchN(1, [#cmek_config, list.MaxItems(1) & [...#cmek_config]])
-		timeouts?: #timeouts
 
 		// The ID to use for the database, which will become the final
 		// component of the database's resource name. This value should be

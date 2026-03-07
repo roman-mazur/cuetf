@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloudfunctions2_function")
 	close({
+		build_config?: matchN(1, [#build_config, list.MaxItems(1) & [...#build_config]])
+		event_trigger?: matchN(1, [#event_trigger, list.MaxItems(1) & [...#event_trigger]])
+		service_config?: matchN(1, [#service_config, list.MaxItems(1) & [...#service_config]])
+		timeouts?: #timeouts
+
 		// User-provided description of a function.
 		description?: string
 
@@ -16,13 +21,13 @@ import "list"
 
 		// The environment the function is hosted on.
 		environment?: string
+		id?:          string
 
 		// Resource name of a KMS crypto key (managed by the user) used to
 		// encrypt/decrypt function resources.
 		// It must match the pattern
 		// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
 		kms_key_name?: string
-		id?:           string
 
 		// A set of key/value label pairs associated with this Cloud
 		// Function.
@@ -40,15 +45,11 @@ import "list"
 		// A user-defined name of the function. Function names must
 		// be unique globally and match pattern
 		// 'projects/*/locations/*/functions/*'.
-		name!: string
+		name!:    string
+		project?: string
 
 		// Describes the current state of the function.
 		state?: string
-		build_config?: matchN(1, [#build_config, list.MaxItems(1) & [...#build_config]])
-		event_trigger?: matchN(1, [#event_trigger, list.MaxItems(1) & [...#event_trigger]])
-		service_config?: matchN(1, [#service_config, list.MaxItems(1) & [...#service_config]])
-		timeouts?: #timeouts
-		project?:  string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -62,6 +63,10 @@ import "list"
 	})
 
 	#build_config: close({
+		automatic_update_policy?: matchN(1, [_#defs."/$defs/build_config/$defs/automatic_update_policy", list.MaxItems(1) & [..._#defs."/$defs/build_config/$defs/automatic_update_policy"]])
+		on_deploy_update_policy?: matchN(1, [_#defs."/$defs/build_config/$defs/on_deploy_update_policy", list.MaxItems(1) & [..._#defs."/$defs/build_config/$defs/on_deploy_update_policy"]])
+		source?: matchN(1, [_#defs."/$defs/build_config/$defs/source", list.MaxItems(1) & [..._#defs."/$defs/build_config/$defs/source"]])
+
 		// The Cloud Build name of the latest successful
 		// deployment of the function.
 		build?: string
@@ -89,13 +94,10 @@ import "list"
 		// deploying a new
 		// function, optional when updating an existing function.
 		runtime?: string
-		automatic_update_policy?: matchN(1, [_#defs."/$defs/build_config/$defs/automatic_update_policy", list.MaxItems(1) & [..._#defs."/$defs/build_config/$defs/automatic_update_policy"]])
-		on_deploy_update_policy?: matchN(1, [_#defs."/$defs/build_config/$defs/on_deploy_update_policy", list.MaxItems(1) & [..._#defs."/$defs/build_config/$defs/on_deploy_update_policy"]])
 
 		// The fully-qualified name of the service account to be used for
 		// building the container.
 		service_account?: string
-		source?: matchN(1, [_#defs."/$defs/build_config/$defs/source", list.MaxItems(1) & [..._#defs."/$defs/build_config/$defs/source"]])
 
 		// Name of the Cloud Build Custom Worker Pool that should be used
 		// to build the function.
@@ -103,6 +105,8 @@ import "list"
 	})
 
 	#event_trigger: close({
+		event_filters?: matchN(1, [_#defs."/$defs/event_trigger/$defs/event_filters", [..._#defs."/$defs/event_trigger/$defs/event_filters"]])
+
 		// Required. The type of event to observe.
 		event_type!: string
 
@@ -137,10 +141,13 @@ import "list"
 		// region. If not provided, defaults to the same region as the
 		// function.
 		trigger_region?: string
-		event_filters?: matchN(1, [_#defs."/$defs/event_trigger/$defs/event_filters", [..._#defs."/$defs/event_trigger/$defs/event_filters"]])
 	})
 
 	#service_config: close({
+		direct_vpc_network_interface?: matchN(1, [_#defs."/$defs/service_config/$defs/direct_vpc_network_interface", [..._#defs."/$defs/service_config/$defs/direct_vpc_network_interface"]])
+		secret_environment_variables?: matchN(1, [_#defs."/$defs/service_config/$defs/secret_environment_variables", [..._#defs."/$defs/service_config/$defs/secret_environment_variables"]])
+		secret_volumes?: matchN(1, [_#defs."/$defs/service_config/$defs/secret_volumes", [..._#defs."/$defs/service_config/$defs/secret_volumes"]])
+
 		// Whether 100% of traffic is routed to the latest revision.
 		// Defaults to true.
 		all_traffic_on_latest_revision?: bool
@@ -190,9 +197,6 @@ import "list"
 		// coexist at a
 		// given time.
 		min_instance_count?: number
-		direct_vpc_network_interface?: matchN(1, [_#defs."/$defs/service_config/$defs/direct_vpc_network_interface", [..._#defs."/$defs/service_config/$defs/direct_vpc_network_interface"]])
-		secret_environment_variables?: matchN(1, [_#defs."/$defs/service_config/$defs/secret_environment_variables", [..._#defs."/$defs/service_config/$defs/secret_environment_variables"]])
-		secret_volumes?: matchN(1, [_#defs."/$defs/service_config/$defs/secret_volumes", [..._#defs."/$defs/service_config/$defs/secret_volumes"]])
 
 		// Name of the service associated with a Function.
 		service?: string
@@ -346,13 +350,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/service_config/$defs/secret_volumes": close({
+		versions?: matchN(1, [_#defs."/$defs/service_config/$defs/secret_volumes/$defs/versions", [..._#defs."/$defs/service_config/$defs/secret_volumes/$defs/versions"]])
+
 		// The path within the container to mount the secret volume. For
 		// example, setting the mountPath as /etc/secrets would mount the
 		// secret value files under the /etc/secrets directory. This
 		// directory will also be completely shadowed and unavailable to
 		// mount any other secrets. Recommended mount path: /etc/secrets
 		mount_path!: string
-		versions?: matchN(1, [_#defs."/$defs/service_config/$defs/secret_volumes/$defs/versions", [..._#defs."/$defs/service_config/$defs/secret_volumes/$defs/versions"]])
 
 		// Project identifier (preferably project number but can also be
 		// the project ID) of the project that contains the secret. If

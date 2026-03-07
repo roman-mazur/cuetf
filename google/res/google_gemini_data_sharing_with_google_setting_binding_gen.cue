@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gemini_data_sharing_with_google_setting_binding")
 	close({
+		timeouts?: #timeouts
+
 		// Create time stamp.
 		create_time?: string
 
@@ -16,6 +18,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Labels as key value pairs.
 		//
@@ -24,7 +27,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -40,11 +42,10 @@ package res
 		// reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings)
 		// for a complete list.
 		product?: string
+		project?: string
 
 		// Required. Id of the setting binding.
 		setting_binding_id!: string
-		timeouts?:           #timeouts
-		project?:            string
 
 		// Target of the binding.
 		target!: string

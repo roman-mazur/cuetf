@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_interconnect")
 	close({
+		macsec?: matchN(1, [#macsec, list.MaxItems(1) & [...#macsec]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
+		timeouts?: #timeouts
+
 		// Administrative status of the interconnect. When this is set to
 		// true, the Interconnect is
 		// functional and can carry traffic. When set to false, no packets
@@ -141,8 +145,6 @@ import "list"
 		// Enable or disable MACsec on this Interconnect connection.
 		// MACsec enablement fails if the MACsec object is not specified.
 		macsec_enabled?: bool
-		macsec?: matchN(1, [#macsec, list.MaxItems(1) & [...#macsec]])
-		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 
 		// Name of the resource. Provided by the client when the resource
 		// is created. The name must be
@@ -186,11 +188,10 @@ import "list"
 		// when prompted by Google NOC.
 		// This can be used only for ping tests.
 		peer_ip_address?: string
+		project?:         string
 
 		// Number of links actually provisioned in this interconnect.
 		provisioned_link_count?: number
-		timeouts?:               #timeouts
-		project?:                string
 
 		// Indicates that this is a Cross-Cloud Interconnect. This field
 		// specifies the location outside

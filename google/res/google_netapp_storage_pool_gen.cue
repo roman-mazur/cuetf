@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_storage_pool")
 	close({
+		timeouts?: #timeouts
+
 		// Specifies the Active Directory policy to be used. Format:
 		// 'projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}'.
 		// The policy needs to be in the same location as the storage
@@ -88,7 +90,6 @@ package res
 		// Name of the location. For zonal Flex pools specify a zone name,
 		// in all other cases a region name.
 		location!: string
-		timeouts?: #timeouts
 
 		// The resource name of the storage pool. Needs to be unique per
 		// location/region.

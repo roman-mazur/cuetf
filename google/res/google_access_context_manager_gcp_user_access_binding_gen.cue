@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_access_context_manager_gcp_user_access_binding")
 	close({
+		scoped_access_settings?: matchN(1, [#scoped_access_settings, [...#scoped_access_settings]])
+		session_settings?: matchN(1, [#session_settings, list.MaxItems(1) & [...#session_settings]])
+		timeouts?: #timeouts
+
 		// Optional. Access level that a user must have to be granted
 		// access. Only one access level is supported, not multiple. This
 		// repeated field must have exactly one element. Example:
@@ -27,12 +31,9 @@ import "list"
 		// specified by the client during creation. Example:
 		// "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
 		name?: string
-		scoped_access_settings?: matchN(1, [#scoped_access_settings, [...#scoped_access_settings]])
-		session_settings?: matchN(1, [#session_settings, list.MaxItems(1) & [...#session_settings]])
 
 		// Required. ID of the parent organization.
 		organization_id!: string
-		timeouts?:        #timeouts
 	})
 
 	#scoped_access_settings: close({

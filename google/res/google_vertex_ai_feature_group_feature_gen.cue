@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_feature_group_feature")
 	close({
+		timeouts?: #timeouts
+
 		// The timestamp of when the FeatureGroup was created in RFC3339
 		// UTC "Zulu" format, with nanosecond resolution and up to nine
 		// fractional digits.
@@ -19,6 +21,7 @@ package res
 
 		// The name of the Feature Group.
 		feature_group!: string
+		id?:            string
 
 		// The labels with user-defined metadata to organize your
 		// FeatureGroup.
@@ -28,7 +31,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The resource name of the Feature Group Feature.
 		name!:    string
@@ -36,8 +38,7 @@ package res
 
 		// The region for the resource. It should be the same as the
 		// feature group's region.
-		region!:   string
-		timeouts?: #timeouts
+		region!: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

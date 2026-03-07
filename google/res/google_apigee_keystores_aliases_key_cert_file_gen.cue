@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_keystores_aliases_key_cert_file")
 	close({
+		timeouts?: #timeouts
+
 		// Alias Name.
 		alias!: string
 
@@ -36,7 +38,6 @@ package res
 
 		// Keystore Name.
 		keystore!: string
-		timeouts?: #timeouts
 
 		// Organization ID associated with the alias.
 		org_id!: string

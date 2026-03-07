@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_assistant")
 	close({
+		customer_policy?: matchN(1, [#customer_policy, list.MaxItems(1) & [...#customer_policy]])
+		generation_config?: matchN(1, [#generation_config, list.MaxItems(1) & [...#generation_config]])
+		timeouts?: #timeouts
+
 		// The unique id of the assistant.
 		assistant_id!: string
 
@@ -38,11 +42,8 @@ import "list"
 		//
 		// It must be a UTF-8 encoded string with a length limit of 1024
 		// characters.
-		name?: string
-		customer_policy?: matchN(1, [#customer_policy, list.MaxItems(1) & [...#customer_policy]])
-		generation_config?: matchN(1, [#generation_config, list.MaxItems(1) & [...#generation_config]])
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// The type of web grounding to use.
 		// The supported values: 'WEB_GROUNDING_TYPE_DISABLED',

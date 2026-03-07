@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_security_profile_group")
 	close({
+		timeouts?: #timeouts
+
 		// Time the security profile group was created in UTC.
 		create_time?: string
 
@@ -44,7 +46,6 @@ package res
 		// The location of the security profile group.
 		// The default value is 'global'.
 		location?: string
-		timeouts?: #timeouts
 
 		// The name of the security profile group resource.
 		name!: string
@@ -63,6 +64,10 @@ package res
 
 		// Time the security profile group was updated in UTC.
 		update_time?: string
+
+		// Reference to a SecurityProfile with the URL filtering
+		// configuration for the SecurityProfileGroup.
+		url_filtering_profile?: string
 	})
 
 	#timeouts: close({

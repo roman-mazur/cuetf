@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_interconnect_group")
 	close({
+		intent!: matchN(1, [#intent, list.MaxItems(1) & [_, ...] & [...#intent]])
+		interconnects?: matchN(1, [#interconnects, [...#interconnects]])
+		timeouts?: #timeouts
+
 		// The status of the group as configured. This has the same
 		// structure as the operational field reported by the
 		// OperationalStatus
@@ -62,10 +66,7 @@ import "list"
 				metro?: string
 			})]
 		})]
-		intent!: matchN(1, [#intent, list.MaxItems(1) & [_, ...] & [...#intent]])
-		interconnects?: matchN(1, [#interconnects, [...#interconnects]])
-		project?:  string
-		timeouts?: #timeouts
+		project?: string
 	})
 
 	#intent: close({

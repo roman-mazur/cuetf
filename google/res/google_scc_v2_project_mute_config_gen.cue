@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_v2_project_mute_config")
 	close({
+		timeouts?: #timeouts
+
 		// The time at which the mute config was created. This field is
 		// set by
 		// the server and will be ignored if provided on config creation.
@@ -41,9 +43,8 @@ package res
 		// folders/{folder}/locations/global/muteConfigs/{configId},
 		// or
 		// organizations/{organization}/locations/global/muteConfigs/{configId}
-		name?:     string
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// The type of the mute config.
 		type!: string

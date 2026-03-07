@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigtable_instance")
 	close({
+		cluster?: matchN(1, [#cluster, [...#cluster]])
+		timeouts?: #timeouts
+
 		// When the field is set to true or unset in Terraform state, a
 		// terraform apply or terraform destroy that would delete the
 		// instance will fail. When the field is set to false, deleting
@@ -24,6 +27,7 @@ import "list"
 		// When deleting a BigTable instance, this boolean option will
 		// delete all backups within the instance.
 		force_destroy?: bool
+		id?:            string
 
 		// A mapping of labels to assign to the resource.
 		//
@@ -32,14 +36,11 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The name (also called Instance Id in the Cloud Console) of the
 		// Cloud Bigtable instance. Must be 6-33 characters and must only
 		// contain hyphens, lowercase letters and numbers.
 		name!: string
-		cluster?: matchN(1, [#cluster, [...#cluster]])
-		timeouts?: #timeouts
 
 		// The ID of the project in which the resource belongs. If it is
 		// not provided, the provider project is used.
@@ -51,6 +52,8 @@ import "list"
 	})
 
 	#cluster: close({
+		autoscaling_config?: matchN(1, [_#defs."/$defs/cluster/$defs/autoscaling_config", list.MaxItems(1) & [..._#defs."/$defs/cluster/$defs/autoscaling_config"]])
+
 		// The ID of the Cloud Bigtable cluster. Must be 6-30 characters
 		// and must only contain hyphens, lowercase letters and numbers.
 		cluster_id!: string
@@ -83,7 +86,6 @@ import "list"
 		// The storage type to use. One of "SSD" or "HDD". Defaults to
 		// "SSD".
 		storage_type?: string
-		autoscaling_config?: matchN(1, [_#defs."/$defs/cluster/$defs/autoscaling_config", list.MaxItems(1) & [..._#defs."/$defs/cluster/$defs/autoscaling_config"]])
 
 		// The zone to create the Cloud Bigtable cluster in. Each cluster
 		// must have a different zone in the same region. Zones that

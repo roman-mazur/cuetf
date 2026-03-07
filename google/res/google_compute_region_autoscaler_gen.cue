@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_autoscaler")
 	close({
+		autoscaling_policy!: matchN(1, [#autoscaling_policy, list.MaxItems(1) & [_, ...] & [...#autoscaling_policy]])
+		timeouts?: #timeouts
+
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
@@ -25,10 +28,8 @@ import "list"
 		project?: string
 
 		// URL of the region where the instance group resides.
-		region?: string
-		autoscaling_policy!: matchN(1, [#autoscaling_policy, list.MaxItems(1) & [_, ...] & [...#autoscaling_policy]])
+		region?:    string
 		self_link?: string
-		timeouts?:  #timeouts
 
 		// URL of the managed instance group that this autoscaler will
 		// scale.
@@ -36,6 +37,12 @@ import "list"
 	})
 
 	#autoscaling_policy: close({
+		cpu_utilization?: matchN(1, [_#defs."/$defs/autoscaling_policy/$defs/cpu_utilization", list.MaxItems(1) & [..._#defs."/$defs/autoscaling_policy/$defs/cpu_utilization"]])
+		load_balancing_utilization?: matchN(1, [_#defs."/$defs/autoscaling_policy/$defs/load_balancing_utilization", list.MaxItems(1) & [..._#defs."/$defs/autoscaling_policy/$defs/load_balancing_utilization"]])
+		metric?: matchN(1, [_#defs."/$defs/autoscaling_policy/$defs/metric", [..._#defs."/$defs/autoscaling_policy/$defs/metric"]])
+		scale_in_control?: matchN(1, [_#defs."/$defs/autoscaling_policy/$defs/scale_in_control", list.MaxItems(1) & [..._#defs."/$defs/autoscaling_policy/$defs/scale_in_control"]])
+		scaling_schedules?: matchN(1, [_#defs."/$defs/autoscaling_policy/$defs/scaling_schedules", [..._#defs."/$defs/autoscaling_policy/$defs/scaling_schedules"]])
+
 		// The number of seconds that the autoscaler should wait before it
 		// starts collecting information from a new instance. This
 		// prevents
@@ -48,7 +55,6 @@ import "list"
 		// instance may take to initialize. To do this, create an instance
 		// and time the startup process.
 		cooldown_period?: number
-		cpu_utilization?: matchN(1, [_#defs."/$defs/autoscaling_policy/$defs/cpu_utilization", list.MaxItems(1) & [..._#defs."/$defs/autoscaling_policy/$defs/cpu_utilization"]])
 
 		// The maximum number of instances that the autoscaler can scale
 		// up
@@ -69,10 +75,6 @@ import "list"
 
 		// Defines operating mode for this policy.
 		mode?: string
-		load_balancing_utilization?: matchN(1, [_#defs."/$defs/autoscaling_policy/$defs/load_balancing_utilization", list.MaxItems(1) & [..._#defs."/$defs/autoscaling_policy/$defs/load_balancing_utilization"]])
-		metric?: matchN(1, [_#defs."/$defs/autoscaling_policy/$defs/metric", [..._#defs."/$defs/autoscaling_policy/$defs/metric"]])
-		scale_in_control?: matchN(1, [_#defs."/$defs/autoscaling_policy/$defs/scale_in_control", list.MaxItems(1) & [..._#defs."/$defs/autoscaling_policy/$defs/scale_in_control"]])
-		scaling_schedules?: matchN(1, [_#defs."/$defs/autoscaling_policy/$defs/scaling_schedules", [..._#defs."/$defs/autoscaling_policy/$defs/scaling_schedules"]])
 	})
 
 	#timeouts: close({
@@ -251,6 +253,7 @@ import "list"
 		// Minimum number of VM instances that autoscaler will recommend
 		// in time intervals starting according to schedule.
 		min_required_replicas!: number
+		name!:                  string
 
 		// The start timestamps of time intervals when this scaling
 		// schedule should provide a scaling signal. This field uses the
@@ -261,6 +264,5 @@ import "list"
 		// value of this field must be a time zone name from the tz
 		// database: http://en.wikipedia.org/wiki/Tz_database.
 		time_zone?: string
-		name!:      string
 	})
 }

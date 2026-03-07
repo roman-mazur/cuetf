@@ -6,6 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_looker_instance")
 	close({
+		admin_settings?: matchN(1, [#admin_settings, list.MaxItems(1) & [...#admin_settings]])
+		controlled_egress_config?: matchN(1, [#controlled_egress_config, list.MaxItems(1) & [...#controlled_egress_config]])
+		custom_domain?: matchN(1, [#custom_domain, list.MaxItems(1) & [...#custom_domain]])
+		deny_maintenance_period?: matchN(1, [#deny_maintenance_period, list.MaxItems(1) & [...#deny_maintenance_period]])
+		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
+		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
+		oauth_config!: matchN(1, [#oauth_config, list.MaxItems(1) & [_, ...] & [...#oauth_config]])
+		periodic_export_config?: matchN(1, [#periodic_export_config, list.MaxItems(1) & [...#periodic_export_config]])
+		psc_config?: matchN(1, [#psc_config, list.MaxItems(1) & [...#psc_config]])
+		timeouts?: #timeouts
+		user_metadata?: matchN(1, [#user_metadata, list.MaxItems(1) & [...#user_metadata]])
+
 		// Network name in the consumer project in the format of:
 		// projects/{project}/global/networks/{network}
 		// Note that the consumer network may be in a different GCP
@@ -57,16 +69,6 @@ import "list"
 		// The ID of the instance or a fully qualified identifier for the
 		// instance.
 		name!: string
-		admin_settings?: matchN(1, [#admin_settings, list.MaxItems(1) & [...#admin_settings]])
-		controlled_egress_config?: matchN(1, [#controlled_egress_config, list.MaxItems(1) & [...#controlled_egress_config]])
-		custom_domain?: matchN(1, [#custom_domain, list.MaxItems(1) & [...#custom_domain]])
-		deny_maintenance_period?: matchN(1, [#deny_maintenance_period, list.MaxItems(1) & [...#deny_maintenance_period]])
-		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
-		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
-		oauth_config!: matchN(1, [#oauth_config, list.MaxItems(1) & [_, ...] & [...#oauth_config]])
-		periodic_export_config?: matchN(1, [#periodic_export_config, list.MaxItems(1) & [...#periodic_export_config]])
-		psc_config?: matchN(1, [#psc_config, list.MaxItems(1) & [...#psc_config]])
-		timeouts?: #timeouts
 
 		// Platform editions for a Looker instance. Each edition maps to a
 		// set of instance features, like its size. Must be one of these
@@ -102,12 +104,11 @@ import "list"
 
 		// Whether private IP is enabled on the Looker instance.
 		private_ip_enabled?: bool
-		user_metadata?: matchN(1, [#user_metadata, list.MaxItems(1) & [...#user_metadata]])
+		project?:            string
 
 		// Whether Public Service Connect (PSC) is enabled on the Looker
 		// instance
 		psc_enabled?: bool
-		project?:     string
 
 		// Whether public IP is enabled on the Looker instance.
 		public_ip_enabled?: bool

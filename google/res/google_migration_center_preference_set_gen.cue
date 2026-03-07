@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_migration_center_preference_set")
 	close({
+		timeouts?: #timeouts
+		virtual_machine_preferences?: matchN(1, [#virtual_machine_preferences, list.MaxItems(1) & [...#virtual_machine_preferences]])
+
 		// Output only. The timestamp when the preference set was created.
 		create_time?: string
 
@@ -29,9 +32,7 @@ import "list"
 		// of 63 characters. The ID must match the regular expression
 		// '[a-z]([a-z0-9-]{0,61}[a-z0-9])?'.
 		preference_set_id!: string
-		timeouts?:          #timeouts
-		virtual_machine_preferences?: matchN(1, [#virtual_machine_preferences, list.MaxItems(1) & [...#virtual_machine_preferences]])
-		project?: string
+		project?:           string
 
 		// Output only. The timestamp when the preference set was last
 		// updated.
@@ -45,6 +46,11 @@ import "list"
 	})
 
 	#virtual_machine_preferences: close({
+		compute_engine_preferences?: matchN(1, [_#defs."/$defs/virtual_machine_preferences/$defs/compute_engine_preferences", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine_preferences/$defs/compute_engine_preferences"]])
+		region_preferences?: matchN(1, [_#defs."/$defs/virtual_machine_preferences/$defs/region_preferences", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine_preferences/$defs/region_preferences"]])
+		sole_tenancy_preferences?: matchN(1, [_#defs."/$defs/virtual_machine_preferences/$defs/sole_tenancy_preferences", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine_preferences/$defs/sole_tenancy_preferences"]])
+		vmware_engine_preferences?: matchN(1, [_#defs."/$defs/virtual_machine_preferences/$defs/vmware_engine_preferences", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine_preferences/$defs/vmware_engine_preferences"]])
+
 		// Commitment plan to consider when calculating costs for virtual
 		// machine insights and recommendations. If you are unsure which
 		// value to set, a 3 year commitment plan is often a good value
@@ -71,10 +77,6 @@ import "list"
 		// 'COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE',
 		// 'COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY'
 		target_product?: string
-		compute_engine_preferences?: matchN(1, [_#defs."/$defs/virtual_machine_preferences/$defs/compute_engine_preferences", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine_preferences/$defs/compute_engine_preferences"]])
-		region_preferences?: matchN(1, [_#defs."/$defs/virtual_machine_preferences/$defs/region_preferences", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine_preferences/$defs/region_preferences"]])
-		sole_tenancy_preferences?: matchN(1, [_#defs."/$defs/virtual_machine_preferences/$defs/sole_tenancy_preferences", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine_preferences/$defs/sole_tenancy_preferences"]])
-		vmware_engine_preferences?: matchN(1, [_#defs."/$defs/virtual_machine_preferences/$defs/vmware_engine_preferences", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine_preferences/$defs/vmware_engine_preferences"]])
 	})
 
 	_#defs: "/$defs/virtual_machine_preferences/$defs/compute_engine_preferences": close({
@@ -108,13 +110,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/virtual_machine_preferences/$defs/sole_tenancy_preferences": close({
+		node_types?: matchN(1, [_#defs."/$defs/virtual_machine_preferences/$defs/sole_tenancy_preferences/$defs/node_types", [..._#defs."/$defs/virtual_machine_preferences/$defs/sole_tenancy_preferences/$defs/node_types"]])
+
 		// Commitment plan to consider when calculating costs for virtual
 		// machine insights and recommendations. If you are unsure which
 		// value to set, a 3 year commitment plan is often a good value
 		// to start with. Possible values: 'COMMITMENT_PLAN_UNSPECIFIED',
 		// 'ON_DEMAND', 'COMMITMENT_1_YEAR', 'COMMITMENT_3_YEAR'
 		commitment_plan?: string
-		node_types?: matchN(1, [_#defs."/$defs/virtual_machine_preferences/$defs/sole_tenancy_preferences/$defs/node_types", [..._#defs."/$defs/virtual_machine_preferences/$defs/sole_tenancy_preferences/$defs/node_types"]])
 
 		// CPU overcommit ratio. Acceptable values are between 1.0 and 2.0
 		// inclusive.

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_filestore_backup")
 	close({
+		timeouts?: #timeouts
+
 		// The amount of bytes needed to allocate a full copy of the
 		// snapshot content.
 		capacity_gb?: string
@@ -23,10 +25,10 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// KMS key name used for data encryption.
 		kms_key_name?: string
-		id?:           string
 
 		// Resource labels to represent user-provided metadata.
 		//
@@ -59,7 +61,6 @@ package res
 		// Name of the file share in the source Cloud Filestore instance
 		// that the backup is created from.
 		source_file_share!: string
-		timeouts?:          #timeouts
 
 		// The resource name of the source Cloud Filestore instance, in
 		// the format

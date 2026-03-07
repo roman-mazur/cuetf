@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_instance")
 	close({
+		access_logging_config?: matchN(1, [#access_logging_config, list.MaxItems(1) & [...#access_logging_config]])
+		timeouts?: #timeouts
+
 		// Optional. Customer accept list represents the list of projects
 		// (id/number) on customer
 		// side that can privately connect to the service attachment. It
@@ -31,6 +34,7 @@ import "list"
 		// Output only. Hostname or IP address of the exposed Apigee
 		// endpoint used by clients to connect to the service.
 		host?: string
+		id?:   string
 
 		// IP range represents the customer-provided CIDR block of length
 		// 22 that will be used for
@@ -46,14 +50,12 @@ import "list"
 		// Apigee.
 		// Input format: "a.b.c.d/22"
 		ip_range?: string
-		id?:       string
 
 		// Required. Compute Engine location where the instance resides.
 		location!: string
 
 		// Resource ID of the instance.
 		name!: string
-		access_logging_config?: matchN(1, [#access_logging_config, list.MaxItems(1) & [...#access_logging_config]])
 
 		// The Apigee Organization associated with the Apigee instance,
 		// in the format 'organizations/{{org_name}}'.
@@ -65,7 +67,6 @@ import "list"
 		// [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange)
 		// on the documentation.
 		peering_cidr_range?: string
-		timeouts?:           #timeouts
 
 		// Output only. Port number of the exposed Apigee endpoint.
 		port?: string

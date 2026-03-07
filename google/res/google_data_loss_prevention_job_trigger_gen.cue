@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_loss_prevention_job_trigger")
 	close({
+		inspect_job?: matchN(1, [#inspect_job, list.MaxItems(1) & [...#inspect_job]])
+		timeouts?: #timeouts
+		triggers!: matchN(1, [#triggers, [_, ...] & [...#triggers]])
+
 		// The creation timestamp of an inspectTemplate. Set by the
 		// server.
 		create_time?: string
@@ -15,10 +19,10 @@ import "list"
 
 		// User set display name of the job trigger.
 		display_name?: string
+		id?:           string
 
 		// The timestamp of the last time this trigger executed.
 		last_run_time?: string
-		id?:            string
 
 		// The resource name of the job trigger. Set by the server.
 		name?: string
@@ -27,9 +31,6 @@ import "list"
 		// 'projects/{{project}}'
 		// or 'projects/{{project}}/locations/{{location}}'
 		parent!: string
-		inspect_job?: matchN(1, [#inspect_job, list.MaxItems(1) & [...#inspect_job]])
-		timeouts?: #timeouts
-		triggers!: matchN(1, [#triggers, [_, ...] & [...#triggers]])
 
 		// Whether the trigger is currently active. Default value:
 		// "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
@@ -206,6 +207,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/inspect_config": close({
+		custom_info_types?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types", [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types"]])
+		info_types?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/info_types", [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/info_types"]])
+		limits?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/limits", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/limits"]])
+		rule_set?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/rule_set", [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/rule_set"]])
+
 		// When true, excludes type information of the findings.
 		exclude_info_types?: bool
 
@@ -218,15 +224,15 @@ import "list"
 		// Default value: "POSSIBLE" Possible values: ["VERY_UNLIKELY",
 		// "UNLIKELY", "POSSIBLE", "LIKELY", "VERY_LIKELY"]
 		min_likelihood?: string
-		custom_info_types?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types", [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types"]])
-		info_types?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/info_types", [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/info_types"]])
-		limits?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/limits", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/limits"]])
-		rule_set?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/rule_set", [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/rule_set"]])
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types": close({
 		dictionary?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary"]])
 		info_type!: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/info_type", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/info_type"]])
+		regex?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/regex", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/regex"]])
+		sensitivity_score?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/sensitivity_score", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/sensitivity_score"]])
+		stored_type?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/stored_type", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/stored_type"]])
+		surrogate_type?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/surrogate_type", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/surrogate_type"]])
 
 		// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a
 		// finding to be returned. It still can be used for rules
@@ -240,10 +246,6 @@ import "list"
 		// values: ["VERY_UNLIKELY", "UNLIKELY", "POSSIBLE", "LIKELY",
 		// "VERY_LIKELY"]
 		likelihood?: string
-		regex?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/regex", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/regex"]])
-		sensitivity_score?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/sensitivity_score", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/sensitivity_score"]])
-		stored_type?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/stored_type", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/stored_type"]])
-		surrogate_type?: matchN(1, [_#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/surrogate_type", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/surrogate_type"]])
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary": close({
@@ -566,6 +568,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/storage_config/$defs/big_query_options": close({
+		excluded_fields?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/excluded_fields", [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/excluded_fields"]])
+		identifying_fields?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/identifying_fields", [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/identifying_fields"]])
+		included_fields?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/included_fields", [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/included_fields"]])
+		table_reference!: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/table_reference", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/table_reference"]])
+
 		// Max number of rows to scan. If the table has more rows than
 		// this value, the rest of the rows are omitted.
 		// If not set, or if set to 0, all rows will be scanned. Only one
@@ -589,10 +596,6 @@ import "list"
 		// using the default value. Default value: "TOP" Possible values:
 		// ["TOP", "RANDOM_START"]
 		sample_method?: string
-		excluded_fields?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/excluded_fields", [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/excluded_fields"]])
-		identifying_fields?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/identifying_fields", [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/identifying_fields"]])
-		included_fields?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/included_fields", [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/included_fields"]])
-		table_reference!: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/table_reference", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/table_reference"]])
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/storage_config/$defs/big_query_options/$defs/excluded_fields": close({
@@ -623,6 +626,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/storage_config/$defs/cloud_storage_options": close({
+		file_set!: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/cloud_storage_options/$defs/file_set", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/cloud_storage_options/$defs/file_set"]])
+
 		// Max number of bytes to scan from a file. If a scanned file's
 		// size is bigger than this value
 		// then the rest of the bytes are omitted.
@@ -649,7 +654,6 @@ import "list"
 		// Must be between 0 and 100, inclusively. Both 0 and 100 means no
 		// limit.
 		files_limit_percent?: number
-		file_set!: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/cloud_storage_options/$defs/file_set", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/cloud_storage_options/$defs/file_set"]])
 
 		// How to sample bytes if not all bytes are scanned. Meaningful
 		// only when used in conjunction with bytesLimitPerFile.
@@ -715,10 +719,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/storage_config/$defs/hybrid_options": close({
+		table_options?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/hybrid_options/$defs/table_options", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/hybrid_options/$defs/table_options"]])
+
 		// A short description of where the data is coming from. Will be
 		// stored once in the job. 256 max length.
 		description?: string
-		table_options?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/hybrid_options/$defs/table_options", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/hybrid_options/$defs/table_options"]])
 
 		// To organize findings, these labels will be added to each
 		// finding.
@@ -761,6 +766,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/inspect_job/$defs/storage_config/$defs/timespan_config": close({
+		timestamp_field?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/timespan_config/$defs/timestamp_field", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/timespan_config/$defs/timestamp_field"]])
+
 		// When the job is started by a JobTrigger we will automatically
 		// figure out a valid startTime to avoid
 		// scanning files that have not been modified since the last time
@@ -769,7 +776,6 @@ import "list"
 		// JobTrigger or the timespan endTime
 		// used in the last run of the JobTrigger.
 		enable_auto_population_of_timespan_config?: bool
-		timestamp_field?: matchN(1, [_#defs."/$defs/inspect_job/$defs/storage_config/$defs/timespan_config/$defs/timestamp_field", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/storage_config/$defs/timespan_config/$defs/timestamp_field"]])
 
 		// Exclude files, tables, or rows newer than this value. If not
 		// set, no upper time limit is applied.

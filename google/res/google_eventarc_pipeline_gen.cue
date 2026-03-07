@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_eventarc_pipeline")
 	close({
+		destinations!: matchN(1, [#destinations, [_, ...] & [...#destinations]])
+		input_payload_format?: matchN(1, [#input_payload_format, list.MaxItems(1) & [...#input_payload_format]])
+		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
+		mediations?: matchN(1, [#mediations, [...#mediations]])
+		retry_policy?: matchN(1, [#retry_policy, list.MaxItems(1) & [...#retry_policy]])
+		timeouts?: #timeouts
+
 		// User-defined annotations. See
 		// https://google.aip.dev/128#annotations.
 		//
@@ -14,7 +21,6 @@ import "list"
 		// Please refer to the field 'effective_annotations' for all of
 		// the annotations present on the resource.
 		annotations?: [string]: string
-		destinations!: matchN(1, [#destinations, [_, ...] & [...#destinations]])
 
 		// The creation time.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -65,11 +71,6 @@ import "list"
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		location!: string
-		input_payload_format?: matchN(1, [#input_payload_format, list.MaxItems(1) & [...#input_payload_format]])
-		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
-		mediations?: matchN(1, [#mediations, [...#mediations]])
-		retry_policy?: matchN(1, [#retry_policy, list.MaxItems(1) & [...#retry_policy]])
-		timeouts?: #timeouts
 
 		// The resource name of the Pipeline. Must be unique within the
 		// location of the project and must be in
@@ -102,6 +103,11 @@ import "list"
 	})
 
 	#destinations: close({
+		authentication_config?: matchN(1, [_#defs."/$defs/destinations/$defs/authentication_config", list.MaxItems(1) & [..._#defs."/$defs/destinations/$defs/authentication_config"]])
+		http_endpoint?: matchN(1, [_#defs."/$defs/destinations/$defs/http_endpoint", list.MaxItems(1) & [..._#defs."/$defs/destinations/$defs/http_endpoint"]])
+		network_config?: matchN(1, [_#defs."/$defs/destinations/$defs/network_config", list.MaxItems(1) & [..._#defs."/$defs/destinations/$defs/network_config"]])
+		output_payload_format?: matchN(1, [_#defs."/$defs/destinations/$defs/output_payload_format", list.MaxItems(1) & [..._#defs."/$defs/destinations/$defs/output_payload_format"]])
+
 		// The resource name of the Message Bus to which events should be
 		// published. The Message Bus resource should exist in the same
 		// project as
@@ -122,10 +128,6 @@ import "list"
 		// project as the Pipeline. Format:
 		// 'projects/{project}/locations/{location}/workflows/{workflow}'
 		workflow?: string
-		authentication_config?: matchN(1, [_#defs."/$defs/destinations/$defs/authentication_config", list.MaxItems(1) & [..._#defs."/$defs/destinations/$defs/authentication_config"]])
-		http_endpoint?: matchN(1, [_#defs."/$defs/destinations/$defs/http_endpoint", list.MaxItems(1) & [..._#defs."/$defs/destinations/$defs/http_endpoint"]])
-		network_config?: matchN(1, [_#defs."/$defs/destinations/$defs/network_config", list.MaxItems(1) & [..._#defs."/$defs/destinations/$defs/network_config"]])
-		output_payload_format?: matchN(1, [_#defs."/$defs/destinations/$defs/output_payload_format", list.MaxItems(1) & [..._#defs."/$defs/destinations/$defs/output_payload_format"]])
 	})
 
 	#input_payload_format: close({

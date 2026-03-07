@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_service_account")
 	close({
+		timeouts?: #timeouts
+
 		// The account id that is used to generate the service account
 		// email address and a stable unique id. It is unique within a
 		// project, must be 6-30 characters long, and match the regular
@@ -30,6 +32,7 @@ package res
 		// referenced from any google_iam_policy data sources that would
 		// grant the service account privileges.
 		email?: string
+		id?:    string
 
 		// The Identity of the service account in the form
 		// 'serviceAccount:{email}'. This value is often used to refer to
@@ -37,9 +40,7 @@ package res
 		member?: string
 
 		// The fully-qualified name of the service account.
-		name?:     string
-		timeouts?: #timeouts
-		id?:       string
+		name?: string
 
 		// The ID of the project that the service account will be created
 		// in. Defaults to the provider project configuration.

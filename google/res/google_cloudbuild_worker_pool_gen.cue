@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloudbuild_worker_pool")
 	close({
+		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
+		private_service_connect?: matchN(1, [#private_service_connect, list.MaxItems(1) & [...#private_service_connect]])
+		timeouts?: #timeouts
+		worker_config?: matchN(1, [#worker_config, list.MaxItems(1) & [...#worker_config]])
+
 		// User specified annotations. See
 		// https://google.aip.dev/128#annotations for more details such
 		// as format and size limitations.
@@ -32,20 +37,16 @@ import "list"
 		// GCP, including the annotations configured through Terraform,
 		// other clients and services.
 		effective_annotations?: [string]: string
+		id?: string
 
 		// The location for the resource
 		location!: string
 
 		// User-defined name of the `WorkerPool`.
 		name!: string
-		id?:   string
 
 		// The project for the resource
 		project?: string
-		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
-		private_service_connect?: matchN(1, [#private_service_connect, list.MaxItems(1) & [...#private_service_connect]])
-		timeouts?: #timeouts
-		worker_config?: matchN(1, [#worker_config, list.MaxItems(1) & [...#worker_config]])
 
 		// Output only. `WorkerPool` state. Possible values:
 		// STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED

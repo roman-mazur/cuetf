@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_folder_access_approval_settings")
 	close({
+		enrolled_services!: matchN(1, [#enrolled_services, [_, ...] & [...#enrolled_services]])
+		timeouts?: #timeouts
+
 		// The asymmetric crypto key version to use for signing approval
 		// requests.
 		// Empty active_key_version indicates that a Google-managed key
@@ -33,8 +36,6 @@ package res
 		// necessarily the effective key version at this level,
 		// as key versions are inherited top-down.
 		invalid_key_version?: bool
-		enrolled_services!: matchN(1, [#enrolled_services, [_, ...] & [...#enrolled_services]])
-		timeouts?: #timeouts
 
 		// The resource name of the settings. Format is
 		// "folders/{folder_id}/accessApprovalSettings"

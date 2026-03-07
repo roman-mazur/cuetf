@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_dataset_access")
 	close({
+		condition?: matchN(1, [#condition, list.MaxItems(1) & [...#condition]])
+		dataset?: matchN(1, [#dataset, list.MaxItems(1) & [...#dataset]])
+		routine?: matchN(1, [#routine, list.MaxItems(1) & [...#routine]])
+		timeouts?: #timeouts
+		view?: matchN(1, [#view, list.MaxItems(1) & [...#view]])
+
 		// If true, represents that that the iam_member in the config was
 		// translated to a different member type by the API, and is
 		// stored in state as a different member type
@@ -41,11 +47,6 @@ import "list"
 		// [official
 		// docs](https://cloud.google.com/bigquery/docs/access-control).
 		role?: string
-		condition?: matchN(1, [#condition, list.MaxItems(1) & [...#condition]])
-		dataset?: matchN(1, [#dataset, list.MaxItems(1) & [...#dataset]])
-		routine?: matchN(1, [#routine, list.MaxItems(1) & [...#routine]])
-		timeouts?: #timeouts
-		view?: matchN(1, [#view, list.MaxItems(1) & [...#view]])
 
 		// A special group to grant access to. Possible values include:
 		// * 'projectOwners': Owners of the enclosing project.

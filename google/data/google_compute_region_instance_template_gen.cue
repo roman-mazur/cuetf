@@ -77,6 +77,7 @@ package data
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		filter?: string
 
 		// List of the type and count of accelerator cards attached to the
 		// instance.
@@ -84,7 +85,7 @@ package data
 			count?: number
 			type?:  string
 		})]
-		filter?: string
+		id?: string
 
 		// A description of the instance.
 		instance_description?: string
@@ -92,7 +93,6 @@ package data
 		// Action to be taken when a customer's encryption key is revoked.
 		// Supports "STOP" and "NONE", with "NONE" being the default.
 		key_revocation_action_type?: string
-		id?:                         string
 
 		// A set of key/value label pairs to assign to instances created
 		// from this template,

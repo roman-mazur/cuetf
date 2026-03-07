@@ -6,11 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_node_pool")
 	close({
+		autoscaling?: matchN(1, [#autoscaling, list.MaxItems(1) & [...#autoscaling]])
+		management?: matchN(1, [#management, list.MaxItems(1) & [...#management]])
+		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
+		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
+		node_drain_config?: matchN(1, [#node_drain_config, [...#node_drain_config]])
+		placement_policy?: matchN(1, [#placement_policy, list.MaxItems(1) & [...#placement_policy]])
+		queued_provisioning?: matchN(1, [#queued_provisioning, list.MaxItems(1) & [...#queued_provisioning]])
+		timeouts?: #timeouts
+		upgrade_settings?: matchN(1, [#upgrade_settings, list.MaxItems(1) & [...#upgrade_settings]])
+
 		// The cluster to create the node pool for. Cluster must be
 		// present in location provided for zonal clusters.
 		cluster!: string
-		autoscaling?: matchN(1, [#autoscaling, list.MaxItems(1) & [...#autoscaling]])
-		id?: string
+		id?:      string
 
 		// The initial number of nodes for the pool. In regional or
 		// multi-zonal clusters, this is the number of nodes per zone.
@@ -23,7 +32,6 @@ import "list"
 
 		// The location (region or zone) of the cluster.
 		location?: string
-		management?: matchN(1, [#management, list.MaxItems(1) & [...#management]])
 
 		// List of instance group URLs which have been assigned to this
 		// node pool.
@@ -42,13 +50,6 @@ import "list"
 		// Creates a unique name for the node pool beginning with the
 		// specified prefix. Conflicts with name.
 		name_prefix?: string
-		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
-		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
-		node_drain_config?: matchN(1, [#node_drain_config, [...#node_drain_config]])
-		placement_policy?: matchN(1, [#placement_policy, list.MaxItems(1) & [...#placement_policy]])
-		queued_provisioning?: matchN(1, [#queued_provisioning, list.MaxItems(1) & [...#queued_provisioning]])
-		timeouts?: #timeouts
-		upgrade_settings?: matchN(1, [#upgrade_settings, list.MaxItems(1) & [...#upgrade_settings]])
 
 		// The number of nodes per instance group. This field can be used
 		// to update the number of nodes per instance group but should
@@ -115,6 +116,11 @@ import "list"
 	})
 
 	#network_config: close({
+		additional_node_network_configs?: matchN(1, [_#defs."/$defs/network_config/$defs/additional_node_network_configs", [..._#defs."/$defs/network_config/$defs/additional_node_network_configs"]])
+		additional_pod_network_configs?: matchN(1, [_#defs."/$defs/network_config/$defs/additional_pod_network_configs", [..._#defs."/$defs/network_config/$defs/additional_pod_network_configs"]])
+		network_performance_config?: matchN(1, [_#defs."/$defs/network_config/$defs/network_performance_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/network_performance_config"]])
+		pod_cidr_overprovision_config?: matchN(1, [_#defs."/$defs/network_config/$defs/pod_cidr_overprovision_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/pod_cidr_overprovision_config"]])
+
 		// Whether to create a new range for pod IPs in this node pool.
 		// Defaults are provided for pod_range and pod_ipv4_cidr_block if
 		// they are not specified.
@@ -135,8 +141,6 @@ import "list"
 		// create_pod_range is false, uses an existing secondary range
 		// with this ID.
 		pod_range?: string
-		additional_node_network_configs?: matchN(1, [_#defs."/$defs/network_config/$defs/additional_node_network_configs", [..._#defs."/$defs/network_config/$defs/additional_node_network_configs"]])
-		additional_pod_network_configs?: matchN(1, [_#defs."/$defs/network_config/$defs/additional_pod_network_configs", [..._#defs."/$defs/network_config/$defs/additional_pod_network_configs"]])
 
 		// The subnetwork path for the node pool. Format:
 		// projects/{project}/regions/{region}/subnetworks/{subnetwork} .
@@ -144,15 +148,34 @@ import "list"
 		// subnetwork for the node pool is picked based on the IP
 		// utilization during node pool creation and is immutable.
 		subnetwork?: string
-		network_performance_config?: matchN(1, [_#defs."/$defs/network_config/$defs/network_performance_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/network_performance_config"]])
-		pod_cidr_overprovision_config?: matchN(1, [_#defs."/$defs/network_config/$defs/pod_cidr_overprovision_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/pod_cidr_overprovision_config"]])
 	})
 
 	#node_config: close({
+		advanced_machine_features?: matchN(1, [_#defs."/$defs/node_config/$defs/advanced_machine_features", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/advanced_machine_features"]])
+		boot_disk?: matchN(1, [_#defs."/$defs/node_config/$defs/boot_disk", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/boot_disk"]])
+		confidential_nodes?: matchN(1, [_#defs."/$defs/node_config/$defs/confidential_nodes", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/confidential_nodes"]])
+		containerd_config?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/containerd_config"]])
+		ephemeral_storage_local_ssd_config?: matchN(1, [_#defs."/$defs/node_config/$defs/ephemeral_storage_local_ssd_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/ephemeral_storage_local_ssd_config"]])
+		fast_socket?: matchN(1, [_#defs."/$defs/node_config/$defs/fast_socket", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/fast_socket"]])
+		gcfs_config?: matchN(1, [_#defs."/$defs/node_config/$defs/gcfs_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/gcfs_config"]])
+		guest_accelerator?: matchN(1, [_#defs."/$defs/node_config/$defs/guest_accelerator", [..._#defs."/$defs/node_config/$defs/guest_accelerator"]])
+		gvnic?: matchN(1, [_#defs."/$defs/node_config/$defs/gvnic", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/gvnic"]])
+		host_maintenance_policy?: matchN(1, [_#defs."/$defs/node_config/$defs/host_maintenance_policy", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/host_maintenance_policy"]])
+		kubelet_config?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config"]])
+		linux_node_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config"]])
+		local_nvme_ssd_block_config?: matchN(1, [_#defs."/$defs/node_config/$defs/local_nvme_ssd_block_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/local_nvme_ssd_block_config"]])
+		reservation_affinity?: matchN(1, [_#defs."/$defs/node_config/$defs/reservation_affinity", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/reservation_affinity"]])
+		sandbox_config?: matchN(1, [_#defs."/$defs/node_config/$defs/sandbox_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/sandbox_config"]])
+		secondary_boot_disks?: matchN(1, [_#defs."/$defs/node_config/$defs/secondary_boot_disks", list.MaxItems(127) & [..._#defs."/$defs/node_config/$defs/secondary_boot_disks"]])
+		shielded_instance_config?: matchN(1, [_#defs."/$defs/node_config/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/shielded_instance_config"]])
+		sole_tenant_config?: matchN(1, [_#defs."/$defs/node_config/$defs/sole_tenant_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/sole_tenant_config"]])
+		taint?: matchN(1, [_#defs."/$defs/node_config/$defs/taint", [..._#defs."/$defs/node_config/$defs/taint"]])
+		windows_node_config?: matchN(1, [_#defs."/$defs/node_config/$defs/windows_node_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/windows_node_config"]])
+		workload_metadata_config?: matchN(1, [_#defs."/$defs/node_config/$defs/workload_metadata_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/workload_metadata_config"]])
+
 		// The Customer Managed Encryption Key used to encrypt the boot
 		// disk attached to each node in the node pool.
 		boot_disk_kms_key?: string
-		advanced_machine_features?: matchN(1, [_#defs."/$defs/node_config/$defs/advanced_machine_features", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/advanced_machine_features"]])
 
 		// Size of the disk attached to each node, specified in GB. The
 		// smallest allowed disk size is 10GB.
@@ -206,25 +229,6 @@ import "list"
 		// The metadata key/value pairs assigned to instances in the
 		// cluster.
 		metadata?: [string]: string
-		boot_disk?: matchN(1, [_#defs."/$defs/node_config/$defs/boot_disk", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/boot_disk"]])
-		confidential_nodes?: matchN(1, [_#defs."/$defs/node_config/$defs/confidential_nodes", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/confidential_nodes"]])
-		containerd_config?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/containerd_config"]])
-		ephemeral_storage_local_ssd_config?: matchN(1, [_#defs."/$defs/node_config/$defs/ephemeral_storage_local_ssd_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/ephemeral_storage_local_ssd_config"]])
-		fast_socket?: matchN(1, [_#defs."/$defs/node_config/$defs/fast_socket", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/fast_socket"]])
-		gcfs_config?: matchN(1, [_#defs."/$defs/node_config/$defs/gcfs_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/gcfs_config"]])
-		guest_accelerator?: matchN(1, [_#defs."/$defs/node_config/$defs/guest_accelerator", [..._#defs."/$defs/node_config/$defs/guest_accelerator"]])
-		gvnic?: matchN(1, [_#defs."/$defs/node_config/$defs/gvnic", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/gvnic"]])
-		host_maintenance_policy?: matchN(1, [_#defs."/$defs/node_config/$defs/host_maintenance_policy", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/host_maintenance_policy"]])
-		kubelet_config?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config"]])
-		linux_node_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config"]])
-		local_nvme_ssd_block_config?: matchN(1, [_#defs."/$defs/node_config/$defs/local_nvme_ssd_block_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/local_nvme_ssd_block_config"]])
-		reservation_affinity?: matchN(1, [_#defs."/$defs/node_config/$defs/reservation_affinity", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/reservation_affinity"]])
-		secondary_boot_disks?: matchN(1, [_#defs."/$defs/node_config/$defs/secondary_boot_disks", list.MaxItems(127) & [..._#defs."/$defs/node_config/$defs/secondary_boot_disks"]])
-		shielded_instance_config?: matchN(1, [_#defs."/$defs/node_config/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/shielded_instance_config"]])
-		sole_tenant_config?: matchN(1, [_#defs."/$defs/node_config/$defs/sole_tenant_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/sole_tenant_config"]])
-		taint?: matchN(1, [_#defs."/$defs/node_config/$defs/taint", [..._#defs."/$defs/node_config/$defs/taint"]])
-		windows_node_config?: matchN(1, [_#defs."/$defs/node_config/$defs/windows_node_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/windows_node_config"]])
-		workload_metadata_config?: matchN(1, [_#defs."/$defs/node_config/$defs/workload_metadata_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/workload_metadata_config"]])
 
 		// Minimum CPU platform to be used by this instance. The instance
 		// may be scheduled on the specified or newer CPU platform.
@@ -301,12 +305,13 @@ import "list"
 	})
 
 	#upgrade_settings: close({
+		blue_green_settings?: matchN(1, [_#defs."/$defs/upgrade_settings/$defs/blue_green_settings", list.MaxItems(1) & [..._#defs."/$defs/upgrade_settings/$defs/blue_green_settings"]])
+
 		// The number of additional nodes that can be added to the node
 		// pool during an upgrade. Increasing max_surge raises the number
 		// of nodes that can be upgraded simultaneously. Can be set to 0
 		// or greater.
 		max_surge?: number
-		blue_green_settings?: matchN(1, [_#defs."/$defs/upgrade_settings/$defs/blue_green_settings", list.MaxItems(1) & [..._#defs."/$defs/upgrade_settings/$defs/blue_green_settings"]])
 
 		// The number of nodes that can be simultaneously unavailable
 		// during an upgrade. Increasing max_unavailable raises the
@@ -429,6 +434,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts": close({
+		ca?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/ca", [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/ca"]])
+		client?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client", [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client"]])
+		header?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/header", [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/header"]])
+
 		// Represent the capabilities of the registry host, specifying
 		// what operations a host is capable of performing.
 		capabilities?: [...string]
@@ -439,13 +448,10 @@ import "list"
 
 		// Configures the registry host/mirror.
 		host!: string
-		ca?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/ca", [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/ca"]])
-		client?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client", [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/client"]])
 
 		// Indicate the host's API root endpoint is defined in the URL
 		// path rather than by the API specification.
 		override_path?: bool
-		header?: matchN(1, [_#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/header", [..._#defs."/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/header"]])
 	})
 
 	_#defs: "/$defs/node_config/$defs/containerd_config/$defs/registry_hosts/$defs/hosts/$defs/ca": close({
@@ -504,6 +510,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_config/$defs/guest_accelerator": close({
+		gpu_driver_installation_config?: matchN(1, [_#defs."/$defs/node_config/$defs/guest_accelerator/$defs/gpu_driver_installation_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/guest_accelerator/$defs/gpu_driver_installation_config"]])
+		gpu_sharing_config?: matchN(1, [_#defs."/$defs/node_config/$defs/guest_accelerator/$defs/gpu_sharing_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/guest_accelerator/$defs/gpu_sharing_config"]])
+
 		// The number of the accelerator cards exposed to an instance.
 		count!: number
 
@@ -511,11 +520,9 @@ import "list"
 		// described in the NVIDIA mig user guide
 		// (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
 		gpu_partition_size?: string
-		gpu_driver_installation_config?: matchN(1, [_#defs."/$defs/node_config/$defs/guest_accelerator/$defs/gpu_driver_installation_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/guest_accelerator/$defs/gpu_driver_installation_config"]])
 
 		// The accelerator type resource name.
 		type!: string
-		gpu_sharing_config?: matchN(1, [_#defs."/$defs/node_config/$defs/guest_accelerator/$defs/gpu_sharing_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/guest_accelerator/$defs/gpu_sharing_config"]])
 	})
 
 	_#defs: "/$defs/node_config/$defs/guest_accelerator/$defs/gpu_driver_installation_config": close({
@@ -544,6 +551,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_config/$defs/kubelet_config": close({
+		eviction_minimum_reclaim?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_minimum_reclaim", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_minimum_reclaim"]])
+		eviction_soft?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_soft", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_soft"]])
+		eviction_soft_grace_period?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_soft_grace_period", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_soft_grace_period"]])
+		memory_manager?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config/$defs/memory_manager", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config/$defs/memory_manager"]])
+		topology_manager?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config/$defs/topology_manager", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config/$defs/topology_manager"]])
+
 		// Defines a comma-separated allowlist of unsafe sysctls or sysctl
 		// patterns which can be set on the Pods.
 		allowed_unsafe_sysctls?: [...string]
@@ -583,20 +596,15 @@ import "list"
 		// Defines the maximum age an image can be unused before it is
 		// garbage collected.
 		image_maximum_gc_age?: string
-		eviction_minimum_reclaim?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_minimum_reclaim", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_minimum_reclaim"]])
-		eviction_soft?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_soft", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_soft"]])
-		eviction_soft_grace_period?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_soft_grace_period", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_soft_grace_period"]])
 
 		// Defines the minimum age for an unused image before it is
 		// garbage collected.
 		image_minimum_gc_age?: string
-		memory_manager?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config/$defs/memory_manager", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config/$defs/memory_manager"]])
 
 		// Controls whether the kubelet read-only port is enabled. It is
 		// strongly recommended to set this to `FALSE`. Possible values:
 		// `TRUE`, `FALSE`.
 		insecure_kubelet_readonly_port_enabled?: string
-		topology_manager?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config/$defs/topology_manager", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config/$defs/topology_manager"]])
 
 		// Set the maximum number of image pulls in parallel.
 		max_parallel_image_pulls?: number
@@ -701,6 +709,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_config/$defs/linux_node_config": close({
+		hugepages_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config"]])
+		node_kernel_module_loading?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading"]])
+
 		// cgroupMode specifies the cgroup mode to be used on the node.
 		cgroup_mode?: string
 
@@ -713,8 +724,6 @@ import "list"
 
 		// The Linux kernel transparent hugepage setting.
 		transparent_hugepage_enabled?: string
-		hugepages_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config"]])
-		node_kernel_module_loading?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading"]])
 	})
 
 	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config": close({
@@ -745,6 +754,11 @@ import "list"
 
 		// The label values of the reservation resource.
 		values?: [...string]
+	})
+
+	_#defs: "/$defs/node_config/$defs/sandbox_config": close({
+		// Type of the sandbox to use for the node (e.g. 'GVISOR').
+		type!: string
 	})
 
 	_#defs: "/$defs/node_config/$defs/secondary_boot_disks": close({

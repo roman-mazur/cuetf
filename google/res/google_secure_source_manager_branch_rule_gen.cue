@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_secure_source_manager_branch_rule")
 	close({
+		timeouts?: #timeouts
+
 		// Determines if allow stale reviews or approvals before merging
 		// to the branch.
 		allow_stale_reviews?: bool
@@ -16,11 +18,11 @@ package res
 
 		// Determines if the branch rule is disabled or not.
 		disabled?: bool
+		id?:       string
 
 		// The BranchRule matches branches based on the specified regular
 		// expression. Use .* to match all branches.
 		include_pattern!: string
-		id?:              string
 
 		// The location for the Repository.
 		location!: string
@@ -34,11 +36,11 @@ package res
 		minimum_reviews_count?: number
 
 		// The resource name for the BranchRule.
-		name?: string
+		name?:    string
+		project?: string
 
 		// The ID for the Repository.
 		repository_id!: string
-		timeouts?:      #timeouts
 
 		// Determines if require comments resolved before merging to the
 		// branch.
@@ -47,7 +49,6 @@ package res
 		// Determines if require linear history before merging to the
 		// branch.
 		require_linear_history?: bool
-		project?:                string
 
 		// Determines if the branch rule requires a pull request or not.
 		require_pull_request?: bool

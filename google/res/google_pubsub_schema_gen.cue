@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_pubsub_schema")
 	close({
+		timeouts?: #timeouts
+
 		// The definition of the schema.
 		// This should contain a string representing the full definition
 		// of the schema
@@ -18,18 +20,17 @@ package res
 		// [deleting old
 		// revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
 		definition?: string
+		id?:         string
 
 		// The ID to use for the schema, which will become the final
 		// component of the schema's resource name.
-		name!: string
-		id?:   string
+		name!:    string
+		project?: string
 
 		// The type of the schema definition Default value:
 		// "TYPE_UNSPECIFIED" Possible values: ["TYPE_UNSPECIFIED",
 		// "PROTOCOL_BUFFER", "AVRO"]
-		type?:     string
-		project?:  string
-		timeouts?: #timeouts
+		type?: string
 	})
 
 	#timeouts: close({

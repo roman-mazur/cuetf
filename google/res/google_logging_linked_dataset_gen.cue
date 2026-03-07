@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_linked_dataset")
 	close({
+		bigquery_dataset?: matchN(1, [#bigquery_dataset, [...#bigquery_dataset]])
+		timeouts?: #timeouts
+
 		// The bucket to which the linked dataset is attached.
 		bucket!: string
 
@@ -17,18 +20,16 @@ package res
 		// Describes this link. The maximum length of the description is
 		// 8000 characters.
 		description?: string
+		id?:          string
 
 		// Output only. The linked dataset lifecycle state.
 		lifecycle_state?: string
-		id?:              string
 
 		// The id of the linked dataset.
 		link_id!: string
 
 		// The location of the linked dataset.
 		location?: string
-		bigquery_dataset?: matchN(1, [#bigquery_dataset, [...#bigquery_dataset]])
-		timeouts?: #timeouts
 
 		// The resource name of the linked dataset. The name can have up
 		// to 100 characters. A valid link id

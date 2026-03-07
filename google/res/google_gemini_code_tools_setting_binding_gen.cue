@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gemini_code_tools_setting_binding")
 	close({
+		timeouts?: #timeouts
+
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
@@ -16,6 +18,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Labels as key value pairs.
 		//
@@ -24,7 +27,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -38,11 +40,10 @@ package res
 		// Product type of the setting binding. Possible values:
 		// ["GEMINI_CODE_ASSIST"]
 		product?: string
+		project?: string
 
 		// Id of the setting binding.
 		setting_binding_id!: string
-		timeouts?:           #timeouts
-		project?:            string
 
 		// Target of the binding.
 		target!: string

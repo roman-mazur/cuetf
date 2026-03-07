@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_healthcare_workspace")
 	close({
+		settings!: matchN(1, [#settings, list.MaxItems(1) & [_, ...] & [...#settings]])
+		timeouts?: #timeouts
+
 		// Identifies the dataset addressed by this request. Must be in
 		// the format
 		// 'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -27,7 +30,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		settings!: matchN(1, [#settings, list.MaxItems(1) & [_, ...] & [...#settings]])
 
 		// The name of the workspace, in the format
 		// 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
@@ -36,7 +38,6 @@ import "list"
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#settings: close({

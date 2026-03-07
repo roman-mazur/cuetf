@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_feature_online_store")
 	close({
+		bigtable?: matchN(1, [#bigtable, list.MaxItems(1) & [...#bigtable]])
+		dedicated_serving_endpoint?: matchN(1, [#dedicated_serving_endpoint, list.MaxItems(1) & [...#dedicated_serving_endpoint]])
+		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
+		optimized?: matchN(1, [#optimized, list.MaxItems(1) & [...#optimized]])
+		timeouts?: #timeouts
+
 		// The timestamp of when the feature online store was created in
 		// RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 		// to nine fractional digits.
@@ -41,11 +47,6 @@ import "list"
 
 		// The region of feature online store. eg us-central1
 		region?: string
-		bigtable?: matchN(1, [#bigtable, list.MaxItems(1) & [...#bigtable]])
-		dedicated_serving_endpoint?: matchN(1, [#dedicated_serving_endpoint, list.MaxItems(1) & [...#dedicated_serving_endpoint]])
-		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
-		optimized?: matchN(1, [#optimized, list.MaxItems(1) & [...#optimized]])
-		timeouts?: #timeouts
 
 		// The state of the Feature Online Store. See the possible states
 		// in [this

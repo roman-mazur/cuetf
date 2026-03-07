@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_secret_manager_regional_secret_version")
 	close({
+		timeouts?: #timeouts
+
 		// The time at which the regional secret version was created.
 		create_time?: string
 
@@ -30,15 +32,14 @@ package res
 
 		// The current state of the regional secret version.
 		enabled?: bool
+		id?:      string
 
 		// If set to 'true', the secret data is expected to be
 		// base64-encoded string and would be sent as is.
 		is_secret_data_base64?: bool
-		id?:                    string
 
 		// Location of Secret Manager regional secret resource.
 		location?: string
-		timeouts?: #timeouts
 
 		// The resource name of the regional secret version. Format:
 		// 'projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}/versions/{{version}}'

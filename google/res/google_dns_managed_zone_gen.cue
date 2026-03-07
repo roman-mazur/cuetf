@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dns_managed_zone")
 	close({
+		cloud_logging_config?: matchN(1, [#cloud_logging_config, list.MaxItems(1) & [...#cloud_logging_config]])
+		dnssec_config?: matchN(1, [#dnssec_config, list.MaxItems(1) & [...#dnssec_config]])
+		forwarding_config?: matchN(1, [#forwarding_config, list.MaxItems(1) & [...#forwarding_config]])
+		peering_config?: matchN(1, [#peering_config, list.MaxItems(1) & [...#peering_config]])
+		private_visibility_config?: matchN(1, [#private_visibility_config, list.MaxItems(1) & [...#private_visibility_config]])
+		timeouts?: #timeouts
+
 		// The time that this resource was created on the server.
 		// This is in RFC3339 text format.
 		creation_time?: string
@@ -45,13 +52,7 @@ import "list"
 		// Delegate your managed_zone to these virtual name servers;
 		// defined by the server
 		name_servers?: [...string]
-		cloud_logging_config?: matchN(1, [#cloud_logging_config, list.MaxItems(1) & [...#cloud_logging_config]])
-		dnssec_config?: matchN(1, [#dnssec_config, list.MaxItems(1) & [...#dnssec_config]])
-		forwarding_config?: matchN(1, [#forwarding_config, list.MaxItems(1) & [...#forwarding_config]])
-		peering_config?: matchN(1, [#peering_config, list.MaxItems(1) & [...#peering_config]])
-		private_visibility_config?: matchN(1, [#private_visibility_config, list.MaxItems(1) & [...#private_visibility_config]])
-		timeouts?: #timeouts
-		project?:  string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -72,9 +73,10 @@ import "list"
 	})
 
 	#dnssec_config: close({
+		default_key_specs?: matchN(1, [_#defs."/$defs/dnssec_config/$defs/default_key_specs", [..._#defs."/$defs/dnssec_config/$defs/default_key_specs"]])
+
 		// Identifies what kind of resource this is
 		kind?: string
-		default_key_specs?: matchN(1, [_#defs."/$defs/dnssec_config/$defs/default_key_specs", [..._#defs."/$defs/dnssec_config/$defs/default_key_specs"]])
 
 		// Specifies the mechanism used to provide authenticated
 		// denial-of-existence responses.

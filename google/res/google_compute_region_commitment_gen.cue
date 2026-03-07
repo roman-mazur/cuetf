@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_commitment")
 	close({
+		license_resource?: matchN(1, [#license_resource, list.MaxItems(1) & [...#license_resource]])
+		resources?: matchN(1, [#resources, [...#resources]])
+		timeouts?: #timeouts
+
 		// Specifies whether to enable automatic renewal for the
 		// commitment.
 		// The default value is false if not specified.
@@ -59,9 +63,6 @@ import "list"
 		// "THIRTY_SIX_MONTH"]
 		plan!:    string
 		project?: string
-		license_resource?: matchN(1, [#license_resource, list.MaxItems(1) & [...#license_resource]])
-		resources?: matchN(1, [#resources, [...#resources]])
-		timeouts?: #timeouts
 
 		// URL of the region where this commitment may be used.
 		region?:    string

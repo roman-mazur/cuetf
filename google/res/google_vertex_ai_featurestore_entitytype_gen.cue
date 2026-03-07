@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_featurestore_entitytype")
 	close({
+		monitoring_config?: matchN(1, [#monitoring_config, list.MaxItems(1) & [...#monitoring_config]])
+		timeouts?: #timeouts
+
 		// The timestamp of when the featurestore was created in RFC3339
 		// UTC "Zulu" format, with nanosecond resolution and up to nine
 		// fractional digits.
@@ -40,8 +43,6 @@ import "list"
 		// characters, and valid characters are [a-z0-9_]. The first
 		// character cannot be a number.
 		name?: string
-		monitoring_config?: matchN(1, [#monitoring_config, list.MaxItems(1) & [...#monitoring_config]])
-		timeouts?: #timeouts
 
 		// The region of the EntityType.
 		region?: string

@@ -6,11 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_insights_dataset_config")
 	close({
+		exclude_cloud_storage_buckets?: matchN(1, [#exclude_cloud_storage_buckets, list.MaxItems(1) & [...#exclude_cloud_storage_buckets]])
+		exclude_cloud_storage_locations?: matchN(1, [#exclude_cloud_storage_locations, list.MaxItems(1) & [...#exclude_cloud_storage_locations]])
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		include_cloud_storage_buckets?: matchN(1, [#include_cloud_storage_buckets, list.MaxItems(1) & [...#include_cloud_storage_buckets]])
+		include_cloud_storage_locations?: matchN(1, [#include_cloud_storage_locations, list.MaxItems(1) & [...#include_cloud_storage_locations]])
+		source_folders?: matchN(1, [#source_folders, list.MaxItems(1) & [...#source_folders]])
+		source_projects?: matchN(1, [#source_projects, list.MaxItems(1) & [...#source_projects]])
+		timeouts?: #timeouts
+
 		// Number of days of activity data that must be retained. If not
 		// specified, retentionPeriodDays will be used. Set to 0 to turn
 		// off the activity data.
 		activity_data_retention_period_days?: number
-		exclude_cloud_storage_buckets?: matchN(1, [#exclude_cloud_storage_buckets, list.MaxItems(1) & [...#exclude_cloud_storage_buckets]])
 
 		// The UTC time at which the DatasetConfig was created. This is
 		// auto-populated.
@@ -50,17 +58,10 @@ import "list"
 
 		// The location of the DatasetConfig.
 		location!: string
-		exclude_cloud_storage_locations?: matchN(1, [#exclude_cloud_storage_locations, list.MaxItems(1) & [...#exclude_cloud_storage_locations]])
 
 		// The full canonical resource name of the DatasetConfig (e.g.,
 		// projects/P/locations/L/datasetConfigs/ID).
 		name?: string
-		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
-		include_cloud_storage_buckets?: matchN(1, [#include_cloud_storage_buckets, list.MaxItems(1) & [...#include_cloud_storage_buckets]])
-		include_cloud_storage_locations?: matchN(1, [#include_cloud_storage_locations, list.MaxItems(1) & [...#include_cloud_storage_locations]])
-		source_folders?: matchN(1, [#source_folders, list.MaxItems(1) & [...#source_folders]])
-		source_projects?: matchN(1, [#source_projects, list.MaxItems(1) & [...#source_projects]])
-		timeouts?: #timeouts
 
 		// Organization resource ID that the source projects should belong
 		// to.

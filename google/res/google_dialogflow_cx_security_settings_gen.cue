@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_security_settings")
 	close({
+		audio_export_settings?: matchN(1, [#audio_export_settings, list.MaxItems(1) & [...#audio_export_settings]])
+		insights_export_settings?: matchN(1, [#insights_export_settings, list.MaxItems(1) & [...#insights_export_settings]])
+		timeouts?: #timeouts
+
 		// [DLP](https://cloud.google.com/dlp/docs) deidentify template
 		// name. Use this template to define de-identification
 		// configuration for the content. If empty, Dialogflow replaces
@@ -58,9 +62,6 @@ import "list"
 		// disconnected. This includes data that are temporarily saved on
 		// disk. Possible values: ["REDACT_DISK_STORAGE"]
 		redaction_scope?: string
-		audio_export_settings?: matchN(1, [#audio_export_settings, list.MaxItems(1) & [...#audio_export_settings]])
-		insights_export_settings?: matchN(1, [#insights_export_settings, list.MaxItems(1) & [...#insights_export_settings]])
-		timeouts?: #timeouts
 
 		// Defines how we redact data. If not set, defaults to not
 		// redacting.

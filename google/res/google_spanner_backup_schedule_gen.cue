@@ -6,22 +6,25 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_spanner_backup_schedule")
 	close({
+		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
+		full_backup_spec?: matchN(1, [#full_backup_spec, list.MaxItems(1) & [...#full_backup_spec]])
+		incremental_backup_spec?: matchN(1, [#incremental_backup_spec, list.MaxItems(1) & [...#incremental_backup_spec]])
+		spec?: matchN(1, [#spec, list.MaxItems(1) & [...#spec]])
+		timeouts?: #timeouts
+
 		// The database to create the backup schedule on.
 		database!: string
-		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
+		id?:       string
 
 		// The instance to create the database on.
 		instance!: string
-		id?:       string
 
 		// A unique identifier for the backup schedule, which cannot be
 		// changed after
 		// the backup schedule is created. Values are of the form
 		// [a-z][-a-z0-9]*[a-z0-9].
-		name?: string
-		full_backup_spec?: matchN(1, [#full_backup_spec, list.MaxItems(1) & [...#full_backup_spec]])
-		incremental_backup_spec?: matchN(1, [#incremental_backup_spec, list.MaxItems(1) & [...#incremental_backup_spec]])
-		spec?: matchN(1, [#spec, list.MaxItems(1) & [...#spec]])
+		name?:    string
+		project?: string
 
 		// At what relative time in the future, compared to its creation
 		// time, the backup should be deleted, e.g. keep backups for 7
@@ -30,8 +33,6 @@ import "list"
 		// with 's'. Example: '3.5s'.
 		// You can set this to a value up to 366 days.
 		retention_duration!: string
-		project?:            string
-		timeouts?:           #timeouts
 	})
 
 	#encryption_config: close({

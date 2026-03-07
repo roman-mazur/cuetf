@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_eventarc_message_bus")
 	close({
+		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
+		timeouts?: #timeouts
+
 		// Optional. Resource annotations.
 		//
 		// **Note**: This field is non-authoritative, and will only manage
@@ -63,17 +66,15 @@ import "list"
 		// MessageBus. It should match the
 		// format '^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$'.
 		message_bus_id!: string
-		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
-		timeouts?: #timeouts
 
 		// Identifier. Resource name of the form
 		// projects/{project}/locations/{location}/messageBuses/{message_bus}
-		name?: string
+		name?:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?: string
 
 		// Output only. Server assigned unique identifier for the channel.
 		// The value is a UUID4

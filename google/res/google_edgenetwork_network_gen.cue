@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_edgenetwork_network")
 	close({
+		timeouts?: #timeouts
+
 		// The time when the subnet was created.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine
@@ -19,6 +21,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Labels associated with this resource.
 		//
@@ -28,7 +31,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The Google Cloud region to which the target Distributed Cloud
 		// Edge zone belongs.
@@ -44,12 +46,11 @@ package res
 
 		// A unique ID that identifies this network.
 		network_id!: string
-		timeouts?:   #timeouts
+		project?:    string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?: string
 
 		// The time when the subnet was last updated.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_org_policy_custom_constraint")
 	close({
+		timeouts?: #timeouts
+
 		// The action to take if the condition is met. Possible values:
 		// ["ALLOW", "DENY"]
 		action_type!: string
@@ -20,6 +22,7 @@ package res
 
 		// A human-friendly name for the constraint.
 		display_name?: string
+		id?:           string
 
 		// A list of RESTful methods for which to enforce the constraint.
 		// Can be 'CREATE', 'UPDATE', or both. Not all Google Cloud
@@ -27,12 +30,10 @@ package res
 		// each service, find the service in [Supported
 		// services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
 		method_types!: [...string]
-		id?: string
 
 		// Immutable. The name of the custom constraint. This is unique
 		// within the organization.
-		name!:     string
-		timeouts?: #timeouts
+		name!: string
 
 		// The parent of the resource, an organization. Format should be
 		// 'organizations/{organization_id}'.

@@ -6,6 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_datastream_connection_profile")
 	close({
+		bigquery_profile?: matchN(1, [#bigquery_profile, list.MaxItems(1) & [...#bigquery_profile]])
+		forward_ssh_connectivity?: matchN(1, [#forward_ssh_connectivity, list.MaxItems(1) & [...#forward_ssh_connectivity]])
+		gcs_profile?: matchN(1, [#gcs_profile, list.MaxItems(1) & [...#gcs_profile]])
+		mongodb_profile?: matchN(1, [#mongodb_profile, list.MaxItems(1) & [...#mongodb_profile]])
+		mysql_profile?: matchN(1, [#mysql_profile, list.MaxItems(1) & [...#mysql_profile]])
+		oracle_profile?: matchN(1, [#oracle_profile, list.MaxItems(1) & [...#oracle_profile]])
+		postgresql_profile?: matchN(1, [#postgresql_profile, list.MaxItems(1) & [...#postgresql_profile]])
+		private_connectivity?: matchN(1, [#private_connectivity, list.MaxItems(1) & [...#private_connectivity]])
+		sql_server_profile?: matchN(1, [#sql_server_profile, list.MaxItems(1) & [...#sql_server_profile]])
+		timeouts?: #timeouts
+
 		// The connection profile identifier.
 		connection_profile_id!: string
 
@@ -28,19 +39,9 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		bigquery_profile?: matchN(1, [#bigquery_profile, list.MaxItems(1) & [...#bigquery_profile]])
 
 		// The name of the location this connection profile is located in.
 		location!: string
-		forward_ssh_connectivity?: matchN(1, [#forward_ssh_connectivity, list.MaxItems(1) & [...#forward_ssh_connectivity]])
-		gcs_profile?: matchN(1, [#gcs_profile, list.MaxItems(1) & [...#gcs_profile]])
-		mongodb_profile?: matchN(1, [#mongodb_profile, list.MaxItems(1) & [...#mongodb_profile]])
-		mysql_profile?: matchN(1, [#mysql_profile, list.MaxItems(1) & [...#mysql_profile]])
-		oracle_profile?: matchN(1, [#oracle_profile, list.MaxItems(1) & [...#oracle_profile]])
-		postgresql_profile?: matchN(1, [#postgresql_profile, list.MaxItems(1) & [...#postgresql_profile]])
-		private_connectivity?: matchN(1, [#private_connectivity, list.MaxItems(1) & [...#private_connectivity]])
-		sql_server_profile?: matchN(1, [#sql_server_profile, list.MaxItems(1) & [...#sql_server_profile]])
-		timeouts?: #timeouts
 
 		// The resource's name.
 		name?:    string
@@ -79,27 +80,30 @@ import "list"
 	})
 
 	#mongodb_profile: close({
+		host_addresses!: matchN(1, [_#defs."/$defs/mongodb_profile/$defs/host_addresses", [_, ...] & [..._#defs."/$defs/mongodb_profile/$defs/host_addresses"]])
+		srv_connection_format?: matchN(1, [_#defs."/$defs/mongodb_profile/$defs/srv_connection_format", list.MaxItems(1) & [..._#defs."/$defs/mongodb_profile/$defs/srv_connection_format"]])
+		ssl_config?: matchN(1, [_#defs."/$defs/mongodb_profile/$defs/ssl_config", list.MaxItems(1) & [..._#defs."/$defs/mongodb_profile/$defs/ssl_config"]])
+		standard_connection_format?: matchN(1, [_#defs."/$defs/mongodb_profile/$defs/standard_connection_format", list.MaxItems(1) & [..._#defs."/$defs/mongodb_profile/$defs/standard_connection_format"]])
+
 		// Password for the MongoDB connection. Mutually exclusive with
 		// secretManagerStoredPassword.
 		password?: string
 
 		// Name of the replica set.
 		replica_set?: string
-		host_addresses!: matchN(1, [_#defs."/$defs/mongodb_profile/$defs/host_addresses", [_, ...] & [..._#defs."/$defs/mongodb_profile/$defs/host_addresses"]])
 
 		// A reference to a Secret Manager resource name storing the
 		// MongoDB
 		// connection password. Mutually exclusive with password.
 		secret_manager_stored_password?: string
-		srv_connection_format?: matchN(1, [_#defs."/$defs/mongodb_profile/$defs/srv_connection_format", list.MaxItems(1) & [..._#defs."/$defs/mongodb_profile/$defs/srv_connection_format"]])
 
 		// Username for the MongoDB connection.
 		username!: string
-		ssl_config?: matchN(1, [_#defs."/$defs/mongodb_profile/$defs/ssl_config", list.MaxItems(1) & [..._#defs."/$defs/mongodb_profile/$defs/ssl_config"]])
-		standard_connection_format?: matchN(1, [_#defs."/$defs/mongodb_profile/$defs/standard_connection_format", list.MaxItems(1) & [..._#defs."/$defs/mongodb_profile/$defs/standard_connection_format"]])
 	})
 
 	#mysql_profile: close({
+		ssl_config?: matchN(1, [_#defs."/$defs/mysql_profile/$defs/ssl_config", list.MaxItems(1) & [..._#defs."/$defs/mysql_profile/$defs/ssl_config"]])
+
 		// Hostname for the MySQL connection.
 		hostname!: string
 
@@ -112,7 +116,6 @@ import "list"
 		// A reference to a Secret Manager resource name storing the
 		// user's password.
 		secret_manager_stored_password?: string
-		ssl_config?: matchN(1, [_#defs."/$defs/mysql_profile/$defs/ssl_config", list.MaxItems(1) & [..._#defs."/$defs/mysql_profile/$defs/ssl_config"]])
 
 		// Username for the MySQL connection.
 		username!: string
@@ -143,6 +146,8 @@ import "list"
 	})
 
 	#postgresql_profile: close({
+		ssl_config?: matchN(1, [_#defs."/$defs/postgresql_profile/$defs/ssl_config", list.MaxItems(1) & [..._#defs."/$defs/postgresql_profile/$defs/ssl_config"]])
+
 		// Database for the PostgreSQL connection.
 		database!: string
 
@@ -161,7 +166,6 @@ import "list"
 
 		// Username for the PostgreSQL connection.
 		username!: string
-		ssl_config?: matchN(1, [_#defs."/$defs/postgresql_profile/$defs/ssl_config", list.MaxItems(1) & [..._#defs."/$defs/postgresql_profile/$defs/ssl_config"]])
 	})
 
 	#private_connectivity: close({

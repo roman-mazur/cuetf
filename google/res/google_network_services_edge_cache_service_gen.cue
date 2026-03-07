@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_edge_cache_service")
 	close({
+		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
+		routing!: matchN(1, [#routing, list.MaxItems(1) & [_, ...] & [...#routing]])
+		timeouts?: #timeouts
+
 		// A human-readable description of the resource.
 		description?: string
 
@@ -58,9 +62,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		routing!: matchN(1, [#routing, list.MaxItems(1) & [_, ...] & [...#routing]])
-		timeouts?: #timeouts
 
 		// Name of the resource; provided by the client when the resource
 		// is created.
@@ -167,6 +168,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/routing/$defs/path_matcher/$defs/route_rule": close({
+		header_action?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/header_action", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/header_action"]])
+		match_rule!: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule"]])
+		route_action?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action"]])
+		route_methods?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_methods", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_methods"]])
+		url_redirect?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/url_redirect", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/url_redirect"]])
+
 		// A human-readable description of the routeRule.
 		description?: string
 
@@ -194,11 +201,6 @@ import "list"
 		// and 13 to 15 in the future without any impact on existing
 		// rules.
 		priority!: string
-		header_action?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/header_action", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/header_action"]])
-		match_rule!: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule"]])
-		route_action?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action"]])
-		route_methods?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_methods", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_methods"]])
-		url_redirect?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/url_redirect", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/url_redirect"]])
 	})
 
 	_#defs: "/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/header_action": close({
@@ -245,6 +247,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule": close({
+		header_match?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule/$defs/header_match", list.MaxItems(3) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule/$defs/header_match"]])
+		query_parameter_match?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule/$defs/query_parameter_match", list.MaxItems(5) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule/$defs/query_parameter_match"]])
+
 		// For satisfying the matchRule condition, the path of the request
 		// must exactly match the value specified in fullPathMatch after
 		// removing any query parameters and anchor that may be part of
@@ -270,8 +275,6 @@ import "list"
 		// begin with the specified prefixMatch. prefixMatch must begin
 		// with a /.
 		prefix_match?: string
-		header_match?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule/$defs/header_match", list.MaxItems(3) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule/$defs/header_match"]])
-		query_parameter_match?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule/$defs/query_parameter_match", list.MaxItems(5) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule/$defs/query_parameter_match"]])
 	})
 
 	_#defs: "/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/match_rule/$defs/header_match": close({
@@ -332,6 +335,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action/$defs/cdn_policy": close({
+		add_signatures?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action/$defs/cdn_policy/$defs/add_signatures", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action/$defs/cdn_policy/$defs/add_signatures"]])
+		cache_key_policy?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action/$defs/cdn_policy/$defs/cache_key_policy", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action/$defs/cdn_policy/$defs/cache_key_policy"]])
+		signed_token_options?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action/$defs/cdn_policy/$defs/signed_token_options", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action/$defs/cdn_policy/$defs/signed_token_options"]])
+
 		// Cache modes allow users to control the behaviour of the cache,
 		// what content it should cache automatically, whether to respect
 		// origin headers, or whether to unconditionally cache all
@@ -446,9 +453,6 @@ import "list"
 		// The EdgeCacheKeyset containing the set of public keys used to
 		// validate signed requests at the edge.
 		signed_request_keyset?: string
-		add_signatures?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action/$defs/cdn_policy/$defs/add_signatures", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action/$defs/cdn_policy/$defs/add_signatures"]])
-		cache_key_policy?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action/$defs/cdn_policy/$defs/cache_key_policy", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action/$defs/cdn_policy/$defs/cache_key_policy"]])
-		signed_token_options?: matchN(1, [_#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action/$defs/cdn_policy/$defs/signed_token_options", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/path_matcher/$defs/route_rule/$defs/route_action/$defs/cdn_policy/$defs/signed_token_options"]])
 
 		// Limit how far into the future the expiration time of a signed
 		// request may be.

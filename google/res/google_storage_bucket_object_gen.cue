@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_bucket_object")
 	close({
+		contexts?: matchN(1, [#contexts, list.MaxItems(1) & [...#contexts]])
+		customer_encryption?: matchN(1, [#customer_encryption, list.MaxItems(1) & [...#customer_encryption]])
+		retention?: matchN(1, [#retention, list.MaxItems(1) & [...#retention]])
+		timeouts?: #timeouts
+
 		// The name of the containing bucket.
 		bucket!: string
 
@@ -39,6 +44,7 @@ import "list"
 		// resource to be abandoned rather than deleted when removed from
 		// your Terraform configuration.
 		deletion_policy?: string
+		detect_md5hash?:  string
 
 		// Whether an object is under event-based hold. Event-based hold
 		// is a way to retain objects until an event occurs, which is
@@ -52,8 +58,8 @@ import "list"
 
 		// The content generation of this object. Used for object
 		// versioning and soft delete.
-		generation?:     number
-		detect_md5hash?: string
+		generation?: number
+		id?:         string
 
 		// Resource name of the Cloud KMS key that will be used to encrypt
 		// the object. Overrides the object metadata's kmsKeyName value,
@@ -62,14 +68,9 @@ import "list"
 
 		// Base 64 MD5 hash of the uploaded data.
 		md5hash?: string
-		id?:      string
 
 		// Hex value of md5hash
 		md5hexhash?: string
-		contexts?: matchN(1, [#contexts, list.MaxItems(1) & [...#contexts]])
-		customer_encryption?: matchN(1, [#customer_encryption, list.MaxItems(1) & [...#customer_encryption]])
-		retention?: matchN(1, [#retention, list.MaxItems(1) & [...#retention]])
-		timeouts?: #timeouts
 
 		// A url reference to download this object.
 		media_link?: string

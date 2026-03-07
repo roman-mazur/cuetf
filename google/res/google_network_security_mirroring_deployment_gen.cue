@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_mirroring_deployment")
 	close({
+		timeouts?: #timeouts
+
 		// The timestamp when the resource was created.
 		// See https://google.aip.dev/148#timestamps.
 		create_time?: string
@@ -23,6 +25,7 @@ package res
 		// 'projects/123456789/regions/us-central1/forwardingRules/my-rule'.
 		// See https://google.aip.dev/124.
 		forwarding_rule!: string
+		id?:              string
 
 		// Labels are key/value pairs that help to organize and filter
 		// resources.
@@ -32,7 +35,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The cloud location of the deployment, e.g. 'us-central1-a' or
 		// 'asia-south1-b'.
@@ -52,8 +54,8 @@ package res
 		// The resource name of this deployment, for example:
 		// 'projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep'.
 		// See https://google.aip.dev/122 for more details.
-		name?:     string
-		timeouts?: #timeouts
+		name?:    string
+		project?: string
 
 		// The current state of the resource does not match the user's
 		// intended state,
@@ -62,7 +64,6 @@ package res
 		// operation (e.g. linking a new association to the parent group).
 		// See https://google.aip.dev/128.
 		reconciling?: bool
-		project?:     string
 
 		// The current state of the deployment.
 		// See https://google.aip.dev/216.

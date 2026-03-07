@@ -53,6 +53,7 @@ package data
 
 		// For Resource freshness validation (https://google.aip.dev/154)
 		etag?: string
+		id?:   string
 
 		// The region of the Entitlement resource.
 		location?: string
@@ -78,7 +79,6 @@ package data
 		// Format: projects/{project-id|project-number} or
 		// organizations/{organization-number} or folders/{folder-number}
 		parent?: string
-		id?:     string
 
 		// Privileged access that this service can be used to gate.
 		privileged_access?: [...close({

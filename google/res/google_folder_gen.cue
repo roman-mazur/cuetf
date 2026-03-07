@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_folder")
 	close({
+		timeouts?: #timeouts
+
 		// A list of capabilities that are configured for this folder.
 		configured_capabilities?: [...string]
 
@@ -28,6 +30,7 @@ package res
 
 		// The folder id from the name "folders/{folder_id}"
 		folder_id?: string
+		id?:        string
 
 		// The lifecycle state of the folder such as ACTIVE or
 		// DELETE_REQUESTED.
@@ -36,12 +39,10 @@ package res
 		// The Management Project associated with the folder's configured
 		// capabilities.
 		management_project?: string
-		id?:                 string
 
 		// The resource name of the Folder. Its format is
 		// folders/{folder_id}.
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// The resource name of the parent Folder or Organization. Must be
 		// of the form folders/{folder_id} or organizations/{org_id}.

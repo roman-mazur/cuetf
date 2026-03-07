@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_catalog_entry")
 	close({
+		gcs_fileset_spec?: matchN(1, [#gcs_fileset_spec, list.MaxItems(1) & [...#gcs_fileset_spec]])
+		timeouts?: #timeouts
+
 		// Specification for a group of BigQuery tables with name pattern
 		// [prefix]YYYYMMDD.
 		// Context:
@@ -42,6 +45,7 @@ import "list"
 
 		// The id of the entry to create.
 		entry_id!: string
+		id?:       string
 
 		// This field indicates the entry's source system that Data
 		// Catalog integrates with, such as BigQuery or Pub/Sub.
@@ -64,7 +68,6 @@ import "list"
 		// Note that this Entry and its child resources may not actually
 		// be stored in the location in this name.
 		name?: string
-		id?:   string
 
 		// Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as
 		// a json string. An entry might not have any schema
@@ -72,8 +75,6 @@ import "list"
 		// https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
 		// for what fields this schema can contain.
 		schema?: string
-		gcs_fileset_spec?: matchN(1, [#gcs_fileset_spec, list.MaxItems(1) & [...#gcs_fileset_spec]])
-		timeouts?: #timeouts
 
 		// The type of the entry. Only used for Entries with types in the
 		// EntryType enum.

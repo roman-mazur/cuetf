@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_dns_zone")
 	close({
+		peering_config!: matchN(1, [#peering_config, list.MaxItems(1) & [_, ...] & [...#peering_config]])
+		timeouts?: #timeouts
+
 		// Description for the zone.
 		description!: string
 
@@ -15,7 +18,6 @@ import "list"
 		// Doamin for the zone.
 		domain!: string
 		id?:     string
-		peering_config!: matchN(1, [#peering_config, list.MaxItems(1) & [_, ...] & [...#peering_config]])
 
 		// Name of the Dns Zone in the following format:
 		// organizations/{organization}/dnsZones/{dnsZone}.
@@ -23,8 +25,7 @@ import "list"
 
 		// The Apigee Organization associated with the Apigee instance,
 		// in the format 'organizations/{{org_name}}'.
-		org_id!:   string
-		timeouts?: #timeouts
+		org_id!: string
 	})
 
 	#peering_config: close({

@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_identity_group_membership")
 	close({
+		preferred_member_key?: matchN(1, [#preferred_member_key, list.MaxItems(1) & [...#preferred_member_key]])
+		roles!: matchN(1, [#roles, [_, ...] & [...#roles]])
+		timeouts?: #timeouts
+
 		// If set to true, skip group member creation if a membership with
 		// the same name already exists. Defaults to false.
 		create_ignore_already_exists?: bool
@@ -15,17 +19,14 @@ import "list"
 
 		// The name of the Group to create this membership in.
 		group!: string
+		id?:    string
 
 		// The resource name of the Membership, of the form
 		// groups/{group_id}/memberships/{membership_id}.
 		name?: string
-		id?:   string
-		preferred_member_key?: matchN(1, [#preferred_member_key, list.MaxItems(1) & [...#preferred_member_key]])
 
 		// The type of the membership.
 		type?: string
-		roles!: matchN(1, [#roles, [_, ...] & [...#roles]])
-		timeouts?: #timeouts
 
 		// The time when the Membership was last updated.
 		update_time?: string

@@ -661,6 +661,9 @@ package data
 			})]
 			resource_labels?: [string]:       string
 			resource_manager_tags?: [string]: string
+			sandbox_config?: [...close({
+				type?: string
+			})]
 			secondary_boot_disks?: [...close({
 				disk_image?: string
 				mode?:       string
@@ -924,6 +927,9 @@ package data
 				})]
 				resource_labels?: [string]:       string
 				resource_manager_tags?: [string]: string
+				sandbox_config?: [...close({
+					type?: string
+				})]
 				secondary_boot_disks?: [...close({
 					disk_image?: string
 					mode?:       string

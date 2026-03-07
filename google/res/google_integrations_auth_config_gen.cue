@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_integrations_auth_config")
 	close({
+		client_certificate?: matchN(1, [#client_certificate, list.MaxItems(1) & [...#client_certificate]])
+		decrypted_credential?: matchN(1, [#decrypted_credential, list.MaxItems(1) & [...#decrypted_credential]])
+		timeouts?: #timeouts
+
 		// Certificate id for client certificate.
 		certificate_id?: string
 
@@ -42,20 +46,17 @@ import "list"
 		// A duration in seconds with up to nine fractional digits, ending
 		// with 's'. Example: "3.5s".
 		expiry_notification_duration?: [...string]
+		id?: string
 
 		// The last modifier's email address. Generated based on the End
 		// User Credentials/LOAS role of the user making the call.
 		last_modifier_email?: string
-		id?:                  string
 
 		// Location in which client needs to be provisioned.
 		location!: string
 
 		// Resource name of the auth config.
 		name?: string
-		client_certificate?: matchN(1, [#client_certificate, list.MaxItems(1) & [...#client_certificate]])
-		decrypted_credential?: matchN(1, [#decrypted_credential, list.MaxItems(1) & [...#decrypted_credential]])
-		timeouts?: #timeouts
 
 		// User provided expiry time to override. For the example of
 		// Salesforce, username/password credentials can be valid for 6
@@ -65,13 +66,13 @@ import "list"
 		// resolution and up to nine fractional digits. Examples:
 		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		override_valid_time?: string
+		project?:             string
 
 		// The reason / details of the current status.
 		reason?: string
 
 		// The status of the auth config.
-		state?:   string
-		project?: string
+		state?: string
 
 		// The timestamp when the auth config is modified.
 		//
@@ -171,6 +172,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/decrypted_credential/$defs/oauth2_client_credentials": close({
+		token_params?: matchN(1, [_#defs."/$defs/decrypted_credential/$defs/oauth2_client_credentials/$defs/token_params", list.MaxItems(1) & [..._#defs."/$defs/decrypted_credential/$defs/oauth2_client_credentials/$defs/token_params"]])
+
 		// The client's ID.
 		client_id?: string
 
@@ -184,7 +187,6 @@ import "list"
 
 		// A space-delimited list of requested scope permissions.
 		scope?: string
-		token_params?: matchN(1, [_#defs."/$defs/decrypted_credential/$defs/oauth2_client_credentials/$defs/token_params", list.MaxItems(1) & [..._#defs."/$defs/decrypted_credential/$defs/oauth2_client_credentials/$defs/token_params"]])
 
 		// The token endpoint is used by the client to obtain an access
 		// token by presenting its authorization grant or refresh token.

@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_beyondcorp_app_connection")
 	close({
+		application_endpoint!: matchN(1, [#application_endpoint, list.MaxItems(1) & [_, ...] & [...#application_endpoint]])
+		gateway?: matchN(1, [#gateway, list.MaxItems(1) & [...#gateway]])
+		timeouts?: #timeouts
+
 		// List of AppConnectors that are authorised to be associated with
 		// this AppConnection
 		connectors?: [...string]
@@ -17,6 +21,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Resource labels to represent user provided metadata.
 		//
@@ -26,7 +31,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// ID of the AppConnection.
 		name!:    string
@@ -34,9 +38,6 @@ import "list"
 
 		// The region of the AppConnection.
 		region?: string
-		application_endpoint!: matchN(1, [#application_endpoint, list.MaxItems(1) & [_, ...] & [...#application_endpoint]])
-		gateway?: matchN(1, [#gateway, list.MaxItems(1) & [...#gateway]])
-		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

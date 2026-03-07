@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_multicast_group_consumer_activation")
 	close({
+		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
+		timeouts?: #timeouts
+
 		// The timestamp when the multicast group consumer activation
 		// was created.
 		create_time?: string
@@ -18,6 +21,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Labels as key-value pairs
 		//
@@ -26,7 +30,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -60,10 +63,8 @@ import "list"
 		// activation.
 		// Use the following format:
 		// 'projects/*/locations/*/multicastGroupConsumerActivations/*'.
-		name?: string
-		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// The multicast resource's state.
 		state?: [...close({

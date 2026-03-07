@@ -6,12 +6,27 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_instance")
 	close({
+		advanced_machine_features?: matchN(1, [#advanced_machine_features, list.MaxItems(1) & [...#advanced_machine_features]])
+		attached_disk?: matchN(1, [#attached_disk, [...#attached_disk]])
+		boot_disk!: matchN(1, [#boot_disk, list.MaxItems(1) & [_, ...] & [...#boot_disk]])
+		confidential_instance_config?: matchN(1, [#confidential_instance_config, list.MaxItems(1) & [...#confidential_instance_config]])
+		guest_accelerator?: matchN(1, [#guest_accelerator, [...#guest_accelerator]])
+		instance_encryption_key?: matchN(1, [#instance_encryption_key, list.MaxItems(1) & [...#instance_encryption_key]])
+		network_interface!: matchN(1, [#network_interface, [_, ...] & [...#network_interface]])
+		network_performance_config?: matchN(1, [#network_performance_config, list.MaxItems(1) & [...#network_performance_config]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
+		reservation_affinity?: matchN(1, [#reservation_affinity, list.MaxItems(1) & [...#reservation_affinity]])
+		scheduling?: matchN(1, [#scheduling, list.MaxItems(1) & [...#scheduling]])
+		scratch_disk?: matchN(1, [#scratch_disk, [...#scratch_disk]])
+		service_account?: matchN(1, [#service_account, list.MaxItems(1) & [...#service_account]])
+		shielded_instance_config?: matchN(1, [#shielded_instance_config, list.MaxItems(1) & [...#shielded_instance_config]])
+		timeouts?: #timeouts
+
 		// If true, allows Terraform to stop the instance to update its
 		// properties. If you try to update a property that requires
 		// stopping the instance without setting this field, the update
 		// will fail.
 		allow_stopping_for_update?: bool
-		advanced_machine_features?: matchN(1, [#advanced_machine_features, list.MaxItems(1) & [...#advanced_machine_features]])
 
 		// Whether sending and receiving of packets with non-matching
 		// source or destination IPs is allowed.
@@ -79,26 +94,12 @@ import "list"
 
 		// The machine type to create.
 		machine_type!: string
-		attached_disk?: matchN(1, [#attached_disk, [...#attached_disk]])
-		boot_disk!: matchN(1, [#boot_disk, list.MaxItems(1) & [_, ...] & [...#boot_disk]])
-		confidential_instance_config?: matchN(1, [#confidential_instance_config, list.MaxItems(1) & [...#confidential_instance_config]])
-		guest_accelerator?: matchN(1, [#guest_accelerator, [...#guest_accelerator]])
-		instance_encryption_key?: matchN(1, [#instance_encryption_key, list.MaxItems(1) & [...#instance_encryption_key]])
-		network_interface!: matchN(1, [#network_interface, [_, ...] & [...#network_interface]])
-		network_performance_config?: matchN(1, [#network_performance_config, list.MaxItems(1) & [...#network_performance_config]])
 
 		// Metadata key/value pairs made available within the instance.
 		metadata?: [string]: string
-		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
-		reservation_affinity?: matchN(1, [#reservation_affinity, list.MaxItems(1) & [...#reservation_affinity]])
-		scheduling?: matchN(1, [#scheduling, list.MaxItems(1) & [...#scheduling]])
-		scratch_disk?: matchN(1, [#scratch_disk, [...#scratch_disk]])
-		service_account?: matchN(1, [#service_account, list.MaxItems(1) & [...#service_account]])
-		shielded_instance_config?: matchN(1, [#shielded_instance_config, list.MaxItems(1) & [...#shielded_instance_config]])
 
 		// The unique fingerprint of the metadata.
 		metadata_fingerprint?: string
-		timeouts?:             #timeouts
 
 		// Metadata startup scripts made available within the instance.
 		metadata_startup_script?: string
@@ -217,6 +218,8 @@ import "list"
 	})
 
 	#boot_disk: close({
+		initialize_params?: matchN(1, [_#defs."/$defs/boot_disk/$defs/initialize_params", list.MaxItems(1) & [..._#defs."/$defs/boot_disk/$defs/initialize_params"]])
+
 		// Whether the disk will be auto-deleted when the instance is
 		// deleted.
 		auto_delete?: bool
@@ -256,7 +259,6 @@ import "list"
 		// A list of features to enable on the guest operating system.
 		// Applicable only for bootable images.
 		guest_os_features?: [...string]
-		initialize_params?: matchN(1, [_#defs."/$defs/boot_disk/$defs/initialize_params", list.MaxItems(1) & [..._#defs."/$defs/boot_disk/$defs/initialize_params"]])
 
 		// The disk interface used for attaching this disk. One of SCSI or
 		// NVME. (This field is shared with attached_disk and only used
@@ -317,6 +319,10 @@ import "list"
 	})
 
 	#network_interface: close({
+		access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/access_config", [..._#defs."/$defs/network_interface/$defs/access_config"]])
+		alias_ip_range?: matchN(1, [_#defs."/$defs/network_interface/$defs/alias_ip_range", [..._#defs."/$defs/network_interface/$defs/alias_ip_range"]])
+		ipv6_access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/ipv6_access_config", [..._#defs."/$defs/network_interface/$defs/ipv6_access_config"]])
+
 		// Indicates whether igmp query is enabled on the network
 		// interface or not. If enabled, also indicates the version of
 		// IGMP supported.
@@ -357,9 +363,6 @@ import "list"
 		// Name of the parent network interface of a dynamic network
 		// interface.
 		parent_nic_name?: string
-		access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/access_config", [..._#defs."/$defs/network_interface/$defs/access_config"]])
-		alias_ip_range?: matchN(1, [_#defs."/$defs/network_interface/$defs/alias_ip_range", [..._#defs."/$defs/network_interface/$defs/alias_ip_range"]])
-		ipv6_access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/ipv6_access_config", [..._#defs."/$defs/network_interface/$defs/ipv6_access_config"]])
 
 		// The networking queue count that's specified by users for the
 		// network interface. Both Rx and Tx queues will be set to this
@@ -407,6 +410,11 @@ import "list"
 	})
 
 	#scheduling: close({
+		local_ssd_recovery_timeout?: matchN(1, [_#defs."/$defs/scheduling/$defs/local_ssd_recovery_timeout", list.MaxItems(1) & [..._#defs."/$defs/scheduling/$defs/local_ssd_recovery_timeout"]])
+		max_run_duration?: matchN(1, [_#defs."/$defs/scheduling/$defs/max_run_duration", list.MaxItems(1) & [..._#defs."/$defs/scheduling/$defs/max_run_duration"]])
+		node_affinities?: matchN(1, [_#defs."/$defs/scheduling/$defs/node_affinities", [..._#defs."/$defs/scheduling/$defs/node_affinities"]])
+		on_instance_stop_action?: matchN(1, [_#defs."/$defs/scheduling/$defs/on_instance_stop_action", list.MaxItems(1) & [..._#defs."/$defs/scheduling/$defs/on_instance_stop_action"]])
+
 		// Specifies if the instance should be restarted if it was
 		// terminated by Compute Engine (not a user).
 		automatic_restart?: bool
@@ -417,18 +425,14 @@ import "list"
 
 		// Specifies the action GCE should take when SPOT VM is preempted.
 		instance_termination_action?: string
+		min_node_cpus?:               number
 
 		// Describes maintenance behavior for the instance. One of MIGRATE
 		// or TERMINATE,
 		on_host_maintenance?: string
-		min_node_cpus?:       number
 
 		// Whether the instance is preemptible.
 		preemptible?: bool
-		local_ssd_recovery_timeout?: matchN(1, [_#defs."/$defs/scheduling/$defs/local_ssd_recovery_timeout", list.MaxItems(1) & [..._#defs."/$defs/scheduling/$defs/local_ssd_recovery_timeout"]])
-		max_run_duration?: matchN(1, [_#defs."/$defs/scheduling/$defs/max_run_duration", list.MaxItems(1) & [..._#defs."/$defs/scheduling/$defs/max_run_duration"]])
-		node_affinities?: matchN(1, [_#defs."/$defs/scheduling/$defs/node_affinities", [..._#defs."/$defs/scheduling/$defs/node_affinities"]])
-		on_instance_stop_action?: matchN(1, [_#defs."/$defs/scheduling/$defs/on_instance_stop_action", list.MaxItems(1) & [..._#defs."/$defs/scheduling/$defs/on_instance_stop_action"]])
 
 		// Whether the instance is spot. If this is set as SPOT.
 		provisioning_model?: string
@@ -479,6 +483,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/boot_disk/$defs/initialize_params": close({
+		source_image_encryption_key?: matchN(1, [_#defs."/$defs/boot_disk/$defs/initialize_params/$defs/source_image_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/boot_disk/$defs/initialize_params/$defs/source_image_encryption_key"]])
+		source_snapshot_encryption_key?: matchN(1, [_#defs."/$defs/boot_disk/$defs/initialize_params/$defs/source_snapshot_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/boot_disk/$defs/initialize_params/$defs/source_snapshot_encryption_key"]])
+
 		// The architecture of the disk. One of "X86_64" or "ARM64".
 		architecture?: string
 
@@ -513,8 +520,6 @@ import "list"
 		// instance to recreate. Currently a max of 1 resource policy is
 		// supported.
 		resource_policies?: [...string]
-		source_image_encryption_key?: matchN(1, [_#defs."/$defs/boot_disk/$defs/initialize_params/$defs/source_image_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/boot_disk/$defs/initialize_params/$defs/source_image_encryption_key"]])
-		source_snapshot_encryption_key?: matchN(1, [_#defs."/$defs/boot_disk/$defs/initialize_params/$defs/source_snapshot_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/boot_disk/$defs/initialize_params/$defs/source_snapshot_encryption_key"]])
 
 		// The size of the image in gigabytes.
 		size?: number

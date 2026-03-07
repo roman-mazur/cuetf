@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_secure_source_manager_hook")
 	close({
+		push_option?: matchN(1, [#push_option, list.MaxItems(1) & [...#push_option]])
+		timeouts?: #timeouts
+
 		// Create timestamp.
 		create_time?: string
 
@@ -32,8 +35,6 @@ import "list"
 
 		// The ID for the Repository.
 		repository_id!: string
-		push_option?: matchN(1, [#push_option, list.MaxItems(1) & [...#push_option]])
-		timeouts?: #timeouts
 
 		// The sensitive query string to be appended to the target URI.
 		sensitive_query_string?: string

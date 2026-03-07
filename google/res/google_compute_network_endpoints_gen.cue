@@ -4,7 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_network_endpoints")
 	close({
-		id?: string
+		network_endpoints?: matchN(1, [#network_endpoints, [...#network_endpoints]])
+		timeouts?: #timeouts
+		id?:       string
 
 		// The network endpoint group these endpoints are part of.
 		network_endpoint_group!: string
@@ -12,8 +14,6 @@ package res
 
 		// Zone where the containing network endpoint group is located.
 		zone?: string
-		network_endpoints?: matchN(1, [#network_endpoints, [...#network_endpoints]])
-		timeouts?: #timeouts
 	})
 
 	#network_endpoints: close({

@@ -37,13 +37,13 @@ package data
 		exclude_cloud_storage_locations?: [...close({
 			locations?: [...string]
 		})]
+		id?: string
 
 		// Identity used by DatasetConfig.
 		identity?: [...close({
 			name?: string
 			type?: string
 		})]
-		id?: string
 
 		// Defines the options for including cloud storage buckets for the
 		// DatasetConfig.
@@ -97,10 +97,10 @@ package data
 		// Defines the options for providing a source organization for the
 		// DatasetConfig.
 		organization_scope?: bool
+		project?:            string
 
 		// Number of days of history that must be retained.
 		retention_period_days?: number
-		project?:               string
 
 		// Defines the options for providing source folders for the
 		// DatasetConfig.

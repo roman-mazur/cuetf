@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_global_forwarding_rule")
 	close({
+		metadata_filters?: matchN(1, [#metadata_filters, [...#metadata_filters]])
+		service_directory_registrations?: matchN(1, [#service_directory_registrations, list.MaxItems(1) & [...#service_directory_registrations]])
+		timeouts?: #timeouts
+
 		// [Output Only] The URL for the corresponding base Forwarding
 		// Rule. By base Forwarding Rule, we mean the Forwarding Rule
 		// that has the same IP address, protocol, and port settings with
@@ -65,6 +69,7 @@ import "list"
 		// The unique identifier number for the resource. This identifier
 		// is defined by the server.
 		forwarding_rule_id?: number
+		id?:                 string
 
 		// IP address for which this forwarding rule accepts traffic. When
 		// a client
@@ -126,7 +131,6 @@ import "list"
 		// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 		// Possible values: ["TCP", "UDP", "ESP", "AH", "SCTP", "ICMP"]
 		ip_protocol?: string
-		id?:          string
 
 		// The IP Version that will be used by this global forwarding
 		// rule. Possible values: ["IPV4", "IPV6"]
@@ -207,9 +211,6 @@ import "list"
 		// networkTier of the Address. Possible values: ["PREMIUM",
 		// "STANDARD"]
 		network_tier?: string
-		metadata_filters?: matchN(1, [#metadata_filters, [...#metadata_filters]])
-		service_directory_registrations?: matchN(1, [#service_directory_registrations, list.MaxItems(1) & [...#service_directory_registrations]])
-		timeouts?: #timeouts
 
 		// This is used in PSC consumer ForwardingRule to control whether
 		// it should try to auto-generate a DNS zone or not. Non-PSC
@@ -256,6 +257,7 @@ import "list"
 		// values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED',
 		// 'REJECTED', 'CLOSED'
 		psc_connection_status?: string
+		self_link?:             string
 
 		// If not empty, this Forwarding Rule will only forward the
 		// traffic when the source IP address matches one of the IP
@@ -266,7 +268,6 @@ import "list"
 		// address (for example, 1.2.3.4) or a CIDR range (for example,
 		// 1.2.3.0/24).
 		source_ip_ranges?: [...string]
-		self_link?: string
 
 		// This field identifies the subnetwork that the load balanced IP
 		// should

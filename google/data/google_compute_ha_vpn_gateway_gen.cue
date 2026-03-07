@@ -16,6 +16,7 @@ package data
 		// interfaces. If not specified, IPV4 will be used. Default
 		// value: "IPV4" Possible values: ["IPV4", "IPV6"]
 		gateway_ip_version?: string
+		id?:                 string
 
 		// A fingerprint for the labels being applied to this VpnGateway,
 		// which is essentially a hash
@@ -27,7 +28,6 @@ package data
 		// to update or change labels,
 		// otherwise the request will fail with error 412 conditionNotMet.
 		label_fingerprint?: string
-		id?:                string
 
 		// Labels for this resource. These can only be added or modified
 		// by the setLabels method.

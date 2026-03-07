@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_developer_connect_account_connector")
 	close({
+		provider_oauth_config?: matchN(1, [#provider_oauth_config, list.MaxItems(1) & [...#provider_oauth_config]])
+		timeouts?: #timeouts
+
 		// Required. The ID to use for the AccountConnector, which will
 		// become the final
 		// component of the AccountConnector's resource name. Its format
@@ -56,9 +59,7 @@ import "list"
 
 		// Output only. Start OAuth flow by clicking on this URL.
 		oauth_start_uri?: string
-		provider_oauth_config?: matchN(1, [#provider_oauth_config, list.MaxItems(1) & [...#provider_oauth_config]])
-		timeouts?: #timeouts
-		project?:  string
+		project?:         string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -75,7 +76,11 @@ import "list"
 		// be deleted and users will re-auth again.
 		scopes!: [...string]
 
-		// List of providers that are owned by Developer Connect.
+		// List of providers that are owned by Developer Connect. Creation
+		// of
+		// new non-SCM providers Account Connectors is not possible at
+		// this
+		// time.
 		//
 		// Possible values:
 		// GITHUB

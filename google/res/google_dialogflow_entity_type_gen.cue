@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_entity_type")
 	close({
+		entities?: matchN(1, [#entities, [...#entities]])
+		timeouts?: #timeouts
+
 		// The name of this entity type to be displayed on the console.
 		display_name!: string
 
@@ -26,10 +29,8 @@ package res
 		// The unique identifier of the entity type.
 		// Format: projects/<Project ID>/agent/entityTypes/<Entity type
 		// ID>.
-		name?: string
-		entities?: matchN(1, [#entities, [...#entities]])
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 	})
 
 	#entities: close({

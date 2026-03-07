@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_check_debug_token")
 	close({
+		timeouts?: #timeouts
+
 		// The ID of a
 		// [Web
 		// App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
@@ -21,7 +23,6 @@ package res
 		display_name!: string
 		id?:           string
 		project?:      string
-		timeouts?:     #timeouts
 
 		// The secret token itself. Must be provided during creation, and
 		// must be a UUID4,

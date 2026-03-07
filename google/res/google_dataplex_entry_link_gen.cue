@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_entry_link")
 	close({
+		entry_references!: matchN(1, [#entry_references, [_, ...] & [...#entry_references]])
+		timeouts?: #timeouts
+
 		// The time when the Entry Link was created.
 		create_time?: string
 
@@ -24,10 +27,8 @@ package res
 
 		// The relative resource name of the Entry Link, of the form:
 		// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}
-		name?: string
-		entry_references!: matchN(1, [#entry_references, [_, ...] & [...#entry_references]])
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// The time when the Entry Link was last updated.
 		update_time?: string

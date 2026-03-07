@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_packet_mirroring")
 	close({
+		collector_ilb!: matchN(1, [#collector_ilb, list.MaxItems(1) & [_, ...] & [...#collector_ilb]])
+		filter?: matchN(1, [#filter, list.MaxItems(1) & [...#filter]])
+		mirrored_resources!: matchN(1, [#mirrored_resources, list.MaxItems(1) & [_, ...] & [...#mirrored_resources]])
+		network!: matchN(1, [#network, list.MaxItems(1) & [_, ...] & [...#network]])
+		timeouts?: #timeouts
+
 		// A human-readable description of the rule.
 		description?: string
 
@@ -14,21 +20,16 @@ import "list"
 		// policy will not be enforced on the network. The default is
 		// TRUE. Possible values: ["TRUE", "FALSE"]
 		enable?: string
-		collector_ilb!: matchN(1, [#collector_ilb, list.MaxItems(1) & [_, ...] & [...#collector_ilb]])
+		id?:     string
 
 		// The name of the packet mirroring rule
 		name!: string
-		id?:   string
 
 		// Since only one rule can be active at a time, priority is
 		// used to break ties in the case of two rules that apply to
 		// the same instances.
 		priority?: number
-		filter?: matchN(1, [#filter, list.MaxItems(1) & [...#filter]])
-		mirrored_resources!: matchN(1, [#mirrored_resources, list.MaxItems(1) & [_, ...] & [...#mirrored_resources]])
-		network!: matchN(1, [#network, list.MaxItems(1) & [_, ...] & [...#network]])
 		project?:  string
-		timeouts?: #timeouts
 
 		// The Region in which the created address should reside.
 		// If it is not provided, the provider region is used.

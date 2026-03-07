@@ -4,11 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_target_instance")
 	close({
+		timeouts?: #timeouts
+
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
 		// An optional description of this resource.
 		description?: string
+		id?:          string
 
 		// The Compute instance VM handling traffic for this target
 		// instance.
@@ -32,13 +35,11 @@ package res
 		// the last
 		// character, which cannot be a dash.
 		name!: string
-		id?:   string
 
 		// NAT option controlling how IPs are NAT'ed to the instance.
 		// Currently only NO_NAT (default value) is supported. Default
 		// value: "NO_NAT" Possible values: ["NO_NAT"]
 		nat_policy?: string
-		timeouts?:   #timeouts
 		project?:    string
 		self_link?:  string
 

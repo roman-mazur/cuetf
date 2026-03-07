@@ -6,6 +6,7 @@ package data
 	close({
 		// List of projects using the connector.
 		connected_projects?: [...string]
+		id?: string
 
 		// The range of internal addresses that follows RFC 4632 notation.
 		// Example: '10.132.0.0/28'.
@@ -21,7 +22,6 @@ package data
 		// alongside 'min_instances' if not using
 		// 'min_throughput'/'max_throughput'.
 		max_instances?: number
-		id?:            string
 
 		// Maximum throughput of the connector in Mbps, must be greater
 		// than 'min_throughput'. Default is 300. Refers to the expected

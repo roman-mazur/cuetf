@@ -6,7 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_per_instance_config")
 	close({
-		id?: string
+		preserved_state?: matchN(1, [#preserved_state, list.MaxItems(1) & [...#preserved_state]])
+		timeouts?: #timeouts
+		id?:       string
 
 		// The instance group manager this instance config is part of.
 		instance_group_manager!: string
@@ -46,8 +48,6 @@ import "list"
 		// State will be removed on the next instance recreation or
 		// update.
 		remove_instance_state_on_destroy?: bool
-		preserved_state?: matchN(1, [#preserved_state, list.MaxItems(1) & [...#preserved_state]])
-		timeouts?: #timeouts
 
 		// Zone where the containing instance group manager is located
 		zone?: string

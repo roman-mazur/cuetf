@@ -6,12 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_organization_bucket_config")
 	close({
+		cmek_settings?: matchN(1, [#cmek_settings, list.MaxItems(1) & [...#cmek_settings]])
+		index_configs?: matchN(1, [#index_configs, list.MaxItems(20) & [...#index_configs]])
+
 		// The name of the logging bucket. Logging automatically creates
 		// two log buckets: _Required and _Default.
 		bucket_id!: string
 
 		// An optional description for this bucket.
 		description?: string
+		id?:          string
 
 		// The bucket's lifecycle such as active or deleted.
 		lifecycle_state?: string
@@ -21,9 +25,6 @@ import "list"
 
 		// The resource name of the bucket
 		name?: string
-		id?:   string
-		cmek_settings?: matchN(1, [#cmek_settings, list.MaxItems(1) & [...#cmek_settings]])
-		index_configs?: matchN(1, [#index_configs, list.MaxItems(20) & [...#index_configs]])
 
 		// The parent resource that contains the logging bucket.
 		organization!: string

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_gateway")
 	close({
+		timeouts?: #timeouts
+
 		// Zero or one IPv4 or IPv6 address on which the Gateway will
 		// receive the traffic.
 		// When no address is provided, an IP from the subnetwork is
@@ -56,6 +58,7 @@ package res
 		// This policy is specific to gateways of type
 		// 'SECURE_WEB_GATEWAY'.
 		gateway_security_policy?: string
+		id?:                      string
 
 		// The IP Version that will be used by this gateway. Possible
 		// values: ["IPV4", "IPV6"]
@@ -69,7 +72,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location of the gateway.
 		// The default value is 'global'.
@@ -84,13 +86,11 @@ package res
 		//
 		// Currently, this field is specific to gateways of type
 		// 'SECURE_WEB_GATEWAY'.
-		network?:  string
-		timeouts?: #timeouts
+		network?: string
 
 		// One or more port numbers (1-65535), on which the Gateway will
 		// receive traffic.
-		// The proxy binds to the specified ports. Gateways of type
-		// 'SECURE_WEB_GATEWAY' are limited to 1 port.
+		// The proxy binds to the specified ports.
 		// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and ::
 		// for IPv6 and support multiple ports.
 		ports!: [...number]

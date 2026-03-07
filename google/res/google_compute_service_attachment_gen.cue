@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_service_attachment")
 	close({
+		consumer_accept_lists?: matchN(1, [#consumer_accept_lists, [...#consumer_accept_lists]])
+		timeouts?: #timeouts
+
 		// An array of the consumer forwarding rules connected to this
 		// service
 		// attachment.
@@ -93,8 +96,6 @@ package res
 			high?: string
 			low?:  string
 		})]
-		consumer_accept_lists?: matchN(1, [#consumer_accept_lists, [...#consumer_accept_lists]])
-		timeouts?: #timeouts
 
 		// This flag determines whether a consumer accept/reject list
 		// change can reconcile the statuses of existing ACCEPTED or

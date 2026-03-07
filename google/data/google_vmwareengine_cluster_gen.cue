@@ -57,12 +57,12 @@ package data
 			nfs_version?:       string
 			servers?: [...string]
 		})]
+		id?: string
 
 		// True if the cluster is a management cluster; false otherwise.
 		// There can only be one management cluster in a private cloud and
 		// it has to be the first one.
 		management?: bool
-		id?:         string
 
 		// The ID of the Cluster.
 		name!: string

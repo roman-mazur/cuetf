@@ -6,12 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_test_case")
 	close({
+		test_case_conversation_turns?: matchN(1, [#test_case_conversation_turns, [...#test_case_conversation_turns]])
+		test_config?: matchN(1, [#test_config, list.MaxItems(1) & [...#test_config]])
+		timeouts?: #timeouts
+
 		// When the test was created. A timestamp in RFC3339 text format.
 		creation_time?: string
 
 		// The human-readable name of the test case, unique within the
 		// agent. Limit of 200 characters.
 		display_name!: string
+		id?:           string
 
 		// The latest test result.
 		last_test_result?: [...close({
@@ -63,7 +68,6 @@ import "list"
 			test_result?: string
 			test_time?:   string
 		})]
-		id?: string
 
 		// The unique identifier of the test case.
 		// Format: projects/<Project ID>/locations/<Location
@@ -78,9 +82,6 @@ import "list"
 		// Format: projects/<Project ID>/locations/<Location
 		// ID>/agents/<Agent ID>.
 		parent?: string
-		test_case_conversation_turns?: matchN(1, [#test_case_conversation_turns, [...#test_case_conversation_turns]])
-		test_config?: matchN(1, [#test_config, list.MaxItems(1) & [...#test_config]])
-		timeouts?: #timeouts
 
 		// Tags are short descriptions that users may apply to test cases
 		// for organizational and filtering purposes.
@@ -121,9 +122,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/test_case_conversation_turns/$defs/user_input": close({
+		input?: matchN(1, [_#defs."/$defs/test_case_conversation_turns/$defs/user_input/$defs/input", list.MaxItems(1) & [..._#defs."/$defs/test_case_conversation_turns/$defs/user_input/$defs/input"]])
+
 		// Whether sentiment analysis is enabled.
 		enable_sentiment_analysis?: bool
-		input?: matchN(1, [_#defs."/$defs/test_case_conversation_turns/$defs/user_input/$defs/input", list.MaxItems(1) & [..._#defs."/$defs/test_case_conversation_turns/$defs/user_input/$defs/input"]])
 
 		// Parameters that need to be injected into the conversation
 		// during intent detection.

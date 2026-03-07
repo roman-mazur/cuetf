@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_tensorboard")
 	close({
+		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
+		timeouts?: #timeouts
+
 		// Consumer project Cloud Storage path prefix used to store blob
 		// data, which can either be a bucket or directory. Does not end
 		// with a '/'.
@@ -44,8 +47,6 @@ import "list"
 
 		// The region of the tensorboard. eg us-central1
 		region?: string
-		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
-		timeouts?: #timeouts
 
 		// The number of Runs stored in this Tensorboard.
 		run_count?: string

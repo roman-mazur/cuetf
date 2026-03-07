@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_tls_inspection_policy")
 	close({
+		timeouts?: #timeouts
+
 		// A CA pool resource used to issue interception certificates.
 		ca_pool!: string
 
@@ -46,8 +48,8 @@ package res
 		min_tls_version?: string
 
 		// Short name of the TlsInspectionPolicy resource to be created.
-		name!:     string
-		timeouts?: #timeouts
+		name!:    string
+		project?: string
 
 		// The selected Profile. If this is not set, then the default
 		// value is to allow the broadest set of clients and servers
@@ -59,7 +61,6 @@ package res
 		// ["PROFILE_UNSPECIFIED", "PROFILE_COMPATIBLE",
 		// "PROFILE_MODERN", "PROFILE_RESTRICTED", "PROFILE_CUSTOM"]
 		tls_feature_profile?: string
-		project?:             string
 
 		// A TrustConfig resource used when making a connection to the TLS
 		// server. This is a relative resource path following the form

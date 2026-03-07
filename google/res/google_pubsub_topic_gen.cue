@@ -6,10 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_pubsub_topic")
 	close({
+		ingestion_data_source_settings?: matchN(1, [#ingestion_data_source_settings, list.MaxItems(1) & [...#ingestion_data_source_settings]])
+		message_storage_policy?: matchN(1, [#message_storage_policy, list.MaxItems(1) & [...#message_storage_policy]])
+		message_transforms?: matchN(1, [#message_transforms, [...#message_transforms]])
+		schema_settings?: matchN(1, [#schema_settings, list.MaxItems(1) & [...#schema_settings]])
+		timeouts?: #timeouts
+
 		// All of labels (key/value pairs) present on the resource in GCP,
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// The resource name of the Cloud KMS CryptoKey to be used to
 		// protect access
@@ -22,7 +29,6 @@ import "list"
 		// The expected format is
 		// 'projects/*/locations/*/keyRings/*/cryptoKeys/*'
 		kms_key_name?: string
-		id?:           string
 
 		// A set of key/value label pairs to assign to this Topic.
 		//
@@ -52,7 +58,8 @@ import "list"
 		message_retention_duration?: string
 
 		// Name of the topic.
-		name!: string
+		name!:    string
+		project?: string
 
 		// Input only. Resource manager tags to be bound to the topic. Tag
 		// keys and
@@ -69,16 +76,10 @@ import "list"
 		// 'google_tags_tag_value'
 		// resource.
 		tags?: [string]: string
-		ingestion_data_source_settings?: matchN(1, [#ingestion_data_source_settings, list.MaxItems(1) & [...#ingestion_data_source_settings]])
-		message_storage_policy?: matchN(1, [#message_storage_policy, list.MaxItems(1) & [...#message_storage_policy]])
-		message_transforms?: matchN(1, [#message_transforms, [...#message_transforms]])
-		schema_settings?: matchN(1, [#schema_settings, list.MaxItems(1) & [...#schema_settings]])
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?:  string
-		timeouts?: #timeouts
 	})
 
 	#ingestion_data_source_settings: close({
@@ -219,11 +220,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/ingestion_data_source_settings/$defs/cloud_storage": close({
+		avro_format?: matchN(1, [_#defs."/$defs/ingestion_data_source_settings/$defs/cloud_storage/$defs/avro_format", list.MaxItems(1) & [..._#defs."/$defs/ingestion_data_source_settings/$defs/cloud_storage/$defs/avro_format"]])
+		pubsub_avro_format?: matchN(1, [_#defs."/$defs/ingestion_data_source_settings/$defs/cloud_storage/$defs/pubsub_avro_format", list.MaxItems(1) & [..._#defs."/$defs/ingestion_data_source_settings/$defs/cloud_storage/$defs/pubsub_avro_format"]])
+		text_format?: matchN(1, [_#defs."/$defs/ingestion_data_source_settings/$defs/cloud_storage/$defs/text_format", list.MaxItems(1) & [..._#defs."/$defs/ingestion_data_source_settings/$defs/cloud_storage/$defs/text_format"]])
+
 		// Cloud Storage bucket. The bucket name must be without any
 		// prefix like "gs://". See the bucket naming requirements:
 		// https://cloud.google.com/storage/docs/buckets#naming.
 		bucket!: string
-		avro_format?: matchN(1, [_#defs."/$defs/ingestion_data_source_settings/$defs/cloud_storage/$defs/avro_format", list.MaxItems(1) & [..._#defs."/$defs/ingestion_data_source_settings/$defs/cloud_storage/$defs/avro_format"]])
 
 		// Glob pattern used to match objects that will be ingested. If
 		// unset, all
@@ -237,8 +241,6 @@ import "list"
 		// meaning
 		// all objects will be ingested.
 		minimum_object_create_time?: string
-		pubsub_avro_format?: matchN(1, [_#defs."/$defs/ingestion_data_source_settings/$defs/cloud_storage/$defs/pubsub_avro_format", list.MaxItems(1) & [..._#defs."/$defs/ingestion_data_source_settings/$defs/cloud_storage/$defs/pubsub_avro_format"]])
-		text_format?: matchN(1, [_#defs."/$defs/ingestion_data_source_settings/$defs/cloud_storage/$defs/text_format", list.MaxItems(1) & [..._#defs."/$defs/ingestion_data_source_settings/$defs/cloud_storage/$defs/text_format"]])
 	})
 
 	_#defs: "/$defs/ingestion_data_source_settings/$defs/cloud_storage/$defs/avro_format": close({})

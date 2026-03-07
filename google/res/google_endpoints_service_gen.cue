@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_endpoints_service")
 	close({
+		timeouts?: #timeouts
+
 		// A list of API objects.
 		apis?: [...close({
 			methods?: [...close({
@@ -42,7 +44,6 @@ package res
 		// here. Either this, or both of grpc_config and
 		// protoc_output_base64 must be specified.
 		openapi_config?: string
-		timeouts?:       #timeouts
 
 		// The project ID that the service belongs to. If not provided,
 		// provider project is used.

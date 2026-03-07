@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_network_peering_routes_config")
 	close({
+		timeouts?: #timeouts
+
 		// Whether to export the custom routes to the peer network.
 		export_custom_routes!: bool
 
@@ -25,9 +27,8 @@ package res
 		network!: string
 
 		// Name of the peering.
-		peering!:  string
-		timeouts?: #timeouts
-		project?:  string
+		peering!: string
+		project?: string
 	})
 
 	#timeouts: close({

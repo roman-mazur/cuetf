@@ -112,6 +112,7 @@ package data
 		// is an int64 value. As with most Google APIs, its JSON
 		// representation will be a string instead of an integer.
 		generation?: string
+		id?:         string
 
 		// Detailed status information for corresponding instance splits.
 		// See comments in reconciling for additional information on
@@ -121,7 +122,6 @@ package data
 			revision?: string
 			type?:     string
 		})]
-		id?: string
 
 		// Specifies how to distribute instances over a collection of
 		// Revisions belonging to the WorkerPool. If instance split is
@@ -193,6 +193,7 @@ package data
 		// v1, this is an int64 value. As with most Google APIs, its JSON
 		// representation will be a string instead of an integer.
 		observed_generation?: string
+		project?:             string
 
 		// Returns true if the WorkerPool is currently being acted upon by
 		// the system to bring it into the desired state.
@@ -219,7 +220,6 @@ package data
 		// Additional information on the failure can be found in
 		// terminalCondition and conditions.
 		reconciling?: bool
-		project?:     string
 
 		// Scaling settings that apply to the worker pool.
 		scaling?: [...close({

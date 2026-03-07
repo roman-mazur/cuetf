@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_rule")
 	close({
+		timeouts?: #timeouts
+
 		// Output only. The run frequencies that are allowed for the rule.
 		// Populated in BASIC view and FULL view.
 		allowed_run_frequencies?: [...string]
@@ -70,11 +72,11 @@ package res
 		// otherwise.
 		// Populated in BASIC view and FULL view.
 		etag?: string
+		id?:   string
 
 		// The unique identifier for the Chronicle instance, which is the
 		// same as the customer ID.
 		instance!: string
-		id?:       string
 
 		// The location of the resource. This is the geographical region
 		// where the Chronicle instance resides, such as "us" or
@@ -90,8 +92,7 @@ package res
 		// generated using values provided for the URL parameters.
 		// Format:
 		// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// Output only. Indicate the rule can run in near real time live
 		// rule.

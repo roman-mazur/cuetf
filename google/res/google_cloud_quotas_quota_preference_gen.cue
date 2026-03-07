@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_quotas_quota_preference")
 	close({
+		quota_config!: matchN(1, [#quota_config, list.MaxItems(1) & [_, ...] & [...#quota_config]])
+		timeouts?: #timeouts
+
 		// An email address that can be used for quota related
 		// communication between the Google Cloud and the user in case
 		// the Google Cloud needs further information to make a decision
@@ -44,6 +47,7 @@ import "list"
 		// an ABORTED error will be returned. See
 		// https://google.aip.dev/134#etags for more details on etags.
 		etag?: string
+		id?:   string
 
 		// The list of quota safety checks to be ignored. Default value:
 		// "QUOTA_SAFETY_CHECK_UNSPECIFIED" Possible values:
@@ -51,7 +55,6 @@ import "list"
 		// "QUOTA_DECREASE_BELOW_USAGE",
 		// "QUOTA_DECREASE_PERCENTAGE_TOO_HIGH"]
 		ignore_safety_checks?: string
-		id?:                   string
 
 		// The reason / justification for this quota preference.
 		justification?: string
@@ -64,7 +67,6 @@ import "list"
 		// "projects/[project-id / number]" or "folders/[folder-id /
 		// number]" or "organizations/[org-id / number]".
 		parent?: string
-		quota_config!: matchN(1, [#quota_config, list.MaxItems(1) & [_, ...] & [...#quota_config]])
 
 		// The id of the quota to which the quota preference is applied. A
 		// quota id is unique in the service.
@@ -74,7 +76,6 @@ import "list"
 		// Is the quota preference pending Google Cloud approval and
 		// fulfillment.
 		reconciling?: bool
-		timeouts?:    #timeouts
 
 		// The name of the service to which the quota preference is
 		// applied.

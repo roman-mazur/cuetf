@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_firewall")
 	close({
+		allow?: matchN(1, [#allow, [...#allow]])
+		deny?: matchN(1, [#deny, [...#deny]])
+		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
+		timeouts?: #timeouts
+
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
@@ -36,6 +42,7 @@ import "list"
 		// this
 		// is unspecified, the firewall rule will be enabled.
 		disabled?: bool
+		id?:       string
 
 		// Name of the resource. Provided by the client when the resource
 		// is
@@ -49,7 +56,6 @@ import "list"
 		// the last
 		// character, which cannot be a dash.
 		name!: string
-		id?:   string
 
 		// The name or self_link of the network to attach this firewall
 		// to.
@@ -65,7 +71,9 @@ import "list"
 		// has
 		// higher precedence than a rule with priority 1). DENY rules take
 		// precedence over ALLOW rules having equal priority.
-		priority?: number
+		priority?:  number
+		project?:   string
+		self_link?: string
 
 		// If source ranges are specified, the firewall will apply only to
 		// traffic that has source IP address in these ranges. These
@@ -84,12 +92,6 @@ import "list"
 		// 'source_ranges', 'source_tags' or 'source_service_accounts' is
 		// required.
 		source_ranges?: [...string]
-		project?: string
-		allow?: matchN(1, [#allow, [...#allow]])
-		deny?: matchN(1, [#deny, [...#deny]])
-		self_link?: string
-		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 
 		// If source service accounts are specified, the firewall will
 		// apply only
@@ -137,7 +139,6 @@ import "list"
 		// one of 'source_ranges', 'source_tags' or
 		// 'source_service_accounts' is required.
 		source_tags?: [...string]
-		timeouts?: #timeouts
 
 		// A list of service accounts indicating sets of instances located
 		// in the

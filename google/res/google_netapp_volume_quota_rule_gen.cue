@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_volume_quota_rule")
 	close({
+		timeouts?: #timeouts
+
 		// Create time of the quota rule. A timestamp in RFC3339 UTC
 		// "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 		create_time?: string
@@ -18,6 +20,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Labels as key value pairs of the quota rule. Example: '{
 		// "owner": "Bob", "department": "finance", "purpose": "testing"
@@ -29,24 +32,22 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Loction of the quotaRule. QuotaRules are child resources of
 		// volumes and live in the same location.
 		location?: string
 
 		// The resource name of the quotaRule.
-		name!: string
+		name!:    string
+		project?: string
 
 		// The state of the quota rule. Possible Values :
 		// [STATE_UNSPECIFIED, CREATING, UPDATING, READY, DELETING,
 		// ERROR]
-		state?:   string
-		project?: string
+		state?: string
 
 		// State details of the quota rule
 		state_details?: string
-		timeouts?:      #timeouts
 
 		// The quota rule applies to the specified user or group.
 		// Valid targets for volumes with NFS protocol enabled:

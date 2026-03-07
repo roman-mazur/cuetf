@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_workforce_pool_provider")
 	close({
+		extended_attributes_oauth2_client?: matchN(1, [#extended_attributes_oauth2_client, list.MaxItems(1) & [...#extended_attributes_oauth2_client]])
+		extra_attributes_oauth2_client?: matchN(1, [#extra_attributes_oauth2_client, list.MaxItems(1) & [...#extra_attributes_oauth2_client]])
+		oidc?: matchN(1, [#oidc, list.MaxItems(1) & [...#oidc]])
+		saml?: matchN(1, [#saml, list.MaxItems(1) & [...#saml]])
+		timeouts?: #timeouts
+
 		// A [Common Expression
 		// Language](https://github.com/google/cel-spec) expression, in
 		// plain text, to restrict what otherwise valid authentication
@@ -131,8 +137,6 @@ import "list"
 		// Format:
 		// 'locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}'
 		name?: string
-		extended_attributes_oauth2_client?: matchN(1, [#extended_attributes_oauth2_client, list.MaxItems(1) & [...#extended_attributes_oauth2_client]])
-		extra_attributes_oauth2_client?: matchN(1, [#extra_attributes_oauth2_client, list.MaxItems(1) & [...#extra_attributes_oauth2_client]])
 
 		// The ID for the provider, which becomes the final component of
 		// the resource name.
@@ -141,8 +145,6 @@ import "list"
 		// The prefix 'gcp-' is reserved for use by Google, and may not be
 		// specified.
 		provider_id!: string
-		oidc?: matchN(1, [#oidc, list.MaxItems(1) & [...#oidc]])
-		saml?: matchN(1, [#saml, list.MaxItems(1) & [...#saml]])
 
 		// Agentspace only. Specifies whether the workforce identity pool
 		// provider uses SCIM-managed groups instead of the
@@ -159,7 +161,6 @@ import "list"
 		// attribute mapping for authorization checks Possible values:
 		// ["SCIM_USAGE_UNSPECIFIED", "ENABLED_FOR_GROUPS"]
 		scim_usage?: string
-		timeouts?:   #timeouts
 
 		// The current state of the provider.
 		// * STATE_UNSPECIFIED: State unspecified.
@@ -183,6 +184,9 @@ import "list"
 	})
 
 	#extended_attributes_oauth2_client: close({
+		client_secret!: matchN(1, [_#defs."/$defs/extended_attributes_oauth2_client/$defs/client_secret", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/extended_attributes_oauth2_client/$defs/client_secret"]])
+		query_parameters?: matchN(1, [_#defs."/$defs/extended_attributes_oauth2_client/$defs/query_parameters", list.MaxItems(1) & [..._#defs."/$defs/extended_attributes_oauth2_client/$defs/query_parameters"]])
+
 		// Represents the IdP and type of claims that should be fetched.
 		// * AZURE_AD_GROUPS_ID: Used to get the user's group claims from
 		// the Azure AD identity provider
@@ -203,16 +207,17 @@ import "list"
 		// the identity provider. Required to get the Access Token using
 		// client credentials grant flow.
 		client_id!: string
-		client_secret!: matchN(1, [_#defs."/$defs/extended_attributes_oauth2_client/$defs/client_secret", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/extended_attributes_oauth2_client/$defs/client_secret"]])
 
 		// The OIDC identity provider's issuer URI. Must be a valid URI
 		// using the 'https' scheme. Required to get the OIDC discovery
 		// document.
 		issuer_uri!: string
-		query_parameters?: matchN(1, [_#defs."/$defs/extended_attributes_oauth2_client/$defs/query_parameters", list.MaxItems(1) & [..._#defs."/$defs/extended_attributes_oauth2_client/$defs/query_parameters"]])
 	})
 
 	#extra_attributes_oauth2_client: close({
+		client_secret!: matchN(1, [_#defs."/$defs/extra_attributes_oauth2_client/$defs/client_secret", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/extra_attributes_oauth2_client/$defs/client_secret"]])
+		query_parameters?: matchN(1, [_#defs."/$defs/extra_attributes_oauth2_client/$defs/query_parameters", list.MaxItems(1) & [..._#defs."/$defs/extra_attributes_oauth2_client/$defs/query_parameters"]])
+
 		// Represents the IdP and type of claims that should be fetched.
 		// * AZURE_AD_GROUPS_MAIL: Used to get the user's group claims
 		// from the Azure AD identity provider using configuration
@@ -236,24 +241,38 @@ import "list"
 		// 'assertion.groups' for
 		// OIDC providers and 'assertion.attributes.groups' for SAML
 		// providers for
+		// attribute mapping.
+		// * AZURE_AD_GROUPS_DISPLAY_NAME: Used to get the user's group
+		// claims from the Azure AD identity provider
+		// using configuration provided in ExtraAttributesOAuth2Client and
+		// 'displayName' property
+		// of the 'microsoft.graph.group' object is used for claim
+		// mapping. See
+		// https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+		// for more details on 'microsoft.graph.group' properties. The
+		// group displayNames obtained from Azure AD are present in
+		// 'assertion.groups' for
+		// OIDC providers and 'assertion.attributes.groups' for SAML
+		// providers for
 		// attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL",
-		// "AZURE_AD_GROUPS_ID"]
+		// "AZURE_AD_GROUPS_ID", "AZURE_AD_GROUPS_DISPLAY_NAME"]
 		attributes_type!: string
 
 		// The OAuth 2.0 client ID for retrieving extra attributes from
 		// the identity provider. Required to get the Access Token using
 		// client credentials grant flow.
 		client_id!: string
-		client_secret!: matchN(1, [_#defs."/$defs/extra_attributes_oauth2_client/$defs/client_secret", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/extra_attributes_oauth2_client/$defs/client_secret"]])
 
 		// The OIDC identity provider's issuer URI. Must be a valid URI
 		// using the 'https' scheme. Required to get the OIDC discovery
 		// document.
 		issuer_uri!: string
-		query_parameters?: matchN(1, [_#defs."/$defs/extra_attributes_oauth2_client/$defs/query_parameters", list.MaxItems(1) & [..._#defs."/$defs/extra_attributes_oauth2_client/$defs/query_parameters"]])
 	})
 
 	#oidc: close({
+		client_secret?: matchN(1, [_#defs."/$defs/oidc/$defs/client_secret", list.MaxItems(1) & [..._#defs."/$defs/oidc/$defs/client_secret"]])
+		web_sso_config?: matchN(1, [_#defs."/$defs/oidc/$defs/web_sso_config", list.MaxItems(1) & [..._#defs."/$defs/oidc/$defs/web_sso_config"]])
+
 		// The client ID. Must match the audience claim of the JWT issued
 		// by the identity provider.
 		client_id!: string
@@ -261,7 +280,6 @@ import "list"
 		// The OIDC issuer URI. Must be a valid URI using the 'https'
 		// scheme.
 		issuer_uri!: string
-		client_secret?: matchN(1, [_#defs."/$defs/oidc/$defs/client_secret", list.MaxItems(1) & [..._#defs."/$defs/oidc/$defs/client_secret"]])
 
 		// OIDC JWKs in JSON String format. For details on definition of a
 		// JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
@@ -289,7 +307,6 @@ import "list"
 		// }
 		// '''
 		jwks_json?: string
-		web_sso_config?: matchN(1, [_#defs."/$defs/oidc/$defs/web_sso_config", list.MaxItems(1) & [..._#defs."/$defs/oidc/$defs/web_sso_config"]])
 	})
 
 	#saml: close({
@@ -361,14 +378,15 @@ import "list"
 
 	_#defs: "/$defs/extra_attributes_oauth2_client/$defs/query_parameters": close({
 		// The filter used to request specific records from IdP. In case
-		// of attributes type as AZURE_AD_GROUPS_MAIL and
-		// AZURE_AD_GROUPS_ID, it represents the
-		// filter used to request specific groups for users from IdP. By
-		// default, all of the groups associated with the user are
-		// fetched. The
-		// groups should be security enabled. See
+		// of attributes type as AZURE_AD_GROUPS_MAIL,
+		// AZURE_AD_GROUPS_ID and AZURE_AD_GROUPS_DISPLAY_NAME, it
+		// represents the filter used to request specific
+		// groups for users from IdP. By default, all of the groups
+		// associated with the user are fetched. The groups
+		// should be security enabled. See
 		// https://learn.microsoft.com/en-us/graph/search-query-parameter
-		// for more details.
+		// for more
+		// details.
 		filter?: string
 	})
 

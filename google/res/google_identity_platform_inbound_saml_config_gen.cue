@@ -6,29 +6,31 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_identity_platform_inbound_saml_config")
 	close({
+		idp_config!: matchN(1, [#idp_config, list.MaxItems(1) & [_, ...] & [...#idp_config]])
+		sp_config!: matchN(1, [#sp_config, list.MaxItems(1) & [_, ...] & [...#sp_config]])
+		timeouts?: #timeouts
+
 		// Human friendly display name.
 		display_name!: string
 
 		// If this config allows users to sign in with the provider.
 		enabled?: bool
-		idp_config!: matchN(1, [#idp_config, list.MaxItems(1) & [_, ...] & [...#idp_config]])
-		id?: string
+		id?:      string
 
 		// The name of the InboundSamlConfig resource. Must start with
 		// 'saml.' and can only have alphanumeric characters,
 		// hyphens, underscores or periods. The part after 'saml.' must
 		// also start with a lowercase letter, end with an
 		// alphanumeric character, and have at least 2 characters.
-		name!: string
-		sp_config!: matchN(1, [#sp_config, list.MaxItems(1) & [_, ...] & [...#sp_config]])
-		timeouts?: #timeouts
-		project?:  string
+		name!:    string
+		project?: string
 	})
 
 	#idp_config: close({
+		idp_certificates!: matchN(1, [_#defs."/$defs/idp_config/$defs/idp_certificates", [_, ...] & [..._#defs."/$defs/idp_config/$defs/idp_certificates"]])
+
 		// Unique identifier for all SAML entities
 		idp_entity_id!: string
-		idp_certificates!: matchN(1, [_#defs."/$defs/idp_config/$defs/idp_certificates", [_, ...] & [..._#defs."/$defs/idp_config/$defs/idp_certificates"]])
 
 		// Indicates if outbounding SAMLRequest should be signed.
 		sign_request?: bool

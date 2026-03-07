@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_glossary")
 	close({
+		timeouts?: #timeouts
+
 		// The number of categories in the glossary.
 		category_count?: number
 
@@ -41,12 +43,11 @@ package res
 
 		// The resource name of the Glossary. Format:
 		// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}
-		name?:     string
-		timeouts?: #timeouts
+		name?:    string
+		project?: string
 
 		// The number of terms in the glossary.
 		term_count?: number
-		project?:    string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

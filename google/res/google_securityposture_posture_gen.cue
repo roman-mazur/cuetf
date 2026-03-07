@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_securityposture_posture")
 	close({
+		policy_sets!: matchN(1, [#policy_sets, [_, ...] & [...#policy_sets]])
+		timeouts?: #timeouts
+
 		// Time the Posture was created in UTC.
 		create_time?: string
 
@@ -14,10 +17,10 @@ import "list"
 
 		// For Resource freshness validation (https://google.aip.dev/154)
 		etag?: string
+		id?:   string
 
 		// Location of the resource, eg: global.
 		location!: string
-		id?:       string
 
 		// Name of the posture.
 		name?: string
@@ -31,8 +34,6 @@ import "list"
 
 		// If set, there are currently changes in flight to the posture.
 		reconciling?: bool
-		policy_sets!: matchN(1, [#policy_sets, [_, ...] & [...#policy_sets]])
-		timeouts?: #timeouts
 
 		// Revision_id of the posture.
 		revision_id?: string
@@ -97,6 +98,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules": close({
+		condition?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules/$defs/condition", list.MaxItems(1) & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules/$defs/condition"]])
+		values?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules/$defs/values", list.MaxItems(1) & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules/$defs/values"]])
+
 		// Setting this to true means that all values are allowed. This
 		// field can be set only in policies for list constraints.
 		allow_all?: bool
@@ -104,13 +108,11 @@ import "list"
 		// Setting this to true means that all values are denied. This
 		// field can be set only in policies for list constraints.
 		deny_all?: bool
-		condition?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules/$defs/condition", list.MaxItems(1) & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules/$defs/condition"]])
 
 		// If 'true', then the policy is enforced. If 'false', then any
 		// configuration is acceptable.
 		// This field can be set only in policies for boolean constraints.
 		enforce?: bool
-		values?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules/$defs/values", list.MaxItems(1) & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules/$defs/values"]])
 	})
 
 	_#defs: "/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules/$defs/condition": close({
@@ -179,6 +181,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules": close({
+		condition?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules/$defs/condition", list.MaxItems(1) & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules/$defs/condition"]])
+		values?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules/$defs/values", list.MaxItems(1) & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules/$defs/values"]])
+
 		// Setting this to true means that all values are allowed. This
 		// field can be set only in policies for list constraints.
 		allow_all?: bool
@@ -186,13 +191,11 @@ import "list"
 		// Setting this to true means that all values are denied. This
 		// field can be set only in policies for list constraints.
 		deny_all?: bool
-		condition?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules/$defs/condition", list.MaxItems(1) & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules/$defs/condition"]])
 
 		// If 'true', then the policy is enforced. If 'false', then any
 		// configuration is acceptable.
 		// This field can be set only in policies for boolean constraints.
 		enforce?: bool
-		values?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules/$defs/values", list.MaxItems(1) & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules/$defs/values"]])
 	})
 
 	_#defs: "/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules/$defs/condition": close({
@@ -221,13 +224,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module": close({
+		config!: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config"]])
+
 		// The display name of the Security Health Analytics custom
 		// module. This
 		// display name becomes the finding category for all findings that
 		// are
 		// returned by this custom module.
 		display_name?: string
-		config!: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config"]])
 
 		// A server generated id of custom module.
 		id?: string
@@ -239,11 +243,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config": close({
+		custom_output?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/custom_output", list.MaxItems(1) & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/custom_output"]])
+		predicate!: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/predicate", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/predicate"]])
+		resource_selector!: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/resource_selector", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/resource_selector"]])
+
 		// Text that describes the vulnerability or misconfiguration that
 		// the custom
 		// module detects.
 		description?: string
-		custom_output?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/custom_output", list.MaxItems(1) & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/custom_output"]])
 
 		// An explanation of the recommended steps that security teams can
 		// take to
@@ -254,8 +261,6 @@ import "list"
 		// Possible values: ["SEVERITY_UNSPECIFIED", "CRITICAL", "HIGH",
 		// "MEDIUM", "LOW"]
 		severity!: string
-		predicate!: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/predicate", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/predicate"]])
-		resource_selector!: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/resource_selector", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/resource_selector"]])
 	})
 
 	_#defs: "/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/custom_output": close({

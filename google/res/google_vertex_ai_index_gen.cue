@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_index")
 	close({
+		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
+		metadata!: matchN(1, [#metadata, list.MaxItems(1) & [_, ...] & [...#metadata]])
+		timeouts?: #timeouts
+
 		// The timestamp of when the Index was created in RFC3339 UTC
 		// "Zulu" format, with nanosecond resolution and up to nine
 		// fractional digits.
@@ -64,9 +68,6 @@ import "list"
 		// it. Unset if the Index does not have any additional
 		// information.
 		metadata_schema_uri?: string
-		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
-		metadata!: matchN(1, [#metadata, list.MaxItems(1) & [_, ...] & [...#metadata]])
-		timeouts?: #timeouts
 
 		// The resource name of the Index.
 		name?:    string
@@ -125,6 +126,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/metadata/$defs/config": close({
+		algorithm_config?: matchN(1, [_#defs."/$defs/metadata/$defs/config/$defs/algorithm_config", list.MaxItems(1) & [..._#defs."/$defs/metadata/$defs/config/$defs/algorithm_config"]])
+
 		// The default number of neighbors to find via approximate search
 		// before exact reordering is
 		// performed. Exact reordering is a procedure where results
@@ -152,7 +155,6 @@ import "list"
 		// * UNIT_L2_NORM: Unit L2 normalization type
 		// * NONE: No normalization type is specified.
 		feature_norm_type?: string
-		algorithm_config?: matchN(1, [_#defs."/$defs/metadata/$defs/config/$defs/algorithm_config", list.MaxItems(1) & [..._#defs."/$defs/metadata/$defs/config/$defs/algorithm_config"]])
 
 		// Index data is split into equal parts to be processed. These are
 		// called "shards".

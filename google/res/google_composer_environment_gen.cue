@@ -6,10 +6,15 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_composer_environment")
 	close({
+		config?: matchN(1, [#config, list.MaxItems(1) & [...#config]])
+		storage_config?: matchN(1, [#storage_config, list.MaxItems(1) & [...#storage_config]])
+		timeouts?: #timeouts
+
 		// All of labels (key/value pairs) present on the resource in GCP,
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// User-defined labels for this environment. The labels map can
 		// contain no more than 64 entries. Entries of the labels map are
@@ -27,7 +32,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Name of the environment.
 		name!: string
@@ -35,12 +39,9 @@ import "list"
 		// The ID of the project in which the resource belongs. If it is
 		// not provided, the provider project is used.
 		project?: string
-		config?: matchN(1, [#config, list.MaxItems(1) & [...#config]])
 
 		// The location or Compute Engine region for the environment.
 		region?: string
-		storage_config?: matchN(1, [#storage_config, list.MaxItems(1) & [...#storage_config]])
-		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -48,6 +49,19 @@ import "list"
 	})
 
 	#config: close({
+		data_retention_config?: matchN(1, [_#defs."/$defs/config/$defs/data_retention_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/data_retention_config"]])
+		database_config?: matchN(1, [_#defs."/$defs/config/$defs/database_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/database_config"]])
+		encryption_config?: matchN(1, [_#defs."/$defs/config/$defs/encryption_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/encryption_config"]])
+		maintenance_window?: matchN(1, [_#defs."/$defs/config/$defs/maintenance_window", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/maintenance_window"]])
+		master_authorized_networks_config?: matchN(1, [_#defs."/$defs/config/$defs/master_authorized_networks_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/master_authorized_networks_config"]])
+		node_config?: matchN(1, [_#defs."/$defs/config/$defs/node_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/node_config"]])
+		private_environment_config?: matchN(1, [_#defs."/$defs/config/$defs/private_environment_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/private_environment_config"]])
+		recovery_config?: matchN(1, [_#defs."/$defs/config/$defs/recovery_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/recovery_config"]])
+		software_config?: matchN(1, [_#defs."/$defs/config/$defs/software_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/software_config"]])
+		web_server_config?: matchN(1, [_#defs."/$defs/config/$defs/web_server_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/web_server_config"]])
+		web_server_network_access_control?: matchN(1, [_#defs."/$defs/config/$defs/web_server_network_access_control", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/web_server_network_access_control"]])
+		workloads_config?: matchN(1, [_#defs."/$defs/config/$defs/workloads_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/workloads_config"]])
+
 		// The URI of the Apache Airflow Web UI hosted within this
 		// environment.
 		airflow_uri?: string
@@ -76,29 +90,17 @@ import "list"
 
 		// The Kubernetes Engine cluster used to run this environment.
 		gke_cluster?: string
-		data_retention_config?: matchN(1, [_#defs."/$defs/config/$defs/data_retention_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/data_retention_config"]])
-		database_config?: matchN(1, [_#defs."/$defs/config/$defs/database_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/database_config"]])
-		encryption_config?: matchN(1, [_#defs."/$defs/config/$defs/encryption_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/encryption_config"]])
-		maintenance_window?: matchN(1, [_#defs."/$defs/config/$defs/maintenance_window", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/maintenance_window"]])
-		master_authorized_networks_config?: matchN(1, [_#defs."/$defs/config/$defs/master_authorized_networks_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/master_authorized_networks_config"]])
-		node_config?: matchN(1, [_#defs."/$defs/config/$defs/node_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/node_config"]])
-		private_environment_config?: matchN(1, [_#defs."/$defs/config/$defs/private_environment_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/private_environment_config"]])
-		recovery_config?: matchN(1, [_#defs."/$defs/config/$defs/recovery_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/recovery_config"]])
 
 		// The number of nodes in the Kubernetes Engine cluster that will
 		// be used to run this environment. This field is supported for
 		// Cloud Composer environments in versions
 		// composer-1.*.*-airflow-*.*.*.
 		node_count?: number
-		software_config?: matchN(1, [_#defs."/$defs/config/$defs/software_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/software_config"]])
-		web_server_config?: matchN(1, [_#defs."/$defs/config/$defs/web_server_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/web_server_config"]])
-		web_server_network_access_control?: matchN(1, [_#defs."/$defs/config/$defs/web_server_network_access_control", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/web_server_network_access_control"]])
 
 		// Whether high resilience is enabled or not. This field is
 		// supported for Cloud Composer environments in versions
 		// composer-2.1.15-airflow-*.*.* and newer.
 		resilience_mode?: string
-		workloads_config?: matchN(1, [_#defs."/$defs/config/$defs/workloads_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/workloads_config"]])
 	})
 
 	#storage_config: close({
@@ -187,6 +189,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/config/$defs/node_config": close({
+		ip_allocation_policy?: matchN(1, [_#defs."/$defs/config/$defs/node_config/$defs/ip_allocation_policy", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/node_config/$defs/ip_allocation_policy"]])
+
 		// IPv4 cidr range that will be used by Composer internal
 		// components.
 		composer_internal_ipv4_cidr_block?: string
@@ -243,7 +247,6 @@ import "list"
 		// roles/composer.worker for any GCP resources created under the
 		// Cloud Composer Environment.
 		service_account?: string
-		ip_allocation_policy?: matchN(1, [_#defs."/$defs/config/$defs/node_config/$defs/ip_allocation_policy", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/node_config/$defs/ip_allocation_policy"]])
 
 		// The Compute Engine subnetwork to be used for machine
 		// communications, specified as a self-link, relative resource
@@ -398,6 +401,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/config/$defs/software_config": close({
+		cloud_data_lineage_integration?: matchN(1, [_#defs."/$defs/config/$defs/software_config/$defs/cloud_data_lineage_integration", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/software_config/$defs/cloud_data_lineage_integration"]])
+
 		// Apache Airflow configuration properties to override. Property
 		// keys contain the section and property names, separated by a
 		// hyphen, for example "core-dags_are_paused_at_creation".
@@ -460,7 +465,6 @@ import "list"
 		// for Cloud Composer environments in versions
 		// composer-1.*.*-airflow-2.*.*.
 		scheduler_count?: number
-		cloud_data_lineage_integration?: matchN(1, [_#defs."/$defs/config/$defs/software_config/$defs/cloud_data_lineage_integration", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/software_config/$defs/cloud_data_lineage_integration"]])
 
 		// Should be either 'ENABLED' or 'DISABLED'. Defaults to
 		// 'ENABLED'. Used in Composer 3.

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_firewall_endpoint")
 	close({
+		endpoint_settings?: matchN(1, [#endpoint_settings, list.MaxItems(1) & [...#endpoint_settings]])
+		timeouts?: #timeouts
+
 		// List of networks that are associated with this endpoint in the
 		// local zone.
 		// This is a projection of the FirewallEndpointAssociations
@@ -26,6 +29,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// A map of key/value label pairs to assign to the resource.
 		//
@@ -41,7 +45,6 @@ import "list"
 
 		// The name of the firewall endpoint resource.
 		name!: string
-		id?:   string
 
 		// The name of the parent this firewall endpoint belongs to.
 		// Format: organizations/{organization_id}.
@@ -53,8 +56,6 @@ import "list"
 
 		// Server-defined URL of this resource.
 		self_link?: string
-		endpoint_settings?: matchN(1, [#endpoint_settings, list.MaxItems(1) & [...#endpoint_settings]])
-		timeouts?: #timeouts
 
 		// The current state of the endpoint.
 		state?: string

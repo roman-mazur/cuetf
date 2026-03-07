@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_security_profile")
 	close({
+		custom_intercept_profile?: matchN(1, [#custom_intercept_profile, list.MaxItems(1) & [...#custom_intercept_profile]])
+		custom_mirroring_profile?: matchN(1, [#custom_mirroring_profile, list.MaxItems(1) & [...#custom_mirroring_profile]])
+		threat_prevention_profile?: matchN(1, [#threat_prevention_profile, list.MaxItems(1) & [...#threat_prevention_profile]])
+		timeouts?: #timeouts
+		url_filtering_profile?: matchN(1, [#url_filtering_profile, list.MaxItems(1) & [...#url_filtering_profile]])
+
 		// Time the security profile was created in UTC.
 		create_time?: string
 
@@ -24,6 +30,7 @@ import "list"
 		// client has an up-to-date
 		// value before proceeding.
 		etag?: string
+		id?:   string
 
 		// A map of key/value label pairs to assign to the resource.
 		//
@@ -33,7 +40,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location of the security profile.
 		// The default value is 'global'.
@@ -45,10 +51,6 @@ import "list"
 		// The name of the parent this security profile belongs to.
 		// Format: organizations/{organization_id}.
 		parent?: string
-		custom_intercept_profile?: matchN(1, [#custom_intercept_profile, list.MaxItems(1) & [...#custom_intercept_profile]])
-		custom_mirroring_profile?: matchN(1, [#custom_mirroring_profile, list.MaxItems(1) & [...#custom_mirroring_profile]])
-		threat_prevention_profile?: matchN(1, [#threat_prevention_profile, list.MaxItems(1) & [...#threat_prevention_profile]])
-		timeouts?: #timeouts
 
 		// Server-defined URL of this resource.
 		self_link?: string
@@ -113,6 +115,10 @@ import "list"
 		update?: string
 	})
 
+	#url_filtering_profile: close({
+		url_filters?: matchN(1, [_#defs."/$defs/url_filtering_profile/$defs/url_filters", [..._#defs."/$defs/url_filtering_profile/$defs/url_filters"]])
+	})
+
 	_#defs: "/$defs/threat_prevention_profile/$defs/antivirus_overrides": close({
 		// Threat action override. For some threat types, only a subset of
 		// actions applies. Possible values: ["ALERT", "ALLOW",
@@ -144,5 +150,24 @@ import "list"
 
 		// Type of threat.
 		type?: string
+	})
+
+	_#defs: "/$defs/url_filtering_profile/$defs/url_filters": close({
+		// The action to take when the filter is applied. Possible values:
+		// ["ALLOW", "DENY"]
+		filtering_action!: string
+
+		// The priority of the filter within the URL filtering profile.
+		// Must be an integer from 0 and 2147483647, inclusive. Lower
+		// integers indicate higher priorities.
+		// The priority of a filter must be unique within a URL filtering
+		// profile.
+		priority!: number
+
+		// A list of domain matcher strings that a domain name gets
+		// compared with to determine if the filter is applicable.
+		// A domain name must match with at least one of the strings in
+		// the list for a filter to be applicable.
+		urls?: [...string]
 	})
 }

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_hub_fleet")
 	close({
+		default_cluster_config?: matchN(1, [#default_cluster_config, list.MaxItems(1) & [...#default_cluster_config]])
+		timeouts?: #timeouts
+
 		// The time the fleet was created, in RFC3339 text format.
 		create_time?: string
 
@@ -25,7 +28,6 @@ import "list"
 		state?: [...close({
 			code?: string
 		})]
-		default_cluster_config?: matchN(1, [#default_cluster_config, list.MaxItems(1) & [...#default_cluster_config]])
 
 		// Google-generated UUID for this resource. This is unique across
 		// all
@@ -36,7 +38,6 @@ import "list"
 
 		// The time the fleet was last updated, in RFC3339 text format.
 		update_time?: string
-		timeouts?:    #timeouts
 	})
 
 	#default_cluster_config: close({

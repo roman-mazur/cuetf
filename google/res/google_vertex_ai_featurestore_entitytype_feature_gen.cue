@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_featurestore_entitytype_feature")
 	close({
+		timeouts?: #timeouts
+
 		// The timestamp of when the entity type was created in RFC3339
 		// UTC "Zulu" format, with nanosecond resolution and up to nine
 		// fractional digits.
@@ -23,6 +25,7 @@ package res
 
 		// Used to perform consistent read-modify-write updates.
 		etag?: string
+		id?:   string
 
 		// A set of key/value label pairs to assign to the feature.
 		//
@@ -32,14 +35,12 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The name of the feature. The feature can be up to 64 characters
 		// long and can consist only of ASCII Latin letters A-Z and a-z,
 		// underscore(_), and ASCII digits 0-9 starting with a letter.
 		// The value will be unique given an entity type.
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// The region of the feature
 		region?: string

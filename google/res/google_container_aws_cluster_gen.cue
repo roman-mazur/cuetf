@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_aws_cluster")
 	close({
+		authorization!: matchN(1, [#authorization, list.MaxItems(1) & [_, ...] & [...#authorization]])
+		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
+		control_plane!: matchN(1, [#control_plane, list.MaxItems(1) & [_, ...] & [...#control_plane]])
+		fleet!: matchN(1, [#fleet, list.MaxItems(1) & [_, ...] & [...#fleet]])
+		networking!: matchN(1, [#networking, list.MaxItems(1) & [_, ...] & [...#networking]])
+		timeouts?: #timeouts
+
 		// Optional. Annotations on the cluster. This field has the same
 		// restrictions as Kubernetes annotations. The total size of all
 		// keys and values combined is limited to 256k. Key can have 2
@@ -56,12 +63,6 @@ import "list"
 
 		// The project for the resource
 		project?: string
-		authorization!: matchN(1, [#authorization, list.MaxItems(1) & [_, ...] & [...#authorization]])
-		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
-		control_plane!: matchN(1, [#control_plane, list.MaxItems(1) & [_, ...] & [...#control_plane]])
-		fleet!: matchN(1, [#fleet, list.MaxItems(1) & [_, ...] & [...#fleet]])
-		networking!: matchN(1, [#networking, list.MaxItems(1) & [_, ...] & [...#networking]])
-		timeouts?: #timeouts
 
 		// Output only. If set, there are currently changes in flight to
 		// the cluster.
@@ -98,6 +99,14 @@ import "list"
 	})
 
 	#control_plane: close({
+		aws_services_authentication!: matchN(1, [_#defs."/$defs/control_plane/$defs/aws_services_authentication", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/aws_services_authentication"]])
+		config_encryption!: matchN(1, [_#defs."/$defs/control_plane/$defs/config_encryption", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/config_encryption"]])
+		database_encryption!: matchN(1, [_#defs."/$defs/control_plane/$defs/database_encryption", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/database_encryption"]])
+		main_volume?: matchN(1, [_#defs."/$defs/control_plane/$defs/main_volume", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/main_volume"]])
+		proxy_config?: matchN(1, [_#defs."/$defs/control_plane/$defs/proxy_config", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/proxy_config"]])
+		root_volume?: matchN(1, [_#defs."/$defs/control_plane/$defs/root_volume", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/root_volume"]])
+		ssh_config?: matchN(1, [_#defs."/$defs/control_plane/$defs/ssh_config", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/ssh_config"]])
+
 		// The name of the AWS IAM instance pofile to assign to each
 		// control plane replica.
 		iam_instance_profile!: string
@@ -111,17 +120,12 @@ import "list"
 		// automatically create and manage security groups with the
 		// minimum rules needed for a functioning cluster.
 		security_group_ids?: [...string]
-		aws_services_authentication!: matchN(1, [_#defs."/$defs/control_plane/$defs/aws_services_authentication", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/aws_services_authentication"]])
 
 		// The list of subnets where control plane replicas will run. A
 		// replica will be provisioned on each subnet and up to three
 		// values can be provided. Each subnet must be in a different AWS
 		// Availability Zone (AZ).
 		subnet_ids!: [...string]
-		config_encryption!: matchN(1, [_#defs."/$defs/control_plane/$defs/config_encryption", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/config_encryption"]])
-		database_encryption!: matchN(1, [_#defs."/$defs/control_plane/$defs/database_encryption", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/control_plane/$defs/database_encryption"]])
-		main_volume?: matchN(1, [_#defs."/$defs/control_plane/$defs/main_volume", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/main_volume"]])
-		proxy_config?: matchN(1, [_#defs."/$defs/control_plane/$defs/proxy_config", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/proxy_config"]])
 
 		// Optional. A set of AWS resource tags to propagate to all
 		// underlying managed AWS resources. Specify at most 50 pairs
@@ -129,8 +133,6 @@ import "list"
 		// can be up to 127 Unicode characters. Values can be up to 255
 		// Unicode characters.
 		tags?: [string]: string
-		root_volume?: matchN(1, [_#defs."/$defs/control_plane/$defs/root_volume", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/root_volume"]])
-		ssh_config?: matchN(1, [_#defs."/$defs/control_plane/$defs/ssh_config", list.MaxItems(1) & [..._#defs."/$defs/control_plane/$defs/ssh_config"]])
 
 		// The Kubernetes version to run on control plane replicas (e.g.
 		// `1.19.10-gke.1000`). You can list all supported versions on a

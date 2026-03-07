@@ -205,6 +205,7 @@ package data
 		// definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
 		// for more details.
 		resource_tags?: [string]: string
+		self_link?: string
 
 		// Specifies the storage billing model for the dataset.
 		// Set this flag value to LOGICAL to use logical bytes for storage
@@ -213,7 +214,6 @@ package data
 		//
 		// LOGICAL is the default if this flag isn't specified.
 		storage_billing_model?: string
-		self_link?:             string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

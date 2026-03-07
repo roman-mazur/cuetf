@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_volume_snapshot")
 	close({
+		timeouts?: #timeouts
+
 		// Description for the snapshot.
 		description?: string
 
@@ -11,6 +13,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Labels as key value pairs. Example: '{ "owner": "Bob",
 		// "department": "finance", "purpose": "testing" }'.
@@ -27,14 +30,12 @@ package res
 		location!: string
 
 		// The name of the snapshot.
-		name!: string
-		id?:   string
+		name!:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?:  string
-		timeouts?: #timeouts
 
 		// Storage used to store blocks unique to this snapshot.
 		used_bytes?: number

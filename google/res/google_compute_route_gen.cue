@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_route")
 	close({
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
+		timeouts?: #timeouts
 		as_paths?: [...close({
 			as_lists?: [...number]
 			path_segment_type?: string
@@ -104,8 +106,6 @@ import "list"
 
 		// URL to a Network that should handle matching packets.
 		next_hop_network?: string
-		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
-		timeouts?: #timeouts
 
 		// Indicates the origin of the route. Can be IGP (Interior Gateway
 		// Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.

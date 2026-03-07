@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_reference_list")
 	close({
+		entries!: matchN(1, [#entries, [_, ...] & [...#entries]])
+		scope_info?: matchN(1, [#scope_info, list.MaxItems(1) & [...#scope_info]])
+		timeouts?: #timeouts
+
 		// Required. A user-provided description of the reference list.
 		description!: string
 
@@ -40,9 +44,6 @@ import "list"
 		// Output only. The timestamp when the reference list was last
 		// updated.
 		revision_create_time?: string
-		entries!: matchN(1, [#entries, [_, ...] & [...#entries]])
-		scope_info?: matchN(1, [#scope_info, list.MaxItems(1) & [...#scope_info]])
-		timeouts?: #timeouts
 
 		// Output only. The count of self-authored rules using the
 		// reference list.

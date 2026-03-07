@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_ssl_policy")
 	close({
+		timeouts?: #timeouts
+
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
@@ -70,9 +72,8 @@ package res
 		// 'TLS_1_2'. Default value: "COMPATIBLE" Possible values:
 		// ["COMPATIBLE", "MODERN", "RESTRICTED", "CUSTOM",
 		// "FIPS_202205"]
-		profile?:  string
-		project?:  string
-		timeouts?: #timeouts
+		profile?: string
+		project?: string
 
 		// The region where the regional SSL policy resides.
 		region?:    string

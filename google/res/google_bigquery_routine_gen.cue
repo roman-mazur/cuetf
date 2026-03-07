@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_routine")
 	close({
+		arguments?: matchN(1, [#arguments, [...#arguments]])
+		remote_function_options?: matchN(1, [#remote_function_options, list.MaxItems(1) & [...#remote_function_options]])
+		spark_options?: matchN(1, [#spark_options, list.MaxItems(1) & [...#spark_options]])
+		timeouts?: #timeouts
+
 		// The time when this routine was created, in milliseconds since
 		// the
 		// epoch.
@@ -33,6 +38,7 @@ import "list"
 		// Possible values: ["DETERMINISM_LEVEL_UNSPECIFIED",
 		// "DETERMINISTIC", "NOT_DETERMINISTIC"]
 		determinism_level?: string
+		id?:                string
 
 		// Optional. If language = "JAVASCRIPT", this field stores the
 		// path of the
@@ -42,14 +48,12 @@ import "list"
 		// The language of the routine. Possible values: ["SQL",
 		// "JAVASCRIPT", "PYTHON", "JAVA", "SCALA"]
 		language?: string
-		id?:       string
 
 		// The time when this routine was modified, in milliseconds since
 		// the
 		// epoch.
 		last_modified_time?: number
-		arguments?: matchN(1, [#arguments, [...#arguments]])
-		remote_function_options?: matchN(1, [#remote_function_options, list.MaxItems(1) & [...#remote_function_options]])
+		project?:            string
 
 		// Optional. Can be set only if routineType =
 		// "TABLE_VALUED_FUNCTION".
@@ -61,8 +65,6 @@ import "list"
 		// be cast to match the column types specificed in return table
 		// type, at query time.
 		return_table_type?: string
-		spark_options?: matchN(1, [#spark_options, list.MaxItems(1) & [...#spark_options]])
-		project?: string
 
 		// A JSON schema for the return type. Optional if language =
 		// "SQL"; required otherwise.
@@ -87,7 +89,6 @@ import "list"
 		// (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
 		// length is 256 characters.
 		routine_id!: string
-		timeouts?:   #timeouts
 
 		// The type of routine. Possible values: ["SCALAR_FUNCTION",
 		// "PROCEDURE", "TABLE_VALUED_FUNCTION"]

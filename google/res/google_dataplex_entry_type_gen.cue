@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_entry_type")
 	close({
+		required_aspects?: matchN(1, [#required_aspects, [...#required_aspects]])
+		timeouts?: #timeouts
+
 		// The time when the EntryType was created.
 		create_time?: string
 
@@ -40,8 +43,6 @@ package res
 
 		// The platform that Entries of this type belongs to.
 		platform?: string
-		required_aspects?: matchN(1, [#required_aspects, [...#required_aspects]])
-		timeouts?: #timeouts
 		project?:  string
 
 		// The system that Entries of this type belongs to.

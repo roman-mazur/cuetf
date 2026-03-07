@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_tls_route")
 	close({
+		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
+		timeouts?: #timeouts
+
 		// Time the TlsRoute was created in UTC.
 		create_time?: string
 
@@ -32,8 +35,6 @@ import "list"
 		// Name of the TlsRoute resource.
 		name!:    string
 		project?: string
-		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
-		timeouts?: #timeouts
 
 		// Server-defined URL of this resource.
 		self_link?: string

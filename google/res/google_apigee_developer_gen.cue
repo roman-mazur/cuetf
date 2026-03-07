@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_developer")
 	close({
+		attributes?: matchN(1, [#attributes, [...#attributes]])
+		timeouts?: #timeouts
+
 		// Time at which the developer was created in milliseconds since
 		// epoch.
 		created_at?: string
@@ -15,11 +18,11 @@ package res
 
 		// First name of the developer.
 		first_name!: string
+		id?:         string
 
 		// Time at which the developer was last modified in milliseconds
 		// since epoch.
 		last_modified_at?: string
-		id?:               string
 
 		// Last name of the developer.
 		last_name!: string
@@ -33,8 +36,6 @@ package res
 
 		// Status of the developer. Valid values are active and inactive.
 		status?: string
-		attributes?: matchN(1, [#attributes, [...#attributes]])
-		timeouts?: #timeouts
 
 		// User name of the developer. Not used by Apigee hybrid.
 		user_name!: string

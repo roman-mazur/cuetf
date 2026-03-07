@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_backup_dr_backup_vault")
 	close({
+		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
+		timeouts?: #timeouts
+
 		// Access restriction for the backup vault. Default value is
 		// 'WITHIN_ORGANIZATION' if not provided during creation. Default
 		// value: "WITHIN_ORGANIZATION" Possible values:
@@ -83,8 +86,6 @@ import "list"
 		// retention set by the backup vault.
 		force_update?: bool
 		id?:           string
-		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
-		timeouts?: #timeouts
 
 		// If set, the following restrictions against deletion of the
 		// backup vault instance can be overridden:

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_biglake_database")
 	close({
+		hive_options!: matchN(1, [#hive_options, list.MaxItems(1) & [_, ...] & [...#hive_options]])
+		timeouts?: #timeouts
+
 		// The parent catalog.
 		catalog!: string
 
@@ -38,8 +41,6 @@ import "list"
 
 		// The name of the database.
 		name!: string
-		hive_options!: matchN(1, [#hive_options, list.MaxItems(1) & [_, ...] & [...#hive_options]])
-		timeouts?: #timeouts
 
 		// The database type.
 		type!: string

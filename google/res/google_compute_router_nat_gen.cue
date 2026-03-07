@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_router_nat")
 	close({
+		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
+		nat64_subnetwork?: matchN(1, [#nat64_subnetwork, [...#nat64_subnetwork]])
+		rules?: matchN(1, [#rules, [...#rules]])
+		subnetwork?: matchN(1, [#subnetwork, [...#subnetwork]])
+		timeouts?: #timeouts
+
 		// The network tier to use when automatically reserving NAT IP
 		// addresses.
 		// Must be one of: PREMIUM, STANDARD. If not specified, then the
@@ -85,14 +91,10 @@ import "list"
 		// the number of resources can be increased/decreased without
 		// triggering the 'resourceInUseByAnotherResource' error.
 		nat_ips?: [...string]
+		project?: string
 
 		// Region where the router and NAT reside.
 		region?: string
-		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		project?: string
-		nat64_subnetwork?: matchN(1, [#nat64_subnetwork, [...#nat64_subnetwork]])
-		rules?: matchN(1, [#rules, [...#rules]])
-		subnetwork?: matchN(1, [#subnetwork, [...#subnetwork]])
 
 		// The name of the Cloud Router in which this NAT will be
 		// configured.
@@ -133,7 +135,6 @@ import "list"
 		// Timeout (in seconds) for TCP established connections.
 		// Defaults to 1200s if not set.
 		tcp_established_idle_timeout_sec?: number
-		timeouts?:                         #timeouts
 
 		// Timeout (in seconds) for TCP connections that are in TIME_WAIT
 		// state.
@@ -172,9 +173,10 @@ import "list"
 	})
 
 	#rules: close({
+		action?: matchN(1, [_#defs."/$defs/rules/$defs/action", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action"]])
+
 		// An optional description of this rule.
 		description?: string
-		action?: matchN(1, [_#defs."/$defs/rules/$defs/action", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action"]])
 
 		// CEL expression that specifies the match condition that egress
 		// traffic from a VM is evaluated against.

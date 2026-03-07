@@ -6,11 +6,25 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gkeonprem_bare_metal_cluster")
 	close({
+		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
+		cluster_operations?: matchN(1, [#cluster_operations, list.MaxItems(1) & [...#cluster_operations]])
+		control_plane!: matchN(1, [#control_plane, list.MaxItems(1) & [_, ...] & [...#control_plane]])
+		load_balancer!: matchN(1, [#load_balancer, list.MaxItems(1) & [_, ...] & [...#load_balancer]])
+		maintenance_config?: matchN(1, [#maintenance_config, list.MaxItems(1) & [...#maintenance_config]])
+		network_config!: matchN(1, [#network_config, list.MaxItems(1) & [_, ...] & [...#network_config]])
+		node_access_config?: matchN(1, [#node_access_config, list.MaxItems(1) & [...#node_access_config]])
+		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
+		os_environment_config?: matchN(1, [#os_environment_config, list.MaxItems(1) & [...#os_environment_config]])
+		proxy?: matchN(1, [#proxy, list.MaxItems(1) & [...#proxy]])
+		security_config?: matchN(1, [#security_config, list.MaxItems(1) & [...#security_config]])
+		storage!: matchN(1, [#storage, list.MaxItems(1) & [_, ...] & [...#storage]])
+		timeouts?: #timeouts
+		upgrade_policy?: matchN(1, [#upgrade_policy, list.MaxItems(1) & [...#upgrade_policy]])
+
 		// The Admin Cluster this Bare Metal User Cluster belongs to.
 		// This is the full resource name of the Admin Cluster's hub
 		// membership.
 		admin_cluster_membership!: string
-		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
 
 		// Annotations on the Bare Metal User Cluster.
 		// This field has the same restrictions as Kubernetes annotations.
@@ -93,22 +107,9 @@ import "list"
 		// admin
 		// cluster controller logs.
 		local_name?: string
-		cluster_operations?: matchN(1, [#cluster_operations, list.MaxItems(1) & [...#cluster_operations]])
-		control_plane!: matchN(1, [#control_plane, list.MaxItems(1) & [_, ...] & [...#control_plane]])
-		load_balancer!: matchN(1, [#load_balancer, list.MaxItems(1) & [_, ...] & [...#load_balancer]])
 
 		// The location of the resource.
 		location!: string
-		maintenance_config?: matchN(1, [#maintenance_config, list.MaxItems(1) & [...#maintenance_config]])
-		network_config!: matchN(1, [#network_config, list.MaxItems(1) & [_, ...] & [...#network_config]])
-		node_access_config?: matchN(1, [#node_access_config, list.MaxItems(1) & [...#node_access_config]])
-		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
-		os_environment_config?: matchN(1, [#os_environment_config, list.MaxItems(1) & [...#os_environment_config]])
-		proxy?: matchN(1, [#proxy, list.MaxItems(1) & [...#proxy]])
-		security_config?: matchN(1, [#security_config, list.MaxItems(1) & [...#security_config]])
-		storage!: matchN(1, [#storage, list.MaxItems(1) & [_, ...] & [...#storage]])
-		timeouts?: #timeouts
-		upgrade_policy?: matchN(1, [#upgrade_policy, list.MaxItems(1) & [...#upgrade_policy]])
 
 		// The bare metal cluster name.
 		name!:    string

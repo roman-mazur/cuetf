@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_certificate_manager_certificate")
 	close({
+		managed?: matchN(1, [#managed, list.MaxItems(1) & [...#managed]])
+		self_managed?: matchN(1, [#self_managed, list.MaxItems(1) & [...#self_managed]])
+		timeouts?: #timeouts
+
 		// A human-readable description of the resource.
 		description?: string
 
@@ -13,6 +17,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Set of label tags associated with the Certificate resource.
 		//
@@ -21,7 +26,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The Certificate Manager location. If not specified, "global" is
 		// used.
@@ -40,9 +44,6 @@ import "list"
 		// The list of Subject Alternative Names of dnsName type defined
 		// in the certificate (see RFC 5280 4.2.1.6)
 		san_dnsnames?: [...string]
-		managed?: matchN(1, [#managed, list.MaxItems(1) & [...#managed]])
-		self_managed?: matchN(1, [#self_managed, list.MaxItems(1) & [...#self_managed]])
-		timeouts?: #timeouts
 
 		// The scope of the certificate.
 		//

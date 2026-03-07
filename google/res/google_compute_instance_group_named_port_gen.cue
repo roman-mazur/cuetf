@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_instance_group_named_port")
 	close({
+		timeouts?: #timeouts
+
 		// The name of the instance group.
 		group!: string
 		id?:    string
@@ -13,9 +15,8 @@ package res
 		name!: string
 
 		// The port number, which can be a value between 1 and 65535.
-		port!:     number
-		timeouts?: #timeouts
-		project?:  string
+		port!:    number
+		project?: string
 
 		// The zone of the instance group.
 		zone?: string

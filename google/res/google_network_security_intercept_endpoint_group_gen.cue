@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_intercept_endpoint_group")
 	close({
+		timeouts?: #timeouts
+
 		// List of associations to this endpoint group.
 		associations?: [...close({
 			name?:    string
@@ -32,6 +34,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// The deployment group that this endpoint group is connected to,
 		// for example:
@@ -43,7 +46,6 @@ package res
 		// final component
 		// of the endpoint group's resource name.
 		intercept_endpoint_group_id!: string
-		id?:                          string
 
 		// Labels are key/value pairs that help to organize and filter
 		// resources.
@@ -61,8 +63,8 @@ package res
 		// The resource name of this endpoint group, for example:
 		// 'projects/123456789/locations/global/interceptEndpointGroups/my-eg'.
 		// See https://google.aip.dev/122 for more details.
-		name?:     string
-		timeouts?: #timeouts
+		name?:    string
+		project?: string
 
 		// The current state of the resource does not match the user's
 		// intended state,
@@ -82,8 +84,7 @@ package res
 		// DELETING
 		// OUT_OF_SYNC
 		// DELETE_FAILED
-		state?:   string
-		project?: string
+		state?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

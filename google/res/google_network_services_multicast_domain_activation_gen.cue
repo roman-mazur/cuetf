@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_multicast_domain_activation")
 	close({
+		timeouts?: #timeouts
+		traffic_spec?: matchN(1, [#traffic_spec, list.MaxItems(1) & [...#traffic_spec]])
+
 		// The URL of the admin network.
 		admin_network?: string
 
@@ -55,8 +58,6 @@ import "list"
 		// must not
 		// exceed 48 characters.
 		multicast_domain_activation_id!: string
-		timeouts?:                       #timeouts
-		traffic_spec?: matchN(1, [#traffic_spec, list.MaxItems(1) & [...#traffic_spec]])
 
 		// Identifier. The resource name of the multicast domain
 		// activation.

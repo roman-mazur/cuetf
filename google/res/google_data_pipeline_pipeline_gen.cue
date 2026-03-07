@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_pipeline_pipeline")
 	close({
+		schedule_info?: matchN(1, [#schedule_info, list.MaxItems(1) & [...#schedule_info]])
+		timeouts?: #timeouts
+		workload?: matchN(1, [#workload, list.MaxItems(1) & [...#workload]])
+
 		// The timestamp when the pipeline was initially created. Set by
 		// the Data Pipelines service.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -16,10 +20,10 @@ import "list"
 		// The display name of the pipeline. It can contain only letters
 		// ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).
 		display_name?: string
+		id?:           string
 
 		// Number of jobs.
 		job_count?: number
-		id?:        string
 
 		// The timestamp when the pipeline was last modified. Set by the
 		// Data Pipelines service.
@@ -53,9 +57,6 @@ import "list"
 
 		// A reference to the region
 		region?: string
-		schedule_info?: matchN(1, [#schedule_info, list.MaxItems(1) & [...#schedule_info]])
-		timeouts?: #timeouts
-		workload?: matchN(1, [#workload, list.MaxItems(1) & [...#workload]])
 
 		// Optional. A service account email to be used with the Cloud
 		// Scheduler job. If not specified, the default compute engine
@@ -109,10 +110,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/workload/$defs/dataflow_flex_template_request": close({
+		launch_parameter!: matchN(1, [_#defs."/$defs/workload/$defs/dataflow_flex_template_request/$defs/launch_parameter", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/workload/$defs/dataflow_flex_template_request/$defs/launch_parameter"]])
+
 		// The regional endpoint to which to direct the request. For
 		// example, us-central1, us-west1.
 		location!: string
-		launch_parameter!: matchN(1, [_#defs."/$defs/workload/$defs/dataflow_flex_template_request/$defs/launch_parameter", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/workload/$defs/dataflow_flex_template_request/$defs/launch_parameter"]])
 
 		// The ID of the Cloud Platform project that the job belongs to.
 		project_id!: string
@@ -123,6 +125,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/workload/$defs/dataflow_flex_template_request/$defs/launch_parameter": close({
+		environment?: matchN(1, [_#defs."/$defs/workload/$defs/dataflow_flex_template_request/$defs/launch_parameter/$defs/environment", list.MaxItems(1) & [..._#defs."/$defs/workload/$defs/dataflow_flex_template_request/$defs/launch_parameter/$defs/environment"]])
+
 		// Cloud Storage path to a file with a JSON-serialized
 		// ContainerSpec as content.
 		container_spec_gcs_path?: string
@@ -155,7 +159,6 @@ import "list"
 		// running streaming job. When set, the job name should be the
 		// same as the running job.
 		update?: bool
-		environment?: matchN(1, [_#defs."/$defs/workload/$defs/dataflow_flex_template_request/$defs/launch_parameter/$defs/environment", list.MaxItems(1) & [..._#defs."/$defs/workload/$defs/dataflow_flex_template_request/$defs/launch_parameter/$defs/environment"]])
 	})
 
 	_#defs: "/$defs/workload/$defs/dataflow_flex_template_request/$defs/launch_parameter/$defs/environment": close({
@@ -246,6 +249,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/workload/$defs/dataflow_launch_template_request": close({
+		launch_parameters?: matchN(1, [_#defs."/$defs/workload/$defs/dataflow_launch_template_request/$defs/launch_parameters", list.MaxItems(1) & [..._#defs."/$defs/workload/$defs/dataflow_launch_template_request/$defs/launch_parameters"]])
+
 		// A Cloud Storage path to the template from which to create the
 		// job. Must be a valid Cloud Storage URL, beginning with
 		// 'gs://'.
@@ -255,12 +260,13 @@ import "list"
 		location?: string
 
 		// The ID of the Cloud Platform project that the job belongs to.
-		project_id!: string
-		launch_parameters?: matchN(1, [_#defs."/$defs/workload/$defs/dataflow_launch_template_request/$defs/launch_parameters", list.MaxItems(1) & [..._#defs."/$defs/workload/$defs/dataflow_launch_template_request/$defs/launch_parameters"]])
+		project_id!:    string
 		validate_only?: bool
 	})
 
 	_#defs: "/$defs/workload/$defs/dataflow_launch_template_request/$defs/launch_parameters": close({
+		environment?: matchN(1, [_#defs."/$defs/workload/$defs/dataflow_launch_template_request/$defs/launch_parameters/$defs/environment", list.MaxItems(1) & [..._#defs."/$defs/workload/$defs/dataflow_launch_template_request/$defs/launch_parameters/$defs/environment"]])
+
 		// The job name to use for the created job.
 		job_name!: string
 
@@ -275,7 +281,6 @@ import "list"
 		// 'An object containing a list of "key": value pairs. Example: {
 		// "name": "wrench", "mass": "1.3kg", "count": "3" }.'
 		transform_name_mapping?: [string]: string
-		environment?: matchN(1, [_#defs."/$defs/workload/$defs/dataflow_launch_template_request/$defs/launch_parameters/$defs/environment", list.MaxItems(1) & [..._#defs."/$defs/workload/$defs/dataflow_launch_template_request/$defs/launch_parameters/$defs/environment"]])
 
 		// If set, replace the existing pipeline with the name specified
 		// by jobName with this pipeline, preserving state.

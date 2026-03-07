@@ -6,11 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_tool")
 	close({
+		client_function?: matchN(1, [#client_function, list.MaxItems(1) & [...#client_function]])
+		data_store_tool?: matchN(1, [#data_store_tool, list.MaxItems(1) & [...#data_store_tool]])
+		google_search_tool?: matchN(1, [#google_search_tool, list.MaxItems(1) & [...#google_search_tool]])
+		python_function?: matchN(1, [#python_function, list.MaxItems(1) & [...#python_function]])
+		timeouts?: #timeouts
+
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		app!: string
-		client_function?: matchN(1, [#client_function, list.MaxItems(1) & [...#client_function]])
 
 		// Timestamp when the tool was created.
 		create_time?: string
@@ -48,10 +53,6 @@ import "list"
 		// Format:
 		// 'projects/{project}/locations/{location}/apps/{app}/tools/{tool}'
 		name?: string
-		data_store_tool?: matchN(1, [#data_store_tool, list.MaxItems(1) & [...#data_store_tool]])
-		google_search_tool?: matchN(1, [#google_search_tool, list.MaxItems(1) & [...#google_search_tool]])
-		python_function?: matchN(1, [#python_function, list.MaxItems(1) & [...#python_function]])
-		timeouts?: #timeouts
 
 		// A remote API tool defined by an OpenAPI schema.
 		open_api_tool?: [...close({
@@ -121,9 +122,12 @@ import "list"
 	})
 
 	#data_store_tool: close({
+		boost_specs?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/boost_specs", [..._#defs."/$defs/data_store_tool/$defs/boost_specs"]])
+		engine_source?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/engine_source", list.MaxItems(1) & [..._#defs."/$defs/data_store_tool/$defs/engine_source"]])
+		modality_configs?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/modality_configs", [..._#defs."/$defs/data_store_tool/$defs/modality_configs"]])
+
 		// The tool description.
 		description?: string
-		boost_specs?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/boost_specs", [..._#defs."/$defs/data_store_tool/$defs/boost_specs"]])
 
 		// Number of search results to return per query.
 		// The default value is 10. The maximum allowed value is 10.
@@ -131,8 +135,6 @@ import "list"
 
 		// The data store tool name.
 		name!: string
-		engine_source?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/engine_source", list.MaxItems(1) & [..._#defs."/$defs/data_store_tool/$defs/engine_source"]])
-		modality_configs?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/modality_configs", [..._#defs."/$defs/data_store_tool/$defs/modality_configs"]])
 	})
 
 	#google_search_tool: close({
@@ -444,6 +446,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/data_store_tool/$defs/boost_specs/$defs/spec/$defs/condition_boost_specs/$defs/boost_control_spec": close({
+		control_points?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/boost_specs/$defs/spec/$defs/condition_boost_specs/$defs/boost_control_spec/$defs/control_points", [..._#defs."/$defs/data_store_tool/$defs/boost_specs/$defs/spec/$defs/condition_boost_specs/$defs/boost_control_spec/$defs/control_points"]])
+
 		// The attribute type to be used to determine the boost amount.
 		// The
 		// attribute value can be derived from the field value of the
@@ -456,7 +460,6 @@ import "list"
 		// NUMERICAL
 		// FRESHNESS
 		attribute_type?: string
-		control_points?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/boost_specs/$defs/spec/$defs/condition_boost_specs/$defs/boost_control_spec/$defs/control_points", [..._#defs."/$defs/data_store_tool/$defs/boost_specs/$defs/spec/$defs/condition_boost_specs/$defs/boost_control_spec/$defs/control_points"]])
 
 		// The name of the field whose value will be used to determine the
 		// boost amount.

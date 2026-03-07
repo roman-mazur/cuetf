@@ -10,12 +10,12 @@ package data
 		// `exp` claim will be added to the payload derived from the
 		// current timestamp plus expires_in seconds.
 		expires_in?: number
+		id?:         string
+		jwt?:        string
 
 		// A JSON-encoded JWT claims set that will be included in the
 		// signed JWT.
 		payload!:                string
-		id?:                     string
-		jwt?:                    string
 		target_service_account!: string
 	})
 }

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_identity_group")
 	close({
+		group_key!: matchN(1, [#group_key, list.MaxItems(1) & [_, ...] & [...#group_key]])
+		timeouts?: #timeouts
+
 		// Additional group keys associated with the Group
 		additional_group_keys?: [...close({
 			id?:        string
@@ -22,6 +25,7 @@ import "list"
 
 		// The display name of the Group.
 		display_name?: string
+		id?:           string
 
 		// The initial configuration options for creating a Group.
 		//
@@ -32,7 +36,6 @@ import "list"
 		// ["INITIAL_GROUP_CONFIG_UNSPECIFIED", "WITH_INITIAL_OWNER",
 		// "EMPTY"]
 		initial_group_config?: string
-		id?:                   string
 
 		// One or more label entries that apply to the Group. Currently
 		// supported labels contain a key with an empty value.
@@ -58,8 +61,6 @@ import "list"
 		// where group_id
 		// is the unique ID assigned to the Group.
 		name?: string
-		group_key!: matchN(1, [#group_key, list.MaxItems(1) & [_, ...] & [...#group_key]])
-		timeouts?: #timeouts
 
 		// The resource name of the entity under which this Group resides
 		// in the

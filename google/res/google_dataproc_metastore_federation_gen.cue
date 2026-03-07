@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_metastore_federation")
 	close({
+		backend_metastores!: matchN(1, [#backend_metastores, [_, ...] & [...#backend_metastores]])
+		timeouts?: #timeouts
+
 		// Output only. The time when the metastore federation was
 		// created.
 		create_time?: string
@@ -31,6 +34,7 @@ package res
 		// Must consist of between
 		// 3 and 63 characters.
 		federation_id!: string
+		id?:            string
 
 		// User-defined labels for the metastore federation.
 		//
@@ -42,10 +46,10 @@ package res
 
 		// The location where the metastore federation should reside.
 		location?: string
-		id?:       string
 
 		// The relative resource name of the metastore federation.
-		name?: string
+		name?:    string
+		project?: string
 
 		// The current state of the metastore federation.
 		state?: string
@@ -60,9 +64,6 @@ package res
 		// Keys must be in the format tagKeys/{tag_key_id}, and values are
 		// in the format tagValues/{tag_value_id}.
 		tags?: [string]: string
-		backend_metastores!: matchN(1, [#backend_metastores, [_, ...] & [...#backend_metastores]])
-		timeouts?: #timeouts
-		project?:  string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

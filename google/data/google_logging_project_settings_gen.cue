@@ -10,6 +10,7 @@ package data
 		// aggregated sink configured in the hierarchy. The _Default sink
 		// can be re-enabled manually if needed.
 		disable_default_sink?: bool
+		id?:                   string
 
 		// The resource name for the configured Cloud KMS key.
 		// KMS key name format:
@@ -28,7 +29,6 @@ package data
 		// Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage)
 		// for more information.
 		kms_key_name?: string
-		id?:           string
 
 		// The service account associated with a project for which CMEK
 		// will apply.

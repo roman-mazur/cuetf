@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_batch_operations_job")
 	close({
+		bucket_list?: matchN(1, [#bucket_list, list.MaxItems(1) & [...#bucket_list]])
+		delete_object?: matchN(1, [#delete_object, list.MaxItems(1) & [...#delete_object]])
+		put_metadata?: matchN(1, [#put_metadata, list.MaxItems(1) & [...#put_metadata]])
+		put_object_hold?: matchN(1, [#put_object_hold, list.MaxItems(1) & [...#put_object_hold]])
+		rewrite_object?: matchN(1, [#rewrite_object, list.MaxItems(1) & [...#rewrite_object]])
+		timeouts?: #timeouts
+
 		// The time that the job was completed.
 		complete_time?: string
 
@@ -24,12 +31,6 @@ import "list"
 
 		// The time that the job was scheduled.
 		schedule_time?: string
-		bucket_list?: matchN(1, [#bucket_list, list.MaxItems(1) & [...#bucket_list]])
-		delete_object?: matchN(1, [#delete_object, list.MaxItems(1) & [...#delete_object]])
-		put_metadata?: matchN(1, [#put_metadata, list.MaxItems(1) & [...#put_metadata]])
-		put_object_hold?: matchN(1, [#put_object_hold, list.MaxItems(1) & [...#put_object_hold]])
-		rewrite_object?: matchN(1, [#rewrite_object, list.MaxItems(1) & [...#rewrite_object]])
-		timeouts?: #timeouts
 
 		// State of the job.
 		state?: string

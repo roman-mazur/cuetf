@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_kms_key_ring_import_job")
 	close({
+		timeouts?: #timeouts
+
 		// Statement that was generated and signed by the key creator (for
 		// example, an HSM) at key creation time.
 		// Use this statement to verify attributes of the key as stored on
@@ -19,11 +21,11 @@ package res
 		// can no longer be used.
 		// This is in RFC3339 text format.
 		expire_time?: string
+		id?:          string
 
 		// It must be unique within a KeyRing and match the regular
 		// expression [a-zA-Z0-9_-]{1,63}
 		import_job_id!: string
-		id?:            string
 
 		// The wrapping method to be used for incoming key material.
 		// Possible values: ["RSA_OAEP_3072_SHA1_AES_256",
@@ -39,8 +41,7 @@ package res
 
 		// The resource name for this ImportJob in the format
 		// projects/*/locations/*/keyRings/*/importJobs/*.
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// The protection level of the ImportJob. This must match the
 		// protectionLevel of the

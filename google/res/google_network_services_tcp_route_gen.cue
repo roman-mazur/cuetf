@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_tcp_route")
 	close({
+		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
+		timeouts?: #timeouts
+
 		// Time the TcpRoute was created in UTC.
 		create_time?: string
 
@@ -43,13 +46,11 @@ import "list"
 		meshes?: [...string]
 
 		// Name of the TcpRoute resource.
-		name!: string
-		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
+		name!:    string
 		project?: string
 
 		// Server-defined URL of this resource.
 		self_link?: string
-		timeouts?:  #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

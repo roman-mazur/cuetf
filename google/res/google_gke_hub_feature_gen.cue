@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_hub_feature")
 	close({
+		fleet_default_member_config?: matchN(1, [#fleet_default_member_config, list.MaxItems(1) & [...#fleet_default_member_config]])
+		spec?: matchN(1, [#spec, list.MaxItems(1) & [...#spec]])
+		timeouts?: #timeouts
+
 		// Output only. When the Feature resource was created.
 		create_time?: string
 
@@ -16,6 +20,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// GCP labels for this Feature.
 		//
@@ -24,7 +29,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location for the resource
 		location!: string
@@ -38,9 +42,6 @@ import "list"
 			has_resources?: bool
 			state?:         string
 		})]
-		fleet_default_member_config?: matchN(1, [#fleet_default_member_config, list.MaxItems(1) & [...#fleet_default_member_config]])
-		spec?: matchN(1, [#spec, list.MaxItems(1) & [...#spec]])
-		timeouts?: #timeouts
 
 		// Output only. The Hub-wide Feature state
 		state?: [...close({
@@ -70,6 +71,7 @@ import "list"
 		fleetobservability?: matchN(1, [_#defs."/$defs/spec/$defs/fleetobservability", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/fleetobservability"]])
 		multiclusteringress?: matchN(1, [_#defs."/$defs/spec/$defs/multiclusteringress", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/multiclusteringress"]])
 		rbacrolebindingactuation?: matchN(1, [_#defs."/$defs/spec/$defs/rbacrolebindingactuation", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/rbacrolebindingactuation"]])
+		workloadidentity?: matchN(1, [_#defs."/$defs/spec/$defs/workloadidentity", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/workloadidentity"]])
 	})
 
 	#timeouts: close({
@@ -93,6 +95,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync": close({
+		git?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync/$defs/git", list.MaxItems(1) & [..._#defs."/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync/$defs/git"]])
+		oci?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync/$defs/oci", list.MaxItems(1) & [..._#defs."/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync/$defs/oci"]])
+
 		// Enables the installation of ConfigSync. If set to true,
 		// ConfigSync resources will be created and the other ConfigSync
 		// fields will be applied if exist. If set to false, all other
@@ -117,8 +122,6 @@ import "list"
 		// Specifies whether the Config Sync Repo is in hierarchical or
 		// unstructured mode
 		source_format?: string
-		git?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync/$defs/git", list.MaxItems(1) & [..._#defs."/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync/$defs/git"]])
-		oci?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync/$defs/oci", list.MaxItems(1) & [..._#defs."/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync/$defs/oci"]])
 	})
 
 	_#defs: "/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync/$defs/git": close({
@@ -184,6 +187,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config": close({
+		deployment_configs?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs", [..._#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs"]])
+		monitoring?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/monitoring", list.MaxItems(1) & [..._#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/monitoring"]])
+		policy_content?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/policy_content", list.MaxItems(1) & [..._#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/policy_content"]])
+
 		// Interval for Policy Controller Audit scans (in seconds). When
 		// set to 0, this disables audit functionality altogether.
 		audit_interval_seconds?: number
@@ -206,13 +213,10 @@ import "list"
 
 		// Logs all denies and dry run failures.
 		log_denies_enabled?: bool
-		deployment_configs?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs", [..._#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs"]])
-		monitoring?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/monitoring", list.MaxItems(1) & [..._#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/monitoring"]])
 
 		// Enables the ability to mutate resources using Policy
 		// Controller.
 		mutation_enabled?: bool
-		policy_content?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/policy_content", list.MaxItems(1) & [..._#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/policy_content"]])
 
 		// Enables the ability to use Constraint Templates that reference
 		// to objects other than the object currently being evaluated.
@@ -220,9 +224,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs": close({
-		component!: string
 		container_resources?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs/$defs/container_resources", list.MaxItems(1) & [..._#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs/$defs/container_resources"]])
 		pod_toleration?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs/$defs/pod_toleration", [..._#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs/$defs/pod_toleration"]])
+		component!: string
 
 		// Pod affinity configuration. Possible values:
 		// ["AFFINITY_UNSPECIFIED", "NO_AFFINITY", "ANTI_AFFINITY"]
@@ -366,5 +370,13 @@ import "list"
 		// use, it cannot be removed from the list until the scope
 		// RBACRolebindings using it are deleted.
 		allowed_custom_roles?: [...string]
+	})
+
+	_#defs: "/$defs/spec/$defs/workloadidentity": close({
+		// Pool to be used for Workload Identity. This pool in
+		// trust-domain mode is used with Fleet Tenancy, so that sameness
+		// can be enforced. ex:
+		// projects/example/locations/global/workloadidentitypools/custompool
+		scope_tenancy_pool!: string
 	})
 }

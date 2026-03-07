@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_folder_sink")
 	close({
+		bigquery_options?: matchN(1, [#bigquery_options, list.MaxItems(1) & [...#bigquery_options]])
+		exclusions?: matchN(1, [#exclusions, [...#exclusions]])
+
 		// A description of this sink. The maximum length of the
 		// description is 8000 characters.
 		description?: string
@@ -31,6 +34,7 @@ import "list"
 		// The folder to be exported to the sink. Note that either
 		// [FOLDER_ID] or "folders/[FOLDER_ID]" is accepted.
 		folder!: string
+		id?:     string
 
 		// Whether or not to include children folders in the sink export.
 		// If true, logs associated with child projects are also
@@ -43,9 +47,6 @@ import "list"
 		// except _Required sinks. This sink will be visible to child
 		// resources when listing sinks.
 		intercept_children?: bool
-		id?:                 string
-		bigquery_options?: matchN(1, [#bigquery_options, list.MaxItems(1) & [...#bigquery_options]])
-		exclusions?: matchN(1, [#exclusions, [...#exclusions]])
 
 		// The name of the logging sink.
 		name!: string

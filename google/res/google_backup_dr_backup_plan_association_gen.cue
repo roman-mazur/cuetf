@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_backup_dr_backup_plan_association")
 	close({
+		timeouts?: #timeouts
+
 		// The BP with which resource needs to be created
 		// Note:
 		// - A Backup Plan configured for
@@ -25,10 +27,10 @@ package res
 		// Resource name of data source which will be used as storage
 		// location for backups taken
 		data_source?: string
+		id?:          string
 
 		// The location for the backupplan association
 		location!: string
-		id?:       string
 
 		// The name of backup plan association resource created
 		name?:    string
@@ -36,7 +38,6 @@ package res
 
 		// The resource for which BPA needs to be created
 		resource!: string
-		timeouts?: #timeouts
 
 		// The resource type of workload on which backupplan is applied.
 		// Examples include, "compute.googleapis.com/Instance",

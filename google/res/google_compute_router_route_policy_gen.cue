@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_router_route_policy")
 	close({
+		terms!: matchN(1, [#terms, [_, ...] & [...#terms]])
+		timeouts?: #timeouts
+
 		// The fingerprint used for optimistic locking of this resource.
 		// Used
 		// internally during updates.
@@ -17,11 +20,9 @@ import "list"
 		// the Router
 		name!:    string
 		project?: string
-		terms!: matchN(1, [#terms, [_, ...] & [...#terms]])
 
 		// Region where the router and NAT reside.
-		region?:   string
-		timeouts?: #timeouts
+		region?: string
 
 		// The name of the Cloud Router in which this route policy will be
 		// configured.

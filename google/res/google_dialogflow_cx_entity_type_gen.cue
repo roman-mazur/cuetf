@@ -4,6 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_entity_type")
 	close({
+		entities!: matchN(1, [#entities, [_, ...] & [...#entities]])
+		excluded_phrases?: matchN(1, [#excluded_phrases, [...#excluded_phrases]])
+		timeouts?: #timeouts
+
 		// Represents kinds of entities.
 		// * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for
 		// the entity.
@@ -47,9 +51,6 @@ package res
 		// Format: projects/<Project ID>/locations/<Location
 		// ID>/agents/<Agent ID>/entityTypes/<Entity Type ID>.
 		name?: string
-		entities!: matchN(1, [#entities, [_, ...] & [...#entities]])
-		excluded_phrases?: matchN(1, [#excluded_phrases, [...#excluded_phrases]])
-		timeouts?: #timeouts
 
 		// The agent to create a entity type for.
 		// Format: projects/<Project ID>/locations/<Location

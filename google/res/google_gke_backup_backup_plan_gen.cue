@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_backup_backup_plan")
 	close({
+		backup_config?: matchN(1, [#backup_config, list.MaxItems(1) & [...#backup_config]])
+		backup_schedule?: matchN(1, [#backup_schedule, list.MaxItems(1) & [...#backup_schedule]])
+		retention_policy?: matchN(1, [#retention_policy, list.MaxItems(1) & [...#retention_policy]])
+		timeouts?: #timeouts
+
 		// The source cluster from which Backups will be created via this
 		// BackupPlan.
 		cluster!: string
@@ -41,6 +46,7 @@ import "list"
 		// backupPlans.delete to ensure that their change will be applied
 		// to the same version of the resource.
 		etag?: string
+		id?:   string
 
 		// Description: A set of custom labels supplied by the user.
 		// A list of key->value pairs.
@@ -55,19 +61,14 @@ import "list"
 
 		// The region of the Backup Plan.
 		location!: string
-		id?:       string
 
 		// The full name of the BackupPlan Resource.
-		name!: string
+		name!:    string
+		project?: string
 
 		// The number of Kubernetes Pods backed up in the last successful
 		// Backup created via this BackupPlan.
 		protected_pod_count?: number
-		backup_config?: matchN(1, [#backup_config, list.MaxItems(1) & [...#backup_config]])
-		backup_schedule?: matchN(1, [#backup_schedule, list.MaxItems(1) & [...#backup_schedule]])
-		retention_policy?: matchN(1, [#retention_policy, list.MaxItems(1) & [...#retention_policy]])
-		timeouts?: #timeouts
-		project?:  string
 
 		// The State of the BackupPlan.
 		state?: string
@@ -84,6 +85,11 @@ import "list"
 	})
 
 	#backup_config: close({
+		encryption_key?: matchN(1, [_#defs."/$defs/backup_config/$defs/encryption_key", list.MaxItems(1) & [..._#defs."/$defs/backup_config/$defs/encryption_key"]])
+		selected_applications?: matchN(1, [_#defs."/$defs/backup_config/$defs/selected_applications", list.MaxItems(1) & [..._#defs."/$defs/backup_config/$defs/selected_applications"]])
+		selected_namespace_labels?: matchN(1, [_#defs."/$defs/backup_config/$defs/selected_namespace_labels", list.MaxItems(1) & [..._#defs."/$defs/backup_config/$defs/selected_namespace_labels"]])
+		selected_namespaces?: matchN(1, [_#defs."/$defs/backup_config/$defs/selected_namespaces", list.MaxItems(1) & [..._#defs."/$defs/backup_config/$defs/selected_namespaces"]])
+
 		// If True, include all namespaced resources.
 		all_namespaces?: bool
 
@@ -91,20 +97,16 @@ import "list"
 		// be included
 		// when they fall into the scope of Backups.
 		include_secrets?: bool
-		encryption_key?: matchN(1, [_#defs."/$defs/backup_config/$defs/encryption_key", list.MaxItems(1) & [..._#defs."/$defs/backup_config/$defs/encryption_key"]])
 
 		// This flag specifies whether volume data should be backed up
 		// when PVCs are
 		// included in the scope of a Backup.
 		include_volume_data?: bool
-		selected_applications?: matchN(1, [_#defs."/$defs/backup_config/$defs/selected_applications", list.MaxItems(1) & [..._#defs."/$defs/backup_config/$defs/selected_applications"]])
 
 		// This flag specifies whether Backups will not fail when
 		// Backup for GKE detects Kubernetes configuration that is
 		// non-standard or requires additional setup to restore.
 		permissive_mode?: bool
-		selected_namespace_labels?: matchN(1, [_#defs."/$defs/backup_config/$defs/selected_namespace_labels", list.MaxItems(1) & [..._#defs."/$defs/backup_config/$defs/selected_namespace_labels"]])
-		selected_namespaces?: matchN(1, [_#defs."/$defs/backup_config/$defs/selected_namespaces", list.MaxItems(1) & [..._#defs."/$defs/backup_config/$defs/selected_namespaces"]])
 	})
 
 	#backup_schedule: close({

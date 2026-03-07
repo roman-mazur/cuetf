@@ -4,6 +4,9 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_machine_types")
 	close({
+		filter?: string
+		id?:     string
+
 		// The list of machine types
 		machine_types?: [...close({
 			accelerators?: [...close({
@@ -26,10 +29,8 @@ package data
 
 		// Project ID for this request.
 		project?: string
-		filter?:  string
 
 		// The name of the zone for this request.
 		zone?: string
-		id?:   string
 	})
 }

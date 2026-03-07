@@ -6,16 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_analysis_note")
 	close({
+		attestation_authority!: matchN(1, [#attestation_authority, list.MaxItems(1) & [_, ...] & [...#attestation_authority]])
+		related_url?: matchN(1, [#related_url, [...#related_url]])
+		timeouts?: #timeouts
+
 		// The time this note was created.
 		create_time?: string
 
 		// Time of expiration for this note. Leave empty if note does not
 		// expire.
 		expiration_time?: string
+		id?:              string
 
 		// The type of analysis this note describes
 		kind?: string
-		id?:   string
 
 		// A detailed description of the note
 		long_description?: string
@@ -26,9 +30,6 @@ import "list"
 
 		// Names of other notes related to this note.
 		related_note_names?: [...string]
-		attestation_authority!: matchN(1, [#attestation_authority, list.MaxItems(1) & [_, ...] & [...#attestation_authority]])
-		related_url?: matchN(1, [#related_url, [...#related_url]])
-		timeouts?: #timeouts
 
 		// A one sentence description of the note.
 		short_description?: string

@@ -4,6 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_certificate_manager_trust_config")
 	close({
+		allowlisted_certificates?: matchN(1, [#allowlisted_certificates, [...#allowlisted_certificates]])
+		timeouts?: #timeouts
+		trust_stores?: matchN(1, [#trust_stores, [...#trust_stores]])
+
 		// The creation timestamp of a TrustConfig.
 		//
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -36,9 +40,6 @@ package res
 		// must be unique globally.
 		name!:    string
 		project?: string
-		allowlisted_certificates?: matchN(1, [#allowlisted_certificates, [...#allowlisted_certificates]])
-		timeouts?: #timeouts
-		trust_stores?: matchN(1, [#trust_stores, [...#trust_stores]])
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_developer_connect_git_repository_link")
 	close({
+		timeouts?: #timeouts
+
 		// Optional. Allows clients to store small amounts of arbitrary
 		// data.
 		//
@@ -45,6 +47,7 @@ package res
 		// connection.
 		// Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
 		git_repository_link_id!: string
+		id?:                     string
 
 		// Optional. Labels as key value pairs
 		//
@@ -53,14 +56,12 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122. See documentation for resource
 		// type 'developerconnect.googleapis.com/GitRepositoryLink'.
 		location!: string
-		timeouts?: #timeouts
 
 		// Identifier. Resource name of the repository, in the format
 		// 'projects/*/locations/*/connections/*/gitRepositoryLinks/*'.
@@ -71,12 +72,12 @@ package res
 		// https://google.aip.dev/122. See documentation for resource
 		// type 'developerconnect.googleapis.com/GitRepositoryLink'.
 		parent_connection!: string
+		project?:           string
 
 		// Output only. Set to true when the connection is being set up or
 		// updated in the
 		// background.
 		reconciling?: bool
-		project?:     string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

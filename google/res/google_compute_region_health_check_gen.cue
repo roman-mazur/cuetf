@@ -6,11 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_health_check")
 	close({
+		grpc_health_check?: matchN(1, [#grpc_health_check, list.MaxItems(1) & [...#grpc_health_check]])
+		grpc_tls_health_check?: matchN(1, [#grpc_tls_health_check, list.MaxItems(1) & [...#grpc_tls_health_check]])
+		http2_health_check?: matchN(1, [#http2_health_check, list.MaxItems(1) & [...#http2_health_check]])
+		http_health_check?: matchN(1, [#http_health_check, list.MaxItems(1) & [...#http_health_check]])
+		https_health_check?: matchN(1, [#https_health_check, list.MaxItems(1) & [...#https_health_check]])
+		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
+		ssl_health_check?: matchN(1, [#ssl_health_check, list.MaxItems(1) & [...#ssl_health_check]])
+		tcp_health_check?: matchN(1, [#tcp_health_check, list.MaxItems(1) & [...#tcp_health_check]])
+		timeouts?: #timeouts
+
 		// How often (in seconds) to send a health check. The default
 		// value is 5
 		// seconds.
 		check_interval_sec?: number
-		grpc_health_check?: matchN(1, [#grpc_health_check, list.MaxItems(1) & [...#grpc_health_check]])
 
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
@@ -28,10 +37,7 @@ import "list"
 		// many
 		// consecutive successes. The default value is 2.
 		healthy_threshold?: number
-		grpc_tls_health_check?: matchN(1, [#grpc_tls_health_check, list.MaxItems(1) & [...#grpc_tls_health_check]])
-		http2_health_check?: matchN(1, [#http2_health_check, list.MaxItems(1) & [...#http2_health_check]])
-		http_health_check?: matchN(1, [#http_health_check, list.MaxItems(1) & [...#http_health_check]])
-		id?: string
+		id?:                string
 
 		// Name of the resource. Provided by the client when the resource
 		// is
@@ -45,13 +51,8 @@ import "list"
 		// characters must be a dash, lowercase letter, or digit, except
 		// the
 		// last character, which cannot be a dash.
-		name!: string
-		https_health_check?: matchN(1, [#https_health_check, list.MaxItems(1) & [...#https_health_check]])
-		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		ssl_health_check?: matchN(1, [#ssl_health_check, list.MaxItems(1) & [...#ssl_health_check]])
-		tcp_health_check?: matchN(1, [#tcp_health_check, list.MaxItems(1) & [...#tcp_health_check]])
-		timeouts?: #timeouts
-		project?:  string
+		name!:    string
+		project?: string
 
 		// The Region in which the created health check should reside.
 		// If it is not provided, the provider region is used.

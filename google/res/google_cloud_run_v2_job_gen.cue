@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_run_v2_job")
 	close({
+		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
+		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
+		timeouts?: #timeouts
+
 		// Unstructured key value map that may be set by external tools to
 		// store and arbitrary metadata. They are not queryable and
 		// should be preserved when modifying objects.
@@ -119,9 +123,6 @@ import "list"
 
 		// Email address of the last authenticated modifier.
 		last_modifier?: string
-		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
-		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
-		timeouts?: #timeouts
 
 		// Name of the last created execution.
 		latest_created_execution?: [...close({
@@ -225,6 +226,8 @@ import "list"
 	})
 
 	#template: close({
+		template!: matchN(1, [_#defs."/$defs/template/$defs/template", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/template/$defs/template"]])
+
 		// Unstructured key value map that may be set by external tools to
 		// store and arbitrary metadata. They are not queryable and
 		// should be preserved when modifying objects.
@@ -265,7 +268,6 @@ import "list"
 		// when there are fewer tasks waiting to be completed remaining,
 		// i.e. when the work left to do is less than max parallelism.
 		parallelism?: number
-		template!: matchN(1, [_#defs."/$defs/template/$defs/template", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/template/$defs/template"]])
 
 		// Specifies the desired number of tasks the execution should run.
 		// Setting to 1 means that parallelism is limited to 1 and the
@@ -282,6 +284,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/template": close({
+		containers?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers", [..._#defs."/$defs/template/$defs/template/$defs/containers"]])
+		node_selector?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/node_selector", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/template/$defs/node_selector"]])
+		volumes?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/volumes", [..._#defs."/$defs/template/$defs/template/$defs/volumes"]])
+		vpc_access?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/vpc_access", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/template/$defs/vpc_access"]])
+
 		// A reference to a customer managed encryption key (CMEK) to use
 		// to encrypt this container image. For more information, go to
 		// https://cloud.google.com/run/docs/securing/using-cmek
@@ -305,9 +312,6 @@ import "list"
 		// has. If not provided, the task will use the project's default
 		// service account.
 		service_account?: string
-		containers?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers", [..._#defs."/$defs/template/$defs/template/$defs/containers"]])
-		node_selector?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/node_selector", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/template/$defs/node_selector"]])
-		volumes?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/volumes", [..._#defs."/$defs/template/$defs/template/$defs/volumes"]])
 
 		// Max allowed time duration the Task may be active before the
 		// system will actively try to mark it failed and kill associated
@@ -317,10 +321,15 @@ import "list"
 		// A duration in seconds with up to nine fractional digits, ending
 		// with 's'. Example: "3.5s".
 		timeout?: string
-		vpc_access?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/vpc_access", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/template/$defs/vpc_access"]])
 	})
 
 	_#defs: "/$defs/template/$defs/template/$defs/containers": close({
+		env?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers/$defs/env", [..._#defs."/$defs/template/$defs/template/$defs/containers/$defs/env"]])
+		ports?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers/$defs/ports", [..._#defs."/$defs/template/$defs/template/$defs/containers/$defs/ports"]])
+		resources?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers/$defs/resources", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/template/$defs/containers/$defs/resources"]])
+		startup_probe?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers/$defs/startup_probe", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/template/$defs/containers/$defs/startup_probe"]])
+		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/template/$defs/containers/$defs/volume_mounts"]])
+
 		// Arguments to the entrypoint. The docker image's CMD is used if
 		// this is not provided. Variable references are not supported in
 		// Cloud Run.
@@ -339,16 +348,11 @@ import "list"
 
 		// Names of the containers that must start before this container.
 		depends_on?: [...string]
-		env?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers/$defs/env", [..._#defs."/$defs/template/$defs/template/$defs/containers/$defs/env"]])
 
 		// URL of the Container image in Google Container Registry or
 		// Google Artifact Registry. More info:
 		// https://kubernetes.io/docs/concepts/containers/images
 		image!: string
-		ports?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers/$defs/ports", [..._#defs."/$defs/template/$defs/template/$defs/containers/$defs/ports"]])
-		resources?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers/$defs/resources", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/template/$defs/containers/$defs/resources"]])
-		startup_probe?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers/$defs/startup_probe", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/template/$defs/containers/$defs/startup_probe"]])
-		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/template/$defs/containers/$defs/volume_mounts"]])
 
 		// Name of the container specified as a DNS_LABEL.
 		name?: string
@@ -411,6 +415,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/template/$defs/containers/$defs/startup_probe": close({
+		grpc?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers/$defs/startup_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/template/$defs/containers/$defs/startup_probe/$defs/grpc"]])
+		http_get?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get"]])
+		tcp_socket?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers/$defs/startup_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/template/$defs/containers/$defs/startup_probe/$defs/tcp_socket"]])
+
 		// Minimum consecutive failures for the probe to be considered
 		// failed after
 		// having succeeded. Defaults to 3. Minimum value is 1.
@@ -427,15 +435,12 @@ import "list"
 		// Default to 10 seconds. Minimum value is 1. Maximum value is
 		// 240.
 		period_seconds?: number
-		grpc?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers/$defs/startup_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/template/$defs/containers/$defs/startup_probe/$defs/grpc"]])
-		http_get?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get"]])
 
 		// Number of seconds after which the probe times out.
 		// Defaults to 1 second. Minimum value is 1. Maximum value is
 		// 3600.
 		// Must be smaller than periodSeconds.
 		timeout_seconds?: number
-		tcp_socket?: matchN(1, [_#defs."/$defs/template/$defs/template/$defs/containers/$defs/startup_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/template/$defs/containers/$defs/startup_probe/$defs/tcp_socket"]])
 	})
 
 	_#defs: "/$defs/template/$defs/template/$defs/containers/$defs/startup_probe/$defs/grpc": close({

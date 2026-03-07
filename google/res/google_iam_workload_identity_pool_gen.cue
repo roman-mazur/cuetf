@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_workload_identity_pool")
 	close({
+		timeouts?: #timeouts
+
 		// A description of the pool. Cannot exceed 256 characters.
 		description?: string
 
@@ -38,8 +40,7 @@ package res
 		// use existing tokens to access resources. If the pool is
 		// undeleted, existing tokens grant
 		// access again.
-		state?:    string
-		timeouts?: #timeouts
+		state?: string
 
 		// The ID to use for the pool, which becomes the final component
 		// of the resource name. This

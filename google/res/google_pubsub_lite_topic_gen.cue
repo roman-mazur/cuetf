@@ -6,7 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_pubsub_lite_topic")
 	close({
-		id?: string
+		partition_config?: matchN(1, [#partition_config, list.MaxItems(1) & [...#partition_config]])
+		reservation_config?: matchN(1, [#reservation_config, list.MaxItems(1) & [...#reservation_config]])
+		retention_config?: matchN(1, [#retention_config, list.MaxItems(1) & [...#retention_config]])
+		timeouts?: #timeouts
+		id?:       string
 
 		// Name of the topic.
 		name!:    string
@@ -17,10 +21,6 @@ import "list"
 
 		// The zone of the pubsub lite topic.
 		zone?: string
-		partition_config?: matchN(1, [#partition_config, list.MaxItems(1) & [...#partition_config]])
-		reservation_config?: matchN(1, [#reservation_config, list.MaxItems(1) & [...#reservation_config]])
-		retention_config?: matchN(1, [#retention_config, list.MaxItems(1) & [...#retention_config]])
-		timeouts?: #timeouts
 	})
 
 	#partition_config: close({

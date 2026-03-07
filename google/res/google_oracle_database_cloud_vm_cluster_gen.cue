@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_oracle_database_cloud_vm_cluster")
 	close({
+		properties?: matchN(1, [#properties, list.MaxItems(1) & [...#properties]])
+		timeouts?: #timeouts
+
 		// The name of the backup OdbSubnet associated with the VM
 		// Cluster.
 		// Format:
@@ -62,8 +65,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		properties?: matchN(1, [#properties, list.MaxItems(1) & [...#properties]])
-		timeouts?: #timeouts
 
 		// Resource ID segment making up resource 'name'. See
 		// documentation for resource type
@@ -99,6 +100,9 @@ import "list"
 	})
 
 	#properties: close({
+		diagnostics_data_collection_options?: matchN(1, [_#defs."/$defs/properties/$defs/diagnostics_data_collection_options", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/diagnostics_data_collection_options"]])
+		time_zone?: matchN(1, [_#defs."/$defs/properties/$defs/time_zone", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/time_zone"]])
+
 		// OCI Cluster name.
 		cluster_name?: string
 
@@ -160,8 +164,6 @@ import "list"
 
 		// Deep link to the OCI console to view this resource.
 		oci_url?: string
-		diagnostics_data_collection_options?: matchN(1, [_#defs."/$defs/properties/$defs/diagnostics_data_collection_options", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/diagnostics_data_collection_options"]])
-		time_zone?: matchN(1, [_#defs."/$defs/properties/$defs/time_zone", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/time_zone"]])
 
 		// Oracle Cloud Infrastructure ID of VM Cluster.
 		ocid?: string

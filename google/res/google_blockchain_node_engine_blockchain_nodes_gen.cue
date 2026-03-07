@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_blockchain_node_engine_blockchain_nodes")
 	close({
+		ethereum_details?: matchN(1, [#ethereum_details, list.MaxItems(1) & [...#ethereum_details]])
+		timeouts?: #timeouts
+
 		// ID of the requesting object.
 		blockchain_node_id!: string
 
@@ -42,13 +45,11 @@ import "list"
 
 		// Location of Blockchain Node being created.
 		location!: string
-		ethereum_details?: matchN(1, [#ethereum_details, list.MaxItems(1) & [...#ethereum_details]])
 
 		// The fully qualified name of the blockchain node. e.g.
 		// projects/my-project/locations/us-central1/blockchainNodes/my-node.
-		name?:     string
-		project?:  string
-		timeouts?: #timeouts
+		name?:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -59,6 +60,9 @@ import "list"
 	})
 
 	#ethereum_details: close({
+		geth_details?: matchN(1, [_#defs."/$defs/ethereum_details/$defs/geth_details", list.MaxItems(1) & [..._#defs."/$defs/ethereum_details/$defs/geth_details"]])
+		validator_config?: matchN(1, [_#defs."/$defs/ethereum_details/$defs/validator_config", list.MaxItems(1) & [..._#defs."/$defs/ethereum_details/$defs/validator_config"]])
+
 		// User-provided key-value pairs
 		additional_endpoints?: [...close({
 			beacon_api_endpoint?:                              string
@@ -81,8 +85,6 @@ import "list"
 		// The execution client Possible values:
 		// ["EXECUTION_CLIENT_UNSPECIFIED", "GETH", "ERIGON"]
 		execution_client?: string
-		geth_details?: matchN(1, [_#defs."/$defs/ethereum_details/$defs/geth_details", list.MaxItems(1) & [..._#defs."/$defs/ethereum_details/$defs/geth_details"]])
-		validator_config?: matchN(1, [_#defs."/$defs/ethereum_details/$defs/validator_config", list.MaxItems(1) & [..._#defs."/$defs/ethereum_details/$defs/validator_config"]])
 
 		// The Ethereum environment being accessed. Possible values:
 		// ["MAINNET", "TESTNET_GOERLI_PRATER", "TESTNET_SEPOLIA"]

@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_security_action")
 	close({
+		allow?: matchN(1, [#allow, list.MaxItems(1) & [...#allow]])
+		condition_config!: matchN(1, [#condition_config, list.MaxItems(1) & [_, ...] & [...#condition_config]])
+		deny?: matchN(1, [#deny, list.MaxItems(1) & [...#deny]])
+		flag?: matchN(1, [#flag, list.MaxItems(1) & [...#flag]])
+		timeouts?: #timeouts
+
 		// If unset, this would apply to all proxies in the environment.
 		// If set, this action is enforced only if at least one proxy in
 		// the repeated
@@ -39,21 +45,16 @@ import "list"
 		// "2014-10-02T15:01:23.045123456Z" or
 		// "2014-10-02T15:01:23+05:30".
 		expire_time?: string
+		id?:          string
 
 		// The organization that this security action applies to.
 		org_id!: string
-		id?:     string
-		allow?: matchN(1, [#allow, list.MaxItems(1) & [...#allow]])
 
 		// The ID to use for the SecurityAction, which will become the
 		// final component of the action's resource name.
 		// This value should be 0-61 characters, and valid format is
 		// (^a-z?$).
 		security_action_id!: string
-		condition_config!: matchN(1, [#condition_config, list.MaxItems(1) & [_, ...] & [...#condition_config]])
-		deny?: matchN(1, [#deny, list.MaxItems(1) & [...#deny]])
-		flag?: matchN(1, [#flag, list.MaxItems(1) & [...#flag]])
-		timeouts?: #timeouts
 
 		// Only an ENABLED SecurityAction is enforced. An ENABLED
 		// SecurityAction past its expiration time will not be enforced.

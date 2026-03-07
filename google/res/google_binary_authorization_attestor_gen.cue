@@ -6,17 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_binary_authorization_attestor")
 	close({
+		attestation_authority_note!: matchN(1, [#attestation_authority_note, list.MaxItems(1) & [_, ...] & [...#attestation_authority_note]])
+		timeouts?: #timeouts
+
 		// A descriptive comment. This field may be updated. The field may
 		// be
 		// displayed in chooser dialogs.
 		description?: string
+		id?:          string
 
 		// The resource name.
-		name!: string
-		id?:   string
-		attestation_authority_note!: matchN(1, [#attestation_authority_note, list.MaxItems(1) & [_, ...] & [...#attestation_authority_note]])
-		timeouts?: #timeouts
-		project?:  string
+		name!:    string
+		project?: string
 	})
 
 	#attestation_authority_note: close({
@@ -58,6 +59,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/attestation_authority_note/$defs/public_keys": close({
+		pkix_public_key?: matchN(1, [_#defs."/$defs/attestation_authority_note/$defs/public_keys/$defs/pkix_public_key", list.MaxItems(1) & [..._#defs."/$defs/attestation_authority_note/$defs/public_keys/$defs/pkix_public_key"]])
+
 		// ASCII-armored representation of a PGP public key, as the
 		// entire output by the command
 		// 'gpg --export --armor foo@example.com' (either LF or CRLF
@@ -68,7 +71,6 @@ import "list"
 		// upper-case hex. If id is provided by the caller, it will
 		// be overwritten by the API-calculated ID.
 		ascii_armored_pgp_public_key?: string
-		pkix_public_key?: matchN(1, [_#defs."/$defs/attestation_authority_note/$defs/public_keys/$defs/pkix_public_key", list.MaxItems(1) & [..._#defs."/$defs/attestation_authority_note/$defs/public_keys/$defs/pkix_public_key"]])
 
 		// A descriptive comment. This field may be updated.
 		comment?: string

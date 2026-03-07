@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_ssl_certificate")
 	close({
+		timeouts?: #timeouts
+
 		// The certificate in PEM format.
 		// The certificate chain must be no greater than 5 certs long.
 		// The chain must include at least one intermediate cert.
@@ -59,7 +61,6 @@ package res
 		// reside.
 		// If it is not provided, the provider region is used.
 		region?:    string
-		timeouts?:  #timeouts
 		self_link?: string
 	})
 

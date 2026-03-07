@@ -152,6 +152,9 @@ package data
 			rbacrolebindingactuation?: [...close({
 				allowed_custom_roles?: [...string]
 			})]
+			workloadidentity?: [...close({
+				scope_tenancy_pool?: string
+			})]
 		})]
 
 		// Output only. The Hub-wide Feature state

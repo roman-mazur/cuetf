@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_management_vpc_flow_logs_config")
 	close({
+		timeouts?: #timeouts
+
 		// Optional. The aggregation interval for the logs. Default value
 		// is
 		// INTERVAL_5_SEC. Possible values:
@@ -82,9 +84,8 @@ package res
 		// Traffic will be logged from VMs, VPN tunnels and Interconnect
 		// Attachments within the network. Format:
 		// projects/{project_id}/global/networks/{name}
-		network?:  string
-		timeouts?: #timeouts
-		project?:  string
+		network?: string
+		project?: string
 
 		// Optional. The state of the VPC Flow Log configuration. Default
 		// value

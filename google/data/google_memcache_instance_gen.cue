@@ -36,6 +36,7 @@ package data
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Resource labels to represent user-provided metadata.
 		//
@@ -45,7 +46,6 @@ package data
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Maintenance policy for an instance.
 		maintenance_policy?: [...close({

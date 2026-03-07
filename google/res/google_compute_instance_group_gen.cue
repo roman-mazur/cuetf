@@ -4,14 +4,17 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_instance_group")
 	close({
+		named_port?: matchN(1, [#named_port, [...#named_port]])
+		timeouts?: #timeouts
+
 		// An optional textual description of the instance group.
 		description?: string
+		id?:          string
 
 		// The list of instances in the group, in self_link format. When
 		// adding instances they must all be in the same network and zone
 		// as the instance group.
 		instances?: [...string]
-		id?: string
 
 		// The name of the instance group. Must be 1-63 characters long
 		// and comply with RFC1035. Supported characters include
@@ -31,8 +34,6 @@ package res
 
 		// The URI of the created resource.
 		self_link?: string
-		named_port?: matchN(1, [#named_port, [...#named_port]])
-		timeouts?: #timeouts
 
 		// The number of instances in the group.
 		size?: number

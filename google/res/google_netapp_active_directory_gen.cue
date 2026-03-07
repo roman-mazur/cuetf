@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_active_directory")
 	close({
+		timeouts?: #timeouts
+
 		// Domain user accounts to be added to the local Administrators
 		// group of the SMB service. Comma-separated list of domain users
 		// or groups. The Domain Admin group is automatically added when
@@ -71,8 +73,7 @@ package res
 
 		// The resource name of the Active Directory pool. Needs to be
 		// unique per location.
-		name!:     string
-		timeouts?: #timeouts
+		name!: string
 
 		// NetBIOS name prefix of the server to be created.
 		// A five-character random ID is generated automatically, for

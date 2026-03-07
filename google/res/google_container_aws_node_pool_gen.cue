@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_aws_node_pool")
 	close({
+		autoscaling!: matchN(1, [#autoscaling, list.MaxItems(1) & [_, ...] & [...#autoscaling]])
+		config!: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
+		kubelet_config?: matchN(1, [#kubelet_config, list.MaxItems(1) & [...#kubelet_config]])
+		management?: matchN(1, [#management, list.MaxItems(1) & [...#management]])
+		max_pods_constraint!: matchN(1, [#max_pods_constraint, list.MaxItems(1) & [_, ...] & [...#max_pods_constraint]])
+		timeouts?: #timeouts
+		update_settings?: matchN(1, [#update_settings, list.MaxItems(1) & [...#update_settings]])
+
 		// Optional. Annotations on the node pool. This field has the same
 		// restrictions as Kubernetes annotations. The total size of all
 		// keys and values combined is limited to 256k. Key can have 2
@@ -20,7 +28,6 @@ import "list"
 		// Please refer to the field `effective_annotations` for all of
 		// the annotations present on the resource.
 		annotations?: [string]: string
-		autoscaling!: matchN(1, [#autoscaling, list.MaxItems(1) & [_, ...] & [...#autoscaling]])
 
 		// The awsCluster for the resource
 		cluster!: string
@@ -38,6 +45,7 @@ import "list"
 		// delete requests to ensure the client has an up-to-date value
 		// before proceeding.
 		etag?: string
+		id?:   string
 
 		// The location for the resource
 		location!: string
@@ -47,22 +55,15 @@ import "list"
 
 		// The project for the resource
 		project?: string
-		id?:      string
 
 		// Output only. If set, there are currently changes in flight to
 		// the node pool.
 		reconciling?: bool
-		config!: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
 
 		// Output only. The lifecycle state of the node pool. Possible
 		// values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
 		// STOPPING, ERROR, DEGRADED
 		state?: string
-		kubelet_config?: matchN(1, [#kubelet_config, list.MaxItems(1) & [...#kubelet_config]])
-		management?: matchN(1, [#management, list.MaxItems(1) & [...#management]])
-		max_pods_constraint!: matchN(1, [#max_pods_constraint, list.MaxItems(1) & [_, ...] & [...#max_pods_constraint]])
-		timeouts?: #timeouts
-		update_settings?: matchN(1, [#update_settings, list.MaxItems(1) & [...#update_settings]])
 
 		// The subnet where the node pool node run.
 		subnet_id!: string
@@ -90,9 +91,15 @@ import "list"
 	})
 
 	#config: close({
+		autoscaling_metrics_collection?: matchN(1, [_#defs."/$defs/config/$defs/autoscaling_metrics_collection", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/autoscaling_metrics_collection"]])
+		config_encryption!: matchN(1, [_#defs."/$defs/config/$defs/config_encryption", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/config_encryption"]])
+		proxy_config?: matchN(1, [_#defs."/$defs/config/$defs/proxy_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/proxy_config"]])
+		root_volume?: matchN(1, [_#defs."/$defs/config/$defs/root_volume", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/root_volume"]])
+		ssh_config?: matchN(1, [_#defs."/$defs/config/$defs/ssh_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/ssh_config"]])
+		taints?: matchN(1, [_#defs."/$defs/config/$defs/taints", [..._#defs."/$defs/config/$defs/taints"]])
+
 		// The name of the AWS IAM role assigned to nodes in the pool.
 		iam_instance_profile!: string
-		autoscaling_metrics_collection?: matchN(1, [_#defs."/$defs/config/$defs/autoscaling_metrics_collection", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/autoscaling_metrics_collection"]])
 
 		// Optional. The AWS instance type. When unspecified, it defaults
 		// to `m5.large`.
@@ -102,16 +109,11 @@ import "list"
 		// pool. An object containing a list of "key": value pairs.
 		// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 		labels?: [string]: string
-		config_encryption!: matchN(1, [_#defs."/$defs/config/$defs/config_encryption", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/config_encryption"]])
-		proxy_config?: matchN(1, [_#defs."/$defs/config/$defs/proxy_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/proxy_config"]])
-		root_volume?: matchN(1, [_#defs."/$defs/config/$defs/root_volume", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/root_volume"]])
 
 		// Optional. The IDs of additional security groups to add to nodes
 		// in this pool. The manager will automatically create security
 		// groups with minimum rules needed for a functioning cluster.
 		security_group_ids?: [...string]
-		ssh_config?: matchN(1, [_#defs."/$defs/config/$defs/ssh_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/ssh_config"]])
-		taints?: matchN(1, [_#defs."/$defs/config/$defs/taints", [..._#defs."/$defs/config/$defs/taints"]])
 
 		// Optional. Key/value metadata to assign to each underlying AWS
 		// resource. Specify at most 50 pairs containing alphanumerics,

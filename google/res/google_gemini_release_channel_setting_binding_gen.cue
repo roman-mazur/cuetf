@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gemini_release_channel_setting_binding")
 	close({
+		timeouts?: #timeouts
+
 		// Create time stamp.
 		create_time?: string
 
@@ -39,7 +41,6 @@ package res
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		release_channel_setting_id!: string
-		timeouts?:                   #timeouts
 
 		// Id of the setting binding.
 		setting_binding_id!: string

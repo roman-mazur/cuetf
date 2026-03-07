@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_toolset")
 	close({
+		mcp_toolset?: matchN(1, [#mcp_toolset, list.MaxItems(1) & [...#mcp_toolset]])
+		open_api_toolset?: matchN(1, [#open_api_toolset, list.MaxItems(1) & [...#open_api_toolset]])
+		timeouts?: #timeouts
+
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
@@ -38,9 +42,6 @@ import "list"
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		location!: string
-		mcp_toolset?: matchN(1, [#mcp_toolset, list.MaxItems(1) & [...#mcp_toolset]])
-		open_api_toolset?: matchN(1, [#open_api_toolset, list.MaxItems(1) & [...#open_api_toolset]])
-		timeouts?: #timeouts
 
 		// Identifier. The unique identifier of the toolset.
 		// Format:
@@ -76,11 +77,14 @@ import "list"
 	})
 
 	#open_api_toolset: close({
+		api_authentication?: matchN(1, [_#defs."/$defs/open_api_toolset/$defs/api_authentication", list.MaxItems(1) & [..._#defs."/$defs/open_api_toolset/$defs/api_authentication"]])
+		service_directory_config?: matchN(1, [_#defs."/$defs/open_api_toolset/$defs/service_directory_config", list.MaxItems(1) & [..._#defs."/$defs/open_api_toolset/$defs/service_directory_config"]])
+		tls_config?: matchN(1, [_#defs."/$defs/open_api_toolset/$defs/tls_config", list.MaxItems(1) & [..._#defs."/$defs/open_api_toolset/$defs/tls_config"]])
+
 		// If true, the agent will ignore unknown fields in the API
 		// response for all
 		// operations defined in the OpenAPI schema.
 		ignore_unknown_fields?: bool
-		api_authentication?: matchN(1, [_#defs."/$defs/open_api_toolset/$defs/api_authentication", list.MaxItems(1) & [..._#defs."/$defs/open_api_toolset/$defs/api_authentication"]])
 
 		// The OpenAPI schema of the toolset.
 		open_api_schema!: string
@@ -94,8 +98,6 @@ import "list"
 		// and the schema has the $env_var placeholder,
 		// it will replace the placeholder in the schema.
 		url?: string
-		service_directory_config?: matchN(1, [_#defs."/$defs/open_api_toolset/$defs/service_directory_config", list.MaxItems(1) & [..._#defs."/$defs/open_api_toolset/$defs/service_directory_config"]])
-		tls_config?: matchN(1, [_#defs."/$defs/open_api_toolset/$defs/tls_config", list.MaxItems(1) & [..._#defs."/$defs/open_api_toolset/$defs/tls_config"]])
 	})
 
 	#timeouts: close({

@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_search_engine")
 	close({
+		common_config?: matchN(1, [#common_config, list.MaxItems(1) & [...#common_config]])
+		knowledge_graph_config?: matchN(1, [#knowledge_graph_config, list.MaxItems(1) & [...#knowledge_graph_config]])
+		search_engine_config!: matchN(1, [#search_engine_config, list.MaxItems(1) & [_, ...] & [...#search_engine_config]])
+		timeouts?: #timeouts
+
 		// This is the application type this engine resource represents.
 		// The supported values: 'APP_TYPE_UNSPECIFIED',
 		// 'APP_TYPE_INTRANET'.
@@ -45,10 +50,6 @@ import "list"
 		// engine. Default value: "GENERIC" Possible values: ["GENERIC",
 		// "MEDIA", "HEALTHCARE_FHIR"]
 		industry_vertical?: string
-		common_config?: matchN(1, [#common_config, list.MaxItems(1) & [...#common_config]])
-		knowledge_graph_config?: matchN(1, [#knowledge_graph_config, list.MaxItems(1) & [...#knowledge_graph_config]])
-		search_engine_config!: matchN(1, [#search_engine_config, list.MaxItems(1) & [_, ...] & [...#search_engine_config]])
-		timeouts?: #timeouts
 
 		// The KMS key to be used to protect this Engine at creation time.
 		//
@@ -86,9 +87,10 @@ import "list"
 	})
 
 	#knowledge_graph_config: close({
+		feature_config?: matchN(1, [_#defs."/$defs/knowledge_graph_config/$defs/feature_config", list.MaxItems(1) & [..._#defs."/$defs/knowledge_graph_config/$defs/feature_config"]])
+
 		// Specify entity types to support.
 		cloud_knowledge_graph_types?: [...string]
-		feature_config?: matchN(1, [_#defs."/$defs/knowledge_graph_config/$defs/feature_config", list.MaxItems(1) & [..._#defs."/$defs/knowledge_graph_config/$defs/feature_config"]])
 
 		// Whether to enable the Cloud Knowledge Graph for the engine.
 		enable_cloud_knowledge_graph?: bool

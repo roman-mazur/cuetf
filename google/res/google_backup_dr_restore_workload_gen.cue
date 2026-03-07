@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_backup_dr_restore_workload")
 	close({
+		compute_instance_restore_properties?: matchN(1, [#compute_instance_restore_properties, list.MaxItems(1) & [...#compute_instance_restore_properties]])
+		compute_instance_target_environment?: matchN(1, [#compute_instance_target_environment, list.MaxItems(1) & [...#compute_instance_target_environment]])
+		disk_restore_properties?: matchN(1, [#disk_restore_properties, list.MaxItems(1) & [...#disk_restore_properties]])
+		disk_target_environment?: matchN(1, [#disk_target_environment, list.MaxItems(1) & [...#disk_target_environment]])
+		region_disk_target_environment?: matchN(1, [#region_disk_target_environment, list.MaxItems(1) & [...#region_disk_target_environment]])
+		timeouts?: #timeouts
+
 		// Required. The ID of the backup to restore from.
 		backup_id!: string
 
@@ -25,15 +32,9 @@ import "list"
 		// leaving the resource active.
 		delete_restored_instance?: bool
 		id?:                       string
-		compute_instance_restore_properties?: matchN(1, [#compute_instance_restore_properties, list.MaxItems(1) & [...#compute_instance_restore_properties]])
-		compute_instance_target_environment?: matchN(1, [#compute_instance_target_environment, list.MaxItems(1) & [...#compute_instance_target_environment]])
-		disk_restore_properties?: matchN(1, [#disk_restore_properties, list.MaxItems(1) & [...#disk_restore_properties]])
-		disk_target_environment?: matchN(1, [#disk_target_environment, list.MaxItems(1) & [...#disk_target_environment]])
-		region_disk_target_environment?: matchN(1, [#region_disk_target_environment, list.MaxItems(1) & [...#region_disk_target_environment]])
 
 		// Required. The location for the backup vault.
 		location!: string
-		timeouts?: #timeouts
 
 		// Optional. An optional request ID to identify requests. Specify
 		// a unique request ID
@@ -54,6 +55,23 @@ import "list"
 	})
 
 	#compute_instance_restore_properties: close({
+		advanced_machine_features?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/advanced_machine_features", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/advanced_machine_features"]])
+		allocation_affinity?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/allocation_affinity", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/allocation_affinity"]])
+		confidential_instance_config?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/confidential_instance_config", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/confidential_instance_config"]])
+		disks?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/disks", [..._#defs."/$defs/compute_instance_restore_properties/$defs/disks"]])
+		display_device?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/display_device", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/display_device"]])
+		guest_accelerators?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/guest_accelerators", [..._#defs."/$defs/compute_instance_restore_properties/$defs/guest_accelerators"]])
+		instance_encryption_key?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/instance_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/instance_encryption_key"]])
+		labels?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/labels", [..._#defs."/$defs/compute_instance_restore_properties/$defs/labels"]])
+		metadata?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/metadata", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/metadata"]])
+		network_interfaces?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/network_interfaces", [..._#defs."/$defs/compute_instance_restore_properties/$defs/network_interfaces"]])
+		network_performance_config?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/network_performance_config", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/network_performance_config"]])
+		params?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/params", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/params"]])
+		scheduling?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/scheduling", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/scheduling"]])
+		service_accounts?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/service_accounts", [..._#defs."/$defs/compute_instance_restore_properties/$defs/service_accounts"]])
+		shielded_instance_config?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/shielded_instance_config"]])
+		tags?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/tags", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/tags"]])
+
 		// Optional. Allows this instance to send and receive packets with
 		// non-matching destination or source IPs.
 		can_ip_forward?: bool
@@ -72,7 +90,6 @@ import "list"
 		// values: ["KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED", "NONE",
 		// "STOP"]
 		key_revocation_action_type?: string
-		advanced_machine_features?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/advanced_machine_features", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/advanced_machine_features"]])
 
 		// Optional. Full or partial URL of the machine type resource to
 		// use for this instance.
@@ -80,21 +97,6 @@ import "list"
 
 		// Optional. Minimum CPU platform to use for this instance.
 		min_cpu_platform?: string
-		allocation_affinity?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/allocation_affinity", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/allocation_affinity"]])
-		confidential_instance_config?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/confidential_instance_config", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/confidential_instance_config"]])
-		disks?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/disks", [..._#defs."/$defs/compute_instance_restore_properties/$defs/disks"]])
-		display_device?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/display_device", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/display_device"]])
-		guest_accelerators?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/guest_accelerators", [..._#defs."/$defs/compute_instance_restore_properties/$defs/guest_accelerators"]])
-		instance_encryption_key?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/instance_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/instance_encryption_key"]])
-		labels?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/labels", [..._#defs."/$defs/compute_instance_restore_properties/$defs/labels"]])
-		metadata?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/metadata", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/metadata"]])
-		network_interfaces?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/network_interfaces", [..._#defs."/$defs/compute_instance_restore_properties/$defs/network_interfaces"]])
-		network_performance_config?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/network_performance_config", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/network_performance_config"]])
-		params?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/params", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/params"]])
-		scheduling?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/scheduling", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/scheduling"]])
-		service_accounts?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/service_accounts", [..._#defs."/$defs/compute_instance_restore_properties/$defs/service_accounts"]])
-		shielded_instance_config?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/shielded_instance_config"]])
-		tags?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/tags", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/tags"]])
 
 		// Required. Name of the compute instance.
 		name!: string
@@ -120,6 +122,11 @@ import "list"
 	})
 
 	#disk_restore_properties: close({
+		disk_encryption_key?: matchN(1, [_#defs."/$defs/disk_restore_properties/$defs/disk_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/disk_restore_properties/$defs/disk_encryption_key"]])
+		guest_os_feature?: matchN(1, [_#defs."/$defs/disk_restore_properties/$defs/guest_os_feature", [..._#defs."/$defs/disk_restore_properties/$defs/guest_os_feature"]])
+		labels?: matchN(1, [_#defs."/$defs/disk_restore_properties/$defs/labels", [..._#defs."/$defs/disk_restore_properties/$defs/labels"]])
+		resource_manager_tags?: matchN(1, [_#defs."/$defs/disk_restore_properties/$defs/resource_manager_tags", [..._#defs."/$defs/disk_restore_properties/$defs/resource_manager_tags"]])
+
 		// Optional. The access mode of the disk. Possible values:
 		// ["READ_WRITE_SINGLE", "READ_WRITE_MANY", "READ_ONLY_MANY"]
 		access_mode?: string
@@ -147,10 +154,6 @@ import "list"
 
 		// Optional. Indicates how many IOPS to provision for the disk.
 		provisioned_iops?: number
-		disk_encryption_key?: matchN(1, [_#defs."/$defs/disk_restore_properties/$defs/disk_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/disk_restore_properties/$defs/disk_encryption_key"]])
-		guest_os_feature?: matchN(1, [_#defs."/$defs/disk_restore_properties/$defs/guest_os_feature", [..._#defs."/$defs/disk_restore_properties/$defs/guest_os_feature"]])
-		labels?: matchN(1, [_#defs."/$defs/disk_restore_properties/$defs/labels", [..._#defs."/$defs/disk_restore_properties/$defs/labels"]])
-		resource_manager_tags?: matchN(1, [_#defs."/$defs/disk_restore_properties/$defs/resource_manager_tags", [..._#defs."/$defs/disk_restore_properties/$defs/resource_manager_tags"]])
 
 		// Optional. Indicates how much throughput to provision for the
 		// disk.
@@ -226,6 +229,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/compute_instance_restore_properties/$defs/disks": close({
+		disk_encryption_key?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/disks/$defs/disk_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/disks/$defs/disk_encryption_key"]])
+		guest_os_feature?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/disks/$defs/guest_os_feature", [..._#defs."/$defs/compute_instance_restore_properties/$defs/disks/$defs/guest_os_feature"]])
+		initialize_params?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/disks/$defs/initialize_params", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/disks/$defs/initialize_params"]])
+
 		// Optional. Specifies whether the disk will be auto-deleted when
 		// the instance is deleted.
 		auto_delete?: bool
@@ -253,9 +260,6 @@ import "list"
 
 		// Optional. Type of the resource.
 		kind?: string
-		disk_encryption_key?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/disks/$defs/disk_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/disks/$defs/disk_encryption_key"]])
-		guest_os_feature?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/disks/$defs/guest_os_feature", [..._#defs."/$defs/compute_instance_restore_properties/$defs/disks/$defs/guest_os_feature"]])
-		initialize_params?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/disks/$defs/initialize_params", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/disks/$defs/initialize_params"]])
 
 		// Optional. Any valid publicly visible licenses.
 		license?: [...string]
@@ -350,6 +354,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/compute_instance_restore_properties/$defs/network_interfaces": close({
+		access_configs?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/network_interfaces/$defs/access_configs", [..._#defs."/$defs/compute_instance_restore_properties/$defs/network_interfaces/$defs/access_configs"]])
+		alias_ip_ranges?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/network_interfaces/$defs/alias_ip_ranges", [..._#defs."/$defs/compute_instance_restore_properties/$defs/network_interfaces/$defs/alias_ip_ranges"]])
+		ipv6_access_configs?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/network_interfaces/$defs/ipv6_access_configs", [..._#defs."/$defs/compute_instance_restore_properties/$defs/network_interfaces/$defs/ipv6_access_configs"]])
+
 		// Optional. The prefix length of the primary internal IPv6 range.
 		internal_ipv6_prefix_length?: number
 
@@ -373,9 +381,6 @@ import "list"
 		// "GVNIC"]
 		nic_type?:    string
 		queue_count?: number
-		access_configs?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/network_interfaces/$defs/access_configs", [..._#defs."/$defs/compute_instance_restore_properties/$defs/network_interfaces/$defs/access_configs"]])
-		alias_ip_ranges?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/network_interfaces/$defs/alias_ip_ranges", [..._#defs."/$defs/compute_instance_restore_properties/$defs/network_interfaces/$defs/alias_ip_ranges"]])
-		ipv6_access_configs?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/network_interfaces/$defs/ipv6_access_configs", [..._#defs."/$defs/compute_instance_restore_properties/$defs/network_interfaces/$defs/ipv6_access_configs"]])
 
 		// Possible values: ["STACK_TYPE_UNSPECIFIED", "IPV4_ONLY",
 		// "IPV4_IPV6"]
@@ -386,22 +391,22 @@ import "list"
 	})
 
 	_#defs: "/$defs/compute_instance_restore_properties/$defs/network_interfaces/$defs/access_configs": close({
-		external_ip?: string
+		external_ip?:                 string
+		external_ipv6?:               string
+		external_ipv6_prefix_length?: number
 
 		// Optional. The name of this access configuration.
 		name?: string
 
 		// Possible values: ["NETWORK_TIER_UNSPECIFIED", "PREMIUM",
 		// "STANDARD"]
-		network_tier?:                string
-		external_ipv6?:               string
-		external_ipv6_prefix_length?: number
+		network_tier?:           string
+		public_ptr_domain_name?: string
+		set_public_ptr?:         bool
 
 		// Optional. The type of configuration. Possible values:
 		// ["ACCESS_TYPE_UNSPECIFIED", "ONE_TO_ONE_NAT", "DIRECT_IPV6"]
-		type?:                   string
-		public_ptr_domain_name?: string
-		set_public_ptr?:         bool
+		type?: string
 	})
 
 	_#defs: "/$defs/compute_instance_restore_properties/$defs/network_interfaces/$defs/alias_ip_ranges": close({
@@ -410,22 +415,22 @@ import "list"
 	})
 
 	_#defs: "/$defs/compute_instance_restore_properties/$defs/network_interfaces/$defs/ipv6_access_configs": close({
-		external_ip?: string
+		external_ip?:                 string
+		external_ipv6?:               string
+		external_ipv6_prefix_length?: number
 
 		// Optional. The name of this access configuration.
 		name?: string
 
 		// Possible values: ["NETWORK_TIER_UNSPECIFIED", "PREMIUM",
 		// "STANDARD"]
-		network_tier?:                string
-		external_ipv6?:               string
-		external_ipv6_prefix_length?: number
+		network_tier?:           string
+		public_ptr_domain_name?: string
+		set_public_ptr?:         bool
 
 		// Optional. The type of configuration. Possible values:
 		// ["ACCESS_TYPE_UNSPECIFIED", "ONE_TO_ONE_NAT", "DIRECT_IPV6"]
-		type?:                   string
-		public_ptr_domain_name?: string
-		set_public_ptr?:         bool
+		type?: string
 	})
 
 	_#defs: "/$defs/compute_instance_restore_properties/$defs/network_performance_config": close({
@@ -443,23 +448,24 @@ import "list"
 	})
 
 	_#defs: "/$defs/compute_instance_restore_properties/$defs/scheduling": close({
+		local_ssd_recovery_timeout?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/scheduling/$defs/local_ssd_recovery_timeout", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/scheduling/$defs/local_ssd_recovery_timeout"]])
+		max_run_duration?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/scheduling/$defs/max_run_duration", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/scheduling/$defs/max_run_duration"]])
+		node_affinities?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/scheduling/$defs/node_affinities", [..._#defs."/$defs/compute_instance_restore_properties/$defs/scheduling/$defs/node_affinities"]])
+		automatic_restart?: bool
+
 		// Possible values: ["INSTANCE_TERMINATION_ACTION_UNSPECIFIED",
 		// "DELETE", "STOP"]
 		instance_termination_action?: string
-		local_ssd_recovery_timeout?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/scheduling/$defs/local_ssd_recovery_timeout", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/scheduling/$defs/local_ssd_recovery_timeout"]])
-		automatic_restart?: bool
+		min_node_cpus?:               number
 
 		// Possible values: ["ON_HOST_MAINTENANCE_UNSPECIFIED",
 		// "TERMINATE", "MIGRATE"]
 		on_host_maintenance?: string
-		min_node_cpus?:       number
-		max_run_duration?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/scheduling/$defs/max_run_duration", list.MaxItems(1) & [..._#defs."/$defs/compute_instance_restore_properties/$defs/scheduling/$defs/max_run_duration"]])
-		node_affinities?: matchN(1, [_#defs."/$defs/compute_instance_restore_properties/$defs/scheduling/$defs/node_affinities", [..._#defs."/$defs/compute_instance_restore_properties/$defs/scheduling/$defs/node_affinities"]])
+		preemptible?:         bool
 
 		// Possible values: ["PROVISIONING_MODEL_UNSPECIFIED", "STANDARD",
 		// "SPOT"]
 		provisioning_model?: string
-		preemptible?:        bool
 		termination_time?:   string
 	})
 

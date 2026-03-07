@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apihub_curation")
 	close({
+		endpoint!: matchN(1, [#endpoint, list.MaxItems(1) & [_, ...] & [...#endpoint]])
+		timeouts?: #timeouts
+
 		// The time at which the curation was created.
 		create_time?: string
 
@@ -57,8 +60,6 @@ import "list"
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		location!: string
-		endpoint!: matchN(1, [#endpoint, list.MaxItems(1) & [_, ...] & [...#endpoint]])
-		timeouts?: #timeouts
 
 		// Identifier. The name of the curation.
 		//

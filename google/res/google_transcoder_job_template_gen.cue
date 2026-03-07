@@ -6,14 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_transcoder_job_template")
 	close({
+		config?: matchN(1, [#config, list.MaxItems(1) & [...#config]])
+		timeouts?: #timeouts
+
 		// All of labels (key/value pairs) present on the resource in GCP,
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// ID to use for the Transcoding job template.
 		job_template_id!: string
-		id?:              string
 
 		// The labels associated with this job template. You can use these
 		// to organize and group your job templates.
@@ -27,16 +30,14 @@ import "list"
 
 		// The location of the transcoding job template resource.
 		location!: string
-		config?: matchN(1, [#config, list.MaxItems(1) & [...#config]])
 
 		// The resource name of the job template.
-		name?: string
+		name?:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?:  string
-		timeouts?: #timeouts
 	})
 
 	#config: close({
@@ -108,6 +109,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/config/$defs/elementary_streams/$defs/video_stream/$defs/h264": close({
+		hlg?: matchN(1, [_#defs."/$defs/config/$defs/elementary_streams/$defs/video_stream/$defs/h264/$defs/hlg", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/elementary_streams/$defs/video_stream/$defs/h264/$defs/hlg"]])
+		sdr?: matchN(1, [_#defs."/$defs/config/$defs/elementary_streams/$defs/video_stream/$defs/h264/$defs/sdr", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/elementary_streams/$defs/video_stream/$defs/h264/$defs/sdr"]])
+
 		// The video bitrate in bits per second.
 		bitrate_bps!: number
 
@@ -132,8 +136,6 @@ import "list"
 
 		// Enforces the specified codec preset. The default is 'veryfast'.
 		preset?: string
-		hlg?: matchN(1, [_#defs."/$defs/config/$defs/elementary_streams/$defs/video_stream/$defs/h264/$defs/hlg", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/elementary_streams/$defs/video_stream/$defs/h264/$defs/hlg"]])
-		sdr?: matchN(1, [_#defs."/$defs/config/$defs/elementary_streams/$defs/video_stream/$defs/h264/$defs/sdr", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/elementary_streams/$defs/video_stream/$defs/h264/$defs/sdr"]])
 
 		// Enforces the specified codec profile.
 		profile?: string
@@ -224,6 +226,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/config/$defs/mux_streams": close({
+		segment_settings?: matchN(1, [_#defs."/$defs/config/$defs/mux_streams/$defs/segment_settings", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/mux_streams/$defs/segment_settings"]])
+
 		// The container format. The default is 'mp4'.
 		container?: string
 
@@ -235,7 +239,6 @@ import "list"
 
 		// The name of the generated file.
 		file_name?: string
-		segment_settings?: matchN(1, [_#defs."/$defs/config/$defs/mux_streams/$defs/segment_settings", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/mux_streams/$defs/segment_settings"]])
 
 		// A unique key for this multiplexed stream.
 		key?: string
@@ -262,9 +265,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/config/$defs/overlays/$defs/animations/$defs/animation_fade": close({
+		xy?: matchN(1, [_#defs."/$defs/config/$defs/overlays/$defs/animations/$defs/animation_fade/$defs/xy", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/overlays/$defs/animations/$defs/animation_fade/$defs/xy"]])
+
 		// The time to end the fade animation, in seconds.
 		end_time_offset?: string
-		xy?: matchN(1, [_#defs."/$defs/config/$defs/overlays/$defs/animations/$defs/animation_fade/$defs/xy", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/overlays/$defs/animations/$defs/animation_fade/$defs/xy"]])
 
 		// Required. Type of fade animation: 'FADE_IN' or 'FADE_OUT'.
 		// The possible values are:

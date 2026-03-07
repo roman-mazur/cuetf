@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_active_directory_domain")
 	close({
+		timeouts?: #timeouts
+
 		// The name of delegated administrator account used to perform
 		// Active Directory operations.
 		// If not specified, setupadmin will be used.
@@ -59,7 +61,6 @@ package res
 		// e.g. us-west1 or us-east4 Service supports up to 4 locations at
 		// once. Each location will use a /26 block.
 		locations!: [...string]
-		timeouts?: #timeouts
 
 		// The unique name of the domain using the format:
 		// 'projects/{project}/locations/global/domains/{domainName}'.

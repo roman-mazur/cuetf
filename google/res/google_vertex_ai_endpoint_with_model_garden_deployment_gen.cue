@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_endpoint_with_model_garden_deployment")
 	close({
+		deploy_config?: matchN(1, [#deploy_config, list.MaxItems(1) & [...#deploy_config]])
+		endpoint_config?: matchN(1, [#endpoint_config, list.MaxItems(1) & [...#endpoint_config]])
+		model_config?: matchN(1, [#model_config, list.MaxItems(1) & [...#model_config]])
+		timeouts?: #timeouts
+
 		// Output only. The display name assigned to the model deployed to
 		// the endpoint.
 		// This is not required to delete the resource but is used for
@@ -33,9 +38,7 @@ import "list"
 		// identifies the resource within its parent collection as
 		// described in https://google.aip.dev/122.
 		location!: string
-		deploy_config?: matchN(1, [#deploy_config, list.MaxItems(1) & [...#deploy_config]])
-		endpoint_config?: matchN(1, [#endpoint_config, list.MaxItems(1) & [...#endpoint_config]])
-		model_config?: matchN(1, [#model_config, list.MaxItems(1) & [...#model_config]])
+		project?:  string
 
 		// The Model Garden model to deploy.
 		// Format:
@@ -43,8 +46,6 @@ import "list"
 		// or
 		// 'publishers/hf-{hugging-face-author}/models/{hugging-face-model-name}@001'.
 		publisher_model_name?: string
-		project?:              string
-		timeouts?:             #timeouts
 	})
 
 	#deploy_config: close({
@@ -80,6 +81,8 @@ import "list"
 	})
 
 	#model_config: close({
+		container_spec?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec"]])
+
 		// Whether the user accepts the End User License Agreement (EULA)
 		// for the model.
 		accept_eula?: bool
@@ -94,7 +97,6 @@ import "list"
 		// suitable for
 		// VPC-SC users with limited internet access.
 		hugging_face_cache_enabled?: bool
-		container_spec?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec"]])
 
 		// The user-specified display name of the uploaded model. If not
 		// set, a default name will be used.
@@ -107,6 +109,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/deploy_config/$defs/dedicated_resources": close({
+		autoscaling_metric_specs?: matchN(1, [_#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/autoscaling_metric_specs", [..._#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/autoscaling_metric_specs"]])
+		machine_spec!: matchN(1, [_#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/machine_spec", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/machine_spec"]])
+
 		// The maximum number of replicas that may be deployed on when the
 		// traffic
 		// against it increases. If the requested value is too large, the
@@ -152,8 +157,6 @@ import "list"
 		// If true, schedule the deployment workload on [spot
 		// VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
 		spot?: bool
-		autoscaling_metric_specs?: matchN(1, [_#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/autoscaling_metric_specs", [..._#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/autoscaling_metric_specs"]])
-		machine_spec!: matchN(1, [_#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/machine_spec", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/machine_spec"]])
 	})
 
 	_#defs: "/$defs/deploy_config/$defs/dedicated_resources/$defs/autoscaling_metric_specs": close({
@@ -177,6 +180,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/deploy_config/$defs/dedicated_resources/$defs/machine_spec": close({
+		reservation_affinity?: matchN(1, [_#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/machine_spec/$defs/reservation_affinity", list.MaxItems(1) & [..._#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/machine_spec/$defs/reservation_affinity"]])
+
 		// The number of accelerators to attach to the machine.
 		accelerator_count?: number
 
@@ -215,7 +220,6 @@ import "list"
 
 		// The number of nodes per replica for multihost GPU deployments.
 		multihost_gpu_node_count?: number
-		reservation_affinity?: matchN(1, [_#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/machine_spec/$defs/reservation_affinity", list.MaxItems(1) & [..._#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/machine_spec/$defs/reservation_affinity"]])
 
 		// The topology of the TPUs. Corresponds to the TPU topologies
 		// available from
@@ -247,10 +251,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/endpoint_config/$defs/private_service_connect_config": close({
+		psc_automation_configs?: matchN(1, [_#defs."/$defs/endpoint_config/$defs/private_service_connect_config/$defs/psc_automation_configs", list.MaxItems(1) & [..._#defs."/$defs/endpoint_config/$defs/private_service_connect_config/$defs/psc_automation_configs"]])
+
 		// Required. If true, expose the IndexEndpoint via private service
 		// connect.
 		enable_private_service_connect!: bool
-		psc_automation_configs?: matchN(1, [_#defs."/$defs/endpoint_config/$defs/private_service_connect_config/$defs/psc_automation_configs", list.MaxItems(1) & [..._#defs."/$defs/endpoint_config/$defs/private_service_connect_config/$defs/psc_automation_configs"]])
 
 		// A list of Projects from which the forwarding rule will target
 		// the service attachment.
@@ -288,6 +293,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec": close({
+		env?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/env", [..._#defs."/$defs/model_config/$defs/container_spec/$defs/env"]])
+		grpc_ports?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/grpc_ports", [..._#defs."/$defs/model_config/$defs/container_spec/$defs/grpc_ports"]])
+		health_probe?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe"]])
+		liveness_probe?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe"]])
+		ports?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/ports", [..._#defs."/$defs/model_config/$defs/container_spec/$defs/ports"]])
+		startup_probe?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe"]])
+
 		// Specifies arguments for the command that runs when the
 		// container starts.
 		// This overrides the container's
@@ -452,12 +464,6 @@ import "list"
 		// prediction](https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers)
 		// in this field.
 		image_uri!: string
-		env?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/env", [..._#defs."/$defs/model_config/$defs/container_spec/$defs/env"]])
-		grpc_ports?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/grpc_ports", [..._#defs."/$defs/model_config/$defs/container_spec/$defs/grpc_ports"]])
-		health_probe?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe"]])
-		liveness_probe?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe"]])
-		ports?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/ports", [..._#defs."/$defs/model_config/$defs/container_spec/$defs/ports"]])
-		startup_probe?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe"]])
 
 		// HTTP path on the container to send prediction requests to.
 		// Vertex AI
@@ -528,6 +534,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/health_probe": close({
+		exec?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/exec", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/exec"]])
+		grpc?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/grpc"]])
+		http_get?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/http_get"]])
+		tcp_socket?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/tcp_socket"]])
+
 		// Number of consecutive failures before the probe is considered
 		// failed.
 		// Defaults to 3. Minimum value is 1.
@@ -555,8 +566,6 @@ import "list"
 		//
 		// Maps to Kubernetes probe argument 'successThreshold'.
 		success_threshold?: number
-		exec?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/exec", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/exec"]])
-		grpc?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/grpc"]])
 
 		// Number of seconds after which the probe times out. Defaults to
 		// 1 second.
@@ -564,8 +573,6 @@ import "list"
 		//
 		// Maps to Kubernetes probe argument 'timeoutSeconds'.
 		timeout_seconds?: number
-		http_get?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/http_get"]])
-		tcp_socket?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/tcp_socket"]])
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/exec": close({
@@ -597,6 +604,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/http_get": close({
+		http_headers?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/http_get/$defs/http_headers", [..._#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/http_get/$defs/http_headers"]])
+
 		// Host name to connect to, defaults to the model serving
 		// container's IP.
 		// You probably want to set "Host" in httpHeaders instead.
@@ -608,7 +617,6 @@ import "list"
 		// Number of the port to access on the container.
 		// Number must be in the range 1 to 65535.
 		port?: number
-		http_headers?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/http_get/$defs/http_headers", [..._#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/http_get/$defs/http_headers"]])
 
 		// Scheme to use for connecting to the host.
 		// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
@@ -638,6 +646,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/liveness_probe": close({
+		exec?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/exec", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/exec"]])
+		grpc?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/grpc"]])
+		http_get?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/http_get"]])
+		tcp_socket?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/tcp_socket"]])
+
 		// Number of consecutive failures before the probe is considered
 		// failed.
 		// Defaults to 3. Minimum value is 1.
@@ -665,8 +678,6 @@ import "list"
 		//
 		// Maps to Kubernetes probe argument 'successThreshold'.
 		success_threshold?: number
-		exec?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/exec", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/exec"]])
-		grpc?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/grpc"]])
 
 		// Number of seconds after which the probe times out. Defaults to
 		// 1 second.
@@ -674,8 +685,6 @@ import "list"
 		//
 		// Maps to Kubernetes probe argument 'timeoutSeconds'.
 		timeout_seconds?: number
-		http_get?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/http_get"]])
-		tcp_socket?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/tcp_socket"]])
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/exec": close({
@@ -707,6 +716,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/http_get": close({
+		http_headers?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/http_get/$defs/http_headers", [..._#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/http_get/$defs/http_headers"]])
+
 		// Host name to connect to, defaults to the model serving
 		// container's IP.
 		// You probably want to set "Host" in httpHeaders instead.
@@ -718,7 +729,6 @@ import "list"
 		// Number of the port to access on the container.
 		// Number must be in the range 1 to 65535.
 		port?: number
-		http_headers?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/http_get/$defs/http_headers", [..._#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/http_get/$defs/http_headers"]])
 
 		// Scheme to use for connecting to the host.
 		// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
@@ -754,6 +764,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/startup_probe": close({
+		exec?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/exec", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/exec"]])
+		grpc?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/grpc"]])
+		http_get?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/http_get"]])
+		tcp_socket?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/tcp_socket"]])
+
 		// Number of consecutive failures before the probe is considered
 		// failed.
 		// Defaults to 3. Minimum value is 1.
@@ -781,8 +796,6 @@ import "list"
 		//
 		// Maps to Kubernetes probe argument 'successThreshold'.
 		success_threshold?: number
-		exec?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/exec", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/exec"]])
-		grpc?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/grpc", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/grpc"]])
 
 		// Number of seconds after which the probe times out. Defaults to
 		// 1 second.
@@ -790,8 +803,6 @@ import "list"
 		//
 		// Maps to Kubernetes probe argument 'timeoutSeconds'.
 		timeout_seconds?: number
-		http_get?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/http_get"]])
-		tcp_socket?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/tcp_socket"]])
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/exec": close({
@@ -823,6 +834,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/http_get": close({
+		http_headers?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/http_get/$defs/http_headers", [..._#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/http_get/$defs/http_headers"]])
+
 		// Host name to connect to, defaults to the model serving
 		// container's IP.
 		// You probably want to set "Host" in httpHeaders instead.
@@ -834,7 +847,6 @@ import "list"
 		// Number of the port to access on the container.
 		// Number must be in the range 1 to 65535.
 		port?: number
-		http_headers?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/http_get/$defs/http_headers", [..._#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/http_get/$defs/http_headers"]])
 
 		// Scheme to use for connecting to the host.
 		// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".

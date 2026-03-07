@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_parameter_manager_parameter")
 	close({
+		timeouts?: #timeouts
+
 		// The time at which the Parameter was created.
 		create_time?: string
 
@@ -58,8 +60,7 @@ package res
 			iam_policy_name_principal?: string
 			iam_policy_uid_principal?:  string
 		})]
-		timeouts?: #timeouts
-		project?:  string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

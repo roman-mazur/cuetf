@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_network_firewall_policy_rule")
 	close({
+		match!: matchN(1, [#match, list.MaxItems(1) & [_, ...] & [...#match]])
+		target_secure_tags?: matchN(1, [#target_secure_tags, [...#target_secure_tags]])
+		timeouts?: #timeouts
+
 		// The Action to perform when the client connection triggers the
 		// rule. Valid actions are "allow", "deny", "goto_next" and
 		// "apply_security_profile_group".
@@ -49,9 +53,6 @@ import "list"
 		// the highest priority and 2147483647 is the lowest prority.
 		priority!: number
 		project?:  string
-		match!: matchN(1, [#match, list.MaxItems(1) & [_, ...] & [...#match]])
-		target_secure_tags?: matchN(1, [#target_secure_tags, [...#target_secure_tags]])
-		timeouts?: #timeouts
 
 		// The location of this resource.
 		region?: string
@@ -84,6 +85,9 @@ import "list"
 	})
 
 	#match: close({
+		layer4_configs!: matchN(1, [_#defs."/$defs/match/$defs/layer4_configs", [_, ...] & [..._#defs."/$defs/match/$defs/layer4_configs"]])
+		src_secure_tags?: matchN(1, [_#defs."/$defs/match/$defs/src_secure_tags", [..._#defs."/$defs/match/$defs/src_secure_tags"]])
+
 		// Address groups which should be matched against the traffic
 		// destination. Maximum number of destination address groups is
 		// 10.
@@ -97,6 +101,11 @@ import "list"
 		// CIDR IP address range. Maximum number of destination CIDR IP
 		// ranges allowed is 5000.
 		dest_ip_ranges?: [...string]
+
+		// Network context of the traffic destination. Possible values:
+		// ["UNSPECIFIED", "INTERNET", "INTRA_VPC", "NON_INTERNET",
+		// "VPC_NETWORKS"]
+		dest_network_context?: string
 
 		// Region codes whose IP addresses will be used to match for
 		// destination of traffic. Should be specified as 2 letter
@@ -116,12 +125,19 @@ import "list"
 		// against traffic source. Maximum number of source fqdn allowed
 		// is 100.
 		src_fqdns?: [...string]
-		layer4_configs!: matchN(1, [_#defs."/$defs/match/$defs/layer4_configs", [_, ...] & [..._#defs."/$defs/match/$defs/layer4_configs"]])
-		src_secure_tags?: matchN(1, [_#defs."/$defs/match/$defs/src_secure_tags", [..._#defs."/$defs/match/$defs/src_secure_tags"]])
 
 		// CIDR IP address range. Maximum number of source CIDR IP ranges
 		// allowed is 5000.
 		src_ip_ranges?: [...string]
+
+		// Network context of the traffic source. Possible values:
+		// ["UNSPECIFIED", "INTERNET", "INTRA_VPC", "NON_INTERNET",
+		// "VPC_NETWORKS"]
+		src_network_context?: string
+
+		// Networks of the traffic source. It can be either a full or
+		// partial url.
+		src_networks?: [...string]
 
 		// Region codes whose IP addresses will be used to match for
 		// source of traffic. Should be specified as 2 letter country

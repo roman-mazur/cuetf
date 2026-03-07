@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloudbuild_bitbucket_server_config")
 	close({
+		connected_repositories?: matchN(1, [#connected_repositories, [...#connected_repositories]])
+		secrets!: matchN(1, [#secrets, list.MaxItems(1) & [_, ...] & [...#secrets]])
+		timeouts?: #timeouts
+
 		// Immutable. API Key that will be attached to webhook. Once this
 		// field has been set, it cannot be changed.
 		// Changing this field will result in deleting/ recreating the
@@ -22,13 +26,13 @@ import "list"
 		// If you need to change it, please create another
 		// BitbucketServerConfig.
 		host_uri!: string
+		id?:       string
 
 		// The location of this bitbucket server config.
 		location!: string
 
 		// The resource name for the config.
 		name?: string
-		id?:   string
 
 		// The network to be used when reaching out to the Bitbucket
 		// Server instance. The VPC network must be enabled for private
@@ -43,6 +47,7 @@ import "list"
 		// is a project number or id and {network} is the name of a VPC
 		// network in the project.
 		peered_network?: string
+		project?:        string
 
 		// SSL certificate to use for requests to Bitbucket Server. The
 		// format should be PEM format but the extension can be one of
@@ -52,10 +57,6 @@ import "list"
 		// Username of the account Cloud Build will use on Bitbucket
 		// Server.
 		username!: string
-		connected_repositories?: matchN(1, [#connected_repositories, [...#connected_repositories]])
-		secrets!: matchN(1, [#secrets, list.MaxItems(1) & [_, ...] & [...#secrets]])
-		timeouts?: #timeouts
-		project?:  string
 
 		// Output only. UUID included in webhook requests. The UUID is
 		// used to look up the corresponding config.

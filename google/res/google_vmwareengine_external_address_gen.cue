@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vmwareengine_external_address")
 	close({
+		timeouts?: #timeouts
+
 		// Creation time of this resource.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and
@@ -16,10 +18,10 @@ package res
 
 		// The external IP address of a workload VM.
 		external_ip?: string
+		id?:          string
 
 		// The internal IP address of a workload VM.
 		internal_ip!: string
-		id?:          string
 
 		// The ID of the external IP Address.
 		name!: string
@@ -30,8 +32,7 @@ package res
 		// in https://cloud.google.com/apis/design/resource_names.
 		// For example:
 		// projects/my-project/locations/us-west1-a/privateClouds/my-cloud
-		parent!:   string
-		timeouts?: #timeouts
+		parent!: string
 
 		// State of the resource.
 		state?: string

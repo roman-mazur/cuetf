@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_backup_dr_backup_plan")
 	close({
+		backup_rules!: matchN(1, [#backup_rules, [_, ...] & [...#backup_rules]])
+		timeouts?: #timeouts
+
 		// The ID of the backup plan
 		backup_plan_id!: string
 
@@ -37,8 +40,6 @@ import "list"
 		// The maximum number of days for which an on-demand backup taken
 		// with custom retention can be retained.
 		max_custom_on_demand_retention_days?: number
-		backup_rules!: matchN(1, [#backup_rules, [_, ...] & [...#backup_rules]])
-		timeouts?: #timeouts
 
 		// The name of backup plan resource created
 		name?:    string
@@ -81,6 +82,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/backup_rules/$defs/standard_schedule": close({
+		backup_window?: matchN(1, [_#defs."/$defs/backup_rules/$defs/standard_schedule/$defs/backup_window", list.MaxItems(1) & [..._#defs."/$defs/backup_rules/$defs/standard_schedule/$defs/backup_window"]])
+		week_day_of_month?: matchN(1, [_#defs."/$defs/backup_rules/$defs/standard_schedule/$defs/week_day_of_month", list.MaxItems(1) & [..._#defs."/$defs/backup_rules/$defs/standard_schedule/$defs/week_day_of_month"]])
+
 		// Specifies days of months like 1, 5, or 14 on which jobs will
 		// run.
 		days_of_month?: [...number]
@@ -98,14 +102,12 @@ import "list"
 		// This is required for 'recurrence_type', 'HOURLY' and is not
 		// applicable otherwise.
 		hourly_frequency?: number
-		backup_window?: matchN(1, [_#defs."/$defs/backup_rules/$defs/standard_schedule/$defs/backup_window", list.MaxItems(1) & [..._#defs."/$defs/backup_rules/$defs/standard_schedule/$defs/backup_window"]])
 
 		// Specifies values of months Possible values:
 		// ["MONTH_UNSPECIFIED", "JANUARY", "FEBRUARY", "MARCH", "APRIL",
 		// "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER",
 		// "NOVEMBER", "DECEMBER"]
 		months?: [...string]
-		week_day_of_month?: matchN(1, [_#defs."/$defs/backup_rules/$defs/standard_schedule/$defs/week_day_of_month", list.MaxItems(1) & [..._#defs."/$defs/backup_rules/$defs/standard_schedule/$defs/week_day_of_month"]])
 
 		// RecurrenceType enumerates the applicable periodicity for the
 		// schedule. Possible values: ["HOURLY", "DAILY", "WEEKLY",

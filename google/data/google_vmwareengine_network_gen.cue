@@ -19,17 +19,17 @@ package data
 		// The server computes checksums based on the value of other
 		// fields in the request.
 		etag?: string
+		id?:   string
 
 		// The location where the VMwareEngineNetwork should reside.
 		location!: string
-		id?:       string
 
 		// The ID of the VMwareEngineNetwork.
-		name!: string
+		name!:    string
+		project?: string
 
 		// State of the VMware Engine network.
-		state?:   string
-		project?: string
+		state?: string
 
 		// VMware Engine network type. Possible values: ["LEGACY",
 		// "STANDARD"]

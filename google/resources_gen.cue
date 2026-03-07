@@ -348,6 +348,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_compute_node_template": res.#google_compute_node_template
 	_#res: "\(#googlePrefix)_compute_organization_security_policy_association": res.#google_compute_organization_security_policy_association
 	_#res: "\(#googlePrefix)_compute_organization_security_policy": res.#google_compute_organization_security_policy
+	_#res: "\(#googlePrefix)_compute_organization_security_policy_rule": res.#google_compute_organization_security_policy_rule
 	_#res: "\(#googlePrefix)_compute_packet_mirroring": res.#google_compute_packet_mirroring
 	_#res: "\(#googlePrefix)_compute_per_instance_config": res.#google_compute_per_instance_config
 	_#res: "\(#googlePrefix)_compute_preview_feature": res.#google_compute_preview_feature

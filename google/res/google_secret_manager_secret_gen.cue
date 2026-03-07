@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_secret_manager_secret")
 	close({
+		replication!: matchN(1, [#replication, list.MaxItems(1) & [_, ...] & [...#replication]])
+		rotation?: matchN(1, [#rotation, list.MaxItems(1) & [...#rotation]])
+		timeouts?: #timeouts
+		topics?: matchN(1, [#topics, [...#topics]])
+
 		// Custom metadata about the secret.
 		//
 		// Annotations are distinct from various forms of labels.
@@ -62,6 +67,7 @@ import "list"
 		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		// Only one of 'expire_time' or 'ttl' can be provided.
 		expire_time?: string
+		id?:          string
 
 		// The labels assigned to this Secret.
 		//
@@ -89,14 +95,11 @@ import "list"
 
 		// The resource name of the Secret. Format:
 		// 'projects/{{project}}/secrets/{{secret_id}}'
-		name?: string
-		id?:   string
+		name?:    string
+		project?: string
 
 		// This must be unique within the project.
 		secret_id!: string
-		project?:   string
-		replication!: matchN(1, [#replication, list.MaxItems(1) & [_, ...] & [...#replication]])
-		rotation?: matchN(1, [#rotation, list.MaxItems(1) & [...#rotation]])
 
 		// A map of resource manager tags.
 		// Resource manager tag keys and values have the same definition
@@ -104,7 +107,6 @@ import "list"
 		// Keys must be in the format tagKeys/{tag_key_id}, and values are
 		// in the format tagValues/{tag_value_id}.
 		tags?: [string]: string
-		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -115,7 +117,6 @@ import "list"
 		// terminated by 's'. Example: "3.5s".
 		// Only one of 'ttl' or 'expire_time' can be provided.
 		ttl?: string
-		topics?: matchN(1, [#topics, [...#topics]])
 
 		// Mapping from version alias to version name.
 		//

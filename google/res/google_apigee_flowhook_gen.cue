@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_flowhook")
 	close({
+		timeouts?: #timeouts
+
 		// Flag that specifies whether execution should continue if the
 		// flow hook throws an exception. Set to true to continue
 		// execution. Set to false to stop execution if the flow hook
@@ -21,7 +23,6 @@ package res
 		// or PostTargetFlowHook.
 		flow_hook_point!: string
 		id?:              string
-		timeouts?:        #timeouts
 
 		// The Apigee Organization associated with the environment
 		org_id!: string

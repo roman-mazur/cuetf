@@ -6,6 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataproc_job")
 	close({
+		hadoop_config?: matchN(1, [#hadoop_config, list.MaxItems(1) & [...#hadoop_config]])
+		hive_config?: matchN(1, [#hive_config, list.MaxItems(1) & [...#hive_config]])
+		pig_config?: matchN(1, [#pig_config, list.MaxItems(1) & [...#pig_config]])
+		placement!: matchN(1, [#placement, list.MaxItems(1) & [_, ...] & [...#placement]])
+		presto_config?: matchN(1, [#presto_config, list.MaxItems(1) & [...#presto_config]])
+		pyspark_config?: matchN(1, [#pyspark_config, list.MaxItems(1) & [...#pyspark_config]])
+		reference?: matchN(1, [#reference, list.MaxItems(1) & [...#reference]])
+		scheduling?: matchN(1, [#scheduling, list.MaxItems(1) & [...#scheduling]])
+		spark_config?: matchN(1, [#spark_config, list.MaxItems(1) & [...#spark_config]])
+		sparksql_config?: matchN(1, [#sparksql_config, list.MaxItems(1) & [...#sparksql_config]])
+		timeouts?: #timeouts
+
 		// Output-only. If present, the location of miscellaneous control
 		// files which may be used as part of job setup and handling. If
 		// not present, control files may be placed in the same location
@@ -26,7 +38,6 @@ import "list"
 		// the job is first cancelled before issuing the delete.
 		force_delete?: bool
 		id?:           string
-		hadoop_config?: matchN(1, [#hadoop_config, list.MaxItems(1) & [...#hadoop_config]])
 
 		// Optional. The labels to associate with this job.
 		//
@@ -40,21 +51,11 @@ import "list"
 		// subsequently run against. If it is not provided, the provider
 		// project is used.
 		project?: string
-		hive_config?: matchN(1, [#hive_config, list.MaxItems(1) & [...#hive_config]])
-		pig_config?: matchN(1, [#pig_config, list.MaxItems(1) & [...#pig_config]])
-		placement!: matchN(1, [#placement, list.MaxItems(1) & [_, ...] & [...#placement]])
-		presto_config?: matchN(1, [#presto_config, list.MaxItems(1) & [...#presto_config]])
-		pyspark_config?: matchN(1, [#pyspark_config, list.MaxItems(1) & [...#pyspark_config]])
-		reference?: matchN(1, [#reference, list.MaxItems(1) & [...#reference]])
-		scheduling?: matchN(1, [#scheduling, list.MaxItems(1) & [...#scheduling]])
-		spark_config?: matchN(1, [#spark_config, list.MaxItems(1) & [...#spark_config]])
-		sparksql_config?: matchN(1, [#sparksql_config, list.MaxItems(1) & [...#sparksql_config]])
 
 		// The Cloud Dataproc region. This essentially determines which
 		// clusters are available for this job to be submitted to. If not
 		// specified, defaults to global.
-		region?:   string
-		timeouts?: #timeouts
+		region?: string
 
 		// The status of the job.
 		status?: [...close({
@@ -76,6 +77,8 @@ import "list"
 	})
 
 	#hadoop_config: close({
+		logging_config?: matchN(1, [_#defs."/$defs/hadoop_config/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/hadoop_config/$defs/logging_config"]])
+
 		// HCFS URIs of archives to be extracted in the working directory
 		// of .jar, .tar, .tar.gz, .tgz, and .zip.
 		archive_uris?: [...string]
@@ -100,7 +103,6 @@ import "list"
 		// The HCFS URI of jar file containing the driver jar. Conflicts
 		// with main_class
 		main_jar_file_uri?: string
-		logging_config?: matchN(1, [_#defs."/$defs/hadoop_config/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/hadoop_config/$defs/logging_config"]])
 
 		// A mapping of property names to values, used to configure Spark.
 		// Properties that conflict with values set by the Cloud Dataproc
@@ -141,6 +143,8 @@ import "list"
 	})
 
 	#pig_config: close({
+		logging_config?: matchN(1, [_#defs."/$defs/pig_config/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/pig_config/$defs/logging_config"]])
+
 		// Whether to continue executing queries if a query fails. The
 		// default value is false. Setting to true can be useful when
 		// executing independent parallel queries. Defaults to false.
@@ -168,7 +172,6 @@ import "list"
 		// Mapping of query variable names to values (equivalent to the
 		// Pig command: name=[value]).
 		script_variables?: [string]: string
-		logging_config?: matchN(1, [_#defs."/$defs/pig_config/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/pig_config/$defs/logging_config"]])
 	})
 
 	#placement: close({
@@ -181,6 +184,8 @@ import "list"
 	})
 
 	#presto_config: close({
+		logging_config?: matchN(1, [_#defs."/$defs/presto_config/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/presto_config/$defs/logging_config"]])
+
 		// Presto client tags to attach to this query.
 		client_tags?: [...string]
 
@@ -205,10 +210,11 @@ import "list"
 		// The list of SQL queries or statements to execute as part of the
 		// job. Conflicts with query_file_uri
 		query_list?: [...string]
-		logging_config?: matchN(1, [_#defs."/$defs/presto_config/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/presto_config/$defs/logging_config"]])
 	})
 
 	#pyspark_config: close({
+		logging_config?: matchN(1, [_#defs."/$defs/pyspark_config/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/pyspark_config/$defs/logging_config"]])
+
 		// Optional. HCFS URIs of archives to be extracted in the working
 		// directory of .jar, .tar, .tar.gz, .tgz, and .zip
 		archive_uris?: [...string]
@@ -238,7 +244,6 @@ import "list"
 		// properties set in /etc/spark/conf/spark-defaults.conf and
 		// classes in user code
 		properties?: [string]: string
-		logging_config?: matchN(1, [_#defs."/$defs/pyspark_config/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/pyspark_config/$defs/logging_config"]])
 
 		// Optional. HCFS file URIs of Python files to pass to the PySpark
 		// framework. Supported file types: .py, .egg, and .zip
@@ -266,6 +271,8 @@ import "list"
 	})
 
 	#spark_config: close({
+		logging_config?: matchN(1, [_#defs."/$defs/spark_config/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/spark_config/$defs/logging_config"]])
+
 		// HCFS URIs of archives to be extracted in the working directory
 		// of .jar, .tar, .tar.gz, .tgz, and .zip.
 		archive_uris?: [...string]
@@ -290,7 +297,6 @@ import "list"
 		// The HCFS URI of jar file containing the driver jar. Conflicts
 		// with main_class
 		main_jar_file_uri?: string
-		logging_config?: matchN(1, [_#defs."/$defs/spark_config/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/spark_config/$defs/logging_config"]])
 
 		// A mapping of property names to values, used to configure Spark.
 		// Properties that conflict with values set by the Cloud Dataproc
@@ -300,6 +306,8 @@ import "list"
 	})
 
 	#sparksql_config: close({
+		logging_config?: matchN(1, [_#defs."/$defs/sparksql_config/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/sparksql_config/$defs/logging_config"]])
+
 		// HCFS URIs of jar files to be added to the Spark CLASSPATH.
 		jar_file_uris?: [...string]
 
@@ -315,7 +323,6 @@ import "list"
 		// The list of SQL queries or statements to execute as part of the
 		// job. Conflicts with query_file_uri
 		query_list?: [...string]
-		logging_config?: matchN(1, [_#defs."/$defs/sparksql_config/$defs/logging_config", list.MaxItems(1) & [..._#defs."/$defs/sparksql_config/$defs/logging_config"]])
 
 		// Mapping of query variable names to values (equivalent to the
 		// Spark SQL command: SET name="value";).

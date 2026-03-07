@@ -6,6 +6,15 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_image")
 	close({
+		guest_os_features?: matchN(1, [#guest_os_features, [...#guest_os_features]])
+		image_encryption_key?: matchN(1, [#image_encryption_key, list.MaxItems(1) & [...#image_encryption_key]])
+		raw_disk?: matchN(1, [#raw_disk, list.MaxItems(1) & [...#raw_disk]])
+		shielded_instance_initial_state?: matchN(1, [#shielded_instance_initial_state, list.MaxItems(1) & [...#shielded_instance_initial_state]])
+		source_disk_encryption_key?: matchN(1, [#source_disk_encryption_key, list.MaxItems(1) & [...#source_disk_encryption_key]])
+		source_image_encryption_key?: matchN(1, [#source_image_encryption_key, list.MaxItems(1) & [...#source_image_encryption_key]])
+		source_snapshot_encryption_key?: matchN(1, [#source_snapshot_encryption_key, list.MaxItems(1) & [...#source_snapshot_encryption_key]])
+		timeouts?: #timeouts
+
 		// Size of the image tar.gz archive stored in Google Cloud Storage
 		// (in
 		// bytes).
@@ -36,6 +45,7 @@ import "list"
 		// not deprecated. The name of the image family must comply with
 		// RFC1035.
 		family?: string
+		id?:     string
 
 		// The fingerprint used for optimistic locking of this resource.
 		// Used
@@ -52,7 +62,6 @@ import "list"
 
 		// Any applicable license URI.
 		licenses?: [...string]
-		id?: string
 
 		// Name of the resource; provided by the client when the resource
 		// is
@@ -66,21 +75,14 @@ import "list"
 		// characters must be a dash, lowercase letter, or digit, except
 		// the
 		// last character, which cannot be a dash.
-		name!: string
+		name!:      string
+		project?:   string
+		self_link?: string
 
 		// The source disk to create this image based on.
 		// You must provide either this property or the
 		// rawDisk.source property but not both to create an image.
 		source_disk?: string
-		guest_os_features?: matchN(1, [#guest_os_features, [...#guest_os_features]])
-		image_encryption_key?: matchN(1, [#image_encryption_key, list.MaxItems(1) & [...#image_encryption_key]])
-		raw_disk?: matchN(1, [#raw_disk, list.MaxItems(1) & [...#raw_disk]])
-		shielded_instance_initial_state?: matchN(1, [#shielded_instance_initial_state, list.MaxItems(1) & [...#shielded_instance_initial_state]])
-		source_disk_encryption_key?: matchN(1, [#source_disk_encryption_key, list.MaxItems(1) & [...#source_disk_encryption_key]])
-		source_image_encryption_key?: matchN(1, [#source_image_encryption_key, list.MaxItems(1) & [...#source_image_encryption_key]])
-		source_snapshot_encryption_key?: matchN(1, [#source_snapshot_encryption_key, list.MaxItems(1) & [...#source_snapshot_encryption_key]])
-		timeouts?: #timeouts
-		project?:  string
 
 		// URL of the source image used to create this image. In order to
 		// create an image, you must provide the full or partial
@@ -91,7 +93,6 @@ import "list"
 		// * The rawDisk.source URL
 		// * The sourceDisk URL
 		source_image?: string
-		self_link?:    string
 
 		// URL of the source snapshot used to create this image.
 		//

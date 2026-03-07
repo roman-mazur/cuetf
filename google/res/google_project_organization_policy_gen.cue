@@ -6,22 +6,23 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_project_organization_policy")
 	close({
+		boolean_policy?: matchN(1, [#boolean_policy, list.MaxItems(1) & [...#boolean_policy]])
+		list_policy?: matchN(1, [#list_policy, list.MaxItems(1) & [...#list_policy]])
+		restore_policy?: matchN(1, [#restore_policy, list.MaxItems(1) & [...#restore_policy]])
+		timeouts?: #timeouts
+
 		// The name of the Constraint the Policy is configuring, for
 		// example, serviceuser.services.
 		constraint!: string
-		boolean_policy?: matchN(1, [#boolean_policy, list.MaxItems(1) & [...#boolean_policy]])
 
 		// The etag of the organization policy. etag is used for
 		// optimistic concurrency control as a way to help prevent
 		// simultaneous updates of a policy from overwriting each other.
 		etag?: string
 		id?:   string
-		list_policy?: matchN(1, [#list_policy, list.MaxItems(1) & [...#list_policy]])
 
 		// The project ID.
 		project!: string
-		restore_policy?: matchN(1, [#restore_policy, list.MaxItems(1) & [...#restore_policy]])
-		timeouts?: #timeouts
 
 		// The timestamp in RFC3339 UTC "Zulu" format, accurate to
 		// nanoseconds, representing when the variable was last updated.

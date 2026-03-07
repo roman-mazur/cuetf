@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_interconnect_attachment")
 	close({
+		l2_forwarding?: matchN(1, [#l2_forwarding, list.MaxItems(1) & [...#l2_forwarding]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
+		timeouts?: #timeouts
+
 		// Whether the VLAN attachment is enabled or disabled. When using
 		// PARTNER type this will Pre-Activate the interconnect attachment
 		admin_enabled?: bool
@@ -176,9 +180,6 @@ import "list"
 		// to update or change labels,
 		// otherwise the request will fail with error 412 conditionNotMet.
 		label_fingerprint?: string
-		l2_forwarding?: matchN(1, [#l2_forwarding, list.MaxItems(1) & [...#l2_forwarding]])
-		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
-		timeouts?: #timeouts
 
 		// Labels for this resource. These can only be added or modified
 		// by the setLabels
@@ -292,16 +293,17 @@ import "list"
 	})
 
 	#l2_forwarding: close({
+		appliance_mappings?: matchN(1, [_#defs."/$defs/l2_forwarding/$defs/appliance_mappings", [..._#defs."/$defs/l2_forwarding/$defs/appliance_mappings"]])
+		geneve_header?: matchN(1, [_#defs."/$defs/l2_forwarding/$defs/geneve_header", list.MaxItems(1) & [..._#defs."/$defs/l2_forwarding/$defs/geneve_header"]])
+
 		// The default appliance IP address.
 		default_appliance_ip_address?: string
 
 		// URL of the network to which this attachment belongs.
 		network?: string
-		appliance_mappings?: matchN(1, [_#defs."/$defs/l2_forwarding/$defs/appliance_mappings", [..._#defs."/$defs/l2_forwarding/$defs/appliance_mappings"]])
 
 		// The tunnel endpoint IP address.
 		tunnel_endpoint_ip_address?: string
-		geneve_header?: matchN(1, [_#defs."/$defs/l2_forwarding/$defs/geneve_header", list.MaxItems(1) & [..._#defs."/$defs/l2_forwarding/$defs/geneve_header"]])
 	})
 
 	#params: close({
@@ -320,9 +322,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/l2_forwarding/$defs/appliance_mappings": close({
+		inner_vlan_to_appliance_mappings?: matchN(1, [_#defs."/$defs/l2_forwarding/$defs/appliance_mappings/$defs/inner_vlan_to_appliance_mappings", [..._#defs."/$defs/l2_forwarding/$defs/appliance_mappings/$defs/inner_vlan_to_appliance_mappings"]])
+
 		// The appliance IP address.
 		appliance_ip_address?: string
-		inner_vlan_to_appliance_mappings?: matchN(1, [_#defs."/$defs/l2_forwarding/$defs/appliance_mappings/$defs/inner_vlan_to_appliance_mappings", [..._#defs."/$defs/l2_forwarding/$defs/appliance_mappings/$defs/inner_vlan_to_appliance_mappings"]])
 
 		// The name of this appliance mapping rule.
 		name?: string

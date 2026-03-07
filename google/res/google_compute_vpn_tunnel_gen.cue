@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_vpn_tunnel")
 	close({
+		cipher_suite?: matchN(1, [#cipher_suite, list.MaxItems(1) & [...#cipher_suite]])
+		timeouts?: #timeouts
+
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
@@ -88,8 +91,6 @@ import "list"
 		// for example '192.168.0.0/16'. The ranges should be disjoint.
 		// Only IPv4 is supported.
 		remote_traffic_selector?: [...string]
-		cipher_suite?: matchN(1, [#cipher_suite, list.MaxItems(1) & [...#cipher_suite]])
-		timeouts?: #timeouts
 
 		// URL of router resource to be used for dynamic routing.
 		router?:    string

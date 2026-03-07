@@ -4,12 +4,15 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_cmek_config")
 	close({
+		single_region_keys?: matchN(1, [#single_region_keys, [...#single_region_keys]])
+		timeouts?: #timeouts
+
 		// The unique id of the cmek config.
 		cmek_config_id!: string
+		id?:             string
 
 		// The default CmekConfig for the Customer.
 		is_default?: bool
-		id?:         string
 
 		// KMS key resource name which will be used to encrypt resources
 		// 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}'.
@@ -38,9 +41,7 @@ package res
 
 		// Whether the NotebookLM Corpus is ready to be used.
 		notebooklm_state?: string
-		single_region_keys?: matchN(1, [#single_region_keys, [...#single_region_keys]])
-		project?:  string
-		timeouts?: #timeouts
+		project?:          string
 
 		// Set the following CmekConfig as the default to be used for
 		// child resources

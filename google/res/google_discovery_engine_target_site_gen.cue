@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_target_site")
 	close({
+		timeouts?: #timeouts
+
 		// The unique id of the data store.
 		data_store_id!: string
 
@@ -29,10 +31,10 @@ package res
 
 		// This is system-generated based on the 'provided_uri_pattern'.
 		generated_uri_pattern?: string
+		id?:                    string
 
 		// The indexing status.
 		indexing_status?: string
-		id?:              string
 
 		// The geographic location where the data store should reside. The
 		// value can
@@ -45,17 +47,16 @@ package res
 		// This field must be a UTF-8 encoded string with a length limit
 		// of 1024
 		// characters.
-		name?: string
+		name?:    string
+		project?: string
 
 		// The user provided URI pattern from which the
 		// 'generated_uri_pattern' is
 		// generated.
 		provided_uri_pattern!: string
-		project?:              string
 
 		// Root domain of the 'provided_uri_pattern'.
 		root_domain_uri?: string
-		timeouts?:        #timeouts
 
 		// Site ownership and validity verification status.
 		site_verification_info?: [...close({

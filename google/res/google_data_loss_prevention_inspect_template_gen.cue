@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_loss_prevention_inspect_template")
 	close({
+		inspect_config?: matchN(1, [#inspect_config, list.MaxItems(1) & [...#inspect_config]])
+		timeouts?: #timeouts
+
 		// A description of the inspect template.
 		description?: string
 
@@ -15,7 +18,6 @@ import "list"
 
 		// The resource name of the inspect template. Set by the server.
 		name?: string
-		inspect_config?: matchN(1, [#inspect_config, list.MaxItems(1) & [...#inspect_config]])
 
 		// The parent of the inspect template in any of the following
 		// formats:
@@ -33,10 +35,14 @@ import "list"
 		// 100 characters. Can be empty to allow the system to generate
 		// one.
 		template_id?: string
-		timeouts?:    #timeouts
 	})
 
 	#inspect_config: close({
+		custom_info_types?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types", [..._#defs."/$defs/inspect_config/$defs/custom_info_types"]])
+		info_types?: matchN(1, [_#defs."/$defs/inspect_config/$defs/info_types", [..._#defs."/$defs/inspect_config/$defs/info_types"]])
+		limits?: matchN(1, [_#defs."/$defs/inspect_config/$defs/limits", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/limits"]])
+		rule_set?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set", [..._#defs."/$defs/inspect_config/$defs/rule_set"]])
+
 		// List of options defining data content to scan. If empty, text,
 		// images, and other content will be included. Possible values:
 		// ["CONTENT_TEXT", "CONTENT_IMAGE"]
@@ -44,20 +50,16 @@ import "list"
 
 		// When true, excludes type information of the findings.
 		exclude_info_types?: bool
-		custom_info_types?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types", [..._#defs."/$defs/inspect_config/$defs/custom_info_types"]])
 
 		// When true, a contextual quote from the data that triggered a
 		// finding is included in the response.
 		include_quote?: bool
-		info_types?: matchN(1, [_#defs."/$defs/inspect_config/$defs/info_types", [..._#defs."/$defs/inspect_config/$defs/info_types"]])
 
 		// Only returns findings equal or above this threshold. See
 		// https://cloud.google.com/dlp/docs/likelihood for more info
 		// Default value: "POSSIBLE" Possible values: ["VERY_UNLIKELY",
 		// "UNLIKELY", "POSSIBLE", "LIKELY", "VERY_LIKELY"]
 		min_likelihood?: string
-		limits?: matchN(1, [_#defs."/$defs/inspect_config/$defs/limits", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/limits"]])
-		rule_set?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set", [..._#defs."/$defs/inspect_config/$defs/rule_set"]])
 	})
 
 	#timeouts: close({
@@ -69,6 +71,10 @@ import "list"
 	_#defs: "/$defs/inspect_config/$defs/custom_info_types": close({
 		dictionary?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary"]])
 		info_type!: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/info_type", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/info_type"]])
+		regex?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/regex", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/regex"]])
+		sensitivity_score?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/sensitivity_score", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/sensitivity_score"]])
+		stored_type?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/stored_type", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/stored_type"]])
+		surrogate_type?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/surrogate_type", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/surrogate_type"]])
 
 		// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a
 		// finding to be returned. It still can be used for rules
@@ -82,10 +88,6 @@ import "list"
 		// values: ["VERY_UNLIKELY", "UNLIKELY", "POSSIBLE", "LIKELY",
 		// "VERY_LIKELY"]
 		likelihood?: string
-		regex?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/regex", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/regex"]])
-		sensitivity_score?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/sensitivity_score", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/sensitivity_score"]])
-		stored_type?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/stored_type", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/stored_type"]])
-		surrogate_type?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/surrogate_type", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/surrogate_type"]])
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary": close({

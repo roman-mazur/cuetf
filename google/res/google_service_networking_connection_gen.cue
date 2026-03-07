@@ -4,14 +4,18 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_service_networking_connection")
 	close({
+		timeouts?: #timeouts
+
 		// When set to ABANDON, terraform will abandon management of the
 		// resource instead of deleting it. Prevents terraform apply
 		// failures with CloudSQL. Note: The resource will still exist.
 		deletion_policy?: string
+		id?:              string
 
 		// Name of VPC network connected with service producers using VPC
 		// peering.
 		network!: string
+		peering?: string
 
 		// Named IP address range(s) of PEERING type reserved for this
 		// service provider. Note that invoking this method with a
@@ -24,10 +28,7 @@ package res
 		// for a service provider organization. For Google services that
 		// support this functionality it is
 		// 'servicenetworking.googleapis.com'.
-		service!:  string
-		id?:       string
-		timeouts?: #timeouts
-		peering?:  string
+		service!: string
 
 		// When set to true, enforce an update of the reserved peering
 		// ranges on the existing service networking connection in case

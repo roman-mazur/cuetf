@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_mirroring_deployment_group")
 	close({
+		timeouts?: #timeouts
+
 		// The list of endpoint groups that are connected to this
 		// resource.
 		connected_endpoint_groups?: [...close({
@@ -22,6 +24,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Labels are key/value pairs that help to organize and filter
 		// resources.
@@ -35,7 +38,6 @@ package res
 		// The cloud location of the deployment group, currently
 		// restricted to 'global'.
 		location!: string
-		id?:       string
 
 		// The list of locations where the deployment group is present.
 		locations?: [...close({
@@ -57,8 +59,8 @@ package res
 		// example:
 		// 'projects/{project}/global/networks/{network}'.
 		// See https://google.aip.dev/124.
-		network!:  string
-		timeouts?: #timeouts
+		network!: string
+		project?: string
 
 		// The current state of the resource does not match the user's
 		// intended state,
@@ -75,8 +77,7 @@ package res
 		// ACTIVE
 		// CREATING
 		// DELETING
-		state?:   string
-		project?: string
+		state?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

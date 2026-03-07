@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_eventarc_trigger")
 	close({
+		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
+		matching_criteria!: matchN(1, [#matching_criteria, [_, ...] & [...#matching_criteria]])
+		retry_policy?: matchN(1, [#retry_policy, list.MaxItems(1) & [...#retry_policy]])
+		timeouts?: #timeouts
+		transport?: matchN(1, [#transport, list.MaxItems(1) & [...#transport]])
+
 		// Optional. The name of the channel associated with the trigger
 		// in
 		// 'projects/{project}/locations/{location}/channels/{channel}'
@@ -50,12 +56,7 @@ import "list"
 
 		// Required. The resource name of the trigger. Must be unique
 		// within the location on the project.
-		name!: string
-		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
-		matching_criteria!: matchN(1, [#matching_criteria, [_, ...] & [...#matching_criteria]])
-		retry_policy?: matchN(1, [#retry_policy, list.MaxItems(1) & [...#retry_policy]])
-		timeouts?: #timeouts
-		transport?: matchN(1, [#transport, list.MaxItems(1) & [...#transport]])
+		name!:    string
 		project?: string
 
 		// Optional. The IAM service account email associated with the
@@ -88,6 +89,11 @@ import "list"
 	})
 
 	#destination: close({
+		cloud_run_service?: matchN(1, [_#defs."/$defs/destination/$defs/cloud_run_service", list.MaxItems(1) & [..._#defs."/$defs/destination/$defs/cloud_run_service"]])
+		gke?: matchN(1, [_#defs."/$defs/destination/$defs/gke", list.MaxItems(1) & [..._#defs."/$defs/destination/$defs/gke"]])
+		http_endpoint?: matchN(1, [_#defs."/$defs/destination/$defs/http_endpoint", list.MaxItems(1) & [..._#defs."/$defs/destination/$defs/http_endpoint"]])
+		network_config?: matchN(1, [_#defs."/$defs/destination/$defs/network_config", list.MaxItems(1) & [..._#defs."/$defs/destination/$defs/network_config"]])
+
 		// The Cloud Function resource name. Only Cloud Functions V2 is
 		// supported. Format
 		// projects/{project}/locations/{location}/functions/{function}
@@ -95,10 +101,6 @@ import "list"
 		// V2 triggers is only supported via the Cloud Functions product.
 		// An error will be returned if the user sets this value.
 		cloud_function?: string
-		cloud_run_service?: matchN(1, [_#defs."/$defs/destination/$defs/cloud_run_service", list.MaxItems(1) & [..._#defs."/$defs/destination/$defs/cloud_run_service"]])
-		gke?: matchN(1, [_#defs."/$defs/destination/$defs/gke", list.MaxItems(1) & [..._#defs."/$defs/destination/$defs/gke"]])
-		http_endpoint?: matchN(1, [_#defs."/$defs/destination/$defs/http_endpoint", list.MaxItems(1) & [..._#defs."/$defs/destination/$defs/http_endpoint"]])
-		network_config?: matchN(1, [_#defs."/$defs/destination/$defs/network_config", list.MaxItems(1) & [..._#defs."/$defs/destination/$defs/network_config"]])
 
 		// The resource name of the Workflow whose Executions are
 		// triggered by the events. The Workflow resource should be

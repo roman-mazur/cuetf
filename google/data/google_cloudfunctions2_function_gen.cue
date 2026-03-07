@@ -64,13 +64,13 @@ package data
 			trigger?:               string
 			trigger_region?:        string
 		})]
+		id?: string
 
 		// Resource name of a KMS crypto key (managed by the user) used to
 		// encrypt/decrypt function resources.
 		// It must match the pattern
 		// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
 		kms_key_name?: string
-		id?:           string
 
 		// A set of key/value label pairs associated with this Cloud
 		// Function.

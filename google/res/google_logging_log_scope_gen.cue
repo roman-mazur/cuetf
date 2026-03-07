@@ -4,16 +4,18 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_log_scope")
 	close({
+		timeouts?: #timeouts
+
 		// Output only. The creation timestamp of the log scopes.
 		create_time?: string
 
 		// Describes this log scopes.
 		description?: string
+		id?:          string
 
 		// The location of the resource. The only supported location is
 		// global so far.
 		location?: string
-		id?:       string
 
 		// The resource name of the log scope. For example:
 		// \'projects/my-project/locations/global/logScopes/my-log-scope\'
@@ -32,7 +34,6 @@ package res
 
 		// Output only. The last update timestamp of the log scopes.
 		update_time?: string
-		timeouts?:    #timeouts
 	})
 
 	#timeouts: close({

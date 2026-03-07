@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gkeonprem_vmware_node_pool")
 	close({
+		config!: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
+		node_pool_autoscaling?: matchN(1, [#node_pool_autoscaling, list.MaxItems(1) & [...#node_pool_autoscaling]])
+		timeouts?: #timeouts
+
 		// Annotations on the node Pool.
 		// This field has the same restrictions as Kubernetes annotations.
 		// The total size of all keys and values combined is limited to
@@ -62,9 +66,6 @@ import "list"
 
 		// If set, there are currently changes in flight to the node pool.
 		reconciling?: bool
-		config!: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
-		node_pool_autoscaling?: matchN(1, [#node_pool_autoscaling, list.MaxItems(1) & [...#node_pool_autoscaling]])
-		timeouts?: #timeouts
 
 		// The current state of this cluster.
 		state?: string
@@ -92,6 +93,9 @@ import "list"
 	})
 
 	#config: close({
+		taints?: matchN(1, [_#defs."/$defs/config/$defs/taints", [..._#defs."/$defs/config/$defs/taints"]])
+		vsphere_config?: matchN(1, [_#defs."/$defs/config/$defs/vsphere_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/vsphere_config"]])
+
 		// VMware disk size to be used during creation.
 		boot_disk_size_gb?: number
 
@@ -121,8 +125,6 @@ import "list"
 		// undefined
 		// and conflicts should be avoided.
 		labels?: [string]: string
-		taints?: matchN(1, [_#defs."/$defs/config/$defs/taints", [..._#defs."/$defs/config/$defs/taints"]])
-		vsphere_config?: matchN(1, [_#defs."/$defs/config/$defs/vsphere_config", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/vsphere_config"]])
 
 		// The megabytes of memory for each node in the node pool.
 		memory_mb?: number

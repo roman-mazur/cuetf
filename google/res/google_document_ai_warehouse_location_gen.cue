@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_document_ai_warehouse_location")
 	close({
+		timeouts?: #timeouts
+
 		// The access control mode for accessing the customer data.
 		// Possible values:
 		// ["ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI",
@@ -26,8 +28,7 @@ package res
 		// same key will be used for all provisioned resources, if
 		// encryption is available. If the kmsKey is left empty, no
 		// encryption will be enforced.
-		kms_key?:  string
-		timeouts?: #timeouts
+		kms_key?: string
 
 		// The location in which the instance is to be provisioned. It
 		// takes the form projects/{projectNumber}/locations/{location}.

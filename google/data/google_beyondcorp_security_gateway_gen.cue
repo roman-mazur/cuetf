@@ -29,19 +29,20 @@ package data
 			})]
 			region?: string
 		})]
+		id?: string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122. Must be omitted or set to
 		// 'global'.
 		location?: string
-		id?:       string
 
 		// Settings related to Cloud Logging.
 		logging?: [...close({})]
 
 		// Identifier. Name of the resource.
-		name?: string
+		name?:    string
+		project?: string
 
 		// Shared proxy configuration for all apps.
 		proxy_protocol_config?: [...close({
@@ -68,7 +69,6 @@ package data
 		// * Must contain between 4-63 characters from '/a-z-/'.
 		// * Must end with a number or letter.
 		security_gateway_id!: string
-		project?:             string
 
 		// Settings related to the Service Discovery.
 		service_discovery?: [...close({

@@ -4,8 +4,11 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_cross_site_network")
 	close({
+		timeouts?: #timeouts
+
 		// An optional description of this resource.
 		description?: string
+		id?:          string
 
 		// Name of the resource. Provided by the client when the resource
 		// is created. The name must be
@@ -17,10 +20,8 @@ package res
 		// characters must be a dash,
 		// lowercase letter, or digit, except the last character, which
 		// cannot be a dash.
-		name!:     string
-		id?:       string
-		timeouts?: #timeouts
-		project?:  string
+		name!:    string
+		project?: string
 	})
 
 	#timeouts: close({

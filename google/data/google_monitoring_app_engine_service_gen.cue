@@ -16,13 +16,13 @@ package data
 
 		// The full resource name for this service. The syntax is:
 		// projects/[PROJECT_ID]/services/[SERVICE_ID].
-		name?: string
+		name?:    string
+		project?: string
 
 		// An optional service ID to use. If not given, the server will
 		// generate a
 		// service ID.
 		service_id?: string
-		project?:    string
 
 		// Configuration for how to query telemetry on a Service.
 		telemetry?: [...close({

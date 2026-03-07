@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_notebooks_runtime")
 	close({
+		access_config?: matchN(1, [#access_config, list.MaxItems(1) & [...#access_config]])
+		software_config?: matchN(1, [#software_config, list.MaxItems(1) & [...#software_config]])
+		timeouts?: #timeouts
+		virtual_machine?: matchN(1, [#virtual_machine, list.MaxItems(1) & [...#virtual_machine]])
+
 		// All of labels (key/value pairs) present on the resource in GCP,
 		// including the labels configured through Terraform, other
 		// clients and services.
@@ -15,6 +20,7 @@ import "list"
 		// values, see 'https://cloud.google.com/vertex-ai/docs/workbench/
 		// reference/rest/v1/projects.locations.runtimes#healthstate'.
 		health_state?: string
+		id?:           string
 
 		// The labels to associate with this runtime. Label **keys** must
 		// contain 1 to 63 characters, and must conform to [RFC 1035]
@@ -30,7 +36,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// A reference to the zone where the machine resides.
 		location!: string
@@ -41,13 +46,9 @@ import "list"
 		metrics?: [...close({
 			system_metrics?: [string]: string
 		})]
-		access_config?: matchN(1, [#access_config, list.MaxItems(1) & [...#access_config]])
 
 		// The name specified for the Notebook runtime.
-		name!: string
-		software_config?: matchN(1, [#software_config, list.MaxItems(1) & [...#software_config]])
-		timeouts?: #timeouts
-		virtual_machine?: matchN(1, [#virtual_machine, list.MaxItems(1) & [...#virtual_machine]])
+		name!:    string
 		project?: string
 
 		// The state of this runtime.
@@ -74,6 +75,8 @@ import "list"
 	})
 
 	#software_config: close({
+		kernels?: matchN(1, [_#defs."/$defs/software_config/$defs/kernels", [..._#defs."/$defs/software_config/$defs/kernels"]])
+
 		// Specify a custom Cloud Storage path where the GPU driver is
 		// stored.
 		// If not specified, we'll automatically choose from official GPU
@@ -105,7 +108,6 @@ import "list"
 		// fully boots up. The path must be a URL or
 		// Cloud Storage path (gs://path-to-file/file-name).
 		post_startup_script?: string
-		kernels?: matchN(1, [_#defs."/$defs/software_config/$defs/kernels", [..._#defs."/$defs/software_config/$defs/kernels"]])
 
 		// Behavior for the post startup script. Possible values:
 		// ["POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED",
@@ -144,6 +146,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/virtual_machine/$defs/virtual_machine_config": close({
+		accelerator_config?: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/accelerator_config", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/accelerator_config"]])
+		container_images?: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/container_images", [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/container_images"]])
+		data_disk!: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/data_disk", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/data_disk"]])
+		encryption_config?: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/encryption_config", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/encryption_config"]])
+		shielded_instance_config?: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/shielded_instance_config"]])
+
 		// The Compute Engine guest attributes. (see [Project and instance
 		// guest attributes](https://cloud.google.com/compute/docs/
 		// storing-retrieving-metadata#guest_attributes)).
@@ -205,11 +213,6 @@ import "list"
 		// subnetwork allocation will use the range *name* if it's
 		// assigned.
 		reserved_ip_range?: string
-		accelerator_config?: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/accelerator_config", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/accelerator_config"]])
-		container_images?: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/container_images", [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/container_images"]])
-		data_disk!: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/data_disk", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/data_disk"]])
-		encryption_config?: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/encryption_config", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/encryption_config"]])
-		shielded_instance_config?: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/shielded_instance_config"]])
 
 		// The Compute Engine subnetwork to be used for machine
 		// communications. Cannot be specified with network. A full URL or
@@ -250,6 +253,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/virtual_machine/$defs/virtual_machine_config/$defs/data_disk": close({
+		initialize_params?: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/data_disk/$defs/initialize_params", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/data_disk/$defs/initialize_params"]])
+
 		// Optional. Specifies whether the disk will be auto-deleted
 		// when the instance is deleted (but not when the disk is
 		// detached from the instance).
@@ -302,7 +307,6 @@ import "list"
 
 		// Output only. Any valid publicly visible licenses.
 		licenses?: [...string]
-		initialize_params?: matchN(1, [_#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/data_disk/$defs/initialize_params", list.MaxItems(1) & [..._#defs."/$defs/virtual_machine/$defs/virtual_machine_config/$defs/data_disk/$defs/initialize_params"]])
 
 		// The mode in which to attach this disk, either READ_WRITE
 		// or READ_ONLY. If not specified, the default is to attach

@@ -68,6 +68,7 @@ package data
 		// URL which triggers function execution. Returned only if
 		// trigger_http is used.
 		https_trigger_url?: string
+		id?:                string
 
 		// String value that controls what traffic can reach the function.
 		// Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes
@@ -77,7 +78,6 @@ package data
 		// Resource name of a KMS crypto key (managed by the user) used to
 		// encrypt/decrypt function resources.
 		kms_key_name?: string
-		id?:           string
 
 		// A set of key/value label pairs to assign to the function. Label
 		// keys must follow the requirements at

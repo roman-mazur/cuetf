@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_glossary_term")
 	close({
+		timeouts?: #timeouts
+
 		// The time at which the GlossaryTerm was created.
 		create_time?: string
 
@@ -46,12 +48,11 @@ package res
 		// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}
 		// OR
 		// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/terms/{termId}
-		parent!:   string
-		timeouts?: #timeouts
+		parent!:  string
+		project?: string
 
 		// The term id for creation.
 		term_id?: string
-		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

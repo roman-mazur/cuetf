@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_router")
 	close({
+		bgp?: matchN(1, [#bgp, list.MaxItems(1) & [...#bgp]])
+		md5_authentication_keys?: matchN(1, [#md5_authentication_keys, list.MaxItems(1) & [...#md5_authentication_keys]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
+		timeouts?: #timeouts
+
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
@@ -32,18 +37,16 @@ import "list"
 
 		// A reference to the network to which this router belongs.
 		network?: string
-		bgp?: matchN(1, [#bgp, list.MaxItems(1) & [...#bgp]])
 		project?: string
-		md5_authentication_keys?: matchN(1, [#md5_authentication_keys, list.MaxItems(1) & [...#md5_authentication_keys]])
-		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 
 		// Region where the router resides.
 		region?:    string
 		self_link?: string
-		timeouts?:  #timeouts
 	})
 
 	#bgp: close({
+		advertised_ip_ranges?: matchN(1, [_#defs."/$defs/bgp/$defs/advertised_ip_ranges", [..._#defs."/$defs/bgp/$defs/advertised_ip_ranges"]])
+
 		// User-specified flag to indicate which mode to use for
 		// advertisement. Default value: "DEFAULT" Possible values:
 		// ["DEFAULT", "CUSTOM"]
@@ -77,7 +80,6 @@ import "list"
 		// commonly
 		// call this router ID.
 		identifier_range?: string
-		advertised_ip_ranges?: matchN(1, [_#defs."/$defs/bgp/$defs/advertised_ip_ranges", [..._#defs."/$defs/bgp/$defs/advertised_ip_ranges"]])
 
 		// The interval in seconds between BGP keepalive messages that are
 		// sent

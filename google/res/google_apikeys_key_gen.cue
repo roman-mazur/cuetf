@@ -6,15 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apikeys_key")
 	close({
+		restrictions?: matchN(1, [#restrictions, list.MaxItems(1) & [...#restrictions]])
+		timeouts?: #timeouts
+
 		// Human-readable display name of this API key. Modifiable by
 		// user.
 		display_name?: string
+		id?:           string
 
 		// Output only. An encrypted and signed value held by this key.
 		// This field can be accessed only through the `GetKeyString`
 		// method.
 		key_string?: string
-		id?:         string
 
 		// The resource name of the key. The name must be unique within
 		// the project, must conform with RFC-1034, is restricted to
@@ -29,14 +32,12 @@ import "list"
 		// The email of the service account the key is bound to. If this
 		// field is specified, the key is a service account bound key and
 		// auth enabled. See
-		// [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa)
+		// [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa)
 		// for more details.
 		service_account_email?: string
 
 		// Output only. Unique id in UUID4 format.
 		uid?: string
-		restrictions?: matchN(1, [#restrictions, list.MaxItems(1) & [...#restrictions]])
-		timeouts?: #timeouts
 	})
 
 	#restrictions: close({

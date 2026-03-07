@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_client_tls_policy")
 	close({
+		client_certificate?: matchN(1, [#client_certificate, list.MaxItems(1) & [...#client_certificate]])
+		server_validation_ca?: matchN(1, [#server_validation_ca, [...#server_validation_ca]])
+		timeouts?: #timeouts
+
 		// Time the ClientTlsPolicy was created in UTC.
 		create_time?: string
 
@@ -17,6 +21,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Set of label tags associated with the ClientTlsPolicy resource.
 		//
@@ -29,10 +34,10 @@ import "list"
 		// The location of the client tls policy.
 		// The default value is 'global'.
 		location?: string
-		id?:       string
 
 		// Name of the ClientTlsPolicy resource.
-		name!: string
+		name!:    string
+		project?: string
 
 		// Server Name Indication string to present to the server during
 		// TLS handshake. E.g: "secure.example.com".
@@ -41,10 +46,6 @@ import "list"
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		client_certificate?: matchN(1, [#client_certificate, list.MaxItems(1) & [...#client_certificate]])
-		server_validation_ca?: matchN(1, [#server_validation_ca, [...#server_validation_ca]])
-		timeouts?: #timeouts
-		project?:  string
 
 		// Time the ClientTlsPolicy was updated in UTC.
 		update_time?: string

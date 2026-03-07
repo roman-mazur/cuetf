@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_datascan")
 	close({
+		data!: matchN(1, [#data, list.MaxItems(1) & [_, ...] & [...#data]])
+		data_discovery_spec?: matchN(1, [#data_discovery_spec, list.MaxItems(1) & [...#data_discovery_spec]])
+		data_documentation_spec?: matchN(1, [#data_documentation_spec, list.MaxItems(1) & [...#data_documentation_spec]])
+		data_profile_spec?: matchN(1, [#data_profile_spec, list.MaxItems(1) & [...#data_profile_spec]])
+		data_quality_spec?: matchN(1, [#data_quality_spec, list.MaxItems(1) & [...#data_quality_spec]])
+		execution_spec!: matchN(1, [#execution_spec, list.MaxItems(1) & [_, ...] & [...#execution_spec]])
+		timeouts?: #timeouts
+
 		// The time when the scan was created.
 		create_time?: string
 
@@ -30,6 +38,7 @@ import "list"
 			latest_job_end_time?:   string
 			latest_job_start_time?: string
 		})]
+		id?: string
 
 		// User-defined labels for the scan. A list of key->value pairs.
 		//
@@ -47,19 +56,11 @@ import "list"
 		// projects/{project}/locations/{locationId}/dataScans/{datascan_id},
 		// where project refers to a project_id or project_number and
 		// locationId refers to a GCP region.
-		name?: string
-		id?:   string
-		data!: matchN(1, [#data, list.MaxItems(1) & [_, ...] & [...#data]])
-		data_discovery_spec?: matchN(1, [#data_discovery_spec, list.MaxItems(1) & [...#data_discovery_spec]])
-		data_documentation_spec?: matchN(1, [#data_documentation_spec, list.MaxItems(1) & [...#data_documentation_spec]])
-		data_profile_spec?: matchN(1, [#data_profile_spec, list.MaxItems(1) & [...#data_profile_spec]])
-		data_quality_spec?: matchN(1, [#data_quality_spec, list.MaxItems(1) & [...#data_quality_spec]])
-		execution_spec!: matchN(1, [#execution_spec, list.MaxItems(1) & [_, ...] & [...#execution_spec]])
-		timeouts?: #timeouts
+		name?:    string
+		project?: string
 
 		// Current state of the DataScan.
-		state?:   string
-		project?: string
+		state?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -100,10 +101,13 @@ import "list"
 	#data_documentation_spec: close({})
 
 	#data_profile_spec: close({
+		exclude_fields?: matchN(1, [_#defs."/$defs/data_profile_spec/$defs/exclude_fields", list.MaxItems(1) & [..._#defs."/$defs/data_profile_spec/$defs/exclude_fields"]])
+		include_fields?: matchN(1, [_#defs."/$defs/data_profile_spec/$defs/include_fields", list.MaxItems(1) & [..._#defs."/$defs/data_profile_spec/$defs/include_fields"]])
+		post_scan_actions?: matchN(1, [_#defs."/$defs/data_profile_spec/$defs/post_scan_actions", list.MaxItems(1) & [..._#defs."/$defs/data_profile_spec/$defs/post_scan_actions"]])
+
 		// If set, the latest DataScan job result will be published to
 		// Dataplex Catalog.
 		catalog_publishing_enabled?: bool
-		exclude_fields?: matchN(1, [_#defs."/$defs/data_profile_spec/$defs/exclude_fields", list.MaxItems(1) & [..._#defs."/$defs/data_profile_spec/$defs/exclude_fields"]])
 
 		// A filter applied to all rows in a single DataScan job. The
 		// filter needs to be a valid SQL expression for a WHERE clause
@@ -118,11 +122,12 @@ import "list"
 		// Sampling is not applied if 'sampling_percent' is not specified,
 		// 0 or 100.
 		sampling_percent?: number
-		include_fields?: matchN(1, [_#defs."/$defs/data_profile_spec/$defs/include_fields", list.MaxItems(1) & [..._#defs."/$defs/data_profile_spec/$defs/include_fields"]])
-		post_scan_actions?: matchN(1, [_#defs."/$defs/data_profile_spec/$defs/post_scan_actions", list.MaxItems(1) & [..._#defs."/$defs/data_profile_spec/$defs/post_scan_actions"]])
 	})
 
 	#data_quality_spec: close({
+		post_scan_actions?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/post_scan_actions", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/post_scan_actions"]])
+		rules?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules", [..._#defs."/$defs/data_quality_spec/$defs/rules"]])
+
 		// If set, the latest DataScan job result will be published to
 		// Dataplex Catalog.
 		catalog_publishing_enabled?: bool
@@ -132,7 +137,6 @@ import "list"
 		// in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 <
 		// 10
 		row_filter?: string
-		post_scan_actions?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/post_scan_actions", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/post_scan_actions"]])
 
 		// The percentage of the records to be selected from the dataset
 		// for DataScan.
@@ -141,7 +145,6 @@ import "list"
 		// Sampling is not applied if 'sampling_percent' is not specified,
 		// 0 or 100.
 		sampling_percent?: number
-		rules?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules", [..._#defs."/$defs/data_quality_spec/$defs/rules"]])
 	})
 
 	#execution_spec: close({
@@ -297,6 +300,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/data_quality_spec/$defs/rules": close({
+		non_null_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/non_null_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/non_null_expectation"]])
+		range_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/range_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/range_expectation"]])
+		regex_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/regex_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/regex_expectation"]])
+		row_condition_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/row_condition_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/row_condition_expectation"]])
+		set_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/set_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/set_expectation"]])
+		sql_assertion?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/sql_assertion", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/sql_assertion"]])
+		statistic_range_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/statistic_range_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/statistic_range_expectation"]])
+		table_condition_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/table_condition_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/table_condition_expectation"]])
+		uniqueness_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/uniqueness_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/uniqueness_expectation"]])
+
 		// The unnested column which this rule is evaluated against.
 		column?: string
 
@@ -321,15 +334,6 @@ import "list"
 		// Must start with a letter.
 		// Must end with a number or a letter.
 		name?: string
-		non_null_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/non_null_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/non_null_expectation"]])
-		range_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/range_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/range_expectation"]])
-		regex_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/regex_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/regex_expectation"]])
-		row_condition_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/row_condition_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/row_condition_expectation"]])
-		set_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/set_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/set_expectation"]])
-		sql_assertion?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/sql_assertion", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/sql_assertion"]])
-		statistic_range_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/statistic_range_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/statistic_range_expectation"]])
-		table_condition_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/table_condition_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/table_condition_expectation"]])
-		uniqueness_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/uniqueness_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/uniqueness_expectation"]])
 
 		// Whether the Rule is active or suspended. Default = false.
 		suspended?: bool

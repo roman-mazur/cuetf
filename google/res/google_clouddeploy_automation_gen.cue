@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_clouddeploy_automation")
 	close({
+		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
+		selector!: matchN(1, [#selector, list.MaxItems(1) & [_, ...] & [...#selector]])
+		timeouts?: #timeouts
+
 		// Optional. User annotations. These attributes can only be set
 		// and used by the user, and not by Cloud Deploy. Annotations
 		// must meet the following constraints: * Annotations are
@@ -74,11 +78,8 @@ import "list"
 		location!: string
 
 		// Name of the 'Automation'.
-		name!: string
-		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
-		selector!: matchN(1, [#selector, list.MaxItems(1) & [_, ...] & [...#selector]])
-		timeouts?: #timeouts
-		project?:  string
+		name!:    string
+		project?: string
 
 		// Required. Email address of the user-managed IAM service account
 		// that creates Cloud Deploy release and rollout resources.
@@ -159,11 +160,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/repair_rollout_rule": close({
+		repair_phases?: matchN(1, [_#defs."/$defs/rules/$defs/repair_rollout_rule/$defs/repair_phases", [..._#defs."/$defs/rules/$defs/repair_rollout_rule/$defs/repair_phases"]])
+
 		// Required. ID of the rule. This id must be unique in the
 		// 'Automation' resource to which this rule belongs. The format
 		// is 'a-z{0,62}'.
 		id!: string
-		repair_phases?: matchN(1, [_#defs."/$defs/rules/$defs/repair_rollout_rule/$defs/repair_phases", [..._#defs."/$defs/rules/$defs/repair_rollout_rule/$defs/repair_phases"]])
 
 		// Optional. Jobs to repair. Proceeds only after job name matched
 		// any one in the list, or for all jobs if unspecified or empty.

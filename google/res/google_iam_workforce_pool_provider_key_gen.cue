@@ -6,17 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_workforce_pool_provider_key")
 	close({
+		key_data!: matchN(1, [#key_data, list.MaxItems(1) & [_, ...] & [...#key_data]])
+		timeouts?: #timeouts
+
 		// The time after which the key will be permanently deleted and
 		// cannot be recovered.
 		// Note that the key may get purged before this time if the total
 		// limit of keys per provider is exceeded.
 		expire_time?: string
+		id?:          string
 
 		// The ID to use for the key, which becomes the final component of
 		// the resource name. This value must be 4-32 characters, and may
 		// contain the characters [a-z0-9-].
 		key_id!: string
-		id?:     string
 
 		// The location for the resource.
 		location!: string
@@ -31,8 +34,6 @@ import "list"
 
 		// The state of the key.
 		state?: string
-		key_data!: matchN(1, [#key_data, list.MaxItems(1) & [_, ...] & [...#key_data]])
-		timeouts?: #timeouts
 
 		// The purpose of the key. Possible values: ["ENCRYPTION"]
 		use!: string

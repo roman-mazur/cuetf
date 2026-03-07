@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_access_context_manager_service_perimeter_ingress_policy")
 	close({
+		ingress_from?: matchN(1, [#ingress_from, list.MaxItems(1) & [...#ingress_from]])
+		ingress_to?: matchN(1, [#ingress_to, list.MaxItems(1) & [...#ingress_to]])
+		timeouts?: #timeouts
+
 		// The name of the Access Policy this resource belongs to.
 		access_policy_id?: string
 
@@ -20,13 +24,10 @@ import "list"
 
 		// The name of the Service Perimeter to add this resource to.
 		perimeter!: string
-		ingress_from?: matchN(1, [#ingress_from, list.MaxItems(1) & [...#ingress_from]])
-		ingress_to?: matchN(1, [#ingress_to, list.MaxItems(1) & [...#ingress_to]])
 
 		// Human readable title. Must be unique within the perimeter. Does
 		// not affect behavior.
-		title?:    string
-		timeouts?: #timeouts
+		title?: string
 	})
 
 	#ingress_from: close({

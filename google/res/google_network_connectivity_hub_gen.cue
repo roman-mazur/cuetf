@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_hub")
 	close({
+		timeouts?: #timeouts
+
 		// Output only. The time the hub was created.
 		create_time?: string
 
@@ -20,6 +22,7 @@ package res
 		// attached to the hub are made accessible to other VPC spokes
 		// attached to the hub. The default value is false.
 		export_psc?: bool
+		id?:         string
 
 		// Optional labels in key:value format. For more information about
 		// labels, see [Requirements for
@@ -30,7 +33,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Immutable. The name of the hub. Hub names must be unique. They
 		// use the following form:
@@ -50,6 +52,7 @@ package res
 		// is set to PRESET_TOPOLOGY_UNSPECIFIED. Possible values:
 		// ["MESH", "STAR", "HYBRID_INSPECTION"]
 		preset_topology?: string
+		project?:         string
 
 		// The VPC network associated with this hub's spokes. All of the
 		// VPN tunnels, VLAN attachments, and router appliance instances
@@ -60,8 +63,6 @@ package res
 		routing_vpcs?: [...close({
 			uri?: string
 		})]
-		timeouts?: #timeouts
-		project?:  string
 
 		// Output only. The current lifecycle state of this hub.
 		state?: string

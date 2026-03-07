@@ -200,6 +200,7 @@ package data
 				tag?:          string
 			})]
 		})]
+		id?: string
 
 		// ignoredFiles and includedFiles are file glob matches using
 		// https://golang.org/pkg/path/filepath/#Match
@@ -215,7 +216,6 @@ package data
 		// outside
 		// of the ignoredFiles globs, then we do not trigger a build.
 		ignored_files?: [...string]
-		id?: string
 
 		// Build logs will be sent back to GitHub as part of the checkrun
 		// result. Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
@@ -250,7 +250,8 @@ package data
 		location!: string
 
 		// Name of the trigger. Must be unique within the project.
-		name?: string
+		name?:    string
+		project?: string
 
 		// PubsubConfig describes the configuration of a trigger that
 		// creates
@@ -277,7 +278,6 @@ package data
 			})]
 			repository?: string
 		})]
-		project?: string
 
 		// The service account used for all user-controlled operations
 		// including

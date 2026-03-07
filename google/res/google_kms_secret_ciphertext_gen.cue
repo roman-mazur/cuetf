@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_kms_secret_ciphertext")
 	close({
+		timeouts?: #timeouts
+
 		// The additional authenticated data used for integrity checks
 		// during encryption and decryption.
 		additional_authenticated_data?: string
@@ -17,7 +19,6 @@ package res
 		// Format:
 		// ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}''
 		crypto_key!: string
-		timeouts?:   #timeouts
 		id?:         string
 
 		// The plaintext to be encrypted.

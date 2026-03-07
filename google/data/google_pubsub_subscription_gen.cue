@@ -143,6 +143,7 @@ package data
 		// bytes. After creating the subscription,
 		// you can't modify the filter.
 		filter?: string
+		id?:     string
 
 		// A set of key/value label pairs to assign to this Subscription.
 		//
@@ -152,7 +153,6 @@ package data
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// How long to retain unacknowledged messages in the
 		// subscription's
@@ -182,7 +182,8 @@ package data
 		})]
 
 		// Name of the subscription.
-		name!: string
+		name!:    string
+		project?: string
 
 		// If push delivery is used with this subscription, this field is
 		// used to
@@ -208,7 +209,6 @@ package data
 		// they are acknowledged, until they fall out of the
 		// messageRetentionDuration window.
 		retain_acked_messages?: bool
-		project?:               string
 
 		// A policy that specifies how Pub/Sub retries message delivery
 		// for this subscription.

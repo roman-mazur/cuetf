@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_migration_center_group")
 	close({
+		timeouts?: #timeouts
+
 		// Output only. The timestamp when the group was created.
 		create_time?: string
 
@@ -39,9 +41,8 @@ package res
 		location!: string
 
 		// Output only. The name of the group.
-		name?:     string
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

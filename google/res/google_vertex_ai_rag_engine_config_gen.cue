@@ -6,7 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_rag_engine_config")
 	close({
-		id?: string
+		rag_managed_db_config!: matchN(1, [#rag_managed_db_config, list.MaxItems(1) & [_, ...] & [...#rag_managed_db_config]])
+		timeouts?: #timeouts
+		id?:       string
 
 		// The resource name of the Dataset. This value is set by Google.
 		name?:    string
@@ -14,8 +16,6 @@ import "list"
 
 		// The region of the RagEngineConfig. eg us-central1
 		region?: string
-		rag_managed_db_config!: matchN(1, [#rag_managed_db_config, list.MaxItems(1) & [_, ...] & [...#rag_managed_db_config]])
-		timeouts?: #timeouts
 	})
 
 	#rag_managed_db_config: close({

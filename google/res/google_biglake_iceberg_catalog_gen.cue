@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_biglake_iceberg_catalog")
 	close({
+		timeouts?: #timeouts
+
 		// Output only. The service account used for credential vending.
 		// It might be empty if credential vending was never enabled for
 		// the catalog.
@@ -46,15 +48,14 @@ package res
 		// bucket:
 		// gs://bucket-name, the catalog name will be exactly
 		// "bucket-name".
-		name!: string
+		name!:    string
+		project?: string
 
 		// Output only. The replicas for the catalog metadata.
 		replicas?: [...close({
 			region?: string
 			state?:  string
 		})]
-		timeouts?: #timeouts
-		project?:  string
 
 		// Output only. The GCP region(s) where the physical metadata for
 		// the tables is stored, e.g. 'us-central1', 'nam4' or 'us'. This

@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_index_endpoint_deployed_index")
 	close({
+		automatic_resources?: matchN(1, [#automatic_resources, list.MaxItems(1) & [...#automatic_resources]])
+		dedicated_resources?: matchN(1, [#dedicated_resources, list.MaxItems(1) & [...#dedicated_resources]])
+		deployed_index_auth_config?: matchN(1, [#deployed_index_auth_config, list.MaxItems(1) & [...#deployed_index_auth_config]])
+		timeouts?: #timeouts
+
 		// The timestamp of when the Index was created in RFC3339 UTC
 		// "Zulu" format, with nanosecond resolution and up to nine
 		// fractional digits.
@@ -41,10 +46,10 @@ import "list"
 		// If true, private endpoint's access logs are sent to Cloud
 		// Logging.
 		enable_access_logging?: bool
+		id?:                    string
 
 		// The name of the Index this is the deployment of.
 		index!: string
-		id?:    string
 
 		// Identifies the index endpoint. Must be in the format
 		// 'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
@@ -70,10 +75,6 @@ import "list"
 		// resolution and up to nine fractional digits. Examples:
 		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		index_sync_time?: string
-		automatic_resources?: matchN(1, [#automatic_resources, list.MaxItems(1) & [...#automatic_resources]])
-		dedicated_resources?: matchN(1, [#dedicated_resources, list.MaxItems(1) & [...#dedicated_resources]])
-		deployed_index_auth_config?: matchN(1, [#deployed_index_auth_config, list.MaxItems(1) & [...#deployed_index_auth_config]])
-		timeouts?: #timeouts
 
 		// The name of the DeployedIndex resource.
 		name?: string

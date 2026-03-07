@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloudbuildv2_repository")
 	close({
+		timeouts?: #timeouts
+
 		// Allows clients to store small amounts of arbitrary data.
 		//
 		// **Note**: This field is non-authoritative, and will only manage
@@ -35,7 +37,6 @@ package res
 
 		// The connection for the resource
 		parent_connection!: string
-		timeouts?:          #timeouts
 		project?:           string
 
 		// Required. Git Clone HTTPS URI.

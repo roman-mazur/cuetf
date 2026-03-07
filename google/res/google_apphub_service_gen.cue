@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apphub_service")
 	close({
+		attributes?: matchN(1, [#attributes, list.MaxItems(1) & [...#attributes]])
+		timeouts?: #timeouts
+
 		// Part of 'parent'. Full resource name of a parent Application.
 		// Example:
 		// projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
@@ -23,22 +26,20 @@ import "list"
 
 		// User-defined name for the Service.
 		display_name?: string
+		id?:           string
 
 		// Part of 'parent'. Full resource name of a parent Application.
 		// Example:
 		// projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
 		location!: string
-		id?:       string
 
 		// Identifier. The resource name of a Service. Format:
 		// "projects/{host-project-id}/locations/{location}/applications/{application-id}/services/{service-id}"
-		name?: string
+		name?:    string
+		project?: string
 
 		// The Service identifier.
 		service_id!: string
-		project?:    string
-		attributes?: matchN(1, [#attributes, list.MaxItems(1) & [...#attributes]])
-		timeouts?: #timeouts
 
 		// Properties of an underlying cloud resource that can comprise a
 		// Service.

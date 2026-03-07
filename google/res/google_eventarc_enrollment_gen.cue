@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_eventarc_enrollment")
 	close({
+		timeouts?: #timeouts
+
 		// Resource annotations.
 		//
 		// **Note**: This field is non-authoritative, and will only manage
@@ -63,7 +65,6 @@ package res
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		location!: string
-		timeouts?: #timeouts
 
 		// Resource name of the message bus identifying the source of the
 		// messages. It

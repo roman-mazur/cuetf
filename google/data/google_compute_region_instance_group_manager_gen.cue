@@ -42,6 +42,7 @@ package data
 
 		// The fingerprint of the instance group manager.
 		fingerprint?: string
+		id?:          string
 
 		// The flexibility policy for this managed instance group.
 		// Instance flexibility allowing MIG to create VMs from multiple
@@ -77,7 +78,6 @@ package data
 		// enabled, maxResults and pageToken query parameters are
 		// respected.
 		list_managed_instances_results?: string
-		id?:                             string
 
 		// The name of the instance group manager. Must be 1-63 characters
 		// long and comply with RFC1035. Supported characters include

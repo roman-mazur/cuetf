@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_oracle_database_exadb_vm_cluster")
 	close({
+		properties!: matchN(1, [#properties, list.MaxItems(1) & [_, ...] & [...#properties]])
+		timeouts?: #timeouts
+
 		// The name of the backup OdbSubnet associated with the
 		// ExadbVmCluster.
 		// Format:
@@ -50,6 +53,7 @@ import "list"
 		// During creation, the system will pick the zone assigned to the
 		// ExascaleDbStorageVault.
 		gcp_oracle_zone?: string
+		id?:              string
 
 		// The labels or tags associated with the ExadbVmCluster.
 		//
@@ -63,9 +67,6 @@ import "list"
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		location!: string
-		id?:       string
-		properties!: matchN(1, [#properties, list.MaxItems(1) & [_, ...] & [...#properties]])
-		timeouts?: #timeouts
 
 		// Identifier. The name of the ExadbVmCluster resource in the
 		// following format:
@@ -93,6 +94,10 @@ import "list"
 	})
 
 	#properties: close({
+		data_collection_options?: matchN(1, [_#defs."/$defs/properties/$defs/data_collection_options", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/data_collection_options"]])
+		time_zone?: matchN(1, [_#defs."/$defs/properties/$defs/time_zone", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/time_zone"]])
+		vm_file_system_storage!: matchN(1, [_#defs."/$defs/properties/$defs/vm_file_system_storage", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/properties/$defs/vm_file_system_storage"]])
+
 		// The number of additional ECPUs per node for an Exadata VM
 		// cluster on
 		// exascale infrastructure.
@@ -156,9 +161,6 @@ import "list"
 		// allocated to
 		// each VM. Memory is calculated based on 2.75 GB per Total ECPUs.
 		memory_size_gb?: number
-		data_collection_options?: matchN(1, [_#defs."/$defs/properties/$defs/data_collection_options", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/data_collection_options"]])
-		time_zone?: matchN(1, [_#defs."/$defs/properties/$defs/time_zone", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/time_zone"]])
-		vm_file_system_storage!: matchN(1, [_#defs."/$defs/properties/$defs/vm_file_system_storage", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/properties/$defs/vm_file_system_storage"]])
 
 		// The number of nodes/VMs in the ExadbVmCluster.
 		node_count!: number

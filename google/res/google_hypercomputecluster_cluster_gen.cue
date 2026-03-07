@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_hypercomputecluster_cluster")
 	close({
+		compute_resources?: matchN(1, [#compute_resources, [...#compute_resources]])
+		network_resources?: matchN(1, [#network_resources, [...#network_resources]])
+		orchestrator?: matchN(1, [#orchestrator, list.MaxItems(1) & [...#orchestrator]])
+		storage_resources?: matchN(1, [#storage_resources, [...#storage_resources]])
+		timeouts?: #timeouts
+
 		// ID of the cluster to create. Must conform to
 		// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034)
 		// (lower-case,
@@ -47,11 +53,6 @@ import "list"
 		// 'projects/{project}/locations/{location}/clusters/{cluster}'.
 		name?:    string
 		project?: string
-		compute_resources?: matchN(1, [#compute_resources, [...#compute_resources]])
-		network_resources?: matchN(1, [#network_resources, [...#network_resources]])
-		orchestrator?: matchN(1, [#orchestrator, list.MaxItems(1) & [...#orchestrator]])
-		storage_resources?: matchN(1, [#storage_resources, [...#storage_resources]])
-		timeouts?: #timeouts
 
 		// Indicates whether changes to the cluster are currently in
 		// flight. If this
@@ -91,6 +92,8 @@ import "list"
 	})
 
 	#storage_resources: close({
+		config!: matchN(1, [_#defs."/$defs/storage_resources/$defs/config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_resources/$defs/config"]])
+
 		// A reference to a [Google Cloud
 		// Storage](https://cloud.google.com/storage)
 		// bucket.
@@ -104,7 +107,6 @@ import "list"
 			filestore?: string
 		})]
 		id!: string
-		config!: matchN(1, [_#defs."/$defs/storage_resources/$defs/config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_resources/$defs/config"]])
 
 		// A reference to a [Managed
 		// Lustre](https://cloud.google.com/products/managed-lustre)
@@ -216,13 +218,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/orchestrator/$defs/slurm": close({
+		login_nodes!: matchN(1, [_#defs."/$defs/orchestrator/$defs/slurm/$defs/login_nodes", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrator/$defs/slurm/$defs/login_nodes"]])
+		node_sets!: matchN(1, [_#defs."/$defs/orchestrator/$defs/slurm/$defs/node_sets", [_, ...] & [..._#defs."/$defs/orchestrator/$defs/slurm/$defs/node_sets"]])
+		partitions!: matchN(1, [_#defs."/$defs/orchestrator/$defs/slurm/$defs/partitions", [_, ...] & [..._#defs."/$defs/orchestrator/$defs/slurm/$defs/partitions"]])
+
 		// Default partition to use for submitted jobs that do not
 		// explicitly specify
 		// a partition. Required if and only if there is more than one
 		// partition, in
 		// which case it must match the id of one of the partitions.
 		default_partition?: string
-		login_nodes!: matchN(1, [_#defs."/$defs/orchestrator/$defs/slurm/$defs/login_nodes", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/orchestrator/$defs/slurm/$defs/login_nodes"]])
 
 		// Slurm [epilog
 		// scripts](https://slurm.schedmd.com/prolog_epilog.html), which
@@ -237,11 +242,12 @@ import "list"
 		// a new job.
 		// Values must not be empty.
 		prolog_bash_scripts?: [...string]
-		node_sets!: matchN(1, [_#defs."/$defs/orchestrator/$defs/slurm/$defs/node_sets", [_, ...] & [..._#defs."/$defs/orchestrator/$defs/slurm/$defs/node_sets"]])
-		partitions!: matchN(1, [_#defs."/$defs/orchestrator/$defs/slurm/$defs/partitions", [_, ...] & [..._#defs."/$defs/orchestrator/$defs/slurm/$defs/partitions"]])
 	})
 
 	_#defs: "/$defs/orchestrator/$defs/slurm/$defs/login_nodes": close({
+		boot_disk?: matchN(1, [_#defs."/$defs/orchestrator/$defs/slurm/$defs/login_nodes/$defs/boot_disk", list.MaxItems(1) & [..._#defs."/$defs/orchestrator/$defs/slurm/$defs/login_nodes/$defs/boot_disk"]])
+		storage_configs?: matchN(1, [_#defs."/$defs/orchestrator/$defs/slurm/$defs/login_nodes/$defs/storage_configs", [..._#defs."/$defs/orchestrator/$defs/slurm/$defs/login_nodes/$defs/storage_configs"]])
+
 		// Number of login node instances to create.
 		count!: string
 
@@ -272,8 +278,6 @@ import "list"
 		// to use for
 		// login nodes, e.g. 'n2-standard-2'.
 		machine_type!: string
-		boot_disk?: matchN(1, [_#defs."/$defs/orchestrator/$defs/slurm/$defs/login_nodes/$defs/boot_disk", list.MaxItems(1) & [..._#defs."/$defs/orchestrator/$defs/slurm/$defs/login_nodes/$defs/boot_disk"]])
-		storage_configs?: matchN(1, [_#defs."/$defs/orchestrator/$defs/slurm/$defs/login_nodes/$defs/storage_configs", [..._#defs."/$defs/orchestrator/$defs/slurm/$defs/login_nodes/$defs/storage_configs"]])
 
 		// [Startup
 		// script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux)
@@ -317,6 +321,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/orchestrator/$defs/slurm/$defs/node_sets": close({
+		compute_instance?: matchN(1, [_#defs."/$defs/orchestrator/$defs/slurm/$defs/node_sets/$defs/compute_instance", list.MaxItems(1) & [..._#defs."/$defs/orchestrator/$defs/slurm/$defs/node_sets/$defs/compute_instance"]])
+		storage_configs?: matchN(1, [_#defs."/$defs/orchestrator/$defs/slurm/$defs/node_sets/$defs/storage_configs", [..._#defs."/$defs/orchestrator/$defs/slurm/$defs/node_sets/$defs/storage_configs"]])
+
 		// ID of the compute resource on which this nodeset will run. Must
 		// match a key
 		// in the cluster's
@@ -347,8 +354,6 @@ import "list"
 		// attempt to ensure that at least this many nodes exist at all
 		// times.
 		static_node_count?: string
-		compute_instance?: matchN(1, [_#defs."/$defs/orchestrator/$defs/slurm/$defs/node_sets/$defs/compute_instance", list.MaxItems(1) & [..._#defs."/$defs/orchestrator/$defs/slurm/$defs/node_sets/$defs/compute_instance"]])
-		storage_configs?: matchN(1, [_#defs."/$defs/orchestrator/$defs/slurm/$defs/node_sets/$defs/storage_configs", [..._#defs."/$defs/orchestrator/$defs/slurm/$defs/node_sets/$defs/storage_configs"]])
 	})
 
 	_#defs: "/$defs/orchestrator/$defs/slurm/$defs/node_sets/$defs/compute_instance": close({
@@ -457,6 +462,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/storage_resources/$defs/config/$defs/new_filestore": close({
+		file_shares!: matchN(1, [_#defs."/$defs/storage_resources/$defs/config/$defs/new_filestore/$defs/file_shares", [_, ...] & [..._#defs."/$defs/storage_resources/$defs/config/$defs/new_filestore/$defs/file_shares"]])
+
 		// Description of the instance. Maximum of 2048 characters.
 		description?: string
 
@@ -472,7 +479,6 @@ import "list"
 		// NFSV41 Possible values: ["PROTOCOL_UNSPECIFIED", "NFSV3",
 		// "NFSV41"]
 		protocol?: string
-		file_shares!: matchN(1, [_#defs."/$defs/storage_resources/$defs/config/$defs/new_filestore/$defs/file_shares", [_, ...] & [..._#defs."/$defs/storage_resources/$defs/config/$defs/new_filestore/$defs/file_shares"]])
 
 		// Service tier to use for the instance.
 		// Possible values:

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_colab_runtime")
 	close({
+		notebook_runtime_template_ref?: matchN(1, [#notebook_runtime_template_ref, list.MaxItems(1) & [...#notebook_runtime_template_ref]])
+		timeouts?: #timeouts
+
 		// Triggers an upgrade anytime the runtime is started if it is
 		// upgradable.
 		auto_upgrade?: bool
@@ -37,9 +40,7 @@ import "list"
 
 		// Output only. The type of the notebook runtime.
 		notebook_runtime_type?: string
-		notebook_runtime_template_ref?: matchN(1, [#notebook_runtime_template_ref, list.MaxItems(1) & [...#notebook_runtime_template_ref]])
-		timeouts?: #timeouts
-		project?:  string
+		project?:               string
 
 		// The user email of the NotebookRuntime.
 		runtime_user!: string

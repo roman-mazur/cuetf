@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_azure_client")
 	close({
+		timeouts?: #timeouts
+
 		// The Azure Active Directory Application ID.
 		application_id!: string
 
@@ -12,6 +14,7 @@ package res
 
 		// Output only. The time at which this resource was created.
 		create_time?: string
+		id?:          string
 
 		// The location for the resource
 		location!: string
@@ -24,8 +27,6 @@ package res
 
 		// The Azure Active Directory Tenant ID.
 		tenant_id!: string
-		id?:        string
-		timeouts?:  #timeouts
 
 		// Output only. A globally unique identifier for the client.
 		uid?: string

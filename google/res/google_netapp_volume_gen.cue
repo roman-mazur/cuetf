@@ -6,10 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_volume")
 	close({
+		backup_config?: matchN(1, [#backup_config, list.MaxItems(1) & [...#backup_config]])
+		block_devices?: matchN(1, [#block_devices, [...#block_devices]])
+		cache_parameters?: matchN(1, [#cache_parameters, list.MaxItems(1) & [...#cache_parameters]])
+		export_policy?: matchN(1, [#export_policy, list.MaxItems(1) & [...#export_policy]])
+		hybrid_replication_parameters?: matchN(1, [#hybrid_replication_parameters, list.MaxItems(1) & [...#hybrid_replication_parameters]])
+		restore_parameters?: matchN(1, [#restore_parameters, list.MaxItems(1) & [...#restore_parameters]])
+		snapshot_policy?: matchN(1, [#snapshot_policy, list.MaxItems(1) & [...#snapshot_policy]])
+		tiering_policy?: matchN(1, [#tiering_policy, list.MaxItems(1) & [...#tiering_policy]])
+		timeouts?: #timeouts
+
 		// Reports the resource name of the Active Directory policy being
 		// used. Inherited from storage pool.
 		active_directory?: string
-		backup_config?: matchN(1, [#backup_config, list.MaxItems(1) & [...#backup_config]])
 
 		// Capacity of the volume (in GiB).
 		capacity_gib!: string
@@ -48,12 +57,12 @@ import "list"
 		// Total hot tier data rounded down to the nearest GiB used by the
 		// volume. This field is only used for flex Service Level
 		hot_tier_size_used_gib?: string
+		id?:                     string
 
 		// Flag indicating if the volume is a kerberos volume or not,
 		// export policy rules control kerberos security modes (krb5,
 		// krb5i, krb5p).
 		kerberos_enabled?: bool
-		id?:               string
 
 		// Reports the CMEK policy resurce name being used for volume
 		// encryption. Inherited from storage pool.
@@ -103,21 +112,13 @@ import "list"
 		// 'projects/{{project}}/global/networks/{{network}}'. Inherited
 		// from storage pool.
 		network?: string
+		project?: string
 
 		// The protocol of the volume. Allowed combinations are
 		// '['NFSV3']', '['NFSV4']', '['SMB']', '['NFSV3', 'NFSV4']',
 		// '['SMB', 'NFSV3']' and '['SMB', 'NFSV4']'. Possible values:
 		// ["NFSV3", "NFSV4", "SMB", "ISCSI"]
 		protocols!: [...string]
-		block_devices?: matchN(1, [#block_devices, [...#block_devices]])
-		cache_parameters?: matchN(1, [#cache_parameters, list.MaxItems(1) & [...#cache_parameters]])
-		export_policy?: matchN(1, [#export_policy, list.MaxItems(1) & [...#export_policy]])
-		hybrid_replication_parameters?: matchN(1, [#hybrid_replication_parameters, list.MaxItems(1) & [...#hybrid_replication_parameters]])
-		restore_parameters?: matchN(1, [#restore_parameters, list.MaxItems(1) & [...#restore_parameters]])
-		snapshot_policy?: matchN(1, [#snapshot_policy, list.MaxItems(1) & [...#snapshot_policy]])
-		tiering_policy?: matchN(1, [#tiering_policy, list.MaxItems(1) & [...#tiering_policy]])
-		timeouts?: #timeouts
-		project?:  string
 
 		// Name of the Private Service Access allocated range. Inherited
 		// from storage pool.
@@ -244,6 +245,8 @@ import "list"
 	})
 
 	#cache_parameters: close({
+		cache_config?: matchN(1, [_#defs."/$defs/cache_parameters/$defs/cache_config", list.MaxItems(1) & [..._#defs."/$defs/cache_parameters/$defs/cache_config"]])
+
 		// State of the cache volume indicating the peering status.
 		cache_state?: string
 
@@ -268,7 +271,6 @@ import "list"
 
 		// Required. Name of the origin volume's SVM.
 		peer_svm_name?: string
-		cache_config?: matchN(1, [_#defs."/$defs/cache_parameters/$defs/cache_config", list.MaxItems(1) & [..._#defs."/$defs/cache_parameters/$defs/cache_config"]])
 
 		// Required. Name of the origin volume for the cache volume.
 		peer_volume_name?: string

@@ -60,6 +60,7 @@ package data
 		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		// Only one of 'expire_time' or 'ttl' can be provided.
 		expire_time?: string
+		id?:          string
 
 		// The labels assigned to this Secret.
 		//
@@ -87,7 +88,8 @@ package data
 
 		// The resource name of the Secret. Format:
 		// 'projects/{{project}}/secrets/{{secret_id}}'
-		name?: string
+		name?:    string
+		project?: string
 
 		// The replication policy of the secret data attached to the
 		// Secret. It cannot be changed
@@ -107,7 +109,6 @@ package data
 				})]
 			})]
 		})]
-		id?: string
 
 		// The rotation time and period for a Secret. At
 		// 'next_rotation_time', Secret Manager will send a Pub/Sub
@@ -117,7 +118,6 @@ package data
 			next_rotation_time?: string
 			rotation_period?:    string
 		})]
-		project?: string
 
 		// This must be unique within the project.
 		secret_id!: string

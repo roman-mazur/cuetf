@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gkeonprem_bare_metal_node_pool")
 	close({
+		node_pool_config!: matchN(1, [#node_pool_config, list.MaxItems(1) & [_, ...] & [...#node_pool_config]])
+		timeouts?: #timeouts
+
 		// Annotations on the Bare Metal Node Pool.
 		// This field has the same restrictions as Kubernetes annotations.
 		// The total size of all keys and values combined is limited to
@@ -56,10 +59,8 @@ import "list"
 		location!: string
 
 		// The bare metal node pool name.
-		name!: string
-		node_pool_config!: matchN(1, [#node_pool_config, list.MaxItems(1) & [_, ...] & [...#node_pool_config]])
-		timeouts?: #timeouts
-		project?:  string
+		name!:    string
+		project?: string
 
 		// If set, there are currently changes in flight to the Bare Metal
 		// User Cluster.

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_biglake_table")
 	close({
+		hive_options?: matchN(1, [#hive_options, list.MaxItems(1) & [...#hive_options]])
+		timeouts?: #timeouts
+
 		// Output only. The creation time of the table. A timestamp in
 		// RFC3339 UTC
 		// "Zulu" format, with nanosecond resolution and up to nine
@@ -47,8 +50,6 @@ import "list"
 		// Output only. The name of the Table. Format:
 		// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
 		name!: string
-		hive_options?: matchN(1, [#hive_options, list.MaxItems(1) & [...#hive_options]])
-		timeouts?: #timeouts
 
 		// The database type. Possible values: ["HIVE"]
 		type?: string

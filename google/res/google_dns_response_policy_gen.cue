@@ -4,6 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dns_response_policy")
 	close({
+		gke_clusters?: matchN(1, [#gke_clusters, [...#gke_clusters]])
+		networks?: matchN(1, [#networks, [...#networks]])
+		timeouts?: #timeouts
+
 		// The description of the response policy, such as 'My new
 		// response policy'.
 		description?: string
@@ -13,9 +17,6 @@ package res
 		// The user assigned name for this Response Policy, such as
 		// 'myresponsepolicy'.
 		response_policy_name!: string
-		gke_clusters?: matchN(1, [#gke_clusters, [...#gke_clusters]])
-		networks?: matchN(1, [#networks, [...#networks]])
-		timeouts?: #timeouts
 	})
 
 	#gke_clusters: close({

@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_model_armor_template")
 	close({
+		filter_config!: matchN(1, [#filter_config, list.MaxItems(1) & [_, ...] & [...#filter_config]])
+		template_metadata?: matchN(1, [#template_metadata, list.MaxItems(1) & [...#template_metadata]])
+		timeouts?: #timeouts
+
 		// Create time stamp
 		create_time?: string
 
@@ -13,6 +17,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Labels as key value pairs
 		//
@@ -21,7 +26,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -36,9 +40,6 @@ import "list"
 		// If auto-generating Id server-side, remove this field and
 		// template_id from the method_signature of Create RPC
 		template_id!: string
-		filter_config!: matchN(1, [#filter_config, list.MaxItems(1) & [_, ...] & [...#filter_config]])
-		template_metadata?: matchN(1, [#template_metadata, list.MaxItems(1) & [...#template_metadata]])
-		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -56,6 +57,8 @@ import "list"
 	})
 
 	#template_metadata: close({
+		multi_language_detection?: matchN(1, [_#defs."/$defs/template_metadata/$defs/multi_language_detection", list.MaxItems(1) & [..._#defs."/$defs/template_metadata/$defs/multi_language_detection"]])
+
 		// Indicates the custom error code set by the user to be returned
 		// to the end
 		// user if the LLM response trips Model Armor filters.
@@ -84,7 +87,6 @@ import "list"
 
 		// If true, partial detector failures should be ignored.
 		ignore_partial_invocation_failures?: bool
-		multi_language_detection?: matchN(1, [_#defs."/$defs/template_metadata/$defs/multi_language_detection", list.MaxItems(1) & [..._#defs."/$defs/template_metadata/$defs/multi_language_detection"]])
 
 		// If true, log sanitize operations.
 		log_sanitize_operations?: bool

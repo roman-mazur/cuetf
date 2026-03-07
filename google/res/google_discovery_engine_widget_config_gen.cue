@@ -6,27 +6,28 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_widget_config")
 	close({
+		access_settings?: matchN(1, [#access_settings, list.MaxItems(1) & [...#access_settings]])
+		homepage_setting?: matchN(1, [#homepage_setting, list.MaxItems(1) & [...#homepage_setting]])
+		timeouts?: #timeouts
+		ui_branding?: matchN(1, [#ui_branding, list.MaxItems(1) & [...#ui_branding]])
+		ui_settings?: matchN(1, [#ui_settings, list.MaxItems(1) & [...#ui_settings]])
+
 		// The collection ID.
 		collection_id?: string
 
 		// The engine ID.
 		engine_id!: string
-		access_settings?: matchN(1, [#access_settings, list.MaxItems(1) & [...#access_settings]])
+		id?:        string
 
 		// The geographic location where the data store should reside. The
 		// value can
 		// only be one of "global", "us" and "eu".
 		location!: string
-		id?:       string
 
 		// The full resource name of the widget config. Format:
 		// 'projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/widgetConfigs/{widget_config_id}'.
-		name?: string
-		homepage_setting?: matchN(1, [#homepage_setting, list.MaxItems(1) & [...#homepage_setting]])
-		timeouts?: #timeouts
-		ui_branding?: matchN(1, [#ui_branding, list.MaxItems(1) & [...#ui_branding]])
+		name?:    string
 		project?: string
-		ui_settings?: matchN(1, [#ui_settings, list.MaxItems(1) & [...#ui_settings]])
 
 		// The unique ID to use for the WidgetConfig. Currently only
 		// accepts "default_search_widget_config".
@@ -69,6 +70,9 @@ import "list"
 	})
 
 	#ui_settings: close({
+		data_store_ui_configs?: matchN(1, [_#defs."/$defs/ui_settings/$defs/data_store_ui_configs", [..._#defs."/$defs/ui_settings/$defs/data_store_ui_configs"]])
+		generative_answer_config?: matchN(1, [_#defs."/$defs/ui_settings/$defs/generative_answer_config", list.MaxItems(1) & [..._#defs."/$defs/ui_settings/$defs/generative_answer_config"]])
+
 		// The default ordering for search results if specified.
 		// Used to set SearchRequest#orderBy on applicable requests.
 		default_search_request_order_by?: string
@@ -95,8 +99,6 @@ import "list"
 		// Whether to enable search-as-you-type behavior for the search
 		// widget.
 		enable_search_as_you_type?: bool
-		data_store_ui_configs?: matchN(1, [_#defs."/$defs/ui_settings/$defs/data_store_ui_configs", [..._#defs."/$defs/ui_settings/$defs/data_store_ui_configs"]])
-		generative_answer_config?: matchN(1, [_#defs."/$defs/ui_settings/$defs/generative_answer_config", list.MaxItems(1) & [..._#defs."/$defs/ui_settings/$defs/generative_answer_config"]])
 
 		// If set to true, the widget will enable visual content summary
 		// on applicable

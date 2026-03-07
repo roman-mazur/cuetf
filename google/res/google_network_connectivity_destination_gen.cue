@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_destination")
 	close({
+		endpoints!: matchN(1, [#endpoints, [_, ...] & [...#endpoints]])
+		timeouts?: #timeouts
+
 		// Time when the 'Destination' resource was created.
 		create_time?: string
 
@@ -21,10 +24,10 @@ package res
 		// before
 		// proceeding.
 		etag?: string
+		id?:   string
 
 		// The IP prefix that represents your workload on another CSP.
 		ip_prefix!: string
-		id?:        string
 
 		// User-defined labels.
 		//
@@ -42,10 +45,8 @@ package res
 		multicloud_data_transfer_config!: string
 
 		// The name of the destination.
-		name!: string
-		endpoints!: matchN(1, [#endpoints, [_, ...] & [...#endpoints]])
-		timeouts?: #timeouts
-		project?:  string
+		name!:    string
+		project?: string
 
 		// The timeline of the expected 'Destination' states or the
 		// current rest

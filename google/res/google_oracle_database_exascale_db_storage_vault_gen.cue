@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_oracle_database_exascale_db_storage_vault")
 	close({
+		properties!: matchN(1, [#properties, list.MaxItems(1) & [_, ...] & [...#properties]])
+		timeouts?: #timeouts
+
 		// The date and time when the ExascaleDbStorageVault was created.
 		create_time?: string
 
@@ -59,8 +62,6 @@ import "list"
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		location!: string
-		properties!: matchN(1, [#properties, list.MaxItems(1) & [_, ...] & [...#properties]])
-		timeouts?: #timeouts
 
 		// Identifier. The resource name of the ExascaleDbStorageVault.
 		// Format:
@@ -74,6 +75,9 @@ import "list"
 	})
 
 	#properties: close({
+		exascale_db_storage_details!: matchN(1, [_#defs."/$defs/properties/$defs/exascale_db_storage_details", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/properties/$defs/exascale_db_storage_details"]])
+		time_zone?: matchN(1, [_#defs."/$defs/properties/$defs/time_zone", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/time_zone"]])
+
 		// The size of additional flash cache in percentage of high
 		// capacity
 		// database storage.
@@ -103,8 +107,6 @@ import "list"
 		// TERMINATED
 		// FAILED
 		state?: string
-		exascale_db_storage_details!: matchN(1, [_#defs."/$defs/properties/$defs/exascale_db_storage_details", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/properties/$defs/exascale_db_storage_details"]])
-		time_zone?: matchN(1, [_#defs."/$defs/properties/$defs/time_zone", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/time_zone"]])
 
 		// The number of VM clusters associated with the
 		// ExascaleDbStorageVault.

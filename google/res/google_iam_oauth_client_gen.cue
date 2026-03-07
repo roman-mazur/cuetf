@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_oauth_client")
 	close({
+		timeouts?: #timeouts
+
 		// Required. The list of OAuth grant types is allowed for the
 		// OauthClient.
 		allowed_grant_types!: [...string]
@@ -65,7 +67,6 @@ package res
 		// cannot
 		// be recovered.
 		expire_time?: string
-		timeouts?:    #timeouts
 		id?:          string
 
 		// Resource ID segment making up resource 'name'. It identifies

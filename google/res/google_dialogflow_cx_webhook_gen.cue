@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_webhook")
 	close({
+		generic_web_service?: matchN(1, [#generic_web_service, list.MaxItems(1) & [...#generic_web_service]])
+		service_directory?: matchN(1, [#service_directory, list.MaxItems(1) & [...#service_directory]])
+		timeouts?: #timeouts
+
 		// Indicates whether the webhook is disabled.
 		disabled?: bool
 
@@ -31,9 +35,6 @@ import "list"
 		// Format: projects/<Project ID>/locations/<Location
 		// ID>/agents/<Agent ID>.
 		parent?: string
-		generic_web_service?: matchN(1, [#generic_web_service, list.MaxItems(1) & [...#generic_web_service]])
-		service_directory?: matchN(1, [#service_directory, list.MaxItems(1) & [...#service_directory]])
-		timeouts?: #timeouts
 
 		// Deprecated. Name of the SecuritySettings reference for the
 		// agent. Format: projects/<Project ID>/locations/<Location
@@ -52,6 +53,10 @@ import "list"
 	})
 
 	#generic_web_service: close({
+		oauth_config?: matchN(1, [_#defs."/$defs/generic_web_service/$defs/oauth_config", list.MaxItems(1) & [..._#defs."/$defs/generic_web_service/$defs/oauth_config"]])
+		secret_versions_for_request_headers?: matchN(1, [_#defs."/$defs/generic_web_service/$defs/secret_versions_for_request_headers", [..._#defs."/$defs/generic_web_service/$defs/secret_versions_for_request_headers"]])
+		service_account_auth_config?: matchN(1, [_#defs."/$defs/generic_web_service/$defs/service_account_auth_config", list.MaxItems(1) & [..._#defs."/$defs/generic_web_service/$defs/service_account_auth_config"]])
+
 		// Specifies a list of allowed custom CA certificates (in DER
 		// format) for
 		// HTTPS verification. This overrides the default SSL trust store.
@@ -104,9 +109,6 @@ import "list"
 		// The generated token is sent in the Authorization header.
 		// Possible values: ["NONE", "ID_TOKEN", "ACCESS_TOKEN"]
 		service_agent_auth?: string
-		oauth_config?: matchN(1, [_#defs."/$defs/generic_web_service/$defs/oauth_config", list.MaxItems(1) & [..._#defs."/$defs/generic_web_service/$defs/oauth_config"]])
-		secret_versions_for_request_headers?: matchN(1, [_#defs."/$defs/generic_web_service/$defs/secret_versions_for_request_headers", [..._#defs."/$defs/generic_web_service/$defs/secret_versions_for_request_headers"]])
-		service_account_auth_config?: matchN(1, [_#defs."/$defs/generic_web_service/$defs/service_account_auth_config", list.MaxItems(1) & [..._#defs."/$defs/generic_web_service/$defs/service_account_auth_config"]])
 
 		// The webhook URI for receiving POST requests. It must use https
 		// protocol.
@@ -184,6 +186,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/service_directory/$defs/generic_web_service": close({
+		oauth_config?: matchN(1, [_#defs."/$defs/service_directory/$defs/generic_web_service/$defs/oauth_config", list.MaxItems(1) & [..._#defs."/$defs/service_directory/$defs/generic_web_service/$defs/oauth_config"]])
+		secret_versions_for_request_headers?: matchN(1, [_#defs."/$defs/service_directory/$defs/generic_web_service/$defs/secret_versions_for_request_headers", [..._#defs."/$defs/service_directory/$defs/generic_web_service/$defs/secret_versions_for_request_headers"]])
+		service_account_auth_config?: matchN(1, [_#defs."/$defs/service_directory/$defs/generic_web_service/$defs/service_account_auth_config", list.MaxItems(1) & [..._#defs."/$defs/service_directory/$defs/generic_web_service/$defs/service_account_auth_config"]])
+
 		// Specifies a list of allowed custom CA certificates (in DER
 		// format) for
 		// HTTPS verification. This overrides the default SSL trust store.
@@ -236,9 +242,6 @@ import "list"
 		// The generated token is sent in the Authorization header.
 		// Possible values: ["NONE", "ID_TOKEN", "ACCESS_TOKEN"]
 		service_agent_auth?: string
-		oauth_config?: matchN(1, [_#defs."/$defs/service_directory/$defs/generic_web_service/$defs/oauth_config", list.MaxItems(1) & [..._#defs."/$defs/service_directory/$defs/generic_web_service/$defs/oauth_config"]])
-		secret_versions_for_request_headers?: matchN(1, [_#defs."/$defs/service_directory/$defs/generic_web_service/$defs/secret_versions_for_request_headers", [..._#defs."/$defs/service_directory/$defs/generic_web_service/$defs/secret_versions_for_request_headers"]])
-		service_account_auth_config?: matchN(1, [_#defs."/$defs/service_directory/$defs/generic_web_service/$defs/service_account_auth_config", list.MaxItems(1) & [..._#defs."/$defs/service_directory/$defs/generic_web_service/$defs/service_account_auth_config"]])
 
 		// The webhook URI for receiving POST requests. It must use https
 		// protocol.

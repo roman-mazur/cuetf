@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_host_group")
 	close({
+		timeouts?: #timeouts
+
 		// Create time of the host group. A timestamp in RFC3339 UTC
 		// "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 		create_time?: string
@@ -43,12 +45,11 @@ package res
 		// HostGroup must be
 		// of the same OS type. This can be set only when creating a
 		// HostGroup. Possible values: ["LINUX", "WINDOWS", "ESXI"]
-		os_type!:  string
-		timeouts?: #timeouts
+		os_type!: string
+		project?: string
 
 		// The state of the Host Group.
-		state?:   string
-		project?: string
+		state?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

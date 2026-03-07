@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_spanner_instance")
 	close({
+		autoscaling_config?: matchN(1, [#autoscaling_config, list.MaxItems(1) & [...#autoscaling_config]])
+		timeouts?: #timeouts
+
 		// The name of the instance's configuration (similar but not
 		// quite the same as a region) which defines the geographic
 		// placement and
@@ -78,8 +81,6 @@ import "list"
 		// If not provided, a random string starting with 'tf-' will be
 		// selected.
 		name?: string
-		autoscaling_config?: matchN(1, [#autoscaling_config, list.MaxItems(1) & [...#autoscaling_config]])
-		timeouts?: #timeouts
 
 		// The number of nodes allocated to this instance. Exactly one of
 		// either num_nodes, processing_units or

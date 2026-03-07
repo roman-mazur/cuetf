@@ -6,7 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_per_instance_config")
 	close({
-		id?: string
+		preserved_state?: matchN(1, [#preserved_state, list.MaxItems(1) & [...#preserved_state]])
+		timeouts?: #timeouts
+		id?:       string
 
 		// The minimal action to perform on the instance during an update.
 		// Default is 'NONE'. Possible values are:
@@ -27,7 +29,8 @@ import "list"
 
 		// The name for this per-instance config and its corresponding
 		// instance.
-		name!: string
+		name!:    string
+		project?: string
 
 		// Region where the containing instance group manager is located
 		region?: string
@@ -35,9 +38,6 @@ import "list"
 		// The region instance group manager this instance config is part
 		// of.
 		region_instance_group_manager!: string
-		project?:                       string
-		preserved_state?: matchN(1, [#preserved_state, list.MaxItems(1) & [...#preserved_state]])
-		timeouts?: #timeouts
 
 		// When true, deleting this config will immediately remove the
 		// underlying instance.

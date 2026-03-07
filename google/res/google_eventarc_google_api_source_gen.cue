@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_eventarc_google_api_source")
 	close({
+		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
+		timeouts?: #timeouts
+
 		// Resource annotations.
 		//
 		// **Note**: This field is non-authoritative, and will only manage
@@ -64,8 +67,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
-		timeouts?: #timeouts
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in

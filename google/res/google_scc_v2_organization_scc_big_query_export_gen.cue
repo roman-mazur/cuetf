@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_v2_organization_scc_big_query_export")
 	close({
+		timeouts?: #timeouts
+
 		// This must be unique within the organization.
 		big_query_export_id!: string
 
@@ -56,17 +58,16 @@ package res
 		// notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 		// for information on how to write a filter.
 		filter?: string
+		id?:     string
 
 		// location Id is provided by organization. If not provided, Use
 		// global as default.
 		location?: string
-		id?:       string
 
 		// Email address of the user who last edited the BigQuery export.
 		// This field is set by the server and will be ignored if provided
 		// on export creation or update.
 		most_recent_editor?: string
-		timeouts?:           #timeouts
 
 		// The resource name of this export, in the format
 		// 'organizations/{{organization}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}'.

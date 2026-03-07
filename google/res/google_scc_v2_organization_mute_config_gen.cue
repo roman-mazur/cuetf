@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_v2_organization_mute_config")
 	close({
+		timeouts?: #timeouts
+
 		// The time at which the mute config was created. This field is
 		// set by
 		// the server and will be ignored if provided on config creation.
@@ -21,11 +23,11 @@ package res
 		// If a filter contains project = X but is created under the
 		// project = Y scope, it might not match any findings.
 		filter!: string
+		id?:     string
 
 		// location Id is provided by organization. If not provided, Use
 		// global as default.
 		location?: string
-		id?:       string
 
 		// Email address of the user who last edited the mute config. This
 		// field is set by the server and will be ignored if provided on
@@ -45,7 +47,6 @@ package res
 		// The organization whose Cloud Security Command Center the Mute
 		// Config lives in.
 		organization!: string
-		timeouts?:     #timeouts
 
 		// The type of the mute config.
 		type!: string

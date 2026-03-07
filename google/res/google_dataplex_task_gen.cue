@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_task")
 	close({
+		execution_spec!: matchN(1, [#execution_spec, list.MaxItems(1) & [_, ...] & [...#execution_spec]])
+		notebook?: matchN(1, [#notebook, list.MaxItems(1) & [...#notebook]])
+		spark?: matchN(1, [#spark, list.MaxItems(1) & [...#spark]])
+		timeouts?: #timeouts
+		trigger_spec!: matchN(1, [#trigger_spec, list.MaxItems(1) & [_, ...] & [...#trigger_spec]])
+
 		// The time when the task was created.
 		create_time?: string
 
@@ -35,6 +41,7 @@ import "list"
 			})]
 			update_time?: string
 		})]
+		id?: string
 
 		// User-defined labels for the task.
 		//
@@ -47,7 +54,6 @@ import "list"
 
 		// The lake in which the task will be created in.
 		lake?: string
-		id?:   string
 
 		// The location in which the task will be created in.
 		location?: string
@@ -55,19 +61,14 @@ import "list"
 		// The relative resource name of the task, of the form:
 		// projects/{project_number}/locations/{locationId}/lakes/{lakeId}/
 		// tasks/{name}.
-		name?: string
+		name?:    string
+		project?: string
 
 		// Current state of the task.
 		state?: string
-		execution_spec!: matchN(1, [#execution_spec, list.MaxItems(1) & [_, ...] & [...#execution_spec]])
-		notebook?: matchN(1, [#notebook, list.MaxItems(1) & [...#notebook]])
-		spark?: matchN(1, [#spark, list.MaxItems(1) & [...#spark]])
-		timeouts?: #timeouts
-		trigger_spec!: matchN(1, [#trigger_spec, list.MaxItems(1) & [_, ...] & [...#trigger_spec]])
 
 		// The task Id of the task.
 		task_id?: string
-		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -118,11 +119,12 @@ import "list"
 	})
 
 	#notebook: close({
+		infrastructure_spec?: matchN(1, [_#defs."/$defs/notebook/$defs/infrastructure_spec", list.MaxItems(1) & [..._#defs."/$defs/notebook/$defs/infrastructure_spec"]])
+
 		// Cloud Storage URIs of archives to be extracted into the working
 		// directory of each executor. Supported file types: .jar, .tar,
 		// .tar.gz, .tgz, and .zip.
 		archive_uris?: [...string]
-		infrastructure_spec?: matchN(1, [_#defs."/$defs/notebook/$defs/infrastructure_spec", list.MaxItems(1) & [..._#defs."/$defs/notebook/$defs/infrastructure_spec"]])
 
 		// Cloud Storage URIs of files to be placed in the working
 		// directory of each executor.
@@ -136,6 +138,8 @@ import "list"
 	})
 
 	#spark: close({
+		infrastructure_spec?: matchN(1, [_#defs."/$defs/spark/$defs/infrastructure_spec", list.MaxItems(1) & [..._#defs."/$defs/spark/$defs/infrastructure_spec"]])
+
 		// Cloud Storage URIs of archives to be extracted into the working
 		// directory of each executor. Supported file types: .jar, .tar,
 		// .tar.gz, .tgz, and .zip.
@@ -164,7 +168,6 @@ import "list"
 		// The query text. The execution args are used to declare a set of
 		// script variables (set key='value';).
 		sql_script?: string
-		infrastructure_spec?: matchN(1, [_#defs."/$defs/spark/$defs/infrastructure_spec", list.MaxItems(1) & [..._#defs."/$defs/spark/$defs/infrastructure_spec"]])
 
 		// A reference to a query file. This can be the Cloud Storage URI
 		// of the query file or it can the path to a SqlScript Content.

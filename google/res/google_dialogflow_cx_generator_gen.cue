@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_generator")
 	close({
+		llm_model_settings?: matchN(1, [#llm_model_settings, list.MaxItems(1) & [...#llm_model_settings]])
+		model_parameter?: matchN(1, [#model_parameter, list.MaxItems(1) & [...#model_parameter]])
+		placeholders?: matchN(1, [#placeholders, [...#placeholders]])
+		prompt_text!: matchN(1, [#prompt_text, list.MaxItems(1) & [_, ...] & [...#prompt_text]])
+		timeouts?: #timeouts
+
 		// The human-readable name of the generator, unique within the
 		// agent.
 		display_name!: string
@@ -20,16 +26,11 @@ import "list"
 		// Format: projects/<Project ID>/locations/<Location
 		// ID>/agents/<Agent ID>/generators/<Generator ID>.
 		name?: string
-		llm_model_settings?: matchN(1, [#llm_model_settings, list.MaxItems(1) & [...#llm_model_settings]])
-		model_parameter?: matchN(1, [#model_parameter, list.MaxItems(1) & [...#model_parameter]])
-		placeholders?: matchN(1, [#placeholders, [...#placeholders]])
 
 		// The agent to create a Generator for.
 		// Format: projects/<Project ID>/locations/<Location
 		// ID>/agents/<Agent ID>.
 		parent?: string
-		prompt_text!: matchN(1, [#prompt_text, list.MaxItems(1) & [_, ...] & [...#prompt_text]])
-		timeouts?: #timeouts
 	})
 
 	#llm_model_settings: close({

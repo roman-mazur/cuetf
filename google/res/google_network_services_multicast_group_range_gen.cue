@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_multicast_group_range")
 	close({
+		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
+		timeouts?: #timeouts
+
 		// A list of consumer projects that are allowed to subscribe to
 		// the multicast
 		// IP addresses within the range defined by this
@@ -77,14 +80,12 @@ import "list"
 		// Identifier. The resource name of the multicast group range.
 		// Use the following format:
 		// 'projects/*/locations/global/multicastGroupRanges/*'.
-		name?: string
-		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		timeouts?: #timeouts
+		name?:    string
+		project?: string
 
 		// Whether an empty consumer_accept_list will deny all consumer
 		// projects.
 		require_explicit_accept?: bool
-		project?:                 string
 
 		// The resource name of the internal range reserved for this
 		// multicast group range.

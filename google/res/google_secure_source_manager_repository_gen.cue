@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_secure_source_manager_repository")
 	close({
+		initial_config?: matchN(1, [#initial_config, list.MaxItems(1) & [...#initial_config]])
+		timeouts?: #timeouts
+
 		// Time the repository was created in UTC.
 		create_time?: string
 
@@ -25,25 +28,23 @@ import "list"
 		// Description of the repository, which cannot exceed 500
 		// characters.
 		description?: string
+		id?:          string
 
 		// The name of the instance in which the repository is hosted.
 		instance!: string
-		id?:       string
 
 		// The location for the Repository.
 		location!: string
 
 		// The resource name for the Repository.
-		name?: string
+		name?:    string
+		project?: string
 
 		// The ID for the Repository.
 		repository_id!: string
 
 		// Unique identifier of the repository.
 		uid?: string
-		initial_config?: matchN(1, [#initial_config, list.MaxItems(1) & [...#initial_config]])
-		project?:  string
-		timeouts?: #timeouts
 
 		// Time the repository was updated in UTC.
 		update_time?: string

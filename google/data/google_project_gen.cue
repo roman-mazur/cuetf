@@ -38,6 +38,7 @@ package data
 		// the specified folder. Changing this forces the project to be
 		// migrated to the newly specified folder.
 		folder_id?: string
+		id?:        string
 
 		// A set of key/value label pairs to assign to the project.
 		//
@@ -49,7 +50,6 @@ package data
 
 		// The display name of the project.
 		name?: string
-		id?:   string
 
 		// The numeric identifier of the project.
 		number?: string

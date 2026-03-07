@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_sql_database_instance")
 	close({
+		clone?: matchN(1, [#clone, list.MaxItems(1) & [...#clone]])
+		point_in_time_restore_context?: matchN(1, [#point_in_time_restore_context, list.MaxItems(1) & [...#point_in_time_restore_context]])
+		replica_configuration?: matchN(1, [#replica_configuration, list.MaxItems(1) & [...#replica_configuration]])
+		replication_cluster?: matchN(1, [#replication_cluster, list.MaxItems(1) & [...#replication_cluster]])
+		restore_backup_context?: matchN(1, [#restore_backup_context, list.MaxItems(1) & [...#restore_backup_context]])
+		settings?: matchN(1, [#settings, list.MaxItems(1) & [...#settings]])
+		timeouts?: #timeouts
+
 		// Available Maintenance versions.
 		available_maintenance_versions?: [...string]
 
@@ -20,10 +28,11 @@ import "list"
 		// Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0,
 		// MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11,
 		// POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15,
-		// POSTGRES_16, POSTGRES_17, SQLSERVER_2017_STANDARD,
-		// SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS,
-		// SQLSERVER_2017_WEB. Database Version Policies includes an
-		// up-to-date reference of supported versions.
+		// POSTGRES_16, POSTGRES_17, POSTGRES_18,
+		// SQLSERVER_2017_STANDARD, SQLSERVER_2017_ENTERPRISE,
+		// SQLSERVER_2017_EXPRESS, SQLSERVER_2017_WEB. Database Version
+		// Policies includes an up-to-date reference of supported
+		// versions.
 		database_version!: string
 
 		// Used to block Terraform from deleting a SQL Instance. Defaults
@@ -53,20 +62,20 @@ import "list"
 		// accessing the first address in the list in a terraform output
 		// when the resource is configured with a count.
 		first_ip_address?: string
+		id?:               string
 
 		// The type of the instance. See
 		// https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType
 		// for supported values.
 		instance_type?: string
-		id?:            string
-
-		// Maintenance version.
-		maintenance_version?: string
 		ip_address?: [...close({
 			ip_address?:     string
 			time_to_retire?: string
 			type?:           string
 		})]
+
+		// Maintenance version.
+		maintenance_version?: string
 
 		// The name of the instance that will act as the master in the
 		// replication setup. Note, this requires the master to have
@@ -89,13 +98,6 @@ import "list"
 		// an IP of a specific type without performing filtering in a
 		// Terraform config.
 		private_ip_address?: string
-		clone?: matchN(1, [#clone, list.MaxItems(1) & [...#clone]])
-		point_in_time_restore_context?: matchN(1, [#point_in_time_restore_context, list.MaxItems(1) & [...#point_in_time_restore_context]])
-		replica_configuration?: matchN(1, [#replica_configuration, list.MaxItems(1) & [...#replica_configuration]])
-		replication_cluster?: matchN(1, [#replication_cluster, list.MaxItems(1) & [...#replication_cluster]])
-		restore_backup_context?: matchN(1, [#restore_backup_context, list.MaxItems(1) & [...#restore_backup_context]])
-		settings?: matchN(1, [#settings, list.MaxItems(1) & [...#settings]])
-		timeouts?: #timeouts
 
 		// The ID of the project in which the resource belongs. If it is
 		// not provided, the provider project is used.
@@ -294,9 +296,29 @@ import "list"
 	})
 
 	#settings: close({
+		active_directory_config?: matchN(1, [_#defs."/$defs/settings/$defs/active_directory_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/active_directory_config"]])
+		advanced_machine_features?: matchN(1, [_#defs."/$defs/settings/$defs/advanced_machine_features", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/advanced_machine_features"]])
+		backup_configuration?: matchN(1, [_#defs."/$defs/settings/$defs/backup_configuration", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/backup_configuration"]])
+		connection_pool_config?: matchN(1, [_#defs."/$defs/settings/$defs/connection_pool_config", [..._#defs."/$defs/settings/$defs/connection_pool_config"]])
+		data_cache_config?: matchN(1, [_#defs."/$defs/settings/$defs/data_cache_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/data_cache_config"]])
+		database_flags?: matchN(1, [_#defs."/$defs/settings/$defs/database_flags", [..._#defs."/$defs/settings/$defs/database_flags"]])
+		deny_maintenance_period?: matchN(1, [_#defs."/$defs/settings/$defs/deny_maintenance_period", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/deny_maintenance_period"]])
+		final_backup_config?: matchN(1, [_#defs."/$defs/settings/$defs/final_backup_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/final_backup_config"]])
+		insights_config?: matchN(1, [_#defs."/$defs/settings/$defs/insights_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/insights_config"]])
+		ip_configuration?: matchN(1, [_#defs."/$defs/settings/$defs/ip_configuration", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/ip_configuration"]])
+		location_preference?: matchN(1, [_#defs."/$defs/settings/$defs/location_preference", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/location_preference"]])
+		maintenance_window?: matchN(1, [_#defs."/$defs/settings/$defs/maintenance_window", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/maintenance_window"]])
+		password_validation_policy?: matchN(1, [_#defs."/$defs/settings/$defs/password_validation_policy", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/password_validation_policy"]])
+		read_pool_auto_scale_config?: matchN(1, [_#defs."/$defs/settings/$defs/read_pool_auto_scale_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/read_pool_auto_scale_config"]])
+		sql_server_audit_config?: matchN(1, [_#defs."/$defs/settings/$defs/sql_server_audit_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/sql_server_audit_config"]])
+
 		// This specifies when the instance should be active. Can be
 		// either ALWAYS, NEVER or ON_DEMAND.
 		activation_policy?: string
+
+		// Enables Automatic Version Upgrade feature. Can be used with
+		// MySQL only.
+		auto_upgrade_enabled?: bool
 
 		// The availability type of the Cloud SQL instance, high
 		// availability
@@ -321,6 +343,10 @@ import "list"
 		// connectors for all the connections. If enabled, all the direct
 		// connections are rejected.
 		connector_enforcement?: string
+
+		// Allows using ExecuteSql API to connect to the instance.
+		// Disallowed when unspecified.
+		data_api_access?: string
 
 		// Configuration to protect against accidental instance deletion.
 		deletion_protection_enabled?: bool
@@ -353,24 +379,9 @@ import "list"
 		// API (for read pools, effective_availability_type may differ
 		// from availability_type).
 		effective_availability_type?: string
-		active_directory_config?: matchN(1, [_#defs."/$defs/settings/$defs/active_directory_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/active_directory_config"]])
-		advanced_machine_features?: matchN(1, [_#defs."/$defs/settings/$defs/advanced_machine_features", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/advanced_machine_features"]])
-		backup_configuration?: matchN(1, [_#defs."/$defs/settings/$defs/backup_configuration", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/backup_configuration"]])
-		connection_pool_config?: matchN(1, [_#defs."/$defs/settings/$defs/connection_pool_config", [..._#defs."/$defs/settings/$defs/connection_pool_config"]])
-		data_cache_config?: matchN(1, [_#defs."/$defs/settings/$defs/data_cache_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/data_cache_config"]])
-		database_flags?: matchN(1, [_#defs."/$defs/settings/$defs/database_flags", [..._#defs."/$defs/settings/$defs/database_flags"]])
-		deny_maintenance_period?: matchN(1, [_#defs."/$defs/settings/$defs/deny_maintenance_period", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/deny_maintenance_period"]])
-		final_backup_config?: matchN(1, [_#defs."/$defs/settings/$defs/final_backup_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/final_backup_config"]])
-		insights_config?: matchN(1, [_#defs."/$defs/settings/$defs/insights_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/insights_config"]])
-		ip_configuration?: matchN(1, [_#defs."/$defs/settings/$defs/ip_configuration", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/ip_configuration"]])
-		location_preference?: matchN(1, [_#defs."/$defs/settings/$defs/location_preference", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/location_preference"]])
-		maintenance_window?: matchN(1, [_#defs."/$defs/settings/$defs/maintenance_window", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/maintenance_window"]])
-		password_validation_policy?: matchN(1, [_#defs."/$defs/settings/$defs/password_validation_policy", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/password_validation_policy"]])
-		read_pool_auto_scale_config?: matchN(1, [_#defs."/$defs/settings/$defs/read_pool_auto_scale_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/read_pool_auto_scale_config"]])
 
 		// Enables Dataplex Integration.
 		enable_dataplex_integration?: bool
-		sql_server_audit_config?: matchN(1, [_#defs."/$defs/settings/$defs/sql_server_audit_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/sql_server_audit_config"]])
 
 		// Enables Vertex AI Integration.
 		enable_google_ml_integration?: bool
@@ -421,6 +432,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/settings/$defs/backup_configuration": close({
+		backup_retention_settings?: matchN(1, [_#defs."/$defs/settings/$defs/backup_configuration/$defs/backup_retention_settings", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/backup_configuration/$defs/backup_retention_settings"]])
+
 		// Backup tier that manages the backups for the instance.
 		backup_tier?: string
 
@@ -440,7 +453,6 @@ import "list"
 
 		// HH:MM format time indicating when backup configuration starts.
 		start_time?: string
-		backup_retention_settings?: matchN(1, [_#defs."/$defs/settings/$defs/backup_configuration/$defs/backup_retention_settings", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/backup_configuration/$defs/backup_retention_settings"]])
 
 		// The number of days of transaction logs we retain for point in
 		// time restore, from 1-7. (For PostgreSQL Enterprise Plus
@@ -515,6 +527,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/settings/$defs/insights_config": close({
+		// True if Enhanced Query Insights feature is enabled.
+		enhanced_query_insights_enabled?: bool
+
 		// True if Query Insights feature is enabled.
 		query_insights_enabled?: bool
 
@@ -524,8 +539,8 @@ import "list"
 		query_plans_per_minute?: number
 
 		// Maximum query length stored in bytes. Between 256 and 4500.
-		// Default to 1024. For Enterprise Plus instances, from 1 to
-		// 1048576.
+		// Default to 1024. For Enterprise Plus instances, from 1024 to
+		// 100000.
 		query_string_length?: number
 
 		// True if Query Insights will record application tags from query
@@ -537,6 +552,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/settings/$defs/ip_configuration": close({
+		authorized_networks?: matchN(1, [_#defs."/$defs/settings/$defs/ip_configuration/$defs/authorized_networks", [..._#defs."/$defs/settings/$defs/ip_configuration/$defs/authorized_networks"]])
+		psc_config?: matchN(1, [_#defs."/$defs/settings/$defs/ip_configuration/$defs/psc_config", [..._#defs."/$defs/settings/$defs/ip_configuration/$defs/psc_config"]])
+
 		// The name of the allocated ip range for the private ip CloudSQL
 		// instance. For example: "google-managed-services-default". If
 		// set, the instance ip will be created in the allocated range.
@@ -570,8 +588,6 @@ import "list"
 		// Specify how the server certificate's Certificate Authority is
 		// hosted.
 		server_ca_mode?: string
-		authorized_networks?: matchN(1, [_#defs."/$defs/settings/$defs/ip_configuration/$defs/authorized_networks", [..._#defs."/$defs/settings/$defs/ip_configuration/$defs/authorized_networks"]])
-		psc_config?: matchN(1, [_#defs."/$defs/settings/$defs/ip_configuration/$defs/psc_config", [..._#defs."/$defs/settings/$defs/ip_configuration/$defs/psc_config"]])
 
 		// The resource name of the server CA pool for an instance with
 		// "CUSTOMER_MANAGED_CAS_CA" as the "server_ca_mode".
@@ -589,13 +605,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/settings/$defs/ip_configuration/$defs/psc_config": close({
+		psc_auto_connections?: matchN(1, [_#defs."/$defs/settings/$defs/ip_configuration/$defs/psc_config/$defs/psc_auto_connections", [..._#defs."/$defs/settings/$defs/ip_configuration/$defs/psc_config/$defs/psc_auto_connections"]])
+
 		// List of consumer projects that are allow-listed for PSC
 		// connections to this instance. This instance can be connected
 		// to with PSC from any network in these projects. Each consumer
 		// project in this list may be represented by a project number
 		// (numeric) or by a project id (alphanumeric).
 		allowed_consumer_projects?: [...string]
-		psc_auto_connections?: matchN(1, [_#defs."/$defs/settings/$defs/ip_configuration/$defs/psc_config/$defs/psc_auto_connections", [..._#defs."/$defs/settings/$defs/ip_configuration/$defs/psc_config/$defs/psc_auto_connections"]])
 
 		// Name of network attachment resource used to authorize a
 		// producer service to connect a PSC interface to the consumer's
@@ -676,6 +693,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/settings/$defs/read_pool_auto_scale_config": close({
+		target_metrics?: matchN(1, [_#defs."/$defs/settings/$defs/read_pool_auto_scale_config/$defs/target_metrics", [..._#defs."/$defs/settings/$defs/read_pool_auto_scale_config/$defs/target_metrics"]])
+
 		// True if auto scale in is disabled.
 		disable_scale_in?: bool
 
@@ -695,7 +714,6 @@ import "list"
 
 		// The cooldown period for scale out operations.
 		scale_out_cooldown_seconds?: number
-		target_metrics?: matchN(1, [_#defs."/$defs/settings/$defs/read_pool_auto_scale_config/$defs/target_metrics", [..._#defs."/$defs/settings/$defs/read_pool_auto_scale_config/$defs/target_metrics"]])
 	})
 
 	_#defs: "/$defs/settings/$defs/read_pool_auto_scale_config/$defs/target_metrics": close({

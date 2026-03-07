@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_analysis_occurrence")
 	close({
+		attestation!: matchN(1, [#attestation, list.MaxItems(1) & [_, ...] & [...#attestation]])
+		timeouts?: #timeouts
+
 		// The time when the repository was created.
 		create_time?: string
 		id?:          string
@@ -34,8 +37,6 @@ import "list"
 		// the occurrence applies. For example,
 		// https://gcr.io/project/image@sha256:123abc for a Docker image.
 		resource_uri!: string
-		attestation!: matchN(1, [#attestation, list.MaxItems(1) & [_, ...] & [...#attestation]])
-		timeouts?: #timeouts
 
 		// The time when the repository was last updated.
 		update_time?: string

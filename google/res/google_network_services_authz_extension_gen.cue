@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_authz_extension")
 	close({
+		timeouts?: #timeouts
+
 		// The :authority header in the gRPC request sent from Envoy to
 		// the extension service.
 		authority!: string
@@ -37,6 +39,7 @@ package res
 		// client). If omitted, all headers are sent. Each element is a
 		// string indicating the header name.
 		forward_headers?: [...string]
+		id?: string
 
 		// Set of labels associated with the AuthzExtension resource.
 		//
@@ -58,7 +61,6 @@ package res
 
 		// The location of the resource.
 		location!: string
-		id?:       string
 
 		// The metadata provided here is included as part of the
 		// metadata_context (of type google.protobuf.Struct) in the
@@ -72,8 +74,8 @@ package res
 		metadata?: [string]: string
 
 		// Identifier. Name of the AuthzExtension resource.
-		name!:     string
-		timeouts?: #timeouts
+		name!:    string
+		project?: string
 
 		// The service that runs the extension.
 		// The following values and formats are accepted:
@@ -92,7 +94,6 @@ package res
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?: string
 
 		// Specifies the timeout for each individual message on the
 		// stream. The timeout must be between 10-10000 milliseconds.

@@ -53,6 +53,7 @@ package data
 		// the
 		// snapshot using a customer-supplied encryption key.
 		licenses?: [...string]
+		most_recent?: bool
 
 		// Name of the resource; provided by the client when the resource
 		// is
@@ -65,7 +66,9 @@ package data
 		// characters must be a dash, lowercase letter, or digit, except
 		// the last
 		// character, which cannot be a dash.
-		name?: string
+		name?:      string
+		project?:   string
+		self_link?: string
 
 		// Encrypts the snapshot using a customer-supplied encryption key.
 		//
@@ -93,12 +96,9 @@ package data
 			rsa_encrypted_key?:       string
 			sha256?:                  string
 		})]
-		most_recent?: bool
-		project?:     string
 
 		// The unique identifier for the resource.
 		snapshot_id?: number
-		self_link?:   string
 
 		// Indicates the type of the snapshot. Possible values:
 		// ["ARCHIVE", "STANDARD"]

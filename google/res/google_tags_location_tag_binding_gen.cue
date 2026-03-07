@@ -4,7 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_tags_location_tag_binding")
 	close({
-		id?: string
+		timeouts?: #timeouts
+		id?:       string
 
 		// The geographic location where the transfer config should
 		// reside.
@@ -18,8 +19,7 @@ package res
 
 		// The full resource name of the resource the TagValue is bound
 		// to. E.g. //cloudresourcemanager.googleapis.com/projects/123
-		parent!:   string
-		timeouts?: #timeouts
+		parent!: string
 
 		// The TagValue of the TagBinding. Must be either in id format
 		// 'tagValues/{tag-value-id}', or namespaced format

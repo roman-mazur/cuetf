@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_healthcare_dicom_store")
 	close({
+		notification_config?: matchN(1, [#notification_config, list.MaxItems(1) & [...#notification_config]])
+		timeouts?: #timeouts
+
 		// Identifies the dataset addressed by this request. Must be in
 		// the format
 		// 'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -15,6 +18,7 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// User-supplied key-value pairs used to organize DICOM stores.
 		//
@@ -48,9 +52,6 @@ import "list"
 
 		// The fully qualified name of this dataset
 		self_link?: string
-		id?:        string
-		notification_config?: matchN(1, [#notification_config, list.MaxItems(1) & [...#notification_config]])
-		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

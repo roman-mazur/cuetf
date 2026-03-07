@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apihub_api_hub_instance")
 	close({
+		config!: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
+		timeouts?: #timeouts
+
 		// Optional. Identifier to assign to the Api Hub instance. Must be
 		// unique within
 		// scope of the parent resource. If the field is not provided,
@@ -46,8 +49,6 @@ import "list"
 		// 'projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}'.
 		name?:    string
 		project?: string
-		config!: matchN(1, [#config, list.MaxItems(1) & [_, ...] & [...#config]])
-		timeouts?: #timeouts
 
 		// Output only. The current state of the ApiHub instance.
 		// Possible values:

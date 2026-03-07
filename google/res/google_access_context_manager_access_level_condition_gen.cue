@@ -6,11 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_access_context_manager_access_level_condition")
 	close({
+		device_policy?: matchN(1, [#device_policy, list.MaxItems(1) & [...#device_policy]])
+		timeouts?: #timeouts
+		vpc_network_sources?: matchN(1, [#vpc_network_sources, [...#vpc_network_sources]])
+
 		// The name of the Access Level to add this condition to.
 		access_level!: string
 
 		// The name of the Access Policy this resource belongs to.
 		access_policy_id?: string
+		id?:               string
 
 		// A list of CIDR block IP subnetwork specification. May be IPv4
 		// or IPv6.
@@ -24,7 +29,6 @@ import "list"
 		// listed subnets in order for this Condition to be true.
 		// If empty, all IP addresses are allowed.
 		ip_subnetworks?: [...string]
-		id?: string
 
 		// An allowed list of members (users, service accounts).
 		// Using groups is not supported yet.
@@ -46,9 +50,6 @@ import "list"
 		// countries/regions.
 		// Format: A valid ISO 3166-1 alpha-2 code.
 		regions?: [...string]
-		device_policy?: matchN(1, [#device_policy, list.MaxItems(1) & [...#device_policy]])
-		timeouts?: #timeouts
-		vpc_network_sources?: matchN(1, [#vpc_network_sources, [...#vpc_network_sources]])
 
 		// A list of other access levels defined in the same Policy,
 		// referenced by resource name. Referencing an AccessLevel which
@@ -59,6 +60,8 @@ import "list"
 	})
 
 	#device_policy: close({
+		os_constraints?: matchN(1, [_#defs."/$defs/device_policy/$defs/os_constraints", [..._#defs."/$defs/device_policy/$defs/os_constraints"]])
+
 		// A list of allowed device management levels.
 		// An empty list allows all management levels. Possible values:
 		// ["MANAGEMENT_UNSPECIFIED", "NONE", "BASIC", "COMPLETE"]
@@ -75,7 +78,6 @@ import "list"
 
 		// Whether the device needs to be corp owned.
 		require_corp_owned?: bool
-		os_constraints?: matchN(1, [_#defs."/$defs/device_policy/$defs/os_constraints", [..._#defs."/$defs/device_policy/$defs/os_constraints"]])
 
 		// Whether or not screenlock is required for the DevicePolicy
 		// to be true. Defaults to false.

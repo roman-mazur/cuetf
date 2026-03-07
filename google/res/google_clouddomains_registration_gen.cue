@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_clouddomains_registration")
 	close({
+		contact_settings!: matchN(1, [#contact_settings, list.MaxItems(1) & [_, ...] & [...#contact_settings]])
+		dns_settings?: matchN(1, [#dns_settings, list.MaxItems(1) & [...#dns_settings]])
+		management_settings?: matchN(1, [#management_settings, list.MaxItems(1) & [...#management_settings]])
+		timeouts?: #timeouts
+		yearly_price!: matchN(1, [#yearly_price, list.MaxItems(1) & [_, ...] & [...#yearly_price]])
+
 		// The list of contact notices that the caller acknowledges.
 		// Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
 		contact_notices?: [...string]
@@ -28,11 +34,11 @@ import "list"
 
 		// Output only. Time at which the automation was updated.
 		expire_time?: string
+		id?:          string
 
 		// Output only. The set of issues with the Registration that
 		// require attention.
 		issues?: [...string]
-		id?: string
 
 		// Set of labels associated with the Registration.
 		//
@@ -47,17 +53,12 @@ import "list"
 
 		// Output only. Name of the Registration resource, in the format
 		// projects/*/locations/*/registrations/<domain_name>.
-		name?: string
+		name?:    string
+		project?: string
 
 		// Output only. The reason the domain registration failed. Only
 		// set for domains in REGISTRATION_FAILED state.
 		register_failure_reason?: string
-		contact_settings!: matchN(1, [#contact_settings, list.MaxItems(1) & [_, ...] & [...#contact_settings]])
-		dns_settings?: matchN(1, [#dns_settings, list.MaxItems(1) & [...#dns_settings]])
-		management_settings?: matchN(1, [#management_settings, list.MaxItems(1) & [...#management_settings]])
-		timeouts?: #timeouts
-		yearly_price!: matchN(1, [#yearly_price, list.MaxItems(1) & [_, ...] & [...#yearly_price]])
-		project?: string
 
 		// Output only. The current state of the Registration.
 		state?: string
@@ -137,9 +138,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/contact_settings/$defs/admin_contact": close({
+		postal_address!: matchN(1, [_#defs."/$defs/contact_settings/$defs/admin_contact/$defs/postal_address", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/admin_contact/$defs/postal_address"]])
+
 		// Required. Email address of the contact.
 		email!: string
-		postal_address!: matchN(1, [_#defs."/$defs/contact_settings/$defs/admin_contact/$defs/postal_address", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/admin_contact/$defs/postal_address"]])
 
 		// Fax number of the contact in international format. For example,
 		// "+1-800-555-0123".
@@ -206,9 +208,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/contact_settings/$defs/registrant_contact": close({
+		postal_address!: matchN(1, [_#defs."/$defs/contact_settings/$defs/registrant_contact/$defs/postal_address", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/registrant_contact/$defs/postal_address"]])
+
 		// Required. Email address of the contact.
 		email!: string
-		postal_address!: matchN(1, [_#defs."/$defs/contact_settings/$defs/registrant_contact/$defs/postal_address", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/registrant_contact/$defs/postal_address"]])
 
 		// Fax number of the contact in international format. For example,
 		// "+1-800-555-0123".
@@ -275,9 +278,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/contact_settings/$defs/technical_contact": close({
+		postal_address!: matchN(1, [_#defs."/$defs/contact_settings/$defs/technical_contact/$defs/postal_address", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/technical_contact/$defs/postal_address"]])
+
 		// Required. Email address of the contact.
 		email!: string
-		postal_address!: matchN(1, [_#defs."/$defs/contact_settings/$defs/technical_contact/$defs/postal_address", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/contact_settings/$defs/technical_contact/$defs/postal_address"]])
 
 		// Fax number of the contact in international format. For example,
 		// "+1-800-555-0123".

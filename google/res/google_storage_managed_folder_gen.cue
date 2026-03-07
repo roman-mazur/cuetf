@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_managed_folder")
 	close({
+		timeouts?: #timeouts
+
 		// The name of the bucket that contains the managed folder.
 		bucket!: string
 
@@ -25,7 +27,6 @@ package res
 		// trailing '/'. For example, 'example_dir/example_dir2/'.
 		name!:      string
 		self_link?: string
-		timeouts?:  #timeouts
 
 		// The timestamp at which this managed folder was most recently
 		// updated.

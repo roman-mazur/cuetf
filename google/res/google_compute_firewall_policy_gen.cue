@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_firewall_policy")
 	close({
+		timeouts?: #timeouts
+
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
@@ -18,6 +20,7 @@ package res
 		// The unique identifier for the resource. This identifier is
 		// defined by the server.
 		firewall_policy_id?: string
+		id?:                 string
 
 		// Name of the resource. It is a numeric ID allocated by GCP which
 		// uniquely identifies the Firewall Policy.
@@ -29,11 +32,9 @@ package res
 		// Total count of all firewall policy rule tuples. A firewall
 		// policy can not exceed a set number of tuples.
 		rule_tuple_count?: number
-		id?:               string
 
 		// Server-defined URL for the resource.
 		self_link?: string
-		timeouts?:  #timeouts
 
 		// Server-defined URL for this resource with the resource id.
 		self_link_with_id?: string

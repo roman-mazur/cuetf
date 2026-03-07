@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_wire_group")
 	close({
+		endpoints?: matchN(1, [#endpoints, [...#endpoints]])
+		timeouts?: #timeouts
+		wire_properties?: matchN(1, [#wire_properties, list.MaxItems(1) & [...#wire_properties]])
+
 		// Indicates whether the wire group is administratively enabled.
 		admin_enabled?: bool
 
@@ -30,10 +34,7 @@ import "list"
 		// characters must be a dash,
 		// lowercase letter, or digit, except the last character, which
 		// cannot be a dash.
-		name!: string
-		endpoints?: matchN(1, [#endpoints, [...#endpoints]])
-		timeouts?: #timeouts
-		wire_properties?: matchN(1, [#wire_properties, list.MaxItems(1) & [...#wire_properties]])
+		name!:    string
 		project?: string
 
 		// Topology details for the wire group configuration.

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_attached_disk")
 	close({
+		timeouts?: #timeouts
+
 		// Specifies a unique device name of your choice that is reflected
 		// into the /dev/disk/by-id/google-* tree of a Linux operating
 		// system running within the instance. This name can be used to
@@ -16,6 +18,7 @@ package res
 
 		// name or self_link of the disk that will be attached.
 		disk!: string
+		id?:   string
 
 		// name or self_link of the compute instance that the disk will be
 		// attached to. If the self_link is provided then zone and
@@ -23,7 +26,6 @@ package res
 		// used then zone and project must be defined as properties on
 		// the resource or provider.
 		instance!: string
-		id?:       string
 
 		// The disk interface used for attaching this disk. One of SCSI or
 		// NVME. (This field is only used for specific cases, please
@@ -43,8 +45,7 @@ package res
 		// The zone that the referenced compute instance is located
 		// within. If instance is referenced by its self_link the zone
 		// defined in the link will take precedence.
-		zone?:     string
-		timeouts?: #timeouts
+		zone?: string
 	})
 
 	#timeouts: close({

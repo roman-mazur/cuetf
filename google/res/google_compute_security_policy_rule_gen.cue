@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_security_policy_rule")
 	close({
+		header_action?: matchN(1, [#header_action, list.MaxItems(1) & [...#header_action]])
+		match?: matchN(1, [#match, list.MaxItems(1) & [...#match]])
+		preconfigured_waf_config?: matchN(1, [#preconfigured_waf_config, list.MaxItems(1) & [...#preconfigured_waf_config]])
+		rate_limit_options?: matchN(1, [#rate_limit_options, list.MaxItems(1) & [...#rate_limit_options]])
+		redirect_options?: matchN(1, [#redirect_options, list.MaxItems(1) & [...#redirect_options]])
+		timeouts?: #timeouts
+
 		// The Action to perform when the rule is matched. The following
 		// are the valid actions:
 		//
@@ -34,23 +41,17 @@ import "list"
 		// An optional description of this resource. Provide this property
 		// when you create the resource.
 		description?: string
-		header_action?: matchN(1, [#header_action, list.MaxItems(1) & [...#header_action]])
-		id?: string
+		id?:          string
 
 		// If set to true, the specified action is not enforced.
 		preview?: bool
-		match?: matchN(1, [#match, list.MaxItems(1) & [...#match]])
 
 		// An integer indicating the priority of a rule in the list.
 		// The priority must be a positive value between 0 and 2147483647.
 		// Rules are evaluated from highest to lowest priority where 0 is
 		// the highest priority and 2147483647 is the lowest priority.
 		priority!: number
-		preconfigured_waf_config?: matchN(1, [#preconfigured_waf_config, list.MaxItems(1) & [...#preconfigured_waf_config]])
-		rate_limit_options?: matchN(1, [#rate_limit_options, list.MaxItems(1) & [...#rate_limit_options]])
-		redirect_options?: matchN(1, [#redirect_options, list.MaxItems(1) & [...#redirect_options]])
 		project?:  string
-		timeouts?: #timeouts
 
 		// The name of the security policy this rule belongs to.
 		security_policy!: string
@@ -78,6 +79,11 @@ import "list"
 	})
 
 	#rate_limit_options: close({
+		ban_threshold?: matchN(1, [_#defs."/$defs/rate_limit_options/$defs/ban_threshold", list.MaxItems(1) & [..._#defs."/$defs/rate_limit_options/$defs/ban_threshold"]])
+		enforce_on_key_configs?: matchN(1, [_#defs."/$defs/rate_limit_options/$defs/enforce_on_key_configs", [..._#defs."/$defs/rate_limit_options/$defs/enforce_on_key_configs"]])
+		exceed_redirect_options?: matchN(1, [_#defs."/$defs/rate_limit_options/$defs/exceed_redirect_options", list.MaxItems(1) & [..._#defs."/$defs/rate_limit_options/$defs/exceed_redirect_options"]])
+		rate_limit_threshold?: matchN(1, [_#defs."/$defs/rate_limit_options/$defs/rate_limit_threshold", list.MaxItems(1) & [..._#defs."/$defs/rate_limit_options/$defs/rate_limit_threshold"]])
+
 		// Can only be specified if the action for the rule is
 		// "rate_based_ban".
 		// If specified, determines the time (in seconds) the traffic will
@@ -142,8 +148,6 @@ import "list"
 		// HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as
 		// the key value.
 		enforce_on_key_name?: string
-		ban_threshold?: matchN(1, [_#defs."/$defs/rate_limit_options/$defs/ban_threshold", list.MaxItems(1) & [..._#defs."/$defs/rate_limit_options/$defs/ban_threshold"]])
-		enforce_on_key_configs?: matchN(1, [_#defs."/$defs/rate_limit_options/$defs/enforce_on_key_configs", [..._#defs."/$defs/rate_limit_options/$defs/enforce_on_key_configs"]])
 
 		// Action to take for requests that are above the configured rate
 		// limit threshold, to either deny with a specified HTTP response
@@ -151,8 +155,6 @@ import "list"
 		// Valid options are deny(STATUS), where valid values for STATUS
 		// are 403, 404, 429, and 502.
 		exceed_action?: string
-		exceed_redirect_options?: matchN(1, [_#defs."/$defs/rate_limit_options/$defs/exceed_redirect_options", list.MaxItems(1) & [..._#defs."/$defs/rate_limit_options/$defs/exceed_redirect_options"]])
-		rate_limit_threshold?: matchN(1, [_#defs."/$defs/rate_limit_options/$defs/rate_limit_threshold", list.MaxItems(1) & [..._#defs."/$defs/rate_limit_options/$defs/rate_limit_threshold"]])
 	})
 
 	#redirect_options: close({
@@ -211,15 +213,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/preconfigured_waf_config/$defs/exclusion": close({
+		request_cookie?: matchN(1, [_#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_cookie", [..._#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_cookie"]])
+		request_header?: matchN(1, [_#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_header", [..._#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_header"]])
+		request_query_param?: matchN(1, [_#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_query_param", [..._#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_query_param"]])
+		request_uri?: matchN(1, [_#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_uri", [..._#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_uri"]])
+
 		// A list of target rule IDs under the WAF rule set to apply the
 		// preconfigured WAF exclusion.
 		// If omitted, it refers to all the rule IDs under the WAF rule
 		// set.
 		target_rule_ids?: [...string]
-		request_cookie?: matchN(1, [_#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_cookie", [..._#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_cookie"]])
-		request_header?: matchN(1, [_#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_header", [..._#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_header"]])
-		request_query_param?: matchN(1, [_#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_query_param", [..._#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_query_param"]])
-		request_uri?: matchN(1, [_#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_uri", [..._#defs."/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_uri"]])
 
 		// Target WAF rule set to apply the preconfigured WAF exclusion.
 		target_rule_set!: string

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_multicast_domain_group")
 	close({
+		timeouts?: #timeouts
+
 		// The timestamp when the multicast domain group was created.
 		create_time?: string
 
@@ -14,6 +16,7 @@ package res
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
+		id?: string
 
 		// Labels as key-value pairs.
 		//
@@ -22,7 +25,6 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -44,9 +46,8 @@ package res
 		// Identifier. The resource name of the multicast domain group.
 		// Use the following format:
 		// 'projects/*/locations/global/multicastDomainGroups/*'
-		name?:     string
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 
 		// The multicast resource's state.
 		state?: [...close({

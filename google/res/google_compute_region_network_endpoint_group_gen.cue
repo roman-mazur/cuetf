@@ -6,10 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_network_endpoint_group")
 	close({
+		app_engine?: matchN(1, [#app_engine, list.MaxItems(1) & [...#app_engine]])
+		cloud_function?: matchN(1, [#cloud_function, list.MaxItems(1) & [...#cloud_function]])
+		cloud_run?: matchN(1, [#cloud_run, list.MaxItems(1) & [...#cloud_run]])
+		psc_data?: matchN(1, [#psc_data, list.MaxItems(1) & [...#psc_data]])
+		timeouts?: #timeouts
+
 		// An optional description of this resource. Provide this property
 		// when
 		// you create the resource.
 		description?: string
+		id?:          string
 
 		// Name of the resource; provided by the client when the resource
 		// is
@@ -23,7 +30,6 @@ import "list"
 		// the last
 		// character, which cannot be a dash.
 		name!: string
-		id?:   string
 
 		// This field is only used for PSC and INTERNET NEGs.
 		//
@@ -45,21 +51,16 @@ import "list"
 		// connection to
 		// a Google API or a PSC Producer Service Attachment.
 		psc_target_service?: string
-		app_engine?: matchN(1, [#app_engine, list.MaxItems(1) & [...#app_engine]])
-		cloud_function?: matchN(1, [#cloud_function, list.MaxItems(1) & [...#cloud_function]])
-		cloud_run?: matchN(1, [#cloud_run, list.MaxItems(1) & [...#cloud_run]])
-		psc_data?: matchN(1, [#psc_data, list.MaxItems(1) & [...#psc_data]])
 
 		// A reference to the region where the regional NEGs reside.
-		region!:   string
-		timeouts?: #timeouts
+		region!:    string
+		self_link?: string
 
 		// This field is only used for PSC NEGs.
 		//
 		// Optional URL of the subnetwork to which all network endpoints
 		// in the NEG belong.
 		subnetwork?: string
-		self_link?:  string
 	})
 
 	#app_engine: close({

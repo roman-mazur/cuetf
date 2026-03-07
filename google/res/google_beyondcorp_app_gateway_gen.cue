@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_beyondcorp_app_gateway")
 	close({
+		timeouts?: #timeouts
+
 		// A list of connections allocated for the Gateway.
 		allocated_connections?: [...close({
 			ingress_port?: number
@@ -34,15 +36,14 @@ package res
 		labels?: [string]: string
 
 		// ID of the AppGateway.
-		name!: string
+		name!:    string
+		project?: string
 
 		// The region of the AppGateway.
 		region?: string
 
 		// Represents the different states of a AppGateway.
-		state?:    string
-		project?:  string
-		timeouts?: #timeouts
+		state?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

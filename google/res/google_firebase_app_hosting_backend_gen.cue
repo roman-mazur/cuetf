@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_hosting_backend")
 	close({
+		codebase?: matchN(1, [#codebase, list.MaxItems(1) & [...#codebase]])
+		timeouts?: #timeouts
+
 		// Unstructured key value map that may be set by external tools to
 		// store and arbitrary metadata. They are not queryable and should
 		// be
@@ -55,6 +58,7 @@ import "list"
 		// on update or delete to ensure operation is done on expected
 		// resource.
 		etag?: string
+		id?:   string
 
 		// Unstructured key value map that can be used to organize and
 		// categorize
@@ -65,13 +69,10 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The canonical IDs of a Google Cloud location such as
 		// "us-east1".
 		location!: string
-		codebase?: matchN(1, [#codebase, list.MaxItems(1) & [...#codebase]])
-		timeouts?: #timeouts
 
 		// A list of the resources managed by this backend.
 		managed_resources?: [...close({

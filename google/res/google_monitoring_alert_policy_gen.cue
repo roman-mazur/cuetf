@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_alert_policy")
 	close({
+		alert_strategy?: matchN(1, [#alert_strategy, list.MaxItems(1) & [...#alert_strategy]])
+		conditions!: matchN(1, [#conditions, [_, ...] & [...#conditions]])
+		documentation?: matchN(1, [#documentation, list.MaxItems(1) & [...#documentation]])
+		timeouts?: #timeouts
+
 		// How to combine the results of multiple conditions to
 		// determine if an incident should be opened. Possible values:
 		// ["AND", "OR", "AND_WITH_MATCHING_RESOURCE"]
@@ -35,7 +40,6 @@ import "list"
 		// Its syntax is:
 		// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
 		name?: string
-		alert_strategy?: matchN(1, [#alert_strategy, list.MaxItems(1) & [...#alert_strategy]])
 
 		// Identifies the notification channels to which notifications
 		// should be
@@ -50,10 +54,7 @@ import "list"
 		// entries in this field is
 		// 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
 		notification_channels?: [...string]
-		conditions!: matchN(1, [#conditions, [_, ...] & [...#conditions]])
-		documentation?: matchN(1, [#documentation, list.MaxItems(1) & [...#documentation]])
-		timeouts?: #timeouts
-		project?:  string
+		project?: string
 
 		// The severity of an alert policy indicates how important
 		// incidents generated
@@ -91,6 +92,10 @@ import "list"
 	#conditions: close({
 		condition_absent?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_absent", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_absent"]])
 		condition_matched_log?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_matched_log", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_matched_log"]])
+		condition_monitoring_query_language?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_monitoring_query_language", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_monitoring_query_language"]])
+		condition_prometheus_query_language?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_prometheus_query_language", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_prometheus_query_language"]])
+		condition_sql?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_sql", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_sql"]])
+		condition_threshold?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_threshold", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_threshold"]])
 
 		// A short name or phrase used to identify the
 		// condition in dashboards, notifications, and
@@ -106,20 +111,17 @@ import "list"
 		// the condition is created as part of a new or updated alerting
 		// policy.
 		name?: string
-		condition_monitoring_query_language?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_monitoring_query_language", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_monitoring_query_language"]])
-		condition_prometheus_query_language?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_prometheus_query_language", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_prometheus_query_language"]])
-		condition_sql?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_sql", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_sql"]])
-		condition_threshold?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_threshold", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_threshold"]])
 	})
 
 	#documentation: close({
+		links?: matchN(1, [_#defs."/$defs/documentation/$defs/links", [..._#defs."/$defs/documentation/$defs/links"]])
+
 		// The text of the documentation, interpreted according to
 		// mimeType.
 		// The content may not exceed 8,192 Unicode characters and may not
 		// exceed more than 10,240 bytes when encoded in UTF-8 format,
 		// whichever is smaller.
 		content?: string
-		links?: matchN(1, [_#defs."/$defs/documentation/$defs/links", [..._#defs."/$defs/documentation/$defs/links"]])
 
 		// The format of the content field. Presently, only the value
 		// "text/markdown" is supported.
@@ -314,6 +316,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/conditions/$defs/condition_monitoring_query_language": close({
+		trigger?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_monitoring_query_language/$defs/trigger", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_monitoring_query_language/$defs/trigger"]])
+
 		// The amount of time that a time series must
 		// violate the threshold to be considered
 		// failing. Currently, only values that are a
@@ -330,7 +334,6 @@ import "list"
 		// that unhealthy states are detected and
 		// alerted on quickly.
 		duration!: string
-		trigger?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_monitoring_query_language/$defs/trigger", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_monitoring_query_language/$defs/trigger"]])
 
 		// A condition control that determines how
 		// metric-threshold conditions are evaluated when
@@ -544,6 +547,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/conditions/$defs/condition_threshold": close({
+		aggregations?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_threshold/$defs/aggregations", [..._#defs."/$defs/conditions/$defs/condition_threshold/$defs/aggregations"]])
+		denominator_aggregations?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_threshold/$defs/denominator_aggregations", [..._#defs."/$defs/conditions/$defs/condition_threshold/$defs/denominator_aggregations"]])
+		forecast_options?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_threshold/$defs/forecast_options", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_threshold/$defs/forecast_options"]])
+		trigger?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_threshold/$defs/trigger", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_threshold/$defs/trigger"]])
+
 		// The comparison to apply between the time
 		// series (indicated by filter and aggregation)
 		// and the threshold (indicated by
@@ -611,14 +619,10 @@ import "list"
 		// field may not exceed 2048 Unicode characters
 		// in length.
 		filter?: string
-		aggregations?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_threshold/$defs/aggregations", [..._#defs."/$defs/conditions/$defs/condition_threshold/$defs/aggregations"]])
-		denominator_aggregations?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_threshold/$defs/denominator_aggregations", [..._#defs."/$defs/conditions/$defs/condition_threshold/$defs/denominator_aggregations"]])
-		forecast_options?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_threshold/$defs/forecast_options", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_threshold/$defs/forecast_options"]])
 
 		// A value against which to compare the time
 		// series.
 		threshold_value?: number
-		trigger?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_threshold/$defs/trigger", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_threshold/$defs/trigger"]])
 	})
 
 	_#defs: "/$defs/conditions/$defs/condition_threshold/$defs/aggregations": close({

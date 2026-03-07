@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_workforce_pool")
 	close({
+		access_restrictions?: matchN(1, [#access_restrictions, list.MaxItems(1) & [...#access_restrictions]])
+		timeouts?: #timeouts
+
 		// A user-specified description of the pool. Cannot exceed 256
 		// characters.
 		description?: string
@@ -19,10 +22,10 @@ import "list"
 		// A user-specified display name of the pool in Google Cloud
 		// Console. Cannot exceed 32 characters.
 		display_name?: string
+		id?:           string
 
 		// The location for the resource.
 		location!: string
-		id?:       string
 
 		// Output only. The resource name of the pool.
 		// Format: 'locations/{location}/workforcePools/{workforcePoolId}'
@@ -60,8 +63,6 @@ import "list"
 		// existing
 		// tokens grant access again.
 		state?: string
-		access_restrictions?: matchN(1, [#access_restrictions, list.MaxItems(1) & [...#access_restrictions]])
-		timeouts?: #timeouts
 
 		// The name of the pool. The ID must be a globally unique string
 		// of 6 to 63 lowercase letters,

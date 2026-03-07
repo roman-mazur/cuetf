@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_backend_bucket")
 	close({
+		timeouts?: #timeouts
+
 		// Cloud Storage bucket name. The bucket must be in the same
 		// region as this
 		// backend bucket.
@@ -43,9 +45,8 @@ package res
 		// characters must be a dash, lowercase letter, or digit, except
 		// the
 		// last character, which cannot be a dash.
-		name!:     string
-		project?:  string
-		timeouts?: #timeouts
+		name!:    string
+		project?: string
 
 		// The region where the backend bucket resides.
 		region!:    string

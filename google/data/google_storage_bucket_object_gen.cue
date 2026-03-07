@@ -68,6 +68,7 @@ package data
 		// The content generation of this object. Used for object
 		// versioning and soft delete.
 		generation?: number
+		id?:         string
 
 		// Resource name of the Cloud KMS key that will be used to encrypt
 		// the object. Overrides the object metadata's kmsKeyName value,
@@ -76,7 +77,6 @@ package data
 
 		// Base 64 MD5 hash of the uploaded data.
 		md5hash?: string
-		id?:      string
 
 		// Hex value of md5hash
 		md5hexhash?: string

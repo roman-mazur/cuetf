@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apihub_plugin")
 	close({
+		actions_config?: matchN(1, [#actions_config, [...#actions_config]])
+		config_template?: matchN(1, [#config_template, list.MaxItems(1) & [...#config_template]])
+		documentation?: matchN(1, [#documentation, list.MaxItems(1) & [...#documentation]])
+		hosting_service?: matchN(1, [#hosting_service, list.MaxItems(1) & [...#hosting_service]])
+		timeouts?: #timeouts
+
 		// Timestamp indicating when the plugin was created.
 		create_time?: string
 
@@ -65,12 +71,7 @@ import "list"
 		// are
 		// /a-z[0-9]-_/.
 		plugin_id!: string
-		actions_config?: matchN(1, [#actions_config, [...#actions_config]])
-		config_template?: matchN(1, [#config_template, list.MaxItems(1) & [...#config_template]])
-		documentation?: matchN(1, [#documentation, list.MaxItems(1) & [...#documentation]])
-		hosting_service?: matchN(1, [#hosting_service, list.MaxItems(1) & [...#hosting_service]])
-		timeouts?: #timeouts
-		project?:  string
+		project?:   string
 
 		// Represents the state of the plugin.
 		// Note this field will not be set for plugins developed via
@@ -131,6 +132,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/config_template/$defs/additional_config_template": close({
+		enum_options?: matchN(1, [_#defs."/$defs/config_template/$defs/additional_config_template/$defs/enum_options", [..._#defs."/$defs/config_template/$defs/additional_config_template/$defs/enum_options"]])
+		multi_select_options?: matchN(1, [_#defs."/$defs/config_template/$defs/additional_config_template/$defs/multi_select_options", [..._#defs."/$defs/config_template/$defs/additional_config_template/$defs/multi_select_options"]])
+
 		// Description.
 		description?: string
 
@@ -147,8 +151,6 @@ import "list"
 		// 'value' of a
 		// 'ConfigVariable'.
 		validation_regex?: string
-		enum_options?: matchN(1, [_#defs."/$defs/config_template/$defs/additional_config_template/$defs/enum_options", [..._#defs."/$defs/config_template/$defs/additional_config_template/$defs/enum_options"]])
-		multi_select_options?: matchN(1, [_#defs."/$defs/config_template/$defs/additional_config_template/$defs/multi_select_options", [..._#defs."/$defs/config_template/$defs/additional_config_template/$defs/multi_select_options"]])
 
 		// Type of the parameter: string, int, bool etc.
 		// Possible values:

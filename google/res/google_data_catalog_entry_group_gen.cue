@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_catalog_entry_group")
 	close({
+		timeouts?: #timeouts
+
 		// Entry group description, which can consist of several sentences
 		// or paragraphs that describe entry group contents.
 		description?: string
@@ -17,12 +19,11 @@ package res
 		// contain only English letters, numbers and underscores, and be
 		// at most 64 characters.
 		entry_group_id!: string
-		timeouts?:       #timeouts
+		id?:             string
 
 		// The resource name of the entry group in URL format. Example:
 		// projects/{project}/locations/{location}/entryGroups/{entryGroupId}
 		name?:    string
-		id?:      string
 		project?: string
 
 		// EntryGroup location region.

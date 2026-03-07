@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_os_config_patch_deployment")
 	close({
+		instance_filter!: matchN(1, [#instance_filter, list.MaxItems(1) & [_, ...] & [...#instance_filter]])
+		one_time_schedule?: matchN(1, [#one_time_schedule, list.MaxItems(1) & [...#one_time_schedule]])
+		patch_config?: matchN(1, [#patch_config, list.MaxItems(1) & [...#patch_config]])
+		recurring_schedule?: matchN(1, [#recurring_schedule, list.MaxItems(1) & [...#recurring_schedule]])
+		rollout?: matchN(1, [#rollout, list.MaxItems(1) & [...#rollout]])
+		timeouts?: #timeouts
+
 		// Time the patch deployment was created. Timestamp is in RFC3339
 		// text format.
 		// A timestamp in RFC3339 UTC "Zulu" format, accurate to
@@ -42,13 +49,7 @@ import "list"
 		// * Must end with a number or a letter.
 		// * Must be unique within the project.
 		patch_deployment_id!: string
-		instance_filter!: matchN(1, [#instance_filter, list.MaxItems(1) & [_, ...] & [...#instance_filter]])
-		one_time_schedule?: matchN(1, [#one_time_schedule, list.MaxItems(1) & [...#one_time_schedule]])
-		patch_config?: matchN(1, [#patch_config, list.MaxItems(1) & [...#patch_config]])
-		recurring_schedule?: matchN(1, [#recurring_schedule, list.MaxItems(1) & [...#recurring_schedule]])
-		rollout?: matchN(1, [#rollout, list.MaxItems(1) & [...#rollout]])
-		timeouts?: #timeouts
-		project?:  string
+		project?:             string
 
 		// Time the patch deployment was last updated. Timestamp is in
 		// RFC3339 text format.
@@ -58,6 +59,8 @@ import "list"
 	})
 
 	#instance_filter: close({
+		group_labels?: matchN(1, [_#defs."/$defs/instance_filter/$defs/group_labels", [..._#defs."/$defs/instance_filter/$defs/group_labels"]])
+
 		// Target all VM instances in the project. If true, no other
 		// criteria is permitted.
 		all?: bool
@@ -74,7 +77,6 @@ import "list"
 		// or
 		// 'https://www.googleapis.com/compute/v1/projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}'
 		instances?: [...string]
-		group_labels?: matchN(1, [_#defs."/$defs/instance_filter/$defs/group_labels", [..._#defs."/$defs/instance_filter/$defs/group_labels"]])
 
 		// Targets VM instances in ANY of these zones. Leave empty to
 		// target VM instances in any zone.
@@ -90,22 +92,28 @@ import "list"
 	})
 
 	#patch_config: close({
-		// Allows the patch job to run on Managed instance groups (MIGs).
-		mig_instances_allowed?: bool
 		apt?: matchN(1, [_#defs."/$defs/patch_config/$defs/apt", list.MaxItems(1) & [..._#defs."/$defs/patch_config/$defs/apt"]])
-
-		// Post-patch reboot settings. Possible values: ["DEFAULT",
-		// "ALWAYS", "NEVER"]
-		reboot_config?: string
 		goo?: matchN(1, [_#defs."/$defs/patch_config/$defs/goo", list.MaxItems(1) & [..._#defs."/$defs/patch_config/$defs/goo"]])
 		post_step?: matchN(1, [_#defs."/$defs/patch_config/$defs/post_step", list.MaxItems(1) & [..._#defs."/$defs/patch_config/$defs/post_step"]])
 		pre_step?: matchN(1, [_#defs."/$defs/patch_config/$defs/pre_step", list.MaxItems(1) & [..._#defs."/$defs/patch_config/$defs/pre_step"]])
 		windows_update?: matchN(1, [_#defs."/$defs/patch_config/$defs/windows_update", list.MaxItems(1) & [..._#defs."/$defs/patch_config/$defs/windows_update"]])
 		yum?: matchN(1, [_#defs."/$defs/patch_config/$defs/yum", list.MaxItems(1) & [..._#defs."/$defs/patch_config/$defs/yum"]])
 		zypper?: matchN(1, [_#defs."/$defs/patch_config/$defs/zypper", list.MaxItems(1) & [..._#defs."/$defs/patch_config/$defs/zypper"]])
+
+		// Allows the patch job to run on Managed instance groups (MIGs).
+		mig_instances_allowed?: bool
+
+		// Post-patch reboot settings. Possible values: ["DEFAULT",
+		// "ALWAYS", "NEVER"]
+		reboot_config?: string
 	})
 
 	#recurring_schedule: close({
+		monthly?: matchN(1, [_#defs."/$defs/recurring_schedule/$defs/monthly", list.MaxItems(1) & [..._#defs."/$defs/recurring_schedule/$defs/monthly"]])
+		time_of_day!: matchN(1, [_#defs."/$defs/recurring_schedule/$defs/time_of_day", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/recurring_schedule/$defs/time_of_day"]])
+		time_zone!: matchN(1, [_#defs."/$defs/recurring_schedule/$defs/time_zone", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/recurring_schedule/$defs/time_zone"]])
+		weekly?: matchN(1, [_#defs."/$defs/recurring_schedule/$defs/weekly", list.MaxItems(1) & [..._#defs."/$defs/recurring_schedule/$defs/weekly"]])
+
 		// The end time at which a recurring patch deployment schedule is
 		// no longer active.
 		// A timestamp in RFC3339 UTC "Zulu" format, accurate to
@@ -116,21 +124,17 @@ import "list"
 		// A timestamp in RFC3339 UTC "Zulu" format, accurate to
 		// nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 		last_execute_time?: string
-		monthly?: matchN(1, [_#defs."/$defs/recurring_schedule/$defs/monthly", list.MaxItems(1) & [..._#defs."/$defs/recurring_schedule/$defs/monthly"]])
 
 		// The time the next patch job is scheduled to run.
 		// A timestamp in RFC3339 UTC "Zulu" format, accurate to
 		// nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 		next_execute_time?: string
-		time_of_day!: matchN(1, [_#defs."/$defs/recurring_schedule/$defs/time_of_day", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/recurring_schedule/$defs/time_of_day"]])
 
 		// The time that the recurring schedule becomes effective.
 		// Defaults to createTime of the patch deployment.
 		// A timestamp in RFC3339 UTC "Zulu" format, accurate to
 		// nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 		start_time?: string
-		time_zone!: matchN(1, [_#defs."/$defs/recurring_schedule/$defs/time_zone", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/recurring_schedule/$defs/time_zone"]])
-		weekly?: matchN(1, [_#defs."/$defs/recurring_schedule/$defs/weekly", list.MaxItems(1) & [..._#defs."/$defs/recurring_schedule/$defs/weekly"]])
 	})
 
 	#rollout: close({
@@ -182,10 +186,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/patch_config/$defs/post_step/$defs/linux_exec_step_config": close({
+		gcs_object?: matchN(1, [_#defs."/$defs/patch_config/$defs/post_step/$defs/linux_exec_step_config/$defs/gcs_object", list.MaxItems(1) & [..._#defs."/$defs/patch_config/$defs/post_step/$defs/linux_exec_step_config/$defs/gcs_object"]])
+
 		// Defaults to [0]. A list of possible return values that the
 		// execution can return to indicate a success.
 		allowed_success_codes?: [...number]
-		gcs_object?: matchN(1, [_#defs."/$defs/patch_config/$defs/post_step/$defs/linux_exec_step_config/$defs/gcs_object", list.MaxItems(1) & [..._#defs."/$defs/patch_config/$defs/post_step/$defs/linux_exec_step_config/$defs/gcs_object"]])
 
 		// The script interpreter to use to run the script. If no
 		// interpreter is specified the script will
@@ -212,10 +217,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/patch_config/$defs/post_step/$defs/windows_exec_step_config": close({
+		gcs_object?: matchN(1, [_#defs."/$defs/patch_config/$defs/post_step/$defs/windows_exec_step_config/$defs/gcs_object", list.MaxItems(1) & [..._#defs."/$defs/patch_config/$defs/post_step/$defs/windows_exec_step_config/$defs/gcs_object"]])
+
 		// Defaults to [0]. A list of possible return values that the
 		// execution can return to indicate a success.
 		allowed_success_codes?: [...number]
-		gcs_object?: matchN(1, [_#defs."/$defs/patch_config/$defs/post_step/$defs/windows_exec_step_config/$defs/gcs_object", list.MaxItems(1) & [..._#defs."/$defs/patch_config/$defs/post_step/$defs/windows_exec_step_config/$defs/gcs_object"]])
 
 		// The script interpreter to use to run the script. If no
 		// interpreter is specified the script will
@@ -247,10 +253,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/patch_config/$defs/pre_step/$defs/linux_exec_step_config": close({
+		gcs_object?: matchN(1, [_#defs."/$defs/patch_config/$defs/pre_step/$defs/linux_exec_step_config/$defs/gcs_object", list.MaxItems(1) & [..._#defs."/$defs/patch_config/$defs/pre_step/$defs/linux_exec_step_config/$defs/gcs_object"]])
+
 		// Defaults to [0]. A list of possible return values that the
 		// execution can return to indicate a success.
 		allowed_success_codes?: [...number]
-		gcs_object?: matchN(1, [_#defs."/$defs/patch_config/$defs/pre_step/$defs/linux_exec_step_config/$defs/gcs_object", list.MaxItems(1) & [..._#defs."/$defs/patch_config/$defs/pre_step/$defs/linux_exec_step_config/$defs/gcs_object"]])
 
 		// The script interpreter to use to run the script. If no
 		// interpreter is specified the script will
@@ -277,10 +284,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/patch_config/$defs/pre_step/$defs/windows_exec_step_config": close({
+		gcs_object?: matchN(1, [_#defs."/$defs/patch_config/$defs/pre_step/$defs/windows_exec_step_config/$defs/gcs_object", list.MaxItems(1) & [..._#defs."/$defs/patch_config/$defs/pre_step/$defs/windows_exec_step_config/$defs/gcs_object"]])
+
 		// Defaults to [0]. A list of possible return values that the
 		// execution can return to indicate a success.
 		allowed_success_codes?: [...number]
-		gcs_object?: matchN(1, [_#defs."/$defs/patch_config/$defs/pre_step/$defs/windows_exec_step_config/$defs/gcs_object", list.MaxItems(1) & [..._#defs."/$defs/patch_config/$defs/pre_step/$defs/windows_exec_step_config/$defs/gcs_object"]])
 
 		// The script interpreter to use to run the script. If no
 		// interpreter is specified the script will

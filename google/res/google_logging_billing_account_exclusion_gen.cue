@@ -4,9 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_billing_account_exclusion")
 	close({
-		// A human-readable description.
-		description?:     string
 		billing_account!: string
+
+		// A human-readable description.
+		description?: string
 
 		// Whether this exclusion rule should be disabled or not. This
 		// defaults to false.

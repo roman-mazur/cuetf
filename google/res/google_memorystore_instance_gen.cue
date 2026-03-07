@@ -6,6 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_memorystore_instance")
 	close({
+		automated_backup_config?: matchN(1, [#automated_backup_config, list.MaxItems(1) & [...#automated_backup_config]])
+		cross_instance_replication_config?: matchN(1, [#cross_instance_replication_config, list.MaxItems(1) & [...#cross_instance_replication_config]])
+		desired_auto_created_endpoints?: matchN(1, [#desired_auto_created_endpoints, [...#desired_auto_created_endpoints]])
+		desired_psc_auto_connections?: matchN(1, [#desired_psc_auto_connections, [...#desired_psc_auto_connections]])
+		gcs_source?: matchN(1, [#gcs_source, list.MaxItems(1) & [...#gcs_source]])
+		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
+		managed_backup_source?: matchN(1, [#managed_backup_source, list.MaxItems(1) & [...#managed_backup_source]])
+		persistence_config?: matchN(1, [#persistence_config, list.MaxItems(1) & [...#persistence_config]])
+		timeouts?: #timeouts
+		zone_distribution_config?: matchN(1, [#zone_distribution_config, list.MaxItems(1) & [...#zone_distribution_config]])
+
 		// Optional. Immutable. Authorization mode of the instance.
 		// Possible values:
 		// AUTH_DISABLED
@@ -113,16 +124,6 @@ import "list"
 				certificates?: [...string]
 			})]
 		})]
-		automated_backup_config?: matchN(1, [#automated_backup_config, list.MaxItems(1) & [...#automated_backup_config]])
-		cross_instance_replication_config?: matchN(1, [#cross_instance_replication_config, list.MaxItems(1) & [...#cross_instance_replication_config]])
-		desired_auto_created_endpoints?: matchN(1, [#desired_auto_created_endpoints, [...#desired_auto_created_endpoints]])
-		desired_psc_auto_connections?: matchN(1, [#desired_psc_auto_connections, [...#desired_psc_auto_connections]])
-		gcs_source?: matchN(1, [#gcs_source, list.MaxItems(1) & [...#gcs_source]])
-		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
-		managed_backup_source?: matchN(1, [#managed_backup_source, list.MaxItems(1) & [...#managed_backup_source]])
-		persistence_config?: matchN(1, [#persistence_config, list.MaxItems(1) & [...#persistence_config]])
-		timeouts?: #timeouts
-		zone_distribution_config?: matchN(1, [#zone_distribution_config, list.MaxItems(1) & [...#zone_distribution_config]])
 
 		// Optional. cluster or cluster-disabled.
 		// Possible values:
@@ -214,6 +215,9 @@ import "list"
 	})
 
 	#cross_instance_replication_config: close({
+		primary_instance?: matchN(1, [_#defs."/$defs/cross_instance_replication_config/$defs/primary_instance", list.MaxItems(1) & [..._#defs."/$defs/cross_instance_replication_config/$defs/primary_instance"]])
+		secondary_instances?: matchN(1, [_#defs."/$defs/cross_instance_replication_config/$defs/secondary_instances", [..._#defs."/$defs/cross_instance_replication_config/$defs/secondary_instances"]])
+
 		// The instance role supports the following values:
 		// 1. 'INSTANCE_ROLE_UNSPECIFIED': This is an independent instance
 		// that has never participated in cross instance replication. It
@@ -244,11 +248,9 @@ import "list"
 				uid?:      string
 			})]
 		})]
-		primary_instance?: matchN(1, [_#defs."/$defs/cross_instance_replication_config/$defs/primary_instance", list.MaxItems(1) & [..._#defs."/$defs/cross_instance_replication_config/$defs/primary_instance"]])
 
 		// The last time cross instance replication config was updated.
 		update_time?: string
-		secondary_instances?: matchN(1, [_#defs."/$defs/cross_instance_replication_config/$defs/secondary_instances", [..._#defs."/$defs/cross_instance_replication_config/$defs/secondary_instances"]])
 	})
 
 	#desired_auto_created_endpoints: close({

@@ -16,10 +16,10 @@ package data
 
 		// The external IP address of a workload VM.
 		external_ip?: string
+		id?:          string
 
 		// The internal IP address of a workload VM.
 		internal_ip?: string
-		id?:          string
 
 		// The ID of the external IP Address.
 		name!: string

@@ -15,6 +15,7 @@ package data
 			healthy_host_count?:   number
 			healthy_infra_count?:  number
 		})]
+		id?: string
 
 		// The number of instances that are currently in use on this
 		// reservation sub-block.
@@ -26,7 +27,6 @@ package data
 
 		// The name of the reservation sub-block.
 		name!: string
-		id?:   string
 
 		// The physical topology of the reservation sub-block.
 		physical_topology?: [...close({

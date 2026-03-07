@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_env_keystore")
 	close({
+		timeouts?: #timeouts
+
 		// Aliases in this keystore.
 		aliases?: [...string]
 
@@ -11,9 +13,8 @@ package res
 		// environment,
 		// in the format
 		// 'organizations/{{org_name}}/environments/{{env_name}}'.
-		env_id!:   string
-		id?:       string
-		timeouts?: #timeouts
+		env_id!: string
+		id?:     string
 
 		// The name of the newly created keystore.
 		name?: string

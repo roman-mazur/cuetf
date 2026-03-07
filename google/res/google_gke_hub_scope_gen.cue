@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_hub_scope")
 	close({
+		timeouts?: #timeouts
+
 		// Time the Scope was created in UTC.
 		create_time?: string
 
@@ -37,6 +39,7 @@ package res
 		// they
 		// share a key. Keys and values must be Kubernetes-conformant.
 		namespace_labels?: [string]: string
+		project?: string
 
 		// The client-provided identifier of the scope.
 		scope_id!: string
@@ -45,8 +48,6 @@ package res
 		state?: [...close({
 			code?: string
 		})]
-		project?:  string
-		timeouts?: #timeouts
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

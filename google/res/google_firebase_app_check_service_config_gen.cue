@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_check_service_config")
 	close({
+		timeouts?: #timeouts
+
 		// The App Check enforcement mode for a service supported by App
 		// Check. Valid values are
 		//
@@ -53,11 +55,12 @@ package res
 		// immediately, since there are no outdated
 		// clients in use. Possible values: ["UNENFORCED", "ENFORCED"]
 		enforcement_mode?: string
+		id?:               string
 
 		// The fully-qualified resource name of the service enforcement
 		// configuration.
-		name?: string
-		id?:   string
+		name?:    string
+		project?: string
 
 		// The identifier of the service to configure enforcement.
 		// Currently, the following service IDs are supported:
@@ -66,8 +69,6 @@ package res
 		// firestore.googleapis.com (Cloud Firestore)
 		// identitytoolkit.googleapis.com (Authentication)
 		service_id!: string
-		project?:    string
-		timeouts?:   #timeouts
 	})
 
 	#timeouts: close({

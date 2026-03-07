@@ -6,13 +6,13 @@ package data
 	close({
 		// The time the package was created.
 		create_time?: string
+		id?:          string
 
 		// The region of the Artifact Registry repository.
 		location!: string
 
 		// The fully qualified name of the Python package.
 		name?: string
-		id?:   string
 
 		// The name of the Python package.
 		package_name!: string

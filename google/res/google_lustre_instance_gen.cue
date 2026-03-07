@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_lustre_instance")
 	close({
+		access_rules_options?: matchN(1, [#access_rules_options, list.MaxItems(1) & [...#access_rules_options]])
+		timeouts?: #timeouts
+
 		// The storage capacity of the instance in gibibytes (GiB).
 		// Allowed values
 		// are from '18000' to '954000', in increments of 9000.
@@ -33,6 +36,7 @@ import "list"
 		// By default,
 		// GKE clients are not supported.
 		gke_support_enabled?: bool
+		id?:                  string
 
 		// The name of the Managed Lustre instance.
 		//
@@ -41,7 +45,6 @@ import "list"
 		// * Must be between 1-63 characters.
 		// * Must end with a number or a letter.
 		instance_id!: string
-		id?:          string
 
 		// The KMS key id to use for encryption of the Lustre instance.
 		kms_key?: string
@@ -65,8 +68,6 @@ import "list"
 
 		// Identifier. The name of the instance.
 		name?: string
-		access_rules_options?: matchN(1, [#access_rules_options, list.MaxItems(1) & [...#access_rules_options]])
-		timeouts?: #timeouts
 
 		// The full name of the VPC network to which the instance is
 		// connected.
@@ -101,10 +102,11 @@ import "list"
 	})
 
 	#access_rules_options: close({
+		access_rules?: matchN(1, [_#defs."/$defs/access_rules_options/$defs/access_rules", [..._#defs."/$defs/access_rules_options/$defs/access_rules"]])
+
 		// The GID to map the root user to when root squashing is enabled
 		// (e.g., 65534 for nobody).
 		default_squash_gid?: number
-		access_rules?: matchN(1, [_#defs."/$defs/access_rules_options/$defs/access_rules", [..._#defs."/$defs/access_rules_options/$defs/access_rules"]])
 
 		// Set to "ROOT_SQUASH" to enable root squashing by default.
 		// Other values include "NO_SQUASH". Possible values:

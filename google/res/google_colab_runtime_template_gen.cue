@@ -6,6 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_colab_runtime_template")
 	close({
+		data_persistent_disk_spec?: matchN(1, [#data_persistent_disk_spec, list.MaxItems(1) & [...#data_persistent_disk_spec]])
+		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
+		euc_config?: matchN(1, [#euc_config, list.MaxItems(1) & [...#euc_config]])
+		idle_shutdown_config?: matchN(1, [#idle_shutdown_config, list.MaxItems(1) & [...#idle_shutdown_config]])
+		machine_spec?: matchN(1, [#machine_spec, list.MaxItems(1) & [...#machine_spec]])
+		network_spec?: matchN(1, [#network_spec, list.MaxItems(1) & [...#network_spec]])
+		shielded_vm_config?: matchN(1, [#shielded_vm_config, list.MaxItems(1) & [...#shielded_vm_config]])
+		software_config?: matchN(1, [#software_config, list.MaxItems(1) & [...#software_config]])
+		timeouts?: #timeouts
+
 		// The description of the Runtime Template.
 		description?: string
 
@@ -32,23 +42,14 @@ import "list"
 
 		// The resource name of the Runtime Template
 		name?: string
-		data_persistent_disk_spec?: matchN(1, [#data_persistent_disk_spec, list.MaxItems(1) & [...#data_persistent_disk_spec]])
-		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
-		euc_config?: matchN(1, [#euc_config, list.MaxItems(1) & [...#euc_config]])
-		idle_shutdown_config?: matchN(1, [#idle_shutdown_config, list.MaxItems(1) & [...#idle_shutdown_config]])
-		machine_spec?: matchN(1, [#machine_spec, list.MaxItems(1) & [...#machine_spec]])
-		network_spec?: matchN(1, [#network_spec, list.MaxItems(1) & [...#network_spec]])
-		shielded_vm_config?: matchN(1, [#shielded_vm_config, list.MaxItems(1) & [...#shielded_vm_config]])
 
 		// Applies the given Compute Engine tags to the runtime.
 		network_tags?: [...string]
-		software_config?: matchN(1, [#software_config, list.MaxItems(1) & [...#software_config]])
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?:  string
-		timeouts?: #timeouts
 	})
 
 	#data_persistent_disk_spec: close({

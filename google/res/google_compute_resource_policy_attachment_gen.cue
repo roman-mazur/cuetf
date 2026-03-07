@@ -4,7 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_resource_policy_attachment")
 	close({
-		id?: string
+		timeouts?: #timeouts
+		id?:       string
 
 		// The name of the instance in which the resource policies are
 		// attached to.
@@ -17,8 +18,7 @@ package res
 		project?: string
 
 		// A reference to the zone where the instance resides.
-		zone?:     string
-		timeouts?: #timeouts
+		zone?: string
 	})
 
 	#timeouts: close({

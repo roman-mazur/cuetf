@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apihub_host_project_registration")
 	close({
+		timeouts?: #timeouts
+
 		// Output only. The time at which the host project registration
 		// was created.
 		create_time?: string
@@ -22,11 +24,10 @@ package res
 		// must be the same as the Google cloud project specified in the
 		// host_project_registration.gcp_project field.
 		host_project_registration_id!: string
-		timeouts?:                     #timeouts
+		id?:                           string
 
 		// Part of 'parent'. See documentation of 'projectsId'.
 		location!: string
-		id?:       string
 
 		// Identifier. The name of the host project registration.
 		// Format:

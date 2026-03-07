@@ -7,12 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_bucket_iam_member")
 	close({
 		condition?: matchN(1, [#condition, list.MaxItems(1) & [...#condition]])
+		timeouts?: #timeouts
 		bucket!:   string
 		etag?:     string
 		id?:       string
 		member!:   string
 		role!:     string
-		timeouts?: #timeouts
 	})
 
 	#condition: close({

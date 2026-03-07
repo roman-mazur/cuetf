@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_analytics_hub_data_exchange")
 	close({
+		sharing_environment_config?: matchN(1, [#sharing_environment_config, list.MaxItems(1) & [...#sharing_environment_config]])
+		timeouts?: #timeouts
+
 		// The ID of the data exchange. Must contain only Unicode letters,
 		// numbers (0-9), underscores (_). Should not use characters that
 		// require URL-escaping, or characters outside of ASCII, spaces.
@@ -45,8 +48,6 @@ import "list"
 		// the linked dataset will log the email address of the querying
 		// user. Once enabled, this setting cannot be turned off.
 		log_linked_dataset_query_user_email?: bool
-		sharing_environment_config?: matchN(1, [#sharing_environment_config, list.MaxItems(1) & [...#sharing_environment_config]])
-		timeouts?: #timeouts
 
 		// The resource name of the data exchange, for example:
 		// "projects/myproject/locations/US/dataExchanges/123"

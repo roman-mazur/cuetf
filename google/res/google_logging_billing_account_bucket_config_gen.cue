@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_billing_account_bucket_config")
 	close({
+		cmek_settings?: matchN(1, [#cmek_settings, list.MaxItems(1) & [...#cmek_settings]])
+		index_configs?: matchN(1, [#index_configs, list.MaxItems(20) & [...#index_configs]])
+
 		// The parent resource that contains the logging bucket.
 		billing_account!: string
 
@@ -15,15 +18,13 @@ import "list"
 
 		// An optional description for this bucket.
 		description?: string
+		id?:          string
 
 		// The bucket's lifecycle such as active or deleted.
 		lifecycle_state?: string
-		id?:              string
 
 		// The location of the bucket.
 		location!: string
-		cmek_settings?: matchN(1, [#cmek_settings, list.MaxItems(1) & [...#cmek_settings]])
-		index_configs?: matchN(1, [#index_configs, list.MaxItems(20) & [...#index_configs]])
 
 		// The resource name of the bucket
 		name?: string

@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_datastream_stream")
 	close({
+		backfill_all?: matchN(1, [#backfill_all, list.MaxItems(1) & [...#backfill_all]])
+		backfill_none?: matchN(1, [#backfill_none, list.MaxItems(1) & [...#backfill_none]])
+		destination_config!: matchN(1, [#destination_config, list.MaxItems(1) & [_, ...] & [...#destination_config]])
+		rule_sets?: matchN(1, [#rule_sets, [...#rule_sets]])
+		source_config!: matchN(1, [#source_config, list.MaxItems(1) & [_, ...] & [...#source_config]])
+		timeouts?: #timeouts
+
 		// Create the stream without validating it.
 		create_without_validation?: bool
 
@@ -47,12 +54,6 @@ import "list"
 		// The stream's name.
 		name?:    string
 		project?: string
-		backfill_all?: matchN(1, [#backfill_all, list.MaxItems(1) & [...#backfill_all]])
-		backfill_none?: matchN(1, [#backfill_none, list.MaxItems(1) & [...#backfill_none]])
-		destination_config!: matchN(1, [#destination_config, list.MaxItems(1) & [_, ...] & [...#destination_config]])
-		rule_sets?: matchN(1, [#rule_sets, [...#rule_sets]])
-		source_config!: matchN(1, [#source_config, list.MaxItems(1) & [_, ...] & [...#source_config]])
-		timeouts?: #timeouts
 
 		// The state of the stream.
 		state?: string
@@ -444,6 +445,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/destination_config/$defs/gcs_destination_config": close({
+		avro_file_format?: matchN(1, [_#defs."/$defs/destination_config/$defs/gcs_destination_config/$defs/avro_file_format", list.MaxItems(1) & [..._#defs."/$defs/destination_config/$defs/gcs_destination_config/$defs/avro_file_format"]])
+		json_file_format?: matchN(1, [_#defs."/$defs/destination_config/$defs/gcs_destination_config/$defs/json_file_format", list.MaxItems(1) & [..._#defs."/$defs/destination_config/$defs/gcs_destination_config/$defs/json_file_format"]])
+
 		// The maximum duration for which new events are added before a
 		// file is closed and a new file is created.
 		// A duration in seconds with up to nine fractional digits,
@@ -452,11 +456,9 @@ import "list"
 
 		// The maximum file size to be saved in the bucket.
 		file_rotation_mb?: number
-		avro_file_format?: matchN(1, [_#defs."/$defs/destination_config/$defs/gcs_destination_config/$defs/avro_file_format", list.MaxItems(1) & [..._#defs."/$defs/destination_config/$defs/gcs_destination_config/$defs/avro_file_format"]])
 
 		// Path inside the Cloud Storage bucket to write data to.
 		path?: string
-		json_file_format?: matchN(1, [_#defs."/$defs/destination_config/$defs/gcs_destination_config/$defs/json_file_format", list.MaxItems(1) & [..._#defs."/$defs/destination_config/$defs/gcs_destination_config/$defs/json_file_format"]])
 	})
 
 	_#defs: "/$defs/destination_config/$defs/gcs_destination_config/$defs/avro_file_format": close({})
@@ -652,15 +654,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/source_config/$defs/mysql_source_config": close({
+		binary_log_position?: matchN(1, [_#defs."/$defs/source_config/$defs/mysql_source_config/$defs/binary_log_position", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/mysql_source_config/$defs/binary_log_position"]])
+		exclude_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/mysql_source_config/$defs/exclude_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/mysql_source_config/$defs/exclude_objects"]])
+		gtid?: matchN(1, [_#defs."/$defs/source_config/$defs/mysql_source_config/$defs/gtid", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/mysql_source_config/$defs/gtid"]])
+		include_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/mysql_source_config/$defs/include_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/mysql_source_config/$defs/include_objects"]])
+
 		// Maximum number of concurrent backfill tasks. The number should
 		// be non negative.
 		// If not set (or set to 0), the system's default value will be
 		// used.
 		max_concurrent_backfill_tasks?: number
-		binary_log_position?: matchN(1, [_#defs."/$defs/source_config/$defs/mysql_source_config/$defs/binary_log_position", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/mysql_source_config/$defs/binary_log_position"]])
-		exclude_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/mysql_source_config/$defs/exclude_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/mysql_source_config/$defs/exclude_objects"]])
-		gtid?: matchN(1, [_#defs."/$defs/source_config/$defs/mysql_source_config/$defs/gtid", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/mysql_source_config/$defs/gtid"]])
-		include_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/mysql_source_config/$defs/include_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/mysql_source_config/$defs/include_objects"]])
 
 		// Maximum number of concurrent CDC tasks. The number should be
 		// non negative.
@@ -758,15 +761,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/source_config/$defs/oracle_source_config": close({
+		drop_large_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/oracle_source_config/$defs/drop_large_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/oracle_source_config/$defs/drop_large_objects"]])
+		exclude_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/oracle_source_config/$defs/exclude_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/oracle_source_config/$defs/exclude_objects"]])
+		include_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/oracle_source_config/$defs/include_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/oracle_source_config/$defs/include_objects"]])
+		stream_large_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/oracle_source_config/$defs/stream_large_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/oracle_source_config/$defs/stream_large_objects"]])
+
 		// Maximum number of concurrent backfill tasks. The number should
 		// be non negative.
 		// If not set (or set to 0), the system's default value will be
 		// used.
 		max_concurrent_backfill_tasks?: number
-		drop_large_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/oracle_source_config/$defs/drop_large_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/oracle_source_config/$defs/drop_large_objects"]])
-		exclude_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/oracle_source_config/$defs/exclude_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/oracle_source_config/$defs/exclude_objects"]])
-		include_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/oracle_source_config/$defs/include_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/oracle_source_config/$defs/include_objects"]])
-		stream_large_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/oracle_source_config/$defs/stream_large_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/oracle_source_config/$defs/stream_large_objects"]])
 
 		// Maximum number of concurrent CDC tasks. The number should be
 		// non negative.
@@ -876,6 +880,9 @@ import "list"
 	_#defs: "/$defs/source_config/$defs/oracle_source_config/$defs/stream_large_objects": close({})
 
 	_#defs: "/$defs/source_config/$defs/postgresql_source_config": close({
+		exclude_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/exclude_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/exclude_objects"]])
+		include_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/include_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/include_objects"]])
+
 		// Maximum number of concurrent backfill tasks. The number should
 		// be non
 		// negative. If not set (or set to 0), the system's default value
@@ -885,12 +892,10 @@ import "list"
 		// The name of the publication that includes the set of all tables
 		// that are defined in the stream's include_objects.
 		publication!: string
-		exclude_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/exclude_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/exclude_objects"]])
 
 		// The name of the logical replication slot that's configured with
 		// the pgoutput plugin.
 		replication_slot!: string
-		include_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/include_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/include_objects"]])
 	})
 
 	_#defs: "/$defs/source_config/$defs/postgresql_source_config/$defs/exclude_objects": close({
@@ -1028,6 +1033,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/source_config/$defs/spanner_source_config": close({
+		exclude_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/spanner_source_config/$defs/exclude_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/spanner_source_config/$defs/exclude_objects"]])
+		include_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/spanner_source_config/$defs/include_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/spanner_source_config/$defs/include_objects"]])
+
 		// Whether to use DataBoost for backfill queries.
 		backfill_data_boost_enabled?: bool
 
@@ -1036,11 +1044,9 @@ import "list"
 
 		// The FGAC role to use for Spanner queries.
 		fgac_role?: string
-		exclude_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/spanner_source_config/$defs/exclude_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/spanner_source_config/$defs/exclude_objects"]])
 
 		// Max concurrent backfill tasks.
 		max_concurrent_backfill_tasks?: number
-		include_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/spanner_source_config/$defs/include_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/spanner_source_config/$defs/include_objects"]])
 
 		// Max concurrent CDC tasks.
 		max_concurrent_cdc_tasks?: number
@@ -1117,12 +1123,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/source_config/$defs/sql_server_source_config": close({
-		// Max concurrent backfill tasks.
-		max_concurrent_backfill_tasks?: number
 		change_tables?: matchN(1, [_#defs."/$defs/source_config/$defs/sql_server_source_config/$defs/change_tables", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/sql_server_source_config/$defs/change_tables"]])
 		exclude_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/sql_server_source_config/$defs/exclude_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/sql_server_source_config/$defs/exclude_objects"]])
 		include_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/sql_server_source_config/$defs/include_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/sql_server_source_config/$defs/include_objects"]])
 		transaction_logs?: matchN(1, [_#defs."/$defs/source_config/$defs/sql_server_source_config/$defs/transaction_logs", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/sql_server_source_config/$defs/transaction_logs"]])
+
+		// Max concurrent backfill tasks.
+		max_concurrent_backfill_tasks?: number
 
 		// Max concurrent CDC tasks.
 		max_concurrent_cdc_tasks?: number

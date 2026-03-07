@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_principal_access_boundary_policy")
 	close({
+		details?: matchN(1, [#details, list.MaxItems(1) & [...#details]])
+		timeouts?: #timeouts
+
 		// User defined annotations. See
 		// https://google.aip.dev/148#annotations
 		// for more details such as format and size limitations
@@ -33,6 +36,7 @@ import "list"
 		// The etag for the principal access boundary. If this is provided
 		// on update, it must match the server's etag.
 		etag?: string
+		id?:   string
 
 		// The location the principal access boundary policy is in.
 		location!: string
@@ -45,9 +49,6 @@ import "list"
 		// The parent organization of the principal access boundary
 		// policy.
 		organization!: string
-		id?:           string
-		details?: matchN(1, [#details, list.MaxItems(1) & [...#details]])
-		timeouts?: #timeouts
 
 		// The ID to use to create the principal access boundary policy.
 		// This value must start with a lowercase letter followed by up to

@@ -6,23 +6,24 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_fulfillment")
 	close({
+		features?: matchN(1, [#features, [...#features]])
+		generic_web_service?: matchN(1, [#generic_web_service, list.MaxItems(1) & [...#generic_web_service]])
+		timeouts?: #timeouts
+
 		// The human-readable name of the fulfillment, unique within the
 		// agent.
 		display_name!: string
 
 		// Whether fulfillment is enabled.
 		enabled?: bool
-		features?: matchN(1, [#features, [...#features]])
-		id?: string
+		id?:      string
 
 		// The unique identifier of the fulfillment.
 		// Format: projects/<Project ID>/agent/fulfillment -
 		// projects/<Project ID>/locations/<Location
 		// ID>/agent/fulfillment
-		name?: string
-		generic_web_service?: matchN(1, [#generic_web_service, list.MaxItems(1) & [...#generic_web_service]])
-		timeouts?: #timeouts
-		project?:  string
+		name?:    string
+		project?: string
 	})
 
 	#features: close({

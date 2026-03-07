@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_oracle_database_cloud_exadata_infrastructure")
 	close({
+		properties?: matchN(1, [#properties, list.MaxItems(1) & [...#properties]])
+		timeouts?: #timeouts
+
 		// The ID of the Exadata Infrastructure to create. This value is
 		// restricted
 		// to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of
@@ -53,8 +56,6 @@ import "list"
 		// documentation for resource type
 		// 'oracledatabase.googleapis.com/DbServer'.
 		location!: string
-		properties?: matchN(1, [#properties, list.MaxItems(1) & [...#properties]])
-		timeouts?: #timeouts
 
 		// Identifier. The name of the Exadata Infrastructure resource
 		// with the following format:
@@ -68,6 +69,9 @@ import "list"
 	})
 
 	#properties: close({
+		customer_contacts?: matchN(1, [_#defs."/$defs/properties/$defs/customer_contacts", [..._#defs."/$defs/properties/$defs/customer_contacts"]])
+		maintenance_window?: matchN(1, [_#defs."/$defs/properties/$defs/maintenance_window", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/maintenance_window"]])
+
 		// The requested number of additional storage servers activated
 		// for the
 		// Exadata Infrastructure.
@@ -122,8 +126,6 @@ import "list"
 		// The monthly software version of the storage servers (cells)
 		// in the Exadata Infrastructure. Example: 20.1.15
 		monthly_storage_server_version?: string
-		customer_contacts?: matchN(1, [_#defs."/$defs/properties/$defs/customer_contacts", [..._#defs."/$defs/properties/$defs/customer_contacts"]])
-		maintenance_window?: matchN(1, [_#defs."/$defs/properties/$defs/maintenance_window", list.MaxItems(1) & [..._#defs."/$defs/properties/$defs/maintenance_window"]])
 
 		// The OCID of the next maintenance run.
 		next_maintenance_run_id?: string

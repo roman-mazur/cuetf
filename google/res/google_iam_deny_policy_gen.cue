@@ -6,17 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_deny_policy")
 	close({
+		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
+		timeouts?: #timeouts
+
 		// The display name of the rule.
 		display_name?: string
 
 		// The hash of the resource. Used internally during updates.
 		etag?: string
-		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
+		id?:   string
 
 		// The name of the policy.
-		name!:     string
-		id?:       string
-		timeouts?: #timeouts
+		name!: string
 
 		// The attachment point is identified by its URL-encoded full
 		// resource name.
@@ -37,6 +38,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/deny_rule": close({
+		denial_condition?: matchN(1, [_#defs."/$defs/rules/$defs/deny_rule/$defs/denial_condition", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/deny_rule/$defs/denial_condition"]])
+
 		// The permissions that are explicitly denied by this rule. Each
 		// permission uses the format '{service-fqdn}/{resource}.{verb}',
 		// where '{service-fqdn}' is the fully qualified domain name for
@@ -54,7 +57,6 @@ import "list"
 		// The excluded permissions can be specified using the same syntax
 		// as deniedPermissions.
 		exception_permissions?: [...string]
-		denial_condition?: matchN(1, [_#defs."/$defs/rules/$defs/deny_rule/$defs/denial_condition", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/deny_rule/$defs/denial_condition"]])
 
 		// The identities that are excluded from the deny rule, even if
 		// they are listed in the deniedPrincipals.

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vmwareengine_network_peering")
 	close({
+		timeouts?: #timeouts
+
 		// Creation time of this resource.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and
@@ -21,11 +23,11 @@ package res
 		// True if all subnet routes with a public IP address range are
 		// exported; false otherwise.
 		export_custom_routes_with_public_ip?: bool
+		id?:                                  string
 
 		// True if custom routes are imported from the peered network;
 		// false otherwise.
 		import_custom_routes?: bool
-		id?:                   string
 
 		// True if custom routes are imported from the peered network;
 		// false otherwise.
@@ -46,20 +48,19 @@ package res
 		// "THIRD_PARTY_SERVICE", "DELL_POWERSCALE",
 		// "GOOGLE_CLOUD_NETAPP_VOLUMES"]
 		peer_network_type!: string
+		project?:           string
 
 		// State of the network peering.
 		// This field has a value of 'ACTIVE' when there's a matching
 		// configuration in the peer network.
 		// New values may be added to this enum when appropriate.
-		state?:    string
-		timeouts?: #timeouts
+		state?: string
 
 		// Details about the current state of the network peering.
 		state_details?: string
 
 		// System-generated unique identifier for the resource.
-		uid?:     string
-		project?: string
+		uid?: string
 
 		// Last updated time of this resource.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond

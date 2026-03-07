@@ -38,13 +38,13 @@ package data
 
 		// Used to perform consistent read-modify-write updates.
 		etag?: string
+		id?:   string
 
 		// Stats of the index resource.
 		index_stats?: [...close({
 			shards_count?:  number
 			vectors_count?: string
 		})]
-		id?: string
 
 		// The update method to use with this Index. The value must be the
 		// followings. If not set, BATCH_UPDATE will be used by default.

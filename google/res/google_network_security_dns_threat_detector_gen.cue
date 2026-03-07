@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_dns_threat_detector")
 	close({
+		timeouts?: #timeouts
+
 		// The timestamp when the resource was created.
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine fractional digits.
@@ -19,6 +21,7 @@ package res
 		// List of networks that are excluded from detection. Format:
 		// projects/{project}/global/networks/{name}.
 		excluded_networks?: [...string]
+		id?: string
 
 		// Set of label tags associated with the DNS Threat Detector
 		// resource.
@@ -31,20 +34,18 @@ package res
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		id?: string
 
 		// The location of the DNS Threat Detector. The only supported
 		// value is 'global'.
 		location?: string
 
 		// Name of the DnsThreatDetector resource.
-		name!: string
+		name!:    string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		timeouts?: #timeouts
-		project?:  string
 
 		// DNS Threat Detection provider. The only supported value is
 		// 'INFOBLOX'.

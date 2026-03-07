@@ -4,18 +4,20 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_parameter_manager_regional_parameter_version")
 	close({
+		timeouts?: #timeouts
+
 		// The time at which the Regional Parameter Version was created.
 		create_time?: string
 
 		// The current state of Regional Parameter Version. This field is
 		// only applicable for updating Regional Parameter Version.
 		disabled?: bool
+		id?:       string
 
 		// The resource name of the Cloud KMS CryptoKeyVersion used to
 		// decrypt regional parameter version payload. Format
 		// 'projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}'
 		kms_key_version?: string
-		id?:              string
 
 		// Location of Parameter Manager Regional parameter resource.
 		location?: string
@@ -26,7 +28,6 @@ package res
 
 		// Parameter Manager Regional Parameter resource.
 		parameter!: string
-		timeouts?:  #timeouts
 
 		// The Regional Parameter data.
 		parameter_data!: string

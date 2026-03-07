@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_dataset")
 	close({
+		access?: matchN(1, [#access, [...#access]])
+		default_encryption_configuration?: matchN(1, [#default_encryption_configuration, list.MaxItems(1) & [...#default_encryption_configuration]])
+		external_catalog_dataset_options?: matchN(1, [#external_catalog_dataset_options, list.MaxItems(1) & [...#external_catalog_dataset_options]])
+		external_dataset_reference?: matchN(1, [#external_dataset_reference, list.MaxItems(1) & [...#external_dataset_reference]])
+		timeouts?: #timeouts
+
 		// The time when this dataset was created, in milliseconds since
 		// the
 		// epoch.
@@ -112,11 +118,6 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
-		access?: matchN(1, [#access, [...#access]])
-		default_encryption_configuration?: matchN(1, [#default_encryption_configuration, list.MaxItems(1) & [...#default_encryption_configuration]])
-		external_catalog_dataset_options?: matchN(1, [#external_catalog_dataset_options, list.MaxItems(1) & [...#external_catalog_dataset_options]])
-		external_dataset_reference?: matchN(1, [#external_dataset_reference, list.MaxItems(1) & [...#external_dataset_reference]])
-		timeouts?: #timeouts
 
 		// The date when this dataset or any of its tables was last
 		// modified, in
@@ -168,6 +169,11 @@ import "list"
 	})
 
 	#access: close({
+		condition?: matchN(1, [_#defs."/$defs/access/$defs/condition", list.MaxItems(1) & [..._#defs."/$defs/access/$defs/condition"]])
+		dataset?: matchN(1, [_#defs."/$defs/access/$defs/dataset", list.MaxItems(1) & [..._#defs."/$defs/access/$defs/dataset"]])
+		routine?: matchN(1, [_#defs."/$defs/access/$defs/routine", list.MaxItems(1) & [..._#defs."/$defs/access/$defs/routine"]])
+		view?: matchN(1, [_#defs."/$defs/access/$defs/view", list.MaxItems(1) & [..._#defs."/$defs/access/$defs/view"]])
+
 		// A domain to grant access to. Any users signed in with the
 		// domain specified will be granted the specified access
 		domain?: string
@@ -196,14 +202,10 @@ import "list"
 		// * 'projectWriters': Writers of the enclosing project.
 		// * 'allAuthenticatedUsers': All authenticated BigQuery users.
 		special_group?: string
-		condition?: matchN(1, [_#defs."/$defs/access/$defs/condition", list.MaxItems(1) & [..._#defs."/$defs/access/$defs/condition"]])
-		dataset?: matchN(1, [_#defs."/$defs/access/$defs/dataset", list.MaxItems(1) & [..._#defs."/$defs/access/$defs/dataset"]])
-		routine?: matchN(1, [_#defs."/$defs/access/$defs/routine", list.MaxItems(1) & [..._#defs."/$defs/access/$defs/routine"]])
 
 		// An email address of a user to grant access to. For example:
 		// fred@example.com
 		user_by_email?: string
-		view?: matchN(1, [_#defs."/$defs/access/$defs/view", list.MaxItems(1) & [..._#defs."/$defs/access/$defs/view"]])
 	})
 
 	#default_encryption_configuration: close({

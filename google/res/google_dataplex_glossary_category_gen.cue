@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_glossary_category")
 	close({
+		timeouts?: #timeouts
+
 		// The category id for creation.
 		category_id?: string
 
@@ -41,8 +43,7 @@ package res
 
 		// The resource name of the GlossaryCategory. Format:
 		// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// The immediate parent of the GlossaryCategory in the
 		// resource-hierarchy. It can either be a Glossary or a Category.
@@ -50,12 +51,12 @@ package res
 		// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}
 		// OR
 		// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
-		parent!: string
+		parent!:  string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?: string
 
 		// System generated unique id for the GlossaryCategory. This ID
 		// will be different if the GlossaryCategory is deleted and

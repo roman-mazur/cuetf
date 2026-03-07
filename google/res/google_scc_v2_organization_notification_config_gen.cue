@@ -6,12 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_v2_organization_notification_config")
 	close({
+		streaming_config!: matchN(1, [#streaming_config, list.MaxItems(1) & [_, ...] & [...#streaming_config]])
+		timeouts?: #timeouts
+
 		// This must be unique within the organization.
 		config_id!: string
 
 		// The description of the notification config (max of 1024
 		// characters).
 		description?: string
+		id?:          string
 
 		// location Id is provided by organization. If not provided, Use
 		// global as default.
@@ -25,9 +29,6 @@ import "list"
 		// Notification
 		// Config lives in.
 		organization!: string
-		id?:           string
-		streaming_config!: matchN(1, [#streaming_config, list.MaxItems(1) & [_, ...] & [...#streaming_config]])
-		timeouts?: #timeouts
 
 		// The Pub/Sub topic to send notifications to. Its format is
 		// "projects/[project_id]/topics/[topic]".

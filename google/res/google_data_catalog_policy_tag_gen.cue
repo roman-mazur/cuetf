@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_catalog_policy_tag")
 	close({
+		timeouts?: #timeouts
+
 		// Resource names of child policy tags of this policy tag.
 		child_policy_tags?: [...string]
 
@@ -26,8 +28,7 @@ package res
 
 		// Resource name of this policy tag, whose format is:
 		// "projects/{project}/locations/{region}/taxonomies/{taxonomy}/policyTags/{policytag}"
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// Resource name of this policy tag's parent policy tag.
 		// If empty, it means this policy tag is a top level policy tag.
