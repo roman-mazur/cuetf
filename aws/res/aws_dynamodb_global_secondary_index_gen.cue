@@ -5,9 +5,12 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dynamodb_global_secondary_index")
 	close({
 		key_schema?: matchN(1, [#key_schema, [...#key_schema]])
+		on_demand_throughput?: matchN(1, [#on_demand_throughput, [...#on_demand_throughput]])
+		projection?: matchN(1, [#projection, [...#projection]])
+		provisioned_throughput?: matchN(1, [#provisioned_throughput, [...#provisioned_throughput]])
+		timeouts?:   #timeouts
 		arn?:        string
 		index_name!: string
-		on_demand_throughput?: matchN(1, [#on_demand_throughput, [...#on_demand_throughput]])
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -19,9 +22,6 @@ package res
 			read_units_per_second?:  number
 			write_units_per_second?: number
 		})
-		projection?: matchN(1, [#projection, [...#projection]])
-		provisioned_throughput?: matchN(1, [#provisioned_throughput, [...#provisioned_throughput]])
-		timeouts?: #timeouts
 	})
 
 	#key_schema: close({

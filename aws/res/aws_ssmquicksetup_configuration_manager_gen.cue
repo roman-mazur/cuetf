@@ -4,8 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ssmquicksetup_configuration_manager")
 	close({
-		description?: string
 		configuration_definition?: matchN(1, [#configuration_definition, [...#configuration_definition]])
+		timeouts?:    #timeouts
+		description?: string
 		manager_arn?: string
 		name!:        string
 
@@ -19,8 +20,7 @@ package res
 			status_message?: string
 			status_type?:    string
 		})]
-		tags?: [string]: string
-		timeouts?: #timeouts
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 

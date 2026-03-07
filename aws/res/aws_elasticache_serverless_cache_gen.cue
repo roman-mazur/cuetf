@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_elasticache_serverless_cache")
 	close({
+		cache_usage_limits?: matchN(1, [#cache_usage_limits, [...#cache_usage_limits]])
+		timeouts?:            #timeouts
 		arn?:                 string
 		create_time?:         string
 		daily_snapshot_time?: string
@@ -12,24 +14,22 @@ package res
 			address?: string
 			port?:    number
 		})]
-		engine!:              string
-		full_engine_version?: string
-		id?:                  string
-		kms_key_id?:          string
-		cache_usage_limits?: matchN(1, [#cache_usage_limits, [...#cache_usage_limits]])
+		engine!:               string
+		full_engine_version?:  string
+		id?:                   string
+		kms_key_id?:           string
 		major_engine_version?: string
+		name!:                 string
+		reader_endpoint?: [...close({
+			address?: string
+			port?:    number
+		})]
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		name!:   string
-		reader_endpoint?: [...close({
-			address?: string
-			port?:    number
-		})]
-		timeouts?: #timeouts
 		security_group_ids?: [...string]
 		snapshot_arns_to_restore?: [...string]
 		snapshot_retention_limit?: number

@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_config_configuration_recorder")
 	close({
+		recording_group?: matchN(1, [#recording_group, list.MaxItems(1) & [...#recording_group]])
+		recording_mode?: matchN(1, [#recording_mode, list.MaxItems(1) & [...#recording_mode]])
 		id?:   string
 		name?: string
 
@@ -15,8 +17,6 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:   string
 		role_arn!: string
-		recording_group?: matchN(1, [#recording_group, list.MaxItems(1) & [...#recording_group]])
-		recording_mode?: matchN(1, [#recording_mode, list.MaxItems(1) & [...#recording_mode]])
 	})
 
 	#recording_group: close({

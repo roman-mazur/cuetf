@@ -6,11 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_emrserverless_application")
 	close({
-		architecture?: string
 		auto_start_configuration?: matchN(1, [#auto_start_configuration, list.MaxItems(1) & [...#auto_start_configuration]])
-		arn?:  string
-		id?:   string
-		name!: string
+		auto_stop_configuration?: matchN(1, [#auto_stop_configuration, list.MaxItems(1) & [...#auto_stop_configuration]])
+		image_configuration?: matchN(1, [#image_configuration, list.MaxItems(1) & [...#image_configuration]])
+		initial_capacity?: matchN(1, [#initial_capacity, [...#initial_capacity]])
+		interactive_configuration?: matchN(1, [#interactive_configuration, list.MaxItems(1) & [...#interactive_configuration]])
+		job_level_cost_allocation_configuration?: matchN(1, [#job_level_cost_allocation_configuration, list.MaxItems(1) & [...#job_level_cost_allocation_configuration]])
+		maximum_capacity?: matchN(1, [#maximum_capacity, list.MaxItems(1) & [...#maximum_capacity]])
+		monitoring_configuration?: matchN(1, [#monitoring_configuration, list.MaxItems(1) & [...#monitoring_configuration]])
+		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
+		runtime_configuration?: matchN(1, [#runtime_configuration, [...#runtime_configuration]])
+		scheduler_configuration?: matchN(1, [#scheduler_configuration, list.MaxItems(1) & [...#scheduler_configuration]])
+		architecture?: string
+		arn?:          string
+		id?:           string
+		name!:         string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -18,18 +28,9 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:        string
 		release_label!: string
-		auto_stop_configuration?: matchN(1, [#auto_stop_configuration, list.MaxItems(1) & [...#auto_stop_configuration]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type!: string
-		image_configuration?: matchN(1, [#image_configuration, list.MaxItems(1) & [...#image_configuration]])
-		initial_capacity?: matchN(1, [#initial_capacity, [...#initial_capacity]])
-		interactive_configuration?: matchN(1, [#interactive_configuration, list.MaxItems(1) & [...#interactive_configuration]])
-		maximum_capacity?: matchN(1, [#maximum_capacity, list.MaxItems(1) & [...#maximum_capacity]])
-		monitoring_configuration?: matchN(1, [#monitoring_configuration, list.MaxItems(1) & [...#monitoring_configuration]])
-		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
-		runtime_configuration?: matchN(1, [#runtime_configuration, [...#runtime_configuration]])
-		scheduler_configuration?: matchN(1, [#scheduler_configuration, list.MaxItems(1) & [...#scheduler_configuration]])
 	})
 
 	#auto_start_configuration: close({
@@ -53,6 +54,10 @@ import "list"
 	#interactive_configuration: close({
 		livy_endpoint_enabled?: bool
 		studio_enabled?:        bool
+	})
+
+	#job_level_cost_allocation_configuration: close({
+		enabled?: bool
 	})
 
 	#maximum_capacity: close({

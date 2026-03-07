@@ -38,12 +38,6 @@ package data
 		id?:            string
 		image_uri?:     string
 		invoke_arn?:    string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:        string
 		kms_key_arn?:   string
 		last_modified?: string
 		layers?: [...string]
@@ -53,10 +47,16 @@ package data
 			log_group?:             string
 			system_log_level?:      string
 		})]
-		memory_size?:                    number
-		qualified_arn?:                  string
-		qualified_invoke_arn?:           string
-		qualifier?:                      string
+		memory_size?:          number
+		qualified_arn?:        string
+		qualified_invoke_arn?: string
+		qualifier?:            string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                         string
 		reserved_concurrent_executions?: number
 		response_streaming_invoke_arn?:  string
 		role?:                           string

@@ -6,37 +6,37 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_glue_partition")
 	close({
-		catalog_id?:    string
-		creation_time?: string
-		database_name!: string
+		storage_descriptor?: matchN(1, [#storage_descriptor, list.MaxItems(1) & [...#storage_descriptor]])
+		catalog_id?:         string
+		creation_time?:      string
+		database_name!:      string
+		id?:                 string
+		last_accessed_time?: string
+		last_analyzed_time?: string
+		parameters?: [string]: string
+		partition_values!: [...string]
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:             string
-		id?:                 string
-		last_accessed_time?: string
-		last_analyzed_time?: string
-		storage_descriptor?: matchN(1, [#storage_descriptor, list.MaxItems(1) & [...#storage_descriptor]])
-		parameters?: [string]: string
-		partition_values!: [...string]
+		region?:     string
 		table_name!: string
 	})
 
 	#storage_descriptor: close({
-		additional_locations?: [...string]
-		bucket_columns?: [...string]
-		compressed?:   bool
-		input_format?: string
-		location?:     string
 		columns?: matchN(1, [_#defs."/$defs/storage_descriptor/$defs/columns", [..._#defs."/$defs/storage_descriptor/$defs/columns"]])
-		number_of_buckets?: number
 		ser_de_info?: matchN(1, [_#defs."/$defs/storage_descriptor/$defs/ser_de_info", list.MaxItems(1) & [..._#defs."/$defs/storage_descriptor/$defs/ser_de_info"]])
-		output_format?: string
-		parameters?: [string]: string
 		skewed_info?: matchN(1, [_#defs."/$defs/storage_descriptor/$defs/skewed_info", list.MaxItems(1) & [..._#defs."/$defs/storage_descriptor/$defs/skewed_info"]])
 		sort_columns?: matchN(1, [_#defs."/$defs/storage_descriptor/$defs/sort_columns", [..._#defs."/$defs/storage_descriptor/$defs/sort_columns"]])
+		additional_locations?: [...string]
+		bucket_columns?: [...string]
+		compressed?:        bool
+		input_format?:      string
+		location?:          string
+		number_of_buckets?: number
+		output_format?:     string
+		parameters?: [string]: string
 		stored_as_sub_directories?: bool
 	})
 

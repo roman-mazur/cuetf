@@ -4,19 +4,19 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagent_agent_alias")
 	close({
+		timeouts?:         #timeouts
 		agent_alias_arn?:  string
 		agent_alias_id?:   string
 		agent_alias_name!: string
 		agent_id!:         string
 		description?:      string
+		id?:               string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
-		id?:       string
-		timeouts?: #timeouts
+		region?: string
 		routing_configuration?: [...close({
 			agent_version?:          string
 			provisioned_throughput?: string

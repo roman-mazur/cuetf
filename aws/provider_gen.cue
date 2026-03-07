@@ -4,10 +4,15 @@ package aws
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/aws/provider")
 	close({
+		assume_role?: matchN(1, [#assume_role, [...#assume_role]])
+		assume_role_with_web_identity?: matchN(1, [#assume_role_with_web_identity, [...#assume_role_with_web_identity]])
+		default_tags?: matchN(1, [#default_tags, [...#default_tags]])
+		endpoints?: matchN(1, [#endpoints, [...#endpoints]])
+		ignore_tags?: matchN(1, [#ignore_tags, [...#ignore_tags]])
+
 		// The access key for API operations. You can retrieve this
 		// from the 'Security & Credentials' section of the AWS console.
 		access_key?: string
-		assume_role?: matchN(1, [#assume_role, [...#assume_role]])
 		allowed_account_ids?: [...string]
 
 		// File containing custom root and intermediate certificates. Can
@@ -92,10 +97,6 @@ package aws
 		// List of paths to shared credentials files. If not set, defaults
 		// to [~/.aws/credentials].
 		shared_credentials_files?: [...string]
-		assume_role_with_web_identity?: matchN(1, [#assume_role_with_web_identity, [...#assume_role_with_web_identity]])
-		default_tags?: matchN(1, [#default_tags, [...#default_tags]])
-		endpoints?: matchN(1, [#endpoints, [...#endpoints]])
-		ignore_tags?: matchN(1, [#ignore_tags, [...#ignore_tags]])
 
 		// Skip the credentials validation via STS API. Used for AWS API
 		// implementations that do not have STS available/implemented.

@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_datazone_user_profile")
 	close({
+		timeouts?: #timeouts
 		details?: [...close({
 			iam?: [...close({
 				arn?: string
@@ -26,7 +27,6 @@ package res
 		type?:            string
 		user_identifier!: string
 		user_type?:       string
-		timeouts?:        #timeouts
 	})
 
 	#timeouts: close({

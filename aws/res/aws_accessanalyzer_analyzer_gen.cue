@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_accessanalyzer_analyzer")
 	close({
+		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
 		analyzer_name!: string
 		arn?:           string
 		id?:            string
@@ -18,7 +19,6 @@ import "list"
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type?: string
-		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
 	})
 
 	#configuration: close({

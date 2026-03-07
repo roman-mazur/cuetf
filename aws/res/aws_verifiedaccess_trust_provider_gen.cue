@@ -6,11 +6,15 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_verifiedaccess_trust_provider")
 	close({
+		device_options?: matchN(1, [#device_options, list.MaxItems(1) & [...#device_options]])
+		native_application_oidc_options?: matchN(1, [#native_application_oidc_options, list.MaxItems(1) & [...#native_application_oidc_options]])
+		oidc_options?: matchN(1, [#oidc_options, list.MaxItems(1) & [...#oidc_options]])
+		sse_specification?: matchN(1, [#sse_specification, list.MaxItems(1) & [...#sse_specification]])
+		timeouts?:                   #timeouts
 		description?:                string
 		device_trust_provider_type?: string
 		id?:                         string
 		policy_reference_name!:      string
-		device_options?: matchN(1, [#device_options, list.MaxItems(1) & [...#device_options]])
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -19,12 +23,8 @@ import "list"
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		native_application_oidc_options?: matchN(1, [#native_application_oidc_options, list.MaxItems(1) & [...#native_application_oidc_options]])
-		trust_provider_type!: string
-		oidc_options?: matchN(1, [#oidc_options, list.MaxItems(1) & [...#oidc_options]])
-		sse_specification?: matchN(1, [#sse_specification, list.MaxItems(1) & [...#sse_specification]])
+		trust_provider_type!:      string
 		user_trust_provider_type?: string
-		timeouts?:                 #timeouts
 	})
 
 	#device_options: close({

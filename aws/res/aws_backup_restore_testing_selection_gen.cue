@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_backup_restore_testing_selection")
 	close({
+		protected_resource_conditions?: matchN(1, [#protected_resource_conditions, [...#protected_resource_conditions]])
 		iam_role_arn!: string
 		name!:         string
 		protected_resource_arns?: [...string]
@@ -17,7 +18,6 @@ package res
 		restore_metadata_overrides?: [string]: string
 		restore_testing_plan_name!: string
 		validation_window_hours?:   number
-		protected_resource_conditions?: matchN(1, [#protected_resource_conditions, [...#protected_resource_conditions]])
 	})
 
 	#protected_resource_conditions: close({

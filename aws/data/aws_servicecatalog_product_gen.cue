@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_servicecatalog_product")
 	close({
+		timeouts?:         #timeouts
 		accept_language?:  string
 		arn?:              string
 		created_time?:     string
@@ -12,7 +13,6 @@ package data
 		has_default_path?: bool
 		id!:               string
 		name?:             string
-		timeouts?:         #timeouts
 		owner?:            string
 
 		// Region where this resource will be

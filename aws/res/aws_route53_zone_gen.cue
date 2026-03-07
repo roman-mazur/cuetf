@@ -4,15 +4,15 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_route53_zone")
 	close({
+		timeouts?: #timeouts
+		vpc?: matchN(1, [#vpc, [...#vpc]])
 		arn?:                         string
 		comment?:                     string
 		delegation_set_id?:           string
 		enable_accelerated_recovery?: bool
 		force_destroy?:               bool
 		id?:                          string
-		timeouts?:                    #timeouts
 		name!:                        string
-		vpc?: matchN(1, [#vpc, [...#vpc]])
 		name_servers?: [...string]
 		primary_name_server?: string
 		tags?: [string]:     string

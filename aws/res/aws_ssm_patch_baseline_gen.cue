@@ -6,29 +6,29 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ssm_patch_baseline")
 	close({
+		approval_rule?: matchN(1, [#approval_rule, [...#approval_rule]])
+		global_filter?: matchN(1, [#global_filter, list.MaxItems(4) & [...#global_filter]])
+		source?: matchN(1, [#source, list.MaxItems(20) & [...#source]])
 		approved_patches?: [...string]
 		approved_patches_compliance_level?:            string
 		approved_patches_enable_non_security?:         bool
 		arn?:                                          string
 		available_security_updates_compliance_status?: string
-		approval_rule?: matchN(1, [#approval_rule, [...#approval_rule]])
-		description?: string
+		description?:                                  string
+		id?:                                           string
+		json?:                                         string
+		name!:                                         string
+		operating_system?:                             string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		id?:     string
-		json?:   string
-		name!:   string
-		global_filter?: matchN(1, [#global_filter, list.MaxItems(4) & [...#global_filter]])
-		operating_system?: string
 		rejected_patches?: [...string]
 		rejected_patches_action?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		source?: matchN(1, [#source, list.MaxItems(20) & [...#source]])
 	})
 
 	#approval_rule: close({

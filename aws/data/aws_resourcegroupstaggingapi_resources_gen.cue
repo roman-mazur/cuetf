@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_resourcegroupstaggingapi_resources")
 	close({
+		tag_filter?: matchN(1, [#tag_filter, list.MaxItems(50) & [...#tag_filter]])
 		exclude_compliant_resources?: bool
 		id?:                          string
 		include_compliance_details?:  bool
@@ -26,7 +27,6 @@ import "list"
 			tags?: [string]: string
 		})]
 		resource_type_filters?: [...string]
-		tag_filter?: matchN(1, [#tag_filter, list.MaxItems(50) & [...#tag_filter]])
 	})
 
 	#tag_filter: close({

@@ -7,20 +7,6 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_kinesis_firehose_delivery_stream")
 	close({
 		elasticsearch_configuration?: matchN(1, [#elasticsearch_configuration, list.MaxItems(1) & [...#elasticsearch_configuration]])
-		arn?:            string
-		destination!:    string
-		destination_id?: string
-		id?:             string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		name!:   string
-		tags?: [string]:     string
-		tags_all?: [string]: string
-		version_id?: string
 		extended_s3_configuration?: matchN(1, [#extended_s3_configuration, list.MaxItems(1) & [...#extended_s3_configuration]])
 		http_endpoint_configuration?: matchN(1, [#http_endpoint_configuration, list.MaxItems(1) & [...#http_endpoint_configuration]])
 		iceberg_configuration?: matchN(1, [#iceberg_configuration, list.MaxItems(1) & [...#iceberg_configuration]])
@@ -32,29 +18,47 @@ import "list"
 		server_side_encryption?: matchN(1, [#server_side_encryption, list.MaxItems(1) & [...#server_side_encryption]])
 		snowflake_configuration?: matchN(1, [#snowflake_configuration, list.MaxItems(1) & [...#snowflake_configuration]])
 		splunk_configuration?: matchN(1, [#splunk_configuration, list.MaxItems(1) & [...#splunk_configuration]])
-		timeouts?: #timeouts
+		timeouts?:       #timeouts
+		arn?:            string
+		destination!:    string
+		destination_id?: string
+		id?:             string
+		name!:           string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
+		version_id?: string
 	})
 
 	#elasticsearch_configuration: close({
+		cloudwatch_logging_options?: matchN(1, [_#defs."/$defs/elasticsearch_configuration/$defs/cloudwatch_logging_options", list.MaxItems(1) & [..._#defs."/$defs/elasticsearch_configuration/$defs/cloudwatch_logging_options"]])
+		processing_configuration?: matchN(1, [_#defs."/$defs/elasticsearch_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/elasticsearch_configuration/$defs/processing_configuration"]])
+		s3_configuration!: matchN(1, [_#defs."/$defs/elasticsearch_configuration/$defs/s3_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/elasticsearch_configuration/$defs/s3_configuration"]])
+		vpc_config?: matchN(1, [_#defs."/$defs/elasticsearch_configuration/$defs/vpc_config", list.MaxItems(1) & [..._#defs."/$defs/elasticsearch_configuration/$defs/vpc_config"]])
 		buffering_interval?:    number
 		buffering_size?:        number
 		cluster_endpoint?:      string
 		domain_arn?:            string
 		index_name!:            string
 		index_rotation_period?: string
-		cloudwatch_logging_options?: matchN(1, [_#defs."/$defs/elasticsearch_configuration/$defs/cloudwatch_logging_options", list.MaxItems(1) & [..._#defs."/$defs/elasticsearch_configuration/$defs/cloudwatch_logging_options"]])
-		processing_configuration?: matchN(1, [_#defs."/$defs/elasticsearch_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/elasticsearch_configuration/$defs/processing_configuration"]])
-		s3_configuration!: matchN(1, [_#defs."/$defs/elasticsearch_configuration/$defs/s3_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/elasticsearch_configuration/$defs/s3_configuration"]])
-		retry_duration?: number
-		role_arn!:       string
-		s3_backup_mode?: string
-		type_name?:      string
-		vpc_config?: matchN(1, [_#defs."/$defs/elasticsearch_configuration/$defs/vpc_config", list.MaxItems(1) & [..._#defs."/$defs/elasticsearch_configuration/$defs/vpc_config"]])
+		retry_duration?:        number
+		role_arn!:              string
+		s3_backup_mode?:        string
+		type_name?:             string
 	})
 
 	#extended_s3_configuration: close({
-		bucket_arn!: string
 		cloudwatch_logging_options?: matchN(1, [_#defs."/$defs/extended_s3_configuration/$defs/cloudwatch_logging_options", list.MaxItems(1) & [..._#defs."/$defs/extended_s3_configuration/$defs/cloudwatch_logging_options"]])
+		data_format_conversion_configuration?: matchN(1, [_#defs."/$defs/extended_s3_configuration/$defs/data_format_conversion_configuration", list.MaxItems(1) & [..._#defs."/$defs/extended_s3_configuration/$defs/data_format_conversion_configuration"]])
+		dynamic_partitioning_configuration?: matchN(1, [_#defs."/$defs/extended_s3_configuration/$defs/dynamic_partitioning_configuration", list.MaxItems(1) & [..._#defs."/$defs/extended_s3_configuration/$defs/dynamic_partitioning_configuration"]])
+		processing_configuration?: matchN(1, [_#defs."/$defs/extended_s3_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/extended_s3_configuration/$defs/processing_configuration"]])
+		s3_backup_configuration?: matchN(1, [_#defs."/$defs/extended_s3_configuration/$defs/s3_backup_configuration", list.MaxItems(1) & [..._#defs."/$defs/extended_s3_configuration/$defs/s3_backup_configuration"]])
+		bucket_arn!:          string
 		buffering_interval?:  number
 		buffering_size?:      number
 		compression_format?:  string
@@ -62,43 +66,39 @@ import "list"
 		error_output_prefix?: string
 		file_extension?:      string
 		kms_key_arn?:         string
-		data_format_conversion_configuration?: matchN(1, [_#defs."/$defs/extended_s3_configuration/$defs/data_format_conversion_configuration", list.MaxItems(1) & [..._#defs."/$defs/extended_s3_configuration/$defs/data_format_conversion_configuration"]])
-		dynamic_partitioning_configuration?: matchN(1, [_#defs."/$defs/extended_s3_configuration/$defs/dynamic_partitioning_configuration", list.MaxItems(1) & [..._#defs."/$defs/extended_s3_configuration/$defs/dynamic_partitioning_configuration"]])
-		prefix?: string
-		processing_configuration?: matchN(1, [_#defs."/$defs/extended_s3_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/extended_s3_configuration/$defs/processing_configuration"]])
-		s3_backup_configuration?: matchN(1, [_#defs."/$defs/extended_s3_configuration/$defs/s3_backup_configuration", list.MaxItems(1) & [..._#defs."/$defs/extended_s3_configuration/$defs/s3_backup_configuration"]])
-		role_arn!:       string
-		s3_backup_mode?: string
+		prefix?:              string
+		role_arn!:            string
+		s3_backup_mode?:      string
 	})
 
 	#http_endpoint_configuration: close({
-		access_key?: string
 		cloudwatch_logging_options?: matchN(1, [_#defs."/$defs/http_endpoint_configuration/$defs/cloudwatch_logging_options", list.MaxItems(1) & [..._#defs."/$defs/http_endpoint_configuration/$defs/cloudwatch_logging_options"]])
+		processing_configuration?: matchN(1, [_#defs."/$defs/http_endpoint_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/http_endpoint_configuration/$defs/processing_configuration"]])
+		request_configuration?: matchN(1, [_#defs."/$defs/http_endpoint_configuration/$defs/request_configuration", list.MaxItems(1) & [..._#defs."/$defs/http_endpoint_configuration/$defs/request_configuration"]])
+		s3_configuration!: matchN(1, [_#defs."/$defs/http_endpoint_configuration/$defs/s3_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/http_endpoint_configuration/$defs/s3_configuration"]])
+		secrets_manager_configuration?: matchN(1, [_#defs."/$defs/http_endpoint_configuration/$defs/secrets_manager_configuration", list.MaxItems(1) & [..._#defs."/$defs/http_endpoint_configuration/$defs/secrets_manager_configuration"]])
+		access_key?:         string
 		buffering_interval?: number
 		buffering_size?:     number
 		name?:               string
 		retry_duration?:     number
-		processing_configuration?: matchN(1, [_#defs."/$defs/http_endpoint_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/http_endpoint_configuration/$defs/processing_configuration"]])
-		role_arn?:       string
-		s3_backup_mode?: string
-		request_configuration?: matchN(1, [_#defs."/$defs/http_endpoint_configuration/$defs/request_configuration", list.MaxItems(1) & [..._#defs."/$defs/http_endpoint_configuration/$defs/request_configuration"]])
-		s3_configuration!: matchN(1, [_#defs."/$defs/http_endpoint_configuration/$defs/s3_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/http_endpoint_configuration/$defs/s3_configuration"]])
-		secrets_manager_configuration?: matchN(1, [_#defs."/$defs/http_endpoint_configuration/$defs/secrets_manager_configuration", list.MaxItems(1) & [..._#defs."/$defs/http_endpoint_configuration/$defs/secrets_manager_configuration"]])
-		url!: string
+		role_arn?:           string
+		s3_backup_mode?:     string
+		url!:                string
 	})
 
 	#iceberg_configuration: close({
+		cloudwatch_logging_options?: matchN(1, [_#defs."/$defs/iceberg_configuration/$defs/cloudwatch_logging_options", list.MaxItems(1) & [..._#defs."/$defs/iceberg_configuration/$defs/cloudwatch_logging_options"]])
+		destination_table_configuration?: matchN(1, [_#defs."/$defs/iceberg_configuration/$defs/destination_table_configuration", [..._#defs."/$defs/iceberg_configuration/$defs/destination_table_configuration"]])
+		processing_configuration?: matchN(1, [_#defs."/$defs/iceberg_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/iceberg_configuration/$defs/processing_configuration"]])
+		s3_configuration!: matchN(1, [_#defs."/$defs/iceberg_configuration/$defs/s3_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/iceberg_configuration/$defs/s3_configuration"]])
 		append_only?:        bool
 		buffering_interval?: number
 		buffering_size?:     number
 		catalog_arn!:        string
 		retry_duration?:     number
 		role_arn!:           string
-		cloudwatch_logging_options?: matchN(1, [_#defs."/$defs/iceberg_configuration/$defs/cloudwatch_logging_options", list.MaxItems(1) & [..._#defs."/$defs/iceberg_configuration/$defs/cloudwatch_logging_options"]])
-		s3_backup_mode?: string
-		destination_table_configuration?: matchN(1, [_#defs."/$defs/iceberg_configuration/$defs/destination_table_configuration", [..._#defs."/$defs/iceberg_configuration/$defs/destination_table_configuration"]])
-		processing_configuration?: matchN(1, [_#defs."/$defs/iceberg_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/iceberg_configuration/$defs/processing_configuration"]])
-		s3_configuration!: matchN(1, [_#defs."/$defs/iceberg_configuration/$defs/s3_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/iceberg_configuration/$defs/s3_configuration"]])
+		s3_backup_mode?:     string
 	})
 
 	#kinesis_source_configuration: close({
@@ -114,52 +114,52 @@ import "list"
 	})
 
 	#opensearch_configuration: close({
-		buffering_interval?: number
-		buffering_size?:     number
-		cluster_endpoint?:   string
-		domain_arn?:         string
 		cloudwatch_logging_options?: matchN(1, [_#defs."/$defs/opensearch_configuration/$defs/cloudwatch_logging_options", list.MaxItems(1) & [..._#defs."/$defs/opensearch_configuration/$defs/cloudwatch_logging_options"]])
-		index_name!:            string
-		index_rotation_period?: string
 		document_id_options?: matchN(1, [_#defs."/$defs/opensearch_configuration/$defs/document_id_options", list.MaxItems(1) & [..._#defs."/$defs/opensearch_configuration/$defs/document_id_options"]])
-		retry_duration?: number
-		role_arn!:       string
-		s3_backup_mode?: string
 		processing_configuration?: matchN(1, [_#defs."/$defs/opensearch_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/opensearch_configuration/$defs/processing_configuration"]])
 		s3_configuration!: matchN(1, [_#defs."/$defs/opensearch_configuration/$defs/s3_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/opensearch_configuration/$defs/s3_configuration"]])
-		type_name?: string
 		vpc_config?: matchN(1, [_#defs."/$defs/opensearch_configuration/$defs/vpc_config", list.MaxItems(1) & [..._#defs."/$defs/opensearch_configuration/$defs/vpc_config"]])
+		buffering_interval?:    number
+		buffering_size?:        number
+		cluster_endpoint?:      string
+		domain_arn?:            string
+		index_name!:            string
+		index_rotation_period?: string
+		retry_duration?:        number
+		role_arn!:              string
+		s3_backup_mode?:        string
+		type_name?:             string
 	})
 
 	#opensearchserverless_configuration: close({
+		cloudwatch_logging_options?: matchN(1, [_#defs."/$defs/opensearchserverless_configuration/$defs/cloudwatch_logging_options", list.MaxItems(1) & [..._#defs."/$defs/opensearchserverless_configuration/$defs/cloudwatch_logging_options"]])
+		processing_configuration?: matchN(1, [_#defs."/$defs/opensearchserverless_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/opensearchserverless_configuration/$defs/processing_configuration"]])
+		s3_configuration!: matchN(1, [_#defs."/$defs/opensearchserverless_configuration/$defs/s3_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/opensearchserverless_configuration/$defs/s3_configuration"]])
+		vpc_config?: matchN(1, [_#defs."/$defs/opensearchserverless_configuration/$defs/vpc_config", list.MaxItems(1) & [..._#defs."/$defs/opensearchserverless_configuration/$defs/vpc_config"]])
 		buffering_interval?:  number
 		buffering_size?:      number
 		collection_endpoint!: string
 		index_name!:          string
 		retry_duration?:      number
 		role_arn!:            string
-		cloudwatch_logging_options?: matchN(1, [_#defs."/$defs/opensearchserverless_configuration/$defs/cloudwatch_logging_options", list.MaxItems(1) & [..._#defs."/$defs/opensearchserverless_configuration/$defs/cloudwatch_logging_options"]])
-		s3_backup_mode?: string
-		processing_configuration?: matchN(1, [_#defs."/$defs/opensearchserverless_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/opensearchserverless_configuration/$defs/processing_configuration"]])
-		s3_configuration!: matchN(1, [_#defs."/$defs/opensearchserverless_configuration/$defs/s3_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/opensearchserverless_configuration/$defs/s3_configuration"]])
-		vpc_config?: matchN(1, [_#defs."/$defs/opensearchserverless_configuration/$defs/vpc_config", list.MaxItems(1) & [..._#defs."/$defs/opensearchserverless_configuration/$defs/vpc_config"]])
+		s3_backup_mode?:      string
 	})
 
 	#redshift_configuration: close({
+		cloudwatch_logging_options?: matchN(1, [_#defs."/$defs/redshift_configuration/$defs/cloudwatch_logging_options", list.MaxItems(1) & [..._#defs."/$defs/redshift_configuration/$defs/cloudwatch_logging_options"]])
+		processing_configuration?: matchN(1, [_#defs."/$defs/redshift_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/redshift_configuration/$defs/processing_configuration"]])
+		s3_backup_configuration?: matchN(1, [_#defs."/$defs/redshift_configuration/$defs/s3_backup_configuration", list.MaxItems(1) & [..._#defs."/$defs/redshift_configuration/$defs/s3_backup_configuration"]])
+		s3_configuration!: matchN(1, [_#defs."/$defs/redshift_configuration/$defs/s3_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/redshift_configuration/$defs/s3_configuration"]])
+		secrets_manager_configuration?: matchN(1, [_#defs."/$defs/redshift_configuration/$defs/secrets_manager_configuration", list.MaxItems(1) & [..._#defs."/$defs/redshift_configuration/$defs/secrets_manager_configuration"]])
 		cluster_jdbcurl!:    string
 		copy_options?:       string
 		data_table_columns?: string
 		data_table_name!:    string
 		password?:           string
-		cloudwatch_logging_options?: matchN(1, [_#defs."/$defs/redshift_configuration/$defs/cloudwatch_logging_options", list.MaxItems(1) & [..._#defs."/$defs/redshift_configuration/$defs/cloudwatch_logging_options"]])
-		retry_duration?: number
-		role_arn!:       string
-		processing_configuration?: matchN(1, [_#defs."/$defs/redshift_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/redshift_configuration/$defs/processing_configuration"]])
-		s3_backup_configuration?: matchN(1, [_#defs."/$defs/redshift_configuration/$defs/s3_backup_configuration", list.MaxItems(1) & [..._#defs."/$defs/redshift_configuration/$defs/s3_backup_configuration"]])
-		s3_backup_mode?: string
-		s3_configuration!: matchN(1, [_#defs."/$defs/redshift_configuration/$defs/s3_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/redshift_configuration/$defs/s3_configuration"]])
-		secrets_manager_configuration?: matchN(1, [_#defs."/$defs/redshift_configuration/$defs/secrets_manager_configuration", list.MaxItems(1) & [..._#defs."/$defs/redshift_configuration/$defs/secrets_manager_configuration"]])
-		username?: string
+		retry_duration?:     number
+		role_arn!:           string
+		s3_backup_mode?:     string
+		username?:           string
 	})
 
 	#server_side_encryption: close({
@@ -169,6 +169,12 @@ import "list"
 	})
 
 	#snowflake_configuration: close({
+		cloudwatch_logging_options?: matchN(1, [_#defs."/$defs/snowflake_configuration/$defs/cloudwatch_logging_options", list.MaxItems(1) & [..._#defs."/$defs/snowflake_configuration/$defs/cloudwatch_logging_options"]])
+		processing_configuration?: matchN(1, [_#defs."/$defs/snowflake_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/snowflake_configuration/$defs/processing_configuration"]])
+		s3_configuration!: matchN(1, [_#defs."/$defs/snowflake_configuration/$defs/s3_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/snowflake_configuration/$defs/s3_configuration"]])
+		secrets_manager_configuration?: matchN(1, [_#defs."/$defs/snowflake_configuration/$defs/secrets_manager_configuration", list.MaxItems(1) & [..._#defs."/$defs/snowflake_configuration/$defs/secrets_manager_configuration"]])
+		snowflake_role_configuration?: matchN(1, [_#defs."/$defs/snowflake_configuration/$defs/snowflake_role_configuration", list.MaxItems(1) & [..._#defs."/$defs/snowflake_configuration/$defs/snowflake_role_configuration"]])
+		snowflake_vpc_configuration?: matchN(1, [_#defs."/$defs/snowflake_configuration/$defs/snowflake_vpc_configuration", list.MaxItems(1) & [..._#defs."/$defs/snowflake_configuration/$defs/snowflake_vpc_configuration"]])
 		account_url!:          string
 		buffering_interval?:   number
 		buffering_size?:       number
@@ -179,32 +185,26 @@ import "list"
 		metadata_column_name?: string
 		private_key?:          string
 		retry_duration?:       number
-		cloudwatch_logging_options?: matchN(1, [_#defs."/$defs/snowflake_configuration/$defs/cloudwatch_logging_options", list.MaxItems(1) & [..._#defs."/$defs/snowflake_configuration/$defs/cloudwatch_logging_options"]])
-		processing_configuration?: matchN(1, [_#defs."/$defs/snowflake_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/snowflake_configuration/$defs/processing_configuration"]])
-		role_arn!:       string
-		s3_backup_mode?: string
-		s3_configuration!: matchN(1, [_#defs."/$defs/snowflake_configuration/$defs/s3_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/snowflake_configuration/$defs/s3_configuration"]])
-		schema!: string
-		secrets_manager_configuration?: matchN(1, [_#defs."/$defs/snowflake_configuration/$defs/secrets_manager_configuration", list.MaxItems(1) & [..._#defs."/$defs/snowflake_configuration/$defs/secrets_manager_configuration"]])
-		table!: string
-		snowflake_role_configuration?: matchN(1, [_#defs."/$defs/snowflake_configuration/$defs/snowflake_role_configuration", list.MaxItems(1) & [..._#defs."/$defs/snowflake_configuration/$defs/snowflake_role_configuration"]])
-		user?: string
-		snowflake_vpc_configuration?: matchN(1, [_#defs."/$defs/snowflake_configuration/$defs/snowflake_vpc_configuration", list.MaxItems(1) & [..._#defs."/$defs/snowflake_configuration/$defs/snowflake_vpc_configuration"]])
+		role_arn!:             string
+		s3_backup_mode?:       string
+		schema!:               string
+		table!:                string
+		user?:                 string
 	})
 
 	#splunk_configuration: close({
-		buffering_interval?: number
 		cloudwatch_logging_options?: matchN(1, [_#defs."/$defs/splunk_configuration/$defs/cloudwatch_logging_options", list.MaxItems(1) & [..._#defs."/$defs/splunk_configuration/$defs/cloudwatch_logging_options"]])
+		processing_configuration?: matchN(1, [_#defs."/$defs/splunk_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/splunk_configuration/$defs/processing_configuration"]])
+		s3_configuration!: matchN(1, [_#defs."/$defs/splunk_configuration/$defs/s3_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/splunk_configuration/$defs/s3_configuration"]])
+		secrets_manager_configuration?: matchN(1, [_#defs."/$defs/splunk_configuration/$defs/secrets_manager_configuration", list.MaxItems(1) & [..._#defs."/$defs/splunk_configuration/$defs/secrets_manager_configuration"]])
+		buffering_interval?:         number
 		buffering_size?:             number
 		hec_acknowledgment_timeout?: number
 		hec_endpoint!:               string
-		processing_configuration?: matchN(1, [_#defs."/$defs/splunk_configuration/$defs/processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/splunk_configuration/$defs/processing_configuration"]])
-		hec_endpoint_type?: string
-		s3_configuration!: matchN(1, [_#defs."/$defs/splunk_configuration/$defs/s3_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/splunk_configuration/$defs/s3_configuration"]])
-		hec_token?:      string
-		retry_duration?: number
-		s3_backup_mode?: string
-		secrets_manager_configuration?: matchN(1, [_#defs."/$defs/splunk_configuration/$defs/secrets_manager_configuration", list.MaxItems(1) & [..._#defs."/$defs/splunk_configuration/$defs/secrets_manager_configuration"]])
+		hec_endpoint_type?:          string
+		hec_token?:                  string
+		retry_duration?:             number
+		s3_backup_mode?:             string
 	})
 
 	#timeouts: close({

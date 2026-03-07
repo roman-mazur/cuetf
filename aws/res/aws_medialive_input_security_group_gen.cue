@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_medialive_input_security_group")
 	close({
+		timeouts?: #timeouts
+		whitelist_rules!: matchN(1, [#whitelist_rules, [_, ...] & [...#whitelist_rules]])
 		arn?: string
 		id?:  string
 		inputs?: [...string]
@@ -15,8 +17,6 @@ package res
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		timeouts?: #timeouts
-		whitelist_rules!: matchN(1, [#whitelist_rules, [_, ...] & [...#whitelist_rules]])
 	})
 
 	#timeouts: close({

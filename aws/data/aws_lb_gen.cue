@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_lb")
 	close({
+		timeouts?: #timeouts
 		access_logs?: [...close({
 			bucket?:  string
 			enabled?: bool
@@ -17,21 +18,14 @@ package data
 			enabled?: bool
 			prefix?:  string
 		})]
-		customer_owned_ipv4_pool?:         string
-		desync_mitigation_mode?:           string
-		dns_name?:                         string
-		dns_record_client_routing_policy?: string
-		drop_invalid_header_fields?:       bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                                                       string
+		customer_owned_ipv4_pool?:                                     string
+		desync_mitigation_mode?:                                       string
+		dns_name?:                                                     string
+		dns_record_client_routing_policy?:                             string
+		drop_invalid_header_fields?:                                   bool
 		enable_cross_zone_load_balancing?:                             bool
 		enable_deletion_protection?:                                   bool
 		enable_http2?:                                                 bool
-		timeouts?:                                                     #timeouts
 		enable_tls_version_and_cipher_suite_headers?:                  bool
 		enable_waf_fail_open?:                                         bool
 		enable_xff_client_port?:                                       bool
@@ -49,9 +43,15 @@ package data
 		ipam_pools?: [...close({
 			ipv4_ipam_pool_id?: string
 		})]
-		load_balancer_type?:                     string
-		name?:                                   string
-		preserve_host_header?:                   bool
+		load_balancer_type?:   string
+		name?:                 string
+		preserve_host_header?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                                 string
 		secondary_ips_auto_assigned_per_subnet?: number
 		security_groups?: [...string]
 		subnet_mapping?: [...close({

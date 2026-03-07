@@ -4,7 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_odb_network_peering_connection")
 	close({
-		arn?: string
+		timeouts?: #timeouts
+		arn?:      string
 
 		// Created time of the odb network peering connection.
 		created_at?: string
@@ -36,7 +37,6 @@ package res
 
 		// Progress of the odb network peering connection.
 		percent_progress?: number
-		timeouts?:         #timeouts
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

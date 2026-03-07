@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_redshiftdata_statement")
 	close({
+		parameters?: matchN(1, [#parameters, [...#parameters]])
+		timeouts?:           #timeouts
 		cluster_identifier?: string
 		database!:           string
 		db_user?:            string
@@ -13,10 +15,8 @@ package res
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:     string
-		secret_arn?: string
-		parameters?: matchN(1, [#parameters, [...#parameters]])
-		timeouts?:       #timeouts
+		region?:         string
+		secret_arn?:     string
 		sql!:            string
 		statement_name?: string
 		with_event?:     bool

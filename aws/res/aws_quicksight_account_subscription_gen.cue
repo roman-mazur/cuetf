@@ -4,15 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_quicksight_account_subscription")
 	close({
+		timeouts?:                    #timeouts
 		account_name!:                string
 		account_subscription_status?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                string
-		active_directory_name?: string
+		active_directory_name?:       string
 		admin_group?: [...string]
 		admin_pro_group?: [...string]
 		authentication_method!: string
@@ -21,7 +16,6 @@ package res
 		aws_account_id?:                   string
 		contact_number?:                   string
 		directory_id?:                     string
-		timeouts?:                         #timeouts
 		edition!:                          string
 		email_address?:                    string
 		first_name?:                       string
@@ -32,6 +26,12 @@ package res
 		reader_group?: [...string]
 		reader_pro_group?: [...string]
 		realm?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 	})
 
 	#timeouts: close({

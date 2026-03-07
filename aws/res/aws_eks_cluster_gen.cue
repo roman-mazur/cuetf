@@ -6,8 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_eks_cluster")
 	close({
-		arn?: string
 		access_config?: matchN(1, [#access_config, list.MaxItems(1) & [...#access_config]])
+		compute_config?: matchN(1, [#compute_config, list.MaxItems(1) & [...#compute_config]])
+		control_plane_scaling_config?: matchN(1, [#control_plane_scaling_config, list.MaxItems(1) & [...#control_plane_scaling_config]])
+		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
+		kubernetes_network_config?: matchN(1, [#kubernetes_network_config, list.MaxItems(1) & [...#kubernetes_network_config]])
+		outpost_config?: matchN(1, [#outpost_config, list.MaxItems(1) & [...#outpost_config]])
+		remote_network_config?: matchN(1, [#remote_network_config, list.MaxItems(1) & [...#remote_network_config]])
+		storage_config?: matchN(1, [#storage_config, list.MaxItems(1) & [...#storage_config]])
+		timeouts?: #timeouts
+		upgrade_policy?: matchN(1, [#upgrade_policy, list.MaxItems(1) & [...#upgrade_policy]])
+		vpc_config!: matchN(1, [#vpc_config, list.MaxItems(1) & [_, ...] & [...#vpc_config]])
+		zonal_shift_config?: matchN(1, [#zonal_shift_config, list.MaxItems(1) & [...#zonal_shift_config]])
+		arn?:                           string
 		bootstrap_self_managed_addons?: bool
 		certificate_authority?: [...close({
 			data?: string
@@ -15,9 +26,7 @@ import "list"
 		cluster_id?:          string
 		created_at?:          string
 		deletion_protection?: bool
-		compute_config?: matchN(1, [#compute_config, list.MaxItems(1) & [...#compute_config]])
 		enabled_cluster_log_types?: [...string]
-		control_plane_scaling_config?: matchN(1, [#control_plane_scaling_config, list.MaxItems(1) & [...#control_plane_scaling_config]])
 		endpoint?:             string
 		force_update_version?: bool
 		id?:                   string
@@ -33,21 +42,12 @@ import "list"
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
+		region?:   string
 		role_arn!: string
 		status?:   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		kubernetes_network_config?: matchN(1, [#kubernetes_network_config, list.MaxItems(1) & [...#kubernetes_network_config]])
-		outpost_config?: matchN(1, [#outpost_config, list.MaxItems(1) & [...#outpost_config]])
-		remote_network_config?: matchN(1, [#remote_network_config, list.MaxItems(1) & [...#remote_network_config]])
-		storage_config?: matchN(1, [#storage_config, list.MaxItems(1) & [...#storage_config]])
-		timeouts?: #timeouts
-		version?:  string
-		upgrade_policy?: matchN(1, [#upgrade_policy, list.MaxItems(1) & [...#upgrade_policy]])
-		vpc_config!: matchN(1, [#vpc_config, list.MaxItems(1) & [_, ...] & [...#vpc_config]])
-		zonal_shift_config?: matchN(1, [#zonal_shift_config, list.MaxItems(1) & [...#zonal_shift_config]])
+		version?: string
 	})
 
 	#access_config: close({

@@ -4,8 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_db_proxy")
 	close({
-		arn?: string
 		auth?: matchN(1, [#auth, [...#auth]])
+		timeouts?:              #timeouts
+		arn?:                   string
 		debug_logging?:         bool
 		default_auth_scheme?:   string
 		endpoint?:              string
@@ -13,14 +14,13 @@ package res
 		engine_family!:         string
 		id?:                    string
 		idle_client_timeout?:   number
+		name!:                  string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:      string
-		name!:        string
-		timeouts?:    #timeouts
 		require_tls?: bool
 		role_arn!:    string
 		tags?: [string]:     string

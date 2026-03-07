@@ -4,6 +4,9 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_lb_listener_rule")
 	close({
+		action?: matchN(1, [#action, [...#action]])
+		condition?: matchN(1, [#condition, [...#condition]])
+		transform?: matchN(1, [#transform, [...#transform]])
 		arn?:          string
 		listener_arn?: string
 		priority?:     number
@@ -13,10 +16,7 @@ package data
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		action?: matchN(1, [#action, [...#action]])
 		tags?: [string]: string
-		condition?: matchN(1, [#condition, [...#condition]])
-		transform?: matchN(1, [#transform, [...#transform]])
 	})
 
 	#action: close({

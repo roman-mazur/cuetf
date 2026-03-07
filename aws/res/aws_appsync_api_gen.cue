@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_appsync_api")
 	close({
+		event_config?: matchN(1, [#event_config, [...#event_config]])
 		api_arn?: string
 		api_id?:  string
 		dns?: [string]: string
@@ -15,8 +16,7 @@ package res
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		tags?: [string]: string
-		event_config?: matchN(1, [#event_config, [...#event_config]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		waf_web_acl_arn?: string
 		xray_enabled?:    bool

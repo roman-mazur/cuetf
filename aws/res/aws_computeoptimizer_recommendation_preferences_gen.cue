@@ -4,6 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_computeoptimizer_recommendation_preferences")
 	close({
+		external_metrics_preference?: matchN(1, [#external_metrics_preference, [...#external_metrics_preference]])
+		preferred_resource?: matchN(1, [#preferred_resource, [...#preferred_resource]])
+		scope?: matchN(1, [#scope, [...#scope]])
+		utilization_preference?: matchN(1, [#utilization_preference, [...#utilization_preference]])
 		enhanced_infrastructure_metrics?: string
 		id?:                              string
 		inferred_workload_types?:         string
@@ -13,13 +17,9 @@ package res
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:        string
-		resource_type!: string
-		external_metrics_preference?: matchN(1, [#external_metrics_preference, [...#external_metrics_preference]])
+		region?:                  string
+		resource_type!:           string
 		savings_estimation_mode?: string
-		preferred_resource?: matchN(1, [#preferred_resource, [...#preferred_resource]])
-		scope?: matchN(1, [#scope, [...#scope]])
-		utilization_preference?: matchN(1, [#utilization_preference, [...#utilization_preference]])
 	})
 
 	#external_metrics_preference: close({

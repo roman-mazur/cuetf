@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ecr_registry_scanning_configuration")
 	close({
+		rule?: matchN(1, [#rule, list.MaxItems(100) & [...#rule]])
 		id?: string
 
 		// Region where this resource will be
@@ -15,7 +16,6 @@ import "list"
 		region?:      string
 		registry_id?: string
 		scan_type!:   string
-		rule?: matchN(1, [#rule, list.MaxItems(100) & [...#rule]])
 	})
 
 	#rule: close({

@@ -6,17 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_imagebuilder_image")
 	close({
-		arn?:                             string
-		container_recipe_arn?:            string
-		date_created?:                    string
-		distribution_configuration_arn?:  string
-		enhanced_image_metadata_enabled?: bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                           string
+		image_scanning_configuration?: matchN(1, [#image_scanning_configuration, list.MaxItems(1) & [...#image_scanning_configuration]])
+		image_tests_configuration?: matchN(1, [#image_tests_configuration, list.MaxItems(1) & [...#image_tests_configuration]])
+		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [...#logging_configuration]])
+		timeouts?: #timeouts
+		workflow?: matchN(1, [#workflow, [...#workflow]])
+		arn?:                              string
+		container_recipe_arn?:             string
+		date_created?:                     string
+		distribution_configuration_arn?:   string
+		enhanced_image_metadata_enabled?:  bool
 		execution_role?:                   string
 		id?:                               string
 		image_recipe_arn?:                 string
@@ -36,15 +35,16 @@ import "list"
 				region?: string
 			})]
 		})]
-		image_scanning_configuration?: matchN(1, [#image_scanning_configuration, list.MaxItems(1) & [...#image_scanning_configuration]])
 		platform?: string
-		tags?: [string]: string
-		image_tests_configuration?: matchN(1, [#image_tests_configuration, list.MaxItems(1) & [...#image_tests_configuration]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		version?: string
-		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [...#logging_configuration]])
-		timeouts?: #timeouts
-		workflow?: matchN(1, [#workflow, [...#workflow]])
 	})
 
 	#image_scanning_configuration: close({

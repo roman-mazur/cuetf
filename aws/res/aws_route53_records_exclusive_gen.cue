@@ -10,21 +10,21 @@ package res
 	})
 
 	#resource_record_set: close({
-		failover?:           string
-		health_check_id?:    string
-		multi_value_answer?: bool
-		name!:               string
 		alias_target?: matchN(1, [_#defs."/$defs/resource_record_set/$defs/alias_target", [..._#defs."/$defs/resource_record_set/$defs/alias_target"]])
-		region?:         string
-		set_identifier?: string
 		cidr_routing_config?: matchN(1, [_#defs."/$defs/resource_record_set/$defs/cidr_routing_config", [..._#defs."/$defs/resource_record_set/$defs/cidr_routing_config"]])
+		geolocation?: matchN(1, [_#defs."/$defs/resource_record_set/$defs/geolocation", [..._#defs."/$defs/resource_record_set/$defs/geolocation"]])
+		geoproximity_location?: matchN(1, [_#defs."/$defs/resource_record_set/$defs/geoproximity_location", [..._#defs."/$defs/resource_record_set/$defs/geoproximity_location"]])
+		resource_records?: matchN(1, [_#defs."/$defs/resource_record_set/$defs/resource_records", [..._#defs."/$defs/resource_record_set/$defs/resource_records"]])
+		failover?:                   string
+		health_check_id?:            string
+		multi_value_answer?:         bool
+		name!:                       string
+		region?:                     string
+		set_identifier?:             string
 		traffic_policy_instance_id?: string
 		ttl?:                        number
 		type?:                       string
-		geolocation?: matchN(1, [_#defs."/$defs/resource_record_set/$defs/geolocation", [..._#defs."/$defs/resource_record_set/$defs/geolocation"]])
-		geoproximity_location?: matchN(1, [_#defs."/$defs/resource_record_set/$defs/geoproximity_location", [..._#defs."/$defs/resource_record_set/$defs/geoproximity_location"]])
-		weight?: number
-		resource_records?: matchN(1, [_#defs."/$defs/resource_record_set/$defs/resource_records", [..._#defs."/$defs/resource_record_set/$defs/resource_records"]])
+		weight?:                     number
 	})
 
 	#timeouts: close({

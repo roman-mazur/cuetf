@@ -11,12 +11,6 @@ package res
 		basic_auth_credentials?:  string
 		branch_name!:             string
 		custom_domains?: [...string]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                      string
 		description?:                 string
 		destination_branch?:          string
 		display_name?:                string
@@ -30,8 +24,14 @@ package res
 		framework?:                     string
 		id?:                            string
 		pull_request_environment_name?: string
-		source_branch?:                 string
-		stage?:                         string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:        string
+		source_branch?: string
+		stage?:         string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		ttl?: string

@@ -4,10 +4,13 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_odb_cloud_autonomous_vm_cluster")
 	close({
+		maintenance_window?: matchN(1, [#maintenance_window, [...#maintenance_window]])
+		timeouts?: #timeouts
+		arn?:      string
+
 		// The progress of the current operation on the Autonomous VM
 		// cluster, as a percentage.
 		autonomous_data_storage_percentage?: number
-		arn?:                                string
 
 		// The data storage size allocated for Autonomous Databases in the
 		// Autonomous VM cluster, in TB. Changing this will force
@@ -114,8 +117,6 @@ package res
 		// The name of the OCI resource anchor associated with this
 		// Autonomous VM cluster.
 		oci_resource_anchor_name?: string
-		maintenance_window?: matchN(1, [#maintenance_window, [...#maintenance_window]])
-		timeouts?: #timeouts
 
 		// The URL for accessing the OCI console page for this Autonomous
 		// VM cluster.
@@ -195,11 +196,11 @@ package res
 
 		// The expiration date and time of the database SSL certificate.
 		time_database_ssl_certificate_expires?: string
+		time_ords_certificate_expires?:         string
 
 		// The time zone of the Autonomous VM cluster. Changing this will
 		// force terraform to create new resource.
-		time_zone?:                     string
-		time_ords_certificate_expires?: string
+		time_zone?: string
 
 		// The total number of Autonomous Container Databases that can be
 		// created with the allocated local storage. Changing this will

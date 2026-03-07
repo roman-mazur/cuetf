@@ -6,30 +6,30 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_identitystore_user")
 	close({
-		display_name!: string
 		addresses?: matchN(1, [#addresses, list.MaxItems(1) & [...#addresses]])
+		emails?: matchN(1, [#emails, list.MaxItems(1) & [...#emails]])
+		name!: matchN(1, [#name, list.MaxItems(1) & [_, ...] & [...#name]])
+		phone_numbers?: matchN(1, [#phone_numbers, list.MaxItems(1) & [...#phone_numbers]])
+		display_name!: string
 		external_ids?: [...close({
 			id?:     string
 			issuer?: string
 		})]
-		id?:                string
-		identity_store_id!: string
-		locale?:            string
-		nickname?:          string
+		id?:                 string
+		identity_store_id!:  string
+		locale?:             string
+		nickname?:           string
+		preferred_language?: string
+		profile_url?:        string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:             string
-		preferred_language?: string
-		emails?: matchN(1, [#emails, list.MaxItems(1) & [...#emails]])
-		name!: matchN(1, [#name, list.MaxItems(1) & [_, ...] & [...#name]])
-		profile_url?: string
-		timezone?:    string
-		title?:       string
-		user_id?:     string
-		phone_numbers?: matchN(1, [#phone_numbers, list.MaxItems(1) & [...#phone_numbers]])
+		region?:    string
+		timezone?:  string
+		title?:     string
+		user_id?:   string
 		user_name!: string
 		user_type?: string
 	})

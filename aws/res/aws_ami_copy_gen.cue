@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ami_copy")
 	close({
+		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
+		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
+		timeouts?:                #timeouts
 		architecture?:            string
 		arn?:                     string
 		boot_mode?:               string
@@ -17,25 +20,23 @@ package res
 		image_location?:          string
 		image_owner_alias?:       string
 		image_type?:              string
+		imds_support?:            string
+		kernel_id?:               string
+		kms_key_id?:              string
+		last_launched_time?:      string
+		manage_ebs_snapshots?:    bool
+		name!:                    string
+		owner_id?:                string
+		platform?:                string
+		platform_details?:        string
+		public?:                  bool
+		ramdisk_id?:              string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:               string
-		imds_support?:         string
-		kernel_id?:            string
-		kms_key_id?:           string
-		last_launched_time?:   string
-		manage_ebs_snapshots?: bool
-		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
-		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
-		name!:              string
-		owner_id?:          string
-		platform?:          string
-		platform_details?:  string
-		public?:            bool
-		ramdisk_id?:        string
+		region?:            string
 		root_device_name?:  string
 		root_snapshot_id?:  string
 		source_ami_id!:     string
@@ -47,7 +48,6 @@ package res
 		uefi_data?:           string
 		usage_operation?:     string
 		virtualization_type?: string
-		timeouts?:            #timeouts
 	})
 
 	#ebs_block_device: close({

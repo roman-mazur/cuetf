@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_batch_scheduling_policy")
 	close({
+		fair_share_policy?: matchN(1, [#fair_share_policy, list.MaxItems(1) & [...#fair_share_policy]])
 		arn?:  string
 		id?:   string
 		name!: string
@@ -17,7 +18,6 @@ import "list"
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		fair_share_policy?: matchN(1, [#fair_share_policy, list.MaxItems(1) & [...#fair_share_policy]])
 	})
 
 	#fair_share_policy: close({

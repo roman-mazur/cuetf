@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_s3_bucket_replication_configuration")
 	close({
+		rule!: matchN(1, [#rule, list.MaxItems(1000) & [_, ...] & [...#rule]])
 		bucket!: string
 		id?:     string
 
@@ -16,18 +17,17 @@ import "list"
 		region?: string
 		role!:   string
 		token?:  string
-		rule!: matchN(1, [#rule, list.MaxItems(1000) & [_, ...] & [...#rule]])
 	})
 
 	#rule: close({
 		delete_marker_replication?: matchN(1, [_#defs."/$defs/rule/$defs/delete_marker_replication", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/delete_marker_replication"]])
 		destination!: matchN(1, [_#defs."/$defs/rule/$defs/destination", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/destination"]])
-		id?: string
 		existing_object_replication?: matchN(1, [_#defs."/$defs/rule/$defs/existing_object_replication", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/existing_object_replication"]])
-		priority?: number
 		filter?: matchN(1, [_#defs."/$defs/rule/$defs/filter", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/filter"]])
 		source_selection_criteria?: matchN(1, [_#defs."/$defs/rule/$defs/source_selection_criteria", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/source_selection_criteria"]])
-		status!: string
+		id?:       string
+		priority?: number
+		status!:   string
 	})
 
 	_#defs: "/$defs/rule/$defs/delete_marker_replication": close({

@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ebs_snapshot")
 	close({
+		filter?: matchN(1, [#filter, [...#filter]])
+		timeouts?:               #timeouts
 		arn?:                    string
 		data_encryption_key_id?: string
 		description?:            string
@@ -13,16 +15,14 @@ package data
 		most_recent?:            bool
 		outpost_arn?:            string
 		owner_alias?:            string
-		filter?: matchN(1, [#filter, [...#filter]])
-		owner_id?: string
+		owner_id?:               string
 		owners?: [...string]
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
-		timeouts?: #timeouts
+		region?: string
 		restorable_by_user_ids?: [...string]
 		snapshot_id?: string
 		snapshot_ids?: [...string]

@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_data_quality_job_definition")
 	close({
+		data_quality_app_specification!: matchN(1, [#data_quality_app_specification, list.MaxItems(1) & [_, ...] & [...#data_quality_app_specification]])
+		data_quality_baseline_config?: matchN(1, [#data_quality_baseline_config, list.MaxItems(1) & [...#data_quality_baseline_config]])
+		data_quality_job_input!: matchN(1, [#data_quality_job_input, list.MaxItems(1) & [_, ...] & [...#data_quality_job_input]])
+		data_quality_job_output_config!: matchN(1, [#data_quality_job_output_config, list.MaxItems(1) & [_, ...] & [...#data_quality_job_output_config]])
+		job_resources!: matchN(1, [#job_resources, list.MaxItems(1) & [_, ...] & [...#job_resources]])
+		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
+		stopping_condition?: matchN(1, [#stopping_condition, list.MaxItems(1) & [...#stopping_condition]])
 		arn?:  string
 		id?:   string
 		name?: string
@@ -16,15 +23,8 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:   string
 		role_arn!: string
-		data_quality_app_specification!: matchN(1, [#data_quality_app_specification, list.MaxItems(1) & [_, ...] & [...#data_quality_app_specification]])
-		tags?: [string]: string
-		data_quality_baseline_config?: matchN(1, [#data_quality_baseline_config, list.MaxItems(1) & [...#data_quality_baseline_config]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
-		data_quality_job_input!: matchN(1, [#data_quality_job_input, list.MaxItems(1) & [_, ...] & [...#data_quality_job_input]])
-		data_quality_job_output_config!: matchN(1, [#data_quality_job_output_config, list.MaxItems(1) & [_, ...] & [...#data_quality_job_output_config]])
-		job_resources!: matchN(1, [#job_resources, list.MaxItems(1) & [_, ...] & [...#job_resources]])
-		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
-		stopping_condition?: matchN(1, [#stopping_condition, list.MaxItems(1) & [...#stopping_condition]])
 	})
 
 	#data_quality_app_specification: close({

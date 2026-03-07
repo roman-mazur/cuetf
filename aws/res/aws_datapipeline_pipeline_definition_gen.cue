@@ -4,10 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_datapipeline_pipeline_definition")
 	close({
-		id?: string
 		parameter_object?: matchN(1, [#parameter_object, [...#parameter_object]])
 		parameter_value?: matchN(1, [#parameter_value, [...#parameter_value]])
 		pipeline_object!: matchN(1, [#pipeline_object, [_, ...] & [...#pipeline_object]])
+		id?:          string
 		pipeline_id!: string
 
 		// Region where this resource will be

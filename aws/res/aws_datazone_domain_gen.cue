@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_datazone_domain")
 	close({
+		single_sign_on?: matchN(1, [#single_sign_on, [...#single_sign_on]])
+		timeouts?:              #timeouts
 		arn?:                   string
 		description?:           string
 		domain_execution_role!: string
@@ -11,15 +13,13 @@ package res
 		id?:                    string
 		kms_key_identifier?:    string
 		name!:                  string
+		portal_url?:            string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		single_sign_on?: matchN(1, [#single_sign_on, [...#single_sign_on]])
-		timeouts?:            #timeouts
-		portal_url?:          string
+		region?:              string
 		root_domain_unit_id?: string
 		service_role?:        string
 		skip_deletion_check?: bool

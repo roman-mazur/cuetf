@@ -6,19 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_codepipeline")
 	close({
+		artifact_store!: matchN(1, [#artifact_store, [_, ...] & [...#artifact_store]])
+		stage!: matchN(1, [#stage, [_, _, ...] & [...#stage]])
+		trigger?: matchN(1, [#trigger, list.MaxItems(50) & [...#trigger]])
+		variable?: matchN(1, [#variable, [...#variable]])
 		arn?:            string
 		execution_mode?: string
 		id?:             string
 		name!:           string
-		artifact_store!: matchN(1, [#artifact_store, [_, ...] & [...#artifact_store]])
-		pipeline_type?: string
+		pipeline_type?:  string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		stage!: matchN(1, [#stage, [_, _, ...] & [...#stage]])
+		region?:   string
 		role_arn!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
@@ -53,8 +55,6 @@ import "list"
 			})]
 			provider_type?: string
 		})]
-		trigger?: matchN(1, [#trigger, list.MaxItems(50) & [...#trigger]])
-		variable?: matchN(1, [#variable, [...#variable]])
 	})
 
 	#artifact_store: close({

@@ -26,12 +26,6 @@ package data
 		enabled_cluster_log_types?: [...string]
 		endpoint?: string
 		id?:       string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		identity?: [...close({
 			oidc?: [...close({
 				issuer?: string
@@ -54,6 +48,12 @@ package data
 			outpost_arns?: [...string]
 		})]
 		platform_version?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		remote_network_config?: [...close({
 			remote_node_networks?: [...close({
 				cidrs?: [...string]

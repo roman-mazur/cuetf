@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_transcribe_vocabulary")
 	close({
+		timeouts?:      #timeouts
 		arn?:           string
 		download_uri?:  string
 		id?:            string
@@ -15,8 +16,7 @@ package res
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		tags?: [string]: string
-		timeouts?: #timeouts
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		vocabulary_file_uri?: string
 		vocabulary_name!:     string

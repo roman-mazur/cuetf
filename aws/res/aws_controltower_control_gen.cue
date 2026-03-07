@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_controltower_control")
 	close({
+		parameters?: matchN(1, [#parameters, [...#parameters]])
+		timeouts?:           #timeouts
 		arn?:                string
 		control_identifier!: string
 		id?:                 string
@@ -14,8 +16,6 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:            string
 		target_identifier!: string
-		parameters?: matchN(1, [#parameters, [...#parameters]])
-		timeouts?: #timeouts
 	})
 
 	#parameters: close({

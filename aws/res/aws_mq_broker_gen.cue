@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_mq_broker")
 	close({
+		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
+		encryption_options?: matchN(1, [#encryption_options, list.MaxItems(1) & [...#encryption_options]])
+		ldap_server_metadata?: matchN(1, [#ldap_server_metadata, list.MaxItems(1) & [...#ldap_server_metadata]])
+		logs?: matchN(1, [#logs, list.MaxItems(1) & [...#logs]])
+		maintenance_window_start_time?: matchN(1, [#maintenance_window_start_time, list.MaxItems(1) & [...#maintenance_window_start_time]])
+		timeouts?: #timeouts
+		user!: matchN(1, [#user, [_, ...] & [...#user]])
 		apply_immediately?:                   bool
 		arn?:                                 string
 		authentication_strategy?:             string
@@ -13,20 +20,18 @@ import "list"
 		broker_name!:                         string
 		data_replication_mode?:               string
 		data_replication_primary_broker_arn?: string
-		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
-		deployment_mode?:    string
-		engine_type!:        string
-		engine_version!:     string
-		host_instance_type!: string
-		id?:                 string
+		deployment_mode?:                     string
+		engine_type!:                         string
+		engine_version!:                      string
+		host_instance_type!:                  string
+		id?:                                  string
 		instances?: [...close({
 			console_url?: string
 			endpoints?: [...string]
 			ip_address?: string
 		})]
 		pending_data_replication_mode?: string
-		encryption_options?: matchN(1, [#encryption_options, list.MaxItems(1) & [...#encryption_options]])
-		publicly_accessible?: bool
+		publicly_accessible?:           bool
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -36,12 +41,7 @@ import "list"
 		security_groups?: [...string]
 		storage_type?: string
 		subnet_ids?: [...string]
-		ldap_server_metadata?: matchN(1, [#ldap_server_metadata, list.MaxItems(1) & [...#ldap_server_metadata]])
-		logs?: matchN(1, [#logs, list.MaxItems(1) & [...#logs]])
-		tags?: [string]: string
-		maintenance_window_start_time?: matchN(1, [#maintenance_window_start_time, list.MaxItems(1) & [...#maintenance_window_start_time]])
-		timeouts?: #timeouts
-		user!: matchN(1, [#user, [_, ...] & [...#user]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 

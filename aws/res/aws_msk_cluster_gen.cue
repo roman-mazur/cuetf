@@ -6,20 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_msk_cluster")
 	close({
-		arn?:                                 string
-		bootstrap_brokers?:                   string
-		bootstrap_brokers_public_sasl_iam?:   string
-		bootstrap_brokers_public_sasl_scram?: string
 		broker_node_group_info!: matchN(1, [#broker_node_group_info, list.MaxItems(1) & [_, ...] & [...#broker_node_group_info]])
-		bootstrap_brokers_public_tls?: string
-		bootstrap_brokers_sasl_iam?:   string
-		bootstrap_brokers_sasl_scram?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                                        string
+		client_authentication?: matchN(1, [#client_authentication, list.MaxItems(1) & [...#client_authentication]])
+		configuration_info?: matchN(1, [#configuration_info, list.MaxItems(1) & [...#configuration_info]])
+		encryption_info?: matchN(1, [#encryption_info, list.MaxItems(1) & [...#encryption_info]])
+		logging_info?: matchN(1, [#logging_info, list.MaxItems(1) & [...#logging_info]])
+		open_monitoring?: matchN(1, [#open_monitoring, list.MaxItems(1) & [...#open_monitoring]])
+		rebalancing?: matchN(1, [#rebalancing, list.MaxItems(1) & [...#rebalancing]])
+		timeouts?:                                      #timeouts
+		arn?:                                           string
+		bootstrap_brokers?:                             string
+		bootstrap_brokers_public_sasl_iam?:             string
+		bootstrap_brokers_public_sasl_scram?:           string
+		bootstrap_brokers_public_tls?:                  string
+		bootstrap_brokers_sasl_iam?:                    string
+		bootstrap_brokers_sasl_scram?:                  string
 		bootstrap_brokers_tls?:                         string
 		bootstrap_brokers_vpc_connectivity_sasl_iam?:   string
 		bootstrap_brokers_vpc_connectivity_sasl_scram?: string
@@ -28,30 +29,29 @@ import "list"
 		cluster_uuid?:                                  string
 		current_version?:                               string
 		enhanced_monitoring?:                           string
-		client_authentication?: matchN(1, [#client_authentication, list.MaxItems(1) & [...#client_authentication]])
-		id?:                     string
-		kafka_version!:          string
-		number_of_broker_nodes!: number
-		storage_mode?:           string
-		configuration_info?: matchN(1, [#configuration_info, list.MaxItems(1) & [...#configuration_info]])
-		tags?: [string]: string
-		encryption_info?: matchN(1, [#encryption_info, list.MaxItems(1) & [...#encryption_info]])
+		id?:                                            string
+		kafka_version!:                                 string
+		number_of_broker_nodes!:                        number
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:       string
+		storage_mode?: string
+		tags?: [string]:     string
 		tags_all?: [string]: string
-		logging_info?: matchN(1, [#logging_info, list.MaxItems(1) & [...#logging_info]])
-		open_monitoring?: matchN(1, [#open_monitoring, list.MaxItems(1) & [...#open_monitoring]])
 		zookeeper_connect_string?:     string
 		zookeeper_connect_string_tls?: string
-		rebalancing?: matchN(1, [#rebalancing, list.MaxItems(1) & [...#rebalancing]])
-		timeouts?: #timeouts
 	})
 
 	#broker_node_group_info: close({
 		connectivity_info?: matchN(1, [_#defs."/$defs/broker_node_group_info/$defs/connectivity_info", list.MaxItems(1) & [..._#defs."/$defs/broker_node_group_info/$defs/connectivity_info"]])
+		storage_info?: matchN(1, [_#defs."/$defs/broker_node_group_info/$defs/storage_info", list.MaxItems(1) & [..._#defs."/$defs/broker_node_group_info/$defs/storage_info"]])
 		az_distribution?: string
 		client_subnets!: [...string]
 		instance_type!: string
 		security_groups!: [...string]
-		storage_info?: matchN(1, [_#defs."/$defs/broker_node_group_info/$defs/storage_info", list.MaxItems(1) & [..._#defs."/$defs/broker_node_group_info/$defs/storage_info"]])
 	})
 
 	#client_authentication: close({

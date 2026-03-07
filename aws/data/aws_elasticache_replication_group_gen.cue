@@ -10,13 +10,7 @@ package data
 		cluster_mode?:                   string
 		configuration_endpoint_address?: string
 		description?:                    string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		id?:     string
+		id?:                             string
 		log_delivery_configuration?: [...close({
 			destination?:      string
 			destination_type?: string
@@ -40,6 +34,12 @@ package data
 		port?:                     number
 		primary_endpoint_address?: string
 		reader_endpoint_address?:  string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                   string
 		replicas_per_node_group?:  number
 		replication_group_id!:     string
 		snapshot_retention_limit?: number

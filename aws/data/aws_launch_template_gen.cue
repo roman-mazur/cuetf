@@ -4,7 +4,9 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_launch_template")
 	close({
-		arn?: string
+		filter?: matchN(1, [#filter, [...#filter]])
+		timeouts?: #timeouts
+		arn?:      string
 		block_device_mappings?: [...close({
 			device_name?: string
 			ebs?: [...close({
@@ -37,15 +39,9 @@ package data
 		credit_specification?: [...close({
 			cpu_credits?: string
 		})]
-		default_version?:  number
-		description?:      string
-		disable_api_stop?: bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                  string
+		default_version?:         number
+		description?:             string
+		disable_api_stop?:        bool
 		disable_api_termination?: bool
 		ebs_optimized?:           string
 		enclave_options?: [...close({
@@ -124,15 +120,13 @@ package data
 				min?: number
 			})]
 		})]
-		instance_type?: string
-		kernel_id?:     string
-		filter?: matchN(1, [#filter, [...#filter]])
+		instance_type?:  string
+		kernel_id?:      string
 		key_name?:       string
 		latest_version?: number
 		license_specification?: [...close({
 			license_configuration_arn?: string
 		})]
-		timeouts?: #timeouts
 		maintenance_options?: [...close({
 			auto_recovery?: string
 		})]
@@ -194,6 +188,12 @@ package data
 			hostname_type?:                        string
 		})]
 		ram_disk_id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		secondary_interfaces?: [...close({
 			delete_on_termination?:    bool
 			device_index?:             number

@@ -4,20 +4,20 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_arcregionswitch_plan")
 	close({
-		arn?:               string
-		description?:       string
-		execution_role!:    string
-		name!:              string
-		primary_region?:    string
-		recovery_approach!: string
 		associated_alarms?: matchN(1, [#associated_alarms, [...#associated_alarms]])
 		timeouts?: #timeouts
 		triggers?: matchN(1, [#triggers, [...#triggers]])
+		workflow?: matchN(1, [#workflow, [...#workflow]])
+		arn?:                             string
+		description?:                     string
+		execution_role!:                  string
+		name!:                            string
+		primary_region?:                  string
+		recovery_approach!:               string
 		recovery_time_objective_minutes?: number
 		regions!: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		workflow?: matchN(1, [#workflow, [...#workflow]])
 	})
 
 	#associated_alarms: close({
@@ -74,9 +74,6 @@ package res
 	_#defs: "/$defs/workflow/$defs/step": close({
 		arc_routing_control_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/arc_routing_control_config", [..._#defs."/$defs/workflow/$defs/step/$defs/arc_routing_control_config"]])
 		custom_action_lambda_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/custom_action_lambda_config", [..._#defs."/$defs/workflow/$defs/step/$defs/custom_action_lambda_config"]])
-		description?:          string
-		execution_block_type!: string
-		name!:                 string
 		document_db_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/document_db_config", [..._#defs."/$defs/workflow/$defs/step/$defs/document_db_config"]])
 		ec2_asg_capacity_increase_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/ec2_asg_capacity_increase_config", [..._#defs."/$defs/workflow/$defs/step/$defs/ec2_asg_capacity_increase_config"]])
 		ecs_capacity_increase_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/ecs_capacity_increase_config", [..._#defs."/$defs/workflow/$defs/step/$defs/ecs_capacity_increase_config"]])
@@ -86,6 +83,9 @@ package res
 		parallel_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config"]])
 		region_switch_plan_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/region_switch_plan_config", [..._#defs."/$defs/workflow/$defs/step/$defs/region_switch_plan_config"]])
 		route53_health_check_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/route53_health_check_config", [..._#defs."/$defs/workflow/$defs/step/$defs/route53_health_check_config"]])
+		description?:          string
+		execution_block_type!: string
+		name!:                 string
 	})
 
 	_#defs: "/$defs/workflow/$defs/step/$defs/arc_routing_control_config": close({
@@ -237,10 +237,7 @@ package res
 	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step": close({
 		arc_routing_control_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/arc_routing_control_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/arc_routing_control_config"]])
 		custom_action_lambda_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/custom_action_lambda_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/custom_action_lambda_config"]])
-		description?: string
 		document_db_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/document_db_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/document_db_config"]])
-		execution_block_type!: string
-		name!:                 string
 		ec2_asg_capacity_increase_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/ec2_asg_capacity_increase_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/ec2_asg_capacity_increase_config"]])
 		ecs_capacity_increase_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/ecs_capacity_increase_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/ecs_capacity_increase_config"]])
 		eks_resource_scaling_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/eks_resource_scaling_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/eks_resource_scaling_config"]])
@@ -248,6 +245,9 @@ package res
 		global_aurora_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/global_aurora_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/global_aurora_config"]])
 		region_switch_plan_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/region_switch_plan_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/region_switch_plan_config"]])
 		route53_health_check_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/route53_health_check_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/route53_health_check_config"]])
+		description?:          string
+		execution_block_type!: string
+		name!:                 string
 	})
 
 	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/arc_routing_control_config": close({

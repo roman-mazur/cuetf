@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cognito_identity_pool_roles_attachment")
 	close({
+		role_mapping?: matchN(1, [#role_mapping, [...#role_mapping]])
 		id?:               string
 		identity_pool_id!: string
 
@@ -15,7 +16,6 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		roles!: [string]: string
-		role_mapping?: matchN(1, [#role_mapping, [...#role_mapping]])
 	})
 
 	#role_mapping: close({

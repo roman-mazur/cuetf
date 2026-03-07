@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_fsx_openzfs_snapshot")
 	close({
+		filter?: matchN(1, [#filter, [...#filter]])
 		arn?:           string
 		creation_time?: string
 		id?:            string
@@ -16,7 +17,6 @@ package data
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:      string
 		snapshot_id?: string
-		filter?: matchN(1, [#filter, [...#filter]])
 		snapshot_ids?: [...string]
 		tags?: [string]: string
 		volume_id?: string

@@ -18,12 +18,6 @@ package data
 		})]
 		firewall_policy_arn?:               string
 		firewall_policy_change_protection?: bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		firewall_status?: [...close({
 			capacity_usage_summary?: [...close({
 				cidrs?: [...close({
@@ -51,8 +45,14 @@ package data
 				transit_gateway_attachment_status?: string
 			})]
 		})]
-		id?:                       string
-		name?:                     string
+		id?:   string
+		name?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                   string
 		subnet_change_protection?: bool
 		subnet_mapping?: [...close({
 			subnet_id?: string

@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_apprunner_deployment")
 	close({
+		timeouts?:     #timeouts
 		id?:           string
 		operation_id?: string
 
@@ -14,7 +15,6 @@ package res
 		region?:      string
 		service_arn!: string
 		status?:      string
-		timeouts?:    #timeouts
 	})
 
 	#timeouts: close({

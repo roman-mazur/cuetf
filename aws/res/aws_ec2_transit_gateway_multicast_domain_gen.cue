@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ec2_transit_gateway_multicast_domain")
 	close({
+		timeouts?:                        #timeouts
 		arn?:                             string
 		auto_accept_shared_associations?: string
 		id?:                              string
@@ -16,7 +17,6 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                 string
 		static_sources_support?: string
-		timeouts?:               #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		transit_gateway_id!: string

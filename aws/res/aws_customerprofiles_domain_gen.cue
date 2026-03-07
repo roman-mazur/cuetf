@@ -6,21 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_customerprofiles_domain")
 	close({
+		matching?: matchN(1, [#matching, list.MaxItems(1) & [...#matching]])
+		rule_based_matching?: matchN(1, [#rule_based_matching, list.MaxItems(1) & [...#rule_based_matching]])
 		arn?:                     string
 		dead_letter_queue_url?:   string
 		default_encryption_key?:  string
 		default_expiration_days!: number
+		domain_name!:             string
+		id?:                      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		domain_name!: string
-		id?:          string
-		tags?: [string]: string
-		matching?: matchN(1, [#matching, list.MaxItems(1) & [...#matching]])
-		rule_based_matching?: matchN(1, [#rule_based_matching, list.MaxItems(1) & [...#rule_based_matching]])
+		region?: string
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 
@@ -33,13 +33,13 @@ import "list"
 
 	#rule_based_matching: close({
 		attribute_types_selector?: matchN(1, [_#defs."/$defs/rule_based_matching/$defs/attribute_types_selector", list.MaxItems(1) & [..._#defs."/$defs/rule_based_matching/$defs/attribute_types_selector"]])
+		conflict_resolution?: matchN(1, [_#defs."/$defs/rule_based_matching/$defs/conflict_resolution", list.MaxItems(1) & [..._#defs."/$defs/rule_based_matching/$defs/conflict_resolution"]])
+		exporting_config?: matchN(1, [_#defs."/$defs/rule_based_matching/$defs/exporting_config", list.MaxItems(1) & [..._#defs."/$defs/rule_based_matching/$defs/exporting_config"]])
+		matching_rules?: matchN(1, [_#defs."/$defs/rule_based_matching/$defs/matching_rules", [..._#defs."/$defs/rule_based_matching/$defs/matching_rules"]])
 		enabled!:                             bool
 		max_allowed_rule_level_for_matching?: number
 		max_allowed_rule_level_for_merging?:  number
 		status?:                              string
-		conflict_resolution?: matchN(1, [_#defs."/$defs/rule_based_matching/$defs/conflict_resolution", list.MaxItems(1) & [..._#defs."/$defs/rule_based_matching/$defs/conflict_resolution"]])
-		exporting_config?: matchN(1, [_#defs."/$defs/rule_based_matching/$defs/exporting_config", list.MaxItems(1) & [..._#defs."/$defs/rule_based_matching/$defs/exporting_config"]])
-		matching_rules?: matchN(1, [_#defs."/$defs/rule_based_matching/$defs/matching_rules", [..._#defs."/$defs/rule_based_matching/$defs/matching_rules"]])
 	})
 
 	_#defs: "/$defs/matching/$defs/auto_merging": close({

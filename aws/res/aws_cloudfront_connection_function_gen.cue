@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_connection_function")
 	close({
+		connection_function_config?: matchN(1, [#connection_function_config, [...#connection_function_config]])
 		connection_function_arn?:  string
 		connection_function_code!: string
 		etag?:                     string
@@ -11,8 +12,7 @@ package res
 		live_stage_etag?:          string
 		name!:                     string
 		publish?:                  bool
-		connection_function_config?: matchN(1, [#connection_function_config, [...#connection_function_config]])
-		status?: string
+		status?:                   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

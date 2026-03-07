@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ec2_secondary_subnet")
 	close({
+		timeouts?:             #timeouts
 		arn?:                  string
 		availability_zone?:    string
 		availability_zone_id?: string
@@ -21,7 +22,6 @@ package res
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                 string
-		timeouts?:               #timeouts
 		secondary_network_id!:   string
 		secondary_network_type?: string
 		secondary_subnet_id?:    string

@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_quicksight_custom_permissions")
 	close({
+		capabilities?: matchN(1, [#capabilities, [...#capabilities]])
 		arn?:                     string
 		aws_account_id?:          string
 		custom_permissions_name!: string
@@ -15,7 +16,6 @@ package res
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		capabilities?: matchN(1, [#capabilities, [...#capabilities]])
 	})
 
 	#capabilities: close({

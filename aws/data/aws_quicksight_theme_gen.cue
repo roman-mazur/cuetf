@@ -55,17 +55,17 @@ package data
 		created_time?:      string
 		id?:                string
 		last_updated_time?: string
+		name?:              string
+		permissions?: [...close({
+			actions?: [...string]
+			principal?: string
+		})]
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		name?:   string
-		permissions?: [...close({
-			actions?: [...string]
-			principal?: string
-		})]
 		status?: string
 		tags?: [string]: string
 		theme_id!:            string

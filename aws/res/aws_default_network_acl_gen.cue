@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_default_network_acl")
 	close({
+		egress?: matchN(1, [#egress, [...#egress]])
+		ingress?: matchN(1, [#ingress, [...#ingress]])
 		arn?:                    string
 		default_network_acl_id!: string
 		id?:                     string
@@ -17,8 +19,6 @@ package res
 		subnet_ids?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		egress?: matchN(1, [#egress, [...#egress]])
-		ingress?: matchN(1, [#ingress, [...#ingress]])
 		vpc_id?: string
 	})
 

@@ -4,6 +4,15 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_rekognition_stream_processor")
 	close({
+		data_sharing_preference?: matchN(1, [#data_sharing_preference, [...#data_sharing_preference]])
+		input?: matchN(1, [#input, [...#input]])
+		notification_channel?: matchN(1, [#notification_channel, [...#notification_channel]])
+		output?: matchN(1, [#output, [...#output]])
+		regions_of_interest?: matchN(1, [#regions_of_interest, [...#regions_of_interest]])
+		settings?: matchN(1, [#settings, [...#settings]])
+		timeouts?: #timeouts
+		arn?:      string
+
 		// The identifier for your AWS Key Management Service key (AWS KMS
 		// key). You can supply the Amazon Resource Name (ARN) of your
 		// KMS key, the ID of your KMS key, an alias for your KMS key, or
@@ -12,25 +21,17 @@ package res
 
 		// An identifier you assign to the stream processor.
 		name!: string
-		arn?:  string
-		data_sharing_preference?: matchN(1, [#data_sharing_preference, [...#data_sharing_preference]])
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		input?: matchN(1, [#input, [...#input]])
 
 		// The Amazon Resource Number (ARN) of the IAM role that allows
 		// access to the stream processor.
 		role_arn!: string
-		notification_channel?: matchN(1, [#notification_channel, [...#notification_channel]])
-		output?: matchN(1, [#output, [...#output]])
-		regions_of_interest?: matchN(1, [#regions_of_interest, [...#regions_of_interest]])
-		tags?: [string]: string
-		settings?: matchN(1, [#settings, [...#settings]])
-		timeouts?: #timeouts
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 

@@ -6,22 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpclattice_listener")
 	close({
-		arn?: string
 		default_action!: matchN(1, [#default_action, list.MaxItems(1) & [_, ...] & [...#default_action]])
+		timeouts?:        #timeouts
+		arn?:             string
 		created_at?:      string
 		id?:              string
 		last_updated_at?: string
 		listener_id?:     string
+		name!:            string
+		port?:            number
+		protocol!:        string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:             string
-		name!:               string
-		timeouts?:           #timeouts
-		port?:               number
-		protocol!:           string
 		service_arn?:        string
 		service_identifier?: string
 		tags?: [string]:     string

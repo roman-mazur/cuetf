@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_s3_bucket_logging")
 	close({
+		target_grant?: matchN(1, [#target_grant, [...#target_grant]])
+		target_object_key_format?: matchN(1, [#target_object_key_format, list.MaxItems(1) & [...#target_object_key_format]])
 		bucket!: string
 		id?:     string
 
@@ -16,8 +18,6 @@ import "list"
 		region?:        string
 		target_bucket!: string
 		target_prefix!: string
-		target_grant?: matchN(1, [#target_grant, [...#target_grant]])
-		target_object_key_format?: matchN(1, [#target_object_key_format, list.MaxItems(1) & [...#target_object_key_format]])
 	})
 
 	#target_grant: close({

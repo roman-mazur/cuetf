@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_elasticache_reserved_cache_node")
 	close({
+		timeouts?:            #timeouts
 		arn?:                 string
 		cache_node_count?:    number
 		cache_node_type?:     string
@@ -12,7 +13,6 @@ package res
 		id?:                  string
 		offering_type?:       string
 		product_description?: string
-		timeouts?:            #timeouts
 		recurring_charges?: [...close({
 			recurring_charge_amount?:    number
 			recurring_charge_frequency?: string

@@ -36,12 +36,6 @@ package data
 			reply_to_email_address?: string
 			source_arn?:             string
 		})]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                    string
 		estimated_number_of_users?: number
 		id?:                        string
 		lambda_config?: [...close({
@@ -72,6 +66,12 @@ package data
 		last_modified_date?: string
 		mfa_configuration?:  string
 		name?:               string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		schema_attributes?: [...close({
 			attribute_data_type?:      string
 			developer_only_attribute?: bool

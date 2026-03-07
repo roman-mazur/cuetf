@@ -4,21 +4,21 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_model_card_export_job")
 	close({
+		output_config?: matchN(1, [#output_config, [...#output_config]])
+		timeouts?: #timeouts
 		export_artifacts?: [...close({
 			s3_export_artifacts?: string
 		})]
+		model_card_export_job_arn?:  string
+		model_card_export_job_name!: string
+		model_card_name!:            string
+		model_card_version?:         number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                     string
-		model_card_export_job_arn?:  string
-		model_card_export_job_name!: string
-		model_card_name!:            string
-		model_card_version?:         number
-		output_config?: matchN(1, [#output_config, [...#output_config]])
-		timeouts?: #timeouts
+		region?: string
 	})
 
 	#output_config: close({

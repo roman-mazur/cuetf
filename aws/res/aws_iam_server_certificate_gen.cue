@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_iam_server_certificate")
 	close({
+		timeouts?:          #timeouts
 		arn?:               string
 		certificate_body!:  string
 		certificate_chain?: string
@@ -12,7 +13,6 @@ package res
 		name?:              string
 		name_prefix?:       string
 		path?:              string
-		timeouts?:          #timeouts
 		private_key!:       string
 		tags?: [string]:     string
 		tags_all?: [string]: string

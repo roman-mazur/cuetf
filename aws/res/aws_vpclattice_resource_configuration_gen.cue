@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpclattice_resource_configuration")
 	close({
+		resource_configuration_definition?: matchN(1, [#resource_configuration_definition, [...#resource_configuration_definition]])
+		timeouts?:                                       #timeouts
 		allow_association_to_shareable_service_network?: bool
 		arn?:                                            string
 		custom_domain_name?:                             string
@@ -11,17 +13,15 @@ package res
 		domain_verification_id?:                         string
 		domain_verification_status?:                     string
 		id?:                                             string
+		name!:                                           string
+		port_ranges?: [...string]
+		protocol?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		name!:   string
-		resource_configuration_definition?: matchN(1, [#resource_configuration_definition, [...#resource_configuration_definition]])
-		timeouts?: #timeouts
-		port_ranges?: [...string]
-		protocol?:                        string
+		region?:                          string
 		resource_configuration_group_id?: string
 		resource_gateway_identifier?:     string
 		tags?: [string]:     string

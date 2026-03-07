@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_inspector_assessment_template")
 	close({
+		event_subscription?: matchN(1, [#event_subscription, [...#event_subscription]])
 		arn?:      string
 		duration!: number
 		id?:       string
@@ -18,7 +19,6 @@ package res
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		target_arn!: string
-		event_subscription?: matchN(1, [#event_subscription, [...#event_subscription]])
 	})
 
 	#event_subscription: close({

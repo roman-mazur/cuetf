@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_athena_capacity_reservation")
 	close({
+		timeouts?:       #timeouts
 		allocated_dpus?: number
 		arn?:            string
 		name!:           string
@@ -17,7 +18,6 @@ package res
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		target_dpus!: number
-		timeouts?:    #timeouts
 	})
 
 	#timeouts: close({

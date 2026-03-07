@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ssm_maintenance_window_task")
 	close({
+		targets?: matchN(1, [#targets, list.MaxItems(5) & [...#targets]])
+		task_invocation_parameters?: matchN(1, [#task_invocation_parameters, list.MaxItems(1) & [...#task_invocation_parameters]])
 		arn?:             string
 		cutoff_behavior?: string
 		description?:     string
@@ -13,15 +15,13 @@ import "list"
 		max_concurrency?: string
 		max_errors?:      string
 		name?:            string
+		priority?:        number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		targets?: matchN(1, [#targets, list.MaxItems(5) & [...#targets]])
-		task_invocation_parameters?: matchN(1, [#task_invocation_parameters, list.MaxItems(1) & [...#task_invocation_parameters]])
-		priority?:         number
+		region?:           string
 		service_role_arn?: string
 		task_arn!:         string
 		task_type!:        string
@@ -58,17 +58,17 @@ import "list"
 	})
 
 	_#defs: "/$defs/task_invocation_parameters/$defs/run_command_parameters": close({
-		comment?:            string
-		document_hash?:      string
-		document_hash_type?: string
-		document_version?:   string
 		cloudwatch_config?: matchN(1, [_#defs."/$defs/task_invocation_parameters/$defs/run_command_parameters/$defs/cloudwatch_config", list.MaxItems(1) & [..._#defs."/$defs/task_invocation_parameters/$defs/run_command_parameters/$defs/cloudwatch_config"]])
+		notification_config?: matchN(1, [_#defs."/$defs/task_invocation_parameters/$defs/run_command_parameters/$defs/notification_config", list.MaxItems(1) & [..._#defs."/$defs/task_invocation_parameters/$defs/run_command_parameters/$defs/notification_config"]])
+		parameter?: matchN(1, [_#defs."/$defs/task_invocation_parameters/$defs/run_command_parameters/$defs/parameter", [..._#defs."/$defs/task_invocation_parameters/$defs/run_command_parameters/$defs/parameter"]])
+		comment?:              string
+		document_hash?:        string
+		document_hash_type?:   string
+		document_version?:     string
 		output_s3_bucket?:     string
 		output_s3_key_prefix?: string
 		service_role_arn?:     string
 		timeout_seconds?:      number
-		notification_config?: matchN(1, [_#defs."/$defs/task_invocation_parameters/$defs/run_command_parameters/$defs/notification_config", list.MaxItems(1) & [..._#defs."/$defs/task_invocation_parameters/$defs/run_command_parameters/$defs/notification_config"]])
-		parameter?: matchN(1, [_#defs."/$defs/task_invocation_parameters/$defs/run_command_parameters/$defs/parameter", [..._#defs."/$defs/task_invocation_parameters/$defs/run_command_parameters/$defs/parameter"]])
 	})
 
 	_#defs: "/$defs/task_invocation_parameters/$defs/run_command_parameters/$defs/cloudwatch_config": close({

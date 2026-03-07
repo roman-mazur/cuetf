@@ -6,29 +6,29 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_glue_catalog_table")
 	close({
+		open_table_format_input?: matchN(1, [#open_table_format_input, list.MaxItems(1) & [...#open_table_format_input]])
+		partition_index?: matchN(1, [#partition_index, list.MaxItems(3) & [...#partition_index]])
+		partition_keys?: matchN(1, [#partition_keys, [...#partition_keys]])
+		storage_descriptor?: matchN(1, [#storage_descriptor, list.MaxItems(1) & [...#storage_descriptor]])
+		target_table?: matchN(1, [#target_table, list.MaxItems(1) & [...#target_table]])
 		arn?:           string
 		catalog_id?:    string
 		database_name!: string
 		description?:   string
 		id?:            string
 		name!:          string
+		owner?:         string
+		parameters?: [string]: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		owner?:  string
-		parameters?: [string]: string
-		retention?: number
-		open_table_format_input?: matchN(1, [#open_table_format_input, list.MaxItems(1) & [...#open_table_format_input]])
+		region?:             string
+		retention?:          number
 		table_type?:         string
 		view_expanded_text?: string
 		view_original_text?: string
-		partition_index?: matchN(1, [#partition_index, list.MaxItems(3) & [...#partition_index]])
-		partition_keys?: matchN(1, [#partition_keys, [...#partition_keys]])
-		storage_descriptor?: matchN(1, [#storage_descriptor, list.MaxItems(1) & [...#storage_descriptor]])
-		target_table?: matchN(1, [#target_table, list.MaxItems(1) & [...#target_table]])
 	})
 
 	#open_table_format_input: close({
@@ -49,19 +49,19 @@ import "list"
 	})
 
 	#storage_descriptor: close({
-		additional_locations?: [...string]
-		bucket_columns?: [...string]
-		compressed?:   bool
-		input_format?: string
-		location?:     string
 		columns?: matchN(1, [_#defs."/$defs/storage_descriptor/$defs/columns", [..._#defs."/$defs/storage_descriptor/$defs/columns"]])
-		number_of_buckets?: number
-		output_format?:     string
 		schema_reference?: matchN(1, [_#defs."/$defs/storage_descriptor/$defs/schema_reference", list.MaxItems(1) & [..._#defs."/$defs/storage_descriptor/$defs/schema_reference"]])
 		ser_de_info?: matchN(1, [_#defs."/$defs/storage_descriptor/$defs/ser_de_info", list.MaxItems(1) & [..._#defs."/$defs/storage_descriptor/$defs/ser_de_info"]])
-		parameters?: [string]: string
 		skewed_info?: matchN(1, [_#defs."/$defs/storage_descriptor/$defs/skewed_info", list.MaxItems(1) & [..._#defs."/$defs/storage_descriptor/$defs/skewed_info"]])
 		sort_columns?: matchN(1, [_#defs."/$defs/storage_descriptor/$defs/sort_columns", [..._#defs."/$defs/storage_descriptor/$defs/sort_columns"]])
+		additional_locations?: [...string]
+		bucket_columns?: [...string]
+		compressed?:        bool
+		input_format?:      string
+		location?:          string
+		number_of_buckets?: number
+		output_format?:     string
+		parameters?: [string]: string
 		stored_as_sub_directories?: bool
 	})
 

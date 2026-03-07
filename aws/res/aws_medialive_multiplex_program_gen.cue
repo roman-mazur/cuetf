@@ -4,17 +4,17 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_medialive_multiplex_program")
 	close({
-		id?: string
+		multiplex_program_settings?: matchN(1, [#multiplex_program_settings, [...#multiplex_program_settings]])
+		timeouts?:     #timeouts
+		id?:           string
+		multiplex_id!: string
+		program_name!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:       string
-		multiplex_id!: string
-		program_name!: string
-		multiplex_program_settings?: matchN(1, [#multiplex_program_settings, [...#multiplex_program_settings]])
-		timeouts?: #timeouts
+		region?: string
 	})
 
 	#multiplex_program_settings: close({

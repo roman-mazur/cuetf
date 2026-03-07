@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_monitoring_schedule")
 	close({
+		monitoring_schedule_config!: matchN(1, [#monitoring_schedule_config, list.MaxItems(1) & [_, ...] & [...#monitoring_schedule_config]])
 		arn?:  string
 		id?:   string
 		name?: string
@@ -17,7 +18,6 @@ import "list"
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		monitoring_schedule_config!: matchN(1, [#monitoring_schedule_config, list.MaxItems(1) & [_, ...] & [...#monitoring_schedule_config]])
 	})
 
 	#monitoring_schedule_config: close({
@@ -30,13 +30,13 @@ import "list"
 	_#defs: "/$defs/monitoring_schedule_config/$defs/monitoring_job_definition": close({
 		baseline?: matchN(1, [_#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/baseline", list.MaxItems(1) & [..._#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/baseline"]])
 		monitoring_app_specification!: matchN(1, [_#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/monitoring_app_specification", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/monitoring_app_specification"]])
-		environment?: [string]: string
 		monitoring_inputs!: matchN(1, [_#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/monitoring_inputs", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/monitoring_inputs"]])
 		monitoring_output_config!: matchN(1, [_#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/monitoring_output_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/monitoring_output_config"]])
 		monitoring_resources!: matchN(1, [_#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/monitoring_resources", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/monitoring_resources"]])
 		network_config?: matchN(1, [_#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/network_config", list.MaxItems(1) & [..._#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/network_config"]])
-		role_arn!: string
 		stopping_condition?: matchN(1, [_#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/stopping_condition", [..._#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/stopping_condition"]])
+		environment?: [string]: string
+		role_arn!: string
 	})
 
 	_#defs: "/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/baseline": close({
@@ -67,6 +67,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/monitoring_inputs/$defs/batch_transform_input": close({
+		dataset_format!: matchN(1, [_#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/monitoring_inputs/$defs/batch_transform_input/$defs/dataset_format", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/monitoring_inputs/$defs/batch_transform_input/$defs/dataset_format"]])
 		data_captured_destination_s3_uri!: string
 		end_time_offset?:                  string
 		exclude_features_attribute?:       string
@@ -76,9 +77,8 @@ import "list"
 		probability_attribute?:            string
 		probability_threshold_attribute?:  number
 		s3_data_distribution_type?:        string
-		dataset_format!: matchN(1, [_#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/monitoring_inputs/$defs/batch_transform_input/$defs/dataset_format", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/monitoring_inputs/$defs/batch_transform_input/$defs/dataset_format"]])
-		s3_input_mode?:     string
-		start_time_offset?: string
+		s3_input_mode?:                    string
+		start_time_offset?:                string
 	})
 
 	_#defs: "/$defs/monitoring_schedule_config/$defs/monitoring_job_definition/$defs/monitoring_inputs/$defs/batch_transform_input/$defs/dataset_format": close({

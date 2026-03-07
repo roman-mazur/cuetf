@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_rbin_rule")
 	close({
+		exclude_resource_tags?: matchN(1, [#exclude_resource_tags, list.MaxItems(5) & [...#exclude_resource_tags]])
+		lock_configuration?: matchN(1, [#lock_configuration, list.MaxItems(1) & [...#lock_configuration]])
+		resource_tags?: matchN(1, [#resource_tags, list.MaxItems(50) & [...#resource_tags]])
+		retention_period!: matchN(1, [#retention_period, list.MaxItems(1) & [_, ...] & [...#retention_period]])
+		timeouts?:      #timeouts
 		arn?:           string
 		description?:   string
 		id?:            string
@@ -18,13 +23,8 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:        string
 		resource_type!: string
-		exclude_resource_tags?: matchN(1, [#exclude_resource_tags, list.MaxItems(5) & [...#exclude_resource_tags]])
-		status?: string
-		lock_configuration?: matchN(1, [#lock_configuration, list.MaxItems(1) & [...#lock_configuration]])
-		tags?: [string]: string
-		resource_tags?: matchN(1, [#resource_tags, list.MaxItems(50) & [...#resource_tags]])
-		retention_period!: matchN(1, [#retention_period, list.MaxItems(1) & [_, ...] & [...#retention_period]])
-		timeouts?: #timeouts
+		status?:        string
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 

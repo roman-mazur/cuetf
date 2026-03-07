@@ -6,36 +6,36 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_quicksight_data_set")
 	close({
+		column_groups?: matchN(1, [#column_groups, list.MaxItems(8) & [...#column_groups]])
+		column_level_permission_rules?: matchN(1, [#column_level_permission_rules, [...#column_level_permission_rules]])
+		data_set_usage_configuration?: matchN(1, [#data_set_usage_configuration, list.MaxItems(1) & [...#data_set_usage_configuration]])
+		field_folders?: matchN(1, [#field_folders, list.MaxItems(1000) & [...#field_folders]])
+		logical_table_map?: matchN(1, [#logical_table_map, list.MaxItems(64) & [...#logical_table_map]])
+		permissions?: matchN(1, [#permissions, list.MaxItems(64) & [...#permissions]])
+		physical_table_map?: matchN(1, [#physical_table_map, list.MaxItems(32) & [...#physical_table_map]])
+		refresh_properties?: matchN(1, [#refresh_properties, list.MaxItems(1) & [...#refresh_properties]])
+		row_level_permission_data_set?: matchN(1, [#row_level_permission_data_set, list.MaxItems(1) & [...#row_level_permission_data_set]])
+		row_level_permission_tag_configuration?: matchN(1, [#row_level_permission_tag_configuration, list.MaxItems(1) & [...#row_level_permission_tag_configuration]])
 		arn?:            string
 		aws_account_id?: string
 		data_set_id!:    string
 		id?:             string
 		import_mode!:    string
+		name!:           string
+		output_columns?: [...close({
+			description?: string
+			name?:        string
+			type?:        string
+		})]
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		name!:   string
-		output_columns?: [...close({
-			description?: string
-			name?:        string
-			type?:        string
-		})]
-		column_groups?: matchN(1, [#column_groups, list.MaxItems(8) & [...#column_groups]])
-		column_level_permission_rules?: matchN(1, [#column_level_permission_rules, [...#column_level_permission_rules]])
-		data_set_usage_configuration?: matchN(1, [#data_set_usage_configuration, list.MaxItems(1) & [...#data_set_usage_configuration]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		field_folders?: matchN(1, [#field_folders, list.MaxItems(1000) & [...#field_folders]])
-		logical_table_map?: matchN(1, [#logical_table_map, list.MaxItems(64) & [...#logical_table_map]])
-		permissions?: matchN(1, [#permissions, list.MaxItems(64) & [...#permissions]])
-		physical_table_map?: matchN(1, [#physical_table_map, list.MaxItems(32) & [...#physical_table_map]])
 		use_as?: string
-		refresh_properties?: matchN(1, [#refresh_properties, list.MaxItems(1) & [...#refresh_properties]])
-		row_level_permission_data_set?: matchN(1, [#row_level_permission_data_set, list.MaxItems(1) & [...#row_level_permission_data_set]])
-		row_level_permission_tag_configuration?: matchN(1, [#row_level_permission_tag_configuration, list.MaxItems(1) & [...#row_level_permission_tag_configuration]])
 	})
 
 	#column_groups: close({
@@ -166,11 +166,11 @@ import "list"
 
 	_#defs: "/$defs/logical_table_map/$defs/source/$defs/join_instruction": close({
 		left_join_key_properties?: matchN(1, [_#defs."/$defs/logical_table_map/$defs/source/$defs/join_instruction/$defs/left_join_key_properties", list.MaxItems(1) & [..._#defs."/$defs/logical_table_map/$defs/source/$defs/join_instruction/$defs/left_join_key_properties"]])
+		right_join_key_properties?: matchN(1, [_#defs."/$defs/logical_table_map/$defs/source/$defs/join_instruction/$defs/right_join_key_properties", list.MaxItems(1) & [..._#defs."/$defs/logical_table_map/$defs/source/$defs/join_instruction/$defs/right_join_key_properties"]])
 		left_operand!:  string
 		on_clause!:     string
 		right_operand!: string
 		type!:          string
-		right_join_key_properties?: matchN(1, [_#defs."/$defs/logical_table_map/$defs/source/$defs/join_instruction/$defs/right_join_key_properties", list.MaxItems(1) & [..._#defs."/$defs/logical_table_map/$defs/source/$defs/join_instruction/$defs/right_join_key_properties"]])
 	})
 
 	_#defs: "/$defs/logical_table_map/$defs/source/$defs/join_instruction/$defs/left_join_key_properties": close({

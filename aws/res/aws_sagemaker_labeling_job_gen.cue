@@ -4,6 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_labeling_job")
 	close({
+		human_task_config?: matchN(1, [#human_task_config, [...#human_task_config]])
+		input_config?: matchN(1, [#input_config, [...#input_config]])
+		labeling_job_algorithms_config?: matchN(1, [#labeling_job_algorithms_config, [...#labeling_job_algorithms_config]])
+		output_config?: matchN(1, [#output_config, [...#output_config]])
 		failure_reason?:               string
 		job_reference_code?:           string
 		label_attribute_name!:         string
@@ -15,17 +19,15 @@ package res
 			total_labeled?:              number
 			unlabeled?:                  number
 		})]
-		labeling_job_arn?: string
+		labeling_job_arn?:    string
+		labeling_job_name!:   string
+		labeling_job_status?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:              string
-		labeling_job_name!:   string
-		labeling_job_status?: string
-		human_task_config?: matchN(1, [#human_task_config, [...#human_task_config]])
-		input_config?: matchN(1, [#input_config, [...#input_config]])
+		region?:   string
 		role_arn!: string
 		stopping_conditions?: [...close({
 			max_human_labeled_object_count?:          number
@@ -33,11 +35,12 @@ package res
 		})]
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		labeling_job_algorithms_config?: matchN(1, [#labeling_job_algorithms_config, [...#labeling_job_algorithms_config]])
-		output_config?: matchN(1, [#output_config, [...#output_config]])
 	})
 
 	#human_task_config: close({
+		annotation_consolidation_config?: matchN(1, [_#defs."/$defs/human_task_config/$defs/annotation_consolidation_config", [..._#defs."/$defs/human_task_config/$defs/annotation_consolidation_config"]])
+		public_workforce_task_price?: matchN(1, [_#defs."/$defs/human_task_config/$defs/public_workforce_task_price", [..._#defs."/$defs/human_task_config/$defs/public_workforce_task_price"]])
+		ui_config?: matchN(1, [_#defs."/$defs/human_task_config/$defs/ui_config", [..._#defs."/$defs/human_task_config/$defs/ui_config"]])
 		max_concurrent_task_count?:               number
 		number_of_human_workers_per_data_object!: number
 		pre_human_task_lambda_arn?:               string
@@ -45,11 +48,8 @@ package res
 		task_description!:                        string
 		task_keywords?: [...string]
 		task_time_limit_in_seconds!: number
-		annotation_consolidation_config?: matchN(1, [_#defs."/$defs/human_task_config/$defs/annotation_consolidation_config", [..._#defs."/$defs/human_task_config/$defs/annotation_consolidation_config"]])
-		task_title!: string
-		public_workforce_task_price?: matchN(1, [_#defs."/$defs/human_task_config/$defs/public_workforce_task_price", [..._#defs."/$defs/human_task_config/$defs/public_workforce_task_price"]])
-		ui_config?: matchN(1, [_#defs."/$defs/human_task_config/$defs/ui_config", [..._#defs."/$defs/human_task_config/$defs/ui_config"]])
-		workteam_arn!: string
+		task_title!:                 string
+		workteam_arn!:               string
 	})
 
 	#input_config: close({

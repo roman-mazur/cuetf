@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_securityhub_configuration_policy")
 	close({
-		arn?: string
+		configuration_policy!: matchN(1, [#configuration_policy, list.MaxItems(1) & [_, ...] & [...#configuration_policy]])
+		arn?:         string
+		description?: string
+		id?:          string
+		name!:        string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		description?: string
-		id?:          string
-		name!:        string
-		configuration_policy!: matchN(1, [#configuration_policy, list.MaxItems(1) & [_, ...] & [...#configuration_policy]])
+		region?: string
 	})
 
 	#configuration_policy: close({
@@ -39,14 +39,14 @@ import "list"
 	_#defs: "/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter": close({
 		bool?: matchN(1, [_#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/bool", list.MaxItems(1) & [..._#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/bool"]])
 		double?: matchN(1, [_#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/double", list.MaxItems(1) & [..._#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/double"]])
-		name!:       string
-		value_type!: string
 		enum?: matchN(1, [_#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/enum", list.MaxItems(1) & [..._#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/enum"]])
 		enum_list?: matchN(1, [_#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/enum_list", list.MaxItems(1) & [..._#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/enum_list"]])
 		int?: matchN(1, [_#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/int", list.MaxItems(1) & [..._#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/int"]])
 		int_list?: matchN(1, [_#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/int_list", list.MaxItems(1) & [..._#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/int_list"]])
 		"string"?: matchN(1, [_#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/string", list.MaxItems(1) & [..._#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/string"]])
 		string_list?: matchN(1, [_#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/string_list", list.MaxItems(1) & [..._#defs."/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/string_list"]])
+		name!:       string
+		value_type!: string
 	})
 
 	_#defs: "/$defs/configuration_policy/$defs/security_controls_configuration/$defs/security_control_custom_parameter/$defs/parameter/$defs/bool": close({

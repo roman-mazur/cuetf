@@ -6,11 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_kinesisanalyticsv2_application")
 	close({
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                string
+		application_configuration?: matchN(1, [#application_configuration, list.MaxItems(1) & [...#application_configuration]])
+		cloudwatch_logging_options?: matchN(1, [#cloudwatch_logging_options, list.MaxItems(1) & [...#cloudwatch_logging_options]])
+		timeouts?:              #timeouts
 		application_mode?:      string
 		arn?:                   string
 		create_timestamp?:      string
@@ -19,16 +17,19 @@ import "list"
 		id?:                    string
 		last_update_timestamp?: string
 		name!:                  string
-		application_configuration?: matchN(1, [#application_configuration, list.MaxItems(1) & [...#application_configuration]])
-		runtime_environment!: string
-		cloudwatch_logging_options?: matchN(1, [#cloudwatch_logging_options, list.MaxItems(1) & [...#cloudwatch_logging_options]])
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                 string
+		runtime_environment!:    string
 		service_execution_role!: string
 		start_application?:      bool
 		status?:                 string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		version_id?: number
-		timeouts?:   #timeouts
 	})
 
 	#application_configuration: close({
@@ -136,13 +137,13 @@ import "list"
 	_#defs: "/$defs/application_configuration/$defs/sql_application_configuration/$defs/input": close({
 		input_parallelism?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_parallelism", list.MaxItems(1) & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_parallelism"]])
 		input_processing_configuration?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_processing_configuration", list.MaxItems(1) & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_processing_configuration"]])
-		in_app_stream_names?: [...string]
-		input_id?:    string
-		name_prefix!: string
 		input_schema!: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_schema"]])
 		input_starting_position_configuration?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_starting_position_configuration", [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_starting_position_configuration"]])
 		kinesis_firehose_input?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/kinesis_firehose_input", list.MaxItems(1) & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/kinesis_firehose_input"]])
 		kinesis_streams_input?: matchN(1, [_#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/kinesis_streams_input", list.MaxItems(1) & [..._#defs."/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/kinesis_streams_input"]])
+		in_app_stream_names?: [...string]
+		input_id?:    string
+		name_prefix!: string
 	})
 
 	_#defs: "/$defs/application_configuration/$defs/sql_application_configuration/$defs/input/$defs/input_parallelism": close({

@@ -4,6 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_odb_cloud_vm_cluster")
 	close({
+		data_collection_options?: matchN(1, [#data_collection_options, [...#data_collection_options]])
+		timeouts?: #timeouts
+		arn?:      string
+
 		// The unique identifier of the Exadata infrastructure for this VM
 		// cluster. Changing this will create a new resource.
 		cloud_exadata_infrastructure_arn?: string
@@ -15,7 +19,6 @@ package res
 		// The name of the Grid Infrastructure (GI) cluster. Changing this
 		// will create a new resource.
 		cluster_name?: string
-		arn?:          string
 
 		// The compute model used when the instance is created or cloned —
 		// either ECPU or OCPU. ECPU is a virtualized compute unit; OCPU
@@ -79,6 +82,7 @@ package res
 		// This member is required. Changing this will create a new
 		// resource.
 		hostname_prefix_computed?: string
+		id?:                       string
 
 		// The Exadata IORM (I/O Resource Manager) configuration cache
 		// details for the VM cluster.
@@ -97,7 +101,6 @@ package res
 		// storage for the VM cluster. Changing this will create a new
 		// resource.
 		is_local_backup_enabled?: bool
-		id?:                      string
 
 		// Specifies whether to create a sparse disk group for the VM
 		// cluster. Changing this will create a new resource.
@@ -119,8 +122,6 @@ package res
 
 		// The total number of nodes in the VM cluster.
 		node_count?: number
-		data_collection_options?: matchN(1, [#data_collection_options, [...#data_collection_options]])
-		timeouts?: #timeouts
 
 		// The name of the OCI resource anchor associated with the VM
 		// cluster.

@@ -6,20 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_connect_routing_profile")
 	close({
+		media_concurrencies!: matchN(1, [#media_concurrencies, [_, ...] & [...#media_concurrencies]])
+		queue_configs?: matchN(1, [#queue_configs, [...#queue_configs]])
 		arn?:                       string
 		default_outbound_queue_id!: string
 		description!:               string
 		id?:                        string
 		instance_id!:               string
+		name!:                      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		media_concurrencies!: matchN(1, [#media_concurrencies, [_, ...] & [...#media_concurrencies]])
-		name!: string
-		queue_configs?: matchN(1, [#queue_configs, [...#queue_configs]])
+		region?:             string
 		routing_profile_id?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

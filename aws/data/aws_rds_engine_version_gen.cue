@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_rds_engine_version")
 	close({
+		filter?: matchN(1, [#filter, [...#filter]])
 		default_character_set?: string
 		default_only?:          bool
 		engine!:                string
@@ -27,7 +28,6 @@ package data
 		status?: string
 		supported_character_sets?: [...string]
 		supported_feature_names?: [...string]
-		filter?: matchN(1, [#filter, [...#filter]])
 		supported_modes?: [...string]
 		supported_timezones?: [...string]
 		supports_certificate_rotation_without_restart?: bool

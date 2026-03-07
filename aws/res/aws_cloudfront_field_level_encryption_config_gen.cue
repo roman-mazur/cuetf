@@ -7,12 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_field_level_encryption_config")
 	close({
 		content_type_profile_config!: matchN(1, [#content_type_profile_config, list.MaxItems(1) & [_, ...] & [...#content_type_profile_config]])
+		query_arg_profile_config!: matchN(1, [#query_arg_profile_config, list.MaxItems(1) & [_, ...] & [...#query_arg_profile_config]])
 		arn?:              string
 		caller_reference?: string
 		comment?:          string
 		etag?:             string
 		id?:               string
-		query_arg_profile_config!: matchN(1, [#query_arg_profile_config, list.MaxItems(1) & [_, ...] & [...#query_arg_profile_config]])
 	})
 
 	#content_type_profile_config: close({

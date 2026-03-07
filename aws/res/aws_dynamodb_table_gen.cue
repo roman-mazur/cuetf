@@ -6,8 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dynamodb_table")
 	close({
-		arn?: string
 		attribute?: matchN(1, [#attribute, [...#attribute]])
+		global_secondary_index?: matchN(1, [#global_secondary_index, [...#global_secondary_index]])
+		global_table_witness?: matchN(1, [#global_table_witness, list.MaxItems(1) & [...#global_table_witness]])
+		import_table?: matchN(1, [#import_table, list.MaxItems(1) & [...#import_table]])
+		local_secondary_index?: matchN(1, [#local_secondary_index, [...#local_secondary_index]])
+		on_demand_throughput?: matchN(1, [#on_demand_throughput, list.MaxItems(1) & [...#on_demand_throughput]])
+		point_in_time_recovery?: matchN(1, [#point_in_time_recovery, list.MaxItems(1) & [...#point_in_time_recovery]])
+		replica?: matchN(1, [#replica, [...#replica]])
+		server_side_encryption?: matchN(1, [#server_side_encryption, list.MaxItems(1) & [...#server_side_encryption]])
+		timeouts?: #timeouts
+		ttl?: matchN(1, [#ttl, list.MaxItems(1) & [...#ttl]])
+		warm_throughput?: matchN(1, [#warm_throughput, list.MaxItems(1) & [...#warm_throughput]])
+		arn?:                         string
 		billing_mode?:                string
 		deletion_protection_enabled?: bool
 		hash_key?:                    string
@@ -27,23 +38,12 @@ import "list"
 		restore_to_latest_time?:   bool
 		stream_arn?:               string
 		stream_enabled?:           bool
-		global_secondary_index?: matchN(1, [#global_secondary_index, [...#global_secondary_index]])
-		global_table_witness?: matchN(1, [#global_table_witness, list.MaxItems(1) & [...#global_table_witness]])
-		stream_label?:     string
-		stream_view_type?: string
-		table_class?:      string
-		import_table?: matchN(1, [#import_table, list.MaxItems(1) & [...#import_table]])
-		tags?: [string]: string
-		local_secondary_index?: matchN(1, [#local_secondary_index, [...#local_secondary_index]])
-		on_demand_throughput?: matchN(1, [#on_demand_throughput, list.MaxItems(1) & [...#on_demand_throughput]])
-		point_in_time_recovery?: matchN(1, [#point_in_time_recovery, list.MaxItems(1) & [...#point_in_time_recovery]])
-		replica?: matchN(1, [#replica, [...#replica]])
-		server_side_encryption?: matchN(1, [#server_side_encryption, list.MaxItems(1) & [...#server_side_encryption]])
+		stream_label?:             string
+		stream_view_type?:         string
+		table_class?:              string
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		write_capacity?: number
-		timeouts?:       #timeouts
-		ttl?: matchN(1, [#ttl, list.MaxItems(1) & [...#ttl]])
-		warm_throughput?: matchN(1, [#warm_throughput, list.MaxItems(1) & [...#warm_throughput]])
 	})
 
 	#attribute: close({
@@ -52,14 +52,14 @@ import "list"
 	})
 
 	#global_secondary_index: close({
-		name!: string
 		key_schema?: matchN(1, [_#defs."/$defs/global_secondary_index/$defs/key_schema", [..._#defs."/$defs/global_secondary_index/$defs/key_schema"]])
+		on_demand_throughput?: matchN(1, [_#defs."/$defs/global_secondary_index/$defs/on_demand_throughput", list.MaxItems(1) & [..._#defs."/$defs/global_secondary_index/$defs/on_demand_throughput"]])
+		warm_throughput?: matchN(1, [_#defs."/$defs/global_secondary_index/$defs/warm_throughput", list.MaxItems(1) & [..._#defs."/$defs/global_secondary_index/$defs/warm_throughput"]])
+		name!: string
 		non_key_attributes?: [...string]
 		projection_type!: string
 		read_capacity?:   number
 		write_capacity?:  number
-		on_demand_throughput?: matchN(1, [_#defs."/$defs/global_secondary_index/$defs/on_demand_throughput", list.MaxItems(1) & [..._#defs."/$defs/global_secondary_index/$defs/on_demand_throughput"]])
-		warm_throughput?: matchN(1, [_#defs."/$defs/global_secondary_index/$defs/warm_throughput", list.MaxItems(1) & [..._#defs."/$defs/global_secondary_index/$defs/warm_throughput"]])
 	})
 
 	#global_table_witness: close({

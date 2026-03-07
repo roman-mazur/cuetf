@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lightsail_container_service_deployment_version")
 	close({
+		container!: matchN(1, [#container, list.MaxItems(53) & [_, ...] & [...#container]])
+		public_endpoint?: matchN(1, [#public_endpoint, list.MaxItems(1) & [...#public_endpoint]])
+		timeouts?:   #timeouts
 		created_at?: string
 		id?:         string
 
@@ -17,9 +20,6 @@ import "list"
 		service_name!: string
 		state?:        string
 		version?:      number
-		container!: matchN(1, [#container, list.MaxItems(53) & [_, ...] & [...#container]])
-		public_endpoint?: matchN(1, [#public_endpoint, list.MaxItems(1) & [...#public_endpoint]])
-		timeouts?: #timeouts
 	})
 
 	#container: close({

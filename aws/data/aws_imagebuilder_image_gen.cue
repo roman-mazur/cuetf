@@ -4,16 +4,10 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_imagebuilder_image")
 	close({
-		arn!:                  string
-		build_version_arn?:    string
-		container_recipe_arn?: string
-		date_created?:         string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                          string
+		arn!:                             string
+		build_version_arn?:               string
+		container_recipe_arn?:            string
+		date_created?:                    string
 		distribution_configuration_arn?:  string
 		enhanced_image_metadata_enabled?: bool
 		id?:                              string
@@ -46,6 +40,12 @@ package data
 			})]
 		})]
 		platform?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		tags?: [string]: string
 		version?: string
 	})

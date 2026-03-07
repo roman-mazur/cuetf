@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ebs_volume")
 	close({
+		timeouts?:             #timeouts
 		arn?:                  string
 		availability_zone!:    string
 		create_time?:          string
@@ -14,7 +15,6 @@ package res
 		kms_key_id?:           string
 		multi_attach_enabled?: bool
 		outpost_arn?:          string
-		timeouts?:             #timeouts
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

@@ -6,9 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpclattice_target_group")
 	close({
-		arn?:  string
-		id?:   string
-		name!: string
+		config?: matchN(1, [#config, list.MaxItems(1) & [...#config]])
+		timeouts?: #timeouts
+		arn?:      string
+		id?:       string
+		name!:     string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -19,8 +21,6 @@ import "list"
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type!: string
-		config?: matchN(1, [#config, list.MaxItems(1) & [...#config]])
-		timeouts?: #timeouts
 	})
 
 	#config: close({

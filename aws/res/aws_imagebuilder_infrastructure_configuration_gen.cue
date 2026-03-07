@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_imagebuilder_infrastructure_configuration")
 	close({
+		instance_metadata_options?: matchN(1, [#instance_metadata_options, list.MaxItems(1) & [...#instance_metadata_options]])
+		logging?: matchN(1, [#logging, list.MaxItems(1) & [...#logging]])
+		placement?: matchN(1, [#placement, list.MaxItems(1) & [...#placement]])
 		arn?:                   string
 		date_created?:          string
 		date_updated?:          string
@@ -21,7 +24,6 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		instance_metadata_options?: matchN(1, [#instance_metadata_options, list.MaxItems(1) & [...#instance_metadata_options]])
 		resource_tags?: [string]: string
 		security_group_ids?: [...string]
 		sns_topic_arn?: string
@@ -29,8 +31,6 @@ import "list"
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		terminate_instance_on_failure?: bool
-		logging?: matchN(1, [#logging, list.MaxItems(1) & [...#logging]])
-		placement?: matchN(1, [#placement, list.MaxItems(1) & [...#placement]])
 	})
 
 	#instance_metadata_options: close({

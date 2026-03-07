@@ -4,16 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ecrpublic_images")
 	close({
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-
-		// AWS account ID associated with the public registry that
-		// contains the repository. If not specified, the default public
-		// registry is assumed.
-		registry_id?: string
+		image_ids?: matchN(1, [#image_ids, [...#image_ids]])
 		images?: [...close({
 			artifact_media_type?:       string
 			image_digest?:              string
@@ -25,9 +16,19 @@ package data
 			repository_name?: string
 		})]
 
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+
+		// AWS account ID associated with the public registry that
+		// contains the repository. If not specified, the default public
+		// registry is assumed.
+		registry_id?: string
+
 		// Name of the public repository.
 		repository_name!: string
-		image_ids?: matchN(1, [#image_ids, [...#image_ids]])
 	})
 
 	#image_ids: close({

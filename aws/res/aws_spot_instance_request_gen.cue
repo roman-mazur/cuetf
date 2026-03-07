@@ -6,6 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_spot_instance_request")
 	close({
+		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
+		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
+		credit_specification?: matchN(1, [#credit_specification, list.MaxItems(1) & [...#credit_specification]])
+		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
+		enclave_options?: matchN(1, [#enclave_options, list.MaxItems(1) & [...#enclave_options]])
+		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
+		launch_template?: matchN(1, [#launch_template, list.MaxItems(1) & [...#launch_template]])
+		maintenance_options?: matchN(1, [#maintenance_options, list.MaxItems(1) & [...#maintenance_options]])
+		metadata_options?: matchN(1, [#metadata_options, list.MaxItems(1) & [...#metadata_options]])
+		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
+		private_dns_name_options?: matchN(1, [#private_dns_name_options, list.MaxItems(1) & [...#private_dns_name_options]])
+		root_block_device?: matchN(1, [#root_block_device, list.MaxItems(1) & [...#root_block_device]])
+		secondary_network_interface?: matchN(1, [#secondary_network_interface, [...#secondary_network_interface]])
+		timeouts?:                             #timeouts
 		ami?:                                  string
 		arn?:                                  string
 		associate_public_ip_address?:          bool
@@ -27,13 +41,7 @@ import "list"
 		instance_type?:                        string
 		ipv6_address_count?:                   number
 		ipv6_addresses?: [...string]
-		key_name?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                     string
+		key_name?:                   string
 		launch_group?:               string
 		monitoring?:                 bool
 		outpost_arn?:                string
@@ -46,11 +54,16 @@ import "list"
 			network_interface_id?:  string
 		})]
 		primary_network_interface_id?: string
-		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
-		private_dns?: string
-		private_ip?:  string
-		public_dns?:  string
-		public_ip?:   string
+		private_dns?:                  string
+		private_ip?:                   string
+		public_dns?:                   string
+		public_ip?:                    string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		secondary_private_ips?: [...string]
 		security_groups?: [...string]
 		source_dest_check?:  bool
@@ -71,19 +84,6 @@ import "list"
 		volume_tags?: [string]: string
 		vpc_security_group_ids?: [...string]
 		wait_for_fulfillment?: bool
-		cpu_options?: matchN(1, [#cpu_options, list.MaxItems(1) & [...#cpu_options]])
-		credit_specification?: matchN(1, [#credit_specification, list.MaxItems(1) & [...#credit_specification]])
-		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
-		enclave_options?: matchN(1, [#enclave_options, list.MaxItems(1) & [...#enclave_options]])
-		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
-		launch_template?: matchN(1, [#launch_template, list.MaxItems(1) & [...#launch_template]])
-		maintenance_options?: matchN(1, [#maintenance_options, list.MaxItems(1) & [...#maintenance_options]])
-		metadata_options?: matchN(1, [#metadata_options, list.MaxItems(1) & [...#metadata_options]])
-		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
-		private_dns_name_options?: matchN(1, [#private_dns_name_options, list.MaxItems(1) & [...#private_dns_name_options]])
-		root_block_device?: matchN(1, [#root_block_device, list.MaxItems(1) & [...#root_block_device]])
-		secondary_network_interface?: matchN(1, [#secondary_network_interface, [...#secondary_network_interface]])
-		timeouts?: #timeouts
 	})
 
 	#capacity_reservation_specification: close({

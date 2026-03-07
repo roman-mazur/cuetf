@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_redshiftserverless_workgroup")
 	close({
+		config_parameter?: matchN(1, [#config_parameter, [...#config_parameter]])
+		price_performance_target?: matchN(1, [#price_performance_target, list.MaxItems(1) & [...#price_performance_target]])
+		timeouts?:      #timeouts
 		arn?:           string
 		base_capacity?: number
 		endpoint?: [...close({
@@ -34,7 +37,6 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		config_parameter?: matchN(1, [#config_parameter, [...#config_parameter]])
 		security_group_ids?: [...string]
 		subnet_ids?: [...string]
 		tags?: [string]:     string
@@ -42,8 +44,6 @@ import "list"
 		track_name?:     string
 		workgroup_id?:   string
 		workgroup_name!: string
-		price_performance_target?: matchN(1, [#price_performance_target, list.MaxItems(1) & [...#price_performance_target]])
-		timeouts?: #timeouts
 	})
 
 	#config_parameter: close({

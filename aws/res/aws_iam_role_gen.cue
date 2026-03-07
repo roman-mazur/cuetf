@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_iam_role")
 	close({
+		inline_policy?: matchN(1, [#inline_policy, [...#inline_policy]])
 		arn?:                   string
 		assume_role_policy!:    string
 		create_date?:           string
@@ -15,8 +16,7 @@ package res
 		name_prefix?:           string
 		path?:                  string
 		permissions_boundary?:  string
-		tags?: [string]: string
-		inline_policy?: matchN(1, [#inline_policy, [...#inline_policy]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		unique_id?: string
 	})

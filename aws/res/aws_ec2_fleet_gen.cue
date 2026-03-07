@@ -6,9 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ec2_fleet")
 	close({
-		arn?:     string
-		context?: string
 		fleet_instance_set?: matchN(1, [#fleet_instance_set, [...#fleet_instance_set]])
+		launch_template_config!: matchN(1, [#launch_template_config, list.MaxItems(50) & [_, ...] & [...#launch_template_config]])
+		on_demand_options?: matchN(1, [#on_demand_options, list.MaxItems(1) & [...#on_demand_options]])
+		spot_options?: matchN(1, [#spot_options, list.MaxItems(1) & [...#spot_options]])
+		target_capacity_specification!: matchN(1, [#target_capacity_specification, list.MaxItems(1) & [_, ...] & [...#target_capacity_specification]])
+		timeouts?:                           #timeouts
+		arn?:                                string
+		context?:                            string
 		excess_capacity_termination_policy?: string
 		fleet_state?:                        string
 		fulfilled_capacity?:                 number
@@ -23,16 +28,11 @@ import "list"
 		replace_unhealthy_instances?: bool
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		launch_template_config!: matchN(1, [#launch_template_config, list.MaxItems(50) & [_, ...] & [...#launch_template_config]])
 		terminate_instances?:                 bool
 		terminate_instances_with_expiration?: bool
 		type?:                                string
 		valid_from?:                          string
 		valid_until?:                         string
-		on_demand_options?: matchN(1, [#on_demand_options, list.MaxItems(1) & [...#on_demand_options]])
-		spot_options?: matchN(1, [#spot_options, list.MaxItems(1) & [...#spot_options]])
-		target_capacity_specification!: matchN(1, [#target_capacity_specification, list.MaxItems(1) & [_, ...] & [...#target_capacity_specification]])
-		timeouts?: #timeouts
 	})
 
 	#fleet_instance_set: close({
@@ -98,9 +98,17 @@ import "list"
 	})
 
 	_#defs: "/$defs/launch_template_config/$defs/override/$defs/instance_requirements": close({
+		accelerator_count?: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/accelerator_count", list.MaxItems(1) & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/accelerator_count"]])
+		accelerator_total_memory_mib?: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/accelerator_total_memory_mib", list.MaxItems(1) & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/accelerator_total_memory_mib"]])
+		baseline_ebs_bandwidth_mbps?: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/baseline_ebs_bandwidth_mbps", list.MaxItems(1) & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/baseline_ebs_bandwidth_mbps"]])
+		memory_gib_per_vcpu?: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/memory_gib_per_vcpu", list.MaxItems(1) & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/memory_gib_per_vcpu"]])
+		memory_mib!: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/memory_mib", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/memory_mib"]])
+		network_bandwidth_gbps?: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/network_bandwidth_gbps", list.MaxItems(1) & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/network_bandwidth_gbps"]])
+		network_interface_count?: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/network_interface_count", list.MaxItems(1) & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/network_interface_count"]])
+		total_local_storage_gb?: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/total_local_storage_gb", list.MaxItems(1) & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/total_local_storage_gb"]])
+		vcpu_count!: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/vcpu_count", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/vcpu_count"]])
 		accelerator_manufacturers?: [...string]
 		accelerator_names?: [...string]
-		accelerator_count?: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/accelerator_count", list.MaxItems(1) & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/accelerator_count"]])
 		accelerator_types?: [...string]
 		allowed_instance_types?: [...string]
 		bare_metal?:            string
@@ -111,17 +119,9 @@ import "list"
 		local_storage?: string
 		local_storage_types?: [...string]
 		max_spot_price_as_percentage_of_optimal_on_demand_price?: number
-		accelerator_total_memory_mib?: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/accelerator_total_memory_mib", list.MaxItems(1) & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/accelerator_total_memory_mib"]])
-		on_demand_max_price_percentage_over_lowest_price?: number
-		require_hibernate_support?:                        bool
-		spot_max_price_percentage_over_lowest_price?:      number
-		baseline_ebs_bandwidth_mbps?: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/baseline_ebs_bandwidth_mbps", list.MaxItems(1) & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/baseline_ebs_bandwidth_mbps"]])
-		memory_gib_per_vcpu?: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/memory_gib_per_vcpu", list.MaxItems(1) & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/memory_gib_per_vcpu"]])
-		memory_mib!: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/memory_mib", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/memory_mib"]])
-		network_bandwidth_gbps?: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/network_bandwidth_gbps", list.MaxItems(1) & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/network_bandwidth_gbps"]])
-		network_interface_count?: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/network_interface_count", list.MaxItems(1) & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/network_interface_count"]])
-		total_local_storage_gb?: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/total_local_storage_gb", list.MaxItems(1) & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/total_local_storage_gb"]])
-		vcpu_count!: matchN(1, [_#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/vcpu_count", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/vcpu_count"]])
+		on_demand_max_price_percentage_over_lowest_price?:        number
+		require_hibernate_support?:                               bool
+		spot_max_price_percentage_over_lowest_price?:             number
 	})
 
 	_#defs: "/$defs/launch_template_config/$defs/override/$defs/instance_requirements/$defs/accelerator_count": close({

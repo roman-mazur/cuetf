@@ -7,14 +7,14 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_waf_web_acl")
 	close({
 		default_action!: matchN(1, [#default_action, list.MaxItems(1) & [_, ...] & [...#default_action]])
+		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [...#logging_configuration]])
+		rules?: matchN(1, [#rules, [...#rules]])
 		arn?:         string
 		id?:          string
 		metric_name!: string
 		name!:        string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [...#logging_configuration]])
-		rules?: matchN(1, [#rules, [...#rules]])
 	})
 
 	#default_action: close({

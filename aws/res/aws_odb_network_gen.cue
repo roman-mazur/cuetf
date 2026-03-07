@@ -4,7 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_odb_network")
 	close({
-		arn?: string
+		timeouts?: #timeouts
+		arn?:      string
 
 		// The name of the Availability Zone (AZ) where the odb network is
 		// located. Changing this will force terraform to create new
@@ -132,7 +133,6 @@ package res
 
 		// The URL of the OCI VCN for the ODB network.
 		oci_vcn_url?: string
-		timeouts?:    #timeouts
 
 		// The list of CIDR ranges from the peered VPC that are allowed
 		// access to the ODB network. Please refer odb network peering

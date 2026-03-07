@@ -4,17 +4,11 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_imagebuilder_image_pipeline")
 	close({
-		arn!:                  string
-		container_recipe_arn?: string
-		date_created?:         string
-		date_last_run?:        string
-		date_next_run?:        string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                          string
+		arn!:                             string
+		container_recipe_arn?:            string
+		date_created?:                    string
+		date_last_run?:                   string
+		date_next_run?:                   string
 		date_updated?:                    string
 		description?:                     string
 		distribution_configuration_arn?:  string
@@ -35,6 +29,12 @@ package data
 		infrastructure_configuration_arn?: string
 		name?:                             string
 		platform?:                         string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		schedule?: [...close({
 			pipeline_execution_start_condition?: string
 			schedule_expression?:                string

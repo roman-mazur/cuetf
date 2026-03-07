@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_route53_key_signing_key")
 	close({
+		timeouts?:                   #timeouts
 		digest_algorithm_mnemonic?:  string
 		digest_algorithm_type?:      number
 		digest_value?:               string
@@ -16,7 +17,6 @@ package res
 		key_tag?:                    number
 		name!:                       string
 		public_key?:                 string
-		timeouts?:                   #timeouts
 		signing_algorithm_mnemonic?: string
 		signing_algorithm_type?:     number
 		status?:                     string

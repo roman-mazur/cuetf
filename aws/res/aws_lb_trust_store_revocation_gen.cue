@@ -4,7 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lb_trust_store_revocation")
 	close({
-		id?: string
+		timeouts?: #timeouts
+		id?:       string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -16,7 +17,6 @@ package res
 		revocations_s3_key!:            string
 		revocations_s3_object_version?: string
 		trust_store_arn!:               string
-		timeouts?:                      #timeouts
 	})
 
 	#timeouts: close({

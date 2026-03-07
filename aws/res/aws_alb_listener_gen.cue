@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_alb_listener")
 	close({
+		default_action!: matchN(1, [#default_action, [_, ...] & [...#default_action]])
+		mutual_authentication?: matchN(1, [#mutual_authentication, list.MaxItems(1) & [...#mutual_authentication]])
+		timeouts?:          #timeouts
 		alpn_policy?:       string
 		arn?:               string
 		certificate_arn?:   string
@@ -30,33 +33,30 @@ import "list"
 		routing_http_response_access_control_allow_credentials_header_value?:   string
 		routing_http_response_access_control_allow_headers_header_value?:       string
 		routing_http_response_access_control_allow_methods_header_value?:       string
-		default_action!: matchN(1, [#default_action, [_, ...] & [...#default_action]])
-		routing_http_response_access_control_allow_origin_header_value?:   string
-		routing_http_response_access_control_expose_headers_header_value?: string
-		routing_http_response_access_control_max_age_header_value?:        string
-		routing_http_response_content_security_policy_header_value?:       string
-		routing_http_response_server_enabled?:                             bool
-		routing_http_response_strict_transport_security_header_value?:     string
-		routing_http_response_x_content_type_options_header_value?:        string
-		routing_http_response_x_frame_options_header_value?:               string
-		ssl_policy?:                                                       string
+		routing_http_response_access_control_allow_origin_header_value?:        string
+		routing_http_response_access_control_expose_headers_header_value?:      string
+		routing_http_response_access_control_max_age_header_value?:             string
+		routing_http_response_content_security_policy_header_value?:            string
+		routing_http_response_server_enabled?:                                  bool
+		routing_http_response_strict_transport_security_header_value?:          string
+		routing_http_response_x_content_type_options_header_value?:             string
+		routing_http_response_x_frame_options_header_value?:                    string
+		ssl_policy?:                                                            string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		tcp_idle_timeout_seconds?: number
-		mutual_authentication?: matchN(1, [#mutual_authentication, list.MaxItems(1) & [...#mutual_authentication]])
-		timeouts?: #timeouts
 	})
 
 	#default_action: close({
 		authenticate_cognito?: matchN(1, [_#defs."/$defs/default_action/$defs/authenticate_cognito", list.MaxItems(1) & [..._#defs."/$defs/default_action/$defs/authenticate_cognito"]])
 		authenticate_oidc?: matchN(1, [_#defs."/$defs/default_action/$defs/authenticate_oidc", list.MaxItems(1) & [..._#defs."/$defs/default_action/$defs/authenticate_oidc"]])
-		order?:            number
-		target_group_arn?: string
-		type!:             string
 		fixed_response?: matchN(1, [_#defs."/$defs/default_action/$defs/fixed_response", list.MaxItems(1) & [..._#defs."/$defs/default_action/$defs/fixed_response"]])
 		forward?: matchN(1, [_#defs."/$defs/default_action/$defs/forward", list.MaxItems(1) & [..._#defs."/$defs/default_action/$defs/forward"]])
 		jwt_validation?: matchN(1, [_#defs."/$defs/default_action/$defs/jwt_validation", list.MaxItems(1) & [..._#defs."/$defs/default_action/$defs/jwt_validation"]])
 		redirect?: matchN(1, [_#defs."/$defs/default_action/$defs/redirect", list.MaxItems(1) & [..._#defs."/$defs/default_action/$defs/redirect"]])
+		order?:            number
+		target_group_arn?: string
+		type!:             string
 	})
 
 	#mutual_authentication: close({

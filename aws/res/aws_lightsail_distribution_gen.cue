@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lightsail_distribution")
 	close({
+		cache_behavior?: matchN(1, [#cache_behavior, [...#cache_behavior]])
+		cache_behavior_settings?: matchN(1, [#cache_behavior_settings, list.MaxItems(1) & [...#cache_behavior_settings]])
+		default_cache_behavior!: matchN(1, [#default_cache_behavior, list.MaxItems(1) & [_, ...] & [...#default_cache_behavior]])
+		origin!: matchN(1, [#origin, list.MaxItems(1) & [_, ...] & [...#origin]])
+		timeouts?: #timeouts
+
 		// The alternate domain names of the distribution.
 		alternative_domain_names?: [...string]
 
@@ -24,10 +30,10 @@ import "list"
 
 		// The domain name of the distribution.
 		domain_name?: string
+		id?:          string
 
 		// The IP address type of the distribution.
 		ip_address_type?: string
-		id?:              string
 
 		// Indicates whether the distribution is enabled.
 		is_enabled?: bool
@@ -44,11 +50,6 @@ import "list"
 
 		// The public DNS of the origin.
 		origin_public_dns?: string
-		cache_behavior?: matchN(1, [#cache_behavior, [...#cache_behavior]])
-		cache_behavior_settings?: matchN(1, [#cache_behavior_settings, list.MaxItems(1) & [...#cache_behavior_settings]])
-		default_cache_behavior!: matchN(1, [#default_cache_behavior, list.MaxItems(1) & [_, ...] & [...#default_cache_behavior]])
-		origin!: matchN(1, [#origin, list.MaxItems(1) & [_, ...] & [...#origin]])
-		timeouts?: #timeouts
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -83,6 +84,10 @@ import "list"
 	})
 
 	#cache_behavior_settings: close({
+		forwarded_cookies?: matchN(1, [_#defs."/$defs/cache_behavior_settings/$defs/forwarded_cookies", list.MaxItems(1) & [..._#defs."/$defs/cache_behavior_settings/$defs/forwarded_cookies"]])
+		forwarded_headers?: matchN(1, [_#defs."/$defs/cache_behavior_settings/$defs/forwarded_headers", list.MaxItems(1) & [..._#defs."/$defs/cache_behavior_settings/$defs/forwarded_headers"]])
+		forwarded_query_strings?: matchN(1, [_#defs."/$defs/cache_behavior_settings/$defs/forwarded_query_strings", list.MaxItems(1) & [..._#defs."/$defs/cache_behavior_settings/$defs/forwarded_query_strings"]])
+
 		// The HTTP methods that are processed and forwarded to the
 		// distribution's origin.
 		allowed_http_methods?: string
@@ -107,9 +112,6 @@ import "list"
 		// request to the origin to determine whether the object has been
 		// updated.
 		minimum_ttl?: number
-		forwarded_cookies?: matchN(1, [_#defs."/$defs/cache_behavior_settings/$defs/forwarded_cookies", list.MaxItems(1) & [..._#defs."/$defs/cache_behavior_settings/$defs/forwarded_cookies"]])
-		forwarded_headers?: matchN(1, [_#defs."/$defs/cache_behavior_settings/$defs/forwarded_headers", list.MaxItems(1) & [..._#defs."/$defs/cache_behavior_settings/$defs/forwarded_headers"]])
-		forwarded_query_strings?: matchN(1, [_#defs."/$defs/cache_behavior_settings/$defs/forwarded_query_strings", list.MaxItems(1) & [..._#defs."/$defs/cache_behavior_settings/$defs/forwarded_query_strings"]])
 	})
 
 	#default_cache_behavior: close({

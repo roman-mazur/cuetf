@@ -4,13 +4,13 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ebs_snapshot_copy")
 	close({
+		timeouts?:                    #timeouts
 		arn?:                         string
 		completion_duration_minutes?: number
 		data_encryption_key_id?:      string
 		description?:                 string
 		encrypted?:                   bool
 		id?:                          string
-		timeouts?:                    #timeouts
 		kms_key_id?:                  string
 		outpost_arn?:                 string
 		owner_alias?:                 string

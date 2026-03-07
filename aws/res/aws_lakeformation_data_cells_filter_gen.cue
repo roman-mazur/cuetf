@@ -17,13 +17,13 @@ package res
 
 	#table_data: close({
 		column_wildcard?: matchN(1, [_#defs."/$defs/table_data/$defs/column_wildcard", [..._#defs."/$defs/table_data/$defs/column_wildcard"]])
+		row_filter?: matchN(1, [_#defs."/$defs/table_data/$defs/row_filter", [..._#defs."/$defs/table_data/$defs/row_filter"]])
 		column_names?: [...string]
 		database_name!:    string
 		name!:             string
 		table_catalog_id!: string
 		table_name!:       string
 		version_id?:       string
-		row_filter?: matchN(1, [_#defs."/$defs/table_data/$defs/row_filter", [..._#defs."/$defs/table_data/$defs/row_filter"]])
 	})
 
 	#timeouts: close({

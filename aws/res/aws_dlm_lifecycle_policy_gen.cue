@@ -6,38 +6,39 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dlm_lifecycle_policy")
 	close({
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:             string
+		policy_details!: matchN(1, [#policy_details, list.MaxItems(1) & [_, ...] & [...#policy_details]])
 		arn?:                string
 		default_policy?:     string
 		description!:        string
 		execution_role_arn!: string
 		id?:                 string
-		state?:              string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		state?:  string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		policy_details!: matchN(1, [#policy_details, list.MaxItems(1) & [_, ...] & [...#policy_details]])
 	})
 
 	#policy_details: close({
+		action?: matchN(1, [_#defs."/$defs/policy_details/$defs/action", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/action"]])
+		event_source?: matchN(1, [_#defs."/$defs/policy_details/$defs/event_source", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/event_source"]])
+		exclusions?: matchN(1, [_#defs."/$defs/policy_details/$defs/exclusions", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/exclusions"]])
+		parameters?: matchN(1, [_#defs."/$defs/policy_details/$defs/parameters", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/parameters"]])
+		schedule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule", list.MaxItems(4) & [..._#defs."/$defs/policy_details/$defs/schedule"]])
 		copy_tags?:       bool
 		create_interval?: number
 		extend_deletion?: bool
 		policy_language?: string
-		action?: matchN(1, [_#defs."/$defs/policy_details/$defs/action", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/action"]])
-		policy_type?: string
+		policy_type?:     string
 		resource_locations?: [...string]
-		event_source?: matchN(1, [_#defs."/$defs/policy_details/$defs/event_source", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/event_source"]])
 		resource_type?: string
 		resource_types?: [...string]
 		retain_interval?: number
-		exclusions?: matchN(1, [_#defs."/$defs/policy_details/$defs/exclusions", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/exclusions"]])
-		parameters?: matchN(1, [_#defs."/$defs/policy_details/$defs/parameters", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/parameters"]])
 		target_tags?: [string]: string
-		schedule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule", list.MaxItems(4) & [..._#defs."/$defs/policy_details/$defs/schedule"]])
 	})
 
 	_#defs: "/$defs/policy_details/$defs/action": close({
@@ -86,15 +87,15 @@ import "list"
 	_#defs: "/$defs/policy_details/$defs/schedule": close({
 		archive_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/archive_rule", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/archive_rule"]])
 		create_rule!: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/create_rule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/create_rule"]])
-		copy_tags?: bool
-		name!:      string
-		tags_to_add?: [string]:   string
-		variable_tags?: [string]: string
 		cross_region_copy_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/cross_region_copy_rule", list.MaxItems(3) & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/cross_region_copy_rule"]])
 		deprecate_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/deprecate_rule", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/deprecate_rule"]])
 		fast_restore_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/fast_restore_rule", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/fast_restore_rule"]])
 		retain_rule!: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/retain_rule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/retain_rule"]])
 		share_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/share_rule", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/share_rule"]])
+		copy_tags?: bool
+		name!:      string
+		tags_to_add?: [string]:   string
+		variable_tags?: [string]: string
 	})
 
 	_#defs: "/$defs/policy_details/$defs/schedule/$defs/archive_rule": close({
@@ -131,12 +132,12 @@ import "list"
 
 	_#defs: "/$defs/policy_details/$defs/schedule/$defs/cross_region_copy_rule": close({
 		deprecate_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/cross_region_copy_rule/$defs/deprecate_rule", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/cross_region_copy_rule/$defs/deprecate_rule"]])
+		retain_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/cross_region_copy_rule/$defs/retain_rule", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/cross_region_copy_rule/$defs/retain_rule"]])
 		cmk_arn?:       string
 		copy_tags?:     bool
 		encrypted!:     bool
 		target?:        string
 		target_region?: string
-		retain_rule?: matchN(1, [_#defs."/$defs/policy_details/$defs/schedule/$defs/cross_region_copy_rule/$defs/retain_rule", list.MaxItems(1) & [..._#defs."/$defs/policy_details/$defs/schedule/$defs/cross_region_copy_rule/$defs/retain_rule"]])
 	})
 
 	_#defs: "/$defs/policy_details/$defs/schedule/$defs/cross_region_copy_rule/$defs/deprecate_rule": close({

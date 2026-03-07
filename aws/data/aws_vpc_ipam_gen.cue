@@ -12,18 +12,18 @@ package data
 		id!:                                        string
 		ipam_region?:                               string
 		metered_account?:                           string
+		operating_regions?: [...close({
+			region_name?: string
+		})]
+		owner_id?:                 string
+		private_default_scope_id?: string
+		public_default_scope_id?:  string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		operating_regions?: [...close({
-			region_name?: string
-		})]
-		owner_id?:                             string
-		private_default_scope_id?:             string
-		public_default_scope_id?:              string
+		region?:                               string
 		resource_discovery_association_count?: number
 		scope_count?:                          number
 		state?:                                string

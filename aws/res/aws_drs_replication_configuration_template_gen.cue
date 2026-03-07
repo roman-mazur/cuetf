@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_drs_replication_configuration_template")
 	close({
+		pit_policy?: matchN(1, [#pit_policy, [...#pit_policy]])
+		timeouts?:                         #timeouts
 		arn?:                              string
 		associate_default_security_group!: bool
 		auto_replicate_new_disks?:         bool
@@ -13,15 +15,13 @@ package res
 		default_large_staging_disk_type!:  string
 		ebs_encryption!:                   string
 		ebs_encryption_key_arn?:           string
+		id?:                               string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		pit_policy?: matchN(1, [#pit_policy, [...#pit_policy]])
-		timeouts?:                         #timeouts
-		id?:                               string
+		region?:                           string
 		replication_server_instance_type!: string
 		replication_servers_security_groups_ids!: [...string]
 		staging_area_subnet_id!: string

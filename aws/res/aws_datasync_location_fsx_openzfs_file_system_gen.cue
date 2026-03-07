@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_datasync_location_fsx_openzfs_file_system")
 	close({
+		protocol!: matchN(1, [#protocol, list.MaxItems(1) & [_, ...] & [...#protocol]])
 		arn?:                string
 		creation_time?:      string
 		fsx_filesystem_arn!: string
@@ -17,7 +18,6 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		security_group_arns!: [...string]
-		protocol!: matchN(1, [#protocol, list.MaxItems(1) & [_, ...] & [...#protocol]])
 		subdirectory?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

@@ -11,20 +11,20 @@ package data
 			encryption_type?: string
 			kms_key?:         string
 		})]
-		id?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:               string
+		id?:                   string
 		image_tag_mutability?: string
 		image_tag_mutability_exclusion_filter?: [...close({
 			filter?:      string
 			filter_type?: string
 		})]
-		lifecycle_policy?:  string
-		prefix!:            string
+		lifecycle_policy?: string
+		prefix!:           string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:            string
 		registry_id?:       string
 		repository_policy?: string
 		resource_tags?: [string]: string

@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_transfer_workflow")
 	close({
+		on_exception_steps?: matchN(1, [#on_exception_steps, list.MaxItems(8) & [...#on_exception_steps]])
+		steps!: matchN(1, [#steps, list.MaxItems(8) & [_, ...] & [...#steps]])
 		arn?:         string
 		description?: string
 		id?:          string
@@ -17,8 +19,6 @@ import "list"
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		on_exception_steps?: matchN(1, [#on_exception_steps, list.MaxItems(8) & [...#on_exception_steps]])
-		steps!: matchN(1, [#steps, list.MaxItems(8) & [_, ...] & [...#steps]])
 	})
 
 	#on_exception_steps: close({

@@ -7,15 +7,15 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_response_headers_policy")
 	close({
 		cors_config?: matchN(1, [#cors_config, list.MaxItems(1) & [...#cors_config]])
+		custom_headers_config?: matchN(1, [#custom_headers_config, list.MaxItems(1) & [...#custom_headers_config]])
+		remove_headers_config?: matchN(1, [#remove_headers_config, list.MaxItems(1) & [...#remove_headers_config]])
+		security_headers_config?: matchN(1, [#security_headers_config, list.MaxItems(1) & [...#security_headers_config]])
+		server_timing_headers_config?: matchN(1, [#server_timing_headers_config, list.MaxItems(1) & [...#server_timing_headers_config]])
 		arn?:     string
 		comment?: string
 		etag?:    string
 		id?:      string
 		name!:    string
-		custom_headers_config?: matchN(1, [#custom_headers_config, list.MaxItems(1) & [...#custom_headers_config]])
-		remove_headers_config?: matchN(1, [#remove_headers_config, list.MaxItems(1) & [...#remove_headers_config]])
-		security_headers_config?: matchN(1, [#security_headers_config, list.MaxItems(1) & [...#security_headers_config]])
-		server_timing_headers_config?: matchN(1, [#server_timing_headers_config, list.MaxItems(1) & [...#server_timing_headers_config]])
 	})
 
 	#cors_config: close({

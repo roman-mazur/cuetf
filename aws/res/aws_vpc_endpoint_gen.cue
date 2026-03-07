@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_endpoint")
 	close({
+		dns_options?: matchN(1, [#dns_options, list.MaxItems(1) & [...#dns_options]])
+		subnet_configuration?: matchN(1, [#subnet_configuration, [...#subnet_configuration]])
+		timeouts?:    #timeouts
 		arn?:         string
 		auto_accept?: bool
 		cidr_blocks?: [...string]
@@ -28,19 +31,16 @@ import "list"
 		region?:                     string
 		requester_managed?:          bool
 		resource_configuration_arn?: string
-		dns_options?: matchN(1, [#dns_options, list.MaxItems(1) & [...#dns_options]])
 		route_table_ids?: [...string]
 		security_group_ids?: [...string]
 		service_name?:        string
 		service_network_arn?: string
-		subnet_configuration?: matchN(1, [#subnet_configuration, [...#subnet_configuration]])
-		service_region?: string
-		state?:          string
+		service_region?:      string
+		state?:               string
 		subnet_ids?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		vpc_endpoint_type?: string
-		timeouts?:          #timeouts
 		vpc_id!:            string
 	})
 

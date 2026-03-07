@@ -4,26 +4,26 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_docdbelastic_cluster")
 	close({
-		admin_user_name!:         string
-		admin_user_password!:     string
-		arn?:                     string
-		auth_type!:               string
-		backup_retention_period?: number
-		endpoint?:                string
-		id?:                      string
-		kms_key_id?:              string
+		timeouts?:                     #timeouts
+		admin_user_name!:              string
+		admin_user_password!:          string
+		arn?:                          string
+		auth_type!:                    string
+		backup_retention_period?:      number
+		endpoint?:                     string
+		id?:                           string
+		kms_key_id?:                   string
+		name!:                         string
+		preferred_backup_window?:      string
+		preferred_maintenance_window?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                       string
-		name!:                         string
-		timeouts?:                     #timeouts
-		preferred_backup_window?:      string
-		preferred_maintenance_window?: string
-		shard_capacity!:               number
-		shard_count!:                  number
+		region?:         string
+		shard_capacity!: number
+		shard_count!:    number
 		subnet_ids?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string

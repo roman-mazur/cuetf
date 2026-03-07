@@ -6,22 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ssmincidents_response_plan")
 	close({
+		action?: matchN(1, [#action, list.MaxItems(1) & [...#action]])
+		incident_template!: matchN(1, [#incident_template, list.MaxItems(1) & [_, ...] & [...#incident_template]])
+		integration?: matchN(1, [#integration, list.MaxItems(1) & [...#integration]])
 		arn?: string
 		chat_channel?: [...string]
 		display_name?: string
 		engagements?: [...string]
+		id?:   string
+		name!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		action?: matchN(1, [#action, list.MaxItems(1) & [...#action]])
-		id?: string
-		incident_template!: matchN(1, [#incident_template, list.MaxItems(1) & [_, ...] & [...#incident_template]])
-		name!: string
-		tags?: [string]: string
-		integration?: matchN(1, [#integration, list.MaxItems(1) & [...#integration]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 

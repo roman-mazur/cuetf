@@ -7,13 +7,13 @@ package res
 		id?:            string
 		identity_id?:   string
 		identity_name?: string
+		identity_type!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:             string
-		identity_type!:      string
 		session_policy_arn!: string
 		studio_id!:          string
 	})

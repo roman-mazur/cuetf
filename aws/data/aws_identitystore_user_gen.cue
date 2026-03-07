@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_identitystore_user")
 	close({
+		alternate_identifier?: matchN(1, [#alternate_identifier, list.MaxItems(1) & [...#alternate_identifier]])
 		addresses?: [...close({
 			country?:        string
 			formatted?:      string
@@ -29,12 +30,6 @@ import "list"
 		id?:                string
 		identity_store_id!: string
 		locale?:            string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		name?: [...close({
 			family_name?:      string
 			formatted?:        string
@@ -44,7 +39,6 @@ import "list"
 			middle_name?:      string
 		})]
 		nickname?: string
-		alternate_identifier?: matchN(1, [#alternate_identifier, list.MaxItems(1) & [...#alternate_identifier]])
 		phone_numbers?: [...close({
 			primary?: bool
 			type?:    string
@@ -52,11 +46,17 @@ import "list"
 		})]
 		preferred_language?: string
 		profile_url?:        string
-		timezone?:           string
-		title?:              string
-		user_id?:            string
-		user_name?:          string
-		user_type?:          string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:    string
+		timezone?:  string
+		title?:     string
+		user_id?:   string
+		user_name?: string
+		user_type?: string
 	})
 
 	#alternate_identifier: close({

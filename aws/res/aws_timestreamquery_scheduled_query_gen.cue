@@ -4,30 +4,30 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_timestreamquery_scheduled_query")
 	close({
-		arn?:                string
-		creation_time?:      string
-		execution_role_arn!: string
-		kms_key_id?:         string
-		name!:               string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                   string
-		next_invocation_time?:     string
-		previous_invocation_time?: string
-		query_string!:             string
-		state?:                    string
 		error_report_configuration?: matchN(1, [#error_report_configuration, [...#error_report_configuration]])
-		tags?: [string]:     string
-		tags_all?: [string]: string
 		last_run_summary?: matchN(1, [#last_run_summary, [...#last_run_summary]])
 		notification_configuration?: matchN(1, [#notification_configuration, [...#notification_configuration]])
 		recently_failed_runs?: matchN(1, [#recently_failed_runs, [...#recently_failed_runs]])
 		schedule_configuration?: matchN(1, [#schedule_configuration, [...#schedule_configuration]])
 		target_configuration?: matchN(1, [#target_configuration, [...#target_configuration]])
-		timeouts?: #timeouts
+		timeouts?:                 #timeouts
+		arn?:                      string
+		creation_time?:            string
+		execution_role_arn!:       string
+		kms_key_id?:               string
+		name!:                     string
+		next_invocation_time?:     string
+		previous_invocation_time?: string
+		query_string!:             string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		state?:  string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 	})
 
 	#error_report_configuration: close({
@@ -36,12 +36,12 @@ package res
 
 	#last_run_summary: close({
 		error_report_location?: matchN(1, [_#defs."/$defs/last_run_summary/$defs/error_report_location", [..._#defs."/$defs/last_run_summary/$defs/error_report_location"]])
+		execution_stats?: matchN(1, [_#defs."/$defs/last_run_summary/$defs/execution_stats", [..._#defs."/$defs/last_run_summary/$defs/execution_stats"]])
+		query_insights_response?: matchN(1, [_#defs."/$defs/last_run_summary/$defs/query_insights_response", [..._#defs."/$defs/last_run_summary/$defs/query_insights_response"]])
 		failure_reason?:  string
 		invocation_time?: string
 		run_status?:      string
 		trigger_time?:    string
-		execution_stats?: matchN(1, [_#defs."/$defs/last_run_summary/$defs/execution_stats", [..._#defs."/$defs/last_run_summary/$defs/execution_stats"]])
-		query_insights_response?: matchN(1, [_#defs."/$defs/last_run_summary/$defs/query_insights_response", [..._#defs."/$defs/last_run_summary/$defs/query_insights_response"]])
 	})
 
 	#notification_configuration: close({
@@ -50,12 +50,12 @@ package res
 
 	#recently_failed_runs: close({
 		error_report_location?: matchN(1, [_#defs."/$defs/recently_failed_runs/$defs/error_report_location", [..._#defs."/$defs/recently_failed_runs/$defs/error_report_location"]])
+		execution_stats?: matchN(1, [_#defs."/$defs/recently_failed_runs/$defs/execution_stats", [..._#defs."/$defs/recently_failed_runs/$defs/execution_stats"]])
+		query_insights_response?: matchN(1, [_#defs."/$defs/recently_failed_runs/$defs/query_insights_response", [..._#defs."/$defs/recently_failed_runs/$defs/query_insights_response"]])
 		failure_reason?:  string
 		invocation_time?: string
 		run_status?:      string
 		trigger_time?:    string
-		execution_stats?: matchN(1, [_#defs."/$defs/recently_failed_runs/$defs/execution_stats", [..._#defs."/$defs/recently_failed_runs/$defs/execution_stats"]])
-		query_insights_response?: matchN(1, [_#defs."/$defs/recently_failed_runs/$defs/query_insights_response", [..._#defs."/$defs/recently_failed_runs/$defs/query_insights_response"]])
 	})
 
 	#schedule_configuration: close({
@@ -191,12 +191,12 @@ package res
 
 	_#defs: "/$defs/target_configuration/$defs/timestream_configuration": close({
 		dimension_mapping?: matchN(1, [_#defs."/$defs/target_configuration/$defs/timestream_configuration/$defs/dimension_mapping", [..._#defs."/$defs/target_configuration/$defs/timestream_configuration/$defs/dimension_mapping"]])
+		mixed_measure_mapping?: matchN(1, [_#defs."/$defs/target_configuration/$defs/timestream_configuration/$defs/mixed_measure_mapping", [..._#defs."/$defs/target_configuration/$defs/timestream_configuration/$defs/mixed_measure_mapping"]])
+		multi_measure_mappings?: matchN(1, [_#defs."/$defs/target_configuration/$defs/timestream_configuration/$defs/multi_measure_mappings", [..._#defs."/$defs/target_configuration/$defs/timestream_configuration/$defs/multi_measure_mappings"]])
 		database_name!:       string
 		measure_name_column?: string
 		table_name!:          string
 		time_column!:         string
-		mixed_measure_mapping?: matchN(1, [_#defs."/$defs/target_configuration/$defs/timestream_configuration/$defs/mixed_measure_mapping", [..._#defs."/$defs/target_configuration/$defs/timestream_configuration/$defs/mixed_measure_mapping"]])
-		multi_measure_mappings?: matchN(1, [_#defs."/$defs/target_configuration/$defs/timestream_configuration/$defs/multi_measure_mappings", [..._#defs."/$defs/target_configuration/$defs/timestream_configuration/$defs/multi_measure_mappings"]])
 	})
 
 	_#defs: "/$defs/target_configuration/$defs/timestream_configuration/$defs/dimension_mapping": close({

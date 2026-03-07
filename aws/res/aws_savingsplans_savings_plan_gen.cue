@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_savingsplans_savings_plan")
 	close({
+		timeouts?: #timeouts
+
 		// The hourly commitment, in USD.
 		commitment!: string
 
@@ -45,7 +47,6 @@ package res
 
 		// The unique ID of a Savings Plan offering.
 		savings_plan_offering_id!: string
-		timeouts?:                 #timeouts
 
 		// The type of Savings Plan.
 		savings_plan_type?: string

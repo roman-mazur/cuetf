@@ -7,13 +7,13 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_route53_traffic_policy_document")
 	close({
 		endpoint?: matchN(1, [#endpoint, [...#endpoint]])
+		rule?: matchN(1, [#rule, [...#rule]])
 		id?:             string
 		json?:           string
 		record_type?:    string
 		start_endpoint?: string
 		start_rule?:     string
 		version?:        string
-		rule?: matchN(1, [#rule, [...#rule]])
 	})
 
 	#endpoint: close({

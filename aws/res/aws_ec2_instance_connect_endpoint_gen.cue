@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ec2_instance_connect_endpoint")
 	close({
+		timeouts?:          #timeouts
 		arn?:               string
 		availability_zone?: string
 		dns_name?:          string
@@ -11,15 +12,14 @@ package res
 		id?:                string
 		ip_address_type?:   string
 		network_interface_ids?: [...string]
+		owner_id?:           string
+		preserve_client_ip?: bool
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:             string
-		timeouts?:           #timeouts
-		owner_id?:           string
-		preserve_client_ip?: bool
+		region?: string
 		security_group_ids?: [...string]
 		subnet_id!: string
 		tags?: [string]:     string

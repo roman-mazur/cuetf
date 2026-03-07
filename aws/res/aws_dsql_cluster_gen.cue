@@ -4,23 +4,23 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dsql_cluster")
 	close({
+		multi_region_properties?: matchN(1, [#multi_region_properties, [...#multi_region_properties]])
+		timeouts?:                    #timeouts
 		arn?:                         string
 		deletion_protection_enabled?: bool
 		encryption_details?: [...close({
 			encryption_status?: string
 			encryption_type?:   string
 		})]
-		force_destroy?: bool
-		identifier?:    string
+		force_destroy?:      bool
+		identifier?:         string
+		kms_encryption_key?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		multi_region_properties?: matchN(1, [#multi_region_properties, [...#multi_region_properties]])
-		kms_encryption_key?: string
-		timeouts?:           #timeouts
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		vpc_endpoint_service_name?: string

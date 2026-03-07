@@ -7,12 +7,6 @@ package data
 		container_name!:     string
 		cpu?:                number
 		disable_networking?: bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		docker_labels?: [string]: string
 		environment?: [string]:   string
 		id?:                 string
@@ -20,6 +14,12 @@ package data
 		image_digest?:       string
 		memory?:             number
 		memory_reservation?: number
-		task_definition!:    string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:          string
+		task_definition!: string
 	})
 }

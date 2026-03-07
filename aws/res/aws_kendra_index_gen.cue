@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_kendra_index")
 	close({
+		capacity_units?: matchN(1, [#capacity_units, list.MaxItems(1) & [...#capacity_units]])
+		document_metadata_configuration_updates?: matchN(1, [#document_metadata_configuration_updates, list.MaxItems(500) & [...#document_metadata_configuration_updates]])
+		server_side_encryption_configuration?: matchN(1, [#server_side_encryption_configuration, list.MaxItems(1) & [...#server_side_encryption_configuration]])
+		timeouts?: #timeouts
+		user_group_resolution_configuration?: matchN(1, [#user_group_resolution_configuration, list.MaxItems(1) & [...#user_group_resolution_configuration]])
+		user_token_configurations?: matchN(1, [#user_token_configurations, list.MaxItems(1) & [...#user_token_configurations]])
 		arn?:           string
 		created_at?:    string
 		description?:   string
@@ -27,19 +33,13 @@ import "list"
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		capacity_units?: matchN(1, [#capacity_units, list.MaxItems(1) & [...#capacity_units]])
+		region?:   string
 		role_arn!: string
-		document_metadata_configuration_updates?: matchN(1, [#document_metadata_configuration_updates, list.MaxItems(500) & [...#document_metadata_configuration_updates]])
-		status?: string
-		server_side_encryption_configuration?: matchN(1, [#server_side_encryption_configuration, list.MaxItems(1) & [...#server_side_encryption_configuration]])
+		status?:   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		updated_at?: string
-		timeouts?:   #timeouts
-		user_group_resolution_configuration?: matchN(1, [#user_group_resolution_configuration, list.MaxItems(1) & [...#user_group_resolution_configuration]])
+		updated_at?:          string
 		user_context_policy?: string
-		user_token_configurations?: matchN(1, [#user_token_configurations, list.MaxItems(1) & [...#user_token_configurations]])
 	})
 
 	#capacity_units: close({

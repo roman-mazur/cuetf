@@ -4,13 +4,13 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_db_cluster_snapshot")
 	close({
+		timeouts?:          #timeouts
 		allocated_storage?: number
 		availability_zones?: [...string]
 		db_cluster_identifier!:          string
 		db_cluster_snapshot_arn?:        string
 		db_cluster_snapshot_identifier!: string
 		engine?:                         string
-		timeouts?:                       #timeouts
 		engine_version?:                 string
 		id?:                             string
 		kms_key_id?:                     string

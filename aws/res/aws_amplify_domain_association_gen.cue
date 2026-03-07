@@ -6,21 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_amplify_domain_association")
 	close({
-		app_id!: string
-		arn?:    string
+		certificate_settings?: matchN(1, [#certificate_settings, list.MaxItems(1) & [...#certificate_settings]])
+		sub_domain!: matchN(1, [#sub_domain, [_, ...] & [...#sub_domain]])
+		app_id!:                              string
+		arn?:                                 string
+		certificate_verification_dns_record?: string
+		domain_name!:                         string
+		enable_auto_sub_domain?:              bool
+		id?:                                  string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                              string
-		certificate_verification_dns_record?: string
-		domain_name!:                         string
-		enable_auto_sub_domain?:              bool
-		id?:                                  string
-		wait_for_verification?:               bool
-		certificate_settings?: matchN(1, [#certificate_settings, list.MaxItems(1) & [...#certificate_settings]])
-		sub_domain!: matchN(1, [#sub_domain, [_, ...] & [...#sub_domain]])
+		region?:                string
+		wait_for_verification?: bool
 	})
 
 	#certificate_settings: close({

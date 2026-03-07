@@ -10,15 +10,9 @@ package data
 		automated_snapshot_retention_period?:  number
 		availability_zone?:                    string
 		availability_zone_relocation_enabled?: bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                string
-		bucket_name?:           string
-		cluster_identifier!:    string
-		cluster_namespace_arn?: string
+		bucket_name?:                          string
+		cluster_identifier!:                   string
+		cluster_namespace_arn?:                string
 		cluster_nodes?: [...close({
 			node_role?:          string
 			private_ip_address?: string
@@ -51,7 +45,13 @@ package data
 		port?:                             number
 		preferred_maintenance_window?:     string
 		publicly_accessible?:              bool
-		s3_key_prefix?:                    string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:        string
+		s3_key_prefix?: string
 		tags?: [string]: string
 		vpc_id?: string
 		vpc_security_group_ids?: [...string]

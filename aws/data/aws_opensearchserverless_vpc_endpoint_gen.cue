@@ -6,10 +6,10 @@ package data
 	close({
 		// The date the endpoint was created.
 		created_date?: string
+		id?:           string
 
 		// The name of the endpoint.
 		name?: string
-		id?:   string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

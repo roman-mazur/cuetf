@@ -4,7 +4,9 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ebs_snapshot_ids")
 	close({
-		id?: string
+		filter?: matchN(1, [#filter, [...#filter]])
+		timeouts?: #timeouts
+		id?:       string
 		ids?: [...string]
 		owners?: [...string]
 
@@ -14,8 +16,6 @@ package data
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		restorable_by_user_ids?: [...string]
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?: #timeouts
 	})
 
 	#filter: close({

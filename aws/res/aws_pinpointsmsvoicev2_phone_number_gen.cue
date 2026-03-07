@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_pinpointsmsvoicev2_phone_number")
 	close({
+		timeouts?:                    #timeouts
 		arn?:                         string
 		deletion_protection_enabled?: bool
 		id?:                          string
@@ -14,7 +15,6 @@ package res
 		number_type!:       string
 		opt_out_list_name?: string
 		phone_number?:      string
-		timeouts?:          #timeouts
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

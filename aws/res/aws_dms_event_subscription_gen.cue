@@ -4,8 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dms_event_subscription")
 	close({
-		arn?:     string
-		enabled?: bool
+		timeouts?: #timeouts
+		arn?:      string
+		enabled?:  bool
 		event_categories!: [...string]
 		id?:   string
 		name!: string
@@ -15,7 +16,6 @@ package res
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:        string
-		timeouts?:      #timeouts
 		sns_topic_arn!: string
 		source_ids?: [...string]
 		source_type!: string

@@ -6,27 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_codedeploy_deployment_group")
 	close({
-		app_name!: string
-		arn?:      string
 		alarm_configuration?: matchN(1, [#alarm_configuration, list.MaxItems(1) & [...#alarm_configuration]])
-		autoscaling_groups?: [...string]
-		compute_platform?:       string
-		deployment_config_name?: string
-		deployment_group_id?:    string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                      string
-		deployment_group_name!:       string
-		id?:                          string
-		outdated_instances_strategy?: string
-		service_role_arn!:            string
 		auto_rollback_configuration?: matchN(1, [#auto_rollback_configuration, list.MaxItems(1) & [...#auto_rollback_configuration]])
-		tags?: [string]:     string
-		tags_all?: [string]: string
-		termination_hook_enabled?: bool
 		blue_green_deployment_config?: matchN(1, [#blue_green_deployment_config, list.MaxItems(1) & [...#blue_green_deployment_config]])
 		deployment_style?: matchN(1, [#deployment_style, list.MaxItems(1) & [...#deployment_style]])
 		ec2_tag_filter?: matchN(1, [#ec2_tag_filter, [...#ec2_tag_filter]])
@@ -35,6 +16,25 @@ import "list"
 		load_balancer_info?: matchN(1, [#load_balancer_info, list.MaxItems(1) & [...#load_balancer_info]])
 		on_premises_instance_tag_filter?: matchN(1, [#on_premises_instance_tag_filter, [...#on_premises_instance_tag_filter]])
 		trigger_configuration?: matchN(1, [#trigger_configuration, [...#trigger_configuration]])
+		app_name!: string
+		arn?:      string
+		autoscaling_groups?: [...string]
+		compute_platform?:            string
+		deployment_config_name?:      string
+		deployment_group_id?:         string
+		deployment_group_name!:       string
+		id?:                          string
+		outdated_instances_strategy?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:           string
+		service_role_arn!: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
+		termination_hook_enabled?: bool
 	})
 
 	#alarm_configuration: close({

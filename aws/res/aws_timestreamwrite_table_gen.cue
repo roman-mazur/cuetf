@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_timestreamwrite_table")
 	close({
+		magnetic_store_write_properties?: matchN(1, [#magnetic_store_write_properties, list.MaxItems(1) & [...#magnetic_store_write_properties]])
+		retention_properties?: matchN(1, [#retention_properties, list.MaxItems(1) & [...#retention_properties]])
+		schema?: matchN(1, [#schema, list.MaxItems(1) & [...#schema]])
 		arn?:           string
 		database_name!: string
 		id?:            string
@@ -16,11 +19,8 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:     string
 		table_name!: string
-		magnetic_store_write_properties?: matchN(1, [#magnetic_store_write_properties, list.MaxItems(1) & [...#magnetic_store_write_properties]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		retention_properties?: matchN(1, [#retention_properties, list.MaxItems(1) & [...#retention_properties]])
-		schema?: matchN(1, [#schema, list.MaxItems(1) & [...#schema]])
 	})
 
 	#magnetic_store_write_properties: close({

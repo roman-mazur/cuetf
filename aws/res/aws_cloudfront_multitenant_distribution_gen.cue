@@ -4,8 +4,17 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_multitenant_distribution")
 	close({
-		arn?: string
 		active_trusted_key_groups?: matchN(1, [#active_trusted_key_groups, [...#active_trusted_key_groups]])
+		cache_behavior?: matchN(1, [#cache_behavior, [...#cache_behavior]])
+		custom_error_response?: matchN(1, [#custom_error_response, [...#custom_error_response]])
+		default_cache_behavior?: matchN(1, [#default_cache_behavior, [...#default_cache_behavior]])
+		origin?: matchN(1, [#origin, [...#origin]])
+		origin_group?: matchN(1, [#origin_group, [...#origin_group]])
+		restrictions?: matchN(1, [#restrictions, [...#restrictions]])
+		tenant_config?: matchN(1, [#tenant_config, [...#tenant_config]])
+		timeouts?: #timeouts
+		viewer_certificate?: matchN(1, [#viewer_certificate, [...#viewer_certificate]])
+		arn?:                              string
 		caller_reference?:                 string
 		comment!:                          string
 		connection_mode?:                  string
@@ -16,20 +25,11 @@ package res
 		http_version?:                     string
 		id?:                               string
 		in_progress_invalidation_batches?: number
-		cache_behavior?: matchN(1, [#cache_behavior, [...#cache_behavior]])
-		custom_error_response?: matchN(1, [#custom_error_response, [...#custom_error_response]])
-		last_modified_time?: string
-		default_cache_behavior?: matchN(1, [#default_cache_behavior, [...#default_cache_behavior]])
-		origin?: matchN(1, [#origin, [...#origin]])
-		status?: string
-		tags?: [string]: string
-		origin_group?: matchN(1, [#origin_group, [...#origin_group]])
-		restrictions?: matchN(1, [#restrictions, [...#restrictions]])
-		tenant_config?: matchN(1, [#tenant_config, [...#tenant_config]])
-		timeouts?: #timeouts
+		last_modified_time?:               string
+		status?:                           string
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		web_acl_id?: string
-		viewer_certificate?: matchN(1, [#viewer_certificate, [...#viewer_certificate]])
 	})
 
 	#active_trusted_key_groups: close({
@@ -38,19 +38,19 @@ package res
 	})
 
 	#cache_behavior: close({
-		cache_policy_id?:           string
-		compress?:                  bool
-		field_level_encryption_id?: string
-		origin_request_policy_id?:  string
-		path_pattern!:              string
 		allowed_methods?: matchN(1, [_#defs."/$defs/cache_behavior/$defs/allowed_methods", [..._#defs."/$defs/cache_behavior/$defs/allowed_methods"]])
-		realtime_log_config_arn?: string
 		function_association?: matchN(1, [_#defs."/$defs/cache_behavior/$defs/function_association", [..._#defs."/$defs/cache_behavior/$defs/function_association"]])
-		response_headers_policy_id?: string
-		target_origin_id!:           string
 		lambda_function_association?: matchN(1, [_#defs."/$defs/cache_behavior/$defs/lambda_function_association", [..._#defs."/$defs/cache_behavior/$defs/lambda_function_association"]])
 		trusted_key_groups?: matchN(1, [_#defs."/$defs/cache_behavior/$defs/trusted_key_groups", [..._#defs."/$defs/cache_behavior/$defs/trusted_key_groups"]])
-		viewer_protocol_policy!: string
+		cache_policy_id?:            string
+		compress?:                   bool
+		field_level_encryption_id?:  string
+		origin_request_policy_id?:   string
+		path_pattern!:               string
+		realtime_log_config_arn?:    string
+		response_headers_policy_id?: string
+		target_origin_id!:           string
+		viewer_protocol_policy!:     string
 	})
 
 	#custom_error_response: close({
@@ -61,32 +61,32 @@ package res
 	})
 
 	#default_cache_behavior: close({
-		cache_policy_id?: string
 		allowed_methods?: matchN(1, [_#defs."/$defs/default_cache_behavior/$defs/allowed_methods", [..._#defs."/$defs/default_cache_behavior/$defs/allowed_methods"]])
-		compress?:                  bool
-		field_level_encryption_id?: string
-		origin_request_policy_id?:  string
 		function_association?: matchN(1, [_#defs."/$defs/default_cache_behavior/$defs/function_association", [..._#defs."/$defs/default_cache_behavior/$defs/function_association"]])
-		realtime_log_config_arn?: string
 		lambda_function_association?: matchN(1, [_#defs."/$defs/default_cache_behavior/$defs/lambda_function_association", [..._#defs."/$defs/default_cache_behavior/$defs/lambda_function_association"]])
+		trusted_key_groups?: matchN(1, [_#defs."/$defs/default_cache_behavior/$defs/trusted_key_groups", [..._#defs."/$defs/default_cache_behavior/$defs/trusted_key_groups"]])
+		cache_policy_id?:            string
+		compress?:                   bool
+		field_level_encryption_id?:  string
+		origin_request_policy_id?:   string
+		realtime_log_config_arn?:    string
 		response_headers_policy_id?: string
 		target_origin_id!:           string
 		viewer_protocol_policy!:     string
-		trusted_key_groups?: matchN(1, [_#defs."/$defs/default_cache_behavior/$defs/trusted_key_groups", [..._#defs."/$defs/default_cache_behavior/$defs/trusted_key_groups"]])
 	})
 
 	#origin: close({
-		connection_attempts?:      number
-		connection_timeout?:       number
-		domain_name!:              string
-		id!:                       string
-		origin_access_control_id?: string
-		origin_path?:              string
 		custom_header?: matchN(1, [_#defs."/$defs/origin/$defs/custom_header", [..._#defs."/$defs/origin/$defs/custom_header"]])
-		response_completion_timeout?: number
 		custom_origin_config?: matchN(1, [_#defs."/$defs/origin/$defs/custom_origin_config", [..._#defs."/$defs/origin/$defs/custom_origin_config"]])
 		origin_shield?: matchN(1, [_#defs."/$defs/origin/$defs/origin_shield", [..._#defs."/$defs/origin/$defs/origin_shield"]])
 		vpc_origin_config?: matchN(1, [_#defs."/$defs/origin/$defs/vpc_origin_config", [..._#defs."/$defs/origin/$defs/vpc_origin_config"]])
+		connection_attempts?:         number
+		connection_timeout?:          number
+		domain_name!:                 string
+		id!:                          string
+		origin_access_control_id?:    string
+		origin_path?:                 string
+		response_completion_timeout?: number
 	})
 
 	#origin_group: close({

@@ -4,28 +4,28 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_securitylake_subscriber")
 	close({
+		source?: matchN(1, [#source, [...#source]])
+		subscriber_identity?: matchN(1, [#subscriber_identity, [...#subscriber_identity]])
+		timeouts?:    #timeouts
 		access_type?: string
+		arn?:         string
+		id?:          string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:              string
-		arn?:                 string
-		id?:                  string
-		resource_share_arn?:  string
-		resource_share_name?: string
-		role_arn?:            string
-		s3_bucket_arn?:       string
-		source?: matchN(1, [#source, [...#source]])
+		region?:                 string
+		resource_share_arn?:     string
+		resource_share_name?:    string
+		role_arn?:               string
+		s3_bucket_arn?:          string
 		subscriber_description?: string
 		subscriber_endpoint?:    string
 		subscriber_name?:        string
-		subscriber_identity?: matchN(1, [#subscriber_identity, [...#subscriber_identity]])
-		subscriber_status?: string
+		subscriber_status?:      string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#source: close({

@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ami")
 	close({
+		filter?: matchN(1, [#filter, [...#filter]])
+		timeouts?:            #timeouts
 		allow_unsafe_filter?: bool
 		architecture?:        string
 		arn?:                 string
@@ -19,15 +21,9 @@ package data
 		description?:      string
 		ena_support?:      bool
 		executable_users?: [...string]
-		hypervisor?: string
-		id?:         string
-		image_id?:   string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:             string
+		hypervisor?:         string
+		id?:                 string
+		image_id?:           string
 		image_location?:     string
 		image_owner_alias?:  string
 		image_type?:         string
@@ -36,11 +32,9 @@ package data
 		kernel_id?:          string
 		last_launched_time?: string
 		most_recent?:        bool
-		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?:   #timeouts
-		name?:       string
-		name_regex?: string
-		owner_id?:   string
+		name?:               string
+		name_regex?:         string
+		owner_id?:           string
 		owners?: [...string]
 		platform?:         string
 		platform_details?: string
@@ -48,8 +42,14 @@ package data
 			product_code_id?:   string
 			product_code_type?: string
 		})]
-		public?:            bool
-		ramdisk_id?:        string
+		public?:     bool
+		ramdisk_id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:            string
 		root_device_name?:  string
 		root_device_type?:  string
 		root_snapshot_id?:  string

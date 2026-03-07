@@ -18,14 +18,8 @@ package data
 		approved_patches_compliance_level?:            string
 		approved_patches_enable_non_security?:         bool
 		available_security_updates_compliance_status?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:           string
-		default_baseline?: bool
-		description?:      string
+		default_baseline?:                             bool
+		description?:                                  string
 		global_filter?: [...close({
 			key?: string
 			values?: [...string]
@@ -36,6 +30,12 @@ package data
 		name_prefix?:      string
 		operating_system?: string
 		owner!:            string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		rejected_patches?: [...string]
 		rejected_patches_action?: string
 		source?: [...close({

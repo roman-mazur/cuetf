@@ -6,6 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dms_endpoint")
 	close({
+		elasticsearch_settings?: matchN(1, [#elasticsearch_settings, list.MaxItems(1) & [...#elasticsearch_settings]])
+		kafka_settings?: matchN(1, [#kafka_settings, list.MaxItems(1) & [...#kafka_settings]])
+		kinesis_settings?: matchN(1, [#kinesis_settings, list.MaxItems(1) & [...#kinesis_settings]])
+		mongodb_settings?: matchN(1, [#mongodb_settings, list.MaxItems(1) & [...#mongodb_settings]])
+		mysql_settings?: matchN(1, [#mysql_settings, list.MaxItems(1) & [...#mysql_settings]])
+		oracle_settings?: matchN(1, [#oracle_settings, list.MaxItems(1) & [...#oracle_settings]])
+		postgres_settings?: matchN(1, [#postgres_settings, list.MaxItems(1) & [...#postgres_settings]])
+		redis_settings?: matchN(1, [#redis_settings, list.MaxItems(1) & [...#redis_settings]])
+		redshift_settings?: matchN(1, [#redshift_settings, list.MaxItems(1) & [...#redshift_settings]])
+		timeouts?:                    #timeouts
 		certificate_arn?:             string
 		database_name?:               string
 		endpoint_arn?:                string
@@ -15,33 +25,23 @@ import "list"
 		extra_connection_attributes?: string
 		id?:                          string
 		kms_key_arn?:                 string
-		elasticsearch_settings?: matchN(1, [#elasticsearch_settings, list.MaxItems(1) & [...#elasticsearch_settings]])
+		password?:                    string
+		pause_replication_tasks?:     bool
+		port?:                        number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
-		password?: string
-		kafka_settings?: matchN(1, [#kafka_settings, list.MaxItems(1) & [...#kafka_settings]])
-		pause_replication_tasks?: bool
-		port?:                    number
-		kinesis_settings?: matchN(1, [#kinesis_settings, list.MaxItems(1) & [...#kinesis_settings]])
+		region?:                          string
 		secrets_manager_access_role_arn?: string
 		secrets_manager_arn?:             string
 		server_name?:                     string
 		service_access_role?:             string
 		ssl_mode?:                        string
-		tags?: [string]: string
-		mongodb_settings?: matchN(1, [#mongodb_settings, list.MaxItems(1) & [...#mongodb_settings]])
-		mysql_settings?: matchN(1, [#mysql_settings, list.MaxItems(1) & [...#mysql_settings]])
-		oracle_settings?: matchN(1, [#oracle_settings, list.MaxItems(1) & [...#oracle_settings]])
-		postgres_settings?: matchN(1, [#postgres_settings, list.MaxItems(1) & [...#postgres_settings]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		username?: string
-		redis_settings?: matchN(1, [#redis_settings, list.MaxItems(1) & [...#redis_settings]])
-		redshift_settings?: matchN(1, [#redshift_settings, list.MaxItems(1) & [...#redshift_settings]])
-		timeouts?: #timeouts
 	})
 
 	#elasticsearch_settings: close({

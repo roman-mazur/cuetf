@@ -4,34 +4,34 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_agent_runtime")
 	close({
+		agent_runtime_artifact?: matchN(1, [#agent_runtime_artifact, [...#agent_runtime_artifact]])
+		authorizer_configuration?: matchN(1, [#authorizer_configuration, [...#authorizer_configuration]])
+		network_configuration?: matchN(1, [#network_configuration, [...#network_configuration]])
+		protocol_configuration?: matchN(1, [#protocol_configuration, [...#protocol_configuration]])
+		request_header_configuration?: matchN(1, [#request_header_configuration, [...#request_header_configuration]])
+		timeouts?:              #timeouts
 		agent_runtime_arn?:     string
 		agent_runtime_id?:      string
 		agent_runtime_name!:    string
 		agent_runtime_version?: string
 		description?:           string
 		environment_variables?: [string]: string
+		lifecycle_configuration?: [...close({
+			idle_runtime_session_timeout?: number
+			max_lifetime?:                 number
+		})]
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		lifecycle_configuration?: [...close({
-			idle_runtime_session_timeout?: number
-			max_lifetime?:                 number
-		})]
+		region?:   string
 		role_arn!: string
-		agent_runtime_artifact?: matchN(1, [#agent_runtime_artifact, [...#agent_runtime_artifact]])
-		authorizer_configuration?: matchN(1, [#authorizer_configuration, [...#authorizer_configuration]])
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		workload_identity_details?: [...close({
 			workload_identity_arn?: string
 		})]
-		network_configuration?: matchN(1, [#network_configuration, [...#network_configuration]])
-		protocol_configuration?: matchN(1, [#protocol_configuration, [...#protocol_configuration]])
-		request_header_configuration?: matchN(1, [#request_header_configuration, [...#request_header_configuration]])
-		timeouts?: #timeouts
 	})
 
 	#agent_runtime_artifact: close({

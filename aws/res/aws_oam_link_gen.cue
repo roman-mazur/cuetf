@@ -6,12 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_oam_link")
 	close({
+		link_configuration?: matchN(1, [#link_configuration, list.MaxItems(1) & [...#link_configuration]])
+		timeouts?:       #timeouts
 		arn?:            string
 		id?:             string
 		label?:          string
 		label_template!: string
-		link_configuration?: matchN(1, [#link_configuration, list.MaxItems(1) & [...#link_configuration]])
-		link_id?: string
+		link_id?:        string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -21,8 +22,7 @@ import "list"
 		resource_types!: [...string]
 		sink_arn?:        string
 		sink_identifier!: string
-		tags?: [string]: string
-		timeouts?: #timeouts
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 

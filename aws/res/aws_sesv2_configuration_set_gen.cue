@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sesv2_configuration_set")
 	close({
+		delivery_options?: matchN(1, [#delivery_options, list.MaxItems(1) & [...#delivery_options]])
+		reputation_options?: matchN(1, [#reputation_options, list.MaxItems(1) & [...#reputation_options]])
+		sending_options?: matchN(1, [#sending_options, list.MaxItems(1) & [...#sending_options]])
+		suppression_options?: matchN(1, [#suppression_options, list.MaxItems(1) & [...#suppression_options]])
+		tracking_options?: matchN(1, [#tracking_options, list.MaxItems(1) & [...#tracking_options]])
+		vdm_options?: matchN(1, [#vdm_options, list.MaxItems(1) & [...#vdm_options]])
 		arn?:                    string
 		configuration_set_name!: string
 		id?:                     string
@@ -17,12 +23,6 @@ import "list"
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		delivery_options?: matchN(1, [#delivery_options, list.MaxItems(1) & [...#delivery_options]])
-		reputation_options?: matchN(1, [#reputation_options, list.MaxItems(1) & [...#reputation_options]])
-		sending_options?: matchN(1, [#sending_options, list.MaxItems(1) & [...#sending_options]])
-		suppression_options?: matchN(1, [#suppression_options, list.MaxItems(1) & [...#suppression_options]])
-		tracking_options?: matchN(1, [#tracking_options, list.MaxItems(1) & [...#tracking_options]])
-		vdm_options?: matchN(1, [#vdm_options, list.MaxItems(1) & [...#vdm_options]])
 	})
 
 	#delivery_options: close({

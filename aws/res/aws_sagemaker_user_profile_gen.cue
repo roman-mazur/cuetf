@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_user_profile")
 	close({
+		user_settings?: matchN(1, [#user_settings, list.MaxItems(1) & [...#user_settings]])
 		arn?:                      string
 		domain_id!:                string
 		home_efs_file_system_uid?: string
@@ -17,8 +18,7 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                         string
 		single_sign_on_user_identifier?: string
-		user_settings?: matchN(1, [#user_settings, list.MaxItems(1) & [...#user_settings]])
-		single_sign_on_user_value?: string
+		single_sign_on_user_value?:      string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		user_profile_name!: string
@@ -27,22 +27,22 @@ import "list"
 	#user_settings: close({
 		canvas_app_settings?: matchN(1, [_#defs."/$defs/user_settings/$defs/canvas_app_settings", list.MaxItems(1) & [..._#defs."/$defs/user_settings/$defs/canvas_app_settings"]])
 		code_editor_app_settings?: matchN(1, [_#defs."/$defs/user_settings/$defs/code_editor_app_settings", list.MaxItems(1) & [..._#defs."/$defs/user_settings/$defs/code_editor_app_settings"]])
-		auto_mount_home_efs?: string
-		default_landing_uri?: string
-		execution_role!:      string
 		custom_file_system_config?: matchN(1, [_#defs."/$defs/user_settings/$defs/custom_file_system_config", [..._#defs."/$defs/user_settings/$defs/custom_file_system_config"]])
-		security_groups?: [...string]
 		custom_posix_user_config?: matchN(1, [_#defs."/$defs/user_settings/$defs/custom_posix_user_config", list.MaxItems(1) & [..._#defs."/$defs/user_settings/$defs/custom_posix_user_config"]])
 		jupyter_lab_app_settings?: matchN(1, [_#defs."/$defs/user_settings/$defs/jupyter_lab_app_settings", list.MaxItems(1) & [..._#defs."/$defs/user_settings/$defs/jupyter_lab_app_settings"]])
 		jupyter_server_app_settings?: matchN(1, [_#defs."/$defs/user_settings/$defs/jupyter_server_app_settings", list.MaxItems(1) & [..._#defs."/$defs/user_settings/$defs/jupyter_server_app_settings"]])
 		kernel_gateway_app_settings?: matchN(1, [_#defs."/$defs/user_settings/$defs/kernel_gateway_app_settings", list.MaxItems(1) & [..._#defs."/$defs/user_settings/$defs/kernel_gateway_app_settings"]])
 		r_session_app_settings?: matchN(1, [_#defs."/$defs/user_settings/$defs/r_session_app_settings", list.MaxItems(1) & [..._#defs."/$defs/user_settings/$defs/r_session_app_settings"]])
 		r_studio_server_pro_app_settings?: matchN(1, [_#defs."/$defs/user_settings/$defs/r_studio_server_pro_app_settings", list.MaxItems(1) & [..._#defs."/$defs/user_settings/$defs/r_studio_server_pro_app_settings"]])
-		studio_web_portal?: string
 		sharing_settings?: matchN(1, [_#defs."/$defs/user_settings/$defs/sharing_settings", list.MaxItems(1) & [..._#defs."/$defs/user_settings/$defs/sharing_settings"]])
 		space_storage_settings?: matchN(1, [_#defs."/$defs/user_settings/$defs/space_storage_settings", list.MaxItems(1) & [..._#defs."/$defs/user_settings/$defs/space_storage_settings"]])
 		studio_web_portal_settings?: matchN(1, [_#defs."/$defs/user_settings/$defs/studio_web_portal_settings", list.MaxItems(1) & [..._#defs."/$defs/user_settings/$defs/studio_web_portal_settings"]])
 		tensor_board_app_settings?: matchN(1, [_#defs."/$defs/user_settings/$defs/tensor_board_app_settings", list.MaxItems(1) & [..._#defs."/$defs/user_settings/$defs/tensor_board_app_settings"]])
+		auto_mount_home_efs?: string
+		default_landing_uri?: string
+		execution_role!:      string
+		security_groups?: [...string]
+		studio_web_portal?: string
 	})
 
 	_#defs: "/$defs/user_settings/$defs/canvas_app_settings": close({

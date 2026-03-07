@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_accessanalyzer_archive_rule")
 	close({
+		filter!: matchN(1, [#filter, [_, ...] & [...#filter]])
 		analyzer_name!: string
 		id?:            string
 
@@ -13,7 +14,6 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:    string
 		rule_name!: string
-		filter!: matchN(1, [#filter, [_, ...] & [...#filter]])
 	})
 
 	#filter: close({

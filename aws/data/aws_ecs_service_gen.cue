@@ -56,13 +56,7 @@ package data
 			task_definition?: string
 			updated_at?:      string
 		})]
-		desired_count?: number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                  string
+		desired_count?:           number
 		enable_ecs_managed_tags?: bool
 		enable_execute_command?:  bool
 		events?: [...close({
@@ -100,9 +94,15 @@ package data
 			expression?: string
 			type?:       string
 		})]
-		platform_family?:     string
-		platform_version?:    string
-		propagate_tags?:      string
+		platform_family?:  string
+		platform_version?: string
+		propagate_tags?:   string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:              string
 		running_count?:       number
 		scheduling_strategy?: string
 		service_name!:        string

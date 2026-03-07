@@ -6,10 +6,10 @@ package res
 	close({
 		// Description of the policy.
 		description?: string
+		id?:          string
 
 		// Name of the policy.
 		name!: string
-		id?:   string
 
 		// JSON policy document to use as the content for the new policy.
 		policy!: string

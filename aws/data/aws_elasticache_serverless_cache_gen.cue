@@ -23,13 +23,7 @@ package data
 			address?: string
 			port?:    number
 		})
-		engine?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:               string
+		engine?:               string
 		full_engine_version?:  string
 		kms_key_id?:           string
 		major_engine_version?: string
@@ -38,6 +32,12 @@ package data
 			address?: string
 			port?:    number
 		})
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		security_group_ids?: [...string]
 		snapshot_retention_limit?: number
 		status?:                   string

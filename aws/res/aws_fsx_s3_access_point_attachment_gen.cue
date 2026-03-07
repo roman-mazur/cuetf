@@ -4,7 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_fsx_s3_access_point_attachment")
 	close({
-		name!: string
+		openzfs_configuration?: matchN(1, [#openzfs_configuration, [...#openzfs_configuration]])
+		s3_access_point?: matchN(1, [#s3_access_point, [...#s3_access_point]])
+		timeouts?: #timeouts
+		name!:     string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -13,10 +16,7 @@ package res
 		region?:                string
 		s3_access_point_alias?: string
 		s3_access_point_arn?:   string
-		openzfs_configuration?: matchN(1, [#openzfs_configuration, [...#openzfs_configuration]])
-		type!: string
-		s3_access_point?: matchN(1, [#s3_access_point, [...#s3_access_point]])
-		timeouts?: #timeouts
+		type!:                  string
 	})
 
 	#openzfs_configuration: close({

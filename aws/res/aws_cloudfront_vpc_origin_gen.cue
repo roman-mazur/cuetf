@@ -5,12 +5,12 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_vpc_origin")
 	close({
 		timeouts?: #timeouts
-		arn?:      string
-		etag?:     string
-		id?:       string
+		vpc_origin_endpoint_config?: matchN(1, [#vpc_origin_endpoint_config, [...#vpc_origin_endpoint_config]])
+		arn?:  string
+		etag?: string
+		id?:   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		vpc_origin_endpoint_config?: matchN(1, [#vpc_origin_endpoint_config, [...#vpc_origin_endpoint_config]])
 	})
 
 	#timeouts: close({

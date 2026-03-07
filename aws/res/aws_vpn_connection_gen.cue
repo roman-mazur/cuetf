@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpn_connection")
 	close({
+		tunnel1_log_options?: matchN(1, [#tunnel1_log_options, list.MaxItems(1) & [...#tunnel1_log_options]])
+		tunnel2_log_options?: matchN(1, [#tunnel2_log_options, list.MaxItems(1) & [...#tunnel2_log_options]])
 		arn?:                            string
 		core_network_arn?:               string
 		core_network_attachment_arn?:    string
@@ -54,8 +56,6 @@ import "list"
 		tunnel1_phase2_dh_group_numbers?: [...number]
 		tunnel1_phase2_encryption_algorithms?: [...string]
 		tunnel1_phase2_integrity_algorithms?: [...string]
-		tunnel1_log_options?: matchN(1, [#tunnel1_log_options, list.MaxItems(1) & [...#tunnel1_log_options]])
-		tunnel2_log_options?: matchN(1, [#tunnel2_log_options, list.MaxItems(1) & [...#tunnel2_log_options]])
 		tunnel1_phase2_lifetime_seconds?:         number
 		tunnel1_preshared_key?:                   string
 		tunnel1_rekey_fuzz_percentage?:           number

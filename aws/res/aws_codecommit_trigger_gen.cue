@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_codecommit_trigger")
 	close({
+		trigger!: matchN(1, [#trigger, list.MaxItems(10) & [_, ...] & [...#trigger]])
 		configuration_id?: string
 		id?:               string
 
@@ -15,7 +16,6 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:          string
 		repository_name!: string
-		trigger!: matchN(1, [#trigger, list.MaxItems(10) & [_, ...] & [...#trigger]])
 	})
 
 	#trigger: close({

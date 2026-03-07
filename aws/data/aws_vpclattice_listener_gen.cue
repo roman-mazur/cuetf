@@ -17,22 +17,22 @@ package data
 				})]
 			})]
 		})]
-		id?:              string
-		last_updated_at?: string
-		listener_id?:     string
+		id?:                  string
+		last_updated_at?:     string
+		listener_id?:         string
+		listener_identifier!: string
+		name?:                string
+		port?:                number
+		protocol?:            string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:              string
-		listener_identifier!: string
-		name?:                string
-		port?:                number
-		protocol?:            string
-		service_arn?:         string
-		service_id?:          string
-		service_identifier!:  string
+		region?:             string
+		service_arn?:        string
+		service_id?:         string
+		service_identifier!: string
 		tags?: [string]: string
 	})
 }

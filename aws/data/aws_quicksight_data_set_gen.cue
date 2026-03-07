@@ -18,12 +18,6 @@ package data
 			principals?: [...string]
 		})]
 		data_set_id!: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		data_set_usage_configuration?: [...close({
 			disable_use_as_direct_query_source?: bool
 			disable_use_as_imported_source?:     bool
@@ -133,6 +127,12 @@ package data
 				})]
 			})]
 		})]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		row_level_permission_data_set?: [...close({
 			arn?:               string
 			format_version?:    string

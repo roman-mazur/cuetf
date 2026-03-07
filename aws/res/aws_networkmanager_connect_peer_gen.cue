@@ -6,7 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_networkmanager_connect_peer")
 	close({
-		arn?: string
+		bgp_options?: matchN(1, [#bgp_options, list.MaxItems(1) & [...#bgp_options]])
+		timeouts?: #timeouts
+		arn?:      string
 		configuration?: [...close({
 			bgp_configurations?: [...close({
 				core_network_address?: string
@@ -25,11 +27,9 @@ import "list"
 		core_network_id?:       string
 		created_at?:            string
 		edge_location?:         string
-		bgp_options?: matchN(1, [#bgp_options, list.MaxItems(1) & [...#bgp_options]])
-		id?: string
+		id?:                    string
 		inside_cidr_blocks?: [...string]
 		peer_address!: string
-		timeouts?:     #timeouts
 		state?:        string
 		subnet_arn?:   string
 		tags?: [string]:     string

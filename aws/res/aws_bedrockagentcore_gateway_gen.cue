@@ -4,27 +4,27 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_gateway")
 	close({
-		authorizer_type!: string
 		authorizer_configuration?: matchN(1, [#authorizer_configuration, [...#authorizer_configuration]])
+		interceptor_configuration?: matchN(1, [#interceptor_configuration, [...#interceptor_configuration]])
+		protocol_configuration?: matchN(1, [#protocol_configuration, [...#protocol_configuration]])
+		timeouts?:        #timeouts
+		authorizer_type!: string
 		description?:     string
 		exception_level?: string
 		gateway_arn?:     string
 		gateway_id?:      string
+		gateway_url?:     string
+		kms_key_arn?:     string
+		name!:            string
+		protocol_type!:   string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		gateway_url?: string
-		kms_key_arn?: string
-		interceptor_configuration?: matchN(1, [#interceptor_configuration, [...#interceptor_configuration]])
-		protocol_configuration?: matchN(1, [#protocol_configuration, [...#protocol_configuration]])
-		name!:          string
-		protocol_type!: string
-		role_arn!:      string
-		tags?: [string]: string
-		timeouts?: #timeouts
+		region?:   string
+		role_arn!: string
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		workload_identity_details?: [...close({
 			workload_identity_arn?: string

@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ssmcontacts_rotation")
 	close({
+		recurrence?: matchN(1, [#recurrence, [...#recurrence]])
 		arn?: string
 		contact_ids!: [...string]
 		id?:   string
@@ -18,7 +19,6 @@ package res
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		time_zone_id!: string
-		recurrence?: matchN(1, [#recurrence, [...#recurrence]])
 	})
 
 	#recurrence: close({

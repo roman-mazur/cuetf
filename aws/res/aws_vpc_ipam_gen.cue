@@ -4,25 +4,25 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_ipam")
 	close({
-		arn?: string
 		operating_regions!: matchN(1, [#operating_regions, [_, ...] & [...#operating_regions]])
+		timeouts?:                                  #timeouts
+		arn?:                                       string
 		cascade?:                                   bool
 		default_resource_discovery_association_id?: string
 		default_resource_discovery_id?:             string
 		description?:                               string
+		enable_private_gua?:                        bool
+		id?:                                        string
+		metered_account?:                           string
+		private_default_scope_id?:                  string
+		public_default_scope_id?:                   string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                   string
-		enable_private_gua?:       bool
-		id?:                       string
-		timeouts?:                 #timeouts
-		metered_account?:          string
-		private_default_scope_id?: string
-		public_default_scope_id?:  string
-		scope_count?:              number
+		region?:      string
+		scope_count?: number
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		tier?: string

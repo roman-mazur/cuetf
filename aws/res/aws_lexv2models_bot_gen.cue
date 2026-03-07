@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lexv2models_bot")
 	close({
+		data_privacy?: matchN(1, [#data_privacy, [...#data_privacy]])
+		members?: matchN(1, [#members, [...#members]])
+		timeouts?:                    #timeouts
 		arn?:                         string
 		description?:                 string
 		id?:                          string
@@ -16,13 +19,10 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:   string
 		role_arn!: string
-		data_privacy?: matchN(1, [#data_privacy, [...#data_privacy]])
-		tags?: [string]: string
-		members?: matchN(1, [#members, [...#members]])
+		tags?: [string]:                string
 		tags_all?: [string]:            string
 		test_bot_alias_tags?: [string]: string
-		timeouts?: #timeouts
-		type?:     string
+		type?: string
 	})
 
 	#data_privacy: close({

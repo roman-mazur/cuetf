@@ -6,27 +6,27 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_autoscaling_policy")
 	close({
-		adjustment_type?:        string
-		arn?:                    string
-		autoscaling_group_name!: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                    string
+		predictive_scaling_configuration?: matchN(1, [#predictive_scaling_configuration, list.MaxItems(1) & [...#predictive_scaling_configuration]])
+		step_adjustment?: matchN(1, [#step_adjustment, [...#step_adjustment]])
+		target_tracking_configuration?: matchN(1, [#target_tracking_configuration, list.MaxItems(1) & [...#target_tracking_configuration]])
+		adjustment_type?:           string
+		arn?:                       string
+		autoscaling_group_name!:    string
 		cooldown?:                  number
 		enabled?:                   bool
 		estimated_instance_warmup?: number
 		id?:                        string
 		metric_aggregation_type?:   string
-		predictive_scaling_configuration?: matchN(1, [#predictive_scaling_configuration, list.MaxItems(1) & [...#predictive_scaling_configuration]])
-		min_adjustment_magnitude?: number
-		name!:                     string
-		policy_type?:              string
-		scaling_adjustment?:       number
-		step_adjustment?: matchN(1, [#step_adjustment, [...#step_adjustment]])
-		target_tracking_configuration?: matchN(1, [#target_tracking_configuration, list.MaxItems(1) & [...#target_tracking_configuration]])
+		min_adjustment_magnitude?:  number
+		name!:                      string
+		policy_type?:               string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
+		scaling_adjustment?: number
 	})
 
 	#predictive_scaling_configuration: close({
@@ -164,12 +164,12 @@ import "list"
 
 	_#defs: "/$defs/target_tracking_configuration/$defs/customized_metric_specification": close({
 		metric_dimension?: matchN(1, [_#defs."/$defs/target_tracking_configuration/$defs/customized_metric_specification/$defs/metric_dimension", [..._#defs."/$defs/target_tracking_configuration/$defs/customized_metric_specification/$defs/metric_dimension"]])
+		metrics?: matchN(1, [_#defs."/$defs/target_tracking_configuration/$defs/customized_metric_specification/$defs/metrics", [..._#defs."/$defs/target_tracking_configuration/$defs/customized_metric_specification/$defs/metrics"]])
 		metric_name?: string
 		namespace?:   string
 		period?:      number
 		statistic?:   string
 		unit?:        string
-		metrics?: matchN(1, [_#defs."/$defs/target_tracking_configuration/$defs/customized_metric_specification/$defs/metrics", [..._#defs."/$defs/target_tracking_configuration/$defs/customized_metric_specification/$defs/metrics"]])
 	})
 
 	_#defs: "/$defs/target_tracking_configuration/$defs/customized_metric_specification/$defs/metric_dimension": close({

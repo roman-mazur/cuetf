@@ -4,8 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_batch_job_queue")
 	close({
-		arn?: string
 		compute_environment_order?: matchN(1, [#compute_environment_order, [...#compute_environment_order]])
+		job_state_time_limit_action?: matchN(1, [#job_state_time_limit_action, [...#job_state_time_limit_action]])
+		timeouts?: #timeouts
+		arn?:      string
 		name!:     string
 		priority!: number
 
@@ -13,13 +15,11 @@ package res
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		job_state_time_limit_action?: matchN(1, [#job_state_time_limit_action, [...#job_state_time_limit_action]])
+		region?:                string
 		scheduling_policy_arn?: string
 		state!:                 string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#compute_environment_order: close({

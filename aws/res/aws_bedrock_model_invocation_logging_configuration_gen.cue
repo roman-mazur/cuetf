@@ -15,11 +15,11 @@ package res
 
 	#logging_config: close({
 		cloudwatch_config?: matchN(1, [_#defs."/$defs/logging_config/$defs/cloudwatch_config", [..._#defs."/$defs/logging_config/$defs/cloudwatch_config"]])
+		s3_config?: matchN(1, [_#defs."/$defs/logging_config/$defs/s3_config", [..._#defs."/$defs/logging_config/$defs/s3_config"]])
 		embedding_data_delivery_enabled?: bool
 		image_data_delivery_enabled?:     bool
 		text_data_delivery_enabled?:      bool
 		video_data_delivery_enabled?:     bool
-		s3_config?: matchN(1, [_#defs."/$defs/logging_config/$defs/s3_config", [..._#defs."/$defs/logging_config/$defs/s3_config"]])
 	})
 
 	_#defs: "/$defs/logging_config/$defs/cloudwatch_config": close({

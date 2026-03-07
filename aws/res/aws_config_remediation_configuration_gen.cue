@@ -6,11 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_config_remediation_configuration")
 	close({
-		arn?:              string
-		automatic?:        bool
-		config_rule_name!: string
-		id?:               string
 		execution_controls?: matchN(1, [#execution_controls, list.MaxItems(1) & [...#execution_controls]])
+		parameter?: matchN(1, [#parameter, list.MaxItems(25) & [...#parameter]])
+		arn?:                        string
+		automatic?:                  bool
+		config_rule_name!:           string
+		id?:                         string
 		maximum_automatic_attempts?: number
 
 		// Region where this resource will be
@@ -22,8 +23,7 @@ import "list"
 		retry_attempt_seconds?: number
 		target_id!:             string
 		target_type!:           string
-		parameter?: matchN(1, [#parameter, list.MaxItems(25) & [...#parameter]])
-		target_version?: string
+		target_version?:        string
 	})
 
 	#execution_controls: close({

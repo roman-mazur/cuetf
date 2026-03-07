@@ -4,31 +4,31 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrock_guardrail")
 	close({
-		blocked_input_messaging!:   string
-		blocked_outputs_messaging!: string
-		created_at?:                string
-		description?:               string
-		guardrail_arn?:             string
 		content_policy_config?: matchN(1, [#content_policy_config, [...#content_policy_config]])
-		guardrail_id?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		kms_key_arn?: string
-		name!:        string
 		contextual_grounding_policy_config?: matchN(1, [#contextual_grounding_policy_config, [...#contextual_grounding_policy_config]])
-		status?: string
-		tags?: [string]:     string
-		tags_all?: [string]: string
-		version?: string
 		cross_region_config?: matchN(1, [#cross_region_config, [...#cross_region_config]])
 		sensitive_information_policy_config?: matchN(1, [#sensitive_information_policy_config, [...#sensitive_information_policy_config]])
 		timeouts?: #timeouts
 		topic_policy_config?: matchN(1, [#topic_policy_config, [...#topic_policy_config]])
 		word_policy_config?: matchN(1, [#word_policy_config, [...#word_policy_config]])
+		blocked_input_messaging!:   string
+		blocked_outputs_messaging!: string
+		created_at?:                string
+		description?:               string
+		guardrail_arn?:             string
+		guardrail_id?:              string
+		kms_key_arn?:               string
+		name!:                      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		status?: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
+		version?: string
 	})
 
 	#content_policy_config: close({

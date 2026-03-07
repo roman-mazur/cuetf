@@ -6,11 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_elasticache_user")
 	close({
-		access_string!: string
-		arn?:           string
-		engine!:        string
-		id?:            string
 		authentication_mode?: matchN(1, [#authentication_mode, list.MaxItems(1) & [...#authentication_mode]])
+		timeouts?:             #timeouts
+		access_string!:        string
+		arn?:                  string
+		engine!:               string
+		id?:                   string
 		no_password_required?: bool
 		passwords?: [...string]
 
@@ -23,7 +24,6 @@ import "list"
 		tags_all?: [string]: string
 		user_id!:   string
 		user_name!: string
-		timeouts?:  #timeouts
 	})
 
 	#authentication_mode: close({

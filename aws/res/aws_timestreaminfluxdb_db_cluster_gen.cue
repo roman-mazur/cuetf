@@ -4,11 +4,15 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_timestreaminfluxdb_db_cluster")
 	close({
+		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, [...#log_delivery_configuration]])
+		timeouts?: #timeouts
+
 		// The amount of storage to allocate for your DB storage type in
 		// GiB (gibibytes).
 		// This field is forbidden for InfluxDB V3 clusters (when using an
 		// InfluxDB V3 db parameter group).
 		allocated_storage?: number
+		arn?:               string
 
 		// Name of the initial InfluxDB bucket. All InfluxDB data is
 		// stored in a bucket.
@@ -32,7 +36,6 @@ package res
 		// example, DB parameter groups
 		// can specify the limit for query concurrency.
 		db_parameter_group_identifier?: string
-		arn?:                           string
 
 		// The Timestream for InfluxDB DB storage type to read and write
 		// InfluxDB data.
@@ -59,6 +62,7 @@ package res
 		// node of the cluster
 		// fails.
 		failover_mode?: string
+		id?:            string
 
 		// The Amazon Resource Name (ARN) of the AWS Secrets Manager
 		// secret containing the
@@ -78,7 +82,6 @@ package res
 		// unique per customer
 		// and per region.
 		name!: string
-		id?:   string
 
 		// Specifies whether the networkType of the Timestream for
 		// InfluxDB cluster is
@@ -111,8 +114,6 @@ package res
 		// (when using an InfluxDB V3 db parameter group) as the AWS API
 		// rejects it.
 		password?: string
-		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, [...#log_delivery_configuration]])
-		timeouts?: #timeouts
 
 		// The port number on which InfluxDB accepts connections.
 		port?: number

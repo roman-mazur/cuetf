@@ -4,22 +4,23 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_opensearchserverless_security_config")
 	close({
+		saml_options?: matchN(1, [#saml_options, [...#saml_options]])
+
 		// Version of the configuration.
 		config_version?: string
 
 		// Description of the security configuration.
 		description?: string
+		id?:          string
 
 		// Name of the policy.
 		name!: string
-		id?:   string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		saml_options?: matchN(1, [#saml_options, [...#saml_options]])
 
 		// Type of configuration. Must be `saml`.
 		type!: string

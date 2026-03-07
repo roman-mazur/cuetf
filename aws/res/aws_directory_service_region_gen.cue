@@ -6,8 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_directory_service_region")
 	close({
+		timeouts?: #timeouts
+		vpc_settings!: matchN(1, [#vpc_settings, list.MaxItems(1) & [_, ...] & [...#vpc_settings]])
 		desired_number_of_domain_controllers?: number
-		timeouts?:                             #timeouts
 		directory_id!:                         string
 		id?:                                   string
 
@@ -17,8 +18,7 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:      string
 		region_name!: string
-		tags?: [string]: string
-		vpc_settings!: matchN(1, [#vpc_settings, list.MaxItems(1) & [_, ...] & [...#vpc_settings]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 

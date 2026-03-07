@@ -6,12 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_appsync_datasource")
 	close({
+		dynamodb_config?: matchN(1, [#dynamodb_config, list.MaxItems(1) & [...#dynamodb_config]])
+		elasticsearch_config?: matchN(1, [#elasticsearch_config, list.MaxItems(1) & [...#elasticsearch_config]])
+		event_bridge_config?: matchN(1, [#event_bridge_config, list.MaxItems(1) & [...#event_bridge_config]])
+		http_config?: matchN(1, [#http_config, list.MaxItems(1) & [...#http_config]])
+		lambda_config?: matchN(1, [#lambda_config, list.MaxItems(1) & [...#lambda_config]])
+		opensearchservice_config?: matchN(1, [#opensearchservice_config, list.MaxItems(1) & [...#opensearchservice_config]])
+		relational_database_config?: matchN(1, [#relational_database_config, list.MaxItems(1) & [...#relational_database_config]])
 		api_id!:      string
 		arn?:         string
 		description?: string
 		id?:          string
-		dynamodb_config?: matchN(1, [#dynamodb_config, list.MaxItems(1) & [...#dynamodb_config]])
-		name!: string
+		name!:        string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -20,12 +26,6 @@ import "list"
 		region?:           string
 		service_role_arn?: string
 		type!:             string
-		elasticsearch_config?: matchN(1, [#elasticsearch_config, list.MaxItems(1) & [...#elasticsearch_config]])
-		event_bridge_config?: matchN(1, [#event_bridge_config, list.MaxItems(1) & [...#event_bridge_config]])
-		http_config?: matchN(1, [#http_config, list.MaxItems(1) & [...#http_config]])
-		lambda_config?: matchN(1, [#lambda_config, list.MaxItems(1) & [...#lambda_config]])
-		opensearchservice_config?: matchN(1, [#opensearchservice_config, list.MaxItems(1) & [...#opensearchservice_config]])
-		relational_database_config?: matchN(1, [#relational_database_config, list.MaxItems(1) & [...#relational_database_config]])
 	})
 
 	#dynamodb_config: close({

@@ -6,28 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_opensearch_domain")
 	close({
-		access_policies?: string
-		advanced_options?: [string]: string
-		arn?:                string
-		dashboard_endpoint?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                            string
-		dashboard_endpoint_v2?:             string
-		domain_endpoint_v2_hosted_zone_id?: string
-		domain_id?:                         string
-		domain_name!:                       string
-		endpoint?:                          string
 		advanced_security_options?: matchN(1, [#advanced_security_options, list.MaxItems(1) & [...#advanced_security_options]])
-		endpoint_v2?: string
 		aiml_options?: matchN(1, [#aiml_options, list.MaxItems(1) & [...#aiml_options]])
-		engine_version?: string
-		id?:             string
 		auto_tune_options?: matchN(1, [#auto_tune_options, list.MaxItems(1) & [...#auto_tune_options]])
-		ip_address_type?: string
 		cluster_config?: matchN(1, [#cluster_config, list.MaxItems(1) & [...#cluster_config]])
 		cognito_options?: matchN(1, [#cognito_options, list.MaxItems(1) & [...#cognito_options]])
 		domain_endpoint_options?: matchN(1, [#domain_endpoint_options, list.MaxItems(1) & [...#domain_endpoint_options]])
@@ -35,14 +16,33 @@ import "list"
 		encrypt_at_rest?: matchN(1, [#encrypt_at_rest, list.MaxItems(1) & [...#encrypt_at_rest]])
 		identity_center_options?: matchN(1, [#identity_center_options, list.MaxItems(1) & [...#identity_center_options]])
 		log_publishing_options?: matchN(1, [#log_publishing_options, [...#log_publishing_options]])
-		tags?: [string]:     string
-		tags_all?: [string]: string
 		node_to_node_encryption?: matchN(1, [#node_to_node_encryption, list.MaxItems(1) & [...#node_to_node_encryption]])
 		off_peak_window_options?: matchN(1, [#off_peak_window_options, list.MaxItems(1) & [...#off_peak_window_options]])
 		snapshot_options?: matchN(1, [#snapshot_options, list.MaxItems(1) & [...#snapshot_options]])
 		software_update_options?: matchN(1, [#software_update_options, list.MaxItems(1) & [...#software_update_options]])
 		timeouts?: #timeouts
 		vpc_options?: matchN(1, [#vpc_options, list.MaxItems(1) & [...#vpc_options]])
+		access_policies?: string
+		advanced_options?: [string]: string
+		arn?:                               string
+		dashboard_endpoint?:                string
+		dashboard_endpoint_v2?:             string
+		domain_endpoint_v2_hosted_zone_id?: string
+		domain_id?:                         string
+		domain_name!:                       string
+		endpoint?:                          string
+		endpoint_v2?:                       string
+		engine_version?:                    string
+		id?:                                string
+		ip_address_type?:                   string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 	})
 
 	#advanced_security_options: close({
@@ -67,19 +67,19 @@ import "list"
 	})
 
 	#cluster_config: close({
+		cold_storage_options?: matchN(1, [_#defs."/$defs/cluster_config/$defs/cold_storage_options", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/cold_storage_options"]])
+		node_options?: matchN(1, [_#defs."/$defs/cluster_config/$defs/node_options", [..._#defs."/$defs/cluster_config/$defs/node_options"]])
+		zone_awareness_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/zone_awareness_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/zone_awareness_config"]])
 		dedicated_master_count?:        number
 		dedicated_master_enabled?:      bool
 		dedicated_master_type?:         string
 		instance_count?:                number
 		instance_type?:                 string
 		multi_az_with_standby_enabled?: bool
-		cold_storage_options?: matchN(1, [_#defs."/$defs/cluster_config/$defs/cold_storage_options", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/cold_storage_options"]])
-		warm_count?: number
-		node_options?: matchN(1, [_#defs."/$defs/cluster_config/$defs/node_options", [..._#defs."/$defs/cluster_config/$defs/node_options"]])
-		zone_awareness_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/zone_awareness_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/zone_awareness_config"]])
-		warm_enabled?:           bool
-		warm_type?:              string
-		zone_awareness_enabled?: bool
+		warm_count?:                    number
+		warm_enabled?:                  bool
+		warm_type?:                     string
+		zone_awareness_enabled?:        bool
 	})
 
 	#cognito_options: close({

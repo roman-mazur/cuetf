@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_chatbot_slack_channel_configuration")
 	close({
+		timeouts?:               #timeouts
 		chat_configuration_arn?: string
 		configuration_name!:     string
 		guardrail_policy_arns?: [...string]
@@ -17,7 +18,6 @@ package res
 		region?:             string
 		slack_channel_id!:   string
 		slack_channel_name?: string
-		timeouts?:           #timeouts
 		slack_team_id!:      string
 		slack_team_name?:    string
 		sns_topic_arns?: [...string]

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpclattice_listener_rule")
 	close({
+		action!: matchN(1, [#action, list.MaxItems(1) & [_, ...] & [...#action]])
+		match!: matchN(1, [#match, list.MaxItems(1) & [_, ...] & [...#match]])
+		timeouts?:            #timeouts
 		arn?:                 string
 		id?:                  string
 		listener_identifier!: string
@@ -16,14 +19,11 @@ import "list"
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		action!: matchN(1, [#action, list.MaxItems(1) & [_, ...] & [...#action]])
-		match!: matchN(1, [#match, list.MaxItems(1) & [_, ...] & [...#match]])
+		region?:             string
 		rule_id?:            string
 		service_identifier!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#action: close({

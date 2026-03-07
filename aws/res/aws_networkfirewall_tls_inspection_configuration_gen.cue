@@ -4,8 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_networkfirewall_tls_inspection_configuration")
 	close({
-		arn?:      string
 		timeouts?: #timeouts
+		tls_inspection_configuration?: matchN(1, [#tls_inspection_configuration, [...#tls_inspection_configuration]])
+		arn?: string
 		certificate_authority?: [...close({
 			certificate_arn?:    string
 			certificate_serial?: string
@@ -23,16 +24,15 @@ package res
 			key_id?: string
 			type?:   string
 		})]
+		id?:                     string
+		name!:                   string
+		number_of_associations?: number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		id?:     string
-		tls_inspection_configuration?: matchN(1, [#tls_inspection_configuration, [...#tls_inspection_configuration]])
-		name!:                   string
-		number_of_associations?: number
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		tls_inspection_configuration_id?: string

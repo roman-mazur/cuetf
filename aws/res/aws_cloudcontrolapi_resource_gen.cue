@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudcontrolapi_resource")
 	close({
+		timeouts?:      #timeouts
 		desired_state!: string
 		id?:            string
 		properties?:    string
@@ -17,7 +18,6 @@ package res
 		schema?:          string
 		type_name!:       string
 		type_version_id?: string
-		timeouts?:        #timeouts
 	})
 
 	#timeouts: close({

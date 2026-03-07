@@ -4,20 +4,20 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_m2_deployment")
 	close({
+		timeouts?:            #timeouts
 		application_id!:      string
 		application_version!: number
+		deployment_id?:       string
+		environment_id!:      string
+		force_stop?:          bool
+		id?:                  string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:         string
-		deployment_id?:  string
-		environment_id!: string
-		force_stop?:     bool
-		id?:             string
-		start!:          bool
-		timeouts?:       #timeouts
+		region?: string
+		start!:  bool
 	})
 
 	#timeouts: close({

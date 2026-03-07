@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_kendra_data_source")
 	close({
+		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
+		custom_document_enrichment_configuration?: matchN(1, [#custom_document_enrichment_configuration, list.MaxItems(1) & [...#custom_document_enrichment_configuration]])
+		timeouts?:       #timeouts
 		arn?:            string
 		created_at?:     string
 		data_source_id?: string
@@ -20,8 +23,7 @@ import "list"
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
+		region?:   string
 		role_arn?: string
 		schedule?: string
 		status?:   string
@@ -29,8 +31,6 @@ import "list"
 		tags_all?: [string]: string
 		type!:       string
 		updated_at?: string
-		custom_document_enrichment_configuration?: matchN(1, [#custom_document_enrichment_configuration, list.MaxItems(1) & [...#custom_document_enrichment_configuration]])
-		timeouts?: #timeouts
 	})
 
 	#configuration: close({
@@ -54,11 +54,11 @@ import "list"
 
 	_#defs: "/$defs/configuration/$defs/s3_configuration": close({
 		access_control_list_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/s3_configuration/$defs/access_control_list_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/s3_configuration/$defs/access_control_list_configuration"]])
+		documents_metadata_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/s3_configuration/$defs/documents_metadata_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/s3_configuration/$defs/documents_metadata_configuration"]])
 		bucket_name!: string
 		exclusion_patterns?: [...string]
 		inclusion_patterns?: [...string]
 		inclusion_prefixes?: [...string]
-		documents_metadata_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/s3_configuration/$defs/documents_metadata_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/s3_configuration/$defs/documents_metadata_configuration"]])
 	})
 
 	_#defs: "/$defs/configuration/$defs/s3_configuration/$defs/access_control_list_configuration": close({
@@ -75,14 +75,14 @@ import "list"
 
 	_#defs: "/$defs/configuration/$defs/web_crawler_configuration": close({
 		authentication_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/web_crawler_configuration/$defs/authentication_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/web_crawler_configuration/$defs/authentication_configuration"]])
+		proxy_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/web_crawler_configuration/$defs/proxy_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/web_crawler_configuration/$defs/proxy_configuration"]])
+		urls!: matchN(1, [_#defs."/$defs/configuration/$defs/web_crawler_configuration/$defs/urls", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/configuration/$defs/web_crawler_configuration/$defs/urls"]])
 		crawl_depth?:                             number
 		max_content_size_per_page_in_mega_bytes?: number
 		max_links_per_page?:                      number
 		max_urls_per_minute_crawl_rate?:          number
 		url_exclusion_patterns?: [...string]
 		url_inclusion_patterns?: [...string]
-		proxy_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/web_crawler_configuration/$defs/proxy_configuration", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/web_crawler_configuration/$defs/proxy_configuration"]])
-		urls!: matchN(1, [_#defs."/$defs/configuration/$defs/web_crawler_configuration/$defs/urls", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/configuration/$defs/web_crawler_configuration/$defs/urls"]])
 	})
 
 	_#defs: "/$defs/configuration/$defs/web_crawler_configuration/$defs/authentication_configuration": close({

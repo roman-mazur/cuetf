@@ -4,6 +4,11 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_wafv2_web_acl_rule_group_association")
 	close({
+		managed_rule_group?: matchN(1, [#managed_rule_group, [...#managed_rule_group]])
+		rule_group_reference?: matchN(1, [#rule_group_reference, [...#rule_group_reference]])
+		timeouts?: #timeouts
+		visibility_config?: matchN(1, [#visibility_config, [...#visibility_config]])
+
 		// Override action for the rule group. Valid values are 'none' and
 		// 'count'. Defaults to 'none'.
 		override_action?: string
@@ -20,27 +25,24 @@ package res
 		// Name of the rule to create in the Web ACL that references the
 		// rule group.
 		rule_name!: string
-		managed_rule_group?: matchN(1, [#managed_rule_group, [...#managed_rule_group]])
-		rule_group_reference?: matchN(1, [#rule_group_reference, [...#rule_group_reference]])
 
 		// ARN of the Web ACL to associate the Rule Group with.
 		web_acl_arn!: string
-		timeouts?:    #timeouts
-		visibility_config?: matchN(1, [#visibility_config, [...#visibility_config]])
 	})
 
 	#managed_rule_group: close({
+		managed_rule_group_configs?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs"]])
+		rule_action_override?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/rule_action_override", [..._#defs."/$defs/managed_rule_group/$defs/rule_action_override"]])
+
 		// Name of the managed rule group.
 		name!: string
 
 		// Name of the managed rule group vendor.
 		vendor_name!: string
-		managed_rule_group_configs?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs", [..._#defs."/$defs/managed_rule_group/$defs/managed_rule_group_configs"]])
 
 		// Version of the managed rule group. Omit this to use the default
 		// version.
 		version?: string
-		rule_action_override?: matchN(1, [_#defs."/$defs/managed_rule_group/$defs/rule_action_override", [..._#defs."/$defs/managed_rule_group/$defs/rule_action_override"]])
 	})
 
 	#rule_group_reference: close({

@@ -6,34 +6,34 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_grafana_workspace")
 	close({
+		network_access_control?: matchN(1, [#network_access_control, list.MaxItems(1) & [...#network_access_control]])
+		timeouts?: #timeouts
+		vpc_configuration?: matchN(1, [#vpc_configuration, list.MaxItems(1) & [...#vpc_configuration]])
 		account_access_type!: string
 		arn?:                 string
 		authentication_providers!: [...string]
 		configuration?: string
 		data_sources?: [...string]
-		description?: string
-		endpoint?:    string
+		description?:     string
+		endpoint?:        string
+		grafana_version?: string
+		id?:              string
+		kms_key_id?:      string
+		name?:            string
+		notification_destinations?: [...string]
+		organization_role_name?: string
+		organizational_units?: [...string]
+		permission_type!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:          string
-		grafana_version?: string
-		network_access_control?: matchN(1, [#network_access_control, list.MaxItems(1) & [...#network_access_control]])
-		id?:         string
-		kms_key_id?: string
-		name?:       string
-		timeouts?:   #timeouts
-		notification_destinations?: [...string]
-		organization_role_name?: string
-		organizational_units?: [...string]
-		permission_type!:           string
+		region?:                    string
 		role_arn?:                  string
 		saml_configuration_status?: string
 		stack_set_name?:            string
-		tags?: [string]: string
-		vpc_configuration?: matchN(1, [#vpc_configuration, list.MaxItems(1) & [...#vpc_configuration]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 

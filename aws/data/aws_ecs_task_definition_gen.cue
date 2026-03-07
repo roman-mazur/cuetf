@@ -15,16 +15,10 @@ package data
 		execution_role_arn?: string
 		family?:             string
 		id?:                 string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:       string
-		ipc_mode?:     string
-		memory?:       string
-		network_mode?: string
-		pid_mode?:     string
+		ipc_mode?:           string
+		memory?:             string
+		network_mode?:       string
+		pid_mode?:           string
 		placement_constraints?: [...close({
 			expression?: string
 			type?:       string
@@ -34,6 +28,12 @@ package data
 			properties?: [string]: string
 			type?: string
 		})]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		requires_compatibilities?: [...string]
 		revision?: number
 		runtime_platform?: [...close({

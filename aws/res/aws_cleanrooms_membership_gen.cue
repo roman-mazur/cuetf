@@ -4,25 +4,25 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cleanrooms_membership")
 	close({
-		arn?: string
 		default_result_configuration?: matchN(1, [#default_result_configuration, [...#default_result_configuration]])
+		payment_configuration?: matchN(1, [#payment_configuration, [...#payment_configuration]])
+		arn?:                                string
 		collaboration_arn?:                  string
 		collaboration_creator_account_id?:   string
 		collaboration_creator_display_name?: string
 		collaboration_id!:                   string
+		collaboration_name?:                 string
+		create_time?:                        string
+		id?:                                 string
+		member_abilities?: [...string]
+		query_log_status!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:             string
-		collaboration_name?: string
-		create_time?:        string
-		payment_configuration?: matchN(1, [#payment_configuration, [...#payment_configuration]])
-		id?: string
-		member_abilities?: [...string]
-		query_log_status!: string
-		status?:           string
+		region?: string
+		status?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		update_time?: string

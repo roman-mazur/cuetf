@@ -6,13 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_iot_thing_group")
 	close({
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		arn?:    string
-		id?:     string
+		properties?: matchN(1, [#properties, list.MaxItems(1) & [...#properties]])
+		arn?: string
+		id?:  string
 		metadata?: [...close({
 			creation_date?:     string
 			parent_group_name?: string
@@ -23,10 +19,15 @@ import "list"
 		})]
 		name!:              string
 		parent_group_name?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		version?: number
-		properties?: matchN(1, [#properties, list.MaxItems(1) & [...#properties]])
 	})
 
 	#properties: close({

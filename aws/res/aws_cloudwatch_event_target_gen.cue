@@ -6,33 +6,33 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudwatch_event_target")
 	close({
-		arn!:            string
-		event_bus_name?: string
-		force_destroy?:  bool
-		id?:             string
-		input?:          string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:     string
-		input_path?: string
-		role_arn?:   string
 		appsync_target?: matchN(1, [#appsync_target, list.MaxItems(1) & [...#appsync_target]])
 		batch_target?: matchN(1, [#batch_target, list.MaxItems(1) & [...#batch_target]])
 		dead_letter_config?: matchN(1, [#dead_letter_config, list.MaxItems(1) & [...#dead_letter_config]])
-		rule!: string
 		ecs_target?: matchN(1, [#ecs_target, list.MaxItems(1) & [...#ecs_target]])
 		http_target?: matchN(1, [#http_target, list.MaxItems(1) & [...#http_target]])
 		input_transformer?: matchN(1, [#input_transformer, list.MaxItems(1) & [...#input_transformer]])
 		kinesis_target?: matchN(1, [#kinesis_target, list.MaxItems(1) & [...#kinesis_target]])
 		redshift_target?: matchN(1, [#redshift_target, list.MaxItems(1) & [...#redshift_target]])
-		target_id?: string
 		retry_policy?: matchN(1, [#retry_policy, list.MaxItems(1) & [...#retry_policy]])
 		run_command_targets?: matchN(1, [#run_command_targets, list.MaxItems(5) & [...#run_command_targets]])
 		sagemaker_pipeline_target?: matchN(1, [#sagemaker_pipeline_target, list.MaxItems(1) & [...#sagemaker_pipeline_target]])
 		sqs_target?: matchN(1, [#sqs_target, list.MaxItems(1) & [...#sqs_target]])
+		arn!:            string
+		event_bus_name?: string
+		force_destroy?:  bool
+		id?:             string
+		input?:          string
+		input_path?:     string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:    string
+		role_arn?:  string
+		rule!:      string
+		target_id?: string
 	})
 
 	#appsync_target: close({
@@ -51,18 +51,18 @@ import "list"
 	})
 
 	#ecs_target: close({
+		capacity_provider_strategy?: matchN(1, [_#defs."/$defs/ecs_target/$defs/capacity_provider_strategy", [..._#defs."/$defs/ecs_target/$defs/capacity_provider_strategy"]])
+		network_configuration?: matchN(1, [_#defs."/$defs/ecs_target/$defs/network_configuration", list.MaxItems(1) & [..._#defs."/$defs/ecs_target/$defs/network_configuration"]])
+		ordered_placement_strategy?: matchN(1, [_#defs."/$defs/ecs_target/$defs/ordered_placement_strategy", list.MaxItems(5) & [..._#defs."/$defs/ecs_target/$defs/ordered_placement_strategy"]])
+		placement_constraint?: matchN(1, [_#defs."/$defs/ecs_target/$defs/placement_constraint", list.MaxItems(10) & [..._#defs."/$defs/ecs_target/$defs/placement_constraint"]])
 		enable_ecs_managed_tags?: bool
 		enable_execute_command?:  bool
 		group?:                   string
 		launch_type?:             string
 		platform_version?:        string
-		capacity_provider_strategy?: matchN(1, [_#defs."/$defs/ecs_target/$defs/capacity_provider_strategy", [..._#defs."/$defs/ecs_target/$defs/capacity_provider_strategy"]])
-		propagate_tags?: string
-		network_configuration?: matchN(1, [_#defs."/$defs/ecs_target/$defs/network_configuration", list.MaxItems(1) & [..._#defs."/$defs/ecs_target/$defs/network_configuration"]])
+		propagate_tags?:          string
 		tags?: [string]: string
-		task_count?: number
-		ordered_placement_strategy?: matchN(1, [_#defs."/$defs/ecs_target/$defs/ordered_placement_strategy", list.MaxItems(5) & [..._#defs."/$defs/ecs_target/$defs/ordered_placement_strategy"]])
-		placement_constraint?: matchN(1, [_#defs."/$defs/ecs_target/$defs/placement_constraint", list.MaxItems(10) & [..._#defs."/$defs/ecs_target/$defs/placement_constraint"]])
+		task_count?:          number
 		task_definition_arn!: string
 	})
 

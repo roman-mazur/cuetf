@@ -6,25 +6,25 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lakeformation_permissions")
 	close({
+		data_cells_filter?: matchN(1, [#data_cells_filter, list.MaxItems(1) & [...#data_cells_filter]])
+		data_location?: matchN(1, [#data_location, list.MaxItems(1) & [...#data_location]])
+		database?: matchN(1, [#database, list.MaxItems(1) & [...#database]])
+		lf_tag?: matchN(1, [#lf_tag, list.MaxItems(1) & [...#lf_tag]])
+		lf_tag_policy?: matchN(1, [#lf_tag_policy, list.MaxItems(1) & [...#lf_tag_policy]])
+		table?: matchN(1, [#table, list.MaxItems(1) & [...#table]])
+		table_with_columns?: matchN(1, [#table_with_columns, list.MaxItems(1) & [...#table_with_columns]])
 		catalog_id?:       string
 		catalog_resource?: bool
+		id?:               string
+		permissions!: [...string]
+		permissions_with_grant_option?: [...string]
+		principal!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		id?:     string
-		permissions!: [...string]
-		data_cells_filter?: matchN(1, [#data_cells_filter, list.MaxItems(1) & [...#data_cells_filter]])
-		permissions_with_grant_option?: [...string]
-		data_location?: matchN(1, [#data_location, list.MaxItems(1) & [...#data_location]])
-		principal!: string
-		database?: matchN(1, [#database, list.MaxItems(1) & [...#database]])
-		lf_tag?: matchN(1, [#lf_tag, list.MaxItems(1) & [...#lf_tag]])
-		lf_tag_policy?: matchN(1, [#lf_tag_policy, list.MaxItems(1) & [...#lf_tag_policy]])
-		table?: matchN(1, [#table, list.MaxItems(1) & [...#table]])
-		table_with_columns?: matchN(1, [#table_with_columns, list.MaxItems(1) & [...#table_with_columns]])
 	})
 
 	#data_cells_filter: close({

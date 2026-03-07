@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_flow_definition")
 	close({
+		human_loop_activation_config?: matchN(1, [#human_loop_activation_config, list.MaxItems(1) & [...#human_loop_activation_config]])
+		human_loop_config!: matchN(1, [#human_loop_config, list.MaxItems(1) & [_, ...] & [...#human_loop_config]])
+		human_loop_request_source?: matchN(1, [#human_loop_request_source, list.MaxItems(1) & [...#human_loop_request_source]])
+		output_config!: matchN(1, [#output_config, list.MaxItems(1) & [_, ...] & [...#output_config]])
 		arn?:                  string
 		flow_definition_name!: string
 		id?:                   string
@@ -16,12 +20,8 @@ import "list"
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:   string
 		role_arn!: string
-		tags?: [string]: string
-		human_loop_activation_config?: matchN(1, [#human_loop_activation_config, list.MaxItems(1) & [...#human_loop_activation_config]])
+		tags?: [string]:     string
 		tags_all?: [string]: string
-		human_loop_config!: matchN(1, [#human_loop_config, list.MaxItems(1) & [_, ...] & [...#human_loop_config]])
-		human_loop_request_source?: matchN(1, [#human_loop_request_source, list.MaxItems(1) & [...#human_loop_request_source]])
-		output_config!: matchN(1, [#output_config, list.MaxItems(1) & [_, ...] & [...#output_config]])
 	})
 
 	#human_loop_activation_config: close({

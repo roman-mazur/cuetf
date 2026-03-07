@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_workforce")
 	close({
+		cognito_config?: matchN(1, [#cognito_config, list.MaxItems(1) & [...#cognito_config]])
+		oidc_config?: matchN(1, [#oidc_config, list.MaxItems(1) & [...#oidc_config]])
+		source_ip_config?: matchN(1, [#source_ip_config, list.MaxItems(1) & [...#source_ip_config]])
+		workforce_vpc_config?: matchN(1, [#workforce_vpc_config, list.MaxItems(1) & [...#workforce_vpc_config]])
 		arn?: string
 		id?:  string
 
@@ -16,10 +20,6 @@ import "list"
 		region?:         string
 		subdomain?:      string
 		workforce_name!: string
-		cognito_config?: matchN(1, [#cognito_config, list.MaxItems(1) & [...#cognito_config]])
-		oidc_config?: matchN(1, [#oidc_config, list.MaxItems(1) & [...#oidc_config]])
-		source_ip_config?: matchN(1, [#source_ip_config, list.MaxItems(1) & [...#source_ip_config]])
-		workforce_vpc_config?: matchN(1, [#workforce_vpc_config, list.MaxItems(1) & [...#workforce_vpc_config]])
 	})
 
 	#cognito_config: close({

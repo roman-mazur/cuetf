@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_connection_group")
 	close({
+		timeouts?:           #timeouts
 		anycast_ip_list_id?: string
 		arn?:                string
 		enabled?:            bool
@@ -15,8 +16,7 @@ package res
 		name!:               string
 		routing_endpoint?:   string
 		status?:             string
-		tags?: [string]: string
-		timeouts?: #timeouts
+		tags?: [string]:     string
 		tags_all?: [string]: string
 		wait_for_deployment?: bool
 	})

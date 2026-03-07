@@ -7,12 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_cloudwatch_log_data_protection_policy_document")
 	close({
 		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
+		statement!: matchN(1, [#statement, list.MaxItems(2) & [_, _, ...] & [...#statement]])
 		description?: string
 		id?:          string
 		json?:        string
 		name!:        string
 		version?:     string
-		statement!: matchN(1, [#statement, list.MaxItems(2) & [_, _, ...] & [...#statement]])
 	})
 
 	#configuration: close({

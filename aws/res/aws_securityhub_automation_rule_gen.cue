@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_securityhub_automation_rule")
 	close({
+		actions?: matchN(1, [#actions, [...#actions]])
+		criteria?: matchN(1, [#criteria, [...#criteria]])
 		arn?:         string
 		description!: string
 		id?:          string
@@ -13,10 +15,8 @@ package res
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:    string
-		rule_name!: string
-		actions?: matchN(1, [#actions, [...#actions]])
-		criteria?: matchN(1, [#criteria, [...#criteria]])
+		region?:      string
+		rule_name!:   string
 		rule_order!:  number
 		rule_status?: string
 		tags?: [string]:     string
@@ -70,15 +70,15 @@ package res
 	})
 
 	_#defs: "/$defs/actions/$defs/finding_fields_update": close({
+		note?: matchN(1, [_#defs."/$defs/actions/$defs/finding_fields_update/$defs/note", [..._#defs."/$defs/actions/$defs/finding_fields_update/$defs/note"]])
+		related_findings?: matchN(1, [_#defs."/$defs/actions/$defs/finding_fields_update/$defs/related_findings", [..._#defs."/$defs/actions/$defs/finding_fields_update/$defs/related_findings"]])
+		severity?: matchN(1, [_#defs."/$defs/actions/$defs/finding_fields_update/$defs/severity", [..._#defs."/$defs/actions/$defs/finding_fields_update/$defs/severity"]])
+		workflow?: matchN(1, [_#defs."/$defs/actions/$defs/finding_fields_update/$defs/workflow", [..._#defs."/$defs/actions/$defs/finding_fields_update/$defs/workflow"]])
 		confidence?:  number
 		criticality?: number
 		types?: [...string]
 		user_defined_fields?: [string]: string
 		verification_state?: string
-		note?: matchN(1, [_#defs."/$defs/actions/$defs/finding_fields_update/$defs/note", [..._#defs."/$defs/actions/$defs/finding_fields_update/$defs/note"]])
-		related_findings?: matchN(1, [_#defs."/$defs/actions/$defs/finding_fields_update/$defs/related_findings", [..._#defs."/$defs/actions/$defs/finding_fields_update/$defs/related_findings"]])
-		severity?: matchN(1, [_#defs."/$defs/actions/$defs/finding_fields_update/$defs/severity", [..._#defs."/$defs/actions/$defs/finding_fields_update/$defs/severity"]])
-		workflow?: matchN(1, [_#defs."/$defs/actions/$defs/finding_fields_update/$defs/workflow", [..._#defs."/$defs/actions/$defs/finding_fields_update/$defs/workflow"]])
 	})
 
 	_#defs: "/$defs/actions/$defs/finding_fields_update/$defs/note": close({

@@ -4,26 +4,26 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_appfabric_app_authorization")
 	close({
+		credential?: matchN(1, [#credential, [...#credential]])
+		tenant?: matchN(1, [#tenant, [...#tenant]])
+		timeouts?:       #timeouts
 		app!:            string
 		app_bundle_arn!: string
 		arn?:            string
 		auth_type!:      string
 		auth_url?:       string
+		created_at?:     string
+		id?:             string
+		persona?:        string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:     string
-		created_at?: string
-		credential?: matchN(1, [#credential, [...#credential]])
-		tenant?: matchN(1, [#tenant, [...#tenant]])
-		id?:      string
-		persona?: string
+		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		updated_at?: string
-		timeouts?:   #timeouts
 	})
 
 	#credential: close({

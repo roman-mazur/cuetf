@@ -6,21 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_s3_bucket_website_configuration")
 	close({
-		bucket!: string
 		error_document?: matchN(1, [#error_document, list.MaxItems(1) & [...#error_document]])
-		id?: string
+		index_document?: matchN(1, [#index_document, list.MaxItems(1) & [...#index_document]])
+		redirect_all_requests_to?: matchN(1, [#redirect_all_requests_to, list.MaxItems(1) & [...#redirect_all_requests_to]])
+		routing_rule?: matchN(1, [#routing_rule, [...#routing_rule]])
+		bucket!: string
+		id?:     string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:         string
-		routing_rules?:  string
-		website_domain?: string
-		index_document?: matchN(1, [#index_document, list.MaxItems(1) & [...#index_document]])
+		region?:           string
+		routing_rules?:    string
+		website_domain?:   string
 		website_endpoint?: string
-		redirect_all_requests_to?: matchN(1, [#redirect_all_requests_to, list.MaxItems(1) & [...#redirect_all_requests_to]])
-		routing_rule?: matchN(1, [#routing_rule, [...#routing_rule]])
 	})
 
 	#error_document: close({

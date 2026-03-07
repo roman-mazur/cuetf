@@ -5,12 +5,12 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_globalaccelerator_custom_routing_endpoint_group")
 	close({
 		destination_configuration!: matchN(1, [#destination_configuration, [_, ...] & [...#destination_configuration]])
+		endpoint_configuration?: matchN(1, [#endpoint_configuration, [...#endpoint_configuration]])
+		timeouts?:              #timeouts
 		arn?:                   string
 		endpoint_group_region?: string
 		id?:                    string
 		listener_arn!:          string
-		endpoint_configuration?: matchN(1, [#endpoint_configuration, [...#endpoint_configuration]])
-		timeouts?: #timeouts
 	})
 
 	#destination_configuration: close({
