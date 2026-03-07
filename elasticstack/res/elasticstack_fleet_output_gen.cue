@@ -14,6 +14,33 @@ package res
 		// to the output section of each agent policy.
 		config_yaml?: string
 
+		// Make this output the default for agent integrations.
+		default_integrations?: bool
+
+		// Make this output the default for agent monitoring.
+		default_monitoring?: bool
+
+		// A list of hosts.
+		hosts!: [...string]
+
+		// The ID of this resource.
+		id?: string
+
+		// The name of the output.
+		name!: string
+
+		// Unique identifier of the output.
+		output_id?: string
+
+		// The Kibana space IDs where this output is available. When set,
+		// the output will be created and managed within the specified
+		// space. Note: The order of space IDs does not matter as this is
+		// a set.
+		space_ids?: [...string]
+
+		// The output type.
+		type!: string
+
 		// Kafka-specific configuration.
 		kafka?: close({
 			// Authentication type for Kafka output.
@@ -33,6 +60,30 @@ package res
 
 			// Connection type for Kafka output.
 			connection_type?: string
+
+			// Key field for Kafka messages.
+			key?: string
+
+			// Partition strategy for Kafka output.
+			partition?: string
+
+			// Password for Kafka authentication.
+			password?: string
+
+			// Number of acknowledgments required for Kafka output.
+			required_acks?: number
+
+			// Timeout for Kafka output.
+			timeout?: number
+
+			// Kafka topic.
+			topic?: string
+
+			// Username for Kafka authentication.
+			username?: string
+
+			// Kafka version.
+			version?: string
 
 			// Hash configuration for Kafka partition.
 			hash?: close({
@@ -58,32 +109,11 @@ package res
 				value!: string
 			})]])
 
-			// Key field for Kafka messages.
-			key?: string
-
-			// Partition strategy for Kafka output.
-			partition?: string
-
 			// Random configuration for Kafka partition.
 			random?: close({
 				// Number of events to group.
 				group_events?: number
 			})
-
-			// Password for Kafka authentication.
-			password?: string
-
-			// Number of acknowledgments required for Kafka output.
-			required_acks?: number
-
-			// Timeout for Kafka output.
-			timeout?: number
-
-			// Kafka topic.
-			topic?: string
-
-			// Username for Kafka authentication.
-			username?: string
 
 			// Round robin configuration for Kafka partition.
 			round_robin?: close({
@@ -96,22 +126,7 @@ package res
 				// SASL mechanism.
 				mechanism?: string
 			})
-
-			// Kafka version.
-			version?: string
 		})
-
-		// Make this output the default for agent integrations.
-		default_integrations?: bool
-
-		// Make this output the default for agent monitoring.
-		default_monitoring?: bool
-
-		// A list of hosts.
-		hosts!: [...string]
-
-		// The ID of this resource.
-		id?: string
 
 		// SSL configuration.
 		ssl?: close({
@@ -124,20 +139,5 @@ package res
 			// Client SSL certificate key.
 			key!: string
 		})
-
-		// The name of the output.
-		name!: string
-
-		// Unique identifier of the output.
-		output_id?: string
-
-		// The Kibana space IDs where this output is available. When set,
-		// the output will be created and managed within the specified
-		// space. Note: The order of space IDs does not matter as this is
-		// a set.
-		space_ids?: [...string]
-
-		// The output type.
-		type!: string
 	})
 }

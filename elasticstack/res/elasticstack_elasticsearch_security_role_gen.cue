@@ -4,6 +4,11 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_security_role")
 	close({
+		applications?: matchN(1, [#applications, [...#applications]])
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+		indices?: matchN(1, [#indices, [...#indices]])
+		remote_indices?: matchN(1, [#remote_indices, [...#remote_indices]])
+
 		// A list of cluster privileges. These privileges define the
 		// cluster level actions that users with this role are able to
 		// execute.
@@ -17,13 +22,9 @@ package res
 
 		// Internal identifier of the resource
 		id?: string
-		applications?: matchN(1, [#applications, [...#applications]])
 
 		// Optional meta-data.
 		metadata?: string
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
-		indices?: matchN(1, [#indices, [...#indices]])
-		remote_indices?: matchN(1, [#remote_indices, [...#remote_indices]])
 
 		// The name of the role.
 		name!: string
@@ -93,6 +94,8 @@ package res
 	})
 
 	#indices: close({
+		field_security?: _#defs."/$defs/indices/$defs/field_security"
+
 		// Include matching restricted indices in names parameter. Usage
 		// is strongly discouraged as it can grant unrestricted
 		// operations on critical data, make the entire system unstable
@@ -106,7 +109,6 @@ package res
 		// The index level privileges that the owners of the role have on
 		// the specified indices.
 		privileges!: [...string]
-		field_security?: _#defs."/$defs/indices/$defs/field_security"
 
 		// A search query that defines the documents the owners of the
 		// role have read access to.
@@ -114,6 +116,8 @@ package res
 	})
 
 	#remote_indices: close({
+		field_security?: _#defs."/$defs/remote_indices/$defs/field_security"
+
 		// A list of cluster aliases to which the permissions in this
 		// entry apply.
 		clusters!: [...string]
@@ -125,7 +129,6 @@ package res
 		// The index level privileges that the owners of the role have on
 		// the specified indices.
 		privileges!: [...string]
-		field_security?: _#defs."/$defs/remote_indices/$defs/field_security"
 
 		// A search query that defines the documents the owners of the
 		// role have read access to.

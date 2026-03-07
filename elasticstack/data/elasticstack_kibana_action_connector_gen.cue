@@ -13,13 +13,13 @@ package data
 
 		// The ID of the connector type, e.g. `.index`.
 		connector_type_id?: string
+		id?:                string
 
 		// Indicates whether the connector type is deprecated.
 		is_deprecated?: bool
 
 		// Indicates whether secrets are missing for the connector.
 		is_missing_secrets?: bool
-		id?:                 string
 
 		// Indicates whether it is a preconfigured connector.
 		is_preconfigured?: bool

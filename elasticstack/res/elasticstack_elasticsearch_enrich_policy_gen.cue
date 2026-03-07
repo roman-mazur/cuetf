@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_enrich_policy")
 	close({
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+
 		// Fields to add to matching incoming documents. These fields must
 		// be present in the source indices.
 		enrich_fields!: [...string]
@@ -24,7 +26,6 @@ package res
 
 		// Name of the enrich policy to manage.
 		name!: string
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
 		// The type of enrich policy, can be one of geo_match, match,
 		// range.

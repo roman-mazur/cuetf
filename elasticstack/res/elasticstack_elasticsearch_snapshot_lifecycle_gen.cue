@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_snapshot_lifecycle")
 	close({
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+
 		// Determines how wildcard patterns in the `indices` parameter
 		// match data streams and indices. Supports comma-separated
 		// values, such as `closed,hidden`.
@@ -43,7 +45,6 @@ import "list"
 		// Minimum number of snapshots to retain, even if the snapshots
 		// have expired.
 		min_count?: number
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
 
 		// ID for the snapshot lifecycle policy you want to create or
 		// update.

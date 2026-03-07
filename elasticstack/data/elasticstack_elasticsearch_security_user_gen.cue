@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_security_user")
 	close({
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+
 		// The email of the user.
 		email?: string
 
@@ -25,7 +27,6 @@ import "list"
 		// A set of roles the user has. The roles determine the user’s
 		// access permissions. Default is [].
 		roles?: [...string]
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
 
 		// An identifier for the user
 		username!: string

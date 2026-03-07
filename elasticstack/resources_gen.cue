@@ -14,6 +14,7 @@ import "github.com/roman-mazur/cuetf/elasticstack/res"
 	_#res: "\(#elasticstackPrefix)_elasticsearch_index": res.#elasticstack_elasticsearch_index
 	_#res: "\(#elasticstackPrefix)_elasticsearch_index_lifecycle": res.#elasticstack_elasticsearch_index_lifecycle
 	_#res: "\(#elasticstackPrefix)_elasticsearch_index_template": res.#elasticstack_elasticsearch_index_template
+	_#res: "\(#elasticstackPrefix)_elasticsearch_index_template_ilm_attachment": res.#elasticstack_elasticsearch_index_template_ilm_attachment
 	_#res: "\(#elasticstackPrefix)_elasticsearch_ingest_pipeline": res.#elasticstack_elasticsearch_ingest_pipeline
 	_#res: "\(#elasticstackPrefix)_elasticsearch_logstash_pipeline": res.#elasticstack_elasticsearch_logstash_pipeline
 	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_anomaly_detection_job": res.#elasticstack_elasticsearch_ml_anomaly_detection_job
@@ -43,6 +44,7 @@ import "github.com/roman-mazur/cuetf/elasticstack/res"
 	_#res: "\(#elasticstackPrefix)_kibana_install_prebuilt_rules": res.#elasticstack_kibana_install_prebuilt_rules
 	_#res: "\(#elasticstackPrefix)_kibana_maintenance_window": res.#elasticstack_kibana_maintenance_window
 	_#res: "\(#elasticstackPrefix)_kibana_security_detection_rule": res.#elasticstack_kibana_security_detection_rule
+	_#res: "\(#elasticstackPrefix)_kibana_security_enable_rule": res.#elasticstack_kibana_security_enable_rule
 	_#res: "\(#elasticstackPrefix)_kibana_security_exception_item": res.#elasticstack_kibana_security_exception_item
 	_#res: "\(#elasticstackPrefix)_kibana_security_exception_list": res.#elasticstack_kibana_security_exception_list
 	_#res: "\(#elasticstackPrefix)_kibana_security_list_data_streams": res.#elasticstack_kibana_security_list_data_streams

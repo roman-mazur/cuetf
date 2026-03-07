@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_component_template")
 	close({
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
+
 		// Internal identifier of the resource
 		id?: string
 
@@ -17,8 +20,6 @@ import "list"
 
 		// Version number used to manage component templates externally.
 		version?: number
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
-		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
 	})
 
 	#elasticsearch_connection: close({

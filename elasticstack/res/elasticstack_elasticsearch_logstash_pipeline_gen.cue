@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_logstash_pipeline")
 	close({
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+
 		// Description of the pipeline.
 		description?: string
 
@@ -51,7 +53,6 @@ import "list"
 		// The number of parallel workers used to run the filter and
 		// output stages of the pipeline.
 		pipeline_workers?: number
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
 
 		// The maximum number of ACKed events before forcing a checkpoint
 		// when persistent queues are enabled.

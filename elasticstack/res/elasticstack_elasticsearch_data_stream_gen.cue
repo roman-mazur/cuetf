@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_data_stream")
 	close({
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+
 		// Current generation for the data stream.
 		generation?: number
 
@@ -38,7 +40,6 @@ import "list"
 		// cross-cluster replication and the local cluster can not write
 		// into this data stream or change its mappings.
 		replicated?: bool
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
 
 		// Health status of the data stream.
 		status?: string

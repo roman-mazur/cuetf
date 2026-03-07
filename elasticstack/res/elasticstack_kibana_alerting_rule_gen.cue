@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_alerting_rule")
 	close({
+		actions?: matchN(1, [#actions, [...#actions]])
+
 		// A number that indicates how many consecutive runs need to meet
 		// the rule conditions for an alert to occur.
 		alert_delay?: number
@@ -48,7 +50,6 @@ package res
 
 		// The rule parameters, which differ for each rule type.
 		params!: string
-		actions?: matchN(1, [#actions, [...#actions]])
 
 		// The identifier for the rule. Until Kibana version 8.17.0 this
 		// should be a UUID v1 or v4, for later versions any format can
@@ -84,6 +85,9 @@ package res
 	})
 
 	#actions: close({
+		alerts_filter?: _#defs."/$defs/actions/$defs/alerts_filter"
+		frequency?:     _#defs."/$defs/actions/$defs/frequency"
+
 		// The group name, which affects when the action runs (for
 		// example, when the threshold is met or when the alert is
 		// recovered). Each rule type has a list of valid action group
@@ -91,12 +95,10 @@ package res
 		group?: string
 
 		// The identifier for the connector saved object.
-		id!:            string
-		alerts_filter?: _#defs."/$defs/actions/$defs/alerts_filter"
+		id!: string
 
 		// The parameters for the action, which are sent to the connector.
-		params!:    string
-		frequency?: _#defs."/$defs/actions/$defs/frequency"
+		params!: string
 	})
 
 	_#defs: "/$defs/actions/$defs/alerts_filter": close({

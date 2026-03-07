@@ -6,17 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_security_role")
 	close({
+		elasticsearch!: matchN(1, [#elasticsearch, list.MaxItems(1) & [_, ...] & [...#elasticsearch]])
+		kibana?: matchN(1, [#kibana, [...#kibana]])
+
 		// Optional description for the role
 		description?: string
+		id?:          string
 
 		// Optional meta-data.
 		metadata?: string
-		id?:       string
 
 		// The name for the role.
 		name!: string
-		elasticsearch!: matchN(1, [#elasticsearch, list.MaxItems(1) & [_, ...] & [...#elasticsearch]])
-		kibana?: matchN(1, [#kibana, [...#kibana]])
 	})
 
 	#elasticsearch: close({
@@ -44,10 +45,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/elasticsearch/$defs/indices": close({
+		field_security?: matchN(1, [_#defs."/$defs/elasticsearch/$defs/indices/$defs/field_security", list.MaxItems(1) & [..._#defs."/$defs/elasticsearch/$defs/indices/$defs/field_security"]])
+
 		// A list of indices (or index name patterns) to which the
 		// permissions in this entry apply.
 		names!: [...string]
-		field_security?: matchN(1, [_#defs."/$defs/elasticsearch/$defs/indices/$defs/field_security", list.MaxItems(1) & [..._#defs."/$defs/elasticsearch/$defs/indices/$defs/field_security"]])
 
 		// The index level privileges that the owners of the role have on
 		// the specified indices.
@@ -67,6 +69,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/elasticsearch/$defs/remote_indices": close({
+		field_security?: matchN(1, [_#defs."/$defs/elasticsearch/$defs/remote_indices/$defs/field_security", list.MaxItems(1) & [..._#defs."/$defs/elasticsearch/$defs/remote_indices/$defs/field_security"]])
+
 		// A list of cluster aliases to which the permissions in this
 		// entry apply.
 		clusters!: [...string]
@@ -78,7 +82,6 @@ import "list"
 		// The index level privileges that the owners of the role have on
 		// the specified indices.
 		privileges!: [...string]
-		field_security?: matchN(1, [_#defs."/$defs/elasticsearch/$defs/remote_indices/$defs/field_security", list.MaxItems(1) & [..._#defs."/$defs/elasticsearch/$defs/remote_indices/$defs/field_security"]])
 
 		// A search query that defines the documents the owners of the
 		// role have read access to.

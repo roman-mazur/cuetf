@@ -33,17 +33,6 @@ package res
 		// start and end with alphanumeric characters.
 		datafeed_id!: string
 
-		// The interval at which scheduled queries are made while the
-		// datafeed runs in real time. The default value is either the
-		// bucket span for short bucket spans, or, for longer bucket
-		// spans, a sensible fraction of the bucket span. When
-		// `frequency` is shorter than the bucket span, interim results
-		// for the last (partial) bucket are written then eventually
-		// overwritten by the full bucket results. If the datafeed uses
-		// aggregations, this value must be divisible by the interval of
-		// the date histogram aggregation.
-		frequency?: string
-
 		// Specifies whether the datafeed checks for missing data and the
 		// size of the window. The datafeed can optionally search over
 		// indices that have already been read in an effort to determine
@@ -63,6 +52,17 @@ package res
 			// data.
 			enabled!: bool
 		})
+
+		// The interval at which scheduled queries are made while the
+		// datafeed runs in real time. The default value is either the
+		// bucket span for short bucket spans, or, for longer bucket
+		// spans, a sensible fraction of the bucket span. When
+		// `frequency` is shorter than the bucket span, interim results
+		// for the last (partial) bucket are written then eventually
+		// overwritten by the full bucket results. If the datafeed uses
+		// aggregations, this value must be divisible by the interval of
+		// the date histogram aggregation.
+		frequency?: string
 
 		// Internal identifier of the resource
 		id?: string
@@ -101,7 +101,6 @@ package res
 		// If not set, a datafeed with no end time that sees no data
 		// remains started until it is explicitly stopped.
 		max_empty_searches?: number
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
 		// The Elasticsearch query domain-specific language (DSL). This
 		// value corresponds to the query object in an Elasticsearch
@@ -135,6 +134,7 @@ package res
 		// the value of `index.max_result_window`, which is 10,000 by
 		// default.
 		scroll_size?: number
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 	})
 
 	#elasticsearch_connection: close({

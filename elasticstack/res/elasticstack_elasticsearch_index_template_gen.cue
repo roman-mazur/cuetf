@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_index_template")
 	close({
+		data_stream?: matchN(1, [#data_stream, list.MaxItems(1) & [...#data_stream]])
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+		template?: matchN(1, [#template, list.MaxItems(1) & [...#template]])
+
 		// An ordered list of component template names.
 		composed_of?: [...string]
 
@@ -24,9 +28,6 @@ import "list"
 
 		// Name of the index template to create.
 		name!: string
-		data_stream?: matchN(1, [#data_stream, list.MaxItems(1) & [...#data_stream]])
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
-		template?: matchN(1, [#template, list.MaxItems(1) & [...#template]])
 
 		// Priority to determine index template precedence when a new data
 		// stream or index is created.

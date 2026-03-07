@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_security_user")
 	close({
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+
 		// The email of the user.
 		email?: string
 
@@ -37,7 +39,6 @@ package res
 		// `vault_kv_secret_v2` to prevent secrets from being stored in
 		// the Terraform state. Must be used with `password_wo_version`.
 		password_wo?: string
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
 		// Version identifier for the write-only password. This field is
 		// used to trigger updates when the password changes. Required

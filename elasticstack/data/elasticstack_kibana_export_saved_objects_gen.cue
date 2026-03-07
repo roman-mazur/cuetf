@@ -7,6 +7,20 @@ package data
 		// Do not add export details. Defaults to true.
 		exclude_export_details?: bool
 
+		// The exported objects in NDJSON format.
+		exported_objects?: string
+
+		// Generated ID for the export.
+		id?: string
+
+		// Include references to other saved objects recursively. Defaults
+		// to true.
+		include_references_deep?: bool
+
+		// An identifier for the space. If space_id is not provided, the
+		// default space is used.
+		space_id?: string
+
 		// List of objects to export.
 		objects!: matchN(1, [close({
 			// The ID of the saved object.
@@ -21,19 +35,5 @@ package data
 			// The type of the saved object.
 			type!: string
 		})]])
-
-		// The exported objects in NDJSON format.
-		exported_objects?: string
-
-		// Generated ID for the export.
-		id?: string
-
-		// Include references to other saved objects recursively. Defaults
-		// to true.
-		include_references_deep?: bool
-
-		// An identifier for the space. If space_id is not provided, the
-		// default space is used.
-		space_id?: string
 	})
 }

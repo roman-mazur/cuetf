@@ -448,7 +448,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						max_items: 1
 					}
 				}
-				description:      "Updates cluster-wide settings. If the Elasticsearch security features are enabled, you must have the manage cluster privilege to use this API. See the [cluster settings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) for more details."
+				description: """
+					Updates cluster-wide settings. If the Elasticsearch security features are enabled, you must have the manage cluster privilege to use this API. See the [cluster settings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -589,14 +592,20 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						block: {
 							attributes: {
 								mappings: {
-									type:             "string"
-									description:      "Mapping for fields in the index. Should be specified as a JSON object of field mappings. See the documentation (https://www.elastic.co/guide/en/elasticsearch/reference/current/explicit-mapping.html) for more details"
+									type: "string"
+									description: """
+												Mapping for fields in the index. Should be specified as a JSON object of field mappings. See the documentation (https://www.elastic.co/guide/en/elasticsearch/reference/current/explicit-mapping.html) for more details
+
+												"""
 									description_kind: "markdown"
 									optional:         true
 								}
 								settings: {
-									type:             "string"
-									description:      "Configuration options for the index. See the [index modules settings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings) for more details."
+									type: "string"
+									description: """
+												Configuration options for the index. See the [index modules settings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings) for more details.
+
+												"""
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -630,8 +639,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											optional:         true
 										}
 										name: {
-											type:             "string"
-											description:      "The alias name. Index alias names support date math. See the [date math index names documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/date-math-index-names.html) for more details."
+											type: "string"
+											description: """
+															The alias name. Index alias names support date math. See the [date math index names documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/date-math-index-names.html) for more details.
+
+															"""
 											description_kind: "markdown"
 											required:         true
 										}
@@ -659,7 +671,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						max_items: 1
 					}
 				}
-				description:      "Creates or updates a component template. Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases. See the [component template documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html) for more details."
+				description: """
+					Creates or updates a component template. Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases. See the [component template documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -877,7 +892,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							nesting_mode: "list"
 						}
-						description:      "Downsampling configuration objects, each defining an after interval representing when the backing index is meant to be downsampled and a fixed_interval representing the downsampling interval."
+						description: """
+									Downsampling configuration objects, each defining an after interval representing when the backing index is meant to be downsampled and a fixed_interval representing the downsampling interval.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 					}
@@ -1307,8 +1325,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 					codec: {
-						type:             "string"
-						description:      "The `default` value compresses stored data with LZ4 compression, but this can be set to `best_compression` which uses DEFLATE for a higher compression ratio. This can be set only on creation."
+						type: "string"
+						description: """
+									The `default` value compresses stored data with LZ4 compression, but this can be set to `best_compression` which uses DEFLATE for a higher compression ratio. This can be set only on creation.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 					}
@@ -1319,15 +1340,21 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 					deletion_protection: {
-						type:             "bool"
-						description:      "Whether to allow Terraform to destroy the index. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply command that deletes the instance will fail."
+						type: "bool"
+						description: """
+									Whether to allow Terraform to destroy the index. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply command that deletes the instance will fail.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 						computed:         true
 					}
 					final_pipeline: {
-						type:             "string"
-						description:      "Final ingest pipeline for the index. Indexing requests will fail if the final pipeline is set and the pipeline does not exist. The final pipeline always runs after the request pipeline (if specified) and the default pipeline (if it exists). The special pipeline name _none indicates no ingest pipeline will run."
+						type: "string"
+						description: """
+									Final ingest pipeline for the index. Indexing requests will fail if the final pipeline is set and the pipeline does not exist. The final pipeline always runs after the request pipeline (if specified) and the default pipeline (if it exists). The special pipeline name `_none` indicates no ingest pipeline will run.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 					}
@@ -1356,8 +1383,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 					indexing_slowlog_source: {
-						type:             "string"
-						description:      "Set the number of characters of the `_source` to include in the slowlog lines, `false` or `0` will skip logging the source entirely and setting it to `true` will log the entire source regardless of size. The original `_source` is reformatted by default to make sure that it fits on a single log line."
+						type: "string"
+						description: """
+									Set the number of characters of the `_source` to include in the slowlog lines. `false` or `0` skips logging the source entirely; `true` logs the entire source regardless of size. The original `_source` is reformatted by default to make sure that it fits on a single log line.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 					}
@@ -1407,19 +1437,24 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						type: "string"
 						description: """
 									Mapping for fields in the index.
-									\t\t\tIf specified, this mapping can include: field names, [field data types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html), [mapping parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html).
-									\t\t\t**NOTE:**
-									\t\t\t- Changing datatypes in the existing _mappings_ will force index to be re-created.
-									\t\t\t- Removing field will be ignored by default same as elasticsearch. You need to recreate the index to remove field completely.
-									\t\t\t
+
+									If specified, this mapping can include: field names, [field data types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html), [mapping parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html).
+
+									**NOTE:**
+									- Changing datatypes in the existing _mappings_ will force index to be re-created.
+									- Removing a field will be ignored by default (same as Elasticsearch). You need to recreate the index to remove the field completely.
+
 									"""
 						description_kind: "plain"
 						optional:         true
 						computed:         true
 					}
 					master_timeout: {
-						type:             "string"
-						description:      "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error. Defaults to `30s`. This value is ignored when running against Serverless projects."
+						type: "string"
+						description: """
+									Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error. Defaults to `30s`. This value is ignored when running against Serverless projects.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -1605,8 +1640,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 					shard_check_on_startup: {
-						type:             "string"
-						description:      "Whether or not shards should be checked for corruption before opening. When corruption is detected, it will prevent the shard from being opened. Accepts `false`, `true`, `checksum`."
+						type: "string"
+						description: """
+									Whether or not shards should be checked for corruption before opening. When corruption is detected, it will prevent the shard from being opened. Accepts `false`, `true`, `checksum`.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 					}
@@ -1636,8 +1674,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 					wait_for_active_shards: {
-						type:             "string"
-						description:      "The number of shard copies that must be active before proceeding with the operation. Set to `all` or any positive integer up to the total number of shards in the index (number_of_replicas+1). Default: `1`, the primary shard. This value is ignored when running against Serverless projects."
+						type: "string"
+						description: """
+									The number of shard copies that must be active before proceeding with the operation. Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`). Default: `1`, the primary shard. This value is ignored when running against Serverless projects.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -1771,7 +1812,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							description: """
 										DEPRECATED: Please use dedicated setting field. Configuration options for the index. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings.
+
 										**NOTE:** Static index settings (see: https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#_static_index_settings) can be only set on the index creation and later cannot be removed or updated - _apply_ will return error
+
 										"""
 							description_kind: "plain"
 							deprecated:       true
@@ -2074,7 +2117,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											description_kind: "markdown"
 											required:         true
 										}
-										description:      "Sets the priority of the index as soon as the policy enters the hot, warm, or cold phase. Higher priority indices are recovered before indices with lower priorities following a node restart. Default priority is 1."
+										description: """
+													Sets the priority of the index as soon as the policy enters the hot, warm, or cold phase. Higher priority indices are recovered before indices with lower priorities following a node restart. Default priority is 1.
+
+													"""
 										description_kind: "markdown"
 									}
 									max_items: 1
@@ -2454,7 +2500,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											description_kind: "markdown"
 											required:         true
 										}
-										description:      "Sets the priority of the index as soon as the policy enters the hot, warm, or cold phase. Higher priority indices are recovered before indices with lower priorities following a node restart. Default priority is 1."
+										description: """
+													Sets the priority of the index as soon as the policy enters the hot, warm, or cold phase. Higher priority indices are recovered before indices with lower priorities following a node restart. Default priority is 1.
+
+													"""
 										description_kind: "markdown"
 									}
 									max_items: 1
@@ -2640,7 +2689,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											description_kind: "markdown"
 											required:         true
 										}
-										description:      "Sets the priority of the index as soon as the policy enters the hot, warm, or cold phase. Higher priority indices are recovered before indices with lower priorities following a node restart. Default priority is 1."
+										description: """
+													Sets the priority of the index as soon as the policy enters the hot, warm, or cold phase. Higher priority indices are recovered before indices with lower priorities following a node restart. Default priority is 1.
+
+													"""
 										description_kind: "markdown"
 									}
 									max_items: 1
@@ -2694,7 +2746,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						max_items: 1
 					}
 				}
-				description:      "Creates or updates lifecycle policy. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-put-lifecycle.html and https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-index-lifecycle.html"
+				description: """
+					Creates or updates lifecycle policy. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-put-lifecycle.html and https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-index-lifecycle.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -2883,8 +2938,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						block: {
 							attributes: {
 								mappings: {
-									type:             "string"
-									description:      "Mapping for fields in the index. Should be specified as a JSON object of field mappings. See the documentation (https://www.elastic.co/guide/en/elasticsearch/reference/current/explicit-mapping.html) for more details"
+									type: "string"
+									description: """
+												Mapping for fields in the index. Should be specified as a JSON object of field mappings. See the documentation (https://www.elastic.co/guide/en/elasticsearch/reference/current/explicit-mapping.html) for more details
+
+												"""
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -2968,7 +3026,83 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						max_items: 1
 					}
 				}
-				description:      "Creates or updates an index template. Index templates define settings, mappings, and aliases that can be applied automatically to new indices. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-template.html"
+				description: """
+					Creates or updates an index template. Index templates define settings, mappings, and aliases that can be applied automatically to new indices. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-template.html
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_elasticsearch_index_template_ilm_attachment: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource."
+						description_kind: "plain"
+						computed:         true
+					}
+					index_template: {
+						type:             "string"
+						description:      "Name of the index template to attach the ILM policy to. For Fleet-managed templates, this is typically the template name (e.g., 'logs-system.syslog')."
+						description_kind: "plain"
+						required:         true
+					}
+					lifecycle_name: {
+						type:             "string"
+						description:      "Name of the ILM policy to attach to the index template."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description: """
+					Attaches an ILM policy to a Fleet-managed or externally-managed index template by creating/updating the `@custom` component template with the lifecycle setting.
+
+					**Important:** Do NOT use this resource for index templates already managed by Terraform. Instead, set `index.lifecycle.name` directly in the `elasticstack_elasticsearch_index_template` or `elasticstack_elasticsearch_component_template` resource settings.
+
+					See the [official Elastic documentation](https://www.elastic.co/guide/en/fleet/current/data-streams-scenario3.html) for more information about customizing Fleet-managed data streams.
+
+					## How It Works
+
+					This resource creates or updates a component template named `<index_template>@custom` with the `index.lifecycle.name` setting.
+
+					Fleet-managed index templates typically include `<template>@custom` in their `composed_of` list. When this component template exists, its settings are merged into the index template.
+
+					**Key behaviors:**
+
+					- **Non-destructive**: If the `@custom` component template already exists with other settings, this resource preserves them and only adds/updates the ILM setting.
+					- **Clean deletion**: When destroyed, this resource removes only the `index.lifecycle.name` setting. If other settings exist in the `@custom` template, they are preserved. If the template becomes empty, it is deleted.
+
+					**Limitations:**
+
+					- **Version field not updated**: This resource does not modify the component template's `version` field. If you rely on version tracking for change detection (e.g., external tooling that monitors template versions), consider using `elasticstack_elasticsearch_component_template` instead, which gives you full control over the template including its version.
+
+					## When to Use This Resource
+
+					Use this resource when:
+
+					- You want to attach an ILM policy to a Fleet-managed index template
+					- You want to attach an ILM policy to an externally-managed index template that includes `<template>@custom` in its `composed_of` list
+					- You don't want Terraform to manage the entire index template
+
+					Do NOT use this resource when:
+
+					- The index template is already managed by `elasticstack_elasticsearch_index_template` — set `index.lifecycle.name` directly in the template's settings instead
+					- The `@custom` component template is already managed by `elasticstack_elasticsearch_component_template` — set the ILM setting there instead
+
+					## Alternative Approach
+
+					You can achieve similar results using `elasticstack_elasticsearch_component_template` directly. **Comparison:**
+
+					| Approach | Terraform Manages | Behavior |
+					|----------|-------------------|----------|
+					| `elasticstack_elasticsearch_component_template` | Entire `@custom` template | Overwrites any external changes to the template |
+					| `elasticstack_elasticsearch_index_template_ilm_attachment` | Only the ILM setting | Preserves other settings in the template |
+
+					Use `elasticstack_elasticsearch_component_template` if you want full control over the `@custom` template. Use this resource if you only want to manage the ILM setting and preserve any other customizations.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -3002,13 +3136,19 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					on_failure: {
 						type: ["list", "string"]
-						description:      "Processors to run immediately after a processor failure. Each processor supports a processor-level `on_failure` value. If a processor without an `on_failure` value fails, Elasticsearch uses this pipeline-level parameter as a fallback. The processors in this parameter run sequentially in the order specified. Elasticsearch will not attempt to run the pipeline’s remaining processors. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/processors.html. Each record must be a valid JSON document"
+						description: """
+									Processors to run immediately after a processor failure. Each processor supports a processor-level `on_failure` value. If a processor without an `on_failure` value fails, Elasticsearch uses this pipeline-level parameter as a fallback. The processors in this parameter run sequentially in the order specified. Elasticsearch will not attempt to run the pipeline’s remaining processors. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/processors.html. Each record must be a valid JSON document
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 					}
 					processors: {
 						type: ["list", "string"]
-						description:      "Processors used to perform transformations on documents before indexing. Processors run sequentially in the order specified. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/processors.html. Each record must be a valid JSON document."
+						description: """
+									Processors used to perform transformations on documents before indexing. Processors run sequentially in the order specified. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/processors.html. Each record must be a valid JSON document.
+
+									"""
 						description_kind: "markdown"
 						required:         true
 					}
@@ -3377,8 +3517,15 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						nested_type: {
 							attributes: {
 								bucket_span: {
-									type:             "string"
-									description:      "The size of the interval that the analysis is aggregated into, typically between 15m and 1h. If the anomaly detector is expecting to see data at near real-time frequency, then the bucket_span should be set to a value around 10 times the time between ingested documents. For example, if data comes every second, bucket_span should be 10s; if data comes every 5 minutes, bucket_span should be 50m. For sparse or batch data, use larger bucket_span values."
+									type: "string"
+									description: """
+												The size of the interval that the analysis is aggregated into, typically between 15m and 1h.
+
+												If the anomaly detector is expecting to see data at near real-time frequency, then the `bucket_span` should be set to a value around 10 times the time between ingested documents. For example, if data comes every second, `bucket_span` should be 10s; if data comes every 5 minutes, `bucket_span` should be 50m.
+
+												For sparse or batch data, use larger `bucket_span` values.
+
+												"""
 									description_kind: "markdown"
 									optional:         true
 									computed:         true
@@ -3399,8 +3546,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									nested_type: {
 										attributes: {
 											by_field_name: {
-												type:             "string"
-												description:      "The field used to split the data. In particular, this property is used for analyzing the splits with respect to their own history. It is used for finding unusual values in the context of the split."
+												type: "string"
+												description: """
+															The field used to split the data.
+
+															In particular, this property is used for analyzing the splits with respect to their own history. It is used for finding unusual values in the context of the split.
+
+															"""
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -3473,8 +3625,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												required:         true
 											}
 											over_field_name: {
-												type:             "string"
-												description:      "The field used to split the data. In particular, this property is used for analyzing the splits with respect to the history of all splits. It is used for finding unusual values in the population of all splits."
+												type: "string"
+												description: """
+															The field used to split the data.
+
+															In particular, this property is used for analyzing the splits with respect to the history of all splits. It is used for finding unusual values in the population of all splits.
+
+															"""
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -3527,8 +3684,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									nested_type: {
 										attributes: {
 											enabled: {
-												type:             "bool"
-												description:      "To enable this setting, you must also set the partition_field_name property to the same value in every detector that uses the keyword mlcategory. Otherwise, job creation fails."
+												type: "bool"
+												description: """
+															To enable this setting, you must also set the `partition_field_name` property to the same value in every detector that uses the keyword `mlcategory`.
+
+															Otherwise, job creation fails.
+
+															"""
 												description_kind: "markdown"
 												optional:         true
 												computed:         true
@@ -3649,8 +3811,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 					job_id: {
-						type:             "string"
-						description:      "The identifier for the anomaly detection job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters."
+						type: "string"
+						description: """
+									The identifier for the anomaly detection job.
+
+									This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.
+
+									"""
 						description_kind: "markdown"
 						required:         true
 					}
@@ -3830,7 +3997,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						deprecated:       true
 					}
 				}
-				description:      "Creates and manages Machine Learning anomaly detection jobs. See the [ML Job API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html) for more details."
+				description: """
+					Creates and manages Machine Learning anomaly detection jobs.
+
+					See the [ML Job API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -3839,8 +4011,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			block: {
 				attributes: {
 					aggregations: {
-						type:             "string"
-						description:      "If set, the datafeed performs aggregation searches. Support for aggregations is limited and should be used only with low cardinality data. This should be a JSON object representing the aggregations to be performed."
+						type: "string"
+						description: """
+									If set, the datafeed performs aggregation searches. Support for aggregations is limited and should be used only with low cardinality data. This should be a JSON object representing the aggregations to be performed.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -3848,8 +4023,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						nested_type: {
 							attributes: {
 								mode: {
-									type:             "string"
-									description:      "The chunking mode. Can be `auto`, `manual`, or `off`. In `auto` mode, the chunk size is dynamically calculated. In `manual` mode, chunking is applied according to the specified `time_span`. In `off` mode, no chunking is applied."
+									type: "string"
+									description: """
+												The chunking mode. Can be `auto`, `manual`, or `off`. In `auto` mode, the chunk size is dynamically calculated. In `manual` mode, chunking is applied according to the specified `time_span`. In `off` mode, no chunking is applied.
+
+												"""
 									description_kind: "markdown"
 									required:         true
 								}
@@ -3863,14 +4041,20 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							nesting_mode: "single"
 						}
-						description:      "Datafeeds might search over long time periods, for several months or years. This search is split into time chunks in order to ensure the load on Elasticsearch is managed. Chunking configuration controls how the size of these time chunks are calculated; it is an advanced configuration option."
+						description: """
+									Datafeeds might search over long time periods, for several months or years. This search is split into time chunks in order to ensure the load on Elasticsearch is managed. Chunking configuration controls how the size of these time chunks are calculated; it is an advanced configuration option.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
 					datafeed_id: {
-						type:             "string"
-						description:      "A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters."
+						type: "string"
+						description: """
+									A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.
+
+									"""
 						description_kind: "markdown"
 						required:         true
 					}
@@ -3878,8 +4062,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						nested_type: {
 							attributes: {
 								check_window: {
-									type:             "string"
-									description:      "The window of time that is searched for late data. This window of time ends with the latest finalized bucket. It defaults to null, which causes an appropriate `check_window` to be calculated when the real-time datafeed runs."
+									type: "string"
+									description: """
+												The window of time that is searched for late data. This window of time ends with the latest finalized bucket. It defaults to null, which causes an appropriate `check_window` to be calculated when the real-time datafeed runs.
+
+												"""
 									description_kind: "markdown"
 									optional:         true
 									computed:         true
@@ -3893,14 +4080,20 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							nesting_mode: "single"
 						}
-						description:      "Specifies whether the datafeed checks for missing data and the size of the window. The datafeed can optionally search over indices that have already been read in an effort to determine whether any data has subsequently been added to the index. If missing data is found, it is a good indication that the `query_delay` is set too low and the data is being indexed after the datafeed has passed that moment in time. This check runs only on real-time datafeeds."
+						description: """
+									Specifies whether the datafeed checks for missing data and the size of the window. The datafeed can optionally search over indices that have already been read in an effort to determine whether any data has subsequently been added to the index. If missing data is found, it is a good indication that the `query_delay` is set too low and the data is being indexed after the datafeed has passed that moment in time. This check runs only on real-time datafeeds.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
 					frequency: {
-						type:             "string"
-						description:      "The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation."
+						type: "string"
+						description: """
+									The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -3929,7 +4122,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 								expand_wildcards: {
 									type: ["list", "string"]
-									description:      "Type of index that wildcard patterns can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. Supports comma-separated values."
+									description: """
+												Type of index that wildcard patterns can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. Supports comma-separated values.
+
+												"""
 									description_kind: "markdown"
 									optional:         true
 									computed:         true
@@ -3964,21 +4160,30 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 					max_empty_searches: {
-						type:             "number"
-						description:      "If a real-time datafeed has never seen any data (including during any initial training period), it automatically stops and closes the associated job after this many real-time searches return no documents. In other words, it stops after `frequency` times `max_empty_searches` of real-time operation. If not set, a datafeed with no end time that sees no data remains started until it is explicitly stopped."
+						type: "number"
+						description: """
+									If a real-time datafeed has never seen any data (including during any initial training period), it automatically stops and closes the associated job after this many real-time searches return no documents. In other words, it stops after `frequency` times `max_empty_searches` of real-time operation. If not set, a datafeed with no end time that sees no data remains started until it is explicitly stopped.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 					}
 					query: {
-						type:             "string"
-						description:      "The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch. By default uses `{\"match_all\": {\"boost\": 1}}`."
+						type: "string"
+						description: """
+									The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch. By default uses `{"match_all": {"boost": 1}}`.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
 					query_delay: {
-						type:             "string"
-						description:      "The number of seconds behind real time that data is queried. For example, if data from 10:04 a.m. might not be searchable in Elasticsearch until 10:06 a.m., set this property to 120 seconds. The default value is randomly selected between `60s` and `120s`. This randomness improves the query performance when there are multiple jobs running on the same node."
+						type: "string"
+						description: """
+									The number of seconds behind real time that data is queried. For example, if data from 10:04 a.m. might not be searchable in Elasticsearch until 10:06 a.m., set this property to 120 seconds. The default value is randomly selected between `60s` and `120s`. This randomness improves the query performance when there are multiple jobs running on the same node.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -3990,14 +4195,20 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 					script_fields: {
-						type:             "string"
-						description:      "Specifies scripts that evaluate custom expressions and returns script fields to the datafeed. The detector configuration objects in a job can contain functions that use these script fields. This should be a JSON object representing the script fields."
+						type: "string"
+						description: """
+									Specifies scripts that evaluate custom expressions and returns script fields to the datafeed. The detector configuration objects in a job can contain functions that use these script fields. This should be a JSON object representing the script fields.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 					}
 					scroll_size: {
-						type:             "number"
-						description:      "The size parameter that is used in Elasticsearch searches when the datafeed does not use aggregations. The maximum value is the value of `index.max_result_window`, which is 10,000 by default."
+						type: "number"
+						description: """
+									The size parameter that is used in Elasticsearch searches when the datafeed does not use aggregations. The maximum value is the value of `index.max_result_window`, which is 10,000 by default.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -4104,7 +4315,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						deprecated:       true
 					}
 				}
-				description:      "Creates and manages Machine Learning datafeeds. Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job. Each anomaly detection job can have only one associated datafeed. See the [ML Datafeed API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html) for more details."
+				description: """
+					Creates and manages Machine Learning datafeeds. Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job. Each anomaly detection job can have only one associated datafeed. See the [ML Datafeed API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -4610,7 +4824,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						deprecated:       true
 					}
 				}
-				description:      "Creates or updates a stored script or search template. See the [create stored script API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/create-stored-script-api.html) for more details."
+				description: """
+					Creates or updates a stored script or search template. See the [create stored script API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/create-stored-script-api.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -4843,7 +5060,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						deprecated:       true
 					}
 				}
-				description:      "Creates an API key for access without requiring basic authentication. Supports both regular API keys and cross-cluster API keys. See the [security API create API key documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) and [create cross-cluster API key documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html) for more details."
+				description: """
+					Creates an API key for access without requiring basic authentication. Supports both regular API keys and cross-cluster API keys.
+
+					See the [security API create API key documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) and [create cross-cluster API key documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html) for more details.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -5029,8 +5251,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						block: {
 							attributes: {
 								allow_restricted_indices: {
-									type:             "bool"
-									description:      "Include matching restricted indices in names parameter. Usage is strongly discouraged as it can grant unrestricted operations on critical data, make the entire system unstable or leak sensitive information."
+									type: "bool"
+									description: """
+												Include matching restricted indices in names parameter. Usage is strongly discouraged as it can grant unrestricted operations on critical data, make the entire system unstable or leak sensitive information.
+
+												"""
 									description_kind: "markdown"
 									optional:         true
 									computed:         true
@@ -5131,7 +5356,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description_kind: "markdown"
 								}
 							}
-							description:      "A list of remote indices permissions entries. Remote indices are effective for remote clusters configured with the API key based model. They have no effect for remote clusters configured with the certificate based model."
+							description: """
+										A list of remote indices permissions entries. Remote indices are effective for remote clusters configured with the API key based model. They have no effect for remote clusters configured with the certificate based model.
+
+										"""
 							description_kind: "markdown"
 						}
 					}
@@ -5290,7 +5518,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						deprecated:       true
 					}
 				}
-				description:      "Manage role mappings. See the [role mapping API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html) for more details."
+				description: """
+					Manage role mappings. See the [role mapping API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -5319,8 +5550,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						sensitive:        true
 					}
 					password_hash: {
-						type:             "string"
-						description:      "A hash of the user's password. This must be produced using the same hashing algorithm as has been configured for password storage (see the [security settings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings))."
+						type: "string"
+						description: """
+									A hash of the user's password. This must be produced using the same hashing algorithm as has been configured for password storage (see the [security settings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings)).
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 						sensitive:        true
@@ -5488,23 +5722,32 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						sensitive:        true
 					}
 					password_hash: {
-						type:             "string"
-						description:      "A hash of the user's password. This must be produced using the same hashing algorithm as has been configured for password storage (see the [security settings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings))."
+						type: "string"
+						description: """
+									A hash of the user's password. This must be produced using the same hashing algorithm as has been configured for password storage (see the [security settings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings)).
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 						sensitive:        true
 					}
 					password_wo: {
-						type:             "string"
-						description:      "Write-only password attribute for use with ephemeral resources. Passwords must be at least 6 characters long. This attribute is designed for use with ephemeral resources like `vault_kv_secret_v2` to prevent secrets from being stored in the Terraform state. Must be used with `password_wo_version`."
+						type: "string"
+						description: """
+									Write-only password attribute for use with ephemeral resources. Passwords must be at least 6 characters long. This attribute is designed for use with ephemeral resources like `vault_kv_secret_v2` to prevent secrets from being stored in the Terraform state. Must be used with `password_wo_version`.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 						sensitive:        true
 						write_only:       true
 					}
 					password_wo_version: {
-						type:             "string"
-						description:      "Version identifier for the write-only password. This field is used to trigger updates when the password changes. Required when `password_wo` is set. Typically, you would use a hash of the password or a version identifier from your secret management system."
+						type: "string"
+						description: """
+									Version identifier for the write-only password. This field is used to trigger updates when the password changes. Required when `password_wo` is set. Typically, you would use a hash of the password or a version identifier from your secret management system.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -5515,8 +5758,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 					username: {
-						type:             "string"
-						description:      "An identifier for the user (see the [security API put user documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html#security-api-put-user-path-params) for more details)."
+						type: "string"
+						description: """
+									An identifier for the user (see the [security API put user documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html#security-api-put-user-path-params) for more details).
+
+									"""
 						description_kind: "markdown"
 						required:         true
 					}
@@ -5829,7 +6075,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					max_items: 1
 				}
-				description:      "Creates or updates a snapshot lifecycle policy. See the [SLM API policy documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-put-policy.html) for more details."
+				description: """
+					Creates or updates a snapshot lifecycle policy. See the [SLM API policy documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-put-policy.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -5893,8 +6142,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									required:         true
 								}
 								location_mode: {
-									type:             "string"
-									description:      "Location mode. `primary_only` or `secondary_only`. See the [Azure storage redundancy documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy) for more details."
+									type: "string"
+									description: """
+												Location mode. `primary_only` or `secondary_only`. See the [Azure storage redundancy documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy) for more details.
+
+												"""
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -5917,7 +6169,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 							}
-							description:      "Support for using Azure Blob storage as a repository for Snapshot/Restore. See the [repository Azure plugin documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-azure.html) for more details."
+							description: """
+										Support for using Azure Blob storage as a repository for Snapshot/Restore. See the [repository Azure plugin documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-azure.html) for more details.
+
+										"""
 							description_kind: "markdown"
 						}
 						max_items: 1
@@ -6130,7 +6385,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 							}
-							description:      "Support for using the Google Cloud Storage service as a repository for Snapshot/Restore. See the [repository GCS plugin documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-gcs.html) for more details."
+							description: """
+										Support for using the Google Cloud Storage service as a repository for Snapshot/Restore. See the [repository GCS plugin documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-gcs.html) for more details.
+
+										"""
 							description_kind: "markdown"
 						}
 						max_items: 1
@@ -6188,7 +6446,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									required:         true
 								}
 							}
-							description:      "Support for using HDFS File System as a repository for Snapshot/Restore. See the [repository HDFS plugin documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-hdfs.html) for more details."
+							description: """
+										Support for using HDFS File System as a repository for Snapshot/Restore. See the [repository HDFS plugin documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-hdfs.html) for more details.
+
+										"""
 							description_kind: "markdown"
 						}
 						max_items: 1
@@ -6285,7 +6546,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 							}
-							description:      "Support for using AWS S3 as a repository for Snapshot/Restore. See the [repository S3 plugin documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-s3-repository.html) for more details."
+							description: """
+										Support for using AWS S3 as a repository for Snapshot/Restore. See the [repository S3 plugin documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-s3-repository.html) for more details.
+
+										"""
 							description_kind: "markdown"
 						}
 						max_items: 1
@@ -6349,13 +6613,19 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									required:         true
 								}
 							}
-							description:      "URL repository. Repositories of this type are read-only for the cluster. This means the cluster can retrieve or restore snapshots from the repository but cannot write or create snapshots in it."
+							description: """
+										URL repository. Repositories of this type are read-only for the cluster. This means the cluster can retrieve or restore snapshots from the repository but cannot write or create snapshots in it.
+
+										"""
 							description_kind: "markdown"
 						}
 						max_items: 1
 					}
 				}
-				description:      "Registers or updates a snapshot repository. See the [put snapshot repository API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-snapshot-repo-api.html) and [register repository documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html) for more details."
+				description: """
+					Registers or updates a snapshot repository. See the [put snapshot repository API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-snapshot-repo-api.html) and [register repository documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -6382,8 +6652,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 					defer_validation: {
-						type:             "bool"
-						description:      "When true, deferrable validations are not run upon creation, but rather when the transform is started. This behavior may be desired if the source index does not exist until after the transform is created. Default is `false`"
+						type: "bool"
+						description: """
+									When true, deferrable validations are not run upon creation, but rather when the transform is started. This behavior may be desired if the source index does not exist until after the transform is created. Default is `false`
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -6454,8 +6727,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 					timeout: {
-						type:             "string"
-						description:      "Period to wait for a response from Elasticsearch when performing any management operation. If no response is received before the timeout expires, the operation fails and returns an error. Defaults to `30s`."
+						type: "string"
+						description: """
+									Period to wait for a response from Elasticsearch when performing any management operation. If no response is received before the timeout expires, the operation fails and returns an error. Defaults to `30s`.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -6933,14 +7209,20 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							nesting_mode: "map"
 						}
-						description:      "User-defined data tags to apply to all inputs. Values can be strings (string_value) or numbers (number_value) but not both. Example -- key1 = {string_value = value1}, key2 = {number_value = 42}"
+						description: """
+									User-defined data tags to apply to all inputs. Values can be strings (string_value) or numbers (number_value) but not both. Example -- key1 = {string_value = value1}, key2 = {number_value = 42}
+
+									"""
 						description_kind: "plain"
 						optional:         true
 						computed:         true
 					}
 					host_name_format: {
-						type:             "string"
-						description:      "Determines the format of the host.name field in events. Can be 'hostname' (short hostname, e.g., 'myhost') or 'fqdn' (fully qualified domain name, e.g., 'myhost.example.com'). Defaults to 'hostname'."
+						type: "string"
+						description: """
+									Determines the format of the host.name field in events. Can be 'hostname' (short hostname, e.g., 'myhost') or 'fqdn' (fully qualified domain name, e.g., 'myhost.example.com'). Defaults to 'hostname'.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -6952,8 +7234,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 					inactivity_timeout: {
-						type:             "string"
-						description:      "The inactivity timeout for the agent policy. If an agent does not report within this time period, it will be considered inactive. Supports duration strings (e.g., '30s', '2m', '1h')."
+						type: "string"
+						description: """
+									The inactivity timeout for the agent policy. If an agent does not report within this time period, it will be considered inactive. Supports duration strings (e.g., '30s', '2m', '1h').
+
+									"""
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -7285,7 +7570,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_ids: {
 						type: ["set", "string"]
-						description:      "The Kibana space IDs where this integration policy is available. When set, must match the space_ids of the referenced agent policy. If not set, will be inherited from the agent policy. Note: The order of space IDs does not matter as this is a set."
+						description: """
+									The Kibana space IDs where this integration policy is available. When set, must match the space_ids of the referenced agent policy. If not set, will be inherited from the agent policy. Note: The order of space IDs does not matter as this is a set.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -7566,7 +7854,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_ids: {
 						type: ["set", "string"]
-						description:      "The Kibana space IDs where this output is available. When set, the output will be created and managed within the specified space. Note: The order of space IDs does not matter as this is a set."
+						description: """
+									The Kibana space IDs where this output is available. When set, the output will be created and managed within the specified space. Note: The order of space IDs does not matter as this is a set.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -7648,7 +7939,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_ids: {
 						type: ["set", "string"]
-						description:      "The Kibana space IDs where this server host is available. When set, the server host will be created and managed within the specified space. Note: The order of space IDs does not matter as this is a set."
+						description: """
+									The Kibana space IDs where this server host is available. When set, the server host will be created and managed within the specified space. Note: The order of space IDs does not matter as this is a set.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -7845,8 +8139,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 					notify_when: {
-						type:             "string"
-						description:      "Required until v8.6.0. Deprecated in v8.13.0. Use the `notify_when` property in the action `frequency` object instead. Defines how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: This is a rule level property; if you update the rule in Kibana, it is automatically changed to use action-specific `notify_when` values."
+						type: "string"
+						description: """
+									Required until v8.6.0. Deprecated in v8.13.0. Use the `notify_when` property in the action `frequency` object instead. Defines how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: This is a rule level property; if you update the rule in Kibana, it is automatically changed to use action-specific `notify_when` values.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -7865,8 +8162,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 					rule_type_id: {
-						type:             "string"
-						description:      "The ID of the rule type that you want to call when the rule is scheduled to run. For more information about the valid values, list the rule types using [Get rule types API](https://www.elastic.co/guide/en/kibana/master/list-rule-types-api.html) or refer to the [Rule types documentation](https://www.elastic.co/guide/en/kibana/master/rule-types.html)."
+						type: "string"
+						description: """
+									The ID of the rule type that you want to call when the rule is scheduled to run. For more information about the valid values, list the rule types using [Get rule types API](https://www.elastic.co/guide/en/kibana/master/list-rule-types-api.html) or refer to the [Rule types documentation](https://www.elastic.co/guide/en/kibana/master/rule-types.html).
+
+									"""
 						description_kind: "plain"
 						required:         true
 					}
@@ -7890,8 +8190,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 					throttle: {
-						type:             "string"
-						description:      "Deprecated in 8.13.0. Defines how often an alert generates repeated actions. This custom action interval must be specified in seconds, minutes, hours, or days. For example, 10m or 1h. This property is applicable only if `notify_when` is `onThrottleInterval`. NOTE: This is a rule level property; if you update the rule in Kibana, it is automatically changed to use action-specific `throttle` values."
+						type: "string"
+						description: """
+									Deprecated in 8.13.0. Defines how often an alert generates repeated actions. This custom action interval must be specified in seconds, minutes, hours, or days. For example, 10m or 1h. This property is applicable only if `notify_when` is `onThrottleInterval`. NOTE: This is a rule level property; if you update the rule in Kibana, it is automatically changed to use action-specific `throttle` values.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 					}
@@ -7901,8 +8204,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					block: {
 						attributes: {
 							group: {
-								type:             "string"
-								description:      "The group name, which affects when the action runs (for example, when the threshold is met or when the alert is recovered). Each rule type has a list of valid action group names."
+								type: "string"
+								description: """
+												The group name, which affects when the action runs (for example, when the threshold is met or when the alert is recovered). Each rule type has a list of valid action group names.
+
+												"""
 								description_kind: "plain"
 								optional:         true
 								computed:         true
@@ -7936,7 +8242,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											attributes: {
 												days: {
 													type: ["list", "number"]
-													description:      "Defines the days of the week that the action can run, represented as an array of numbers. For example, 1 represents Monday. An empty array is equivalent to specifying all the days of the week."
+													description: """
+																		Defines the days of the week that the action can run, represented as an array of numbers. For example, 1 represents Monday. An empty array is equivalent to specifying all the days of the week.
+
+																		"""
 													description_kind: "plain"
 													optional:         true
 												}
@@ -7963,7 +8272,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											description_kind: "plain"
 										}
 									}
-									description:      "Conditions that affect whether the action runs. If you specify multiple conditions, all conditions must be met for the action to run. For example, if an alert occurs within the specified time frame and matches the query, the action runs."
+									description: """
+													Conditions that affect whether the action runs. If you specify multiple conditions, all conditions must be met for the action to run. For example, if an alert occurs within the specified time frame and matches the query, the action runs.
+
+													"""
 									description_kind: "plain"
 								}
 							}
@@ -7972,8 +8284,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								block: {
 									attributes: {
 										notify_when: {
-											type:             "string"
-											description:      "Defines how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met."
+											type: "string"
+											description: """
+															Defines how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met.
+
+															"""
 											description_kind: "plain"
 											optional:         true
 											computed:         true
@@ -7986,13 +8301,19 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											computed:         true
 										}
 										throttle: {
-											type:             "string"
-											description:      "Defines how often an alert generates repeated actions. This custom action interval must be specified in seconds, minutes, hours, or days. For example, 10m or 1h. This property is applicable only if `notify_when` is `onThrottleInterval`."
+											type: "string"
+											description: """
+															Defines how often an alert generates repeated actions. This custom action interval must be specified in seconds, minutes, hours, or days. For example, 10m or 1h. This property is applicable only if `notify_when` is `onThrottleInterval`.
+
+															"""
 											description_kind: "plain"
 											optional:         true
 										}
 									}
-									description:      "The properties that affect how often actions are generated. If the rule type supports setting summary to true, the action can be a summary of alerts at the specified notification interval. Otherwise, an action runs for each alert at the specified notification interval. NOTE: You cannot specify these parameters when `notify_when` or `throttle` are defined at the rule level."
+									description: """
+													The properties that affect how often actions are generated. If the rule type supports setting summary to true, the action can be a summary of alerts at the specified notification interval. Otherwise, an action runs for each alert at the specified notification interval. NOTE: You cannot specify these parameters when `notify_when` or `throttle` are defined at the rule level.
+
+													"""
 									description_kind: "plain"
 								}
 							}
@@ -8054,8 +8375,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									nested_type: {
 										attributes: {
 											id: {
-												type:             "string"
-												description:      "The ID of the field format. Valid values include: `boolean`, `color`, `date`, `duration`, `number`, `percent`, `relative_date`, `static_lookup`, `string`, `truncate`, `url`."
+												type: "string"
+												description: """
+															The ID of the field format. Valid values include: `boolean`, `color`, `date`, `duration`, `number`, `percent`, `relative_date`, `static_lookup`, `string`, `truncate`, `url`.
+
+															"""
 												description_kind: "markdown"
 												required:         true
 											}
@@ -8325,8 +8649,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			block: {
 				attributes: {
 					data_view_id: {
-						type:             "string"
-						description:      "The data view identifier to set as default. NOTE: The API does not validate whether it is a valid identifier. Leave this unset (or explicitly `null`) to unset the default data view."
+						type: "string"
+						description: """
+									The data view identifier to set as default. NOTE: The API does not validate whether it is a valid identifier. Leave this unset (or explicitly `null`) to unset the default data view.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -8357,7 +8684,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
-				description:      "Manages the default Kibana data view. See the [Kibana Data Views API documentation](https://www.elastic.co/docs/api/doc/kibana/v8/operation/operation-setdefaultdatailviewdefault) for more information."
+				description: """
+					Manages the default Kibana data view. See the [Kibana Data Views API documentation](https://www.elastic.co/docs/api/doc/kibana/v8/operation/operation-setdefaultdatailviewdefault) for more information.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -8412,8 +8742,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 					success: {
-						type:             "bool"
-						description:      "Indicates when the import was successfully completed. When set to false, some objects may not have been created. For additional information, refer to the errors and success_results properties."
+						type: "bool"
+						description: """
+									Indicates when the import was successfully completed. When set to false, some objects may not have been created. For additional information, refer to the errors and success_results properties.
+
+									"""
 						description_kind: "plain"
 						computed:         true
 					}
@@ -8495,7 +8828,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
-				description:      "Manages Elastic prebuilt detection rules. This resource installs and updates Elastic prebuilt rules and timelines. See https://www.elastic.co/guide/en/security/current/prebuilt-rules.html"
+				description: """
+					Manages Elastic prebuilt detection rules. This resource installs and updates Elastic prebuilt rules and timelines. See https://www.elastic.co/guide/en/security/current/prebuilt-rules.html
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -8507,8 +8843,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						nested_type: {
 							attributes: {
 								duration: {
-									type:             "string"
-									description:      "The duration of the schedule. It allows values in `<integer><unit>` format. `<unit>` is one of `d`, `h`, `m`, or `s` for days, hours, minutes, seconds. For example: `1d`, `5h`, `30m`, `5000s`."
+									type: "string"
+									description: """
+												The duration of the schedule. It allows values in `<integer><unit>` format. `<unit>` is one of `d`, `h`, `m`, or `s` for days, hours, minutes, seconds. For example: `1d`, `5h`, `30m`, `5000s`.
+
+												"""
 									description_kind: "plain"
 									required:         true
 								}
@@ -8522,8 +8861,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												optional:         true
 											}
 											every: {
-												type:             "string"
-												description:      "The duration of the schedule. It allows values in `<integer><unit>` format. `<unit>` is one of `d`, `h`, `m`, or `s` for days, hours, minutes, seconds. For example: `1d`, `5h`, `30m`, `5000s`."
+												type: "string"
+												description: """
+															The duration of the schedule. It allows values in `<integer><unit>` format. `<unit>` is one of `d`, `h`, `m`, or `s` for days, hours, minutes, seconds. For example: `1d`, `5h`, `30m`, `5000s`.
+
+															"""
 												description_kind: "plain"
 												optional:         true
 											}
@@ -8727,8 +9069,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 								missing_fields_strategy: {
-									type:             "string"
-									description:      "Strategy for handling missing fields in suppression grouping: 'suppress' - only one alert will be created per suppress by bucket, 'doNotSuppress' - per each document a separate alert will be created."
+									type: "string"
+									description: """
+												Strategy for handling missing fields in suppression grouping: 'suppress' - only one alert will be created per suppress by bucket, 'doNotSuppress' - per each document a separate alert will be created.
+
+												"""
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -8753,8 +9098,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 					building_block_type: {
-						type:             "string"
-						description:      "Determines if the rule acts as a building block. If set, value must be `default`. Building-block alerts are not displayed in the UI by default and are used as a foundation for other rules."
+						type: "string"
+						description: """
+									Determines if the rule acts as a building block. If set, value must be `default`. Building-block alerts are not displayed in the UI by default and are used as a foundation for other rules.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -8837,8 +9185,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 					filters: {
-						type:             "string"
-						description:      "Query and filter context array to define alert conditions as JSON. Supports complex filter structures including bool queries, term filters, range filters, etc. Available for all rule types."
+						type: "string"
+						description: """
+									Query and filter context array to define alert conditions as JSON. Supports complex filter structures including bool queries, term filters, range filters, etc. Available for all rule types.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -9546,7 +9897,65 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
-				description:      "Creates or updates a Kibana security detection rule. See the [rules API documentation](https://www.elastic.co/guide/en/security/current/rules-api-create.html) for more details."
+				description: """
+					Creates or updates a Kibana security detection rule. See the [rules API documentation](https://www.elastic.co/guide/en/security/current/rules-api-create.html) for more details.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_security_enable_rule: {
+			version: 0
+			block: {
+				attributes: {
+					all_rules_enabled: {
+						type:             "bool"
+						description:      "Computed attribute indicating whether all rules matching the tag are currently enabled. Used for drift detection."
+						description_kind: "plain"
+						computed:         true
+					}
+					disable_on_destroy: {
+						type:             "bool"
+						description:      "Whether to disable the rules when this resource is destroyed. Defaults to true."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of this resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					key: {
+						type:             "string"
+						description:      "The tag key to filter rules by (e.g., 'OS')."
+						description_kind: "plain"
+						required:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					value: {
+						type:             "string"
+						description:      "The tag value to filter rules by (e.g., 'Windows')."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description: """
+					Enables Elastic Security detection rules based on tags.
+
+					This resource uses Kibana’s bulk action API to enable all rules matching the specified tag key-value pair.
+
+					Requires Elastic Stack version 8.11.0 or higher. See the [documentation](https://www.elastic.co/guide/en/security/current/rules-ui-management.html) for more details.
+
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -9929,13 +10338,6 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
-					deserializer: {
-						type:             "string"
-						description:      "Determines how retrieved list item values are presented. By default, list items are presented using Handlebars expressions based on the type."
-						description_kind: "markdown"
-						optional:         true
-						computed:         true
-					}
 					id: {
 						type:             "string"
 						description:      "The unique identifier of the security list (auto-generated by Kibana if not specified)."
@@ -9968,13 +10370,6 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
-					serializer: {
-						type:             "string"
-						description:      "Determines how uploaded list item values are parsed. By default, list items are parsed using named regex groups based on the type."
-						description_kind: "markdown"
-						optional:         true
-						computed:         true
-					}
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
@@ -9989,8 +10384,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 					type: {
-						type:             "string"
-						description:      "Specifies the Elasticsearch data type of values the list contains. Valid values include: `binary`, `boolean`, `byte`, `date`, `date_nanos`, `date_range`, `double`, `double_range`, `float`, `float_range`, `geo_point`, `geo_shape`, `half_float`, `integer`, `integer_range`, `ip`, `ip_range`, `keyword`, `long`, `long_range`, `shape`, `short`, `text`."
+						type: "string"
+						description: """
+									Specifies the Elasticsearch data type of values the list contains. Valid values include: `binary`, `boolean`, `byte`, `date`, `date_nanos`, `date_range`, `double`, `double_range`, `float`, `float_range`, `geo_point`, `geo_shape`, `half_float`, `integer`, `integer_range`, `ip`, `ip_range`, `keyword`, `long`, `long_range`, `shape`, `short`, `text`.
+
+									"""
 						description_kind: "markdown"
 						required:         true
 					}
@@ -10306,7 +10704,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											}
 											max_items: 1
 										}
-										description:      "A list of remote indices permissions entries. Remote indices are effective for remote clusters configured with the API key based model. They have no effect for remote clusters configured with the certificate based model."
+										description: """
+													A list of remote indices permissions entries. Remote indices are effective for remote clusters configured with the API key based model. They have no effect for remote clusters configured with the certificate based model.
+
+													"""
 										description_kind: "markdown"
 									}
 								}
@@ -10376,8 +10777,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			block: {
 				attributes: {
 					budgeting_method: {
-						type:             "string"
-						description:      "An `occurrences` budgeting method uses the number of good and total events during the time window. A `timeslices` budgeting method uses the number of good slices and total slices during the time window. A slice is an arbitrary time window (smaller than the overall SLO time window) that is either considered good or bad, calculated from the timeslice threshold and the ratio of good over total events that happened during the slice window. A budgeting method is required and must be either occurrences or timeslices."
+						type: "string"
+						description: """
+									An `occurrences` budgeting method uses the number of good and total events during the time window. A `timeslices` budgeting method uses the number of good slices and total slices during the time window. A slice is an arbitrary time window (smaller than the overall SLO time window) that is either considered good or bad, calculated from the timeslice threshold and the ratio of good over total events that happened during the slice window. A budgeting method is required and must be either occurrences or timeslices.
+
+									"""
 						description_kind: "plain"
 						required:         true
 					}
@@ -10779,7 +11183,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 							}
-							description:      "The target objective is the value the SLO needs to meet during the time window. If a timeslices budgeting method is used, we also need to define the timesliceTarget which can be different than the overall SLO target."
+							description: """
+										The target objective is the value the SLO needs to meet during the time window. If a timeslices budgeting method is used, we also need to define the timesliceTarget which can be different than the overall SLO target.
+
+										"""
 							description_kind: "plain"
 						}
 					}
@@ -10826,7 +11233,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									required:         true
 								}
 							}
-							description:      "Currently support `calendarAligned` and `rolling` time windows. Any duration greater than 1 day can be used: days, weeks, months, quarters, years. Rolling time window requires a duration, e.g. `1w` for one week, and type: `rolling`. SLOs defined with such time window, will only consider the SLI data from the last duration period as a moving window. Calendar aligned time window requires a duration, limited to `1M` for monthly or `1w` for weekly, and type: `calendarAligned`."
+							description: """
+										Currently support `calendarAligned` and `rolling` time windows. Any duration greater than 1 day can be used: days, weeks, months, quarters, years. Rolling time window requires a duration, e.g. `1w` for one week, and type: `rolling`. SLOs defined with such time window, will only consider the SLI data from the last duration period as a moving window. Calendar aligned time window requires a duration, limited to `1M` for monthly or `1w` for weekly, and type: `calendarAligned`.
+
+										"""
 							description_kind: "plain"
 						}
 					}
@@ -10882,13 +11292,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											attributes: {
 												aggregation: {
 													type:             "string"
-													description:      "The aggregation type for this metric. One of: sum, avg, min, max, value_count, percentile, doc_count. Determines which other fields are required:"
+													description:      "The aggregation type for this metric. One of: sum, avg, min, max, value_count, last_value, cardinality, std_deviation, percentile, doc_count. Determines which other fields are required."
 													description_kind: "plain"
 													required:         true
 												}
 												field: {
 													type:             "string"
-													description:      "Field to aggregate. Required for aggregations: sum, avg, min, max, value_count, percentile. Must NOT be set for doc_count."
+													description:      "Field to aggregate. Required for sum, avg, min, max, value_count, last_value, cardinality, std_deviation, percentile. Must NOT be set for doc_count."
 													description_kind: "plain"
 													optional:         true
 												}
@@ -11260,8 +11670,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 					namespace: {
-						type:             "string"
-						description:      "The data stream namespace. Note: if you change its value, kibana creates new datastream. A user needs permissions for new/old datastream in update case to be able to see full monitor history. The `namespace` field should be lowercase and not contain spaces. The namespace must not include any of the following characters: *, \\, /, ?, \", <, >, |, whitespace, ,, #, :, or -. Default: `default`"
+						type: "string"
+						description: """
+									The data stream namespace. Note: if you change its value, kibana creates new datastream. A user needs permissions for new/old datastream in update case to be able to see full monitor history. The `namespace` field should be lowercase and not contain spaces. The namespace must not include any of the following characters: *, \\\\, /, ?, ", <, >, |, whitespace, ,, #, :, or -. Default: `default`
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -11279,8 +11692,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 					retest_on_failure: {
-						type:             "bool"
-						description:      "Enable or disable retesting when a monitor fails. By default, monitors are automatically retested if the monitor goes from \"up\" to \"down\". If the result of the retest is also \"down\", an error will be created, and if configured, an alert sent. Then the monitor will resume running according to the defined schedule. Using retest_on_failure can reduce noise related to transient problems. Default: `true`."
+						type: "bool"
+						description: """
+									Enable or disable retesting when a monitor fails. By default, monitors are automatically retested if the monitor goes from "up" to "down". If the result of the retest is also "down", an error will be created, and if configured, an alert sent. Then the monitor will resume running according to the defined schedule. Using retest_on_failure can reduce noise related to transient problems. Default: `true`.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -11299,8 +11715,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 					space_id: {
-						type:             "string"
-						description:      "Kibana space. The space ID that is part of the Kibana URL when inside the space. Space IDs are limited to lowercase alphanumeric, underscore, and hyphen characters (a-z, 0-9, _, and -). You are cannot change the ID with the update operation."
+						type: "string"
+						description: """
+									Kibana space. The space ID that is part of the Kibana URL when inside the space. Space IDs are limited to lowercase alphanumeric, underscore, and hyphen characters (a-z, 0-9, _, and -). You are cannot change the ID with the update operation.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -11333,15 +11752,21 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									required:         true
 								}
 								proxy_url: {
-									type:             "string"
-									description:      "The URL of the SOCKS5 proxy to use when connecting to the server. The value must be a URL with a scheme of `socks5://`. If the SOCKS5 proxy server requires client authentication, then a username and password can be embedded in the URL. When using a proxy, hostnames are resolved on the proxy server instead of on the client. You can change this behavior by setting the `proxy_use_local_resolver` option."
+									type: "string"
+									description: """
+												The URL of the SOCKS5 proxy to use when connecting to the server. The value must be a URL with a scheme of `socks5://`. If the SOCKS5 proxy server requires client authentication, then a username and password can be embedded in the URL. When using a proxy, hostnames are resolved on the proxy server instead of on the client. You can change this behavior by setting the `proxy_use_local_resolver` option.
+
+												"""
 									description_kind: "markdown"
 									optional:         true
 									computed:         true
 								}
 								proxy_use_local_resolver: {
-									type:             "bool"
-									description:      " A Boolean value that determines whether hostnames are resolved locally instead of being resolved on the proxy server. The default value is false, which means that name resolution occurs on the proxy server."
+									type: "bool"
+									description: """
+												A Boolean value that determines whether hostnames are resolved locally instead of being resolved on the proxy server. The default value is false, which means that name resolution occurs on the proxy server.
+
+												"""
 									description_kind: "markdown"
 									optional:         true
 									computed:         true
@@ -11481,8 +11906,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			block: {
 				attributes: {
 					agent_policy_id: {
-						type:             "string"
-						description:      "The ID of the agent policy associated with the private location. To create a private location for synthetics monitor you need to create an agent policy in fleet and use its agentPolicyId"
+						type: "string"
+						description: """
+									The ID of the agent policy associated with the private location. To create a private location for synthetics monitor you need to create an agent policy in fleet and use its agentPolicyId
+
+									"""
 						description_kind: "markdown"
 						required:         true
 					}
@@ -11687,7 +12115,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						deprecated:       true
 					}
 				}
-				description:      "Returns information about an enrich policy. See the [enrich policy API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-enrich-policy-api.html) for more details."
+				description: """
+					Returns information about an enrich policy. See the [enrich policy API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-enrich-policy-api.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -12023,8 +12454,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 								codec: {
-									type:             "string"
-									description:      "The `default` value compresses stored data with LZ4 compression, but this can be set to `best_compression` which uses DEFLATE for a higher compression ratio. This can be set only on creation."
+									type: "string"
+									description: """
+												The `default` value compresses stored data with LZ4 compression, but this can be set to `best_compression` which uses DEFLATE for a higher compression ratio. This can be set only on creation.
+
+												"""
 									description_kind: "plain"
 									optional:         true
 								}
@@ -12035,15 +12469,21 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 								deletion_protection: {
-									type:             "bool"
-									description:      "Whether to allow Terraform to destroy the index. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply command that deletes the instance will fail."
+									type: "bool"
+									description: """
+												Whether to allow Terraform to destroy the index. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply command that deletes the instance will fail.
+
+												"""
 									description_kind: "plain"
 									optional:         true
 									computed:         true
 								}
 								final_pipeline: {
-									type:             "string"
-									description:      "Final ingest pipeline for the index. Indexing requests will fail if the final pipeline is set and the pipeline does not exist. The final pipeline always runs after the request pipeline (if specified) and the default pipeline (if it exists). The special pipeline name _none indicates no ingest pipeline will run."
+									type: "string"
+									description: """
+												Final ingest pipeline for the index. Indexing requests will fail if the final pipeline is set and the pipeline does not exist. The final pipeline always runs after the request pipeline (if specified) and the default pipeline (if it exists). The special pipeline name `_none` indicates no ingest pipeline will run.
+
+												"""
 									description_kind: "plain"
 									optional:         true
 								}
@@ -12072,8 +12512,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 								indexing_slowlog_source: {
-									type:             "string"
-									description:      "Set the number of characters of the `_source` to include in the slowlog lines, `false` or `0` will skip logging the source entirely and setting it to `true` will log the entire source regardless of size. The original `_source` is reformatted by default to make sure that it fits on a single log line."
+									type: "string"
+									description: """
+												Set the number of characters of the `_source` to include in the slowlog lines. `false` or `0` skips logging the source entirely; `true` logs the entire source regardless of size. The original `_source` is reformatted by default to make sure that it fits on a single log line.
+
+												"""
 									description_kind: "plain"
 									optional:         true
 								}
@@ -12117,19 +12560,24 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									type: "string"
 									description: """
 												Mapping for fields in the index.
-												\t\t\t\t\t\t\tIf specified, this mapping can include: field names, [field data types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html), [mapping parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html).
-												\t\t\t\t\t\t\t**NOTE:**
-												\t\t\t\t\t\t\t- Changing datatypes in the existing _mappings_ will force index to be re-created.
-												\t\t\t\t\t\t\t- Removing field will be ignored by default same as elasticsearch. You need to recreate the index to remove field completely.
-												\t\t\t\t\t\t\t
+
+												If specified, this mapping can include: field names, [field data types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html), [mapping parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html).
+
+												**NOTE:**
+												- Changing datatypes in the existing _mappings_ will force index to be re-created.
+												- Removing a field will be ignored by default (same as Elasticsearch). You need to recreate the index to remove the field completely.
+
 												"""
 									description_kind: "plain"
 									optional:         true
 									computed:         true
 								}
 								master_timeout: {
-									type:             "string"
-									description:      "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error. Defaults to `30s`. This value is ignored when running against Serverless projects."
+									type: "string"
+									description: """
+												Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error. Defaults to `30s`. This value is ignored when running against Serverless projects.
+
+												"""
 									description_kind: "plain"
 									optional:         true
 									computed:         true
@@ -12316,8 +12764,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									computed:         true
 								}
 								shard_check_on_startup: {
-									type:             "string"
-									description:      "Whether or not shards should be checked for corruption before opening. When corruption is detected, it will prevent the shard from being opened. Accepts `false`, `true`, `checksum`."
+									type: "string"
+									description: """
+												Whether or not shards should be checked for corruption before opening. When corruption is detected, it will prevent the shard from being opened. Accepts `false`, `true`, `checksum`.
+
+												"""
 									description_kind: "plain"
 									optional:         true
 								}
@@ -12347,8 +12798,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 								wait_for_active_shards: {
-									type:             "string"
-									description:      "The number of shard copies that must be active before proceeding with the operation. Set to `all` or any positive integer up to the total number of shards in the index (number_of_replicas+1). Default: `1`, the primary shard. This value is ignored when running against Serverless projects."
+									type: "string"
+									description: """
+												The number of shard copies that must be active before proceeding with the operation. Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`). Default: `1`, the primary shard. This value is ignored when running against Serverless projects.
+
+												"""
 									description_kind: "plain"
 									optional:         true
 									computed:         true
@@ -12361,8 +12815,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 					target: {
-						type:             "string"
-						description:      "Comma-separated list of data streams, indices, and aliases used to limit the request. Supports wildcards (*). To target all data streams and indices, omit this attribute or use * or _all. "
+						type: "string"
+						description: """
+									Comma-separated list of data streams, indices, and aliases used to limit the request. Supports wildcards (*).
+
+									To target all data streams and indices, omit this attribute or use `*` or `_all`.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 					}
@@ -12473,8 +12932,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 					media_type: {
-						type:             "string"
-						description:      "The media type for encoding value. Applies only when value is a template snippet. Must be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`. Supported only from Elasticsearch version **7.15**."
+						type: "string"
+						description: """
+									The media type for encoding value. Applies only when value is a template snippet. Must be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`. Supported only from Elasticsearch version **7.15**.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -12497,7 +12959,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for an append processor. This processor appends one or more values to an existing array if the field already exists and it is an array. Converts a scalar to an array and appends one or more values to it if the field exists and it is a scalar. Creates an array containing the provided values if the field doesn’t exist. See the [append processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/append-processor.html) for more details."
+				description: """
+					Helper data source which can be used to create the configuration for an append processor. This processor appends one or more values to an existing array if the field already exists and it is an array. Converts a scalar to an array and appends one or more values to it if the field exists and it is a scalar. Creates an array containing the provided values if the field doesn’t exist. See the [append processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/append-processor.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -12653,7 +13118,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for an circle processor. This processor converts circle definitions of shapes to regular polygons which approximate them. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-circle-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for an circle processor. This processor converts circle definitions of shapes to regular polygons which approximate them. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-circle-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -12734,8 +13202,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 					seed: {
-						type:             "number"
-						description:      "Seed for the community ID hash. Must be between 0 and 65535 (inclusive). The seed can prevent hash collisions between network domains, such as a staging and production network that use the same addressing scheme."
+						type: "number"
+						description: """
+									Seed for the community ID hash. Must be between 0 and 65535 (inclusive). The seed can prevent hash collisions between network domains, such as a staging and production network that use the same addressing scheme.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -13309,7 +13780,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a dot expander processor. This processor expands a field with dots into an object field. See the [dot expand processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/dot-expand-processor.html) for more details."
+				description: """
+					Helper data source which can be used to create the configuration for a dot expander processor. This processor expands a field with dots into an object field. See the [dot expand processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/dot-expand-processor.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -13360,7 +13834,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a drop processor. This processor drops the document without raising any errors. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/drop-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a drop processor. This processor drops the document without raising any errors. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/drop-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -13453,7 +13930,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for an enrich processor. The enrich processor can enrich documents with data from another index. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for an enrich processor. The enrich processor can enrich documents with data from another index. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -13510,7 +13990,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a fail processor. This processor raises an exception. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/fail-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a fail processor. This processor raises an exception. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/fail-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -13591,7 +14074,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a fingerprint processor. This processor computes a hash of the document’s content. See the [fingerprint processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/fingerprint-processor.html) for more details."
+				description: """
+					Helper data source which can be used to create the configuration for a fingerprint processor. This processor computes a hash of the document’s content. See the [fingerprint processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/fingerprint-processor.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -13683,8 +14169,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			block: {
 				attributes: {
 					database_file: {
-						type:             "string"
-						description:      "The database filename referring to a database the module ships with (GeoLite2-City.mmdb, GeoLite2-Country.mmdb, or GeoLite2-ASN.mmdb) or a custom database in the `ingest-geoip` config directory."
+						type: "string"
+						description: """
+									The database filename referring to a database the module ships with (GeoLite2-City.mmdb, GeoLite2-Country.mmdb, or GeoLite2-ASN.mmdb) or a custom database in the `ingest-geoip` config directory.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -13914,7 +14403,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a gsub processor. This processor converts a string field by applying a regular expression and a replacement. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/gsub-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a gsub processor. This processor converts a string field by applying a regular expression and a replacement. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/gsub-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -13983,7 +14475,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for an HTML strip processor. This processor removes HTML tags from the field. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/htmlstrip-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for an HTML strip processor. This processor removes HTML tags from the field. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/htmlstrip-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -14052,7 +14547,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a join processor. This processor joins each element of an array into a single string using a separator character between each element. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/join-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a join processor. This processor joins each element of an array into a single string using a separator character between each element. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/join-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -14067,8 +14565,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 					add_to_root_conflict_strategy: {
-						type:             "string"
-						description:      "When set to `replace`, root fields that conflict with fields from the parsed JSON will be overridden. When set to `merge`, conflicting fields will be merged. Only applicable if `add_to_root` is set to `true`."
+						type: "string"
+						description: """
+									When set to `replace`, root fields that conflict with fields from the parsed JSON will be overridden. When set to `merge`, conflicting fields will be merged. Only applicable if `add_to_root` is set to `true`.
+
+									"""
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -14133,7 +14634,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a JSON processor. This processor converts a JSON string into a structured JSON object. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/json-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a JSON processor. This processor converts a JSON string into a structured JSON object. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/json-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -14250,7 +14754,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a KV processor. This processor helps automatically parse messages (or specific event fields) which are of the foo=bar variety. See the [KV processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/kv-processor.html) for more details."
+				description: """
+					Helper data source which can be used to create the configuration for a KV processor. This processor helps automatically parse messages (or specific event fields) which are of the foo=bar variety. See the [KV processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/kv-processor.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -14319,7 +14826,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a lowercase processor. This processor converts a string to its lowercase equivalent. If the field is an array of strings, all members of the array will be converted. See the [lowercase processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/lowercase-processor.html) for more details."
+				description: """
+					Helper data source which can be used to create the configuration for a lowercase processor. This processor converts a string to its lowercase equivalent. If the field is an array of strings, all members of the array will be converted. See the [lowercase processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/lowercase-processor.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -14483,7 +14993,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a pipeline processor. This processor executes another pipeline. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/pipeline-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a pipeline processor. This processor executes another pipeline. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/pipeline-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -14552,7 +15065,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a registered domain processor. This processor extracts the registered domain (also known as the effective top-level domain or eTLD), sub-domain, and top-level domain from a fully qualified domain name (FQDN). See: https://www.elastic.co/guide/en/elasticsearch/reference/current/registered-domain-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a registered domain processor. This processor extracts the registered domain (also known as the effective top-level domain or eTLD), sub-domain, and top-level domain from a fully qualified domain name (FQDN). See: https://www.elastic.co/guide/en/elasticsearch/reference/current/registered-domain-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -14615,7 +15131,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a remove processor. This processor removes existing fields. See the [remove processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/remove-processor.html) for more details."
+				description: """
+					Helper data source which can be used to create the configuration for a remove processor. This processor removes existing fields. See the [remove processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/remove-processor.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -14684,7 +15203,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a rename processor. This processor renames an existing field. See the [rename processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/rename-processor.html) for more details."
+				description: """
+					Helper data source which can be used to create the configuration for a rename processor. This processor renames an existing field. See the [rename processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/rename-processor.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -14753,7 +15275,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a reroute processor. This processor reroutes a document to a different data stream, index, or index alias. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/reroute-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a reroute processor. This processor reroutes a document to a different data stream, index, or index alias. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/reroute-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -14828,7 +15353,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a script processor. This processor runs an inline or stored script on incoming documents. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/script-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a script processor. This processor runs an inline or stored script on incoming documents. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/script-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -14915,7 +15443,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a set processor. This processor sets one field and associates it with the specified value. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/set-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a set processor. This processor sets one field and associates it with the specified value. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/set-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -14978,7 +15509,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a set security user processor. This processor sets user-related details (such as username, roles, email, full_name, metadata, api_key, realm and authentication_type) from the current authenticated user to the current document by pre-processing the ingest. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-node-set-security-user-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a set security user processor. This processor sets user-related details (such as username, roles, email, full_name, metadata, api_key, realm and authentication_type) from the current authenticated user to the current document by pre-processing the ingest. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-node-set-security-user-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -15047,7 +15581,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a sort processor. This processor sorts the elements of an array ascending or descending. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a sort processor. This processor sorts the elements of an array ascending or descending. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -15128,7 +15665,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a split processor. This processor splits a field into an array using a separator character. See the [split processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/split-processor.html) for more details."
+				description: """
+					Helper data source which can be used to create the configuration for a split processor. This processor splits a field into an array using a separator character. See the [split processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/split-processor.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -15197,7 +15737,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a trim processor. This processor trims whitespace from field. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/trim-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a trim processor. This processor trims whitespace from field. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/trim-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -15266,7 +15809,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for an uppercase processor. This processor converts a string to its uppercase equivalent. If the field is an array of strings, all members of the array will be converted. See the [uppercase processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/uppercase-processor.html) for more details."
+				description: """
+					Helper data source which can be used to create the configuration for an uppercase processor. This processor converts a string to its uppercase equivalent. If the field is an array of strings, all members of the array will be converted. See the [uppercase processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/uppercase-processor.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -15341,7 +15887,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a URI parts processor. This processor parses a Uniform Resource Identifier (URI) string and extracts its components as an object. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/uri-parts-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a URI parts processor. This processor parses a Uniform Resource Identifier (URI) string and extracts its components as an object. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/uri-parts-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -15410,7 +15959,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a URL-decode processor. This processor URL-decodes a string. See the [URL decode processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/urldecode-processor.html) for more details."
+				description: """
+					Helper data source which can be used to create the configuration for a URL-decode processor. This processor URL-decodes a string. See the [URL decode processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/urldecode-processor.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -15467,7 +16019,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				description:      "Helper data source which can be used to create the configuration for a user agent processor. This processor extracts details from the user agent string a browser sends with its web requests. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/user-agent-processor.html"
+				description: """
+					Helper data source which can be used to create the configuration for a user agent processor. This processor extracts details from the user agent string a browser sends with its web requests. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/user-agent-processor.html
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -15547,7 +16102,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							privileges: ["set", "string"]
 							query: "string"
 						}]]
-						description:      "A list of remote indices permissions entries. Remote indices are effective for remote clusters configured with the API key based model. They have no effect for remote clusters configured with the certificate based model."
+						description: """
+									A list of remote indices permissions entries.
+
+									Remote indices are effective for remote clusters configured with the API key based model. They have no effect for remote clusters configured with the certificate based model.
+
+									"""
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -15965,7 +16525,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					max_items: 1
 				}
-				description:      "Get the information about the user in the ES cluster. See the [security API get user documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-user.html) for more details."
+				description: """
+					Get the information about the user in the ES cluster.
+
+					See the [security API get user documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-user.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -16205,14 +16770,20 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 					policy_id: {
-						type:             "string"
-						description:      "The identifier of the target agent policy. When provided, only the enrollment tokens associated with this agent policy will be selected. Omit this value to select all enrollment tokens."
+						type: "string"
+						description: """
+									The identifier of the target agent policy. When provided, only the enrollment tokens associated with this agent policy will be selected. Omit this value to select all enrollment tokens.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 					}
 					space_id: {
-						type:             "string"
-						description:      "The Kibana space ID to query enrollment tokens from. When the agent policy is space-scoped, this must be set to match the policy's space. If not specified, queries the default space."
+						type: "string"
+						description: """
+									The Kibana space ID to query enrollment tokens from. When the agent policy is space-scoped, this must be set to match the policy's space. If not specified, queries the default space.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 					}
@@ -16270,7 +16841,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
-				description:      "Retrieves Elasticsearch API keys used to enroll Elastic Agents in Fleet. See the [Fleet enrollment tokens documentation](https://www.elastic.co/guide/en/fleet/current/fleet-enrollment-tokens.html) for more details."
+				description: """
+					Retrieves Elasticsearch API keys used to enroll Elastic Agents in Fleet. See the [Fleet enrollment tokens documentation](https://www.elastic.co/guide/en/fleet/current/fleet-enrollment-tokens.html) for more details.
+
+					"""
 				description_kind: "plain"
 			}
 		}
