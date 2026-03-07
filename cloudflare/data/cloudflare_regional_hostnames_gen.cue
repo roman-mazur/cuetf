@@ -7,6 +7,9 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Identifier.
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// When the regional hostname was created
@@ -47,8 +50,5 @@ package data
 			// Configure which routing method to use for the regional hostname
 			routing?: string
 		})]])
-
-		// Identifier.
-		zone_id!: string
 	})
 }

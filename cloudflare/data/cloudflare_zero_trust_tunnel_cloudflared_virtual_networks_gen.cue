@@ -15,6 +15,22 @@ package data
 		// virtual networks will be included.
 		is_default?: bool
 
+		// If `true`, only include the default virtual network. If
+		// `false`, exclude the default virtual network. If empty, all
+		// virtual networks will be included.
+		is_default_network?: bool
+
+		// If `true`, only include deleted virtual networks. If `false`,
+		// exclude deleted virtual networks. If empty, all virtual
+		// networks will be included.
+		is_deleted?: bool
+
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// A user-friendly name for the virtual network.
+		name?: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Optional remark describing the virtual network.
@@ -55,21 +71,5 @@ package data
 			// A user-friendly name for the virtual network.
 			name?: string
 		})]])
-
-		// If `true`, only include the default virtual network. If
-		// `false`, exclude the default virtual network. If empty, all
-		// virtual networks will be included.
-		is_default_network?: bool
-
-		// If `true`, only include deleted virtual networks. If `false`,
-		// exclude deleted virtual networks. If empty, all virtual
-		// networks will be included.
-		is_deleted?: bool
-
-		// Max items to fetch, default: 1000
-		max_items?: number
-
-		// A user-friendly name for the virtual network.
-		name?: string
 	})
 }

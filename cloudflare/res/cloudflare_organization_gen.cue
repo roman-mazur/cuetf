@@ -6,6 +6,7 @@ package res
 	close({
 		create_time?: string
 		id?:          string
+		name!:        string
 		meta?: close({
 			// Enable features for Organizations.
 			flags?: close({
@@ -21,7 +22,6 @@ package res
 			id!:   string
 			name?: string
 		})
-		name!: string
 		profile?: close({
 			business_address!:  string
 			business_email!:    string

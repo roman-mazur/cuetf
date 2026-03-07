@@ -63,6 +63,20 @@ package res
 		// "web_analytics_metrics_update",
 		// "zone_aop_custom_certificate_expiration_type".
 		alert_type!: string
+		created?:    string
+
+		// Optional description for the Notification policy.
+		description?: string
+
+		// Whether or not the Notification policy is enabled.
+		enabled?: bool
+
+		// UUID
+		id?:       string
+		modified?: string
+
+		// Name of the policy.
+		name!: string
 
 		// Optional filters that allow you to be alerted only on a subset
 		// of events for that alert type based on some criteria. This is
@@ -199,13 +213,6 @@ package res
 			zones?: [...string]
 		})
 
-		// Optional description for the Notification policy.
-		description?: string
-		created?:     string
-
-		// Whether or not the Notification policy is enabled.
-		enabled?: bool
-
 		// List of IDs that will be used when dispatching a notification.
 		// IDs for email type will be the email address.
 		mechanisms!: close({
@@ -231,12 +238,5 @@ package res
 				id?: string
 			})]])
 		})
-
-		// UUID
-		id?:       string
-		modified?: string
-
-		// Name of the policy.
-		name!: string
 	})
 }

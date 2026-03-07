@@ -10,10 +10,10 @@ package res
 
 		// Request content.
 		content?: string
+		created?: string
 
 		// UUID.
-		id?:      string
-		created?: string
+		id?: string
 
 		// Tokens for the request messages.
 		message_tokens?: number

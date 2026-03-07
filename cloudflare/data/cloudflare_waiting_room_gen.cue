@@ -4,13 +4,6 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_waiting_room")
 	close({
-		// Appends a '_' + a custom suffix to the end of Cloudflare
-		// Waiting Room's cookie name(__cf_waitingroom). If
-		// `cookie_suffix` is "abcd", the cookie name will be
-		// `__cf_waitingroom_abcd`. This field is required if using
-		// `additional_routes`.
-		cookie_suffix?: string
-
 		// Only available for the Waiting Room Advanced subscription.
 		// Additional hostname and path combinations to which this
 		// waiting room will be applied. There is an implied wildcard at
@@ -63,7 +56,13 @@ package data
 			// Available values: "auto", "always", "never".
 			secure?: string
 		})
-		created_on?: string
+
+		// Appends a '_' + a custom suffix to the end of Cloudflare
+		// Waiting Room's cookie name(__cf_waitingroom). If
+		// `cookie_suffix` is "abcd", the cookie name will be
+		// `__cf_waitingroom_abcd`. This field is required if using
+		// `additional_routes`.
+		cookie_suffix?: string
 
 		// Only available for the Waiting Room Advanced subscription. This
 		// is a template html file that will be rendered at the edge. If
@@ -120,7 +119,6 @@ package data
 		// wildcards). Please do not include the scheme (http:// or
 		// https://). The host and path combination must be unique.
 		host?: string
-		id?:   string
 
 		// Only available for the Waiting Room Advanced subscription. If
 		// `true`, requests to the waiting room with the header `Accept:
@@ -295,8 +293,7 @@ package data
 
 		// A unique name to identify the waiting room. Only alphanumeric
 		// characters, hyphens and underscores are allowed.
-		name?:        string
-		modified_on?: string
+		name?: string
 
 		// Sets the number of new users that will be let into the route
 		// every minute. This value is used as baseline for the number of
@@ -408,10 +405,13 @@ package data
 		// `off` or `invisible` requires Advanced Waiting Room.
 		// Available values: "off", "invisible",
 		// "visible_non_interactive", "visible_managed".
-		turnstile_mode?:  string
-		waiting_room_id!: string
+		turnstile_mode?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id!:         string
+		created_on?:      string
+		id?:              string
+		modified_on?:     string
+		waiting_room_id!: string
 	})
 }

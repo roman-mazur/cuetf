@@ -16,6 +16,15 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Worker service associated with the zone and hostname.
+		service?: string
+
+		// Identifier of the zone.
+		zone_id?: string
+
+		// Name of the zone.
+		zone_name?: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Hostname of the Worker Domain.
@@ -48,14 +57,5 @@ package data
 			// Name of the zone.
 			zone_name?: string
 		})]])
-
-		// Worker service associated with the zone and hostname.
-		service?: string
-
-		// Identifier of the zone.
-		zone_id?: string
-
-		// Name of the zone.
-		zone_name?: string
 	})
 }

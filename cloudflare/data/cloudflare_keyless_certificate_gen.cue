@@ -13,15 +13,6 @@ package data
 		// The keyless SSL name.
 		host?: string
 
-		// Configuration for using Keyless SSL through a Cloudflare Tunnel
-		tunnel?: close({
-			// Private IP of the Key Server Host
-			private_ip?: string
-
-			// Cloudflare Tunnel Virtual Network ID
-			vnet_id?: string
-		})
-
 		// Identifier.
 		id?: string
 
@@ -48,5 +39,14 @@ package data
 
 		// Identifier.
 		zone_id!: string
+
+		// Configuration for using Keyless SSL through a Cloudflare Tunnel
+		tunnel?: close({
+			// Private IP of the Key Server Host
+			private_ip?: string
+
+			// Cloudflare Tunnel Virtual Network ID
+			vnet_id?: string
+		})
 	})
 }

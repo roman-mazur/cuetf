@@ -48,17 +48,18 @@ package data
 			// header cannot be overridden. This parameter is only valid for
 			// HTTP and HTTPS monitors.
 			header?: [string]: [...string]
+			id?: string
 
 			// The interval between each health check. Shorter intervals may
 			// improve failover time, but will increase load on the origins
 			// as we check from multiple locations.
 			interval?: number
-			id?:       string
 
 			// The method to use for the health check. This defaults to 'GET'
 			// for HTTP/HTTPS based checks and 'connection_established' for
 			// TCP based health checks.
-			method?: string
+			method?:      string
+			modified_on?: string
 
 			// The endpoint path you want to conduct a health check against.
 			// This parameter is only valid for HTTP and HTTPS monitors.
@@ -68,8 +69,7 @@ package data
 			// for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should
 			// only define the port when using a non-standard port (HTTP:
 			// default 80, HTTPS: default 443).
-			port?:        number
-			modified_on?: string
+			port?: number
 
 			// Assign this monitor to emulate the specified zone while
 			// probing. This parameter is only valid for HTTP and HTTPS
@@ -128,17 +128,18 @@ package data
 			// header cannot be overridden. This parameter is only valid for
 			// HTTP and HTTPS monitors.
 			header?: [string]: [...string]
+			id?: string
 
 			// The interval between each health check. Shorter intervals may
 			// improve failover time, but will increase load on the origins
 			// as we check from multiple locations.
 			interval?: number
-			id?:       string
 
 			// The method to use for the health check. This defaults to 'GET'
 			// for HTTP/HTTPS based checks and 'connection_established' for
 			// TCP based health checks.
-			method?: string
+			method?:      string
+			modified_on?: string
 
 			// The endpoint path you want to conduct a health check against.
 			// This parameter is only valid for HTTP and HTTPS monitors.
@@ -148,8 +149,7 @@ package data
 			// for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should
 			// only define the port when using a non-standard port (HTTP:
 			// default 80, HTTPS: default 443).
-			port?:        number
-			modified_on?: string
+			port?: number
 
 			// Assign this monitor to emulate the specified zone while
 			// probing. This parameter is only valid for HTTP and HTTPS

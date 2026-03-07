@@ -23,9 +23,6 @@ package res
 		// Identifier.
 		id?: string
 
-		// Routing rule name.
-		name?: string
-
 		// List of matchers for the catch-all routing rule.
 		matchers!: matchN(1, [close({
 			// Type of matcher. Default is 'all'.
@@ -36,6 +33,9 @@ package res
 			// Available values: "all".
 			type!: string
 		})]])
+
+		// Routing rule name.
+		name?: string
 
 		// Identifier.
 		zone_id!: string

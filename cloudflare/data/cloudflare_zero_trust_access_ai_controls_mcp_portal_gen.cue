@@ -4,23 +4,25 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_access_ai_controls_mcp_portal")
 	close({
-		account_id!: string
-		created_at?: string
-		filter?: close({
-			// Search by id, name, hostname
-			search?: string
-		})
-
-		// portal id
-		id?:          string
+		account_id!:  string
+		created_at?:  string
 		created_by?:  string
 		description?: string
 		hostname?:    string
 
+		// portal id
+		id?:          string
+		modified_at?: string
+		modified_by?: string
+		name?:        string
+
 		// Route outbound MCP traffic through Zero Trust Secure Web
 		// Gateway
 		secure_web_gateway?: bool
-		modified_at?:        string
+		filter?: close({
+			// Search by id, name, hostname
+			search?: string
+		})
 		servers?: matchN(1, [close({
 			// Available values: "oauth", "bearer", "unauthenticated".
 			auth_type?:        string
@@ -76,7 +78,5 @@ package data
 			updated_prompts?: _
 			updated_tools?:   _
 		})]])
-		modified_by?: string
-		name?:        string
 	})
 }

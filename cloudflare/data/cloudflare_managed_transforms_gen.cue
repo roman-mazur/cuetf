@@ -7,6 +7,9 @@ package data
 		// The unique ID of the zone.
 		id?: string
 
+		// The unique ID of the zone.
+		zone_id!: string
+
 		// The list of Managed Request Transforms.
 		managed_request_headers?: matchN(1, [close({
 			// Whether the Managed Transform is enabled.
@@ -21,9 +24,6 @@ package data
 			// The human-readable identifier of the Managed Transform.
 			id?: string
 		})]])
-
-		// The unique ID of the zone.
-		zone_id!: string
 
 		// The list of Managed Response Transforms.
 		managed_response_headers?: matchN(1, [close({

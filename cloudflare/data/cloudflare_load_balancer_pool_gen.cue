@@ -4,18 +4,36 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_load_balancer_pool")
 	close({
+		filter?: close({
+			// The ID of the Monitor to use for checking the health of origins
+			// within this pool.
+			monitor?: string
+		})
+
 		// Identifier.
 		account_id!: string
 
 		// A list of regions from which to run health checks. Null means
 		// every Cloudflare data center.
 		check_regions?: [...string]
-		created_on?: string
-		filter?: close({
-			// The ID of the Monitor to use for checking the health of origins
-			// within this pool.
-			monitor?: string
-		})
+
+		// A human-readable description of the pool.
+		description?: string
+
+		// This field shows up only if the pool is disabled. This field is
+		// set with the time the pool was disabled at.
+		disabled_at?: string
+
+		// Whether to enable (the default) or disable this pool. Disabled
+		// pools will not receive traffic and are excluded from health
+		// checks. Disabling a pool will cause any load balancers using
+		// it to failover to the next pool (if any).
+		enabled?: bool
+
+		// The latitude of the data center containing the origins used in
+		// this pool in decimal degrees. If this is set, longitude must
+		// also be set.
+		latitude?: number
 
 		// Configures load shedding policies and percentages for the pool.
 		load_shedding?: close({
@@ -41,8 +59,39 @@ package data
 			session_policy?: string
 		})
 
-		// A human-readable description of the pool.
-		description?: string
+		// The longitude of the data center containing the origins used in
+		// this pool in decimal degrees. If this is set, latitude must
+		// also be set.
+		longitude?: number
+
+		// The minimum number of origins that must be healthy for this
+		// pool to serve traffic. If the number of healthy origins falls
+		// below this number, the pool will be marked unhealthy and will
+		// failover to the next available pool.
+		minimum_origins?: number
+
+		// The ID of the Monitor to use for checking the health of origins
+		// within this pool.
+		monitor?: string
+
+		// The ID of the Monitor Group to use for checking the health of
+		// origins within this pool.
+		monitor_group?: string
+
+		// A short name (tag) for the pool. Only alphanumeric characters,
+		// hyphens, and underscores are allowed.
+		name?: string
+
+		// List of networks where Load Balancer or Pool is enabled.
+		networks?: [...string]
+
+		// This field is now deprecated. It has been moved to Cloudflare's
+		// Centralized Notification service
+		// https://developers.cloudflare.com/fundamentals/notifications/.
+		// The email address to send health status notifications to. This
+		// can be an individual mailbox or a mailing list. Multiple
+		// emails can be supplied as a comma delimited list.
+		notification_email?: string
 
 		// Filter pool and origin health notifications by resource type or
 		// health status. Use null to reset.
@@ -74,41 +123,6 @@ package data
 			})
 		})
 
-		// This field shows up only if the pool is disabled. This field is
-		// set with the time the pool was disabled at.
-		disabled_at?: string
-
-		// Whether to enable (the default) or disable this pool. Disabled
-		// pools will not receive traffic and are excluded from health
-		// checks. Disabling a pool will cause any load balancers using
-		// it to failover to the next pool (if any).
-		enabled?: bool
-
-		// The latitude of the data center containing the origins used in
-		// this pool in decimal degrees. If this is set, longitude must
-		// also be set.
-		latitude?: number
-
-		// The longitude of the data center containing the origins used in
-		// this pool in decimal degrees. If this is set, latitude must
-		// also be set.
-		longitude?: number
-
-		// The minimum number of origins that must be healthy for this
-		// pool to serve traffic. If the number of healthy origins falls
-		// below this number, the pool will be marked unhealthy and will
-		// failover to the next available pool.
-		minimum_origins?: number
-		id?:              string
-
-		// The ID of the Monitor to use for checking the health of origins
-		// within this pool.
-		monitor?: string
-
-		// The ID of the Monitor Group to use for checking the health of
-		// origins within this pool.
-		monitor_group?: string
-
 		// Configures origin steering for the pool. Controls how origins
 		// are selected for new sessions and traffic without session
 		// affinity.
@@ -130,22 +144,6 @@ package data
 			// "least_outstanding_requests", "least_connections".
 			policy?: string
 		})
-
-		// A short name (tag) for the pool. Only alphanumeric characters,
-		// hyphens, and underscores are allowed.
-		name?: string
-
-		// List of networks where Load Balancer or Pool is enabled.
-		networks?: [...string]
-
-		// This field is now deprecated. It has been moved to Cloudflare's
-		// Centralized Notification service
-		// https://developers.cloudflare.com/fundamentals/notifications/.
-		// The email address to send health status notifications to. This
-		// can be an individual mailbox or a mailing list. Multiple
-		// emails can be supplied as a comma delimited list.
-		notification_email?: string
-		modified_on?:        string
 
 		// The list of origins within this pool. Traffic directed at this
 		// pool is balanced across all currently healthy origins,
@@ -175,15 +173,6 @@ package data
 			// default port for the protocol will be used.
 			port?: number
 
-			// The request header is used to pass additional information with
-			// an HTTP request. Currently supported header is 'Host'.
-			header?: close({
-				// The 'Host' header allows to override the hostname set in the
-				// HTTP request. Current support is 1 'Host' header override per
-				// origin.
-				host?: [...string]
-			})
-
 			// The virtual network subnet ID the origin belongs in. Virtual
 			// network must also belong to the account.
 			virtual_network_id?: string
@@ -196,6 +185,15 @@ package data
 			// - `origin_steering.policy="least_connections"`: Use weight to
 			// scale the origin's open connections.
 			weight?: number
+
+			// The request header is used to pass additional information with
+			// an HTTP request. Currently supported header is 'Host'.
+			header?: close({
+				// The 'Host' header allows to override the hostname set in the
+				// HTTP request. Current support is 1 'Host' header override per
+				// origin.
+				host?: [...string]
+			})
 		}), [...close({
 			// The IP address (IPv4 or IPv6) of the origin, or its publicly
 			// addressable hostname. Hostnames entered here should resolve
@@ -221,15 +219,6 @@ package data
 			// default port for the protocol will be used.
 			port?: number
 
-			// The request header is used to pass additional information with
-			// an HTTP request. Currently supported header is 'Host'.
-			header?: close({
-				// The 'Host' header allows to override the hostname set in the
-				// HTTP request. Current support is 1 'Host' header override per
-				// origin.
-				host?: [...string]
-			})
-
 			// The virtual network subnet ID the origin belongs in. Virtual
 			// network must also belong to the account.
 			virtual_network_id?: string
@@ -242,7 +231,19 @@ package data
 			// - `origin_steering.policy="least_connections"`: Use weight to
 			// scale the origin's open connections.
 			weight?: number
+
+			// The request header is used to pass additional information with
+			// an HTTP request. Currently supported header is 'Host'.
+			header?: close({
+				// The 'Host' header allows to override the hostname set in the
+				// HTTP request. Current support is 1 'Host' header override per
+				// origin.
+				host?: [...string]
+			})
 		})]])
-		pool_id?: string
+		created_on?:  string
+		id?:          string
+		modified_on?: string
+		pool_id?:     string
 	})
 }

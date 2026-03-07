@@ -7,6 +7,15 @@ package data
 		// Whether the setting is editable.
 		editable?: bool
 
+		// Identifier.
+		id?: string
+
+		// Last time this setting was modified.
+		modified_on?: string
+
+		// Identifier.
+		zone_id!: string
+
 		// Value of the zone setting.
 		value?: close({
 			// List of strings with the MIME types of all the variants that
@@ -53,14 +62,5 @@ package data
 			// should be served for webp.
 			webp?: [...string]
 		})
-
-		// Identifier.
-		id?: string
-
-		// Last time this setting was modified.
-		modified_on?: string
-
-		// Identifier.
-		zone_id!: string
 	})
 }

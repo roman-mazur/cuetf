@@ -70,6 +70,17 @@ package res
 		// Available values: "allow", "block".
 		sbfm_verified_bots?: string
 
+		// Whether to disable tracking the highest bot score for a session
+		// in the Bot Management cookie.
+		suppress_session_score?: bool
+
+		// A read-only field that indicates whether the zone currently is
+		// running the latest ML model.
+		using_latest_model?: bool
+
+		// Identifier.
+		zone_id!: string
+
 		// A read-only field that shows which unauthorized settings are
 		// currently active on the zone. These settings typically result
 		// from upgrades or downgrades.
@@ -100,16 +111,5 @@ package res
 			// Indicates that the zone's session score tracking is disabled.
 			suppress_session_score?: bool
 		})
-
-		// Whether to disable tracking the highest bot score for a session
-		// in the Bot Management cookie.
-		suppress_session_score?: bool
-
-		// A read-only field that indicates whether the zone currently is
-		// running the latest ML model.
-		using_latest_model?: bool
-
-		// Identifier.
-		zone_id!: string
 	})
 }

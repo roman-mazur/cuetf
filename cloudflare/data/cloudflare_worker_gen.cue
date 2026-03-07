@@ -7,6 +7,27 @@ package data
 		// Identifier.
 		account_id!: string
 
+		// When the Worker was created.
+		created_on?: string
+
+		// Identifier for the Worker, which can be ID or name.
+		id?: string
+
+		// Whether logpush is enabled for the Worker.
+		logpush?: bool
+
+		// Name of the Worker.
+		name?: string
+
+		// Tags associated with the Worker.
+		tags?: [...string]
+
+		// When the Worker was most recently updated.
+		updated_on?: string
+
+		// Identifier for the Worker, which can be ID or name.
+		worker_id!: string
+
 		// Observability settings for the Worker.
 		observability?: close({
 			// Whether observability is enabled for the Worker.
@@ -30,12 +51,6 @@ package data
 				invocation_logs?: bool
 			})
 		})
-
-		// When the Worker was created.
-		created_on?: string
-
-		// Identifier for the Worker, which can be ID or name.
-		id?: string
 
 		// Other resources that reference the Worker and depend on it
 		// existing.
@@ -167,18 +182,6 @@ package data
 			})]])
 		})
 
-		// Whether logpush is enabled for the Worker.
-		logpush?: bool
-
-		// Name of the Worker.
-		name?: string
-
-		// Tags associated with the Worker.
-		tags?: [...string]
-
-		// When the Worker was most recently updated.
-		updated_on?: string
-
 		// Subdomain settings for the Worker.
 		subdomain?: close({
 			// Whether the *.workers.dev subdomain is enabled for the Worker.
@@ -198,8 +201,5 @@ package data
 			// Name of the consumer Worker.
 			name?: string
 		})]])
-
-		// Identifier for the Worker, which can be ID or name.
-		worker_id!: string
 	})
 }

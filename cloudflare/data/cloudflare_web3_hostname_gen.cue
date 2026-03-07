@@ -16,7 +16,8 @@ package data
 		id?: string
 
 		// Specify the identifier of the hostname.
-		identifier!: string
+		identifier!:  string
+		modified_on?: string
 
 		// Specify the hostname that points to the target gateway via
 		// CNAME.
@@ -24,8 +25,7 @@ package data
 
 		// Specifies the status of the hostname's activation.
 		// Available values: "active", "pending", "deleting", "error".
-		status?:      string
-		modified_on?: string
+		status?: string
 
 		// Specify the target gateway of the hostname.
 		// Available values: "ethereum", "ipfs", "ipfs_universal_path".

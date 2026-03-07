@@ -20,10 +20,10 @@ package data
 		// Identify the certificate with a UUID.
 		certificate_id!: string
 		created_at?:     string
+		expires_on?:     string
 
 		// Provide the SHA256 fingerprint of the certificate (read-only).
 		fingerprint?: string
-		expires_on?:  string
 
 		// Identify the certificate with a UUID.
 		id?: string

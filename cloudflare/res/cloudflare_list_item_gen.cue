@@ -10,16 +10,6 @@ package res
 		// A non-negative 32 bit integer
 		asn?: number
 
-		// Valid characters for hostnames are ASCII(7) letters from a to
-		// z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
-		hostname?: close({
-			// Only applies to wildcard hostnames (e.g., *.example.com). When
-			// true (default), only subdomains are blocked. When false, both
-			// the root domain and subdomains are blocked.
-			exclude_exact_hostname?: bool
-			url_hostname!:           string
-		})
-
 		// An informative summary of the list item.
 		comment?: string
 
@@ -42,15 +32,25 @@ package res
 		// The unique operation ID of the asynchronous action.
 		operation_id?: string
 
+		// Valid characters for hostnames are ASCII(7) letters from a to
+		// z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+		hostname?: close({
+			// Only applies to wildcard hostnames (e.g., *.example.com). When
+			// true (default), only subdomains are blocked. When false, both
+			// the root domain and subdomains are blocked.
+			exclude_exact_hostname?: bool
+			url_hostname!:           string
+		})
+
 		// The definition of the redirect.
 		redirect?: close({
 			include_subdomains?:    bool
 			preserve_path_suffix?:  bool
 			preserve_query_string?: bool
+			source_url!:            string
 
 			// Available values: 301, 302, 307, 308.
 			status_code?:      number
-			source_url!:       string
 			subpath_matching?: bool
 			target_url!:       string
 		})

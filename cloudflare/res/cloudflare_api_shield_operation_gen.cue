@@ -10,6 +10,24 @@ package res
 		// further be Cloudflare-normalized upon insertion. See:
 		// https://developers.cloudflare.com/rules/normalization/how-it-works/.
 		endpoint!: string
+
+		// RFC3986-compliant host.
+		host!: string
+
+		// UUID.
+		id?:           string
+		last_updated?: string
+
+		// The HTTP method used to access the endpoint.
+		// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT",
+		// "DELETE", "CONNECT", "PATCH", "TRACE".
+		method!: string
+
+		// UUID.
+		operation_id?: string
+
+		// Identifier.
+		zone_id!: string
 		features?: close({
 			// API Routing settings on endpoint.
 			api_routing?: close({
@@ -68,22 +86,23 @@ package res
 				})
 			})
 			schema_info?: close({
-				// True if a Cloudflare-provided learned schema is available for
-				// this endpoint.
-				learned_available?: bool
-
 				// Schema active on endpoint.
 				active_schema?: close({
+					created_at?: string
+
 					// UUID.
 					id?: string
 
 					// True if schema is Cloudflare-provided.
 					is_learned?: bool
-					created_at?: string
 
 					// Schema file name.
 					name?: string
 				})
+
+				// True if a Cloudflare-provided learned schema is available for
+				// this endpoint.
+				learned_available?: bool
 
 				// Action taken on requests failing validation.
 				// Available values: "none", "log", "block".
@@ -95,11 +114,11 @@ package res
 
 				// The number of data points used for the threshold suggestion
 				// calculation.
-				data_points?: number
+				data_points?:  number
+				last_updated?: string
 
 				// The p50 quantile of requests (in period_seconds).
-				p50?:          number
-				last_updated?: string
+				p50?: number
 
 				// The p90 quantile of requests (in period_seconds).
 				p90?: number
@@ -118,23 +137,5 @@ package res
 				suggested_threshold?: number
 			})
 		})
-
-		// RFC3986-compliant host.
-		host!: string
-
-		// UUID.
-		id?: string
-
-		// The HTTP method used to access the endpoint.
-		// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT",
-		// "DELETE", "CONNECT", "PATCH", "TRACE".
-		method!:       string
-		last_updated?: string
-
-		// UUID.
-		operation_id?: string
-
-		// Identifier.
-		zone_id!: string
 	})
 }

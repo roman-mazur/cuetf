@@ -28,6 +28,9 @@ package data
 
 		// Zone ID of the custom domain resides in.
 		zone_id?: string
+
+		// Zone that the custom domain resides in.
+		zone_name?: string
 		status?: close({
 			// Ownership status of the domain.
 			// Available values: "pending", "active", "deactivated",
@@ -39,8 +42,5 @@ package data
 			// "deactivated", "error", "unknown".
 			ssl?: string
 		})
-
-		// Zone that the custom domain resides in.
-		zone_name?: string
 	})
 }

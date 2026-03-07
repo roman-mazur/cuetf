@@ -68,6 +68,19 @@ package data
 		// Optional description for the Notification policy.
 		description?: string
 
+		// Whether or not the Notification policy is enabled.
+		enabled?: bool
+
+		// The unique identifier of a notification policy
+		id?:       string
+		modified?: string
+
+		// Name of the policy.
+		name?: string
+
+		// The unique identifier of a notification policy
+		policy_id!: string
+
 		// Optional filters that allow you to be alerted only on a subset
 		// of events for that alert type based on some criteria. This is
 		// only available for select alert types. See alert type
@@ -203,13 +216,6 @@ package data
 			zones?: [...string]
 		})
 
-		// Whether or not the Notification policy is enabled.
-		enabled?: bool
-
-		// The unique identifier of a notification policy
-		id?:       string
-		modified?: string
-
 		// List of IDs that will be used when dispatching a notification.
 		// IDs for email type will be the email address.
 		mechanisms?: close({
@@ -235,11 +241,5 @@ package data
 				id?: string
 			})]])
 		})
-
-		// Name of the policy.
-		name?: string
-
-		// The unique identifier of a notification policy
-		policy_id!: string
 	})
 }

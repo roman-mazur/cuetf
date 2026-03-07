@@ -10,10 +10,6 @@ package data
 		// Identifier.
 		certificate_id!: string
 
-		// Indicates whether zone-level authenticated origin pulls is
-		// enabled.
-		enabled?: bool
-
 		// When the certificate from the authority expires.
 		expires_on?: string
 
@@ -23,8 +19,8 @@ package data
 		// The certificate authority that issued the certificate.
 		issuer?: string
 
-		// The zone's private key.
-		private_key?: string
+		// The serial number on the uploaded certificate.
+		serial_number?: string
 
 		// The type of hash used for the certificate.
 		signature?: string

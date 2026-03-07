@@ -4,6 +4,15 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_rulesets")
 	close({
+		// The unique ID of the account.
+		account_id?: string
+
+		// Maximum number of rulesets to fetch (defaults to 1000).
+		max_items?: number
+
+		// The unique ID of the zone.
+		zone_id?: string
+
 		// A list of rulesets. The returned information will not include
 		// the rules in each ruleset.
 		rulesets?: matchN(1, [close({
@@ -77,14 +86,5 @@ package data
 			// The version of the ruleset.
 			version?: string
 		})]])
-
-		// The unique ID of the account.
-		account_id?: string
-
-		// Maximum number of rulesets to fetch (defaults to 1000).
-		max_items?: number
-
-		// The unique ID of the zone.
-		zone_id?: string
 	})
 }

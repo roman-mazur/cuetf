@@ -41,10 +41,10 @@ package data
 
 			// Identifier for the uploaded LOA document.
 			loa_document_id?: string
+			modified_at?:     string
 
 			// State of one kind of validation for an IP prefix.
 			ownership_validation_state?: string
-			modified_at?:                string
 
 			// Token provided to demonstrate ownership of the prefix.
 			ownership_validation_token?: string
@@ -81,10 +81,10 @@ package data
 
 			// Identifier for the uploaded LOA document.
 			loa_document_id?: string
+			modified_at?:     string
 
 			// State of one kind of validation for an IP prefix.
 			ownership_validation_state?: string
-			modified_at?:                string
 
 			// Token provided to demonstrate ownership of the prefix.
 			ownership_validation_token?: string

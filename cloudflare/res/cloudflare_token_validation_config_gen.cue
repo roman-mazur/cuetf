@@ -4,7 +4,20 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_token_validation_config")
 	close({
-		created_at?: string
+		created_at?:  string
+		description!: string
+
+		// UUID.
+		id?:           string
+		last_updated?: string
+		title!:        string
+		token_sources!: [...string]
+
+		// Available values: "JWT".
+		token_type!: string
+
+		// Identifier.
+		zone_id!: string
 		credentials!: close({
 			keys!: matchN(1, [close({
 				// Algorithm
@@ -64,18 +77,5 @@ package res
 				y?: string
 			})]])
 		})
-
-		// UUID.
-		id?:          string
-		description!: string
-
-		// Available values: "JWT".
-		token_type!:   string
-		last_updated?: string
-		title!:        string
-		token_sources!: [...string]
-
-		// Identifier.
-		zone_id!: string
 	})
 }

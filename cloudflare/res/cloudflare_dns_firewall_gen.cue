@@ -18,16 +18,6 @@ package res
 		// Identifier.
 		id?: string
 
-		// Attack mitigation settings
-		attack_mitigation?: close({
-			// When enabled, automatically mitigate random-prefix attacks to
-			// protect upstream DNS servers
-			enabled?: bool
-
-			// Only mitigate attacks when upstream servers seem unhealthy
-			only_when_upstream_unhealthy?: bool
-		})
-
 		// By default, Cloudflare attempts to cache responses for as long
 		// as
 		// indicated by the TTL received from upstream nameservers. This
@@ -88,5 +78,15 @@ package res
 		// nameservers (not counting the initial attempt)
 		retries?: number
 		upstream_ips!: [...string]
+
+		// Attack mitigation settings
+		attack_mitigation?: close({
+			// When enabled, automatically mitigate random-prefix attacks to
+			// protect upstream DNS servers
+			enabled?: bool
+
+			// Only mitigate attacks when upstream servers seem unhealthy
+			only_when_upstream_unhealthy?: bool
+		})
 	})
 }

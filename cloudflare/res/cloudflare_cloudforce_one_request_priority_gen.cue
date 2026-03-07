@@ -10,10 +10,10 @@ package res
 
 		// Request content.
 		content?: string
+		created?: string
 
 		// UUID.
-		id?:      string
-		created?: string
+		id?: string
 
 		// List of labels.
 		labels!: [...string]

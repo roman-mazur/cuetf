@@ -7,7 +7,32 @@ package res
 		// Action to take on requests that match operations included in
 		// `selector` and fail `expression`.
 		// Available values: "log", "block".
-		action!: string
+		action!:     string
+		created_at?: string
+
+		// A human-readable description that gives more details than
+		// `title`.
+		description!: string
+
+		// Toggle rule on or off.
+		enabled!: bool
+
+		// Rule expression. Requests that fail to match this expression
+		// will be subject to `action`.
+		//
+		// For details on expressions, see the [Cloudflare
+		// Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).
+		expression!: string
+
+		// UUID.
+		id?:           string
+		last_updated?: string
+
+		// A human-readable name for the rule.
+		title!: string
+
+		// Identifier.
+		zone_id!: string
 
 		// Update rule order among zone rules.
 		position?: close({
@@ -20,14 +45,6 @@ package res
 			// Move rule to this position
 			index?: number
 		})
-		created_at?: string
-
-		// A human-readable description that gives more details than
-		// `title`.
-		description!: string
-
-		// Toggle rule on or off.
-		enabled!: bool
 
 		// Select operations covered by this rule.
 		//
@@ -52,22 +69,5 @@ package res
 				host?: [...string]
 			})]])
 		})
-
-		// Rule expression. Requests that fail to match this expression
-		// will be subject to `action`.
-		//
-		// For details on expressions, see the [Cloudflare
-		// Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).
-		expression!: string
-
-		// UUID.
-		id?:           string
-		last_updated?: string
-
-		// A human-readable name for the rule.
-		title!: string
-
-		// Identifier.
-		zone_id!: string
 	})
 }

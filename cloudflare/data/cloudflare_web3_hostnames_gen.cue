@@ -7,6 +7,9 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Specify the identifier of the hostname.
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			created_on?: string
@@ -18,7 +21,8 @@ package data
 			dnslink?: string
 
 			// Specify the identifier of the hostname.
-			id?: string
+			id?:          string
+			modified_on?: string
 
 			// Specify the hostname that points to the target gateway via
 			// CNAME.
@@ -26,8 +30,7 @@ package data
 
 			// Specifies the status of the hostname's activation.
 			// Available values: "active", "pending", "deleting", "error".
-			status?:      string
-			modified_on?: string
+			status?: string
 
 			// Specify the target gateway of the hostname.
 			// Available values: "ethereum", "ipfs", "ipfs_universal_path".
@@ -42,7 +45,8 @@ package data
 			dnslink?: string
 
 			// Specify the identifier of the hostname.
-			id?: string
+			id?:          string
+			modified_on?: string
 
 			// Specify the hostname that points to the target gateway via
 			// CNAME.
@@ -50,15 +54,11 @@ package data
 
 			// Specifies the status of the hostname's activation.
 			// Available values: "active", "pending", "deleting", "error".
-			status?:      string
-			modified_on?: string
+			status?: string
 
 			// Specify the target gateway of the hostname.
 			// Available values: "ethereum", "ipfs", "ipfs_universal_path".
 			target?: string
 		})]])
-
-		// Specify the identifier of the hostname.
-		zone_id!: string
 	})
 }

@@ -16,6 +16,31 @@ package data
 		// A single IP address to search for in existing rules.
 		ip?: string
 
+		// A single IP address range to search for in existing rules.
+		ip_range_search?: string
+
+		// A single IP address to search for in existing rules.
+		ip_search?: string
+
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// The timestamp of when the rule was last modified.
+		modified_on?: string
+
+		// The priority of the rule to control the processing order. A
+		// lower number indicates higher priority. If not provided, any
+		// rules with a configured priority will be processed before
+		// rules without a priority.
+		priority?: number
+
+		// A single URI to search for in the list of URLs of existing
+		// rules.
+		uri_search?: string
+
+		// Defines an identifier.
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// A list of IP addresses or CIDR ranges that will be allowed to
@@ -104,30 +129,5 @@ package data
 			// means you can only use simple wildcard patterns.
 			urls?: [...string]
 		})]])
-
-		// A single IP address range to search for in existing rules.
-		ip_range_search?: string
-
-		// A single IP address to search for in existing rules.
-		ip_search?: string
-
-		// Max items to fetch, default: 1000
-		max_items?: number
-
-		// The timestamp of when the rule was last modified.
-		modified_on?: string
-
-		// The priority of the rule to control the processing order. A
-		// lower number indicates higher priority. If not provided, any
-		// rules with a configured priority will be processed before
-		// rules without a priority.
-		priority?: number
-
-		// A single URI to search for in the list of URLs of existing
-		// rules.
-		uri_search?: string
-
-		// Defines an identifier.
-		zone_id!: string
 	})
 }

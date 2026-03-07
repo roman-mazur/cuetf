@@ -7,19 +7,6 @@ package res
 		// This is the time the hostname was created.
 		created_at?: string
 
-		// This is a record which can be placed to activate a hostname.
-		ownership_verification?: close({
-			// DNS Name for record.
-			name?: string
-
-			// DNS Record type.
-			// Available values: "txt".
-			type?: string
-
-			// Content for the record.
-			value?: string
-		})
-
 		// Unique key/value metadata for this hostname. These are
 		// per-hostname (customer) settings.
 		custom_metadata?: [string]: string
@@ -39,6 +26,37 @@ package res
 		// The custom hostname that will point to your hostname via CNAME.
 		hostname!: string
 
+		// Identifier.
+		id?: string
+
+		// Status of the hostname's activation.
+		// Available values: "active", "pending", "active_redeploying",
+		// "moved", "pending_deletion", "deleted", "pending_blocked",
+		// "pending_migration", "pending_provisioned", "test_pending",
+		// "test_active", "test_active_apex", "test_blocked",
+		// "test_failed", "provisioned", "blocked".
+		status?: string
+
+		// These are errors that were encountered while trying to activate
+		// a hostname.
+		verification_errors?: [...string]
+
+		// Identifier.
+		zone_id!: string
+
+		// This is a record which can be placed to activate a hostname.
+		ownership_verification?: close({
+			// DNS Name for record.
+			name?: string
+
+			// DNS Record type.
+			// Available values: "txt".
+			type?: string
+
+			// Content for the record.
+			value?: string
+		})
+
 		// This presents the token to be served by the given http url to
 		// activate a hostname.
 		ownership_verification_http?: close({
@@ -49,9 +67,6 @@ package res
 			// verification and where the customer should host the token.
 			http_url?: string
 		})
-
-		// Identifier.
-		id?: string
 
 		// SSL properties used when creating the custom hostname.
 		ssl!: close({
@@ -73,6 +88,24 @@ package res
 			// Name if set to true
 			cloudflare_branding?: bool
 
+			// If a custom uploaded certificate is used.
+			custom_certificate?: string
+
+			// The key for a custom uploaded certificate.
+			custom_key?: string
+
+			// Domain control validation (DCV) method used for this hostname.
+			// Available values: "http", "txt", "email".
+			method?: string
+
+			// Level of validation to be used for this hostname. Domain
+			// validation (dv) must be used.
+			// Available values: "dv".
+			type?: string
+
+			// Indicates whether the certificate covers a wildcard.
+			wildcard?: bool
+
 			// Array of custom certificate and key pairs (1 or 2 pairs
 			// allowed)
 			custom_cert_bundle?: matchN(1, [close({
@@ -88,16 +121,6 @@ package res
 				// The key for a custom uploaded certificate.
 				custom_key!: string
 			})]])
-
-			// If a custom uploaded certificate is used.
-			custom_certificate?: string
-
-			// The key for a custom uploaded certificate.
-			custom_key?: string
-
-			// Domain control validation (DCV) method used for this hostname.
-			// Available values: "http", "txt", "email".
-			method?: string
 
 			// SSL specific settings.
 			settings?: close({
@@ -121,29 +144,6 @@ package res
 				// Available values: "on", "off".
 				tls_1_3?: string
 			})
-
-			// Level of validation to be used for this hostname. Domain
-			// validation (dv) must be used.
-			// Available values: "dv".
-			type?: string
-
-			// Indicates whether the certificate covers a wildcard.
-			wildcard?: bool
 		})
-
-		// Status of the hostname's activation.
-		// Available values: "active", "pending", "active_redeploying",
-		// "moved", "pending_deletion", "deleted", "pending_blocked",
-		// "pending_migration", "pending_provisioned", "test_pending",
-		// "test_active", "test_active_apex", "test_blocked",
-		// "test_failed", "provisioned", "blocked".
-		status?: string
-
-		// These are errors that were encountered while trying to activate
-		// a hostname.
-		verification_errors?: [...string]
-
-		// Identifier.
-		zone_id!: string
 	})
 }

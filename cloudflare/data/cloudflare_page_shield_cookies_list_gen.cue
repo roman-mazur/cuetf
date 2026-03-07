@@ -37,51 +37,6 @@ package data
 		// and contains. e.g. session*
 		name?: string
 
-		// The items returned by the data source
-		result?: matchN(1, [close({
-			domain_attribute?:  string
-			expires_attribute?: string
-
-			// Identifier
-			id?:            string
-			first_seen_at?: string
-			host?:          string
-
-			// Available values: "lax", "strict", "none".
-			same_site_attribute?: string
-			http_only_attribute?: bool
-			last_seen_at?:        string
-			max_age_attribute?:   number
-			name?:                string
-			page_urls?: [...string]
-			path_attribute?: string
-
-			// Available values: "first_party", "unknown".
-			type?:             string
-			secure_attribute?: bool
-		}), [...close({
-			domain_attribute?:  string
-			expires_attribute?: string
-
-			// Identifier
-			id?:            string
-			first_seen_at?: string
-			host?:          string
-
-			// Available values: "lax", "strict", "none".
-			same_site_attribute?: string
-			http_only_attribute?: bool
-			last_seen_at?:        string
-			max_age_attribute?:   number
-			name?:                string
-			page_urls?: [...string]
-			path_attribute?: string
-
-			// Available values: "first_party", "unknown".
-			type?:             string
-			secure_attribute?: bool
-		})]])
-
 		// The field used to sort returned cookies.
 		// Available values: "first_seen_at", "last_seen_at".
 		order_by?: string
@@ -126,5 +81,50 @@ package data
 
 		// Identifier
 		zone_id!: string
+
+		// The items returned by the data source
+		result?: matchN(1, [close({
+			domain_attribute?:    string
+			expires_attribute?:   string
+			first_seen_at?:       string
+			host?:                string
+			http_only_attribute?: bool
+
+			// Identifier
+			id?:                string
+			last_seen_at?:      string
+			max_age_attribute?: number
+			name?:              string
+			page_urls?: [...string]
+			path_attribute?: string
+
+			// Available values: "lax", "strict", "none".
+			same_site_attribute?: string
+			secure_attribute?:    bool
+
+			// Available values: "first_party", "unknown".
+			type?: string
+		}), [...close({
+			domain_attribute?:    string
+			expires_attribute?:   string
+			first_seen_at?:       string
+			host?:                string
+			http_only_attribute?: bool
+
+			// Identifier
+			id?:                string
+			last_seen_at?:      string
+			max_age_attribute?: number
+			name?:              string
+			page_urls?: [...string]
+			path_attribute?: string
+
+			// Available values: "lax", "strict", "none".
+			same_site_attribute?: string
+			secure_attribute?:    bool
+
+			// Available values: "first_party", "unknown".
+			type?: string
+		})]])
 	})
 }

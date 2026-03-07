@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_page_shield_policy")
 	close({
 		// The action to take if the expression matches
-		// Available values: "allow", "log".
+		// Available values: "allow", "log", "add_reporting_directives".
 		action?: string
 
 		// A description for the policy

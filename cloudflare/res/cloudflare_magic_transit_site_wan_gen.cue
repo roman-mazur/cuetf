@@ -16,9 +16,13 @@ package res
 		id?:       string
 		name?:     string
 		physport!: number
+		priority?: number
 
 		// Identifier
 		site_id!: string
+
+		// VLAN ID. Use zero for untagged.
+		vlan_tag?: number
 
 		// (optional) if omitted, use DHCP. Submit secondary_address when
 		// site is in high availability mode.
@@ -32,9 +36,5 @@ package res
 			// A valid CIDR notation representing an IP range.
 			secondary_address?: string
 		})
-
-		// VLAN ID. Use zero for untagged.
-		vlan_tag?: number
-		priority?: number
 	})
 }

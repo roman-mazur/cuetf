@@ -18,6 +18,52 @@ package res
 		// When the record was created.
 		created_on?: string
 
+		// Identifier.
+		id?: string
+
+		// Extra Cloudflare-specific information about the record.
+		meta?: string
+
+		// When the record was last modified.
+		modified_on?: string
+
+		// DNS record name (or @ for the zone apex) in Punycode.
+		name!: string
+
+		// Required for MX, SRV and URI records; unused by other record
+		// types. Records with lower priorities are preferred.
+		priority?: number
+
+		// Whether the record can be proxied by Cloudflare or not.
+		proxiable?: bool
+
+		// Whether the record is receiving the performance and security
+		// benefits of Cloudflare.
+		proxied?: bool
+
+		// Custom tags for the DNS record. This field has no effect on DNS
+		// responses.
+		tags?: [...string]
+
+		// When the record tags were last modified. Omitted if there are
+		// no tags.
+		tags_modified_on?: string
+
+		// Time To Live (TTL) of the DNS record in seconds. Setting to 1
+		// means 'automatic'. Value must be between 60 and 86400, with
+		// the minimum reduced to 30 for Enterprise zones.
+		ttl!: number
+
+		// Record type.
+		// Available values: "A", "AAAA", "CNAME", "MX", "NS",
+		// "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS",
+		// "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB",
+		// "TLSA", "URI".
+		type!: string
+
+		// Identifier.
+		zone_id!: string
+
 		// Components of a CAA record.
 		data?: close({
 			// Algorithm.
@@ -133,12 +179,6 @@ package res
 			weight?: number
 		})
 
-		// Identifier.
-		id?: string
-
-		// Extra Cloudflare-specific information about the record.
-		meta?: string
-
 		// Settings for the DNS record.
 		settings?: close({
 			// If enabled, causes the CNAME record to be resolved externally
@@ -162,45 +202,5 @@ package res
 			// communicates with the origin using IPv4 or IPv6.
 			ipv6_only?: bool
 		})
-
-		// When the record was last modified.
-		modified_on?: string
-
-		// DNS record name (or @ for the zone apex) in Punycode.
-		name!: string
-
-		// Required for MX, SRV and URI records; unused by other record
-		// types. Records with lower priorities are preferred.
-		priority?: number
-
-		// Whether the record can be proxied by Cloudflare or not.
-		proxiable?: bool
-
-		// Whether the record is receiving the performance and security
-		// benefits of Cloudflare.
-		proxied?: bool
-
-		// Custom tags for the DNS record. This field has no effect on DNS
-		// responses.
-		tags?: [...string]
-
-		// When the record tags were last modified. Omitted if there are
-		// no tags.
-		tags_modified_on?: string
-
-		// Time To Live (TTL) of the DNS record in seconds. Setting to 1
-		// means 'automatic'. Value must be between 60 and 86400, with
-		// the minimum reduced to 30 for Enterprise zones.
-		ttl!: number
-
-		// Record type.
-		// Available values: "A", "AAAA", "CNAME", "MX", "NS",
-		// "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS",
-		// "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB",
-		// "TLSA", "URI".
-		type!: string
-
-		// Identifier.
-		zone_id!: string
 	})
 }

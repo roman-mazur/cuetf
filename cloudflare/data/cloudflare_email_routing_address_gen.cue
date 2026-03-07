@@ -18,6 +18,13 @@ package data
 
 		// Destination address identifier.
 		id?: string
+
+		// The date and time the destination address was last modified.
+		modified?: string
+
+		// The date and time the destination address has been verified.
+		// Null means not verified yet.
+		verified?: string
 		filter?: close({
 			// Sorts results in an ascending or descending order.
 			// Available values: "asc", "desc".
@@ -26,12 +33,5 @@ package data
 			// Filter by verified destination addresses.
 			verified?: bool
 		})
-
-		// The date and time the destination address was last modified.
-		modified?: string
-
-		// The date and time the destination address has been verified.
-		// Null means not verified yet.
-		verified?: string
 	})
 }

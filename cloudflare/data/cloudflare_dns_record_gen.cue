@@ -24,6 +24,49 @@ package data
 		// Identifier.
 		id?: string
 
+		// Extra Cloudflare-specific information about the record.
+		meta?: string
+
+		// When the record was last modified.
+		modified_on?: string
+
+		// Complete DNS record name, including the zone name, in Punycode.
+		name?: string
+
+		// Required for MX, SRV and URI records; unused by other record
+		// types. Records with lower priorities are preferred.
+		priority?: number
+
+		// Whether the record can be proxied by Cloudflare or not.
+		proxiable?: bool
+
+		// Whether the record is receiving the performance and security
+		// benefits of Cloudflare.
+		proxied?: bool
+
+		// Custom tags for the DNS record. This field has no effect on DNS
+		// responses.
+		tags?: [...string]
+
+		// When the record tags were last modified. Omitted if there are
+		// no tags.
+		tags_modified_on?: string
+
+		// Time To Live (TTL) of the DNS record in seconds. Setting to 1
+		// means 'automatic'. Value must be between 60 and 86400, with
+		// the minimum reduced to 30 for Enterprise zones.
+		ttl?: number
+
+		// Record type.
+		// Available values: "A", "AAAA", "CNAME", "MX", "NS",
+		// "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS",
+		// "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB",
+		// "TLSA", "URI".
+		type?: string
+
+		// Identifier.
+		zone_id!: string
+
 		// Components of a CAA record.
 		data?: close({
 			// Algorithm.
@@ -139,24 +182,30 @@ package data
 			weight?: number
 		})
 
-		// Extra Cloudflare-specific information about the record.
-		meta?: string
+		// Settings for the DNS record.
+		settings?: close({
+			// If enabled, causes the CNAME record to be resolved externally
+			// and the resulting address records (e.g., A and AAAA) to be
+			// returned instead of the CNAME record itself. This setting is
+			// unavailable for proxied records, since they are always
+			// flattened.
+			flatten_cname?: bool
+
+			// When enabled, only A records will be generated, and AAAA
+			// records will not be created. This setting is intended for
+			// exceptional cases. Note that this option only applies to
+			// proxied records and it has no effect on whether Cloudflare
+			// communicates with the origin using IPv4 or IPv6.
+			ipv4_only?: bool
+
+			// When enabled, only AAAA records will be generated, and A
+			// records will not be created. This setting is intended for
+			// exceptional cases. Note that this option only applies to
+			// proxied records and it has no effect on whether Cloudflare
+			// communicates with the origin using IPv4 or IPv6.
+			ipv6_only?: bool
+		})
 		filter?: close({
-			// Direction to order DNS records in.
-			// Available values: "asc", "desc".
-			direction?: string
-
-			// Whether to match all search requirements or at least one (any).
-			// If set to `all`, acts like a logical AND between filters. If
-			// set to `any`, acts like a logical OR instead. Note that the
-			// interaction between tag filters is controlled by the
-			// `tag-match` parameter instead.
-			// Available values: "any", "all".
-			match?: string
-
-			// Field to order DNS records by.
-			// Available values: "type", "name", "content", "ttl", "proxied".
-			order?: string
 			comment?: close({
 				// If this parameter is present, only records *without* a comment
 				// are returned.
@@ -182,18 +231,6 @@ package data
 				// case-insensitive.
 				startswith?: string
 			})
-
-			// Whether the record is receiving the performance and security
-			// benefits of Cloudflare.
-			proxied?: bool
-
-			// Allows searching in multiple properties of a DNS record
-			// simultaneously. This parameter is intended for human users,
-			// not automation. Its exact behavior is intentionally left
-			// unspecified and is subject to change in the future. This
-			// parameter works independently of the `match` setting. For
-			// automated searches, please use the other available parameters.
-			search?: string
 			content?: close({
 				// Substring of the DNS record content. Content filters are
 				// case-insensitive.
@@ -212,6 +249,34 @@ package data
 				startswith?: string
 			})
 
+			// Direction to order DNS records in.
+			// Available values: "asc", "desc".
+			direction?: string
+
+			// Whether to match all search requirements or at least one (any).
+			// If set to `all`, acts like a logical AND between filters. If
+			// set to `any`, acts like a logical OR instead. Note that the
+			// interaction between tag filters is controlled by the
+			// `tag-match` parameter instead.
+			// Available values: "any", "all".
+			match?: string
+
+			// Field to order DNS records by.
+			// Available values: "type", "name", "content", "ttl", "proxied".
+			order?: string
+
+			// Whether the record is receiving the performance and security
+			// benefits of Cloudflare.
+			proxied?: bool
+
+			// Allows searching in multiple properties of a DNS record
+			// simultaneously. This parameter is intended for human users,
+			// not automation. Its exact behavior is intentionally left
+			// unspecified and is subject to change in the future. This
+			// parameter works independently of the `match` setting. For
+			// automated searches, please use the other available parameters.
+			search?: string
+
 			// Whether to match all tag search requirements or at least one
 			// (any). If set to `all`, acts like a logical AND between tag
 			// filters. If set to `any`, acts like a logical OR instead. Note
@@ -220,6 +285,13 @@ package data
 			// to tags.
 			// Available values: "any", "all".
 			tag_match?: string
+
+			// Record type.
+			// Available values: "A", "AAAA", "CAA", "CERT", "CNAME",
+			// "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS",
+			// "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA",
+			// "TXT", "URI".
+			type?: string
 			name?: close({
 				// Substring of the DNS record name. Name filters are
 				// case-insensitive.
@@ -270,77 +342,6 @@ package data
 				// filters are case-insensitive.
 				startswith?: string
 			})
-
-			// Record type.
-			// Available values: "A", "AAAA", "CAA", "CERT", "CNAME",
-			// "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS",
-			// "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA",
-			// "TXT", "URI".
-			type?: string
 		})
-
-		// When the record was last modified.
-		modified_on?: string
-
-		// Complete DNS record name, including the zone name, in Punycode.
-		name?: string
-
-		// Required for MX, SRV and URI records; unused by other record
-		// types. Records with lower priorities are preferred.
-		priority?: number
-
-		// Whether the record can be proxied by Cloudflare or not.
-		proxiable?: bool
-
-		// Whether the record is receiving the performance and security
-		// benefits of Cloudflare.
-		proxied?: bool
-
-		// Settings for the DNS record.
-		settings?: close({
-			// If enabled, causes the CNAME record to be resolved externally
-			// and the resulting address records (e.g., A and AAAA) to be
-			// returned instead of the CNAME record itself. This setting is
-			// unavailable for proxied records, since they are always
-			// flattened.
-			flatten_cname?: bool
-
-			// When enabled, only A records will be generated, and AAAA
-			// records will not be created. This setting is intended for
-			// exceptional cases. Note that this option only applies to
-			// proxied records and it has no effect on whether Cloudflare
-			// communicates with the origin using IPv4 or IPv6.
-			ipv4_only?: bool
-
-			// When enabled, only AAAA records will be generated, and A
-			// records will not be created. This setting is intended for
-			// exceptional cases. Note that this option only applies to
-			// proxied records and it has no effect on whether Cloudflare
-			// communicates with the origin using IPv4 or IPv6.
-			ipv6_only?: bool
-		})
-
-		// Custom tags for the DNS record. This field has no effect on DNS
-		// responses.
-		tags?: [...string]
-
-		// When the record tags were last modified. Omitted if there are
-		// no tags.
-		tags_modified_on?: string
-
-		// Time To Live (TTL) of the DNS record in seconds. Setting to 1
-		// means 'automatic'. Value must be between 60 and 86400, with
-		// the minimum reduced to 30 for Enterprise zones.
-		ttl?: number
-
-		// Record type.
-		// Available values: "A", "AAAA", "CNAME", "MX", "NS",
-		// "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS",
-		// "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB",
-		// "TLSA", "URI".
-		type?: string
-
-		// Identifier.
-		zone_id!: string
 	})
 }

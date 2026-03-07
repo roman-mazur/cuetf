@@ -11,6 +11,28 @@ package data
 		// Available values: "asc", "desc".
 		direction?: string
 
+		// Filter widgets by field using case-insensitive substring
+		// matching.
+		// Format: `field:value`
+		//
+		// Supported fields:
+		// - `name` - Filter by widget name (e.g.,
+		// `filter=name:login-form`)
+		// - `sitekey` - Filter by sitekey (e.g., `filter=sitekey:0x4AAA`)
+		//
+		// Returns 400 Bad Request if the field is unsupported or format
+		// is invalid.
+		// An empty filter value returns all results.
+		filter?: string
+
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// Field to order widgets by.
+		// Available values: "id", "sitekey", "name", "created_on",
+		// "modified_on".
+		order?: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// If bot_fight_mode is set to `true`, Cloudflare issues
@@ -27,10 +49,10 @@ package data
 
 			// When the widget was created.
 			created_on?: string
+			domains?: [...string]
 
 			// Return the Ephemeral ID in /siteverify (ENT only).
 			ephemeral_id?: bool
-			domains?: [...string]
 
 			// Widget item identifier tag.
 			id?: string
@@ -74,10 +96,10 @@ package data
 
 			// When the widget was created.
 			created_on?: string
+			domains?: [...string]
 
 			// Return the Ephemeral ID in /siteverify (ENT only).
 			ephemeral_id?: bool
-			domains?: [...string]
 
 			// Widget item identifier tag.
 			id?: string
@@ -107,27 +129,5 @@ package data
 			// Widget item identifier tag.
 			sitekey?: string
 		})]])
-
-		// Filter widgets by field using case-insensitive substring
-		// matching.
-		// Format: `field:value`
-		//
-		// Supported fields:
-		// - `name` - Filter by widget name (e.g.,
-		// `filter=name:login-form`)
-		// - `sitekey` - Filter by sitekey (e.g., `filter=sitekey:0x4AAA`)
-		//
-		// Returns 400 Bad Request if the field is unsupported or format
-		// is invalid.
-		// An empty filter value returns all results.
-		filter?: string
-
-		// Max items to fetch, default: 1000
-		max_items?: number
-
-		// Field to order widgets by.
-		// Available values: "id", "sitekey", "name", "created_on",
-		// "modified_on".
-		order?: string
 	})
 }

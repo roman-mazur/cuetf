@@ -11,6 +11,8 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
+			id?: string
+
 			// IPv4/IPv6 address of primary or secondary nameserver, depending
 			// on what zone this peer is linked to. For primary zones this IP
 			// defines the IP of the secondary nameserver Cloudflare will
@@ -18,7 +20,6 @@ package data
 			// the IP of the primary nameserver Cloudflare will send
 			// AXFR/IXFR requests to.
 			ip?: string
-			id?: string
 
 			// Enable IXFR transfer protocol, default is AXFR. Only applicable
 			// to secondary zones.
@@ -35,6 +36,8 @@ package data
 			// configured.
 			tsig_id?: string
 		}), [...close({
+			id?: string
+
 			// IPv4/IPv6 address of primary or secondary nameserver, depending
 			// on what zone this peer is linked to. For primary zones this IP
 			// defines the IP of the secondary nameserver Cloudflare will
@@ -42,7 +45,6 @@ package data
 			// the IP of the primary nameserver Cloudflare will send
 			// AXFR/IXFR requests to.
 			ip?: string
-			id?: string
 
 			// Enable IXFR transfer protocol, default is AXFR. Only applicable
 			// to secondary zones.

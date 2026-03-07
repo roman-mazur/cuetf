@@ -16,16 +16,17 @@ package data
 
 		// The D1 database's size, in bytes.
 		file_size?: number
-		filter?: close({
-			// a database name to search for.
-			name?: string
-		})
 
 		// D1 database identifier (UUID).
 		id?: string
 
 		// D1 database name.
-		name?: string
+		name?:       string
+		num_tables?: number
+
+		// D1 database identifier (UUID).
+		uuid?:    string
+		version?: string
 
 		// Configuration for D1 read replication.
 		read_replication?: close({
@@ -36,10 +37,9 @@ package data
 			// Available values: "auto", "disabled".
 			mode?: string
 		})
-		num_tables?: number
-
-		// D1 database identifier (UUID).
-		uuid?:    string
-		version?: string
+		filter?: close({
+			// a database name to search for.
+			name?: string
+		})
 	})
 }

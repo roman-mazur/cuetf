@@ -6,11 +6,11 @@ package res
 	close({
 		// Account Identifier
 		account_id!: string
+		comments?:   string
+		created_at?: string
 
 		// The unique identifier for the allow policy.
 		id?:            number
-		comments?:      string
-		created_at?:    string
 		is_regex!:      bool
 		last_modified?: string
 		pattern!:       string

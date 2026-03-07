@@ -7,6 +7,9 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Identifier
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// The hostname or IP address of the origin server to run health
@@ -24,6 +27,49 @@ package data
 			// The number of consecutive successes required from a health
 			// check before changing the health to healthy.
 			consecutive_successes?: number
+			created_on?:            string
+
+			// A human-readable description of the health check.
+			description?: string
+
+			// The current failure reason if status is unhealthy.
+			failure_reason?: string
+
+			// Identifier
+			id?: string
+
+			// The interval between each health check. Shorter intervals may
+			// give quicker notifications if the origin status changes, but
+			// will increase load on the origin as we check from multiple
+			// locations.
+			interval?:    number
+			modified_on?: string
+
+			// A short name to identify the health check. Only alphanumeric
+			// characters, hyphens and underscores are allowed.
+			name?: string
+
+			// The number of retries to attempt in case of a timeout before
+			// marking the origin as unhealthy. Retries are attempted
+			// immediately.
+			retries?: number
+
+			// The current status of the origin server according to the health
+			// check.
+			// Available values: "unknown", "healthy", "unhealthy",
+			// "suspended".
+			status?: string
+
+			// If suspended, no health checks are sent to the origin.
+			suspended?: bool
+
+			// The timeout (in seconds) before marking the health check as
+			// failed.
+			timeout?: number
+
+			// The protocol to use for the health check. Currently supported
+			// protocols are 'HTTP', 'HTTPS' and 'TCP'.
+			type?: string
 
 			// Parameters specific to an HTTP or HTTPS health check.
 			http_config?: close({
@@ -61,22 +107,6 @@ package data
 				port?: number
 			})
 
-			// A human-readable description of the health check.
-			description?: string
-			created_on?:  string
-
-			// The current failure reason if status is unhealthy.
-			failure_reason?: string
-
-			// Identifier
-			id?: string
-
-			// The interval between each health check. Shorter intervals may
-			// give quicker notifications if the origin status changes, but
-			// will increase load on the origin as we check from multiple
-			// locations.
-			interval?: number
-
 			// Parameters specific to TCP health check.
 			tcp_config?: close({
 				// The TCP connection method to use for the health check.
@@ -86,33 +116,6 @@ package data
 				// Port number to connect to for the health check. Defaults to 80.
 				port?: number
 			})
-
-			// A short name to identify the health check. Only alphanumeric
-			// characters, hyphens and underscores are allowed.
-			name?:        string
-			modified_on?: string
-
-			// The number of retries to attempt in case of a timeout before
-			// marking the origin as unhealthy. Retries are attempted
-			// immediately.
-			retries?: number
-
-			// The current status of the origin server according to the health
-			// check.
-			// Available values: "unknown", "healthy", "unhealthy",
-			// "suspended".
-			status?: string
-
-			// If suspended, no health checks are sent to the origin.
-			suspended?: bool
-
-			// The timeout (in seconds) before marking the health check as
-			// failed.
-			timeout?: number
-
-			// The protocol to use for the health check. Currently supported
-			// protocols are 'HTTP', 'HTTPS' and 'TCP'.
-			type?: string
 		}), [...close({
 			// The hostname or IP address of the origin server to run health
 			// checks on.
@@ -129,6 +132,49 @@ package data
 			// The number of consecutive successes required from a health
 			// check before changing the health to healthy.
 			consecutive_successes?: number
+			created_on?:            string
+
+			// A human-readable description of the health check.
+			description?: string
+
+			// The current failure reason if status is unhealthy.
+			failure_reason?: string
+
+			// Identifier
+			id?: string
+
+			// The interval between each health check. Shorter intervals may
+			// give quicker notifications if the origin status changes, but
+			// will increase load on the origin as we check from multiple
+			// locations.
+			interval?:    number
+			modified_on?: string
+
+			// A short name to identify the health check. Only alphanumeric
+			// characters, hyphens and underscores are allowed.
+			name?: string
+
+			// The number of retries to attempt in case of a timeout before
+			// marking the origin as unhealthy. Retries are attempted
+			// immediately.
+			retries?: number
+
+			// The current status of the origin server according to the health
+			// check.
+			// Available values: "unknown", "healthy", "unhealthy",
+			// "suspended".
+			status?: string
+
+			// If suspended, no health checks are sent to the origin.
+			suspended?: bool
+
+			// The timeout (in seconds) before marking the health check as
+			// failed.
+			timeout?: number
+
+			// The protocol to use for the health check. Currently supported
+			// protocols are 'HTTP', 'HTTPS' and 'TCP'.
+			type?: string
 
 			// Parameters specific to an HTTP or HTTPS health check.
 			http_config?: close({
@@ -166,22 +212,6 @@ package data
 				port?: number
 			})
 
-			// A human-readable description of the health check.
-			description?: string
-			created_on?:  string
-
-			// The current failure reason if status is unhealthy.
-			failure_reason?: string
-
-			// Identifier
-			id?: string
-
-			// The interval between each health check. Shorter intervals may
-			// give quicker notifications if the origin status changes, but
-			// will increase load on the origin as we check from multiple
-			// locations.
-			interval?: number
-
 			// Parameters specific to TCP health check.
 			tcp_config?: close({
 				// The TCP connection method to use for the health check.
@@ -191,36 +221,6 @@ package data
 				// Port number to connect to for the health check. Defaults to 80.
 				port?: number
 			})
-
-			// A short name to identify the health check. Only alphanumeric
-			// characters, hyphens and underscores are allowed.
-			name?:        string
-			modified_on?: string
-
-			// The number of retries to attempt in case of a timeout before
-			// marking the origin as unhealthy. Retries are attempted
-			// immediately.
-			retries?: number
-
-			// The current status of the origin server according to the health
-			// check.
-			// Available values: "unknown", "healthy", "unhealthy",
-			// "suspended".
-			status?: string
-
-			// If suspended, no health checks are sent to the origin.
-			suspended?: bool
-
-			// The timeout (in seconds) before marking the health check as
-			// failed.
-			timeout?: number
-
-			// The protocol to use for the health check. Currently supported
-			// protocols are 'HTTP', 'HTTPS' and 'TCP'.
-			type?: string
 		})]])
-
-		// Identifier
-		zone_id!: string
 	})
 }

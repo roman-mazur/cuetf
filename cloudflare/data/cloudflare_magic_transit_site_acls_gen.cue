@@ -4,6 +4,15 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_magic_transit_site_acls")
 	close({
+		// Identifier
+		account_id!: string
+
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// Identifier
+		site_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Description for the ACL.
@@ -22,6 +31,12 @@ package data
 			// The name of the ACL.
 			name?: string
 			protocols?: [...string]
+
+			// The desired traffic direction for this ACL policy. If set to
+			// "false", the policy will allow bidirectional traffic. If set
+			// to "true", the policy will only allow traffic in one
+			// direction. If not included in request, will default to false.
+			unidirectional?: bool
 			lan_1?: close({
 				// The identifier for the LAN you want to create an ACL policy
 				// with.
@@ -68,12 +83,6 @@ package data
 				// on this LAN are allowed.
 				subnets?: [...string]
 			})
-
-			// The desired traffic direction for this ACL policy. If set to
-			// "false", the policy will allow bidirectional traffic. If set
-			// to "true", the policy will only allow traffic in one
-			// direction. If not included in request, will default to false.
-			unidirectional?: bool
 		}), [...close({
 			// Description for the ACL.
 			description?: string
@@ -91,6 +100,12 @@ package data
 			// The name of the ACL.
 			name?: string
 			protocols?: [...string]
+
+			// The desired traffic direction for this ACL policy. If set to
+			// "false", the policy will allow bidirectional traffic. If set
+			// to "true", the policy will only allow traffic in one
+			// direction. If not included in request, will default to false.
+			unidirectional?: bool
 			lan_1?: close({
 				// The identifier for the LAN you want to create an ACL policy
 				// with.
@@ -137,21 +152,6 @@ package data
 				// on this LAN are allowed.
 				subnets?: [...string]
 			})
-
-			// The desired traffic direction for this ACL policy. If set to
-			// "false", the policy will allow bidirectional traffic. If set
-			// to "true", the policy will only allow traffic in one
-			// direction. If not included in request, will default to false.
-			unidirectional?: bool
 		})]])
-
-		// Identifier
-		account_id!: string
-
-		// Max items to fetch, default: 1000
-		max_items?: number
-
-		// Identifier
-		site_id!: string
 	})
 }

@@ -4,13 +4,17 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_dex_tests")
 	close({
+		account_id!: string
+
 		// Filter by test type
 		// Available values: "http", "traceroute".
-		kind?:       string
-		account_id!: string
+		kind?: string
 
 		// Max items to fetch, default: 1000
 		max_items?: number
+
+		// Filter by test name
+		test_name?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
@@ -124,8 +128,5 @@ package data
 			test_id?:  string
 			targeted?: bool
 		})]])
-
-		// Filter by test name
-		test_name?: string
 	})
 }

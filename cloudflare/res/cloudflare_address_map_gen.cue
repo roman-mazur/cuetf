@@ -11,25 +11,6 @@ package res
 		// API. This is true for Cloudflare-managed maps.
 		can_delete?: bool
 
-		// Zones and Accounts which will be assigned IPs on this Address
-		// Map. A zone membership will take priority over an account
-		// membership.
-		memberships?: matchN(1, [close({
-			// The identifier for the membership (eg. a zone or account tag).
-			identifier?: string
-
-			// The type of the membership.
-			// Available values: "zone", "account".
-			kind?: string
-		}), [...close({
-			// The identifier for the membership (eg. a zone or account tag).
-			identifier?: string
-
-			// The type of the membership.
-			// Available values: "zone", "account".
-			kind?: string
-		})]])
-
 		// If set to false, then the IPs on the Address Map cannot be
 		// modified via the API. This is true for Cloudflare-managed
 		// maps.
@@ -57,5 +38,24 @@ package res
 		id?: string
 		ips?: [...string]
 		modified_at?: string
+
+		// Zones and Accounts which will be assigned IPs on this Address
+		// Map. A zone membership will take priority over an account
+		// membership.
+		memberships?: matchN(1, [close({
+			// The identifier for the membership (eg. a zone or account tag).
+			identifier?: string
+
+			// The type of the membership.
+			// Available values: "zone", "account".
+			kind?: string
+		}), [...close({
+			// The identifier for the membership (eg. a zone or account tag).
+			identifier?: string
+
+			// The type of the membership.
+			// Available values: "zone", "account".
+			kind?: string
+		})]])
 	})
 }

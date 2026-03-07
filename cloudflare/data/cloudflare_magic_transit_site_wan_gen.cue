@@ -13,8 +13,21 @@ package data
 		health_check_rate?: string
 
 		// Identifier
-		id?:   string
-		name?: string
+		id?:       string
+		name?:     string
+		physport?: number
+
+		// Priority of WAN for traffic loadbalancing.
+		priority?: number
+
+		// Identifier
+		site_id!: string
+
+		// VLAN ID. Use zero for untagged.
+		vlan_tag?: number
+
+		// Identifier
+		wan_id!: string
 
 		// (optional) if omitted, use DHCP. Submit secondary_address when
 		// site is in high availability mode.
@@ -28,18 +41,5 @@ package data
 			// A valid CIDR notation representing an IP range.
 			secondary_address?: string
 		})
-
-		// Priority of WAN for traffic loadbalancing.
-		priority?: number
-		physport?: number
-
-		// Identifier
-		site_id!: string
-
-		// VLAN ID. Use zero for untagged.
-		vlan_tag?: number
-
-		// Identifier
-		wan_id!: string
 	})
 }

@@ -8,15 +8,18 @@ package res
 		account_id!: string
 		created_at?: string
 		http_port?:  number
-
-		// Available values: "http".
-		type!:       string
 		https_port?: number
 		id?:         string
 		name!:       string
 		service_id?: string
+
+		// Available values: "http".
+		type!:       string
 		updated_at?: string
 		host!: close({
+			hostname?: string
+			ipv4?:     string
+			ipv6?:     string
 			network?: close({
 				tunnel_id!: string
 			})
@@ -24,9 +27,6 @@ package res
 				resolver_ips?: [...string]
 				tunnel_id!: string
 			})
-			hostname?: string
-			ipv4?:     string
-			ipv6?:     string
 		})
 	})
 }

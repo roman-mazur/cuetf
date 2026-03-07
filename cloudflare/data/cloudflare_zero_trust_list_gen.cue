@@ -5,13 +5,28 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_list")
 	close({
 		account_id!: string
+		created_at?: string
 
 		// Provide the list description.
 		description?: string
-		created_at?:  string
 
 		// Identify the API resource with a UUID.
 		id?: string
+
+		// Indicate the number of items in the list.
+		list_count?: number
+
+		// Identify the API resource with a UUID.
+		list_id?: string
+
+		// Specify the list name.
+		name?: string
+
+		// Specify the list type.
+		// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP",
+		// "CATEGORY", "LOCATION", "DEVICE".
+		type?:       string
+		updated_at?: string
 
 		// Provide the list items.
 		items?: matchN(1, [close({
@@ -31,26 +46,11 @@ package data
 			// Specify the item value.
 			value?: string
 		})]])
-
-		// Indicate the number of items in the list.
-		list_count?: number
-
-		// Identify the API resource with a UUID.
-		list_id?: string
-
-		// Specify the list name.
-		name?: string
 		filter?: close({
 			// Specify the list type.
 			// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP",
 			// "CATEGORY", "LOCATION", "DEVICE".
 			type?: string
 		})
-
-		// Specify the list type.
-		// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP",
-		// "CATEGORY", "LOCATION", "DEVICE".
-		type?:       string
-		updated_at?: string
 	})
 }

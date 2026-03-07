@@ -16,10 +16,10 @@ package data
 		// Omit the source-files of schemas and only retrieve their
 		// meta-data.
 		omit_source?: bool
+		schema_id!:   string
 
 		// Source of the schema
-		source?:    string
-		schema_id!: string
+		source?: string
 
 		// Flag whether schema is enabled for validation.
 		validation_enabled?: bool

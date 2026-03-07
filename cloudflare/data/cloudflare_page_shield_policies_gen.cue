@@ -7,10 +7,13 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Identifier
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// The action to take if the expression matches
-			// Available values: "allow", "log".
+			// Available values: "allow", "log", "add_reporting_directives".
 			action?: string
 
 			// A description for the policy
@@ -30,7 +33,7 @@ package data
 			value?: string
 		}), [...close({
 			// The action to take if the expression matches
-			// Available values: "allow", "log".
+			// Available values: "allow", "log", "add_reporting_directives".
 			action?: string
 
 			// A description for the policy
@@ -49,8 +52,5 @@ package data
 			// The policy which will be applied
 			value?: string
 		})]])
-
-		// Identifier
-		zone_id!: string
 	})
 }

@@ -16,10 +16,10 @@ package data
 			// can share the same type. Refers to the `id` of a returned
 			// application type.
 			application_type_id?: number
+			created_at?:          string
 
 			// Provide a short summary of applications with this type.
 			description?: string
-			created_at?:  string
 
 			// Identify this application. Only one application per ID.
 			id?: number
@@ -31,10 +31,10 @@ package data
 			// can share the same type. Refers to the `id` of a returned
 			// application type.
 			application_type_id?: number
+			created_at?:          string
 
 			// Provide a short summary of applications with this type.
 			description?: string
-			created_at?:  string
 
 			// Identify this application. Only one application per ID.
 			id?: number

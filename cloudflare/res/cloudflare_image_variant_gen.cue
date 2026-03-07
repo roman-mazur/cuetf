@@ -6,6 +6,11 @@ package res
 	close({
 		// Account identifier tag.
 		account_id!: string
+		id!:         string
+
+		// Indicates whether the variant can access an image without a
+		// signature, regardless of image access control.
+		never_require_signed_urls?: bool
 
 		// Allows you to define image resizing sizes for different use
 		// cases.
@@ -26,10 +31,6 @@ package res
 			// Maximum width in image pixels.
 			width!: number
 		})
-
-		// Indicates whether the variant can access an image without a
-		// signature, regardless of image access control.
-		never_require_signed_urls?: bool
 		variant?: close({
 			id?: string
 
@@ -57,6 +58,5 @@ package res
 				width?: number
 			})
 		})
-		id!: string
 	})
 }

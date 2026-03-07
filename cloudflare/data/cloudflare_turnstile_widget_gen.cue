@@ -53,6 +53,9 @@ package data
 
 		// Secret key for this widget.
 		secret?: string
+
+		// Widget item identifier tag.
+		sitekey?: string
 		filter?: close({
 			// Direction to order widgets.
 			// Available values: "asc", "desc".
@@ -77,8 +80,5 @@ package data
 			// "modified_on".
 			order?: string
 		})
-
-		// Widget item identifier tag.
-		sitekey?: string
 	})
 }

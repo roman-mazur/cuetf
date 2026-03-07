@@ -7,6 +7,16 @@ package data
 		// Identifier.
 		account_id!: string
 
+		// Sorts results in an ascending or descending order.
+		// Available values: "asc", "desc".
+		direction?: string
+
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// Filter by verified destination addresses.
+		verified?: bool
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// The date and time the destination address has been created.
@@ -41,15 +51,5 @@ package data
 			// Null means not verified yet.
 			verified?: string
 		})]])
-
-		// Sorts results in an ascending or descending order.
-		// Available values: "asc", "desc".
-		direction?: string
-
-		// Max items to fetch, default: 1000
-		max_items?: number
-
-		// Filter by verified destination addresses.
-		verified?: bool
 	})
 }

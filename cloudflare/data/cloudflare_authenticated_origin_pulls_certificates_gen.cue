@@ -7,14 +7,13 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Identifier.
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// The zone's leaf certificate.
 			certificate?: string
-
-			// Indicates whether zone-level authenticated origin pulls is
-			// enabled.
-			enabled?: bool
 
 			// When the certificate from the authority expires.
 			expires_on?: string
@@ -25,8 +24,8 @@ package data
 			// The certificate authority that issued the certificate.
 			issuer?: string
 
-			// The zone's private key.
-			private_key?: string
+			// The serial number on the uploaded certificate.
+			serial_number?: string
 
 			// The type of hash used for the certificate.
 			signature?: string
@@ -43,10 +42,6 @@ package data
 			// The zone's leaf certificate.
 			certificate?: string
 
-			// Indicates whether zone-level authenticated origin pulls is
-			// enabled.
-			enabled?: bool
-
 			// When the certificate from the authority expires.
 			expires_on?: string
 
@@ -56,8 +51,8 @@ package data
 			// The certificate authority that issued the certificate.
 			issuer?: string
 
-			// The zone's private key.
-			private_key?: string
+			// The serial number on the uploaded certificate.
+			serial_number?: string
 
 			// The type of hash used for the certificate.
 			signature?: string
@@ -71,8 +66,5 @@ package data
 			// This is the time the certificate was uploaded.
 			uploaded_on?: string
 		})]])
-
-		// Identifier.
-		zone_id!: string
 	})
 }

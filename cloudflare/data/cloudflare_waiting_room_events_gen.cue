@@ -5,10 +5,16 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_waiting_room_events")
 	close({
 		// Max items to fetch, default: 1000
-		max_items?: number
+		max_items?:       number
+		waiting_room_id!: string
+
+		// Identifier.
+		zone_id!: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
+			created_on?: string
+
 			// If set, the event will override the waiting room's
 			// `custom_page_html` property while it is active. If null, the
 			// event will inherit it.
@@ -21,7 +27,6 @@ package data
 			// `disable_session_renewal` property while it is active. If
 			// null, the event will inherit it.
 			disable_session_renewal?: bool
-			created_on?:              string
 
 			// An ISO 8601 timestamp that marks the end of the event.
 			event_end_time?: string
@@ -31,6 +36,8 @@ package data
 			// configuration. The start time must be at least one minute
 			// before `event_end_time`.
 			event_start_time?: string
+			id?:               string
+			modified_on?:      string
 
 			// A unique name to identify the event. Only alphanumeric
 			// characters, hyphens and underscores are allowed.
@@ -56,8 +63,6 @@ package data
 			// `session_duration` property while it is active. If null, the
 			// event will inherit it.
 			session_duration?: number
-			id?:               string
-			modified_on?:      string
 
 			// If enabled, users in the prequeue will be shuffled randomly at
 			// the `event_start_time`. Requires that `prequeue_start_time` is
@@ -93,6 +98,8 @@ package data
 			// "visible_non_interactive", "visible_managed".
 			turnstile_mode?: string
 		}), [...close({
+			created_on?: string
+
 			// If set, the event will override the waiting room's
 			// `custom_page_html` property while it is active. If null, the
 			// event will inherit it.
@@ -105,7 +112,6 @@ package data
 			// `disable_session_renewal` property while it is active. If
 			// null, the event will inherit it.
 			disable_session_renewal?: bool
-			created_on?:              string
 
 			// An ISO 8601 timestamp that marks the end of the event.
 			event_end_time?: string
@@ -115,6 +121,8 @@ package data
 			// configuration. The start time must be at least one minute
 			// before `event_end_time`.
 			event_start_time?: string
+			id?:               string
+			modified_on?:      string
 
 			// A unique name to identify the event. Only alphanumeric
 			// characters, hyphens and underscores are allowed.
@@ -140,8 +148,6 @@ package data
 			// `session_duration` property while it is active. If null, the
 			// event will inherit it.
 			session_duration?: number
-			id?:               string
-			modified_on?:      string
 
 			// If enabled, users in the prequeue will be shuffled randomly at
 			// the `event_start_time`. Requires that `prequeue_start_time` is
@@ -177,9 +183,5 @@ package data
 			// "visible_non_interactive", "visible_managed".
 			turnstile_mode?: string
 		})]])
-		waiting_room_id!: string
-
-		// Identifier.
-		zone_id!: string
 	})
 }

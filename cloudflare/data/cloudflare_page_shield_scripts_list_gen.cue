@@ -68,6 +68,18 @@ package data
 		// scripts.
 		prioritize_malicious?: bool
 
+		// Filters the returned scripts using a comma-separated list of
+		// scripts statuses. Accepted values: `active`, `infrequent`, and
+		// `inactive`. The default value is `active`.
+		status?: string
+
+		// Includes scripts whose URL contain one or more URL-encoded URLs
+		// separated by commas.
+		urls?: string
+
+		// Identifier
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			added_at?: string
@@ -98,10 +110,10 @@ package data
 			// The magecart score of the JavaScript content.
 			magecart_score?: number
 			malicious_domain_categories?: [...string]
+			malicious_url_categories?: [...string]
 
 			// The malware score of the JavaScript content.
 			malware_score?: number
-			malicious_url_categories?: [...string]
 
 			// The obfuscation score of the JavaScript content.
 			obfuscation_score?: number
@@ -138,10 +150,10 @@ package data
 			// The magecart score of the JavaScript content.
 			magecart_score?: number
 			malicious_domain_categories?: [...string]
+			malicious_url_categories?: [...string]
 
 			// The malware score of the JavaScript content.
 			malware_score?: number
-			malicious_url_categories?: [...string]
 
 			// The obfuscation score of the JavaScript content.
 			obfuscation_score?: number
@@ -150,17 +162,5 @@ package data
 			url_contains_cdn_cgi_path?: bool
 			url_reported_malicious?:    bool
 		})]])
-
-		// Filters the returned scripts using a comma-separated list of
-		// scripts statuses. Accepted values: `active`, `infrequent`, and
-		// `inactive`. The default value is `active`.
-		status?: string
-
-		// Includes scripts whose URL contain one or more URL-encoded URLs
-		// separated by commas.
-		urls?: string
-
-		// Identifier
-		zone_id!: string
 	})
 }

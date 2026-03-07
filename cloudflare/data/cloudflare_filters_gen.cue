@@ -23,6 +23,9 @@ package data
 		// an exact match.
 		ref?: string
 
+		// Defines an identifier.
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// An informative summary of the filter.
@@ -57,8 +60,5 @@ package data
 			// A short reference tag. Allows you to select related filters.
 			ref?: string
 		})]])
-
-		// Defines an identifier.
-		zone_id!: string
 	})
 }

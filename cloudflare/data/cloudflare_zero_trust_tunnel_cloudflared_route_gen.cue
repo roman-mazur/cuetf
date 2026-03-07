@@ -23,6 +23,15 @@ package data
 		// The private IPv4 or IPv6 range connected by the route, in CIDR
 		// notation.
 		network?: string
+
+		// UUID of the route.
+		route_id?: string
+
+		// UUID of the tunnel.
+		tunnel_id?: string
+
+		// UUID of the virtual network.
+		virtual_network_id?: string
 		filter?: close({
 			// Optional remark describing the route.
 			comment?: string
@@ -51,14 +60,5 @@ package data
 			// UUID of the virtual network.
 			virtual_network_id?: string
 		})
-
-		// UUID of the route.
-		route_id?: string
-
-		// UUID of the tunnel.
-		tunnel_id?: string
-
-		// UUID of the virtual network.
-		virtual_network_id?: string
 	})
 }

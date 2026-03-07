@@ -10,6 +10,20 @@ package data
 		// A Resource identifier.
 		consumer_id?: string
 		created_on?:  string
+
+		// Name of the dead letter queue, or empty string if not
+		// configured
+		dead_letter_queue?: string
+
+		// A Resource identifier.
+		queue_id!:   string
+		queue_name?: string
+
+		// Name of a Worker
+		script_name?: string
+
+		// Available values: "worker", "http_pull".
+		type?: string
 		settings?: close({
 			// The maximum number of messages to include in a batch.
 			batch_size?: number
@@ -35,17 +49,5 @@ package data
 			// another attempt.
 			visibility_timeout_ms?: number
 		})
-
-		// A Resource identifier.
-		queue_id!: string
-
-		// Name of a Worker
-		script?: string
-
-		// Name of a Worker
-		script_name?: string
-
-		// Available values: "worker", "http_pull".
-		type?: string
 	})
 }

@@ -6,11 +6,11 @@ package res
 	close({
 		// Identifier.
 		account_id!: string
+		created?:    string
+		host?:       string
 
 		// The Web Analytics rule identifier.
-		id?:      string
-		created?: string
-		host?:    string
+		id?: string
 
 		// Whether the rule includes or excludes traffic from being
 		// measured.

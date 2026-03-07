@@ -7,6 +7,91 @@ package res
 		// Identifier.
 		account_id!: string
 
+		// Name of the uploaded file that contains the script (e.g. the
+		// file adding a listener to the `fetch` event). Indicates a
+		// `service worker syntax` Worker.
+		body_part?: string
+
+		// Date indicating targeted support in the Workers runtime.
+		// Backwards incompatible fixes to the runtime following this
+		// date will not affect this Worker.
+		compatibility_date?: string
+
+		// Flags that enable or disable certain features in the Workers
+		// runtime. Used to enable upcoming features or opt in or out of
+		// specific changes not included in a `compatibility_date`.
+		compatibility_flags?: [...string]
+
+		// Module or Service Worker contents of the Worker. Conflicts with
+		// `content_file`.
+		content?: string
+
+		// Path to a file containing the Module or Service Worker contents
+		// of the Worker. Conflicts with `content`. Must be paired with
+		// `content_sha256`.
+		content_file?: string
+
+		// SHA-256 hash of the Worker contents. Used to trigger updates
+		// when source code changes. Must be provided when `content_file`
+		// is specified.
+		content_sha256?: string
+
+		// Content-Type of the Worker. Required if uploading a
+		// non-JavaScript Worker (e.g. "text/x-python").
+		content_type?: string
+
+		// When the script was created.
+		created_on?: string
+
+		// Hashed script content, can be used in a If-None-Match header
+		// when updating.
+		etag?: string
+
+		// The names of handlers exported as part of the default export.
+		handlers?: [...string]
+
+		// Whether a Worker contains assets.
+		has_assets?: bool
+
+		// Whether a Worker contains modules.
+		has_modules?: bool
+
+		// Name of the script, used in URLs and route configuration.
+		id?: string
+
+		// Retain assets which exist for a previously uploaded Worker
+		// version; used in lieu of providing a completion token.
+		keep_assets?: bool
+
+		// List of binding types to keep from previous_upload.
+		keep_bindings?: [...string]
+
+		// The client most recently used to deploy this Worker.
+		last_deployed_from?: string
+
+		// Whether Logpush is turned on for the Worker.
+		logpush?: bool
+
+		// Name of the uploaded file that contains the main module (e.g.
+		// the file exporting a `fetch` handler). Indicates a `module
+		// syntax` Worker.
+		main_module?: string
+
+		// The tag of the Durable Object migration that was most recently
+		// applied for this Worker.
+		migration_tag?: string
+
+		// When the script was last modified.
+		modified_on?: string
+
+		// Name of the script, used in URLs and route configuration.
+		script_name!:     string
+		startup_time_ms?: number
+
+		// Usage model for the Worker invocations.
+		// Available values: "standard", "bundled", "unbound".
+		usage_model?: string
+
 		// Configuration for assets within a Worker.
 		assets?: close({
 			// The SHA-256 hash of the asset manifest of files to upload.
@@ -53,11 +138,6 @@ package res
 			})
 		})
 
-		// Name of the uploaded file that contains the script (e.g. the
-		// file adding a listener to the `fetch` event). Indicates a
-		// `service worker syntax` Worker.
-		body_part?: string
-
 		// List of bindings attached to a Worker. You can find more about
 		// bindings on our docs:
 		// https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
@@ -87,22 +167,6 @@ package res
 			// Destination address for the email.
 			destination_address?: string
 
-			// Outbound worker.
-			outbound?: close({
-				// Pass information from the Dispatch Worker to the Outbound
-				// Worker through the parameters.
-				params?: [...string]
-
-				// Outbound worker.
-				worker?: close({
-					// Environment of the outbound worker.
-					environment?: string
-
-					// Name of the outbound worker.
-					service?: string
-				})
-			})
-
 			// The environment of the script_name to bind to.
 			environment?: string
 
@@ -134,15 +198,6 @@ package res
 			// Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key)
 			// format. Required if `format` is "jwk".
 			key_jwk?: string
-
-			// A simple rate limit.
-			simple?: close({
-				// The rate limit value.
-				limit!: number
-
-				// The rate limit period in seconds.
-				period!: number
-			})
 
 			// A JavaScript variable name for the binding.
 			name!: string
@@ -207,6 +262,31 @@ package res
 
 			// Name of the Workflow to bind to.
 			workflow_name?: string
+
+			// Outbound worker.
+			outbound?: close({
+				// Pass information from the Dispatch Worker to the Outbound
+				// Worker through the parameters.
+				params?: [...string]
+
+				// Outbound worker.
+				worker?: close({
+					// Environment of the outbound worker.
+					environment?: string
+
+					// Name of the outbound worker.
+					service?: string
+				})
+			})
+
+			// A simple rate limit.
+			simple?: close({
+				// The rate limit value.
+				limit!: number
+
+				// The rate limit period in seconds.
+				period!: number
+			})
 		}), [...close({
 			// Algorithm-specific key parameters. [Learn
 			// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
@@ -233,22 +313,6 @@ package res
 			// Destination address for the email.
 			destination_address?: string
 
-			// Outbound worker.
-			outbound?: close({
-				// Pass information from the Dispatch Worker to the Outbound
-				// Worker through the parameters.
-				params?: [...string]
-
-				// Outbound worker.
-				worker?: close({
-					// Environment of the outbound worker.
-					environment?: string
-
-					// Name of the outbound worker.
-					service?: string
-				})
-			})
-
 			// The environment of the script_name to bind to.
 			environment?: string
 
@@ -280,15 +344,6 @@ package res
 			// Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key)
 			// format. Required if `format` is "jwk".
 			key_jwk?: string
-
-			// A simple rate limit.
-			simple?: close({
-				// The rate limit value.
-				limit!: number
-
-				// The rate limit period in seconds.
-				period!: number
-			})
 
 			// A JavaScript variable name for the binding.
 			name!: string
@@ -353,27 +408,38 @@ package res
 
 			// Name of the Workflow to bind to.
 			workflow_name?: string
+
+			// Outbound worker.
+			outbound?: close({
+				// Pass information from the Dispatch Worker to the Outbound
+				// Worker through the parameters.
+				params?: [...string]
+
+				// Outbound worker.
+				worker?: close({
+					// Environment of the outbound worker.
+					environment?: string
+
+					// Name of the outbound worker.
+					service?: string
+				})
+			})
+
+			// A simple rate limit.
+			simple?: close({
+				// The rate limit value.
+				limit!: number
+
+				// The rate limit period in seconds.
+				period!: number
+			})
 		})]])
-
-		// Date indicating targeted support in the Workers runtime.
-		// Backwards incompatible fixes to the runtime following this
-		// date will not affect this Worker.
-		compatibility_date?: string
-
-		// Flags that enable or disable certain features in the Workers
-		// runtime. Used to enable upcoming features or opt in or out of
-		// specific changes not included in a `compatibility_date`.
-		compatibility_flags?: [...string]
 
 		// Limits to apply for this Worker.
 		limits?: close({
 			// The amount of CPU time this Worker can use in milliseconds.
 			cpu_ms?: number
 		})
-
-		// Module or Service Worker contents of the Worker. Conflicts with
-		// `content_file`.
-		content?: string
 
 		// Migrations to apply for Durable Objects associated with this
 		// Worker.
@@ -383,6 +449,17 @@ package res
 
 			// A list of classes to create Durable Object namespaces from.
 			new_classes?: [...string]
+
+			// A list of classes to create Durable Object namespaces with
+			// SQLite from.
+			new_sqlite_classes?: [...string]
+
+			// Tag to set as the latest migration tag.
+			new_tag?: string
+
+			// Tag used to verify against the latest migration tag for this
+			// Worker. If they don't match, the upload is rejected.
+			old_tag?: string
 
 			// A list of classes with Durable Object namespaces that were
 			// renamed.
@@ -394,10 +471,6 @@ package res
 				to?:   string
 			})]])
 
-			// A list of classes to create Durable Object namespaces with
-			// SQLite from.
-			new_sqlite_classes?: [...string]
-
 			// Migrations to apply in order.
 			steps?: matchN(1, [close({
 				// A list of classes to delete Durable Object namespaces from.
@@ -405,6 +478,10 @@ package res
 
 				// A list of classes to create Durable Object namespaces from.
 				new_classes?: [...string]
+
+				// A list of classes to create Durable Object namespaces with
+				// SQLite from.
+				new_sqlite_classes?: [...string]
 
 				// A list of classes with Durable Object namespaces that were
 				// renamed.
@@ -415,10 +492,6 @@ package res
 					from?: string
 					to?:   string
 				})]])
-
-				// A list of classes to create Durable Object namespaces with
-				// SQLite from.
-				new_sqlite_classes?: [...string]
 
 				// A list of transfers for Durable Object namespaces from a
 				// different Worker and class to a class defined in this Worker.
@@ -438,6 +511,10 @@ package res
 				// A list of classes to create Durable Object namespaces from.
 				new_classes?: [...string]
 
+				// A list of classes to create Durable Object namespaces with
+				// SQLite from.
+				new_sqlite_classes?: [...string]
+
 				// A list of classes with Durable Object namespaces that were
 				// renamed.
 				renamed_classes?: matchN(1, [close({
@@ -447,10 +524,6 @@ package res
 					from?: string
 					to?:   string
 				})]])
-
-				// A list of classes to create Durable Object namespaces with
-				// SQLite from.
-				new_sqlite_classes?: [...string]
 
 				// A list of transfers for Durable Object namespaces from a
 				// different Worker and class to a class defined in this Worker.
@@ -464,9 +537,6 @@ package res
 					to?:          string
 				})]])
 			})]])
-
-			// Tag to set as the latest migration tag.
-			new_tag?: string
 
 			// A list of transfers for Durable Object namespaces from a
 			// different Worker and class to a class defined in this Worker.
@@ -479,21 +549,7 @@ package res
 				from_script?: string
 				to?:          string
 			})]])
-
-			// Tag used to verify against the latest migration tag for this
-			// Worker. If they don't match, the upload is rejected.
-			old_tag?: string
 		})
-
-		// Path to a file containing the Module or Service Worker contents
-		// of the Worker. Conflicts with `content`. Must be paired with
-		// `content_sha256`.
-		content_file?: string
-
-		// SHA-256 hash of the Worker contents. Used to trigger updates
-		// when source code changes. Must be provided when `content_file`
-		// is specified.
-		content_sha256?: string
 
 		// Named exports, such as Durable Object class implementations and
 		// named entrypoints.
@@ -510,17 +566,6 @@ package res
 			// The name of the export.
 			name?: string
 		})]])
-
-		// Content-Type of the Worker. Required if uploading a
-		// non-JavaScript Worker (e.g. "text/x-python").
-		content_type?: string
-
-		// When the script was created.
-		created_on?: string
-
-		// Hashed script content, can be used in a If-None-Match header
-		// when updating.
-		etag?: string
 
 		// Observability settings for the Worker.
 		observability?: close({
@@ -553,22 +598,6 @@ package res
 			})
 		})
 
-		// The names of handlers exported as part of the default export.
-		handlers?: [...string]
-
-		// Whether a Worker contains assets.
-		has_assets?: bool
-
-		// Whether a Worker contains modules.
-		has_modules?: bool
-
-		// Name of the script, used in URLs and route configuration.
-		id?: string
-
-		// Retain assets which exist for a previously uploaded Worker
-		// version; used in lieu of providing a completion token.
-		keep_assets?: bool
-
 		// Configuration for [Smart
 		// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 		// Specify mode='smart' for Smart Placement, or one of
@@ -579,6 +608,25 @@ package res
 
 			// HTTP hostname for targeted placement.
 			hostname?: string
+
+			// The last time the script was analyzed for [Smart
+			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+			last_analyzed_at?: string
+
+			// Enables [Smart
+			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+			// Available values: "smart", "targeted".
+			mode?: string
+
+			// Cloud region for targeted placement in format
+			// 'provider:region'.
+			region?: string
+
+			// Status of [Smart
+			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+			// Available values: "SUCCESS", "UNSUPPORTED_APPLICATION",
+			// "INSUFFICIENT_INVOCATIONS".
+			status?: string
 
 			// Array of placement targets (currently limited to single
 			// target).
@@ -601,29 +649,7 @@ package res
 				// Cloud region in format 'provider:region'.
 				region?: string
 			})]])
-
-			// The last time the script was analyzed for [Smart
-			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-			last_analyzed_at?: string
-
-			// Enables [Smart
-			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-			// Available values: "smart", "targeted".
-			mode?: string
-
-			// Cloud region for targeted placement in format
-			// 'provider:region'.
-			region?: string
-
-			// Status of [Smart
-			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-			// Available values: "SUCCESS", "UNSUPPORTED_APPLICATION",
-			// "INSUFFICIENT_INVOCATIONS".
-			status?: string
 		})
-
-		// List of binding types to keep from previous_upload.
-		keep_bindings?: [...string]
 
 		// List of Workers that will consume logs from the attached
 		// Worker.
@@ -646,31 +672,5 @@ package res
 			// Name of Worker that is to be the consumer.
 			service!: string
 		})]])
-
-		// The client most recently used to deploy this Worker.
-		last_deployed_from?: string
-
-		// Whether Logpush is turned on for the Worker.
-		logpush?: bool
-
-		// Name of the uploaded file that contains the main module (e.g.
-		// the file exporting a `fetch` handler). Indicates a `module
-		// syntax` Worker.
-		main_module?: string
-
-		// The tag of the Durable Object migration that was most recently
-		// applied for this Worker.
-		migration_tag?: string
-
-		// When the script was last modified.
-		modified_on?: string
-
-		// Name of the script, used in URLs and route configuration.
-		script_name!:     string
-		startup_time_ms?: number
-
-		// Usage model for the Worker invocations.
-		// Available values: "standard", "bundled", "unbound".
-		usage_model?: string
 	})
 }

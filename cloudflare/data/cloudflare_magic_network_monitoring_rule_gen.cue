@@ -4,12 +4,13 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_magic_network_monitoring_rule")
 	close({
+		account_id!: string
+
 		// Toggle on if you would like Cloudflare to automatically
 		// advertise the IP Prefixes within the rule via Magic Transit
 		// when the rule is triggered. Only available for users of Magic
 		// Transit.
 		automatic_advertisement?: bool
-		account_id!:              string
 
 		// The number of bits per second for the rule. When this value is
 		// exceeded for the set duration, an alert notification is sent.

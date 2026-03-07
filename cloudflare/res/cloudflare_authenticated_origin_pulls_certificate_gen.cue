@@ -26,6 +26,9 @@ package res
 		// The zone's private key.
 		private_key!: string
 
+		// The serial number on the uploaded certificate.
+		serial_number?: string
+
 		// The type of hash used for the certificate.
 		signature?: string
 

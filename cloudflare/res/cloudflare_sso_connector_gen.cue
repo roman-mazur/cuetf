@@ -6,16 +6,6 @@ package res
 	close({
 		// Account identifier tag.
 		account_id!: string
-		verification?: close({
-			// DNS verification code. Add this entire string to the DNS TXT
-			// record of the email domain to validate ownership.
-			code?: string
-
-			// The status of the verification code from the verification
-			// process.
-			// Available values: "awaiting", "pending", "failed", "verified".
-			status?: string
-		})
 
 		// Begin the verification process after creation
 		begin_verification?: bool
@@ -38,5 +28,15 @@ package res
 		// Controls the display of FedRAMP language to the user during SSO
 		// login
 		use_fedramp_language?: bool
+		verification?: close({
+			// DNS verification code. Add this entire string to the DNS TXT
+			// record of the email domain to validate ownership.
+			code?: string
+
+			// The status of the verification code from the verification
+			// process.
+			// Available values: "awaiting", "pending", "failed", "verified".
+			status?: string
+		})
 	})
 }

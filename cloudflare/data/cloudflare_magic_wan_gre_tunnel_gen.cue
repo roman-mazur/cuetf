@@ -52,6 +52,14 @@ package data
 			// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
 			// The minimum value is 576.
 			mtu?: number
+
+			// The name of the tunnel. The name cannot contain spaces or
+			// special characters, must be 15 characters or less, and cannot
+			// share a name with another GRE tunnel.
+			name?: string
+
+			// Time To Live (TTL) in number of hops of the GRE tunnel.
+			ttl?: number
 			bgp?: close({
 				// ASN used on the customer end of the BGP session
 				customer_asn?: number
@@ -86,44 +94,18 @@ package data
 				md5_key?: string
 			})
 			bgp_status?: close({
-				bgp_state?:       string
-				cf_speaker_ip?:   string
-				cf_speaker_port?: number
-
-				// Available values: "BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING".
-				state?:                 string
+				bgp_state?:             string
+				cf_speaker_ip?:         string
+				cf_speaker_port?:       number
 				customer_speaker_ip?:   string
 				customer_speaker_port?: number
-				tcp_established?:       bool
-				updated_at?:            string
+
+				// Available values: "BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING".
+				state?:           string
+				tcp_established?: bool
+				updated_at?:      string
 			})
-
-			// The name of the tunnel. The name cannot contain spaces or
-			// special characters, must be 15 characters or less, and cannot
-			// share a name with another GRE tunnel.
-			name?: string
 			health_check?: close({
-				// The destination address in a request type health check. After
-				// the healthcheck is decapsulated at the customer end of the
-				// tunnel, the ICMP echo will be forwarded to this address. This
-				// field defaults to `customer_gre_endpoint address`. This field
-				// is ignored for bidirectional healthchecks as the
-				// interface_address (not assigned to the Cloudflare side of the
-				// tunnel) is used as the target. Must be in object form if the
-				// x-magic-new-hc-target header is set to true and string form if
-				// x-magic-new-hc-target is absent or set to false.
-				target?: close({
-					// The effective health check target. If 'saved' is empty, then
-					// this field will be populated with the calculated default value
-					// on GET requests. Ignored in POST, PUT, and PATCH requests.
-					effective?: string
-
-					// The saved health check target. Setting the value to the empty
-					// string indicates that the calculated default value will be
-					// used.
-					saved?: string
-				})
-
 				// The direction of the flow of the healthcheck. Either
 				// unidirectional, where the probe comes to you via the tunnel
 				// and the result comes back to Cloudflare via the open Internet,
@@ -144,10 +126,28 @@ package data
 				// value is `reply`.
 				// Available values: "reply", "request".
 				type?: string
-			})
 
-			// Time To Live (TTL) in number of hops of the GRE tunnel.
-			ttl?: number
+				// The destination address in a request type health check. After
+				// the healthcheck is decapsulated at the customer end of the
+				// tunnel, the ICMP echo will be forwarded to this address. This
+				// field defaults to `customer_gre_endpoint address`. This field
+				// is ignored for bidirectional healthchecks as the
+				// interface_address (not assigned to the Cloudflare side of the
+				// tunnel) is used as the target. Must be in object form if the
+				// x-magic-new-hc-target header is set to true and string form if
+				// x-magic-new-hc-target is absent or set to false.
+				target?: close({
+					// The effective health check target. If 'saved' is empty, then
+					// this field will be populated with the calculated default value
+					// on GET requests. Ignored in POST, PUT, and PATCH requests.
+					effective?: string
+
+					// The saved health check target. Setting the value to the empty
+					// string indicates that the calculated default value will be
+					// used.
+					saved?: string
+				})
+			})
 		})
 	})
 }

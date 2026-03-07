@@ -4,16 +4,6 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_spectrum_application")
 	close({
-		// The name and type of DNS record for the Spectrum application.
-		dns?: close({
-			// The name of the DNS record associated with the application.
-			name?: string
-
-			// The type of DNS record associated with the application.
-			// Available values: "CNAME", "ADDRESS".
-			type?: string
-		})
-
 		// App identifier.
 		app_id?: string
 
@@ -24,25 +14,6 @@ package data
 
 		// When the Application was created.
 		created_on?: string
-
-		// The anycast edge IP configuration for the hostname of this
-		// application.
-		edge_ips?: close({
-			// The IP versions supported for inbound connections on Spectrum
-			// anycast IPs.
-			// Available values: "all", "ipv4", "ipv6".
-			connectivity?: string
-
-			// The array of customer owned IPs we broadcast via anycast for
-			// this hostname and application.
-			ips?: [...string]
-
-			// The type of edge IP configuration specified. Dynamically
-			// allocated edge IPs use Spectrum anycast IPs in accordance with
-			// the connectivity you specify. Only valid with CNAME DNS names.
-			// Available values: "dynamic", "static".
-			type?: string
-		})
 
 		// App identifier.
 		id?: string
@@ -72,20 +43,6 @@ package data
 		// for example `"tcp/1000-2000"`.
 		protocol?: string
 
-		// The name and type of DNS record for the Spectrum application.
-		origin_dns?: close({
-			// The name of the DNS record associated with the origin.
-			name?: string
-
-			// The TTL of our resolution of your DNS record in seconds.
-			ttl?: number
-
-			// The type of DNS record associated with the origin. "" is used
-			// to specify a combination of A/AAAA records.
-			// Available values: "", "A", "AAAA", "SRV".
-			type?: string
-		})
-
 		// Enables Proxy Protocol to the origin. Refer to [Enable Proxy
 		// protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/)
 		// for implementation details on PROXY Protocol V1, PROXY
@@ -96,16 +53,6 @@ package data
 		// The type of TLS termination associated with the application.
 		// Available values: "off", "flexible", "full", "strict".
 		tls?: string
-		filter?: close({
-			// Sets the direction by which results are ordered.
-			// Available values: "asc", "desc".
-			direction?: string
-
-			// Application field by which results are ordered.
-			// Available values: "protocol", "app_id", "created_on",
-			// "modified_on", "dns".
-			order?: string
-		})
 
 		// Determines how data travels from the edge to your origin. When
 		// set to "direct", Spectrum will send traffic directly to your
@@ -119,5 +66,58 @@ package data
 
 		// Zone identifier.
 		zone_id!: string
+
+		// The name and type of DNS record for the Spectrum application.
+		dns?: close({
+			// The name of the DNS record associated with the application.
+			name?: string
+
+			// The type of DNS record associated with the application.
+			// Available values: "CNAME", "ADDRESS".
+			type?: string
+		})
+
+		// The anycast edge IP configuration for the hostname of this
+		// application.
+		edge_ips?: close({
+			// The IP versions supported for inbound connections on Spectrum
+			// anycast IPs.
+			// Available values: "all", "ipv4", "ipv6".
+			connectivity?: string
+
+			// The array of customer owned IPs we broadcast via anycast for
+			// this hostname and application.
+			ips?: [...string]
+
+			// The type of edge IP configuration specified. Dynamically
+			// allocated edge IPs use Spectrum anycast IPs in accordance with
+			// the connectivity you specify. Only valid with CNAME DNS names.
+			// Available values: "dynamic", "static".
+			type?: string
+		})
+
+		// The name and type of DNS record for the Spectrum application.
+		origin_dns?: close({
+			// The name of the DNS record associated with the origin.
+			name?: string
+
+			// The TTL of our resolution of your DNS record in seconds.
+			ttl?: number
+
+			// The type of DNS record associated with the origin. "" is used
+			// to specify a combination of A/AAAA records.
+			// Available values: "", "A", "AAAA", "SRV".
+			type?: string
+		})
+		filter?: close({
+			// Sets the direction by which results are ordered.
+			// Available values: "asc", "desc".
+			direction?: string
+
+			// Application field by which results are ordered.
+			// Available values: "protocol", "app_id", "created_on",
+			// "modified_on", "dns".
+			order?: string
+		})
 	})
 }

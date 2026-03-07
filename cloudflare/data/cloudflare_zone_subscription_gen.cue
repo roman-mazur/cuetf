@@ -23,6 +23,18 @@ package data
 		// Identifier
 		id?: string
 
+		// The price of the subscription that will be billed, in US
+		// dollars.
+		price?: number
+
+		// The state that the subscription is in.
+		// Available values: "Trial", "Provisioned", "Paid",
+		// "AwaitingPayment", "Cancelled", "Failed", "Expired".
+		state?: string
+
+		// Identifier
+		zone_id!: string
+
 		// The rate plan applied to the subscription.
 		rate_plan?: close({
 			// The currency applied to the rate plan subscription.
@@ -51,17 +63,5 @@ package data
 			// strings.
 			sets?: [...string]
 		})
-
-		// The price of the subscription that will be billed, in US
-		// dollars.
-		price?: number
-
-		// The state that the subscription is in.
-		// Available values: "Trial", "Provisioned", "Paid",
-		// "AwaitingPayment", "Cancelled", "Failed", "Expired".
-		state?: string
-
-		// Identifier
-		zone_id!: string
 	})
 }

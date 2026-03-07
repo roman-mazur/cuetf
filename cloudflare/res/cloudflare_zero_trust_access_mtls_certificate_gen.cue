@@ -14,13 +14,13 @@ package res
 
 		// The certificate content.
 		certificate!: string
+		expires_on?:  string
 
 		// The MD5 fingerprint of the certificate.
 		fingerprint?: string
 
 		// The ID of the application that will use this certificate.
-		id?:         string
-		expires_on?: string
+		id?: string
 
 		// The name of the certificate.
 		name!: string

@@ -18,7 +18,17 @@ package data
 
 		// The field to sort by.
 		// Available values: "pattern", "created_at".
-		order?: string
+		order?:   string
+		pattern?: string
+
+		// Allows searching in multiple properties of a record
+		// simultaneously.
+		// This parameter is intended for human users, not automation. Its
+		// exact
+		// behavior is intentionally left unspecified and is subject to
+		// change
+		// in the future.
+		search?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
@@ -60,15 +70,5 @@ package data
 			last_modified?: string
 			pattern?:       string
 		})]])
-		pattern?: string
-
-		// Allows searching in multiple properties of a record
-		// simultaneously.
-		// This parameter is intended for human users, not automation. Its
-		// exact
-		// behavior is intentionally left unspecified and is subject to
-		// change
-		// in the future.
-		search?: string
 	})
 }

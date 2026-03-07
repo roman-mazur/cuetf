@@ -7,6 +7,9 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Identifier.
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// When the Keyless SSL was created.
@@ -15,15 +18,6 @@ package data
 			// Whether or not the Keyless SSL is on or off.
 			enabled?: bool
 
-			// Configuration for using Keyless SSL through a Cloudflare Tunnel
-			tunnel?: close({
-				// Private IP of the Key Server Host
-				private_ip?: string
-
-				// Cloudflare Tunnel Virtual Network ID
-				vnet_id?: string
-			})
-
 			// The keyless SSL name.
 			host?: string
 
@@ -47,6 +41,15 @@ package data
 			// Status of the Keyless SSL.
 			// Available values: "active", "deleted".
 			status?: string
+
+			// Configuration for using Keyless SSL through a Cloudflare Tunnel
+			tunnel?: close({
+				// Private IP of the Key Server Host
+				private_ip?: string
+
+				// Cloudflare Tunnel Virtual Network ID
+				vnet_id?: string
+			})
 		}), [...close({
 			// When the Keyless SSL was created.
 			created_on?: string
@@ -54,15 +57,6 @@ package data
 			// Whether or not the Keyless SSL is on or off.
 			enabled?: bool
 
-			// Configuration for using Keyless SSL through a Cloudflare Tunnel
-			tunnel?: close({
-				// Private IP of the Key Server Host
-				private_ip?: string
-
-				// Cloudflare Tunnel Virtual Network ID
-				vnet_id?: string
-			})
-
 			// The keyless SSL name.
 			host?: string
 
@@ -86,9 +80,15 @@ package data
 			// Status of the Keyless SSL.
 			// Available values: "active", "deleted".
 			status?: string
-		})]])
 
-		// Identifier.
-		zone_id!: string
+			// Configuration for using Keyless SSL through a Cloudflare Tunnel
+			tunnel?: close({
+				// Private IP of the Key Server Host
+				private_ip?: string
+
+				// Cloudflare Tunnel Virtual Network ID
+				vnet_id?: string
+			})
+		})]])
 	})
 }

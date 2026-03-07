@@ -22,6 +22,15 @@ package data
 
 		// The hostname route ID.
 		hostname_route_id?: string
+
+		// The hostname route ID.
+		id?: string
+
+		// UUID of the tunnel.
+		tunnel_id?: string
+
+		// A user-friendly name for a tunnel.
+		tunnel_name?: string
 		filter?: close({
 			// If set, only list hostname routes with the given comment.
 			comment?: string
@@ -45,14 +54,5 @@ package data
 			// tunnel.
 			tunnel_id?: string
 		})
-
-		// The hostname route ID.
-		id?: string
-
-		// UUID of the tunnel.
-		tunnel_id?: string
-
-		// A user-friendly name for a tunnel.
-		tunnel_name?: string
 	})
 }

@@ -13,8 +13,22 @@ package res
 		// Membership identifier tag.
 		id?: string
 
+		// Set of roles associated with this member.
+		roles?: [...string]
+
+		// Status of the member invitation. If not provided during
+		// creation, defaults to 'pending'.
+		// Changing from 'accepted' back to 'pending' will trigger a
+		// replacement of the member resource in Terraform.
+		// Available values: "accepted", "pending".
+		status?: string
+
 		// Array of policies associated with this member.
 		policies?: matchN(1, [close({
+			// Allow or deny operations against the resources.
+			// Available values: "allow", "deny".
+			access!: string
+
 			// A set of permission groups that are specified to the policy.
 			permission_groups!: matchN(1, [close({
 				// Identifier of the group.
@@ -23,10 +37,6 @@ package res
 				// Identifier of the group.
 				id!: string
 			})]])
-
-			// Allow or deny operations against the resources.
-			// Available values: "allow", "deny".
-			access!: string
 
 			// A list of resource groups that the policy applies to.
 			resource_groups!: matchN(1, [close({
@@ -37,6 +47,10 @@ package res
 				id!: string
 			})]])
 		}), [...close({
+			// Allow or deny operations against the resources.
+			// Available values: "allow", "deny".
+			access!: string
+
 			// A set of permission groups that are specified to the policy.
 			permission_groups!: matchN(1, [close({
 				// Identifier of the group.
@@ -45,10 +59,6 @@ package res
 				// Identifier of the group.
 				id!: string
 			})]])
-
-			// Allow or deny operations against the resources.
-			// Available values: "allow", "deny".
-			access!: string
 
 			// A list of resource groups that the policy applies to.
 			resource_groups!: matchN(1, [close({
@@ -59,9 +69,6 @@ package res
 				id!: string
 			})]])
 		})]])
-
-		// Set of roles associated with this member.
-		roles?: [...string]
 
 		// Details of the user associated to the membership.
 		user?: close({
@@ -81,8 +88,5 @@ package res
 			// user account. Does not apply to API authentication.
 			two_factor_authentication_enabled?: bool
 		})
-
-		// Available values: "accepted", "pending".
-		status?: string
 	})
 }

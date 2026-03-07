@@ -4,6 +4,22 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_access_identity_providers")
 	close({
+		// The Account ID to use for this endpoint. Mutually exclusive
+		// with the Zone ID.
+		account_id?: string
+
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// Indicates to Access to only retrieve identity providers that
+		// have the System for Cross-Domain Identity Management (SCIM)
+		// enabled.
+		scim_enabled?: string
+
+		// The Zone ID to use for this endpoint. Mutually exclusive with
+		// the Account ID.
+		zone_id?: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// The configuration parameters for the identity provider. To view
@@ -66,22 +82,6 @@ package data
 				// Your okta account url
 				okta_account?: string
 
-				// Add a list of attribute names that will be returned in the
-				// response header from the Access callback.
-				header_attributes?: matchN(1, [close({
-					// attribute name from the IDP
-					attribute_name?: string
-
-					// header that will be added on the request to the origin
-					header_name?: string
-				}), [...close({
-					// attribute name from the IDP
-					attribute_name?: string
-
-					// header that will be added on the request to the origin
-					header_name?: string
-				})]])
-
 				// Your OneLogin account url
 				onelogin_account?: string
 
@@ -121,6 +121,22 @@ package data
 
 				// The token_endpoint URL of your IdP
 				token_url?: string
+
+				// Add a list of attribute names that will be returned in the
+				// response header from the Access callback.
+				header_attributes?: matchN(1, [close({
+					// attribute name from the IDP
+					attribute_name?: string
+
+					// header that will be added on the request to the origin
+					header_name?: string
+				}), [...close({
+					// attribute name from the IDP
+					attribute_name?: string
+
+					// header that will be added on the request to the origin
+					header_name?: string
+				})]])
 			})
 
 			// UUID.
@@ -129,14 +145,6 @@ package data
 			// The name of the identity provider, shown to users on the login
 			// page.
 			name?: string
-
-			// The type of identity provider. To determine the value for a
-			// specific provider, refer to our [developer
-			// documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-			// Available values: "onetimepin", "azureAD", "saml", "centrify",
-			// "facebook", "github", "google-apps", "google", "linkedin",
-			// "oidc", "okta", "onelogin", "pingone", "yandex".
-			type?: string
 
 			// The configuration settings for enabling a System for
 			// Cross-Domain Identity Management (SCIM) with the identity
@@ -176,6 +184,14 @@ package data
 				// Provider.
 				user_deprovision?: bool
 			})
+
+			// The type of identity provider. To determine the value for a
+			// specific provider, refer to our [developer
+			// documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+			// Available values: "onetimepin", "azureAD", "saml", "centrify",
+			// "facebook", "github", "google-apps", "google", "linkedin",
+			// "oidc", "okta", "onelogin", "pingone", "yandex".
+			type?: string
 		}), [...close({
 			// The configuration parameters for the identity provider. To view
 			// the required parameters for a specific provider, refer to our
@@ -237,22 +253,6 @@ package data
 				// Your okta account url
 				okta_account?: string
 
-				// Add a list of attribute names that will be returned in the
-				// response header from the Access callback.
-				header_attributes?: matchN(1, [close({
-					// attribute name from the IDP
-					attribute_name?: string
-
-					// header that will be added on the request to the origin
-					header_name?: string
-				}), [...close({
-					// attribute name from the IDP
-					attribute_name?: string
-
-					// header that will be added on the request to the origin
-					header_name?: string
-				})]])
-
 				// Your OneLogin account url
 				onelogin_account?: string
 
@@ -292,6 +292,22 @@ package data
 
 				// The token_endpoint URL of your IdP
 				token_url?: string
+
+				// Add a list of attribute names that will be returned in the
+				// response header from the Access callback.
+				header_attributes?: matchN(1, [close({
+					// attribute name from the IDP
+					attribute_name?: string
+
+					// header that will be added on the request to the origin
+					header_name?: string
+				}), [...close({
+					// attribute name from the IDP
+					attribute_name?: string
+
+					// header that will be added on the request to the origin
+					header_name?: string
+				})]])
 			})
 
 			// UUID.
@@ -300,14 +316,6 @@ package data
 			// The name of the identity provider, shown to users on the login
 			// page.
 			name?: string
-
-			// The type of identity provider. To determine the value for a
-			// specific provider, refer to our [developer
-			// documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-			// Available values: "onetimepin", "azureAD", "saml", "centrify",
-			// "facebook", "github", "google-apps", "google", "linkedin",
-			// "oidc", "okta", "onelogin", "pingone", "yandex".
-			type?: string
 
 			// The configuration settings for enabling a System for
 			// Cross-Domain Identity Management (SCIM) with the identity
@@ -347,22 +355,14 @@ package data
 				// Provider.
 				user_deprovision?: bool
 			})
+
+			// The type of identity provider. To determine the value for a
+			// specific provider, refer to our [developer
+			// documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+			// Available values: "onetimepin", "azureAD", "saml", "centrify",
+			// "facebook", "github", "google-apps", "google", "linkedin",
+			// "oidc", "okta", "onelogin", "pingone", "yandex".
+			type?: string
 		})]])
-
-		// The Account ID to use for this endpoint. Mutually exclusive
-		// with the Zone ID.
-		account_id?: string
-
-		// Max items to fetch, default: 1000
-		max_items?: number
-
-		// Indicates to Access to only retrieve identity providers that
-		// have the System for Cross-Domain Identity Management (SCIM)
-		// enabled.
-		scim_enabled?: string
-
-		// The Zone ID to use for this endpoint. Mutually exclusive with
-		// the Account ID.
-		zone_id?: string
 	})
 }

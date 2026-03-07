@@ -8,6 +8,28 @@ package data
 		// with the Zone ID.
 		account_id?: string
 
+		// UUID.
+		id?: string
+
+		// UUID.
+		identity_provider_id?: string
+
+		// The name of the identity provider, shown to users on the login
+		// page.
+		name?: string
+
+		// The type of identity provider. To determine the value for a
+		// specific provider, refer to our [developer
+		// documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+		// Available values: "onetimepin", "azureAD", "saml", "centrify",
+		// "facebook", "github", "google-apps", "google", "linkedin",
+		// "oidc", "okta", "onelogin", "pingone", "yandex".
+		type?: string
+
+		// The Zone ID to use for this endpoint. Mutually exclusive with
+		// the Account ID.
+		zone_id?: string
+
 		// The configuration parameters for the identity provider. To view
 		// the required parameters for a specific provider, refer to our
 		// [developer
@@ -57,22 +79,6 @@ package data
 
 			// The claim name for email in the id_token response.
 			email_claim_name?: string
-
-			// Add a list of attribute names that will be returned in the
-			// response header from the Access callback.
-			header_attributes?: matchN(1, [close({
-				// attribute name from the IDP
-				attribute_name?: string
-
-				// header that will be added on the request to the origin
-				header_name?: string
-			}), [...close({
-				// attribute name from the IDP
-				attribute_name?: string
-
-				// header that will be added on the request to the origin
-				header_name?: string
-			})]])
 
 			// X509 certificate to verify the signature in the SAML
 			// authentication response
@@ -124,17 +130,23 @@ package data
 
 			// The token_endpoint URL of your IdP
 			token_url?: string
+
+			// Add a list of attribute names that will be returned in the
+			// response header from the Access callback.
+			header_attributes?: matchN(1, [close({
+				// attribute name from the IDP
+				attribute_name?: string
+
+				// header that will be added on the request to the origin
+				header_name?: string
+			}), [...close({
+				// attribute name from the IDP
+				attribute_name?: string
+
+				// header that will be added on the request to the origin
+				header_name?: string
+			})]])
 		})
-
-		// UUID.
-		id?: string
-
-		// UUID.
-		identity_provider_id?: string
-
-		// The name of the identity provider, shown to users on the login
-		// page.
-		name?: string
 
 		// The configuration settings for enabling a System for
 		// Cross-Domain Identity Management (SCIM) with the identity
@@ -174,23 +186,11 @@ package data
 			// Provider.
 			user_deprovision?: bool
 		})
-
-		// The type of identity provider. To determine the value for a
-		// specific provider, refer to our [developer
-		// documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-		// Available values: "onetimepin", "azureAD", "saml", "centrify",
-		// "facebook", "github", "google-apps", "google", "linkedin",
-		// "oidc", "okta", "onelogin", "pingone", "yandex".
-		type?: string
 		filter?: close({
 			// Indicates to Access to only retrieve identity providers that
 			// have the System for Cross-Domain Identity Management (SCIM)
 			// enabled.
 			scim_enabled?: string
 		})
-
-		// The Zone ID to use for this endpoint. Mutually exclusive with
-		// the Account ID.
-		zone_id?: string
 	})
 }

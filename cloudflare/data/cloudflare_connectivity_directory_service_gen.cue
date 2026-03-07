@@ -9,17 +9,20 @@ package data
 		http_port?:  number
 		https_port?: number
 		id?:         string
-		filter?: close({
-			// Available values: "http".
-			type?: string
-		})
 		name?:       string
 		service_id?: string
 
 		// Available values: "http".
 		type?:       string
 		updated_at?: string
+		filter?: close({
+			// Available values: "http".
+			type?: string
+		})
 		host?: close({
+			hostname?: string
+			ipv4?:     string
+			ipv6?:     string
 			network?: close({
 				tunnel_id?: string
 			})
@@ -27,9 +30,6 @@ package data
 				resolver_ips?: [...string]
 				tunnel_id?: string
 			})
-			hostname?: string
-			ipv4?:     string
-			ipv6?:     string
 		})
 	})
 }

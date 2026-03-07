@@ -14,6 +14,12 @@ package data
 		result?: matchN(1, [close({
 			// Description of role's permissions.
 			description?: string
+
+			// Role identifier tag.
+			id?: string
+
+			// Role name.
+			name?: string
 			permissions?: close({
 				analytics?: close({
 					read?:  bool
@@ -64,15 +70,15 @@ package data
 					write?: bool
 				})
 			})
-
-			// Role identifier tag.
-			id?: string
-
-			// Role name.
-			name?: string
 		}), [...close({
 			// Description of role's permissions.
 			description?: string
+
+			// Role identifier tag.
+			id?: string
+
+			// Role name.
+			name?: string
 			permissions?: close({
 				analytics?: close({
 					read?:  bool
@@ -123,12 +129,6 @@ package data
 					write?: bool
 				})
 			})
-
-			// Role identifier tag.
-			id?: string
-
-			// Role name.
-			name?: string
 		})]])
 	})
 }

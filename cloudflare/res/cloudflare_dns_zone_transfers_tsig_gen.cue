@@ -8,10 +8,10 @@ package res
 
 		// TSIG algorithm.
 		algo!: string
+		id?:   string
 
 		// TSIG key name.
 		name!: string
-		id?:   string
 
 		// TSIG secret.
 		secret!: string

@@ -4,6 +4,19 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_email_security_impersonation_registry")
 	close({
+		// Account Identifier
+		account_id!:        string
+		comments?:          string
+		created_at?:        string
+		directory_id?:      number
+		directory_node_id?: number
+		display_name_id?:   number
+		email?:             string
+		id?:                number
+		is_email_regex?:    bool
+		last_modified?:     string
+		name?:              string
+		provenance?:        string
 		filter?: close({
 			// The sorting direction.
 			// Available values: "asc", "desc".
@@ -26,19 +39,5 @@ package data
 			// in the future.
 			search?: string
 		})
-
-		// Account Identifier
-		account_id!:        string
-		comments?:          string
-		created_at?:        string
-		directory_id?:      number
-		directory_node_id?: number
-		display_name_id?:   number
-		email?:             string
-		id?:                number
-		is_email_regex?:    bool
-		last_modified?:     string
-		name?:              string
-		provenance?:        string
 	})
 }

@@ -4,22 +4,22 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_dlp_predefined_profile")
 	close({
-		account_id!:          string
-		ai_context_enabled?:  bool
-		allowed_match_count?: number
+		account_id!:           string
+		ai_context_enabled?:   bool
+		allowed_match_count?:  number
+		confidence_threshold?: string
 
 		// Entries to enable for this predefined profile. Any entries not
 		// provided will be disabled.
 		enabled_entries?: [...string]
-		confidence_threshold?: string
+		id?: string
 
 		// The name of the predefined profile.
-		name?: string
-		id?:   string
+		name?:        string
+		ocr_enabled?: bool
 
 		// Whether this profile can be accessed by anyone.
 		open_access?: bool
-		ocr_enabled?: bool
 		profile_id!:  string
 	})
 }

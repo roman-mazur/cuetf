@@ -59,54 +59,11 @@ package data
 		// When the zone was last modified.
 		modified_on?: string
 
-		// The domain name.
+		// The domain name. Per [RFC
+		// 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4)
+		// the overall zone name can be up to 253 characters, with each
+		// segment ("label") not exceeding 63 characters.
 		name?: string
-		filter?: close({
-			// Direction to order zones.
-			// Available values: "asc", "desc".
-			direction?: string
-
-			// Whether to match all search requirements or at least one (any).
-			// Available values: "any", "all".
-			match?: string
-
-			// A domain name. Optional filter operators can be provided to
-			// extend refine the search:
-			// * `equal` (default)
-			// * `not_equal`
-			// * `starts_with`
-			// * `ends_with`
-			// * `contains`
-			// * `starts_with_case_sensitive`
-			// * `ends_with_case_sensitive`
-			// * `contains_case_sensitive`
-			name?: string
-
-			// Field to order zones by.
-			// Available values: "name", "status", "account.id",
-			// "account.name", "plan.id".
-			order?: string
-			account?: close({
-				// Filter by an account ID.
-				id?: string
-
-				// An account Name. Optional filter operators can be provided to
-				// extend refine the search:
-				// * `equal` (default)
-				// * `not_equal`
-				// * `starts_with`
-				// * `ends_with`
-				// * `contains`
-				// * `starts_with_case_sensitive`
-				// * `ends_with_case_sensitive`
-				// * `contains_case_sensitive`
-				name?: string
-			})
-
-			// Specify a zone status to filter by.
-			// Available values: "initializing", "pending", "active", "moved".
-			status?: string
-		})
 
 		// The name servers Cloudflare assigns to a zone.
 		name_servers?: [...string]
@@ -176,5 +133,52 @@ package data
 
 		// Identifier
 		zone_id?: string
+		filter?: close({
+			account?: close({
+				// Filter by an account ID.
+				id?: string
+
+				// An account Name. Optional filter operators can be provided to
+				// extend refine the search:
+				// * `equal` (default)
+				// * `not_equal`
+				// * `starts_with`
+				// * `ends_with`
+				// * `contains`
+				// * `starts_with_case_sensitive`
+				// * `ends_with_case_sensitive`
+				// * `contains_case_sensitive`
+				name?: string
+			})
+
+			// Direction to order zones.
+			// Available values: "asc", "desc".
+			direction?: string
+
+			// Whether to match all search requirements or at least one (any).
+			// Available values: "any", "all".
+			match?: string
+
+			// A domain name. Optional filter operators can be provided to
+			// extend refine the search:
+			// * `equal` (default)
+			// * `not_equal`
+			// * `starts_with`
+			// * `ends_with`
+			// * `contains`
+			// * `starts_with_case_sensitive`
+			// * `ends_with_case_sensitive`
+			// * `contains_case_sensitive`
+			name?: string
+
+			// Field to order zones by.
+			// Available values: "name", "status", "account.id",
+			// "account.name", "plan.id".
+			order?: string
+
+			// Specify a zone status to filter by.
+			// Available values: "initializing", "pending", "active", "moved".
+			status?: string
+		})
 	})
 }

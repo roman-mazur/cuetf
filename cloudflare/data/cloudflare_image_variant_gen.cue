@@ -7,6 +7,7 @@ package data
 		// Account identifier tag.
 		account_id!: string
 		id?:         string
+		variant_id!: string
 		variant?: close({
 			id?: string
 
@@ -34,6 +35,5 @@ package data
 				width?: number
 			})
 		})
-		variant_id!: string
 	})
 }

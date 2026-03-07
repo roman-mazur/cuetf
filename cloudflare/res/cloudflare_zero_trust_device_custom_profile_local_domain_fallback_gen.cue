@@ -5,6 +5,8 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_device_custom_profile_local_domain_fallback")
 	close({
 		account_id!: string
+		id?:         string
+		policy_id!:  string
 		domains!: matchN(1, [close({
 			// A description of the fallback domain, displayed in the client
 			// UI.
@@ -26,7 +28,5 @@ package res
 			// The domain suffix to match when resolving locally.
 			suffix!: string
 		})]])
-		id?:        string
-		policy_id!: string
 	})
 }

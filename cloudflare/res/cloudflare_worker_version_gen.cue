@@ -17,6 +17,35 @@ package res
 		// specific changes not included in a `compatibility_date`.
 		compatibility_flags?: [...string]
 
+		// When the version was created.
+		created_on?: string
+
+		// Version identifier.
+		id?: string
+
+		// The name of the main module in the `modules` array (e.g. the
+		// name of the module that exports a `fetch` handler).
+		main_module?: string
+
+		// The base64-encoded main script content. This is only returned
+		// for service worker syntax workers (not ES modules). Used when
+		// importing existing workers that use the older service worker
+		// syntax.
+		main_script_base64?: string
+
+		// The integer version number, starting from one.
+		"number"?: number
+
+		// The client used to create the version.
+		source?: string
+
+		// Time in milliseconds spent on [Worker
+		// startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+		startup_time_ms?: number
+
+		// Identifier for the Worker, which can be ID or name.
+		worker_id!: string
+
 		// Metadata about the version.
 		annotations?: close({
 			// Human-readable message about the version.
@@ -28,9 +57,6 @@ package res
 			// Operation that triggered the creation of the version.
 			workers_triggered_by?: string
 		})
-
-		// When the version was created.
-		created_on?: string
 
 		// Configuration for assets within a Worker.
 		//
@@ -77,9 +103,6 @@ package res
 			})
 		})
 
-		// Version identifier.
-		id?: string
-
 		// List of bindings attached to a Worker. You can find more about
 		// bindings on our docs:
 		// https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
@@ -109,22 +132,6 @@ package res
 			// Destination address for the email.
 			destination_address?: string
 
-			// Outbound worker.
-			outbound?: close({
-				// Pass information from the Dispatch Worker to the Outbound
-				// Worker through the parameters.
-				params?: [...string]
-
-				// Outbound worker.
-				worker?: close({
-					// Environment of the outbound worker.
-					environment?: string
-
-					// Name of the outbound worker.
-					service?: string
-				})
-			})
-
 			// The environment of the script_name to bind to.
 			environment?: string
 
@@ -156,15 +163,6 @@ package res
 			// Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key)
 			// format. Required if `format` is "jwk".
 			key_jwk?: string
-
-			// The rate limit configuration.
-			simple?: close({
-				// The limit (requests per period).
-				limit!: number
-
-				// The period in seconds.
-				period!: number
-			})
 
 			// A JavaScript variable name for the binding.
 			name!: string
@@ -229,6 +227,40 @@ package res
 
 			// Name of the Workflow to bind to.
 			workflow_name?: string
+
+			// Outbound worker.
+			outbound?: close({
+				// Pass information from the Dispatch Worker to the Outbound
+				// Worker through the parameters.
+				params?: matchN(1, [close({
+					// Name of the parameter.
+					name!: string
+				}), [...close({
+					// Name of the parameter.
+					name!: string
+				})]])
+
+				// Outbound worker.
+				worker?: close({
+					// Entrypoint to invoke on the outbound worker.
+					entrypoint?: string
+
+					// Environment of the outbound worker.
+					environment?: string
+
+					// Name of the outbound worker.
+					service?: string
+				})
+			})
+
+			// The rate limit configuration.
+			simple?: close({
+				// The limit (requests per period).
+				limit!: number
+
+				// The period in seconds.
+				period!: number
+			})
 		}), [...close({
 			// Algorithm-specific key parameters. [Learn
 			// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
@@ -255,22 +287,6 @@ package res
 			// Destination address for the email.
 			destination_address?: string
 
-			// Outbound worker.
-			outbound?: close({
-				// Pass information from the Dispatch Worker to the Outbound
-				// Worker through the parameters.
-				params?: [...string]
-
-				// Outbound worker.
-				worker?: close({
-					// Environment of the outbound worker.
-					environment?: string
-
-					// Name of the outbound worker.
-					service?: string
-				})
-			})
-
 			// The environment of the script_name to bind to.
 			environment?: string
 
@@ -302,15 +318,6 @@ package res
 			// Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key)
 			// format. Required if `format` is "jwk".
 			key_jwk?: string
-
-			// The rate limit configuration.
-			simple?: close({
-				// The limit (requests per period).
-				limit!: number
-
-				// The period in seconds.
-				period!: number
-			})
 
 			// A JavaScript variable name for the binding.
 			name!: string
@@ -375,23 +382,47 @@ package res
 
 			// Name of the Workflow to bind to.
 			workflow_name?: string
-		})]])
 
-		// The name of the main module in the `modules` array (e.g. the
-		// name of the module that exports a `fetch` handler).
-		main_module?: string
+			// Outbound worker.
+			outbound?: close({
+				// Pass information from the Dispatch Worker to the Outbound
+				// Worker through the parameters.
+				params?: matchN(1, [close({
+					// Name of the parameter.
+					name!: string
+				}), [...close({
+					// Name of the parameter.
+					name!: string
+				})]])
+
+				// Outbound worker.
+				worker?: close({
+					// Entrypoint to invoke on the outbound worker.
+					entrypoint?: string
+
+					// Environment of the outbound worker.
+					environment?: string
+
+					// Name of the outbound worker.
+					service?: string
+				})
+			})
+
+			// The rate limit configuration.
+			simple?: close({
+				// The limit (requests per period).
+				limit!: number
+
+				// The period in seconds.
+				period!: number
+			})
+		})]])
 
 		// Resource limits enforced at runtime.
 		limits?: close({
 			// CPU time limit in milliseconds.
 			cpu_ms!: number
 		})
-
-		// The base64-encoded main script content. This is only returned
-		// for service worker syntax workers (not ES modules). Used when
-		// importing existing workers that use the older service worker
-		// syntax.
-		main_script_base64?: string
 
 		// Migrations for Durable Objects associated with the version.
 		// Migrations are applied when the version is deployed.
@@ -401,6 +432,17 @@ package res
 
 			// A list of classes to create Durable Object namespaces from.
 			new_classes?: [...string]
+
+			// A list of classes to create Durable Object namespaces with
+			// SQLite from.
+			new_sqlite_classes?: [...string]
+
+			// Tag to set as the latest migration tag.
+			new_tag?: string
+
+			// Tag used to verify against the latest migration tag for this
+			// Worker. If they don't match, the upload is rejected.
+			old_tag?: string
 
 			// A list of classes with Durable Object namespaces that were
 			// renamed.
@@ -412,10 +454,6 @@ package res
 				to?:   string
 			})]])
 
-			// A list of classes to create Durable Object namespaces with
-			// SQLite from.
-			new_sqlite_classes?: [...string]
-
 			// Migrations to apply in order.
 			steps?: matchN(1, [close({
 				// A list of classes to delete Durable Object namespaces from.
@@ -423,6 +461,10 @@ package res
 
 				// A list of classes to create Durable Object namespaces from.
 				new_classes?: [...string]
+
+				// A list of classes to create Durable Object namespaces with
+				// SQLite from.
+				new_sqlite_classes?: [...string]
 
 				// A list of classes with Durable Object namespaces that were
 				// renamed.
@@ -433,10 +475,6 @@ package res
 					from?: string
 					to?:   string
 				})]])
-
-				// A list of classes to create Durable Object namespaces with
-				// SQLite from.
-				new_sqlite_classes?: [...string]
 
 				// A list of transfers for Durable Object namespaces from a
 				// different Worker and class to a class defined in this Worker.
@@ -456,6 +494,10 @@ package res
 				// A list of classes to create Durable Object namespaces from.
 				new_classes?: [...string]
 
+				// A list of classes to create Durable Object namespaces with
+				// SQLite from.
+				new_sqlite_classes?: [...string]
+
 				// A list of classes with Durable Object namespaces that were
 				// renamed.
 				renamed_classes?: matchN(1, [close({
@@ -465,10 +507,6 @@ package res
 					from?: string
 					to?:   string
 				})]])
-
-				// A list of classes to create Durable Object namespaces with
-				// SQLite from.
-				new_sqlite_classes?: [...string]
 
 				// A list of transfers for Durable Object namespaces from a
 				// different Worker and class to a class defined in this Worker.
@@ -482,9 +520,6 @@ package res
 					to?:          string
 				})]])
 			})]])
-
-			// Tag to set as the latest migration tag.
-			new_tag?: string
 
 			// A list of transfers for Durable Object namespaces from a
 			// different Worker and class to a class defined in this Worker.
@@ -497,10 +532,6 @@ package res
 				from_script?: string
 				to?:          string
 			})]])
-
-			// Tag used to verify against the latest migration tag for this
-			// Worker. If they don't match, the upload is rejected.
-			old_tag?: string
 		})
 
 		// Code, sourcemaps, and other content used at runtime.
@@ -563,6 +594,10 @@ package res
 			// Available values: "smart", "targeted".
 			mode?: string
 
+			// Cloud region for targeted placement in format
+			// 'provider:region'.
+			region?: string
+
 			// Array of placement targets (currently limited to single
 			// target).
 			target?: matchN(1, [close({
@@ -584,23 +619,6 @@ package res
 				// Cloud region in format 'provider:region'.
 				region?: string
 			})]])
-
-			// Cloud region for targeted placement in format
-			// 'provider:region'.
-			region?: string
 		})
-
-		// The integer version number, starting from one.
-		"number"?: number
-
-		// The client used to create the version.
-		source?: string
-
-		// Time in milliseconds spent on [Worker
-		// startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
-		startup_time_ms?: number
-
-		// Identifier for the Worker, which can be ID or name.
-		worker_id!: string
 	})
 }

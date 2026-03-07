@@ -15,6 +15,15 @@ package data
 
 		// Identifer of the Worker Domain.
 		id?: string
+
+		// Worker service associated with the zone and hostname.
+		service?: string
+
+		// Identifier of the zone.
+		zone_id?: string
+
+		// Name of the zone.
+		zone_name?: string
 		filter?: close({
 			// Worker environment associated with the zone and hostname.
 			environment?: string
@@ -31,14 +40,5 @@ package data
 			// Name of the zone.
 			zone_name?: string
 		})
-
-		// Worker service associated with the zone and hostname.
-		service?: string
-
-		// Identifier of the zone.
-		zone_id?: string
-
-		// Name of the zone.
-		zone_name?: string
 	})
 }

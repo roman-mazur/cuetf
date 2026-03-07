@@ -41,6 +41,16 @@ package res
 		// Terraform for this account when enabled.
 		is_ui_read_only?: bool
 
+		// Indicates if this organization can enforce multi-factor
+		// authentication (MFA) requirements at the application and
+		// policy level.
+		mfa_configuration_allowed?: bool
+
+		// Determines whether global MFA settings apply to applications by
+		// default. The organization must have MFA enabled with at least
+		// one authentication method and a session duration configured.
+		mfa_required_for_all_apps?: bool
+
 		// The name of your Zero Trust organization.
 		name?: string
 
@@ -65,6 +75,22 @@ package res
 		// valid. Must be in the format `30m` or `2h45m`. Valid time
 		// units are: m, h.
 		warp_auth_session_duration?: string
+
+		// The Zone ID to use for this endpoint. Mutually exclusive with
+		// the Account ID.
+		zone_id?: string
+
+		// Configures multi-factor authentication (MFA) settings for an
+		// organization.
+		mfa_config?: close({
+			// Lists the MFA methods that users can authenticate with.
+			allowed_authenticators?: [...string]
+
+			// Defines the duration of an MFA session. Must be in minutes (m)
+			// or hours (h). Minimum: 0m. Maximum: 720h (30 days).
+			// Examples:`5m` or `24h`.
+			session_duration?: string
+		})
 		custom_pages?: close({
 			// The uid of the custom page to use when a user is denied access
 			// after failing a non-identity rule.
@@ -89,9 +115,5 @@ package res
 			// The text color on your login page.
 			text_color?: string
 		})
-
-		// The Zone ID to use for this endpoint. Mutually exclusive with
-		// the Account ID.
-		zone_id?: string
 	})
 }

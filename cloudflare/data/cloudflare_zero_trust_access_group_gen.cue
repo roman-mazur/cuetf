@@ -4,15 +4,14 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_access_group")
 	close({
-		// The Account ID to use for this endpoint. Mutually exclusive
-		// with the Zone ID.
-		account_id?: string
-
 		// Rules evaluated with a NOT logical operator. To match a policy,
 		// a user cannot meet any of the Exclude rules.
 		exclude?: matchN(1, [close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
+
+			// An empty object which matches on all users.
+			everyone?: close({})
 			auth_context?: close({
 				// The ACID of an Authentication context.
 				ac_id?: string
@@ -56,9 +55,6 @@ package data
 				// The ID of a previously created email list.
 				id?: string
 			})
-
-			// An empty object which matches on all users.
-			everyone?: close({})
 			external_evaluation?: close({
 				// The API endpoint containing your business logic.
 				evaluate_url?: string
@@ -142,6 +138,9 @@ package data
 		}), [...close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
+
+			// An empty object which matches on all users.
+			everyone?: close({})
 			auth_context?: close({
 				// The ACID of an Authentication context.
 				ac_id?: string
@@ -185,9 +184,6 @@ package data
 				// The ID of a previously created email list.
 				id?: string
 			})
-
-			// An empty object which matches on all users.
-			everyone?: close({})
 			external_evaluation?: close({
 				// The API endpoint containing your business logic.
 				evaluate_url?: string
@@ -270,15 +266,12 @@ package data
 			})
 		})]])
 
+		// The Account ID to use for this endpoint. Mutually exclusive
+		// with the Zone ID.
+		account_id?: string
+
 		// UUID.
 		group_id?: string
-		filter?: close({
-			// The name of the group.
-			name?: string
-
-			// Search for groups by other listed query parameters.
-			search?: string
-		})
 
 		// UUID.
 		id?: string
@@ -288,6 +281,9 @@ package data
 		include?: matchN(1, [close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
+
+			// An empty object which matches on all users.
+			everyone?: close({})
 			auth_context?: close({
 				// The ACID of an Authentication context.
 				ac_id?: string
@@ -331,9 +327,6 @@ package data
 				// The ID of a previously created email list.
 				id?: string
 			})
-
-			// An empty object which matches on all users.
-			everyone?: close({})
 			external_evaluation?: close({
 				// The API endpoint containing your business logic.
 				evaluate_url?: string
@@ -417,6 +410,9 @@ package data
 		}), [...close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
+
+			// An empty object which matches on all users.
+			everyone?: close({})
 			auth_context?: close({
 				// The ACID of an Authentication context.
 				ac_id?: string
@@ -460,9 +456,6 @@ package data
 				// The ID of a previously created email list.
 				id?: string
 			})
-
-			// An empty object which matches on all users.
-			everyone?: close({})
 			external_evaluation?: close({
 				// The API endpoint containing your business logic.
 				evaluate_url?: string
@@ -550,6 +543,9 @@ package data
 		is_default?: matchN(1, [close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
+
+			// An empty object which matches on all users.
+			everyone?: close({})
 			auth_context?: close({
 				// The ACID of an Authentication context.
 				ac_id?: string
@@ -593,9 +589,6 @@ package data
 				// The ID of a previously created email list.
 				id?: string
 			})
-
-			// An empty object which matches on all users.
-			everyone?: close({})
 			external_evaluation?: close({
 				// The API endpoint containing your business logic.
 				evaluate_url?: string
@@ -679,6 +672,9 @@ package data
 		}), [...close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
+
+			// An empty object which matches on all users.
+			everyone?: close({})
 			auth_context?: close({
 				// The ACID of an Authentication context.
 				ac_id?: string
@@ -722,9 +718,6 @@ package data
 				// The ID of a previously created email list.
 				id?: string
 			})
-
-			// An empty object which matches on all users.
-			everyone?: close({})
 			external_evaluation?: close({
 				// The API endpoint containing your business logic.
 				evaluate_url?: string
@@ -815,6 +808,9 @@ package data
 		require?: matchN(1, [close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
+
+			// An empty object which matches on all users.
+			everyone?: close({})
 			auth_context?: close({
 				// The ACID of an Authentication context.
 				ac_id?: string
@@ -858,9 +854,6 @@ package data
 				// The ID of a previously created email list.
 				id?: string
 			})
-
-			// An empty object which matches on all users.
-			everyone?: close({})
 			external_evaluation?: close({
 				// The API endpoint containing your business logic.
 				evaluate_url?: string
@@ -944,6 +937,9 @@ package data
 		}), [...close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
+
+			// An empty object which matches on all users.
+			everyone?: close({})
 			auth_context?: close({
 				// The ACID of an Authentication context.
 				ac_id?: string
@@ -987,9 +983,6 @@ package data
 				// The ID of a previously created email list.
 				id?: string
 			})
-
-			// An empty object which matches on all users.
-			everyone?: close({})
 			external_evaluation?: close({
 				// The API endpoint containing your business logic.
 				evaluate_url?: string
@@ -1075,5 +1068,12 @@ package data
 		// The Zone ID to use for this endpoint. Mutually exclusive with
 		// the Account ID.
 		zone_id?: string
+		filter?: close({
+			// The name of the group.
+			name?: string
+
+			// Search for groups by other listed query parameters.
+			search?: string
+		})
 	})
 }

@@ -33,20 +33,6 @@ package data
 			max_age?: number
 		})
 
-		// The Account ID to use for this endpoint. Mutually exclusive
-		// with the Zone ID.
-		account_id?: string
-
-		// When set to true, users can authenticate to this application
-		// using their WARP session. When set to false this application
-		// will always require direct IdP authentication. This setting
-		// always overrides the organization setting for WARP
-		// authentication.
-		allow_authenticate_via_warp?: bool
-
-		// Enables loading application content in an iFrame.
-		allow_iframe?: bool
-
 		// List of destinations secured by Access. This supersedes
 		// `self_hosted_domains` to allow for more flexibility in
 		// defining different types of domains. If `destinations` are
@@ -118,6 +104,52 @@ package data
 			// will match.
 			vnet_id?: string
 		})]])
+		filter?: close({
+			// The aud of the app.
+			aud?: string
+
+			// The domain of the app.
+			domain?: string
+
+			// True for only exact string matches against passed name/domain
+			// query parameters.
+			exact?: bool
+
+			// The name of the app.
+			name?: string
+
+			// Search for apps by other listed query parameters.
+			search?: string
+		})
+
+		// The links in the App Launcher footer.
+		footer_links?: matchN(1, [close({
+			// The hypertext in the footer link.
+			name?: string
+
+			// the hyperlink in the footer link.
+			url?: string
+		}), [...close({
+			// The hypertext in the footer link.
+			name?: string
+
+			// the hyperlink in the footer link.
+			url?: string
+		})]])
+
+		// The Account ID to use for this endpoint. Mutually exclusive
+		// with the Zone ID.
+		account_id?: string
+
+		// When set to true, users can authenticate to this application
+		// using their WARP session. When set to false this application
+		// will always require direct IdP authentication. This setting
+		// always overrides the organization setting for WARP
+		// authentication.
+		allow_authenticate_via_warp?: bool
+
+		// Enables loading application content in an iFrame.
+		allow_iframe?: bool
 
 		// The identity providers your users can select when connecting to
 		// this application. Defaults to all IdPs configured in your
@@ -140,64 +172,13 @@ package data
 		// step during login. You must specify only one identity provider
 		// in allowed_idps.
 		auto_redirect_to_identity?: bool
-		filter?: close({
-			// The aud of the app.
-			aud?: string
-
-			// The domain of the app.
-			domain?: string
-
-			// True for only exact string matches against passed name/domain
-			// query parameters.
-			exact?: bool
-
-			// The name of the app.
-			name?: string
-
-			// Search for apps by other listed query parameters.
-			search?: string
-		})
 
 		// The background color of the App Launcher page.
 		bg_color?: string
 
-		// The links in the App Launcher footer.
-		footer_links?: matchN(1, [close({
-			// The hypertext in the footer link.
-			name?: string
-
-			// the hyperlink in the footer link.
-			url?: string
-		}), [...close({
-			// The hypertext in the footer link.
-			name?: string
-
-			// the hyperlink in the footer link.
-			url?: string
-		})]])
-
 		// The custom error message shown to a user when they are denied
 		// access to the application.
 		custom_deny_message?: string
-
-		// The design of the App Launcher landing page shown to users when
-		// they log in.
-		landing_page_design?: close({
-			// The background color of the log in button on the landing page.
-			button_color?: string
-
-			// The color of the text in the log in button on the landing page.
-			button_text_color?: string
-
-			// The URL of the image shown on the landing page.
-			image_url?: string
-
-			// The message shown on the landing page.
-			message?: string
-
-			// The title shown on the landing page.
-			title?: string
-		})
 
 		// The custom URL a user is redirected to when they are denied
 		// access to the application when failing identity-based rules.
@@ -221,1936 +202,6 @@ package data
 
 		// The background color of the App Launcher header.
 		header_bg_color?: string
-		policies?: matchN(1, [close({
-			// Requires the user to request access from an administrator at
-			// the start of each session.
-			approval_required?: bool
-
-			// Administrators who can approve a temporary authentication
-			// request.
-			approval_groups?: matchN(1, [close({
-				// The number of approvals needed to obtain access.
-				approvals_needed?: number
-
-				// A list of emails that can approve the access request.
-				email_addresses?: [...string]
-
-				// The UUID of an re-usable email list.
-				email_list_uuid?: string
-			}), [...close({
-				// The number of approvals needed to obtain access.
-				approvals_needed?: number
-
-				// A list of emails that can approve the access request.
-				email_addresses?: [...string]
-
-				// The UUID of an re-usable email list.
-				email_list_uuid?: string
-			})]])
-			created_at?: string
-
-			// The action Access will take if a user matches this policy.
-			// Infrastructure application policies can only use the Allow
-			// action.
-			// Available values: "allow", "deny", "non_identity", "bypass".
-			decision?: string
-
-			// The rules that define how users may connect to the targets
-			// secured by your application.
-			connection_rules?: close({
-				// The SSH-specific rules that define how users may connect to the
-				// targets secured by your application.
-				ssh?: close({
-					// Enables using Identity Provider email alias as SSH username.
-					allow_email_alias?: bool
-
-					// Contains the Unix usernames that may be used when connecting
-					// over SSH.
-					usernames?: [...string]
-				})
-			})
-
-			// The UUID of the policy
-			id?: string
-
-			// Require this application to be served in an isolated browser
-			// for users matching this policy. 'Client Web Isolation' must be
-			// on for the account in order to use this feature.
-			isolation_required?: bool
-
-			// The name of the Access policy.
-			name?: string
-
-			// Rules evaluated with a NOT logical operator. To match the
-			// policy, a user cannot meet any of the Exclude rules.
-			exclude?: matchN(1, [close({
-				// An empty object which matches on all service tokens.
-				any_valid_service_token?: close({})
-				auth_context?: close({
-					// The ACID of an Authentication context.
-					ac_id?: string
-
-					// The ID of an Authentication context.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				auth_method?: close({
-					// The type of authentication method
-					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-					auth_method?: string
-				})
-				azure_ad?: close({
-					// The ID of an Azure group.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				certificate?: close({})
-				common_name?: close({
-					// The common name to match.
-					common_name?: string
-				})
-				device_posture?: close({
-					// The ID of a device posture integration.
-					integration_uid?: string
-				})
-				email?: close({
-					// The email of the user.
-					email?: string
-				})
-				email_domain?: close({
-					// The email domain to match.
-					domain?: string
-				})
-				email_list?: close({
-					// The ID of a previously created email list.
-					id?: string
-				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
-				external_evaluation?: close({
-					// The API endpoint containing your business logic.
-					evaluate_url?: string
-
-					// The API endpoint containing the key that Access uses to verify
-					// that the response came from your API.
-					keys_url?: string
-				})
-				geo?: close({
-					// The country code that should be matched.
-					country_code?: string
-				})
-				github_organization?: close({
-					// The ID of your Github identity provider.
-					identity_provider_id?: string
-
-					// The name of the organization.
-					name?: string
-
-					// The name of the team
-					team?: string
-				})
-				group?: close({
-					// The ID of a previously created Access group.
-					id?: string
-				})
-				gsuite?: close({
-					// The email of the Google Workspace group.
-					email?: string
-
-					// The ID of your Google Workspace identity provider.
-					identity_provider_id?: string
-				})
-				ip?: close({
-					// An IPv4 or IPv6 CIDR block.
-					ip?: string
-				})
-				ip_list?: close({
-					// The ID of a previously created IP list.
-					id?: string
-				})
-				linked_app_token?: close({
-					// The ID of an Access OIDC SaaS application
-					app_uid?: string
-				})
-				login_method?: close({
-					// The ID of an identity provider.
-					id?: string
-				})
-				oidc?: close({
-					// The name of the OIDC claim.
-					claim_name?: string
-
-					// The OIDC claim value to look for.
-					claim_value?: string
-
-					// The ID of your OIDC identity provider.
-					identity_provider_id?: string
-				})
-				okta?: close({
-					// The ID of your Okta identity provider.
-					identity_provider_id?: string
-
-					// The name of the Okta group.
-					name?: string
-				})
-				saml?: close({
-					// The name of the SAML attribute.
-					attribute_name?: string
-
-					// The SAML attribute value to look for.
-					attribute_value?: string
-
-					// The ID of your SAML identity provider.
-					identity_provider_id?: string
-				})
-				service_token?: close({
-					// The ID of a Service Token.
-					token_id?: string
-				})
-			}), [...close({
-				// An empty object which matches on all service tokens.
-				any_valid_service_token?: close({})
-				auth_context?: close({
-					// The ACID of an Authentication context.
-					ac_id?: string
-
-					// The ID of an Authentication context.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				auth_method?: close({
-					// The type of authentication method
-					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-					auth_method?: string
-				})
-				azure_ad?: close({
-					// The ID of an Azure group.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				certificate?: close({})
-				common_name?: close({
-					// The common name to match.
-					common_name?: string
-				})
-				device_posture?: close({
-					// The ID of a device posture integration.
-					integration_uid?: string
-				})
-				email?: close({
-					// The email of the user.
-					email?: string
-				})
-				email_domain?: close({
-					// The email domain to match.
-					domain?: string
-				})
-				email_list?: close({
-					// The ID of a previously created email list.
-					id?: string
-				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
-				external_evaluation?: close({
-					// The API endpoint containing your business logic.
-					evaluate_url?: string
-
-					// The API endpoint containing the key that Access uses to verify
-					// that the response came from your API.
-					keys_url?: string
-				})
-				geo?: close({
-					// The country code that should be matched.
-					country_code?: string
-				})
-				github_organization?: close({
-					// The ID of your Github identity provider.
-					identity_provider_id?: string
-
-					// The name of the organization.
-					name?: string
-
-					// The name of the team
-					team?: string
-				})
-				group?: close({
-					// The ID of a previously created Access group.
-					id?: string
-				})
-				gsuite?: close({
-					// The email of the Google Workspace group.
-					email?: string
-
-					// The ID of your Google Workspace identity provider.
-					identity_provider_id?: string
-				})
-				ip?: close({
-					// An IPv4 or IPv6 CIDR block.
-					ip?: string
-				})
-				ip_list?: close({
-					// The ID of a previously created IP list.
-					id?: string
-				})
-				linked_app_token?: close({
-					// The ID of an Access OIDC SaaS application
-					app_uid?: string
-				})
-				login_method?: close({
-					// The ID of an identity provider.
-					id?: string
-				})
-				oidc?: close({
-					// The name of the OIDC claim.
-					claim_name?: string
-
-					// The OIDC claim value to look for.
-					claim_value?: string
-
-					// The ID of your OIDC identity provider.
-					identity_provider_id?: string
-				})
-				okta?: close({
-					// The ID of your Okta identity provider.
-					identity_provider_id?: string
-
-					// The name of the Okta group.
-					name?: string
-				})
-				saml?: close({
-					// The name of the SAML attribute.
-					attribute_name?: string
-
-					// The SAML attribute value to look for.
-					attribute_value?: string
-
-					// The ID of your SAML identity provider.
-					identity_provider_id?: string
-				})
-				service_token?: close({
-					// The ID of a Service Token.
-					token_id?: string
-				})
-			})]])
-
-			// The order of execution for this policy. Must be unique for each
-			// policy within an app.
-			precedence?: number
-
-			// A custom message that will appear on the purpose justification
-			// screen.
-			purpose_justification_prompt?: string
-
-			// Require users to enter a justification when they log in to the
-			// application.
-			purpose_justification_required?: bool
-
-			// Rules evaluated with an OR logical operator. A user needs to
-			// meet only one of the Include rules.
-			include?: matchN(1, [close({
-				// An empty object which matches on all service tokens.
-				any_valid_service_token?: close({})
-				auth_context?: close({
-					// The ACID of an Authentication context.
-					ac_id?: string
-
-					// The ID of an Authentication context.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				auth_method?: close({
-					// The type of authentication method
-					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-					auth_method?: string
-				})
-				azure_ad?: close({
-					// The ID of an Azure group.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				certificate?: close({})
-				common_name?: close({
-					// The common name to match.
-					common_name?: string
-				})
-				device_posture?: close({
-					// The ID of a device posture integration.
-					integration_uid?: string
-				})
-				email?: close({
-					// The email of the user.
-					email?: string
-				})
-				email_domain?: close({
-					// The email domain to match.
-					domain?: string
-				})
-				email_list?: close({
-					// The ID of a previously created email list.
-					id?: string
-				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
-				external_evaluation?: close({
-					// The API endpoint containing your business logic.
-					evaluate_url?: string
-
-					// The API endpoint containing the key that Access uses to verify
-					// that the response came from your API.
-					keys_url?: string
-				})
-				geo?: close({
-					// The country code that should be matched.
-					country_code?: string
-				})
-				github_organization?: close({
-					// The ID of your Github identity provider.
-					identity_provider_id?: string
-
-					// The name of the organization.
-					name?: string
-
-					// The name of the team
-					team?: string
-				})
-				group?: close({
-					// The ID of a previously created Access group.
-					id?: string
-				})
-				gsuite?: close({
-					// The email of the Google Workspace group.
-					email?: string
-
-					// The ID of your Google Workspace identity provider.
-					identity_provider_id?: string
-				})
-				ip?: close({
-					// An IPv4 or IPv6 CIDR block.
-					ip?: string
-				})
-				ip_list?: close({
-					// The ID of a previously created IP list.
-					id?: string
-				})
-				linked_app_token?: close({
-					// The ID of an Access OIDC SaaS application
-					app_uid?: string
-				})
-				login_method?: close({
-					// The ID of an identity provider.
-					id?: string
-				})
-				oidc?: close({
-					// The name of the OIDC claim.
-					claim_name?: string
-
-					// The OIDC claim value to look for.
-					claim_value?: string
-
-					// The ID of your OIDC identity provider.
-					identity_provider_id?: string
-				})
-				okta?: close({
-					// The ID of your Okta identity provider.
-					identity_provider_id?: string
-
-					// The name of the Okta group.
-					name?: string
-				})
-				saml?: close({
-					// The name of the SAML attribute.
-					attribute_name?: string
-
-					// The SAML attribute value to look for.
-					attribute_value?: string
-
-					// The ID of your SAML identity provider.
-					identity_provider_id?: string
-				})
-				service_token?: close({
-					// The ID of a Service Token.
-					token_id?: string
-				})
-			}), [...close({
-				// An empty object which matches on all service tokens.
-				any_valid_service_token?: close({})
-				auth_context?: close({
-					// The ACID of an Authentication context.
-					ac_id?: string
-
-					// The ID of an Authentication context.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				auth_method?: close({
-					// The type of authentication method
-					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-					auth_method?: string
-				})
-				azure_ad?: close({
-					// The ID of an Azure group.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				certificate?: close({})
-				common_name?: close({
-					// The common name to match.
-					common_name?: string
-				})
-				device_posture?: close({
-					// The ID of a device posture integration.
-					integration_uid?: string
-				})
-				email?: close({
-					// The email of the user.
-					email?: string
-				})
-				email_domain?: close({
-					// The email domain to match.
-					domain?: string
-				})
-				email_list?: close({
-					// The ID of a previously created email list.
-					id?: string
-				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
-				external_evaluation?: close({
-					// The API endpoint containing your business logic.
-					evaluate_url?: string
-
-					// The API endpoint containing the key that Access uses to verify
-					// that the response came from your API.
-					keys_url?: string
-				})
-				geo?: close({
-					// The country code that should be matched.
-					country_code?: string
-				})
-				github_organization?: close({
-					// The ID of your Github identity provider.
-					identity_provider_id?: string
-
-					// The name of the organization.
-					name?: string
-
-					// The name of the team
-					team?: string
-				})
-				group?: close({
-					// The ID of a previously created Access group.
-					id?: string
-				})
-				gsuite?: close({
-					// The email of the Google Workspace group.
-					email?: string
-
-					// The ID of your Google Workspace identity provider.
-					identity_provider_id?: string
-				})
-				ip?: close({
-					// An IPv4 or IPv6 CIDR block.
-					ip?: string
-				})
-				ip_list?: close({
-					// The ID of a previously created IP list.
-					id?: string
-				})
-				linked_app_token?: close({
-					// The ID of an Access OIDC SaaS application
-					app_uid?: string
-				})
-				login_method?: close({
-					// The ID of an identity provider.
-					id?: string
-				})
-				oidc?: close({
-					// The name of the OIDC claim.
-					claim_name?: string
-
-					// The OIDC claim value to look for.
-					claim_value?: string
-
-					// The ID of your OIDC identity provider.
-					identity_provider_id?: string
-				})
-				okta?: close({
-					// The ID of your Okta identity provider.
-					identity_provider_id?: string
-
-					// The name of the Okta group.
-					name?: string
-				})
-				saml?: close({
-					// The name of the SAML attribute.
-					attribute_name?: string
-
-					// The SAML attribute value to look for.
-					attribute_value?: string
-
-					// The ID of your SAML identity provider.
-					identity_provider_id?: string
-				})
-				service_token?: close({
-					// The ID of a Service Token.
-					token_id?: string
-				})
-			})]])
-
-			// The amount of time that tokens issued for the application will
-			// be valid. Must be in the format `300ms` or `2h45m`. Valid time
-			// units are: ns, us (or µs), ms, s, m, h.
-			session_duration?: string
-			updated_at?:       string
-
-			// Rules evaluated with an AND logical operator. To match the
-			// policy, a user must meet all of the Require rules.
-			require?: matchN(1, [close({
-				// An empty object which matches on all service tokens.
-				any_valid_service_token?: close({})
-				auth_context?: close({
-					// The ACID of an Authentication context.
-					ac_id?: string
-
-					// The ID of an Authentication context.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				auth_method?: close({
-					// The type of authentication method
-					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-					auth_method?: string
-				})
-				azure_ad?: close({
-					// The ID of an Azure group.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				certificate?: close({})
-				common_name?: close({
-					// The common name to match.
-					common_name?: string
-				})
-				device_posture?: close({
-					// The ID of a device posture integration.
-					integration_uid?: string
-				})
-				email?: close({
-					// The email of the user.
-					email?: string
-				})
-				email_domain?: close({
-					// The email domain to match.
-					domain?: string
-				})
-				email_list?: close({
-					// The ID of a previously created email list.
-					id?: string
-				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
-				external_evaluation?: close({
-					// The API endpoint containing your business logic.
-					evaluate_url?: string
-
-					// The API endpoint containing the key that Access uses to verify
-					// that the response came from your API.
-					keys_url?: string
-				})
-				geo?: close({
-					// The country code that should be matched.
-					country_code?: string
-				})
-				github_organization?: close({
-					// The ID of your Github identity provider.
-					identity_provider_id?: string
-
-					// The name of the organization.
-					name?: string
-
-					// The name of the team
-					team?: string
-				})
-				group?: close({
-					// The ID of a previously created Access group.
-					id?: string
-				})
-				gsuite?: close({
-					// The email of the Google Workspace group.
-					email?: string
-
-					// The ID of your Google Workspace identity provider.
-					identity_provider_id?: string
-				})
-				ip?: close({
-					// An IPv4 or IPv6 CIDR block.
-					ip?: string
-				})
-				ip_list?: close({
-					// The ID of a previously created IP list.
-					id?: string
-				})
-				linked_app_token?: close({
-					// The ID of an Access OIDC SaaS application
-					app_uid?: string
-				})
-				login_method?: close({
-					// The ID of an identity provider.
-					id?: string
-				})
-				oidc?: close({
-					// The name of the OIDC claim.
-					claim_name?: string
-
-					// The OIDC claim value to look for.
-					claim_value?: string
-
-					// The ID of your OIDC identity provider.
-					identity_provider_id?: string
-				})
-				okta?: close({
-					// The ID of your Okta identity provider.
-					identity_provider_id?: string
-
-					// The name of the Okta group.
-					name?: string
-				})
-				saml?: close({
-					// The name of the SAML attribute.
-					attribute_name?: string
-
-					// The SAML attribute value to look for.
-					attribute_value?: string
-
-					// The ID of your SAML identity provider.
-					identity_provider_id?: string
-				})
-				service_token?: close({
-					// The ID of a Service Token.
-					token_id?: string
-				})
-			}), [...close({
-				// An empty object which matches on all service tokens.
-				any_valid_service_token?: close({})
-				auth_context?: close({
-					// The ACID of an Authentication context.
-					ac_id?: string
-
-					// The ID of an Authentication context.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				auth_method?: close({
-					// The type of authentication method
-					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-					auth_method?: string
-				})
-				azure_ad?: close({
-					// The ID of an Azure group.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				certificate?: close({})
-				common_name?: close({
-					// The common name to match.
-					common_name?: string
-				})
-				device_posture?: close({
-					// The ID of a device posture integration.
-					integration_uid?: string
-				})
-				email?: close({
-					// The email of the user.
-					email?: string
-				})
-				email_domain?: close({
-					// The email domain to match.
-					domain?: string
-				})
-				email_list?: close({
-					// The ID of a previously created email list.
-					id?: string
-				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
-				external_evaluation?: close({
-					// The API endpoint containing your business logic.
-					evaluate_url?: string
-
-					// The API endpoint containing the key that Access uses to verify
-					// that the response came from your API.
-					keys_url?: string
-				})
-				geo?: close({
-					// The country code that should be matched.
-					country_code?: string
-				})
-				github_organization?: close({
-					// The ID of your Github identity provider.
-					identity_provider_id?: string
-
-					// The name of the organization.
-					name?: string
-
-					// The name of the team
-					team?: string
-				})
-				group?: close({
-					// The ID of a previously created Access group.
-					id?: string
-				})
-				gsuite?: close({
-					// The email of the Google Workspace group.
-					email?: string
-
-					// The ID of your Google Workspace identity provider.
-					identity_provider_id?: string
-				})
-				ip?: close({
-					// An IPv4 or IPv6 CIDR block.
-					ip?: string
-				})
-				ip_list?: close({
-					// The ID of a previously created IP list.
-					id?: string
-				})
-				linked_app_token?: close({
-					// The ID of an Access OIDC SaaS application
-					app_uid?: string
-				})
-				login_method?: close({
-					// The ID of an identity provider.
-					id?: string
-				})
-				oidc?: close({
-					// The name of the OIDC claim.
-					claim_name?: string
-
-					// The OIDC claim value to look for.
-					claim_value?: string
-
-					// The ID of your OIDC identity provider.
-					identity_provider_id?: string
-				})
-				okta?: close({
-					// The ID of your Okta identity provider.
-					identity_provider_id?: string
-
-					// The name of the Okta group.
-					name?: string
-				})
-				saml?: close({
-					// The name of the SAML attribute.
-					attribute_name?: string
-
-					// The SAML attribute value to look for.
-					attribute_value?: string
-
-					// The ID of your SAML identity provider.
-					identity_provider_id?: string
-				})
-				service_token?: close({
-					// The ID of a Service Token.
-					token_id?: string
-				})
-			})]])
-		}), [...close({
-			// Requires the user to request access from an administrator at
-			// the start of each session.
-			approval_required?: bool
-
-			// Administrators who can approve a temporary authentication
-			// request.
-			approval_groups?: matchN(1, [close({
-				// The number of approvals needed to obtain access.
-				approvals_needed?: number
-
-				// A list of emails that can approve the access request.
-				email_addresses?: [...string]
-
-				// The UUID of an re-usable email list.
-				email_list_uuid?: string
-			}), [...close({
-				// The number of approvals needed to obtain access.
-				approvals_needed?: number
-
-				// A list of emails that can approve the access request.
-				email_addresses?: [...string]
-
-				// The UUID of an re-usable email list.
-				email_list_uuid?: string
-			})]])
-			created_at?: string
-
-			// The action Access will take if a user matches this policy.
-			// Infrastructure application policies can only use the Allow
-			// action.
-			// Available values: "allow", "deny", "non_identity", "bypass".
-			decision?: string
-
-			// The rules that define how users may connect to the targets
-			// secured by your application.
-			connection_rules?: close({
-				// The SSH-specific rules that define how users may connect to the
-				// targets secured by your application.
-				ssh?: close({
-					// Enables using Identity Provider email alias as SSH username.
-					allow_email_alias?: bool
-
-					// Contains the Unix usernames that may be used when connecting
-					// over SSH.
-					usernames?: [...string]
-				})
-			})
-
-			// The UUID of the policy
-			id?: string
-
-			// Require this application to be served in an isolated browser
-			// for users matching this policy. 'Client Web Isolation' must be
-			// on for the account in order to use this feature.
-			isolation_required?: bool
-
-			// The name of the Access policy.
-			name?: string
-
-			// Rules evaluated with a NOT logical operator. To match the
-			// policy, a user cannot meet any of the Exclude rules.
-			exclude?: matchN(1, [close({
-				// An empty object which matches on all service tokens.
-				any_valid_service_token?: close({})
-				auth_context?: close({
-					// The ACID of an Authentication context.
-					ac_id?: string
-
-					// The ID of an Authentication context.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				auth_method?: close({
-					// The type of authentication method
-					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-					auth_method?: string
-				})
-				azure_ad?: close({
-					// The ID of an Azure group.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				certificate?: close({})
-				common_name?: close({
-					// The common name to match.
-					common_name?: string
-				})
-				device_posture?: close({
-					// The ID of a device posture integration.
-					integration_uid?: string
-				})
-				email?: close({
-					// The email of the user.
-					email?: string
-				})
-				email_domain?: close({
-					// The email domain to match.
-					domain?: string
-				})
-				email_list?: close({
-					// The ID of a previously created email list.
-					id?: string
-				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
-				external_evaluation?: close({
-					// The API endpoint containing your business logic.
-					evaluate_url?: string
-
-					// The API endpoint containing the key that Access uses to verify
-					// that the response came from your API.
-					keys_url?: string
-				})
-				geo?: close({
-					// The country code that should be matched.
-					country_code?: string
-				})
-				github_organization?: close({
-					// The ID of your Github identity provider.
-					identity_provider_id?: string
-
-					// The name of the organization.
-					name?: string
-
-					// The name of the team
-					team?: string
-				})
-				group?: close({
-					// The ID of a previously created Access group.
-					id?: string
-				})
-				gsuite?: close({
-					// The email of the Google Workspace group.
-					email?: string
-
-					// The ID of your Google Workspace identity provider.
-					identity_provider_id?: string
-				})
-				ip?: close({
-					// An IPv4 or IPv6 CIDR block.
-					ip?: string
-				})
-				ip_list?: close({
-					// The ID of a previously created IP list.
-					id?: string
-				})
-				linked_app_token?: close({
-					// The ID of an Access OIDC SaaS application
-					app_uid?: string
-				})
-				login_method?: close({
-					// The ID of an identity provider.
-					id?: string
-				})
-				oidc?: close({
-					// The name of the OIDC claim.
-					claim_name?: string
-
-					// The OIDC claim value to look for.
-					claim_value?: string
-
-					// The ID of your OIDC identity provider.
-					identity_provider_id?: string
-				})
-				okta?: close({
-					// The ID of your Okta identity provider.
-					identity_provider_id?: string
-
-					// The name of the Okta group.
-					name?: string
-				})
-				saml?: close({
-					// The name of the SAML attribute.
-					attribute_name?: string
-
-					// The SAML attribute value to look for.
-					attribute_value?: string
-
-					// The ID of your SAML identity provider.
-					identity_provider_id?: string
-				})
-				service_token?: close({
-					// The ID of a Service Token.
-					token_id?: string
-				})
-			}), [...close({
-				// An empty object which matches on all service tokens.
-				any_valid_service_token?: close({})
-				auth_context?: close({
-					// The ACID of an Authentication context.
-					ac_id?: string
-
-					// The ID of an Authentication context.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				auth_method?: close({
-					// The type of authentication method
-					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-					auth_method?: string
-				})
-				azure_ad?: close({
-					// The ID of an Azure group.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				certificate?: close({})
-				common_name?: close({
-					// The common name to match.
-					common_name?: string
-				})
-				device_posture?: close({
-					// The ID of a device posture integration.
-					integration_uid?: string
-				})
-				email?: close({
-					// The email of the user.
-					email?: string
-				})
-				email_domain?: close({
-					// The email domain to match.
-					domain?: string
-				})
-				email_list?: close({
-					// The ID of a previously created email list.
-					id?: string
-				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
-				external_evaluation?: close({
-					// The API endpoint containing your business logic.
-					evaluate_url?: string
-
-					// The API endpoint containing the key that Access uses to verify
-					// that the response came from your API.
-					keys_url?: string
-				})
-				geo?: close({
-					// The country code that should be matched.
-					country_code?: string
-				})
-				github_organization?: close({
-					// The ID of your Github identity provider.
-					identity_provider_id?: string
-
-					// The name of the organization.
-					name?: string
-
-					// The name of the team
-					team?: string
-				})
-				group?: close({
-					// The ID of a previously created Access group.
-					id?: string
-				})
-				gsuite?: close({
-					// The email of the Google Workspace group.
-					email?: string
-
-					// The ID of your Google Workspace identity provider.
-					identity_provider_id?: string
-				})
-				ip?: close({
-					// An IPv4 or IPv6 CIDR block.
-					ip?: string
-				})
-				ip_list?: close({
-					// The ID of a previously created IP list.
-					id?: string
-				})
-				linked_app_token?: close({
-					// The ID of an Access OIDC SaaS application
-					app_uid?: string
-				})
-				login_method?: close({
-					// The ID of an identity provider.
-					id?: string
-				})
-				oidc?: close({
-					// The name of the OIDC claim.
-					claim_name?: string
-
-					// The OIDC claim value to look for.
-					claim_value?: string
-
-					// The ID of your OIDC identity provider.
-					identity_provider_id?: string
-				})
-				okta?: close({
-					// The ID of your Okta identity provider.
-					identity_provider_id?: string
-
-					// The name of the Okta group.
-					name?: string
-				})
-				saml?: close({
-					// The name of the SAML attribute.
-					attribute_name?: string
-
-					// The SAML attribute value to look for.
-					attribute_value?: string
-
-					// The ID of your SAML identity provider.
-					identity_provider_id?: string
-				})
-				service_token?: close({
-					// The ID of a Service Token.
-					token_id?: string
-				})
-			})]])
-
-			// The order of execution for this policy. Must be unique for each
-			// policy within an app.
-			precedence?: number
-
-			// A custom message that will appear on the purpose justification
-			// screen.
-			purpose_justification_prompt?: string
-
-			// Require users to enter a justification when they log in to the
-			// application.
-			purpose_justification_required?: bool
-
-			// Rules evaluated with an OR logical operator. A user needs to
-			// meet only one of the Include rules.
-			include?: matchN(1, [close({
-				// An empty object which matches on all service tokens.
-				any_valid_service_token?: close({})
-				auth_context?: close({
-					// The ACID of an Authentication context.
-					ac_id?: string
-
-					// The ID of an Authentication context.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				auth_method?: close({
-					// The type of authentication method
-					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-					auth_method?: string
-				})
-				azure_ad?: close({
-					// The ID of an Azure group.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				certificate?: close({})
-				common_name?: close({
-					// The common name to match.
-					common_name?: string
-				})
-				device_posture?: close({
-					// The ID of a device posture integration.
-					integration_uid?: string
-				})
-				email?: close({
-					// The email of the user.
-					email?: string
-				})
-				email_domain?: close({
-					// The email domain to match.
-					domain?: string
-				})
-				email_list?: close({
-					// The ID of a previously created email list.
-					id?: string
-				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
-				external_evaluation?: close({
-					// The API endpoint containing your business logic.
-					evaluate_url?: string
-
-					// The API endpoint containing the key that Access uses to verify
-					// that the response came from your API.
-					keys_url?: string
-				})
-				geo?: close({
-					// The country code that should be matched.
-					country_code?: string
-				})
-				github_organization?: close({
-					// The ID of your Github identity provider.
-					identity_provider_id?: string
-
-					// The name of the organization.
-					name?: string
-
-					// The name of the team
-					team?: string
-				})
-				group?: close({
-					// The ID of a previously created Access group.
-					id?: string
-				})
-				gsuite?: close({
-					// The email of the Google Workspace group.
-					email?: string
-
-					// The ID of your Google Workspace identity provider.
-					identity_provider_id?: string
-				})
-				ip?: close({
-					// An IPv4 or IPv6 CIDR block.
-					ip?: string
-				})
-				ip_list?: close({
-					// The ID of a previously created IP list.
-					id?: string
-				})
-				linked_app_token?: close({
-					// The ID of an Access OIDC SaaS application
-					app_uid?: string
-				})
-				login_method?: close({
-					// The ID of an identity provider.
-					id?: string
-				})
-				oidc?: close({
-					// The name of the OIDC claim.
-					claim_name?: string
-
-					// The OIDC claim value to look for.
-					claim_value?: string
-
-					// The ID of your OIDC identity provider.
-					identity_provider_id?: string
-				})
-				okta?: close({
-					// The ID of your Okta identity provider.
-					identity_provider_id?: string
-
-					// The name of the Okta group.
-					name?: string
-				})
-				saml?: close({
-					// The name of the SAML attribute.
-					attribute_name?: string
-
-					// The SAML attribute value to look for.
-					attribute_value?: string
-
-					// The ID of your SAML identity provider.
-					identity_provider_id?: string
-				})
-				service_token?: close({
-					// The ID of a Service Token.
-					token_id?: string
-				})
-			}), [...close({
-				// An empty object which matches on all service tokens.
-				any_valid_service_token?: close({})
-				auth_context?: close({
-					// The ACID of an Authentication context.
-					ac_id?: string
-
-					// The ID of an Authentication context.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				auth_method?: close({
-					// The type of authentication method
-					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-					auth_method?: string
-				})
-				azure_ad?: close({
-					// The ID of an Azure group.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				certificate?: close({})
-				common_name?: close({
-					// The common name to match.
-					common_name?: string
-				})
-				device_posture?: close({
-					// The ID of a device posture integration.
-					integration_uid?: string
-				})
-				email?: close({
-					// The email of the user.
-					email?: string
-				})
-				email_domain?: close({
-					// The email domain to match.
-					domain?: string
-				})
-				email_list?: close({
-					// The ID of a previously created email list.
-					id?: string
-				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
-				external_evaluation?: close({
-					// The API endpoint containing your business logic.
-					evaluate_url?: string
-
-					// The API endpoint containing the key that Access uses to verify
-					// that the response came from your API.
-					keys_url?: string
-				})
-				geo?: close({
-					// The country code that should be matched.
-					country_code?: string
-				})
-				github_organization?: close({
-					// The ID of your Github identity provider.
-					identity_provider_id?: string
-
-					// The name of the organization.
-					name?: string
-
-					// The name of the team
-					team?: string
-				})
-				group?: close({
-					// The ID of a previously created Access group.
-					id?: string
-				})
-				gsuite?: close({
-					// The email of the Google Workspace group.
-					email?: string
-
-					// The ID of your Google Workspace identity provider.
-					identity_provider_id?: string
-				})
-				ip?: close({
-					// An IPv4 or IPv6 CIDR block.
-					ip?: string
-				})
-				ip_list?: close({
-					// The ID of a previously created IP list.
-					id?: string
-				})
-				linked_app_token?: close({
-					// The ID of an Access OIDC SaaS application
-					app_uid?: string
-				})
-				login_method?: close({
-					// The ID of an identity provider.
-					id?: string
-				})
-				oidc?: close({
-					// The name of the OIDC claim.
-					claim_name?: string
-
-					// The OIDC claim value to look for.
-					claim_value?: string
-
-					// The ID of your OIDC identity provider.
-					identity_provider_id?: string
-				})
-				okta?: close({
-					// The ID of your Okta identity provider.
-					identity_provider_id?: string
-
-					// The name of the Okta group.
-					name?: string
-				})
-				saml?: close({
-					// The name of the SAML attribute.
-					attribute_name?: string
-
-					// The SAML attribute value to look for.
-					attribute_value?: string
-
-					// The ID of your SAML identity provider.
-					identity_provider_id?: string
-				})
-				service_token?: close({
-					// The ID of a Service Token.
-					token_id?: string
-				})
-			})]])
-
-			// The amount of time that tokens issued for the application will
-			// be valid. Must be in the format `300ms` or `2h45m`. Valid time
-			// units are: ns, us (or µs), ms, s, m, h.
-			session_duration?: string
-			updated_at?:       string
-
-			// Rules evaluated with an AND logical operator. To match the
-			// policy, a user must meet all of the Require rules.
-			require?: matchN(1, [close({
-				// An empty object which matches on all service tokens.
-				any_valid_service_token?: close({})
-				auth_context?: close({
-					// The ACID of an Authentication context.
-					ac_id?: string
-
-					// The ID of an Authentication context.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				auth_method?: close({
-					// The type of authentication method
-					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-					auth_method?: string
-				})
-				azure_ad?: close({
-					// The ID of an Azure group.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				certificate?: close({})
-				common_name?: close({
-					// The common name to match.
-					common_name?: string
-				})
-				device_posture?: close({
-					// The ID of a device posture integration.
-					integration_uid?: string
-				})
-				email?: close({
-					// The email of the user.
-					email?: string
-				})
-				email_domain?: close({
-					// The email domain to match.
-					domain?: string
-				})
-				email_list?: close({
-					// The ID of a previously created email list.
-					id?: string
-				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
-				external_evaluation?: close({
-					// The API endpoint containing your business logic.
-					evaluate_url?: string
-
-					// The API endpoint containing the key that Access uses to verify
-					// that the response came from your API.
-					keys_url?: string
-				})
-				geo?: close({
-					// The country code that should be matched.
-					country_code?: string
-				})
-				github_organization?: close({
-					// The ID of your Github identity provider.
-					identity_provider_id?: string
-
-					// The name of the organization.
-					name?: string
-
-					// The name of the team
-					team?: string
-				})
-				group?: close({
-					// The ID of a previously created Access group.
-					id?: string
-				})
-				gsuite?: close({
-					// The email of the Google Workspace group.
-					email?: string
-
-					// The ID of your Google Workspace identity provider.
-					identity_provider_id?: string
-				})
-				ip?: close({
-					// An IPv4 or IPv6 CIDR block.
-					ip?: string
-				})
-				ip_list?: close({
-					// The ID of a previously created IP list.
-					id?: string
-				})
-				linked_app_token?: close({
-					// The ID of an Access OIDC SaaS application
-					app_uid?: string
-				})
-				login_method?: close({
-					// The ID of an identity provider.
-					id?: string
-				})
-				oidc?: close({
-					// The name of the OIDC claim.
-					claim_name?: string
-
-					// The OIDC claim value to look for.
-					claim_value?: string
-
-					// The ID of your OIDC identity provider.
-					identity_provider_id?: string
-				})
-				okta?: close({
-					// The ID of your Okta identity provider.
-					identity_provider_id?: string
-
-					// The name of the Okta group.
-					name?: string
-				})
-				saml?: close({
-					// The name of the SAML attribute.
-					attribute_name?: string
-
-					// The SAML attribute value to look for.
-					attribute_value?: string
-
-					// The ID of your SAML identity provider.
-					identity_provider_id?: string
-				})
-				service_token?: close({
-					// The ID of a Service Token.
-					token_id?: string
-				})
-			}), [...close({
-				// An empty object which matches on all service tokens.
-				any_valid_service_token?: close({})
-				auth_context?: close({
-					// The ACID of an Authentication context.
-					ac_id?: string
-
-					// The ID of an Authentication context.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				auth_method?: close({
-					// The type of authentication method
-					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-					auth_method?: string
-				})
-				azure_ad?: close({
-					// The ID of an Azure group.
-					id?: string
-
-					// The ID of your Azure identity provider.
-					identity_provider_id?: string
-				})
-				certificate?: close({})
-				common_name?: close({
-					// The common name to match.
-					common_name?: string
-				})
-				device_posture?: close({
-					// The ID of a device posture integration.
-					integration_uid?: string
-				})
-				email?: close({
-					// The email of the user.
-					email?: string
-				})
-				email_domain?: close({
-					// The email domain to match.
-					domain?: string
-				})
-				email_list?: close({
-					// The ID of a previously created email list.
-					id?: string
-				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
-				external_evaluation?: close({
-					// The API endpoint containing your business logic.
-					evaluate_url?: string
-
-					// The API endpoint containing the key that Access uses to verify
-					// that the response came from your API.
-					keys_url?: string
-				})
-				geo?: close({
-					// The country code that should be matched.
-					country_code?: string
-				})
-				github_organization?: close({
-					// The ID of your Github identity provider.
-					identity_provider_id?: string
-
-					// The name of the organization.
-					name?: string
-
-					// The name of the team
-					team?: string
-				})
-				group?: close({
-					// The ID of a previously created Access group.
-					id?: string
-				})
-				gsuite?: close({
-					// The email of the Google Workspace group.
-					email?: string
-
-					// The ID of your Google Workspace identity provider.
-					identity_provider_id?: string
-				})
-				ip?: close({
-					// An IPv4 or IPv6 CIDR block.
-					ip?: string
-				})
-				ip_list?: close({
-					// The ID of a previously created IP list.
-					id?: string
-				})
-				linked_app_token?: close({
-					// The ID of an Access OIDC SaaS application
-					app_uid?: string
-				})
-				login_method?: close({
-					// The ID of an identity provider.
-					id?: string
-				})
-				oidc?: close({
-					// The name of the OIDC claim.
-					claim_name?: string
-
-					// The OIDC claim value to look for.
-					claim_value?: string
-
-					// The ID of your OIDC identity provider.
-					identity_provider_id?: string
-				})
-				okta?: close({
-					// The ID of your Okta identity provider.
-					identity_provider_id?: string
-
-					// The name of the Okta group.
-					name?: string
-				})
-				saml?: close({
-					// The name of the SAML attribute.
-					attribute_name?: string
-
-					// The SAML attribute value to look for.
-					attribute_value?: string
-
-					// The ID of your SAML identity provider.
-					identity_provider_id?: string
-				})
-				service_token?: close({
-					// The ID of a Service Token.
-					token_id?: string
-				})
-			})]])
-		})]])
-		saas_app?: close({
-			// The lifetime of the OIDC Access Token after creation. Valid
-			// units are m,h. Must be greater than or equal to 1m and less
-			// than or equal to 24h.
-			access_token_lifetime?: string
-
-			// If client secret should be required on the token endpoint when
-			// authorization_code_with_pkce grant is used.
-			allow_pkce_without_client_secret?: bool
-
-			// The URL where this applications tile redirects users
-			app_launcher_url?: string
-
-			// Optional identifier indicating the authentication protocol used
-			// for the saas app. Required for OIDC. Default if unset is
-			// "saml"
-			// Available values: "saml", "oidc".
-			auth_type?: string
-
-			// The application client id
-			client_id?: string
-
-			// The application client secret, only returned on POST request.
-			client_secret?: string
-			custom_attributes?: matchN(1, [close({
-				// The SAML FriendlyName of the attribute.
-				friendly_name?: string
-
-				// The name of the attribute.
-				name?: string
-				source?: close({
-					// The name of the IdP attribute.
-					name?: string
-
-					// A mapping from IdP ID to attribute name.
-					name_by_idp?: matchN(1, [close({
-						// The UID of the IdP.
-						idp_id?: string
-
-						// The name of the IdP provided attribute.
-						source_name?: string
-					}), [...close({
-						// The UID of the IdP.
-						idp_id?: string
-
-						// The name of the IdP provided attribute.
-						source_name?: string
-					})]])
-				})
-
-				// A globally unique name for an identity or service provider.
-				// Available values:
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
-				name_format?: string
-
-				// If the attribute is required when building a SAML assertion.
-				required?: bool
-			}), [...close({
-				// The SAML FriendlyName of the attribute.
-				friendly_name?: string
-
-				// The name of the attribute.
-				name?: string
-				source?: close({
-					// The name of the IdP attribute.
-					name?: string
-
-					// A mapping from IdP ID to attribute name.
-					name_by_idp?: matchN(1, [close({
-						// The UID of the IdP.
-						idp_id?: string
-
-						// The name of the IdP provided attribute.
-						source_name?: string
-					}), [...close({
-						// The UID of the IdP.
-						idp_id?: string
-
-						// The name of the IdP provided attribute.
-						source_name?: string
-					})]])
-				})
-
-				// A globally unique name for an identity or service provider.
-				// Available values:
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
-				name_format?: string
-
-				// If the attribute is required when building a SAML assertion.
-				required?: bool
-			})]])
-
-			// The service provider's endpoint that is responsible for
-			// receiving and parsing a SAML assertion.
-			consumer_service_url?: string
-
-			// The URL that the user will be redirected to after a successful
-			// login for IDP initiated logins.
-			default_relay_state?: string
-
-			// The OIDC flows supported by this application
-			grant_types?: [...string]
-
-			// A regex to filter Cloudflare groups returned in ID token and
-			// userinfo endpoint
-			group_filter_regex?: string
-			custom_claims?: matchN(1, [close({
-				// The name of the claim.
-				name?: string
-				source?: close({
-					// The name of the IdP claim.
-					name?: string
-
-					// A mapping from IdP ID to claim name.
-					name_by_idp?: [string]: string
-				})
-
-				// If the claim is required when building an OIDC token.
-				required?: bool
-
-				// The scope of the claim.
-				// Available values: "groups", "profile", "email", "openid".
-				scope?: string
-			}), [...close({
-				// The name of the claim.
-				name?: string
-				source?: close({
-					// The name of the IdP claim.
-					name?: string
-
-					// A mapping from IdP ID to claim name.
-					name_by_idp?: [string]: string
-				})
-
-				// If the claim is required when building an OIDC token.
-				required?: bool
-
-				// The scope of the claim.
-				// Available values: "groups", "profile", "email", "openid".
-				scope?: string
-			})]])
-
-			// The unique identifier for your SaaS application.
-			idp_entity_id?: string
-
-			// The format of the name identifier sent to the SaaS application.
-			// Available values: "id", "email".
-			name_id_format?: string
-
-			// A [JSONata](https://jsonata.org/) expression that transforms an
-			// application's user identities into a NameID value for its SAML
-			// assertion. This expression should evaluate to a singular
-			// string. The output of this expression can override the
-			// `name_id_format` setting.
-			name_id_transform_jsonata?: string
-
-			// The Access public certificate that will be used to verify your
-			// identity.
-			public_key?: string
-
-			// The permitted URL's for Cloudflare to return Authorization
-			// codes and Access/ID tokens
-			redirect_uris?: [...string]
-
-			// A [JSONata] (https://jsonata.org/) expression that transforms
-			// an application's user identities into attribute assertions in
-			// the SAML response. The expression can transform id, email,
-			// name, and groups values. It can also transform fields listed
-			// in the saml_attributes or oidc_fields of the identity provider
-			// used to authenticate. The output of this expression must be a
-			// JSON object.
-			saml_attribute_transform_jsonata?: string
-
-			// Define the user information shared with access,
-			// "offline_access" scope will be automatically enabled if
-			// refresh tokens are enabled
-			scopes?: [...string]
-
-			// A globally unique name for an identity or service provider.
-			sp_entity_id?: string
-
-			// The endpoint where your SaaS application will send login
-			// requests.
-			sso_endpoint?: string
-			hybrid_and_implicit_options?: close({
-				// If an Access Token should be returned from the OIDC
-				// Authorization endpoint
-				return_access_token_from_authorization_endpoint?: bool
-
-				// If an ID Token should be returned from the OIDC Authorization
-				// endpoint
-				return_id_token_from_authorization_endpoint?: bool
-			})
-			refresh_token_options?: close({
-				// How long a refresh token will be valid for after creation.
-				// Valid units are m,h,d. Must be longer than 1m.
-				lifetime?: string
-			})
-		})
 
 		// Enables the HttpOnly cookie attribute, which increases security
 		// against XSS attacks.
@@ -2158,6 +209,25 @@ package data
 
 		// Identifier.
 		id?: string
+
+		// The design of the App Launcher landing page shown to users when
+		// they log in.
+		landing_page_design?: close({
+			// The background color of the log in button on the landing page.
+			button_color?: string
+
+			// The color of the text in the log in button on the landing page.
+			button_text_color?: string
+
+			// The URL of the image shown on the landing page.
+			image_url?: string
+
+			// The message shown on the landing page.
+			message?: string
+
+			// The title shown on the landing page.
+			title?: string
+		})
 
 		// The image URL for the logo shown in the App Launcher dashboard.
 		logo_url?: string
@@ -2261,6 +331,19 @@ package data
 				// application.
 				filter?: string
 
+				// Which SCIM resource type this mapping applies to.
+				schema?: string
+
+				// The level of adherence to outbound resource schemas when
+				// provisioning to this mapping. ‘Strict’ removes unknown values,
+				// while ‘passthrough’ passes unknown values to the target.
+				// Available values: "strict", "passthrough".
+				strictness?: string
+
+				// A [JSONata](https://jsonata.org/) expression that transforms
+				// the resource before provisioning it in the application.
+				transform_jsonata?: string
+
 				// Whether or not this mapping applies to creates, updates, or
 				// deletes.
 				operations?: close({
@@ -2275,19 +358,6 @@ package data
 					// operations.
 					update?: bool
 				})
-
-				// Which SCIM resource type this mapping applies to.
-				schema?: string
-
-				// The level of adherence to outbound resource schemas when
-				// provisioning to this mapping. ‘Strict’ removes unknown values,
-				// while ‘passthrough’ passes unknown values to the target.
-				// Available values: "strict", "passthrough".
-				strictness?: string
-
-				// A [JSONata](https://jsonata.org/) expression that transforms
-				// the resource before provisioning it in the application.
-				transform_jsonata?: string
 			}), [...close({
 				// Whether or not this mapping is enabled.
 				enabled?: bool
@@ -2298,6 +368,19 @@ package data
 				// application.
 				filter?: string
 
+				// Which SCIM resource type this mapping applies to.
+				schema?: string
+
+				// The level of adherence to outbound resource schemas when
+				// provisioning to this mapping. ‘Strict’ removes unknown values,
+				// while ‘passthrough’ passes unknown values to the target.
+				// Available values: "strict", "passthrough".
+				strictness?: string
+
+				// A [JSONata](https://jsonata.org/) expression that transforms
+				// the resource before provisioning it in the application.
+				transform_jsonata?: string
+
 				// Whether or not this mapping applies to creates, updates, or
 				// deletes.
 				operations?: close({
@@ -2312,19 +395,6 @@ package data
 					// operations.
 					update?: bool
 				})
-
-				// Which SCIM resource type this mapping applies to.
-				schema?: string
-
-				// The level of adherence to outbound resource schemas when
-				// provisioning to this mapping. ‘Strict’ removes unknown values,
-				// while ‘passthrough’ passes unknown values to the target.
-				// Available values: "strict", "passthrough".
-				strictness?: string
-
-				// A [JSONata](https://jsonata.org/) expression that transforms
-				// the resource before provisioning it in the application.
-				transform_jsonata?: string
 			})]])
 
 			// The base URI for the application's SCIM-compatible API.
@@ -2350,6 +420,1946 @@ package data
 		// The tags you want assigned to an application. Tags are used to
 		// filter applications in the App Launcher dashboard.
 		tags?: [...string]
+
+		// The application type.
+		// Available values: "self_hosted", "saas", "ssh", "vnc",
+		// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
+		// "infrastructure", "rdp", "mcp", "mcp_portal".
+		type?: string
+
+		// The Zone ID to use for this endpoint. Mutually exclusive with
+		// the Account ID.
+		zone_id?: string
+		policies?: matchN(1, [close({
+			// Administrators who can approve a temporary authentication
+			// request.
+			approval_groups?: matchN(1, [close({
+				// The number of approvals needed to obtain access.
+				approvals_needed?: number
+
+				// A list of emails that can approve the access request.
+				email_addresses?: [...string]
+
+				// The UUID of an re-usable email list.
+				email_list_uuid?: string
+			}), [...close({
+				// The number of approvals needed to obtain access.
+				approvals_needed?: number
+
+				// A list of emails that can approve the access request.
+				email_addresses?: [...string]
+
+				// The UUID of an re-usable email list.
+				email_list_uuid?: string
+			})]])
+
+			// Requires the user to request access from an administrator at
+			// the start of each session.
+			approval_required?: bool
+
+			// The rules that define how users may connect to the targets
+			// secured by your application.
+			connection_rules?: close({
+				// The SSH-specific rules that define how users may connect to the
+				// targets secured by your application.
+				ssh?: close({
+					// Enables using Identity Provider email alias as SSH username.
+					allow_email_alias?: bool
+
+					// Contains the Unix usernames that may be used when connecting
+					// over SSH.
+					usernames?: [...string]
+				})
+			})
+
+			// The action Access will take if a user matches this policy.
+			// Infrastructure application policies can only use the Allow
+			// action.
+			// Available values: "allow", "deny", "non_identity", "bypass".
+			decision?: string
+
+			// Rules evaluated with a NOT logical operator. To match the
+			// policy, a user cannot meet any of the Exclude rules.
+			exclude?: matchN(1, [close({
+				// An empty object which matches on all service tokens.
+				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
+				auth_context?: close({
+					// The ACID of an Authentication context.
+					ac_id?: string
+
+					// The ID of an Authentication context.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				auth_method?: close({
+					// The type of authentication method
+					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+					auth_method?: string
+				})
+				azure_ad?: close({
+					// The ID of an Azure group.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				certificate?: close({})
+				common_name?: close({
+					// The common name to match.
+					common_name?: string
+				})
+				device_posture?: close({
+					// The ID of a device posture integration.
+					integration_uid?: string
+				})
+				email?: close({
+					// The email of the user.
+					email?: string
+				})
+				email_domain?: close({
+					// The email domain to match.
+					domain?: string
+				})
+				email_list?: close({
+					// The ID of a previously created email list.
+					id?: string
+				})
+				external_evaluation?: close({
+					// The API endpoint containing your business logic.
+					evaluate_url?: string
+
+					// The API endpoint containing the key that Access uses to verify
+					// that the response came from your API.
+					keys_url?: string
+				})
+				geo?: close({
+					// The country code that should be matched.
+					country_code?: string
+				})
+				github_organization?: close({
+					// The ID of your Github identity provider.
+					identity_provider_id?: string
+
+					// The name of the organization.
+					name?: string
+
+					// The name of the team
+					team?: string
+				})
+				group?: close({
+					// The ID of a previously created Access group.
+					id?: string
+				})
+				gsuite?: close({
+					// The email of the Google Workspace group.
+					email?: string
+
+					// The ID of your Google Workspace identity provider.
+					identity_provider_id?: string
+				})
+				ip?: close({
+					// An IPv4 or IPv6 CIDR block.
+					ip?: string
+				})
+				ip_list?: close({
+					// The ID of a previously created IP list.
+					id?: string
+				})
+				linked_app_token?: close({
+					// The ID of an Access OIDC SaaS application
+					app_uid?: string
+				})
+				login_method?: close({
+					// The ID of an identity provider.
+					id?: string
+				})
+				oidc?: close({
+					// The name of the OIDC claim.
+					claim_name?: string
+
+					// The OIDC claim value to look for.
+					claim_value?: string
+
+					// The ID of your OIDC identity provider.
+					identity_provider_id?: string
+				})
+				okta?: close({
+					// The ID of your Okta identity provider.
+					identity_provider_id?: string
+
+					// The name of the Okta group.
+					name?: string
+				})
+				saml?: close({
+					// The name of the SAML attribute.
+					attribute_name?: string
+
+					// The SAML attribute value to look for.
+					attribute_value?: string
+
+					// The ID of your SAML identity provider.
+					identity_provider_id?: string
+				})
+				service_token?: close({
+					// The ID of a Service Token.
+					token_id?: string
+				})
+			}), [...close({
+				// An empty object which matches on all service tokens.
+				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
+				auth_context?: close({
+					// The ACID of an Authentication context.
+					ac_id?: string
+
+					// The ID of an Authentication context.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				auth_method?: close({
+					// The type of authentication method
+					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+					auth_method?: string
+				})
+				azure_ad?: close({
+					// The ID of an Azure group.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				certificate?: close({})
+				common_name?: close({
+					// The common name to match.
+					common_name?: string
+				})
+				device_posture?: close({
+					// The ID of a device posture integration.
+					integration_uid?: string
+				})
+				email?: close({
+					// The email of the user.
+					email?: string
+				})
+				email_domain?: close({
+					// The email domain to match.
+					domain?: string
+				})
+				email_list?: close({
+					// The ID of a previously created email list.
+					id?: string
+				})
+				external_evaluation?: close({
+					// The API endpoint containing your business logic.
+					evaluate_url?: string
+
+					// The API endpoint containing the key that Access uses to verify
+					// that the response came from your API.
+					keys_url?: string
+				})
+				geo?: close({
+					// The country code that should be matched.
+					country_code?: string
+				})
+				github_organization?: close({
+					// The ID of your Github identity provider.
+					identity_provider_id?: string
+
+					// The name of the organization.
+					name?: string
+
+					// The name of the team
+					team?: string
+				})
+				group?: close({
+					// The ID of a previously created Access group.
+					id?: string
+				})
+				gsuite?: close({
+					// The email of the Google Workspace group.
+					email?: string
+
+					// The ID of your Google Workspace identity provider.
+					identity_provider_id?: string
+				})
+				ip?: close({
+					// An IPv4 or IPv6 CIDR block.
+					ip?: string
+				})
+				ip_list?: close({
+					// The ID of a previously created IP list.
+					id?: string
+				})
+				linked_app_token?: close({
+					// The ID of an Access OIDC SaaS application
+					app_uid?: string
+				})
+				login_method?: close({
+					// The ID of an identity provider.
+					id?: string
+				})
+				oidc?: close({
+					// The name of the OIDC claim.
+					claim_name?: string
+
+					// The OIDC claim value to look for.
+					claim_value?: string
+
+					// The ID of your OIDC identity provider.
+					identity_provider_id?: string
+				})
+				okta?: close({
+					// The ID of your Okta identity provider.
+					identity_provider_id?: string
+
+					// The name of the Okta group.
+					name?: string
+				})
+				saml?: close({
+					// The name of the SAML attribute.
+					attribute_name?: string
+
+					// The SAML attribute value to look for.
+					attribute_value?: string
+
+					// The ID of your SAML identity provider.
+					identity_provider_id?: string
+				})
+				service_token?: close({
+					// The ID of a Service Token.
+					token_id?: string
+				})
+			})]])
+
+			// The UUID of the policy
+			id?: string
+
+			// Rules evaluated with an OR logical operator. A user needs to
+			// meet only one of the Include rules.
+			include?: matchN(1, [close({
+				// An empty object which matches on all service tokens.
+				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
+				auth_context?: close({
+					// The ACID of an Authentication context.
+					ac_id?: string
+
+					// The ID of an Authentication context.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				auth_method?: close({
+					// The type of authentication method
+					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+					auth_method?: string
+				})
+				azure_ad?: close({
+					// The ID of an Azure group.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				certificate?: close({})
+				common_name?: close({
+					// The common name to match.
+					common_name?: string
+				})
+				device_posture?: close({
+					// The ID of a device posture integration.
+					integration_uid?: string
+				})
+				email?: close({
+					// The email of the user.
+					email?: string
+				})
+				email_domain?: close({
+					// The email domain to match.
+					domain?: string
+				})
+				email_list?: close({
+					// The ID of a previously created email list.
+					id?: string
+				})
+				external_evaluation?: close({
+					// The API endpoint containing your business logic.
+					evaluate_url?: string
+
+					// The API endpoint containing the key that Access uses to verify
+					// that the response came from your API.
+					keys_url?: string
+				})
+				geo?: close({
+					// The country code that should be matched.
+					country_code?: string
+				})
+				github_organization?: close({
+					// The ID of your Github identity provider.
+					identity_provider_id?: string
+
+					// The name of the organization.
+					name?: string
+
+					// The name of the team
+					team?: string
+				})
+				group?: close({
+					// The ID of a previously created Access group.
+					id?: string
+				})
+				gsuite?: close({
+					// The email of the Google Workspace group.
+					email?: string
+
+					// The ID of your Google Workspace identity provider.
+					identity_provider_id?: string
+				})
+				ip?: close({
+					// An IPv4 or IPv6 CIDR block.
+					ip?: string
+				})
+				ip_list?: close({
+					// The ID of a previously created IP list.
+					id?: string
+				})
+				linked_app_token?: close({
+					// The ID of an Access OIDC SaaS application
+					app_uid?: string
+				})
+				login_method?: close({
+					// The ID of an identity provider.
+					id?: string
+				})
+				oidc?: close({
+					// The name of the OIDC claim.
+					claim_name?: string
+
+					// The OIDC claim value to look for.
+					claim_value?: string
+
+					// The ID of your OIDC identity provider.
+					identity_provider_id?: string
+				})
+				okta?: close({
+					// The ID of your Okta identity provider.
+					identity_provider_id?: string
+
+					// The name of the Okta group.
+					name?: string
+				})
+				saml?: close({
+					// The name of the SAML attribute.
+					attribute_name?: string
+
+					// The SAML attribute value to look for.
+					attribute_value?: string
+
+					// The ID of your SAML identity provider.
+					identity_provider_id?: string
+				})
+				service_token?: close({
+					// The ID of a Service Token.
+					token_id?: string
+				})
+			}), [...close({
+				// An empty object which matches on all service tokens.
+				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
+				auth_context?: close({
+					// The ACID of an Authentication context.
+					ac_id?: string
+
+					// The ID of an Authentication context.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				auth_method?: close({
+					// The type of authentication method
+					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+					auth_method?: string
+				})
+				azure_ad?: close({
+					// The ID of an Azure group.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				certificate?: close({})
+				common_name?: close({
+					// The common name to match.
+					common_name?: string
+				})
+				device_posture?: close({
+					// The ID of a device posture integration.
+					integration_uid?: string
+				})
+				email?: close({
+					// The email of the user.
+					email?: string
+				})
+				email_domain?: close({
+					// The email domain to match.
+					domain?: string
+				})
+				email_list?: close({
+					// The ID of a previously created email list.
+					id?: string
+				})
+				external_evaluation?: close({
+					// The API endpoint containing your business logic.
+					evaluate_url?: string
+
+					// The API endpoint containing the key that Access uses to verify
+					// that the response came from your API.
+					keys_url?: string
+				})
+				geo?: close({
+					// The country code that should be matched.
+					country_code?: string
+				})
+				github_organization?: close({
+					// The ID of your Github identity provider.
+					identity_provider_id?: string
+
+					// The name of the organization.
+					name?: string
+
+					// The name of the team
+					team?: string
+				})
+				group?: close({
+					// The ID of a previously created Access group.
+					id?: string
+				})
+				gsuite?: close({
+					// The email of the Google Workspace group.
+					email?: string
+
+					// The ID of your Google Workspace identity provider.
+					identity_provider_id?: string
+				})
+				ip?: close({
+					// An IPv4 or IPv6 CIDR block.
+					ip?: string
+				})
+				ip_list?: close({
+					// The ID of a previously created IP list.
+					id?: string
+				})
+				linked_app_token?: close({
+					// The ID of an Access OIDC SaaS application
+					app_uid?: string
+				})
+				login_method?: close({
+					// The ID of an identity provider.
+					id?: string
+				})
+				oidc?: close({
+					// The name of the OIDC claim.
+					claim_name?: string
+
+					// The OIDC claim value to look for.
+					claim_value?: string
+
+					// The ID of your OIDC identity provider.
+					identity_provider_id?: string
+				})
+				okta?: close({
+					// The ID of your Okta identity provider.
+					identity_provider_id?: string
+
+					// The name of the Okta group.
+					name?: string
+				})
+				saml?: close({
+					// The name of the SAML attribute.
+					attribute_name?: string
+
+					// The SAML attribute value to look for.
+					attribute_value?: string
+
+					// The ID of your SAML identity provider.
+					identity_provider_id?: string
+				})
+				service_token?: close({
+					// The ID of a Service Token.
+					token_id?: string
+				})
+			})]])
+
+			// Require this application to be served in an isolated browser
+			// for users matching this policy. 'Client Web Isolation' must be
+			// on for the account in order to use this feature.
+			isolation_required?: bool
+
+			// The name of the Access policy.
+			name?: string
+
+			// The order of execution for this policy. Must be unique for each
+			// policy within an app.
+			precedence?: number
+
+			// A custom message that will appear on the purpose justification
+			// screen.
+			purpose_justification_prompt?: string
+
+			// Require users to enter a justification when they log in to the
+			// application.
+			purpose_justification_required?: bool
+
+			// Rules evaluated with an AND logical operator. To match the
+			// policy, a user must meet all of the Require rules.
+			require?: matchN(1, [close({
+				// An empty object which matches on all service tokens.
+				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
+				auth_context?: close({
+					// The ACID of an Authentication context.
+					ac_id?: string
+
+					// The ID of an Authentication context.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				auth_method?: close({
+					// The type of authentication method
+					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+					auth_method?: string
+				})
+				azure_ad?: close({
+					// The ID of an Azure group.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				certificate?: close({})
+				common_name?: close({
+					// The common name to match.
+					common_name?: string
+				})
+				device_posture?: close({
+					// The ID of a device posture integration.
+					integration_uid?: string
+				})
+				email?: close({
+					// The email of the user.
+					email?: string
+				})
+				email_domain?: close({
+					// The email domain to match.
+					domain?: string
+				})
+				email_list?: close({
+					// The ID of a previously created email list.
+					id?: string
+				})
+				external_evaluation?: close({
+					// The API endpoint containing your business logic.
+					evaluate_url?: string
+
+					// The API endpoint containing the key that Access uses to verify
+					// that the response came from your API.
+					keys_url?: string
+				})
+				geo?: close({
+					// The country code that should be matched.
+					country_code?: string
+				})
+				github_organization?: close({
+					// The ID of your Github identity provider.
+					identity_provider_id?: string
+
+					// The name of the organization.
+					name?: string
+
+					// The name of the team
+					team?: string
+				})
+				group?: close({
+					// The ID of a previously created Access group.
+					id?: string
+				})
+				gsuite?: close({
+					// The email of the Google Workspace group.
+					email?: string
+
+					// The ID of your Google Workspace identity provider.
+					identity_provider_id?: string
+				})
+				ip?: close({
+					// An IPv4 or IPv6 CIDR block.
+					ip?: string
+				})
+				ip_list?: close({
+					// The ID of a previously created IP list.
+					id?: string
+				})
+				linked_app_token?: close({
+					// The ID of an Access OIDC SaaS application
+					app_uid?: string
+				})
+				login_method?: close({
+					// The ID of an identity provider.
+					id?: string
+				})
+				oidc?: close({
+					// The name of the OIDC claim.
+					claim_name?: string
+
+					// The OIDC claim value to look for.
+					claim_value?: string
+
+					// The ID of your OIDC identity provider.
+					identity_provider_id?: string
+				})
+				okta?: close({
+					// The ID of your Okta identity provider.
+					identity_provider_id?: string
+
+					// The name of the Okta group.
+					name?: string
+				})
+				saml?: close({
+					// The name of the SAML attribute.
+					attribute_name?: string
+
+					// The SAML attribute value to look for.
+					attribute_value?: string
+
+					// The ID of your SAML identity provider.
+					identity_provider_id?: string
+				})
+				service_token?: close({
+					// The ID of a Service Token.
+					token_id?: string
+				})
+			}), [...close({
+				// An empty object which matches on all service tokens.
+				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
+				auth_context?: close({
+					// The ACID of an Authentication context.
+					ac_id?: string
+
+					// The ID of an Authentication context.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				auth_method?: close({
+					// The type of authentication method
+					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+					auth_method?: string
+				})
+				azure_ad?: close({
+					// The ID of an Azure group.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				certificate?: close({})
+				common_name?: close({
+					// The common name to match.
+					common_name?: string
+				})
+				device_posture?: close({
+					// The ID of a device posture integration.
+					integration_uid?: string
+				})
+				email?: close({
+					// The email of the user.
+					email?: string
+				})
+				email_domain?: close({
+					// The email domain to match.
+					domain?: string
+				})
+				email_list?: close({
+					// The ID of a previously created email list.
+					id?: string
+				})
+				external_evaluation?: close({
+					// The API endpoint containing your business logic.
+					evaluate_url?: string
+
+					// The API endpoint containing the key that Access uses to verify
+					// that the response came from your API.
+					keys_url?: string
+				})
+				geo?: close({
+					// The country code that should be matched.
+					country_code?: string
+				})
+				github_organization?: close({
+					// The ID of your Github identity provider.
+					identity_provider_id?: string
+
+					// The name of the organization.
+					name?: string
+
+					// The name of the team
+					team?: string
+				})
+				group?: close({
+					// The ID of a previously created Access group.
+					id?: string
+				})
+				gsuite?: close({
+					// The email of the Google Workspace group.
+					email?: string
+
+					// The ID of your Google Workspace identity provider.
+					identity_provider_id?: string
+				})
+				ip?: close({
+					// An IPv4 or IPv6 CIDR block.
+					ip?: string
+				})
+				ip_list?: close({
+					// The ID of a previously created IP list.
+					id?: string
+				})
+				linked_app_token?: close({
+					// The ID of an Access OIDC SaaS application
+					app_uid?: string
+				})
+				login_method?: close({
+					// The ID of an identity provider.
+					id?: string
+				})
+				oidc?: close({
+					// The name of the OIDC claim.
+					claim_name?: string
+
+					// The OIDC claim value to look for.
+					claim_value?: string
+
+					// The ID of your OIDC identity provider.
+					identity_provider_id?: string
+				})
+				okta?: close({
+					// The ID of your Okta identity provider.
+					identity_provider_id?: string
+
+					// The name of the Okta group.
+					name?: string
+				})
+				saml?: close({
+					// The name of the SAML attribute.
+					attribute_name?: string
+
+					// The SAML attribute value to look for.
+					attribute_value?: string
+
+					// The ID of your SAML identity provider.
+					identity_provider_id?: string
+				})
+				service_token?: close({
+					// The ID of a Service Token.
+					token_id?: string
+				})
+			})]])
+
+			// The amount of time that tokens issued for the application will
+			// be valid. Must be in the format `300ms` or `2h45m`. Valid time
+			// units are: ns, us (or µs), ms, s, m, h.
+			session_duration?: string
+			created_at?:       string
+			updated_at?:       string
+		}), [...close({
+			// Administrators who can approve a temporary authentication
+			// request.
+			approval_groups?: matchN(1, [close({
+				// The number of approvals needed to obtain access.
+				approvals_needed?: number
+
+				// A list of emails that can approve the access request.
+				email_addresses?: [...string]
+
+				// The UUID of an re-usable email list.
+				email_list_uuid?: string
+			}), [...close({
+				// The number of approvals needed to obtain access.
+				approvals_needed?: number
+
+				// A list of emails that can approve the access request.
+				email_addresses?: [...string]
+
+				// The UUID of an re-usable email list.
+				email_list_uuid?: string
+			})]])
+
+			// Requires the user to request access from an administrator at
+			// the start of each session.
+			approval_required?: bool
+
+			// The rules that define how users may connect to the targets
+			// secured by your application.
+			connection_rules?: close({
+				// The SSH-specific rules that define how users may connect to the
+				// targets secured by your application.
+				ssh?: close({
+					// Enables using Identity Provider email alias as SSH username.
+					allow_email_alias?: bool
+
+					// Contains the Unix usernames that may be used when connecting
+					// over SSH.
+					usernames?: [...string]
+				})
+			})
+
+			// The action Access will take if a user matches this policy.
+			// Infrastructure application policies can only use the Allow
+			// action.
+			// Available values: "allow", "deny", "non_identity", "bypass".
+			decision?: string
+
+			// Rules evaluated with a NOT logical operator. To match the
+			// policy, a user cannot meet any of the Exclude rules.
+			exclude?: matchN(1, [close({
+				// An empty object which matches on all service tokens.
+				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
+				auth_context?: close({
+					// The ACID of an Authentication context.
+					ac_id?: string
+
+					// The ID of an Authentication context.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				auth_method?: close({
+					// The type of authentication method
+					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+					auth_method?: string
+				})
+				azure_ad?: close({
+					// The ID of an Azure group.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				certificate?: close({})
+				common_name?: close({
+					// The common name to match.
+					common_name?: string
+				})
+				device_posture?: close({
+					// The ID of a device posture integration.
+					integration_uid?: string
+				})
+				email?: close({
+					// The email of the user.
+					email?: string
+				})
+				email_domain?: close({
+					// The email domain to match.
+					domain?: string
+				})
+				email_list?: close({
+					// The ID of a previously created email list.
+					id?: string
+				})
+				external_evaluation?: close({
+					// The API endpoint containing your business logic.
+					evaluate_url?: string
+
+					// The API endpoint containing the key that Access uses to verify
+					// that the response came from your API.
+					keys_url?: string
+				})
+				geo?: close({
+					// The country code that should be matched.
+					country_code?: string
+				})
+				github_organization?: close({
+					// The ID of your Github identity provider.
+					identity_provider_id?: string
+
+					// The name of the organization.
+					name?: string
+
+					// The name of the team
+					team?: string
+				})
+				group?: close({
+					// The ID of a previously created Access group.
+					id?: string
+				})
+				gsuite?: close({
+					// The email of the Google Workspace group.
+					email?: string
+
+					// The ID of your Google Workspace identity provider.
+					identity_provider_id?: string
+				})
+				ip?: close({
+					// An IPv4 or IPv6 CIDR block.
+					ip?: string
+				})
+				ip_list?: close({
+					// The ID of a previously created IP list.
+					id?: string
+				})
+				linked_app_token?: close({
+					// The ID of an Access OIDC SaaS application
+					app_uid?: string
+				})
+				login_method?: close({
+					// The ID of an identity provider.
+					id?: string
+				})
+				oidc?: close({
+					// The name of the OIDC claim.
+					claim_name?: string
+
+					// The OIDC claim value to look for.
+					claim_value?: string
+
+					// The ID of your OIDC identity provider.
+					identity_provider_id?: string
+				})
+				okta?: close({
+					// The ID of your Okta identity provider.
+					identity_provider_id?: string
+
+					// The name of the Okta group.
+					name?: string
+				})
+				saml?: close({
+					// The name of the SAML attribute.
+					attribute_name?: string
+
+					// The SAML attribute value to look for.
+					attribute_value?: string
+
+					// The ID of your SAML identity provider.
+					identity_provider_id?: string
+				})
+				service_token?: close({
+					// The ID of a Service Token.
+					token_id?: string
+				})
+			}), [...close({
+				// An empty object which matches on all service tokens.
+				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
+				auth_context?: close({
+					// The ACID of an Authentication context.
+					ac_id?: string
+
+					// The ID of an Authentication context.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				auth_method?: close({
+					// The type of authentication method
+					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+					auth_method?: string
+				})
+				azure_ad?: close({
+					// The ID of an Azure group.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				certificate?: close({})
+				common_name?: close({
+					// The common name to match.
+					common_name?: string
+				})
+				device_posture?: close({
+					// The ID of a device posture integration.
+					integration_uid?: string
+				})
+				email?: close({
+					// The email of the user.
+					email?: string
+				})
+				email_domain?: close({
+					// The email domain to match.
+					domain?: string
+				})
+				email_list?: close({
+					// The ID of a previously created email list.
+					id?: string
+				})
+				external_evaluation?: close({
+					// The API endpoint containing your business logic.
+					evaluate_url?: string
+
+					// The API endpoint containing the key that Access uses to verify
+					// that the response came from your API.
+					keys_url?: string
+				})
+				geo?: close({
+					// The country code that should be matched.
+					country_code?: string
+				})
+				github_organization?: close({
+					// The ID of your Github identity provider.
+					identity_provider_id?: string
+
+					// The name of the organization.
+					name?: string
+
+					// The name of the team
+					team?: string
+				})
+				group?: close({
+					// The ID of a previously created Access group.
+					id?: string
+				})
+				gsuite?: close({
+					// The email of the Google Workspace group.
+					email?: string
+
+					// The ID of your Google Workspace identity provider.
+					identity_provider_id?: string
+				})
+				ip?: close({
+					// An IPv4 or IPv6 CIDR block.
+					ip?: string
+				})
+				ip_list?: close({
+					// The ID of a previously created IP list.
+					id?: string
+				})
+				linked_app_token?: close({
+					// The ID of an Access OIDC SaaS application
+					app_uid?: string
+				})
+				login_method?: close({
+					// The ID of an identity provider.
+					id?: string
+				})
+				oidc?: close({
+					// The name of the OIDC claim.
+					claim_name?: string
+
+					// The OIDC claim value to look for.
+					claim_value?: string
+
+					// The ID of your OIDC identity provider.
+					identity_provider_id?: string
+				})
+				okta?: close({
+					// The ID of your Okta identity provider.
+					identity_provider_id?: string
+
+					// The name of the Okta group.
+					name?: string
+				})
+				saml?: close({
+					// The name of the SAML attribute.
+					attribute_name?: string
+
+					// The SAML attribute value to look for.
+					attribute_value?: string
+
+					// The ID of your SAML identity provider.
+					identity_provider_id?: string
+				})
+				service_token?: close({
+					// The ID of a Service Token.
+					token_id?: string
+				})
+			})]])
+
+			// The UUID of the policy
+			id?: string
+
+			// Rules evaluated with an OR logical operator. A user needs to
+			// meet only one of the Include rules.
+			include?: matchN(1, [close({
+				// An empty object which matches on all service tokens.
+				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
+				auth_context?: close({
+					// The ACID of an Authentication context.
+					ac_id?: string
+
+					// The ID of an Authentication context.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				auth_method?: close({
+					// The type of authentication method
+					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+					auth_method?: string
+				})
+				azure_ad?: close({
+					// The ID of an Azure group.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				certificate?: close({})
+				common_name?: close({
+					// The common name to match.
+					common_name?: string
+				})
+				device_posture?: close({
+					// The ID of a device posture integration.
+					integration_uid?: string
+				})
+				email?: close({
+					// The email of the user.
+					email?: string
+				})
+				email_domain?: close({
+					// The email domain to match.
+					domain?: string
+				})
+				email_list?: close({
+					// The ID of a previously created email list.
+					id?: string
+				})
+				external_evaluation?: close({
+					// The API endpoint containing your business logic.
+					evaluate_url?: string
+
+					// The API endpoint containing the key that Access uses to verify
+					// that the response came from your API.
+					keys_url?: string
+				})
+				geo?: close({
+					// The country code that should be matched.
+					country_code?: string
+				})
+				github_organization?: close({
+					// The ID of your Github identity provider.
+					identity_provider_id?: string
+
+					// The name of the organization.
+					name?: string
+
+					// The name of the team
+					team?: string
+				})
+				group?: close({
+					// The ID of a previously created Access group.
+					id?: string
+				})
+				gsuite?: close({
+					// The email of the Google Workspace group.
+					email?: string
+
+					// The ID of your Google Workspace identity provider.
+					identity_provider_id?: string
+				})
+				ip?: close({
+					// An IPv4 or IPv6 CIDR block.
+					ip?: string
+				})
+				ip_list?: close({
+					// The ID of a previously created IP list.
+					id?: string
+				})
+				linked_app_token?: close({
+					// The ID of an Access OIDC SaaS application
+					app_uid?: string
+				})
+				login_method?: close({
+					// The ID of an identity provider.
+					id?: string
+				})
+				oidc?: close({
+					// The name of the OIDC claim.
+					claim_name?: string
+
+					// The OIDC claim value to look for.
+					claim_value?: string
+
+					// The ID of your OIDC identity provider.
+					identity_provider_id?: string
+				})
+				okta?: close({
+					// The ID of your Okta identity provider.
+					identity_provider_id?: string
+
+					// The name of the Okta group.
+					name?: string
+				})
+				saml?: close({
+					// The name of the SAML attribute.
+					attribute_name?: string
+
+					// The SAML attribute value to look for.
+					attribute_value?: string
+
+					// The ID of your SAML identity provider.
+					identity_provider_id?: string
+				})
+				service_token?: close({
+					// The ID of a Service Token.
+					token_id?: string
+				})
+			}), [...close({
+				// An empty object which matches on all service tokens.
+				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
+				auth_context?: close({
+					// The ACID of an Authentication context.
+					ac_id?: string
+
+					// The ID of an Authentication context.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				auth_method?: close({
+					// The type of authentication method
+					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+					auth_method?: string
+				})
+				azure_ad?: close({
+					// The ID of an Azure group.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				certificate?: close({})
+				common_name?: close({
+					// The common name to match.
+					common_name?: string
+				})
+				device_posture?: close({
+					// The ID of a device posture integration.
+					integration_uid?: string
+				})
+				email?: close({
+					// The email of the user.
+					email?: string
+				})
+				email_domain?: close({
+					// The email domain to match.
+					domain?: string
+				})
+				email_list?: close({
+					// The ID of a previously created email list.
+					id?: string
+				})
+				external_evaluation?: close({
+					// The API endpoint containing your business logic.
+					evaluate_url?: string
+
+					// The API endpoint containing the key that Access uses to verify
+					// that the response came from your API.
+					keys_url?: string
+				})
+				geo?: close({
+					// The country code that should be matched.
+					country_code?: string
+				})
+				github_organization?: close({
+					// The ID of your Github identity provider.
+					identity_provider_id?: string
+
+					// The name of the organization.
+					name?: string
+
+					// The name of the team
+					team?: string
+				})
+				group?: close({
+					// The ID of a previously created Access group.
+					id?: string
+				})
+				gsuite?: close({
+					// The email of the Google Workspace group.
+					email?: string
+
+					// The ID of your Google Workspace identity provider.
+					identity_provider_id?: string
+				})
+				ip?: close({
+					// An IPv4 or IPv6 CIDR block.
+					ip?: string
+				})
+				ip_list?: close({
+					// The ID of a previously created IP list.
+					id?: string
+				})
+				linked_app_token?: close({
+					// The ID of an Access OIDC SaaS application
+					app_uid?: string
+				})
+				login_method?: close({
+					// The ID of an identity provider.
+					id?: string
+				})
+				oidc?: close({
+					// The name of the OIDC claim.
+					claim_name?: string
+
+					// The OIDC claim value to look for.
+					claim_value?: string
+
+					// The ID of your OIDC identity provider.
+					identity_provider_id?: string
+				})
+				okta?: close({
+					// The ID of your Okta identity provider.
+					identity_provider_id?: string
+
+					// The name of the Okta group.
+					name?: string
+				})
+				saml?: close({
+					// The name of the SAML attribute.
+					attribute_name?: string
+
+					// The SAML attribute value to look for.
+					attribute_value?: string
+
+					// The ID of your SAML identity provider.
+					identity_provider_id?: string
+				})
+				service_token?: close({
+					// The ID of a Service Token.
+					token_id?: string
+				})
+			})]])
+
+			// Require this application to be served in an isolated browser
+			// for users matching this policy. 'Client Web Isolation' must be
+			// on for the account in order to use this feature.
+			isolation_required?: bool
+
+			// The name of the Access policy.
+			name?: string
+
+			// The order of execution for this policy. Must be unique for each
+			// policy within an app.
+			precedence?: number
+
+			// A custom message that will appear on the purpose justification
+			// screen.
+			purpose_justification_prompt?: string
+
+			// Require users to enter a justification when they log in to the
+			// application.
+			purpose_justification_required?: bool
+
+			// Rules evaluated with an AND logical operator. To match the
+			// policy, a user must meet all of the Require rules.
+			require?: matchN(1, [close({
+				// An empty object which matches on all service tokens.
+				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
+				auth_context?: close({
+					// The ACID of an Authentication context.
+					ac_id?: string
+
+					// The ID of an Authentication context.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				auth_method?: close({
+					// The type of authentication method
+					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+					auth_method?: string
+				})
+				azure_ad?: close({
+					// The ID of an Azure group.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				certificate?: close({})
+				common_name?: close({
+					// The common name to match.
+					common_name?: string
+				})
+				device_posture?: close({
+					// The ID of a device posture integration.
+					integration_uid?: string
+				})
+				email?: close({
+					// The email of the user.
+					email?: string
+				})
+				email_domain?: close({
+					// The email domain to match.
+					domain?: string
+				})
+				email_list?: close({
+					// The ID of a previously created email list.
+					id?: string
+				})
+				external_evaluation?: close({
+					// The API endpoint containing your business logic.
+					evaluate_url?: string
+
+					// The API endpoint containing the key that Access uses to verify
+					// that the response came from your API.
+					keys_url?: string
+				})
+				geo?: close({
+					// The country code that should be matched.
+					country_code?: string
+				})
+				github_organization?: close({
+					// The ID of your Github identity provider.
+					identity_provider_id?: string
+
+					// The name of the organization.
+					name?: string
+
+					// The name of the team
+					team?: string
+				})
+				group?: close({
+					// The ID of a previously created Access group.
+					id?: string
+				})
+				gsuite?: close({
+					// The email of the Google Workspace group.
+					email?: string
+
+					// The ID of your Google Workspace identity provider.
+					identity_provider_id?: string
+				})
+				ip?: close({
+					// An IPv4 or IPv6 CIDR block.
+					ip?: string
+				})
+				ip_list?: close({
+					// The ID of a previously created IP list.
+					id?: string
+				})
+				linked_app_token?: close({
+					// The ID of an Access OIDC SaaS application
+					app_uid?: string
+				})
+				login_method?: close({
+					// The ID of an identity provider.
+					id?: string
+				})
+				oidc?: close({
+					// The name of the OIDC claim.
+					claim_name?: string
+
+					// The OIDC claim value to look for.
+					claim_value?: string
+
+					// The ID of your OIDC identity provider.
+					identity_provider_id?: string
+				})
+				okta?: close({
+					// The ID of your Okta identity provider.
+					identity_provider_id?: string
+
+					// The name of the Okta group.
+					name?: string
+				})
+				saml?: close({
+					// The name of the SAML attribute.
+					attribute_name?: string
+
+					// The SAML attribute value to look for.
+					attribute_value?: string
+
+					// The ID of your SAML identity provider.
+					identity_provider_id?: string
+				})
+				service_token?: close({
+					// The ID of a Service Token.
+					token_id?: string
+				})
+			}), [...close({
+				// An empty object which matches on all service tokens.
+				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
+				auth_context?: close({
+					// The ACID of an Authentication context.
+					ac_id?: string
+
+					// The ID of an Authentication context.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				auth_method?: close({
+					// The type of authentication method
+					// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+					auth_method?: string
+				})
+				azure_ad?: close({
+					// The ID of an Azure group.
+					id?: string
+
+					// The ID of your Azure identity provider.
+					identity_provider_id?: string
+				})
+				certificate?: close({})
+				common_name?: close({
+					// The common name to match.
+					common_name?: string
+				})
+				device_posture?: close({
+					// The ID of a device posture integration.
+					integration_uid?: string
+				})
+				email?: close({
+					// The email of the user.
+					email?: string
+				})
+				email_domain?: close({
+					// The email domain to match.
+					domain?: string
+				})
+				email_list?: close({
+					// The ID of a previously created email list.
+					id?: string
+				})
+				external_evaluation?: close({
+					// The API endpoint containing your business logic.
+					evaluate_url?: string
+
+					// The API endpoint containing the key that Access uses to verify
+					// that the response came from your API.
+					keys_url?: string
+				})
+				geo?: close({
+					// The country code that should be matched.
+					country_code?: string
+				})
+				github_organization?: close({
+					// The ID of your Github identity provider.
+					identity_provider_id?: string
+
+					// The name of the organization.
+					name?: string
+
+					// The name of the team
+					team?: string
+				})
+				group?: close({
+					// The ID of a previously created Access group.
+					id?: string
+				})
+				gsuite?: close({
+					// The email of the Google Workspace group.
+					email?: string
+
+					// The ID of your Google Workspace identity provider.
+					identity_provider_id?: string
+				})
+				ip?: close({
+					// An IPv4 or IPv6 CIDR block.
+					ip?: string
+				})
+				ip_list?: close({
+					// The ID of a previously created IP list.
+					id?: string
+				})
+				linked_app_token?: close({
+					// The ID of an Access OIDC SaaS application
+					app_uid?: string
+				})
+				login_method?: close({
+					// The ID of an identity provider.
+					id?: string
+				})
+				oidc?: close({
+					// The name of the OIDC claim.
+					claim_name?: string
+
+					// The OIDC claim value to look for.
+					claim_value?: string
+
+					// The ID of your OIDC identity provider.
+					identity_provider_id?: string
+				})
+				okta?: close({
+					// The ID of your Okta identity provider.
+					identity_provider_id?: string
+
+					// The name of the Okta group.
+					name?: string
+				})
+				saml?: close({
+					// The name of the SAML attribute.
+					attribute_name?: string
+
+					// The SAML attribute value to look for.
+					attribute_value?: string
+
+					// The ID of your SAML identity provider.
+					identity_provider_id?: string
+				})
+				service_token?: close({
+					// The ID of a Service Token.
+					token_id?: string
+				})
+			})]])
+
+			// The amount of time that tokens issued for the application will
+			// be valid. Must be in the format `300ms` or `2h45m`. Valid time
+			// units are: ns, us (or µs), ms, s, m, h.
+			session_duration?: string
+			created_at?:       string
+			updated_at?:       string
+		})]])
+		saas_app?: close({
+			// The lifetime of the OIDC Access Token after creation. Valid
+			// units are m,h. Must be greater than or equal to 1m and less
+			// than or equal to 24h.
+			access_token_lifetime?: string
+
+			// If client secret should be required on the token endpoint when
+			// authorization_code_with_pkce grant is used.
+			allow_pkce_without_client_secret?: bool
+
+			// The URL where this applications tile redirects users
+			app_launcher_url?: string
+
+			// Optional identifier indicating the authentication protocol used
+			// for the saas app. Required for OIDC. Default if unset is
+			// "saml"
+			// Available values: "saml", "oidc".
+			auth_type?: string
+
+			// The application client id
+			client_id?: string
+
+			// The application client secret, only returned on POST request.
+			client_secret?: string
+
+			// The service provider's endpoint that is responsible for
+			// receiving and parsing a SAML assertion.
+			consumer_service_url?: string
+
+			// The URL that the user will be redirected to after a successful
+			// login for IDP initiated logins.
+			default_relay_state?: string
+
+			// The OIDC flows supported by this application
+			grant_types?: [...string]
+
+			// A regex to filter Cloudflare groups returned in ID token and
+			// userinfo endpoint
+			group_filter_regex?: string
+
+			// The unique identifier for your SaaS application.
+			idp_entity_id?: string
+
+			// The format of the name identifier sent to the SaaS application.
+			// Available values: "id", "email".
+			name_id_format?: string
+
+			// A [JSONata](https://jsonata.org/) expression that transforms an
+			// application's user identities into a NameID value for its SAML
+			// assertion. This expression should evaluate to a singular
+			// string. The output of this expression can override the
+			// `name_id_format` setting.
+			name_id_transform_jsonata?: string
+
+			// The Access public certificate that will be used to verify your
+			// identity.
+			public_key?: string
+
+			// The permitted URL's for Cloudflare to return Authorization
+			// codes and Access/ID tokens
+			redirect_uris?: [...string]
+
+			// A [JSONata] (https://jsonata.org/) expression that transforms
+			// an application's user identities into attribute assertions in
+			// the SAML response. The expression can transform id, email,
+			// name, and groups values. It can also transform fields listed
+			// in the saml_attributes or oidc_fields of the identity provider
+			// used to authenticate. The output of this expression must be a
+			// JSON object.
+			saml_attribute_transform_jsonata?: string
+
+			// Define the user information shared with access,
+			// "offline_access" scope will be automatically enabled if
+			// refresh tokens are enabled
+			scopes?: [...string]
+
+			// A globally unique name for an identity or service provider.
+			sp_entity_id?: string
+
+			// The endpoint where your SaaS application will send login
+			// requests.
+			sso_endpoint?: string
+			custom_attributes?: matchN(1, [close({
+				// The SAML FriendlyName of the attribute.
+				friendly_name?: string
+
+				// The name of the attribute.
+				name?: string
+
+				// A globally unique name for an identity or service provider.
+				// Available values:
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
+				name_format?: string
+
+				// If the attribute is required when building a SAML assertion.
+				required?: bool
+				source?: close({
+					// The name of the IdP attribute.
+					name?: string
+
+					// A mapping from IdP ID to attribute name.
+					name_by_idp?: matchN(1, [close({
+						// The UID of the IdP.
+						idp_id?: string
+
+						// The name of the IdP provided attribute.
+						source_name?: string
+					}), [...close({
+						// The UID of the IdP.
+						idp_id?: string
+
+						// The name of the IdP provided attribute.
+						source_name?: string
+					})]])
+				})
+			}), [...close({
+				// The SAML FriendlyName of the attribute.
+				friendly_name?: string
+
+				// The name of the attribute.
+				name?: string
+
+				// A globally unique name for an identity or service provider.
+				// Available values:
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
+				name_format?: string
+
+				// If the attribute is required when building a SAML assertion.
+				required?: bool
+				source?: close({
+					// The name of the IdP attribute.
+					name?: string
+
+					// A mapping from IdP ID to attribute name.
+					name_by_idp?: matchN(1, [close({
+						// The UID of the IdP.
+						idp_id?: string
+
+						// The name of the IdP provided attribute.
+						source_name?: string
+					}), [...close({
+						// The UID of the IdP.
+						idp_id?: string
+
+						// The name of the IdP provided attribute.
+						source_name?: string
+					})]])
+				})
+			})]])
+			custom_claims?: matchN(1, [close({
+				// The name of the claim.
+				name?: string
+
+				// If the claim is required when building an OIDC token.
+				required?: bool
+
+				// The scope of the claim.
+				// Available values: "groups", "profile", "email", "openid".
+				scope?: string
+				source?: close({
+					// The name of the IdP claim.
+					name?: string
+
+					// A mapping from IdP ID to claim name.
+					name_by_idp?: [string]: string
+				})
+			}), [...close({
+				// The name of the claim.
+				name?: string
+
+				// If the claim is required when building an OIDC token.
+				required?: bool
+
+				// The scope of the claim.
+				// Available values: "groups", "profile", "email", "openid".
+				scope?: string
+				source?: close({
+					// The name of the IdP claim.
+					name?: string
+
+					// A mapping from IdP ID to claim name.
+					name_by_idp?: [string]: string
+				})
+			})]])
+			hybrid_and_implicit_options?: close({
+				// If an Access Token should be returned from the OIDC
+				// Authorization endpoint
+				return_access_token_from_authorization_endpoint?: bool
+
+				// If an ID Token should be returned from the OIDC Authorization
+				// endpoint
+				return_id_token_from_authorization_endpoint?: bool
+			})
+			refresh_token_options?: close({
+				// How long a refresh token will be valid for after creation.
+				// Valid units are m,h,d. Must be longer than 1m.
+				lifetime?: string
+			})
+		})
 		target_criteria?: matchN(1, [close({
 			// The port that the targets use for the chosen communication
 			// protocol. A port cannot be assigned to multiple protocols.
@@ -2375,15 +2385,5 @@ package data
 			// values.
 			target_attributes?: [string]: [...string]
 		})]])
-
-		// The application type.
-		// Available values: "self_hosted", "saas", "ssh", "vnc",
-		// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
-		// "infrastructure", "rdp", "mcp", "mcp_portal".
-		type?: string
-
-		// The Zone ID to use for this endpoint. Mutually exclusive with
-		// the Account ID.
-		zone_id?: string
 	})
 }

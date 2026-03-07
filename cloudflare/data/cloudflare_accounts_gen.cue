@@ -11,6 +11,9 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Name of the account.
+		name?: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Timestamp for the creation of the account
@@ -19,6 +22,12 @@ package data
 			// Identifier
 			id?: string
 
+			// Account name
+			name?: string
+
+			// Available values: "standard", "enterprise".
+			type?: string
+
 			// Parent container details
 			managed_by?: close({
 				// ID of the parent Organization, if one exists
@@ -27,9 +36,6 @@ package data
 				// Name of the parent Organization, if one exists
 				parent_org_name?: string
 			})
-
-			// Account name
-			name?: string
 
 			// Account settings
 			settings?: close({
@@ -40,9 +46,6 @@ package data
 				// Two-Factor Authentication is enabled
 				enforce_twofactor?: bool
 			})
-
-			// Available values: "standard", "enterprise".
-			type?: string
 		}), [...close({
 			// Timestamp for the creation of the account
 			created_on?: string
@@ -50,6 +53,12 @@ package data
 			// Identifier
 			id?: string
 
+			// Account name
+			name?: string
+
+			// Available values: "standard", "enterprise".
+			type?: string
+
 			// Parent container details
 			managed_by?: close({
 				// ID of the parent Organization, if one exists
@@ -58,9 +67,6 @@ package data
 				// Name of the parent Organization, if one exists
 				parent_org_name?: string
 			})
-
-			// Account name
-			name?: string
 
 			// Account settings
 			settings?: close({
@@ -71,12 +77,6 @@ package data
 				// Two-Factor Authentication is enabled
 				enforce_twofactor?: bool
 			})
-
-			// Available values: "standard", "enterprise".
-			type?: string
 		})]])
-
-		// Name of the account.
-		name?: string
 	})
 }
