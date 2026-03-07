@@ -7,7 +7,7 @@ Usage example:
 ```cue
 import "github.com/roman-mazur/cuetf/google"
 
-googleServer: google.#Terraform & {
+googleInfra: google.#Terraform & {
 	provider: google: {
 		project: "my_proj"
 		zone:    "us-east1-b"
